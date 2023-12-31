@@ -7,6 +7,7 @@ Processor::Processor()
 	dj_mode = MAW::init_device(ma_device_type_playback, true, dj_callback, this);
 	//daw_mode = MAW::init_device(ma_device_type_playback, true, daw_callback, this);
 	ma_device_start(&idle_mode);
+	is_on_manual = true;
 }
 
 Processor::~Processor()
@@ -189,3 +190,21 @@ Processor::add_processed_time(const ma_uint32& frame_use)
 //Engine_Main::make_it_not_odd(int num) {
 //	return num % 2 == 0 ? num : num-1;
 //}
+
+void
+Processor::go_dj()
+{
+	ma_device_stop(&idle_mode);
+	ma_device_start(&dj_mode);
+	is_on_manual = false;
+}
+
+
+void
+Processor::go_manual()
+{
+	ma_device_stop(&dj_mode);
+	ma_device_start(&idle_mode);
+	is_on_manual = true;
+}
+

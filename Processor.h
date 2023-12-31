@@ -76,6 +76,7 @@ public:
 
 	inline void go_dj();
 	inline void go_manual();
+	bool is_on_manual = false;
 
 };
 

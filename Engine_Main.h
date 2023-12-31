@@ -29,13 +29,13 @@ public://-----------------------------------------------------------------------
 	}custom;
 	
 public://----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------Engine APIs
-	void sw_to_manual(std::string song_path);//switch to manual mode
-	void sw_to_dj(std::string dj_data_path);//switch to dj mode
+	void sw_to_manual(const std::string& song_path, const std::string& song_meta_path);//switch to manual mode
+	void sw_to_dj(const std::string& dj_data_path);//switch to dj mode
 	//void sw_to_daw(std::string planning_data_path);//switch to daw mode
-	void manual_album_load(std::string song_path);//load album or change album. 
-	void manual_playback(int albumID=-1);//manually playback
-	void manual_stop(int albumID);//manually stop
-	void manual_effect(int effect_type, float first, float second);//manual effect API
+	void manual_album_load(const std::string& song_path, const std::string& song_meta_path);//load album or change album. 
+	void manual_playback(const int& albumID=-1);//manually playback
+	void manual_stop(const int& albumID);//manually stop
+	void manual_effect(const int& effect_type,const float& first, const float& second);//manual effect API
 	void clear_deck_dj_area();//clear dj id albums
 	void clear_deck_manual_area();//clear manual id albums
 	

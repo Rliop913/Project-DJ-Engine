@@ -82,27 +82,22 @@ Engine_Main::get_processed_time() {
 
 
 void
-Engine_Main::sw_to_manual(std::string song_path) {
+Engine_Main::sw_to_manual(const std::string& song_path, const std::string& song_meta_path) {
 	clear_deck_dj_area();
-	ma_device_stop(&daw_mode);
-	ma_device_stop(&dj_mode);
-	ma_device_start(&idle_mode);
-	manual_album_load(song_path);
+	PDJE_processor->go_manual();
+	manual_album_load(song_path, song_meta_path);
 }
 
 void
-Engine_Main::manual_album_load(std::string song_path) {
-	if (!ma_device_is_started(&idle_mode)) {
-		return;
-	}
-	else {
-		if (deck.empty()) {
-			load_album(song_path, -1);
+Engine_Main::manual_album_load(const std::string& song_path, const std::string& song_meta_path) {
+	if (PDJE_processor->is_on_manual) {
+		if (PDJE_processor->deck_size()==0) {
+			PDJE_processor->load_album(song_path, song_meta_path);
 			manual_playback(-1);
 		}
-		else if (deck.count(-2) == size_t(1)) {
+		else if (PDJE_processor->deck_size() == 1) {
 			clear_deck_manual_area();
-			load_album(song_path, -1);
+			PDJE_processor->load_album(song_path, -1);
 			manual_playback(-1);
 		}
 		else {
@@ -110,11 +105,15 @@ Engine_Main::manual_album_load(std::string song_path) {
 			load_album(song_path, -2);
 			manual_playback(-2);
 		}
+	
+	}
+	else {
+		return;
 	}
 }
 
 void
-Engine_Main::manual_playback(int albumID) {
+Engine_Main::manual_playback(const int& albumID) {
 	if (!ma_device_is_started(&idle_mode)) {
 		return;
 	}
@@ -128,7 +127,7 @@ Engine_Main::manual_playback(int albumID) {
 }
 
 void
-Engine_Main::manual_stop(int albumID) {
+Engine_Main::manual_stop(const int& albumID) {
 	if (!ma_device_is_started(&idle_mode)) {
 		return;
 	}
@@ -143,7 +142,7 @@ Engine_Main::manual_stop(int albumID) {
 }
 
 void
-Engine_Main::manual_effect(int effect_type, float first, float second) {
+Engine_Main::manual_effect(const int& effect_type,const float& first, const float& second) {
 	Faust_engine* FE;
 	if (deck.count(-1) != 0) {
 		FE = deck[-1]->album_engine;
@@ -270,7 +269,7 @@ Engine_Main::manual_effect(int effect_type, float first, float second) {
 }
 
 void
-Engine_Main::sw_to_dj(std::string dj_data_path) {
+Engine_Main::sw_to_dj(const std::string& dj_data_path) {
 	clear_deck_manual_area();
 	ma_device_stop(&daw_mode);
 	ma_device_stop(&idle_mode);
