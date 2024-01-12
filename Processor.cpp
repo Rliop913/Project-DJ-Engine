@@ -1,20 +1,28 @@
 #include "Processor.h"
 #include "EngineCallBacks.h"
 
+
+
+
+
+
 Processor::Processor()
 {
-	idle_mode = MAW::init_device(ma_device_type_playback, true, idle_callback, this);
-	dj_mode = MAW::init_device(ma_device_type_playback, true, dj_callback, this);
+	MAW::init_device(idle_mode, ma_device_type_playback, true, idle_callback, this);
+	MAW::init_device(dj_mode, ma_device_type_playback, true, dj_callback, this);
+	//MAW::stop_device(dj_mode);
 	//daw_mode = MAW::init_device(ma_device_type_playback, true, daw_callback, this);
-	ma_device_start(&idle_mode);
+	//ma_device_start(&idle_mode);
 	is_on_manual = true;
 }
 
 Processor::~Processor()
 {
-	ma_device_uninit(&idle_mode);
-	ma_device_uninit(&dj_mode);
-	ma_device_uninit(&daw_mode);
+	MAW::stop_device(idle_mode);
+	MAW::stop_device(dj_mode);
+	MAW::uninit_device(idle_mode);
+	MAW::uninit_device(dj_mode);
+	//ma_device_uninit(&daw_mode);
 }
 
 void 
@@ -45,7 +53,7 @@ Processor::acc_album(const int& ID)
 int
 Processor::deck_size()
 {
-	return deck.size();
+	return int(deck.size());
 }
 
 void
@@ -69,6 +77,13 @@ Processor::get_deck_p()
 {
 	return deck.begin();
 }
+
+std::unordered_map<int, ALBUM*>::iterator 
+Processor::get_end_p()
+{
+	return deck.end();
+}
+
 
 bool
 Processor::ID_is_in_stopQ(const int& ID)
@@ -194,8 +209,8 @@ Processor::add_processed_time(const ma_uint32& frame_use)
 void
 Processor::go_dj(const std::string& dj_data)
 {
-	ma_device_stop(&idle_mode);
-	ma_device_start(&dj_mode);
+	MAW::stop_device(idle_mode);
+	MAW::start_device(dj_mode);
 	dj_data_read(dj_data);
 	is_on_manual = false;
 }
@@ -204,8 +219,8 @@ Processor::go_dj(const std::string& dj_data)
 void
 Processor::go_manual()
 {
-	ma_device_stop(&dj_mode);
-	ma_device_start(&idle_mode);
+	MAW::stop_device(dj_mode);
+	MAW::start_device(idle_mode);
 	is_on_manual = true;
 }
 

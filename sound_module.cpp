@@ -1,8 +1,9 @@
 #include "sound_module.h"
-#include <iostream>
-#include "miniaudio.h"
 #include "Processor.h"
 #include "ALBUM.h"
+#include "CURSOR.h"
+
+
 sound_module::sound_module(Processor* first, ALBUM* second, Faust_engine* third) {
 	processor = first;
 	palbum = second;
@@ -120,12 +121,12 @@ sound_module::eq_tog(const tagables& tag) {
 		tag.first < -60.0 ?
 			([PF](double val) {
 			PF->EQ_high_sw(false); 
-			PF->set_eq_high_value(val); 
+			PF->set_eq_high_value(float(val)); 
 		}(tag.first))
 			:
 			([PF](double val) {
 			PF->EQ_high_sw(true); 
-			PF->set_eq_high_value(val);
+			PF->set_eq_high_value(float(val));
 		}(tag.first));
 
 	}
@@ -133,12 +134,12 @@ sound_module::eq_tog(const tagables& tag) {
 				tag.first < -60.0 ?
 				([PF](double val) {
 				PF->EQ_mid_sw(false);
-				PF->set_eq_mid_value(val);
+				PF->set_eq_mid_value(float(val));
 				}(tag.first))
 				:
 				([PF](double val) {
 				PF->EQ_mid_sw(true);
-				PF->set_eq_mid_value(val);
+				PF->set_eq_mid_value(float(val));
 				}(tag.first));
 
 	}
@@ -146,12 +147,12 @@ sound_module::eq_tog(const tagables& tag) {
 				tag.first < -60.0 ?
 				([PF](double val) {
 				PF->EQ_low_sw(false);
-				PF->set_eq_low_value(val);
+				PF->set_eq_low_value(float(val));
 				}(tag.first))
 				:
 				([PF](double val) {
 				PF->EQ_low_sw(true);
-				PF->set_eq_low_value(val);
+				PF->set_eq_low_value(float(val));
 				}(tag.first));
 
 	}
@@ -165,12 +166,12 @@ sound_module::distortion_tog(const tagables& tag) {
 	tag.first < 0 ?
 		([PF](double val) {
 		PF->_distortion_sw(false);
-		PF->set_distortion_gain(val);
+		PF->set_distortion_gain(float(val));
 		}(tag.first))
 		:
 		([PF](double val) {
 		PF->_distortion_sw(true);
-		PF->set_distortion_gain(val);
+		PF->set_distortion_gain(float(val));
 		}(tag.first));
 }
 
@@ -185,7 +186,7 @@ sound_module::filter_tog(const tagables& tag) {
 			:
 			([PF](double val) {
 			PF->filter_high_sw(true);
-			PF->set_filter_high_freq_value(val);
+			PF->set_filter_high_freq_value(int(val));
 			}(tag.first));
 	}
 	else {//LOW
@@ -225,10 +226,10 @@ sound_module::vol_tog(const tagables& tag) {
 	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
 	
 	if (tag.what_ == "TRIM") {
-		PF->set_trim(tag.first);
+		PF->set_trim(float(tag.first));
 	}
 	else {//fader
-		PF->set_fader(tag.first);
+		PF->set_fader(float(tag.first));
 	}
 }
 void
@@ -263,23 +264,27 @@ sound_module::sola_tog(const tagables& tag) {
 void
 sound_module::beat_match_tog(const tagables& tag) {//WARP MATCHING
 	ALBUM* MA;//Master album
+	CURSOR* MA_C;//Master cursor
 	MA = processor->acc_album(tag.for_who);
+	MA_C = MA->get_cursor();
 	ALBUM* ME;
+	CURSOR* ME_C;
 	ME = palbum;
+	ME_C = ME->get_cursor();
 	ma_uint64 master_cursor=0;
 	ma_uint64 my_cursor = 0;
 	
-	double my_speed = ME->get_cursor()->get_IOSR();
-	double master_speed = MA->get_cursor()->get_IOSR();
-	ME->get_cursor()->get_now_frame(my_cursor);
-	MA->get_cursor()->get_now_frame(master_cursor);
-	MA->got_frames() ? master_cursor -= ceil(441.0 / master_speed) : true;
-	int match_time = my_cursor - tag.frame_in + (
+	double my_speed = ME_C->get_IOSR();
+	double master_speed = MA_C->get_IOSR();
+	ME_C->get_now_frame(my_cursor);
+	MA_C->get_now_frame(master_cursor);
+	MA->got_frames() ? master_cursor -= ma_uint64(ceil(441.0 / master_speed)) : true;
+	ma_uint64 match_time = my_cursor - tag.frame_in + ma_uint64((
 		master_speed * (
 			processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.first, tag.for_who)
-			) - double(master_cursor))) / my_speed;
+			) - double(master_cursor))) / my_speed);
 	my_cursor -= match_time;
-	ME->get_cursor()->set_point(my_cursor);
+	ME_C->set_point(my_cursor);
 }
 
 void
@@ -380,16 +385,16 @@ sound_module::battle_tog(const tagables& tag) {
 	if (tag.what_ == "SCRATCH") {
 		
 		double SCR_entry_pos = processor->pBCE->calc_in_real_time(tag.first, tag.for_who);
-		ma_uint32 ent_pos = processor->raw_to_processed(SCR_entry_pos);
+		ma_uint64 ent_pos = processor->raw_to_processed(SCR_entry_pos);
 		CR->set_point(ent_pos);
-		ma_uint32 out_pos = processor->raw_to_processed(processor->pBCE->calc_in_real_time(std::stod(tag.str_first), tag.for_who));
+		ma_uint64 out_pos = processor->raw_to_processed(processor->pBCE->calc_in_real_time(std::stod(tag.str_first), tag.for_who));
 		CR->temp_mv(true, tag.second, 1.0, out_pos - ent_pos);
 	}
 	else if (tag.what_ == "BSCRATCH") {
 		double SCR_entry_pos = processor->pBCE->calc_in_real_time(tag.first, tag.for_who);
-		ma_uint32 ent_pos = processor->raw_to_processed(SCR_entry_pos);
+		ma_uint64 ent_pos = processor->raw_to_processed(SCR_entry_pos);
 		CR->set_point(ent_pos);
-		ma_uint32 out_pos = processor->raw_to_processed(processor->pBCE->calc_in_real_time(std::stod(tag.str_first), tag.for_who));
+		ma_uint64 out_pos = processor->raw_to_processed(processor->pBCE->calc_in_real_time(std::stod(tag.str_first), tag.for_who));
 		CR->temp_mv(false, tag.second, 1.0, ent_pos-out_pos);
 	}
 }
@@ -522,7 +527,7 @@ sound_module::filter_inter(const tagables& tag,inter_body body) {
 			PF->filter_high_sw(turn_on);
 		};
 		body.setter_method = [PF](float val) {
-			PF->set_filter_high_freq_value(val);
+			PF->set_filter_high_freq_value(int(val));
 		};
 	}
 	else {//LOW
@@ -530,7 +535,7 @@ sound_module::filter_inter(const tagables& tag,inter_body body) {
 			PF->filter_low_sw(turn_on);
 		};
 		body.setter_method = [PF](float val) {
-			PF->set_filter_low_freq_value(val);
+			PF->set_filter_low_freq_value(int(val));
 		};
 	}
 	ALBUM* AP = body.album_pointer;

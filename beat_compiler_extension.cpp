@@ -144,7 +144,7 @@ int
 beat_compiler_extension::check_bpms(const std::vector<ch_bpm_data_table>& bpmS, const double& aprx)
 {
 	if (aprx > bpmS.at(bpmS.size() - 1).approx_loc) {//no more higher approx
-		return bpmS.size() - 1;
+		return int(bpmS.size()) - 1;
 	}
 	else if (aprx < bpmS.at(0).approx_loc) {//lower than every bpm ch
 		return 0;
@@ -155,6 +155,7 @@ beat_compiler_extension::check_bpms(const std::vector<ch_bpm_data_table>& bpmS, 
 				return j - 1;
 			}
 		}
+		return -1;
 	}
 }
 
@@ -311,7 +312,6 @@ beat_compiler_extension::calc_in_real_time(const double& approx_loc,const int& a
 
 	}
 	else {//bpm changed
-
 		if (approx_loc > in_here.bpm_storage.at(in_here.bpm_storage.size() - 1).approx_loc) {//no more higher approx
 
 			return calc_time_between_T_S(in_here.bpm_storage.at(in_here.bpm_storage.size() - 1), approx_loc);
@@ -325,7 +325,9 @@ beat_compiler_extension::calc_in_real_time(const double& approx_loc,const int& a
 					return calc_time_between_T_S(in_here.bpm_storage.at(j - 1), approx_loc);
 				}
 			}
+			return -1.0;
 		}
+
 	}
 }
 

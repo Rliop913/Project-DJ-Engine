@@ -2,7 +2,6 @@
 #include "GlobalStructs.h"
 #include "sound_module.h"
 #include "CURSOR.h"
-#include "miniaudio.h"
 class Processor;
 class ALBUM {
 private:
@@ -19,12 +18,13 @@ private:
 	CURSOR* cursor;
 
 	void album_init(const std::string& song_path);//init album
-
-	std::shared_ptr<float> process_memory = std::make_shared<float>(960);
-	std::shared_ptr<float> faust_before1 = std::make_shared<float>(480);
-	std::shared_ptr<float> faust_before2 = std::make_shared<float>(480);
-	std::shared_ptr<float> faust_after1 = std::make_shared<float>(480);
-	std::shared_ptr<float> faust_after2 = std::make_shared<float>(480);
+	void dynamic_memory_init();
+	void dynamic_memory_uninit();
+	float* process_memory;//float*960
+	float* faust_before1;//float*480
+	float* faust_before2;//float*480
+	float* faust_after1;//float*480
+	float* faust_after2;//float*480
 
 
 

@@ -112,7 +112,7 @@ public:
 	float panner_bps = 1.0f; void set_panner_bps(float bps) { panner_bps = bps; }
 	float distortion_gain = 1.0f; void set_distortion_gain(float value) { value > 1.0f ? distortion_gain = 1.0f : (value < 0 ? distortion_gain = 0.0f : distortion_gain = value); }
 	float trance_gain = 1.0f; void set_trance_gain(float value) { value > 1.0f ? trance_gain = 1.0f : (value < 0 ? trance_gain = 0.0f : trance_gain = value); }
-	float l_f_s_gain_min_freq = 1.0f; void set_l_f_s_gain_min_freq(int value) { value < 0 ? l_f_s_gain_min_freq = 0 : l_f_s_gain_min_freq = value; }
+	float l_f_s_gain_min_freq = 1.0f; void set_l_f_s_gain_min_freq(int value) { value < 0 ? l_f_s_gain_min_freq = 0 : l_f_s_gain_min_freq = float(value); }
 	float panner_gain = 1.0f; void set_panner_gain(float value) { value > 1.0f ? panner_gain = 1.0f : (value < 0 ? panner_gain = 0.0f : panner_gain = value); }
 	//-------value_getter------//
 
@@ -970,4 +970,3 @@ public:
 };
 
 #endif
-#pragma warning(pop)

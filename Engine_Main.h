@@ -2,18 +2,14 @@
 #ifndef engine_main
 #define engine_main
 
-#include "miniaudio.h"
 #include "faust_v_3_2.h"
 #include <functional>
 #include <string>
-//#include "include/SoundTouch.h"
 #include <unordered_map>
 #include <vector>
 #include "beat_compiler_extension.h"
 
 #include "Processor.h"
-//#define SOUNDTOUCH_FLOAT_SAMPLES
-
 #include "GlobalStructs.h"
 class Engine_Main
 {
@@ -21,12 +17,7 @@ public:
 	Engine_Main();
 	~Engine_Main();
 	Engine_Main(const function_pointers& ppp);
-public://----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------data structs, data arrays
-	
-	/*struct custom_data {
-		int channel=2;
-	}custom;
-	*/
+
 public://----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------Engine APIs
 	void sw_to_manual(const std::string& song_path, const std::string& song_meta_path);//switch to manual mode
 	void sw_to_dj(const std::string& dj_data_path);//switch to dj mode
@@ -50,11 +41,12 @@ public://-----------------------------------------------------------------------
 	
 	//void view_album(ma_uint8*& buffer, ma_uint64* len, int rev_scale, std::string song_path);
 	//THREADS
-	ma_uint64 processed_time_getter_return();
-	std::unordered_map<int,mix_data_set> get_mixing_status_updater();//get mixing data inside deck
+	//ma_uint64 processed_time_getter_return();
+	//std::unordered_map<int,mix_data_set> get_mixing_status_updater();//get mixing data inside deck
 	//THREADS
 
 private:
+
 	Processor* PDJE_processor;
 };
 

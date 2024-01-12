@@ -1,10 +1,7 @@
 #pragma once
 #include "Engine_Main.h"
-#include <fstream>
-#include "miniaudio.h"
 #include <iostream>
 #include "default_functions.h"
-#define __cplusplus
 function_pointers GFP;
 
 Engine_Main::~Engine_Main() {
@@ -12,11 +9,10 @@ Engine_Main::~Engine_Main() {
 }
 
 Engine_Main::Engine_Main() {
-	function_pointers fps;
-	fps.init_fileitr = default_file_init;
-	fps.line_getter = default_line_getter;
-	fps.loader_function = default_decoder_init;
-	fps.uninit_fileitr = default_file_uninit;
+	GFP.init_fileitr = default_file_init;
+	GFP.line_getter = default_line_getter;
+	GFP.loader_function = default_decoder_init;
+	GFP.uninit_fileitr = default_file_uninit;
 	PDJE_processor = new Processor();
 }
 
@@ -466,9 +462,80 @@ Engine_Main::clear_deck()
 //	return;
 //}
 
-
-
+//
+//
+//void logCallback(void* pUserData, ma_uint32 logLevel, const char* message) {
+//	// 로그 레벨에 따라 적절한 처리를 수행
+//	switch (logLevel) {
+//	case MA_LOG_LEVEL_ERROR:
+//		fprintf(stderr, "Error: %s\n", message);
+//		break;
+//	case MA_LOG_LEVEL_WARNING:
+//		fprintf(stderr, "Warning: %s\n", message);
+//		break;
+//	case MA_LOG_LEVEL_INFO:
+//		printf("Info: %s\n", message);
+//		break;
+//	case MA_LOG_LEVEL_DEBUG:
+//		printf("Debug: %s\n", message);
+//		break;
+//	default:
+//		// 기타 로그 레벨에 대한 처리
+//		break;
+//	}
+//}
+//void mfre(void* p, void* userdata) {
+//	free(p);
+//}
+//void* mmlac(size_t sz, void* udat) {
+//	return malloc(sz);
+//}
+//void* mrel(void*p ,size_t sz, void* udat) {
+//	return realloc(p, sz);
+//}
+//#include "include/SoundTouch.h"
+//soundtouch::SoundTouch *sstt;
+//
+//
+//void
+//temp_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount) {
+//
+//	ma_decoder* dec = (ma_decoder*)(pDevice->pUserData);
+//	MAW::touch_sound(*sstt, frameCount, (float*)pOutput, *dec);
+//}
 int main()
 {
+	/*ma_log logger;
+	ma_log_callback mlc = ma_log_callback_init(logCallback, NULL);
+	ma_allocation_callbacks mac;
+	mac.onFree = mfre;
+	mac.onMalloc = mmlac;
+	mac.onRealloc = mrel;
+	mac.pUserData = NULL;
+	*//*
+	ma_log_init(&mac, &logger);
+	ma_log_register_callback(&logger, mlc);*/
+	/*sstt = new soundtouch::SoundTouch();
+	sstt->setChannels(2);
+	sstt->setSampleRate(48000);
+	ma_decoder dec;
+	ma_decoder_config decconf = ma_decoder_config_init(ma_format_f32, 2, 48000);
+	ma_decoder_init_file("E://first_town.wav", &decconf, &dec);
+	ma_device_config devconf = ma_device_config_init(ma_device_type_playback);
+	devconf.playback.format = ma_format_f32;
+	devconf.playback.channels = 2;
+	devconf.sampleRate = 48000;
+	devconf.dataCallback = temp_callback;
+	devconf.pUserData = &dec;
+	devconf.performanceProfile = ma_performance_profile_low_latency;
+	ma_device dummy;
+	ma_device dev;
+	ma_device_init(NULL, &devconf, &dev);
+	ma_device_start(&dev);*/
+	//getchar();
+	Engine_Main *EM = new Engine_Main();
+	EM->sw_to_manual("E://first_town.wav", "E://Over Time.json");
+	
+	getchar();
 	return 1;
 }

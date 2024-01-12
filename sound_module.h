@@ -1,12 +1,12 @@
 #pragma once
 #include "GlobalStructs.h"
-
+#include "include/SoundTouch.h"
 #include "faust_v_3_2.h"
-#include "miniaudio.h"
 
 
 class Processor;
 class ALBUM;
+class CURSOR;
 class sound_module
 {
 private://hashs

@@ -5,8 +5,6 @@
 #include <memory>
 #include <functional>
 #include "MiniAudioWrapper.h"
-#include "miniaudio.h"
-#define LINKER_TEST
 #define Global_album_Sample_Rate 48000
 #define VOID_BUFFER_SIZE(framecount, channel_size) framecount* 4 * channel_size
 
@@ -14,8 +12,8 @@ class ALBUM;
 
 
 struct engine_order {//data struct for beatcompiler
-	double frame_in;
-	double frame_out;
+	double frame_in=0.0;
+	double frame_out=0.0;
 	std::unordered_map<std::string, std::string> tag;//tag stored
 };//the reserved order block define
 
@@ -98,12 +96,12 @@ struct song_data {//song_datas
 };
 
 struct inter_body {//data struct for interpolation
-	ma_uint64 start_frame;
-	ma_uint64 end_frame;
-	double start_value;
-	double end_value;
-	ALBUM* album_pointer;
-	ALBUM* for_who_album_p;
+	ma_uint64 start_frame=0;
+	ma_uint64 end_frame=0;
+	double start_value=0.0;
+	double end_value=0.0;
+	ALBUM* album_pointer=nullptr;
+	ALBUM* for_who_album_p=nullptr;
 	std::function<void(double)> setter_method;
 	std::function<void(bool)> sw_method;
 	std::function<void()> death_method;
@@ -185,8 +183,8 @@ struct dj_init_group {
 		void* process_pointer;
 	};
 struct stored_data {
-		double start_bpm;
-		double start_time;
+		double start_bpm=0.0;
+		double start_time=0.0;
 		std::vector<ch_bpm_data_table> bpm_storage;
 	};
 struct raw_data {//-------store raws----------------//

@@ -1,21 +1,20 @@
 #include "ALBUM.h"
-#include <iostream>
 #include "temp_json_reader.h"
 #include "Processor.h"
 
 void
 ALBUM::idle_process(ma_uint32 frameCount, float* main_buffer) {
 	this_data.got_frames = false;
-	MAW::silence_memory(process_memory.get(), frameCount);
+	MAW::silence_memory(process_memory, frameCount);
 
-	cursor->mvcur(process_memory.get(), frameCount);
+	cursor->mvcur(process_memory, frameCount);
 	this_data.got_frames = true;
-	before_faust_caster(process_memory.get(), faust_before1.get(), faust_before2.get(), frameCount);
+	before_faust_caster(process_memory , faust_before1 , faust_before2 , frameCount);
 	//---------------------------FAUST HERE-------------------------------//
-	album_engine->compute(frameCount, faust_before1.get(),faust_before2.get(), faust_after1.get(),faust_after2.get());
+	album_engine->compute(frameCount, faust_before1 ,faust_before2 , faust_after1 ,faust_after2 );
 	//---------------------------FAUST HERE-------------------------------//
 	pproc->buf_mutex.lock();
-	after_faust_caster(faust_after1.get(), faust_after2.get(), main_buffer, frameCount);
+	after_faust_caster(faust_after1 , faust_after2 , main_buffer, frameCount);
 	pproc->buf_mutex.unlock();
 }
 
@@ -36,7 +35,7 @@ ALBUM::idle_process(ma_uint32 frameCount, float* main_buffer) {
 void
 ALBUM::dj_process(ma_uint32 frameCount, float* main_buffer) {
 	this_data.got_frames = false;
-	ma_silence_pcm_frames(process_memory.get(), frameCount, ma_format_f32, 2);//clean garbage datas
+	MAW::silence_memory(process_memory , frameCount);
 	ma_uint64 frame_now = 0;
 	cursor->get_now_frame(frame_now);
 	//ma_decoder_get_cursor_in_pcm_frames(&music, &frame_now);
@@ -44,15 +43,15 @@ ALBUM::dj_process(ma_uint32 frameCount, float* main_buffer) {
 	reserve_read(frame_now);
 	interpolate_function(frame_now);
 	if (this_data.playback_ordered) {
-		cursor->mvcur(process_memory.get(), frameCount);
+		cursor->mvcur(process_memory , frameCount);
 		this_data.got_frames = true;
 	}
-	before_faust_caster(process_memory.get(), faust_before1.get(), faust_before2.get(), frameCount);
+	before_faust_caster(process_memory , faust_before1 , faust_before2 , frameCount);
 	//---------------------------FAUST HERE-------------------------------//
-	album_engine->compute(frameCount, faust_before1.get(), faust_before2.get(), faust_after1.get(),faust_after2.get());
+	album_engine->compute(frameCount, faust_before1 , faust_before2 , faust_after1 ,faust_after2 );
 	//---------------------------FAUST HERE-------------------------------//
 	pproc->buf_mutex.lock();
-	after_faust_caster(faust_after1.get(), faust_after2.get(), main_buffer, frameCount);
+	after_faust_caster(faust_after1 , faust_after2 , main_buffer, frameCount);
 	pproc->buf_mutex.unlock();
 }
 //
@@ -189,6 +188,25 @@ ALBUM::album_init(const std::string& song_path) {
 	module = new sound_module(pproc,this,album_engine);
 }
 
+void
+ALBUM::dynamic_memory_uninit()
+{
+	free(process_memory);
+	free(faust_before1);
+	free(faust_before2);
+	free(faust_after1);
+	free(faust_after2);
+}
+
+void
+ALBUM::dynamic_memory_init()
+{
+	process_memory = (float*)malloc(sizeof(float) * 960);
+	faust_before1 = (float*)malloc(sizeof(float) * 480);
+	faust_before2 = (float*)malloc(sizeof(float) * 480);
+	faust_after1 = (float*)malloc(sizeof(float) * 480);
+	faust_after2 = (float*)malloc(sizeof(float) * 480);
+}
 
 
 
@@ -196,6 +214,7 @@ ALBUM::~ALBUM() {
 	delete cursor;
 	delete album_engine;
 	delete module;
+	dynamic_memory_uninit();
 }
 
 ALBUM::ALBUM(const std::string& song_path, const int& channel, const int& albumID, Processor* p, const std::string& meta_data_path) {
@@ -205,6 +224,7 @@ ALBUM::ALBUM(const std::string& song_path, const int& channel, const int& albumI
 	this->this_data.ID = albumID;
 	this->this_data.bpm = std::stod(file_inside.at(0)["bpm"]);
 	this->this_data.start_time = std::stod(file_inside.at(0)["start_time"]);
+	dynamic_memory_init();
 }
 
 void

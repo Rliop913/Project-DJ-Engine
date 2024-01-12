@@ -1,22 +1,27 @@
 #include "CURSOR.h"
 #include "Processor.h"
-#include "miniaudio.h"
 CURSOR::CURSOR(const std::string& song_path,Processor& pproc)
 {
 	MAW::init_decoder(song_path, dec, pproc);
-	MAW::init_soundtouch(ST);
+	ST = new SoundTouch();
+	ST->setChannels(2);
+	ST->setSampleRate(48000);
+	ST->setSetting(0, 1);
+	ST->setSetting(3, 1);
+	ST->setSetting(2, 0);
+	ST->setTempo(1.0);
 }
 
 
 CURSOR::~CURSOR()
 {
 	delete ST;
-	ma_decoder_uninit(&dec);
+	MAW::uninit_decoder(dec);
 }
 
 
 void
-CURSOR::mvcur(float* wbuf,ma_uint32 frameCount)
+CURSOR::mvcur(float* wbuf,const ma_uint32& frameCount)
 {
 	temp_mv_enabled ?//IF(temp_mv_enabled)
 		(//true
@@ -53,7 +58,7 @@ CURSOR::back_to_origin()
 void
 CURSOR::set_point(const ma_uint64& position)
 {
-	ma_decoder_seek_to_pcm_frame(&dec, position);
+	MAW::decoder_seek_frame(dec, position);
 }
 
 double
@@ -82,13 +87,13 @@ CURSOR::set_speed(const double& pitch, const double& tempo)
 void
 CURSOR::get_now_frame(ma_uint64& now)
 {
-	ma_decoder_get_cursor_in_pcm_frames(&dec, &now);
+	MAW::decoder_get_cursor(dec, now);
 	return;
 }
 
 
 void
-CURSOR::temp_mv(const bool& direction, const double& pitch, const double& tempo, const ma_uint32& play_frame)
+CURSOR::temp_mv(const bool& direction, const double& pitch, const double& tempo, const ma_uint64& play_frame)
 {
 	origin_mv_dir = go_front;
 	go_front = direction;
