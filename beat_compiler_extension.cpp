@@ -4,7 +4,7 @@
 #include <functional>
 #include <assert.h>
 
-
+extern function_pointers GFP;
 
 beat_compiler_extension::beat_compiler_extension(const dj_init_group& init) {
 	MAIN_DATA = init.dj_data_path;

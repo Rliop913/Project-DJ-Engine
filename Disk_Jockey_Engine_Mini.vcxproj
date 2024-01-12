@@ -40,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -107,11 +107,13 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>E:\git_branch\cpps\Disk_Jockey_Engine_Mini\jsoncpp\include\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\usb_backup\native_cpp\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
       <AdditionalDependencies>SoundTouchD_x64.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
@@ -168,6 +170,7 @@
     <ClCompile Include="beat_compiler_extension.cpp" />
     <ClCompile Include="CURSOR.cpp" />
     <ClCompile Include="Engine_Main.cpp" />
+    <ClCompile Include="miniaudio.c" />
     <ClCompile Include="MiniAudioWrapper.cpp" />
     <ClCompile Include="Processor.cpp" />
     <ClCompile Include="sound_module.cpp" />

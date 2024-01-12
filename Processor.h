@@ -5,6 +5,8 @@
 #include "ALBUM.h"
 #include "beat_compiler_extension.h"
 #include "MiniAudioWrapper.h"
+#include "miniaudio.h"
+
 class Processor
 {
 private:
@@ -56,7 +58,7 @@ public:
 	inline Faust_engine* acc_faust(const int& ID);
 	inline void START_DJ();//ignite first album
 	inline int deck_size();
-	inline auto get_deck_p();
+	inline std::unordered_map<int, ALBUM*>::iterator get_deck_p();
 	inline bool ID_is_in_stopQ(const int& ID);
 	inline ma_uint64 get_processed_time();
 	inline void add_processed_time(const ma_uint32& frame_use);
@@ -74,7 +76,7 @@ public:
 	inline void clear_stopQ();
 	inline void set_MAX_DECK_USE(const int& deck_num);
 
-	inline void go_dj();
+	inline void go_dj(const std::string& dj_data);
 	inline void go_manual();
 	bool is_on_manual = false;
 

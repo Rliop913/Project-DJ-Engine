@@ -1,6 +1,10 @@
 #pragma once
 #include "MiniAudioWrapper.h"
 #include "GlobalStructs.h"
+#include "miniaudio.h"
+
+class Processor;
+
 class CURSOR
 {
 public:

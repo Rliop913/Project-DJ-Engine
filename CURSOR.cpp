@@ -1,6 +1,6 @@
 #include "CURSOR.h"
-
-
+#include "Processor.h"
+#include "miniaudio.h"
 CURSOR::CURSOR(const std::string& song_path,Processor& pproc)
 {
 	MAW::init_decoder(song_path, dec, pproc);

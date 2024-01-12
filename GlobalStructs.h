@@ -1,11 +1,16 @@
-#pragma once
+#ifndef GlobalStructs
+#define GlobalStructs
 #include <unordered_map>
 #include <string>
 #include <memory>
 #include <functional>
 #include "MiniAudioWrapper.h"
-
+#include "miniaudio.h"
+#define LINKER_TEST
+#define Global_album_Sample_Rate 48000
 #define VOID_BUFFER_SIZE(framecount, channel_size) framecount* 4 * channel_size
+
+class ALBUM;
 
 
 struct engine_order {//data struct for beatcompiler
@@ -21,26 +26,26 @@ struct work {//data struct for worker threads
 };
 
 struct mix_data_set {//dataset for update game GUI
-	std::string path;
-	float now_bpm;
+	std::string path="";
+	float now_bpm=0.0f;
 
-	float trim;
-	float fader;
-	float eq_mid_v;
-	float eq_low_v;
-	float eq_hi_v;
-	bool lpf_sw;
-	bool hpf_sw;
-	bool echo_sw_;
-	bool l_f_s_sw_;
-	bool phaser_sw_;
-	bool flanger_sw_;
-	bool trance_sw_;
-	bool panner_sw_;
-	bool distortion_sw_;
+	float trim=0.0f;
+	float fader=0.0f;
+	float eq_mid_v = 0.0f;
+	float eq_low_v = 0.0f;
+	float eq_hi_v = 0.0f;
+	bool lpf_sw=false;
+	bool hpf_sw = false;
+	bool echo_sw_ = false;
+	bool l_f_s_sw_ = false;
+	bool phaser_sw_ = false;
+	bool flanger_sw_ = false;
+	bool trance_sw_ = false;
+	bool panner_sw_ = false;
+	bool distortion_sw_ = false;
 
-	bool scratch_sw_;
-	bool rev_sw_;
+	bool scratch_sw_ = false;
+	bool rev_sw_ = false;
 
 };
 
@@ -99,7 +104,7 @@ struct inter_body {//data struct for interpolation
 	double end_value;
 	ALBUM* album_pointer;
 	ALBUM* for_who_album_p;
-	std::function<void(float)> setter_method;
+	std::function<void(double)> setter_method;
 	std::function<void(bool)> sw_method;
 	std::function<void()> death_method;
 };
@@ -157,7 +162,7 @@ struct function_pointers {
 	bool (*line_getter)(void*, std::string&) = nullptr;//-------------------------file line getter
 	void (*uninit_fileitr)(void*) = nullptr;//-----------------------------uninit file itr
 	void (*loader_function)(const std::string&, ma_decoder&, ma_decoder_config&);
-}GFP;
+};
 struct standard_tag_table
 	{
 		int line_number = 0;
@@ -189,36 +194,40 @@ struct raw_data {//-------store raws----------------//
 		standard_tag_table long_end_table;
 		std::unordered_map<std::string, std::string> other_tags;
 	};
+namespace tog {
 
-enum tog_module {
-	EQ,
-	DISTORTION,
-	FILTER,
-	CONTROL,
-	VOL,
-	LOAD,
-	UNLOAD,
-	DJ_COMP,
-	BEAT_MATCH,
-	SOLA,
-	ECHO,
-	LFS,
-	FLANGER,
-	PHASER,
-	TRANCE,
-	PANNER,
-	BATTLE_DJ,
-	ROLL,
-	ALIVE
-};
+	enum tog_module {
+		EQ,
+		DISTORTION,
+		FILTER,
+		CONTROL,
+		VOL,
+		LOAD,
+		UNLOAD,
+		DJ_COMP,
+		BEAT_MATCH,
+		SOLA,
+		ECHO,
+		LFS,
+		FLANGER,
+		PHASER,
+		TRANCE,
+		PANNER,
+		BATTLE_DJ,
+		ROLL,
+		ALIVE
+	};
+}
+namespace inter {
+	enum inter_module {
+		EQ,
+		FILTER,
+		DISTORTION,
+		VOL,
+		SOLA,
+		BATTLE_DJ,
+	};
+}
 
-enum inter_module {
-	EQ,
-	FILTER,
-	DISTORTION,
-	VOL,
-	SOLA,
-	BATTLE_DJ,
-};
 
-#define Global_album_Sample_Rate 48000
+#endif

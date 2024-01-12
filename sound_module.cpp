@@ -1,7 +1,8 @@
 #include "sound_module.h"
 #include <iostream>
-
-
+#include "miniaudio.h"
+#include "Processor.h"
+#include "ALBUM.h"
 sound_module::sound_module(Processor* first, ALBUM* second, Faust_engine* third) {
 	processor = first;
 	palbum = second;
@@ -11,98 +12,98 @@ sound_module::sound_module(Processor* first, ALBUM* second, Faust_engine* third)
 void
 sound_module::tog_hash_filler()
 {
-	tog_hash["EQ"] = tog_module::EQ;
-	tog_hash["DISTORTION"] = tog_module::DISTORTION;
-	tog_hash["FILTER"] = tog_module::FILTER;
-	tog_hash["CONTROL"] = tog_module::CONTROL;
-	tog_hash["VOL"] = tog_module::VOL;
-	tog_hash["LOAD"] = tog_module::LOAD;
-	tog_hash["UNLOAD"] = tog_module::UNLOAD;
-	tog_hash["DJ_COMP"] = tog_module::DJ_COMP;
-	tog_hash["BEAT_MATCH"] = tog_module::BEAT_MATCH;
-	tog_hash["SOLA"] = tog_module::SOLA;
-	tog_hash["ECHO"] = tog_module::ECHO;
-	tog_hash["LFS"] = tog_module::LFS;
-	tog_hash["FLANGER"] = tog_module::FLANGER;
-	tog_hash["PHASER"] = tog_module::PHASER;
-	tog_hash["TRANCE"] = tog_module::TRANCE;
-	tog_hash["PANNER"] = tog_module::PANNER;
-	tog_hash["BATTLE_DJ"] = tog_module::BATTLE_DJ;
-	tog_hash["ROLL"] = tog_module::ROLL;
-	tog_hash["ALIVE"] = tog_module::ALIVE;
+	tog_hash["EQ"] = tog::tog_module::EQ;
+	tog_hash["DISTORTION"] = tog::tog_module::DISTORTION;
+	tog_hash["FILTER"] = tog::tog_module::FILTER;
+	tog_hash["CONTROL"] = tog::tog_module::CONTROL;
+	tog_hash["VOL"] = tog::tog_module::VOL;
+	tog_hash["LOAD"] = tog::tog_module::LOAD;
+	tog_hash["UNLOAD"] = tog::tog_module::UNLOAD;
+	tog_hash["DJ_COMP"] = tog::tog_module::DJ_COMP;
+	tog_hash["BEAT_MATCH"] = tog::tog_module::BEAT_MATCH;
+	tog_hash["SOLA"] = tog::tog_module::SOLA;
+	tog_hash["ECHO"] = tog::tog_module::ECHO;
+	tog_hash["LFS"] = tog::tog_module::LFS;
+	tog_hash["FLANGER"] = tog::tog_module::FLANGER;
+	tog_hash["PHASER"] = tog::tog_module::PHASER;
+	tog_hash["TRANCE"] = tog::tog_module::TRANCE;
+	tog_hash["PANNER"] = tog::tog_module::PANNER;
+	tog_hash["BATTLE_DJ"] = tog::tog_module::BATTLE_DJ;
+	tog_hash["ROLL"] = tog::tog_module::ROLL;
+	tog_hash["ALIVE"] = tog::tog_module::ALIVE;
 }
 
 void
 sound_module::inter_hash_filler()
 {
-	inter_hash["EQ"] = inter_module::EQ;
-	inter_hash["FILTER"] = inter_module::FILTER;
-	inter_hash["DISTORTION"] = inter_module::DISTORTION;
-	inter_hash["VOL"] = inter_module::VOL;
-	inter_hash["SOLA"] = inter_module::SOLA;
-	inter_hash["BATTLE_DJ"] = inter_module::BATTLE_DJ;
+	inter_hash["EQ"] = inter::inter_module::EQ;
+	inter_hash["FILTER"] = inter::inter_module::FILTER;
+	inter_hash["DISTORTION"] = inter::inter_module::DISTORTION;
+	inter_hash["VOL"] = inter::inter_module::VOL;
+	inter_hash["SOLA"] = inter::inter_module::SOLA;
+	inter_hash["BATTLE_DJ"] = inter::inter_module::BATTLE_DJ;
 }
 
 
 
 void
-sound_module::toggle(tagables tag) {
+sound_module::toggle(const tagables& tag) {
 	switch (tog_hash[tag.type]) {
-	case tog_module::EQ:
+	case tog::tog_module::EQ:
 		eq_tog(tag);
 		break;
-	case tog_module::DISTORTION:
+	case tog::tog_module::DISTORTION:
 		distortion_tog(tag);
 		break;
-	case tog_module::FILTER:
+	case tog::tog_module::FILTER:
 		filter_tog(tag);
 		break;
-	case tog_module::CONTROL:
+	case tog::tog_module::CONTROL:
 		control_tog(tag);
 		break;
-	case tog_module::VOL:
+	case tog::tog_module::VOL:
 		vol_tog(tag);
 		break;
-	case tog_module::LOAD:
+	case tog::tog_module::LOAD:
 		load_tog(tag);
 		break;
-	case tog_module::UNLOAD:
+	case tog::tog_module::UNLOAD:
 		unload_tog(tag);
 		break;
-	case tog_module::DJ_COMP:
+	case tog::tog_module::DJ_COMP:
 		dj_comp_tog(tag);
 		break;
-	case tog_module::BEAT_MATCH:
+	case tog::tog_module::BEAT_MATCH:
 		beat_match_tog(tag);
 		break;
-	case tog_module::SOLA:
+	case tog::tog_module::SOLA:
 		sola_tog(tag);
 		break;
-	case tog_module::ECHO:
+	case tog::tog_module::ECHO:
 		echo_tog(tag);
 		break;
-	case tog_module::LFS:
+	case tog::tog_module::LFS:
 		LFS_tog(tag);
 		break;
-	case tog_module::FLANGER:
+	case tog::tog_module::FLANGER:
 		flanger_tog(tag);
 		break;
-	case tog_module::PHASER:
+	case tog::tog_module::PHASER:
 		phaser_tog(tag);
 		break;
-	case tog_module::TRANCE:
+	case tog::tog_module::TRANCE:
 		trance_tog(tag);
 		break;
-	case tog_module::PANNER:
+	case tog::tog_module::PANNER:
 		panner_tog(tag);
 		break;
-	case tog_module::BATTLE_DJ:
+	case tog::tog_module::BATTLE_DJ:
 		battle_tog(tag);
 		break;
-	case tog_module::ROLL:
+	case tog::tog_module::ROLL:
 		roll_tog(tag);
 		break;
-	case tog_module::ALIVE:
+	case tog::tog_module::ALIVE:
 		break;
 	default:
 		break;
@@ -110,7 +111,7 @@ sound_module::toggle(tagables tag) {
 }
 
 void
-sound_module::eq_tog(tagables tag) {
+sound_module::eq_tog(const tagables& tag) {
 	Faust_engine* PF = processor->acc_faust(tag.for_who);
 
 	//Faust_engine* PF= processor->acc_faust(tag.for_who);//for self or other
@@ -158,7 +159,7 @@ sound_module::eq_tog(tagables tag) {
 }
 
 void
-sound_module::distortion_tog(tagables tag) {
+sound_module::distortion_tog(const tagables& tag) {
 	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
 	
 	tag.first < 0 ?
@@ -174,7 +175,7 @@ sound_module::distortion_tog(tagables tag) {
 }
 
 void
-sound_module::filter_tog(tagables tag) {
+sound_module::filter_tog(const tagables& tag) {
 	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
 	if (tag.what_ == "HIGH") {
 		tag.first < 0 ?
@@ -201,7 +202,7 @@ sound_module::filter_tog(tagables tag) {
 }
 
 void
-sound_module::control_tog(tagables tag) {
+sound_module::control_tog(const tagables& tag) {
 	ALBUM* PA;//for self or other
 	tag.where_ != tag.for_who ? PA= processor->acc_album(tag.for_who): PA = palbum;
 	if (tag.what_ == "CUE") {
@@ -220,7 +221,7 @@ sound_module::control_tog(tagables tag) {
 	
 }
 void
-sound_module::vol_tog(tagables tag) {
+sound_module::vol_tog(const tagables& tag) {
 	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
 	
 	if (tag.what_ == "TRIM") {
@@ -231,24 +232,24 @@ sound_module::vol_tog(tagables tag) {
 	}
 }
 void
-sound_module::load_tog(tagables tag) {
+sound_module::load_tog(const tagables& tag) {
 	processor->load_album(tag.str_first, tag.str_second, tag.for_who);
 	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
 }
 
 void
-sound_module::unload_tog(tagables tag) {
+sound_module::unload_tog(const tagables& tag) {
 	processor->unload_album(tag.for_who);
 }
 
 void
-sound_module::dj_comp_tog(tagables tag) {
+sound_module::dj_comp_tog(const tagables& tag) {
 	processor->unload_album(tag.where_);
 	
 }
 
 void
-sound_module::sola_tog(tagables tag) {
+sound_module::sola_tog(const tagables& tag) {
 	ALBUM* AP;//for self or other
 	tag.where_ != tag.for_who ? AP = processor->acc_album(tag.for_who) : AP = palbum;
 	if (tag.what_ == "MASTER") {
@@ -260,7 +261,7 @@ sound_module::sola_tog(tagables tag) {
 }
 
 void
-sound_module::beat_match_tog(tagables tag) {//WARP MATCHING
+sound_module::beat_match_tog(const tagables& tag) {//WARP MATCHING
 	ALBUM* MA;//Master album
 	MA = processor->acc_album(tag.for_who);
 	ALBUM* ME;
@@ -282,7 +283,7 @@ sound_module::beat_match_tog(tagables tag) {//WARP MATCHING
 }
 
 void
-sound_module::echo_tog(tagables tag) {
+sound_module::echo_tog(const tagables& tag) {
 	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
 	tag.first < 0 ? ([PF](float dur, float feedback) {
 			PF->_echo_sw(false);
@@ -298,7 +299,7 @@ sound_module::echo_tog(tagables tag) {
 }
 
 void
-sound_module::LFS_tog(tagables tag) {
+sound_module::LFS_tog(const tagables& tag) {
 	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
 	tag.first < 0 ?
 		([PF](float bps) {
@@ -313,7 +314,7 @@ sound_module::LFS_tog(tagables tag) {
 }
 
 void
-sound_module::flanger_tog(tagables tag) {
+sound_module::flanger_tog(const tagables& tag) {
 	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
 	tag.first < 0 ?
 		([PF](float bps) {
@@ -328,7 +329,7 @@ sound_module::flanger_tog(tagables tag) {
 }
 
 void
-sound_module::phaser_tog(tagables tag) {
+sound_module::phaser_tog(const tagables& tag) {
 	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
 	tag.first < 0 ?
 		([PF](float bps) {
@@ -343,7 +344,7 @@ sound_module::phaser_tog(tagables tag) {
 }
 
 void
-sound_module::trance_tog(tagables tag) {
+sound_module::trance_tog(const tagables& tag) {
 	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
 	tag.first < 0 ?
 		([PF](float bps) {
@@ -359,7 +360,7 @@ sound_module::trance_tog(tagables tag) {
 
 
 void
-sound_module::panner_tog(tagables tag) {
+sound_module::panner_tog(const tagables& tag) {
 	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
 	tag.first < 0 ?
 		([PF](float bps) {
@@ -374,7 +375,7 @@ sound_module::panner_tog(tagables tag) {
 }
 
 void
-sound_module::battle_tog(tagables tag) {
+sound_module::battle_tog(const tagables& tag) {
 	CURSOR *CR = processor->acc_album(tag.for_who)->get_cursor();
 	if (tag.what_ == "SCRATCH") {
 		
@@ -394,7 +395,7 @@ sound_module::battle_tog(tagables tag) {
 }
 
 void
-sound_module::roll_tog(tagables tag) {
+sound_module::roll_tog(const tagables& tag) {
 	ALBUM* AP = processor->acc_album(tag.for_who);
 	//implementing
 }
@@ -409,7 +410,7 @@ sound_module::roll_tog(tagables tag) {
 
 
 void
-sound_module::interpolate(tagables tag, ma_uint64 start_frame_,ma_uint64 end_frame_) {
+sound_module::interpolate(const tagables& tag, const ma_uint64& start_frame_, const ma_uint64& end_frame_) {
 	inter_body body;
 	body.start_frame = start_frame_;
 	body.end_frame = end_frame_;
@@ -417,22 +418,22 @@ sound_module::interpolate(tagables tag, ma_uint64 start_frame_,ma_uint64 end_fra
 	body.for_who_album_p = processor->acc_album(tag.for_who);
 	switch (inter_hash[tag.type])
 	{
-	case inter_module::EQ:
+	case inter::inter_module::EQ:
 		eq_inter(tag, body);
 		break;
-	case inter_module::FILTER:
+	case inter::inter_module::FILTER:
 		filter_inter(tag, body);
 		break;
-	case inter_module::DISTORTION:
+	case inter::inter_module::DISTORTION:
 		distortion_inter(tag, body);
 		break;
-	case inter_module::VOL:
+	case inter::inter_module::VOL:
 		vol_inter(tag, body);
 		break;
-	case inter_module::SOLA:
+	case inter::inter_module::SOLA:
 		sola_inter(tag, body);
 		break;
-	case inter_module::BATTLE_DJ:
+	case inter::inter_module::BATTLE_DJ:
 		battle_inter(tag, body);
 		break;
 	default:
@@ -442,7 +443,7 @@ sound_module::interpolate(tagables tag, ma_uint64 start_frame_,ma_uint64 end_fra
 
 
 void
-sound_module::eq_inter(tagables tag,inter_body body) {
+sound_module::eq_inter(const tagables& tag,inter_body body) {
 	body.start_value = tag.first;
 	body.end_value = tag.second;
 	
@@ -488,7 +489,7 @@ sound_module::eq_inter(tagables tag,inter_body body) {
 }
 
 void
-sound_module::distortion_inter(tagables tag,inter_body body) {
+sound_module::distortion_inter(const tagables& tag,inter_body body) {
 	body.start_value = tag.first;
 	body.end_value = tag.second;
 	Faust_engine* PF = body.for_who_album_p->get_faust();
@@ -508,7 +509,7 @@ sound_module::distortion_inter(tagables tag,inter_body body) {
 
 
 void
-sound_module::filter_inter(tagables tag,inter_body body) {
+sound_module::filter_inter(const tagables& tag,inter_body body) {
 	Faust_engine* PF = body.for_who_album_p->get_faust();//for self or other
 	
 	body.start_value = tag.first;
@@ -539,7 +540,7 @@ sound_module::filter_inter(tagables tag,inter_body body) {
 
 
 void
-sound_module::vol_inter(tagables tag,inter_body body) {
+sound_module::vol_inter(const tagables& tag,inter_body body) {
 	Faust_engine* PF = body.for_who_album_p->get_faust();//for self or other
 	body.start_value = tag.first;
 	body.end_value = tag.second;
@@ -565,7 +566,7 @@ sound_module::vol_inter(tagables tag,inter_body body) {
 
 
 void
-sound_module::sola_inter(tagables tag,inter_body body) {
+sound_module::sola_inter(const tagables& tag,inter_body body) {
 	CURSOR *CR = body.for_who_album_p->get_cursor();//for self or other
 	body.start_value = 1.0 + tag.first / 100.0;
 	body.end_value = 1.0 + tag.second / 100.0;
@@ -590,7 +591,7 @@ sound_module::sola_inter(tagables tag,inter_body body) {
 }
 
 void
-sound_module::battle_inter(tagables tag,inter_body body) {
+sound_module::battle_inter(const tagables& tag,inter_body body) {
 	CURSOR* CR = body.for_who_album_p->get_cursor();
 	
 	if (tag.what_ == "SPIN") {

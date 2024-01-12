@@ -2,6 +2,8 @@
 #include "GlobalStructs.h"
 #include "sound_module.h"
 #include "CURSOR.h"
+#include "miniaudio.h"
+class Processor;
 class ALBUM {
 private:
 	void reserve_read(const ma_uint64& frame_now);//read planner data and change value

@@ -1,4 +1,5 @@
 #include "MiniAudioWrapper.h"
+#include "Processor.h"
 #define MAW_SAMPLERATE 48000
 ma_device
 MAW::init_device(const ma_device_type& device_mode, const bool& enable_low_buffer_mode, const ma_device_data_proc& callback_mode,void* me)

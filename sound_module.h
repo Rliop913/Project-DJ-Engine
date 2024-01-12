@@ -1,8 +1,12 @@
 #pragma once
 #include "GlobalStructs.h"
-#include "Processor.h"
-#include "ALBUM.h"
+
 #include "faust_v_3_2.h"
+#include "miniaudio.h"
+
+
+class Processor;
+class ALBUM;
 class sound_module
 {
 private://hashs
@@ -20,35 +24,35 @@ private://-----------------------------------------------pointers---------------
 	ALBUM* palbum;
 	Faust_engine* pfaust;
 public://----------------------------------------------tog/interpolate API--------------------------------------------------------------//
-	void toggle(tagables tag);
-	void interpolate(tagables tag, ma_uint64 start_frame_, ma_uint64 end_frame_);
+	void toggle(const tagables& tag);
+	void interpolate(const tagables& tag, const ma_uint64& start_frame_, const ma_uint64& end_frame_);
 
 private://----------------------------------------------toggle functions---------------------------------------------------------//
-	void eq_tog(tagables tag);
-	void distortion_tog(tagables tag);
-	void filter_tog(tagables tag);
-	void control_tog(tagables tag);
-	void vol_tog(tagables tag);
-	void load_tog(tagables tag);
-	void unload_tog(tagables tag);
-	void dj_comp_tog(tagables tag);
-	void beat_match_tog(tagables tag);
-	void sola_tog(tagables tag);
-	void echo_tog(tagables tag);
-	void LFS_tog(tagables tag);
-	void flanger_tog(tagables tag);
-	void phaser_tog(tagables tag);
-	void trance_tog(tagables tag);
-	void panner_tog(tagables tag);
-	void battle_tog(tagables tag);
-	void roll_tog(tagables tag);
+	void eq_tog(const tagables& tag);
+	void distortion_tog(const tagables& tag);
+	void filter_tog(const tagables& tag);
+	void control_tog(const tagables& tag);
+	void vol_tog(const tagables& tag);
+	void load_tog(const tagables& tag);
+	void unload_tog(const tagables& tag);
+	void dj_comp_tog(const tagables& tag);
+	void beat_match_tog(const tagables& tag);
+	void sola_tog(const tagables& tag);
+	void echo_tog(const tagables& tag);
+	void LFS_tog(const tagables& tag);
+	void flanger_tog(const tagables& tag);
+	void phaser_tog(const tagables& tag);
+	void trance_tog(const tagables& tag);
+	void panner_tog(const tagables& tag);
+	void battle_tog(const tagables& tag);
+	void roll_tog(const tagables& tag);
 
 
 private://---------------------------------------------interpolate functions----------------------------------------------------------//
-	void eq_inter(tagables tag, inter_body body);
-	void distortion_inter(tagables tag, inter_body body);
-	void filter_inter(tagables tag, inter_body body);
-	void vol_inter(tagables tag, inter_body body);
-	void sola_inter(tagables tag, inter_body body);
-	void battle_inter(tagables tag, inter_body body);
+	void eq_inter(const tagables& tag, inter_body body);
+	void distortion_inter(const tagables& tag, inter_body body);
+	void filter_inter(const tagables& tag, inter_body body);
+	void vol_inter(const tagables& tag, inter_body body);
+	void sola_inter(const tagables& tag, inter_body body);
+	void battle_inter(const tagables& tag, inter_body body);
 };

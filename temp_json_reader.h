@@ -4,7 +4,7 @@
 #include <string>
 #include "GlobalStructs.h"
 #include <vector>
-
+extern function_pointers GFP;
 typedef std::vector<std::unordered_map<std::string, std::string>> TJR_RETURN;
 
 

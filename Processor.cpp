@@ -64,7 +64,7 @@ Processor::START_DJ()
 	
 }
 
-auto
+std::unordered_map<int, ALBUM*>::iterator
 Processor::get_deck_p()
 {
 	return deck.begin();
@@ -192,10 +192,11 @@ Processor::add_processed_time(const ma_uint32& frame_use)
 //}
 
 void
-Processor::go_dj()
+Processor::go_dj(const std::string& dj_data)
 {
 	ma_device_stop(&idle_mode);
 	ma_device_start(&dj_mode);
+	dj_data_read(dj_data);
 	is_on_manual = false;
 }
 

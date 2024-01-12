@@ -1,7 +1,7 @@
 #pragma once
 #include "MiniAudioWrapper.h"
 #include "Processor.h"
-
+#include "miniaudio.h"
 
 void
 idle_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount) {

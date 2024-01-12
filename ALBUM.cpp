@@ -1,15 +1,7 @@
-#include "Engine_Main.h"
+#include "ALBUM.h"
 #include <iostream>
 #include "temp_json_reader.h"
-
-
-
-
-
-
-
-
-
+#include "Processor.h"
 
 void
 ALBUM::idle_process(ma_uint32 frameCount, float* main_buffer) {
@@ -350,7 +342,7 @@ ALBUM::get_mixing_data() {
 	album_engine->distortion_sw== 0 ? set.distortion_sw_= true : set.distortion_sw_= false;
 	//set.scratch_sw_ = is_SCRATCH;
 	//set.rev_sw_ = is_rev;
-	set.now_bpm = this_data.bpm / cursor->get_IOSR();
+	set.now_bpm = float(this_data.bpm / cursor->get_IOSR());
 	return set;
 }
 

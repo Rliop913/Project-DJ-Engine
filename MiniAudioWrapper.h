@@ -1,9 +1,10 @@
 #pragma once
 #define MINIAUDIO_IMPLEMENTATION
-#include "Processor.h"
+#include <algorithm>
 #include "miniaudio.h"
 #include "include/SoundTouch.h"
-#include <algorithm>
+//#include "Processor.h"
+class Processor;
 namespace MAW {
 	ma_device init_device(const ma_device_type& device_mode, const bool& enable_low_buffer_mode, const ma_device_data_proc& callback_mode, void* me);
 	inline void silence_memory(void* point,const ma_uint32& frameCount);

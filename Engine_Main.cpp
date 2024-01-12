@@ -4,6 +4,9 @@
 #include "miniaudio.h"
 #include <iostream>
 #include "default_functions.h"
+#define __cplusplus
+function_pointers GFP;
+
 Engine_Main::~Engine_Main() {
 	delete(PDJE_processor);
 }
@@ -27,11 +30,11 @@ Engine_Main::Engine_Main(const function_pointers& ppp) {
 }
 //---------------------------------engine_callback--------------------------------------//
 int clip_count=0;
-
-ma_uint64
-Engine_Main::get_processed_time() {
-	return PDJE_processor->get_processed_time();
-}
+//
+//ma_uint64
+//Engine_Main::get_processed_time() {
+//	return PDJE_processor->get_processed_time();
+//}
 
 
 
@@ -83,27 +86,22 @@ Engine_Main::get_processed_time() {
 
 void
 Engine_Main::sw_to_manual(const std::string& song_path, const std::string& song_meta_path) {
-	clear_deck_dj_area();
+	clear_deck();
 	PDJE_processor->go_manual();
-	manual_album_load(song_path, song_meta_path);
+	manual_music_change(song_path, song_meta_path);
 }
 
 void
-Engine_Main::manual_album_load(const std::string& song_path, const std::string& song_meta_path) {
+Engine_Main::manual_music_change(const std::string& song_path, const std::string& song_meta_path) {
 	if (PDJE_processor->is_on_manual) {
 		if (PDJE_processor->deck_size()==0) {
-			PDJE_processor->load_album(song_path, song_meta_path);
-			manual_playback(-1);
-		}
-		else if (PDJE_processor->deck_size() == 1) {
-			clear_deck_manual_area();
-			PDJE_processor->load_album(song_path, -1);
+			PDJE_processor->load_album(song_path, song_meta_path,-1);
 			manual_playback(-1);
 		}
 		else {
-			clear_deck_manual_area();
-			load_album(song_path, -2);
-			manual_playback(-2);
+			clear_deck();
+			PDJE_processor->load_album(song_path, song_meta_path, -1);
+			manual_playback(-1);
 		}
 	
 	}
@@ -114,29 +112,27 @@ Engine_Main::manual_album_load(const std::string& song_path, const std::string& 
 
 void
 Engine_Main::manual_playback(const int& albumID) {
-	if (!ma_device_is_started(&idle_mode)) {
+	if (!PDJE_processor->is_on_manual) {
 		return;
 	}
-	if(deck.count(albumID) == size_t(1)) {
-		deck[albumID]->this_data.playback_ordered = true;
-
+	if(PDJE_processor->deck_size()==0) {
+		return;
 	}
 	else {
-		deck[-2]->this_data.playback_ordered = true;
+		PDJE_processor->acc_album(-1)->PLAY();
 	}
 }
 
 void
 Engine_Main::manual_stop(const int& albumID) {
-	if (!ma_device_is_started(&idle_mode)) {
+	if (!PDJE_processor->is_on_manual) {
 		return;
 	}
-	if (deck.count(albumID) == size_t(1)) {
-		deck[albumID]->this_data.playback_ordered = false;
-
+	if (PDJE_processor->deck_size() == 0) {
+		return;
 	}
 	else {
-		deck[-2]->this_data.playback_ordered = false;
+		PDJE_processor->acc_album(-1)->STOP();
 	}
 	
 }
@@ -144,13 +140,13 @@ Engine_Main::manual_stop(const int& albumID) {
 void
 Engine_Main::manual_effect(const int& effect_type,const float& first, const float& second) {
 	Faust_engine* FE;
-	if (deck.count(-1) != 0) {
-		FE = deck[-1]->album_engine;
-
+	if (!PDJE_processor->is_on_manual) {
+		return;
 	}
-	else {
-		FE = deck[-2]->album_engine;
+	if (PDJE_processor->deck_size() == 0) {
+		return;
 	}
+	FE = PDJE_processor->acc_faust(-1);
 	switch (effect_type)
 	{
 	case E_EQ_hi:
@@ -183,7 +179,7 @@ Engine_Main::manual_effect(const int& effect_type,const float& first, const floa
 			:
 			FE->filter_low_sw(true);
 
-		FE->set_filter_low_freq_value(first);
+		FE->set_filter_low_freq_value(int(first));
 		break;
 	case E_hpf:
 		first < 0.0f ?
@@ -191,7 +187,7 @@ Engine_Main::manual_effect(const int& effect_type,const float& first, const floa
 			:
 			FE->filter_high_sw(true);
 
-		FE->set_filter_high_freq_value(first);
+		FE->set_filter_high_freq_value(int(first));
 		break;
 	case E_echo:
 
@@ -211,7 +207,7 @@ Engine_Main::manual_effect(const int& effect_type,const float& first, const floa
 			FE->low_siren_sw(true);
 
 		FE->set_l_f_s_bps_value(first);
-		FE->set_l_f_s_gain_min_freq(second);
+		FE->set_l_f_s_gain_min_freq(int(second));
 		break;
 	case E_phaser:
 
@@ -270,12 +266,8 @@ Engine_Main::manual_effect(const int& effect_type,const float& first, const floa
 
 void
 Engine_Main::sw_to_dj(const std::string& dj_data_path) {
-	clear_deck_manual_area();
-	ma_device_stop(&daw_mode);
-	ma_device_stop(&idle_mode);
-	ma_device_start(&dj_mode);
-	dj_data_read(dj_data_path);
-	
+	clear_deck();
+	PDJE_processor->go_dj(dj_data_path);
 }
 
 
@@ -285,38 +277,18 @@ Engine_Main::dj_start() {
 }
 
 
-
-
-
-
 void
-Engine_Main::clear_deck_dj_area() {
-	for (auto i = deck.begin(); i != deck.end(); i++) {
-		if (i->first >= 0) {
-			unload_album(i->first);
-		}
+Engine_Main::clear_deck()
+{
+	auto Dp = PDJE_processor->get_deck_p();
+	for (int i = 0; i < PDJE_processor->deck_size(); ++i) {
+		PDJE_processor->delete_album(Dp->first);
+		++Dp;
 	}
-	if (!reservation_storage.empty()) {
-		reservation_storage.clear();
-	}
-	if (comp_alive) {
-		delete pcompiler;
-		comp_alive = false;
-	}
-}
-
-void
-Engine_Main::clear_deck_manual_area() {
-	for (auto i = deck.begin(); i != deck.end(); i++) {
-		if (i->first <= 0) {
-			unload_album(i->first);
-		}
-	}
+	PDJE_processor->clear_stopQ();
 }
 
 
-
-//-------------------------------------------DATA READER--------------------------------//
 
 
 
@@ -327,24 +299,25 @@ Engine_Main::clear_deck_manual_area() {
 //	met_vol = sound_volume;
 //	met_activate = true;
 //}
-
-
-std::unordered_map<int,Engine_Main::mix_data_set>
-Engine_Main::update_mixing_status_in_deck() {
-	
-	std::unordered_map<int,mix_data_set> temp_set;
-	if (deck.empty()) {
-		return temp_set;//nothing in deck return
-	}
-	else {
-		for (auto i = deck.begin(); i != deck.end(); i++) {
-			
-			temp_set[i->first] = i->second->get_mixing_data();
-		}
-		return temp_set;//update complete return
-	}
-
-}
+//
+//
+//std::unordered_map<int,mix_data_set>
+//Engine_Main::update_mixing_status_in_deck() {
+//	
+//	std::unordered_map<int,mix_data_set> temp_set;
+//	if (PDJE_processor->deck_size()==0) {
+//		return temp_set;//nothing in deck return
+//	}
+//	else {
+//		
+//		for (auto i = deck.begin(); i != deck.end(); i++) {
+//			
+//			temp_set[i->first] = i->second->get_mixing_data();
+//		}
+//		return temp_set;//update complete return
+//	}
+//
+//}
 
 //
 //void
@@ -492,3 +465,10 @@ Engine_Main::update_mixing_status_in_deck() {
 //	ma_decoder_uninit(&de);
 //	return;
 //}
+
+
+
+int main()
+{
+	return 1;
+}
