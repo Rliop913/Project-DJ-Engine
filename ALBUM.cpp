@@ -38,8 +38,6 @@ ALBUM::dj_process(ma_uint32 frameCount, float* main_buffer) {
 	MAW::silence_memory(process_memory , frameCount);
 	ma_uint64 frame_now = 0;
 	cursor->get_now_frame(frame_now);
-	//ma_decoder_get_cursor_in_pcm_frames(&music, &frame_now);
-	//pengine->pcompiler->calc_now_bpm(frame_now, this_data.ID, &this_data.bpm);
 	reserve_read(frame_now);
 	interpolate_function(frame_now);
 	if (this_data.playback_ordered) {
@@ -49,114 +47,17 @@ ALBUM::dj_process(ma_uint32 frameCount, float* main_buffer) {
 	before_faust_caster(process_memory , faust_before1 , faust_before2 , frameCount);
 	//---------------------------FAUST HERE-------------------------------//
 	album_engine->compute(frameCount, faust_before1 , faust_before2 , faust_after1 ,faust_after2 );
+	MAW::silence_memory(process_memory, frameCount);
 	//---------------------------FAUST HERE-------------------------------//
+	after_faust_caster(faust_after1 , faust_after2 , process_memory, frameCount);
 	pproc->buf_mutex.lock();
-	after_faust_caster(faust_after1 , faust_after2 , main_buffer, frameCount);
+	for (int i = 0; i < frameCount * 2; ++i) {
+
+		main_buffer[i] += process_memory[i];
+	}
 	pproc->buf_mutex.unlock();
 }
-//
-//void
-//ALBUM::daw_process(ma_uint32 frameCount, float* main_buffer) {
-//	/*************************************************************************************************/
-//	/******************************ready datas********************************************************/
-//	/*************************************************************************************************/
-//	this_data.got_frames = false;
-//	//is_processing = true;//for safe stop
-//	//float* temp_void_p = (float*)malloc(VOID_BUFFER_SIZE(frameCount, music_conf.channels));//album's final data
-//	ma_silence_pcm_frames(process_memory, frameCount, ma_format_f32, music_conf.channels);//clean garbage datas
-//	
-//	ma_uint64 frame_now = 0;
-//	ma_decoder_get_cursor_in_pcm_frames(&music, &frame_now);
-//	pengine->pcompiler->calc_now_bpm(frame_now, this_data.ID, &this_data.bpm);
-//	reserve_read(frame_now);
-//
-//	double remember_origin_sola = 1.0 / music_flow->getInputOutputSampleRatio();
-//	music_flow->setTempoChange(pengine->daw_d.master_sola);
-//	met_p->compute_metronome_state(frame_now, this_data, music_flow->getInputOutputSampleRatio());
-//	interpolate_function(frame_now);
-//	/*************************************************************************************************/
-//	/******************************check scratch order************************************************/
-//	/*************************************************************************************************/
-//	if (is_SCRATCH) {
-//		if (scratch_data_holding.remained_cycle == 0) {//END SCRATCH CYCLE
-//			is_SCRATCH = false;
-//			is_rev = false;
-//			music_flow->setRate(1.0);
-//			this_data.playback_ordered = false;
-//		}
-//		else {
-//			scratch_data_holding.remained_cycle -= frameCount;
-//		}
-//	}
-//	/*************************************************************************************************/
-//	/******************************play or pause, get frames******************************************/
-//	/*************************************************************************************************/
-//	if (this_data.playback_ordered) {
-//		this_data.got_frames = true;
-//		if (music_flow->getInputOutputSampleRatio() != 1.0) {//time_stretch
-//			ma_uint32 final_frame = ceil(double(frameCount) / music_flow->getInputOutputSampleRatio());
-//			//float* before_sola = (float*)malloc(VOID_BUFFER_SIZE(final_frame, music_conf.channels));
-//			float* sola_temp = new float[final_frame * music_conf.channels];
-//			ma_silence_pcm_frames(sola_temp, final_frame, ma_format_f32, 2);
-//			if (is_rev) {//REV
-//				ma_uint64 Back_cursor;
-//				ma_decoder_get_cursor_in_pcm_frames(&music, &Back_cursor);
-//				ma_decoder_seek_to_pcm_frame(&music, Back_cursor - final_frame);
-//				ma_decoder_read_pcm_frames(&music, sola_temp, final_frame, NULL);
-//				rev(sola_temp, final_frame, music_conf.channels);
-//				ma_decoder_seek_to_pcm_frame(&music, Back_cursor - final_frame);
-//			}
-//			else {//NORMAL
-//				ma_decoder_read_pcm_frames(&music, sola_temp, final_frame, NULL);
-//			}
-//			music_flow->putSamples(sola_temp, final_frame);
-//			music_flow->receiveSamples(process_memory, frameCount);
-//			delete[] sola_temp;
-//		}
-//		else {//normal play
-//			if (is_rev) {//REV
-//				ma_uint64 Back_cursor;
-//				ma_decoder_get_cursor_in_pcm_frames(&music, &Back_cursor);
-//				ma_decoder_seek_to_pcm_frame(&music, Back_cursor - frameCount);
-//				ma_decoder_read_pcm_frames(&music, process_memory, frameCount, NULL);
-//				rev(process_memory, frameCount, music_conf.channels);
-//				ma_decoder_seek_to_pcm_frame(&music, Back_cursor - frameCount);
-//			}
-//			else {//NORMAL
-//				ma_decoder_read_pcm_frames(&music, process_memory, frameCount, NULL);
-//			}
-//		}
-//	}
-//	/*************************************************************************************************/
-//	/******************************faust start********************************************************/
-//	/*************************************************************************************************/
-//	ma_silence_pcm_frames(faust_before[0], frameCount, ma_format_f32, 1);
-//	ma_silence_pcm_frames(faust_before[1], frameCount, ma_format_f32, 1);
-//	ma_silence_pcm_frames(faust_after[0], frameCount, ma_format_f32, 1);
-//	ma_silence_pcm_frames(faust_after[1], frameCount, ma_format_f32, 1);
-//	before_faust_caster(process_memory, faust_before[0], faust_before[1], frameCount, music_conf.channels);
-//	//---------------------------FAUST HERE-------------------------------//
-//	album_engine->compute(frameCount, faust_before, faust_after);
-//	//---------------------------FAUST HERE-------------------------------//
-//	if (pengine->daw_d.is_soloing){
-//		if (pengine->daw_d.target_ID == this_data.ID) {
-//			pengine->buf_mutex.lock();
-//			after_faust_caster(faust_after[0], faust_after[1], main_buffer, frameCount, music_conf.channels);
-//			met_p->inject_metronome_in_buffer(main_buffer);
-//			pengine->buf_mutex.unlock();
-//		}
-//		else {//soloing and not target
-//			//do nothing
-//		}
-//	}
-//	else {
-//	pengine->buf_mutex.lock();
-//	after_faust_caster(faust_after[0], faust_after[1], main_buffer, frameCount, music_conf.channels);
-//	met_p->inject_metronome_in_buffer(main_buffer);
-//	pengine->buf_mutex.unlock();
-//	}
-//	music_flow->setTempo(remember_origin_sola);
-//}
+
 
 
 
@@ -196,16 +97,32 @@ ALBUM::dynamic_memory_uninit()
 	free(faust_before2);
 	free(faust_after1);
 	free(faust_after2);
+//#ifdef FOR_LINUX_BUILD
+//#endif
+//#ifndef FOR_LINUX_BUILD
+//	_aligned_free(process_memory);
+//	_aligned_free(faust_before1);
+//	_aligned_free(faust_before2);
+//	_aligned_free(faust_after1);
+//	_aligned_free(faust_after2);
+//#endif
 }
 
 void
 ALBUM::dynamic_memory_init()
 {
-	process_memory = (float*)malloc(sizeof(float) * 960);
-	faust_before1 = (float*)malloc(sizeof(float) * 480);
-	faust_before2 = (float*)malloc(sizeof(float) * 480);
-	faust_after1 = (float*)malloc(sizeof(float) * 480);
-	faust_after2 = (float*)malloc(sizeof(float) * 480);
+	int AB_Size = pproc->get_audio_buffer_size();
+	process_memory = (float*)malloc(sizeof(float) * AB_Size * 2);
+	faust_before1 = (float*)malloc(sizeof(float) * AB_Size);
+	faust_before2 = (float*)malloc(sizeof(float) * AB_Size);
+	faust_after1 = (float*)malloc(sizeof(float) * AB_Size);
+	faust_after2 = (float*)malloc(sizeof(float) * AB_Size);
+	/*process_memory = (float*)_aligned_malloc(sizeof(float) * AB_Size * 2, 32);
+	faust_before1 = (float*)_aligned_malloc(sizeof(float) * AB_Size, 32);
+	faust_before2 = (float*)_aligned_malloc(sizeof(float) * AB_Size, 32);
+	faust_after1 = (float*)_aligned_malloc(sizeof(float) * AB_Size, 32);
+	faust_after2 = (float*)_aligned_malloc(sizeof(float) * AB_Size, 32);*/
+
 }
 
 
@@ -226,7 +143,7 @@ ALBUM::ALBUM(const std::string& song_path, const int& channel, const int& albumI
 	this->this_data.start_time = std::stod(file_inside.at(0)["start_time"]);
 	dynamic_memory_init();
 }
-
+#include <iostream>
 void
 ALBUM::reserve_read(const ma_uint64& frame_now) {
 	std::unordered_map<int,std::vector<engine_order>>* RS = &pproc->pBCE->reservation_storage;
@@ -247,12 +164,16 @@ go_to_function_for_simple_check://check until vector until reservation is availa
 		tags.str_second = (*RS)[this_data.ID].at(0).tag["str_second"];
 		tags.frame_in = pproc->raw_to_processed((*RS)[this_data.ID].at(0).frame_in);
 		tags.frame_out = pproc->raw_to_processed((*RS)[this_data.ID].at(0).frame_out);
+		
+		std::cout << tags.what_ << "ID:" << tags.for_who << std::endl;
+		
 		if (tags.frame_out == 0) {//toggle mode
 			module->toggle(tags);
 		}
 		else {//interpolate mode
 			module->interpolate(tags,tags.frame_in, tags.frame_out);
 		}
+		std::cout << (*RS)[this_data.ID].begin()->frame_in<<std::endl;
 		((*RS)[this_data.ID]).erase((*RS)[this_data.ID].begin());
 
 		goto go_to_function_for_simple_check;//back to if
@@ -278,69 +199,6 @@ ALBUM::interpolate_function(const ma_uint64& now_frame) {
 
 		
 }
-
-//
-//
-//ALBUM::METRONOME::METRONOME(Engine_Main* pe){
-//	pengine = pe;
-//	ma_decoder_config de_co;
-//	ma_decoder met_dec;
-//	de_co = ma_decoder_config_init(ma_format_f32, 2, 44100);
-//	pe->loader_function(pe->metronome_sound, &met_dec, &de_co);
-//	//ma_decoder_init_file(pe->metronome_sound.c_str(), &de_co, &met_dec);
-//	
-//	ma_decoder_get_length_in_pcm_frames(&met_dec, &MET.len);
-//	MET.met_buffer = (float*)malloc(VOID_BUFFER_SIZE(MET.len, 2));
-//	ma_decoder_read_pcm_frames(&met_dec, MET.met_buffer, MET.len, NULL);
-//	ma_decoder_uninit(&met_dec);
-//}
-//
-//
-//ALBUM::METRONOME::~METRONOME() {
-//	free(MET.met_buffer);
-//}
-//
-//void
-//ALBUM::METRONOME::compute_metronome_state(ma_uint64 now_frame,song_data SD, double flow_ratio) {
-//	if (!pengine->met_activate) {//MET.state != SLEEP_m) {
-//		return;
-//	}
-//	else {
-//		MET.temp_buffer = (float*)malloc(VOID_BUFFER_SIZE(441, 2));
-//		ma_uint64 frame_per_beat = (ma_uint64)ceil(44100.0 * CONST_BPM / (SD.bpm));
-//		ma_uint64 pure_frame = now_frame - (ma_uint64)ceil(SD.start_time * 44100.0);
-//		int main_itr = 0;
-//		pure_frame > 0 ? main_itr = pure_frame % frame_per_beat : main_itr = -1;
-//		for (int i = 0; i < 882; i++) {
-//			if (main_itr >= MET.len * 2 || main_itr == -1) {
-//				((float*)MET.temp_buffer)[i] = 0.0f;
-//				((float*)MET.temp_buffer)[i + 1] = 0.0f;
-//			}
-//			else {
-//				((float*)MET.temp_buffer)[i] = MET.met_buffer[main_itr] * pengine->met_vol;
-//				((float*)MET.temp_buffer)[i + 1] = MET.met_buffer[main_itr + 1] * pengine->met_vol;
-//			}
-//			main_itr += 2;
-//		}
-//	}
-//	
-//}
-//
-//
-//void
-//ALBUM::METRONOME::inject_metronome_in_buffer(void* main_buffer) {
-//	if (!MET.data_ready) {
-//		return;
-//	}
-//	else {
-//		for (int i = 0; i < 882; i += 2) {
-//			((float*)main_buffer)[i] += ((float*)MET.temp_buffer)[i];
-//			((float*)main_buffer)[i+1] += ((float*)MET.temp_buffer)[i+1];
-//		}
-//		free(MET.temp_buffer);
-//	}
-//}
-
 
 mix_data_set
 ALBUM::get_mixing_data() {

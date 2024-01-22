@@ -4,19 +4,15 @@
 #define MAW_SAMPLERATE 48000
 extern function_pointers GFP;
 void
-MAW::init_device(ma_device& dev, const ma_device_type& device_mode, const bool& enable_low_buffer_mode, const ma_device_data_proc& callback_mode,void* me)
+MAW::init_device(ma_device& dev, const ma_device_type& device_mode, const int& audio_buffer_size, const ma_device_data_proc& callback_mode,void* me)
 {
 	ma_device_config deconf = ma_device_config_init(device_mode);
 	deconf.playback.format = ma_format_f32;
 	deconf.playback.channels = 2;
 	deconf.sampleRate = MAW_SAMPLERATE;
+	deconf.periodSizeInFrames = audio_buffer_size;
 	deconf.dataCallback = callback_mode;
-	{
-		enable_low_buffer_mode ?
-			deconf.performanceProfile = ma_performance_profile_low_latency
-			:
-			false;
-	}
+	deconf.performanceProfile = ma_performance_profile_low_latency;
 	deconf.pUserData = me;
 	ma_device_init(NULL, &deconf, &dev);
 }

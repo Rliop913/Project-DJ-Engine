@@ -2,7 +2,6 @@
 #define GlobalStructs
 #include <unordered_map>
 #include <string>
-#include <memory>
 #include <functional>
 #include "MiniAudioWrapper.h"
 #define Global_album_Sample_Rate 48000
@@ -18,8 +17,9 @@ struct engine_order {//data struct for beatcompiler
 };//the reserved order block define
 
 struct work {//data struct for worker threads
+	bool is_null = true;
 	int ID = 0;
-	ma_uint32 frameCount;
+	//ma_uint32 frameCount;
 	void* buf;//main buffer pointer
 };
 

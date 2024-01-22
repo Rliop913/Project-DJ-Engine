@@ -42,6 +42,7 @@ public:
 	inline Faust_engine* get_faust() { return album_engine; };
 	inline CURSOR* get_cursor() { return cursor; };
 	bool got_frames() { return this_data.got_frames; };
+	bool has_owner = false;
 /************************************************************************************************************************************************************************************************************************/
 
 

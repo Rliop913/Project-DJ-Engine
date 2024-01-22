@@ -6,10 +6,11 @@
 
 
 
-Processor::Processor()
+Processor::Processor(const int& audio_buffer_size)
 {
-	MAW::init_device(idle_mode, ma_device_type_playback, true, idle_callback, this);
-	MAW::init_device(dj_mode, ma_device_type_playback, true, dj_callback, this);
+	AB_size = audio_buffer_size;
+	MAW::init_device(idle_mode, ma_device_type_playback, AB_size, idle_callback, this);
+	MAW::init_device(dj_mode, ma_device_type_playback, AB_size, dj_callback, this);
 	//MAW::stop_device(dj_mode);
 	//daw_mode = MAW::init_device(ma_device_type_playback, true, daw_callback, this);
 	//ma_device_start(&idle_mode);
@@ -25,11 +26,15 @@ Processor::~Processor()
 	//ma_device_uninit(&daw_mode);
 }
 
+
+
 void 
 Processor::load_album(const std::string& song_path, const std::string& meta_data_path, const int& albumID)
 {
 	deck[albumID] = new ALBUM(song_path, 2, albumID, this, meta_data_path);
 }
+
+
 
 void
 Processor::unload_album(const int& albumID)
@@ -113,52 +118,90 @@ Processor::dj_data_read(const std::string& new_mix_path) {
 	DIG.dj_data_path = new_mix_path;
 	DIG.process_pointer = (void*)this;
 	pBCE = new beat_compiler_extension(DIG);
-	worker_maker();
+	worker_hire();
 	init_first_album();
 }
 
 
 void
-Processor::worker_maker() {
+Processor::worker_hire() {
+	MASS_LAYOFFS = false;
 	for (int i = 0; i < MAX_DECK_USE; i++) {
-		t_p.emplace_back([](Processor* em) {em->worker(); }, this);
+		DeckWorker* new_employee = new DeckWorker(this);
+		company.push_back(new_employee);
 	}
+}
+
+bool
+Processor::find_remained_job(int& if_got_job)
+{
+	for (auto i = deck.begin(); i != deck.end(); ++i) {
+		if (!i->second->has_owner) {
+			if_got_job = i->first;
+			i->second->has_owner = true;
+			return true;
+		}
+	}
+	return false;
 }
 
 
 void
-Processor::worker() {
-	while (true) {
-		if (BREAK_CALL) {//breaker event, trig when off dj mode
-			return;
-		}
-		else if (!TRIG_CALL) {//TRIG
-			continue;
-		}
-		else {
-			work job_pointer;
-			if (cq.try_pop(job_pointer)) {
-				deck[job_pointer.ID]->dj_process(job_pointer.frameCount, (float*)job_pointer.buf);//process data
-			}
-			else {
-				TRIG_CALL = false;
-			}
-		}
-	}
+Processor::delete_in_stopQ(const int& ID)
+{
+	stop_queue.erase(ID);
 }
+//
+//void
+//Processor::worker(const int& flag_index) {
+//	
+//	work pointing_work;
+//	no_works.push_back(&pointing_work);
+//	while (true) {
+//		if (BREAK_CALL) {//breaker event, trig when off dj mode
+//			return;
+//		}
+//		else if (done_flag[flag_index]==true) {//TRIG
+//			continue;
+//		}
+//		else {
+//			if (ID_is_in_stopQ(pointing_work.ID)) {
+//				delete_album(pointing_work.ID);
+//				delete_in_stopQ(pointing_work.ID);
+//				pointing_work.is_null = true;
+//				no_works.push_back(&pointing_work);
+//				done_flag[flag_index] = true;
+//			}
+//			else if (pointing_work.is_null) {
+//				done_flag[flag_index] = true;
+//			}
+//			else {
+//				deck[pointing_work.ID]->dj_process(AB_size, (float*)pointing_work.buf);
+//				done_flag[flag_index] = true;
+//			}/*
+//			JQ_mutex.lock();
+//			if (!job_queue.empty()) {
+//				work job = job_queue.back();
+//				deck[job.ID]->dj_process(job.frameCount, (float*)(job.buf));
+//				job_queue.pop_back();
+//			}
+//			else {
+//				TRIG_CALL = false;
+//			}
+//			JQ_mutex.unlock();*/
+//		}
+//	}
+//}
 
 
 
 void
-Processor::worker_uninit() {
-	BREAK_CALL = true;
-	if (t_p.size() != 0) {
-		for (int i = 0; i < t_p.size(); i++) {
-			t_p[i].join();
-		}
-		t_p.clear();
+Processor::worker_layoff() {
+	MASS_LAYOFFS = true;
+	for (int i = 0; i < company.size(); ++i) {
+		delete company[i];
 	}
-	BREAK_CALL = false;
+	company.clear();
 }
 
 void
@@ -224,3 +267,9 @@ Processor::go_manual()
 	is_on_manual = true;
 }
 
+
+int
+Processor::get_audio_buffer_size()
+{
+	return AB_size;
+}

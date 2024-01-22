@@ -31,8 +31,8 @@ beat_compiler_extension::hasher_init(std::unordered_map<std::string, int>& hashe
 	hasher["e_line_number"] = 4;
 	hasher["y"] = 5;
 	hasher["s_y"] = 5;
+	// hasher[no use key] = 10;
 }
-
 
 void
 beat_compiler_extension::main_reader_start(void* mainP) {
@@ -41,7 +41,7 @@ beat_compiler_extension::main_reader_start(void* mainP) {
 	std::unordered_map<std::string, int> hasher;
 	hasher_init(hasher);
 	while (GFP.line_getter(mainP, temp)) {
-		assert(temp == "");
+		//assert(temp != "");
 		if (parser.parse(temp, root)) {
 			if (root["type"] == "INIT") {
 				pproc->set_MAX_DECK_USE(std::stoi((root["first"].asString())));
@@ -49,13 +49,15 @@ beat_compiler_extension::main_reader_start(void* mainP) {
 			}
 			if (root["type"] == "LOAD") {
 				std::string tempppp = root["for_who"].asString();
-				assert(tempppp == "0");
 				//root["for_who"].asString()
 				album_specific_data.insert(make_pair( std::stoi(tempppp), root["str_second"].asString()));
 			}
 			raw_data raws;
 			for (auto it = root.begin(); it != root.end(); ++it) {
-				switch (hasher[it.key().asString()]) {
+				int hash_out = hasher.find(it.key().asString()) == hasher.end() ? 10 : hasher[it.key().asString()];
+		
+				switch (hash_out) {
+
 				case 0:
 					raws.loc_table.line_number = std::stoi((*it).asString());
 					break;

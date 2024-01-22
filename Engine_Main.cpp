@@ -1,6 +1,5 @@
 #pragma once
 #include "Engine_Main.h"
-#include <iostream>
 #include "default_functions.h"
 function_pointers GFP;
 
@@ -8,21 +7,21 @@ Engine_Main::~Engine_Main() {
 	delete(PDJE_processor);
 }
 
-Engine_Main::Engine_Main() {
+Engine_Main::Engine_Main(const int& init_audio_buffer_size) {
 	GFP.init_fileitr = default_file_init;
 	GFP.line_getter = default_line_getter;
 	GFP.loader_function = default_decoder_init;
 	GFP.uninit_fileitr = default_file_uninit;
-	PDJE_processor = new Processor();
+	PDJE_processor = new Processor(init_audio_buffer_size);
 }
 
 
-Engine_Main::Engine_Main(const function_pointers& ppp) {
+Engine_Main::Engine_Main(const function_pointers& ppp, const int& init_audio_buffer_size) {
 	GFP.init_fileitr = ppp.init_fileitr;
 	GFP.line_getter = ppp.line_getter;
 	GFP.loader_function = ppp.loader_function;
 	GFP.uninit_fileitr = ppp.uninit_fileitr;
-	PDJE_processor = new Processor();
+	PDJE_processor = new Processor(init_audio_buffer_size);
 }
 //---------------------------------engine_callback--------------------------------------//
 int clip_count=0;
@@ -533,9 +532,11 @@ int main()
 	ma_device_init(NULL, &devconf, &dev);
 	ma_device_start(&dev);*/
 	//getchar();
-	Engine_Main *EM = new Engine_Main();
-	EM->sw_to_manual("E://first_town.wav", "E://Over Time.json");
-	
+	Engine_Main *EM = new Engine_Main(480);
+	//EM->sw_to_manual("E://OC.wav", "E://Over Time.json");
+	//EM->manual_effect(5, 2.1, 0.5);
+	EM->sw_to_dj("./test_jsons/dj_set_2.json");
+	EM->dj_start();
 	getchar();
 	return 1;
 }

@@ -3,6 +3,7 @@
 
 #include "miniaudio.h"
 #include "include/SoundTouch.h"
+#include <immintrin.h>
 //#include "Processor.h"
 
 
@@ -11,7 +12,7 @@
 using namespace soundtouch;
 class Processor;
 namespace MAW {
-	void init_device(ma_device& dev, const ma_device_type& device_mode, const bool& enable_low_buffer_mode, const ma_device_data_proc& callback_mode, void* me);
+	void init_device(ma_device& dev, const ma_device_type& device_mode, const int& audio_buffer_size, const ma_device_data_proc& callback_mode, void* me);
 	inline void silence_memory(void* point,const ma_uint32& frameCount);
 	void touch_sound(soundtouch::SoundTouch& ST,const ma_uint32& frameCount,float* buffer,ma_decoder& dec);
 	void touch_sound_back(soundtouch::SoundTouch& ST, const ma_uint32& frameCount, float* buffer, ma_decoder& dec);

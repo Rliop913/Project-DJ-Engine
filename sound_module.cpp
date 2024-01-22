@@ -201,12 +201,13 @@ sound_module::filter_tog(const tagables& tag) {
 			}(tag.first));
 	}
 }
-
+#include <iostream>
 void
 sound_module::control_tog(const tagables& tag) {
 	ALBUM* PA;//for self or other
 	tag.where_ != tag.for_who ? PA= processor->acc_album(tag.for_who): PA = palbum;
 	if (tag.what_ == "CUE") {
+		std::cout << tag.for_who << std::endl;
 		PA->get_cursor()->set_point(
 			processor->raw_to_processed(
 				processor->pBCE->calc_in_real_time(tag.first, tag.for_who)
@@ -235,7 +236,6 @@ sound_module::vol_tog(const tagables& tag) {
 void
 sound_module::load_tog(const tagables& tag) {
 	processor->load_album(tag.str_first, tag.str_second, tag.for_who);
-	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
 }
 
 void
@@ -254,10 +254,10 @@ sound_module::sola_tog(const tagables& tag) {
 	ALBUM* AP;//for self or other
 	tag.where_ != tag.for_who ? AP = processor->acc_album(tag.for_who) : AP = palbum;
 	if (tag.what_ == "MASTER") {
-		AP->get_cursor()->set_speed(1.0, tag.first / 100.0);
+		AP->get_cursor()->set_speed(1.0, (100.0 + tag.first) / 100.0);
 	}
 	else {//RAW
-		AP->get_cursor()->set_speed(tag.first / 100.0, 1.0);
+		AP->get_cursor()->set_speed((100.0 + tag.first) / 100.0, 1.0);
 	}
 }
 

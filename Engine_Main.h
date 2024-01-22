@@ -14,11 +14,13 @@
 class Engine_Main
 {
 public:
-	Engine_Main();
+	Engine_Main(const int& init_audio_buffer_size=480);
 	~Engine_Main();
-	Engine_Main(const function_pointers& ppp);
+	Engine_Main(const function_pointers& ppp, const int& init_audio_buffer_size=480);
+	int init_audio_buffer_size = 480;
 
-public://----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------Engine APIs
+
+
 	void sw_to_manual(const std::string& song_path, const std::string& song_meta_path);//switch to manual mode
 	void sw_to_dj(const std::string& dj_data_path);//switch to dj mode
 	//void sw_to_daw(std::string planning_data_path);//switch to daw mode
@@ -51,19 +53,3 @@ private:
 };
 
 #endif // engine_main
-
-//
-//public://----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------pointers
-//	//beat_compiler_extension* pcompiler; bool comp_alive = false;//for real time calculation, should be deleted after use
-//	ma_device_info* pPlayback_info;
-//	//--------------------------------------------//
-//	
-//protected://----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------inside use datas
-//	ma_device_config idle_conf;//idle configure
-//	ma_device_config dj_conf;//dj configure
-//	ma_device_config daw_conf;//daw configure
-//
-//	ma_context_config con_conf;//context conf, dummy
-	//access with album ID. 
-	//The ID 0 means start album's reservation	
-	//The reservation will be check every Engine_Callback
