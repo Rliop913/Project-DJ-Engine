@@ -278,7 +278,7 @@ sound_module::beat_match_tog(const tagables& tag) {//WARP MATCHING
 	double master_speed = MA_C->get_IOSR();
 	ME_C->get_now_frame(my_cursor);
 	MA_C->get_now_frame(master_cursor);
-	MA->got_frames() ? master_cursor -= ma_uint64(ceil(441.0 / master_speed)) : true;
+	MA->got_frames() ? master_cursor -= ma_uint64(ceil(processor->get_audio_buffer_size() / master_speed)) : true;
 	ma_uint64 match_time = my_cursor - tag.frame_in + ma_uint64((
 		master_speed * (
 			processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.first, tag.for_who)
