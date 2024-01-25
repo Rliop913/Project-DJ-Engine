@@ -2,7 +2,7 @@
 #ifndef engine_main
 #define engine_main
 
-#include "faust_v_3_2.h"
+#include "faust_v40.hpp"
 #include <functional>
 #include <string>
 #include <unordered_map>
@@ -27,7 +27,7 @@ public:
 	void manual_music_change(const std::string& song_path, const std::string& song_meta_path);//load album or change album. 
 	void manual_playback(const int& albumID=-1);//manually playback
 	void manual_stop(const int& albumID);//manually stop
-	void manual_effect(const int& effect_type,const float& first, const float& second);//manual effect API
+	void manual_effect(const int& effect_type,const float& first, const float& second, const float& third);//manual effect API
 	void clear_deck();
 	void dj_start();
 

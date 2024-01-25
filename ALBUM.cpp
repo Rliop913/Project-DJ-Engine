@@ -143,7 +143,6 @@ ALBUM::ALBUM(const std::string& song_path, const int& channel, const int& albumI
 	this->this_data.start_time = std::stod(file_inside.at(0)["start_time"]);
 	dynamic_memory_init();
 }
-#include <iostream>
 void
 ALBUM::reserve_read(const ma_uint64& frame_now) {
 	std::unordered_map<int,std::vector<engine_order>>* RS = &pproc->pBCE->reservation_storage;
@@ -160,12 +159,11 @@ go_to_function_for_simple_check://check until vector until reservation is availa
 		tags.for_who = std::stoi((*RS)[this_data.ID].at(0).tag["for_who"]);
 		tags.first = std::stod((*RS)[this_data.ID].at(0).tag["first"]);
 		tags.second = std::stod((*RS)[this_data.ID].at(0).tag["second"]);
+		tags.third = std::stod((*RS)[this_data.ID].at(0).tag["third"]);
 		tags.str_first= (*RS)[this_data.ID].at(0).tag["str_first"];
 		tags.str_second = (*RS)[this_data.ID].at(0).tag["str_second"];
 		tags.frame_in = pproc->raw_to_processed((*RS)[this_data.ID].at(0).frame_in);
 		tags.frame_out = pproc->raw_to_processed((*RS)[this_data.ID].at(0).frame_out);
-		
-		std::cout << tags.what_ << "ID:" << tags.for_who << std::endl;
 		
 		if (tags.frame_out == 0) {//toggle mode
 			module->toggle(tags);
@@ -173,7 +171,6 @@ go_to_function_for_simple_check://check until vector until reservation is availa
 		else {//interpolate mode
 			module->interpolate(tags,tags.frame_in, tags.frame_out);
 		}
-		std::cout << (*RS)[this_data.ID].begin()->frame_in<<std::endl;
 		((*RS)[this_data.ID]).erase((*RS)[this_data.ID].begin());
 
 		goto go_to_function_for_simple_check;//back to if

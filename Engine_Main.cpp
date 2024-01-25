@@ -133,7 +133,7 @@ Engine_Main::manual_stop(const int& albumID) {
 }
 
 void
-Engine_Main::manual_effect(const int& effect_type,const float& first, const float& second) {
+Engine_Main::manual_effect(const int& effect_type,const float& first, const float& second, const float& third) {
 	Faust_engine* FE;
 	if (!PDJE_processor->is_on_manual) {
 		return;
@@ -193,6 +193,7 @@ Engine_Main::manual_effect(const int& effect_type,const float& first, const floa
 
 		FE->set_echo_dur_value(first);
 		FE->set_echo_feedback_value(second);
+		FE->set_echo_power(third);
 		break;
 	case E_l_f_s:
 
@@ -203,6 +204,7 @@ Engine_Main::manual_effect(const int& effect_type,const float& first, const floa
 
 		FE->set_l_f_s_bps_value(first);
 		FE->set_l_f_s_gain_min_freq(int(second));
+		FE->set_l_f_s_power(third);
 		break;
 	case E_phaser:
 
@@ -213,6 +215,7 @@ Engine_Main::manual_effect(const int& effect_type,const float& first, const floa
 
 		FE->set_phaser_bps_value(first);
 		FE->set_phaser_gain_value(second);
+		FE->set_phaser_power(third);
 		break;
 	case E_flanger:
 
@@ -223,6 +226,7 @@ Engine_Main::manual_effect(const int& effect_type,const float& first, const floa
 
 		FE->set_flanger_bps_value(first);
 		FE->set_flanger_gain_value(second);
+		FE->set_flanger_power(third);
 		break;
 	case E_trance:
 
@@ -233,6 +237,7 @@ Engine_Main::manual_effect(const int& effect_type,const float& first, const floa
 
 		FE->set_trance_bps(first);
 		FE->set_trance_gain(second);
+		FE->set_trance_power(third);
 		break;
 	case E_panner:
 
@@ -243,6 +248,7 @@ Engine_Main::manual_effect(const int& effect_type,const float& first, const floa
 
 		FE->set_panner_bps(first);
 		FE->set_panner_gain(second);
+		FE->set_phaser_power(third);
 		break;
 	case E_distortion:
 
@@ -252,6 +258,14 @@ Engine_Main::manual_effect(const int& effect_type,const float& first, const floa
 			FE->_distortion_sw(true);
 
 		FE->set_distortion_gain(first);
+		break;
+	case E_roll:
+		first < 0.0f ?
+			FE->_roll_sw(false)
+			:
+			FE->_roll_sw(true);
+		FE->set_roller_bpm(first);
+		FE->set_roller_power(second);
 		break;
 
 	default:
@@ -532,11 +546,21 @@ int main()
 	ma_device_init(NULL, &devconf, &dev);
 	ma_device_start(&dev);*/
 	//getchar();
-	Engine_Main *EM = new Engine_Main(480);
-	//EM->sw_to_manual("E://OC.wav", "E://Over Time.json");
-	//EM->manual_effect(5, 2.1, 0.5);
-	EM->sw_to_dj("./test_jsons/dj_set_2.json");
-	EM->dj_start();
+	Engine_Main *EM = new Engine_Main(48);
+	EM->sw_to_manual("E://Over Time.wav", "E://Over Time.json");
+	//EM->sw_to_dj("./test_jsons/dj_set_2.json");
+	//EM->dj_start();
+	//EM->manual_effect(10, 170.0/60.0, 1.0, 0.0);
+	while (true) {
+
+		getchar();
+
+		EM->manual_effect(12, 170.0*2.0, 1.0 ,0.5);
+
+		getchar();
+		EM->manual_effect(12, -1.0, 1.0, 0.5);
+
+	}
 	getchar();
 	return 1;
 }

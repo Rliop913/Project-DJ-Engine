@@ -296,11 +296,12 @@ sound_module::echo_tog(const tagables& tag) {
 			feedback;
 		}(float(tag.first), float(tag.second)))
 		:
-		([PF](float dur, float feedback) {
+		([PF](float dur, float feedback, float power) {
 			PF->_echo_sw(true);
 			PF->set_echo_dur_value(dur);
 			PF->set_echo_feedback_value(feedback);
-		}(float(tag.first), float(tag.second)));
+			PF->set_echo_power(power);
+		}(float(tag.first), float(tag.second), float(tag.third)));
 }
 
 void
@@ -311,11 +312,12 @@ sound_module::LFS_tog(const tagables& tag) {
 			PF->low_siren_sw(false);
 		}(float(tag.first)))
 		:
-		([PF](float bps,int min_freq) {
+		([PF](float bps,int min_freq, float power) {
 			PF->low_siren_sw(true);
 			PF->set_l_f_s_gain_min_freq(min_freq);
 			PF->set_l_f_s_bps_value(bps);
-		}(float(tag.first),int(tag.second)));
+			PF->set_l_f_s_power(power);
+		}(float(tag.first),int(tag.second),float(tag.third)));
 }
 
 void
@@ -326,11 +328,12 @@ sound_module::flanger_tog(const tagables& tag) {
 			PF->_flanger_sw(false);
 		}(float(tag.first)))
 		:
-		([PF](float bps,float gain) {
+		([PF](float bps,float gain, float power) {
 			PF->_flanger_sw(true);
 			PF->set_flanger_bps_value(bps);
 			PF->set_flanger_gain_value(gain);
-		}(float(tag.first),float(tag.second)));
+			PF->set_flanger_power(power);
+		}(float(tag.first),float(tag.second),float(tag.third)));
 }
 
 void
@@ -341,11 +344,12 @@ sound_module::phaser_tog(const tagables& tag) {
 			PF->_phaser_sw(false);
 		}(float(tag.first)))
 		:
-		([PF](float bps, float gain) {
+		([PF](float bps, float gain, float power) {
 			PF->_phaser_sw(true);
 			PF->set_phaser_bps_value(bps);
 			PF->set_phaser_gain_value(gain);
-		}(float(tag.first), float(tag.second)));
+			PF->set_phaser_power(power);
+		}(float(tag.first), float(tag.second), float(tag.third)));
 }
 
 void
@@ -356,11 +360,12 @@ sound_module::trance_tog(const tagables& tag) {
 			PF->_trance_sw(false);
 		}(float(tag.first)))
 		:
-		([PF](float bps,float gain) {
+		([PF](float bps,float gain, float power) {
 			PF->_trance_sw(true);
 			PF->set_trance_gain(gain);
 			PF->set_trance_bps(bps);
-		}(float(tag.first),float(tag.second)));
+			PF->set_trance_power(power);
+		}(float(tag.first),float(tag.second), float(tag.third)));
 }
 
 
@@ -372,11 +377,12 @@ sound_module::panner_tog(const tagables& tag) {
 			PF->_panner_sw(false);
 		}(float(tag.first)))
 		:
-		([PF](float bps,float gain) {
+		([PF](float bps,float gain, float power) {
 			PF->_panner_sw(true);
 			PF->set_panner_gain(gain);
 			PF->set_panner_bps(bps);
-		}(float(tag.first),float(tag.second)));
+			PF->set_panner_power(power);
+		}(float(tag.first),float(tag.second), float(tag.third)));
 }
 
 void
@@ -387,22 +393,31 @@ sound_module::battle_tog(const tagables& tag) {
 		double SCR_entry_pos = processor->pBCE->calc_in_real_time(tag.first, tag.for_who);
 		ma_uint64 ent_pos = processor->raw_to_processed(SCR_entry_pos);
 		CR->set_point(ent_pos);
-		ma_uint64 out_pos = processor->raw_to_processed(processor->pBCE->calc_in_real_time(std::stod(tag.str_first), tag.for_who));
+		ma_uint64 out_pos = processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.third, tag.for_who));
 		CR->temp_mv(true, tag.second, 1.0, out_pos - ent_pos);
 	}
 	else if (tag.what_ == "BSCRATCH") {
 		double SCR_entry_pos = processor->pBCE->calc_in_real_time(tag.first, tag.for_who);
 		ma_uint64 ent_pos = processor->raw_to_processed(SCR_entry_pos);
 		CR->set_point(ent_pos);
-		ma_uint64 out_pos = processor->raw_to_processed(processor->pBCE->calc_in_real_time(std::stod(tag.str_first), tag.for_who));
+		ma_uint64 out_pos = processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.third, tag.for_who));
 		CR->temp_mv(false, tag.second, 1.0, ent_pos-out_pos);
 	}
 }
 
 void
 sound_module::roll_tog(const tagables& tag) {
-	ALBUM* AP = processor->acc_album(tag.for_who);
-	//implementing
+	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
+	tag.first < 0 ?
+		([PF](float bpm) {
+			PF->_roll_sw(false);
+		}(float(tag.first)))
+		:
+		([PF](float bpm, float power) {
+			PF->_roll_sw(true);
+			PF->set_roller_bpm(bpm);
+			PF->set_roller_power(power);
+		}(float(tag.first), float(tag.second)));
 }
 
 

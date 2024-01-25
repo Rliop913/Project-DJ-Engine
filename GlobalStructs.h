@@ -59,7 +59,8 @@ enum manual_effect_control_set {
 	E_flanger,
 	E_trance,
 	E_panner,
-	E_distortion
+	E_distortion,
+	E_roll
 };
 
 struct daw_inner_data {
@@ -78,6 +79,7 @@ struct tagables
 	std::string what_;
 	double first;
 	double second;
+	double third;
 	std::string str_first;
 	std::string str_second;
 	int for_who;

@@ -1,7 +1,7 @@
 #pragma once
 #include "GlobalStructs.h"
 #include "include/SoundTouch.h"
-#include "faust_v_3_2.h"
+#include "faust_v40.hpp"
 
 
 class Processor;
