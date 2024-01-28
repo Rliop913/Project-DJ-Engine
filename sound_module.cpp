@@ -201,13 +201,11 @@ sound_module::filter_tog(const tagables& tag) {
 			}(tag.first));
 	}
 }
-#include <iostream>
 void
 sound_module::control_tog(const tagables& tag) {
 	ALBUM* PA;//for self or other
 	tag.where_ != tag.for_who ? PA= processor->acc_album(tag.for_who): PA = palbum;
 	if (tag.what_ == "CUE") {
-		std::cout << tag.for_who << std::endl;
 		PA->get_cursor()->set_point(
 			processor->raw_to_processed(
 				processor->pBCE->calc_in_real_time(tag.first, tag.for_who)
@@ -235,7 +233,7 @@ sound_module::vol_tog(const tagables& tag) {
 }
 void
 sound_module::load_tog(const tagables& tag) {
-	processor->load_album(tag.str_first, tag.str_second, tag.for_who);
+	processor->load_album(tag.str_first, tag.for_who);
 }
 
 void
@@ -278,8 +276,12 @@ sound_module::beat_match_tog(const tagables& tag) {//WARP MATCHING
 	double master_speed = MA_C->get_IOSR();
 	ME_C->get_now_frame(my_cursor);
 	MA_C->get_now_frame(master_cursor);
-	MA->got_frames() ? master_cursor -= ma_uint64(ceil(processor->get_audio_buffer_size() / master_speed)) : true;
-	ma_uint64 match_time = my_cursor - tag.frame_in + ma_uint64((
+	MA->got_frames() ? master_cursor -= ma_uint64(ceil(double(processor->get_audio_buffer_size()) / master_speed)) : true;
+	double temp_DDD = processor->pBCE->calc_in_real_time(tag.first, tag.for_who);
+	ma_uint64 temp = processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.first, tag.for_who));
+	double temp_calced = (master_speed * (processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.first, tag.for_who)) - double(master_cursor))) / my_speed;
+	ma_uint64 debuggger = ma_uint64(temp_calced);
+	int match_time = int(my_cursor) - int(tag.frame_in) + int((
 		master_speed * (
 			processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.first, tag.for_who)
 			) - double(master_cursor))) / my_speed);

@@ -91,7 +91,7 @@ struct tagables
 struct song_data {//song_datas
 	bool playback_ordered = false;
 	double bpm = 0;
-	double start_time = 0;
+	double first_beat = 0;
 	int ID;
 	bool got_frames = false;
 	std::string data_path;
@@ -165,9 +165,9 @@ struct function_pointers {
 };
 struct standard_tag_table
 	{
-		int line_number = 0;
+		int bar = 0;
 		int separate = 0;
-		int y = 0;
+		int beat = 0;
 	};
 struct ch_bpm_data_table
 	{
@@ -186,7 +186,7 @@ struct dj_init_group {
 	};
 struct stored_data {
 		double start_bpm=0.0;
-		double start_time=0.0;
+		double first_beat=0.0;
 		std::vector<ch_bpm_data_table> bpm_storage;
 	};
 struct raw_data {//-------store raws----------------//

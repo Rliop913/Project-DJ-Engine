@@ -20,7 +20,7 @@ public://structs & data arrays
 	//API functions
 	double calc_in_real_time(const double& approx_loc, const int& albumID);
 	void calc_now_bpm(const unsigned long long& now_frame, const int& albumID, double& bpmP);
-	inline void init_in_real_time(const int& albumID, double& bpmP, double& start_time_P);
+	inline void init_in_real_time(const int& albumID, double& bpmP, double& first_beat_P);
 private://inner datas
 	Json::Value root;
 	Json::Reader parser;
@@ -32,14 +32,14 @@ private://inner datas
 	void calculate_raw_data(const int& albumID);
 	inline double to_appr(const standard_tag_table& table);
 	void sort_storage(std::vector<ch_bpm_data_table>& inside);
-	void calc_bpm_storage(std::vector<ch_bpm_data_table>& inside,const double& start_bpm,const double& start_time);
-	inline double calc_time_T_S(const standard_tag_table& std_dat,const double& bpm,const double& start_time);
-	inline double calc_time_T_S(const double& approx_loc,const double& bpm,const double& start_time);
+	void calc_bpm_storage(std::vector<ch_bpm_data_table>& inside,const double& start_bpm,const double& first_beat);
+	inline double calc_time_T_S(const standard_tag_table& std_dat,const double& bpm,const double& first_beat);
+	inline double calc_time_T_S(const double& approx_loc,const double& bpm,const double& first_beat);
 	inline double calc_time_between_T_S(const ch_bpm_data_table& front_dat,const standard_tag_table& back_dat);
 	inline double calc_time_between_T_S(const ch_bpm_data_table& front_dat,const double& back_approx_loc);
 	//inner functions
 	void main_reader_start(void* mainP);
-	void reservation(std::vector<ch_bpm_data_table>& inside,const int& albumID,const double& start_bpm,const double& start_time);
+	void reservation(std::vector<ch_bpm_data_table>& inside,const int& albumID,const double& start_bpm,const double& first_beat);
 	void sort_reservation();
 	void hasher_init(std::unordered_map<std::string, int>& hasher);
 	int check_bpms(const std::vector<ch_bpm_data_table>& bpmS, const double& aprx);

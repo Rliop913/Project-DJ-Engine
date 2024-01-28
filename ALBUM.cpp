@@ -134,13 +134,13 @@ ALBUM::~ALBUM() {
 	dynamic_memory_uninit();
 }
 
-ALBUM::ALBUM(const std::string& song_path, const int& channel, const int& albumID, Processor* p, const std::string& meta_data_path) {
+ALBUM::ALBUM(const int& channel, const int& albumID, Processor* p, const std::string& meta_data_path) {
 	pproc = p;
-	album_init(song_path);
 	TJR_RETURN file_inside = TJR::temp_json_reader(meta_data_path);
+	album_init(file_inside.at(0)["music_path"]);
 	this->this_data.ID = albumID;
 	this->this_data.bpm = std::stod(file_inside.at(0)["bpm"]);
-	this->this_data.start_time = std::stod(file_inside.at(0)["start_time"]);
+	this->this_data.first_beat = std::stod(file_inside.at(0)["first_beat"]);
 	dynamic_memory_init();
 }
 void
@@ -150,6 +150,7 @@ go_to_function_for_simple_check://check until vector until reservation is availa
 	if ((*RS)[this_data.ID].size() == 0) {
 		return;
 	}
+
 	if (pproc->raw_to_processed((*RS)[this_data.ID].at(0).frame_in) < frame_now) {
 		//new code
 		tagables tags;

@@ -31,7 +31,7 @@ private:
 public:
 	std::vector<inter_body> inter_queue;//queue for interpolation
 
-	ALBUM(const std::string& song_path,const int& channel,const int& albumID, Processor* p,const std::string& meta_data_path);
+	ALBUM(const int& channel,const int& albumID, Processor* p,const std::string& meta_data_path);
 	~ALBUM();
 	void PLAY();
 	void STOP();

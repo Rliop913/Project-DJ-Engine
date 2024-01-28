@@ -17,14 +17,10 @@ private:
 
 	//ma_uint32 playback_count;//data for count every data_callback
 
-	std::string metronome_sound;//metronome's sound path
-	float met_vol = 1.0f;//metronome's volume
-
 	int MAX_DECK_USE = 4;
 	ma_uint64 processed_time = 0;
 
 	bool ok_to_count = false;
-	daw_inner_data daw_d;
 	std::unordered_map<int, bool> stop_queue;
 	inline void init_time_count();
 
@@ -38,6 +34,10 @@ public:
 	~Processor();
 
 	std::vector<DeckWorker*> company;
+
+	std::mutex work_mutex;
+	std::condition_variable work_call;
+
 	bool MASS_LAYOFFS = false;//event trigger, fire all worker threads
 	bool WORK_CALL = false;//event trigger, make workers work
 	bool END_SYNC = false;//event trigger, sync worker's speed
@@ -55,7 +55,7 @@ public:
 	bool ID_is_in_stopQ(const int& ID);
 	ma_uint64 get_processed_time();
 	void add_processed_time(const ma_uint32& frame_use);
-	void load_album(const std::string& song_path, const std::string& meta_data_path, const int& albumID);
+	void load_album(const std::string& meta_data_path, const int& albumID);
 	void unload_album(const int& albumID);
 	std::mutex buf_mutex;//access buffer mutex, use in album class
 	std::mutex job_seeker_mutex;

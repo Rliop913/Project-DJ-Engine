@@ -23,7 +23,6 @@ private:
 	bool origin_mv_dir = true;
 	double origin_pitch = 0.0;
 	double origin_tempo = 0.0;
-	
 	ma_decoder dec;
 	SoundTouch* ST;
 	void back_to_origin();

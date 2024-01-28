@@ -22,15 +22,15 @@ beat_compiler_extension::beat_compiler_extension(const dj_init_group& init) {
 void
 beat_compiler_extension::hasher_init(std::unordered_map<std::string, int>& hasher)
 {
-	hasher["line_number"] = 0;
-	hasher["s_line_number"] = 0;
+	hasher["bar"] = 0;
+	hasher["Sbar"] = 0;
 	hasher["separate"] = 1;
-	hasher["s_separate"] = 1;
-	hasher["e_separate"] = 2;
-	hasher["e_y"] = 3;
-	hasher["e_line_number"] = 4;
-	hasher["y"] = 5;
-	hasher["s_y"] = 5;
+	hasher["Sseparate"] = 1;
+	hasher["Eseparate"] = 2;
+	hasher["Ebeat"] = 3;
+	hasher["Ebar"] = 4;
+	hasher["beat"] = 5;
+	hasher["Sbeat"] = 5;
 	// hasher[no use key] = 10;
 }
 
@@ -50,7 +50,7 @@ beat_compiler_extension::main_reader_start(void* mainP) {
 			if (root["type"] == "LOAD") {
 				std::string tempppp = root["for_who"].asString();
 				//root["for_who"].asString()
-				album_specific_data.insert(make_pair( std::stoi(tempppp), root["str_second"].asString()));
+				album_specific_data.insert(make_pair( std::stoi(tempppp), root["str_first"].asString()));
 			}
 			raw_data raws;
 			for (auto it = root.begin(); it != root.end(); ++it) {
@@ -59,7 +59,7 @@ beat_compiler_extension::main_reader_start(void* mainP) {
 				switch (hash_out) {
 
 				case 0:
-					raws.loc_table.line_number = std::stoi((*it).asString());
+					raws.loc_table.bar = std::stoi((*it).asString());
 					break;
 				case 1:
 					raws.loc_table.separate = std::stoi((*it).asString());
@@ -68,13 +68,13 @@ beat_compiler_extension::main_reader_start(void* mainP) {
 					raws.long_end_table.separate = std::stoi((*it).asString());
 					break;
 				case 3:
-					raws.long_end_table.y= std::stoi((*it).asString());
+					raws.long_end_table.beat= std::stoi((*it).asString());
 					break;
 				case 4:
-					raws.long_end_table.line_number = std::stoi((*it).asString());
+					raws.long_end_table.bar = std::stoi((*it).asString());
 					break;
 				case 5:
-					raws.loc_table.y = std::stoi((*it).asString());
+					raws.loc_table.beat = std::stoi((*it).asString());
 					break;
 				default:
 					raws.other_tags[it.key().asString()] = (*it).asString();
@@ -106,19 +106,19 @@ beat_compiler_extension::calculate_raw_data(const int& albumID) {//thread safe &
 	Json::Reader jread;
 	struct inside_scope_data {
 		double start_bpm;
-		double start_time;
+		double first_beat;
 	}inside;
 
 	std::vector<ch_bpm_data_table> storage;//inside_scope_bpm_change_storage
 
 	while (GFP.line_getter(albumP, temp)) {
 		if (jread.parse(temp.c_str(), temp.c_str() + temp.length(), jval)) {
-			if (jval.isMember("start_time")) {//meta data init, only once
+			if (jval.isMember("first_beat")) {//meta data init, only once
 				inside.start_bpm = std::stod(jval["bpm"].asString());
-				inside.start_time = std::stod(jval["start_time"].asString());
+				inside.first_beat = std::stod(jval["first_beat"].asString());
 				stored_data dat;
 				dat.start_bpm = inside.start_bpm;
-				dat.start_time = inside.start_time;
+				dat.first_beat = inside.first_beat;
 				dat.bpm_storage.assign(storage.begin(), storage.end());//deep copy
 				real_time_mutex.lock();
 				album_data_for_real_time[albumID] = dat;
@@ -126,9 +126,9 @@ beat_compiler_extension::calculate_raw_data(const int& albumID) {//thread safe &
 			}
 			else {
 				ch_bpm_data_table ttable;
-				ttable.std_table.line_number = std::stoi(jval["line_number"].asString());
+				ttable.std_table.bar = std::stoi(jval["bar"].asString());
 				ttable.std_table.separate = std::stoi(jval["separate"].asString());
-				ttable.std_table.y = std::stoi(jval["y"].asString());
+				ttable.std_table.beat = std::stoi(jval["beat"].asString());
 				ttable.bpm = std::stod(jval["ch_bpm"].asString());
 				storage.push_back(ttable);
 			}
@@ -136,8 +136,8 @@ beat_compiler_extension::calculate_raw_data(const int& albumID) {//thread safe &
 		jval.clear();
 	}
 	sort_storage(storage);
-	calc_bpm_storage(storage, inside.start_bpm,inside.start_time);
-	reservation(storage,albumID, inside.start_bpm,inside.start_time);
+	calc_bpm_storage(storage, inside.start_bpm,inside.first_beat);
+	reservation(storage,albumID, inside.start_bpm,inside.first_beat);
 	GFP.uninit_fileitr(albumP);
 	return;
 }
@@ -163,14 +163,14 @@ beat_compiler_extension::check_bpms(const std::vector<ch_bpm_data_table>& bpmS, 
 
 
 void
-beat_compiler_extension::reservation(std::vector<ch_bpm_data_table>& inside,const int& albumID, const double& start_bpm, const double& start_time) {//bpm storage and ID
+beat_compiler_extension::reservation(std::vector<ch_bpm_data_table>& inside,const int& albumID, const double& start_bpm, const double& first_beat) {//bpm storage and ID
 	for (int i = 0; i < raw_reserve.at(albumID).size(); i++) {
 
 		if (raw_reserve.at(albumID).at(i).long_end_table.separate != 0) {//interpolations
 			if (inside.size() == 0) {//no bpm changes
 				engine_order order;
-				order.frame_in = calc_time_T_S(raw_reserve.at(albumID).at(i).loc_table, start_bpm, start_time);
-				order.frame_out = calc_time_T_S(raw_reserve.at(albumID).at(i).long_end_table, start_bpm, start_time);
+				order.frame_in = calc_time_T_S(raw_reserve.at(albumID).at(i).loc_table, start_bpm, first_beat);
+				order.frame_out = calc_time_T_S(raw_reserve.at(albumID).at(i).long_end_table, start_bpm, first_beat);
 				order.tag = raw_reserve.at(albumID).at(i).other_tags;
 				data_locker.lock();
 				reservation_storage[albumID].push_back(order);
@@ -184,8 +184,8 @@ beat_compiler_extension::reservation(std::vector<ch_bpm_data_table>& inside,cons
 				start_bpm_point = check_bpms(inside, start_approx);
 				end_bpm_point = check_bpms(inside, end_approx);
 				engine_order order;
-				start_bpm_point == 0 ? order.frame_in = calc_time_T_S(raw_reserve.at(albumID).at(i).loc_table, start_bpm, start_time) : order.frame_in = calc_time_between_T_S(inside.at(start_bpm_point), raw_reserve.at(albumID).at(i).loc_table);
-				end_bpm_point == 0 ? order.frame_out = calc_time_T_S(raw_reserve.at(albumID).at(i).long_end_table, start_bpm, start_time) : order.frame_out = calc_time_between_T_S(inside.at(end_bpm_point), raw_reserve.at(albumID).at(i).long_end_table);
+				start_bpm_point == 0 ? order.frame_in = calc_time_T_S(raw_reserve.at(albumID).at(i).loc_table, start_bpm, first_beat) : order.frame_in = calc_time_between_T_S(inside.at(start_bpm_point), raw_reserve.at(albumID).at(i).loc_table);
+				end_bpm_point == 0 ? order.frame_out = calc_time_T_S(raw_reserve.at(albumID).at(i).long_end_table, start_bpm, first_beat) : order.frame_out = calc_time_between_T_S(inside.at(end_bpm_point), raw_reserve.at(albumID).at(i).long_end_table);
 				order.tag = raw_reserve.at(albumID).at(i).other_tags;
 				data_locker.lock();
 				reservation_storage[albumID].push_back(order);
@@ -196,7 +196,7 @@ beat_compiler_extension::reservation(std::vector<ch_bpm_data_table>& inside,cons
 		else {//normals
 			if (inside.size() == 0) {//no bpm changes
 				engine_order order;
-				order.frame_in=calc_time_T_S(raw_reserve.at(albumID).at(i).loc_table,start_bpm, start_time);
+				order.frame_in=calc_time_T_S(raw_reserve.at(albumID).at(i).loc_table,start_bpm, first_beat);
 				order.frame_out = 0;
 				order.tag= raw_reserve.at(albumID).at(i).other_tags;
 				data_locker.lock();
@@ -208,7 +208,7 @@ beat_compiler_extension::reservation(std::vector<ch_bpm_data_table>& inside,cons
 				int bpm_point = 0;
 				bpm_point = check_bpms(inside, temp_approx);
 				engine_order order;
-				order.frame_in = bpm_point == 0? calc_time_T_S(raw_reserve.at(albumID).at(i).loc_table, start_bpm, start_time): calc_time_between_T_S(inside.at(bpm_point), raw_reserve.at(albumID).at(i).loc_table);
+				order.frame_in = bpm_point == 0? calc_time_T_S(raw_reserve.at(albumID).at(i).loc_table, start_bpm, first_beat): calc_time_between_T_S(inside.at(bpm_point), raw_reserve.at(albumID).at(i).loc_table);
 				order.frame_out = 0;
 				data_locker.lock();
 				reservation_storage[albumID].push_back(order);
@@ -254,10 +254,10 @@ beat_compiler_extension::sort_reservation() {
 
 
 void
-beat_compiler_extension::calc_bpm_storage(std::vector<ch_bpm_data_table>& inside,const double& start_bpm,const double& start_time) {
+beat_compiler_extension::calc_bpm_storage(std::vector<ch_bpm_data_table>& inside,const double& start_bpm,const double& first_beat) {
 	double accumulator = 0.0;
 	if (inside.size() != 0) {
-		inside.at(0).time_to_here = calc_time_T_S(inside.at(0).approx_loc, start_bpm, start_time);
+		inside.at(0).time_to_here = calc_time_T_S(inside.at(0).approx_loc, start_bpm, first_beat);
 	}
 	for (int i = 1; i < inside.size(); i++) {
 		inside.at(i).time_to_here = calc_time_between_T_S(inside.at(i-1), inside.at(i).std_table);
@@ -266,16 +266,16 @@ beat_compiler_extension::calc_bpm_storage(std::vector<ch_bpm_data_table>& inside
 
 
 double
-beat_compiler_extension::calc_time_T_S(const standard_tag_table& std_dat,const double& bpm,const double& start_time) {
-	double final_value = start_time;
+beat_compiler_extension::calc_time_T_S(const standard_tag_table& std_dat,const double& bpm,const double& first_beat) {
+	double final_value = first_beat;
 	double approx_loc = to_appr(std_dat);
 	final_value += approx_loc * (double(CONST_BPM) / bpm);
 	return final_value;
 }
 
 double
-beat_compiler_extension::calc_time_T_S(const double& approx_loc,const double& bpm,const double& start_time) {
-	double final_value = start_time;
+beat_compiler_extension::calc_time_T_S(const double& approx_loc,const double& bpm,const double& first_beat) {
+	double final_value = first_beat;
 	final_value += approx_loc * (double(CONST_BPM) / bpm);
 	return final_value;
 }
@@ -298,7 +298,7 @@ beat_compiler_extension::calc_time_between_T_S(const ch_bpm_data_table& front_da
 
 double
 beat_compiler_extension::to_appr(const standard_tag_table& table) {
-	return double(table.line_number) + (double(table.y) / double(table.separate));
+	return double(table.bar) + (double(table.beat) / double(table.separate));
 }
 
 
@@ -310,7 +310,7 @@ beat_compiler_extension::calc_in_real_time(const double& approx_loc,const int& a
 	stored_data in_here = album_data_for_real_time[albumID];
 	if (in_here.bpm_storage.size() == 0) {//no bpm changes
 		engine_order order;
-		return calc_time_T_S(approx_loc, in_here.start_bpm, in_here.start_time);
+		return calc_time_T_S(approx_loc, in_here.start_bpm, in_here.first_beat);
 
 	}
 	else {//bpm changed
@@ -319,7 +319,7 @@ beat_compiler_extension::calc_in_real_time(const double& approx_loc,const int& a
 			return calc_time_between_T_S(in_here.bpm_storage.at(in_here.bpm_storage.size() - 1), approx_loc);
 		}
 		else if (approx_loc < in_here.bpm_storage.at(0).approx_loc) {//lower than every bpm ch
-			return calc_time_T_S(approx_loc, in_here.start_bpm, in_here.start_time);
+			return calc_time_T_S(approx_loc, in_here.start_bpm, in_here.first_beat);
 		}
 		else {
 			for (int j = 1; j < in_here.bpm_storage.size(); j++) {
@@ -360,7 +360,7 @@ beat_compiler_extension::calc_now_bpm(const unsigned long long& now_frame, const
 }
 
 void
-beat_compiler_extension::init_in_real_time(const int& albumID, double& bpmP, double& start_time_P) {
+beat_compiler_extension::init_in_real_time(const int& albumID, double& bpmP, double& first_beat_P) {
 	bpmP = album_data_for_real_time[albumID].start_bpm;
-	start_time_P = album_data_for_real_time[albumID].start_time;
+	first_beat_P = album_data_for_real_time[albumID].first_beat;
 }

@@ -29,9 +29,9 @@ Processor::~Processor()
 
 
 void 
-Processor::load_album(const std::string& song_path, const std::string& meta_data_path, const int& albumID)
+Processor::load_album(const std::string& meta_data_path, const int& albumID)
 {
-	deck[albumID] = new ALBUM(song_path, 2, albumID, this, meta_data_path);
+	deck[albumID] = new ALBUM(2, albumID, this, meta_data_path);
 }
 
 
@@ -218,7 +218,7 @@ Processor::init_first_album() {
 	for (int i = 0; i < (*RS)[0].size(); i++) {
 		if ((*RS)[0].at(i).tag.at("type") == "LOAD") {
 			if ((*RS)[0].at(i).tag.at("for_who") == "0") {
-				load_album((*RS)[0].at(i).tag.at("str_first"), (*RS)[0].at(i).tag.at("str_second"), 0);
+				load_album((*RS)[0].at(i).tag.at("str_first"), 0);
 				(*RS)[0].erase((*RS)[0].begin() + i);
 				return;
 			}

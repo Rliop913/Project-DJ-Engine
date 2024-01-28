@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------
-name: "faust_v40", "faust_v40"
+name: "faust_v41", "faust_v41"
 Code generated with Faust 2.71.0 (https://faust.grame.fr)
 Compilation options: -lang cpp -ct 1 -es 1 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0
 ------------------------------------------------------------ */
@@ -31,6 +31,7 @@ Compilation options: -lang cpp -ct 1 -es 1 -mcd 16 -mdd 1024 -mdy 33 -single -ft
 #else
 #define RESTRICT __restrict__
 #endif
+
 
 class mydspSIG0 {
 	
@@ -290,13 +291,13 @@ public:
 	float fRec76[2];
 	
  public:
-	Faust_engine() {}
+	 Faust_engine() {}
 
 
-	 int getNumInputs() {
+	int getNumInputs() {
 		return 2;
 	}
-	 int getNumOutputs() {
+	int getNumOutputs() {
 		return 2;
 	}
 	
@@ -307,7 +308,7 @@ public:
 		deletemydspSIG1(sig1);
 	}
 	
-	 void instanceConstants(int sample_rate) {
+	void instanceConstants(int sample_rate) {
 		fSampleRate = sample_rate;
 		fConst0 = std::min<float>(1.92e+05f, std::max<float>(1.0f, float(fSampleRate)));
 		fConst1 = 1.0f / fConst0;
@@ -346,8 +347,10 @@ public:
 		deletemydspSIG0(sig0);
 	}
 	
+	void instanceResetUserInterface() {
+	}
 	
-	 void instanceClear() {
+	void instanceClear() {
 		for (int l0 = 0; l0 < 2; l0 = l0 + 1) {
 			iVec0[l0] = 0;
 		}
@@ -618,13 +621,14 @@ public:
 		}
 	}
 	
-	 void init(int sample_rate) {
+	void init(int sample_rate) {
 		classInit(sample_rate);
 		instanceInit(sample_rate);
 	}
 	
-	 void instanceInit(int sample_rate) {
+	void instanceInit(int sample_rate) {
 		instanceConstants(sample_rate);
+		instanceResetUserInterface();
 		instanceClear();
 	}
 	
@@ -632,7 +636,7 @@ public:
 		return new Faust_engine();
 	}
 	
-	 int getSampleRate() {
+	int getSampleRate() {
 		return fSampleRate;
 	}
 	
@@ -705,7 +709,7 @@ public:
 		int iSlow60 = roll_sw;
 		float fSlow61 = roller_p;
 		float fSlow62 = 1.0f - fSlow61;
-		float fSlow63 = float(1 - iSlow60);
+		float fSlow63 = float(float(iSlow60) < 0.5f);
 		float fSlow64 = fConst19 / roll_I_BPM;
 		float fSlow65 = fSlow64 + -1.0f;
 		float fSlow66 = trim * fader * volume_limit;

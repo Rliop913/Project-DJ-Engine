@@ -25,7 +25,7 @@ MAW::silence_memory(void* point, const ma_uint32& frameCount)
 void 
 MAW::touch_sound(soundtouch::SoundTouch& ST, const ma_uint32& frameCount, float* buffer, ma_decoder& dec)
 {
-	ma_uint32 final_frame = ma_uint32(ceil(double(frameCount) / ST.getInputOutputSampleRatio()));
+	ma_uint32 final_frame = ma_uint32(floor(double(frameCount) / ST.getInputOutputSampleRatio()));
 	float* sola_temp = (float*)malloc(final_frame*2*sizeof(float));
 	silence_memory(buffer, frameCount);
 	ma_decoder_read_pcm_frames(&dec, sola_temp, final_frame, NULL);

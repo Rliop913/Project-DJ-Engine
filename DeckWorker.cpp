@@ -61,22 +61,21 @@ DeckWorker::time_to_work()
 
 }
 
-
+#include <time.h>
+#include <iostream>
 void
 DeckWorker::looper()
 {
+	clock_t start, end;
 	while (true)//worker life loop
 	{
 		work_complete = false;
 		if (employer_ptr->MASS_LAYOFFS) {
 			return;//Break Call from processor
 		}
-		
-		if (!employer_ptr->WORK_CALL) {
-			continue;//wait for work signal
-		}
-
-
+		std::unique_lock<std::mutex> lock(employer_ptr->work_mutex);
+		employer_ptr->work_call.wait(lock, [this]() {return employer_ptr->WORK_CALL; });//work wait
+		lock.unlock();
 		if (employed) {//go get work
 			
 			if (employer_ptr->ID_is_in_stopQ(reserved_id)) {
@@ -84,8 +83,11 @@ DeckWorker::looper()
 				goto no_work_dive_point;
 			}
 			else {
-				hired_dive_point:
+			hired_dive_point:
+				start = clock();
 				time_to_work();
+				end = clock() - start;
+				std::cout << end << std::endl;
 				work_complete = true;
 			}
 

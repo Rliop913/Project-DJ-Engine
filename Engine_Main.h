@@ -2,7 +2,7 @@
 #ifndef engine_main
 #define engine_main
 
-#include "faust_v40.hpp"
+#include "faust_v42.hpp"
 #include <functional>
 #include <string>
 #include <unordered_map>
@@ -21,27 +21,15 @@ public:
 
 
 
-	void sw_to_manual(const std::string& song_path, const std::string& song_meta_path);//switch to manual mode
+	void sw_to_manual(const std::string& song_meta_path);//switch to manual mode
 	void sw_to_dj(const std::string& dj_data_path);//switch to dj mode
 	//void sw_to_daw(std::string planning_data_path);//switch to daw mode
-	void manual_music_change(const std::string& song_path, const std::string& song_meta_path);//load album or change album. 
+	void manual_music_change(const std::string& song_meta_path);//load album or change album. 
 	void manual_playback(const int& albumID=-1);//manually playback
 	void manual_stop(const int& albumID);//manually stop
 	void manual_effect(const int& effect_type,const float& first, const float& second, const float& third);//manual effect API
 	void clear_deck();
 	void dj_start();
-
-	//void daw_test_play(std::vector<daw_status_frame> data_pointer);//daw test play
-	//void daw_stop();
-	//void daw_solo(int ID);//play only single album
-	//void daw_unsolo();
-	//void daw_set_master_sola(float value);
-	//void daw_set_max_deck_use(int value);
-	//void daw_update_reserve();//fills reserve data
-	//void metronome_activate(std::string sound_path,float sound_volume=1.0f);//activates metronome
-	//
-	
-	//void view_album(ma_uint8*& buffer, ma_uint64* len, int rev_scale, std::string song_path);
 	//THREADS
 	//ma_uint64 processed_time_getter_return();
 	//std::unordered_map<int,mix_data_set> get_mixing_status_updater();//get mixing data inside deck
