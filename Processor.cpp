@@ -127,7 +127,7 @@ void
 Processor::worker_hire() {
 	MASS_LAYOFFS = false;
 	for (int i = 0; i < MAX_DECK_USE; i++) {
-		DeckWorker* new_employee = new DeckWorker(this);
+		DeckWorker* new_employee = new DeckWorker(this, i);
 		company.push_back(new_employee);
 	}
 }
@@ -253,8 +253,8 @@ void
 Processor::go_dj(const std::string& dj_data)
 {
 	MAW::stop_device(idle_mode);
-	MAW::start_device(dj_mode);
 	dj_data_read(dj_data);
+	MAW::start_device(dj_mode);
 	is_on_manual = false;
 }
 

@@ -2,7 +2,7 @@
 #ifndef engine_main
 #define engine_main
 
-#include "faust_v42.hpp"
+#include "faust_v42_SIMD.hpp"
 #include <functional>
 #include <string>
 #include <unordered_map>

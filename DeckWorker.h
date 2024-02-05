@@ -14,9 +14,9 @@ private:
 	bool go_find_a_job();
 	void looper();
 	void make_worker_loop();
+	int my_number = -1;
 public:
-	bool work_complete = false;
-	DeckWorker(Processor* master);
+	DeckWorker(Processor* master, const int& number_got);
 	~DeckWorker();
 
 };

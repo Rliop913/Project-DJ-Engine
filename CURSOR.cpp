@@ -1,7 +1,9 @@
 #include "CURSOR.h"
 #include "Processor.h"
-CURSOR::CURSOR(const std::string& song_path,Processor& pproc)
+#include "ALBUM.h"
+CURSOR::CURSOR(const std::string& song_path,Processor& pproc,ALBUM* aalbum)
 {
+	album = aalbum;
 	MAW::init_decoder(song_path, dec, pproc);
 	ST = new SoundTouch();
 	ST->setChannels(2);
@@ -30,17 +32,17 @@ CURSOR::mvcur(float* wbuf,const ma_uint32& frameCount)
 			:
 			(
 				go_front ?//IF(go_front)
-				MAW::touch_sound(*ST, frameCount, wbuf, dec)
+				MAW::touch_sound(*ST, frameCount, wbuf, dec, album->sola_buffer, ffixer)
 				:
-				MAW::touch_sound_back(*ST, frameCount, wbuf, dec)
+				MAW::touch_sound_back(*ST, frameCount, wbuf, dec, album->sola_buffer, ffixer)
+				)
 			)
-		)
 		:
 		(//false
 			go_front ?//IF(go_front)
-			MAW::touch_sound(*ST, frameCount, wbuf, dec)
+			MAW::touch_sound(*ST, frameCount, wbuf, dec, album->sola_buffer, ffixer)
 			:
-			MAW::touch_sound_back(*ST, frameCount, wbuf, dec)
+			MAW::touch_sound_back(*ST, frameCount, wbuf, dec, album->sola_buffer, ffixer)
 		);
 	remained_frames <= 0 ? remained_frames = 0 : remained_frames -= frameCount;
 }
@@ -77,10 +79,12 @@ CURSOR::set_dir(const bool& is_front)
 void
 CURSOR::set_speed(const double& pitch, const double& tempo)
 {
-	ST->setTempo(tempo);
-	ST->setPitch(pitch);
-	origin_pitch = pitch;
-	origin_tempo = tempo;
+	double pitch_limit = pitch > 2.0 ? 2.0 : pitch;
+	double tempo_limit = tempo > 2.0 ? 2.0 : tempo;
+	ST->setTempo(tempo_limit);
+	ST->setPitch(pitch_limit);
+	origin_pitch = pitch_limit;
+	origin_tempo = tempo_limit;
 	return;
 }
 

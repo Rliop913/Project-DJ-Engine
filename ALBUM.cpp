@@ -82,7 +82,7 @@ ALBUM::after_faust_caster(void* in_left, void* in_right, void* output,const ma_u
 
 void
 ALBUM::album_init(const std::string& song_path) {
-	cursor = new CURSOR(song_path, *pproc);
+	cursor = new CURSOR(song_path, *pproc, this);
 	this_data.data_path = song_path;
 	album_engine = new Faust_engine();
 	album_engine->init(48000);
@@ -92,36 +92,38 @@ ALBUM::album_init(const std::string& song_path) {
 void
 ALBUM::dynamic_memory_uninit()
 {
-	free(process_memory);
+	/*free(process_memory);
 	free(faust_before1);
 	free(faust_before2);
 	free(faust_after1);
-	free(faust_after2);
-//#ifdef FOR_LINUX_BUILD
-//#endif
-//#ifndef FOR_LINUX_BUILD
-//	_aligned_free(process_memory);
-//	_aligned_free(faust_before1);
-//	_aligned_free(faust_before2);
-//	_aligned_free(faust_after1);
-//	_aligned_free(faust_after2);
-//#endif
+	free(faust_after2);*/
+#ifdef FOR_LINUX_BUILD
+#endif
+#ifndef FOR_LINUX_BUILD
+	_aligned_free(process_memory);
+	_aligned_free(faust_before1);
+	_aligned_free(faust_before2);
+	_aligned_free(faust_after1);
+	_aligned_free(faust_after2);
+	_aligned_free(sola_buffer);
+#endif
 }
 
 void
 ALBUM::dynamic_memory_init()
 {
 	int AB_Size = pproc->get_audio_buffer_size();
-	process_memory = (float*)malloc(sizeof(float) * AB_Size * 2);
+	/*process_memory = (float*)malloc(sizeof(float) * AB_Size * 2);
 	faust_before1 = (float*)malloc(sizeof(float) * AB_Size);
 	faust_before2 = (float*)malloc(sizeof(float) * AB_Size);
 	faust_after1 = (float*)malloc(sizeof(float) * AB_Size);
-	faust_after2 = (float*)malloc(sizeof(float) * AB_Size);
-	/*process_memory = (float*)_aligned_malloc(sizeof(float) * AB_Size * 2, 32);
+	faust_after2 = (float*)malloc(sizeof(float) * AB_Size);*/
+	process_memory = (float*)_aligned_malloc(sizeof(float) * AB_Size * 2, 32);
 	faust_before1 = (float*)_aligned_malloc(sizeof(float) * AB_Size, 32);
 	faust_before2 = (float*)_aligned_malloc(sizeof(float) * AB_Size, 32);
 	faust_after1 = (float*)_aligned_malloc(sizeof(float) * AB_Size, 32);
-	faust_after2 = (float*)_aligned_malloc(sizeof(float) * AB_Size, 32);*/
+	faust_after2 = (float*)_aligned_malloc(sizeof(float) * AB_Size, 32);
+	sola_buffer = (float*)_aligned_malloc(sizeof(float) * AB_Size * 4, 32);
 
 }
 

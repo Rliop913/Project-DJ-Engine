@@ -20,15 +20,15 @@ private:
 	void album_init(const std::string& song_path);//init album
 	void dynamic_memory_init();
 	void dynamic_memory_uninit();
-	float* process_memory;//float*960
-	float* faust_before1;//float*480
-	float* faust_before2;//float*480
-	float* faust_after1;//float*480
-	float* faust_after2;//float*480
-
-
+	float* process_memory;//float*AB_SIZE*2
+	float* faust_before1;//float*AB_SIZE
+	float* faust_before2;//float*AB_SIZE
+	float* faust_after1;//float*AB_SIZE
+	float* faust_after2;//float*AB_SIZE
 
 public:
+
+	float* sola_buffer;//float*AB_SIZE*4
 	std::vector<inter_body> inter_queue;//queue for interpolation
 
 	ALBUM(const int& channel,const int& albumID, Processor* p,const std::string& meta_data_path);

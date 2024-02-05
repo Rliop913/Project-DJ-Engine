@@ -299,7 +299,7 @@ Engine_Main::clear_deck()
 //}
 int main()
 {
-	Engine_Main* EM = new Engine_Main(480);
+	Engine_Main* EM = new Engine_Main(48);
 	EM->sw_to_dj("./test_jsons/dj_set_2.json");
 	EM->dj_start();
 	getchar();

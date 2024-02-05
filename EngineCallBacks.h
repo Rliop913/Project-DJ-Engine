@@ -28,16 +28,17 @@ void
 dj_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount) {
 	Processor* pproc = (Processor*)pDevice->pUserData;
 	pproc->public_bufferout = pOutput;
-	pproc->END_SYNC = false;
+	pproc->work_counter = 0;
 	pproc->work_mutex.lock();
-	pproc->WORK_CALL = true;
+	pproc->LOCK_SAFE = 0;
 	pproc->work_call.notify_all();
 	pproc->work_mutex.unlock();
-	for (int i = 0; i < pproc->company.size(); ++i) {//flag waiter
-		if (!pproc->company[i]->work_complete) {
-			--i;
+	while (true) {
+		if (pproc->work_counter >= pproc->MAX_DECK_USE) {
+			break;
 		}
 	}
-	pproc->WORK_CALL = false;
-	pproc->END_SYNC = true;
+	pproc->end_mutex.lock();
+	pproc->end_sync.notify_all();
+	pproc->end_mutex.unlock();
 }

@@ -17,7 +17,6 @@ private:
 
 	//ma_uint32 playback_count;//data for count every data_callback
 
-	int MAX_DECK_USE = 4;
 	ma_uint64 processed_time = 0;
 
 	bool ok_to_count = false;
@@ -37,11 +36,16 @@ public:
 
 	std::mutex work_mutex;
 	std::condition_variable work_call;
+	std::mutex end_mutex;
+	std::condition_variable end_sync;
 
 	bool MASS_LAYOFFS = false;//event trigger, fire all worker threads
-	bool WORK_CALL = false;//event trigger, make workers work
-	bool END_SYNC = false;//event trigger, sync worker's speed
-	//void worker(const int& flag_index);//worker's thread function
+	int MAX_DECK_USE = 4;
+
+	int LOCK_SAFE = 0;
+
+	int work_counter = 0; std::mutex work_counter_locker;
+
 	beat_compiler_extension* pBCE=nullptr;
 	void* public_bufferout=nullptr;
 
@@ -61,9 +65,7 @@ public:
 	std::mutex job_seeker_mutex;
 
 	ma_uint64 raw_to_processed(double raw);
-	//ma_uint64 make_it_not_odd(int num);
-
-
+	
 	//bool processing = false;
 	void delete_album(const int& ID);
 	void clear_stopQ();

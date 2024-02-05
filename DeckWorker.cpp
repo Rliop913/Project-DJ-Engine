@@ -2,8 +2,9 @@
 #include "Processor.h"
 
 
-DeckWorker::DeckWorker(Processor* master)
+DeckWorker::DeckWorker(Processor* master, const int& number_got)
 {
+	my_number = number_got;
 	employer_ptr = master;
 	make_worker_loop();
 }
@@ -69,13 +70,18 @@ DeckWorker::looper()
 	clock_t start, end;
 	while (true)//worker life loop
 	{
-		work_complete = false;
+		std::unique_lock<std::mutex> lock(employer_ptr->work_mutex);
+		employer_ptr->work_call.wait(lock, [this]() {return employer_ptr->LOCK_SAFE<employer_ptr->MAX_DECK_USE; });
+		employer_ptr->LOCK_SAFE++;
+		//work wait
+		lock.unlock();
+
+		//start = clock();
+
 		if (employer_ptr->MASS_LAYOFFS) {
 			return;//Break Call from processor
 		}
-		std::unique_lock<std::mutex> lock(employer_ptr->work_mutex);
-		employer_ptr->work_call.wait(lock, [this]() {return employer_ptr->WORK_CALL; });//work wait
-		lock.unlock();
+
 		if (employed) {//go get work
 			
 			if (employer_ptr->ID_is_in_stopQ(reserved_id)) {
@@ -84,26 +90,34 @@ DeckWorker::looper()
 			}
 			else {
 			hired_dive_point:
-				start = clock();
+				//start = clock();
 				time_to_work();
-				end = clock() - start;
-				std::cout << end << std::endl;
-				work_complete = true;
+				//end = clock() - start;
+				//std::cout << end << std::endl;
+				employer_ptr->work_counter_locker.lock();
+				//employer_ptr->work_counter += 1;
+				employer_ptr->work_counter_locker.unlock();
 			}
-
 		}
 		else {//fired  -->  go find a job
 		no_work_dive_point:
-			work_complete = true;
 			if (go_find_a_job()) {
 				goto hired_dive_point;
 			}
-		}
-		
-	end_wait_loop:
-		if (!employer_ptr->END_SYNC&&!employer_ptr->MASS_LAYOFFS) {
-			goto end_wait_loop;
+			else {
+				employer_ptr->work_counter_locker.lock();
+				//employer_ptr->work_counter += 1;
+				employer_ptr->work_counter_locker.unlock();
+			}
 		}
 
+		std::unique_lock<std::mutex> endlock(employer_ptr->end_mutex);
+		//employer_ptr->work_counter_locker.lock();
+		employer_ptr->work_counter += 1;
+		//employer_ptr->work_counter_locker.unlock();
+		employer_ptr->work_call.wait(endlock);//work wait
+		endlock.unlock();
+		//end = clock() - start;
+		//std::cout << end << std::endl;
 	}
 }

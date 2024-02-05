@@ -23,15 +23,21 @@ MAW::silence_memory(void* point, const ma_uint32& frameCount)
 }
 
 void 
-MAW::touch_sound(soundtouch::SoundTouch& ST, const ma_uint32& frameCount, float* buffer, ma_decoder& dec)
+MAW::touch_sound(soundtouch::SoundTouch& ST, const ma_uint32& frameCount, float* buffer, ma_decoder& dec, float* sola_buf, double& ffixer)
 {
-	ma_uint32 final_frame = ma_uint32(floor(double(frameCount) / ST.getInputOutputSampleRatio()));
-	float* sola_temp = (float*)malloc(final_frame*2*sizeof(float));
+	double frame = double(frameCount) / ST.getInputOutputSampleRatio();
+	double frame_floor = floor(frame);
+	ffixer += (frame - frame_floor);
+	ma_uint32 final_frame = ma_uint32(frame_floor);
+	if (ffixer >= 1.0) {
+		final_frame += 1;
+		ffixer -= 1.0;
+	}
+	silence_memory(sola_buf, final_frame);
 	silence_memory(buffer, frameCount);
-	ma_decoder_read_pcm_frames(&dec, sola_temp, final_frame, NULL);
-	ST.putSamples(sola_temp, final_frame);
+	ma_decoder_read_pcm_frames(&dec, sola_buf, final_frame, NULL);
+	ST.putSamples(sola_buf, final_frame);
 	ST.receiveSamples(buffer, frameCount);
-	free(sola_temp);
 }
 
 
@@ -44,16 +50,25 @@ MAW::init_decoder(const std::string& song_path,ma_decoder& dec, const Processor&
 
 
 void
-MAW::touch_sound_back(soundtouch::SoundTouch& ST, const ma_uint32& frameCount, float* buffer, ma_decoder& dec)
+MAW::touch_sound_back(soundtouch::SoundTouch& ST, const ma_uint32& frameCount, float* buffer, ma_decoder& dec, float* sola_buf, double& ffixer)
 {
-	ma_uint32 final_frame = ma_uint32(ceil(double(frameCount) / ST.getInputOutputSampleRatio()));
-	float* sola_temp = new float[final_frame * 2];
+	double frame = double(frameCount) / ST.getInputOutputSampleRatio();
+	double frame_floor = floor(frame);
+	ffixer += (frame - frame_floor);
+	ma_uint32 final_frame = ma_uint32(frame_floor);
+	if (ffixer >= 1.0) {
+		final_frame += 1;
+		ffixer -= 1.0;
+	}
+
+
+	//ma_uint32 final_frame = ma_uint32(ceil(double(frameCount) / ST.getInputOutputSampleRatio()));
+	silence_memory(sola_buf, final_frame);
 	silence_memory(buffer, frameCount);
-	back_read(dec, sola_temp, final_frame);
-	reverse_data(sola_temp, final_frame);
-	ST.putSamples(sola_temp, final_frame);
+	back_read(dec, sola_buf, final_frame);
+	reverse_data(sola_buf, final_frame);
+	ST.putSamples(sola_buf, final_frame);
 	ST.receiveSamples(buffer, frameCount);
-	delete[] sola_temp;
 }
 
 void
