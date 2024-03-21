@@ -157,11 +157,17 @@ struct daw_status_frame {
 	float panner_gain = 1.0f;
 	std::vector<inter_body> interpolate_queue;
 };
+
+
+typedef std::unordered_map<std::string, std::string> JSON_OUT;
+
 struct function_pointers {
 	void* (*init_fileitr)(const std::string&) = nullptr;//------------------------file itr init
 	bool (*line_getter)(void*, std::string&) = nullptr;//-------------------------file line getter
 	void (*uninit_fileitr)(void*) = nullptr;//-----------------------------uninit file itr
 	void (*loader_function)(const std::string&, ma_decoder&, ma_decoder_config&);
+	void (*unloader_function)(ma_decoder&);
+	JSON_OUT (*JSON_parser)(const std::string&);
 };
 struct standard_tag_table
 	{
@@ -177,6 +183,7 @@ struct ch_bpm_data_table
 		double bpm = 0;
 		int frame_to_here = 0;
 	};
+
 struct dj_init_group {
 		//void* (*init_fileitr)(std::string) = nullptr;//------------------------file itr init
 		//bool (*line_getter)(void*, std::string&) = nullptr;//-------------------------file line getter
@@ -194,6 +201,19 @@ struct raw_data {//-------store raws----------------//
 		standard_tag_table long_end_table;
 		std::unordered_map<std::string, std::string> other_tags;
 	};
+
+struct note_data {
+	double beatpos = 0;
+	double hold_end = -1.0;
+};
+struct mouse_data {
+	double beatpos = 0;
+	double direction = 0;
+	double power = 0;
+};
+
+
+
 namespace tog {
 
 	enum tog_module {

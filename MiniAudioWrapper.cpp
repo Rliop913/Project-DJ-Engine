@@ -91,7 +91,8 @@ MAW::back_read(ma_decoder& dec, float* wbuffer, const ma_uint32& frames)
 void
 MAW::uninit_decoder(ma_decoder& dec)
 {
-	ma_decoder_uninit(&dec);
+	GFP.unloader_function(dec);
+	
 }
 
 

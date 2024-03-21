@@ -17,11 +17,7 @@ private:
 
 	//ma_uint32 playback_count;//data for count every data_callback
 
-	ma_uint64 processed_time = 0;
-
-	bool ok_to_count = false;
 	std::unordered_map<int, bool> stop_queue;
-	inline void init_time_count();
 
 	void dj_data_read(const std::string& new_mix_path);//dj data read init
 	void worker_hire();//make worker threads
@@ -29,6 +25,10 @@ private:
 
 	void init_first_album();
 public:
+	inline void init_time_count();
+	ma_uint64 processed_time = 0;
+	clock_t updated_clock;
+	bool ok_to_count = false;
 	Processor(const int& audio_buffer_size);
 	~Processor();
 
@@ -57,7 +57,7 @@ public:
 	std::unordered_map<int, ALBUM*>::iterator get_deck_p();
 	std::unordered_map<int, ALBUM*>::iterator get_end_p();
 	bool ID_is_in_stopQ(const int& ID);
-	ma_uint64 get_processed_time();
+	double get_processed_time_ms();
 	void add_processed_time(const ma_uint32& frame_use);
 	void load_album(const std::string& meta_data_path, const int& albumID);
 	void unload_album(const int& albumID);

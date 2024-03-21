@@ -16,7 +16,6 @@ beat_compiler_extension::beat_compiler_extension(const dj_init_group& init) {
 		main_reader_start(main_p);
 		GFP.uninit_fileitr(main_p);
 	}
-	
 }
 
 void
@@ -42,46 +41,50 @@ beat_compiler_extension::main_reader_start(void* mainP) {
 	hasher_init(hasher);
 	while (GFP.line_getter(mainP, temp)) {
 		//assert(temp != "");
-		if (parser.parse(temp, root)) {
+		JSON_OUT root = GFP.JSON_parser(temp);
+		if (root.size()!=0) {
 			if (root["type"] == "INIT") {
-				pproc->set_MAX_DECK_USE(std::stoi((root["first"].asString())));
+				pproc->set_MAX_DECK_USE(std::stoi((root["first"])));
 				continue;
 			}
-			if (root["type"] == "LOAD") {
-				std::string tempppp = root["for_who"].asString();
+			else if (root["type"] == "LOAD") {
+				std::string tempppp = root["for_who"];
 				//root["for_who"].asString()
-				album_specific_data.insert(make_pair( std::stoi(tempppp), root["str_first"].asString()));
+				album_specific_data.insert(std::make_pair( std::stoi(tempppp), root["str_first"]));
+				
 			}
+			
 			raw_data raws;
 			for (auto it = root.begin(); it != root.end(); ++it) {
-				int hash_out = hasher.find(it.key().asString()) == hasher.end() ? 10 : hasher[it.key().asString()];
+				
+				int hash_out = hasher[it->first];
 		
 				switch (hash_out) {
 
 				case 0:
-					raws.loc_table.bar = std::stoi((*it).asString());
+					raws.loc_table.bar = std::stoi(it->second);
 					break;
 				case 1:
-					raws.loc_table.separate = std::stoi((*it).asString());
+					raws.loc_table.separate = std::stoi(it->second);
 					break;
 				case 2:
-					raws.long_end_table.separate = std::stoi((*it).asString());
+					raws.long_end_table.separate = std::stoi(it->second);
 					break;
 				case 3:
-					raws.long_end_table.beat= std::stoi((*it).asString());
+					raws.long_end_table.beat= std::stoi(it->second);
 					break;
 				case 4:
-					raws.long_end_table.bar = std::stoi((*it).asString());
+					raws.long_end_table.bar = std::stoi(it->second);
 					break;
 				case 5:
-					raws.loc_table.beat = std::stoi((*it).asString());
+					raws.loc_table.beat = std::stoi(it->second);
 					break;
 				default:
-					raws.other_tags[it.key().asString()] = (*it).asString();
+					raws.other_tags[it->first] = it->second;
 					break;
 				}
 			}
-			raw_reserve[(std::stoi(root["where"].asString()))].push_back(raws);
+			raw_reserve[(std::stoi(root["where"]))].push_back(raws);
 			root.clear();
 		}
 	}//readed to end complete
@@ -95,6 +98,8 @@ beat_compiler_extension::main_reader_start(void* mainP) {
 		thread_pool.at(i).join();
 	}
 	sort_reservation();
+	raw_reserve.clear();
+	album_specific_data.clear();
 	//calculate_raw_data();
 }
 
@@ -102,8 +107,7 @@ void
 beat_compiler_extension::calculate_raw_data(const int& albumID) {//thread safe & using thread//
 	void* albumP = GFP.init_fileitr(album_specific_data[albumID]);
 	std::string temp;
-	Json::Value jval;
-	Json::Reader jread;
+	
 	struct inside_scope_data {
 		double start_bpm;
 		double first_beat;
@@ -112,10 +116,11 @@ beat_compiler_extension::calculate_raw_data(const int& albumID) {//thread safe &
 	std::vector<ch_bpm_data_table> storage;//inside_scope_bpm_change_storage
 
 	while (GFP.line_getter(albumP, temp)) {
-		if (jread.parse(temp.c_str(), temp.c_str() + temp.length(), jval)) {
-			if (jval.isMember("first_beat")) {//meta data init, only once
-				inside.start_bpm = std::stod(jval["bpm"].asString());
-				inside.first_beat = std::stod(jval["first_beat"].asString());
+		JSON_OUT jval = GFP.JSON_parser(temp);
+		if (jval.size() != 0) {
+			if (jval.contains("first_beat")) {//meta data init, only once
+				inside.start_bpm = std::stod(jval["bpm"]);
+				inside.first_beat = std::stod(jval["first_beat"]);
 				stored_data dat;
 				dat.start_bpm = inside.start_bpm;
 				dat.first_beat = inside.first_beat;
@@ -126,10 +131,10 @@ beat_compiler_extension::calculate_raw_data(const int& albumID) {//thread safe &
 			}
 			else {
 				ch_bpm_data_table ttable;
-				ttable.std_table.bar = std::stoi(jval["bar"].asString());
-				ttable.std_table.separate = std::stoi(jval["separate"].asString());
-				ttable.std_table.beat = std::stoi(jval["beat"].asString());
-				ttable.bpm = std::stod(jval["ch_bpm"].asString());
+				ttable.std_table.bar = std::stoi(jval["bar"]);
+				ttable.std_table.separate = std::stoi(jval["separate"]);
+				ttable.std_table.beat = std::stoi(jval["beat"]);
+				ttable.bpm = std::stod(jval["ch_bpm"]);
 				storage.push_back(ttable);
 			}
 		}

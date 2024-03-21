@@ -232,16 +232,19 @@ Processor::raw_to_processed(double raw) {//time to frame
 	return (ma_uint64)ceil(48000.0 * raw);
 }
 
-ma_uint64
-Processor::get_processed_time()
+double
+Processor::get_processed_time_ms()
 {
-	return processed_time;
+	int corrected_ms = clock() - updated_clock;
+	double ms = processed_time / 48.0;
+	return (ms+(double)corrected_ms);
 }
 
-void
+inline void
 Processor::add_processed_time(const ma_uint32& frame_use)
 {
 	ok_to_count ? processed_time += frame_use : false;
+	updated_clock = clock();
 }
 
 //ma_uint64

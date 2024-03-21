@@ -12,6 +12,8 @@ Engine_Main::Engine_Main(const int& init_audio_buffer_size) {
 	GFP.line_getter = default_line_getter;
 	GFP.loader_function = default_decoder_init;
 	GFP.uninit_fileitr = default_file_uninit;
+	GFP.JSON_parser = default_json_parser;
+	GFP.unloader_function = default_decoder_uninit;
 	PDJE_processor = new Processor(init_audio_buffer_size);
 }
 
@@ -21,6 +23,8 @@ Engine_Main::Engine_Main(const function_pointers& ppp, const int& init_audio_buf
 	GFP.line_getter = ppp.line_getter;
 	GFP.loader_function = ppp.loader_function;
 	GFP.uninit_fileitr = ppp.uninit_fileitr;
+	GFP.JSON_parser = ppp.JSON_parser;
+	GFP.unloader_function = ppp.unloader_function;
 	PDJE_processor = new Processor(init_audio_buffer_size);
 }
 //---------------------------------engine_callback--------------------------------------//
@@ -62,6 +66,7 @@ Engine_Main::manual_playback(const int& albumID) {
 	}
 	else {
 		PDJE_processor->acc_album(-1)->PLAY();
+		PDJE_processor->init_time_count();
 	}
 }
 
@@ -244,7 +249,11 @@ Engine_Main::clear_deck()
 	PDJE_processor->clear_stopQ();
 }
 
-
+double
+Engine_Main::processed_time_return_ms()
+{
+	return PDJE_processor->get_processed_time_ms();
+}
 
 
 
@@ -297,10 +306,10 @@ Engine_Main::clear_deck()
 //	getchar();
 //	return 1;
 //}
-int main()
-{
-	Engine_Main* EM = new Engine_Main(48);
-	EM->sw_to_dj("./test_jsons/dj_set_2.json");
-	EM->dj_start();
-	getchar();
-}
+//int main()
+//{
+//	Engine_Main* EM = new Engine_Main(48);
+//	EM->sw_to_dj("./test_jsons/dj_set_2.json");
+//	EM->dj_start();
+//	getchar();
+//}

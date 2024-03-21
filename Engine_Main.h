@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include <vector>
 #include "beat_compiler_extension.h"
-
+#include <chrono>
 #include "Processor.h"
 #include "GlobalStructs.h"
 class Engine_Main
@@ -30,6 +30,7 @@ public:
 	void manual_effect(const int& effect_type,const float& first, const float& second, const float& third);//manual effect API
 	void clear_deck();
 	void dj_start();
+	double processed_time_return_ms();
 	//THREADS
 	//ma_uint64 processed_time_getter_return();
 	//std::unordered_map<int,mix_data_set> get_mixing_status_updater();//get mixing data inside deck
