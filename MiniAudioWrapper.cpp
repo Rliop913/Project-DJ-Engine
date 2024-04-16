@@ -74,7 +74,7 @@ MAW::touch_sound_back(soundtouch::SoundTouch& ST, const ma_uint32& frameCount, f
 void
 MAW::reverse_data(float* buffer, const ma_uint32& frames)
 {
-	std::reverse(buffer, buffer + (frames - 1));
+	std::reverse(buffer, buffer + (frames));
 }
 
 void

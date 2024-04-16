@@ -151,48 +151,6 @@ Processor::delete_in_stopQ(const int& ID)
 {
 	stop_queue.erase(ID);
 }
-//
-//void
-//Processor::worker(const int& flag_index) {
-//	
-//	work pointing_work;
-//	no_works.push_back(&pointing_work);
-//	while (true) {
-//		if (BREAK_CALL) {//breaker event, trig when off dj mode
-//			return;
-//		}
-//		else if (done_flag[flag_index]==true) {//TRIG
-//			continue;
-//		}
-//		else {
-//			if (ID_is_in_stopQ(pointing_work.ID)) {
-//				delete_album(pointing_work.ID);
-//				delete_in_stopQ(pointing_work.ID);
-//				pointing_work.is_null = true;
-//				no_works.push_back(&pointing_work);
-//				done_flag[flag_index] = true;
-//			}
-//			else if (pointing_work.is_null) {
-//				done_flag[flag_index] = true;
-//			}
-//			else {
-//				deck[pointing_work.ID]->dj_process(AB_size, (float*)pointing_work.buf);
-//				done_flag[flag_index] = true;
-//			}/*
-//			JQ_mutex.lock();
-//			if (!job_queue.empty()) {
-//				work job = job_queue.back();
-//				deck[job.ID]->dj_process(job.frameCount, (float*)(job.buf));
-//				job_queue.pop_back();
-//			}
-//			else {
-//				TRIG_CALL = false;
-//			}
-//			JQ_mutex.unlock();*/
-//		}
-//	}
-//}
-
 
 
 void

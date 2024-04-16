@@ -92,11 +92,11 @@ DeckWorker::looper()
 			hired_dive_point:
 				//start = clock();
 				time_to_work();
-				//end = clock() - start;
-				//std::cout << end << std::endl;
-				employer_ptr->work_counter_locker.lock();
-				//employer_ptr->work_counter += 1;
-				employer_ptr->work_counter_locker.unlock();
+				////end = clock() - start;
+				////std::cout << end << std::endl;
+				//employer_ptr->work_counter_locker.lock();
+				////employer_ptr->work_counter += 1;
+				//employer_ptr->work_counter_locker.unlock();
 			}
 		}
 		else {//fired  -->  go find a job
@@ -105,9 +105,9 @@ DeckWorker::looper()
 				goto hired_dive_point;
 			}
 			else {
-				employer_ptr->work_counter_locker.lock();
-				//employer_ptr->work_counter += 1;
-				employer_ptr->work_counter_locker.unlock();
+				//employer_ptr->work_counter_locker.lock();
+				////employer_ptr->work_counter += 1;
+				//employer_ptr->work_counter_locker.unlock();
 			}
 		}
 
