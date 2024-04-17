@@ -28,6 +28,7 @@ public:
 	void manual_playback(const int& albumID=-1);//manually playback
 	void manual_stop(const int& albumID);//manually stop
 	void manual_effect(const int& effect_type,const float& first, const float& second, const float& third);//manual effect API
+	void manual_control();
 	void clear_deck();
 	void dj_start();
 	double processed_time_return_ms();
