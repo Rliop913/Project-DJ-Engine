@@ -1,7 +1,7 @@
 #pragma once
 #include "Engine_Main.h"
 #include "default_functions.h"
-function_pointers GFP;
+
 
 Engine_Main::~Engine_Main() {
 	delete(PDJE_processor);
@@ -12,8 +12,9 @@ Engine_Main::Engine_Main(const int& init_audio_buffer_size) {
 	GFP.line_getter = default_line_getter;
 	GFP.loader_function = default_decoder_init;
 	GFP.uninit_fileitr = default_file_uninit;
-	GFP.JSON_parser = default_json_parser;
+	GFP.read_whole_file = default_get_whole_file;
 	GFP.unloader_function = default_decoder_uninit;
+	GFP.delete_bin_buf = default_delete_binary_buffer;
 	PDJE_processor = new Processor(init_audio_buffer_size);
 }
 
@@ -23,8 +24,9 @@ Engine_Main::Engine_Main(const function_pointers& ppp, const int& init_audio_buf
 	GFP.line_getter = ppp.line_getter;
 	GFP.loader_function = ppp.loader_function;
 	GFP.uninit_fileitr = ppp.uninit_fileitr;
-	GFP.JSON_parser = ppp.JSON_parser;
+	GFP.read_whole_file = ppp.read_whole_file;
 	GFP.unloader_function = ppp.unloader_function;
+	GFP.delete_bin_buf = ppp.delete_bin_buf;
 	PDJE_processor = new Processor(init_audio_buffer_size);
 }
 //---------------------------------engine_callback--------------------------------------//
@@ -226,9 +228,9 @@ Engine_Main::manual_effect(const int& effect_type,const float& first, const floa
 }
 
 void
-Engine_Main::sw_to_dj(const std::string& dj_data_path) {
+Engine_Main::sw_to_dj(BINRAW*& djbin, const RAWSIZE& binsize) {
 	clear_deck();
-	PDJE_processor->go_dj(dj_data_path);
+	PDJE_processor->go_dj(djbin, binsize);
 }
 
 

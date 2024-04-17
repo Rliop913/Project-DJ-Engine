@@ -106,7 +106,7 @@
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>.\jsoncpp\include\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
@@ -118,10 +118,11 @@
       <AdditionalDependencies>SoundTouchD_x64.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalDependencies>jsoncpp.lib</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>.\jsoncpp\debug\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -134,7 +135,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>.\jsoncpp\include\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,18 +146,21 @@
       <AdditionalDependencies>SoundTouch_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalDependencies>jsoncpp.lib</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>.\jsoncpp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ALBUM.h" />
     <ClInclude Include="beat_compiler_extension.h" />
+    <ClInclude Include="Binary_Save_Load_Main.h" />
     <ClInclude Include="CURSOR.h" />
     <ClInclude Include="DeckWorker.h" />
     <ClInclude Include="default_functions.h" />
+    <ClInclude Include="dj_BSL.h" />
     <ClInclude Include="EngineCallBacks.h" />
     <ClInclude Include="Engine_Main.h" />
     <ClInclude Include="faust_v42.hpp" />
@@ -164,9 +168,10 @@
     <ClInclude Include="GlobalStructs.h" />
     <ClInclude Include="miniaudio.h" />
     <ClInclude Include="MiniAudioWrapper.h" />
+    <ClInclude Include="music_label_BSL.h" />
+    <ClInclude Include="paper_BSL.h" />
     <ClInclude Include="Processor.h" />
     <ClInclude Include="sound_module.h" />
-    <ClInclude Include="temp_json_reader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ALBUM.cpp" />

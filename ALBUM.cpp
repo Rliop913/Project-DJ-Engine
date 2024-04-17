@@ -1,5 +1,4 @@
 #include "ALBUM.h"
-#include "temp_json_reader.h"
 #include "Processor.h"
 
 void
@@ -138,11 +137,14 @@ ALBUM::~ALBUM() {
 
 ALBUM::ALBUM(const int& channel, const int& albumID, Processor* p, const std::string& meta_data_path) {
 	pproc = p;
-	TJR_RETURN file_inside = TJR::temp_json_reader(meta_data_path);
-	album_init(file_inside.at(0)["music_path"]);
+	char* meta_bin;
+	long long metasz;
+	GFP.read_whole_file(meta_bin, metasz, meta_data_path);
+	MLBSL* mtrt = (MLBSL*)meta_bin;
+	album_init(mtrt->path);
 	this->this_data.ID = albumID;
-	this->this_data.bpm = std::stod(file_inside.at(0)["bpm"]);
-	this->this_data.first_beat = std::stod(file_inside.at(0)["first_beat"]);
+	this->this_data.bpm = mtrt->bpm;
+	this->this_data.first_beat = mtrt->first_beat_point;
 	dynamic_memory_init();
 }
 void
@@ -155,27 +157,16 @@ go_to_function_for_simple_check://check until vector until reservation is availa
 
 	if (pproc->raw_to_processed((*RS)[this_data.ID].at(0).frame_in) < frame_now) {
 		//new code
-		tagables tags;
-		tags.type = (*RS)[this_data.ID].at(0).tag["type"];
-		tags.what_ = (*RS)[this_data.ID].at(0).tag["what"];
-		tags.where_ =std::stoi((*RS)[this_data.ID].at(0).tag["where"]);
-		tags.for_who = std::stoi((*RS)[this_data.ID].at(0).tag["for_who"]);
-		tags.first = std::stod((*RS)[this_data.ID].at(0).tag["first"]);
-		tags.second = std::stod((*RS)[this_data.ID].at(0).tag["second"]);
-		tags.third = std::stod((*RS)[this_data.ID].at(0).tag["third"]);
-		tags.str_first= (*RS)[this_data.ID].at(0).tag["str_first"];
-		tags.str_second = (*RS)[this_data.ID].at(0).tag["str_second"];
-		tags.frame_in = pproc->raw_to_processed((*RS)[this_data.ID].at(0).frame_in);
-		tags.frame_out = pproc->raw_to_processed((*RS)[this_data.ID].at(0).frame_out);
-		
-		if (tags.frame_out == 0) {//toggle mode
-			module->toggle(tags);
+		DDTG dtag((*RS)[this_data.ID].at(0).dj_tags);
+		dtag.frame_in = (*RS)[this_data.ID].at(0).frame_in;
+		dtag.frame_out = (*RS)[this_data.ID].at(0).frame_out;
+		if (dtag.is_interpolate) {//interpolate mode
+			module->interpolate(dtag, (*RS)[this_data.ID].at(0).frame_in, (*RS)[this_data.ID].at(0).frame_out);
 		}
-		else {//interpolate mode
-			module->interpolate(tags,tags.frame_in, tags.frame_out);
+		else {//toggle mode
+			module->toggle(dtag);
 		}
 		((*RS)[this_data.ID]).erase((*RS)[this_data.ID].begin());
-
 		goto go_to_function_for_simple_check;//back to if
 	}
 

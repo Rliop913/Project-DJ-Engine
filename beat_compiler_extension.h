@@ -6,24 +6,29 @@
 #include <fstream>
 #include <unordered_map>
 #include "GlobalStructs.h"
+#include "dj_BSL.h"
+#include "music_label_BSL.h"
+#include "paper_BSL.h"
 #define CONST_BPM 60
 class beat_compiler_extension
 {
 
 public://structs & data arrays
 	beat_compiler_extension(const dj_init_group& init);
+	~beat_compiler_extension();
 	std::unordered_map<int, std::vector<engine_order>> reservation_storage;
 	std::unordered_map<int, std::string> album_specific_data;
 	std::unordered_map<int, stored_data> album_data_for_real_time;
-	std::unordered_map<int, std::vector<raw_data>> raw_reserve;//temp data array for beatcompiler
+	std::unordered_map<int, std::vector<DJBSL>> raw_reserve;//temp data array for beatcompiler
 	
 	//API functions
 	double calc_in_real_time(const double& approx_loc, const int& albumID);
 	void calc_now_bpm(const unsigned long long& now_frame, const int& albumID, double& bpmP);
 	inline void init_in_real_time(const int& albumID, double& bpmP, double& first_beat_P);
 private://inner datas
-
-	std::string MAIN_DATA;
+	sfit<DJBSL>* bindj;
+	DJBSL* origin_base;
+	//std::string MAIN_DATA;
 	void * voidp;
 	std::mutex real_time_mutex;
 	std::mutex data_locker;//about accessing reservation_storage
@@ -40,10 +45,10 @@ private://inner datas
 	inline double calc_time_between_T_S(const ch_bpm_data_table& front_dat,const double& back_approx_loc);
 
 	//inner functions
-	void main_reader_start(void* mainP);
+	void main_reader_start();
 	void reservation(std::vector<ch_bpm_data_table>& inside,const int& albumID,const double& start_bpm,const double& first_beat);
 	void sort_reservation();
-	void hasher_init(std::unordered_map<std::string, int>& hasher);
+	
 	int check_bpms(const std::vector<ch_bpm_data_table>& bpmS, const double& aprx);
 };
 

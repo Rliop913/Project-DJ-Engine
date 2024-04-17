@@ -4,10 +4,10 @@
 
 template<typename STRT>
 struct sfit {
-	unsigned long length;
+	long long length;
 	long long pos = 0;
 	STRT* pt;
-	sfit(const unsigned long& char_origin_length, STRT* origin_ptr) :length(char_origin_length/sizeof(STRT)), pt(origin_ptr) { ; }
+	sfit(const long long& char_origin_length, STRT* origin_ptr) :length(char_origin_length/sizeof(STRT)), pt(origin_ptr) { ; }
 	~sfit() { ; }
 	bool operator>(STRT*& gets) {
 		gets = pt++;
@@ -33,7 +33,7 @@ struct sfit {
 
 template<typename STRT>
 inline
-unsigned long
-char_sz(const unsigned long& strt_sz) {
-	return strt_sz * (unsigned long)sizeof(STRT);
+long long
+char_sz(const long long& strt_sz) {
+	return strt_sz * (long long)sizeof(STRT);
 }

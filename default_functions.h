@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 #include <fstream>
-#include "json.h"
 #include "MiniAudioWrapper.h"
 void
 default_decoder_init(const std::string& song_path, ma_decoder& dec, ma_decoder_config& conf) {
@@ -37,17 +36,37 @@ default_file_uninit(void* p) {
 	return;
 }
 
-JSON_OUT
-default_json_parser(const std::string& json_text) {
-	Json::Reader reader;
-	Json::Value root;
-	reader.parse(json_text,root);
-	Json::Value::Members mem = root.getMemberNames();
-	JSON_OUT out;
-	for (int i = 0; i < mem.size(); ++i) {
-		out[mem.back()] = (root[mem.back()].asString());
+void
+default_get_whole_file(char*& bin_whole, long long& bin_size, const std::string& file_path)
+{
+	std::ifstream def_stream = std::ifstream(file_path, std::ios::binary);
+	if (def_stream.is_open()) {
+		def_stream.seekg(std::ios::end);
+		std::streamsize ssize = def_stream.tellg();
+		def_stream.seekg(std::ios::beg);
+		bin_whole = new char[ssize];
+		def_stream.read(bin_whole, ssize);
+		def_stream.close();
 	}
-	return out;
 }
+
+void
+default_delete_binary_buffer(char*& binptr) {
+	delete[] binptr;
+}
+
+//
+//JSON_OUT
+//default_json_parser(const std::string& json_text) {
+//	Json::Reader reader;
+//	Json::Value root;
+//	reader.parse(json_text,root);
+//	Json::Value::Members mem = root.getMemberNames();
+//	JSON_OUT out;
+//	for (int i = 0; i < mem.size(); ++i) {
+//		out[mem.back()] = (root[mem.back()].asString());
+//	}
+//	return out;
+//}
 
 

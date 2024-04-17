@@ -22,7 +22,7 @@ public:
 
 
 	void sw_to_manual(const std::string& song_meta_path);//switch to manual mode
-	void sw_to_dj(const std::string& dj_data_path);//switch to dj mode
+	void sw_to_dj(BINRAW*& djbin, const RAWSIZE& binsize);//switch to dj mode
 	//void sw_to_daw(std::string planning_data_path);//switch to daw mode
 	void manual_music_change(const std::string& song_meta_path);//load album or change album. 
 	void manual_playback(const int& albumID=-1);//manually playback

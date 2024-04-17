@@ -8,103 +8,66 @@ sound_module::sound_module(Processor* first, ALBUM* second, Faust_engine* third)
 	processor = first;
 	palbum = second;
 	pfaust = third;
-	tog_hash_filler();
-}
-void
-sound_module::tog_hash_filler()
-{
-	tog_hash["EQ"] = tog::tog_module::EQ;
-	tog_hash["DISTORTION"] = tog::tog_module::DISTORTION;
-	tog_hash["FILTER"] = tog::tog_module::FILTER;
-	tog_hash["CONTROL"] = tog::tog_module::CONTROL;
-	tog_hash["VOL"] = tog::tog_module::VOL;
-	tog_hash["LOAD"] = tog::tog_module::LOAD;
-	tog_hash["UNLOAD"] = tog::tog_module::UNLOAD;
-	tog_hash["DJ_COMP"] = tog::tog_module::DJ_COMP;
-	tog_hash["BEAT_MATCH"] = tog::tog_module::BEAT_MATCH;
-	tog_hash["SOLA"] = tog::tog_module::SOLA;
-	tog_hash["ECHO"] = tog::tog_module::ECHO;
-	tog_hash["LFS"] = tog::tog_module::LFS;
-	tog_hash["FLANGER"] = tog::tog_module::FLANGER;
-	tog_hash["PHASER"] = tog::tog_module::PHASER;
-	tog_hash["TRANCE"] = tog::tog_module::TRANCE;
-	tog_hash["PANNER"] = tog::tog_module::PANNER;
-	tog_hash["BATTLE_DJ"] = tog::tog_module::BATTLE_DJ;
-	tog_hash["ROLL"] = tog::tog_module::ROLL;
-	tog_hash["ALIVE"] = tog::tog_module::ALIVE;
 }
 
 void
-sound_module::inter_hash_filler()
-{
-	inter_hash["EQ"] = inter::inter_module::EQ;
-	inter_hash["FILTER"] = inter::inter_module::FILTER;
-	inter_hash["DISTORTION"] = inter::inter_module::DISTORTION;
-	inter_hash["VOL"] = inter::inter_module::VOL;
-	inter_hash["SOLA"] = inter::inter_module::SOLA;
-	inter_hash["BATTLE_DJ"] = inter::inter_module::BATTLE_DJ;
-}
-
-
-
-void
-sound_module::toggle(const tagables& tag) {
-	switch (tog_hash[tag.type]) {
-	case tog::tog_module::EQ:
+sound_module::toggle(const DDTG& tag) {
+	switch (tag.type) {
+	case dj_type::EQ:
 		eq_tog(tag);
 		break;
-	case tog::tog_module::DISTORTION:
+	case dj_type::DISTORTION:
 		distortion_tog(tag);
 		break;
-	case tog::tog_module::FILTER:
+	case dj_type::FILTER:
 		filter_tog(tag);
 		break;
-	case tog::tog_module::CONTROL:
+	case dj_type::CONTROL:
 		control_tog(tag);
 		break;
-	case tog::tog_module::VOL:
+	case dj_type::VOL:
 		vol_tog(tag);
 		break;
-	case tog::tog_module::LOAD:
+	case dj_type::LOAD:
 		load_tog(tag);
 		break;
-	case tog::tog_module::UNLOAD:
+	case dj_type::UNLOAD:
 		unload_tog(tag);
 		break;
-	case tog::tog_module::DJ_COMP:
+	case dj_type::DJ_COMP:
 		dj_comp_tog(tag);
 		break;
-	case tog::tog_module::BEAT_MATCH:
+	case dj_type::BEAT_MATCH:
 		beat_match_tog(tag);
 		break;
-	case tog::tog_module::SOLA:
+	case dj_type::SOLA:
 		sola_tog(tag);
 		break;
-	case tog::tog_module::ECHO:
+	case dj_type::ECHO:
 		echo_tog(tag);
 		break;
-	case tog::tog_module::LFS:
+	case dj_type::LFS:
 		LFS_tog(tag);
 		break;
-	case tog::tog_module::FLANGER:
+	case dj_type::FLANGER:
 		flanger_tog(tag);
 		break;
-	case tog::tog_module::PHASER:
+	case dj_type::PHASER:
 		phaser_tog(tag);
 		break;
-	case tog::tog_module::TRANCE:
+	case dj_type::TRANCE:
 		trance_tog(tag);
 		break;
-	case tog::tog_module::PANNER:
+	case dj_type::PANNER:
 		panner_tog(tag);
 		break;
-	case tog::tog_module::BATTLE_DJ:
+	case dj_type::BATTLE_DJ:
 		battle_tog(tag);
 		break;
-	case tog::tog_module::ROLL:
+	case dj_type::ROLL:
 		roll_tog(tag);
 		break;
-	case tog::tog_module::ALIVE:
+	case dj_type::ALIVE:
 		break;
 	default:
 		break;
@@ -112,158 +75,177 @@ sound_module::toggle(const tagables& tag) {
 }
 
 void
-sound_module::eq_tog(const tagables& tag) {
-	Faust_engine* PF = processor->acc_faust(tag.for_who);
+sound_module::eq_tog(const DDTG& tag) {
+	Faust_engine* PF = processor->acc_faust(tag.target);
 
-	//Faust_engine* PF= processor->acc_faust(tag.for_who);//for self or other
-	
-	if (tag.what_ == "HIGH") {
-		tag.first < -60.0 ?
+	//Faust_engine* PF= processor->acc_faust(tag.target);//for self or other
+	switch (tag.what)
+	{
+	case dj_what::HIGH:
+		tag.first_value < -60.0 ?
 			([PF](double val) {
 			PF->EQ_high_sw(false); 
 			PF->set_eq_high_value(float(val)); 
-		}(tag.first))
+		}(tag.first_value))
 			:
 			([PF](double val) {
 			PF->EQ_high_sw(true); 
 			PF->set_eq_high_value(float(val));
-		}(tag.first));
-
+		}(tag.first_value));
+		break;
+	case dj_what::MID:
+		tag.first_value < -60.0 ?
+		([PF](double val) {
+		PF->EQ_mid_sw(false);
+		PF->set_eq_mid_value(float(val));
+		}(tag.first_value))
+		:
+		([PF](double val) {
+		PF->EQ_mid_sw(true);
+		PF->set_eq_mid_value(float(val));
+		}(tag.first_value));
+		break;
+	case dj_what::LOW:
+		tag.first_value < -60.0 ?
+		([PF](double val) {
+		PF->EQ_low_sw(false);
+		PF->set_eq_low_value(float(val));
+		}(tag.first_value))
+		:
+		([PF](double val) {
+		PF->EQ_low_sw(true);
+		PF->set_eq_low_value(float(val));
+		}(tag.first_value));
+		break;
+	default:
+		break;
 	}
-	else if (tag.what_ == "MID") {
-				tag.first < -60.0 ?
-				([PF](double val) {
-				PF->EQ_mid_sw(false);
-				PF->set_eq_mid_value(float(val));
-				}(tag.first))
-				:
-				([PF](double val) {
-				PF->EQ_mid_sw(true);
-				PF->set_eq_mid_value(float(val));
-				}(tag.first));
-
-	}
-	else if (tag.what_ == "LOW") {
-				tag.first < -60.0 ?
-				([PF](double val) {
-				PF->EQ_low_sw(false);
-				PF->set_eq_low_value(float(val));
-				}(tag.first))
-				:
-				([PF](double val) {
-				PF->EQ_low_sw(true);
-				PF->set_eq_low_value(float(val));
-				}(tag.first));
-
-	}
-
 }
 
 void
-sound_module::distortion_tog(const tagables& tag) {
-	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
+sound_module::distortion_tog(const DDTG& tag) {
+	Faust_engine* PF = processor->acc_faust(tag.target);//for self or other
 	
-	tag.first < 0 ?
+	tag.first_value < 0 ?
 		([PF](double val) {
 		PF->_distortion_sw(false);
 		PF->set_distortion_gain(float(val));
-		}(tag.first))
+		}(tag.first_value))
 		:
 		([PF](double val) {
 		PF->_distortion_sw(true);
 		PF->set_distortion_gain(float(val));
-		}(tag.first));
+		}(tag.first_value));
 }
 
 void
-sound_module::filter_tog(const tagables& tag) {
-	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
-	if (tag.what_ == "HIGH") {
-		tag.first < 0 ?
+sound_module::filter_tog(const DDTG& tag) {
+	Faust_engine* PF = processor->acc_faust(tag.target);//for self or other
+	switch (tag.what)
+	{
+	case dj_what::HIGH:
+		tag.first_value < 0 ?
 			([PF](double val) {
 			PF->filter_high_sw(false);
-			}(tag.first))
+			}(tag.first_value))
 			:
 			([PF](double val) {
 			PF->filter_high_sw(true);
 			PF->set_filter_high_freq_value(int(val));
-			}(tag.first));
-	}
-	else {//LOW
-		tag.first < 0 ?
+			}(tag.first_value));
+			break;
+	case dj_what::LOW:
+		tag.first_value < 0 ?
 			([PF](double val) {
 			PF->filter_low_sw(false);
-			}(tag.first))
+			}(tag.first_value))
 			:
 			([PF](double val){
 			PF->filter_low_sw(true);
 			PF->set_filter_low_freq_value(int(val));
-			}(tag.first));
+			}(tag.first_value));
+			break;
+	default:
+		break;
 	}
 }
 void
-sound_module::control_tog(const tagables& tag) {
+sound_module::control_tog(const DDTG& tag) {
 	ALBUM* PA;//for self or other
-	tag.where_ != tag.for_who ? PA= processor->acc_album(tag.for_who): PA = palbum;
-	if (tag.what_ == "CUE") {
+	tag.from != tag.target ? PA= processor->acc_album(tag.target): PA = palbum;
+	switch (tag.what)
+	{
+	case dj_what::CUE:
 		PA->get_cursor()->set_point(
 			processor->raw_to_processed(
-				processor->pBCE->calc_in_real_time(tag.first, tag.for_who)
+				processor->pBCE->calc_in_real_time(tag.first_value, tag.target)
 			)
 		);
-	}
-	else if (tag.what_ == "PLAY") {
+		break;
+	case dj_what::PLAY:
 		PA->PLAY();
-	}
-	else {//PAUSE
+		break;
+	case dj_what::PAUSE:
 		PA->STOP();
+		break;
+	default:
+		break;
 	}
 	
 }
 void
-sound_module::vol_tog(const tagables& tag) {
-	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
-	
-	if (tag.what_ == "TRIM") {
-		PF->set_trim(float(tag.first));
+sound_module::vol_tog(const DDTG& tag) {
+	Faust_engine* PF = processor->acc_faust(tag.target);//for self or other
+	switch (tag.what)
+	{
+	case dj_what::TRIM:
+		PF->set_trim(float(tag.first_value));
+		break;
+	case dj_what::FADER:
+		PF->set_fader(float(tag.first_value));
+		break;
+	default:
+		break;
 	}
-	else {//fader
-		PF->set_fader(float(tag.first));
-	}
 }
 void
-sound_module::load_tog(const tagables& tag) {
-	processor->load_album(tag.str_first, tag.for_who);
+sound_module::load_tog(const DDTG& tag) {
+	processor->load_album(tag.first_str, tag.target);
 }
 
 void
-sound_module::unload_tog(const tagables& tag) {
-	processor->unload_album(tag.for_who);
+sound_module::unload_tog(const DDTG& tag) {
+	processor->unload_album(tag.target);
 }
 
 void
-sound_module::dj_comp_tog(const tagables& tag) {
-	processor->unload_album(tag.where_);
+sound_module::dj_comp_tog(const DDTG& tag) {
+	processor->unload_album(tag.from);
 	
 }
 
 void
-sound_module::sola_tog(const tagables& tag) {
+sound_module::sola_tog(const DDTG& tag) {
 	ALBUM* AP;//for self or other
-	tag.where_ != tag.for_who ? AP = processor->acc_album(tag.for_who) : AP = palbum;
-	if (tag.what_ == "MASTER") {
-		AP->get_cursor()->set_speed(1.0, (100.0 + tag.first) / 100.0);
-	}
-	else {//RAW
-		AP->get_cursor()->set_speed((100.0 + tag.first) / 100.0, 1.0);
+	tag.from != tag.target ? AP = processor->acc_album(tag.target) : AP = palbum;
+	switch (tag.what)
+	{
+	case dj_what::MASTER:
+		AP->get_cursor()->set_speed(1.0, (100.0 + tag.first_value) / 100.0);
+		break;
+	case dj_what::RAW:
+		AP->get_cursor()->set_speed((100.0 + tag.first_value) / 100.0, 1.0);
+		break;
+	default:
+		break;
 	}
 }
 
 void
-sound_module::beat_match_tog(const tagables& tag) {//WARP MATCHING
+sound_module::beat_match_tog(const DDTG& tag) {//WARP MATCHING
 	ALBUM* MA;//Master album
 	CURSOR* MA_C;//Master cursor
-	MA = processor->acc_album(tag.for_who);
+	MA = processor->acc_album(tag.target);
 	MA_C = MA->get_cursor();
 	ALBUM* ME;
 	CURSOR* ME_C;
@@ -277,149 +259,156 @@ sound_module::beat_match_tog(const tagables& tag) {//WARP MATCHING
 	ME_C->get_now_frame(my_cursor);
 	MA_C->get_now_frame(master_cursor);
 	MA->got_frames() ? master_cursor -= ma_uint64(ceil(double(processor->get_audio_buffer_size()) / master_speed)) : true;
-	double temp_DDD = processor->pBCE->calc_in_real_time(tag.first, tag.for_who);
-	ma_uint64 temp = processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.first, tag.for_who));
-	double temp_calced = (master_speed * (processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.first, tag.for_who)) - double(master_cursor))) / my_speed;
+	double temp_DDD = processor->pBCE->calc_in_real_time(tag.first_value, tag.target);
+	ma_uint64 temp = processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.first_value, tag.target));
+	double temp_calced = (master_speed * (processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.first_value, tag.target)) - double(master_cursor))) / my_speed;
 	ma_uint64 debuggger = ma_uint64(temp_calced);
 	int match_time = int(my_cursor) - int(tag.frame_in) + int((
 		master_speed * (
-			processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.first, tag.for_who)
+			processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.first_value, tag.target)
 			) - double(master_cursor))) / my_speed);
 	my_cursor -= match_time;
 	ME_C->set_point(my_cursor);
 }
 
 void
-sound_module::echo_tog(const tagables& tag) {
-	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
-	tag.first < 0 ? ([PF](float dur, float feedback) {
+sound_module::echo_tog(const DDTG& tag) {
+	Faust_engine* PF = processor->acc_faust(tag.target);//for self or other
+	tag.first_value < 0 ? ([PF](float dur, float feedback) {
 			PF->_echo_sw(false);
 			dur;
 			feedback;
-		}(float(tag.first), float(tag.second)))
+		}(float(tag.first_value), float(tag.second_value)))
 		:
 		([PF](float dur, float feedback, float power) {
 			PF->_echo_sw(true);
 			PF->set_echo_dur_value(dur);
 			PF->set_echo_feedback_value(feedback);
 			PF->set_echo_power(power);
-		}(float(tag.first), float(tag.second), float(tag.third)));
+		}(float(tag.first_value), float(tag.second_value), float(tag.third_value)));
 }
 
 void
-sound_module::LFS_tog(const tagables& tag) {
-	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
-	tag.first < 0 ?
+sound_module::LFS_tog(const DDTG& tag) {
+	Faust_engine* PF = processor->acc_faust(tag.target);//for self or other
+	tag.first_value < 0 ?
 		([PF](float bps) {
 			PF->low_siren_sw(false);
-		}(float(tag.first)))
+		}(float(tag.first_value)))
 		:
 		([PF](float bps,int min_freq, float power) {
 			PF->low_siren_sw(true);
 			PF->set_l_f_s_gain_min_freq(min_freq);
 			PF->set_l_f_s_bps_value(bps);
 			PF->set_l_f_s_power(power);
-		}(float(tag.first),int(tag.second),float(tag.third)));
+		}(float(tag.first_value),int(tag.second_value),float(tag.third_value)));
 }
 
 void
-sound_module::flanger_tog(const tagables& tag) {
-	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
-	tag.first < 0 ?
+sound_module::flanger_tog(const DDTG& tag) {
+	Faust_engine* PF = processor->acc_faust(tag.target);//for self or other
+	tag.first_value < 0 ?
 		([PF](float bps) {
 			PF->_flanger_sw(false);
-		}(float(tag.first)))
+		}(float(tag.first_value)))
 		:
 		([PF](float bps,float gain, float power) {
 			PF->_flanger_sw(true);
 			PF->set_flanger_bps_value(bps);
 			PF->set_flanger_gain_value(gain);
 			PF->set_flanger_power(power);
-		}(float(tag.first),float(tag.second),float(tag.third)));
+		}(float(tag.first_value),float(tag.second_value),float(tag.third_value)));
 }
 
 void
-sound_module::phaser_tog(const tagables& tag) {
-	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
-	tag.first < 0 ?
+sound_module::phaser_tog(const DDTG& tag) {
+	Faust_engine* PF = processor->acc_faust(tag.target);//for self or other
+	tag.first_value < 0 ?
 		([PF](float bps) {
 			PF->_phaser_sw(false);
-		}(float(tag.first)))
+		}(float(tag.first_value)))
 		:
 		([PF](float bps, float gain, float power) {
 			PF->_phaser_sw(true);
 			PF->set_phaser_bps_value(bps);
 			PF->set_phaser_gain_value(gain);
 			PF->set_phaser_power(power);
-		}(float(tag.first), float(tag.second), float(tag.third)));
+		}(float(tag.first_value), float(tag.second_value), float(tag.third_value)));
 }
 
 void
-sound_module::trance_tog(const tagables& tag) {
-	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
-	tag.first < 0 ?
+sound_module::trance_tog(const DDTG& tag) {
+	Faust_engine* PF = processor->acc_faust(tag.target);//for self or other
+	tag.first_value < 0 ?
 		([PF](float bps) {
 			PF->_trance_sw(false);
-		}(float(tag.first)))
+		}(float(tag.first_value)))
 		:
 		([PF](float bps,float gain, float power) {
 			PF->_trance_sw(true);
 			PF->set_trance_gain(gain);
 			PF->set_trance_bps(bps);
 			PF->set_trance_power(power);
-		}(float(tag.first),float(tag.second), float(tag.third)));
+		}(float(tag.first_value),float(tag.second_value), float(tag.third_value)));
 }
 
 
 void
-sound_module::panner_tog(const tagables& tag) {
-	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
-	tag.first < 0 ?
+sound_module::panner_tog(const DDTG& tag) {
+	Faust_engine* PF = processor->acc_faust(tag.target);//for self or other
+	tag.first_value < 0 ?
 		([PF](float bps) {
 			PF->_panner_sw(false);
-		}(float(tag.first)))
+		}(float(tag.first_value)))
 		:
 		([PF](float bps,float gain, float power) {
 			PF->_panner_sw(true);
 			PF->set_panner_gain(gain);
 			PF->set_panner_bps(bps);
 			PF->set_panner_power(power);
-		}(float(tag.first),float(tag.second), float(tag.third)));
+		}(float(tag.first_value),float(tag.second_value), float(tag.third_value)));
 }
 
 void
-sound_module::battle_tog(const tagables& tag) {
-	CURSOR *CR = processor->acc_album(tag.for_who)->get_cursor();
-	if (tag.what_ == "SCRATCH") {
-		
-		double SCR_entry_pos = processor->pBCE->calc_in_real_time(tag.first, tag.for_who);
-		ma_uint64 ent_pos = processor->raw_to_processed(SCR_entry_pos);
+sound_module::battle_tog(const DDTG& tag) {
+	CURSOR *CR = processor->acc_album(tag.target)->get_cursor();
+	double SCR_entry_pos;
+	ma_uint64 ent_pos;
+	ma_uint64 out_pos;
+	switch (tag.what)
+	{
+	case dj_what::SCRATCH:
+		SCR_entry_pos = processor->pBCE->calc_in_real_time(tag.first_value, tag.target);
+		ent_pos = processor->raw_to_processed(SCR_entry_pos);
 		CR->set_point(ent_pos);
-		ma_uint64 out_pos = processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.third, tag.for_who));
-		CR->temp_mv(true, tag.second, 1.0, out_pos - ent_pos);
-	}
-	else if (tag.what_ == "BSCRATCH") {
-		double SCR_entry_pos = processor->pBCE->calc_in_real_time(tag.first, tag.for_who);
-		ma_uint64 ent_pos = processor->raw_to_processed(SCR_entry_pos);
+		out_pos = processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.third_value, tag.target));
+		CR->temp_mv(true, tag.second_value, 1.0, out_pos - ent_pos);
+		break;
+	case dj_what::BSCRATCH:
+		SCR_entry_pos = processor->pBCE->calc_in_real_time(tag.first_value, tag.target);
+		ent_pos = processor->raw_to_processed(SCR_entry_pos);
 		CR->set_point(ent_pos);
-		ma_uint64 out_pos = processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.third, tag.for_who));
-		CR->temp_mv(false, tag.second, 1.0, ent_pos-out_pos);
+		out_pos = processor->raw_to_processed(processor->pBCE->calc_in_real_time(tag.third_value, tag.target));
+		CR->temp_mv(false, tag.second_value, 1.0, ent_pos-out_pos);
+		break;
+	default:
+		break;
 	}
 }
 
 void
-sound_module::roll_tog(const tagables& tag) {
-	Faust_engine* PF = processor->acc_faust(tag.for_who);//for self or other
-	tag.first < 0 ?
+sound_module::roll_tog(const DDTG& tag) {
+	Faust_engine* PF = processor->acc_faust(tag.target);//for self or other
+	tag.first_value < 0 ?
 		([PF](float bpm) {
 			PF->_roll_sw(false);
-		}(float(tag.first)))
+		}(float(tag.first_value)))
 		:
 		([PF](float bpm, float power) {
 			PF->_roll_sw(true);
 			PF->set_roller_bpm(bpm);
 			PF->set_roller_power(power);
-		}(float(tag.first), float(tag.second)));
+		}(float(tag.first_value), float(tag.second_value)));
 }
 
 
@@ -432,30 +421,30 @@ sound_module::roll_tog(const tagables& tag) {
 
 
 void
-sound_module::interpolate(const tagables& tag, const ma_uint64& start_frame_, const ma_uint64& end_frame_) {
+sound_module::interpolate(const DDTG& tag, const ma_uint64& start_frame_, const ma_uint64& end_frame_) {
 	inter_body body;
 	body.start_frame = start_frame_;
 	body.end_frame = end_frame_;
 	body.album_pointer = palbum;
-	body.for_who_album_p = processor->acc_album(tag.for_who);
-	switch (inter_hash[tag.type])
+	body.for_who_album_p = processor->acc_album(tag.target);
+	switch (tag.type)
 	{
-	case inter::inter_module::EQ:
+	case dj_type::EQ:
 		eq_inter(tag, body);
 		break;
-	case inter::inter_module::FILTER:
+	case dj_type::FILTER:
 		filter_inter(tag, body);
 		break;
-	case inter::inter_module::DISTORTION:
+	case dj_type::DISTORTION:
 		distortion_inter(tag, body);
 		break;
-	case inter::inter_module::VOL:
+	case dj_type::VOL:
 		vol_inter(tag, body);
 		break;
-	case inter::inter_module::SOLA:
+	case dj_type::SOLA:
 		sola_inter(tag, body);
 		break;
-	case inter::inter_module::BATTLE_DJ:
+	case dj_type::BATTLE_DJ:
 		battle_inter(tag, body);
 		break;
 	default:
@@ -465,16 +454,18 @@ sound_module::interpolate(const tagables& tag, const ma_uint64& start_frame_, co
 
 
 void
-sound_module::eq_inter(const tagables& tag,inter_body body) {
-	body.start_value = tag.first;
-	body.end_value = tag.second;
+sound_module::eq_inter(const DDTG& tag,inter_body body) {
+	body.start_value = tag.first_value;
+	body.end_value = tag.second_value;
 	
 	Faust_engine* PF = body.for_who_album_p->get_faust();
 	ALBUM* AP = body.album_pointer;
 	body.death_method = []() {
 		;
 	};
-	if (tag.what_ == "HIGH") {
+	switch (tag.what)
+	{
+	case dj_what::HIGH:
 		body.sw_method =[PF](bool turn_on) {
 			PF->EQ_high_sw(turn_on);
 
@@ -483,9 +474,8 @@ sound_module::eq_inter(const tagables& tag,inter_body body) {
 			PF->set_eq_high_value(val);
 		};
 		AP->inter_queue.push_back(body);
-		
-	}
-	else if (tag.what_ == "MID") {
+		break;
+	case dj_what::MID:
 		body.sw_method = [PF](bool turn_on) {
 			PF->EQ_mid_sw(turn_on);
 
@@ -494,8 +484,8 @@ sound_module::eq_inter(const tagables& tag,inter_body body) {
 			PF->set_eq_mid_value(val);
 		};
 		AP->inter_queue.push_back(body);
-	}
-	else if (tag.what_ == "LOW") {
+		break;
+	case dj_what::LOW:
 		body.sw_method = [PF](bool turn_on) {
 			PF->EQ_low_sw(turn_on);
 
@@ -504,16 +494,17 @@ sound_module::eq_inter(const tagables& tag,inter_body body) {
 			PF->set_eq_low_value(val);
 		};
 		AP->inter_queue.push_back(body);
+		break;
+	default:
+		break;
 	}
-	else {
-		return;
-	}
+	
 }
 
 void
-sound_module::distortion_inter(const tagables& tag,inter_body body) {
-	body.start_value = tag.first;
-	body.end_value = tag.second;
+sound_module::distortion_inter(const DDTG& tag,inter_body body) {
+	body.start_value = tag.first_value;
+	body.end_value = tag.second_value;
 	Faust_engine* PF = body.for_who_album_p->get_faust();
 	body.sw_method = [PF](bool turn_on) {
 		PF->_distortion_sw(turn_on);
@@ -531,29 +522,34 @@ sound_module::distortion_inter(const tagables& tag,inter_body body) {
 
 
 void
-sound_module::filter_inter(const tagables& tag,inter_body body) {
+sound_module::filter_inter(const DDTG& tag,inter_body body) {
 	Faust_engine* PF = body.for_who_album_p->get_faust();//for self or other
 	
-	body.start_value = tag.first;
-	body.end_value = tag.second;
+	body.start_value = tag.first_value;
+	body.end_value = tag.second_value;
 	body.death_method = []() {
 		;
 	};
-	if (tag.what_ == "HIGH") {
+	switch (tag.what)
+	{
+	case dj_what::HIGH:
 		body.sw_method = [PF](bool turn_on) {
 			PF->filter_high_sw(turn_on);
 		};
 		body.setter_method = [PF](float val) {
 			PF->set_filter_high_freq_value(int(val));
 		};
-	}
-	else {//LOW
+		break;
+	case dj_what::LOW:
 		body.sw_method = [PF](bool turn_on) {
 			PF->filter_low_sw(turn_on);
 		};
 		body.setter_method = [PF](float val) {
 			PF->set_filter_low_freq_value(int(val));
 		};
+		break;
+	default:
+		break;
 	}
 	ALBUM* AP = body.album_pointer;
 	AP->inter_queue.push_back(body);
@@ -562,25 +558,30 @@ sound_module::filter_inter(const tagables& tag,inter_body body) {
 
 
 void
-sound_module::vol_inter(const tagables& tag,inter_body body) {
+sound_module::vol_inter(const DDTG& tag,inter_body body) {
 	Faust_engine* PF = body.for_who_album_p->get_faust();//for self or other
-	body.start_value = tag.first;
-	body.end_value = tag.second;
+	body.start_value = tag.first_value;
+	body.end_value = tag.second_value;
 	body.sw_method = [](bool nothing) {
 		nothing;
 	};
 	body.death_method = []() {
 		;
 	};
-	if (tag.what_ == "TRIM") {
+	switch (tag.what)
+	{
+	case dj_what::TRIM:
 		body.setter_method = [PF](float val) {
 			PF->set_trim(val);
 		};
-	}
-	else {//FADER
+		break;
+	case dj_what::FADER:
 		body.setter_method = [PF](float val) {
 			PF->set_fader(val);
 		};
+		break;
+	default:
+		break;
 	}
 	ALBUM* AP = body.album_pointer;
 	AP->inter_queue.push_back(body);
@@ -588,42 +589,46 @@ sound_module::vol_inter(const tagables& tag,inter_body body) {
 
 
 void
-sound_module::sola_inter(const tagables& tag,inter_body body) {
+sound_module::sola_inter(const DDTG& tag,inter_body body) {
 	CURSOR *CR = body.for_who_album_p->get_cursor();//for self or other
-	body.start_value = 1.0 + tag.first / 100.0;
-	body.end_value = 1.0 + tag.second / 100.0;
+	body.start_value = 1.0 + tag.first_value / 100.0;
+	body.end_value = 1.0 + tag.second_value / 100.0;
 	body.sw_method = [](bool nothing) {
 		nothing;
 	};
 	body.death_method = []() {
 		;
 	};
-	if (tag.what_ == "MASTER") {
+	switch (tag.what)
+	{
+	case dj_what::MASTER:
 		body.setter_method = [CR](double val) {
 			CR->set_speed(1.0, val);
 		};
-	}
-	else {//RAW
+		break;
+	case dj_what::RAW:
 		body.setter_method = [CR](double val) {
 			CR->set_speed(val, 1.0);
 		};
+		break;
+	default:
+		break;
 	}
-
 	body.for_who_album_p->inter_queue.push_back(body);
 }
 
 void
-sound_module::battle_inter(const tagables& tag,inter_body body) {
+sound_module::battle_inter(const DDTG& tag,inter_body body) {
 	CURSOR* CR = body.for_who_album_p->get_cursor();
-	
-	if (tag.what_ == "SPIN") {
-		CR->temp_mv(true, tag.first, 1.0, body.end_frame - body.start_frame);
-	}
-	if (tag.what_ == "BSPIN") {
-		CR->temp_mv(false, tag.first, 1.0, body.start_frame- body.end_frame);
-
-	}
-	if (tag.what_ == "REV") {
+	switch (tag.what)
+	{
+	case dj_what::SPIN:
+		CR->temp_mv(true, tag.first_value, 1.0, body.end_frame - body.start_frame);
+		break;
+	case dj_what::BSPIN:
+		CR->temp_mv(false, tag.first_value, 1.0, body.start_frame- body.end_frame);
+		break;
+	case dj_what::REV:
 		CR->set_dir(false);
 		body.setter_method = [](double nothing) {
 			nothing;
@@ -635,5 +640,8 @@ sound_module::battle_inter(const tagables& tag,inter_body body) {
 			CR->set_dir(true);
 		};
 		body.for_who_album_p->inter_queue.push_back(body);
+		break;
+	default:
+		break;
 	}
 }

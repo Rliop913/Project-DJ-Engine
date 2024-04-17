@@ -113,9 +113,10 @@ Processor::clear_stopQ()
 
 
 void
-Processor::dj_data_read(const std::string& new_mix_path) {
+Processor::dj_data_read(BINRAW*& mix_bin, const RAWSIZE& binsize) {
 	dj_init_group DIG;
-	DIG.dj_data_path = new_mix_path;
+	DIG.buffer_whole = mix_bin;
+	DIG.buffer_size = binsize;
 	DIG.process_pointer = (void*)this;
 	pBCE = new beat_compiler_extension(DIG);
 	worker_hire();
@@ -174,9 +175,9 @@ void
 Processor::init_first_album() {
 	std::unordered_map<int, std::vector<engine_order>>* RS = &pBCE->reservation_storage;
 	for (int i = 0; i < (*RS)[0].size(); i++) {
-		if ((*RS)[0].at(i).tag.at("type") == "LOAD") {
-			if ((*RS)[0].at(i).tag.at("for_who") == "0") {
-				load_album((*RS)[0].at(i).tag.at("str_first"), 0);
+		if ((*RS)[0].at(i).dj_tags.type == dj_type::LOAD) {
+			if ((*RS)[0].at(i).dj_tags.target == 0) {
+				load_album((*RS)[0].at(i).dj_tags.first_str, 0);
 				(*RS)[0].erase((*RS)[0].begin() + i);
 				return;
 			}
@@ -211,10 +212,10 @@ Processor::add_processed_time(const ma_uint32& frame_use)
 //}
 
 void
-Processor::go_dj(const std::string& dj_data)
+Processor::go_dj(BINRAW*& dj_data, const RAWSIZE& binsize)
 {
 	MAW::stop_device(idle_mode);
-	dj_data_read(dj_data);
+	dj_data_read(dj_data, binsize);
 	MAW::start_device(dj_mode);
 	is_on_manual = false;
 }

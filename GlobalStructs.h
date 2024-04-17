@@ -4,16 +4,17 @@
 #include <string>
 #include <functional>
 #include "MiniAudioWrapper.h"
+#include "dj_BSL.h"
 #define Global_album_Sample_Rate 48000
 #define VOID_BUFFER_SIZE(framecount, channel_size) framecount* 4 * channel_size
-
+typedef unsigned char BINRAW;
+typedef unsigned long RAWSIZE;
 class ALBUM;
-
 
 struct engine_order {//data struct for beatcompiler
 	double frame_in=0.0;
 	double frame_out=0.0;
-	std::unordered_map<std::string, std::string> tag;//tag stored
+	DTAG dj_tags;//tag stored
 };//the reserved order block define
 
 struct work {//data struct for worker threads
@@ -71,21 +72,37 @@ struct daw_inner_data {
 	float master_sola = 1.0f;
 	std::unordered_map<int, std::vector<engine_order>> reserve_buffer; //a storage for lesser compile
 };
-
-struct tagables
-{
-	std::string type;
-	int where_;
-	std::string what_;
-	double first;
-	double second;
-	double third;
-	std::string str_first;
-	std::string str_second;
-	int for_who;
+struct DDTG :DTAG {
 	ma_uint64 frame_in;
 	ma_uint64 frame_out;
+	DDTG(DTAG dtg) {
+		is_interpolate = dtg.is_interpolate;
+		type = dtg.type;
+		from = dtg.from;
+		what = dtg.what;
+		first_value = dtg.first_value;
+		second_value = dtg.second_value;
+		third_value = dtg.third_value;
+		target = dtg.target;
+		first_str = dtg.first_str;
+		second_str = dtg.second_str;
+	}
 };
+//
+//struct tagables
+//{
+//	std::string type;
+//	int where_;
+//	std::string what_;
+//	double first;
+//	double second;
+//	double third;
+//	std::string str_first;
+//	std::string str_second;
+//	int for_who;
+//	ma_uint64 frame_in;
+//	ma_uint64 frame_out;
+//};
 
 
 struct song_data {//song_datas
@@ -167,7 +184,8 @@ struct function_pointers {
 	void (*uninit_fileitr)(void*) = nullptr;//-----------------------------uninit file itr
 	void (*loader_function)(const std::string&, ma_decoder&, ma_decoder_config&);
 	void (*unloader_function)(ma_decoder&);
-	JSON_OUT (*JSON_parser)(const std::string&);
+	void (*read_whole_file)(char*& bin_whole, long long& bin_size, const std::string& file_path);
+	void (*delete_bin_buf)(char*& binptr);
 };
 struct standard_tag_table
 	{
@@ -185,10 +203,8 @@ struct ch_bpm_data_table
 	};
 
 struct dj_init_group {
-		//void* (*init_fileitr)(std::string) = nullptr;//------------------------file itr init
-		//bool (*line_getter)(void*, std::string&) = nullptr;//-------------------------file line getter
-		//void (*uninit_fileitr)(void*) = nullptr;//-----------------------------uninit file itr
-		std::string dj_data_path;
+		BINRAW* buffer_whole;
+		RAWSIZE buffer_size;
 		void* process_pointer;
 	};
 struct stored_data {
@@ -196,11 +212,11 @@ struct stored_data {
 		double first_beat=0.0;
 		std::vector<ch_bpm_data_table> bpm_storage;
 	};
-struct raw_data {//-------store raws----------------//
-		standard_tag_table loc_table;
-		standard_tag_table long_end_table;
-		std::unordered_map<std::string, std::string> other_tags;
-	};
+//struct raw_data {//-------store raws----------------//
+//		standard_tag_table loc_table;
+//		standard_tag_table long_end_table;
+//		DJBSL tag_origin;
+//	};
 
 struct note_data {
 	double beatpos = 0;
@@ -214,40 +230,6 @@ struct mouse_data {
 
 
 
-namespace tog {
-
-	enum tog_module {
-		EQ,
-		DISTORTION,
-		FILTER,
-		CONTROL,
-		VOL,
-		LOAD,
-		UNLOAD,
-		DJ_COMP,
-		BEAT_MATCH,
-		SOLA,
-		ECHO,
-		LFS,
-		FLANGER,
-		PHASER,
-		TRANCE,
-		PANNER,
-		BATTLE_DJ,
-		ROLL,
-		ALIVE
-	};
-}
-namespace inter {
-	enum inter_module {
-		EQ,
-		FILTER,
-		DISTORTION,
-		VOL,
-		SOLA,
-		BATTLE_DJ,
-	};
-}
-
+function_pointers GFP;
 
 #endif

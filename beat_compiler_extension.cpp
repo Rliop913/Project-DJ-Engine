@@ -7,87 +7,42 @@
 extern function_pointers GFP;
 
 beat_compiler_extension::beat_compiler_extension(const dj_init_group& init) {
-	MAIN_DATA = init.dj_data_path;
+	//MAIN_DATA = init.dj_data_path;
+	origin_base = (DJBSL*)init.buffer_whole;
+	bindj = new sfit<DJBSL>(init.buffer_size, origin_base);
 	if (init.process_pointer != nullptr) {
 		voidp = init.process_pointer;
 	}
-	if (MAIN_DATA != "") {
-		void* main_p = GFP.init_fileitr(MAIN_DATA);
-		main_reader_start(main_p);
-		GFP.uninit_fileitr(main_p);
+	if (init.buffer_whole != 0) {
+		//void* main_p = GFP.init_fileitr(MAIN_DATA);
+		main_reader_start();
+		//GFP.uninit_fileitr();
 	}
 }
 
-void
-beat_compiler_extension::hasher_init(std::unordered_map<std::string, int>& hasher)
+
+beat_compiler_extension::~beat_compiler_extension()
 {
-	hasher["bar"] = 0;
-	hasher["Sbar"] = 0;
-	hasher["separate"] = 1;
-	hasher["Sseparate"] = 1;
-	hasher["Eseparate"] = 2;
-	hasher["Ebeat"] = 3;
-	hasher["Ebar"] = 4;
-	hasher["beat"] = 5;
-	hasher["Sbeat"] = 5;
-	// hasher[no use key] = 10;
+	delete(bindj);
 }
 
+
 void
-beat_compiler_extension::main_reader_start(void* mainP) {
+beat_compiler_extension::main_reader_start() {
 	Processor* pproc = (Processor*)voidp;
 	std::string temp;
-	std::unordered_map<std::string, int> hasher;
-	hasher_init(hasher);
-	while (GFP.line_getter(mainP, temp)) {
-		//assert(temp != "");
-		JSON_OUT root = GFP.JSON_parser(temp);
-		if (root.size()!=0) {
-			if (root["type"] == "INIT") {
-				pproc->set_MAX_DECK_USE(std::stoi((root["first"])));
-				continue;
-			}
-			else if (root["type"] == "LOAD") {
-				std::string tempppp = root["for_who"];
-				//root["for_who"].asString()
-				album_specific_data.insert(std::make_pair( std::stoi(tempppp), root["str_first"]));
-				
-			}
-			
-			raw_data raws;
-			for (auto it = root.begin(); it != root.end(); ++it) {
-				
-				int hash_out = hasher[it->first];
-		
-				switch (hash_out) {
-
-				case 0:
-					raws.loc_table.bar = std::stoi(it->second);
-					break;
-				case 1:
-					raws.loc_table.separate = std::stoi(it->second);
-					break;
-				case 2:
-					raws.long_end_table.separate = std::stoi(it->second);
-					break;
-				case 3:
-					raws.long_end_table.beat= std::stoi(it->second);
-					break;
-				case 4:
-					raws.long_end_table.bar = std::stoi(it->second);
-					break;
-				case 5:
-					raws.loc_table.beat = std::stoi(it->second);
-					break;
-				default:
-					raws.other_tags[it->first] = it->second;
-					break;
-				}
-			}
-			raw_reserve[(std::stoi(root["where"]))].push_back(raws);
-			root.clear();
+	DJBSL *tpbin;
+	while (*bindj > tpbin) {
+		if (tpbin->djtag.type == dj_type::INIT) {
+			pproc->set_MAX_DECK_USE(int(tpbin->djtag.first_value));
+			continue;
 		}
-	}//readed to end complete
+		else if (tpbin->djtag.type == dj_type::LOAD) {
+			album_specific_data.insert(std::make_pair(tpbin->djtag.target, tpbin->djtag.first_str));
+		}
+		raw_reserve[(tpbin->djtag.target)].push_back(*tpbin);
+	}	
+	//readed to end complete
 	std::vector<std::thread> thread_pool;
 	for (auto i = raw_reserve.begin(); i != raw_reserve.end(); i++) {
 		thread_pool.emplace_back([this,i]() {
@@ -100,50 +55,52 @@ beat_compiler_extension::main_reader_start(void* mainP) {
 	sort_reservation();
 	raw_reserve.clear();
 	album_specific_data.clear();
-	//calculate_raw_data();
 }
 
 void
 beat_compiler_extension::calculate_raw_data(const int& albumID) {//thread safe & using thread//
-	void* albumP = GFP.init_fileitr(album_specific_data[albumID]);
-	std::string temp;
+	char* bin_origin;
+	long long bsize;
+	GFP.read_whole_file(bin_origin, bsize, album_specific_data[albumID]);
+	MLBSL* mus_bin_base = (MLBSL*)bin_origin;
+	sfit<MLBSL> bit(bsize, mus_bin_base);
 	
 	struct inside_scope_data {
 		double start_bpm;
 		double first_beat;
 	}inside;
-
-	std::vector<ch_bpm_data_table> storage;//inside_scope_bpm_change_storage
-
-	while (GFP.line_getter(albumP, temp)) {
-		JSON_OUT jval = GFP.JSON_parser(temp);
-		if (jval.size() != 0) {
-			if (jval.contains("first_beat")) {//meta data init, only once
-				inside.start_bpm = std::stod(jval["bpm"]);
-				inside.first_beat = std::stod(jval["first_beat"]);
-				stored_data dat;
-				dat.start_bpm = inside.start_bpm;
-				dat.first_beat = inside.first_beat;
-				dat.bpm_storage.assign(storage.begin(), storage.end());//deep copy
-				real_time_mutex.lock();
-				album_data_for_real_time[albumID] = dat;
-				real_time_mutex.unlock();
-			}
-			else {
+	MLBSL* tst;
+	//std::vector<ch_bpm_data_table> storage;//inside_scope_bpm_change_storage
+	while (bit > tst) {
+		inside.first_beat = tst->first_beat_point;
+		inside.start_bpm = tst->bpm;
+		stored_data dat;
+		dat.start_bpm = tst->bpm;
+		dat.first_beat = tst->first_beat_point;
+		if (tst->sof_lan_path != "") {
+			char* sof_bin;
+			long long bsize;
+			GFP.read_whole_file(sof_bin, bsize, tst->sof_lan_path);
+			PBSL* sof_strt = (PBSL*)sof_bin;
+			sfit<PBSL> sbit(bsize, sof_strt);
+			PBSL* tt;
+			while (sbit > tt) {
 				ch_bpm_data_table ttable;
-				ttable.std_table.bar = std::stoi(jval["bar"]);
-				ttable.std_table.separate = std::stoi(jval["separate"]);
-				ttable.std_table.beat = std::stoi(jval["beat"]);
-				ttable.bpm = std::stod(jval["ch_bpm"]);
-				storage.push_back(ttable);
+				ttable.std_table.bar = tt->Sbar;
+				ttable.std_table.separate = tt->Ssep;
+				ttable.std_table.beat = tt->Sbeat;
+				ttable.bpm = tt->idx_or_deg;
+				dat.bpm_storage.push_back(ttable);
 			}
+			GFP.delete_bin_buf(sof_bin);
+			sort_storage(dat.bpm_storage);
+			calc_bpm_storage(dat.bpm_storage, inside.start_bpm,inside.first_beat);
 		}
-		jval.clear();
+		real_time_mutex.lock();
+		album_data_for_real_time[albumID] = dat;
+		real_time_mutex.unlock();
+		reservation(dat.bpm_storage, albumID, inside.start_bpm,inside.first_beat);
 	}
-	sort_storage(storage);
-	calc_bpm_storage(storage, inside.start_bpm,inside.first_beat);
-	reservation(storage,albumID, inside.start_bpm,inside.first_beat);
-	GFP.uninit_fileitr(albumP);
 	return;
 }
 
@@ -170,28 +127,45 @@ beat_compiler_extension::check_bpms(const std::vector<ch_bpm_data_table>& bpmS, 
 void
 beat_compiler_extension::reservation(std::vector<ch_bpm_data_table>& inside,const int& albumID, const double& start_bpm, const double& first_beat) {//bpm storage and ID
 	for (int i = 0; i < raw_reserve.at(albumID).size(); i++) {
+		standard_tag_table sloc;
+		sloc.bar = raw_reserve.at(albumID).at(i).Sbar;
+		sloc.beat = raw_reserve.at(albumID).at(i).Sbeat;
+		sloc.separate = raw_reserve.at(albumID).at(i).Ssep;
+		standard_tag_table eloc;
+		eloc.bar = raw_reserve.at(albumID).at(i).Ebar;
+		eloc.beat = raw_reserve.at(albumID).at(i).Ebeat;
+		eloc.separate = raw_reserve.at(albumID).at(i).Esep;
 
-		if (raw_reserve.at(albumID).at(i).long_end_table.separate != 0) {//interpolations
+		if (raw_reserve.at(albumID).at(i).djtag.is_interpolate) {//interpolations
 			if (inside.size() == 0) {//no bpm changes
 				engine_order order;
-				order.frame_in = calc_time_T_S(raw_reserve.at(albumID).at(i).loc_table, start_bpm, first_beat);
-				order.frame_out = calc_time_T_S(raw_reserve.at(albumID).at(i).long_end_table, start_bpm, first_beat);
-				order.tag = raw_reserve.at(albumID).at(i).other_tags;
+				order.frame_in = calc_time_T_S(sloc, start_bpm, first_beat);
+				order.frame_out = calc_time_T_S(eloc, start_bpm, first_beat);
+				order.dj_tags = raw_reserve.at(albumID).at(i).djtag;
 				data_locker.lock();
 				reservation_storage[albumID].push_back(order);
 				data_locker.unlock();
 			}
 			else {//bpm changed
-				double start_approx = to_appr(raw_reserve.at(albumID).at(i).loc_table);
-				double end_approx = to_appr(raw_reserve.at(albumID).at(i).long_end_table);
+				double start_approx = to_appr(sloc);
+				double end_approx = to_appr(eloc);
 				int start_bpm_point = 0;
 				int end_bpm_point = 0;
 				start_bpm_point = check_bpms(inside, start_approx);
 				end_bpm_point = check_bpms(inside, end_approx);
 				engine_order order;
-				start_bpm_point == 0 ? order.frame_in = calc_time_T_S(raw_reserve.at(albumID).at(i).loc_table, start_bpm, first_beat) : order.frame_in = calc_time_between_T_S(inside.at(start_bpm_point), raw_reserve.at(albumID).at(i).loc_table);
-				end_bpm_point == 0 ? order.frame_out = calc_time_T_S(raw_reserve.at(albumID).at(i).long_end_table, start_bpm, first_beat) : order.frame_out = calc_time_between_T_S(inside.at(end_bpm_point), raw_reserve.at(albumID).at(i).long_end_table);
-				order.tag = raw_reserve.at(albumID).at(i).other_tags;
+				
+				start_bpm_point == 0 ? 
+					order.frame_in = calc_time_T_S(sloc, start_bpm, first_beat) 
+					: 
+					order.frame_in = calc_time_between_T_S(inside.at(start_bpm_point), sloc);
+				
+				end_bpm_point == 0 ? 
+					order.frame_out = calc_time_T_S(eloc, start_bpm, first_beat) 
+					:
+					order.frame_out = calc_time_between_T_S(inside.at(end_bpm_point), eloc);
+
+				order.dj_tags = raw_reserve.at(albumID).at(i).djtag;
 				data_locker.lock();
 				reservation_storage[albumID].push_back(order);
 				data_locker.unlock();
@@ -201,20 +175,24 @@ beat_compiler_extension::reservation(std::vector<ch_bpm_data_table>& inside,cons
 		else {//normals
 			if (inside.size() == 0) {//no bpm changes
 				engine_order order;
-				order.frame_in=calc_time_T_S(raw_reserve.at(albumID).at(i).loc_table,start_bpm, first_beat);
+				order.frame_in = calc_time_T_S(sloc, start_bpm, first_beat);
 				order.frame_out = 0;
-				order.tag= raw_reserve.at(albumID).at(i).other_tags;
+				order.dj_tags = raw_reserve.at(albumID).at(i).djtag;
 				data_locker.lock();
 				reservation_storage[albumID].push_back(order);
 				data_locker.unlock();
 			}
 			else {//bpm changed
-				double temp_approx = to_appr(raw_reserve.at(albumID).at(i).loc_table);
+				double temp_approx = to_appr(sloc);
 				int bpm_point = 0;
 				bpm_point = check_bpms(inside, temp_approx);
 				engine_order order;
-				order.frame_in = bpm_point == 0? calc_time_T_S(raw_reserve.at(albumID).at(i).loc_table, start_bpm, first_beat): calc_time_between_T_S(inside.at(bpm_point), raw_reserve.at(albumID).at(i).loc_table);
+				order.frame_in = bpm_point == 0 ?
+					calc_time_T_S(sloc, start_bpm, first_beat)
+					:
+					calc_time_between_T_S(inside.at(bpm_point), sloc);
 				order.frame_out = 0;
+				order.dj_tags = raw_reserve.at(albumID).at(i).djtag;
 				data_locker.lock();
 				reservation_storage[albumID].push_back(order);
 				data_locker.unlock();

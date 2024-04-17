@@ -19,7 +19,7 @@ private:
 
 	std::unordered_map<int, bool> stop_queue;
 
-	void dj_data_read(const std::string& new_mix_path);//dj data read init
+	void dj_data_read(BINRAW*& mix_bin, const RAWSIZE& binsize);//dj data read init
 	void worker_hire();//make worker threads
 	void worker_layoff();
 
@@ -72,7 +72,7 @@ public:
 	void delete_in_stopQ(const int& ID);
 	void set_MAX_DECK_USE(const int& deck_num);
 	int get_audio_buffer_size();
-	void go_dj(const std::string& dj_data);
+	void go_dj(BINRAW*& dj_data, const RAWSIZE& binsize);
 	void go_manual();
 	bool is_on_manual = false;
 
