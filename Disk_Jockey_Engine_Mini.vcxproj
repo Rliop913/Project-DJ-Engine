@@ -106,7 +106,7 @@
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\engine_include\core_header;G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\engine_include\data_structs;G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\engine_include\Faust_code;G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\engine_include\wrapper;G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\engine_src;G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\miniaudio;G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\soundtouch_include;G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\engine_include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
@@ -135,7 +135,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\engine_include\core_header;G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\engine_include\data_structs;G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\engine_include\Faust_code;G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\engine_include\wrapper;G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\engine_src;G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\miniaudio;G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\include;G:\Dropbox\Dropbox\box_inside\git_branch\cpps\Disk_Jockey_Engine_Mini\engine_include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,35 +154,34 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ALBUM.h" />
-    <ClInclude Include="beat_compiler_extension.h" />
-    <ClInclude Include="Binary_Save_Load_Main.h" />
-    <ClInclude Include="CURSOR.h" />
-    <ClInclude Include="DeckWorker.h" />
-    <ClInclude Include="default_functions.h" />
-    <ClInclude Include="dj_BSL.h" />
-    <ClInclude Include="EngineCallBacks.h" />
-    <ClInclude Include="Engine_Main.h" />
-    <ClInclude Include="faust_v42.hpp" />
-    <ClInclude Include="faust_v42_SIMD.hpp" />
-    <ClInclude Include="GlobalStructs.h" />
-    <ClInclude Include="miniaudio.h" />
-    <ClInclude Include="MiniAudioWrapper.h" />
-    <ClInclude Include="music_label_BSL.h" />
-    <ClInclude Include="paper_BSL.h" />
-    <ClInclude Include="Processor.h" />
-    <ClInclude Include="sound_module.h" />
+    <ClInclude Include="engine_include\core_header\ALBUM.h" />
+    <ClInclude Include="engine_include\core_header\beat_compiler_extension.h" />
+    <ClInclude Include="engine_include\core_header\CURSOR.h" />
+    <ClInclude Include="engine_include\core_header\DeckWorker.h" />
+    <ClInclude Include="engine_include\core_header\Engine_Main.h" />
+    <ClInclude Include="engine_include\core_header\Processor.h" />
+    <ClInclude Include="engine_include\core_header\sound_module.h" />
+    <ClInclude Include="engine_include\data_structs\dj_BSL.h" />
+    <ClInclude Include="engine_include\data_structs\GlobalStructs.h" />
+    <ClInclude Include="engine_include\data_structs\music_label_BSL.h" />
+    <ClInclude Include="engine_include\data_structs\paper_BSL.h" />
+    <ClInclude Include="engine_include\default_functions.h" />
+    <ClInclude Include="engine_include\EngineCallBacks.h" />
+    <ClInclude Include="engine_include\Faust_code\faust_v42_SIMD.hpp" />
+    <ClInclude Include="engine_include\wrapper\Binary_Save_Load_Main.h" />
+    <ClInclude Include="engine_include\wrapper\MiniAudioWrapper.h" />
+    <ClInclude Include="miniaudio\miniaudio.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ALBUM.cpp" />
-    <ClCompile Include="beat_compiler_extension.cpp" />
-    <ClCompile Include="CURSOR.cpp" />
-    <ClCompile Include="DeckWorker.cpp" />
-    <ClCompile Include="Engine_Main.cpp" />
-    <ClCompile Include="miniaudio.c" />
-    <ClCompile Include="MiniAudioWrapper.cpp" />
-    <ClCompile Include="Processor.cpp" />
-    <ClCompile Include="sound_module.cpp" />
+    <ClCompile Include="engine_src\ALBUM.cpp" />
+    <ClCompile Include="engine_src\beat_compiler_extension.cpp" />
+    <ClCompile Include="engine_src\CURSOR.cpp" />
+    <ClCompile Include="engine_src\DeckWorker.cpp" />
+    <ClCompile Include="engine_src\Engine_Main.cpp" />
+    <ClCompile Include="engine_src\MiniAudioWrapper.cpp" />
+    <ClCompile Include="engine_src\Processor.cpp" />
+    <ClCompile Include="engine_src\sound_module.cpp" />
+    <ClCompile Include="miniaudio\miniaudio.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
