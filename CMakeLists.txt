@@ -73,7 +73,7 @@ add_executable(test_main ${test_main_srcs})
 if(WIN32)
 	
 elseif(UNIX)
-	add_definitions(-DFOR_NILUX_BUILD)
+	add_definitions(-DFOR_LINUX_BUILD)
 endif()
 
 
