@@ -30,8 +30,10 @@ Processor::load_album(const std::string& song_meta_path, const int& albumID)
 {
 	char* meta_bin;
 	long long metasz;
-	EFP->read_whole_file(meta_bin, metasz, song_meta_path);
-	deck[albumID] = new ALBUM(2, albumID, this, meta_bin, metasz);
+	data_manager dm(*EFP);
+	dm[song_meta_path];
+	//EFP->read_whole_file(meta_bin, metasz, song_meta_path);
+	deck[albumID] = new ALBUM(2, albumID, this, dm);
 }
 
 
@@ -112,10 +114,9 @@ Processor::clear_stopQ()
 
 
 void
-Processor::dj_data_read(BINRAW*& mix_bin, const RAWSIZE& binsize) {
+Processor::dj_data_read(const std::string& dj_data_path) {
 	dj_init_group DIG;
-	DIG.buffer_whole = mix_bin;
-	DIG.buffer_size = binsize;
+	DIG.dj_data = dj_data_path;
 	DIG.process_pointer = (void*)this;
 	pBCE = new beat_compiler_extension(DIG, *EFP);
 	worker_hire();
@@ -174,9 +175,9 @@ void
 Processor::init_first_album() {
 	std::unordered_map<int, std::vector<engine_order>>* RS = &pBCE->reservation_storage;
 	for (int i = 0; i < (*RS)[0].size(); i++) {
-		if ((*RS)[0].at(i).dj_tags.type == dj_type::LOAD) {
-			if ((*RS)[0].at(i).dj_tags.target == 0) {
-				load_album((*RS)[0].at(i).dj_tags.first_str, 0);
+		if (SI((*RS)[0].at(i).dj_tags["type"]) == dj_type::LOAD) {
+			if (SI((*RS)[0].at(i).dj_tags["target"]) == 0) {
+				load_album((*RS)[0].at(i).dj_tags["first_str"], 0);
 				(*RS)[0].erase((*RS)[0].begin() + i);
 				return;
 			}
@@ -211,10 +212,10 @@ Processor::add_processed_time(const ma_uint32& frame_use)
 //}
 
 void
-Processor::go_dj(BINRAW*& dj_data, const RAWSIZE& binsize)
+Processor::go_dj(const std::string& dj_data_path)
 {
 	MAW::stop_device(idle_mode);
-	dj_data_read(dj_data, binsize);
+	dj_data_read(dj_data_path);
 	MAW::start_device(dj_mode);
 	is_on_manual = false;
 }

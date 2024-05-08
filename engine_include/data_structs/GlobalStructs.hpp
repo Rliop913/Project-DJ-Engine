@@ -8,14 +8,16 @@
 #include "dj_BSL.hpp"
 #define Global_album_Sample_Rate 48000
 #define VOID_BUFFER_SIZE(framecount, channel_size) framecount* 4 * channel_size
-typedef unsigned char BINRAW;
-typedef unsigned long RAWSIZE;
+#define SF(N) std::stof(N)
+#define SI(N) std::stoi(N)
+#define SD(N) std::stod(N)
+using K_V = std::unordered_map<std::string, std::string>;
 class ALBUM;
 
 struct engine_order {//data struct for beatcompiler
 	double frame_in=0.0;
 	double frame_out=0.0;
-	DTAG dj_tags;//tag stored
+	K_V dj_tags;//tag stored
 };//the reserved order block define
 
 struct work {//data struct for worker threads
@@ -73,22 +75,25 @@ struct daw_inner_data {
 	float master_sola = 1.0f;
 	std::unordered_map<int, std::vector<engine_order>> reserve_buffer; //a storage for lesser compile
 };
-struct DDTG :DTAG {
+struct DDTG {
 	ma_uint64 frame_in;
 	ma_uint64 frame_out;
-	DDTG(DTAG dtg) {
-		is_interpolate = dtg.is_interpolate;
-		type = dtg.type;
-		from = dtg.from;
-		what = dtg.what;
-		first_value = dtg.first_value;
-		second_value = dtg.second_value;
-		third_value = dtg.third_value;
-		target = dtg.target;
-		first_str = dtg.first_str;
-		second_str = dtg.second_str;
-	}
+	K_V tags;
 };
+// struct DDTG :DTAG {
+// 	DDTG(DTAG dtg) {
+// 		is_interpolate = dtg.is_interpolate;
+// 		type = dtg.type;
+// 		from = dtg.from;
+// 		what = dtg.what;
+// 		first_value = dtg.first_value;
+// 		second_value = dtg.second_value;
+// 		third_value = dtg.third_value;
+// 		target = dtg.target;
+// 		first_str = dtg.first_str;
+// 		second_str = dtg.second_str;
+// 	}
+// };
 //
 //struct tagables
 //{
@@ -205,8 +210,7 @@ struct ch_bpm_data_table
 	};
 
 struct dj_init_group {
-		BINRAW* buffer_whole;
-		RAWSIZE buffer_size;
+		std::string dj_data;
 		void* process_pointer;
 	};
 struct stored_data {

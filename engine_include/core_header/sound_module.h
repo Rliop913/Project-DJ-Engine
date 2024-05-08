@@ -19,35 +19,35 @@ private://-----------------------------------------------pointers---------------
 	ALBUM* palbum;
 	Faust_engine* pfaust;
 public://----------------------------------------------tog/interpolate API--------------------------------------------------------------//
-	void toggle(const DDTG& tag);
-	void interpolate(const DDTG& tag, const ma_uint64& start_frame_, const ma_uint64& end_frame_);
+	void toggle(DDTG& data);
+	void interpolate(DDTG& data);
 
 private://----------------------------------------------toggle functions---------------------------------------------------------//
-	void eq_tog(const DDTG& tag);
-	void distortion_tog(const DDTG& tag);
-	void filter_tog(const DDTG& tag);
-	void control_tog(const DDTG& tag);
-	void vol_tog(const DDTG& tag);
-	void load_tog(const DDTG& tag);
-	void unload_tog(const DDTG& tag);
-	void dj_comp_tog(const DDTG& tag);
-	void beat_match_tog(const DDTG& tag);
-	void sola_tog(const DDTG& tag);
-	void echo_tog(const DDTG& tag);
-	void LFS_tog(const DDTG& tag);
-	void flanger_tog(const DDTG& tag);
-	void phaser_tog(const DDTG& tag);
-	void trance_tog(const DDTG& tag);
-	void panner_tog(const DDTG& tag);
-	void battle_tog(const DDTG& tag);
-	void roll_tog(const DDTG& tag);
+	void eq_tog(DDTG& data);
+	void distortion_tog(DDTG& data);
+	void filter_tog(DDTG& data);
+	void control_tog(DDTG& data);
+	void vol_tog(DDTG& data);
+	void load_tog(DDTG& data);
+	void unload_tog(DDTG& data);
+	void dj_comp_tog(DDTG& data);
+	void beat_match_tog(DDTG& data);
+	void sola_tog(DDTG& data);
+	void echo_tog(DDTG& data);
+	void LFS_tog(DDTG& data);
+	void flanger_tog(DDTG& data);
+	void phaser_tog(DDTG& data);
+	void trance_tog(DDTG& data);
+	void panner_tog(DDTG& data);
+	void battle_tog(DDTG& data);
+	void roll_tog(DDTG& data);
 
 
 private://---------------------------------------------interpolate functions----------------------------------------------------------//
-	void eq_inter(const DDTG& tag, inter_body body);
-	void distortion_inter(const DDTG& tag, inter_body body);
-	void filter_inter(const DDTG& tag, inter_body body);
-	void vol_inter(const DDTG& tag, inter_body body);
-	void sola_inter(const DDTG& tag, inter_body body);
-	void battle_inter(const DDTG& tag, inter_body body);
+	void eq_inter(DDTG& data, inter_body body);
+	void distortion_inter(DDTG& data, inter_body body);
+	void filter_inter(DDTG& data, inter_body body);
+	void vol_inter(DDTG& data, inter_body body);
+	void sola_inter(DDTG& data, inter_body body);
+	void battle_inter(DDTG& data, inter_body body);
 };

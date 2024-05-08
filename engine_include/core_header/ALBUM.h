@@ -2,6 +2,7 @@
 #include "GlobalStructs.hpp"
 #include "sound_module.h"
 #include "CURSOR.h"
+#include "data_loader.hpp"
 class Processor;
 class ALBUM {
 private:
@@ -24,14 +25,14 @@ private:
 	float* faust_before2;//float*AB_SIZE
 	float* faust_after1;//float*AB_SIZE
 	float* faust_after2;//float*AB_SIZE
-
+	data_manager* DM;
 public:
 
 	Processor* pproc;
 	float* sola_buffer;//float*AB_SIZE*4
 	std::vector<inter_body> inter_queue;//queue for interpolation
 
-	ALBUM(const int& channel,const int& albumID, Processor* p, char*& meta_bin, const long long& metasz);
+	ALBUM(const int& channel,const int& albumID, Processor* p, data_manager& DM);
 	~ALBUM();
 	void PLAY();
 	void STOP();

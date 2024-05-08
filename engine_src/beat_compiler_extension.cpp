@@ -5,47 +5,47 @@
 
 
 beat_compiler_extension::beat_compiler_extension(const dj_init_group& init, function_pointers& fp) {
-	//MAIN_DATA = init.dj_data_path;
 	BFP = &fp;
-	origin_base = (DJBSL*)init.buffer_whole;
-	bindj = new sfit<DJBSL>(init.buffer_size, origin_base);
 	if (init.process_pointer != nullptr) {
 		voidp = init.process_pointer;
 	}
-	if (init.buffer_whole != 0) {
-		//void* main_p = GFP.init_fileitr(MAIN_DATA);
-		main_reader_start();
-		//GFP.uninit_fileitr();
+	if (init.dj_data != "" ) {
+		data_manager dm(*BFP);
+		dm[init.dj_data];
+		main_reader_start(dm);
 	}
 }
 
 
 beat_compiler_extension::~beat_compiler_extension()
 {
-	delete(bindj);
+	//delete(bindj);
 }
 
 
 void
-beat_compiler_extension::main_reader_start() {
+beat_compiler_extension::main_reader_start(data_manager& DM) {
 	Processor* pproc = (Processor*)voidp;
 	std::string temp;
-	DJBSL *tpbin;
-	while (*bindj > tpbin) {
-		if (tpbin->djtag.type == dj_type::INIT) {
-			pproc->set_MAX_DECK_USE(int(tpbin->djtag.first_value));
+	KV kv;
+	while (DM>>=kv) {
+		if (SI(kv["type"]) == dj_type::INIT) {
+			pproc->set_MAX_DECK_USE(SI(kv["first_beat"]));
 			continue;
 		}
-		else if (tpbin->djtag.type == dj_type::LOAD) {
-			album_specific_data.insert(std::make_pair(tpbin->djtag.target, tpbin->djtag.first_str));
+		else if (SI(kv["type"]) == dj_type::LOAD) {
+			album_specific_data.insert(std::make_pair(SI(kv["target"]), kv["first_str"]));
 		}
-		raw_reserve[(tpbin->djtag.target)].push_back(*tpbin);
+		raw_reserve[SI(kv["target"])].push_back(kv);
 	}	
 	//readed to end complete
 	std::vector<std::thread> thread_pool;
 	for (auto i = raw_reserve.begin(); i != raw_reserve.end(); i++) {
-		thread_pool.emplace_back([this,i]() {
-			calculate_raw_data(i->first);
+		thread_pool.emplace_back([this, i, &DM]() {
+			
+			auto nm = DM.clone_self();
+			
+			calculate_raw_data(i->first, *nm);
 			});
 	}
 	for (int i = 0; i < thread_pool.size(); i++) {
@@ -57,42 +57,47 @@ beat_compiler_extension::main_reader_start() {
 }
 
 void
-beat_compiler_extension::calculate_raw_data(const int& albumID) {//thread safe & using thread//
+beat_compiler_extension::calculate_raw_data(const int& albumID, data_manager& new_manager) {//thread safe & using thread//
 	char* bin_origin;
 	long long bsize;
 	
 	BFP->read_whole_file(bin_origin, bsize, album_specific_data[albumID]);
-	MLBSL* mus_bin_base = (MLBSL*)bin_origin;
-	sfit<MLBSL> bit(bsize, mus_bin_base);
 	
 	struct inside_scope_data {
 		double start_bpm;
 		double first_beat;
 	}inside;
-	MLBSL* tst;
+	KV kv;
+	//MLBSL* tst;
+	new_manager[album_specific_data[albumID]];
 	//std::vector<ch_bpm_data_table> storage;//inside_scope_bpm_change_storage
-	while (bit > tst) {
-		inside.first_beat = tst->first_beat_point;
-		inside.start_bpm = tst->bpm;
+	while (new_manager >>= kv) {
+		inside.first_beat = SF(kv["first_beat"]);
+		inside.start_bpm = SF(kv["bpm"]);
 		stored_data dat;
-		dat.start_bpm = tst->bpm;
-		dat.first_beat = tst->first_beat_point;
-		if (tst->sof_lan_path != "") {
-			char* sof_bin;
-			long long bsize;
-			BFP->read_whole_file(sof_bin, bsize, tst->sof_lan_path);
-			PBSL* sof_strt = (PBSL*)sof_bin;
-			sfit<PBSL> sbit(bsize, sof_strt);
-			PBSL* tt;
-			while (sbit > tt) {
+		dat.start_bpm = inside.start_bpm;
+		dat.first_beat = inside.first_beat;
+		if (kv["sof_lan_path"] != "") {
+			auto sofdm = (new_manager.clone_self());
+			
+			(*sofdm)[kv["sof_lan_path"]];
+			KV sofkv;
+			//char* sof_bin;
+			//long long bsize;
+			//BFP->read_whole_file(sof_bin, bsize, kv["sof_lan_path"]);
+			//PBSL* sof_strt = (PBSL*)sof_bin;
+			//sfit<PBSL> sbit(bsize, sof_strt);
+			//PBSL* tt;
+
+			while ((*sofdm) >>= sofkv) {
 				ch_bpm_data_table ttable;
-				ttable.std_table.bar = tt->Sbar;
-				ttable.std_table.separate = tt->Ssep;
-				ttable.std_table.beat = tt->Sbeat;
-				ttable.bpm = tt->idx_or_deg;
+				ttable.std_table.bar = SI(sofkv["Sbar"]);
+				ttable.std_table.separate = SI(sofkv["Ssep"]);
+				ttable.std_table.beat = SI(sofkv["Sbeat"]);
+				ttable.bpm = SF(sofkv["Sbar"]);
 				dat.bpm_storage.push_back(ttable);
 			}
-			BFP->delete_bin_buf(sof_bin);
+			
 			sort_storage(dat.bpm_storage);
 			calc_bpm_storage(dat.bpm_storage, inside.start_bpm,inside.first_beat);
 		}
@@ -127,21 +132,29 @@ beat_compiler_extension::check_bpms(const std::vector<ch_bpm_data_table>& bpmS, 
 void
 beat_compiler_extension::reservation(std::vector<ch_bpm_data_table>& inside,const int& albumID, const double& start_bpm, const double& first_beat) {//bpm storage and ID
 	for (int i = 0; i < raw_reserve.at(albumID).size(); i++) {
-		standard_tag_table sloc;
-		sloc.bar = raw_reserve.at(albumID).at(i).Sbar;
-		sloc.beat = raw_reserve.at(albumID).at(i).Sbeat;
-		sloc.separate = raw_reserve.at(albumID).at(i).Ssep;
-		standard_tag_table eloc;
-		eloc.bar = raw_reserve.at(albumID).at(i).Ebar;
-		eloc.beat = raw_reserve.at(albumID).at(i).Ebeat;
-		eloc.separate = raw_reserve.at(albumID).at(i).Esep;
+		// standard_tag_table sloc;
+		// sloc.bar = raw_reserve.at(albumID).at(i).Sbar;
+		// sloc.beat = raw_reserve.at(albumID).at(i).Sbeat;
+		// sloc.separate = raw_reserve.at(albumID).at(i).Ssep;
+		// standard_tag_table eloc;
+		// eloc.bar = raw_reserve.at(albumID).at(i).Ebar;
+		// eloc.beat = raw_reserve.at(albumID).at(i).Ebeat;
+		// eloc.separate = raw_reserve.at(albumID).at(i).Esep;
 
-		if (raw_reserve.at(albumID).at(i).djtag.is_interpolate) {//interpolations
+		if (raw_reserve.at(albumID).at(i).contains("Sbar")) {//interpolations
+			standard_tag_table sloc;
+			sloc.bar = SI(raw_reserve.at(albumID).at(i)["Sbar"]);
+			sloc.beat = SI(raw_reserve.at(albumID).at(i)["Sbeat"]);
+			sloc.separate = SI(raw_reserve.at(albumID).at(i)["Ssep"]);
+			standard_tag_table eloc;
+			eloc.bar = SI(raw_reserve.at(albumID).at(i)["Ebar"]);
+			eloc.beat = SI(raw_reserve.at(albumID).at(i)["Ebeat"]);
+			eloc.separate = SI(raw_reserve.at(albumID).at(i)["Esep"]);
 			if (inside.size() == 0) {//no bpm changes
 				engine_order order;
 				order.frame_in = calc_time_T_S(sloc, start_bpm, first_beat);
 				order.frame_out = calc_time_T_S(eloc, start_bpm, first_beat);
-				order.dj_tags = raw_reserve.at(albumID).at(i).djtag;
+				order.dj_tags = raw_reserve.at(albumID).at(i);
 				data_locker.lock();
 				reservation_storage[albumID].push_back(order);
 				data_locker.unlock();
@@ -165,7 +178,7 @@ beat_compiler_extension::reservation(std::vector<ch_bpm_data_table>& inside,cons
 					:
 					order.frame_out = calc_time_between_T_S(inside.at(end_bpm_point), eloc);
 
-				order.dj_tags = raw_reserve.at(albumID).at(i).djtag;
+				order.dj_tags = raw_reserve.at(albumID).at(i);
 				data_locker.lock();
 				reservation_storage[albumID].push_back(order);
 				data_locker.unlock();
@@ -173,26 +186,30 @@ beat_compiler_extension::reservation(std::vector<ch_bpm_data_table>& inside,cons
 			
 		}//--------------------------------------------------------------------------------------------------------------------------//
 		else {//normals
+			standard_tag_table nloc;
+			nloc.bar = SI(raw_reserve.at(albumID).at(i)["bar"]);
+			nloc.beat = SI(raw_reserve.at(albumID).at(i)["beat"]);
+			nloc.separate = SI(raw_reserve.at(albumID).at(i)["sep"]);
 			if (inside.size() == 0) {//no bpm changes
 				engine_order order;
-				order.frame_in = calc_time_T_S(sloc, start_bpm, first_beat);
+				order.frame_in = calc_time_T_S(nloc, start_bpm, first_beat);
 				order.frame_out = 0;
-				order.dj_tags = raw_reserve.at(albumID).at(i).djtag;
+				order.dj_tags = raw_reserve.at(albumID).at(i);
 				data_locker.lock();
 				reservation_storage[albumID].push_back(order);
 				data_locker.unlock();
 			}
 			else {//bpm changed
-				double temp_approx = to_appr(sloc);
+				double temp_approx = to_appr(nloc);
 				int bpm_point = 0;
 				bpm_point = check_bpms(inside, temp_approx);
 				engine_order order;
 				order.frame_in = bpm_point == 0 ?
-					calc_time_T_S(sloc, start_bpm, first_beat)
+					calc_time_T_S(nloc, start_bpm, first_beat)
 					:
-					calc_time_between_T_S(inside.at(bpm_point), sloc);
+					calc_time_between_T_S(inside.at(bpm_point), nloc);
 				order.frame_out = 0;
-				order.dj_tags = raw_reserve.at(albumID).at(i).djtag;
+				order.dj_tags = raw_reserve.at(albumID).at(i);
 				data_locker.lock();
 				reservation_storage[albumID].push_back(order);
 				data_locker.unlock();

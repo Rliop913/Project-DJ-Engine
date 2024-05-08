@@ -18,19 +18,6 @@ ALBUM::idle_process(ma_uint32 frameCount, float* main_buffer) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 void
 ALBUM::dj_process(ma_uint32 frameCount, float* main_buffer) {
 	this_data.got_frames = false;
@@ -135,17 +122,19 @@ ALBUM::~ALBUM() {
 	dynamic_memory_uninit();
 }
 
-ALBUM::ALBUM(const int& channel, const int& albumID, Processor* p, char*& meta_bin, const long long& metasz) {
+ALBUM::ALBUM(const int& channel, const int& albumID, Processor* p, data_manager& dm) {
 	pproc = p;
 	//char* meta_bin;
 	//long long metasz;
-	
+	DM = &dm;
+	KV metakv;
+	*(DM)>>=metakv;
 //	GFP.read_whole_file(meta_bin, metasz, meta_data_path);
-	MLBSL* mtrt = (MLBSL*)meta_bin;
-	album_init(mtrt->path);
+	//MLBSL* mtrt = (MLBSL*)meta_bin;
+	album_init(metakv["path"]);
 	this->this_data.ID = albumID;
-	this->this_data.bpm = mtrt->bpm;
-	this->this_data.first_beat = mtrt->first_beat_point;
+	this->this_data.bpm = SF(metakv["bpm"]);
+	this->this_data.first_beat = SF(metakv["first_beat"]);
 	dynamic_memory_init();
 }
 void
@@ -158,11 +147,12 @@ go_to_function_for_simple_check://check until vector until reservation is availa
 
 	if (pproc->raw_to_processed((*RS)[this_data.ID].at(0).frame_in) < frame_now) {
 		//new code
-		DDTG dtag((*RS)[this_data.ID].at(0).dj_tags);
+		DDTG dtag;//((*RS)[this_data.ID].at(0).dj_tags);
+		dtag.tags = (*RS)[this_data.ID].at(0).dj_tags;
 		dtag.frame_in = (*RS)[this_data.ID].at(0).frame_in;
 		dtag.frame_out = (*RS)[this_data.ID].at(0).frame_out;
-		if (dtag.is_interpolate) {//interpolate mode
-			module->interpolate(dtag, (*RS)[this_data.ID].at(0).frame_in, (*RS)[this_data.ID].at(0).frame_out);
+		if (dtag.tags.contains("Sbar")) {//interpolate mode
+			module->interpolate(dtag);
 		}
 		else {//toggle mode
 			module->toggle(dtag);

@@ -230,9 +230,9 @@ Engine_Main::manual_effect(const int& effect_type,const float& first, const floa
 }
 
 void
-Engine_Main::sw_to_dj(BINRAW*& djbin, const RAWSIZE& binsize) {
+Engine_Main::sw_to_dj(const std::string& dj_data_path) {
 	clear_deck();
-	PDJE_processor->go_dj(djbin, binsize);
+	PDJE_processor->go_dj(dj_data_path);
 }
 
 
@@ -263,20 +263,19 @@ Engine_Main::processed_time_return_ms()
 
 int main()
 {
-	MLBSL mls;
-	mls.bpm = 170;
-	mls.composer_name = "asdf";
-	mls.first_beat_point = 0;
-	mls.music_title = "fdsa";
-	mls.path = "G://RAS.wav";
-	mls.sof_lan_path = "no";
-	std::ofstream fst("ttdat.bin", std::ios::binary);
-	fst.write(reinterpret_cast<char*>(&mls), sizeof(mls));
-    fst.close();
+	// mls.bpm = 170;
+	// mls.composer_name = "asdf";
+	// mls.first_beat_point = 0;
+	// mls.music_title = "fdsa";
+	// mls.path = "G://RAS.wav";
+	// mls.sof_lan_path = "no";
+	// std::ofstream fst("ttdat.bin", std::ios::binary);
+	// fst.write(reinterpret_cast<char*>(&mls), sizeof(mls));
+    // fst.close();
 	//return 0;
-	Engine_Main *EM = new Engine_Main(480);
-	EM->sw_to_manual("ttdat.bin");
-	EM->manual_playback();
+	// Engine_Main *EM = new Engine_Main(480);
+	// EM->sw_to_manual("ttdat.bin");
+	// EM->manual_playback();
 	getchar();
 }
 //	Engine_Main *EM = new Engine_Main(48);

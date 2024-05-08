@@ -1,6 +1,5 @@
 #pragma once
 #include <algorithm>
-
 #include "miniaudio.h"
 #include "SoundTouch.h"
 #include <immintrin.h>
