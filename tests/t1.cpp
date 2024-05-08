@@ -13,7 +13,7 @@ TEST_CASE("data_loader is available", "[data_loader]")
     auto dm = cm.clone_self();
     KV key_value;
     //std::string test_string="_tf-123_ts-432_offset-1442_testtemp-4423_";
-    (*dm)["G://Dropbox/Dropbox/box_inside/git_branch/cpps/Disk_Jockey_Engine_Mini/testdata.txt"];
+    (*dm)["./testdata.txt"];
     (*dm)>>=key_value;
     //dm.line_decoder(test_string, key_value);
     KV vl;

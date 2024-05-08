@@ -144,7 +144,7 @@ ALBUM::ALBUM(const int& channel, const int& albumID, Processor* p, data_manager&
 	album_init(metakv["path"]);
 	this->this_data.ID = albumID;
 	this->this_data.bpm = SF(metakv["bpm"]);
-	this->this_data.first_beat = SF(metakv["first_beat"]);
+	this->this_data.first_beat = SF(metakv["firstBeat"]);
 	dynamic_memory_init();
 }
 void

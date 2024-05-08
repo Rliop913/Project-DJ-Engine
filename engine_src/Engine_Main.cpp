@@ -273,9 +273,9 @@ int main()
 	// fst.write(reinterpret_cast<char*>(&mls), sizeof(mls));
     // fst.close();
 	//return 0;
-	// Engine_Main *EM = new Engine_Main(480);
-	// EM->sw_to_manual("ttdat.bin");
-	// EM->manual_playback();
+	Engine_Main *EM = new Engine_Main(480);
+	EM->sw_to_manual("test_meta_data.txt");
+	EM->manual_playback();
 	getchar();
 }
 //	Engine_Main *EM = new Engine_Main(48);
