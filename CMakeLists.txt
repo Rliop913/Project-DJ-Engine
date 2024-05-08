@@ -70,6 +70,14 @@ add_executable(${PROJECT_NAME} ${engine_src} ${SoundTouch_src})
 add_executable(data_test ${test_srcs})
 add_executable(test_main ${test_main_srcs})
 
+if(WIN32)
+	
+elseif(UNIX)
+	add_definitions(-DFOR_NILUX_BUILD)
+endif()
+
+
+
 target_link_libraries(data_test PUBLIC Catch2::Catch2WithMain)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
 

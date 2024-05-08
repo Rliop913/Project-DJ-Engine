@@ -78,12 +78,13 @@ ALBUM::album_init(const std::string& song_path) {
 void
 ALBUM::dynamic_memory_uninit()
 {
-	/*free(process_memory);
+#ifdef FOR_LINUX_BUILD
+	free(process_memory);
 	free(faust_before1);
 	free(faust_before2);
 	free(faust_after1);
-	free(faust_after2);*/
-#ifdef FOR_LINUX_BUILD
+	free(faust_after2);
+	free(sola_buffer);
 #endif
 #ifndef FOR_LINUX_BUILD
 	_aligned_free(process_memory);
@@ -104,13 +105,22 @@ ALBUM::dynamic_memory_init()
 	faust_before2 = (float*)malloc(sizeof(float) * AB_Size);
 	faust_after1 = (float*)malloc(sizeof(float) * AB_Size);
 	faust_after2 = (float*)malloc(sizeof(float) * AB_Size);*/
+#ifdef FOR_LINUX_BUILD
+	process_memory = (float*)aligned_alloc(32, sizeof(float) * AB_Size * 2);
+	faust_before1 = (float*)aligned_alloc( 32, sizeof(float) * AB_Size);
+	faust_before2 = (float*)aligned_alloc(32, sizeof(float) * AB_Size);
+	faust_after1 = (float*)aligned_alloc(32, sizeof(float) * AB_Size);
+	faust_after2 = (float*)aligned_alloc(32, sizeof(float) * AB_Size);
+	sola_buffer = (float*)aligned_alloc(32, sizeof(float) * AB_Size * 4);
+#endif
+#ifndef FOR_LINUX_BUILD
 	process_memory = (float*)_aligned_malloc(sizeof(float) * AB_Size * 2, 32);
 	faust_before1 = (float*)_aligned_malloc(sizeof(float) * AB_Size, 32);
 	faust_before2 = (float*)_aligned_malloc(sizeof(float) * AB_Size, 32);
 	faust_after1 = (float*)_aligned_malloc(sizeof(float) * AB_Size, 32);
 	faust_after2 = (float*)_aligned_malloc(sizeof(float) * AB_Size, 32);
 	sola_buffer = (float*)_aligned_malloc(sizeof(float) * AB_Size * 4, 32);
-
+#endif
 }
 
 
