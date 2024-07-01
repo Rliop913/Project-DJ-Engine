@@ -30,13 +30,13 @@ beat_compiler_extension::main_reader_start(data_manager& DM) {
 	KV kv;
 	while (DM>>=kv) {
 		if (SI(kv["type"]) == dj_type::INIT) {
-			pproc->set_MAX_DECK_USE(SI(kv["first_beat"]));
+			pproc->set_MAX_DECK_USE(SI(kv["first"]));
 			continue;
 		}
 		else if (SI(kv["type"]) == dj_type::LOAD) {
-			album_specific_data.insert(std::make_pair(SI(kv["target"]), kv["first_str"]));
+			album_specific_data.insert(std::make_pair(SI(kv["target"]), kv["first"]));
 		}
-		raw_reserve[SI(kv["target"])].push_back(kv);
+		raw_reserve[SI(kv["from"])].push_back(kv);
 	}	
 	//readed to end complete
 	std::vector<std::thread> thread_pool;
@@ -72,15 +72,15 @@ beat_compiler_extension::calculate_raw_data(const int& albumID, data_manager& ne
 	new_manager[album_specific_data[albumID]];
 	//std::vector<ch_bpm_data_table> storage;//inside_scope_bpm_change_storage
 	while (new_manager >>= kv) {
-		inside.first_beat = SF(kv["first_beat"]);
+		inside.first_beat = SF(kv["firstBeat"]);
 		inside.start_bpm = SF(kv["bpm"]);
 		stored_data dat;
 		dat.start_bpm = inside.start_bpm;
 		dat.first_beat = inside.first_beat;
-		if (kv["sof_lan_path"] != "") {
+		if (kv["sofLanPath"] != "") {
 			auto sofdm = (new_manager.clone_self());
 			
-			(*sofdm)[kv["sof_lan_path"]];
+			(*sofdm)[kv["sofLanPath"]];
 			KV sofkv;
 			//char* sof_bin;
 			//long long bsize;

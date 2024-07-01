@@ -62,22 +62,72 @@ DeckWorker::time_to_work()
 
 }
 
-#include <time.h>
-#include <iostream>
+// #include <time.h>
+// #include <iostream>
+// void
+// DeckWorker::looper()
+// {
+// 	clock_t start, end;
+// 	while (true)//worker life loop
+// 	{
+// 		std::unique_lock<std::mutex> lock(employer_ptr->work_mutex);
+// 		employer_ptr->work_call.wait(lock, [this]() {return employer_ptr->LOCK_SAFE<employer_ptr->MAX_DECK_USE; });
+// 		employer_ptr->LOCK_SAFE++;
+// 		//work wait
+// 		lock.unlock();
+
+// 		//start = clock();
+
+// 		if (employer_ptr->MASS_LAYOFFS) {
+// 			return;//Break Call from processor
+// 		}
+
+// 		if (employed) {//go get work
+			
+// 			if (employer_ptr->ID_is_in_stopQ(reserved_id)) {
+// 				get_fired();
+// 				goto no_work_dive_point;
+// 			}
+// 			else {
+// 			hired_dive_point:
+// 				//start = clock();
+// 				time_to_work();
+// 				////end = clock() - start;
+// 				////std::cout << end << std::endl;
+// 				//employer_ptr->work_counter_locker.lock();
+// 				////employer_ptr->work_counter += 1;
+// 				//employer_ptr->work_counter_locker.unlock();
+// 			}
+// 		}
+// 		else {//fired  -->  go find a job
+// 		no_work_dive_point:
+// 			if (go_find_a_job()) {
+// 				goto hired_dive_point;
+// 			}
+// 			else {
+// 				//employer_ptr->work_counter_locker.lock();
+// 				////employer_ptr->work_counter += 1;
+// 				//employer_ptr->work_counter_locker.unlock();
+// 			}
+// 		}
+
+// 		std::unique_lock<std::mutex> endlock(employer_ptr->end_mutex);
+// 		//employer_ptr->work_counter_locker.lock();
+// 		employer_ptr->work_counter += 1;
+// 		//employer_ptr->work_counter_locker.unlock();
+// 		employer_ptr->work_call.wait(endlock);//work wait
+// 		endlock.unlock();
+// 		//end = clock() - start;
+// 		//std::cout << end << std::endl;
+// 	}
+// }
 void
 DeckWorker::looper()
 {
 	clock_t start, end;
 	while (true)//worker life loop
 	{
-		std::unique_lock<std::mutex> lock(employer_ptr->work_mutex);
-		employer_ptr->work_call.wait(lock, [this]() {return employer_ptr->LOCK_SAFE<employer_ptr->MAX_DECK_USE; });
-		employer_ptr->LOCK_SAFE++;
-		//work wait
-		lock.unlock();
-
-		//start = clock();
-
+		employer_ptr->startline->arrive_and_wait();
 		if (employer_ptr->MASS_LAYOFFS) {
 			return;//Break Call from processor
 		}
@@ -90,13 +140,7 @@ DeckWorker::looper()
 			}
 			else {
 			hired_dive_point:
-				//start = clock();
 				time_to_work();
-				////end = clock() - start;
-				////std::cout << end << std::endl;
-				//employer_ptr->work_counter_locker.lock();
-				////employer_ptr->work_counter += 1;
-				//employer_ptr->work_counter_locker.unlock();
 			}
 		}
 		else {//fired  -->  go find a job
@@ -105,19 +149,9 @@ DeckWorker::looper()
 				goto hired_dive_point;
 			}
 			else {
-				//employer_ptr->work_counter_locker.lock();
-				////employer_ptr->work_counter += 1;
-				//employer_ptr->work_counter_locker.unlock();
 			}
 		}
-
-		std::unique_lock<std::mutex> endlock(employer_ptr->end_mutex);
-		//employer_ptr->work_counter_locker.lock();
-		employer_ptr->work_counter += 1;
-		//employer_ptr->work_counter_locker.unlock();
-		employer_ptr->work_call.wait(endlock);//work wait
-		endlock.unlock();
-		//end = clock() - start;
-		//std::cout << end << std::endl;
+		employer_ptr->work_end_buzzer->arrive();
 	}
 }
+

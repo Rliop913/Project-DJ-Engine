@@ -210,7 +210,7 @@ sound_module::vol_tog(DDTG& data) {
 }
 void
 sound_module::load_tog(DDTG& data) {
-	processor->load_album(data.tags["first_str"], SI(data.tags["target"]));
+	processor->load_album(data.tags["first"], SI(data.tags["target"]));
 }
 
 void

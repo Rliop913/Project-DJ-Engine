@@ -1,6 +1,7 @@
 #pragma once
 #include "GlobalStructs.hpp"
 #include <thread>
+#include <barrier>
 class Processor;
 class DeckWorker
 {

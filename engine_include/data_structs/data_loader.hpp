@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include "GlobalStructs.hpp"
 #include <memory>
+#include "PDJS.pb.h"
 using KV = std::unordered_map<std::string, std::string>;
 
 struct data_manager{

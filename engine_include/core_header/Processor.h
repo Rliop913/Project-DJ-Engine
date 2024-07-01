@@ -1,5 +1,6 @@
 #pragma once
 #include <mutex>
+#include <barrier>
 #include "GlobalStructs.hpp"
 #include "ALBUM.h"
 #include "beat_compiler_extension.hpp"
@@ -33,17 +34,19 @@ public:
 
 	std::vector<DeckWorker*> company;
 
-	std::mutex work_mutex;
-	std::condition_variable work_call;
-	std::mutex end_mutex;
-	std::condition_variable end_sync;
+	std::barrier<> *startline;
+	std::barrier<> *work_end_buzzer;
+	// std::mutex work_mutex;
+	// std::condition_variable work_call;
+	// std::mutex end_mutex;
+	// std::condition_variable end_sync;
 
 	bool MASS_LAYOFFS = false;//event trigger, fire all worker threads
 	int MAX_DECK_USE = 4;
 
-	int LOCK_SAFE = 0;
+	//int LOCK_SAFE = 0;
 
-	int work_counter = 0; std::mutex work_counter_locker;
+	//int work_counter = 0; std::mutex work_counter_locker;
 
 	beat_compiler_extension* pBCE=nullptr;
 	void* public_bufferout=nullptr;

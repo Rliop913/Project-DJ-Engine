@@ -12,17 +12,34 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(Catch2)
 enable_testing()
 
-#set(CMAKE_BUILD_TYPE Debug)
-set(CMAKE_VERBOSE_MAKEFILE true)
-set(cmake_cxx_standard 20)
-set(cmake_cxx_flags -std=c++20)
-set(cmake_c_compiler clang)
-set(cmake_cxx_compiler clang++)
-#add_subdirectory(${CMAKE_SOURCE_DIR}/soundtouch-master/soundtouch)
+
+FetchContent_Declare(
+	protobuf
+	GIT_REPOSITORY https://github.com/protocolbuffers/protobuf.git
+	GIT_TAG v27.0-rc3 
+	)
+	set(protobuf_BUILD_TESTS OFF)
+	set(protobuf_INSTALL ON)
+	set(protobuf_BUILD_EXAMPLES OFF)
+	FetchContent_MakeAvailable(protobuf)
+	#set(CMAKE_BUILD_TYPE Debug)
+	set(CMAKE_VERBOSE_MAKEFILE true)
+	set(cmake_cxx_standard 20)
+	set(cmake_cxx_flags -std=c++20)
+	set(cmake_c_compiler clang)
+	set(cmake_cxx_compiler clang++)
+	#add_subdirectory(${CMAKE_SOURCE_DIR}/soundtouch-master/soundtouch)
+	set(Protobuf_INCLUDE_DIR ${protobuf_SOURCE_DIR}/src)
+	set(Absl_INCLUDE_DIR ${protobuf_SOURCE_DIR}/third_party/abseil-cpp)
+	if(WIN32)
+	set(Protobuf_LIBRARIES ${protobuf_BINARY_DIR}/src/libprotobuf.lib)
+	elseif(UNIX)
+		add_definitions(-DFOR_LINUX_BUILD)
+		set(Protobuf_LIBRARIES ${protobuf_BINARY_DIR}/src/libprotobuf.a)
+	endif()
 
 
-
-
+	include_directories(${Protobuf_INCLUDE_DIR} ${Absl_INCLUDE_DIR})
 set(engine_src
 ${CMAKE_SOURCE_DIR}/engine_src/ALBUM.cpp
 ${CMAKE_SOURCE_DIR}/engine_src/beat_compiler_extension.cpp
@@ -34,6 +51,8 @@ ${CMAKE_SOURCE_DIR}/engine_src/Processor.cpp
 ${CMAKE_SOURCE_DIR}/engine_src/sound_module.cpp
 ${CMAKE_SOURCE_DIR}/miniaudio/miniaudio.c
 ${CMAKE_SOURCE_DIR}/engine_src/data_loader.cpp
+${CMAKE_SOURCE_DIR}/engine_src/PDJS.pb.cc
+
 
 )
 
@@ -52,31 +71,31 @@ ${CMAKE_SOURCE_DIR}/soundtouch_src/RateTransposer.cpp
 ${CMAKE_SOURCE_DIR}/soundtouch_src/SoundTouch.cpp
 ${CMAKE_SOURCE_DIR}/soundtouch_src/sse_optimized.cpp
 ${CMAKE_SOURCE_DIR}/soundtouch_src/TDStretch.cpp
+
 )
 
 set(test_srcs
 ${CMAKE_SOURCE_DIR}/miniaudio/miniaudio.c
 ${CMAKE_SOURCE_DIR}/engine_src/data_loader.cpp
 ${CMAKE_SOURCE_DIR}/tests/t1.cpp
+${CMAKE_SOURCE_DIR}/engine_src/PDJS.pb.cc
 )
 
 set(test_main_srcs
 ${CMAKE_SOURCE_DIR}/miniaudio/miniaudio.c
 ${CMAKE_SOURCE_DIR}/engine_src/data_loader.cpp
 ${CMAKE_SOURCE_DIR}/tests/tmain.cpp
+${CMAKE_SOURCE_DIR}/engine_src/PDJS.pb.cc
 )
 
-add_executable(${PROJECT_NAME} ${engine_src} ${SoundTouch_src})
+add_executable(${PROJECT_NAME} ${engine_src} ${SoundTouch_src} ${PROTO_HDRS})
 add_executable(data_test ${test_srcs})
-add_executable(test_main ${test_main_srcs})
-
-if(WIN32)
-	
-elseif(UNIX)
-	add_definitions(-DFOR_LINUX_BUILD)
-endif()
+add_executable(test_main ${test_main_srcs} ${PROTO_HDRS})
 
 
+
+target_link_libraries(${PROJECT_NAME} ${Protobuf_LIBRARIES})
+target_link_libraries(test_main ${Protobuf_LIBRARIES})
 
 target_link_libraries(data_test PUBLIC Catch2::Catch2WithMain)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)

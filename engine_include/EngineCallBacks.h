@@ -17,17 +17,6 @@ dj_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 fra
 	Processor* pproc = (Processor*)pDevice->pUserData;
 	pproc->add_processed_time(frameCount);
 	pproc->public_bufferout = pOutput;
-	pproc->work_counter = 0;
-	pproc->work_mutex.lock();
-	pproc->LOCK_SAFE = 0;
-	pproc->work_call.notify_all();
-	pproc->work_mutex.unlock();
-	while (true) {
-		if (pproc->work_counter >= pproc->MAX_DECK_USE) {
-			break;
-		}
-	}
-	pproc->end_mutex.lock();
-	pproc->end_sync.notify_all();
-	pproc->end_mutex.unlock();
+	pproc->startline->arrive_and_wait();
+	pproc->work_end_buzzer->arrive_and_wait();
 }

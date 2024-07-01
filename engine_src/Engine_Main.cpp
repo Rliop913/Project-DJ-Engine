@@ -274,8 +274,10 @@ int main()
     // fst.close();
 	//return 0;
 	Engine_Main *EM = new Engine_Main(480);
-	EM->sw_to_manual("test_meta_data.txt");
-	EM->manual_playback();
+	EM->sw_to_dj("dj_set_2.txt");
+	EM->dj_start();
+	//EM->sw_to_manual("test_meta_data.txt");
+	//EM->manual_playback();
 	getchar();
 }
 //	Engine_Main *EM = new Engine_Main(48);

@@ -127,6 +127,8 @@ Processor::dj_data_read(const std::string& dj_data_path) {
 void
 Processor::worker_hire() {
 	MASS_LAYOFFS = false;
+	startline = new std::barrier(MAX_DECK_USE+1);
+	work_end_buzzer = new std::barrier(MAX_DECK_USE+1);
 	for (int i = 0; i < MAX_DECK_USE; i++) {
 		DeckWorker* new_employee = new DeckWorker(this, i);
 		company.push_back(new_employee);
@@ -161,6 +163,8 @@ Processor::worker_layoff() {
 		delete company[i];
 	}
 	company.clear();
+	delete(startline);
+	delete(work_end_buzzer);
 }
 
 void
@@ -177,7 +181,7 @@ Processor::init_first_album() {
 	for (int i = 0; i < (*RS)[0].size(); i++) {
 		if (SI((*RS)[0].at(i).dj_tags["type"]) == dj_type::LOAD) {
 			if (SI((*RS)[0].at(i).dj_tags["target"]) == 0) {
-				load_album((*RS)[0].at(i).dj_tags["first_str"], 0);
+				load_album((*RS)[0].at(i).dj_tags["first"], 0);
 				(*RS)[0].erase((*RS)[0].begin() + i);
 				return;
 			}

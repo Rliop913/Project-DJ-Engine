@@ -55,18 +55,5 @@ default_delete_binary_buffer(char*& binptr) {
 	delete[] binptr;
 }
 
-//
-//JSON_OUT
-//default_json_parser(const std::string& json_text) {
-//	Json::Reader reader;
-//	Json::Value root;
-//	reader.parse(json_text,root);
-//	Json::Value::Members mem = root.getMemberNames();
-//	JSON_OUT out;
-//	for (int i = 0; i < mem.size(); ++i) {
-//		out[mem.back()] = (root[mem.back()].asString());
-//	}
-//	return out;
-//}
 
 
