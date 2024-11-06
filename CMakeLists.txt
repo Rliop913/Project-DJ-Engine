@@ -43,6 +43,11 @@ ${CMAKE_SOURCE_DIR}/src/MiniAudioWrapper.cpp
 ${CMAKE_SOURCE_DIR}/src/Processor.cpp
 ${CMAKE_SOURCE_DIR}/src/sound_module.cpp
 ${CMAKE_SOURCE_DIR}/src/data_loader.cpp
+
+${CMAKE_SOURCE_DIR}/src/dbsrc/dbRoot.cpp
+${CMAKE_SOURCE_DIR}/src/dbsrc/musicDB.cpp
+
+
 )
 
 set(miniaudio_src
@@ -75,6 +80,8 @@ target_include_directories(
 	${CMAKE_SOURCE_DIR}/include/core_header
 	${CMAKE_SOURCE_DIR}/include/data_structs
 	${CMAKE_SOURCE_DIR}/include/wrapper
+  ${CMAKE_SOURCE_DIR}/include/db
+  
 	${CMAKE_SOURCE_DIR}/miniaudio
 	${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_include
 	${CMAKE_SOURCE_DIR}/third_party/Faust/compiled
