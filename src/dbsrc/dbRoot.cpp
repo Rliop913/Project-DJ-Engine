@@ -1,10 +1,6 @@
 #include <stdexcept>
 #include "dbRoot.hpp"
-void
-dbOut::FillData(sqlite3_stmt* stmt)
-{
-    return;
-}
+
 
 void
 litedb::operator<<(const std::string& insertSQL)
@@ -15,12 +11,6 @@ litedb::operator<<(const std::string& insertSQL)
         sqlite3_free(errMessage);
         throw std::runtime_error(em.c_str());
     }
-}
-
-std::optional<std::vector<dbOut>>
-litedb::operator>>(const std::string& returnSQL)
-{
-    return std::nullopt;
 }
 
 litedb::litedb(const std::string& dbPath)
@@ -35,4 +25,24 @@ litedb::litedb(const std::string& dbPath)
 litedb::~litedb()
 {
     sqlite3_close(db);
+}
+
+
+MAYBE_MUSE
+litedb::getMuseData(const std::string& returnSQL)
+{
+    sqlite3_stmt* stmt;
+    if(sqlite3_prepare_v2(db, returnSQL.c_str(), -1, &stmt, nullptr) != SQLITE_OK){
+        sqlite3_finalize(stmt);
+        return std::nullopt;
+    }
+    else{
+        MUSE data;
+        while (sqlite3_step(stmt) == SQLITE_ROW){
+            data.emplace_back();
+            data.back().FillData(stmt);
+        }
+        sqlite3_finalize(stmt);
+        return std::move(data);        
+    }
 }

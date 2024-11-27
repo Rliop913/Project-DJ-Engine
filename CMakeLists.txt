@@ -45,7 +45,7 @@ ${CMAKE_SOURCE_DIR}/src/sound_module.cpp
 ${CMAKE_SOURCE_DIR}/src/data_loader.cpp
 
 ${CMAKE_SOURCE_DIR}/src/dbsrc/dbRoot.cpp
-${CMAKE_SOURCE_DIR}/src/dbsrc/musicDB.cpp
+${CMAKE_SOURCE_DIR}/include/db/musicDB.cpp
 
 
 )

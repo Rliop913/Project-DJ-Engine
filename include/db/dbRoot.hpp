@@ -3,15 +3,22 @@
 #include <vector>
 #include <optional>
 #include <sqlite3.h>
-struct dbOut{
-    void FillData(sqlite3_stmt* stmt);
-};
+
+#include "musicDB.hpp"
+
+using MUSE = std::vector<musdata>;
+using MAYBE_MUSE = std::optional<MUSE>;
+
+
 class litedb{
 protected:
     sqlite3* db;
 public:
     void operator<<(const std::string& insertSQL);
-    std::optional<std::vector<dbOut>> operator>>(const std::string& returnSQL);
+    MAYBE_MUSE getMuseData(const std::string& returnSQL);
+    
+
+
     litedb(const std::string& dbPath);
     ~litedb();
 };

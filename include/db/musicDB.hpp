@@ -1,21 +1,21 @@
 #pragma once
-#include "dbRoot.hpp"
+#include <string>
+#include <vector>
+#include <sqlite3.h>
 
 
-struct musdata : dbOut{
+
+struct musdata{
 private:
     std::string title;
     std::string composer;
     std::string musicPath;
     std::string bpmBinary;
-    double bpm;
+    double bpm = -1.0;
 public:
     void FillData(sqlite3_stmt* stmt);
+    std::string MatchSearch();
+    
 };
 
-using MUSE = std::vector<musdata>;
-using MAYBE_MUSE = std::optional<MUSE>;
 
-class musedb : litedb{
-    MAYBE_MUSE operator>>(const std::string& returnSQL);
-};

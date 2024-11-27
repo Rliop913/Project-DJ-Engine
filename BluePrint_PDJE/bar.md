@@ -1,0 +1,3 @@
+In music, a **bar** (or measure) is a unit of time defined by the time signature, which indicates how many beats are in each bar and the note value of one beat. Bars are separated by vertical lines (bar lines) and help organize rhythm, structure, and musical flow. They also define patterns of strong and weak beats, providing a framework for composition and performance.
+
+See [[Specific music playback location]]
