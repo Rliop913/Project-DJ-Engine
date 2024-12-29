@@ -4,8 +4,9 @@
 			[[Music]]
 			 [[Track]]
 		[[Audio_Render]]
-			[[RealTime_Render]]
 			[[PreRender]]
+			[[RealTime_Render]]
+			[[ManualRender]]
 		[[Engine]]
 			[[Note Object]]
 			
