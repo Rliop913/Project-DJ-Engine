@@ -2,6 +2,7 @@ set(cmake_cxx_standard 20)
 set(cmake_cxx_flags -std=c++20)
 set(cmake_c_compiler clang)
 set(cmake_cxx_compiler clang++)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 cmake_minimum_required(VERSION 3.0)
 project(
@@ -32,6 +33,8 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(capnproto)
 FetchContent_MakeAvailable(miniaudio)
 FetchContent_MakeAvailable(sqlite)
+
+link_libraries(sqlite3)
 
 set(engine_src
 ${CMAKE_SOURCE_DIR}/src/ALBUM.cpp
@@ -72,11 +75,8 @@ ${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_src/TDStretch.cpp
 
 )
 
-add_executable(${PROJECT_NAME} ${engine_src} ${SoundTouch_src})
-
-target_include_directories(
-	${PROJECT_NAME} PRIVATE
-	${CMAKE_SOURCE_DIR}/include
+include_directories(
+  ${CMAKE_SOURCE_DIR}/include
 	${CMAKE_SOURCE_DIR}/include/core_header
 	${CMAKE_SOURCE_DIR}/include/data_structs
 	${CMAKE_SOURCE_DIR}/include/wrapper
@@ -86,4 +86,55 @@ target_include_directories(
 	${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_include
 	${CMAKE_SOURCE_DIR}/third_party/Faust/compiled
 	${miniaudio_SOURCE_DIR}/extras/miniaudio_split
+  ${sqlite_INCLUDE_DIR}
 )
+
+set(dbSource
+${CMAKE_SOURCE_DIR}/include/db/musicDB.cpp
+${CMAKE_SOURCE_DIR}/include/db/trackDB.cpp
+${CMAKE_SOURCE_DIR}/include/db/dbRoot.cpp
+)
+
+
+# add_executable(${PROJECT_NAME} ${engine_src} ${SoundTouch_src})
+
+# target_include_directories(
+# 	${PROJECT_NAME} PRIVATE
+# 	${CMAKE_SOURCE_DIR}/include
+# 	${CMAKE_SOURCE_DIR}/include/core_header
+# 	${CMAKE_SOURCE_DIR}/include/data_structs
+# 	${CMAKE_SOURCE_DIR}/include/wrapper
+#   ${CMAKE_SOURCE_DIR}/include/db
+  
+# 	${CMAKE_SOURCE_DIR}/miniaudio
+# 	${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_include
+# 	${CMAKE_SOURCE_DIR}/third_party/Faust/compiled
+# 	${miniaudio_SOURCE_DIR}/extras/miniaudio_split
+# )
+
+
+set(test_sources
+${CMAKE_SOURCE_DIR}/include/tests/dbTest.cpp
+
+)
+add_executable(testdb ${test_sources} ${dbSource})
+enable_testing()
+
+# target_include_directories(testdb
+#   PRIVATE
+#   ${CMAKE_SOURCE_DIR}/include
+# 	${CMAKE_SOURCE_DIR}/include/core_header
+# 	${CMAKE_SOURCE_DIR}/include/data_structs
+# 	${CMAKE_SOURCE_DIR}/include/wrapper
+#   ${CMAKE_SOURCE_DIR}/include/db
+  
+# 	${CMAKE_SOURCE_DIR}/miniaudio
+# 	${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_include
+# 	${CMAKE_SOURCE_DIR}/third_party/Faust/compiled
+# 	${miniaudio_SOURCE_DIR}/extras/miniaudio_split
+#   ${sqlite_INCLUDE_DIR}
+# )
+
+
+
+add_test(NAME TOTAL_TEST COMMAND testdb)

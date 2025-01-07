@@ -8,6 +8,7 @@
 			[[RealTime_Render]]
 			[[ManualRender]]
 		[[Engine]]
+			[[Input]]
 			[[Note Object]]
 			
 		
