@@ -7,6 +7,7 @@
 #include "musicDB.hpp"
 #include "trackDB.hpp"
 
+
 using MUS_VEC = std::vector<musdata>;
 using MAYBE_MUS_VEC = std::optional<MUS_VEC>;
 
@@ -20,41 +21,47 @@ private:
 public:
     template<typename DBType>
     std::optional<std::vector<DBType>>
-    operator<<(const DBType& searchClue);
+    operator<<(DBType& searchClue);
 
     template<typename DBType>
     bool
-    operator<<=(const DBType& insertObject);
+    operator<=(DBType& insertObject);
 
     litedb(const std::string& dbPath);
     
     ~litedb();
 };
 
-
+#include <iostream>
 
 template<typename DBType>
 std::optional<std::vector<DBType>>
-litedb::operator<<(const DBType& searchClue)
+litedb::operator<<(DBType& searchClue)
 {
-    sqlite3_stmt* stmt = nullptr;
-    if(searchClue.GenSearchSTMT(stmt, db)){
+    stmt dbstate = stmt();
+    if(searchClue.GenSearchSTMT(dbstate, db)){
         std::vector<DBType> data;
-        while(sqlite3_step(stmt) == SQLITE_ROW){
-            data.emplace_back(stmt);
+        while(sqlite3_step(dbstate.S) == SQLITE_ROW){
+            data.emplace_back(&dbstate);
         }
-        sqlite3_finalize(stmt);
         return std::move(data);
     }
     else{
-        sqlite3_finalize(stmt);
         return std::nullopt;
     }
 }
 
 template<typename DBType>
 bool
-litedb::operator<<=(const DBType& insertObject)
+litedb::operator<=(DBType& insertObject)
 {
-
+    stmt dbstate = stmt();
+    if(insertObject.GenInsertSTMT(dbstate, db)){
+        auto insertRes = sqlite3_step(dbstate.S);
+        if(insertRes != SQLITE_DONE){
+            return false;
+        }
+        return true;
+    }
+    return false;
 }

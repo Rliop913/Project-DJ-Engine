@@ -36,22 +36,22 @@ FetchContent_MakeAvailable(sqlite)
 
 link_libraries(sqlite3)
 
-set(engine_src
-${CMAKE_SOURCE_DIR}/src/ALBUM.cpp
-${CMAKE_SOURCE_DIR}/src/beat_compiler_extension.cpp
-${CMAKE_SOURCE_DIR}/src/CURSOR.cpp
-${CMAKE_SOURCE_DIR}/src/DeckWorker.cpp
-${CMAKE_SOURCE_DIR}/src/Engine_Main.cpp
-${CMAKE_SOURCE_DIR}/src/MiniAudioWrapper.cpp
-${CMAKE_SOURCE_DIR}/src/Processor.cpp
-${CMAKE_SOURCE_DIR}/src/sound_module.cpp
-${CMAKE_SOURCE_DIR}/src/data_loader.cpp
+# set(engine_src
+# ${CMAKE_SOURCE_DIR}/src/ALBUM.cpp
+# ${CMAKE_SOURCE_DIR}/src/beat_compiler_extension.cpp
+# ${CMAKE_SOURCE_DIR}/src/CURSOR.cpp
+# ${CMAKE_SOURCE_DIR}/src/DeckWorker.cpp
+# ${CMAKE_SOURCE_DIR}/src/Engine_Main.cpp
+# ${CMAKE_SOURCE_DIR}/src/MiniAudioWrapper.cpp
+# ${CMAKE_SOURCE_DIR}/src/Processor.cpp
+# ${CMAKE_SOURCE_DIR}/src/sound_module.cpp
+# ${CMAKE_SOURCE_DIR}/src/data_loader.cpp
 
-${CMAKE_SOURCE_DIR}/src/dbsrc/dbRoot.cpp
-${CMAKE_SOURCE_DIR}/include/db/musicDB.cpp
+# ${CMAKE_SOURCE_DIR}/src/dbsrc/dbRoot.cpp
+# ${CMAKE_SOURCE_DIR}/include/db/musicDB.cpp
 
 
-)
+# )
 
 set(miniaudio_src
 ${miniaudio_SOURCE_DIR}/extras/miniaudio_split/miniaudio.c
@@ -77,24 +77,32 @@ ${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_src/TDStretch.cpp
 
 include_directories(
   ${CMAKE_SOURCE_DIR}/include
-	${CMAKE_SOURCE_DIR}/include/core_header
-	${CMAKE_SOURCE_DIR}/include/data_structs
-	${CMAKE_SOURCE_DIR}/include/wrapper
+	# ${CMAKE_SOURCE_DIR}/include/core_header
+	# ${CMAKE_SOURCE_DIR}/include/data_structs
+	# ${CMAKE_SOURCE_DIR}/include/wrapper
   ${CMAKE_SOURCE_DIR}/include/db
-  
-	${CMAKE_SOURCE_DIR}/miniaudio
-	${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_include
-	${CMAKE_SOURCE_DIR}/third_party/Faust/compiled
+  ${CMAKE_SOURCE_DIR}/include/audioRender
+  ${CMAKE_SOURCE_DIR}/third_party/Capnp
 	${miniaudio_SOURCE_DIR}/extras/miniaudio_split
   ${sqlite_INCLUDE_DIR}
+  
+
+	${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_include
+	${CMAKE_SOURCE_DIR}/third_party/Faust/compiled
+  
 )
 
 set(dbSource
 ${CMAKE_SOURCE_DIR}/include/db/musicDB.cpp
 ${CMAKE_SOURCE_DIR}/include/db/trackDB.cpp
 ${CMAKE_SOURCE_DIR}/include/db/dbRoot.cpp
+${CMAKE_SOURCE_DIR}/include/db/dbState.cpp
 )
 
+set(audioRenderSource
+# ${CMAKE_SOURCE_DIR}/include/audioRender/MiniAudioWrapper.cpp
+${CMAKE_SOURCE_DIR}/third_party/Capnp/MixBinary.capnp.c++
+)
 
 # add_executable(${PROJECT_NAME} ${engine_src} ${SoundTouch_src})
 
@@ -113,11 +121,8 @@ ${CMAKE_SOURCE_DIR}/include/db/dbRoot.cpp
 # )
 
 
-set(test_sources
-${CMAKE_SOURCE_DIR}/include/tests/dbTest.cpp
-
-)
-add_executable(testdb ${test_sources} ${dbSource})
+add_executable(testdb ${CMAKE_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource})
+add_executable(testaudio ${CMAKE_SOURCE_DIR}/include/tests/audioTest.cpp ${audioRenderSource})
 enable_testing()
 
 # target_include_directories(testdb
@@ -137,4 +142,5 @@ enable_testing()
 
 
 
-add_test(NAME TOTAL_TEST COMMAND testdb)
+add_test(NAME DB_TEST COMMAND testdb)
+add_test(NAME AUDIO_TEST COMMAND testaudio)

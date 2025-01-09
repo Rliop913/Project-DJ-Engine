@@ -1,7 +1,8 @@
 #pragma once
 #include <sqlite3.h>
 #include <string>
-using BIN = std::string;
+
+#include "dbState.hpp"
 struct trackdata{
 public:
     std::string trackTitle;
@@ -9,10 +10,10 @@ public:
     BIN noteBinary;
     std::string cachedMixList;
 
-    trackdata(sqlite3_stmt* stmt);
+    trackdata(stmt* dbstate);
     trackdata(
         const std::string& trackTitle__ = ""
     );
-    bool GenSearchSTMT(sqlite3_stmt*& stmt, sqlite3* db) const;
-    std::string GenInsertSQL() const;//need to implement
+    bool GenSearchSTMT(stmt& dbstate, sqlite3* db);
+    bool GenInsertSTMT(stmt& dbstate, sqlite3* db);//need to implement
 };

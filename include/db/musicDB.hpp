@@ -3,6 +3,7 @@
 #include <vector>
 #include <sqlite3.h>
 
+#include "dbState.hpp"
 
 
 struct musdata{
@@ -10,18 +11,19 @@ public:
     std::string title;
     std::string composer;
     std::string musicPath;
-    std::string bpmBinary;
+    BIN bpmBinary;
     double bpm = -1.0;
+    std::string firstBar;
 
-    musdata(sqlite3_stmt* stmt);
+    musdata(stmt* dbstate);
     musdata(
         const std::string& title__ = "",
         const std::string& composer__ = "",
         const std::string& musicPath__ = "",
         const double bpm__ = -1.0
     );
-    bool GenSearchSTMT(sqlite3_stmt*& stmt, sqlite3* db) const;
-    bool GenInsertSTMT(sqlite3_stmt*& stmt, sqlite3* db) const;
+    bool GenSearchSTMT(stmt& dbstate, sqlite3* db);
+    bool GenInsertSTMT(stmt& dbstate, sqlite3* db);
     // std::string GenInsertSQL() const;//need to implement
 };
 

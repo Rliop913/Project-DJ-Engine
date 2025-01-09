@@ -1,32 +1,13 @@
 #include "musicDB.hpp"
 
 
-musdata::musdata(sqlite3_stmt* stmt)
+musdata::musdata(stmt* dbstate)
 {
-    title = std::string(
-        reinterpret_cast<const char*>(
-            sqlite3_column_text(stmt, 0)
-        )
-    );
-
-    composer = std::string(
-        reinterpret_cast<const char*>(
-            sqlite3_column_text(stmt, 1)
-        )
-    );
-
-    musicPath = std::string(
-        reinterpret_cast<const char*>(
-            sqlite3_column_text(stmt, 2)
-        )
-    );
-    bpm = sqlite3_column_double(stmt, 3);
-
-    bpmBinary = std::string(
-        reinterpret_cast<const char*>(
-            sqlite3_column_blob(stmt, 4)
-        )
-    );
+    title = dbstate->colGet<COL_TYPE::TEXT, std::string>(0);
+    composer = dbstate->colGet<COL_TYPE::TEXT, std::string>(1);
+    musicPath = dbstate->colGet<COL_TYPE::TEXT, std::string>(2);
+    bpm = dbstate->colGet<COL_TYPE::DOUBLE, double>(3);
+    bpmBinary = dbstate->colGet<COL_TYPE::BLOB, BIN>(4);
 }
 
 musdata::musdata(
@@ -43,10 +24,9 @@ bpm(bpm__)
 
 
 bool
-musdata::GenSearchSTMT(sqlite3_stmt*& stmt, sqlite3* db) 
-const
+musdata::GenSearchSTMT(stmt& dbstate, sqlite3* db) 
 {
-    std::string placeHold 
+    dbstate.placeHold
     =
     "SELECT Title, Composer, MusicPath, Bpm, BpmBinary FROM MUSIC"
     " WHERE (? IS NULL OR Title = ?)"
@@ -54,32 +34,49 @@ const
     " AND (? IS NULL OR MusicPath = ?)"
     " AND (? IS NULL OR Bpm = ?)"
     ;
-    if(sqlite3_prepare_v2(db, placeHold.c_str(), -1, &stmt, nullptr) != SQLITE_OK){
+    if(!dbstate.activate(db)){
         return false;
     }
     if(title == ""){
-        sqlite3_bind_null(stmt, 1);
+        dbstate.bind_null(1);
     }
     if(composer == ""){
-        sqlite3_bind_null(stmt, 3);
+        dbstate.bind_null(3);
     }
     if(musicPath == ""){
-        sqlite3_bind_null(stmt, 5);
+        dbstate.bind_null(5);
     }
     if(bpm < 0){
-        sqlite3_bind_null(stmt, 7);
+        dbstate.bind_null(7);
     }
-    sqlite3_bind_text(stmt, 2, title.c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 4, composer.c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt, 6, musicPath.c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_double(stmt, 8, bpm);
+    dbstate.bind_text(2, title);
+    dbstate.bind_text(4, composer);
+    dbstate.bind_text(6, musicPath);
+    dbstate.bind_double(8, bpm);
     
     return true;
 }
 
 bool
-musdata::GenInsertSTMT(sqlite3_stmt*& stmt, sqlite3* db)
-const
+musdata::GenInsertSTMT(stmt& dbstate, sqlite3* db)
 {
+    dbstate.placeHold
+    =
+    "INSERT INTO MUSIC "
+    "( Title, Composer, MusicPath, Bpm, BpmBinary, FirstBar ) "
+    "VALUES "
+    "( ?, ?, ?, ?, ?, ?); ";
+
+    if(!dbstate.activate(db)){
+        return false;
+    }
+    dbstate.bind_text(1, title);
+    dbstate.bind_text(2, composer);
+    dbstate.bind_text(3, musicPath);
+    dbstate.bind_double(4, bpm);
+    dbstate.bind_blob(5, bpmBinary);
+    dbstate.bind_text(6, firstBar);
+
+    return true;
 
 }
