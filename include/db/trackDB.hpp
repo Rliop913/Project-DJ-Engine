@@ -15,5 +15,5 @@ public:
         const std::string& trackTitle__ = ""
     );
     bool GenSearchSTMT(stmt& dbstate, sqlite3* db);
-    bool GenInsertSTMT(stmt& dbstate, sqlite3* db);//need to implement
+    bool GenInsertSTMT(stmt& dbstate, sqlite3* db);
 };

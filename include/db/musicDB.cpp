@@ -1,4 +1,11 @@
 #include "musicDB.hpp"
+#include "errorTable.hpp"
+
+
+#define CHK_BIND(res, error_type)\
+if(res != SQLITE_OK){\
+errpdje::ereport("sql bind errno: " + std::to_string(SQLITE_LAST_ERRNO), errpdje::ERR_TYPE::SQL_ERROR, ("musicDB bind " + std::string(error_type)));}
+
 
 
 musdata::musdata(stmt* dbstate)
@@ -35,24 +42,41 @@ musdata::GenSearchSTMT(stmt& dbstate, sqlite3* db)
     " AND (? IS NULL OR Bpm = ?)"
     ;
     if(!dbstate.activate(db)){
+        errpdje::ereport(
+            "sql prepare error SQL ERRNO: " + std::to_string(SQLITE_LAST_ERRNO), 
+            errpdje::ERR_TYPE::SQL_ERROR,
+            "musicDB gensearchSTMT"
+            );
         return false;
     }
     if(title == ""){
-        dbstate.bind_null(1);
+        CHK_BIND(
+        dbstate.bind_null(1),
+        "NULL"
+        )
     }
     if(composer == ""){
-        dbstate.bind_null(3);
+        CHK_BIND(
+        dbstate.bind_null(3),
+        "NULL"
+        )
     }
     if(musicPath == ""){
-        dbstate.bind_null(5);
+        CHK_BIND(
+        dbstate.bind_null(5),
+        "NULL"
+        )
     }
     if(bpm < 0){
-        dbstate.bind_null(7);
+        CHK_BIND(
+        dbstate.bind_null(7),
+        "NULL"
+        )
     }
-    dbstate.bind_text(2, title);
-    dbstate.bind_text(4, composer);
-    dbstate.bind_text(6, musicPath);
-    dbstate.bind_double(8, bpm);
+    CHK_BIND( dbstate.bind_text(2, title), "TEXT")
+    CHK_BIND( dbstate.bind_text(4, composer), "TEXT")
+    CHK_BIND( dbstate.bind_text(6, musicPath), "TEXT")
+    CHK_BIND( dbstate.bind_double(8, bpm), "DOUBLE")
     
     return true;
 }
@@ -68,15 +92,21 @@ musdata::GenInsertSTMT(stmt& dbstate, sqlite3* db)
     "( ?, ?, ?, ?, ?, ?); ";
 
     if(!dbstate.activate(db)){
+        errpdje::ereport(
+            "sql prepare error SQL ERRNO: " + std::to_string(SQLITE_LAST_ERRNO), 
+            errpdje::ERR_TYPE::SQL_ERROR,
+            "musicDB genInsertSTMT"
+            );
         return false;
     }
-    dbstate.bind_text(1, title);
-    dbstate.bind_text(2, composer);
-    dbstate.bind_text(3, musicPath);
-    dbstate.bind_double(4, bpm);
-    dbstate.bind_blob(5, bpmBinary);
-    dbstate.bind_text(6, firstBar);
+    CHK_BIND( dbstate.bind_text(1, title), "TEXT")
+    CHK_BIND( dbstate.bind_text(2, composer), "TEXT")
+    CHK_BIND( dbstate.bind_text(3, musicPath), "TEXT")
+    CHK_BIND( dbstate.bind_double(4, bpm), "DOUBLE")
+    CHK_BIND( dbstate.bind_blob(5, bpmBinary), "BLOB")
+    CHK_BIND( dbstate.bind_text(6, firstBar), "TEXT")
 
     return true;
 
 }
+#undef CHK_BIND

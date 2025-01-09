@@ -83,6 +83,7 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/include/db
   ${CMAKE_SOURCE_DIR}/include/audioRender
   ${CMAKE_SOURCE_DIR}/third_party/Capnp
+  ${CMAKE_SOURCE_DIR}/include/ERR
 	${miniaudio_SOURCE_DIR}/extras/miniaudio_split
   ${sqlite_INCLUDE_DIR}
   
@@ -90,6 +91,10 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_include
 	${CMAKE_SOURCE_DIR}/third_party/Faust/compiled
   
+)
+
+set(errorPdje
+${CMAKE_SOURCE_DIR}/include/ERR/errorTable.cpp
 )
 
 set(dbSource
@@ -121,8 +126,8 @@ ${CMAKE_SOURCE_DIR}/third_party/Capnp/MixBinary.capnp.c++
 # )
 
 
-add_executable(testdb ${CMAKE_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource})
-add_executable(testaudio ${CMAKE_SOURCE_DIR}/include/tests/audioTest.cpp ${audioRenderSource})
+add_executable(testdb ${errorPdje} ${CMAKE_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource})
+add_executable(testaudio ${errorPdje} ${CMAKE_SOURCE_DIR}/include/tests/audioTest.cpp ${audioRenderSource})
 enable_testing()
 
 # target_include_directories(testdb

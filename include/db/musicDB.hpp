@@ -24,7 +24,6 @@ public:
     );
     bool GenSearchSTMT(stmt& dbstate, sqlite3* db);
     bool GenInsertSTMT(stmt& dbstate, sqlite3* db);
-    // std::string GenInsertSQL() const;//need to implement
 };
 
 
