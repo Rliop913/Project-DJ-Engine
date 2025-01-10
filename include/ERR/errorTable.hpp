@@ -13,7 +13,9 @@ namespace errpdje{
         MEM_NO_ALLOC,
         PTR_NO_EXISTS,
         DATA_SHOULD_HAVE_VALUE,
-        SQL_ERROR
+        SQL_ERROR,
+        MIX_BIN_ERR,
+        MIX_BIN_ARR_OUT_ERR
     };
 
     struct ERR_LOG{

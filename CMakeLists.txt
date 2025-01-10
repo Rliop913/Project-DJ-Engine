@@ -107,6 +107,9 @@ ${CMAKE_SOURCE_DIR}/include/db/dbState.cpp
 set(audioRenderSource
 # ${CMAKE_SOURCE_DIR}/include/audioRender/MiniAudioWrapper.cpp
 ${CMAKE_SOURCE_DIR}/third_party/Capnp/MixBinary.capnp.c++
+${CMAKE_SOURCE_DIR}/include/audioRender/MixBinary_Read.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixBinary_Write.cpp
+
 )
 
 # add_executable(${PROJECT_NAME} ${engine_src} ${SoundTouch_src})

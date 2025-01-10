@@ -57,6 +57,6 @@ struct MBData{
     eseparate @11 :Int64;
     
 }
-struct MixBinary{
+struct MixBinaryCapnpData{
     datas @0 :List(MBData);
 }

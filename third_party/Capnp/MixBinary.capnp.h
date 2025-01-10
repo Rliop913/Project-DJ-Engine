@@ -62,7 +62,7 @@ enum class DetailEnum_c6c88c32e11afb23: uint16_t {
 };
 CAPNP_DECLARE_ENUM(DetailEnum, c6c88c32e11afb23);
 CAPNP_DECLARE_SCHEMA(83f21337c383e938);
-CAPNP_DECLARE_SCHEMA(b0caa3ea118a44a4);
+CAPNP_DECLARE_SCHEMA(9ba477d42ac52fd4);
 
 }  // namespace schemas
 }  // namespace capnp
@@ -87,15 +87,15 @@ struct MBData {
   };
 };
 
-struct MixBinary {
-  MixBinary() = delete;
+struct MixBinaryCapnpData {
+  MixBinaryCapnpData() = delete;
 
   class Reader;
   class Builder;
   class Pipeline;
 
   struct _capnpPrivate {
-    CAPNP_DECLARE_STRUCT_HEADER(b0caa3ea118a44a4, 0, 1)
+    CAPNP_DECLARE_STRUCT_HEADER(9ba477d42ac52fd4, 0, 1)
     #if !CAPNP_LITE
     static constexpr ::capnp::_::RawBrandedSchema const* brand() { return &schema->defaultBrand; }
     #endif  // !CAPNP_LITE
@@ -250,9 +250,9 @@ private:
 };
 #endif  // !CAPNP_LITE
 
-class MixBinary::Reader {
+class MixBinaryCapnpData::Reader {
 public:
-  typedef MixBinary Reads;
+  typedef MixBinaryCapnpData Reads;
 
   Reader() = default;
   inline explicit Reader(::capnp::_::StructReader base): _reader(base) {}
@@ -282,9 +282,9 @@ private:
   friend class ::capnp::Orphanage;
 };
 
-class MixBinary::Builder {
+class MixBinaryCapnpData::Builder {
 public:
-  typedef MixBinary Builds;
+  typedef MixBinaryCapnpData Builds;
 
   Builder() = delete;  // Deleted to discourage incorrect usage.
                        // You can explicitly initialize to nullptr instead.
@@ -315,9 +315,9 @@ private:
 };
 
 #if !CAPNP_LITE
-class MixBinary::Pipeline {
+class MixBinaryCapnpData::Pipeline {
 public:
-  typedef MixBinary Pipelines;
+  typedef MixBinaryCapnpData Pipelines;
 
   inline Pipeline(decltype(nullptr)): _typeless(nullptr) {}
   inline explicit Pipeline(::capnp::AnyPointer::Pipeline&& typeless)
@@ -561,36 +561,36 @@ inline void MBData::Builder::setEseparate( ::int64_t value) {
       ::capnp::bounded<6>() * ::capnp::ELEMENTS, value);
 }
 
-inline bool MixBinary::Reader::hasDatas() const {
+inline bool MixBinaryCapnpData::Reader::hasDatas() const {
   return !_reader.getPointerField(
       ::capnp::bounded<0>() * ::capnp::POINTERS).isNull();
 }
-inline bool MixBinary::Builder::hasDatas() {
+inline bool MixBinaryCapnpData::Builder::hasDatas() {
   return !_builder.getPointerField(
       ::capnp::bounded<0>() * ::capnp::POINTERS).isNull();
 }
-inline  ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>::Reader MixBinary::Reader::getDatas() const {
+inline  ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>::Reader MixBinaryCapnpData::Reader::getDatas() const {
   return ::capnp::_::PointerHelpers< ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>>::get(_reader.getPointerField(
       ::capnp::bounded<0>() * ::capnp::POINTERS));
 }
-inline  ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>::Builder MixBinary::Builder::getDatas() {
+inline  ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>::Builder MixBinaryCapnpData::Builder::getDatas() {
   return ::capnp::_::PointerHelpers< ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>>::get(_builder.getPointerField(
       ::capnp::bounded<0>() * ::capnp::POINTERS));
 }
-inline void MixBinary::Builder::setDatas( ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>::Reader value) {
+inline void MixBinaryCapnpData::Builder::setDatas( ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>::Reader value) {
   ::capnp::_::PointerHelpers< ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>>::set(_builder.getPointerField(
       ::capnp::bounded<0>() * ::capnp::POINTERS), value);
 }
-inline  ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>::Builder MixBinary::Builder::initDatas(unsigned int size) {
+inline  ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>::Builder MixBinaryCapnpData::Builder::initDatas(unsigned int size) {
   return ::capnp::_::PointerHelpers< ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>>::init(_builder.getPointerField(
       ::capnp::bounded<0>() * ::capnp::POINTERS), size);
 }
-inline void MixBinary::Builder::adoptDatas(
+inline void MixBinaryCapnpData::Builder::adoptDatas(
     ::capnp::Orphan< ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>>&& value) {
   ::capnp::_::PointerHelpers< ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>>::adopt(_builder.getPointerField(
       ::capnp::bounded<0>() * ::capnp::POINTERS), kj::mv(value));
 }
-inline ::capnp::Orphan< ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>> MixBinary::Builder::disownDatas() {
+inline ::capnp::Orphan< ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>> MixBinaryCapnpData::Builder::disownDatas() {
   return ::capnp::_::PointerHelpers< ::capnp::List< ::MBData,  ::capnp::Kind::STRUCT>>::disown(_builder.getPointerField(
       ::capnp::bounded<0>() * ::capnp::POINTERS));
 }

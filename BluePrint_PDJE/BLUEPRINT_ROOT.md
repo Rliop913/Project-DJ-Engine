@@ -1,4 +1,4 @@
-[[PDJE]] - The Rhythm Game Engine
+[[PDJE]] - The Rhythm Game Engine + DJ 
 	[[Interface]]
 		[[DB]]
 			[[Music]]
