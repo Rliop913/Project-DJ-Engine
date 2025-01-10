@@ -4,7 +4,10 @@
 int
 main()
 {
-    litedb dbr("./tempdb.db");
+    litedb dbr = litedb();
+    if(!dbr.openDB("./tempdb.db")){
+        return 1;
+    }
     auto td = trackdata("first");
     auto md = musdata("test", "tt", "ttt", 123);
     md.firstBar = "test";

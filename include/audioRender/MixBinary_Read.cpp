@@ -1,10 +1,17 @@
 #include "MixBinary.hpp"
-#include "errorTable.hpp"
+
 template<>
 MixBinary<READ_MODE::READ_ONLY>::MixBinary()
 {
 
 }
+
+template<>
+MixBinary<READ_MODE::READ_ONLY>::~MixBinary()
+{
+    
+}
+
 
 template<>
 bool
@@ -21,26 +28,14 @@ MixBinary<READ_MODE::READ_ONLY>::open(const std::vector<kj::byte>& capnpBinary)
                 arr.size() / sizeof(capnp::word)
             )
         );
-        D = reinterpret_cast<void*>(&(capreader.value().getRoot<MixBinaryCapnpData>()));
+        readerOBJ = capreader->getRoot<MixBinaryCapnpData>();
+        D = reinterpret_cast<void*>(&(readerOBJ.value()));
+        return true;
     }
-    catch(const std::exception& e)
+    catch(...)
     {
-        errpdje::ereport(
-            "ERR on MixBinary Read ERRMSG: " + std::string(e.what()),
-            errpdje::ERR_TYPE::MIX_BIN_ERR,
-            "MixBinary_Read open()"
-        );
-        return false;
-    } catch(...)
-    {
-        errpdje::ereport(
-            "ERR on MixBinary Read ERRMSG: " + std::string("UNKNOWN ERR"),
-            errpdje::ERR_TYPE::MIX_BIN_ERR,
-            "MixBinary_Read open()"
-        );
         return false;
     }
-    return true;
 }
 
 template<>

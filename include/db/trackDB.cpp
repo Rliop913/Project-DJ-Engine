@@ -1,10 +1,12 @@
 #include "trackDB.hpp"
-#include "errorTable.hpp"
+// #include "errorTable.hpp"
 
 
-#define CHK_BIND(res, error_type)\
+#define CHK_BIND(res)\
 if(res != SQLITE_OK){\
-errpdje::ereport("sql bind errno: " + std::to_string(SQLITE_LAST_ERRNO), errpdje::ERR_TYPE::SQL_ERROR, ("trackDB bind " + std::string(error_type)));}
+return false;\
+}
+// errpdje::ereport("sql bind errno: " + std::to_string(SQLITE_LAST_ERRNO), errpdje::ERR_TYPE::SQL_ERROR, ("trackDB bind " + std::string(error_type)));}
 
 
 trackdata::trackdata(stmt* dbstate)
@@ -34,19 +36,13 @@ trackdata::GenSearchSTMT(stmt& dbstate, sqlite3* db)
     "WHERE (? IS NULL OR TrackTitle = ?)"
     ;
     if(!dbstate.activate(db)){
-        errpdje::ereport(
-            "sql prepare error SQL ERRNO: " + std::to_string(SQLITE_LAST_ERRNO), 
-            errpdje::ERR_TYPE::SQL_ERROR,
-            "trackDB gensearchSTMT"
-            );
         return false;
     }
     if(trackTitle == ""){
-        CHK_BIND((dbstate.bind_null(1)), "NULL")
+        CHK_BIND((dbstate.bind_null(1)))
     }
     CHK_BIND(
-    dbstate.bind_text(2, trackTitle),
-    "TEXT"
+    dbstate.bind_text(2, trackTitle)
     )
     
     return true;
@@ -63,17 +59,12 @@ trackdata::GenInsertSTMT(stmt& dbstate, sqlite3* db)
     "VALUES "
     "(?, ?, ?, ?); ";
     if(!dbstate.activate(db)){
-        errpdje::ereport(
-            "sql prepare error SQL ERRNO: " + std::to_string(SQLITE_LAST_ERRNO), 
-            errpdje::ERR_TYPE::SQL_ERROR,
-            "trackDB genInsertSTMT"
-            );
         return false;
     }
-    CHK_BIND( dbstate.bind_text(1, trackTitle), "TEXT");
-    CHK_BIND( dbstate.bind_blob(2, mixBinary), "BLOB");
-    CHK_BIND( dbstate.bind_blob(3, noteBinary), "BLOB");
-    CHK_BIND( dbstate.bind_text(4, cachedMixList), "TEXT");
+    CHK_BIND( dbstate.bind_text(1, trackTitle));
+    CHK_BIND( dbstate.bind_blob(2, mixBinary));
+    CHK_BIND( dbstate.bind_blob(3, noteBinary));
+    CHK_BIND( dbstate.bind_text(4, cachedMixList));
     return true;
 }
 #undef CHK_BIND

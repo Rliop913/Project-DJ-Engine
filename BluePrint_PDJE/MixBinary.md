@@ -1,4 +1,4 @@
-music mixing file. implemented with [[CapNP3roto]]
+music mixing file. implemented with [[CapNProto]]
 
 | [[type]]      | [[details]]     | [[ID]] | [[first]] | [[second]] | [[third]] | [[bar]] | [[beat]] | [[separate]] | [[Ebar]] | [[Ebeat]] | [[Eseparate]] |
 | ------------- | --------------- | ------ | --------- | ---------- | --------- | ------- | -------- | ------------ | -------- | --------- | ------------- |

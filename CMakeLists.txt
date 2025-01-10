@@ -93,9 +93,9 @@ include_directories(
   
 )
 
-set(errorPdje
-${CMAKE_SOURCE_DIR}/include/ERR/errorTable.cpp
-)
+# set(errorPdje
+# ${CMAKE_SOURCE_DIR}/include/ERR/errorTable.cpp
+# )
 
 set(dbSource
 ${CMAKE_SOURCE_DIR}/include/db/musicDB.cpp
@@ -129,8 +129,9 @@ ${CMAKE_SOURCE_DIR}/include/audioRender/MixBinary_Write.cpp
 # )
 
 
-add_executable(testdb ${errorPdje} ${CMAKE_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource})
-add_executable(testaudio ${errorPdje} ${CMAKE_SOURCE_DIR}/include/tests/audioTest.cpp ${audioRenderSource})
+add_executable(testdb ${CMAKE_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource})
+add_executable(testaudio ${CMAKE_SOURCE_DIR}/include/tests/audioTest.cpp ${audioRenderSource})
+target_link_libraries(testaudio PRIVATE capnp capnp-rpc kj)
 enable_testing()
 
 # target_include_directories(testdb

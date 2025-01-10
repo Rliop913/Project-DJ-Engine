@@ -16,8 +16,8 @@ using MAYBE_TRACK_VEC = std::optional<TRACK_VEC>;
 
 class litedb{
 private:
-    sqlite3* db;
-    void CheckTables();
+    sqlite3* db = nullptr;
+    bool CheckTables();
 public:
     template<typename DBType>
     std::optional<std::vector<DBType>>
@@ -27,12 +27,11 @@ public:
     bool
     operator<=(DBType& insertObject);
 
-    litedb(const std::string& dbPath);
+    bool openDB(const std::string& dbPath);
     
+    litedb();
     ~litedb();
 };
-
-#include <iostream>
 
 template<typename DBType>
 std::optional<std::vector<DBType>>

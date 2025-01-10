@@ -19,7 +19,10 @@ class MixBinary{
 private:
     std::vector<kj::byte> Origin;
     std::optional<capnp::FlatArrayMessageReader> capreader;
+    std::optional<MixBinaryCapnpData::Reader> readerOBJ;
+
     std::optional<capnp::MallocMessageBuilder> capwriter;
+    std::optional<MixBinaryCapnpData::Builder> writerOBJ;
 public:
     MixBinary();
     ~MixBinary();

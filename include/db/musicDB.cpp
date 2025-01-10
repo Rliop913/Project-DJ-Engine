@@ -1,10 +1,12 @@
 #include "musicDB.hpp"
-#include "errorTable.hpp"
+// #include "errorTable.hpp"
 
 
-#define CHK_BIND(res, error_type)\
+#define CHK_BIND(res)\
 if(res != SQLITE_OK){\
-errpdje::ereport("sql bind errno: " + std::to_string(SQLITE_LAST_ERRNO), errpdje::ERR_TYPE::SQL_ERROR, ("musicDB bind " + std::string(error_type)));}
+return false;\
+}
+// errpdje::ereport("sql bind errno: " + std::to_string(SQLITE_LAST_ERRNO), errpdje::ERR_TYPE::SQL_ERROR, ("musicDB bind " + std::string(error_type)));}
 
 
 
@@ -42,41 +44,32 @@ musdata::GenSearchSTMT(stmt& dbstate, sqlite3* db)
     " AND (? IS NULL OR Bpm = ?)"
     ;
     if(!dbstate.activate(db)){
-        errpdje::ereport(
-            "sql prepare error SQL ERRNO: " + std::to_string(SQLITE_LAST_ERRNO), 
-            errpdje::ERR_TYPE::SQL_ERROR,
-            "musicDB gensearchSTMT"
-            );
         return false;
     }
     if(title == ""){
         CHK_BIND(
-        dbstate.bind_null(1),
-        "NULL"
+        dbstate.bind_null(1)
         )
     }
     if(composer == ""){
         CHK_BIND(
-        dbstate.bind_null(3),
-        "NULL"
+        dbstate.bind_null(3)
         )
     }
     if(musicPath == ""){
         CHK_BIND(
-        dbstate.bind_null(5),
-        "NULL"
+        dbstate.bind_null(5)
         )
     }
     if(bpm < 0){
         CHK_BIND(
-        dbstate.bind_null(7),
-        "NULL"
+        dbstate.bind_null(7)
         )
     }
-    CHK_BIND( dbstate.bind_text(2, title), "TEXT")
-    CHK_BIND( dbstate.bind_text(4, composer), "TEXT")
-    CHK_BIND( dbstate.bind_text(6, musicPath), "TEXT")
-    CHK_BIND( dbstate.bind_double(8, bpm), "DOUBLE")
+    CHK_BIND( dbstate.bind_text(2, title))
+    CHK_BIND( dbstate.bind_text(4, composer))
+    CHK_BIND( dbstate.bind_text(6, musicPath))
+    CHK_BIND( dbstate.bind_double(8, bpm))
     
     return true;
 }
@@ -92,19 +85,14 @@ musdata::GenInsertSTMT(stmt& dbstate, sqlite3* db)
     "( ?, ?, ?, ?, ?, ?); ";
 
     if(!dbstate.activate(db)){
-        errpdje::ereport(
-            "sql prepare error SQL ERRNO: " + std::to_string(SQLITE_LAST_ERRNO), 
-            errpdje::ERR_TYPE::SQL_ERROR,
-            "musicDB genInsertSTMT"
-            );
         return false;
     }
-    CHK_BIND( dbstate.bind_text(1, title), "TEXT")
-    CHK_BIND( dbstate.bind_text(2, composer), "TEXT")
-    CHK_BIND( dbstate.bind_text(3, musicPath), "TEXT")
-    CHK_BIND( dbstate.bind_double(4, bpm), "DOUBLE")
-    CHK_BIND( dbstate.bind_blob(5, bpmBinary), "BLOB")
-    CHK_BIND( dbstate.bind_text(6, firstBar), "TEXT")
+    CHK_BIND( dbstate.bind_text(1, title))
+    CHK_BIND( dbstate.bind_text(2, composer))
+    CHK_BIND( dbstate.bind_text(3, musicPath))
+    CHK_BIND( dbstate.bind_double(4, bpm))
+    CHK_BIND( dbstate.bind_blob(5, bpmBinary))
+    CHK_BIND( dbstate.bind_text(6, firstBar))
 
     return true;
 

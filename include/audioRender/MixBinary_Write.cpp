@@ -1,10 +1,17 @@
 #include "MixBinary.hpp"
-#include "errorTable.hpp"
+
+
 
 template<>
 MixBinary<READ_MODE::READ_WRITE>::MixBinary()
 {
 
+}
+
+template<>
+MixBinary<READ_MODE::READ_WRITE>::~MixBinary()
+{
+    
 }
 
 template<>
@@ -15,7 +22,8 @@ MixBinary<READ_MODE::READ_WRITE>::open(const std::vector<kj::byte>& capnpBinary)
     {
         kj::ArrayPtr<const kj::byte> arr(capnpBinary.data(), capnpBinary.size());
         capwriter.emplace();
-        D = reinterpret_cast<void*>(&(capwriter->initRoot<MixBinaryCapnpData>()));
+        readerOBJ = capwriter->initRoot<MixBinaryCapnpData>();
+        D = reinterpret_cast<void*>(&(readerOBJ.value()));
         capnp::FlatArrayMessageReader readed(
             ::kj::arrayPtr(
                 reinterpret_cast<const capnp::word*>(arr.begin()), 
@@ -25,25 +33,12 @@ MixBinary<READ_MODE::READ_WRITE>::open(const std::vector<kj::byte>& capnpBinary)
         auto readroot = readed.getRoot<MixBinaryCapnpData>();
         reinterpret_cast<MixBinaryCapnpData::Builder*>(D)->initDatas(readroot.getDatas().size());
         reinterpret_cast<MixBinaryCapnpData::Builder*>(D)->setDatas(readroot.getDatas());
+        return true;
     }
-    catch(const std::exception& e)
+    catch(...)
     {
-        errpdje::ereport(
-            "ERR on MixBinary Read_Write ERRMSG: " + std::string(e.what()),
-            errpdje::ERR_TYPE::MIX_BIN_ERR,
-            "MixBinary_Read_Write open()"
-        );
-        return false;
-    } catch(...)
-    {
-        errpdje::ereport(
-            "ERR on MixBinary Read_Write ERRMSG: " + std::string("UNKNOWN ERR"),
-            errpdje::ERR_TYPE::MIX_BIN_ERR,
-            "MixBinary_Read_Write open()"
-        );
         return false;
     }
-    return true;
 }
 
 template<>
@@ -54,27 +49,14 @@ MixBinary<READ_MODE::READ_WRITE>::open()
     {
         capnp::MallocMessageBuilder build;
         capwriter.emplace();
-        D = reinterpret_cast<void*>(&(capwriter->initRoot<MixBinaryCapnpData>()));
+        writerOBJ = capwriter->initRoot<MixBinaryCapnpData>();
+        D = reinterpret_cast<void*>(&(writerOBJ.value()));
+        return true;
     }
-    catch(const std::exception& e)
+    catch(...)
     {
-        errpdje::ereport(
-            "ERR on MixBinary Read_Write ERRMSG: " + std::string(e.what()),
-            errpdje::ERR_TYPE::MIX_BIN_ERR,
-            "MixBinary_Read_Write open(void)"
-        );
-        return false;
-    } catch(...)
-    {
-        errpdje::ereport(
-            "ERR on MixBinary Read_Write ERRMSG: " + std::string("UNKNOWN ERR"),
-            errpdje::ERR_TYPE::MIX_BIN_ERR,
-            "MixBinary_Read_Write open(void)"
-        );
         return false;
     }
-    return true;
-    
 }
 
 template<>
@@ -87,21 +69,9 @@ MixBinary<READ_MODE::READ_WRITE>::out()
         auto fbyte = farr.asBytes();
         std::vector<kj::byte> buffer(fbyte.begin(), fbyte.end());
         return buffer;
-    }
-    catch(const std::exception& e)
+    } 
+    catch(...)
     {
-        errpdje::ereport(
-            "ERR on MixBinary Read_Write ERRMSG: " + std::string(e.what()),
-            errpdje::ERR_TYPE::MIX_BIN_ARR_OUT_ERR,
-            "MixBinary_Read_Write out()"
-        );
-    } catch(...)
-    {
-        errpdje::ereport(
-            "ERR on MixBinary Read_Write ERRMSG: " + std::string("UNKNOWN"),
-            errpdje::ERR_TYPE::MIX_BIN_ARR_OUT_ERR,
-            "MixBinary_Read_Write out()"
-        );
+        return std::vector<kj::byte>();
     }
-    return std::vector<kj::byte>();
 }
