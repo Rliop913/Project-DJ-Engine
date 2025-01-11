@@ -81,7 +81,9 @@ include_directories(
 	# ${CMAKE_SOURCE_DIR}/include/data_structs
 	# ${CMAKE_SOURCE_DIR}/include/wrapper
   ${CMAKE_SOURCE_DIR}/include/db
-  ${CMAKE_SOURCE_DIR}/include/audioRender
+  ${CMAKE_SOURCE_DIR}/include/audioRender/MixBinary
+  ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator
+  
   ${CMAKE_SOURCE_DIR}/third_party/Capnp
   ${CMAKE_SOURCE_DIR}/include/ERR
 	${miniaudio_SOURCE_DIR}/extras/miniaudio_split
@@ -107,9 +109,12 @@ ${CMAKE_SOURCE_DIR}/include/db/dbState.cpp
 set(audioRenderSource
 # ${CMAKE_SOURCE_DIR}/include/audioRender/MiniAudioWrapper.cpp
 ${CMAKE_SOURCE_DIR}/third_party/Capnp/MixBinary.capnp.c++
-${CMAKE_SOURCE_DIR}/include/audioRender/MixBinary_Read.cpp
-${CMAKE_SOURCE_DIR}/include/audioRender/MixBinary_Write.cpp
-
+${CMAKE_SOURCE_DIR}/include/audioRender/MixBinary/MixBinary_Read.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixBinary/MixBinary_Write.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/Bpm.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/Mix.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/MixTranslator.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/Structs.cpp
 )
 
 # add_executable(${PROJECT_NAME} ${engine_src} ${SoundTouch_src})

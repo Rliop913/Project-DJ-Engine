@@ -1,0 +1,145 @@
+#include "Mix.hpp"
+#include "Bpm.hpp"
+MIX::MIX()
+{
+    usable_threads = std::thread::hardware_concurrency();
+    if(usable_threads == 0){
+        usable_threads = 1;
+    }
+}
+
+MIX::~MIX()
+{
+
+}
+
+bool
+MIX::openMix(MixBinaryCapnpData::Reader* Rptr)
+{
+    try
+    {
+        auto mixDatas = Rptr->getDatas();
+        auto mixSize = mixDatas.size();
+
+        mixVec.resize(mixSize);
+
+        auto MP = &(mixVec[0]);
+        for(unsigned long i=0; i<mixSize; ++i){
+            MP->RP = mixDatas[i];
+            ++MP;
+        }
+        std::sort(mixVec.begin(), mixVec.end(), [](const MixStruct& first, MixStruct second){
+            auto F = 
+            static_cast<double>(first.RP.getBar()) + (
+                static_cast<double>(first.RP.getBeat()) /
+                static_cast<double>(first.RP.getSeparate())
+            );
+            auto S = 
+            static_cast<double>(second.RP.getBar()) + (
+                static_cast<double>(second.RP.getBeat()) /
+                static_cast<double>(second.RP.getSeparate())
+            );
+            return F < S;
+        });
+        return true;
+    }
+    catch(...)
+    {
+        return false;
+    }
+}
+
+unsigned long
+FillFrame(const BpmStruct& bs, BPM* B)
+{
+    
+    auto bpmIt = std::upper_bound(
+        B->bpmVec.begin(),
+        B->bpmVec.end(),
+        bs,
+        [](const BpmStruct& first, const BpmStruct& second){
+            double FA = APPRX(
+                double, 
+                first.bar,
+                first.beat,
+                first.separate);
+            double SA = APPRX(
+                double,
+                second.bar,
+                second.beat,
+                second.separate);
+            return FA < SA;
+        }
+    );
+    --bpmIt;
+    return 
+    FrameCalc::CountFrame(
+        bpmIt->bar,
+        bpmIt->beat,
+        bpmIt->separate,
+        bs.bar,
+        bs.beat,
+        bs.separate,
+        bpmIt->bpm
+    ) + bpmIt->frame_to_here;
+}
+
+void
+mix_thread(
+    MixStruct* M,
+    BPM* B,
+    unsigned long range
+)
+{
+    for(unsigned long i=0; i<range; ++i){
+        BpmStruct bsin;
+        BpmStruct bsout;
+        bsin.bar = M->RP.getBar();
+        bsin.beat = M->RP.getBeat();
+        bsin.separate = M->RP.getSeparate();
+        bsout.bar = M->RP.getEbar();
+        bsout.beat = M->RP.getEbeat();
+        bsout.separate = M->RP.getEseparate();
+        M->frame_in = FillFrame(bsin, B);
+        M->frame_out = FillFrame(bsout, B);
+        ++M;
+    }
+}
+
+bool
+MIX::WriteFrames(BPM& bpmm)
+{
+    unsigned long jobs_per_thread = mixVec.size() / usable_threads;
+    if(jobs_per_thread == 0){
+        mix_thread(
+            &(mixVec[0]),
+            &(bpmm),
+            mixVec.size()
+        );
+    }
+    else{
+        unsigned long remained_job = mixVec.size() % jobs_per_thread;
+        std::vector<std::thread> thread_pool;
+        unsigned long idx = 0;
+        for(unsigned int i=0; i<(usable_threads - 1); ++i){
+            thread_pool.emplace_back(
+                mix_thread, 
+                &(mixVec[idx]),
+                &(bpmm),
+                jobs_per_thread);
+            idx += jobs_per_thread;
+        }
+        thread_pool.emplace_back(
+            mix_thread, 
+            &(mixVec[idx]),
+            &(bpmm),
+            jobs_per_thread + remained_job);
+        
+        for(int i =0 ; i<thread_pool.size(); ++i){
+            thread_pool[i].join();
+        }
+    }
+
+
+    return true;
+}
