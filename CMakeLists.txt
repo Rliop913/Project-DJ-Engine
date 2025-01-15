@@ -83,7 +83,12 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/include/db
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixBinary
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator
-  
+  ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine
+  ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/EFFECTS
+  ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR
+  ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/VOL_CTR
+
+
   ${CMAKE_SOURCE_DIR}/third_party/Capnp
   ${CMAKE_SOURCE_DIR}/include/ERR
 	${miniaudio_SOURCE_DIR}/extras/miniaudio_split
@@ -115,6 +120,8 @@ ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/Bpm.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/Mix.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/MixTranslator.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/Structs.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixMachine
+
 )
 
 # add_executable(${PROJECT_NAME} ${engine_src} ${SoundTouch_src})
