@@ -12,3 +12,6 @@ struct Vol{
     std::vector<Values<VOLUME_VALUE, VOLUME_VALUE_INTERPOLATE, ON_OFF>> Fader;
 };
 
+struct VOL_CTR{
+    Vol vols;
+};

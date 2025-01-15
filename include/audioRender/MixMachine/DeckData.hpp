@@ -17,8 +17,3 @@ struct Values{
     THR third;
     Position pos;
 };
-
-struct Vol{
-    std::vector<Values<double,double,bool>> Trim;
-    std::vector<Values<double,double,bool>> Fader;
-};

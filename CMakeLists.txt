@@ -120,7 +120,7 @@ ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/Bpm.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/Mix.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/MixTranslator.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/Structs.cpp
-${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixMachine
+${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixMachine.cpp
 
 )
 

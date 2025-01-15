@@ -146,6 +146,12 @@ main()
     for(auto i : mt.mixs->mixVec){
         std::cout << "Frame In: " << i.frame_in << "Frame Out: " << i.frame_out << std::endl;
     }
-
+    auto trp = reinterpret_cast<MixBinaryCapnpData::Reader*>(rb.D);
+    auto dds = trp->getDatas();
+    auto dPTR = (dds[1]);
+    std::cout<<"origin: " << dds[1].getBar() << "copy: " << dPTR.getBar() << std::endl;
+    
+    std::cout<<"origin: " << dds[1].getBar() << "copy: " << dPTR.getBar() << std::endl;
+    
     return 0;
 }
