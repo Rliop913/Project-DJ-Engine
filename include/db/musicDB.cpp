@@ -17,6 +17,7 @@ musdata::musdata(stmt* dbstate)
     musicPath = dbstate->colGet<COL_TYPE::TEXT, std::string>(2);
     bpm = dbstate->colGet<COL_TYPE::DOUBLE, double>(3);
     bpmBinary = dbstate->colGet<COL_TYPE::BLOB, BIN>(4);
+    firstBar = dbstate->colGet<COL_TYPE::TEXT, std::string>(5);
 }
 
 musdata::musdata(
@@ -37,33 +38,33 @@ musdata::GenSearchSTMT(stmt& dbstate, sqlite3* db)
 {
     dbstate.placeHold
     =
-    "SELECT Title, Composer, MusicPath, Bpm, BpmBinary FROM MUSIC"
-    " WHERE (? IS NULL OR Title = ?)"
-    " AND (? IS NULL OR Composer = ?)"
-    " AND (? IS NULL OR MusicPath = ?)"
-    " AND (? IS NULL OR Bpm = ?)"
+    "SELECT * FROM MUSIC"
+    " WHERE (? = -1 OR Title = ?)"
+    " AND (? = -1 OR Composer = ?)"
+    " AND (? = -1 OR MusicPath = ?)"
+    " AND (? = -1 OR Bpm = ?)"
     ;
     if(!dbstate.activate(db)){
         return false;
     }
     if(title == ""){
         CHK_BIND(
-        dbstate.bind_null(1)
+        dbstate.bind_int(1, -1)
         )
     }
     if(composer == ""){
         CHK_BIND(
-        dbstate.bind_null(3)
+        dbstate.bind_int(3, -1)
         )
     }
     if(musicPath == ""){
         CHK_BIND(
-        dbstate.bind_null(5)
+        dbstate.bind_int(5, -1)
         )
     }
     if(bpm < 0){
         CHK_BIND(
-        dbstate.bind_null(7)
+        dbstate.bind_int(7, -1)
         )
     }
     CHK_BIND( dbstate.bind_text(2, title))

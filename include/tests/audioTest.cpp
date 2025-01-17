@@ -1,9 +1,15 @@
 
 #include "MixBinary.hpp"
 #include "MixTranslator.hpp"
-#include <iostream>
+#include "MixMachine.hpp"
+#include "miniaudio.h"
 
+#include <iostream>
+#include "dbRoot.hpp"
 #include <algorithm>
+
+
+
 
 void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
 {
@@ -15,7 +21,7 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[0].setEseparate(4);
     ret[0].setType(TypeEnum::BPM_CONTROL);
     ret[0].setDetails(DetailEnum::SOLA_ON);
-    ret[0].setFirst("60.0");
+    ret[0].setFirst("175.0");
     ret[0].setId(0);
 
     ret[1].setBar(1);
@@ -24,6 +30,11 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[1].setEbar(1);
     ret[1].setEbeat(1);
     ret[1].setEseparate(4);
+    ret[1].setType(TypeEnum::LOAD);
+    ret[1].setFirst("WTC");
+    ret[1].setSecond("TEST");
+    ret[1].setThird("175.0");
+    ret[1].setId(0);
 
     ret[2].setBar(2);
     ret[2].setBeat(2);
@@ -40,7 +51,7 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[3].setEseparate(4);
     ret[3].setType(TypeEnum::BPM_CONTROL);
     ret[3].setDetails(DetailEnum::SOLA_ON);
-    ret[3].setFirst("140.0");
+    ret[3].setFirst("115.0");
     ret[3].setId(0);
     
     ret[4].setBar(4);
@@ -49,6 +60,8 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[4].setEbar(4);
     ret[4].setEbeat(4);
     ret[4].setEseparate(4);
+    // ret[4].setType(TypeEnum::UNLOAD);
+    ret[4].setId(0);
     
     ret[5].setBar(5);
     ret[5].setBeat(0);
@@ -56,6 +69,10 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[5].setEbar(5);
     ret[5].setEbeat(0);
     ret[5].setEseparate(4);
+    ret[5].setType(TypeEnum::BPM_CONTROL);
+    ret[5].setDetails(DetailEnum::SOLA_ON);
+    ret[5].setFirst("400.0");
+    ret[5].setId(0);
     
     ret[6].setBar(6);
     ret[6].setBeat(0);
@@ -91,18 +108,51 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[9].setEseparate(4);
     ret[9].setType(TypeEnum::BPM_CONTROL);
     ret[9].setDetails(DetailEnum::SOLA_ON);
-    ret[9].setFirst("90.5");
+    ret[9].setFirst("350.0");
     ret[9].setId(0);
+
+    ret[10].setBar(44);
+    ret[10].setBeat(0);
+    ret[10].setSeparate(4);
+    ret[10].setEbar(0);
+    ret[10].setEbeat(0);
+    ret[10].setEseparate(4);
+    ret[10].setType(TypeEnum::CONTROL);
+    ret[10].setDetails(DetailEnum::PAUSE);
+    ret[10].setId(0);
+    
+    ret[11].setBar(88);
+    ret[11].setBeat(0);
+    ret[11].setSeparate(4);
+    ret[11].setEbar(0);
+    ret[11].setEbeat(0);
+    ret[11].setEseparate(4);
+    ret[11].setType(TypeEnum::UNLOAD);
+    ret[11].setId(0);
 }
 
+auto idx = 0;
+void
+idle_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount) {
+	// auto dvec = reinterpret_cast<std::vector<float>*>(pDevice->pUserData);
+    auto dP =(float*)(pDevice->pUserData);// dvec->data();
+    dP+=idx;
+	// if (idx + frameCount < (*dvec).size()) {
+        memcpy(pOutput, dP, sizeof(float) * frameCount * 2);
+        idx += frameCount * 2;
+        
+	// }
+}
 
+#include "MiniAudioWrapper.hpp"
 int
 main()
 {
+    
     MixBinary mb = MixBinary<READ_WRITE>();
     mb.open();
     auto B = reinterpret_cast<MixBinaryCapnpData::Builder*>(mb.D);
-    auto ret = B->initDatas(10);
+    auto ret = B->initDatas(12);
     fillDatas(ret);
     auto flat_returned = mb.out();
 
@@ -140,18 +190,37 @@ main()
     }
     
     MixTranslator mt = MixTranslator();
-    if(!(mt<<rb)){
+    if(!(mt.Read(rb))){
         return 1;
     }
     for(auto i : mt.mixs->mixVec){
         std::cout << "Frame In: " << i.frame_in << "Frame Out: " << i.frame_out << std::endl;
     }
-    auto trp = reinterpret_cast<MixBinaryCapnpData::Reader*>(rb.D);
-    auto dds = trp->getDatas();
-    auto dPTR = (dds[1]);
-    std::cout<<"origin: " << dds[1].getBar() << "copy: " << dPTR.getBar() << std::endl;
     
-    std::cout<<"origin: " << dds[1].getBar() << "copy: " << dPTR.getBar() << std::endl;
-    
+    auto mm = MixMachine();
+    auto db = litedb();
+    db.openDB("./tempdb.db");
+    mm.IDsort(mt);
+    auto res = mm.mix(db, mt.bpms.value());
+    ma_device dev;
+    auto Dres = Decoder();
+    Dres.init("./WTC.wav");
+    // auto arrD = Dres.getRange(48000*10);
+    if(res.has_value()){
+        ma_device_config deconf = ma_device_config_init(ma_device_type_playback);
+        deconf.playback.format = ma_format_f32;
+        deconf.playback.channels = 2;
+        deconf.sampleRate = 48000;
+        deconf.periodSizeInFrames = 480;
+        deconf.dataCallback = idle_callback;
+        deconf.performanceProfile = ma_performance_profile_low_latency;
+        deconf.pUserData = (res.value().data());
+        ma_device_init(NULL, &deconf, &dev);
+        ma_device_start(&dev);
+        
+    }
+    getchar();
+
+
     return 0;
 }

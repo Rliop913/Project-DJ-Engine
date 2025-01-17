@@ -35,6 +35,14 @@ stmt::bind_double(int idx, double num)
     return sqlite3_bind_double(S, idx, num);
 }
 
+int 
+stmt::bind_int(int idx, double num)
+{
+    return sqlite3_bind_int(S, idx, num);
+}
+
+
+
 bool
 stmt::activate(sqlite3* db)
 {

@@ -17,3 +17,20 @@ struct Values{
     THR third;
     Position pos;
 };
+
+class Meta{
+public:
+    void declare(std::string, std::string){
+        ;//nothing. this is for faust
+    }
+};
+
+class UI{
+public:
+    void openVerticalBox(std::string){
+        ;//nothing. this is for faust
+    }
+    void closeBox(){
+        ;//nothing. this is for faust
+    }
+};

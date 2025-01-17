@@ -18,20 +18,8 @@ private:
 public:
     std::optional<MIX> mixs;
     std::optional<BPM> bpms;
-    bool operator<<(const MixBinary<READ_MODE::READ_ONLY>& binary);
+    bool Read(const MixBinary<READ_MODE::READ_ONLY>& binary);
 
     MixTranslator();
     ~MixTranslator();
 };
-
-
-
-// bool
-// MixTranslator::operator<<(const MixBinary<RM>& binary)
-// {
-//     PT PTR = reinterpret_cast<PT>(binary.D);
-//     auto mixDatas = PTR->getDatas();
-//     auto mixSize = mixDatas.size();
-
-
-// }

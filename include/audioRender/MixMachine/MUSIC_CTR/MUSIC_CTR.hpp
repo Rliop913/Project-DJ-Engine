@@ -1,7 +1,13 @@
 #pragma once
 
-#include "DeckData.hpp"
+#include <optional>
 
+#include <SoundTouch.h>
+
+#include "dbRoot.hpp"
+#include "DeckData.hpp"
+#include "MixTranslator.hpp"
+#include "Decoder.hpp"
 struct Control{
     Position Pause;
 };
@@ -32,9 +38,27 @@ struct BattleDJ{
 };
 
 
-struct MUSIC_CTR{
-    Control controls;
-    Load loads;
-    Unload unloads;
-    BattleDJ battles;
+constexpr unsigned long BPM_WINDOWS_SIZE = SAMPLERATE / 1000;
+
+class MUSIC_CTR{
+private:
+    std::optional<soundtouch::SoundTouch> st;
+    std::optional<Decoder> D;
+    std::vector<float> solaBuffer;
+    bool checkUsable();
+    bool TimeStretch(const unsigned long Frame, float*& masterPTR);
+    bool Render(const double bpm, const unsigned long FrameRange, float*& masterPTR);
+    void ChangeBpm(double bpm);
+public:
+    MUSIC_CTR();
+    ~MUSIC_CTR();
+    std::optional<unsigned long> StartPos;
+    std::optional<unsigned long> PausePos;
+    std::optional<unsigned long> FullPos;
+    std::optional<unsigned long> FirstBarPos;
+    std::optional<double> originBpm;
+    std::optional<std::string> songPath;
+
+    std::optional<std::vector<float>> 
+    Execute(const BPM& bpms);
 };

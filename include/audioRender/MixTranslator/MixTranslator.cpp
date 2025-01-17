@@ -12,7 +12,7 @@ MixTranslator::MixTranslator()
 
 
 bool
-MixTranslator::operator<<(const MixBinary<READ_MODE::READ_ONLY>& binary)
+MixTranslator::Read(const MixBinary<READ_MODE::READ_ONLY>& binary)
 {
     if(!mixs->openMix(reinterpret_cast<MixBinaryCapnpData::Reader*>(binary.D))){
         return false;

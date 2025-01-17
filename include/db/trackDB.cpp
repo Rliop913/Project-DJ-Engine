@@ -32,14 +32,14 @@ trackdata::GenSearchSTMT(stmt& dbstate, sqlite3* db)
 {
     dbstate.placeHold
     =
-    "SELECT TrackTitle FROM TRACK "
-    "WHERE (? IS NULL OR TrackTitle = ?)"
+    "SELECT * FROM TRACK "
+    "WHERE (? = -1 OR TrackTitle = ?)"
     ;
     if(!dbstate.activate(db)){
         return false;
     }
     if(trackTitle == ""){
-        CHK_BIND((dbstate.bind_null(1)))
+        CHK_BIND((dbstate.bind_int(1, -1)))
     }
     CHK_BIND(
     dbstate.bind_text(2, trackTitle)

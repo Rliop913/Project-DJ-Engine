@@ -87,6 +87,8 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/EFFECTS
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/VOL_CTR
+  ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/Minis
+  
 
 
   ${CMAKE_SOURCE_DIR}/third_party/Capnp
@@ -121,6 +123,10 @@ ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/Mix.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/MixTranslator.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/Structs.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixMachine.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/Minis/Decoder.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/audioRender.cpp
+
 
 )
 
@@ -142,7 +148,7 @@ ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixMachine.cpp
 
 
 add_executable(testdb ${CMAKE_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource})
-add_executable(testaudio ${CMAKE_SOURCE_DIR}/include/tests/audioTest.cpp ${audioRenderSource})
+add_executable(testaudio ${CMAKE_SOURCE_DIR}/include/tests/audioTest.cpp ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource})
 target_link_libraries(testaudio PRIVATE capnp capnp-rpc kj)
 enable_testing()
 

@@ -9,8 +9,8 @@ main()
         return 1;
     }
     auto td = trackdata("first");
-    auto md = musdata("test", "tt", "ttt", 123);
-    md.firstBar = "test";
+    auto md = musdata("WTC", "TEST", "./WTC.wav", 175);
+    md.firstBar = "1056";
     BIN temp(10);
     temp[0]= 'f';
     temp[1]= 'f';

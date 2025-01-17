@@ -3,6 +3,7 @@
 #include <cmath>
 
 #include "MixBinary.hpp"
+#define CHANNEL 2
 #define SAMPLERATE 48000
 #define DSAMPLERATE 48000.0
 #define DMINUTE 60.0

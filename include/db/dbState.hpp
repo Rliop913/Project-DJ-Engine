@@ -28,7 +28,8 @@ public:
     int bind_text(int idx, std::string& str);
     int bind_blob(int idx, BIN& bin);
     int bind_double(int idx, double num);
-
+    int bind_int(int idx, double num);
+    
     template<int T_COL, typename res>
     res
     colGet(int idx);
