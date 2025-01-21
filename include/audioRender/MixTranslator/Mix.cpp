@@ -118,7 +118,7 @@ MIX::WriteFrames(BPM& bpmm)
         );
     }
     else{
-        unsigned long remained_job = mixVec.size() % jobs_per_thread;
+        unsigned long remained_job = mixVec.size() - (jobs_per_thread * usable_threads);
         std::vector<std::thread> thread_pool;
         unsigned long idx = 0;
         for(unsigned int i=0; i<(usable_threads - 1); ++i){

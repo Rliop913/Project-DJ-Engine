@@ -61,7 +61,7 @@ BPM::getBpms(MIX& mixx)
             );
     }
     else{
-        unsigned long remained_job = mixx.mixVec.size() % jobs_per_thread;
+        unsigned long remained_job = mixx.mixVec.size() - (jobs_per_thread * usable_threads);
         std::vector<std::thread> thread_pool;
         unsigned long idx = 0;
         std::mutex bpm_locker;

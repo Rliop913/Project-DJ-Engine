@@ -17,7 +17,8 @@ audioRender::LoadTrack(litedb& db, trackdata& td)
     }
     auto mm = MixMachine();
     mm.IDsort(mt);
-    rendered_frames = mm.mix(db, mt.bpms.value());
+    mm.mix(db, mt.bpms.value());
+    rendered_frames = mm.rendered_out;
     if(!rendered_frames.has_value()){
         return false;
     }

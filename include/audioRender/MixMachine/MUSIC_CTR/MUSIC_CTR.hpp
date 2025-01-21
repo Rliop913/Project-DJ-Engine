@@ -55,6 +55,7 @@ private:
 public:
     MUSIC_CTR();
     ~MUSIC_CTR();
+    bool setLOAD(MBData::Reader& RP, litedb& db, unsigned long FrameIn);
     std::optional<unsigned long> StartPos;
     std::optional<unsigned long> PausePos;
     std::optional<unsigned long> FullPos;
@@ -62,6 +63,7 @@ public:
     std::optional<double> originBpm;
     std::optional<std::string> songPath;
 
-    std::optional<std::vector<float>> 
-    Execute(const BPM& bpms);
+    std::optional<std::vector<float>*> 
+    Execute(const BPM& bpms, std::vector<float>* PCMS);
+    bool SendData(soundtouch::SoundTouch*& stp, Decoder*& dp);
 };

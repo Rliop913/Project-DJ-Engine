@@ -27,7 +27,6 @@ enum class TypeEnum_f4ee4873bc65f8f0: uint16_t {
   VOL,
   LOAD,
   UNLOAD,
-  BEAT_MATCH,
   BPM_CONTROL,
   ECHO,
   LFO_FILTER,
@@ -37,7 +36,6 @@ enum class TypeEnum_f4ee4873bc65f8f0: uint16_t {
   LFO_PANNER,
   BATTLE_DJ,
   LFO_ROLL,
-  FLAGS,
 };
 CAPNP_DECLARE_ENUM(TypeEnum, f4ee4873bc65f8f0);
 CAPNP_DECLARE_SCHEMA(c6c88c32e11afb23);
@@ -45,20 +43,15 @@ enum class DetailEnum_c6c88c32e11afb23: uint16_t {
   HIGH,
   MID,
   LOW,
-  CUE,
-  PLAY,
   PAUSE,
   TRIM,
   FADER,
-  SOLA_ON,
-  SOLA_OFF,
+  TIME_STRETCH,
   SPIN,
-  BSPIN,
+  PITCH,
   REV,
   SCRATCH,
   BSCRATCH,
-  END,
-  ALIVE,
 };
 CAPNP_DECLARE_ENUM(DetailEnum, c6c88c32e11afb23);
 CAPNP_DECLARE_SCHEMA(83f21337c383e938);

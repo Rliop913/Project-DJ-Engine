@@ -9,37 +9,30 @@ enum TypeEnum{
     vol @4;
     load @5;
     unload @6;
-    beatMatch @7;
-    bpmControl @8;
-    echo @9;
-    lfoFilter @10;
-    lfoFlanger @11;
-    lfoPhaser @12;
-    lfoTrance @13;
-    lfoPanner @14;
-    battleDj @15;
-    lfoRoll @16;
-    flags @17;
+    bpmControl @7;
+    echo @8;
+    lfoFilter @9;
+    lfoFlanger @10;
+    lfoPhaser @11;
+    lfoTrance @12;
+    lfoPanner @13;
+    battleDj @14;
+    lfoRoll @15;
 }
 
 enum DetailEnum{
     high @0;
     mid @1;
     low @2;
-    cue @3;
-    play @4;
-    pause @5;
-    trim @6;
-    fader @7;
-    solaOn @8;
-    solaOff @9;
-    spin @10;
-    bspin @11;
-    rev @12;
-    scratch @13;
-    bscratch @14;
-    end @15;
-    alive @16;
+    pause @3;
+    trim @4;
+    fader @5;
+    timeStretch @6;
+    spin @7;
+    pitch @8;
+    rev @9;
+    scratch @10;
+    bscratch @11;
 }
 
 struct MBData{

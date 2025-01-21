@@ -8,7 +8,7 @@
 #include "dbRoot.hpp"
 #include "Deck.hpp"
 #include "Decoder.hpp"
-
+#include "BattleDj.hpp"
 using ID = long;
 
 class MixMachine{
@@ -16,10 +16,11 @@ private:
     unsigned long getMixSize(unsigned long frames);
 public:
     std::unordered_map<ID, std::vector<MixStruct>> Memorized;
-    // std::vector<float> MixOuts;
     bool IDsort(const MixTranslator& binary);
-    std::optional<std::vector<float>> mix(litedb& db, const BPM& bpms);
+    bool mix(litedb& db, const BPM& bpms);
     
+    std::vector<float> rendered_out;
+
     MixMachine();
     ~MixMachine();
 };

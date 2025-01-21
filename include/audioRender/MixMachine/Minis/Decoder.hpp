@@ -19,6 +19,6 @@ struct Decoder{
     bool init(const std::string& song_path);
     bool changePos(unsigned long Pos);
     bool getPos(unsigned long long& pos);
-    bool getRange(unsigned long end, std::vector<float>& buffer);
+    bool getRange(unsigned long numFrames, std::vector<float>& buffer);
 
 };

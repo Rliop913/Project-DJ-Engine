@@ -11,6 +11,20 @@ MUSIC_CTR::MUSIC_CTR()
     D.emplace();
 }
 
+
+bool
+MUSIC_CTR::SendData(soundtouch::SoundTouch*& stp, Decoder*& dp)
+{
+    if(st.has_value() && D.has_value()){
+        stp = &(st.value());
+        dp = &(D.value());
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 void
 MUSIC_CTR::ChangeBpm(double bpm)
 {
@@ -65,8 +79,8 @@ MUSIC_CTR::Render(const double bpm, const unsigned long FrameRange, float*& mast
 }
 
 
-std::optional<std::vector<float>>
-MUSIC_CTR::Execute(const BPM& bpms)
+std::optional<std::vector<float>*>
+MUSIC_CTR::Execute(const BPM& bpms, std::vector<float>* PCMS)
 {
     if(!checkUsable()){
         return std::nullopt;
@@ -82,8 +96,8 @@ MUSIC_CTR::Execute(const BPM& bpms)
     F.frame_to_here = FullPos.value();
     unsigned long RfullFrameSize = (FullPos.value() - StartPos.value()) * CHANNEL;
 
-    std::vector<float> PCMS(RfullFrameSize);
-    auto masterPTR = PCMS.data();
+    PCMS->resize(RfullFrameSize);
+    auto masterPTR = PCMS->data();
     
     auto idxGetter = [](const BpmStruct& first, const BpmStruct& second){
             return first.frame_to_here < second.frame_to_here;
@@ -96,6 +110,7 @@ MUSIC_CTR::Execute(const BPM& bpms)
         bpms.bpmVec.begin(), bpms.bpmVec.end(),
         P, idxGetter
     ); --PauseItr;
+
     if(!D->changePos(FirstBarPos.value())){
         return std::nullopt;
     }
@@ -115,7 +130,23 @@ MUSIC_CTR::Execute(const BPM& bpms)
     
     return PCMS;
 }
-
+bool
+MUSIC_CTR::setLOAD(MBData::Reader& RP, litedb& db, unsigned long FrameIn)
+{
+    musdata md;
+    md.title = RP.getFirst();
+    md.composer = RP.getSecond();
+    md.bpm = std::stod(RP.getThird().cStr());
+    originBpm = md.bpm;
+    auto searchRes = db << md;
+    if(!searchRes.has_value()){
+        return false;
+    }
+    songPath = searchRes.value()[0].musicPath;
+    FirstBarPos = std::stoul(searchRes.value()[0].firstBar);
+    StartPos = FrameIn;
+    return true;
+}
 
 MUSIC_CTR::~MUSIC_CTR()
 {

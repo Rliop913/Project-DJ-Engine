@@ -5,6 +5,8 @@ MixMachine::MixMachine()
 {
 }
 
+
+
 bool
 MixMachine::IDsort(const MixTranslator& tr)
 {
@@ -29,27 +31,38 @@ MixMachine::IDsort(const MixTranslator& tr)
 }
 
 
-std::optional<std::vector<float>>
+bool
 MixMachine::mix(litedb& db, const BPM& bpms)
 {
     auto num_threads = Memorized.size();
     for(auto i : Memorized){// todo - impl this to threads
         auto MC = MUSIC_CTR();
+        auto DJ = BattleDj();
+        DJ.GetDataFrom(MC);
         for(auto j : i.second){
             switch (j.RP.getType()){
             case TypeEnum::BATTLE_DJ:
                 {
-                    switch (j.RP.getDetails())
-                    {
+                    switch (j.RP.getDetails()){
                     case DetailEnum::SPIN:
-                        break;
-                    case DetailEnum::BSPIN:
+                        if(!DJ.Spin(j)){
+                            continue;
+                        }
                         break;
                     case DetailEnum::REV:
+                        if(!DJ.Rev(j)){
+                            continue;
+                        }
+                        break;
+                    case DetailEnum::PITCH:
+                        if(!DJ.Pitch(j)){
+                            continue;
+                        }
                         break;
                     case DetailEnum::SCRATCH:
-                        break;
-                    case DetailEnum::BSCRATCH:
+                        if(!DJ.Scratch(j)){
+                            continue;
+                        }
                         break;
                     default:
                         break;
@@ -58,18 +71,11 @@ MixMachine::mix(litedb& db, const BPM& bpms)
                 break;
             case TypeEnum::LOAD:
                 {
-                    musdata md;
-                    md.title = j.RP.getFirst();
-                    md.composer = j.RP.getSecond();
-                    md.bpm = std::stod(j.RP.getThird().cStr());
-                    MC.originBpm = md.bpm;
-                    auto searchRes = db << md;
-                    if(!searchRes.has_value()){
-                        return std::nullopt;
+                    if(!MC.setLOAD(j.RP, db, j.frame_in)){
+                        return false;
                     }
-                    MC.songPath = searchRes.value()[0].musicPath;
-                    MC.FirstBarPos = std::stoul(searchRes.value()[0].firstBar);
-                    MC.StartPos = j.frame_in;
+                    DJ.StartPos = j.frame_in;
+
                 }
                 break;
             case TypeEnum::CONTROL:
@@ -87,11 +93,13 @@ MixMachine::mix(litedb& db, const BPM& bpms)
                 break;
             }
         }
-        return MC.Execute(bpms);
+        
+        auto result = DJ << MC.Execute(bpms, &rendered_out);
+        return result.has_value();
     }
 
     //todo - implement mix
-
+    return true;
 }
 
 MixMachine::~MixMachine()

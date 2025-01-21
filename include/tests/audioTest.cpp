@@ -20,7 +20,7 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[0].setEbeat(0);
     ret[0].setEseparate(4);
     ret[0].setType(TypeEnum::BPM_CONTROL);
-    ret[0].setDetails(DetailEnum::SOLA_ON);
+    ret[0].setDetails(DetailEnum::TIME_STRETCH);
     ret[0].setFirst("175.0");
     ret[0].setId(0);
 
@@ -50,8 +50,8 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[3].setEbeat(3);
     ret[3].setEseparate(4);
     ret[3].setType(TypeEnum::BPM_CONTROL);
-    ret[3].setDetails(DetailEnum::SOLA_ON);
-    ret[3].setFirst("115.0");
+    ret[3].setDetails(DetailEnum::TIME_STRETCH);
+    ret[3].setFirst("175.0");
     ret[3].setId(0);
     
     ret[4].setBar(4);
@@ -70,8 +70,8 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[5].setEbeat(0);
     ret[5].setEseparate(4);
     ret[5].setType(TypeEnum::BPM_CONTROL);
-    ret[5].setDetails(DetailEnum::SOLA_ON);
-    ret[5].setFirst("400.0");
+    ret[5].setDetails(DetailEnum::TIME_STRETCH);
+    ret[5].setFirst("175.0");
     ret[5].setId(0);
     
     ret[6].setBar(6);
@@ -82,8 +82,8 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[6].setEseparate(4);
     
     ret[6].setType(TypeEnum::BPM_CONTROL);
-    ret[6].setDetails(DetailEnum::SOLA_ON);
-    ret[6].setFirst("120.0");
+    ret[6].setDetails(DetailEnum::TIME_STRETCH);
+    ret[6].setFirst("175.0");
     ret[6].setId(0);
 
     ret[7].setBar(7);
@@ -107,8 +107,8 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[9].setEbeat(0);
     ret[9].setEseparate(4);
     ret[9].setType(TypeEnum::BPM_CONTROL);
-    ret[9].setDetails(DetailEnum::SOLA_ON);
-    ret[9].setFirst("350.0");
+    ret[9].setDetails(DetailEnum::TIME_STRETCH);
+    ret[9].setFirst("175.0");
     ret[9].setId(0);
 
     ret[10].setBar(44);
@@ -121,14 +121,26 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[10].setDetails(DetailEnum::PAUSE);
     ret[10].setId(0);
     
-    ret[11].setBar(88);
+    ret[11].setBar(45);
     ret[11].setBeat(0);
     ret[11].setSeparate(4);
-    ret[11].setEbar(0);
-    ret[11].setEbeat(0);
+    ret[11].setEbar(45);
+    ret[11].setEbeat(1);
     ret[11].setEseparate(4);
-    ret[11].setType(TypeEnum::UNLOAD);
+    ret[11].setType(TypeEnum::BATTLE_DJ);
+    ret[11].setDetails(DetailEnum::SCRATCH);
+    ret[11].setFirst("480000");
+    ret[11].setSecond("-2.0");
     ret[11].setId(0);
+
+    ret[12].setBar(88);
+    ret[12].setBeat(0);
+    ret[12].setSeparate(4);
+    ret[12].setEbar(0);
+    ret[12].setEbeat(0);
+    ret[12].setEseparate(4);
+    ret[12].setType(TypeEnum::UNLOAD);
+    ret[12].setId(0);
 }
 
 auto idx = 0;
@@ -152,7 +164,7 @@ main()
     MixBinary mb = MixBinary<READ_WRITE>();
     mb.open();
     auto B = reinterpret_cast<MixBinaryCapnpData::Builder*>(mb.D);
-    auto ret = B->initDatas(12);
+    auto ret = B->initDatas(13);
     fillDatas(ret);
     auto flat_returned = mb.out();
 
@@ -206,7 +218,7 @@ main()
     auto Dres = Decoder();
     Dres.init("./WTC.wav");
     // auto arrD = Dres.getRange(48000*10);
-    if(res.has_value()){
+    if(res){
         ma_device_config deconf = ma_device_config_init(ma_device_type_playback);
         deconf.playback.format = ma_format_f32;
         deconf.playback.channels = 2;
@@ -214,7 +226,7 @@ main()
         deconf.periodSizeInFrames = 480;
         deconf.dataCallback = idle_callback;
         deconf.performanceProfile = ma_performance_profile_low_latency;
-        deconf.pUserData = (res.value().data());
+        deconf.pUserData = (mm.rendered_out.data());
         ma_device_init(NULL, &deconf, &dev);
         ma_device_start(&dev);
         
