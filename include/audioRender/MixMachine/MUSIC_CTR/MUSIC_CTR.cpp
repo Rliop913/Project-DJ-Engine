@@ -38,10 +38,10 @@ MUSIC_CTR::TimeStretch(const unsigned long Frame, float*& masterPTR)
 {
     
     const unsigned long Sola = Frame / st->getInputOutputSampleRatio();
-    if(!D->getRange(Sola, solaBuffer)){
+    if(!D->getRange(Sola, timeStretchBuffer)){
         return false;
     }
-    st->putSamples(solaBuffer.data(), Sola);
+    st->putSamples(timeStretchBuffer.data(), Sola);
     st->receiveSamples(masterPTR, Frame);
     masterPTR+=(Frame * CHANNEL);
     return true;
@@ -89,41 +89,26 @@ MUSIC_CTR::Execute(const BPM& bpms)
             return first.frame_to_here < second.frame_to_here;
         };
     auto StartItr = std::upper_bound(
-        bpms.bpmVec.begin(),
-        bpms.bpmVec.end(),
-        S,
-        idxGetter
+        bpms.bpmVec.begin(), bpms.bpmVec.end(), 
+        S, idxGetter
     ); --StartItr;
     auto PauseItr = std::upper_bound(
-        bpms.bpmVec.begin(),
-        bpms.bpmVec.end(),
-        P,
-        idxGetter
+        bpms.bpmVec.begin(), bpms.bpmVec.end(),
+        P, idxGetter
     ); --PauseItr;
-
     if(!D->changePos(FirstBarPos.value())){
         return std::nullopt;
     }
     for(auto i = StartItr; i != PauseItr; ++i){
         auto next = i + 1;
-        unsigned long FrameRange =
-        next->frame_to_here -
-        (
-            i->frame_to_here < S.frame_to_here ?
-                S.frame_to_here :
-                i->frame_to_here
-        );
+        unsigned long FrameRange = next->frame_to_here - 
+        GET_BIGGER(i->frame_to_here, S.frame_to_here);
         if(!Render(i->bpm, FrameRange, masterPTR)){
             return std::nullopt;
         }
     }
-    unsigned int LastRange =
-    P.frame_to_here -
-    (
-        PauseItr->frame_to_here < S.frame_to_here ?
-            S.frame_to_here :
-            PauseItr->frame_to_here
-    );
+    unsigned int LastRange = P.frame_to_here - 
+    GET_BIGGER(S.frame_to_here, PauseItr->frame_to_here);
     if(!Render(PauseItr->bpm, LastRange, masterPTR)){
         return std::nullopt;
     }

@@ -37,6 +37,25 @@ MixMachine::mix(litedb& db, const BPM& bpms)
         auto MC = MUSIC_CTR();
         for(auto j : i.second){
             switch (j.RP.getType()){
+            case TypeEnum::BATTLE_DJ:
+                {
+                    switch (j.RP.getDetails())
+                    {
+                    case DetailEnum::SPIN:
+                        break;
+                    case DetailEnum::BSPIN:
+                        break;
+                    case DetailEnum::REV:
+                        break;
+                    case DetailEnum::SCRATCH:
+                        break;
+                    case DetailEnum::BSCRATCH:
+                        break;
+                    default:
+                        break;
+                    }
+                }
+                break;
             case TypeEnum::LOAD:
                 {
                     musdata md;
