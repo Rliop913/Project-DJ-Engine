@@ -22,7 +22,6 @@ MIX::openMix(MixBinaryCapnpData::Reader* Rptr)
         auto mixSize = mixDatas.size();
 
         mixVec.resize(mixSize);
-
         auto MP = &(mixVec[0]);
         for(unsigned long i=0; i<mixSize; ++i){
             MP->RP = mixDatas[i];

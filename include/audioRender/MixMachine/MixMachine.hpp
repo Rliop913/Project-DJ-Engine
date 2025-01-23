@@ -9,6 +9,7 @@
 #include "Deck.hpp"
 #include "Decoder.hpp"
 #include "BattleDj.hpp"
+#include "FAUST_FILTERS.hpp"
 using ID = long;
 
 class MixMachine{
@@ -20,7 +21,11 @@ public:
     bool mix(litedb& db, const BPM& bpms);
     
     std::vector<float> rendered_out;
-
+    template<TypeEnum, typename T>
+    bool TypeWorks(MixStruct& ms, T& data);
+    template<TypeEnum, typename T>
+    bool TypeWorks(MixStruct& ms, T& data, litedb& db);
+    
     MixMachine();
     ~MixMachine();
 };

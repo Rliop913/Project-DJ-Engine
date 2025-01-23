@@ -127,6 +127,8 @@ ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/Minis/Decoder.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/audioRender.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_MUSCTR.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_EFFECT.cpp
 
 
 )

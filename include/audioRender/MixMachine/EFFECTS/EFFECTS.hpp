@@ -12,17 +12,39 @@ using POWER = double;
 using MIN_FREQUENCY = double;
 using GAIN = double;
 
-class Pipelines{
+struct FX_TIME_STAMP{
+    unsigned long Frame;
+    double Val;
+
+};
+
+struct EFFECT_JOB{
+    FX_TIME_STAMP in;
+    FX_TIME_STAMP out;
+    bool NO_OUT = true;
+};
+
+struct PCM_MIX_RANGE{
+    unsigned long pos;
+    unsigned long range;
+    unsigned long IdxPos() const {return pos * CHANNEL;}
+    unsigned long IdxRange() const {return range * CHANNEL;}
+    unsigned long Size() const {return range * CHANNEL * sizeof(float);}
+};
+
+class FaustCaster{
+protected:
+    void ToFaust(float** faustData, std::vector<float>& origin, const PCM_MIX_RANGE& pcm);
+    void ToDefault(std::vector<float>& origin, float** faustData, const PCM_MIX_RANGE& pcm);
+    void clearFaustData(float** faustData);
 public:
-    float* operator<<(float* pcmFrames);
-    std::vector<MBData::Reader>& operator<=(std::vector<MBData::Reader>& data);
+    void FaustCompute();
 };
 
-
-struct Filter{
-    std::vector<Values<EFFECT_VALUE, EFFECT_VALUE_INTERPOLATE, ON_OFF>> High;
-    std::vector<Values<EFFECT_VALUE, EFFECT_VALUE_INTERPOLATE, ON_OFF>> Low;
-};
+// struct Filter{
+//     std::vector<Values<EFFECT_VALUE, EFFECT_VALUE_INTERPOLATE, ON_OFF>> High;
+//     std::vector<Values<EFFECT_VALUE, EFFECT_VALUE_INTERPOLATE, ON_OFF>> Low;
+// };
 
 class FilterVal{
 protected:
@@ -35,6 +57,8 @@ protected:
 
     int InterpolateSamples;
 public:
+    std::optional<unsigned long> StartPos;
+    
     void Interpolate(){
         InterpolateSW = 0;
     }

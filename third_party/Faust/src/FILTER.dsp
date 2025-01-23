@@ -1,19 +1,13 @@
 import("stdfaust.lib");
-// fvariable(int low_freq_value, "EFFECTS.hpp");
-filter_order=12;//fvariable(int NumFilters, "EFFECTS.hpp");//12;
+import("INTERPOLATOR.dsp");
+filter_order=12;
 
-delay_samples = fvariable(int InterpolateSamples, "EFFECTS.hpp");
-sw = fvariable(int InterpolateSW, ""); //0 for interpolate
 Lowsw = fvariable(int LowFilterSW, "");
 Highsw = fvariable(int HighFilterSW, "");
 
-mlow = _ <: ba.line(delay_samples), _ : select2(sw) : _;
-low_freq = fvariable(float LowFreq, "") : mlow ;
-high_freq = fvariable(float HighFreq, "") : mlow;
 
-
-LPF=ba.bypass1(Lowsw, fi.lowpass(filter_order, low_freq));
-HPF=ba.bypass1(Highsw, fi.highpass(filter_order, high_freq));
+LPF=ba.bypass1(Lowsw, fi.lowpass(filter_order, ITSW : min(24000) : max(1)));
+HPF=ba.bypass1(Highsw, fi.highpass(filter_order, ITSW : min(24000) : max(1)));
 
 
 FILTER_RAIL=HPF:LPF;

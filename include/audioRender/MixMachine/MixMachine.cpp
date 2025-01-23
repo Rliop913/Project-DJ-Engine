@@ -38,64 +38,54 @@ MixMachine::mix(litedb& db, const BPM& bpms)
     for(auto i : Memorized){// todo - impl this to threads
         auto MC = MUSIC_CTR();
         auto DJ = BattleDj();
+        auto Filter = FilterFAUST();
+        Filter.init(SAMPLERATE);
+
         DJ.GetDataFrom(MC);
         for(auto j : i.second){
             switch (j.RP.getType()){
-            case TypeEnum::BATTLE_DJ:
-                {
-                    switch (j.RP.getDetails()){
-                    case DetailEnum::SPIN:
-                        if(!DJ.Spin(j)){
-                            continue;
-                        }
-                        break;
-                    case DetailEnum::REV:
-                        if(!DJ.Rev(j)){
-                            continue;
-                        }
-                        break;
-                    case DetailEnum::PITCH:
-                        if(!DJ.Pitch(j)){
-                            continue;
-                        }
-                        break;
-                    case DetailEnum::SCRATCH:
-                        if(!DJ.Scratch(j)){
-                            continue;
-                        }
-                        break;
-                    default:
-                        break;
-                    }
-                }
-                break;
-            case TypeEnum::LOAD:
-                {
-                    if(!MC.setLOAD(j.RP, db, j.frame_in)){
-                        return false;
-                    }
-                    DJ.StartPos = j.frame_in;
 
-                }
-                break;
+            case TypeEnum::BATTLE_DJ: 
+                if(TypeWorks<TypeEnum::BATTLE_DJ>(j, DJ)) break;
+                else continue;
+
+            case TypeEnum::LOAD: 
+                if(TypeWorks<TypeEnum::LOAD>(j, MC, db)
+                    && TypeWorks<TypeEnum::LOAD>(j, DJ)) break;
+                else continue;
+                
             case TypeEnum::CONTROL:
-                {
-                    MC.PausePos = j.frame_in;
-                }
-                break;
+                if(TypeWorks<TypeEnum::CONTROL>(j, MC)) break;
+                else continue;
+
             case TypeEnum::UNLOAD:
-                {
-                    MC.FullPos = j.frame_in;
-                }
-                break;
-            
+                if(TypeWorks<TypeEnum::UNLOAD>(j, MC)) break;
+                else continue;
+
+
             default:
                 break;
             }
         }
+
+        //임시 믹싱 코드 더 효율적 구현 필요 -> HIGHWAY 사용 예정
+        std::vector<float> tempVec;
+        auto result = DJ << MC.Execute(bpms, &tempVec);
+        if(!result.has_value()){
+            return false;
+        }
+        if(rendered_out.size() < (MC.FullPos.value() * CHANNEL)){
+            rendered_out.resize((MC.FullPos.value() * CHANNEL));
+        }
+        auto Rptr = rendered_out.data() + (MC.StartPos.value() * CHANNEL);
+        auto Tptr = tempVec.data();
+        for(unsigned long i = MC.StartPos.value(); i < (MC.FullPos.value() - MC.StartPos.value()) * CHANNEL; ++i){
+            (*Rptr) += (*Tptr);
+            ++Rptr;
+            ++Tptr;
+        }
+        // memcpy(Rptr, tempVec.data(), (MC.FullPos.value() - MC.StartPos.value()) * CHANNEL);
         
-        auto result = DJ << MC.Execute(bpms, &rendered_out);
-        return result.has_value();
     }
 
     //todo - implement mix

@@ -36,13 +36,22 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[1].setThird("175.0");
     ret[1].setId(0);
 
-    ret[2].setBar(2);
+    ret[2].setBar(10);
     ret[2].setBeat(2);
     ret[2].setSeparate(4);
     ret[2].setEbar(2);
     ret[2].setEbeat(2);
     ret[2].setEseparate(4);
-    
+    // ret[2].setType(TypeEnum::BPM_CONTROL);
+    // ret[2].setDetails(DetailEnum::TIME_STRETCH);
+    // ret[2].setFirst("400.0");
+    // ret[2].setId(0);
+    ret[2].setType(TypeEnum::LOAD);
+    ret[2].setFirst("WTC");
+    ret[2].setSecond("TEST");
+    ret[2].setThird("175.0");
+    ret[2].setId(1);
+
     ret[3].setBar(3);
     ret[3].setBeat(3);
     ret[3].setSeparate(4);
@@ -93,13 +102,17 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[7].setEbeat(0);
     ret[7].setEseparate(4);
     
-    ret[8].setBar(8);
+    ret[8].setBar(66);
     ret[8].setBeat(0);
     ret[8].setSeparate(4);
     ret[8].setEbar(8);
     ret[8].setEbeat(0);
     ret[8].setEseparate(4);
-    
+    ret[8].setType(TypeEnum::CONTROL);
+    ret[8].setDetails(DetailEnum::PAUSE);
+    ret[8].setId(1);
+
+
     ret[9].setBar(9);
     ret[9].setBeat(0);
     ret[9].setSeparate(4);
@@ -141,6 +154,16 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[12].setEseparate(4);
     ret[12].setType(TypeEnum::UNLOAD);
     ret[12].setId(0);
+
+    ret[13].setBar(99);
+    ret[13].setBeat(0);
+    ret[13].setSeparate(4);
+    ret[13].setEbar(0);
+    ret[13].setEbeat(0);
+    ret[13].setEseparate(4);
+    ret[13].setType(TypeEnum::UNLOAD);
+    ret[13].setId(1);
+    
 }
 
 auto idx = 0;
@@ -156,7 +179,7 @@ idle_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 f
 	// }
 }
 
-#include "MiniAudioWrapper.hpp"
+// #include "MiniAudioWrapper.hpp"
 int
 main()
 {
@@ -164,7 +187,7 @@ main()
     MixBinary mb = MixBinary<READ_WRITE>();
     mb.open();
     auto B = reinterpret_cast<MixBinaryCapnpData::Builder*>(mb.D);
-    auto ret = B->initDatas(13);
+    auto ret = B->initDatas(14);
     fillDatas(ret);
     auto flat_returned = mb.out();
 
