@@ -15,7 +15,7 @@ Include(FetchContent)
 FetchContent_Declare(
   capnproto
   GIT_REPOSITORY https://github.com/capnproto/capnproto.git
-  GIT_TAG v1.0.2
+  GIT_TAG v1.1.0
 )
 
 FetchContent_Declare(
@@ -81,14 +81,26 @@ include_directories(
 	# ${CMAKE_SOURCE_DIR}/include/data_structs
 	# ${CMAKE_SOURCE_DIR}/include/wrapper
   ${CMAKE_SOURCE_DIR}/include/db
-  ${CMAKE_SOURCE_DIR}/include/audioRender/MixBinary
-  ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator
+  # ${CMAKE_SOURCE_DIR}/include/audioRender/CapnpBinary
+  # ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator
+  # ${CMAKE_SOURCE_DIR}/include/audioRender/MusicTranslator
+  
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/EFFECTS
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/VOL_CTR
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/Minis
+  ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/THREADS
+
+  ${CMAKE_SOURCE_DIR}/include/db/Capnp/CapnpBinary
+  ${CMAKE_SOURCE_DIR}/include/db/Capnp/Translators
+  ${CMAKE_SOURCE_DIR}/include/db/Capnp/Translators/MixTranslator
+  ${CMAKE_SOURCE_DIR}/include/db/Capnp/Translators/MusicTranslator
+  ${CMAKE_SOURCE_DIR}/include/db/Capnp/Translators/NoteTranslator
   
+
+  
+
 
 
   ${CMAKE_SOURCE_DIR}/third_party/Capnp
@@ -98,7 +110,7 @@ include_directories(
   
 
 	${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_include
-	${CMAKE_SOURCE_DIR}/third_party/Faust/compiled
+	# ${CMAKE_SOURCE_DIR}/third_party/Faust/compiled
   
 )
 
@@ -111,24 +123,36 @@ ${CMAKE_SOURCE_DIR}/include/db/musicDB.cpp
 ${CMAKE_SOURCE_DIR}/include/db/trackDB.cpp
 ${CMAKE_SOURCE_DIR}/include/db/dbRoot.cpp
 ${CMAKE_SOURCE_DIR}/include/db/dbState.cpp
+
+${CMAKE_SOURCE_DIR}/include/db/Capnp/Translators/MixTranslator/Bpm.cpp
+${CMAKE_SOURCE_DIR}/include/db/Capnp/Translators/MixTranslator/Mix.cpp
+${CMAKE_SOURCE_DIR}/include/db/Capnp/Translators/MixTranslator/MixTranslator.cpp
+${CMAKE_SOURCE_DIR}/include/db/Capnp/Translators/MusicTranslator/MusicTranslator.cpp
+${CMAKE_SOURCE_DIR}/include/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp
+
+${CMAKE_SOURCE_DIR}/include/db/Capnp/Translators/FrameCalc.cpp
+
+${CMAKE_SOURCE_DIR}/third_party/Capnp/MixBinary.capnp.c++
+${CMAKE_SOURCE_DIR}/third_party/Capnp/MusicBinary.capnp.c++
+${CMAKE_SOURCE_DIR}/third_party/Capnp/NoteBinary.capnp.c++
 )
 
 set(audioRenderSource
 # ${CMAKE_SOURCE_DIR}/include/audioRender/MiniAudioWrapper.cpp
-${CMAKE_SOURCE_DIR}/third_party/Capnp/MixBinary.capnp.c++
-${CMAKE_SOURCE_DIR}/include/audioRender/MixBinary/MixBinary_Read.cpp
-${CMAKE_SOURCE_DIR}/include/audioRender/MixBinary/MixBinary_Write.cpp
-${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/Bpm.cpp
-${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/Mix.cpp
-${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/MixTranslator.cpp
-${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator/Structs.cpp
+
+
+
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixMachine.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/Minis/Decoder.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp
+
 ${CMAKE_SOURCE_DIR}/include/audioRender/audioRender.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_MUSCTR.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_EFFECT.cpp
+
+${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/THREADS/RenderThreads.cpp
 
 
 )
@@ -152,7 +176,13 @@ ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_EFFECT.cpp
 
 add_executable(testdb ${CMAKE_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource})
 add_executable(testaudio ${CMAKE_SOURCE_DIR}/include/tests/audioTest.cpp ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource})
+add_executable(testCapnp ${CMAKE_SOURCE_DIR}/include/tests/CapnpTest.cpp ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource})
+
+
 target_link_libraries(testaudio PRIVATE capnp capnp-rpc kj)
+target_link_libraries(testdb PRIVATE capnp capnp-rpc kj)
+target_link_libraries(testCapnp PRIVATE capnp capnp-rpc kj)
+
 enable_testing()
 
 # target_include_directories(testdb

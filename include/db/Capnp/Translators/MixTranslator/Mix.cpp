@@ -14,11 +14,11 @@ MIX::~MIX()
 }
 
 bool
-MIX::openMix(MixBinaryCapnpData::Reader* Rptr)
+MIX::openMix(const MixBinaryCapnpData::Reader& Rptr)
 {
     try
     {
-        auto mixDatas = Rptr->getDatas();
+        auto mixDatas = Rptr.getDatas();
         auto mixSize = mixDatas.size();
 
         mixVec.resize(mixSize);
@@ -49,38 +49,19 @@ MIX::openMix(MixBinaryCapnpData::Reader* Rptr)
 }
 
 unsigned long
-FillFrame(const BpmStruct& bs, BPM* B)
+FillFrame(const BpmFragment& bs, BPM* B)
 {
-    
-    auto bpmIt = std::upper_bound(
-        B->bpmVec.begin(),
-        B->bpmVec.end(),
-        bs,
-        [](const BpmStruct& first, const BpmStruct& second){
-            double FA = APPRX(
-                double, 
-                first.bar,
-                first.beat,
-                first.separate);
-            double SA = APPRX(
-                double,
-                second.bar,
-                second.beat,
-                second.separate);
-            return FA < SA;
-        }
-    );
-    --bpmIt;
+    auto bpmIt = B->bpmVec.getAffected(bs);
     return 
     FrameCalc::CountFrame(
-        bpmIt->bar,
-        bpmIt->beat,
-        bpmIt->separate,
+        bpmIt.bar,
+        bpmIt.beat,
+        bpmIt.separate,
         bs.bar,
         bs.beat,
         bs.separate,
-        bpmIt->bpm
-    ) + bpmIt->frame_to_here;
+        bpmIt.bpm
+    ) + bpmIt.frame_to_here;
 }
 
 void
@@ -91,8 +72,8 @@ mix_thread(
 )
 {
     for(unsigned long i=0; i<range; ++i){
-        BpmStruct bsin;
-        BpmStruct bsout;
+        BpmFragment bsin;
+        BpmFragment bsout;
         bsin.bar = M->RP.getBar();
         bsin.beat = M->RP.getBeat();
         bsin.separate = M->RP.getSeparate();

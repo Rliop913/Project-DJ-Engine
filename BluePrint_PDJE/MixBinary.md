@@ -18,7 +18,7 @@ See: [[MixTranslator]]
 | O      | FILTER(0)      | ID     | HIGH(0)/LOW(2)                         | [[ITPL]]      | [[8PointValues]] |                                |          |
 | IO     | EQ(1)          | ID     | HIGH(0)/MID(1)/LOW(2)                  | [[ITPL]]      | [[8PointValues]] |                                | val<-60  |
 | IO     | DISTORTION(2)  | ID     | 0                                      | [[ITPL]]      | [[8PointValues]] |                                | val<0    |
-| I      | CONTROL(3)     | ID     | PAUSE(3)                               | approx_loc    | X                |                                |          |
+| I      | CONTROL(3)     | ID     | PAUSE(3)/CUE(4)                        | approx_loc    | X                |                                |          |
 | IO     | VOL(4)         | ID     | TRIM(7)/FADER(8)                       | [[ITPL]]      | [[8PointValues]] |                                |          |
 | I      | LOAD(5)        | ID     | 0                                      | title         | composer         | bpm                            |          |
 | I      | UNLOAD(6)      | ID     | 0                                      | X             | X                |                                |          |

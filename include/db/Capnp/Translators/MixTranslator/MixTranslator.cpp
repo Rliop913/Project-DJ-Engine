@@ -12,9 +12,9 @@ MixTranslator::MixTranslator()
 
 
 bool
-MixTranslator::Read(const MixBinary<READ_MODE::READ_ONLY>& binary)
+MixTranslator::Read(const CapReader<MixBinaryCapnpData>& binary)
 {
-    if(!mixs->openMix(reinterpret_cast<MixBinaryCapnpData::Reader*>(binary.D))){
+    if(!mixs->openMix(binary.Rp.value())){
         return false;
     }
     if(!bpms->getBpms(mixs.value())){

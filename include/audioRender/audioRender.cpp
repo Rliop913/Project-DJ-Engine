@@ -7,7 +7,7 @@ audioRender::LoadTrack(litedb& db, trackdata& td)
     if(!searchRes.has_value()){
         return false;
     }
-    auto mb = MixBinary<READ_MODE::READ_ONLY>();
+    auto mb = CapReader<MixBinaryCapnpData>();
     if(!mb.open(searchRes.value()[0].mixBinary)){
         return false;
     }

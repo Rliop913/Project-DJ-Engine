@@ -1,5 +1,5 @@
 
-#include "MixBinary.hpp"
+#include "CapnpBinary.hpp"
 #include "MixTranslator.hpp"
 #include "MixMachine.hpp"
 #include "miniaudio.h"
@@ -184,17 +184,17 @@ int
 main()
 {
     
-    MixBinary mb = MixBinary<READ_WRITE>();
-    mb.open();
-    auto B = reinterpret_cast<MixBinaryCapnpData::Builder*>(mb.D);
-    auto ret = B->initDatas(14);
+    auto mb = CapWriter<MixBinaryCapnpData>();
+    mb.makeNew();
+    // auto B = reinterpret_cast<MixBinaryCapnpData::Builder*>(mb.D);
+    auto ret = mb.Wp->initDatas(14);
     fillDatas(ret);
     auto flat_returned = mb.out();
 
-    MixBinary rb = MixBinary<READ_MODE::READ_ONLY>();
+    auto rb = CapReader<MixBinaryCapnpData>();
     rb.open(flat_returned);
-    auto reader = reinterpret_cast<MixBinaryCapnpData::Reader*>(rb.D);
-    auto readGet = reader->getDatas();
+    // auto reader = reinterpret_cast<MixBinaryCapnpData::Reader*>(rb.D);
+    auto readGet = rb.Rp->getDatas();
     std::cout<<readGet[0].getId() << std::endl;
     std::cout<<readGet[1].getId() << std::endl;
     std::cout<<ret[0].getFirst().cStr() << std::endl;

@@ -6,9 +6,11 @@
 
 #include <miniaudio.h>
 
-#include "Structs.hpp"
+#include "FrameCalc.hpp"
 
 // using MAYBE_FRAME = std::optional<std::vector<float>>;
+
+using FRAME_POS = unsigned long long;
 
 struct Decoder{
     ma_decoder dec;
@@ -17,8 +19,8 @@ struct Decoder{
     ~Decoder();
 
     bool init(const std::string& song_path);
-    bool changePos(unsigned long Pos);
-    bool getPos(unsigned long long& pos);
-    bool getRange(unsigned long numFrames, std::vector<float>& buffer);
+    bool changePos(FRAME_POS Pos);
+    bool getPos(FRAME_POS& pos);
+    bool getRange(FRAME_POS numFrames, std::vector<float>& buffer);
 
 };

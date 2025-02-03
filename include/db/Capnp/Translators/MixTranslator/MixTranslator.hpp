@@ -7,7 +7,7 @@
 #include <mutex>
 #include <optional>
 
-#include "MixBinary.hpp"
+#include "CapnpBinary.hpp"
 #include "Mix.hpp"
 #include "Bpm.hpp"
 
@@ -18,7 +18,7 @@ private:
 public:
     std::optional<MIX> mixs;
     std::optional<BPM> bpms;
-    bool Read(const MixBinary<READ_MODE::READ_ONLY>& binary);
+    bool Read(const CapReader<MixBinaryCapnpData>& binary);
 
     MixTranslator();
     ~MixTranslator();

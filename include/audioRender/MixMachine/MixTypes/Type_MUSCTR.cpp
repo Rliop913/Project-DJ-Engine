@@ -69,7 +69,34 @@ bool
 MixMachine::TypeWorks<TypeEnum::CONTROL>
 (MixStruct& ms, MUSIC_CTR& data)
 {
-    data.PausePos = ms.frame_in;
+    switch (ms.RP.getDetails())
+    {
+    case DetailEnum::PAUSE:
+        {
+            PlayPosition pause;
+            pause.Gidx = ms.frame_in;
+            pause.Lidx = 0;
+            pause.status = MIXSTATE::PAUSE;
+            data.QDatas.pos.push_back(pause);
+        }
+        break;
+    case DetailEnum::CUE:
+        try
+        {
+            PlayPosition cuepos;
+            cuepos.Gidx = ms.frame_in;
+            cuepos.Lidx = std::stoull(ms.RP.getFirst().cStr());
+            cuepos.status = MIXSTATE::PLAY;
+            data.QDatas.pos.push_back(cuepos);
+        }
+        catch(...)
+        {
+            return false;
+        }
+        break;
+    default:
+        break;
+    }
     return true;
 }
 
@@ -78,7 +105,10 @@ bool
 MixMachine::TypeWorks<TypeEnum::UNLOAD>
 (MixStruct& ms, MUSIC_CTR& data)
 {
-    data.FullPos = ms.frame_in;
+    PlayPosition unload;
+    unload.Gidx = ms.frame_in;
+    unload.status = MIXSTATE::END;
+    data.QDatas.pos.push_back(unload);
     return true;
 }
 

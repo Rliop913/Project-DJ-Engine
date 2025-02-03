@@ -5,7 +5,7 @@
 #include <vector>
 #include <mutex>
 
-#include "Structs.hpp"
+#include "FrameCalc.hpp"
 
 class BPM;
 
@@ -14,7 +14,7 @@ private:
     unsigned int usable_threads;
 public:
     std::vector<MixStruct> mixVec;
-    bool openMix(MixBinaryCapnpData::Reader* Rptr);
+    bool openMix(const MixBinaryCapnpData::Reader& Rptr);
     bool WriteFrames(BPM& bpmm);
 
     MIX();

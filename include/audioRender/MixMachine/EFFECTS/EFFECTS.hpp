@@ -147,15 +147,15 @@ public:
 };
 
 
-struct EFFECTS{
-    Filter filters;
-    EQ eq;
-    Distortion distortions;
-    Echo echos;
-    LFO_Filter lfo_filters;
-    Flanger flangers;
-    Phaser phasers;
-    Trance trances;
-    Panner panners;
-    Roll rolls;
-};
+// struct EFFECTS{
+//     Filter filters;
+//     EQ eq;
+//     Distortion distortions;
+//     Echo echos;
+//     LFO_Filter lfo_filters;
+//     Flanger flangers;
+//     Phaser phasers;
+//     Trance trances;
+//     Panner panners;
+//     Roll rolls;
+// };

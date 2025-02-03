@@ -8,8 +8,8 @@
 #include "VOL_CTR.hpp"
 
 
-class Deck{
-    MUSIC_CTR CTR;
-    EFFECTS FX;
-    VOL_CTR VOL;
-};
+// class Deck{
+//     MUSIC_CTR CTR;
+//     EFFECTS FX;
+//     VOL_CTR VOL;
+// };

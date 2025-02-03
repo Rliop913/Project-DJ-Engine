@@ -38,8 +38,8 @@ MixMachine::mix(litedb& db, const BPM& bpms)
     for(auto i : Memorized){// todo - impl this to threads
         auto MC = MUSIC_CTR();
         auto DJ = BattleDj();
-        auto Filter = FilterFAUST();
-        Filter.init(SAMPLERATE);
+        // auto Filter = FilterFAUST();
+        // Filter.init(SAMPLERATE);
 
         DJ.GetDataFrom(MC);
         for(auto j : i.second){
@@ -74,12 +74,13 @@ MixMachine::mix(litedb& db, const BPM& bpms)
         if(!result.has_value()){
             return false;
         }
-        if(rendered_out.size() < (MC.FullPos.value() * CHANNEL)){
-            rendered_out.resize((MC.FullPos.value() * CHANNEL));
+        if(rendered_out.size() < (MC.QDatas.pos.back().Gidx * CHANNEL)){
+            rendered_out.resize((MC.QDatas.pos.back().Gidx * CHANNEL));
         }
-        auto Rptr = rendered_out.data() + (MC.StartPos.value() * CHANNEL);
+        auto Rptr = rendered_out.data() + (MC.QDatas.pos.front().Gidx * CHANNEL);
         auto Tptr = tempVec.data();
-        for(unsigned long i = MC.StartPos.value(); i < (MC.FullPos.value() - MC.StartPos.value()) * CHANNEL; ++i){
+        for(unsigned long i = MC.QDatas.pos.front().Gidx; i < (MC.QDatas.pos.back().Gidx - MC.QDatas.pos.front().Gidx) * CHANNEL; ++i){
+            
             (*Rptr) += (*Tptr);
             ++Rptr;
             ++Tptr;

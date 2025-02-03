@@ -11,13 +11,14 @@ enum TypeEnum{
     unload @6;
     bpmControl @7;
     echo @8;
-    lfoFilter @9;
-    lfoFlanger @10;
-    lfoPhaser @11;
-    lfoTrance @12;
-    lfoPanner @13;
+    oscFilter @9;
+    flanger @10;
+    phaser @11;
+    trance @12;
+    panner @13;
     battleDj @14;
-    lfoRoll @15;
+    roll @15;
+    compressor @16;
 }
 
 enum DetailEnum{
@@ -25,14 +26,15 @@ enum DetailEnum{
     mid @1;
     low @2;
     pause @3;
-    trim @4;
-    fader @5;
-    timeStretch @6;
-    spin @7;
-    pitch @8;
-    rev @9;
-    scratch @10;
-    bscratch @11;
+    cue @4;
+    trim @5;
+    fader @6;
+    timeStretch @7;
+    spin @8;
+    pitch @9;
+    rev @10;
+    scratch @11;
+    bscratch @12;
 }
 
 struct MBData{

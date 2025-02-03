@@ -26,32 +26,31 @@ MUSIC_CTR::SendData(soundtouch::SoundTouch*& stp, Decoder*& dp)
 }
 
 void
-MUSIC_CTR::ChangeBpm(double bpm)
+MUSIC_CTR::ChangeBpm(double targetbpm, double originBpm)
 {
-    st->setTempo(bpm / originBpm.value());
+    st->setTempo(targetbpm / originBpm);
 }
 
 
 bool
 MUSIC_CTR::checkUsable()
 {
-    if(!PausePos.has_value() && FullPos.has_value()){
-        PausePos = FullPos.value();
-    }
+    // if(!PausePos.has_value() && FullPos.has_value()){
+    //     PausePos = FullPos.value();
+    // }
     return
-    StartPos.has_value() &&
-    FullPos.has_value() &&
-    originBpm.has_value() &&
-    FirstBarPos.has_value() &&
     D.has_value() &&
     songPath.has_value();
 }
 
+
+
+
 bool
-MUSIC_CTR::TimeStretch(const unsigned long Frame, float*& masterPTR)
+MUSIC_CTR::TimeStretch(const FRAME_POS Frame, float*& masterPTR)
 {
     
-    const unsigned long Sola = Frame / st->getInputOutputSampleRatio();
+    const FRAME_POS Sola = Frame / st->getInputOutputSampleRatio();
     if(!D->getRange(Sola, timeStretchBuffer)){
         return false;
     }
@@ -62,11 +61,17 @@ MUSIC_CTR::TimeStretch(const unsigned long Frame, float*& masterPTR)
 }
 
 bool
-MUSIC_CTR::Render(const double bpm, const unsigned long FrameRange, float*& masterPTR)
+MUSIC_CTR::Render(
+    const double targetBpm,
+    const double originBpm, 
+    const LOCAL_POS LocalIDX,
+    const GLOBAL_POS RenderAmount, 
+    float*& masterPTR)
 {
-    ChangeBpm(bpm);
-    unsigned long ItrTimes = FrameRange / BPM_WINDOWS_SIZE;
-    unsigned long remainLast = FrameRange % BPM_WINDOWS_SIZE;
+    D->changePos(LocalIDX);
+    ChangeBpm(targetBpm, originBpm);
+    FRAME_POS ItrTimes = RenderAmount / BPM_WINDOWS_SIZE;
+    FRAME_POS remainLast = RenderAmount % BPM_WINDOWS_SIZE;
     for(auto j=0; j<ItrTimes-1; ++j){
         if(!TimeStretch(BPM_WINDOWS_SIZE, masterPTR)){
             return false;
@@ -79,6 +84,7 @@ MUSIC_CTR::Render(const double bpm, const unsigned long FrameRange, float*& mast
 }
 
 
+
 std::optional<std::vector<float>*>
 MUSIC_CTR::Execute(const BPM& bpms, std::vector<float>* PCMS)
 {
@@ -88,67 +94,56 @@ MUSIC_CTR::Execute(const BPM& bpms, std::vector<float>* PCMS)
     if(!D->init(songPath.value())){
         return std::nullopt;
     }
-    BpmStruct S;
-    BpmStruct P;
-    BpmStruct F;
-    S.frame_to_here = StartPos.value();
-    P.frame_to_here = PausePos.value();
-    F.frame_to_here = FullPos.value();
-    unsigned long RfullFrameSize = (FullPos.value() - StartPos.value()) * CHANNEL;
+    QDatas.Ready(bpms.bpmVec, Mus.bpms);
 
-    PCMS->resize(RfullFrameSize);
-    auto masterPTR = PCMS->data();
+    GLOBAL_POS RfullFrameSize = 
+        QDatas.pos.back().Gidx - QDatas.pos.front().Gidx;
     
-    auto idxGetter = [](const BpmStruct& first, const BpmStruct& second){
-            return first.frame_to_here < second.frame_to_here;
-        };
-    auto StartItr = std::upper_bound(
-        bpms.bpmVec.begin(), bpms.bpmVec.end(), 
-        S, idxGetter
-    ); --StartItr;
-    auto PauseItr = std::upper_bound(
-        bpms.bpmVec.begin(), bpms.bpmVec.end(),
-        P, idxGetter
-    ); --PauseItr;
 
-    if(!D->changePos(FirstBarPos.value())){
-        return std::nullopt;
-    }
-    for(auto i = StartItr; i != PauseItr; ++i){
-        auto next = i + 1;
-        unsigned long FrameRange = next->frame_to_here - 
-        GET_BIGGER(i->frame_to_here, S.frame_to_here);
-        if(!Render(i->bpm, FrameRange, masterPTR)){
-            return std::nullopt;
+    PCMS->resize(RfullFrameSize * CHANNEL);
+    auto masterPTR = PCMS->data();
+    for(unsigned int i=0; i<QDatas.pos.size() - 1; ++i){
+        if(QDatas.pos[i].status == PLAY){
+            GLOBAL_POS range = 
+                QDatas.pos[i + 1].Gidx - QDatas.pos[i].Gidx;
+            Render(
+                QDatas.pos[i].TargetBPM,
+                QDatas.pos[i].OriginBPM,
+                QDatas.pos[i].Lidx,
+                range,
+                masterPTR
+            );
+
         }
-    }
-    unsigned int LastRange = P.frame_to_here - 
-    GET_BIGGER(S.frame_to_here, PauseItr->frame_to_here);
-    if(!Render(PauseItr->bpm, LastRange, masterPTR)){
-        return std::nullopt;
     }
     
     return PCMS;
 }
 bool
-MUSIC_CTR::setLOAD(MBData::Reader& RP, litedb& db, unsigned long FrameIn)
+MUSIC_CTR::setLOAD(MBData::Reader& RP, litedb& db, FRAME_POS FrameIn)
 {
     musdata md;
     md.title = RP.getFirst();
     md.composer = RP.getSecond();
     md.bpm = std::stod(RP.getThird().cStr());
-    originBpm = md.bpm;
+    
     auto searchRes = db << md;
     if(!searchRes.has_value()){
         return false;
     }
     songPath = searchRes.value()[0].musicPath;
-    FirstBarPos = std::stoul(searchRes.value()[0].firstBar);
-    StartPos = FrameIn;
-    return true;
-}
-
-MUSIC_CTR::~MUSIC_CTR()
-{
-    ;
+    PlayPosition startpos;
+    startpos.Gidx = FrameIn;
+    startpos.Lidx = std::stoull(searchRes.value()[0].firstBar);
+    startpos.status = MIXSTATE::PLAY;
+    QDatas.pos.push_back(startpos);
+    
+    if(!capnpMus.open(searchRes.value()[0].bpmBinary)){
+        return false;
+    }
+    if(!Mus.Read(capnpMus)){
+        return false;
+    }
+    Mus.bpms.sortFragment();
+    return Mus.bpms.calcFrame(startpos.Lidx);
 }

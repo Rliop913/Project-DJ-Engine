@@ -9,12 +9,12 @@
 #include "Deck.hpp"
 #include "Decoder.hpp"
 #include "BattleDj.hpp"
-#include "FAUST_FILTERS.hpp"
+// #include "FAUST_FILTERS.hpp"
 using ID = long;
 
 class MixMachine{
 private:
-    unsigned long getMixSize(unsigned long frames);
+    FRAME_POS getMixSize(FRAME_POS frames);
 public:
     std::unordered_map<ID, std::vector<MixStruct>> Memorized;
     bool IDsort(const MixTranslator& binary);

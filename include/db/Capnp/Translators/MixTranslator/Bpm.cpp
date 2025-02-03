@@ -18,7 +18,7 @@ void
 bpm_thread(
     MixStruct* M, 
     std::mutex* bpm_locker, 
-    std::vector<BpmStruct>* bpms, 
+    BpmStruct* bpms, 
     unsigned long range
     )
 {
@@ -26,7 +26,7 @@ bpm_thread(
     for(unsigned long i=0; i<range; ++i){
         if(mp->RP.getType() == TypeEnum::BPM_CONTROL){
             auto bpmStr = std::string(mp->RP.getFirst().cStr());
-            BpmStruct tempbpm;
+            BpmFragment tempbpm;
             tempbpm.bar = mp->RP.getBar();
             tempbpm.beat = mp->RP.getBeat();
             tempbpm.separate = mp->RP.getSeparate();
@@ -40,7 +40,7 @@ bpm_thread(
             }
             {
                 std::lock_guard<std::mutex> lock(*bpm_locker);
-                bpms->push_back(tempbpm);
+                bpms->fragments.push_back(tempbpm);
             }
         }
         ++mp;
@@ -86,34 +86,13 @@ BPM::getBpms(MIX& mixx)
         }
 
     }
+    bpmVec.sortFragment();
     if(
-        bpmVec.empty() ||
-        bpmVec[0].bar != 0 ||
-        bpmVec[0].beat != 0
+        bpmVec.fragments.empty() ||
+        bpmVec.fragments[0].bar != 0 ||
+        bpmVec.fragments[0].beat != 0
     ){
         return false;
     }
-    for(auto i : bpmVec){
-        if(i.bpm <= 0){
-            return false;
-        }
-    }
-    bpmVec[0].frame_to_here = 0;
-    if(bpmVec.size() == 1){
-        return true;
-    }
-    auto Sp = &(bpmVec[0]);
-    auto Ep = &(bpmVec[1]);
-    for(unsigned long i=1; i<bpmVec.size(); ++i){
-        Ep->frame_to_here =
-        Sp->frame_to_here +
-        FrameCalc::CountFrame(
-            Sp->bar, Sp->beat, Sp->separate,
-            Ep->bar, Ep->beat, Ep->separate,
-            Ep->bpm
-        );
-        ++Sp;
-        ++Ep;
-    }
-    return true;
+    return bpmVec.calcFrame();
 }
