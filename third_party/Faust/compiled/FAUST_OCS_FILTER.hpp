@@ -1,23 +1,25 @@
 /* ------------------------------------------------------------
 name: "OCSFILTER"
 Code generated with Faust 2.75.7 (https://faust.grame.fr)
-Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
+Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn OcsFilterFAUST -scn OcsFilter_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
 ------------------------------------------------------------ */
 
-#ifndef  __FilterFAUST_H__
-#define  __FilterFAUST_H__
+#ifndef  __OcsFilterFAUST_H__
+#define  __OcsFilterFAUST_H__
 
 #ifndef FAUSTFLOAT
 #define FAUSTFLOAT float
 #endif 
 
+#include "Faust_interpolate.hpp"
+#include "ocsFilter.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
 #include <math.h>
 
 #ifndef FAUSTCLASS 
-#define FAUSTCLASS FilterFAUST
+#define FAUSTCLASS OcsFilterFAUST
 #endif
 
 #ifdef __APPLE__ 
@@ -31,11 +33,11 @@ Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn 
 #define RESTRICT __restrict__
 #endif
 
-static float FilterFAUST_faustpower2_f(float value) {
+static float OcsFilterFAUST_faustpower2_f(float value) {
 	return value * value;
 }
 
-class FilterFAUST final : public FilterVal {
+class OcsFilterFAUST final : public OcsFilter_PDJE {
 	
  private:
 	
@@ -45,7 +47,7 @@ class FilterFAUST final : public FilterVal {
 	float fConst0;
 	float fConst1;
 	float fRec7_perm[4];
-	float ftbl0FilterFAUSTSIG0[65536];
+	float ftbl0OcsFilterFAUSTSIG0[65536];
 	float fConst2;
 	float fRec6_perm[4];
 	float fRec5_perm[4];
@@ -73,14 +75,14 @@ class FilterFAUST final : public FilterVal {
 	int iRec8[2];
 	
  public:
-	FilterFAUST() {
+	OcsFilterFAUST() {
 	}
 	
 	void metadata(Meta* m) { 
 		m->declare("basics.lib/name", "Faust Basic Element Library");
 		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
 		m->declare("basics.lib/version", "1.19.1");
-		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
+		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn OcsFilterFAUST -scn OcsFilter_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
 		m->declare("filename", "OCSFILTER.dsp");
 		m->declare("filters.lib/fir:author", "Julius O. Smith III");
 		m->declare("filters.lib/fir:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
@@ -163,7 +165,7 @@ class FilterFAUST final : public FilterVal {
 		for (int i1_re0 = 0; i1_re0 < 65536; i1_re0 = i1_re0 + 1) {
 			iVec1[0] = 1;
 			iRec8[0] = (iVec1[1] + iRec8[1]) % 65536;
-			ftbl0FilterFAUSTSIG0[i1_re0] = std::cos(9.58738e-05f * float(iRec8[0]));
+			ftbl0OcsFilterFAUSTSIG0[i1_re0] = std::cos(9.58738e-05f * float(iRec8[0]));
 			iVec1[1] = iVec1[0];
 			iRec8[1] = iRec8[0];
 		}
@@ -293,8 +295,8 @@ class FilterFAUST final : public FilterVal {
 		instanceClear();
 	}
 	
-	FilterFAUST* clone() {
-		return new FilterFAUST();
+	OcsFilterFAUST* clone() {
+		return new OcsFilterFAUST();
 	}
 	
 	int getSampleRate() {
@@ -468,7 +470,7 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec2[i] = std::tan(fConst2 * std::min<float>(2.4e+04f, std::max<float>(1.0f, fSlow4 + fSlow3 * (ftbl0FilterFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec7[i]), 65535))] + 1.0f))));
+				fZec2[i] = std::tan(fConst2 * std::min<float>(2.4e+04f, std::max<float>(1.0f, fSlow4 + fSlow3 * (ftbl0OcsFilterFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec7[i]), 65535))] + 1.0f))));
 			}
 			/* Vectorizable loop 3 */
 			/* Compute code */
@@ -480,7 +482,7 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec5[i] = FilterFAUST_faustpower2_f(fZec2[i]);
+				fZec5[i] = OcsFilterFAUST_faustpower2_f(fZec2[i]);
 			}
 			/* Recursive loop 5 */
 			/* Pre code */
@@ -1106,7 +1108,7 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec2[i] = std::tan(fConst2 * std::min<float>(2.4e+04f, std::max<float>(1.0f, fSlow4 + fSlow3 * (ftbl0FilterFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec7[i]), 65535))] + 1.0f))));
+				fZec2[i] = std::tan(fConst2 * std::min<float>(2.4e+04f, std::max<float>(1.0f, fSlow4 + fSlow3 * (ftbl0OcsFilterFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec7[i]), 65535))] + 1.0f))));
 			}
 			/* Vectorizable loop 3 */
 			/* Compute code */
@@ -1118,7 +1120,7 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec5[i] = FilterFAUST_faustpower2_f(fZec2[i]);
+				fZec5[i] = OcsFilterFAUST_faustpower2_f(fZec2[i]);
 			}
 			/* Recursive loop 5 */
 			/* Pre code */

@@ -5,7 +5,7 @@ import("INTERPOLATOR.dsp");
 
 // EQSW = hslider("SELECTOR", 0, 0, 2, 1);
 
-EQSW = fvariable(int EQSelect, "");
+EQSW = fvariable(int EQSelect, "eq.hpp");
 
 
 LOW_GATE=fi.lowshelf(3, ITSW, 250);

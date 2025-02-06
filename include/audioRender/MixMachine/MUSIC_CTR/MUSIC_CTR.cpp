@@ -141,9 +141,8 @@ MUSIC_CTR::setLOAD(MBData::Reader& RP, litedb& db, FRAME_POS FrameIn)
     if(!capnpMus.open(searchRes.value()[0].bpmBinary)){
         return false;
     }
-    if(!Mus.Read(capnpMus)){
+    if(!Mus.Read(capnpMus, startpos.Lidx)){
         return false;
     }
-    Mus.bpms.sortFragment();
-    return Mus.bpms.calcFrame(startpos.Lidx);
+    return true;
 }

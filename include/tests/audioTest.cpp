@@ -36,8 +36,8 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[1].setThird("175.0");
     ret[1].setId(0);
 
-    ret[2].setBar(10);
-    ret[2].setBeat(2);
+    ret[2].setBar(5);
+    ret[2].setBeat(0);
     ret[2].setSeparate(4);
     ret[2].setEbar(2);
     ret[2].setEbeat(2);
@@ -52,16 +52,16 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     ret[2].setThird("175.0");
     ret[2].setId(1);
 
-    ret[3].setBar(3);
-    ret[3].setBeat(3);
+    ret[3].setBar(9);
+    ret[3].setBeat(0);
     ret[3].setSeparate(4);
-    ret[3].setEbar(3);
-    ret[3].setEbeat(3);
+    ret[3].setEbar(0);
+    ret[3].setEbeat(0);
     ret[3].setEseparate(4);
-    ret[3].setType(TypeEnum::BPM_CONTROL);
-    ret[3].setDetails(DetailEnum::TIME_STRETCH);
-    ret[3].setFirst("175.0");
-    ret[3].setId(0);
+    ret[3].setType(TypeEnum::CONTROL);
+    ret[3].setDetails(DetailEnum::CUE);
+    ret[3].setFirst("480000");
+    ret[3].setId(1);
     
     ret[4].setBar(4);
     ret[4].setBeat(4);

@@ -11,7 +11,7 @@
 class MusicTranslator{
 public:
     BpmStruct bpms;
-    bool Read(const CapReader<MusicBinaryCapnpData>& binary);
+    bool Read(const CapReader<MusicBinaryCapnpData>& binary, unsigned long long startFrame);
 
     MusicTranslator() = default;
     ~MusicTranslator() = default;

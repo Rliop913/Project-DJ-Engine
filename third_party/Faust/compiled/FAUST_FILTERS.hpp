@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------
 name: "FILTER"
 Code generated with Faust 2.75.7 (https://faust.grame.fr)
-Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
+Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn Filter_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
 ------------------------------------------------------------ */
 
 #ifndef  __FilterFAUST_H__
@@ -11,6 +11,8 @@ Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn 
 #define FAUSTFLOAT float
 #endif 
 
+#include "Faust_interpolate.hpp"
+#include "filter.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
@@ -35,7 +37,7 @@ static float FilterFAUST_faustpower2_f(float value) {
 	return value * value;
 }
 
-class FilterFAUST final : public FilterVal {
+class FilterFAUST final : public Filter_PDJE {
 	
  private:
 	
@@ -76,7 +78,7 @@ class FilterFAUST final : public FilterVal {
 		m->declare("basics.lib/name", "Faust Basic Element Library");
 		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
 		m->declare("basics.lib/version", "1.19.1");
-		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
+		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn Filter_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
 		m->declare("filename", "FILTER.dsp");
 		m->declare("filters.lib/fir:author", "Julius O. Smith III");
 		m->declare("filters.lib/fir:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
@@ -510,13 +512,13 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec17[i] = FilterFAUST_faustpower2_f(fZec14[i]);
+				fZec15[i] = 1.0f / fZec14[i];
 			}
 			/* Vectorizable loop 17 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec15[i] = 1.0f / fZec14[i];
+				fZec17[i] = FilterFAUST_faustpower2_f(fZec14[i]);
 			}
 			/* Vectorizable loop 18 */
 			/* Compute code */
@@ -1133,13 +1135,13 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec17[i] = FilterFAUST_faustpower2_f(fZec14[i]);
+				fZec15[i] = 1.0f / fZec14[i];
 			}
 			/* Vectorizable loop 17 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec15[i] = 1.0f / fZec14[i];
+				fZec17[i] = FilterFAUST_faustpower2_f(fZec14[i]);
 			}
 			/* Vectorizable loop 18 */
 			/* Compute code */

@@ -1,7 +1,7 @@
 import("stdfaust.lib");
 import("INTERPOLATOR.dsp");
 
-S = fvariable(float strength, "");
+S = fvariable(float strength, "compressor.hpp");
 THR = fvariable(int threshDB, "");
 ATT = fvariable(int attackMS, "");
 REL = fvariable(int releaseMS, "");

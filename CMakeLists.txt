@@ -86,11 +86,14 @@ include_directories(
   # ${CMAKE_SOURCE_DIR}/include/audioRender/MusicTranslator
   
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine
-  ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/EFFECTS
+  ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/EFFECT
+  ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/FAUST_VALS
+  
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/VOL_CTR
-  ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/Minis
+  ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MiniaudioObjects
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/THREADS
+  ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/INTERPOLATOR
 
   ${CMAKE_SOURCE_DIR}/include/db/Capnp/CapnpBinary
   ${CMAKE_SOURCE_DIR}/include/db/Capnp/Translators
@@ -110,7 +113,7 @@ include_directories(
   
 
 	${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_include
-	# ${CMAKE_SOURCE_DIR}/third_party/Faust/compiled
+	${CMAKE_SOURCE_DIR}/third_party/Faust/compiled
   
 )
 
@@ -143,7 +146,7 @@ set(audioRenderSource
 
 
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixMachine.cpp
-${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/Minis/Decoder.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp
 

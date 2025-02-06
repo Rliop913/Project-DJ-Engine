@@ -1,7 +1,7 @@
 import("stdfaust.lib");
 import("INTERPOLATOR.dsp");
 
-BPS = fvariable(float bps, "");
+BPS = fvariable(float bps, "flanger.hpp");
 
 
 OSCL = (os.oscsin(BPS + 0.1)+1.0) * 10;

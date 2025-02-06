@@ -1,7 +1,7 @@
 import("stdfaust.lib");
 import("INTERPOLATOR.dsp");
 
-BPS = fvariable(float bps, "");
+BPS = fvariable(float bps, "trance.hpp");
 TGAIN = fvariable(float gain, "");
 
 GATE = (os.lf_sawpos(BPS) - TGAIN) * -1 : ceil;

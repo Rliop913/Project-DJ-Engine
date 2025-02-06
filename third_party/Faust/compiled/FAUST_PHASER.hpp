@@ -1,23 +1,25 @@
 /* ------------------------------------------------------------
 name: "PHASER"
 Code generated with Faust 2.75.7 (https://faust.grame.fr)
-Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
+Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn PhaserFAUST -scn Phaser_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
 ------------------------------------------------------------ */
 
-#ifndef  __FilterFAUST_H__
-#define  __FilterFAUST_H__
+#ifndef  __PhaserFAUST_H__
+#define  __PhaserFAUST_H__
 
 #ifndef FAUSTFLOAT
 #define FAUSTFLOAT float
 #endif 
 
+#include "Faust_interpolate.hpp"
+#include "phaser.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
 #include <math.h>
 
 #ifndef FAUSTCLASS 
-#define FAUSTCLASS FilterFAUST
+#define FAUSTCLASS PhaserFAUST
 #endif
 
 #ifdef __APPLE__ 
@@ -31,11 +33,11 @@ Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn 
 #define RESTRICT __restrict__
 #endif
 
-static float FilterFAUST_faustpower2_f(float value) {
+static float PhaserFAUST_faustpower2_f(float value) {
 	return value * value;
 }
 
-class FilterFAUST final : public FilterVal {
+class PhaserFAUST final : public Phaser_PDJE {
 	
  private:
 	
@@ -66,14 +68,14 @@ class FilterFAUST final : public FilterVal {
 	float fRec10_perm[4];
 	
  public:
-	FilterFAUST() {
+	PhaserFAUST() {
 	}
 	
 	void metadata(Meta* m) { 
 		m->declare("basics.lib/name", "Faust Basic Element Library");
 		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
 		m->declare("basics.lib/version", "1.19.1");
-		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
+		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn PhaserFAUST -scn Phaser_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
 		m->declare("filename", "PHASER.dsp");
 		m->declare("filters.lib/fir:author", "Julius O. Smith III");
 		m->declare("filters.lib/fir:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
@@ -147,7 +149,7 @@ class FilterFAUST final : public FilterVal {
 		fConst0 = std::min<float>(1.92e+05f, std::max<float>(1.0f, float(fSampleRate)));
 		fConst1 = 6.2831855f / fConst0;
 		fConst2 = std::exp(-(14137.167f / fConst0));
-		fConst3 = FilterFAUST_faustpower2_f(fConst2);
+		fConst3 = PhaserFAUST_faustpower2_f(fConst2);
 		fConst4 = 1.0f / fConst0;
 		fConst5 = 2.0f * fConst2;
 	}
@@ -241,8 +243,8 @@ class FilterFAUST final : public FilterVal {
 		instanceClear();
 	}
 	
-	FilterFAUST* clone() {
-		return new FilterFAUST();
+	PhaserFAUST* clone() {
+		return new PhaserFAUST();
 	}
 	
 	int getSampleRate() {
@@ -609,7 +611,7 @@ class FilterFAUST final : public FilterVal {
 				fRec14[i] = fRec15[i - 2] + fConst3 * (fRec15[i] - fRec14[i - 2]) - fConst5 * fZec17[i] * (fRec15[i - 1] - fRec14[i - 1]);
 				fRec13[i] = fRec14[i - 2] + fConst3 * (fRec14[i] - fRec13[i - 2]) - fConst5 * fZec17[i] * (fRec14[i - 1] - fRec13[i - 1]);
 				fRec12[i] = fRec13[i - 2] + fConst3 * (fRec13[i] - fRec12[i - 2]) - fConst5 * fZec17[i] * (fRec13[i - 1] - fRec12[i - 1]);
-				fRec11[i] = fRec12[i - 2] + fConst3 * (fRec12[i] - fRec11[i - 2]) - fConst5 * fZec17[i] * (fRec12[i - 1] - fRec11[i - 1]);
+				fRec11[i] = fConst3 * (fRec12[i] - fRec11[i - 2]) + fRec12[i - 2] + fConst5 * fZec17[i] * (fRec11[i - 1] - fRec12[i - 1]);
 				fRec10[i] = fRec11[i - 2] + fConst3 * fRec11[i] - fConst5 * fZec17[i] * fRec11[i - 1];
 			}
 			/* Post code */
@@ -930,7 +932,7 @@ class FilterFAUST final : public FilterVal {
 				fRec14[i] = fRec15[i - 2] + fConst3 * (fRec15[i] - fRec14[i - 2]) - fConst5 * fZec17[i] * (fRec15[i - 1] - fRec14[i - 1]);
 				fRec13[i] = fRec14[i - 2] + fConst3 * (fRec14[i] - fRec13[i - 2]) - fConst5 * fZec17[i] * (fRec14[i - 1] - fRec13[i - 1]);
 				fRec12[i] = fRec13[i - 2] + fConst3 * (fRec13[i] - fRec12[i - 2]) - fConst5 * fZec17[i] * (fRec13[i - 1] - fRec12[i - 1]);
-				fRec11[i] = fRec12[i - 2] + fConst3 * (fRec12[i] - fRec11[i - 2]) - fConst5 * fZec17[i] * (fRec12[i - 1] - fRec11[i - 1]);
+				fRec11[i] = fConst3 * (fRec12[i] - fRec11[i - 2]) + fRec12[i - 2] + fConst5 * fZec17[i] * (fRec11[i - 1] - fRec12[i - 1]);
 				fRec10[i] = fRec11[i - 2] + fConst3 * fRec11[i] - fConst5 * fZec17[i] * fRec11[i - 1];
 			}
 			/* Post code */

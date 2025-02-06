@@ -1,22 +1,23 @@
 /* ------------------------------------------------------------
 name: "DISTORTION"
 Code generated with Faust 2.75.7 (https://faust.grame.fr)
-Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
+Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn DistortionFAUST -scn FaustInterpolate -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
 ------------------------------------------------------------ */
 
-#ifndef  __FilterFAUST_H__
-#define  __FilterFAUST_H__
+#ifndef  __DistortionFAUST_H__
+#define  __DistortionFAUST_H__
 
 #ifndef FAUSTFLOAT
 #define FAUSTFLOAT float
 #endif 
 
+#include "Faust_interpolate.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
 
 #ifndef FAUSTCLASS 
-#define FAUSTCLASS FilterFAUST
+#define FAUSTCLASS DistortionFAUST
 #endif
 
 #ifdef __APPLE__ 
@@ -30,11 +31,11 @@ Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn 
 #define RESTRICT __restrict__
 #endif
 
-static float FilterFAUST_faustpower2_f(float value) {
+static float DistortionFAUST_faustpower2_f(float value) {
 	return value * value;
 }
 
-class FilterFAUST final : public FilterVal {
+class DistortionFAUST final : public FaustInterpolate {
 	
  private:
 	
@@ -42,14 +43,14 @@ class FilterFAUST final : public FilterVal {
 	int fSampleRate;
 	
  public:
-	FilterFAUST() {
+	DistortionFAUST() {
 	}
 	
 	void metadata(Meta* m) { 
 		m->declare("basics.lib/name", "Faust Basic Element Library");
 		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
 		m->declare("basics.lib/version", "1.19.1");
-		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
+		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn DistortionFAUST -scn FaustInterpolate -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
 		m->declare("filename", "DISTORTION.dsp");
 		m->declare("interpolators.lib/interpolate_cosine:author", "Stéphane Letz");
 		m->declare("interpolators.lib/interpolate_cosine:licence", "MIT");
@@ -126,8 +127,8 @@ class FilterFAUST final : public FilterVal {
 		instanceClear();
 	}
 	
-	FilterFAUST* clone() {
-		return new FilterFAUST();
+	DistortionFAUST* clone() {
+		return new DistortionFAUST();
 	}
 	
 	int getSampleRate() {
@@ -308,13 +309,13 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(fZec15[i] * (1.0f - 0.33333334f * FilterFAUST_faustpower2_f(fZec15[i])));
+				output0[i] = FAUSTFLOAT(fZec15[i] * (1.0f - 0.33333334f * DistortionFAUST_faustpower2_f(fZec15[i])));
 			}
 			/* Vectorizable loop 19 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(fZec16[i] * (1.0f - 0.33333334f * FilterFAUST_faustpower2_f(fZec16[i])));
+				output1[i] = FAUSTFLOAT(fZec16[i] * (1.0f - 0.33333334f * DistortionFAUST_faustpower2_f(fZec16[i])));
 			}
 		}
 		/* Remaining frames */
@@ -445,13 +446,13 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(fZec15[i] * (1.0f - 0.33333334f * FilterFAUST_faustpower2_f(fZec15[i])));
+				output0[i] = FAUSTFLOAT(fZec15[i] * (1.0f - 0.33333334f * DistortionFAUST_faustpower2_f(fZec15[i])));
 			}
 			/* Vectorizable loop 19 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(fZec16[i] * (1.0f - 0.33333334f * FilterFAUST_faustpower2_f(fZec16[i])));
+				output1[i] = FAUSTFLOAT(fZec16[i] * (1.0f - 0.33333334f * DistortionFAUST_faustpower2_f(fZec16[i])));
 			}
 		}
 	}

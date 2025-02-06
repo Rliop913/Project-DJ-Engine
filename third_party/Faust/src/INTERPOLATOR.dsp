@@ -2,7 +2,7 @@ import("stdfaust.lib");
 
 
 
-selectNum = fvariable(int selectInterpolator, "");
+selectNum = fvariable(int selectInterpolator, "Faust_interpolate.hpp");
 p1 = fvariable(int v1, "");
 p2 = fvariable(int v2, "");
 p3 = fvariable(int v3, "");

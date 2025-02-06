@@ -4,7 +4,7 @@ import("INTERPOLATOR.dsp");
 filter_order=12;
 
 
-HL_SELECTOR = fvariable(int ocsFilterHighLowSW, "");
+HL_SELECTOR = fvariable(int ocsFilterHighLowSW, "ocsFilter.hpp");
 
 FREQ_MIDDLE = fvariable(int middleFreq, "");
 

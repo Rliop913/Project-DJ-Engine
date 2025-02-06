@@ -2,7 +2,7 @@ import("stdfaust.lib");
 import("INTERPOLATOR.dsp");
 filter_order=12;
 
-Lowsw = fvariable(int LowFilterSW, "");
+Lowsw = fvariable(int LowFilterSW, "filter.hpp");
 Highsw = fvariable(int HighFilterSW, "");
 
 

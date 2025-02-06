@@ -1,7 +1,7 @@
 import("stdfaust.lib");
 import("INTERPOLATOR.dsp");
 
-BPS = fvariable(float bps, "");
+BPS = fvariable(float bps, "panner.hpp");
 GAIN = fvariable(float PGain, "");
 
 OSCSIN = (os.oscsin(BPS) * GAIN);

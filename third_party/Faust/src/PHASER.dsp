@@ -1,7 +1,7 @@
 import("stdfaust.lib");
 import("INTERPOLATOR.dsp");
 
-BPS = fvariable(float bps, "");
+BPS = fvariable(float bps, "phaser.hpp");
 
 PVAL = ITSW : max(0) : min(1);
 

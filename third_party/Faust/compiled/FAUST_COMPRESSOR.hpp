@@ -1,23 +1,24 @@
 /* ------------------------------------------------------------
 name: "COMPRESSOR"
 Code generated with Faust 2.75.7 (https://faust.grame.fr)
-Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
+Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn CompressorFAUST -scn Compressor_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
 ------------------------------------------------------------ */
 
-#ifndef  __FilterFAUST_H__
-#define  __FilterFAUST_H__
+#ifndef  __CompressorFAUST_H__
+#define  __CompressorFAUST_H__
 
 #ifndef FAUSTFLOAT
 #define FAUSTFLOAT float
 #endif 
 
+#include "compressor.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
 #include <math.h>
 
 #ifndef FAUSTCLASS 
-#define FAUSTCLASS FilterFAUST
+#define FAUSTCLASS CompressorFAUST
 #endif
 
 #ifdef __APPLE__ 
@@ -31,11 +32,11 @@ Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn 
 #define RESTRICT __restrict__
 #endif
 
-static float FilterFAUST_faustpower2_f(float value) {
+static float CompressorFAUST_faustpower2_f(float value) {
 	return value * value;
 }
 
-class FilterFAUST final : public FilterVal {
+class CompressorFAUST final : public Compressor_PDJE {
 	
  private:
 	
@@ -45,7 +46,7 @@ class FilterFAUST final : public FilterVal {
 	float fRec1_perm[4];
 	
  public:
-	FilterFAUST() {
+	CompressorFAUST() {
 	}
 	
 	void metadata(Meta* m) { 
@@ -53,7 +54,7 @@ class FilterFAUST final : public FilterVal {
 		m->declare("basics.lib/name", "Faust Basic Element Library");
 		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
 		m->declare("basics.lib/version", "1.19.1");
-		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
+		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn CompressorFAUST -scn Compressor_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
 		m->declare("compressors.lib/name", "Faust Compressor Effect Library");
 		m->declare("compressors.lib/peak_compression_gain_mono:author", "Bart Brouns");
 		m->declare("compressors.lib/peak_compression_gain_mono:license", "GPLv3");
@@ -123,8 +124,8 @@ class FilterFAUST final : public FilterVal {
 		instanceClear();
 	}
 	
-	FilterFAUST* clone() {
-		return new FilterFAUST();
+	CompressorFAUST* clone() {
+		return new CompressorFAUST();
 	}
 	
 	int getSampleRate() {
@@ -260,13 +261,13 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(float(input0[i]) * std::pow(1e+01f, -(fSlow12 * std::max<float>(0.0f, ((iZec3[i] == 0) ? 0.0f : ((iZec3[i] == 1) ? fSlow11 * FilterFAUST_faustpower2_f(fSlow7 + fZec4[i]) : fZec4[i]))))));
+				output0[i] = FAUSTFLOAT(float(input0[i]) * std::pow(1e+01f, -(fSlow12 * std::max<float>(0.0f, ((iZec3[i] == 0) ? 0.0f : ((iZec3[i] == 1) ? fSlow11 * CompressorFAUST_faustpower2_f(fSlow7 + fZec4[i]) : fZec4[i]))))));
 			}
 			/* Vectorizable loop 11 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(float(input1[i]) * std::pow(1e+01f, -(fSlow12 * std::max<float>(0.0f, ((iZec8[i] == 0) ? 0.0f : ((iZec8[i] == 1) ? fSlow11 * FilterFAUST_faustpower2_f(fSlow7 + fZec9[i]) : fZec9[i]))))));
+				output1[i] = FAUSTFLOAT(float(input1[i]) * std::pow(1e+01f, -(fSlow12 * std::max<float>(0.0f, ((iZec8[i] == 0) ? 0.0f : ((iZec8[i] == 1) ? fSlow11 * CompressorFAUST_faustpower2_f(fSlow7 + fZec9[i]) : fZec9[i]))))));
 			}
 		}
 		/* Remaining frames */
@@ -360,13 +361,13 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(float(input0[i]) * std::pow(1e+01f, -(fSlow12 * std::max<float>(0.0f, ((iZec3[i] == 0) ? 0.0f : ((iZec3[i] == 1) ? fSlow11 * FilterFAUST_faustpower2_f(fSlow7 + fZec4[i]) : fZec4[i]))))));
+				output0[i] = FAUSTFLOAT(float(input0[i]) * std::pow(1e+01f, -(fSlow12 * std::max<float>(0.0f, ((iZec3[i] == 0) ? 0.0f : ((iZec3[i] == 1) ? fSlow11 * CompressorFAUST_faustpower2_f(fSlow7 + fZec4[i]) : fZec4[i]))))));
 			}
 			/* Vectorizable loop 11 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(float(input1[i]) * std::pow(1e+01f, -(fSlow12 * std::max<float>(0.0f, ((iZec8[i] == 0) ? 0.0f : ((iZec8[i] == 1) ? fSlow11 * FilterFAUST_faustpower2_f(fSlow7 + fZec9[i]) : fZec9[i]))))));
+				output1[i] = FAUSTFLOAT(float(input1[i]) * std::pow(1e+01f, -(fSlow12 * std::max<float>(0.0f, ((iZec8[i] == 0) ? 0.0f : ((iZec8[i] == 1) ? fSlow11 * CompressorFAUST_faustpower2_f(fSlow7 + fZec9[i]) : fZec9[i]))))));
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------
 name: "ROLL"
 Code generated with Faust 2.75.7 (https://faust.grame.fr)
-Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn RollFAUST -scn RollVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
+Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn RollFAUST -scn Roll_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
 ------------------------------------------------------------ */
 
 #ifndef  __RollFAUST_H__
@@ -11,7 +11,8 @@ Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn RollFAUST -scn Ro
 #define FAUSTFLOAT float
 #endif 
 
-#include "EFFECTS.hpp"
+#include "Faust_interpolate.hpp"
+#include "roll.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
@@ -33,7 +34,7 @@ Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn RollFAUST -scn Ro
 #endif
 
 
-class RollFAUST final : public RollVal {
+class RollFAUST final : public Roll_PDJE {
 	
  private:
 	
@@ -55,7 +56,7 @@ class RollFAUST final : public RollVal {
 		m->declare("basics.lib/name", "Faust Basic Element Library");
 		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
 		m->declare("basics.lib/version", "1.19.1");
-		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn RollFAUST -scn RollVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
+		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn RollFAUST -scn Roll_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
 		m->declare("filename", "ROLL.dsp");
 		m->declare("interpolators.lib/interpolate_cosine:author", "Stéphane Letz");
 		m->declare("interpolators.lib/interpolate_cosine:licence", "MIT");

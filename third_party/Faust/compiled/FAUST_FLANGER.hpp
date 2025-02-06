@@ -1,23 +1,25 @@
 /* ------------------------------------------------------------
 name: "FLANGER"
 Code generated with Faust 2.75.7 (https://faust.grame.fr)
-Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
+Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FlangerFAUST -scn Flanger_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
 ------------------------------------------------------------ */
 
-#ifndef  __FilterFAUST_H__
-#define  __FilterFAUST_H__
+#ifndef  __FlangerFAUST_H__
+#define  __FlangerFAUST_H__
 
 #ifndef FAUSTFLOAT
 #define FAUSTFLOAT float
 #endif 
 
+#include "Faust_interpolate.hpp"
+#include "flanger.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
 #include <math.h>
 
 #ifndef FAUSTCLASS 
-#define FAUSTCLASS FilterFAUST
+#define FAUSTCLASS FlangerFAUST
 #endif
 
 #ifdef __APPLE__ 
@@ -32,7 +34,7 @@ Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn 
 #endif
 
 
-class FilterFAUST final : public FilterVal {
+class FlangerFAUST final : public Flanger_PDJE {
 	
  private:
 	
@@ -43,7 +45,7 @@ class FilterFAUST final : public FilterVal {
 	float fYec0[128];
 	int fYec0_idx;
 	int fYec0_idx_save;
-	float ftbl0FilterFAUSTSIG0[65536];
+	float ftbl0FlangerFAUSTSIG0[65536];
 	float fRec0_perm[4];
 	int iRec3_perm[4];
 	float fRec5_perm[4];
@@ -55,14 +57,14 @@ class FilterFAUST final : public FilterVal {
 	int iRec2[2];
 	
  public:
-	FilterFAUST() {
+	FlangerFAUST() {
 	}
 	
 	void metadata(Meta* m) { 
 		m->declare("basics.lib/name", "Faust Basic Element Library");
 		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
 		m->declare("basics.lib/version", "1.19.1");
-		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
+		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn FlangerFAUST -scn Flanger_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
 		m->declare("delays.lib/name", "Faust Delay Library");
 		m->declare("delays.lib/version", "1.1.0");
 		m->declare("filename", "FLANGER.dsp");
@@ -128,7 +130,7 @@ class FilterFAUST final : public FilterVal {
 		for (int i1_re0 = 0; i1_re0 < 65536; i1_re0 = i1_re0 + 1) {
 			iVec1[0] = 1;
 			iRec2[0] = (iVec1[1] + iRec2[1]) % 65536;
-			ftbl0FilterFAUSTSIG0[i1_re0] = std::sin(9.58738e-05f * float(iRec2[0]));
+			ftbl0FlangerFAUSTSIG0[i1_re0] = std::sin(9.58738e-05f * float(iRec2[0]));
 			iVec1[1] = iVec1[0];
 			iRec2[1] = iRec2[0];
 		}
@@ -192,8 +194,8 @@ class FilterFAUST final : public FilterVal {
 		instanceClear();
 	}
 	
-	FilterFAUST* clone() {
-		return new FilterFAUST();
+	FlangerFAUST* clone() {
+		return new FlangerFAUST();
 	}
 	
 	int getSampleRate() {
@@ -365,7 +367,7 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec3[i] = 1e+01f * (ftbl0FilterFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec1[i]), 65535))] + 1.0f);
+				fZec3[i] = 1e+01f * (ftbl0FlangerFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec1[i]), 65535))] + 1.0f);
 			}
 			/* Vectorizable loop 8 */
 			/* Compute code */
@@ -383,7 +385,7 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec25[i] = 1e+01f * (ftbl0FilterFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec5[i]), 65535))] + 1.0f);
+				fZec25[i] = 1e+01f * (ftbl0FlangerFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec5[i]), 65535))] + 1.0f);
 			}
 			/* Vectorizable loop 11 */
 			/* Compute code */
@@ -636,7 +638,7 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec3[i] = 1e+01f * (ftbl0FilterFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec1[i]), 65535))] + 1.0f);
+				fZec3[i] = 1e+01f * (ftbl0FlangerFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec1[i]), 65535))] + 1.0f);
 			}
 			/* Vectorizable loop 8 */
 			/* Compute code */
@@ -654,7 +656,7 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec25[i] = 1e+01f * (ftbl0FilterFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec5[i]), 65535))] + 1.0f);
+				fZec25[i] = 1e+01f * (ftbl0FlangerFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec5[i]), 65535))] + 1.0f);
 			}
 			/* Vectorizable loop 11 */
 			/* Compute code */

@@ -1,7 +1,7 @@
 #include "MusicTranslator.hpp"
 #include <string>
 bool
-MusicTranslator::Read(const CapReader<MusicBinaryCapnpData>& binary)
+MusicTranslator::Read(const CapReader<MusicBinaryCapnpData>& binary, unsigned long long startFrame)
 {
     auto DVec = binary.Rp->getDatas();
     for(unsigned long i=0; i<DVec.size(); ++i){
@@ -23,5 +23,6 @@ MusicTranslator::Read(const CapReader<MusicBinaryCapnpData>& binary)
         }
     }
     bpms.sortFragment();
-    return bpms.calcFrame();
+    
+    return bpms.calcFrame(startFrame);
 }

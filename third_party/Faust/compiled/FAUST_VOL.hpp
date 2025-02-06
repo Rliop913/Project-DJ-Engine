@@ -1,22 +1,23 @@
 /* ------------------------------------------------------------
 name: "VOL"
 Code generated with Faust 2.75.7 (https://faust.grame.fr)
-Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
+Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn VolFAUST -scn FaustInterpolate -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
 ------------------------------------------------------------ */
 
-#ifndef  __FilterFAUST_H__
-#define  __FilterFAUST_H__
+#ifndef  __VolFAUST_H__
+#define  __VolFAUST_H__
 
 #ifndef FAUSTFLOAT
 #define FAUSTFLOAT float
 #endif 
 
+#include "Faust_interpolate.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
 
 #ifndef FAUSTCLASS 
-#define FAUSTCLASS FilterFAUST
+#define FAUSTCLASS VolFAUST
 #endif
 
 #ifdef __APPLE__ 
@@ -31,7 +32,7 @@ Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn 
 #endif
 
 
-class FilterFAUST final : public FilterVal {
+class VolFAUST final : public FaustInterpolate {
 	
  private:
 	
@@ -39,14 +40,14 @@ class FilterFAUST final : public FilterVal {
 	int fSampleRate;
 	
  public:
-	FilterFAUST() {
+	VolFAUST() {
 	}
 	
 	void metadata(Meta* m) { 
 		m->declare("basics.lib/name", "Faust Basic Element Library");
 		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
 		m->declare("basics.lib/version", "1.19.1");
-		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
+		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn VolFAUST -scn FaustInterpolate -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
 		m->declare("filename", "VOL.dsp");
 		m->declare("interpolators.lib/interpolate_cosine:author", "Stéphane Letz");
 		m->declare("interpolators.lib/interpolate_cosine:licence", "MIT");
@@ -119,8 +120,8 @@ class FilterFAUST final : public FilterVal {
 		instanceClear();
 	}
 	
-	FilterFAUST* clone() {
-		return new FilterFAUST();
+	VolFAUST* clone() {
+		return new VolFAUST();
 	}
 	
 	int getSampleRate() {

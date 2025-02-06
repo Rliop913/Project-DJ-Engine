@@ -1,23 +1,25 @@
 /* ------------------------------------------------------------
 name: "PANNER"
 Code generated with Faust 2.75.7 (https://faust.grame.fr)
-Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
+Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn PannerFAUST -scn Panner_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
 ------------------------------------------------------------ */
 
-#ifndef  __FilterFAUST_H__
-#define  __FilterFAUST_H__
+#ifndef  __PannerFAUST_H__
+#define  __PannerFAUST_H__
 
 #ifndef FAUSTFLOAT
 #define FAUSTFLOAT float
 #endif 
 
+#include "Faust_interpolate.hpp"
+#include "panner.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
 #include <math.h>
 
 #ifndef FAUSTCLASS 
-#define FAUSTCLASS FilterFAUST
+#define FAUSTCLASS PannerFAUST
 #endif
 
 #ifdef __APPLE__ 
@@ -32,7 +34,7 @@ Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn 
 #endif
 
 
-class FilterFAUST final : public FilterVal {
+class PannerFAUST final : public Panner_PDJE {
 	
  private:
 	
@@ -41,12 +43,12 @@ class FilterFAUST final : public FilterVal {
 	float fConst0;
 	float fRec0_perm[4];
 	int iRec1_perm[4];
-	float ftbl0FilterFAUSTSIG0[65536];
+	float ftbl0PannerFAUSTSIG0[65536];
 	int iVec1[2];
 	int iRec2[2];
 	
  public:
-	FilterFAUST() {
+	PannerFAUST() {
 	}
 	
 	void metadata(Meta* m) { 
@@ -54,7 +56,7 @@ class FilterFAUST final : public FilterVal {
 		m->declare("basics.lib/name", "Faust Basic Element Library");
 		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
 		m->declare("basics.lib/version", "1.19.1");
-		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUST -scn FilterVal -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
+		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn PannerFAUST -scn Panner_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
 		m->declare("filename", "PANNER.dsp");
 		m->declare("interpolators.lib/interpolate_cosine:author", "Stéphane Letz");
 		m->declare("interpolators.lib/interpolate_cosine:licence", "MIT");
@@ -116,7 +118,7 @@ class FilterFAUST final : public FilterVal {
 		for (int i1_re0 = 0; i1_re0 < 65536; i1_re0 = i1_re0 + 1) {
 			iVec1[0] = 1;
 			iRec2[0] = (iVec1[1] + iRec2[1]) % 65536;
-			ftbl0FilterFAUSTSIG0[i1_re0] = std::sin(9.58738e-05f * float(iRec2[0]));
+			ftbl0PannerFAUSTSIG0[i1_re0] = std::sin(9.58738e-05f * float(iRec2[0]));
 			iVec1[1] = iVec1[0];
 			iRec2[1] = iRec2[0];
 		}
@@ -156,8 +158,8 @@ class FilterFAUST final : public FilterVal {
 		instanceClear();
 	}
 	
-	FilterFAUST* clone() {
-		return new FilterFAUST();
+	PannerFAUST* clone() {
+		return new PannerFAUST();
 	}
 	
 	int getSampleRate() {
@@ -365,7 +367,7 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec18[i] = fSlow17 * ftbl0FilterFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec0[i]), 65535))];
+				fZec18[i] = fSlow17 * ftbl0PannerFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec0[i]), 65535))];
 			}
 			/* Vectorizable loop 18 */
 			/* Compute code */
@@ -559,7 +561,7 @@ class FilterFAUST final : public FilterVal {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec18[i] = fSlow17 * ftbl0FilterFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec0[i]), 65535))];
+				fZec18[i] = fSlow17 * ftbl0PannerFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec0[i]), 65535))];
 			}
 			/* Vectorizable loop 18 */
 			/* Compute code */
