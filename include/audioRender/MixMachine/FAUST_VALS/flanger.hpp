@@ -4,8 +4,18 @@
 
 
 class Flanger_PDJE : public FaustInterpolate{
-protected:
+public:
     float bps;
 
+    template<typename Duck>
+    void copyDatas(Duck& dest){
+        dest.bps = bps;
+    }
+
+    template<typename Duck>
+    void copySetting(Duck& dest){
+        copyDatas(dest);
+        copyInterpolates(dest);
+    }
 
 };

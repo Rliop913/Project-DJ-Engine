@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DeckData.hpp"
-
+#include "FrameCalc.hpp"
 #include "FAUST_COMPRESSOR.hpp"
 #include "FAUST_DISTORTION.hpp"
 #include "FAUST_ECHO.hpp"
@@ -16,45 +16,96 @@
 #include "FAUST_VOL.hpp"
 
 
-using EFFECT_VALUE = double;
-using EFFECT_VALUE_INTERPOLATE = double;
-using ON_OFF = bool;
-using EFFECT_BPM = double;
-using FEEDBACK = double;
-using POWER = double;
-using MIN_FREQUENCY = double;
-using GAIN = double;
 
-struct FX_TIME_STAMP{
-    unsigned long Frame;
-    double Val;
-
-};
-
-struct EFFECT_JOB{
-    FX_TIME_STAMP in;
-    FX_TIME_STAMP out;
-    bool NO_OUT = true;
-};
-
-struct PCM_MIX_RANGE{
-    unsigned long pos;
-    unsigned long range;
-    unsigned long IdxPos() const {return pos * CHANNEL;}
-    unsigned long IdxRange() const {return range * CHANNEL;}
-    unsigned long Size() const {return range * CHANNEL * sizeof(float);}
-};
-
-class FaustCaster{
-protected:
-    void ToFaust(float** faustData, std::vector<float>& origin, const PCM_MIX_RANGE& pcm);
-    void ToDefault(std::vector<float>& origin, float** faustData, const PCM_MIX_RANGE& pcm);
-    void clearFaustData(float** faustData);
+template<typename Fclass>
+class FaustDType : public Fclass{
+private:
+    std::vector<float> L;
+    std::vector<float> R;
+    float* originPTR;
 public:
-    void FaustCompute();
+    int count;
+    FAUSTFLOAT* PTR[CHANNEL];
+
+    FaustDType(
+        float* origin, 
+        unsigned long long start, 
+        unsigned long long end)
+    {
+        originPTR = origin + (start * CHANNEL);
+        count = end - start;
+        L.resize(count);
+        R.resize(count);
+        float* lp = L.data();
+        float* rp = R.data();
+        float* op = originPTR;
+        for(int i=0; i<count; ++i){
+            *(lp++) = *(op++);
+            *(rp++) = *(op++);
+        }
+        PTR[0] = L.data();
+        PTR[1] = R.data();
+    }
+    
+    void WriteToOrigin()
+    {
+        float* lp = L.data();
+        float* rp = R.data();
+        float* op = originPTR;
+        for(int i=0; i<count; ++i){
+            *(op++) = *(lp++);
+            *(op++) = *(rp++);
+        }
+    }
+
 };
 
-// struct Filter{
-//     std::vector<Values<EFFECT_VALUE, EFFECT_VALUE_INTERPOLATE, ON_OFF>> High;
-//     std::vector<Values<EFFECT_VALUE, EFFECT_VALUE_INTERPOLATE, ON_OFF>> Low;
-// };
+
+template<typename FaustClass>
+class FaustObject{
+
+public:
+    FaustClass managingClass;
+    
+    template<typename FClass>
+    void consume(std::vector<FaustDType<FClass>>& jobs)
+    {
+        for(auto i : jobs){
+            i.template copySetting<FClass>(managingClass);
+            managingClass.compute(i.count, i.PTR, i.PTR);
+            i.WriteToOrigin();
+        }
+    }
+};
+
+class FaustEffects {
+private:
+    FaustObject<CompressorFAUST>compressor;
+    FaustObject<DistortionFAUST>distortion;
+    FaustObject<EchoFAUST>      echo;
+    FaustObject<EQFAUST>        eq;
+    FaustObject<FilterFAUST>    filter;
+    FaustObject<FlangerFAUST>   flanger;
+    FaustObject<OcsFilterFAUST> ocsFilter;
+    FaustObject<PannerFAUST>    panner;
+    FaustObject<PhaserFAUST>    phaser;
+    FaustObject<RollFAUST>      roll;
+    FaustObject<TranceFAUST>    trance;
+    FaustObject<VolFAUST>       vol;
+public:
+    std::vector<FaustDType<Compressor_PDJE>>    compressorData;
+    std::vector<FaustDType<FaustInterpolate>>   distortionData;
+    std::vector<FaustDType<Echo_PDJE>>          echoData;
+    std::vector<FaustDType<EQ_PDJE>>            eqData;
+    std::vector<FaustDType<Filter_PDJE>>        filterData;
+    std::vector<FaustDType<Flanger_PDJE>>       flangerData;
+    std::vector<FaustDType<OcsFilter_PDJE>>     ocsFilterData;
+    std::vector<FaustDType<Panner_PDJE>>        pannerData;
+    std::vector<FaustDType<Phaser_PDJE>>        phaserData;
+    std::vector<FaustDType<Roll_PDJE>>          rollData;
+    std::vector<FaustDType<Trance_PDJE>>        tranceData;
+    std::vector<FaustDType<FaustInterpolate>>   volData;
+    
+    FaustEffects(int initSampleRate);
+    void consumeAll();
+};

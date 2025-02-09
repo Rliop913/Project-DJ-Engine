@@ -10,14 +10,6 @@ struct Position{
     unsigned long frame_out;
 };
 
-template<typename F, typename S, typename THR>
-struct Values{
-    F first;
-    S second;
-    THR third;
-    Position pos;
-};
-
 class Meta{
 public:
     void declare(std::string, std::string){

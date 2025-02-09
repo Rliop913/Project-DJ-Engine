@@ -149,6 +149,7 @@ ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixMachine.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/EFFECT/EFFECTS.cpp
 
 ${CMAKE_SOURCE_DIR}/include/audioRender/audioRender.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp

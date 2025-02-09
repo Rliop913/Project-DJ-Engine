@@ -38,6 +38,8 @@ MixMachine::mix(litedb& db, const BPM& bpms)
     for(auto i : Memorized){// todo - impl this to threads
         auto MC = MUSIC_CTR();
         auto DJ = BattleDj();
+        auto FX = FaustEffects(SAMPLERATE);
+        
         // auto Filter = FilterFAUST();
         // Filter.init(SAMPLERATE);
 
@@ -62,6 +64,8 @@ MixMachine::mix(litedb& db, const BPM& bpms)
                 if(TypeWorks<TypeEnum::UNLOAD>(j, MC)) break;
                 else continue;
 
+            case TypeEnum::EQ:
+                break;//todo- impl this
 
             default:
                 break;
