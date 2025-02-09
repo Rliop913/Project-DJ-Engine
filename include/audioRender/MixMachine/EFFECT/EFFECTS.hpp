@@ -1,5 +1,7 @@
 #pragma once
 
+#include <thread>
+
 #include "DeckData.hpp"
 #include "FrameCalc.hpp"
 #include "FAUST_COMPRESSOR.hpp"
@@ -22,36 +24,43 @@ class FaustDType : public Fclass{
 private:
     std::vector<float> L;
     std::vector<float> R;
-    float* originPTR;
+    std::vector<float>* originVec;
+    unsigned long long startPos;
 public:
     int count;
     FAUSTFLOAT* PTR[CHANNEL];
 
     FaustDType(
-        float* origin, 
+        std::vector<float>* vec,
         unsigned long long start, 
-        unsigned long long end)
+        unsigned long long end):
+        startPos(start),
+        originVec(vec)
     {
-        originPTR = origin + (start * CHANNEL);
         count = end - start;
         L.resize(count);
         R.resize(count);
+        PTR[0] = L.data();
+        PTR[1] = R.data();
+    }
+
+    void CopyToFaust(){
         float* lp = L.data();
         float* rp = R.data();
-        float* op = originPTR;
+        float* op = originVec->data();
+        op += startPos * CHANNEL;
         for(int i=0; i<count; ++i){
             *(lp++) = *(op++);
             *(rp++) = *(op++);
         }
-        PTR[0] = L.data();
-        PTR[1] = R.data();
     }
-    
+
     void WriteToOrigin()
     {
         float* lp = L.data();
         float* rp = R.data();
-        float* op = originPTR;
+        float* op = originVec->data();
+        op+= startPos * CHANNEL;
         for(int i=0; i<count; ++i){
             *(op++) = *(lp++);
             *(op++) = *(rp++);
@@ -70,16 +79,25 @@ public:
     template<typename FClass>
     void consume(std::vector<FaustDType<FClass>>& jobs)
     {
-        for(auto i : jobs){
-            i.template copySetting<FClass>(managingClass);
-            managingClass.compute(i.count, i.PTR, i.PTR);
-            i.WriteToOrigin();
+        std::vector<std::thread> threads;
+        auto itr = jobs.data();
+        for(int i=0; i<jobs.size(); ++i){
+
+            threads.emplace_back([this](FaustDType<FClass>* job){
+                job->CopyToFaust();
+                job->template copySetting<FClass>(managingClass);
+                managingClass.compute(job->count, job->PTR, job->PTR);
+                job->WriteToOrigin();
+            }, itr++);
+        }
+        for(auto& i : threads){
+            i.join();
         }
     }
 };
 
 class FaustEffects {
-private:
+public:
     FaustObject<CompressorFAUST>compressor;
     FaustObject<DistortionFAUST>distortion;
     FaustObject<EchoFAUST>      echo;
@@ -92,7 +110,7 @@ private:
     FaustObject<RollFAUST>      roll;
     FaustObject<TranceFAUST>    trance;
     FaustObject<VolFAUST>       vol;
-public:
+// public:
     std::vector<FaustDType<Compressor_PDJE>>    compressorData;
     std::vector<FaustDType<FaustInterpolate>>   distortionData;
     std::vector<FaustDType<Echo_PDJE>>          echoData;

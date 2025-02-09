@@ -43,6 +43,7 @@ MixMachine::mix(litedb& db, const BPM& bpms)
         // auto Filter = FilterFAUST();
         // Filter.init(SAMPLERATE);
 
+        std::vector<float> tempVec;
         DJ.GetDataFrom(MC);
         for(auto j : i.second){
             switch (j.RP.getType()){
@@ -65,16 +66,23 @@ MixMachine::mix(litedb& db, const BPM& bpms)
                 else continue;
 
             case TypeEnum::EQ:
-                break;//todo- impl this
+            if(TypeWorks<TypeEnum::EQ>(j, FX, &tempVec)) break;
+                else continue;
+                break;
 
+            case TypeEnum::COMPRESSOR:
+                if(TypeWorks<TypeEnum::COMPRESSOR>(j, FX, &tempVec)) break;
+                else continue;
+                
             default:
                 break;
             }
         }
 
         //임시 믹싱 코드 더 효율적 구현 필요 -> HIGHWAY 사용 예정
-        std::vector<float> tempVec;
         auto result = DJ << MC.Execute(bpms, &tempVec);
+        // PFloat = result.value()->data();
+        FX.consumeAll();
         if(!result.has_value()){
             return false;
         }
