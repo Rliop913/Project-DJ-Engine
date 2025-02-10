@@ -1,5 +1,15 @@
 #include "MixMachine.hpp"
 
+#define TRY(CODE)\
+try\
+{\
+    CODE\
+}\
+catch(...)\
+{\
+    return false;\
+}
+
 
 template<>
 bool
@@ -7,15 +17,10 @@ MixMachine::TypeWorks<TypeEnum::COMPRESSOR, FaustEffects>
 (MixStruct& ms, FaustEffects& data, std::vector<float>* Vec)
 {
     data.compressorData.emplace_back(Vec, ms.frame_in, ms.frame_out);
-    try
-    {
+    TRY(
         data.compressorData.back().strength =
         std::stof(ms.RP.getFirst().cStr());
-    }
-    catch(...)
-    {
-        return false;
-    }
+        )
     
     EightPointValues tk(ms.RP.getSecond().cStr());
     EightPointValues ar(ms.RP.getThird().cStr());
@@ -32,25 +37,16 @@ MixMachine::TypeWorks<TypeEnum::EQ, FaustEffects>
 (MixStruct& ms, FaustEffects& data, std::vector<float>* Vec)
 {
     data.eqData.emplace_back(Vec, ms.frame_in, ms.frame_out);
-    try
-    {
+    
+    TRY(
         data.eqData.back().selectInterpolator =
         std::stoi(ms.RP.getFirst().cStr());
-    }
-    catch(...)
-    {
-        return false;
-    }
+    )
     if(data.eqData.back().selectInterpolator == 0){
-        try
-        {
+        TRY(
             data.eqData.back().vZero = 
             std::stof(ms.RP.getSecond().cStr());
-        }
-        catch(...)
-        {
-            return false;
-        }
+        )
     }
     else{
         EightPointValues EPV(ms.RP.getSecond().cStr());

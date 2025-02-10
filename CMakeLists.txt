@@ -4,6 +4,12 @@ set(cmake_c_compiler clang)
 set(cmake_cxx_compiler clang++)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g -O1 -fno-omit-frame-pointer")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address -g -O1 -fno-omit-frame-pointer")
+set(CMAKE_LINKER_FLAGS "${CMAKE_LINKER_FLAGS} -fsanitize=address")
+
+set_property(SOURCE PDJE_swig.i PROPERTY CPLUSPLUS ON)
+
 cmake_minimum_required(VERSION 3.0)
 project(
   PDJE
@@ -11,7 +17,8 @@ project(
   LANGUAGES C CXX)
 
 Include(FetchContent)
-
+find_package(SWIG REQUIRED)
+include(UseSWIG)
 FetchContent_Declare(
   capnproto
   GIT_REPOSITORY https://github.com/capnproto/capnproto.git
@@ -53,6 +60,7 @@ link_libraries(sqlite3)
 
 # )
 
+
 set(miniaudio_src
 ${miniaudio_SOURCE_DIR}/extras/miniaudio_split/miniaudio.c
 )
@@ -84,7 +92,7 @@ include_directories(
   # ${CMAKE_SOURCE_DIR}/include/audioRender/CapnpBinary
   # ${CMAKE_SOURCE_DIR}/include/audioRender/MixTranslator
   # ${CMAKE_SOURCE_DIR}/include/audioRender/MusicTranslator
-  
+  ${CMAKE_SOURCE_DIR}/include/audioRender
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/EFFECT
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/FAUST_VALS
@@ -182,10 +190,46 @@ add_executable(testdb ${CMAKE_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource})
 add_executable(testaudio ${CMAKE_SOURCE_DIR}/include/tests/audioTest.cpp ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource})
 add_executable(testCapnp ${CMAKE_SOURCE_DIR}/include/tests/CapnpTest.cpp ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource})
 
+# add_library(pdje ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource})
+
+# set(CMAKE_SWIG_FLAGS "-python")
+# set(CMAKE_SWIG_OUTDIR ${CMAKE_BINARY_DIR}/swig_generated)
+# find_package(Python REQUIRED COMPONENTS Development)
+
+swig_add_library(pdje_csharp
+  TYPE STATIC
+  LANGUAGE CSharp
+  OUTPUT_DIR ${CMAKE_SOURCE_DIR}/swig_csharp
+  SOURCES PDJE_swig.i ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource}
+)
+find_package(Python REQUIRED COMPONENTS Interpreter Development)
+
+swig_add_library(pdje_python
+  TYPE STATIC
+  LANGUAGE Python
+  OUTPUT_DIR ${CMAKE_SOURCE_DIR}/swig_python
+  SOURCES PDJE_swig.i ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource}
+)
+
+swig_add_library(pdje_go
+  TYPE STATIC
+  LANGUAGE go
+  OUTPUT_DIR ${CMAKE_SOURCE_DIR}/swig_go
+  SOURCES PDJE_swig.i ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource}
+)
 
 target_link_libraries(testaudio PRIVATE capnp capnp-rpc kj)
 target_link_libraries(testdb PRIVATE capnp capnp-rpc kj)
 target_link_libraries(testCapnp PRIVATE capnp capnp-rpc kj)
+
+target_link_libraries(${SWIG_MODULE_pdje_csharp_REAL_NAME} PRIVATE capnp capnp-rpc kj)
+target_link_libraries(${SWIG_MODULE_pdje_python_REAL_NAME} PRIVATE capnp capnp-rpc kj)
+target_link_libraries(${SWIG_MODULE_pdje_go_REAL_NAME} PRIVATE capnp capnp-rpc kj)
+
+target_link_libraries(${SWIG_MODULE_pdje_python_REAL_NAME} PRIVATE Python::Python)
+# target_link_libraries(pdje_POLYGLOT PRIVATE capnp capnp-rpc kj)
+# target_link_libraries(pdje_POLYGLOT PRIVATE Python::Python)
+# swig_link_libraries(pdje_POLYGLOT pdje)
 
 enable_testing()
 

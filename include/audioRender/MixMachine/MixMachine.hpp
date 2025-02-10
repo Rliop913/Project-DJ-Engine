@@ -38,7 +38,7 @@ struct EightPointValues{
 
 class MixMachine{
 private:
-    FRAME_POS getMixSize(FRAME_POS frames);
+    // FRAME_POS getMixSize(FRAME_POS frames);
 public:
     std::unordered_map<ID, std::vector<MixStruct>> Memorized;
     bool IDsort(const MixTranslator& binary);
