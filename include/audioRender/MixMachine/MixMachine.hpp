@@ -10,6 +10,26 @@
 #include "EFFECTS.hpp"
 #include "Decoder.hpp"
 #include "BattleDj.hpp"
+
+
+#define TRY(CODE)\
+try\
+{\
+    CODE\
+}\
+catch(...)\
+{\
+    return false;\
+}
+
+enum InterpolateType{
+    LINEAR,
+    COSINE,
+    CUBIC,
+    FLAT
+};
+
+
 // #include "FAUST_FILTERS.hpp"
 using ID = long;
 

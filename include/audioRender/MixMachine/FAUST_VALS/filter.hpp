@@ -3,13 +3,11 @@
 
 class Filter_PDJE: public FaustInterpolate{
 public:
-    int LowFilterSW;
-    int HighFilterSW;
+    int HLswitch;
     
     template<typename Duck>
     void copyDatas(Duck& dest){
-        dest.LowFilterSW = LowFilterSW;
-        dest.HighFilterSW = HighFilterSW;
+        dest.HLswitch = HLswitch;
     }
 
     template<typename Duck>

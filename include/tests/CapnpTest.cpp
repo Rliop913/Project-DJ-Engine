@@ -1,3 +1,5 @@
+
+#include <hwy/highway.h>
 #include "MUSIC_CTR.hpp"
 #include <iostream>
 int main()
