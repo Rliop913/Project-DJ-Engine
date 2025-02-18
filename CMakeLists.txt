@@ -53,6 +53,32 @@ FetchContent_MakeAvailable(highway)
 
 link_libraries(sqlite3)
 
+if(WIN32)
+
+  include_directories(
+    ${CMAKE_SOURCE_DIR}/include/input/windows
+  )
+elseif(UNIX AND NOT APPLE)
+  find_package(PkgConfig REQUIRED)
+  pkg_check_modules(LIBEVDEV REQUIRED libevdev)
+
+  
+
+  include_directories(
+    ${CMAKE_SOURCE_DIR}/include/input/linux
+    ${LIBEVDEV_INCLUDE_DIRS}
+  )
+  link_libraries(
+    ${LIBEVDEV_LIBRARIES}
+  )
+elseif(APPLE)
+  include_directories(
+    ${CMAKE_SOURCE_DIR}/include/input/macos
+  )
+
+endif()
+
+
 
 set(miniaudio_src
 ${miniaudio_SOURCE_DIR}/extras/miniaudio_split/miniaudio.c
@@ -105,6 +131,12 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_include
 	${CMAKE_SOURCE_DIR}/third_party/Faust/compiled
   
+  ${CMAKE_SOURCE_DIR}/include/input
+  ${CMAKE_SOURCE_DIR}/include/input/linux
+  ${CMAKE_SOURCE_DIR}/include/input/macos
+  
+  
+
 )
 
 
@@ -157,11 +189,6 @@ ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_VOL.cpp
 
 
-
-
-${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/THREADS/RenderThreads.cpp
-
-
 )
 
 
@@ -172,6 +199,20 @@ add_executable(testCapnp ${CMAKE_SOURCE_DIR}/include/tests/CapnpTest.cpp ${minia
 
 # find_package(HWY REQUIRED)
 add_executable(testHighway include/tests/highway_Test.cpp)
+
+
+
+if(WIN32)
+
+elseif(UNIX AND NOT APPLE)
+  add_executable(testLinuxInput_waiter include/tests/INPUT_TESTS/linux_I_WAITER.cpp)
+  add_executable(testLinuxInput_waker include/tests/INPUT_TESTS/linux_I_WAKER.cpp)
+  
+elseif(APPLE)
+  
+endif()
+
+
 
 # target_link_libraries(testHighway PRIVATE hwy)
 
