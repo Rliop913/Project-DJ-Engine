@@ -85,9 +85,9 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/FAUST_VALS
   
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MUSIC_CTR
-  ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/VOL_CTR
+  
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MiniaudioObjects
-  ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/THREADS
+  
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/INTERPOLATOR
 
   ${CMAKE_SOURCE_DIR}/include/db/Capnp/CapnpBinary
