@@ -52,15 +52,19 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     fill(ret, 1, TypeEnum::LOAD, DetailEnum::CUE, 1, 2,
     "WTC", "TEST", "175.0");
     
-    fill(ret, 2, TypeEnum::EQ, DetailEnum::MID, 5, 37,
-    "1", "0,20.0,-20.0,20.0,-20.0,20.0,-20.0,0");
+    fill(ret, 2, TypeEnum::VOL, DetailEnum::TRIM, 5, 37,
+    "3", "0.5", "30");
+    // "1", "0,1.0,0,1.0,0.5,1.0,0.5,1.0", "20");
 
-    fill(ret, 3, TypeEnum::BPM_CONTROL, DetailEnum::TIME_STRETCH, 44, 80, 
+    fill(ret, 3, TypeEnum::FILTER, DetailEnum::HIGH, 5, 37,
+    "1", "5000, 10000, 0, 1000, 5000, 7000, 10000", "");
+
+    fill(ret, 4, TypeEnum::BPM_CONTROL, DetailEnum::TIME_STRETCH, 44, 80, 
     "88.0");
 
-    fill(ret, 4, TypeEnum::CONTROL, DetailEnum::PAUSE, 81, 82, "");
+    fill(ret, 5, TypeEnum::CONTROL, DetailEnum::PAUSE, 81, 82, "");
 
-    fill(ret, 5, TypeEnum::UNLOAD, DetailEnum::CUE, 90, 90, "");
+    fill(ret, 6, TypeEnum::UNLOAD, DetailEnum::CUE, 90, 90, "");
     
     
 }
@@ -86,7 +90,7 @@ main()
     auto mb = CapWriter<MixBinaryCapnpData>();
     mb.makeNew();
     // auto B = reinterpret_cast<MixBinaryCapnpData::Builder*>(mb.D);
-    auto ret = mb.Wp->initDatas(6);
+    auto ret = mb.Wp->initDatas(7);
     fillDatas(ret);
     auto flat_returned = mb.out();
 

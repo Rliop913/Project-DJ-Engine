@@ -18,8 +18,6 @@ project(
 
 Include(FetchContent)
 
-find_package(OpenMP REQUIRED)
-
 find_package(SWIG REQUIRED)
 include(UseSWIG)
 
@@ -155,6 +153,8 @@ ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_FX_DISTORTION.c
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_FX_FLANGER.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_FX_PANNER.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp
+${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_VOL.cpp
 
 
 

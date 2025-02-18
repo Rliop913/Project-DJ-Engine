@@ -1,10 +1,14 @@
 import("stdfaust.lib");
 import("INTERPOLATOR.dsp");
 
-FVAL = ITSW : min(100) : max(1);
+FVAL = fvariable(int robotFreq, "robot.hpp");
 
 lfo = os.osc(FVAL);
 
 TP = _ * lfo;
 
-process = _,_ : TP, TP: _,_;
+RBSW = ITSW : max(0) : min(1);
+
+ROBOT_RAIL = ef.dryWetMixer(RBSW, TP);
+
+process = _,_ : ROBOT_RAIL, ROBOT_RAIL: _,_;

@@ -16,7 +16,7 @@
 #include "FAUST_ROLL.hpp"
 #include "FAUST_TRANCE.hpp"
 #include "FAUST_VOL.hpp"
-
+#include "FAUST_ROBOT.hpp"
 
 
 template<typename Fclass>
@@ -79,20 +79,27 @@ public:
     template<typename FClass>
     void consume(std::vector<FaustDType<FClass>>& jobs)
     {
-        std::vector<std::thread> threads;
-        auto itr = jobs.data();
-        for(int i=0; i<jobs.size(); ++i){
+        for(auto& i : jobs){
+            i.CopyToFaust();
+            i.template copySetting<FClass>(managingClass);
+            managingClass.instanceClear();
+            managingClass.compute(i.count, i.PTR, i.PTR);
+            i.WriteToOrigin();
+        }
+        // std::vector<std::thread> threads;
+        // auto itr = jobs.data();
+        // for(int i=0; i<jobs.size(); ++i){
 
-            threads.emplace_back([this](FaustDType<FClass>* job){
-                job->CopyToFaust();
-                job->template copySetting<FClass>(managingClass);
-                managingClass.compute(job->count, job->PTR, job->PTR);
-                job->WriteToOrigin();
-            }, itr++);
-        }
-        for(auto& i : threads){
-            i.join();
-        }
+        //     threads.emplace_back([this](FaustDType<FClass>* job){
+        //         job->CopyToFaust();
+        //         job->template copySetting<FClass>(managingClass);
+        //         managingClass.compute(job->count, job->PTR, job->PTR);
+        //         job->WriteToOrigin();
+        //     }, itr++);
+        // }
+        // for(auto& i : threads){
+        //     i.join();
+        // }
     }
 };
 
@@ -110,6 +117,7 @@ public:
     FaustObject<RollFAUST>      roll;
     FaustObject<TranceFAUST>    trance;
     FaustObject<VolFAUST>       vol;
+    FaustObject<RobotFAUST>     robot;
 // public:
     std::vector<FaustDType<Compressor_PDJE>>    compressorData;
     std::vector<FaustDType<FaustInterpolate>>   distortionData;
@@ -123,6 +131,7 @@ public:
     std::vector<FaustDType<Roll_PDJE>>          rollData;
     std::vector<FaustDType<Trance_PDJE>>        tranceData;
     std::vector<FaustDType<FaustInterpolate>>   volData;
+    std::vector<FaustDType<Robot_PDJE>>         robotData;
     
     FaustEffects(int initSampleRate);
     void consumeAll();

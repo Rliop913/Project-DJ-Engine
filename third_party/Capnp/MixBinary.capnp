@@ -19,6 +19,7 @@ enum TypeEnum{
     battleDj @14;
     roll @15;
     compressor @16;
+    robot @17;
 }
 
 enum DetailEnum{

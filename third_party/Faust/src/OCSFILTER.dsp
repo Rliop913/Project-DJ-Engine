@@ -19,7 +19,7 @@ HighOCS=fi.highpass(12, OCS);
 
 HLOCS = _<: HighOCS, LowOCS : select2(HL_SELECTOR);
 
-O_Val = ITSW / 10.0 :max(0):min(1);
+O_Val = ITSW :max(0):min(1);
 LFilt = _ <: HLOCS * O_Val , _*(1.0 - O_Val) :> _;
 
 

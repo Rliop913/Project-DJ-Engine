@@ -14,6 +14,7 @@ FaustEffects::FaustEffects(int initSampleRate)
     roll        .managingClass.init(initSampleRate);
     trance      .managingClass.init(initSampleRate);
     vol         .managingClass.init(initSampleRate);
+    robot       .managingClass.init(initSampleRate);
 }
 
 
@@ -21,6 +22,7 @@ void
 FaustEffects::consumeAll()
 {
     eq          .consume(eqData);
+    robot       .consume(robotData);
     distortion  .consume(distortionData);
     echo        .consume(echoData);
     filter      .consume(filterData);

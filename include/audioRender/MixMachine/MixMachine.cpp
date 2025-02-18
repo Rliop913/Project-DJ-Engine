@@ -40,9 +40,6 @@ MixMachine::mix(litedb& db, const BPM& bpms)
         auto DJ = new BattleDj();
         auto FX = new FaustEffects(SAMPLERATE);
         
-        // auto Filter = FilterFAUST();
-        // Filter.init(SAMPLERATE);
-
         std::vector<float> tempVec;
         DJ->GetDataFrom(*MC);
         for(auto j : i.second){
@@ -66,14 +63,57 @@ MixMachine::mix(litedb& db, const BPM& bpms)
                 else continue;
 
             case TypeEnum::EQ:
-            if(TypeWorks<TypeEnum::EQ>(j, *FX, &tempVec)) break;
+                if(TypeWorks<TypeEnum::EQ>(j, *FX, &tempVec)) break;
                 else continue;
-                break;
 
             case TypeEnum::COMPRESSOR:
                 if(TypeWorks<TypeEnum::COMPRESSOR>(j, *FX, &tempVec)) break;
                 else continue;
-                
+            
+            case TypeEnum::FILTER:
+                if(TypeWorks<TypeEnum::FILTER>(j, *FX, &tempVec)) break;
+                else continue;
+            
+            case TypeEnum::DISTORTION:
+                if(TypeWorks<TypeEnum::DISTORTION>(j, *FX, &tempVec)) break;
+                else continue;
+            
+            case TypeEnum::ECHO:
+                if(TypeWorks<TypeEnum::ECHO>(j, *FX, &tempVec)) break;
+                else continue;
+            
+            case TypeEnum::FLANGER:
+                if(TypeWorks<TypeEnum::FLANGER>(j, *FX, &tempVec)) break;
+                else continue;
+            
+            case TypeEnum::OSC_FILTER:
+                if(TypeWorks<TypeEnum::OSC_FILTER>(j, *FX, &tempVec)) break;
+                else continue;
+            
+            case TypeEnum::PANNER:
+                if(TypeWorks<TypeEnum::PANNER>(j, *FX, &tempVec)) break;
+                else continue;
+            
+            case TypeEnum::PHASER:
+                if(TypeWorks<TypeEnum::PHASER>(j, *FX, &tempVec)) break;
+                else continue;
+            
+            case TypeEnum::ROLL:
+                if(TypeWorks<TypeEnum::ROLL>(j, *FX, &tempVec)) break;
+                else continue;
+            
+            case TypeEnum::TRANCE:
+                if(TypeWorks<TypeEnum::TRANCE>(j, *FX, &tempVec)) break;
+                else continue;
+            
+            case TypeEnum::ROBOT:
+                if(TypeWorks<TypeEnum::ROBOT>(j, *FX, &tempVec)) break;
+                else continue;
+            
+            case TypeEnum::VOL:
+                if(TypeWorks<TypeEnum::VOL>(j, *FX, &tempVec)) break;
+                else continue;
+            
             default:
                 break;
             }
@@ -97,8 +137,10 @@ MixMachine::mix(litedb& db, const BPM& bpms)
             ++Rptr;
             ++Tptr;
         }
-        // memcpy(Rptr, tempVec.data(), (MC.FullPos.value() - MC.StartPos.value()) * CHANNEL);
-        delete MC, DJ, FX;
+        
+        delete MC;
+        delete DJ;
+        delete FX;
     }
 
     //todo - implement mix

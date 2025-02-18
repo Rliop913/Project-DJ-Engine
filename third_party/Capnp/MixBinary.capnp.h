@@ -37,6 +37,7 @@ enum class TypeEnum_f4ee4873bc65f8f0: uint16_t {
   BATTLE_DJ,
   ROLL,
   COMPRESSOR,
+  ROBOT,
 };
 CAPNP_DECLARE_ENUM(TypeEnum, f4ee4873bc65f8f0);
 CAPNP_DECLARE_SCHEMA(c6c88c32e11afb23);

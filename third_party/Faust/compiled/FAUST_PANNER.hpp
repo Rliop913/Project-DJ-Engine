@@ -193,36 +193,34 @@ class PannerFAUST final : public Panner_PDJE {
 		float fSlow6 = 8.0f / float(iSlow2);
 		float fZec2[64];
 		int iZec3[64];
-		int iSlow7 = v1;
-		int iSlow8 = v2;
-		int iSlow9 = v3;
-		int iSlow10 = v4;
-		int iSlow11 = v5;
-		int iSlow12 = v6;
-		int iSlow13 = v7;
-		int iSlow14 = v8;
-		int iZec4[64];
+		float fSlow7 = v1;
+		float fSlow8 = v2;
+		float fSlow9 = v3;
+		float fSlow10 = v4;
+		float fSlow11 = v5;
+		float fSlow12 = v6;
+		float fSlow13 = v7;
+		float fSlow14 = v8;
+		float fZec4[64];
 		int iZec5[64];
-		int iZec6[64];
+		float fZec6[64];
 		float fZec7[64];
 		float fZec8[64];
 		float fZec9[64];
-		float fZec10[64];
 		int iSlow15 = iSlow3 >= 3;
-		int iZec11[64];
-		float fZec12[64];
-		int iZec13[64];
-		int iZec14[64];
+		int iZec10[64];
+		float fZec11[64];
+		int iZec12[64];
+		float fZec13[64];
+		float fSlow16 = vZero;
+		float fZec14[64];
 		float fZec15[64];
-		float fSlow16 = float(vZero);
+		float fSlow17 = PGain;
 		float fZec16[64];
 		float fZec17[64];
-		float fSlow17 = PGain;
-		float fZec18[64];
+		int iZec18[64];
 		float fZec19[64];
 		int iZec20[64];
-		float fZec21[64];
-		int iZec22[64];
 		int vindex = 0;
 		/* Main loop */
 		for (vindex = 0; vindex <= (count - 64); vindex = vindex + 64) {
@@ -280,13 +278,7 @@ class PannerFAUST final : public Panner_PDJE {
 			for (int i = 0; i < vsize; i = i + 1) {
 				iZec5[i] = iZec3[i] + 1;
 			}
-			/* Vectorizable loop 5 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				iZec13[i] = iZec3[i] + -1;
-			}
-			/* Recursive loop 6 */
+			/* Recursive loop 5 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j2 = 0; j2 < 4; j2 = j2 + 1) {
@@ -303,119 +295,113 @@ class PannerFAUST final : public Panner_PDJE {
 			for (int j3 = 0; j3 < 4; j3 = j3 + 1) {
 				fRec0_perm[j3] = fRec0_tmp[vsize + j3];
 			}
+			/* Vectorizable loop 6 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec4[i] = ((iZec3[i] >= 4) ? ((iZec3[i] >= 6) ? ((iZec3[i] >= 7) ? fSlow14 : fSlow13) : ((iZec3[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec3[i] >= 2) ? ((iZec3[i] >= 3) ? fSlow10 : fSlow9) : ((iZec3[i] >= 1) ? fSlow8 : fSlow7)));
+			}
 			/* Vectorizable loop 7 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec4[i] = ((iZec3[i] >= 4) ? ((iZec3[i] >= 6) ? ((iZec3[i] >= 7) ? iSlow14 : iSlow13) : ((iZec3[i] >= 5) ? iSlow12 : iSlow11)) : ((iZec3[i] >= 2) ? ((iZec3[i] >= 3) ? iSlow10 : iSlow9) : ((iZec3[i] >= 1) ? iSlow8 : iSlow7)));
+				fZec6[i] = ((iZec5[i] >= 4) ? ((iZec5[i] >= 6) ? ((iZec5[i] >= 7) ? fSlow14 : fSlow13) : ((iZec5[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec5[i] >= 2) ? ((iZec5[i] >= 3) ? fSlow10 : fSlow9) : ((iZec5[i] >= 1) ? fSlow8 : fSlow7)));
 			}
 			/* Vectorizable loop 8 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec6[i] = ((iZec5[i] >= 4) ? ((iZec5[i] >= 6) ? ((iZec5[i] >= 7) ? iSlow14 : iSlow13) : ((iZec5[i] >= 5) ? iSlow12 : iSlow11)) : ((iZec5[i] >= 2) ? ((iZec5[i] >= 3) ? iSlow10 : iSlow9) : ((iZec5[i] >= 1) ? iSlow8 : iSlow7)));
+				fZec8[i] = float(iZec3[i]);
 			}
 			/* Vectorizable loop 9 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec8[i] = float(iZec3[i]);
+				iZec10[i] = iZec3[i] + -1;
 			}
 			/* Vectorizable loop 10 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec11[i] = iZec3[i] + 2;
+				iZec12[i] = iZec3[i] + 2;
 			}
 			/* Vectorizable loop 11 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec14[i] = ((iZec13[i] >= 4) ? ((iZec13[i] >= 6) ? ((iZec13[i] >= 7) ? iSlow14 : iSlow13) : ((iZec13[i] >= 5) ? iSlow12 : iSlow11)) : ((iZec13[i] >= 2) ? ((iZec13[i] >= 3) ? iSlow10 : iSlow9) : ((iZec13[i] >= 1) ? iSlow8 : iSlow7)));
+				fZec7[i] = fZec6[i] - fZec4[i];
 			}
 			/* Vectorizable loop 12 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec7[i] = float(iZec6[i] - iZec4[i]);
+				fZec9[i] = fZec2[i] - ((fZec2[i] == fZec8[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec8[i] : fZec8[i] + -1.0f));
 			}
 			/* Vectorizable loop 13 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec9[i] = fZec2[i] - ((fZec2[i] == fZec8[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec8[i] : fZec8[i] + -1.0f));
+				fZec11[i] = ((iZec10[i] >= 4) ? ((iZec10[i] >= 6) ? ((iZec10[i] >= 7) ? fSlow14 : fSlow13) : ((iZec10[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec10[i] >= 2) ? ((iZec10[i] >= 3) ? fSlow10 : fSlow9) : ((iZec10[i] >= 1) ? fSlow8 : fSlow7)));
 			}
 			/* Vectorizable loop 14 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec10[i] = float(iZec4[i]);
+				fZec13[i] = ((iZec12[i] >= 4) ? ((iZec12[i] >= 6) ? ((iZec12[i] >= 7) ? fSlow14 : fSlow13) : ((iZec12[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec12[i] >= 2) ? ((iZec12[i] >= 3) ? fSlow10 : fSlow9) : ((iZec12[i] >= 1) ? fSlow8 : fSlow7)));
 			}
 			/* Vectorizable loop 15 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec12[i] = float(((iZec11[i] >= 4) ? ((iZec11[i] >= 6) ? ((iZec11[i] >= 7) ? iSlow14 : iSlow13) : ((iZec11[i] >= 5) ? iSlow12 : iSlow11)) : ((iZec11[i] >= 2) ? ((iZec11[i] >= 3) ? iSlow10 : iSlow9) : ((iZec11[i] >= 1) ? iSlow8 : iSlow7))));
+				fZec16[i] = fSlow17 * ftbl0PannerFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec0[i]), 65535))];
 			}
 			/* Vectorizable loop 16 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec15[i] = float(iZec14[i]);
+				fZec14[i] = std::max<float>(0.0f, std::min<float>(1.0f, ((iSlow4) ? ((iSlow15) ? fSlow16 : fZec4[i] + 0.5f * fZec9[i] * (fZec6[i] + fZec9[i] * (2.0f * fZec11[i] + 4.0f * fZec6[i] + fZec9[i] * (fZec13[i] + 3.0f * (fZec4[i] - fZec6[i]) - fZec11[i]) - (5.0f * fZec4[i] + fZec13[i])) - fZec11[i])) : ((iSlow5) ? fZec4[i] + 0.5f * fZec7[i] * (1.0f - std::cos(3.1415927f * fZec9[i])) : fZec4[i] + fZec9[i] * fZec7[i]))));
 			}
 			/* Vectorizable loop 17 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec18[i] = fSlow17 * ftbl0PannerFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec0[i]), 65535))];
+				fZec17[i] = float(int(-(fZec16[i])));
 			}
 			/* Vectorizable loop 18 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec16[i] = std::max<float>(0.0f, std::min<float>(1.0f, 0.1f * ((iSlow4) ? ((iSlow15) ? fSlow16 : fZec10[i] + 0.5f * fZec9[i] * (float(iZec6[i] - iZec14[i]) + fZec9[i] * (2.0f * fZec15[i] + 4.0f * float(iZec6[i]) + fZec9[i] * (fZec12[i] + 3.0f * float(iZec4[i] - iZec6[i]) - fZec15[i]) - (5.0f * fZec10[i] + fZec12[i])))) : ((iSlow5) ? fZec10[i] + 0.5f * fZec7[i] * (1.0f - std::cos(3.1415927f * fZec9[i])) : fZec10[i] + fZec9[i] * fZec7[i]))));
+				fZec19[i] = float(int(fZec16[i]));
 			}
 			/* Vectorizable loop 19 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec19[i] = float(int(-(fZec18[i])));
+				fZec15[i] = 1.0f - fZec14[i];
 			}
 			/* Vectorizable loop 20 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec21[i] = float(int(fZec18[i]));
+				iZec18[i] = int(((-(fZec16[i]) == fZec17[i]) ? -(fZec16[i]) : ((-(fZec16[i]) >= 0.0f) ? fZec17[i] + 1.0f : fZec17[i])));
 			}
 			/* Vectorizable loop 21 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec17[i] = 1.0f - fZec16[i];
+				iZec20[i] = int(((fZec16[i] == fZec19[i]) ? fZec16[i] : ((fZec16[i] >= 0.0f) ? fZec19[i] + 1.0f : fZec19[i])));
 			}
 			/* Vectorizable loop 22 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec20[i] = int(((-(fZec18[i]) == fZec19[i]) ? -(fZec18[i]) : ((-(fZec18[i]) >= 0.0f) ? fZec19[i] + 1.0f : fZec19[i])));
+				output0[i] = FAUSTFLOAT(((iZec18[i]) ? float(input0[i]) : ((iZec18[i]) ? 0.0f : float(input0[i])) * (1.0f - fZec16[i])) * fZec14[i] + float(input0[i]) * fZec15[i]);
 			}
 			/* Vectorizable loop 23 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec22[i] = int(((fZec18[i] == fZec21[i]) ? fZec18[i] : ((fZec18[i] >= 0.0f) ? fZec21[i] + 1.0f : fZec21[i])));
-			}
-			/* Vectorizable loop 24 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(((iZec20[i]) ? float(input0[i]) : ((iZec20[i]) ? 0.0f : float(input0[i])) * (1.0f - fZec18[i])) * fZec16[i] + float(input0[i]) * fZec17[i]);
-			}
-			/* Vectorizable loop 25 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(fZec16[i] * ((iZec22[i]) ? float(input1[i]) : ((iZec22[i]) ? 0.0f : float(input1[i])) * (fZec18[i] + 1.0f)) + float(input1[i]) * fZec17[i]);
+				output1[i] = FAUSTFLOAT(fZec14[i] * ((iZec20[i]) ? float(input1[i]) : ((iZec20[i]) ? 0.0f : float(input1[i])) * (fZec16[i] + 1.0f)) + float(input1[i]) * fZec15[i]);
 			}
 		}
 		/* Remaining frames */
@@ -474,13 +460,7 @@ class PannerFAUST final : public Panner_PDJE {
 			for (int i = 0; i < vsize; i = i + 1) {
 				iZec5[i] = iZec3[i] + 1;
 			}
-			/* Vectorizable loop 5 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				iZec13[i] = iZec3[i] + -1;
-			}
-			/* Recursive loop 6 */
+			/* Recursive loop 5 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j2 = 0; j2 < 4; j2 = j2 + 1) {
@@ -497,119 +477,113 @@ class PannerFAUST final : public Panner_PDJE {
 			for (int j3 = 0; j3 < 4; j3 = j3 + 1) {
 				fRec0_perm[j3] = fRec0_tmp[vsize + j3];
 			}
+			/* Vectorizable loop 6 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec4[i] = ((iZec3[i] >= 4) ? ((iZec3[i] >= 6) ? ((iZec3[i] >= 7) ? fSlow14 : fSlow13) : ((iZec3[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec3[i] >= 2) ? ((iZec3[i] >= 3) ? fSlow10 : fSlow9) : ((iZec3[i] >= 1) ? fSlow8 : fSlow7)));
+			}
 			/* Vectorizable loop 7 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec4[i] = ((iZec3[i] >= 4) ? ((iZec3[i] >= 6) ? ((iZec3[i] >= 7) ? iSlow14 : iSlow13) : ((iZec3[i] >= 5) ? iSlow12 : iSlow11)) : ((iZec3[i] >= 2) ? ((iZec3[i] >= 3) ? iSlow10 : iSlow9) : ((iZec3[i] >= 1) ? iSlow8 : iSlow7)));
+				fZec6[i] = ((iZec5[i] >= 4) ? ((iZec5[i] >= 6) ? ((iZec5[i] >= 7) ? fSlow14 : fSlow13) : ((iZec5[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec5[i] >= 2) ? ((iZec5[i] >= 3) ? fSlow10 : fSlow9) : ((iZec5[i] >= 1) ? fSlow8 : fSlow7)));
 			}
 			/* Vectorizable loop 8 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec6[i] = ((iZec5[i] >= 4) ? ((iZec5[i] >= 6) ? ((iZec5[i] >= 7) ? iSlow14 : iSlow13) : ((iZec5[i] >= 5) ? iSlow12 : iSlow11)) : ((iZec5[i] >= 2) ? ((iZec5[i] >= 3) ? iSlow10 : iSlow9) : ((iZec5[i] >= 1) ? iSlow8 : iSlow7)));
+				fZec8[i] = float(iZec3[i]);
 			}
 			/* Vectorizable loop 9 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec8[i] = float(iZec3[i]);
+				iZec10[i] = iZec3[i] + -1;
 			}
 			/* Vectorizable loop 10 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec11[i] = iZec3[i] + 2;
+				iZec12[i] = iZec3[i] + 2;
 			}
 			/* Vectorizable loop 11 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec14[i] = ((iZec13[i] >= 4) ? ((iZec13[i] >= 6) ? ((iZec13[i] >= 7) ? iSlow14 : iSlow13) : ((iZec13[i] >= 5) ? iSlow12 : iSlow11)) : ((iZec13[i] >= 2) ? ((iZec13[i] >= 3) ? iSlow10 : iSlow9) : ((iZec13[i] >= 1) ? iSlow8 : iSlow7)));
+				fZec7[i] = fZec6[i] - fZec4[i];
 			}
 			/* Vectorizable loop 12 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec7[i] = float(iZec6[i] - iZec4[i]);
+				fZec9[i] = fZec2[i] - ((fZec2[i] == fZec8[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec8[i] : fZec8[i] + -1.0f));
 			}
 			/* Vectorizable loop 13 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec9[i] = fZec2[i] - ((fZec2[i] == fZec8[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec8[i] : fZec8[i] + -1.0f));
+				fZec11[i] = ((iZec10[i] >= 4) ? ((iZec10[i] >= 6) ? ((iZec10[i] >= 7) ? fSlow14 : fSlow13) : ((iZec10[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec10[i] >= 2) ? ((iZec10[i] >= 3) ? fSlow10 : fSlow9) : ((iZec10[i] >= 1) ? fSlow8 : fSlow7)));
 			}
 			/* Vectorizable loop 14 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec10[i] = float(iZec4[i]);
+				fZec13[i] = ((iZec12[i] >= 4) ? ((iZec12[i] >= 6) ? ((iZec12[i] >= 7) ? fSlow14 : fSlow13) : ((iZec12[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec12[i] >= 2) ? ((iZec12[i] >= 3) ? fSlow10 : fSlow9) : ((iZec12[i] >= 1) ? fSlow8 : fSlow7)));
 			}
 			/* Vectorizable loop 15 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec12[i] = float(((iZec11[i] >= 4) ? ((iZec11[i] >= 6) ? ((iZec11[i] >= 7) ? iSlow14 : iSlow13) : ((iZec11[i] >= 5) ? iSlow12 : iSlow11)) : ((iZec11[i] >= 2) ? ((iZec11[i] >= 3) ? iSlow10 : iSlow9) : ((iZec11[i] >= 1) ? iSlow8 : iSlow7))));
+				fZec16[i] = fSlow17 * ftbl0PannerFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec0[i]), 65535))];
 			}
 			/* Vectorizable loop 16 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec15[i] = float(iZec14[i]);
+				fZec14[i] = std::max<float>(0.0f, std::min<float>(1.0f, ((iSlow4) ? ((iSlow15) ? fSlow16 : fZec4[i] + 0.5f * fZec9[i] * (fZec6[i] + fZec9[i] * (2.0f * fZec11[i] + 4.0f * fZec6[i] + fZec9[i] * (fZec13[i] + 3.0f * (fZec4[i] - fZec6[i]) - fZec11[i]) - (5.0f * fZec4[i] + fZec13[i])) - fZec11[i])) : ((iSlow5) ? fZec4[i] + 0.5f * fZec7[i] * (1.0f - std::cos(3.1415927f * fZec9[i])) : fZec4[i] + fZec9[i] * fZec7[i]))));
 			}
 			/* Vectorizable loop 17 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec18[i] = fSlow17 * ftbl0PannerFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec0[i]), 65535))];
+				fZec17[i] = float(int(-(fZec16[i])));
 			}
 			/* Vectorizable loop 18 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec16[i] = std::max<float>(0.0f, std::min<float>(1.0f, 0.1f * ((iSlow4) ? ((iSlow15) ? fSlow16 : fZec10[i] + 0.5f * fZec9[i] * (float(iZec6[i] - iZec14[i]) + fZec9[i] * (2.0f * fZec15[i] + 4.0f * float(iZec6[i]) + fZec9[i] * (fZec12[i] + 3.0f * float(iZec4[i] - iZec6[i]) - fZec15[i]) - (5.0f * fZec10[i] + fZec12[i])))) : ((iSlow5) ? fZec10[i] + 0.5f * fZec7[i] * (1.0f - std::cos(3.1415927f * fZec9[i])) : fZec10[i] + fZec9[i] * fZec7[i]))));
+				fZec19[i] = float(int(fZec16[i]));
 			}
 			/* Vectorizable loop 19 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec19[i] = float(int(-(fZec18[i])));
+				fZec15[i] = 1.0f - fZec14[i];
 			}
 			/* Vectorizable loop 20 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec21[i] = float(int(fZec18[i]));
+				iZec18[i] = int(((-(fZec16[i]) == fZec17[i]) ? -(fZec16[i]) : ((-(fZec16[i]) >= 0.0f) ? fZec17[i] + 1.0f : fZec17[i])));
 			}
 			/* Vectorizable loop 21 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec17[i] = 1.0f - fZec16[i];
+				iZec20[i] = int(((fZec16[i] == fZec19[i]) ? fZec16[i] : ((fZec16[i] >= 0.0f) ? fZec19[i] + 1.0f : fZec19[i])));
 			}
 			/* Vectorizable loop 22 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec20[i] = int(((-(fZec18[i]) == fZec19[i]) ? -(fZec18[i]) : ((-(fZec18[i]) >= 0.0f) ? fZec19[i] + 1.0f : fZec19[i])));
+				output0[i] = FAUSTFLOAT(((iZec18[i]) ? float(input0[i]) : ((iZec18[i]) ? 0.0f : float(input0[i])) * (1.0f - fZec16[i])) * fZec14[i] + float(input0[i]) * fZec15[i]);
 			}
 			/* Vectorizable loop 23 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec22[i] = int(((fZec18[i] == fZec21[i]) ? fZec18[i] : ((fZec18[i] >= 0.0f) ? fZec21[i] + 1.0f : fZec21[i])));
-			}
-			/* Vectorizable loop 24 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(((iZec20[i]) ? float(input0[i]) : ((iZec20[i]) ? 0.0f : float(input0[i])) * (1.0f - fZec18[i])) * fZec16[i] + float(input0[i]) * fZec17[i]);
-			}
-			/* Vectorizable loop 25 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(fZec16[i] * ((iZec22[i]) ? float(input1[i]) : ((iZec22[i]) ? 0.0f : float(input1[i])) * (fZec18[i] + 1.0f)) + float(input1[i]) * fZec17[i]);
+				output1[i] = FAUSTFLOAT(fZec14[i] * ((iZec20[i]) ? float(input1[i]) : ((iZec20[i]) ? 0.0f : float(input1[i])) * (fZec16[i] + 1.0f)) + float(input1[i]) * fZec15[i]);
 			}
 		}
 	}

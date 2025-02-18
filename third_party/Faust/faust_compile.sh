@@ -11,3 +11,4 @@ faust -o compiled/FAUST_PANNER.hpp -lang cpp -clang -light -mapp -single -nvi -e
 faust -o compiled/FAUST_PHASER.hpp -lang cpp -clang -light -mapp -single -nvi -exp10 -it -cn "PhaserFAUST" -scn "Phaser_PDJE" -vec -vs 64 src/PHASER.dsp
 faust -o compiled/FAUST_FLANGER.hpp -lang cpp -clang -light -mapp -single -nvi -exp10 -it -cn "FlangerFAUST" -scn "Flanger_PDJE" -vec -vs 64 src/FLANGER.dsp
 faust -o compiled/FAUST_COMPRESSOR.hpp -lang cpp -clang -light -mapp -single -nvi -exp10 -it -cn "CompressorFAUST" -scn "Compressor_PDJE" -vec -vs 64 src/COMPRESSOR.dsp
+faust -o compiled/FAUST_ROBOT.hpp -lang cpp -clang -light -mapp -single -nvi -exp10 -it -cn "RobotFAUST" -scn "Robot_PDJE" -vec -vs 64 src/ROBOT.dsp

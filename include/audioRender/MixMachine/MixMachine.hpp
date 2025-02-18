@@ -29,8 +29,6 @@ enum InterpolateType{
     FLAT
 };
 
-
-// #include "FAUST_FILTERS.hpp"
 using ID = long;
 
 struct EightPointValues{
@@ -74,7 +72,36 @@ public:
     template<TypeEnum, typename T>
     bool TypeWorks(MixStruct& ms, T& data, std::vector<float>* Vec);
     
+    template<typename FXtype>
+    bool InterpolateInit(FXtype& FXvec, std::vector<float>*& PCMvec, MixStruct& ms){
+        FXvec.emplace_back(PCMvec, ms.frame_in, ms.frame_out);
 
+        TRY(
+            FXvec.back().selectInterpolator =
+            std::stoi(ms.RP.getFirst().cStr());
+        )
+        if(FXvec.back().selectInterpolator == InterpolateType::FLAT){
+            TRY(
+                FXvec.back().vZero =
+                std::stof(ms.RP.getSecond().cStr());
+            )
+        }
+        else{
+            EightPointValues EPV(ms.RP.getSecond().cStr());
+            FXvec.back().v1 = EPV.vals[0];
+            FXvec.back().v2 = EPV.vals[1];
+            FXvec.back().v3 = EPV.vals[2];
+            FXvec.back().v4 = EPV.vals[3];
+            FXvec.back().v5 = EPV.vals[4];
+            FXvec.back().v6 = EPV.vals[5];
+            FXvec.back().v7 = EPV.vals[6];
+            FXvec.back().v8 = EPV.vals[7];
+        }
+
+        FXvec.back().frames = ms.frame_out - ms.frame_in;
+        FXvec.back().timerActive = 0;
+        return true;
+    }
 
     MixMachine();
     ~MixMachine();

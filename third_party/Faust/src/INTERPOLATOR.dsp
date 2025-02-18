@@ -3,15 +3,15 @@ import("stdfaust.lib");
 
 
 selectNum = fvariable(int selectInterpolator, "Faust_interpolate.hpp");
-p1 = fvariable(int v1, "");
-p2 = fvariable(int v2, "");
-p3 = fvariable(int v3, "");
-p4 = fvariable(int v4, "");
-p5 = fvariable(int v5, "");
-p6 = fvariable(int v6, "");
-p7 = fvariable(int v7, "");
-p8 = fvariable(int v8, "");
-pZero = fvariable(int vZero, "");
+p1 = fvariable(float v1, "");
+p2 = fvariable(float v2, "");
+p3 = fvariable(float v3, "");
+p4 = fvariable(float v4, "");
+p5 = fvariable(float v5, "");
+p6 = fvariable(float v6, "");
+p7 = fvariable(float v7, "");
+p8 = fvariable(float v8, "");
+pZero = fvariable(float vZero, "");
 
 InterpolateFrames = fvariable(int frames, "");
 activate_timer = fvariable(int timerActive, "");

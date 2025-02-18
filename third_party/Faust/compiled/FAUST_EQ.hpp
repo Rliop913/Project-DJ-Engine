@@ -350,35 +350,33 @@ class EQFAUST final : public EQ_PDJE {
 		float fSlow5 = 8.0f / float(iSlow1);
 		float fZec2[64];
 		int iZec3[64];
-		int iSlow6 = v1;
-		int iSlow7 = v2;
-		int iSlow8 = v3;
-		int iSlow9 = v4;
-		int iSlow10 = v5;
-		int iSlow11 = v6;
-		int iSlow12 = v7;
-		int iSlow13 = v8;
-		int iZec4[64];
+		float fSlow6 = v1;
+		float fSlow7 = v2;
+		float fSlow8 = v3;
+		float fSlow9 = v4;
+		float fSlow10 = v5;
+		float fSlow11 = v6;
+		float fSlow12 = v7;
+		float fSlow13 = v8;
+		float fZec4[64];
 		int iZec5[64];
-		int iZec6[64];
+		float fZec6[64];
 		float fZec7[64];
 		float fZec8[64];
 		float fZec9[64];
-		float fZec10[64];
 		int iSlow14 = iSlow2 >= 3;
-		int iZec11[64];
-		float fZec12[64];
-		int iZec13[64];
-		int iZec14[64];
-		float fZec15[64];
-		float fSlow15 = float(vZero);
+		int iZec10[64];
+		float fZec11[64];
+		int iZec12[64];
+		float fZec13[64];
+		float fSlow15 = vZero;
+		float fZec14[64];
+		int iZec15[64];
 		float fZec16[64];
-		int iZec17[64];
+		float fZec17[64];
 		float fZec18[64];
 		float fZec19[64];
 		float fZec20[64];
-		float fZec21[64];
-		float fZec22[64];
 		float fRec5_tmp[68];
 		float* fRec5 = &fRec5_tmp[4];
 		float fRec7_tmp[68];
@@ -392,23 +390,23 @@ class EQFAUST final : public EQ_PDJE {
 		int iSlow16 = EQSelect;
 		int iSlow17 = iSlow16 == 0;
 		int iSlow18 = iSlow16 == 1;
+		float fZec21[64];
+		float fZec22[64];
 		float fZec23[64];
 		float fZec24[64];
-		float fZec25[64];
-		float fZec26[64];
 		float fYec1_tmp[68];
 		float* fYec1 = &fYec1_tmp[4];
-		float fZec27[64];
+		float fZec25[64];
 		float fRec11_tmp[68];
 		float* fRec11 = &fRec11_tmp[4];
 		float fRec10_tmp[68];
 		float* fRec10 = &fRec10_tmp[4];
-		float fZec28[64];
+		float fZec26[64];
 		float fRec13_tmp[68];
 		float* fRec13 = &fRec13_tmp[4];
 		float fRec12_tmp[68];
 		float* fRec12 = &fRec12_tmp[4];
-		float fZec29[64];
+		float fZec27[64];
 		float fRec14_tmp[68];
 		float* fRec14 = &fRec14_tmp[4];
 		float fRec16_tmp[68];
@@ -464,75 +462,63 @@ class EQFAUST final : public EQ_PDJE {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec13[i] = iZec3[i] + -1;
+				fZec4[i] = ((iZec3[i] >= 4) ? ((iZec3[i] >= 6) ? ((iZec3[i] >= 7) ? fSlow13 : fSlow12) : ((iZec3[i] >= 5) ? fSlow11 : fSlow10)) : ((iZec3[i] >= 2) ? ((iZec3[i] >= 3) ? fSlow9 : fSlow8) : ((iZec3[i] >= 1) ? fSlow7 : fSlow6)));
 			}
 			/* Vectorizable loop 5 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec4[i] = ((iZec3[i] >= 4) ? ((iZec3[i] >= 6) ? ((iZec3[i] >= 7) ? iSlow13 : iSlow12) : ((iZec3[i] >= 5) ? iSlow11 : iSlow10)) : ((iZec3[i] >= 2) ? ((iZec3[i] >= 3) ? iSlow9 : iSlow8) : ((iZec3[i] >= 1) ? iSlow7 : iSlow6)));
+				fZec6[i] = ((iZec5[i] >= 4) ? ((iZec5[i] >= 6) ? ((iZec5[i] >= 7) ? fSlow13 : fSlow12) : ((iZec5[i] >= 5) ? fSlow11 : fSlow10)) : ((iZec5[i] >= 2) ? ((iZec5[i] >= 3) ? fSlow9 : fSlow8) : ((iZec5[i] >= 1) ? fSlow7 : fSlow6)));
 			}
 			/* Vectorizable loop 6 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec6[i] = ((iZec5[i] >= 4) ? ((iZec5[i] >= 6) ? ((iZec5[i] >= 7) ? iSlow13 : iSlow12) : ((iZec5[i] >= 5) ? iSlow11 : iSlow10)) : ((iZec5[i] >= 2) ? ((iZec5[i] >= 3) ? iSlow9 : iSlow8) : ((iZec5[i] >= 1) ? iSlow7 : iSlow6)));
+				fZec8[i] = float(iZec3[i]);
 			}
 			/* Vectorizable loop 7 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec8[i] = float(iZec3[i]);
+				iZec10[i] = iZec3[i] + -1;
 			}
 			/* Vectorizable loop 8 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec11[i] = iZec3[i] + 2;
+				iZec12[i] = iZec3[i] + 2;
 			}
 			/* Vectorizable loop 9 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec14[i] = ((iZec13[i] >= 4) ? ((iZec13[i] >= 6) ? ((iZec13[i] >= 7) ? iSlow13 : iSlow12) : ((iZec13[i] >= 5) ? iSlow11 : iSlow10)) : ((iZec13[i] >= 2) ? ((iZec13[i] >= 3) ? iSlow9 : iSlow8) : ((iZec13[i] >= 1) ? iSlow7 : iSlow6)));
+				fZec7[i] = fZec6[i] - fZec4[i];
 			}
 			/* Vectorizable loop 10 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec7[i] = float(iZec6[i] - iZec4[i]);
+				fZec9[i] = fZec2[i] - ((fZec2[i] == fZec8[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec8[i] : fZec8[i] + -1.0f));
 			}
 			/* Vectorizable loop 11 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec9[i] = fZec2[i] - ((fZec2[i] == fZec8[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec8[i] : fZec8[i] + -1.0f));
+				fZec11[i] = ((iZec10[i] >= 4) ? ((iZec10[i] >= 6) ? ((iZec10[i] >= 7) ? fSlow13 : fSlow12) : ((iZec10[i] >= 5) ? fSlow11 : fSlow10)) : ((iZec10[i] >= 2) ? ((iZec10[i] >= 3) ? fSlow9 : fSlow8) : ((iZec10[i] >= 1) ? fSlow7 : fSlow6)));
 			}
 			/* Vectorizable loop 12 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec10[i] = float(iZec4[i]);
+				fZec13[i] = ((iZec12[i] >= 4) ? ((iZec12[i] >= 6) ? ((iZec12[i] >= 7) ? fSlow13 : fSlow12) : ((iZec12[i] >= 5) ? fSlow11 : fSlow10)) : ((iZec12[i] >= 2) ? ((iZec12[i] >= 3) ? fSlow9 : fSlow8) : ((iZec12[i] >= 1) ? fSlow7 : fSlow6)));
 			}
 			/* Vectorizable loop 13 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec12[i] = float(((iZec11[i] >= 4) ? ((iZec11[i] >= 6) ? ((iZec11[i] >= 7) ? iSlow13 : iSlow12) : ((iZec11[i] >= 5) ? iSlow11 : iSlow10)) : ((iZec11[i] >= 2) ? ((iZec11[i] >= 3) ? iSlow9 : iSlow8) : ((iZec11[i] >= 1) ? iSlow7 : iSlow6))));
+				fZec14[i] = ((iSlow3) ? ((iSlow14) ? fSlow15 : fZec4[i] + 0.5f * fZec9[i] * (fZec6[i] + fZec9[i] * (2.0f * fZec11[i] + 4.0f * fZec6[i] + fZec9[i] * (fZec13[i] + 3.0f * (fZec4[i] - fZec6[i]) - fZec11[i]) - (5.0f * fZec4[i] + fZec13[i])) - fZec11[i])) : ((iSlow4) ? fZec4[i] + 0.5f * fZec7[i] * (1.0f - std::cos(3.1415927f * fZec9[i])) : fZec4[i] + fZec9[i] * fZec7[i]));
 			}
 			/* Vectorizable loop 14 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec15[i] = float(iZec14[i]);
-			}
-			/* Vectorizable loop 15 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec16[i] = ((iSlow3) ? ((iSlow14) ? fSlow15 : fZec10[i] + 0.5f * fZec9[i] * (float(iZec6[i] - iZec14[i]) + fZec9[i] * (2.0f * fZec15[i] + 4.0f * float(iZec6[i]) + fZec9[i] * (fZec12[i] + 3.0f * float(iZec4[i] - iZec6[i]) - fZec15[i]) - (5.0f * fZec10[i] + fZec12[i])))) : ((iSlow4) ? fZec10[i] + 0.5f * fZec7[i] * (1.0f - std::cos(3.1415927f * fZec9[i])) : fZec10[i] + fZec9[i] * fZec7[i]));
-			}
-			/* Vectorizable loop 16 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j0 = 0; j0 < 4; j0 = j0 + 1) {
@@ -548,19 +534,19 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j1 = 0; j1 < 4; j1 = j1 + 1) {
 				fYec0_perm[j1] = fYec0_tmp[vsize + j1];
 			}
+			/* Vectorizable loop 15 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				iZec15[i] = fZec14[i] > 0.0f;
+			}
+			/* Vectorizable loop 16 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec16[i] = fConst9 * std::pow(1e+01f, 0.05f * std::fabs(fZec14[i]));
+			}
 			/* Vectorizable loop 17 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				iZec17[i] = fZec16[i] > 0.0f;
-			}
-			/* Vectorizable loop 18 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec18[i] = fConst9 * std::pow(1e+01f, 0.05f * std::fabs(fZec16[i]));
-			}
-			/* Vectorizable loop 19 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j22 = 0; j22 < 4; j22 = j22 + 1) {
@@ -576,37 +562,37 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j23 = 0; j23 < 4; j23 = j23 + 1) {
 				fYec1_perm[j23] = fYec1_tmp[vsize + j23];
 			}
-			/* Vectorizable loop 20 */
+			/* Vectorizable loop 18 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				fZec0[i] = float(input0[i]) + fYec0[i - 1];
 			}
-			/* Vectorizable loop 21 */
+			/* Vectorizable loop 19 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				fZec1[i] = float(input0[i]) - fYec0[i - 1];
 			}
+			/* Vectorizable loop 20 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec17[i] = ((iZec15[i]) ? fConst9 : fZec16[i]);
+			}
+			/* Vectorizable loop 21 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec25[i] = float(input1[i]) + fYec1[i - 1];
+			}
 			/* Vectorizable loop 22 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec19[i] = ((iZec17[i]) ? fConst9 : fZec18[i]);
+				fZec26[i] = float(input1[i]) - fYec1[i - 1];
 			}
-			/* Vectorizable loop 23 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec27[i] = float(input1[i]) + fYec1[i - 1];
-			}
-			/* Vectorizable loop 24 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec28[i] = float(input1[i]) - fYec1[i - 1];
-			}
-			/* Recursive loop 25 */
+			/* Recursive loop 23 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j2 = 0; j2 < 4; j2 = j2 + 1) {
@@ -621,7 +607,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j3 = 0; j3 < 4; j3 = j3 + 1) {
 				fRec1_perm[j3] = fRec1_tmp[vsize + j3];
 			}
-			/* Recursive loop 26 */
+			/* Recursive loop 24 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j8 = 0; j8 < 4; j8 = j8 + 1) {
@@ -636,19 +622,19 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j9 = 0; j9 < 4; j9 = j9 + 1) {
 				fRec4_perm[j9] = fRec4_tmp[vsize + j9];
 			}
-			/* Vectorizable loop 27 */
+			/* Vectorizable loop 25 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec20[i] = fConst11 * (fConst11 + fZec19[i]) + 1.0f;
+				fZec18[i] = fConst11 * (fConst11 + fZec17[i]) + 1.0f;
 			}
-			/* Vectorizable loop 28 */
+			/* Vectorizable loop 26 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec22[i] = fConst11 * (fConst11 - fZec19[i]) + 1.0f;
+				fZec20[i] = fConst11 * (fConst11 - fZec17[i]) + 1.0f;
 			}
-			/* Recursive loop 29 */
+			/* Recursive loop 27 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j14 = 0; j14 < 4; j14 = j14 + 1) {
@@ -663,7 +649,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j15 = 0; j15 < 4; j15 = j15 + 1) {
 				fRec7_perm[j15] = fRec7_tmp[vsize + j15];
 			}
-			/* Recursive loop 30 */
+			/* Recursive loop 28 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j18 = 0; j18 < 4; j18 = j18 + 1) {
@@ -678,13 +664,13 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j19 = 0; j19 < 4; j19 = j19 + 1) {
 				fRec9_perm[j19] = fRec9_tmp[vsize + j19];
 			}
-			/* Vectorizable loop 31 */
+			/* Vectorizable loop 29 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec24[i] = ((iZec17[i]) ? fZec18[i] : fConst9);
+				fZec22[i] = ((iZec15[i]) ? fZec16[i] : fConst9);
 			}
-			/* Recursive loop 32 */
+			/* Recursive loop 30 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j24 = 0; j24 < 4; j24 = j24 + 1) {
@@ -692,14 +678,14 @@ class EQFAUST final : public EQ_PDJE {
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec11[i] = -(fConst4 * (fConst3 * fRec11[i - 1] - fZec27[i]));
+				fRec11[i] = -(fConst4 * (fConst3 * fRec11[i - 1] - fZec25[i]));
 			}
 			/* Post code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j25 = 0; j25 < 4; j25 = j25 + 1) {
 				fRec11_perm[j25] = fRec11_tmp[vsize + j25];
 			}
-			/* Recursive loop 33 */
+			/* Recursive loop 31 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j28 = 0; j28 < 4; j28 = j28 + 1) {
@@ -707,14 +693,14 @@ class EQFAUST final : public EQ_PDJE {
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec13[i] = -(fConst4 * (fConst3 * fRec13[i - 1] - fConst2 * fZec28[i]));
+				fRec13[i] = -(fConst4 * (fConst3 * fRec13[i - 1] - fConst2 * fZec26[i]));
 			}
 			/* Post code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j29 = 0; j29 < 4; j29 = j29 + 1) {
 				fRec13_perm[j29] = fRec13_tmp[vsize + j29];
 			}
-			/* Recursive loop 34 */
+			/* Recursive loop 32 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j34 = 0; j34 < 4; j34 = j34 + 1) {
@@ -722,14 +708,14 @@ class EQFAUST final : public EQ_PDJE {
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec16[i] = -(fConst16 * (fConst15 * fRec16[i - 1] - fZec27[i]));
+				fRec16[i] = -(fConst16 * (fConst15 * fRec16[i - 1] - fZec25[i]));
 			}
 			/* Post code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j35 = 0; j35 < 4; j35 = j35 + 1) {
 				fRec16_perm[j35] = fRec16_tmp[vsize + j35];
 			}
-			/* Recursive loop 35 */
+			/* Recursive loop 33 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j38 = 0; j38 < 4; j38 = j38 + 1) {
@@ -737,14 +723,14 @@ class EQFAUST final : public EQ_PDJE {
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec18[i] = -(fConst16 * (fConst15 * fRec18[i - 1] - fConst14 * fZec28[i]));
+				fRec18[i] = -(fConst16 * (fConst15 * fRec18[i - 1] - fConst14 * fZec26[i]));
 			}
 			/* Post code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j39 = 0; j39 < 4; j39 = j39 + 1) {
 				fRec18_perm[j39] = fRec18_tmp[vsize + j39];
 			}
-			/* Recursive loop 36 */
+			/* Recursive loop 34 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j4 = 0; j4 < 4; j4 = j4 + 1) {
@@ -759,7 +745,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j5 = 0; j5 < 4; j5 = j5 + 1) {
 				fRec0_perm[j5] = fRec0_tmp[vsize + j5];
 			}
-			/* Recursive loop 37 */
+			/* Recursive loop 35 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j10 = 0; j10 < 4; j10 = j10 + 1) {
@@ -774,7 +760,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j11 = 0; j11 < 4; j11 = j11 + 1) {
 				fRec3_perm[j11] = fRec3_tmp[vsize + j11];
 			}
-			/* Recursive loop 38 */
+			/* Recursive loop 36 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j12 = 0; j12 < 4; j12 = j12 + 1) {
@@ -782,15 +768,15 @@ class EQFAUST final : public EQ_PDJE {
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec21[i] = fConst12 * fRec5[i - 1];
-				fRec5[i] = float(input0[i]) - (fRec5[i - 2] * fZec22[i] + fZec21[i]) / fZec20[i];
+				fZec19[i] = fConst12 * fRec5[i - 1];
+				fRec5[i] = float(input0[i]) - (fRec5[i - 2] * fZec20[i] + fZec19[i]) / fZec18[i];
 			}
 			/* Post code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j13 = 0; j13 < 4; j13 = j13 + 1) {
 				fRec5_perm[j13] = fRec5_tmp[vsize + j13];
 			}
-			/* Recursive loop 39 */
+			/* Recursive loop 37 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j16 = 0; j16 < 4; j16 = j16 + 1) {
@@ -805,7 +791,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j17 = 0; j17 < 4; j17 = j17 + 1) {
 				fRec6_perm[j17] = fRec6_tmp[vsize + j17];
 			}
-			/* Recursive loop 40 */
+			/* Recursive loop 38 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j20 = 0; j20 < 4; j20 = j20 + 1) {
@@ -820,25 +806,25 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j21 = 0; j21 < 4; j21 = j21 + 1) {
 				fRec8_perm[j21] = fRec8_tmp[vsize + j21];
 			}
+			/* Vectorizable loop 39 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec21[i] = std::pow(1e+01f, 0.05f * fZec14[i]);
+			}
+			/* Vectorizable loop 40 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec23[i] = fConst11 * (fConst11 - fZec22[i]) + 1.0f;
+			}
 			/* Vectorizable loop 41 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec23[i] = std::pow(1e+01f, 0.05f * fZec16[i]);
+				fZec24[i] = fConst11 * (fConst11 + fZec22[i]) + 1.0f;
 			}
-			/* Vectorizable loop 42 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec25[i] = fConst11 * (fConst11 - fZec24[i]) + 1.0f;
-			}
-			/* Vectorizable loop 43 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec26[i] = fConst11 * (fConst11 + fZec24[i]) + 1.0f;
-			}
-			/* Recursive loop 44 */
+			/* Recursive loop 42 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j26 = 0; j26 < 4; j26 = j26 + 1) {
@@ -853,7 +839,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j27 = 0; j27 < 4; j27 = j27 + 1) {
 				fRec10_perm[j27] = fRec10_tmp[vsize + j27];
 			}
-			/* Recursive loop 45 */
+			/* Recursive loop 43 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j30 = 0; j30 < 4; j30 = j30 + 1) {
@@ -868,7 +854,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j31 = 0; j31 < 4; j31 = j31 + 1) {
 				fRec12_perm[j31] = fRec12_tmp[vsize + j31];
 			}
-			/* Recursive loop 46 */
+			/* Recursive loop 44 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j32 = 0; j32 < 4; j32 = j32 + 1) {
@@ -876,15 +862,15 @@ class EQFAUST final : public EQ_PDJE {
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec29[i] = fConst12 * fRec14[i - 1];
-				fRec14[i] = float(input1[i]) - (fZec22[i] * fRec14[i - 2] + fZec29[i]) / fZec20[i];
+				fZec27[i] = fConst12 * fRec14[i - 1];
+				fRec14[i] = float(input1[i]) - (fZec20[i] * fRec14[i - 2] + fZec27[i]) / fZec18[i];
 			}
 			/* Post code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j33 = 0; j33 < 4; j33 = j33 + 1) {
 				fRec14_perm[j33] = fRec14_tmp[vsize + j33];
 			}
-			/* Recursive loop 47 */
+			/* Recursive loop 45 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j36 = 0; j36 < 4; j36 = j36 + 1) {
@@ -899,7 +885,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j37 = 0; j37 < 4; j37 = j37 + 1) {
 				fRec15_perm[j37] = fRec15_tmp[vsize + j37];
 			}
-			/* Recursive loop 48 */
+			/* Recursive loop 46 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j40 = 0; j40 < 4; j40 = j40 + 1) {
@@ -914,17 +900,17 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j41 = 0; j41 < 4; j41 = j41 + 1) {
 				fRec17_perm[j41] = fRec17_tmp[vsize + j41];
 			}
-			/* Vectorizable loop 49 */
+			/* Vectorizable loop 47 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec6[i - 2] + fRec6[i] + 2.0f * fRec6[i - 1] + fConst17 * fZec23[i] * (fRec8[i] + fRec8[i - 2] - 2.0f * fRec8[i - 1])) : ((iSlow18) ? (fZec21[i] + fRec5[i] * fZec26[i] + fRec5[i - 2] * fZec25[i]) / fZec20[i] : fConst8 * ((fRec0[i - 2] + fRec0[i] + 2.0f * fRec0[i - 1]) * fZec23[i] + fConst5 * (fRec3[i] + fRec3[i - 2] - 2.0f * fRec3[i - 1])))));
+				output0[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec6[i - 2] + fRec6[i] + 2.0f * fRec6[i - 1] + fConst17 * fZec21[i] * (fRec8[i] + fRec8[i - 2] - 2.0f * fRec8[i - 1])) : ((iSlow18) ? (fZec19[i] + fRec5[i] * fZec24[i] + fRec5[i - 2] * fZec23[i]) / fZec18[i] : fConst8 * ((fRec0[i - 2] + fRec0[i] + 2.0f * fRec0[i - 1]) * fZec21[i] + fConst5 * (fRec3[i] + fRec3[i - 2] - 2.0f * fRec3[i - 1])))));
 			}
-			/* Vectorizable loop 50 */
+			/* Vectorizable loop 48 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec15[i - 2] + fRec15[i] + 2.0f * fRec15[i - 1] + fConst17 * fZec23[i] * (fRec17[i] + fRec17[i - 2] - 2.0f * fRec17[i - 1])) : ((iSlow18) ? (fZec29[i] + fRec14[i] * fZec26[i] + fZec25[i] * fRec14[i - 2]) / fZec20[i] : fConst8 * (fZec23[i] * (fRec10[i - 2] + fRec10[i] + 2.0f * fRec10[i - 1]) + fConst5 * (fRec12[i] + fRec12[i - 2] - 2.0f * fRec12[i - 1])))));
+				output1[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec15[i - 2] + fRec15[i] + 2.0f * fRec15[i - 1] + fConst17 * fZec21[i] * (fRec17[i] + fRec17[i - 2] - 2.0f * fRec17[i - 1])) : ((iSlow18) ? (fZec27[i] + fRec14[i] * fZec24[i] + fZec23[i] * fRec14[i - 2]) / fZec18[i] : fConst8 * (fZec21[i] * (fRec10[i - 2] + fRec10[i] + 2.0f * fRec10[i - 1]) + fConst5 * (fRec12[i] + fRec12[i - 2] - 2.0f * fRec12[i - 1])))));
 			}
 		}
 		/* Remaining frames */
@@ -971,75 +957,63 @@ class EQFAUST final : public EQ_PDJE {
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec13[i] = iZec3[i] + -1;
+				fZec4[i] = ((iZec3[i] >= 4) ? ((iZec3[i] >= 6) ? ((iZec3[i] >= 7) ? fSlow13 : fSlow12) : ((iZec3[i] >= 5) ? fSlow11 : fSlow10)) : ((iZec3[i] >= 2) ? ((iZec3[i] >= 3) ? fSlow9 : fSlow8) : ((iZec3[i] >= 1) ? fSlow7 : fSlow6)));
 			}
 			/* Vectorizable loop 5 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec4[i] = ((iZec3[i] >= 4) ? ((iZec3[i] >= 6) ? ((iZec3[i] >= 7) ? iSlow13 : iSlow12) : ((iZec3[i] >= 5) ? iSlow11 : iSlow10)) : ((iZec3[i] >= 2) ? ((iZec3[i] >= 3) ? iSlow9 : iSlow8) : ((iZec3[i] >= 1) ? iSlow7 : iSlow6)));
+				fZec6[i] = ((iZec5[i] >= 4) ? ((iZec5[i] >= 6) ? ((iZec5[i] >= 7) ? fSlow13 : fSlow12) : ((iZec5[i] >= 5) ? fSlow11 : fSlow10)) : ((iZec5[i] >= 2) ? ((iZec5[i] >= 3) ? fSlow9 : fSlow8) : ((iZec5[i] >= 1) ? fSlow7 : fSlow6)));
 			}
 			/* Vectorizable loop 6 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec6[i] = ((iZec5[i] >= 4) ? ((iZec5[i] >= 6) ? ((iZec5[i] >= 7) ? iSlow13 : iSlow12) : ((iZec5[i] >= 5) ? iSlow11 : iSlow10)) : ((iZec5[i] >= 2) ? ((iZec5[i] >= 3) ? iSlow9 : iSlow8) : ((iZec5[i] >= 1) ? iSlow7 : iSlow6)));
+				fZec8[i] = float(iZec3[i]);
 			}
 			/* Vectorizable loop 7 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec8[i] = float(iZec3[i]);
+				iZec10[i] = iZec3[i] + -1;
 			}
 			/* Vectorizable loop 8 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec11[i] = iZec3[i] + 2;
+				iZec12[i] = iZec3[i] + 2;
 			}
 			/* Vectorizable loop 9 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec14[i] = ((iZec13[i] >= 4) ? ((iZec13[i] >= 6) ? ((iZec13[i] >= 7) ? iSlow13 : iSlow12) : ((iZec13[i] >= 5) ? iSlow11 : iSlow10)) : ((iZec13[i] >= 2) ? ((iZec13[i] >= 3) ? iSlow9 : iSlow8) : ((iZec13[i] >= 1) ? iSlow7 : iSlow6)));
+				fZec7[i] = fZec6[i] - fZec4[i];
 			}
 			/* Vectorizable loop 10 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec7[i] = float(iZec6[i] - iZec4[i]);
+				fZec9[i] = fZec2[i] - ((fZec2[i] == fZec8[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec8[i] : fZec8[i] + -1.0f));
 			}
 			/* Vectorizable loop 11 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec9[i] = fZec2[i] - ((fZec2[i] == fZec8[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec8[i] : fZec8[i] + -1.0f));
+				fZec11[i] = ((iZec10[i] >= 4) ? ((iZec10[i] >= 6) ? ((iZec10[i] >= 7) ? fSlow13 : fSlow12) : ((iZec10[i] >= 5) ? fSlow11 : fSlow10)) : ((iZec10[i] >= 2) ? ((iZec10[i] >= 3) ? fSlow9 : fSlow8) : ((iZec10[i] >= 1) ? fSlow7 : fSlow6)));
 			}
 			/* Vectorizable loop 12 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec10[i] = float(iZec4[i]);
+				fZec13[i] = ((iZec12[i] >= 4) ? ((iZec12[i] >= 6) ? ((iZec12[i] >= 7) ? fSlow13 : fSlow12) : ((iZec12[i] >= 5) ? fSlow11 : fSlow10)) : ((iZec12[i] >= 2) ? ((iZec12[i] >= 3) ? fSlow9 : fSlow8) : ((iZec12[i] >= 1) ? fSlow7 : fSlow6)));
 			}
 			/* Vectorizable loop 13 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec12[i] = float(((iZec11[i] >= 4) ? ((iZec11[i] >= 6) ? ((iZec11[i] >= 7) ? iSlow13 : iSlow12) : ((iZec11[i] >= 5) ? iSlow11 : iSlow10)) : ((iZec11[i] >= 2) ? ((iZec11[i] >= 3) ? iSlow9 : iSlow8) : ((iZec11[i] >= 1) ? iSlow7 : iSlow6))));
+				fZec14[i] = ((iSlow3) ? ((iSlow14) ? fSlow15 : fZec4[i] + 0.5f * fZec9[i] * (fZec6[i] + fZec9[i] * (2.0f * fZec11[i] + 4.0f * fZec6[i] + fZec9[i] * (fZec13[i] + 3.0f * (fZec4[i] - fZec6[i]) - fZec11[i]) - (5.0f * fZec4[i] + fZec13[i])) - fZec11[i])) : ((iSlow4) ? fZec4[i] + 0.5f * fZec7[i] * (1.0f - std::cos(3.1415927f * fZec9[i])) : fZec4[i] + fZec9[i] * fZec7[i]));
 			}
 			/* Vectorizable loop 14 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec15[i] = float(iZec14[i]);
-			}
-			/* Vectorizable loop 15 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec16[i] = ((iSlow3) ? ((iSlow14) ? fSlow15 : fZec10[i] + 0.5f * fZec9[i] * (float(iZec6[i] - iZec14[i]) + fZec9[i] * (2.0f * fZec15[i] + 4.0f * float(iZec6[i]) + fZec9[i] * (fZec12[i] + 3.0f * float(iZec4[i] - iZec6[i]) - fZec15[i]) - (5.0f * fZec10[i] + fZec12[i])))) : ((iSlow4) ? fZec10[i] + 0.5f * fZec7[i] * (1.0f - std::cos(3.1415927f * fZec9[i])) : fZec10[i] + fZec9[i] * fZec7[i]));
-			}
-			/* Vectorizable loop 16 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j0 = 0; j0 < 4; j0 = j0 + 1) {
@@ -1055,19 +1029,19 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j1 = 0; j1 < 4; j1 = j1 + 1) {
 				fYec0_perm[j1] = fYec0_tmp[vsize + j1];
 			}
+			/* Vectorizable loop 15 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				iZec15[i] = fZec14[i] > 0.0f;
+			}
+			/* Vectorizable loop 16 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec16[i] = fConst9 * std::pow(1e+01f, 0.05f * std::fabs(fZec14[i]));
+			}
 			/* Vectorizable loop 17 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				iZec17[i] = fZec16[i] > 0.0f;
-			}
-			/* Vectorizable loop 18 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec18[i] = fConst9 * std::pow(1e+01f, 0.05f * std::fabs(fZec16[i]));
-			}
-			/* Vectorizable loop 19 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j22 = 0; j22 < 4; j22 = j22 + 1) {
@@ -1083,37 +1057,37 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j23 = 0; j23 < 4; j23 = j23 + 1) {
 				fYec1_perm[j23] = fYec1_tmp[vsize + j23];
 			}
-			/* Vectorizable loop 20 */
+			/* Vectorizable loop 18 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				fZec0[i] = float(input0[i]) + fYec0[i - 1];
 			}
-			/* Vectorizable loop 21 */
+			/* Vectorizable loop 19 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				fZec1[i] = float(input0[i]) - fYec0[i - 1];
 			}
+			/* Vectorizable loop 20 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec17[i] = ((iZec15[i]) ? fConst9 : fZec16[i]);
+			}
+			/* Vectorizable loop 21 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec25[i] = float(input1[i]) + fYec1[i - 1];
+			}
 			/* Vectorizable loop 22 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec19[i] = ((iZec17[i]) ? fConst9 : fZec18[i]);
+				fZec26[i] = float(input1[i]) - fYec1[i - 1];
 			}
-			/* Vectorizable loop 23 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec27[i] = float(input1[i]) + fYec1[i - 1];
-			}
-			/* Vectorizable loop 24 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec28[i] = float(input1[i]) - fYec1[i - 1];
-			}
-			/* Recursive loop 25 */
+			/* Recursive loop 23 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j2 = 0; j2 < 4; j2 = j2 + 1) {
@@ -1128,7 +1102,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j3 = 0; j3 < 4; j3 = j3 + 1) {
 				fRec1_perm[j3] = fRec1_tmp[vsize + j3];
 			}
-			/* Recursive loop 26 */
+			/* Recursive loop 24 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j8 = 0; j8 < 4; j8 = j8 + 1) {
@@ -1143,19 +1117,19 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j9 = 0; j9 < 4; j9 = j9 + 1) {
 				fRec4_perm[j9] = fRec4_tmp[vsize + j9];
 			}
-			/* Vectorizable loop 27 */
+			/* Vectorizable loop 25 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec20[i] = fConst11 * (fConst11 + fZec19[i]) + 1.0f;
+				fZec18[i] = fConst11 * (fConst11 + fZec17[i]) + 1.0f;
 			}
-			/* Vectorizable loop 28 */
+			/* Vectorizable loop 26 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec22[i] = fConst11 * (fConst11 - fZec19[i]) + 1.0f;
+				fZec20[i] = fConst11 * (fConst11 - fZec17[i]) + 1.0f;
 			}
-			/* Recursive loop 29 */
+			/* Recursive loop 27 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j14 = 0; j14 < 4; j14 = j14 + 1) {
@@ -1170,7 +1144,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j15 = 0; j15 < 4; j15 = j15 + 1) {
 				fRec7_perm[j15] = fRec7_tmp[vsize + j15];
 			}
-			/* Recursive loop 30 */
+			/* Recursive loop 28 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j18 = 0; j18 < 4; j18 = j18 + 1) {
@@ -1185,13 +1159,13 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j19 = 0; j19 < 4; j19 = j19 + 1) {
 				fRec9_perm[j19] = fRec9_tmp[vsize + j19];
 			}
-			/* Vectorizable loop 31 */
+			/* Vectorizable loop 29 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec24[i] = ((iZec17[i]) ? fZec18[i] : fConst9);
+				fZec22[i] = ((iZec15[i]) ? fZec16[i] : fConst9);
 			}
-			/* Recursive loop 32 */
+			/* Recursive loop 30 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j24 = 0; j24 < 4; j24 = j24 + 1) {
@@ -1199,14 +1173,14 @@ class EQFAUST final : public EQ_PDJE {
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec11[i] = -(fConst4 * (fConst3 * fRec11[i - 1] - fZec27[i]));
+				fRec11[i] = -(fConst4 * (fConst3 * fRec11[i - 1] - fZec25[i]));
 			}
 			/* Post code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j25 = 0; j25 < 4; j25 = j25 + 1) {
 				fRec11_perm[j25] = fRec11_tmp[vsize + j25];
 			}
-			/* Recursive loop 33 */
+			/* Recursive loop 31 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j28 = 0; j28 < 4; j28 = j28 + 1) {
@@ -1214,14 +1188,14 @@ class EQFAUST final : public EQ_PDJE {
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec13[i] = -(fConst4 * (fConst3 * fRec13[i - 1] - fConst2 * fZec28[i]));
+				fRec13[i] = -(fConst4 * (fConst3 * fRec13[i - 1] - fConst2 * fZec26[i]));
 			}
 			/* Post code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j29 = 0; j29 < 4; j29 = j29 + 1) {
 				fRec13_perm[j29] = fRec13_tmp[vsize + j29];
 			}
-			/* Recursive loop 34 */
+			/* Recursive loop 32 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j34 = 0; j34 < 4; j34 = j34 + 1) {
@@ -1229,14 +1203,14 @@ class EQFAUST final : public EQ_PDJE {
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec16[i] = -(fConst16 * (fConst15 * fRec16[i - 1] - fZec27[i]));
+				fRec16[i] = -(fConst16 * (fConst15 * fRec16[i - 1] - fZec25[i]));
 			}
 			/* Post code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j35 = 0; j35 < 4; j35 = j35 + 1) {
 				fRec16_perm[j35] = fRec16_tmp[vsize + j35];
 			}
-			/* Recursive loop 35 */
+			/* Recursive loop 33 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j38 = 0; j38 < 4; j38 = j38 + 1) {
@@ -1244,14 +1218,14 @@ class EQFAUST final : public EQ_PDJE {
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec18[i] = -(fConst16 * (fConst15 * fRec18[i - 1] - fConst14 * fZec28[i]));
+				fRec18[i] = -(fConst16 * (fConst15 * fRec18[i - 1] - fConst14 * fZec26[i]));
 			}
 			/* Post code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j39 = 0; j39 < 4; j39 = j39 + 1) {
 				fRec18_perm[j39] = fRec18_tmp[vsize + j39];
 			}
-			/* Recursive loop 36 */
+			/* Recursive loop 34 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j4 = 0; j4 < 4; j4 = j4 + 1) {
@@ -1266,7 +1240,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j5 = 0; j5 < 4; j5 = j5 + 1) {
 				fRec0_perm[j5] = fRec0_tmp[vsize + j5];
 			}
-			/* Recursive loop 37 */
+			/* Recursive loop 35 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j10 = 0; j10 < 4; j10 = j10 + 1) {
@@ -1281,7 +1255,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j11 = 0; j11 < 4; j11 = j11 + 1) {
 				fRec3_perm[j11] = fRec3_tmp[vsize + j11];
 			}
-			/* Recursive loop 38 */
+			/* Recursive loop 36 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j12 = 0; j12 < 4; j12 = j12 + 1) {
@@ -1289,15 +1263,15 @@ class EQFAUST final : public EQ_PDJE {
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec21[i] = fConst12 * fRec5[i - 1];
-				fRec5[i] = float(input0[i]) - (fRec5[i - 2] * fZec22[i] + fZec21[i]) / fZec20[i];
+				fZec19[i] = fConst12 * fRec5[i - 1];
+				fRec5[i] = float(input0[i]) - (fRec5[i - 2] * fZec20[i] + fZec19[i]) / fZec18[i];
 			}
 			/* Post code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j13 = 0; j13 < 4; j13 = j13 + 1) {
 				fRec5_perm[j13] = fRec5_tmp[vsize + j13];
 			}
-			/* Recursive loop 39 */
+			/* Recursive loop 37 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j16 = 0; j16 < 4; j16 = j16 + 1) {
@@ -1312,7 +1286,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j17 = 0; j17 < 4; j17 = j17 + 1) {
 				fRec6_perm[j17] = fRec6_tmp[vsize + j17];
 			}
-			/* Recursive loop 40 */
+			/* Recursive loop 38 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j20 = 0; j20 < 4; j20 = j20 + 1) {
@@ -1327,25 +1301,25 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j21 = 0; j21 < 4; j21 = j21 + 1) {
 				fRec8_perm[j21] = fRec8_tmp[vsize + j21];
 			}
+			/* Vectorizable loop 39 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec21[i] = std::pow(1e+01f, 0.05f * fZec14[i]);
+			}
+			/* Vectorizable loop 40 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec23[i] = fConst11 * (fConst11 - fZec22[i]) + 1.0f;
+			}
 			/* Vectorizable loop 41 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec23[i] = std::pow(1e+01f, 0.05f * fZec16[i]);
+				fZec24[i] = fConst11 * (fConst11 + fZec22[i]) + 1.0f;
 			}
-			/* Vectorizable loop 42 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec25[i] = fConst11 * (fConst11 - fZec24[i]) + 1.0f;
-			}
-			/* Vectorizable loop 43 */
-			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec26[i] = fConst11 * (fConst11 + fZec24[i]) + 1.0f;
-			}
-			/* Recursive loop 44 */
+			/* Recursive loop 42 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j26 = 0; j26 < 4; j26 = j26 + 1) {
@@ -1360,7 +1334,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j27 = 0; j27 < 4; j27 = j27 + 1) {
 				fRec10_perm[j27] = fRec10_tmp[vsize + j27];
 			}
-			/* Recursive loop 45 */
+			/* Recursive loop 43 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j30 = 0; j30 < 4; j30 = j30 + 1) {
@@ -1375,7 +1349,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j31 = 0; j31 < 4; j31 = j31 + 1) {
 				fRec12_perm[j31] = fRec12_tmp[vsize + j31];
 			}
-			/* Recursive loop 46 */
+			/* Recursive loop 44 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j32 = 0; j32 < 4; j32 = j32 + 1) {
@@ -1383,15 +1357,15 @@ class EQFAUST final : public EQ_PDJE {
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec29[i] = fConst12 * fRec14[i - 1];
-				fRec14[i] = float(input1[i]) - (fZec22[i] * fRec14[i - 2] + fZec29[i]) / fZec20[i];
+				fZec27[i] = fConst12 * fRec14[i - 1];
+				fRec14[i] = float(input1[i]) - (fZec20[i] * fRec14[i - 2] + fZec27[i]) / fZec18[i];
 			}
 			/* Post code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j33 = 0; j33 < 4; j33 = j33 + 1) {
 				fRec14_perm[j33] = fRec14_tmp[vsize + j33];
 			}
-			/* Recursive loop 47 */
+			/* Recursive loop 45 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j36 = 0; j36 < 4; j36 = j36 + 1) {
@@ -1406,7 +1380,7 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j37 = 0; j37 < 4; j37 = j37 + 1) {
 				fRec15_perm[j37] = fRec15_tmp[vsize + j37];
 			}
-			/* Recursive loop 48 */
+			/* Recursive loop 46 */
 			/* Pre code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j40 = 0; j40 < 4; j40 = j40 + 1) {
@@ -1421,17 +1395,17 @@ class EQFAUST final : public EQ_PDJE {
 			for (int j41 = 0; j41 < 4; j41 = j41 + 1) {
 				fRec17_perm[j41] = fRec17_tmp[vsize + j41];
 			}
-			/* Vectorizable loop 49 */
+			/* Vectorizable loop 47 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec6[i - 2] + fRec6[i] + 2.0f * fRec6[i - 1] + fConst17 * fZec23[i] * (fRec8[i] + fRec8[i - 2] - 2.0f * fRec8[i - 1])) : ((iSlow18) ? (fZec21[i] + fRec5[i] * fZec26[i] + fRec5[i - 2] * fZec25[i]) / fZec20[i] : fConst8 * ((fRec0[i - 2] + fRec0[i] + 2.0f * fRec0[i - 1]) * fZec23[i] + fConst5 * (fRec3[i] + fRec3[i - 2] - 2.0f * fRec3[i - 1])))));
+				output0[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec6[i - 2] + fRec6[i] + 2.0f * fRec6[i - 1] + fConst17 * fZec21[i] * (fRec8[i] + fRec8[i - 2] - 2.0f * fRec8[i - 1])) : ((iSlow18) ? (fZec19[i] + fRec5[i] * fZec24[i] + fRec5[i - 2] * fZec23[i]) / fZec18[i] : fConst8 * ((fRec0[i - 2] + fRec0[i] + 2.0f * fRec0[i - 1]) * fZec21[i] + fConst5 * (fRec3[i] + fRec3[i - 2] - 2.0f * fRec3[i - 1])))));
 			}
-			/* Vectorizable loop 50 */
+			/* Vectorizable loop 48 */
 			/* Compute code */
 			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec15[i - 2] + fRec15[i] + 2.0f * fRec15[i - 1] + fConst17 * fZec23[i] * (fRec17[i] + fRec17[i - 2] - 2.0f * fRec17[i - 1])) : ((iSlow18) ? (fZec29[i] + fRec14[i] * fZec26[i] + fZec25[i] * fRec14[i - 2]) / fZec20[i] : fConst8 * (fZec23[i] * (fRec10[i - 2] + fRec10[i] + 2.0f * fRec10[i - 1]) + fConst5 * (fRec12[i] + fRec12[i - 2] - 2.0f * fRec12[i - 1])))));
+				output1[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec15[i - 2] + fRec15[i] + 2.0f * fRec15[i - 1] + fConst17 * fZec21[i] * (fRec17[i] + fRec17[i - 2] - 2.0f * fRec17[i - 1])) : ((iSlow18) ? (fZec27[i] + fRec14[i] * fZec24[i] + fZec23[i] * fRec14[i - 2]) / fZec18[i] : fConst8 * (fZec21[i] * (fRec10[i - 2] + fRec10[i] + 2.0f * fRec10[i - 1]) + fConst5 * (fRec12[i] + fRec12[i - 2] - 2.0f * fRec12[i - 1])))));
 			}
 		}
 	}
