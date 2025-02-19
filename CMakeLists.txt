@@ -71,6 +71,11 @@ elseif(UNIX AND NOT APPLE)
   link_libraries(
     ${LIBEVDEV_LIBRARIES}
   )
+
+  set(input_src
+    ${CMAKE_SOURCE_DIR}/include/input/linux/LINUX_I.cpp
+  )
+
 elseif(APPLE)
   include_directories(
     ${CMAKE_SOURCE_DIR}/include/input/macos
@@ -205,8 +210,11 @@ add_executable(testHighway include/tests/highway_Test.cpp)
 if(WIN32)
 
 elseif(UNIX AND NOT APPLE)
+  add_executable(EvdevAccModule include/input/linux/LINUX_SUDO_GETTER.cpp)
+
   add_executable(testLinuxInput_waiter include/tests/INPUT_TESTS/linux_I_WAITER.cpp)
   add_executable(testLinuxInput_waker include/tests/INPUT_TESTS/linux_I_WAKER.cpp)
+  add_executable(testLinuxInput include/tests/INPUT_TESTS/evdevtest.cpp ${input_src})
   
 elseif(APPLE)
   
