@@ -5,6 +5,9 @@
 
 #include <sqlite3.h>
 
+#ifdef __WINDOWS__
+    using u_int8_t = uint8_t;
+#endif
 
 using BIN = std::vector<u_int8_t>;
 

@@ -5,4 +5,5 @@ bool
 NoteTranslator::Read(const CapReader<NoteBinaryCapnpData>& binary)
 {
     //todo-implement
+    return false;
 }

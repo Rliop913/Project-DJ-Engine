@@ -1,8 +1,19 @@
 set(cmake_cxx_standard 20)
 set(cmake_cxx_flags -std=c++20)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+if(WIN32)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -latomic")
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
+set(cmake_c_compiler "cl")
+set(cmake_cxx_compiler "cl")
+else()
 set(cmake_c_compiler clang)
 set(cmake_cxx_compiler clang++)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+endif()
+
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g -O1 -fno-omit-frame-pointer")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address -g -O1 -fno-omit-frame-pointer")
@@ -22,11 +33,7 @@ find_package(SWIG REQUIRED)
 include(UseSWIG)
 
 
-FetchContent_Declare(
-  capnproto
-  GIT_REPOSITORY https://github.com/capnproto/capnproto.git
-  GIT_TAG v1.1.0
-)
+
 
 FetchContent_Declare(
   miniaudio
@@ -40,29 +47,48 @@ FetchContent_Declare(
   GIT_TAG release
 )
 
+
+if(WIN32)
+  # find_package(CapnProto REQUIRED)
+  find_package(hwy REQUIRED)
+  add_compile_definitions(__WINDOWS__)
+  # link_libraries(vcruntime)
+else()
 FetchContent_Declare(
   highway
   GIT_REPOSITORY https://github.com/google/highway.git
   GIT_TAG 1.2.0
 )
 
-FetchContent_MakeAvailable(capnproto)
-FetchContent_MakeAvailable(miniaudio)
-FetchContent_MakeAvailable(sqlite)
-FetchContent_MakeAvailable(highway)
 
-link_libraries(sqlite3)
+FetchContent_MakeAvailable(highway)
+endif()
+
+FetchContent_Declare(
+  CapnProto
+  GIT_REPOSITORY https://github.com/capnproto/capnproto.git
+  GIT_TAG v1.1.0
+)
+FetchContent_MakeAvailable(CapnProto)
+
+find_package(SQLite3 REQUIRED)
+
+FetchContent_MakeAvailable(miniaudio)
+# FetchContent_MakeAvailable(sqlite)
+
+link_libraries(${SQLite3_LIBRARIES})
 
 if(WIN32)
-
+  # message(${CAPNP_INCLUDE_DIRS})
   include_directories(
     ${CMAKE_SOURCE_DIR}/include/input/windows
+    ${CAPNP_INCLUDE_DIRS}
   )
+  # message(${sqlite_INCLUDE_DIRS})
+  # link_libraries(${sqlite_LIBRARIES})
 elseif(UNIX AND NOT APPLE)
   find_package(PkgConfig REQUIRED)
   pkg_check_modules(LIBEVDEV REQUIRED libevdev)
-
-  
 
   include_directories(
     ${CMAKE_SOURCE_DIR}/include/input/linux
@@ -130,7 +156,7 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/third_party/Capnp
   ${CMAKE_SOURCE_DIR}/include/ERR
 	${miniaudio_SOURCE_DIR}/extras/miniaudio_split
-  ${sqlite_INCLUDE_DIR}
+  ${SQLite3_INCLUDE_DIR}
   ${highway_INCLUDE_DIR}
 
 	${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_include
@@ -143,7 +169,6 @@ include_directories(
   
 
 )
-
 
 set(dbSource
 ${CMAKE_SOURCE_DIR}/include/db/musicDB.cpp
@@ -208,21 +233,23 @@ add_executable(testHighway include/tests/highway_Test.cpp)
 
 
 if(WIN32)
-
+  target_link_libraries(testHighway PRIVATE hwy::hwy CapnProto::kj CapnProto::capnp CapnProto::kj-gzip)
+  target_link_libraries(testaudio PRIVATE CapnProto::kj CapnProto::capnp CapnProto::kj-gzip)
+  target_link_libraries(testdb PRIVATE CapnProto::kj CapnProto::capnp CapnProto::kj-gzip)
+  target_link_libraries(testCapnp PRIVATE CapnProto::kj CapnProto::capnp CapnProto::kj-gzip)
 elseif(UNIX AND NOT APPLE)
   add_executable(EvdevAccModule include/input/linux/LINUX_SUDO_GETTER.cpp)
 
   add_executable(testLinuxInput_waiter include/tests/INPUT_TESTS/linux_I_WAITER.cpp)
   add_executable(testLinuxInput_waker include/tests/INPUT_TESTS/linux_I_WAKER.cpp)
   add_executable(testLinuxInput include/tests/INPUT_TESTS/evdevtest.cpp ${input_src})
-  
 elseif(APPLE)
   
 endif()
 
 
 
-# target_link_libraries(testHighway PRIVATE hwy)
+target_link_libraries(testHighway PRIVATE hwy::hwy)
 
 swig_add_library(pdje_csharp
   TYPE STATIC
@@ -246,13 +273,13 @@ swig_add_library(pdje_go
   SOURCES PDJE_swig.i ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource}
 )
 
-target_link_libraries(testaudio PRIVATE capnp capnp-rpc kj)
-target_link_libraries(testdb PRIVATE capnp capnp-rpc kj)
-target_link_libraries(testCapnp PRIVATE capnp capnp-rpc kj)
+# target_link_libraries(testaudio PRIVATE capnp capnp-rpc kj)
+# target_link_libraries(testdb PRIVATE capnp capnp-rpc kj)
+# target_link_libraries(testCapnp PRIVATE capnp capnp-rpc kj)
 
-target_link_libraries(${SWIG_MODULE_pdje_csharp_REAL_NAME} PRIVATE capnp capnp-rpc kj)
-target_link_libraries(${SWIG_MODULE_pdje_python_REAL_NAME} PRIVATE capnp capnp-rpc kj)
-target_link_libraries(${SWIG_MODULE_pdje_go_REAL_NAME} PRIVATE capnp capnp-rpc kj)
+# target_link_libraries(${SWIG_MODULE_pdje_csharp_REAL_NAME} PRIVATE capnp capnp-rpc kj)
+# target_link_libraries(${SWIG_MODULE_pdje_python_REAL_NAME} PRIVATE capnp capnp-rpc kj)
+# target_link_libraries(${SWIG_MODULE_pdje_go_REAL_NAME} PRIVATE capnp capnp-rpc kj)
 
 target_link_libraries(${SWIG_MODULE_pdje_python_REAL_NAME} PRIVATE Python::Python)
 

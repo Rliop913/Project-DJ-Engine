@@ -6,7 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-// source: /home/rrop/rropdb/box_inside/pdje/Project_DJ_Engine/PDJE_swig.i
+// source: G:\Project_DJ_Engine\PDJE_swig.i
 
 package pdje_POLYGLOT
 

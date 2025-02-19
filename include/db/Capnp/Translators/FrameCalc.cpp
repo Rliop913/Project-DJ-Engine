@@ -113,7 +113,14 @@ const
         throw "empty bpm fragments. Runtime Err";
     }
     --bpmIt;
+    #ifdef __WINDOWS__
+    return *bpmIt;
+    #endif
+    //todo - check these codes and watch diffs
+    #ifndef __WINDOWS__
     return *bpmIt.base();
+    #endif
+    // return *bpmIt.base();
 }
 
 bool
@@ -138,7 +145,13 @@ const
         throw "empty bpm fragments. Runtime Err";
     }
     --bpmIt;
+    #ifdef __WINDOWS__
+    return *bpmIt;
+    #endif
+    //todo - check these codes and watch diffs
+    #ifndef __WINDOWS__
     return *bpmIt.base();
+    #endif
 }
 
 const std::vector<const BpmFragment*> 
@@ -177,7 +190,14 @@ BpmStruct::getAffectedList(
     }
     std::vector<const BpmFragment*> BRange;
     for(auto i = StartIT; i != std::next(EndIT); ++i){
+        #ifdef __WINDOWS__
+        BRange.push_back(&(*i));
+        #endif
+        //Also here
+        #ifndef __WINDOWS__
+        
         BRange.push_back(i.base());
+        #endif
     }
     return BRange;
 }
