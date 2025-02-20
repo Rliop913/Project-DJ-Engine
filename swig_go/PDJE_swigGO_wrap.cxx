@@ -6,7 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-// source: G:\Project_DJ_Engine\PDJE_swig.i
+// source: /home/rrop/rropdb/box_inside/pdje/Project_DJ_Engine/PDJE_swig.i
 
 
 
