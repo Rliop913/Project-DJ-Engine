@@ -59,7 +59,7 @@ void fillDatas(capnp::List<MBData, capnp::Kind::STRUCT>::Builder& ret)
     fill(ret, 3, TypeEnum::FILTER, DetailEnum::HIGH, 5, 37,
     "1", "5000, 10000, 0, 1000, 5000, 7000, 10000", "");
 
-    fill(ret, 4, TypeEnum::BPM_CONTROL, DetailEnum::TIME_STRETCH, 44, 80, 
+    fill(ret, 4, TypeEnum::BPM_CONTROL, DetailEnum::TIME_STRETCH, 34, 84, 
     "88.0");
 
     fill(ret, 5, TypeEnum::CONTROL, DetailEnum::PAUSE, 81, 82, "");
@@ -106,26 +106,26 @@ main()
         unsigned int one;
         unsigned int two;
     };
-    std::vector<vectest> arrs(11);
-    for(int i =0; i < 11; ++i){
-        arrs[i].one = 20 - i * 2;
-    }
-    std::sort(arrs.begin(), arrs.end(), [](vectest first, vectest second){
-        return first.one < second.one;
-    });
-    for( auto i : arrs){
-        std::cout << i.one << std::endl;
-    }
-    for(int i=0; i<30; ++i){
+    // std::vector<vectest> arrs(11);
+    // for(int i =0; i < 11; ++i){
+    //     arrs[i].one = 20 - i * 2;
+    // }
+    // std::sort(arrs.begin(), arrs.end(), [](vectest first, vectest second){
+    //     return first.one < second.one;
+    // });
+    // for( auto i : arrs){
+    //     std::cout << i.one << std::endl;
+    // }
+    // for(int i=0; i<30; ++i){
 
-        vectest tet;
-        tet.one = i;
-        auto it =std::upper_bound(arrs.begin(), arrs.end(),tet, [](vectest first, vectest second){
-            return first.one < second.one;
-        });
-        --it;
-        std::cout << i << " ID: " << it->one << std::endl;
-    }
+    //     vectest tet;
+    //     tet.one = i;
+    //     auto it =std::upper_bound(arrs.begin(), arrs.end(),tet, [](vectest first, vectest second){
+    //         return first.one < second.one;
+    //     });
+    //     --it;
+    //     std::cout << i << " ID: " << it->one << std::endl;
+    // }
     
     MixTranslator mt = MixTranslator();
     if(!(mt.Read(rb))){

@@ -1,5 +1,7 @@
 #include "MUSIC_CTR.hpp"
 
+#define ORIGIN_TO_TARGET(TARGET, ORIGIN) (TARGET / ORIGIN)
+
 void
 Ingredients::SORT()
 {
@@ -45,7 +47,7 @@ Ingredients::FillLocal(std::vector<PlayPosition>& Lbpm, const BpmStruct& Local)
         if(now.status == MIXSTATE::PLAY){
             
             auto nextLidx = now.Lidx + 
-                (pos[i+1].Gidx - now.Gidx);
+                (pos[i+1].Gidx - now.Gidx) * ORIGIN_TO_TARGET(now.TargetBPM, now.OriginBPM);
             
             auto betweenBpm = Local.getAffectedList(now.Lidx, nextLidx);
             if(betweenBpm.empty()){
@@ -71,7 +73,7 @@ Ingredients::FillLocal(std::vector<PlayPosition>& Lbpm, const BpmStruct& Local)
         }
     }
 }
-
+#include <iostream>
 std::vector<PlayPosition>::iterator
 Ingredients::GetSameGidx(GLOBAL_POS gidx)
 {
@@ -131,7 +133,7 @@ Ingredients::Ready(const BpmStruct& Global, const BpmStruct& Local)
     for(unsigned int i=1; i<pos.size(); ++i){
         if(pos[i].status == MIXSTATE::BPMCHANGE){
             auto Range = pos[i].Gidx - pos[i - 1].Gidx;
-            pos[i].Lidx = pos[i - 1].Lidx + Range;
+            pos[i].Lidx = pos[i - 1].Lidx + (Range * ORIGIN_TO_TARGET(pos[i - 1].TargetBPM, pos[i - 1].OriginBPM));
             pos[i].status = MIXSTATE::PLAY;
         }
     }

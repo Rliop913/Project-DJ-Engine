@@ -1,0 +1,7 @@
+```mermaid
+flowchart TD
+PDJE_INPUT_INTERFACE --> EVDEV_impl
+EVDEV_impl --> EVDEV_SUDO_GETTER
+```
+
+See: [[PDJE_INPUT_INTERFACE]], [[EVDEV_impl]], [[EVDEV_SUDO_GETTER]]

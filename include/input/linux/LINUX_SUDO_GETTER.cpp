@@ -9,6 +9,7 @@ namespace fs = std::filesystem;
 
 using EV_LIST = std::vector<std::string>;
 using DEV_LIST = std::vector<DeviceData>;
+
 EV_LIST
 EventListGetter()
 {

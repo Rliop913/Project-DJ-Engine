@@ -1,7 +1,7 @@
 Treat input as a minimum delay.
 
 Windows: Raw Input
-Linux: EVDEV
+Linux: [[EVDEV]]
 MAC OS: IO KIT
 
 There's an implementation of each one, and it supports the cross platform.
