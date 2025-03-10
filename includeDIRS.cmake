@@ -13,6 +13,9 @@ include_directories(
   
   ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/INTERPOLATOR
 
+  ${CMAKE_SOURCE_DIR}/include/audioRender/ManualMix
+  ${CMAKE_SOURCE_DIR}/include/audioRender/ManualMix/ManualFausts
+  
   ${CMAKE_SOURCE_DIR}/include/db/Capnp/CapnpBinary
   ${CMAKE_SOURCE_DIR}/include/db/Capnp/Translators
   ${CMAKE_SOURCE_DIR}/include/db/Capnp/Translators/MixTranslator
@@ -27,7 +30,9 @@ include_directories(
 
 	${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_include
 	${CMAKE_SOURCE_DIR}/third_party/Faust/compiled
+  ${CMAKE_SOURCE_DIR}/third_party/Faust/manual_compiled
   
+
   ${CMAKE_SOURCE_DIR}/include/input
   ${CMAKE_SOURCE_DIR}/include/input/linux
   ${CMAKE_SOURCE_DIR}/include/input/macos

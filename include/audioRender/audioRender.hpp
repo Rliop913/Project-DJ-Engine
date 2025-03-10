@@ -1,6 +1,7 @@
 #pragma once
 
 #include "MixMachine.hpp"
+#include "ManualMix.hpp"
 
 class audioRender{
 private:

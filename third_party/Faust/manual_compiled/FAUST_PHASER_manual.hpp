@@ -1,0 +1,701 @@
+/* ------------------------------------------------------------
+name: "PHASER"
+Code generated with Faust 2.75.7 (https://faust.grame.fr)
+Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn PhaserFAUSTMan -scn PhaserMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
+------------------------------------------------------------ */
+
+#ifndef  __PhaserFAUSTMan_H__
+#define  __PhaserFAUSTMan_H__
+
+#ifndef FAUSTFLOAT
+#define FAUSTFLOAT float
+#endif 
+
+#include "phaserMan.hpp"
+#include <algorithm>
+#include <cmath>
+#include <cstdint>
+#include <math.h>
+
+#ifndef FAUSTCLASS 
+#define FAUSTCLASS PhaserFAUSTMan
+#endif
+
+#ifdef __APPLE__ 
+#define exp10f __exp10f
+#define exp10 __exp10
+#endif
+
+#if defined(_WIN32)
+#define RESTRICT __restrict
+#else
+#define RESTRICT __restrict__
+#endif
+
+static float PhaserFAUSTMan_faustpower2_f(float value) {
+	return value * value;
+}
+
+class PhaserFAUSTMan final : public PhaserMan {
+	
+ private:
+	
+	int fSampleRate;
+	float fConst0;
+	float fConst1;
+	float fRec7_perm[4];
+	int iVec0_perm[4];
+	float fRec8_perm[4];
+	float fConst2;
+	float fConst3;
+	float fConst4;
+	float fConst5;
+	float fRec6_perm[4];
+	float fRec5_perm[4];
+	float fRec4_perm[4];
+	float fRec3_perm[4];
+	float fRec2_perm[4];
+	float fRec1_perm[4];
+	float fRec0_perm[4];
+	float fRec15_perm[4];
+	float fRec14_perm[4];
+	float fRec13_perm[4];
+	float fRec12_perm[4];
+	float fRec11_perm[4];
+	float fRec10_perm[4];
+	float fRec9_perm[4];
+	
+ public:
+	PhaserFAUSTMan() {
+	}
+	
+	void metadata(Meta* m) { 
+		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn PhaserFAUSTMan -scn PhaserMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
+		m->declare("filename", "PHASER.dsp");
+		m->declare("filters.lib/fir:author", "Julius O. Smith III");
+		m->declare("filters.lib/fir:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
+		m->declare("filters.lib/fir:license", "MIT-style STK-4.3 license");
+		m->declare("filters.lib/iir:author", "Julius O. Smith III");
+		m->declare("filters.lib/iir:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
+		m->declare("filters.lib/iir:license", "MIT-style STK-4.3 license");
+		m->declare("filters.lib/lowpass0_highpass1", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
+		m->declare("filters.lib/name", "Faust Filters Library");
+		m->declare("filters.lib/nlf2:author", "Julius O. Smith III");
+		m->declare("filters.lib/nlf2:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
+		m->declare("filters.lib/nlf2:license", "MIT-style STK-4.3 license");
+		m->declare("filters.lib/tf2:author", "Julius O. Smith III");
+		m->declare("filters.lib/tf2:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
+		m->declare("filters.lib/tf2:license", "MIT-style STK-4.3 license");
+		m->declare("filters.lib/version", "1.3.0");
+		m->declare("maths.lib/author", "GRAME");
+		m->declare("maths.lib/copyright", "GRAME");
+		m->declare("maths.lib/license", "LGPL with exception");
+		m->declare("maths.lib/name", "Faust Math Library");
+		m->declare("maths.lib/version", "2.8.0");
+		m->declare("name", "PHASER");
+		m->declare("oscillators.lib/name", "Faust Oscillator Library");
+		m->declare("oscillators.lib/version", "1.5.1");
+		m->declare("phaflangers.lib/name", "Faust Phaser and Flanger Library");
+		m->declare("phaflangers.lib/version", "1.1.0");
+		m->declare("platform.lib/name", "Generic Platform Library");
+		m->declare("platform.lib/version", "1.3.0");
+	}
+
+	static constexpr int getStaticNumInputs() {
+		return 2;
+	}
+	static constexpr int getStaticNumOutputs() {
+		return 2;
+	}
+	int getNumInputs() {
+		return 2;
+	}
+	int getNumOutputs() {
+		return 2;
+	}
+	
+	static void classInit(int sample_rate) {}
+	
+	void staticInit(int sample_rate) {
+	}
+	
+	void instanceConstants(int sample_rate) {
+		fSampleRate = sample_rate;
+		fConst0 = std::min<float>(1.92e+05f, std::max<float>(1.0f, float(fSampleRate)));
+		fConst1 = 6.2831855f / fConst0;
+		fConst2 = std::exp(-(14137.167f / fConst0));
+		fConst3 = PhaserFAUSTMan_faustpower2_f(fConst2);
+		fConst4 = 1.0f / fConst0;
+		fConst5 = 2.0f * fConst2;
+	}
+	
+	void instanceResetUserInterface() {
+	}
+	
+	void instanceClear() {
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l0 = 0; l0 < 4; l0 = l0 + 1) {
+			fRec7_perm[l0] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l1 = 0; l1 < 4; l1 = l1 + 1) {
+			iVec0_perm[l1] = 0;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l2 = 0; l2 < 4; l2 = l2 + 1) {
+			fRec8_perm[l2] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l3 = 0; l3 < 4; l3 = l3 + 1) {
+			fRec6_perm[l3] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l4 = 0; l4 < 4; l4 = l4 + 1) {
+			fRec5_perm[l4] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l5 = 0; l5 < 4; l5 = l5 + 1) {
+			fRec4_perm[l5] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l6 = 0; l6 < 4; l6 = l6 + 1) {
+			fRec3_perm[l6] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l7 = 0; l7 < 4; l7 = l7 + 1) {
+			fRec2_perm[l7] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l8 = 0; l8 < 4; l8 = l8 + 1) {
+			fRec1_perm[l8] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l9 = 0; l9 < 4; l9 = l9 + 1) {
+			fRec0_perm[l9] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l10 = 0; l10 < 4; l10 = l10 + 1) {
+			fRec15_perm[l10] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l11 = 0; l11 < 4; l11 = l11 + 1) {
+			fRec14_perm[l11] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l12 = 0; l12 < 4; l12 = l12 + 1) {
+			fRec13_perm[l12] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l13 = 0; l13 < 4; l13 = l13 + 1) {
+			fRec12_perm[l13] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l14 = 0; l14 < 4; l14 = l14 + 1) {
+			fRec11_perm[l14] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l15 = 0; l15 < 4; l15 = l15 + 1) {
+			fRec10_perm[l15] = 0.0f;
+		}
+		#pragma clang loop vectorize(enable) interleave(enable)
+		for (int l16 = 0; l16 < 4; l16 = l16 + 1) {
+			fRec9_perm[l16] = 0.0f;
+		}
+	}
+	
+	void init(int sample_rate) {
+		instanceInit(sample_rate);
+	}
+	
+	void instanceInit(int sample_rate) {
+		staticInit(sample_rate);
+		instanceConstants(sample_rate);
+		instanceResetUserInterface();
+		instanceClear();
+	}
+	
+	PhaserFAUSTMan* clone() {
+		return new PhaserFAUSTMan();
+	}
+	
+	int getSampleRate() {
+		return fSampleRate;
+	}
+	
+	void buildUserInterface(UI* ui_interface) {
+		ui_interface->openVerticalBox("PHASER");
+		ui_interface->closeBox();
+	}
+	
+	void compute(int count, FAUSTFLOAT** RESTRICT inputs, FAUSTFLOAT** RESTRICT outputs) {
+		FAUSTFLOAT* input0_ptr = inputs[0];
+		FAUSTFLOAT* input1_ptr = inputs[1];
+		FAUSTFLOAT* output0_ptr = outputs[0];
+		FAUSTFLOAT* output1_ptr = outputs[1];
+		float fSlow0 = fConst1 * bps;
+		float fSlow1 = std::cos(fSlow0);
+		float fSlow2 = std::sin(fSlow0);
+		float fRec7_tmp[68];
+		float* fRec7 = &fRec7_tmp[4];
+		int iVec0_tmp[68];
+		int* iVec0 = &iVec0_tmp[4];
+		float fRec8_tmp[68];
+		float* fRec8 = &fRec8_tmp[4];
+		float fZec0[64];
+		float fRec6_tmp[68];
+		float* fRec6 = &fRec6_tmp[4];
+		float fRec5_tmp[68];
+		float* fRec5 = &fRec5_tmp[4];
+		float fRec4_tmp[68];
+		float* fRec4 = &fRec4_tmp[4];
+		float fRec3_tmp[68];
+		float* fRec3 = &fRec3_tmp[4];
+		float fRec2_tmp[68];
+		float* fRec2 = &fRec2_tmp[4];
+		float fRec1_tmp[68];
+		float* fRec1 = &fRec1_tmp[4];
+		float fRec0_tmp[68];
+		float* fRec0 = &fRec0_tmp[4];
+		float fSlow3 = 0.5f * std::min<float>(1.0f, std::max<float>(0.0f, PhaserDryWet));
+		float fSlow4 = 1.0f - fSlow3;
+		float fZec1[64];
+		float fRec15_tmp[68];
+		float* fRec15 = &fRec15_tmp[4];
+		float fRec14_tmp[68];
+		float* fRec14 = &fRec14_tmp[4];
+		float fRec13_tmp[68];
+		float* fRec13 = &fRec13_tmp[4];
+		float fRec12_tmp[68];
+		float* fRec12 = &fRec12_tmp[4];
+		float fRec11_tmp[68];
+		float* fRec11 = &fRec11_tmp[4];
+		float fRec10_tmp[68];
+		float* fRec10 = &fRec10_tmp[4];
+		float fRec9_tmp[68];
+		float* fRec9 = &fRec9_tmp[4];
+		int vindex = 0;
+		/* Main loop */
+		for (vindex = 0; vindex <= (count - 64); vindex = vindex + 64) {
+			FAUSTFLOAT* input0 = &input0_ptr[vindex];
+			FAUSTFLOAT* input1 = &input1_ptr[vindex];
+			FAUSTFLOAT* output0 = &output0_ptr[vindex];
+			FAUSTFLOAT* output1 = &output1_ptr[vindex];
+			int vsize = 64;
+			/* Vectorizable loop 0 */
+			/* Pre code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j2 = 0; j2 < 4; j2 = j2 + 1) {
+				iVec0_tmp[j2] = iVec0_perm[j2];
+			}
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				iVec0[i] = 1;
+			}
+			/* Post code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j3 = 0; j3 < 4; j3 = j3 + 1) {
+				iVec0_perm[j3] = iVec0_tmp[vsize + j3];
+			}
+			/* Recursive loop 1 */
+			/* Pre code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j0 = 0; j0 < 4; j0 = j0 + 1) {
+				fRec7_tmp[j0] = fRec7_perm[j0];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j4 = 0; j4 < 4; j4 = j4 + 1) {
+				fRec8_tmp[j4] = fRec8_perm[j4];
+			}
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fRec7[i] = fSlow2 * fRec8[i - 1] + fSlow1 * fRec7[i - 1];
+				fRec8[i] = float(1 - iVec0[i - 1]) + fSlow1 * fRec8[i - 1] - fSlow2 * fRec7[i - 1];
+			}
+			/* Post code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j1 = 0; j1 < 4; j1 = j1 + 1) {
+				fRec7_perm[j1] = fRec7_tmp[vsize + j1];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j5 = 0; j5 < 4; j5 = j5 + 1) {
+				fRec8_perm[j5] = fRec8_tmp[vsize + j5];
+			}
+			/* Vectorizable loop 2 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec0[i] = std::cos(fConst4 * (14137.167f * (1.0f - fRec7[i]) + 3141.5928f));
+			}
+			/* Vectorizable loop 3 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec1[i] = std::cos(fConst4 * (14137.167f * (1.0f - fRec8[i]) + 3141.5928f));
+			}
+			/* Recursive loop 4 */
+			/* Pre code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j6 = 0; j6 < 4; j6 = j6 + 1) {
+				fRec6_tmp[j6] = fRec6_perm[j6];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j8 = 0; j8 < 4; j8 = j8 + 1) {
+				fRec5_tmp[j8] = fRec5_perm[j8];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j10 = 0; j10 < 4; j10 = j10 + 1) {
+				fRec4_tmp[j10] = fRec4_perm[j10];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j12 = 0; j12 < 4; j12 = j12 + 1) {
+				fRec3_tmp[j12] = fRec3_perm[j12];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j14 = 0; j14 < 4; j14 = j14 + 1) {
+				fRec2_tmp[j14] = fRec2_perm[j14];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j16 = 0; j16 < 4; j16 = j16 + 1) {
+				fRec1_tmp[j16] = fRec1_perm[j16];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j18 = 0; j18 < 4; j18 = j18 + 1) {
+				fRec0_tmp[j18] = fRec0_perm[j18];
+			}
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fRec6[i] = float(input0[i]) + 0.3f * fRec0[i - 1] + fConst5 * fRec6[i - 1] * fZec0[i] - fConst3 * fRec6[i - 2];
+				fRec5[i] = fRec6[i - 2] + fConst3 * (fRec6[i] - fRec5[i - 2]) - fConst5 * fZec0[i] * (fRec6[i - 1] - fRec5[i - 1]);
+				fRec4[i] = fRec5[i - 2] + fConst3 * (fRec5[i] - fRec4[i - 2]) - fConst5 * fZec0[i] * (fRec5[i - 1] - fRec4[i - 1]);
+				fRec3[i] = fRec4[i - 2] + fConst3 * (fRec4[i] - fRec3[i - 2]) - fConst5 * fZec0[i] * (fRec4[i - 1] - fRec3[i - 1]);
+				fRec2[i] = fRec3[i - 2] + fConst3 * (fRec3[i] - fRec2[i - 2]) - fConst5 * fZec0[i] * (fRec3[i - 1] - fRec2[i - 1]);
+				fRec1[i] = fRec2[i - 2] + fConst3 * (fRec2[i] - fRec1[i - 2]) - fConst5 * fZec0[i] * (fRec2[i - 1] - fRec1[i - 1]);
+				fRec0[i] = fRec1[i - 2] + fConst3 * fRec1[i] - fConst5 * fZec0[i] * fRec1[i - 1];
+			}
+			/* Post code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j7 = 0; j7 < 4; j7 = j7 + 1) {
+				fRec6_perm[j7] = fRec6_tmp[vsize + j7];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j9 = 0; j9 < 4; j9 = j9 + 1) {
+				fRec5_perm[j9] = fRec5_tmp[vsize + j9];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j11 = 0; j11 < 4; j11 = j11 + 1) {
+				fRec4_perm[j11] = fRec4_tmp[vsize + j11];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j13 = 0; j13 < 4; j13 = j13 + 1) {
+				fRec3_perm[j13] = fRec3_tmp[vsize + j13];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j15 = 0; j15 < 4; j15 = j15 + 1) {
+				fRec2_perm[j15] = fRec2_tmp[vsize + j15];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j17 = 0; j17 < 4; j17 = j17 + 1) {
+				fRec1_perm[j17] = fRec1_tmp[vsize + j17];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j19 = 0; j19 < 4; j19 = j19 + 1) {
+				fRec0_perm[j19] = fRec0_tmp[vsize + j19];
+			}
+			/* Recursive loop 5 */
+			/* Pre code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j20 = 0; j20 < 4; j20 = j20 + 1) {
+				fRec15_tmp[j20] = fRec15_perm[j20];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j22 = 0; j22 < 4; j22 = j22 + 1) {
+				fRec14_tmp[j22] = fRec14_perm[j22];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j24 = 0; j24 < 4; j24 = j24 + 1) {
+				fRec13_tmp[j24] = fRec13_perm[j24];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j26 = 0; j26 < 4; j26 = j26 + 1) {
+				fRec12_tmp[j26] = fRec12_perm[j26];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j28 = 0; j28 < 4; j28 = j28 + 1) {
+				fRec11_tmp[j28] = fRec11_perm[j28];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j30 = 0; j30 < 4; j30 = j30 + 1) {
+				fRec10_tmp[j30] = fRec10_perm[j30];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j32 = 0; j32 < 4; j32 = j32 + 1) {
+				fRec9_tmp[j32] = fRec9_perm[j32];
+			}
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fRec15[i] = float(input1[i]) + 0.3f * fRec9[i - 1] + fConst5 * fRec15[i - 1] * fZec1[i] - fConst3 * fRec15[i - 2];
+				fRec14[i] = fRec15[i - 2] + fConst3 * (fRec15[i] - fRec14[i - 2]) - fConst5 * fZec1[i] * (fRec15[i - 1] - fRec14[i - 1]);
+				fRec13[i] = fRec14[i - 2] + fConst3 * (fRec14[i] - fRec13[i - 2]) - fConst5 * fZec1[i] * (fRec14[i - 1] - fRec13[i - 1]);
+				fRec12[i] = fRec13[i - 2] + fConst3 * (fRec13[i] - fRec12[i - 2]) - fConst5 * fZec1[i] * (fRec13[i - 1] - fRec12[i - 1]);
+				fRec11[i] = fConst3 * (fRec12[i] - fRec11[i - 2]) + fRec12[i - 2] + fConst5 * fZec1[i] * (fRec11[i - 1] - fRec12[i - 1]);
+				fRec10[i] = fRec11[i - 2] + fConst3 * (fRec11[i] - fRec10[i - 2]) - fConst5 * fZec1[i] * (fRec11[i - 1] - fRec10[i - 1]);
+				fRec9[i] = fRec10[i - 2] + fConst3 * fRec10[i] - fConst5 * fZec1[i] * fRec10[i - 1];
+			}
+			/* Post code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j21 = 0; j21 < 4; j21 = j21 + 1) {
+				fRec15_perm[j21] = fRec15_tmp[vsize + j21];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j23 = 0; j23 < 4; j23 = j23 + 1) {
+				fRec14_perm[j23] = fRec14_tmp[vsize + j23];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j25 = 0; j25 < 4; j25 = j25 + 1) {
+				fRec13_perm[j25] = fRec13_tmp[vsize + j25];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j27 = 0; j27 < 4; j27 = j27 + 1) {
+				fRec12_perm[j27] = fRec12_tmp[vsize + j27];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j29 = 0; j29 < 4; j29 = j29 + 1) {
+				fRec11_perm[j29] = fRec11_tmp[vsize + j29];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j31 = 0; j31 < 4; j31 = j31 + 1) {
+				fRec10_perm[j31] = fRec10_tmp[vsize + j31];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j33 = 0; j33 < 4; j33 = j33 + 1) {
+				fRec9_perm[j33] = fRec9_tmp[vsize + j33];
+			}
+			/* Vectorizable loop 6 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				output0[i] = FAUSTFLOAT(fSlow4 * float(input0[i]) + fSlow3 * fRec0[i]);
+			}
+			/* Vectorizable loop 7 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				output1[i] = FAUSTFLOAT(fSlow4 * float(input1[i]) + fSlow3 * fRec9[i]);
+			}
+		}
+		/* Remaining frames */
+		if (vindex < count) {
+			FAUSTFLOAT* input0 = &input0_ptr[vindex];
+			FAUSTFLOAT* input1 = &input1_ptr[vindex];
+			FAUSTFLOAT* output0 = &output0_ptr[vindex];
+			FAUSTFLOAT* output1 = &output1_ptr[vindex];
+			int vsize = count - vindex;
+			/* Vectorizable loop 0 */
+			/* Pre code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j2 = 0; j2 < 4; j2 = j2 + 1) {
+				iVec0_tmp[j2] = iVec0_perm[j2];
+			}
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				iVec0[i] = 1;
+			}
+			/* Post code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j3 = 0; j3 < 4; j3 = j3 + 1) {
+				iVec0_perm[j3] = iVec0_tmp[vsize + j3];
+			}
+			/* Recursive loop 1 */
+			/* Pre code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j0 = 0; j0 < 4; j0 = j0 + 1) {
+				fRec7_tmp[j0] = fRec7_perm[j0];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j4 = 0; j4 < 4; j4 = j4 + 1) {
+				fRec8_tmp[j4] = fRec8_perm[j4];
+			}
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fRec7[i] = fSlow2 * fRec8[i - 1] + fSlow1 * fRec7[i - 1];
+				fRec8[i] = float(1 - iVec0[i - 1]) + fSlow1 * fRec8[i - 1] - fSlow2 * fRec7[i - 1];
+			}
+			/* Post code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j1 = 0; j1 < 4; j1 = j1 + 1) {
+				fRec7_perm[j1] = fRec7_tmp[vsize + j1];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j5 = 0; j5 < 4; j5 = j5 + 1) {
+				fRec8_perm[j5] = fRec8_tmp[vsize + j5];
+			}
+			/* Vectorizable loop 2 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec0[i] = std::cos(fConst4 * (14137.167f * (1.0f - fRec7[i]) + 3141.5928f));
+			}
+			/* Vectorizable loop 3 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec1[i] = std::cos(fConst4 * (14137.167f * (1.0f - fRec8[i]) + 3141.5928f));
+			}
+			/* Recursive loop 4 */
+			/* Pre code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j6 = 0; j6 < 4; j6 = j6 + 1) {
+				fRec6_tmp[j6] = fRec6_perm[j6];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j8 = 0; j8 < 4; j8 = j8 + 1) {
+				fRec5_tmp[j8] = fRec5_perm[j8];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j10 = 0; j10 < 4; j10 = j10 + 1) {
+				fRec4_tmp[j10] = fRec4_perm[j10];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j12 = 0; j12 < 4; j12 = j12 + 1) {
+				fRec3_tmp[j12] = fRec3_perm[j12];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j14 = 0; j14 < 4; j14 = j14 + 1) {
+				fRec2_tmp[j14] = fRec2_perm[j14];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j16 = 0; j16 < 4; j16 = j16 + 1) {
+				fRec1_tmp[j16] = fRec1_perm[j16];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j18 = 0; j18 < 4; j18 = j18 + 1) {
+				fRec0_tmp[j18] = fRec0_perm[j18];
+			}
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fRec6[i] = float(input0[i]) + 0.3f * fRec0[i - 1] + fConst5 * fRec6[i - 1] * fZec0[i] - fConst3 * fRec6[i - 2];
+				fRec5[i] = fRec6[i - 2] + fConst3 * (fRec6[i] - fRec5[i - 2]) - fConst5 * fZec0[i] * (fRec6[i - 1] - fRec5[i - 1]);
+				fRec4[i] = fRec5[i - 2] + fConst3 * (fRec5[i] - fRec4[i - 2]) - fConst5 * fZec0[i] * (fRec5[i - 1] - fRec4[i - 1]);
+				fRec3[i] = fRec4[i - 2] + fConst3 * (fRec4[i] - fRec3[i - 2]) - fConst5 * fZec0[i] * (fRec4[i - 1] - fRec3[i - 1]);
+				fRec2[i] = fRec3[i - 2] + fConst3 * (fRec3[i] - fRec2[i - 2]) - fConst5 * fZec0[i] * (fRec3[i - 1] - fRec2[i - 1]);
+				fRec1[i] = fRec2[i - 2] + fConst3 * (fRec2[i] - fRec1[i - 2]) - fConst5 * fZec0[i] * (fRec2[i - 1] - fRec1[i - 1]);
+				fRec0[i] = fRec1[i - 2] + fConst3 * fRec1[i] - fConst5 * fZec0[i] * fRec1[i - 1];
+			}
+			/* Post code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j7 = 0; j7 < 4; j7 = j7 + 1) {
+				fRec6_perm[j7] = fRec6_tmp[vsize + j7];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j9 = 0; j9 < 4; j9 = j9 + 1) {
+				fRec5_perm[j9] = fRec5_tmp[vsize + j9];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j11 = 0; j11 < 4; j11 = j11 + 1) {
+				fRec4_perm[j11] = fRec4_tmp[vsize + j11];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j13 = 0; j13 < 4; j13 = j13 + 1) {
+				fRec3_perm[j13] = fRec3_tmp[vsize + j13];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j15 = 0; j15 < 4; j15 = j15 + 1) {
+				fRec2_perm[j15] = fRec2_tmp[vsize + j15];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j17 = 0; j17 < 4; j17 = j17 + 1) {
+				fRec1_perm[j17] = fRec1_tmp[vsize + j17];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j19 = 0; j19 < 4; j19 = j19 + 1) {
+				fRec0_perm[j19] = fRec0_tmp[vsize + j19];
+			}
+			/* Recursive loop 5 */
+			/* Pre code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j20 = 0; j20 < 4; j20 = j20 + 1) {
+				fRec15_tmp[j20] = fRec15_perm[j20];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j22 = 0; j22 < 4; j22 = j22 + 1) {
+				fRec14_tmp[j22] = fRec14_perm[j22];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j24 = 0; j24 < 4; j24 = j24 + 1) {
+				fRec13_tmp[j24] = fRec13_perm[j24];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j26 = 0; j26 < 4; j26 = j26 + 1) {
+				fRec12_tmp[j26] = fRec12_perm[j26];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j28 = 0; j28 < 4; j28 = j28 + 1) {
+				fRec11_tmp[j28] = fRec11_perm[j28];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j30 = 0; j30 < 4; j30 = j30 + 1) {
+				fRec10_tmp[j30] = fRec10_perm[j30];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j32 = 0; j32 < 4; j32 = j32 + 1) {
+				fRec9_tmp[j32] = fRec9_perm[j32];
+			}
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fRec15[i] = float(input1[i]) + 0.3f * fRec9[i - 1] + fConst5 * fRec15[i - 1] * fZec1[i] - fConst3 * fRec15[i - 2];
+				fRec14[i] = fRec15[i - 2] + fConst3 * (fRec15[i] - fRec14[i - 2]) - fConst5 * fZec1[i] * (fRec15[i - 1] - fRec14[i - 1]);
+				fRec13[i] = fRec14[i - 2] + fConst3 * (fRec14[i] - fRec13[i - 2]) - fConst5 * fZec1[i] * (fRec14[i - 1] - fRec13[i - 1]);
+				fRec12[i] = fRec13[i - 2] + fConst3 * (fRec13[i] - fRec12[i - 2]) - fConst5 * fZec1[i] * (fRec13[i - 1] - fRec12[i - 1]);
+				fRec11[i] = fConst3 * (fRec12[i] - fRec11[i - 2]) + fRec12[i - 2] + fConst5 * fZec1[i] * (fRec11[i - 1] - fRec12[i - 1]);
+				fRec10[i] = fRec11[i - 2] + fConst3 * (fRec11[i] - fRec10[i - 2]) - fConst5 * fZec1[i] * (fRec11[i - 1] - fRec10[i - 1]);
+				fRec9[i] = fRec10[i - 2] + fConst3 * fRec10[i] - fConst5 * fZec1[i] * fRec10[i - 1];
+			}
+			/* Post code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j21 = 0; j21 < 4; j21 = j21 + 1) {
+				fRec15_perm[j21] = fRec15_tmp[vsize + j21];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j23 = 0; j23 < 4; j23 = j23 + 1) {
+				fRec14_perm[j23] = fRec14_tmp[vsize + j23];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j25 = 0; j25 < 4; j25 = j25 + 1) {
+				fRec13_perm[j25] = fRec13_tmp[vsize + j25];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j27 = 0; j27 < 4; j27 = j27 + 1) {
+				fRec12_perm[j27] = fRec12_tmp[vsize + j27];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j29 = 0; j29 < 4; j29 = j29 + 1) {
+				fRec11_perm[j29] = fRec11_tmp[vsize + j29];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j31 = 0; j31 < 4; j31 = j31 + 1) {
+				fRec10_perm[j31] = fRec10_tmp[vsize + j31];
+			}
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int j33 = 0; j33 < 4; j33 = j33 + 1) {
+				fRec9_perm[j33] = fRec9_tmp[vsize + j33];
+			}
+			/* Vectorizable loop 6 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				output0[i] = FAUSTFLOAT(fSlow4 * float(input0[i]) + fSlow3 * fRec0[i]);
+			}
+			/* Vectorizable loop 7 */
+			/* Compute code */
+			#pragma clang loop vectorize(enable) interleave(enable)
+			for (int i = 0; i < vsize; i = i + 1) {
+				output1[i] = FAUSTFLOAT(fSlow4 * float(input1[i]) + fSlow3 * fRec9[i]);
+			}
+		}
+	}
+
+};
+
+#endif

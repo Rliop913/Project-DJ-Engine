@@ -62,6 +62,8 @@ add_executable(testCapnp ${CMAKE_SOURCE_DIR}/include/tests/CapnpTest.cpp ${minia
 
 add_executable(testHighway include/tests/highway_Test.cpp)
 
+add_executable(testManualAudio include/tests/manualAudioTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource})
+
 if(WIN32)
   target_link_libraries(testHighway PRIVATE hwy::hwy)
 elseif(UNIX AND NOT APPLE)

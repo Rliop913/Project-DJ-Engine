@@ -25,5 +25,8 @@ ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_VOL.cpp
 
+${CMAKE_SOURCE_DIR}/include/audioRender/ManualMix/ManualMix.cpp
+
+
 
 )

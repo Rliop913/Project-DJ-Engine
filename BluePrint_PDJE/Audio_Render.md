@@ -7,4 +7,14 @@ The process of audio rendering can be categorized into three main types: [[PreRe
 - **[[ManualRender]]** is a specialized rendering mode that relies entirely on external manipulation, requiring direct control or mechanical adjustment by actively listening to the audio.
 	If you're planning to use this mode for DJing, you must have the skills to perform **beat matching** manually without relying on automated tools.
 
+```mermaid
+flowchart TD
+MixBinary --> MixTranslator
+MixTranslator --> MixMachine
+MixMachine -->|Rendered Audio| ManualRender
+ManualRender --> AudioPlay
+```
+
+
+
 See [[MixTranslator]], [[MixMachine]] 

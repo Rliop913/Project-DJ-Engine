@@ -2,9 +2,10 @@
 
 #include <vector>
 #include <string>
-
+#include <functional>
 using STR = std::string;
-
+using SETTER = std::function<void(double)>;
+using ARGSETTER = std::unordered_map<std::string, SETTER>;
 struct Position{
     unsigned long frame_in;
     unsigned long frame_out;
