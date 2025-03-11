@@ -75,4 +75,33 @@ public:
     void FX_ON_OFF(FXList fx, bool onoff);
 
     void addFX(float** pcm, int samples);
+    bool checkSomethingOn();
 };
+
+
+
+inline
+void 
+toFaustStylePCM(float** faustPCM, float* in, const unsigned long frameCount)
+{
+    float* op = in;
+    float* lp = faustPCM[0];
+    float* rp = faustPCM[1];
+    for(int i=0; i<frameCount; ++i){
+        *(lp++) = *(op++);
+        *(rp++) = *(op++);
+    }
+}
+
+inline
+void 
+toLRStylePCM(float** faustPCM, float* out, const unsigned long frameCount)
+{
+    float* op = out;
+    float* lp = faustPCM[0];
+    float* rp = faustPCM[1];
+    for(int i=0; i<frameCount; ++i){
+        *(op++) = *(lp++);
+        *(op++) = *(rp++);
+    }
+}

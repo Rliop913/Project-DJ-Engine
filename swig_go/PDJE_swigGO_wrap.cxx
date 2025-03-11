@@ -9,6 +9,16 @@
 // source: /home/rrop/rropdb/box_inside/pdje/Project_DJ_Engine/PDJE_swig.i
 
 
+extern
+#ifdef __cplusplus
+  "C"
+#endif
+  void cgo_panic__pdje_POLYGLOT_e08262965a09b00b(const char*);
+static void _swig_gopanic(const char *p) {
+  cgo_panic__pdje_POLYGLOT_e08262965a09b00b(p);
+}
+
+
 
 #define SWIG_VERSION 0x040300
 #define SWIGGO
@@ -279,6 +289,38 @@ void *_wrap_Swig_malloc_pdje_POLYGLOT_e08262965a09b00b(intgo _swig_go_0) {
   
   result = (void *)Swig_malloc(arg1);
   *(void **)&_swig_go_result = (void *)result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_audioRender_rendered_frames_set_pdje_POLYGLOT_e08262965a09b00b(audioRender *_swig_go_0, std::optional< std::vector< float > > *_swig_go_1) {
+  audioRender *arg1 = (audioRender *) 0 ;
+  std::optional< std::vector< float > > arg2 ;
+  std::optional< std::vector< float > > *argp2 ;
+  
+  arg1 = *(audioRender **)&_swig_go_0; 
+  
+  argp2 = (std::optional< std::vector< float > > *)_swig_go_1;
+  if (argp2 == NULL) {
+    _swig_gopanic("Attempt to dereference null std::optional< std::vector< float > >");
+  }
+  arg2 = (std::optional< std::vector< float > >)*argp2;
+  
+  
+  if (arg1) (arg1)->rendered_frames = arg2;
+  
+}
+
+
+std::optional< std::vector< float > > *_wrap_audioRender_rendered_frames_get_pdje_POLYGLOT_e08262965a09b00b(audioRender *_swig_go_0) {
+  audioRender *arg1 = (audioRender *) 0 ;
+  std::optional< std::vector< float > > result;
+  std::optional< std::vector< float > > *_swig_go_result;
+  
+  arg1 = *(audioRender **)&_swig_go_0; 
+  
+  result =  ((arg1)->rendered_frames);
+  *(std::optional< std::vector< float > > **)&_swig_go_result = new std::optional< std::vector< float > >(result); 
   return _swig_go_result;
 }
 

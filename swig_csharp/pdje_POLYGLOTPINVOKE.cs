@@ -224,6 +224,12 @@ class pdje_POLYGLOTPINVOKE {
   }
 
 
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioRender_rendered_frames_set")]
+  public static extern void audioRender_rendered_frames_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioRender_rendered_frames_get")]
+  public static extern global::System.IntPtr audioRender_rendered_frames_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
   [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioRender_LoadTrack")]
   public static extern bool audioRender_LoadTrack(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 

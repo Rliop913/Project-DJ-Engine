@@ -29,6 +29,8 @@ typedef struct { void* array; intgo len; intgo cap; } _goslice_;
 
 extern void _wrap_Swig_free_pdje_POLYGLOT_e08262965a09b00b(uintptr_t arg1);
 extern uintptr_t _wrap_Swig_malloc_pdje_POLYGLOT_e08262965a09b00b(swig_intgo arg1);
+extern void _wrap_audioRender_rendered_frames_set_pdje_POLYGLOT_e08262965a09b00b(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_audioRender_rendered_frames_get_pdje_POLYGLOT_e08262965a09b00b(uintptr_t arg1);
 extern _Bool _wrap_audioRender_LoadTrack_pdje_POLYGLOT_e08262965a09b00b(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
 extern uintptr_t _wrap_new_audioRender_pdje_POLYGLOT_e08262965a09b00b(void);
 extern void _wrap_delete_audioRender_pdje_POLYGLOT_e08262965a09b00b(uintptr_t arg1);
@@ -63,6 +65,17 @@ func getSwigcptr(v interface { Swigcptr() uintptr }) uintptr {
 
 type _ sync.Mutex
 
+//export cgo_panic__pdje_POLYGLOT_e08262965a09b00b
+func cgo_panic__pdje_POLYGLOT_e08262965a09b00b(p *byte) {
+	s := (*[1024]byte)(unsafe.Pointer(p))[:]
+	for i, b := range s {
+		if b == 0 {
+			panic(string(s[:i]))
+		}
+	}
+	panic(string(s))
+}
+
 func Swig_free(arg1 uintptr) {
 	_swig_i_0 := arg1
 	C._wrap_Swig_free_pdje_POLYGLOT_e08262965a09b00b(C.uintptr_t(_swig_i_0))
@@ -82,6 +95,19 @@ func (p SwigcptrAudioRender) Swigcptr() uintptr {
 }
 
 func (p SwigcptrAudioRender) SwigIsAudioRender() {
+}
+
+func (arg1 SwigcptrAudioRender) SetRendered_frames(arg2 Std_optional_Sl_std_vector_Sl_float_Sg__Sg_) {
+	_swig_i_0 := arg1
+	_swig_i_1 := getSwigcptr(arg2)
+	C._wrap_audioRender_rendered_frames_set_pdje_POLYGLOT_e08262965a09b00b(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+}
+
+func (arg1 SwigcptrAudioRender) GetRendered_frames() (_swig_ret Std_optional_Sl_std_vector_Sl_float_Sg__Sg_) {
+	var swig_r Std_optional_Sl_std_vector_Sl_float_Sg__Sg_
+	_swig_i_0 := arg1
+	swig_r = (Std_optional_Sl_std_vector_Sl_float_Sg__Sg_)(SwigcptrStd_optional_Sl_std_vector_Sl_float_Sg__Sg_(C._wrap_audioRender_rendered_frames_get_pdje_POLYGLOT_e08262965a09b00b(C.uintptr_t(_swig_i_0))))
+	return swig_r
 }
 
 func (arg1 SwigcptrAudioRender) LoadTrack(arg2 Litedb, arg3 Trackdata) (_swig_ret bool) {
@@ -107,6 +133,8 @@ func DeleteAudioRender(arg1 AudioRender) {
 type AudioRender interface {
 	Swigcptr() uintptr
 	SwigIsAudioRender()
+	SetRendered_frames(arg2 Std_optional_Sl_std_vector_Sl_float_Sg__Sg_)
+	GetRendered_frames() (_swig_ret Std_optional_Sl_std_vector_Sl_float_Sg__Sg_)
 	LoadTrack(arg2 Litedb, arg3 Trackdata) (_swig_ret bool)
 }
 
@@ -124,6 +152,14 @@ type Trackdata interface {
 	Swigcptr() uintptr;
 }
 func (p SwigcptrTrackdata) Swigcptr() uintptr {
+	return uintptr(p)
+}
+
+type SwigcptrStd_optional_Sl_std_vector_Sl_float_Sg__Sg_ uintptr
+type Std_optional_Sl_std_vector_Sl_float_Sg__Sg_ interface {
+	Swigcptr() uintptr;
+}
+func (p SwigcptrStd_optional_Sl_std_vector_Sl_float_Sg__Sg_) Swigcptr() uintptr {
 	return uintptr(p)
 }
 

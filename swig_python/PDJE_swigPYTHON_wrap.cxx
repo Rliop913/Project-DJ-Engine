@@ -3206,9 +3206,10 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_audioRender swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
 #define SWIGTYPE_p_litedb swig_types[2]
-#define SWIGTYPE_p_trackdata swig_types[3]
-static swig_type_info *swig_types[5];
-static swig_module_info swig_module = {swig_types, 4, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__optionalT_std__vectorT_float_t_t swig_types[3]
+#define SWIGTYPE_p_trackdata swig_types[4]
+static swig_type_info *swig_types[6];
+static swig_module_info swig_module = {swig_types, 5, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3367,6 +3368,68 @@ SWIGINTERNINLINE PyObject*
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *_wrap_audioRender_rendered_frames_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  audioRender *arg1 = (audioRender *) 0 ;
+  std::optional< std::vector< float > > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "audioRender_rendered_frames_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_audioRender, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "audioRender_rendered_frames_set" "', argument " "1"" of type '" "audioRender *""'"); 
+  }
+  arg1 = reinterpret_cast< audioRender * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__optionalT_std__vectorT_float_t_t,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "audioRender_rendered_frames_set" "', argument " "2"" of type '" "std::optional< std::vector< float > >""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "audioRender_rendered_frames_set" "', argument " "2"" of type '" "std::optional< std::vector< float > >""'");
+    } else {
+      std::optional< std::vector< float > > * temp = reinterpret_cast< std::optional< std::vector< float > > * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  if (arg1) (arg1)->rendered_frames = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_audioRender_rendered_frames_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  audioRender *arg1 = (audioRender *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::optional< std::vector< float > > result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_audioRender, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "audioRender_rendered_frames_get" "', argument " "1"" of type '" "audioRender *""'"); 
+  }
+  arg1 = reinterpret_cast< audioRender * >(argp1);
+  result =  ((arg1)->rendered_frames);
+  resultobj = SWIG_NewPointerObj((new std::optional< std::vector< float > >(result)), SWIGTYPE_p_std__optionalT_std__vectorT_float_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_audioRender_LoadTrack(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   audioRender *arg1 = (audioRender *) 0 ;
@@ -3461,6 +3524,8 @@ SWIGINTERN PyObject *audioRender_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObje
 }
 
 static PyMethodDef SwigMethods[] = {
+	 { "audioRender_rendered_frames_set", _wrap_audioRender_rendered_frames_set, METH_VARARGS, NULL},
+	 { "audioRender_rendered_frames_get", _wrap_audioRender_rendered_frames_get, METH_O, NULL},
 	 { "audioRender_LoadTrack", _wrap_audioRender_LoadTrack, METH_VARARGS, NULL},
 	 { "new_audioRender", _wrap_new_audioRender, METH_NOARGS, NULL},
 	 { "delete_audioRender", _wrap_delete_audioRender, METH_O, NULL},
@@ -3475,24 +3540,28 @@ static PyMethodDef SwigMethods[] = {
 static swig_type_info _swigt__p_audioRender = {"_p_audioRender", "audioRender *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_litedb = {"_p_litedb", "litedb *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__optionalT_std__vectorT_float_t_t = {"_p_std__optionalT_std__vectorT_float_t_t", "std::optional< std::vector< float > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_trackdata = {"_p_trackdata", "trackdata *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_audioRender,
   &_swigt__p_char,
   &_swigt__p_litedb,
+  &_swigt__p_std__optionalT_std__vectorT_float_t_t,
   &_swigt__p_trackdata,
 };
 
 static swig_cast_info _swigc__p_audioRender[] = {  {&_swigt__p_audioRender, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_litedb[] = {  {&_swigt__p_litedb, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__optionalT_std__vectorT_float_t_t[] = {  {&_swigt__p_std__optionalT_std__vectorT_float_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_trackdata[] = {  {&_swigt__p_trackdata, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_audioRender,
   _swigc__p_char,
   _swigc__p_litedb,
+  _swigc__p_std__optionalT_std__vectorT_float_t_t,
   _swigc__p_trackdata,
 };
 

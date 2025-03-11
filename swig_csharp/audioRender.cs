@@ -56,6 +56,18 @@ public class audioRender : global::System.IDisposable {
     }
   }
 
+  public SWIGTYPE_p_std__optionalT_std__vectorT_float_t_t rendered_frames {
+    set {
+      pdje_POLYGLOTPINVOKE.audioRender_rendered_frames_set(swigCPtr, SWIGTYPE_p_std__optionalT_std__vectorT_float_t_t.getCPtr(value));
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    } 
+    get {
+      SWIGTYPE_p_std__optionalT_std__vectorT_float_t_t ret = new SWIGTYPE_p_std__optionalT_std__vectorT_float_t_t(pdje_POLYGLOTPINVOKE.audioRender_rendered_frames_get(swigCPtr), true);
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+      return ret;
+    } 
+  }
+
   public bool LoadTrack(SWIGTYPE_p_litedb db, SWIGTYPE_p_trackdata td) {
     bool ret = pdje_POLYGLOTPINVOKE.audioRender_LoadTrack(swigCPtr, SWIGTYPE_p_litedb.getCPtr(db), SWIGTYPE_p_trackdata.getCPtr(td));
     if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();

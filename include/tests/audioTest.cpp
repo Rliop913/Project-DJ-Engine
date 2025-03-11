@@ -3,6 +3,7 @@
 #include "MixTranslator.hpp"
 #include "MixMachine.hpp"
 #include "miniaudio.h"
+#include "audioPlayer.hpp"
 
 #include <iostream>
 #include "dbRoot.hpp"
@@ -81,7 +82,7 @@ idle_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 f
         
 	// }
 }
-
+#include <termios.h>
 // #include "MiniAudioWrapper.hpp"
 int
 main()
@@ -101,31 +102,75 @@ main()
     std::cout<<readGet[0].getId() << std::endl;
     std::cout<<readGet[1].getId() << std::endl;
     std::cout<<ret[0].getFirst().cStr() << std::endl;
+    
+    litedb dbb;
+    if(dbb.openDB("./tempdb.db")){
+        std::cout << "opened" <<std::endl;
+    }
+    else{
+        std::cout << "not opened " <<  std::endl;
+    }
+    trackdata td;
+    td.trackTitle = "testmix111";
 
+    auto restd = dbb<<td;
+    std::cout << restd->front().mixBinary.size() << std::endl;
+    std::cout << rb.out().size() << std::endl;
+    
+    if(restd.value().front().mixBinary.size() == rb.out().size()){
+        std::cout <<"Completele same" << std::endl;
+    }
+    auto AP = new audioPlayer(dbb, restd.value().front(), 48,  true);
+    auto pannel = AP->GetFXControlPannel();
+    AP->Activate();
+    getchar();
+    pannel->FX_ON_OFF(FXList::FILTER, true);
+    auto filter_handle = pannel->GetArgSetter(FXList::FILTER);
+    for(auto i : filter_handle){
+        std::cout << i.first << std::endl;
+    }
+
+    char input ='a';
+    int freq = 5000;
+    int udVal = 100;
+    filter_handle["Filterfreq"](5000);
+    filter_handle["HLswitch"](1);
+    while (input != 'q')
+    {
+        std::cin >> input;
+        if(input == 'u'){
+            freq +=udVal;
+            filter_handle["Filterfreq"](freq);
+        }
+        if(input == 'd'){
+            freq -=udVal;
+            filter_handle["Filterfreq"](freq);
+        }
+        if(input == 'h'){
+            filter_handle["HLswitch"](0);
+        }
+        if (input == 'l')
+        {
+            filter_handle["HLswitch"](1);
+        }
+        
+    }
+    
+    
+
+    delete AP;
+    // if(dbb<<td){
+    //     std::cout << "DONE!" << std::endl;
+    // }
+    // else{
+    //     std::cout << SQLITE_LAST_ERRNO << std::endl;
+    // }
+
+    return 0 ;
     struct vectest{
         unsigned int one;
         unsigned int two;
     };
-    // std::vector<vectest> arrs(11);
-    // for(int i =0; i < 11; ++i){
-    //     arrs[i].one = 20 - i * 2;
-    // }
-    // std::sort(arrs.begin(), arrs.end(), [](vectest first, vectest second){
-    //     return first.one < second.one;
-    // });
-    // for( auto i : arrs){
-    //     std::cout << i.one << std::endl;
-    // }
-    // for(int i=0; i<30; ++i){
-
-    //     vectest tet;
-    //     tet.one = i;
-    //     auto it =std::upper_bound(arrs.begin(), arrs.end(),tet, [](vectest first, vectest second){
-    //         return first.one < second.one;
-    //     });
-    //     --it;
-    //     std::cout << i << " ID: " << it->one << std::endl;
-    // }
     
     MixTranslator mt = MixTranslator();
     if(!(mt.Read(rb))){

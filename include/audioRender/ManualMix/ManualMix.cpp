@@ -174,3 +174,22 @@ FXControlPannel::addFX(float** pcm, int samples)
     checkAndUse(pcm, samples, volPannel);
     
 }
+
+bool
+FXControlPannel::checkSomethingOn()
+{
+    return
+        compressorPannel.first ||
+        distortionPannel.first ||
+        echoPannel.first ||
+        eqPannel.first ||
+        filterPannel.first ||
+        flangerPannel.first ||
+        ocsFilterPannel.first ||
+        pannerPannel.first ||
+        phaserPannel.first ||
+        robotPannel.first ||
+        rollPannel.first ||
+        trancePannel.first ||
+        volPannel.first;
+}

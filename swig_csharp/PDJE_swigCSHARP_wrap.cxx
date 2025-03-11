@@ -360,6 +360,34 @@ template <typename T> T SwigValueInit() {
 extern "C" {
 #endif
 
+SWIGEXPORT void SWIGSTDCALL CSharp_audioRender_rendered_frames_set(void * jarg1, void * jarg2) {
+  audioRender *arg1 = (audioRender *) 0 ;
+  std::optional< std::vector< float > > arg2 ;
+  std::optional< std::vector< float > > *argp2 ;
+  
+  arg1 = (audioRender *)jarg1; 
+  argp2 = (std::optional< std::vector< float > > *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::optional< std::vector< float > >", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  if (arg1) (arg1)->rendered_frames = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_audioRender_rendered_frames_get(void * jarg1) {
+  void * jresult ;
+  audioRender *arg1 = (audioRender *) 0 ;
+  std::optional< std::vector< float > > result;
+  
+  arg1 = (audioRender *)jarg1; 
+  result =  ((arg1)->rendered_frames);
+  jresult = new std::optional< std::vector< float > >(result); 
+  return jresult;
+}
+
+
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_audioRender_LoadTrack(void * jarg1, void * jarg2, void * jarg3) {
   unsigned int jresult ;
   audioRender *arg1 = (audioRender *) 0 ;

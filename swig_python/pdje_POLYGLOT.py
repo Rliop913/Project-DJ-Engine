@@ -61,6 +61,7 @@ class _SwigNonDynamicMeta(type):
 class audioRender(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
+    rendered_frames = property(_pdje_python.audioRender_rendered_frames_get, _pdje_python.audioRender_rendered_frames_set)
 
     def LoadTrack(self, db, td):
         return _pdje_python.audioRender_LoadTrack(self, db, td)

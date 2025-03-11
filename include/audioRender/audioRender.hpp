@@ -4,12 +4,11 @@
 #include "ManualMix.hpp"
 
 class audioRender{
-private:
-    std::optional<std::vector<float>> rendered_frames;
 public:
+    std::optional<std::vector<float>> rendered_frames;
 
     bool LoadTrack(litedb& db, trackdata& td);
-    audioRender();
-    ~audioRender();
+    audioRender() = default;
+    ~audioRender() = default;
 
 };
