@@ -66,6 +66,7 @@ add_executable(testManualAudio include/tests/manualAudioTest.cpp ${audioRenderSo
 
 if(WIN32)
   target_link_libraries(testHighway PRIVATE hwy::hwy)
+  # link_libraries(hwy::hwy)
 elseif(UNIX AND NOT APPLE)
   add_executable(EvdevAccModule include/input/linux/LINUX_SUDO_GETTER.cpp)
 
@@ -73,6 +74,11 @@ elseif(UNIX AND NOT APPLE)
   add_executable(testLinuxInput_waker include/tests/INPUT_TESTS/linux_I_WAKER.cpp)
   add_executable(testLinuxInput include/tests/INPUT_TESTS/evdevtest.cpp ${input_src})
   target_link_libraries(testHighway PRIVATE hwy )
+  target_link_libraries(testdb PRIVATE hwy )
+  target_link_libraries(testaudio PRIVATE hwy )
+  target_link_libraries(testCapnp PRIVATE hwy )
+  target_link_libraries(testManualAudio PRIVATE hwy )
+  
 elseif(APPLE)
   
 endif()

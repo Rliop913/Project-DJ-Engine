@@ -35,6 +35,12 @@ idle_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 f
 #include <iostream>
 int main(int argc,  char *argv[])
 {
+    for(int i=0;  i < 10; i+=3){
+        std::cout << i  <<std::endl;
+    }
+
+    return 0;
+
     ma_device dev;
 
     fxcp = new FXControlPannel(48000);

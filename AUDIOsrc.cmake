@@ -26,7 +26,7 @@ ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_VOL.cpp
 
 ${CMAKE_SOURCE_DIR}/include/audioRender/ManualMix/ManualMix.cpp
-
+${CMAKE_SOURCE_DIR}/include/audioRender/ManualMix/MusicControlPannel.cpp
 ${CMAKE_SOURCE_DIR}/include/players/audioPlayer/audioPlayer.cpp
 ${CMAKE_SOURCE_DIR}/include/players/audioPlayer/audioCallbacks.cpp
 

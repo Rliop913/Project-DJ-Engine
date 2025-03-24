@@ -30,9 +30,6 @@ int main()
     
     auto optr = hwy_vec.data();
 
-    // auto hwy_time = clock();
-
-    // #pragma omp parallel for schedule(static)
     auto Va = hn::Set(d, 10.0f);
     // std::vector<std::thread> ThrdP;
     // for(int i=0; i<times; ++i){
@@ -69,9 +66,7 @@ int main()
     // }
     auto hwy_result = clock() - hwy_time;
     std::cout << laneSz << "normal: " << normal_result << " hwy time: " << hwy_result << std::endl;
-    // for(int i=10000; i<10010; ++i){
-    //     std::cout << "IDX: " << i << "values: " << normal[i] << " , " << hwy_vec[i] << std::endl;
-    // }
+    
     return 0;
 }
 // }

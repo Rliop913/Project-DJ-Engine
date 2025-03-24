@@ -1,7 +1,11 @@
 #pragma once
 
-#include <unordered_map>
+#include <map>
 #include <array>
+
+#include <miniaudio.h>
+
+
 #include "FAUST_COMPRESSOR_manual.hpp"
 #include "FAUST_DISTORTION_manual.hpp"
 #include "FAUST_ECHO_manual.hpp"
@@ -16,14 +20,12 @@
 #include "FAUST_TRANCE_manual.hpp"
 #include "FAUST_VOL_manual.hpp"
 
+#include "musicDB.hpp"
+#include "FrameCalc.hpp"
 
-namespace manualUtility{
-    template<typename FaustClass>
-    void ResetFaust(FaustClass& fc){
-        fc.instanceClear();
-    }
-    
-};
+#include <hwy/highway.h>
+#include <hwy/aligned_allocator.h>
+namespace hn = hwy::HWY_NAMESPACE;
 
 enum FXList{
     COMPRESSOR = 0,
@@ -40,6 +42,47 @@ enum FXList{
     TRANCE,
     VOL
 };
+
+
+struct MusicOnDeck{
+    bool play = false;
+    ma_decoder dec;
+
+    MusicOnDeck()= default;
+    ~MusicOnDeck(){
+        ma_decoder_uninit(&dec);
+    }
+
+};
+
+
+
+using TITLE         = std::string;
+
+using LOADED_LIST   = std::vector<TITLE>;
+
+using SIMD_FLOAT    = std::vector<float, hwy::AlignedAllocator<float>>;
+
+using LOADS         = std::map<TITLE, MusicOnDeck>;
+
+class MusicControlPannel{
+private:
+    LOADS deck;
+    
+
+public:
+    int LoadMusic(const musdata& Mus);
+    bool CueMusic(const TITLE& title, const unsigned long long newPos);
+    bool SetMusic(const TITLE& title, const bool onOff);
+    LOADED_LIST GetLoadedMusicList();
+    bool UnloadMusic(const TITLE& title);
+
+    bool GetPCMFrames(SIMD_FLOAT& array, unsigned long FrameSize);
+    MusicControlPannel();
+    ~MusicControlPannel();
+
+};
+
 
 class FXControlPannel{
 private:
