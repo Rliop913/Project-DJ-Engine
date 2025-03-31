@@ -38,6 +38,6 @@ public:
     bool Pitch(MixStruct& ms);
     std::optional<unsigned long> StartPos;
 
-    std::optional<std::vector<float>*>
-    operator<<(std::optional<std::vector<float>*> Array);
+    std::optional<SIMD_FLOAT*>
+    operator<<(std::optional<SIMD_FLOAT*> Array);
 };

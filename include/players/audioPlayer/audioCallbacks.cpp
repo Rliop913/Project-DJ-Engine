@@ -5,7 +5,7 @@
 
 
 std::optional<float*>
-audioEngineDataStruct::getNowfPointer(unsigned long frameCount)
+audioEngineDataStruct::getNowfPointer(const unsigned long frameCount)
 {
     if((nowCursor + frameCount) > maxCursor){
         return std::nullopt;
@@ -16,14 +16,14 @@ audioEngineDataStruct::getNowfPointer(unsigned long frameCount)
 }
 
 void
-audioEngineDataStruct::CountUp(unsigned long frameCount)
+audioEngineDataStruct::CountUp(const unsigned long frameCount)
 {
     nowCursor += frameCount;
     consumedFrames += frameCount;
 }
 
 void
-audioEngineDataStruct::GetAfterManFX(float* pOutput, unsigned long frameCount)
+audioEngineDataStruct::GetAfterManFX(SIMD_FLOAT* pOutput, const unsigned long frameCount)
 {
     if(!FXManualPannel.has_value()){
         return;
@@ -35,21 +35,22 @@ audioEngineDataStruct::GetAfterManFX(float* pOutput, unsigned long frameCount)
     if(FXManualPannel->checkSomethingOn()){
         toFaustStylePCM(faustPcmPP, getres.value(), frameCount);
         FXManualPannel->addFX(faustPcmPP, frameCount);
-        toLRStylePCM(faustPcmPP, pOutput, frameCount);
+        toLRStylePCM(faustPcmPP, pOutput->data(), frameCount);
     }
     else{
-        memcpy(pOutput, getres.value(), frameCount * CHANNEL * sizeof(float));
+
+        memcpy(pOutput->data(), getres.value(), frameCount * CHANNEL * sizeof(float));
     }
 }
 
 void
-audioEngineDataStruct::Get(float* pOutput, unsigned long frameCount)
+audioEngineDataStruct::Get(SIMD_FLOAT* pOutput, unsigned long frameCount)
 {
     auto getres = getNowfPointer(frameCount);
     if(!getres.has_value()){
         return;
     }
-    memcpy(pOutput, getres.value(), frameCount * CHANNEL * sizeof(float));
+    memcpy(pOutput->data(), getres.value(), frameCount * CHANNEL * sizeof(float));
 }
 
 
@@ -59,18 +60,21 @@ audioEngineDataStruct::Get(float* pOutput, unsigned long frameCount)
 void
 FullPreRender_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount) {
 	auto rendered = reinterpret_cast<audioEngineDataStruct*>(pDevice->pUserData);
-    rendered->Get(reinterpret_cast<float*>(pOutput), frameCount);
+    rendered->Get(reinterpret_cast<SIMD_FLOAT*>(pOutput), frameCount);
     rendered->CountUp(frameCount);
 }
 
 void
 HybridRender_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount) {
     auto rendered = reinterpret_cast<audioEngineDataStruct*>(pDevice->pUserData);
-    rendered->GetAfterManFX(reinterpret_cast<float*>(pOutput), frameCount);
+    rendered->GetAfterManFX(reinterpret_cast<SIMD_FLOAT*>(pOutput), frameCount);
     rendered->CountUp(frameCount);
 }
 
 void
 FullManualRender_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount) {
-
+    auto Data = reinterpret_cast<audioEngineDataStruct*>(pDevice->pUserData);
+    Data->MusCtrPannel->GetPCMFrames(reinterpret_cast<SIMD_FLOAT*>(pOutput), frameCount);
+    
+    
 }

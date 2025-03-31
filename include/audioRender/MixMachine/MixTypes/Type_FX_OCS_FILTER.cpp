@@ -3,7 +3,7 @@
 template<>
 bool
 MixMachine::TypeWorks<TypeEnum::OSC_FILTER, FaustEffects>
-(MixStruct& ms, FaustEffects& data, std::vector<float>* Vec)
+(MixStruct& ms, FaustEffects& data, SIMD_FLOAT* Vec)
 {
     if(!InterpolateInit(data.ocsFilterData, Vec, ms)){
         return false;

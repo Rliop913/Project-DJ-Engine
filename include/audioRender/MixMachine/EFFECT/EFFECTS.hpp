@@ -24,14 +24,14 @@ class FaustDType : public Fclass{
 private:
     std::vector<float> L;
     std::vector<float> R;
-    std::vector<float>* originVec;
+    SIMD_FLOAT* originVec;
     unsigned long long startPos;
 public:
     int count;
     FAUSTFLOAT* PTR[CHANNEL];
 
     FaustDType(
-        std::vector<float>* vec,
+        SIMD_FLOAT* vec,
         unsigned long long start, 
         unsigned long long end):
         startPos(start),

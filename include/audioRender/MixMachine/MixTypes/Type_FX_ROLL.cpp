@@ -4,7 +4,7 @@
 template<>
 bool
 MixMachine::TypeWorks<TypeEnum::ROLL, FaustEffects>
-(MixStruct& ms, FaustEffects& data, std::vector<float>* Vec)
+(MixStruct& ms, FaustEffects& data, SIMD_FLOAT* Vec)
 {
     if(!InterpolateInit(data.rollData, Vec, ms)){
         return false;

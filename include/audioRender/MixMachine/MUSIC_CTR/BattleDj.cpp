@@ -122,8 +122,8 @@ BattleDj::Pitch(MixStruct& ms)
     
 }
 
-std::optional<std::vector<float>*>
-BattleDj::operator<<(std::optional<std::vector<float>*> Array)
+std::optional<SIMD_FLOAT*>
+BattleDj::operator<<(std::optional<SIMD_FLOAT*> Array)
 {
     st->setTempo(1.0);
     st->setPitch(1.0);

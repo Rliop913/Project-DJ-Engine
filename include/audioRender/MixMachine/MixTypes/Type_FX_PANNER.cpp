@@ -4,7 +4,7 @@
 template<>
 bool
 MixMachine::TypeWorks<TypeEnum::PANNER, FaustEffects>
-(MixStruct& ms, FaustEffects& data, std::vector<float>* Vec)
+(MixStruct& ms, FaustEffects& data, SIMD_FLOAT* Vec)
 {
     if(!InterpolateInit(data.pannerData, Vec, ms)){
         return false;

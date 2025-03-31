@@ -1,10 +1,5 @@
-#include "ManualMix.hpp"
+#include "MusicControlPannel.hpp"
 
-
-MusicControlPannel::MusicControlPannel()
-{
-// NO_IMPL_CRASH
-}
 
 MusicControlPannel::~MusicControlPannel()
 {
@@ -59,7 +54,7 @@ LOADED_LIST
 MusicControlPannel::GetLoadedMusicList()
 {
     LOADED_LIST list;
-    for(auto i : deck){
+    for(auto& i : deck){
         list.push_back(i.first);
     }
     return std::move(list);
@@ -73,24 +68,30 @@ MusicControlPannel::UnloadMusic(const TITLE& title)
 }
 
 bool
-MusicControlPannel::GetPCMFrames(std::vector<float, hwy::AlignedAllocator<float>>& array, unsigned long FrameSize)
+MusicControlPannel::GetPCMFrames(SIMD_FLOAT* array, const unsigned long FrameSize)
 {
-    unsigned long long RAWFrameSize = FrameSize * CHANNEL;
+    const unsigned long long RAWFrameSize = FrameSize * CHANNEL;
     
-    std::vector<float, hwy::AlignedAllocator<float>> tempFrames(RAWFrameSize);
+    tempFrames.resize(RAWFrameSize);
+    L.resize(FrameSize);
+    R.resize(FrameSize);
     
     const hn::ScalableTag<float> hwyFTag;
     auto laneSize = hn::Lanes(hwyFTag);
     auto times = RAWFrameSize / laneSize;
     auto remained = RAWFrameSize % laneSize;
 
-    for(auto i : deck){
+    for(auto& i : deck){
         if(i.second.play){
             
             if(ma_decoder_read_pcm_frames(&i.second.dec, tempFrames.data(), FrameSize, NULL) != MA_SUCCESS){
                 return false;
             }
-            float* opoint = array.data();
+            toFaustStylePCM(FaustStyle, tempFrames.data(), FrameSize);
+            i.second.fxP->addFX(FaustStyle, FrameSize);
+            toLRStylePCM(FaustStyle, tempFrames.data(), FrameSize);
+            
+            float* opoint = array->data();
             float* tpoint = tempFrames.data();
             
             for(size_t j = 0; j < times; ++j){
@@ -108,4 +109,10 @@ MusicControlPannel::GetPCMFrames(std::vector<float, hwy::AlignedAllocator<float>
         }
     }
     return true;
+}
+
+FXControlPannel*
+MusicControlPannel::getFXHandle(const TITLE& title)
+{
+    return deck[title].fxP;
 }

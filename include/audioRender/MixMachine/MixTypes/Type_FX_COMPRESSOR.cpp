@@ -4,7 +4,7 @@
 template<>
 bool
 MixMachine::TypeWorks<TypeEnum::COMPRESSOR, FaustEffects>
-(MixStruct& ms, FaustEffects& data, std::vector<float>* Vec)
+(MixStruct& ms, FaustEffects& data, SIMD_FLOAT* Vec)
 {
     data.compressorData.emplace_back(Vec, ms.frame_in, ms.frame_out);
     TRY(

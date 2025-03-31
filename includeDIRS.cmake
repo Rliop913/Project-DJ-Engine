@@ -39,4 +39,7 @@ include_directories(
   
   ${CMAKE_SOURCE_DIR}/include/players
   ${CMAKE_SOURCE_DIR}/include/players/audioPlayer
+
+  ${CMAKE_SOURCE_DIR}/include/interface
+
 )

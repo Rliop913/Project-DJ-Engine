@@ -73,7 +73,7 @@ public:
     // std::optional<double> originBpm;
     std::optional<std::string> songPath;
 
-    std::optional<std::vector<float>*> 
-    Execute(const BPM& bpms, std::vector<float>* PCMS);
+    std::optional<SIMD_FLOAT*> 
+    Execute(const BPM& bpms, SIMD_FLOAT* PCMS);
     bool SendData(soundtouch::SoundTouch*& stp, Decoder*& dp);
 };

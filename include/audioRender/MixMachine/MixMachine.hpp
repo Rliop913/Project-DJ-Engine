@@ -5,6 +5,8 @@
 #include <optional>
 #include <sstream>
 
+#include <mutex>
+
 #include "MixTranslator.hpp"
 #include "dbRoot.hpp"
 #include "EFFECTS.hpp"
@@ -53,11 +55,16 @@ struct EightPointValues{
     }
 };
 
+#define FLAG_ALL_IS_OK -99
 
 class MixMachine{
 private:
     // FRAME_POS getMixSize(FRAME_POS frames);
 public:
+    int FLAG_SOMETHING_WRONG_ID = FLAG_ALL_IS_OK; //-99 is ok
+    std::mutex renderLock;
+    std::vector<std::thread> renderPool;
+
     std::unordered_map<ID, std::vector<MixStruct>> Memorized;
     bool IDsort(const MixTranslator& binary);
     bool mix(litedb& db, const BPM& bpms);
@@ -70,10 +77,10 @@ public:
     bool TypeWorks(MixStruct& ms, T& data, litedb& db);
     
     template<TypeEnum, typename T>
-    bool TypeWorks(MixStruct& ms, T& data, std::vector<float>* Vec);
+    bool TypeWorks(MixStruct& ms, T& data, SIMD_FLOAT* Vec);
     
     template<typename FXtype>
-    bool InterpolateInit(FXtype& FXvec, std::vector<float>*& PCMvec, MixStruct& ms){
+    bool InterpolateInit(FXtype& FXvec, SIMD_FLOAT*& PCMvec, MixStruct& ms){
         FXvec.emplace_back(PCMvec, ms.frame_in, ms.frame_out);
 
         TRY(

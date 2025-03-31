@@ -85,8 +85,8 @@ MUSIC_CTR::Render(
 
 
 
-std::optional<std::vector<float>*>
-MUSIC_CTR::Execute(const BPM& bpms, std::vector<float>* PCMS)
+std::optional<SIMD_FLOAT*>
+MUSIC_CTR::Execute(const BPM& bpms, SIMD_FLOAT* PCMS)
 {
     if(!checkUsable()){
         return std::nullopt;

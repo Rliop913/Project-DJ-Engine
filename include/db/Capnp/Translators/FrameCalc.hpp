@@ -4,6 +4,17 @@
 #include <algorithm>
 
 #include "CapnpBinary.hpp"
+
+
+#include <hwy/highway.h>
+#include <hwy/aligned_allocator.h>
+
+namespace hn = hwy::HWY_NAMESPACE;
+
+
+using SIMD_FLOAT    = std::vector<float, hwy::AlignedAllocator<float>>;
+
+
 #define CHANNEL 2
 #define SAMPLERATE 48000
 #define DSAMPLERATE 48000.0
