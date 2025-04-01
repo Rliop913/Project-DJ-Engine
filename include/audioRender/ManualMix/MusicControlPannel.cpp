@@ -114,5 +114,11 @@ MusicControlPannel::GetPCMFrames(SIMD_FLOAT* array, const unsigned long FrameSiz
 FXControlPannel*
 MusicControlPannel::getFXHandle(const TITLE& title)
 {
-    return deck[title].fxP;
+    if(deck.find(title) == deck.end()){
+        return nullptr;
+    }
+    else{
+        return deck[title].fxP;
+
+    }
 }

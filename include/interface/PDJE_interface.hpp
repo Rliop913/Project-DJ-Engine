@@ -2,7 +2,7 @@
 
 #include "audioPlayer.hpp"
 #include "dbRoot.hpp"
-
+#include "NoteTranslator.hpp"
 
 enum PLAY_MODE{
     FULL_PRE_RENDER,
@@ -15,7 +15,7 @@ private:
     std::optional<litedb> DBROOT;
 public:
     PDJE(const std::string& rootPath);
-    ~PDJE();
+    ~PDJE() = default;
 
     std::optional<audioPlayer> player;
 
@@ -25,7 +25,12 @@ public:
         trackdata& td, 
         const unsigned int FrameBufferSize);
 
-    
+    bool
+    GetNoteObjects(
+        trackdata& td,
+        OBJ_SETTER_CALLBACK& ObjectSetCallback
+    );
+
     MAYBE_MUS_VEC 
     SearchMusic(
         const std::string& Title, 
@@ -33,6 +38,7 @@ public:
         const double bpm = -1);
     
     MAYBE_TRACK_VEC SearchTrack(const std::string& Title);
+
 
 
 };

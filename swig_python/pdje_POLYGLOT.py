@@ -58,18 +58,30 @@ class _SwigNonDynamicMeta(type):
     __setattr__ = _swig_setattr_nondynamic_class_variable(type.__setattr__)
 
 
-class audioRender(object):
+FULL_PRE_RENDER = _pdje_python.FULL_PRE_RENDER
+HYBRID_RENDER = _pdje_python.HYBRID_RENDER
+FULL_MANUAL_RENDER = _pdje_python.FULL_MANUAL_RENDER
+class PDJE(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    rendered_frames = property(_pdje_python.audioRender_rendered_frames_get, _pdje_python.audioRender_rendered_frames_set)
 
-    def LoadTrack(self, db, td):
-        return _pdje_python.audioRender_LoadTrack(self, db, td)
+    def __init__(self, rootPath):
+        _pdje_python.PDJE_swiginit(self, _pdje_python.new_PDJE(rootPath))
+    __swig_destroy__ = _pdje_python.delete_PDJE
+    player = property(_pdje_python.PDJE_player_get, _pdje_python.PDJE_player_set)
 
-    def __init__(self):
-        _pdje_python.audioRender_swiginit(self, _pdje_python.new_audioRender())
-    __swig_destroy__ = _pdje_python.delete_audioRender
+    def InitPlayer(self, mode, td, FrameBufferSize):
+        return _pdje_python.PDJE_InitPlayer(self, mode, td, FrameBufferSize)
 
-# Register audioRender in _pdje_python:
-_pdje_python.audioRender_swigregister(audioRender)
+    def GetNoteObjects(self, td, ObjectSetCallback):
+        return _pdje_python.PDJE_GetNoteObjects(self, td, ObjectSetCallback)
+
+    def SearchMusic(self, Title, composer, bpm=-1):
+        return _pdje_python.PDJE_SearchMusic(self, Title, composer, bpm)
+
+    def SearchTrack(self, Title):
+        return _pdje_python.PDJE_SearchTrack(self, Title)
+
+# Register PDJE in _pdje_python:
+_pdje_python.PDJE_swigregister(PDJE)
 

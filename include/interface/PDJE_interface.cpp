@@ -72,3 +72,32 @@ PDJE::InitPlayer(
     }
     
 }
+
+
+bool
+PDJE::GetNoteObjects(
+        trackdata& td,
+        OBJ_SETTER_CALLBACK& ObjectSetCallback)
+{
+    CapReader<NoteBinaryCapnpData> notereader;
+    CapReader<MixBinaryCapnpData> mixreader;
+    notereader.open(td.noteBinary);
+    mixreader.open(td.mixBinary);
+    auto noteTrans = new NoteTranslator();
+    auto mixTrans = new MixTranslator();
+    if(mixTrans->bpms.has_value()){
+        noteTrans->Read(
+            notereader, 
+            mixTrans->bpms.value().bpmVec, 
+            ObjectSetCallback);
+    }
+    else{
+        delete noteTrans;
+        delete mixTrans;
+        return false;
+    }
+    delete noteTrans;
+    delete mixTrans;
+    return true;
+
+}

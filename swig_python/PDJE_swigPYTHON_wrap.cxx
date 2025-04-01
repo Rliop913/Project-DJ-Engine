@@ -3203,13 +3203,16 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_audioRender swig_types[0]
-#define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_litedb swig_types[2]
-#define SWIGTYPE_p_std__optionalT_std__vectorT_float_t_t swig_types[3]
-#define SWIGTYPE_p_trackdata swig_types[4]
-static swig_type_info *swig_types[6];
-static swig_module_info swig_module = {swig_types, 5, 0, 0, 0, 0};
+#define SWIGTYPE_p_MAYBE_MUS_VEC swig_types[0]
+#define SWIGTYPE_p_MAYBE_TRACK_VEC swig_types[1]
+#define SWIGTYPE_p_OBJ_SETTER_CALLBACK swig_types[2]
+#define SWIGTYPE_p_PDJE swig_types[3]
+#define SWIGTYPE_p_char swig_types[4]
+#define SWIGTYPE_p_std__optionalT_audioPlayer_t swig_types[5]
+#define SWIGTYPE_p_std__string swig_types[6]
+#define SWIGTYPE_p_trackdata swig_types[7]
+static swig_type_info *swig_types[9];
+static swig_module_info swig_module = {swig_types, 8, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3356,7 +3359,240 @@ namespace swig {
 }
 
 
-    #include "audioRender.hpp"
+    #include "PDJE_interface.hpp"
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_int  (int value)
+{
+  return PyInt_FromLong((long) value);
+}
+
+
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+SWIGINTERN int
+SWIG_AsVal_double (PyObject *obj, double *val)
+{
+  int res = SWIG_TypeError;
+  if (PyFloat_Check(obj)) {
+    if (val) *val = PyFloat_AsDouble(obj);
+    return SWIG_OK;
+#if PY_VERSION_HEX < 0x03000000
+  } else if (PyInt_Check(obj)) {
+    if (val) *val = (double) PyInt_AsLong(obj);
+    return SWIG_OK;
+#endif
+  } else if (PyLong_Check(obj)) {
+    double v = PyLong_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    double d = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = d;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      long v = PyLong_AsLong(obj);
+      if (!PyErr_Occurred()) {
+	if (val) *val = v;
+	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
+      } else {
+	PyErr_Clear();
+      }
+    }
+  }
+#endif
+  return res;
+}
+
+
+#include <float.h>
+
+
+#include <math.h>
+
+
+SWIGINTERNINLINE int
+SWIG_CanCastAsInteger(double *d, double min, double max) {
+  double x = *d;
+  if ((min <= x && x <= max)) {
+   double fx, cx, rd;
+   errno = 0;
+   fx = floor(x);
+   cx = ceil(x);
+   rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
+   if ((errno == EDOM) || (errno == ERANGE)) {
+     errno = 0;
+   } else {
+     double summ, reps, diff;
+     if (rd < x) {
+       diff = x - rd;
+     } else if (rd > x) {
+       diff = rd - x;
+     } else {
+       return 1;
+     }
+     summ = rd + x;
+     reps = diff/summ;
+     if (reps < 8*DBL_EPSILON) {
+       *d = rd;
+       return 1;
+     }
+   }
+  }
+  return 0;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_long (PyObject *obj, long* val)
+{
+#if PY_VERSION_HEX < 0x03000000
+  if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else
+#endif
+  if (PyLong_Check(obj)) {
+    long v = PyLong_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+      return SWIG_OverflowError;
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    long v = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      // Largest double not larger than LONG_MAX (not portably calculated easily)
+      // Note that double(LONG_MAX) is stored in a double rounded up by one (for 64-bit long)
+      // 0x7ffffffffffffc00LL == (int64_t)std::nextafter(double(__uint128_t(LONG_MAX)+1), double(0))
+      const double long_max = sizeof(long) == 8 ? 0x7ffffffffffffc00LL : LONG_MAX;
+      // No equivalent needed for 64-bit double(LONG_MIN) is exactly LONG_MIN
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, long_max)) {
+	if (val) *val = (long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_int (PyObject * obj, int *val)
+{
+  long v;
+  int res = SWIG_AsVal_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < INT_MIN || v > INT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< int >(v);
+    }
+  }  
+  return res;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_unsigned_SS_long (PyObject *obj, unsigned long *val) 
+{
+#if PY_VERSION_HEX < 0x03000000
+  if (PyInt_Check(obj)) {
+    long v = PyInt_AsLong(obj);
+    if (v >= 0) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      return SWIG_OverflowError;
+    }
+  } else
+#endif
+  if (PyLong_Check(obj)) {
+    unsigned long v = PyLong_AsUnsignedLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+      return SWIG_OverflowError;
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    unsigned long v = PyLong_AsUnsignedLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      // Largest double not larger than ULONG_MAX (not portably calculated easily)
+      // Note that double(ULONG_MAX) is stored in a double rounded up by one (for 64-bit unsigned long)
+      // 0xfffffffffffff800ULL == (uint64_t)std::nextafter(double(__uint128_t(ULONG_MAX)+1), double(0))
+      const double ulong_max = sizeof(unsigned long) == 8 ? 0xfffffffffffff800ULL : ULONG_MAX;
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, 0, ulong_max)) {
+	if (val) *val = (unsigned long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_unsigned_SS_int (PyObject * obj, unsigned int *val)
+{
+  unsigned long v;
+  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v > UINT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< unsigned int >(v);
+    }
+  }  
+  return res;
+}
 
 
 SWIGINTERNINLINE PyObject*
@@ -3368,37 +3604,49 @@ SWIGINTERNINLINE PyObject*
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_audioRender_rendered_frames_set(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_PDJE(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  audioRender *arg1 = (audioRender *) 0 ;
-  std::optional< std::vector< float > > arg2 ;
+  std::string *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject *swig_obj[1] ;
+  PDJE *result = 0 ;
   
   (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "audioRender_rendered_frames_set", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_audioRender, 0 |  0 );
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__string,  0  | 0);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "audioRender_rendered_frames_set" "', argument " "1"" of type '" "audioRender *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_PDJE" "', argument " "1"" of type '" "std::string const &""'"); 
   }
-  arg1 = reinterpret_cast< audioRender * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__optionalT_std__vectorT_float_t_t,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "audioRender_rendered_frames_set" "', argument " "2"" of type '" "std::optional< std::vector< float > >""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "audioRender_rendered_frames_set" "', argument " "2"" of type '" "std::optional< std::vector< float > >""'");
-    } else {
-      std::optional< std::vector< float > > * temp = reinterpret_cast< std::optional< std::vector< float > > * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "new_PDJE" "', argument " "1"" of type '" "std::string const &""'"); 
   }
-  if (arg1) (arg1)->rendered_frames = arg2;
+  arg1 = reinterpret_cast< std::string * >(argp1);
+  result = (PDJE *)new PDJE((std::string const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_PDJE, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_PDJE(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  PDJE *arg1 = (PDJE *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PDJE, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_PDJE" "', argument " "1"" of type '" "PDJE *""'"); 
+  }
+  arg1 = reinterpret_cast< PDJE * >(argp1);
+  delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3406,35 +3654,123 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_audioRender_rendered_frames_get(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_PDJE_player_set(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  audioRender *arg1 = (audioRender *) 0 ;
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::optional< audioPlayer > arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::optional< std::vector< float > > result;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
   
   (void)self;
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_audioRender, 0 |  0 );
+  if (!SWIG_Python_UnpackTuple(args, "PDJE_player_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PDJE, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "audioRender_rendered_frames_get" "', argument " "1"" of type '" "audioRender *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_player_set" "', argument " "1"" of type '" "PDJE *""'"); 
   }
-  arg1 = reinterpret_cast< audioRender * >(argp1);
-  result =  ((arg1)->rendered_frames);
-  resultobj = SWIG_NewPointerObj((new std::optional< std::vector< float > >(result)), SWIGTYPE_p_std__optionalT_std__vectorT_float_t_t, SWIG_POINTER_OWN |  0 );
+  arg1 = reinterpret_cast< PDJE * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__optionalT_audioPlayer_t,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PDJE_player_set" "', argument " "2"" of type '" "std::optional< audioPlayer >""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "PDJE_player_set" "', argument " "2"" of type '" "std::optional< audioPlayer >""'");
+    } else {
+      std::optional< audioPlayer > * temp = reinterpret_cast< std::optional< audioPlayer > * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  if (arg1) (arg1)->player = arg2;
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_audioRender_LoadTrack(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_PDJE_player_get(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  audioRender *arg1 = (audioRender *) 0 ;
-  litedb *arg2 = 0 ;
+  PDJE *arg1 = (PDJE *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::optional< audioPlayer > result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PDJE, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_player_get" "', argument " "1"" of type '" "PDJE *""'"); 
+  }
+  arg1 = reinterpret_cast< PDJE * >(argp1);
+  result =  ((arg1)->player);
+  resultobj = SWIG_NewPointerObj((new std::optional< audioPlayer >(result)), SWIGTYPE_p_std__optionalT_audioPlayer_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PDJE_InitPlayer(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  PDJE *arg1 = (PDJE *) 0 ;
+  PLAY_MODE arg2 ;
   trackdata *arg3 = 0 ;
+  unsigned int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  unsigned int val4 ;
+  int ecode4 = 0 ;
+  PyObject *swig_obj[4] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "PDJE_InitPlayer", 4, 4, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PDJE, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_InitPlayer" "', argument " "1"" of type '" "PDJE *""'"); 
+  }
+  arg1 = reinterpret_cast< PDJE * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PDJE_InitPlayer" "', argument " "2"" of type '" "PLAY_MODE""'");
+  } 
+  arg2 = static_cast< PLAY_MODE >(val2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_trackdata,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PDJE_InitPlayer" "', argument " "3"" of type '" "trackdata &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "PDJE_InitPlayer" "', argument " "3"" of type '" "trackdata &""'"); 
+  }
+  arg3 = reinterpret_cast< trackdata * >(argp3);
+  ecode4 = SWIG_AsVal_unsigned_SS_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "PDJE_InitPlayer" "', argument " "4"" of type '" "unsigned int""'");
+  } 
+  arg4 = static_cast< unsigned int >(val4);
+  result = (bool)(arg1)->InitPlayer(arg2,*arg3,arg4);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PDJE_GetNoteObjects(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  PDJE *arg1 = (PDJE *) 0 ;
+  trackdata *arg2 = 0 ;
+  OBJ_SETTER_CALLBACK *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -3445,29 +3781,29 @@ SWIGINTERN PyObject *_wrap_audioRender_LoadTrack(PyObject *self, PyObject *args)
   bool result;
   
   (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "audioRender_LoadTrack", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_audioRender, 0 |  0 );
+  if (!SWIG_Python_UnpackTuple(args, "PDJE_GetNoteObjects", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PDJE, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "audioRender_LoadTrack" "', argument " "1"" of type '" "audioRender *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_GetNoteObjects" "', argument " "1"" of type '" "PDJE *""'"); 
   }
-  arg1 = reinterpret_cast< audioRender * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_litedb,  0 );
+  arg1 = reinterpret_cast< PDJE * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_trackdata,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "audioRender_LoadTrack" "', argument " "2"" of type '" "litedb &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PDJE_GetNoteObjects" "', argument " "2"" of type '" "trackdata &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "audioRender_LoadTrack" "', argument " "2"" of type '" "litedb &""'"); 
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "PDJE_GetNoteObjects" "', argument " "2"" of type '" "trackdata &""'"); 
   }
-  arg2 = reinterpret_cast< litedb * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_trackdata,  0 );
+  arg2 = reinterpret_cast< trackdata * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_OBJ_SETTER_CALLBACK,  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "audioRender_LoadTrack" "', argument " "3"" of type '" "trackdata &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PDJE_GetNoteObjects" "', argument " "3"" of type '" "OBJ_SETTER_CALLBACK &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "audioRender_LoadTrack" "', argument " "3"" of type '" "trackdata &""'"); 
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "PDJE_GetNoteObjects" "', argument " "3"" of type '" "OBJ_SETTER_CALLBACK &""'"); 
   }
-  arg3 = reinterpret_cast< trackdata * >(argp3);
-  result = (bool)(arg1)->LoadTrack(*arg2,*arg3);
+  arg3 = reinterpret_cast< OBJ_SETTER_CALLBACK * >(argp3);
+  result = (bool)(arg1)->GetNoteObjects(*arg2,*arg3);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -3475,93 +3811,259 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_audioRender(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_PDJE_SearchMusic__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  audioRender *result = 0 ;
-  
-  (void)self;
-  if (!SWIG_Python_UnpackTuple(args, "new_audioRender", 0, 0, 0)) SWIG_fail;
-  result = (audioRender *)new audioRender();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_audioRender, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_audioRender(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  audioRender *arg1 = (audioRender *) 0 ;
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  double arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  MAYBE_MUS_VEC result;
   
   (void)self;
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_audioRender, SWIG_POINTER_DISOWN |  0 );
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PDJE, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_audioRender" "', argument " "1"" of type '" "audioRender *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_SearchMusic" "', argument " "1"" of type '" "PDJE *""'"); 
   }
-  arg1 = reinterpret_cast< audioRender * >(argp1);
-  delete arg1;
-  resultobj = SWIG_Py_Void();
+  arg1 = reinterpret_cast< PDJE * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__string,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PDJE_SearchMusic" "', argument " "2"" of type '" "std::string const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "PDJE_SearchMusic" "', argument " "2"" of type '" "std::string const &""'"); 
+  }
+  arg2 = reinterpret_cast< std::string * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_std__string,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PDJE_SearchMusic" "', argument " "3"" of type '" "std::string const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "PDJE_SearchMusic" "', argument " "3"" of type '" "std::string const &""'"); 
+  }
+  arg3 = reinterpret_cast< std::string * >(argp3);
+  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "PDJE_SearchMusic" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  result = (arg1)->SearchMusic((std::string const &)*arg2,(std::string const &)*arg3,arg4);
+  resultobj = SWIG_NewPointerObj((new MAYBE_MUS_VEC(result)), SWIGTYPE_p_MAYBE_MUS_VEC, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *audioRender_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_PDJE_SearchMusic__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  MAYBE_MUS_VEC result;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PDJE, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_SearchMusic" "', argument " "1"" of type '" "PDJE *""'"); 
+  }
+  arg1 = reinterpret_cast< PDJE * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__string,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PDJE_SearchMusic" "', argument " "2"" of type '" "std::string const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "PDJE_SearchMusic" "', argument " "2"" of type '" "std::string const &""'"); 
+  }
+  arg2 = reinterpret_cast< std::string * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_std__string,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PDJE_SearchMusic" "', argument " "3"" of type '" "std::string const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "PDJE_SearchMusic" "', argument " "3"" of type '" "std::string const &""'"); 
+  }
+  arg3 = reinterpret_cast< std::string * >(argp3);
+  result = (arg1)->SearchMusic((std::string const &)*arg2,(std::string const &)*arg3);
+  resultobj = SWIG_NewPointerObj((new MAYBE_MUS_VEC(result)), SWIGTYPE_p_MAYBE_MUS_VEC, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PDJE_SearchMusic(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "PDJE_SearchMusic", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v = 0;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_PDJE, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__string, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_std__string, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_PDJE_SearchMusic__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v = 0;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_PDJE, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__string, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_std__string, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          {
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_PDJE_SearchMusic__SWIG_0(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'PDJE_SearchMusic'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    PDJE::SearchMusic(std::string const &,std::string const &,double const)\n"
+    "    PDJE::SearchMusic(std::string const &,std::string const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_PDJE_SearchTrack(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  MAYBE_TRACK_VEC result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "PDJE_SearchTrack", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PDJE, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_SearchTrack" "', argument " "1"" of type '" "PDJE *""'"); 
+  }
+  arg1 = reinterpret_cast< PDJE * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__string,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PDJE_SearchTrack" "', argument " "2"" of type '" "std::string const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "PDJE_SearchTrack" "', argument " "2"" of type '" "std::string const &""'"); 
+  }
+  arg2 = reinterpret_cast< std::string * >(argp2);
+  result = (arg1)->SearchTrack((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj((new MAYBE_TRACK_VEC(result)), SWIGTYPE_p_MAYBE_TRACK_VEC, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *PDJE_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj = NULL;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_audioRender, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_PDJE, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *audioRender_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *PDJE_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
 static PyMethodDef SwigMethods[] = {
-	 { "audioRender_rendered_frames_set", _wrap_audioRender_rendered_frames_set, METH_VARARGS, NULL},
-	 { "audioRender_rendered_frames_get", _wrap_audioRender_rendered_frames_get, METH_O, NULL},
-	 { "audioRender_LoadTrack", _wrap_audioRender_LoadTrack, METH_VARARGS, NULL},
-	 { "new_audioRender", _wrap_new_audioRender, METH_NOARGS, NULL},
-	 { "delete_audioRender", _wrap_delete_audioRender, METH_O, NULL},
-	 { "audioRender_swigregister", audioRender_swigregister, METH_O, NULL},
-	 { "audioRender_swiginit", audioRender_swiginit, METH_VARARGS, NULL},
+	 { "new_PDJE", _wrap_new_PDJE, METH_O, NULL},
+	 { "delete_PDJE", _wrap_delete_PDJE, METH_O, NULL},
+	 { "PDJE_player_set", _wrap_PDJE_player_set, METH_VARARGS, NULL},
+	 { "PDJE_player_get", _wrap_PDJE_player_get, METH_O, NULL},
+	 { "PDJE_InitPlayer", _wrap_PDJE_InitPlayer, METH_VARARGS, NULL},
+	 { "PDJE_GetNoteObjects", _wrap_PDJE_GetNoteObjects, METH_VARARGS, NULL},
+	 { "PDJE_SearchMusic", _wrap_PDJE_SearchMusic, METH_VARARGS, NULL},
+	 { "PDJE_SearchTrack", _wrap_PDJE_SearchTrack, METH_VARARGS, NULL},
+	 { "PDJE_swigregister", PDJE_swigregister, METH_O, NULL},
+	 { "PDJE_swiginit", PDJE_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p_audioRender = {"_p_audioRender", "audioRender *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_MAYBE_MUS_VEC = {"_p_MAYBE_MUS_VEC", "MAYBE_MUS_VEC *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_MAYBE_TRACK_VEC = {"_p_MAYBE_TRACK_VEC", "MAYBE_TRACK_VEC *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_OBJ_SETTER_CALLBACK = {"_p_OBJ_SETTER_CALLBACK", "OBJ_SETTER_CALLBACK *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PDJE = {"_p_PDJE", "PDJE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_litedb = {"_p_litedb", "litedb *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__optionalT_std__vectorT_float_t_t = {"_p_std__optionalT_std__vectorT_float_t_t", "std::optional< std::vector< float > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__optionalT_audioPlayer_t = {"_p_std__optionalT_audioPlayer_t", "std::optional< audioPlayer > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_trackdata = {"_p_trackdata", "trackdata *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_audioRender,
+  &_swigt__p_MAYBE_MUS_VEC,
+  &_swigt__p_MAYBE_TRACK_VEC,
+  &_swigt__p_OBJ_SETTER_CALLBACK,
+  &_swigt__p_PDJE,
   &_swigt__p_char,
-  &_swigt__p_litedb,
-  &_swigt__p_std__optionalT_std__vectorT_float_t_t,
+  &_swigt__p_std__optionalT_audioPlayer_t,
+  &_swigt__p_std__string,
   &_swigt__p_trackdata,
 };
 
-static swig_cast_info _swigc__p_audioRender[] = {  {&_swigt__p_audioRender, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_MAYBE_MUS_VEC[] = {  {&_swigt__p_MAYBE_MUS_VEC, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_MAYBE_TRACK_VEC[] = {  {&_swigt__p_MAYBE_TRACK_VEC, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_OBJ_SETTER_CALLBACK[] = {  {&_swigt__p_OBJ_SETTER_CALLBACK, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_PDJE[] = {  {&_swigt__p_PDJE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_litedb[] = {  {&_swigt__p_litedb, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__optionalT_std__vectorT_float_t_t[] = {  {&_swigt__p_std__optionalT_std__vectorT_float_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__optionalT_audioPlayer_t[] = {  {&_swigt__p_std__optionalT_audioPlayer_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_trackdata[] = {  {&_swigt__p_trackdata, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_audioRender,
+  _swigc__p_MAYBE_MUS_VEC,
+  _swigc__p_MAYBE_TRACK_VEC,
+  _swigc__p_OBJ_SETTER_CALLBACK,
+  _swigc__p_PDJE,
   _swigc__p_char,
-  _swigc__p_litedb,
-  _swigc__p_std__optionalT_std__vectorT_float_t_t,
+  _swigc__p_std__optionalT_audioPlayer_t,
+  _swigc__p_std__string,
   _swigc__p_trackdata,
 };
 
@@ -4029,6 +4531,9 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
+  SWIG_Python_SetConstant(d, "FULL_PRE_RENDER",SWIG_From_int(static_cast< int >(FULL_PRE_RENDER)));
+  SWIG_Python_SetConstant(d, "HYBRID_RENDER",SWIG_From_int(static_cast< int >(HYBRID_RENDER)));
+  SWIG_Python_SetConstant(d, "FULL_MANUAL_RENDER",SWIG_From_int(static_cast< int >(FULL_MANUAL_RENDER)));
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

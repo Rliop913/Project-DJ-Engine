@@ -353,80 +353,176 @@ template <typename T> T SwigValueInit() {
 #endif
 
 
-    #include "audioRender.hpp"
+    #include "PDJE_interface.hpp"
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-SWIGEXPORT void SWIGSTDCALL CSharp_audioRender_rendered_frames_set(void * jarg1, void * jarg2) {
-  audioRender *arg1 = (audioRender *) 0 ;
-  std::optional< std::vector< float > > arg2 ;
-  std::optional< std::vector< float > > *argp2 ;
-  
-  arg1 = (audioRender *)jarg1; 
-  argp2 = (std::optional< std::vector< float > > *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::optional< std::vector< float > >", 0);
-    return ;
-  }
-  arg2 = *argp2; 
-  if (arg1) (arg1)->rendered_frames = arg2;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_audioRender_rendered_frames_get(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_PDJE(void * jarg1) {
   void * jresult ;
-  audioRender *arg1 = (audioRender *) 0 ;
-  std::optional< std::vector< float > > result;
+  std::string *arg1 = 0 ;
+  PDJE *result = 0 ;
   
-  arg1 = (audioRender *)jarg1; 
-  result =  ((arg1)->rendered_frames);
-  jresult = new std::optional< std::vector< float > >(result); 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_audioRender_LoadTrack(void * jarg1, void * jarg2, void * jarg3) {
-  unsigned int jresult ;
-  audioRender *arg1 = (audioRender *) 0 ;
-  litedb *arg2 = 0 ;
-  trackdata *arg3 = 0 ;
-  bool result;
-  
-  arg1 = (audioRender *)jarg1; 
-  arg2 = (litedb *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "litedb & is null", 0);
+  arg1 = (std::string *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::string const & is null", 0);
     return 0;
   } 
-  arg3 = (trackdata *)jarg3;
-  if (!arg3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "trackdata & is null", 0);
-    return 0;
-  } 
-  result = (bool)(arg1)->LoadTrack(*arg2,*arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_audioRender() {
-  void * jresult ;
-  audioRender *result = 0 ;
-  
-  result = (audioRender *)new audioRender();
+  result = (PDJE *)new PDJE((std::string const &)*arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_audioRender(void * jarg1) {
-  audioRender *arg1 = (audioRender *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_PDJE(void * jarg1) {
+  PDJE *arg1 = (PDJE *) 0 ;
   
-  arg1 = (audioRender *)jarg1; 
+  arg1 = (PDJE *)jarg1; 
   delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_PDJE_player_set(void * jarg1, void * jarg2) {
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::optional< audioPlayer > arg2 ;
+  std::optional< audioPlayer > *argp2 ;
+  
+  arg1 = (PDJE *)jarg1; 
+  argp2 = (std::optional< audioPlayer > *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::optional< audioPlayer >", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  if (arg1) (arg1)->player = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_PDJE_player_get(void * jarg1) {
+  void * jresult ;
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::optional< audioPlayer > result;
+  
+  arg1 = (PDJE *)jarg1; 
+  result =  ((arg1)->player);
+  jresult = new std::optional< audioPlayer >(result); 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_PDJE_InitPlayer(void * jarg1, int jarg2, void * jarg3, unsigned int jarg4) {
+  unsigned int jresult ;
+  PDJE *arg1 = (PDJE *) 0 ;
+  PLAY_MODE arg2 ;
+  trackdata *arg3 = 0 ;
+  unsigned int arg4 ;
+  bool result;
+  
+  arg1 = (PDJE *)jarg1; 
+  arg2 = (PLAY_MODE)jarg2; 
+  arg3 = (trackdata *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "trackdata & is null", 0);
+    return 0;
+  } 
+  arg4 = (unsigned int)jarg4; 
+  result = (bool)(arg1)->InitPlayer(arg2,*arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_PDJE_GetNoteObjects(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  PDJE *arg1 = (PDJE *) 0 ;
+  trackdata *arg2 = 0 ;
+  OBJ_SETTER_CALLBACK *arg3 = 0 ;
+  bool result;
+  
+  arg1 = (PDJE *)jarg1; 
+  arg2 = (trackdata *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "trackdata & is null", 0);
+    return 0;
+  } 
+  arg3 = (OBJ_SETTER_CALLBACK *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "OBJ_SETTER_CALLBACK & is null", 0);
+    return 0;
+  } 
+  result = (bool)(arg1)->GetNoteObjects(*arg2,*arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_PDJE_SearchMusic__SWIG_0(void * jarg1, void * jarg2, void * jarg3, double jarg4) {
+  void * jresult ;
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  double arg4 ;
+  MAYBE_MUS_VEC result;
+  
+  arg1 = (PDJE *)jarg1; 
+  arg2 = (std::string *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::string const & is null", 0);
+    return 0;
+  } 
+  arg3 = (std::string *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::string const & is null", 0);
+    return 0;
+  } 
+  arg4 = (double)jarg4; 
+  result = (arg1)->SearchMusic((std::string const &)*arg2,(std::string const &)*arg3,arg4);
+  jresult = new MAYBE_MUS_VEC(result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_PDJE_SearchMusic__SWIG_1(void * jarg1, void * jarg2, void * jarg3) {
+  void * jresult ;
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  MAYBE_MUS_VEC result;
+  
+  arg1 = (PDJE *)jarg1; 
+  arg2 = (std::string *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::string const & is null", 0);
+    return 0;
+  } 
+  arg3 = (std::string *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::string const & is null", 0);
+    return 0;
+  } 
+  result = (arg1)->SearchMusic((std::string const &)*arg2,(std::string const &)*arg3);
+  jresult = new MAYBE_MUS_VEC(result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_PDJE_SearchTrack(void * jarg1, void * jarg2) {
+  void * jresult ;
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::string *arg2 = 0 ;
+  MAYBE_TRACK_VEC result;
+  
+  arg1 = (PDJE *)jarg1; 
+  arg2 = (std::string *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::string const & is null", 0);
+    return 0;
+  } 
+  result = (arg1)->SearchTrack((std::string const &)*arg2);
+  jresult = new MAYBE_TRACK_VEC(result); 
+  return jresult;
 }
 
 

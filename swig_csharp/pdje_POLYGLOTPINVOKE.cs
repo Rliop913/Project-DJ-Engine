@@ -224,18 +224,30 @@ class pdje_POLYGLOTPINVOKE {
   }
 
 
-  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioRender_rendered_frames_set")]
-  public static extern void audioRender_rendered_frames_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_PDJE")]
+  public static extern global::System.IntPtr new_PDJE(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioRender_rendered_frames_get")]
-  public static extern global::System.IntPtr audioRender_rendered_frames_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_delete_PDJE")]
+  public static extern void delete_PDJE(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioRender_LoadTrack")]
-  public static extern bool audioRender_LoadTrack(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_PDJE_player_set")]
+  public static extern void PDJE_player_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_audioRender")]
-  public static extern global::System.IntPtr new_audioRender();
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_PDJE_player_get")]
+  public static extern global::System.IntPtr PDJE_player_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_delete_audioRender")]
-  public static extern void delete_audioRender(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_PDJE_InitPlayer")]
+  public static extern bool PDJE_InitPlayer(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, uint jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_PDJE_GetNoteObjects")]
+  public static extern bool PDJE_GetNoteObjects(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_PDJE_SearchMusic__SWIG_0")]
+  public static extern global::System.IntPtr PDJE_SearchMusic__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, double jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_PDJE_SearchMusic__SWIG_1")]
+  public static extern global::System.IntPtr PDJE_SearchMusic__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_PDJE_SearchTrack")]
+  public static extern global::System.IntPtr PDJE_SearchTrack(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 }

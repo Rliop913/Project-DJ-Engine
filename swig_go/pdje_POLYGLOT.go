@@ -27,13 +27,20 @@ typedef struct { char *p; intgo n; } _gostring_;
 typedef struct { void* array; intgo len; intgo cap; } _goslice_;
 
 
-extern void _wrap_Swig_free_pdje_POLYGLOT_e08262965a09b00b(uintptr_t arg1);
-extern uintptr_t _wrap_Swig_malloc_pdje_POLYGLOT_e08262965a09b00b(swig_intgo arg1);
-extern void _wrap_audioRender_rendered_frames_set_pdje_POLYGLOT_e08262965a09b00b(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_audioRender_rendered_frames_get_pdje_POLYGLOT_e08262965a09b00b(uintptr_t arg1);
-extern _Bool _wrap_audioRender_LoadTrack_pdje_POLYGLOT_e08262965a09b00b(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern uintptr_t _wrap_new_audioRender_pdje_POLYGLOT_e08262965a09b00b(void);
-extern void _wrap_delete_audioRender_pdje_POLYGLOT_e08262965a09b00b(uintptr_t arg1);
+extern void _wrap_Swig_free_pdje_POLYGLOT_555bf1454b31f4c0(uintptr_t arg1);
+extern uintptr_t _wrap_Swig_malloc_pdje_POLYGLOT_555bf1454b31f4c0(swig_intgo arg1);
+extern swig_intgo _wrap_FULL_PRE_RENDER_pdje_POLYGLOT_555bf1454b31f4c0(void);
+extern swig_intgo _wrap_HYBRID_RENDER_pdje_POLYGLOT_555bf1454b31f4c0(void);
+extern swig_intgo _wrap_FULL_MANUAL_RENDER_pdje_POLYGLOT_555bf1454b31f4c0(void);
+extern uintptr_t _wrap_new_PDJE_pdje_POLYGLOT_555bf1454b31f4c0(uintptr_t arg1);
+extern void _wrap_delete_PDJE_pdje_POLYGLOT_555bf1454b31f4c0(uintptr_t arg1);
+extern void _wrap_PDJE_player_set_pdje_POLYGLOT_555bf1454b31f4c0(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_PDJE_player_get_pdje_POLYGLOT_555bf1454b31f4c0(uintptr_t arg1);
+extern _Bool _wrap_PDJE_InitPlayer_pdje_POLYGLOT_555bf1454b31f4c0(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, swig_intgo arg4);
+extern _Bool _wrap_PDJE_GetNoteObjects_pdje_POLYGLOT_555bf1454b31f4c0(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern uintptr_t _wrap_PDJE_SearchMusic__SWIG_0_pdje_POLYGLOT_555bf1454b31f4c0(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, double arg4);
+extern uintptr_t _wrap_PDJE_SearchMusic__SWIG_1_pdje_POLYGLOT_555bf1454b31f4c0(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern uintptr_t _wrap_PDJE_SearchTrack_pdje_POLYGLOT_555bf1454b31f4c0(uintptr_t arg1, uintptr_t arg2);
 #undef intgo
 */
 import "C"
@@ -65,8 +72,8 @@ func getSwigcptr(v interface { Swigcptr() uintptr }) uintptr {
 
 type _ sync.Mutex
 
-//export cgo_panic__pdje_POLYGLOT_e08262965a09b00b
-func cgo_panic__pdje_POLYGLOT_e08262965a09b00b(p *byte) {
+//export cgo_panic__pdje_POLYGLOT_555bf1454b31f4c0
+func cgo_panic__pdje_POLYGLOT_555bf1454b31f4c0(p *byte) {
 	s := (*[1024]byte)(unsafe.Pointer(p))[:]
 	for i, b := range s {
 		if b == 0 {
@@ -78,72 +85,154 @@ func cgo_panic__pdje_POLYGLOT_e08262965a09b00b(p *byte) {
 
 func Swig_free(arg1 uintptr) {
 	_swig_i_0 := arg1
-	C._wrap_Swig_free_pdje_POLYGLOT_e08262965a09b00b(C.uintptr_t(_swig_i_0))
+	C._wrap_Swig_free_pdje_POLYGLOT_555bf1454b31f4c0(C.uintptr_t(_swig_i_0))
 }
 
 func Swig_malloc(arg1 int) (_swig_ret uintptr) {
 	var swig_r uintptr
 	_swig_i_0 := arg1
-	swig_r = (uintptr)(C._wrap_Swig_malloc_pdje_POLYGLOT_e08262965a09b00b(C.swig_intgo(_swig_i_0)))
+	swig_r = (uintptr)(C._wrap_Swig_malloc_pdje_POLYGLOT_555bf1454b31f4c0(C.swig_intgo(_swig_i_0)))
 	return swig_r
 }
 
-type SwigcptrAudioRender uintptr
+type PLAY_MODE int
+func _swig_getFULL_PRE_RENDER() (_swig_ret PLAY_MODE) {
+	var swig_r PLAY_MODE
+	swig_r = (PLAY_MODE)(C._wrap_FULL_PRE_RENDER_pdje_POLYGLOT_555bf1454b31f4c0())
+	return swig_r
+}
 
-func (p SwigcptrAudioRender) Swigcptr() uintptr {
+var FULL_PRE_RENDER PLAY_MODE = _swig_getFULL_PRE_RENDER()
+func _swig_getHYBRID_RENDER() (_swig_ret PLAY_MODE) {
+	var swig_r PLAY_MODE
+	swig_r = (PLAY_MODE)(C._wrap_HYBRID_RENDER_pdje_POLYGLOT_555bf1454b31f4c0())
+	return swig_r
+}
+
+var HYBRID_RENDER PLAY_MODE = _swig_getHYBRID_RENDER()
+func _swig_getFULL_MANUAL_RENDER() (_swig_ret PLAY_MODE) {
+	var swig_r PLAY_MODE
+	swig_r = (PLAY_MODE)(C._wrap_FULL_MANUAL_RENDER_pdje_POLYGLOT_555bf1454b31f4c0())
+	return swig_r
+}
+
+var FULL_MANUAL_RENDER PLAY_MODE = _swig_getFULL_MANUAL_RENDER()
+type SwigcptrPDJE uintptr
+
+func (p SwigcptrPDJE) Swigcptr() uintptr {
 	return (uintptr)(p)
 }
 
-func (p SwigcptrAudioRender) SwigIsAudioRender() {
+func (p SwigcptrPDJE) SwigIsPDJE() {
 }
 
-func (arg1 SwigcptrAudioRender) SetRendered_frames(arg2 Std_optional_Sl_std_vector_Sl_float_Sg__Sg_) {
-	_swig_i_0 := arg1
-	_swig_i_1 := getSwigcptr(arg2)
-	C._wrap_audioRender_rendered_frames_set_pdje_POLYGLOT_e08262965a09b00b(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
-}
-
-func (arg1 SwigcptrAudioRender) GetRendered_frames() (_swig_ret Std_optional_Sl_std_vector_Sl_float_Sg__Sg_) {
-	var swig_r Std_optional_Sl_std_vector_Sl_float_Sg__Sg_
-	_swig_i_0 := arg1
-	swig_r = (Std_optional_Sl_std_vector_Sl_float_Sg__Sg_)(SwigcptrStd_optional_Sl_std_vector_Sl_float_Sg__Sg_(C._wrap_audioRender_rendered_frames_get_pdje_POLYGLOT_e08262965a09b00b(C.uintptr_t(_swig_i_0))))
+func NewPDJE(arg1 Std_string) (_swig_ret PDJE) {
+	var swig_r PDJE
+	_swig_i_0 := getSwigcptr(arg1)
+	swig_r = (PDJE)(SwigcptrPDJE(C._wrap_new_PDJE_pdje_POLYGLOT_555bf1454b31f4c0(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
-func (arg1 SwigcptrAudioRender) LoadTrack(arg2 Litedb, arg3 Trackdata) (_swig_ret bool) {
+func DeletePDJE(arg1 PDJE) {
+	_swig_i_0 := getSwigcptr(arg1)
+	C._wrap_delete_PDJE_pdje_POLYGLOT_555bf1454b31f4c0(C.uintptr_t(_swig_i_0))
+}
+
+func (arg1 SwigcptrPDJE) SetPlayer(arg2 Std_optional_Sl_audioPlayer_Sg_) {
+	_swig_i_0 := arg1
+	_swig_i_1 := getSwigcptr(arg2)
+	C._wrap_PDJE_player_set_pdje_POLYGLOT_555bf1454b31f4c0(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+}
+
+func (arg1 SwigcptrPDJE) GetPlayer() (_swig_ret Std_optional_Sl_audioPlayer_Sg_) {
+	var swig_r Std_optional_Sl_audioPlayer_Sg_
+	_swig_i_0 := arg1
+	swig_r = (Std_optional_Sl_audioPlayer_Sg_)(SwigcptrStd_optional_Sl_audioPlayer_Sg_(C._wrap_PDJE_player_get_pdje_POLYGLOT_555bf1454b31f4c0(C.uintptr_t(_swig_i_0))))
+	return swig_r
+}
+
+func (arg1 SwigcptrPDJE) InitPlayer(arg2 PLAY_MODE, arg3 Trackdata, arg4 uint) (_swig_ret bool) {
+	var swig_r bool
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	_swig_i_2 := getSwigcptr(arg3)
+	_swig_i_3 := arg4
+	swig_r = (bool)(C._wrap_PDJE_InitPlayer_pdje_POLYGLOT_555bf1454b31f4c0(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3)))
+	return swig_r
+}
+
+func (arg1 SwigcptrPDJE) GetNoteObjects(arg2 Trackdata, arg3 OBJ_SETTER_CALLBACK) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := getSwigcptr(arg2)
 	_swig_i_2 := getSwigcptr(arg3)
-	swig_r = (bool)(C._wrap_audioRender_LoadTrack_pdje_POLYGLOT_e08262965a09b00b(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (bool)(C._wrap_PDJE_GetNoteObjects_pdje_POLYGLOT_555bf1454b31f4c0(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
-func NewAudioRender() (_swig_ret AudioRender) {
-	var swig_r AudioRender
-	swig_r = (AudioRender)(SwigcptrAudioRender(C._wrap_new_audioRender_pdje_POLYGLOT_e08262965a09b00b()))
+func (arg1 SwigcptrPDJE) SearchMusic__SWIG_0(arg2 Std_string, arg3 Std_string, arg4 float64) (_swig_ret MAYBE_MUS_VEC) {
+	var swig_r MAYBE_MUS_VEC
+	_swig_i_0 := arg1
+	_swig_i_1 := getSwigcptr(arg2)
+	_swig_i_2 := getSwigcptr(arg3)
+	_swig_i_3 := arg4
+	swig_r = (MAYBE_MUS_VEC)(SwigcptrMAYBE_MUS_VEC(C._wrap_PDJE_SearchMusic__SWIG_0_pdje_POLYGLOT_555bf1454b31f4c0(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.double(_swig_i_3))))
 	return swig_r
 }
 
-func DeleteAudioRender(arg1 AudioRender) {
-	_swig_i_0 := getSwigcptr(arg1)
-	C._wrap_delete_audioRender_pdje_POLYGLOT_e08262965a09b00b(C.uintptr_t(_swig_i_0))
+func (arg1 SwigcptrPDJE) SearchMusic__SWIG_1(arg2 Std_string, arg3 Std_string) (_swig_ret MAYBE_MUS_VEC) {
+	var swig_r MAYBE_MUS_VEC
+	_swig_i_0 := arg1
+	_swig_i_1 := getSwigcptr(arg2)
+	_swig_i_2 := getSwigcptr(arg3)
+	swig_r = (MAYBE_MUS_VEC)(SwigcptrMAYBE_MUS_VEC(C._wrap_PDJE_SearchMusic__SWIG_1_pdje_POLYGLOT_555bf1454b31f4c0(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2))))
+	return swig_r
 }
 
-type AudioRender interface {
+func (p SwigcptrPDJE) SearchMusic(a ...interface{}) MAYBE_MUS_VEC {
+	argc := len(a)
+	if argc == 2 {
+		return p.SearchMusic__SWIG_1(a[0].(Std_string), a[1].(Std_string))
+	}
+	if argc == 3 {
+		return p.SearchMusic__SWIG_0(a[0].(Std_string), a[1].(Std_string), a[2].(float64))
+	}
+	panic("No match for overloaded function call")
+}
+
+func (arg1 SwigcptrPDJE) SearchTrack(arg2 Std_string) (_swig_ret MAYBE_TRACK_VEC) {
+	var swig_r MAYBE_TRACK_VEC
+	_swig_i_0 := arg1
+	_swig_i_1 := getSwigcptr(arg2)
+	swig_r = (MAYBE_TRACK_VEC)(SwigcptrMAYBE_TRACK_VEC(C._wrap_PDJE_SearchTrack_pdje_POLYGLOT_555bf1454b31f4c0(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	return swig_r
+}
+
+type PDJE interface {
 	Swigcptr() uintptr
-	SwigIsAudioRender()
-	SetRendered_frames(arg2 Std_optional_Sl_std_vector_Sl_float_Sg__Sg_)
-	GetRendered_frames() (_swig_ret Std_optional_Sl_std_vector_Sl_float_Sg__Sg_)
-	LoadTrack(arg2 Litedb, arg3 Trackdata) (_swig_ret bool)
+	SwigIsPDJE()
+	SetPlayer(arg2 Std_optional_Sl_audioPlayer_Sg_)
+	GetPlayer() (_swig_ret Std_optional_Sl_audioPlayer_Sg_)
+	InitPlayer(arg2 PLAY_MODE, arg3 Trackdata, arg4 uint) (_swig_ret bool)
+	GetNoteObjects(arg2 Trackdata, arg3 OBJ_SETTER_CALLBACK) (_swig_ret bool)
+	SearchMusic(a ...interface{}) MAYBE_MUS_VEC
+	SearchTrack(arg2 Std_string) (_swig_ret MAYBE_TRACK_VEC)
 }
 
 
-type SwigcptrLitedb uintptr
-type Litedb interface {
+type SwigcptrStd_string uintptr
+type Std_string interface {
 	Swigcptr() uintptr;
 }
-func (p SwigcptrLitedb) Swigcptr() uintptr {
+func (p SwigcptrStd_string) Swigcptr() uintptr {
+	return uintptr(p)
+}
+
+type SwigcptrStd_optional_Sl_audioPlayer_Sg_ uintptr
+type Std_optional_Sl_audioPlayer_Sg_ interface {
+	Swigcptr() uintptr;
+}
+func (p SwigcptrStd_optional_Sl_audioPlayer_Sg_) Swigcptr() uintptr {
 	return uintptr(p)
 }
 
@@ -155,11 +244,27 @@ func (p SwigcptrTrackdata) Swigcptr() uintptr {
 	return uintptr(p)
 }
 
-type SwigcptrStd_optional_Sl_std_vector_Sl_float_Sg__Sg_ uintptr
-type Std_optional_Sl_std_vector_Sl_float_Sg__Sg_ interface {
+type SwigcptrOBJ_SETTER_CALLBACK uintptr
+type OBJ_SETTER_CALLBACK interface {
 	Swigcptr() uintptr;
 }
-func (p SwigcptrStd_optional_Sl_std_vector_Sl_float_Sg__Sg_) Swigcptr() uintptr {
+func (p SwigcptrOBJ_SETTER_CALLBACK) Swigcptr() uintptr {
+	return uintptr(p)
+}
+
+type SwigcptrMAYBE_MUS_VEC uintptr
+type MAYBE_MUS_VEC interface {
+	Swigcptr() uintptr;
+}
+func (p SwigcptrMAYBE_MUS_VEC) Swigcptr() uintptr {
+	return uintptr(p)
+}
+
+type SwigcptrMAYBE_TRACK_VEC uintptr
+type MAYBE_TRACK_VEC interface {
+	Swigcptr() uintptr;
+}
+func (p SwigcptrMAYBE_TRACK_VEC) Swigcptr() uintptr {
 	return uintptr(p)
 }
 

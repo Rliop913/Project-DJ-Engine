@@ -22,8 +22,6 @@ struct MusicOnDeck{
         delete fxP;
     }
 
-    MusicOnDeck(const MusicOnDeck&) = delete;
-    MusicOnDeck& operator=(const MusicOnDeck&) = delete;
 };
 
 

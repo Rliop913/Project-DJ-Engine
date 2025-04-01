@@ -137,10 +137,21 @@ audioPlayer::GetConsumedFrames()
 }
 
 FXControlPannel*
-audioPlayer::GetFXControlPannel()
+audioPlayer::GetFXControlPannel(const std::string& title)
 {
-    if(!engineDatas.FXManualPannel.has_value()){
-        engineDatas.FXManualPannel.emplace(48000);
+    if(title == "__PDJE__MAIN__"){
+        EXCEPTION_DIVE_TO_MAIN:
+        if(!engineDatas.FXManualPannel.has_value()){
+            engineDatas.FXManualPannel.emplace(48000);
+        }
+        return &engineDatas.FXManualPannel.value();
     }
-    return &engineDatas.FXManualPannel.value();
+    else{
+        if(engineDatas.MusCtrPannel.has_value()){
+            return engineDatas.MusCtrPannel->getFXHandle(title);
+        }
+        else{
+            goto EXCEPTION_DIVE_TO_MAIN;
+        }
+    }
 }

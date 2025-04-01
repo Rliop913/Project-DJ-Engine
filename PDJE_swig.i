@@ -1,6 +1,6 @@
 %module pdje_POLYGLOT
 %{
-    #include "audioRender.hpp"
+    #include "PDJE_interface.hpp"
 %}
 
-%include "audioRender.hpp"
+%include "PDJE_interface.hpp"

@@ -7,6 +7,7 @@
 			[[PreRender]]
 			[[RealTime_Render]]
 			[[ManualRender]]
+		[[Note_Render]]
 		[[Input]]
 		[[Engine]]
 			[[Note Object]]

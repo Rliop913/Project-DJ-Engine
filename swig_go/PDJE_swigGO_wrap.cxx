@@ -13,9 +13,9 @@ extern
 #ifdef __cplusplus
   "C"
 #endif
-  void cgo_panic__pdje_POLYGLOT_e08262965a09b00b(const char*);
+  void cgo_panic__pdje_POLYGLOT_555bf1454b31f4c0(const char*);
 static void _swig_gopanic(const char *p) {
-  cgo_panic__pdje_POLYGLOT_e08262965a09b00b(p);
+  cgo_panic__pdje_POLYGLOT_555bf1454b31f4c0(p);
 }
 
 
@@ -264,13 +264,13 @@ static void* Swig_malloc(int c) {
 }
 
 
-    #include "audioRender.hpp"
+    #include "PDJE_interface.hpp"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void _wrap_Swig_free_pdje_POLYGLOT_e08262965a09b00b(void *_swig_go_0) {
+void _wrap_Swig_free_pdje_POLYGLOT_555bf1454b31f4c0(void *_swig_go_0) {
   void *arg1 = (void *) 0 ;
   
   arg1 = *(void **)&_swig_go_0; 
@@ -280,7 +280,7 @@ void _wrap_Swig_free_pdje_POLYGLOT_e08262965a09b00b(void *_swig_go_0) {
 }
 
 
-void *_wrap_Swig_malloc_pdje_POLYGLOT_e08262965a09b00b(intgo _swig_go_0) {
+void *_wrap_Swig_malloc_pdje_POLYGLOT_555bf1454b31f4c0(intgo _swig_go_0) {
   int arg1 ;
   void *result = 0 ;
   void *_swig_go_result;
@@ -293,73 +293,181 @@ void *_wrap_Swig_malloc_pdje_POLYGLOT_e08262965a09b00b(intgo _swig_go_0) {
 }
 
 
-void _wrap_audioRender_rendered_frames_set_pdje_POLYGLOT_e08262965a09b00b(audioRender *_swig_go_0, std::optional< std::vector< float > > *_swig_go_1) {
-  audioRender *arg1 = (audioRender *) 0 ;
-  std::optional< std::vector< float > > arg2 ;
-  std::optional< std::vector< float > > *argp2 ;
-  
-  arg1 = *(audioRender **)&_swig_go_0; 
-  
-  argp2 = (std::optional< std::vector< float > > *)_swig_go_1;
-  if (argp2 == NULL) {
-    _swig_gopanic("Attempt to dereference null std::optional< std::vector< float > >");
-  }
-  arg2 = (std::optional< std::vector< float > >)*argp2;
+intgo _wrap_FULL_PRE_RENDER_pdje_POLYGLOT_555bf1454b31f4c0() {
+  PLAY_MODE result;
+  intgo _swig_go_result;
   
   
-  if (arg1) (arg1)->rendered_frames = arg2;
+  result = FULL_PRE_RENDER;
   
-}
-
-
-std::optional< std::vector< float > > *_wrap_audioRender_rendered_frames_get_pdje_POLYGLOT_e08262965a09b00b(audioRender *_swig_go_0) {
-  audioRender *arg1 = (audioRender *) 0 ;
-  std::optional< std::vector< float > > result;
-  std::optional< std::vector< float > > *_swig_go_result;
-  
-  arg1 = *(audioRender **)&_swig_go_0; 
-  
-  result =  ((arg1)->rendered_frames);
-  *(std::optional< std::vector< float > > **)&_swig_go_result = new std::optional< std::vector< float > >(result); 
+  _swig_go_result = (intgo)result; 
   return _swig_go_result;
 }
 
 
-bool _wrap_audioRender_LoadTrack_pdje_POLYGLOT_e08262965a09b00b(audioRender *_swig_go_0, litedb *_swig_go_1, trackdata *_swig_go_2) {
-  audioRender *arg1 = (audioRender *) 0 ;
-  litedb *arg2 = 0 ;
+intgo _wrap_HYBRID_RENDER_pdje_POLYGLOT_555bf1454b31f4c0() {
+  PLAY_MODE result;
+  intgo _swig_go_result;
+  
+  
+  result = HYBRID_RENDER;
+  
+  _swig_go_result = (intgo)result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_FULL_MANUAL_RENDER_pdje_POLYGLOT_555bf1454b31f4c0() {
+  PLAY_MODE result;
+  intgo _swig_go_result;
+  
+  
+  result = FULL_MANUAL_RENDER;
+  
+  _swig_go_result = (intgo)result; 
+  return _swig_go_result;
+}
+
+
+PDJE *_wrap_new_PDJE_pdje_POLYGLOT_555bf1454b31f4c0(std::string *_swig_go_0) {
+  std::string *arg1 = 0 ;
+  PDJE *result = 0 ;
+  PDJE *_swig_go_result;
+  
+  arg1 = *(std::string **)&_swig_go_0; 
+  
+  result = (PDJE *)new PDJE((std::string const &)*arg1);
+  *(PDJE **)&_swig_go_result = (PDJE *)result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_delete_PDJE_pdje_POLYGLOT_555bf1454b31f4c0(PDJE *_swig_go_0) {
+  PDJE *arg1 = (PDJE *) 0 ;
+  
+  arg1 = *(PDJE **)&_swig_go_0; 
+  
+  delete arg1;
+  
+}
+
+
+void _wrap_PDJE_player_set_pdje_POLYGLOT_555bf1454b31f4c0(PDJE *_swig_go_0, std::optional< audioPlayer > *_swig_go_1) {
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::optional< audioPlayer > arg2 ;
+  std::optional< audioPlayer > *argp2 ;
+  
+  arg1 = *(PDJE **)&_swig_go_0; 
+  
+  argp2 = (std::optional< audioPlayer > *)_swig_go_1;
+  if (argp2 == NULL) {
+    _swig_gopanic("Attempt to dereference null std::optional< audioPlayer >");
+  }
+  arg2 = (std::optional< audioPlayer >)*argp2;
+  
+  
+  if (arg1) (arg1)->player = arg2;
+  
+}
+
+
+std::optional< audioPlayer > *_wrap_PDJE_player_get_pdje_POLYGLOT_555bf1454b31f4c0(PDJE *_swig_go_0) {
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::optional< audioPlayer > result;
+  std::optional< audioPlayer > *_swig_go_result;
+  
+  arg1 = *(PDJE **)&_swig_go_0; 
+  
+  result =  ((arg1)->player);
+  *(std::optional< audioPlayer > **)&_swig_go_result = new std::optional< audioPlayer >(result); 
+  return _swig_go_result;
+}
+
+
+bool _wrap_PDJE_InitPlayer_pdje_POLYGLOT_555bf1454b31f4c0(PDJE *_swig_go_0, intgo _swig_go_1, trackdata *_swig_go_2, intgo _swig_go_3) {
+  PDJE *arg1 = (PDJE *) 0 ;
+  PLAY_MODE arg2 ;
   trackdata *arg3 = 0 ;
+  unsigned int arg4 ;
   bool result;
   bool _swig_go_result;
   
-  arg1 = *(audioRender **)&_swig_go_0; 
-  arg2 = *(litedb **)&_swig_go_1; 
+  arg1 = *(PDJE **)&_swig_go_0; 
+  arg2 = (PLAY_MODE)_swig_go_1; 
   arg3 = *(trackdata **)&_swig_go_2; 
+  arg4 = (unsigned int)_swig_go_3; 
   
-  result = (bool)(arg1)->LoadTrack(*arg2,*arg3);
+  result = (bool)(arg1)->InitPlayer(arg2,*arg3,arg4);
   _swig_go_result = result; 
   return _swig_go_result;
 }
 
 
-audioRender *_wrap_new_audioRender_pdje_POLYGLOT_e08262965a09b00b() {
-  audioRender *result = 0 ;
-  audioRender *_swig_go_result;
+bool _wrap_PDJE_GetNoteObjects_pdje_POLYGLOT_555bf1454b31f4c0(PDJE *_swig_go_0, trackdata *_swig_go_1, OBJ_SETTER_CALLBACK *_swig_go_2) {
+  PDJE *arg1 = (PDJE *) 0 ;
+  trackdata *arg2 = 0 ;
+  OBJ_SETTER_CALLBACK *arg3 = 0 ;
+  bool result;
+  bool _swig_go_result;
   
+  arg1 = *(PDJE **)&_swig_go_0; 
+  arg2 = *(trackdata **)&_swig_go_1; 
+  arg3 = *(OBJ_SETTER_CALLBACK **)&_swig_go_2; 
   
-  result = (audioRender *)new audioRender();
-  *(audioRender **)&_swig_go_result = (audioRender *)result; 
+  result = (bool)(arg1)->GetNoteObjects(*arg2,*arg3);
+  _swig_go_result = result; 
   return _swig_go_result;
 }
 
 
-void _wrap_delete_audioRender_pdje_POLYGLOT_e08262965a09b00b(audioRender *_swig_go_0) {
-  audioRender *arg1 = (audioRender *) 0 ;
+MAYBE_MUS_VEC *_wrap_PDJE_SearchMusic__SWIG_0_pdje_POLYGLOT_555bf1454b31f4c0(PDJE *_swig_go_0, std::string *_swig_go_1, std::string *_swig_go_2, double _swig_go_3) {
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  double arg4 ;
+  MAYBE_MUS_VEC result;
+  MAYBE_MUS_VEC *_swig_go_result;
   
-  arg1 = *(audioRender **)&_swig_go_0; 
+  arg1 = *(PDJE **)&_swig_go_0; 
+  arg2 = *(std::string **)&_swig_go_1; 
+  arg3 = *(std::string **)&_swig_go_2; 
+  arg4 = (double)_swig_go_3; 
   
-  delete arg1;
+  result = (arg1)->SearchMusic((std::string const &)*arg2,(std::string const &)*arg3,arg4);
+  *(MAYBE_MUS_VEC **)&_swig_go_result = new MAYBE_MUS_VEC(result); 
+  return _swig_go_result;
+}
+
+
+MAYBE_MUS_VEC *_wrap_PDJE_SearchMusic__SWIG_1_pdje_POLYGLOT_555bf1454b31f4c0(PDJE *_swig_go_0, std::string *_swig_go_1, std::string *_swig_go_2) {
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  MAYBE_MUS_VEC result;
+  MAYBE_MUS_VEC *_swig_go_result;
   
+  arg1 = *(PDJE **)&_swig_go_0; 
+  arg2 = *(std::string **)&_swig_go_1; 
+  arg3 = *(std::string **)&_swig_go_2; 
+  
+  result = (arg1)->SearchMusic((std::string const &)*arg2,(std::string const &)*arg3);
+  *(MAYBE_MUS_VEC **)&_swig_go_result = new MAYBE_MUS_VEC(result); 
+  return _swig_go_result;
+}
+
+
+MAYBE_TRACK_VEC *_wrap_PDJE_SearchTrack_pdje_POLYGLOT_555bf1454b31f4c0(PDJE *_swig_go_0, std::string *_swig_go_1) {
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::string *arg2 = 0 ;
+  MAYBE_TRACK_VEC result;
+  MAYBE_TRACK_VEC *_swig_go_result;
+  
+  arg1 = *(PDJE **)&_swig_go_0; 
+  arg2 = *(std::string **)&_swig_go_1; 
+  
+  result = (arg1)->SearchTrack((std::string const &)*arg2);
+  *(MAYBE_TRACK_VEC **)&_swig_go_result = new MAYBE_TRACK_VEC(result); 
+  return _swig_go_result;
 }
 
 

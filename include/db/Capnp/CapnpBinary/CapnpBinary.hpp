@@ -8,6 +8,8 @@
 
 #include "MixBinary.capnp.h"
 #include "MusicBinary.capnp.h"
+#include "NoteBinary.capnp.h"
+
 
 template<typename DType>
 class CapReader{

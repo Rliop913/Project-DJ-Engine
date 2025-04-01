@@ -49,7 +49,7 @@ include(thirdPartySource.cmake)
 include(includeDIRS.cmake)
 include(DBsrc.cmake)
 include(AUDIOsrc.cmake)
-
+include(NOTEsrc.cmake)
 link_libraries(
   CapnProto::kj 
   CapnProto::capnp 
