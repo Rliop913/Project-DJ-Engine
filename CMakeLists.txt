@@ -1,5 +1,5 @@
 include(SETcmake.cmake)
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 project(
   PDJE
   VERSION 0.1
