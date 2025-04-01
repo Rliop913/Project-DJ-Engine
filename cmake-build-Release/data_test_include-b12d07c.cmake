@@ -1,5 +1,0 @@
-if(EXISTS "/home/rrop/Dropbox/box_inside/git_branch/cpps/Disk_Jockey_Engine_Mini/cmake-build-Release/data_test_tests-b12d07c.cmake")
-  include("/home/rrop/Dropbox/box_inside/git_branch/cpps/Disk_Jockey_Engine_Mini/cmake-build-Release/data_test_tests-b12d07c.cmake")
-else()
-  add_test(data_test_NOT_BUILT-b12d07c data_test_NOT_BUILT-b12d07c)
-endif()
