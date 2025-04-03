@@ -22,7 +22,7 @@ public:
     void ChangeCursorPos(unsigned long long pos);
     unsigned long long GetConsumedFrames();
     FXControlPannel* GetFXControlPannel(const std::string& title = "__PDJE__MAIN__");
-    
+    MusicControlPannel* GetMusicControlPannel();
     //use pre-rendered audio, use manual or not
     audioPlayer(litedb& db, trackdata& td, const unsigned int frameBufferSize, const bool hasManual = false);
     //completely manual play

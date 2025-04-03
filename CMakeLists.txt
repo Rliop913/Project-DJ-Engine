@@ -64,6 +64,9 @@ add_executable(testHighway include/tests/highway_Test.cpp)
 
 add_executable(testManualAudio include/tests/manualAudioTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource})
 
+add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource})
+
+
 if(WIN32)
   target_link_libraries(testHighway PRIVATE hwy::hwy)
   # link_libraries(hwy::hwy)
@@ -78,7 +81,7 @@ elseif(UNIX AND NOT APPLE)
   target_link_libraries(testaudio PRIVATE hwy )
   target_link_libraries(testCapnp PRIVATE hwy )
   target_link_libraries(testManualAudio PRIVATE hwy )
-  
+  target_link_libraries(testInterface PRIVATE hwy)
 elseif(APPLE)
   
 endif()

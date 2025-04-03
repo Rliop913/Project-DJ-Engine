@@ -36,7 +36,7 @@ private:
     unsigned long fsize;
     std::vector<float> L;
     std::vector<float> R;
-    float* FaustStyle[2] = {L.data(), R.data()};
+    float* FaustStyle[2];
     SIMD_FLOAT tempFrames;
 
 public:
@@ -46,7 +46,7 @@ public:
     LOADED_LIST GetLoadedMusicList();
     bool UnloadMusic(const TITLE& title);
 
-    bool GetPCMFrames(SIMD_FLOAT* array, const unsigned long FrameSize);
+    bool GetPCMFrames(float* array, const unsigned long FrameSize);
     FXControlPannel* getFXHandle(const TITLE& title);
     MusicControlPannel(const unsigned long FrameSize): fsize(FrameSize){}
     ~MusicControlPannel();

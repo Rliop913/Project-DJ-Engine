@@ -68,14 +68,15 @@ MusicControlPannel::UnloadMusic(const TITLE& title)
 }
 
 bool
-MusicControlPannel::GetPCMFrames(SIMD_FLOAT* array, const unsigned long FrameSize)
+MusicControlPannel::GetPCMFrames(float* array, const unsigned long FrameSize)
 {
     const unsigned long long RAWFrameSize = FrameSize * CHANNEL;
     
     tempFrames.resize(RAWFrameSize);
     L.resize(FrameSize);
     R.resize(FrameSize);
-    
+    FaustStyle[0] = L.data();
+    FaustStyle[1] = R.data();
     const hn::ScalableTag<float> hwyFTag;
     auto laneSize = hn::Lanes(hwyFTag);
     auto times = RAWFrameSize / laneSize;
@@ -91,14 +92,14 @@ MusicControlPannel::GetPCMFrames(SIMD_FLOAT* array, const unsigned long FrameSiz
             i.second.fxP->addFX(FaustStyle, FrameSize);
             toLRStylePCM(FaustStyle, tempFrames.data(), FrameSize);
             
-            float* opoint = array->data();
+            float* opoint = array;
             float* tpoint = tempFrames.data();
             
             for(size_t j = 0; j < times; ++j){
                 auto simdtemp = hn::Load(hwyFTag, tpoint);
-                auto simdorigin = hn::Load(hwyFTag, opoint);
+                auto simdorigin = hn::LoadU(hwyFTag, opoint);
                 auto res = simdtemp + simdorigin;
-                hn::Store(res, hwyFTag, opoint);
+                hn::StoreU(res, hwyFTag, opoint);
                 opoint += laneSize;
                 tpoint += laneSize;
             }
