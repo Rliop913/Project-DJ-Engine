@@ -23,5 +23,12 @@ FetchContent_MakeAvailable(CapnProto)
 FetchContent_MakeAvailable(miniaudio)
 FetchContent_MakeAvailable(highway)
 
+set_target_properties(
+  capnp
+  capnpc
+  kj
+  capnp-json
+  PROPERTIES POSITION_INDEPENDENT_CODE ON
+)
 find_package(SWIG REQUIRED)
 include(UseSWIG)

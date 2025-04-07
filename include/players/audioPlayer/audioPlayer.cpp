@@ -9,41 +9,12 @@ extern void FullManualRender_callback(ma_device* pDevice, void* pOutput, const v
 
 #include "MusicControlPannel.hpp"
 
-
-void* 
-MaSIMDAlloc(size_t sz, void *pUserData)
-{
-    pUserData = new SIMD_FLOAT;
-    reinterpret_cast<SIMD_FLOAT*>(pUserData)->resize(sz / sizeof(float));
-    return reinterpret_cast<SIMD_FLOAT*>(pUserData)->data();
-}
-
-void 
-MaSIMDFree(void* p, void* pUserData)
-{
-    auto SIMDV = reinterpret_cast<SIMD_FLOAT*>(pUserData);
-    delete SIMDV;
-}
-
-void* 
-MaSIMDReAlloc(void *p, size_t sz, void *pUserData)
-{
-    auto SIMDV = reinterpret_cast<SIMD_FLOAT*>(pUserData);
-    SIMDV->resize(sz / sizeof(float));
-    return SIMDV;
-}
-
 void
 audioPlayer::ContextInit()
 {
     auto conf = ma_context_config_init();
     ma_context_init(NULL, 0, &conf, &ctxt);
     ctxt.threadPriority = ma_thread_priority_high;
-    ma_allocation_callbacks mac;
-    mac.onFree = MaSIMDFree;
-    mac.onMalloc = MaSIMDAlloc;
-    mac.onRealloc = MaSIMDReAlloc;
-    ctxt.allocationCallbacks = mac;
 }
 
 
@@ -78,13 +49,15 @@ audioPlayer::audioPlayer(litedb& db, trackdata& td, const unsigned int frameBuff
     }
     
     if(!renderer.LoadTrack(db, td)){
-        throw "Failed to load track data";
+        STATUS = "Failed to load track";
+        return;
     }
     engineDatas.pcmDataPoint = &renderer.rendered_frames.value();
-    engineDatas.maxCursor = renderer.rendered_frames->size();
+    engineDatas.maxCursor = renderer.rendered_frames->size() / CHANNEL;
     
     if(ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS){
-        throw "Failed to init player";
+        STATUS = "Failed to init device";
+        return;
     }
     
 }
@@ -99,7 +72,7 @@ audioPlayer::audioPlayer(const unsigned int frameBufferSize)
     
 
     if(ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS){
-        throw "Failed to init player";
+        STATUS = "Failed to init device";
     }
     
 }
@@ -153,5 +126,17 @@ audioPlayer::GetFXControlPannel(const std::string& title)
         else{
             goto EXCEPTION_DIVE_TO_MAIN;
         }
+    }
+}
+
+
+MusicControlPannel* 
+audioPlayer::GetMusicControlPannel()
+{
+    if(engineDatas.MusCtrPannel.has_value()){
+        return &(engineDatas.MusCtrPannel.value());
+    }
+    else{
+        return nullptr;
     }
 }

@@ -74,6 +74,6 @@ public:
     std::optional<std::string> songPath;
 
     std::optional<SIMD_FLOAT*> 
-    Execute(const BPM& bpms, SIMD_FLOAT* PCMS);
+    Execute(const BPM& bpms, SIMD_FLOAT* PCMS, const std::string& dbRoot);
     bool SendData(soundtouch::SoundTouch*& stp, Decoder*& dp);
 };

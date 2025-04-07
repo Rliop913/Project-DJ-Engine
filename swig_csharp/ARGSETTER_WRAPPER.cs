@@ -9,20 +9,20 @@
 //------------------------------------------------------------------------------
 
 
-public class audioRender : global::System.IDisposable {
+public class ARGSETTER_WRAPPER : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal audioRender(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal ARGSETTER_WRAPPER(global::System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(audioRender obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(ARGSETTER_WRAPPER obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef swigRelease(audioRender obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef swigRelease(ARGSETTER_WRAPPER obj) {
     if (obj != null) {
       if (!obj.swigCMemOwn)
         throw new global::System.ApplicationException("Cannot release ownership as memory is not owned");
@@ -35,7 +35,7 @@ public class audioRender : global::System.IDisposable {
     }
   }
 
-  ~audioRender() {
+  ~ARGSETTER_WRAPPER() {
     Dispose(false);
   }
 
@@ -49,32 +49,24 @@ public class audioRender : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          pdje_POLYGLOTPINVOKE.delete_audioRender(swigCPtr);
+          pdje_POLYGLOTPINVOKE.delete_ARGSETTER_WRAPPER(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
     }
   }
 
-  public SWIGTYPE_p_std__optionalT_std__vectorT_float_t_t rendered_frames {
-    set {
-      pdje_POLYGLOTPINVOKE.audioRender_rendered_frames_set(swigCPtr, SWIGTYPE_p_std__optionalT_std__vectorT_float_t_t.getCPtr(value));
-      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
-    } 
-    get {
-      SWIGTYPE_p_std__optionalT_std__vectorT_float_t_t ret = new SWIGTYPE_p_std__optionalT_std__vectorT_float_t_t(pdje_POLYGLOTPINVOKE.audioRender_rendered_frames_get(swigCPtr), true);
-      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
-      return ret;
-    } 
+  public ARGSETTER_WRAPPER(FXControlPannel pointer) : this(pdje_POLYGLOTPINVOKE.new_ARGSETTER_WRAPPER(FXControlPannel.getCPtr(pointer)), true) {
   }
 
-  public bool LoadTrack(SWIGTYPE_p_litedb db, SWIGTYPE_p_trackdata td) {
-    bool ret = pdje_POLYGLOTPINVOKE.audioRender_LoadTrack(swigCPtr, SWIGTYPE_p_litedb.getCPtr(db), SWIGTYPE_p_trackdata.getCPtr(td));
-    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+  public KEY_VEC GetFXArgKeys(FXList fx) {
+    KEY_VEC ret = new KEY_VEC(pdje_POLYGLOTPINVOKE.ARGSETTER_WRAPPER_GetFXArgKeys(swigCPtr, (int)fx), true);
     return ret;
   }
 
-  public audioRender() : this(pdje_POLYGLOTPINVOKE.new_audioRender(), true) {
+  public void SetFXArg(FXList fx, string key, double arg) {
+    pdje_POLYGLOTPINVOKE.ARGSETTER_WRAPPER_SetFXArg(swigCPtr, (int)fx, key, arg);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

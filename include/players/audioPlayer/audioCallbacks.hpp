@@ -21,9 +21,9 @@ struct audioEngineDataStruct{
 
     inline void CountUp(const unsigned long frameCount);
 
-    void GetAfterManFX(SIMD_FLOAT* pOutput, unsigned long frameCount);
+    void GetAfterManFX(float* pOutput, unsigned long frameCount);
 
-    void Get(SIMD_FLOAT* pOutput, unsigned long frameCount);
+    void Get(float* pOutput, unsigned long frameCount);
  
 };
 

@@ -1,16 +1,22 @@
 #include "Decoder.hpp"
-
+#include <filesystem>
 
 Decoder::Decoder()
 {
     ;
 }
 
+#include <iostream>
 bool 
-Decoder::init(const std::string& song_path)
+Decoder::init(const std::string& song_path, const std::string& root_path)
 {
     ma_decoder_config dconf = ma_decoder_config_init(ma_format_f32, CHANNEL, SAMPLERATE);
-    return ma_decoder_init_file(song_path.c_str(), &dconf, &dec) == MA_SUCCESS;
+    namespace fs = std::filesystem;
+    fs::path relative_path(song_path);
+    fs::path root(root_path);
+    fs::path fullpath = root.parent_path() / relative_path;
+    fullpath = fullpath.lexically_normal();
+    return ma_decoder_init_file(fullpath.c_str(), &dconf, &dec) == MA_SUCCESS;
 }   
 
 bool

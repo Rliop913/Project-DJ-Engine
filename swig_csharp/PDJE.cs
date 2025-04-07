@@ -56,49 +56,54 @@ public class PDJE : global::System.IDisposable {
     }
   }
 
-  public PDJE(SWIGTYPE_p_std__string rootPath) : this(pdje_POLYGLOTPINVOKE.new_PDJE(SWIGTYPE_p_std__string.getCPtr(rootPath)), true) {
+  public PDJE(string rootPath) : this(pdje_POLYGLOTPINVOKE.new_PDJE(rootPath), true) {
     if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public SWIGTYPE_p_std__optionalT_audioPlayer_t player {
     set {
       pdje_POLYGLOTPINVOKE.PDJE_player_set(swigCPtr, SWIGTYPE_p_std__optionalT_audioPlayer_t.getCPtr(value));
-      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
-      SWIGTYPE_p_std__optionalT_audioPlayer_t ret = new SWIGTYPE_p_std__optionalT_audioPlayer_t(pdje_POLYGLOTPINVOKE.PDJE_player_get(swigCPtr), true);
-      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+      global::System.IntPtr cPtr = pdje_POLYGLOTPINVOKE.PDJE_player_get(swigCPtr);
+      SWIGTYPE_p_std__optionalT_audioPlayer_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_std__optionalT_audioPlayer_t(cPtr, false);
       return ret;
     } 
   }
 
-  public bool InitPlayer(PLAY_MODE mode, SWIGTYPE_p_trackdata td, uint FrameBufferSize) {
-    bool ret = pdje_POLYGLOTPINVOKE.PDJE_InitPlayer(swigCPtr, (int)mode, SWIGTYPE_p_trackdata.getCPtr(td), FrameBufferSize);
+  public bool InitPlayer(PLAY_MODE mode, trackdata td, uint FrameBufferSize) {
+    bool ret = pdje_POLYGLOTPINVOKE.PDJE_InitPlayer(swigCPtr, (int)mode, trackdata.getCPtr(td), FrameBufferSize);
     if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public bool GetNoteObjects(SWIGTYPE_p_trackdata td, SWIGTYPE_p_OBJ_SETTER_CALLBACK ObjectSetCallback) {
-    bool ret = pdje_POLYGLOTPINVOKE.PDJE_GetNoteObjects(swigCPtr, SWIGTYPE_p_trackdata.getCPtr(td), SWIGTYPE_p_OBJ_SETTER_CALLBACK.getCPtr(ObjectSetCallback));
+  public bool GetNoteObjects(trackdata td, SWIGTYPE_p_OBJ_SETTER_CALLBACK ObjectSetCallback) {
+    bool ret = pdje_POLYGLOTPINVOKE.PDJE_GetNoteObjects(swigCPtr, trackdata.getCPtr(td), SWIGTYPE_p_OBJ_SETTER_CALLBACK.getCPtr(ObjectSetCallback));
     if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public SWIGTYPE_p_MAYBE_MUS_VEC SearchMusic(SWIGTYPE_p_std__string Title, SWIGTYPE_p_std__string composer, double bpm) {
-    SWIGTYPE_p_MAYBE_MUS_VEC ret = new SWIGTYPE_p_MAYBE_MUS_VEC(pdje_POLYGLOTPINVOKE.PDJE_SearchMusic__SWIG_0(swigCPtr, SWIGTYPE_p_std__string.getCPtr(Title), SWIGTYPE_p_std__string.getCPtr(composer), bpm), true);
+  public MUS_VEC SearchMusic(string Title, string composer, double bpm) {
+    MUS_VEC ret = new MUS_VEC(pdje_POLYGLOTPINVOKE.PDJE_SearchMusic__SWIG_0(swigCPtr, Title, composer, bpm), true);
     if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public SWIGTYPE_p_MAYBE_MUS_VEC SearchMusic(SWIGTYPE_p_std__string Title, SWIGTYPE_p_std__string composer) {
-    SWIGTYPE_p_MAYBE_MUS_VEC ret = new SWIGTYPE_p_MAYBE_MUS_VEC(pdje_POLYGLOTPINVOKE.PDJE_SearchMusic__SWIG_1(swigCPtr, SWIGTYPE_p_std__string.getCPtr(Title), SWIGTYPE_p_std__string.getCPtr(composer)), true);
+  public MUS_VEC SearchMusic(string Title, string composer) {
+    MUS_VEC ret = new MUS_VEC(pdje_POLYGLOTPINVOKE.PDJE_SearchMusic__SWIG_1(swigCPtr, Title, composer), true);
     if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public SWIGTYPE_p_MAYBE_TRACK_VEC SearchTrack(SWIGTYPE_p_std__string Title) {
-    SWIGTYPE_p_MAYBE_TRACK_VEC ret = new SWIGTYPE_p_MAYBE_TRACK_VEC(pdje_POLYGLOTPINVOKE.PDJE_SearchTrack(swigCPtr, SWIGTYPE_p_std__string.getCPtr(Title)), true);
+  public TRACK_VEC SearchTrack(string Title) {
+    TRACK_VEC ret = new TRACK_VEC(pdje_POLYGLOTPINVOKE.PDJE_SearchTrack(swigCPtr, Title), true);
     if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public audioPlayer GetPlayer() {
+    global::System.IntPtr cPtr = pdje_POLYGLOTPINVOKE.PDJE_GetPlayer(swigCPtr);
+    audioPlayer ret = (cPtr == global::System.IntPtr.Zero) ? null : new audioPlayer(cPtr, false);
     return ret;
   }
 

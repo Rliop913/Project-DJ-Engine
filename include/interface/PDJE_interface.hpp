@@ -31,14 +31,31 @@ public:
         OBJ_SETTER_CALLBACK& ObjectSetCallback
     );
 
-    MAYBE_MUS_VEC 
+    MUS_VEC 
     SearchMusic(
         const std::string& Title, 
         const std::string& composer, 
         const double bpm = -1);
     
-    MAYBE_TRACK_VEC SearchTrack(const std::string& Title);
+    TRACK_VEC SearchTrack(const std::string& Title);
 
+    audioPlayer* GetPlayer();
 
+    
+};
+
+class ARGSETTER_WRAPPER{
+private:
+    FXControlPannel* fxp;
+public:
+    ARGSETTER_WRAPPER(FXControlPannel* pointer): fxp(pointer){};
+    ~ARGSETTER_WRAPPER() = default;
+    std::vector<std::string> GetFXArgKeys(FXList fx);
+    
+    void
+    SetFXArg(
+        FXList fx, 
+        const std::string& key, 
+        double arg);
 
 };

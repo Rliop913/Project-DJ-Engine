@@ -9,22 +9,22 @@
 //------------------------------------------------------------------------------
 
 
-public class SWIGTYPE_p_MAYBE_TRACK_VEC {
+public class SWIGTYPE_p_MusicControlPannel {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal SWIGTYPE_p_MAYBE_TRACK_VEC(global::System.IntPtr cPtr, bool futureUse) {
+  internal SWIGTYPE_p_MusicControlPannel(global::System.IntPtr cPtr, bool futureUse) {
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  protected SWIGTYPE_p_MAYBE_TRACK_VEC() {
+  protected SWIGTYPE_p_MusicControlPannel() {
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_MAYBE_TRACK_VEC obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_MusicControlPannel obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef swigRelease(SWIGTYPE_p_MAYBE_TRACK_VEC obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef swigRelease(SWIGTYPE_p_MusicControlPannel obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 }

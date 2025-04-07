@@ -9,22 +9,22 @@
 //------------------------------------------------------------------------------
 
 
-public class SWIGTYPE_p_litedb {
+public class SWIGTYPE_p_BIN {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
 
-  internal SWIGTYPE_p_litedb(global::System.IntPtr cPtr, bool futureUse) {
+  internal SWIGTYPE_p_BIN(global::System.IntPtr cPtr, bool futureUse) {
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  protected SWIGTYPE_p_litedb() {
+  protected SWIGTYPE_p_BIN() {
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_litedb obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_BIN obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef swigRelease(SWIGTYPE_p_litedb obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef swigRelease(SWIGTYPE_p_BIN obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 }

@@ -34,8 +34,8 @@ std::function<void(
     const std::string, //firstArg
     const std::string, //secondArg
     const std::string, //thirdArg
-    const double, //Y axis position
-    const double //Y axis position 2, -1 as default
+    const unsigned long long, //Y axis position
+    const unsigned long long //Y axis position 2, 0 as default
 )>;
 
 

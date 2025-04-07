@@ -16,6 +16,7 @@ using MAYBE_TRACK_VEC = std::optional<TRACK_VEC>;
 
 class litedb{
 private:
+    std::string ROOT_PATH;
     sqlite3* db = nullptr;
     bool CheckTables();
 public:
@@ -29,6 +30,11 @@ public:
 
     bool openDB(const std::string& dbPath);
     
+    const std::string 
+    getRoot(){
+        return ROOT_PATH;
+    }
+
     litedb();
     ~litedb();
 };
