@@ -13,9 +13,9 @@ extern
 #ifdef __cplusplus
   "C"
 #endif
-  void cgo_panic__pdje_POLYGLOT_53e15a0c5c443996(const char*);
+  void cgo_panic__pdje_POLYGLOT_5c11250640eb38b5(const char*);
 static void _swig_gopanic(const char *p) {
-  cgo_panic__pdje_POLYGLOT_53e15a0c5c443996(p);
+  cgo_panic__pdje_POLYGLOT_5c11250640eb38b5(p);
 }
 
 
@@ -317,11 +317,25 @@ SWIGINTERN void std_vector_Sl_trackdata_Sg__set(std::vector< trackdata > *self,i
                 else
                     throw std::out_of_range("vector index out of range");
             }
+SWIGINTERN std::vector< std::string >::const_reference std_vector_Sl_std_string_Sg__get(std::vector< std::string > *self,int i){
+                int size = int(self->size());
+                if (i>=0 && i<size)
+                    return (*self)[i];
+                else
+                    throw std::out_of_range("vector index out of range");
+            }
+SWIGINTERN void std_vector_Sl_std_string_Sg__set(std::vector< std::string > *self,int i,std::vector< std::string >::value_type const &val){
+                int size = int(self->size());
+                if (i>=0 && i<size)
+                    (*self)[i] = val;
+                else
+                    throw std::out_of_range("vector index out of range");
+            }
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void _wrap_Swig_free_pdje_POLYGLOT_53e15a0c5c443996(void *_swig_go_0) {
+void _wrap_Swig_free_pdje_POLYGLOT_5c11250640eb38b5(void *_swig_go_0) {
   void *arg1 = (void *) 0 ;
   
   arg1 = *(void **)&_swig_go_0; 
@@ -331,7 +345,7 @@ void _wrap_Swig_free_pdje_POLYGLOT_53e15a0c5c443996(void *_swig_go_0) {
 }
 
 
-void *_wrap_Swig_malloc_pdje_POLYGLOT_53e15a0c5c443996(intgo _swig_go_0) {
+void *_wrap_Swig_malloc_pdje_POLYGLOT_5c11250640eb38b5(intgo _swig_go_0) {
   int arg1 ;
   void *result = 0 ;
   void *_swig_go_result;
@@ -344,7 +358,7 @@ void *_wrap_Swig_malloc_pdje_POLYGLOT_53e15a0c5c443996(intgo _swig_go_0) {
 }
 
 
-intgo _wrap_COMPRESSOR_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_COMPRESSOR_pdje_POLYGLOT_5c11250640eb38b5() {
   FXList result;
   intgo _swig_go_result;
   
@@ -356,7 +370,7 @@ intgo _wrap_COMPRESSOR_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-intgo _wrap_DISTORTION_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_DISTORTION_pdje_POLYGLOT_5c11250640eb38b5() {
   FXList result;
   intgo _swig_go_result;
   
@@ -368,7 +382,7 @@ intgo _wrap_DISTORTION_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-intgo _wrap_ECHO_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_ECHO_pdje_POLYGLOT_5c11250640eb38b5() {
   FXList result;
   intgo _swig_go_result;
   
@@ -380,7 +394,7 @@ intgo _wrap_ECHO_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-intgo _wrap_EQ_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_EQ_pdje_POLYGLOT_5c11250640eb38b5() {
   FXList result;
   intgo _swig_go_result;
   
@@ -392,7 +406,7 @@ intgo _wrap_EQ_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-intgo _wrap_FILTER_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_FILTER_pdje_POLYGLOT_5c11250640eb38b5() {
   FXList result;
   intgo _swig_go_result;
   
@@ -404,7 +418,7 @@ intgo _wrap_FILTER_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-intgo _wrap_FLANGER_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_FLANGER_pdje_POLYGLOT_5c11250640eb38b5() {
   FXList result;
   intgo _swig_go_result;
   
@@ -416,7 +430,7 @@ intgo _wrap_FLANGER_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-intgo _wrap_OCSFILTER_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_OCSFILTER_pdje_POLYGLOT_5c11250640eb38b5() {
   FXList result;
   intgo _swig_go_result;
   
@@ -428,7 +442,7 @@ intgo _wrap_OCSFILTER_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-intgo _wrap_PANNER_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_PANNER_pdje_POLYGLOT_5c11250640eb38b5() {
   FXList result;
   intgo _swig_go_result;
   
@@ -440,7 +454,7 @@ intgo _wrap_PANNER_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-intgo _wrap_PHASER_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_PHASER_pdje_POLYGLOT_5c11250640eb38b5() {
   FXList result;
   intgo _swig_go_result;
   
@@ -452,7 +466,7 @@ intgo _wrap_PHASER_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-intgo _wrap_ROBOT_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_ROBOT_pdje_POLYGLOT_5c11250640eb38b5() {
   FXList result;
   intgo _swig_go_result;
   
@@ -464,7 +478,7 @@ intgo _wrap_ROBOT_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-intgo _wrap_ROLL_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_ROLL_pdje_POLYGLOT_5c11250640eb38b5() {
   FXList result;
   intgo _swig_go_result;
   
@@ -476,7 +490,7 @@ intgo _wrap_ROLL_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-intgo _wrap_TRANCE_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_TRANCE_pdje_POLYGLOT_5c11250640eb38b5() {
   FXList result;
   intgo _swig_go_result;
   
@@ -488,7 +502,7 @@ intgo _wrap_TRANCE_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-intgo _wrap_VOL_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_VOL_pdje_POLYGLOT_5c11250640eb38b5() {
   FXList result;
   intgo _swig_go_result;
   
@@ -500,7 +514,7 @@ intgo _wrap_VOL_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-FXControlPannel *_wrap_new_FXControlPannel_pdje_POLYGLOT_53e15a0c5c443996(intgo _swig_go_0) {
+FXControlPannel *_wrap_new_FXControlPannel_pdje_POLYGLOT_5c11250640eb38b5(intgo _swig_go_0) {
   int arg1 ;
   FXControlPannel *result = 0 ;
   FXControlPannel *_swig_go_result;
@@ -513,7 +527,7 @@ FXControlPannel *_wrap_new_FXControlPannel_pdje_POLYGLOT_53e15a0c5c443996(intgo 
 }
 
 
-ARGSETTER *_wrap_FXControlPannel_GetArgSetter_pdje_POLYGLOT_53e15a0c5c443996(FXControlPannel *_swig_go_0, intgo _swig_go_1) {
+ARGSETTER *_wrap_FXControlPannel_GetArgSetter_pdje_POLYGLOT_5c11250640eb38b5(FXControlPannel *_swig_go_0, intgo _swig_go_1) {
   FXControlPannel *arg1 = (FXControlPannel *) 0 ;
   FXList arg2 ;
   ARGSETTER result;
@@ -528,7 +542,7 @@ ARGSETTER *_wrap_FXControlPannel_GetArgSetter_pdje_POLYGLOT_53e15a0c5c443996(FXC
 }
 
 
-void _wrap_FXControlPannel_FX_ON_OFF_pdje_POLYGLOT_53e15a0c5c443996(FXControlPannel *_swig_go_0, intgo _swig_go_1, bool _swig_go_2) {
+void _wrap_FXControlPannel_FX_ON_OFF_pdje_POLYGLOT_5c11250640eb38b5(FXControlPannel *_swig_go_0, intgo _swig_go_1, bool _swig_go_2) {
   FXControlPannel *arg1 = (FXControlPannel *) 0 ;
   FXList arg2 ;
   bool arg3 ;
@@ -542,7 +556,7 @@ void _wrap_FXControlPannel_FX_ON_OFF_pdje_POLYGLOT_53e15a0c5c443996(FXControlPan
 }
 
 
-void _wrap_FXControlPannel_addFX_pdje_POLYGLOT_53e15a0c5c443996(FXControlPannel *_swig_go_0, float **_swig_go_1, intgo _swig_go_2) {
+void _wrap_FXControlPannel_addFX_pdje_POLYGLOT_5c11250640eb38b5(FXControlPannel *_swig_go_0, float **_swig_go_1, intgo _swig_go_2) {
   FXControlPannel *arg1 = (FXControlPannel *) 0 ;
   float **arg2 = (float **) 0 ;
   int arg3 ;
@@ -556,7 +570,7 @@ void _wrap_FXControlPannel_addFX_pdje_POLYGLOT_53e15a0c5c443996(FXControlPannel 
 }
 
 
-bool _wrap_FXControlPannel_checkSomethingOn_pdje_POLYGLOT_53e15a0c5c443996(FXControlPannel *_swig_go_0) {
+bool _wrap_FXControlPannel_checkSomethingOn_pdje_POLYGLOT_5c11250640eb38b5(FXControlPannel *_swig_go_0) {
   FXControlPannel *arg1 = (FXControlPannel *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -569,7 +583,7 @@ bool _wrap_FXControlPannel_checkSomethingOn_pdje_POLYGLOT_53e15a0c5c443996(FXCon
 }
 
 
-void _wrap_delete_FXControlPannel_pdje_POLYGLOT_53e15a0c5c443996(FXControlPannel *_swig_go_0) {
+void _wrap_delete_FXControlPannel_pdje_POLYGLOT_5c11250640eb38b5(FXControlPannel *_swig_go_0) {
   FXControlPannel *arg1 = (FXControlPannel *) 0 ;
   
   arg1 = *(FXControlPannel **)&_swig_go_0; 
@@ -579,7 +593,7 @@ void _wrap_delete_FXControlPannel_pdje_POLYGLOT_53e15a0c5c443996(FXControlPannel
 }
 
 
-void _wrap_toFaustStylePCM_pdje_POLYGLOT_53e15a0c5c443996(float **_swig_go_0, float *_swig_go_1, long long _swig_go_2) {
+void _wrap_toFaustStylePCM_pdje_POLYGLOT_5c11250640eb38b5(float **_swig_go_0, float *_swig_go_1, long long _swig_go_2) {
   float **arg1 = (float **) 0 ;
   float *arg2 = (float *) 0 ;
   unsigned long arg3 ;
@@ -593,7 +607,7 @@ void _wrap_toFaustStylePCM_pdje_POLYGLOT_53e15a0c5c443996(float **_swig_go_0, fl
 }
 
 
-void _wrap_toLRStylePCM_pdje_POLYGLOT_53e15a0c5c443996(float **_swig_go_0, float *_swig_go_1, long long _swig_go_2) {
+void _wrap_toLRStylePCM_pdje_POLYGLOT_5c11250640eb38b5(float **_swig_go_0, float *_swig_go_1, long long _swig_go_2) {
   float **arg1 = (float **) 0 ;
   float *arg2 = (float *) 0 ;
   unsigned long arg3 ;
@@ -607,7 +621,7 @@ void _wrap_toLRStylePCM_pdje_POLYGLOT_53e15a0c5c443996(float **_swig_go_0, float
 }
 
 
-intgo _wrap_FULL_PRE_RENDER_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_FULL_PRE_RENDER_pdje_POLYGLOT_5c11250640eb38b5() {
   PLAY_MODE result;
   intgo _swig_go_result;
   
@@ -619,7 +633,7 @@ intgo _wrap_FULL_PRE_RENDER_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-intgo _wrap_HYBRID_RENDER_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_HYBRID_RENDER_pdje_POLYGLOT_5c11250640eb38b5() {
   PLAY_MODE result;
   intgo _swig_go_result;
   
@@ -631,7 +645,7 @@ intgo _wrap_HYBRID_RENDER_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-intgo _wrap_FULL_MANUAL_RENDER_pdje_POLYGLOT_53e15a0c5c443996() {
+intgo _wrap_FULL_MANUAL_RENDER_pdje_POLYGLOT_5c11250640eb38b5() {
   PLAY_MODE result;
   intgo _swig_go_result;
   
@@ -643,7 +657,7 @@ intgo _wrap_FULL_MANUAL_RENDER_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-PDJE *_wrap_new_PDJE_pdje_POLYGLOT_53e15a0c5c443996(_gostring_ _swig_go_0) {
+PDJE *_wrap_new_PDJE_pdje_POLYGLOT_5c11250640eb38b5(_gostring_ _swig_go_0) {
   std::string *arg1 = 0 ;
   PDJE *result = 0 ;
   PDJE *_swig_go_result;
@@ -659,7 +673,7 @@ PDJE *_wrap_new_PDJE_pdje_POLYGLOT_53e15a0c5c443996(_gostring_ _swig_go_0) {
 }
 
 
-void _wrap_delete_PDJE_pdje_POLYGLOT_53e15a0c5c443996(PDJE *_swig_go_0) {
+void _wrap_delete_PDJE_pdje_POLYGLOT_5c11250640eb38b5(PDJE *_swig_go_0) {
   PDJE *arg1 = (PDJE *) 0 ;
   
   arg1 = *(PDJE **)&_swig_go_0; 
@@ -669,7 +683,7 @@ void _wrap_delete_PDJE_pdje_POLYGLOT_53e15a0c5c443996(PDJE *_swig_go_0) {
 }
 
 
-void _wrap_PDJE_player_set_pdje_POLYGLOT_53e15a0c5c443996(PDJE *_swig_go_0, std::optional< audioPlayer > *_swig_go_1) {
+void _wrap_PDJE_player_set_pdje_POLYGLOT_5c11250640eb38b5(PDJE *_swig_go_0, std::optional< audioPlayer > *_swig_go_1) {
   PDJE *arg1 = (PDJE *) 0 ;
   std::optional< audioPlayer > *arg2 = (std::optional< audioPlayer > *) 0 ;
   
@@ -681,7 +695,7 @@ void _wrap_PDJE_player_set_pdje_POLYGLOT_53e15a0c5c443996(PDJE *_swig_go_0, std:
 }
 
 
-std::optional< audioPlayer > *_wrap_PDJE_player_get_pdje_POLYGLOT_53e15a0c5c443996(PDJE *_swig_go_0) {
+std::optional< audioPlayer > *_wrap_PDJE_player_get_pdje_POLYGLOT_5c11250640eb38b5(PDJE *_swig_go_0) {
   PDJE *arg1 = (PDJE *) 0 ;
   std::optional< audioPlayer > *result = 0 ;
   std::optional< audioPlayer > *_swig_go_result;
@@ -694,7 +708,7 @@ std::optional< audioPlayer > *_wrap_PDJE_player_get_pdje_POLYGLOT_53e15a0c5c4439
 }
 
 
-bool _wrap_PDJE_InitPlayer_pdje_POLYGLOT_53e15a0c5c443996(PDJE *_swig_go_0, intgo _swig_go_1, trackdata *_swig_go_2, intgo _swig_go_3) {
+bool _wrap_PDJE_InitPlayer_pdje_POLYGLOT_5c11250640eb38b5(PDJE *_swig_go_0, intgo _swig_go_1, trackdata *_swig_go_2, intgo _swig_go_3) {
   PDJE *arg1 = (PDJE *) 0 ;
   PLAY_MODE arg2 ;
   trackdata *arg3 = 0 ;
@@ -713,7 +727,7 @@ bool _wrap_PDJE_InitPlayer_pdje_POLYGLOT_53e15a0c5c443996(PDJE *_swig_go_0, intg
 }
 
 
-bool _wrap_PDJE_GetNoteObjects_pdje_POLYGLOT_53e15a0c5c443996(PDJE *_swig_go_0, trackdata *_swig_go_1, OBJ_SETTER_CALLBACK *_swig_go_2) {
+bool _wrap_PDJE_GetNoteObjects_pdje_POLYGLOT_5c11250640eb38b5(PDJE *_swig_go_0, trackdata *_swig_go_1, OBJ_SETTER_CALLBACK *_swig_go_2) {
   PDJE *arg1 = (PDJE *) 0 ;
   trackdata *arg2 = 0 ;
   OBJ_SETTER_CALLBACK *arg3 = 0 ;
@@ -730,7 +744,7 @@ bool _wrap_PDJE_GetNoteObjects_pdje_POLYGLOT_53e15a0c5c443996(PDJE *_swig_go_0, 
 }
 
 
-std::vector< musdata > *_wrap_PDJE_SearchMusic__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(PDJE *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, double _swig_go_3) {
+std::vector< musdata > *_wrap_PDJE_SearchMusic__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(PDJE *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, double _swig_go_3) {
   PDJE *arg1 = (PDJE *) 0 ;
   std::string *arg2 = 0 ;
   std::string *arg3 = 0 ;
@@ -755,7 +769,7 @@ std::vector< musdata > *_wrap_PDJE_SearchMusic__SWIG_0_pdje_POLYGLOT_53e15a0c5c4
 }
 
 
-std::vector< musdata > *_wrap_PDJE_SearchMusic__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(PDJE *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+std::vector< musdata > *_wrap_PDJE_SearchMusic__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(PDJE *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
   PDJE *arg1 = (PDJE *) 0 ;
   std::string *arg2 = 0 ;
   std::string *arg3 = 0 ;
@@ -778,7 +792,7 @@ std::vector< musdata > *_wrap_PDJE_SearchMusic__SWIG_1_pdje_POLYGLOT_53e15a0c5c4
 }
 
 
-std::vector< trackdata > *_wrap_PDJE_SearchTrack_pdje_POLYGLOT_53e15a0c5c443996(PDJE *_swig_go_0, _gostring_ _swig_go_1) {
+std::vector< trackdata > *_wrap_PDJE_SearchTrack_pdje_POLYGLOT_5c11250640eb38b5(PDJE *_swig_go_0, _gostring_ _swig_go_1) {
   PDJE *arg1 = (PDJE *) 0 ;
   std::string *arg2 = 0 ;
   TRACK_VEC result;
@@ -796,7 +810,64 @@ std::vector< trackdata > *_wrap_PDJE_SearchTrack_pdje_POLYGLOT_53e15a0c5c443996(
 }
 
 
-bool _wrap_litedb_openDB_pdje_POLYGLOT_53e15a0c5c443996(litedb *_swig_go_0, _gostring_ _swig_go_1) {
+ARGSETTER_WRAPPER *_wrap_new_ARGSETTER_WRAPPER_pdje_POLYGLOT_5c11250640eb38b5(FXControlPannel *_swig_go_0) {
+  FXControlPannel *arg1 = (FXControlPannel *) 0 ;
+  ARGSETTER_WRAPPER *result = 0 ;
+  ARGSETTER_WRAPPER *_swig_go_result;
+  
+  arg1 = *(FXControlPannel **)&_swig_go_0; 
+  
+  result = (ARGSETTER_WRAPPER *)new ARGSETTER_WRAPPER(arg1);
+  *(ARGSETTER_WRAPPER **)&_swig_go_result = (ARGSETTER_WRAPPER *)result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_delete_ARGSETTER_WRAPPER_pdje_POLYGLOT_5c11250640eb38b5(ARGSETTER_WRAPPER *_swig_go_0) {
+  ARGSETTER_WRAPPER *arg1 = (ARGSETTER_WRAPPER *) 0 ;
+  
+  arg1 = *(ARGSETTER_WRAPPER **)&_swig_go_0; 
+  
+  delete arg1;
+  
+}
+
+
+std::vector< std::string > *_wrap_ARGSETTER_WRAPPER_GetFXArgKeys_pdje_POLYGLOT_5c11250640eb38b5(ARGSETTER_WRAPPER *_swig_go_0, intgo _swig_go_1) {
+  ARGSETTER_WRAPPER *arg1 = (ARGSETTER_WRAPPER *) 0 ;
+  FXList arg2 ;
+  std::vector< std::string > result;
+  std::vector< std::string > *_swig_go_result;
+  
+  arg1 = *(ARGSETTER_WRAPPER **)&_swig_go_0; 
+  arg2 = (FXList)_swig_go_1; 
+  
+  result = (arg1)->GetFXArgKeys(arg2);
+  *(std::vector< std::string > **)&_swig_go_result = new std::vector< std::string >(result); 
+  return _swig_go_result;
+}
+
+
+void _wrap_ARGSETTER_WRAPPER_SetFXArg_pdje_POLYGLOT_5c11250640eb38b5(ARGSETTER_WRAPPER *_swig_go_0, intgo _swig_go_1, _gostring_ _swig_go_2, double _swig_go_3) {
+  ARGSETTER_WRAPPER *arg1 = (ARGSETTER_WRAPPER *) 0 ;
+  FXList arg2 ;
+  std::string *arg3 = 0 ;
+  double arg4 ;
+  
+  arg1 = *(ARGSETTER_WRAPPER **)&_swig_go_0; 
+  arg2 = (FXList)_swig_go_1; 
+  
+  std::string arg3_str(_swig_go_2.p, _swig_go_2.n);
+  arg3 = &arg3_str;
+  
+  arg4 = (double)_swig_go_3; 
+  
+  (arg1)->SetFXArg(arg2,(std::string const &)*arg3,arg4);
+  
+}
+
+
+bool _wrap_litedb_openDB_pdje_POLYGLOT_5c11250640eb38b5(litedb *_swig_go_0, _gostring_ _swig_go_1) {
   litedb *arg1 = (litedb *) 0 ;
   std::string *arg2 = 0 ;
   bool result;
@@ -814,7 +885,20 @@ bool _wrap_litedb_openDB_pdje_POLYGLOT_53e15a0c5c443996(litedb *_swig_go_0, _gos
 }
 
 
-litedb *_wrap_new_litedb_pdje_POLYGLOT_53e15a0c5c443996() {
+_gostring_ _wrap_litedb_getRoot_pdje_POLYGLOT_5c11250640eb38b5(litedb *_swig_go_0) {
+  litedb *arg1 = (litedb *) 0 ;
+  std::string result;
+  _gostring_ _swig_go_result;
+  
+  arg1 = *(litedb **)&_swig_go_0; 
+  
+  result = (arg1)->getRoot();
+  _swig_go_result = Swig_AllocateString((&result)->data(), (&result)->length()); 
+  return _swig_go_result;
+}
+
+
+litedb *_wrap_new_litedb_pdje_POLYGLOT_5c11250640eb38b5() {
   litedb *result = 0 ;
   litedb *_swig_go_result;
   
@@ -825,7 +909,7 @@ litedb *_wrap_new_litedb_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-void _wrap_delete_litedb_pdje_POLYGLOT_53e15a0c5c443996(litedb *_swig_go_0) {
+void _wrap_delete_litedb_pdje_POLYGLOT_5c11250640eb38b5(litedb *_swig_go_0) {
   litedb *arg1 = (litedb *) 0 ;
   
   arg1 = *(litedb **)&_swig_go_0; 
@@ -835,7 +919,7 @@ void _wrap_delete_litedb_pdje_POLYGLOT_53e15a0c5c443996(litedb *_swig_go_0) {
 }
 
 
-void _wrap_musdata_title_set_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_musdata_title_set_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0, _gostring_ _swig_go_1) {
   musdata *arg1 = (musdata *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -850,7 +934,7 @@ void _wrap_musdata_title_set_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0,
 }
 
 
-_gostring_ _wrap_musdata_title_get_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0) {
+_gostring_ _wrap_musdata_title_get_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0) {
   musdata *arg1 = (musdata *) 0 ;
   std::string *result = 0 ;
   _gostring_ _swig_go_result;
@@ -863,7 +947,7 @@ _gostring_ _wrap_musdata_title_get_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig
 }
 
 
-void _wrap_musdata_composer_set_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_musdata_composer_set_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0, _gostring_ _swig_go_1) {
   musdata *arg1 = (musdata *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -878,7 +962,7 @@ void _wrap_musdata_composer_set_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go
 }
 
 
-_gostring_ _wrap_musdata_composer_get_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0) {
+_gostring_ _wrap_musdata_composer_get_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0) {
   musdata *arg1 = (musdata *) 0 ;
   std::string *result = 0 ;
   _gostring_ _swig_go_result;
@@ -891,7 +975,7 @@ _gostring_ _wrap_musdata_composer_get_pdje_POLYGLOT_53e15a0c5c443996(musdata *_s
 }
 
 
-void _wrap_musdata_musicPath_set_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_musdata_musicPath_set_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0, _gostring_ _swig_go_1) {
   musdata *arg1 = (musdata *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -906,7 +990,7 @@ void _wrap_musdata_musicPath_set_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_g
 }
 
 
-_gostring_ _wrap_musdata_musicPath_get_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0) {
+_gostring_ _wrap_musdata_musicPath_get_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0) {
   musdata *arg1 = (musdata *) 0 ;
   std::string *result = 0 ;
   _gostring_ _swig_go_result;
@@ -919,7 +1003,7 @@ _gostring_ _wrap_musdata_musicPath_get_pdje_POLYGLOT_53e15a0c5c443996(musdata *_
 }
 
 
-void _wrap_musdata_bpmBinary_set_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0, BIN *_swig_go_1) {
+void _wrap_musdata_bpmBinary_set_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0, BIN *_swig_go_1) {
   musdata *arg1 = (musdata *) 0 ;
   BIN arg2 ;
   BIN *argp2 ;
@@ -938,7 +1022,7 @@ void _wrap_musdata_bpmBinary_set_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_g
 }
 
 
-BIN *_wrap_musdata_bpmBinary_get_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0) {
+BIN *_wrap_musdata_bpmBinary_get_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0) {
   musdata *arg1 = (musdata *) 0 ;
   BIN result;
   BIN *_swig_go_result;
@@ -951,7 +1035,7 @@ BIN *_wrap_musdata_bpmBinary_get_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_g
 }
 
 
-void _wrap_musdata_bpm_set_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0, double _swig_go_1) {
+void _wrap_musdata_bpm_set_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0, double _swig_go_1) {
   musdata *arg1 = (musdata *) 0 ;
   double arg2 ;
   
@@ -963,7 +1047,7 @@ void _wrap_musdata_bpm_set_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0, d
 }
 
 
-double _wrap_musdata_bpm_get_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0) {
+double _wrap_musdata_bpm_get_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0) {
   musdata *arg1 = (musdata *) 0 ;
   double result;
   double _swig_go_result;
@@ -976,7 +1060,7 @@ double _wrap_musdata_bpm_get_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0)
 }
 
 
-void _wrap_musdata_firstBar_set_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_musdata_firstBar_set_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0, _gostring_ _swig_go_1) {
   musdata *arg1 = (musdata *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -991,7 +1075,7 @@ void _wrap_musdata_firstBar_set_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go
 }
 
 
-_gostring_ _wrap_musdata_firstBar_get_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0) {
+_gostring_ _wrap_musdata_firstBar_get_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0) {
   musdata *arg1 = (musdata *) 0 ;
   std::string *result = 0 ;
   _gostring_ _swig_go_result;
@@ -1004,7 +1088,7 @@ _gostring_ _wrap_musdata_firstBar_get_pdje_POLYGLOT_53e15a0c5c443996(musdata *_s
 }
 
 
-musdata *_wrap_new_musdata__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(stmt *_swig_go_0) {
+musdata *_wrap_new_musdata__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(stmt *_swig_go_0) {
   stmt *arg1 = (stmt *) 0 ;
   musdata *result = 0 ;
   musdata *_swig_go_result;
@@ -1017,7 +1101,7 @@ musdata *_wrap_new_musdata__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(stmt *_swig_go
 }
 
 
-musdata *_wrap_new_musdata__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(_gostring_ _swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, double _swig_go_3) {
+musdata *_wrap_new_musdata__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(_gostring_ _swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, double _swig_go_3) {
   std::string *arg1 = 0 ;
   std::string *arg2 = 0 ;
   std::string *arg3 = 0 ;
@@ -1045,7 +1129,7 @@ musdata *_wrap_new_musdata__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(_gostring_ _sw
 }
 
 
-musdata *_wrap_new_musdata__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(_gostring_ _swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+musdata *_wrap_new_musdata__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(_gostring_ _swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
   std::string *arg1 = 0 ;
   std::string *arg2 = 0 ;
   std::string *arg3 = 0 ;
@@ -1071,7 +1155,7 @@ musdata *_wrap_new_musdata__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(_gostring_ _sw
 }
 
 
-musdata *_wrap_new_musdata__SWIG_3_pdje_POLYGLOT_53e15a0c5c443996(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
+musdata *_wrap_new_musdata__SWIG_3_pdje_POLYGLOT_5c11250640eb38b5(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
   std::string *arg1 = 0 ;
   std::string *arg2 = 0 ;
   musdata *result = 0 ;
@@ -1092,7 +1176,7 @@ musdata *_wrap_new_musdata__SWIG_3_pdje_POLYGLOT_53e15a0c5c443996(_gostring_ _sw
 }
 
 
-musdata *_wrap_new_musdata__SWIG_4_pdje_POLYGLOT_53e15a0c5c443996(_gostring_ _swig_go_0) {
+musdata *_wrap_new_musdata__SWIG_4_pdje_POLYGLOT_5c11250640eb38b5(_gostring_ _swig_go_0) {
   std::string *arg1 = 0 ;
   musdata *result = 0 ;
   musdata *_swig_go_result;
@@ -1108,7 +1192,7 @@ musdata *_wrap_new_musdata__SWIG_4_pdje_POLYGLOT_53e15a0c5c443996(_gostring_ _sw
 }
 
 
-musdata *_wrap_new_musdata__SWIG_5_pdje_POLYGLOT_53e15a0c5c443996() {
+musdata *_wrap_new_musdata__SWIG_5_pdje_POLYGLOT_5c11250640eb38b5() {
   musdata *result = 0 ;
   musdata *_swig_go_result;
   
@@ -1119,7 +1203,7 @@ musdata *_wrap_new_musdata__SWIG_5_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-bool _wrap_musdata_GenSearchSTMT_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0, stmt *_swig_go_1, sqlite3 *_swig_go_2) {
+bool _wrap_musdata_GenSearchSTMT_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0, stmt *_swig_go_1, sqlite3 *_swig_go_2) {
   musdata *arg1 = (musdata *) 0 ;
   stmt *arg2 = 0 ;
   sqlite3 *arg3 = (sqlite3 *) 0 ;
@@ -1136,7 +1220,7 @@ bool _wrap_musdata_GenSearchSTMT_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_g
 }
 
 
-bool _wrap_musdata_GenInsertSTMT_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0, stmt *_swig_go_1, sqlite3 *_swig_go_2) {
+bool _wrap_musdata_GenInsertSTMT_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0, stmt *_swig_go_1, sqlite3 *_swig_go_2) {
   musdata *arg1 = (musdata *) 0 ;
   stmt *arg2 = 0 ;
   sqlite3 *arg3 = (sqlite3 *) 0 ;
@@ -1153,7 +1237,7 @@ bool _wrap_musdata_GenInsertSTMT_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_g
 }
 
 
-void _wrap_delete_musdata_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0) {
+void _wrap_delete_musdata_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0) {
   musdata *arg1 = (musdata *) 0 ;
   
   arg1 = *(musdata **)&_swig_go_0; 
@@ -1163,7 +1247,7 @@ void _wrap_delete_musdata_pdje_POLYGLOT_53e15a0c5c443996(musdata *_swig_go_0) {
 }
 
 
-void _wrap_trackdata_trackTitle_set_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_trackdata_trackTitle_set_pdje_POLYGLOT_5c11250640eb38b5(trackdata *_swig_go_0, _gostring_ _swig_go_1) {
   trackdata *arg1 = (trackdata *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -1178,7 +1262,7 @@ void _wrap_trackdata_trackTitle_set_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_s
 }
 
 
-_gostring_ _wrap_trackdata_trackTitle_get_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_swig_go_0) {
+_gostring_ _wrap_trackdata_trackTitle_get_pdje_POLYGLOT_5c11250640eb38b5(trackdata *_swig_go_0) {
   trackdata *arg1 = (trackdata *) 0 ;
   std::string *result = 0 ;
   _gostring_ _swig_go_result;
@@ -1191,7 +1275,7 @@ _gostring_ _wrap_trackdata_trackTitle_get_pdje_POLYGLOT_53e15a0c5c443996(trackda
 }
 
 
-void _wrap_trackdata_mixBinary_set_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_swig_go_0, BIN *_swig_go_1) {
+void _wrap_trackdata_mixBinary_set_pdje_POLYGLOT_5c11250640eb38b5(trackdata *_swig_go_0, BIN *_swig_go_1) {
   trackdata *arg1 = (trackdata *) 0 ;
   BIN arg2 ;
   BIN *argp2 ;
@@ -1210,7 +1294,7 @@ void _wrap_trackdata_mixBinary_set_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_sw
 }
 
 
-BIN *_wrap_trackdata_mixBinary_get_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_swig_go_0) {
+BIN *_wrap_trackdata_mixBinary_get_pdje_POLYGLOT_5c11250640eb38b5(trackdata *_swig_go_0) {
   trackdata *arg1 = (trackdata *) 0 ;
   BIN result;
   BIN *_swig_go_result;
@@ -1223,7 +1307,7 @@ BIN *_wrap_trackdata_mixBinary_get_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_sw
 }
 
 
-void _wrap_trackdata_noteBinary_set_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_swig_go_0, BIN *_swig_go_1) {
+void _wrap_trackdata_noteBinary_set_pdje_POLYGLOT_5c11250640eb38b5(trackdata *_swig_go_0, BIN *_swig_go_1) {
   trackdata *arg1 = (trackdata *) 0 ;
   BIN arg2 ;
   BIN *argp2 ;
@@ -1242,7 +1326,7 @@ void _wrap_trackdata_noteBinary_set_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_s
 }
 
 
-BIN *_wrap_trackdata_noteBinary_get_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_swig_go_0) {
+BIN *_wrap_trackdata_noteBinary_get_pdje_POLYGLOT_5c11250640eb38b5(trackdata *_swig_go_0) {
   trackdata *arg1 = (trackdata *) 0 ;
   BIN result;
   BIN *_swig_go_result;
@@ -1255,7 +1339,7 @@ BIN *_wrap_trackdata_noteBinary_get_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_s
 }
 
 
-void _wrap_trackdata_cachedMixList_set_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_trackdata_cachedMixList_set_pdje_POLYGLOT_5c11250640eb38b5(trackdata *_swig_go_0, _gostring_ _swig_go_1) {
   trackdata *arg1 = (trackdata *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -1270,7 +1354,7 @@ void _wrap_trackdata_cachedMixList_set_pdje_POLYGLOT_53e15a0c5c443996(trackdata 
 }
 
 
-_gostring_ _wrap_trackdata_cachedMixList_get_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_swig_go_0) {
+_gostring_ _wrap_trackdata_cachedMixList_get_pdje_POLYGLOT_5c11250640eb38b5(trackdata *_swig_go_0) {
   trackdata *arg1 = (trackdata *) 0 ;
   std::string *result = 0 ;
   _gostring_ _swig_go_result;
@@ -1283,7 +1367,7 @@ _gostring_ _wrap_trackdata_cachedMixList_get_pdje_POLYGLOT_53e15a0c5c443996(trac
 }
 
 
-trackdata *_wrap_new_trackdata__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(stmt *_swig_go_0) {
+trackdata *_wrap_new_trackdata__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(stmt *_swig_go_0) {
   stmt *arg1 = (stmt *) 0 ;
   trackdata *result = 0 ;
   trackdata *_swig_go_result;
@@ -1296,7 +1380,7 @@ trackdata *_wrap_new_trackdata__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(stmt *_swi
 }
 
 
-trackdata *_wrap_new_trackdata__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(_gostring_ _swig_go_0) {
+trackdata *_wrap_new_trackdata__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(_gostring_ _swig_go_0) {
   std::string *arg1 = 0 ;
   trackdata *result = 0 ;
   trackdata *_swig_go_result;
@@ -1312,7 +1396,7 @@ trackdata *_wrap_new_trackdata__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(_gostring_
 }
 
 
-trackdata *_wrap_new_trackdata__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996() {
+trackdata *_wrap_new_trackdata__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5() {
   trackdata *result = 0 ;
   trackdata *_swig_go_result;
   
@@ -1323,7 +1407,7 @@ trackdata *_wrap_new_trackdata__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996() {
 }
 
 
-bool _wrap_trackdata_GenSearchSTMT_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_swig_go_0, stmt *_swig_go_1, sqlite3 *_swig_go_2) {
+bool _wrap_trackdata_GenSearchSTMT_pdje_POLYGLOT_5c11250640eb38b5(trackdata *_swig_go_0, stmt *_swig_go_1, sqlite3 *_swig_go_2) {
   trackdata *arg1 = (trackdata *) 0 ;
   stmt *arg2 = 0 ;
   sqlite3 *arg3 = (sqlite3 *) 0 ;
@@ -1340,7 +1424,7 @@ bool _wrap_trackdata_GenSearchSTMT_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_sw
 }
 
 
-bool _wrap_trackdata_GenInsertSTMT_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_swig_go_0, stmt *_swig_go_1, sqlite3 *_swig_go_2) {
+bool _wrap_trackdata_GenInsertSTMT_pdje_POLYGLOT_5c11250640eb38b5(trackdata *_swig_go_0, stmt *_swig_go_1, sqlite3 *_swig_go_2) {
   trackdata *arg1 = (trackdata *) 0 ;
   stmt *arg2 = 0 ;
   sqlite3 *arg3 = (sqlite3 *) 0 ;
@@ -1357,7 +1441,7 @@ bool _wrap_trackdata_GenInsertSTMT_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_sw
 }
 
 
-void _wrap_delete_trackdata_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_swig_go_0) {
+void _wrap_delete_trackdata_pdje_POLYGLOT_5c11250640eb38b5(trackdata *_swig_go_0) {
   trackdata *arg1 = (trackdata *) 0 ;
   
   arg1 = *(trackdata **)&_swig_go_0; 
@@ -1367,7 +1451,48 @@ void _wrap_delete_trackdata_pdje_POLYGLOT_53e15a0c5c443996(trackdata *_swig_go_0
 }
 
 
-bool _wrap_audioPlayer_Activate_pdje_POLYGLOT_53e15a0c5c443996(audioPlayer *_swig_go_0) {
+void _wrap_audioPlayer_STATUS_set_pdje_POLYGLOT_5c11250640eb38b5(audioPlayer *_swig_go_0, _gostring_ _swig_go_1) {
+  audioPlayer *arg1 = (audioPlayer *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  arg1 = *(audioPlayer **)&_swig_go_0; 
+  
+  std::string arg2_str(_swig_go_1.p, _swig_go_1.n);
+  arg2 = &arg2_str;
+  
+  
+  if (arg1) (arg1)->STATUS = *arg2;
+  
+}
+
+
+_gostring_ _wrap_audioPlayer_STATUS_get_pdje_POLYGLOT_5c11250640eb38b5(audioPlayer *_swig_go_0) {
+  audioPlayer *arg1 = (audioPlayer *) 0 ;
+  std::string *result = 0 ;
+  _gostring_ _swig_go_result;
+  
+  arg1 = *(audioPlayer **)&_swig_go_0; 
+  
+  result = (std::string *) & ((arg1)->STATUS);
+  _swig_go_result = Swig_AllocateString((*result).data(), (*result).length()); 
+  return _swig_go_result;
+}
+
+
+_gostring_ _wrap_audioPlayer_GetStatus_pdje_POLYGLOT_5c11250640eb38b5(audioPlayer *_swig_go_0) {
+  audioPlayer *arg1 = (audioPlayer *) 0 ;
+  std::string result;
+  _gostring_ _swig_go_result;
+  
+  arg1 = *(audioPlayer **)&_swig_go_0; 
+  
+  result = (arg1)->GetStatus();
+  _swig_go_result = Swig_AllocateString((&result)->data(), (&result)->length()); 
+  return _swig_go_result;
+}
+
+
+bool _wrap_audioPlayer_Activate_pdje_POLYGLOT_5c11250640eb38b5(audioPlayer *_swig_go_0) {
   audioPlayer *arg1 = (audioPlayer *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -1380,7 +1505,7 @@ bool _wrap_audioPlayer_Activate_pdje_POLYGLOT_53e15a0c5c443996(audioPlayer *_swi
 }
 
 
-bool _wrap_audioPlayer_Deactivate_pdje_POLYGLOT_53e15a0c5c443996(audioPlayer *_swig_go_0) {
+bool _wrap_audioPlayer_Deactivate_pdje_POLYGLOT_5c11250640eb38b5(audioPlayer *_swig_go_0) {
   audioPlayer *arg1 = (audioPlayer *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -1393,7 +1518,7 @@ bool _wrap_audioPlayer_Deactivate_pdje_POLYGLOT_53e15a0c5c443996(audioPlayer *_s
 }
 
 
-void _wrap_audioPlayer_ChangeCursorPos_pdje_POLYGLOT_53e15a0c5c443996(audioPlayer *_swig_go_0, long long _swig_go_1) {
+void _wrap_audioPlayer_ChangeCursorPos_pdje_POLYGLOT_5c11250640eb38b5(audioPlayer *_swig_go_0, long long _swig_go_1) {
   audioPlayer *arg1 = (audioPlayer *) 0 ;
   unsigned long long arg2 ;
   
@@ -1405,7 +1530,7 @@ void _wrap_audioPlayer_ChangeCursorPos_pdje_POLYGLOT_53e15a0c5c443996(audioPlaye
 }
 
 
-long long _wrap_audioPlayer_GetConsumedFrames_pdje_POLYGLOT_53e15a0c5c443996(audioPlayer *_swig_go_0) {
+long long _wrap_audioPlayer_GetConsumedFrames_pdje_POLYGLOT_5c11250640eb38b5(audioPlayer *_swig_go_0) {
   audioPlayer *arg1 = (audioPlayer *) 0 ;
   unsigned long long result;
   long long _swig_go_result;
@@ -1418,7 +1543,7 @@ long long _wrap_audioPlayer_GetConsumedFrames_pdje_POLYGLOT_53e15a0c5c443996(aud
 }
 
 
-FXControlPannel *_wrap_audioPlayer_GetFXControlPannel__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(audioPlayer *_swig_go_0, _gostring_ _swig_go_1) {
+FXControlPannel *_wrap_audioPlayer_GetFXControlPannel__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(audioPlayer *_swig_go_0, _gostring_ _swig_go_1) {
   audioPlayer *arg1 = (audioPlayer *) 0 ;
   std::string *arg2 = 0 ;
   FXControlPannel *result = 0 ;
@@ -1436,7 +1561,7 @@ FXControlPannel *_wrap_audioPlayer_GetFXControlPannel__SWIG_0_pdje_POLYGLOT_53e1
 }
 
 
-FXControlPannel *_wrap_audioPlayer_GetFXControlPannel__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(audioPlayer *_swig_go_0) {
+FXControlPannel *_wrap_audioPlayer_GetFXControlPannel__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(audioPlayer *_swig_go_0) {
   audioPlayer *arg1 = (audioPlayer *) 0 ;
   FXControlPannel *result = 0 ;
   FXControlPannel *_swig_go_result;
@@ -1449,7 +1574,7 @@ FXControlPannel *_wrap_audioPlayer_GetFXControlPannel__SWIG_1_pdje_POLYGLOT_53e1
 }
 
 
-MusicControlPannel *_wrap_audioPlayer_GetMusicControlPannel_pdje_POLYGLOT_53e15a0c5c443996(audioPlayer *_swig_go_0) {
+MusicControlPannel *_wrap_audioPlayer_GetMusicControlPannel_pdje_POLYGLOT_5c11250640eb38b5(audioPlayer *_swig_go_0) {
   audioPlayer *arg1 = (audioPlayer *) 0 ;
   MusicControlPannel *result = 0 ;
   MusicControlPannel *_swig_go_result;
@@ -1462,7 +1587,7 @@ MusicControlPannel *_wrap_audioPlayer_GetMusicControlPannel_pdje_POLYGLOT_53e15a
 }
 
 
-audioPlayer *_wrap_new_audioPlayer__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(litedb *_swig_go_0, trackdata *_swig_go_1, intgo _swig_go_2, bool _swig_go_3) {
+audioPlayer *_wrap_new_audioPlayer__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(litedb *_swig_go_0, trackdata *_swig_go_1, intgo _swig_go_2, bool _swig_go_3) {
   litedb *arg1 = 0 ;
   trackdata *arg2 = 0 ;
   unsigned int arg3 ;
@@ -1481,7 +1606,7 @@ audioPlayer *_wrap_new_audioPlayer__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(litedb
 }
 
 
-audioPlayer *_wrap_new_audioPlayer__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(litedb *_swig_go_0, trackdata *_swig_go_1, intgo _swig_go_2) {
+audioPlayer *_wrap_new_audioPlayer__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(litedb *_swig_go_0, trackdata *_swig_go_1, intgo _swig_go_2) {
   litedb *arg1 = 0 ;
   trackdata *arg2 = 0 ;
   unsigned int arg3 ;
@@ -1498,7 +1623,7 @@ audioPlayer *_wrap_new_audioPlayer__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(litedb
 }
 
 
-audioPlayer *_wrap_new_audioPlayer__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(intgo _swig_go_0) {
+audioPlayer *_wrap_new_audioPlayer__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(intgo _swig_go_0) {
   unsigned int arg1 ;
   audioPlayer *result = 0 ;
   audioPlayer *_swig_go_result;
@@ -1511,7 +1636,7 @@ audioPlayer *_wrap_new_audioPlayer__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(intgo 
 }
 
 
-void _wrap_delete_audioPlayer_pdje_POLYGLOT_53e15a0c5c443996(audioPlayer *_swig_go_0) {
+void _wrap_delete_audioPlayer_pdje_POLYGLOT_5c11250640eb38b5(audioPlayer *_swig_go_0) {
   audioPlayer *arg1 = (audioPlayer *) 0 ;
   
   arg1 = *(audioPlayer **)&_swig_go_0; 
@@ -1521,7 +1646,7 @@ void _wrap_delete_audioPlayer_pdje_POLYGLOT_53e15a0c5c443996(audioPlayer *_swig_
 }
 
 
-std::vector< musdata > *_wrap_new_MUS_VEC__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996() {
+std::vector< musdata > *_wrap_new_MUS_VEC__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5() {
   std::vector< musdata > *result = 0 ;
   std::vector< musdata > *_swig_go_result;
   
@@ -1532,7 +1657,7 @@ std::vector< musdata > *_wrap_new_MUS_VEC__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996
 }
 
 
-std::vector< musdata > *_wrap_new_MUS_VEC__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(long long _swig_go_0) {
+std::vector< musdata > *_wrap_new_MUS_VEC__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(long long _swig_go_0) {
   std::vector< musdata >::size_type arg1 ;
   std::vector< musdata > *result = 0 ;
   std::vector< musdata > *_swig_go_result;
@@ -1545,7 +1670,7 @@ std::vector< musdata > *_wrap_new_MUS_VEC__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996
 }
 
 
-std::vector< musdata > *_wrap_new_MUS_VEC__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata > *_swig_go_0) {
+std::vector< musdata > *_wrap_new_MUS_VEC__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(std::vector< musdata > *_swig_go_0) {
   std::vector< musdata > *arg1 = 0 ;
   std::vector< musdata > *result = 0 ;
   std::vector< musdata > *_swig_go_result;
@@ -1558,7 +1683,7 @@ std::vector< musdata > *_wrap_new_MUS_VEC__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996
 }
 
 
-long long _wrap_MUS_VEC_size_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata > *_swig_go_0) {
+long long _wrap_MUS_VEC_size_pdje_POLYGLOT_5c11250640eb38b5(std::vector< musdata > *_swig_go_0) {
   std::vector< musdata > *arg1 = (std::vector< musdata > *) 0 ;
   std::vector< musdata >::size_type result;
   long long _swig_go_result;
@@ -1571,7 +1696,7 @@ long long _wrap_MUS_VEC_size_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata
 }
 
 
-long long _wrap_MUS_VEC_capacity_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata > *_swig_go_0) {
+long long _wrap_MUS_VEC_capacity_pdje_POLYGLOT_5c11250640eb38b5(std::vector< musdata > *_swig_go_0) {
   std::vector< musdata > *arg1 = (std::vector< musdata > *) 0 ;
   std::vector< musdata >::size_type result;
   long long _swig_go_result;
@@ -1584,7 +1709,7 @@ long long _wrap_MUS_VEC_capacity_pdje_POLYGLOT_53e15a0c5c443996(std::vector< mus
 }
 
 
-void _wrap_MUS_VEC_reserve_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata > *_swig_go_0, long long _swig_go_1) {
+void _wrap_MUS_VEC_reserve_pdje_POLYGLOT_5c11250640eb38b5(std::vector< musdata > *_swig_go_0, long long _swig_go_1) {
   std::vector< musdata > *arg1 = (std::vector< musdata > *) 0 ;
   std::vector< musdata >::size_type arg2 ;
   
@@ -1596,7 +1721,7 @@ void _wrap_MUS_VEC_reserve_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata >
 }
 
 
-bool _wrap_MUS_VEC_isEmpty_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata > *_swig_go_0) {
+bool _wrap_MUS_VEC_isEmpty_pdje_POLYGLOT_5c11250640eb38b5(std::vector< musdata > *_swig_go_0) {
   std::vector< musdata > *arg1 = (std::vector< musdata > *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -1609,7 +1734,7 @@ bool _wrap_MUS_VEC_isEmpty_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata >
 }
 
 
-void _wrap_MUS_VEC_clear_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata > *_swig_go_0) {
+void _wrap_MUS_VEC_clear_pdje_POLYGLOT_5c11250640eb38b5(std::vector< musdata > *_swig_go_0) {
   std::vector< musdata > *arg1 = (std::vector< musdata > *) 0 ;
   
   arg1 = *(std::vector< musdata > **)&_swig_go_0; 
@@ -1619,7 +1744,7 @@ void _wrap_MUS_VEC_clear_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata > *
 }
 
 
-void _wrap_MUS_VEC_add_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata > *_swig_go_0, musdata *_swig_go_1) {
+void _wrap_MUS_VEC_add_pdje_POLYGLOT_5c11250640eb38b5(std::vector< musdata > *_swig_go_0, musdata *_swig_go_1) {
   std::vector< musdata > *arg1 = (std::vector< musdata > *) 0 ;
   std::vector< musdata >::value_type *arg2 = 0 ;
   
@@ -1631,7 +1756,7 @@ void _wrap_MUS_VEC_add_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata > *_s
 }
 
 
-musdata *_wrap_MUS_VEC_get_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata > *_swig_go_0, intgo _swig_go_1) {
+musdata *_wrap_MUS_VEC_get_pdje_POLYGLOT_5c11250640eb38b5(std::vector< musdata > *_swig_go_0, intgo _swig_go_1) {
   std::vector< musdata > *arg1 = (std::vector< musdata > *) 0 ;
   int arg2 ;
   std::vector< musdata >::value_type *result = 0 ;
@@ -1652,7 +1777,7 @@ musdata *_wrap_MUS_VEC_get_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata >
 }
 
 
-void _wrap_MUS_VEC_set_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata > *_swig_go_0, intgo _swig_go_1, musdata *_swig_go_2) {
+void _wrap_MUS_VEC_set_pdje_POLYGLOT_5c11250640eb38b5(std::vector< musdata > *_swig_go_0, intgo _swig_go_1, musdata *_swig_go_2) {
   std::vector< musdata > *arg1 = (std::vector< musdata > *) 0 ;
   int arg2 ;
   std::vector< musdata >::value_type *arg3 = 0 ;
@@ -1672,7 +1797,7 @@ void _wrap_MUS_VEC_set_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata > *_s
 }
 
 
-void _wrap_delete_MUS_VEC_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata > *_swig_go_0) {
+void _wrap_delete_MUS_VEC_pdje_POLYGLOT_5c11250640eb38b5(std::vector< musdata > *_swig_go_0) {
   std::vector< musdata > *arg1 = (std::vector< musdata > *) 0 ;
   
   arg1 = *(std::vector< musdata > **)&_swig_go_0; 
@@ -1682,7 +1807,7 @@ void _wrap_delete_MUS_VEC_pdje_POLYGLOT_53e15a0c5c443996(std::vector< musdata > 
 }
 
 
-std::vector< trackdata > *_wrap_new_TRACK_VEC__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996() {
+std::vector< trackdata > *_wrap_new_TRACK_VEC__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5() {
   std::vector< trackdata > *result = 0 ;
   std::vector< trackdata > *_swig_go_result;
   
@@ -1693,7 +1818,7 @@ std::vector< trackdata > *_wrap_new_TRACK_VEC__SWIG_0_pdje_POLYGLOT_53e15a0c5c44
 }
 
 
-std::vector< trackdata > *_wrap_new_TRACK_VEC__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(long long _swig_go_0) {
+std::vector< trackdata > *_wrap_new_TRACK_VEC__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(long long _swig_go_0) {
   std::vector< trackdata >::size_type arg1 ;
   std::vector< trackdata > *result = 0 ;
   std::vector< trackdata > *_swig_go_result;
@@ -1706,7 +1831,7 @@ std::vector< trackdata > *_wrap_new_TRACK_VEC__SWIG_1_pdje_POLYGLOT_53e15a0c5c44
 }
 
 
-std::vector< trackdata > *_wrap_new_TRACK_VEC__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackdata > *_swig_go_0) {
+std::vector< trackdata > *_wrap_new_TRACK_VEC__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(std::vector< trackdata > *_swig_go_0) {
   std::vector< trackdata > *arg1 = 0 ;
   std::vector< trackdata > *result = 0 ;
   std::vector< trackdata > *_swig_go_result;
@@ -1719,7 +1844,7 @@ std::vector< trackdata > *_wrap_new_TRACK_VEC__SWIG_2_pdje_POLYGLOT_53e15a0c5c44
 }
 
 
-long long _wrap_TRACK_VEC_size_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackdata > *_swig_go_0) {
+long long _wrap_TRACK_VEC_size_pdje_POLYGLOT_5c11250640eb38b5(std::vector< trackdata > *_swig_go_0) {
   std::vector< trackdata > *arg1 = (std::vector< trackdata > *) 0 ;
   std::vector< trackdata >::size_type result;
   long long _swig_go_result;
@@ -1732,7 +1857,7 @@ long long _wrap_TRACK_VEC_size_pdje_POLYGLOT_53e15a0c5c443996(std::vector< track
 }
 
 
-long long _wrap_TRACK_VEC_capacity_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackdata > *_swig_go_0) {
+long long _wrap_TRACK_VEC_capacity_pdje_POLYGLOT_5c11250640eb38b5(std::vector< trackdata > *_swig_go_0) {
   std::vector< trackdata > *arg1 = (std::vector< trackdata > *) 0 ;
   std::vector< trackdata >::size_type result;
   long long _swig_go_result;
@@ -1745,7 +1870,7 @@ long long _wrap_TRACK_VEC_capacity_pdje_POLYGLOT_53e15a0c5c443996(std::vector< t
 }
 
 
-void _wrap_TRACK_VEC_reserve_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackdata > *_swig_go_0, long long _swig_go_1) {
+void _wrap_TRACK_VEC_reserve_pdje_POLYGLOT_5c11250640eb38b5(std::vector< trackdata > *_swig_go_0, long long _swig_go_1) {
   std::vector< trackdata > *arg1 = (std::vector< trackdata > *) 0 ;
   std::vector< trackdata >::size_type arg2 ;
   
@@ -1757,7 +1882,7 @@ void _wrap_TRACK_VEC_reserve_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackda
 }
 
 
-bool _wrap_TRACK_VEC_isEmpty_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackdata > *_swig_go_0) {
+bool _wrap_TRACK_VEC_isEmpty_pdje_POLYGLOT_5c11250640eb38b5(std::vector< trackdata > *_swig_go_0) {
   std::vector< trackdata > *arg1 = (std::vector< trackdata > *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -1770,7 +1895,7 @@ bool _wrap_TRACK_VEC_isEmpty_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackda
 }
 
 
-void _wrap_TRACK_VEC_clear_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackdata > *_swig_go_0) {
+void _wrap_TRACK_VEC_clear_pdje_POLYGLOT_5c11250640eb38b5(std::vector< trackdata > *_swig_go_0) {
   std::vector< trackdata > *arg1 = (std::vector< trackdata > *) 0 ;
   
   arg1 = *(std::vector< trackdata > **)&_swig_go_0; 
@@ -1780,7 +1905,7 @@ void _wrap_TRACK_VEC_clear_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackdata
 }
 
 
-void _wrap_TRACK_VEC_add_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackdata > *_swig_go_0, trackdata *_swig_go_1) {
+void _wrap_TRACK_VEC_add_pdje_POLYGLOT_5c11250640eb38b5(std::vector< trackdata > *_swig_go_0, trackdata *_swig_go_1) {
   std::vector< trackdata > *arg1 = (std::vector< trackdata > *) 0 ;
   std::vector< trackdata >::value_type *arg2 = 0 ;
   
@@ -1792,7 +1917,7 @@ void _wrap_TRACK_VEC_add_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackdata >
 }
 
 
-trackdata *_wrap_TRACK_VEC_get_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackdata > *_swig_go_0, intgo _swig_go_1) {
+trackdata *_wrap_TRACK_VEC_get_pdje_POLYGLOT_5c11250640eb38b5(std::vector< trackdata > *_swig_go_0, intgo _swig_go_1) {
   std::vector< trackdata > *arg1 = (std::vector< trackdata > *) 0 ;
   int arg2 ;
   std::vector< trackdata >::value_type *result = 0 ;
@@ -1813,7 +1938,7 @@ trackdata *_wrap_TRACK_VEC_get_pdje_POLYGLOT_53e15a0c5c443996(std::vector< track
 }
 
 
-void _wrap_TRACK_VEC_set_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackdata > *_swig_go_0, intgo _swig_go_1, trackdata *_swig_go_2) {
+void _wrap_TRACK_VEC_set_pdje_POLYGLOT_5c11250640eb38b5(std::vector< trackdata > *_swig_go_0, intgo _swig_go_1, trackdata *_swig_go_2) {
   std::vector< trackdata > *arg1 = (std::vector< trackdata > *) 0 ;
   int arg2 ;
   std::vector< trackdata >::value_type *arg3 = 0 ;
@@ -1833,10 +1958,177 @@ void _wrap_TRACK_VEC_set_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackdata >
 }
 
 
-void _wrap_delete_TRACK_VEC_pdje_POLYGLOT_53e15a0c5c443996(std::vector< trackdata > *_swig_go_0) {
+void _wrap_delete_TRACK_VEC_pdje_POLYGLOT_5c11250640eb38b5(std::vector< trackdata > *_swig_go_0) {
   std::vector< trackdata > *arg1 = (std::vector< trackdata > *) 0 ;
   
   arg1 = *(std::vector< trackdata > **)&_swig_go_0; 
+  
+  delete arg1;
+  
+}
+
+
+std::vector< std::string > *_wrap_new_KEY_VEC__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5() {
+  std::vector< std::string > *result = 0 ;
+  std::vector< std::string > *_swig_go_result;
+  
+  
+  result = (std::vector< std::string > *)new std::vector< std::string >();
+  *(std::vector< std::string > **)&_swig_go_result = (std::vector< std::string > *)result; 
+  return _swig_go_result;
+}
+
+
+std::vector< std::string > *_wrap_new_KEY_VEC__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(long long _swig_go_0) {
+  std::vector< std::string >::size_type arg1 ;
+  std::vector< std::string > *result = 0 ;
+  std::vector< std::string > *_swig_go_result;
+  
+  arg1 = (size_t)_swig_go_0; 
+  
+  result = (std::vector< std::string > *)new std::vector< std::string >(SWIG_STD_MOVE(arg1));
+  *(std::vector< std::string > **)&_swig_go_result = (std::vector< std::string > *)result; 
+  return _swig_go_result;
+}
+
+
+std::vector< std::string > *_wrap_new_KEY_VEC__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(std::vector< std::string > *_swig_go_0) {
+  std::vector< std::string > *arg1 = 0 ;
+  std::vector< std::string > *result = 0 ;
+  std::vector< std::string > *_swig_go_result;
+  
+  arg1 = *(std::vector< std::string > **)&_swig_go_0; 
+  
+  result = (std::vector< std::string > *)new std::vector< std::string >((std::vector< std::string > const &)*arg1);
+  *(std::vector< std::string > **)&_swig_go_result = (std::vector< std::string > *)result; 
+  return _swig_go_result;
+}
+
+
+long long _wrap_KEY_VEC_size_pdje_POLYGLOT_5c11250640eb38b5(std::vector< std::string > *_swig_go_0) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  std::vector< std::string >::size_type result;
+  long long _swig_go_result;
+  
+  arg1 = *(std::vector< std::string > **)&_swig_go_0; 
+  
+  result = ((std::vector< std::string > const *)arg1)->size();
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+long long _wrap_KEY_VEC_capacity_pdje_POLYGLOT_5c11250640eb38b5(std::vector< std::string > *_swig_go_0) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  std::vector< std::string >::size_type result;
+  long long _swig_go_result;
+  
+  arg1 = *(std::vector< std::string > **)&_swig_go_0; 
+  
+  result = ((std::vector< std::string > const *)arg1)->capacity();
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_KEY_VEC_reserve_pdje_POLYGLOT_5c11250640eb38b5(std::vector< std::string > *_swig_go_0, long long _swig_go_1) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  std::vector< std::string >::size_type arg2 ;
+  
+  arg1 = *(std::vector< std::string > **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  
+  (arg1)->reserve(SWIG_STD_MOVE(arg2));
+  
+}
+
+
+bool _wrap_KEY_VEC_isEmpty_pdje_POLYGLOT_5c11250640eb38b5(std::vector< std::string > *_swig_go_0) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  bool result;
+  bool _swig_go_result;
+  
+  arg1 = *(std::vector< std::string > **)&_swig_go_0; 
+  
+  result = (bool)((std::vector< std::string > const *)arg1)->empty();
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+void _wrap_KEY_VEC_clear_pdje_POLYGLOT_5c11250640eb38b5(std::vector< std::string > *_swig_go_0) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  
+  arg1 = *(std::vector< std::string > **)&_swig_go_0; 
+  
+  (arg1)->clear();
+  
+}
+
+
+void _wrap_KEY_VEC_add_pdje_POLYGLOT_5c11250640eb38b5(std::vector< std::string > *_swig_go_0, _gostring_ _swig_go_1) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  std::vector< std::string >::value_type *arg2 = 0 ;
+  
+  arg1 = *(std::vector< std::string > **)&_swig_go_0; 
+  
+  std::vector< std::string >::value_type arg2_str(_swig_go_1.p, _swig_go_1.n);
+  arg2 = &arg2_str;
+  
+  
+  (arg1)->push_back((std::vector< std::string >::value_type const &)*arg2);
+  
+}
+
+
+_gostring_ _wrap_KEY_VEC_get_pdje_POLYGLOT_5c11250640eb38b5(std::vector< std::string > *_swig_go_0, intgo _swig_go_1) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  int arg2 ;
+  std::vector< std::string >::value_type *result = 0 ;
+  _gostring_ _swig_go_result;
+  
+  arg1 = *(std::vector< std::string > **)&_swig_go_0; 
+  arg2 = (int)_swig_go_1; 
+  
+  try {
+    result = (std::vector< std::string >::value_type *) &std_vector_Sl_std_string_Sg__get(arg1,arg2);
+  } catch(std::out_of_range &_e) {
+    (void)_e;
+    _swig_gopanic("C++ std::out_of_range exception thrown");
+    
+  }
+  _swig_go_result = Swig_AllocateString((*result).data(), (*result).length()); 
+  return _swig_go_result;
+}
+
+
+void _wrap_KEY_VEC_set_pdje_POLYGLOT_5c11250640eb38b5(std::vector< std::string > *_swig_go_0, intgo _swig_go_1, _gostring_ _swig_go_2) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  int arg2 ;
+  std::vector< std::string >::value_type *arg3 = 0 ;
+  
+  arg1 = *(std::vector< std::string > **)&_swig_go_0; 
+  arg2 = (int)_swig_go_1; 
+  
+  std::vector< std::string >::value_type arg3_str(_swig_go_2.p, _swig_go_2.n);
+  arg3 = &arg3_str;
+  
+  
+  try {
+    std_vector_Sl_std_string_Sg__set(arg1,arg2,(std::string const &)*arg3);
+  } catch(std::out_of_range &_e) {
+    (void)_e;
+    _swig_gopanic("C++ std::out_of_range exception thrown");
+    
+  }
+  
+}
+
+
+void _wrap_delete_KEY_VEC_pdje_POLYGLOT_5c11250640eb38b5(std::vector< std::string > *_swig_go_0) {
+  std::vector< std::string > *arg1 = (std::vector< std::string > *) 0 ;
+  
+  arg1 = *(std::vector< std::string > **)&_swig_go_0; 
   
   delete arg1;
   

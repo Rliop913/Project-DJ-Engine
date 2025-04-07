@@ -58,125 +58,157 @@ typedef _gostring_ swig_type_28;
 typedef _gostring_ swig_type_29;
 typedef _gostring_ swig_type_30;
 typedef _gostring_ swig_type_31;
-typedef long long swig_type_32;
-typedef long long swig_type_33;
+typedef _gostring_ swig_type_32;
+typedef _gostring_ swig_type_33;
 typedef _gostring_ swig_type_34;
-typedef long long swig_type_35;
-typedef long long swig_type_36;
+typedef _gostring_ swig_type_35;
+typedef _gostring_ swig_type_36;
 typedef long long swig_type_37;
 typedef long long swig_type_38;
-typedef long long swig_type_39;
+typedef _gostring_ swig_type_39;
 typedef long long swig_type_40;
 typedef long long swig_type_41;
 typedef long long swig_type_42;
-extern void _wrap_Swig_free_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern uintptr_t _wrap_Swig_malloc_pdje_POLYGLOT_53e15a0c5c443996(swig_intgo arg1);
-extern swig_intgo _wrap_COMPRESSOR_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern swig_intgo _wrap_DISTORTION_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern swig_intgo _wrap_ECHO_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern swig_intgo _wrap_EQ_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern swig_intgo _wrap_FILTER_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern swig_intgo _wrap_FLANGER_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern swig_intgo _wrap_OCSFILTER_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern swig_intgo _wrap_PANNER_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern swig_intgo _wrap_PHASER_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern swig_intgo _wrap_ROBOT_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern swig_intgo _wrap_ROLL_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern swig_intgo _wrap_TRANCE_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern swig_intgo _wrap_VOL_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern uintptr_t _wrap_new_FXControlPannel_pdje_POLYGLOT_53e15a0c5c443996(swig_intgo arg1);
-extern uintptr_t _wrap_FXControlPannel_GetArgSetter_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_FXControlPannel_FX_ON_OFF_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_intgo arg2, _Bool arg3);
-extern void _wrap_FXControlPannel_addFX_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_voidp arg2, swig_intgo arg3);
-extern _Bool _wrap_FXControlPannel_checkSomethingOn_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_delete_FXControlPannel_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_toFaustStylePCM_pdje_POLYGLOT_53e15a0c5c443996(swig_voidp arg1, swig_voidp arg2, swig_type_1 arg3);
-extern void _wrap_toLRStylePCM_pdje_POLYGLOT_53e15a0c5c443996(swig_voidp arg1, swig_voidp arg2, swig_type_2 arg3);
-extern swig_intgo _wrap_FULL_PRE_RENDER_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern swig_intgo _wrap_HYBRID_RENDER_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern swig_intgo _wrap_FULL_MANUAL_RENDER_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern uintptr_t _wrap_new_PDJE_pdje_POLYGLOT_53e15a0c5c443996(swig_type_3 arg1);
-extern void _wrap_delete_PDJE_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_PDJE_player_set_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_PDJE_player_get_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern _Bool _wrap_PDJE_InitPlayer_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, swig_intgo arg4);
-extern _Bool _wrap_PDJE_GetNoteObjects_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern uintptr_t _wrap_PDJE_SearchMusic__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_type_4 arg2, swig_type_5 arg3, double arg4);
-extern uintptr_t _wrap_PDJE_SearchMusic__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_type_6 arg2, swig_type_7 arg3);
-extern uintptr_t _wrap_PDJE_SearchTrack_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_type_8 arg2);
-extern _Bool _wrap_litedb_openDB_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_type_9 arg2);
-extern uintptr_t _wrap_new_litedb_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern void _wrap_delete_litedb_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_musdata_title_set_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_type_10 arg2);
-extern swig_type_11 _wrap_musdata_title_get_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_musdata_composer_set_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_type_12 arg2);
-extern swig_type_13 _wrap_musdata_composer_get_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_musdata_musicPath_set_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_type_14 arg2);
-extern swig_type_15 _wrap_musdata_musicPath_get_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_musdata_bpmBinary_set_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_musdata_bpmBinary_get_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_musdata_bpm_set_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, double arg2);
-extern double _wrap_musdata_bpm_get_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_musdata_firstBar_set_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_type_16 arg2);
-extern swig_type_17 _wrap_musdata_firstBar_get_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern uintptr_t _wrap_new_musdata__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern uintptr_t _wrap_new_musdata__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(swig_type_18 arg1, swig_type_19 arg2, swig_type_20 arg3, double arg4);
-extern uintptr_t _wrap_new_musdata__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(swig_type_21 arg1, swig_type_22 arg2, swig_type_23 arg3);
-extern uintptr_t _wrap_new_musdata__SWIG_3_pdje_POLYGLOT_53e15a0c5c443996(swig_type_24 arg1, swig_type_25 arg2);
-extern uintptr_t _wrap_new_musdata__SWIG_4_pdje_POLYGLOT_53e15a0c5c443996(swig_type_26 arg1);
-extern uintptr_t _wrap_new_musdata__SWIG_5_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern _Bool _wrap_musdata_GenSearchSTMT_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern _Bool _wrap_musdata_GenInsertSTMT_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern void _wrap_delete_musdata_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_trackdata_trackTitle_set_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_type_27 arg2);
-extern swig_type_28 _wrap_trackdata_trackTitle_get_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_trackdata_mixBinary_set_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_trackdata_mixBinary_get_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_trackdata_noteBinary_set_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_trackdata_noteBinary_get_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_trackdata_cachedMixList_set_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_type_29 arg2);
-extern swig_type_30 _wrap_trackdata_cachedMixList_get_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern uintptr_t _wrap_new_trackdata__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern uintptr_t _wrap_new_trackdata__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(swig_type_31 arg1);
-extern uintptr_t _wrap_new_trackdata__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern _Bool _wrap_trackdata_GenSearchSTMT_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern _Bool _wrap_trackdata_GenInsertSTMT_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
-extern void _wrap_delete_trackdata_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern _Bool _wrap_audioPlayer_Activate_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern _Bool _wrap_audioPlayer_Deactivate_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_audioPlayer_ChangeCursorPos_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_type_32 arg2);
-extern swig_type_33 _wrap_audioPlayer_GetConsumedFrames_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern uintptr_t _wrap_audioPlayer_GetFXControlPannel__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_type_34 arg2);
-extern uintptr_t _wrap_audioPlayer_GetFXControlPannel__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern uintptr_t _wrap_audioPlayer_GetMusicControlPannel_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern uintptr_t _wrap_new_audioPlayer__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3, _Bool arg4);
-extern uintptr_t _wrap_new_audioPlayer__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
-extern uintptr_t _wrap_new_audioPlayer__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(swig_intgo arg1);
-extern void _wrap_delete_audioPlayer_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern uintptr_t _wrap_new_MUS_VEC__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern uintptr_t _wrap_new_MUS_VEC__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(swig_type_35 arg1);
-extern uintptr_t _wrap_new_MUS_VEC__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern swig_type_36 _wrap_MUS_VEC_size_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern swig_type_37 _wrap_MUS_VEC_capacity_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_MUS_VEC_reserve_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_type_38 arg2);
-extern _Bool _wrap_MUS_VEC_isEmpty_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_MUS_VEC_clear_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_MUS_VEC_add_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_MUS_VEC_get_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_MUS_VEC_set_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
-extern void _wrap_delete_MUS_VEC_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern uintptr_t _wrap_new_TRACK_VEC__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(void);
-extern uintptr_t _wrap_new_TRACK_VEC__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(swig_type_39 arg1);
-extern uintptr_t _wrap_new_TRACK_VEC__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern swig_type_40 _wrap_TRACK_VEC_size_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern swig_type_41 _wrap_TRACK_VEC_capacity_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_TRACK_VEC_reserve_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_type_42 arg2);
-extern _Bool _wrap_TRACK_VEC_isEmpty_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_TRACK_VEC_clear_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
-extern void _wrap_TRACK_VEC_add_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_TRACK_VEC_get_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_TRACK_VEC_set_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
-extern void _wrap_delete_TRACK_VEC_pdje_POLYGLOT_53e15a0c5c443996(uintptr_t arg1);
+typedef long long swig_type_43;
+typedef long long swig_type_44;
+typedef long long swig_type_45;
+typedef long long swig_type_46;
+typedef long long swig_type_47;
+typedef long long swig_type_48;
+typedef long long swig_type_49;
+typedef long long swig_type_50;
+typedef long long swig_type_51;
+typedef _gostring_ swig_type_52;
+typedef _gostring_ swig_type_53;
+typedef _gostring_ swig_type_54;
+extern void _wrap_Swig_free_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern uintptr_t _wrap_Swig_malloc_pdje_POLYGLOT_5c11250640eb38b5(swig_intgo arg1);
+extern swig_intgo _wrap_COMPRESSOR_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern swig_intgo _wrap_DISTORTION_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern swig_intgo _wrap_ECHO_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern swig_intgo _wrap_EQ_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern swig_intgo _wrap_FILTER_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern swig_intgo _wrap_FLANGER_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern swig_intgo _wrap_OCSFILTER_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern swig_intgo _wrap_PANNER_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern swig_intgo _wrap_PHASER_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern swig_intgo _wrap_ROBOT_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern swig_intgo _wrap_ROLL_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern swig_intgo _wrap_TRANCE_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern swig_intgo _wrap_VOL_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern uintptr_t _wrap_new_FXControlPannel_pdje_POLYGLOT_5c11250640eb38b5(swig_intgo arg1);
+extern uintptr_t _wrap_FXControlPannel_GetArgSetter_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_FXControlPannel_FX_ON_OFF_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_intgo arg2, _Bool arg3);
+extern void _wrap_FXControlPannel_addFX_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_voidp arg2, swig_intgo arg3);
+extern _Bool _wrap_FXControlPannel_checkSomethingOn_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_delete_FXControlPannel_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_toFaustStylePCM_pdje_POLYGLOT_5c11250640eb38b5(swig_voidp arg1, swig_voidp arg2, swig_type_1 arg3);
+extern void _wrap_toLRStylePCM_pdje_POLYGLOT_5c11250640eb38b5(swig_voidp arg1, swig_voidp arg2, swig_type_2 arg3);
+extern swig_intgo _wrap_FULL_PRE_RENDER_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern swig_intgo _wrap_HYBRID_RENDER_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern swig_intgo _wrap_FULL_MANUAL_RENDER_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern uintptr_t _wrap_new_PDJE_pdje_POLYGLOT_5c11250640eb38b5(swig_type_3 arg1);
+extern void _wrap_delete_PDJE_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_PDJE_player_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_PDJE_player_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern _Bool _wrap_PDJE_InitPlayer_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, swig_intgo arg4);
+extern _Bool _wrap_PDJE_GetNoteObjects_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern uintptr_t _wrap_PDJE_SearchMusic__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_4 arg2, swig_type_5 arg3, double arg4);
+extern uintptr_t _wrap_PDJE_SearchMusic__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_6 arg2, swig_type_7 arg3);
+extern uintptr_t _wrap_PDJE_SearchTrack_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_8 arg2);
+extern uintptr_t _wrap_new_ARGSETTER_WRAPPER_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_delete_ARGSETTER_WRAPPER_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern uintptr_t _wrap_ARGSETTER_WRAPPER_GetFXArgKeys_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_ARGSETTER_WRAPPER_SetFXArg_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_intgo arg2, swig_type_9 arg3, double arg4);
+extern _Bool _wrap_litedb_openDB_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_10 arg2);
+extern swig_type_11 _wrap_litedb_getRoot_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern uintptr_t _wrap_new_litedb_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern void _wrap_delete_litedb_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_musdata_title_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_12 arg2);
+extern swig_type_13 _wrap_musdata_title_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_musdata_composer_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_14 arg2);
+extern swig_type_15 _wrap_musdata_composer_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_musdata_musicPath_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_16 arg2);
+extern swig_type_17 _wrap_musdata_musicPath_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_musdata_bpmBinary_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_musdata_bpmBinary_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_musdata_bpm_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, double arg2);
+extern double _wrap_musdata_bpm_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_musdata_firstBar_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_18 arg2);
+extern swig_type_19 _wrap_musdata_firstBar_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern uintptr_t _wrap_new_musdata__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern uintptr_t _wrap_new_musdata__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(swig_type_20 arg1, swig_type_21 arg2, swig_type_22 arg3, double arg4);
+extern uintptr_t _wrap_new_musdata__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(swig_type_23 arg1, swig_type_24 arg2, swig_type_25 arg3);
+extern uintptr_t _wrap_new_musdata__SWIG_3_pdje_POLYGLOT_5c11250640eb38b5(swig_type_26 arg1, swig_type_27 arg2);
+extern uintptr_t _wrap_new_musdata__SWIG_4_pdje_POLYGLOT_5c11250640eb38b5(swig_type_28 arg1);
+extern uintptr_t _wrap_new_musdata__SWIG_5_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern _Bool _wrap_musdata_GenSearchSTMT_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern _Bool _wrap_musdata_GenInsertSTMT_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern void _wrap_delete_musdata_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_trackdata_trackTitle_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_29 arg2);
+extern swig_type_30 _wrap_trackdata_trackTitle_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_trackdata_mixBinary_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_trackdata_mixBinary_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_trackdata_noteBinary_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_trackdata_noteBinary_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_trackdata_cachedMixList_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_31 arg2);
+extern swig_type_32 _wrap_trackdata_cachedMixList_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern uintptr_t _wrap_new_trackdata__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern uintptr_t _wrap_new_trackdata__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(swig_type_33 arg1);
+extern uintptr_t _wrap_new_trackdata__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern _Bool _wrap_trackdata_GenSearchSTMT_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern _Bool _wrap_trackdata_GenInsertSTMT_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3);
+extern void _wrap_delete_trackdata_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_audioPlayer_STATUS_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_34 arg2);
+extern swig_type_35 _wrap_audioPlayer_STATUS_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern swig_type_36 _wrap_audioPlayer_GetStatus_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern _Bool _wrap_audioPlayer_Activate_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern _Bool _wrap_audioPlayer_Deactivate_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_audioPlayer_ChangeCursorPos_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_37 arg2);
+extern swig_type_38 _wrap_audioPlayer_GetConsumedFrames_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern uintptr_t _wrap_audioPlayer_GetFXControlPannel__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_39 arg2);
+extern uintptr_t _wrap_audioPlayer_GetFXControlPannel__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern uintptr_t _wrap_audioPlayer_GetMusicControlPannel_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern uintptr_t _wrap_new_audioPlayer__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3, _Bool arg4);
+extern uintptr_t _wrap_new_audioPlayer__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
+extern uintptr_t _wrap_new_audioPlayer__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(swig_intgo arg1);
+extern void _wrap_delete_audioPlayer_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern uintptr_t _wrap_new_MUS_VEC__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern uintptr_t _wrap_new_MUS_VEC__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(swig_type_40 arg1);
+extern uintptr_t _wrap_new_MUS_VEC__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern swig_type_41 _wrap_MUS_VEC_size_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern swig_type_42 _wrap_MUS_VEC_capacity_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_MUS_VEC_reserve_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_43 arg2);
+extern _Bool _wrap_MUS_VEC_isEmpty_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_MUS_VEC_clear_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_MUS_VEC_add_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_MUS_VEC_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_MUS_VEC_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
+extern void _wrap_delete_MUS_VEC_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern uintptr_t _wrap_new_TRACK_VEC__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern uintptr_t _wrap_new_TRACK_VEC__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(swig_type_44 arg1);
+extern uintptr_t _wrap_new_TRACK_VEC__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern swig_type_45 _wrap_TRACK_VEC_size_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern swig_type_46 _wrap_TRACK_VEC_capacity_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_TRACK_VEC_reserve_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_47 arg2);
+extern _Bool _wrap_TRACK_VEC_isEmpty_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_TRACK_VEC_clear_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_TRACK_VEC_add_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_TRACK_VEC_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_TRACK_VEC_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
+extern void _wrap_delete_TRACK_VEC_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern uintptr_t _wrap_new_KEY_VEC__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(void);
+extern uintptr_t _wrap_new_KEY_VEC__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(swig_type_48 arg1);
+extern uintptr_t _wrap_new_KEY_VEC__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern swig_type_49 _wrap_KEY_VEC_size_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern swig_type_50 _wrap_KEY_VEC_capacity_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_KEY_VEC_reserve_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_51 arg2);
+extern _Bool _wrap_KEY_VEC_isEmpty_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_KEY_VEC_clear_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
+extern void _wrap_KEY_VEC_add_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_52 arg2);
+extern swig_type_53 _wrap_KEY_VEC_get_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_KEY_VEC_set_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_intgo arg2, swig_type_54 arg3);
+extern void _wrap_delete_KEY_VEC_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
 #undef intgo
 */
 import "C"
@@ -208,8 +240,8 @@ func getSwigcptr(v interface { Swigcptr() uintptr }) uintptr {
 
 type _ sync.Mutex
 
-//export cgo_panic__pdje_POLYGLOT_53e15a0c5c443996
-func cgo_panic__pdje_POLYGLOT_53e15a0c5c443996(p *byte) {
+//export cgo_panic__pdje_POLYGLOT_5c11250640eb38b5
+func cgo_panic__pdje_POLYGLOT_5c11250640eb38b5(p *byte) {
 	s := (*[1024]byte)(unsafe.Pointer(p))[:]
 	for i, b := range s {
 		if b == 0 {
@@ -230,104 +262,104 @@ func swigCopyString(s string) string {
 
 func Swig_free(arg1 uintptr) {
 	_swig_i_0 := arg1
-	C._wrap_Swig_free_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	C._wrap_Swig_free_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 }
 
 func Swig_malloc(arg1 int) (_swig_ret uintptr) {
 	var swig_r uintptr
 	_swig_i_0 := arg1
-	swig_r = (uintptr)(C._wrap_Swig_malloc_pdje_POLYGLOT_53e15a0c5c443996(C.swig_intgo(_swig_i_0)))
+	swig_r = (uintptr)(C._wrap_Swig_malloc_pdje_POLYGLOT_5c11250640eb38b5(C.swig_intgo(_swig_i_0)))
 	return swig_r
 }
 
 type FXList int
 func _swig_getCOMPRESSOR() (_swig_ret FXList) {
 	var swig_r FXList
-	swig_r = (FXList)(C._wrap_COMPRESSOR_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (FXList)(C._wrap_COMPRESSOR_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
 var COMPRESSOR FXList = _swig_getCOMPRESSOR()
 func _swig_getDISTORTION() (_swig_ret FXList) {
 	var swig_r FXList
-	swig_r = (FXList)(C._wrap_DISTORTION_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (FXList)(C._wrap_DISTORTION_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
 var DISTORTION FXList = _swig_getDISTORTION()
 func _swig_getECHO() (_swig_ret FXList) {
 	var swig_r FXList
-	swig_r = (FXList)(C._wrap_ECHO_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (FXList)(C._wrap_ECHO_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
 var ECHO FXList = _swig_getECHO()
 func _swig_getEQ() (_swig_ret FXList) {
 	var swig_r FXList
-	swig_r = (FXList)(C._wrap_EQ_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (FXList)(C._wrap_EQ_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
 var EQ FXList = _swig_getEQ()
 func _swig_getFILTER() (_swig_ret FXList) {
 	var swig_r FXList
-	swig_r = (FXList)(C._wrap_FILTER_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (FXList)(C._wrap_FILTER_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
 var FILTER FXList = _swig_getFILTER()
 func _swig_getFLANGER() (_swig_ret FXList) {
 	var swig_r FXList
-	swig_r = (FXList)(C._wrap_FLANGER_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (FXList)(C._wrap_FLANGER_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
 var FLANGER FXList = _swig_getFLANGER()
 func _swig_getOCSFILTER() (_swig_ret FXList) {
 	var swig_r FXList
-	swig_r = (FXList)(C._wrap_OCSFILTER_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (FXList)(C._wrap_OCSFILTER_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
 var OCSFILTER FXList = _swig_getOCSFILTER()
 func _swig_getPANNER() (_swig_ret FXList) {
 	var swig_r FXList
-	swig_r = (FXList)(C._wrap_PANNER_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (FXList)(C._wrap_PANNER_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
 var PANNER FXList = _swig_getPANNER()
 func _swig_getPHASER() (_swig_ret FXList) {
 	var swig_r FXList
-	swig_r = (FXList)(C._wrap_PHASER_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (FXList)(C._wrap_PHASER_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
 var PHASER FXList = _swig_getPHASER()
 func _swig_getROBOT() (_swig_ret FXList) {
 	var swig_r FXList
-	swig_r = (FXList)(C._wrap_ROBOT_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (FXList)(C._wrap_ROBOT_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
 var ROBOT FXList = _swig_getROBOT()
 func _swig_getROLL() (_swig_ret FXList) {
 	var swig_r FXList
-	swig_r = (FXList)(C._wrap_ROLL_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (FXList)(C._wrap_ROLL_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
 var ROLL FXList = _swig_getROLL()
 func _swig_getTRANCE() (_swig_ret FXList) {
 	var swig_r FXList
-	swig_r = (FXList)(C._wrap_TRANCE_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (FXList)(C._wrap_TRANCE_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
 var TRANCE FXList = _swig_getTRANCE()
 func _swig_getVOL() (_swig_ret FXList) {
 	var swig_r FXList
-	swig_r = (FXList)(C._wrap_VOL_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (FXList)(C._wrap_VOL_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
@@ -344,7 +376,7 @@ func (p SwigcptrFXControlPannel) SwigIsFXControlPannel() {
 func NewFXControlPannel(arg1 int) (_swig_ret FXControlPannel) {
 	var swig_r FXControlPannel
 	_swig_i_0 := arg1
-	swig_r = (FXControlPannel)(SwigcptrFXControlPannel(C._wrap_new_FXControlPannel_pdje_POLYGLOT_53e15a0c5c443996(C.swig_intgo(_swig_i_0))))
+	swig_r = (FXControlPannel)(SwigcptrFXControlPannel(C._wrap_new_FXControlPannel_pdje_POLYGLOT_5c11250640eb38b5(C.swig_intgo(_swig_i_0))))
 	return swig_r
 }
 
@@ -352,7 +384,7 @@ func (arg1 SwigcptrFXControlPannel) GetArgSetter(arg2 FXList) (_swig_ret ARGSETT
 	var swig_r ARGSETTER
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (ARGSETTER)(SwigcptrARGSETTER(C._wrap_FXControlPannel_GetArgSetter_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (ARGSETTER)(SwigcptrARGSETTER(C._wrap_FXControlPannel_GetArgSetter_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
@@ -360,26 +392,26 @@ func (arg1 SwigcptrFXControlPannel) FX_ON_OFF(arg2 FXList, arg3 bool) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_FXControlPannel_FX_ON_OFF_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C._Bool(_swig_i_2))
+	C._wrap_FXControlPannel_FX_ON_OFF_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C._Bool(_swig_i_2))
 }
 
 func (arg1 SwigcptrFXControlPannel) AddFX(arg2 **float32, arg3 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_FXControlPannel_addFX_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2))
+	C._wrap_FXControlPannel_addFX_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2))
 }
 
 func (arg1 SwigcptrFXControlPannel) CheckSomethingOn() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_FXControlPannel_checkSomethingOn_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_FXControlPannel_checkSomethingOn_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func DeleteFXControlPannel(arg1 FXControlPannel) {
 	_swig_i_0 := getSwigcptr(arg1)
-	C._wrap_delete_FXControlPannel_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_FXControlPannel_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 }
 
 type FXControlPannel interface {
@@ -395,34 +427,34 @@ func ToFaustStylePCM(arg1 **float32, arg2 *float32, arg3 uint64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_toFaustStylePCM_pdje_POLYGLOT_53e15a0c5c443996(C.swig_voidp(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_1(_swig_i_2))
+	C._wrap_toFaustStylePCM_pdje_POLYGLOT_5c11250640eb38b5(C.swig_voidp(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_1(_swig_i_2))
 }
 
 func ToLRStylePCM(arg1 **float32, arg2 *float32, arg3 uint64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_toLRStylePCM_pdje_POLYGLOT_53e15a0c5c443996(C.swig_voidp(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_2(_swig_i_2))
+	C._wrap_toLRStylePCM_pdje_POLYGLOT_5c11250640eb38b5(C.swig_voidp(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_2(_swig_i_2))
 }
 
 type PLAY_MODE int
 func _swig_getFULL_PRE_RENDER() (_swig_ret PLAY_MODE) {
 	var swig_r PLAY_MODE
-	swig_r = (PLAY_MODE)(C._wrap_FULL_PRE_RENDER_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (PLAY_MODE)(C._wrap_FULL_PRE_RENDER_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
 var FULL_PRE_RENDER PLAY_MODE = _swig_getFULL_PRE_RENDER()
 func _swig_getHYBRID_RENDER() (_swig_ret PLAY_MODE) {
 	var swig_r PLAY_MODE
-	swig_r = (PLAY_MODE)(C._wrap_HYBRID_RENDER_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (PLAY_MODE)(C._wrap_HYBRID_RENDER_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
 var HYBRID_RENDER PLAY_MODE = _swig_getHYBRID_RENDER()
 func _swig_getFULL_MANUAL_RENDER() (_swig_ret PLAY_MODE) {
 	var swig_r PLAY_MODE
-	swig_r = (PLAY_MODE)(C._wrap_FULL_MANUAL_RENDER_pdje_POLYGLOT_53e15a0c5c443996())
+	swig_r = (PLAY_MODE)(C._wrap_FULL_MANUAL_RENDER_pdje_POLYGLOT_5c11250640eb38b5())
 	return swig_r
 }
 
@@ -439,7 +471,7 @@ func (p SwigcptrPDJE) SwigIsPDJE() {
 func NewPDJE(arg1 string) (_swig_ret PDJE) {
 	var swig_r PDJE
 	_swig_i_0 := arg1
-	swig_r = (PDJE)(SwigcptrPDJE(C._wrap_new_PDJE_pdje_POLYGLOT_53e15a0c5c443996(*(*C.swig_type_3)(unsafe.Pointer(&_swig_i_0)))))
+	swig_r = (PDJE)(SwigcptrPDJE(C._wrap_new_PDJE_pdje_POLYGLOT_5c11250640eb38b5(*(*C.swig_type_3)(unsafe.Pointer(&_swig_i_0)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -448,19 +480,19 @@ func NewPDJE(arg1 string) (_swig_ret PDJE) {
 
 func DeletePDJE(arg1 PDJE) {
 	_swig_i_0 := getSwigcptr(arg1)
-	C._wrap_delete_PDJE_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_PDJE_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrPDJE) SetPlayer(arg2 Std_optional_Sl_audioPlayer_Sg_) {
 	_swig_i_0 := arg1
 	_swig_i_1 := getSwigcptr(arg2)
-	C._wrap_PDJE_player_set_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_PDJE_player_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrPDJE) GetPlayer() (_swig_ret Std_optional_Sl_audioPlayer_Sg_) {
 	var swig_r Std_optional_Sl_audioPlayer_Sg_
 	_swig_i_0 := arg1
-	swig_r = (Std_optional_Sl_audioPlayer_Sg_)(SwigcptrStd_optional_Sl_audioPlayer_Sg_(C._wrap_PDJE_player_get_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))))
+	swig_r = (Std_optional_Sl_audioPlayer_Sg_)(SwigcptrStd_optional_Sl_audioPlayer_Sg_(C._wrap_PDJE_player_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -470,7 +502,7 @@ func (arg1 SwigcptrPDJE) InitPlayer(arg2 PLAY_MODE, arg3 Trackdata, arg4 uint) (
 	_swig_i_1 := arg2
 	_swig_i_2 := getSwigcptr(arg3)
 	_swig_i_3 := arg4
-	swig_r = (bool)(C._wrap_PDJE_InitPlayer_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3)))
+	swig_r = (bool)(C._wrap_PDJE_InitPlayer_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3)))
 	return swig_r
 }
 
@@ -479,7 +511,7 @@ func (arg1 SwigcptrPDJE) GetNoteObjects(arg2 Trackdata, arg3 OBJ_SETTER_CALLBACK
 	_swig_i_0 := arg1
 	_swig_i_1 := getSwigcptr(arg2)
 	_swig_i_2 := getSwigcptr(arg3)
-	swig_r = (bool)(C._wrap_PDJE_GetNoteObjects_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (bool)(C._wrap_PDJE_GetNoteObjects_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
@@ -489,7 +521,7 @@ func (arg1 SwigcptrPDJE) SearchMusic__SWIG_0(arg2 string, arg3 string, arg4 floa
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (MUS_VEC)(SwigcptrMUS_VEC(C._wrap_PDJE_SearchMusic__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), *(*C.swig_type_4)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_5)(unsafe.Pointer(&_swig_i_2)), C.double(_swig_i_3))))
+	swig_r = (MUS_VEC)(SwigcptrMUS_VEC(C._wrap_PDJE_SearchMusic__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), *(*C.swig_type_4)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_5)(unsafe.Pointer(&_swig_i_2)), C.double(_swig_i_3))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -504,7 +536,7 @@ func (arg1 SwigcptrPDJE) SearchMusic__SWIG_1(arg2 string, arg3 string) (_swig_re
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (MUS_VEC)(SwigcptrMUS_VEC(C._wrap_PDJE_SearchMusic__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), *(*C.swig_type_6)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_7)(unsafe.Pointer(&_swig_i_2)))))
+	swig_r = (MUS_VEC)(SwigcptrMUS_VEC(C._wrap_PDJE_SearchMusic__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), *(*C.swig_type_6)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_7)(unsafe.Pointer(&_swig_i_2)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -529,7 +561,7 @@ func (arg1 SwigcptrPDJE) SearchTrack(arg2 string) (_swig_ret TRACK_VEC) {
 	var swig_r TRACK_VEC
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (TRACK_VEC)(SwigcptrTRACK_VEC(C._wrap_PDJE_SearchTrack_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), *(*C.swig_type_8)(unsafe.Pointer(&_swig_i_1)))))
+	swig_r = (TRACK_VEC)(SwigcptrTRACK_VEC(C._wrap_PDJE_SearchTrack_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), *(*C.swig_type_8)(unsafe.Pointer(&_swig_i_1)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -547,6 +579,53 @@ type PDJE interface {
 	SearchTrack(arg2 string) (_swig_ret TRACK_VEC)
 }
 
+type SwigcptrARGSETTER_WRAPPER uintptr
+
+func (p SwigcptrARGSETTER_WRAPPER) Swigcptr() uintptr {
+	return (uintptr)(p)
+}
+
+func (p SwigcptrARGSETTER_WRAPPER) SwigIsARGSETTER_WRAPPER() {
+}
+
+func NewARGSETTER_WRAPPER(arg1 FXControlPannel) (_swig_ret ARGSETTER_WRAPPER) {
+	var swig_r ARGSETTER_WRAPPER
+	_swig_i_0 := getSwigcptr(arg1)
+	swig_r = (ARGSETTER_WRAPPER)(SwigcptrARGSETTER_WRAPPER(C._wrap_new_ARGSETTER_WRAPPER_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))))
+	return swig_r
+}
+
+func DeleteARGSETTER_WRAPPER(arg1 ARGSETTER_WRAPPER) {
+	_swig_i_0 := getSwigcptr(arg1)
+	C._wrap_delete_ARGSETTER_WRAPPER_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
+}
+
+func (arg1 SwigcptrARGSETTER_WRAPPER) GetFXArgKeys(arg2 FXList) (_swig_ret KEY_VEC) {
+	var swig_r KEY_VEC
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	swig_r = (KEY_VEC)(SwigcptrKEY_VEC(C._wrap_ARGSETTER_WRAPPER_GetFXArgKeys_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	return swig_r
+}
+
+func (arg1 SwigcptrARGSETTER_WRAPPER) SetFXArg(arg2 FXList, arg3 string, arg4 float64) {
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	_swig_i_2 := arg3
+	_swig_i_3 := arg4
+	C._wrap_ARGSETTER_WRAPPER_SetFXArg_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), *(*C.swig_type_9)(unsafe.Pointer(&_swig_i_2)), C.double(_swig_i_3))
+	if Swig_escape_always_false {
+		Swig_escape_val = arg3
+	}
+}
+
+type ARGSETTER_WRAPPER interface {
+	Swigcptr() uintptr
+	SwigIsARGSETTER_WRAPPER()
+	GetFXArgKeys(arg2 FXList) (_swig_ret KEY_VEC)
+	SetFXArg(arg2 FXList, arg3 string, arg4 float64)
+}
+
 type SwigcptrLitedb uintptr
 
 func (p SwigcptrLitedb) Swigcptr() uintptr {
@@ -560,28 +639,39 @@ func (arg1 SwigcptrLitedb) OpenDB(arg2 string) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (bool)(C._wrap_litedb_openDB_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), *(*C.swig_type_9)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (bool)(C._wrap_litedb_openDB_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), *(*C.swig_type_10)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
 	return swig_r
 }
 
+func (arg1 SwigcptrLitedb) GetRoot() (_swig_ret string) {
+	var swig_r string
+	_swig_i_0 := arg1
+	swig_r_p := C._wrap_litedb_getRoot_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
+	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
+	var swig_r_1 string
+ swig_r_1 = swigCopyString(swig_r) 
+	return swig_r_1
+}
+
 func NewLitedb() (_swig_ret Litedb) {
 	var swig_r Litedb
-	swig_r = (Litedb)(SwigcptrLitedb(C._wrap_new_litedb_pdje_POLYGLOT_53e15a0c5c443996()))
+	swig_r = (Litedb)(SwigcptrLitedb(C._wrap_new_litedb_pdje_POLYGLOT_5c11250640eb38b5()))
 	return swig_r
 }
 
 func DeleteLitedb(arg1 Litedb) {
 	_swig_i_0 := getSwigcptr(arg1)
-	C._wrap_delete_litedb_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_litedb_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 }
 
 type Litedb interface {
 	Swigcptr() uintptr
 	SwigIsLitedb()
 	OpenDB(arg2 string) (_swig_ret bool)
+	GetRoot() (_swig_ret string)
 }
 
 type SwigcptrMusdata uintptr
@@ -596,7 +686,7 @@ func (p SwigcptrMusdata) SwigIsMusdata() {
 func (arg1 SwigcptrMusdata) SetTitle(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_musdata_title_set_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), *(*C.swig_type_10)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_musdata_title_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), *(*C.swig_type_12)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -605,7 +695,7 @@ func (arg1 SwigcptrMusdata) SetTitle(arg2 string) {
 func (arg1 SwigcptrMusdata) GetTitle() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_musdata_title_get_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_musdata_title_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -615,7 +705,7 @@ func (arg1 SwigcptrMusdata) GetTitle() (_swig_ret string) {
 func (arg1 SwigcptrMusdata) SetComposer(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_musdata_composer_set_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), *(*C.swig_type_12)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_musdata_composer_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), *(*C.swig_type_14)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -624,7 +714,7 @@ func (arg1 SwigcptrMusdata) SetComposer(arg2 string) {
 func (arg1 SwigcptrMusdata) GetComposer() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_musdata_composer_get_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_musdata_composer_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -634,7 +724,7 @@ func (arg1 SwigcptrMusdata) GetComposer() (_swig_ret string) {
 func (arg1 SwigcptrMusdata) SetMusicPath(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_musdata_musicPath_set_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), *(*C.swig_type_14)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_musdata_musicPath_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), *(*C.swig_type_16)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -643,7 +733,7 @@ func (arg1 SwigcptrMusdata) SetMusicPath(arg2 string) {
 func (arg1 SwigcptrMusdata) GetMusicPath() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_musdata_musicPath_get_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_musdata_musicPath_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -653,33 +743,33 @@ func (arg1 SwigcptrMusdata) GetMusicPath() (_swig_ret string) {
 func (arg1 SwigcptrMusdata) SetBpmBinary(arg2 BIN) {
 	_swig_i_0 := arg1
 	_swig_i_1 := getSwigcptr(arg2)
-	C._wrap_musdata_bpmBinary_set_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_musdata_bpmBinary_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrMusdata) GetBpmBinary() (_swig_ret BIN) {
 	var swig_r BIN
 	_swig_i_0 := arg1
-	swig_r = (BIN)(SwigcptrBIN(C._wrap_musdata_bpmBinary_get_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))))
+	swig_r = (BIN)(SwigcptrBIN(C._wrap_musdata_bpmBinary_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrMusdata) SetBpm(arg2 float64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_musdata_bpm_set_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
+	C._wrap_musdata_bpm_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
 }
 
 func (arg1 SwigcptrMusdata) GetBpm() (_swig_ret float64) {
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_musdata_bpm_get_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_musdata_bpm_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrMusdata) SetFirstBar(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_musdata_firstBar_set_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), *(*C.swig_type_16)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_musdata_firstBar_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), *(*C.swig_type_18)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -688,7 +778,7 @@ func (arg1 SwigcptrMusdata) SetFirstBar(arg2 string) {
 func (arg1 SwigcptrMusdata) GetFirstBar() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_musdata_firstBar_get_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_musdata_firstBar_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -698,7 +788,7 @@ func (arg1 SwigcptrMusdata) GetFirstBar() (_swig_ret string) {
 func NewMusdata__SWIG_0(arg1 Stmt) (_swig_ret Musdata) {
 	var swig_r Musdata
 	_swig_i_0 := getSwigcptr(arg1)
-	swig_r = (Musdata)(SwigcptrMusdata(C._wrap_new_musdata__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))))
+	swig_r = (Musdata)(SwigcptrMusdata(C._wrap_new_musdata__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -708,7 +798,7 @@ func NewMusdata__SWIG_1(arg1 string, arg2 string, arg3 string, arg4 float64) (_s
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (Musdata)(SwigcptrMusdata(C._wrap_new_musdata__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(*(*C.swig_type_18)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_19)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_20)(unsafe.Pointer(&_swig_i_2)), C.double(_swig_i_3))))
+	swig_r = (Musdata)(SwigcptrMusdata(C._wrap_new_musdata__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(*(*C.swig_type_20)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_21)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_22)(unsafe.Pointer(&_swig_i_2)), C.double(_swig_i_3))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -726,7 +816,7 @@ func NewMusdata__SWIG_2(arg1 string, arg2 string, arg3 string) (_swig_ret Musdat
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (Musdata)(SwigcptrMusdata(C._wrap_new_musdata__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(*(*C.swig_type_21)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_22)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_23)(unsafe.Pointer(&_swig_i_2)))))
+	swig_r = (Musdata)(SwigcptrMusdata(C._wrap_new_musdata__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(*(*C.swig_type_23)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_24)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_25)(unsafe.Pointer(&_swig_i_2)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -743,7 +833,7 @@ func NewMusdata__SWIG_3(arg1 string, arg2 string) (_swig_ret Musdata) {
 	var swig_r Musdata
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Musdata)(SwigcptrMusdata(C._wrap_new_musdata__SWIG_3_pdje_POLYGLOT_53e15a0c5c443996(*(*C.swig_type_24)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_25)(unsafe.Pointer(&_swig_i_1)))))
+	swig_r = (Musdata)(SwigcptrMusdata(C._wrap_new_musdata__SWIG_3_pdje_POLYGLOT_5c11250640eb38b5(*(*C.swig_type_26)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_27)(unsafe.Pointer(&_swig_i_1)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -756,7 +846,7 @@ func NewMusdata__SWIG_3(arg1 string, arg2 string) (_swig_ret Musdata) {
 func NewMusdata__SWIG_4(arg1 string) (_swig_ret Musdata) {
 	var swig_r Musdata
 	_swig_i_0 := arg1
-	swig_r = (Musdata)(SwigcptrMusdata(C._wrap_new_musdata__SWIG_4_pdje_POLYGLOT_53e15a0c5c443996(*(*C.swig_type_26)(unsafe.Pointer(&_swig_i_0)))))
+	swig_r = (Musdata)(SwigcptrMusdata(C._wrap_new_musdata__SWIG_4_pdje_POLYGLOT_5c11250640eb38b5(*(*C.swig_type_28)(unsafe.Pointer(&_swig_i_0)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -765,7 +855,7 @@ func NewMusdata__SWIG_4(arg1 string) (_swig_ret Musdata) {
 
 func NewMusdata__SWIG_5() (_swig_ret Musdata) {
 	var swig_r Musdata
-	swig_r = (Musdata)(SwigcptrMusdata(C._wrap_new_musdata__SWIG_5_pdje_POLYGLOT_53e15a0c5c443996()))
+	swig_r = (Musdata)(SwigcptrMusdata(C._wrap_new_musdata__SWIG_5_pdje_POLYGLOT_5c11250640eb38b5()))
 	return swig_r
 }
 
@@ -801,7 +891,7 @@ func (arg1 SwigcptrMusdata) GenSearchSTMT(arg2 Stmt, arg3 Sqlite3) (_swig_ret bo
 	_swig_i_0 := arg1
 	_swig_i_1 := getSwigcptr(arg2)
 	_swig_i_2 := getSwigcptr(arg3)
-	swig_r = (bool)(C._wrap_musdata_GenSearchSTMT_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (bool)(C._wrap_musdata_GenSearchSTMT_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
@@ -810,13 +900,13 @@ func (arg1 SwigcptrMusdata) GenInsertSTMT(arg2 Stmt, arg3 Sqlite3) (_swig_ret bo
 	_swig_i_0 := arg1
 	_swig_i_1 := getSwigcptr(arg2)
 	_swig_i_2 := getSwigcptr(arg3)
-	swig_r = (bool)(C._wrap_musdata_GenInsertSTMT_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (bool)(C._wrap_musdata_GenInsertSTMT_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
 func DeleteMusdata(arg1 Musdata) {
 	_swig_i_0 := getSwigcptr(arg1)
-	C._wrap_delete_musdata_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_musdata_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 }
 
 type Musdata interface {
@@ -850,7 +940,7 @@ func (p SwigcptrTrackdata) SwigIsTrackdata() {
 func (arg1 SwigcptrTrackdata) SetTrackTitle(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_trackdata_trackTitle_set_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), *(*C.swig_type_27)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_trackdata_trackTitle_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), *(*C.swig_type_29)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -859,7 +949,7 @@ func (arg1 SwigcptrTrackdata) SetTrackTitle(arg2 string) {
 func (arg1 SwigcptrTrackdata) GetTrackTitle() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_trackdata_trackTitle_get_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_trackdata_trackTitle_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -869,33 +959,33 @@ func (arg1 SwigcptrTrackdata) GetTrackTitle() (_swig_ret string) {
 func (arg1 SwigcptrTrackdata) SetMixBinary(arg2 BIN) {
 	_swig_i_0 := arg1
 	_swig_i_1 := getSwigcptr(arg2)
-	C._wrap_trackdata_mixBinary_set_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_trackdata_mixBinary_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrTrackdata) GetMixBinary() (_swig_ret BIN) {
 	var swig_r BIN
 	_swig_i_0 := arg1
-	swig_r = (BIN)(SwigcptrBIN(C._wrap_trackdata_mixBinary_get_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))))
+	swig_r = (BIN)(SwigcptrBIN(C._wrap_trackdata_mixBinary_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrTrackdata) SetNoteBinary(arg2 BIN) {
 	_swig_i_0 := arg1
 	_swig_i_1 := getSwigcptr(arg2)
-	C._wrap_trackdata_noteBinary_set_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_trackdata_noteBinary_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrTrackdata) GetNoteBinary() (_swig_ret BIN) {
 	var swig_r BIN
 	_swig_i_0 := arg1
-	swig_r = (BIN)(SwigcptrBIN(C._wrap_trackdata_noteBinary_get_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))))
+	swig_r = (BIN)(SwigcptrBIN(C._wrap_trackdata_noteBinary_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrTrackdata) SetCachedMixList(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_trackdata_cachedMixList_set_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), *(*C.swig_type_29)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_trackdata_cachedMixList_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), *(*C.swig_type_31)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -904,7 +994,7 @@ func (arg1 SwigcptrTrackdata) SetCachedMixList(arg2 string) {
 func (arg1 SwigcptrTrackdata) GetCachedMixList() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_trackdata_cachedMixList_get_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_trackdata_cachedMixList_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -914,14 +1004,14 @@ func (arg1 SwigcptrTrackdata) GetCachedMixList() (_swig_ret string) {
 func NewTrackdata__SWIG_0(arg1 Stmt) (_swig_ret Trackdata) {
 	var swig_r Trackdata
 	_swig_i_0 := getSwigcptr(arg1)
-	swig_r = (Trackdata)(SwigcptrTrackdata(C._wrap_new_trackdata__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))))
+	swig_r = (Trackdata)(SwigcptrTrackdata(C._wrap_new_trackdata__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func NewTrackdata__SWIG_1(arg1 string) (_swig_ret Trackdata) {
 	var swig_r Trackdata
 	_swig_i_0 := arg1
-	swig_r = (Trackdata)(SwigcptrTrackdata(C._wrap_new_trackdata__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(*(*C.swig_type_31)(unsafe.Pointer(&_swig_i_0)))))
+	swig_r = (Trackdata)(SwigcptrTrackdata(C._wrap_new_trackdata__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(*(*C.swig_type_33)(unsafe.Pointer(&_swig_i_0)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -930,7 +1020,7 @@ func NewTrackdata__SWIG_1(arg1 string) (_swig_ret Trackdata) {
 
 func NewTrackdata__SWIG_2() (_swig_ret Trackdata) {
 	var swig_r Trackdata
-	swig_r = (Trackdata)(SwigcptrTrackdata(C._wrap_new_trackdata__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996()))
+	swig_r = (Trackdata)(SwigcptrTrackdata(C._wrap_new_trackdata__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5()))
 	return swig_r
 }
 
@@ -957,7 +1047,7 @@ func (arg1 SwigcptrTrackdata) GenSearchSTMT(arg2 Stmt, arg3 Sqlite3) (_swig_ret 
 	_swig_i_0 := arg1
 	_swig_i_1 := getSwigcptr(arg2)
 	_swig_i_2 := getSwigcptr(arg3)
-	swig_r = (bool)(C._wrap_trackdata_GenSearchSTMT_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (bool)(C._wrap_trackdata_GenSearchSTMT_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
@@ -966,13 +1056,13 @@ func (arg1 SwigcptrTrackdata) GenInsertSTMT(arg2 Stmt, arg3 Sqlite3) (_swig_ret 
 	_swig_i_0 := arg1
 	_swig_i_1 := getSwigcptr(arg2)
 	_swig_i_2 := getSwigcptr(arg3)
-	swig_r = (bool)(C._wrap_trackdata_GenInsertSTMT_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (bool)(C._wrap_trackdata_GenInsertSTMT_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
 func DeleteTrackdata(arg1 Trackdata) {
 	_swig_i_0 := getSwigcptr(arg1)
-	C._wrap_delete_trackdata_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_trackdata_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 }
 
 type Trackdata interface {
@@ -999,30 +1089,59 @@ func (p SwigcptrAudioPlayer) Swigcptr() uintptr {
 func (p SwigcptrAudioPlayer) SwigIsAudioPlayer() {
 }
 
+func (arg1 SwigcptrAudioPlayer) SetSTATUS(arg2 string) {
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	C._wrap_audioPlayer_STATUS_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), *(*C.swig_type_34)(unsafe.Pointer(&_swig_i_1)))
+	if Swig_escape_always_false {
+		Swig_escape_val = arg2
+	}
+}
+
+func (arg1 SwigcptrAudioPlayer) GetSTATUS() (_swig_ret string) {
+	var swig_r string
+	_swig_i_0 := arg1
+	swig_r_p := C._wrap_audioPlayer_STATUS_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
+	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
+	var swig_r_1 string
+ swig_r_1 = swigCopyString(swig_r) 
+	return swig_r_1
+}
+
+func (arg1 SwigcptrAudioPlayer) GetStatus() (_swig_ret string) {
+	var swig_r string
+	_swig_i_0 := arg1
+	swig_r_p := C._wrap_audioPlayer_GetStatus_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
+	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
+	var swig_r_1 string
+ swig_r_1 = swigCopyString(swig_r) 
+	return swig_r_1
+}
+
 func (arg1 SwigcptrAudioPlayer) Activate() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_audioPlayer_Activate_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_audioPlayer_Activate_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrAudioPlayer) Deactivate() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_audioPlayer_Deactivate_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_audioPlayer_Deactivate_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrAudioPlayer) ChangeCursorPos(arg2 uint64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_audioPlayer_ChangeCursorPos_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.swig_type_32(_swig_i_1))
+	C._wrap_audioPlayer_ChangeCursorPos_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_type_37(_swig_i_1))
 }
 
 func (arg1 SwigcptrAudioPlayer) GetConsumedFrames() (_swig_ret uint64) {
 	var swig_r uint64
 	_swig_i_0 := arg1
-	swig_r = (uint64)(C._wrap_audioPlayer_GetConsumedFrames_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0)))
+	swig_r = (uint64)(C._wrap_audioPlayer_GetConsumedFrames_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1030,7 +1149,7 @@ func (arg1 SwigcptrAudioPlayer) GetFXControlPannel__SWIG_0(arg2 string) (_swig_r
 	var swig_r FXControlPannel
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (FXControlPannel)(SwigcptrFXControlPannel(C._wrap_audioPlayer_GetFXControlPannel__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), *(*C.swig_type_34)(unsafe.Pointer(&_swig_i_1)))))
+	swig_r = (FXControlPannel)(SwigcptrFXControlPannel(C._wrap_audioPlayer_GetFXControlPannel__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), *(*C.swig_type_39)(unsafe.Pointer(&_swig_i_1)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1040,7 +1159,7 @@ func (arg1 SwigcptrAudioPlayer) GetFXControlPannel__SWIG_0(arg2 string) (_swig_r
 func (arg1 SwigcptrAudioPlayer) GetFXControlPannel__SWIG_1() (_swig_ret FXControlPannel) {
 	var swig_r FXControlPannel
 	_swig_i_0 := arg1
-	swig_r = (FXControlPannel)(SwigcptrFXControlPannel(C._wrap_audioPlayer_GetFXControlPannel__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))))
+	swig_r = (FXControlPannel)(SwigcptrFXControlPannel(C._wrap_audioPlayer_GetFXControlPannel__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -1058,7 +1177,7 @@ func (p SwigcptrAudioPlayer) GetFXControlPannel(a ...interface{}) FXControlPanne
 func (arg1 SwigcptrAudioPlayer) GetMusicControlPannel() (_swig_ret MusicControlPannel) {
 	var swig_r MusicControlPannel
 	_swig_i_0 := arg1
-	swig_r = (MusicControlPannel)(SwigcptrMusicControlPannel(C._wrap_audioPlayer_GetMusicControlPannel_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))))
+	swig_r = (MusicControlPannel)(SwigcptrMusicControlPannel(C._wrap_audioPlayer_GetMusicControlPannel_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -1068,7 +1187,7 @@ func NewAudioPlayer__SWIG_0(arg1 Litedb, arg2 Trackdata, arg3 uint, arg4 bool) (
 	_swig_i_1 := getSwigcptr(arg2)
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (AudioPlayer)(SwigcptrAudioPlayer(C._wrap_new_audioPlayer__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2), C._Bool(_swig_i_3))))
+	swig_r = (AudioPlayer)(SwigcptrAudioPlayer(C._wrap_new_audioPlayer__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2), C._Bool(_swig_i_3))))
 	return swig_r
 }
 
@@ -1077,14 +1196,14 @@ func NewAudioPlayer__SWIG_1(arg1 Litedb, arg2 Trackdata, arg3 uint) (_swig_ret A
 	_swig_i_0 := getSwigcptr(arg1)
 	_swig_i_1 := getSwigcptr(arg2)
 	_swig_i_2 := arg3
-	swig_r = (AudioPlayer)(SwigcptrAudioPlayer(C._wrap_new_audioPlayer__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2))))
+	swig_r = (AudioPlayer)(SwigcptrAudioPlayer(C._wrap_new_audioPlayer__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2))))
 	return swig_r
 }
 
 func NewAudioPlayer__SWIG_2(arg1 uint) (_swig_ret AudioPlayer) {
 	var swig_r AudioPlayer
 	_swig_i_0 := arg1
-	swig_r = (AudioPlayer)(SwigcptrAudioPlayer(C._wrap_new_audioPlayer__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(C.swig_intgo(_swig_i_0))))
+	swig_r = (AudioPlayer)(SwigcptrAudioPlayer(C._wrap_new_audioPlayer__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(C.swig_intgo(_swig_i_0))))
 	return swig_r
 }
 
@@ -1104,12 +1223,15 @@ func NewAudioPlayer(a ...interface{}) AudioPlayer {
 
 func DeleteAudioPlayer(arg1 AudioPlayer) {
 	_swig_i_0 := getSwigcptr(arg1)
-	C._wrap_delete_audioPlayer_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_audioPlayer_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 }
 
 type AudioPlayer interface {
 	Swigcptr() uintptr
 	SwigIsAudioPlayer()
+	SetSTATUS(arg2 string)
+	GetSTATUS() (_swig_ret string)
+	GetStatus() (_swig_ret string)
 	Activate() (_swig_ret bool)
 	Deactivate() (_swig_ret bool)
 	ChangeCursorPos(arg2 uint64)
@@ -1129,21 +1251,21 @@ func (p SwigcptrMUS_VEC) SwigIsMUS_VEC() {
 
 func NewMUS_VEC__SWIG_0() (_swig_ret MUS_VEC) {
 	var swig_r MUS_VEC
-	swig_r = (MUS_VEC)(SwigcptrMUS_VEC(C._wrap_new_MUS_VEC__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996()))
+	swig_r = (MUS_VEC)(SwigcptrMUS_VEC(C._wrap_new_MUS_VEC__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5()))
 	return swig_r
 }
 
 func NewMUS_VEC__SWIG_1(arg1 int64) (_swig_ret MUS_VEC) {
 	var swig_r MUS_VEC
 	_swig_i_0 := arg1
-	swig_r = (MUS_VEC)(SwigcptrMUS_VEC(C._wrap_new_MUS_VEC__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(C.swig_type_35(_swig_i_0))))
+	swig_r = (MUS_VEC)(SwigcptrMUS_VEC(C._wrap_new_MUS_VEC__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(C.swig_type_40(_swig_i_0))))
 	return swig_r
 }
 
 func NewMUS_VEC__SWIG_2(arg1 MUS_VEC) (_swig_ret MUS_VEC) {
 	var swig_r MUS_VEC
 	_swig_i_0 := getSwigcptr(arg1)
-	swig_r = (MUS_VEC)(SwigcptrMUS_VEC(C._wrap_new_MUS_VEC__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))))
+	swig_r = (MUS_VEC)(SwigcptrMUS_VEC(C._wrap_new_MUS_VEC__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -1168,46 +1290,46 @@ check_2:
 func (arg1 SwigcptrMUS_VEC) Size() (_swig_ret int64) {
 	var swig_r int64
 	_swig_i_0 := arg1
-	swig_r = (int64)(C._wrap_MUS_VEC_size_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0)))
+	swig_r = (int64)(C._wrap_MUS_VEC_size_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrMUS_VEC) Capacity() (_swig_ret int64) {
 	var swig_r int64
 	_swig_i_0 := arg1
-	swig_r = (int64)(C._wrap_MUS_VEC_capacity_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0)))
+	swig_r = (int64)(C._wrap_MUS_VEC_capacity_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrMUS_VEC) Reserve(arg2 int64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_MUS_VEC_reserve_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.swig_type_38(_swig_i_1))
+	C._wrap_MUS_VEC_reserve_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_type_43(_swig_i_1))
 }
 
 func (arg1 SwigcptrMUS_VEC) IsEmpty() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_MUS_VEC_isEmpty_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_MUS_VEC_isEmpty_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrMUS_VEC) Clear() {
 	_swig_i_0 := arg1
-	C._wrap_MUS_VEC_clear_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	C._wrap_MUS_VEC_clear_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrMUS_VEC) Add(arg2 Musdata) {
 	_swig_i_0 := arg1
 	_swig_i_1 := getSwigcptr(arg2)
-	C._wrap_MUS_VEC_add_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_MUS_VEC_add_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrMUS_VEC) Get(arg2 int) (_swig_ret Musdata) {
 	var swig_r Musdata
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Musdata)(SwigcptrMusdata(C._wrap_MUS_VEC_get_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (Musdata)(SwigcptrMusdata(C._wrap_MUS_VEC_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
@@ -1215,12 +1337,12 @@ func (arg1 SwigcptrMUS_VEC) Set(arg2 int, arg3 Musdata) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := getSwigcptr(arg3)
-	C._wrap_MUS_VEC_set_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2))
+	C._wrap_MUS_VEC_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2))
 }
 
 func DeleteMUS_VEC(arg1 MUS_VEC) {
 	_swig_i_0 := getSwigcptr(arg1)
-	C._wrap_delete_MUS_VEC_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_MUS_VEC_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 }
 
 type MUS_VEC interface {
@@ -1247,21 +1369,21 @@ func (p SwigcptrTRACK_VEC) SwigIsTRACK_VEC() {
 
 func NewTRACK_VEC__SWIG_0() (_swig_ret TRACK_VEC) {
 	var swig_r TRACK_VEC
-	swig_r = (TRACK_VEC)(SwigcptrTRACK_VEC(C._wrap_new_TRACK_VEC__SWIG_0_pdje_POLYGLOT_53e15a0c5c443996()))
+	swig_r = (TRACK_VEC)(SwigcptrTRACK_VEC(C._wrap_new_TRACK_VEC__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5()))
 	return swig_r
 }
 
 func NewTRACK_VEC__SWIG_1(arg1 int64) (_swig_ret TRACK_VEC) {
 	var swig_r TRACK_VEC
 	_swig_i_0 := arg1
-	swig_r = (TRACK_VEC)(SwigcptrTRACK_VEC(C._wrap_new_TRACK_VEC__SWIG_1_pdje_POLYGLOT_53e15a0c5c443996(C.swig_type_39(_swig_i_0))))
+	swig_r = (TRACK_VEC)(SwigcptrTRACK_VEC(C._wrap_new_TRACK_VEC__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(C.swig_type_44(_swig_i_0))))
 	return swig_r
 }
 
 func NewTRACK_VEC__SWIG_2(arg1 TRACK_VEC) (_swig_ret TRACK_VEC) {
 	var swig_r TRACK_VEC
 	_swig_i_0 := getSwigcptr(arg1)
-	swig_r = (TRACK_VEC)(SwigcptrTRACK_VEC(C._wrap_new_TRACK_VEC__SWIG_2_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))))
+	swig_r = (TRACK_VEC)(SwigcptrTRACK_VEC(C._wrap_new_TRACK_VEC__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -1286,46 +1408,46 @@ check_2:
 func (arg1 SwigcptrTRACK_VEC) Size() (_swig_ret int64) {
 	var swig_r int64
 	_swig_i_0 := arg1
-	swig_r = (int64)(C._wrap_TRACK_VEC_size_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0)))
+	swig_r = (int64)(C._wrap_TRACK_VEC_size_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrTRACK_VEC) Capacity() (_swig_ret int64) {
 	var swig_r int64
 	_swig_i_0 := arg1
-	swig_r = (int64)(C._wrap_TRACK_VEC_capacity_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0)))
+	swig_r = (int64)(C._wrap_TRACK_VEC_capacity_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrTRACK_VEC) Reserve(arg2 int64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_TRACK_VEC_reserve_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.swig_type_42(_swig_i_1))
+	C._wrap_TRACK_VEC_reserve_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_type_47(_swig_i_1))
 }
 
 func (arg1 SwigcptrTRACK_VEC) IsEmpty() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_TRACK_VEC_isEmpty_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_TRACK_VEC_isEmpty_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrTRACK_VEC) Clear() {
 	_swig_i_0 := arg1
-	C._wrap_TRACK_VEC_clear_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	C._wrap_TRACK_VEC_clear_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrTRACK_VEC) Add(arg2 Trackdata) {
 	_swig_i_0 := arg1
 	_swig_i_1 := getSwigcptr(arg2)
-	C._wrap_TRACK_VEC_add_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_TRACK_VEC_add_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrTRACK_VEC) Get(arg2 int) (_swig_ret Trackdata) {
 	var swig_r Trackdata
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Trackdata)(SwigcptrTrackdata(C._wrap_TRACK_VEC_get_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (Trackdata)(SwigcptrTrackdata(C._wrap_TRACK_VEC_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
@@ -1333,12 +1455,12 @@ func (arg1 SwigcptrTRACK_VEC) Set(arg2 int, arg3 Trackdata) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := getSwigcptr(arg3)
-	C._wrap_TRACK_VEC_set_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2))
+	C._wrap_TRACK_VEC_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2))
 }
 
 func DeleteTRACK_VEC(arg1 TRACK_VEC) {
 	_swig_i_0 := getSwigcptr(arg1)
-	C._wrap_delete_TRACK_VEC_pdje_POLYGLOT_53e15a0c5c443996(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_TRACK_VEC_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
 }
 
 type TRACK_VEC interface {
@@ -1352,6 +1474,133 @@ type TRACK_VEC interface {
 	Add(arg2 Trackdata)
 	Get(arg2 int) (_swig_ret Trackdata)
 	Set(arg2 int, arg3 Trackdata)
+}
+
+type SwigcptrKEY_VEC uintptr
+
+func (p SwigcptrKEY_VEC) Swigcptr() uintptr {
+	return (uintptr)(p)
+}
+
+func (p SwigcptrKEY_VEC) SwigIsKEY_VEC() {
+}
+
+func NewKEY_VEC__SWIG_0() (_swig_ret KEY_VEC) {
+	var swig_r KEY_VEC
+	swig_r = (KEY_VEC)(SwigcptrKEY_VEC(C._wrap_new_KEY_VEC__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5()))
+	return swig_r
+}
+
+func NewKEY_VEC__SWIG_1(arg1 int64) (_swig_ret KEY_VEC) {
+	var swig_r KEY_VEC
+	_swig_i_0 := arg1
+	swig_r = (KEY_VEC)(SwigcptrKEY_VEC(C._wrap_new_KEY_VEC__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(C.swig_type_48(_swig_i_0))))
+	return swig_r
+}
+
+func NewKEY_VEC__SWIG_2(arg1 KEY_VEC) (_swig_ret KEY_VEC) {
+	var swig_r KEY_VEC
+	_swig_i_0 := getSwigcptr(arg1)
+	swig_r = (KEY_VEC)(SwigcptrKEY_VEC(C._wrap_new_KEY_VEC__SWIG_2_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))))
+	return swig_r
+}
+
+func NewKEY_VEC(a ...interface{}) KEY_VEC {
+	argc := len(a)
+	if argc == 0 {
+		return NewKEY_VEC__SWIG_0()
+	}
+	if argc == 1 {
+		if _, ok := a[0].(int64); !ok {
+			goto check_2
+		}
+		return NewKEY_VEC__SWIG_1(a[0].(int64))
+	}
+check_2:
+	if argc == 1 {
+		return NewKEY_VEC__SWIG_2(a[0].(KEY_VEC))
+	}
+	panic("No match for overloaded function call")
+}
+
+func (arg1 SwigcptrKEY_VEC) Size() (_swig_ret int64) {
+	var swig_r int64
+	_swig_i_0 := arg1
+	swig_r = (int64)(C._wrap_KEY_VEC_size_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
+func (arg1 SwigcptrKEY_VEC) Capacity() (_swig_ret int64) {
+	var swig_r int64
+	_swig_i_0 := arg1
+	swig_r = (int64)(C._wrap_KEY_VEC_capacity_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
+func (arg1 SwigcptrKEY_VEC) Reserve(arg2 int64) {
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	C._wrap_KEY_VEC_reserve_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_type_51(_swig_i_1))
+}
+
+func (arg1 SwigcptrKEY_VEC) IsEmpty() (_swig_ret bool) {
+	var swig_r bool
+	_swig_i_0 := arg1
+	swig_r = (bool)(C._wrap_KEY_VEC_isEmpty_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
+func (arg1 SwigcptrKEY_VEC) Clear() {
+	_swig_i_0 := arg1
+	C._wrap_KEY_VEC_clear_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
+}
+
+func (arg1 SwigcptrKEY_VEC) Add(arg2 string) {
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	C._wrap_KEY_VEC_add_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), *(*C.swig_type_52)(unsafe.Pointer(&_swig_i_1)))
+	if Swig_escape_always_false {
+		Swig_escape_val = arg2
+	}
+}
+
+func (arg1 SwigcptrKEY_VEC) Get(arg2 int) (_swig_ret string) {
+	var swig_r string
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	swig_r_p := C._wrap_KEY_VEC_get_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
+	var swig_r_1 string
+ swig_r_1 = swigCopyString(swig_r) 
+	return swig_r_1
+}
+
+func (arg1 SwigcptrKEY_VEC) Set(arg2 int, arg3 string) {
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	_swig_i_2 := arg3
+	C._wrap_KEY_VEC_set_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), *(*C.swig_type_54)(unsafe.Pointer(&_swig_i_2)))
+	if Swig_escape_always_false {
+		Swig_escape_val = arg3
+	}
+}
+
+func DeleteKEY_VEC(arg1 KEY_VEC) {
+	_swig_i_0 := getSwigcptr(arg1)
+	C._wrap_delete_KEY_VEC_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))
+}
+
+type KEY_VEC interface {
+	Swigcptr() uintptr
+	SwigIsKEY_VEC()
+	Size() (_swig_ret int64)
+	Capacity() (_swig_ret int64)
+	Reserve(arg2 int64)
+	IsEmpty() (_swig_ret bool)
+	Clear()
+	Add(arg2 string)
+	Get(arg2 int) (_swig_ret string)
+	Set(arg2 int, arg3 string)
 }
 
 
