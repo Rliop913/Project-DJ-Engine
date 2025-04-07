@@ -49,7 +49,7 @@ include(thirdPartySource.cmake)
 include(includeDIRS.cmake)
 include(DBsrc.cmake)
 include(AUDIOsrc.cmake)
-include(NOTEsrc.cmake)
+include(EDITORsrc.cmake)
 link_libraries(
   CapnProto::kj 
   CapnProto::capnp 
@@ -66,7 +66,7 @@ add_executable(testManualAudio include/tests/manualAudioTest.cpp ${audioRenderSo
 
 add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource})
 
-
+add_executable(testGIT include/tests/gittest.cpp ${editorSource})
 if(WIN32)
   target_link_libraries(testHighway PRIVATE hwy::hwy)
   # link_libraries(hwy::hwy)

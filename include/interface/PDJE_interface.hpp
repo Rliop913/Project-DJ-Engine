@@ -39,7 +39,7 @@ public:
     
     TRACK_VEC SearchTrack(const std::string& Title);
 
-    audioPlayer* GetPlayer();
+    audioPlayer* GetPlayerObject();
 
     
 };

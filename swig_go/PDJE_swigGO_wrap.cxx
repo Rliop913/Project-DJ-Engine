@@ -810,6 +810,19 @@ std::vector< trackdata > *_wrap_PDJE_SearchTrack_pdje_POLYGLOT_5c11250640eb38b5(
 }
 
 
+audioPlayer *_wrap_PDJE_GetPlayerObject_pdje_POLYGLOT_5c11250640eb38b5(PDJE *_swig_go_0) {
+  PDJE *arg1 = (PDJE *) 0 ;
+  audioPlayer *result = 0 ;
+  audioPlayer *_swig_go_result;
+  
+  arg1 = *(PDJE **)&_swig_go_0; 
+  
+  result = (audioPlayer *)(arg1)->GetPlayerObject();
+  *(audioPlayer **)&_swig_go_result = (audioPlayer *)result; 
+  return _swig_go_result;
+}
+
+
 ARGSETTER_WRAPPER *_wrap_new_ARGSETTER_WRAPPER_pdje_POLYGLOT_5c11250640eb38b5(FXControlPannel *_swig_go_0) {
   FXControlPannel *arg1 = (FXControlPannel *) 0 ;
   ARGSETTER_WRAPPER *result = 0 ;

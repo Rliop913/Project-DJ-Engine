@@ -7051,7 +7051,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PDJE_GetPlayer(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_PDJE_GetPlayerObject(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   PDJE *arg1 = (PDJE *) 0 ;
   void *argp1 = 0 ;
@@ -7064,10 +7064,10 @@ SWIGINTERN PyObject *_wrap_PDJE_GetPlayer(PyObject *self, PyObject *args) {
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PDJE, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_GetPlayer" "', argument " "1"" of type '" "PDJE *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_GetPlayerObject" "', argument " "1"" of type '" "PDJE *""'"); 
   }
   arg1 = reinterpret_cast< PDJE * >(argp1);
-  result = (audioPlayer *)(arg1)->GetPlayer();
+  result = (audioPlayer *)(arg1)->GetPlayerObject();
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_audioPlayer, 0 |  0 );
   return resultobj;
 fail:
@@ -14815,7 +14815,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "PDJE_GetNoteObjects", _wrap_PDJE_GetNoteObjects, METH_VARARGS, NULL},
 	 { "PDJE_SearchMusic", _wrap_PDJE_SearchMusic, METH_VARARGS, NULL},
 	 { "PDJE_SearchTrack", _wrap_PDJE_SearchTrack, METH_VARARGS, NULL},
-	 { "PDJE_GetPlayer", _wrap_PDJE_GetPlayer, METH_O, NULL},
+	 { "PDJE_GetPlayerObject", _wrap_PDJE_GetPlayerObject, METH_O, NULL},
 	 { "PDJE_swigregister", PDJE_swigregister, METH_O, NULL},
 	 { "PDJE_swiginit", PDJE_swiginit, METH_VARARGS, NULL},
 	 { "new_ARGSETTER_WRAPPER", _wrap_new_ARGSETTER_WRAPPER, METH_O, NULL},

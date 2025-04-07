@@ -183,8 +183,8 @@ class PDJE(object):
     def SearchTrack(self, Title):
         return _pdje_python.PDJE_SearchTrack(self, Title)
 
-    def GetPlayer(self):
-        return _pdje_python.PDJE_GetPlayer(self)
+    def GetPlayerObject(self):
+        return _pdje_python.PDJE_GetPlayerObject(self)
 
 # Register PDJE in _pdje_python:
 _pdje_python.PDJE_swigregister(PDJE)
