@@ -31,4 +31,6 @@ ${CMAKE_SOURCE_DIR}/include/players/audioPlayer/audioPlayer.cpp
 ${CMAKE_SOURCE_DIR}/include/players/audioPlayer/audioCallbacks.cpp
 
 ${CMAKE_SOURCE_DIR}/include/interface/PDJE_interface.cpp
+${CMAKE_SOURCE_DIR}/include/interface/PDJE_polyglot_wraps.cpp
+
 )

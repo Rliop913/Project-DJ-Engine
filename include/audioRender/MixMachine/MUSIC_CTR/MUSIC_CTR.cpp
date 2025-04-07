@@ -86,12 +86,12 @@ MUSIC_CTR::Render(
 
 
 std::optional<SIMD_FLOAT*>
-MUSIC_CTR::Execute(const BPM& bpms, SIMD_FLOAT* PCMS)
+MUSIC_CTR::Execute(const BPM& bpms, SIMD_FLOAT* PCMS, const std::string& dbRoot)
 {
     if(!checkUsable()){
         return std::nullopt;
     }
-    if(!D->init(songPath.value())){
+    if(!D->init(songPath.value(), dbRoot)){
         return std::nullopt;
     }
     QDatas.Ready(bpms.bpmVec, Mus.bpms);

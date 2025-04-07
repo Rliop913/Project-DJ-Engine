@@ -6,7 +6,7 @@ MusicControlPannel::~MusicControlPannel()
     
 }
 
-
+#include <iostream>
 int
 MusicControlPannel::LoadMusic(const musdata& Mus)
 {

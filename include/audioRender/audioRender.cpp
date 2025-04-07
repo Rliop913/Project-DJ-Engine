@@ -16,13 +16,18 @@ audioRender::LoadTrack(litedb& db, trackdata& td)
         return false;
     }
     auto mm = MixMachine();
-    mm.IDsort(mt);
-    mm.mix(db, mt.bpms.value());
+
+    if(!mm.IDsort(mt)){
+        return false;
+    }
+    
+    if(!mm.mix(db, mt.bpms.value())){
+        return false;
+    }
     rendered_frames = std::move(mm.rendered_out);
     
     if(!rendered_frames.has_value()){
         return false;
     }
     return true;
-    //todo - implement note reads
 }

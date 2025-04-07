@@ -8,16 +8,22 @@ PDJE::PDJE(const std::string& rootPath)
 }
 
 
-MAYBE_TRACK_VEC
+TRACK_VEC
 PDJE::SearchTrack(const std::string& Title)
 {
     trackdata td;
     td.trackTitle = Title;
-    return DBROOT.value() << td;
+    auto dbres = DBROOT.value() << td;
+    if(dbres.has_value()){
+        return dbres.value();
+    }
+    else{
+        return TRACK_VEC();
+    }
 }
 
 
-MAYBE_MUS_VEC
+MUS_VEC
 PDJE::SearchMusic(
     const std::string& Title, 
     const std::string& composer, 
@@ -27,7 +33,13 @@ PDJE::SearchMusic(
     md.title = Title;
     md.composer = composer;
     md.bpm = bpm;
-    return DBROOT.value() << md;
+    auto dbres = DBROOT.value() << md;
+    if(dbres.has_value()){
+        return dbres.value();
+    }
+    else{
+        return MUS_VEC();
+    }
 }
 
 bool
@@ -68,7 +80,12 @@ PDJE::InitPlayer(
         return false;
     }
     else{
-        return true;
+        if(player->STATUS != "OK"){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
     
 }

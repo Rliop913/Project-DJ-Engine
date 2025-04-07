@@ -16,7 +16,7 @@ NoteTranslator::Read(
 
     bs.fragments = noteBpms.fragments;    
     for(size_t i=0; i < br.size(); ++i){
-        if(br[i].getNoteType().cStr() == "BPM"){
+        if(strcmp(br[i].getNoteType().cStr(), "BPM") == 0){
             auto fg= BpmFragment();
             fg.bar = br[i].getBar();
             fg.beat = br[i].getBeat();
@@ -38,7 +38,7 @@ NoteTranslator::Read(
         return false;
     }
     for(size_t i=0; i < br.size(); ++i){
-        if(br[i].getNoteType().cStr() != "BPM"){
+        if(strcmp(br[i].getNoteType().cStr(), "BPM") != 0){
             BpmFragment searchfragment;
             searchfragment.bar = br[i].getBar();
             searchfragment.beat = br[i].getBeat();
@@ -58,7 +58,7 @@ NoteTranslator::Read(
             
             unsigned long long pos2;
             if(br[i].getESeparate() < 0){
-                pos2 = -1.0;
+                pos2 = 0;
             }
             else{
                 BpmFragment secondpos;

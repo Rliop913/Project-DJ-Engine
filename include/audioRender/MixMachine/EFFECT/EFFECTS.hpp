@@ -77,6 +77,7 @@ public:
     FaustClass managingClass;
     
     template<typename FClass>
+    // __attribute__((optimize("O2")))
     void consume(std::vector<FaustDType<FClass>>& jobs)
     {
         for(auto& i : jobs){

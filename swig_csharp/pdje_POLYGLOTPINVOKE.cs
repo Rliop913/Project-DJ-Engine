@@ -224,8 +224,32 @@ class pdje_POLYGLOTPINVOKE {
   }
 
 
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_FXControlPannel")]
+  public static extern global::System.IntPtr new_FXControlPannel(int jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_FXControlPannel_GetArgSetter")]
+  public static extern global::System.IntPtr FXControlPannel_GetArgSetter(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_FXControlPannel_FX_ON_OFF")]
+  public static extern void FXControlPannel_FX_ON_OFF(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, bool jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_FXControlPannel_addFX")]
+  public static extern void FXControlPannel_addFX(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_FXControlPannel_checkSomethingOn")]
+  public static extern bool FXControlPannel_checkSomethingOn(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_delete_FXControlPannel")]
+  public static extern void delete_FXControlPannel(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_toFaustStylePCM")]
+  public static extern void toFaustStylePCM(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_toLRStylePCM")]
+  public static extern void toLRStylePCM(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
+
   [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_PDJE")]
-  public static extern global::System.IntPtr new_PDJE(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern global::System.IntPtr new_PDJE(string jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_delete_PDJE")]
   public static extern void delete_PDJE(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -243,11 +267,404 @@ class pdje_POLYGLOTPINVOKE {
   public static extern bool PDJE_GetNoteObjects(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_PDJE_SearchMusic__SWIG_0")]
-  public static extern global::System.IntPtr PDJE_SearchMusic__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, double jarg4);
+  public static extern global::System.IntPtr PDJE_SearchMusic__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, string jarg3, double jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_PDJE_SearchMusic__SWIG_1")]
-  public static extern global::System.IntPtr PDJE_SearchMusic__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern global::System.IntPtr PDJE_SearchMusic__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, string jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_PDJE_SearchTrack")]
-  public static extern global::System.IntPtr PDJE_SearchTrack(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern global::System.IntPtr PDJE_SearchTrack(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_PDJE_GetPlayer")]
+  public static extern global::System.IntPtr PDJE_GetPlayer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_ARGSETTER_WRAPPER")]
+  public static extern global::System.IntPtr new_ARGSETTER_WRAPPER(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_delete_ARGSETTER_WRAPPER")]
+  public static extern void delete_ARGSETTER_WRAPPER(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_ARGSETTER_WRAPPER_GetFXArgKeys")]
+  public static extern global::System.IntPtr ARGSETTER_WRAPPER_GetFXArgKeys(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_ARGSETTER_WRAPPER_SetFXArg")]
+  public static extern void ARGSETTER_WRAPPER_SetFXArg(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, string jarg3, double jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_litedb_openDB")]
+  public static extern bool litedb_openDB(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_litedb_getRoot")]
+  public static extern string litedb_getRoot(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_litedb")]
+  public static extern global::System.IntPtr new_litedb();
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_delete_litedb")]
+  public static extern void delete_litedb(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_musdata_title_set")]
+  public static extern void musdata_title_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_musdata_title_get")]
+  public static extern string musdata_title_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_musdata_composer_set")]
+  public static extern void musdata_composer_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_musdata_composer_get")]
+  public static extern string musdata_composer_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_musdata_musicPath_set")]
+  public static extern void musdata_musicPath_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_musdata_musicPath_get")]
+  public static extern string musdata_musicPath_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_musdata_bpmBinary_set")]
+  public static extern void musdata_bpmBinary_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_musdata_bpmBinary_get")]
+  public static extern global::System.IntPtr musdata_bpmBinary_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_musdata_bpm_set")]
+  public static extern void musdata_bpm_set(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_musdata_bpm_get")]
+  public static extern double musdata_bpm_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_musdata_firstBar_set")]
+  public static extern void musdata_firstBar_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_musdata_firstBar_get")]
+  public static extern string musdata_firstBar_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_musdata__SWIG_0")]
+  public static extern global::System.IntPtr new_musdata__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_musdata__SWIG_1")]
+  public static extern global::System.IntPtr new_musdata__SWIG_1(string jarg1, string jarg2, string jarg3, double jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_musdata__SWIG_2")]
+  public static extern global::System.IntPtr new_musdata__SWIG_2(string jarg1, string jarg2, string jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_musdata__SWIG_3")]
+  public static extern global::System.IntPtr new_musdata__SWIG_3(string jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_musdata__SWIG_4")]
+  public static extern global::System.IntPtr new_musdata__SWIG_4(string jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_musdata__SWIG_5")]
+  public static extern global::System.IntPtr new_musdata__SWIG_5();
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_musdata_GenSearchSTMT")]
+  public static extern bool musdata_GenSearchSTMT(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_musdata_GenInsertSTMT")]
+  public static extern bool musdata_GenInsertSTMT(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_delete_musdata")]
+  public static extern void delete_musdata(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_trackdata_trackTitle_set")]
+  public static extern void trackdata_trackTitle_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_trackdata_trackTitle_get")]
+  public static extern string trackdata_trackTitle_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_trackdata_mixBinary_set")]
+  public static extern void trackdata_mixBinary_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_trackdata_mixBinary_get")]
+  public static extern global::System.IntPtr trackdata_mixBinary_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_trackdata_noteBinary_set")]
+  public static extern void trackdata_noteBinary_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_trackdata_noteBinary_get")]
+  public static extern global::System.IntPtr trackdata_noteBinary_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_trackdata_cachedMixList_set")]
+  public static extern void trackdata_cachedMixList_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_trackdata_cachedMixList_get")]
+  public static extern string trackdata_cachedMixList_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_trackdata__SWIG_0")]
+  public static extern global::System.IntPtr new_trackdata__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_trackdata__SWIG_1")]
+  public static extern global::System.IntPtr new_trackdata__SWIG_1(string jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_trackdata__SWIG_2")]
+  public static extern global::System.IntPtr new_trackdata__SWIG_2();
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_trackdata_GenSearchSTMT")]
+  public static extern bool trackdata_GenSearchSTMT(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_trackdata_GenInsertSTMT")]
+  public static extern bool trackdata_GenInsertSTMT(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_delete_trackdata")]
+  public static extern void delete_trackdata(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioPlayer_STATUS_set")]
+  public static extern void audioPlayer_STATUS_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioPlayer_STATUS_get")]
+  public static extern string audioPlayer_STATUS_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioPlayer_GetStatus")]
+  public static extern string audioPlayer_GetStatus(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioPlayer_Activate")]
+  public static extern bool audioPlayer_Activate(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioPlayer_Deactivate")]
+  public static extern bool audioPlayer_Deactivate(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioPlayer_ChangeCursorPos")]
+  public static extern void audioPlayer_ChangeCursorPos(global::System.Runtime.InteropServices.HandleRef jarg1, ulong jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioPlayer_GetConsumedFrames")]
+  public static extern ulong audioPlayer_GetConsumedFrames(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioPlayer_GetFXControlPannel__SWIG_0")]
+  public static extern global::System.IntPtr audioPlayer_GetFXControlPannel__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioPlayer_GetFXControlPannel__SWIG_1")]
+  public static extern global::System.IntPtr audioPlayer_GetFXControlPannel__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_audioPlayer_GetMusicControlPannel")]
+  public static extern global::System.IntPtr audioPlayer_GetMusicControlPannel(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_audioPlayer__SWIG_0")]
+  public static extern global::System.IntPtr new_audioPlayer__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, bool jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_audioPlayer__SWIG_1")]
+  public static extern global::System.IntPtr new_audioPlayer__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_audioPlayer__SWIG_2")]
+  public static extern global::System.IntPtr new_audioPlayer__SWIG_2(uint jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_delete_audioPlayer")]
+  public static extern void delete_audioPlayer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_MUS_VEC__SWIG_0")]
+  public static extern global::System.IntPtr new_MUS_VEC__SWIG_0();
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_MUS_VEC__SWIG_1")]
+  public static extern global::System.IntPtr new_MUS_VEC__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_Clear")]
+  public static extern void MUS_VEC_Clear(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_Add")]
+  public static extern void MUS_VEC_Add(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_size")]
+  public static extern uint MUS_VEC_size(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_empty")]
+  public static extern bool MUS_VEC_empty(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_capacity")]
+  public static extern uint MUS_VEC_capacity(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_reserve")]
+  public static extern void MUS_VEC_reserve(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_MUS_VEC__SWIG_2")]
+  public static extern global::System.IntPtr new_MUS_VEC__SWIG_2(int jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_getitemcopy")]
+  public static extern global::System.IntPtr MUS_VEC_getitemcopy(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_getitem")]
+  public static extern global::System.IntPtr MUS_VEC_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_setitem")]
+  public static extern void MUS_VEC_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_AddRange")]
+  public static extern void MUS_VEC_AddRange(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_GetRange")]
+  public static extern global::System.IntPtr MUS_VEC_GetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_Insert")]
+  public static extern void MUS_VEC_Insert(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_InsertRange")]
+  public static extern void MUS_VEC_InsertRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_RemoveAt")]
+  public static extern void MUS_VEC_RemoveAt(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_RemoveRange")]
+  public static extern void MUS_VEC_RemoveRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_Repeat")]
+  public static extern global::System.IntPtr MUS_VEC_Repeat(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_Reverse__SWIG_0")]
+  public static extern void MUS_VEC_Reverse__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_Reverse__SWIG_1")]
+  public static extern void MUS_VEC_Reverse__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_MUS_VEC_SetRange")]
+  public static extern void MUS_VEC_SetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_delete_MUS_VEC")]
+  public static extern void delete_MUS_VEC(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_TRACK_VEC__SWIG_0")]
+  public static extern global::System.IntPtr new_TRACK_VEC__SWIG_0();
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_TRACK_VEC__SWIG_1")]
+  public static extern global::System.IntPtr new_TRACK_VEC__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_Clear")]
+  public static extern void TRACK_VEC_Clear(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_Add")]
+  public static extern void TRACK_VEC_Add(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_size")]
+  public static extern uint TRACK_VEC_size(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_empty")]
+  public static extern bool TRACK_VEC_empty(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_capacity")]
+  public static extern uint TRACK_VEC_capacity(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_reserve")]
+  public static extern void TRACK_VEC_reserve(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_TRACK_VEC__SWIG_2")]
+  public static extern global::System.IntPtr new_TRACK_VEC__SWIG_2(int jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_getitemcopy")]
+  public static extern global::System.IntPtr TRACK_VEC_getitemcopy(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_getitem")]
+  public static extern global::System.IntPtr TRACK_VEC_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_setitem")]
+  public static extern void TRACK_VEC_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_AddRange")]
+  public static extern void TRACK_VEC_AddRange(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_GetRange")]
+  public static extern global::System.IntPtr TRACK_VEC_GetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_Insert")]
+  public static extern void TRACK_VEC_Insert(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_InsertRange")]
+  public static extern void TRACK_VEC_InsertRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_RemoveAt")]
+  public static extern void TRACK_VEC_RemoveAt(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_RemoveRange")]
+  public static extern void TRACK_VEC_RemoveRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_Repeat")]
+  public static extern global::System.IntPtr TRACK_VEC_Repeat(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_Reverse__SWIG_0")]
+  public static extern void TRACK_VEC_Reverse__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_Reverse__SWIG_1")]
+  public static extern void TRACK_VEC_Reverse__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_TRACK_VEC_SetRange")]
+  public static extern void TRACK_VEC_SetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_delete_TRACK_VEC")]
+  public static extern void delete_TRACK_VEC(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_KEY_VEC__SWIG_0")]
+  public static extern global::System.IntPtr new_KEY_VEC__SWIG_0();
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_KEY_VEC__SWIG_1")]
+  public static extern global::System.IntPtr new_KEY_VEC__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_Clear")]
+  public static extern void KEY_VEC_Clear(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_Add")]
+  public static extern void KEY_VEC_Add(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_size")]
+  public static extern uint KEY_VEC_size(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_empty")]
+  public static extern bool KEY_VEC_empty(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_capacity")]
+  public static extern uint KEY_VEC_capacity(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_reserve")]
+  public static extern void KEY_VEC_reserve(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_new_KEY_VEC__SWIG_2")]
+  public static extern global::System.IntPtr new_KEY_VEC__SWIG_2(int jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_getitemcopy")]
+  public static extern string KEY_VEC_getitemcopy(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_getitem")]
+  public static extern string KEY_VEC_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_setitem")]
+  public static extern void KEY_VEC_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, string jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_AddRange")]
+  public static extern void KEY_VEC_AddRange(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_GetRange")]
+  public static extern global::System.IntPtr KEY_VEC_GetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_Insert")]
+  public static extern void KEY_VEC_Insert(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, string jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_InsertRange")]
+  public static extern void KEY_VEC_InsertRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_RemoveAt")]
+  public static extern void KEY_VEC_RemoveAt(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_RemoveRange")]
+  public static extern void KEY_VEC_RemoveRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_Repeat")]
+  public static extern global::System.IntPtr KEY_VEC_Repeat(string jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_Reverse__SWIG_0")]
+  public static extern void KEY_VEC_Reverse__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_Reverse__SWIG_1")]
+  public static extern void KEY_VEC_Reverse__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_SetRange")]
+  public static extern void KEY_VEC_SetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_Contains")]
+  public static extern bool KEY_VEC_Contains(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_IndexOf")]
+  public static extern int KEY_VEC_IndexOf(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_LastIndexOf")]
+  public static extern int KEY_VEC_LastIndexOf(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_KEY_VEC_Remove")]
+  public static extern bool KEY_VEC_Remove(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("pdje_csharp", EntryPoint="CSharp_delete_KEY_VEC")]
+  public static extern void delete_KEY_VEC(global::System.Runtime.InteropServices.HandleRef jarg1);
 }

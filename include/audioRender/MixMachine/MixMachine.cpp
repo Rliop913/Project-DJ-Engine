@@ -121,13 +121,12 @@ MixMachine::mix(litedb& db, const BPM& bpms)
                 }
             }
 
-            //임시 믹싱 코드 더 효율적 구현 필요 -> HIGHWAY 사용 예정 -> 적용완료
-            auto result = (*DJ) << MC->Execute(bpms, &tempVec);
-            FX->consumeAll();
+            auto result = (*DJ) << MC->Execute(bpms, &tempVec, db.getRoot());
             if(!result.has_value()){
                 FLAG_SOMETHING_WRONG_ID = i.first;
                 return;
             }
+            FX->consumeAll();
             const hn::ScalableTag<float> hwyFTag;
             auto laneSize = hn::Lanes(hwyFTag);
             auto times = tempVec.size() / laneSize;
@@ -174,7 +173,6 @@ MixMachine::mix(litedb& db, const BPM& bpms)
     if(FLAG_SOMETHING_WRONG_ID != FLAG_ALL_IS_OK){
         return false;
     }
-    //todo - implement mix
     return true;
 }
 

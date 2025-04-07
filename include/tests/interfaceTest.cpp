@@ -6,23 +6,23 @@ main()
 {
     auto testpdje = new PDJE("./tempdb.db");
     auto searchResult = testpdje->SearchMusic("WTC", "");
-    if(!searchResult.has_value()){
+    if(searchResult.empty()){
         std::cout << "can't search" << std::endl;
         delete testpdje;
         return 1;
     }
-    for(auto i : searchResult.value()){
+    for(auto i : searchResult){
         std::cout << "title: " << i.title 
         << "path: "<< i.musicPath << std::endl;
     }
 
     auto trackSearch = testpdje->SearchTrack("testmix111");
-    if(!trackSearch.has_value()){
+    if(trackSearch.empty()){
         std::cout << "can't search track" << std::endl;
         delete testpdje;
         return 1;
     }
-    for(auto i: trackSearch.value()){
+    for(auto i: trackSearch){
         std::cout 
         << " track title: "
         << i.trackTitle
@@ -32,7 +32,7 @@ main()
         << i.mixBinary.size()
         << std::endl;
     }
-    testpdje->InitPlayer(PLAY_MODE::HYBRID_RENDER, trackSearch.value()[0], 48);
+    testpdje->InitPlayer(PLAY_MODE::HYBRID_RENDER, trackSearch[0], 48);
     if(!testpdje->player.has_value()){
         std::cout << "can't search track" << std::endl;
         delete testpdje;
@@ -45,7 +45,7 @@ main()
     pannel["distortionValue"](2);
     getchar();
     auto mus = testpdje->player->GetMusicControlPannel();
-    mus->LoadMusic(searchResult.value()[0]);
+    mus->LoadMusic(searchResult[0]);
     std::cout << mus->GetLoadedMusicList()[0];
     mus->SetMusic("WTC", true);
     getchar();

@@ -17,6 +17,10 @@ private:
     ma_device_config DefaultInit(const unsigned int frameBufferSize);
     void ContextInit();
 public:
+    std::string STATUS = "OK";
+    const std::string GetStatus(){
+        return STATUS;
+    }
     bool Activate();
     bool Deactivate();
     void ChangeCursorPos(unsigned long long pos);

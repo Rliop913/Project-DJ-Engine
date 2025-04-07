@@ -49,13 +49,15 @@ audioPlayer::audioPlayer(litedb& db, trackdata& td, const unsigned int frameBuff
     }
     
     if(!renderer.LoadTrack(db, td)){
-        throw "Failed to load track data";
+        STATUS = "Failed to load track";
+        return;
     }
     engineDatas.pcmDataPoint = &renderer.rendered_frames.value();
     engineDatas.maxCursor = renderer.rendered_frames->size() / CHANNEL;
     
     if(ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS){
-        throw "Failed to init player";
+        STATUS = "Failed to init device";
+        return;
     }
     
 }
@@ -70,7 +72,7 @@ audioPlayer::audioPlayer(const unsigned int frameBufferSize)
     
 
     if(ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS){
-        throw "Failed to init player";
+        STATUS = "Failed to init device";
     }
     
 }

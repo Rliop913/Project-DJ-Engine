@@ -192,7 +192,7 @@ main()
     auto res = mm->mix(db, mt.bpms.value());
     ma_device dev;
     auto Dres = Decoder();
-    Dres.init("./WTC.wav");
+    Dres.init("./WTC.wav", "./");
     // auto arrD = Dres.getRange(48000*10);
     if(res){
         ma_device_config deconf = ma_device_config_init(ma_device_type_playback);

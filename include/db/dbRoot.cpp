@@ -13,6 +13,7 @@ litedb::openDB(const std::string& dbPath)
     if(!CheckTables()){
         return false;
     }
+    ROOT_PATH = dbPath;
     return true;
 }
 

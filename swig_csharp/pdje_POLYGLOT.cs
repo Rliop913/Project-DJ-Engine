@@ -10,4 +10,12 @@
 
 
 public class pdje_POLYGLOT {
+  public static void toFaustStylePCM(SWIGTYPE_p_p_float faustPCM, SWIGTYPE_p_float in_, uint frameCount) {
+    pdje_POLYGLOTPINVOKE.toFaustStylePCM(SWIGTYPE_p_p_float.getCPtr(faustPCM), SWIGTYPE_p_float.getCPtr(in_), frameCount);
+  }
+
+  public static void toLRStylePCM(SWIGTYPE_p_p_float faustPCM, SWIGTYPE_p_float out_, uint frameCount) {
+    pdje_POLYGLOTPINVOKE.toLRStylePCM(SWIGTYPE_p_p_float.getCPtr(faustPCM), SWIGTYPE_p_float.getCPtr(out_), frameCount);
+  }
+
 }
