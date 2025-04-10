@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="classCapReader" kind="class" language="C++" prot="public">
+    <compoundname>CapReader</compoundname>
+    <includes refid="CapnpBinary_8hpp" local="no">CapnpBinary.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename DType</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classCapReader_1ab1d4c5ef09fe853b850b0c0ab8e1def9" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; kj::byte &gt;</type>
+        <definition>std::vector&lt;kj::byte&gt; CapReader&lt; DType &gt;::Origin</definition>
+        <argsstring></argsstring>
+        <name>Origin</name>
+        <qualifiedname>CapReader::Origin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="17" column="17" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classCapReader_1aaffa08640fa095ee05262727ec068b12" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; capnp::FlatArrayMessageReader &gt;</type>
+        <definition>std::optional&lt;capnp::FlatArrayMessageReader&gt; CapReader&lt; DType &gt;::capreader</definition>
+        <argsstring></argsstring>
+        <name>capreader</name>
+        <qualifiedname>CapReader::capreader</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="18" column="19" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classCapReader_1ad36b1087da0e87efd8ca1cb661057487" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; typename DType::Reader &gt;</type>
+        <definition>std::optional&lt;typename DType::Reader&gt; CapReader&lt; DType &gt;::Rp</definition>
+        <argsstring></argsstring>
+        <name>Rp</name>
+        <qualifiedname>CapReader::Rp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="22" column="19" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classCapReader_1a1694d244c609178756b8f3085175c89d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CapReader&lt; DType &gt;::CapReader</definition>
+        <argsstring>()=default</argsstring>
+        <name>CapReader</name>
+        <qualifiedname>CapReader::CapReader</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="20" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classCapReader_1ad46e826dc28452e49811347bdabf7e59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CapReader&lt; DType &gt;::~CapReader</definition>
+        <argsstring>()=default</argsstring>
+        <name>~CapReader</name>
+        <qualifiedname>CapReader::~CapReader</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="21" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classCapReader_1a9f903ae7fabe82ce0cd1a2c78d3c6583" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CapReader&lt; DType &gt;::open</definition>
+        <argsstring>(const std::vector&lt; kj::byte &gt; &amp;capnpBinary)</argsstring>
+        <name>open</name>
+        <qualifiedname>CapReader::open</qualifiedname>
+        <param>
+          <type>const std::vector&lt; kj::byte &gt; &amp;</type>
+          <declname>capnpBinary</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="23" column="10" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="23" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classCapReader_1a4e2f49905c40fd9410e6165f04202bf9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; kj::byte &gt;</type>
+        <definition>std::vector&lt; kj::byte &gt; CapReader&lt; DType &gt;::out</definition>
+        <argsstring>()</argsstring>
+        <name>out</name>
+        <qualifiedname>CapReader::out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="43" column="17" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="43" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>CapReader&lt; DType &gt;</label>
+        <link refid="classCapReader"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>Origin</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::vector&lt; kj::byte &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="15" column="1" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="15" bodyend="46"/>
+    <listofallmembers>
+      <member refid="classCapReader_1a1694d244c609178756b8f3085175c89d" prot="public" virt="non-virtual"><scope>CapReader</scope><name>CapReader</name></member>
+      <member refid="classCapReader_1aaffa08640fa095ee05262727ec068b12" prot="private" virt="non-virtual"><scope>CapReader</scope><name>capreader</name></member>
+      <member refid="classCapReader_1a9f903ae7fabe82ce0cd1a2c78d3c6583" prot="public" virt="non-virtual"><scope>CapReader</scope><name>open</name></member>
+      <member refid="classCapReader_1ab1d4c5ef09fe853b850b0c0ab8e1def9" prot="private" virt="non-virtual"><scope>CapReader</scope><name>Origin</name></member>
+      <member refid="classCapReader_1a4e2f49905c40fd9410e6165f04202bf9" prot="public" virt="non-virtual"><scope>CapReader</scope><name>out</name></member>
+      <member refid="classCapReader_1ad36b1087da0e87efd8ca1cb661057487" prot="public" virt="non-virtual"><scope>CapReader</scope><name>Rp</name></member>
+      <member refid="classCapReader_1ad46e826dc28452e49811347bdabf7e59" prot="public" virt="non-virtual"><scope>CapReader</scope><name>~CapReader</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

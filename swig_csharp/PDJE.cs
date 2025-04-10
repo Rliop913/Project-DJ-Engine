@@ -101,8 +101,8 @@ public class PDJE : global::System.IDisposable {
     return ret;
   }
 
-  public audioPlayer GetPlayer() {
-    global::System.IntPtr cPtr = pdje_POLYGLOTPINVOKE.PDJE_GetPlayer(swigCPtr);
+  public audioPlayer GetPlayerObject() {
+    global::System.IntPtr cPtr = pdje_POLYGLOTPINVOKE.PDJE_GetPlayerObject(swigCPtr);
     audioPlayer ret = (cPtr == global::System.IntPtr.Zero) ? null : new audioPlayer(cPtr, false);
     return ret;
   }

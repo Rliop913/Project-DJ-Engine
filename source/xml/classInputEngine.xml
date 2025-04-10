@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="classInputEngine" kind="class" language="C++" prot="public">
+    <compoundname>InputEngine</compoundname>
+    <includes refid="PDJE__INPUT_8hpp" local="no">PDJE_INPUT.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename OS_INPUT</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classInputEngine_1afc2f4685d3d93a2a8e4ae8b623cb91f2" prot="private" static="no" mutable="no">
+        <type>OS_INPUT</type>
+        <definition>OS_INPUT InputEngine&lt; OS_INPUT &gt;::osAPI</definition>
+        <argsstring></argsstring>
+        <name>osAPI</name>
+        <qualifiedname>InputEngine::osAPI</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_INPUT.hpp" line="23" column="14" bodyfile="include/input/PDJE_INPUT.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classInputEngine_1aef95f8bda007f7b4384407652551c197" prot="private" static="no" mutable="no">
+        <type><ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref></type>
+        <definition>DEV_LIST InputEngine&lt; OS_INPUT &gt;::activated_devices</definition>
+        <argsstring></argsstring>
+        <name>activated_devices</name>
+        <qualifiedname>InputEngine::activated_devices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_INPUT.hpp" line="24" column="14" bodyfile="include/input/PDJE_INPUT.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classInputEngine_1aa1a1f4dc0504dea603a99493f1dd5d96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>InputEngine&lt; OS_INPUT &gt;::InputEngine</definition>
+        <argsstring>()</argsstring>
+        <name>InputEngine</name>
+        <qualifiedname>InputEngine::InputEngine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_INPUT.hpp" line="26" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputEngine_1a89ec3948f4486e540a3100573da3596d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>InputEngine&lt; OS_INPUT &gt;::~InputEngine</definition>
+        <argsstring>()</argsstring>
+        <name>~InputEngine</name>
+        <qualifiedname>InputEngine::~InputEngine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_INPUT.hpp" line="27" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputEngine_1a6ab388ca2b5201317bc4ae9ed962c61f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void InputEngine&lt; OS_INPUT &gt;::StoreDeviceList</definition>
+        <argsstring>(const DEV_LIST &amp;list)</argsstring>
+        <name>StoreDeviceList</name>
+        <qualifiedname>InputEngine::StoreDeviceList</qualifiedname>
+        <param>
+          <type>const <ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref> &amp;</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_INPUT.hpp" line="28" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputEngine_1a6580e9039a5a8b0fb82994f5c047d251" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref></type>
+        <definition>DEV_LIST InputEngine&lt; OS_INPUT &gt;::SearchDevices</definition>
+        <argsstring>()</argsstring>
+        <name>SearchDevices</name>
+        <qualifiedname>InputEngine::SearchDevices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_INPUT.hpp" line="29" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputEngine_1a5c33d8f9cef14c75d3530c0c3cf2025e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref></type>
+        <definition>DEV_LIST InputEngine&lt; OS_INPUT &gt;::GetStoredDeviceList</definition>
+        <argsstring>()</argsstring>
+        <name>GetStoredDeviceList</name>
+        <qualifiedname>InputEngine::GetStoredDeviceList</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_INPUT.hpp" line="30" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputEngine_1aa2707e0607f051b3ec3664b307811fe3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void InputEngine&lt; OS_INPUT &gt;::setDevices</definition>
+        <argsstring>(DEV_LIST)</argsstring>
+        <name>setDevices</name>
+        <qualifiedname>InputEngine::setDevices</qualifiedname>
+        <param>
+          <type><ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_INPUT.hpp" line="31" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputEngine_1a2f9b43ab4a6669dffb6b8ace8f4105fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void InputEngine&lt; OS_INPUT &gt;::ActivateEngine</definition>
+        <argsstring>()</argsstring>
+        <name>ActivateEngine</name>
+        <qualifiedname>InputEngine::ActivateEngine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_INPUT.hpp" line="32" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputEngine_1ac2daf05e8f745e44a7d71a58ce02cc40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void InputEngine&lt; OS_INPUT &gt;::StopEngine</definition>
+        <argsstring>()</argsstring>
+        <name>StopEngine</name>
+        <qualifiedname>InputEngine::StopEngine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_INPUT.hpp" line="33" column="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>InputEngine&lt; OS_INPUT &gt;</label>
+        <link refid="classInputEngine"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>activated_devices</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::vector&lt; DeviceData &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/PDJE_INPUT.hpp" line="21" column="1" bodyfile="include/input/PDJE_INPUT.hpp" bodystart="21" bodyend="34"/>
+    <listofallmembers>
+      <member refid="classInputEngine_1aef95f8bda007f7b4384407652551c197" prot="private" virt="non-virtual"><scope>InputEngine</scope><name>activated_devices</name></member>
+      <member refid="classInputEngine_1a2f9b43ab4a6669dffb6b8ace8f4105fe" prot="public" virt="non-virtual"><scope>InputEngine</scope><name>ActivateEngine</name></member>
+      <member refid="classInputEngine_1a5c33d8f9cef14c75d3530c0c3cf2025e" prot="public" virt="non-virtual"><scope>InputEngine</scope><name>GetStoredDeviceList</name></member>
+      <member refid="classInputEngine_1aa1a1f4dc0504dea603a99493f1dd5d96" prot="public" virt="non-virtual"><scope>InputEngine</scope><name>InputEngine</name></member>
+      <member refid="classInputEngine_1afc2f4685d3d93a2a8e4ae8b623cb91f2" prot="private" virt="non-virtual"><scope>InputEngine</scope><name>osAPI</name></member>
+      <member refid="classInputEngine_1a6580e9039a5a8b0fb82994f5c047d251" prot="public" virt="non-virtual"><scope>InputEngine</scope><name>SearchDevices</name></member>
+      <member refid="classInputEngine_1aa2707e0607f051b3ec3664b307811fe3" prot="public" virt="non-virtual"><scope>InputEngine</scope><name>setDevices</name></member>
+      <member refid="classInputEngine_1ac2daf05e8f745e44a7d71a58ce02cc40" prot="public" virt="non-virtual"><scope>InputEngine</scope><name>StopEngine</name></member>
+      <member refid="classInputEngine_1a6ab388ca2b5201317bc4ae9ed962c61f" prot="public" virt="non-virtual"><scope>InputEngine</scope><name>StoreDeviceList</name></member>
+      <member refid="classInputEngine_1a89ec3948f4486e540a3100573da3596d" prot="public" virt="non-virtual"><scope>InputEngine</scope><name>~InputEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

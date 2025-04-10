@@ -1,0 +1,57 @@
+
+.. _program_listing_file_include_players_audioPlayer_audioPlayer.hpp:
+
+Program Listing for File audioPlayer.hpp
+========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_include_players_audioPlayer_audioPlayer.hpp>` (``include/players/audioPlayer/audioPlayer.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   
+   #include <miniaudio.h>
+   #include "MixMachine.hpp"
+   #include "ManualMix.hpp"
+   #include "audioRender.hpp"
+   #include "audioCallbacks.hpp"
+   class audioPlayer{
+   private:
+       ma_device player;
+       ma_context ctxt;
+   
+       audioRender renderer;
+   
+       std::vector<float> LFaust;
+   
+       std::vector<float> RFaust;
+   
+       audioEngineDataStruct engineDatas;
+   
+       ma_device_config DefaultInit(const unsigned int frameBufferSize);
+   
+       void ContextInit();
+   public:
+       std::string STATUS = "OK";
+   
+       const std::string GetStatus(){
+           return STATUS;
+       }
+   
+       bool Activate();
+   
+       bool Deactivate();
+   
+       void ChangeCursorPos(unsigned long long pos);
+   
+       unsigned long long GetConsumedFrames();
+       FXControlPannel* GetFXControlPannel(const std::string& title = "__PDJE__MAIN__");
+   
+       MusicControlPannel* GetMusicControlPannel();
+       audioPlayer(litedb& db, trackdata& td, const unsigned int frameBufferSize, const bool hasManual = false);
+       audioPlayer(const unsigned int frameBufferSize);
+   
+       ~audioPlayer();
+   };

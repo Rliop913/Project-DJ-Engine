@@ -4,12 +4,10 @@
 			[[Music]]
 			 [[Track]]
 		[[Audio_Render]]
-			[[PreRender]]
-			[[RealTime_Render]]
-			[[ManualRender]]
+			[[FullPreRender]]
+			[[Hybrid Render]]
+			[[FullManualRender]]
+			[[EffectRender]]
 		[[Note_Render]]
 		[[Input]]
-		[[Engine]]
-			[[Note Object]]
-			
 		

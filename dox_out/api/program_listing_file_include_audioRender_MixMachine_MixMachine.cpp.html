@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File MixMachine.cpp &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../test.html">test page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File MixMachine.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_include_audioRender_MixMachine_MixMachine.cpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-mixmachine-cpp">
+<span id="program-listing-file-include-audiorender-mixmachine-mixmachine-cpp"></span><h1>Program Listing for File MixMachine.cpp<a class="headerlink" href="#program-listing-for-file-mixmachine-cpp" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file_include_audioRender_MixMachine_MixMachine.cpp.html#file-include-audiorender-mixmachine-mixmachine-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/audioRender/MixMachine/MixMachine.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MixMachine.hpp&quot;</span>
+
+
+<span class="n">MixMachine</span><span class="o">::</span><span class="n">MixMachine</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
+
+
+
+<span class="kt">bool</span>
+<span class="n">MixMachine</span><span class="o">::</span><span class="n">IDsort</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MixTranslator</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tr</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">try</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">tr</span><span class="p">.</span><span class="n">mixs</span><span class="p">.</span><span class="n">value</span><span class="p">().</span><span class="n">mixVec</span><span class="p">){</span>
+<span class="w">            </span><span class="kt">long</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">RP</span><span class="p">.</span><span class="n">getId</span><span class="p">();</span>
+
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">Memorized</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Memorized</span><span class="p">.</span><span class="n">end</span><span class="p">()){</span>
+<span class="w">                </span><span class="n">Memorized</span><span class="p">[</span><span class="n">id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">MixStruct</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">Memorized</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">catch</span><span class="p">(...)</span>
+<span class="w">    </span><span class="p">{</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="kt">bool</span>
+<span class="n">MixMachine</span><span class="o">::</span><span class="n">mix</span><span class="p">(</span><span class="n">litedb</span><span class="o">&amp;</span><span class="w"> </span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BPM</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bpms</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">num_threads</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Memorized</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="o">:</span><span class="w"> </span><span class="n">Memorized</span><span class="p">){</span>
+<span class="w">        </span><span class="n">renderPool</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">([</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bpms</span><span class="p">](){</span>
+
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">MC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MUSIC_CTR</span><span class="p">();</span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">DJ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BattleDj</span><span class="p">();</span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">FX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FaustEffects</span><span class="p">(</span><span class="n">SAMPLERATE</span><span class="p">);</span>
+
+<span class="w">            </span><span class="n">SIMD_FLOAT</span><span class="w"> </span><span class="n">tempVec</span><span class="p">;</span>
+<span class="w">            </span><span class="n">DJ</span><span class="o">-&gt;</span><span class="n">GetDataFrom</span><span class="p">(</span><span class="o">*</span><span class="n">MC</span><span class="p">);</span>
+<span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">second</span><span class="p">){</span>
+<span class="w">                </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="p">.</span><span class="n">RP</span><span class="p">.</span><span class="n">getType</span><span class="p">()){</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">BATTLE_DJ</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">BATTLE_DJ</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">DJ</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">LOAD</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">LOAD</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">MC</span><span class="p">,</span><span class="w"> </span><span class="n">db</span><span class="p">)</span>
+<span class="w">                        </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">LOAD</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">DJ</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">CONTROL</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">CONTROL</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">MC</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">UNLOAD</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">UNLOAD</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">MC</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">EQ</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">EQ</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">FX</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempVec</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">COMPRESSOR</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">COMPRESSOR</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">FX</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempVec</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">FILTER</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">FILTER</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">FX</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempVec</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">DISTORTION</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">DISTORTION</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">FX</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempVec</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">ECHO</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">ECHO</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">FX</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempVec</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">FLANGER</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">FLANGER</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">FX</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempVec</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">OSC_FILTER</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">OSC_FILTER</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">FX</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempVec</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">PANNER</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">PANNER</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">FX</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempVec</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">PHASER</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">PHASER</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">FX</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempVec</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">ROLL</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">ROLL</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">FX</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempVec</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">TRANCE</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">TRANCE</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">FX</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempVec</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">ROBOT</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">ROBOT</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">FX</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempVec</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">TypeEnum</span><span class="o">::</span><span class="no">VOL</span><span class="p">:</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">TypeWorks</span><span class="o">&lt;</span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">VOL</span><span class="o">&gt;</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">FX</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempVec</span><span class="p">))</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">else</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">                </span><span class="k">default</span><span class="o">:</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">DJ</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">MC</span><span class="o">-&gt;</span><span class="n">Execute</span><span class="p">(</span><span class="n">bpms</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempVec</span><span class="p">,</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="n">getRoot</span><span class="p">());</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">result</span><span class="p">.</span><span class="n">has_value</span><span class="p">()){</span>
+<span class="w">                </span><span class="n">FLAG_SOMETHING_WRONG_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+<span class="w">                </span><span class="k">return</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">FX</span><span class="o">-&gt;</span><span class="n">consumeAll</span><span class="p">();</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">hn</span><span class="o">::</span><span class="n">ScalableTag</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hwyFTag</span><span class="p">;</span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">laneSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hn</span><span class="o">::</span><span class="n">Lanes</span><span class="p">(</span><span class="n">hwyFTag</span><span class="p">);</span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tempVec</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">laneSize</span><span class="p">;</span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">remained</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tempVec</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">laneSize</span><span class="p">;</span>
+
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">Tptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tempVec</span><span class="p">.</span><span class="n">data</span><span class="p">();</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">locks</span><span class="p">(</span><span class="n">renderLock</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">rendered_out</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">MC</span><span class="o">-&gt;</span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">Gidx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CHANNEL</span><span class="p">)){</span>
+<span class="w">                    </span><span class="n">rendered_out</span><span class="p">.</span><span class="n">resize</span><span class="p">((</span><span class="n">MC</span><span class="o">-&gt;</span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">Gidx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CHANNEL</span><span class="p">));</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">auto</span><span class="w"> </span><span class="n">Rptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rendered_out</span><span class="p">.</span><span class="n">data</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">MC</span><span class="o">-&gt;</span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">front</span><span class="p">().</span><span class="n">Gidx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CHANNEL</span><span class="p">);</span>
+
+<span class="w">                </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">times</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">L</span><span class="p">){</span>
+<span class="w">                    </span><span class="k">auto</span><span class="w"> </span><span class="n">Tsimd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hn</span><span class="o">::</span><span class="n">Load</span><span class="p">(</span><span class="n">hwyFTag</span><span class="p">,</span><span class="w"> </span><span class="n">Tptr</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">auto</span><span class="w"> </span><span class="n">Rsimd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hn</span><span class="o">::</span><span class="n">LoadU</span><span class="p">(</span><span class="n">hwyFTag</span><span class="p">,</span><span class="w"> </span><span class="n">Rptr</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">hn</span><span class="o">::</span><span class="n">StoreU</span><span class="p">(</span><span class="n">Rsimd</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Tsimd</span><span class="p">,</span><span class="w"> </span><span class="n">hwyFTag</span><span class="p">,</span><span class="w"> </span><span class="n">Rptr</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">Tptr</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">laneSize</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">Rptr</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">laneSize</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">REM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">REM</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">remained</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">REM</span><span class="p">){</span>
+<span class="w">                    </span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">Rptr</span><span class="o">++</span><span class="p">))</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">Tptr</span><span class="o">++</span><span class="p">));</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="c1">// PFloat = result.value()-&gt;data();</span>
+
+<span class="w">            </span><span class="c1">// for(unsigned long q = MC-&gt;QDatas.pos.front().Gidx;</span>
+<span class="w">            </span><span class="c1">//     q &lt; (MC-&gt;QDatas.pos.back().Gidx - MC-&gt;QDatas.pos.front().Gidx) * CHANNEL;</span>
+<span class="w">            </span><span class="c1">//         ++q){</span>
+
+<span class="w">            </span><span class="c1">//     (*Rptr) += (*Tptr);</span>
+<span class="w">            </span><span class="c1">//     ++Rptr;</span>
+<span class="w">            </span><span class="c1">//     ++Tptr;</span>
+<span class="w">            </span><span class="c1">// }</span>
+
+<span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="n">MC</span><span class="p">;</span>
+<span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="n">DJ</span><span class="p">;</span>
+<span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="n">FX</span><span class="p">;</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pool</span><span class="o">:</span><span class="w"> </span><span class="n">renderPool</span><span class="p">){</span>
+<span class="w">        </span><span class="n">pool</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">FLAG_SOMETHING_WRONG_ID</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">FLAG_ALL_IS_OK</span><span class="p">){</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">MixMachine</span><span class="o">::~</span><span class="n">MixMachine</span><span class="p">()</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

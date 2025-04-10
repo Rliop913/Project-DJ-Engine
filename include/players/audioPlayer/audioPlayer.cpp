@@ -113,7 +113,6 @@ FXControlPannel*
 audioPlayer::GetFXControlPannel(const std::string& title)
 {
     if(title == "__PDJE__MAIN__"){
-        EXCEPTION_DIVE_TO_MAIN:
         if(!engineDatas.FXManualPannel.has_value()){
             engineDatas.FXManualPannel.emplace(48000);
         }
@@ -124,7 +123,7 @@ audioPlayer::GetFXControlPannel(const std::string& title)
             return engineDatas.MusCtrPannel->getFXHandle(title);
         }
         else{
-            goto EXCEPTION_DIVE_TO_MAIN;
+            return nullptr;
         }
     }
 }

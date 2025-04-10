@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="classNoteTranslator" kind="class" language="C++" prot="public">
+    <compoundname>NoteTranslator</compoundname>
+    <includes refid="NoteTranslator_8hpp" local="no">NoteTranslator.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classNoteTranslator_1ace395ceda2f9e280a390cd2535d07dc1" prot="public" static="no" mutable="no">
+        <type><ref refid="structBpmStruct" kindref="compound">BpmStruct</ref></type>
+        <definition>BpmStruct NoteTranslator::noteBpms</definition>
+        <argsstring></argsstring>
+        <name>noteBpms</name>
+        <qualifiedname>NoteTranslator::noteBpms</qualifiedname>
+        <briefdescription>
+<para>the note object&apos;s bpm datas </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="60" column="15" bodyfile="include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classNoteTranslator_1a660b66512165d3cc53fef9f5a09476ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool NoteTranslator::Read</definition>
+        <argsstring>(const CapReader&lt; NoteBinaryCapnpData &gt; &amp;binary, const BpmStruct &amp;mainBpm, OBJ_SETTER_CALLBACK &amp;lambdaCallback)</argsstring>
+        <name>Read</name>
+        <qualifiedname>NoteTranslator::Read</qualifiedname>
+        <param>
+          <type>const <ref refid="classCapReader" kindref="compound">CapReader</ref>&lt; NoteBinaryCapnpData &gt; &amp;</type>
+          <declname>binary</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structBpmStruct" kindref="compound">BpmStruct</ref> &amp;</type>
+          <declname>mainBpm</declname>
+        </param>
+        <param>
+          <type><ref refid="NoteTranslator_8hpp_1a8bb5814b0656edc5048ad81a0fbe93b0" kindref="member">OBJ_SETTER_CALLBACK</ref> &amp;</type>
+          <declname>lambdaCallback</declname>
+        </param>
+        <briefdescription>
+<para>Reads and parse capnp object. this function reads capnp binary data and note object&apos;s bpm data and track data&apos;s bpm data. after parse all of them, it calls the note object setter callback. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>binary</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the capnp binary Reader object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mainBpm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the track data&apos;s bpm data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lambdaCallback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the object setter lambda </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="71" column="10" bodyfile="include/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp" bodystart="5" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classNoteTranslator_1a9110295c3ec54ebd052c5bda80632c81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NoteTranslator::NoteTranslator</definition>
+        <argsstring>()=default</argsstring>
+        <name>NoteTranslator</name>
+        <qualifiedname>NoteTranslator::NoteTranslator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="76" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classNoteTranslator_1a691ed50a8d68596fb6bb0cf9ce9bf442" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NoteTranslator::~NoteTranslator</definition>
+        <argsstring>()=default</argsstring>
+        <name>~NoteTranslator</name>
+        <qualifiedname>NoteTranslator::~NoteTranslator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="77" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the note translator. this class reads the capnp binary datas and bpm datas, and parse them. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>BpmFragment</label>
+        <link refid="structBpmFragment"/>
+      </node>
+      <node id="2">
+        <label>BpmStruct</label>
+        <link refid="structBpmStruct"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>fragments</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>NoteTranslator</label>
+        <link refid="classNoteTranslator"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>noteBpms</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::vector&lt; BpmFragment &gt;</label>
+        <childnode refid="4" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="57" column="1" bodyfile="include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" bodystart="57" bodyend="78"/>
+    <listofallmembers>
+      <member refid="classNoteTranslator_1ace395ceda2f9e280a390cd2535d07dc1" prot="public" virt="non-virtual"><scope>NoteTranslator</scope><name>noteBpms</name></member>
+      <member refid="classNoteTranslator_1a9110295c3ec54ebd052c5bda80632c81" prot="public" virt="non-virtual"><scope>NoteTranslator</scope><name>NoteTranslator</name></member>
+      <member refid="classNoteTranslator_1a660b66512165d3cc53fef9f5a09476ed" prot="public" virt="non-virtual"><scope>NoteTranslator</scope><name>Read</name></member>
+      <member refid="classNoteTranslator_1a691ed50a8d68596fb6bb0cf9ce9bf442" prot="public" virt="non-virtual"><scope>NoteTranslator</scope><name>~NoteTranslator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

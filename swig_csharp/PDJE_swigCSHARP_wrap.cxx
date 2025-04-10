@@ -937,13 +937,13 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_PDJE_SearchTrack(void * jarg1, const char *
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_PDJE_GetPlayer(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_PDJE_GetPlayerObject(void * jarg1) {
   void * jresult ;
   PDJE *arg1 = (PDJE *) 0 ;
   audioPlayer *result = 0 ;
   
   arg1 = (PDJE *)jarg1; 
-  result = (audioPlayer *)(arg1)->GetPlayer();
+  result = (audioPlayer *)(arg1)->GetPlayerObject();
   jresult = (void *)result; 
   return jresult;
 }

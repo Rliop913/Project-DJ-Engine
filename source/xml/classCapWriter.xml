@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="classCapWriter" kind="class" language="C++" prot="public">
+    <compoundname>CapWriter</compoundname>
+    <includes refid="CapnpBinary_8hpp" local="no">CapnpBinary.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename DType</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classCapWriter_1a1c78fc99e2e1014cac3fcea34cedf623" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; capnp::MallocMessageBuilder &gt;</type>
+        <definition>std::optional&lt;capnp::MallocMessageBuilder&gt; CapWriter&lt; DType &gt;::capwriter</definition>
+        <argsstring></argsstring>
+        <name>capwriter</name>
+        <qualifiedname>CapWriter::capwriter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="51" column="19" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classCapWriter_1a79ce699101189c8c1ce715584b118008" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; typename DType::Builder &gt;</type>
+        <definition>std::optional&lt;typename DType::Builder&gt; CapWriter&lt; DType &gt;::Wp</definition>
+        <argsstring></argsstring>
+        <name>Wp</name>
+        <qualifiedname>CapWriter::Wp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="55" column="19" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classCapWriter_1add2848133fbd26343b8ac2f14b3ba920" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CapWriter&lt; DType &gt;::CapWriter</definition>
+        <argsstring>()=default</argsstring>
+        <name>CapWriter</name>
+        <qualifiedname>CapWriter::CapWriter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="53" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classCapWriter_1ae9c65adb40a65cfa353fc0fced9c44d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CapWriter&lt; DType &gt;::~CapWriter</definition>
+        <argsstring>()=default</argsstring>
+        <name>~CapWriter</name>
+        <qualifiedname>CapWriter::~CapWriter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="54" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classCapWriter_1a70103b74f17a5fe1d796d69893465b40" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CapWriter&lt; DType &gt;::open</definition>
+        <argsstring>(const std::vector&lt; kj::byte &gt; &amp;capnpBinary)</argsstring>
+        <name>open</name>
+        <qualifiedname>CapWriter::open</qualifiedname>
+        <param>
+          <type>const std::vector&lt; kj::byte &gt; &amp;</type>
+          <declname>capnpBinary</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="56" column="10" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="56" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classCapWriter_1a8c8b4f75beb779d91e2b4e9a3a2d8d73" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CapWriter&lt; DType &gt;::makeNew</definition>
+        <argsstring>()</argsstring>
+        <name>makeNew</name>
+        <qualifiedname>CapWriter::makeNew</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="79" column="10" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="79" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classCapWriter_1ac4a894288306c7e0d6afc75fba103f3c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; kj::byte &gt;</type>
+        <definition>std::vector&lt; kj::byte &gt; CapWriter&lt; DType &gt;::out</definition>
+        <argsstring>()</argsstring>
+        <name>out</name>
+        <qualifiedname>CapWriter::out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="93" column="17" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="93" bodyend="105"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="49" column="1" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="49" bodyend="106"/>
+    <listofallmembers>
+      <member refid="classCapWriter_1add2848133fbd26343b8ac2f14b3ba920" prot="public" virt="non-virtual"><scope>CapWriter</scope><name>CapWriter</name></member>
+      <member refid="classCapWriter_1a1c78fc99e2e1014cac3fcea34cedf623" prot="private" virt="non-virtual"><scope>CapWriter</scope><name>capwriter</name></member>
+      <member refid="classCapWriter_1a8c8b4f75beb779d91e2b4e9a3a2d8d73" prot="public" virt="non-virtual"><scope>CapWriter</scope><name>makeNew</name></member>
+      <member refid="classCapWriter_1a70103b74f17a5fe1d796d69893465b40" prot="public" virt="non-virtual"><scope>CapWriter</scope><name>open</name></member>
+      <member refid="classCapWriter_1ac4a894288306c7e0d6afc75fba103f3c" prot="public" virt="non-virtual"><scope>CapWriter</scope><name>out</name></member>
+      <member refid="classCapWriter_1a79ce699101189c8c1ce715584b118008" prot="public" virt="non-virtual"><scope>CapWriter</scope><name>Wp</name></member>
+      <member refid="classCapWriter_1ae9c65adb40a65cfa353fc0fced9c44d1" prot="public" virt="non-virtual"><scope>CapWriter</scope><name>~CapWriter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

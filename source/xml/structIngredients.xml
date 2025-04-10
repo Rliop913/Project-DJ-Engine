@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structIngredients" kind="struct" language="C++" prot="public">
+    <compoundname>Ingredients</compoundname>
+    <includes refid="MUSIC__CTR_8hpp" local="no">MUSIC_CTR.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structIngredients_1a7e4785fdee02fc7bbd011d90923c621b" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structPlayPosition" kindref="compound">PlayPosition</ref> &gt;</type>
+        <definition>std::vector&lt;PlayPosition&gt; Ingredients::pos</definition>
+        <argsstring></argsstring>
+        <name>pos</name>
+        <qualifiedname>Ingredients::pos</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="47" column="17" bodyfile="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="structIngredients_1ae41e97f65aee799e5714b33b8f78f78f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Ingredients::SORT</definition>
+        <argsstring>()</argsstring>
+        <name>SORT</name>
+        <qualifiedname>Ingredients::SORT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="40" column="10" bodyfile="include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp" bodystart="6" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="structIngredients_1a09cad7b3bab8bcba75d317782a228486" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Ingredients::FillGlobal</definition>
+        <argsstring>(std::vector&lt; PlayPosition &gt; &amp;Gbpm, const BpmStruct &amp;Global)</argsstring>
+        <name>FillGlobal</name>
+        <qualifiedname>Ingredients::FillGlobal</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="structPlayPosition" kindref="compound">PlayPosition</ref> &gt; &amp;</type>
+          <declname>Gbpm</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structBpmStruct" kindref="compound">BpmStruct</ref> &amp;</type>
+          <declname>Global</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="41" column="10" bodyfile="include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp" bodystart="25" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="structIngredients_1aff9ab6a76facc3cc2352b587659726cb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Ingredients::FillLocal</definition>
+        <argsstring>(std::vector&lt; PlayPosition &gt; &amp;Lbpm, const BpmStruct &amp;Local)</argsstring>
+        <name>FillLocal</name>
+        <qualifiedname>Ingredients::FillLocal</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="structPlayPosition" kindref="compound">PlayPosition</ref> &gt; &amp;</type>
+          <declname>Lbpm</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structBpmStruct" kindref="compound">BpmStruct</ref> &amp;</type>
+          <declname>Local</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="42" column="10" bodyfile="include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp" bodystart="43" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="structIngredients_1a7210e8202f533b09a297998e7b69219a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="structPlayPosition" kindref="compound">PlayPosition</ref> &gt;::iterator</type>
+        <definition>std::vector&lt; PlayPosition &gt;::iterator Ingredients::GetSameGidx</definition>
+        <argsstring>(GLOBAL_POS gidx)</argsstring>
+        <name>GetSameGidx</name>
+        <qualifiedname>Ingredients::GetSameGidx</qualifiedname>
+        <param>
+          <type><ref refid="MUSIC__CTR_8hpp_1a8eb890bb773b5395e6df7e10882ee435" kindref="member">GLOBAL_POS</ref></type>
+          <declname>gidx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="43" column="28" bodyfile="include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp" bodystart="78" bodyend="84"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structIngredients_1a408def0555c4f3c401aeeef44a86e3fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Ingredients::Ready</definition>
+        <argsstring>(const BpmStruct &amp;Global, const BpmStruct &amp;Local)</argsstring>
+        <name>Ready</name>
+        <qualifiedname>Ingredients::Ready</qualifiedname>
+        <param>
+          <type>const <ref refid="structBpmStruct" kindref="compound">BpmStruct</ref> &amp;</type>
+          <declname>Global</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structBpmStruct" kindref="compound">BpmStruct</ref> &amp;</type>
+          <declname>Local</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="45" column="10" bodyfile="include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp" bodystart="87" bodyend="141"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Ingredients</label>
+        <link refid="structIngredients"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>pos</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>PlayPosition</label>
+        <link refid="structPlayPosition"/>
+      </node>
+      <node id="2">
+        <label>std::vector&lt; PlayPosition &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="38" column="1" bodyfile="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="38" bodyend="48"/>
+    <listofallmembers>
+      <member refid="structIngredients_1a09cad7b3bab8bcba75d317782a228486" prot="private" virt="non-virtual"><scope>Ingredients</scope><name>FillGlobal</name></member>
+      <member refid="structIngredients_1aff9ab6a76facc3cc2352b587659726cb" prot="private" virt="non-virtual"><scope>Ingredients</scope><name>FillLocal</name></member>
+      <member refid="structIngredients_1a7210e8202f533b09a297998e7b69219a" prot="private" virt="non-virtual"><scope>Ingredients</scope><name>GetSameGidx</name></member>
+      <member refid="structIngredients_1a7e4785fdee02fc7bbd011d90923c621b" prot="public" virt="non-virtual"><scope>Ingredients</scope><name>pos</name></member>
+      <member refid="structIngredients_1a408def0555c4f3c401aeeef44a86e3fc" prot="public" virt="non-virtual"><scope>Ingredients</scope><name>Ready</name></member>
+      <member refid="structIngredients_1ae41e97f65aee799e5714b33b8f78f78f" prot="private" virt="non-virtual"><scope>Ingredients</scope><name>SORT</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

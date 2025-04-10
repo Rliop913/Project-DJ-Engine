@@ -2,7 +2,7 @@
 
 
 audioPlayer*
-PDJE::GetPlayer()
+PDJE::GetPlayerObject()
 {
     if(player.has_value()){
         return &player.value();

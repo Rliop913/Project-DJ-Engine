@@ -87,20 +87,6 @@ public:
             managingClass.compute(i.count, i.PTR, i.PTR);
             i.WriteToOrigin();
         }
-        // std::vector<std::thread> threads;
-        // auto itr = jobs.data();
-        // for(int i=0; i<jobs.size(); ++i){
-
-        //     threads.emplace_back([this](FaustDType<FClass>* job){
-        //         job->CopyToFaust();
-        //         job->template copySetting<FClass>(managingClass);
-        //         managingClass.compute(job->count, job->PTR, job->PTR);
-        //         job->WriteToOrigin();
-        //     }, itr++);
-        // }
-        // for(auto& i : threads){
-        //     i.join();
-        // }
     }
 };
 

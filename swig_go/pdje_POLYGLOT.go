@@ -116,6 +116,7 @@ extern _Bool _wrap_PDJE_GetNoteObjects_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t 
 extern uintptr_t _wrap_PDJE_SearchMusic__SWIG_0_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_4 arg2, swig_type_5 arg3, double arg4);
 extern uintptr_t _wrap_PDJE_SearchMusic__SWIG_1_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_6 arg2, swig_type_7 arg3);
 extern uintptr_t _wrap_PDJE_SearchTrack_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_type_8 arg2);
+extern uintptr_t _wrap_PDJE_GetPlayerObject_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
 extern uintptr_t _wrap_new_ARGSETTER_WRAPPER_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
 extern void _wrap_delete_ARGSETTER_WRAPPER_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1);
 extern uintptr_t _wrap_ARGSETTER_WRAPPER_GetFXArgKeys_pdje_POLYGLOT_5c11250640eb38b5(uintptr_t arg1, swig_intgo arg2);
@@ -568,6 +569,13 @@ func (arg1 SwigcptrPDJE) SearchTrack(arg2 string) (_swig_ret TRACK_VEC) {
 	return swig_r
 }
 
+func (arg1 SwigcptrPDJE) GetPlayerObject() (_swig_ret AudioPlayer) {
+	var swig_r AudioPlayer
+	_swig_i_0 := arg1
+	swig_r = (AudioPlayer)(SwigcptrAudioPlayer(C._wrap_PDJE_GetPlayerObject_pdje_POLYGLOT_5c11250640eb38b5(C.uintptr_t(_swig_i_0))))
+	return swig_r
+}
+
 type PDJE interface {
 	Swigcptr() uintptr
 	SwigIsPDJE()
@@ -577,6 +585,7 @@ type PDJE interface {
 	GetNoteObjects(arg2 Trackdata, arg3 OBJ_SETTER_CALLBACK) (_swig_ret bool)
 	SearchMusic(a ...interface{}) MUS_VEC
 	SearchTrack(arg2 string) (_swig_ret TRACK_VEC)
+	GetPlayerObject() (_swig_ret AudioPlayer)
 }
 
 type SwigcptrARGSETTER_WRAPPER uintptr

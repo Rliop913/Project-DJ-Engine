@@ -275,8 +275,8 @@ class pdje_POLYGLOTPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_SearchTrack")]
   public static extern global::System.IntPtr PDJE_SearchTrack(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_GetPlayer")]
-  public static extern global::System.IntPtr PDJE_GetPlayer(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_GetPlayerObject")]
+  public static extern global::System.IntPtr PDJE_GetPlayerObject(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_ARGSETTER_WRAPPER")]
   public static extern global::System.IntPtr new_ARGSETTER_WRAPPER(global::System.Runtime.InteropServices.HandleRef jarg1);

@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="classlitedb" kind="class" language="C++" prot="public">
+    <compoundname>litedb</compoundname>
+    <includes refid="dbRoot_8hpp" local="no">dbRoot.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classlitedb_1a8fb1beb3b2af4ec4b48c95f16eac8c34" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string litedb::ROOT_PATH</definition>
+        <argsstring></argsstring>
+        <name>ROOT_PATH</name>
+        <qualifiedname>litedb::ROOT_PATH</qualifiedname>
+        <briefdescription>
+<para>the path to the database </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="27" column="17" bodyfile="include/db/dbRoot.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlitedb_1a066eb42c53fcc5e765b27b400aca5779" prot="private" static="no" mutable="no">
+        <type>sqlite3 *</type>
+        <definition>sqlite3* litedb::db</definition>
+        <argsstring></argsstring>
+        <name>db</name>
+        <qualifiedname>litedb::db</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>sqlite pointer </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="29" column="13" bodyfile="include/db/dbRoot.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classlitedb_1ac516f0ac3215ae1f81a733037ae1cd67" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool litedb::CheckTables</definition>
+        <argsstring>()</argsstring>
+        <name>CheckTables</name>
+        <qualifiedname>litedb::CheckTables</qualifiedname>
+        <briefdescription>
+<para>checkes tables. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>OK / Not OK </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="32" column="10" bodyfile="include/db/dbRoot.cpp" bodystart="28" bodyend="69"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classlitedb_1ad34e34703f0871c6f7ac4eb1c3242a1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename DBType</type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; std::vector&lt; DBType &gt; &gt;</type>
+        <definition>std::optional&lt; std::vector&lt; DBType &gt; &gt; litedb::operator&lt;&lt;</definition>
+        <argsstring>(DBType &amp;searchClue)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>litedb::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>DBType &amp;</type>
+          <declname>searchClue</declname>
+        </param>
+        <briefdescription>
+<para>the search query </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>DBType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>music or track data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>searchClue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the filters </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::optional&lt;std::vector&lt;DBType&gt;&gt; the result. check before use. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="32" column="10" bodyfile="include/db/dbRoot.hpp" bodystart="82" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1ad2789c301c55befe5e85284f272bb46d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename DBType</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool litedb::operator&lt;=</definition>
+        <argsstring>(DBType &amp;insertObject)</argsstring>
+        <name>operator&lt;=</name>
+        <qualifiedname>litedb::operator&lt;=</qualifiedname>
+        <param>
+          <type>DBType &amp;</type>
+          <declname>insertObject</declname>
+        </param>
+        <briefdescription>
+<para>the insert query </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>DBType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>music or track data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>insertObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="54" column="5" bodyfile="include/db/dbRoot.hpp" bodystart="99" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1a4cc81fddce5ff104cf82da212efc2f38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool litedb::openDB</definition>
+        <argsstring>(const std::string &amp;dbPath)</argsstring>
+        <name>openDB</name>
+        <qualifiedname>litedb::openDB</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>dbPath</declname>
+        </param>
+        <briefdescription>
+<para>opens the Root Database and initialize. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dbPath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>path to Root Database </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="64" column="10" bodyfile="include/db/dbRoot.cpp" bodystart="8" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1af16e54cebbe62f5b1b44b03dbc3d3529" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string</type>
+        <definition>const std::string litedb::getRoot</definition>
+        <argsstring>()</argsstring>
+        <name>getRoot</name>
+        <qualifiedname>litedb::getRoot</qualifiedname>
+        <briefdescription>
+<para>Get path to Root database. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>const std::string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="72" column="5" bodyfile="include/db/dbRoot.hpp" bodystart="72" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1a9f3b4346801213c5cb95d7c86921a1c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>litedb::litedb</definition>
+        <argsstring>()</argsstring>
+        <name>litedb</name>
+        <qualifiedname>litedb::litedb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="76" column="5" bodyfile="include/db/dbRoot.cpp" bodystart="5" bodyend="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1a81aed319e301d84ed8dde7bbe0e86c07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>litedb::~litedb</definition>
+        <argsstring>()</argsstring>
+        <name>~litedb</name>
+        <qualifiedname>litedb::~litedb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="77" column="5" bodyfile="include/db/dbRoot.cpp" bodystart="20" bodyend="25"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the Root database Object </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>litedb</label>
+        <link refid="classlitedb"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>ROOT_PATH</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/db/dbRoot.hpp" line="24" column="1" bodyfile="include/db/dbRoot.hpp" bodystart="24" bodyend="78"/>
+    <listofallmembers>
+      <member refid="classlitedb_1ac516f0ac3215ae1f81a733037ae1cd67" prot="private" virt="non-virtual"><scope>litedb</scope><name>CheckTables</name></member>
+      <member refid="classlitedb_1a066eb42c53fcc5e765b27b400aca5779" prot="private" virt="non-virtual"><scope>litedb</scope><name>db</name></member>
+      <member refid="classlitedb_1af16e54cebbe62f5b1b44b03dbc3d3529" prot="public" virt="non-virtual"><scope>litedb</scope><name>getRoot</name></member>
+      <member refid="classlitedb_1a9f3b4346801213c5cb95d7c86921a1c3" prot="public" virt="non-virtual"><scope>litedb</scope><name>litedb</name></member>
+      <member refid="classlitedb_1a4cc81fddce5ff104cf82da212efc2f38" prot="public" virt="non-virtual"><scope>litedb</scope><name>openDB</name></member>
+      <member refid="classlitedb_1ad34e34703f0871c6f7ac4eb1c3242a1b" prot="public" virt="non-virtual"><scope>litedb</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classlitedb_1ad2789c301c55befe5e85284f272bb46d" prot="public" virt="non-virtual"><scope>litedb</scope><name>operator&lt;=</name></member>
+      <member refid="classlitedb_1a8fb1beb3b2af4ec4b48c95f16eac8c34" prot="private" virt="non-virtual"><scope>litedb</scope><name>ROOT_PATH</name></member>
+      <member refid="classlitedb_1a81aed319e301d84ed8dde7bbe0e86c07" prot="public" virt="non-virtual"><scope>litedb</scope><name>~litedb</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
