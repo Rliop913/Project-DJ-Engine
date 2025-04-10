@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="gitWrapper_8hpp" kind="file" language="C++">
+    <compoundname>gitWrapper.hpp</compoundname>
+    <includes local="no">string</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">filesystem</includes>
+    <includes local="no">sstream</includes>
+    <includes local="no">git2.h</includes>
+    <includedby refid="gitWrapper_8cpp" local="yes">include/editor/gitWrapper/gitWrapper.cpp</includedby>
+    <includedby refid="gittest_8cpp" local="yes">include/tests/gittest.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/editor/gitWrapper/gitWrapper.hpp</label>
+        <link refid="gitWrapper_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>filesystem</label>
+      </node>
+      <node id="6">
+        <label>git2.h</label>
+      </node>
+      <node id="3">
+        <label>optional</label>
+      </node>
+      <node id="5">
+        <label>sstream</label>
+      </node>
+      <node id="2">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/editor/gitWrapper/gitWrapper.cpp</label>
+        <link refid="gitWrapper_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/editor/gitWrapper/gitWrapper.hpp</label>
+        <link refid="gitWrapper_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/tests/gittest.cpp</label>
+        <link refid="gittest_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classPDJE__GitHandler" prot="public">PDJE_GitHandler</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;git2.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fs<sp/>=<sp/>std::filesystem;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="classPDJE__GitHandler" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__GitHandler_1a72040e87b8bc613636de4d55b9aef8d7" kindref="member">PDJE_GitHandler</ref>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="13" refid="classPDJE__GitHandler_1a0971c4889740739936becfed9188dec1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;git_repository*&gt;<sp/><ref refid="classPDJE__GitHandler_1a0971c4889740739936becfed9188dec1" kindref="member">repo</ref>;</highlight></codeline>
+<codeline lineno="14" refid="classPDJE__GitHandler_1af428b6dd839a6082bbe8d60e1dae2041" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;git_index*&gt;<sp/><ref refid="classPDJE__GitHandler_1af428b6dd839a6082bbe8d60e1dae2041" kindref="member">idx</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classPDJE__GitHandler_1abbee67735abe1c520161b8188c9a25ed" kindref="member">Save</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>tracingFile);</highlight></codeline>
+<codeline lineno="18" refid="classPDJE__GitHandler_1a4b0d7588fc6fe07dd5a3f9229f12aca3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classPDJE__GitHandler_1a4b0d7588fc6fe07dd5a3f9229f12aca3" kindref="member">Checkout</ref>();</highlight></codeline>
+<codeline lineno="19" refid="classPDJE__GitHandler_1a90c7420e08c996ee869427feba8f23a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classPDJE__GitHandler_1a90c7420e08c996ee869427feba8f23a1" kindref="member">GetLogWithMermaidGraph</ref>();</highlight></codeline>
+<codeline lineno="20" refid="classPDJE__GitHandler_1ac8e9c51cbfc07045d10439c95430f705" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classPDJE__GitHandler_1ac8e9c51cbfc07045d10439c95430f705" kindref="member">GetDiff</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classPDJE__GitHandler_1adb7d3025ed1fdfbc94b64f1e640575f5" kindref="member">DeleteGIT</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>path);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classPDJE__GitHandler_1a5fec5716874a70cce2f53ab08fdb4f7d" kindref="member">Open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>path);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classPDJE__GitHandler_1aff50df952a46b5663341b6161d72ae2c" kindref="member">Close</ref>();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__GitHandler_1a72040e87b8bc613636de4d55b9aef8d7" kindref="member">PDJE_GitHandler</ref>();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__GitHandler_1a515cab8812e778b2f11a3565178f9977" kindref="member">~PDJE_GitHandler</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="include/editor/gitWrapper/gitWrapper.hpp"/>
+  </compounddef>
+</doxygen>

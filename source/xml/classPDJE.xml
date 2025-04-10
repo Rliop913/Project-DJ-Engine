@@ -1,0 +1,317 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="classPDJE" kind="class" language="C++" prot="public">
+    <compoundname>PDJE</compoundname>
+    <includes refid="PDJE__interface_8hpp" local="no">PDJE_interface.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPDJE_1a00753604e66f312d751df3c600724903" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classlitedb" kindref="compound">litedb</ref> &gt;</type>
+        <definition>std::optional&lt;litedb&gt; PDJE::DBROOT</definition>
+        <argsstring></argsstring>
+        <name>DBROOT</name>
+        <qualifiedname>PDJE::DBROOT</qualifiedname>
+        <briefdescription>
+<para>this is the Root Database. check before use. it contains music metadatas and trackdatas. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/interface/PDJE_interface.hpp" line="34" column="19" bodyfile="include/interface/PDJE_interface.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classPDJE_1a6e7c6205e82e348fbb2cd31c04b02d3b" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classaudioPlayer" kindref="compound">audioPlayer</ref> &gt;</type>
+        <definition>std::optional&lt;audioPlayer&gt; PDJE::player</definition>
+        <argsstring></argsstring>
+        <name>player</name>
+        <qualifiedname>PDJE::player</qualifiedname>
+        <briefdescription>
+<para>this is the music handler. you can play music, stop music, fx control, play/stop music manually in realtime. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/interface/PDJE_interface.hpp" line="45" column="19" bodyfile="include/interface/PDJE_interface.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPDJE_1a96bb21d32ba8872056801ae1fad6902a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE::PDJE</definition>
+        <argsstring>(const std::string &amp;rootPath)</argsstring>
+        <name>PDJE</name>
+        <qualifiedname>PDJE::PDJE</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>rootPath</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new <ref refid="classPDJE" kindref="compound">PDJE</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rootPath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the path to the Root Database. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/interface/PDJE_interface.hpp" line="41" column="5" bodyfile="include/interface/PDJE_interface.cpp" bodystart="3" bodyend="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE_1a042b3df5b955022a4828cb1f63aaa05b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE::~PDJE</definition>
+        <argsstring>()=default</argsstring>
+        <name>~PDJE</name>
+        <qualifiedname>PDJE::~PDJE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/interface/PDJE_interface.hpp" line="42" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE_1a9de8f88a9b0461472a99596fa0b5c978" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE::InitPlayer</definition>
+        <argsstring>(PLAY_MODE mode, trackdata &amp;td, const unsigned int FrameBufferSize)</argsstring>
+        <name>InitPlayer</name>
+        <qualifiedname>PDJE::InitPlayer</qualifiedname>
+        <param>
+          <type><ref refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16" kindref="member">PLAY_MODE</ref></type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type><ref refid="structtrackdata" kindref="compound">trackdata</ref> &amp;</type>
+          <declname>td</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>FrameBufferSize</declname>
+        </param>
+        <briefdescription>
+<para>this inits the music handler. the music handler called a &quot;player&quot; it initializes the player </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the play modes. you can choose &quot;FULL_PRE_RENDER&quot;, &quot;HYBRID_RENDER&quot;, &quot;FULL_MANUAL_RENDER&quot; </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>td</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the track data. you can get this from <ref refid="classPDJE_1a31a19ebc3086151e08f083c63846fac2" kindref="member">SearchTrack()</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>FrameBufferSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the buffersize. in this project, it uses 48000 samplerate. if you use 48 as a value, in theory, it calls mixing function 1000 times per second. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true no error </para>
+</simplesect>
+<simplesect kind="return"><para>false error </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/interface/PDJE_interface.hpp" line="57" column="5" bodyfile="include/interface/PDJE_interface.cpp" bodystart="46" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE_1a14f12cabddceb731d57b608530053587" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE::GetNoteObjects</definition>
+        <argsstring>(trackdata &amp;td, OBJ_SETTER_CALLBACK &amp;ObjectSetCallback)</argsstring>
+        <name>GetNoteObjects</name>
+        <qualifiedname>PDJE::GetNoteObjects</qualifiedname>
+        <param>
+          <type><ref refid="structtrackdata" kindref="compound">trackdata</ref> &amp;</type>
+          <declname>td</declname>
+        </param>
+        <param>
+          <type><ref refid="NoteTranslator_8hpp_1a8bb5814b0656edc5048ad81a0fbe93b0" kindref="member">OBJ_SETTER_CALLBACK</ref> &amp;</type>
+          <declname>ObjectSetCallback</declname>
+        </param>
+        <briefdescription>
+<para>Parse Note data and calls received function. this function parse the note datas in the database. after parsing the note datas, this function calls received function. you should make your custom function that can make your own note object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>td</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the track data. you can get this from <ref refid="classPDJE_1a31a19ebc3086151e08f083c63846fac2" kindref="member">SearchTrack()</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ObjectSetCallback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the lambda callback. give a function that could make a new note objects. it&apos;s totally depends on you. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/interface/PDJE_interface.hpp" line="72" column="5" bodyfile="include/interface/PDJE_interface.cpp" bodystart="95" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE_1a3a6d5448f262f0f28335e803ce279548" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0" kindref="member">MUS_VEC</ref></type>
+        <definition>MUS_VEC PDJE::SearchMusic</definition>
+        <argsstring>(const std::string &amp;Title, const std::string &amp;composer, const double bpm=-1)</argsstring>
+        <name>SearchMusic</name>
+        <qualifiedname>PDJE::SearchMusic</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>Title</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>composer</declname>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>bpm</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>searches musics and metadatas from database. if you don&apos;t need to filter, send &quot;&quot; to the values </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>Title</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the title of the music </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>composer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the composer of the music </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bpm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the bpm of the music. send under zero to skip filter </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0" kindref="member">MUS_VEC</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/interface/PDJE_interface.hpp" line="85" column="5" bodyfile="include/interface/PDJE_interface.cpp" bodystart="27" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE_1a31a19ebc3086151e08f083c63846fac2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470" kindref="member">TRACK_VEC</ref></type>
+        <definition>TRACK_VEC PDJE::SearchTrack</definition>
+        <argsstring>(const std::string &amp;Title)</argsstring>
+        <name>SearchTrack</name>
+        <qualifiedname>PDJE::SearchTrack</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>Title</declname>
+        </param>
+        <briefdescription>
+<para>searches track the track contains the note data, mix data and included music lists. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>Title</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the tile of the track. send &quot;&quot; to skip filter </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470" kindref="member">TRACK_VEC</ref> the array of the track_data. find what you want </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/interface/PDJE_interface.hpp" line="95" column="15" bodyfile="include/interface/PDJE_interface.cpp" bodystart="12" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE_1a0fe16c71bf75baa2ddf9d24fa13d7230" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classaudioPlayer" kindref="compound">audioPlayer</ref> *</type>
+        <definition>audioPlayer * PDJE::GetPlayerObject</definition>
+        <argsstring>()</argsstring>
+        <name>GetPlayerObject</name>
+        <qualifiedname>PDJE::GetPlayerObject</qualifiedname>
+        <briefdescription>
+<para>music handler getter api for binded codes. this function gives you a music handler. you can access player directly in cpp, but not in binded languages. so this function exists. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>audioPlayer* the player object.check nullptr before use. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/interface/PDJE_interface.hpp" line="104" column="17" bodyfile="include/interface/PDJE_polyglot_wraps.cpp" bodystart="5" bodyend="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the main Interface of this Engine <ref refid="classPDJE" kindref="compound">PDJE</ref> gets music data and track data from database. from that datas, you can activate music player and you can get a music player handler. with this player handler, you can control music&apos;s mixing in real time. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>to-use<orderedlist>
+<listitem><para>make <ref refid="classPDJE" kindref="compound">PDJE</ref> object</para>
+</listitem><listitem><para>call SearchTrack</para>
+</listitem><listitem><para>call InitPlayer</para>
+</listitem><listitem><para>use player. this is handler. </para>
+</listitem></orderedlist>
+</para>
+    </detaileddescription>
+    <location file="include/interface/PDJE_interface.hpp" line="29" column="1" bodyfile="include/interface/PDJE_interface.hpp" bodystart="29" bodyend="107"/>
+    <listofallmembers>
+      <member refid="classPDJE_1a00753604e66f312d751df3c600724903" prot="private" virt="non-virtual"><scope>PDJE</scope><name>DBROOT</name></member>
+      <member refid="classPDJE_1a14f12cabddceb731d57b608530053587" prot="public" virt="non-virtual"><scope>PDJE</scope><name>GetNoteObjects</name></member>
+      <member refid="classPDJE_1a0fe16c71bf75baa2ddf9d24fa13d7230" prot="public" virt="non-virtual"><scope>PDJE</scope><name>GetPlayerObject</name></member>
+      <member refid="classPDJE_1a9de8f88a9b0461472a99596fa0b5c978" prot="public" virt="non-virtual"><scope>PDJE</scope><name>InitPlayer</name></member>
+      <member refid="classPDJE_1a96bb21d32ba8872056801ae1fad6902a" prot="public" virt="non-virtual"><scope>PDJE</scope><name>PDJE</name></member>
+      <member refid="classPDJE_1a6e7c6205e82e348fbb2cd31c04b02d3b" prot="public" virt="non-virtual"><scope>PDJE</scope><name>player</name></member>
+      <member refid="classPDJE_1a3a6d5448f262f0f28335e803ce279548" prot="public" virt="non-virtual"><scope>PDJE</scope><name>SearchMusic</name></member>
+      <member refid="classPDJE_1a31a19ebc3086151e08f083c63846fac2" prot="public" virt="non-virtual"><scope>PDJE</scope><name>SearchTrack</name></member>
+      <member refid="classPDJE_1a042b3df5b955022a4828cb1f63aaa05b" prot="public" virt="non-virtual"><scope>PDJE</scope><name>~PDJE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,35 @@
+
+.. _program_listing_file_include_audioRender_ManualMix_ManualFausts_tranceMan.hpp:
+
+Program Listing for File tranceMan.hpp
+======================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_tranceMan.hpp>` (``include/audioRender/ManualMix/ManualFausts/tranceMan.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   #include "DeckData.hpp"
+   
+   class TranceMan{
+   public:
+       float bps;
+       float gain;
+       float TranceDryWet;
+       ARGSETTER
+       makeArgSetter(){
+           return {
+               {"bps", [this](double value) {
+                   this->bps = static_cast<float>(value);
+               }},
+               {"gain", [this](double value) {
+                   this->gain = static_cast<float>(value);
+               }},
+               {"TranceDryWet", [this](double value) {
+                   this->TranceDryWet = static_cast<float>(value);
+               }}
+           };
+       }
+   };

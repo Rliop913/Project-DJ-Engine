@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File EFFECTS.hpp &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../test.html">test page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File EFFECTS.hpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_include_audioRender_MixMachine_EFFECT_EFFECTS.hpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-effects-hpp">
+<span id="program-listing-file-include-audiorender-mixmachine-effect-effects-hpp"></span><h1>Program Listing for File EFFECTS.hpp<a class="headerlink" href="#program-listing-for-file-effects-hpp" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file_include_audioRender_MixMachine_EFFECT_EFFECTS.hpp.html#file-include-audiorender-mixmachine-effect-effects-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/audioRender/MixMachine/EFFECT/EFFECTS.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;DeckData.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FrameCalc.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FAUST_COMPRESSOR.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FAUST_DISTORTION.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FAUST_ECHO.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FAUST_EQ.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FAUST_FILTERS.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FAUST_FLANGER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FAUST_OCS_FILTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FAUST_PANNER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FAUST_PHASER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FAUST_ROLL.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FAUST_TRANCE.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FAUST_VOL.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FAUST_ROBOT.hpp&quot;</span>
+
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Fclass</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FaustDType</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Fclass</span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">L</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">R</span><span class="p">;</span>
+<span class="w">    </span><span class="n">SIMD_FLOAT</span><span class="o">*</span><span class="w"> </span><span class="n">originVec</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">startPos</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FAUSTFLOAT</span><span class="o">*</span><span class="w"> </span><span class="n">PTR</span><span class="p">[</span><span class="n">CHANNEL</span><span class="p">];</span>
+
+<span class="w">    </span><span class="n">FaustDType</span><span class="p">(</span>
+<span class="w">        </span><span class="n">SIMD_FLOAT</span><span class="o">*</span><span class="w"> </span><span class="n">vec</span><span class="p">,</span>
+<span class="w">        </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">start</span><span class="p">,</span>
+<span class="w">        </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="o">:</span>
+<span class="w">        </span><span class="n">startPos</span><span class="p">(</span><span class="n">start</span><span class="p">),</span>
+<span class="w">        </span><span class="n">originVec</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">;</span>
+<span class="w">        </span><span class="n">L</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">count</span><span class="p">);</span>
+<span class="w">        </span><span class="n">R</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">count</span><span class="p">);</span>
+<span class="w">        </span><span class="n">PTR</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">();</span>
+<span class="w">        </span><span class="n">PTR</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="n">data</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">CopyToFaust</span><span class="p">(){</span>
+<span class="w">        </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">lp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">rp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="n">data</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">originVec</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">();</span>
+<span class="w">        </span><span class="n">op</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">startPos</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CHANNEL</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">){</span>
+<span class="w">            </span><span class="o">*</span><span class="p">(</span><span class="n">lp</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">op</span><span class="o">++</span><span class="p">);</span>
+<span class="w">            </span><span class="o">*</span><span class="p">(</span><span class="n">rp</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">op</span><span class="o">++</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">WriteToOrigin</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">lp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">rp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="n">data</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">originVec</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">();</span>
+<span class="w">        </span><span class="n">op</span><span class="o">+=</span><span class="w"> </span><span class="n">startPos</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CHANNEL</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">){</span>
+<span class="w">            </span><span class="o">*</span><span class="p">(</span><span class="n">op</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">lp</span><span class="o">++</span><span class="p">);</span>
+<span class="w">            </span><span class="o">*</span><span class="p">(</span><span class="n">op</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">rp</span><span class="o">++</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">};</span>
+
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">FaustClass</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FaustObject</span><span class="p">{</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">FaustClass</span><span class="w"> </span><span class="n">managingClass</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">FClass</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="c1">// __attribute__((optimize(&quot;O2&quot;)))</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">consume</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FaustDType</span><span class="o">&lt;</span><span class="n">FClass</span><span class="o">&gt;&gt;&amp;</span><span class="w"> </span><span class="n">jobs</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">jobs</span><span class="p">){</span>
+<span class="w">            </span><span class="n">i</span><span class="p">.</span><span class="n">CopyToFaust</span><span class="p">();</span>
+<span class="w">            </span><span class="n">i</span><span class="p">.</span><span class="k">template</span><span class="w"> </span><span class="n">copySetting</span><span class="o">&lt;</span><span class="n">FClass</span><span class="o">&gt;</span><span class="p">(</span><span class="n">managingClass</span><span class="p">);</span>
+<span class="w">            </span><span class="n">managingClass</span><span class="p">.</span><span class="n">instanceClear</span><span class="p">();</span>
+<span class="w">            </span><span class="n">managingClass</span><span class="p">.</span><span class="n">compute</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">PTR</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">PTR</span><span class="p">);</span>
+<span class="w">            </span><span class="n">i</span><span class="p">.</span><span class="n">WriteToOrigin</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">FaustEffects</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">FaustObject</span><span class="o">&lt;</span><span class="n">CompressorFAUST</span><span class="o">&gt;</span><span class="n">compressor</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FaustObject</span><span class="o">&lt;</span><span class="n">DistortionFAUST</span><span class="o">&gt;</span><span class="n">distortion</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FaustObject</span><span class="o">&lt;</span><span class="n">EchoFAUST</span><span class="o">&gt;</span><span class="w">      </span><span class="n">echo</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FaustObject</span><span class="o">&lt;</span><span class="n">EQFAUST</span><span class="o">&gt;</span><span class="w">        </span><span class="n">eq</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FaustObject</span><span class="o">&lt;</span><span class="n">FilterFAUST</span><span class="o">&gt;</span><span class="w">    </span><span class="n">filter</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FaustObject</span><span class="o">&lt;</span><span class="n">FlangerFAUST</span><span class="o">&gt;</span><span class="w">   </span><span class="n">flanger</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FaustObject</span><span class="o">&lt;</span><span class="n">OcsFilterFAUST</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ocsFilter</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FaustObject</span><span class="o">&lt;</span><span class="n">PannerFAUST</span><span class="o">&gt;</span><span class="w">    </span><span class="n">panner</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FaustObject</span><span class="o">&lt;</span><span class="n">PhaserFAUST</span><span class="o">&gt;</span><span class="w">    </span><span class="n">phaser</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FaustObject</span><span class="o">&lt;</span><span class="n">RollFAUST</span><span class="o">&gt;</span><span class="w">      </span><span class="n">roll</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FaustObject</span><span class="o">&lt;</span><span class="n">TranceFAUST</span><span class="o">&gt;</span><span class="w">    </span><span class="n">trance</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FaustObject</span><span class="o">&lt;</span><span class="n">VolFAUST</span><span class="o">&gt;</span><span class="w">       </span><span class="n">vol</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FaustObject</span><span class="o">&lt;</span><span class="n">RobotFAUST</span><span class="o">&gt;</span><span class="w">     </span><span class="n">robot</span><span class="p">;</span>
+<span class="c1">// public:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FaustDType</span><span class="o">&lt;</span><span class="n">Compressor_PDJE</span><span class="o">&gt;&gt;</span><span class="w">    </span><span class="n">compressorData</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FaustDType</span><span class="o">&lt;</span><span class="n">FaustInterpolate</span><span class="o">&gt;&gt;</span><span class="w">   </span><span class="n">distortionData</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FaustDType</span><span class="o">&lt;</span><span class="n">Echo_PDJE</span><span class="o">&gt;&gt;</span><span class="w">          </span><span class="n">echoData</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FaustDType</span><span class="o">&lt;</span><span class="n">EQ_PDJE</span><span class="o">&gt;&gt;</span><span class="w">            </span><span class="n">eqData</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FaustDType</span><span class="o">&lt;</span><span class="n">Filter_PDJE</span><span class="o">&gt;&gt;</span><span class="w">        </span><span class="n">filterData</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FaustDType</span><span class="o">&lt;</span><span class="n">Flanger_PDJE</span><span class="o">&gt;&gt;</span><span class="w">       </span><span class="n">flangerData</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FaustDType</span><span class="o">&lt;</span><span class="n">OcsFilter_PDJE</span><span class="o">&gt;&gt;</span><span class="w">     </span><span class="n">ocsFilterData</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FaustDType</span><span class="o">&lt;</span><span class="n">Panner_PDJE</span><span class="o">&gt;&gt;</span><span class="w">        </span><span class="n">pannerData</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FaustDType</span><span class="o">&lt;</span><span class="n">Phaser_PDJE</span><span class="o">&gt;&gt;</span><span class="w">        </span><span class="n">phaserData</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FaustDType</span><span class="o">&lt;</span><span class="n">Roll_PDJE</span><span class="o">&gt;&gt;</span><span class="w">          </span><span class="n">rollData</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FaustDType</span><span class="o">&lt;</span><span class="n">Trance_PDJE</span><span class="o">&gt;&gt;</span><span class="w">        </span><span class="n">tranceData</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FaustDType</span><span class="o">&lt;</span><span class="n">FaustInterpolate</span><span class="o">&gt;&gt;</span><span class="w">   </span><span class="n">volData</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">FaustDType</span><span class="o">&lt;</span><span class="n">Robot_PDJE</span><span class="o">&gt;&gt;</span><span class="w">         </span><span class="n">robotData</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">FaustEffects</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">initSampleRate</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">consumeAll</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

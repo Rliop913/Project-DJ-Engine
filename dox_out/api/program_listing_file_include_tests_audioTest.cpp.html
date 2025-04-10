@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File audioTest.cpp &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../test.html">test page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File audioTest.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_include_tests_audioTest.cpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-audiotest-cpp">
+<span id="program-listing-file-include-tests-audiotest-cpp"></span><h1>Program Listing for File audioTest.cpp<a class="headerlink" href="#program-listing-for-file-audiotest-cpp" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file_include_tests_audioTest.cpp.html#file-include-tests-audiotest-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/tests/audioTest.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CapnpBinary.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MixTranslator.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MixMachine.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;miniaudio.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;audioPlayer.hpp&quot;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;dbRoot.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span>
+
+<span class="kt">void</span>
+<span class="n">fill</span><span class="p">(</span>
+<span class="w">    </span><span class="n">capnp</span><span class="o">::</span><span class="n">List</span><span class="o">&lt;</span><span class="n">MBData</span><span class="p">,</span><span class="w"> </span><span class="n">capnp</span><span class="o">::</span><span class="n">Kind</span><span class="o">::</span><span class="n">STRUCT</span><span class="o">&gt;::</span><span class="n">Builder</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ret</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="p">,</span>
+<span class="w">    </span><span class="n">TypeEnum</span><span class="w"> </span><span class="n">Ty</span><span class="p">,</span>
+<span class="w">    </span><span class="n">DetailEnum</span><span class="w"> </span><span class="n">De</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ebar</span><span class="p">,</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">first</span><span class="p">,</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">second</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">third</span><span class="o">=</span><span class="s">&quot;&quot;</span>
+<span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ret</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">setBar</span><span class="p">(</span><span class="n">bar</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ret</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">setBeat</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ret</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">setSeparate</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ret</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">setEbar</span><span class="p">(</span><span class="n">ebar</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ret</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">setEbeat</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ret</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">setEseparate</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ret</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">setType</span><span class="p">(</span><span class="n">Ty</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ret</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">setDetails</span><span class="p">(</span><span class="n">De</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ret</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">setFirst</span><span class="p">(</span><span class="n">first</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ret</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">setSecond</span><span class="p">(</span><span class="n">second</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ret</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">setThird</span><span class="p">(</span><span class="n">third</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">ret</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">setId</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+
+<span class="kt">void</span><span class="w"> </span><span class="n">fillDatas</span><span class="p">(</span><span class="n">capnp</span><span class="o">::</span><span class="n">List</span><span class="o">&lt;</span><span class="n">MBData</span><span class="p">,</span><span class="w"> </span><span class="n">capnp</span><span class="o">::</span><span class="n">Kind</span><span class="o">::</span><span class="n">STRUCT</span><span class="o">&gt;::</span><span class="n">Builder</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ret</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">fill</span><span class="p">(</span>
+<span class="w">        </span><span class="n">ret</span><span class="p">,</span>
+<span class="w">        </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">BPM_CONTROL</span><span class="p">,</span>
+<span class="w">        </span><span class="n">DetailEnum</span><span class="o">::</span><span class="n">TIME_STRETCH</span><span class="p">,</span>
+<span class="w">        </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;175.0&quot;</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="n">fill</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">LOAD</span><span class="p">,</span><span class="w"> </span><span class="n">DetailEnum</span><span class="o">::</span><span class="n">CUE</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;WTC&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TEST&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;175.0&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">fill</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">VOL</span><span class="p">,</span><span class="w"> </span><span class="n">DetailEnum</span><span class="o">::</span><span class="n">TRIM</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;0.5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;30&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// &quot;1&quot;, &quot;0,1.0,0,1.0,0.5,1.0,0.5,1.0&quot;, &quot;20&quot;);</span>
+
+<span class="w">    </span><span class="n">fill</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">FILTER</span><span class="p">,</span><span class="w"> </span><span class="n">DetailEnum</span><span class="o">::</span><span class="n">HIGH</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;5000, 10000, 0, 1000, 5000, 7000, 10000&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">fill</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">BPM_CONTROL</span><span class="p">,</span><span class="w"> </span><span class="n">DetailEnum</span><span class="o">::</span><span class="n">TIME_STRETCH</span><span class="p">,</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w"> </span><span class="mi">84</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;88.0&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">fill</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">CONTROL</span><span class="p">,</span><span class="w"> </span><span class="n">DetailEnum</span><span class="o">::</span><span class="n">PAUSE</span><span class="p">,</span><span class="w"> </span><span class="mi">81</span><span class="p">,</span><span class="w"> </span><span class="mi">82</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">fill</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">UNLOAD</span><span class="p">,</span><span class="w"> </span><span class="n">DetailEnum</span><span class="o">::</span><span class="n">CUE</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">);</span>
+
+
+<span class="p">}</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="kt">void</span>
+<span class="nf">idle_callback</span><span class="p">(</span><span class="n">ma_device</span><span class="o">*</span><span class="w"> </span><span class="n">pDevice</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">pOutput</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">pInput</span><span class="p">,</span><span class="w"> </span><span class="n">ma_uint32</span><span class="w"> </span><span class="n">frameCount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// auto dvec = reinterpret_cast&lt;std::vector&lt;float&gt;*&gt;(pDevice-&gt;pUserData);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">dP</span><span class="w"> </span><span class="o">=</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span><span class="p">)(</span><span class="n">pDevice</span><span class="o">-&gt;</span><span class="n">pUserData</span><span class="p">);</span><span class="c1">// dvec-&gt;data();</span>
+<span class="w">    </span><span class="n">dP</span><span class="o">+=</span><span class="n">idx</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// if (idx + frameCount &lt; (*dvec).size()) {</span>
+<span class="w">        </span><span class="n">memcpy</span><span class="p">(</span><span class="n">pOutput</span><span class="p">,</span><span class="w"> </span><span class="n">dP</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">frameCount</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">        </span><span class="n">idx</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">frameCount</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// }</span>
+<span class="p">}</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;termios.h&gt;</span>
+<span class="c1">// #include &quot;MiniAudioWrapper.hpp&quot;</span>
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">mb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CapWriter</span><span class="o">&lt;</span><span class="n">MixBinaryCapnpData</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">mb</span><span class="p">.</span><span class="n">makeNew</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// auto B = reinterpret_cast&lt;MixBinaryCapnpData::Builder*&gt;(mb.D);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mb</span><span class="p">.</span><span class="n">Wp</span><span class="o">-&gt;</span><span class="n">initDatas</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fillDatas</span><span class="p">(</span><span class="n">ret</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">flat_returned</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mb</span><span class="p">.</span><span class="n">out</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">rb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CapReader</span><span class="o">&lt;</span><span class="n">MixBinaryCapnpData</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">rb</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">flat_returned</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// auto reader = reinterpret_cast&lt;MixBinaryCapnpData::Reader*&gt;(rb.D);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">readGet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rb</span><span class="p">.</span><span class="n">Rp</span><span class="o">-&gt;</span><span class="n">getDatas</span><span class="p">();</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">readGet</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">getId</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">readGet</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">getId</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">getFirst</span><span class="p">().</span><span class="n">cStr</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">litedb</span><span class="w"> </span><span class="n">dbb</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">dbb</span><span class="p">.</span><span class="n">openDB</span><span class="p">(</span><span class="s">&quot;./tempdb.db&quot;</span><span class="p">)){</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;opened&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;not opened &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">trackdata</span><span class="w"> </span><span class="n">td</span><span class="p">;</span>
+<span class="w">    </span><span class="n">td</span><span class="p">.</span><span class="n">trackTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;testmix111&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">restd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbb</span><span class="o">&lt;&lt;</span><span class="n">td</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">restd</span><span class="o">-&gt;</span><span class="n">front</span><span class="p">().</span><span class="n">mixBinary</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">rb</span><span class="p">.</span><span class="n">out</span><span class="p">().</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">restd</span><span class="p">.</span><span class="n">value</span><span class="p">().</span><span class="n">front</span><span class="p">().</span><span class="n">mixBinary</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">rb</span><span class="p">.</span><span class="n">out</span><span class="p">().</span><span class="n">size</span><span class="p">()){</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="s">&quot;Completele same&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">AP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">audioPlayer</span><span class="p">(</span><span class="n">dbb</span><span class="p">,</span><span class="w"> </span><span class="n">restd</span><span class="p">.</span><span class="n">value</span><span class="p">().</span><span class="n">front</span><span class="p">(),</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w">  </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">pannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AP</span><span class="o">-&gt;</span><span class="n">GetFXControlPannel</span><span class="p">();</span>
+<span class="w">    </span><span class="n">AP</span><span class="o">-&gt;</span><span class="n">Activate</span><span class="p">();</span>
+<span class="w">    </span><span class="n">getchar</span><span class="p">();</span>
+<span class="w">    </span><span class="n">pannel</span><span class="o">-&gt;</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">FILTER</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">filter_handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pannel</span><span class="o">-&gt;</span><span class="n">GetArgSetter</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">FILTER</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">filter_handle</span><span class="p">){</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="sc">&#39;a&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">freq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">udVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="w">    </span><span class="n">filter_handle</span><span class="p">[</span><span class="s">&quot;Filterfreq&quot;</span><span class="p">](</span><span class="mi">5000</span><span class="p">);</span>
+<span class="w">    </span><span class="n">filter_handle</span><span class="p">[</span><span class="s">&quot;HLswitch&quot;</span><span class="p">](</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;q&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">input</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;u&#39;</span><span class="p">){</span>
+<span class="w">            </span><span class="n">freq</span><span class="w"> </span><span class="o">+=</span><span class="n">udVal</span><span class="p">;</span>
+<span class="w">            </span><span class="n">filter_handle</span><span class="p">[</span><span class="s">&quot;Filterfreq&quot;</span><span class="p">](</span><span class="n">freq</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;d&#39;</span><span class="p">){</span>
+<span class="w">            </span><span class="n">freq</span><span class="w"> </span><span class="o">-=</span><span class="n">udVal</span><span class="p">;</span>
+<span class="w">            </span><span class="n">filter_handle</span><span class="p">[</span><span class="s">&quot;Filterfreq&quot;</span><span class="p">](</span><span class="n">freq</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;h&#39;</span><span class="p">){</span>
+<span class="w">            </span><span class="n">filter_handle</span><span class="p">[</span><span class="s">&quot;HLswitch&quot;</span><span class="p">](</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;l&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">filter_handle</span><span class="p">[</span><span class="s">&quot;HLswitch&quot;</span><span class="p">](</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">}</span>
+
+
+
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">AP</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// if(dbb&lt;&lt;td){</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;DONE!&quot; &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// }</span>
+<span class="w">    </span><span class="c1">// else{</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; SQLITE_LAST_ERRNO &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// }</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">vectest</span><span class="p">{</span>
+<span class="w">        </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">one</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">two</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="n">MixTranslator</span><span class="w"> </span><span class="n">mt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MixTranslator</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">mt</span><span class="p">.</span><span class="n">Read</span><span class="p">(</span><span class="n">rb</span><span class="p">))){</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">mt</span><span class="p">.</span><span class="n">mixs</span><span class="o">-&gt;</span><span class="n">mixVec</span><span class="p">){</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Frame In: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">frame_in</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Frame Out: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">frame_out</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">mm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MixMachine</span><span class="p">();</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">litedb</span><span class="p">();</span>
+<span class="w">    </span><span class="n">db</span><span class="p">.</span><span class="n">openDB</span><span class="p">(</span><span class="s">&quot;./tempdb.db&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">mm</span><span class="o">-&gt;</span><span class="n">IDsort</span><span class="p">(</span><span class="n">mt</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">mt</span><span class="p">.</span><span class="n">bpms</span><span class="p">.</span><span class="n">has_value</span><span class="p">()){</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mm</span><span class="o">-&gt;</span><span class="n">mix</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">mt</span><span class="p">.</span><span class="n">bpms</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
+<span class="w">    </span><span class="n">ma_device</span><span class="w"> </span><span class="n">dev</span><span class="p">;</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">Dres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Decoder</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Dres</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">&quot;./WTC.wav&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;./&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// auto arrD = Dres.getRange(48000*10);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">res</span><span class="p">){</span>
+<span class="w">        </span><span class="n">ma_device_config</span><span class="w"> </span><span class="n">deconf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ma_device_config_init</span><span class="p">(</span><span class="n">ma_device_type_playback</span><span class="p">);</span>
+<span class="w">        </span><span class="n">deconf</span><span class="p">.</span><span class="n">playback</span><span class="p">.</span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ma_format_f32</span><span class="p">;</span>
+<span class="w">        </span><span class="n">deconf</span><span class="p">.</span><span class="n">playback</span><span class="p">.</span><span class="n">channels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">deconf</span><span class="p">.</span><span class="n">sampleRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">48000</span><span class="p">;</span>
+<span class="w">        </span><span class="n">deconf</span><span class="p">.</span><span class="n">periodSizeInFrames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">480</span><span class="p">;</span>
+<span class="w">        </span><span class="n">deconf</span><span class="p">.</span><span class="n">dataCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">idle_callback</span><span class="p">;</span>
+<span class="w">        </span><span class="n">deconf</span><span class="p">.</span><span class="n">performanceProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ma_performance_profile_low_latency</span><span class="p">;</span>
+<span class="w">        </span><span class="n">deconf</span><span class="p">.</span><span class="n">pUserData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">mm</span><span class="o">-&gt;</span><span class="n">rendered_out</span><span class="p">.</span><span class="n">data</span><span class="p">());</span>
+<span class="w">        </span><span class="n">ma_device_init</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">deconf</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dev</span><span class="p">);</span>
+<span class="w">        </span><span class="n">ma_device_start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dev</span><span class="p">);</span>
+
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">getchar</span><span class="p">();</span>
+
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
