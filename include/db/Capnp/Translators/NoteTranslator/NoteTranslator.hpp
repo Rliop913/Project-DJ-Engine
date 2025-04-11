@@ -19,13 +19,19 @@
  * ======================================================================================================================
  * Args describe
  *
- *1 noteType, the note type. e.g) hold, tap, slide
- *2 noteDetail, the detail
- *3 firstArg
- *4 secondArg
- *5 thirdArg
  *
- *1~5 these are meta datas for note.
+ * 1 noteType, the note type. e.g) hold, tap, slide
+ *
+ * 2 noteDetail, the detail
+ *
+ * 3 firstArg
+ *
+ * 4 secondArg
+ *
+ * 5 thirdArg
+ *
+ *
+ * 1~5 these are meta datas for note.
  *
  *6 Y axis position, the first logical position of note
  *7 Y axis position 2, the second logical position of note, use for long notes or else

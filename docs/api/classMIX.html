@@ -7,6 +7,7 @@
   <title>Class MIX &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
 
   
@@ -49,7 +50,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../test.html">test page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="api_root.html#class-hierarchy">Class Hierarchy</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
@@ -170,17 +171,42 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv43MIX">
 <span id="_CPPv33MIX"></span><span id="_CPPv23MIX"></span><span id="MIX"></span><span class="target" id="classMIX"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MIX</span></span></span><a class="headerlink" href="#_CPPv43MIX" title="Link to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>contains mixing datas </p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3MIX7openMixERKN18MixBinaryCapnpData6ReaderE">
 <span id="_CPPv3N3MIX7openMixERKN18MixBinaryCapnpData6ReaderE"></span><span id="_CPPv2N3MIX7openMixERKN18MixBinaryCapnpData6ReaderE"></span><span id="MIX::openMix__MixBinaryCapnpData::ReaderCR"></span><span class="target" id="classMIX_1a966f3d134dd98369a3baa0894959ea06"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">openMix</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">MixBinaryCapnpData</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Reader</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Rptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3MIX7openMixERKN18MixBinaryCapnpData6ReaderE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>opens capnp binary data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Rptr</strong> – gets mix binary capnp wrapper. this should be initialized </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3MIX11WriteFramesER3BPM">
 <span id="_CPPv3N3MIX11WriteFramesER3BPM"></span><span id="_CPPv2N3MIX11WriteFramesER3BPM"></span><span id="MIX::WriteFrames__BPMR"></span><span class="target" id="classMIX_1a13334cf8c60b64f5703b0333213478e9"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">WriteFrames</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classBPM.html#_CPPv43BPM" title="BPM"><span class="n"><span class="pre">BPM</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">bpmm</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3MIX11WriteFramesER3BPM" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Preprocessing for mix data. This calculates the frame position of the mixing data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bpmm</strong> – bpm class </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3MIX3MIXEv">

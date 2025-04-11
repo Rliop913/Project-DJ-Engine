@@ -60,12 +60,13 @@ Program Listing for File FrameCalc.hpp
    };
    
    struct BpmStruct{
-   
        std::vector<BpmFragment> fragments;
+   
        void sortFragment();
        bool calcFrame(unsigned long long StartPos = 0);
        const BpmFragment& getAffected(const BpmFragment& searchFrag) const;
        const BpmFragment& getAffected(const unsigned long long searchFrame) const;
+   
        const std::vector<const BpmFragment*> 
        getAffectedList(
            const unsigned long long searchStartFrame,

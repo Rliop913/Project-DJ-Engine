@@ -11,19 +11,6 @@ Project_DJ_Engine(PDJE)
    :maxdepth: 2
    :caption: Contents:
    
-   test
+   How_To_Use
    api/api_root
 
-.. contents:: 페이지 목차
-   :depth: 2
-
-first
-------
-second
--------
-
-
-.. doxygenclass:: PDJE
-   :project: Project_DJ_Engine
-   :members:
-   :undoc-members:

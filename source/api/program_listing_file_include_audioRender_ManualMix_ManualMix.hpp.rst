@@ -31,7 +31,6 @@ Program Listing for File ManualMix.hpp
    #include "musicDB.hpp"
    #include "FrameCalc.hpp"
    
-   
    enum FXList{
        COMPRESSOR = 0,
        DISTORTION,
@@ -47,7 +46,6 @@ Program Listing for File ManualMix.hpp
        TRANCE,
        VOL
    };
-   
    
    class FXControlPannel{
    private:
@@ -76,13 +74,12 @@ Program Listing for File ManualMix.hpp
        
    public:
        FXControlPannel(int sampleRate);
-   
        ARGSETTER
        GetArgSetter(FXList fx);
-   
        void FX_ON_OFF(FXList fx, bool onoff);
    
        void addFX(float** pcm, int samples);
+   
        bool checkSomethingOn();
    };
    

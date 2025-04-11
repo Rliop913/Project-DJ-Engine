@@ -7,6 +7,7 @@
   <title>Program Listing for File interfaceTest.cpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
 
   
@@ -47,7 +48,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../test.html">test page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 </ul>
 
@@ -123,6 +124,7 @@
 <span class="w">    </span><span class="n">testpdje</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetFXControlPannel</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">DISTORTION</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">pannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">testpdje</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetFXControlPannel</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetArgSetter</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">DISTORTION</span><span class="p">);</span>
 <span class="w">    </span><span class="n">pannel</span><span class="p">[</span><span class="s">&quot;distortionValue&quot;</span><span class="p">](</span><span class="mi">2</span><span class="p">);</span>
+
 <span class="w">    </span><span class="n">getchar</span><span class="p">();</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">mus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">testpdje</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetMusicControlPannel</span><span class="p">();</span>
 <span class="w">    </span><span class="n">mus</span><span class="o">-&gt;</span><span class="n">LoadMusic</span><span class="p">(</span><span class="n">searchResult</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>

@@ -22,7 +22,6 @@ Program Listing for File CapnpBinary.hpp
    #include "MusicBinary.capnp.h"
    #include "NoteBinary.capnp.h"
    
-   
    template<typename DType>
    class CapReader{
    private:
@@ -65,6 +64,7 @@ Program Listing for File CapnpBinary.hpp
        CapWriter() = default;
        ~CapWriter() = default;
        std::optional<typename DType::Builder> Wp;
+   
        bool open(const std::vector<kj::byte>& capnpBinary){
            try
            {

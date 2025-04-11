@@ -5,6 +5,11 @@ Namespace FrameCalc
 ===================
 
 
+namespace for calculate frames. 
+
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none

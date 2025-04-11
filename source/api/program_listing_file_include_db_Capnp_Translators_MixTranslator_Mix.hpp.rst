@@ -27,6 +27,7 @@ Program Listing for File Mix.hpp
    public:
        std::vector<MixStruct> mixVec;
        bool openMix(const MixBinaryCapnpData::Reader& Rptr);
+   
        bool WriteFrames(BPM& bpmm);
    
        MIX();
