@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="17" column="17" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="17" bodyend="-1"/>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="21" column="17" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classCapReader_1aaffa08640fa095ee05262727ec068b12" prot="private" static="no" mutable="no">
         <type>std::optional&lt; capnp::FlatArrayMessageReader &gt;</type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="18" column="19" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="18" bodyend="-1"/>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="22" column="19" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="22" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-attrib">
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="22" column="19" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="22" bodyend="-1"/>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="26" column="19" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="26" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="20" column="5"/>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="24" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classCapReader_1ad46e826dc28452e49811347bdabf7e59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="21" column="5"/>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="25" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classCapReader_1a9f903ae7fabe82ce0cd1a2c78d3c6583" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -94,12 +94,27 @@
           <declname>capnpBinary</declname>
         </param>
         <briefdescription>
+<para>wraps Binary data </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>capnpBinary</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>capnp binary data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="23" column="10" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="23" bodyend="42"/>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="34" column="10" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="34" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classCapReader_1a4e2f49905c40fd9410e6165f04202bf9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; kj::byte &gt;</type>
@@ -108,17 +123,32 @@
         <name>out</name>
         <qualifiedname>CapReader::out</qualifiedname>
         <briefdescription>
+<para>makes binary data and returns it. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>std::vector&lt;kj::byte&gt; the binary data. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="43" column="17" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="43" bodyend="45"/>
+        <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="59" column="17" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="59" bodyend="61"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>CapnProto Binary data Reader Wrapper Class. </para>
     </briefdescription>
     <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>DType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Binary Schema Type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
     </detaileddescription>
     <collaborationgraph>
       <node id="1">
@@ -132,7 +162,7 @@
         <label>std::vector&lt; kj::byte &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="15" column="1" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="15" bodyend="46"/>
+    <location file="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" line="19" column="1" bodyfile="include/db/Capnp/CapnpBinary/CapnpBinary.hpp" bodystart="19" bodyend="62"/>
     <listofallmembers>
       <member refid="classCapReader_1a1694d244c609178756b8f3085175c89d" prot="public" virt="non-virtual"><scope>CapReader</scope><name>CapReader</name></member>
       <member refid="classCapReader_1aaffa08640fa095ee05262727ec068b12" prot="private" virt="non-virtual"><scope>CapReader</scope><name>capreader</name></member>

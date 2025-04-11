@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HOW TO USE &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="api/api_root.html" />
+    <link rel="prev" title="Project_DJ_Engine(PDJE)" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HOW TO USE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#initialize-pdje-engine">Initialize PDJE Engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv44PDJE"><code class="docutils literal notranslate"><span class="pre">PDJE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#search-track-and-music">Search Track and Music</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N4PDJE11SearchMusicERKNSt6stringERKNSt6stringEKd"><code class="docutils literal notranslate"><span class="pre">SearchMusic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N4PDJE11SearchTrackERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">SearchTrack()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#initialize-player">Initialize Player</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj"><code class="docutils literal notranslate"><span class="pre">InitPlayer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#handle-player">Handle Player</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv411audioPlayer"><code class="docutils literal notranslate"><span class="pre">audioPlayer</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N11audioPlayer8ActivateEv"><code class="docutils literal notranslate"><span class="pre">Activate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N11audioPlayer10DeactivateEv"><code class="docutils literal notranslate"><span class="pre">Deactivate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N11audioPlayer18GetFXControlPannelERKNSt6stringE"><code class="docutils literal notranslate"><span class="pre">GetFXControlPannel()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N11audioPlayer21GetMusicControlPannelEv"><code class="docutils literal notranslate"><span class="pre">GetMusicControlPannel()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#handle-fxcontrolpannel">Handle FXControlPannel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N15FXControlPannel9FX_ON_OFFE6FXListb"><code class="docutils literal notranslate"><span class="pre">FX_ON_OFF()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N15FXControlPannel12GetArgSetterE6FXList"><code class="docutils literal notranslate"><span class="pre">GetArgSetter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N15FXControlPannel16checkSomethingOnEv"><code class="docutils literal notranslate"><span class="pre">checkSomethingOn()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#handle-musiccontrolpannel">Handle MusicControlPannel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv418MusicControlPannel"><code class="docutils literal notranslate"><span class="pre">MusicControlPannel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18MusicControlPannel9LoadMusicERK7musdata"><code class="docutils literal notranslate"><span class="pre">LoadMusic()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">HOW TO USE</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/How_To_Use.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="how-to-use">
+<h1><a class="toc-backref" href="#id2" role="doc-backlink">HOW TO USE</a><a class="headerlink" href="#how-to-use" title="Link to this heading"></a></h1>
+<nav class="contents" id="id1">
+<p class="topic-title">how to use</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#how-to-use" id="id2">HOW TO USE</a></p>
+<ul>
+<li><p><a class="reference internal" href="#initialize-pdje-engine" id="id3">Initialize PDJE Engine</a></p></li>
+<li><p><a class="reference internal" href="#search-track-and-music" id="id4">Search Track and Music</a></p></li>
+<li><p><a class="reference internal" href="#initialize-player" id="id5">Initialize Player</a></p></li>
+<li><p><a class="reference internal" href="#handle-player" id="id6">Handle Player</a></p></li>
+<li><p><a class="reference internal" href="#handle-fxcontrolpannel" id="id7">Handle FXControlPannel</a></p></li>
+<li><p><a class="reference internal" href="#handle-musiccontrolpannel" id="id8">Handle MusicControlPannel</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="initialize-pdje-engine">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Initialize PDJE Engine</a><a class="headerlink" href="#initialize-pdje-engine" title="Link to this heading"></a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv44PDJE">
+<span id="_CPPv34PDJE"></span><span id="_CPPv24PDJE"></span><span id="PDJE"></span><span class="target" id="classPDJE"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE</span></span></span><br /></dt>
+<dd><p>the main Interface of this Engine <a class="reference internal" href="api/classPDJE.html#classPDJE"><span class="std std-ref">PDJE</span></a> gets music data and track data from database. from that datas, you can activate music player and you can get a music player handler. with this player handler, you can control music’s mixing in real time. </p>
+<p>to-use<ol class="loweralpha simple">
+<li><p>make <a class="reference internal" href="api/classPDJE.html#classPDJE"><span class="std std-ref">PDJE</span></a> object</p></li>
+<li><p>call SearchTrack</p></li>
+<li><p>call InitPlayer</p></li>
+<li><p>use player. this is handler.</p></li>
+</ol>
+</p>
+<p><div class="graphviz"><object data="_images/graphviz-8a80928eed9900c4ebd403b1a2c215d73580278f.svg" type="image/svg+xml" class="graphviz">
+<p class="warning">digraph PDJE_Interface_Tree{
+     PDJE -&gt; Search_Tools;
+     PDJE -&gt; Player;
+     Player -&gt; Player_ON_OFF;
+     Player -&gt; FXController;
+     Player -&gt; MusicController;
+     FXController -&gt; FX_ON_OFF;
+     FXController -&gt; FX_arg_setter;
+     FX_arg_setter -&gt; change_FX_value;
+     MusicController -&gt; Load_Music;
+     MusicController -&gt; Unload_Music;
+     MusicController -&gt; ON_OFF_Music;
+     MusicController -&gt; Cue_Music;
+     MusicController -&gt; FXController;
+}</p></object></div>
+</p>
+</dd></dl>
+
+<p>we use “PDJE” class as an interface.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">PDJE</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;path/to/root/sqlite/database.sql&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>this code Initialize engine and interfaces.</p>
+</section>
+<section id="search-track-and-music">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Search Track and Music</a><a class="headerlink" href="#search-track-and-music" title="Link to this heading"></a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE11SearchMusicERKNSt6stringERKNSt6stringEKd">
+<span id="_CPPv3N4PDJE11SearchMusicERKNSt6stringERKNSt6stringEKd"></span><span id="_CPPv2N4PDJE11SearchMusicERKNSt6stringERKNSt6stringEKd"></span><span id="PDJE::SearchMusic__ssCR.ssCR.doubleC"></span><span class="target" id="classPDJE_1a3a6d5448f262f0f28335e803ce279548"></span><a class="reference internal" href="api/typedef_dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0.html#_CPPv47MUS_VEC" title="MUS_VEC"><span class="n"><span class="pre">MUS_VEC</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classPDJE.html#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SearchMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">composer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bpm</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>searches musics and metadatas from database. if you don’t need to filter, send “” to the values </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Title</strong> – the title of the music </p></li>
+<li><p><strong>composer</strong> – the composer of the music </p></li>
+<li><p><strong>bpm</strong> – the bpm of the music. send under zero to skip filter </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api/typedef_dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0.html#dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0"><span class="std std-ref">MUS_VEC</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="n">bpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">140.0</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">music_searched</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s">&quot;Music Title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Composer name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">bpm</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="n">music_searched</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;can&#39;t find anything&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">music_searched</span><span class="p">){</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;title: &quot;</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">title</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;path: &quot;</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">musicPath</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE11SearchTrackERKNSt6stringE">
+<span id="_CPPv3N4PDJE11SearchTrackERKNSt6stringE"></span><span id="_CPPv2N4PDJE11SearchTrackERKNSt6stringE"></span><span id="PDJE::SearchTrack__ssCR"></span><span class="target" id="classPDJE_1a31a19ebc3086151e08f083c63846fac2"></span><a class="reference internal" href="api/typedef_dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470.html#_CPPv49TRACK_VEC" title="TRACK_VEC"><span class="n"><span class="pre">TRACK_VEC</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classPDJE.html#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SearchTrack</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Title</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>searches track the track contains the note data, mix data and included music lists. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Title</strong> – the tile of the track. send “” to skip filter </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api/typedef_dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470.html#dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470"><span class="std std-ref">TRACK_VEC</span></a> the array of the track_data. find what you want </p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">trackSearch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">SearchTrack</span><span class="p">(</span><span class="s">&quot;Track Title&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="n">trackSearch</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;can&#39;t find anything&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="o">:</span><span class="w"> </span><span class="n">trackSearch</span><span class="p">){</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; track title: &quot;</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">trackTitle</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; note binary size: &quot;</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">noteBinary</span><span class="p">.</span><span class="n">size</span><span class="p">()</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; mix binary size: &quot;</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">mixBinary</span><span class="p">.</span><span class="n">size</span><span class="p">()</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="initialize-player">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Initialize Player</a><a class="headerlink" href="#initialize-player" title="Link to this heading"></a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj">
+<span id="_CPPv3N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj"></span><span id="_CPPv2N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj"></span><span id="PDJE::InitPlayer__PLAY_MODE.trackdataR.unsigned-iC"></span><span class="target" id="classPDJE_1a9de8f88a9b0461472a99596fa0b5c978"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classPDJE.html#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">InitPlayer</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/enum_PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16.html#_CPPv49PLAY_MODE" title="PLAY_MODE"><span class="n"><span class="pre">PLAY_MODE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mode</span></span>, <a class="reference internal" href="api/structtrackdata.html#_CPPv49trackdata" title="trackdata"><span class="n"><span class="pre">trackdata</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">td</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">FrameBufferSize</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>this inits the music handler. the music handler called a “player” it initializes the player </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> – the play modes. you can choose “FULL_PRE_RENDER”, “HYBRID_RENDER”, “FULL_MANUAL_RENDER” </p></li>
+<li><p><strong>td</strong> – the track data. you can get this from <a class="reference internal" href="api/classPDJE.html#classPDJE_1a31a19ebc3086151e08f083c63846fac2"><span class="std std-ref">SearchTrack()</span></a></p></li>
+<li><p><strong>FrameBufferSize</strong> – the buffersize. in this project, it uses 48000 samplerate. if you use 48 as a value, in theory, it calls mixing function 1000 times per second. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true no error </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false error </p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">Track_Chosen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trackSearch</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">Buffer_Size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">48</span><span class="p">;</span>
+<span class="n">engine</span><span class="o">-&gt;</span><span class="n">InitPlayer</span><span class="p">(</span><span class="n">PLAY_MODE</span><span class="o">::</span><span class="n">RENDER_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">Track_Chosen</span><span class="p">,</span><span class="w"> </span><span class="n">Buffer_Size</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="p">.</span><span class="n">has_value</span><span class="p">()){</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;can&#39;t use track&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="handle-player">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Handle Player</a><a class="headerlink" href="#handle-player" title="Link to this heading"></a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv411audioPlayer">
+<span id="_CPPv311audioPlayer"></span><span id="_CPPv211audioPlayer"></span><span id="audioPlayer"></span><span class="target" id="classaudioPlayer"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">audioPlayer</span></span></span><br /></dt>
+<dd><p>The music handler class this is the music handler class. you can play/stop music, controlling fx, attach other music in realtime manually or getting music’s playing position and consumed frames. </p>
+</dd></dl>
+
+<p>this is the handler of musics.</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer8ActivateEv">
+<span id="_CPPv3N11audioPlayer8ActivateEv"></span><span id="_CPPv2N11audioPlayer8ActivateEv"></span><span id="audioPlayer::Activate"></span><span class="target" id="classaudioPlayer_1a7e91ca8d0037ef8e2fb50ff7289317aa"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classaudioPlayer.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Activate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Plays music. </p>
+</dd></dl>
+
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">Activate</span><span class="p">();</span>
+</pre></div>
+</div>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer10DeactivateEv">
+<span id="_CPPv3N11audioPlayer10DeactivateEv"></span><span id="_CPPv2N11audioPlayer10DeactivateEv"></span><span id="audioPlayer::Deactivate"></span><span class="target" id="classaudioPlayer_1a8b3239801762770164c7eba623301c3c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classaudioPlayer.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Deactivate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Stops music. </p>
+</dd></dl>
+
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">Deactivate</span><span class="p">();</span>
+</pre></div>
+</div>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer18GetFXControlPannelERKNSt6stringE">
+<span id="_CPPv3N11audioPlayer18GetFXControlPannelERKNSt6stringE"></span><span id="_CPPv2N11audioPlayer18GetFXControlPannelERKNSt6stringE"></span><span id="audioPlayer::GetFXControlPannel__ssCR"></span><span class="target" id="classaudioPlayer_1a94a0ebebcf5f4f07221fad570b7344df"></span><a class="reference internal" href="api/classFXControlPannel.html#_CPPv415FXControlPannel" title="FXControlPannel"><span class="n"><span class="pre">FXControlPannel</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-prename descclassname"><a class="reference internal" href="api/classaudioPlayer.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetFXControlPannel</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;__PDJE__MAIN__&quot;</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>fx controller getter this returns the fx controller. with this, you can control the fx in realtime manually. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>title</strong> – the music to control. “__PDJE__MAIN__” means the prerendered music. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>FXControlPannel* but the “title” doesn’t exists, it returns nullptr. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">FXController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">GetFXControlPannel</span><span class="p">();</span>
+</pre></div>
+</div>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer21GetMusicControlPannelEv">
+<span id="_CPPv3N11audioPlayer21GetMusicControlPannelEv"></span><span id="_CPPv2N11audioPlayer21GetMusicControlPannelEv"></span><span id="audioPlayer::GetMusicControlPannel"></span><span class="target" id="classaudioPlayer_1a373d7c2bf9c5f5a30f01c5d628d52d53"></span><a class="reference internal" href="api/classMusicControlPannel.html#_CPPv418MusicControlPannel" title="MusicControlPannel"><span class="n"><span class="pre">MusicControlPannel</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-prename descclassname"><a class="reference internal" href="api/classaudioPlayer.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetMusicControlPannel</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>music controller getter this returns the music controller. with this, you can load music, stop music in realtime manually. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>MusicControlPannel* if something wrong, it returns nullptr. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">MusicController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">GetMusicControlPannel</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="handle-fxcontrolpannel">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Handle FXControlPannel</a><a class="headerlink" href="#handle-fxcontrolpannel" title="Link to this heading"></a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15FXControlPannel9FX_ON_OFFE6FXListb">
+<span id="_CPPv3N15FXControlPannel9FX_ON_OFFE6FXListb"></span><span id="_CPPv2N15FXControlPannel9FX_ON_OFFE6FXListb"></span><span id="FXControlPannel::FX_ON_OFF__FXList.b"></span><span class="target" id="classFXControlPannel_1ab60d0d4d6ba4a5eccbb020050b6fff60"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classFXControlPannel.html#_CPPv415FXControlPannel" title="FXControlPannel"><span class="n"><span class="pre">FXControlPannel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">FX_ON_OFF</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/enum_ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3.html#_CPPv46FXList" title="FXList"><span class="n"><span class="pre">FXList</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">fx</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">onoff</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>activate/deactivate FX </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fx</strong> – the fx type </p></li>
+<li><p><strong>onoff</strong> – activate / deactivate </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">TurnON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="n">FXController</span><span class="o">-&gt;</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">ChooseFX</span><span class="p">,</span><span class="w"> </span><span class="n">TurnON</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15FXControlPannel12GetArgSetterE6FXList">
+<span id="_CPPv3N15FXControlPannel12GetArgSetterE6FXList"></span><span id="_CPPv2N15FXControlPannel12GetArgSetterE6FXList"></span><span id="FXControlPannel::GetArgSetter__FXList"></span><span class="target" id="classFXControlPannel_1ab3b6366e2e6848966dba20ccbfb4805b"></span><a class="reference internal" href="api/typedef_DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15.html#_CPPv49ARGSETTER" title="ARGSETTER"><span class="n"><span class="pre">ARGSETTER</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classFXControlPannel.html#_CPPv415FXControlPannel" title="FXControlPannel"><span class="n"><span class="pre">FXControlPannel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetArgSetter</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/enum_ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3.html#_CPPv46FXList" title="FXList"><span class="n"><span class="pre">FXList</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">fx</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Get the Arg Setter object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fx</strong> – the fx type </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api/typedef_DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15.html#DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15"><span class="std std-ref">ARGSETTER</span></a> the FX arg handler </p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">argHandler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FXController</span><span class="o">-&gt;</span><span class="n">GetArgSetter</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">ChooseFX</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">argHandler</span><span class="p">){</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;FX key: &quot;</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">first</span>
+<span class="w">    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">FXValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span>
+<span class="n">argHandler</span><span class="p">[</span><span class="s">&quot;FX key name&quot;</span><span class="p">](</span><span class="n">FXValue</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15FXControlPannel16checkSomethingOnEv">
+<span id="_CPPv3N15FXControlPannel16checkSomethingOnEv"></span><span id="_CPPv2N15FXControlPannel16checkSomethingOnEv"></span><span id="FXControlPannel::checkSomethingOn"></span><span class="target" id="classFXControlPannel_1a6f6bbb0a94d182faa065bcaafee6438f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classFXControlPannel.html#_CPPv415FXControlPannel" title="FXControlPannel"><span class="n"><span class="pre">FXControlPannel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">checkSomethingOn</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>check any FX is activated </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true , something is activated </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>false , nothing activated. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">FXController</span><span class="o">-&gt;</span><span class="n">checkSomethingOn</span><span class="p">()){</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;FX is turned on&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="handle-musiccontrolpannel">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Handle MusicControlPannel</a><a class="headerlink" href="#handle-musiccontrolpannel" title="Link to this heading"></a></h2>
+<p>need more documentation</p>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv418MusicControlPannel">
+<span id="_CPPv318MusicControlPannel"></span><span id="_CPPv218MusicControlPannel"></span><span id="MusicControlPannel"></span><span class="target" id="classMusicControlPannel"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MusicControlPannel</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel9LoadMusicERK7musdata">
+<span id="_CPPv3N18MusicControlPannel9LoadMusicERK7musdata"></span><span id="_CPPv2N18MusicControlPannel9LoadMusicERK7musdata"></span><span id="MusicControlPannel::LoadMusic__musdataCR"></span><span class="target" id="classMusicControlPannel_1a80888f4f40256430b8482a42fb2f6d8d"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classMusicControlPannel.html#_CPPv418MusicControlPannel" title="MusicControlPannel"><span class="n"><span class="pre">MusicControlPannel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">LoadMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/structmusdata.html#_CPPv47musdata" title="musdata"><span class="n"><span class="pre">musdata</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Mus</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Project_DJ_Engine(PDJE)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api/api_root.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

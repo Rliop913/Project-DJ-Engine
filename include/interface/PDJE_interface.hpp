@@ -25,6 +25,25 @@ enum PLAY_MODE{
  * 2. call SearchTrack
  * 3. call InitPlayer
  * 4. use player. this is handler.
+ * 
+ * \dot
+ * digraph PDJE_Interface_Tree{
+ *      PDJE -> Search_Tools;
+ *      PDJE -> Player;
+ *      Player -> Player_ON_OFF;
+ *      Player -> FXController;
+ *      Player -> MusicController;
+ *      FXController -> FX_ON_OFF;
+ *      FXController -> FX_arg_setter;
+ *      FX_arg_setter -> change_FX_value;
+ *      MusicController -> Load_Music;
+ *      MusicController -> Unload_Music;
+ *      MusicController -> ON_OFF_Music;
+ *      MusicController -> Cue_Music;
+ *      MusicController -> FXController;
+ * }
+ * \enddot
+ * 
  */
 class PDJE{
 private:

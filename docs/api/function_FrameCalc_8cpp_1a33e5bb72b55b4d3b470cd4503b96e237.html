@@ -7,6 +7,7 @@
   <title>Function FrameCalc::CountFrame &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
 
   
@@ -47,7 +48,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../test.html">test page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 </ul>
 
@@ -85,7 +86,24 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N9FrameCalc10CountFrameEmmmmmmd">
 <span id="_CPPv3N9FrameCalc10CountFrameEmmmmmmd"></span><span id="_CPPv2N9FrameCalc10CountFrameEmmmmmmd"></span><span id="FrameCalc::CountFrame__unsigned-l.unsigned-l.unsigned-l.unsigned-l.unsigned-l.unsigned-l.double"></span><span class="target" id="namespaceFrameCalc_1a33e5bb72b55b4d3b470cd4503b96e237"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">FrameCalc</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">CountFrame</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Sbar</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Sbeat</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Sseparate</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Ebar</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Ebeat</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">Eseparate</span></span>, <span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bpm</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9FrameCalc10CountFrameEmmmmmmd" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>count frame between two bar-beat position. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Sbar</strong> – start bar </p></li>
+<li><p><strong>Sbeat</strong> – start beat </p></li>
+<li><p><strong>Sseparate</strong> – start bar-beat’s separate value </p></li>
+<li><p><strong>Ebar</strong> – end bar </p></li>
+<li><p><strong>Ebeat</strong> – end beat </p></li>
+<li><p><strong>Eseparate</strong> – end bar-beat’s separate value </p></li>
+<li><p><strong>bpm</strong> – applied bpm. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>unsigned long the calculated Frame Range </p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 </section>

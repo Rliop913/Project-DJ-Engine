@@ -43,6 +43,7 @@ main()
     testpdje->player->GetFXControlPannel()->FX_ON_OFF(FXList::DISTORTION, true);
     auto pannel = testpdje->player->GetFXControlPannel()->GetArgSetter(FXList::DISTORTION);
     pannel["distortionValue"](2);
+    
     getchar();
     auto mus = testpdje->player->GetMusicControlPannel();
     mus->LoadMusic(searchResult[0]);

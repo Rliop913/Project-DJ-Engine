@@ -19,7 +19,10 @@
 #include "musicDB.hpp"
 #include "FrameCalc.hpp"
 
-
+/**
+ * @brief the usable fx list
+ * 
+ */
 enum FXList{
     COMPRESSOR = 0,
     DISTORTION,
@@ -36,7 +39,10 @@ enum FXList{
     VOL
 };
 
-
+/**
+ * @brief FX Controller class
+ * 
+ */
 class FXControlPannel{
 private:
     std::pair<bool, CompressorFAUSTMan>  compressorPannel;
@@ -53,6 +59,14 @@ private:
     std::pair<bool, TranceFAUSTMan>      trancePannel;
     std::pair<bool, VolFAUSTMan>         volPannel;
 
+    /**
+     * @brief checks fxPannel activated and apply fx
+     * 
+     * @tparam ManName FXPannel Type
+     * @param pcm Faust Style float array
+     * @param samples length of float array
+     * @param man FXPannel Object
+     */
     template<typename ManName>
     void
     checkAndUse(float** pcm, int samples, ManName& man)
@@ -63,14 +77,42 @@ private:
     }
     
 public:
+    /**
+     * @brief Construct a new FXControlPannel object
+     * 
+     * @param sampleRate the sample rate. we use 48000
+     */
     FXControlPannel(int sampleRate);
-
+    /**
+     * @brief Get the Arg Setter object
+     * 
+     * @param fx the fx type
+     * @return ARGSETTER the FX arg handler
+     */
     ARGSETTER
     GetArgSetter(FXList fx);
-
+    /**
+     * @brief activate/deactivate FX
+     * 
+     * @param fx the fx type
+     * @param onoff activate / deactivate
+     */
     void FX_ON_OFF(FXList fx, bool onoff);
 
+    /**
+     * @brief apply FX to pcm
+     * 
+     * @param pcm the faust style PCM frame array
+     * @param samples length of frame array 
+     */
     void addFX(float** pcm, int samples);
+
+    /**
+     * @brief check any FX is activated
+     * 
+     * @return true , something is activated
+     * @return false , nothing activated.
+     */
     bool checkSomethingOn();
 };
 

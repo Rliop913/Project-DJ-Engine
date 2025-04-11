@@ -10,7 +10,11 @@
 #include "MusicBinary.capnp.h"
 #include "NoteBinary.capnp.h"
 
-
+/**
+ * @brief CapnProto Binary data Reader Wrapper Class
+ * 
+ * @tparam DType Binary Schema Type
+ */
 template<typename DType>
 class CapReader{
 private:
@@ -20,6 +24,13 @@ public:
     CapReader() = default;
     ~CapReader() = default;
     std::optional<typename DType::Reader> Rp;
+    /**
+     * @brief wraps Binary data
+     * 
+     * @param capnpBinary capnp binary data
+     * @return true 
+     * @return false 
+     */
     bool open(const std::vector<kj::byte>& capnpBinary){
         try
         {
@@ -40,11 +51,21 @@ public:
             return false;
         }
     }
+    /**
+     * @brief makes binary data and returns it.
+     * 
+     * @return std::vector<kj::byte> the binary data.
+     */
     std::vector<kj::byte> out(){
         return Origin;
     }
 };
 
+/**
+ * @brief Capnproto binary data Writer Wrapper Class
+ * 
+ * @tparam DType Binary Schema type
+ */
 template<typename DType>
 class CapWriter{
 private:
@@ -53,6 +74,14 @@ public:
     CapWriter() = default;
     ~CapWriter() = default;
     std::optional<typename DType::Builder> Wp;
+
+    /**
+     * @brief wraps binary data
+     * 
+     * @param capnpBinary binary data
+     * @return true 
+     * @return false 
+     */
     bool open(const std::vector<kj::byte>& capnpBinary){
         try
         {
@@ -76,6 +105,12 @@ public:
         }
     }
 
+    /**
+     * @brief makes empty data and initialize
+     * 
+     * @return true 
+     * @return false 
+     */
     bool makeNew(){
         try
         {
@@ -90,6 +125,11 @@ public:
         }
     }
 
+    /**
+     * @brief makes binary data and returns it.
+     * 
+     * @return std::vector<kj::byte> the binary data
+     */
     std::vector<kj::byte> out(){
         try
         {   

@@ -13,8 +13,13 @@ author = 'RLIOP913'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 import os
-extensions = ['breathe', 'exhale']
+extensions = [
+    'breathe', 
+    'exhale',
+    'sphinx.ext.graphviz' 
+    ]
 
+graphviz_output_format = 'svg'
 breathe_projects = {
     "Project_DJ_Engine" : "./xml"
 }

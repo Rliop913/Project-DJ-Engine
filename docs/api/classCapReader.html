@@ -7,6 +7,7 @@
   <title>Template Class CapReader &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
 
   
@@ -49,7 +50,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../test.html">test page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="api_root.html#class-hierarchy">Class Hierarchy</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
@@ -170,7 +171,13 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4I0E9CapReader">
 <span id="_CPPv3I0E9CapReader"></span><span id="_CPPv2I0E9CapReader"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DType</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classCapReader"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CapReader</span></span></span><a class="headerlink" href="#_CPPv4I0E9CapReader" title="Link to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>CapnProto Binary data Reader Wrapper Class. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>DType</strong> – Binary Schema Type </p>
+</dd>
+</dl>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N9CapReader9CapReaderEv">
@@ -185,12 +192,30 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N9CapReader4openERKNSt6vectorIN2kj4byteEEE">
 <span id="_CPPv3N9CapReader4openERKNSt6vectorIN2kj4byteEEE"></span><span id="_CPPv2N9CapReader4openERKNSt6vectorIN2kj4byteEEE"></span><span id="CapReader::open__std::vector:kj::byte:CR"></span><span class="target" id="classCapReader_1a9f903ae7fabe82ce0cd1a2c78d3c6583"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">open</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">kj</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">byte</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">capnpBinary</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9CapReader4openERKNSt6vectorIN2kj4byteEEE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>wraps Binary data </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>capnpBinary</strong> – capnp binary data </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N9CapReader3outEv">
 <span id="_CPPv3N9CapReader3outEv"></span><span id="_CPPv2N9CapReader3outEv"></span><span id="CapReader::out"></span><span class="target" id="classCapReader_1a4e2f49905c40fd9410e6165f04202bf9"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">kj</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">byte</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">out</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9CapReader3outEv" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>makes binary data and returns it. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>std::vector&lt;kj::byte&gt; the binary data. </p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">

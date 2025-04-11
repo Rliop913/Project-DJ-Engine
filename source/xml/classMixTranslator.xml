@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="17" column="18" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" bodystart="17" bodyend="-1"/>
+        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="27" column="18" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" bodystart="27" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-attrib">
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="19" column="19" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" bodystart="19" bodyend="-1"/>
+        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="29" column="19" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classMixTranslator_1a286ceca666d2d1546dcaf7c6b8e2d3f5" prot="public" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="classBPM" kindref="compound">BPM</ref> &gt;</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="20" column="19" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" bodystart="20" bodyend="-1"/>
+        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="30" column="19" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" bodystart="30" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -62,12 +62,27 @@
           <declname>binary</declname>
         </param>
         <briefdescription>
+<para>read capnp mix binary data and init <ref refid="classMIX" kindref="compound">MIX</ref> and <ref refid="classBPM" kindref="compound">BPM</ref> </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>binary</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the capnp Mix binary reader wrapper </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="21" column="10" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.cpp" bodystart="15" bodyend="30"/>
+        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="39" column="10" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.cpp" bodystart="15" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classMixTranslator_1a8009a82dcf32d8c4f80bc7b85674bc1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -81,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="23" column="5" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.cpp" bodystart="3" bodyend="11"/>
+        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="41" column="5" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.cpp" bodystart="3" bodyend="11"/>
       </memberdef>
       <memberdef kind="function" id="classMixTranslator_1aa7a05028f126f4e037e4b26401e56622" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -95,14 +110,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="24" column="5" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.cpp" bodystart="32" bodyend="35"/>
+        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="42" column="5" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.cpp" bodystart="32" bodyend="35"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>This Translate capnp data into cpp data sturct. </para>
     </briefdescription>
     <detaileddescription>
+<para><dot>
+digraph MixTranslator{
+     MixTranslator -&gt; MIX;
+     MixTranslator -&gt; BPM;
+     BPM -&gt; BpmStruct;
+     BpmStruct -&gt; BpmFragment;
+}
+</dot>
+ </para>
     </detaileddescription>
-    <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="15" column="1" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" bodystart="15" bodyend="25"/>
+    <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="25" column="1" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" bodystart="25" bodyend="43"/>
     <listofallmembers>
       <member refid="classMixTranslator_1a286ceca666d2d1546dcaf7c6b8e2d3f5" prot="public" virt="non-virtual"><scope>MixTranslator</scope><name>bpms</name></member>
       <member refid="classMixTranslator_1a9a92844279aa3116505ea6b546c5efe3" prot="public" virt="non-virtual"><scope>MixTranslator</scope><name>mixs</name></member>

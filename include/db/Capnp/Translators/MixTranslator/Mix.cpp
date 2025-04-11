@@ -48,6 +48,13 @@ MIX::openMix(const MixBinaryCapnpData::Reader& Rptr)
     }
 }
 
+/**
+ * @brief calculates mixing data's frame position.
+ * 
+ * @param bs bpm fragment
+ * @param B bpm class
+ * @return unsigned long the frame position
+ */
 unsigned long
 FillFrame(const BpmFragment& bs, BPM* B)
 {
@@ -64,6 +71,13 @@ FillFrame(const BpmFragment& bs, BPM* B)
     ) + bpmIt.frame_to_here;
 }
 
+/**
+ * @brief preprocessing for mix datas.
+ * 
+ * @param M Mixing datas.
+ * @param B Bpm datas.
+ * @param range render range to mix
+ */
 void
 mix_thread(
     MixStruct* M,

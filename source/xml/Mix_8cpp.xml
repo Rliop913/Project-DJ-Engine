@@ -133,12 +133,33 @@
           <declname>B</declname>
         </param>
         <briefdescription>
+<para>calculates mixing data&apos;s frame position. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>bpm fragment </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>B</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>bpm class </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>unsigned long the frame position </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/Translators/MixTranslator/Mix.cpp" line="52" column="1" bodyfile="include/db/Capnp/Translators/MixTranslator/Mix.cpp" bodystart="52" bodyend="65"/>
+        <location file="include/db/Capnp/Translators/MixTranslator/Mix.cpp" line="59" column="1" bodyfile="include/db/Capnp/Translators/MixTranslator/Mix.cpp" bodystart="59" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -158,12 +179,39 @@
           <declname>range</declname>
         </param>
         <briefdescription>
+<para>preprocessing for mix datas. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>M</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mixing datas. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>B</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bpm datas. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>range</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>render range to mix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/Translators/MixTranslator/Mix.cpp" line="68" column="1" bodyfile="include/db/Capnp/Translators/MixTranslator/Mix.cpp" bodystart="68" bodyend="87"/>
+        <location file="include/db/Capnp/Translators/MixTranslator/Mix.cpp" line="82" column="1" bodyfile="include/db/Capnp/Translators/MixTranslator/Mix.cpp" bodystart="82" bodyend="101"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -221,81 +269,81 @@
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="49"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52" refid="Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd" refkind="member"><highlight class="normal"><ref refid="Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd" kindref="member">FillFrame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structBpmFragment" kindref="compound">BpmFragment</ref>&amp;<sp/>bs,<sp/><ref refid="classBPM" kindref="compound">BPM</ref>*<sp/>B)</highlight></codeline>
-<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bpmIt<sp/>=<sp/>B-&gt;<ref refid="classBPM_1af4082077eb47049bc829a428f3a4959f" kindref="member">bpmVec</ref>.<ref refid="structBpmStruct_1a4ee2251fd59f29de1284e938b616293e" kindref="member">getAffected</ref>(bs);</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceFrameCalc_1a33e5bb72b55b4d3b470cd4503b96e237" kindref="member">FrameCalc::CountFrame</ref>(</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bpmIt.bar,</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bpmIt.beat,</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bpmIt.separate,</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bs.<ref refid="structBpmFragment_1a581acc6c23ec9205f26ca09117aaafe7" kindref="member">bar</ref>,</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bs.<ref refid="structBpmFragment_1a9f2f09c2a59575d2aaf85decfaca4f62" kindref="member">beat</ref>,</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bs.<ref refid="structBpmFragment_1a8cb01948227beb2939e67b0aed378fab" kindref="member">separate</ref>,</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bpmIt.bpm</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>)<sp/>+<sp/>bpmIt.<ref refid="structBpmFragment_1a2a8288e055869bb966d381378b908b48" kindref="member">frame_to_here</ref>;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68" refid="Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527" refkind="member"><highlight class="normal"><ref refid="Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527" kindref="member">mix_thread</ref>(</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structMixStruct" kindref="compound">MixStruct</ref>*<sp/>M,</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBPM" kindref="compound">BPM</ref>*<sp/>B,</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>range</highlight></codeline>
-<codeline lineno="72"><highlight class="normal">)</highlight></codeline>
-<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;range;<sp/>++i){</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBpmFragment" kindref="compound">BpmFragment</ref><sp/>bsin;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBpmFragment" kindref="compound">BpmFragment</ref><sp/>bsout;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsin.<ref refid="structBpmFragment_1a581acc6c23ec9205f26ca09117aaafe7" kindref="member">bar</ref><sp/>=<sp/>M-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getBar();</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsin.<ref refid="structBpmFragment_1a9f2f09c2a59575d2aaf85decfaca4f62" kindref="member">beat</ref><sp/>=<sp/>M-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getBeat();</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsin.<ref refid="structBpmFragment_1a8cb01948227beb2939e67b0aed378fab" kindref="member">separate</ref><sp/>=<sp/>M-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getSeparate();</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsout.<ref refid="structBpmFragment_1a581acc6c23ec9205f26ca09117aaafe7" kindref="member">bar</ref><sp/>=<sp/>M-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getEbar();</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsout.<ref refid="structBpmFragment_1a9f2f09c2a59575d2aaf85decfaca4f62" kindref="member">beat</ref><sp/>=<sp/>M-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getEbeat();</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsout.<ref refid="structBpmFragment_1a8cb01948227beb2939e67b0aed378fab" kindref="member">separate</ref><sp/>=<sp/>M-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getEseparate();</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>M-&gt;<ref refid="structMixStruct_1a8365853d102a34b5904d7b1308baf80b" kindref="member">frame_in</ref><sp/>=<sp/><ref refid="Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd" kindref="member">FillFrame</ref>(bsin,<sp/>B);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>M-&gt;<ref refid="structMixStruct_1ac575a8968166219b32c60b339a5f035c" kindref="member">frame_out</ref><sp/>=<sp/><ref refid="Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd" kindref="member">FillFrame</ref>(bsout,<sp/>B);</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++M;</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="90" refid="classMIX_1a13334cf8c60b64f5703b0333213478e9" refkind="member"><highlight class="normal"><ref refid="classMIX_1a13334cf8c60b64f5703b0333213478e9" kindref="member">MIX::WriteFrames</ref>(<ref refid="classBPM" kindref="compound">BPM</ref>&amp;<sp/>bpmm)</highlight></codeline>
-<codeline lineno="91"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>jobs_per_thread<sp/>=<sp/><ref refid="classMIX_1a8195224b3dde178a14717c9356150538" kindref="member">mixVec</ref>.size()<sp/>/<sp/><ref refid="classMIX_1a06e7de64345ce562df36eaf0eb9de6d0" kindref="member">usable_threads</ref>;</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(jobs_per_thread<sp/>==<sp/>0){</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527" kindref="member">mix_thread</ref>(</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;(<ref refid="classMIX_1a8195224b3dde178a14717c9356150538" kindref="member">mixVec</ref>[0]),</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;(bpmm),</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMIX_1a8195224b3dde178a14717c9356150538" kindref="member">mixVec</ref>.size()</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>remained_job<sp/>=<sp/><ref refid="classMIX_1a8195224b3dde178a14717c9356150538" kindref="member">mixVec</ref>.size()<sp/>-<sp/>(jobs_per_thread<sp/>*<sp/><ref refid="classMIX_1a06e7de64345ce562df36eaf0eb9de6d0" kindref="member">usable_threads</ref>);</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::thread&gt;<sp/>thread_pool;</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;(<ref refid="classMIX_1a06e7de64345ce562df36eaf0eb9de6d0" kindref="member">usable_threads</ref><sp/>-<sp/>1);<sp/>++i){</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread_pool.emplace_back(</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527" kindref="member">mix_thread</ref>,<sp/></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;(<ref refid="classMIX_1a8195224b3dde178a14717c9356150538" kindref="member">mixVec</ref>[<ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>]),</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;(bpmm),</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jobs_per_thread);</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref><sp/>+=<sp/>jobs_per_thread;</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread_pool.emplace_back(</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527" kindref="member">mix_thread</ref>,<sp/></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;(<ref refid="classMIX_1a8195224b3dde178a14717c9356150538" kindref="member">mixVec</ref>[<ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>]),</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;(bpmm),</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jobs_per_thread<sp/>+<sp/>remained_job);</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=0<sp/>;<sp/>i&lt;thread_pool.size();<sp/>++i){</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread_pool[i].join();</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd" refkind="member"><highlight class="normal"><ref refid="Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd" kindref="member">FillFrame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structBpmFragment" kindref="compound">BpmFragment</ref>&amp;<sp/>bs,<sp/><ref refid="classBPM" kindref="compound">BPM</ref>*<sp/>B)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bpmIt<sp/>=<sp/>B-&gt;<ref refid="classBPM_1af4082077eb47049bc829a428f3a4959f" kindref="member">bpmVec</ref>.<ref refid="structBpmStruct_1a4ee2251fd59f29de1284e938b616293e" kindref="member">getAffected</ref>(bs);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceFrameCalc_1a33e5bb72b55b4d3b470cd4503b96e237" kindref="member">FrameCalc::CountFrame</ref>(</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bpmIt.bar,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bpmIt.beat,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bpmIt.separate,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bs.<ref refid="structBpmFragment_1a581acc6c23ec9205f26ca09117aaafe7" kindref="member">bar</ref>,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bs.<ref refid="structBpmFragment_1a9f2f09c2a59575d2aaf85decfaca4f62" kindref="member">beat</ref>,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bs.<ref refid="structBpmFragment_1a8cb01948227beb2939e67b0aed378fab" kindref="member">separate</ref>,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bpmIt.bpm</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>)<sp/>+<sp/>bpmIt.<ref refid="structBpmFragment_1a2a8288e055869bb966d381378b908b48" kindref="member">frame_to_here</ref>;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527" refkind="member"><highlight class="normal"><ref refid="Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527" kindref="member">mix_thread</ref>(</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structMixStruct" kindref="compound">MixStruct</ref>*<sp/>M,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBPM" kindref="compound">BPM</ref>*<sp/>B,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>range</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;range;<sp/>++i){</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBpmFragment" kindref="compound">BpmFragment</ref><sp/>bsin;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBpmFragment" kindref="compound">BpmFragment</ref><sp/>bsout;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsin.<ref refid="structBpmFragment_1a581acc6c23ec9205f26ca09117aaafe7" kindref="member">bar</ref><sp/>=<sp/>M-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getBar();</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsin.<ref refid="structBpmFragment_1a9f2f09c2a59575d2aaf85decfaca4f62" kindref="member">beat</ref><sp/>=<sp/>M-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getBeat();</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsin.<ref refid="structBpmFragment_1a8cb01948227beb2939e67b0aed378fab" kindref="member">separate</ref><sp/>=<sp/>M-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getSeparate();</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsout.<ref refid="structBpmFragment_1a581acc6c23ec9205f26ca09117aaafe7" kindref="member">bar</ref><sp/>=<sp/>M-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getEbar();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsout.<ref refid="structBpmFragment_1a9f2f09c2a59575d2aaf85decfaca4f62" kindref="member">beat</ref><sp/>=<sp/>M-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getEbeat();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bsout.<ref refid="structBpmFragment_1a8cb01948227beb2939e67b0aed378fab" kindref="member">separate</ref><sp/>=<sp/>M-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getEseparate();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>M-&gt;<ref refid="structMixStruct_1a8365853d102a34b5904d7b1308baf80b" kindref="member">frame_in</ref><sp/>=<sp/><ref refid="Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd" kindref="member">FillFrame</ref>(bsin,<sp/>B);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>M-&gt;<ref refid="structMixStruct_1ac575a8968166219b32c60b339a5f035c" kindref="member">frame_out</ref><sp/>=<sp/><ref refid="Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd" kindref="member">FillFrame</ref>(bsout,<sp/>B);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++M;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classMIX_1a13334cf8c60b64f5703b0333213478e9" refkind="member"><highlight class="normal"><ref refid="classMIX_1a13334cf8c60b64f5703b0333213478e9" kindref="member">MIX::WriteFrames</ref>(<ref refid="classBPM" kindref="compound">BPM</ref>&amp;<sp/>bpmm)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>jobs_per_thread<sp/>=<sp/><ref refid="classMIX_1a8195224b3dde178a14717c9356150538" kindref="member">mixVec</ref>.size()<sp/>/<sp/><ref refid="classMIX_1a06e7de64345ce562df36eaf0eb9de6d0" kindref="member">usable_threads</ref>;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(jobs_per_thread<sp/>==<sp/>0){</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527" kindref="member">mix_thread</ref>(</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;(<ref refid="classMIX_1a8195224b3dde178a14717c9356150538" kindref="member">mixVec</ref>[0]),</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;(bpmm),</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMIX_1a8195224b3dde178a14717c9356150538" kindref="member">mixVec</ref>.size()</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>remained_job<sp/>=<sp/><ref refid="classMIX_1a8195224b3dde178a14717c9356150538" kindref="member">mixVec</ref>.size()<sp/>-<sp/>(jobs_per_thread<sp/>*<sp/><ref refid="classMIX_1a06e7de64345ce562df36eaf0eb9de6d0" kindref="member">usable_threads</ref>);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::thread&gt;<sp/>thread_pool;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;(<ref refid="classMIX_1a06e7de64345ce562df36eaf0eb9de6d0" kindref="member">usable_threads</ref><sp/>-<sp/>1);<sp/>++i){</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread_pool.emplace_back(</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527" kindref="member">mix_thread</ref>,<sp/></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;(<ref refid="classMIX_1a8195224b3dde178a14717c9356150538" kindref="member">mixVec</ref>[<ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>]),</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;(bpmm),</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jobs_per_thread);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref><sp/>+=<sp/>jobs_per_thread;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread_pool.emplace_back(</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527" kindref="member">mix_thread</ref>,<sp/></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;(<ref refid="classMIX_1a8195224b3dde178a14717c9356150538" kindref="member">mixVec</ref>[<ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>]),</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;(bpmm),</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jobs_per_thread<sp/>+<sp/>remained_job);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=0<sp/>;<sp/>i&lt;thread_pool.size();<sp/>++i){</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread_pool[i].join();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="include/db/Capnp/Translators/MixTranslator/Mix.cpp"/>
   </compounddef>

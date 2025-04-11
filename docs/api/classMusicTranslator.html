@@ -7,6 +7,7 @@
   <title>Class MusicTranslator &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
 
   
@@ -49,7 +50,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../test.html">test page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="api_root.html#class-hierarchy">Class Hierarchy</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
@@ -170,12 +171,33 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv415MusicTranslator">
 <span id="_CPPv315MusicTranslator"></span><span id="_CPPv215MusicTranslator"></span><span id="MusicTranslator"></span><span class="target" id="classMusicTranslator"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MusicTranslator</span></span></span><a class="headerlink" href="#_CPPv415MusicTranslator" title="Link to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>This Translate capnp data into cpp data sturct. </p>
+<p><div class="graphviz"><object data="../_images/graphviz-eb1eb31d5697e667e9c4c3aba49b47e165dd968c.svg" type="image/svg+xml" class="graphviz">
+<p class="warning">digraph MusicTranslator{
+     MusicTranslator -&gt; BpmStruct
+}</p></object></div>
+</p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N15MusicTranslator4ReadERK9CapReaderI20MusicBinaryCapnpDataEy">
 <span id="_CPPv3N15MusicTranslator4ReadERK9CapReaderI20MusicBinaryCapnpDataEy"></span><span id="_CPPv2N15MusicTranslator4ReadERK9CapReaderI20MusicBinaryCapnpDataEy"></span><span id="MusicTranslator::Read__CapReader:MusicBinaryCapnpData:CR.unsigned-l-l"></span><span class="target" id="classMusicTranslator_1ad7b2aaf459ad2ea5435fc99256b00e7a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Read</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classCapReader.html#_CPPv4I0E9CapReader" title="CapReader"><span class="n"><span class="pre">CapReader</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">MusicBinaryCapnpData</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">binary</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">startFrame</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15MusicTranslator4ReadERK9CapReaderI20MusicBinaryCapnpDataEy" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>reads capnp music binary data and fills <a class="reference internal" href="structBpmStruct.html#structBpmStruct"><span class="std std-ref">BpmStruct</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>binary</strong> – capnp binary data </p></li>
+<li><p><strong>startFrame</strong> – the start beat’s frame position. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N15MusicTranslator15MusicTranslatorEv">
