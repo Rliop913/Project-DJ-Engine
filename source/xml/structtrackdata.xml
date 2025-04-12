@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="structtrackdata" kind="struct" language="C++" prot="public">
     <compoundname>trackdata</compoundname>
     <includes refid="trackDB_8hpp" local="no">trackDB.hpp</includes>
-    <sectiondef kind="public-attrib">
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structtrackdata_1ad884b99bc7256d0efa79bb887638ace9" prot="public" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string trackdata::trackTitle</definition>
         <argsstring></argsstring>
         <name>trackTitle</name>
-        <qualifiedname>trackdata::trackTitle</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,7 +22,6 @@
         <definition>BIN trackdata::mixBinary</definition>
         <argsstring></argsstring>
         <name>mixBinary</name>
-        <qualifiedname>trackdata::mixBinary</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -37,7 +35,6 @@
         <definition>BIN trackdata::noteBinary</definition>
         <argsstring></argsstring>
         <name>noteBinary</name>
-        <qualifiedname>trackdata::noteBinary</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -51,7 +48,6 @@
         <definition>std::string trackdata::cachedMixList</definition>
         <argsstring></argsstring>
         <name>cachedMixList</name>
-        <qualifiedname>trackdata::cachedMixList</qualifiedname>
         <briefdescription>
 <para>Included music list. </para>
         </briefdescription>
@@ -61,14 +57,13 @@
         </inbodydescription>
         <location file="include/db/trackDB.hpp" line="17" column="17" bodyfile="include/db/trackDB.hpp" bodystart="17" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="structtrackdata_1ad6d055f069e5dc899f7777a4f95ce001" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>trackdata::trackdata</definition>
         <argsstring>(stmt *dbstate)</argsstring>
         <name>trackdata</name>
-        <qualifiedname>trackdata::trackdata</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> *</type>
           <declname>dbstate</declname>
@@ -97,7 +92,6 @@
         <definition>trackdata::trackdata</definition>
         <argsstring>(const std::string &amp;trackTitle__=&quot;&quot;)</argsstring>
         <name>trackdata</name>
-        <qualifiedname>trackdata::trackdata</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>trackTitle__</declname>
@@ -128,7 +122,6 @@
         <definition>bool trackdata::GenSearchSTMT</definition>
         <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
         <name>GenSearchSTMT</name>
-        <qualifiedname>trackdata::GenSearchSTMT</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
           <declname>dbstate</declname>
@@ -173,7 +166,6 @@
         <definition>bool trackdata::GenInsertSTMT</definition>
         <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
         <name>GenInsertSTMT</name>
-        <qualifiedname>trackdata::GenInsertSTMT</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
           <declname>dbstate</declname>
@@ -213,38 +205,38 @@
         </inbodydescription>
         <location file="include/db/trackDB.hpp" line="56" column="10" bodyfile="include/db/trackDB.cpp" bodystart="53" bodyend="69"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>the music meta data&apos;s struct </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3">
-        <label>std::basic_string&lt; Char &gt;</label>
+      <node id="4">
+        <label>std::basic_string&lt; char &gt;</label>
       </node>
       <node id="2">
-        <label>std::string</label>
-        <childnode refid="3" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4">
         <label>std::vector&lt; u_int8_t &gt;</label>
       </node>
       <node id="1">
         <label>trackdata</label>
         <link refid="structtrackdata"/>
         <childnode refid="2" relation="usage">
+          <edgelabel>noteBinary</edgelabel>
+          <edgelabel>mixBinary</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
           <edgelabel>cachedMixList</edgelabel>
           <edgelabel>trackTitle</edgelabel>
         </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>mixBinary</edgelabel>
-          <edgelabel>noteBinary</edgelabel>
+      </node>
+      <node id="3">
+        <label>std::string</label>
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/db/trackDB.hpp" line="11" column="1" bodyfile="include/db/trackDB.hpp" bodystart="11" bodyend="57"/>
+    <location file="include/db/trackDB.hpp" line="11" column="16" bodyfile="include/db/trackDB.hpp" bodystart="11" bodyend="57"/>
     <listofallmembers>
       <member refid="structtrackdata_1a840062435bf79055fcebf7aee80ae8e9" prot="public" virt="non-virtual"><scope>trackdata</scope><name>cachedMixList</name></member>
       <member refid="structtrackdata_1ab8894b76b74769bec56ce7ee0db0e3a2" prot="public" virt="non-virtual"><scope>trackdata</scope><name>GenInsertSTMT</name></member>

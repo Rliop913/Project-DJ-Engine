@@ -66,5 +66,5 @@ Typedefs
 --------
 
 
-- :ref:`exhale_typedef_NoteTranslator_8hpp_1a8bb5814b0656edc5048ad81a0fbe93b0`
+- :ref:`exhale_typedef_NoteTranslator_8hpp_1ac1802569be3e88466f403c2d2aac0e3c`
 

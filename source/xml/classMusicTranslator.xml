@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="classMusicTranslator" kind="class" language="C++" prot="public">
     <compoundname>MusicTranslator</compoundname>
     <includes refid="MusicTranslator_8hpp" local="no">MusicTranslator.hpp</includes>
-    <sectiondef kind="public-attrib">
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classMusicTranslator_1a7e172da1c6f719f934d2d4f033294862" prot="public" static="no" mutable="no">
         <type><ref refid="structBpmStruct" kindref="compound">BpmStruct</ref></type>
         <definition>BpmStruct MusicTranslator::bpms</definition>
         <argsstring></argsstring>
         <name>bpms</name>
-        <qualifiedname>MusicTranslator::bpms</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -18,14 +17,13 @@
         </inbodydescription>
         <location file="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp" line="21" column="15" bodyfile="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp" bodystart="21" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="classMusicTranslator_1ad7b2aaf459ad2ea5435fc99256b00e7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool MusicTranslator::Read</definition>
         <argsstring>(const CapReader&lt; MusicBinaryCapnpData &gt; &amp;binary, unsigned long long startFrame)</argsstring>
         <name>Read</name>
-        <qualifiedname>MusicTranslator::Read</qualifiedname>
         <param>
           <type>const <ref refid="classCapReader" kindref="compound">CapReader</ref>&lt; MusicBinaryCapnpData &gt; &amp;</type>
           <declname>binary</declname>
@@ -70,7 +68,6 @@
         <definition>MusicTranslator::MusicTranslator</definition>
         <argsstring>()=default</argsstring>
         <name>MusicTranslator</name>
-        <qualifiedname>MusicTranslator::MusicTranslator</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -84,7 +81,6 @@
         <definition>MusicTranslator::~MusicTranslator</definition>
         <argsstring>()=default</argsstring>
         <name>~MusicTranslator</name>
-        <qualifiedname>MusicTranslator::~MusicTranslator</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -93,7 +89,7 @@
         </inbodydescription>
         <location file="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp" line="33" column="5"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>This Translate capnp data into cpp data sturct. </para>
     </briefdescription>
@@ -110,18 +106,18 @@ digraph MusicTranslator{
         <label>BpmFragment</label>
         <link refid="structBpmFragment"/>
       </node>
-      <node id="2">
-        <label>BpmStruct</label>
-        <link refid="structBpmStruct"/>
-        <childnode refid="3" relation="usage">
-          <edgelabel>fragments</edgelabel>
-        </childnode>
-      </node>
       <node id="1">
         <label>MusicTranslator</label>
         <link refid="classMusicTranslator"/>
         <childnode refid="2" relation="usage">
           <edgelabel>bpms</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>BpmStruct</label>
+        <link refid="structBpmStruct"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>fragments</edgelabel>
         </childnode>
       </node>
       <node id="3">
@@ -131,7 +127,7 @@ digraph MusicTranslator{
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp" line="19" column="1" bodyfile="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp" bodystart="19" bodyend="34"/>
+    <location file="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp" line="19" column="22" bodyfile="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp" bodystart="19" bodyend="34"/>
     <listofallmembers>
       <member refid="classMusicTranslator_1a7e172da1c6f719f934d2d4f033294862" prot="public" virt="non-virtual"><scope>MusicTranslator</scope><name>bpms</name></member>
       <member refid="classMusicTranslator_1acc12082c24de6d41efafacfd2e9d5437" prot="public" virt="non-virtual"><scope>MusicTranslator</scope><name>MusicTranslator</name></member>

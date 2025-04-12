@@ -1,10 +1,41 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="Mix_8cpp" kind="file" language="C++">
     <compoundname>Mix.cpp</compoundname>
     <includes refid="Mix_8hpp" local="yes">Mix.hpp</includes>
     <includes refid="Bpm_8hpp" local="yes">Bpm.hpp</includes>
     <incdepgraph>
+      <node id="12">
+        <label>capnp/serialize.h</label>
+      </node>
+      <node id="8">
+        <label>cmath</label>
+      </node>
+      <node id="13">
+        <label>MixBinary.capnp.h</label>
+      </node>
+      <node id="19">
+        <label>string</label>
+      </node>
+      <node id="18">
+        <label>Bpm.hpp</label>
+        <link refid="Bpm_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>hwy/aligned_allocator.h</label>
+      </node>
       <node id="9">
         <label>CapnpBinary.hpp</label>
         <link refid="CapnpBinary_8hpp"/>
@@ -23,6 +54,32 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
+      <node id="10">
+        <label>optional</label>
+      </node>
+      <node id="5">
+        <label>vector</label>
+      </node>
+      <node id="1">
+        <label>include/db/Capnp/Translators/MixTranslator/Mix.cpp</label>
+        <link refid="Mix_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>NoteBinary.capnp.h</label>
+      </node>
+      <node id="6">
+        <label>mutex</label>
+      </node>
+      <node id="16">
+        <label>hwy/highway.h</label>
+      </node>
+      <node id="4">
+        <label>thread</label>
+      </node>
       <node id="7">
         <label>FrameCalc.hpp</label>
         <link refid="FrameCalc_8hpp"/>
@@ -35,30 +92,6 @@
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
-        </childnode>
-      </node>
-      <node id="18">
-        <label>Bpm.hpp</label>
-        <link refid="Bpm_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>include/db/Capnp/Translators/MixTranslator/Mix.cpp</label>
-        <link refid="Mix_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -75,14 +108,8 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="13">
-        <label>MixBinary.capnp.h</label>
-      </node>
       <node id="14">
         <label>MusicBinary.capnp.h</label>
-      </node>
-      <node id="15">
-        <label>NoteBinary.capnp.h</label>
       </node>
       <node id="3">
         <label>algorithm</label>
@@ -90,35 +117,8 @@
       <node id="11">
         <label>capnp/message.h</label>
       </node>
-      <node id="12">
-        <label>capnp/serialize.h</label>
-      </node>
-      <node id="8">
-        <label>cmath</label>
-      </node>
-      <node id="17">
-        <label>hwy/aligned_allocator.h</label>
-      </node>
-      <node id="16">
-        <label>hwy/highway.h</label>
-      </node>
-      <node id="6">
-        <label>mutex</label>
-      </node>
-      <node id="10">
-        <label>optional</label>
-      </node>
-      <node id="19">
-        <label>string</label>
-      </node>
-      <node id="4">
-        <label>thread</label>
-      </node>
-      <node id="5">
-        <label>vector</label>
-      </node>
     </incdepgraph>
-    <sectiondef kind="func">
+      <sectiondef kind="func">
       <memberdef kind="function" id="Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned long</type>
         <definition>unsigned long FillFrame</definition>
@@ -213,7 +213,7 @@
         </inbodydescription>
         <location file="include/db/Capnp/Translators/MixTranslator/Mix.cpp" line="82" column="1" bodyfile="include/db/Capnp/Translators/MixTranslator/Mix.cpp" bodystart="82" bodyend="101"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -269,7 +269,7 @@
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="49"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="59" refid="Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd" refkind="member"><highlight class="normal"><ref refid="Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd" kindref="member">FillFrame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structBpmFragment" kindref="compound">BpmFragment</ref>&amp;<sp/>bs,<sp/><ref refid="classBPM" kindref="compound">BPM</ref>*<sp/>B)</highlight></codeline>
 <codeline lineno="60"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bpmIt<sp/>=<sp/>B-&gt;<ref refid="classBPM_1af4082077eb47049bc829a428f3a4959f" kindref="member">bpmVec</ref>.<ref refid="structBpmStruct_1a4ee2251fd59f29de1284e938b616293e" kindref="member">getAffected</ref>(bs);</highlight></codeline>
@@ -282,10 +282,10 @@
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bs.<ref refid="structBpmFragment_1a9f2f09c2a59575d2aaf85decfaca4f62" kindref="member">beat</ref>,</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bs.<ref refid="structBpmFragment_1a8cb01948227beb2939e67b0aed378fab" kindref="member">separate</ref>,</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bpmIt.bpm</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>)<sp/>+<sp/>bpmIt.<ref refid="structBpmFragment_1a2a8288e055869bb966d381378b908b48" kindref="member">frame_to_here</ref>;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>)<sp/>+<sp/>bpmIt.frame_to_here;</highlight></codeline>
 <codeline lineno="72"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="82" refid="Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527" refkind="member"><highlight class="normal"><ref refid="Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527" kindref="member">mix_thread</ref>(</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structMixStruct" kindref="compound">MixStruct</ref>*<sp/>M,</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBPM" kindref="compound">BPM</ref>*<sp/>B,</highlight></codeline>

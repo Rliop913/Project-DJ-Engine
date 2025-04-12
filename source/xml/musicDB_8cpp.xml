@@ -1,9 +1,21 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="musicDB_8cpp" kind="file" language="C++">
     <compoundname>musicDB.cpp</compoundname>
     <includes refid="musicDB_8hpp" local="yes">musicDB.hpp</includes>
     <incdepgraph>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="5">
+        <label>sqlite3.h</label>
+      </node>
+      <node id="1">
+        <label>include/db/musicDB.cpp</label>
+        <link refid="musicDB_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
       <node id="6">
         <label>dbState.hpp</label>
         <link refid="dbState_8hpp"/>
@@ -14,11 +26,8 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="1">
-        <label>include/db/musicDB.cpp</label>
-        <link refid="musicDB_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
+      <node id="4">
+        <label>vector</label>
       </node>
       <node id="2">
         <label>musicDB.hpp</label>
@@ -32,17 +41,8 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>sqlite3.h</label>
-      </node>
-      <node id="3">
-        <label>string</label>
-      </node>
-      <node id="4">
-        <label>vector</label>
-      </node>
     </incdepgraph>
-    <sectiondef kind="define">
+      <sectiondef kind="define">
       <memberdef kind="define" id="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" prot="public" static="no">
         <name>CHK_BIND</name>
         <param><defname>res</defname></param>
@@ -55,9 +55,9 @@ return false;\
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/musicDB.cpp" line="5" column="9" bodyfile="include/db/musicDB.cpp" bodystart="5" bodyend="8"/>
+        <location file="include/db/musicDB.cpp" line="5" column="9" bodyfile="include/db/musicDB.cpp" bodystart="5" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -91,10 +91,10 @@ return false;\
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>musicPath__,</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>bpm__</highlight></codeline>
 <codeline lineno="28"><highlight class="normal">):</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><ref refid="structmusdata_1a79bba5e62dddb894f040a563c5927222" kindref="member">title</ref>(title__),</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><ref refid="structmusdata_1accc9d5168dbbdbbc65c4bef04568d470" kindref="member">composer</ref>(composer__),</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><ref refid="structmusdata_1a4c559e6ff43eba8a98d37d07a0447856" kindref="member">musicPath</ref>(musicPath__),</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><ref refid="structmusdata_1a4739e5c5967894bb4a5d6566b8e2a422" kindref="member">bpm</ref>(bpm__)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">title(title__),</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">composer(composer__),</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">musicPath(musicPath__),</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">bpm(bpm__)</highlight></codeline>
 <codeline lineno="33"><highlight class="normal">{}</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>

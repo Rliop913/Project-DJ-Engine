@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="classMusicControlPannel" kind="class" language="C++" prot="public">
     <compoundname>MusicControlPannel</compoundname>
     <includes refid="MusicControlPannel_8hpp" local="no">MusicControlPannel.hpp</includes>
-    <sectiondef kind="private-attrib">
+      <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" prot="private" static="no" mutable="no">
         <type><ref refid="MusicControlPannel_8hpp_1ab088038ca92417562a68857146129830" kindref="member">LOADS</ref></type>
         <definition>LOADS MusicControlPannel::deck</definition>
         <argsstring></argsstring>
         <name>deck</name>
-        <qualifiedname>MusicControlPannel::deck</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,7 +22,6 @@
         <definition>unsigned long MusicControlPannel::fsize</definition>
         <argsstring></argsstring>
         <name>fsize</name>
-        <qualifiedname>MusicControlPannel::fsize</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -37,7 +35,6 @@
         <definition>std::vector&lt;float&gt; MusicControlPannel::L</definition>
         <argsstring></argsstring>
         <name>L</name>
-        <qualifiedname>MusicControlPannel::L</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -51,7 +48,6 @@
         <definition>std::vector&lt;float&gt; MusicControlPannel::R</definition>
         <argsstring></argsstring>
         <name>R</name>
-        <qualifiedname>MusicControlPannel::R</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -65,7 +61,6 @@
         <definition>float* MusicControlPannel::FaustStyle[2]</definition>
         <argsstring>[2]</argsstring>
         <name>FaustStyle</name>
-        <qualifiedname>MusicControlPannel::FaustStyle</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -75,11 +70,10 @@
         <location file="include/audioRender/ManualMix/MusicControlPannel.hpp" line="39" column="11" bodyfile="include/audioRender/ManualMix/MusicControlPannel.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classMusicControlPannel_1aa9c6be0915123d9a4a24681b04a756f7" prot="private" static="no" mutable="no">
-        <type><ref refid="FrameCalc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref></type>
+        <type><ref refid="FrameCalc_8hpp_1afaba0c56b304d05ee34bd4cc22319217" kindref="member">SIMD_FLOAT</ref></type>
         <definition>SIMD_FLOAT MusicControlPannel::tempFrames</definition>
         <argsstring></argsstring>
         <name>tempFrames</name>
-        <qualifiedname>MusicControlPannel::tempFrames</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -88,14 +82,13 @@
         </inbodydescription>
         <location file="include/audioRender/ManualMix/MusicControlPannel.hpp" line="40" column="16" bodyfile="include/audioRender/ManualMix/MusicControlPannel.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="classMusicControlPannel_1a80888f4f40256430b8482a42fb2f6d8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>int MusicControlPannel::LoadMusic</definition>
         <argsstring>(const musdata &amp;Mus)</argsstring>
         <name>LoadMusic</name>
-        <qualifiedname>MusicControlPannel::LoadMusic</qualifiedname>
         <param>
           <type>const <ref refid="structmusdata" kindref="compound">musdata</ref> &amp;</type>
           <declname>Mus</declname>
@@ -113,7 +106,6 @@
         <definition>bool MusicControlPannel::CueMusic</definition>
         <argsstring>(const TITLE &amp;title, const unsigned long long newPos)</argsstring>
         <name>CueMusic</name>
-        <qualifiedname>MusicControlPannel::CueMusic</qualifiedname>
         <param>
           <type>const <ref refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" kindref="member">TITLE</ref> &amp;</type>
           <declname>title</declname>
@@ -135,7 +127,6 @@
         <definition>bool MusicControlPannel::SetMusic</definition>
         <argsstring>(const TITLE &amp;title, const bool onOff)</argsstring>
         <name>SetMusic</name>
-        <qualifiedname>MusicControlPannel::SetMusic</qualifiedname>
         <param>
           <type>const <ref refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" kindref="member">TITLE</ref> &amp;</type>
           <declname>title</declname>
@@ -157,7 +148,6 @@
         <definition>LOADED_LIST MusicControlPannel::GetLoadedMusicList</definition>
         <argsstring>()</argsstring>
         <name>GetLoadedMusicList</name>
-        <qualifiedname>MusicControlPannel::GetLoadedMusicList</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -171,7 +161,6 @@
         <definition>bool MusicControlPannel::UnloadMusic</definition>
         <argsstring>(const TITLE &amp;title)</argsstring>
         <name>UnloadMusic</name>
-        <qualifiedname>MusicControlPannel::UnloadMusic</qualifiedname>
         <param>
           <type>const <ref refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" kindref="member">TITLE</ref> &amp;</type>
           <declname>title</declname>
@@ -189,7 +178,6 @@
         <definition>bool MusicControlPannel::GetPCMFrames</definition>
         <argsstring>(float *array, const unsigned long FrameSize)</argsstring>
         <name>GetPCMFrames</name>
-        <qualifiedname>MusicControlPannel::GetPCMFrames</qualifiedname>
         <param>
           <type>float *</type>
           <declname>array</declname>
@@ -211,7 +199,6 @@
         <definition>FXControlPannel * MusicControlPannel::getFXHandle</definition>
         <argsstring>(const TITLE &amp;title)</argsstring>
         <name>getFXHandle</name>
-        <qualifiedname>MusicControlPannel::getFXHandle</qualifiedname>
         <param>
           <type>const <ref refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" kindref="member">TITLE</ref> &amp;</type>
           <declname>title</declname>
@@ -229,7 +216,6 @@
         <definition>MusicControlPannel::MusicControlPannel</definition>
         <argsstring>(const unsigned long FrameSize)</argsstring>
         <name>MusicControlPannel</name>
-        <qualifiedname>MusicControlPannel::MusicControlPannel</qualifiedname>
         <param>
           <type>const unsigned long</type>
           <declname>FrameSize</declname>
@@ -247,7 +233,6 @@
         <definition>MusicControlPannel::~MusicControlPannel</definition>
         <argsstring>()</argsstring>
         <name>~MusicControlPannel</name>
-        <qualifiedname>MusicControlPannel::~MusicControlPannel</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -256,37 +241,62 @@
         </inbodydescription>
         <location file="include/audioRender/ManualMix/MusicControlPannel.hpp" line="52" column="5" bodyfile="include/audioRender/ManualMix/MusicControlPannel.cpp" bodystart="4" bodyend="7"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
+      <node id="2">
+        <label>std::vector&lt; float, hwy::AlignedAllocator&lt; float &gt; &gt;</label>
+      </node>
+      <node id="3">
+        <label>std::vector&lt; float &gt;</label>
+      </node>
+      <node id="7">
+        <label>MusicOnDeck</label>
+        <link refid="structMusicOnDeck"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>fxP</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::map&lt; TITLE, MusicOnDeck &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>std::basic_string&lt; char &gt;</label>
+      </node>
       <node id="1">
         <label>MusicControlPannel</label>
         <link refid="classMusicControlPannel"/>
         <childnode refid="2" relation="usage">
-          <edgelabel>deck</edgelabel>
+          <edgelabel>tempFrames</edgelabel>
         </childnode>
         <childnode refid="3" relation="usage">
           <edgelabel>L</edgelabel>
           <edgelabel>R</edgelabel>
         </childnode>
         <childnode refid="4" relation="usage">
-          <edgelabel>tempFrames</edgelabel>
+          <edgelabel>deck</edgelabel>
         </childnode>
       </node>
-      <node id="2">
-        <label>std::map&lt; TITLE, MusicOnDeck &gt;</label>
+      <node id="8">
+        <label>FXControlPannel</label>
+        <link refid="classFXControlPannel"/>
       </node>
-      <node id="3">
-        <label>std::vector&lt; float &gt;</label>
-      </node>
-      <node id="4">
-        <label>std::vector&lt; float, hwy::AlignedAllocator&lt; float &gt; &gt;</label>
+      <node id="5">
+        <label>std::string</label>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/audioRender/ManualMix/MusicControlPannel.hpp" line="32" column="1" bodyfile="include/audioRender/ManualMix/MusicControlPannel.hpp" bodystart="32" bodyend="54"/>
+    <location file="include/audioRender/ManualMix/MusicControlPannel.hpp" line="32" column="25" bodyfile="include/audioRender/ManualMix/MusicControlPannel.hpp" bodystart="32" bodyend="54"/>
     <listofallmembers>
       <member refid="classMusicControlPannel_1a76b9f68b3d3a4fd5b807e4ef9c541e85" prot="public" virt="non-virtual"><scope>MusicControlPannel</scope><name>CueMusic</name></member>
       <member refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" prot="private" virt="non-virtual"><scope>MusicControlPannel</scope><name>deck</name></member>

@@ -91,7 +91,7 @@ this is the handler of musics.
 
 .. code-block:: cpp
 
-    engine->Activate();
+    engine->player->Activate();
 
 
 .. doxygenfunction:: audioPlayer::Deactivate
@@ -99,21 +99,21 @@ this is the handler of musics.
 
 .. code-block:: cpp
 
-    engine->Deactivate();
+    engine->player->Deactivate();
 
 .. doxygenfunction:: audioPlayer::GetFXControlPannel
     :project: Project_DJ_Engine
 
 .. code-block:: cpp
 
-    auto FXController = engine->GetFXControlPannel();
+    auto FXController = engine->player->GetFXControlPannel();
 
 .. doxygenfunction:: audioPlayer::GetMusicControlPannel
     :project: Project_DJ_Engine
 
 .. code-block:: cpp
 
-    auto MusicController = engine->GetMusicControlPannel();
+    auto MusicController = engine->player->GetMusicControlPannel();
 
 
 Handle FXControlPannel
@@ -140,7 +140,7 @@ Handle FXControlPannel
         << std::endl;
     }
     double FXValue = 2.0;
-    argHandler["FX key name"](FXValue);
+    argHandler["FX key name"](FXValue);ß
 
 
 .. doxygenfunction:: FXControlPannel::checkSomethingOn

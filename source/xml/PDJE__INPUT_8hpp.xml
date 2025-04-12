@@ -1,11 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="PDJE__INPUT_8hpp" kind="file" language="C++">
     <compoundname>PDJE_INPUT.hpp</compoundname>
     <includes local="no">string</includes>
     <includes local="no">vector</includes>
     <includedby refid="LINUX__INPUT_8hpp" local="yes">include/input/linux/LINUX_INPUT.hpp</includedby>
     <incdepgraph>
+      <node id="2">
+        <label>string</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
       <node id="1">
         <label>include/input/PDJE_INPUT.hpp</label>
         <link refid="PDJE__INPUT_8hpp"/>
@@ -14,23 +20,23 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="2">
-        <label>string</label>
-      </node>
-      <node id="3">
-        <label>vector</label>
-      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1">
-        <label>include/input/PDJE_INPUT.hpp</label>
-        <link refid="PDJE__INPUT_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
+      <node id="7">
+        <label>include/tests/INPUT_TESTS/linux_I_WAKER.cpp</label>
+        <link refid="linux__I__WAKER_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/tests/INPUT_TESTS/evdevtest.cpp</label>
+        <link refid="evdevtest_8cpp"/>
       </node>
       <node id="3">
         <label>include/input/linux/LINUX_I.cpp</label>
         <link refid="LINUX__I_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/input/linux/LINUX_SUDO_GETTER.cpp</label>
+        <link refid="LINUX__SUDO__GETTER_8cpp"/>
       </node>
       <node id="2">
         <label>include/input/linux/LINUX_INPUT.hpp</label>
@@ -46,27 +52,21 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="4">
-        <label>include/input/linux/LINUX_SUDO_GETTER.cpp</label>
-        <link refid="LINUX__SUDO__GETTER_8cpp"/>
-      </node>
-      <node id="5">
-        <label>include/tests/INPUT_TESTS/evdevtest.cpp</label>
-        <link refid="evdevtest_8cpp"/>
-      </node>
       <node id="6">
         <label>include/tests/INPUT_TESTS/linux_I_WAITER.cpp</label>
         <link refid="linux__I__WAITER_8cpp"/>
       </node>
-      <node id="7">
-        <label>include/tests/INPUT_TESTS/linux_I_WAKER.cpp</label>
-        <link refid="linux__I__WAKER_8cpp"/>
+      <node id="1">
+        <label>include/input/PDJE_INPUT.hpp</label>
+        <link refid="PDJE__INPUT_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="structDuckTypeDevice" prot="public">DuckTypeDevice</innerclass>
     <innerclass refid="structDeviceData" prot="public">DeviceData</innerclass>
     <innerclass refid="classInputEngine" prot="public">InputEngine</innerclass>
-    <sectiondef kind="typedef">
+      <sectiondef kind="typedef">
       <memberdef kind="typedef" id="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" prot="public" static="no">
         <type>std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt;</type>
         <definition>using DEV_LIST =  std::vector&lt;DeviceData&gt;</definition>
@@ -80,7 +80,7 @@
         </inbodydescription>
         <location file="include/input/PDJE_INPUT.hpp" line="18" column="1" bodyfile="include/input/PDJE_INPUT.hpp" bodystart="18" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -103,22 +103,22 @@
 <codeline lineno="15" refid="structDeviceData_1a21ae13203c74ead91d1fef649451dd7e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structDuckTypeDevice" kindref="compound">DuckTypeDevice</ref><sp/><ref refid="structDeviceData_1a21ae13203c74ead91d1fef649451dd7e" kindref="member">deviceType</ref>;</highlight></codeline>
 <codeline lineno="16"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18" refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="LINUX__SUDO__GETTER_8cpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref><sp/>=<sp/>std::vector&lt;DeviceData&gt;;</highlight></codeline>
+<codeline lineno="18" refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="LINUX__SUDO__GETTER_8cpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref><sp/>=<sp/>std::vector&lt;DeviceData&gt;;</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>OS_INPUT&gt;</highlight></codeline>
-<codeline lineno="21" refid="classInputEngine" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classInputEngine_1aa1a1f4dc0504dea603a99493f1dd5d96" kindref="member">InputEngine</ref>{</highlight></codeline>
+<codeline lineno="21" refid="classInputEngine" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classInputEngine" kindref="compound">InputEngine</ref>{</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="23" refid="classInputEngine_1afc2f4685d3d93a2a8e4ae8b623cb91f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>OS_INPUT<sp/><ref refid="classInputEngine_1afc2f4685d3d93a2a8e4ae8b623cb91f2" kindref="member">osAPI</ref>;</highlight></codeline>
-<codeline lineno="24" refid="classInputEngine_1aef95f8bda007f7b4384407652551c197" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref><sp/><ref refid="classInputEngine_1aef95f8bda007f7b4384407652551c197" kindref="member">activated_devices</ref>;</highlight></codeline>
+<codeline lineno="24" refid="classInputEngine_1aef95f8bda007f7b4384407652551c197" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="LINUX__SUDO__GETTER_8cpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref><sp/><ref refid="classInputEngine_1aef95f8bda007f7b4384407652551c197" kindref="member">activated_devices</ref>;</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="26" refid="classInputEngine_1aa1a1f4dc0504dea603a99493f1dd5d96" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classInputEngine_1aa1a1f4dc0504dea603a99493f1dd5d96" kindref="member">InputEngine</ref>();</highlight></codeline>
-<codeline lineno="27" refid="classInputEngine_1a89ec3948f4486e540a3100573da3596d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classInputEngine_1a89ec3948f4486e540a3100573da3596d" kindref="member">~InputEngine</ref>();</highlight></codeline>
-<codeline lineno="28" refid="classInputEngine_1a6ab388ca2b5201317bc4ae9ed962c61f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classInputEngine_1a6ab388ca2b5201317bc4ae9ed962c61f" kindref="member">StoreDeviceList</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref>&amp;<sp/>list);</highlight></codeline>
-<codeline lineno="29" refid="classInputEngine_1a6580e9039a5a8b0fb82994f5c047d251" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref><sp/><ref refid="classInputEngine_1a6580e9039a5a8b0fb82994f5c047d251" kindref="member">SearchDevices</ref>();</highlight></codeline>
-<codeline lineno="30" refid="classInputEngine_1a5c33d8f9cef14c75d3530c0c3cf2025e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref><sp/><ref refid="classInputEngine_1a5c33d8f9cef14c75d3530c0c3cf2025e" kindref="member">GetStoredDeviceList</ref>();</highlight></codeline>
-<codeline lineno="31" refid="classInputEngine_1aa2707e0607f051b3ec3664b307811fe3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classInputEngine_1aa2707e0607f051b3ec3664b307811fe3" kindref="member">setDevices</ref>(<ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref>);</highlight></codeline>
-<codeline lineno="32" refid="classInputEngine_1a2f9b43ab4a6669dffb6b8ace8f4105fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classInputEngine_1a2f9b43ab4a6669dffb6b8ace8f4105fe" kindref="member">ActivateEngine</ref>();</highlight></codeline>
-<codeline lineno="33" refid="classInputEngine_1ac2daf05e8f745e44a7d71a58ce02cc40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classInputEngine_1ac2daf05e8f745e44a7d71a58ce02cc40" kindref="member">StopEngine</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classInputEngine_1aa1a1f4dc0504dea603a99493f1dd5d96" kindref="member">InputEngine</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classInputEngine_1a89ec3948f4486e540a3100573da3596d" kindref="member">~InputEngine</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classInputEngine_1a6ab388ca2b5201317bc4ae9ed962c61f" kindref="member">StoreDeviceList</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="LINUX__SUDO__GETTER_8cpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref>&amp;<sp/>list);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="LINUX__SUDO__GETTER_8cpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref><sp/><ref refid="classInputEngine_1a6580e9039a5a8b0fb82994f5c047d251" kindref="member">SearchDevices</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="LINUX__SUDO__GETTER_8cpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref><sp/><ref refid="classInputEngine_1a5c33d8f9cef14c75d3530c0c3cf2025e" kindref="member">GetStoredDeviceList</ref>();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classInputEngine_1aa2707e0607f051b3ec3664b307811fe3" kindref="member">setDevices</ref>(<ref refid="LINUX__SUDO__GETTER_8cpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref>);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classInputEngine_1a2f9b43ab4a6669dffb6b8ace8f4105fe" kindref="member">ActivateEngine</ref>();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classInputEngine_1ac2daf05e8f745e44a7d71a58ce02cc40" kindref="member">StopEngine</ref>();</highlight></codeline>
 <codeline lineno="34"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="include/input/PDJE_INPUT.hpp"/>

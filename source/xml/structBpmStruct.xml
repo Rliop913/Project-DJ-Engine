@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="structBpmStruct" kind="struct" language="C++" prot="public">
     <compoundname>BpmStruct</compoundname>
     <includes refid="FrameCalc_8hpp" local="no">FrameCalc.hpp</includes>
-    <sectiondef kind="public-attrib">
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structBpmStruct_1aa27a7fdda1a74bac6d5a61b459c2ee45" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="structBpmFragment" kindref="compound">BpmFragment</ref> &gt;</type>
         <definition>std::vector&lt;BpmFragment&gt; BpmStruct::fragments</definition>
         <argsstring></argsstring>
         <name>fragments</name>
-        <qualifiedname>BpmStruct::fragments</qualifiedname>
         <briefdescription>
 <para>the fragment data. </para>
         </briefdescription>
@@ -19,14 +18,13 @@
         </inbodydescription>
         <location file="include/db/Capnp/Translators/FrameCalc.hpp" line="80" column="17" bodyfile="include/db/Capnp/Translators/FrameCalc.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="structBpmStruct_1a6584ff4a4600ca39f9de83525f20f9d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void BpmStruct::sortFragment</definition>
         <argsstring>()</argsstring>
         <name>sortFragment</name>
-        <qualifiedname>BpmStruct::sortFragment</qualifiedname>
         <briefdescription>
 <para>Sort the fragments Ascending by the bar-beat approx. </para>
         </briefdescription>
@@ -41,7 +39,6 @@
         <definition>bool BpmStruct::calcFrame</definition>
         <argsstring>(unsigned long long StartPos=0)</argsstring>
         <name>calcFrame</name>
-        <qualifiedname>BpmStruct::calcFrame</qualifiedname>
         <param>
           <type>unsigned long long</type>
           <declname>StartPos</declname>
@@ -75,7 +72,6 @@
         <definition>const BpmFragment &amp; BpmStruct::getAffected</definition>
         <argsstring>(const BpmFragment &amp;searchFrag) const</argsstring>
         <name>getAffected</name>
-        <qualifiedname>BpmStruct::getAffected</qualifiedname>
         <param>
           <type>const <ref refid="structBpmFragment" kindref="compound">BpmFragment</ref> &amp;</type>
           <declname>searchFrag</declname>
@@ -106,7 +102,6 @@
         <definition>const BpmFragment &amp; BpmStruct::getAffected</definition>
         <argsstring>(const unsigned long long searchFrame) const</argsstring>
         <name>getAffected</name>
-        <qualifiedname>BpmStruct::getAffected</qualifiedname>
         <param>
           <type>const unsigned long long</type>
           <declname>searchFrame</declname>
@@ -137,7 +132,6 @@
         <definition>const std::vector&lt; const BpmFragment * &gt; BpmStruct::getAffectedList</definition>
         <argsstring>(const unsigned long long searchStartFrame, const unsigned long long searchEndFrame) const</argsstring>
         <name>getAffectedList</name>
-        <qualifiedname>BpmStruct::getAffectedList</qualifiedname>
         <param>
           <type>const unsigned long long</type>
           <declname>searchStartFrame</declname>
@@ -175,7 +169,7 @@
         </inbodydescription>
         <location file="include/db/Capnp/Translators/FrameCalc.hpp" line="115" column="5" bodyfile="include/db/Capnp/Translators/FrameCalc.cpp" bodystart="158" bodyend="203"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>contains BpmFragments. and calculate with fragments. </para>
     </briefdescription>
@@ -200,7 +194,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/db/Capnp/Translators/FrameCalc.hpp" line="78" column="1" bodyfile="include/db/Capnp/Translators/FrameCalc.hpp" bodystart="78" bodyend="119"/>
+    <location file="include/db/Capnp/Translators/FrameCalc.hpp" line="78" column="16" bodyfile="include/db/Capnp/Translators/FrameCalc.hpp" bodystart="78" bodyend="119"/>
     <listofallmembers>
       <member refid="structBpmStruct_1a1d9683a4aeaeb6e21fdd20fbb094ea49" prot="public" virt="non-virtual"><scope>BpmStruct</scope><name>calcFrame</name></member>
       <member refid="structBpmStruct_1aa27a7fdda1a74bac6d5a61b459c2ee45" prot="public" virt="non-virtual"><scope>BpmStruct</scope><name>fragments</name></member>

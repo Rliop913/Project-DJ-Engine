@@ -12,9 +12,9 @@ Inheritance Relationships
 Derived Types
 *************
 
-- ``public FaustDType< FaustInterpolate >`` (:ref:`exhale_class_classFaustDType`)
-- ``public EQ_PDJE`` (:ref:`exhale_class_classEQ__PDJE`)
 - ``public Echo_PDJE`` (:ref:`exhale_class_classEcho__PDJE`)
+- ``public EQ_PDJE`` (:ref:`exhale_class_classEQ__PDJE`)
+- ``public FaustDType< FaustInterpolate >`` (:ref:`exhale_class_classFaustDType`)
 - ``public Filter_PDJE`` (:ref:`exhale_class_classFilter__PDJE`)
 - ``public Flanger_PDJE`` (:ref:`exhale_class_classFlanger__PDJE`)
 - ``public OcsFilter_PDJE`` (:ref:`exhale_class_classOcsFilter__PDJE`)

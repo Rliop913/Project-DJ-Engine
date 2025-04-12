@@ -104,5 +104,5 @@ Typedefs
 --------
 
 
-- :ref:`exhale_typedef_FrameCalc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a`
+- :ref:`exhale_typedef_FrameCalc_8hpp_1afaba0c56b304d05ee34bd4cc22319217`
 

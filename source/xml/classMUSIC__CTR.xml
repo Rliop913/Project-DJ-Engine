@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="classMUSIC__CTR" kind="class" language="C++" prot="public">
     <compoundname>MUSIC_CTR</compoundname>
     <includes refid="MUSIC__CTR_8hpp" local="no">MUSIC_CTR.hpp</includes>
-    <sectiondef kind="private-attrib">
+      <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classMUSIC__CTR_1a6b2fd374553cac9dfa369ede30b54034" prot="private" static="no" mutable="no">
         <type>std::optional&lt; soundtouch::SoundTouch &gt;</type>
         <definition>std::optional&lt;soundtouch::SoundTouch&gt; MUSIC_CTR::st</definition>
         <argsstring></argsstring>
         <name>st</name>
-        <qualifiedname>MUSIC_CTR::st</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,7 +22,6 @@
         <definition>std::optional&lt;Decoder&gt; MUSIC_CTR::D</definition>
         <argsstring></argsstring>
         <name>D</name>
-        <qualifiedname>MUSIC_CTR::D</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -37,7 +35,6 @@
         <definition>CapReader&lt;MusicBinaryCapnpData&gt; MUSIC_CTR::capnpMus</definition>
         <argsstring></argsstring>
         <name>capnpMus</name>
-        <qualifiedname>MUSIC_CTR::capnpMus</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -51,7 +48,6 @@
         <definition>MusicTranslator MUSIC_CTR::Mus</definition>
         <argsstring></argsstring>
         <name>Mus</name>
-        <qualifiedname>MUSIC_CTR::Mus</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -65,7 +61,6 @@
         <definition>std::vector&lt;float&gt; MUSIC_CTR::timeStretchBuffer</definition>
         <argsstring></argsstring>
         <name>timeStretchBuffer</name>
-        <qualifiedname>MUSIC_CTR::timeStretchBuffer</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -74,14 +69,13 @@
         </inbodydescription>
         <location file="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="56" column="17" bodyfile="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-attrib">
+      </sectiondef>
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classMUSIC__CTR_1aafd0725e4060d27e5b847d4e5e8ec19a" prot="public" static="no" mutable="no">
         <type><ref refid="structIngredients" kindref="compound">Ingredients</ref></type>
         <definition>Ingredients MUSIC_CTR::QDatas</definition>
         <argsstring></argsstring>
         <name>QDatas</name>
-        <qualifiedname>MUSIC_CTR::QDatas</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -95,7 +89,6 @@
         <definition>std::optional&lt;std::string&gt; MUSIC_CTR::songPath</definition>
         <argsstring></argsstring>
         <name>songPath</name>
-        <qualifiedname>MUSIC_CTR::songPath</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -104,14 +97,13 @@
         </inbodydescription>
         <location file="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="74" column="19" bodyfile="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-func">
+      </sectiondef>
+      <sectiondef kind="private-func">
       <memberdef kind="function" id="classMUSIC__CTR_1ac6f4b1f4b75ce0c3321056523717fdb1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool MUSIC_CTR::checkUsable</definition>
         <argsstring>()</argsstring>
         <name>checkUsable</name>
-        <qualifiedname>MUSIC_CTR::checkUsable</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -125,7 +117,6 @@
         <definition>bool MUSIC_CTR::TimeStretch</definition>
         <argsstring>(const FRAME_POS Frame, float *&amp;masterPTR)</argsstring>
         <name>TimeStretch</name>
-        <qualifiedname>MUSIC_CTR::TimeStretch</qualifiedname>
         <param>
           <type>const <ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref></type>
           <declname>Frame</declname>
@@ -147,7 +138,6 @@
         <definition>bool MUSIC_CTR::Render</definition>
         <argsstring>(const double targetBpm, const double originBpm, const LOCAL_POS LocalIDX, const GLOBAL_POS RenderAmount, float *&amp;masterPTR)</argsstring>
         <name>Render</name>
-        <qualifiedname>MUSIC_CTR::Render</qualifiedname>
         <param>
           <type>const double</type>
           <declname>targetBpm</declname>
@@ -181,7 +171,6 @@
         <definition>void MUSIC_CTR::ChangeBpm</definition>
         <argsstring>(double targetbpm, double originbpm)</argsstring>
         <name>ChangeBpm</name>
-        <qualifiedname>MUSIC_CTR::ChangeBpm</qualifiedname>
         <param>
           <type>double</type>
           <declname>targetbpm</declname>
@@ -198,14 +187,13 @@
         </inbodydescription>
         <location file="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="65" column="10" bodyfile="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp" bodystart="29" bodyend="32"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="classMUSIC__CTR_1aab743bc0fe886205fcd75205e3165665" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>MUSIC_CTR::MUSIC_CTR</definition>
         <argsstring>()</argsstring>
         <name>MUSIC_CTR</name>
-        <qualifiedname>MUSIC_CTR::MUSIC_CTR</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -219,7 +207,6 @@
         <definition>MUSIC_CTR::~MUSIC_CTR</definition>
         <argsstring>()=default</argsstring>
         <name>~MUSIC_CTR</name>
-        <qualifiedname>MUSIC_CTR::~MUSIC_CTR</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -233,7 +220,6 @@
         <definition>bool MUSIC_CTR::setLOAD</definition>
         <argsstring>(MBData::Reader &amp;RP, litedb &amp;db, FRAME_POS FrameIn)</argsstring>
         <name>setLOAD</name>
-        <qualifiedname>MUSIC_CTR::setLOAD</qualifiedname>
         <param>
           <type>MBData::Reader &amp;</type>
           <declname>RP</declname>
@@ -255,17 +241,16 @@
         <location file="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="70" column="10" bodyfile="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp" bodystart="123" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="classMUSIC__CTR_1a58d157577602affdc650a64f48e8c7ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::optional&lt; <ref refid="FrameCalc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref> * &gt;</type>
+        <type>std::optional&lt; <ref refid="FrameCalc_8hpp_1afaba0c56b304d05ee34bd4cc22319217" kindref="member">SIMD_FLOAT</ref> * &gt;</type>
         <definition>std::optional&lt; SIMD_FLOAT * &gt; MUSIC_CTR::Execute</definition>
         <argsstring>(const BPM &amp;bpms, SIMD_FLOAT *PCMS, const std::string &amp;dbRoot)</argsstring>
         <name>Execute</name>
-        <qualifiedname>MUSIC_CTR::Execute</qualifiedname>
         <param>
           <type>const <ref refid="classBPM" kindref="compound">BPM</ref> &amp;</type>
           <declname>bpms</declname>
         </param>
         <param>
-          <type><ref refid="FrameCalc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref> *</type>
+          <type><ref refid="FrameCalc_8hpp_1afaba0c56b304d05ee34bd4cc22319217" kindref="member">SIMD_FLOAT</ref> *</type>
           <declname>PCMS</declname>
         </param>
         <param>
@@ -285,7 +270,6 @@
         <definition>bool MUSIC_CTR::SendData</definition>
         <argsstring>(soundtouch::SoundTouch *&amp;stp, Decoder *&amp;dp)</argsstring>
         <name>SendData</name>
-        <qualifiedname>MUSIC_CTR::SendData</qualifiedname>
         <param>
           <type>soundtouch::SoundTouch *&amp;</type>
           <declname>stp</declname>
@@ -302,22 +286,25 @@
         </inbodydescription>
         <location file="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="78" column="10" bodyfile="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp" bodystart="16" bodyend="26"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="7">
+      <node id="10">
         <label>BpmFragment</label>
         <link refid="structBpmFragment"/>
       </node>
-      <node id="5">
-        <label>BpmStruct</label>
-        <link refid="structBpmStruct"/>
-        <childnode refid="6" relation="usage">
-          <edgelabel>fragments</edgelabel>
+      <node id="7">
+        <label>MusicTranslator</label>
+        <link refid="classMusicTranslator"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>bpms</edgelabel>
         </childnode>
+      </node>
+      <node id="11">
+        <label>std::vector&lt; float &gt;</label>
       </node>
       <node id="2">
         <label>CapReader&lt; MusicBinaryCapnpData &gt;</label>
@@ -326,11 +313,11 @@
           <edgelabel>Origin</edgelabel>
         </childnode>
       </node>
-      <node id="9">
-        <label>Ingredients</label>
-        <link refid="structIngredients"/>
-        <childnode refid="10" relation="usage">
-          <edgelabel>pos</edgelabel>
+      <node id="8">
+        <label>BpmStruct</label>
+        <link refid="structBpmStruct"/>
+        <childnode refid="9" relation="usage">
+          <edgelabel>fragments</edgelabel>
         </childnode>
       </node>
       <node id="1">
@@ -340,46 +327,43 @@
           <edgelabel>capnpMus</edgelabel>
         </childnode>
         <childnode refid="4" relation="usage">
-          <edgelabel>Mus</edgelabel>
-        </childnode>
-        <childnode refid="8" relation="usage">
-          <edgelabel>timeStretchBuffer</edgelabel>
-        </childnode>
-        <childnode refid="9" relation="usage">
           <edgelabel>QDatas</edgelabel>
         </childnode>
-      </node>
-      <node id="4">
-        <label>MusicTranslator</label>
-        <link refid="classMusicTranslator"/>
-        <childnode refid="5" relation="usage">
-          <edgelabel>bpms</edgelabel>
-        </childnode>
-      </node>
-      <node id="11">
-        <label>PlayPosition</label>
-        <link refid="structPlayPosition"/>
-      </node>
-      <node id="6">
-        <label>std::vector&lt; BpmFragment &gt;</label>
         <childnode refid="7" relation="usage">
-          <edgelabel>elements</edgelabel>
+          <edgelabel>Mus</edgelabel>
         </childnode>
-      </node>
-      <node id="10">
-        <label>std::vector&lt; PlayPosition &gt;</label>
         <childnode refid="11" relation="usage">
-          <edgelabel>elements</edgelabel>
+          <edgelabel>timeStretchBuffer</edgelabel>
         </childnode>
       </node>
-      <node id="8">
-        <label>std::vector&lt; float &gt;</label>
+      <node id="9">
+        <label>std::vector&lt; BpmFragment &gt;</label>
+        <childnode refid="10" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
       </node>
       <node id="3">
         <label>std::vector&lt; kj::byte &gt;</label>
       </node>
+      <node id="5">
+        <label>std::vector&lt; PlayPosition &gt;</label>
+        <childnode refid="6" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>PlayPosition</label>
+        <link refid="structPlayPosition"/>
+      </node>
+      <node id="4">
+        <label>Ingredients</label>
+        <link refid="structIngredients"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>pos</edgelabel>
+        </childnode>
+      </node>
     </collaborationgraph>
-    <location file="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="50" column="1" bodyfile="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="50" bodyend="79"/>
+    <location file="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="50" column="16" bodyfile="include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="50" bodyend="79"/>
     <listofallmembers>
       <member refid="classMUSIC__CTR_1ad4d5a762f2c64cfca49d67512a50c089" prot="private" virt="non-virtual"><scope>MUSIC_CTR</scope><name>capnpMus</name></member>
       <member refid="classMUSIC__CTR_1a436460565adf8bd741e7ddff756d2220" prot="private" virt="non-virtual"><scope>MUSIC_CTR</scope><name>ChangeBpm</name></member>
