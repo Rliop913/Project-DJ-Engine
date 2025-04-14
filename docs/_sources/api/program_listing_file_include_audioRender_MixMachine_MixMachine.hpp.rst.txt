@@ -44,7 +44,6 @@ Program Listing for File MixMachine.hpp
    };
    
    using ID = long;
-   
    struct EightPointValues{
        float vals[8] = {0, };
        EightPointValues(const std::string& rawData){
@@ -78,16 +77,17 @@ Program Listing for File MixMachine.hpp
        std::vector<std::thread> renderPool;
    
        std::unordered_map<ID, std::vector<MixStruct>> Memorized;
+   
        bool IDsort(const MixTranslator& binary);
+   
        bool mix(litedb& db, const BPM& bpms);
        
        std::vector<float> rendered_out;
-       template<TypeEnum, typename T>
-       bool TypeWorks(MixStruct& ms, T& data);
    
        template<TypeEnum, typename T>
+       bool TypeWorks(MixStruct& ms, T& data);
+       template<TypeEnum, typename T>
        bool TypeWorks(MixStruct& ms, T& data, litedb& db);
-       
        template<TypeEnum, typename T>
        bool TypeWorks(MixStruct& ms, T& data, SIMD_FLOAT* Vec);
        

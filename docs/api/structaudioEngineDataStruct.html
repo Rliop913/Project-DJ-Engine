@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -8,18 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Struct audioEngineDataStruct &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
 
   
-      <script src="../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-      <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -169,27 +171,61 @@
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv421audioEngineDataStruct">
 <span id="_CPPv321audioEngineDataStruct"></span><span id="_CPPv221audioEngineDataStruct"></span><span id="audioEngineDataStruct"></span><span class="target" id="structaudioEngineDataStruct"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">audioEngineDataStruct</span></span></span><a class="headerlink" href="#_CPPv421audioEngineDataStruct" title="Link to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>the core Data </p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N21audioEngineDataStruct14getNowfPointerEKm">
 <span id="_CPPv3N21audioEngineDataStruct14getNowfPointerEKm"></span><span id="_CPPv2N21audioEngineDataStruct14getNowfPointerEKm"></span><span id="audioEngineDataStruct::getNowfPointer__unsigned-lC"></span><span class="target" id="structaudioEngineDataStruct_1a5458ea6743868149c4fd47af1c96197b"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">float</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getNowfPointer</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameCount</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21audioEngineDataStruct14getNowfPointerEKm" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Get Current playback point. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frameCount</strong> – Amount of frames to be returned </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>std::optional&lt;float*&gt; the pointer, return nullopt if exceed range </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N21audioEngineDataStruct7CountUpEKm">
 <span id="_CPPv3N21audioEngineDataStruct7CountUpEKm"></span><span id="_CPPv2N21audioEngineDataStruct7CountUpEKm"></span><span id="audioEngineDataStruct::CountUp__unsigned-lC"></span><span class="target" id="structaudioEngineDataStruct_1acfbc94880ac9ca5289ed34fef118f561"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CountUp</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameCount</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21audioEngineDataStruct7CountUpEKm" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>count up function. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frameCount</strong> – Amount of frames </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N21audioEngineDataStruct13GetAfterManFXEPfm">
 <span id="_CPPv3N21audioEngineDataStruct13GetAfterManFXEPfm"></span><span id="_CPPv2N21audioEngineDataStruct13GetAfterManFXEPfm"></span><span id="audioEngineDataStruct::GetAfterManFX__floatP.unsigned-l"></span><span class="target" id="structaudioEngineDataStruct_1aa66ef36888faee74e89b103ebfae4b9e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetAfterManFX</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pOutput</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameCount</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21audioEngineDataStruct13GetAfterManFXEPfm" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Return FX processed PCM frames. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pOutput</strong> – the pcm output. this should be memory allocated.(size: frameCount * CHANNEL * sizeof(float)) </p></li>
+<li><p><strong>frameCount</strong> – Amount of frames </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N21audioEngineDataStruct3GetEPfm">
 <span id="_CPPv3N21audioEngineDataStruct3GetEPfm"></span><span id="_CPPv2N21audioEngineDataStruct3GetEPfm"></span><span id="audioEngineDataStruct::Get__floatP.unsigned-l"></span><span class="target" id="structaudioEngineDataStruct_1a1b0bca5c75f2851baee4597147f8032e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Get</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pOutput</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameCount</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N21audioEngineDataStruct3GetEPfm" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Return PCM frames. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pOutput</strong> – the pcm output. this should be memory allocated.(size: frameCount * CHANNEL * sizeof(float)) </p></li>
+<li><p><strong>frameCount</strong> – Amount of frames </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">

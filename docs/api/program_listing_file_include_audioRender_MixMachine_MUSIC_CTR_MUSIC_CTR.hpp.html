@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -8,18 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Program Listing for File MUSIC_CTR.hpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
 
   
-      <script src="../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-      <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -103,7 +105,6 @@
 <span class="w">    </span><span class="n">BPMCHANGE</span><span class="p">,</span>
 <span class="p">};</span>
 
-
 <span class="k">struct</span><span class="w"> </span><span class="nc">PlayPosition</span><span class="p">{</span>
 <span class="w">    </span><span class="n">GLOBAL_POS</span><span class="w"> </span><span class="n">Gidx</span><span class="p">;</span>
 <span class="w">    </span><span class="n">LOCAL_POS</span><span class="w"> </span><span class="n">Lidx</span><span class="p">;</span>
@@ -113,10 +114,10 @@
 <span class="p">};</span>
 
 
-
 <span class="k">struct</span><span class="w"> </span><span class="nc">Ingredients</span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">SORT</span><span class="p">();</span>
+
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">FillGlobal</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PlayPosition</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">Gbpm</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BpmStruct</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Global</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">FillLocal</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PlayPosition</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">Lbpm</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BpmStruct</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Local</span><span class="p">);</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PlayPosition</span><span class="o">&gt;::</span><span class="n">iterator</span><span class="w"> </span><span class="n">GetSameGidx</span><span class="p">(</span><span class="n">GLOBAL_POS</span><span class="w"> </span><span class="n">gidx</span><span class="p">);</span>
@@ -125,7 +126,6 @@
 
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PlayPosition</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pos</span><span class="p">;</span>
 <span class="p">};</span>
-
 <span class="k">class</span><span class="w"> </span><span class="nc">MUSIC_CTR</span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">soundtouch</span><span class="o">::</span><span class="n">SoundTouch</span><span class="o">&gt;</span><span class="w"> </span><span class="n">st</span><span class="p">;</span>
@@ -134,6 +134,7 @@
 <span class="w">    </span><span class="n">MusicTranslator</span><span class="w"> </span><span class="n">Mus</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">timeStretchBuffer</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">checkUsable</span><span class="p">();</span>
+
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">TimeStretch</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FRAME_POS</span><span class="w"> </span><span class="n">Frame</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">masterPTR</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Render</span><span class="p">(</span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">targetBpm</span><span class="p">,</span>
@@ -151,9 +152,9 @@
 
 <span class="w">    </span><span class="c1">// std::optional&lt;double&gt; originBpm;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">songPath</span><span class="p">;</span>
-
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">SIMD_FLOAT</span><span class="o">*&gt;</span>
 <span class="w">    </span><span class="n">Execute</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPM</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bpms</span><span class="p">,</span><span class="w"> </span><span class="n">SIMD_FLOAT</span><span class="o">*</span><span class="w"> </span><span class="n">PCMS</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dbRoot</span><span class="p">);</span>
+
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">SendData</span><span class="p">(</span><span class="n">soundtouch</span><span class="o">::</span><span class="n">SoundTouch</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">stp</span><span class="p">,</span><span class="w"> </span><span class="n">Decoder</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">dp</span><span class="p">);</span>
 <span class="p">};</span>
 </pre></div>

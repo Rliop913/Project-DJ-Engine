@@ -19,7 +19,6 @@ Program Listing for File BattleDj.hpp
    
    #include "MixTranslator.hpp"
    #include "MUSIC_CTR.hpp"
-   
    enum SoundTouchType{
        MASTER,
        RAW,
@@ -45,8 +44,11 @@ Program Listing for File BattleDj.hpp
        ~BattleDj();
        bool GetDataFrom(MUSIC_CTR& mc);
        bool Spin(MixStruct& ms);
+   
        bool Rev(MixStruct& ms);
+   
        bool Scratch(MixStruct& ms);
+   
        bool Pitch(MixStruct& ms);
        std::optional<unsigned long> StartPos;
    

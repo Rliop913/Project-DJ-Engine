@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -8,18 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Class audioRender &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
 
   
-      <script src="../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-      <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -169,12 +171,36 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv411audioRender">
 <span id="_CPPv311audioRender"></span><span id="_CPPv211audioRender"></span><span id="audioRender"></span><span class="target" id="classaudioRender"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">audioRender</span></span></span><a class="headerlink" href="#_CPPv411audioRender" title="Link to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>Top-level class for audio rendering. </p>
+<p><div class="graphviz"><object data="../_images/graphviz-142b010c51a786d301bcd4badf582b5d910341cb.svg" type="image/svg+xml" class="graphviz">
+<p class="warning">digraph audioRender{
+     audioRender -&gt; MixMachine;
+     MixMachine -&gt; MixTranslator;
+     MixTranslator -&gt; CapReader;
+     CapReader -&gt; MixBinaryCapnpData;
+}</p></object></div>
+</p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N11audioRender9LoadTrackER6litedbR9trackdata">
 <span id="_CPPv3N11audioRender9LoadTrackER6litedbR9trackdata"></span><span id="_CPPv2N11audioRender9LoadTrackER6litedbR9trackdata"></span><span id="audioRender::LoadTrack__litedbR.trackdataR"></span><span class="target" id="classaudioRender_1ab03448738cc602a7c1cd98c926f31a32"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">LoadTrack</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">db</span></span>, <a class="reference internal" href="structtrackdata.html#_CPPv49trackdata" title="trackdata"><span class="n"><span class="pre">trackdata</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">td</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11audioRender9LoadTrackER6litedbR9trackdata" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Loads Track Data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>db</strong> – RootDB </p></li>
+<li><p><strong>td</strong> – trackdata </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N11audioRender11audioRenderEv">

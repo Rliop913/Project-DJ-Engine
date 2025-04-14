@@ -1,59 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
   <compounddef id="dbTest_8cpp" kind="file" language="C++">
     <compoundname>dbTest.cpp</compoundname>
     <includes refid="dbRoot_8hpp" local="yes">dbRoot.hpp</includes>
     <includes local="no">iostream</includes>
     <includes refid="CapnpBinary_8hpp" local="yes">CapnpBinary.hpp</includes>
     <incdepgraph>
-      <node id="2">
-        <label>dbRoot.hpp</label>
-        <link refid="dbRoot_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>capnp/serialize.h</label>
-      </node>
-      <node id="14">
-        <label>MixBinary.capnp.h</label>
-      </node>
-      <node id="3">
-        <label>string</label>
-      </node>
-      <node id="6">
-        <label>sqlite3.h</label>
-      </node>
-      <node id="1">
-        <label>include/tests/dbTest.cpp</label>
-        <link refid="dbTest_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>dbState.hpp</label>
-        <link refid="dbState_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
       <node id="11">
         <label>CapnpBinary.hpp</label>
         <link refid="CapnpBinary_8hpp"/>
@@ -72,14 +24,31 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>optional</label>
+      <node id="2">
+        <label>dbRoot.hpp</label>
+        <link refid="dbRoot_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
-      <node id="4">
-        <label>vector</label>
-      </node>
-      <node id="16">
-        <label>NoteBinary.capnp.h</label>
+      <node id="8">
+        <label>dbState.hpp</label>
+        <link refid="dbState_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
       <node id="7">
         <label>musicDB.hpp</label>
@@ -93,9 +62,6 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="10">
-        <label>iostream</label>
-      </node>
       <node id="9">
         <label>trackDB.hpp</label>
         <link refid="trackDB_8hpp"/>
@@ -106,14 +72,48 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
+      <node id="1">
+        <label>include/tests/dbTest.cpp</label>
+        <link refid="dbTest_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>MixBinary.capnp.h</label>
+      </node>
       <node id="15">
         <label>MusicBinary.capnp.h</label>
+      </node>
+      <node id="16">
+        <label>NoteBinary.capnp.h</label>
       </node>
       <node id="12">
         <label>capnp/message.h</label>
       </node>
+      <node id="13">
+        <label>capnp/serialize.h</label>
+      </node>
+      <node id="10">
+        <label>iostream</label>
+      </node>
+      <node id="5">
+        <label>optional</label>
+      </node>
+      <node id="6">
+        <label>sqlite3.h</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
     </incdepgraph>
-      <sectiondef kind="func">
+    <sectiondef kind="func">
       <memberdef kind="function" id="dbTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>int main</definition>
@@ -127,7 +127,7 @@
         </inbodydescription>
         <location file="include/tests/dbTest.cpp" line="5" column="1" bodyfile="include/tests/dbTest.cpp" bodystart="5" bodyend="50"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

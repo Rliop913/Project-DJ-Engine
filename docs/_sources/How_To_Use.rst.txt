@@ -156,10 +156,55 @@ Handle FXControlPannel
 Handle MusicControlPannel
 --------------------------
 
-need more documentation
-
 .. doxygenclass:: MusicControlPannel
     :project: Project_DJ_Engine
 
+
 .. doxygenfunction:: MusicControlPannel::LoadMusic
     :project: Project_DJ_Engine
+
+.. code-block:: cpp
+
+    auto MUSIC_TO_LOAD = music_searched[0];
+    MusicController->LoadMusic(MUSIC_TO_LOAD);
+
+
+
+.. doxygenfunction:: MusicControlPannel::CueMusic
+    :project: Project_DJ_Engine
+
+.. code-block:: cpp
+
+    unsigned long long music_position = 0;
+    MusicController->CueMusic("MUSIC_TITLE", music_position);
+
+
+.. doxygenfunction:: MusicControlPannel::SetMusic
+    :project: Project_DJ_Engine
+
+.. code-block:: cpp
+
+    bool ON = true;
+    MusicController->SetMusic("MUSIC_TITLE", ON);
+
+.. doxygenfunction:: MusicControlPannel::GetLoadedMusicList
+    :project: Project_DJ_Engine
+
+.. code-block:: cpp
+
+    MusicController->GetLoadedMusicList();
+
+.. doxygenfunction:: MusicControlPannel::UnloadMusic
+    :project: Project_DJ_Engine
+
+.. code-block:: cpp
+
+    MusicControlPannel->UnloadMusic("MUSIC_TITLE");
+
+
+.. doxygenfunction:: MusicControlPannel::getFXHandle
+    :project: Project_DJ_Engine
+
+.. code-block:: cpp
+
+    auto fxHandler = MusicControlPannel->getFXHandle("MUSIC_TITLE");

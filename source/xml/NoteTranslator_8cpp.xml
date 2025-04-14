@@ -1,44 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
   <compounddef id="NoteTranslator_8cpp" kind="file" language="C++">
     <compoundname>NoteTranslator.cpp</compoundname>
     <includes refid="NoteTranslator_8hpp" local="yes">NoteTranslator.hpp</includes>
     <includes local="no">string</includes>
     <incdepgraph>
-      <node id="16">
-        <label>functional</label>
-      </node>
-      <node id="7">
-        <label>capnp/serialize.h</label>
-      </node>
-      <node id="12">
-        <label>cmath</label>
-      </node>
-      <node id="8">
-        <label>MixBinary.capnp.h</label>
-      </node>
-      <node id="17">
-        <label>string</label>
-      </node>
-      <node id="2">
-        <label>NoteTranslator.hpp</label>
-        <link refid="NoteTranslator_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="15">
-        <label>hwy/aligned_allocator.h</label>
-      </node>
       <node id="5">
         <label>CapnpBinary.hpp</label>
         <link refid="CapnpBinary_8hpp"/>
@@ -57,26 +23,6 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="3">
-        <label>optional</label>
-      </node>
-      <node id="4">
-        <label>vector</label>
-      </node>
-      <node id="1">
-        <label>include/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp</label>
-        <link refid="NoteTranslator_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-      </node>
-      <node id="10">
-        <label>NoteBinary.capnp.h</label>
-      </node>
-      <node id="14">
-        <label>hwy/highway.h</label>
-      </node>
       <node id="11">
         <label>FrameCalc.hpp</label>
         <link refid="FrameCalc_8hpp"/>
@@ -91,14 +37,68 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
+      <node id="1">
+        <label>include/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp</label>
+        <link refid="NoteTranslator_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>NoteTranslator.hpp</label>
+        <link refid="NoteTranslator_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>MixBinary.capnp.h</label>
+      </node>
       <node id="9">
         <label>MusicBinary.capnp.h</label>
+      </node>
+      <node id="10">
+        <label>NoteBinary.capnp.h</label>
       </node>
       <node id="13">
         <label>algorithm</label>
       </node>
       <node id="6">
         <label>capnp/message.h</label>
+      </node>
+      <node id="7">
+        <label>capnp/serialize.h</label>
+      </node>
+      <node id="12">
+        <label>cmath</label>
+      </node>
+      <node id="16">
+        <label>functional</label>
+      </node>
+      <node id="15">
+        <label>hwy/aligned_allocator.h</label>
+      </node>
+      <node id="14">
+        <label>hwy/highway.h</label>
+      </node>
+      <node id="3">
+        <label>optional</label>
+      </node>
+      <node id="17">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -113,7 +113,7 @@
 <codeline lineno="5" refid="classNoteTranslator_1a660b66512165d3cc53fef9f5a09476ed" refkind="member"><highlight class="normal"><ref refid="classNoteTranslator_1a660b66512165d3cc53fef9f5a09476ed" kindref="member">NoteTranslator::Read</ref>(</highlight></codeline>
 <codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classCapReader" kindref="compound">CapReader&lt;NoteBinaryCapnpData&gt;</ref>&amp;<sp/>binary,<sp/></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structBpmStruct" kindref="compound">BpmStruct</ref>&amp;<sp/>mainBpm,</highlight></codeline>
-<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="NoteTranslator_8hpp_1ac1802569be3e88466f403c2d2aac0e3c" kindref="member">OBJ_SETTER_CALLBACK</ref>&amp;<sp/>lambdaCallback</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="NoteTranslator_8hpp_1a8bb5814b0656edc5048ad81a0fbe93b0" kindref="member">OBJ_SETTER_CALLBACK</ref>&amp;<sp/>lambdaCallback</highlight></codeline>
 <codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>)</highlight></codeline>
 <codeline lineno="10"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!lambdaCallback){</highlight></codeline>
@@ -122,7 +122,7 @@
 <codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>br<sp/>=<sp/>binary.<ref refid="classCapReader_1ad36b1087da0e87efd8ca1cb661057487" kindref="member">Rp</ref>-&gt;getDatas();</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structBpmStruct" kindref="compound">BpmStruct</ref><sp/>bs;</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>bs.<ref refid="structBpmStruct_1aa27a7fdda1a74bac6d5a61b459c2ee45" kindref="member">fragments</ref><sp/>=<sp/><ref refid="classNoteTranslator_1ace395ceda2f9e280a390cd2535d07dc1" kindref="member">noteBpms</ref>.<ref refid="structBpmStruct_1aa27a7fdda1a74bac6d5a61b459c2ee45" kindref="member">fragments</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>bs.<ref refid="structBpmStruct_1aa27a7fdda1a74bac6d5a61b459c2ee45" kindref="member">fragments</ref><sp/>=<sp/><ref refid="classNoteTranslator_1ace395ceda2f9e280a390cd2535d07dc1" kindref="member">noteBpms</ref>.fragments;<sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i=0;<sp/>i<sp/>&lt;<sp/>br.size();<sp/>++i){</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(strcmp(br[i].getNoteType().cStr(),<sp/></highlight><highlight class="stringliteral">&quot;BPM&quot;</highlight><highlight class="normal">)<sp/>==<sp/>0){</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fg=<sp/><ref refid="structBpmFragment" kindref="compound">BpmFragment</ref>();</highlight></codeline>

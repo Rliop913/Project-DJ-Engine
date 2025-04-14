@@ -36,7 +36,6 @@ Program Listing for File MUSIC_CTR.hpp
        BPMCHANGE,
    };
    
-   
    struct PlayPosition{
        GLOBAL_POS Gidx;
        LOCAL_POS Lidx;
@@ -46,10 +45,10 @@ Program Listing for File MUSIC_CTR.hpp
    };
    
    
-   
    struct Ingredients{
    private:
        void SORT();
+   
        void FillGlobal(std::vector<PlayPosition>& Gbpm, const BpmStruct& Global);
        void FillLocal(std::vector<PlayPosition>& Lbpm, const BpmStruct& Local);
        std::vector<PlayPosition>::iterator GetSameGidx(GLOBAL_POS gidx);
@@ -58,7 +57,6 @@ Program Listing for File MUSIC_CTR.hpp
    
        std::vector<PlayPosition> pos;
    };
-   
    class MUSIC_CTR{
    private:
        std::optional<soundtouch::SoundTouch> st;
@@ -67,6 +65,7 @@ Program Listing for File MUSIC_CTR.hpp
        MusicTranslator Mus;
        std::vector<float> timeStretchBuffer;
        bool checkUsable();
+   
        bool TimeStretch(const FRAME_POS Frame, float*& masterPTR);
        bool Render(
            const double targetBpm,
@@ -84,8 +83,8 @@ Program Listing for File MUSIC_CTR.hpp
    
        // std::optional<double> originBpm;
        std::optional<std::string> songPath;
-   
        std::optional<SIMD_FLOAT*> 
        Execute(const BPM& bpms, SIMD_FLOAT* PCMS, const std::string& dbRoot);
+   
        bool SendData(soundtouch::SoundTouch*& stp, Decoder*& dp);
    };

@@ -14,7 +14,6 @@ Program Listing for File audioRender.hpp
    
    #include "MixMachine.hpp"
    #include "ManualMix.hpp"
-   
    class audioRender{
    public:
        std::optional<std::vector<float>> rendered_frames;

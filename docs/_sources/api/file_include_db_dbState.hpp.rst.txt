@@ -42,11 +42,11 @@ Included By
 -----------
 
 
+- :ref:`file_include_db_dbState.cpp`
+
 - :ref:`file_include_db_musicDB.hpp`
 
 - :ref:`file_include_db_trackDB.hpp`
-
-- :ref:`file_include_db_dbState.cpp`
 
 
 

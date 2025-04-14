@@ -40,7 +40,6 @@ Program Listing for File MusicControlPannel.hpp
    using LOADS         = std::map<TITLE, MusicOnDeck>;
    
    
-   
    class MusicControlPannel{
    private:
    
@@ -53,12 +52,17 @@ Program Listing for File MusicControlPannel.hpp
    
    public:
        int LoadMusic(const musdata& Mus);
+   
        bool CueMusic(const TITLE& title, const unsigned long long newPos);
+   
        bool SetMusic(const TITLE& title, const bool onOff);
+   
        LOADED_LIST GetLoadedMusicList();
+   
        bool UnloadMusic(const TITLE& title);
    
        bool GetPCMFrames(float* array, const unsigned long FrameSize);
+   
        FXControlPannel* getFXHandle(const TITLE& title);
        MusicControlPannel(const unsigned long FrameSize): fsize(FrameSize){}
        ~MusicControlPannel();

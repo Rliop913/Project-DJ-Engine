@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
   <compounddef id="classFilter__PDJE" kind="class" language="C++" prot="public">
     <compoundname>Filter_PDJE</compoundname>
     <basecompoundref refid="classFaustInterpolate" prot="public" virt="non-virtual">FaustInterpolate</basecompoundref>
     <derivedcompoundref refid="classFaustDType" prot="public" virt="non-virtual">FaustDType&lt; Filter_PDJE &gt;</derivedcompoundref>
     <includes refid="filter_8hpp" local="no">filter.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classFilter__PDJE_1a3b560092281cd5ed1a4848b2e3d0c19b" prot="public" static="no" mutable="no">
         <type>int</type>
         <definition>int Filter_PDJE::HLswitch</definition>
         <argsstring></argsstring>
         <name>HLswitch</name>
+        <qualifiedname>Filter_PDJE::HLswitch</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -19,8 +20,8 @@
         </inbodydescription>
         <location file="include/audioRender/MixMachine/FAUST_VALS/filter.hpp" line="6" column="9" bodyfile="include/audioRender/MixMachine/FAUST_VALS/filter.hpp" bodystart="6" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classFilter__PDJE_1ab22de093210bd36d2675bf89c0d0a89e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -31,6 +32,7 @@
         <definition>void Filter_PDJE::copyDatas</definition>
         <argsstring>(Duck &amp;dest)</argsstring>
         <name>copyDatas</name>
+        <qualifiedname>Filter_PDJE::copyDatas</qualifiedname>
         <param>
           <type>Duck &amp;</type>
           <declname>dest</declname>
@@ -53,6 +55,7 @@
         <definition>void Filter_PDJE::copySetting</definition>
         <argsstring>(Duck &amp;dest)</argsstring>
         <name>copySetting</name>
+        <qualifiedname>Filter_PDJE::copySetting</qualifiedname>
         <param>
           <type>Duck &amp;</type>
           <declname>dest</declname>
@@ -65,18 +68,12 @@
         </inbodydescription>
         <location file="include/audioRender/MixMachine/FAUST_VALS/filter.hpp" line="14" column="10" bodyfile="include/audioRender/MixMachine/FAUST_VALS/filter.hpp" bodystart="14" bodyend="17"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1">
-        <label>Filter_PDJE</label>
-        <link refid="classFilter__PDJE"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="3">
         <label>FaustDType&lt; Filter_PDJE &gt;</label>
         <link refid="classFaustDType"/>
@@ -87,20 +84,26 @@
         <label>FaustInterpolate</label>
         <link refid="classFaustInterpolate"/>
       </node>
-    </inheritancegraph>
-    <collaborationgraph>
       <node id="1">
         <label>Filter_PDJE</label>
         <link refid="classFilter__PDJE"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+    </inheritancegraph>
+    <collaborationgraph>
       <node id="2">
         <label>FaustInterpolate</label>
         <link refid="classFaustInterpolate"/>
       </node>
+      <node id="1">
+        <label>Filter_PDJE</label>
+        <link refid="classFilter__PDJE"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
     </collaborationgraph>
-    <location file="include/audioRender/MixMachine/FAUST_VALS/filter.hpp" line="4" column="42" bodyfile="include/audioRender/MixMachine/FAUST_VALS/filter.hpp" bodystart="4" bodyend="18"/>
+    <location file="include/audioRender/MixMachine/FAUST_VALS/filter.hpp" line="4" column="1" bodyfile="include/audioRender/MixMachine/FAUST_VALS/filter.hpp" bodystart="4" bodyend="18"/>
     <listofallmembers>
       <member refid="classFilter__PDJE_1ab22de093210bd36d2675bf89c0d0a89e" prot="public" virt="non-virtual"><scope>Filter_PDJE</scope><name>copyDatas</name></member>
       <member refid="classFaustInterpolate_1a7caebc4c904bf93643b9500647503802" prot="public" virt="non-virtual"><scope>Filter_PDJE</scope><name>copyInterpolates</name></member>

@@ -24,6 +24,10 @@ catch(...)\
     return false;\
 }
 
+/**
+ * @brief interpolator options
+ * 
+ */
 enum InterpolateType{
     LINEAR,
     COSINE,
@@ -32,7 +36,10 @@ enum InterpolateType{
 };
 
 using ID = long;
-
+/**
+ * @brief Argument parsing class for handling parameters of 8-point interpolation
+ * 
+ */
 struct EightPointValues{
     float vals[8] = {0, };
     EightPointValues(const std::string& rawData){
@@ -57,6 +64,10 @@ struct EightPointValues{
 
 #define FLAG_ALL_IS_OK -99
 
+/**
+ * @brief prerenderer class
+ * 
+ */
 class MixMachine{
 private:
     // FRAME_POS getMixSize(FRAME_POS frames);
@@ -66,19 +77,77 @@ public:
     std::vector<std::thread> renderPool;
 
     std::unordered_map<ID, std::vector<MixStruct>> Memorized;
+
+    /**
+     * @brief Sorts data by ID
+     * 
+     * @param binary the translated capnp data.
+     * @return true 
+     * @return false 
+     */
     bool IDsort(const MixTranslator& binary);
+
+    /**
+     * @brief Main function — executes Prerender
+     * 
+     * @param db RootDB
+     * @param bpms BPM object
+     * @return true 
+     * @return false 
+     */
     bool mix(litedb& db, const BPM& bpms);
     
     std::vector<float> rendered_out;
+
+    /**
+     * @brief Implements behavior for each type.
+     * 
+     * @tparam TypeEnum 
+     * @tparam T 
+     * @param ms 
+     * @param data 
+     * @return true 
+     * @return false 
+     */
     template<TypeEnum, typename T>
     bool TypeWorks(MixStruct& ms, T& data);
-
+    /**
+     * @brief Implements behavior for each type.
+     * 
+     * @tparam ypeEnum 
+     * @tparam T 
+     * @param ms 
+     * @param data 
+     * @param db 
+     * @return true 
+     * @return false 
+     */
     template<TypeEnum, typename T>
     bool TypeWorks(MixStruct& ms, T& data, litedb& db);
-    
+    /**
+     * @brief Implements behavior for each type.
+     * 
+     * @tparam ypeEnum 
+     * @tparam T 
+     * @param ms 
+     * @param data 
+     * @param Vec 
+     * @return true 
+     * @return false 
+     */
     template<TypeEnum, typename T>
     bool TypeWorks(MixStruct& ms, T& data, SIMD_FLOAT* Vec);
     
+    /**
+     * @brief initialize interpolator class
+     * 
+     * @tparam FXtype 
+     * @param FXvec 
+     * @param PCMvec 
+     * @param ms 
+     * @return true 
+     * @return false 
+     */
     template<typename FXtype>
     bool InterpolateInit(FXtype& FXvec, SIMD_FLOAT*& PCMvec, MixStruct& ms){
         FXvec.emplace_back(PCMvec, ms.frame_in, ms.frame_out);

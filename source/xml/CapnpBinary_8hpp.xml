@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
   <compounddef id="CapnpBinary_8hpp" kind="file" language="C++">
     <compoundname>CapnpBinary.hpp</compoundname>
     <includes local="no">vector</includes>
@@ -16,12 +16,6 @@
     <includedby refid="audioTest_8cpp" local="yes">include/tests/audioTest.cpp</includedby>
     <includedby refid="dbTest_8cpp" local="yes">include/tests/dbTest.cpp</includedby>
     <incdepgraph>
-      <node id="5">
-        <label>capnp/serialize.h</label>
-      </node>
-      <node id="6">
-        <label>MixBinary.capnp.h</label>
-      </node>
       <node id="1">
         <label>include/db/Capnp/CapnpBinary/CapnpBinary.hpp</label>
         <link refid="CapnpBinary_8hpp"/>
@@ -40,32 +34,128 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
+      <node id="6">
+        <label>MixBinary.capnp.h</label>
+      </node>
+      <node id="7">
+        <label>MusicBinary.capnp.h</label>
+      </node>
+      <node id="8">
+        <label>NoteBinary.capnp.h</label>
+      </node>
+      <node id="4">
+        <label>capnp/message.h</label>
+      </node>
+      <node id="5">
+        <label>capnp/serialize.h</label>
+      </node>
       <node id="3">
         <label>optional</label>
       </node>
       <node id="2">
         <label>vector</label>
       </node>
-      <node id="8">
-        <label>NoteBinary.capnp.h</label>
-      </node>
-      <node id="7">
-        <label>MusicBinary.capnp.h</label>
-      </node>
-      <node id="4">
-        <label>capnp/message.h</label>
-      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="53">
-        <label>include/db/Capnp/Translators/MusicTranslator/MusicTranslator.cpp</label>
-        <link refid="MusicTranslator_8cpp"/>
+      <node id="4">
+        <label>include/audioRender/ManualMix/ManualMix.cpp</label>
+        <link refid="ManualMix_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/audioRender/ManualMix/ManualMix.hpp</label>
+        <link refid="ManualMix_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/audioRender/ManualMix/MusicControlPannel.cpp</label>
+        <link refid="MusicControlPannel_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/audioRender/ManualMix/MusicControlPannel.hpp</label>
+        <link refid="MusicControlPannel_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>include/audioRender/MixMachine/EFFECT/EFFECTS.cpp</label>
+        <link refid="EFFECTS_8cpp"/>
+      </node>
+      <node id="19">
+        <label>include/audioRender/MixMachine/EFFECT/EFFECTS.hpp</label>
+        <link refid="EFFECTS_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp</label>
+        <link refid="BattleDj_8cpp"/>
+      </node>
+      <node id="39">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/BattleDj.hpp</label>
+        <link refid="BattleDj_8hpp"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp</label>
+        <link refid="MUSIC__CTR_8cpp"/>
+      </node>
+      <node id="38">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</label>
+        <link refid="MUSIC__CTR_8hpp"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp</label>
+        <link refid="SetCue_8cpp"/>
+      </node>
+      <node id="44">
+        <label>include/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp</label>
+        <link refid="Decoder_8cpp"/>
+      </node>
+      <node id="37">
+        <label>include/audioRender/MixMachine/MiniaudioObjects/Decoder.hpp</label>
+        <link refid="Decoder_8hpp"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>include/audioRender/MixMachine/MixMachine.cpp</label>
+        <link refid="MixMachine_8cpp"/>
       </node>
       <node id="21">
         <label>include/audioRender/MixMachine/MixMachine.hpp</label>
         <link refid="MixMachine_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
@@ -96,186 +186,80 @@
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-      </node>
-      <node id="47">
-        <label>include/db/Capnp/Translators/MixTranslator/Bpm.cpp</label>
-        <link refid="Bpm_8cpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
       </node>
       <node id="23">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_COMPRESSOR.cpp</label>
         <link refid="Type__FX__COMPRESSOR_8cpp"/>
       </node>
-      <node id="45">
-        <label>include/db/Capnp/Translators/FrameCalc.cpp</label>
-        <link refid="FrameCalc_8cpp"/>
-      </node>
-      <node id="32">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp</label>
-        <link refid="Type__FX__ROBOT_8cpp"/>
-      </node>
-      <node id="31">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_PHASER.cpp</label>
-        <link refid="Type__FX__PHASER_8cpp"/>
-      </node>
       <node id="24">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_DISTORTION.cpp</label>
         <link refid="Type__FX__DISTORTION_8cpp"/>
       </node>
-      <node id="3">
-        <label>include/audioRender/ManualMix/ManualMix.hpp</label>
-        <link refid="ManualMix_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>include/audioRender/ManualMix/MusicControlPannel.hpp</label>
-        <link refid="MusicControlPannel_8hpp"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
-      <node id="39">
-        <label>include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</label>
-        <link refid="MUSIC__CTR_8hpp"/>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>include/audioRender/MixMachine/EFFECT/EFFECTS.hpp</label>
-        <link refid="EFFECTS_8hpp"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="49">
-        <label>include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp</label>
-        <link refid="MixTranslator_8hpp"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="50" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="46">
-        <label>include/db/Capnp/Translators/MixTranslator/Bpm.hpp</label>
-        <link refid="Bpm_8hpp"/>
-        <childnode refid="47" relation="include">
-        </childnode>
-        <childnode refid="48" relation="include">
-        </childnode>
-        <childnode refid="49" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>include/audioRender/audioRender.hpp</label>
-        <link refid="audioRender_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="54">
-        <label>include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp</label>
-        <link refid="NoteTranslator_8hpp"/>
-        <childnode refid="55" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="41">
-        <label>include/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp</label>
-        <link refid="BattleDj_8cpp"/>
-      </node>
-      <node id="27">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_FILTER.cpp</label>
-        <link refid="Type__FX__FILTER_8cpp"/>
-      </node>
-      <node id="16">
-        <label>include/players/audioPlayer/audioCallbacks.hpp</label>
-        <link refid="audioCallbacks_8hpp"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>include/audioRender/ManualMix/ManualMix.cpp</label>
-        <link refid="ManualMix_8cpp"/>
-      </node>
-      <node id="29">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_OCS_FILTER.cpp</label>
-        <link refid="Type__FX__OCS__FILTER_8cpp"/>
-      </node>
-      <node id="56">
-        <label>include/tests/dbTest.cpp</label>
-        <link refid="dbTest_8cpp"/>
-      </node>
-      <node id="15">
-        <label>include/audioRender/ManualMix/MusicControlPannel.cpp</label>
-        <link refid="MusicControlPannel_8cpp"/>
-      </node>
-      <node id="36">
-        <label>include/audioRender/MixMachine/MixTypes/Type_VOL.cpp</label>
-        <link refid="Type__VOL_8cpp"/>
-      </node>
-      <node id="9">
-        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
-        <link refid="PDJE__polyglot__wraps_8cpp"/>
-      </node>
-      <node id="42">
-        <label>include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp</label>
-        <link refid="MUSIC__CTR_8cpp"/>
-      </node>
-      <node id="37">
-        <label>include/audioRender/MixMachine/MiniaudioObjects/Decoder.hpp</label>
-        <link refid="Decoder_8hpp"/>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-      </node>
-      <node id="44">
-        <label>include/tests/CapnpTest.cpp</label>
-        <link refid="CapnpTest_8cpp"/>
+      <node id="25">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ECHO.cpp</label>
+        <link refid="Type__FX__ECHO_8cpp"/>
       </node>
       <node id="26">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_EQ.cpp</label>
         <link refid="Type__FX__EQ_8cpp"/>
       </node>
-      <node id="20">
-        <label>include/audioRender/MixMachine/EFFECT/EFFECTS.cpp</label>
-        <link refid="EFFECTS_8cpp"/>
+      <node id="27">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_FILTER.cpp</label>
+        <link refid="Type__FX__FILTER_8cpp"/>
+      </node>
+      <node id="28">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_FLANGER.cpp</label>
+        <link refid="Type__FX__FLANGER_8cpp"/>
+      </node>
+      <node id="29">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_OCS_FILTER.cpp</label>
+        <link refid="Type__FX__OCS__FILTER_8cpp"/>
+      </node>
+      <node id="30">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_PANNER.cpp</label>
+        <link refid="Type__FX__PANNER_8cpp"/>
+      </node>
+      <node id="31">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_PHASER.cpp</label>
+        <link refid="Type__FX__PHASER_8cpp"/>
+      </node>
+      <node id="32">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp</label>
+        <link refid="Type__FX__ROBOT_8cpp"/>
+      </node>
+      <node id="33">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp</label>
+        <link refid="Type__FX__ROLL_8cpp"/>
+      </node>
+      <node id="34">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_TRANCE.cpp</label>
+        <link refid="Type__FX__TRANCE_8cpp"/>
+      </node>
+      <node id="35">
+        <label>include/audioRender/MixMachine/MixTypes/Type_MUSCTR.cpp</label>
+        <link refid="Type__MUSCTR_8cpp"/>
+      </node>
+      <node id="36">
+        <label>include/audioRender/MixMachine/MixTypes/Type_VOL.cpp</label>
+        <link refid="Type__VOL_8cpp"/>
+      </node>
+      <node id="17">
+        <label>include/audioRender/audioRender.cpp</label>
+        <link refid="audioRender_8cpp"/>
+      </node>
+      <node id="16">
+        <label>include/audioRender/audioRender.hpp</label>
+        <link refid="audioRender_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/db/Capnp/CapnpBinary/CapnpBinary.hpp</label>
@@ -288,98 +272,14 @@
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
       </node>
-      <node id="34">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_TRANCE.cpp</label>
-        <link refid="Type__FX__TRANCE_8cpp"/>
-      </node>
-      <node id="5">
-        <label>include/audioRender/audioRender.cpp</label>
-        <link refid="audioRender_8cpp"/>
-      </node>
-      <node id="33">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp</label>
-        <link refid="Type__FX__ROLL_8cpp"/>
-      </node>
-      <node id="40">
-        <label>include/audioRender/MixMachine/MUSIC_CTR/BattleDj.hpp</label>
-        <link refid="BattleDj_8hpp"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-      </node>
-      <node id="43">
-        <label>include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp</label>
-        <link refid="SetCue_8cpp"/>
-      </node>
-      <node id="7">
-        <label>include/interface/PDJE_interface.hpp</label>
-        <link refid="PDJE__interface_8hpp"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>include/players/audioPlayer/audioPlayer.hpp</label>
-        <link refid="audioPlayer_8hpp"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="55">
-        <label>include/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp</label>
-        <link refid="NoteTranslator_8cpp"/>
-      </node>
-      <node id="48">
-        <label>include/db/Capnp/Translators/MixTranslator/Mix.cpp</label>
-        <link refid="Mix_8cpp"/>
-      </node>
-      <node id="17">
-        <label>include/players/audioPlayer/audioCallbacks.cpp</label>
-        <link refid="audioCallbacks_8cpp"/>
-      </node>
-      <node id="25">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ECHO.cpp</label>
-        <link refid="Type__FX__ECHO_8cpp"/>
-      </node>
-      <node id="28">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_FLANGER.cpp</label>
-        <link refid="Type__FX__FLANGER_8cpp"/>
-      </node>
-      <node id="12">
-        <label>include/tests/audioTest.cpp</label>
-        <link refid="audioTest_8cpp"/>
-      </node>
-      <node id="38">
-        <label>include/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp</label>
-        <link refid="Decoder_8cpp"/>
-      </node>
-      <node id="22">
-        <label>include/audioRender/MixMachine/MixMachine.cpp</label>
-        <link refid="MixMachine_8cpp"/>
-      </node>
-      <node id="52">
-        <label>include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp</label>
-        <link refid="MusicTranslator_8hpp"/>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
-      </node>
-      <node id="35">
-        <label>include/audioRender/MixMachine/MixTypes/Type_MUSCTR.cpp</label>
-        <link refid="Type__MUSCTR_8cpp"/>
+      <node id="45">
+        <label>include/db/Capnp/Translators/FrameCalc.cpp</label>
+        <link refid="FrameCalc_8cpp"/>
       </node>
       <node id="2">
         <label>include/db/Capnp/Translators/FrameCalc.hpp</label>
@@ -400,20 +300,26 @@
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="30">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_PANNER.cpp</label>
-        <link refid="Type__FX__PANNER_8cpp"/>
+      <node id="47">
+        <label>include/db/Capnp/Translators/MixTranslator/Bpm.cpp</label>
+        <link refid="Bpm_8cpp"/>
       </node>
-      <node id="8">
-        <label>include/interface/PDJE_interface.cpp</label>
-        <link refid="PDJE__interface_8cpp"/>
+      <node id="46">
+        <label>include/db/Capnp/Translators/MixTranslator/Bpm.hpp</label>
+        <link refid="Bpm_8hpp"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
       </node>
-      <node id="11">
-        <label>include/players/audioPlayer/audioPlayer.cpp</label>
-        <link refid="audioPlayer_8cpp"/>
+      <node id="48">
+        <label>include/db/Capnp/Translators/MixTranslator/Mix.cpp</label>
+        <link refid="Mix_8cpp"/>
       </node>
       <node id="51">
         <label>include/db/Capnp/Translators/MixTranslator/Mix.hpp</label>
@@ -425,17 +331,111 @@
         <childnode refid="49" relation="include">
         </childnode>
       </node>
-      <node id="18">
-        <label>include/tests/manualAudioTest.cpp</label>
-        <link refid="manualAudioTest_8cpp"/>
-      </node>
-      <node id="10">
-        <label>include/tests/interfaceTest.cpp</label>
-        <link refid="interfaceTest_8cpp"/>
-      </node>
       <node id="50">
         <label>include/db/Capnp/Translators/MixTranslator/MixTranslator.cpp</label>
         <link refid="MixTranslator_8cpp"/>
+      </node>
+      <node id="49">
+        <label>include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp</label>
+        <link refid="MixTranslator_8hpp"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>include/db/Capnp/Translators/MusicTranslator/MusicTranslator.cpp</label>
+        <link refid="MusicTranslator_8cpp"/>
+      </node>
+      <node id="52">
+        <label>include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp</label>
+        <link refid="MusicTranslator_8hpp"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>include/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp</label>
+        <link refid="NoteTranslator_8cpp"/>
+      </node>
+      <node id="54">
+        <label>include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp</label>
+        <link refid="NoteTranslator_8hpp"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>include/interface/PDJE_interface.cpp</label>
+        <link refid="PDJE__interface_8cpp"/>
+      </node>
+      <node id="10">
+        <label>include/interface/PDJE_interface.hpp</label>
+        <link refid="PDJE__interface_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
+        <link refid="PDJE__polyglot__wraps_8cpp"/>
+      </node>
+      <node id="8">
+        <label>include/players/audioPlayer/audioCallbacks.cpp</label>
+        <link refid="audioCallbacks_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/players/audioPlayer/audioCallbacks.hpp</label>
+        <link refid="audioCallbacks_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>include/players/audioPlayer/audioPlayer.cpp</label>
+        <link refid="audioPlayer_8cpp"/>
+      </node>
+      <node id="9">
+        <label>include/players/audioPlayer/audioPlayer.hpp</label>
+        <link refid="audioPlayer_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>include/tests/CapnpTest.cpp</label>
+        <link refid="CapnpTest_8cpp"/>
+      </node>
+      <node id="15">
+        <label>include/tests/audioTest.cpp</label>
+        <link refid="audioTest_8cpp"/>
+      </node>
+      <node id="56">
+        <label>include/tests/dbTest.cpp</label>
+        <link refid="dbTest_8cpp"/>
+      </node>
+      <node id="13">
+        <label>include/tests/interfaceTest.cpp</label>
+        <link refid="interfaceTest_8cpp"/>
+      </node>
+      <node id="18">
+        <label>include/tests/manualAudioTest.cpp</label>
+        <link refid="manualAudioTest_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classCapReader" prot="public">CapReader</innerclass>
@@ -457,14 +457,14 @@
 <codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;MusicBinary.capnp.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;NoteBinary.capnp.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DType&gt;</highlight></codeline>
-<codeline lineno="19" refid="classCapReader" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCapReader" kindref="compound">CapReader</ref>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DType&gt;</highlight></codeline>
+<codeline lineno="19" refid="classCapReader" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCapReader_1a1694d244c609178756b8f3085175c89d" kindref="member">CapReader</ref>{</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="21" refid="classCapReader_1ab1d4c5ef09fe853b850b0c0ab8e1def9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;kj::byte&gt;<sp/><ref refid="classCapReader_1ab1d4c5ef09fe853b850b0c0ab8e1def9" kindref="member">Origin</ref>;</highlight></codeline>
 <codeline lineno="22" refid="classCapReader_1aaffa08640fa095ee05262727ec068b12" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;capnp::FlatArrayMessageReader&gt;<sp/><ref refid="classCapReader_1aaffa08640fa095ee05262727ec068b12" kindref="member">capreader</ref>;</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCapReader_1a1694d244c609178756b8f3085175c89d" kindref="member">CapReader</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCapReader_1ad46e826dc28452e49811347bdabf7e59" kindref="member">~CapReader</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24" refid="classCapReader_1a1694d244c609178756b8f3085175c89d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCapReader_1a1694d244c609178756b8f3085175c89d" kindref="member">CapReader</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25" refid="classCapReader_1ad46e826dc28452e49811347bdabf7e59" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCapReader_1ad46e826dc28452e49811347bdabf7e59" kindref="member">~CapReader</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="26" refid="classCapReader_1ad36b1087da0e87efd8ca1cb661057487" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;typename<sp/>DType::Reader&gt;<sp/><ref refid="classCapReader_1ad36b1087da0e87efd8ca1cb661057487" kindref="member">Rp</ref>;</highlight></codeline>
 <codeline lineno="34" refid="classCapReader_1a9f903ae7fabe82ce0cd1a2c78d3c6583" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classCapReader_1a9f903ae7fabe82ce0cd1a2c78d3c6583" kindref="member">open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;kj::byte&gt;&amp;<sp/>capnpBinary){</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
@@ -486,18 +486,18 @@
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="59" refid="classCapReader_1ac4a0a5f25cfd9c18834f6f233b370310" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;kj::byte&gt;<sp/><ref refid="classCapReader_1ac4a0a5f25cfd9c18834f6f233b370310" kindref="member">out</ref>(){</highlight></codeline>
+<codeline lineno="59" refid="classCapReader_1a4e2f49905c40fd9410e6165f04202bf9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;kj::byte&gt;<sp/><ref refid="classCapReader_1a4e2f49905c40fd9410e6165f04202bf9" kindref="member">out</ref>(){</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classCapReader_1ab1d4c5ef09fe853b850b0c0ab8e1def9" kindref="member">Origin</ref>;</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="62"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DType&gt;</highlight></codeline>
-<codeline lineno="70" refid="classCapWriter" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCapWriter" kindref="compound">CapWriter</ref>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DType&gt;</highlight></codeline>
+<codeline lineno="70" refid="classCapWriter" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCapWriter_1add2848133fbd26343b8ac2f14b3ba920" kindref="member">CapWriter</ref>{</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="72" refid="classCapWriter_1a1c78fc99e2e1014cac3fcea34cedf623" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;capnp::MallocMessageBuilder&gt;<sp/><ref refid="classCapWriter_1a1c78fc99e2e1014cac3fcea34cedf623" kindref="member">capwriter</ref>;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCapWriter_1add2848133fbd26343b8ac2f14b3ba920" kindref="member">CapWriter</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCapWriter_1ae9c65adb40a65cfa353fc0fced9c44d1" kindref="member">~CapWriter</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74" refid="classCapWriter_1add2848133fbd26343b8ac2f14b3ba920" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCapWriter_1add2848133fbd26343b8ac2f14b3ba920" kindref="member">CapWriter</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75" refid="classCapWriter_1ae9c65adb40a65cfa353fc0fced9c44d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCapWriter_1ae9c65adb40a65cfa353fc0fced9c44d1" kindref="member">~CapWriter</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="76" refid="classCapWriter_1a79ce699101189c8c1ce715584b118008" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;typename<sp/>DType::Builder&gt;<sp/><ref refid="classCapWriter_1a79ce699101189c8c1ce715584b118008" kindref="member">Wp</ref>;</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
 <codeline lineno="85" refid="classCapWriter_1a70103b74f17a5fe1d796d69893465b40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classCapWriter_1a70103b74f17a5fe1d796d69893465b40" kindref="member">open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;kj::byte&gt;&amp;<sp/>capnpBinary){</highlight></codeline>
@@ -537,7 +537,7 @@
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="133" refid="classCapWriter_1a643b6ef4b9d22ebf3d8926dcf46f8570" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;kj::byte&gt;<sp/><ref refid="classCapWriter_1a643b6ef4b9d22ebf3d8926dcf46f8570" kindref="member">out</ref>(){</highlight></codeline>
+<codeline lineno="133" refid="classCapWriter_1ac4a894288306c7e0d6afc75fba103f3c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;kj::byte&gt;<sp/><ref refid="classCapWriter_1ac4a894288306c7e0d6afc75fba103f3c" kindref="member">out</ref>(){</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>farr<sp/>=<sp/>capnp::messageToFlatArray(<ref refid="classCapWriter_1a1c78fc99e2e1014cac3fcea34cedf623" kindref="member">capwriter</ref>.value());</highlight></codeline>

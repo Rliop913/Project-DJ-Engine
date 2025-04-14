@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
   <compounddef id="structmusdata" kind="struct" language="C++" prot="public">
     <compoundname>musdata</compoundname>
     <includes refid="musicDB_8hpp" local="no">musicDB.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structmusdata_1a79bba5e62dddb894f040a563c5927222" prot="public" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string musdata::title</definition>
         <argsstring></argsstring>
         <name>title</name>
+        <qualifiedname>musdata::title</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>std::string musdata::composer</definition>
         <argsstring></argsstring>
         <name>composer</name>
+        <qualifiedname>musdata::composer</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,6 +37,7 @@
         <definition>std::string musdata::musicPath</definition>
         <argsstring></argsstring>
         <name>musicPath</name>
+        <qualifiedname>musdata::musicPath</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -48,6 +51,7 @@
         <definition>BIN musdata::bpmBinary</definition>
         <argsstring></argsstring>
         <name>bpmBinary</name>
+        <qualifiedname>musdata::bpmBinary</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -61,6 +65,7 @@
         <definition>double musdata::bpm</definition>
         <argsstring></argsstring>
         <name>bpm</name>
+        <qualifiedname>musdata::bpm</qualifiedname>
         <initializer>= -1.0</initializer>
         <briefdescription>
         </briefdescription>
@@ -75,6 +80,7 @@
         <definition>std::string musdata::firstBar</definition>
         <argsstring></argsstring>
         <name>firstBar</name>
+        <qualifiedname>musdata::firstBar</qualifiedname>
         <briefdescription>
 <para>this means the first beat&apos;s position. The measurement unit is a PCM frame. For higher precision, double value is stored as strings in Cap’n Proto, so the corresponding variable is also a string. </para>
         </briefdescription>
@@ -84,13 +90,14 @@
         </inbodydescription>
         <location file="include/db/musicDB.hpp" line="21" column="17" bodyfile="include/db/musicDB.hpp" bodystart="21" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="structmusdata_1a5ac662aaa154dffde0bbf676df945c22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>musdata::musdata</definition>
         <argsstring>(stmt *dbstate)</argsstring>
         <name>musdata</name>
+        <qualifiedname>musdata::musdata</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> *</type>
           <declname>dbstate</declname>
@@ -119,6 +126,7 @@
         <definition>musdata::musdata</definition>
         <argsstring>(const std::string &amp;title__=&quot;&quot;, const std::string &amp;composer__=&quot;&quot;, const std::string &amp;musicPath__=&quot;&quot;, const double bpm__=-1.0)</argsstring>
         <name>musdata</name>
+        <qualifiedname>musdata::musdata</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>title__</declname>
@@ -188,6 +196,7 @@
         <definition>bool musdata::GenSearchSTMT</definition>
         <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
         <name>GenSearchSTMT</name>
+        <qualifiedname>musdata::GenSearchSTMT</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
           <declname>dbstate</declname>
@@ -232,6 +241,7 @@
         <definition>bool musdata::GenInsertSTMT</definition>
         <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
         <name>GenInsertSTMT</name>
+        <qualifiedname>musdata::GenInsertSTMT</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
           <declname>dbstate</declname>
@@ -271,7 +281,7 @@
         </inbodydescription>
         <location file="include/db/musicDB.hpp" line="64" column="10" bodyfile="include/db/musicDB.cpp" bodystart="79" bodyend="100"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>the music meta data&apos;s struct </para>
     </briefdescription>
@@ -282,28 +292,28 @@
         <label>musdata</label>
         <link refid="structmusdata"/>
         <childnode refid="2" relation="usage">
+          <edgelabel>composer</edgelabel>
+          <edgelabel>firstBar</edgelabel>
+          <edgelabel>musicPath</edgelabel>
+          <edgelabel>title</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
           <edgelabel>bpmBinary</edgelabel>
         </childnode>
-        <childnode refid="3" relation="usage">
-          <edgelabel>title</edgelabel>
-          <edgelabel>firstBar</edgelabel>
-          <edgelabel>composer</edgelabel>
-          <edgelabel>musicPath</edgelabel>
+      </node>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
       <node id="4">
-        <label>std::basic_string&lt; char &gt;</label>
-      </node>
-      <node id="2">
         <label>std::vector&lt; u_int8_t &gt;</label>
       </node>
-      <node id="3">
-        <label>std::string</label>
-        <childnode refid="4" relation="public-inheritance">
-        </childnode>
-      </node>
     </collaborationgraph>
-    <location file="include/db/musicDB.hpp" line="12" column="14" bodyfile="include/db/musicDB.hpp" bodystart="12" bodyend="65"/>
+    <location file="include/db/musicDB.hpp" line="12" column="1" bodyfile="include/db/musicDB.hpp" bodystart="12" bodyend="65"/>
     <listofallmembers>
       <member refid="structmusdata_1a4739e5c5967894bb4a5d6566b8e2a422" prot="public" virt="non-virtual"><scope>musdata</scope><name>bpm</name></member>
       <member refid="structmusdata_1aaba9b1ecc8a2a58f74a00ec2d9041a28" prot="public" virt="non-virtual"><scope>musdata</scope><name>bpmBinary</name></member>

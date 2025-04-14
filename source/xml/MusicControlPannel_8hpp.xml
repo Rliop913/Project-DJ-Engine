@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
   <compounddef id="MusicControlPannel_8hpp" kind="file" language="C++">
     <compoundname>MusicControlPannel.hpp</compoundname>
     <includes local="no">miniaudio.h</includes>
@@ -9,15 +9,6 @@
     <includedby refid="audioCallbacks_8hpp" local="yes">include/players/audioPlayer/audioCallbacks.hpp</includedby>
     <includedby refid="audioPlayer_8cpp" local="yes">include/players/audioPlayer/audioPlayer.cpp</includedby>
     <incdepgraph>
-      <node id="15">
-        <label>FAUST_ROBOT_manual.hpp</label>
-      </node>
-      <node id="14">
-        <label>FAUST_PHASER_manual.hpp</label>
-      </node>
-      <node id="2">
-        <label>miniaudio.h</label>
-      </node>
       <node id="4">
         <label>ManualMix.hpp</label>
         <link refid="ManualMix_8hpp"/>
@@ -54,9 +45,6 @@
         <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="30">
-        <label>capnp/serialize.h</label>
-      </node>
       <node id="1">
         <label>include/audioRender/ManualMix/MusicControlPannel.hpp</label>
         <link refid="MusicControlPannel_8hpp"/>
@@ -65,46 +53,6 @@
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="25">
-        <label>cmath</label>
-      </node>
-      <node id="31">
-        <label>MixBinary.capnp.h</label>
-      </node>
-      <node id="20">
-        <label>string</label>
-      </node>
-      <node id="6">
-        <label>FAUST_COMPRESSOR_manual.hpp</label>
-      </node>
-      <node id="3">
-        <label>map</label>
-      </node>
-      <node id="22">
-        <label>sqlite3.h</label>
-      </node>
-      <node id="18">
-        <label>FAUST_VOL_manual.hpp</label>
-      </node>
-      <node id="16">
-        <label>FAUST_ROLL_manual.hpp</label>
-      </node>
-      <node id="11">
-        <label>FAUST_FLANGER_manual.hpp</label>
-      </node>
-      <node id="35">
-        <label>hwy/aligned_allocator.h</label>
-      </node>
-      <node id="23">
-        <label>dbState.hpp</label>
-        <link refid="dbState_8hpp"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
         </childnode>
       </node>
       <node id="27">
@@ -125,48 +73,6 @@
         <childnode refid="33" relation="include">
         </childnode>
       </node>
-      <node id="28">
-        <label>optional</label>
-      </node>
-      <node id="7">
-        <label>FAUST_DISTORTION_manual.hpp</label>
-      </node>
-      <node id="21">
-        <label>vector</label>
-      </node>
-      <node id="10">
-        <label>FAUST_FILTERS_manual.hpp</label>
-      </node>
-      <node id="8">
-        <label>FAUST_ECHO_manual.hpp</label>
-      </node>
-      <node id="33">
-        <label>NoteBinary.capnp.h</label>
-      </node>
-      <node id="19">
-        <label>musicDB.hpp</label>
-        <link refid="musicDB_8hpp"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>FAUST_PANNER_manual.hpp</label>
-      </node>
-      <node id="34">
-        <label>hwy/highway.h</label>
-      </node>
-      <node id="17">
-        <label>FAUST_TRANCE_manual.hpp</label>
-      </node>
-      <node id="9">
-        <label>FAUST_EQ_manual.hpp</label>
-      </node>
       <node id="24">
         <label>FrameCalc.hpp</label>
         <link refid="FrameCalc_8hpp"/>
@@ -181,11 +87,75 @@
         <childnode refid="35" relation="include">
         </childnode>
       </node>
-      <node id="32">
-        <label>MusicBinary.capnp.h</label>
+      <node id="23">
+        <label>dbState.hpp</label>
+        <link refid="dbState_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>musicDB.hpp</label>
+        <link refid="musicDB_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>FAUST_COMPRESSOR_manual.hpp</label>
+      </node>
+      <node id="7">
+        <label>FAUST_DISTORTION_manual.hpp</label>
+      </node>
+      <node id="8">
+        <label>FAUST_ECHO_manual.hpp</label>
+      </node>
+      <node id="9">
+        <label>FAUST_EQ_manual.hpp</label>
+      </node>
+      <node id="10">
+        <label>FAUST_FILTERS_manual.hpp</label>
+      </node>
+      <node id="11">
+        <label>FAUST_FLANGER_manual.hpp</label>
       </node>
       <node id="12">
         <label>FAUST_OCS_FILTER_manual.hpp</label>
+      </node>
+      <node id="13">
+        <label>FAUST_PANNER_manual.hpp</label>
+      </node>
+      <node id="14">
+        <label>FAUST_PHASER_manual.hpp</label>
+      </node>
+      <node id="15">
+        <label>FAUST_ROBOT_manual.hpp</label>
+      </node>
+      <node id="16">
+        <label>FAUST_ROLL_manual.hpp</label>
+      </node>
+      <node id="17">
+        <label>FAUST_TRANCE_manual.hpp</label>
+      </node>
+      <node id="18">
+        <label>FAUST_VOL_manual.hpp</label>
+      </node>
+      <node id="31">
+        <label>MixBinary.capnp.h</label>
+      </node>
+      <node id="32">
+        <label>MusicBinary.capnp.h</label>
+      </node>
+      <node id="33">
+        <label>NoteBinary.capnp.h</label>
       </node>
       <node id="26">
         <label>algorithm</label>
@@ -193,11 +163,45 @@
       <node id="29">
         <label>capnp/message.h</label>
       </node>
+      <node id="30">
+        <label>capnp/serialize.h</label>
+      </node>
+      <node id="25">
+        <label>cmath</label>
+      </node>
+      <node id="35">
+        <label>hwy/aligned_allocator.h</label>
+      </node>
+      <node id="34">
+        <label>hwy/highway.h</label>
+      </node>
+      <node id="3">
+        <label>map</label>
+      </node>
       <node id="5">
         <label>memory</label>
       </node>
+      <node id="2">
+        <label>miniaudio.h</label>
+      </node>
+      <node id="28">
+        <label>optional</label>
+      </node>
+      <node id="22">
+        <label>sqlite3.h</label>
+      </node>
+      <node id="20">
+        <label>string</label>
+      </node>
+      <node id="21">
+        <label>vector</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="2">
+        <label>include/audioRender/ManualMix/MusicControlPannel.cpp</label>
+        <link refid="MusicControlPannel_8cpp"/>
+      </node>
       <node id="1">
         <label>include/audioRender/ManualMix/MusicControlPannel.hpp</label>
         <link refid="MusicControlPannel_8hpp"/>
@@ -208,21 +212,9 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="3">
-        <label>include/players/audioPlayer/audioCallbacks.hpp</label>
-        <link refid="audioCallbacks_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>include/audioRender/ManualMix/MusicControlPannel.cpp</label>
-        <link refid="MusicControlPannel_8cpp"/>
-      </node>
-      <node id="8">
-        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
-        <link refid="PDJE__polyglot__wraps_8cpp"/>
+      <node id="7">
+        <label>include/interface/PDJE_interface.cpp</label>
+        <link refid="PDJE__interface_8cpp"/>
       </node>
       <node id="6">
         <label>include/interface/PDJE_interface.hpp</label>
@@ -234,6 +226,26 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
+      <node id="8">
+        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
+        <link refid="PDJE__polyglot__wraps_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/players/audioPlayer/audioCallbacks.cpp</label>
+        <link refid="audioCallbacks_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/players/audioPlayer/audioCallbacks.hpp</label>
+        <link refid="audioCallbacks_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/players/audioPlayer/audioPlayer.cpp</label>
+        <link refid="audioPlayer_8cpp"/>
+      </node>
       <node id="5">
         <label>include/players/audioPlayer/audioPlayer.hpp</label>
         <link refid="audioPlayer_8hpp"/>
@@ -244,21 +256,9 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="4">
-        <label>include/players/audioPlayer/audioCallbacks.cpp</label>
-        <link refid="audioCallbacks_8cpp"/>
-      </node>
       <node id="11">
         <label>include/tests/audioTest.cpp</label>
         <link refid="audioTest_8cpp"/>
-      </node>
-      <node id="7">
-        <label>include/interface/PDJE_interface.cpp</label>
-        <link refid="PDJE__interface_8cpp"/>
-      </node>
-      <node id="10">
-        <label>include/players/audioPlayer/audioPlayer.cpp</label>
-        <link refid="audioPlayer_8cpp"/>
       </node>
       <node id="9">
         <label>include/tests/interfaceTest.cpp</label>
@@ -267,7 +267,7 @@
     </invincdepgraph>
     <innerclass refid="structMusicOnDeck" prot="public">MusicOnDeck</innerclass>
     <innerclass refid="classMusicControlPannel" prot="public">MusicControlPannel</innerclass>
-      <sectiondef kind="typedef">
+    <sectiondef kind="typedef">
       <memberdef kind="typedef" id="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" prot="public" static="no">
         <type>std::string</type>
         <definition>using TITLE =  std::string</definition>
@@ -305,9 +305,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/audioRender/ManualMix/MusicControlPannel.hpp" line="28" column="1" bodyfile="include/audioRender/ManualMix/MusicControlPannel.hpp" bodystart="28" bodyend="-1"/>
+        <location file="include/audioRender/ManualMix/MusicControlPannel.hpp" line="32" column="1" bodyfile="include/audioRender/ManualMix/MusicControlPannel.hpp" bodystart="32" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -323,50 +323,54 @@
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight></codeline>
-<codeline lineno="11" refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" kindref="member">TITLE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>std::string;</highlight></codeline>
+<codeline lineno="11" refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" kindref="member">TITLE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>std::string;</highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13" refid="MusicControlPannel_8hpp_1a4c72c3001db71218d5703fe8033a6792" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="MusicControlPannel_8hpp_1a4c72c3001db71218d5703fe8033a6792" kindref="member">LOADED_LIST</ref><sp/><sp/><sp/>=<sp/>std::vector&lt;TITLE&gt;;</highlight></codeline>
+<codeline lineno="13" refid="MusicControlPannel_8hpp_1a4c72c3001db71218d5703fe8033a6792" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="MusicControlPannel_8hpp_1a4c72c3001db71218d5703fe8033a6792" kindref="member">LOADED_LIST</ref><sp/><sp/><sp/>=<sp/>std::vector&lt;TITLE&gt;;</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15" refid="structMusicOnDeck" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structMusicOnDeck" kindref="compound">MusicOnDeck</ref>{</highlight></codeline>
-<codeline lineno="16" refid="structMusicOnDeck_1ad0a6052696e1eda69e1de2ca883377d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structMusicOnDeck_1ad0a6052696e1eda69e1de2ca883377d9" kindref="member">play</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="17" refid="structMusicOnDeck_1a240f1505e5be5d44b00310c544f72fa6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>ma_decoder<sp/><ref refid="structMusicOnDeck_1a240f1505e5be5d44b00310c544f72fa6" kindref="member">dec</ref>;</highlight></codeline>
-<codeline lineno="18" refid="structMusicOnDeck_1adb0236f205c3fb887572956235e910b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref>*<sp/><ref refid="structMusicOnDeck_1adb0236f205c3fb887572956235e910b2" kindref="member">fxP</ref>;</highlight></codeline>
-<codeline lineno="19" refid="structMusicOnDeck_1a25b320b8236579fcccd0d33682b98bd6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structMusicOnDeck_1a25b320b8236579fcccd0d33682b98bd6" kindref="member">MusicOnDeck</ref>()<sp/>:<sp/><ref refid="structMusicOnDeck_1adb0236f205c3fb887572956235e910b2" kindref="member">fxP</ref>(new<sp/><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref>(48000))<sp/>{};</highlight></codeline>
-<codeline lineno="20" refid="structMusicOnDeck_1ac8fb7619e76b328d2714d273deb77518" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structMusicOnDeck_1ac8fb7619e76b328d2714d273deb77518" kindref="member">~MusicOnDeck</ref>(){</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ma_decoder_uninit(&amp;<ref refid="structMusicOnDeck_1a240f1505e5be5d44b00310c544f72fa6" kindref="member">dec</ref>);</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="structMusicOnDeck_1adb0236f205c3fb887572956235e910b2" kindref="member">fxP</ref>;</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28" refid="MusicControlPannel_8hpp_1ab088038ca92417562a68857146129830" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="MusicControlPannel_8hpp_1ab088038ca92417562a68857146129830" kindref="member">LOADS</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>std::map&lt;TITLE,<sp/>MusicOnDeck&gt;;</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="structMusicOnDeck" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structMusicOnDeck_1a25b320b8236579fcccd0d33682b98bd6" kindref="member">MusicOnDeck</ref>{</highlight></codeline>
+<codeline lineno="20" refid="structMusicOnDeck_1ad0a6052696e1eda69e1de2ca883377d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structMusicOnDeck_1ad0a6052696e1eda69e1de2ca883377d9" kindref="member">play</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21" refid="structMusicOnDeck_1a240f1505e5be5d44b00310c544f72fa6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>ma_decoder<sp/><ref refid="structMusicOnDeck_1a240f1505e5be5d44b00310c544f72fa6" kindref="member">dec</ref>;</highlight></codeline>
+<codeline lineno="22" refid="structMusicOnDeck_1adb0236f205c3fb887572956235e910b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref>*<sp/><ref refid="structMusicOnDeck_1adb0236f205c3fb887572956235e910b2" kindref="member">fxP</ref>;</highlight></codeline>
+<codeline lineno="23" refid="structMusicOnDeck_1a25b320b8236579fcccd0d33682b98bd6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structMusicOnDeck_1a25b320b8236579fcccd0d33682b98bd6" kindref="member">MusicOnDeck</ref>()<sp/>:<sp/><ref refid="structMusicOnDeck_1adb0236f205c3fb887572956235e910b2" kindref="member">fxP</ref>(new<sp/><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref>(48000))<sp/>{};</highlight></codeline>
+<codeline lineno="24" refid="structMusicOnDeck_1ac8fb7619e76b328d2714d273deb77518" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structMusicOnDeck_1ac8fb7619e76b328d2714d273deb77518" kindref="member">~MusicOnDeck</ref>(){</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ma_decoder_uninit(&amp;<ref refid="structMusicOnDeck_1a240f1505e5be5d44b00310c544f72fa6" kindref="member">dec</ref>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="structMusicOnDeck_1adb0236f205c3fb887572956235e910b2" kindref="member">fxP</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32" refid="classMusicControlPannel" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMusicControlPannel" kindref="compound">MusicControlPannel</ref>{</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32" refid="MusicControlPannel_8hpp_1ab088038ca92417562a68857146129830" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="MusicControlPannel_8hpp_1ab088038ca92417562a68857146129830" kindref="member">LOADS</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>std::map&lt;TITLE,<sp/>MusicOnDeck&gt;;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35" refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="MusicControlPannel_8hpp_1ab088038ca92417562a68857146129830" kindref="member">LOADS</ref><sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>;<sp/></highlight></codeline>
-<codeline lineno="36" refid="classMusicControlPannel_1a265ebc998ff106d6e0cf970a4cd3577f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1a265ebc998ff106d6e0cf970a4cd3577f" kindref="member">fsize</ref>;</highlight></codeline>
-<codeline lineno="37" refid="classMusicControlPannel_1a782d114ee5d83f0904a556ff19d58706" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;<sp/><ref refid="classMusicControlPannel_1a782d114ee5d83f0904a556ff19d58706" kindref="member">L</ref>;</highlight></codeline>
-<codeline lineno="38" refid="classMusicControlPannel_1a50d07acc06b3befe66b5bd149916acd7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;<sp/><ref refid="classMusicControlPannel_1a50d07acc06b3befe66b5bd149916acd7" kindref="member">R</ref>;</highlight></codeline>
-<codeline lineno="39" refid="classMusicControlPannel_1a5cadec26088b9207b4bbe3a6df1710e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/><ref refid="classMusicControlPannel_1a5cadec26088b9207b4bbe3a6df1710e4" kindref="member">FaustStyle</ref>[2];</highlight></codeline>
-<codeline lineno="40" refid="classMusicControlPannel_1aa9c6be0915123d9a4a24681b04a756f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="FrameCalc_8hpp_1afaba0c56b304d05ee34bd4cc22319217" kindref="member">SIMD_FLOAT</ref><sp/><ref refid="classMusicControlPannel_1aa9c6be0915123d9a4a24681b04a756f7" kindref="member">tempFrames</ref>;</highlight></codeline>
+<codeline lineno="39" refid="classMusicControlPannel" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMusicControlPannel_1a5cda48876a96b5ff01e56493ea52f1b7" kindref="member">MusicControlPannel</ref>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1a80888f4f40256430b8482a42fb2f6d8d" kindref="member">LoadMusic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmusdata" kindref="compound">musdata</ref>&amp;<sp/>Mus);</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1a76b9f68b3d3a4fd5b807e4ef9c541e85" kindref="member">CueMusic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" kindref="member">TITLE</ref>&amp;<sp/>title,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>newPos);</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1a998210e51746edd2547833d6584ccece" kindref="member">SetMusic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" kindref="member">TITLE</ref>&amp;<sp/>title,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>onOff);</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="MusicControlPannel_8hpp_1a4c72c3001db71218d5703fe8033a6792" kindref="member">LOADED_LIST</ref><sp/><ref refid="classMusicControlPannel_1ad2ab2405535221002f7ad2d096169f9e" kindref="member">GetLoadedMusicList</ref>();</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1aab9fd1214bab146fe3de2e4715f41e74" kindref="member">UnloadMusic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" kindref="member">TITLE</ref>&amp;<sp/>title);</highlight></codeline>
+<codeline lineno="42" refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="MusicControlPannel_8hpp_1ab088038ca92417562a68857146129830" kindref="member">LOADS</ref><sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>;<sp/></highlight></codeline>
+<codeline lineno="43" refid="classMusicControlPannel_1a265ebc998ff106d6e0cf970a4cd3577f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1a265ebc998ff106d6e0cf970a4cd3577f" kindref="member">fsize</ref>;</highlight></codeline>
+<codeline lineno="44" refid="classMusicControlPannel_1a782d114ee5d83f0904a556ff19d58706" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;<sp/><ref refid="classMusicControlPannel_1a782d114ee5d83f0904a556ff19d58706" kindref="member">L</ref>;</highlight></codeline>
+<codeline lineno="45" refid="classMusicControlPannel_1a50d07acc06b3befe66b5bd149916acd7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;<sp/><ref refid="classMusicControlPannel_1a50d07acc06b3befe66b5bd149916acd7" kindref="member">R</ref>;</highlight></codeline>
+<codeline lineno="46" refid="classMusicControlPannel_1a5cadec26088b9207b4bbe3a6df1710e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/><ref refid="classMusicControlPannel_1a5cadec26088b9207b4bbe3a6df1710e4" kindref="member">FaustStyle</ref>[2];</highlight></codeline>
+<codeline lineno="47" refid="classMusicControlPannel_1aa9c6be0915123d9a4a24681b04a756f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="FrameCalc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref><sp/><ref refid="classMusicControlPannel_1aa9c6be0915123d9a4a24681b04a756f7" kindref="member">tempFrames</ref>;</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1ac5484c7b650f475d92edaa7bcd7c32d0" kindref="member">GetPCMFrames</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>array,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>FrameSize);</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref>*<sp/><ref refid="classMusicControlPannel_1a42d3ed8e5b7de5f0aabedbdc5bf74d95" kindref="member">getFXHandle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" kindref="member">TITLE</ref>&amp;<sp/>title);</highlight></codeline>
-<codeline lineno="51" refid="classMusicControlPannel_1a5cda48876a96b5ff01e56493ea52f1b7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1a5cda48876a96b5ff01e56493ea52f1b7" kindref="member">MusicControlPannel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>FrameSize):<sp/><ref refid="classMusicControlPannel_1a265ebc998ff106d6e0cf970a4cd3577f" kindref="member">fsize</ref>(FrameSize){}</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1ad81a485f6df7756f01a2f97779ab1bab" kindref="member">~MusicControlPannel</ref>();</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1a80888f4f40256430b8482a42fb2f6d8d" kindref="member">LoadMusic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmusdata" kindref="compound">musdata</ref>&amp;<sp/>Mus);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1a76b9f68b3d3a4fd5b807e4ef9c541e85" kindref="member">CueMusic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" kindref="member">TITLE</ref>&amp;<sp/>title,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>newPos);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1a998210e51746edd2547833d6584ccece" kindref="member">SetMusic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" kindref="member">TITLE</ref>&amp;<sp/>title,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>onOff);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="MusicControlPannel_8hpp_1a4c72c3001db71218d5703fe8033a6792" kindref="member">LOADED_LIST</ref><sp/><ref refid="classMusicControlPannel_1ad2ab2405535221002f7ad2d096169f9e" kindref="member">GetLoadedMusicList</ref>();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1aab9fd1214bab146fe3de2e4715f41e74" kindref="member">UnloadMusic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" kindref="member">TITLE</ref>&amp;<sp/>title);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1ac5484c7b650f475d92edaa7bcd7c32d0" kindref="member">GetPCMFrames</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>array,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>FrameSize);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref>*<sp/><ref refid="classMusicControlPannel_1a42d3ed8e5b7de5f0aabedbdc5bf74d95" kindref="member">getFXHandle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005" kindref="member">TITLE</ref>&amp;<sp/>title);</highlight></codeline>
+<codeline lineno="111" refid="classMusicControlPannel_1a5cda48876a96b5ff01e56493ea52f1b7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1a5cda48876a96b5ff01e56493ea52f1b7" kindref="member">MusicControlPannel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>FrameSize):<sp/><ref refid="classMusicControlPannel_1a265ebc998ff106d6e0cf970a4cd3577f" kindref="member">fsize</ref>(FrameSize){}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1ad81a485f6df7756f01a2f97779ab1bab" kindref="member">~MusicControlPannel</ref>();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="include/audioRender/ManualMix/MusicControlPannel.hpp"/>
   </compounddef>

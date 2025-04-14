@@ -30,7 +30,6 @@ Program Listing for File EFFECTS.hpp
    #include "FAUST_VOL.hpp"
    #include "FAUST_ROBOT.hpp"
    
-   
    template<typename Fclass>
    class FaustDType : public Fclass{
    private:
@@ -55,7 +54,6 @@ Program Listing for File EFFECTS.hpp
            PTR[0] = L.data();
            PTR[1] = R.data();
        }
-   
        void CopyToFaust(){
            float* lp = L.data();
            float* rp = R.data();
@@ -66,7 +64,6 @@ Program Listing for File EFFECTS.hpp
                *(rp++) = *(op++);
            }
        }
-   
        void WriteToOrigin()
        {
            float* lp = L.data();
@@ -80,7 +77,6 @@ Program Listing for File EFFECTS.hpp
        }
    
    };
-   
    
    template<typename FaustClass>
    class FaustObject{

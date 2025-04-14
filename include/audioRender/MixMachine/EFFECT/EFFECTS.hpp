@@ -18,7 +18,11 @@
 #include "FAUST_VOL.hpp"
 #include "FAUST_ROBOT.hpp"
 
-
+/**
+ * @brief Template class that inherits from FXclass and is used to contain data for FX processing.
+ * 
+ * @tparam Fclass, the base class
+ */
 template<typename Fclass>
 class FaustDType : public Fclass{
 private:
@@ -43,7 +47,10 @@ public:
         PTR[0] = L.data();
         PTR[1] = R.data();
     }
-
+    /**
+     * @brief copy pcm frames into Faust Style array
+     * 
+     */
     void CopyToFaust(){
         float* lp = L.data();
         float* rp = R.data();
@@ -54,7 +61,10 @@ public:
             *(rp++) = *(op++);
         }
     }
-
+    /**
+     * @brief copy Faust Style array to pcm array.
+     * 
+     */
     void WriteToOrigin()
     {
         float* lp = L.data();
@@ -69,13 +79,23 @@ public:
 
 };
 
-
+/**
+ * @brief A class that defines the behavior of an FX
+ * 
+ * @tparam FaustClass, the base class
+ */
 template<typename FaustClass>
 class FaustObject{
 
 public:
     FaustClass managingClass;
     
+    /**
+     * @brief Consumes and processes all FX jobs using the provided base class.
+     * 
+     * @tparam FClass, the base class
+     * @param jobs the FX jobs
+     */
     template<typename FClass>
     // __attribute__((optimize("O2")))
     void consume(std::vector<FaustDType<FClass>>& jobs)
@@ -90,6 +110,10 @@ public:
     }
 };
 
+/**
+ * @brief A class that manages all FX structures
+ * 
+ */
 class FaustEffects {
 public:
     FaustObject<CompressorFAUST>compressor;
@@ -121,5 +145,9 @@ public:
     std::vector<FaustDType<Robot_PDJE>>         robotData;
     
     FaustEffects(int initSampleRate);
+    /**
+     * @brief call consume() from every FaustObjects
+     * 
+     */
     void consumeAll();
 };

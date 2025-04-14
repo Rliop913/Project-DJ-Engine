@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
   <compounddef id="classInputEngine" kind="class" language="C++" prot="public">
     <compoundname>InputEngine</compoundname>
     <includes refid="PDJE__INPUT_8hpp" local="no">PDJE_INPUT.hpp</includes>
@@ -8,12 +8,13 @@
         <type>typename OS_INPUT</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classInputEngine_1afc2f4685d3d93a2a8e4ae8b623cb91f2" prot="private" static="no" mutable="no">
         <type>OS_INPUT</type>
         <definition>OS_INPUT InputEngine&lt; OS_INPUT &gt;::osAPI</definition>
         <argsstring></argsstring>
         <name>osAPI</name>
+        <qualifiedname>InputEngine::osAPI</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,10 +24,11 @@
         <location file="include/input/PDJE_INPUT.hpp" line="23" column="14" bodyfile="include/input/PDJE_INPUT.hpp" bodystart="23" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classInputEngine_1aef95f8bda007f7b4384407652551c197" prot="private" static="no" mutable="no">
-        <type><ref refid="LINUX__SUDO__GETTER_8cpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref></type>
+        <type><ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref></type>
         <definition>DEV_LIST InputEngine&lt; OS_INPUT &gt;::activated_devices</definition>
         <argsstring></argsstring>
         <name>activated_devices</name>
+        <qualifiedname>InputEngine::activated_devices</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,13 +37,14 @@
         </inbodydescription>
         <location file="include/input/PDJE_INPUT.hpp" line="24" column="14" bodyfile="include/input/PDJE_INPUT.hpp" bodystart="24" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classInputEngine_1aa1a1f4dc0504dea603a99493f1dd5d96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>InputEngine&lt; OS_INPUT &gt;::InputEngine</definition>
         <argsstring>()</argsstring>
         <name>InputEngine</name>
+        <qualifiedname>InputEngine::InputEngine</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -55,6 +58,7 @@
         <definition>InputEngine&lt; OS_INPUT &gt;::~InputEngine</definition>
         <argsstring>()</argsstring>
         <name>~InputEngine</name>
+        <qualifiedname>InputEngine::~InputEngine</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -68,8 +72,9 @@
         <definition>void InputEngine&lt; OS_INPUT &gt;::StoreDeviceList</definition>
         <argsstring>(const DEV_LIST &amp;list)</argsstring>
         <name>StoreDeviceList</name>
+        <qualifiedname>InputEngine::StoreDeviceList</qualifiedname>
         <param>
-          <type>const <ref refid="LINUX__SUDO__GETTER_8cpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref> &amp;</type>
+          <type>const <ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref> &amp;</type>
           <declname>list</declname>
         </param>
         <briefdescription>
@@ -81,10 +86,11 @@
         <location file="include/input/PDJE_INPUT.hpp" line="28" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classInputEngine_1a6580e9039a5a8b0fb82994f5c047d251" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="LINUX__SUDO__GETTER_8cpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref></type>
+        <type><ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref></type>
         <definition>DEV_LIST InputEngine&lt; OS_INPUT &gt;::SearchDevices</definition>
         <argsstring>()</argsstring>
         <name>SearchDevices</name>
+        <qualifiedname>InputEngine::SearchDevices</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -94,10 +100,11 @@
         <location file="include/input/PDJE_INPUT.hpp" line="29" column="14"/>
       </memberdef>
       <memberdef kind="function" id="classInputEngine_1a5c33d8f9cef14c75d3530c0c3cf2025e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="LINUX__SUDO__GETTER_8cpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref></type>
+        <type><ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref></type>
         <definition>DEV_LIST InputEngine&lt; OS_INPUT &gt;::GetStoredDeviceList</definition>
         <argsstring>()</argsstring>
         <name>GetStoredDeviceList</name>
+        <qualifiedname>InputEngine::GetStoredDeviceList</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -111,8 +118,9 @@
         <definition>void InputEngine&lt; OS_INPUT &gt;::setDevices</definition>
         <argsstring>(DEV_LIST)</argsstring>
         <name>setDevices</name>
+        <qualifiedname>InputEngine::setDevices</qualifiedname>
         <param>
-          <type><ref refid="LINUX__SUDO__GETTER_8cpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref></type>
+          <type><ref refid="PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref></type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -127,6 +135,7 @@
         <definition>void InputEngine&lt; OS_INPUT &gt;::ActivateEngine</definition>
         <argsstring>()</argsstring>
         <name>ActivateEngine</name>
+        <qualifiedname>InputEngine::ActivateEngine</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -140,6 +149,7 @@
         <definition>void InputEngine&lt; OS_INPUT &gt;::StopEngine</definition>
         <argsstring>()</argsstring>
         <name>StopEngine</name>
+        <qualifiedname>InputEngine::StopEngine</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -148,35 +158,12 @@
         </inbodydescription>
         <location file="include/input/PDJE_INPUT.hpp" line="33" column="10"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3">
-        <label>DeviceData</label>
-        <link refid="structDeviceData"/>
-        <childnode refid="4" relation="usage">
-          <edgelabel>deviceType</edgelabel>
-        </childnode>
-        <childnode refid="5" relation="usage">
-          <edgelabel>deviceName</edgelabel>
-        </childnode>
-      </node>
-      <node id="4">
-        <label>DuckTypeDevice</label>
-        <link refid="structDuckTypeDevice"/>
-      </node>
-      <node id="2">
-        <label>std::vector&lt; DeviceData &gt;</label>
-        <childnode refid="3" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
-      </node>
-      <node id="6">
-        <label>std::basic_string&lt; char &gt;</label>
-      </node>
       <node id="1">
         <label>InputEngine&lt; OS_INPUT &gt;</label>
         <link refid="classInputEngine"/>
@@ -184,13 +171,11 @@
           <edgelabel>activated_devices</edgelabel>
         </childnode>
       </node>
-      <node id="5">
-        <label>std::string</label>
-        <childnode refid="6" relation="public-inheritance">
-        </childnode>
+      <node id="2">
+        <label>std::vector&lt; DeviceData &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/input/PDJE_INPUT.hpp" line="21" column="18" bodyfile="include/input/PDJE_INPUT.hpp" bodystart="21" bodyend="34"/>
+    <location file="include/input/PDJE_INPUT.hpp" line="21" column="1" bodyfile="include/input/PDJE_INPUT.hpp" bodystart="21" bodyend="34"/>
     <listofallmembers>
       <member refid="classInputEngine_1aef95f8bda007f7b4384407652551c197" prot="private" virt="non-virtual"><scope>InputEngine</scope><name>activated_devices</name></member>
       <member refid="classInputEngine_1a2f9b43ab4a6669dffb6b8ace8f4105fe" prot="public" virt="non-virtual"><scope>InputEngine</scope><name>ActivateEngine</name></member>

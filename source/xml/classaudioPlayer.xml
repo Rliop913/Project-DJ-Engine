@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
   <compounddef id="classaudioPlayer" kind="class" language="C++" prot="public">
     <compoundname>audioPlayer</compoundname>
     <includes refid="audioPlayer_8hpp" local="no">audioPlayer.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classaudioPlayer_1a5c48f2c80e199026c7608f7b2ec65e39" prot="private" static="no" mutable="no">
         <type>ma_device</type>
         <definition>ma_device audioPlayer::player</definition>
         <argsstring></argsstring>
         <name>player</name>
+        <qualifiedname>audioPlayer::player</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>ma_context audioPlayer::ctxt</definition>
         <argsstring></argsstring>
         <name>ctxt</name>
+        <qualifiedname>audioPlayer::ctxt</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,6 +37,7 @@
         <definition>audioRender audioPlayer::renderer</definition>
         <argsstring></argsstring>
         <name>renderer</name>
+        <qualifiedname>audioPlayer::renderer</qualifiedname>
         <briefdescription>
 <para>the audio renderer object. </para>
         </briefdescription>
@@ -49,6 +52,7 @@
         <definition>std::vector&lt;float&gt; audioPlayer::LFaust</definition>
         <argsstring></argsstring>
         <name>LFaust</name>
+        <qualifiedname>audioPlayer::LFaust</qualifiedname>
         <briefdescription>
 <para>the separated pcm frame for the faust. the left side. </para>
         </briefdescription>
@@ -63,6 +67,7 @@
         <definition>std::vector&lt;float&gt; audioPlayer::RFaust</definition>
         <argsstring></argsstring>
         <name>RFaust</name>
+        <qualifiedname>audioPlayer::RFaust</qualifiedname>
         <briefdescription>
 <para>the separated pcm frame for the faust. the right side. </para>
         </briefdescription>
@@ -77,6 +82,7 @@
         <definition>audioEngineDataStruct audioPlayer::engineDatas</definition>
         <argsstring></argsstring>
         <name>engineDatas</name>
+        <qualifiedname>audioPlayer::engineDatas</qualifiedname>
         <briefdescription>
 <para>the core datas. </para>
         </briefdescription>
@@ -86,13 +92,14 @@
         </inbodydescription>
         <location file="include/players/audioPlayer/audioPlayer.hpp" line="28" column="27" bodyfile="include/players/audioPlayer/audioPlayer.hpp" bodystart="28" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-attrib">
+    </sectiondef>
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classaudioPlayer_1a167f44a37a6848814cc670d60f750ebb" prot="public" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string audioPlayer::STATUS</definition>
         <argsstring></argsstring>
         <name>STATUS</name>
+        <qualifiedname>audioPlayer::STATUS</qualifiedname>
         <initializer>= &quot;OK&quot;</initializer>
         <briefdescription>
         </briefdescription>
@@ -103,13 +110,14 @@
         </inbodydescription>
         <location file="include/players/audioPlayer/audioPlayer.hpp" line="40" column="17" bodyfile="include/players/audioPlayer/audioPlayer.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
+    </sectiondef>
+    <sectiondef kind="private-func">
       <memberdef kind="function" id="classaudioPlayer_1ac1159f3e4d2a76760e8de644e1a9ccdc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>ma_device_config</type>
         <definition>ma_device_config audioPlayer::DefaultInit</definition>
         <argsstring>(const unsigned int frameBufferSize)</argsstring>
         <name>DefaultInit</name>
+        <qualifiedname>audioPlayer::DefaultInit</qualifiedname>
         <param>
           <type>const unsigned int</type>
           <declname>frameBufferSize</declname>
@@ -127,8 +135,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para><linebreak/>
- </para>
+<simplesect kind="return"><para></para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -141,6 +148,7 @@
         <definition>void audioPlayer::ContextInit</definition>
         <argsstring>()</argsstring>
         <name>ContextInit</name>
+        <qualifiedname>audioPlayer::ContextInit</qualifiedname>
         <briefdescription>
 <para>the context initializer. </para>
         </briefdescription>
@@ -150,13 +158,14 @@
         </inbodydescription>
         <location file="include/players/audioPlayer/audioPlayer.hpp" line="36" column="10" bodyfile="include/players/audioPlayer/audioPlayer.cpp" bodystart="13" bodyend="18"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classaudioPlayer_1ae15f5f974b0ee629d267e16e8db1c8ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::string</type>
         <definition>const std::string audioPlayer::GetStatus</definition>
         <argsstring>()</argsstring>
         <name>GetStatus</name>
+        <qualifiedname>audioPlayer::GetStatus</qualifiedname>
         <briefdescription>
 <para>the status getter for binded languages. </para>
         </briefdescription>
@@ -171,6 +180,7 @@
         <definition>bool audioPlayer::Activate</definition>
         <argsstring>()</argsstring>
         <name>Activate</name>
+        <qualifiedname>audioPlayer::Activate</qualifiedname>
         <briefdescription>
 <para>Plays music. </para>
         </briefdescription>
@@ -185,6 +195,7 @@
         <definition>bool audioPlayer::Deactivate</definition>
         <argsstring>()</argsstring>
         <name>Deactivate</name>
+        <qualifiedname>audioPlayer::Deactivate</qualifiedname>
         <briefdescription>
 <para>Stops music. </para>
         </briefdescription>
@@ -199,6 +210,7 @@
         <definition>void audioPlayer::ChangeCursorPos</definition>
         <argsstring>(unsigned long long pos)</argsstring>
         <name>ChangeCursorPos</name>
+        <qualifiedname>audioPlayer::ChangeCursorPos</qualifiedname>
         <param>
           <type>unsigned long long</type>
           <declname>pos</declname>
@@ -217,6 +229,7 @@
         <definition>unsigned long long audioPlayer::GetConsumedFrames</definition>
         <argsstring>()</argsstring>
         <name>GetConsumedFrames</name>
+        <qualifiedname>audioPlayer::GetConsumedFrames</qualifiedname>
         <briefdescription>
 <para>gets consumed frames. with this, you can get how many frames are consumed and music&apos;s playback time. to get playback time, divide the returned value with 48000. The result is Seconds. </para>
         </briefdescription>
@@ -234,6 +247,7 @@
         <definition>FXControlPannel * audioPlayer::GetFXControlPannel</definition>
         <argsstring>(const std::string &amp;title=&quot;__PDJE__MAIN__&quot;)</argsstring>
         <name>GetFXControlPannel</name>
+        <qualifiedname>audioPlayer::GetFXControlPannel</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>title</declname>
@@ -265,6 +279,7 @@
         <definition>MusicControlPannel * audioPlayer::GetMusicControlPannel</definition>
         <argsstring>()</argsstring>
         <name>GetMusicControlPannel</name>
+        <qualifiedname>audioPlayer::GetMusicControlPannel</qualifiedname>
         <briefdescription>
 <para>music controller getter this returns the music controller. with this, you can load music, stop music in realtime manually. </para>
         </briefdescription>
@@ -282,6 +297,7 @@
         <definition>audioPlayer::audioPlayer</definition>
         <argsstring>(litedb &amp;db, trackdata &amp;td, const unsigned int frameBufferSize, const bool hasManual=false)</argsstring>
         <name>audioPlayer</name>
+        <qualifiedname>audioPlayer::audioPlayer</qualifiedname>
         <param>
           <type><ref refid="classlitedb" kindref="compound">litedb</ref> &amp;</type>
           <declname>db</declname>
@@ -347,6 +363,7 @@
         <definition>audioPlayer::audioPlayer</definition>
         <argsstring>(const unsigned int frameBufferSize)</argsstring>
         <name>audioPlayer</name>
+        <qualifiedname>audioPlayer::audioPlayer</qualifiedname>
         <param>
           <type>const unsigned int</type>
           <declname>frameBufferSize</declname>
@@ -375,6 +392,7 @@
         <definition>audioPlayer::~audioPlayer</definition>
         <argsstring>()</argsstring>
         <name>~audioPlayer</name>
+        <qualifiedname>audioPlayer::~audioPlayer</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -383,7 +401,7 @@
         </inbodydescription>
         <location file="include/players/audioPlayer/audioPlayer.hpp" line="91" column="5" bodyfile="include/players/audioPlayer/audioPlayer.cpp" bodystart="93" bodyend="98"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>The music handler class this is the music handler class. you can play/stop music, controlling fx, attach other music in realtime manually or getting music&apos;s playing position and consumed frames. </para>
     </briefdescription>
@@ -391,7 +409,11 @@
     </detaileddescription>
     <collaborationgraph>
       <node id="4">
-        <label>std::vector&lt; float &gt;</label>
+        <label>audioEngineDataStruct</label>
+        <link refid="structaudioEngineDataStruct"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>pcmDataPoint</edgelabel>
+        </childnode>
       </node>
       <node id="1">
         <label>audioPlayer</label>
@@ -400,37 +422,33 @@
           <edgelabel>renderer</edgelabel>
         </childnode>
         <childnode refid="3" relation="usage">
+          <edgelabel>LFaust</edgelabel>
+          <edgelabel>RFaust</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
           <edgelabel>engineDatas</edgelabel>
         </childnode>
         <childnode refid="5" relation="usage">
           <edgelabel>STATUS</edgelabel>
         </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>RFaust</edgelabel>
-          <edgelabel>LFaust</edgelabel>
-        </childnode>
-      </node>
-      <node id="3">
-        <label>audioEngineDataStruct</label>
-        <link refid="structaudioEngineDataStruct"/>
-        <childnode refid="4" relation="usage">
-          <edgelabel>pcmDataPoint</edgelabel>
-        </childnode>
-      </node>
-      <node id="6">
-        <label>std::basic_string&lt; char &gt;</label>
       </node>
       <node id="2">
         <label>audioRender</label>
         <link refid="classaudioRender"/>
+      </node>
+      <node id="6">
+        <label>std::basic_string&lt; Char &gt;</label>
       </node>
       <node id="5">
         <label>std::string</label>
         <childnode refid="6" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="3">
+        <label>std::vector&lt; float &gt;</label>
+      </node>
     </collaborationgraph>
-    <location file="include/players/audioPlayer/audioPlayer.hpp" line="13" column="18" bodyfile="include/players/audioPlayer/audioPlayer.hpp" bodystart="13" bodyend="92"/>
+    <location file="include/players/audioPlayer/audioPlayer.hpp" line="13" column="1" bodyfile="include/players/audioPlayer/audioPlayer.hpp" bodystart="13" bodyend="92"/>
     <listofallmembers>
       <member refid="classaudioPlayer_1a7e91ca8d0037ef8e2fb50ff7289317aa" prot="public" virt="non-virtual"><scope>audioPlayer</scope><name>Activate</name></member>
       <member refid="classaudioPlayer_1a3bf1fd80625892dd716c4fdd0f759f06" prot="public" virt="non-virtual"><scope>audioPlayer</scope><name>audioPlayer</name></member>

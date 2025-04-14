@@ -18,7 +18,6 @@ Program Listing for File audioCallbacks.hpp
    #include "MusicControlPannel.hpp"
    
    
-   
    struct audioEngineDataStruct{
        float* faustPcmPP[2];
        std::optional<FXControlPannel> FXManualPannel;
