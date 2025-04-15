@@ -1,6 +1,67 @@
 #include "gitWrapper.hpp"
 
 
+std::vector<const git_blame_hunk*>
+GitWrapper::blame(const std::string& filepath)
+{
+    if(gbm != nullptr){
+        git_blame_free(gbm);
+        gbm = nullptr;
+    }
+    if(git_blame_file(&gbm, repo, filepath.c_str(), nullptr) != 0){
+        return std::vector<const git_blame_hunk*>();
+    }
+
+    auto hunksize = git_blame_get_hunk_count(gbm);
+    std::vector<const git_blame_hunk*> hunks;
+    for(unsigned long long i = 0; i < hunksize; ++i){
+        hunks.emplace_back(git_blame_get_hunk_byindex(gbm, i));
+    }
+    return hunks;
+}
+
+
+
+bool
+GitWrapper::open(const std::string& path)
+{
+    if(git_repository_open(&repo, path.c_str()) == 0){
+        return true;
+    }
+    else{
+        if(git_repository_init(&repo, path.c_str(), false) == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
+
+GitWrapper::~GitWrapper()
+{
+    if(repo != nullptr){
+        git_repository_free(repo);
+    }
+    if(idx != nullptr){
+        git_index_free(idx);
+    }
+    if(gbm != nullptr){
+        git_blame_free(gbm);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 PDJE_GitHandler::PDJE_GitHandler()
 {
     git_libgit2_init();

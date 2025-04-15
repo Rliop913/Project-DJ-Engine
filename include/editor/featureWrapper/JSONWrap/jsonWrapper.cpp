@@ -36,34 +36,21 @@ PDJE_JSONHandler::load(const std::string& path)
 }
 
 bool
-PDJE_JSONHandler::add(
-    TypeEnum type, 
-    DetailEnum details,
-    int ID,
-    const std::string& first,
-    const std::string& second,
-    const std::string& third,
-    long long bar,
-    long long beat,
-    long long separate,
-    long long Ebar,
-    long long Ebeat,
-    long long Eseparate
-)
+PDJE_JSONHandler::add(const MixArgs& args)
 {
     nj tempMix = {
-        {"type",        static_cast<int>(type)},
-        {"details",     static_cast<int>(details)},
-        {"ID",          ID},
-        {"first",       first},
-        {"second",      second},
-        {"third",       third},
-        {"bar",         bar},
-        {"beat",        beat},
-        {"separate",    separate},
-        {"Ebar",        Ebar},
-        {"Ebeat",       Ebeat},
-        {"Eseparate",   Eseparate}
+        {"type",        static_cast<int>(args.type)},
+        {"details",     static_cast<int>(args.details)},
+        {"ID",          args.ID},
+        {"first",       args.first},
+        {"second",      args.second},
+        {"third",       args.third},
+        {"bar",         args.bar},
+        {"beat",        args.beat},
+        {"separate",    args.separate},
+        {"Ebar",        args.Ebar},
+        {"Ebeat",       args.Ebeat},
+        {"Eseparate",   args.Eseparate}
     };
     if(!ROOT.contains(PDJEARR)){
         return false;
@@ -87,37 +74,25 @@ PDJE_JSONHandler::save(const std::string& path)
 }
 
 int
-PDJE_JSONHandler::deleteLine(
-    TypeEnum type, 
-    DetailEnum details,
-    int ID,
-    const std::string& first,
-    const std::string& second,
-    const std::string& third,
-    long long bar,
-    long long beat,
-    long long separate,
-    long long Ebar,
-    long long Ebeat,
-    long long Eseparate
+PDJE_JSONHandler::deleteLine(const MixArgs& args, bool skipType, bool skipDetail
 )
 {
     std::vector<int> targetIDX;
     try{
         for(unsigned long long i=0; i < ROOT[PDJEARR].size(); ++i){
             auto Target = ROOT[PDJEARR].at(i);
-            if(Target["type"]       != type                             )   continue;
-            if(Target["details"]    != details                          )   continue;
-            if(Target["ID"]         != ID       && ID           != -1   )   continue;
-            if(Target["first"]      != first    && first        != ""   )   continue;
-            if(Target["second"]     != second   && second       != ""   )   continue;
-            if(Target["third"]      != third    && third        != ""   )   continue;
-            if(Target["bar"]        != bar      && bar          != -1   )   continue;
-            if(Target["beat"]       != beat     && beat         != -1   )   continue;
-            if(Target["separate"]   != separate && separate     != -1   )   continue;
-            if(Target["Ebar"]       != Ebar     && Ebar         != -1   )   continue;
-            if(Target["Ebeat"]      != Ebeat    && Ebeat        != -1   )   continue;
-            if(Target["Eseparate"]  != Eseparate&& Eseparate    != -1   )   continue;
+            if(Target["type"]       != args.type     && !skipType                   )   continue;
+            if(Target["details"]    != args.details  && !skipDetail                 )   continue;
+            if(Target["ID"]         != args.ID       && args.ID             != -1   )   continue;
+            if(Target["first"]      != args.first    && args.first          != ""   )   continue;
+            if(Target["second"]     != args.second   && args.second         != ""   )   continue;
+            if(Target["third"]      != args.third    && args.third          != ""   )   continue;
+            if(Target["bar"]        != args.bar      && args.bar            != -1   )   continue;
+            if(Target["beat"]       != args.beat     && args.beat           != -1   )   continue;
+            if(Target["separate"]   != args.separate && args.separate       != -1   )   continue;
+            if(Target["Ebar"]       != args.Ebar     && args.Ebar           != -1   )   continue;
+            if(Target["Ebeat"]      != args.Ebeat    && args.Ebeat          != -1   )   continue;
+            if(Target["Eseparate"]  != args.Eseparate&& args.Eseparate      != -1   )   continue;
             targetIDX.push_back(i);
         }
         for(auto i : targetIDX | vs::reverse){
@@ -133,27 +108,14 @@ PDJE_JSONHandler::deleteLine(
 
 void
 PDJE_JSONHandler::getAll(
-    std::function<void(
-        TypeEnum type,
-        DetailEnum details,
-        int ID,
-        const std::string& first,
-        const std::string& second,
-        const std::string& third,
-        long long bar,
-        long long beat,
-        long long separate,
-        long long Ebar,
-        long long Ebeat,
-        long long Eseparate
-    )> jsonCallback
+    std::function<void(const MixArgs& args)> jsonCallback
 )
 {
     if(!ROOT.contains(PDJEARR)){
         return;
     }
     for(auto& i : ROOT[PDJEARR]){
-        jsonCallback(
+        MixArgs tempargs{
             i["type"],
             i["details"],
             i["ID"],
@@ -166,7 +128,8 @@ PDJE_JSONHandler::getAll(
             i["Ebar"],
             i["Ebeat"],
             i["Eseparate"]
-        );
+        };
+        jsonCallback(tempargs);
     }
 }
 

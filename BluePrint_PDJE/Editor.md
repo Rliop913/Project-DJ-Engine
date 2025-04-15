@@ -44,5 +44,6 @@ GIT --> checkout
 GIT --> merge
 GIT --> DIFF
 GIT --> blame
+GIT --> add
 ```
 
