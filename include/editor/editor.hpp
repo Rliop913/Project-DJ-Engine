@@ -1,6 +1,7 @@
 #pragma once
 
-#include <git2.h>
+#include <nlohmann/json.hpp>
+#include "gitWrapper.hpp"
 #include "dbRoot.hpp"
 
 class PDJE_Editor{

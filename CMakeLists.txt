@@ -1,5 +1,8 @@
 include(SETcmake.cmake)
-cmake_minimum_required(VERSION 3.5)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# set(CMAKE_CXX_EXTENSIONS OFF) # optional: -std=c++20 instead of -std=gnu++20
+cmake_minimum_required(VERSION 3.12)
 project(
   PDJE
   VERSION 0.1
@@ -87,6 +90,14 @@ elseif(APPLE)
   
 endif()
 
+target_link_libraries(testHighway PRIVATE nlohmann_json::nlohmann_json )
+target_link_libraries(testdb PRIVATE nlohmann_json::nlohmann_json )
+target_link_libraries(testaudio PRIVATE nlohmann_json::nlohmann_json )
+target_link_libraries(testCapnp PRIVATE nlohmann_json::nlohmann_json )
+target_link_libraries(testManualAudio PRIVATE nlohmann_json::nlohmann_json )
+target_link_libraries(testInterface PRIVATE nlohmann_json::nlohmann_json)
+
+# message(${NHJson_SOURCE_DIRS})
 include(ADD_SWIGS.cmake)
 enable_testing()
 

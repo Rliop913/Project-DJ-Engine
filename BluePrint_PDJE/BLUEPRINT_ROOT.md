@@ -8,6 +8,7 @@
 			[[Hybrid Render]]
 			[[FullManualRender]]
 			[[EffectRender]]
+		[[Editor]]
 		[[Note_Render]]
 		[[Input]]
 		

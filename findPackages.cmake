@@ -18,6 +18,12 @@ FetchContent_Declare(
   GIT_TAG v1.1.0
 )
 
+FetchContent_Declare(
+  NHJson
+  GIT_REPOSITORY https://github.com/nlohmann/json.git
+  GIT_TAG v3.12.0
+)
+
 include(ExternalProject)
 ExternalProject_Add(
   libgit2
@@ -30,16 +36,16 @@ ExternalProject_Add(
 
 ExternalProject_Get_Property(libgit2 source_dir binary_dir)
 
-message("환경변수: ${source_dir} , ${binary_dir}")
+# message("환경변수: ${source_dir} , ${binary_dir}")
 
 link_libraries(git2)
-# get_cmake_property(_vars VARIABLES)
+get_cmake_property(_vars VARIABLES)
 
-# foreach(var ${_vars})
-#     if(var MATCHES "^libgit")
-#         message(STATUS "환경변수: ${var} = [${${var}}]")
-#     endif()
-# endforeach()
+foreach(var ${_vars})
+    if(var MATCHES "^nloh")
+        message(STATUS "환경변수: ${var} = [${${var}}]")
+    endif()
+endforeach()
 
 # message(${LIBGIT2_INCLUDE_DIR})
 # link_libraries(libgit2)
@@ -49,7 +55,9 @@ find_package(SQLite3 REQUIRED)
 FetchContent_MakeAvailable(CapnProto)
 FetchContent_MakeAvailable(miniaudio)
 FetchContent_MakeAvailable(highway)
+FetchContent_MakeAvailable(NHJson)
 
+include_directories(${nlohmann_json_SOURCE_DIR}/include)
 # include_directories(${libgit2_INCLUDE_DIRS})
 set_target_properties(
   capnp
