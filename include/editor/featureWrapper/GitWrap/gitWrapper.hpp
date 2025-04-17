@@ -6,6 +6,7 @@
 #include <vector>
 
 #include <git2.h>
+
 namespace fs = std::filesystem;
 
 
