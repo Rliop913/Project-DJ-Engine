@@ -32,13 +32,16 @@ ExternalProject_Add(
 
   PREFIX ${CMAKE_BINARY_DIR}/_deps
   BUILD_IN_SOURCE 0
+  CMAKE_ARGS 
+    -DBUILD_SHARED_LIBS=OFF
+
   BUILD_COMMAND cmake --build . --parallel 6
-  INSTALL_COMMAND ""
+  INSTALL_DIR ${CMAKE_BINARY_DIR}/libgitbin
+  INSTALL_COMMAND cmake --install . --prefix ${CMAKE_BINARY_DIR}/libgitbin
 )
 
 ExternalProject_Get_Property(libgit2 source_dir binary_dir)
 
-# message("환경변수: ${source_dir} , ${binary_dir}")
 
 link_libraries(git2)
 get_cmake_property(_vars VARIABLES)
