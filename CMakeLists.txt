@@ -99,6 +99,7 @@ elseif(UNIX AND NOT APPLE)
   target_link_libraries(testCapnp PRIVATE hwy )
   target_link_libraries(testManualAudio PRIVATE hwy )
   target_link_libraries(testInterface PRIVATE hwy)
+  target_link_libraries(testGIT PRIVATE hwy)
   
   
 elseif(APPLE)
