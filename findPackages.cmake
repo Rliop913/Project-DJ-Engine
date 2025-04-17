@@ -40,10 +40,19 @@ ExternalProject_Add(
   INSTALL_COMMAND cmake --install . --prefix ${CMAKE_BINARY_DIR}/libgitbin
 )
 
-ExternalProject_Get_Property(libgit2 source_dir binary_dir)
+# ExternalProject_Get_Property(libgit2 source_dir binary_dir)
 
-
-link_libraries(git2)
+if(WIN32)
+link_libraries(${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.lib)
+else()
+link_libraries(${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a pcre)
+find_package(OpenSSL REQUIRED)
+# find_package(PCRE REQUIRED)
+link_libraries(${OPENSSL_LIBRARIES})
+# find_package(libcrypto REQUIRED)
+# find_package(libpcre REQUIRED)
+# find_package(libz REQUIRED)
+endif()
 get_cmake_property(_vars VARIABLES)
 
 foreach(var ${_vars})
@@ -54,7 +63,7 @@ endforeach()
 
 # message(${LIBGIT2_INCLUDE_DIR})
 # link_libraries(libgit2)
-
+link_directories(${CMAKE_BINARY_DIR}/libgitbin/include)
 find_package(SQLite3 REQUIRED)
 
 FetchContent_MakeAvailable(CapnProto)
