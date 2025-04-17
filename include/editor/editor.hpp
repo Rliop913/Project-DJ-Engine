@@ -7,8 +7,10 @@
 
 class PDJE_Editor{
 private:
-    PDJE_JSONHandler JHandle;
+    PDJE_JSONHandler dataHandle;
 public:
+
+    
     PDJE_Editor() = default;
     ~PDJE_Editor() = default;
 };

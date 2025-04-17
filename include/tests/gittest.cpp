@@ -3,8 +3,10 @@
 // #include "gitWrapper.hpp"
 int main()
 {
-    auto jj = PDJE_JSONHandler();
+    auto jj = PDJE_JSONHandler<MIX_W>();
+    auto nn = PDJE_JSONHandler<NOTE_W>();
     jj.load("./tempjson/jjjson.json");
+    nn.load("./tempjson/jjnote.json");
     jj.add(
         MixArgs{
             TypeEnum::EQ,
@@ -17,6 +19,17 @@ int main()
             4, 0, 4
         }
     );
+    nn.add(
+        NoteArgs{
+            "TypeEnum::EQ",
+            "DetailEnum::HIGH",
+            "0",
+            "3",
+            "20.0",
+            1, 0, 4,
+            4, 0, 4
+        }
+    );
     // jj.deleteLine(
     //     TypeEnum::EQ,
     //     DetailEnum::HIGH,
@@ -24,8 +37,8 @@ int main()
     // );
     jj.save("./tempjson/jjjson.json");
     jj.save("./tempjson/jjjson_for_delete.json");
-    
-    jj.getAll([](const MixArgs& args){
+    nn.save("./tempjson/jjnote.json");
+    jj.getAll<MixArgs>([](const MixArgs& args){
         std::cout
         << "type : " << static_cast<uint16_t>( args.type) << std::endl 
         << "details : " << static_cast<uint16_t>( args.details) << std::endl 
