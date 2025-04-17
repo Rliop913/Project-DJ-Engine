@@ -58,6 +58,7 @@ jobs:
     - name: set Requirements
       id: set_libevdev
       shell: bash
+      if: runner.os == 'Linux'
       run: |
         sudo apt-get install libevdev-dev
     

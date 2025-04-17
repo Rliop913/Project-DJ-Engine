@@ -60,25 +60,39 @@ link_libraries(
 )
 
 add_executable(testdb ${CMAKE_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource})
+add_dependencies(testdb libgit2)
 add_executable(testaudio ${CMAKE_SOURCE_DIR}/include/tests/audioTest.cpp ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource})
+add_dependencies(testaudio libgit2)
 add_executable(testCapnp ${CMAKE_SOURCE_DIR}/include/tests/CapnpTest.cpp ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource})
+add_dependencies(testCapnp libgit2)
 
 add_executable(testHighway include/tests/highway_Test.cpp)
+add_dependencies(testHighway libgit2)
 
 add_executable(testManualAudio include/tests/manualAudioTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource})
+add_dependencies(testManualAudio libgit2)
 
 add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource})
+add_dependencies(testInterface libgit2)
 
 add_executable(testGIT include/tests/gittest.cpp ${editorSource})
+add_dependencies(testGIT libgit2)
+
+
+
 if(WIN32)
   target_link_libraries(testHighway PRIVATE hwy::hwy)
   # link_libraries(hwy::hwy)
 elseif(UNIX AND NOT APPLE)
   add_executable(EvdevAccModule include/input/linux/LINUX_SUDO_GETTER.cpp)
+  add_dependencies(EvdevAccModule libgit2)
 
   add_executable(testLinuxInput_waiter include/tests/INPUT_TESTS/linux_I_WAITER.cpp)
+  add_dependencies(testLinuxInput_waiter libgit2)
   add_executable(testLinuxInput_waker include/tests/INPUT_TESTS/linux_I_WAKER.cpp)
+  add_dependencies(testLinuxInput_waker libgit2)
   add_executable(testLinuxInput include/tests/INPUT_TESTS/evdevtest.cpp ${input_src})
+  add_dependencies(testLinuxInput libgit2)
   target_link_libraries(testHighway PRIVATE hwy )
   target_link_libraries(testdb PRIVATE hwy )
   target_link_libraries(testaudio PRIVATE hwy )
