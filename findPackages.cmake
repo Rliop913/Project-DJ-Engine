@@ -27,8 +27,10 @@ FetchContent_Declare(
 include(ExternalProject)
 ExternalProject_Add(
   libgit2
+  GIT_REPOSITORY https://github.com/libgit2/libgit2.git
+  GIT_TAG v1.9.0
+
   PREFIX ${CMAKE_BINARY_DIR}/_deps
-  SOURCE_DIR ${CMAKE_SOURCE_DIR}/third_party/libgit2
   BUILD_IN_SOURCE 0
   BUILD_COMMAND cmake --build . --parallel 6
   INSTALL_COMMAND ""
