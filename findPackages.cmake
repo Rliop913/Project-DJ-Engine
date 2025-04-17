@@ -45,16 +45,19 @@ ExternalProject_Get_Property(libgit2 source_dir binary_dir install_dir)
 
 find_package(OpenSSL REQUIRED)
 link_libraries(${OPENSSL_LIBRARIES})
+if(UNIX)
+link_libraries(${install_dir}/lib/libgit2.a)
+else()
+link_libraries(${install_dir}/lib/libgit2.lib)
+endif()
+# add_library(libgit2_static INTERFACE IMPORTED GLOBAL)
 
+# add_dependencies(libgit2_static libgit2)
 
-add_library(libgit2_static INTERFACE IMPORTED GLOBAL)
-
-add_dependencies(libgit2_static libgit2)
-
-set_target_properties(libgit2_static PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_BINARY_DIR}/libgitbin/include"
-  INTERFACE_LINK_LIBRARIES "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
-)
+# set_target_properties(libgit2_static PROPERTIES
+#   INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_BINARY_DIR}/libgitbin/include"
+#   INTERFACE_LINK_LIBRARIES "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
+# )
 
 # get_cmake_property(_vars VARIABLES)
 
