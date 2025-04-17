@@ -42,7 +42,7 @@ ExternalProject_Add(
 )
 
 ExternalProject_Get_Property(libgit2 source_dir binary_dir install_dir)
-
+message(${install_dir})
 find_package(OpenSSL REQUIRED)
 link_libraries(${OPENSSL_LIBRARIES})
 if(UNIX)
@@ -69,7 +69,7 @@ endif()
 
 # message(${LIBGIT2_INCLUDE_DIR})
 # link_libraries(libgit2)
-link_directories(${CMAKE_BINARY_DIR}/libgitbin/include)
+link_directories(${install_dir}/include)
 find_package(SQLite3 REQUIRED)
 
 FetchContent_MakeAvailable(CapnProto)
