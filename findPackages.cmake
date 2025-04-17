@@ -33,33 +33,36 @@ ExternalProject_Add(
   PREFIX ${CMAKE_BINARY_DIR}/_deps
   BUILD_IN_SOURCE 0
   CMAKE_ARGS 
-    -DBUILD_SHARED_LIBS=OFF
+    -DBUILD_SHARED_LIBS=OFF 
+    -DREGEX_BACKEND=builtin
 
   BUILD_COMMAND cmake --build . --parallel 6
   INSTALL_DIR ${CMAKE_BINARY_DIR}/libgitbin
   INSTALL_COMMAND cmake --install . --prefix ${CMAKE_BINARY_DIR}/libgitbin
 )
 
-# ExternalProject_Get_Property(libgit2 source_dir binary_dir)
+ExternalProject_Get_Property(libgit2 source_dir binary_dir install_dir)
 
-if(WIN32)
-link_libraries(${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.lib)
-else()
-link_libraries(${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a pcre)
 find_package(OpenSSL REQUIRED)
-# find_package(PCRE REQUIRED)
 link_libraries(${OPENSSL_LIBRARIES})
-# find_package(libcrypto REQUIRED)
-# find_package(libpcre REQUIRED)
-# find_package(libz REQUIRED)
-endif()
-get_cmake_property(_vars VARIABLES)
 
-foreach(var ${_vars})
-    if(var MATCHES "^nloh")
-        message(STATUS "환경변수: ${var} = [${${var}}]")
-    endif()
-endforeach()
+
+add_library(libgit2_static INTERFACE IMPORTED GLOBAL)
+
+add_dependencies(libgit2_static libgit2)
+
+set_target_properties(libgit2_static PROPERTIES
+  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_BINARY_DIR}/libgitbin/include"
+  INTERFACE_LINK_LIBRARIES "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
+)
+
+# get_cmake_property(_vars VARIABLES)
+
+# foreach(var ${_vars})
+#     if(var MATCHES "^GIT")
+#         message(STATUS "환경변수: ${var} = [${${var}}]")
+#     endif()
+# endforeach()
 
 # message(${LIBGIT2_INCLUDE_DIR})
 # link_libraries(libgit2)
