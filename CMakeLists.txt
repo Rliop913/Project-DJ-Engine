@@ -12,7 +12,7 @@ Include(FetchContent)
 include(findPackages.cmake)
 
 if(WIN32)
-  find_package(hwy REQUIRED)
+  # find_package(hwy REQUIRED)
   add_compile_definitions(__WINDOWS__)
 else()
 endif()
@@ -81,7 +81,7 @@ add_executable(testGIT include/tests/gittest.cpp ${editorSource})
 
 
 if(WIN32)
-  target_link_libraries(testHighway PRIVATE hwy::hwy ${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.lib)
+  # target_link_libraries(testHighway PRIVATE hwy::hwy ${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.lib)
   # link_libraries(hwy::hwy)
 elseif(UNIX AND NOT APPLE)
   # add_executable(EvdevAccModule include/input/linux/LINUX_SUDO_GETTER.cpp)
