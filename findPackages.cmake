@@ -82,7 +82,7 @@ endforeach()
 include_directories(${nlohmann_json_SOURCE_DIR}/include)
 include_directories(${hwy_SOURCE_DIR})
 
-link_libraries(${hwy_BINARY_DIR}/libhwy.a)
+# link_libraries(${hwy_BINARY_DIR}/libhwy.a)
 # include_directories(${libgit2_INCLUDE_DIRS})
 set_target_properties(
   capnp

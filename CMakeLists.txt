@@ -107,12 +107,14 @@ elseif(APPLE)
 endif()
 
 
-target_link_libraries(testHighway PRIVATE nlohmann_json::nlohmann_json ${hwy_LIB_DEPENDS} )
-target_link_libraries(testdb PRIVATE nlohmann_json::nlohmann_json ${hwy_LIB_DEPENDS} )
-target_link_libraries(testaudio PRIVATE nlohmann_json::nlohmann_json ${hwy_LIB_DEPENDS} )
-target_link_libraries(testCapnp PRIVATE nlohmann_json::nlohmann_json ${hwy_LIB_DEPENDS} )
-target_link_libraries(testManualAudio PRIVATE nlohmann_json::nlohmann_json ${hwy_LIB_DEPENDS} )
-target_link_libraries(testInterface PRIVATE nlohmann_json::nlohmann_json ${hwy_LIB_DEPENDS} )
+target_link_libraries(testHighway PRIVATE nlohmann_json::nlohmann_json ${hwy_LIB_DEPENDS} ${hwy_BINARY_DIR}/libhwy.a)
+target_link_libraries(testdb PRIVATE nlohmann_json::nlohmann_json ${hwy_LIB_DEPENDS} ${hwy_BINARY_DIR}/libhwy.a)
+target_link_libraries(testaudio PRIVATE nlohmann_json::nlohmann_json ${hwy_LIB_DEPENDS} ${hwy_BINARY_DIR}/libhwy.a)
+target_link_libraries(testCapnp PRIVATE nlohmann_json::nlohmann_json ${hwy_LIB_DEPENDS} ${hwy_BINARY_DIR}/libhwy.a)
+target_link_libraries(testManualAudio PRIVATE nlohmann_json::nlohmann_json ${hwy_LIB_DEPENDS} ${hwy_BINARY_DIR}/libhwy.a)
+target_link_libraries(testInterface PRIVATE nlohmann_json::nlohmann_json ${hwy_LIB_DEPENDS} ${hwy_BINARY_DIR}/libhwy.a)
+
+
 
 # message(${NHJson_SOURCE_DIRS})
 include(ADD_SWIGS.cmake)
