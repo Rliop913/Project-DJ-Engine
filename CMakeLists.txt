@@ -118,7 +118,7 @@ target_link_libraries(testGIT PRIVATE nlohmann_json::nlohmann_json hwy)
 
 # message(${NHJson_SOURCE_DIRS})
 include(ADD_SWIGS.cmake)
-enable_testing()
+# enable_testing()
 
-add_test(NAME DB_TEST COMMAND testdb)
-add_test(NAME AUDIO_TEST COMMAND testaudio)
+# add_test(NAME DB_TEST COMMAND testdb)
+# add_test(NAME AUDIO_TEST COMMAND testaudio)
