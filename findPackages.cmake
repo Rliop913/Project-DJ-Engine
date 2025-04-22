@@ -60,13 +60,13 @@ endif()
 #   INTERFACE_LINK_LIBRARIES "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
 # )
 
-# get_cmake_property(_vars VARIABLES)
+get_cmake_property(_vars VARIABLES)
 
-# foreach(var ${_vars})
-#     if(var MATCHES "^hwy")
-#         message(STATUS "환경변수: ${var} = [${${var}}]")
-#     endif()
-# endforeach()
+foreach(var ${_vars})
+    if(var MATCHES "^hwy")
+        message(STATUS "환경변수: ${var} = [${${var}}]")
+    endif()
+endforeach()
 
 # message(${LIBGIT2_INCLUDE_DIR})
 # link_libraries(libgit2)
