@@ -24,6 +24,11 @@ FetchContent_Declare(
   GIT_TAG v3.12.0
 )
 
+FetchContent_Declare(
+  sql_amalgam
+  URL https://www.sqlite.org/2024/sqlite-amalgamation-3450000.zip
+)
+
 include(ExternalProject)
 ExternalProject_Add(
   libgit2
@@ -65,23 +70,25 @@ endif()
 # link_libraries(libgit2)
 # message("LOCATION위치: ${install_dir}/include")
 include_directories(${install_dir}/include)
-find_package(SQLite3 REQUIRED)
+# find_package(SQLite3 REQUIRED)
 
 FetchContent_MakeAvailable(CapnProto)
 FetchContent_MakeAvailable(miniaudio)
 FetchContent_MakeAvailable(highway)
 FetchContent_MakeAvailable(NHJson)
+FetchContent_MakeAvailable(sql_amalgam)
+
 
 get_cmake_property(_vars VARIABLES)
 
 foreach(var ${_vars})
-    if(var MATCHES "^hwy")
+    if(var MATCHES "^sql")
         message(STATUS "환경변수: ${var} = [${${var}}]")
     endif()
 endforeach()
 include_directories(${nlohmann_json_SOURCE_DIR}/include)
 include_directories(${hwy_SOURCE_DIR})
-
+include_directories(${sql_amalgam_SOURCE_DIR})
 # link_libraries(${hwy_BINARY_DIR}/libhwy.a)
 # include_directories(${libgit2_INCLUDE_DIRS})
 set_target_properties(

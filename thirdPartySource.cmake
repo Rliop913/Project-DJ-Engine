@@ -20,3 +20,7 @@ ${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_src/sse_optimized.cpp
 ${CMAKE_SOURCE_DIR}/third_party/SoundTouch/soundtouch_src/TDStretch.cpp
 
 )
+
+set(sql_amalgam_src
+${sql_amalgam_SOURCE_DIR}/sqlite3.c
+)
