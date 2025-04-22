@@ -3,7 +3,7 @@ set(cmake_cxx_flags -std=c++20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(HWY_ENABLE_TESTS OFF)
 set(CAPNP_BUILD_TESTS OFF)
-
+set(BUILD_TESTING OFF CACHE BOOL "Disable testing")
 if(WIN32)
 
   set(CMAKE_CXX_STANDARD 20)
