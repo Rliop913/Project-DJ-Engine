@@ -53,11 +53,19 @@ include(includeDIRS.cmake)
 include(DBsrc.cmake)
 include(AUDIOsrc.cmake)
 include(EDITORsrc.cmake)
+if(WIN32)
+link_libraries(
+  CapnProto::kj 
+  CapnProto::capnp 
+)
+else()
 link_libraries(
   CapnProto::kj 
   CapnProto::capnp 
   CapnProto::kj-gzip
 )
+
+endif()
 
 add_executable(testdb ${CMAKE_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource} ${sql_amalgam_src})
 
