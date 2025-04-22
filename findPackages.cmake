@@ -63,7 +63,7 @@ endif()
 # get_cmake_property(_vars VARIABLES)
 
 # foreach(var ${_vars})
-#     if(var MATCHES "^GIT")
+#     if(var MATCHES "^hwy")
 #         message(STATUS "환경변수: ${var} = [${${var}}]")
 #     endif()
 # endforeach()
@@ -80,6 +80,9 @@ FetchContent_MakeAvailable(highway)
 FetchContent_MakeAvailable(NHJson)
 
 include_directories(${nlohmann_json_SOURCE_DIR}/include)
+include_directories(${hwy_SOURCE_SIR})
+
+link_libraries(${hwy_BINARY_DIR}/libhwy.a)
 # include_directories(${libgit2_INCLUDE_DIRS})
 set_target_properties(
   capnp
