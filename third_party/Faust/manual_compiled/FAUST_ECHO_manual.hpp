@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------
 name: "ECHO"
 Code generated with Faust 2.75.7 (https://faust.grame.fr)
-Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn EchoFAUSTMan -scn EchoMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
+Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn EchoFAUSTMan -scn EchoMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32
 ------------------------------------------------------------ */
 
 #ifndef  __EchoFAUSTMan_H__
@@ -52,7 +52,7 @@ class EchoFAUSTMan final : public EchoMan {
 	}
 	
 	void metadata(Meta* m) { 
-		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn EchoFAUSTMan -scn EchoMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
+		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn EchoFAUSTMan -scn EchoMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32");
 		m->declare("delays.lib/name", "Faust Delay Library");
 		m->declare("delays.lib/version", "1.1.0");
 		m->declare("filename", "ECHO.dsp");
@@ -97,13 +97,11 @@ class EchoFAUSTMan final : public EchoMan {
 	}
 	
 	void instanceClear() {
-		#pragma clang loop vectorize(enable) interleave(enable)
 		for (int l0 = 0; l0 < 2097152; l0 = l0 + 1) {
 			fRec0[l0] = 0.0f;
 		}
 		fRec0_idx = 0;
 		fRec0_idx_save = 0;
-		#pragma clang loop vectorize(enable) interleave(enable)
 		for (int l1 = 0; l1 < 2097152; l1 = l1 + 1) {
 			fRec1[l1] = 0.0f;
 		}
@@ -146,12 +144,12 @@ class EchoFAUSTMan final : public EchoMan {
 		float fSlow3 = 1.0f - fSlow2;
 		int vindex = 0;
 		/* Main loop */
-		for (vindex = 0; vindex <= (count - 64); vindex = vindex + 64) {
+		for (vindex = 0; vindex <= (count - 32); vindex = vindex + 32) {
 			FAUSTFLOAT* input0 = &input0_ptr[vindex];
 			FAUSTFLOAT* input1 = &input1_ptr[vindex];
 			FAUSTFLOAT* output0 = &output0_ptr[vindex];
 			FAUSTFLOAT* output1 = &output1_ptr[vindex];
-			int vsize = 64;
+			int vsize = 32;
 			/* Recursive loop 0 */
 			/* Pre code */
 			fRec0_idx = (fRec0_idx + fRec0_idx_save) & 2097151;
@@ -172,13 +170,11 @@ class EchoFAUSTMan final : public EchoMan {
 			fRec1_idx_save = vsize;
 			/* Vectorizable loop 2 */
 			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				output0[i] = FAUSTFLOAT(fSlow2 * fRec0[(i + fRec0_idx) & 2097151] + fSlow3 * float(input0[i]));
 			}
 			/* Vectorizable loop 3 */
 			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				output1[i] = FAUSTFLOAT(fSlow2 * fRec1[(i + fRec1_idx) & 2097151] + fSlow3 * float(input1[i]));
 			}
@@ -210,13 +206,11 @@ class EchoFAUSTMan final : public EchoMan {
 			fRec1_idx_save = vsize;
 			/* Vectorizable loop 2 */
 			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				output0[i] = FAUSTFLOAT(fSlow2 * fRec0[(i + fRec0_idx) & 2097151] + fSlow3 * float(input0[i]));
 			}
 			/* Vectorizable loop 3 */
 			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				output1[i] = FAUSTFLOAT(fSlow2 * fRec1[(i + fRec1_idx) & 2097151] + fSlow3 * float(input1[i]));
 			}

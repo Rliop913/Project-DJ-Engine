@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------
 name: "ROLL"
 Code generated with Faust 2.75.7 (https://faust.grame.fr)
-Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn RollFAUSTMan -scn RollMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64
+Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn RollFAUSTMan -scn RollMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32
 ------------------------------------------------------------ */
 
 #ifndef  __RollFAUSTMan_H__
@@ -54,7 +54,7 @@ class RollFAUSTMan final : public RollMan {
 		m->declare("basics.lib/name", "Faust Basic Element Library");
 		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
 		m->declare("basics.lib/version", "1.19.1");
-		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn RollFAUSTMan -scn RollMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 64");
+		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn RollFAUSTMan -scn RollMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32");
 		m->declare("filename", "ROLL.dsp");
 		m->declare("maths.lib/author", "GRAME");
 		m->declare("maths.lib/copyright", "GRAME");
@@ -89,11 +89,9 @@ class RollFAUSTMan final : public RollMan {
 		fConst0 = std::min<float>(1.92e+05f, std::max<float>(1.0f, float(fSampleRate)));
 		fConst1 = 6e+01f * fConst0;
 		fConst2 = 0.016666668f / fConst0;
-		#pragma clang loop vectorize(enable) interleave(enable)
 		for (int i1_re0 = 0; i1_re0 < 96000; i1_re0 = i1_re0 + 1) {
 			ftbl0[i1_re0] = 0.0f;
 		}
-		#pragma clang loop vectorize(enable) interleave(enable)
 		for (int i1_re1 = 0; i1_re1 < 96000; i1_re1 = i1_re1 + 1) {
 			ftbl1[i1_re1] = 0.0f;
 		}
@@ -103,11 +101,9 @@ class RollFAUSTMan final : public RollMan {
 	}
 	
 	void instanceClear() {
-		#pragma clang loop vectorize(enable) interleave(enable)
 		for (int l0 = 0; l0 < 4; l0 = l0 + 1) {
 			iRec0_perm[l0] = 0;
 		}
-		#pragma clang loop vectorize(enable) interleave(enable)
 		for (int l1 = 0; l1 < 4; l1 = l1 + 1) {
 			fRec1_perm[l1] = 0.0f;
 		}
@@ -147,27 +143,26 @@ class RollFAUSTMan final : public RollMan {
 		float fSlow2 = RollBpm;
 		float fSlow3 = fConst1 / fSlow2;
 		float fSlow4 = fSlow3 + -1.0f;
-		int iRec0_tmp[68];
+		int iRec0_tmp[36];
 		int* iRec0 = &iRec0_tmp[4];
 		float fSlow5 = float(iSlow1);
-		float fZec0[64];
+		float fZec0[32];
 		float fSlow6 = fConst2 * fSlow2;
-		float fRec1_tmp[68];
+		float fRec1_tmp[36];
 		float* fRec1 = &fRec1_tmp[4];
 		float fSlow7 = 1.0f - fSlow0;
-		int iZec1[64];
-		int iZec2[64];
+		int iZec1[32];
+		int iZec2[32];
 		int vindex = 0;
 		/* Main loop */
-		for (vindex = 0; vindex <= (count - 64); vindex = vindex + 64) {
+		for (vindex = 0; vindex <= (count - 32); vindex = vindex + 32) {
 			FAUSTFLOAT* input0 = &input0_ptr[vindex];
 			FAUSTFLOAT* input1 = &input1_ptr[vindex];
 			FAUSTFLOAT* output0 = &output0_ptr[vindex];
 			FAUSTFLOAT* output1 = &output1_ptr[vindex];
-			int vsize = 64;
+			int vsize = 32;
 			/* Recursive loop 0 */
 			/* Pre code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j0 = 0; j0 < 4; j0 = j0 + 1) {
 				iRec0_tmp[j0] = iRec0_perm[j0];
 			}
@@ -176,13 +171,11 @@ class RollFAUSTMan final : public RollMan {
 				iRec0[i] = int(std::min<float>(float(iSlow1 * iRec0[i - 1] + 1), fSlow4));
 			}
 			/* Post code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j1 = 0; j1 < 4; j1 = j1 + 1) {
 				iRec0_perm[j1] = iRec0_tmp[vsize + j1];
 			}
 			/* Recursive loop 1 */
 			/* Pre code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j2 = 0; j2 < 4; j2 = j2 + 1) {
 				fRec1_tmp[j2] = fRec1_perm[j2];
 			}
@@ -192,32 +185,27 @@ class RollFAUSTMan final : public RollMan {
 				fRec1[i] = fZec0[i] + (1.0f - fSlow3 * float(int(fSlow6 * (fZec0[i] + 1.0f))));
 			}
 			/* Post code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j3 = 0; j3 < 4; j3 = j3 + 1) {
 				fRec1_perm[j3] = fRec1_tmp[vsize + j3];
 			}
 			/* Vectorizable loop 2 */
 			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				iZec1[i] = std::max<int>(0, std::min<int>(iRec0[i], 95999));
 			}
 			/* Vectorizable loop 3 */
 			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				iZec2[i] = std::max<int>(0, std::min<int>(int(fRec1[i]), 95999));
 			}
 			/* Vectorizable loop 4 */
 			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				ftbl0[iZec1[i]] = float(input0[i]);
 				output0[i] = FAUSTFLOAT(fSlow0 * ftbl0[iZec2[i]] + fSlow7 * float(input0[i]));
 			}
 			/* Vectorizable loop 5 */
 			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				ftbl1[iZec1[i]] = float(input1[i]);
 				output1[i] = FAUSTFLOAT(fSlow0 * ftbl1[iZec2[i]] + fSlow7 * float(input1[i]));
@@ -232,7 +220,6 @@ class RollFAUSTMan final : public RollMan {
 			int vsize = count - vindex;
 			/* Recursive loop 0 */
 			/* Pre code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j0 = 0; j0 < 4; j0 = j0 + 1) {
 				iRec0_tmp[j0] = iRec0_perm[j0];
 			}
@@ -241,13 +228,11 @@ class RollFAUSTMan final : public RollMan {
 				iRec0[i] = int(std::min<float>(float(iSlow1 * iRec0[i - 1] + 1), fSlow4));
 			}
 			/* Post code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j1 = 0; j1 < 4; j1 = j1 + 1) {
 				iRec0_perm[j1] = iRec0_tmp[vsize + j1];
 			}
 			/* Recursive loop 1 */
 			/* Pre code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j2 = 0; j2 < 4; j2 = j2 + 1) {
 				fRec1_tmp[j2] = fRec1_perm[j2];
 			}
@@ -257,32 +242,27 @@ class RollFAUSTMan final : public RollMan {
 				fRec1[i] = fZec0[i] + (1.0f - fSlow3 * float(int(fSlow6 * (fZec0[i] + 1.0f))));
 			}
 			/* Post code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int j3 = 0; j3 < 4; j3 = j3 + 1) {
 				fRec1_perm[j3] = fRec1_tmp[vsize + j3];
 			}
 			/* Vectorizable loop 2 */
 			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				iZec1[i] = std::max<int>(0, std::min<int>(iRec0[i], 95999));
 			}
 			/* Vectorizable loop 3 */
 			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				iZec2[i] = std::max<int>(0, std::min<int>(int(fRec1[i]), 95999));
 			}
 			/* Vectorizable loop 4 */
 			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				ftbl0[iZec1[i]] = float(input0[i]);
 				output0[i] = FAUSTFLOAT(fSlow0 * ftbl0[iZec2[i]] + fSlow7 * float(input0[i]));
 			}
 			/* Vectorizable loop 5 */
 			/* Compute code */
-			#pragma clang loop vectorize(enable) interleave(enable)
 			for (int i = 0; i < vsize; i = i + 1) {
 				ftbl1[iZec1[i]] = float(input1[i]);
 				output1[i] = FAUSTFLOAT(fSlow0 * ftbl1[iZec2[i]] + fSlow7 * float(input1[i]));
