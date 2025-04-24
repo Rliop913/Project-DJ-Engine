@@ -86,7 +86,7 @@ FetchContent_MakeAvailable(sql_amalgam)
 get_cmake_property(_vars VARIABLES)
 
 foreach(var ${_vars})
-    if(var MATCHES "^sql")
+    if(var MATCHES "^git")
         message(STATUS "환경변수: ${var} = [${${var}}]")
     endif()
 endforeach()
