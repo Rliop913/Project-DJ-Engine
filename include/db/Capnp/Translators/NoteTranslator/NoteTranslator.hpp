@@ -2,7 +2,7 @@
 
 #include <optional>
 #include <vector>
-
+#include <string>
 #include "CapnpBinary.hpp"
 #include "NoteBinary.capnp.h"
 
