@@ -30,6 +30,22 @@ FetchContent_Declare(
 )
 
 include(ExternalProject)
+
+if(WIN32)
+ExternalProject_Add(
+  libgit2
+  GIT_REPOSITORY https://github.com/libgit2/libgit2.git
+  GIT_TAG v1.9.0
+
+  PREFIX "${CMAKE_BINARY_DIR}/_deps"
+  BUILD_IN_SOURCE 0
+  CMAKE_ARGS
+    -DCMAKE_CONFIGURATION_TYPES=${CMAKE_CONFIGURATION_TYPES}
+    -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>  # 반드시 필요
+  BUILD_COMMAND ${CMAKE_COMMAND} --build . --config $<CONFIG>
+  INSTALL_COMMAND ${CMAKE_COMMAND} --install . --config $<CONFIG>
+)
+else()
 ExternalProject_Add(
   libgit2
   GIT_REPOSITORY https://github.com/libgit2/libgit2.git
@@ -40,11 +56,13 @@ ExternalProject_Add(
   CMAKE_ARGS 
     -DBUILD_SHARED_LIBS=OFF 
     -DREGEX_BACKEND=builtin
+    -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 
   BUILD_COMMAND cmake --build . --parallel 6
   INSTALL_DIR "${CMAKE_BINARY_DIR}/libgitbin"
   INSTALL_COMMAND cmake --install . --prefix "${CMAKE_BINARY_DIR}/libgitbin"
 )
+endif()
 
 ExternalProject_Get_Property(libgit2 source_dir binary_dir install_dir)
 message(${install_dir})
