@@ -39,12 +39,11 @@ ExternalProject_Add(
 
   PREFIX "${CMAKE_BINARY_DIR}/_deps"
   BUILD_IN_SOURCE 0
-  CMAKE_ARGS
-    -DCMAKE_CONFIGURATION_TYPES=${CMAKE_CONFIGURATION_TYPES}
-    -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>  # 반드시 필요
-  BUILD_COMMAND ${CMAKE_COMMAND} --build . --config $<CONFIG>
+  CMAKE_ARGS     -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR> -DBUILD_SHARED_LIBS=OFF -DREGEX_BACKEND=builtin
+  BUILD_COMMAND  ${CMAKE_COMMAND} --build . --config $<CONFIG>
   INSTALL_COMMAND ${CMAKE_COMMAND} --install . --config $<CONFIG>
 )
+
 else()
 ExternalProject_Add(
   libgit2
@@ -65,15 +64,33 @@ ExternalProject_Add(
 endif()
 
 ExternalProject_Get_Property(libgit2 source_dir binary_dir install_dir)
-message(${install_dir})
+# message("환경변수-install: ${install_dir} $<CONFIG>")
+
+
+
+
 find_package(OpenSSL REQUIRED)
 link_libraries(${OPENSSL_LIBRARIES})
 # link_directories(${install_dir}/lib)
 if(UNIX)
 link_libraries(${install_dir}/lib/libgit2.a)
 else()
+add_library(libgit2_static STATIC IMPORTED GLOBAL)
+
+add_dependencies(libgit2_static libgit2)
+
+# set_target_properties(libgit2_static PROPERTIES
+#     IMPORTED_LOCATION  "$<$<CONFIG:Debug>:${install_dir}/src/libgit2-build/Debug/git2.lib>$<$<CONFIG:Release>:${install_dir}/libgit2-build/Release/git2.lib>"
+    
+#     INTERFACE_INCLUDE_DIRECTORIES "${install_dir}/include"
+# )
 # file(GLOB LIBGIT2_LIBRARIES "${CMAKE_BINARY_DIR}/src/libgit2-build/${CMAKE_BUILD_TYPE}/git2.lib")
-link_libraries(${CMAKE_BINARY_DIR}/src/libgit2-build/${CMAKE_BUILD_TYPE}/git2.lib)
+# link_libraries(${CMAKE_BINARY_DIR}/src/libgit2-build/${CMAKE_BUILD_TYPE}/git2.lib)
+# link_libraries(
+#   $<$<CONFIG:Debug>:${install_dir}/src/libgit2-build/Debug/libgit2_debug.lib>
+#   $<$<CONFIG:Release>:${install_dir}/src/libgit2-build/Release/libgit2.lib>
+# )
+link_libraries("$<$<CONFIG:Debug>:${install_dir}/src/libgit2-build/Debug/git2.lib>$<$<CONFIG:Release>:${install_dir}/src/libgit2-build/Release/git2.lib>")
 endif()
 # add_library(libgit2_static INTERFACE IMPORTED GLOBAL)
 

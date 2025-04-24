@@ -91,6 +91,17 @@ add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_s
 if(WIN32)
   # target_link_libraries(testHighway PRIVATE hwy::hwy ${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.lib)
   # link_libraries(hwy::hwy)
+  find_package(ZLIB REQUIRED)
+
+  include_directories(${ZLIB_INCLUDE_DIRS})
+  
+  target_link_libraries(testHighway PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4 ${ZLIB_LIBRARIES})
+  target_link_libraries(testdb PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4 ${ZLIB_LIBRARIES})
+  target_link_libraries(testaudio PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4 ${ZLIB_LIBRARIES})
+  target_link_libraries(testCapnp PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4 ${ZLIB_LIBRARIES})
+  target_link_libraries(testManualAudio PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4 ${ZLIB_LIBRARIES})
+  target_link_libraries(testInterface PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4 ${ZLIB_LIBRARIES})
+  target_link_libraries(testGIT PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4 ${ZLIB_LIBRARIES})
 elseif(UNIX AND NOT APPLE)
   # add_executable(EvdevAccModule include/input/linux/LINUX_SUDO_GETTER.cpp)
   # add_dependencies(EvdevAccModule libgit2)
@@ -124,8 +135,11 @@ target_link_libraries(testInterface PRIVATE nlohmann_json::nlohmann_json hwy)
 target_link_libraries(testGIT PRIVATE nlohmann_json::nlohmann_json hwy)
 
 
-# message(${NHJson_SOURCE_DIRS})
+
+
+if(CMAKE_CFG_INTDIR STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "Release")
 include(ADD_SWIGS.cmake)
+endif()
 # enable_testing()
 
 # add_test(NAME DB_TEST COMMAND testdb)

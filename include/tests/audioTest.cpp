@@ -82,7 +82,7 @@ idle_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 f
         
 	// }
 }
-#include <termios.h>
+// #include <termios.h>
 // #include "MiniAudioWrapper.hpp"
 int
 main()
