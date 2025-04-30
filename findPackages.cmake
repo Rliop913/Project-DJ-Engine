@@ -29,6 +29,7 @@ FetchContent_Declare(
   URL https://www.sqlite.org/2024/sqlite-amalgamation-3450000.zip
 )
 
+
 include(ExternalProject)
 
 if(WIN32)
@@ -114,11 +115,10 @@ FetchContent_MakeAvailable(highway)
 FetchContent_MakeAvailable(NHJson)
 FetchContent_MakeAvailable(sql_amalgam)
 
-
 # get_cmake_property(_vars VARIABLES)
 
 # foreach(var ${_vars})
-#     if(var MATCHES "^git")
+#     if(var MATCHES "^cppgit")
 #         message(STATUS "환경변수: ${var} = [${${var}}]")
 #     endif()
 # endforeach()

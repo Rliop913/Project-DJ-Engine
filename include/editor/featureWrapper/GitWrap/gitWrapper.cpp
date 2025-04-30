@@ -1,25 +1,44 @@
 #include "gitWrapper.hpp"
 
 
-std::vector<const git_blame_hunk*>
-GitWrapper::blame(const std::string& filepath)
+MAYBE_BLAME
+GitWrapper::Blame(const std::string& filepath, const GitCommit& newCommit, const GitCommit& oldCommit)
 {
-    if(gbm != nullptr){
-        git_blame_free(gbm);
-        gbm = nullptr;
+    auto newBlame = BlameController();
+    git_blame_options opts;
+    git_blame_options_init(&opts, GIT_BLAME_OPTIONS_VERSION);
+    opts.newest_commit = newCommit.id;
+    opts.oldest_commit = oldCommit.id;
+    if(newBlame.BlameOpen(repo, filepath, &opts)){
+        return std::move(newBlame);
     }
-    if(git_blame_file(&gbm, repo, filepath.c_str(), nullptr) != 0){
-        return std::vector<const git_blame_hunk*>();
+    else{
+        return std::nullopt;
     }
-
-    auto hunksize = git_blame_get_hunk_count(gbm);
-    std::vector<const git_blame_hunk*> hunks;
-    for(unsigned long long i = 0; i < hunksize; ++i){
-        hunks.emplace_back(git_blame_get_hunk_byindex(gbm, i));
-    }
-    return hunks;
 }
 
+DiffResult
+GitWrapper::diff(const GitCommit& oldCommit, const GitCommit& newCommit)
+{
+    auto DiffHandle = DiffController();
+    DiffResult results;
+    if(!oldCommit.USABLE_FLAG) return results;
+
+    if(newCommit.USABLE_FLAG){
+        DiffHandle.CommitToCommit(repo, newCommit.id, oldCommit.id);
+    }
+    else{
+        DiffHandle.CommitToNow(repo, oldCommit.id);
+    }
+    DiffHandle.execute(&results);
+    return results;
+}
+
+bool
+GitWrapper::add(const std::string& path)
+{
+    
+}
 
 
 bool
@@ -38,6 +57,22 @@ GitWrapper::open(const std::string& path)
     }
 }
 
+
+bool
+GitWrapper::close()
+{
+    if(repo == nullptr){
+        return false;
+    }
+    git_repository_free(repo);
+    return true;
+}
+
+GitWrapper::GitWrapper()
+{
+    git_libgit2_init();
+}
+
 GitWrapper::~GitWrapper()
 {
     if(repo != nullptr){
@@ -46,9 +81,7 @@ GitWrapper::~GitWrapper()
     if(idx != nullptr){
         git_index_free(idx);
     }
-    if(gbm != nullptr){
-        git_blame_free(gbm);
-    }
+    git_libgit2_shutdown();
 }
 
 
@@ -61,18 +94,14 @@ GitWrapper::~GitWrapper()
 
 
 
-
-PDJE_GitHandler::PDJE_GitHandler()
+PDJE_GitHandler::PDJE_GitHandler(const std::string& auth_name, const std::string& auth_email)
 {
-    git_libgit2_init();
+    
 }
 
 PDJE_GitHandler::~PDJE_GitHandler()
 {
-    if(repo.has_value()){
-        git_repository_free(repo.value());
-    }
-    git_libgit2_shutdown();
+    
 
 }
 
@@ -80,21 +109,7 @@ PDJE_GitHandler::~PDJE_GitHandler()
 bool
 PDJE_GitHandler::Open(const std::string& path)
 {
-    if(repo.has_value()){
-        return true;
-    }
-    repo.emplace(nullptr);
-    if(git_repository_open(&repo.value(), path.c_str()) == 0){
-        return true;
-    }
-    else{
-        if(git_repository_init(&repo.value(), path.c_str(), false) == 0){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+    return gw.open(path);
 }
 
 bool
@@ -115,32 +130,29 @@ PDJE_GitHandler::DeleteGIT(const std::string& path)
 bool
 PDJE_GitHandler::Close()
 {
-    if(!repo.has_value()){
-        return false;
-    }
-    git_repository_free(repo.value());
-    return true;
+    return gw.close();
 }
 
 
 bool
 PDJE_GitHandler::Save(const std::string& tracingFile)
 {
-    if(!repo.has_value()){
-        return false;
-    }
-    if(!idx.has_value()){
-        if(git_repository_index(&idx.value(), repo.value()) != 0){
-            return false;
-        }
-    }
-    if(git_index_add_bypath(idx.value(), tracingFile.c_str())){
-        return false;
-    }
-    git_oid treeOid;
-    git_tree* tree = nullptr;
-    git_index_write(idx.value());
-    git_index_write_tree(&treeOid, idx.value());
-    git_tree_lookup(&tree, repo.value(), &treeOid);
+    
+    // if(!repo.has_value()){
+    //     return false;
+    // }
+    // if(!idx.has_value()){
+    //     if(git_repository_index(&idx.value(), repo.value()) != 0){
+    //         return false;
+    //     }
+    // }
+    // if(git_index_add_bypath(idx.value(), tracingFile.c_str())){
+    //     return false;
+    // }
+    // git_oid treeOid;
+    // git_tree* tree = nullptr;
+    // git_index_write(idx.value());
+    // git_index_write_tree(&treeOid, idx.value());
+    // git_tree_lookup(&tree, repo.value(), &treeOid);
 
 }

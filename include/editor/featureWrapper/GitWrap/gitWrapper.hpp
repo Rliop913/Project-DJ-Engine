@@ -7,39 +7,45 @@
 
 #include <git2.h>
 
+#include "BlameController.hpp"
+#include "DiffController.hpp"
+
 namespace fs = std::filesystem;
 
-
+using MAYBE_BLAME = std::optional<BlameController>;
 
 class GitWrapper{
 private:
     git_repository* repo = nullptr;
+    git_signature* auth_sign = nullptr;
     git_index* idx = nullptr;
-    git_blame* gbm = nullptr;
+
 public:
     
-    bool add();
-    bool push();
-    bool pull();
-    bool branch();
-    bool checkout();
-    bool merge();
-    bool diff();
+    bool branch(const std::string& branch_name = "new_branch");
+    // checkout: 브랜치명 지정, 기본값 master
+    bool checkout(const std::string& branch = "master");
+    // merge: 브랜치명 지정, 기본값 origin/master
+    bool merge(const std::string& branch = "origin/master");
 
+    bool pull(const std::string& remote = "origin", const std::string& branch = "master");
+    bool push(const std::string& remote = "origin", const std::string& branch = "master");
+    bool add(const std::string& path = "");
     
-    std::vector<const git_blame_hunk*> 
-        blame(const std::string& filepath);
+    DiffResult diff(const GitCommit& oldCommit, const GitCommit& newCommit);
+
+    MAYBE_BLAME Blame(const std::string& filepath, const GitCommit& newCommit, const GitCommit& oldCommit);
 
     bool open(const std::string& path);
-    GitWrapper() = default;
+    bool close();
+    GitWrapper();
     ~GitWrapper();
 };
 
 
 class PDJE_GitHandler{
 private:
-    std::optional<git_repository*> repo;
-    std::optional<git_index*> idx;
+    GitWrapper gw;
 public:
     
     bool Save(const std::string& tracingFile);
@@ -53,7 +59,7 @@ public:
 
 
 
-    PDJE_GitHandler();
+    PDJE_GitHandler(const std::string& auth_name, const std::string& auth_email);
     ~PDJE_GitHandler();
 
 };
