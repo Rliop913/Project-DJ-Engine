@@ -1,16 +1,13 @@
 #pragma once
 #include <string>
 #include <optional>
-#include <filesystem>
-#include <sstream>
-#include <vector>
 
 #include <git2.h>
 
 #include "BlameController.hpp"
 #include "DiffController.hpp"
+#include "AddController.hpp"
 
-namespace fs = std::filesystem;
 
 using MAYBE_BLAME = std::optional<BlameController>;
 
@@ -18,25 +15,22 @@ class GitWrapper{
 private:
     git_repository* repo = nullptr;
     git_signature* auth_sign = nullptr;
-    git_index* idx = nullptr;
+    std::optional<AddController> addIndex;
 
 public:
     
-    bool branch(const std::string& branch_name = "new_branch");
-    // checkout: 브랜치명 지정, 기본값 master
-    bool checkout(const std::string& branch = "master");
-    // merge: 브랜치명 지정, 기본값 origin/master
-    bool merge(const std::string& branch = "origin/master");
+    bool        MoveToBranch(const std::string&  branch_name);
+    bool        checkout(const std::string&  branch_name,const std::string&  commit_message);
+    bool        merge(const std::string&  branch);
+    bool        add(const std::string&  path);
+    bool        open(const std::string&  path);
 
-    bool pull(const std::string& remote = "origin", const std::string& branch = "master");
-    bool push(const std::string& remote = "origin", const std::string& branch = "master");
-    bool add(const std::string& path = "");
-    
-    DiffResult diff(const GitCommit& oldCommit, const GitCommit& newCommit);
+    DiffResult  diff(const GitCommit&    oldCommit,  const GitCommit&    newCommit);
 
-    MAYBE_BLAME Blame(const std::string& filepath, const GitCommit& newCommit, const GitCommit& oldCommit);
+    MAYBE_BLAME Blame(const std::string&  filepath,   const GitCommit&    newCommit,  const GitCommit& oldCommit);
+    bool        commit(git_index*          idx,        git_signature*      sign,       const std::string& message);
 
-    bool open(const std::string& path);
+
     bool close();
     GitWrapper();
     ~GitWrapper();
@@ -46,6 +40,7 @@ public:
 class PDJE_GitHandler{
 private:
     GitWrapper gw;
+    git_signature* sign = nullptr;
 public:
     
     bool Save(const std::string& tracingFile);

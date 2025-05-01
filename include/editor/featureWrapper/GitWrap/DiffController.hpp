@@ -6,7 +6,7 @@
 
 #include <git2.h>
 
-#include "CommitWrapper.hpp"
+#include "CommitFinder.hpp"
 
 struct lineLog{
     unsigned int linenumber;

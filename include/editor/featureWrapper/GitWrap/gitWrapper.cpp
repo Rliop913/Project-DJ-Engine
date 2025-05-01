@@ -1,5 +1,6 @@
 #include "gitWrapper.hpp"
 
+#include "CommitFinder.hpp"
 
 MAYBE_BLAME
 GitWrapper::Blame(const std::string& filepath, const GitCommit& newCommit, const GitCommit& oldCommit)
@@ -37,8 +38,17 @@ GitWrapper::diff(const GitCommit& oldCommit, const GitCommit& newCommit)
 bool
 GitWrapper::add(const std::string& path)
 {
-    
+    if(addIndex.has_value()){
+        addIndex.reset();
+    }
+    addIndex.emplace();
+    if(!addIndex->open(repo)) return false;
+    if(!addIndex->addFile(path)) return false;
+    return true;
 }
+
+
+
 
 
 bool
@@ -78,81 +88,196 @@ GitWrapper::~GitWrapper()
     if(repo != nullptr){
         git_repository_free(repo);
     }
-    if(idx != nullptr){
-        git_index_free(idx);
+    if(addIndex.has_value()) {
+        addIndex.reset();
     }
     git_libgit2_shutdown();
 }
 
-
-
-
-
-
-
-
-
-
-
-PDJE_GitHandler::PDJE_GitHandler(const std::string& auth_name, const std::string& auth_email)
+bool
+GitWrapper::commit(git_index* idx, git_signature* sign, const std::string& message)
 {
-    
+    git_oid tree_id, commit_id, parent_id;
+    git_tree* tree = nullptr;
+    git_commit* parent_commit = nullptr;
+    bool result = false;
+
+    if (idx == nullptr) goto cleanup;
+    if (git_index_write_tree(&tree_id, idx) != 0) goto cleanup;
+    if (git_tree_lookup(&tree, repo, &tree_id) != 0) goto cleanup;
+
+    // 부모 커밋이 있는 경우
+    if (git_reference_name_to_id(&parent_id, repo, "HEAD") == 0 &&
+        git_commit_lookup(&parent_commit, repo, &parent_id) == 0) {
+        if (git_commit_create_v(
+                &commit_id, repo, "HEAD", sign, sign, nullptr,
+                message.c_str(), tree, 1, (const git_commit**)&parent_commit
+            ) == 0) {
+            result = true;
+        }
+    } else {
+        // 최초 커밋(부모 없음)
+        if (git_commit_create_v(
+                &commit_id, repo, "HEAD", sign, sign, nullptr,
+                message.c_str(), tree, 0
+            ) == 0) {
+            result = true;
+        }
+    }
+
+cleanup:
+    if (tree) git_tree_free(tree);
+    if (parent_commit) git_commit_free(parent_commit);
+    return result;
 }
 
-PDJE_GitHandler::~PDJE_GitHandler()
+bool
+GitWrapper::MoveToBranch(const std::string& branch_name)
 {
-    
+	if (!repo) return false;
+	git_reference* branch_ref = nullptr;
+	git_object* target = nullptr;
+	git_checkout_options opts = GIT_CHECKOUT_OPTIONS_INIT;
+	opts.checkout_strategy = GIT_CHECKOUT_SAFE;
+	bool success = false;
 
+	int error = git_branch_lookup(
+        &branch_ref, 
+        repo, 
+        branch_name.c_str(), 
+        GIT_BRANCH_LOCAL);
+	if (error == GIT_OK) {
+		// Branch exists, checkout
+		const git_oid* target_oid = git_reference_target(branch_ref);
+		if (git_commit_lookup((git_commit**)&target, repo, target_oid) != GIT_OK) {
+			goto branch_cleanup;
+		}
+	} else {
+		// Branch does not exist, create from HEAD
+		git_reference* head_ref = nullptr;
+		git_commit* head_commit = nullptr;
+		if (git_repository_head(&head_ref, repo) != GIT_OK) goto branch_cleanup;
+		const git_oid* head_oid = git_reference_target(head_ref);
+		if (git_commit_lookup(&head_commit, repo, head_oid) != GIT_OK) {
+			git_reference_free(head_ref);
+			goto branch_cleanup;
+		}
+		if (git_branch_create(&branch_ref, repo, branch_name.c_str(), head_commit, 0) != GIT_OK) {
+			git_commit_free(head_commit);
+			git_reference_free(head_ref);
+			goto branch_cleanup;
+		}
+		target = (git_object*)head_commit;
+		git_reference_free(head_ref);
+	}
+	// Checkout the target commit/tree
+	if (git_checkout_tree(repo, target, &opts) != GIT_OK) goto branch_cleanup;
+	// Set HEAD to branch
+	if (git_repository_set_head(repo, (std::string("refs/heads/") + branch_name).c_str()) != GIT_OK) goto branch_cleanup;
+	success = true;
+
+branch_cleanup:
+	if (branch_ref) git_reference_free(branch_ref);
+	if (target) git_commit_free((git_commit*)target);
+	return success;
+}
+
+
+
+void merge_cleanup(git_reference* branch_ref, git_commit* their_commit, git_annotated_commit* their_head){
+    if(branch_ref) git_reference_free(branch_ref);
+    if(their_commit) git_commit_free(their_commit);
+    if(their_head) git_annotated_commit_free(their_head);
 }
 
 
 bool
-PDJE_GitHandler::Open(const std::string& path)
+GitWrapper::merge(const std::string& branch)
 {
-    return gw.open(path);
+	if (!repo) return false;
+	git_reference* branch_ref = nullptr;
+	git_commit* their_commit = nullptr;
+	git_annotated_commit* their_head = nullptr;
+	bool success = false;
+	int branch_lookup_ok = 0;
+	int commit_lookup_ok = 0;
+	int annotated_commit_ok = 0;
+
+	// 1. 병합할 브랜치 참조 얻기
+	branch_lookup_ok = git_branch_lookup(&branch_ref, repo, branch.c_str(), GIT_BRANCH_LOCAL);
+	if (branch_lookup_ok != GIT_OK){
+		merge_cleanup(branch_ref, their_commit, their_head);
+		return false;
+	}
+	const git_oid* their_oid = git_reference_target(branch_ref);
+	commit_lookup_ok = git_commit_lookup(&their_commit, repo, their_oid);
+	if (commit_lookup_ok != GIT_OK){
+		merge_cleanup(branch_ref, their_commit, their_head);
+		return false;
+	}
+	annotated_commit_ok = git_annotated_commit_lookup(&their_head, repo, their_oid);
+	if (annotated_commit_ok != GIT_OK){
+		merge_cleanup(branch_ref, their_commit, their_head);
+		return false;
+	}
+
+	// 2. 병합 수행
+	git_merge_options merge_opts = GIT_MERGE_OPTIONS_INIT;
+	git_checkout_options checkout_opts = GIT_CHECKOUT_OPTIONS_INIT;
+	checkout_opts.checkout_strategy = GIT_CHECKOUT_SAFE | GIT_CHECKOUT_RECREATE_MISSING;
+	git_merge(repo, (const git_annotated_commit**)&their_head, 1, &merge_opts, &checkout_opts);
+
+	// 3. 병합 후 상태 확인
+	if (git_repository_state(repo) == GIT_REPOSITORY_STATE_MERGE) {
+		// 충돌 발생 등으로 병합 미완료
+		git_repository_state_cleanup(repo);
+		merge_cleanup(branch_ref, their_commit, their_head);
+		return false;
+	}
+
+	success = true;
+
+	merge_cleanup(branch_ref, their_commit, their_head);
+	return success;
 }
 
 bool
-PDJE_GitHandler::DeleteGIT(const std::string& path)
+GitWrapper::checkout(const std::string& branch_name, const std::string& commit_message)
 {
+    if (!repo) return false;
+    git_reference* branch_ref = nullptr;
+    git_commit* target_commit = nullptr;
+    bool success = false;
 
-    if( !fs::exists(path) ||
-        !fs::is_directory(path) ||
-        !Close())
-    {
+    // 1. 브랜치 참조 얻기
+
+    if(!MoveToBranch(branch_name)) return false;
+    // 2. CommitFinder로 커밋 메시지에 해당하는 커밋 찾기
+    auto finder = GitCommit(commit_message, repo);
+    
+    if (!finder.USABLE_FLAG) {
         return false;
     }
-    fs::remove_all(path);
-    return true;
-}
-
-
-bool
-PDJE_GitHandler::Close()
-{
-    return gw.close();
-}
-
-
-bool
-PDJE_GitHandler::Save(const std::string& tracingFile)
-{
     
-    // if(!repo.has_value()){
-    //     return false;
-    // }
-    // if(!idx.has_value()){
-    //     if(git_repository_index(&idx.value(), repo.value()) != 0){
-    //         return false;
-    //     }
-    // }
-    // if(git_index_add_bypath(idx.value(), tracingFile.c_str())){
-    //     return false;
-    // }
-    // git_oid treeOid;
-    // git_tree* tree = nullptr;
-    // git_index_write(idx.value());
-    // git_index_write_tree(&treeOid, idx.value());
-    // git_tree_lookup(&tree, repo.value(), &treeOid);
+    if (git_commit_lookup(&target_commit, repo, &finder.id) != GIT_OK) {
+        return false;
+    }
 
+    // 3. 해당 커밋으로 체크아웃
+    git_checkout_options opts = GIT_CHECKOUT_OPTIONS_INIT;
+    opts.checkout_strategy = GIT_CHECKOUT_SAFE | GIT_CHECKOUT_RECREATE_MISSING;
+    if (git_checkout_tree(repo, (git_object*)target_commit, &opts) != GIT_OK) {
+        git_commit_free(target_commit);
+        return false;
+    }
+
+    // 4. HEAD를 해당 커밋으로 이동 (detached HEAD)
+    if (git_repository_set_head_detached(repo, git_commit_id(target_commit)) != GIT_OK) {
+        git_commit_free(target_commit);
+        return false;
+    }
+
+    success = true;
+    git_commit_free(target_commit);
+    return success;
 }

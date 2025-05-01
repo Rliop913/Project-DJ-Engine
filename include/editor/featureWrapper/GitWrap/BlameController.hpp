@@ -11,6 +11,7 @@ struct BlameResult{
     git_oid originID;
     size_t originStartLine = 0;
     
+    
 };
 
 using MAYBE_BLAME_RESULT = std::optional<BlameResult>;
