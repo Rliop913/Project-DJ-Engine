@@ -75,6 +75,7 @@ GitWrapper::close()
         return false;
     }
     git_repository_free(repo);
+    repo=nullptr;
     return true;
 }
 
@@ -95,15 +96,15 @@ GitWrapper::~GitWrapper()
 }
 
 bool
-GitWrapper::commit(git_index* idx, git_signature* sign, const std::string& message)
+GitWrapper::commit(git_signature* sign, const std::string& message)
 {
     git_oid tree_id, commit_id, parent_id;
     git_tree* tree = nullptr;
     git_commit* parent_commit = nullptr;
     bool result = false;
 
-    if (idx == nullptr) goto cleanup;
-    if (git_index_write_tree(&tree_id, idx) != 0) goto cleanup;
+    if (!addIndex.has_value()) goto cleanup;
+    if (git_index_write_tree(&tree_id, addIndex->index) != 0) goto cleanup;
     if (git_tree_lookup(&tree, repo, &tree_id) != 0) goto cleanup;
 
     // 부모 커밋이 있는 경우
@@ -128,6 +129,7 @@ GitWrapper::commit(git_index* idx, git_signature* sign, const std::string& messa
 cleanup:
     if (tree) git_tree_free(tree);
     if (parent_commit) git_commit_free(parent_commit);
+    addIndex.reset();
     return result;
 }
 
@@ -280,4 +282,47 @@ GitWrapper::checkout(const std::string& branch_name, const std::string& commit_m
     success = true;
     git_commit_free(target_commit);
     return success;
+}
+
+SaveDatas
+GitWrapper::GetCommits()
+{
+    SaveDatas allBranchCommits;
+    git_branch_iterator* it = nullptr;
+    git_reference* ref = nullptr;
+    int error = 0;
+
+    error = git_branch_iterator_new(&it, repo, GIT_BRANCH_LOCAL);
+    if (error != GIT_OK) return allBranchCommits;
+
+    while (git_branch_next(&ref, nullptr, it) == GIT_OK) {
+        const char* branch_name = nullptr;
+        if (git_branch_name(&branch_name, ref) != GIT_OK || !branch_name) {
+            git_reference_free(ref);
+            continue;
+        }
+        std::vector<GitCommit> commitContains;
+        git_revwalk* walker = nullptr;
+        if (git_revwalk_new(&walker, repo) != GIT_OK) {
+            git_reference_free(ref);
+            continue;
+        }
+        if (git_revwalk_push_ref(walker, git_reference_name(ref)) != GIT_OK) {
+            git_revwalk_free(walker);
+            git_reference_free(ref);
+            continue;
+        }
+        git_oid oid;
+        while (git_revwalk_next(&oid, walker) == GIT_OK) {
+            GitCommit tempCommit(oid, repo);
+            if(tempCommit.USABLE_FLAG){
+                commitContains.push_back(tempCommit);
+            }
+        }
+        git_revwalk_free(walker);
+        git_reference_free(ref);
+        allBranchCommits.emplace_back(std::string(branch_name), commitContains);
+    }
+    git_branch_iterator_free(it);
+    return allBranchCommits;
 }

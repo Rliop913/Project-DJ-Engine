@@ -48,6 +48,9 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/include/editor/edit
   ${CMAKE_SOURCE_DIR}/include/editor/featureWrapper
   ${CMAKE_SOURCE_DIR}/include/editor/featureWrapper/GitWrap
+  ${CMAKE_SOURCE_DIR}/include/editor/featureWrapper/GitWrap/Branch
+  ${CMAKE_SOURCE_DIR}/include/editor/featureWrapper/GitWrap/Commit
+  
   ${CMAKE_SOURCE_DIR}/include/editor/featureWrapper/JSONWrap
   ${CMAKE_SOURCE_DIR}/include/editor/objects
   ${CMAKE_SOURCE_DIR}/include/editor/renderer

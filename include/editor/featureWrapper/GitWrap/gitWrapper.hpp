@@ -11,6 +11,8 @@
 
 using MAYBE_BLAME = std::optional<BlameController>;
 
+using BranchCommits = std::pair<std::string, std::vector<GitCommit>>;
+using SaveDatas = std::vector<BranchCommits>;
 class GitWrapper{
 private:
     git_repository* repo = nullptr;
@@ -28,7 +30,12 @@ public:
     DiffResult  diff(const GitCommit&    oldCommit,  const GitCommit&    newCommit);
 
     MAYBE_BLAME Blame(const std::string&  filepath,   const GitCommit&    newCommit,  const GitCommit& oldCommit);
-    bool        commit(git_index*          idx,        git_signature*      sign,       const std::string& message);
+    bool        commit(git_signature* sign, const std::string& message);
+
+    std::string log(){
+        return std::string();//TODO implement
+    };
+    SaveDatas GetCommits();
 
 
     bool close();
@@ -37,21 +44,22 @@ public:
 };
 
 
+
 class PDJE_GitHandler{
 private:
     GitWrapper gw;
     git_signature* sign = nullptr;
 public:
     
-    bool Save(const std::string& tracingFile);
-    bool Checkout();
+    bool Save(const std::string& tracingFile, const std::string& timeStamp);
+    bool Checkout(const std::string& branch_name, const std::string& timeStamp);
     std::string GetLogWithMermaidGraph();
-    bool GetDiff();
+    DiffResult GetDiff(const GitCommit& oldTimeStamp, const GitCommit& newTimeStamp);
     
     bool DeleteGIT(const std::string& path);
     bool Open(const std::string& path);
     bool Close();
-
+    SaveDatas GetCommits();
 
 
     PDJE_GitHandler(const std::string& auth_name, const std::string& auth_email);

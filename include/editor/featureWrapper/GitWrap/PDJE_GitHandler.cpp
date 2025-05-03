@@ -49,24 +49,51 @@ PDJE_GitHandler::Close()
 
 
 bool
-PDJE_GitHandler::Save(const std::string& tracingFile)
+PDJE_GitHandler::Save(const std::string& tracingFile, const std::string& timeStamp)
 {
-    
-    // if(!repo.has_value()){
-    //     return false;
-    // }
-    // if(!idx.has_value()){
-    //     if(git_repository_index(&idx.value(), repo.value()) != 0){
-    //         return false;
-    //     }
-    // }
-    // if(git_index_add_bypath(idx.value(), tracingFile.c_str())){
-    //     return false;
-    // }
-    // git_oid treeOid;
-    // git_tree* tree = nullptr;
-    // git_index_write(idx.value());
-    // git_index_write_tree(&treeOid, idx.value());
-    // git_tree_lookup(&tree, repo.value(), &treeOid);
+    if(!gw.add(tracingFile)) return false;
+    if(!gw.commit(sign, timeStamp)) return false;
+    return true;
+}
+
+SaveDatas
+PDJE_GitHandler::GetCommits()
+{
+    return gw.GetCommits();
+}
+
+bool
+PDJE_GitHandler::Checkout(const std::string& branch_name, const std::string& timeStamp)
+{
+    return gw.checkout(branch_name, timeStamp);
+}
+
+DiffResult
+PDJE_GitHandler::GetDiff(const GitCommit& oldTimeStamp, const GitCommit& newTimeStamp)
+{
+    return gw.diff(oldTimeStamp, newTimeStamp);
+}
+
+std::string
+PDJE_GitHandler::GetLogWithMermaidGraph()
+{
+    std::string log = gw.log();
+    std::istringstream iss(log);
+    std::string line;
+    std::string result = "gitGraph\n";
+    std::string lastHash;
+    while (std::getline(iss, line)) {
+        size_t found = line.find_first_of(" ");
+        if (found != std::string::npos) {
+            std::string hash = line.substr(0, found);
+            std::string subject = line.substr(found + 1);
+            if (lastHash.size() > 0) {
+                result += "  " + lastHash + " --> " + hash + "\n";
+            }
+            result += "  " + hash + "[\"" + subject + "\"]\n";
+            lastHash = hash;
+        }
+    }
+    return result;
 
 }
