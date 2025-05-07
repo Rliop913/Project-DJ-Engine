@@ -11,5 +11,7 @@ ${CMAKE_SOURCE_DIR}/include/editor/featureWrapper/GitWrap/CommitFinder.cpp
 ${CMAKE_SOURCE_DIR}/include/editor/featureWrapper/GitWrap/AddController.cpp
 ${CMAKE_SOURCE_DIR}/include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp
 
+${CMAKE_SOURCE_DIR}/include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp
+${CMAKE_SOURCE_DIR}/include/editor/featureWrapper/GitWrap/Commit/editorCommit.cpp
 
 )

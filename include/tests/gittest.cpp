@@ -13,12 +13,13 @@ int main()
       std::cout << "saved ok" << std::endl;
    }
    else{
-      auto commitres = gh.GetCommits();
+      
+      auto commitres = gh.gw.handleBranch->ShowExistCommitsOnBranch("master");
       for( auto i : commitres){
-         std::cout << "branch: " << i.first << std::endl;
-         for(auto j : i.second){
-            std::cout << "commit: " << j.commitMessage << std::endl;
-         }
+         // std::cout << "branch: " << i. << std::endl;
+         // for(auto j : i.second){
+            std::cout << "commit: " << i.msg << std::endl;
+         // }
       }
       std::cout << "save error" << std::endl;
    }

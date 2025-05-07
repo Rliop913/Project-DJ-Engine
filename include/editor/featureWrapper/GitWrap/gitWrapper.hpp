@@ -9,10 +9,16 @@
 #include "AddController.hpp"
 
 
+#include "editorBranch.hpp"
+
+
 using MAYBE_BLAME = std::optional<BlameController>;
 
 using BranchCommits = std::pair<std::string, std::vector<GitCommit>>;
-using SaveDatas = std::vector<BranchCommits>;
+// using SaveDatas = std::vector<BranchCommits>;
+
+using BRANCH_HANDLE = std::optional<gitwrap::branch>;
+
 class GitWrapper{
 private:
     git_repository* repo = nullptr;
@@ -20,10 +26,10 @@ private:
     std::optional<AddController> addIndex;
 
 public:
-    
-    bool        MoveToBranch(const std::string&  branch_name);
-    bool        checkout(const std::string&  branch_name,const std::string&  commit_message);
-    bool        merge(const std::string&  branch);
+    BRANCH_HANDLE handleBranch;
+    // bool        MoveToBranch(const std::string&  branch_name);
+    // bool        checkout(const std::string&  branch_name,const std::string&  commit_message);
+    // bool        merge(const std::string&  branch);
     bool        add(const std::string&  path);
     bool        open(const std::string&  path);
 
@@ -35,7 +41,7 @@ public:
     std::string log(){
         return std::string();//TODO implement
     };
-    SaveDatas GetCommits();
+    // SaveDatas GetCommits();
 
 
     bool close();
@@ -47,9 +53,9 @@ public:
 
 class PDJE_GitHandler{
 private:
-    GitWrapper gw;
     git_signature* sign = nullptr;
 public:
+    GitWrapper gw;
     
     bool Save(const std::string& tracingFile, const std::string& timeStamp);
     bool Checkout(const std::string& branch_name, const std::string& timeStamp);
@@ -59,7 +65,7 @@ public:
     bool DeleteGIT(const std::string& path);
     bool Open(const std::string& path);
     bool Close();
-    SaveDatas GetCommits();
+    // SaveDatas GetCommits();
 
 
     PDJE_GitHandler(const std::string& auth_name, const std::string& auth_email);

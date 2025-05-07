@@ -4,13 +4,29 @@
 #include <string>
 #include <vector>
 #include <optional>
+#include <list>
 namespace gitwrap
 {
     struct commit{
+        git_commit* commitPointer = nullptr;
         git_oid commitID;
         std::string msg;
+        ~commit(){
+            if(commitPointer != nullptr){
+                git_commit_free(commitPointer);
+            }
+        }
     };
+    struct commitList{
+        
+        std::list<commit> clist; //Back is Newers
+        
 
-    using MAYBE_COMMIT = std::optional<commit>;
+        void Reset(){
+            clist.clear();
+        }
+        bool UpdateCommits(git_repository* repo);
+        bool OkToAdd(git_oid id);
+    };
 
 }

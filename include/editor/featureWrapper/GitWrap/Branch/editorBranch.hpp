@@ -12,25 +12,32 @@ namespace gitwrap{
     
     class branch{
     private:
-        git_reference* bRef;
         git_repository* repo_pointer;
+        git_checkout_options checkoutOpts = GIT_CHECKOUT_OPTIONS_INIT;
+        commitList cms;
+        template<typename T>
+        std::string
+        ToBranchRefName(T branchName);
     public:
-        commit HEAD;
 
         std::vector<std::string> ShowExistBranch();
-        std::vector<commit> ShowExistCommitsOnBranch();
+        std::vector<commit> ShowExistCommitsOnBranch(const std::string& branchName);
         
         bool SetBranch(const std::string& branchName);
         
-        bool HEADMoveFoward();
-        bool HEADMoveBackward();
-        bool HEADFindAndMove(const std::string& commitMSG);
 
         bool MakeNewFromHEAD(const std::string& newBranchName);
-
+        bool MakeNewFromCommit(commit& c, const std::string& newBranchName);
+        bool DeleteBranch(const std::string& branchName);
         bool CheckoutThisHEAD();
 
-        branch(git_repository* repo) : repo_pointer(repo) {};
+        std::optional<commit> GetHEAD();
+
+        bool MergeToBranch(const std::string& branchToMerge);
+
+        branch(git_repository* repo) : repo_pointer(repo) {
+            checkoutOpts.checkout_strategy= GIT_CHECKOUT_SAFE;
+        };
         ~branch();
     };
 };

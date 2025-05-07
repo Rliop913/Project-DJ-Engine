@@ -56,16 +56,21 @@ PDJE_GitHandler::Save(const std::string& tracingFile, const std::string& timeSta
     return true;
 }
 
-SaveDatas
-PDJE_GitHandler::GetCommits()
-{
-    return gw.GetCommits();
-}
+// SaveDatas
+// PDJE_GitHandler::GetCommits()
+// {
+//     return gw.GetCommits();
+// }
 
 bool
 PDJE_GitHandler::Checkout(const std::string& branch_name, const std::string& timeStamp)
 {
-    return gw.checkout(branch_name, timeStamp);
+    if(gw.handleBranch.has_value()){
+        return gw.handleBranch->CheckoutThisHEAD();
+    }
+    else{
+        return false;
+    }
 }
 
 DiffResult
