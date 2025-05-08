@@ -1,5 +1,5 @@
 #include "editorCommit.hpp"
-
+#include <cstring>
 using namespace gitwrap;
 
 
@@ -50,4 +50,43 @@ commitList::OkToAdd(git_oid id)
     else{
         return false;
     }
+}
+
+
+
+
+
+commit::commit(git_oid oid, git_repository* rep)
+: commitID(oid) 
+{
+    if(git_commit_lookup(&commitPointer, rep, &commitID) == 0){
+        msg = git_commit_message(commitPointer);
+    }
+    else{
+        commitPointer = nullptr;
+    }
+}
+
+
+commit::commit(const std::string commitMSG, git_repository* rep)
+    : msg(commitMSG) 
+{
+    git_revwalk* walker = nullptr;
+    git_revwalk_new(&walker, rep);
+    git_revwalk_push_head(walker);
+
+    git_oid tempoid;
+    while(git_revwalk_next(&tempoid, walker) == 0){
+        git_commit_lookup(&commitPointer, rep, &tempoid);
+        if(strcmp( git_commit_message(commitPointer), msg.c_str()) == 0){
+            commitID = tempoid;
+            break;
+        }
+        else{
+            git_commit_free(commitPointer);
+            commitPointer = nullptr;
+        }
+    }
+    git_revwalk_free(walker);
+    
 }

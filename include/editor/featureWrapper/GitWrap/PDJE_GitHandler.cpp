@@ -74,31 +74,31 @@ PDJE_GitHandler::Checkout(const std::string& branch_name, const std::string& tim
 }
 
 DiffResult
-PDJE_GitHandler::GetDiff(const GitCommit& oldTimeStamp, const GitCommit& newTimeStamp)
+PDJE_GitHandler::GetDiff(const gitwrap::commit& oldTimeStamp, const gitwrap::commit& newTimeStamp)
 {
     return gw.diff(oldTimeStamp, newTimeStamp);
 }
 
 std::string
-PDJE_GitHandler::GetLogWithMermaidGraph()
+PDJE_GitHandler::GetLogWithJSONGraph()
 {
-    std::string log = gw.log();
-    std::istringstream iss(log);
-    std::string line;
-    std::string result = "gitGraph\n";
-    std::string lastHash;
-    while (std::getline(iss, line)) {
-        size_t found = line.find_first_of(" ");
-        if (found != std::string::npos) {
-            std::string hash = line.substr(0, found);
-            std::string subject = line.substr(found + 1);
-            if (lastHash.size() > 0) {
-                result += "  " + lastHash + " --> " + hash + "\n";
-            }
-            result += "  " + hash + "[\"" + subject + "\"]\n";
-            lastHash = hash;
-        }
-    }
-    return result;
+    
+    // std::istringstream iss(log);
+    // std::string line;
+    // std::string result = "gitGraph\n";
+    // std::string lastHash;
+    // while (std::getline(iss, line)) {
+    //     size_t found = line.find_first_of(" ");
+    //     if (found != std::string::npos) {
+    //         std::string hash = line.substr(0, found);
+    //         std::string subject = line.substr(found + 1);
+    //         if (lastHash.size() > 0) {
+    //             result += "  " + lastHash + " --> " + hash + "\n";
+    //         }
+    //         result += "  " + hash + "[\"" + subject + "\"]\n";
+    //         lastHash = hash;
+    //     }
+    // }
+    // return result;
 
 }

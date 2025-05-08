@@ -14,14 +14,14 @@ int main()
    }
    else{
       
-      auto commitres = gh.gw.handleBranch->ShowExistCommitsOnBranch("master");
-      for( auto i : commitres){
-         // std::cout << "branch: " << i. << std::endl;
-         // for(auto j : i.second){
-            std::cout << "commit: " << i.msg << std::endl;
-         // }
-      }
-      std::cout << "save error" << std::endl;
+      // auto commitres = gh.gw.handleBranch->ShowExistCommitsOnBranch("master");
+      // for( auto i : commitres){
+      //    // std::cout << "branch: " << i. << std::endl;
+      //    // for(auto j : i.second){
+      //       std::cout << "commit: " << i.msg << std::endl;
+      //    // }
+      // }
+      // std::cout << "save error" << std::endl;
    }
    // getchar();
    gh.Close();

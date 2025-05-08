@@ -9,9 +9,10 @@ bool
 DiffController::CommitToNow(git_repository* repo, git_oid oldID)
 {
     git_tree* Otree = nullptr;
-    auto OCommit = GitCommit(oldID, repo);
-    if(OCommit.USABLE_FLAG){
-        if(git_commit_tree(&Otree, OCommit.commit) != 0){
+    auto OCommit = gitwrap::commit(oldID, repo);
+    
+    if(OCommit.commitPointer != nullptr){
+        if(git_commit_tree(&Otree, OCommit.commitPointer) != 0){
             goto OLD_TREE_INIT_FAILED;
         }
         if(git_diff_tree_to_workdir(&Dobj, repo, Otree, nullptr) != 0){
@@ -38,13 +39,16 @@ DiffController::CommitToCommit(git_repository* repo, git_oid newID, git_oid oldI
 {
     git_tree* Ntree = nullptr;
     git_tree* Otree = nullptr;
-    auto NCommit = GitCommit(newID, repo);
-    auto OCommit = GitCommit(oldID, repo);
-    if(NCommit.USABLE_FLAG && OCommit.USABLE_FLAG){
-        if(git_commit_tree(&Ntree, NCommit.commit) != 0){
+    auto NCommit = gitwrap::commit(newID, repo);
+    auto OCommit = gitwrap::commit(oldID, repo);
+    if(
+        NCommit.commitPointer != nullptr &&
+        OCommit.commitPointer != nullptr){
+
+        if(git_commit_tree(&Ntree, NCommit.commitPointer) != 0){
             goto NEW_TREE_INIT_FAILED;
         }
-        if(git_commit_tree(&Otree, OCommit.commit) != 0){
+        if(git_commit_tree(&Otree, OCommit.commitPointer) != 0){
             goto OLD_TREE_INIT_FAILED;
         }
         if(git_diff_tree_to_tree(&Dobj, repo, Otree, Ntree, nullptr) != 0){

@@ -11,6 +11,9 @@ namespace gitwrap
         git_commit* commitPointer = nullptr;
         git_oid commitID;
         std::string msg;
+        commit() = default;
+        commit(git_oid commitID, git_repository* rep);
+        commit(const std::string commitMSG, git_repository* rep);
         ~commit(){
             if(commitPointer != nullptr){
                 git_commit_free(commitPointer);

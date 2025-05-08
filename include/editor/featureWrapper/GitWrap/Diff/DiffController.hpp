@@ -5,8 +5,8 @@
 #include <vector>
 
 #include <git2.h>
-
-#include "CommitFinder.hpp"
+#include "editorCommit.hpp"
+// #include "CommitFinder.hpp"
 
 struct lineLog{
     unsigned int linenumber;

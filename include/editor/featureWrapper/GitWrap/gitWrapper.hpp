@@ -3,6 +3,7 @@
 #include <optional>
 
 #include <git2.h>
+#include <json/json.h>
 
 #include "BlameController.hpp"
 #include "DiffController.hpp"
@@ -10,11 +11,12 @@
 
 
 #include "editorBranch.hpp"
+#include "gitLog.hpp"
 
 
 using MAYBE_BLAME = std::optional<BlameController>;
 
-using BranchCommits = std::pair<std::string, std::vector<GitCommit>>;
+using BranchCommits = std::pair<std::string, std::vector<gitwrap::commit>>;
 // using SaveDatas = std::vector<BranchCommits>;
 
 using BRANCH_HANDLE = std::optional<gitwrap::branch>;
@@ -24,23 +26,26 @@ private:
     git_repository* repo = nullptr;
     git_signature* auth_sign = nullptr;
     std::optional<AddController> addIndex;
-
 public:
+    std::optional<gitwrap::logHandle> log_hdl;
     BRANCH_HANDLE handleBranch;
-    // bool        MoveToBranch(const std::string&  branch_name);
-    // bool        checkout(const std::string&  branch_name,const std::string&  commit_message);
-    // bool        merge(const std::string&  branch);
-    bool        add(const std::string&  path);
-    bool        open(const std::string&  path);
 
-    DiffResult  diff(const GitCommit&    oldCommit,  const GitCommit&    newCommit);
+    bool add(const std::string&  path);
+    bool open(const std::string&  path);
 
-    MAYBE_BLAME Blame(const std::string&  filepath,   const GitCommit&    newCommit,  const GitCommit& oldCommit);
-    bool        commit(git_signature* sign, const std::string& message);
+    DiffResult diff(
+        const gitwrap::commit& oldCommit, 
+        const gitwrap::commit& newCommit);
 
-    std::string log(){
-        return std::string();//TODO implement
-    };
+    MAYBE_BLAME Blame(
+        const std::string& filepath, 
+        const gitwrap::commit& newCommit, 
+        const gitwrap::commit& oldCommit);
+
+    bool commit(git_signature* sign, const std::string& message);
+
+    bool log();
+    bool log(const std::string& branchName);
     // SaveDatas GetCommits();
 
 
@@ -53,14 +58,21 @@ public:
 
 class PDJE_GitHandler{
 private:
+    GitWrapper gw;
     git_signature* sign = nullptr;
 public:
-    GitWrapper gw;
     
     bool Save(const std::string& tracingFile, const std::string& timeStamp);
     bool Checkout(const std::string& branch_name, const std::string& timeStamp);
-    std::string GetLogWithMermaidGraph();
-    DiffResult GetDiff(const GitCommit& oldTimeStamp, const GitCommit& newTimeStamp);
+    std::string GetLogWithJSONGraph();
+    bool UpdateLog(){
+        return gw.log();
+    }
+    bool UpdateLog(const std::string& branchName){
+        return gw.log(branchName);
+    }
+    
+    DiffResult GetDiff(const gitwrap::commit& oldTimeStamp, const gitwrap::commit& newTimeStamp);
     
     bool DeleteGIT(const std::string& path);
     bool Open(const std::string& path);

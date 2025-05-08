@@ -14,11 +14,12 @@ namespace gitwrap{
     private:
         git_repository* repo_pointer;
         git_checkout_options checkoutOpts = GIT_CHECKOUT_OPTIONS_INIT;
-        commitList cms;
+        
+    public:
         template<typename T>
+        static
         std::string
         ToBranchRefName(T branchName);
-    public:
 
         std::vector<std::string> ShowExistBranch();
         std::vector<commit> ShowExistCommitsOnBranch(const std::string& branchName);
