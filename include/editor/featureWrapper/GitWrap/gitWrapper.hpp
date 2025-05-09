@@ -3,7 +3,7 @@
 #include <optional>
 
 #include <git2.h>
-#include <json/json.h>
+#include <nlohmann/json.hpp>
 
 #include "BlameController.hpp"
 #include "DiffController.hpp"

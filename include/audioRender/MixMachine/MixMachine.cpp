@@ -1,5 +1,6 @@
 #include "MixMachine.hpp"
 
+#include "MixMachine-inl.h"
 
 MixMachine::MixMachine()
 {
@@ -30,6 +31,7 @@ MixMachine::IDsort(const MixTranslator& tr)
     }
 }
 
+HWY_EXPORT(INTEGRATE_PCM_SIMD);
 
 bool
 MixMachine::mix(litedb& db, const BPM& bpms)
@@ -127,41 +129,38 @@ MixMachine::mix(litedb& db, const BPM& bpms)
                 return;
             }
             FX->consumeAll();
-            const hn::ScalableTag<float> hwyFTag;
-            auto laneSize = hn::Lanes(hwyFTag);
-            auto times = tempVec.size() / laneSize;
-            auto remained = tempVec.size() % laneSize;
 
-            auto Tptr = tempVec.data();
-            {
-                std::lock_guard<std::mutex> locks(renderLock);
-                if(rendered_out.size() < (MC->QDatas.pos.back().Gidx * CHANNEL)){
-                    rendered_out.resize((MC->QDatas.pos.back().Gidx * CHANNEL));
-                }
-                auto Rptr = rendered_out.data() + (MC->QDatas.pos.front().Gidx * CHANNEL);
+            HWY_DYNAMIC_DISPATCH(INTEGRATE_PCM_SIMD)(
+                tempVec,
+                renderLock,
+                rendered_out,
+                MC
+            );
 
-                for(size_t L = 0; L < times; ++L){
-                    auto Tsimd = hn::Load(hwyFTag, Tptr);
-                    auto Rsimd = hn::LoadU(hwyFTag, Rptr);
-                    hn::StoreU(Rsimd + Tsimd, hwyFTag, Rptr);
-                    Tptr += laneSize;
-                    Rptr += laneSize;
-                }
-                for(size_t REM = 0; REM < remained; ++REM){
-                    (*(Rptr++)) += (*(Tptr++));
-                }
-            }
-            // PFloat = result.value()->data();
+            // const hn::ScalableTag<float> hwyFTag;
+            // auto laneSize = hn::Lanes(hwyFTag);
+            // auto times = tempVec.size() / laneSize;
+            // auto remained = tempVec.size() % laneSize;
 
-            // for(unsigned long q = MC->QDatas.pos.front().Gidx; 
-            //     q < (MC->QDatas.pos.back().Gidx - MC->QDatas.pos.front().Gidx) * CHANNEL;
-            //         ++q){
-                
-            //     (*Rptr) += (*Tptr);
-            //     ++Rptr;
-            //     ++Tptr;
+            // auto Tptr = tempVec.data();
+            // {
+            //     std::lock_guard<std::mutex> locks(renderLock);
+            //     if(rendered_out.size() < (MC->QDatas.pos.back().Gidx * CHANNEL)){
+            //         rendered_out.resize((MC->QDatas.pos.back().Gidx * CHANNEL));
+            //     }
+            //     auto Rptr = rendered_out.data() + (MC->QDatas.pos.front().Gidx * CHANNEL);
+
+            //     for(size_t L = 0; L < times; ++L){
+            //         auto Tsimd = hn::Load(hwyFTag, Tptr);
+            //         auto Rsimd = hn::LoadU(hwyFTag, Rptr);
+            //         hn::StoreU(Rsimd + Tsimd, hwyFTag, Rptr);
+            //         Tptr += laneSize;
+            //         Rptr += laneSize;
+            //     }
+            //     for(size_t REM = 0; REM < remained; ++REM){
+            //         (*(Rptr++)) += (*(Tptr++));
+            //     }
             // }
-            
             delete MC;
             delete DJ;
             delete FX;

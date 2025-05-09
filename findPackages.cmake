@@ -1,5 +1,6 @@
 # set(GIT_USE_STAT_MTIMESPEC ON CACHE BOOL "Don't use nanosecond timestamps" FORCE)
 
+
 FetchContent_Declare(
   miniaudio
   GIT_REPOSITORY https://github.com/mackron/miniaudio.git
@@ -114,7 +115,6 @@ FetchContent_MakeAvailable(miniaudio)
 FetchContent_MakeAvailable(highway)
 FetchContent_MakeAvailable(NHJson)
 FetchContent_MakeAvailable(sql_amalgam)
-
 # get_cmake_property(_vars VARIABLES)
 
 # foreach(var ${_vars})

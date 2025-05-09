@@ -16,7 +16,6 @@ PDJE_GitHandler::PDJE_GitHandler(const std::string& auth_name, const std::string
 PDJE_GitHandler::~PDJE_GitHandler()
 {
     git_signature_free(sign);
-
 }
 
 
@@ -56,11 +55,6 @@ PDJE_GitHandler::Save(const std::string& tracingFile, const std::string& timeSta
     return true;
 }
 
-// SaveDatas
-// PDJE_GitHandler::GetCommits()
-// {
-//     return gw.GetCommits();
-// }
 
 bool
 PDJE_GitHandler::Checkout(const std::string& branch_name, const std::string& timeStamp)
