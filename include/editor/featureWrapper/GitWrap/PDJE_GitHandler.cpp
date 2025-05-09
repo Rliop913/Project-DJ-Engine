@@ -73,26 +73,29 @@ PDJE_GitHandler::GetDiff(const gitwrap::commit& oldTimeStamp, const gitwrap::com
     return gw.diff(oldTimeStamp, newTimeStamp);
 }
 
+struct BranchJSON{
+    std::string branchname;
+    std::string oid;
+};
+
 std::string
 PDJE_GitHandler::GetLogWithJSONGraph()
 {
-    
-    // std::istringstream iss(log);
-    // std::string line;
-    // std::string result = "gitGraph\n";
-    // std::string lastHash;
-    // while (std::getline(iss, line)) {
-    //     size_t found = line.find_first_of(" ");
-    //     if (found != std::string::npos) {
-    //         std::string hash = line.substr(0, found);
-    //         std::string subject = line.substr(found + 1);
-    //         if (lastHash.size() > 0) {
-    //             result += "  " + lastHash + " --> " + hash + "\n";
-    //         }
-    //         result += "  " + hash + "[\"" + subject + "\"]\n";
-    //         lastHash = hash;
-    //     }
-    // }
-    // return result;
-
+    using nj = nlohmann::json;
+    nj GraphRoot;
+    for(auto& i : gw.log_hdl->heads){
+        nj b;
+        b["NAME"] = i.BranchName;
+        b["OID"] = std::string(git_oid_tostr_s(&i.head));
+        GraphRoot["BRANCH"].push_back(b);
+    }
+    for(auto& i : gw.log_hdl->logs){
+        nj c;
+        c["OID"] = std::string(git_oid_tostr_s(&i.first));
+        c["EMAIL"] = i.second.authEmail;
+        c["NAME"] = i.second.authName;
+        c["PARENTID"] = std::string(git_oid_tostr_s(&i.second.parentID));
+        GraphRoot["COMMIT"].push_back(c);
+    }
+    return GraphRoot.dump();
 }

@@ -5,7 +5,8 @@ set(HWY_ENABLE_TESTS OFF)
 set(CAPNP_BUILD_TESTS OFF)
 set(BUILD_TESTING OFF CACHE BOOL "Disable testing")
 set(HWY_ENABLE_TARGETS "scalar,sse4,avx2,avx3,neon" CACHE STRING "Enabled SIMD targets" FORCE)
-
+add_compile_definitions( -DHWY_COMPILE_ONLY)
+add_compile_options( -msse4.1 -mavx2)
 if(WIN32)
 
   set(CMAKE_CXX_STANDARD 20)
