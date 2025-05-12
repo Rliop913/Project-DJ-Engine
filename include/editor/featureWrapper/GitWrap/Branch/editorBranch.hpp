@@ -9,13 +9,14 @@
 #include <optional>
 
 namespace gitwrap{
-    
+
     class branch{
     private:
         git_repository* repo_pointer;
         git_checkout_options checkoutOpts = GIT_CHECKOUT_OPTIONS_INIT;
-        
+
     public:
+        std::optional<git_oid> FLAG_TEMP_CHECKOUT;
         template<typename T>
         static
         std::string
@@ -23,14 +24,15 @@ namespace gitwrap{
 
         std::vector<std::string> ShowExistBranch();
         std::vector<commit> ShowExistCommitsOnBranch(const std::string& branchName);
-        
+
         bool SetBranch(const std::string& branchName);
-        
+
 
         bool MakeNewFromHEAD(const std::string& newBranchName);
         bool MakeNewFromCommit(commit& c, const std::string& newBranchName);
         bool DeleteBranch(const std::string& branchName);
         bool CheckoutThisHEAD();
+        bool CheckoutCommitTemp(commit& c);
 
         std::optional<commit> GetHEAD();
 

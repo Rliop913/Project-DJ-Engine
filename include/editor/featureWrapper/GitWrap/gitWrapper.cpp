@@ -1,5 +1,10 @@
 #include "gitWrapper.hpp"
-
+#include "editorCommit.hpp"
+#include "git2/commit.h"
+#include "git2/oid.h"
+#include <string>
+#include <chrono>
+#include <sstream>
 // #include "CommitFinder.hpp"
 
 MAYBE_BLAME
@@ -105,6 +110,22 @@ GitWrapper::commit(git_signature* sign, const std::string& message)
     git_commit* parent_commit = nullptr;
     bool result = false;
 
+    if(!handleBranch.has_value()){
+        return false;
+    }
+    if(handleBranch->FLAG_TEMP_CHECKOUT.has_value()){
+        auto tempcommit = gitwrap::commit();
+
+        git_commit_lookup(
+            &(tempcommit.commitPointer),
+            repo,
+            &(handleBranch->FLAG_TEMP_CHECKOUT.value()));
+
+        handleBranch->MakeNewFromCommit(
+            tempcommit, GenTimeStamp()
+            );
+    }
+
     if (!addIndex.has_value()) goto cleanup;
     if (git_index_write_tree(&tree_id, addIndex->index) != 0) goto cleanup;
     if (git_tree_lookup(&tree, repo, &tree_id) != 0) goto cleanup;
@@ -155,7 +176,7 @@ GitWrapper::log()
 
 }
 
-bool 
+bool
 GitWrapper::log(const std::string& branchName)
 {
     if(!log_hdl.has_value()){
@@ -165,4 +186,28 @@ GitWrapper::log(const std::string& branchName)
         return false;
     }
     return true;
+}
+
+std::string
+GitWrapper::GenTimeStamp()
+{
+    using namespace std::chrono;
+
+    auto now = system_clock::now();
+
+    std::time_t tt = system_clock::to_time_t(now);
+    std::tm tm{};
+    #if defined(_WIN32)
+        localtime_s(&tm, &tt);
+    #else
+        localtime_r(&tt, &tm);
+    #endif
+
+        auto ms = duration_cast<milliseconds>(now - system_clock::from_time_t(tt)).count();
+
+        std::ostringstream oss;
+        oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
+        oss << '.' << std::setw(3) << std::setfill('0') << ms;
+
+        return oss.str();
 }

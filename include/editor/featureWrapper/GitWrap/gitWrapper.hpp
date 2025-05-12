@@ -11,6 +11,7 @@
 
 
 #include "editorBranch.hpp"
+#include "git2/repository.h"
 #include "gitLog.hpp"
 
 
@@ -34,18 +35,20 @@ public:
     bool open(const std::string&  path);
 
     DiffResult diff(
-        const gitwrap::commit& oldCommit, 
+        const gitwrap::commit& oldCommit,
         const gitwrap::commit& newCommit);
 
     MAYBE_BLAME Blame(
-        const std::string& filepath, 
-        const gitwrap::commit& newCommit, 
+        const std::string& filepath,
+        const gitwrap::commit& newCommit,
         const gitwrap::commit& oldCommit);
 
     bool commit(git_signature* sign, const std::string& message);
 
     bool log();
     bool log(const std::string& branchName);
+
+    std::string GenTimeStamp();
     // SaveDatas GetCommits();
 
 
@@ -58,12 +61,16 @@ public:
 
 class PDJE_GitHandler{
 private:
-    GitWrapper gw;
     git_signature* sign = nullptr;
 public:
-    
+    GitWrapper gw;
+
     bool Save(const std::string& tracingFile, const std::string& timeStamp);
-    bool Checkout(const std::string& branch_name, const std::string& timeStamp);
+    bool Undo(const std::string& tracingFile);
+    bool Redo(const std::string& tracingFile);
+
+    // bool Checkout();
+    bool ChangeHEAD(const std::string& branchName, const std::string& commitID);
     std::string GetLogWithJSONGraph();
     bool UpdateLog(){
         return gw.log();
@@ -71,9 +78,9 @@ public:
     bool UpdateLog(const std::string& branchName){
         return gw.log(branchName);
     }
-    
+
     DiffResult GetDiff(const gitwrap::commit& oldTimeStamp, const gitwrap::commit& newTimeStamp);
-    
+
     bool DeleteGIT(const std::string& path);
     bool Open(const std::string& path);
     bool Close();

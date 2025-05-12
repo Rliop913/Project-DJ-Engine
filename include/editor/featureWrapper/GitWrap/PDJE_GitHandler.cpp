@@ -1,5 +1,6 @@
 #include <filesystem>
 
+#include "git2/repository.h"
 #include "gitWrapper.hpp"
 
 
@@ -56,16 +57,22 @@ PDJE_GitHandler::Save(const std::string& tracingFile, const std::string& timeSta
 }
 
 
-bool
-PDJE_GitHandler::Checkout(const std::string& branch_name, const std::string& timeStamp)
-{
-    if(gw.handleBranch.has_value()){
-        return gw.handleBranch->CheckoutThisHEAD();
-    }
-    else{
-        return false;
-    }
-}
+// bool
+// PDJE_GitHandler::Checkout()
+// {
+//     if(gw.handleBranch.has_value()){
+//         if(gw.isDetached()){
+
+//         }
+//         else{
+//             return gw.handleBranch->CheckoutThisHEAD();
+
+//         }
+//     }
+//     else{
+//         return false;
+//     }
+// }
 
 DiffResult
 PDJE_GitHandler::GetDiff(const gitwrap::commit& oldTimeStamp, const gitwrap::commit& newTimeStamp)

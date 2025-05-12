@@ -1,4 +1,5 @@
 #include  "editorBranch.hpp"
+#include "git2/oid.h"
 
 using namespace gitwrap;
 
@@ -10,7 +11,7 @@ branch::ShowExistBranch()
     if(git_branch_iterator_new(&branchIT, repo_pointer, GIT_BRANCH_LOCAL) != 0){
         return std::vector<std::string>();
     }
-    
+
     git_reference* branchITRRef;
     git_branch_t branchType;
     const char * branchName;
@@ -47,7 +48,7 @@ branch::ShowExistCommitsOnBranch(const std::string& branchName)
     if(git_revwalk_new(&walker, repo_pointer) != 0){
         return std::vector<commit>();
     }
-    
+
     if(git_revwalk_push_ref(walker, ToBranchRefName<const std::string&>(branchName).c_str()) != 0){
         git_revwalk_free(walker);
         return std::vector<commit>();
@@ -60,7 +61,7 @@ branch::ShowExistCommitsOnBranch(const std::string& branchName)
     while(git_revwalk_next(&tempid, walker) == 0){
         commit tempcommit;
         git_oid_cpy(&tempcommit.commitID, &tempid);
-        
+
         if(git_commit_lookup(&tempcommit.commitPointer, repo_pointer, &tempcommit.commitID) == 0){
             tempcommit.msg = std::string(git_commit_message(tempcommit.commitPointer));
             commits.emplace_back(std::move(tempcommit));
@@ -87,6 +88,8 @@ branch::MakeNewFromHEAD(const std::string& newBranchName)
     git_reference* newbranch = nullptr;
     if(git_branch_create(&newbranch, repo_pointer, newBranchName.c_str(), head->commitPointer, 1) == 0){
         git_reference_free(newbranch);
+        auto refN = ToBranchRefName<const std::string&>(newBranchName);
+        git_repository_set_head(repo_pointer, refN.c_str());
         return true;
     }
     if(newbranch != nullptr){
@@ -95,13 +98,16 @@ branch::MakeNewFromHEAD(const std::string& newBranchName)
     return false;
 }
 
-bool 
+bool
 branch::MakeNewFromCommit(commit& c, const std::string& newBranchName)
 {
     git_reference* newBranchRef = nullptr;
     if(git_branch_create(&newBranchRef, repo_pointer, newBranchName.c_str(), c.commitPointer, 1) == 0){
         git_reference_free(newBranchRef);
+        auto refN = ToBranchRefName<const std::string&>(newBranchName);
+        git_repository_set_head(repo_pointer, refN.c_str());
         return true;
+
     }
     else{
         return false;
@@ -111,7 +117,7 @@ branch::MakeNewFromCommit(commit& c, const std::string& newBranchName)
 bool
 branch::DeleteBranch(const std::string& branchName)
 {
-    
+
     git_reference* branchForDelete = nullptr;
     if(git_branch_lookup(&branchForDelete, repo_pointer, branchName.c_str(), GIT_BRANCH_LOCAL) != 0){
         return false;
@@ -128,8 +134,28 @@ branch::DeleteBranch(const std::string& branchName)
 bool
 branch::CheckoutThisHEAD()
 {
+    FLAG_TEMP_CHECKOUT.reset();
     return git_checkout_head(repo_pointer, &checkoutOpts) == 0;
 }
+
+bool
+branch::CheckoutCommitTemp(commit& c)
+{
+    git_object* target = nullptr;
+    if (git_object_lookup(&target, repo_pointer, &c.commitID, GIT_OBJECT_COMMIT) != 0){
+        return false;
+    }
+
+    if (git_checkout_tree(repo_pointer, target, &checkoutOpts) != 0) {
+        git_object_free(target);
+        return false;
+    }
+    FLAG_TEMP_CHECKOUT.emplace();
+    git_oid_cpy(&(FLAG_TEMP_CHECKOUT.value()), &(c.commitID));
+    git_object_free(target);
+    return true;
+}
+
 
 std::optional<commit>
 branch::GetHEAD()
