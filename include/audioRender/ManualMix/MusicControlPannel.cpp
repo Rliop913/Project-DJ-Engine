@@ -8,7 +8,7 @@
 
 MusicControlPannel::~MusicControlPannel()
 {
-    
+
 }
 
 int
@@ -18,19 +18,19 @@ MusicControlPannel::LoadMusic(const musdata& Mus)
         return -1;
     }
 
-    ma_decoder_config decConf = 
+    ma_decoder_config decConf =
         ma_decoder_config_init(ma_format_f32, CHANNEL, SAMPLERATE);
-    
-    return 
+
+    return
         ma_decoder_init_file(
-            Mus.musicPath.c_str(), 
-            &decConf, 
+            Mus.musicPath.c_str(),
+            &decConf,
             &deck[Mus.title].dec
         );
 }
 
 
-bool 
+bool
 MusicControlPannel::CueMusic(const TITLE& title, const unsigned long long newPos)
 {
     if(deck.find(title) == deck.end()){
@@ -43,7 +43,7 @@ MusicControlPannel::CueMusic(const TITLE& title, const unsigned long long newPos
 
 
 
-bool 
+bool
 MusicControlPannel::SetMusic(const TITLE& title, const bool onOff)
 {
     if(deck.find(title) == deck.end()){
@@ -54,7 +54,7 @@ MusicControlPannel::SetMusic(const TITLE& title, const bool onOff)
 }
 
 
-LOADED_LIST 
+LOADED_LIST
 MusicControlPannel::GetLoadedMusicList()
 {
     LOADED_LIST list;
@@ -65,7 +65,7 @@ MusicControlPannel::GetLoadedMusicList()
 }
 
 
-bool 
+bool
 MusicControlPannel::UnloadMusic(const TITLE& title)
 {
     return deck.erase(title) != 0;
@@ -90,7 +90,7 @@ MusicControlPannel::GetPCMFrames(float* array, const unsigned long FrameSize)
         FrameSize
     );
     // const unsigned long long RAWFrameSize = FrameSize * CHANNEL;
-    
+
     // tempFrames.resize(RAWFrameSize);
     // L.resize(FrameSize);
     // R.resize(FrameSize);
@@ -103,17 +103,17 @@ MusicControlPannel::GetPCMFrames(float* array, const unsigned long FrameSize)
 
     // for(auto& i : deck){
     //     if(i.second.play){
-            
+
     //         if(ma_decoder_read_pcm_frames(&i.second.dec, tempFrames.data(), FrameSize, NULL) != MA_SUCCESS){
     //             return false;
     //         }
     //         toFaustStylePCM(FaustStyle, tempFrames.data(), FrameSize);
     //         i.second.fxP->addFX(FaustStyle, FrameSize);
     //         toLRStylePCM(FaustStyle, tempFrames.data(), FrameSize);
-            
+
     //         float* opoint = array;
     //         float* tpoint = tempFrames.data();
-            
+
     //         for(size_t j = 0; j < times; ++j){
     //             auto simdtemp = hn::Load(hwyFTag, tpoint);
     //             auto simdorigin = hn::LoadU(hwyFTag, opoint);
@@ -122,7 +122,7 @@ MusicControlPannel::GetPCMFrames(float* array, const unsigned long FrameSize)
     //             opoint += laneSize;
     //             tpoint += laneSize;
     //         }
-            
+
     //         for(size_t j=0; j<remained; ++j){
     //             (*(opoint++)) += (*(tpoint++));
     //         }

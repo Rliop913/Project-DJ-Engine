@@ -3,25 +3,25 @@
 #undef HWY_TARGET_INCLUDE
 #define HWY_TARGET_INCLUDE "MixMachine-inl.h"
 #include "hwy/foreach_target.h"
+
 #include <hwy/highway.h>
+#include "hwy/base.h"
 
-#ifndef HN_NAMESPACE
-#define HN_NAMESPACE
-namespace hn = hwy::HWY_NAMESPACE;
-#endif
 
-HWY_BEFORE_NAMESPACE();
+
 
 namespace HWY_NAMESPACE{
-void 
+
+HWY_ATTR
+void
 INTEGRATE_PCM_SIMD(
-    SIMD_FLOAT& tempVec, 
+    SIMD_FLOAT& tempVec,
     std::mutex& renderLock,
     std::vector<float>& rendered_out,
     MUSIC_CTR *& MC)
 {
-    const hn::ScalableTag<float> hwyFTag;
-    auto laneSize = hn::Lanes(hwyFTag);
+    const hwy::HWY_NAMESPACE::ScalableTag<float> hwyFTag;
+    auto laneSize = hwy::HWY_NAMESPACE::Lanes(hwyFTag);
     auto times = tempVec.size() / laneSize;
     auto remained = tempVec.size() % laneSize;
 
@@ -34,9 +34,9 @@ INTEGRATE_PCM_SIMD(
         auto Rptr = rendered_out.data() + (MC->QDatas.pos.front().Gidx * CHANNEL);
 
         for(size_t L = 0; L < times; ++L){
-            auto Tsimd = hn::Load(hwyFTag, Tptr);
-            auto Rsimd = hn::LoadU(hwyFTag, Rptr);
-            hn::StoreU(Rsimd + Tsimd, hwyFTag, Rptr);
+            auto Tsimd = hwy::HWY_NAMESPACE::Load(hwyFTag, Tptr);
+            auto Rsimd = hwy::HWY_NAMESPACE::LoadU(hwyFTag, Rptr);
+            hwy::HWY_NAMESPACE::StoreU(Rsimd + Tsimd, hwyFTag, Rptr);
             Tptr += laneSize;
             Rptr += laneSize;
         }
@@ -45,7 +45,5 @@ INTEGRATE_PCM_SIMD(
         }
     }
 }
+
 }
-
-
-HWY_AFTER_NAMESPACE();
