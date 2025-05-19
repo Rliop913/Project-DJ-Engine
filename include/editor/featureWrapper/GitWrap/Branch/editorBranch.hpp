@@ -16,6 +16,7 @@ namespace gitwrap{
         git_checkout_options checkoutOpts = GIT_CHECKOUT_OPTIONS_INIT;
 
     public:
+        std::string branchName;
         std::optional<git_oid> FLAG_TEMP_CHECKOUT;
         template<typename T>
         static
@@ -40,6 +41,11 @@ namespace gitwrap{
 
         branch(git_repository* repo) : repo_pointer(repo) {
             checkoutOpts.checkout_strategy= GIT_CHECKOUT_SAFE;
+            git_reference *head_ref = nullptr;
+            if (git_repository_head(&head_ref, repo) == 0) {
+                branchName = std::string(git_reference_shorthand(head_ref));
+            }
+            git_reference_free(head_ref);
         };
         ~branch();
     };

@@ -24,10 +24,10 @@ using BRANCH_HANDLE = std::optional<gitwrap::branch>;
 
 class GitWrapper{
 private:
-    git_repository* repo = nullptr;
     git_signature* auth_sign = nullptr;
     std::optional<AddController> addIndex;
 public:
+    git_repository* repo = nullptr;
     std::optional<gitwrap::logHandle> log_hdl;
     BRANCH_HANDLE handleBranch;
 
@@ -63,14 +63,15 @@ class PDJE_GitHandler{
 private:
     git_signature* sign = nullptr;
 public:
+    std::string RecentERR;
     GitWrapper gw;
 
     bool Save(const std::string& tracingFile, const std::string& timeStamp);
-    bool Undo(const std::string& tracingFile);
-    bool Redo(const std::string& tracingFile);
+    bool Undo();
+    bool Redo();
 
-    // bool Checkout();
-    bool ChangeHEAD(const std::string& branchName, const std::string& commitID);
+    
+    bool Go(const std::string& branchName, git_oid* commitID);
     std::string GetLogWithJSONGraph();
     bool UpdateLog(){
         return gw.log();

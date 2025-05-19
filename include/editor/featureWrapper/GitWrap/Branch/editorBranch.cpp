@@ -72,9 +72,15 @@ branch::ShowExistCommitsOnBranch(const std::string& branchName)
 }
 
 bool
-branch::SetBranch(const std::string& branchName)
+branch::SetBranch(const std::string& NewbranchName)
 {
-    return git_repository_set_head(repo_pointer, ToBranchRefName<const std::string&>(branchName).c_str()) == 0;
+    if(git_repository_set_head(repo_pointer, ToBranchRefName<const std::string&>(NewbranchName).c_str()) == 0){
+        branchName = NewbranchName;
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 
@@ -104,10 +110,7 @@ branch::MakeNewFromCommit(commit& c, const std::string& newBranchName)
     git_reference* newBranchRef = nullptr;
     if(git_branch_create(&newBranchRef, repo_pointer, newBranchName.c_str(), c.commitPointer, 1) == 0){
         git_reference_free(newBranchRef);
-        auto refN = ToBranchRefName<const std::string&>(newBranchName);
-        git_repository_set_head(repo_pointer, refN.c_str());
-        return true;
-
+        return SetBranch(newBranchName);
     }
     else{
         return false;
@@ -149,6 +152,9 @@ branch::CheckoutCommitTemp(commit& c)
     if (git_checkout_tree(repo_pointer, target, &checkoutOpts) != 0) {
         git_object_free(target);
         return false;
+    }
+    if(FLAG_TEMP_CHECKOUT.has_value()){
+        FLAG_TEMP_CHECKOUT.reset();
     }
     FLAG_TEMP_CHECKOUT.emplace();
     git_oid_cpy(&(FLAG_TEMP_CHECKOUT.value()), &(c.commitID));
