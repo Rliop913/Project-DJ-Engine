@@ -34,17 +34,61 @@ FetchContent_Declare(
 include(ExternalProject)
 
 if(WIN32)
+FetchContent_Declare(
+    zlib
+    GIT_REPOSITORY https://github.com/madler/zlib.git
+    GIT_TAG v1.3.1
+  )
+  FetchContent_MakeAvailable(zlib)
+  set(ZLIB_DEBUG_LIB_PATH   "${zlib_BINARY_DIR}/Debug/zlibd.lib")
+  set(ZLIB_RELEASE_LIB_PATH "${zlib_BINARY_DIR}/Release/zlib.lib")
+  # if()
+  # include_directories(${zlib_SOURCE_DIR})
+# if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
 ExternalProject_Add(
   libgit2
   GIT_REPOSITORY https://github.com/libgit2/libgit2.git
   GIT_TAG v1.9.0
-
+  
   PREFIX "${CMAKE_BINARY_DIR}/_deps"
   BUILD_IN_SOURCE 0
-  CMAKE_ARGS     -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR> -DBUILD_SHARED_LIBS=OFF -DREGEX_BACKEND=builtin
+
+  CONFIGURE_COMMAND
+    ${CMAKE_COMMAND}
+      -G "${CMAKE_GENERATOR}"
+      -A "${CMAKE_GENERATOR_PLATFORM}"
+      -S <SOURCE_DIR>
+      -B <BINARY_DIR>
+      -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+      -DBUILD_SHARED_LIBS=OFF
+      -DREGEX_BACKEND=builtin
+      -DZLIB_LIBRARY:FILEPATH=$<IF:$<CONFIG:Debug>,${ZLIB_DEBUG_LIB_PATH},${ZLIB_RELEASE_LIB_PATH}>
+
   BUILD_COMMAND  ${CMAKE_COMMAND} --build . --config $<CONFIG>
   INSTALL_COMMAND ${CMAKE_COMMAND} --install . --config $<CONFIG>
 )
+link_libraries(
+  debug "${ZLIB_DEBUG_LIB_PATH}"
+  optimized "${ZLIB_RELEASE_LIB_PATH}"
+)
+
+# ExternalProject_Add(
+#   libgit2
+#   GIT_REPOSITORY https://github.com/libgit2/libgit2.git
+#   GIT_TAG v1.9.0
+
+#   PREFIX "${CMAKE_BINARY_DIR}/_deps"
+#   BUILD_IN_SOURCE 0
+#   CMAKE_ARGS     
+#     -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR> 
+#     -DBUILD_SHARED_LIBS=OFF 
+#     -DREGEX_BACKEND=builtin 
+#     -DZLIB_LIBRARY:FILEPATH=${zlib_BINARY_DIR}/Debug/zlibd.lib
+#   CMAKE_CACHE_ARGS_RELEASE
+#     -DZLIB_LIBRARY:FILEPATH=${zlib_BINARY_DIR}/Release/zlib.lib
+#   BUILD_COMMAND  ${CMAKE_COMMAND} --build . --config $<CONFIG>
+#   INSTALL_COMMAND ${CMAKE_COMMAND} --install . --config $<CONFIG>
+# )
 
 else()
 ExternalProject_Add(
@@ -118,7 +162,7 @@ FetchContent_MakeAvailable(sql_amalgam)
 # get_cmake_property(_vars VARIABLES)
 
 # foreach(var ${_vars})
-#     if(var MATCHES "^cppgit")
+#     if(var MATCHES "^zlib")
 #         message(STATUS "환경변수: ${var} = [${${var}}]")
 #     endif()
 # endforeach()
