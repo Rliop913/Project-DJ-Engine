@@ -52,7 +52,7 @@ ExternalProject_Add(
   
   PREFIX "${CMAKE_BINARY_DIR}/_deps"
   BUILD_IN_SOURCE 0
-
+  DEPENDS        zlib
   CONFIGURE_COMMAND
     ${CMAKE_COMMAND}
       -G "${CMAKE_GENERATOR}"
