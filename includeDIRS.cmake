@@ -37,8 +37,10 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/include/input/linux
   ${CMAKE_SOURCE_DIR}/include/input/macos
   
-  ${CMAKE_SOURCE_DIR}/include/players
-  ${CMAKE_SOURCE_DIR}/include/players/audioPlayer
+  ${CMAKE_SOURCE_DIR}/include/MainObjects
+  ${CMAKE_SOURCE_DIR}/include/MainObjects/audioPlayer
+  ${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject
+  
 
   ${CMAKE_SOURCE_DIR}/include/interface
 

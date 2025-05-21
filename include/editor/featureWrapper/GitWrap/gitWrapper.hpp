@@ -48,7 +48,7 @@ public:
     bool log();
     bool log(const std::string& branchName);
 
-    std::string GenTimeStamp();
+    static std::string GenTimeStamp();
     // SaveDatas GetCommits();
 
 

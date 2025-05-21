@@ -27,8 +27,8 @@ ${CMAKE_SOURCE_DIR}/include/audioRender/MixMachine/MixTypes/Type_VOL.cpp
 
 ${CMAKE_SOURCE_DIR}/include/audioRender/ManualMix/ManualMix.cpp
 ${CMAKE_SOURCE_DIR}/include/audioRender/ManualMix/MusicControlPannel.cpp
-${CMAKE_SOURCE_DIR}/include/players/audioPlayer/audioPlayer.cpp
-${CMAKE_SOURCE_DIR}/include/players/audioPlayer/audioCallbacks.cpp
+${CMAKE_SOURCE_DIR}/include/MainObjects/audioPlayer/audioPlayer.cpp
+${CMAKE_SOURCE_DIR}/include/MainObjects/audioPlayer/audioCallbacks.cpp
 
 ${CMAKE_SOURCE_DIR}/include/interface/PDJE_interface.cpp
 ${CMAKE_SOURCE_DIR}/include/interface/PDJE_polyglot_wraps.cpp

@@ -3,6 +3,8 @@
 #include "audioPlayer.hpp"
 #include "dbRoot.hpp"
 #include "NoteTranslator.hpp"
+#include "editorObject.hpp"
+
 /**
  * @brief the play mode
  * you can use this to initialize the player(music handler)

@@ -19,4 +19,7 @@ ${CMAKE_SOURCE_DIR}/include/editor/featureWrapper/GitWrap/Commit/editorCommit.cp
 
 ${CMAKE_SOURCE_DIR}/include/editor/editor.cpp
 
+${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/addline.cpp
+
+
 )

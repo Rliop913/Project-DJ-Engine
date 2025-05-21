@@ -70,20 +70,20 @@ public:
 
     std::unique_ptr<CapnpWriterType> render();
 
-    template<typename Target> int 
-    deleteLine(
+    template<typename Target> 
+    int deleteLine(
         const Target& args,
         bool skipType = false, 
         bool skipDetail = false);
 
-    template<typename Target> int 
-    deleteLine(const Target& args);
+    template<typename Target> 
+    int deleteLine(const Target& args);
 
-    template<typename Target> bool 
-    add(const Target& args);
+    template<typename Target> 
+    bool add(const Target& args);
 
-    template<typename Target> void 
-    getAll(std::function<void(const Target& args)> jsonCallback);
+    template<typename Target> 
+    void getAll(std::function<void(const Target& args)> jsonCallback);
         
     bool load(const std::string& path);
 
