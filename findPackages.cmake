@@ -72,6 +72,7 @@ link_libraries(
   optimized "${ZLIB_RELEASE_LIB_PATH}"
 )
 
+set(OPENSSL_USE_STATIC_LIBS TRUE)
 # ExternalProject_Add(
 #   libgit2
 #   GIT_REPOSITORY https://github.com/libgit2/libgit2.git

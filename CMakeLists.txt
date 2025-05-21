@@ -1,3 +1,4 @@
+
 include(SETcmake.cmake)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -90,10 +91,10 @@ add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_s
 
 if(WIN32)
 
-  # link_libraries(
-  #   debug "${zlib_BINARY_DIR}/Debug/zlibd.lib"
-  #   optimized "${zlib_BINARY_DIR}/Release/zlib.lib"
-  # )
+  link_libraries(
+    debug "${zlib_BINARY_DIR}/Debug/zlibd.lib"
+    optimized "${zlib_BINARY_DIR}/Release/zlib.lib"
+  )
   target_link_libraries(testHighway PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
   target_link_libraries(testdb PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
   target_link_libraries(testaudio PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)

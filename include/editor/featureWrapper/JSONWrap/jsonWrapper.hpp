@@ -13,6 +13,7 @@
 
 #define PDJEARR "PDJE_MIX"
 #define PDJENOTE "PDJE_NOTE"
+#define PDJEMUSICBPM "PDJE_MUSIC_BPM"
 using nj = nlohmann::json;
 namespace fs = std::filesystem;
 namespace vs = std::views;
@@ -46,8 +47,16 @@ struct NoteArgs{
     long long Eseparate     = -1;
 };
 
+struct MusicArgs{
+    std::string bpm     = ""                ;
+    long long bar       = -1                ;
+    long long beat      = -1                ;
+    long long separate  = -1                ;
+};
+
 using MIX_W = CapWriter<MixBinaryCapnpData>;
 using NOTE_W = CapWriter<NoteBinaryCapnpData>;
+using MUSIC_W = CapWriter<MusicBinaryCapnpData>;
 
 using KEY = std::string;
 using KEY_VALUE = std::pair<std::string, std::string>;
