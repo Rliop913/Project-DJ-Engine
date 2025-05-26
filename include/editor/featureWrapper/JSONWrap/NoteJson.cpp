@@ -158,10 +158,10 @@ PDJE_JSONHandler<NOTE_W>::load(const std::string& path)
 
 }
 
-template<>
-template<>
-int 
-PDJE_JSONHandler<NOTE_W>::deleteLine(
-        const NoteArgs& args,
-        bool skipType, 
-        bool skipDetail) = delete;
+// template<>
+// template<>
+// int 
+// PDJE_JSONHandler<NOTE_W>::deleteLine(
+//         const NoteArgs& args,
+//         bool skipType, 
+//         bool skipDetail) = delete;

@@ -31,10 +31,10 @@ GitWrapper::diff(const gitwrap::commit& oldCommit, const gitwrap::commit& newCom
     if(oldCommit.commitPointer == nullptr) return results;
 
     if(newCommit.commitPointer != nullptr){
-        DiffHandle.CommitToCommit(repo, newCommit.commitID, oldCommit.commitID);
+        if(!DiffHandle.CommitToCommit(repo, newCommit.commitID, oldCommit.commitID)) return results;
     }
     else{
-        DiffHandle.CommitToNow(repo, oldCommit.commitID);
+        if(!DiffHandle.CommitToNow(repo, oldCommit.commitID)) return results;
     }
     DiffHandle.execute(&results);
     return results;

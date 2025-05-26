@@ -130,6 +130,7 @@ PDJE_GitHandler::Redo()
     else{
         return false;
     }
+    return false;
 }
 
 DiffResult
@@ -193,4 +194,5 @@ PDJE_GitHandler::Go(const std::string& branchName, git_oid* commitID)
         }
         
     }
+    return false;
 }

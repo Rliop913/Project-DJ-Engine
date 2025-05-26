@@ -20,6 +20,18 @@ ${CMAKE_SOURCE_DIR}/include/editor/featureWrapper/GitWrap/Commit/editorCommit.cp
 ${CMAKE_SOURCE_DIR}/include/editor/editor.cpp
 
 ${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/addline.cpp
+${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/deleteline.cpp
+${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/commonfunction.cpp
+${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/updatelog.cpp
+${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/undo.cpp
+${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/redo.cpp
+${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/getlogwithjsongraph.cpp
+${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/getall.cpp
+${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/go.cpp
+${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/getdiff.cpp
+
+${CMAKE_SOURCE_DIR}/include/MainObjects/tempDBObject/tempDB.cpp
+
 
 
 )

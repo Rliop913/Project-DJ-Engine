@@ -1,5 +1,6 @@
 #include "jsonWrapper.hpp"
 
+#include "editorObject.hpp"
 
 template<>
 template<>
@@ -80,14 +81,16 @@ template<>
 template<>
 void
 PDJE_JSONHandler<MUSIC_W>::getAll(
-    std::function<void(const MusicArgs& args)> jsonCallback
+    std::function<void(const EDIT_ARG_MUSIC& args)> jsonCallback
 )
 {
     if(!ROOT.contains(PDJEMUSICBPM)){
         return;
     }
     for(auto& i : ROOT[PDJEMUSICBPM]){
-        MusicArgs tempargs{
+        EDIT_ARG_MUSIC tempargs;
+        tempargs.musicName = ROOT["TITLE"];
+        tempargs.arg = {
             i["bpm"        ],
             i["bar"         ],
             i["beat"        ],

@@ -28,6 +28,7 @@ public:
      * @return false 
      */
     bool LoadTrack(litedb& db, trackdata& td);
+    bool LoadTrackFromMixData(litedb& db, BIN& mixData);
     audioRender() = default;
     ~audioRender() = default;
 

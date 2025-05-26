@@ -73,8 +73,8 @@ public:
     template<typename Target> 
     int deleteLine(
         const Target& args,
-        bool skipType = false, 
-        bool skipDetail = false);
+        bool skipType, 
+        bool skipDetail);
 
     template<typename Target> 
     int deleteLine(const Target& args);
@@ -91,8 +91,8 @@ public:
 
 
 
-    inline nj operator[](const std::string& key){
-        return std::move(ROOT[key]);
+    inline nj& operator[](const std::string& key){
+        return ROOT[key];
     }
 
     bool save(const std::string& path){

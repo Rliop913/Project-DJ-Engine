@@ -54,6 +54,12 @@ public:
     bool
     operator<=(DBType& insertObject);
 
+    template<typename DBType>
+    bool
+    DeleteData(DBType& deleteObject);
+
+
+
     /**
      * @brief opens the Root Database and initialize.
      * 
@@ -70,6 +76,7 @@ public:
      */
     const std::string 
     getRoot(){
+        
         return ROOT_PATH;
     }
 
