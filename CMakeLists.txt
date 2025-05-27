@@ -104,6 +104,7 @@ if(WIN32)
   target_link_libraries(testManualAudio PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
   target_link_libraries(testInterface PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
   target_link_libraries(testGIT PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
+  target_link_libraries(PDJE PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
 elseif(UNIX AND NOT APPLE)
   # add_executable(EvdevAccModule include/input/linux/LINUX_SUDO_GETTER.cpp)
   # add_dependencies(EvdevAccModule libgit2)
@@ -135,6 +136,7 @@ target_link_libraries(testCapnp PRIVATE nlohmann_json::nlohmann_json hwy)
 target_link_libraries(testManualAudio PRIVATE nlohmann_json::nlohmann_json hwy)
 target_link_libraries(testInterface PRIVATE nlohmann_json::nlohmann_json hwy)
 target_link_libraries(testGIT PRIVATE nlohmann_json::nlohmann_json hwy)
+target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json hwy)
 
 
 
