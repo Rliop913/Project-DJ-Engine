@@ -23,7 +23,7 @@ endif()
 
 if(WIN32)
   include_directories(
-    ${CMAKE_SOURCE_DIR}/include/input/windows
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/windows
     ${CAPNP_INCLUDE_DIRS}
   )
 elseif(UNIX AND NOT APPLE)
@@ -31,7 +31,7 @@ elseif(UNIX AND NOT APPLE)
   pkg_check_modules(LIBEVDEV REQUIRED libevdev)
 
   include_directories(
-    ${CMAKE_SOURCE_DIR}/include/input/linux
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux
     ${LIBEVDEV_INCLUDE_DIRS}
   )
   link_libraries(
@@ -39,12 +39,12 @@ elseif(UNIX AND NOT APPLE)
   )
 
   set(input_src
-    ${CMAKE_SOURCE_DIR}/include/input/linux/LINUX_I.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/LINUX_I.cpp
   )
 
 elseif(APPLE)
   include_directories(
-    ${CMAKE_SOURCE_DIR}/include/input/macos
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/macos
   )
 
 endif()
@@ -68,11 +68,11 @@ link_libraries(
 
 endif()
 
-add_executable(testdb ${CMAKE_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource} ${sql_amalgam_src} ${editorSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src})
+add_executable(testdb ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource} ${sql_amalgam_src} ${editorSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src})
 
-add_executable(testaudio ${CMAKE_SOURCE_DIR}/include/tests/audioTest.cpp ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
+add_executable(testaudio ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/audioTest.cpp ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
 
-add_executable(testCapnp ${CMAKE_SOURCE_DIR}/include/tests/CapnpTest.cpp ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
+add_executable(testCapnp ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/CapnpTest.cpp ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
 
 
 add_executable(testHighway include/tests/highway_Test.cpp ${sql_amalgam_src} )
