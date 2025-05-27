@@ -88,6 +88,7 @@ add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_s
 
 add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
 
+target_include_directories(PDJE PUBLIC ${INCLUDE_LIST})
 
 if(WIN32)
 
