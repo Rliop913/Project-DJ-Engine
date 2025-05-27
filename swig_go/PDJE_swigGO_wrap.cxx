@@ -708,6 +708,38 @@ std::optional< audioPlayer > *_wrap_PDJE_player_get_pdje_POLYGLOT_5c11250640eb38
 }
 
 
+void _wrap_PDJE_editor_set_pdje_POLYGLOT_5c11250640eb38b5(PDJE *_swig_go_0, std::optional< editorObject > *_swig_go_1) {
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::optional< editorObject > arg2 ;
+  std::optional< editorObject > *argp2 ;
+  
+  arg1 = *(PDJE **)&_swig_go_0; 
+  
+  argp2 = (std::optional< editorObject > *)_swig_go_1;
+  if (argp2 == NULL) {
+    _swig_gopanic("Attempt to dereference null std::optional< editorObject >");
+  }
+  arg2 = (std::optional< editorObject >)*argp2;
+  
+  
+  if (arg1) (arg1)->editor = arg2;
+  
+}
+
+
+std::optional< editorObject > *_wrap_PDJE_editor_get_pdje_POLYGLOT_5c11250640eb38b5(PDJE *_swig_go_0) {
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::optional< editorObject > result;
+  std::optional< editorObject > *_swig_go_result;
+  
+  arg1 = *(PDJE **)&_swig_go_0; 
+  
+  result =  ((arg1)->editor);
+  *(std::optional< editorObject > **)&_swig_go_result = new std::optional< editorObject >(result); 
+  return _swig_go_result;
+}
+
+
 bool _wrap_PDJE_InitPlayer_pdje_POLYGLOT_5c11250640eb38b5(PDJE *_swig_go_0, intgo _swig_go_1, trackdata *_swig_go_2, intgo _swig_go_3) {
   PDJE *arg1 = (PDJE *) 0 ;
   PLAY_MODE arg2 ;
@@ -722,6 +754,34 @@ bool _wrap_PDJE_InitPlayer_pdje_POLYGLOT_5c11250640eb38b5(PDJE *_swig_go_0, intg
   arg4 = (unsigned int)_swig_go_3; 
   
   result = (bool)(arg1)->InitPlayer(arg2,*arg3,arg4);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+bool _wrap_PDJE_InitEditor_pdje_POLYGLOT_5c11250640eb38b5(PDJE *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3) {
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  std::string *arg4 = 0 ;
+  bool result;
+  bool _swig_go_result;
+  
+  arg1 = *(PDJE **)&_swig_go_0; 
+  
+  std::string arg2_str(_swig_go_1.p, _swig_go_1.n);
+  arg2 = &arg2_str;
+  
+  
+  std::string arg3_str(_swig_go_2.p, _swig_go_2.n);
+  arg3 = &arg3_str;
+  
+  
+  std::string arg4_str(_swig_go_3.p, _swig_go_3.n);
+  arg4 = &arg4_str;
+  
+  
+  result = (bool)(arg1)->InitEditor((std::string const &)*arg2,(std::string const &)*arg3,(std::string const &)*arg4);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -1250,6 +1310,42 @@ bool _wrap_musdata_GenInsertSTMT_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_g
 }
 
 
+bool _wrap_musdata_GenEditSTMT_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0, stmt *_swig_go_1, sqlite3 *_swig_go_2, musdata *_swig_go_3) {
+  musdata *arg1 = (musdata *) 0 ;
+  stmt *arg2 = 0 ;
+  sqlite3 *arg3 = (sqlite3 *) 0 ;
+  musdata *arg4 = 0 ;
+  bool result;
+  bool _swig_go_result;
+  
+  arg1 = *(musdata **)&_swig_go_0; 
+  arg2 = *(stmt **)&_swig_go_1; 
+  arg3 = *(sqlite3 **)&_swig_go_2; 
+  arg4 = *(musdata **)&_swig_go_3; 
+  
+  result = (bool)(arg1)->GenEditSTMT(*arg2,arg3,*arg4);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+bool _wrap_musdata_GenDeleteSTMT_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0, stmt *_swig_go_1, sqlite3 *_swig_go_2) {
+  musdata *arg1 = (musdata *) 0 ;
+  stmt *arg2 = 0 ;
+  sqlite3 *arg3 = (sqlite3 *) 0 ;
+  bool result;
+  bool _swig_go_result;
+  
+  arg1 = *(musdata **)&_swig_go_0; 
+  arg2 = *(stmt **)&_swig_go_1; 
+  arg3 = *(sqlite3 **)&_swig_go_2; 
+  
+  result = (bool)(arg1)->GenDeleteSTMT(*arg2,arg3);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
 void _wrap_delete_musdata_pdje_POLYGLOT_5c11250640eb38b5(musdata *_swig_go_0) {
   musdata *arg1 = (musdata *) 0 ;
   
@@ -1449,6 +1545,42 @@ bool _wrap_trackdata_GenInsertSTMT_pdje_POLYGLOT_5c11250640eb38b5(trackdata *_sw
   arg3 = *(sqlite3 **)&_swig_go_2; 
   
   result = (bool)(arg1)->GenInsertSTMT(*arg2,arg3);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+bool _wrap_trackdata_GenEditSTMT_pdje_POLYGLOT_5c11250640eb38b5(trackdata *_swig_go_0, stmt *_swig_go_1, sqlite3 *_swig_go_2, trackdata *_swig_go_3) {
+  trackdata *arg1 = (trackdata *) 0 ;
+  stmt *arg2 = 0 ;
+  sqlite3 *arg3 = (sqlite3 *) 0 ;
+  trackdata *arg4 = 0 ;
+  bool result;
+  bool _swig_go_result;
+  
+  arg1 = *(trackdata **)&_swig_go_0; 
+  arg2 = *(stmt **)&_swig_go_1; 
+  arg3 = *(sqlite3 **)&_swig_go_2; 
+  arg4 = *(trackdata **)&_swig_go_3; 
+  
+  result = (bool)(arg1)->GenEditSTMT(*arg2,arg3,*arg4);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+bool _wrap_trackdata_GenDeleteSTMT_pdje_POLYGLOT_5c11250640eb38b5(trackdata *_swig_go_0, stmt *_swig_go_1, sqlite3 *_swig_go_2) {
+  trackdata *arg1 = (trackdata *) 0 ;
+  stmt *arg2 = 0 ;
+  sqlite3 *arg3 = (sqlite3 *) 0 ;
+  bool result;
+  bool _swig_go_result;
+  
+  arg1 = *(trackdata **)&_swig_go_0; 
+  arg2 = *(stmt **)&_swig_go_1; 
+  arg3 = *(sqlite3 **)&_swig_go_2; 
+  
+  result = (bool)(arg1)->GenDeleteSTMT(*arg2,arg3);
   _swig_go_result = result; 
   return _swig_go_result;
 }

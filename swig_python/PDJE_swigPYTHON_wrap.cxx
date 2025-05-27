@@ -3229,17 +3229,18 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_std__allocatorT_trackdata_t swig_types[20]
 #define SWIGTYPE_p_std__invalid_argument swig_types[21]
 #define SWIGTYPE_p_std__optionalT_audioPlayer_t swig_types[22]
-#define SWIGTYPE_p_std__optionalT_std__vectorT_musdata_t_t swig_types[23]
-#define SWIGTYPE_p_std__optionalT_std__vectorT_trackdata_t_t swig_types[24]
-#define SWIGTYPE_p_std__vectorT_musdata_t swig_types[25]
-#define SWIGTYPE_p_std__vectorT_std__string_t swig_types[26]
-#define SWIGTYPE_p_std__vectorT_trackdata_t swig_types[27]
-#define SWIGTYPE_p_stmt swig_types[28]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[29]
-#define SWIGTYPE_p_trackdata swig_types[30]
-#define SWIGTYPE_p_value_type swig_types[31]
-static swig_type_info *swig_types[33];
-static swig_module_info swig_module = {swig_types, 32, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__optionalT_editorObject_t swig_types[23]
+#define SWIGTYPE_p_std__optionalT_std__vectorT_musdata_t_t swig_types[24]
+#define SWIGTYPE_p_std__optionalT_std__vectorT_trackdata_t_t swig_types[25]
+#define SWIGTYPE_p_std__vectorT_musdata_t swig_types[26]
+#define SWIGTYPE_p_std__vectorT_std__string_t swig_types[27]
+#define SWIGTYPE_p_std__vectorT_trackdata_t swig_types[28]
+#define SWIGTYPE_p_stmt swig_types[29]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[30]
+#define SWIGTYPE_p_trackdata swig_types[31]
+#define SWIGTYPE_p_value_type swig_types[32]
+static swig_type_info *swig_types[34];
+static swig_module_info swig_module = {swig_types, 33, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -6748,6 +6749,68 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_PDJE_editor_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::optional< editorObject > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "PDJE_editor_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PDJE, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_editor_set" "', argument " "1"" of type '" "PDJE *""'"); 
+  }
+  arg1 = reinterpret_cast< PDJE * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__optionalT_editorObject_t,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PDJE_editor_set" "', argument " "2"" of type '" "std::optional< editorObject >""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "PDJE_editor_set" "', argument " "2"" of type '" "std::optional< editorObject >""'");
+    } else {
+      std::optional< editorObject > * temp = reinterpret_cast< std::optional< editorObject > * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  if (arg1) (arg1)->editor = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PDJE_editor_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  PDJE *arg1 = (PDJE *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::optional< editorObject > result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PDJE, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_editor_get" "', argument " "1"" of type '" "PDJE *""'"); 
+  }
+  arg1 = reinterpret_cast< PDJE * >(argp1);
+  result =  ((arg1)->editor);
+  resultobj = SWIG_NewPointerObj((new std::optional< editorObject >(result)), SWIGTYPE_p_std__optionalT_editorObject_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_PDJE_InitPlayer(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   PDJE *arg1 = (PDJE *) 0 ;
@@ -6794,6 +6857,74 @@ SWIGINTERN PyObject *_wrap_PDJE_InitPlayer(PyObject *self, PyObject *args) {
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PDJE_InitEditor(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  std::string *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
+  int res4 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[4] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "PDJE_InitEditor", 4, 4, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PDJE, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_InitEditor" "', argument " "1"" of type '" "PDJE *""'"); 
+  }
+  arg1 = reinterpret_cast< PDJE * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PDJE_InitEditor" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "PDJE_InitEditor" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PDJE_InitEditor" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "PDJE_InitEditor" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res4 = SWIG_AsPtr_std_string(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "PDJE_InitEditor" "', argument " "4"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "PDJE_InitEditor" "', argument " "4"" of type '" "std::string const &""'"); 
+    }
+    arg4 = ptr;
+  }
+  result = (bool)(arg1)->InitEditor((std::string const &)*arg2,(std::string const &)*arg3,(std::string const &)*arg4);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
   return NULL;
 }
 
@@ -8109,6 +8240,101 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_musdata_GenEditSTMT(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  musdata *arg1 = (musdata *) 0 ;
+  stmt *arg2 = 0 ;
+  sqlite3 *arg3 = (sqlite3 *) 0 ;
+  musdata *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject *swig_obj[4] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "musdata_GenEditSTMT", 4, 4, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_musdata, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "musdata_GenEditSTMT" "', argument " "1"" of type '" "musdata *""'"); 
+  }
+  arg1 = reinterpret_cast< musdata * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_stmt,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "musdata_GenEditSTMT" "', argument " "2"" of type '" "stmt &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "musdata_GenEditSTMT" "', argument " "2"" of type '" "stmt &""'"); 
+  }
+  arg2 = reinterpret_cast< stmt * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_sqlite3, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "musdata_GenEditSTMT" "', argument " "3"" of type '" "sqlite3 *""'"); 
+  }
+  arg3 = reinterpret_cast< sqlite3 * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_musdata,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "musdata_GenEditSTMT" "', argument " "4"" of type '" "musdata &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "musdata_GenEditSTMT" "', argument " "4"" of type '" "musdata &""'"); 
+  }
+  arg4 = reinterpret_cast< musdata * >(argp4);
+  result = (bool)(arg1)->GenEditSTMT(*arg2,arg3,*arg4);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_musdata_GenDeleteSTMT(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  musdata *arg1 = (musdata *) 0 ;
+  stmt *arg2 = 0 ;
+  sqlite3 *arg3 = (sqlite3 *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "musdata_GenDeleteSTMT", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_musdata, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "musdata_GenDeleteSTMT" "', argument " "1"" of type '" "musdata *""'"); 
+  }
+  arg1 = reinterpret_cast< musdata * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_stmt,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "musdata_GenDeleteSTMT" "', argument " "2"" of type '" "stmt &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "musdata_GenDeleteSTMT" "', argument " "2"" of type '" "stmt &""'"); 
+  }
+  arg2 = reinterpret_cast< stmt * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_sqlite3, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "musdata_GenDeleteSTMT" "', argument " "3"" of type '" "sqlite3 *""'"); 
+  }
+  arg3 = reinterpret_cast< sqlite3 * >(argp3);
+  result = (bool)(arg1)->GenDeleteSTMT(*arg2,arg3);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_musdata(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   musdata *arg1 = (musdata *) 0 ;
@@ -8570,6 +8796,101 @@ SWIGINTERN PyObject *_wrap_trackdata_GenInsertSTMT(PyObject *self, PyObject *arg
   }
   arg3 = reinterpret_cast< sqlite3 * >(argp3);
   result = (bool)(arg1)->GenInsertSTMT(*arg2,arg3);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_trackdata_GenEditSTMT(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  trackdata *arg1 = (trackdata *) 0 ;
+  stmt *arg2 = 0 ;
+  sqlite3 *arg3 = (sqlite3 *) 0 ;
+  trackdata *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject *swig_obj[4] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "trackdata_GenEditSTMT", 4, 4, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_trackdata, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "trackdata_GenEditSTMT" "', argument " "1"" of type '" "trackdata *""'"); 
+  }
+  arg1 = reinterpret_cast< trackdata * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_stmt,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "trackdata_GenEditSTMT" "', argument " "2"" of type '" "stmt &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "trackdata_GenEditSTMT" "', argument " "2"" of type '" "stmt &""'"); 
+  }
+  arg2 = reinterpret_cast< stmt * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_sqlite3, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "trackdata_GenEditSTMT" "', argument " "3"" of type '" "sqlite3 *""'"); 
+  }
+  arg3 = reinterpret_cast< sqlite3 * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_trackdata,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "trackdata_GenEditSTMT" "', argument " "4"" of type '" "trackdata &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "trackdata_GenEditSTMT" "', argument " "4"" of type '" "trackdata &""'"); 
+  }
+  arg4 = reinterpret_cast< trackdata * >(argp4);
+  result = (bool)(arg1)->GenEditSTMT(*arg2,arg3,*arg4);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_trackdata_GenDeleteSTMT(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  trackdata *arg1 = (trackdata *) 0 ;
+  stmt *arg2 = 0 ;
+  sqlite3 *arg3 = (sqlite3 *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "trackdata_GenDeleteSTMT", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_trackdata, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "trackdata_GenDeleteSTMT" "', argument " "1"" of type '" "trackdata *""'"); 
+  }
+  arg1 = reinterpret_cast< trackdata * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_stmt,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "trackdata_GenDeleteSTMT" "', argument " "2"" of type '" "stmt &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "trackdata_GenDeleteSTMT" "', argument " "2"" of type '" "stmt &""'"); 
+  }
+  arg2 = reinterpret_cast< stmt * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_sqlite3, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "trackdata_GenDeleteSTMT" "', argument " "3"" of type '" "sqlite3 *""'"); 
+  }
+  arg3 = reinterpret_cast< sqlite3 * >(argp3);
+  result = (bool)(arg1)->GenDeleteSTMT(*arg2,arg3);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -14811,7 +15132,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_PDJE", _wrap_delete_PDJE, METH_O, NULL},
 	 { "PDJE_player_set", _wrap_PDJE_player_set, METH_VARARGS, NULL},
 	 { "PDJE_player_get", _wrap_PDJE_player_get, METH_O, NULL},
+	 { "PDJE_editor_set", _wrap_PDJE_editor_set, METH_VARARGS, NULL},
+	 { "PDJE_editor_get", _wrap_PDJE_editor_get, METH_O, NULL},
 	 { "PDJE_InitPlayer", _wrap_PDJE_InitPlayer, METH_VARARGS, NULL},
+	 { "PDJE_InitEditor", _wrap_PDJE_InitEditor, METH_VARARGS, NULL},
 	 { "PDJE_GetNoteObjects", _wrap_PDJE_GetNoteObjects, METH_VARARGS, NULL},
 	 { "PDJE_SearchMusic", _wrap_PDJE_SearchMusic, METH_VARARGS, NULL},
 	 { "PDJE_SearchTrack", _wrap_PDJE_SearchTrack, METH_VARARGS, NULL},
@@ -14845,6 +15169,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_musdata", _wrap_new_musdata, METH_VARARGS, NULL},
 	 { "musdata_GenSearchSTMT", _wrap_musdata_GenSearchSTMT, METH_VARARGS, NULL},
 	 { "musdata_GenInsertSTMT", _wrap_musdata_GenInsertSTMT, METH_VARARGS, NULL},
+	 { "musdata_GenEditSTMT", _wrap_musdata_GenEditSTMT, METH_VARARGS, NULL},
+	 { "musdata_GenDeleteSTMT", _wrap_musdata_GenDeleteSTMT, METH_VARARGS, NULL},
 	 { "delete_musdata", _wrap_delete_musdata, METH_O, NULL},
 	 { "musdata_swigregister", musdata_swigregister, METH_O, NULL},
 	 { "musdata_swiginit", musdata_swiginit, METH_VARARGS, NULL},
@@ -14859,6 +15185,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_trackdata", _wrap_new_trackdata, METH_VARARGS, NULL},
 	 { "trackdata_GenSearchSTMT", _wrap_trackdata_GenSearchSTMT, METH_VARARGS, NULL},
 	 { "trackdata_GenInsertSTMT", _wrap_trackdata_GenInsertSTMT, METH_VARARGS, NULL},
+	 { "trackdata_GenEditSTMT", _wrap_trackdata_GenEditSTMT, METH_VARARGS, NULL},
+	 { "trackdata_GenDeleteSTMT", _wrap_trackdata_GenDeleteSTMT, METH_VARARGS, NULL},
 	 { "delete_trackdata", _wrap_delete_trackdata, METH_O, NULL},
 	 { "trackdata_swigregister", trackdata_swigregister, METH_O, NULL},
 	 { "trackdata_swiginit", trackdata_swiginit, METH_VARARGS, NULL},
@@ -15009,6 +15337,7 @@ static swig_type_info _swigt__p_std__allocatorT_std__string_t = {"_p_std__alloca
 static swig_type_info _swigt__p_std__allocatorT_trackdata_t = {"_p_std__allocatorT_trackdata_t", "std::vector< trackdata >::allocator_type *|std::allocator< trackdata > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__invalid_argument = {"_p_std__invalid_argument", "std::invalid_argument *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__optionalT_audioPlayer_t = {"_p_std__optionalT_audioPlayer_t", "std::optional< audioPlayer > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__optionalT_editorObject_t = {"_p_std__optionalT_editorObject_t", "std::optional< editorObject > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__optionalT_std__vectorT_musdata_t_t = {"_p_std__optionalT_std__vectorT_musdata_t_t", "MAYBE_MUS_VEC *|std::optional< std::vector< musdata,std::allocator< musdata > > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__optionalT_std__vectorT_trackdata_t_t = {"_p_std__optionalT_std__vectorT_trackdata_t_t", "MAYBE_TRACK_VEC *|std::optional< std::vector< trackdata,std::allocator< trackdata > > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_musdata_t = {"_p_std__vectorT_musdata_t", "MUS_VEC *|std::vector< musdata,std::allocator< musdata > > *|std::vector< musdata > *", 0, 0, (void*)0, 0};
@@ -15043,6 +15372,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__allocatorT_trackdata_t,
   &_swigt__p_std__invalid_argument,
   &_swigt__p_std__optionalT_audioPlayer_t,
+  &_swigt__p_std__optionalT_editorObject_t,
   &_swigt__p_std__optionalT_std__vectorT_musdata_t_t,
   &_swigt__p_std__optionalT_std__vectorT_trackdata_t_t,
   &_swigt__p_std__vectorT_musdata_t,
@@ -15077,6 +15407,7 @@ static swig_cast_info _swigc__p_std__allocatorT_std__string_t[] = {  {&_swigt__p
 static swig_cast_info _swigc__p_std__allocatorT_trackdata_t[] = {  {&_swigt__p_std__allocatorT_trackdata_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__invalid_argument[] = {  {&_swigt__p_std__invalid_argument, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__optionalT_audioPlayer_t[] = {  {&_swigt__p_std__optionalT_audioPlayer_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__optionalT_editorObject_t[] = {  {&_swigt__p_std__optionalT_editorObject_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__optionalT_std__vectorT_musdata_t_t[] = {  {&_swigt__p_std__optionalT_std__vectorT_musdata_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__optionalT_std__vectorT_trackdata_t_t[] = {  {&_swigt__p_std__optionalT_std__vectorT_trackdata_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_musdata_t[] = {  {&_swigt__p_std__vectorT_musdata_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -15111,6 +15442,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__allocatorT_trackdata_t,
   _swigc__p_std__invalid_argument,
   _swigc__p_std__optionalT_audioPlayer_t,
+  _swigc__p_std__optionalT_editorObject_t,
   _swigc__p_std__optionalT_std__vectorT_musdata_t_t,
   _swigc__p_std__optionalT_std__vectorT_trackdata_t_t,
   _swigc__p_std__vectorT_musdata_t,

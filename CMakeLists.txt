@@ -86,7 +86,7 @@ add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource
 
 add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src})
 
-
+add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
 
 
 if(WIN32)

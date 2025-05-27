@@ -170,9 +170,13 @@ class PDJE(object):
         _pdje_python.PDJE_swiginit(self, _pdje_python.new_PDJE(rootPath))
     __swig_destroy__ = _pdje_python.delete_PDJE
     player = property(_pdje_python.PDJE_player_get, _pdje_python.PDJE_player_set)
+    editor = property(_pdje_python.PDJE_editor_get, _pdje_python.PDJE_editor_set)
 
     def InitPlayer(self, mode, td, FrameBufferSize):
         return _pdje_python.PDJE_InitPlayer(self, mode, td, FrameBufferSize)
+
+    def InitEditor(self, auth_name, auth_email, projectRoot):
+        return _pdje_python.PDJE_InitEditor(self, auth_name, auth_email, projectRoot)
 
     def GetNoteObjects(self, td, ObjectSetCallback):
         return _pdje_python.PDJE_GetNoteObjects(self, td, ObjectSetCallback)
@@ -238,6 +242,12 @@ class musdata(object):
 
     def GenInsertSTMT(self, dbstate, db):
         return _pdje_python.musdata_GenInsertSTMT(self, dbstate, db)
+
+    def GenEditSTMT(self, dbstate, db, toEdit):
+        return _pdje_python.musdata_GenEditSTMT(self, dbstate, db, toEdit)
+
+    def GenDeleteSTMT(self, dbstate, db):
+        return _pdje_python.musdata_GenDeleteSTMT(self, dbstate, db)
     __swig_destroy__ = _pdje_python.delete_musdata
 
 # Register musdata in _pdje_python:
@@ -258,6 +268,12 @@ class trackdata(object):
 
     def GenInsertSTMT(self, dbstate, db):
         return _pdje_python.trackdata_GenInsertSTMT(self, dbstate, db)
+
+    def GenEditSTMT(self, dbstate, db, toEdit):
+        return _pdje_python.trackdata_GenEditSTMT(self, dbstate, db, toEdit)
+
+    def GenDeleteSTMT(self, dbstate, db):
+        return _pdje_python.trackdata_GenDeleteSTMT(self, dbstate, db)
     __swig_destroy__ = _pdje_python.delete_trackdata
 
 # Register trackdata in _pdje_python:

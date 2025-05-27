@@ -818,6 +818,34 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_PDJE_player_get(void * jarg1) {
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_PDJE_editor_set(void * jarg1, void * jarg2) {
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::optional< editorObject > arg2 ;
+  std::optional< editorObject > *argp2 ;
+  
+  arg1 = (PDJE *)jarg1; 
+  argp2 = (std::optional< editorObject > *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::optional< editorObject >", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  if (arg1) (arg1)->editor = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_PDJE_editor_get(void * jarg1) {
+  void * jresult ;
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::optional< editorObject > result;
+  
+  arg1 = (PDJE *)jarg1; 
+  result =  ((arg1)->editor);
+  jresult = new std::optional< editorObject >(result); 
+  return jresult;
+}
+
+
 SWIGEXPORT unsigned int SWIGSTDCALL CSharp_PDJE_InitPlayer(void * jarg1, int jarg2, void * jarg3, unsigned int jarg4) {
   unsigned int jresult ;
   PDJE *arg1 = (PDJE *) 0 ;
@@ -835,6 +863,39 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_PDJE_InitPlayer(void * jarg1, int jar
   } 
   arg4 = (unsigned int)jarg4; 
   result = (bool)(arg1)->InitPlayer(arg2,*arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_PDJE_InitEditor(void * jarg1, const char * jarg2, const char * jarg3, const char * jarg4) {
+  unsigned int jresult ;
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  std::string *arg4 = 0 ;
+  bool result;
+  
+  arg1 = (PDJE *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (!jarg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg3_str(jarg3);
+  arg3 = &arg3_str; 
+  if (!jarg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg4_str(jarg4);
+  arg4 = &arg4_str; 
+  result = (bool)(arg1)->InitEditor((std::string const &)*arg2,(std::string const &)*arg3,(std::string const &)*arg4);
   jresult = result; 
   return jresult;
 }
@@ -1376,6 +1437,52 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_musdata_GenInsertSTMT(void * jarg1, v
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_musdata_GenEditSTMT(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  musdata *arg1 = (musdata *) 0 ;
+  stmt *arg2 = 0 ;
+  sqlite3 *arg3 = (sqlite3 *) 0 ;
+  musdata *arg4 = 0 ;
+  bool result;
+  
+  arg1 = (musdata *)jarg1; 
+  arg2 = (stmt *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "stmt & is null", 0);
+    return 0;
+  } 
+  arg3 = (sqlite3 *)jarg3; 
+  arg4 = (musdata *)jarg4;
+  if (!arg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "musdata & is null", 0);
+    return 0;
+  } 
+  result = (bool)(arg1)->GenEditSTMT(*arg2,arg3,*arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_musdata_GenDeleteSTMT(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  musdata *arg1 = (musdata *) 0 ;
+  stmt *arg2 = 0 ;
+  sqlite3 *arg3 = (sqlite3 *) 0 ;
+  bool result;
+  
+  arg1 = (musdata *)jarg1; 
+  arg2 = (stmt *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "stmt & is null", 0);
+    return 0;
+  } 
+  arg3 = (sqlite3 *)jarg3; 
+  result = (bool)(arg1)->GenDeleteSTMT(*arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void SWIGSTDCALL CSharp_delete_musdata(void * jarg1) {
   musdata *arg1 = (musdata *) 0 ;
   
@@ -1568,6 +1675,52 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_trackdata_GenInsertSTMT(void * jarg1,
   } 
   arg3 = (sqlite3 *)jarg3; 
   result = (bool)(arg1)->GenInsertSTMT(*arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_trackdata_GenEditSTMT(void * jarg1, void * jarg2, void * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  trackdata *arg1 = (trackdata *) 0 ;
+  stmt *arg2 = 0 ;
+  sqlite3 *arg3 = (sqlite3 *) 0 ;
+  trackdata *arg4 = 0 ;
+  bool result;
+  
+  arg1 = (trackdata *)jarg1; 
+  arg2 = (stmt *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "stmt & is null", 0);
+    return 0;
+  } 
+  arg3 = (sqlite3 *)jarg3; 
+  arg4 = (trackdata *)jarg4;
+  if (!arg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "trackdata & is null", 0);
+    return 0;
+  } 
+  result = (bool)(arg1)->GenEditSTMT(*arg2,arg3,*arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_trackdata_GenDeleteSTMT(void * jarg1, void * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  trackdata *arg1 = (trackdata *) 0 ;
+  stmt *arg2 = 0 ;
+  sqlite3 *arg3 = (sqlite3 *) 0 ;
+  bool result;
+  
+  arg1 = (trackdata *)jarg1; 
+  arg2 = (stmt *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "stmt & is null", 0);
+    return 0;
+  } 
+  arg3 = (sqlite3 *)jarg3; 
+  result = (bool)(arg1)->GenDeleteSTMT(*arg2,arg3);
   jresult = result; 
   return jresult;
 }

@@ -160,4 +160,16 @@ public class musdata : global::System.IDisposable {
     return ret;
   }
 
+  public bool GenEditSTMT(SWIGTYPE_p_stmt dbstate, SWIGTYPE_p_sqlite3 db, musdata toEdit) {
+    bool ret = pdje_POLYGLOTPINVOKE.musdata_GenEditSTMT(swigCPtr, SWIGTYPE_p_stmt.getCPtr(dbstate), SWIGTYPE_p_sqlite3.getCPtr(db), musdata.getCPtr(toEdit));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool GenDeleteSTMT(SWIGTYPE_p_stmt dbstate, SWIGTYPE_p_sqlite3 db) {
+    bool ret = pdje_POLYGLOTPINVOKE.musdata_GenDeleteSTMT(swigCPtr, SWIGTYPE_p_stmt.getCPtr(dbstate), SWIGTYPE_p_sqlite3.getCPtr(db));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
 }

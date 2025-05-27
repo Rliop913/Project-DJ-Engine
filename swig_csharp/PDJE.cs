@@ -71,8 +71,26 @@ public class PDJE : global::System.IDisposable {
     } 
   }
 
+  public SWIGTYPE_p_std__optionalT_editorObject_t editor {
+    set {
+      pdje_POLYGLOTPINVOKE.PDJE_editor_set(swigCPtr, SWIGTYPE_p_std__optionalT_editorObject_t.getCPtr(value));
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    } 
+    get {
+      SWIGTYPE_p_std__optionalT_editorObject_t ret = new SWIGTYPE_p_std__optionalT_editorObject_t(pdje_POLYGLOTPINVOKE.PDJE_editor_get(swigCPtr), true);
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+      return ret;
+    } 
+  }
+
   public bool InitPlayer(PLAY_MODE mode, trackdata td, uint FrameBufferSize) {
     bool ret = pdje_POLYGLOTPINVOKE.PDJE_InitPlayer(swigCPtr, (int)mode, trackdata.getCPtr(td), FrameBufferSize);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool InitEditor(string auth_name, string auth_email, string projectRoot) {
+    bool ret = pdje_POLYGLOTPINVOKE.PDJE_InitEditor(swigCPtr, auth_name, auth_email, projectRoot);
     if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }

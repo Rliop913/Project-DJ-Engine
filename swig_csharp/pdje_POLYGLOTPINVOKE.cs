@@ -260,8 +260,17 @@ class pdje_POLYGLOTPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_player_get")]
   public static extern global::System.IntPtr PDJE_player_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_editor_set")]
+  public static extern void PDJE_editor_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_editor_get")]
+  public static extern global::System.IntPtr PDJE_editor_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_InitPlayer")]
   public static extern bool PDJE_InitPlayer(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, uint jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_InitEditor")]
+  public static extern bool PDJE_InitEditor(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, string jarg3, string jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_GetNoteObjects")]
   public static extern bool PDJE_GetNoteObjects(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
@@ -362,6 +371,12 @@ class pdje_POLYGLOTPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_musdata_GenInsertSTMT")]
   public static extern bool musdata_GenInsertSTMT(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_musdata_GenEditSTMT")]
+  public static extern bool musdata_GenEditSTMT(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_musdata_GenDeleteSTMT")]
+  public static extern bool musdata_GenDeleteSTMT(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_musdata")]
   public static extern void delete_musdata(global::System.Runtime.InteropServices.HandleRef jarg1);
 
@@ -403,6 +418,12 @@ class pdje_POLYGLOTPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_trackdata_GenInsertSTMT")]
   public static extern bool trackdata_GenInsertSTMT(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_trackdata_GenEditSTMT")]
+  public static extern bool trackdata_GenEditSTMT(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_trackdata_GenDeleteSTMT")]
+  public static extern bool trackdata_GenDeleteSTMT(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_trackdata")]
   public static extern void delete_trackdata(global::System.Runtime.InteropServices.HandleRef jarg1);
