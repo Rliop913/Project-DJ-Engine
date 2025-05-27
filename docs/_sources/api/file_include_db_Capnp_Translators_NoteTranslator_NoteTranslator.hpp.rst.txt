@@ -40,6 +40,8 @@ Includes
 
 - ``optional``
 
+- ``string``
+
 - ``vector``
 
 

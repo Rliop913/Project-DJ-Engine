@@ -26,6 +26,7 @@ Files
 -----
 
 - :ref:`file_include_audioRender_MixMachine_DeckData.hpp`
+- :ref:`file_include_audioRender_MixMachine_MixMachine-inl.h`
 - :ref:`file_include_audioRender_MixMachine_MixMachine.cpp`
 - :ref:`file_include_audioRender_MixMachine_MixMachine.hpp`
 

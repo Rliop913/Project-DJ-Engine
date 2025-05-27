@@ -12,6 +12,7 @@ Program Listing for File MixMachine.cpp
 
    #include "MixMachine.hpp"
    
+   #include "MixMachine-inl.h"
    
    MixMachine::MixMachine()
    {
@@ -23,25 +24,27 @@ Program Listing for File MixMachine.cpp
    MixMachine::IDsort(const MixTranslator& tr)
    {
        try
-       {    
+       {
            for(auto i : tr.mixs.value().mixVec){
                long id = i.RP.getId();
-               
+   
                if(Memorized.find(id) == Memorized.end()){
                    Memorized[id] = std::vector<MixStruct>();
                }
                Memorized[id].push_back(i);
            }
-           
+   
            return true;
        }
        catch(...)
        {
-           
+   
            return false;
        }
    }
    
+   
+   HWY_EXPORT(INTEGRATE_PCM_SIMD);
    
    bool
    MixMachine::mix(litedb& db, const BPM& bpms)
@@ -49,25 +52,25 @@ Program Listing for File MixMachine.cpp
        auto num_threads = Memorized.size();
        for(auto& i: Memorized){
            renderPool.emplace_back([i, this, &db, &bpms](){
-                   
+   
                auto MC = new MUSIC_CTR();
                auto DJ = new BattleDj();
                auto FX = new FaustEffects(SAMPLERATE);
-               
+   
                SIMD_FLOAT tempVec;
                DJ->GetDataFrom(*MC);
                for(auto j : i.second){
                    switch (j.RP.getType()){
    
-                   case TypeEnum::BATTLE_DJ: 
+                   case TypeEnum::BATTLE_DJ:
                        if(TypeWorks<TypeEnum::BATTLE_DJ>(j, *DJ)) break;
                        else continue;
    
-                   case TypeEnum::LOAD: 
+                   case TypeEnum::LOAD:
                        if(TypeWorks<TypeEnum::LOAD>(j, *MC, db)
                            && TypeWorks<TypeEnum::LOAD>(j, *DJ)) break;
                        else continue;
-                       
+   
                    case TypeEnum::CONTROL:
                        if(TypeWorks<TypeEnum::CONTROL>(j, *MC)) break;
                        else continue;
@@ -83,51 +86,51 @@ Program Listing for File MixMachine.cpp
                    case TypeEnum::COMPRESSOR:
                        if(TypeWorks<TypeEnum::COMPRESSOR>(j, *FX, &tempVec)) break;
                        else continue;
-                   
+   
                    case TypeEnum::FILTER:
                        if(TypeWorks<TypeEnum::FILTER>(j, *FX, &tempVec)) break;
                        else continue;
-                   
+   
                    case TypeEnum::DISTORTION:
                        if(TypeWorks<TypeEnum::DISTORTION>(j, *FX, &tempVec)) break;
                        else continue;
-                   
+   
                    case TypeEnum::ECHO:
                        if(TypeWorks<TypeEnum::ECHO>(j, *FX, &tempVec)) break;
                        else continue;
-                   
+   
                    case TypeEnum::FLANGER:
                        if(TypeWorks<TypeEnum::FLANGER>(j, *FX, &tempVec)) break;
                        else continue;
-                   
+   
                    case TypeEnum::OSC_FILTER:
                        if(TypeWorks<TypeEnum::OSC_FILTER>(j, *FX, &tempVec)) break;
                        else continue;
-                   
+   
                    case TypeEnum::PANNER:
                        if(TypeWorks<TypeEnum::PANNER>(j, *FX, &tempVec)) break;
                        else continue;
-                   
+   
                    case TypeEnum::PHASER:
                        if(TypeWorks<TypeEnum::PHASER>(j, *FX, &tempVec)) break;
                        else continue;
-                   
+   
                    case TypeEnum::ROLL:
                        if(TypeWorks<TypeEnum::ROLL>(j, *FX, &tempVec)) break;
                        else continue;
-                   
+   
                    case TypeEnum::TRANCE:
                        if(TypeWorks<TypeEnum::TRANCE>(j, *FX, &tempVec)) break;
                        else continue;
-                   
+   
                    case TypeEnum::ROBOT:
                        if(TypeWorks<TypeEnum::ROBOT>(j, *FX, &tempVec)) break;
                        else continue;
-                   
+   
                    case TypeEnum::VOL:
                        if(TypeWorks<TypeEnum::VOL>(j, *FX, &tempVec)) break;
                        else continue;
-                   
+   
                    default:
                        break;
                    }
@@ -139,41 +142,38 @@ Program Listing for File MixMachine.cpp
                    return;
                }
                FX->consumeAll();
-               const hn::ScalableTag<float> hwyFTag;
-               auto laneSize = hn::Lanes(hwyFTag);
-               auto times = tempVec.size() / laneSize;
-               auto remained = tempVec.size() % laneSize;
    
-               auto Tptr = tempVec.data();
-               {
-                   std::lock_guard<std::mutex> locks(renderLock);
-                   if(rendered_out.size() < (MC->QDatas.pos.back().Gidx * CHANNEL)){
-                       rendered_out.resize((MC->QDatas.pos.back().Gidx * CHANNEL));
-                   }
-                   auto Rptr = rendered_out.data() + (MC->QDatas.pos.front().Gidx * CHANNEL);
+               HWY_DYNAMIC_DISPATCH(INTEGRATE_PCM_SIMD)(
+                   tempVec,
+                   renderLock,
+                   rendered_out,
+                   MC
+               );
    
-                   for(size_t L = 0; L < times; ++L){
-                       auto Tsimd = hn::Load(hwyFTag, Tptr);
-                       auto Rsimd = hn::LoadU(hwyFTag, Rptr);
-                       hn::StoreU(Rsimd + Tsimd, hwyFTag, Rptr);
-                       Tptr += laneSize;
-                       Rptr += laneSize;
-                   }
-                   for(size_t REM = 0; REM < remained; ++REM){
-                       (*(Rptr++)) += (*(Tptr++));
-                   }
-               }
-               // PFloat = result.value()->data();
+               // const hn::ScalableTag<float> hwyFTag;
+               // auto laneSize = hn::Lanes(hwyFTag);
+               // auto times = tempVec.size() / laneSize;
+               // auto remained = tempVec.size() % laneSize;
    
-               // for(unsigned long q = MC->QDatas.pos.front().Gidx; 
-               //     q < (MC->QDatas.pos.back().Gidx - MC->QDatas.pos.front().Gidx) * CHANNEL;
-               //         ++q){
-                   
-               //     (*Rptr) += (*Tptr);
-               //     ++Rptr;
-               //     ++Tptr;
+               // auto Tptr = tempVec.data();
+               // {
+               //     std::lock_guard<std::mutex> locks(renderLock);
+               //     if(rendered_out.size() < (MC->QDatas.pos.back().Gidx * CHANNEL)){
+               //         rendered_out.resize((MC->QDatas.pos.back().Gidx * CHANNEL));
+               //     }
+               //     auto Rptr = rendered_out.data() + (MC->QDatas.pos.front().Gidx * CHANNEL);
+   
+               //     for(size_t L = 0; L < times; ++L){
+               //         auto Tsimd = hn::Load(hwyFTag, Tptr);
+               //         auto Rsimd = hn::LoadU(hwyFTag, Rptr);
+               //         hn::StoreU(Rsimd + Tsimd, hwyFTag, Rptr);
+               //         Tptr += laneSize;
+               //         Rptr += laneSize;
+               //     }
+               //     for(size_t REM = 0; REM < remained; ++REM){
+               //         (*(Rptr++)) += (*(Tptr++));
+               //     }
                // }
-               
                delete MC;
                delete DJ;
                delete FX;
@@ -190,5 +190,5 @@ Program Listing for File MixMachine.cpp
    
    MixMachine::~MixMachine()
    {
-       
+   
    }

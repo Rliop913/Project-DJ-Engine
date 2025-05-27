@@ -28,7 +28,8 @@ Program Listing for File Decoder.cpp
        fs::path root(root_path);
        fs::path fullpath = root.parent_path() / relative_path;
        fullpath = fullpath.lexically_normal();
-       return ma_decoder_init_file(fullpath.c_str(), &dconf, &dec) == MA_SUCCESS;
+   
+       return ma_decoder_init_file(reinterpret_cast<const char*>(fullpath.u8string().c_str()), &dconf, &dec) == MA_SUCCESS;
    }   
    
    bool

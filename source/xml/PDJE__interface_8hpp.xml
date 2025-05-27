@@ -5,13 +5,62 @@
     <includes refid="audioPlayer_8hpp" local="yes">audioPlayer.hpp</includes>
     <includes refid="dbRoot_8hpp" local="yes">dbRoot.hpp</includes>
     <includes refid="NoteTranslator_8hpp" local="yes">NoteTranslator.hpp</includes>
+    <includes refid="editorObject_8hpp" local="yes">editorObject.hpp</includes>
     <includedby refid="PDJE__interface_8cpp" local="yes">include/interface/PDJE_interface.cpp</includedby>
     <includedby refid="PDJE__polyglot__wraps_8cpp" local="yes">include/interface/PDJE_polyglot_wraps.cpp</includedby>
     <includedby refid="interfaceTest_8cpp" local="yes">include/tests/interfaceTest.cpp</includedby>
     <incdepgraph>
-      <node id="52">
+      <node id="67">
+        <label>audioCallbacks.hpp</label>
+        <link refid="audioCallbacks_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>audioPlayer.hpp</label>
+        <link refid="audioPlayer_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>editorObject.hpp</label>
+        <link refid="editorObject_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+      </node>
+      <node id="90">
+        <label>tempDB.hpp</label>
+        <link refid="tempDB_8hpp"/>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
         <label>ManualMix.hpp</label>
         <link refid="ManualMix_8hpp"/>
+        <childnode refid="52" relation="include">
+        </childnode>
         <childnode refid="53" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
@@ -38,41 +87,41 @@
         </childnode>
         <childnode refid="65" relation="include">
         </childnode>
-        <childnode refid="66" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="69">
+      <node id="68">
         <label>MusicControlPannel.hpp</label>
         <link refid="MusicControlPannel_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="70" relation="include">
+        <childnode refid="69" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="31">
         <label>DeckData.hpp</label>
         <link refid="DeckData_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="30">
         <label>EFFECTS.hpp</label>
         <link refid="EFFECTS_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
@@ -98,13 +147,11 @@
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
-        </childnode>
       </node>
-      <node id="48">
+      <node id="47">
         <label>BattleDj.hpp</label>
         <link refid="BattleDj_8hpp"/>
-        <childnode refid="49" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -112,28 +159,28 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
       </node>
-      <node id="50">
+      <node id="49">
         <label>MUSIC_CTR.hpp</label>
         <link refid="MUSIC__CTR_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
       </node>
-      <node id="47">
+      <node id="46">
         <label>Decoder.hpp</label>
         <link refid="Decoder_8hpp"/>
         <childnode refid="13" relation="include">
@@ -162,21 +209,21 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
-        </childnode>
       </node>
-      <node id="67">
+      <node id="66">
         <label>audioRender.hpp</label>
         <link refid="audioRender_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
       </node>
       <node id="14">
@@ -208,10 +255,8 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
       </node>
-      <node id="25">
+      <node id="24">
         <label>Bpm.hpp</label>
         <link refid="Bpm_8hpp"/>
         <childnode refid="11" relation="include">
@@ -260,10 +305,10 @@
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="51">
+      <node id="50">
         <label>MusicTranslator.hpp</label>
         <link refid="MusicTranslator_8hpp"/>
         <childnode refid="7" relation="include">
@@ -277,12 +322,14 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="71">
+      <node id="70">
         <label>NoteTranslator.hpp</label>
         <link refid="NoteTranslator_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -290,10 +337,10 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="25">
         <label>dbRoot.hpp</label>
         <link refid="dbRoot_8hpp"/>
         <childnode refid="13" relation="include">
@@ -302,43 +349,177 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="28">
         <label>dbState.hpp</label>
         <link refid="dbState_8hpp"/>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="27">
         <label>musicDB.hpp</label>
         <link refid="musicDB_8hpp"/>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="29">
         <label>trackDB.hpp</label>
         <link refid="trackDB_8hpp"/>
-        <childnode refid="27" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>editor.hpp</label>
+        <link refid="editor_8hpp"/>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+      </node>
+      <node id="84">
+        <label>AddController.hpp</label>
+        <link refid="AddController_8hpp"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="80">
+        <label>BlameController.hpp</label>
+        <link refid="BlameController_8hpp"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>editorBranch.hpp</label>
+        <link refid="editorBranch_8hpp"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="82">
+        <label>editorCommit.hpp</label>
+        <link refid="editorCommit_8hpp"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>DiffController.hpp</label>
+        <link refid="DiffController_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+      </node>
+      <node id="87">
+        <label>gitLog.hpp</label>
+        <link refid="gitLog_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>gitWrapper.hpp</label>
+        <link refid="gitWrapper_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+      </node>
+      <node id="74">
+        <label>jsonWrapper.hpp</label>
+        <link refid="jsonWrapper_8hpp"/>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -346,111 +527,89 @@
         <link refid="PDJE__interface_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
         </childnode>
         <childnode refid="71" relation="include">
         </childnode>
       </node>
-      <node id="68">
-        <label>audioCallbacks.hpp</label>
-        <link refid="audioCallbacks_8hpp"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="69" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>audioPlayer.hpp</label>
-        <link refid="audioPlayer_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="52" relation="include">
-        </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="68" relation="include">
-        </childnode>
-      </node>
-      <node id="34">
+      <node id="33">
         <label>FAUST_COMPRESSOR.hpp</label>
       </node>
-      <node id="54">
+      <node id="53">
         <label>FAUST_COMPRESSOR_manual.hpp</label>
       </node>
-      <node id="35">
+      <node id="34">
         <label>FAUST_DISTORTION.hpp</label>
       </node>
-      <node id="55">
+      <node id="54">
         <label>FAUST_DISTORTION_manual.hpp</label>
       </node>
-      <node id="36">
+      <node id="35">
         <label>FAUST_ECHO.hpp</label>
       </node>
-      <node id="56">
+      <node id="55">
         <label>FAUST_ECHO_manual.hpp</label>
       </node>
-      <node id="37">
+      <node id="36">
         <label>FAUST_EQ.hpp</label>
       </node>
-      <node id="57">
+      <node id="56">
         <label>FAUST_EQ_manual.hpp</label>
       </node>
-      <node id="38">
+      <node id="37">
         <label>FAUST_FILTERS.hpp</label>
       </node>
-      <node id="58">
+      <node id="57">
         <label>FAUST_FILTERS_manual.hpp</label>
       </node>
-      <node id="39">
+      <node id="38">
         <label>FAUST_FLANGER.hpp</label>
       </node>
-      <node id="59">
+      <node id="58">
         <label>FAUST_FLANGER_manual.hpp</label>
       </node>
-      <node id="40">
+      <node id="39">
         <label>FAUST_OCS_FILTER.hpp</label>
       </node>
-      <node id="60">
+      <node id="59">
         <label>FAUST_OCS_FILTER_manual.hpp</label>
       </node>
-      <node id="41">
+      <node id="40">
         <label>FAUST_PANNER.hpp</label>
       </node>
-      <node id="61">
+      <node id="60">
         <label>FAUST_PANNER_manual.hpp</label>
       </node>
-      <node id="42">
+      <node id="41">
         <label>FAUST_PHASER.hpp</label>
       </node>
-      <node id="62">
+      <node id="61">
         <label>FAUST_PHASER_manual.hpp</label>
       </node>
-      <node id="46">
+      <node id="45">
         <label>FAUST_ROBOT.hpp</label>
       </node>
-      <node id="63">
+      <node id="62">
         <label>FAUST_ROBOT_manual.hpp</label>
       </node>
-      <node id="43">
+      <node id="42">
         <label>FAUST_ROLL.hpp</label>
       </node>
-      <node id="64">
+      <node id="63">
         <label>FAUST_ROLL_manual.hpp</label>
       </node>
-      <node id="44">
+      <node id="43">
         <label>FAUST_TRANCE.hpp</label>
       </node>
-      <node id="65">
+      <node id="64">
         <label>FAUST_TRANCE_manual.hpp</label>
       </node>
-      <node id="45">
+      <node id="44">
         <label>FAUST_VOL.hpp</label>
       </node>
-      <node id="66">
+      <node id="65">
         <label>FAUST_VOL_manual.hpp</label>
       </node>
       <node id="17">
@@ -462,11 +621,14 @@
       <node id="19">
         <label>NoteBinary.capnp.h</label>
       </node>
-      <node id="49">
+      <node id="48">
         <label>SoundTouch.h</label>
       </node>
       <node id="12">
         <label>algorithm</label>
+      </node>
+      <node id="89">
+        <label>bit</label>
       </node>
       <node id="15">
         <label>capnp/message.h</label>
@@ -477,19 +639,34 @@
       <node id="22">
         <label>cmath</label>
       </node>
-      <node id="33">
+      <node id="88">
+        <label>cstdint</label>
+      </node>
+      <node id="72">
+        <label>filesystem</label>
+      </node>
+      <node id="75">
+        <label>fstream</label>
+      </node>
+      <node id="32">
         <label>functional</label>
       </node>
-      <node id="24">
-        <label>hwy/aligned_allocator.h</label>
+      <node id="79">
+        <label>git2.h</label>
+      </node>
+      <node id="86">
+        <label>git2/repository.h</label>
       </node>
       <node id="23">
-        <label>hwy/highway.h</label>
+        <label>hwy/aligned_allocator.h</label>
       </node>
-      <node id="70">
+      <node id="83">
+        <label>list</label>
+      </node>
+      <node id="69">
         <label>map</label>
       </node>
-      <node id="53">
+      <node id="52">
         <label>memory</label>
       </node>
       <node id="3">
@@ -498,10 +675,16 @@
       <node id="9">
         <label>mutex</label>
       </node>
+      <node id="77">
+        <label>nlohmann/json.hpp</label>
+      </node>
       <node id="7">
         <label>optional</label>
       </node>
-      <node id="27">
+      <node id="76">
+        <label>ranges</label>
+      </node>
+      <node id="26">
         <label>sqlite3.h</label>
       </node>
       <node id="8">
@@ -578,7 +761,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/interface/PDJE_interface.hpp" line="12" column="1" bodyfile="include/interface/PDJE_interface.hpp" bodystart="12" bodyend="16"/>
+        <location file="include/interface/PDJE_interface.hpp" line="14" column="1" bodyfile="include/interface/PDJE_interface.hpp" bodystart="14" bodyend="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -591,54 +774,64 @@
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="audioPlayer_8hpp" kindref="compound">audioPlayer.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dbRoot_8hpp" kindref="compound">dbRoot.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="NoteTranslator_8hpp" kindref="compound">NoteTranslator.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12" refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16" kindref="member">PLAY_MODE</ref>{</highlight></codeline>
-<codeline lineno="13" refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16a3defdb65868c3ad8931d7432c30f5f67" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16a3defdb65868c3ad8931d7432c30f5f67" kindref="member">FULL_PRE_RENDER</ref>,</highlight></codeline>
-<codeline lineno="14" refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16add88da32dbee24cb0fa797a5203593a7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16add88da32dbee24cb0fa797a5203593a7" kindref="member">HYBRID_RENDER</ref>,</highlight></codeline>
-<codeline lineno="15" refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16a69bbbd6283b833aa3bf7b1639e965f03" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16a69bbbd6283b833aa3bf7b1639e965f03" kindref="member">FULL_MANUAL_RENDER</ref></highlight></codeline>
-<codeline lineno="16"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="48" refid="classPDJE" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE_1a96bb21d32ba8872056801ae1fad6902a" kindref="member">PDJE</ref>{</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="53" refid="classPDJE_1a00753604e66f312d751df3c600724903" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;litedb&gt;<sp/><ref refid="classPDJE_1a00753604e66f312d751df3c600724903" kindref="member">DBROOT</ref>;</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE_1a96bb21d32ba8872056801ae1fad6902a" kindref="member">PDJE</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>rootPath);</highlight></codeline>
-<codeline lineno="61" refid="classPDJE_1a042b3df5b955022a4828cb1f63aaa05b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE_1a042b3df5b955022a4828cb1f63aaa05b" kindref="member">~PDJE</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="64" refid="classPDJE_1a6e7c6205e82e348fbb2cd31c04b02d3b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;audioPlayer&gt;<sp/><ref refid="classPDJE_1a6e7c6205e82e348fbb2cd31c04b02d3b" kindref="member">player</ref>;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE_1a9de8f88a9b0461472a99596fa0b5c978" kindref="member">InitPlayer</ref>(</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16" kindref="member">PLAY_MODE</ref><sp/>mode,<sp/></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtrackdata" kindref="compound">trackdata</ref>&amp;<sp/>td,<sp/></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>FrameBufferSize);</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE_1a14f12cabddceb731d57b608530053587" kindref="member">GetNoteObjects</ref>(</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtrackdata" kindref="compound">trackdata</ref>&amp;<sp/>td,</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="NoteTranslator_8hpp_1a8bb5814b0656edc5048ad81a0fbe93b0" kindref="member">OBJ_SETTER_CALLBACK</ref>&amp;<sp/>ObjectSetCallback</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0" kindref="member">MUS_VEC</ref><sp/></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE_1a3a6d5448f262f0f28335e803ce279548" kindref="member">SearchMusic</ref>(</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>Title,<sp/></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>composer,<sp/></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>bpm<sp/>=<sp/>-1);</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470" kindref="member">TRACK_VEC</ref><sp/><ref refid="classPDJE_1a31a19ebc3086151e08f083c63846fac2" kindref="member">SearchTrack</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>Title);</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaudioPlayer" kindref="compound">audioPlayer</ref>*<sp/><ref refid="classPDJE_1a0fe16c71bf75baa2ddf9d24fa13d7230" kindref="member">GetPlayerObject</ref>();</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="126"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="132" refid="classARGSETTER__WRAPPER" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classARGSETTER__WRAPPER_1a8a8b6689af34752a34bee477f338111a" kindref="member">ARGSETTER_WRAPPER</ref>{</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="134" refid="classARGSETTER__WRAPPER_1ac460e475724b8ff01c047971b2d65e2f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref>*<sp/><ref refid="classARGSETTER__WRAPPER_1ac460e475724b8ff01c047971b2d65e2f" kindref="member">fxp</ref>;</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="141" refid="classARGSETTER__WRAPPER_1a8a8b6689af34752a34bee477f338111a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classARGSETTER__WRAPPER_1a8a8b6689af34752a34bee477f338111a" kindref="member">ARGSETTER_WRAPPER</ref>(<ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref>*<sp/>pointer):<sp/><ref refid="classARGSETTER__WRAPPER_1ac460e475724b8ff01c047971b2d65e2f" kindref="member">fxp</ref>(pointer){};</highlight></codeline>
-<codeline lineno="142" refid="classARGSETTER__WRAPPER_1a41a20d9176cd113b42cee80ec464c9ff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classARGSETTER__WRAPPER_1a41a20d9176cd113b42cee80ec464c9ff" kindref="member">~ARGSETTER_WRAPPER</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classARGSETTER__WRAPPER_1a1b2d541718d9f5d474fd5af898a02e76" kindref="member">GetFXArgKeys</ref>(<ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3" kindref="member">FXList</ref><sp/>fx);</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classARGSETTER__WRAPPER_1aeec701bc7347401a94ad1e52a7720bb2" kindref="member">SetFXArg</ref>(</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3" kindref="member">FXList</ref><sp/>fx,<sp/></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>arg);</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="editorObject_8hpp" kindref="compound">editorObject.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16" kindref="member">PLAY_MODE</ref>{</highlight></codeline>
+<codeline lineno="15" refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16a3defdb65868c3ad8931d7432c30f5f67" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16a3defdb65868c3ad8931d7432c30f5f67" kindref="member">FULL_PRE_RENDER</ref>,</highlight></codeline>
+<codeline lineno="16" refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16add88da32dbee24cb0fa797a5203593a7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16add88da32dbee24cb0fa797a5203593a7" kindref="member">HYBRID_RENDER</ref>,</highlight></codeline>
+<codeline lineno="17" refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16a69bbbd6283b833aa3bf7b1639e965f03" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16a69bbbd6283b833aa3bf7b1639e965f03" kindref="member">FULL_MANUAL_RENDER</ref></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="50" refid="classPDJE" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE_1a96bb21d32ba8872056801ae1fad6902a" kindref="member">PDJE</ref>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="55" refid="classPDJE_1a00753604e66f312d751df3c600724903" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;litedb&gt;<sp/><ref refid="classPDJE_1a00753604e66f312d751df3c600724903" kindref="member">DBROOT</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE_1a96bb21d32ba8872056801ae1fad6902a" kindref="member">PDJE</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>rootPath);</highlight></codeline>
+<codeline lineno="63" refid="classPDJE_1a042b3df5b955022a4828cb1f63aaa05b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE_1a042b3df5b955022a4828cb1f63aaa05b" kindref="member">~PDJE</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="66" refid="classPDJE_1a6e7c6205e82e348fbb2cd31c04b02d3b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;audioPlayer&gt;<sp/><ref refid="classPDJE_1a6e7c6205e82e348fbb2cd31c04b02d3b" kindref="member">player</ref>;</highlight></codeline>
+<codeline lineno="67" refid="classPDJE_1ae5144457b990d02000f6ae9b9792c9fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;editorObject&gt;<sp/><ref refid="classPDJE_1ae5144457b990d02000f6ae9b9792c9fd" kindref="member">editor</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE_1a9de8f88a9b0461472a99596fa0b5c978" kindref="member">InitPlayer</ref>(</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16" kindref="member">PLAY_MODE</ref><sp/>mode,<sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtrackdata" kindref="compound">trackdata</ref>&amp;<sp/>td,<sp/></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>FrameBufferSize);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE_1ae0be290286d3397dc5e46112c546315a" kindref="member">InitEditor</ref>(</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;auth_name,<sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;auth_email,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>projectRoot</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE_1a14f12cabddceb731d57b608530053587" kindref="member">GetNoteObjects</ref>(</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtrackdata" kindref="compound">trackdata</ref>&amp;<sp/>td,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="NoteTranslator_8hpp_1a8bb5814b0656edc5048ad81a0fbe93b0" kindref="member">OBJ_SETTER_CALLBACK</ref>&amp;<sp/>ObjectSetCallback</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0" kindref="member">MUS_VEC</ref><sp/></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE_1a3a6d5448f262f0f28335e803ce279548" kindref="member">SearchMusic</ref>(</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>Title,<sp/></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>composer,<sp/></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>bpm<sp/>=<sp/>-1);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470" kindref="member">TRACK_VEC</ref><sp/><ref refid="classPDJE_1a31a19ebc3086151e08f083c63846fac2" kindref="member">SearchTrack</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>Title);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaudioPlayer" kindref="compound">audioPlayer</ref>*<sp/><ref refid="classPDJE_1a0fe16c71bf75baa2ddf9d24fa13d7230" kindref="member">GetPlayerObject</ref>();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="136"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="142" refid="classARGSETTER__WRAPPER" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classARGSETTER__WRAPPER_1a8a8b6689af34752a34bee477f338111a" kindref="member">ARGSETTER_WRAPPER</ref>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="144" refid="classARGSETTER__WRAPPER_1ac460e475724b8ff01c047971b2d65e2f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref>*<sp/><ref refid="classARGSETTER__WRAPPER_1ac460e475724b8ff01c047971b2d65e2f" kindref="member">fxp</ref>;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="151" refid="classARGSETTER__WRAPPER_1a8a8b6689af34752a34bee477f338111a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classARGSETTER__WRAPPER_1a8a8b6689af34752a34bee477f338111a" kindref="member">ARGSETTER_WRAPPER</ref>(<ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref>*<sp/>pointer):<sp/><ref refid="classARGSETTER__WRAPPER_1ac460e475724b8ff01c047971b2d65e2f" kindref="member">fxp</ref>(pointer){};</highlight></codeline>
+<codeline lineno="152" refid="classARGSETTER__WRAPPER_1a41a20d9176cd113b42cee80ec464c9ff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classARGSETTER__WRAPPER_1a41a20d9176cd113b42cee80ec464c9ff" kindref="member">~ARGSETTER_WRAPPER</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classARGSETTER__WRAPPER_1a1b2d541718d9f5d474fd5af898a02e76" kindref="member">GetFXArgKeys</ref>(<ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3" kindref="member">FXList</ref><sp/>fx);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classARGSETTER__WRAPPER_1aeec701bc7347401a94ad1e52a7720bb2" kindref="member">SetFXArg</ref>(</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3" kindref="member">FXList</ref><sp/>fx,<sp/></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>arg);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="include/interface/PDJE_interface.hpp"/>
   </compounddef>

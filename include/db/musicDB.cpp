@@ -98,4 +98,51 @@ musdata::GenInsertSTMT(stmt& dbstate, sqlite3* db)
     return true;
 
 }
+
+bool
+musdata::GenEditSTMT(stmt& dbstate, sqlite3* db, musdata& toEdit)
+{
+    dbstate.placeHold
+    =
+    "UPDATE MUSIC "
+    "SET Title = ?, Composer = ?, MusicPath = ?, Bpm = ?, BpmBinary = ?, FirstBar = ? "
+    "WHERE Title = ? AND Composer = ? AND MusicPath = ? AND Bpm = ?; ";
+
+    if(!dbstate.activate(db)) return false;
+    
+    CHK_BIND(dbstate.bind_text   (1, toEdit.title    ))
+    CHK_BIND(dbstate.bind_text   (2, toEdit.composer ))
+    CHK_BIND(dbstate.bind_text   (3, toEdit.musicPath))
+    CHK_BIND(dbstate.bind_double (4, toEdit.bpm      ))
+    CHK_BIND(dbstate.bind_blob   (5, toEdit.bpmBinary))
+    CHK_BIND(dbstate.bind_text   (6, toEdit.firstBar ))
+    CHK_BIND(dbstate.bind_text   (7, title           ))
+    CHK_BIND(dbstate.bind_text   (8, composer        ))
+    CHK_BIND(dbstate.bind_text   (9, musicPath       ))
+    CHK_BIND(dbstate.bind_double (10,bpm             ))
+    
+    return true;
+
+}
+
+
+bool 
+musdata::GenDeleteSTMT(stmt& dbstate, sqlite3* db)
+{
+    dbstate.placeHold
+    =
+    "DELETE FROM MUSIC "
+    "WHERE Title = ? AND Composer = ? AND MusicPath = ? AND Bpm = ?; ";
+
+    if(!dbstate.activate(db)) return false;
+
+    CHK_BIND(dbstate.bind_text   (1, title       ))
+    CHK_BIND(dbstate.bind_text   (2, composer    ))
+    CHK_BIND(dbstate.bind_text   (3, musicPath   ))
+    CHK_BIND(dbstate.bind_double (4, bpm         ))
+    
+    return true;
+}
+
+
 #undef CHK_BIND

@@ -179,6 +179,53 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 
 <span class="p">}</span>
+
+<span class="kt">bool</span>
+<span class="n">musdata</span><span class="o">::</span><span class="n">GenEditSTMT</span><span class="p">(</span><span class="n">stmt</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dbstate</span><span class="p">,</span><span class="w"> </span><span class="n">sqlite3</span><span class="o">*</span><span class="w"> </span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">musdata</span><span class="o">&amp;</span><span class="w"> </span><span class="n">toEdit</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">dbstate</span><span class="p">.</span><span class="n">placeHold</span>
+<span class="w">    </span><span class="o">=</span>
+<span class="w">    </span><span class="s">&quot;UPDATE MUSIC &quot;</span>
+<span class="w">    </span><span class="s">&quot;SET Title = ?, Composer = ?, MusicPath = ?, Bpm = ?, BpmBinary = ?, FirstBar = ? &quot;</span>
+<span class="w">    </span><span class="s">&quot;WHERE Title = ? AND Composer = ? AND MusicPath = ? AND Bpm = ?; &quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">dbstate</span><span class="p">.</span><span class="n">activate</span><span class="p">(</span><span class="n">db</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">CHK_BIND</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">bind_text</span><span class="w">   </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">toEdit</span><span class="p">.</span><span class="n">title</span><span class="w">    </span><span class="p">))</span>
+<span class="w">    </span><span class="n">CHK_BIND</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">bind_text</span><span class="w">   </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">toEdit</span><span class="p">.</span><span class="n">composer</span><span class="w"> </span><span class="p">))</span>
+<span class="w">    </span><span class="n">CHK_BIND</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">bind_text</span><span class="w">   </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">toEdit</span><span class="p">.</span><span class="n">musicPath</span><span class="p">))</span>
+<span class="w">    </span><span class="n">CHK_BIND</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">bind_double</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">toEdit</span><span class="p">.</span><span class="n">bpm</span><span class="w">      </span><span class="p">))</span>
+<span class="w">    </span><span class="n">CHK_BIND</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">bind_blob</span><span class="w">   </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">toEdit</span><span class="p">.</span><span class="n">bpmBinary</span><span class="p">))</span>
+<span class="w">    </span><span class="n">CHK_BIND</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">bind_text</span><span class="w">   </span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">toEdit</span><span class="p">.</span><span class="n">firstBar</span><span class="w"> </span><span class="p">))</span>
+<span class="w">    </span><span class="n">CHK_BIND</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">bind_text</span><span class="w">   </span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="w">           </span><span class="p">))</span>
+<span class="w">    </span><span class="n">CHK_BIND</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">bind_text</span><span class="w">   </span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="n">composer</span><span class="w">        </span><span class="p">))</span>
+<span class="w">    </span><span class="n">CHK_BIND</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">bind_text</span><span class="w">   </span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="n">musicPath</span><span class="w">       </span><span class="p">))</span>
+<span class="w">    </span><span class="n">CHK_BIND</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">bind_double</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="n">bpm</span><span class="w">             </span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+
+<span class="kt">bool</span>
+<span class="n">musdata</span><span class="o">::</span><span class="n">GenDeleteSTMT</span><span class="p">(</span><span class="n">stmt</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dbstate</span><span class="p">,</span><span class="w"> </span><span class="n">sqlite3</span><span class="o">*</span><span class="w"> </span><span class="n">db</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">dbstate</span><span class="p">.</span><span class="n">placeHold</span>
+<span class="w">    </span><span class="o">=</span>
+<span class="w">    </span><span class="s">&quot;DELETE FROM MUSIC &quot;</span>
+<span class="w">    </span><span class="s">&quot;WHERE Title = ? AND Composer = ? AND MusicPath = ? AND Bpm = ?; &quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">dbstate</span><span class="p">.</span><span class="n">activate</span><span class="p">(</span><span class="n">db</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">CHK_BIND</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">bind_text</span><span class="w">   </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="w">       </span><span class="p">))</span>
+<span class="w">    </span><span class="n">CHK_BIND</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">bind_text</span><span class="w">   </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">composer</span><span class="w">    </span><span class="p">))</span>
+<span class="w">    </span><span class="n">CHK_BIND</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">bind_text</span><span class="w">   </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">musicPath</span><span class="w">   </span><span class="p">))</span>
+<span class="w">    </span><span class="n">CHK_BIND</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">bind_double</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">bpm</span><span class="w">         </span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+
 <span class="cp">#undef CHK_BIND</span>
 </pre></div>
 </div>

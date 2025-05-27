@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``gitWrapper.hpp`` (:ref:`file_include_editor_featureWrapper_GitWrap_gitWrapper.hpp`)
+
 - ``iostream``
 
 

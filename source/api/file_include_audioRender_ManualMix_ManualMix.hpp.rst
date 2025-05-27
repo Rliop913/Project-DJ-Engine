@@ -68,13 +68,13 @@ Included By
 -----------
 
 
+- :ref:`file_include_MainObjects_audioPlayer_audioPlayer.hpp`
+
 - :ref:`file_include_audioRender_ManualMix_ManualMix.cpp`
 
 - :ref:`file_include_audioRender_ManualMix_MusicControlPannel.hpp`
 
 - :ref:`file_include_audioRender_audioRender.hpp`
-
-- :ref:`file_include_players_audioPlayer_audioPlayer.hpp`
 
 - :ref:`file_include_tests_manualAudioTest.cpp`
 

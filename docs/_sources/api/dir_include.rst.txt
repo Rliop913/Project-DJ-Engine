@@ -15,7 +15,7 @@ Subdirectories
 - :ref:`dir_include_editor`
 - :ref:`dir_include_input`
 - :ref:`dir_include_interface`
-- :ref:`dir_include_players`
+- :ref:`dir_include_MainObjects`
 - :ref:`dir_include_tests`
 
 

@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="classDiffController" kind="class" language="C++" prot="public">
+    <compoundname>DiffController</compoundname>
+    <includes refid="DiffController_8hpp" local="no">DiffController.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classDiffController_1ab23387a522be0df57c18c763394118f3" prot="private" static="no" mutable="no">
+        <type>git_diff *</type>
+        <definition>git_diff* DiffController::Dobj</definition>
+        <argsstring></argsstring>
+        <name>Dobj</name>
+        <qualifiedname>DiffController::Dobj</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Diff/DiffController.hpp" line="24" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Diff/DiffController.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDiffController_1a735f7b75bc7cafe8ab7afef88e3a5ebf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DiffController::CommitToCommit</definition>
+        <argsstring>(git_repository *repo, git_oid newID, git_oid oldID)</argsstring>
+        <name>CommitToCommit</name>
+        <qualifiedname>DiffController::CommitToCommit</qualifiedname>
+        <param>
+          <type>git_repository *</type>
+          <declname>repo</declname>
+        </param>
+        <param>
+          <type>git_oid</type>
+          <declname>newID</declname>
+        </param>
+        <param>
+          <type>git_oid</type>
+          <declname>oldID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Diff/DiffController.hpp" line="27" column="10" bodyfile="include/editor/featureWrapper/GitWrap/Diff/DiffController.cpp" bodystart="38" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classDiffController_1a4d2c8acac24b36a81837e49eae382fac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DiffController::CommitToNow</definition>
+        <argsstring>(git_repository *repo, git_oid oldID)</argsstring>
+        <name>CommitToNow</name>
+        <qualifiedname>DiffController::CommitToNow</qualifiedname>
+        <param>
+          <type>git_repository *</type>
+          <declname>repo</declname>
+        </param>
+        <param>
+          <type>git_oid</type>
+          <declname>oldID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Diff/DiffController.hpp" line="28" column="10" bodyfile="include/editor/featureWrapper/GitWrap/Diff/DiffController.cpp" bodystart="9" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classDiffController_1a0ef0ae7c68d8c517af66baf6d1c4072a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DiffController::execute</definition>
+        <argsstring>(DiffResult *res)</argsstring>
+        <name>execute</name>
+        <qualifiedname>DiffController::execute</qualifiedname>
+        <param>
+          <type><ref refid="structDiffResult" kindref="compound">DiffResult</ref> *</type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Diff/DiffController.hpp" line="30" column="10" bodyfile="include/editor/featureWrapper/GitWrap/Diff/DiffController.cpp" bodystart="112" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classDiffController_1ae6510679bb5a84f24de9b4d935c37c14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DiffController::DiffController</definition>
+        <argsstring>()</argsstring>
+        <name>DiffController</name>
+        <qualifiedname>DiffController::DiffController</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Diff/DiffController.hpp" line="32" column="5" bodyfile="include/editor/featureWrapper/GitWrap/Diff/DiffController.cpp" bodystart="3" bodyend="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classDiffController_1a11a240e972817d4a002b76b6ea855084" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DiffController::~DiffController</definition>
+        <argsstring>()</argsstring>
+        <name>~DiffController</name>
+        <qualifiedname>DiffController::~DiffController</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Diff/DiffController.hpp" line="33" column="5" bodyfile="include/editor/featureWrapper/GitWrap/Diff/DiffController.cpp" bodystart="125" bodyend="130"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/editor/featureWrapper/GitWrap/Diff/DiffController.hpp" line="22" column="1" bodyfile="include/editor/featureWrapper/GitWrap/Diff/DiffController.hpp" bodystart="22" bodyend="34"/>
+    <listofallmembers>
+      <member refid="classDiffController_1a735f7b75bc7cafe8ab7afef88e3a5ebf" prot="public" virt="non-virtual"><scope>DiffController</scope><name>CommitToCommit</name></member>
+      <member refid="classDiffController_1a4d2c8acac24b36a81837e49eae382fac" prot="public" virt="non-virtual"><scope>DiffController</scope><name>CommitToNow</name></member>
+      <member refid="classDiffController_1ae6510679bb5a84f24de9b4d935c37c14" prot="public" virt="non-virtual"><scope>DiffController</scope><name>DiffController</name></member>
+      <member refid="classDiffController_1ab23387a522be0df57c18c763394118f3" prot="private" virt="non-virtual"><scope>DiffController</scope><name>Dobj</name></member>
+      <member refid="classDiffController_1a0ef0ae7c68d8c517af66baf6d1c4072a" prot="public" virt="non-virtual"><scope>DiffController</scope><name>execute</name></member>
+      <member refid="classDiffController_1a11a240e972817d4a002b76b6ea855084" prot="public" virt="non-virtual"><scope>DiffController</scope><name>~DiffController</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

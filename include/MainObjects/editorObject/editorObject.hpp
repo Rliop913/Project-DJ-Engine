@@ -3,6 +3,7 @@
 #include <optional>
 #include <filesystem>
 #include "editor.hpp"
+#include "audioPlayer.hpp"
 
 #include "tempDB.hpp"
 
@@ -15,7 +16,7 @@ struct EDIT_ARG_MUSIC{
 using EDIT_ARG_NOTE = NoteArgs;
 using EDIT_ARG_MIX  = MixArgs;
 using EDIT_ARG_KEY_VALUE = KEY_VALUE;
-
+using TITLE_COMPOSER = std::unordered_map<std::string, std::string>;
 
 class editorObject {
 private:
@@ -33,20 +34,16 @@ private:
     template<typename EDIT_ARG_TYPE>
     bool DefaultSaveFuntion(PDJE_Editor::MusicHandleStruct& i, const EDIT_ARG_MUSIC& obj);
 
+    trackdata makeTrackData(
+        const std::string& trackTitle, 
+        TITLE_COMPOSER& titles);
+
 public:
 
     template<typename EDIT_ARG_TYPE>
     bool AddLine(const EDIT_ARG_TYPE& obj);
 
-    bool AddLine(const std::string& musicName, const std::string& firstBar){
-        for(auto& i : E_obj->musicHandle){
-            if(i.musicName == musicName){
-                i.jsonh["FIRST_BAR"] = firstBar;
-                return true;
-            }
-        }
-        return false;
-    }
+    bool AddLine(const std::string& musicName, const std::string& firstBar);
     
     
     int deleteLine(
@@ -58,6 +55,18 @@ public:
     int deleteLine(const EDIT_ARG_TYPE& obj);
 
     bool render(const std::string& trackTitle, litedb& ROOTDB);
+
+    void demoPlayInit(
+        std::optional<audioPlayer>& player, 
+        unsigned int frameBufferSize, 
+        trackdata& td);
+
+    bool pushToRootDB(litedb& ROOTDB, const std::string& trackTitleToPush);
+
+    bool pushToRootDB(
+        litedb& ROOTDB, 
+        const std::string& musicTitle, 
+        const std::string& musicComposer);
 
     template<typename EDIT_ARG_TYPE> 
     void getAll(std::function<void(const EDIT_ARG_TYPE& obj)> jsonCallback);
@@ -99,55 +108,21 @@ public:
     }
     
     ///WARNING!!! THERE IS NO TURNING BACK
-    std::string DESTROY_PROJECT(){
-        try
-        {
-            E_obj.reset();
-            projectLocalDB.reset();
-            auto deletedAmount = fs::remove_all(projectRoot);
-            if(deletedAmount < 1){
-                return "DELETED NOTHING";
-            }
-            else{
-                return "COMPLETE";
-            }
-        }
-        catch(const std::exception& e)
-        {
-            return e.what();
-        }
-    }
+    std::string DESTROY_PROJECT();
 
     bool ConfigNewMusic(const std::string& NewMusicName, 
                         const std::string& composer,
                         const std::string& musicPath,
-                        const std::string& firstBar = "0"){
-        if( E_obj->AddMusicConfig(NewMusicName)){
+                        const std::string& firstBar = "0");
 
-            E_obj->musicHandle.back().jsonh["TITLE"] = NewMusicName;
-            E_obj->musicHandle.back().jsonh["COMPOSER"] = composer;
-            E_obj->musicHandle.back().jsonh["PATH"] = musicPath;
-            E_obj->musicHandle.back().jsonh["FIRST_BAR"] = firstBar;
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    bool Open(const std::string& projectPath){
-        projectRoot = fs::path(projectPath);
-        
-        mixFilePath = projectRoot / "Mixes" / "mixmetadata.PDJE";
-        noteFilePath = projectRoot / "Notes" / "notemetadata.PDJE";
-        kvFilePath = projectRoot / "KeyValues" / "keyvaluemetadata.PDJE";
-        musicFileRootPath = projectRoot / "Musics";
-        projectLocalDB.emplace();
-        
-        return E_obj->openProject(projectPath) && projectLocalDB->Open(projectRoot);
-    }
+
+    bool Open(const std::string& projectPath);
+
     editorObject() = delete;
+
     editorObject(const std::string &auth_name, const std::string &auth_email){
         E_obj.emplace(auth_name, auth_email);
     }
-    ~editorObject();
+
+    ~editorObject() = default;
 };

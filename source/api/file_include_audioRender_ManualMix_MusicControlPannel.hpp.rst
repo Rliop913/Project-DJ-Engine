@@ -42,11 +42,11 @@ Included By
 -----------
 
 
+- :ref:`file_include_MainObjects_audioPlayer_audioCallbacks.hpp`
+
+- :ref:`file_include_MainObjects_audioPlayer_audioPlayer.cpp`
+
 - :ref:`file_include_audioRender_ManualMix_MusicControlPannel.cpp`
-
-- :ref:`file_include_players_audioPlayer_audioCallbacks.hpp`
-
-- :ref:`file_include_players_audioPlayer_audioPlayer.cpp`
 
 
 

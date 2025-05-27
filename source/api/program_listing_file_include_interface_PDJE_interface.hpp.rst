@@ -15,6 +15,8 @@ Program Listing for File PDJE_interface.hpp
    #include "audioPlayer.hpp"
    #include "dbRoot.hpp"
    #include "NoteTranslator.hpp"
+   #include "editorObject.hpp"
+   
    enum PLAY_MODE{
        FULL_PRE_RENDER,
        HYBRID_RENDER,
@@ -28,12 +30,20 @@ Program Listing for File PDJE_interface.hpp
        ~PDJE() = default;
        
        std::optional<audioPlayer> player;
-   
+       std::optional<editorObject> editor;
        bool
        InitPlayer(
            PLAY_MODE mode, 
            trackdata& td, 
            const unsigned int FrameBufferSize);
+   
+   
+       bool
+       InitEditor(
+           const std::string &auth_name, 
+           const std::string &auth_email,
+           const std::string& projectRoot
+       );
        bool
        GetNoteObjects(
            trackdata& td,

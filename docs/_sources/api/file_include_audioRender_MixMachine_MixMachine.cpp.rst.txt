@@ -30,9 +30,18 @@ Includes
 --------
 
 
+- ``MixMachine-inl.h`` (:ref:`file_include_audioRender_MixMachine_MixMachine-inl.h`)
+
 - ``MixMachine.hpp`` (:ref:`file_include_audioRender_MixMachine_MixMachine.hpp`)
 
 
 
 
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_MixMachine_8cpp_1a2cf5e4fd933ff187fc184934669cb42d`
 

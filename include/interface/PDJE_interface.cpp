@@ -118,3 +118,14 @@ PDJE::GetNoteObjects(
     return true;
 
 }
+
+
+bool
+PDJE::InitEditor(
+    const std::string &auth_name, 
+    const std::string &auth_email,
+    const std::string& projectRoot)
+{
+    editor.emplace(auth_name, auth_email);
+    return editor->Open(projectRoot);
+}

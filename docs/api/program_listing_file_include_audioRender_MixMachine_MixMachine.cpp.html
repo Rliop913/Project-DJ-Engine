@@ -81,6 +81,7 @@
 <p>↰ <a class="reference internal" href="file_include_audioRender_MixMachine_MixMachine.cpp.html#file-include-audiorender-mixmachine-mixmachine-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/audioRender/MixMachine/MixMachine.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MixMachine.hpp&quot;</span>
 
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MixMachine-inl.h&quot;</span>
 
 <span class="n">MixMachine</span><span class="o">::</span><span class="n">MixMachine</span><span class="p">()</span>
 <span class="p">{</span>
@@ -112,8 +113,10 @@
 <span class="p">}</span>
 
 
+<span class="n">HWY_EXPORT</span><span class="p">(</span><span class="n">INTEGRATE_PCM_SIMD</span><span class="p">);</span>
+
 <span class="kt">bool</span>
-<span class="n">MixMachine</span><span class="o">::</span><span class="n">mix</span><span class="p">(</span><span class="n">litedb</span><span class="o">&amp;</span><span class="w"> </span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BPM</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bpms</span><span class="p">)</span>
+<span class="nf">MixMachine::mix</span><span class="p">(</span><span class="n">litedb</span><span class="o">&amp;</span><span class="w"> </span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BPM</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bpms</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">num_threads</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Memorized</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
 <span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="o">:</span><span class="w"> </span><span class="n">Memorized</span><span class="p">){</span>
@@ -208,41 +211,38 @@
 <span class="w">                </span><span class="k">return</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="n">FX</span><span class="o">-&gt;</span><span class="n">consumeAll</span><span class="p">();</span>
-<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">hn</span><span class="o">::</span><span class="n">ScalableTag</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hwyFTag</span><span class="p">;</span>
-<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">laneSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hn</span><span class="o">::</span><span class="n">Lanes</span><span class="p">(</span><span class="n">hwyFTag</span><span class="p">);</span>
-<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tempVec</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">laneSize</span><span class="p">;</span>
-<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">remained</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tempVec</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">laneSize</span><span class="p">;</span>
 
-<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">Tptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tempVec</span><span class="p">.</span><span class="n">data</span><span class="p">();</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">locks</span><span class="p">(</span><span class="n">renderLock</span><span class="p">);</span>
-<span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">rendered_out</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">MC</span><span class="o">-&gt;</span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">Gidx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CHANNEL</span><span class="p">)){</span>
-<span class="w">                    </span><span class="n">rendered_out</span><span class="p">.</span><span class="n">resize</span><span class="p">((</span><span class="n">MC</span><span class="o">-&gt;</span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">Gidx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CHANNEL</span><span class="p">));</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">                </span><span class="k">auto</span><span class="w"> </span><span class="n">Rptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rendered_out</span><span class="p">.</span><span class="n">data</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">MC</span><span class="o">-&gt;</span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">front</span><span class="p">().</span><span class="n">Gidx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CHANNEL</span><span class="p">);</span>
+<span class="w">            </span><span class="n">HWY_DYNAMIC_DISPATCH</span><span class="p">(</span><span class="n">INTEGRATE_PCM_SIMD</span><span class="p">)(</span>
+<span class="w">                </span><span class="n">tempVec</span><span class="p">,</span>
+<span class="w">                </span><span class="n">renderLock</span><span class="p">,</span>
+<span class="w">                </span><span class="n">rendered_out</span><span class="p">,</span>
+<span class="w">                </span><span class="n">MC</span>
+<span class="w">            </span><span class="p">);</span>
 
-<span class="w">                </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">times</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">L</span><span class="p">){</span>
-<span class="w">                    </span><span class="k">auto</span><span class="w"> </span><span class="n">Tsimd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hn</span><span class="o">::</span><span class="n">Load</span><span class="p">(</span><span class="n">hwyFTag</span><span class="p">,</span><span class="w"> </span><span class="n">Tptr</span><span class="p">);</span>
-<span class="w">                    </span><span class="k">auto</span><span class="w"> </span><span class="n">Rsimd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hn</span><span class="o">::</span><span class="n">LoadU</span><span class="p">(</span><span class="n">hwyFTag</span><span class="p">,</span><span class="w"> </span><span class="n">Rptr</span><span class="p">);</span>
-<span class="w">                    </span><span class="n">hn</span><span class="o">::</span><span class="n">StoreU</span><span class="p">(</span><span class="n">Rsimd</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Tsimd</span><span class="p">,</span><span class="w"> </span><span class="n">hwyFTag</span><span class="p">,</span><span class="w"> </span><span class="n">Rptr</span><span class="p">);</span>
-<span class="w">                    </span><span class="n">Tptr</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">laneSize</span><span class="p">;</span>
-<span class="w">                    </span><span class="n">Rptr</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">laneSize</span><span class="p">;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">                </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">REM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">REM</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">remained</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">REM</span><span class="p">){</span>
-<span class="w">                    </span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">Rptr</span><span class="o">++</span><span class="p">))</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">Tptr</span><span class="o">++</span><span class="p">));</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="c1">// PFloat = result.value()-&gt;data();</span>
+<span class="w">            </span><span class="c1">// const hn::ScalableTag&lt;float&gt; hwyFTag;</span>
+<span class="w">            </span><span class="c1">// auto laneSize = hn::Lanes(hwyFTag);</span>
+<span class="w">            </span><span class="c1">// auto times = tempVec.size() / laneSize;</span>
+<span class="w">            </span><span class="c1">// auto remained = tempVec.size() % laneSize;</span>
 
-<span class="w">            </span><span class="c1">// for(unsigned long q = MC-&gt;QDatas.pos.front().Gidx;</span>
-<span class="w">            </span><span class="c1">//     q &lt; (MC-&gt;QDatas.pos.back().Gidx - MC-&gt;QDatas.pos.front().Gidx) * CHANNEL;</span>
-<span class="w">            </span><span class="c1">//         ++q){</span>
+<span class="w">            </span><span class="c1">// auto Tptr = tempVec.data();</span>
+<span class="w">            </span><span class="c1">// {</span>
+<span class="w">            </span><span class="c1">//     std::lock_guard&lt;std::mutex&gt; locks(renderLock);</span>
+<span class="w">            </span><span class="c1">//     if(rendered_out.size() &lt; (MC-&gt;QDatas.pos.back().Gidx * CHANNEL)){</span>
+<span class="w">            </span><span class="c1">//         rendered_out.resize((MC-&gt;QDatas.pos.back().Gidx * CHANNEL));</span>
+<span class="w">            </span><span class="c1">//     }</span>
+<span class="w">            </span><span class="c1">//     auto Rptr = rendered_out.data() + (MC-&gt;QDatas.pos.front().Gidx * CHANNEL);</span>
 
-<span class="w">            </span><span class="c1">//     (*Rptr) += (*Tptr);</span>
-<span class="w">            </span><span class="c1">//     ++Rptr;</span>
-<span class="w">            </span><span class="c1">//     ++Tptr;</span>
+<span class="w">            </span><span class="c1">//     for(size_t L = 0; L &lt; times; ++L){</span>
+<span class="w">            </span><span class="c1">//         auto Tsimd = hn::Load(hwyFTag, Tptr);</span>
+<span class="w">            </span><span class="c1">//         auto Rsimd = hn::LoadU(hwyFTag, Rptr);</span>
+<span class="w">            </span><span class="c1">//         hn::StoreU(Rsimd + Tsimd, hwyFTag, Rptr);</span>
+<span class="w">            </span><span class="c1">//         Tptr += laneSize;</span>
+<span class="w">            </span><span class="c1">//         Rptr += laneSize;</span>
+<span class="w">            </span><span class="c1">//     }</span>
+<span class="w">            </span><span class="c1">//     for(size_t REM = 0; REM &lt; remained; ++REM){</span>
+<span class="w">            </span><span class="c1">//         (*(Rptr++)) += (*(Tptr++));</span>
+<span class="w">            </span><span class="c1">//     }</span>
 <span class="w">            </span><span class="c1">// }</span>
-
 <span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="n">MC</span><span class="p">;</span>
 <span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="n">DJ</span><span class="p">;</span>
 <span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="n">FX</span><span class="p">;</span>

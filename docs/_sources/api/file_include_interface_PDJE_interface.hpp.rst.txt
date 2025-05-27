@@ -32,9 +32,11 @@ Includes
 
 - ``NoteTranslator.hpp`` (:ref:`file_include_db_Capnp_Translators_NoteTranslator_NoteTranslator.hpp`)
 
-- ``audioPlayer.hpp`` (:ref:`file_include_players_audioPlayer_audioPlayer.hpp`)
+- ``audioPlayer.hpp`` (:ref:`file_include_MainObjects_audioPlayer_audioPlayer.hpp`)
 
 - ``dbRoot.hpp`` (:ref:`file_include_db_dbRoot.hpp`)
+
+- ``editorObject.hpp`` (:ref:`file_include_MainObjects_editorObject_editorObject.hpp`)
 
 
 

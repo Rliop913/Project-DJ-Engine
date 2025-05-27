@@ -45,7 +45,7 @@ Program Listing for File trackDB.cpp
        dbstate.placeHold
        =
        "SELECT * FROM TRACK "
-       "WHERE (? = -1 OR TrackTitle = ?)"
+       "WHERE (? = -1 OR TrackTitle = ?);"
        ;
        if(!dbstate.activate(db)){
            return false;
@@ -79,4 +79,43 @@ Program Listing for File trackDB.cpp
        CHK_BIND( dbstate.bind_text(4, cachedMixList));
        return true;
    }
+   
+   
+   bool
+   trackdata::GenEditSTMT(stmt& dbstate, sqlite3* db, trackdata& toEdit)
+   {
+       dbstate.placeHold
+       =
+       "UPDATE TRACK "
+       "SET TrackTitle = ?, MixBinary = ?, NoteBinary = ?, CachedMixList = ? "
+       "WHERE TrackTitle = ?; ";
+   
+       if(!dbstate.activate(db)) return false;
+       
+       CHK_BIND(dbstate.bind_text  (1, toEdit.trackTitle   ))
+       CHK_BIND(dbstate.bind_blob  (2, toEdit.mixBinary    ))
+       CHK_BIND(dbstate.bind_blob  (3, toEdit.noteBinary   ))
+       CHK_BIND(dbstate.bind_text  (4, toEdit.cachedMixList))
+       CHK_BIND(dbstate.bind_text  (5, trackTitle          ))
+       
+       return true;
+   
+   }
+   
+   
+   bool 
+   trackdata::GenDeleteSTMT(stmt& dbstate, sqlite3* db)
+   {
+       dbstate.placeHold
+       =
+       "DELETE FROM TRACK "
+       "WHERE TrackTitle = ?; ";
+   
+       if(!dbstate.activate(db)) return false;
+   
+       CHK_BIND(dbstate.bind_text(1, trackTitle))
+       
+       return true;
+   }
+   
    #undef CHK_BIND

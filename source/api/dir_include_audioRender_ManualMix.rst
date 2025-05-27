@@ -23,6 +23,7 @@ Files
 
 - :ref:`file_include_audioRender_ManualMix_ManualMix.cpp`
 - :ref:`file_include_audioRender_ManualMix_ManualMix.hpp`
+- :ref:`file_include_audioRender_ManualMix_MusicControlPannel-inl.h`
 - :ref:`file_include_audioRender_ManualMix_MusicControlPannel.cpp`
 - :ref:`file_include_audioRender_ManualMix_MusicControlPannel.hpp`
 

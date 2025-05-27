@@ -6,6 +6,16 @@ Class PDJE_Editor
 - Defined in :ref:`file_include_editor_editor.hpp`
 
 
+Nested Relationships
+--------------------
+
+
+Nested Types
+************
+
+- :ref:`exhale_struct_structPDJE__Editor_1_1MusicHandleStruct`
+
+
 Class Documentation
 -------------------
 

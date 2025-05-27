@@ -4,45 +4,66 @@
     <compoundname>PDJE_GitHandler</compoundname>
     <includes refid="gitWrapper_8hpp" local="no">gitWrapper.hpp</includes>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classPDJE__GitHandler_1a0971c4889740739936becfed9188dec1" prot="private" static="no" mutable="no">
-        <type>std::optional&lt; git_repository * &gt;</type>
-        <definition>std::optional&lt;git_repository*&gt; PDJE_GitHandler::repo</definition>
+      <memberdef kind="variable" id="classPDJE__GitHandler_1a573108359308758dd72f5b201547b837" prot="private" static="no" mutable="no">
+        <type>git_signature *</type>
+        <definition>git_signature* PDJE_GitHandler::sign</definition>
         <argsstring></argsstring>
-        <name>repo</name>
-        <qualifiedname>PDJE_GitHandler::repo</qualifiedname>
+        <name>sign</name>
+        <qualifiedname>PDJE_GitHandler::sign</qualifiedname>
+        <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/gitWrapper/gitWrapper.hpp" line="13" column="19" bodyfile="include/editor/gitWrapper/gitWrapper.hpp" bodystart="13" bodyend="-1"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="64" column="19" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classPDJE__GitHandler_1af428b6dd839a6082bbe8d60e1dae2041" prot="private" static="no" mutable="no">
-        <type>std::optional&lt; git_index * &gt;</type>
-        <definition>std::optional&lt;git_index*&gt; PDJE_GitHandler::idx</definition>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classPDJE__GitHandler_1a9cbef27a4644c72e1f6fae60d6884a14" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string PDJE_GitHandler::RecentERR</definition>
         <argsstring></argsstring>
-        <name>idx</name>
-        <qualifiedname>PDJE_GitHandler::idx</qualifiedname>
+        <name>RecentERR</name>
+        <qualifiedname>PDJE_GitHandler::RecentERR</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/gitWrapper/gitWrapper.hpp" line="14" column="19" bodyfile="include/editor/gitWrapper/gitWrapper.hpp" bodystart="14" bodyend="-1"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="66" column="17" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__GitHandler_1afca3dc1b7559cebe370a5376f53d780a" prot="public" static="no" mutable="no">
+        <type><ref refid="classGitWrapper" kindref="compound">GitWrapper</ref></type>
+        <definition>GitWrapper PDJE_GitHandler::gw</definition>
+        <argsstring></argsstring>
+        <name>gw</name>
+        <qualifiedname>PDJE_GitHandler::gw</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="67" column="16" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classPDJE__GitHandler_1abbee67735abe1c520161b8188c9a25ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__GitHandler_1a24c25b540b2d6f9ef29dc0126b1fee29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool PDJE_GitHandler::Save</definition>
-        <argsstring>(const std::string &amp;tracingFile)</argsstring>
+        <argsstring>(const std::string &amp;tracingFile, const std::string &amp;timeStamp)</argsstring>
         <name>Save</name>
         <qualifiedname>PDJE_GitHandler::Save</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>tracingFile</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>timeStamp</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -50,49 +71,125 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/gitWrapper/gitWrapper.hpp" line="17" column="10" bodyfile="include/editor/gitWrapper/gitWrapper.cpp" bodystart="66" bodyend="85"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="69" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="52" bodyend="64"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__GitHandler_1a4b0d7588fc6fe07dd5a3f9229f12aca3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__GitHandler_1a5b61f3181d549700a51b3626487d76d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
-        <definition>bool PDJE_GitHandler::Checkout</definition>
+        <definition>bool PDJE_GitHandler::Undo</definition>
         <argsstring>()</argsstring>
-        <name>Checkout</name>
-        <qualifiedname>PDJE_GitHandler::Checkout</qualifiedname>
+        <name>Undo</name>
+        <qualifiedname>PDJE_GitHandler::Undo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/gitWrapper/gitWrapper.hpp" line="18" column="10"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="70" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="67" bodyend="100"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__GitHandler_1a90c7420e08c996ee869427feba8f23a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__GitHandler_1a57ebdca70061f87ec7514cb475892eba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_GitHandler::Redo</definition>
+        <argsstring>()</argsstring>
+        <name>Redo</name>
+        <qualifiedname>PDJE_GitHandler::Redo</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="71" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="103" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__GitHandler_1a57628c3fd9705301a5e209399a57e7d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_GitHandler::Go</definition>
+        <argsstring>(const std::string &amp;branchName, git_oid *commitID)</argsstring>
+        <name>Go</name>
+        <qualifiedname>PDJE_GitHandler::Go</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>branchName</declname>
+        </param>
+        <param>
+          <type>git_oid *</type>
+          <declname>commitID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="74" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="170" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__GitHandler_1ac3d8d5c1c60e88103a39cddb8e8b1591" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
-        <definition>std::string PDJE_GitHandler::GetLogWithMermaidGraph</definition>
+        <definition>std::string PDJE_GitHandler::GetLogWithJSONGraph</definition>
         <argsstring>()</argsstring>
-        <name>GetLogWithMermaidGraph</name>
-        <qualifiedname>PDJE_GitHandler::GetLogWithMermaidGraph</qualifiedname>
+        <name>GetLogWithJSONGraph</name>
+        <qualifiedname>PDJE_GitHandler::GetLogWithJSONGraph</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/gitWrapper/gitWrapper.hpp" line="19" column="17"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="75" column="17" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="148" bodyend="167"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__GitHandler_1ac8e9c51cbfc07045d10439c95430f705" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__GitHandler_1a4a7a0b3a868e1f4b7e00e8eaa877bc7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
-        <definition>bool PDJE_GitHandler::GetDiff</definition>
+        <definition>bool PDJE_GitHandler::UpdateLog</definition>
         <argsstring>()</argsstring>
+        <name>UpdateLog</name>
+        <qualifiedname>PDJE_GitHandler::UpdateLog</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="76" column="10" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="76" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__GitHandler_1ad425a11ce89a9a423222e9fedd9bbf59" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_GitHandler::UpdateLog</definition>
+        <argsstring>(const std::string &amp;branchName)</argsstring>
+        <name>UpdateLog</name>
+        <qualifiedname>PDJE_GitHandler::UpdateLog</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>branchName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="79" column="10" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="79" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__GitHandler_1a2af26b1d24cf2a5b97764c629380fba9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structDiffResult" kindref="compound">DiffResult</ref></type>
+        <definition>DiffResult PDJE_GitHandler::GetDiff</definition>
+        <argsstring>(const gitwrap::commit &amp;oldTimeStamp, const gitwrap::commit &amp;newTimeStamp)</argsstring>
         <name>GetDiff</name>
         <qualifiedname>PDJE_GitHandler::GetDiff</qualifiedname>
+        <param>
+          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
+          <declname>oldTimeStamp</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
+          <declname>newTimeStamp</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/gitWrapper/gitWrapper.hpp" line="20" column="10"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="83" column="16" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="137" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1adb7d3025ed1fdfbc94b64f1e640575f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -110,7 +207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/gitWrapper/gitWrapper.hpp" line="22" column="10" bodyfile="include/editor/gitWrapper/gitWrapper.cpp" bodystart="40" bodyend="51"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="85" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="30" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1a5fec5716874a70cce2f53ab08fdb4f7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -128,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/gitWrapper/gitWrapper.hpp" line="23" column="10" bodyfile="include/editor/gitWrapper/gitWrapper.cpp" bodystart="20" bodyend="37"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="86" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="24" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1aff50df952a46b5663341b6161d72ae2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -142,21 +239,29 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/gitWrapper/gitWrapper.hpp" line="24" column="10" bodyfile="include/editor/gitWrapper/gitWrapper.cpp" bodystart="55" bodyend="62"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="87" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="45" bodyend="48"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__GitHandler_1a72040e87b8bc613636de4d55b9aef8d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__GitHandler_1a5ff4e3a3248ecf88c2a1baad8f6a676a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>PDJE_GitHandler::PDJE_GitHandler</definition>
-        <argsstring>()</argsstring>
+        <argsstring>(const std::string &amp;auth_name, const std::string &amp;auth_email)</argsstring>
         <name>PDJE_GitHandler</name>
         <qualifiedname>PDJE_GitHandler::PDJE_GitHandler</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>auth_name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>auth_email</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/gitWrapper/gitWrapper.hpp" line="28" column="5" bodyfile="include/editor/gitWrapper/gitWrapper.cpp" bodystart="4" bodyend="7"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="91" column="5" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="11" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1a515cab8812e778b2f11a3565178f9977" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -170,25 +275,54 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/gitWrapper/gitWrapper.hpp" line="29" column="5" bodyfile="include/editor/gitWrapper/gitWrapper.cpp" bodystart="9" bodyend="16"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="92" column="5" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="17" bodyend="20"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/editor/gitWrapper/gitWrapper.hpp" line="11" column="1" bodyfile="include/editor/gitWrapper/gitWrapper.hpp" bodystart="11" bodyend="31"/>
+    <collaborationgraph>
+      <node id="4">
+        <label>GitWrapper</label>
+        <link refid="classGitWrapper"/>
+      </node>
+      <node id="1">
+        <label>PDJE_GitHandler</label>
+        <link refid="classPDJE__GitHandler"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>RecentERR</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>gw</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="62" column="1" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="62" bodyend="94"/>
     <listofallmembers>
-      <member refid="classPDJE__GitHandler_1a4b0d7588fc6fe07dd5a3f9229f12aca3" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>Checkout</name></member>
       <member refid="classPDJE__GitHandler_1aff50df952a46b5663341b6161d72ae2c" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>Close</name></member>
       <member refid="classPDJE__GitHandler_1adb7d3025ed1fdfbc94b64f1e640575f5" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>DeleteGIT</name></member>
-      <member refid="classPDJE__GitHandler_1ac8e9c51cbfc07045d10439c95430f705" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>GetDiff</name></member>
-      <member refid="classPDJE__GitHandler_1a90c7420e08c996ee869427feba8f23a1" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>GetLogWithMermaidGraph</name></member>
-      <member refid="classPDJE__GitHandler_1af428b6dd839a6082bbe8d60e1dae2041" prot="private" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>idx</name></member>
+      <member refid="classPDJE__GitHandler_1a2af26b1d24cf2a5b97764c629380fba9" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>GetDiff</name></member>
+      <member refid="classPDJE__GitHandler_1ac3d8d5c1c60e88103a39cddb8e8b1591" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>GetLogWithJSONGraph</name></member>
+      <member refid="classPDJE__GitHandler_1a57628c3fd9705301a5e209399a57e7d9" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>Go</name></member>
+      <member refid="classPDJE__GitHandler_1afca3dc1b7559cebe370a5376f53d780a" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>gw</name></member>
       <member refid="classPDJE__GitHandler_1a5fec5716874a70cce2f53ab08fdb4f7d" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>Open</name></member>
-      <member refid="classPDJE__GitHandler_1a72040e87b8bc613636de4d55b9aef8d7" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>PDJE_GitHandler</name></member>
-      <member refid="classPDJE__GitHandler_1a0971c4889740739936becfed9188dec1" prot="private" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>repo</name></member>
-      <member refid="classPDJE__GitHandler_1abbee67735abe1c520161b8188c9a25ed" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>Save</name></member>
+      <member refid="classPDJE__GitHandler_1a5ff4e3a3248ecf88c2a1baad8f6a676a" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>PDJE_GitHandler</name></member>
+      <member refid="classPDJE__GitHandler_1a9cbef27a4644c72e1f6fae60d6884a14" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>RecentERR</name></member>
+      <member refid="classPDJE__GitHandler_1a57ebdca70061f87ec7514cb475892eba" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>Redo</name></member>
+      <member refid="classPDJE__GitHandler_1a24c25b540b2d6f9ef29dc0126b1fee29" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>Save</name></member>
+      <member refid="classPDJE__GitHandler_1a573108359308758dd72f5b201547b837" prot="private" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>sign</name></member>
+      <member refid="classPDJE__GitHandler_1a5b61f3181d549700a51b3626487d76d0" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>Undo</name></member>
+      <member refid="classPDJE__GitHandler_1a4a7a0b3a868e1f4b7e00e8eaa877bc7a" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>UpdateLog</name></member>
+      <member refid="classPDJE__GitHandler_1ad425a11ce89a9a423222e9fedd9bbf59" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>UpdateLog</name></member>
       <member refid="classPDJE__GitHandler_1a515cab8812e778b2f11a3565178f9977" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>~PDJE_GitHandler</name></member>
     </listofallmembers>
   </compounddef>

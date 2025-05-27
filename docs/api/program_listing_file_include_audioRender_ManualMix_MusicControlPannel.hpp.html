@@ -87,11 +87,18 @@
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ManualMix.hpp&quot;</span>
 
-
+<span class="c1">// #undef HWY_TARGET_INCLUDE</span>
+<span class="c1">// #define HWY_TARGET_INCLUDE &quot;MusicControlPannel-inl.h&quot;</span>
+<span class="c1">// #include &quot;hwy/foreach_target.h&quot;</span>
+<span class="c1">// #include &lt;hwy/highway.h&gt;</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">TITLE</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">LOADED_LIST</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">TITLE</span><span class="o">&gt;</span><span class="p">;</span>
+
+
+
+
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">MusicOnDeck</span><span class="p">{</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">play</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
@@ -106,8 +113,8 @@
 <span class="p">};</span>
 
 
-<span class="k">using</span><span class="w"> </span><span class="n">LOADS</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">TITLE</span><span class="p">,</span><span class="w"> </span><span class="n">MusicOnDeck</span><span class="o">&gt;</span><span class="p">;</span>
 
+<span class="k">using</span><span class="w"> </span><span class="n">LOADS</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">TITLE</span><span class="p">,</span><span class="w"> </span><span class="n">MusicOnDeck</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">MusicControlPannel</span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
@@ -137,6 +144,69 @@
 <span class="w">    </span><span class="o">~</span><span class="n">MusicControlPannel</span><span class="p">();</span>
 
 <span class="p">};</span>
+
+
+<span class="c1">// HWY_BEFORE_NAMESPACE();</span>
+
+<span class="c1">// namespace hwy{</span>
+<span class="c1">// namespace HWY_NAMESPACE {</span>
+
+<span class="c1">// bool</span>
+<span class="c1">// GetPCMFramesSIMD(</span>
+<span class="c1">//     SIMD_FLOAT&amp; tempFrames,</span>
+<span class="c1">//     std::vector&lt;float&gt;&amp; L,</span>
+<span class="c1">//     std::vector&lt;float&gt;&amp; R,</span>
+<span class="c1">//     float** FaustStyle,</span>
+<span class="c1">//     LOADS&amp; deck,</span>
+<span class="c1">//     float* array,</span>
+<span class="c1">//     const unsigned long FrameSize)</span>
+<span class="c1">// {</span>
+<span class="c1">//     const unsigned long long RAWFrameSize = FrameSize * CHANNEL;</span>
+
+<span class="c1">//     tempFrames.resize(RAWFrameSize);</span>
+<span class="c1">//     L.resize(FrameSize);</span>
+<span class="c1">//     R.resize(FrameSize);</span>
+<span class="c1">//     FaustStyle[0] = L.data();</span>
+<span class="c1">//     FaustStyle[1] = R.data();</span>
+<span class="c1">//     const hn::ScalableTag&lt;float&gt; hwyFTag;</span>
+<span class="c1">//     auto laneSize = hn::Lanes(hwyFTag);</span>
+<span class="c1">//     auto times = RAWFrameSize / laneSize;</span>
+<span class="c1">//     auto remained = RAWFrameSize % laneSize;</span>
+
+<span class="c1">//     for(auto&amp; i : deck){</span>
+<span class="c1">//         if(i.second.play){</span>
+
+<span class="c1">//             if(ma_decoder_read_pcm_frames(&amp;i.second.dec, tempFrames.data(), FrameSize, NULL) != MA_SUCCESS){</span>
+<span class="c1">//                 return false;</span>
+<span class="c1">//             }</span>
+<span class="c1">//             toFaustStylePCM(FaustStyle, tempFrames.data(), FrameSize);</span>
+<span class="c1">//             i.second.fxP-&gt;addFX(FaustStyle, FrameSize);</span>
+<span class="c1">//             toLRStylePCM(FaustStyle, tempFrames.data(), FrameSize);</span>
+
+<span class="c1">//             float* opoint = array;</span>
+<span class="c1">//             float* tpoint = tempFrames.data();</span>
+
+<span class="c1">//             for(size_t j = 0; j &lt; times; ++j){</span>
+<span class="c1">//                 auto simdtemp = hn::Load(hwyFTag, tpoint);</span>
+<span class="c1">//                 auto simdorigin = hn::LoadU(hwyFTag, opoint);</span>
+<span class="c1">//                 auto res = simdtemp + simdorigin;</span>
+<span class="c1">//                 hn::StoreU(res, hwyFTag, opoint);</span>
+<span class="c1">//                 opoint += laneSize;</span>
+<span class="c1">//                 tpoint += laneSize;</span>
+<span class="c1">//             }</span>
+
+<span class="c1">//             for(size_t j=0; j&lt;remained; ++j){</span>
+<span class="c1">//                 (*(opoint++)) += (*(tpoint++));</span>
+<span class="c1">//             }</span>
+<span class="c1">//         }</span>
+<span class="c1">//     }</span>
+<span class="c1">//     return true;</span>
+<span class="c1">// }</span>
+<span class="c1">// }</span>
+<span class="c1">// }</span>
+
+
+<span class="c1">// HWY_AFTER_NAMESPACE();</span>
 </pre></div>
 </div>
 </section>

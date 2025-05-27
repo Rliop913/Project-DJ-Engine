@@ -38,13 +38,13 @@ Includes
 
 - ``hwy/aligned_allocator.h``
 
-- ``hwy/highway.h``
-
 
 
 Included By
 -----------
 
+
+- :ref:`file_include_MainObjects_audioPlayer_audioCallbacks.cpp`
 
 - :ref:`file_include_audioRender_ManualMix_ManualMix.hpp`
 
@@ -61,8 +61,6 @@ Included By
 - :ref:`file_include_db_Capnp_Translators_MusicTranslator_MusicTranslator.hpp`
 
 - :ref:`file_include_db_Capnp_Translators_NoteTranslator_NoteTranslator.hpp`
-
-- :ref:`file_include_players_audioPlayer_audioCallbacks.cpp`
 
 
 

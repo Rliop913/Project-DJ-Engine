@@ -64,7 +64,7 @@ public:
     
     /// this is the music handler. you can play music, stop music, fx control, play/stop music manually in realtime.
     std::optional<audioPlayer> player;
-
+    std::optional<editorObject> editor;
     /**
      * @brief this inits the music handler. the music handler called a "player"
      * it initializes the player
@@ -79,6 +79,14 @@ public:
         PLAY_MODE mode, 
         trackdata& td, 
         const unsigned int FrameBufferSize);
+
+
+    bool
+    InitEditor(
+        const std::string &auth_name, 
+        const std::string &auth_email,
+        const std::string& projectRoot
+    );
     /**
      * @brief Parse Note data and calls received function.
      * this function parse the note datas in the database.

@@ -54,4 +54,8 @@ public:
      * @return false 
      */
     bool GenInsertSTMT(stmt& dbstate, sqlite3* db);
+
+    bool GenEditSTMT(stmt& dbstate, sqlite3* db, trackdata& toEdit);
+
+    bool GenDeleteSTMT(stmt& dbstate, sqlite3* db);
 };

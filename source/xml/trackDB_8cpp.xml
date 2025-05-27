@@ -96,7 +96,7 @@ return false;\
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>dbstate.<ref refid="structstmt_1ad512ebd1df9861c0bbe6cfd926735ae2" kindref="member">placeHold</ref></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>=</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SELECT<sp/>*<sp/>FROM<sp/>TRACK<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;WHERE<sp/>(?<sp/>=<sp/>-1<sp/>OR<sp/>TrackTitle<sp/>=<sp/>?)&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;WHERE<sp/>(?<sp/>=<sp/>-1<sp/>OR<sp/>TrackTitle<sp/>=<sp/>?);&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>;</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!dbstate.<ref refid="structstmt_1aa9f4add1e0445a7b42b3c32bf67b079e" kindref="member">activate</ref>(db)){</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -130,7 +130,46 @@ return false;\
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(<sp/>dbstate.<ref refid="structstmt_1a8b600e889c67c992fa67733c0fd9b5e2" kindref="member">bind_text</ref>(4,<sp/><ref refid="structtrackdata_1a840062435bf79055fcebf7aee80ae8e9" kindref="member">cachedMixList</ref>));</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHK_BIND</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="structtrackdata_1a12a001e6ec36d4098ebcc21c732c8434" refkind="member"><highlight class="normal"><ref refid="structtrackdata_1a12a001e6ec36d4098ebcc21c732c8434" kindref="member">trackdata::GenEditSTMT</ref>(<ref refid="structstmt" kindref="compound">stmt</ref>&amp;<sp/>dbstate,<sp/>sqlite3*<sp/>db,<sp/><ref refid="structtrackdata_1ad6d055f069e5dc899f7777a4f95ce001" kindref="member">trackdata</ref>&amp;<sp/>toEdit)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>dbstate.<ref refid="structstmt_1ad512ebd1df9861c0bbe6cfd926735ae2" kindref="member">placeHold</ref></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>=</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;UPDATE<sp/>TRACK<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SET<sp/>TrackTitle<sp/>=<sp/>?,<sp/>MixBinary<sp/>=<sp/>?,<sp/>NoteBinary<sp/>=<sp/>?,<sp/>CachedMixList<sp/>=<sp/>?<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;WHERE<sp/>TrackTitle<sp/>=<sp/>?;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!dbstate.<ref refid="structstmt_1aa9f4add1e0445a7b42b3c32bf67b079e" kindref="member">activate</ref>(db))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1a8b600e889c67c992fa67733c0fd9b5e2" kindref="member">bind_text</ref><sp/><sp/>(1,<sp/>toEdit.<ref refid="structtrackdata_1ad884b99bc7256d0efa79bb887638ace9" kindref="member">trackTitle</ref><sp/><sp/><sp/>))</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1a21b8975846c4d970c14ac5dd26091ddf" kindref="member">bind_blob</ref><sp/><sp/>(2,<sp/>toEdit.<ref refid="structtrackdata_1a155e25ae9bef854aa3441d9702082ac3" kindref="member">mixBinary</ref><sp/><sp/><sp/><sp/>))</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1a21b8975846c4d970c14ac5dd26091ddf" kindref="member">bind_blob</ref><sp/><sp/>(3,<sp/>toEdit.<ref refid="structtrackdata_1a0a2f02219cfb3b6f5e988fec61c37e7a" kindref="member">noteBinary</ref><sp/><sp/><sp/>))</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1a8b600e889c67c992fa67733c0fd9b5e2" kindref="member">bind_text</ref><sp/><sp/>(4,<sp/>toEdit.<ref refid="structtrackdata_1a840062435bf79055fcebf7aee80ae8e9" kindref="member">cachedMixList</ref>))</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1a8b600e889c67c992fa67733c0fd9b5e2" kindref="member">bind_text</ref><sp/><sp/>(5,<sp/><ref refid="structtrackdata_1ad884b99bc7256d0efa79bb887638ace9" kindref="member">trackTitle</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>))</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="95" refid="structtrackdata_1aea2673a94960b6ee2fcbc7b539c42de8" refkind="member"><highlight class="normal"><ref refid="structtrackdata_1aea2673a94960b6ee2fcbc7b539c42de8" kindref="member">trackdata::GenDeleteSTMT</ref>(<ref refid="structstmt" kindref="compound">stmt</ref>&amp;<sp/>dbstate,<sp/>sqlite3*<sp/>db)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>dbstate.<ref refid="structstmt_1ad512ebd1df9861c0bbe6cfd926735ae2" kindref="member">placeHold</ref></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>=</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;DELETE<sp/>FROM<sp/>TRACK<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;WHERE<sp/>TrackTitle<sp/>=<sp/>?;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!dbstate.<ref refid="structstmt_1aa9f4add1e0445a7b42b3c32bf67b079e" kindref="member">activate</ref>(db))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1a8b600e889c67c992fa67733c0fd9b5e2" kindref="member">bind_text</ref>(1,<sp/><ref refid="structtrackdata_1ad884b99bc7256d0efa79bb887638ace9" kindref="member">trackTitle</ref>))</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHK_BIND</highlight></codeline>
     </programlisting>
     <location file="include/db/trackDB.cpp"/>
   </compounddef>

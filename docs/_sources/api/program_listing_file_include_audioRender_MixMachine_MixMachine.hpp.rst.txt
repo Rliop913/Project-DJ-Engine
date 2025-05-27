@@ -36,6 +36,9 @@ Program Listing for File MixMachine.hpp
        return false;\
    }
    
+   
+   
+   
    enum InterpolateType{
        LINEAR,
        COSINE,

@@ -29,6 +29,7 @@ ${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/getlogwithjsongraph.cpp
 ${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/getall.cpp
 ${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/go.cpp
 ${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/getdiff.cpp
+${CMAKE_SOURCE_DIR}/include/MainObjects/editorObject/editorObject.cpp
 
 ${CMAKE_SOURCE_DIR}/include/MainObjects/tempDBObject/tempDB.cpp
 

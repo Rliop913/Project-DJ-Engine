@@ -32,4 +32,8 @@ Program Listing for File trackDB.hpp
        bool GenSearchSTMT(stmt& dbstate, sqlite3* db);
    
        bool GenInsertSTMT(stmt& dbstate, sqlite3* db);
+   
+       bool GenEditSTMT(stmt& dbstate, sqlite3* db, trackdata& toEdit);
+   
+       bool GenDeleteSTMT(stmt& dbstate, sqlite3* db);
    };

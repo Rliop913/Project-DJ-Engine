@@ -15,12 +15,13 @@ Directory editor
 Subdirectories
 --------------
 
-- :ref:`dir_include_editor_gitWrapper`
+- :ref:`dir_include_editor_featureWrapper`
 
 
 Files
 -----
 
+- :ref:`file_include_editor_editor.cpp`
 - :ref:`file_include_editor_editor.hpp`
 
 

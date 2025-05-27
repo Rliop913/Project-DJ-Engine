@@ -199,6 +199,17 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 
 <span class="p">}</span>
+
+
+<span class="kt">bool</span>
+<span class="n">PDJE</span><span class="o">::</span><span class="n">InitEditor</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_name</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_email</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">projectRoot</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">editor</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">auth_name</span><span class="p">,</span><span class="w"> </span><span class="n">auth_email</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">Open</span><span class="p">(</span><span class="n">projectRoot</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>

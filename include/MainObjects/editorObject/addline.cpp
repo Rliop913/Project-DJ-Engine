@@ -42,3 +42,14 @@ editorObject::AddLine(const EDIT_ARG_KEY_VALUE& obj)
     return DefaultSaveFuntion<EDIT_ARG_KEY_VALUE>();
 }
 
+bool 
+editorObject::AddLine(const std::string& musicName, const std::string& firstBar)
+{
+    for(auto& i : E_obj->musicHandle){
+        if(i.musicName == musicName){
+            i.jsonh["FIRST_BAR"] = firstBar;
+            return true;
+        }
+    }
+    return false;
+}

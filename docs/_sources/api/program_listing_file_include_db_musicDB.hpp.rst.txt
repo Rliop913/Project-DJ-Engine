@@ -36,6 +36,11 @@ Program Listing for File musicDB.hpp
        bool GenSearchSTMT(stmt& dbstate, sqlite3* db);
    
        bool GenInsertSTMT(stmt& dbstate, sqlite3* db);
+   
+       bool GenEditSTMT(stmt& dbstate, sqlite3* db, musdata& toEdit);
+   
+       bool GenDeleteSTMT(stmt& dbstate, sqlite3* db);
+   
    };
    
    

@@ -100,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/dbRoot.hpp" line="32" column="10" bodyfile="include/db/dbRoot.hpp" bodystart="82" bodyend="95"/>
+        <location file="include/db/dbRoot.hpp" line="32" column="10" bodyfile="include/db/dbRoot.hpp" bodystart="93" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classlitedb_1ad2789c301c55befe5e85284f272bb46d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -147,7 +147,57 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/dbRoot.hpp" line="54" column="5" bodyfile="include/db/dbRoot.hpp" bodystart="99" bodyend="110"/>
+        <location file="include/db/dbRoot.hpp" line="54" column="5" bodyfile="include/db/dbRoot.hpp" bodystart="110" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1aa3cd2c54c27a2d3d1a7d87a8607e6495" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename DBType</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool litedb::DeleteData</definition>
+        <argsstring>(DBType &amp;deleteObject)</argsstring>
+        <name>DeleteData</name>
+        <qualifiedname>litedb::DeleteData</qualifiedname>
+        <param>
+          <type>DBType &amp;</type>
+          <declname>deleteObject</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="59" column="5" bodyfile="include/db/dbRoot.hpp" bodystart="125" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1a275cceb420462fbf3befb82bde3c3848" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename DBType</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool litedb::EditData</definition>
+        <argsstring>(DBType &amp;searchObject, DBType &amp;editObject)</argsstring>
+        <name>EditData</name>
+        <qualifiedname>litedb::EditData</qualifiedname>
+        <param>
+          <type>DBType &amp;</type>
+          <declname>searchObject</declname>
+        </param>
+        <param>
+          <type>DBType &amp;</type>
+          <declname>editObject</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="63" column="5" bodyfile="include/db/dbRoot.hpp" bodystart="140" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classlitedb_1a4cc81fddce5ff104cf82da212efc2f38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -180,7 +230,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/dbRoot.hpp" line="64" column="10" bodyfile="include/db/dbRoot.cpp" bodystart="8" bodyend="18"/>
+        <location file="include/db/dbRoot.hpp" line="74" column="10" bodyfile="include/db/dbRoot.cpp" bodystart="8" bodyend="18"/>
       </memberdef>
       <memberdef kind="function" id="classlitedb_1af16e54cebbe62f5b1b44b03dbc3d3529" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::string</type>
@@ -198,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/dbRoot.hpp" line="72" column="5" bodyfile="include/db/dbRoot.hpp" bodystart="72" bodyend="74"/>
+        <location file="include/db/dbRoot.hpp" line="82" column="5" bodyfile="include/db/dbRoot.hpp" bodystart="82" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="classlitedb_1a9f3b4346801213c5cb95d7c86921a1c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -212,7 +262,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/dbRoot.hpp" line="76" column="5" bodyfile="include/db/dbRoot.cpp" bodystart="5" bodyend="5"/>
+        <location file="include/db/dbRoot.hpp" line="87" column="5" bodyfile="include/db/dbRoot.cpp" bodystart="5" bodyend="5"/>
       </memberdef>
       <memberdef kind="function" id="classlitedb_1a81aed319e301d84ed8dde7bbe0e86c07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -226,7 +276,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/dbRoot.hpp" line="77" column="5" bodyfile="include/db/dbRoot.cpp" bodystart="20" bodyend="25"/>
+        <location file="include/db/dbRoot.hpp" line="88" column="5" bodyfile="include/db/dbRoot.cpp" bodystart="20" bodyend="25"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -251,10 +301,12 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/db/dbRoot.hpp" line="24" column="1" bodyfile="include/db/dbRoot.hpp" bodystart="24" bodyend="78"/>
+    <location file="include/db/dbRoot.hpp" line="24" column="1" bodyfile="include/db/dbRoot.hpp" bodystart="24" bodyend="89"/>
     <listofallmembers>
       <member refid="classlitedb_1ac516f0ac3215ae1f81a733037ae1cd67" prot="private" virt="non-virtual"><scope>litedb</scope><name>CheckTables</name></member>
       <member refid="classlitedb_1a066eb42c53fcc5e765b27b400aca5779" prot="private" virt="non-virtual"><scope>litedb</scope><name>db</name></member>
+      <member refid="classlitedb_1aa3cd2c54c27a2d3d1a7d87a8607e6495" prot="public" virt="non-virtual"><scope>litedb</scope><name>DeleteData</name></member>
+      <member refid="classlitedb_1a275cceb420462fbf3befb82bde3c3848" prot="public" virt="non-virtual"><scope>litedb</scope><name>EditData</name></member>
       <member refid="classlitedb_1af16e54cebbe62f5b1b44b03dbc3d3529" prot="public" virt="non-virtual"><scope>litedb</scope><name>getRoot</name></member>
       <member refid="classlitedb_1a9f3b4346801213c5cb95d7c86921a1c3" prot="public" virt="non-virtual"><scope>litedb</scope><name>litedb</name></member>
       <member refid="classlitedb_1a4cc81fddce5ff104cf82da212efc2f38" prot="public" virt="non-virtual"><scope>litedb</scope><name>openDB</name></member>

@@ -1,0 +1,67 @@
+
+.. _program_listing_file_include_MainObjects_editorObject_addline.cpp:
+
+Program Listing for File addline.cpp
+====================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_editorObject_addline.cpp>` (``include/MainObjects/editorObject/addline.cpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #include "editorObject.hpp"
+   
+   template<>
+   bool
+   editorObject::AddLine(const EDIT_ARG_MUSIC& obj)
+   {
+       
+       for(auto& i : E_obj->musicHandle){
+           if(i.musicName == obj.musicName){
+               i.jsonh.add(obj.arg);
+               return DefaultSaveFuntion<EDIT_ARG_MUSIC>(i, obj);
+           }
+       }
+       return false;
+   }
+   
+   template<>
+   bool
+   editorObject::AddLine(const EDIT_ARG_MIX& obj)
+   {
+   
+       if(!E_obj->mixHandle.second.add(obj)) return false;
+       return DefaultSaveFuntion<EDIT_ARG_MIX>();
+   }
+   
+   template<>
+   bool
+   editorObject::AddLine(const EDIT_ARG_NOTE& obj)
+   {
+   
+       if(!E_obj->noteHandle.second.add(obj)) return false;
+       return DefaultSaveFuntion<EDIT_ARG_NOTE>();
+   }
+   
+   
+   template<>
+   bool
+   editorObject::AddLine(const EDIT_ARG_KEY_VALUE& obj)
+   {
+   
+       if(!E_obj->KVHandler.second.add(obj)) return false;
+       return DefaultSaveFuntion<EDIT_ARG_KEY_VALUE>();
+   }
+   
+   bool 
+   editorObject::AddLine(const std::string& musicName, const std::string& firstBar)
+   {
+       for(auto& i : E_obj->musicHandle){
+           if(i.musicName == musicName){
+               i.jsonh["FIRST_BAR"] = firstBar;
+               return true;
+           }
+       }
+       return false;
+   }

@@ -281,6 +281,54 @@
         </inbodydescription>
         <location file="include/db/musicDB.hpp" line="64" column="10" bodyfile="include/db/musicDB.cpp" bodystart="79" bodyend="100"/>
       </memberdef>
+      <memberdef kind="function" id="structmusdata_1ac7794d8c2f193614228937de860541c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool musdata::GenEditSTMT</definition>
+        <argsstring>(stmt &amp;dbstate, sqlite3 *db, musdata &amp;toEdit)</argsstring>
+        <name>GenEditSTMT</name>
+        <qualifiedname>musdata::GenEditSTMT</qualifiedname>
+        <param>
+          <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
+          <declname>dbstate</declname>
+        </param>
+        <param>
+          <type>sqlite3 *</type>
+          <declname>db</declname>
+        </param>
+        <param>
+          <type><ref refid="structmusdata" kindref="compound">musdata</ref> &amp;</type>
+          <declname>toEdit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/musicDB.hpp" line="66" column="10" bodyfile="include/db/musicDB.cpp" bodystart="103" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="structmusdata_1a150c5d78d901fe9cd851b57ab375c11e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool musdata::GenDeleteSTMT</definition>
+        <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
+        <name>GenDeleteSTMT</name>
+        <qualifiedname>musdata::GenDeleteSTMT</qualifiedname>
+        <param>
+          <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
+          <declname>dbstate</declname>
+        </param>
+        <param>
+          <type>sqlite3 *</type>
+          <declname>db</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/musicDB.hpp" line="68" column="10" bodyfile="include/db/musicDB.cpp" bodystart="130" bodyend="145"/>
+      </memberdef>
     </sectiondef>
     <briefdescription>
 <para>the music meta data&apos;s struct </para>
@@ -313,12 +361,14 @@
         <label>std::vector&lt; u_int8_t &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/db/musicDB.hpp" line="12" column="1" bodyfile="include/db/musicDB.hpp" bodystart="12" bodyend="65"/>
+    <location file="include/db/musicDB.hpp" line="12" column="1" bodyfile="include/db/musicDB.hpp" bodystart="12" bodyend="70"/>
     <listofallmembers>
       <member refid="structmusdata_1a4739e5c5967894bb4a5d6566b8e2a422" prot="public" virt="non-virtual"><scope>musdata</scope><name>bpm</name></member>
       <member refid="structmusdata_1aaba9b1ecc8a2a58f74a00ec2d9041a28" prot="public" virt="non-virtual"><scope>musdata</scope><name>bpmBinary</name></member>
       <member refid="structmusdata_1accc9d5168dbbdbbc65c4bef04568d470" prot="public" virt="non-virtual"><scope>musdata</scope><name>composer</name></member>
       <member refid="structmusdata_1ab37ae262449a6d62ba70f9a0b3b9ea56" prot="public" virt="non-virtual"><scope>musdata</scope><name>firstBar</name></member>
+      <member refid="structmusdata_1a150c5d78d901fe9cd851b57ab375c11e" prot="public" virt="non-virtual"><scope>musdata</scope><name>GenDeleteSTMT</name></member>
+      <member refid="structmusdata_1ac7794d8c2f193614228937de860541c9" prot="public" virt="non-virtual"><scope>musdata</scope><name>GenEditSTMT</name></member>
       <member refid="structmusdata_1afdbc23e8fce465938ddbabfa7d8ee5a3" prot="public" virt="non-virtual"><scope>musdata</scope><name>GenInsertSTMT</name></member>
       <member refid="structmusdata_1a2b91926d793d176242d6689e2a4386f3" prot="public" virt="non-virtual"><scope>musdata</scope><name>GenSearchSTMT</name></member>
       <member refid="structmusdata_1a5ac662aaa154dffde0bbf676df945c22" prot="public" virt="non-virtual"><scope>musdata</scope><name>musdata</name></member>

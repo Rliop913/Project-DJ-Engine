@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+  <compounddef id="structPDJE__Editor_1_1MusicHandleStruct" kind="struct" language="C++" prot="public">
+    <compoundname>PDJE_Editor::MusicHandleStruct</compoundname>
+    <includes refid="editor_8hpp" local="no">editor.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structPDJE__Editor_1_1MusicHandleStruct_1af1670f44f118fcbb856b8d60d220f372" prot="public" static="no" mutable="no">
+        <type><ref refid="classPDJE__GitHandler" kindref="compound">PDJE_GitHandler</ref></type>
+        <definition>PDJE_GitHandler PDJE_Editor::MusicHandleStruct::gith</definition>
+        <argsstring></argsstring>
+        <name>gith</name>
+        <qualifiedname>PDJE_Editor::MusicHandleStruct::gith</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="24" column="25" bodyfile="include/editor/editor.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPDJE__Editor_1_1MusicHandleStruct_1a90956305be11318e58cea3e54a44fd18" prot="public" static="no" mutable="no">
+        <type><ref refid="classPDJE__JSONHandler" kindref="compound">PDJE_JSONHandler</ref>&lt; <ref refid="jsonWrapper_8hpp_1a5ce6d29d6001f496835f6401276a682e" kindref="member">MUSIC_W</ref> &gt;</type>
+        <definition>PDJE_JSONHandler&lt;MUSIC_W&gt; PDJE_Editor::MusicHandleStruct::jsonh</definition>
+        <argsstring></argsstring>
+        <name>jsonh</name>
+        <qualifiedname>PDJE_Editor::MusicHandleStruct::jsonh</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="25" column="26" bodyfile="include/editor/editor.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPDJE__Editor_1_1MusicHandleStruct_1aa17d651c5fd7b4c6e44db8fa93918f50" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string PDJE_Editor::MusicHandleStruct::musicName</definition>
+        <argsstring></argsstring>
+        <name>musicName</name>
+        <qualifiedname>PDJE_Editor::MusicHandleStruct::musicName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="26" column="21" bodyfile="include/editor/editor.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structPDJE__Editor_1_1MusicHandleStruct_1ae8b2d100a148f216320b1e1497ef4bdb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_Editor::MusicHandleStruct::MusicHandleStruct</definition>
+        <argsstring>(const std::string &amp;auth_name, const std::string &amp;auth_email)</argsstring>
+        <name>MusicHandleStruct</name>
+        <qualifiedname>PDJE_Editor::MusicHandleStruct::MusicHandleStruct</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>auth_name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>auth_email</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="27" column="9" bodyfile="include/editor/editor.hpp" bodystart="27" bodyend="28"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="5">
+        <label>GitWrapper</label>
+        <link refid="classGitWrapper"/>
+      </node>
+      <node id="1">
+        <label>PDJE_Editor::MusicHandleStruct</label>
+        <link refid="structPDJE__Editor_1_1MusicHandleStruct"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>gith</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>jsonh</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>musicName</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PDJE_GitHandler</label>
+        <link refid="classPDJE__GitHandler"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>RecentERR</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>gw</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>PDJE_JSONHandler&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__JSONHandler"/>
+      </node>
+      <node id="4">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="3">
+        <label>std::string</label>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/editor/editor.hpp" line="23" column="5" bodyfile="include/editor/editor.hpp" bodystart="23" bodyend="29"/>
+    <listofallmembers>
+      <member refid="structPDJE__Editor_1_1MusicHandleStruct_1af1670f44f118fcbb856b8d60d220f372" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>gith</name></member>
+      <member refid="structPDJE__Editor_1_1MusicHandleStruct_1a90956305be11318e58cea3e54a44fd18" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>jsonh</name></member>
+      <member refid="structPDJE__Editor_1_1MusicHandleStruct_1ae8b2d100a148f216320b1e1497ef4bdb" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>MusicHandleStruct</name></member>
+      <member refid="structPDJE__Editor_1_1MusicHandleStruct_1aa17d651c5fd7b4c6e44db8fa93918f50" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>musicName</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

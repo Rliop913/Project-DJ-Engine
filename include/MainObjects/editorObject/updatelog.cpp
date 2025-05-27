@@ -51,6 +51,7 @@ editorObject::UpdateLog<EDIT_ARG_MUSIC>()
     for(auto& i : E_obj->musicHandle){
         if(!i.gith.UpdateLog()) return false;
     };
+    return true;
 }
 
 template<>

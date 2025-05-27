@@ -56,7 +56,11 @@ public:
 
     template<typename DBType>
     bool
-    DeleteData(DBType& deleteObject);
+    DeleteData(DBType& deleteObject);//to-do impl
+
+    template<typename DBType>
+    bool
+    EditData(DBType& searchObject, DBType& editObject);//to-do impl
 
 
 
@@ -109,6 +113,36 @@ litedb::operator<=(DBType& insertObject)
     if(insertObject.GenInsertSTMT(dbstate, db)){
         auto insertRes = sqlite3_step(dbstate.S);
         if(insertRes != SQLITE_DONE){
+            return false;
+        }
+        return true;
+    }
+    return false;
+}
+
+template<typename DBType>
+bool
+litedb::DeleteData(DBType& deleteObject)
+{
+    stmt dbstate = stmt();
+    if(deleteObject.GenDeleteSTMT(dbstate, db)){
+        auto deleteRes = sqlite3_step(dbstate.S);
+        if(deleteRes != SQLITE_DONE){
+            return false;
+        }
+        return true;
+    }
+    return false;
+}
+
+template<typename DBType>
+bool
+litedb::EditData(DBType& searchObject, DBType& editObject)
+{
+    stmt dbstate = stmt();
+    if(searchObject.GenEditSTMT(dbstate, db, editObject)){
+        auto editRes = sqlite3_step(dbstate.S);
+        if(editRes != SQLITE_DONE){
             return false;
         }
         return true;

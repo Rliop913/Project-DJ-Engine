@@ -101,7 +101,47 @@ Directories
 .. toctree::
    :maxdepth: 5
 
-   dir_include_editor_gitWrapper.rst
+   dir_include_editor_featureWrapper.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_editor_featureWrapper_GitWrap.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_editor_featureWrapper_GitWrap_Add.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_editor_featureWrapper_GitWrap_Blame.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_editor_featureWrapper_GitWrap_Branch.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_editor_featureWrapper_GitWrap_Commit.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_editor_featureWrapper_GitWrap_Diff.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_editor_featureWrapper_GitWrap_Log.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_editor_featureWrapper_JSONWrap.rst
 
 .. toctree::
    :maxdepth: 5
@@ -121,12 +161,22 @@ Directories
 .. toctree::
    :maxdepth: 5
 
-   dir_include_players.rst
+   dir_include_MainObjects.rst
 
 .. toctree::
    :maxdepth: 5
 
-   dir_include_players_audioPlayer.rst
+   dir_include_MainObjects_audioPlayer.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_MainObjects_editorObject.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_MainObjects_tempDBObject.rst
 
 .. toctree::
    :maxdepth: 5
@@ -145,22 +195,37 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_players_audioPlayer_audioCallbacks.cpp.rst
+   file_include_editor_featureWrapper_GitWrap_Add_AddController.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_players_audioPlayer_audioCallbacks.hpp.rst
+   file_include_editor_featureWrapper_GitWrap_Add_AddController.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_players_audioPlayer_audioPlayer.cpp.rst
+   file_include_MainObjects_editorObject_addline.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_players_audioPlayer_audioPlayer.hpp.rst
+   file_include_MainObjects_audioPlayer_audioCallbacks.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_MainObjects_audioPlayer_audioCallbacks.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_MainObjects_audioPlayer_audioPlayer.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_MainObjects_audioPlayer_audioPlayer.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -190,6 +255,16 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_editor_featureWrapper_GitWrap_Blame_BlameController.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_editor_featureWrapper_GitWrap_Blame_BlameController.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_db_Capnp_Translators_MixTranslator_Bpm.cpp.rst
 
 .. toctree::
@@ -206,6 +281,11 @@ Files
    :maxdepth: 5
 
    file_include_tests_CapnpTest.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_MainObjects_editorObject_commonfunction.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -260,6 +340,21 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_MainObjects_editorObject_deleteline.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_editor_featureWrapper_GitWrap_Diff_DiffController.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_editor_featureWrapper_GitWrap_Diff_DiffController.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_audioRender_ManualMix_ManualFausts_distortionMan.hpp.rst
 
 .. toctree::
@@ -275,7 +370,42 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_editor_editor.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_editor_editor.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_editor_featureWrapper_GitWrap_Branch_editorBranch.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_editor_featureWrapper_GitWrap_Branch_editorBranch.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_editor_featureWrapper_GitWrap_Commit_editorCommit.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_editor_featureWrapper_GitWrap_Commit_editorCommit.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_MainObjects_editorObject_editorObject.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_MainObjects_editorObject_editorObject.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -340,17 +470,47 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_MainObjects_editorObject_getall.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_MainObjects_editorObject_getdiff.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_MainObjects_editorObject_getlogwithjsongraph.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_editor_featureWrapper_GitWrap_Log_gitLog.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_editor_featureWrapper_GitWrap_Log_gitLog.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_tests_gittest.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_editor_gitWrapper_gitWrapper.cpp.rst
+   file_include_editor_featureWrapper_GitWrap_gitWrapper.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_editor_gitWrapper_gitWrapper.hpp.rst
+   file_include_editor_featureWrapper_GitWrap_gitWrapper.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_MainObjects_editorObject_go.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -361,6 +521,16 @@ Files
    :maxdepth: 5
 
    file_include_tests_interfaceTest.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_editor_featureWrapper_JSONWrap_jsonWrapper.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_editor_featureWrapper_JSONWrap_KVJson.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -415,6 +585,16 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_editor_featureWrapper_JSONWrap_MixJson.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_audioRender_MixMachine_MixMachine-inl.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_audioRender_MixMachine_MixMachine.cpp.rst
 
 .. toctree::
@@ -445,6 +625,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_audioRender_ManualMix_MusicControlPannel-inl.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_audioRender_ManualMix_MusicControlPannel.cpp.rst
 
 .. toctree::
@@ -465,12 +650,22 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_editor_featureWrapper_JSONWrap_MusicJson.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_db_Capnp_Translators_MusicTranslator_MusicTranslator.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
    file_include_db_Capnp_Translators_MusicTranslator_MusicTranslator.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_editor_featureWrapper_JSONWrap_NoteJson.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -505,6 +700,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_editor_featureWrapper_GitWrap_PDJE_GitHandler.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_input_PDJE_INPUT.hpp.rst
 
 .. toctree::
@@ -535,6 +735,16 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_MainObjects_editorObject_redo.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_MainObjects_editorObject_render.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_audioRender_MixMachine_FAUST_VALS_robot.hpp.rst
 
 .. toctree::
@@ -556,6 +766,16 @@ Files
    :maxdepth: 5
 
    file_include_audioRender_MixMachine_MUSIC_CTR_SetCue.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_MainObjects_tempDBObject_tempDB.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_MainObjects_tempDBObject_tempDB.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -646,6 +866,16 @@ Files
    :maxdepth: 5
 
    file_include_audioRender_MixMachine_MixTypes_Type_VOL.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_MainObjects_editorObject_undo.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_MainObjects_editorObject_updatelog.cpp.rst
 
 .. toctree::
    :maxdepth: 5

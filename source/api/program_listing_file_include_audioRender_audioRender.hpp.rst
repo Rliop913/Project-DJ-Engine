@@ -19,6 +19,7 @@ Program Listing for File audioRender.hpp
        std::optional<std::vector<float>> rendered_frames;
    
        bool LoadTrack(litedb& db, trackdata& td);
+       bool LoadTrackFromMixData(litedb& db, BIN& mixData);
        audioRender() = default;
        ~audioRender() = default;
    

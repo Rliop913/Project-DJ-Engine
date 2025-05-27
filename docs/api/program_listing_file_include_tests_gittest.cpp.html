@@ -80,15 +80,38 @@
 <span id="program-listing-file-include-tests-gittest-cpp"></span><h1>Program Listing for File gittest.cpp<a class="headerlink" href="#program-listing-for-file-gittest-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_tests_gittest.cpp.html#file-include-tests-gittest-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/tests/gittest.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gitWrapper.hpp&quot;</span>
 <span class="c1">// #include &quot;gitWrapper.hpp&quot;</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="c1">// git_libgit2_init();</span>
-<span class="w">    </span><span class="c1">// git_repository* repo = NULL;</span>
-<span class="w">    </span><span class="c1">// int err = git_repository_init(&amp;repo, &quot;./testgit&quot;, false);</span>
-<span class="w">    </span><span class="c1">// std::cout &lt;&lt;err &lt;&lt;std::endl;</span>
-<span class="w">    </span><span class="c1">// git_libgit2_shutdown();</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">   </span><span class="k">auto</span><span class="w"> </span><span class="n">gh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_GitHandler</span><span class="p">(</span><span class="s">&quot;rrop&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;temp@email.com&quot;</span><span class="p">);</span>
+<span class="w">   </span><span class="n">gh</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="s">&quot;../&quot;</span><span class="p">);</span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;loaded ok&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">   </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">gh</span><span class="p">.</span><span class="n">gw</span><span class="p">.</span><span class="n">GenTimeStamp</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">   </span><span class="c1">// getchar();</span>
+
+<span class="w">   </span><span class="c1">// if(gh.Save(&quot;test.txt&quot;, &quot;test_second&quot;)){</span>
+<span class="w">   </span><span class="c1">//    std::cout &lt;&lt; &quot;saved ok&quot; &lt;&lt; std::endl;</span>
+<span class="w">   </span><span class="c1">// }</span>
+<span class="w">   </span><span class="c1">// else{</span>
+<span class="w">   </span><span class="c1">// for(auto bmsg : gh.gw.handleBranch-&gt;ShowExistBranch()){</span>
+<span class="w">   </span><span class="c1">//     std::cout &lt;&lt; bmsg &lt;&lt; std::endl;</span>
+<span class="w">   </span><span class="c1">// }</span>
+<span class="w">      </span><span class="c1">// gh.UpdateLog();</span>
+<span class="w">      </span><span class="c1">// auto graphs = gh.GetLogWithJSONGraph();</span>
+<span class="w">      </span><span class="c1">// std::cout &lt;&lt; graphs &lt;&lt; std::endl;</span>
+<span class="w">      </span><span class="c1">// auto commitres = gh.gw.handleBranch-&gt;ShowExistCommitsOnBranch(&quot;master&quot;);</span>
+<span class="w">      </span><span class="c1">// for( auto i : commitres){</span>
+<span class="w">      </span><span class="c1">//    // std::cout &lt;&lt; &quot;branch: &quot; &lt;&lt; i. &lt;&lt; std::endl;</span>
+<span class="w">      </span><span class="c1">//    // for(auto j : i.second){</span>
+<span class="w">      </span><span class="c1">//       std::cout &lt;&lt; &quot;commit: &quot; &lt;&lt; i.msg &lt;&lt; std::endl;</span>
+<span class="w">      </span><span class="c1">//    // }</span>
+<span class="w">      </span><span class="c1">// }</span>
+<span class="w">      </span><span class="c1">// std::cout &lt;&lt; &quot;save error&quot; &lt;&lt; std::endl;</span>
+<span class="w">   </span><span class="c1">// }</span>
+<span class="w">   </span><span class="c1">// getchar();</span>
+<span class="w">   </span><span class="n">gh</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>

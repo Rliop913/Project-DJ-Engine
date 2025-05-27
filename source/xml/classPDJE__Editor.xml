@@ -3,12 +3,366 @@
   <compounddef id="classPDJE__Editor" kind="class" language="C++" prot="public">
     <compoundname>PDJE_Editor</compoundname>
     <includes refid="editor_8hpp" local="no">editor.hpp</includes>
+    <innerclass refid="structPDJE__Editor_1_1MusicHandleStruct" prot="public">PDJE_Editor::MusicHandleStruct</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPDJE__Editor_1a3f0dad32adc184ab2e8c2833b5f2163a" prot="private" static="no" mutable="no">
+        <type>fs::path</type>
+        <definition>fs::path PDJE_Editor::pt</definition>
+        <argsstring></argsstring>
+        <name>pt</name>
+        <qualifiedname>PDJE_Editor::pt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="12" column="14" bodyfile="include/editor/editor.hpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Editor_1a8a9368d5946110bd72e93929c459dd18" prot="private" static="no" mutable="no">
+        <type>fs::path</type>
+        <definition>fs::path PDJE_Editor::mixp</definition>
+        <argsstring></argsstring>
+        <name>mixp</name>
+        <qualifiedname>PDJE_Editor::mixp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="13" column="14" bodyfile="include/editor/editor.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Editor_1a6f44ff19f5b97d2513d45a40cde17b8b" prot="private" static="no" mutable="no">
+        <type>fs::path</type>
+        <definition>fs::path PDJE_Editor::notep</definition>
+        <argsstring></argsstring>
+        <name>notep</name>
+        <qualifiedname>PDJE_Editor::notep</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="14" column="14" bodyfile="include/editor/editor.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Editor_1adc11bd90202cc6fc580166c6d0acbc8a" prot="private" static="no" mutable="no">
+        <type>fs::path</type>
+        <definition>fs::path PDJE_Editor::musicp</definition>
+        <argsstring></argsstring>
+        <name>musicp</name>
+        <qualifiedname>PDJE_Editor::musicp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="15" column="14" bodyfile="include/editor/editor.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Editor_1ac7bc6fcd7a255d6bde7c59e8bf485494" prot="private" static="no" mutable="no">
+        <type>fs::path</type>
+        <definition>fs::path PDJE_Editor::kvp</definition>
+        <argsstring></argsstring>
+        <name>kvp</name>
+        <qualifiedname>PDJE_Editor::kvp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="16" column="14" bodyfile="include/editor/editor.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Editor_1a2ff1d0254a6b65f3a5553358c1c0595d" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string PDJE_Editor::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <qualifiedname>PDJE_Editor::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="17" column="17" bodyfile="include/editor/editor.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Editor_1ab15eec411555fd10655282956e0293a9" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string PDJE_Editor::email</definition>
+        <argsstring></argsstring>
+        <name>email</name>
+        <qualifiedname>PDJE_Editor::email</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="18" column="17" bodyfile="include/editor/editor.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classPDJE__Editor_1a32fdb364653a4204a7b5ff47e925dc86" prot="public" static="no" mutable="no">
+        <type>std::pair&lt; <ref refid="classPDJE__GitHandler" kindref="compound">PDJE_GitHandler</ref>, <ref refid="classPDJE__JSONHandler" kindref="compound">PDJE_JSONHandler</ref>&lt; <ref refid="jsonWrapper_8hpp_1a62a8aadaf6e33bd03a591749fca41482" kindref="member">MIX_W</ref> &gt; &gt;</type>
+        <definition>std::pair&lt;PDJE_GitHandler, PDJE_JSONHandler&lt;MIX_W&gt; &gt; PDJE_Editor::mixHandle</definition>
+        <argsstring></argsstring>
+        <name>mixHandle</name>
+        <qualifiedname>PDJE_Editor::mixHandle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="20" column="15" bodyfile="include/editor/editor.hpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Editor_1ab58d4130d3c84d9bc87e1ca1fca5ac49" prot="public" static="no" mutable="no">
+        <type>std::pair&lt; <ref refid="classPDJE__GitHandler" kindref="compound">PDJE_GitHandler</ref>, <ref refid="classPDJE__JSONHandler" kindref="compound">PDJE_JSONHandler</ref>&lt; <ref refid="jsonWrapper_8hpp_1a29a06c37bb7adf0275ebf5975fb7cb89" kindref="member">NOTE_W</ref> &gt; &gt;</type>
+        <definition>std::pair&lt;PDJE_GitHandler, PDJE_JSONHandler&lt;NOTE_W&gt; &gt; PDJE_Editor::noteHandle</definition>
+        <argsstring></argsstring>
+        <name>noteHandle</name>
+        <qualifiedname>PDJE_Editor::noteHandle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="21" column="15" bodyfile="include/editor/editor.hpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Editor_1a7308f444a372c77b669dbe79a6412865" prot="public" static="no" mutable="no">
+        <type>std::pair&lt; <ref refid="classPDJE__GitHandler" kindref="compound">PDJE_GitHandler</ref>, <ref refid="classPDJE__JSONHandler" kindref="compound">PDJE_JSONHandler</ref>&lt; <ref refid="jsonWrapper_8hpp_1a302aa5ab173d4395fe6526d00a2f9777" kindref="member">KV_W</ref> &gt; &gt;</type>
+        <definition>std::pair&lt;PDJE_GitHandler, PDJE_JSONHandler&lt;KV_W&gt; &gt; PDJE_Editor::KVHandler</definition>
+        <argsstring></argsstring>
+        <name>KVHandler</name>
+        <qualifiedname>PDJE_Editor::KVHandler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="22" column="15" bodyfile="include/editor/editor.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Editor_1ab8f9b60ada20d8ebe12e2fa85e2d4065" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structPDJE__Editor_1_1MusicHandleStruct" kindref="compound">MusicHandleStruct</ref> &gt;</type>
+        <definition>std::vector&lt;MusicHandleStruct&gt; PDJE_Editor::musicHandle</definition>
+        <argsstring></argsstring>
+        <name>musicHandle</name>
+        <qualifiedname>PDJE_Editor::musicHandle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="30" column="17" bodyfile="include/editor/editor.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPDJE__Editor_1ad2baa781b1e86bdb4b5a118deec2b871" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_Editor::AddMusicConfig</definition>
+        <argsstring>(const std::string &amp;NewMusicName)</argsstring>
+        <name>AddMusicConfig</name>
+        <qualifiedname>PDJE_Editor::AddMusicConfig</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>NewMusicName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="31" column="10" bodyfile="include/editor/editor.cpp" bodystart="51" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__Editor_1a6e2b47d6972203bd4546480eaace7816" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_Editor::openProject</definition>
+        <argsstring>(const std::string &amp;projectPath)</argsstring>
+        <name>openProject</name>
+        <qualifiedname>PDJE_Editor::openProject</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>projectPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="32" column="10" bodyfile="include/editor/editor.cpp" bodystart="7" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__Editor_1acba8d34397911bc73849dc39940b8544" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_Editor::PDJE_Editor</definition>
+        <argsstring>(const std::string &amp;auth_name, const std::string &amp;auth_email)</argsstring>
+        <name>PDJE_Editor</name>
+        <qualifiedname>PDJE_Editor::PDJE_Editor</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>auth_name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>auth_email</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="34" column="5" bodyfile="include/editor/editor.hpp" bodystart="34" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__Editor_1a31f3f49d01fdd0c5a0a6a352dccca20f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_Editor::~PDJE_Editor</definition>
+        <argsstring>()=default</argsstring>
+        <name>~PDJE_Editor</name>
+        <qualifiedname>PDJE_Editor::~PDJE_Editor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/editor.hpp" line="42" column="5"/>
+      </memberdef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/editor/editor.hpp" line="6" column="1" bodyfile="include/editor/editor.hpp" bodystart="6" bodyend="8"/>
+    <collaborationgraph>
+      <node id="6">
+        <label>GitWrapper</label>
+        <link refid="classGitWrapper"/>
+      </node>
+      <node id="1">
+        <label>PDJE_Editor</label>
+        <link refid="classPDJE__Editor"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>email</edgelabel>
+          <edgelabel>name</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>mixHandle</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>noteHandle</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>KVHandler</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>musicHandle</edgelabel>
+        </childnode>
+      </node>
+      <node id="13">
+        <label>PDJE_Editor::MusicHandleStruct</label>
+        <link refid="structPDJE__Editor_1_1MusicHandleStruct"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>gith</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>jsonh</edgelabel>
+        </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>musicName</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>PDJE_GitHandler</label>
+        <link refid="classPDJE__GitHandler"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>RecentERR</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>gw</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>PDJE_JSONHandler&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__JSONHandler"/>
+      </node>
+      <node id="14">
+        <label>PDJE_JSONHandler&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__JSONHandler"/>
+      </node>
+      <node id="9">
+        <label>PDJE_JSONHandler&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__JSONHandler"/>
+      </node>
+      <node id="11">
+        <label>PDJE_JSONHandler&lt; KV_W &gt;</label>
+        <link refid="classPDJE__JSONHandler"/>
+      </node>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="4">
+        <label>std::pair&lt; PDJE_GitHandler, PDJE_JSONHandler&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt; &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>first_type</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>second_type</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>std::pair&lt; PDJE_GitHandler, PDJE_JSONHandler&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt; &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>first_type</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>second_type</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>std::pair&lt; PDJE_GitHandler, PDJE_JSONHandler&lt; KV_W &gt; &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>first_type</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>second_type</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>std::vector&lt; PDJE_Editor::MusicHandleStruct &gt;</label>
+        <childnode refid="13" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/editor/editor.hpp" line="10" column="1" bodyfile="include/editor/editor.hpp" bodystart="10" bodyend="43"/>
     <listofallmembers>
+      <member refid="classPDJE__Editor_1ad2baa781b1e86bdb4b5a118deec2b871" prot="public" virt="non-virtual"><scope>PDJE_Editor</scope><name>AddMusicConfig</name></member>
+      <member refid="classPDJE__Editor_1ab15eec411555fd10655282956e0293a9" prot="private" virt="non-virtual"><scope>PDJE_Editor</scope><name>email</name></member>
+      <member refid="classPDJE__Editor_1a7308f444a372c77b669dbe79a6412865" prot="public" virt="non-virtual"><scope>PDJE_Editor</scope><name>KVHandler</name></member>
+      <member refid="classPDJE__Editor_1ac7bc6fcd7a255d6bde7c59e8bf485494" prot="private" virt="non-virtual"><scope>PDJE_Editor</scope><name>kvp</name></member>
+      <member refid="classPDJE__Editor_1a32fdb364653a4204a7b5ff47e925dc86" prot="public" virt="non-virtual"><scope>PDJE_Editor</scope><name>mixHandle</name></member>
+      <member refid="classPDJE__Editor_1a8a9368d5946110bd72e93929c459dd18" prot="private" virt="non-virtual"><scope>PDJE_Editor</scope><name>mixp</name></member>
+      <member refid="classPDJE__Editor_1ab8f9b60ada20d8ebe12e2fa85e2d4065" prot="public" virt="non-virtual"><scope>PDJE_Editor</scope><name>musicHandle</name></member>
+      <member refid="classPDJE__Editor_1adc11bd90202cc6fc580166c6d0acbc8a" prot="private" virt="non-virtual"><scope>PDJE_Editor</scope><name>musicp</name></member>
+      <member refid="classPDJE__Editor_1a2ff1d0254a6b65f3a5553358c1c0595d" prot="private" virt="non-virtual"><scope>PDJE_Editor</scope><name>name</name></member>
+      <member refid="classPDJE__Editor_1ab58d4130d3c84d9bc87e1ca1fca5ac49" prot="public" virt="non-virtual"><scope>PDJE_Editor</scope><name>noteHandle</name></member>
+      <member refid="classPDJE__Editor_1a6f44ff19f5b97d2513d45a40cde17b8b" prot="private" virt="non-virtual"><scope>PDJE_Editor</scope><name>notep</name></member>
+      <member refid="classPDJE__Editor_1a6e2b47d6972203bd4546480eaace7816" prot="public" virt="non-virtual"><scope>PDJE_Editor</scope><name>openProject</name></member>
+      <member refid="classPDJE__Editor_1acba8d34397911bc73849dc39940b8544" prot="public" virt="non-virtual"><scope>PDJE_Editor</scope><name>PDJE_Editor</name></member>
+      <member refid="classPDJE__Editor_1a3f0dad32adc184ab2e8c2833b5f2163a" prot="private" virt="non-virtual"><scope>PDJE_Editor</scope><name>pt</name></member>
+      <member refid="classPDJE__Editor_1a31f3f49d01fdd0c5a0a6a352dccca20f" prot="public" virt="non-virtual"><scope>PDJE_Editor</scope><name>~PDJE_Editor</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

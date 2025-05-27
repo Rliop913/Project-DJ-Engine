@@ -38,15 +38,13 @@ Includes
 
 - ``algorithm``
 
-- ``audioPlayer.hpp`` (:ref:`file_include_players_audioPlayer_audioPlayer.hpp`)
+- ``audioPlayer.hpp`` (:ref:`file_include_MainObjects_audioPlayer_audioPlayer.hpp`)
 
 - ``dbRoot.hpp`` (:ref:`file_include_db_dbRoot.hpp`)
 
 - ``iostream``
 
 - ``miniaudio.h``
-
-- ``termios.h``
 
 
 

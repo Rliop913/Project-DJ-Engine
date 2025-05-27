@@ -54,8 +54,6 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
       </node>
       <node id="12">
         <label>MixBinary.capnp.h</label>
@@ -78,11 +76,8 @@
       <node id="7">
         <label>cmath</label>
       </node>
-      <node id="16">
-        <label>hwy/aligned_allocator.h</label>
-      </node>
       <node id="15">
-        <label>hwy/highway.h</label>
+        <label>hwy/aligned_allocator.h</label>
       </node>
       <node id="5">
         <label>miniaudio.h</label>
@@ -98,65 +93,41 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="4">
-        <label>include/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp</label>
-        <link refid="BattleDj_8cpp"/>
-      </node>
-      <node id="3">
-        <label>include/audioRender/MixMachine/MUSIC_CTR/BattleDj.hpp</label>
-        <link refid="BattleDj_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="30">
-        <label>include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp</label>
-        <link refid="MUSIC__CTR_8cpp"/>
-      </node>
-      <node id="2">
-        <label>include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</label>
-        <link refid="MUSIC__CTR_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-      </node>
-      <node id="31">
-        <label>include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp</label>
-        <link refid="SetCue_8cpp"/>
-      </node>
-      <node id="33">
-        <label>include/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp</label>
-        <link refid="Decoder_8cpp"/>
-      </node>
-      <node id="1">
-        <label>include/audioRender/MixMachine/MiniaudioObjects/Decoder.hpp</label>
-        <link refid="Decoder_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
+      <node id="7">
+        <label>include/MainObjects/audioPlayer/audioPlayer.cpp</label>
+        <link refid="audioPlayer_8cpp"/>
       </node>
       <node id="6">
-        <label>include/audioRender/MixMachine/MixMachine.cpp</label>
-        <link refid="MixMachine_8cpp"/>
-      </node>
-      <node id="5">
-        <label>include/audioRender/MixMachine/MixMachine.hpp</label>
-        <link refid="MixMachine_8hpp"/>
-        <childnode refid="6" relation="include">
-        </childnode>
+        <label>include/MainObjects/audioPlayer/audioPlayer.hpp</label>
+        <link refid="audioPlayer_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/MainObjects/editorObject/addline.cpp</label>
+        <link refid="addline_8cpp"/>
+      </node>
+      <node id="10">
+        <label>include/MainObjects/editorObject/commonfunction.cpp</label>
+        <link refid="commonfunction_8cpp"/>
+      </node>
+      <node id="11">
+        <label>include/MainObjects/editorObject/deleteline.cpp</label>
+        <link refid="deleteline_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/MainObjects/editorObject/editorObject.cpp</label>
+        <link refid="editorObject_8cpp"/>
+      </node>
+      <node id="8">
+        <label>include/MainObjects/editorObject/editorObject.hpp</label>
+        <link refid="editorObject_8hpp"/>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
@@ -183,120 +154,238 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_COMPRESSOR.cpp</label>
-        <link refid="Type__FX__COMPRESSOR_8cpp"/>
-      </node>
-      <node id="8">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_DISTORTION.cpp</label>
-        <link refid="Type__FX__DISTORTION_8cpp"/>
-      </node>
-      <node id="9">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ECHO.cpp</label>
-        <link refid="Type__FX__ECHO_8cpp"/>
-      </node>
-      <node id="10">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_EQ.cpp</label>
-        <link refid="Type__FX__EQ_8cpp"/>
-      </node>
-      <node id="11">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_FILTER.cpp</label>
-        <link refid="Type__FX__FILTER_8cpp"/>
-      </node>
-      <node id="12">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_FLANGER.cpp</label>
-        <link refid="Type__FX__FLANGER_8cpp"/>
-      </node>
-      <node id="13">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_OCS_FILTER.cpp</label>
-        <link refid="Type__FX__OCS__FILTER_8cpp"/>
-      </node>
-      <node id="14">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_PANNER.cpp</label>
-        <link refid="Type__FX__PANNER_8cpp"/>
-      </node>
-      <node id="15">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_PHASER.cpp</label>
-        <link refid="Type__FX__PHASER_8cpp"/>
-      </node>
-      <node id="16">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp</label>
-        <link refid="Type__FX__ROBOT_8cpp"/>
-      </node>
-      <node id="17">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp</label>
-        <link refid="Type__FX__ROLL_8cpp"/>
-      </node>
-      <node id="18">
-        <label>include/audioRender/MixMachine/MixTypes/Type_FX_TRANCE.cpp</label>
-        <link refid="Type__FX__TRANCE_8cpp"/>
-      </node>
-      <node id="19">
-        <label>include/audioRender/MixMachine/MixTypes/Type_MUSCTR.cpp</label>
-        <link refid="Type__MUSCTR_8cpp"/>
-      </node>
-      <node id="20">
-        <label>include/audioRender/MixMachine/MixTypes/Type_VOL.cpp</label>
-        <link refid="Type__VOL_8cpp"/>
-      </node>
-      <node id="22">
-        <label>include/audioRender/audioRender.cpp</label>
-        <link refid="audioRender_8cpp"/>
-      </node>
-      <node id="21">
-        <label>include/audioRender/audioRender.hpp</label>
-        <link refid="audioRender_8hpp"/>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+      </node>
+      <node id="13">
+        <label>include/MainObjects/editorObject/getall.cpp</label>
+        <link refid="getall_8cpp"/>
+      </node>
+      <node id="14">
+        <label>include/MainObjects/editorObject/getdiff.cpp</label>
+        <link refid="getdiff_8cpp"/>
+      </node>
+      <node id="15">
+        <label>include/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <link refid="getlogwithjsongraph_8cpp"/>
+      </node>
+      <node id="16">
+        <label>include/MainObjects/editorObject/go.cpp</label>
+        <link refid="go_8cpp"/>
+      </node>
+      <node id="17">
+        <label>include/MainObjects/editorObject/redo.cpp</label>
+        <link refid="redo_8cpp"/>
+      </node>
+      <node id="18">
+        <label>include/MainObjects/editorObject/render.cpp</label>
+        <link refid="render_8cpp"/>
+      </node>
+      <node id="19">
+        <label>include/MainObjects/editorObject/undo.cpp</label>
+        <link refid="undo_8cpp"/>
+      </node>
+      <node id="20">
+        <label>include/MainObjects/editorObject/updatelog.cpp</label>
+        <link refid="updatelog_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp</label>
+        <link refid="BattleDj_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/BattleDj.hpp</label>
+        <link refid="BattleDj_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="25">
-        <label>include/interface/PDJE_interface.cpp</label>
-        <link refid="PDJE__interface_8cpp"/>
+      <node id="45">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp</label>
+        <link refid="MUSIC__CTR_8cpp"/>
       </node>
-      <node id="24">
-        <label>include/interface/PDJE_interface.hpp</label>
-        <link refid="PDJE__interface_8hpp"/>
-        <childnode refid="25" relation="include">
+      <node id="2">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</label>
+        <link refid="MUSIC__CTR_8hpp"/>
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
         </childnode>
       </node>
-      <node id="26">
-        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
-        <link refid="PDJE__polyglot__wraps_8cpp"/>
+      <node id="46">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp</label>
+        <link refid="SetCue_8cpp"/>
+      </node>
+      <node id="48">
+        <label>include/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp</label>
+        <link refid="Decoder_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/audioRender/MixMachine/MiniaudioObjects/Decoder.hpp</label>
+        <link refid="Decoder_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>include/audioRender/MixMachine/MixMachine-inl.h</label>
+        <link refid="MixMachine-inl_8h"/>
+        <childnode refid="28" relation="include">
+        </childnode>
       </node>
       <node id="28">
-        <label>include/players/audioPlayer/audioPlayer.cpp</label>
-        <link refid="audioPlayer_8cpp"/>
+        <label>include/audioRender/MixMachine/MixMachine.cpp</label>
+        <link refid="MixMachine_8cpp"/>
       </node>
-      <node id="23">
-        <label>include/players/audioPlayer/audioPlayer.hpp</label>
-        <link refid="audioPlayer_8hpp"/>
-        <childnode refid="24" relation="include">
+      <node id="5">
+        <label>include/audioRender/MixMachine/MixMachine.hpp</label>
+        <link refid="MixMachine_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_COMPRESSOR.cpp</label>
+        <link refid="Type__FX__COMPRESSOR_8cpp"/>
+      </node>
+      <node id="30">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_DISTORTION.cpp</label>
+        <link refid="Type__FX__DISTORTION_8cpp"/>
+      </node>
+      <node id="31">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ECHO.cpp</label>
+        <link refid="Type__FX__ECHO_8cpp"/>
       </node>
       <node id="32">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_EQ.cpp</label>
+        <link refid="Type__FX__EQ_8cpp"/>
+      </node>
+      <node id="33">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_FILTER.cpp</label>
+        <link refid="Type__FX__FILTER_8cpp"/>
+      </node>
+      <node id="34">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_FLANGER.cpp</label>
+        <link refid="Type__FX__FLANGER_8cpp"/>
+      </node>
+      <node id="35">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_OCS_FILTER.cpp</label>
+        <link refid="Type__FX__OCS__FILTER_8cpp"/>
+      </node>
+      <node id="36">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_PANNER.cpp</label>
+        <link refid="Type__FX__PANNER_8cpp"/>
+      </node>
+      <node id="37">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_PHASER.cpp</label>
+        <link refid="Type__FX__PHASER_8cpp"/>
+      </node>
+      <node id="38">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp</label>
+        <link refid="Type__FX__ROBOT_8cpp"/>
+      </node>
+      <node id="39">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp</label>
+        <link refid="Type__FX__ROLL_8cpp"/>
+      </node>
+      <node id="40">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_TRANCE.cpp</label>
+        <link refid="Type__FX__TRANCE_8cpp"/>
+      </node>
+      <node id="41">
+        <label>include/audioRender/MixMachine/MixTypes/Type_MUSCTR.cpp</label>
+        <link refid="Type__MUSCTR_8cpp"/>
+      </node>
+      <node id="42">
+        <label>include/audioRender/MixMachine/MixTypes/Type_VOL.cpp</label>
+        <link refid="Type__VOL_8cpp"/>
+      </node>
+      <node id="44">
+        <label>include/audioRender/audioRender.cpp</label>
+        <link refid="audioRender_8cpp"/>
+      </node>
+      <node id="43">
+        <label>include/audioRender/audioRender.hpp</label>
+        <link refid="audioRender_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
+        <link refid="MusicJson_8cpp"/>
+      </node>
+      <node id="23">
+        <label>include/interface/PDJE_interface.cpp</label>
+        <link refid="PDJE__interface_8cpp"/>
+      </node>
+      <node id="22">
+        <label>include/interface/PDJE_interface.hpp</label>
+        <link refid="PDJE__interface_8hpp"/>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
+        <link refid="PDJE__polyglot__wraps_8cpp"/>
+      </node>
+      <node id="47">
         <label>include/tests/CapnpTest.cpp</label>
         <link refid="CapnpTest_8cpp"/>
       </node>
-      <node id="29">
+      <node id="26">
         <label>include/tests/audioTest.cpp</label>
         <link refid="audioTest_8cpp"/>
       </node>
-      <node id="27">
+      <node id="25">
         <label>include/tests/interfaceTest.cpp</label>
         <link refid="interfaceTest_8cpp"/>
       </node>

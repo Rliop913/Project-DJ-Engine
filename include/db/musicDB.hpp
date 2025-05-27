@@ -62,6 +62,11 @@ public:
      * @return false 
      */
     bool GenInsertSTMT(stmt& dbstate, sqlite3* db);
+
+    bool GenEditSTMT(stmt& dbstate, sqlite3* db, musdata& toEdit);
+
+    bool GenDeleteSTMT(stmt& dbstate, sqlite3* db);
+
 };
 
 

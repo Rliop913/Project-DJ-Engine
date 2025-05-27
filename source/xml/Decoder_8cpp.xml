@@ -11,9 +11,9 @@
         <link refid="Decoder_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -59,8 +59,6 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
       </node>
       <node id="13">
         <label>MixBinary.capnp.h</label>
@@ -83,16 +81,13 @@
       <node id="8">
         <label>cmath</label>
       </node>
-      <node id="18">
+      <node id="17">
         <label>filesystem</label>
       </node>
-      <node id="17">
+      <node id="16">
         <label>hwy/aligned_allocator.h</label>
       </node>
-      <node id="16">
-        <label>hwy/highway.h</label>
-      </node>
-      <node id="19">
+      <node id="18">
         <label>iostream</label>
       </node>
       <node id="6">
@@ -131,38 +126,39 @@
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>fs::path<sp/>root(root_path);</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>fs::path<sp/>fullpath<sp/>=<sp/>root.parent_path()<sp/>/<sp/>relative_path;</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>fullpath<sp/>=<sp/>fullpath.lexically_normal();</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ma_decoder_init_file(fullpath.c_str(),<sp/>&amp;dconf,<sp/>&amp;<ref refid="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" kindref="member">dec</ref>)<sp/>==<sp/>MA_SUCCESS;</highlight></codeline>
-<codeline lineno="20"><highlight class="normal">}<sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23" refid="structDecoder_1adf65b58a8571ed2815b2c170da6a89a6" refkind="member"><highlight class="normal"><ref refid="structDecoder_1adf65b58a8571ed2815b2c170da6a89a6" kindref="member">Decoder::changePos</ref>(<ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref><sp/>Pos)</highlight></codeline>
-<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ma_decoder_seek_to_pcm_frame(&amp;<ref refid="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" kindref="member">dec</ref>,<sp/>Pos)<sp/>==<sp/>MA_SUCCESS;</highlight></codeline>
-<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29" refid="structDecoder_1a1f27ca66c9fc6096fb7c06c19c4f3b30" refkind="member"><highlight class="normal"><ref refid="structDecoder_1a1f27ca66c9fc6096fb7c06c19c4f3b30" kindref="member">Decoder::getPos</ref>(<ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref>&amp;<sp/>pos)</highlight></codeline>
-<codeline lineno="30"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ma_decoder_get_cursor_in_pcm_frames(&amp;<ref refid="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" kindref="member">dec</ref>,<sp/>&amp;pos)<sp/>==<sp/>MA_SUCCESS;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35" refid="structDecoder_1af5edf9c75d6929fc76133c87166cee2f" refkind="member"><highlight class="normal"><ref refid="structDecoder_1af5edf9c75d6929fc76133c87166cee2f" kindref="member">Decoder::getRange</ref>(<ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref><sp/>numFrames,<sp/>std::vector&lt;float&gt;&amp;<sp/>buffer)</highlight></codeline>
-<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref><sp/>BufferSize<sp/>=<sp/>numFrames<sp/>*<sp/><ref refid="FrameCalc_8hpp_1ace6a11e892466500d47d1f45f042bc53" kindref="member">CHANNEL</ref>;</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(buffer.size()<sp/>&lt;<sp/>BufferSize){</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffer.resize(BufferSize);</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ma_decoder_read_pcm_frames(&amp;<ref refid="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" kindref="member">dec</ref>,<sp/>buffer.data(),<sp/>numFrames,<sp/>NULL)<sp/>!=<sp/>MA_SUCCESS){</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47" refid="structDecoder_1a8b70f4475ae0852b138d63f6d8ddb298" refkind="member"><highlight class="normal"><ref refid="structDecoder_1a8b70f4475ae0852b138d63f6d8ddb298" kindref="member">Decoder::~Decoder</ref>()</highlight></codeline>
-<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>ma_decoder_uninit(&amp;<ref refid="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" kindref="member">dec</ref>);</highlight></codeline>
-<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ma_decoder_init_file(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(fullpath.u8string().c_str()),<sp/>&amp;dconf,<sp/>&amp;<ref refid="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" kindref="member">dec</ref>)<sp/>==<sp/>MA_SUCCESS;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="structDecoder_1adf65b58a8571ed2815b2c170da6a89a6" refkind="member"><highlight class="normal"><ref refid="structDecoder_1adf65b58a8571ed2815b2c170da6a89a6" kindref="member">Decoder::changePos</ref>(<ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref><sp/>Pos)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ma_decoder_seek_to_pcm_frame(&amp;<ref refid="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" kindref="member">dec</ref>,<sp/>Pos)<sp/>==<sp/>MA_SUCCESS;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="structDecoder_1a1f27ca66c9fc6096fb7c06c19c4f3b30" refkind="member"><highlight class="normal"><ref refid="structDecoder_1a1f27ca66c9fc6096fb7c06c19c4f3b30" kindref="member">Decoder::getPos</ref>(<ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref>&amp;<sp/>pos)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ma_decoder_get_cursor_in_pcm_frames(&amp;<ref refid="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" kindref="member">dec</ref>,<sp/>&amp;pos)<sp/>==<sp/>MA_SUCCESS;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="structDecoder_1af5edf9c75d6929fc76133c87166cee2f" refkind="member"><highlight class="normal"><ref refid="structDecoder_1af5edf9c75d6929fc76133c87166cee2f" kindref="member">Decoder::getRange</ref>(<ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref><sp/>numFrames,<sp/>std::vector&lt;float&gt;&amp;<sp/>buffer)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref><sp/>BufferSize<sp/>=<sp/>numFrames<sp/>*<sp/><ref refid="FrameCalc_8hpp_1ace6a11e892466500d47d1f45f042bc53" kindref="member">CHANNEL</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(buffer.size()<sp/>&lt;<sp/>BufferSize){</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffer.resize(BufferSize);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ma_decoder_read_pcm_frames(&amp;<ref refid="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" kindref="member">dec</ref>,<sp/>buffer.data(),<sp/>numFrames,<sp/>NULL)<sp/>!=<sp/>MA_SUCCESS){</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="structDecoder_1a8b70f4475ae0852b138d63f6d8ddb298" refkind="member"><highlight class="normal"><ref refid="structDecoder_1a8b70f4475ae0852b138d63f6d8ddb298" kindref="member">Decoder::~Decoder</ref>()</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>ma_decoder_uninit(&amp;<ref refid="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" kindref="member">dec</ref>);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="include/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp"/>
   </compounddef>

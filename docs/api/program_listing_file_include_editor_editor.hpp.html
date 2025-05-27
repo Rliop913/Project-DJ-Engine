@@ -81,11 +81,46 @@
 <p>↰ <a class="reference internal" href="file_include_editor_editor.hpp.html#file-include-editor-editor-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/editor/editor.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;git2.h&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;jsonWrapper.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gitWrapper.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;dbRoot.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
+
 
 <span class="k">class</span><span class="w"> </span><span class="nc">PDJE_Editor</span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">pt</span><span class="p">;</span>
+<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">mixp</span><span class="p">;</span>
+<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">notep</span><span class="p">;</span>
+<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">musicp</span><span class="p">;</span>
+<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">kvp</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">email</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">PDJE_GitHandler</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_JSONHandler</span><span class="o">&lt;</span><span class="n">MIX_W</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">mixHandle</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">PDJE_GitHandler</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_JSONHandler</span><span class="o">&lt;</span><span class="n">NOTE_W</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">noteHandle</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">PDJE_GitHandler</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_JSONHandler</span><span class="o">&lt;</span><span class="n">KV_W</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">KVHandler</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">MusicHandleStruct</span><span class="p">{</span>
+<span class="w">        </span><span class="n">PDJE_GitHandler</span><span class="w"> </span><span class="n">gith</span><span class="p">;</span>
+<span class="w">        </span><span class="n">PDJE_JSONHandler</span><span class="o">&lt;</span><span class="n">MUSIC_W</span><span class="o">&gt;</span><span class="w"> </span><span class="n">jsonh</span><span class="p">;</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">musicName</span><span class="p">;</span>
+<span class="w">        </span><span class="n">MusicHandleStruct</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_email</span><span class="p">)</span><span class="o">:</span>
+<span class="w">        </span><span class="n">gith</span><span class="p">(</span><span class="n">auth_name</span><span class="p">,</span><span class="w"> </span><span class="n">auth_email</span><span class="p">),</span><span class="w"> </span><span class="n">jsonh</span><span class="p">(){}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">MusicHandleStruct</span><span class="o">&gt;</span><span class="w"> </span><span class="n">musicHandle</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">AddMusicConfig</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">NewMusicName</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">openProject</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">projectPath</span><span class="p">);</span>
 
+<span class="w">    </span><span class="n">PDJE_Editor</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_email</span><span class="p">)</span><span class="o">:</span>
+<span class="w">    </span><span class="n">mixHandle</span><span class="p">{</span><span class="n">PDJE_GitHandler</span><span class="p">(</span><span class="n">auth_email</span><span class="p">,</span><span class="w"> </span><span class="n">auth_name</span><span class="p">),</span><span class="w"> </span><span class="n">PDJE_JSONHandler</span><span class="o">&lt;</span><span class="n">MIX_W</span><span class="o">&gt;</span><span class="p">{}},</span>
+<span class="w">    </span><span class="n">noteHandle</span><span class="p">{</span><span class="n">PDJE_GitHandler</span><span class="p">(</span><span class="n">auth_email</span><span class="p">,</span><span class="w"> </span><span class="n">auth_name</span><span class="p">),</span><span class="w"> </span><span class="n">PDJE_JSONHandler</span><span class="o">&lt;</span><span class="n">NOTE_W</span><span class="o">&gt;</span><span class="p">{}},</span>
+<span class="w">    </span><span class="n">KVHandler</span><span class="p">{</span><span class="n">PDJE_GitHandler</span><span class="p">(</span><span class="n">auth_email</span><span class="p">,</span><span class="w"> </span><span class="n">auth_name</span><span class="p">),</span><span class="w"> </span><span class="n">PDJE_JSONHandler</span><span class="o">&lt;</span><span class="n">KV_W</span><span class="o">&gt;</span><span class="p">{}},</span>
+<span class="w">    </span><span class="n">name</span><span class="p">(</span><span class="n">auth_name</span><span class="p">),</span>
+<span class="w">    </span><span class="n">email</span><span class="p">(</span><span class="n">auth_email</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="o">~</span><span class="n">PDJE_Editor</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></div>
 </div>

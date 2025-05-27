@@ -30,11 +30,18 @@ Includes
 --------
 
 
+- ``MusicControlPannel-inl.h`` (:ref:`file_include_audioRender_ManualMix_MusicControlPannel-inl.h`)
+
 - ``MusicControlPannel.hpp`` (:ref:`file_include_audioRender_ManualMix_MusicControlPannel.hpp`)
 
-- ``iostream``
 
 
 
 
+
+Functions
+---------
+
+
+- :ref:`exhale_function_MusicControlPannel_8cpp_1abcdde12a1996c1207e1dd830cc2643ff`
 

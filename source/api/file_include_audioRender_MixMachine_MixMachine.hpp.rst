@@ -56,6 +56,8 @@ Included By
 -----------
 
 
+- :ref:`file_include_MainObjects_audioPlayer_audioPlayer.hpp`
+
 - :ref:`file_include_audioRender_MixMachine_MixMachine.cpp`
 
 - :ref:`file_include_audioRender_MixMachine_MixTypes_Type_FX_COMPRESSOR.cpp`
@@ -87,8 +89,6 @@ Included By
 - :ref:`file_include_audioRender_MixMachine_MixTypes_Type_VOL.cpp`
 
 - :ref:`file_include_audioRender_audioRender.hpp`
-
-- :ref:`file_include_players_audioPlayer_audioPlayer.hpp`
 
 - :ref:`file_include_tests_audioTest.cpp`
 

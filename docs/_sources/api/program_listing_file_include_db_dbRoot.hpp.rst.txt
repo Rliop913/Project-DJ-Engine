@@ -39,10 +39,21 @@ Program Listing for File dbRoot.hpp
        bool
        operator<=(DBType& insertObject);
    
+       template<typename DBType>
+       bool
+       DeleteData(DBType& deleteObject);//to-do impl
+   
+       template<typename DBType>
+       bool
+       EditData(DBType& searchObject, DBType& editObject);//to-do impl
+   
+   
+   
        bool openDB(const std::string& dbPath);
        
        const std::string 
        getRoot(){
+           
            return ROOT_PATH;
        }
    
@@ -75,6 +86,36 @@ Program Listing for File dbRoot.hpp
        if(insertObject.GenInsertSTMT(dbstate, db)){
            auto insertRes = sqlite3_step(dbstate.S);
            if(insertRes != SQLITE_DONE){
+               return false;
+           }
+           return true;
+       }
+       return false;
+   }
+   
+   template<typename DBType>
+   bool
+   litedb::DeleteData(DBType& deleteObject)
+   {
+       stmt dbstate = stmt();
+       if(deleteObject.GenDeleteSTMT(dbstate, db)){
+           auto deleteRes = sqlite3_step(dbstate.S);
+           if(deleteRes != SQLITE_DONE){
+               return false;
+           }
+           return true;
+       }
+       return false;
+   }
+   
+   template<typename DBType>
+   bool
+   litedb::EditData(DBType& searchObject, DBType& editObject)
+   {
+       stmt dbstate = stmt();
+       if(searchObject.GenEditSTMT(dbstate, db, editObject)){
+           auto editRes = sqlite3_step(dbstate.S);
+           if(editRes != SQLITE_DONE){
                return false;
            }
            return true;

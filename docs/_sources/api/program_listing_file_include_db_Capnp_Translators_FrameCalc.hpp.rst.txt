@@ -18,10 +18,14 @@ Program Listing for File FrameCalc.hpp
    #include "CapnpBinary.hpp"
    
    
-   #include <hwy/highway.h>
+   
+   
+   
+   // #include <hwy/highway.h>
    #include <hwy/aligned_allocator.h>
    
-   namespace hn = hwy::HWY_NAMESPACE;
+   
+   // namespace hn = hwy::HWY_NAMESPACE;
    
    
    using SIMD_FLOAT    = std::vector<float, hwy::AlignedAllocator<float>>;

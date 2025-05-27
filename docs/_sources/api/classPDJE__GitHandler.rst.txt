@@ -3,7 +3,7 @@
 Class PDJE_GitHandler
 =====================
 
-- Defined in :ref:`file_include_editor_gitWrapper_gitWrapper.hpp`
+- Defined in :ref:`file_include_editor_featureWrapper_GitWrap_gitWrapper.hpp`
 
 
 Class Documentation
