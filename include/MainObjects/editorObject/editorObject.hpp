@@ -59,7 +59,7 @@ public:
     void demoPlayInit(
         std::optional<audioPlayer>& player, 
         unsigned int frameBufferSize, 
-        trackdata& td);
+        const std::string& trackTitle);
 
     bool pushToRootDB(litedb& ROOTDB, const std::string& trackTitleToPush);
 

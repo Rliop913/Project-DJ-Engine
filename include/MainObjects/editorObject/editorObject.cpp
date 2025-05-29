@@ -32,14 +32,18 @@ editorObject::makeTrackData(
 void 
 editorObject::demoPlayInit(
     std::optional<audioPlayer>& player, 
-    unsigned int frameBufferSize, trackdata& td)
+    unsigned int frameBufferSize, const std::string& trackTitle)
 {
     if(player.has_value()){
         player.reset();
     }
+    trackdata tdtemp(trackTitle);
+    auto searchedTd = projectLocalDB->GetBuildedProject() << tdtemp;
+    if(!searchedTd.has_value()) return;
+    if(searchedTd->empty()) return;
     player.emplace(
         projectLocalDB->GetBuildedProject(),
-        td,
+        searchedTd->front(),
         frameBufferSize,
         true
     );
