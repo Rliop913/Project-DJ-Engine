@@ -49,11 +49,11 @@ enum PLAY_MODE{
  */
 class PDJE{
 private:
+public:
     /// @brief this is the Root Database.
     /// check before use.
     /// it contains music metadatas and trackdatas.
     std::optional<litedb> DBROOT;
-public:
     /**
      * @brief Construct a new PDJE object
      * 
