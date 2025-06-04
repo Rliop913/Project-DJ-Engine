@@ -31,6 +31,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/include/MainObjects/editorObject/go.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/MainObjects/editorObject/getdiff.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/MainObjects/editorObject/editorObject.cpp
 
+${CMAKE_CURRENT_SOURCE_DIR}/include/MainObjects/editorObject/render.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/MainObjects/tempDBObject/tempDB.cpp
 
 
