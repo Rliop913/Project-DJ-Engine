@@ -43,5 +43,5 @@ editorObject::render(const std::string& trackTitle, litedb& ROOTDB)
         }
     }
 
-    projectLocalDB->BuildProject(td, mds);
+    return projectLocalDB->BuildProject(td, mds);
 }
