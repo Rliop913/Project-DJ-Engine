@@ -3,25 +3,6 @@
 bool
 editorObject::render(const std::string& trackTitle, litedb& ROOTDB)
 {
-    // trackdata td;
-    // auto mixRendered = E_obj->mixHandle.second.render();
-    // auto mixData = mixRendered->Wp->getDatas();
-    // std::unordered_map<std::string, std::string> titles;
-    // for(unsigned long long i=0; i < mixData.size();++i){
-    //     if(mixData[i].getType() == TypeEnum::LOAD){
-    //         titles.insert(std::pair(mixData[i].getFirst().cStr(), mixData[i].getSecond().cStr()));
-    //     }
-    // }
-    
-    // td.trackTitle = trackTitle;
-    // td.mixBinary = mixRendered->out();
-    // td.noteBinary = E_obj->noteHandle.second.render()->out();
-    // for(auto& i : titles){
-    //     td.cachedMixList+= (i.first + ",");
-    // }
-    // if(!titles.empty()){
-    //     td.cachedMixList.pop_back();
-    // }
     std::unordered_map<std::string, std::string> titles;
     auto td = makeTrackData(trackTitle, titles);
     
@@ -31,7 +12,8 @@ editorObject::render(const std::string& trackTitle, litedb& ROOTDB)
         
         auto rendered = i.jsonh.render();
         mds.back().title = i.musicName;
-        mds.back().bpmBinary = rendered->out();
+        auto rdout = rendered->out();
+        mds.back().bpmBinary.assign(rdout.begin(), rdout.end()); 
         mds.back().composer = i.jsonh["COMPOSER"];
         mds.back().musicPath = i.jsonh["PATH"];
         mds.back().firstBar = i.jsonh["FIRST_BAR"];
@@ -55,7 +37,7 @@ editorObject::render(const std::string& trackTitle, litedb& ROOTDB)
                 fs::relative(
                     fs::absolute(fs::path(ROOTDB.getRoot()).parent_path() / fromRoot.musicPath),
                     projectRoot
-                );
+                ).string();
                 mds.push_back(fromRoot);
             }
         }
