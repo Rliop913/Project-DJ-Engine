@@ -3,18 +3,18 @@
 #include <string>
 
 #include "dbState.hpp"
-
+#include "PDJE_EXPORT_SETTER.hpp"
 /**
  * @brief the music meta data's struct
  * 
  */
-struct trackdata{
+struct PDJE_API trackdata{
 public:
-    std::string trackTitle;
+    std::u8string trackTitle;
     BIN mixBinary;
     BIN noteBinary;
     /// @brief Included music list
-    std::string cachedMixList;
+    std::u8string cachedMixList;
 
     /**
      * @brief Constructor. typically used for returning search results.
@@ -32,7 +32,7 @@ public:
      * @param trackTitle__ the title of the track
      */
     trackdata(
-        const std::string& trackTitle__ = ""
+        const std::u8string& trackTitle__ = u8""
     );
 
     /**

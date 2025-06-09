@@ -23,7 +23,7 @@ enum SoundTouchType{
  * @brief Data structure required for implementing DJing FX
  * 
  */
-struct DJ_JOBS{
+struct PDJE_API DJ_JOBS{
     unsigned long sourcePoint;
     unsigned long attachIn;
     unsigned long attachOut;

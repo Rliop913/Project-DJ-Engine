@@ -1,9 +1,9 @@
 #include "editorObject.hpp"
 
 bool
-editorObject::render(const std::string& trackTitle, litedb& ROOTDB)
+editorObject::render(const std::u8string& trackTitle, litedb& ROOTDB)
 {
-    std::unordered_map<std::string, std::string> titles;
+    std::unordered_map<std::u8string, std::u8string> titles;
     auto td = makeTrackData(trackTitle, titles);
     
     std::vector<musdata> mds;
@@ -23,21 +23,27 @@ editorObject::render(const std::string& trackTitle, litedb& ROOTDB)
         catch(...){
             continue;
         }
-        titles[i.musicName] = "";
+        titles[i.musicName] = u8"";
     }
 
     for(auto& i : titles){
-        if(i.second != ""){
+        if(i.second != u8""){
             auto findFromRoot = musdata(i.first, i.second);
             auto mus = ROOTDB<<findFromRoot;
             if(mus.has_value()){
                 if(mus->empty()) continue;
                 musdata fromRoot = mus->front();
-                fromRoot.musicPath =
-                fs::relative(
-                    fs::absolute(fs::path(ROOTDB.getRoot()).parent_path() / fromRoot.musicPath),
-                    projectRoot
-                ).string();
+                try{
+                    fromRoot.musicPath =
+                    fs::relative(
+                        fs::absolute(fs::path(ROOTDB.getRoot()).parent_path() / fromRoot.musicPath),
+                        projectRoot
+                    ).u8string();
+                }
+                catch(std::exception e){
+                    RECENT_ERR = e.what();
+                    return false;
+                }
                 mds.push_back(fromRoot);
             }
         }

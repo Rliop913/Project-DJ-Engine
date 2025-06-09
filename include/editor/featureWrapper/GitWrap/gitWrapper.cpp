@@ -41,7 +41,7 @@ GitWrapper::diff(const gitwrap::commit& oldCommit, const gitwrap::commit& newCom
 }
 
 bool
-GitWrapper::add(const std::string& path)
+GitWrapper::add(const std::u8string& path)
 {
     if(addIndex.has_value()){
         addIndex.reset();
@@ -57,14 +57,16 @@ GitWrapper::add(const std::string& path)
 
 
 bool
-GitWrapper::open(const std::string& path)
+GitWrapper::open(const std::u8string& path)
 {
-    if(git_repository_open(&repo, path.c_str()) == 0){
+    auto strPath = std::string(path.begin(), path.end());
+    if(git_repository_open(&repo, strPath.c_str()) == 0){
         handleBranch.emplace(repo);
         return true;
     }
     else{
-        if(git_repository_init(&repo, path.c_str(), false) == 0){
+        auto res = git_repository_init(&repo, strPath.c_str(), false);
+        if(res == 0){
             handleBranch.emplace(repo);
             return true;
         }

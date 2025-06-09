@@ -7,6 +7,7 @@
 #include "musicDB.hpp"
 #include "trackDB.hpp"
 
+#include "PDJE_EXPORT_SETTER.hpp"
 /// music data vector
 using MUS_VEC = std::vector<musdata>;
 /// music data vector. check before use.
@@ -21,10 +22,10 @@ using MAYBE_TRACK_VEC = std::optional<TRACK_VEC>;
  * @brief the Root database Object
  * 
  */
-class litedb{
+class PDJE_API litedb{
 private:
     /// the path to the database
-    std::string ROOT_PATH;
+    std::u8string ROOT_PATH;
     /// sqlite pointer
     sqlite3* db = nullptr;
     /// @brief checkes tables.
@@ -71,14 +72,14 @@ public:
      * @return true 
      * @return false 
      */
-    bool openDB(const std::string& dbPath);
+    bool openDB(const std::u8string& dbPath);
     
     /**
      * @brief Get path to Root database
      * 
      * @return const std::string 
      */
-    const std::string 
+    const std::u8string 
     getRoot(){
         
         return ROOT_PATH;

@@ -4,7 +4,7 @@
 #include "dbRoot.hpp"
 #include "NoteTranslator.hpp"
 #include "editorObject.hpp"
-
+#include "PDJE_EXPORT_SETTER.hpp"
 /**
  * @brief the play mode
  * you can use this to initialize the player(music handler)
@@ -47,7 +47,7 @@ enum PLAY_MODE{
  * \enddot
  * 
  */
-class PDJE{
+class PDJE_API PDJE{
 private:
 public:
     /// @brief this is the Root Database.
@@ -59,7 +59,7 @@ public:
      * 
      * @param rootPath the path to the Root Database. 
      */
-    PDJE(const std::string& rootPath);
+    PDJE(const std::u8string& rootPath);
     ~PDJE() = default;
     
     /// this is the music handler. you can play music, stop music, fx control, play/stop music manually in realtime.
@@ -85,7 +85,7 @@ public:
     InitEditor(
         const std::string &auth_name, 
         const std::string &auth_email,
-        const std::string& projectRoot
+        const std::u8string& projectRoot
     );
     /**
      * @brief Parse Note data and calls received function.
@@ -112,8 +112,8 @@ public:
      */
     MUS_VEC 
     SearchMusic(
-        const std::string& Title, 
-        const std::string& composer, 
+        const std::u8string& Title, 
+        const std::u8string& composer, 
         const double bpm = -1);
     /**
      * @brief searches track
@@ -121,7 +121,7 @@ public:
      * @param Title the tile of the track. send "" to skip filter
      * @return TRACK_VEC the array of the track_data. find what you want
      */
-    TRACK_VEC SearchTrack(const std::string& Title);
+    TRACK_VEC SearchTrack(const std::u8string& Title);
     /**
      * @brief music handler getter api for binded codes.
      * this function gives you a music handler.
@@ -139,7 +139,7 @@ public:
  * the argsetter is basically unordered_map. but the binded languges can't use that, so this wrapper exists.
  * with this, you can control fx in realtime.
  */
-class ARGSETTER_WRAPPER{
+class PDJE_API ARGSETTER_WRAPPER{
 private:
     FXControlPannel* fxp;
 public:

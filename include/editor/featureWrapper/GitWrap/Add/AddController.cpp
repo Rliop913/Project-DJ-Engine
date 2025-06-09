@@ -17,12 +17,13 @@ AddController::open(git_repository* repo)
 }
 
 bool 
-AddController::addFile(const std::string& path) 
+AddController::addFile(const std::u8string& path) 
 {
+    auto strPath = std::string(path.begin(), path.end());
     if (!index) {
         return false;
     }
-    if (git_index_add_bypath(index, path.c_str()) != 0) {
+    if (git_index_add_bypath(index, strPath.c_str()) != 0) {
         return false;
     }
     if (git_index_write(index) != 0) {

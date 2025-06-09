@@ -1,12 +1,13 @@
 #include "editorObject.hpp"
 
-template<>
+template<> 
+PDJE_API
 bool
 editorObject::AddLine(const EDIT_ARG_MUSIC& obj)
 {
     
     for(auto& i : E_obj->musicHandle){
-        if(i.musicName == obj.musicName){
+        if(i.musicName == TO_USTR(obj.musicName)){
             i.jsonh.add(obj.arg);
             return DefaultSaveFuntion<EDIT_ARG_MUSIC>(i, obj);
         }
@@ -14,7 +15,8 @@ editorObject::AddLine(const EDIT_ARG_MUSIC& obj)
     return false;
 }
 
-template<>
+template<> 
+PDJE_API
 bool
 editorObject::AddLine(const EDIT_ARG_MIX& obj)
 {
@@ -23,7 +25,8 @@ editorObject::AddLine(const EDIT_ARG_MIX& obj)
     return DefaultSaveFuntion<EDIT_ARG_MIX>();
 }
 
-template<>
+template<> 
+PDJE_API
 bool
 editorObject::AddLine(const EDIT_ARG_NOTE& obj)
 {
@@ -33,7 +36,8 @@ editorObject::AddLine(const EDIT_ARG_NOTE& obj)
 }
 
 
-template<>
+template<> 
+PDJE_API
 bool
 editorObject::AddLine(const EDIT_ARG_KEY_VALUE& obj)
 {
@@ -43,7 +47,7 @@ editorObject::AddLine(const EDIT_ARG_KEY_VALUE& obj)
 }
 
 bool 
-editorObject::AddLine(const std::string& musicName, const std::string& firstBar)
+editorObject::AddLine(const std::u8string& musicName, const std::string& firstBar)
 {
     for(auto& i : E_obj->musicHandle){
         if(i.musicName == musicName){

@@ -24,7 +24,7 @@ class BlameController{
         BlameController() = default;
         bool BlameOpen(
             git_repository *repo, 
-            const std::string& path, 
+            const std::u8string& path, 
             git_blame_options *options = nullptr);
         
         MAYBE_BLAME_RESULT operator[](unsigned int idx);

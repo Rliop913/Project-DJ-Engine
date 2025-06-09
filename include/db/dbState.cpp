@@ -20,9 +20,15 @@ stmt::bind_null(int idx)
 int 
 stmt::bind_text(int idx, std::string& str)
 {
+    
     return sqlite3_bind_text(S, idx, str.c_str(), str.size(), SQLITE_STATIC);
 }
-
+int 
+stmt::bind_u8text(int idx, std::u8string& str)
+{
+    auto tempStr = std::string(str.begin(), str.end());
+    return sqlite3_bind_text(S, idx, tempStr.c_str(), tempStr.size(), SQLITE_STATIC);
+}
 int 
 stmt::bind_blob(int idx, BIN& bin)
 {

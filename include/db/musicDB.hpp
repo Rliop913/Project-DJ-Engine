@@ -4,16 +4,17 @@
 #include <sqlite3.h>
 
 #include "dbState.hpp"
+#include "PDJE_EXPORT_SETTER.hpp"
 
 /**
  * @brief the music meta data's struct
  * 
  */
-struct musdata{
+struct PDJE_API musdata{
 public:
-    std::string title;
-    std::string composer;
-    std::string musicPath;
+    std::u8string title;
+    std::u8string composer;
+    std::u8string musicPath;
     BIN bpmBinary;
     double bpm = -1.0;
     /// @brief this means the first beat's position. The measurement unit is a PCM frame. 
@@ -38,9 +39,9 @@ public:
      * @param bpm__ The BPM (beats per minute) of the music. Use a negative value to ignore this field.
      */
     musdata(
-        const std::string& title__ = "",
-        const std::string& composer__ = "",
-        const std::string& musicPath__ = "",
+        const std::u8string& title__ = u8"",
+        const std::u8string& composer__ = u8"",
+        const std::u8string& musicPath__ = u8"",
         const double bpm__ = -1.0
     );
     /**

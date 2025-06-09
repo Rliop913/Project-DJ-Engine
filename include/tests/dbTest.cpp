@@ -5,11 +5,11 @@ int
 main()
 {
     litedb dbr = litedb();
-    if(!dbr.openDB("./tempdb.db")){
+    if(!dbr.openDB(u8"./tempdb.db")){
         return 1;
     }
-    auto td = trackdata("first");
-    auto md = musdata("WTC", "TEST", "./WTC.wav", 175);
+    auto td = trackdata(u8"first");
+    auto md = musdata(u8"WTC", u8"TEST", u8"./WTC.wav", 175);
     md.firstBar = "1056";
     auto musicBinary = CapWriter<MusicBinaryCapnpData>();
     musicBinary.makeNew();

@@ -7,7 +7,8 @@
 #include <miniaudio.h>
 
 #include "FrameCalc.hpp"
-
+#define TO_USTR(STR) std::u8string(STR.begin(), STR.end())
+#define TO_STR(USTR) std::string(USTR.begin(), USTR.end())
 // using MAYBE_FRAME = std::optional<std::vector<float>>;
 
 using FRAME_POS = unsigned long long;
@@ -15,9 +16,9 @@ using FRAME_POS = unsigned long long;
  * @brief miniaudio decoder wrapper class
  * 
  */
-struct Decoder{
+struct PDJE_API Decoder{
     ma_decoder dec;
-
+    std::vector<uint8_t> musicBinary;
     Decoder();
     ~Decoder();
     /**
@@ -28,7 +29,7 @@ struct Decoder{
      * @return true 
      * @return false 
      */
-    bool init(const std::string& song_path, const std::string& root_path);
+    bool init(const std::u8string& song_path, const std::u8string& root_path);
     /**
      * @brief changes the playback position
      * 

@@ -11,17 +11,19 @@ return false;\
 
 trackdata::trackdata(stmt* dbstate)
 {
-    trackTitle = dbstate->colGet<COL_TYPE::TEXT, std::string>(0);
+    auto tempTrackTitle = dbstate->colGet<COL_TYPE::TEXT, std::string>(0);
     
     mixBinary = dbstate->colGet<COL_TYPE::BLOB, BIN>(1);
     
     noteBinary = dbstate->colGet<COL_TYPE::BLOB, BIN>(2);
     
-    cachedMixList = dbstate->colGet<COL_TYPE::TEXT, std::string>(3);
+    auto tempCachedMixList = dbstate->colGet<COL_TYPE::TEXT, std::string>(3);
+    trackTitle = std::u8string(tempTrackTitle.begin(), tempTrackTitle.end());
+    cachedMixList = std::u8string(tempCachedMixList.begin(), tempCachedMixList.end());
     
 }
 
-trackdata::trackdata(const std::string& trackTitle__)
+trackdata::trackdata(const std::u8string& trackTitle__)
 :trackTitle(trackTitle__)
 {
     
@@ -38,11 +40,11 @@ trackdata::GenSearchSTMT(stmt& dbstate, sqlite3* db)
     if(!dbstate.activate(db)){
         return false;
     }
-    if(trackTitle == ""){
+    if(trackTitle == u8""){
         CHK_BIND((dbstate.bind_int(1, -1)))
     }
     CHK_BIND(
-    dbstate.bind_text(2, trackTitle)
+    dbstate.bind_u8text(2, trackTitle)
     )
     
     return true;
@@ -61,10 +63,10 @@ trackdata::GenInsertSTMT(stmt& dbstate, sqlite3* db)
     if(!dbstate.activate(db)){
         return false;
     }
-    CHK_BIND( dbstate.bind_text(1, trackTitle));
+    CHK_BIND( dbstate.bind_u8text(1, trackTitle));
     CHK_BIND( dbstate.bind_blob(2, mixBinary));
     CHK_BIND( dbstate.bind_blob(3, noteBinary));
-    CHK_BIND( dbstate.bind_text(4, cachedMixList));
+    CHK_BIND( dbstate.bind_u8text(4, cachedMixList));
     return true;
 }
 
@@ -80,11 +82,11 @@ trackdata::GenEditSTMT(stmt& dbstate, sqlite3* db, trackdata& toEdit)
 
     if(!dbstate.activate(db)) return false;
     
-    CHK_BIND(dbstate.bind_text  (1, toEdit.trackTitle   ))
+    CHK_BIND(dbstate.bind_u8text  (1, toEdit.trackTitle   ))
     CHK_BIND(dbstate.bind_blob  (2, toEdit.mixBinary    ))
     CHK_BIND(dbstate.bind_blob  (3, toEdit.noteBinary   ))
-    CHK_BIND(dbstate.bind_text  (4, toEdit.cachedMixList))
-    CHK_BIND(dbstate.bind_text  (5, trackTitle          ))
+    CHK_BIND(dbstate.bind_u8text  (4, toEdit.cachedMixList))
+    CHK_BIND(dbstate.bind_u8text  (5, trackTitle          ))
     
     return true;
 
@@ -101,7 +103,7 @@ trackdata::GenDeleteSTMT(stmt& dbstate, sqlite3* db)
 
     if(!dbstate.activate(db)) return false;
 
-    CHK_BIND(dbstate.bind_text(1, trackTitle))
+    CHK_BIND(dbstate.bind_u8text(1, trackTitle))
     
     return true;
 }

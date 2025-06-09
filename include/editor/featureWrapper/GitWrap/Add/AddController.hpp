@@ -9,6 +9,6 @@ public:
     AddController() = default;
     // 파일을 인덱스에 추가. 성공 시 true 반환
     bool open(git_repository* repo);
-    bool addFile(const std::string& path);
+    bool addFile(const std::u8string& path);
     ~AddController();
 };

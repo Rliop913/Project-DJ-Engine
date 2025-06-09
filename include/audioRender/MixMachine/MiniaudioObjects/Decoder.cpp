@@ -1,24 +1,35 @@
 #include "Decoder.hpp"
 #include <filesystem>
+#include <fstream>
 
 Decoder::Decoder()
 {
     ;
 }
 
-#include <iostream>
 bool 
-Decoder::init(const std::string& song_path, const std::string& root_path)
+Decoder::init(const std::u8string& song_path, const std::u8string& root_path)
 {
     ma_decoder_config dconf = ma_decoder_config_init(ma_format_f32, CHANNEL, SAMPLERATE);
     namespace fs = std::filesystem;
-    fs::path relative_path(song_path);
-    fs::path root(root_path);
+    fs::path relative_path = fs::u8path(song_path);
+    fs::path root = fs::u8path(root_path);
     fs::path fullpath = root.parent_path() / relative_path;
     fullpath = fullpath.lexically_normal();
+    
+    std::ifstream musicFile(fullpath, std::ios::binary);
+    std::vector<uint8_t> fileData {
+        std::istreambuf_iterator<char>(musicFile),
+        std::istreambuf_iterator<char>()
+    };
 
-    return ma_decoder_init_file(reinterpret_cast<const char*>(fullpath.u8string().c_str()), &dconf, &dec) == MA_SUCCESS;
-}   
+    if(fileData.empty()) return false;
+
+    musicBinary = std::move(fileData);
+    return ma_decoder_init_memory(musicBinary.data(), musicBinary.size(), &dconf, &dec) == MA_SUCCESS;
+
+    // return ma_decoder_init_file(reinterpret_cast<const char*>(fullpath.u8string().c_str()), &dconf, &dec) == MA_SUCCESS;
+}
 
 bool
 Decoder::changePos(FRAME_POS Pos)

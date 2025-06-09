@@ -4,7 +4,7 @@
 namespace fs = std::filesystem;
 
 bool
-PDJE_Editor::openProject(const std::string& projectPath)
+PDJE_Editor::openProject(const std::u8string& projectPath)
 {
     pt = fs::path(projectPath);
     mixp = pt / "Mixes";
@@ -26,9 +26,9 @@ PDJE_Editor::openProject(const std::string& projectPath)
             !fs::exists(musicp) || !fs::is_directory(musicp)
         ){ return false; }
     }
-    if( !mixHandle.first.Open(mixp.string())|| !mixHandle.second.load(mixp.string()) ||
-        !KVHandler.first.Open(mixp.string())|| !KVHandler.second.load(mixp.string()) ||
-        !noteHandle.first.Open(notep.string()) || !noteHandle.second.load(notep.string()))
+    if( !mixHandle.first->Open(mixp.u8string())|| !mixHandle.second.load(mixp.u8string()) ||
+        !KVHandler.first->Open(kvp.u8string())|| !KVHandler.second.load(kvp.u8string()) ||
+        !noteHandle.first->Open(notep.u8string()) || !noteHandle.second.load(notep.u8string()))
         { return false; }
 
     for(const auto& musicSubpath : fs::directory_iterator(musicp)){
@@ -36,9 +36,9 @@ PDJE_Editor::openProject(const std::string& projectPath)
             
 
             musicHandle.emplace_back(name, email);
-            musicHandle.back().musicName = musicSubpath.path().filename().string();
-            if( !musicHandle.back().gith.Open(musicSubpath.path().string()) ||
-                !musicHandle.back().jsonh.load(musicSubpath.path().string())){
+            musicHandle.back().musicName = musicSubpath.path().filename().u8string();
+            if( !musicHandle.back().gith->Open(musicSubpath.path().u8string()) ||
+                !musicHandle.back().jsonh.load(musicSubpath.path().u8string())){
                     return false;
                 }
         }
@@ -48,9 +48,9 @@ PDJE_Editor::openProject(const std::string& projectPath)
 }
 
 bool
-PDJE_Editor::AddMusicConfig(const std::string& NewMusicName)
+PDJE_Editor::AddMusicConfig(const std::u8string& NewMusicName)
 {
-    auto newpath = musicp / NewMusicName;
+    auto newpath = musicp / fs::path(NewMusicName);
     if(fs::exists(newpath)){
         return false;
     }
@@ -59,8 +59,8 @@ PDJE_Editor::AddMusicConfig(const std::string& NewMusicName)
         if(fs::exists(newpath)){
             musicHandle.emplace_back(name, email);
             musicHandle.back().musicName = NewMusicName;
-            if( !musicHandle.back().gith.Open(newpath.string()) ||
-                !musicHandle.back().jsonh.load(newpath.string())){
+            if( !musicHandle.back().gith->Open(newpath.u8string()) ||
+                !musicHandle.back().jsonh.load(newpath.u8string())){
                     return false;
                 }
             else return true;

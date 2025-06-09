@@ -4,8 +4,8 @@
 
 trackdata
 editorObject::makeTrackData(
-    const std::string& trackTitle, 
-    std::unordered_map<std::string, std::string>& titles)
+    const std::u8string& trackTitle, 
+    std::unordered_map<std::u8string, std::u8string>& titles)
 {
     trackdata td;
     auto mixRendered = E_obj->mixHandle.second.render();
@@ -13,7 +13,9 @@ editorObject::makeTrackData(
     
     for(unsigned long long i=0; i < mixData.size();++i){
         if(mixData[i].getType() == TypeEnum::LOAD){
-            titles.insert(std::pair(mixData[i].getFirst().cStr(), mixData[i].getSecond().cStr()));
+            auto first = std::string(mixData[i].getFirst().cStr());
+            auto second = std::string(mixData[i].getSecond().cStr());
+            titles.insert(std::pair(TO_USTR(first), TO_USTR(second)));
         }
     }
     
@@ -21,7 +23,7 @@ editorObject::makeTrackData(
     td.mixBinary = mixRendered->out();
     td.noteBinary = E_obj->noteHandle.second.render()->out();
     for(auto& i : titles){
-        td.cachedMixList+= (i.first + ",");
+        td.cachedMixList+= (i.first + u8",");
     }
     if(!titles.empty()){
         td.cachedMixList.pop_back();
@@ -32,7 +34,7 @@ editorObject::makeTrackData(
 void 
 editorObject::demoPlayInit(
     std::optional<audioPlayer>& player, 
-    unsigned int frameBufferSize, const std::string& trackTitle)
+    unsigned int frameBufferSize, const std::u8string& trackTitle)
 {
     if(player.has_value()){
         player.reset();
@@ -72,16 +74,28 @@ editorObject::DESTROY_PROJECT()
 
 bool
 editorObject::ConfigNewMusic(
-    const std::string& NewMusicName, 
-    const std::string& composer,
-    const std::string& musicPath,
+    const std::u8string& NewMusicName, 
+    const std::u8string& composer,
+    const std::u8string& musicPath,
     const std::string& firstBar)
 {
     if( E_obj->AddMusicConfig(NewMusicName)){
 
         E_obj->musicHandle.back().jsonh["TITLE"] = NewMusicName;
         E_obj->musicHandle.back().jsonh["COMPOSER"] = composer;
-        E_obj->musicHandle.back().jsonh["PATH"] = musicPath;
+        try
+        {
+            E_obj->musicHandle.back().jsonh["PATH"] = 
+            fs::relative(
+                fs::path(musicPath),
+                projectRoot
+            );
+        }
+        catch(const std::exception& e)
+        {
+            RECENT_ERR = e.what();
+            return false;
+        }
         E_obj->musicHandle.back().jsonh["FIRST_BAR"] = firstBar;
         return true;
     }
@@ -91,7 +105,7 @@ editorObject::ConfigNewMusic(
 }
 
 bool 
-editorObject::Open(const std::string& projectPath)
+editorObject::Open(const std::u8string& projectPath)
 {
     projectRoot = fs::path(projectPath);
     
@@ -105,7 +119,7 @@ editorObject::Open(const std::string& projectPath)
 }
 
 bool
-editorObject::pushToRootDB(litedb& ROOTDB, const std::string& trackTitleToPush)
+editorObject::pushToRootDB(litedb& ROOTDB, const std::u8string& trackTitleToPush)
 {
     TITLE_COMPOSER tcData;
     auto td = makeTrackData(trackTitleToPush, tcData);
@@ -122,8 +136,8 @@ editorObject::pushToRootDB(litedb& ROOTDB, const std::string& trackTitleToPush)
 bool 
 editorObject::pushToRootDB(
     litedb& ROOTDB, 
-    const std::string& musicTitle, 
-    const std::string& musicComposer)
+    const std::u8string& musicTitle, 
+    const std::u8string& musicComposer)
 {
     auto fromProjectSearchQuery = musdata(musicTitle, musicComposer);
     auto searched =
@@ -135,8 +149,19 @@ editorObject::pushToRootDB(
         if(!checkRoot->empty())         return false;
     }
     else return false;
-    
-    if(!(ROOTDB <= searched->front()))  return false;
+    auto resultToInsert = searched->front();
+    try{
+        resultToInsert.musicPath =
+        fs::relative(
+            (projectRoot / fs::path(resultToInsert.musicPath)).lexically_normal(),
+            fs::path(ROOTDB.getRoot()).parent_path()
+        ).generic_u8string();
+    }
+    catch(std::exception e){
+        RECENT_ERR = e.what();
+        return false;
+    }
+    if(!(ROOTDB <= resultToInsert))  return false;
 
     return true;
 }

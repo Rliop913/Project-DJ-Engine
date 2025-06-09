@@ -101,9 +101,10 @@ PDJE_JSONHandler<MUSIC_W>::getAll(
 }
 template<>
 bool
-PDJE_JSONHandler<MUSIC_W>::load(const std::string& path)
+PDJE_JSONHandler<MUSIC_W>::load(const std::u8string& path)
 {
-    auto filepath = fs::path(path); 
+    auto filepath = fs::path(path);
+    filepath = filepath / "musicmetadata.PDJE";
     if(fs::exists(filepath)){
         if(fs::is_regular_file(filepath)){
             std::ifstream jfile(filepath);
@@ -123,6 +124,7 @@ PDJE_JSONHandler<MUSIC_W>::load(const std::string& path)
         fs::create_directories(filepath.parent_path());
         std::ofstream jfile(filepath);
         if(!jfile.is_open()) return false;
+        jfile << std::setw(4) << ROOT;
         jfile.close();
     }
 

@@ -4,7 +4,7 @@
 #include <vector>
 
 #include <sqlite3.h>
-
+#include "PDJE_EXPORT_SETTER.hpp"
 #ifdef WIN32
     using u_int8_t = uint8_t;
 #endif
@@ -22,7 +22,7 @@ enum COL_TYPE{
  * @brief the statement wrapper for sqlite.
  * 
  */
-struct stmt
+struct PDJE_API stmt
 {
 public:
 
@@ -41,6 +41,9 @@ public:
      * @return int sqlite err msg
      */
     int bind_text(int idx, std::string& str);
+
+
+    int bind_u8text(int idx, std::u8string& str);
     /**
      * @brief binds blob
      * 

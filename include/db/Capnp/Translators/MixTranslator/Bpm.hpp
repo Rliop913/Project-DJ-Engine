@@ -7,7 +7,7 @@
 
 #include "FrameCalc.hpp"
 #include "Mix.hpp"
-
+#include "PDJE_EXPORT_SETTER.hpp"
 /**
  * @brief Root class for BPM data
  * \dot
@@ -17,7 +17,7 @@
  * }
  * \enddot
  */
-class BPM{
+class PDJE_API BPM{
 private:
     unsigned usable_threads;
 public:

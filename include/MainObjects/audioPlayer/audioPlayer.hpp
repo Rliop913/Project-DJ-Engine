@@ -5,12 +5,13 @@
 #include "ManualMix.hpp"
 #include "audioRender.hpp"
 #include "audioCallbacks.hpp"
+#include "PDJE_EXPORT_SETTER.hpp"
 /**
  * @brief The music handler class
  * this is the music handler class.
  * you can play/stop music, controlling fx, attach other music in realtime manually or getting music's playing position and consumed frames.
  */
-class audioPlayer{
+class PDJE_API audioPlayer{
 private:
     ma_device player;
     ma_context ctxt;
@@ -64,7 +65,7 @@ public:
      * @param title the music to control. "__PDJE__MAIN__" means the prerendered music.
      * @return FXControlPannel* but the "title" doesn't exists, it returns nullptr.
      */
-    FXControlPannel* GetFXControlPannel(const std::string& title = "__PDJE__MAIN__");
+    FXControlPannel* GetFXControlPannel(const std::u8string& title = u8"__PDJE__MAIN__");
 
     /**
      * @brief music controller getter

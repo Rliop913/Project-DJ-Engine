@@ -4,13 +4,13 @@
 
 #include <miniaudio.h>
 #include "MusicControlPannel.hpp"
-
+#include "PDJE_EXPORT_SETTER.hpp"
 
 /**
  * @brief the core Data
  * 
  */
-struct audioEngineDataStruct{
+struct PDJE_API audioEngineDataStruct{
     float* faustPcmPP[2];
     std::optional<FXControlPannel> FXManualPannel;
     std::optional<MusicControlPannel> MusCtrPannel;

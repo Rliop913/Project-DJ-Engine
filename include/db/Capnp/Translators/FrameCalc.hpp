@@ -6,7 +6,7 @@
 #include "CapnpBinary.hpp"
 
 
-
+#include "PDJE_EXPORT_SETTER.hpp"
 
 
 // #include <hwy/highway.h>
@@ -67,7 +67,7 @@ namespace FrameCalc{
  * @brief the smallest unit of bpm class
  * 
  */
-struct BpmFragment{
+struct PDJE_API BpmFragment{
     unsigned long bar;
     unsigned long beat;
     unsigned long separate;
@@ -79,7 +79,7 @@ struct BpmFragment{
  * @brief contains BpmFragments. and calculate with fragments.
  * 
  */
-struct BpmStruct{
+struct PDJE_API BpmStruct{
     /// @brief the fragment data.
     std::vector<BpmFragment> fragments;
 
@@ -126,7 +126,7 @@ struct BpmStruct{
  * @brief processed mixing data struct.
  * 
  */
-struct MixStruct{
+struct PDJE_API MixStruct{
     unsigned long long frame_in;
     unsigned long long frame_out;
     /// @brief capnp Reader Pointer

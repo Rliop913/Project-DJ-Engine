@@ -14,6 +14,7 @@
 #include "git2/repository.h"
 #include "gitLog.hpp"
 
+#include "PDJE_EXPORT_SETTER.hpp"
 
 using MAYBE_BLAME = std::optional<BlameController>;
 
@@ -22,7 +23,7 @@ using BranchCommits = std::pair<std::string, std::vector<gitwrap::commit>>;
 
 using BRANCH_HANDLE = std::optional<gitwrap::branch>;
 
-class GitWrapper{
+class PDJE_API GitWrapper{
 private:
     git_signature* auth_sign = nullptr;
     std::optional<AddController> addIndex;
@@ -31,8 +32,8 @@ public:
     std::optional<gitwrap::logHandle> log_hdl;
     BRANCH_HANDLE handleBranch;
 
-    bool add(const std::string&  path);
-    bool open(const std::string&  path);
+    bool add(const std::u8string&  path);
+    bool open(const std::u8string&  path);
 
     DiffResult diff(
         const gitwrap::commit& oldCommit,
@@ -59,14 +60,14 @@ public:
 
 
 
-class PDJE_GitHandler{
+class PDJE_API PDJE_GitHandler{
 private:
     git_signature* sign = nullptr;
 public:
     std::string RecentERR;
     GitWrapper gw;
 
-    bool Save(const std::string& tracingFile, const std::string& timeStamp);
+    bool Save(const std::u8string& tracingFile, const std::string& timeStamp);
     bool Undo();
     bool Redo();
 
@@ -82,12 +83,12 @@ public:
 
     DiffResult GetDiff(const gitwrap::commit& oldTimeStamp, const gitwrap::commit& newTimeStamp);
 
-    bool DeleteGIT(const std::string& path);
-    bool Open(const std::string& path);
+    bool DeleteGIT(const std::u8string& path);
+    bool Open(const std::u8string& path);
     bool Close();
     // SaveDatas GetCommits();
 
-
+    PDJE_GitHandler() = delete;
     PDJE_GitHandler(const std::string& auth_name, const std::string& auth_email);
     ~PDJE_GitHandler();
 

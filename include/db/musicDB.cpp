@@ -12,18 +12,21 @@ return false;\
 
 musdata::musdata(stmt* dbstate)
 {
-    title = dbstate->colGet<COL_TYPE::TEXT, std::string>(0);
-    composer = dbstate->colGet<COL_TYPE::TEXT, std::string>(1);
-    musicPath = dbstate->colGet<COL_TYPE::TEXT, std::string>(2);
+    auto tempTitle = dbstate->colGet<COL_TYPE::TEXT, std::string>(0);
+    auto tempComposer = dbstate->colGet<COL_TYPE::TEXT, std::string>(1);
+    auto tempMusicPath= dbstate->colGet<COL_TYPE::TEXT, std::string>(2);
+    title = std::u8string(tempTitle.begin(), tempTitle.end());
+    composer = std::u8string(tempComposer.begin(), tempComposer.end());
+    musicPath =std::u8string(tempMusicPath.begin(), tempMusicPath.end());
     bpm = dbstate->colGet<COL_TYPE::DOUBLE, double>(3);
     bpmBinary = dbstate->colGet<COL_TYPE::BLOB, BIN>(4);
     firstBar = dbstate->colGet<COL_TYPE::TEXT, std::string>(5);
 }
 
 musdata::musdata(
-    const std::string& title__,
-    const std::string& composer__,
-    const std::string& musicPath__,
+    const std::u8string& title__,
+    const std::u8string& composer__,
+    const std::u8string& musicPath__,
     const double bpm__
 ):
 title(title__),
@@ -47,17 +50,17 @@ musdata::GenSearchSTMT(stmt& dbstate, sqlite3* db)
     if(!dbstate.activate(db)){
         return false;
     }
-    if(title == ""){
+    if(title == u8""){
         CHK_BIND(
         dbstate.bind_int(1, -1)
         )
     }
-    if(composer == ""){
+    if(composer == u8""){
         CHK_BIND(
         dbstate.bind_int(3, -1)
         )
     }
-    if(musicPath == ""){
+    if(musicPath == u8""){
         CHK_BIND(
         dbstate.bind_int(5, -1)
         )
@@ -67,9 +70,9 @@ musdata::GenSearchSTMT(stmt& dbstate, sqlite3* db)
         dbstate.bind_int(7, -1)
         )
     }
-    CHK_BIND( dbstate.bind_text(2, title))
-    CHK_BIND( dbstate.bind_text(4, composer))
-    CHK_BIND( dbstate.bind_text(6, musicPath))
+    CHK_BIND( dbstate.bind_u8text(2, title))
+    CHK_BIND( dbstate.bind_u8text(4, composer))
+    CHK_BIND( dbstate.bind_u8text(6, musicPath))
     CHK_BIND( dbstate.bind_double(8, bpm))
     
     return true;
@@ -88,9 +91,9 @@ musdata::GenInsertSTMT(stmt& dbstate, sqlite3* db)
     if(!dbstate.activate(db)){
         return false;
     }
-    CHK_BIND( dbstate.bind_text(1, title))
-    CHK_BIND( dbstate.bind_text(2, composer))
-    CHK_BIND( dbstate.bind_text(3, musicPath))
+    CHK_BIND( dbstate.bind_u8text(1, title))
+    CHK_BIND( dbstate.bind_u8text(2, composer))
+    CHK_BIND( dbstate.bind_u8text(3, musicPath))
     CHK_BIND( dbstate.bind_double(4, bpm))
     CHK_BIND( dbstate.bind_blob(5, bpmBinary))
     CHK_BIND( dbstate.bind_text(6, firstBar))
@@ -110,15 +113,15 @@ musdata::GenEditSTMT(stmt& dbstate, sqlite3* db, musdata& toEdit)
 
     if(!dbstate.activate(db)) return false;
     
-    CHK_BIND(dbstate.bind_text   (1, toEdit.title    ))
-    CHK_BIND(dbstate.bind_text   (2, toEdit.composer ))
-    CHK_BIND(dbstate.bind_text   (3, toEdit.musicPath))
+    CHK_BIND(dbstate.bind_u8text   (1, toEdit.title    ))
+    CHK_BIND(dbstate.bind_u8text   (2, toEdit.composer ))
+    CHK_BIND(dbstate.bind_u8text   (3, toEdit.musicPath))
     CHK_BIND(dbstate.bind_double (4, toEdit.bpm      ))
     CHK_BIND(dbstate.bind_blob   (5, toEdit.bpmBinary))
     CHK_BIND(dbstate.bind_text   (6, toEdit.firstBar ))
-    CHK_BIND(dbstate.bind_text   (7, title           ))
-    CHK_BIND(dbstate.bind_text   (8, composer        ))
-    CHK_BIND(dbstate.bind_text   (9, musicPath       ))
+    CHK_BIND(dbstate.bind_u8text   (7, title           ))
+    CHK_BIND(dbstate.bind_u8text   (8, composer        ))
+    CHK_BIND(dbstate.bind_u8text   (9, musicPath       ))
     CHK_BIND(dbstate.bind_double (10,bpm             ))
     
     return true;
@@ -136,9 +139,9 @@ musdata::GenDeleteSTMT(stmt& dbstate, sqlite3* db)
 
     if(!dbstate.activate(db)) return false;
 
-    CHK_BIND(dbstate.bind_text   (1, title       ))
-    CHK_BIND(dbstate.bind_text   (2, composer    ))
-    CHK_BIND(dbstate.bind_text   (3, musicPath   ))
+    CHK_BIND(dbstate.bind_u8text   (1, title       ))
+    CHK_BIND(dbstate.bind_u8text   (2, composer    ))
+    CHK_BIND(dbstate.bind_u8text   (3, musicPath   ))
     CHK_BIND(dbstate.bind_double (4, bpm         ))
     
     return true;

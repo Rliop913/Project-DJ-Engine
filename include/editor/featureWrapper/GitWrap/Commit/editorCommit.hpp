@@ -5,9 +5,12 @@
 #include <vector>
 #include <optional>
 #include <list>
+
+#include "PDJE_EXPORT_SETTER.hpp"
+
 namespace gitwrap
 {
-    struct commit{
+    struct PDJE_API commit{
         git_commit* commitPointer = nullptr;
         git_oid commitID;
         std::string msg;
@@ -20,7 +23,7 @@ namespace gitwrap
             }
         }
     };
-    struct commitList{
+    struct PDJE_API commitList{
         
         std::list<commit> clist; //Back is Newers
         

@@ -9,7 +9,7 @@
 #include "FrameCalc.hpp"
 
 #include <functional>
-
+#include "PDJE_EXPORT_SETTER.hpp"
 
 /** @brief note object setter callback
  *  >>>REMEMBER<<<
@@ -60,7 +60,7 @@ std::function<void(
  * @brief the note translator.
  * this class reads the capnp binary datas and bpm datas, and parse them.
  */
-class NoteTranslator{
+class PDJE_API NoteTranslator{
 public:
     /// the note object's bpm datas
     BpmStruct noteBpms;

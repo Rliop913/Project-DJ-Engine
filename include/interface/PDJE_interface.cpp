@@ -1,6 +1,6 @@
 #include "PDJE_interface.hpp"
 
-PDJE::PDJE(const std::string& rootPath)
+PDJE::PDJE(const std::u8string& rootPath)
 {
     DBROOT.emplace();
     DBROOT->openDB(rootPath);
@@ -9,7 +9,7 @@ PDJE::PDJE(const std::string& rootPath)
 
 
 TRACK_VEC
-PDJE::SearchTrack(const std::string& Title)
+PDJE::SearchTrack(const std::u8string& Title)
 {
     trackdata td;
     td.trackTitle = Title;
@@ -25,8 +25,8 @@ PDJE::SearchTrack(const std::string& Title)
 
 MUS_VEC
 PDJE::SearchMusic(
-    const std::string& Title, 
-    const std::string& composer, 
+    const std::u8string& Title, 
+    const std::u8string& composer, 
     const double bpm)
 {
     musdata md;
@@ -124,7 +124,7 @@ bool
 PDJE::InitEditor(
     const std::string &auth_name, 
     const std::string &auth_email,
-    const std::string& projectRoot)
+    const std::u8string& projectRoot)
 {
     editor.emplace(auth_name, auth_email);
     return editor->Open(projectRoot);

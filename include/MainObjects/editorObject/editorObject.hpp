@@ -4,11 +4,11 @@
 #include <filesystem>
 #include "editor.hpp"
 #include "audioPlayer.hpp"
-
+#include "PDJE_EXPORT_SETTER.hpp"
 #include "tempDB.hpp"
 
-struct EDIT_ARG_MUSIC{
-    std::string musicName;
+struct PDJE_API EDIT_ARG_MUSIC{
+    std::u8string musicName;
     
     MusicArgs arg;
 };
@@ -16,9 +16,9 @@ struct EDIT_ARG_MUSIC{
 using EDIT_ARG_NOTE = NoteArgs;
 using EDIT_ARG_MIX  = MixArgs;
 using EDIT_ARG_KEY_VALUE = KEY_VALUE;
-using TITLE_COMPOSER = std::unordered_map<std::string, std::string>;
+using TITLE_COMPOSER = std::unordered_map<std::u8string, std::u8string>;
 
-class editorObject {
+class PDJE_API editorObject {
 private:
     std::optional<tempDB> projectLocalDB;
     fs::path projectRoot;
@@ -35,21 +35,22 @@ private:
     bool DefaultSaveFuntion(PDJE_Editor::MusicHandleStruct& i, const EDIT_ARG_MUSIC& obj);
 
     trackdata makeTrackData(
-        const std::string& trackTitle, 
+        const std::u8string& trackTitle, 
         TITLE_COMPOSER& titles);
 
 public:
+    std::string RECENT_ERR = "";
     git_repository* getMixRepo(){
         if(E_obj.has_value()){
-            return E_obj->mixHandle.first.gw.repo;
+            return E_obj->mixHandle.first->gw.repo;
         }
         else return nullptr;
     }
-    git_repository* getMusicRepo(const std::string& Title){
+    git_repository* getMusicRepo(const std::u8string& Title){
         if(E_obj.has_value()){
             for(auto& music : E_obj->musicHandle){
                 if(music.musicName == Title){
-                    return music.gith.gw.repo;
+                    return music.gith->gw.repo;
                 }
             }
         }
@@ -58,14 +59,14 @@ public:
 
     git_repository* getNoteRepo(){
         if(E_obj.has_value()){
-            return E_obj->noteHandle.first.gw.repo;
+            return E_obj->noteHandle.first->gw.repo;
         }
         else return nullptr;
     }
 
     git_repository* getKVRepo(){
         if(E_obj.has_value()){
-            return E_obj->KVHandler.first.gw.repo;
+            return E_obj->KVHandler.first->gw.repo;
         }
         else return nullptr;
     }
@@ -75,7 +76,7 @@ public:
     template<typename EDIT_ARG_TYPE>
     bool AddLine(const EDIT_ARG_TYPE& obj);
 
-    bool AddLine(const std::string& musicName, const std::string& firstBar);
+    bool AddLine(const std::u8string& musicName, const std::string& firstBar);
     
     
     int deleteLine(
@@ -86,19 +87,19 @@ public:
     template<typename EDIT_ARG_TYPE> 
     int deleteLine(const EDIT_ARG_TYPE& obj);
 
-    bool render(const std::string& trackTitle, litedb& ROOTDB);
+    bool render(const std::u8string& trackTitle, litedb& ROOTDB);
 
     void demoPlayInit(
         std::optional<audioPlayer>& player, 
         unsigned int frameBufferSize, 
-        const std::string& trackTitle);
+        const std::u8string& trackTitle);
 
-    bool pushToRootDB(litedb& ROOTDB, const std::string& trackTitleToPush);
+    bool pushToRootDB(litedb& ROOTDB, const std::u8string& trackTitleToPush);
 
     bool pushToRootDB(
         litedb& ROOTDB, 
-        const std::string& musicTitle, 
-        const std::string& musicComposer);
+        const std::u8string& musicTitle, 
+        const std::u8string& musicComposer);
 
     template<typename EDIT_ARG_TYPE> 
     void getAll(std::function<void(const EDIT_ARG_TYPE& obj)> jsonCallback);
@@ -107,14 +108,14 @@ public:
     bool Undo();
     
     template<typename EDIT_ARG_TYPE> 
-    bool Undo(const std::string& musicName);
+    bool Undo(const std::u8string& musicName);
     
     
     template<typename EDIT_ARG_TYPE> 
     bool Redo();
 
     template<typename EDIT_ARG_TYPE> 
-    bool Redo(const std::string& musicName);
+    bool Redo(const std::u8string& musicName);
 
     template<typename EDIT_ARG_TYPE> 
     bool Go(const std::string& branchName, git_oid* commitID);
@@ -123,14 +124,14 @@ public:
     std::string GetLogWithJSONGraph();
     
     template<typename EDIT_ARG_TYPE> 
-    std::string GetLogWithJSONGraph(const std::string& musicName);
+    std::string GetLogWithJSONGraph(const std::u8string& musicName);
     
 
     template<typename EDIT_ARG_TYPE> 
     bool UpdateLog();
 
     template<typename EDIT_ARG_TYPE> 
-    bool UpdateLog(const std::string& branchName);
+    bool UpdateLog(const std::u8string& branchName);
 
     template<typename EDIT_ARG_TYPE> 
     DiffResult GetDiff(const gitwrap::commit& oldTimeStamp, const gitwrap::commit& newTimeStamp);
@@ -142,13 +143,13 @@ public:
     ///WARNING!!! THERE IS NO TURNING BACK
     std::string DESTROY_PROJECT();
 
-    bool ConfigNewMusic(const std::string& NewMusicName, 
-                        const std::string& composer,
-                        const std::string& musicPath,
+    bool ConfigNewMusic(const std::u8string& NewMusicName, 
+                        const std::u8string& composer,
+                        const std::u8string& musicPath,
                         const std::string& firstBar = "0");
 
 
-    bool Open(const std::string& projectPath);
+    bool Open(const std::u8string& projectPath);
 
     editorObject() = delete;
 

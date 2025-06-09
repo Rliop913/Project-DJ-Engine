@@ -1,6 +1,7 @@
 #include "editorObject.hpp"
 
 template<>
+PDJE_API
 void
 editorObject::getAll(std::function<void(const EDIT_ARG_KEY_VALUE& obj)> jsonCallback)
 {
@@ -8,6 +9,7 @@ editorObject::getAll(std::function<void(const EDIT_ARG_KEY_VALUE& obj)> jsonCall
 }
 
 template<>
+PDJE_API
 void
 editorObject::getAll(std::function<void(const EDIT_ARG_MIX& obj)> jsonCallback)
 {
@@ -15,6 +17,7 @@ editorObject::getAll(std::function<void(const EDIT_ARG_MIX& obj)> jsonCallback)
 }
 
 template<>
+PDJE_API
 void
 editorObject::getAll(std::function<void(const EDIT_ARG_NOTE& obj)> jsonCallback)
 {
@@ -22,6 +25,7 @@ editorObject::getAll(std::function<void(const EDIT_ARG_NOTE& obj)> jsonCallback)
 }
 
 template<>
+PDJE_API
 void
 editorObject::getAll(std::function<void(const EDIT_ARG_MUSIC& obj)> jsonCallback)
 {

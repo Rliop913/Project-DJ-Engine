@@ -18,13 +18,15 @@
 #include "FAUST_VOL.hpp"
 #include "FAUST_ROBOT.hpp"
 
+#include "PDJE_EXPORT_SETTER.hpp"
+
 /**
  * @brief Template class that inherits from FXclass and is used to contain data for FX processing.
  * 
  * @tparam Fclass, the base class
  */
 template<typename Fclass>
-class FaustDType : public Fclass{
+class PDJE_API FaustDType : public Fclass{
 private:
     std::vector<float> L;
     std::vector<float> R;

@@ -16,18 +16,25 @@ PDJE_GitHandler::PDJE_GitHandler(const std::string& auth_name, const std::string
 
 PDJE_GitHandler::~PDJE_GitHandler()
 {
-    git_signature_free(sign);
+    try
+    {
+        git_signature_free(sign);
+    }
+    catch(...)
+    {
+        
+    }
 }
 
 
 bool
-PDJE_GitHandler::Open(const std::string& path)
+PDJE_GitHandler::Open(const std::u8string& path)
 {
     return gw.open(path);
 }
 
 bool
-PDJE_GitHandler::DeleteGIT(const std::string& path)
+PDJE_GitHandler::DeleteGIT(const std::u8string& path)
 {
 
     if( !fs::exists(path) ||
@@ -49,7 +56,7 @@ PDJE_GitHandler::Close()
 
 
 bool
-PDJE_GitHandler::Save(const std::string& tracingFile, const std::string& timeStamp)
+PDJE_GitHandler::Save(const std::u8string& tracingFile, const std::string& timeStamp)
 {
     if(gw.handleBranch->FLAG_TEMP_CHECKOUT.has_value()){
         gitwrap::commit tempcommit(gw.handleBranch->FLAG_TEMP_CHECKOUT.value(), gw.repo);

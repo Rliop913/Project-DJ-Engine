@@ -73,7 +73,6 @@ Ingredients::FillLocal(std::vector<PlayPosition>& Lbpm, const BpmStruct& Local)
         }
     }
 }
-#include <iostream>
 std::vector<PlayPosition>::iterator
 Ingredients::GetSameGidx(GLOBAL_POS gidx)
 {

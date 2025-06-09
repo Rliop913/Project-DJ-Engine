@@ -10,6 +10,7 @@
 #include <nlohmann/json.hpp>
 
 #include "MixTranslator.hpp"
+#include "PDJE_EXPORT_SETTER.hpp"
 
 #define PDJEARR "PDJE_MIX"
 #define PDJENOTE "PDJE_NOTE"
@@ -18,7 +19,7 @@ using nj = nlohmann::json;
 namespace fs = std::filesystem;
 namespace vs = std::views;
 
-struct MixArgs{
+struct PDJE_API MixArgs{
     TypeEnum type       = TypeEnum::EQ      ;
     DetailEnum details  = DetailEnum::HIGH  ;
     int ID              = -1                ;
@@ -33,7 +34,7 @@ struct MixArgs{
     long long Eseparate = -1                ;
 };
 
-struct NoteArgs{
+struct PDJE_API NoteArgs{
     std::string Note_Type   = "";
     std::string Note_Detail = "";
     std::string first       = "";
@@ -47,7 +48,7 @@ struct NoteArgs{
     long long Eseparate     = -1;
 };
 
-struct MusicArgs{
+struct PDJE_API MusicArgs{
     std::string bpm     = ""                ;
     long long bar       = -1                ;
     long long beat      = -1                ;
@@ -63,7 +64,7 @@ using KEY_VALUE = std::pair<std::string, std::string>;
 using KV_W = std::vector<KEY_VALUE>;
 
 template<typename CapnpWriterType>
-class PDJE_JSONHandler{
+class PDJE_API PDJE_JSONHandler{
 private:
     nj ROOT;
 public:
@@ -85,7 +86,7 @@ public:
     template<typename Target> 
     void getAll(std::function<void(const Target& args)> jsonCallback);
         
-    bool load(const std::string& path);
+    bool load(const std::u8string& path);
 
 
 
@@ -95,8 +96,9 @@ public:
         return ROOT[key];
     }
 
-    bool save(const std::string& path){
-        std::ofstream jfile(path);
+    bool save(const std::u8string& path){
+        auto filePath = fs::path(path);
+        std::ofstream jfile(filePath);
         if(jfile.is_open()){
             jfile << std::setw(4) << ROOT;
             return true;
@@ -107,7 +109,7 @@ public:
     }
     
 
-    bool deleteFile(const std::string& path){
+    bool deleteFile(const std::u8string& path){
         try{ return fs::remove_all(path) > 0; }
         catch(...) { return false; }
     }

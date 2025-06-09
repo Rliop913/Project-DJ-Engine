@@ -86,7 +86,7 @@ MUSIC_CTR::Render(
 
 
 std::optional<SIMD_FLOAT*>
-MUSIC_CTR::Execute(const BPM& bpms, SIMD_FLOAT* PCMS, const std::string& dbRoot)
+MUSIC_CTR::Execute(const BPM& bpms, SIMD_FLOAT* PCMS, const std::u8string& dbRoot)
 {
     if(!checkUsable()){
         return std::nullopt;
@@ -123,8 +123,10 @@ bool
 MUSIC_CTR::setLOAD(MBData::Reader& RP, litedb& db, FRAME_POS FrameIn)
 {
     musdata md;
-    md.title = RP.getFirst();
-    md.composer = RP.getSecond();
+    auto tempTitle = RP.getFirst();
+    auto tempComposer = RP.getSecond();
+    md.title = TO_USTR(tempTitle);
+    md.composer = TO_USTR(tempComposer);
     md.bpm = std::stod(RP.getThird().cStr());
     
     auto searchRes = db << md;

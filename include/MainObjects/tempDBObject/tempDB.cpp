@@ -3,9 +3,12 @@
 bool
 tempDB::Open(fs::path& projectRoot)
 {
+    if(tempROOT.has_value()) tempROOT.reset();
+    
+    tempROOT.emplace();
     return 
     tempROOT->openDB(
-        (projectRoot / "LOCALDB.pdjedb").string()
+        (projectRoot / fs::path("LOCALDB.pdjedb")).u8string()
     );
 }
 
