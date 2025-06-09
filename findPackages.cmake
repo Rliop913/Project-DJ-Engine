@@ -109,6 +109,7 @@ ExternalProject_Add(
   BUILD_COMMAND cmake --build . --parallel 6
   INSTALL_DIR "${CMAKE_BINARY_DIR}/libgitbin"
   INSTALL_COMMAND cmake --install . --prefix "${CMAKE_BINARY_DIR}/libgitbin"
+  BUILD_BYPRODUCTS "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
 )
 endif()
 
@@ -122,7 +123,16 @@ find_package(OpenSSL REQUIRED)
 link_libraries(${OPENSSL_LIBRARIES})
 # link_directories(${install_dir}/lib)
 if(UNIX)
-link_libraries(${install_dir}/lib/libgit2.a)
+add_library(libgit2_static STATIC IMPORTED GLOBAL)
+
+set_target_properties(libgit2_static PROPERTIES
+  IMPORTED_LOCATION "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
+  # INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_BINARY_DIR}/libgitbin/include"
+)
+add_dependencies(libgit2_static libgit2)
+
+
+link_libraries(libgit2_static)
 else()
 add_library(libgit2_static STATIC IMPORTED GLOBAL)
 
