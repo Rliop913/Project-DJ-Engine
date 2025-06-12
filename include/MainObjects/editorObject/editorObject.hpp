@@ -39,6 +39,38 @@ private:
         TITLE_COMPOSER& titles);
 
 public:
+    git_repository* getMixRepo(){
+        if(E_obj.has_value()){
+            return E_obj->mixHandle.first.gw.repo;
+        }
+        else return nullptr;
+    }
+    git_repository* getMusicRepo(const std::string& Title){
+        if(E_obj.has_value()){
+            for(auto& music : E_obj->musicHandle){
+                if(music.musicName == Title){
+                    return music.gith.gw.repo;
+                }
+            }
+        }
+        else return nullptr;
+    }
+
+    git_repository* getNoteRepo(){
+        if(E_obj.has_value()){
+            return E_obj->noteHandle.first.gw.repo;
+        }
+        else return nullptr;
+    }
+
+    git_repository* getKVRepo(){
+        if(E_obj.has_value()){
+            return E_obj->KVHandler.first.gw.repo;
+        }
+        else return nullptr;
+    }
+
+
 
     template<typename EDIT_ARG_TYPE>
     bool AddLine(const EDIT_ARG_TYPE& obj);
