@@ -88,8 +88,9 @@ add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource
 add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src})
 
 add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
-
+add_library(PDJE_dynamic ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
 target_include_directories(PDJE PUBLIC ${INCLUDE_LIST})
+target_include_directories(PDJE_dynamic PUBLIC ${INCLUDE_LIST})
 
 if(WIN32)
 
@@ -104,7 +105,9 @@ if(WIN32)
   target_link_libraries(testManualAudio PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
   target_link_libraries(testInterface PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
   target_link_libraries(testGIT PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
-  target_link_libraries(PDJE PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
+  target_link_libraries(PDJE PUBLIC ${libgit2_static} winhttp crypt32 rpcrt4)
+  target_link_libraries(PDJE_dynamic PUBLIC ${libgit2_static} winhttp crypt32 rpcrt4)
+  
 elseif(UNIX AND NOT APPLE)
   # add_executable(EvdevAccModule include/input/linux/LINUX_SUDO_GETTER.cpp)
   # add_dependencies(EvdevAccModule libgit2)
@@ -137,6 +140,7 @@ target_link_libraries(testManualAudio PRIVATE nlohmann_json::nlohmann_json hwy)
 target_link_libraries(testInterface PRIVATE nlohmann_json::nlohmann_json hwy)
 target_link_libraries(testGIT PRIVATE nlohmann_json::nlohmann_json hwy)
 target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json hwy)
+target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy)
 
 
 
