@@ -88,7 +88,7 @@ add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource
 add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src})
 
 add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
-add_library(PDJE_dynamic ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
+add_library(PDJE_dynamic SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
 target_include_directories(PDJE PUBLIC ${INCLUDE_LIST})
 target_include_directories(PDJE_dynamic PUBLIC ${INCLUDE_LIST})
 
