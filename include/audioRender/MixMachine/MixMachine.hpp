@@ -43,7 +43,7 @@ using ID = long;
  * @brief Argument parsing class for handling parameters of 8-point interpolation
  * 
  */
-struct EightPointValues{
+struct PDJE_API EightPointValues{
     float vals[8] = {0, };
     EightPointValues(const std::string& rawData){
         std::stringstream sdata(rawData);
@@ -71,7 +71,7 @@ struct EightPointValues{
  * @brief prerenderer class
  * 
  */
-class MixMachine{
+class PDJE_API MixMachine{
 private:
     // FRAME_POS getMixSize(FRAME_POS frames);
 public:

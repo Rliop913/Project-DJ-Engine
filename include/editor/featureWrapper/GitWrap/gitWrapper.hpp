@@ -14,6 +14,7 @@
 #include "git2/repository.h"
 #include "gitLog.hpp"
 
+#include "PDJE_EXPORT_SETTER.hpp"
 
 using MAYBE_BLAME = std::optional<BlameController>;
 
@@ -22,7 +23,7 @@ using BranchCommits = std::pair<std::string, std::vector<gitwrap::commit>>;
 
 using BRANCH_HANDLE = std::optional<gitwrap::branch>;
 
-class GitWrapper{
+class PDJE_API GitWrapper{
 private:
     git_signature* auth_sign = nullptr;
     std::optional<AddController> addIndex;
@@ -59,7 +60,7 @@ public:
 
 
 
-class PDJE_GitHandler{
+class PDJE_API PDJE_GitHandler{
 private:
     git_signature* sign = nullptr;
 public:

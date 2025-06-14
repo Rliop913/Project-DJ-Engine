@@ -9,14 +9,14 @@
 #include "MixBinary.capnp.h"
 #include "MusicBinary.capnp.h"
 #include "NoteBinary.capnp.h"
-
+#include "PDJE_EXPORT_SETTER.hpp"
 /**
  * @brief CapnProto Binary data Reader Wrapper Class
  * 
  * @tparam DType Binary Schema Type
  */
 template<typename DType>
-class CapReader{
+class PDJE_API CapReader{
 private:
     std::vector<kj::byte> Origin;
     std::optional<capnp::FlatArrayMessageReader> capreader;
@@ -67,7 +67,7 @@ public:
  * @tparam DType Binary Schema type
  */
 template<typename DType>
-class CapWriter{
+class PDJE_API CapWriter{
 private:
     std::optional<capnp::MallocMessageBuilder> capwriter;
 public:

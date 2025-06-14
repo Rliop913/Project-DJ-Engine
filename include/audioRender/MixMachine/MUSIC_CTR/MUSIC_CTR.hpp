@@ -28,7 +28,7 @@ enum MIXSTATE{
  * @brief Data structure for managing global/local playback positions
  * 
  */
-struct PlayPosition{
+struct PDJE_API PlayPosition{
     GLOBAL_POS Gidx;
     LOCAL_POS Lidx;
     double OriginBPM = -1;
@@ -41,7 +41,7 @@ struct PlayPosition{
  * @brief A structure that sorts mixing data, computes global/local playback positions, and finalizes BPM flow control calculations.
  * 
  */
-struct Ingredients{
+struct PDJE_API Ingredients{
 private:
     /**
      * @brief sort the mix objects
@@ -85,7 +85,7 @@ public:
  * @brief music controller object for mixing
  * 
  */
-class MUSIC_CTR{
+class PDJE_API MUSIC_CTR{
 private:
     std::optional<soundtouch::SoundTouch> st;
     std::optional<Decoder> D;

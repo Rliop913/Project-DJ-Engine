@@ -5,7 +5,7 @@
 #include <map>
 
 #include "ManualMix.hpp"
-
+#include "PDJE_EXPORT_SETTER.hpp"
 // #undef HWY_TARGET_INCLUDE
 // #define HWY_TARGET_INCLUDE "MusicControlPannel-inl.h"
 // #include "hwy/foreach_target.h"
@@ -43,7 +43,7 @@ using LOADS         = std::map<TITLE, MusicOnDeck>;
  * @brief Music handler for manual mode
  * 
  */
-class MusicControlPannel{
+class PDJE_API MusicControlPannel{
 private:
 
     LOADS deck; 

@@ -3,12 +3,12 @@
 #include <string>
 
 #include "dbState.hpp"
-
+#include "PDJE_EXPORT_SETTER.hpp"
 /**
  * @brief the music meta data's struct
  * 
  */
-struct trackdata{
+struct PDJE_API trackdata{
 public:
     std::string trackTitle;
     BIN mixBinary;

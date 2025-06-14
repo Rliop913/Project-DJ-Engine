@@ -6,8 +6,9 @@
 #include "dbRoot.hpp"
 #include <filesystem>
 
+#include "PDJE_EXPORT_SETTER.hpp"
 
-class PDJE_Editor{
+class PDJE_API PDJE_Editor{
 private:
     fs::path pt;
     fs::path mixp;

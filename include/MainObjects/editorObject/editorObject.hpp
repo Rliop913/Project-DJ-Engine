@@ -4,10 +4,10 @@
 #include <filesystem>
 #include "editor.hpp"
 #include "audioPlayer.hpp"
-
+#include "PDJE_EXPORT_SETTER.hpp"
 #include "tempDB.hpp"
 
-struct EDIT_ARG_MUSIC{
+struct PDJE_API EDIT_ARG_MUSIC{
     std::string musicName;
     
     MusicArgs arg;
@@ -18,7 +18,7 @@ using EDIT_ARG_MIX  = MixArgs;
 using EDIT_ARG_KEY_VALUE = KEY_VALUE;
 using TITLE_COMPOSER = std::unordered_map<std::string, std::string>;
 
-class editorObject {
+class PDJE_API editorObject {
 private:
     std::optional<tempDB> projectLocalDB;
     fs::path projectRoot;

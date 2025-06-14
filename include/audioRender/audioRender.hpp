@@ -2,6 +2,7 @@
 
 #include "MixMachine.hpp"
 #include "ManualMix.hpp"
+#include "PDJE_EXPORT_SETTER.hpp"
 /**
  * @brief Top-level class for audio rendering
  * 
@@ -15,7 +16,7 @@
  * \enddot
  * 
  */
-class audioRender{
+class PDJE_API audioRender{
 public:
     std::optional<std::vector<float>> rendered_frames;
 

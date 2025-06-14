@@ -10,6 +10,7 @@
 #include <nlohmann/json.hpp>
 
 #include "MixTranslator.hpp"
+#include "PDJE_EXPORT_SETTER.hpp"
 
 #define PDJEARR "PDJE_MIX"
 #define PDJENOTE "PDJE_NOTE"
@@ -18,7 +19,7 @@ using nj = nlohmann::json;
 namespace fs = std::filesystem;
 namespace vs = std::views;
 
-struct MixArgs{
+struct PDJE_API MixArgs{
     TypeEnum type       = TypeEnum::EQ      ;
     DetailEnum details  = DetailEnum::HIGH  ;
     int ID              = -1                ;
@@ -33,7 +34,7 @@ struct MixArgs{
     long long Eseparate = -1                ;
 };
 
-struct NoteArgs{
+struct PDJE_API NoteArgs{
     std::string Note_Type   = "";
     std::string Note_Detail = "";
     std::string first       = "";
@@ -47,7 +48,7 @@ struct NoteArgs{
     long long Eseparate     = -1;
 };
 
-struct MusicArgs{
+struct PDJE_API MusicArgs{
     std::string bpm     = ""                ;
     long long bar       = -1                ;
     long long beat      = -1                ;
@@ -63,7 +64,7 @@ using KEY_VALUE = std::pair<std::string, std::string>;
 using KV_W = std::vector<KEY_VALUE>;
 
 template<typename CapnpWriterType>
-class PDJE_JSONHandler{
+class PDJE_API PDJE_JSONHandler{
 private:
     nj ROOT;
 public:

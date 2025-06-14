@@ -8,6 +8,7 @@
 
 #include "FrameCalc.hpp"
 
+#include "PDJE_EXPORT_SETTER.hpp"
 /**
  * @brief This Translate capnp data into cpp data sturct.
  * \dot
@@ -16,7 +17,7 @@
  * }
  * \enddot
  */
-class MusicTranslator{
+class PDJE_API MusicTranslator{
 public:
     BpmStruct bpms;
     /**

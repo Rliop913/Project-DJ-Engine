@@ -2,10 +2,10 @@
 
 #include <filesystem>
 namespace fs = std::filesystem;
-
+#include "PDJE_EXPORT_SETTER.hpp"
 #include "dbRoot.hpp"
 
-class tempDB{
+class PDJE_API tempDB{
 private:
     std::optional<litedb> tempROOT;
 public:

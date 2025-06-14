@@ -5,12 +5,13 @@
 #include "ManualMix.hpp"
 #include "audioRender.hpp"
 #include "audioCallbacks.hpp"
+#include "PDJE_EXPORT_SETTER.hpp"
 /**
  * @brief The music handler class
  * this is the music handler class.
  * you can play/stop music, controlling fx, attach other music in realtime manually or getting music's playing position and consumed frames.
  */
-class audioPlayer{
+class PDJE_API audioPlayer{
 private:
     ma_device player;
     ma_context ctxt;

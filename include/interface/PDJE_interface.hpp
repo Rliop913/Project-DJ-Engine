@@ -4,7 +4,7 @@
 #include "dbRoot.hpp"
 #include "NoteTranslator.hpp"
 #include "editorObject.hpp"
-
+#include "PDJE_EXPORT_SETTER.hpp"
 /**
  * @brief the play mode
  * you can use this to initialize the player(music handler)
@@ -47,7 +47,7 @@ enum PLAY_MODE{
  * \enddot
  * 
  */
-class PDJE{
+class PDJE_API PDJE{
 private:
 public:
     /// @brief this is the Root Database.
@@ -139,7 +139,7 @@ public:
  * the argsetter is basically unordered_map. but the binded languges can't use that, so this wrapper exists.
  * with this, you can control fx in realtime.
  */
-class ARGSETTER_WRAPPER{
+class PDJE_API ARGSETTER_WRAPPER{
 private:
     FXControlPannel* fxp;
 public:

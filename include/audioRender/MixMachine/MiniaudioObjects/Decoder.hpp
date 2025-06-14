@@ -15,7 +15,7 @@ using FRAME_POS = unsigned long long;
  * @brief miniaudio decoder wrapper class
  * 
  */
-struct Decoder{
+struct PDJE_API Decoder{
     ma_decoder dec;
 
     Decoder();

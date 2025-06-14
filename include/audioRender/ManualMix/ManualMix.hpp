@@ -19,6 +19,8 @@
 #include "musicDB.hpp"
 #include "FrameCalc.hpp"
 
+#include "PDJE_EXPORT_SETTER.hpp"
+
 /**
  * @brief the usable fx list
  * 
@@ -43,7 +45,7 @@ enum FXList{
  * @brief FX Controller class
  * 
  */
-class FXControlPannel{
+class PDJE_API FXControlPannel{
 private:
     std::pair<bool, CompressorFAUSTMan>  compressorPannel;
     std::pair<bool, DistortionFAUSTMan>  distortionPannel;

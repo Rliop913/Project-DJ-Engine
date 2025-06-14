@@ -20,6 +20,9 @@ else()
 endif()
 
 
+option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
+
+
 # link_libraries(${SQLite3_LIBRARIES})
 
 if(WIN32)
@@ -69,6 +72,10 @@ link_libraries(
 
 endif()
 
+
+if(PDJE_BUILD_TESTS)
+  
+
 add_executable(testdb ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource} ${sql_amalgam_src} ${editorSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src})
 
 add_executable(testaudio ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/audioTest.cpp ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
@@ -86,6 +93,8 @@ add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource
 
 
 add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src})
+endif(PDJE_BUILD_TESTS)
+
 
 add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
 add_library(PDJE_dynamic SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
@@ -93,11 +102,17 @@ target_include_directories(PDJE PUBLIC ${INCLUDE_LIST})
 target_include_directories(PDJE_dynamic PUBLIC ${INCLUDE_LIST})
 
 if(WIN32)
+target_compile_definitions(PDJE_dynamic PUBLIC PDJE_WINDOWS_DLL)
+target_compile_definitions(PDJE_dynamic PRIVATE PDJE_BUILDING)
+endif()
+
+if(WIN32)
 
   link_libraries(
     debug "${zlib_BINARY_DIR}/Debug/zlibd.lib"
     optimized "${zlib_BINARY_DIR}/Release/zlib.lib"
   )
+  if(PDJE_BUILD_TESTS)
   target_link_libraries(testHighway PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
   target_link_libraries(testdb PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
   target_link_libraries(testaudio PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
@@ -105,6 +120,7 @@ if(WIN32)
   target_link_libraries(testManualAudio PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
   target_link_libraries(testInterface PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
   target_link_libraries(testGIT PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
+  endif()
   target_link_libraries(PDJE PUBLIC ${libgit2_static} winhttp crypt32 rpcrt4)
   target_link_libraries(PDJE_dynamic PUBLIC ${libgit2_static} winhttp crypt32 rpcrt4)
   
@@ -131,7 +147,7 @@ elseif(APPLE)
   
 endif()
 
-
+if(PDJE_BUILD_TESTS)
 target_link_libraries(testHighway PRIVATE nlohmann_json::nlohmann_json hwy)
 target_link_libraries(testdb PRIVATE nlohmann_json::nlohmann_json hwy)
 target_link_libraries(testaudio PRIVATE nlohmann_json::nlohmann_json hwy)
@@ -139,6 +155,7 @@ target_link_libraries(testCapnp PRIVATE nlohmann_json::nlohmann_json hwy)
 target_link_libraries(testManualAudio PRIVATE nlohmann_json::nlohmann_json hwy)
 target_link_libraries(testInterface PRIVATE nlohmann_json::nlohmann_json hwy)
 target_link_libraries(testGIT PRIVATE nlohmann_json::nlohmann_json hwy)
+endif()
 target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json hwy)
 target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy)
 

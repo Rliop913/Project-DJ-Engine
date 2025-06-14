@@ -6,14 +6,14 @@
 #include <mutex>
 
 #include "FrameCalc.hpp"
-
+#include "PDJE_EXPORT_SETTER.hpp"
 class BPM;
 
 /**
  * @brief contains mixing datas
  * 
  */
-class MIX{
+class PDJE_API MIX{
 private:
     unsigned int usable_threads;
 public:

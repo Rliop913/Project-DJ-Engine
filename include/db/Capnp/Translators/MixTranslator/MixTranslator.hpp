@@ -10,7 +10,7 @@
 #include "CapnpBinary.hpp"
 #include "Mix.hpp"
 #include "Bpm.hpp"
-
+#include "PDJE_EXPORT_SETTER.hpp"
 /**
  * @brief This Translate capnp data into cpp data sturct.
  * \dot
@@ -22,7 +22,7 @@
  * }
  * \enddot
  */
-class MixTranslator{
+class PDJE_API MixTranslator{
 private:
     unsigned int usable_threads = 0;
 public:

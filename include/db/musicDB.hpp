@@ -4,12 +4,13 @@
 #include <sqlite3.h>
 
 #include "dbState.hpp"
+#include "PDJE_EXPORT_SETTER.hpp"
 
 /**
  * @brief the music meta data's struct
  * 
  */
-struct musdata{
+struct PDJE_API musdata{
 public:
     std::string title;
     std::string composer;
