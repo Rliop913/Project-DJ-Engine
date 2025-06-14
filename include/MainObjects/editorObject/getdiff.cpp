@@ -1,6 +1,7 @@
 #include "editorObject.hpp"
 
 template<>
+PDJE_API
 DiffResult
 editorObject::GetDiff<EDIT_ARG_MIX>(const gitwrap::commit& oldTimeStamp, 
                                     const gitwrap::commit& newTimeStamp)
@@ -9,6 +10,7 @@ editorObject::GetDiff<EDIT_ARG_MIX>(const gitwrap::commit& oldTimeStamp,
 }
 
 template<>
+PDJE_API
 DiffResult
 editorObject::GetDiff<EDIT_ARG_NOTE>(const gitwrap::commit& oldTimeStamp, 
                                     const gitwrap::commit& newTimeStamp)
@@ -17,6 +19,7 @@ editorObject::GetDiff<EDIT_ARG_NOTE>(const gitwrap::commit& oldTimeStamp,
 }
 
 template<>
+PDJE_API
 DiffResult
 editorObject::GetDiff<EDIT_ARG_KEY_VALUE>(const gitwrap::commit& oldTimeStamp, 
                                     const gitwrap::commit& newTimeStamp)
@@ -25,6 +28,7 @@ editorObject::GetDiff<EDIT_ARG_KEY_VALUE>(const gitwrap::commit& oldTimeStamp,
 }
 
 template<>
+PDJE_API
 DiffResult
 editorObject::GetDiff<EDIT_ARG_MUSIC>(const gitwrap::commit& oldTimeStamp, 
                                     const gitwrap::commit& newTimeStamp)

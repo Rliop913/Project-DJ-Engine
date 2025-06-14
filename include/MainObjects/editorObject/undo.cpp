@@ -1,6 +1,7 @@
 #include "editorObject.hpp"
 
 template<>
+PDJE_API
 bool
 editorObject::Undo<EDIT_ARG_NOTE>()
 {
@@ -8,6 +9,7 @@ editorObject::Undo<EDIT_ARG_NOTE>()
 }
 
 template<>
+PDJE_API
 bool
 editorObject::Undo<EDIT_ARG_MIX>()
 {
@@ -15,6 +17,7 @@ editorObject::Undo<EDIT_ARG_MIX>()
 }
 
 template<>
+PDJE_API
 bool
 editorObject::Undo<EDIT_ARG_MUSIC>(const std::string& musicName)
 {
@@ -27,6 +30,7 @@ editorObject::Undo<EDIT_ARG_MUSIC>(const std::string& musicName)
 }
 
 template<>
+PDJE_API
 bool
 editorObject::Undo<EDIT_ARG_KEY_VALUE>()
 {

@@ -1,6 +1,7 @@
 #include "editorObject.hpp"
 
-template<>
+template<> 
+PDJE_API
 bool
 editorObject::AddLine(const EDIT_ARG_MUSIC& obj)
 {
@@ -14,7 +15,8 @@ editorObject::AddLine(const EDIT_ARG_MUSIC& obj)
     return false;
 }
 
-template<>
+template<> 
+PDJE_API
 bool
 editorObject::AddLine(const EDIT_ARG_MIX& obj)
 {
@@ -23,7 +25,8 @@ editorObject::AddLine(const EDIT_ARG_MIX& obj)
     return DefaultSaveFuntion<EDIT_ARG_MIX>();
 }
 
-template<>
+template<> 
+PDJE_API
 bool
 editorObject::AddLine(const EDIT_ARG_NOTE& obj)
 {
@@ -33,7 +36,8 @@ editorObject::AddLine(const EDIT_ARG_NOTE& obj)
 }
 
 
-template<>
+template<> 
+PDJE_API
 bool
 editorObject::AddLine(const EDIT_ARG_KEY_VALUE& obj)
 {

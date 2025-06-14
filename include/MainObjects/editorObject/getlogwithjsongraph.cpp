@@ -1,6 +1,7 @@
 #include "editorObject.hpp"
 
 template<>
+PDJE_API
 std::string
 editorObject::GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>()
 {
@@ -8,6 +9,7 @@ editorObject::GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>()
 }
 
 template<>
+PDJE_API
 std::string
 editorObject::GetLogWithJSONGraph<EDIT_ARG_MIX>()
 {
@@ -15,6 +17,7 @@ editorObject::GetLogWithJSONGraph<EDIT_ARG_MIX>()
 }
 
 template<>
+PDJE_API
 std::string
 editorObject::GetLogWithJSONGraph<EDIT_ARG_NOTE>()
 {
@@ -22,6 +25,7 @@ editorObject::GetLogWithJSONGraph<EDIT_ARG_NOTE>()
 }
 
 template<>
+PDJE_API
 std::string
 editorObject::GetLogWithJSONGraph<EDIT_ARG_MUSIC>(const std::string& musicName)
 {

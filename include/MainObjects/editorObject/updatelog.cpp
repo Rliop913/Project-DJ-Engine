@@ -1,6 +1,7 @@
 #include "editorObject.hpp"
 
 template<>
+PDJE_API
 bool
 editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>()
 {
@@ -8,6 +9,7 @@ editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>()
 }
 
 template<>
+PDJE_API
 bool
 editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>(const std::string& branchName)
 {
@@ -16,6 +18,7 @@ editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>(const std::string& branchName)
 
 
 template<>
+PDJE_API
 bool
 editorObject::UpdateLog<EDIT_ARG_MIX>()
 {
@@ -23,6 +26,7 @@ editorObject::UpdateLog<EDIT_ARG_MIX>()
 }
 
 template<>
+PDJE_API
 bool
 editorObject::UpdateLog<EDIT_ARG_MIX>(const std::string& branchName)
 {
@@ -30,6 +34,7 @@ editorObject::UpdateLog<EDIT_ARG_MIX>(const std::string& branchName)
 }
 
 template<>
+PDJE_API
 bool
 editorObject::UpdateLog<EDIT_ARG_NOTE>()
 {
@@ -37,6 +42,7 @@ editorObject::UpdateLog<EDIT_ARG_NOTE>()
 }
 
 template<>
+PDJE_API
 bool
 editorObject::UpdateLog<EDIT_ARG_NOTE>(const std::string& branchName)
 {
@@ -45,6 +51,7 @@ editorObject::UpdateLog<EDIT_ARG_NOTE>(const std::string& branchName)
 
 
 template<>
+PDJE_API
 bool
 editorObject::UpdateLog<EDIT_ARG_MUSIC>()
 {
@@ -55,6 +62,7 @@ editorObject::UpdateLog<EDIT_ARG_MUSIC>()
 }
 
 template<>
+PDJE_API
 bool
 editorObject::UpdateLog<EDIT_ARG_MUSIC>(const std::string& musicName)
 {

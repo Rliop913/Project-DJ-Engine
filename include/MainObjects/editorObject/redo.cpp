@@ -1,6 +1,7 @@
 #include "editorObject.hpp"
 
 template<>
+PDJE_API
 bool
 editorObject::Redo<EDIT_ARG_MIX>()
 {
@@ -8,12 +9,14 @@ editorObject::Redo<EDIT_ARG_MIX>()
 }
 
 template<>
+PDJE_API
 bool
 editorObject::Redo<EDIT_ARG_NOTE>()
 {
     return E_obj->noteHandle.first.Redo();
 }
 template<>
+PDJE_API
 bool
 editorObject::Redo<EDIT_ARG_MUSIC>(const std::string& musicName)
 {
@@ -25,6 +28,7 @@ editorObject::Redo<EDIT_ARG_MUSIC>(const std::string& musicName)
     return false;
 }
 template<>
+PDJE_API
 bool
 editorObject::Redo<EDIT_ARG_KEY_VALUE>()
 {

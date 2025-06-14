@@ -21,6 +21,7 @@ editorObject::deleteLine(   const EDIT_ARG_MIX& obj,
 
 
 template<>
+PDJE_API
 int
 editorObject::deleteLine(const EDIT_ARG_NOTE& obj)
 {
@@ -33,6 +34,7 @@ editorObject::deleteLine(const EDIT_ARG_NOTE& obj)
 }
 
 template<>
+PDJE_API
 int
 editorObject::deleteLine(const EDIT_ARG_KEY_VALUE& obj)
 {
@@ -45,6 +47,7 @@ editorObject::deleteLine(const EDIT_ARG_KEY_VALUE& obj)
 }
 
 template<>
+PDJE_API
 int
 editorObject::deleteLine(const EDIT_ARG_MUSIC& obj)
 {
