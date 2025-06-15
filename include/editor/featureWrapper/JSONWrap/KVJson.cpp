@@ -41,6 +41,7 @@ bool
 PDJE_JSONHandler<KV_W>::load(const std::string& path)
 {
     auto filepath = fs::path(path); 
+    filepath /= "keyvaluemetadata.PDJE";
     if(fs::exists(filepath)){
         if(fs::is_regular_file(filepath)){
             std::ifstream jfile(filepath);
