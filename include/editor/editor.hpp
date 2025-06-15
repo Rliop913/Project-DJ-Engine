@@ -18,9 +18,9 @@ private:
     std::string name;
     std::string email;
 public:
-    std::pair<PDJE_GitHandler, PDJE_JSONHandler<MIX_W>> mixHandle;
-    std::pair<PDJE_GitHandler, PDJE_JSONHandler<NOTE_W>> noteHandle;
-    std::pair<PDJE_GitHandler, PDJE_JSONHandler<KV_W>> KVHandler;
+    std::pair<std::unique_ptr<PDJE_GitHandler>, PDJE_JSONHandler<MIX_W>> mixHandle;
+    std::pair<std::unique_ptr<PDJE_GitHandler>, PDJE_JSONHandler<NOTE_W>> noteHandle;
+    std::pair<std::unique_ptr<PDJE_GitHandler>, PDJE_JSONHandler<KV_W>> KVHandler;
     struct MusicHandleStruct{
         PDJE_GitHandler gith;
         PDJE_JSONHandler<MUSIC_W> jsonh;
@@ -33,9 +33,15 @@ public:
     bool openProject(const std::string& projectPath);
 
     PDJE_Editor(const std::string &auth_name, const std::string &auth_email):
-    mixHandle{PDJE_GitHandler(auth_email, auth_name), PDJE_JSONHandler<MIX_W>{}},
-    noteHandle{PDJE_GitHandler(auth_email, auth_name), PDJE_JSONHandler<NOTE_W>{}},
-    KVHandler{PDJE_GitHandler(auth_email, auth_name), PDJE_JSONHandler<KV_W>{}},
+    mixHandle{
+        std::make_unique<PDJE_GitHandler>(auth_email, auth_name), 
+        PDJE_JSONHandler<MIX_W>{}},
+    noteHandle{
+        std::make_unique<PDJE_GitHandler>(auth_email, auth_name), 
+        PDJE_JSONHandler<NOTE_W>{}},
+    KVHandler{
+        std::make_unique<PDJE_GitHandler>(auth_email, auth_name),  
+        PDJE_JSONHandler<KV_W>{}},
     name(auth_name),
     email(auth_email)
     {}

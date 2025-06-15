@@ -64,7 +64,8 @@ GitWrapper::open(const std::string& path)
         return true;
     }
     else{
-        if(git_repository_init(&repo, path.c_str(), false) == 0){
+        auto res = git_repository_init(&repo, path.c_str(), false);
+        if(res == 0){
             handleBranch.emplace(repo);
             return true;
         }

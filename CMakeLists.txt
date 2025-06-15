@@ -94,6 +94,7 @@ add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource
 
 add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src})
 endif(PDJE_BUILD_TESTS)
+add_executable(testEditor include/tests/editorTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src})
 
 
 add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
@@ -121,6 +122,7 @@ if(WIN32)
   target_link_libraries(testInterface PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
   target_link_libraries(testGIT PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
   endif()
+  target_link_libraries(testEditor PRIVATE ${libgit2_static} winhttp crypt32 rpcrt4)
   target_link_libraries(PDJE PUBLIC ${libgit2_static} winhttp crypt32 rpcrt4)
   target_link_libraries(PDJE_dynamic PUBLIC ${libgit2_static} winhttp crypt32 rpcrt4)
   
@@ -156,6 +158,8 @@ target_link_libraries(testManualAudio PRIVATE nlohmann_json::nlohmann_json hwy)
 target_link_libraries(testInterface PRIVATE nlohmann_json::nlohmann_json hwy)
 target_link_libraries(testGIT PRIVATE nlohmann_json::nlohmann_json hwy)
 endif()
+target_link_libraries(testEditor PRIVATE nlohmann_json::nlohmann_json hwy)
+
 target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json hwy)
 target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy)
 

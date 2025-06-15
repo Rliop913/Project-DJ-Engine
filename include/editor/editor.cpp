@@ -26,9 +26,9 @@ PDJE_Editor::openProject(const std::string& projectPath)
             !fs::exists(musicp) || !fs::is_directory(musicp)
         ){ return false; }
     }
-    if( !mixHandle.first.Open(mixp.string())|| !mixHandle.second.load(mixp.string()) ||
-        !KVHandler.first.Open(mixp.string())|| !KVHandler.second.load(mixp.string()) ||
-        !noteHandle.first.Open(notep.string()) || !noteHandle.second.load(notep.string()))
+    if( !mixHandle.first->Open(mixp.string())|| !mixHandle.second.load(mixp.string()) ||
+        !KVHandler.first->Open(kvp.string())|| !KVHandler.second.load(kvp.string()) ||
+        !noteHandle.first->Open(notep.string()) || !noteHandle.second.load(notep.string()))
         { return false; }
 
     for(const auto& musicSubpath : fs::directory_iterator(musicp)){

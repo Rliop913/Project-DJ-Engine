@@ -159,6 +159,7 @@ PDJE_JSONHandler<MIX_W>::load(const std::string& path)
         fs::create_directories(filepath.parent_path());
         std::ofstream jfile(filepath);
         if(!jfile.is_open()) return false;
+        jfile << std::setw(4) << ROOT;
         jfile.close();
     }
 

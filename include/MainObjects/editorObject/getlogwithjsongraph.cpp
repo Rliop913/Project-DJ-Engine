@@ -5,7 +5,7 @@ PDJE_API
 std::string
 editorObject::GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>()
 {
-    return E_obj->KVHandler.first.GetLogWithJSONGraph();
+    return E_obj->KVHandler.first->GetLogWithJSONGraph();
 }
 
 template<>
@@ -13,7 +13,7 @@ PDJE_API
 std::string
 editorObject::GetLogWithJSONGraph<EDIT_ARG_MIX>()
 {
-    return E_obj->mixHandle.first.GetLogWithJSONGraph();
+    return E_obj->mixHandle.first->GetLogWithJSONGraph();
 }
 
 template<>
@@ -21,7 +21,7 @@ PDJE_API
 std::string
 editorObject::GetLogWithJSONGraph<EDIT_ARG_NOTE>()
 {
-    return E_obj->noteHandle.first.GetLogWithJSONGraph();
+    return E_obj->noteHandle.first->GetLogWithJSONGraph();
 }
 
 template<>

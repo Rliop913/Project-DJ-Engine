@@ -41,7 +41,7 @@ private:
 public:
     git_repository* getMixRepo(){
         if(E_obj.has_value()){
-            return E_obj->mixHandle.first.gw.repo;
+            return E_obj->mixHandle.first->gw.repo;
         }
         else return nullptr;
     }
@@ -58,14 +58,14 @@ public:
 
     git_repository* getNoteRepo(){
         if(E_obj.has_value()){
-            return E_obj->noteHandle.first.gw.repo;
+            return E_obj->noteHandle.first->gw.repo;
         }
         else return nullptr;
     }
 
     git_repository* getKVRepo(){
         if(E_obj.has_value()){
-            return E_obj->KVHandler.first.gw.repo;
+            return E_obj->KVHandler.first->gw.repo;
         }
         else return nullptr;
     }

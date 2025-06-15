@@ -16,7 +16,14 @@ PDJE_GitHandler::PDJE_GitHandler(const std::string& auth_name, const std::string
 
 PDJE_GitHandler::~PDJE_GitHandler()
 {
-    git_signature_free(sign);
+    try
+    {
+        git_signature_free(sign);
+    }
+    catch(...)
+    {
+        
+    }
 }
 
 

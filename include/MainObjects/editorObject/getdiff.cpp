@@ -6,7 +6,7 @@ DiffResult
 editorObject::GetDiff<EDIT_ARG_MIX>(const gitwrap::commit& oldTimeStamp, 
                                     const gitwrap::commit& newTimeStamp)
 {
-    return std::move(E_obj->mixHandle.first.GetDiff(oldTimeStamp, newTimeStamp));
+    return std::move(E_obj->mixHandle.first->GetDiff(oldTimeStamp, newTimeStamp));
 }
 
 template<>
@@ -15,7 +15,7 @@ DiffResult
 editorObject::GetDiff<EDIT_ARG_NOTE>(const gitwrap::commit& oldTimeStamp, 
                                     const gitwrap::commit& newTimeStamp)
 {
-    return std::move(E_obj->noteHandle.first.GetDiff(oldTimeStamp, newTimeStamp));
+    return std::move(E_obj->noteHandle.first->GetDiff(oldTimeStamp, newTimeStamp));
 }
 
 template<>
@@ -24,7 +24,7 @@ DiffResult
 editorObject::GetDiff<EDIT_ARG_KEY_VALUE>(const gitwrap::commit& oldTimeStamp, 
                                     const gitwrap::commit& newTimeStamp)
 {
-    return std::move(E_obj->KVHandler.first.GetDiff(oldTimeStamp, newTimeStamp));
+    return std::move(E_obj->KVHandler.first->GetDiff(oldTimeStamp, newTimeStamp));
 }
 
 template<>

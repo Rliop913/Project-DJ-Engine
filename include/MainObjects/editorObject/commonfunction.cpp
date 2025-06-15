@@ -8,7 +8,7 @@ bool
 editorObject::DefaultSaveFuntion<EDIT_ARG_MIX>()
 {
     if(!E_obj->mixHandle.second.save(mixFilePath.string())) return false;
-    if(!E_obj->mixHandle.first.Save(mixFilePath.string(), GitWrapper::GenTimeStamp())) return false;
+    if(!E_obj->mixHandle.first->Save(mixFilePath.string(), GitWrapper::GenTimeStamp())) return false;
     return true;
 }
 
@@ -18,7 +18,7 @@ bool
 editorObject::DefaultSaveFuntion<EDIT_ARG_NOTE>()
 {
     if(!E_obj->noteHandle.second.save(noteFilePath.string())) return false;
-    if(!E_obj->noteHandle.first.Save(noteFilePath.string(), GitWrapper::GenTimeStamp())) return false;
+    if(!E_obj->noteHandle.first->Save(noteFilePath.string(), GitWrapper::GenTimeStamp())) return false;
     return true;
 }
 
@@ -28,7 +28,7 @@ bool
 editorObject::DefaultSaveFuntion<EDIT_ARG_KEY_VALUE>()
 {
     if(!E_obj->KVHandler.second.save(kvFilePath.string())) return false;
-    if(!E_obj->KVHandler.first.Save(kvFilePath.string(), GitWrapper::GenTimeStamp())) return false;
+    if(!E_obj->KVHandler.first->Save(kvFilePath.string(), GitWrapper::GenTimeStamp())) return false;
     return true;
 }
 
