@@ -38,6 +38,6 @@ bool
 editorObject::DefaultSaveFuntion<EDIT_ARG_MUSIC>(PDJE_Editor::MusicHandleStruct& i, const EDIT_ARG_MUSIC& obj)
 {
     if(!i.jsonh.save((musicFileRootPath / obj.musicName / "musicmetadata.PDJE").generic_string())) return false;
-    if(!i.gith.Save((musicFileRootPath / obj.musicName / "musicmetadata.PDJE").generic_string(), GitWrapper::GenTimeStamp())) return false;
+    if(!i.gith.Save("musicmetadata.PDJE", GitWrapper::GenTimeStamp())) return false;
     return true;
 }
