@@ -88,7 +88,7 @@ public:
     bool Close();
     // SaveDatas GetCommits();
 
-
+    PDJE_GitHandler() = delete;
     PDJE_GitHandler(const std::string& auth_name, const std::string& auth_email);
     ~PDJE_GitHandler();
 

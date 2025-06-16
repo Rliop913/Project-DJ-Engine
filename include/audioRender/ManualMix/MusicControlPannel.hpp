@@ -6,6 +6,9 @@
 
 #include "ManualMix.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
+#include "dbRoot.hpp"
+#include <filesystem>
+namespace fs = std::filesystem;
 // #undef HWY_TARGET_INCLUDE
 // #define HWY_TARGET_INCLUDE "MusicControlPannel-inl.h"
 // #include "hwy/foreach_target.h"
@@ -60,7 +63,7 @@ public:
      * @param Mus Searched music
      * @return int, miniaudio Error code.
      */
-    int LoadMusic(const musdata& Mus);
+    int LoadMusic(litedb& ROOTDB, const musdata& Mus);
 
     /**
      * @brief Change playback position of the music

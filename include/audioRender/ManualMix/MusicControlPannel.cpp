@@ -12,7 +12,7 @@ MusicControlPannel::~MusicControlPannel()
 }
 
 int
-MusicControlPannel::LoadMusic(const musdata& Mus)
+MusicControlPannel::LoadMusic(litedb& ROOTDB, const musdata& Mus)
 {
     if(!deck.try_emplace(Mus.title).second){
         return -1;
@@ -20,10 +20,12 @@ MusicControlPannel::LoadMusic(const musdata& Mus)
 
     ma_decoder_config decConf =
         ma_decoder_config_init(ma_format_f32, CHANNEL, SAMPLERATE);
-
+    std::string MPath = 
+        (fs::path(ROOTDB.getRoot()).parent_path() / fs::path(Mus.musicPath)).lexically_normal().generic_string();
+    
     return
         ma_decoder_init_file(
-            Mus.musicPath.c_str(),
+            MPath.c_str(),
             &decConf,
             &deck[Mus.title].dec
         );
