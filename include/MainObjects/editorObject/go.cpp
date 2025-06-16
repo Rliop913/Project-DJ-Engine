@@ -30,7 +30,7 @@ bool
 editorObject::Go<EDIT_ARG_MUSIC>(const std::string& branchName, git_oid* commitID)
 {
     for(auto& i : E_obj->musicHandle){
-        if(i.gith.Go(branchName, commitID)) return true;
+        if(i.gith->Go(branchName, commitID)) return true;
     }
     return false;
 }

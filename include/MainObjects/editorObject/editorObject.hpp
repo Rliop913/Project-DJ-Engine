@@ -49,7 +49,7 @@ public:
         if(E_obj.has_value()){
             for(auto& music : E_obj->musicHandle){
                 if(music.musicName == Title){
-                    return music.gith.gw.repo;
+                    return music.gith->gw.repo;
                 }
             }
         }

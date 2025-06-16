@@ -31,7 +31,7 @@ editorObject::GetLogWithJSONGraph<EDIT_ARG_MUSIC>(const std::string& musicName)
 {
     for(auto& i : E_obj->musicHandle){
         if(i.musicName == musicName){
-            return i.gith.GetLogWithJSONGraph();
+            return i.gith->GetLogWithJSONGraph();
         }
     }
     return std::string();

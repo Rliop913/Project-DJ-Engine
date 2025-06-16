@@ -34,7 +34,7 @@ editorObject::GetDiff<EDIT_ARG_MUSIC>(const gitwrap::commit& oldTimeStamp,
                                     const gitwrap::commit& newTimeStamp)
 {
     for(auto& i : E_obj->musicHandle){
-        auto restemp = i.gith.GetDiff(oldTimeStamp, newTimeStamp);
+        auto restemp = i.gith->GetDiff(oldTimeStamp, newTimeStamp);
         if(!restemp.NewLines.empty() || !restemp.OldLines.empty()){
             return std::move(restemp);
         }

@@ -37,7 +37,7 @@ PDJE_Editor::openProject(const std::string& projectPath)
 
             musicHandle.emplace_back(name, email);
             musicHandle.back().musicName = musicSubpath.path().filename().string();
-            if( !musicHandle.back().gith.Open(musicSubpath.path().string()) ||
+            if( !musicHandle.back().gith->Open(musicSubpath.path().string()) ||
                 !musicHandle.back().jsonh.load(musicSubpath.path().string())){
                     return false;
                 }
@@ -59,7 +59,7 @@ PDJE_Editor::AddMusicConfig(const std::string& NewMusicName)
         if(fs::exists(newpath)){
             musicHandle.emplace_back(name, email);
             musicHandle.back().musicName = NewMusicName;
-            if( !musicHandle.back().gith.Open(newpath.string()) ||
+            if( !musicHandle.back().gith->Open(newpath.string()) ||
                 !musicHandle.back().jsonh.load(newpath.string())){
                     return false;
                 }
