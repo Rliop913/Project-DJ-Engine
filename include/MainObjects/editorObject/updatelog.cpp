@@ -13,8 +13,12 @@ PDJE_API
 bool
 editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>(const std::u8string& branchName)
 {
+<<<<<<< HEAD
 
     return E_obj->KVHandler.first->UpdateLog(TO_STR(branchName));
+=======
+    return E_obj->KVHandler.first->UpdateLog(branchName);
+>>>>>>> 567432ca7d48bb6b441e128467b86ffdba27ca3e
 }
 
 
@@ -31,7 +35,11 @@ PDJE_API
 bool
 editorObject::UpdateLog<EDIT_ARG_MIX>(const std::u8string& branchName)
 {
+<<<<<<< HEAD
     return E_obj->mixHandle.first->UpdateLog(TO_STR(branchName));
+=======
+    return E_obj->mixHandle.first->UpdateLog(branchName);
+>>>>>>> 567432ca7d48bb6b441e128467b86ffdba27ca3e
 }
 
 template<>
@@ -47,7 +55,11 @@ PDJE_API
 bool
 editorObject::UpdateLog<EDIT_ARG_NOTE>(const std::u8string& branchName)
 {
+<<<<<<< HEAD
     return E_obj->noteHandle.first->UpdateLog(TO_STR(branchName));
+=======
+    return E_obj->noteHandle.first->UpdateLog(branchName);
+>>>>>>> 567432ca7d48bb6b441e128467b86ffdba27ca3e
 }
 
 

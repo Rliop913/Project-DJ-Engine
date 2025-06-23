@@ -8,7 +8,11 @@
 #include "tempDB.hpp"
 
 struct PDJE_API EDIT_ARG_MUSIC{
+<<<<<<< HEAD
     std::u8string musicName;
+=======
+    std::string musicName;
+>>>>>>> 567432ca7d48bb6b441e128467b86ffdba27ca3e
     
     MusicArgs arg;
 };

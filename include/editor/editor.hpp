@@ -24,7 +24,11 @@ public:
     struct MusicHandleStruct{
         std::unique_ptr<PDJE_GitHandler> gith;
         PDJE_JSONHandler<MUSIC_W> jsonh;
+<<<<<<< HEAD
         std::u8string musicName;
+=======
+        std::string musicName;
+>>>>>>> 567432ca7d48bb6b441e128467b86ffdba27ca3e
          MusicHandleStruct() = delete;
         MusicHandleStruct(const MusicHandleStruct&) = delete;
         MusicHandleStruct& operator=(const MusicHandleStruct&) = delete;

@@ -83,6 +83,7 @@ editorObject::ConfigNewMusic(
 
         E_obj->musicHandle.back().jsonh["TITLE"] = NewMusicName;
         E_obj->musicHandle.back().jsonh["COMPOSER"] = composer;
+<<<<<<< HEAD
         try
         {
             E_obj->musicHandle.back().jsonh["PATH"] = 
@@ -96,6 +97,13 @@ editorObject::ConfigNewMusic(
             RECENT_ERR = e.what();
             return false;
         }
+=======
+        E_obj->musicHandle.back().jsonh["PATH"] = 
+        fs::relative(
+            fs::path(musicPath),
+            projectRoot
+        );
+>>>>>>> 567432ca7d48bb6b441e128467b86ffdba27ca3e
         E_obj->musicHandle.back().jsonh["FIRST_BAR"] = firstBar;
         return true;
     }
@@ -150,6 +158,7 @@ editorObject::pushToRootDB(
     }
     else return false;
     auto resultToInsert = searched->front();
+<<<<<<< HEAD
     try{
         resultToInsert.musicPath =
         fs::relative(
@@ -161,6 +170,13 @@ editorObject::pushToRootDB(
         RECENT_ERR = e.what();
         return false;
     }
+=======
+    resultToInsert.musicPath =
+    fs::relative(
+        (projectRoot / fs::path(resultToInsert.musicPath)).lexically_normal(),
+        fs::path(ROOTDB.getRoot()).parent_path()
+    ).generic_string();
+>>>>>>> 567432ca7d48bb6b441e128467b86ffdba27ca3e
     if(!(ROOTDB <= resultToInsert))  return false;
 
     return true;
