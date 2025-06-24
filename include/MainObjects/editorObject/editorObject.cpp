@@ -184,10 +184,13 @@ editorObject::pushToRootDB(
     auto resultToInsert = searched->front();
     std::cout << "Debugline: editorobj 185  " <<TO_STR(resultToInsert.musicPath) << std::endl;
     try{
+        auto musicRelPath = (projectRoot / fs::path(resultToInsert.musicPath)).lexically_normal();
+        auto RootRelPath = ROOTDB.getRoot().parent_path().lexically_normal();
+        RootRelPath = RootRelPath.string().empty() ? fs::path("."): RootRelPath;
         resultToInsert.musicPath =
         fs::relative(
-            (projectRoot / fs::path(resultToInsert.musicPath)).lexically_normal(),
-            ROOTDB.getRoot().parent_path()
+            musicRelPath,
+            RootRelPath
         ).generic_u8string();
     }
     catch(std::exception e){
@@ -195,6 +198,7 @@ editorObject::pushToRootDB(
         std::cout << "DEBUGLINE: editorObject.cpp:194 ERR" << e.what() << std::endl;
         return false;
     }
+    std::cout << "Debugline: editorobj 198--------------  " <<TO_STR(resultToInsert.musicPath) << std::endl;
     if(!(ROOTDB <= resultToInsert)){
         std::cout << "DEBUGLINE: editorObject.cpp:197 ROOTDB error" << std::endl;
         return false;

@@ -91,6 +91,7 @@ musdata::GenInsertSTMT(stmt& dbstate, sqlite3* db)
     }
     CHK_BIND( dbstate.bind_u8text(1, title))
     CHK_BIND( dbstate.bind_u8text(2, composer))
+    std::cout << "DEBUGLINE musicDB.cpp: 94 " << std::string(musicPath.begin(), musicPath.end()) << std::endl;
     CHK_BIND( dbstate.bind_u8text(3, musicPath))
     CHK_BIND( dbstate.bind_double(4, bpm))
     CHK_BIND( dbstate.bind_blob(5, bpmBinary))
