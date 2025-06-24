@@ -46,12 +46,14 @@ editorObject::AddLine(const EDIT_ARG_KEY_VALUE& obj)
     return DefaultSaveFuntion<EDIT_ARG_KEY_VALUE>();
 }
 
+#include <iostream>
 bool 
-editorObject::AddLine(const std::u8string& musicName, const std::string& firstBar)
+editorObject::AddLine(const std::u8string& musicName, const std::u8string& firstBar)
 {
     for(auto& i : E_obj->musicHandle){
         if(i.musicName == musicName){
-            i.jsonh["FIRST_BAR"] = firstBar;
+            i.jsonh["FIRST_BAR"] = TO_STR(firstBar);
+            std::cout << "DEBUGLINE: addline.cpp:56   " << TO_STR(firstBar) << std::endl;
             return true;
         }
     }

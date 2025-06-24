@@ -9,11 +9,11 @@ bool
 PDJE_JSONHandler<NOTE_W>::add(const NoteArgs& args)
 {
     nj tempMix = {
-        {"Note_Type"    ,   args.Note_Type  },
-        {"Note_Detail"  ,   args.Note_Detail},
-        {"first"        ,   args.first      },
-        {"second"       ,   args.second     },
-        {"third"        ,   args.third      },
+        {"Note_Type"    ,   std::string(args.Note_Type.begin()  , args.Note_Type.end())     },
+        {"Note_Detail"  ,   std::string(args.Note_Detail.begin(), args.Note_Detail.end())   },
+        {"first"        ,   std::string(args.first.begin()      , args.first.end())         },
+        {"second"       ,   std::string(args.second.begin()     , args.second.end())        },
+        {"third"        ,   std::string(args.third.begin()      , args.third.end())         },
         {"bar"          ,   args.bar        },
         {"beat"         ,   args.beat       },
         {"separate"     ,   args.separate   },
@@ -38,11 +38,11 @@ PDJE_JSONHandler<NOTE_W>::deleteLine(const NoteArgs& args)
     try{
         for(unsigned long long i=0; i < ROOT[PDJENOTE].size(); ++i){
             auto Target = ROOT[PDJENOTE].at(i);
-            if(Target["Note_Type"]  != args.Note_Type   && args.Note_Type   != ""   )   continue;
-            if(Target["Note_Detail"]!= args.Note_Detail && args.Note_Detail != ""   )   continue;
-            if(Target["first"]      != args.first       && args.first       != ""   )   continue;
-            if(Target["second"]     != args.second      && args.second      != ""   )   continue;
-            if(Target["third"]      != args.third       && args.third       != ""   )   continue;
+            if(Target["Note_Type"]  != std::string(args.Note_Type.begin()   , args.Note_Type.end())   && args.Note_Type   != u8""   )   continue;
+            if(Target["Note_Detail"]!= std::string(args.Note_Detail.begin() , args.Note_Detail.end()) && args.Note_Detail != u8""   )   continue;
+            if(Target["first"]      != std::string(args.first.begin()       , args.first.end())       && args.first       != u8""   )   continue;
+            if(Target["second"]     != std::string(args.second.begin()      , args.second.end())      && args.second      != u8""   )   continue;
+            if(Target["third"]      != std::string(args.third.begin()       , args.third.end())       && args.third       != u8""   )   continue;
             if(Target["bar"]        != args.bar         && args.bar         != -1   )   continue;
             if(Target["beat"]       != args.beat        && args.beat        != -1   )   continue;
             if(Target["separate"]   != args.separate    && args.separate    != -1   )   continue;
@@ -74,12 +74,18 @@ PDJE_JSONHandler<NOTE_W>::getAll(
         return;
     }
     for(auto& i : ROOT[PDJENOTE]){
+        auto tempNote_Type  = i["Note_Type"   ].get<std::string>();
+        auto tempNote_Detail= i["Note_Detail" ].get<std::string>();
+        auto tempfirst      = i["first"       ].get<std::string>();
+        auto tempsecond     = i["second"      ].get<std::string>();
+        auto tempthird      = i["third"       ].get<std::string>();
+
         NoteArgs tempargs{
-            i["Note_Type"   ],
-            i["Note_Detail" ],
-            i["first"       ],
-            i["second"      ],
-            i["third"       ],
+            std::u8string(tempNote_Type.begin()     , tempNote_Type.end()   ),
+            std::u8string(tempNote_Detail.begin()   , tempNote_Detail.end() ),
+            std::u8string(tempfirst.begin()         , tempfirst.end()       ),
+            std::u8string(tempsecond.begin()        , tempsecond.end()      ),
+            std::u8string(tempthird.begin()         , tempthird.end()       ),
             i["bar"         ],
             i["beat"        ],
             i["separate"    ],
@@ -125,10 +131,9 @@ PDJE_JSONHandler<NOTE_W>::render()
 
 template<>
 bool
-PDJE_JSONHandler<NOTE_W>::load(const std::u8string& path)
+PDJE_JSONHandler<NOTE_W>::load(const fs::path& path)
 {
-    auto filepath = fs::path(path); 
-    filepath /= "notemetadata.PDJE";
+    auto filepath = path / "notemetadata.PDJE";
     if(fs::exists(filepath)){
         if(fs::is_regular_file(filepath)){
             std::ifstream jfile(filepath);
@@ -159,11 +164,3 @@ PDJE_JSONHandler<NOTE_W>::load(const std::u8string& path)
     return true;
 
 }
-
-// template<>
-// template<>
-// int 
-// PDJE_JSONHandler<NOTE_W>::deleteLine(
-//         const NoteArgs& args,
-//         bool skipType, 
-//         bool skipDetail) = delete;

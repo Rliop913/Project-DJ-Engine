@@ -5,18 +5,18 @@ int
 main()
 {
     auto testpdje = new PDJE("./tempdb.db");
-    auto searchResult = testpdje->SearchMusic("WTC", "");
+    auto searchResult = testpdje->SearchMusic(u8"WTC", u8"");
     if(searchResult.empty()){
         std::cout << "can't search" << std::endl;
         delete testpdje;
         return 1;
     }
     for(auto i : searchResult){
-        std::cout << "title: " << i.title 
-        << "path: "<< i.musicPath << std::endl;
+        std::cout << "title: " << std::string(i.title.begin(), i.title.end()) 
+        << "path: "<< std::string(i.musicPath.begin(), i.musicPath.end()) << std::endl;
     }
 
-    auto trackSearch = testpdje->SearchTrack("testmix111");
+    auto trackSearch = testpdje->SearchTrack(u8"testmix111");
     if(trackSearch.empty()){
         std::cout << "can't search track" << std::endl;
         delete testpdje;
@@ -25,7 +25,7 @@ main()
     for(auto i: trackSearch){
         std::cout 
         << " track title: "
-        << i.trackTitle
+        << TO_STR(i.trackTitle)
         << " note binary size: "
         << i.noteBinary.size()
         << " mix binary size: "
@@ -46,9 +46,9 @@ main()
     
     getchar();
     auto mus = testpdje->player->GetMusicControlPannel();
-    mus->LoadMusic(searchResult[0]);
-    std::cout << mus->GetLoadedMusicList()[0];
-    mus->SetMusic("WTC", true);
+    mus->LoadMusic(testpdje->DBROOT.value(), searchResult[0]);
+    std::cout << TO_STR(mus->GetLoadedMusicList()[0]);
+    mus->SetMusic(u8"WTC", true);
     getchar();
     for(auto i : (pannel)){
         std::cout 

@@ -2,6 +2,8 @@
 #include <git2.h>
 #include <string>
 #include <optional>
+#include <filesystem>
+namespace fs = std::filesystem;
 struct BlameResult{
 
     git_oid commitID;
@@ -24,7 +26,7 @@ class BlameController{
         BlameController() = default;
         bool BlameOpen(
             git_repository *repo, 
-            const std::u8string& path, 
+            const fs::path& path, 
             git_blame_options *options = nullptr);
         
         MAYBE_BLAME_RESULT operator[](unsigned int idx);

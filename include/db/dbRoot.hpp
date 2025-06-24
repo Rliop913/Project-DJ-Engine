@@ -6,8 +6,10 @@
 
 #include "musicDB.hpp"
 #include "trackDB.hpp"
-
+#include <filesystem>
 #include "PDJE_EXPORT_SETTER.hpp"
+namespace fs = std::filesystem;
+
 /// music data vector
 using MUS_VEC = std::vector<musdata>;
 /// music data vector. check before use.
@@ -25,7 +27,7 @@ using MAYBE_TRACK_VEC = std::optional<TRACK_VEC>;
 class PDJE_API litedb{
 private:
     /// the path to the database
-    std::u8string ROOT_PATH;
+    fs::path ROOT_PATH;
     /// sqlite pointer
     sqlite3* db = nullptr;
     /// @brief checkes tables.
@@ -72,14 +74,14 @@ public:
      * @return true 
      * @return false 
      */
-    bool openDB(const std::u8string& dbPath);
+    bool openDB(const fs::path& dbPath);
     
     /**
      * @brief Get path to Root database
      * 
      * @return const std::string 
      */
-    const std::u8string 
+    const fs::path
     getRoot(){
         
         return ROOT_PATH;
@@ -105,19 +107,22 @@ litedb::operator<<(DBType& searchClue)
         return std::nullopt;
     }
 }
-
+#include <iostream>
 template<typename DBType>
 bool
 litedb::operator<=(DBType& insertObject)
 {
+    std::cout << "dbRoot.hpp:115 operator" << "   " << std::endl;
     stmt dbstate = stmt();
     if(insertObject.GenInsertSTMT(dbstate, db)){
         auto insertRes = sqlite3_step(dbstate.S);
         if(insertRes != SQLITE_DONE){
+            std::cout << "dbRoot.hpp:119 FATAL ERROR: insertRes-" << insertRes << "   " << std::endl;
             return false;
         }
         return true;
     }
+    std::cout << "dbRoot.hpp:124 FATAL ERROR: GenInsertSTMT ERROR" << std::endl;
     return false;
 }
 

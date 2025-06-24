@@ -5,10 +5,11 @@
 #include <vector>
 
 #include <miniaudio.h>
-
+#include <filesystem>
 #include "FrameCalc.hpp"
 #define TO_USTR(STR) std::u8string(STR.begin(), STR.end())
 #define TO_STR(USTR) std::string(USTR.begin(), USTR.end())
+namespace fs = std::filesystem;
 // using MAYBE_FRAME = std::optional<std::vector<float>>;
 
 using FRAME_POS = unsigned long long;
@@ -29,7 +30,7 @@ struct PDJE_API Decoder{
      * @return true 
      * @return false 
      */
-    bool init(const std::u8string& song_path, const std::u8string& root_path);
+    bool init(const fs::path& song_path, const fs::path& root_path);
     /**
      * @brief changes the playback position
      * 

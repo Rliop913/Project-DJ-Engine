@@ -8,7 +8,7 @@
 // #include "CommitFinder.hpp"
 
 MAYBE_BLAME
-GitWrapper::Blame(const std::string& filepath, const gitwrap::commit& newCommit, const gitwrap::commit& oldCommit)
+GitWrapper::Blame(const fs::path& filepath, const gitwrap::commit& newCommit, const gitwrap::commit& oldCommit)
 {
     auto newBlame = BlameController();
     git_blame_options opts;
@@ -41,7 +41,7 @@ GitWrapper::diff(const gitwrap::commit& oldCommit, const gitwrap::commit& newCom
 }
 
 bool
-GitWrapper::add(const std::u8string& path)
+GitWrapper::add(const fs::path& path)
 {
     if(addIndex.has_value()){
         addIndex.reset();
@@ -57,19 +57,16 @@ GitWrapper::add(const std::u8string& path)
 
 
 bool
-GitWrapper::open(const std::u8string& path)
+GitWrapper::open(const fs::path& path)
 {
-    auto strPath = std::string(path.begin(), path.end());
-    if(git_repository_open(&repo, strPath.c_str()) == 0){
+    auto strPath = path.generic_u8string();
+    std::string safeStr = std::string(strPath.begin(), strPath.end());
+    if(git_repository_open(&repo, safeStr.c_str()) == 0){
         handleBranch.emplace(repo);
         return true;
     }
     else{
-<<<<<<< HEAD
-        auto res = git_repository_init(&repo, strPath.c_str(), false);
-=======
-        auto res = git_repository_init(&repo, path.c_str(), false);
->>>>>>> 567432ca7d48bb6b441e128467b86ffdba27ca3e
+        auto res = git_repository_init(&repo, safeStr.c_str(), false);
         if(res == 0){
             handleBranch.emplace(repo);
             return true;

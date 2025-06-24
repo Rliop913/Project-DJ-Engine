@@ -24,11 +24,7 @@ public:
     struct MusicHandleStruct{
         std::unique_ptr<PDJE_GitHandler> gith;
         PDJE_JSONHandler<MUSIC_W> jsonh;
-<<<<<<< HEAD
         std::u8string musicName;
-=======
-        std::string musicName;
->>>>>>> 567432ca7d48bb6b441e128467b86ffdba27ca3e
          MusicHandleStruct() = delete;
         MusicHandleStruct(const MusicHandleStruct&) = delete;
         MusicHandleStruct& operator=(const MusicHandleStruct&) = delete;
@@ -42,7 +38,7 @@ public:
     };
     std::vector<MusicHandleStruct> musicHandle;
     bool AddMusicConfig(const std::u8string& NewMusicName);
-    bool openProject(const std::u8string& projectPath);
+    bool openProject(const fs::path& projectPath);
 
     PDJE_Editor(const std::string &auth_name, const std::string &auth_email):
     mixHandle{

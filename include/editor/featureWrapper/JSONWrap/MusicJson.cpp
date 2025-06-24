@@ -19,10 +19,10 @@ PDJE_JSONHandler<MUSIC_W>::deleteLine(const MusicArgs& args)
     try{
         for(unsigned long long i=0; i < ROOT[PDJEMUSICBPM].size(); ++i){
             auto Target = ROOT[PDJEMUSICBPM].at(i);
-            if(Target["bar"]        != args.bar         && args.bar         != -1   )   continue;
-            if(Target["beat"]       != args.beat        && args.beat        != -1   )   continue;
-            if(Target["separate"]   != args.separate    && args.separate    != -1   )   continue;
-            if(Target["bpm"]        != args.bpm         && args.bpm         != ""   )   continue;
+            if(Target["bar"]        != args.bar         && args.bar         != -1                       )   continue;
+            if(Target["beat"]       != args.beat        && args.beat        != -1                       )   continue;
+            if(Target["separate"]   != args.separate    && args.separate    != -1                       )   continue;
+            if(Target["bpm"]        != std::string(args.bpm.begin(), args.bpm.end()) && args.bpm != u8"")   continue;
             
             targetIDX.push_back(i);
         }
@@ -42,10 +42,10 @@ bool
 PDJE_JSONHandler<MUSIC_W>::add(const MusicArgs& args)
 {
     nj tempMus = {
-        {"bpm"      ,   args.bpm                       },
-        {"bar"      ,   args.bar                        },
-        {"beat"     ,   args.beat                       },
-        {"separate" ,   args.separate                   }
+        {"bpm"      ,   std::string(args.bpm.begin(), args.bpm.end())   },
+        {"bar"      ,   args.bar                                        },
+        {"beat"     ,   args.beat                                       },
+        {"separate" ,   args.separate                                   }
     };
     if(!ROOT.contains(PDJEMUSICBPM)){
         return false;
@@ -89,9 +89,12 @@ PDJE_JSONHandler<MUSIC_W>::getAll(
     }
     for(auto& i : ROOT[PDJEMUSICBPM]){
         EDIT_ARG_MUSIC tempargs;
-        tempargs.musicName = ROOT["TITLE"];
+        auto tempMusName = ROOT["TITLE"].get<std::string>();
+        tempargs.musicName = std::u8string(tempMusName.begin(), tempMusName.end());
+        auto tempBpm = i["bpm"].get<std::string>();
+        auto safeBpm = std::u8string(tempBpm.begin(), tempBpm.end());
         tempargs.arg = {
-            i["bpm"        ],
+            safeBpm         ,
             i["bar"         ],
             i["beat"        ],
             i["separate"    ]
@@ -101,10 +104,9 @@ PDJE_JSONHandler<MUSIC_W>::getAll(
 }
 template<>
 bool
-PDJE_JSONHandler<MUSIC_W>::load(const std::u8string& path)
+PDJE_JSONHandler<MUSIC_W>::load(const fs::path& path)
 {
-    auto filepath = fs::path(path);
-    filepath = filepath / "musicmetadata.PDJE";
+    auto filepath = path / "musicmetadata.PDJE";
     if(fs::exists(filepath)){
         if(fs::is_regular_file(filepath)){
             std::ifstream jfile(filepath);

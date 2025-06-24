@@ -1,5 +1,5 @@
 #include "editorObject.hpp"
-
+#include <iostream>
 bool
 editorObject::render(const std::u8string& trackTitle, litedb& ROOTDB)
 {
@@ -13,10 +13,17 @@ editorObject::render(const std::u8string& trackTitle, litedb& ROOTDB)
         auto rendered = i.jsonh.render();
         mds.back().title = i.musicName;
         auto rdout = rendered->out();
-        mds.back().bpmBinary.assign(rdout.begin(), rdout.end()); 
-        mds.back().composer = i.jsonh["COMPOSER"];
-        mds.back().musicPath = i.jsonh["PATH"];
-        mds.back().firstBar = i.jsonh["FIRST_BAR"];
+        mds.back().bpmBinary.assign(rdout.begin(), rdout.end());
+        auto tempCOMPOSER   = i.jsonh["COMPOSER"    ].get<std::string>();
+        auto tempPATH       = i.jsonh["PATH"        ].get<std::string>();
+        auto tempFIRST_BAR  = i.jsonh["FIRST_BAR"   ].get<std::string>();
+        std::cout << "DEBUGLINE: render.cpp:20   " << tempCOMPOSER <<std::endl;
+        std::cout << "DEBUGLINE: render.cpp:21   " << tempPATH <<std::endl;
+        std::cout << "DEBUGLINE: render.cpp:22   " << tempFIRST_BAR <<std::endl;
+        
+        mds.back().composer     = TO_USTR(tempCOMPOSER);
+        mds.back().musicPath    = TO_USTR(tempPATH);
+        mds.back().firstBar     = TO_USTR(tempFIRST_BAR);
         try{
             mds.back().bpm = std::stod(rendered->Wp->getDatas()[0].getBpm().cStr());
         }
@@ -29,14 +36,14 @@ editorObject::render(const std::u8string& trackTitle, litedb& ROOTDB)
     for(auto& i : titles){
         if(i.second != u8""){
             auto findFromRoot = musdata(i.first, i.second);
-            auto mus = ROOTDB<<findFromRoot;
+            auto mus = ROOTDB << findFromRoot;
             if(mus.has_value()){
                 if(mus->empty()) continue;
                 musdata fromRoot = mus->front();
                 try{
                     fromRoot.musicPath =
                     fs::relative(
-                        fs::absolute(fs::path(ROOTDB.getRoot()).parent_path() / fromRoot.musicPath),
+                        fs::absolute(ROOTDB.getRoot().parent_path() / fromRoot.musicPath),
                         projectRoot
                     ).u8string();
                 }

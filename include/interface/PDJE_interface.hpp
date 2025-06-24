@@ -59,7 +59,7 @@ public:
      * 
      * @param rootPath the path to the Root Database. 
      */
-    PDJE(const std::u8string& rootPath);
+    PDJE(const fs::path& rootPath);
     ~PDJE() = default;
     
     /// this is the music handler. you can play music, stop music, fx control, play/stop music manually in realtime.
@@ -85,7 +85,7 @@ public:
     InitEditor(
         const std::string &auth_name, 
         const std::string &auth_email,
-        const std::u8string& projectRoot
+        const fs::path& projectRoot
     );
     /**
      * @brief Parse Note data and calls received function.

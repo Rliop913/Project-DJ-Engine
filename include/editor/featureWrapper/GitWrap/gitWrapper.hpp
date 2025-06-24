@@ -32,15 +32,15 @@ public:
     std::optional<gitwrap::logHandle> log_hdl;
     BRANCH_HANDLE handleBranch;
 
-    bool add(const std::u8string&  path);
-    bool open(const std::u8string&  path);
+    bool add(const fs::path&  path);
+    bool open(const fs::path&  path);
 
     DiffResult diff(
         const gitwrap::commit& oldCommit,
         const gitwrap::commit& newCommit);
 
     MAYBE_BLAME Blame(
-        const std::string& filepath,
+        const fs::path& filepath,
         const gitwrap::commit& newCommit,
         const gitwrap::commit& oldCommit);
 
@@ -83,8 +83,8 @@ public:
 
     DiffResult GetDiff(const gitwrap::commit& oldTimeStamp, const gitwrap::commit& newTimeStamp);
 
-    bool DeleteGIT(const std::u8string& path);
-    bool Open(const std::u8string& path);
+    bool DeleteGIT(const fs::path& path);
+    bool Open(const fs::path& path);
     bool Close();
     // SaveDatas GetCommits();
 

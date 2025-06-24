@@ -1,16 +1,17 @@
 #include "dbRoot.hpp"
 #include <iostream>
 #include "CapnpBinary.hpp"
+#include <string>
 int
 main()
 {
     litedb dbr = litedb();
-    if(!dbr.openDB(u8"./tempdb.db")){
+    if(!dbr.openDB(std::u8string(u8"./tempdb.db"))){
         return 1;
     }
     auto td = trackdata(u8"first");
     auto md = musdata(u8"WTC", u8"TEST", u8"./WTC.wav", 175);
-    md.firstBar = "1056";
+    md.firstBar = u8"1056";
     auto musicBinary = CapWriter<MusicBinaryCapnpData>();
     musicBinary.makeNew();
     auto aubuilder = musicBinary.Wp->initDatas(2);
@@ -35,8 +36,8 @@ main()
     //     return 1;
     // }
     for(auto i : mdret.value()){
-        std::cout << i.title << ", " << i.musicPath 
-        << ", " << i.composer << ", " << i.bpm << std::endl; 
+        std::cout << std::string(i.title.begin(), i.title.end()) << ", " << std::string(i.musicPath.begin(), i.musicPath.end())
+        << ", " << std::string(i.composer.begin(), i.composer.end()) << ", " << i.bpm << std::endl; 
         for(auto j : i.bpmBinary){
             std::cout<< j << std::endl;
         }

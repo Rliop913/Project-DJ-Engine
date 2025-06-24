@@ -11,16 +11,13 @@ return false;\
 
 trackdata::trackdata(stmt* dbstate)
 {
-    auto tempTrackTitle = dbstate->colGet<COL_TYPE::TEXT, std::string>(0);
+    trackTitle = dbstate->colGet<COL_TYPE::TEXT, std::u8string>(0);
     
     mixBinary = dbstate->colGet<COL_TYPE::BLOB, BIN>(1);
     
     noteBinary = dbstate->colGet<COL_TYPE::BLOB, BIN>(2);
     
-    auto tempCachedMixList = dbstate->colGet<COL_TYPE::TEXT, std::string>(3);
-    trackTitle = std::u8string(tempTrackTitle.begin(), tempTrackTitle.end());
-    cachedMixList = std::u8string(tempCachedMixList.begin(), tempCachedMixList.end());
-    
+    cachedMixList = dbstate->colGet<COL_TYPE::TEXT, std::u8string>(3);
 }
 
 trackdata::trackdata(const std::u8string& trackTitle__)

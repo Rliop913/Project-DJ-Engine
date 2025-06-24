@@ -150,7 +150,7 @@ public:
     // bool AddFrameCut(FRAME_POS cutIn, FRAME_POS cutOut);
 
     // std::optional<double> originBpm;
-    std::optional<std::u8string> songPath;
+    std::optional<fs::path> songPath;
     /**
      * @brief Facade pattern: renders all music using mixing data into a single PCM array.
      * 
@@ -160,7 +160,7 @@ public:
      * @return std::optional<SIMD_FLOAT*> 
      */
     std::optional<SIMD_FLOAT*> 
-    Execute(const BPM& bpms, SIMD_FLOAT* PCMS, const std::u8string& dbRoot);
+    Execute(const BPM& bpms, SIMD_FLOAT* PCMS, const fs::path& dbRoot);
 
     /**
      * @brief send soundtouch, decoder object to other class

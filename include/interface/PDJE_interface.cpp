@@ -1,6 +1,6 @@
 #include "PDJE_interface.hpp"
 
-PDJE::PDJE(const std::u8string& rootPath)
+PDJE::PDJE(const fs::path& rootPath)
 {
     DBROOT.emplace();
     DBROOT->openDB(rootPath);
@@ -124,7 +124,7 @@ bool
 PDJE::InitEditor(
     const std::string &auth_name, 
     const std::string &auth_email,
-    const std::u8string& projectRoot)
+    const fs::path& projectRoot)
 {
     editor.emplace(auth_name, auth_email);
     return editor->Open(projectRoot);

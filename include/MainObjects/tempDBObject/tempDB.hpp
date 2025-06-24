@@ -9,7 +9,7 @@ class PDJE_API tempDB{
 private:
     std::optional<litedb> tempROOT;
 public:
-    bool Open(fs::path& projectRoot);
+    bool Open(const fs::path& projectRoot);
     bool BuildProject(trackdata& td, std::vector<musdata>& mds);
     litedb& GetBuildedProject(){
         return tempROOT.value();

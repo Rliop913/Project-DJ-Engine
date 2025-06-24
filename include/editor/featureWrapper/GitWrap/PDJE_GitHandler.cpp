@@ -28,13 +28,13 @@ PDJE_GitHandler::~PDJE_GitHandler()
 
 
 bool
-PDJE_GitHandler::Open(const std::u8string& path)
+PDJE_GitHandler::Open(const fs::path& path)
 {
     return gw.open(path);
 }
 
 bool
-PDJE_GitHandler::DeleteGIT(const std::u8string& path)
+PDJE_GitHandler::DeleteGIT(const fs::path& path)
 {
 
     if( !fs::exists(path) ||

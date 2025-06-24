@@ -5,10 +5,11 @@
 litedb::litedb(){}
 
 bool
-litedb::openDB(const std::u8string& dbPath)
+litedb::openDB(const fs::path& dbPath)
 {
-    std::string utf8Path(dbPath.begin(), dbPath.end());
-    if (sqlite3_open(utf8Path.c_str(), &db) != SQLITE_OK){
+    std::u8string u8str = dbPath.generic_u8string();
+    std::string safeStr = std::string(u8str.begin(), u8str.end());
+    if (sqlite3_open(safeStr.c_str(), &db) != SQLITE_OK){
         return false;
     }
     if(!CheckTables()){

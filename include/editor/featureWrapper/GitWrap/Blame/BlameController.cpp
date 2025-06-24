@@ -5,14 +5,15 @@
 bool
 BlameController::BlameOpen(
     git_repository *repo, 
-    const std::u8string& path, 
+    const fs::path& path, 
     git_blame_options *options)
 {
-    std::string strPath = std::string(path.begin(), path.end());
+    std::u8string u8str = path.generic_u8string();
+    std::string safeStr = std::string(safeStr.begin(), safeStr.end());
     if(blame != nullptr){
         return false;
     }
-    if(git_blame_file(&blame, repo, strPath.c_str(), options) != 0){
+    if(git_blame_file(&blame, repo, safeStr.c_str(), options) != 0){
         return false;
     }
     blameAmount = git_blame_get_hunk_count(blame);

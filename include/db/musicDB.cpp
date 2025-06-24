@@ -8,19 +8,17 @@ return false;\
 }
 // errpdje::ereport("sql bind errno: " + std::to_string(SQLITE_LAST_ERRNO), errpdje::ERR_TYPE::SQL_ERROR, ("musicDB bind " + std::string(error_type)));}
 
-
+#include <iostream>
 
 musdata::musdata(stmt* dbstate)
 {
-    auto tempTitle = dbstate->colGet<COL_TYPE::TEXT, std::string>(0);
-    auto tempComposer = dbstate->colGet<COL_TYPE::TEXT, std::string>(1);
-    auto tempMusicPath= dbstate->colGet<COL_TYPE::TEXT, std::string>(2);
-    title = std::u8string(tempTitle.begin(), tempTitle.end());
-    composer = std::u8string(tempComposer.begin(), tempComposer.end());
-    musicPath =std::u8string(tempMusicPath.begin(), tempMusicPath.end());
+    title = dbstate->colGet<COL_TYPE::TEXT, std::u8string>(0);
+    composer = dbstate->colGet<COL_TYPE::TEXT, std::u8string>(1);
+    musicPath = dbstate->colGet<COL_TYPE::TEXT, std::u8string>(2);
+    std::cout << "DEBUGLINE musicDB.cpp:18 " << std::string(musicPath.begin(), musicPath.end());
     bpm = dbstate->colGet<COL_TYPE::DOUBLE, double>(3);
     bpmBinary = dbstate->colGet<COL_TYPE::BLOB, BIN>(4);
-    firstBar = dbstate->colGet<COL_TYPE::TEXT, std::string>(5);
+    firstBar = dbstate->colGet<COL_TYPE::TEXT, std::u8string>(5);
 }
 
 musdata::musdata(
@@ -96,7 +94,7 @@ musdata::GenInsertSTMT(stmt& dbstate, sqlite3* db)
     CHK_BIND( dbstate.bind_u8text(3, musicPath))
     CHK_BIND( dbstate.bind_double(4, bpm))
     CHK_BIND( dbstate.bind_blob(5, bpmBinary))
-    CHK_BIND( dbstate.bind_text(6, firstBar))
+    CHK_BIND( dbstate.bind_u8text(6, firstBar))
 
     return true;
 
@@ -118,7 +116,7 @@ musdata::GenEditSTMT(stmt& dbstate, sqlite3* db, musdata& toEdit)
     CHK_BIND(dbstate.bind_u8text   (3, toEdit.musicPath))
     CHK_BIND(dbstate.bind_double (4, toEdit.bpm      ))
     CHK_BIND(dbstate.bind_blob   (5, toEdit.bpmBinary))
-    CHK_BIND(dbstate.bind_text   (6, toEdit.firstBar ))
+    CHK_BIND(dbstate.bind_u8text   (6, toEdit.firstBar ))
     CHK_BIND(dbstate.bind_u8text   (7, title           ))
     CHK_BIND(dbstate.bind_u8text   (8, composer        ))
     CHK_BIND(dbstate.bind_u8text   (9, musicPath       ))

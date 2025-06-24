@@ -23,9 +23,9 @@ struct PDJE_API MixArgs{
     TypeEnum type       = TypeEnum::EQ      ;
     DetailEnum details  = DetailEnum::HIGH  ;
     int ID              = -1                ;
-    std::string first   = ""                ;
-    std::string second  = ""                ;
-    std::string third   = ""                ;
+    std::u8string first   = u8""                ;
+    std::u8string second  = u8""                ;
+    std::u8string third   = u8""                ;
     long long bar       = -1                ;
     long long beat      = -1                ;
     long long separate  = -1                ;
@@ -35,11 +35,11 @@ struct PDJE_API MixArgs{
 };
 
 struct PDJE_API NoteArgs{
-    std::string Note_Type   = "";
-    std::string Note_Detail = "";
-    std::string first       = "";
-    std::string second      = "";
-    std::string third       = "";
+    std::u8string Note_Type   = u8"";
+    std::u8string Note_Detail = u8"";
+    std::u8string first       = u8"";
+    std::u8string second      = u8"";
+    std::u8string third       = u8"";
     long long bar           = -1;
     long long beat          = -1;
     long long separate      = -1;
@@ -49,7 +49,7 @@ struct PDJE_API NoteArgs{
 };
 
 struct PDJE_API MusicArgs{
-    std::string bpm     = ""                ;
+    std::u8string bpm     = u8""                ;
     long long bar       = -1                ;
     long long beat      = -1                ;
     long long separate  = -1                ;
@@ -86,7 +86,7 @@ public:
     template<typename Target> 
     void getAll(std::function<void(const Target& args)> jsonCallback);
         
-    bool load(const std::u8string& path);
+    bool load(const fs::path& path);
 
 
 
@@ -96,9 +96,8 @@ public:
         return ROOT[key];
     }
 
-    bool save(const std::u8string& path){
-        auto filePath = fs::path(path);
-        std::ofstream jfile(filePath);
+    bool save(const fs::path& path){
+        std::ofstream jfile(path);
         if(jfile.is_open()){
             jfile << std::setw(4) << ROOT;
             return true;
@@ -109,7 +108,7 @@ public:
     }
     
 
-    bool deleteFile(const std::u8string& path){
+    bool deleteFile(const fs::path& path){
         try{ return fs::remove_all(path) > 0; }
         catch(...) { return false; }
     }

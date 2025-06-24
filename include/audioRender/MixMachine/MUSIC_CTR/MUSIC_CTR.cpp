@@ -86,7 +86,7 @@ MUSIC_CTR::Render(
 
 
 std::optional<SIMD_FLOAT*>
-MUSIC_CTR::Execute(const BPM& bpms, SIMD_FLOAT* PCMS, const std::u8string& dbRoot)
+MUSIC_CTR::Execute(const BPM& bpms, SIMD_FLOAT* PCMS, const fs::path& dbRoot)
 {
     if(!checkUsable()){
         return std::nullopt;
@@ -125,18 +125,32 @@ MUSIC_CTR::setLOAD(MBData::Reader& RP, litedb& db, FRAME_POS FrameIn)
     musdata md;
     auto tempTitle = RP.getFirst();
     auto tempComposer = RP.getSecond();
-    md.title = TO_USTR(tempTitle);
-    md.composer = TO_USTR(tempComposer);
+    
+    md.title.resize(tempTitle.size());
+    std::transform(
+        tempTitle.begin(), tempTitle.end(),
+        md.title.begin(),
+        [](char c){return static_cast<char8_t>(c);}
+    );
+    //  = TO_USTR(tempTitle);
+    md.composer.resize(tempComposer.size());
+    std::transform(
+        tempComposer.begin(), tempComposer.end(),
+        md.composer.begin(),
+        [](char c){return static_cast<char8_t>(c);}
+    );
+    // = TO_USTR(tempComposer);
     md.bpm = std::stod(RP.getThird().cStr());
     
     auto searchRes = db << md;
     if(!searchRes.has_value()){
         return false;
     }
-    songPath = searchRes.value()[0].musicPath;
+    songPath = fs::path(searchRes.value()[0].musicPath);
     PlayPosition startpos;
     startpos.Gidx = FrameIn;
-    startpos.Lidx = std::stoull(searchRes.value()[0].firstBar);
+    std::u8string u8Str = searchRes.value()[0].firstBar;
+    startpos.Lidx = std::stoull(TO_STR(u8Str));
     startpos.status = MIXSTATE::PLAY;
     QDatas.pos.push_back(startpos);
     

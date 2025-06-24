@@ -38,10 +38,10 @@ PDJE_JSONHandler<KV_W>::getAll(
 
 template<>
 bool
-PDJE_JSONHandler<KV_W>::load(const std::u8string& path)
+PDJE_JSONHandler<KV_W>::load(const fs::path& path)
 {
-    auto filepath = fs::path(path); 
-    filepath /= "keyvaluemetadata.PDJE";
+    
+    auto filepath = path / "keyvaluemetadata.PDJE";
     if(fs::exists(filepath)){
         if(fs::is_regular_file(filepath)){
             std::ifstream jfile(filepath);

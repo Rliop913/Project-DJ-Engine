@@ -1,7 +1,7 @@
 #include "tempDB.hpp"
 
 bool
-tempDB::Open(fs::path& projectRoot)
+tempDB::Open(const fs::path& projectRoot)
 {
     if(tempROOT.has_value()) tempROOT.reset();
     

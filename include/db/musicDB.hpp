@@ -19,7 +19,7 @@ public:
     double bpm = -1.0;
     /// @brief this means the first beat's position. The measurement unit is a PCM frame. 
     /// For higher precision, double value is stored as strings in Cap’n Proto, so the corresponding variable is also a string.
-    std::string firstBar;
+    std::u8string firstBar;
     /**
      * @brief Constructor. typically used for returning search results.
      * 

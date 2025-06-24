@@ -19,12 +19,12 @@ PDJE_JSONHandler<MIX_W>::deleteLine(
     try{
         for(unsigned long long i=0; i < ROOT[PDJEARR].size(); ++i){
             auto Target = ROOT[PDJEARR].at(i);
-            if(Target["type"]       != args.type     && !skipType                   )   continue;
-            if(Target["details"]    != args.details  && !skipDetail                 )   continue;
-            if(Target["ID"]         != args.ID       && args.ID             != -1   )   continue;
-            if(Target["first"]      != args.first    && args.first          != ""   )   continue;
-            if(Target["second"]     != args.second   && args.second         != ""   )   continue;
-            if(Target["third"]      != args.third    && args.third          != ""   )   continue;
+            if(Target["type"]       != args.type                                            && !skipType                    )   continue;
+            if(Target["details"]    != args.details                                         && !skipDetail                  )   continue;
+            if(Target["ID"]         != args.ID                                              && args.ID             != -1    )   continue;
+            if(Target["first"]      != std::string(args.first.begin(), args.first.end())    && args.first          != u8""  )   continue;
+            if(Target["second"]     != std::string(args.second.begin(), args.second.end())  && args.second         != u8""  )   continue;
+            if(Target["third"]      != std::string(args.third.begin(), args.third.end())    && args.third          != u8""  )   continue;
             if(Target["bar"]        != args.bar      && args.bar            != -1   )   continue;
             if(Target["beat"]       != args.beat     && args.beat           != -1   )   continue;
             if(Target["separate"]   != args.separate && args.separate       != -1   )   continue;
@@ -50,18 +50,18 @@ bool
 PDJE_JSONHandler<MIX_W>::add(const MixArgs& args)
 {
     nj tempMix = {
-        {"type"     ,   static_cast<int>(args.type)     },
-        {"details"  ,   static_cast<int>(args.details)  },
-        {"ID"       ,   args.ID                         },
-        {"first"    ,   args.first                      },
-        {"second"   ,   args.second                     },
-        {"third"    ,   args.third                      },
-        {"bar"      ,   args.bar                        },
-        {"beat"     ,   args.beat                       },
-        {"separate" ,   args.separate                   },
-        {"Ebar"     ,   args.Ebar                       },
-        {"Ebeat"    ,   args.Ebeat                      },
-        {"Eseparate",   args.Eseparate                  }
+        {"type"     ,   static_cast<int>(args.type)                         },
+        {"details"  ,   static_cast<int>(args.details)                      },
+        {"ID"       ,   args.ID                                             },
+        {"first"    ,   std::string(args.first.begin(), args.first.end())   },
+        {"second"   ,   std::string(args.second.begin(), args.second.end()) },
+        {"third"    ,   std::string(args.third.begin(), args.third.end())   },
+        {"bar"      ,   args.bar                                            },
+        {"beat"     ,   args.beat                                           },
+        {"separate" ,   args.separate                                       },
+        {"Ebar"     ,   args.Ebar                                           },
+        {"Ebeat"    ,   args.Ebeat                                          },
+        {"Eseparate",   args.Eseparate                                      }
     };
     if(!ROOT.contains(PDJEARR)){
         return false;
@@ -136,10 +136,9 @@ PDJE_JSONHandler<MIX_W>::render()
 
 template<>
 bool
-PDJE_JSONHandler<MIX_W>::load(const std::u8string& path)
+PDJE_JSONHandler<MIX_W>::load(const fs::path& path)
 {
-    auto filepath = fs::path(path);
-    filepath /= "mixmetadata.PDJE";
+    auto filepath = path / "mixmetadata.PDJE";
     if(fs::exists(filepath)){
         if(fs::is_regular_file(filepath)){
             std::ifstream jfile(filepath);

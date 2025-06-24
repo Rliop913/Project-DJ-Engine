@@ -8,11 +8,7 @@
 #include "tempDB.hpp"
 
 struct PDJE_API EDIT_ARG_MUSIC{
-<<<<<<< HEAD
     std::u8string musicName;
-=======
-    std::string musicName;
->>>>>>> 567432ca7d48bb6b441e128467b86ffdba27ca3e
     
     MusicArgs arg;
 };
@@ -80,7 +76,7 @@ public:
     template<typename EDIT_ARG_TYPE>
     bool AddLine(const EDIT_ARG_TYPE& obj);
 
-    bool AddLine(const std::u8string& musicName, const std::string& firstBar);
+    bool AddLine(const std::u8string& musicName, const std::u8string& firstBar);
     
     
     int deleteLine(
@@ -149,11 +145,11 @@ public:
 
     bool ConfigNewMusic(const std::u8string& NewMusicName, 
                         const std::u8string& composer,
-                        const std::u8string& musicPath,
-                        const std::string& firstBar = "0");
+                        const fs::path& musicPath,
+                        const std::u8string& firstBar = u8"0");
 
 
-    bool Open(const std::u8string& projectPath);
+    bool Open(const fs::path& projectPath);
 
     editorObject() = delete;
 

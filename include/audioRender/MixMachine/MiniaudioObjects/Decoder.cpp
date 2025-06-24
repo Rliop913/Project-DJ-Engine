@@ -8,13 +8,11 @@ Decoder::Decoder()
 }
 
 bool 
-Decoder::init(const std::u8string& song_path, const std::u8string& root_path)
+Decoder::init(const fs::path& song_path, const fs::path& root_path)
 {
     ma_decoder_config dconf = ma_decoder_config_init(ma_format_f32, CHANNEL, SAMPLERATE);
-    namespace fs = std::filesystem;
-    fs::path relative_path = fs::u8path(song_path);
-    fs::path root = fs::u8path(root_path);
-    fs::path fullpath = root.parent_path() / relative_path;
+    
+    fs::path fullpath = root_path.parent_path() / song_path;
     fullpath = fullpath.lexically_normal();
     
     std::ifstream musicFile(fullpath, std::ios::binary);
