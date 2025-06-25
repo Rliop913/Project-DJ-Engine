@@ -11,10 +11,10 @@ editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>()
 template<>
 PDJE_API
 bool
-editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>(const std::u8string& branchName)
+editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>(const std::string& branchName)
 {
 
-    return E_obj->KVHandler.first->UpdateLog(TO_STR(branchName));
+    return E_obj->KVHandler.first->UpdateLog(branchName);
 }
 
 
@@ -29,9 +29,9 @@ editorObject::UpdateLog<EDIT_ARG_MIX>()
 template<>
 PDJE_API
 bool
-editorObject::UpdateLog<EDIT_ARG_MIX>(const std::u8string& branchName)
+editorObject::UpdateLog<EDIT_ARG_MIX>(const std::string& branchName)
 {
-    return E_obj->mixHandle.first->UpdateLog(TO_STR(branchName));
+    return E_obj->mixHandle.first->UpdateLog(branchName);
 }
 
 template<>
@@ -45,9 +45,9 @@ editorObject::UpdateLog<EDIT_ARG_NOTE>()
 template<>
 PDJE_API
 bool
-editorObject::UpdateLog<EDIT_ARG_NOTE>(const std::u8string& branchName)
+editorObject::UpdateLog<EDIT_ARG_NOTE>(const std::string& branchName)
 {
-    return E_obj->noteHandle.first->UpdateLog(TO_STR(branchName));
+    return E_obj->noteHandle.first->UpdateLog(branchName);
 }
 
 
@@ -65,7 +65,7 @@ editorObject::UpdateLog<EDIT_ARG_MUSIC>()
 template<>
 PDJE_API
 bool
-editorObject::UpdateLog<EDIT_ARG_MUSIC>(const std::u8string& musicName)
+editorObject::UpdateLog<EDIT_ARG_MUSIC>(const std::string& musicName)
 {
     for(auto& i : E_obj->musicHandle){
         if(i.musicName == musicName){

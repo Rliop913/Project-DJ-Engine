@@ -23,14 +23,14 @@ stmt::bind_text(int idx, std::string& str)
     
     return sqlite3_bind_text(S, idx, str.c_str(), str.size(), SQLITE_TRANSIENT);
 }
-#include <iostream>
-int 
-stmt::bind_u8text(int idx, std::u8string& str)
-{
-    auto tempStr = std::string(str.begin(), str.end());
-    std::cout << "DEBUGLINE dbState.cpp:31 "<< tempStr << std::endl;
-    return sqlite3_bind_text(S, idx, tempStr.c_str(), tempStr.size(), SQLITE_TRANSIENT);
-}
+// #include <iostream>
+// int 
+// stmt::bind_u8text(int idx, std::u8string& str)
+// {
+//     auto tempStr = std::string(str.begin(), str.end());
+//     std::cout << "DEBUGLINE dbState.cpp:31 "<< tempStr << std::endl;
+//     return sqlite3_bind_text(S, idx, tempStr.c_str(), tempStr.size(), SQLITE_TRANSIENT);
+// }
 int 
 stmt::bind_blob(int idx, BIN& bin)
 {
@@ -73,15 +73,15 @@ stmt::colGet<COL_TYPE::DOUBLE>(int idx)
 
 
 template<>
-std::u8string
+std::string
 stmt::colGet<COL_TYPE::TEXT>(int idx)
 {   
     auto ptr = sqlite3_column_text(S, idx);
     auto sz = sqlite3_column_bytes(S, idx);
-    if(sz == 0) return std::u8string();
-    std::u8string tempstr(ptr, ptr + sz);
-    std::cout << "DEBUGLINE dbState.cpp:81 "<< std::string(ptr, ptr+sz) << std::endl;
-    return tempstr;
+    // if(sz == 0) return std::u8string();
+    // std::u8string tempstr(ptr, ptr + sz);
+    // std::cout << "DEBUGLINE dbState.cpp:81 "<< std::string(ptr, ptr+sz) << std::endl;
+    return std::string(ptr, ptr + sz);
 }
 
 

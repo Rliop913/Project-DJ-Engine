@@ -7,25 +7,25 @@ main()
 {
     std::cout<<"editor tester"<<std::endl;
     
-    auto engine = new PDJE(std::u8string(u8"testRoot.db"));
+    auto engine = new PDJE(std::string("testRoot.db"));
 
-    if(engine->InitEditor("test", "test", u8"testEditorProject")){
+    if(engine->InitEditor("test", "test", "testEditorProject")){
         std::cout<<"init ok"<<std::endl;
         bool Flag_Already_has_music = false;
         engine->editor->getAll<EDIT_ARG_MUSIC>([&Flag_Already_has_music](const EDIT_ARG_MUSIC& margs){
-            if(margs.musicName == u8"testMiku"){
+            if(margs.musicName == "testMiku"){
                 Flag_Already_has_music = true;
             }
         });
         if(!Flag_Already_has_music){
-            if(engine->editor->ConfigNewMusic(u8"testMiku", u8"Camellia", u8"../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav")){
+            if(engine->editor->ConfigNewMusic("testMiku", "Camellia", "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav")){
                 
                 EDIT_ARG_MUSIC temp;
-                temp.musicName = u8"testMiku";
+                temp.musicName = "testMiku";
                 temp.arg.bar=0;
                 temp.arg.beat=0;
                 temp.arg.separate=4;
-                temp.arg.bpm=u8"138";
+                temp.arg.bpm="138";
                 engine->editor->AddLine<EDIT_ARG_MUSIC>(temp);
 
                 EDIT_ARG_MIX bpmSet;
@@ -35,7 +35,7 @@ main()
                 bpmSet.details=DetailEnum::TIME_STRETCH;
                 bpmSet.separate=4;
                 bpmSet.ID=0;
-                bpmSet.first=u8"138";
+                bpmSet.first="138";
                 engine->editor->AddLine<EDIT_ARG_MIX>(bpmSet);
 
                 EDIT_ARG_MIX loadMusic;
@@ -44,9 +44,9 @@ main()
                 loadMusic.type=TypeEnum::LOAD;
                 
                 loadMusic.separate=4;
-                loadMusic.first=u8"testMiku";
-                loadMusic.second=u8"Camellia";
-                loadMusic.third=u8"138";
+                loadMusic.first="testMiku";
+                loadMusic.second="Camellia";
+                loadMusic.third="138";
                 loadMusic.ID=0;
                 engine->editor->AddLine<EDIT_ARG_MIX>(loadMusic);
                 
@@ -57,7 +57,7 @@ main()
                 changeBpm.details=DetailEnum::TIME_STRETCH;
                 changeBpm.separate=4;
                 changeBpm.ID=0;
-                changeBpm.first=u8"170";
+                changeBpm.first="170";
                 engine->editor->AddLine<EDIT_ARG_MIX>(changeBpm);
 
                 EDIT_ARG_MIX unloadMusic;
@@ -74,21 +74,21 @@ main()
             else{
                 std::cout << "config init failed" << std::endl;
             }
-            if(engine->editor->ConfigNewMusic(u8"ヒアソビ", u8"Camellia", u8"../../DMCA_FREE_DEMO_MUSIC/ヒアソビ（重音テトカバー).wav")){
+            if(engine->editor->ConfigNewMusic("ヒアソビ", "Camellia", "../../DMCA_FREE_DEMO_MUSIC/ヒアソビ（重音テトカバー).wav")){
                 EDIT_ARG_MUSIC temp;
-                temp.musicName = u8"ヒアソビ";
+                temp.musicName = "ヒアソビ";
                 temp.arg.bar=0;
                 temp.arg.beat=0;
                 temp.arg.separate=4;
-                temp.arg.bpm=u8"134";
+                temp.arg.bpm="134";
                 engine->editor->AddLine<EDIT_ARG_MUSIC>(temp);
             }
         }
-        if(engine->SearchMusic(u8"testMiku", u8"Camellia").empty()){
-            bool renderRes = engine->editor->render(u8"testTrack", engine->DBROOT.value());
-            bool pushRes = engine->editor->pushToRootDB(engine->DBROOT.value(), u8"testMiku", u8"Camellia");
-            bool pushResSecond = engine->editor->pushToRootDB(engine->DBROOT.value(), u8"ヒアソビ", u8"Camellia");
-            bool trackPushRes = engine->editor->pushToRootDB(engine->DBROOT.value(), u8"testTrack");
+        if(engine->SearchMusic("testMiku", "Camellia").empty()){
+            bool renderRes = engine->editor->render("testTrack", engine->DBROOT.value());
+            bool pushRes = engine->editor->pushToRootDB(engine->DBROOT.value(), "testMiku", "Camellia");
+            bool pushResSecond = engine->editor->pushToRootDB(engine->DBROOT.value(), "ヒアソビ", "Camellia");
+            bool trackPushRes = engine->editor->pushToRootDB(engine->DBROOT.value(), "testTrack");
             if(pushRes) std::cout << "pushRes ok" << std::endl;
             if(renderRes) std::cout << "renderRes ok" << std::endl;
             if(trackPushRes) std::cout << "trackPushRes ok" << std::endl;
@@ -97,18 +97,18 @@ main()
             else std::cout << "push failed" << std::endl;
         }
         trackdata td;
-        td = engine->SearchTrack(u8"testTrack").front();
+        td = engine->SearchTrack("testTrack").front();
         
         auto initres = engine->InitPlayer(PLAY_MODE::HYBRID_RENDER, td, 48);
         auto activeres = engine->player->Activate();
         auto musPannel = engine->player->GetMusicControlPannel();
-        auto muses = engine->SearchMusic(u8"ヒアソビ", u8"Camellia");
+        auto muses = engine->SearchMusic("ヒアソビ", "Camellia");
         musPannel->LoadMusic(engine->DBROOT.value(), muses.front());
         
         getchar();
-        musPannel->SetMusic(u8"ヒアソビ", true);
+        musPannel->SetMusic("ヒアソビ", true);
         getchar();
-        auto Fxhandle = musPannel->getFXHandle(u8"ヒアソビ");
+        auto Fxhandle = musPannel->getFXHandle("ヒアソビ");
         Fxhandle->FX_ON_OFF(FXList::OCSFILTER, true);
         auto ocshandle = Fxhandle->GetArgSetter(FXList::OCSFILTER);
         ocshandle["ocsFilterHighLowSW"](1);

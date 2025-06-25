@@ -36,6 +36,52 @@ FetchContent_Declare(
   GIT_TAG v0.2
 )
 
+
+set(WITH_TESTS OFF CACHE BOOL "" FORCE)
+set(WITH_TOOLS OFF CACHE BOOL "" FORCE)
+set(WITH_BENCHMARK_TOOLS OFF CACHE BOOL "" FORCE)
+set(WITH_ZLIB OFF CACHE BOOL "" FORCE)
+
+FetchContent_Declare(
+  rocksDB
+  GIT_REPOSITORY https://github.com/facebook/rocksdb.git
+  GIT_TAG v10.2.1
+)
+#code samples
+# ROCKSDB_NAMESPACE::DB* db;
+#     ROCKSDB_NAMESPACE::Options ops;
+#     ops.create_if_missing = true;
+#     ops.OptimizeForPointLookup(512 * 1024 * 1024);
+#     ops.OptimizeLevelStyleCompaction();
+
+#     rocksdb::BlockBasedTableOptions table_options;
+#     table_options.filter_policy.reset(rocksdb::NewBloomFilterPolicy(10, false));
+#     ops.table_factory.reset(NewBlockBasedTableFactory(table_options));
+
+#     Status s = DB::Open(ops, "./sampleDB.bdb", &db);
+#     if(!s.ok()){
+#         std::cout << "Failed to open DB" << std::endl;
+#         return -1;
+#     }
+
+#     WriteOptions wops;
+#     wops.sync = true;
+#     wops.disableWAL = false;
+
+#     ReadOptions rops;
+#     rops.verify_checksums = true;
+#     rops.fill_cache = false;
+#     s = db->Put(wops, "k1", "v1");
+#     if(!s.ok()) {
+#         std::cout << "Failed to put value" << std::endl;
+#         return -1;
+#     }
+FetchContent_Declare(
+  annoy
+  GIT_REPOSITORY https://github.com/spotify/annoy.git
+  GIT_TAG v1.17.3
+)
+
 include(ExternalProject)
 
 if(WIN32)
@@ -47,6 +93,9 @@ FetchContent_Declare(
   FetchContent_MakeAvailable(zlib)
   set(ZLIB_DEBUG_LIB_PATH   "${zlib_BINARY_DIR}/Debug/zlibd.lib")
   set(ZLIB_RELEASE_LIB_PATH "${zlib_BINARY_DIR}/Release/zlib.lib")
+  # include_directories(${zlib_SOURCE_DIR})
+  # include_directories(${zlib_BINARY_DIR})
+
   # if()
   # include_directories(${zlib_SOURCE_DIR})
 # if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
@@ -79,23 +128,7 @@ link_libraries(
 )
 
 set(OPENSSL_USE_STATIC_LIBS TRUE)
-# ExternalProject_Add(
-#   libgit2
-#   GIT_REPOSITORY https://github.com/libgit2/libgit2.git
-#   GIT_TAG v1.9.0
 
-#   PREFIX "${CMAKE_BINARY_DIR}/_deps"
-#   BUILD_IN_SOURCE 0
-#   CMAKE_ARGS     
-#     -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR> 
-#     -DBUILD_SHARED_LIBS=OFF 
-#     -DREGEX_BACKEND=builtin 
-#     -DZLIB_LIBRARY:FILEPATH=${zlib_BINARY_DIR}/Debug/zlibd.lib
-#   CMAKE_CACHE_ARGS_RELEASE
-#     -DZLIB_LIBRARY:FILEPATH=${zlib_BINARY_DIR}/Release/zlib.lib
-#   BUILD_COMMAND  ${CMAKE_COMMAND} --build . --config $<CONFIG>
-#   INSTALL_COMMAND ${CMAKE_COMMAND} --install . --config $<CONFIG>
-# )
 
 else()
 ExternalProject_Add(
@@ -178,7 +211,8 @@ FetchContent_MakeAvailable(highway)
 FetchContent_MakeAvailable(NHJson)
 FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
-
+FetchContent_MakeAvailable(rocksDB)
+FetchContent_MakeAvailable(annoy)
 # get_cmake_property(_vars VARIABLES)
 
 # foreach(var ${_vars})

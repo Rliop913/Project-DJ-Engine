@@ -7,7 +7,7 @@ editorObject::AddLine(const EDIT_ARG_MUSIC& obj)
 {
     
     for(auto& i : E_obj->musicHandle){
-        if(i.musicName == TO_USTR(obj.musicName)){
+        if(i.musicName == obj.musicName){
             i.jsonh.add(obj.arg);
             return DefaultSaveFuntion<EDIT_ARG_MUSIC>(i, obj);
         }
@@ -48,12 +48,12 @@ editorObject::AddLine(const EDIT_ARG_KEY_VALUE& obj)
 
 #include <iostream>
 bool 
-editorObject::AddLine(const std::u8string& musicName, const std::u8string& firstBar)
+editorObject::AddLine(const std::string& musicName, const std::string& firstBar)
 {
     for(auto& i : E_obj->musicHandle){
         if(i.musicName == musicName){
-            i.jsonh["FIRST_BAR"] = TO_STR(firstBar);
-            std::cout << "DEBUGLINE: addline.cpp:56   " << TO_STR(firstBar) << std::endl;
+            i.jsonh["FIRST_BAR"] = firstBar;
+            std::cout << "DEBUGLINE: addline.cpp:56   " << firstBar << std::endl;
             return true;
         }
     }

@@ -56,7 +56,7 @@ PDJE_GitHandler::Close()
 
 
 bool
-PDJE_GitHandler::Save(const std::u8string& tracingFile, const std::string& timeStamp)
+PDJE_GitHandler::Save(const std::string& tracingFile, const std::string& timeStamp)
 {
     if(gw.handleBranch->FLAG_TEMP_CHECKOUT.has_value()){
         gitwrap::commit tempcommit(gw.handleBranch->FLAG_TEMP_CHECKOUT.value(), gw.repo);

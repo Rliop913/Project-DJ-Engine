@@ -19,7 +19,7 @@ editorObject::Undo<EDIT_ARG_MIX>()
 template<>
 PDJE_API
 bool
-editorObject::Undo<EDIT_ARG_MUSIC>(const std::u8string& musicName)
+editorObject::Undo<EDIT_ARG_MUSIC>(const std::string& musicName)
 {
     for(auto& i : E_obj->musicHandle){
         if(i.musicName == musicName){

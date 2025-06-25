@@ -1,9 +1,9 @@
 #include "editorObject.hpp"
 #include <iostream>
 bool
-editorObject::render(const std::u8string& trackTitle, litedb& ROOTDB)
+editorObject::render(const std::string& trackTitle, litedb& ROOTDB)
 {
-    std::unordered_map<std::u8string, std::u8string> titles;
+    std::unordered_map<std::string, std::string> titles;
     auto td = makeTrackData(trackTitle, titles);
     
     std::vector<musdata> mds;
@@ -21,20 +21,20 @@ editorObject::render(const std::u8string& trackTitle, litedb& ROOTDB)
         std::cout << "DEBUGLINE: render.cpp:21   " << tempPATH <<std::endl;
         std::cout << "DEBUGLINE: render.cpp:22   " << tempFIRST_BAR <<std::endl;
         
-        mds.back().composer     = TO_USTR(tempCOMPOSER);
-        mds.back().musicPath    = TO_USTR(tempPATH);
-        mds.back().firstBar     = TO_USTR(tempFIRST_BAR);
+        mds.back().composer     = (tempCOMPOSER);
+        mds.back().musicPath    = (tempPATH);
+        mds.back().firstBar     = (tempFIRST_BAR);
         try{
             mds.back().bpm = std::stod(rendered->Wp->getDatas()[0].getBpm().cStr());
         }
         catch(...){
             continue;
         }
-        titles[i.musicName] = u8"";
+        titles[i.musicName] = "";
     }
 
     for(auto& i : titles){
-        if(i.second != u8""){
+        if(i.second != ""){
             auto findFromRoot = musdata(i.first, i.second);
             auto mus = ROOTDB << findFromRoot;
             if(mus.has_value()){
@@ -45,7 +45,7 @@ editorObject::render(const std::u8string& trackTitle, litedb& ROOTDB)
                     fs::relative(
                         fs::absolute(ROOTDB.getRoot().parent_path() / fromRoot.musicPath),
                         projectRoot
-                    ).u8string();
+                    ).string();
                 }
                 catch(std::exception e){
                     RECENT_ERR = e.what();

@@ -4,8 +4,8 @@
 
 trackdata
 editorObject::makeTrackData(
-    const std::u8string& trackTitle, 
-    std::unordered_map<std::u8string, std::u8string>& titles)
+    const std::string& trackTitle, 
+    std::unordered_map<std::string, std::string>& titles)
 {
     trackdata td;
     auto mixRendered = E_obj->mixHandle.second.render();
@@ -13,20 +13,22 @@ editorObject::makeTrackData(
     
     for(unsigned long long i=0; i < mixData.size();++i){
         if(mixData[i].getType() == TypeEnum::LOAD){
-            // auto first = std::string(mixData[i].getFirst().cStr());
-            std::u8string first, second;
-            first.resize(mixData[i].getFirst().size());
-            second.resize(mixData[i].getSecond().size());
-            std::transform(
-                mixData[i].getFirst().begin(), mixData[i].getFirst().end(),
-                first.begin(),
-                [](char c){return static_cast<char8_t>(c);}
-            );
-            std::transform(
-                mixData[i].getSecond().begin(), mixData[i].getSecond().end(),
-                second.begin(),
-                [](char c){return static_cast<char8_t>(c);}
-            );
+            auto first = std::string(mixData[i].getFirst().cStr());
+            auto second = std::string(mixData[i].getSecond().cStr());
+            // std::u8string first, second;
+            // first.resize(mixData[i].getFirst().size());
+            // second.resize(mixData[i].getSecond().size());
+            // std::transform(
+            //     mixData[i].getFirst().begin(), mixData[i].getFirst().end(),
+            //     first.begin(),
+            //     [](char c){return static_cast<char8_t>(c);}
+            // );
+            // std::transform(
+            //     mixData[i].getSecond().begin(), mixData[i].getSecond().end(),
+            //     second.begin(),
+            //     [](char c){return static_cast<char8_t>(c);}
+            // );
+        
             titles.insert(std::pair(first, second));
         }
     }
@@ -35,7 +37,7 @@ editorObject::makeTrackData(
     td.mixBinary = mixRendered->out();
     td.noteBinary = E_obj->noteHandle.second.render()->out();
     for(auto& i : titles){
-        td.cachedMixList+= (i.first + u8",");
+        td.cachedMixList+= (i.first + ",");
     }
     if(!titles.empty()){
         td.cachedMixList.pop_back();
@@ -46,7 +48,7 @@ editorObject::makeTrackData(
 void 
 editorObject::demoPlayInit(
     std::optional<audioPlayer>& player, 
-    unsigned int frameBufferSize, const std::u8string& trackTitle)
+    unsigned int frameBufferSize, const std::string& trackTitle)
 {
     if(player.has_value()){
         player.reset();
@@ -87,23 +89,23 @@ editorObject::DESTROY_PROJECT()
 #include <iostream>
 bool
 editorObject::ConfigNewMusic(
-    const std::u8string& NewMusicName, 
-    const std::u8string& composer,
+    const std::string& NewMusicName, 
+    const std::string& composer,
     const fs::path& musicPath,
-    const std::u8string& firstBar)
+    const std::string& firstBar)
 {
     if( E_obj->AddMusicConfig(NewMusicName)){
-        std::cout << "DEBUGLINE: editorObject.cpp:96   " << TO_STR(NewMusicName) << "    " << TO_STR(composer) << std::endl;
-        E_obj->musicHandle.back().jsonh["TITLE"] = TO_STR(NewMusicName);
-        E_obj->musicHandle.back().jsonh["COMPOSER"] = TO_STR(composer);
+        std::cout << "DEBUGLINE: editorObject.cpp:96   " << NewMusicName << "    " << composer << std::endl;
+        E_obj->musicHandle.back().jsonh["TITLE"] = NewMusicName;
+        E_obj->musicHandle.back().jsonh["COMPOSER"] = composer;
         try
         {
-            auto u8str =
+            auto safeStr =
             fs::relative(
                 musicPath,
                 projectRoot
-            ).generic_u8string();
-            auto safeStr = TO_STR(u8str);
+            ).generic_string();
+            
             E_obj->musicHandle.back().jsonh["PATH"] = safeStr;
             std::cout << "DEBUGLINE: editorObject.cpp:108   " << safeStr << std::endl;
             std::cout << "DEBUGLINE: editorObject.cpp:109   " << musicPath << std::endl;
@@ -114,8 +116,8 @@ editorObject::ConfigNewMusic(
             RECENT_ERR = e.what();
             return false;
         }
-        E_obj->musicHandle.back().jsonh["FIRST_BAR"] = TO_STR(firstBar);
-        std::cout << "DEBUGLINE: editorObject.cpp:96   " << TO_STR(firstBar) << std::endl;
+        E_obj->musicHandle.back().jsonh["FIRST_BAR"] = firstBar;
+        std::cout << "DEBUGLINE: editorObject.cpp:96   " << firstBar << std::endl;
         return true;
     }
     else{
@@ -137,7 +139,7 @@ editorObject::Open(const fs::path& projectPath)
 }
 
 bool
-editorObject::pushToRootDB(litedb& ROOTDB, const std::u8string& trackTitleToPush)
+editorObject::pushToRootDB(litedb& ROOTDB, const std::string& trackTitleToPush)
 {
     TITLE_COMPOSER tcData;
     auto td = makeTrackData(trackTitleToPush, tcData);
@@ -154,10 +156,10 @@ editorObject::pushToRootDB(litedb& ROOTDB, const std::u8string& trackTitleToPush
 bool 
 editorObject::pushToRootDB(
     litedb& ROOTDB, 
-    const std::u8string& musicTitle, 
-    const std::u8string& musicComposer)
+    const std::string& musicTitle, 
+    const std::string& musicComposer)
 {
-    std::cout << "DEBUGLINE: editorObject.cpp:160 " << TO_STR(musicTitle) << "  " << TO_STR(musicComposer) << std::endl;
+    std::cout << "DEBUGLINE: editorObject.cpp:160 " << musicTitle << "  " << musicComposer << std::endl;
     auto fromProjectSearchQuery = musdata(musicTitle, musicComposer);
     auto searched =
     projectLocalDB->GetBuildedProject() << fromProjectSearchQuery;
@@ -182,7 +184,7 @@ editorObject::pushToRootDB(
 
     }
     auto resultToInsert = searched->front();
-    std::cout << "Debugline: editorobj 185  " <<TO_STR(resultToInsert.musicPath) << std::endl;
+    std::cout << "Debugline: editorobj 185  " <<(resultToInsert.musicPath) << std::endl;
     try{
         auto musicRelPath = (projectRoot / fs::path(resultToInsert.musicPath)).lexically_normal();
         auto RootRelPath = ROOTDB.getRoot().parent_path().lexically_normal();
@@ -191,14 +193,14 @@ editorObject::pushToRootDB(
         fs::relative(
             musicRelPath,
             RootRelPath
-        ).generic_u8string();
+        ).generic_string();
     }
     catch(std::exception e){
         RECENT_ERR = e.what();
         std::cout << "DEBUGLINE: editorObject.cpp:194 ERR" << e.what() << std::endl;
         return false;
     }
-    std::cout << "Debugline: editorobj 198--------------  " <<TO_STR(resultToInsert.musicPath) << std::endl;
+    std::cout << "Debugline: editorobj 198--------------  " <<(resultToInsert.musicPath) << std::endl;
     if(!(ROOTDB <= resultToInsert)){
         std::cout << "DEBUGLINE: editorObject.cpp:197 ROOTDB error" << std::endl;
         return false;

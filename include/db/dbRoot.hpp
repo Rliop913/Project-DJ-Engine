@@ -8,6 +8,7 @@
 #include "trackDB.hpp"
 #include <filesystem>
 #include "PDJE_EXPORT_SETTER.hpp"
+
 namespace fs = std::filesystem;
 
 /// music data vector
@@ -20,6 +21,7 @@ using TRACK_VEC = std::vector<trackdata>;
 /// track data vector. check before use.
 using MAYBE_TRACK_VEC = std::optional<TRACK_VEC>;
 
+// namespace RDB = ROCKSDB_NAMESPACE;
 /**
  * @brief the Root database Object
  * 
@@ -30,6 +32,7 @@ private:
     fs::path ROOT_PATH;
     /// sqlite pointer
     sqlite3* db = nullptr;
+
     /// @brief checkes tables.
     /// @return OK / Not OK
     bool CheckTables();
@@ -83,7 +86,6 @@ public:
      */
     const fs::path
     getRoot(){
-        
         return ROOT_PATH;
     }
 

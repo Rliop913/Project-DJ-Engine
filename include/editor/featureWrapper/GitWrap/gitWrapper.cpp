@@ -62,7 +62,7 @@ GitWrapper::open(const fs::path& path)
     fs::path absPath = path.is_absolute() ? path : fs::absolute(path);
 
     if(!PDJE_Name_Sanitizer::CheckPath(absPath)){
-        PDJE_SANITIZE_ERROR += "  from git repo open, " + absPath.string() + "   ";
+        PDJE_Name_Sanitizer::PDJE_SANITIZE_ERROR += "  from git repo open, " + absPath.string() + "   ";
         return false;
     }
     auto safeStr = absPath.string();

@@ -38,11 +38,11 @@ PDJE_JSONHandler<NOTE_W>::deleteLine(const NoteArgs& args)
     try{
         for(unsigned long long i=0; i < ROOT[PDJENOTE].size(); ++i){
             auto Target = ROOT[PDJENOTE].at(i);
-            if(Target["Note_Type"]  != std::string(args.Note_Type.begin()   , args.Note_Type.end())   && args.Note_Type   != u8""   )   continue;
-            if(Target["Note_Detail"]!= std::string(args.Note_Detail.begin() , args.Note_Detail.end()) && args.Note_Detail != u8""   )   continue;
-            if(Target["first"]      != std::string(args.first.begin()       , args.first.end())       && args.first       != u8""   )   continue;
-            if(Target["second"]     != std::string(args.second.begin()      , args.second.end())      && args.second      != u8""   )   continue;
-            if(Target["third"]      != std::string(args.third.begin()       , args.third.end())       && args.third       != u8""   )   continue;
+            if(Target["Note_Type"]  != args.Note_Type   && args.Note_Type   != ""   )   continue;
+            if(Target["Note_Detail"]!= args.Note_Detail && args.Note_Detail != ""   )   continue;
+            if(Target["first"]      != args.first       && args.first       != ""   )   continue;
+            if(Target["second"]     != args.second      && args.second      != ""   )   continue;
+            if(Target["third"]      != args.third       && args.third       != ""   )   continue;
             if(Target["bar"]        != args.bar         && args.bar         != -1   )   continue;
             if(Target["beat"]       != args.beat        && args.beat        != -1   )   continue;
             if(Target["separate"]   != args.separate    && args.separate    != -1   )   continue;
@@ -74,18 +74,13 @@ PDJE_JSONHandler<NOTE_W>::getAll(
         return;
     }
     for(auto& i : ROOT[PDJENOTE]){
-        auto tempNote_Type  = i["Note_Type"   ].get<std::string>();
-        auto tempNote_Detail= i["Note_Detail" ].get<std::string>();
-        auto tempfirst      = i["first"       ].get<std::string>();
-        auto tempsecond     = i["second"      ].get<std::string>();
-        auto tempthird      = i["third"       ].get<std::string>();
 
         NoteArgs tempargs{
-            std::u8string(tempNote_Type.begin()     , tempNote_Type.end()   ),
-            std::u8string(tempNote_Detail.begin()   , tempNote_Detail.end() ),
-            std::u8string(tempfirst.begin()         , tempfirst.end()       ),
-            std::u8string(tempsecond.begin()        , tempsecond.end()      ),
-            std::u8string(tempthird.begin()         , tempthird.end()       ),
+            i["Note_Type"   ].get<std::string>(),
+            i["Note_Detail" ].get<std::string>(),
+            i["first"       ].get<std::string>(),
+            i["second"      ].get<std::string>(),
+            i["third"       ].get<std::string>(),
             i["bar"         ],
             i["beat"        ],
             i["separate"    ],

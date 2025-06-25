@@ -9,7 +9,7 @@ PDJE::PDJE(const fs::path& rootPath)
 
 
 TRACK_VEC
-PDJE::SearchTrack(const std::u8string& Title)
+PDJE::SearchTrack(const std::string& Title)
 {
     trackdata td;
     td.trackTitle = Title;
@@ -25,8 +25,8 @@ PDJE::SearchTrack(const std::u8string& Title)
 
 MUS_VEC
 PDJE::SearchMusic(
-    const std::u8string& Title, 
-    const std::u8string& composer, 
+    const std::string& Title, 
+    const std::string& composer, 
     const double bpm)
 {
     musdata md;

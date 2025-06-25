@@ -149,8 +149,8 @@ MUSIC_CTR::setLOAD(MBData::Reader& RP, litedb& db, FRAME_POS FrameIn)
     songPath = fs::path(searchRes.value()[0].musicPath);
     PlayPosition startpos;
     startpos.Gidx = FrameIn;
-    std::u8string u8Str = searchRes.value()[0].firstBar;
-    startpos.Lidx = std::stoull(TO_STR(u8Str));
+    
+    startpos.Lidx = std::stoull(searchRes.value()[0].firstBar);
     startpos.status = MIXSTATE::PLAY;
     QDatas.pos.push_back(startpos);
     

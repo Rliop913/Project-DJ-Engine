@@ -52,12 +52,10 @@ PDJE_Editor::openProject(const fs::path& projectPath)
 }
 
 bool
-PDJE_Editor::AddMusicConfig(const std::u8string& NewMusicName)
+PDJE_Editor::AddMusicConfig(const std::string& NewMusicName)
 {
-    auto safePath = std::string(NewMusicName.begin(), NewMusicName.end());
-    auto temp = std::u8string(u8"ヒアソビ");
-    auto sstemp = std::string(temp.begin(), temp.end());
-    auto newpath = musicp / fs::path(safePath);
+    
+    auto newpath = musicp / fs::path(NewMusicName);
     if(fs::exists(newpath)){
         return false;
     }

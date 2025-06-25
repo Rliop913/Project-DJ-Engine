@@ -110,9 +110,9 @@ audioPlayer::GetConsumedFrames()
 }
 
 FXControlPannel*
-audioPlayer::GetFXControlPannel(const std::u8string& title)
+audioPlayer::GetFXControlPannel(const std::string& title)
 {
-    if(title == u8"__PDJE__MAIN__"){
+    if(title == "__PDJE__MAIN__"){
         if(!engineDatas.FXManualPannel.has_value()){
             engineDatas.FXManualPannel.emplace(48000);
         }
