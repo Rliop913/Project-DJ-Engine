@@ -112,8 +112,8 @@ public:
      */
     MUS_VEC 
     SearchMusic(
-        const std::u8string& Title, 
-        const std::u8string& composer, 
+        const std::string& Title, 
+        const std::string& composer, 
         const double bpm = -1);
     /**
      * @brief searches track
@@ -121,7 +121,7 @@ public:
      * @param Title the tile of the track. send "" to skip filter
      * @return TRACK_VEC the array of the track_data. find what you want
      */
-    TRACK_VEC SearchTrack(const std::u8string& Title);
+    TRACK_VEC SearchTrack(const std::string& Title);
     /**
      * @brief music handler getter api for binded codes.
      * this function gives you a music handler.

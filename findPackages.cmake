@@ -30,6 +30,11 @@ FetchContent_Declare(
   URL https://www.sqlite.org/2024/sqlite-amalgamation-3450000.zip
 )
 
+FetchContent_Declare(
+  cppCodec
+  GIT_REPOSITORY https://github.com/tplgy/cppcodec.git
+  GIT_TAG v0.2
+)
 
 include(ExternalProject)
 
@@ -172,16 +177,20 @@ FetchContent_MakeAvailable(miniaudio)
 FetchContent_MakeAvailable(highway)
 FetchContent_MakeAvailable(NHJson)
 FetchContent_MakeAvailable(sql_amalgam)
+FetchContent_MakeAvailable(cppCodec)
+
 # get_cmake_property(_vars VARIABLES)
 
 # foreach(var ${_vars})
-#     if(var MATCHES "^zlib")
+#     if(var MATCHES "^cppcodec")
 #         message(STATUS "환경변수: ${var} = [${${var}}]")
 #     endif()
 # endforeach()
 include_directories(${nlohmann_json_SOURCE_DIR}/include)
 include_directories(${hwy_SOURCE_DIR})
 include_directories(${sql_amalgam_SOURCE_DIR})
+include_directories(${cppcodec_SOURCE_DIR})
+
 # link_libraries(${hwy_BINARY_DIR}/libhwy.a)
 # include_directories(${libgit2_INCLUDE_DIRS})
 set_target_properties(

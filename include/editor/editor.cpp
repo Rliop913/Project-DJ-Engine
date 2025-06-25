@@ -6,7 +6,12 @@ namespace fs = std::filesystem;
 bool
 PDJE_Editor::openProject(const fs::path& projectPath)
 {
-    pt = projectPath;
+    if(!projectPath.is_absolute()){
+        pt = fs::absolute(projectPath);
+    }
+    else{
+        pt = projectPath;
+    }
     mixp = pt / "Mixes";
     notep = pt / "Notes";
     musicp = pt / "Musics";
@@ -35,7 +40,7 @@ PDJE_Editor::openProject(const fs::path& projectPath)
         if(fs::is_directory(musicSubpath)){
             
             musicHandle.emplace_back(name, email);
-            musicHandle.back().musicName = musicSubpath.path().filename().u8string();
+            musicHandle.back().musicName = musicSubpath.path().filename().string();
             if( !musicHandle.back().gith->Open(musicSubpath.path()) ||
                 !musicHandle.back().jsonh.load(musicSubpath.path()) ){
                     return false;
@@ -49,7 +54,10 @@ PDJE_Editor::openProject(const fs::path& projectPath)
 bool
 PDJE_Editor::AddMusicConfig(const std::u8string& NewMusicName)
 {
-    auto newpath = musicp / fs::path(NewMusicName);
+    auto safePath = std::string(NewMusicName.begin(), NewMusicName.end());
+    auto temp = std::u8string(u8"ヒアソビ");
+    auto sstemp = std::string(temp.begin(), temp.end());
+    auto newpath = musicp / fs::path(safePath);
     if(fs::exists(newpath)){
         return false;
     }

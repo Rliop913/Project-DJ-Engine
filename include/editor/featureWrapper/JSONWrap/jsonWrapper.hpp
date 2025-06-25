@@ -23,9 +23,9 @@ struct PDJE_API MixArgs{
     TypeEnum type       = TypeEnum::EQ      ;
     DetailEnum details  = DetailEnum::HIGH  ;
     int ID              = -1                ;
-    std::u8string first   = u8""                ;
-    std::u8string second  = u8""                ;
-    std::u8string third   = u8""                ;
+    std::string first   = ""                ;
+    std::string second  = ""                ;
+    std::string third   = ""                ;
     long long bar       = -1                ;
     long long beat      = -1                ;
     long long separate  = -1                ;
@@ -35,11 +35,11 @@ struct PDJE_API MixArgs{
 };
 
 struct PDJE_API NoteArgs{
-    std::u8string Note_Type   = u8"";
-    std::u8string Note_Detail = u8"";
-    std::u8string first       = u8"";
-    std::u8string second      = u8"";
-    std::u8string third       = u8"";
+    std::string Note_Type   = "";
+    std::string Note_Detail = "";
+    std::string first       = "";
+    std::string second      = "";
+    std::string third       = "";
     long long bar           = -1;
     long long beat          = -1;
     long long separate      = -1;
@@ -49,7 +49,7 @@ struct PDJE_API NoteArgs{
 };
 
 struct PDJE_API MusicArgs{
-    std::u8string bpm     = u8""                ;
+    std::string bpm     = ""                ;
     long long bar       = -1                ;
     long long beat      = -1                ;
     long long separate  = -1                ;

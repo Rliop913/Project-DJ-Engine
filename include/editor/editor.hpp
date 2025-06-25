@@ -7,6 +7,7 @@
 #include <filesystem>
 
 #include "PDJE_EXPORT_SETTER.hpp"
+#include "fileNameSanitizer.hpp"
 
 class PDJE_API PDJE_Editor{
 private:
@@ -24,7 +25,7 @@ public:
     struct MusicHandleStruct{
         std::unique_ptr<PDJE_GitHandler> gith;
         PDJE_JSONHandler<MUSIC_W> jsonh;
-        std::u8string musicName;
+        std::string musicName;
          MusicHandleStruct() = delete;
         MusicHandleStruct(const MusicHandleStruct&) = delete;
         MusicHandleStruct& operator=(const MusicHandleStruct&) = delete;
@@ -37,7 +38,7 @@ public:
         }
     };
     std::vector<MusicHandleStruct> musicHandle;
-    bool AddMusicConfig(const std::u8string& NewMusicName);
+    bool AddMusicConfig(const std::string& NewMusicName);
     bool openProject(const fs::path& projectPath);
 
     PDJE_Editor(const std::string &auth_name, const std::string &auth_email):

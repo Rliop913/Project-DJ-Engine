@@ -12,14 +12,14 @@
  */
 struct PDJE_API musdata{
 public:
-    std::u8string title;
-    std::u8string composer;
-    std::u8string musicPath;
+    std::string title;
+    std::string composer;
+    std::string musicPath;
     BIN bpmBinary;
     double bpm = -1.0;
     /// @brief this means the first beat's position. The measurement unit is a PCM frame. 
     /// For higher precision, double value is stored as strings in Cap’n Proto, so the corresponding variable is also a string.
-    std::u8string firstBar;
+    std::string firstBar;
     /**
      * @brief Constructor. typically used for returning search results.
      * 
@@ -39,9 +39,9 @@ public:
      * @param bpm__ The BPM (beats per minute) of the music. Use a negative value to ignore this field.
      */
     musdata(
-        const std::u8string& title__ = u8"",
-        const std::u8string& composer__ = u8"",
-        const std::u8string& musicPath__ = u8"",
+        const std::string& title__ = "",
+        const std::string& composer__ = "",
+        const std::string& musicPath__ = "",
         const double bpm__ = -1.0
     );
     /**

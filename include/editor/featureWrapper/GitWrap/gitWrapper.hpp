@@ -15,6 +15,7 @@
 #include "gitLog.hpp"
 
 #include "PDJE_EXPORT_SETTER.hpp"
+#include "fileNameSanitizer.hpp"
 
 using MAYBE_BLAME = std::optional<BlameController>;
 
@@ -67,7 +68,7 @@ public:
     std::string RecentERR;
     GitWrapper gw;
 
-    bool Save(const std::u8string& tracingFile, const std::string& timeStamp);
+    bool Save(const std::string& tracingFile, const std::string& timeStamp);
     bool Undo();
     bool Redo();
 

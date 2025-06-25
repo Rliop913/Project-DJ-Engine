@@ -65,7 +65,7 @@ public:
      * @param title the music to control. "__PDJE__MAIN__" means the prerendered music.
      * @return FXControlPannel* but the "title" doesn't exists, it returns nullptr.
      */
-    FXControlPannel* GetFXControlPannel(const std::u8string& title = u8"__PDJE__MAIN__");
+    FXControlPannel* GetFXControlPannel(const std::string& title = "__PDJE__MAIN__");
 
     /**
      * @brief music controller getter

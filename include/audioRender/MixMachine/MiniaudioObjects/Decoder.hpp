@@ -7,8 +7,8 @@
 #include <miniaudio.h>
 #include <filesystem>
 #include "FrameCalc.hpp"
-#define TO_USTR(STR) std::u8string(STR.begin(), STR.end())
-#define TO_STR(USTR) std::string(USTR.begin(), USTR.end())
+#include "fileNameSanitizer.hpp"
+
 namespace fs = std::filesystem;
 // using MAYBE_FRAME = std::optional<std::vector<float>>;
 

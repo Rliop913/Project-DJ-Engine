@@ -10,11 +10,11 @@
  */
 struct PDJE_API trackdata{
 public:
-    std::u8string trackTitle;
+    std::string trackTitle;
     BIN mixBinary;
     BIN noteBinary;
     /// @brief Included music list
-    std::u8string cachedMixList;
+    std::string cachedMixList;
 
     /**
      * @brief Constructor. typically used for returning search results.
@@ -32,7 +32,7 @@ public:
      * @param trackTitle__ the title of the track
      */
     trackdata(
-        const std::u8string& trackTitle__ = u8""
+        const std::string& trackTitle__ = ""
     );
 
     /**

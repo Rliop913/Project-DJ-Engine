@@ -43,7 +43,7 @@ public:
     int bind_text(int idx, std::string& str);
 
 
-    int bind_u8text(int idx, std::u8string& str);
+    // int bind_u8text(int idx, std::u8string& str);
     /**
      * @brief binds blob
      * 

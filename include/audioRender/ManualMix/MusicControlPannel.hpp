@@ -8,13 +8,14 @@
 #include "PDJE_EXPORT_SETTER.hpp"
 #include "dbRoot.hpp"
 #include <filesystem>
+#include "fileNameSanitizer.hpp"
 namespace fs = std::filesystem;
 // #undef HWY_TARGET_INCLUDE
 // #define HWY_TARGET_INCLUDE "MusicControlPannel-inl.h"
 // #include "hwy/foreach_target.h"
 // #include <hwy/highway.h>
 
-using TITLE         = std::u8string;
+using TITLE         = SANITIZED;
 
 using LOADED_LIST   = std::vector<TITLE>;
 
