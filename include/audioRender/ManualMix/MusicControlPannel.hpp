@@ -1,6 +1,6 @@
 #pragma once
 
-#include <miniaudio.h>
+#include "Decoder.hpp"
 
 #include <map>
 
@@ -9,15 +9,15 @@
 #include "dbRoot.hpp"
 #include <filesystem>
 #include "fileNameSanitizer.hpp"
+
 namespace fs = std::filesystem;
 // #undef HWY_TARGET_INCLUDE
 // #define HWY_TARGET_INCLUDE "MusicControlPannel-inl.h"
 // #include "hwy/foreach_target.h"
 // #include <hwy/highway.h>
 
-using TITLE         = SANITIZED;
 
-using LOADED_LIST   = std::vector<TITLE>;
+using LOADED_LIST   = std::vector<std::string>;
 
 
 
@@ -29,11 +29,11 @@ using LOADED_LIST   = std::vector<TITLE>;
  */
 struct MusicOnDeck{
     bool play = false;
-    ma_decoder dec;
+    Decoder dec;
     FXControlPannel* fxP;
     MusicOnDeck() : fxP(new FXControlPannel(48000)) {};
     ~MusicOnDeck(){
-        ma_decoder_uninit(&dec);
+        // ma_decoder_uninit(&dec);
         delete fxP;
     }
 
@@ -41,7 +41,7 @@ struct MusicOnDeck{
 
 
 
-using LOADS         = std::map<TITLE, MusicOnDeck>;
+using LOADS         = std::map<std::string, MusicOnDeck>;
 
 /**
  * @brief Music handler for manual mode
@@ -64,7 +64,7 @@ public:
      * @param Mus Searched music
      * @return int, miniaudio Error code.
      */
-    int LoadMusic(litedb& ROOTDB, const musdata& Mus);
+    bool LoadMusic(litedb& ROOTDB, const musdata& Mus);
 
     /**
      * @brief Change playback position of the music
@@ -74,7 +74,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool CueMusic(const TITLE& title, const unsigned long long newPos);
+    bool CueMusic(const std::string& title, const unsigned long long newPos);
 
     /**
      * @brief turn on, off the music
@@ -84,7 +84,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool SetMusic(const TITLE& title, const bool onOff);
+    bool SetMusic(const std::string& title, const bool onOff);
 
     /**
      * @brief get music list on the deck
@@ -100,7 +100,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool UnloadMusic(const TITLE& title);
+    bool UnloadMusic(const std::string& title);
 
     /**
      * @brief gets decoded pcm frames
@@ -118,7 +118,7 @@ public:
      * @param title the title of the music
      * @return FXControlPannel*, the handler pointer
      */
-    FXControlPannel* getFXHandle(const TITLE& title);
+    FXControlPannel* getFXHandle(const std::string& title);
     MusicControlPannel(const unsigned long FrameSize): fsize(FrameSize){}
     ~MusicControlPannel();
 

@@ -100,14 +100,23 @@ editorObject::ConfigNewMusic(
         E_obj->musicHandle.back().jsonh["COMPOSER"] = composer;
         try
         {
-            auto safeStr =
-            fs::relative(
-                musicPath,
-                projectRoot
-            ).generic_string();
-            
-            E_obj->musicHandle.back().jsonh["PATH"] = safeStr;
-            std::cout << "DEBUGLINE: editorObject.cpp:108   " << safeStr << std::endl;
+            if(!fs::exists(musicPath)){
+                return false;
+            }
+            // auto safeStr =
+            // fs::relative(
+            //     musicPath,
+            //     projectRoot
+            // ).generic_string();
+            fs::path absPath;
+            if(musicPath.is_absolute()){
+                absPath = musicPath;
+            }
+            else{
+                absPath = fs::absolute(musicPath);
+            }
+            E_obj->musicHandle.back().jsonh["PATH"] = absPath;
+            std::cout << "DEBUGLINE: editorObject.cpp:108   " << absPath << std::endl;
             std::cout << "DEBUGLINE: editorObject.cpp:109   " << musicPath << std::endl;
             std::cout << "DEBUGLINE: editorObject.cpp:110   " << projectRoot << std::endl;
         }
@@ -186,14 +195,17 @@ editorObject::pushToRootDB(
     auto resultToInsert = searched->front();
     std::cout << "Debugline: editorobj 185  " <<(resultToInsert.musicPath) << std::endl;
     try{
-        auto musicRelPath = (projectRoot / fs::path(resultToInsert.musicPath)).lexically_normal();
-        auto RootRelPath = ROOTDB.getRoot().parent_path().lexically_normal();
-        RootRelPath = RootRelPath.string().empty() ? fs::path("."): RootRelPath;
-        resultToInsert.musicPath =
-        fs::relative(
-            musicRelPath,
-            RootRelPath
-        ).generic_string();
+        resultToInsert.musicPath = PDJE_Name_Sanitizer::getFileName(musicTitle + musicComposer);
+        ROOTDB.KVPut(k,v)//no impl crash
+        
+        // auto musicRelPath = (projectRoot / fs::path(resultToInsert.musicPath)).lexically_normal();
+        // auto RootRelPath = ROOTDB.getRoot().parent_path().lexically_normal();
+        // RootRelPath = RootRelPath.string().empty() ? fs::path("."): RootRelPath;
+        // resultToInsert.musicPath =
+        // fs::relative(
+        //     musicRelPath,
+        //     RootRelPath
+        // ).generic_string();
     }
     catch(std::exception e){
         RECENT_ERR = e.what();

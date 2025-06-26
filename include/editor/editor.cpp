@@ -6,12 +6,7 @@ namespace fs = std::filesystem;
 bool
 PDJE_Editor::openProject(const fs::path& projectPath)
 {
-    if(!projectPath.is_absolute()){
-        pt = fs::absolute(projectPath);
-    }
-    else{
-        pt = projectPath;
-    }
+    pt = projectPath;
     mixp = pt / "Mixes";
     notep = pt / "Notes";
     musicp = pt / "Musics";

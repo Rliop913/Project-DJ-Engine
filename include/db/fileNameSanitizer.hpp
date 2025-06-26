@@ -15,7 +15,6 @@ class PDJE_Name_Sanitizer{
     static std::string getFileName(const SANITIZED& sanitized);
     static std::string PDJE_SANITIZE_ERROR;
     
-    static bool CheckPath(fs::path& origin);
     PDJE_Name_Sanitizer() = delete;
     ~PDJE_Name_Sanitizer() = delete;
 };

@@ -19,11 +19,10 @@ AddController::open(git_repository* repo)
 bool 
 AddController::addFile(const fs::path& path) 
 {
-    auto u8str = path.generic_u8string();
-    std::string safeStr = std::string(u8str.begin(), u8str.end());
-    if (!index) {
-        return false;
-    }
+    
+    std::string safeStr = path.generic_string();
+    if (!index) return false;
+    
     if (git_index_add_bypath(index, safeStr.c_str()) != 0) {
         return false;
     }

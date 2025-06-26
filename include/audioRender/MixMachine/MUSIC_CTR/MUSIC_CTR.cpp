@@ -86,12 +86,12 @@ MUSIC_CTR::Render(
 
 
 std::optional<SIMD_FLOAT*>
-MUSIC_CTR::Execute(const BPM& bpms, SIMD_FLOAT* PCMS, const fs::path& dbRoot)
+MUSIC_CTR::Execute(const BPM& bpms, SIMD_FLOAT* PCMS, litedb& db)
 {
     if(!checkUsable()){
         return std::nullopt;
     }
-    if(!D->init(songPath.value(), dbRoot)){
+    if(!D->init(db, songPath.value())){
         return std::nullopt;
     }
     QDatas.Ready(bpms.bpmVec, Mus.bpms);
@@ -123,30 +123,15 @@ bool
 MUSIC_CTR::setLOAD(MBData::Reader& RP, litedb& db, FRAME_POS FrameIn)
 {
     musdata md;
-    auto tempTitle = RP.getFirst();
-    auto tempComposer = RP.getSecond();
-    
-    md.title.resize(tempTitle.size());
-    std::transform(
-        tempTitle.begin(), tempTitle.end(),
-        md.title.begin(),
-        [](char c){return static_cast<char8_t>(c);}
-    );
-    //  = TO_USTR(tempTitle);
-    md.composer.resize(tempComposer.size());
-    std::transform(
-        tempComposer.begin(), tempComposer.end(),
-        md.composer.begin(),
-        [](char c){return static_cast<char8_t>(c);}
-    );
-    // = TO_USTR(tempComposer);
+    md.title = RP.getFirst();
+    md.composer = RP.getSecond();
     md.bpm = std::stod(RP.getThird().cStr());
     
     auto searchRes = db << md;
     if(!searchRes.has_value()){
         return false;
     }
-    songPath = fs::path(searchRes.value()[0].musicPath);
+    songPath = searchRes.value()[0].musicPath;
     PlayPosition startpos;
     startpos.Gidx = FrameIn;
     

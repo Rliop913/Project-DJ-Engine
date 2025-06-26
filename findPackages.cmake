@@ -36,46 +36,6 @@ FetchContent_Declare(
   GIT_TAG v0.2
 )
 
-
-set(WITH_TESTS OFF CACHE BOOL "" FORCE)
-set(WITH_TOOLS OFF CACHE BOOL "" FORCE)
-set(WITH_BENCHMARK_TOOLS OFF CACHE BOOL "" FORCE)
-set(WITH_ZLIB OFF CACHE BOOL "" FORCE)
-
-FetchContent_Declare(
-  rocksDB
-  GIT_REPOSITORY https://github.com/facebook/rocksdb.git
-  GIT_TAG v10.2.1
-)
-#code samples
-# ROCKSDB_NAMESPACE::DB* db;
-#     ROCKSDB_NAMESPACE::Options ops;
-#     ops.create_if_missing = true;
-#     ops.OptimizeForPointLookup(512 * 1024 * 1024);
-#     ops.OptimizeLevelStyleCompaction();
-
-#     rocksdb::BlockBasedTableOptions table_options;
-#     table_options.filter_policy.reset(rocksdb::NewBloomFilterPolicy(10, false));
-#     ops.table_factory.reset(NewBlockBasedTableFactory(table_options));
-
-#     Status s = DB::Open(ops, "./sampleDB.bdb", &db);
-#     if(!s.ok()){
-#         std::cout << "Failed to open DB" << std::endl;
-#         return -1;
-#     }
-
-#     WriteOptions wops;
-#     wops.sync = true;
-#     wops.disableWAL = false;
-
-#     ReadOptions rops;
-#     rops.verify_checksums = true;
-#     rops.fill_cache = false;
-#     s = db->Put(wops, "k1", "v1");
-#     if(!s.ok()) {
-#         std::cout << "Failed to put value" << std::endl;
-#         return -1;
-#     }
 FetchContent_Declare(
   annoy
   GIT_REPOSITORY https://github.com/spotify/annoy.git
@@ -155,6 +115,16 @@ ExternalProject_Get_Property(libgit2 source_dir binary_dir install_dir)
 # message("환경변수-install: ${install_dir} $<CONFIG>")
 
 
+set(WITH_TESTS OFF CACHE BOOL "" FORCE)
+set(WITH_TOOLS OFF CACHE BOOL "" FORCE)
+set(WITH_BENCHMARK_TOOLS OFF CACHE BOOL "" FORCE)
+set(WITH_ZLIB OFF CACHE BOOL "" FORCE)
+
+FetchContent_Declare(
+  rocksDB
+  GIT_REPOSITORY https://github.com/facebook/rocksdb.git
+  GIT_TAG v10.2.1
+)
 
 
 find_package(OpenSSL REQUIRED)

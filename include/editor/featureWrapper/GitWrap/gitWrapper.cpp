@@ -59,13 +59,8 @@ GitWrapper::add(const fs::path& path)
 bool
 GitWrapper::open(const fs::path& path)
 {
-    fs::path absPath = path.is_absolute() ? path : fs::absolute(path);
-
-    if(!PDJE_Name_Sanitizer::CheckPath(absPath)){
-        PDJE_Name_Sanitizer::PDJE_SANITIZE_ERROR += "  from git repo open, " + absPath.string() + "   ";
-        return false;
-    }
-    auto safeStr = absPath.string();
+    
+    auto safeStr = path.generic_string();
     if(git_repository_open(&repo, safeStr.c_str()) == 0){
         handleBranch.emplace(repo);
         return true;

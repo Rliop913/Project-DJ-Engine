@@ -8,6 +8,7 @@
 #include <filesystem>
 #include "FrameCalc.hpp"
 #include "fileNameSanitizer.hpp"
+#include "dbRoot.hpp"
 
 namespace fs = std::filesystem;
 // using MAYBE_FRAME = std::optional<std::vector<float>>;
@@ -25,12 +26,12 @@ struct PDJE_API Decoder{
     /**
      * @brief init decoder
      * 
-     * @param song_path music path
-     * @param root_path RootDB path
+     * @param litedb database
+     * @param KeyOrPath you can use music's path or music's key data in database
      * @return true 
      * @return false 
      */
-    bool init(const fs::path& song_path, const fs::path& root_path);
+    bool init(litedb& db, const std::string& KeyOrPath);
     /**
      * @brief changes the playback position
      * 

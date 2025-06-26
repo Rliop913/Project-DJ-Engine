@@ -124,7 +124,7 @@ MixMachine::mix(litedb& db, const BPM& bpms)
                 }
             }
 
-            auto result = (*DJ) << MC->Execute(bpms, &tempVec, db.getRoot());
+            auto result = (*DJ) << MC->Execute(bpms, &tempVec, db);
             if(!result.has_value()){
                 FLAG_SOMETHING_WRONG_ID = i.first;
                 return false;

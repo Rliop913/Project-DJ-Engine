@@ -8,25 +8,32 @@ Decoder::Decoder()
 }
 
 bool 
-Decoder::init(const fs::path& song_path, const fs::path& root_path)
+Decoder::init(litedb& db, const std::string& KeyOrPath)
 {
     ma_decoder_config dconf = ma_decoder_config_init(ma_format_f32, CHANNEL, SAMPLERATE);
     
-    fs::path fullpath = root_path.parent_path() / song_path;
-    fullpath = fullpath.lexically_normal();
-    
-    std::ifstream musicFile(fullpath, std::ios::binary);
-    std::vector<uint8_t> fileData {
-        std::istreambuf_iterator<char>(musicFile),
-        std::istreambuf_iterator<char>()
-    };
+    if(KeyOrPath.find(".") != std::string::npos or KeyOrPath.find("/") != std::string::npos){
+        fs::path songPath = fs::path(KeyOrPath).lexically_normal();
+        if(!fs::exists(songPath)){
+            db.DB_ERROR += "\ndecoder init Error: songpath doesn't exists";
+            return false;
+        }
+        std::ifstream musicFile(songPath, std::ios::binary);
+        std::vector<uint8_t> fileData {
+            std::istreambuf_iterator<char>(musicFile),
+            std::istreambuf_iterator<char>()
+        };
 
-    if(fileData.empty()) return false;
+        if(fileData.empty()) return false;
+        musicBinary = std::move(fileData);
+    }
+    else{
+        std::string tempBinary;
+        if(!db.KVGet(KeyOrPath, tempBinary)) return false;
 
-    musicBinary = std::move(fileData);
+        musicBinary = std::vector<uint8_t>(tempBinary.begin(), tempBinary.end());    
+    }
     return ma_decoder_init_memory(musicBinary.data(), musicBinary.size(), &dconf, &dec) == MA_SUCCESS;
-
-    // return ma_decoder_init_file(reinterpret_cast<const char*>(fullpath.u8string().c_str()), &dconf, &dec) == MA_SUCCESS;
 }
 
 bool

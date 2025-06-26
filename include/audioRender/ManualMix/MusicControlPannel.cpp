@@ -4,6 +4,7 @@
 // #define HWY_TARGET_INCLUDE "MusicControlPannel-inl.h"
 // #include "hwy/foreach_target.h"
 // #include <hwy/highway.h>
+#include "Decoder.hpp"
 #include "MusicControlPannel-inl.h"
 
 MusicControlPannel::~MusicControlPannel()
@@ -11,42 +12,41 @@ MusicControlPannel::~MusicControlPannel()
 
 }
 
-int
+bool
 MusicControlPannel::LoadMusic(litedb& ROOTDB, const musdata& Mus)
 {
     if(!deck.try_emplace(Mus.title).second){
-        return -1;
+        return false;
     }
-
-    ma_decoder_config decConf =
-        ma_decoder_config_init(ma_format_f32, CHANNEL, SAMPLERATE);
-    std::string MPath = 
-        (fs::path(ROOTDB.getRoot()).parent_path() / fs::path(Mus.musicPath)).lexically_normal().generic_string();
+    return deck[Mus.title].dec.init(ROOTDB, Mus.musicPath);
+    // ma_decoder_config decConf =
+    //     ma_decoder_config_init(ma_format_f32, CHANNEL, SAMPLERATE);
+    // std::string MPath = 
+    //     (fs::path(ROOTDB.getRoot()).parent_path() / fs::path(Mus.musicPath)).lexically_normal().generic_string();
     
-    return
-        ma_decoder_init_file(
-            MPath.c_str(),
-            &decConf,
-            &deck[Mus.title].dec
-        );
+    // return
+    //     ma_decoder_init_file(
+    //         MPath.c_str(),
+    //         &decConf,
+    //         &deck[Mus.title].dec
+    //     );
 }
 
 
 bool
-MusicControlPannel::CueMusic(const TITLE& title, const unsigned long long newPos)
+MusicControlPannel::CueMusic(const std::string& title, const unsigned long long newPos)
 {
     if(deck.find(title) == deck.end()){
         return false;
     }
-
-    ma_decoder_seek_to_pcm_frame(&deck[title].dec, newPos * CHANNEL);
+    deck[title].dec.changePos(newPos * CHANNEL);
     return true;
 }
 
 
 
 bool
-MusicControlPannel::SetMusic(const TITLE& title, const bool onOff)
+MusicControlPannel::SetMusic(const std::string& title, const bool onOff)
 {
     if(deck.find(title) == deck.end()){
         return false;
@@ -68,7 +68,7 @@ MusicControlPannel::GetLoadedMusicList()
 
 
 bool
-MusicControlPannel::UnloadMusic(const TITLE& title)
+MusicControlPannel::UnloadMusic(const std::string& title)
 {
     return deck.erase(title) != 0;
 }
@@ -134,7 +134,7 @@ MusicControlPannel::GetPCMFrames(float* array, const unsigned long FrameSize)
 }
 
 FXControlPannel*
-MusicControlPannel::getFXHandle(const TITLE& title)
+MusicControlPannel::getFXHandle(const std::string& title)
 {
     if(deck.find(title) == deck.end()){
         return nullptr;

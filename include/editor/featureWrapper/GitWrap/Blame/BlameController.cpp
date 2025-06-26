@@ -8,8 +8,7 @@ BlameController::BlameOpen(
     const fs::path& path, 
     git_blame_options *options)
 {
-    std::u8string u8str = path.generic_u8string();
-    std::string safeStr = std::string(safeStr.begin(), safeStr.end());
+    std::string safeStr = path.generic_string();
     if(blame != nullptr){
         return false;
     }
