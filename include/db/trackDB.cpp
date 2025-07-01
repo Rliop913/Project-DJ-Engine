@@ -1,6 +1,6 @@
 #include "trackDB.hpp"
 // #include "errorTable.hpp"
-
+#include "fileNameSanitizer.hpp"
 
 #define CHK_BIND(res)\
 if(res != SQLITE_OK){\
@@ -21,9 +21,12 @@ trackdata::trackdata(stmt* dbstate)
 }
 
 trackdata::trackdata(const std::string& trackTitle__)
-:trackTitle(trackTitle__)
 {
-    
+    auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(trackTitle__);
+    if(!safeTitle){
+        return;
+    }
+    trackTitle = safeTitle.value();
 }
 
 bool 

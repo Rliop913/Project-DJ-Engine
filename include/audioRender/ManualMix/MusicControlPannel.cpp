@@ -36,10 +36,14 @@ MusicControlPannel::LoadMusic(litedb& ROOTDB, const musdata& Mus)
 bool
 MusicControlPannel::CueMusic(const std::string& title, const unsigned long long newPos)
 {
-    if(deck.find(title) == deck.end()){
+    auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
+    if(!safeTitle){
         return false;
     }
-    deck[title].dec.changePos(newPos * CHANNEL);
+    if(deck.find(safeTitle.value()) == deck.end()){
+        return false;
+    }
+    deck[safeTitle.value()].dec.changePos(newPos * CHANNEL);
     return true;
 }
 
@@ -48,10 +52,14 @@ MusicControlPannel::CueMusic(const std::string& title, const unsigned long long 
 bool
 MusicControlPannel::SetMusic(const std::string& title, const bool onOff)
 {
-    if(deck.find(title) == deck.end()){
+    auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
+    if(!safeTitle){
         return false;
     }
-    deck[title].play = onOff;
+    if(deck.find(safeTitle.value()) == deck.end()){
+        return false;
+    }
+    deck[safeTitle.value()].play = onOff;
     return true;
 }
 
@@ -61,7 +69,8 @@ MusicControlPannel::GetLoadedMusicList()
 {
     LOADED_LIST list;
     for(auto& i : deck){
-        list.push_back(i.first);
+        auto originTitle = PDJE_Name_Sanitizer::getFileName(i.first);
+        list.push_back(originTitle);
     }
     return std::move(list);
 }
@@ -70,7 +79,11 @@ MusicControlPannel::GetLoadedMusicList()
 bool
 MusicControlPannel::UnloadMusic(const std::string& title)
 {
-    return deck.erase(title) != 0;
+    auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
+    if(!safeTitle){
+        return false;
+    }
+    return deck.erase(safeTitle.value()) != 0;
 }
 
 
@@ -136,11 +149,15 @@ MusicControlPannel::GetPCMFrames(float* array, const unsigned long FrameSize)
 FXControlPannel*
 MusicControlPannel::getFXHandle(const std::string& title)
 {
-    if(deck.find(title) == deck.end()){
+    auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
+    if(!safeTitle){
+        return nullptr;
+    }
+    if(deck.find(safeTitle.value()) == deck.end()){
         return nullptr;
     }
     else{
-        return deck[title].fxP;
+        return deck[safeTitle.value()].fxP;
 
     }
 }

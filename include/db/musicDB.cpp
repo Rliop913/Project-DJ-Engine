@@ -27,11 +27,17 @@ musdata::musdata(
     const std::string& musicPath__,
     const double bpm__
 ):
-title(title__),
-composer(composer__),
 musicPath(musicPath__),
 bpm(bpm__)
-{}
+{
+    auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title__);
+    auto safeComposer = PDJE_Name_Sanitizer::sanitizeFileName(composer__);
+    if(!safeTitle || !safeComposer){
+        return;
+    }
+    title = safeTitle.value();
+    composer = safeComposer.value();
+}
 
 
 bool

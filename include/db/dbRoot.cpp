@@ -9,7 +9,7 @@ litedb::openDB(const fs::path& dbPath)
 {
     // std::u8string u8str = dbPath.generic_u8string();
     if(!fs::is_directory(dbPath)){
-        return false;
+        fs::create_directories(dbPath);
     }
     sqldbPath = dbPath / fs::path("sqlite.db");
     kvdbPath = dbPath / fs::path("rocksdb.db");
@@ -52,6 +52,9 @@ litedb::~litedb()
 {
     if(sdb != nullptr){
         sqlite3_close(sdb);
+    }
+    if(kvdb != nullptr){
+        delete kvdb;
     }
 }
 

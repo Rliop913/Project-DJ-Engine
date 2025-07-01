@@ -45,26 +45,48 @@ PDJE_Editor::openProject(const fs::path& projectPath)
     return true;
     
 }
-
+#include <random>
 bool
 PDJE_Editor::AddMusicConfig(const std::string& NewMusicName)
 {
-    
-    auto newpath = musicp / fs::path(NewMusicName);
-    if(fs::exists(newpath)){
-        return false;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<unsigned int> randomFilename(
+        std::numeric_limits<unsigned int>::min(),
+        std::numeric_limits<unsigned int>::max());
+    std::optional<std::string> mfilename;
+    for(int TRY_COUNT=0; TRY_COUNT<50; ++TRY_COUNT){
+        std::string tempFilename = std::to_string(randomFilename(gen));
+        if(!fs::exists(musicp / fs::path(tempFilename))){
+            mfilename = tempFilename;
+            break;
+        }
     }
-    else{
-        fs::create_directory(newpath);
-        if(fs::exists(newpath)){
+    if(!mfilename.has_value()) return false;
+    auto newpath = musicp / fs::path(mfilename.value());
+    // if(fs::exists(newpath)){
+    //     return false;
+    // }
+    try
+    {
+        if(fs::create_directory(newpath)){
             musicHandle.emplace_back(name, email);
             musicHandle.back().musicName = NewMusicName;
             if( !musicHandle.back().gith->Open(newpath) ||
-                !musicHandle.back().jsonh.load(newpath) ){
-                    return false;
-                }
+            !musicHandle.back().jsonh.load(newpath) ){
+                fs::remove_all(newpath);
+                EDITOR_ERR += "Failed to init git or json\n";
+                return false;
+            }
             else return true;
         }
     }
+    catch(const std::exception& e)
+    {
+        EDITOR_ERR += e.what();
+        EDITOR_ERR += "\n";
+        return false;
+    }
+    
     return false;
 }

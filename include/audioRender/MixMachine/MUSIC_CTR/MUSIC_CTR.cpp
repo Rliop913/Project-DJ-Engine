@@ -131,6 +131,9 @@ MUSIC_CTR::setLOAD(MBData::Reader& RP, litedb& db, FRAME_POS FrameIn)
     if(!searchRes.has_value()){
         return false;
     }
+    if(searchRes->empty()){
+        return false;
+    }
     songPath = searchRes.value()[0].musicPath;
     PlayPosition startpos;
     startpos.Gidx = FrameIn;

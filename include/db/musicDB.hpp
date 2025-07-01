@@ -5,6 +5,7 @@
 
 #include "dbState.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
+#include "fileNameSanitizer.hpp"
 
 /**
  * @brief the music meta data's struct

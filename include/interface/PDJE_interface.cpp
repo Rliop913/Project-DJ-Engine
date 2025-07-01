@@ -12,7 +12,11 @@ TRACK_VEC
 PDJE::SearchTrack(const std::string& Title)
 {
     trackdata td;
-    td.trackTitle = Title;
+    auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(Title);
+    if(!safeTitle){
+        return TRACK_VEC();
+    }
+    td.trackTitle = safeTitle.value();
     auto dbres = DBROOT.value() << td;
     if(dbres.has_value()){
         return dbres.value();
@@ -30,8 +34,13 @@ PDJE::SearchMusic(
     const double bpm)
 {
     musdata md;
-    md.title = Title;
-    md.composer = composer;
+    auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(Title);
+    auto safeComposer = PDJE_Name_Sanitizer::sanitizeFileName(composer);
+    if(!safeTitle || !safeComposer){
+        return MUS_VEC();
+    }
+    md.title = safeTitle.value();
+    md.composer = safeComposer.value();
     md.bpm = bpm;
     auto dbres = DBROOT.value() << md;
     if(dbres.has_value()){

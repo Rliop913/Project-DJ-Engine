@@ -8,7 +8,7 @@ tempDB::Open(const fs::path& projectRoot)
     tempROOT.emplace();
     return 
     tempROOT->openDB(
-        (projectRoot / fs::path("LOCALDB.pdjedb")).u8string()
+        (projectRoot / fs::path("LOCALDB"))
     );
 }
 
@@ -17,8 +17,14 @@ tempDB::BuildProject(trackdata& td, std::vector<musdata>& mds)
 {
     auto dbposition = tempROOT->getRoot();
     tempROOT.reset();
-    if(!fs::remove(dbposition)){
-        return false;
+    try{
+
+        if(!fs::remove_all(dbposition)){
+            return false;
+        }
+    }
+    catch(std::exception e){
+        ERR = e.what();
     }
     tempROOT.emplace();
 

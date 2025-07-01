@@ -74,7 +74,7 @@ main()
             else{
                 std::cout << "config init failed" << std::endl;
             }
-            if(engine->editor->ConfigNewMusic("ヒアソビ", "Camellia", "../../DMCA_FREE_DEMO_MUSIC/ヒアソビ（重音テトカバー).wav")){
+            if(engine->editor->ConfigNewMusic("ヒアソビ", "Camellia", "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav")){
                 EDIT_ARG_MUSIC temp;
                 temp.musicName = "ヒアソビ";
                 temp.arg.bar=0;

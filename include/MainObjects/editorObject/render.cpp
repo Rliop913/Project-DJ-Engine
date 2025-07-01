@@ -35,7 +35,10 @@ editorObject::render(const std::string& trackTitle, litedb& ROOTDB)
 
     for(auto& i : titles){
         if(i.second != ""){
-            auto findFromRoot = musdata(i.first, i.second);
+            
+            auto findFromRoot = musdata();
+            findFromRoot.title = i.first;
+            findFromRoot.composer = i.second;
             auto mus = ROOTDB << findFromRoot;
             if(mus.has_value()){
                 if(mus->empty()) continue;

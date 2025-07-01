@@ -33,8 +33,8 @@ GetPCMFramesSIMD(
 
     for(auto& i : deck){
         if(i.second.play){
-
-            if(ma_decoder_read_pcm_frames(&i.second.dec, tempFrames.data(), FrameSize, NULL) != MA_SUCCESS){
+            
+            if(ma_decoder_read_pcm_frames(&i.second.dec.dec, tempFrames.data(), FrameSize, NULL) != MA_SUCCESS){
                 return false;
             }
             toFaustStylePCM(FaustStyle, tempFrames.data(), FrameSize);

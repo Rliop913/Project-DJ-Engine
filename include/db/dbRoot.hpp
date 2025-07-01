@@ -41,7 +41,7 @@ private:
     fs::path vectordbPath;
     /// sqlite pointer
     sqlite3* sdb = nullptr;
-    RDB::DB* kvdb;
+    RDB::DB* kvdb = nullptr;
     RDB::WriteOptions wops;
     RDB::ReadOptions rops;
 

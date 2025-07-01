@@ -32,8 +32,11 @@ editorObject::makeTrackData(
             titles.insert(std::pair(first, second));
         }
     }
-    
-    td.trackTitle = trackTitle;
+    auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(trackTitle);
+    if(!safeTitle){
+        throw "FAILED TO SANITIZE TITLE";
+    }
+    td.trackTitle = safeTitle.value();
     td.mixBinary = mixRendered->out();
     td.noteBinary = E_obj->noteHandle.second.render()->out();
     for(auto& i : titles){
@@ -94,10 +97,16 @@ editorObject::ConfigNewMusic(
     const fs::path& musicPath,
     const std::string& firstBar)
 {
-    if( E_obj->AddMusicConfig(NewMusicName)){
-        std::cout << "DEBUGLINE: editorObject.cpp:96   " << NewMusicName << "    " << composer << std::endl;
-        E_obj->musicHandle.back().jsonh["TITLE"] = NewMusicName;
-        E_obj->musicHandle.back().jsonh["COMPOSER"] = composer;
+    auto safeMus = PDJE_Name_Sanitizer::sanitizeFileName(NewMusicName);
+    auto safeComposer = PDJE_Name_Sanitizer::sanitizeFileName(composer);
+    if(!safeMus.has_value() || !safeComposer.has_value()){
+        PDJE_Name_Sanitizer::PDJE_SANITIZE_ERROR+= "Failed to sanitize in Config Music\n";
+        return false;
+    }
+    if( E_obj->AddMusicConfig(safeMus.value())){
+        std::cout << "DEBUGLINE: editorObject.cpp:96   " << safeMus.value() << "    " << safeComposer.value() << std::endl;
+        E_obj->musicHandle.back().jsonh["TITLE"] = safeMus.value();
+        E_obj->musicHandle.back().jsonh["COMPOSER"] = safeComposer.value();
         try
         {
             if(!fs::exists(musicPath)){
@@ -195,8 +204,24 @@ editorObject::pushToRootDB(
     auto resultToInsert = searched->front();
     std::cout << "Debugline: editorobj 185  " <<(resultToInsert.musicPath) << std::endl;
     try{
-        resultToInsert.musicPath = PDJE_Name_Sanitizer::getFileName(musicTitle + musicComposer);
-        ROOTDB.KVPut(k,v)//no impl crash
+        auto Key = PDJE_Name_Sanitizer::sanitizeFileName(musicTitle + musicComposer);
+        if(!Key){
+            return false;
+        }
+        resultToInsert.musicPath = Key.value();
+        
+        auto originMusicPath = fs::path(searched->front().musicPath);
+        if(!fs::exists(originMusicPath)){
+            PDJE_Name_Sanitizer::PDJE_SANITIZE_ERROR += "push to db Failed. can't find/open filepath\n";
+            return false;
+        }
+        std::ifstream musicFile(originMusicPath, std::ios::binary);
+        std::vector<uint8_t> fileData {
+            std::istreambuf_iterator<char>(musicFile),
+            std::istreambuf_iterator<char>()
+        };
+        std::string MusBin(reinterpret_cast<const char*>(fileData.data()), fileData.size());
+        ROOTDB.KVPut(resultToInsert.musicPath, MusBin);
         
         // auto musicRelPath = (projectRoot / fs::path(resultToInsert.musicPath)).lexically_normal();
         // auto RootRelPath = ROOTDB.getRoot().parent_path().lexically_normal();
