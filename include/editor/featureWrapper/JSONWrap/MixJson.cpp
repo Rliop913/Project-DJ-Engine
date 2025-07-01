@@ -114,9 +114,9 @@ PDJE_JSONHandler<MIX_W>::render()
             filler[i].setType       (target["type"      ]);
             filler[i].setDetails    (target["details"   ]);
             filler[i].setId         (target["ID"        ]);
-            filler[i].setFirst      (target["first"     ].get<std::string>());
-            filler[i].setSecond     (target["second"    ].get<std::string>());
-            filler[i].setThird      (target["third"     ].get<std::string>());
+            filler[i].setFirst      (target["first"     ].get<SANITIZED_ORNOT>());
+            filler[i].setSecond     (target["second"    ].get<SANITIZED_ORNOT>());
+            filler[i].setThird      (target["third"     ].get<SANITIZED_ORNOT>());
             filler[i].setBar        (target["bar"       ]);
             filler[i].setBeat       (target["beat"      ]);
             filler[i].setSeparate   (target["separate"  ]);

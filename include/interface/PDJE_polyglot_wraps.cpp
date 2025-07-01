@@ -12,14 +12,14 @@ PDJE::GetPlayerObject()
     }
 }
 
-std::vector<std::string>
+std::vector<DONT_SANITIZE>
 ARGSETTER_WRAPPER::GetFXArgKeys(FXList fx)
 {
     if(fxp == nullptr){
-        return std::vector<std::string>();
+        return std::vector<DONT_SANITIZE>();
     }
     auto argkey = fxp->GetArgSetter(fx);
-    std::vector<std::string> keylist;
+    std::vector<DONT_SANITIZE> keylist;
     for(auto& i : argkey){
         keylist.push_back(i.first);
     }
@@ -29,7 +29,7 @@ ARGSETTER_WRAPPER::GetFXArgKeys(FXList fx)
 void
 ARGSETTER_WRAPPER::SetFXArg(
     FXList fx, 
-    const std::string& key, 
+    const DONT_SANITIZE& key, 
     double arg
     )
 {

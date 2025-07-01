@@ -8,7 +8,7 @@ Decoder::Decoder()
 }
 
 bool 
-Decoder::init(litedb& db, const std::string& KeyOrPath)
+Decoder::init(litedb& db, const SANITIZED_ORNOT& KeyOrPath)
 {
     ma_decoder_config dconf = ma_decoder_config_init(ma_format_f32, CHANNEL, SAMPLERATE);
     

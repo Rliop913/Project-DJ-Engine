@@ -83,8 +83,8 @@ public:
 
     bool
     InitEditor(
-        const std::string &auth_name, 
-        const std::string &auth_email,
+        const DONT_SANITIZE &auth_name, 
+        const DONT_SANITIZE &auth_email,
         const fs::path& projectRoot
     );
     /**
@@ -112,8 +112,8 @@ public:
      */
     MUS_VEC 
     SearchMusic(
-        const std::string& Title, 
-        const std::string& composer, 
+        const UNSANITIZED& Title, 
+        const UNSANITIZED& composer, 
         const double bpm = -1);
     /**
      * @brief searches track
@@ -121,7 +121,7 @@ public:
      * @param Title the tile of the track. send "" to skip filter
      * @return TRACK_VEC the array of the track_data. find what you want
      */
-    TRACK_VEC SearchTrack(const std::string& Title);
+    TRACK_VEC SearchTrack(const UNSANITIZED& Title);
     /**
      * @brief music handler getter api for binded codes.
      * this function gives you a music handler.
@@ -167,7 +167,7 @@ public:
     void
     SetFXArg(
         FXList fx, 
-        const std::string& key, 
+        const DONT_SANITIZE& key, 
         double arg);
 
 };

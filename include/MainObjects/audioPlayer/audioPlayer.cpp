@@ -110,7 +110,7 @@ audioPlayer::GetConsumedFrames()
 }
 
 FXControlPannel*
-audioPlayer::GetFXControlPannel(const std::string& title)
+audioPlayer::GetFXControlPannel(const UNSANITIZED& title)
 {
     if(title == "__PDJE__MAIN__"){
         if(!engineDatas.FXManualPannel.has_value()){

@@ -6,11 +6,12 @@
 
 #include <git2.h>
 #include "editorCommit.hpp"
+#include "fileNameSanitizer.hpp"
 // #include "CommitFinder.hpp"
 
 struct lineLog{
     unsigned int linenumber;
-    std::string text;
+    UNSANITIZED text;
 };
 
 struct DiffResult{

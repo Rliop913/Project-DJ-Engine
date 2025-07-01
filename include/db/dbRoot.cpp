@@ -112,7 +112,7 @@ litedb::CheckTables()
 
 
 bool
-litedb::KVGet(const std::string& K, std::string& V)
+litedb::KVGet(const SANITIZED& K, DONT_SANITIZE& V)
 {
     
     auto getRes = kvdb->Get(rops, K, &V);
@@ -127,7 +127,7 @@ litedb::KVGet(const std::string& K, std::string& V)
 }
 
 bool
-litedb::KVPut(const std::string& K, const std::string& V)
+litedb::KVPut(const SANITIZED& K, const DONT_SANITIZE& V)
 {
     auto putRes = kvdb->Put(wops, K, V);
     if(!putRes.ok()){

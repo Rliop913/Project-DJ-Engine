@@ -31,7 +31,7 @@ struct PDJE_API Decoder{
      * @return true 
      * @return false 
      */
-    bool init(litedb& db, const std::string& KeyOrPath);
+    bool init(litedb& db, const SANITIZED_ORNOT& KeyOrPath);
     /**
      * @brief changes the playback position
      * 

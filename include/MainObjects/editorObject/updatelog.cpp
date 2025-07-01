@@ -11,7 +11,7 @@ editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>()
 template<>
 PDJE_API
 bool
-editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>(const std::string& branchName)
+editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>(const DONT_SANITIZE& branchName)
 {
 
     return E_obj->KVHandler.first->UpdateLog(branchName);
@@ -29,7 +29,7 @@ editorObject::UpdateLog<EDIT_ARG_MIX>()
 template<>
 PDJE_API
 bool
-editorObject::UpdateLog<EDIT_ARG_MIX>(const std::string& branchName)
+editorObject::UpdateLog<EDIT_ARG_MIX>(const DONT_SANITIZE& branchName)
 {
     return E_obj->mixHandle.first->UpdateLog(branchName);
 }
@@ -45,7 +45,7 @@ editorObject::UpdateLog<EDIT_ARG_NOTE>()
 template<>
 PDJE_API
 bool
-editorObject::UpdateLog<EDIT_ARG_NOTE>(const std::string& branchName)
+editorObject::UpdateLog<EDIT_ARG_NOTE>(const DONT_SANITIZE& branchName)
 {
     return E_obj->noteHandle.first->UpdateLog(branchName);
 }
@@ -65,10 +65,14 @@ editorObject::UpdateLog<EDIT_ARG_MUSIC>()
 template<>
 PDJE_API
 bool
-editorObject::UpdateLog<EDIT_ARG_MUSIC>(const std::string& musicName)
+editorObject::UpdateLog<EDIT_ARG_MUSIC>(const UNSANITIZED& musicName)
 {
+    auto safeMus = PDJE_Name_Sanitizer::sanitizeFileName(musicName);
+    if(!safeMus){
+        return false;
+    }
     for(auto& i : E_obj->musicHandle){
-        if(i.musicName == musicName){
+        if(i.musicName == safeMus){
             return i.gith->UpdateLog();
         }
     };

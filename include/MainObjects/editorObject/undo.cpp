@@ -19,10 +19,15 @@ editorObject::Undo<EDIT_ARG_MIX>()
 template<>
 PDJE_API
 bool
-editorObject::Undo<EDIT_ARG_MUSIC>(const std::string& musicName)
+editorObject::Undo<EDIT_ARG_MUSIC>(const UNSANITIZED& musicName)
 {
+    auto safeMus = PDJE_Name_Sanitizer::sanitizeFileName(musicName);
+    if(!safeMus){
+        return false;
+    }
+
     for(auto& i : E_obj->musicHandle){
-        if(i.musicName == musicName){
+        if(i.musicName == safeMus){
             return i.gith->Undo();
         }
     }

@@ -22,9 +22,9 @@ musdata::musdata(stmt* dbstate)
 }
 
 musdata::musdata(
-    const std::string& title__,
-    const std::string& composer__,
-    const std::string& musicPath__,
+    const UNSANITIZED& title__,
+    const UNSANITIZED& composer__,
+    const SANITIZED_ORNOT& musicPath__,
     const double bpm__
 ):
 musicPath(musicPath__),

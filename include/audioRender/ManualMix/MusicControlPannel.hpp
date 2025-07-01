@@ -74,7 +74,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool CueMusic(const std::string& title, const unsigned long long newPos);
+    bool CueMusic(const UNSANITIZED& title, const unsigned long long newPos);
 
     /**
      * @brief turn on, off the music
@@ -84,7 +84,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool SetMusic(const std::string& title, const bool onOff);
+    bool SetMusic(const UNSANITIZED& title, const bool onOff);
 
     /**
      * @brief get music list on the deck
@@ -100,7 +100,7 @@ public:
      * @return true 
      * @return false 
      */
-    bool UnloadMusic(const std::string& title);
+    bool UnloadMusic(const UNSANITIZED& title);
 
     /**
      * @brief gets decoded pcm frames
@@ -118,71 +118,9 @@ public:
      * @param title the title of the music
      * @return FXControlPannel*, the handler pointer
      */
-    FXControlPannel* getFXHandle(const std::string& title);
+    FXControlPannel* getFXHandle(const UNSANITIZED& title);
     MusicControlPannel(const unsigned long FrameSize): fsize(FrameSize){}
     ~MusicControlPannel();
 
 };
 
-
-// HWY_BEFORE_NAMESPACE();
-
-// namespace hwy{
-// namespace HWY_NAMESPACE {
-
-// bool
-// GetPCMFramesSIMD(
-//     SIMD_FLOAT& tempFrames,
-//     std::vector<float>& L,
-//     std::vector<float>& R,
-//     float** FaustStyle,
-//     LOADS& deck,
-//     float* array, 
-//     const unsigned long FrameSize)
-// {
-//     const unsigned long long RAWFrameSize = FrameSize * CHANNEL;
-    
-//     tempFrames.resize(RAWFrameSize);
-//     L.resize(FrameSize);
-//     R.resize(FrameSize);
-//     FaustStyle[0] = L.data();
-//     FaustStyle[1] = R.data();
-//     const hn::ScalableTag<float> hwyFTag;
-//     auto laneSize = hn::Lanes(hwyFTag);
-//     auto times = RAWFrameSize / laneSize;
-//     auto remained = RAWFrameSize % laneSize;
-
-//     for(auto& i : deck){
-//         if(i.second.play){
-            
-//             if(ma_decoder_read_pcm_frames(&i.second.dec, tempFrames.data(), FrameSize, NULL) != MA_SUCCESS){
-//                 return false;
-//             }
-//             toFaustStylePCM(FaustStyle, tempFrames.data(), FrameSize);
-//             i.second.fxP->addFX(FaustStyle, FrameSize);
-//             toLRStylePCM(FaustStyle, tempFrames.data(), FrameSize);
-            
-//             float* opoint = array;
-//             float* tpoint = tempFrames.data();
-            
-//             for(size_t j = 0; j < times; ++j){
-//                 auto simdtemp = hn::Load(hwyFTag, tpoint);
-//                 auto simdorigin = hn::LoadU(hwyFTag, opoint);
-//                 auto res = simdtemp + simdorigin;
-//                 hn::StoreU(res, hwyFTag, opoint);
-//                 opoint += laneSize;
-//                 tpoint += laneSize;
-//             }
-            
-//             for(size_t j=0; j<remained; ++j){
-//                 (*(opoint++)) += (*(tpoint++));
-//             }
-//         }
-//     }
-//     return true;
-// }
-// }
-// }
-
-
-// HWY_AFTER_NAMESPACE();

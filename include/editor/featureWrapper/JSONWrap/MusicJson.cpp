@@ -67,7 +67,7 @@ PDJE_JSONHandler<MUSIC_W>::render()
             auto target = ROOT[PDJEMUSICBPM].at(i);
             filler[i].setBar        (target["bar"       ]);
             filler[i].setBeat       (target["beat"      ]);
-            filler[i].setBpm        (target["bpm"       ].get<std::string>());
+            filler[i].setBpm        (target["bpm"       ].get<DONT_SANITIZE>());
             filler[i].setSeparate   (target["separate"  ]);
         }
         return tempMusBin;
@@ -89,9 +89,11 @@ PDJE_JSONHandler<MUSIC_W>::getAll(
     }
     for(auto& i : ROOT[PDJEMUSICBPM]){
         EDIT_ARG_MUSIC tempargs;
-        tempargs.musicName = ROOT["TITLE"].get<std::string>();
         
-        auto tempBpm = i["bpm"].get<std::string>();
+        
+        tempargs.musicName = PDJE_Name_Sanitizer::getFileName(ROOT["TITLE"].get<SANITIZED>());
+        
+        auto tempBpm = i["bpm"].get<DONT_SANITIZE>();
         tempargs.arg = {
             tempBpm         ,
             i["bar"         ],

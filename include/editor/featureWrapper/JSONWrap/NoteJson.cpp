@@ -9,11 +9,11 @@ bool
 PDJE_JSONHandler<NOTE_W>::add(const NoteArgs& args)
 {
     nj tempMix = {
-        {"Note_Type"    ,   std::string(args.Note_Type.begin()  , args.Note_Type.end())     },
-        {"Note_Detail"  ,   std::string(args.Note_Detail.begin(), args.Note_Detail.end())   },
-        {"first"        ,   std::string(args.first.begin()      , args.first.end())         },
-        {"second"       ,   std::string(args.second.begin()     , args.second.end())        },
-        {"third"        ,   std::string(args.third.begin()      , args.third.end())         },
+        {"Note_Type"    ,   SANITIZED_ORNOT(args.Note_Type.begin()  , args.Note_Type.end())     },
+        {"Note_Detail"  ,   SANITIZED_ORNOT(args.Note_Detail.begin(), args.Note_Detail.end())   },
+        {"first"        ,   SANITIZED_ORNOT(args.first.begin()      , args.first.end())         },
+        {"second"       ,   SANITIZED_ORNOT(args.second.begin()     , args.second.end())        },
+        {"third"        ,   SANITIZED_ORNOT(args.third.begin()      , args.third.end())         },
         {"bar"          ,   args.bar        },
         {"beat"         ,   args.beat       },
         {"separate"     ,   args.separate   },
@@ -76,11 +76,11 @@ PDJE_JSONHandler<NOTE_W>::getAll(
     for(auto& i : ROOT[PDJENOTE]){
 
         NoteArgs tempargs{
-            i["Note_Type"   ].get<std::string>(),
-            i["Note_Detail" ].get<std::string>(),
-            i["first"       ].get<std::string>(),
-            i["second"      ].get<std::string>(),
-            i["third"       ].get<std::string>(),
+            i["Note_Type"   ].get<SANITIZED_ORNOT>(),
+            i["Note_Detail" ].get<SANITIZED_ORNOT>(),
+            i["first"       ].get<SANITIZED_ORNOT>(),
+            i["second"      ].get<SANITIZED_ORNOT>(),
+            i["third"       ].get<SANITIZED_ORNOT>(),
             i["bar"         ],
             i["beat"        ],
             i["separate"    ],
@@ -103,11 +103,11 @@ PDJE_JSONHandler<NOTE_W>::render()
         auto filler = tempMixBin->Wp->initDatas(rootsz);
         for(std::size_t i=0; i<rootsz; ++i){
             auto target = ROOT[PDJENOTE].at(i);
-            filler[i].setNoteType       (target["Note_Type"     ].get<std::string>());
-            filler[i].setNoteDetail     (target["Note_Detail"   ].get<std::string>());
-            filler[i].setFirst          (target["first"         ].get<std::string>());
-            filler[i].setSecond         (target["second"        ].get<std::string>());
-            filler[i].setThird          (target["third"         ].get<std::string>());
+            filler[i].setNoteType       (target["Note_Type"     ].get<SANITIZED_ORNOT>());
+            filler[i].setNoteDetail     (target["Note_Detail"   ].get<SANITIZED_ORNOT>());
+            filler[i].setFirst          (target["first"         ].get<SANITIZED_ORNOT>());
+            filler[i].setSecond         (target["second"        ].get<SANITIZED_ORNOT>());
+            filler[i].setThird          (target["third"         ].get<SANITIZED_ORNOT>());
             filler[i].setBar            (target["bar"           ]);
             filler[i].setBeat           (target["beat"          ]);
             filler[i].setSeparate       (target["separate"      ]);

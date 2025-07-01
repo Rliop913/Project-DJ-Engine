@@ -82,10 +82,10 @@ public:
     EditData(DBType& searchObject, DBType& editObject);//to-do impl
 
     bool
-    KVGet(const std::string& K, std::string& V);
+    KVGet(const SANITIZED& K, DONT_SANITIZE& V);
 
     bool
-    KVPut(const std::string& K, const std::string& V);
+    KVPut(const SANITIZED& K, const DONT_SANITIZE& V);
 
     /**
      * @brief opens the Root Database and initialize.

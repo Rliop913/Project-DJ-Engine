@@ -8,7 +8,7 @@ namespace fs = std::filesystem;
 
 
 
-PDJE_GitHandler::PDJE_GitHandler(const std::string& auth_name, const std::string& auth_email)
+PDJE_GitHandler::PDJE_GitHandler(const DONT_SANITIZE& auth_name, const DONT_SANITIZE& auth_email)
 {
     git_signature_now(&sign, auth_name.c_str(), auth_email.c_str());
 
@@ -56,7 +56,7 @@ PDJE_GitHandler::Close()
 
 
 bool
-PDJE_GitHandler::Save(const std::string& tracingFile, const std::string& timeStamp)
+PDJE_GitHandler::Save(const DONT_SANITIZE& tracingFile, const DONT_SANITIZE& timeStamp)
 {
     if(gw.handleBranch->FLAG_TEMP_CHECKOUT.has_value()){
         gitwrap::commit tempcommit(gw.handleBranch->FLAG_TEMP_CHECKOUT.value(), gw.repo);
@@ -147,11 +147,11 @@ PDJE_GitHandler::GetDiff(const gitwrap::commit& oldTimeStamp, const gitwrap::com
 }
 
 struct BranchJSON{
-    std::string branchname;
-    std::string oid;
+    DONT_SANITIZE branchname;
+    DONT_SANITIZE oid;
 };
 
-std::string
+DONT_SANITIZE
 PDJE_GitHandler::GetLogWithJSONGraph()
 {
     using nj = nlohmann::json;
@@ -159,22 +159,22 @@ PDJE_GitHandler::GetLogWithJSONGraph()
     for(auto& i : gw.log_hdl->heads){
         nj b;
         b["NAME"] = i.BranchName;
-        b["OID"] = std::string(git_oid_tostr_s(&i.head));
+        b["OID"] = DONT_SANITIZE(git_oid_tostr_s(&i.head));
         GraphRoot["BRANCH"].push_back(b);
     }
     for(auto& i : gw.log_hdl->logs){
         nj c;
-        c["OID"] = std::string(git_oid_tostr_s(&i.first));
+        c["OID"] = DONT_SANITIZE(git_oid_tostr_s(&i.first));
         c["EMAIL"] = i.second.authEmail;
         c["NAME"] = i.second.authName;
-        c["PARENTID"] = std::string(git_oid_tostr_s(&i.second.parentID));
+        c["PARENTID"] = DONT_SANITIZE(git_oid_tostr_s(&i.second.parentID));
         GraphRoot["COMMIT"].push_back(c);
     }
     return GraphRoot.dump();
 }
 
 bool
-PDJE_GitHandler::Go(const std::string& branchName, git_oid* commitID)
+PDJE_GitHandler::Go(const DONT_SANITIZE& branchName, git_oid* commitID)
 {
     if(!gw.handleBranch->SetBranch(branchName)){
         return false;

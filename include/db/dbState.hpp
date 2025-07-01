@@ -5,6 +5,7 @@
 
 #include <sqlite3.h>
 #include "PDJE_EXPORT_SETTER.hpp"
+#include "fileNameSanitizer.hpp"
 #ifdef WIN32
     using u_int8_t = uint8_t;
 #endif
@@ -40,7 +41,7 @@ public:
      * @param str text to bind
      * @return int sqlite err msg
      */
-    int bind_text(int idx, std::string& str);
+    int bind_text(int idx, SANITIZED_ORNOT& str);
 
 
     // int bind_u8text(int idx, std::u8string& str);

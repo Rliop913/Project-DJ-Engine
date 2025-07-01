@@ -37,7 +37,15 @@ PDJE_API
 bool
 editorObject::DefaultSaveFuntion<EDIT_ARG_MUSIC>(PDJE_Editor::MusicHandleStruct& i, const EDIT_ARG_MUSIC& obj)
 {
-    if(!i.jsonh.save((musicFileRootPath / obj.musicName / "musicmetadata.PDJE"))) return false;
-    if(!i.gith->Save("musicmetadata.PDJE", GitWrapper::GenTimeStamp())) return false;
+    auto safeMus = PDJE_Name_Sanitizer::sanitizeFileName(obj.musicName);
+    if(!safeMus){
+        return false;
+    }
+    for(auto& target : E_obj->musicHandle){
+        if(target.musicName == safeMus.value()){
+            if(!i.jsonh.save((target.dataPath / "musicmetadata.PDJE"))) return false;
+            if(!i.gith->Save("musicmetadata.PDJE", GitWrapper::GenTimeStamp())) return false;
+        }
+    }
     return true;
 }

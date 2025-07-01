@@ -6,6 +6,9 @@
 namespace fs = std::filesystem;
 
 using SANITIZED = std::string;
+using UNSANITIZED = std::string;
+using DONT_SANITIZE = std::string;
+using SANITIZED_ORNOT = std::string;
 using cbase = cppcodec::base64_url_unpadded;
 
 

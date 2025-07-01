@@ -24,7 +24,7 @@ logHandle::OID_HASHER::operator()(const git_oid& oid) const noexcept
 }
 
 bool
-logHandle::WalkBranch(const std::string& branchName)
+logHandle::WalkBranch(const DONT_SANITIZE& branchName)
 {
 
     git_revwalk *walker = nullptr;
@@ -33,7 +33,7 @@ logHandle::WalkBranch(const std::string& branchName)
     git_revwalk_sorting(walker, GIT_SORT_TIME);
 
     // 브랜치 참조 추가
-    auto refBranchName = branch::ToBranchRefName<const std::string&>(branchName);
+    auto refBranchName = branch::ToBranchRefName<const DONT_SANITIZE&>(branchName);
 
     if (git_revwalk_push_ref(walker, refBranchName.c_str()) != 0) {
         git_revwalk_free(walker);
@@ -61,7 +61,7 @@ logHandle::WalkBranch(const std::string& branchName)
         else{
             FLAG_DID_SOMETHING = true;
             auto authref = git_commit_author(commitref);
-            std::string msg = git_commit_message(commitref);
+            DONT_SANITIZE msg = git_commit_message(commitref);
             if(git_oid_is_zero(&child_oid) == 1){
                 git_oid_cpy(&bh.head, &oid);
             }

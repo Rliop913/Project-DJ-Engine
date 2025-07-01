@@ -4,17 +4,18 @@
 
 #include "dbState.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
+#include "fileNameSanitizer.hpp"
 /**
  * @brief the music meta data's struct
  * 
  */
 struct PDJE_API trackdata{
 public:
-    std::string trackTitle;
+    SANITIZED trackTitle;
     BIN mixBinary;
     BIN noteBinary;
-    /// @brief Included music list
-    std::string cachedMixList;
+    /// @brief Included music list, csv data
+    SANITIZED cachedMixList;
 
     /**
      * @brief Constructor. typically used for returning search results.
@@ -32,7 +33,7 @@ public:
      * @param trackTitle__ the title of the track
      */
     trackdata(
-        const std::string& trackTitle__ = ""
+        const UNSANITIZED& trackTitle__ = ""
     );
 
     /**

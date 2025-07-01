@@ -19,22 +19,11 @@ MusicControlPannel::LoadMusic(litedb& ROOTDB, const musdata& Mus)
         return false;
     }
     return deck[Mus.title].dec.init(ROOTDB, Mus.musicPath);
-    // ma_decoder_config decConf =
-    //     ma_decoder_config_init(ma_format_f32, CHANNEL, SAMPLERATE);
-    // std::string MPath = 
-    //     (fs::path(ROOTDB.getRoot()).parent_path() / fs::path(Mus.musicPath)).lexically_normal().generic_string();
-    
-    // return
-    //     ma_decoder_init_file(
-    //         MPath.c_str(),
-    //         &decConf,
-    //         &deck[Mus.title].dec
-    //     );
 }
 
 
 bool
-MusicControlPannel::CueMusic(const std::string& title, const unsigned long long newPos)
+MusicControlPannel::CueMusic(const UNSANITIZED& title, const unsigned long long newPos)
 {
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
     if(!safeTitle){
@@ -50,7 +39,7 @@ MusicControlPannel::CueMusic(const std::string& title, const unsigned long long 
 
 
 bool
-MusicControlPannel::SetMusic(const std::string& title, const bool onOff)
+MusicControlPannel::SetMusic(const UNSANITIZED& title, const bool onOff)
 {
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
     if(!safeTitle){
@@ -69,7 +58,7 @@ MusicControlPannel::GetLoadedMusicList()
 {
     LOADED_LIST list;
     for(auto& i : deck){
-        auto originTitle = PDJE_Name_Sanitizer::getFileName(i.first);
+        UNSANITIZED originTitle = PDJE_Name_Sanitizer::getFileName(i.first);
         list.push_back(originTitle);
     }
     return std::move(list);
@@ -77,7 +66,7 @@ MusicControlPannel::GetLoadedMusicList()
 
 
 bool
-MusicControlPannel::UnloadMusic(const std::string& title)
+MusicControlPannel::UnloadMusic(const UNSANITIZED& title)
 {
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
     if(!safeTitle){
@@ -93,7 +82,6 @@ HWY_EXPORT(GetPCMFramesSIMD);
 bool
 MusicControlPannel::GetPCMFrames(float* array, const unsigned long FrameSize)
 {
-    // using namespace hwy;
     return
     HWY_DYNAMIC_DISPATCH(GetPCMFramesSIMD)(
         tempFrames,
@@ -104,50 +92,10 @@ MusicControlPannel::GetPCMFrames(float* array, const unsigned long FrameSize)
         array,
         FrameSize
     );
-    // const unsigned long long RAWFrameSize = FrameSize * CHANNEL;
-
-    // tempFrames.resize(RAWFrameSize);
-    // L.resize(FrameSize);
-    // R.resize(FrameSize);
-    // FaustStyle[0] = L.data();
-    // FaustStyle[1] = R.data();
-    // const hn::ScalableTag<float> hwyFTag;
-    // auto laneSize = hn::Lanes(hwyFTag);
-    // auto times = RAWFrameSize / laneSize;
-    // auto remained = RAWFrameSize % laneSize;
-
-    // for(auto& i : deck){
-    //     if(i.second.play){
-
-    //         if(ma_decoder_read_pcm_frames(&i.second.dec, tempFrames.data(), FrameSize, NULL) != MA_SUCCESS){
-    //             return false;
-    //         }
-    //         toFaustStylePCM(FaustStyle, tempFrames.data(), FrameSize);
-    //         i.second.fxP->addFX(FaustStyle, FrameSize);
-    //         toLRStylePCM(FaustStyle, tempFrames.data(), FrameSize);
-
-    //         float* opoint = array;
-    //         float* tpoint = tempFrames.data();
-
-    //         for(size_t j = 0; j < times; ++j){
-    //             auto simdtemp = hn::Load(hwyFTag, tpoint);
-    //             auto simdorigin = hn::LoadU(hwyFTag, opoint);
-    //             auto res = simdtemp + simdorigin;
-    //             hn::StoreU(res, hwyFTag, opoint);
-    //             opoint += laneSize;
-    //             tpoint += laneSize;
-    //         }
-
-    //         for(size_t j=0; j<remained; ++j){
-    //             (*(opoint++)) += (*(tpoint++));
-    //         }
-    //     }
-    // }
-    // return true;
 }
 
 FXControlPannel*
-MusicControlPannel::getFXHandle(const std::string& title)
+MusicControlPannel::getFXHandle(const UNSANITIZED& title)
 {
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
     if(!safeTitle){

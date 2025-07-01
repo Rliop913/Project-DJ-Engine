@@ -60,7 +60,7 @@ editorObject::AddLine(const EDIT_ARG_KEY_VALUE& obj)
 
 #include <iostream>
 bool 
-editorObject::AddLine(const std::string& musicName, const std::string& firstBar)
+editorObject::AddLine(const UNSANITIZED& musicName, const DONT_SANITIZE& firstBar)
 {
     auto safeMus = PDJE_Name_Sanitizer::sanitizeFileName(musicName);
     for(auto& i : E_obj->musicHandle){

@@ -4,8 +4,8 @@
 
 trackdata
 editorObject::makeTrackData(
-    const std::string& trackTitle, 
-    std::unordered_map<std::string, std::string>& titles)
+    const UNSANITIZED& trackTitle, 
+    std::unordered_map<SANITIZED, SANITIZED>& titles)
 {
     trackdata td;
     auto mixRendered = E_obj->mixHandle.second.render();
@@ -13,21 +13,8 @@ editorObject::makeTrackData(
     
     for(unsigned long long i=0; i < mixData.size();++i){
         if(mixData[i].getType() == TypeEnum::LOAD){
-            auto first = std::string(mixData[i].getFirst().cStr());
-            auto second = std::string(mixData[i].getSecond().cStr());
-            // std::u8string first, second;
-            // first.resize(mixData[i].getFirst().size());
-            // second.resize(mixData[i].getSecond().size());
-            // std::transform(
-            //     mixData[i].getFirst().begin(), mixData[i].getFirst().end(),
-            //     first.begin(),
-            //     [](char c){return static_cast<char8_t>(c);}
-            // );
-            // std::transform(
-            //     mixData[i].getSecond().begin(), mixData[i].getSecond().end(),
-            //     second.begin(),
-            //     [](char c){return static_cast<char8_t>(c);}
-            // );
+            auto first = SANITIZED(mixData[i].getFirst().cStr());
+            auto second = SANITIZED(mixData[i].getSecond().cStr());
         
             titles.insert(std::pair(first, second));
         }
@@ -51,7 +38,7 @@ editorObject::makeTrackData(
 void 
 editorObject::demoPlayInit(
     std::optional<audioPlayer>& player, 
-    unsigned int frameBufferSize, const std::string& trackTitle)
+    unsigned int frameBufferSize, const UNSANITIZED& trackTitle)
 {
     if(player.has_value()){
         player.reset();
@@ -92,31 +79,29 @@ editorObject::DESTROY_PROJECT()
 #include <iostream>
 bool
 editorObject::ConfigNewMusic(
-    const std::string& NewMusicName, 
-    const std::string& composer,
+    const UNSANITIZED& NewMusicName, 
+    const UNSANITIZED& composer,
     const fs::path& musicPath,
-    const std::string& firstBar)
+    const DONT_SANITIZE& firstBar)
 {
     auto safeMus = PDJE_Name_Sanitizer::sanitizeFileName(NewMusicName);
     auto safeComposer = PDJE_Name_Sanitizer::sanitizeFileName(composer);
+    // fs::path dPath;
     if(!safeMus.has_value() || !safeComposer.has_value()){
         PDJE_Name_Sanitizer::PDJE_SANITIZE_ERROR+= "Failed to sanitize in Config Music\n";
         return false;
     }
-    if( E_obj->AddMusicConfig(safeMus.value())){
+    fs::path tempDataPath;
+    if( E_obj->AddMusicConfig(safeMus.value(), tempDataPath)){
         std::cout << "DEBUGLINE: editorObject.cpp:96   " << safeMus.value() << "    " << safeComposer.value() << std::endl;
         E_obj->musicHandle.back().jsonh["TITLE"] = safeMus.value();
         E_obj->musicHandle.back().jsonh["COMPOSER"] = safeComposer.value();
+        E_obj->musicHandle.back().dataPath = tempDataPath;
         try
         {
             if(!fs::exists(musicPath)){
                 return false;
             }
-            // auto safeStr =
-            // fs::relative(
-            //     musicPath,
-            //     projectRoot
-            // ).generic_string();
             fs::path absPath;
             if(musicPath.is_absolute()){
                 absPath = musicPath;
@@ -157,7 +142,7 @@ editorObject::Open(const fs::path& projectPath)
 }
 
 bool
-editorObject::pushToRootDB(litedb& ROOTDB, const std::string& trackTitleToPush)
+editorObject::pushToRootDB(litedb& ROOTDB, const UNSANITIZED& trackTitleToPush)
 {
     TITLE_COMPOSER tcData;
     auto td = makeTrackData(trackTitleToPush, tcData);
@@ -165,7 +150,9 @@ editorObject::pushToRootDB(litedb& ROOTDB, const std::string& trackTitleToPush)
         return false;
     }
     for(auto& tcTemp : tcData){
-        if(!pushToRootDB(ROOTDB, tcTemp.first, tcTemp.second)) continue;
+        UNSANITIZED musTitle = PDJE_Name_Sanitizer::getFileName(tcTemp.first);
+        UNSANITIZED musComposer = PDJE_Name_Sanitizer::getFileName(tcTemp.second);
+        if(!pushToRootDB(ROOTDB, musTitle, musComposer)) continue;
     }
     return true;
 }
@@ -174,8 +161,8 @@ editorObject::pushToRootDB(litedb& ROOTDB, const std::string& trackTitleToPush)
 bool 
 editorObject::pushToRootDB(
     litedb& ROOTDB, 
-    const std::string& musicTitle, 
-    const std::string& musicComposer)
+    const UNSANITIZED& musicTitle, 
+    const UNSANITIZED& musicComposer)
 {
     std::cout << "DEBUGLINE: editorObject.cpp:160 " << musicTitle << "  " << musicComposer << std::endl;
     auto fromProjectSearchQuery = musdata(musicTitle, musicComposer);
@@ -223,14 +210,6 @@ editorObject::pushToRootDB(
         std::string MusBin(reinterpret_cast<const char*>(fileData.data()), fileData.size());
         ROOTDB.KVPut(resultToInsert.musicPath, MusBin);
         
-        // auto musicRelPath = (projectRoot / fs::path(resultToInsert.musicPath)).lexically_normal();
-        // auto RootRelPath = ROOTDB.getRoot().parent_path().lexically_normal();
-        // RootRelPath = RootRelPath.string().empty() ? fs::path("."): RootRelPath;
-        // resultToInsert.musicPath =
-        // fs::relative(
-        //     musicRelPath,
-        //     RootRelPath
-        // ).generic_string();
     }
     catch(std::exception e){
         RECENT_ERR = e.what();

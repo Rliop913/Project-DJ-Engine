@@ -1,9 +1,9 @@
 #include "editorObject.hpp"
 #include <iostream>
 bool
-editorObject::render(const std::string& trackTitle, litedb& ROOTDB)
+editorObject::render(const UNSANITIZED& trackTitle, litedb& ROOTDB)
 {
-    std::unordered_map<std::string, std::string> titles;
+    std::unordered_map<SANITIZED, SANITIZED> titles;
     auto td = makeTrackData(trackTitle, titles);
     
     std::vector<musdata> mds;
@@ -14,9 +14,9 @@ editorObject::render(const std::string& trackTitle, litedb& ROOTDB)
         mds.back().title = i.musicName;
         auto rdout = rendered->out();
         mds.back().bpmBinary.assign(rdout.begin(), rdout.end());
-        auto tempCOMPOSER   = i.jsonh["COMPOSER"    ].get<std::string>();
-        auto tempPATH       = i.jsonh["PATH"        ].get<std::string>();
-        auto tempFIRST_BAR  = i.jsonh["FIRST_BAR"   ].get<std::string>();
+        auto tempCOMPOSER   = i.jsonh["COMPOSER"    ].get<SANITIZED>();
+        auto tempPATH       = i.jsonh["PATH"        ].get<SANITIZED>();
+        auto tempFIRST_BAR  = i.jsonh["FIRST_BAR"   ].get<DONT_SANITIZE>();
         std::cout << "DEBUGLINE: render.cpp:20   " << tempCOMPOSER <<std::endl;
         std::cout << "DEBUGLINE: render.cpp:21   " << tempPATH <<std::endl;
         std::cout << "DEBUGLINE: render.cpp:22   " << tempFIRST_BAR <<std::endl;

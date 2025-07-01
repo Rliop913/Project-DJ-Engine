@@ -9,7 +9,7 @@ PDJE::PDJE(const fs::path& rootPath)
 
 
 TRACK_VEC
-PDJE::SearchTrack(const std::string& Title)
+PDJE::SearchTrack(const UNSANITIZED& Title)
 {
     trackdata td;
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(Title);
@@ -29,8 +29,8 @@ PDJE::SearchTrack(const std::string& Title)
 
 MUS_VEC
 PDJE::SearchMusic(
-    const std::string& Title, 
-    const std::string& composer, 
+    const UNSANITIZED& Title, 
+    const UNSANITIZED& composer, 
     const double bpm)
 {
     musdata md;
@@ -131,8 +131,8 @@ PDJE::GetNoteObjects(
 
 bool
 PDJE::InitEditor(
-    const std::string &auth_name, 
-    const std::string &auth_email,
+    const DONT_SANITIZE &auth_name, 
+    const DONT_SANITIZE &auth_email,
     const fs::path& projectRoot)
 {
     editor.emplace(auth_name, auth_email);
