@@ -67,7 +67,7 @@ else()
 link_libraries(
   CapnProto::kj 
   CapnProto::capnp 
-  CapnProto::kj-gzip
+  # CapnProto::kj-gzip
 )
 
 endif()
