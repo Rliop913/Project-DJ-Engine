@@ -55,7 +55,11 @@ FetchContent_Declare(
   set(ZLIB_RELEASE_LIB_PATH "${zlib_BINARY_DIR}/Release/zlib.lib")
   # include_directories(${zlib_SOURCE_DIR})
   # include_directories(${zlib_BINARY_DIR})
-
+  # add_library(zlib_builded STATIC IMPORTED GLOBAL)
+  # target_link_libraries(zlib_builded INTERFACE
+  #   $<$<CONFIG:Debug>:${ZLIB_DEBUG_LIB_PATH}>
+  #   $<$<CONFIG:Release>:${ZLIB_RELEASE_LIB_PATH}>
+  # )
   # if()
   # include_directories(${zlib_SOURCE_DIR})
 # if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
@@ -82,10 +86,10 @@ ExternalProject_Add(
   BUILD_COMMAND  ${CMAKE_COMMAND} --build . --config $<CONFIG>
   INSTALL_COMMAND ${CMAKE_COMMAND} --install . --config $<CONFIG>
 )
-link_libraries(
-  debug "${ZLIB_DEBUG_LIB_PATH}"
-  optimized "${ZLIB_RELEASE_LIB_PATH}"
-)
+# link_libraries(
+#   debug "${ZLIB_DEBUG_LIB_PATH}"
+#   optimized "${ZLIB_RELEASE_LIB_PATH}"
+# )
 
 set(OPENSSL_USE_STATIC_LIBS TRUE)
 
@@ -146,18 +150,23 @@ add_library(libgit2_static STATIC IMPORTED GLOBAL)
 
 add_dependencies(libgit2_static libgit2)
 
-# set_target_properties(libgit2_static PROPERTIES
-#     IMPORTED_LOCATION  "$<$<CONFIG:Debug>:${install_dir}/src/libgit2-build/Debug/git2.lib>$<$<CONFIG:Release>:${install_dir}/libgit2-build/Release/git2.lib>"
-    
-#     INTERFACE_INCLUDE_DIRECTORIES "${install_dir}/include"
-# )
+set_target_properties(libgit2_static PROPERTIES
+    IMPORTED_LOCATION_DEBUG   "${install_dir}/src/libgit2-build/Debug/git2.lib"
+  IMPORTED_LOCATION_RELEASE "${install_dir}/src/libgit2-build/Release/git2.lib"
+  INTERFACE_INCLUDE_DIRECTORIES "${install_dir}/include"
+)
 # file(GLOB LIBGIT2_LIBRARIES "${CMAKE_BINARY_DIR}/src/libgit2-build/${CMAKE_BUILD_TYPE}/git2.lib")
 # link_libraries(${CMAKE_BINARY_DIR}/src/libgit2-build/${CMAKE_BUILD_TYPE}/git2.lib)
 # link_libraries(
 #   $<$<CONFIG:Debug>:${install_dir}/src/libgit2-build/Debug/libgit2_debug.lib>
 #   $<$<CONFIG:Release>:${install_dir}/src/libgit2-build/Release/libgit2.lib>
 # )
-link_libraries("$<$<CONFIG:Debug>:${install_dir}/src/libgit2-build/Debug/git2.lib>$<$<CONFIG:Release>:${install_dir}/src/libgit2-build/Release/git2.lib>")
+# add_library(gitStatic INTERFACE)
+# target_link_libraries(gitStatic INTERFACE
+#   $<$<CONFIG:Debug>:${install_dir}/src/libgit2-build/Debug/git2.lib>
+#   $<$<CONFIG:Release>:${install_dir}/src/libgit2-build/Release/git2.lib>
+# )
+# link_libraries("$<$<CONFIG:Debug>:${install_dir}/src/libgit2-build/Debug/git2.lib>$<$<CONFIG:Release>:${install_dir}/src/libgit2-build/Release/git2.lib>")
 endif()
 # add_library(libgit2_static INTERFACE IMPORTED GLOBAL)
 

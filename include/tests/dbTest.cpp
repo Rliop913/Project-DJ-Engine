@@ -6,7 +6,7 @@ int
 main()
 {
     litedb dbr = litedb();
-    if(!dbr.openDB(std::u8string(u8"./tempdb.db"))){
+    if(!dbr.openDB("./tempdb.db")){
         return 1;
     }
     auto td = trackdata(u8"first");

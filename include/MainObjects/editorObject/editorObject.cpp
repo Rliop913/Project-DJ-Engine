@@ -55,7 +55,7 @@ editorObject::demoPlayInit(
     );
 }
 
-std::string 
+DONT_SANITIZE
 editorObject::DESTROY_PROJECT()
 {
     try

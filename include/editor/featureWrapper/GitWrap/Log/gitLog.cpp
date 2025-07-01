@@ -83,7 +83,7 @@ logHandle::WalkBranch(const DONT_SANITIZE& branchName)
 }
 
 void
-logHandle::AddLog(const git_oid& id, git_oid& ChildID, const git_signature*& sign, const std::string& msg)
+logHandle::AddLog(const git_oid& id, git_oid& ChildID, const git_signature*& sign, const DONT_SANITIZE& msg)
 {
     
     log templog;

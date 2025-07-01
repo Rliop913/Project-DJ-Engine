@@ -72,6 +72,6 @@ template<>
 template<> 
 int 
 PDJE_JSONHandler<KV_W>::deleteLine(
-    const std::string& args,
+    const DONT_SANITIZE& args,
     bool skipType, 
     bool skipDetail) = delete;

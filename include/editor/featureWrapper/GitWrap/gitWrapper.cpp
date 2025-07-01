@@ -106,7 +106,7 @@ GitWrapper::~GitWrapper()
 }
 
 bool
-GitWrapper::commit(git_signature* sign, const std::string& message)
+GitWrapper::commit(git_signature* sign, const DONT_SANITIZE& message)
 {
     git_oid tree_id, commit_id, parent_id;
     git_tree* tree = nullptr;
@@ -180,7 +180,7 @@ GitWrapper::log()
 }
 
 bool
-GitWrapper::log(const std::string& branchName)
+GitWrapper::log(const DONT_SANITIZE& branchName)
 {
     if(!log_hdl.has_value()){
         log_hdl.emplace(repo);
@@ -191,7 +191,7 @@ GitWrapper::log(const std::string& branchName)
     return true;
 }
 
-std::string
+DONT_SANITIZE
 GitWrapper::GenTimeStamp()
 {
     using namespace std::chrono;
