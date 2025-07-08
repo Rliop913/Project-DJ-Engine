@@ -45,14 +45,14 @@ FetchContent_Declare(
 include(ExternalProject)
 
 if(WIN32)
-FetchContent_Declare(
-    zlib
-    GIT_REPOSITORY https://github.com/madler/zlib.git
-    GIT_TAG v1.3.1
-  )
-  FetchContent_MakeAvailable(zlib)
-  set(ZLIB_DEBUG_LIB_PATH   "${zlib_BINARY_DIR}/Debug/zlibd.lib")
-  set(ZLIB_RELEASE_LIB_PATH "${zlib_BINARY_DIR}/Release/zlib.lib")
+# FetchContent_Declare(
+#     zlib
+#     GIT_REPOSITORY https://github.com/madler/zlib.git
+#     GIT_TAG v1.3.1
+#   )
+#   FetchContent_MakeAvailable(zlib)
+#   set(ZLIB_DEBUG_LIB_PATH   "${zlib_BINARY_DIR}/Debug/zlibd.lib")
+#   set(ZLIB_RELEASE_LIB_PATH "${zlib_BINARY_DIR}/Release/zlib.lib")
   # include_directories(${zlib_SOURCE_DIR})
   # include_directories(${zlib_BINARY_DIR})
   # add_library(zlib_builded STATIC IMPORTED GLOBAL)
@@ -159,7 +159,7 @@ add_dependencies(libgit2_static libgit2)
 set_target_properties(libgit2_static PROPERTIES
     IMPORTED_LOCATION_DEBUG   "${install_dir}/src/libgit2-build/Debug/git2.lib"
   IMPORTED_LOCATION_RELEASE "${install_dir}/src/libgit2-build/Release/git2.lib"
-  INTERFACE_INCLUDE_DIRECTORIES "${install_dir}/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${install_dir}/src/libgit2/include"
 )
 # file(GLOB LIBGIT2_LIBRARIES "${CMAKE_BINARY_DIR}/src/libgit2-build/${CMAKE_BUILD_TYPE}/git2.lib")
 # link_libraries(${CMAKE_BINARY_DIR}/src/libgit2-build/${CMAKE_BUILD_TYPE}/git2.lib)
