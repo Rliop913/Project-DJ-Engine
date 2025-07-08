@@ -104,10 +104,10 @@ editorObject::ConfigNewMusic(
             }
             fs::path absPath;
             if(musicPath.is_absolute()){
-                absPath = musicPath;
+                absPath = musicPath.lexically_normal();
             }
             else{
-                absPath = fs::absolute(musicPath);
+                absPath = fs::absolute(musicPath).lexically_normal();
             }
             E_obj->musicHandle.back().jsonh["PATH"] = absPath;
             std::cout << "DEBUGLINE: editorObject.cpp:108   " << absPath << std::endl;
@@ -152,7 +152,7 @@ editorObject::pushToRootDB(litedb& ROOTDB, const UNSANITIZED& trackTitleToPush)
     for(auto& tcTemp : tcData){
         UNSANITIZED musTitle = PDJE_Name_Sanitizer::getFileName(tcTemp.first);
         UNSANITIZED musComposer = PDJE_Name_Sanitizer::getFileName(tcTemp.second);
-        if(!pushToRootDB(ROOTDB, musTitle, musComposer)) continue;
+        pushToRootDB(ROOTDB, musTitle, musComposer);
     }
     return true;
 }
@@ -208,7 +208,9 @@ editorObject::pushToRootDB(
             std::istreambuf_iterator<char>()
         };
         std::string MusBin(reinterpret_cast<const char*>(fileData.data()), fileData.size());
-        ROOTDB.KVPut(resultToInsert.musicPath, MusBin);
+        if(!ROOTDB.KVPut(resultToInsert.musicPath, MusBin)){
+            std::cout << "editorObject:212 Err-KVPUT failed" << std::endl;
+        }
         
     }
     catch(std::exception e){

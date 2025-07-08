@@ -38,8 +38,13 @@ bool
 MixMachine::mix(litedb& db, const BPM& bpms)
 {
     auto num_threads = Memorized.size();
+    std::vector<std::unique_ptr<std::thread>> renderPool;
+    // renderPool.clear();
+    renderPool.reserve(num_threads);
     for(auto& i: Memorized){
-        renderPool.emplace_back([i, this, &db, &bpms](){
+        renderPool.emplace_back(
+            std::make_unique<std::thread>(
+            [i, this, &db, &bpms](){
 
             auto MC = new MUSIC_CTR();
             auto DJ = new BattleDj();
@@ -127,7 +132,7 @@ MixMachine::mix(litedb& db, const BPM& bpms)
             auto result = (*DJ) << MC->Execute(bpms, &tempVec, db);
             if(!result.has_value()){
                 FLAG_SOMETHING_WRONG_ID = i.first;
-                return false;
+                return;
             }
             FX->consumeAll();
 
@@ -140,10 +145,13 @@ MixMachine::mix(litedb& db, const BPM& bpms)
             delete MC;
             delete DJ;
             delete FX;
-        });
+        
+        }
+        )
+        );
     }
     for(auto& pool: renderPool){
-        pool.join();
+        pool->join();
     }
     if(FLAG_SOMETHING_WRONG_ID != FLAG_ALL_IS_OK){
         return false;

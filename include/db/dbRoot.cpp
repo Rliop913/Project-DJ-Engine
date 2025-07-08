@@ -31,6 +31,8 @@ litedb::openDB(const fs::path& dbPath)
     rops.fill_cache = false;
 
     auto sqlRes = sqlite3_open(sqldbPath.generic_string().c_str(), &sdb);
+    
+    sqlite3_exec(sdb, "PRAGMA synchronous   = FULL;",   NULL, NULL, NULL);
     auto kvdbRes = RDB::DB::Open(rdbops, kvdbPath.generic_string(), &kvdb);
 
     if (sqlRes != SQLITE_OK){

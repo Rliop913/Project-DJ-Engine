@@ -136,9 +136,10 @@ GitWrapper::commit(git_signature* sign, const DONT_SANITIZE& message)
     // 부모 커밋이 있는 경우
     if (git_reference_name_to_id(&parent_id, repo, "HEAD") == 0 &&
         git_commit_lookup(&parent_commit, repo, &parent_id) == 0) {
+        // const git_commit* parents[1] = { parent_commit };
         if (git_commit_create_v(
                 &commit_id, repo, "HEAD", sign, sign, nullptr,
-                message.c_str(), tree, 1, (const git_commit**)&parent_commit
+                message.c_str(), tree, 1, parent_commit
             ) == 0) {
             result = true;
         }

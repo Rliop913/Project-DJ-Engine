@@ -131,14 +131,17 @@ template<typename DBType>
 bool
 litedb::operator<=(DBType& insertObject)
 {
+    sqlite3_exec(sdb, "BEGIN TRANSACTION;", NULL, NULL, NULL);
     std::cout << "dbRoot.hpp:115 operator" << "   " << std::endl;
     stmt dbstate = stmt();
     if(insertObject.GenInsertSTMT(dbstate, sdb)){
         auto insertRes = sqlite3_step(dbstate.S);
         if(insertRes != SQLITE_DONE){
             std::cout << "dbRoot.hpp:119 FATAL ERROR: insertRes-" << insertRes << "   " << std::endl;
+            sqlite3_exec(sdb, "ROLLBACK;", NULL, NULL, NULL);
             return false;
         }
+        sqlite3_exec(sdb, "COMMIT;", nullptr, nullptr, NULL);
         return true;
     }
     std::cout << "dbRoot.hpp:124 FATAL ERROR: GenInsertSTMT ERROR" << std::endl;

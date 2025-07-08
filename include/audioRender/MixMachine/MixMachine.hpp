@@ -77,7 +77,7 @@ private:
 public:
     int FLAG_SOMETHING_WRONG_ID = FLAG_ALL_IS_OK; //-99 is ok
     std::mutex renderLock;
-    std::vector<std::thread> renderPool;
+    // std::vector<std::thread> renderPool;
 
     std::unordered_map<ID, std::vector<MixStruct>> Memorized;
 
