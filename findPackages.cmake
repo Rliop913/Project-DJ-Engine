@@ -70,7 +70,7 @@ ExternalProject_Add(
   
   PREFIX "${CMAKE_BINARY_DIR}/_deps"
   BUILD_IN_SOURCE 0
-  DEPENDS        zlib
+  # DEPENDS        zlib
   CONFIGURE_COMMAND
     ${CMAKE_COMMAND}
       -G "${CMAKE_GENERATOR}"
@@ -80,6 +80,7 @@ ExternalProject_Add(
       -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
       -DBUILD_SHARED_LIBS=OFF
       -DREGEX_BACKEND=builtin
+      -DUSE_BUNDLED_ZLIB=ON
       -DCMAKE_POSITION_INDEPENDENT_CODE=ON
       -DZLIB_LIBRARY:FILEPATH=$<IF:$<CONFIG:Debug>,${ZLIB_DEBUG_LIB_PATH},${ZLIB_RELEASE_LIB_PATH}>
 
@@ -105,6 +106,7 @@ ExternalProject_Add(
   CMAKE_ARGS 
     -DBUILD_SHARED_LIBS=OFF 
     -DREGEX_BACKEND=builtin
+    -DUSE_BUNDLED_ZLIB=ON
     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
     -DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
@@ -122,12 +124,16 @@ ExternalProject_Get_Property(libgit2 source_dir binary_dir install_dir)
 set(WITH_TESTS OFF CACHE BOOL "" FORCE)
 set(WITH_TOOLS OFF CACHE BOOL "" FORCE)
 set(WITH_BENCHMARK_TOOLS OFF CACHE BOOL "" FORCE)
+set(WITH_SNAPPY ON CACHE BOOL "" FORCE)
 set(WITH_ZLIB OFF CACHE BOOL "" FORCE)
 set(WITH_GFLAGS OFF CACHE BOOL "" FORCE)
 FetchContent_Declare(
   rocksDB
-  GIT_REPOSITORY https://github.com/facebook/rocksdb.git
-  GIT_TAG v10.2.1
+  GIT_REPOSITORY https://github.com/Rliop913/rocksdb_cxx20_atomic_fix.git
+  GIT_TAG main
+  # using fixed fork temporary. fix this after pr merged.
+  # GIT_REPOSITORY https://github.com/facebook/rocksdb.git
+  # GIT_TAG v10.2.1
 )
 
 
