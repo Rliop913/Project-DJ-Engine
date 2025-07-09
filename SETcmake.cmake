@@ -24,7 +24,7 @@ else()
     set(cmake_c_compiler clang)
     set(cmake_cxx_compiler clang++)
 endif()
-
+add_compile_options(-frtti)
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 
     # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g -O1 -fno-omit-frame-pointer")
@@ -41,7 +41,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     #       -fno-strict-aliasing # 알리아싱 최적화 비활성화 (UB 방지)
     #   )
     # endif()
-    add_compile_options(-frtti)
+    
     if(NOT WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O1 -fsanitize=address")
     else()
