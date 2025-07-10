@@ -53,7 +53,8 @@ public:
     /// @brief this is the Root Database.
     /// check before use.
     /// it contains music metadatas and trackdatas.
-    std::optional<litedb> DBROOT;
+    std::shared_ptr<litedb> DBROOT;
+    // std::optional<litedb> DBROOT;
     /**
      * @brief Construct a new PDJE object
      * 
@@ -63,8 +64,8 @@ public:
     ~PDJE() = default;
     
     /// this is the music handler. you can play music, stop music, fx control, play/stop music manually in realtime.
-    std::optional<audioPlayer> player;
-    std::optional<editorObject> editor;
+    std::shared_ptr<audioPlayer> player;
+    std::shared_ptr<editorObject> editor;
     /**
      * @brief this inits the music handler. the music handler called a "player"
      * it initializes the player
@@ -130,7 +131,7 @@ public:
      * 
      * @return audioPlayer* the player object.check nullptr before use.
      */
-    audioPlayer* GetPlayerObject();
+    std::shared_ptr<audioPlayer> GetPlayerObject();
 
     
 };

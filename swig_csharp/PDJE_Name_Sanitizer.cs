@@ -9,20 +9,20 @@
 //------------------------------------------------------------------------------
 
 
-public class ARGSETTER_WRAPPER : global::System.IDisposable {
+public class PDJE_Name_Sanitizer : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal ARGSETTER_WRAPPER(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal PDJE_Name_Sanitizer(global::System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(ARGSETTER_WRAPPER obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(PDJE_Name_Sanitizer obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef swigRelease(ARGSETTER_WRAPPER obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef swigRelease(PDJE_Name_Sanitizer obj) {
     if (obj != null) {
       if (!obj.swigCMemOwn)
         throw new global::System.ApplicationException("Cannot release ownership as memory is not owned");
@@ -35,7 +35,7 @@ public class ARGSETTER_WRAPPER : global::System.IDisposable {
     }
   }
 
-  ~ARGSETTER_WRAPPER() {
+  ~PDJE_Name_Sanitizer() {
     Dispose(false);
   }
 
@@ -49,24 +49,35 @@ public class ARGSETTER_WRAPPER : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          pdje_POLYGLOTPINVOKE.delete_ARGSETTER_WRAPPER(swigCPtr);
+          throw new global::System.MethodAccessException("C++ destructor does not have public access");
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
     }
   }
 
-  public ARGSETTER_WRAPPER(FXControlPannel pointer) : this(pdje_POLYGLOTPINVOKE.new_ARGSETTER_WRAPPER(FXControlPannel.getCPtr(pointer)), true) {
-  }
-
-  public KEY_VEC GetFXArgKeys(FXList fx) {
-    KEY_VEC ret = new KEY_VEC(pdje_POLYGLOTPINVOKE.ARGSETTER_WRAPPER_GetFXArgKeys(swigCPtr, (int)fx), true);
+  public static SWIGTYPE_p_std__optionalT_std__string_t sanitizeFileName(string fileName) {
+    SWIGTYPE_p_std__optionalT_std__string_t ret = new SWIGTYPE_p_std__optionalT_std__string_t(pdje_POLYGLOTPINVOKE.PDJE_Name_Sanitizer_sanitizeFileName(fileName), true);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public void SetFXArg(FXList fx, string key, double arg) {
-    pdje_POLYGLOTPINVOKE.ARGSETTER_WRAPPER_SetFXArg(swigCPtr, (int)fx, key, arg);
+  public static string getFileName(string sanitized) {
+    string ret = pdje_POLYGLOTPINVOKE.PDJE_Name_Sanitizer_getFileName(sanitized);
     if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public static string PDJE_SANITIZE_ERROR {
+    set {
+      pdje_POLYGLOTPINVOKE.PDJE_Name_Sanitizer_PDJE_SANITIZE_ERROR_set(value);
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    } 
+    get {
+      string ret = pdje_POLYGLOTPINVOKE.PDJE_Name_Sanitizer_PDJE_SANITIZE_ERROR_get();
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+      return ret;
+    } 
   }
 
 }

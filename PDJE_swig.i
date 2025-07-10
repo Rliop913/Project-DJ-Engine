@@ -1,7 +1,9 @@
 %module pdje_POLYGLOT
 %{
     #include <vector>
+    #include <memory>
     #include "PDJE_EXPORT_SETTER.hpp"
+    #include <optional>
     #include "PDJE_interface.hpp"
     #include "dbRoot.hpp"
     #include "musicDB.hpp"
@@ -10,7 +12,7 @@
     #include "ManualMix.hpp"
     #include "audioPlayer.hpp"
     #include "fileNameSanitizer.hpp"
-    #include "editorObject.hpp"
+    // #include "editorObject.hpp"
     #include "rocksdb/rocksdb_namespace.h"
     #include <filesystem>
     #include "rocksdb/db.h"
@@ -22,6 +24,10 @@
 %include "PDJE_EXPORT_SETTER.hpp"
 %include <std_vector.i>
 %include <std_string.i>
+// %include <std_unique_ptr.i>
+%include <std_shared_ptr.i>
+// %unique_ptr(litedb)
+
 %include "ManualMix.hpp"
 %apply std::string {std::filesystem::path};
 
@@ -33,12 +39,14 @@ namespace rocksdb {
 
 }
 namespace ROCKSDB_NAMESPACE = rocksdb;
+
+
 %include "dbRoot.hpp"
 %include "musicDB.hpp"
 %include "trackDB.hpp"
 %include "audioPlayer.hpp"
 %include "fileNameSanitizer.hpp"
-%include "editorObject.hpp"
+// %include "editorObject.hpp"
 %include "PDJE_EXPORT_SETTER.hpp"
 namespace fs = std::filesystem;
 

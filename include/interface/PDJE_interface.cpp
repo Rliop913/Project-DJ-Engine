@@ -2,7 +2,7 @@
 
 PDJE::PDJE(const fs::path& rootPath)
 {
-    DBROOT.emplace();
+    DBROOT = std::make_shared<litedb>();
     DBROOT->openDB(rootPath);
     
 }
@@ -17,7 +17,7 @@ PDJE::SearchTrack(const UNSANITIZED& Title)
         return TRACK_VEC();
     }
     td.trackTitle = safeTitle.value();
-    auto dbres = DBROOT.value() << td;
+    auto dbres = (*DBROOT) << td;
     if(dbres.has_value()){
         return dbres.value();
     }
@@ -42,7 +42,7 @@ PDJE::SearchMusic(
     md.title = safeTitle.value();
     md.composer = safeComposer.value();
     md.bpm = bpm;
-    auto dbres = DBROOT.value() << md;
+    auto dbres = (*DBROOT) << md;
     if(dbres.has_value()){
         return dbres.value();
     }
@@ -60,23 +60,26 @@ PDJE::InitPlayer(
     switch (mode)
     {
     case PLAY_MODE::FULL_PRE_RENDER:
-        player.emplace(
-            DBROOT.value(),
+        player =
+        std::make_shared<audioPlayer>(
+            (*DBROOT),
             td,
             FrameBufferSize,
             false
             );
         break;
     case PLAY_MODE::HYBRID_RENDER:
-        player.emplace(
-            DBROOT.value(),
+        player =
+        std::make_shared<audioPlayer>(
+            (*DBROOT),
             td,
             FrameBufferSize,
             true
         );
         break;
     case PLAY_MODE::FULL_MANUAL_RENDER:
-        player.emplace(
+        player =
+        std::make_shared<audioPlayer>(
             FrameBufferSize
         );
         break;
@@ -85,7 +88,7 @@ PDJE::InitPlayer(
         break;
     }
 
-    if(!player.has_value()){
+    if(!player){
         return false;
     }
     else{
@@ -135,6 +138,6 @@ PDJE::InitEditor(
     const DONT_SANITIZE &auth_email,
     const fs::path& projectRoot)
 {
-    editor.emplace(auth_name, auth_email);
+    editor = std::make_shared<editorObject>(auth_name, auth_email);
     return editor->Open(projectRoot);
 }

@@ -9,20 +9,20 @@
 //------------------------------------------------------------------------------
 
 
-public class ARGSETTER_WRAPPER : global::System.IDisposable {
+public class EDIT_ARG_MUSIC : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal ARGSETTER_WRAPPER(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal EDIT_ARG_MUSIC(global::System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(ARGSETTER_WRAPPER obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(EDIT_ARG_MUSIC obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef swigRelease(ARGSETTER_WRAPPER obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef swigRelease(EDIT_ARG_MUSIC obj) {
     if (obj != null) {
       if (!obj.swigCMemOwn)
         throw new global::System.ApplicationException("Cannot release ownership as memory is not owned");
@@ -35,7 +35,7 @@ public class ARGSETTER_WRAPPER : global::System.IDisposable {
     }
   }
 
-  ~ARGSETTER_WRAPPER() {
+  ~EDIT_ARG_MUSIC() {
     Dispose(false);
   }
 
@@ -49,24 +49,38 @@ public class ARGSETTER_WRAPPER : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          pdje_POLYGLOTPINVOKE.delete_ARGSETTER_WRAPPER(swigCPtr);
+          pdje_POLYGLOTPINVOKE.delete_EDIT_ARG_MUSIC(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
     }
   }
 
-  public ARGSETTER_WRAPPER(FXControlPannel pointer) : this(pdje_POLYGLOTPINVOKE.new_ARGSETTER_WRAPPER(FXControlPannel.getCPtr(pointer)), true) {
+  public string musicName {
+    set {
+      pdje_POLYGLOTPINVOKE.EDIT_ARG_MUSIC_musicName_set(swigCPtr, value);
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    } 
+    get {
+      string ret = pdje_POLYGLOTPINVOKE.EDIT_ARG_MUSIC_musicName_get(swigCPtr);
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+      return ret;
+    } 
   }
 
-  public KEY_VEC GetFXArgKeys(FXList fx) {
-    KEY_VEC ret = new KEY_VEC(pdje_POLYGLOTPINVOKE.ARGSETTER_WRAPPER_GetFXArgKeys(swigCPtr, (int)fx), true);
-    return ret;
+  public SWIGTYPE_p_MusicArgs arg {
+    set {
+      pdje_POLYGLOTPINVOKE.EDIT_ARG_MUSIC_arg_set(swigCPtr, SWIGTYPE_p_MusicArgs.getCPtr(value));
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    } 
+    get {
+      SWIGTYPE_p_MusicArgs ret = new SWIGTYPE_p_MusicArgs(pdje_POLYGLOTPINVOKE.EDIT_ARG_MUSIC_arg_get(swigCPtr), true);
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+      return ret;
+    } 
   }
 
-  public void SetFXArg(FXList fx, string key, double arg) {
-    pdje_POLYGLOTPINVOKE.ARGSETTER_WRAPPER_SetFXArg(swigCPtr, (int)fx, key, arg);
-    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+  public EDIT_ARG_MUSIC() : this(pdje_POLYGLOTPINVOKE.new_EDIT_ARG_MUSIC(), true) {
   }
 
 }

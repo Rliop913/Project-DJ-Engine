@@ -29,7 +29,7 @@ public:
         fs::path dataPath;
         MusicHandleStruct() = delete;
         MusicHandleStruct(const MusicHandleStruct&) = delete;
-        MusicHandleStruct& operator=(const MusicHandleStruct&) = delete;
+        // MusicHandleStruct& operator=(const MusicHandleStruct&) = delete;
         MusicHandleStruct(MusicHandleStruct&&) noexcept = default;
         MusicHandleStruct& operator=(MusicHandleStruct&&) noexcept = default;
         

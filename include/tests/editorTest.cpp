@@ -85,10 +85,10 @@ main()
             }
         }
         if(engine->SearchMusic("testMiku", "Camellia").empty()){
-            bool renderRes = engine->editor->render("testTrack", engine->DBROOT.value());
-            bool pushRes = engine->editor->pushToRootDB(engine->DBROOT.value(), "testMiku", "Camellia");
-            bool pushResSecond = engine->editor->pushToRootDB(engine->DBROOT.value(), "ヒアソビ", "Camellia");
-            bool trackPushRes = engine->editor->pushToRootDB(engine->DBROOT.value(), "testTrack");
+            bool renderRes = engine->editor->render("testTrack", *(engine->DBROOT));
+            bool pushRes = engine->editor->pushToRootDB(*(engine->DBROOT), "testMiku", "Camellia");
+            bool pushResSecond = engine->editor->pushToRootDB(*(engine->DBROOT), "ヒアソビ", "Camellia");
+            bool trackPushRes = engine->editor->pushToRootDB(*(engine->DBROOT), "testTrack");
             if(pushRes) std::cout << "pushRes ok" << std::endl;
             if(renderRes) std::cout << "renderRes ok" << std::endl;
             if(trackPushRes) std::cout << "trackPushRes ok" << std::endl;
@@ -103,7 +103,7 @@ main()
         auto activeres = engine->player->Activate();
         auto musPannel = engine->player->GetMusicControlPannel();
         auto muses = engine->SearchMusic("ヒアソビ", "Camellia");
-        musPannel->LoadMusic(engine->DBROOT.value(), muses.front());
+        musPannel->LoadMusic(*(engine->DBROOT), muses.front());
         
         getchar();
         musPannel->SetMusic("ヒアソビ", true);

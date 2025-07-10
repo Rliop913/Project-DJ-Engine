@@ -1,15 +1,10 @@
 #include "PDJE_interface.hpp"
 
 
-audioPlayer*
+std::shared_ptr<audioPlayer>
 PDJE::GetPlayerObject()
 {
-    if(player.has_value()){
-        return &player.value();
-    }
-    else{
-        return nullptr;
-    }
+    return player;
 }
 
 std::vector<DONT_SANITIZE>
