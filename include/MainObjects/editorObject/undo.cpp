@@ -23,6 +23,8 @@ editorObject::Undo<EDIT_ARG_MUSIC>(const UNSANITIZED& musicName)
 {
     auto safeMus = PDJE_Name_Sanitizer::sanitizeFileName(musicName);
     if(!safeMus){
+        critlog("Music name is not sanitized from editorObject Undo. musicName: ");
+        critlog(musicName);
         return false;
     }
 
@@ -30,7 +32,10 @@ editorObject::Undo<EDIT_ARG_MUSIC>(const UNSANITIZED& musicName)
         if(i.musicName == safeMus){
             return i.gith->Undo();
         }
-    }
+    }    
+    warnlog("music is not exists. from editorObject Undo(Music obj). musicName:");
+    warnlog(musicName);
+    
     return false;
 }
 

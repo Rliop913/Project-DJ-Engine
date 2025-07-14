@@ -21,7 +21,8 @@ editorObject::makeTrackData(
     }
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(trackTitle);
     if(!safeTitle){
-        throw "FAILED TO SANITIZE TITLE";
+        critlog("failed to sanitize title. from editorObject makeTrackData. trackTitle: ");
+        critlog(trackTitle);
     }
     td.trackTitle = safeTitle.value();
     td.mixBinary = mixRendered->out();
@@ -45,8 +46,16 @@ editorObject::demoPlayInit(
     }
     trackdata tdtemp(trackTitle);
     auto searchedTd = projectLocalDB->GetBuildedProject() << tdtemp;
-    if(!searchedTd.has_value()) return;
-    if(searchedTd->empty()) return;
+    if(!searchedTd.has_value()) {
+        critlog("failed to search trackdata from project local database. from editorObject demoPlayInit. trackTitle: ");
+        critlog(trackTitle);
+        return;
+    }
+    if(searchedTd->empty()){
+        warnlog("cannot find trackdata from project local database. from editorObject demoPlayInit. trackTitle: ");
+        warnlog(trackTitle);
+        return;
+    }
     player.emplace(
         projectLocalDB->GetBuildedProject(),
         searchedTd->front(),
@@ -72,11 +81,12 @@ editorObject::DESTROY_PROJECT()
     }
     catch(const std::exception& e)
     {
+        critlog("failed to destroy project. from editorObject DESTROY_PROJECT ErrException: ");
+        critlog(e.what());
         return e.what();
     }
 }
 
-#include <iostream>
 bool
 editorObject::ConfigNewMusic(
     const UNSANITIZED& NewMusicName, 
@@ -86,20 +96,23 @@ editorObject::ConfigNewMusic(
 {
     auto safeMus = PDJE_Name_Sanitizer::sanitizeFileName(NewMusicName);
     auto safeComposer = PDJE_Name_Sanitizer::sanitizeFileName(composer);
-    // fs::path dPath;
     if(!safeMus.has_value() || !safeComposer.has_value()){
-        PDJE_Name_Sanitizer::PDJE_SANITIZE_ERROR+= "Failed to sanitize in Config Music\n";
+        critlog("failed to sanitize in editorObject ConfigNewMusic. datas: ");
+        critlog(NewMusicName);
+        critlog(composer);
         return false;
     }
     fs::path tempDataPath;
     if( E_obj->AddMusicConfig(safeMus.value(), tempDataPath)){
-        std::cout << "DEBUGLINE: editorObject.cpp:96   " << safeMus.value() << "    " << safeComposer.value() << std::endl;
+        
         E_obj->musicHandle.back().jsonh["TITLE"] = safeMus.value();
         E_obj->musicHandle.back().jsonh["COMPOSER"] = safeComposer.value();
         E_obj->musicHandle.back().dataPath = tempDataPath;
         try
         {
             if(!fs::exists(musicPath)){
+                critlog("music path does not exists. from editorObject ConfigNewMusic. path: ");
+                critlog(musicPath.generic_string());
                 return false;
             }
             fs::path absPath;
@@ -110,20 +123,20 @@ editorObject::ConfigNewMusic(
                 absPath = fs::absolute(musicPath).lexically_normal();
             }
             E_obj->musicHandle.back().jsonh["PATH"] = absPath;
-            std::cout << "DEBUGLINE: editorObject.cpp:108   " << absPath << std::endl;
-            std::cout << "DEBUGLINE: editorObject.cpp:109   " << musicPath << std::endl;
-            std::cout << "DEBUGLINE: editorObject.cpp:110   " << projectRoot << std::endl;
         }
         catch(const std::exception& e)
         {
-            RECENT_ERR = e.what();
+            critlog("something failed in editorObject ConfigNewMusic. ErrException: ");
+            critlog(e.what());
             return false;
         }
         E_obj->musicHandle.back().jsonh["FIRST_BAR"] = firstBar;
-        std::cout << "DEBUGLINE: editorObject.cpp:96   " << firstBar << std::endl;
         return true;
     }
     else{
+        critlog("failed to add music config. from editorObject ConfigNewMusic. musicName: ");
+        critlog(NewMusicName);
+        
         return false;
     }
 }
@@ -147,6 +160,8 @@ editorObject::pushToRootDB(litedb& ROOTDB, const UNSANITIZED& trackTitleToPush)
     TITLE_COMPOSER tcData;
     auto td = makeTrackData(trackTitleToPush, tcData);
     if(!(ROOTDB <= td)){
+        critlog("failed to push trackdata to root database. from editorObject pushToRootDB. trackTitle: ");
+        critlog(trackTitleToPush);
         return false;
     }
     for(auto& tcTemp : tcData){
@@ -157,49 +172,58 @@ editorObject::pushToRootDB(litedb& ROOTDB, const UNSANITIZED& trackTitleToPush)
     return true;
 }
 
-#include <iostream>
 bool 
 editorObject::pushToRootDB(
     litedb& ROOTDB, 
     const UNSANITIZED& musicTitle, 
     const UNSANITIZED& musicComposer)
 {
-    std::cout << "DEBUGLINE: editorObject.cpp:160 " << musicTitle << "  " << musicComposer << std::endl;
     auto fromProjectSearchQuery = musdata(musicTitle, musicComposer);
     auto searched =
     projectLocalDB->GetBuildedProject() << fromProjectSearchQuery;
     if(!searched.has_value()){
-        std::cout << "DEBUGLINE: editorObject.cpp:165 searched has no value" << std::endl;
+        critlog("searched has no value. from editorObject pushToRootDB. musicTitle & composer: ");
+        critlog(musicTitle);
+        critlog(musicComposer);
         return false;
     }
     if(searched->empty()){
-        std::cout << "DEBUGLINE: editorObject.cpp:169 searched empty" << std::endl;
+        warnlog("searched is empty. from editorObject pushToRootDB. musicTitle & composer: ");
+        warnlog(musicTitle);
+        warnlog(musicComposer);
         return false;
     }
     auto checkRoot = ROOTDB << searched->front();
     if(checkRoot.has_value()){
         if(!checkRoot->empty()){
-            std::cout << "DEBUGLINE: editorObject.cpp:175 checkRoot not empty" << std::endl;
+            warnlog("checkRoot not empty. from editorObject pushToRootDB. musicTitle & composer: ");
+            warnlog(musicTitle);
+            warnlog(musicComposer);
             return false;
         }
     }
     else{
-        std::cout << "DEBUGLINE: editorObject.cpp:180 checkRoot has no value" << std::endl;
+        critlog("checkRoot has no value. from editorObject pushToRootDB. musicTitle & composer: ");
+        critlog(musicTitle);
+        critlog(musicComposer);
         return false;
 
     }
     auto resultToInsert = searched->front();
-    std::cout << "Debugline: editorobj 185  " <<(resultToInsert.musicPath) << std::endl;
     try{
         auto Key = PDJE_Name_Sanitizer::sanitizeFileName(musicTitle + musicComposer);
         if(!Key){
+            critlog("failed to sanitize musicTitle + musicComposer. from editorObject pushToRootDB. musicTitle & composer: ");
+            critlog(musicTitle);
+            critlog(musicComposer);
             return false;
         }
         resultToInsert.musicPath = Key.value();
         
         auto originMusicPath = fs::path(searched->front().musicPath);
         if(!fs::exists(originMusicPath)){
-            PDJE_Name_Sanitizer::PDJE_SANITIZE_ERROR += "push to db Failed. can't find/open filepath\n";
+            critlog("origin music path does not exists. from editorObject pushToRootDB. path: ");
+            critlog(originMusicPath.generic_string());
             return false;
         }
         std::ifstream musicFile(originMusicPath, std::ios::binary);
@@ -209,18 +233,21 @@ editorObject::pushToRootDB(
         };
         std::string MusBin(reinterpret_cast<const char*>(fileData.data()), fileData.size());
         if(!ROOTDB.KVPut(resultToInsert.musicPath, MusBin)){
-            std::cout << "editorObject:212 Err-KVPUT failed" << std::endl;
+            critlog("KVPUT failed. from editorObject pushToRootDB. musicPath: ");
+            critlog(resultToInsert.musicPath);
+            return false;
         }
         
     }
-    catch(std::exception e){
-        RECENT_ERR = e.what();
-        std::cout << "DEBUGLINE: editorObject.cpp:194 ERR" << e.what() << std::endl;
+    catch(std::exception& e){
+        critlog("something failed in editorObject pushToRootDB. ErrException: ");
+        critlog(e.what());
         return false;
     }
-    std::cout << "Debugline: editorobj 198--------------  " <<(resultToInsert.musicPath) << std::endl;
     if(!(ROOTDB <= resultToInsert)){
-        std::cout << "DEBUGLINE: editorObject.cpp:197 ROOTDB error" << std::endl;
+        critlog("failed to push musicdata to root database. from editorObject pushToRootDB. musicTitle & composer: ");
+        critlog(musicTitle);
+        critlog(musicComposer);
         return false;
     }
 

@@ -26,7 +26,7 @@ trackdata::trackdata(stmt* dbstate)
     cachedMixList = dbstate->colGet<COL_TYPE::TEXT, std::string>(3);
 }
 
-trackdata::trackdata(const std::string& trackTitle__)
+trackdata::trackdata(const UNSANITIZED& trackTitle__)
 {
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(trackTitle__);
     if(!safeTitle){

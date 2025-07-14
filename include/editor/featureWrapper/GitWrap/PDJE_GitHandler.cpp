@@ -35,7 +35,7 @@ PDJE_GitHandler::Open(const fs::path& path)
     bool openRes = gw.open(path);
     if(!openRes){
         critlog("failed to open git. from PDJE_GitHandler Open. path: ");
-        critlog(path);
+        critlog(path.generic_string());
     }
     return openRes;
 }
@@ -49,7 +49,7 @@ PDJE_GitHandler::DeleteGIT(const fs::path& path)
         !Close())
     {
         critlog("something failed from PDJE_GitHandler DeleteGIT. path: ");
-        critlog(path);
+        critlog(path.generic_string());
         return false;
     }
     fs::remove_all(path);

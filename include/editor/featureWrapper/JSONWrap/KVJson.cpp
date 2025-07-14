@@ -48,7 +48,7 @@ PDJE_JSONHandler<KV_W>::load(const fs::path& path)
             
             if(!jfile.is_open()) {
                 critlog("failed to open KVJson file. from PDJE_JSONHandler<KW_W> load. path: ");
-                critlog(path);
+                critlog(path.generic_string());
                 return false;
             }
 
@@ -63,7 +63,7 @@ PDJE_JSONHandler<KV_W>::load(const fs::path& path)
         }
         else{
             critlog("path is not regular file. from PDJE_JSONHandler<KW_W> load. path: ");
-            critlog(path);
+            critlog(path.generic_string());
             return false;
         }
     }
@@ -72,7 +72,7 @@ PDJE_JSONHandler<KV_W>::load(const fs::path& path)
         std::ofstream jfile(filepath);
         if(!jfile.is_open()) {
             critlog("failed to make or open new json file. from PDJE_JSONHandler<KW_W> load. path: ");
-            critlog(path);
+            critlog(path.generic_string());
             return false;
         }
         jfile << std::setw(4) << ROOT;

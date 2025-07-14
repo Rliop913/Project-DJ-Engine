@@ -207,7 +207,11 @@ FetchContent_MakeAvailable(cppCodec)
 FetchContent_MakeAvailable(rocksDB)
 FetchContent_MakeAvailable(annoy)
 FetchContent_MakeAvailable(nanolog)
-
+if(WIN32)
+set_target_properties(rocksdb PROPERTIES
+  COMPILE_FLAGS "/wd4702 /WX-"
+)
+endif()
 # get_cmake_property(_vars VARIABLES)
 
 # foreach(var ${_vars})

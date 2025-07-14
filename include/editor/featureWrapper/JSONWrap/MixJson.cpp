@@ -149,7 +149,7 @@ PDJE_JSONHandler<MIX_W>::load(const fs::path& path)
             
             if(!jfile.is_open()){
                 critlog("cannot open mix json data file. from PDJE_JSONHandler<MIX_W> load. path: ");
-                critlog(path);
+                critlog(path.generic_string());
                 return false;
             } 
 
@@ -164,7 +164,7 @@ PDJE_JSONHandler<MIX_W>::load(const fs::path& path)
         }
         else{
             critlog("json data file is not regular file. from PDJE_JSONHandler<MIX_W> load. path: ");
-            critlog(path);
+            critlog(path.generic_string());
             return false;
         }
     }
@@ -173,7 +173,7 @@ PDJE_JSONHandler<MIX_W>::load(const fs::path& path)
         std::ofstream jfile(filepath);
         if(!jfile.is_open()){
             critlog("failed to open or make new mix json file. from PDJE_JSONHandler<MIX_W> load. path: ");
-            critlog(path);
+            critlog(path.generic_string());
             return false;
         } 
         jfile << std::setw(4) << ROOT;

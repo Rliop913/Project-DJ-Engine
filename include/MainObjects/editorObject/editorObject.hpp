@@ -5,6 +5,7 @@
 #include "editor.hpp"
 #include "audioPlayer.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
+#include "PDJE_LOG_SETTER.hpp"
 #include "tempDB.hpp"
 
 struct PDJE_API EDIT_ARG_MUSIC{
@@ -39,7 +40,6 @@ private:
         TITLE_COMPOSER& titles);
 
 public:
-    std::string RECENT_ERR = "";
     git_repository* getMixRepo(){
         if(E_obj.has_value()){
             return E_obj->mixHandle.first->gw.repo;

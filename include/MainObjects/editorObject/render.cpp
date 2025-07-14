@@ -1,5 +1,4 @@
 #include "editorObject.hpp"
-#include <iostream>
 bool
 editorObject::render(const UNSANITIZED& trackTitle, litedb& ROOTDB)
 {
@@ -17,9 +16,6 @@ editorObject::render(const UNSANITIZED& trackTitle, litedb& ROOTDB)
         auto tempCOMPOSER   = i.jsonh["COMPOSER"    ].get<SANITIZED>();
         auto tempPATH       = i.jsonh["PATH"        ].get<SANITIZED>();
         auto tempFIRST_BAR  = i.jsonh["FIRST_BAR"   ].get<DONT_SANITIZE>();
-        std::cout << "DEBUGLINE: render.cpp:20   " << tempCOMPOSER <<std::endl;
-        std::cout << "DEBUGLINE: render.cpp:21   " << tempPATH <<std::endl;
-        std::cout << "DEBUGLINE: render.cpp:22   " << tempFIRST_BAR <<std::endl;
         
         mds.back().composer     = (tempCOMPOSER);
         mds.back().musicPath    = (tempPATH);
@@ -27,7 +23,11 @@ editorObject::render(const UNSANITIZED& trackTitle, litedb& ROOTDB)
         try{
             mds.back().bpm = std::stod(rendered->Wp->getDatas()[0].getBpm().cStr());
         }
-        catch(...){
+        catch(std::exception& e){
+            critlog("failed to convert bpm to double. from editorObject render. ErrException: ");
+            critlog(e.what());
+            critlog("music name: ");
+            critlog(i.musicName);
             continue;
         }
         titles[i.musicName] = "";
@@ -50,8 +50,13 @@ editorObject::render(const UNSANITIZED& trackTitle, litedb& ROOTDB)
                         projectRoot
                     ).string();
                 }
-                catch(std::exception e){
-                    RECENT_ERR = e.what();
+                catch(std::exception& e){
+                    critlog("failed to convert relative path. from editorObject render. ErrException: ");
+                    critlog(e.what());
+                    critlog("music path: ");
+                    critlog(fromRoot.musicPath);
+                    critlog("project root: ");
+                    critlog(projectRoot.generic_string());
                     return false;
                 }
                 mds.push_back(fromRoot);

@@ -31,6 +31,8 @@ editorObject::GetLogWithJSONGraph<EDIT_ARG_MUSIC>(const UNSANITIZED& musicName)
 {
     auto safeMus = PDJE_Name_Sanitizer::sanitizeFileName(musicName);
     if(!safeMus){
+        critlog("Music name is not sanitized from editorObject GetLogWithJSONGraph. musicName: ");
+        critlog(musicName);
         return DONT_SANITIZE();
     }
     for(auto& i : E_obj->musicHandle){
@@ -38,6 +40,8 @@ editorObject::GetLogWithJSONGraph<EDIT_ARG_MUSIC>(const UNSANITIZED& musicName)
             return i.gith->GetLogWithJSONGraph();
         }
     }
+    warnlog("music is not exists. from editorObject GetLogWithJSONGraph(Music obj). musicName:");
+    warnlog(musicName);
     return DONT_SANITIZE();
 }
 

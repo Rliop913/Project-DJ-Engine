@@ -139,7 +139,7 @@ PDJE_JSONHandler<NOTE_W>::load(const fs::path& path)
             
             if(!jfile.is_open()) {
                 critlog("cannot open note json file. from PDJE_JSONHandler<NOTE_W> load. path: ");
-                critlog(path);
+                critlog(path.generic_string());
                 return false;
             }
 
@@ -154,7 +154,7 @@ PDJE_JSONHandler<NOTE_W>::load(const fs::path& path)
         }
         else{
             critlog("filepath is not regular file. from PDJE_JSONHandler<NOTE_W> load. path: ");
-            critlog(path);
+            critlog(path.generic_string());
             return false;
         }
     }

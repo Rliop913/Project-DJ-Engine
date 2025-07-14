@@ -32,6 +32,7 @@ editorObject::Go<EDIT_ARG_MUSIC>(const DONT_SANITIZE& branchName, git_oid* commi
     for(auto& i : E_obj->musicHandle){
         if(i.gith->Go(branchName, commitID)) return true;
     }
+    warnlog("cannot find music. from editorObject Go(Music obj)");
     return false;
 }
 

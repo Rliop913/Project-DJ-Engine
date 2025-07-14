@@ -6,6 +6,12 @@ set(CAPNP_BUILD_TESTS OFF)
 set(BUILD_TESTING OFF CACHE BOOL "Disable testing")
 set(HWY_ENABLE_TARGETS "scalar,sse4,avx,avx2" CACHE STRING "Enabled SIMD targets" FORCE)
 
+if(MSVC)
+add_compile_options(
+    /arch:AVX2
+)
+add_compile_options(/W3 /GR)
+else()
 add_compile_options(
   -march=haswell
   -msse4.1
@@ -13,6 +19,8 @@ add_compile_options(
   -mavx2
   -mfma
 )
+add_compile_options(-frtti)
+endif()
 if(WIN32)
 
     set(CMAKE_CXX_STANDARD 20)
@@ -24,7 +32,6 @@ else()
     set(cmake_c_compiler clang)
     set(cmake_cxx_compiler clang++)
 endif()
-add_compile_options(-frtti)
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 
     # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g -O1 -fno-omit-frame-pointer")
@@ -44,8 +51,6 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     
     if(NOT WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O1 -fsanitize=address")
-    else()
-    add_compile_options(/W3)
     endif()
     set_property(SOURCE PDJE_swig.i PROPERTY CPLUSPLUS ON)
 else()

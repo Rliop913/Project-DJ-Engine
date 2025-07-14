@@ -57,7 +57,11 @@ bool
 editorObject::UpdateLog<EDIT_ARG_MUSIC>()
 {
     for(auto& i : E_obj->musicHandle){
-        if(!i.gith->UpdateLog()) return false;
+        if(!i.gith->UpdateLog()){
+            critlog("failed to update log. from editorObject UpdateLog(Music obj). musicName:");
+            critlog(i.musicName);
+            return false;
+        }
     };
     return true;
 }
@@ -69,6 +73,8 @@ editorObject::UpdateLog<EDIT_ARG_MUSIC>(const UNSANITIZED& musicName)
 {
     auto safeMus = PDJE_Name_Sanitizer::sanitizeFileName(musicName);
     if(!safeMus){
+        critlog("Music name is not sanitized from editorObject UpdateLog. musicName: ");
+        critlog(musicName);
         return false;
     }
     for(auto& i : E_obj->musicHandle){
@@ -76,5 +82,7 @@ editorObject::UpdateLog<EDIT_ARG_MUSIC>(const UNSANITIZED& musicName)
             return i.gith->UpdateLog();
         }
     };
+    warnlog("music is not exists. from editorObject UpdateLog(Music obj). musicName:");
+    warnlog(musicName);
     return false;
 }

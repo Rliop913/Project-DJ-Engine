@@ -10,7 +10,7 @@ litedb::openDB(const fs::path& dbPath)
     // std::u8string u8str = dbPath.generic_u8string();
     if(!fs::is_directory(dbPath)){
         infolog("directory not found. making new one. from litedb openDB. path: ");
-        infolog(dbPath);
+        infolog(dbPath.generic_string());
         fs::create_directories(dbPath);
     }
     sqldbPath = dbPath / fs::path("sqlite.db");

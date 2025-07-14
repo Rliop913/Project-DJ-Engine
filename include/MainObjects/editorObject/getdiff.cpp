@@ -39,6 +39,7 @@ editorObject::GetDiff<EDIT_ARG_MUSIC>(const gitwrap::commit& oldTimeStamp,
             return std::move(restemp);
         }
     }
+    warnlog("cannot find music. from editorObject GetDiff(Music obj)");
     return DiffResult();
 }
 

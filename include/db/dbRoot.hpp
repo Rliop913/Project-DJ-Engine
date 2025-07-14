@@ -49,7 +49,6 @@ private:
     /// @return OK / Not OK
     bool CheckTables();
 public:
-    std::string DB_ERROR = "";
     /**
      * @brief the search query
      * 

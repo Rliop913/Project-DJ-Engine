@@ -55,6 +55,5 @@ public:
     name(auth_name),
     email(auth_email)
     {}
-    std::string EDITOR_ERR = "";
     ~PDJE_Editor() = default;
 };

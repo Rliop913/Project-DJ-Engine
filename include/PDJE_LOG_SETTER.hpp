@@ -1,5 +1,6 @@
 #pragma once
 #include <NanoLog.hpp>
+#include <filesystem>
 template<typename T>
 inline 
 void infolog(const T& msg){
@@ -23,6 +24,14 @@ void critlog(const T& msg){
     #endif
 }
 
+template<>
+inline 
+void critlog<std::filesystem::path>(const std::filesystem::path& msg){
+    #ifndef NANOLOG_OFF
+    
+    LOG_CRIT << msg.generic_string();
+    #endif
+}
 // #ifdef NANOLOG_OFF\
 // \
 // #elif defined(NDEBUG)\
