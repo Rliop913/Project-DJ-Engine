@@ -36,6 +36,8 @@ bpm_thread(
             }
             catch(...)
             {
+                critlog("failed to convert string to double. From Bpm.cpp bpm_thread. ExceptionLog: ");
+                critlog(bpmStr);
                 tempbpm.bpm = -404;
             }
             {
@@ -92,6 +94,7 @@ BPM::getBpms(MIX& mixx)
         bpmVec.fragments[0].bar != 0 ||
         bpmVec.fragments[0].beat != 0
     ){
+        critlog("failed to sort bpmFragments. from BPM getBpms.");
         return false;
     }
     return bpmVec.calcFrame();

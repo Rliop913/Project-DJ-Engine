@@ -42,6 +42,14 @@ FetchContent_Declare(
   GIT_TAG v1.17.3
 )
 
+
+FetchContent_Declare(
+  nanolog
+  GIT_REPOSITORY https://github.com/Iyengar111/NanoLog.git
+  GIT_TAG master
+)
+
+
 include(ExternalProject)
 
 if(WIN32)
@@ -198,10 +206,12 @@ FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
 FetchContent_MakeAvailable(rocksDB)
 FetchContent_MakeAvailable(annoy)
+FetchContent_MakeAvailable(nanolog)
+
 # get_cmake_property(_vars VARIABLES)
 
 # foreach(var ${_vars})
-#     if(var MATCHES "^cppcodec")
+#     if(var MATCHES "^nano")
 #         message(STATUS "환경변수: ${var} = [${${var}}]")
 #     endif()
 # endforeach()
@@ -209,7 +219,8 @@ include_directories(${nlohmann_json_SOURCE_DIR}/include)
 include_directories(${hwy_SOURCE_DIR})
 include_directories(${sql_amalgam_SOURCE_DIR})
 include_directories(${cppcodec_SOURCE_DIR})
-
+# message(${nanolog_SOURCE_DIR})
+include_directories(${nanolog_SOURCE_DIR})
 # link_libraries(${hwy_BINARY_DIR}/libhwy.a)
 # include_directories(${libgit2_INCLUDE_DIRS})
 set_target_properties(

@@ -22,6 +22,7 @@ PDJE_JSONHandler<NOTE_W>::add(const NoteArgs& args)
         {"Eseparate"    ,   args.Eseparate  }
     };
     if(!ROOT.contains(PDJENOTE)){
+        critlog("note json root not found. from PDJE_JSONHandler<NOTE_W> add.");
         return false;
     }
     ROOT[PDJENOTE].push_back(tempMix);
@@ -71,6 +72,7 @@ PDJE_JSONHandler<NOTE_W>::getAll(
 )
 {
     if(!ROOT.contains(PDJENOTE)){
+        critlog("note json root not found. from PDJE_JSONHandler<NOTE_W> add.");
         return;
     }
     for(auto& i : ROOT[PDJENOTE]){
@@ -117,7 +119,9 @@ PDJE_JSONHandler<NOTE_W>::render()
         }
         return tempMixBin;
     }
-    catch(...){
+    catch(std::exception& e){
+        critlog("something wrong. from PDJE_JSONHandler<NOTE_W> render. ErrException: ");
+        critlog(e.what());
         return nullptr;
     }
 }
@@ -133,14 +137,24 @@ PDJE_JSONHandler<NOTE_W>::load(const fs::path& path)
         if(fs::is_regular_file(filepath)){
             std::ifstream jfile(filepath);
             
-            if(!jfile.is_open()) return false;
+            if(!jfile.is_open()) {
+                critlog("cannot open note json file. from PDJE_JSONHandler<NOTE_W> load. path: ");
+                critlog(path);
+                return false;
+            }
 
             try{ jfile >> ROOT; }
-            catch(...){ return false; }
+            catch(std::exception& e){
+                critlog("cannot load note data from json file. from PDJE_JSONHandler<NOTE_W> load. ErrException: ");
+                critlog(e.what());
+                return false; 
+            }
 
             jfile.close();
         }
         else{
+            critlog("filepath is not regular file. from PDJE_JSONHandler<NOTE_W> load. path: ");
+            critlog(path);
             return false;
         }
     }

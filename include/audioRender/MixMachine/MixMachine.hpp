@@ -13,17 +13,22 @@
 #include "Decoder.hpp"
 #include "BattleDj.hpp"
 
-
+#include "PDJE_LOG_SETTER.hpp"
+#include <source_location>
 #define TRY(CODE)\
 try\
 {\
     CODE\
 }\
-catch(...)\
+catch(std::exception& e)\
 {\
+    auto now = std::source_location::current();\
+    critlog(now.file_name());\
+    critlog(now.line());\
+    critlog(now.function_name());\
+    critlog(e.what());\
     return false;\
 }
-
 
 
 

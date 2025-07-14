@@ -1,7 +1,7 @@
 #include <stdexcept>
 #include "dbRoot.hpp"
 
-
+#include "PDJE_LOG_SETTER.hpp"
 litedb::litedb(){}
 
 bool
@@ -9,6 +9,8 @@ litedb::openDB(const fs::path& dbPath)
 {
     // std::u8string u8str = dbPath.generic_u8string();
     if(!fs::is_directory(dbPath)){
+        infolog("directory not found. making new one. from litedb openDB. path: ");
+        infolog(dbPath);
         fs::create_directories(dbPath);
     }
     sqldbPath = dbPath / fs::path("sqlite.db");
@@ -36,14 +38,17 @@ litedb::openDB(const fs::path& dbPath)
     auto kvdbRes = RDB::DB::Open(rdbops, kvdbPath.generic_string(), &kvdb);
 
     if (sqlRes != SQLITE_OK){
-        DB_ERROR+= "\nsqlite openErr: " + std::string(sqlite3_errmsg(sdb));
+        critlog("failed to open sqlite. from litedb openDB. sqliteErrmsg: ");
+        critlog(sqlite3_errmsg(sdb));
         return false;
     }
     if (!kvdbRes.ok()){
-        DB_ERROR += "\nkvdb openErr: " + kvdbRes.ToString();
+        critlog("failed to open rocksDB. from litedb openDB. rocksdbErrmsg: ");
+        critlog(kvdbRes.ToString());
         return false;
     }
     if(!CheckTables()){
+        critlog("failed to check tables. from litedb openDB.");
         return false;
     }
     ROOT_PATH = dbPath;
@@ -68,11 +73,13 @@ litedb::CheckTables()
     std::string msql = "PRAGMA table_info('MUSIC')";
     std::string tsql = "PRAGMA table_info('TRACK')";
     if (sqlite3_prepare_v2(sdb, msql.c_str(), -1, &chk_mus, nullptr) != SQLITE_OK) {
-        DB_ERROR+= "\nsql msql prepareErr: " + std::string(sqlite3_errmsg(sdb));
+        critlog("failed to prepare music sql. from litedb CheckTables. sqliteErrmsg: ");
+        critlog(sqlite3_errmsg(sdb));
         return false;
     }
     if (sqlite3_prepare_v2(sdb, tsql.c_str(), -1, &chk_trk, nullptr) != SQLITE_OK) {
-        DB_ERROR+= "\nsql tsql prepareErr: " + std::string(sqlite3_errmsg(sdb));
+        critlog("failed to prepare track sql. from litedb CheckTables. sqliteErrmsg: ");
+        critlog(sqlite3_errmsg(sdb));
         return false;
     }
     if(sqlite3_step(chk_mus) != SQLITE_ROW){
@@ -86,7 +93,8 @@ litedb::CheckTables()
         "FirstBar TEXT NOT NULL "
         ");";
         if(sqlite3_exec(sdb, musmake.c_str(), nullptr, nullptr, nullptr) != SQLITE_OK){
-            DB_ERROR+= "\nsql create music execErr: " + std::string(sqlite3_errmsg(sdb));
+            critlog("failed to create music sqlite exec. from litedb CheckTables. sqliteErrmsg: ");
+            critlog(sqlite3_errmsg(sdb));
             return false;
         }
     }
@@ -99,7 +107,8 @@ litedb::CheckTables()
         "CachedMixList TEXT NOT NULL "
         ");";
         if(sqlite3_exec(sdb, trackmake.c_str(), nullptr, nullptr, nullptr) != SQLITE_OK){
-            DB_ERROR+= "\nsql create track execErr: " + std::string(sqlite3_errmsg(sdb));
+            critlog("failed to create track sqlite exec. from litedb CheckTables. sqliteErrmsg: ");
+            critlog(sqlite3_errmsg(sdb));
             return false;
         }
     }
@@ -110,19 +119,19 @@ litedb::CheckTables()
 
 
 
-
-
-
 bool
 litedb::KVGet(const SANITIZED& K, DONT_SANITIZE& V)
 {
     
     auto getRes = kvdb->Get(rops, K, &V);
     if(getRes.IsNotFound()){
+        warnlog("cannot find music from database. from litedb KVGet. Keydata: ");
+        warnlog(K);
         return false;
     }
     if(!getRes.ok()){
-        DB_ERROR += "\nkvdb getErr: " + getRes.ToString();
+        critlog("failed to get music from database. from litedb KVGet. rocksdbErr: ");
+        critlog(getRes.ToString());
         return false;
     }
     return true;
@@ -133,7 +142,8 @@ litedb::KVPut(const SANITIZED& K, const DONT_SANITIZE& V)
 {
     auto putRes = kvdb->Put(wops, K, V);
     if(!putRes.ok()){
-        DB_ERROR += "\nkvdb putErr: " + putRes.ToString();
+        critlog("failed to put new datas to database. from litedb KVPut. rocksdbErr: ");
+        critlog(putRes.ToString());
         return false;
     }
     return true;

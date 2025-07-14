@@ -4,7 +4,7 @@ swig_add_library(pdje_csharp
   TYPE MODULE
   LANGUAGE CSharp
   OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/swig_csharp
-  SOURCES PDJE_swig.i ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource}
+  SOURCES PDJE_swig.i ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource} ${nanolog_src}
 )
 find_package(Python REQUIRED COMPONENTS Interpreter Development)
 
@@ -12,14 +12,14 @@ swig_add_library(pdje_python
   TYPE MODULE
   LANGUAGE Python
   OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/swig_python
-  SOURCES PDJE_swig.i ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource}
+  SOURCES PDJE_swig.i ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource} ${nanolog_src}
 )
 
 # swig_add_library(pdje_go
 #   TYPE STATIC
 #   LANGUAGE go
 #   OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/swig_go
-#   SOURCES PDJE_swig.i ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource}
+#   SOURCES PDJE_swig.i ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource} ${nanolog_src}
 # )
 
 set_target_properties(${SWIG_MODULE_pdje_python_REAL_NAME} PROPERTIES

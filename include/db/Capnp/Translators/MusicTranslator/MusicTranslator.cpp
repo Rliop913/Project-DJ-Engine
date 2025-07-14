@@ -1,4 +1,5 @@
 #include "MusicTranslator.hpp"
+#include "PDJE_LOG_SETTER.hpp"
 #include <string>
 bool
 MusicTranslator::Read(const CapReader<MusicBinaryCapnpData>& binary, unsigned long long startFrame)
@@ -15,8 +16,10 @@ MusicTranslator::Read(const CapReader<MusicBinaryCapnpData>& binary, unsigned lo
                 frg.bpm = std::stod(DVec[i].getBpm().cStr());
                 
             }
-            catch(...)
+            catch(std::exception& e)
             {
+                critlog("failed to convert string to double. from MusicTranslator Read. ErrString: ");
+                critlog(DVec[i].getBpm().cStr());
                 continue;
             }
             bpms.fragments.push_back(frg);

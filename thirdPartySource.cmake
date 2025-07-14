@@ -24,3 +24,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/third_party/SoundTouch/soundtouch_src/TDStretch.cpp
 set(sql_amalgam_src
 ${sql_amalgam_SOURCE_DIR}/sqlite3.c
 )
+
+set(nanolog_src
+${nanolog_SOURCE_DIR}/NanoLog.cpp
+)

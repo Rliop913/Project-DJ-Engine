@@ -11,6 +11,7 @@ MixMachine::TypeWorks<TypeEnum::COMPRESSOR, FaustEffects>
         data.compressorData.back().strength =
         std::stof(ms.RP.getFirst().cStr());
         )
+        
     
     EightPointValues tk(ms.RP.getSecond().cStr());
     EightPointValues ar(ms.RP.getThird().cStr());

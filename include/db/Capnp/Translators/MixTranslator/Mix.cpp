@@ -1,5 +1,6 @@
 #include "Mix.hpp"
 #include "Bpm.hpp"
+#include "PDJE_LOG_SETTER.hpp"
 MIX::MIX()
 {
     usable_threads = std::thread::hardware_concurrency();
@@ -42,8 +43,10 @@ MIX::openMix(const MixBinaryCapnpData::Reader& Rptr)
         });
         return true;
     }
-    catch(...)
+    catch(std::exception& e)
     {
+        critlog("failed to open capnpMixdata. from MIX openMix. ExceptionLog: ");
+        critlog(e.what());
         return false;
     }
 }

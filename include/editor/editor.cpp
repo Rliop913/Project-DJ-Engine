@@ -1,5 +1,6 @@
 #include "editor.hpp"
 #include <filesystem>
+#include "PDJE_LOG_SETTER.hpp"
 
 namespace fs = std::filesystem;
 
@@ -24,12 +25,39 @@ PDJE_Editor::openProject(const fs::path& projectPath)
             !fs::exists(notep)  || !fs::is_directory(notep) ||
             !fs::exists(kvp)    || !fs::is_directory(kvp)   ||
             !fs::exists(musicp) || !fs::is_directory(musicp)
-        ){ return false; }
+        ){ 
+            critlog("some path is not created. from PDJE_Editor openProject. printing path.");
+            critlog("editor project root: ");
+            critlog(pt.generic_string());
+            critlog("mix data directory: ");
+            critlog(mixp.generic_string());
+            critlog("note data directory: ");
+            critlog(notep.generic_string());
+            critlog("music data directory: ");
+            critlog(musicp.generic_string());
+            critlog("key value data directory: ");
+            critlog(kvp.generic_string());
+            
+            return false; 
+        }
     }
     if( !mixHandle.first->Open(mixp)    || !mixHandle.second.load(mixp) ||
         !KVHandler.first->Open(kvp)     || !KVHandler.second.load(kvp)  ||
         !noteHandle.first->Open(notep)  || !noteHandle.second.load(notep))
-        { return false; }
+        {
+            critlog("failed to open & load some project from PDJE_Editor openProject. printing path");
+            critlog("editor project root: ");
+            critlog(pt.generic_string());
+            critlog("mix data directory: ");
+            critlog(mixp.generic_string());
+            critlog("note data directory: ");
+            critlog(notep.generic_string());
+            critlog("music data directory: ");
+            critlog(musicp.generic_string());
+            critlog("key value data directory: ");
+            critlog(kvp.generic_string());
+            return false; 
+        }
 
     for(const auto& musicSubpath : fs::directory_iterator(musicp)){
         if(fs::is_directory(musicSubpath)){
@@ -38,6 +66,8 @@ PDJE_Editor::openProject(const fs::path& projectPath)
             musicHandle.back().musicName = musicSubpath.path().filename().string();
             if( !musicHandle.back().gith->Open(musicSubpath.path()) ||
                 !musicHandle.back().jsonh.load(musicSubpath.path()) ){
+                    critlog("failed to open & load some music configure project from PDJE_Editor openProject. musicPath: ");
+                    critlog(musicSubpath.path().generic_string());
                     return false;
                 }
         }
@@ -62,11 +92,11 @@ PDJE_Editor::AddMusicConfig(const SANITIZED& NewMusicName, fs::path& DataPath)
             break;
         }
     }
-    if(!mfilename.has_value()) return false;
+    if(!mfilename.has_value()) {
+        warnlog("failed to make filename. this could be error or we have terrible luck. try again or fix here. from PDJE_Editor AddMusicConfig.");
+        return false;
+    }
     DataPath = musicp / fs::path(mfilename.value());
-    // if(fs::exists(newpath)){
-    //     return false;
-    // }
     try
     {
         if(fs::create_directory(DataPath)){
@@ -75,7 +105,7 @@ PDJE_Editor::AddMusicConfig(const SANITIZED& NewMusicName, fs::path& DataPath)
             if( !musicHandle.back().gith->Open(DataPath) ||
             !musicHandle.back().jsonh.load(DataPath) ){
                 fs::remove_all(DataPath);
-                EDITOR_ERR += "Failed to init git or json\n";
+                critlog("failed to init git or json. from PDJE_Editor AddMusicConfig.");
                 return false;
             }
             else return true;
@@ -83,10 +113,10 @@ PDJE_Editor::AddMusicConfig(const SANITIZED& NewMusicName, fs::path& DataPath)
     }
     catch(const std::exception& e)
     {
-        EDITOR_ERR += e.what();
-        EDITOR_ERR += "\n";
+        critlog("something wrong on configure music. from PDJE_Editor AddMusicConfig. ErrException: ");
+        critlog(e.what());
         return false;
     }
-    
+    critlog("failed. on configure music. from PDJE_Editor AddMusicConfig. please check logs");
     return false;
 }

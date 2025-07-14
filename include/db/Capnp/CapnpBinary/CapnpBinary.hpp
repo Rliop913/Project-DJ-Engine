@@ -10,6 +10,7 @@
 #include "MusicBinary.capnp.h"
 #include "NoteBinary.capnp.h"
 #include "PDJE_EXPORT_SETTER.hpp"
+#include "PDJE_LOG_SETTER.hpp"
 /**
  * @brief CapnProto Binary data Reader Wrapper Class
  * 
@@ -46,8 +47,10 @@ public:
             Rp = capreader->getRoot<DType>();
             return true;
         }
-        catch(...)
+        catch(std::exception& e)
         {
+            critlog("failed to open capnpBinary. from CapReader open. ExceptionLog: ");
+            critlog(e.what());
             return false;
         }
     }
@@ -99,8 +102,10 @@ public:
             Wp->setDatas(readroot.getDatas());
             return true;
         }
-        catch(...)
+        catch(std::exception& e)
         {
+            critlog("failed to open capnpBinary. from CapWriter open. ExceptionLog: ");
+            critlog(e.what());
             return false;
         }
     }
@@ -119,8 +124,10 @@ public:
             Wp = capwriter->initRoot<DType>();
             return true;
         }
-        catch(...)
+        catch(std::exception& e)
         {
+            critlog("failed to make new capnpWriter. from CapWriter makeNew. ExceptionLog: ");
+            critlog(e.what());
             return false;
         }
     }
@@ -138,8 +145,10 @@ public:
             std::vector<kj::byte> buffer(fbyte.begin(), fbyte.end());
             return buffer;
         } 
-        catch(...)
+        catch(std::exception& e)
         {
+            critlog("failed to return capnp binary datas. from CapWriter out. ExceptionLog: ");
+            critlog(e.what());
             return std::vector<kj::byte>();
         }
     }

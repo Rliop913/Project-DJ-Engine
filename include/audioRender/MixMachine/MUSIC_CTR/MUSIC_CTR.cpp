@@ -1,4 +1,5 @@
 #include "MUSIC_CTR.hpp"
+#include "PDJE_LOG_SETTER.hpp"
 
 MUSIC_CTR::MUSIC_CTR()
 {
@@ -21,6 +22,7 @@ MUSIC_CTR::SendData(soundtouch::SoundTouch*& stp, Decoder*& dp)
         return true;
     }
     else{
+        critlog("failed to give soundtouch & decoder object from MUSIC_CTR SendData.");
         return false;
     }
 }
@@ -38,9 +40,14 @@ MUSIC_CTR::checkUsable()
     // if(!PausePos.has_value() && FullPos.has_value()){
     //     PausePos = FullPos.value();
     // }
-    return
+    bool Usable =
     D.has_value() &&
     songPath.has_value();
+
+    if(!Usable){
+        critlog("usable check failed. Decoder or songpath not valid from MUSIC_CTR checkUsable.");
+    }
+    return Usable;
 }
 
 
@@ -52,6 +59,7 @@ MUSIC_CTR::TimeStretch(const FRAME_POS Frame, float*& masterPTR)
     
     const FRAME_POS Sola = Frame / st->getInputOutputSampleRatio();
     if(!D->getRange(Sola, timeStretchBuffer)){
+        critlog("failed to get musicdata from decoder. From MUSIC_CTR timeStretch.");
         return false;
     }
     st->putSamples(timeStretchBuffer.data(), Sola);
@@ -74,10 +82,12 @@ MUSIC_CTR::Render(
     FRAME_POS remainLast = RenderAmount % BPM_WINDOWS_SIZE;
     for(auto j=0; j<ItrTimes-1; ++j){
         if(!TimeStretch(BPM_WINDOWS_SIZE, masterPTR)){
+            critlog("failed to Timestretch. From MUSIC_CTR Render");
             return false;
         }
     }
     if(!TimeStretch(BPM_WINDOWS_SIZE + remainLast, masterPTR)){
+        critlog("failed to Timestretch. From MUSIC_CTR Render");
         return false;
     }
     return true;
@@ -89,9 +99,11 @@ std::optional<SIMD_FLOAT*>
 MUSIC_CTR::Execute(const BPM& bpms, SIMD_FLOAT* PCMS, litedb& db)
 {
     if(!checkUsable()){
+        critlog("failed to execute because usable check failed. From MUSIC_CTR Execute");
         return std::nullopt;
     }
     if(!D->init(db, songPath.value())){
+        critlog("failed to execute because Decoder init failed. From MUSIC_CTR Execute");
         return std::nullopt;
     }
     QDatas.Ready(bpms.bpmVec, Mus.bpms);
@@ -129,23 +141,38 @@ MUSIC_CTR::setLOAD(MBData::Reader& RP, litedb& db, FRAME_POS FrameIn)
     
     auto searchRes = db << md;
     if(!searchRes.has_value()){
+        critlog("search music failed. From MUSIC_CTR setLOAD. ErrTitle: ");
+        critlog(md.title);
         return false;
     }
     if(searchRes->empty()){
+        critlog("cannot find music from DB. From MUSIC_CTR setLOAD. ErrTitle: ");
+        critlog(md.title);
         return false;
     }
     songPath = searchRes.value()[0].musicPath;
     PlayPosition startpos;
     startpos.Gidx = FrameIn;
     
-    startpos.Lidx = std::stoull(searchRes.value()[0].firstBar);
+    try{
+        startpos.Lidx = std::stoull(searchRes.value()[0].firstBar);
+    }
+    catch(std::exception& e){
+        critlog("failed to convert string to unsigned longlong. From MUSIC_CTR setLOAD. ErrTitle: ");
+        critlog(md.title);
+        return false;
+    }
     startpos.status = MIXSTATE::PLAY;
     QDatas.pos.push_back(startpos);
     
     if(!capnpMus.open(searchRes.value()[0].bpmBinary)){
+        critlog("failed to open capnpBinary. From MUSIC_CTR setLOAD. ErrTitle: ");
+        critlog(md.title);
         return false;
     }
     if(!Mus.Read(capnpMus, startpos.Lidx)){
+        critlog("failed to Read CapnpReader. From MUSIC_CTR setLOAD. ErrTitle: ");
+        critlog(md.title);
         return false;
     }
     return true;

@@ -1,12 +1,18 @@
 #include "PDJE_interface.hpp"
-
+#include "PDJE_LOG_SETTER.hpp"
 PDJE::PDJE(const fs::path& rootPath)
 {
+#ifdef NANOLOG_OFF
+
+#elif defined(NDEBUG)
+    nanolog::initialize(nanolog::NonGuaranteedLogger(), ".", "pdje_nanolog.bin", 5);
+#else
+    nanolog::initialize(nanolog::GuaranteedLogger(), ".", "pdje_debug_nanolog.bin", 1);
+#endif
     DBROOT = std::make_shared<litedb>();
     DBROOT->openDB(rootPath);
     
 }
-
 
 TRACK_VEC
 PDJE::SearchTrack(const UNSANITIZED& Title)
@@ -14,6 +20,8 @@ PDJE::SearchTrack(const UNSANITIZED& Title)
     trackdata td;
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(Title);
     if(!safeTitle){
+        critlog("failed to make sanitized filename in PDJE SearchTrack. Errtitle: ");
+        critlog(Title);
         return TRACK_VEC();
     }
     td.trackTitle = safeTitle.value();
@@ -22,6 +30,8 @@ PDJE::SearchTrack(const UNSANITIZED& Title)
         return dbres.value();
     }
     else{
+        warnlog("failed to find trackdata from PDJE database. Errtitle: ");
+        warnlog(Title);
         return TRACK_VEC();
     }
 }
@@ -37,6 +47,9 @@ PDJE::SearchMusic(
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(Title);
     auto safeComposer = PDJE_Name_Sanitizer::sanitizeFileName(composer);
     if(!safeTitle || !safeComposer){
+        critlog("failed to sanitize filename in PDJE SearchMusic. Errs: ");
+        critlog(Title);
+        critlog(composer);
         return MUS_VEC();
     }
     md.title = safeTitle.value();
@@ -47,6 +60,9 @@ PDJE::SearchMusic(
         return dbres.value();
     }
     else{
+        warnlog("failed to find music from PDJE database. ErrTitle: ");
+        warnlog(Title);
+        warnlog(composer);
         return MUS_VEC();
     }
 }
@@ -89,10 +105,13 @@ PDJE::InitPlayer(
     }
 
     if(!player){
+        critlog("failed to init player on PDJE initPlayer.");
         return false;
     }
     else{
         if(player->STATUS != "OK"){
+            critlog("PDJE initPlayer failed. STATUS not OK. ErrStatus: ");
+            critlog(player->STATUS);
             return false;
         }
         else{
@@ -110,10 +129,19 @@ PDJE::GetNoteObjects(
 {
     CapReader<NoteBinaryCapnpData> notereader;
     CapReader<MixBinaryCapnpData> mixreader;
-    notereader.open(td.noteBinary);
-    mixreader.open(td.mixBinary);
+
+    if( !notereader.open(td.noteBinary)){
+        warnlog("failed to read notebinary from trackdata from PDJE GetNoteObjects");
+        return false;
+    } 
+    if(!mixreader.open(td.mixBinary)){
+        warnlog("failed to read mixBinary from trackdata from PDJE GetNoteObjects");
+        return false;
+    }
+    
     auto noteTrans = new NoteTranslator();
     auto mixTrans = new MixTranslator();
+    
     if(mixTrans->bpms.has_value()){
         noteTrans->Read(
             notereader, 
@@ -121,6 +149,7 @@ PDJE::GetNoteObjects(
             ObjectSetCallback);
     }
     else{
+        critlog("failed to emplace optional object from PDJE GetNoteObjects");
         delete noteTrans;
         delete mixTrans;
         return false;

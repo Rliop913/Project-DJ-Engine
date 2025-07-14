@@ -1,7 +1,7 @@
 #include "editorCommit.hpp"
 #include <cstring>
+#include "PDJE_LOG_SETTER.hpp"
 using namespace gitwrap;
-
 
 bool
 commitList::UpdateCommits(git_repository* repo)
@@ -9,10 +9,14 @@ commitList::UpdateCommits(git_repository* repo)
     clist.back();
     git_revwalk* walker = nullptr;
     if(git_revwalk_new(&walker, repo) != 0){
+        critlog("failed to walk reverse from commitList UpdateCommits. gitLog: ");
+        critlog(git_error_last()->message);
         return false;
     }
     
     if(git_revwalk_push_head(walker) != 0){
+        critlog("failed to revwalk push head from commitList UpdateCommits. gitLog: ");
+        critlog(git_error_last()->message);
         git_revwalk_free(walker);
         return false;
     }
@@ -63,6 +67,8 @@ commit::commit(git_oid oid, git_repository* rep)
         msg = git_commit_message(commitPointer);
     }
     else{
+        critlog("failed to lookup commit pointer. from commit::commit(oid, rep). gitLog: ");
+        critlog(git_error_last()->message);
         commitPointer = nullptr;
     }
 }
@@ -83,6 +89,8 @@ commit::commit(const std::string commitMSG, git_repository* rep)
             break;
         }
         else{
+            critlog("something failed. from commit::commit(msg, rep). gitLog: ");
+            critlog(git_error_last()->message);
             git_commit_free(commitPointer);
             commitPointer = nullptr;
         }

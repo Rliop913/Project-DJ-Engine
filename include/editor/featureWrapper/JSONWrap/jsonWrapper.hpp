@@ -14,6 +14,8 @@
 #include "MixTranslator.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
 
+#include "PDJE_LOG_SETTER.hpp"
+
 #define PDJEARR "PDJE_MIX"
 #define PDJENOTE "PDJE_NOTE"
 #define PDJEMUSICBPM "PDJE_MUSIC_BPM"

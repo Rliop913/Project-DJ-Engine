@@ -48,6 +48,7 @@ PDJE_JSONHandler<MUSIC_W>::add(const MusicArgs& args)
         {"separate" ,   args.separate   }
     };
     if(!ROOT.contains(PDJEMUSICBPM)){
+        critlog("music json root not found. from PDJE_JSONHandler<MUSIC_W> add.");
         return false;
     }
     ROOT[PDJEMUSICBPM].push_back(tempMus);
@@ -72,7 +73,9 @@ PDJE_JSONHandler<MUSIC_W>::render()
         }
         return tempMusBin;
     }
-    catch(...){
+    catch(std::exception& e){
+        critlog("something failed. from PDJE_JSONHandler<MUSIC_W> render. ErrException: ");
+        critlog(e.what());
         return nullptr;
     }
 }
@@ -85,6 +88,7 @@ PDJE_JSONHandler<MUSIC_W>::getAll(
 )
 {
     if(!ROOT.contains(PDJEMUSICBPM)){
+        critlog("music json root not found. from PDJE_JSONHandler<MUSIC_W> getAll.");
         return;
     }
     for(auto& i : ROOT[PDJEMUSICBPM]){
@@ -112,21 +116,35 @@ PDJE_JSONHandler<MUSIC_W>::load(const fs::path& path)
         if(fs::is_regular_file(filepath)){
             std::ifstream jfile(filepath);
             
-            if(!jfile.is_open()) return false;
+            if(!jfile.is_open()){
+                critlog("cannot open music json file. from PDJE_JSONHandler<MUSIC_W> load. path: ");
+                critlog(path);
+                return false;
+            }
 
             try{ jfile >> ROOT; }
-            catch(...){ return false; }
+            catch(std::exception& e){
+                critlog("cannot load music json data from file. from PDJE_JSONHandler<MUSIC_W> load. ErrException: ");
+                critlog(e.what());
+                return false; 
+            }
 
             jfile.close();
         }
         else{
+            critlog("music json file path is not regular file.  from PDJE_JSONHandler<MUSIC_W> load. path: ");
+            critlog(path);
             return false;
         }
     }
     else{
         fs::create_directories(filepath.parent_path());
         std::ofstream jfile(filepath);
-        if(!jfile.is_open()) return false;
+        if(!jfile.is_open()){
+            critlog("cannot open or make new music json file. from PDJE_JSONHandler<MUSIC_W> load. path: ");
+            critlog(path);
+            return false;
+        }
         jfile << std::setw(4) << ROOT;
         jfile.close();
     }

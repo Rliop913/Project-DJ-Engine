@@ -1,5 +1,7 @@
 #include "MUSIC_CTR.hpp"
 
+#include "PDJE_LOG_SETTER.hpp"
+
 #define ORIGIN_TO_TARGET(TARGET, ORIGIN) (TARGET / ORIGIN)
 
 void

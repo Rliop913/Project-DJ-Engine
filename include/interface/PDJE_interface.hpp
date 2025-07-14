@@ -5,6 +5,7 @@
 #include "NoteTranslator.hpp"
 #include "editorObject.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
+#include <NanoLog.hpp>
 /**
  * @brief the play mode
  * you can use this to initialize the player(music handler)

@@ -64,6 +64,7 @@ PDJE_JSONHandler<MIX_W>::add(const MixArgs& args)
         {"Eseparate",   args.Eseparate                                      }
     };
     if(!ROOT.contains(PDJEARR)){
+        critlog("mix json root not found. from PDJE_JSONHandler<MIX_W> add.");
         return false;
     }
     ROOT[PDJEARR].push_back(tempMix);
@@ -79,6 +80,7 @@ PDJE_JSONHandler<MIX_W>::getAll(
 )
 {
     if(!ROOT.contains(PDJEARR)){
+        critlog("mix json root not found. from PDJE_JSONHandler<MIX_W> getAll.");
         return;
     }
     for(auto& i : ROOT[PDJEARR]){
@@ -127,7 +129,9 @@ PDJE_JSONHandler<MIX_W>::render()
 
         return tempMixBin;
     }
-    catch(...){
+    catch(std::exception& e){
+        critlog("something wrong. from PDJE_JSONHandler<MIX_W> render. ErrException: ");
+        critlog(e.what());
         return nullptr;
     }
 }
@@ -143,21 +147,35 @@ PDJE_JSONHandler<MIX_W>::load(const fs::path& path)
         if(fs::is_regular_file(filepath)){
             std::ifstream jfile(filepath);
             
-            if(!jfile.is_open()) return false;
+            if(!jfile.is_open()){
+                critlog("cannot open mix json data file. from PDJE_JSONHandler<MIX_W> load. path: ");
+                critlog(path);
+                return false;
+            } 
 
             try{ jfile >> ROOT; }
-            catch(...){ return false; }
+            catch(std::exception& e){ 
+                critlog("cannot load mix json data from file. from PDJE_JSONHandler<MIX_W> load. ErrException: ");
+                critlog(e.what());
+                return false; 
+            }
 
             jfile.close();
         }
         else{
+            critlog("json data file is not regular file. from PDJE_JSONHandler<MIX_W> load. path: ");
+            critlog(path);
             return false;
         }
     }
     else{
         fs::create_directories(filepath.parent_path());
         std::ofstream jfile(filepath);
-        if(!jfile.is_open()) return false;
+        if(!jfile.is_open()){
+            critlog("failed to open or make new mix json file. from PDJE_JSONHandler<MIX_W> load. path: ");
+            critlog(path);
+            return false;
+        } 
         jfile << std::setw(4) << ROOT;
         jfile.close();
     }

@@ -1,5 +1,5 @@
 #include "audioPlayer.hpp"
-
+#include "PDJE_LOG_SETTER.hpp"
 
 extern void FullPreRender_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount);
 
@@ -49,14 +49,14 @@ audioPlayer::audioPlayer(litedb& db, trackdata& td, const unsigned int frameBuff
     }
     
     if(!renderer.LoadTrack(db, td)){
-        STATUS = "Failed to load track";
+        critlog("failed to load track. from audioPlayer::audioPlayer(db, td ,fbsize, hasmanual)");
         return;
     }
     engineDatas.pcmDataPoint = &renderer.rendered_frames.value();
     engineDatas.maxCursor = renderer.rendered_frames->size() / CHANNEL;
     
     if(ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS){
-        STATUS = "Failed to init device";
+        critlog("failed to init device. from audioPlayer::audioPlayer(db, td ,fbsize, hasmanual)");
         return;
     }
     
@@ -72,7 +72,7 @@ audioPlayer::audioPlayer(const unsigned int frameBufferSize)
     
 
     if(ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS){
-        STATUS = "Failed to init device";
+        critlog("failed to init device. from audioPlayer::audioPlayer(fbsize)");
     }
     
 }
@@ -80,13 +80,21 @@ audioPlayer::audioPlayer(const unsigned int frameBufferSize)
 bool
 audioPlayer::Activate()
 {
-    return ma_device_start(&player) == MA_SUCCESS;
+    bool Res = ma_device_start(&player) == MA_SUCCESS;
+    if(!Res){
+        critlog("failed to activate audioPlayer. from audioPlayer Activate");
+    }
+    return Res;
 }
 
 bool
 audioPlayer::Deactivate()
 {
-    return ma_device_stop(&player) == MA_SUCCESS;
+    bool Res = ma_device_stop(&player) == MA_SUCCESS;
+    if(!Res){
+        critlog("failed to deactivate audioPlayer. from audioPlayer Deactivate");
+    }
+    return Res;
 }
 
 
@@ -123,6 +131,7 @@ audioPlayer::GetFXControlPannel(const UNSANITIZED& title)
             return engineDatas.MusCtrPannel->getFXHandle(title);
         }
         else{
+            critlog("failed to return fx control pannel. from audioPlayer GetFXControlPannel");
             return nullptr;
         }
     }
@@ -136,6 +145,7 @@ audioPlayer::GetMusicControlPannel()
         return &(engineDatas.MusCtrPannel.value());
     }
     else{
+        critlog("failed to return music control pannel. from audioPlayer GetMusicControlPannel");
         return nullptr;
     }
 }

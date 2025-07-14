@@ -1,5 +1,5 @@
 #include "BattleDj.hpp"
-
+#include "PDJE_LOG_SETTER.hpp"
 
 
 BattleDj::BattleDj()
@@ -19,6 +19,7 @@ BattleDj::GetDataFrom(MUSIC_CTR& mc)
         return true;
     }
     else{
+        critlog("failed to get data from soundtouch. From BattleDJ GetDataFrom.");
         return false;
     }
 }
@@ -36,11 +37,15 @@ BattleDj::Spin(MixStruct& ms)
     {
         job.SPEED = std::stof(ms.RP.getFirst().cStr());
     }
-    catch(...)
+    catch(std::exception& e)
     {
+        critlog("failed to convert string to float. From BattleDJ Spin. ErrStr & exceptionlog: ");
+        critlog(ms.RP.getFirst().cStr());
+        critlog(e.what());
         return false;
     }
     if(job.SPEED == 0.0){
+        warnlog("ignore effect because speed is zero. From BattleDj Spin.");
         return false;
     }
     
@@ -62,11 +67,15 @@ BattleDj::Rev(MixStruct& ms)
     {
         j.SPEED = std::stof(ms.RP.getFirst().cStr());
     }
-    catch(...)
+    catch(std::exception& e)
     {
+        critlog("failed to convert string to float. From BattleDJ Rev. ErrStr & exceptionlog: ");
+        critlog(ms.RP.getFirst().cStr());
+        critlog(e.what());
         return false;
     }
     if(j.SPEED == 0.0){
+        warnlog("ignore effect because speed is zero. From BattleDj Rev.");
         return false;
     }
     j.SPEED = j.SPEED < 0 ? j.SPEED : (-1.0 * j.SPEED);
@@ -89,11 +98,16 @@ BattleDj::Scratch(MixStruct& ms)
         j.sourcePoint = std::stoul(ms.RP.getFirst().cStr());
         j.SPEED = std::stof(ms.RP.getSecond().cStr());
     }
-    catch(...)
+    catch(std::exception& e)
     {
+        critlog("failed to convert string to long. From BattleDJ Scratch. two ErrStr & exceptionlog: ");
+        critlog(ms.RP.getFirst().cStr());
+        critlog(ms.RP.getSecond().cStr());
+        critlog(e.what());
         return false;
     }
     if(j.SPEED == 0.0){
+        warnlog("ignore effect because speed is zero. From BattleDj Scratch.");
         return false;
     }
     jobs.push_back(j);
@@ -113,8 +127,11 @@ BattleDj::Pitch(MixStruct& ms)
     {
         j.SPEED = abs(std::stof(ms.RP.getFirst().cStr()));
     }
-    catch(...)
+    catch(std::exception& e)
     {
+        critlog("failed to convert string to float. From BattleDJ Pitch. ErrStr & exceptionlog: ");
+        critlog(ms.RP.getFirst().cStr());
+        critlog(e.what());
         return false;
     }
     jobs.push_back(j);
@@ -129,6 +146,7 @@ BattleDj::operator<<(std::optional<SIMD_FLOAT*> Array)
     st->setPitch(1.0);
     st->setRate(1.0);
     if(jobs.empty() || (!Array.has_value()) || (!StartPos.has_value())){
+        infolog("battledj jobs empty from BattleDJ op<<. this maybe safe.");
         return Array;
     }
     for(auto i : jobs){

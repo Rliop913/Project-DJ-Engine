@@ -1,5 +1,5 @@
 #include "MixMachine.hpp"
-
+#include "PDJE_LOG_SETTER.hpp"
 #include "MixMachine-inl.h"
 
 MixMachine::MixMachine()
@@ -24,9 +24,10 @@ MixMachine::IDsort(const MixTranslator& tr)
 
         return true;
     }
-    catch(...)
+    catch(std::exception& e)
     {
-
+        critlog("failed to sort memorized datas. From MixMachine IDsort. logException: ");
+        critlog(e.what());
         return false;
     }
 }
@@ -132,6 +133,8 @@ MixMachine::mix(litedb& db, const BPM& bpms)
             auto result = (*DJ) << MC->Execute(bpms, &tempVec, db);
             if(!result.has_value()){
                 FLAG_SOMETHING_WRONG_ID = i.first;
+                critlog("result has no value. From MixMachine mix. ErrID: ");
+                critlog(i.first);
                 return;
             }
             FX->consumeAll();
@@ -154,6 +157,7 @@ MixMachine::mix(litedb& db, const BPM& bpms)
         pool->join();
     }
     if(FLAG_SOMETHING_WRONG_ID != FLAG_ALL_IS_OK){
+        critlog("mix failed because something is broken. From MixMachine mix");
         return false;
     }
     return true;

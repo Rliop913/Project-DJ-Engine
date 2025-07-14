@@ -2,6 +2,7 @@
 
 #include <array>
 #include "editorBranch.hpp"
+#include "PDJE_LOG_SETTER.hpp"
 using namespace gitwrap;
 #define HASH_KNUTH 0x9e3779b9
 
@@ -36,6 +37,8 @@ logHandle::WalkBranch(const DONT_SANITIZE& branchName)
     auto refBranchName = branch::ToBranchRefName<const DONT_SANITIZE&>(branchName);
 
     if (git_revwalk_push_ref(walker, refBranchName.c_str()) != 0) {
+        critlog("failed to revwalk push ref. from logHandle WalkBranch. gitLog: ");
+        critlog(git_error_last()->message);
         git_revwalk_free(walker);
         return false;
     }

@@ -1,12 +1,18 @@
 #include "trackDB.hpp"
 // #include "errorTable.hpp"
 #include "fileNameSanitizer.hpp"
-
+#include <source_location>
+#include "PDJE_LOG_SETTER.hpp"
 #define CHK_BIND(res)\
 if(res != SQLITE_OK){\
-return false;\
+    auto now = std::source_location::current();\
+    critlog("failed on sqlite.");\
+    critlog(now.file_name());\
+    critlog(now.line());\
+    critlog(now.function_name());\
+    critlog(sqlite3_errmsg(db));\
+    return false;\
 }
-// errpdje::ereport("sql bind errno: " + std::to_string(SQLITE_LAST_ERRNO), errpdje::ERR_TYPE::SQL_ERROR, ("trackDB bind " + std::string(error_type)));}
 
 
 trackdata::trackdata(stmt* dbstate)
@@ -24,6 +30,8 @@ trackdata::trackdata(const std::string& trackTitle__)
 {
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(trackTitle__);
     if(!safeTitle){
+        critlog("failed to sanitize filename. from trackdata(tracktitle). ErrtrackTitle: ");
+        critlog(trackTitle__);
         return;
     }
     trackTitle = safeTitle.value();
@@ -38,6 +46,7 @@ trackdata::GenSearchSTMT(stmt& dbstate, sqlite3* db)
     "WHERE (? = -1 OR TrackTitle = ?);"
     ;
     if(!dbstate.activate(db)){
+        critlog("failed to execute sql. from trackdata GenSearchSTMT.");
         return false;
     }
     if(trackTitle == ""){
@@ -61,6 +70,7 @@ trackdata::GenInsertSTMT(stmt& dbstate, sqlite3* db)
     "VALUES "
     "(?, ?, ?, ?); ";
     if(!dbstate.activate(db)){
+        critlog("failed to execute sql. from trackdata GenInsertSTMT.");
         return false;
     }
     CHK_BIND( dbstate.bind_text(1, trackTitle));
@@ -80,7 +90,10 @@ trackdata::GenEditSTMT(stmt& dbstate, sqlite3* db, trackdata& toEdit)
     "SET TrackTitle = ?, MixBinary = ?, NoteBinary = ?, CachedMixList = ? "
     "WHERE TrackTitle = ?; ";
 
-    if(!dbstate.activate(db)) return false;
+    if(!dbstate.activate(db)) {
+        critlog("failed to execute sql. from trackdata GenEditSTMT.");
+        return false;
+    }
     
     CHK_BIND(dbstate.bind_text  (1, toEdit.trackTitle   ))
     CHK_BIND(dbstate.bind_blob  (2, toEdit.mixBinary    ))
@@ -101,7 +114,10 @@ trackdata::GenDeleteSTMT(stmt& dbstate, sqlite3* db)
     "DELETE FROM TRACK "
     "WHERE TrackTitle = ?; ";
 
-    if(!dbstate.activate(db)) return false;
+    if(!dbstate.activate(db)){
+        critlog("failed to execute sql. from trackdata GenDeleteSTMT.");
+        return false;
+    }
 
     CHK_BIND(dbstate.bind_text(1, trackTitle))
     

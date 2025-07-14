@@ -76,29 +76,29 @@ endif()
 if(PDJE_BUILD_TESTS)
   
 
-add_executable(testdb ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource} ${sql_amalgam_src} ${editorSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src})
+add_executable(testdb ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource} ${sql_amalgam_src} ${editorSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${nanolog_src})
 
-add_executable(testaudio ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/audioTest.cpp ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
+add_executable(testaudio ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/audioTest.cpp ${miniaudio_src} ${nanolog_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
 
-add_executable(testCapnp ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/CapnpTest.cpp ${miniaudio_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
+add_executable(testCapnp ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/CapnpTest.cpp ${miniaudio_src} ${nanolog_src} ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
 
 
 add_executable(testHighway include/tests/highway_Test.cpp ${sql_amalgam_src} )
 
 
-add_executable(testManualAudio include/tests/manualAudioTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
+add_executable(testManualAudio include/tests/manualAudioTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${nanolog_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
 
 
-add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
+add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${nanolog_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
 
 
-add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src})
+add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${nanolog_src})
 endif(PDJE_BUILD_TESTS)
-add_executable(testEditor include/tests/editorTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src})
+add_executable(testEditor include/tests/editorTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${nanolog_src})
+# add_executable(testLogger include/tests/logTest.cpp ${nanolog_src})
 
-
-add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
-add_library(PDJE_dynamic SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
+add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${nanolog_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
+add_library(PDJE_dynamic SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${nanolog_src} ${dbSource} ${sql_amalgam_src} ${editorSource})
 target_include_directories(PDJE PUBLIC ${INCLUDE_LIST})
 target_include_directories(PDJE_dynamic PUBLIC ${INCLUDE_LIST})
 
