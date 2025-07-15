@@ -90,7 +90,7 @@ ExternalProject_Add(
       -DREGEX_BACKEND=builtin
       -DUSE_BUNDLED_ZLIB=ON
       -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-      -DZLIB_LIBRARY:FILEPATH=$<IF:$<CONFIG:Debug>,${ZLIB_DEBUG_LIB_PATH},${ZLIB_RELEASE_LIB_PATH}>
+      # -DZLIB_LIBRARY:FILEPATH=$<IF:$<CONFIG:Debug>,${ZLIB_DEBUG_LIB_PATH},${ZLIB_RELEASE_LIB_PATH}>
 
   BUILD_COMMAND  ${CMAKE_COMMAND} --build . --config $<CONFIG>
   INSTALL_COMMAND ${CMAKE_COMMAND} --install . --config $<CONFIG>
@@ -167,7 +167,7 @@ add_dependencies(libgit2_static libgit2)
 set_target_properties(libgit2_static PROPERTIES
     IMPORTED_LOCATION_DEBUG   "${install_dir}/src/libgit2-build/Debug/git2.lib"
   IMPORTED_LOCATION_RELEASE "${install_dir}/src/libgit2-build/Release/git2.lib"
-  INTERFACE_INCLUDE_DIRECTORIES "${install_dir}/src/libgit2/include"
+  INTERFACE_INCLUDE_DIRECTORIES "${source_dir}"
 )
 # file(GLOB LIBGIT2_LIBRARIES "${CMAKE_BINARY_DIR}/src/libgit2-build/${CMAKE_BUILD_TYPE}/git2.lib")
 # link_libraries(${CMAKE_BINARY_DIR}/src/libgit2-build/${CMAKE_BUILD_TYPE}/git2.lib)
