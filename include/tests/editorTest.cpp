@@ -20,7 +20,7 @@ main()
             }
         });
         if(!Flag_Already_has_music){
-            if(engine->editor->ConfigNewMusic("testMiku", "Camellia", "../DMCA_FREE_DEMO_MUSIC/miku_temp.wav")){
+            if(engine->editor->ConfigNewMusic("testMiku", "Camellia", "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav")){
                 
                 EDIT_ARG_MUSIC temp;
                 temp.musicName = "testMiku";
@@ -76,7 +76,7 @@ main()
             else{
                 std::cout << "config init failed" << std::endl;
             }
-            if(engine->editor->ConfigNewMusic("ヒアソビ", "Camellia", "../DMCA_FREE_DEMO_MUSIC/miku_temp.wav")){
+            if(engine->editor->ConfigNewMusic("ヒアソビ", "Camellia", "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav")){
                 EDIT_ARG_MUSIC temp;
                 temp.musicName = "ヒアソビ";
                 temp.arg.bar=0;

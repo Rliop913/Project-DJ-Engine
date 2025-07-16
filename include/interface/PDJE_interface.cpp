@@ -2,13 +2,7 @@
 #include "PDJE_LOG_SETTER.hpp"
 PDJE::PDJE(const fs::path& rootPath)
 {
-#ifdef NANOLOG_OFF
-
-#elif defined(NDEBUG)
-    nanolog::initialize(nanolog::NonGuaranteedLogger(), ".", "pdje_nanolog.bin", 5);
-#else
-    nanolog::initialize(nanolog::GuaranteedLogger(), ".", "pdje_debug_nanolog.bin", 1);
-#endif
+    startlog();
     DBROOT = std::make_shared<litedb>();
     DBROOT->openDB(rootPath);
     

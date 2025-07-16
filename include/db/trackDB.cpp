@@ -17,13 +17,13 @@ if(res != SQLITE_OK){\
 
 trackdata::trackdata(stmt* dbstate)
 {
-    trackTitle = dbstate->colGet<COL_TYPE::TEXT, std::string>(0);
+    trackTitle = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(0);
     
-    mixBinary = dbstate->colGet<COL_TYPE::BLOB, BIN>(1);
+    mixBinary = dbstate->colGet<COL_TYPE::PDJE_BLOB, BIN>(1);
     
-    noteBinary = dbstate->colGet<COL_TYPE::BLOB, BIN>(2);
+    noteBinary = dbstate->colGet<COL_TYPE::PDJE_BLOB, BIN>(2);
     
-    cachedMixList = dbstate->colGet<COL_TYPE::TEXT, std::string>(3);
+    cachedMixList = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(3);
 }
 
 trackdata::trackdata(const UNSANITIZED& trackTitle__)

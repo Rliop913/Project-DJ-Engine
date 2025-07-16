@@ -19,12 +19,12 @@ if(res != SQLITE_OK){\
 
 musdata::musdata(stmt* dbstate)
 {
-    title = dbstate->colGet<COL_TYPE::TEXT, std::string>(0);
-    composer = dbstate->colGet<COL_TYPE::TEXT, std::string>(1);
-    musicPath = dbstate->colGet<COL_TYPE::TEXT, std::string>(2);
-    bpm = dbstate->colGet<COL_TYPE::DOUBLE, double>(3);
-    bpmBinary = dbstate->colGet<COL_TYPE::BLOB, BIN>(4);
-    firstBar = dbstate->colGet<COL_TYPE::TEXT, std::string>(5);
+    title = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(0);
+    composer = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(1);
+    musicPath = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(2);
+    bpm = dbstate->colGet<COL_TYPE::PDJE_DOUBLE, double>(3);
+    bpmBinary = dbstate->colGet<COL_TYPE::PDJE_BLOB, BIN>(4);
+    firstBar = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(5);
 }
 
 musdata::musdata(

@@ -4,8 +4,9 @@
 #include <vector>
 
 #ifdef WIN32
-#include <Windows.h>
-using DevID = HANDLE;
+// #define WIN32_LEAN_AND_MEAN
+// #include <Windows.h>
+// using DevID = HANDLE;
 
 #else
 

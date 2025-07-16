@@ -44,9 +44,9 @@ FetchContent_Declare(
 
 
 FetchContent_Declare(
-  nanolog
-  GIT_REPOSITORY https://github.com/Iyengar111/NanoLog.git
-  GIT_TAG master
+  quill
+  GIT_REPOSITORY https://github.com/odygrd/quill.git
+  GIT_TAG v10.0.1
 )
 
 
@@ -206,7 +206,7 @@ FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
 FetchContent_MakeAvailable(rocksDB)
 FetchContent_MakeAvailable(annoy)
-FetchContent_MakeAvailable(nanolog)
+FetchContent_MakeAvailable(quill)
 if(WIN32)
 set_target_properties(rocksdb PROPERTIES
   COMPILE_FLAGS "/wd4702 /WX-"

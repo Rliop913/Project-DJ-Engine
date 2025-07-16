@@ -57,14 +57,14 @@ stmt::activate(sqlite3* db)
 
 template<>
 int
-stmt::colGet<COL_TYPE::INT>(int idx)
+stmt::colGet<COL_TYPE::PDJE_INT>(int idx)
 {
     return sqlite3_column_int(S, idx);
 }
 
 template<>
 double
-stmt::colGet<COL_TYPE::DOUBLE>(int idx)
+stmt::colGet<COL_TYPE::PDJE_DOUBLE>(int idx)
 {
     return sqlite3_column_double(S, idx);
 }
@@ -72,7 +72,7 @@ stmt::colGet<COL_TYPE::DOUBLE>(int idx)
 
 template<>
 SANITIZED_ORNOT
-stmt::colGet<COL_TYPE::TEXT>(int idx)
+stmt::colGet<COL_TYPE::PDJE_TEXT>(int idx)
 {   
     auto ptr = sqlite3_column_text(S, idx);
     auto sz = sqlite3_column_bytes(S, idx);
@@ -82,7 +82,7 @@ stmt::colGet<COL_TYPE::TEXT>(int idx)
 
 template<>
 BIN
-stmt::colGet<COL_TYPE::BLOB>(int idx)
+stmt::colGet<COL_TYPE::PDJE_BLOB>(int idx)
 {
     auto ptr = sqlite3_column_blob(S, idx);
     auto sz = sqlite3_column_bytes(S, idx);

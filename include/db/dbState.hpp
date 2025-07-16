@@ -13,10 +13,10 @@
 using BIN = std::vector<u_int8_t>;
 
 enum COL_TYPE{
-    INT,
-    DOUBLE,
-    TEXT,
-    BLOB
+    PDJE_INT,
+    PDJE_DOUBLE,
+    PDJE_TEXT,
+    PDJE_BLOB
 };
 
 /**

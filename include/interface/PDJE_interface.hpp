@@ -5,7 +5,7 @@
 #include "NoteTranslator.hpp"
 #include "editorObject.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
-#include <NanoLog.hpp>
+#include "PDJE_LOG_SETTER.hpp"
 /**
  * @brief the play mode
  * you can use this to initialize the player(music handler)
@@ -62,7 +62,9 @@ public:
      * @param rootPath the path to the Root Database. 
      */
     PDJE(const fs::path& rootDir);
-    ~PDJE() = default;
+    ~PDJE(){
+        stoplog();
+    }
     
     /// this is the music handler. you can play music, stop music, fx control, play/stop music manually in realtime.
     std::shared_ptr<audioPlayer> player;
