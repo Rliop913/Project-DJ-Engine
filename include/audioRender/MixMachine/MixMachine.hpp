@@ -24,7 +24,8 @@ catch(std::exception& e)\
 {\
     auto now = std::source_location::current();\
     critlog(now.file_name());\
-    critlog(now.line());\
+    std::string lineNumber = std::to_string(now.line());\
+    critlog(lineNumber);\
     critlog(now.function_name());\
     critlog(e.what());\
     return false;\

@@ -159,18 +159,18 @@ elseif(APPLE)
 endif()
 
 if(PDJE_BUILD_TESTS)
-target_link_libraries(testHighway PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy quill::quill)
-target_link_libraries(testdb PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy quill::quill)
-target_link_libraries(testaudio PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy quill::quill)
-target_link_libraries(testCapnp PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy quill::quill)
-target_link_libraries(testManualAudio PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy quill::quill)
-target_link_libraries(testInterface PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy quill::quill)
-target_link_libraries(testGIT PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy quill::quill)
+target_link_libraries(testHighway PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
+target_link_libraries(testdb PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
+target_link_libraries(testaudio PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
+target_link_libraries(testCapnp PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
+target_link_libraries(testManualAudio PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
+target_link_libraries(testInterface PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
+target_link_libraries(testGIT PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
 endif()
-target_link_libraries(testEditor PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy quill::quill)
+target_link_libraries(testEditor PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
 
-target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json hwy rocksdb Annoy quill::quill)
-target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy rocksdb Annoy quill::quill)
+target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
+target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
 
 
 

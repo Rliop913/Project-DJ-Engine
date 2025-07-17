@@ -134,7 +134,8 @@ MixMachine::mix(litedb& db, const BPM& bpms)
             if(!result.has_value()){
                 FLAG_SOMETHING_WRONG_ID = i.first;
                 critlog("result has no value. From MixMachine mix. ErrID: ");
-                critlog(std::to_string(i.first));
+                std::string logTemp = std::to_string(i.first);
+                critlog(logTemp);
                 return;
             }
             FX->consumeAll();

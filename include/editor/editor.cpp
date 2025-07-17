@@ -67,7 +67,8 @@ PDJE_Editor::openProject(const fs::path& projectPath)
             if( !musicHandle.back().gith->Open(musicSubpath.path()) ||
                 !musicHandle.back().jsonh.load(musicSubpath.path()) ){
                     critlog("failed to open & load some music configure project from PDJE_Editor openProject. musicPath: ");
-                    critlog(musicSubpath.path().generic_string());
+                    auto logPath = musicSubpath.path();
+                    critlog(logPath.generic_string());
                     return false;
                 }
         }

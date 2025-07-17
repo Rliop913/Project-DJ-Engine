@@ -44,9 +44,9 @@ FetchContent_Declare(
 
 
 FetchContent_Declare(
-  quill
-  GIT_REPOSITORY https://github.com/odygrd/quill.git
-  GIT_TAG v10.0.1
+  spdlog
+  GIT_REPOSITORY https://github.com/gabime/spdlog.git
+  GIT_TAG v1.15.3
 )
 
 
@@ -206,7 +206,7 @@ FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
 FetchContent_MakeAvailable(rocksDB)
 FetchContent_MakeAvailable(annoy)
-FetchContent_MakeAvailable(quill)
+FetchContent_MakeAvailable(spdlog)
 if(WIN32)
 set_target_properties(rocksdb PROPERTIES
   COMPILE_FLAGS "/wd4702 /WX-"

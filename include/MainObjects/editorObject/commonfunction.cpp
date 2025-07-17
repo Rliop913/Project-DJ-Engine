@@ -71,13 +71,14 @@ editorObject::DefaultSaveFuntion<EDIT_ARG_MUSIC>(PDJE_Editor::MusicHandleStruct&
         if(target.musicName == safeMus.value()){
             if(!i.jsonh.save((target.dataPath / "musicmetadata.PDJE"))) {
                 critlog("music save failed from editorObject DefaultSaveFuntion. path: ");
-                critlog((target.dataPath / "musicmetadata.PDJE").generic_string());
+                fs::path logPath = (target.dataPath / "musicmetadata.PDJE");
+                critlog(logPath.generic_string());
                 return false;
             }
             if(!i.gith->Save("musicmetadata.PDJE", GitWrapper::GenTimeStamp())) {
                 critlog("music git save failed from editorObject DefaultSaveFuntion. path: ");
-                critlog((target.dataPath / "musicmetadata.PDJE").generic_string());
-                
+                fs::path logPath = (target.dataPath / "musicmetadata.PDJE");
+                critlog(logPath.generic_string());
                 return false;
             }
         }

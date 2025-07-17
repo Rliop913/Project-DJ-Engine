@@ -10,7 +10,7 @@ if(MSVC)
 add_compile_options(
     /arch:AVX2
 )
-add_compile_options(/W3 /GR)
+add_compile_options(/W3 /GR /WX-)
 else()
 add_compile_options(
   -march=haswell

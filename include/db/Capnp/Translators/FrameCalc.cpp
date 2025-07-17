@@ -58,7 +58,8 @@ BpmStruct::calcFrame(unsigned long long StartPos)
         for(auto i : fragments){
             if(i.bpm <= 0){
                 critlog("bpm safe check failed. from BpmStruct calcFrame. bpm: ");
-                critlog(i.bpm);
+                std::string bpmLog = std::to_string(i.bpm);
+                critlog(bpmLog);
                 return false;
             }
         }

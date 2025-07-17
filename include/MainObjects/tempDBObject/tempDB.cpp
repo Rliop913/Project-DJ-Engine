@@ -12,7 +12,8 @@ tempDB::Open(const fs::path& projectRoot)
     );
     if(!openRes){
         critlog("failed to open local database. from tempDB Open. path: ");
-        critlog((projectRoot / fs::path("LOCALDB")).generic_string());
+        fs::path logPath = (projectRoot / fs::path("LOCALDB"));
+        critlog(logPath.generic_string());
     }
     return openRes;
 }

@@ -11,9 +11,11 @@ if(res != SQLITE_OK){\
     auto now = std::source_location::current();\
     critlog("failed on sqlite.");\
     critlog(now.file_name());\
-    critlog(now.line());\
+    std::string lineNumber = std::to_string(now.line());\
+    critlog(lineNumber);\
     critlog(now.function_name());\
-    critlog(sqlite3_errmsg(db));\
+    std::string sqlLog = sqlite3_errmsg(db);\
+    critlog(sqlLog);\
     return false;\
 }
 

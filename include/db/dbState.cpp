@@ -50,7 +50,8 @@ stmt::activate(sqlite3* db)
     bool activate_Res = (sqlite3_prepare_v2(db, placeHold.c_str(), -1, &S, nullptr) == SQLITE_OK);
     if(!activate_Res){
         critlog("failed to activate sql. from stmt activate. sqliteErr: ");
-        critlog(sqlite3_errmsg(db));
+        std::string sqlLog = sqlite3_errmsg(db);
+        critlog(sqlLog);
     }
     return activate_Res;
 }

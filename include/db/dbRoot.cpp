@@ -9,8 +9,9 @@ litedb::openDB(const fs::path& dbPath)
 {
     // std::u8string u8str = dbPath.generic_u8string();
     if(!fs::is_directory(dbPath)){
-        infolog("directory not found. making new one. from litedb openDB. path: ");
-        infolog(dbPath.generic_string());
+
+        infolog("directory not found. making new one. from litedb openDB. path: ", dbPath.generic_string());
+        // infolog(dbPath.generic_string());
         fs::create_directories(dbPath);
     }
     sqldbPath = dbPath / fs::path("sqlite.db");
@@ -74,12 +75,14 @@ litedb::CheckTables()
     std::string tsql = "PRAGMA table_info('TRACK')";
     if (sqlite3_prepare_v2(sdb, msql.c_str(), -1, &chk_mus, nullptr) != SQLITE_OK) {
         critlog("failed to prepare music sql. from litedb CheckTables. sqliteErrmsg: ");
-        critlog(sqlite3_errmsg(sdb));
+        std::string sqlLog = sqlite3_errmsg(sdb);
+        critlog(sqlLog);
         return false;
     }
     if (sqlite3_prepare_v2(sdb, tsql.c_str(), -1, &chk_trk, nullptr) != SQLITE_OK) {
         critlog("failed to prepare track sql. from litedb CheckTables. sqliteErrmsg: ");
-        critlog(sqlite3_errmsg(sdb));
+        std::string sqlLog = sqlite3_errmsg(sdb);
+        critlog(sqlLog);
         return false;
     }
     if(sqlite3_step(chk_mus) != SQLITE_ROW){
@@ -94,7 +97,8 @@ litedb::CheckTables()
         ");";
         if(sqlite3_exec(sdb, musmake.c_str(), nullptr, nullptr, nullptr) != SQLITE_OK){
             critlog("failed to create music sqlite exec. from litedb CheckTables. sqliteErrmsg: ");
-            critlog(sqlite3_errmsg(sdb));
+            std::string sqlLog = sqlite3_errmsg(sdb);
+            critlog(sqlLog);
             return false;
         }
     }
@@ -108,7 +112,8 @@ litedb::CheckTables()
         ");";
         if(sqlite3_exec(sdb, trackmake.c_str(), nullptr, nullptr, nullptr) != SQLITE_OK){
             critlog("failed to create track sqlite exec. from litedb CheckTables. sqliteErrmsg: ");
-            critlog(sqlite3_errmsg(sdb));
+            std::string sqlLog = sqlite3_errmsg(sdb);
+            critlog(sqlLog);
             return false;
         }
     }
@@ -131,7 +136,8 @@ litedb::KVGet(const SANITIZED& K, DONT_SANITIZE& V)
     }
     if(!getRes.ok()){
         critlog("failed to get music from database. from litedb KVGet. rocksdbErr: ");
-        critlog(getRes.ToString());
+        std::string resErr = getRes.ToString();
+        critlog(resErr);
         return false;
     }
     return true;
@@ -143,7 +149,8 @@ litedb::KVPut(const SANITIZED& K, const DONT_SANITIZE& V)
     auto putRes = kvdb->Put(wops, K, V);
     if(!putRes.ok()){
         critlog("failed to put new datas to database. from litedb KVPut. rocksdbErr: ");
-        critlog(putRes.ToString());
+        std::string resErr = putRes.ToString();
+        critlog(resErr);
         return false;
     }
     return true;

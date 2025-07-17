@@ -1,121 +1,182 @@
 #pragma once
-#ifdef WIN32
-#define WIN32_LEAN_AND_MEAN
-#define NOMINMAX
-#endif
-#include "quill/Logger.h"
-#include "quill/Backend.h"
-#include "quill/Frontend.h"
-#include "quill/LogFunctions.h"
-#include "quill/Logger.h"
-#include "quill/sinks/FileSink.h"
-#include "quill/sinks/ConsoleSink.h"
-#include <filesystem>
 
-static quill::Logger* globalLogger;
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/basic_file_sink.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+#include <filesystem>
+#include <type_traits>
+#include <string_view>
+
+
+
 inline
 void startlog(){
     #ifndef LOG_OFF
+    std::filesystem::create_directories("logs");
+    auto fileSink = std::make_shared<spdlog::sinks::basic_file_sink_mt>("logs/pdjeLog.txt", true);
+    auto consoleSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
 
-    quill::BackendOptions bopts;
-    
-    bopts.sink_min_flush_interval = std::chrono::hours(24);
-    bopts.sleep_duration = std::chrono::hours(24);
-    
-    quill::Backend::start(bopts);
-    auto sinkP = quill::Frontend::create_or_get_sink<quill::FileSink>(
-        "pdjeLog.log",
-        [](){
-            quill::FileSinkConfig cfg;
-            cfg.set_open_mode('w');
-            return cfg;
-        }(),
-        quill::FileEventNotifier{}
-    );
-    globalLogger = quill::Frontend::create_or_get_logger(
-        "global",
-        sinkP
-    );
-    #endif
-}
+    std::vector<spdlog::sink_ptr> sinks {consoleSink, fileSink};
 
-inline
-void stoplog(){
-    #ifndef LOG_OFF
-    if(globalLogger) globalLogger->flush_log();
-
-    quill::Backend::stop();
-    
-    #endif
-}
-
-
-
-template<typename T>
-inline 
-void infolog(const T& msg){
+    auto logger = std::make_shared<spdlog::logger>("global_logger", sinks.begin(), sinks.end());
     #ifndef NDEBUG
-    quill::info(
-        globalLogger,
-        "Infolog {}\n",
-        static_cast<std::string_view>(msg)
-    );
-    globalLogger->flush_log();
+    logger->set_level(spdlog::level::debug);
+    #else
+    logger->set_level(spdlog::level::err);
+    #endif
+    logger->flush_on(spdlog::level::err);
+    logger->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] %v");
+    spdlog::set_default_logger(logger);
 
+    
     #endif
 }
 
+#define infolog(...)        SPDLOG_INFO(__VA_ARGS__)
+#define warnlog(...)        SPDLOG_WARN(__VA_ARGS__)
+#define criticallog(...)    SPDLOG_CRITICAL(__VA_ARGS__)
 
-template<typename T>
-inline 
-void warnlog(const T& msg){
-    #ifndef NDEBUG
-    quill::warning(
-        globalLogger,
-        "Warnlog {}\n",
-        static_cast<std::string_view>(msg)
-    );
-    globalLogger->flush_log();
-
-    #endif
-}
-
-template<typename T>
-inline 
-void critlog(const T& msg){
-    #ifndef LOG_OFF
-    quill::critical(
-        globalLogger,
-        "Critical {}\n",
-        static_cast<std::string_view>(msg)
-    );
-    globalLogger->flush_log();
-    #endif
-}
+// inline
+// void stoplog(){
+//     #ifndef LOG_OFF
+//     spdlog::shutdown();
+    
+//     #endif
+// }
 
 
-template<>
-inline 
-void critlog<uint_least32_t>(const uint_least32_t& msg){
-    #ifndef LOG_OFF
+// // inline 
+// // void infolog(const std::string& msg){
+// //     #ifndef NDEBUG
+// //     quill::info(
+// //         globalLogger,
+// //         "Infolog {}\n",
+// //         msg
+// //     );
+// //     globalLogger->flush_log();
 
-    quill::critical(
-        globalLogger,
-        "Critical {}\n",
-        std::to_string(msg)
-    );
-    globalLogger->flush_log();
-    #endif
-}
-template<>
-inline 
-void critlog<std::filesystem::path>(const std::filesystem::path& msg){
-    #ifndef LOG_OFF
-    quill::critical(
-        globalLogger,
-        "Critical {}\n",
-        static_cast<std::string_view>(msg.generic_string())
-    );
-    globalLogger->flush_log();
-    #endif
-}
+// //     #endif
+// // }
+
+// #define infolog(MSG){\
+//     LOGV_INFO(globalLogger, MSG);\
+//     globalLogger->flush_log();\
+// }
+
+// #define Vinfolog(MSG, V){\
+//     LOGV_INFO(globalLogger, MSG, V);\
+//     globalLogger->flush_log();\
+// }
+
+// inline 
+// void infolog(const std::filesystem::path& msg){
+//     #ifndef NDEBUG
+//     std::string logPath = msg.generic_string();
+//     quill::info(
+//         globalLogger,
+//         "Infolog {}\n",
+//         std::string_view(logPath)
+//     );
+//     globalLogger->flush_log();
+
+//     #endif
+// }
+
+// template<toStringAbles T>
+// inline 
+// void infolog(const T& msg){
+//     #ifndef NDEBUG
+//     quill::info(
+//         globalLogger,
+//         "Infolog {}\n",
+//         std::string_view(std::to_string(msg))
+//     );
+//     globalLogger->flush_log();
+
+//     #endif
+// }
+
+
+// inline 
+// void warnlog(const std::string& msg){
+//     #ifndef NDEBUG
+//     quill::warning(
+//         globalLogger,
+//         "Warnlog {}\n",
+//         std::string_view(msg)
+//     );
+//     globalLogger->flush_log();
+
+//     #endif
+// }
+
+
+// // inline 
+// // void warnlog(const std::filesystem::path& msg){
+// //     #ifndef NDEBUG
+// //     std::string logpath = msg.generic_string();
+// //     quill::warning(
+// //         globalLogger,
+// //         "Warnlog {}\n",
+// //         std::string_view(logpath)
+// //     );
+// //     globalLogger->flush_log();
+
+// //     #endif
+// // }
+
+
+// // template<toStringAbles T>
+// // inline 
+// // void warnlog(const T& msg){
+// //     #ifndef NDEBUG
+// //     quill::warning(
+// //         globalLogger,
+// //         "Warnlog {}\n",
+// //         std::string_view(std::to_string(msg))
+// //     );
+// //     globalLogger->flush_log();
+
+// //     #endif
+// // }
+
+
+// inline void
+// critlog(const std::string& msg){
+//     #ifndef LOG_OFF
+//     quill::critical(
+//         globalLogger,
+//         "Critical {}\n",
+//         std::string_view(msg)
+//     );
+//     globalLogger->flush_log();
+//     #endif
+// }
+
+
+
+// inline void
+// critlog(const T& msg){
+//     #ifndef LOG_OFF
+
+//     quill::critical(
+//         globalLogger,
+//         "Critical {}\n",
+//         std::string_view(std::to_string(msg))
+//     );
+//     globalLogger->flush_log();
+//     #endif
+// }
+
+// inline void
+// critlog(const std::filesystem::path& msg){
+//     #ifndef LOG_OFF
+//     std::string logpath = msg.generic_string();
+//     quill::critical(
+//         globalLogger,
+//         "Critical {}\n",
+//         std::string_view(logpath)
+//     );
+//     globalLogger->flush_log();
+//     #endif
+// }
