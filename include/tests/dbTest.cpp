@@ -9,9 +9,9 @@ main()
     if(!dbr.openDB("./tempdb.db")){
         return 1;
     }
-    auto td = trackdata(u8"first");
-    auto md = musdata(u8"WTC", u8"TEST", u8"./WTC.wav", 175);
-    md.firstBar = u8"1056";
+    auto td = trackdata("first");
+    auto md = musdata("WTC", "TEST", "./WTC.wav", 175);
+    md.firstBar = "1056";
     auto musicBinary = CapWriter<MusicBinaryCapnpData>();
     musicBinary.makeNew();
     auto aubuilder = musicBinary.Wp->initDatas(2);

@@ -29,6 +29,13 @@ public:
      * @return false 
      */
     bool LoadTrack(litedb& db, trackdata& td);
+    /**
+     * @brief Loads Track Data from a MixData object.
+     * 
+     * @param db The database instance.
+     * @param mixData The binary mix data.
+     * @return true if the track data was loaded successfully, false otherwise.
+     */
     bool LoadTrackFromMixData(litedb& db, BIN& mixData);
     audioRender() = default;
     ~audioRender() = default;

@@ -188,7 +188,15 @@ public:
         return true;
     }
 
+    /**
+     * @brief Constructs a new MixMachine object.
+     *
+     */
     MixMachine();
+    /**
+     * @brief Destroys the MixMachine object.
+     *
+     */
     ~MixMachine();
 };
 

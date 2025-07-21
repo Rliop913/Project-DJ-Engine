@@ -5,7 +5,7 @@ int
 main()
 {
     auto testpdje = new PDJE("./tempdb.db");
-    auto searchResult = testpdje->SearchMusic(u8"WTC", u8"");
+    auto searchResult = testpdje->SearchMusic("WTC", "");
     if(searchResult.empty()){
         std::cout << "can't search" << std::endl;
         delete testpdje;
@@ -16,7 +16,7 @@ main()
         << "path: "<< std::string(i.musicPath.begin(), i.musicPath.end()) << std::endl;
     }
 
-    auto trackSearch = testpdje->SearchTrack(u8"testmix111");
+    auto trackSearch = testpdje->SearchTrack("testmix111");
     if(trackSearch.empty()){
         std::cout << "can't search track" << std::endl;
         delete testpdje;
@@ -48,7 +48,7 @@ main()
     auto mus = testpdje->player->GetMusicControlPannel();
     mus->LoadMusic(testpdje->DBROOT.value(), searchResult[0]);
     std::cout << TO_STR(mus->GetLoadedMusicList()[0]);
-    mus->SetMusic(u8"WTC", true);
+    mus->SetMusic("WTC", true);
     getchar();
     for(auto i : (pannel)){
         std::cout 

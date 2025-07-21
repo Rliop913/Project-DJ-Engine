@@ -111,7 +111,7 @@ main()
         std::cout << "not opened " <<  std::endl;
     }
     trackdata td;
-    td.trackTitle = u8"testmix111";
+    td.trackTitle = "testmix111";
 
     auto restd = dbb<<td;
     std::cout << restd->front().mixBinary.size() << std::endl;

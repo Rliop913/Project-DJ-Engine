@@ -72,17 +72,46 @@ public:
     bool
     operator<=(DBType& insertObject);
 
+    /**
+     * @brief Deletes data from the database.
+     *
+     * @tparam DBType The type of database object (music or track data).
+     * @param deleteObject The object to delete.
+     * @return true if the data was deleted successfully, false otherwise.
+     */
     template<typename DBType>
     bool
-    DeleteData(DBType& deleteObject);//to-do impl
+    DeleteData(DBType& deleteObject);
 
+    /**
+     * @brief Edits data in the database.
+     *
+     * @tparam DBType The type of database object (music or track data).
+     * @param searchObject The object to search for.
+     * @param editObject The object with updated data.
+     * @return true if the data was edited successfully, false otherwise.
+     */
     template<typename DBType>
     bool
-    EditData(DBType& searchObject, DBType& editObject);//to-do impl
+    EditData(DBType& searchObject, DBType& editObject); //to-do impl
 
+    /**
+     * @brief Retrieves a value from the key-value store.
+     *
+     * @param K The key to retrieve.
+     * @param V The output parameter for the retrieved value.
+     * @return true if the key was found and value retrieved, false otherwise.
+     */
     bool
     KVGet(const SANITIZED& K, DONT_SANITIZE& V);
 
+    /**
+     * @brief Puts a key-value pair into the key-value store.
+     *
+     * @param K The key to insert or update.
+     * @param V The value to associate with the key.
+     * @return true if the operation was successful, false otherwise.
+     */
     bool
     KVPut(const SANITIZED& K, const DONT_SANITIZE& V);
 
@@ -105,7 +134,15 @@ public:
         return ROOT_PATH;
     }
 
+    /**
+     * @brief Constructs a new litedb object.
+     *
+     */
     litedb();
+    /**
+     * @brief Destroys the litedb object.
+     *
+     */
     ~litedb();
 };
 

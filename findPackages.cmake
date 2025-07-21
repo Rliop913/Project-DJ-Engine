@@ -224,7 +224,7 @@ include_directories(${hwy_SOURCE_DIR})
 include_directories(${sql_amalgam_SOURCE_DIR})
 include_directories(${cppcodec_SOURCE_DIR})
 # message(${nanolog_SOURCE_DIR})
-include_directories(${nanolog_SOURCE_DIR})
+# include_directories(${nanolog_SOURCE_DIR})
 # link_libraries(${hwy_BINARY_DIR}/libhwy.a)
 # include_directories(${libgit2_INCLUDE_DIRS})
 set_target_properties(
