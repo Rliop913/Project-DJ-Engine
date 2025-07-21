@@ -5,7 +5,7 @@ set(HWY_ENABLE_TESTS OFF)
 set(CAPNP_BUILD_TESTS OFF)
 set(BUILD_TESTING OFF CACHE BOOL "Disable testing")
 set(HWY_ENABLE_TARGETS "scalar,sse4,avx,avx2" CACHE STRING "Enabled SIMD targets" FORCE)
-
+set(WITH_WERROR OFF CACHE BOOL "" FORCE)
 if(MSVC)
 add_compile_options(
     /arch:AVX2

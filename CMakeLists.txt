@@ -20,7 +20,7 @@ else()
 endif()
 
 
-option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
+option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
 
 
 # link_libraries(${SQLite3_LIBRARIES})

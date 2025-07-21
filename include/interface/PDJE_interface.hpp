@@ -62,9 +62,7 @@ public:
      * @param rootPath the path to the Root Database. 
      */
     PDJE(const fs::path& rootDir);
-    ~PDJE(){
-        stoplog();
-    }
+    ~PDJE() = default;
     
     /// this is the music handler. you can play music, stop music, fx control, play/stop music manually in realtime.
     std::shared_ptr<audioPlayer> player;

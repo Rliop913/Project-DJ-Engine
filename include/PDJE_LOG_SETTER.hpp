@@ -32,151 +32,22 @@ void startlog(){
     #endif
 }
 
-#define infolog(...)        SPDLOG_INFO(__VA_ARGS__)
-#define warnlog(...)        SPDLOG_WARN(__VA_ARGS__)
-#define criticallog(...)    SPDLOG_CRITICAL(__VA_ARGS__)
+#ifndef LOG_OFF
+    #ifdef ENABLE_INFO_LOG
+    #define infolog(...)        SPDLOG_INFO(__VA_ARGS__)
+    #else
+    #define infolog(...)
+    #endif
 
-// inline
-// void stoplog(){
-//     #ifndef LOG_OFF
-//     spdlog::shutdown();
-    
-//     #endif
-// }
+    #ifdef ENABLE_WARN_LOG
+    #define warnlog(...)        SPDLOG_WARN(__VA_ARGS__)
+    #else
+    #define warnlog(...)
+    #endif
 
-
-// // inline 
-// // void infolog(const std::string& msg){
-// //     #ifndef NDEBUG
-// //     quill::info(
-// //         globalLogger,
-// //         "Infolog {}\n",
-// //         msg
-// //     );
-// //     globalLogger->flush_log();
-
-// //     #endif
-// // }
-
-// #define infolog(MSG){\
-//     LOGV_INFO(globalLogger, MSG);\
-//     globalLogger->flush_log();\
-// }
-
-// #define Vinfolog(MSG, V){\
-//     LOGV_INFO(globalLogger, MSG, V);\
-//     globalLogger->flush_log();\
-// }
-
-// inline 
-// void infolog(const std::filesystem::path& msg){
-//     #ifndef NDEBUG
-//     std::string logPath = msg.generic_string();
-//     quill::info(
-//         globalLogger,
-//         "Infolog {}\n",
-//         std::string_view(logPath)
-//     );
-//     globalLogger->flush_log();
-
-//     #endif
-// }
-
-// template<toStringAbles T>
-// inline 
-// void infolog(const T& msg){
-//     #ifndef NDEBUG
-//     quill::info(
-//         globalLogger,
-//         "Infolog {}\n",
-//         std::string_view(std::to_string(msg))
-//     );
-//     globalLogger->flush_log();
-
-//     #endif
-// }
-
-
-// inline 
-// void warnlog(const std::string& msg){
-//     #ifndef NDEBUG
-//     quill::warning(
-//         globalLogger,
-//         "Warnlog {}\n",
-//         std::string_view(msg)
-//     );
-//     globalLogger->flush_log();
-
-//     #endif
-// }
-
-
-// // inline 
-// // void warnlog(const std::filesystem::path& msg){
-// //     #ifndef NDEBUG
-// //     std::string logpath = msg.generic_string();
-// //     quill::warning(
-// //         globalLogger,
-// //         "Warnlog {}\n",
-// //         std::string_view(logpath)
-// //     );
-// //     globalLogger->flush_log();
-
-// //     #endif
-// // }
-
-
-// // template<toStringAbles T>
-// // inline 
-// // void warnlog(const T& msg){
-// //     #ifndef NDEBUG
-// //     quill::warning(
-// //         globalLogger,
-// //         "Warnlog {}\n",
-// //         std::string_view(std::to_string(msg))
-// //     );
-// //     globalLogger->flush_log();
-
-// //     #endif
-// // }
-
-
-// inline void
-// critlog(const std::string& msg){
-//     #ifndef LOG_OFF
-//     quill::critical(
-//         globalLogger,
-//         "Critical {}\n",
-//         std::string_view(msg)
-//     );
-//     globalLogger->flush_log();
-//     #endif
-// }
-
-
-
-// inline void
-// critlog(const T& msg){
-//     #ifndef LOG_OFF
-
-//     quill::critical(
-//         globalLogger,
-//         "Critical {}\n",
-//         std::string_view(std::to_string(msg))
-//     );
-//     globalLogger->flush_log();
-//     #endif
-// }
-
-// inline void
-// critlog(const std::filesystem::path& msg){
-//     #ifndef LOG_OFF
-//     std::string logpath = msg.generic_string();
-//     quill::critical(
-//         globalLogger,
-//         "Critical {}\n",
-//         std::string_view(logpath)
-//     );
-//     globalLogger->flush_log();
-//     #endif
-// }
+#define critlog(...)    SPDLOG_CRITICAL(__VA_ARGS__)
+#else
+#define infolog(...)
+#define warnlog(...)
+#define critlog(...)
+#endif

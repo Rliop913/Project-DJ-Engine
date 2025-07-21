@@ -119,7 +119,7 @@ public:
     bool makeNew(){
         try
         {
-            capnp::MallocMessageBuilder build;
+            
             capwriter.emplace();
             Wp = capwriter->initRoot<DType>();
             return true;
