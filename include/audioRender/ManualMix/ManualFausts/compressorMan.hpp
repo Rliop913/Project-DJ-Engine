@@ -1,13 +1,25 @@
+/**
+ * @file compressorMan.hpp
+ * @brief Manual compressor effect controller.
+ */
 #pragma once
 #include "DeckData.hpp"
 
+/**
+ * @brief Manages compressor effect settings.
+ */
 class CompressorMan{
 public:
-    float strength;
-    int threshDB;
-    int attackMS;
-    int releaseMS;
-    int kneeDB;
+    float strength; ///< The compression ratio.
+    int threshDB;   ///< The threshold in decibels.
+    int attackMS;   ///< The attack time in milliseconds.
+    int releaseMS;  ///< The release time in milliseconds.
+    int kneeDB;     ///< The knee width in decibels.
+
+    /**
+     * @brief Creates a map of argument setters for the compressor effect.
+     * @return An ARGSETTER map for configuring the compressor.
+     */
     ARGSETTER
     makeArgSetter(){
         return{
