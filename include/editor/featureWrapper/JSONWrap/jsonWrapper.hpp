@@ -1,3 +1,7 @@
+/**
+ * @file jsonWrapper.hpp
+ * @brief JSON based storage helpers for editor data.
+ */
 #pragma once
 
 #include <filesystem>
@@ -23,6 +27,7 @@ using nj = nlohmann::json;
 namespace fs = std::filesystem;
 namespace vs = std::views;
 
+/// Arguments describing a mix entry
 struct PDJE_API MixArgs{
     TypeEnum type           = TypeEnum::EQ      ;
     DetailEnum details      = DetailEnum::HIGH  ;
@@ -38,6 +43,7 @@ struct PDJE_API MixArgs{
     long long Eseparate     = -1                ;
 };
 
+/// Arguments describing a note entry
 struct PDJE_API NoteArgs{
     SANITIZED_ORNOT Note_Type   = "";
     SANITIZED_ORNOT Note_Detail = "";
@@ -52,6 +58,7 @@ struct PDJE_API NoteArgs{
     long long Eseparate         = -1;
 };
 
+/// Arguments describing a music entry
 struct PDJE_API MusicArgs{
     DONT_SANITIZE bpm       = ""                ;
     long long bar           = -1                ;
@@ -67,27 +74,31 @@ using KEY = DONT_SANITIZE;
 using KEY_VALUE = std::pair<DONT_SANITIZE, DONT_SANITIZE>;
 using KV_W = std::vector<KEY_VALUE>;
 
+/**
+ * @brief Generic handler for reading/writing editor JSON files.
+ */
 template<typename CapnpWriterType>
 class PDJE_API PDJE_JSONHandler{
 private:
     nj ROOT;
 public:
 
+    /// Convert the current JSON data to a capnp writer object
     std::unique_ptr<CapnpWriterType> render();
 
-    template<typename Target> 
+    template<typename Target>
     int deleteLine(
         const Target& args,
-        bool skipType, 
+        bool skipType,
         bool skipDetail);
 
     template<typename Target> 
     int deleteLine(const Target& args);
 
-    template<typename Target> 
+    template<typename Target>
     bool add(const Target& args);
 
-    template<typename Target> 
+    template<typename Target>
     void getAll(std::function<void(const Target& args)> jsonCallback);
         
     bool load(const fs::path& path);
@@ -96,10 +107,12 @@ public:
 
 
 
+    /// Access underlying JSON data by key
     inline nj& operator[](const DONT_SANITIZE& key){
         return ROOT[key];
     }
 
+    /// Save the JSON data to disk
     bool save(const fs::path& path){
         std::ofstream jfile(path);
         if(jfile.is_open()){
@@ -112,6 +125,7 @@ public:
     }
     
 
+    /// Delete a JSON file from disk
     bool deleteFile(const fs::path& path){
         try{ return fs::remove_all(path) > 0; }
         catch(...) { return false; }
@@ -121,3 +135,4 @@ public:
     PDJE_JSONHandler() = default;
     ~PDJE_JSONHandler() = default;
 };
+

@@ -1,3 +1,7 @@
+/**
+ * @file gitLog.hpp
+ * @brief Structures for storing commit logs and branch heads.
+ */
 #pragma once
 #include <unordered_map>
 #include <string>
@@ -8,6 +12,7 @@
 #include "editorBranch.hpp"
 #include "editorCommit.hpp"
 namespace gitwrap{
+    /// Single log entry associated with a commit
     struct log{
         commit now;
         git_oid parentID = {{0}};
@@ -15,11 +20,15 @@ namespace gitwrap{
         DONT_SANITIZE authEmail;
     };
 
+    /// Branch name and HEAD commit pair
     struct BranchHead{
         DONT_SANITIZE BranchName;
         git_oid head = {{0}};
     };
     
+    /**
+     * @brief Collects logs for a Git repository.
+     */
     class logHandle{
     private:
         struct OID_HASHER{
