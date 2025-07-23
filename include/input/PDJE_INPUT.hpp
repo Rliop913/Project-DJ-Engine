@@ -12,6 +12,9 @@
 
 #endif
 
+/**
+ * @brief Generic device identifier used by the input module.
+ */
 struct PDJE_IDEV{
     struct Finders{
         std::string devName;
@@ -26,15 +29,39 @@ struct PDJE_IDEV{
 
 };
 
+/**
+ * @brief Input device manager.
+ *
+ * Searches for connected devices and pairs them with the engine.
+ */
 class PDJE_Input{
 private:
 
 public:
+    /**
+     * @brief Scan the system for available input devices.
+     */
     void search();
+
+    /**
+     * @brief Register a device with the engine.
+     */
     void set();
+
+    /**
+     * @brief Retrieve the current device state.
+     */
     void get();
+
+    /**
+     * @brief Pair the found devices with appropriate handlers.
+     */
     void pair_job();
+
+    /// Constructor.
     PDJE_Input();
+
+    /// Destructor.
     ~PDJE_Input();
 };
 
