@@ -48,6 +48,8 @@ Program Listing for File Bpm.cpp
                }
                catch(...)
                {
+                   critlog("failed to convert string to double. From Bpm.cpp bpm_thread. ExceptionLog: ");
+                   critlog(bpmStr);
                    tempbpm.bpm = -404;
                }
                {
@@ -104,6 +106,7 @@ Program Listing for File Bpm.cpp
            bpmVec.fragments[0].bar != 0 ||
            bpmVec.fragments[0].beat != 0
        ){
+           critlog("failed to sort bpmFragments. from BPM getBpms.");
            return false;
        }
        return bpmVec.calcFrame();

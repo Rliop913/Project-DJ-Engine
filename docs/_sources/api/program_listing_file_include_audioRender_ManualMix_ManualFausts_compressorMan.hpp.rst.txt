@@ -10,16 +10,18 @@ Program Listing for File compressorMan.hpp
 
 .. code-block:: cpp
 
+   
    #pragma once
    #include "DeckData.hpp"
    
    class CompressorMan{
    public:
-       float strength;
-       int threshDB;
-       int attackMS;
-       int releaseMS;
-       int kneeDB;
+       float strength; 
+       int threshDB;   
+       int attackMS;   
+       int releaseMS;  
+       int kneeDB;     
+   
        ARGSETTER
        makeArgSetter(){
            return{

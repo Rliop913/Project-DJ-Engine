@@ -52,7 +52,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api_root.html#class-hierarchy">Class Hierarchy</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="api_root.html#classes-and-structs">Classes and Structs</a><ul class="current">
@@ -62,10 +61,8 @@
 <li class="toctree-l4"><a class="reference internal" href="structBpmStruct.html">Struct BpmStruct</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structBranchJSON.html">Struct BranchJSON</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDecoder.html">Struct Decoder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDeviceData.html">Struct DeviceData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDiffResult.html">Struct DiffResult</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDJ__JOBS.html">Struct DJ_JOBS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDuckTypeDevice.html">Struct DuckTypeDevice</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEDIT__ARG__MUSIC.html">Struct EDIT_ARG_MUSIC</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEightPointValues.html">Struct EightPointValues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structgitwrap_1_1BranchHead.html">Struct BranchHead</a></li>
@@ -83,6 +80,9 @@
 <li class="toctree-l4"><a class="reference internal" href="structMusicOnDeck.html">Struct MusicOnDeck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structNoteArgs.html">Struct NoteArgs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Editor_1_1MusicHandleStruct.html">Struct PDJE_Editor::MusicHandleStruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV.html">Struct PDJE_IDEV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Finders.html">Struct PDJE_IDEV::Finders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Specifiers.html">Struct PDJE_IDEV::Specifiers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPlayPosition.html">Struct PlayPosition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPosition.html">Struct Position</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structstmt.html">Struct stmt</a></li>
@@ -117,7 +117,6 @@
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1branch.html">Class branch</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1logHandle.html">Class logHandle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classGitWrapper.html">Class GitWrapper</a></li>
-<li class="toctree-l4"><a class="reference internal" href="classInputEngine.html">Template Class InputEngine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classLinuxEVDEV.html">Class LinuxEVDEV</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Class litedb</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classMeta.html">Class Meta</a></li>
@@ -135,7 +134,9 @@
 <li class="toctree-l4"><a class="reference internal" href="classPDJE.html">Class PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Editor.html">Class PDJE_Editor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__GitHandler.html">Class PDJE_GitHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Input.html">Class PDJE_Input</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JSONHandler.html">Template Class PDJE_JSONHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Name__Sanitizer.html">Class PDJE_Name_Sanitizer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaser__PDJE.html">Class Phaser_PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaserMan.html">Class PhaserMan</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classRobot__PDJE.html">Class Robot_PDJE</a></li>
@@ -238,16 +239,77 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I0EN6litedb10DeleteDataEbR6DBType">
 <span id="_CPPv3I0EN6litedb10DeleteDataER6DBType"></span><span id="_CPPv2I0EN6litedb10DeleteDataER6DBType"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DBType</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classlitedb_1aa3cd2c54c27a2d3d1a7d87a8607e6495"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DeleteData</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EN6litedb10DeleteDataEbR6DBType" title="litedb::DeleteData::DBType"><span class="n"><span class="pre">DBType</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">deleteObject</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN6litedb10DeleteDataEbR6DBType" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Deletes data from the database. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>DBType</strong> – The type of database object (music or track data). </p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>deleteObject</strong> – The object to delete. </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true if the data was deleted successfully, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I0EN6litedb8EditDataEbR6DBTypeR6DBType">
 <span id="_CPPv3I0EN6litedb8EditDataER6DBTypeR6DBType"></span><span id="_CPPv2I0EN6litedb8EditDataER6DBTypeR6DBType"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DBType</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classlitedb_1a275cceb420462fbf3befb82bde3c3848"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EditData</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EN6litedb8EditDataEbR6DBTypeR6DBType" title="litedb::EditData::DBType"><span class="n"><span class="pre">DBType</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">searchObject</span></span>, <a class="reference internal" href="#_CPPv4I0EN6litedb8EditDataEbR6DBTypeR6DBType" title="litedb::EditData::DBType"><span class="n"><span class="pre">DBType</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">editObject</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN6litedb8EditDataEbR6DBTypeR6DBType" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Edits data in the database. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>DBType</strong> – The type of database object (music or track data). </p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>searchObject</strong> – The object to search for. </p></li>
+<li><p><strong>editObject</strong> – The object with updated data. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true if the data was edited successfully, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N6litedb6openDBERKNSt6stringE">
-<span id="_CPPv3N6litedb6openDBERKNSt6stringE"></span><span id="_CPPv2N6litedb6openDBERKNSt6stringE"></span><span id="litedb::openDB__ssCR"></span><span class="target" id="classlitedb_1a4cc81fddce5ff104cf82da212efc2f38"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">openDB</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dbPath</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6litedb6openDBERKNSt6stringE" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N6litedb5KVGetERK9SANITIZEDR13DONT_SANITIZE">
+<span id="_CPPv3N6litedb5KVGetERK9SANITIZEDR13DONT_SANITIZE"></span><span id="_CPPv2N6litedb5KVGetERK9SANITIZEDR13DONT_SANITIZE"></span><span id="litedb::KVGet__SANITIZEDCR.DONT_SANITIZER"></span><span class="target" id="classlitedb_1a56ada182651e23ea48df4c1f1c951117"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">KVGet</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07.html#_CPPv49SANITIZED" title="SANITIZED"><span class="n"><span class="pre">SANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">K</span></span>, <a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">V</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6litedb5KVGetERK9SANITIZEDR13DONT_SANITIZE" title="Link to this definition"></a><br /></dt>
+<dd><p>Retrieves a value from the key-value store. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>K</strong> – The key to retrieve. </p></li>
+<li><p><strong>V</strong> – The output parameter for the retrieved value. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if the key was found and value retrieved, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6litedb5KVPutERK9SANITIZEDRK13DONT_SANITIZE">
+<span id="_CPPv3N6litedb5KVPutERK9SANITIZEDRK13DONT_SANITIZE"></span><span id="_CPPv2N6litedb5KVPutERK9SANITIZEDRK13DONT_SANITIZE"></span><span id="litedb::KVPut__SANITIZEDCR.DONT_SANITIZECR"></span><span class="target" id="classlitedb_1a9a63c34e488edf8f417df3328274f02e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">KVPut</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07.html#_CPPv49SANITIZED" title="SANITIZED"><span class="n"><span class="pre">SANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">K</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">V</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6litedb5KVPutERK9SANITIZEDRK13DONT_SANITIZE" title="Link to this definition"></a><br /></dt>
+<dd><p>Puts a key-value pair into the key-value store. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>K</strong> – The key to insert or update. </p></li>
+<li><p><strong>V</strong> – The value to associate with the key. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if the operation was successful, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6litedb6openDBERKN2fs4pathE">
+<span id="_CPPv3N6litedb6openDBERKN2fs4pathE"></span><span id="_CPPv2N6litedb6openDBERKN2fs4pathE"></span><span id="litedb::openDB__fs::pathCR"></span><span class="target" id="classlitedb_1af5ef2daaba8dcdea92b28576e4d07178"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">openDB</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dbPath</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6litedb6openDBERKN2fs4pathE" title="Link to this definition"></a><br /></dt>
 <dd><p>opens the Root Database and initialize. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -264,7 +326,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N6litedb7getRootEv">
-<span id="_CPPv3N6litedb7getRootEv"></span><span id="_CPPv2N6litedb7getRootEv"></span><span id="litedb::getRoot"></span><span class="target" id="classlitedb_1af16e54cebbe62f5b1b44b03dbc3d3529"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getRoot</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6litedb7getRootEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N6litedb7getRootEv"></span><span id="_CPPv2N6litedb7getRootEv"></span><span id="litedb::getRoot"></span><span class="target" id="classlitedb_1ad20271212217420ecfcd8c1552f87bb9"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getRoot</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6litedb7getRootEv" title="Link to this definition"></a><br /></dt>
 <dd><p>Get path to Root database. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -276,12 +338,14 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N6litedb6litedbEv">
 <span id="_CPPv3N6litedb6litedbEv"></span><span id="_CPPv2N6litedb6litedbEv"></span><span id="litedb::litedb"></span><span class="target" id="classlitedb_1a9f3b4346801213c5cb95d7c86921a1c3"></span><span class="sig-name descname"><span class="n"><span class="pre">litedb</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6litedb6litedbEv" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Constructs a new litedb object. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N6litedbD0Ev">
 <span id="_CPPv3N6litedbD0Ev"></span><span id="_CPPv2N6litedbD0Ev"></span><span id="litedb::~litedb"></span><span class="target" id="classlitedb_1a81aed319e301d84ed8dde7bbe0e86c07"></span><span class="sig-name descname"><span class="n"><span class="pre">~litedb</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6litedbD0Ev" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Destroys the litedb object. </p>
+</dd></dl>
 
 </div>
 </dd></dl>

@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classPDJE__Name__Sanitizer" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_Name_Sanitizer</compoundname>
+    <includes refid="fileNameSanitizer_8hpp" local="no">fileNameSanitizer.hpp</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classPDJE__Name__Sanitizer_1a052555eea07a1c31313ddc9602690f8c" prot="public" static="yes" mutable="no">
+        <type>std::string</type>
+        <definition>std::string PDJE_Name_Sanitizer::PDJE_SANITIZE_ERROR</definition>
+        <argsstring></argsstring>
+        <name>PDJE_SANITIZE_ERROR</name>
+        <qualifiedname>PDJE_Name_Sanitizer::PDJE_SANITIZE_ERROR</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/fileNameSanitizer.hpp" line="19" column="24" bodyfile="include/db/fileNameSanitizer.hpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classPDJE__Name__Sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &gt;</type>
+        <definition>std::optional&lt; SANITIZED &gt; PDJE_Name_Sanitizer::sanitizeFileName</definition>
+        <argsstring>(const std::string &amp;fileName)</argsstring>
+        <name>sanitizeFileName</name>
+        <qualifiedname>PDJE_Name_Sanitizer::sanitizeFileName</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fileName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/fileNameSanitizer.hpp" line="17" column="26" bodyfile="include/db/fileNameSanitizer.cpp" bodystart="5" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__Name__Sanitizer_1af67eaa02761870480e60b4a22e558fe6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string PDJE_Name_Sanitizer::getFileName</definition>
+        <argsstring>(const SANITIZED &amp;sanitized)</argsstring>
+        <name>getFileName</name>
+        <qualifiedname>PDJE_Name_Sanitizer::getFileName</qualifiedname>
+        <param>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
+          <declname>sanitized</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/fileNameSanitizer.hpp" line="18" column="24" bodyfile="include/db/fileNameSanitizer.cpp" bodystart="17" bodyend="21"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPDJE__Name__Sanitizer_1ab140c48c375c3287f623d9c6c1f4b0ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_Name_Sanitizer::PDJE_Name_Sanitizer</definition>
+        <argsstring>()=delete</argsstring>
+        <name>PDJE_Name_Sanitizer</name>
+        <qualifiedname>PDJE_Name_Sanitizer::PDJE_Name_Sanitizer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/fileNameSanitizer.hpp" line="21" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__Name__Sanitizer_1ab336046cda451b24dc8511b6d93873c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_Name_Sanitizer::~PDJE_Name_Sanitizer</definition>
+        <argsstring>()=delete</argsstring>
+        <name>~PDJE_Name_Sanitizer</name>
+        <qualifiedname>PDJE_Name_Sanitizer::~PDJE_Name_Sanitizer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/fileNameSanitizer.hpp" line="22" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>PDJE_Name_Sanitizer</label>
+        <link refid="classPDJE__Name__Sanitizer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>PDJE_SANITIZE_ERROR</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/db/fileNameSanitizer.hpp" line="15" column="1" bodyfile="include/db/fileNameSanitizer.hpp" bodystart="15" bodyend="23"/>
+    <listofallmembers>
+      <member refid="classPDJE__Name__Sanitizer_1af67eaa02761870480e60b4a22e558fe6" prot="public" virt="non-virtual"><scope>PDJE_Name_Sanitizer</scope><name>getFileName</name></member>
+      <member refid="classPDJE__Name__Sanitizer_1ab140c48c375c3287f623d9c6c1f4b0ac" prot="public" virt="non-virtual"><scope>PDJE_Name_Sanitizer</scope><name>PDJE_Name_Sanitizer</name></member>
+      <member refid="classPDJE__Name__Sanitizer_1a052555eea07a1c31313ddc9602690f8c" prot="public" virt="non-virtual"><scope>PDJE_Name_Sanitizer</scope><name>PDJE_SANITIZE_ERROR</name></member>
+      <member refid="classPDJE__Name__Sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" prot="public" virt="non-virtual"><scope>PDJE_Name_Sanitizer</scope><name>sanitizeFileName</name></member>
+      <member refid="classPDJE__Name__Sanitizer_1ab336046cda451b24dc8511b6d93873c1" prot="public" virt="non-virtual"><scope>PDJE_Name_Sanitizer</scope><name>~PDJE_Name_Sanitizer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

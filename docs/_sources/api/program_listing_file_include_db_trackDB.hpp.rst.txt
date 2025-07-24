@@ -15,18 +15,19 @@ Program Listing for File trackDB.hpp
    #include <string>
    
    #include "dbState.hpp"
-   
-   struct trackdata{
+   #include "PDJE_EXPORT_SETTER.hpp"
+   #include "fileNameSanitizer.hpp"
+   struct PDJE_API trackdata{
    public:
-       std::string trackTitle;
+       SANITIZED trackTitle;
        BIN mixBinary;
        BIN noteBinary;
-       std::string cachedMixList;
+       SANITIZED cachedMixList;
    
        trackdata(stmt* dbstate);
    
        trackdata(
-           const std::string& trackTitle__ = ""
+           const UNSANITIZED& trackTitle__ = ""
        );
    
        bool GenSearchSTMT(stmt& dbstate, sqlite3* db);

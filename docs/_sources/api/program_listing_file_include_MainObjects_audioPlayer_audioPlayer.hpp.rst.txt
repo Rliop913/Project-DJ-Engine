@@ -17,7 +17,8 @@ Program Listing for File audioPlayer.hpp
    #include "ManualMix.hpp"
    #include "audioRender.hpp"
    #include "audioCallbacks.hpp"
-   class audioPlayer{
+   #include "PDJE_EXPORT_SETTER.hpp"
+   class PDJE_API audioPlayer{
    private:
        ma_device player;
        ma_context ctxt;
@@ -47,7 +48,7 @@ Program Listing for File audioPlayer.hpp
        void ChangeCursorPos(unsigned long long pos);
    
        unsigned long long GetConsumedFrames();
-       FXControlPannel* GetFXControlPannel(const std::string& title = "__PDJE__MAIN__");
+       FXControlPannel* GetFXControlPannel(const UNSANITIZED& title = "__PDJE__MAIN__");
    
        MusicControlPannel* GetMusicControlPannel();
        audioPlayer(litedb& db, trackdata& td, const unsigned int frameBufferSize, const bool hasManual = false);

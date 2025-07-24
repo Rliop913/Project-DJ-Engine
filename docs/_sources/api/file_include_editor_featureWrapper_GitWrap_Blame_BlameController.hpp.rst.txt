@@ -9,6 +9,11 @@ File BlameController.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+Perform git blame operations. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none
@@ -29,6 +34,8 @@ Definition (``include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp``)
 Includes
 --------
 
+
+- ``filesystem``
 
 - ``git2.h``
 

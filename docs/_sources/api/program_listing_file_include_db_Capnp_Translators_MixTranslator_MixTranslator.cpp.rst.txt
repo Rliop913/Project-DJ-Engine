@@ -11,6 +11,7 @@ Program Listing for File MixTranslator.cpp
 .. code-block:: cpp
 
    #include "MixTranslator.hpp"
+   #include "PDJE_LOG_SETTER.hpp"
    
    MixTranslator::MixTranslator()
    {
@@ -27,12 +28,15 @@ Program Listing for File MixTranslator.cpp
    MixTranslator::Read(const CapReader<MixBinaryCapnpData>& binary)
    {
        if(!mixs->openMix(binary.Rp.value())){
+           critlog("failed to open mix data. from MixTranslator Read.");
            return false;
        }
        if(!bpms->getBpms(mixs.value())){
+           critlog("failed to get bpm datas. from MixTranslator Read");
            return false;
        }
        if(!mixs->WriteFrames(bpms.value())){
+           critlog("failed to write frames. from MixTranslator Read");
            return false;
        }
        return true;

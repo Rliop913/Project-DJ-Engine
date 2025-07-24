@@ -30,9 +30,23 @@ Includes
 --------
 
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
+
+- ``filesystem``
+
+- ``iostream``
+
 - ``musicDB.hpp`` (:ref:`file_include_db_musicDB.hpp`)
 
 - ``optional``
+
+- ``rocksdb/db.h``
+
+- ``rocksdb/filter_policy.h``
+
+- ``rocksdb/options.h``
+
+- ``rocksdb/table.h``
 
 - ``sqlite3.h``
 
@@ -50,7 +64,11 @@ Included By
 
 - :ref:`file_include_MainObjects_tempDBObject_tempDB.hpp`
 
+- :ref:`file_include_audioRender_ManualMix_MusicControlPannel.hpp`
+
 - :ref:`file_include_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp`
+
+- :ref:`file_include_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`
 
 - :ref:`file_include_audioRender_MixMachine_MixMachine.hpp`
 

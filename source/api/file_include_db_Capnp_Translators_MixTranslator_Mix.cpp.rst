@@ -34,6 +34,8 @@ Includes
 
 - ``Mix.hpp`` (:ref:`file_include_audioRender_ManualMix_ManualMix.hpp`)
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 
 
 

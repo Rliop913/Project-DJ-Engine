@@ -21,9 +21,10 @@ Program Listing for File CapnpBinary.hpp
    #include "MixBinary.capnp.h"
    #include "MusicBinary.capnp.h"
    #include "NoteBinary.capnp.h"
-   
+   #include "PDJE_EXPORT_SETTER.hpp"
+   #include "PDJE_LOG_SETTER.hpp"
    template<typename DType>
-   class CapReader{
+   class PDJE_API CapReader{
    private:
        std::vector<kj::byte> Origin;
        std::optional<capnp::FlatArrayMessageReader> capreader;
@@ -46,8 +47,10 @@ Program Listing for File CapnpBinary.hpp
                Rp = capreader->getRoot<DType>();
                return true;
            }
-           catch(...)
+           catch(std::exception& e)
            {
+               critlog("failed to open capnpBinary. from CapReader open. ExceptionLog: ");
+               critlog(e.what());
                return false;
            }
        }
@@ -57,7 +60,7 @@ Program Listing for File CapnpBinary.hpp
    };
    
    template<typename DType>
-   class CapWriter{
+   class PDJE_API CapWriter{
    private:
        std::optional<capnp::MallocMessageBuilder> capwriter;
    public:
@@ -82,8 +85,10 @@ Program Listing for File CapnpBinary.hpp
                Wp->setDatas(readroot.getDatas());
                return true;
            }
-           catch(...)
+           catch(std::exception& e)
            {
+               critlog("failed to open capnpBinary. from CapWriter open. ExceptionLog: ");
+               critlog(e.what());
                return false;
            }
        }
@@ -91,13 +96,15 @@ Program Listing for File CapnpBinary.hpp
        bool makeNew(){
            try
            {
-               capnp::MallocMessageBuilder build;
+               
                capwriter.emplace();
                Wp = capwriter->initRoot<DType>();
                return true;
            }
-           catch(...)
+           catch(std::exception& e)
            {
+               critlog("failed to make new capnpWriter. from CapWriter makeNew. ExceptionLog: ");
+               critlog(e.what());
                return false;
            }
        }
@@ -110,8 +117,10 @@ Program Listing for File CapnpBinary.hpp
                std::vector<kj::byte> buffer(fbyte.begin(), fbyte.end());
                return buffer;
            } 
-           catch(...)
+           catch(std::exception& e)
            {
+               critlog("failed to return capnp binary datas. from CapWriter out. ExceptionLog: ");
+               critlog(e.what());
                return std::vector<kj::byte>();
            }
        }

@@ -36,7 +36,7 @@ Program Listing for File MUSIC_CTR.hpp
        BPMCHANGE,
    };
    
-   struct PlayPosition{
+   struct PDJE_API PlayPosition{
        GLOBAL_POS Gidx;
        LOCAL_POS Lidx;
        double OriginBPM = -1;
@@ -45,7 +45,7 @@ Program Listing for File MUSIC_CTR.hpp
    };
    
    
-   struct Ingredients{
+   struct PDJE_API Ingredients{
    private:
        void SORT();
    
@@ -57,7 +57,7 @@ Program Listing for File MUSIC_CTR.hpp
    
        std::vector<PlayPosition> pos;
    };
-   class MUSIC_CTR{
+   class PDJE_API MUSIC_CTR{
    private:
        std::optional<soundtouch::SoundTouch> st;
        std::optional<Decoder> D;
@@ -84,7 +84,7 @@ Program Listing for File MUSIC_CTR.hpp
        // std::optional<double> originBpm;
        std::optional<std::string> songPath;
        std::optional<SIMD_FLOAT*> 
-       Execute(const BPM& bpms, SIMD_FLOAT* PCMS, const std::string& dbRoot);
+       Execute(const BPM& bpms, SIMD_FLOAT* PCMS, litedb& db);
    
        bool SendData(soundtouch::SoundTouch*& stp, Decoder*& dp);
    };

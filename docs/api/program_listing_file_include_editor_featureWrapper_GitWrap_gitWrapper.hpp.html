@@ -95,6 +95,8 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;git2/repository.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gitLog.hpp&quot;</span>
 
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fileNameSanitizer.hpp&quot;</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">MAYBE_BLAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">BlameController</span><span class="o">&gt;</span><span class="p">;</span>
 
@@ -103,7 +105,7 @@
 
 <span class="k">using</span><span class="w"> </span><span class="n">BRANCH_HANDLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">gitwrap</span><span class="o">::</span><span class="n">branch</span><span class="o">&gt;</span><span class="p">;</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">GitWrapper</span><span class="p">{</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">GitWrapper</span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">git_signature</span><span class="o">*</span><span class="w"> </span><span class="n">auth_sign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">AddController</span><span class="o">&gt;</span><span class="w"> </span><span class="n">addIndex</span><span class="p">;</span>
@@ -112,15 +114,15 @@
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">gitwrap</span><span class="o">::</span><span class="n">logHandle</span><span class="o">&gt;</span><span class="w"> </span><span class="n">log_hdl</span><span class="p">;</span>
 <span class="w">    </span><span class="n">BRANCH_HANDLE</span><span class="w"> </span><span class="n">handleBranch</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w">  </span><span class="n">path</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w">  </span><span class="n">path</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w">  </span><span class="n">path</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w">  </span><span class="n">path</span><span class="p">);</span>
 
 <span class="w">    </span><span class="n">DiffResult</span><span class="w"> </span><span class="nf">diff</span><span class="p">(</span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="o">&amp;</span><span class="w"> </span><span class="n">oldCommit</span><span class="p">,</span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="o">&amp;</span><span class="w"> </span><span class="n">newCommit</span><span class="p">);</span>
 
 <span class="w">    </span><span class="n">MAYBE_BLAME</span><span class="w"> </span><span class="nf">Blame</span><span class="p">(</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">filepath</span><span class="p">,</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">filepath</span><span class="p">,</span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="o">&amp;</span><span class="w"> </span><span class="n">newCommit</span><span class="p">,</span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="o">&amp;</span><span class="w"> </span><span class="n">oldCommit</span><span class="p">);</span>
 
@@ -134,13 +136,14 @@
 
 
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">close</span><span class="p">();</span>
+
 <span class="w">    </span><span class="n">GitWrapper</span><span class="p">();</span>
 <span class="w">    </span><span class="o">~</span><span class="n">GitWrapper</span><span class="p">();</span>
 <span class="p">};</span>
 
 
 
-<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_GitHandler</span><span class="p">{</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">PDJE_GitHandler</span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">git_signature</span><span class="o">*</span><span class="w"> </span><span class="n">sign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="k">public</span><span class="o">:</span>
@@ -163,12 +166,12 @@
 
 <span class="w">    </span><span class="n">DiffResult</span><span class="w"> </span><span class="nf">GetDiff</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="o">&amp;</span><span class="w"> </span><span class="n">oldTimeStamp</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="o">&amp;</span><span class="w"> </span><span class="n">newTimeStamp</span><span class="p">);</span>
 
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">DeleteGIT</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">DeleteGIT</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Close</span><span class="p">();</span>
 <span class="w">    </span><span class="c1">// SaveDatas GetCommits();</span>
 
-
+<span class="w">    </span><span class="n">PDJE_GitHandler</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
 <span class="w">    </span><span class="n">PDJE_GitHandler</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">auth_name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">auth_email</span><span class="p">);</span>
 <span class="w">    </span><span class="o">~</span><span class="n">PDJE_GitHandler</span><span class="p">();</span>
 

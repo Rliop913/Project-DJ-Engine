@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 - ``tempDB.hpp`` (:ref:`file_include_MainObjects_tempDBObject_tempDB.hpp`)
 
 

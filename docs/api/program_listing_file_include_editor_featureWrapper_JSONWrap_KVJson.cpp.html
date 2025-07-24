@@ -119,28 +119,44 @@
 
 <span class="k">template</span><span class="o">&lt;&gt;</span>
 <span class="kt">bool</span>
-<span class="n">PDJE_JSONHandler</span><span class="o">&lt;</span><span class="n">KV_W</span><span class="o">&gt;::</span><span class="n">load</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">)</span>
+<span class="n">PDJE_JSONHandler</span><span class="o">&lt;</span><span class="n">KV_W</span><span class="o">&gt;::</span><span class="n">load</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">filepath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">filepath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;keyvaluemetadata.PDJE&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">)){</span>
 <span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">is_regular_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">)){</span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="nf">jfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">);</span>
 
-<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">jfile</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">jfile</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to open KVJson file. from PDJE_JSONHandler&lt;KW_W&gt; load. path: &quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
 
 <span class="w">            </span><span class="k">try</span><span class="p">{</span><span class="w"> </span><span class="n">jfile</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">ROOT</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">            </span><span class="k">catch</span><span class="p">(...){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">){</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to load data from file. from PDJE_JSONHandler&lt;KW_W&gt; load. ErrException: &quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
 
 <span class="w">            </span><span class="n">jfile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">else</span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;path is not regular file. from PDJE_JSONHandler&lt;KW_W&gt; load. path: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
 <span class="w">        </span><span class="n">fs</span><span class="o">::</span><span class="n">create_directories</span><span class="p">(</span><span class="n">filepath</span><span class="p">.</span><span class="n">parent_path</span><span class="p">());</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">ofstream</span><span class="w"> </span><span class="nf">jfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">jfile</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">jfile</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to make or open new json file. from PDJE_JSONHandler&lt;KW_W&gt; load. path: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">jfile</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setw</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ROOT</span><span class="p">;</span>
 <span class="w">        </span><span class="n">jfile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
@@ -151,7 +167,7 @@
 <span class="k">template</span><span class="o">&lt;&gt;</span>
 <span class="kt">int</span>
 <span class="n">PDJE_JSONHandler</span><span class="o">&lt;</span><span class="n">KV_W</span><span class="o">&gt;::</span><span class="n">deleteLine</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">args</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">args</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">skipType</span><span class="p">,</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">skipDetail</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
 </pre></div>

@@ -9,6 +9,11 @@ File gitWrapper.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+High level Git helpers used by the editor. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none
@@ -36,7 +41,11 @@ Includes
 
 - ``DiffController.hpp`` (:ref:`file_include_editor_featureWrapper_GitWrap_Diff_DiffController.hpp`)
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
+
 - ``editorBranch.hpp`` (:ref:`file_include_editor_featureWrapper_GitWrap_Branch_editorBranch.hpp`)
+
+- ``fileNameSanitizer.hpp`` (:ref:`file_include_db_fileNameSanitizer.hpp`)
 
 - ``git2.h``
 

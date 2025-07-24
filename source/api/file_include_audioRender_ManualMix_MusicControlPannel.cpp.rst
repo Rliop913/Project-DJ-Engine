@@ -30,9 +30,13 @@ Includes
 --------
 
 
+- ``Decoder.hpp`` (:ref:`file_include_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`)
+
 - ``MusicControlPannel-inl.h`` (:ref:`file_include_audioRender_ManualMix_MusicControlPannel-inl.h`)
 
 - ``MusicControlPannel.hpp`` (:ref:`file_include_audioRender_ManualMix_MusicControlPannel.hpp`)
+
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
 
 
 

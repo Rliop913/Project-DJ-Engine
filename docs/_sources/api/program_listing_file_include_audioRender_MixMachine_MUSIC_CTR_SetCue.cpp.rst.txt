@@ -12,6 +12,8 @@ Program Listing for File SetCue.cpp
 
    #include "MUSIC_CTR.hpp"
    
+   #include "PDJE_LOG_SETTER.hpp"
+   
    #define ORIGIN_TO_TARGET(TARGET, ORIGIN) (TARGET / ORIGIN)
    
    void
@@ -85,7 +87,6 @@ Program Listing for File SetCue.cpp
            }
        }
    }
-   #include <iostream>
    std::vector<PlayPosition>::iterator
    Ingredients::GetSameGidx(GLOBAL_POS gidx)
    {

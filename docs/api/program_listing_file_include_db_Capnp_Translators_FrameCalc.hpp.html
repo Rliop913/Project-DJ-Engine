@@ -87,7 +87,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CapnpBinary.hpp&quot;</span>
 
 
-
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
 
 
 <span class="c1">// #include &lt;hwy/highway.h&gt;</span>
@@ -124,7 +124,7 @@
 <span class="w">    </span><span class="p">);</span>
 <span class="p">};</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">BpmFragment</span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">BpmFragment</span><span class="p">{</span>
 <span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">bar</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">beat</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">separate</span><span class="p">;</span>
@@ -132,7 +132,7 @@
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">bpm</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">BpmStruct</span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">BpmStruct</span><span class="p">{</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BpmFragment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fragments</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">sortFragment</span><span class="p">();</span>
@@ -147,7 +147,7 @@
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">MixStruct</span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">MixStruct</span><span class="p">{</span>
 <span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">frame_in</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">frame_out</span><span class="p">;</span>
 <span class="w">    </span><span class="n">MBData</span><span class="o">::</span><span class="n">Reader</span><span class="w"> </span><span class="n">RP</span><span class="p">;</span>

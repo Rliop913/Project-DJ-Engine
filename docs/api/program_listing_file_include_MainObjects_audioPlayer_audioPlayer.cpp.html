@@ -80,7 +80,7 @@
 <span id="program-listing-file-include-mainobjects-audioplayer-audioplayer-cpp"></span><h1>Program Listing for File audioPlayer.cpp<a class="headerlink" href="#program-listing-for-file-audioplayer-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_MainObjects_audioPlayer_audioPlayer.cpp.html#file-include-mainobjects-audioplayer-audioplayer-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/MainObjects/audioPlayer/audioPlayer.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;audioPlayer.hpp&quot;</span>
-
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
 
 <span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">FullPreRender_callback</span><span class="p">(</span><span class="n">ma_device</span><span class="o">*</span><span class="w"> </span><span class="n">pDevice</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">pOutput</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">pInput</span><span class="p">,</span><span class="w"> </span><span class="n">ma_uint32</span><span class="w"> </span><span class="n">frameCount</span><span class="p">);</span>
 
@@ -130,14 +130,14 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">renderer</span><span class="p">.</span><span class="n">LoadTrack</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">td</span><span class="p">)){</span>
-<span class="w">        </span><span class="n">STATUS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Failed to load track&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to load track. from audioPlayer::audioPlayer(db, td ,fbsize, hasmanual)&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">engineDatas</span><span class="p">.</span><span class="n">pcmDataPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">renderer</span><span class="p">.</span><span class="n">rendered_frames</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
 <span class="w">    </span><span class="n">engineDatas</span><span class="p">.</span><span class="n">maxCursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">renderer</span><span class="p">.</span><span class="n">rendered_frames</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">CHANNEL</span><span class="p">;</span>
 
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ma_device_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ctxt</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">player</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MA_SUCCESS</span><span class="p">){</span>
-<span class="w">        </span><span class="n">STATUS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Failed to init device&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to init device. from audioPlayer::audioPlayer(db, td ,fbsize, hasmanual)&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -153,7 +153,7 @@
 
 
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ma_device_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ctxt</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">player</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MA_SUCCESS</span><span class="p">){</span>
-<span class="w">        </span><span class="n">STATUS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Failed to init device&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to init device. from audioPlayer::audioPlayer(fbsize)&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="p">}</span>
@@ -161,13 +161,21 @@
 <span class="kt">bool</span>
 <span class="n">audioPlayer</span><span class="o">::</span><span class="n">Activate</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ma_device_start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">player</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MA_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">Res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ma_device_start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">player</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MA_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">Res</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to activate audioPlayer. from audioPlayer Activate&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Res</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span>
 <span class="n">audioPlayer</span><span class="o">::</span><span class="n">Deactivate</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ma_device_stop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">player</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MA_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">Res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ma_device_stop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">player</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MA_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">Res</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to deactivate audioPlayer. from audioPlayer Deactivate&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Res</span><span class="p">;</span>
 <span class="p">}</span>
 
 
@@ -191,7 +199,7 @@
 <span class="p">}</span>
 
 <span class="n">FXControlPannel</span><span class="o">*</span>
-<span class="n">audioPlayer</span><span class="o">::</span><span class="n">GetFXControlPannel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">title</span><span class="p">)</span>
+<span class="n">audioPlayer</span><span class="o">::</span><span class="n">GetFXControlPannel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">title</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;__PDJE__MAIN__&quot;</span><span class="p">){</span>
 <span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">engineDatas</span><span class="p">.</span><span class="n">FXManualPannel</span><span class="p">.</span><span class="n">has_value</span><span class="p">()){</span>
@@ -204,6 +212,7 @@
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">engineDatas</span><span class="p">.</span><span class="n">MusCtrPannel</span><span class="o">-&gt;</span><span class="n">getFXHandle</span><span class="p">(</span><span class="n">title</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">else</span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to return fx control pannel. from audioPlayer GetFXControlPannel&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -217,6 +226,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="p">(</span><span class="n">engineDatas</span><span class="p">.</span><span class="n">MusCtrPannel</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to return music control pannel. from audioPlayer GetMusicControlPannel&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>

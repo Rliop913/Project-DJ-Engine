@@ -16,21 +16,22 @@ Program Listing for File dbState.hpp
    #include <vector>
    
    #include <sqlite3.h>
-   
-   #ifdef __WINDOWS__
+   #include "PDJE_EXPORT_SETTER.hpp"
+   #include "fileNameSanitizer.hpp"
+   #ifdef WIN32
        using u_int8_t = uint8_t;
    #endif
    
    using BIN = std::vector<u_int8_t>;
    
    enum COL_TYPE{
-       INT,
-       DOUBLE,
-       TEXT,
-       BLOB
+       PDJE_INT,
+       PDJE_DOUBLE,
+       PDJE_TEXT,
+       PDJE_BLOB
    };
    
-   struct stmt
+   struct PDJE_API stmt
    {
    public:
    
@@ -38,7 +39,10 @@ Program Listing for File dbState.hpp
    
        sqlite3_stmt* S = nullptr;
        int bind_null(int idx);
-       int bind_text(int idx, std::string& str);
+       int bind_text(int idx, SANITIZED_ORNOT& str);
+   
+   
+       // int bind_u8text(int idx, std::u8string& str);
        int bind_blob(int idx, BIN& bin);
        int bind_double(int idx, double num);
        int bind_int(int idx, double num);

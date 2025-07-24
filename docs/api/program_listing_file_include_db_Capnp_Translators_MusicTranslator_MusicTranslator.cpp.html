@@ -80,6 +80,7 @@
 <span id="program-listing-file-include-db-capnp-translators-musictranslator-musictranslator-cpp"></span><h1>Program Listing for File MusicTranslator.cpp<a class="headerlink" href="#program-listing-for-file-musictranslator-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_db_Capnp_Translators_MusicTranslator_MusicTranslator.cpp.html#file-include-db-capnp-translators-musictranslator-musictranslator-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/db/Capnp/Translators/MusicTranslator/MusicTranslator.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MusicTranslator.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="kt">bool</span>
 <span class="nf">MusicTranslator::Read</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CapReader</span><span class="o">&lt;</span><span class="n">MusicBinaryCapnpData</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">binary</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">startFrame</span><span class="p">)</span>
@@ -96,8 +97,10 @@
 <span class="w">                </span><span class="n">frg</span><span class="p">.</span><span class="n">bpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">stod</span><span class="p">(</span><span class="n">DVec</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getBpm</span><span class="p">().</span><span class="n">cStr</span><span class="p">());</span>
 
 <span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">catch</span><span class="p">(...)</span>
+<span class="w">            </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to convert string to double. from MusicTranslator Read. ErrString: &quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="n">DVec</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getBpm</span><span class="p">().</span><span class="n">cStr</span><span class="p">());</span>
 <span class="w">                </span><span class="k">continue</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="n">bpms</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">frg</span><span class="p">);</span>

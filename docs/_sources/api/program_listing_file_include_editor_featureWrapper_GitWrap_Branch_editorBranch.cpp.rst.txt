@@ -12,7 +12,7 @@ Program Listing for File editorBranch.cpp
 
    #include  "editorBranch.hpp"
    #include "git2/oid.h"
-   
+   #include "PDJE_LOG_SETTER.hpp"
    using namespace gitwrap;
    
    
@@ -21,6 +21,8 @@ Program Listing for File editorBranch.cpp
    {
        git_branch_iterator* branchIT = nullptr;
        if(git_branch_iterator_new(&branchIT, repo_pointer, GIT_BRANCH_LOCAL) != 0){
+           critlog("failed to iterate branch. from gitwrap::branch ShowExistBranch. gitLog: ");
+           critlog(git_error_last()->message);
            return std::vector<std::string>();
        }
    
@@ -58,11 +60,15 @@ Program Listing for File editorBranch.cpp
    {
        git_revwalk* walker = nullptr;
        if(git_revwalk_new(&walker, repo_pointer) != 0){
+           critlog("failed to reverse walk. from gitwrap::branch ShowExistCommitsOnBranch. gitLog: ");
+           critlog(git_error_last()->message);
            return std::vector<commit>();
        }
    
        if(git_revwalk_push_ref(walker, ToBranchRefName<const std::string&>(branchName).c_str()) != 0){
            git_revwalk_free(walker);
+           critlog("failed to push reverse walk ref. from gitwrap::branch ShowExistCommitsOnBranch. gitLog: ");
+           critlog(git_error_last()->message);
            return std::vector<commit>();
        }
    
@@ -91,6 +97,8 @@ Program Listing for File editorBranch.cpp
            return true;
        }
        else{
+           critlog("failed to set branch. from gitwrap::branch SetBranch. gitLog: ");
+           critlog(git_error_last()->message);
            return false;
        }
    }
@@ -101,6 +109,7 @@ Program Listing for File editorBranch.cpp
    {
        auto head = GetHEAD();
        if(!head.has_value()){
+           critlog("failed to get head. from gitwrap::branch MakeNewFromHEAD.");
            return false;
        }
        git_reference* newbranch = nullptr;
@@ -113,6 +122,8 @@ Program Listing for File editorBranch.cpp
        if(newbranch != nullptr){
            git_reference_free(newbranch);
        }
+       critlog("failed to make new from head. from gitwrap::branch MakeNewFromHEAD. gitLog: ");
+       critlog(git_error_last()->message);
        return false;
    }
    
@@ -125,6 +136,8 @@ Program Listing for File editorBranch.cpp
            return SetBranch(newBranchName);
        }
        else{
+           critlog("failed to create from commit . from gitwrap::branch MakeNewFromCommit. gitLog: ");
+           critlog(git_error_last()->message);
            return false;
        }
    }
@@ -135,10 +148,14 @@ Program Listing for File editorBranch.cpp
    
        git_reference* branchForDelete = nullptr;
        if(git_branch_lookup(&branchForDelete, repo_pointer, branchName.c_str(), GIT_BRANCH_LOCAL) != 0){
+           warnlog("failed to ref branch from gitwrap::branch DeleteBranch . gitLog: ");
+           warnlog(git_error_last()->message);
            return false;
        }
        if(git_branch_delete(branchForDelete) != 0){
            git_reference_free(branchForDelete);
+           critlog("failed to delete branch. from gitwrap::branch DeleteBranch. gitLog: ");
+           critlog(git_error_last()->message);
            return false;
        }
        git_reference_free(branchForDelete);
@@ -150,7 +167,12 @@ Program Listing for File editorBranch.cpp
    branch::CheckoutThisHEAD()
    {
        FLAG_TEMP_CHECKOUT.reset();
-       return git_checkout_head(repo_pointer, &checkoutOpts) == 0;
+       bool chkHead = git_checkout_head(repo_pointer, &checkoutOpts) == 0;
+       if(!chkHead){
+           critlog("failed to checkout to head. from gitwrap::branch CheckouotThisHEAD. gitLog: ");
+           critlog(git_error_last()->message);
+       }
+       return chkHead;
    }
    
    bool
@@ -158,11 +180,15 @@ Program Listing for File editorBranch.cpp
    {
        git_object* target = nullptr;
        if (git_object_lookup(&target, repo_pointer, &c.commitID, GIT_OBJECT_COMMIT) != 0){
+           critlog("failed to ref target. from gitwrap::branch CheckoutCommitTemp. gitLog: ");
+           critlog(git_error_last()->message);
            return false;
        }
    
        if (git_checkout_tree(repo_pointer, target, &checkoutOpts) != 0) {
            git_object_free(target);
+           critlog("failed to checkout to tree. from gitwrap::branch CheckoutCommitTemp. gitLog: ");
+           critlog(git_error_last()->message);
            return false;
        }
        if(FLAG_TEMP_CHECKOUT.has_value()){
@@ -191,6 +217,8 @@ Program Listing for File editorBranch.cpp
                git_reference_free(headref);
            }
        }
+       critlog("failed to getHead. from gitwrap::branch GetHEAD. gitLog: ");
+       critlog(git_error_last()->message);
        return std::nullopt;
    }
    

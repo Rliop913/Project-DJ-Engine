@@ -81,6 +81,8 @@
 <p>↰ <a class="reference internal" href="file_include_audioRender_MixMachine_MUSIC_CTR_SetCue.cpp.html#file-include-audiorender-mixmachine-music-ctr-setcue-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MUSIC_CTR.hpp&quot;</span>
 
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
+
 <span class="cp">#define ORIGIN_TO_TARGET(TARGET, ORIGIN) (TARGET / ORIGIN)</span>
 
 <span class="kt">void</span>
@@ -154,7 +156,6 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PlayPosition</span><span class="o">&gt;::</span><span class="n">iterator</span>
 <span class="n">Ingredients</span><span class="o">::</span><span class="n">GetSameGidx</span><span class="p">(</span><span class="n">GLOBAL_POS</span><span class="w"> </span><span class="n">gidx</span><span class="p">)</span>
 <span class="p">{</span>

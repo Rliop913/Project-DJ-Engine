@@ -34,6 +34,8 @@ Includes
 
 - ``MixMachine.hpp`` (:ref:`file_include_audioRender_MixMachine_MixMachine.hpp`)
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
+
 - ``audioCallbacks.hpp`` (:ref:`file_include_MainObjects_audioPlayer_audioCallbacks.hpp`)
 
 - ``audioRender.hpp`` (:ref:`file_include_audioRender_audioRender.hpp`)

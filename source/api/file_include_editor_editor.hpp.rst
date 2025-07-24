@@ -9,6 +9,11 @@ File editor.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+High level editor interface for :ref:`exhale_class_classPDJE` projects. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none
@@ -30,7 +35,11 @@ Includes
 --------
 
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
+
 - ``dbRoot.hpp`` (:ref:`file_include_db_dbRoot.hpp`)
+
+- ``fileNameSanitizer.hpp`` (:ref:`file_include_db_fileNameSanitizer.hpp`)
 
 - ``filesystem``
 

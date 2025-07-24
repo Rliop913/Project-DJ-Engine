@@ -123,12 +123,13 @@
 <span class="n">PDJE_JSONHandler</span><span class="o">&lt;</span><span class="n">MUSIC_W</span><span class="o">&gt;::</span><span class="n">add</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">MusicArgs</span><span class="o">&amp;</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">nj</span><span class="w"> </span><span class="n">tempMus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="p">{</span><span class="s">&quot;bpm&quot;</span><span class="w">      </span><span class="p">,</span><span class="w">   </span><span class="n">args</span><span class="p">.</span><span class="n">bpm</span><span class="w">                       </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span><span class="s">&quot;bar&quot;</span><span class="w">      </span><span class="p">,</span><span class="w">   </span><span class="n">args</span><span class="p">.</span><span class="n">bar</span><span class="w">                        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span><span class="s">&quot;beat&quot;</span><span class="w">     </span><span class="p">,</span><span class="w">   </span><span class="n">args</span><span class="p">.</span><span class="n">beat</span><span class="w">                       </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span><span class="s">&quot;separate&quot;</span><span class="w"> </span><span class="p">,</span><span class="w">   </span><span class="n">args</span><span class="p">.</span><span class="n">separate</span><span class="w">                   </span><span class="p">}</span>
+<span class="w">        </span><span class="p">{</span><span class="s">&quot;bpm&quot;</span><span class="w">      </span><span class="p">,</span><span class="w">   </span><span class="n">args</span><span class="p">.</span><span class="n">bpm</span><span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="s">&quot;bar&quot;</span><span class="w">      </span><span class="p">,</span><span class="w">   </span><span class="n">args</span><span class="p">.</span><span class="n">bar</span><span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="s">&quot;beat&quot;</span><span class="w">     </span><span class="p">,</span><span class="w">   </span><span class="n">args</span><span class="p">.</span><span class="n">beat</span><span class="w">       </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="s">&quot;separate&quot;</span><span class="w"> </span><span class="p">,</span><span class="w">   </span><span class="n">args</span><span class="p">.</span><span class="n">separate</span><span class="w">   </span><span class="p">}</span>
 <span class="w">    </span><span class="p">};</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">ROOT</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">PDJEMUSICBPM</span><span class="p">)){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;music json root not found. from PDJE_JSONHandler&lt;MUSIC_W&gt; add.&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">ROOT</span><span class="p">[</span><span class="n">PDJEMUSICBPM</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">tempMus</span><span class="p">);</span>
@@ -148,12 +149,14 @@
 <span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ROOT</span><span class="p">[</span><span class="n">PDJEMUSICBPM</span><span class="p">].</span><span class="n">at</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 <span class="w">            </span><span class="n">filler</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">setBar</span><span class="w">        </span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="s">&quot;bar&quot;</span><span class="w">       </span><span class="p">]);</span>
 <span class="w">            </span><span class="n">filler</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">setBeat</span><span class="w">       </span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="s">&quot;beat&quot;</span><span class="w">      </span><span class="p">]);</span>
-<span class="w">            </span><span class="n">filler</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">setBpm</span><span class="w">        </span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="s">&quot;bpm&quot;</span><span class="w">       </span><span class="p">].</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="w">            </span><span class="n">filler</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">setBpm</span><span class="w">        </span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="s">&quot;bpm&quot;</span><span class="w">       </span><span class="p">].</span><span class="n">get</span><span class="o">&lt;</span><span class="n">DONT_SANITIZE</span><span class="o">&gt;</span><span class="p">());</span>
 <span class="w">            </span><span class="n">filler</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">setSeparate</span><span class="w">   </span><span class="p">(</span><span class="n">target</span><span class="p">[</span><span class="s">&quot;separate&quot;</span><span class="w">  </span><span class="p">]);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tempMusBin</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">catch</span><span class="p">(...){</span>
+<span class="w">    </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;something failed. from PDJE_JSONHandler&lt;MUSIC_W&gt; render. ErrException: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -166,13 +169,18 @@
 <span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">ROOT</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">PDJEMUSICBPM</span><span class="p">)){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;music json root not found. from PDJE_JSONHandler&lt;MUSIC_W&gt; getAll.&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ROOT</span><span class="p">[</span><span class="n">PDJEMUSICBPM</span><span class="p">]){</span>
 <span class="w">        </span><span class="n">EDIT_ARG_MUSIC</span><span class="w"> </span><span class="n">tempargs</span><span class="p">;</span>
-<span class="w">        </span><span class="n">tempargs</span><span class="p">.</span><span class="n">musicName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ROOT</span><span class="p">[</span><span class="s">&quot;TITLE&quot;</span><span class="p">];</span>
+
+
+<span class="w">        </span><span class="n">tempargs</span><span class="p">.</span><span class="n">musicName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Name_Sanitizer</span><span class="o">::</span><span class="n">getFileName</span><span class="p">(</span><span class="n">ROOT</span><span class="p">[</span><span class="s">&quot;TITLE&quot;</span><span class="p">].</span><span class="n">get</span><span class="o">&lt;</span><span class="n">SANITIZED</span><span class="o">&gt;</span><span class="p">());</span>
+
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">tempBpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">[</span><span class="s">&quot;bpm&quot;</span><span class="p">].</span><span class="n">get</span><span class="o">&lt;</span><span class="n">DONT_SANITIZE</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="w">        </span><span class="n">tempargs</span><span class="p">.</span><span class="n">arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">i</span><span class="p">[</span><span class="s">&quot;bpm&quot;</span><span class="w">        </span><span class="p">],</span>
+<span class="w">            </span><span class="n">tempBpm</span><span class="w">         </span><span class="p">,</span>
 <span class="w">            </span><span class="n">i</span><span class="p">[</span><span class="s">&quot;bar&quot;</span><span class="w">         </span><span class="p">],</span>
 <span class="w">            </span><span class="n">i</span><span class="p">[</span><span class="s">&quot;beat&quot;</span><span class="w">        </span><span class="p">],</span>
 <span class="w">            </span><span class="n">i</span><span class="p">[</span><span class="s">&quot;separate&quot;</span><span class="w">    </span><span class="p">]</span>
@@ -182,28 +190,43 @@
 <span class="p">}</span>
 <span class="k">template</span><span class="o">&lt;&gt;</span>
 <span class="kt">bool</span>
-<span class="n">PDJE_JSONHandler</span><span class="o">&lt;</span><span class="n">MUSIC_W</span><span class="o">&gt;::</span><span class="n">load</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">)</span>
+<span class="n">PDJE_JSONHandler</span><span class="o">&lt;</span><span class="n">MUSIC_W</span><span class="o">&gt;::</span><span class="n">load</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">filepath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">filepath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;musicmetadata.PDJE&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">)){</span>
 <span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">is_regular_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">)){</span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="nf">jfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">);</span>
 
-<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">jfile</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">jfile</span><span class="p">.</span><span class="n">is_open</span><span class="p">()){</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;cannot open music json file. from PDJE_JSONHandler&lt;MUSIC_W&gt; load. path: &quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
 
 <span class="w">            </span><span class="k">try</span><span class="p">{</span><span class="w"> </span><span class="n">jfile</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">ROOT</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">            </span><span class="k">catch</span><span class="p">(...){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">){</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;cannot load music json data from file. from PDJE_JSONHandler&lt;MUSIC_W&gt; load. ErrException: &quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
 
 <span class="w">            </span><span class="n">jfile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">else</span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;music json file path is not regular file.  from PDJE_JSONHandler&lt;MUSIC_W&gt; load. path: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
 <span class="w">        </span><span class="n">fs</span><span class="o">::</span><span class="n">create_directories</span><span class="p">(</span><span class="n">filepath</span><span class="p">.</span><span class="n">parent_path</span><span class="p">());</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">ofstream</span><span class="w"> </span><span class="nf">jfile</span><span class="p">(</span><span class="n">filepath</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">jfile</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">jfile</span><span class="p">.</span><span class="n">is_open</span><span class="p">()){</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;cannot open or make new music json file. from PDJE_JSONHandler&lt;MUSIC_W&gt; load. path: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">jfile</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setw</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ROOT</span><span class="p">;</span>
 <span class="w">        </span><span class="n">jfile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 

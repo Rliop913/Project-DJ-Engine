@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classgitwrap_1_1branch" kind="class" language="C++" prot="public">
     <compoundname>gitwrap::branch</compoundname>
     <includes refid="editorBranch_8hpp" local="no">editorBranch.hpp</includes>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="15" column="24" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="15" bodyend="-1"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="22" column="24" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classgitwrap_1_1branch_1a0c8c937a6057d4d638e4dac6e3482265" prot="private" static="no" mutable="no">
         <type>git_checkout_options</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="16" column="30" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="16" bodyend="-1"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="23" column="30" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="23" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-attrib">
@@ -42,12 +42,13 @@
         <name>branchName</name>
         <qualifiedname>gitwrap::branch::branchName</qualifiedname>
         <briefdescription>
+<para>Name of the current branch. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="19" column="21" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="19" bodyend="-1"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="27" column="21" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classgitwrap_1_1branch_1a93b2d69e629d19540344910277a643c3" prot="public" static="no" mutable="no">
         <type>std::optional&lt; git_oid &gt;</type>
@@ -56,12 +57,13 @@
         <name>FLAG_TEMP_CHECKOUT</name>
         <qualifiedname>gitwrap::branch::FLAG_TEMP_CHECKOUT</qualifiedname>
         <briefdescription>
+<para>Temporary checkout commit used when jumping to a commit. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="20" column="23" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="20" bodyend="-1"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="29" column="23" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="29" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -81,12 +83,13 @@
           <declname>branchName</declname>
         </param>
         <briefdescription>
+<para>Convert a name to a Git branch reference. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="24" column="9"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="36" column="9"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -97,12 +100,13 @@
         <name>ShowExistBranch</name>
         <qualifiedname>gitwrap::branch::ShowExistBranch</qualifiedname>
         <briefdescription>
+<para>List all branches in the repository. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="26" column="21" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="8" bodyend="27"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="39" column="21" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="8" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classgitwrap_1_1branch_1a55f244956fde3e69eba54f8454858684" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="structgitwrap_1_1commit" kindref="compound">commit</ref> &gt;</type>
@@ -115,12 +119,13 @@
           <declname>branchName</declname>
         </param>
         <briefdescription>
+<para>Get commits that exist on the given branch. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="27" column="21" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="45" bodyend="72"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="41" column="21" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="47" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classgitwrap_1_1branch_1a5e97f25efd4a6a61b06b0e31437c3bfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -133,12 +138,13 @@
           <declname>branchName</declname>
         </param>
         <briefdescription>
+<para>Switch to the specified branch. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="29" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="75" bodyend="84"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="44" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="81" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classgitwrap_1_1branch_1a051bd627fd9204e95bcdf55f2356ca68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -156,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="32" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="88" bodyend="105"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="47" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="96" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="classgitwrap_1_1branch_1a2e4615dedd0d65a107fd64548982d4f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -178,7 +184,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="33" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="108" bodyend="118"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="48" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="119" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="classgitwrap_1_1branch_1a5fc5405a63a380548fa4b8b6c720b672" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -196,7 +202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="34" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="121" bodyend="134"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="49" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="134" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classgitwrap_1_1branch_1a544e4ab210cea6436eb8238b70946fdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -210,7 +216,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="35" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="138" bodyend="142"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="50" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="155" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="classgitwrap_1_1branch_1ab313aded5d74b26e3d6f4ccee8c36710" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -228,7 +234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="36" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="145" bodyend="163"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="51" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="167" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="classgitwrap_1_1branch_1a5df6117c678de498f588cdbb07473cf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; <ref refid="structgitwrap_1_1commit" kindref="compound">commit</ref> &gt;</type>
@@ -237,12 +243,13 @@
         <name>GetHEAD</name>
         <qualifiedname>gitwrap::branch::GetHEAD</qualifiedname>
         <briefdescription>
+<para>Retrieve the current HEAD commit. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="38" column="23" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="167" bodyend="183"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="54" column="23" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="193" bodyend="211"/>
       </memberdef>
       <memberdef kind="function" id="classgitwrap_1_1branch_1a18bc053bbb36db18ab0c9d1080c9f43c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -260,7 +267,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="40" column="14"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="56" column="14"/>
       </memberdef>
       <memberdef kind="function" id="classgitwrap_1_1branch_1ac3e5b561ef236b207fad3c4788fc7b89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -278,7 +285,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="42" column="9" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="42" bodyend="49"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="58" column="9" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="58" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classgitwrap_1_1branch_1a68fbfd72e7aa5aa101e6c8c9822f370a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -292,7 +299,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="50" column="9" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="185" bodyend="188"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="66" column="9" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="213" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="classgitwrap_1_1branch_1a9edf474f1e04ba4830b6d7ace83fc654" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -312,7 +319,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" line="31" column="1" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="31" bodyend="33"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" line="33" column="1" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="33" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classgitwrap_1_1branch_1acae49b5f6758173db14821aad1b9bb71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -332,10 +339,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" line="37" column="1" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="37" bodyend="39"/>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" line="39" column="1" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="39" bodyend="41"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>Represents a Git branch and common branch operations. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
@@ -356,7 +364,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="13" column="5" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="13" bodyend="51"/>
+    <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="20" column="5" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="20" bodyend="67"/>
     <listofallmembers>
       <member refid="classgitwrap_1_1branch_1ac3e5b561ef236b207fad3c4788fc7b89" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>branch</name></member>
       <member refid="classgitwrap_1_1branch_1a059d40014bd9076186a2450c8792790a" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>branchName</name></member>

@@ -10,10 +10,14 @@ Program Listing for File BlameController.hpp
 
 .. code-block:: cpp
 
+   
    #pragma once
    #include <git2.h>
    #include <string>
    #include <optional>
+   #include <filesystem>
+   namespace fs = std::filesystem;
+   
    struct BlameResult{
    
        git_oid commitID;
@@ -34,11 +38,13 @@ Program Listing for File BlameController.hpp
            unsigned int blameAmount = 0;
        public:
            BlameController() = default;
+   
            bool BlameOpen(
-               git_repository *repo, 
-               const std::string& path, 
+               git_repository *repo,
+               const fs::path& path,
                git_blame_options *options = nullptr);
-           
+   
            MAYBE_BLAME_RESULT operator[](unsigned int idx);
            ~BlameController();
    };
+   

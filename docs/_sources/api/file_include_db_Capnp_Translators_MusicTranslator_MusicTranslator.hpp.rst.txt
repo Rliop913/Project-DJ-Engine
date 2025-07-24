@@ -36,6 +36,8 @@ Includes
 
 - ``MusicBinary.capnp.h``
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
+
 - ``optional``
 
 - ``vector``

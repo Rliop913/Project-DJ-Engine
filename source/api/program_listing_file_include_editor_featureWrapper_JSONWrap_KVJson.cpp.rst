@@ -50,28 +50,44 @@ Program Listing for File KVJson.cpp
    
    template<>
    bool
-   PDJE_JSONHandler<KV_W>::load(const std::string& path)
+   PDJE_JSONHandler<KV_W>::load(const fs::path& path)
    {
-       auto filepath = fs::path(path); 
+       
+       auto filepath = path / "keyvaluemetadata.PDJE";
        if(fs::exists(filepath)){
            if(fs::is_regular_file(filepath)){
                std::ifstream jfile(filepath);
                
-               if(!jfile.is_open()) return false;
+               if(!jfile.is_open()) {
+                   critlog("failed to open KVJson file. from PDJE_JSONHandler<KW_W> load. path: ");
+                   critlog(path.generic_string());
+                   return false;
+               }
    
                try{ jfile >> ROOT; }
-               catch(...){ return false; }
+               catch(std::exception& e){ 
+                   critlog("failed to load data from file. from PDJE_JSONHandler<KW_W> load. ErrException: ");
+                   critlog(e.what());
+                   return false; 
+               }
    
                jfile.close();
            }
            else{
+               critlog("path is not regular file. from PDJE_JSONHandler<KW_W> load. path: ");
+               critlog(path.generic_string());
                return false;
            }
        }
        else{
            fs::create_directories(filepath.parent_path());
            std::ofstream jfile(filepath);
-           if(!jfile.is_open()) return false;
+           if(!jfile.is_open()) {
+               critlog("failed to make or open new json file. from PDJE_JSONHandler<KW_W> load. path: ");
+               critlog(path.generic_string());
+               return false;
+           }
+           jfile << std::setw(4) << ROOT;
            jfile.close();
        }
        return true;
@@ -82,6 +98,6 @@ Program Listing for File KVJson.cpp
    template<> 
    int 
    PDJE_JSONHandler<KV_W>::deleteLine(
-       const std::string& args,
+       const DONT_SANITIZE& args,
        bool skipType, 
        bool skipDetail) = delete;

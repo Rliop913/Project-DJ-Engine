@@ -52,7 +52,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api_root.html#class-hierarchy">Class Hierarchy</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="api_root.html#classes-and-structs">Classes and Structs</a><ul class="current">
@@ -62,10 +61,8 @@
 <li class="toctree-l4"><a class="reference internal" href="structBpmStruct.html">Struct BpmStruct</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structBranchJSON.html">Struct BranchJSON</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDecoder.html">Struct Decoder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDeviceData.html">Struct DeviceData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDiffResult.html">Struct DiffResult</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDJ__JOBS.html">Struct DJ_JOBS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDuckTypeDevice.html">Struct DuckTypeDevice</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEDIT__ARG__MUSIC.html">Struct EDIT_ARG_MUSIC</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEightPointValues.html">Struct EightPointValues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structgitwrap_1_1BranchHead.html">Struct BranchHead</a></li>
@@ -83,6 +80,9 @@
 <li class="toctree-l4"><a class="reference internal" href="structMusicOnDeck.html">Struct MusicOnDeck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structNoteArgs.html">Struct NoteArgs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Editor_1_1MusicHandleStruct.html">Struct PDJE_Editor::MusicHandleStruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV.html">Struct PDJE_IDEV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Finders.html">Struct PDJE_IDEV::Finders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Specifiers.html">Struct PDJE_IDEV::Specifiers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPlayPosition.html">Struct PlayPosition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPosition.html">Struct Position</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structstmt.html">Struct stmt</a></li>
@@ -117,7 +117,6 @@
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1branch.html">Class branch</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1logHandle.html">Class logHandle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classGitWrapper.html">Class GitWrapper</a></li>
-<li class="toctree-l4"><a class="reference internal" href="classInputEngine.html">Template Class InputEngine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classLinuxEVDEV.html">Class LinuxEVDEV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classlitedb.html">Class litedb</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classMeta.html">Class Meta</a></li>
@@ -135,7 +134,9 @@
 <li class="toctree-l4"><a class="reference internal" href="classPDJE.html">Class PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Editor.html">Class PDJE_Editor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__GitHandler.html">Class PDJE_GitHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Input.html">Class PDJE_Input</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JSONHandler.html">Template Class PDJE_JSONHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Name__Sanitizer.html">Class PDJE_Name_Sanitizer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaser__PDJE.html">Class Phaser_PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaserMan.html">Class PhaserMan</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classRobot__PDJE.html">Class Robot_PDJE</a></li>
@@ -210,8 +211,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N9trackdata9trackdataERKNSt6stringE">
-<span id="_CPPv3N9trackdata9trackdataERKNSt6stringE"></span><span id="_CPPv2N9trackdata9trackdataERKNSt6stringE"></span><span id="trackdata::trackdata__ssCR"></span><span class="target" id="structtrackdata_1a9c19dd077870d10a1ec3e45528b7c8dd"></span><span class="sig-name descname"><span class="n"><span class="pre">trackdata</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">trackTitle__</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9trackdata9trackdataERKNSt6stringE" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N9trackdata9trackdataERK11UNSANITIZED">
+<span id="_CPPv3N9trackdata9trackdataERK11UNSANITIZED"></span><span id="_CPPv2N9trackdata9trackdataERK11UNSANITIZED"></span><span id="trackdata::trackdata__UNSANITIZEDCR"></span><span class="target" id="structtrackdata_1a90e40030d24d72f1c94756fb297dc785"></span><span class="sig-name descname"><span class="n"><span class="pre">trackdata</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">trackTitle__</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9trackdata9trackdataERK11UNSANITIZED" title="Link to this definition"></a><br /></dt>
 <dd><p>Construct used for filtering track entries. </p>
 <p>Use this constructor to specify filtering conditions for a search query. Leave parameters blank</p>
 <dl class="field-list simple">
@@ -276,7 +277,7 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N9trackdata10trackTitleE">
-<span id="_CPPv3N9trackdata10trackTitleE"></span><span id="_CPPv2N9trackdata10trackTitleE"></span><span id="trackdata::trackTitle__ss"></span><span class="target" id="structtrackdata_1ad884b99bc7256d0efa79bb887638ace9"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">trackTitle</span></span></span><a class="headerlink" href="#_CPPv4N9trackdata10trackTitleE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N9trackdata10trackTitleE"></span><span id="_CPPv2N9trackdata10trackTitleE"></span><span id="trackdata::trackTitle__SANITIZED"></span><span class="target" id="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07.html#_CPPv49SANITIZED" title="SANITIZED"><span class="n"><span class="pre">SANITIZED</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">trackTitle</span></span></span><a class="headerlink" href="#_CPPv4N9trackdata10trackTitleE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
@@ -291,8 +292,8 @@
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N9trackdata13cachedMixListE">
-<span id="_CPPv3N9trackdata13cachedMixListE"></span><span id="_CPPv2N9trackdata13cachedMixListE"></span><span id="trackdata::cachedMixList__ss"></span><span class="target" id="structtrackdata_1a840062435bf79055fcebf7aee80ae8e9"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cachedMixList</span></span></span><a class="headerlink" href="#_CPPv4N9trackdata13cachedMixListE" title="Link to this definition"></a><br /></dt>
-<dd><p>Included music list. </p>
+<span id="_CPPv3N9trackdata13cachedMixListE"></span><span id="_CPPv2N9trackdata13cachedMixListE"></span><span id="trackdata::cachedMixList__SANITIZED"></span><span class="target" id="structtrackdata_1aa1e66043414a3f6fe79c3b74ba7dfde8"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07.html#_CPPv49SANITIZED" title="SANITIZED"><span class="n"><span class="pre">SANITIZED</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">cachedMixList</span></span></span><a class="headerlink" href="#_CPPv4N9trackdata13cachedMixListE" title="Link to this definition"></a><br /></dt>
+<dd><p>Included music list, csv data. </p>
 </dd></dl>
 
 </div>

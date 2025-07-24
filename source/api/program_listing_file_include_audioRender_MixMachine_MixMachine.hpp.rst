@@ -25,17 +25,23 @@ Program Listing for File MixMachine.hpp
    #include "Decoder.hpp"
    #include "BattleDj.hpp"
    
-   
+   #include "PDJE_LOG_SETTER.hpp"
+   #include <source_location>
    #define TRY(CODE)\
    try\
    {\
        CODE\
    }\
-   catch(...)\
+   catch(std::exception& e)\
    {\
+       auto now = std::source_location::current();\
+       critlog(now.file_name());\
+       std::string lineNumber = std::to_string(now.line());\
+       critlog(lineNumber);\
+       critlog(now.function_name());\
+       critlog(e.what());\
        return false;\
    }
-   
    
    
    
@@ -47,7 +53,7 @@ Program Listing for File MixMachine.hpp
    };
    
    using ID = long;
-   struct EightPointValues{
+   struct PDJE_API EightPointValues{
        float vals[8] = {0, };
        EightPointValues(const std::string& rawData){
            std::stringstream sdata(rawData);
@@ -71,13 +77,13 @@ Program Listing for File MixMachine.hpp
    
    #define FLAG_ALL_IS_OK -99
    
-   class MixMachine{
+   class PDJE_API MixMachine{
    private:
        // FRAME_POS getMixSize(FRAME_POS frames);
    public:
        int FLAG_SOMETHING_WRONG_ID = FLAG_ALL_IS_OK; //-99 is ok
        std::mutex renderLock;
-       std::vector<std::thread> renderPool;
+       // std::vector<std::thread> renderPool;
    
        std::unordered_map<ID, std::vector<MixStruct>> Memorized;
    

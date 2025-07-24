@@ -90,9 +90,10 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MixBinary.capnp.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MusicBinary.capnp.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;NoteBinary.capnp.h&quot;</span>
-
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">DType</span><span class="o">&gt;</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">CapReader</span><span class="p">{</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">CapReader</span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">kj</span><span class="o">::</span><span class="n">byte</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Origin</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">capnp</span><span class="o">::</span><span class="n">FlatArrayMessageReader</span><span class="o">&gt;</span><span class="w"> </span><span class="n">capreader</span><span class="p">;</span>
@@ -115,8 +116,10 @@
 <span class="w">            </span><span class="n">Rp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">capreader</span><span class="o">-&gt;</span><span class="n">getRoot</span><span class="o">&lt;</span><span class="n">DType</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">catch</span><span class="p">(...)</span>
+<span class="w">        </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to open capnpBinary. from CapReader open. ExceptionLog: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -126,7 +129,7 @@
 <span class="p">};</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">DType</span><span class="o">&gt;</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">CapWriter</span><span class="p">{</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">CapWriter</span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">capnp</span><span class="o">::</span><span class="n">MallocMessageBuilder</span><span class="o">&gt;</span><span class="w"> </span><span class="n">capwriter</span><span class="p">;</span>
 <span class="k">public</span><span class="o">:</span>
@@ -151,8 +154,10 @@
 <span class="w">            </span><span class="n">Wp</span><span class="o">-&gt;</span><span class="n">setDatas</span><span class="p">(</span><span class="n">readroot</span><span class="p">.</span><span class="n">getDatas</span><span class="p">());</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">catch</span><span class="p">(...)</span>
+<span class="w">        </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to open capnpBinary. from CapWriter open. ExceptionLog: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -160,13 +165,15 @@
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">makeNew</span><span class="p">(){</span>
 <span class="w">        </span><span class="k">try</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">capnp</span><span class="o">::</span><span class="n">MallocMessageBuilder</span><span class="w"> </span><span class="n">build</span><span class="p">;</span>
+
 <span class="w">            </span><span class="n">capwriter</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
 <span class="w">            </span><span class="n">Wp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">capwriter</span><span class="o">-&gt;</span><span class="n">initRoot</span><span class="o">&lt;</span><span class="n">DType</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">catch</span><span class="p">(...)</span>
+<span class="w">        </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to make new capnpWriter. from CapWriter makeNew. ExceptionLog: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -179,8 +186,10 @@
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">kj</span><span class="o">::</span><span class="n">byte</span><span class="o">&gt;</span><span class="w"> </span><span class="n">buffer</span><span class="p">(</span><span class="n">fbyte</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">fbyte</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">catch</span><span class="p">(...)</span>
+<span class="w">        </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to return capnp binary datas. from CapWriter out. ExceptionLog: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">kj</span><span class="o">::</span><span class="n">byte</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>

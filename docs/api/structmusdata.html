@@ -52,7 +52,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api_root.html#class-hierarchy">Class Hierarchy</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="api_root.html#classes-and-structs">Classes and Structs</a><ul class="current">
@@ -62,10 +61,8 @@
 <li class="toctree-l4"><a class="reference internal" href="structBpmStruct.html">Struct BpmStruct</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structBranchJSON.html">Struct BranchJSON</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDecoder.html">Struct Decoder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDeviceData.html">Struct DeviceData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDiffResult.html">Struct DiffResult</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDJ__JOBS.html">Struct DJ_JOBS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDuckTypeDevice.html">Struct DuckTypeDevice</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEDIT__ARG__MUSIC.html">Struct EDIT_ARG_MUSIC</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEightPointValues.html">Struct EightPointValues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structgitwrap_1_1BranchHead.html">Struct BranchHead</a></li>
@@ -83,6 +80,9 @@
 <li class="toctree-l4"><a class="reference internal" href="structMusicOnDeck.html">Struct MusicOnDeck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structNoteArgs.html">Struct NoteArgs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Editor_1_1MusicHandleStruct.html">Struct PDJE_Editor::MusicHandleStruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV.html">Struct PDJE_IDEV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Finders.html">Struct PDJE_IDEV::Finders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Specifiers.html">Struct PDJE_IDEV::Specifiers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPlayPosition.html">Struct PlayPosition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPosition.html">Struct Position</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structstmt.html">Struct stmt</a></li>
@@ -117,7 +117,6 @@
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1branch.html">Class branch</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1logHandle.html">Class logHandle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classGitWrapper.html">Class GitWrapper</a></li>
-<li class="toctree-l4"><a class="reference internal" href="classInputEngine.html">Template Class InputEngine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classLinuxEVDEV.html">Class LinuxEVDEV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classlitedb.html">Class litedb</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classMeta.html">Class Meta</a></li>
@@ -135,7 +134,9 @@
 <li class="toctree-l4"><a class="reference internal" href="classPDJE.html">Class PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Editor.html">Class PDJE_Editor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__GitHandler.html">Class PDJE_GitHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Input.html">Class PDJE_Input</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JSONHandler.html">Template Class PDJE_JSONHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Name__Sanitizer.html">Class PDJE_Name_Sanitizer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaser__PDJE.html">Class Phaser_PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaserMan.html">Class PhaserMan</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classRobot__PDJE.html">Class Robot_PDJE</a></li>
@@ -210,8 +211,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N7musdata7musdataERKNSt6stringERKNSt6stringERKNSt6stringEKd">
-<span id="_CPPv3N7musdata7musdataERKNSt6stringERKNSt6stringERKNSt6stringEKd"></span><span id="_CPPv2N7musdata7musdataERKNSt6stringERKNSt6stringERKNSt6stringEKd"></span><span id="musdata::musdata__ssCR.ssCR.ssCR.doubleC"></span><span class="target" id="structmusdata_1a8141efe3ecaacddb1d08024a52feb47a"></span><span class="sig-name descname"><span class="n"><span class="pre">musdata</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title__</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">composer__</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicPath__</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bpm__</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1.0</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7musdata7musdataERKNSt6stringERKNSt6stringERKNSt6stringEKd" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N7musdata7musdataERK11UNSANITIZEDRK11UNSANITIZEDRK15SANITIZED_ORNOTKd">
+<span id="_CPPv3N7musdata7musdataERK11UNSANITIZEDRK11UNSANITIZEDRK15SANITIZED_ORNOTKd"></span><span id="_CPPv2N7musdata7musdataERK11UNSANITIZEDRK11UNSANITIZEDRK15SANITIZED_ORNOTKd"></span><span id="musdata::musdata__UNSANITIZEDCR.UNSANITIZEDCR.SANITIZED_ORNOTCR.doubleC"></span><span class="target" id="structmusdata_1ac8327833d3447f764c9c9f5b2a3a343f"></span><span class="sig-name descname"><span class="n"><span class="pre">musdata</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title__</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">composer__</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47.html#_CPPv415SANITIZED_ORNOT" title="SANITIZED_ORNOT"><span class="n"><span class="pre">SANITIZED_ORNOT</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicPath__</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bpm__</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1.0</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7musdata7musdataERK11UNSANITIZEDRK11UNSANITIZEDRK15SANITIZED_ORNOTKd" title="Link to this definition"></a><br /></dt>
 <dd><p>Constructor used for filtering music entries. </p>
 <p>Use this constructor to specify filtering conditions for a search query. Leave parameters blank (or set to a negative value for bpm) if filtering by that field is not required.</p>
 <dl class="field-list simple">
@@ -281,17 +282,17 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7musdata5titleE">
-<span id="_CPPv3N7musdata5titleE"></span><span id="_CPPv2N7musdata5titleE"></span><span id="musdata::title__ss"></span><span class="target" id="structmusdata_1a79bba5e62dddb894f040a563c5927222"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">title</span></span></span><a class="headerlink" href="#_CPPv4N7musdata5titleE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N7musdata5titleE"></span><span id="_CPPv2N7musdata5titleE"></span><span id="musdata::title__SANITIZED"></span><span class="target" id="structmusdata_1a9c537dbc78fd984f5316e3d167633f70"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07.html#_CPPv49SANITIZED" title="SANITIZED"><span class="n"><span class="pre">SANITIZED</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">title</span></span></span><a class="headerlink" href="#_CPPv4N7musdata5titleE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7musdata8composerE">
-<span id="_CPPv3N7musdata8composerE"></span><span id="_CPPv2N7musdata8composerE"></span><span id="musdata::composer__ss"></span><span class="target" id="structmusdata_1accc9d5168dbbdbbc65c4bef04568d470"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">composer</span></span></span><a class="headerlink" href="#_CPPv4N7musdata8composerE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N7musdata8composerE"></span><span id="_CPPv2N7musdata8composerE"></span><span id="musdata::composer__SANITIZED"></span><span class="target" id="structmusdata_1a401e0646fa7f98d230e9af9a6af577de"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07.html#_CPPv49SANITIZED" title="SANITIZED"><span class="n"><span class="pre">SANITIZED</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">composer</span></span></span><a class="headerlink" href="#_CPPv4N7musdata8composerE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7musdata9musicPathE">
-<span id="_CPPv3N7musdata9musicPathE"></span><span id="_CPPv2N7musdata9musicPathE"></span><span id="musdata::musicPath__ss"></span><span class="target" id="structmusdata_1a4c559e6ff43eba8a98d37d07a0447856"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">musicPath</span></span></span><a class="headerlink" href="#_CPPv4N7musdata9musicPathE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N7musdata9musicPathE"></span><span id="_CPPv2N7musdata9musicPathE"></span><span id="musdata::musicPath__SANITIZED_ORNOT"></span><span class="target" id="structmusdata_1a5fcdc31f2bfb1fe90c038403791a00ae"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47.html#_CPPv415SANITIZED_ORNOT" title="SANITIZED_ORNOT"><span class="n"><span class="pre">SANITIZED_ORNOT</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">musicPath</span></span></span><a class="headerlink" href="#_CPPv4N7musdata9musicPathE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
@@ -306,7 +307,7 @@
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7musdata8firstBarE">
-<span id="_CPPv3N7musdata8firstBarE"></span><span id="_CPPv2N7musdata8firstBarE"></span><span id="musdata::firstBar__ss"></span><span class="target" id="structmusdata_1ab37ae262449a6d62ba70f9a0b3b9ea56"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">firstBar</span></span></span><a class="headerlink" href="#_CPPv4N7musdata8firstBarE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N7musdata8firstBarE"></span><span id="_CPPv2N7musdata8firstBarE"></span><span id="musdata::firstBar__DONT_SANITIZE"></span><span class="target" id="structmusdata_1a93e5867704dfe0d19f3e3c3855aefbf6"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">firstBar</span></span></span><a class="headerlink" href="#_CPPv4N7musdata8firstBarE" title="Link to this definition"></a><br /></dt>
 <dd><p>this means the first beat’s position. The measurement unit is a PCM frame. For higher precision, double value is stored as strings in Cap’n Proto, so the corresponding variable is also a string. </p>
 </dd></dl>
 

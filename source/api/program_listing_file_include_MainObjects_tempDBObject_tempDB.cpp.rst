@@ -11,14 +11,23 @@ Program Listing for File tempDB.cpp
 .. code-block:: cpp
 
    #include "tempDB.hpp"
-   
+   #include "PDJE_LOG_SETTER.hpp"
    bool
-   tempDB::Open(fs::path& projectRoot)
+   tempDB::Open(const fs::path& projectRoot)
    {
-       return 
+       if(tempROOT.has_value()) tempROOT.reset();
+       
+       tempROOT.emplace();
+       bool openRes =
        tempROOT->openDB(
-           (projectRoot / "LOCALDB.pdjedb").string()
+           (projectRoot / fs::path("LOCALDB"))
        );
+       if(!openRes){
+           critlog("failed to open local database. from tempDB Open. path: ");
+           fs::path logPath = (projectRoot / fs::path("LOCALDB"));
+           critlog(logPath.generic_string());
+       }
+       return openRes;
    }
    
    bool
@@ -26,15 +35,37 @@ Program Listing for File tempDB.cpp
    {
        auto dbposition = tempROOT->getRoot();
        tempROOT.reset();
-       if(!fs::remove(dbposition)){
+       try{
+   
+           if(!fs::remove_all(dbposition)){
+               critlog("failed to remove local database. from tempDB BuildProject. path: ");
+               critlog(dbposition.generic_string());
+               return false;
+           }
+       }
+       catch(std::exception& e){
+           critlog("failed to remove local database. from tempDB BuildProject. ErrException: ");
+           critlog(e.what());
            return false;
        }
        tempROOT.emplace();
    
-       if(!tempROOT->openDB(dbposition))   return false;
-       if(!(tempROOT.value() <= td))       return false;
+       if(!tempROOT->openDB(dbposition)){
+           critlog("failed to open local database. from tempDB BuildProject. path: ");
+           critlog(dbposition.generic_string());
+           return false;
+       }
+       if(!(tempROOT.value() <= td)){
+           critlog("failed to push trackdata to local database. from tempDB BuildProject. trackTitle: ");
+           critlog(td.trackTitle);
+           return false;
+       }
        for(auto& i : mds){
-           if(!(tempROOT.value() <= i))      return false;
+           if(!(tempROOT.value() <= i)){
+               critlog("failed to push musicdata to local database. from tempDB BuildProject. musicTitle: ");
+               critlog(i.title);
+               return false;
+           }
        }
        return true;
    }

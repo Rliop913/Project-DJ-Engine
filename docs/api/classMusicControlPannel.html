@@ -52,7 +52,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api_root.html#class-hierarchy">Class Hierarchy</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="api_root.html#classes-and-structs">Classes and Structs</a><ul class="current">
@@ -62,10 +61,8 @@
 <li class="toctree-l4"><a class="reference internal" href="structBpmStruct.html">Struct BpmStruct</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structBranchJSON.html">Struct BranchJSON</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDecoder.html">Struct Decoder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDeviceData.html">Struct DeviceData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDiffResult.html">Struct DiffResult</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDJ__JOBS.html">Struct DJ_JOBS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDuckTypeDevice.html">Struct DuckTypeDevice</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEDIT__ARG__MUSIC.html">Struct EDIT_ARG_MUSIC</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEightPointValues.html">Struct EightPointValues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structgitwrap_1_1BranchHead.html">Struct BranchHead</a></li>
@@ -83,6 +80,9 @@
 <li class="toctree-l4"><a class="reference internal" href="structMusicOnDeck.html">Struct MusicOnDeck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structNoteArgs.html">Struct NoteArgs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Editor_1_1MusicHandleStruct.html">Struct PDJE_Editor::MusicHandleStruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV.html">Struct PDJE_IDEV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Finders.html">Struct PDJE_IDEV::Finders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Specifiers.html">Struct PDJE_IDEV::Specifiers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPlayPosition.html">Struct PlayPosition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPosition.html">Struct Position</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structstmt.html">Struct stmt</a></li>
@@ -117,7 +117,6 @@
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1branch.html">Class branch</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1logHandle.html">Class logHandle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classGitWrapper.html">Class GitWrapper</a></li>
-<li class="toctree-l4"><a class="reference internal" href="classInputEngine.html">Template Class InputEngine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classLinuxEVDEV.html">Class LinuxEVDEV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classlitedb.html">Class litedb</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classMeta.html">Class Meta</a></li>
@@ -135,7 +134,9 @@
 <li class="toctree-l4"><a class="reference internal" href="classPDJE.html">Class PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Editor.html">Class PDJE_Editor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__GitHandler.html">Class PDJE_GitHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Input.html">Class PDJE_Input</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JSONHandler.html">Template Class PDJE_JSONHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Name__Sanitizer.html">Class PDJE_Name_Sanitizer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaser__PDJE.html">Class Phaser_PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaserMan.html">Class PhaserMan</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classRobot__PDJE.html">Class Robot_PDJE</a></li>
@@ -199,8 +200,8 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel9LoadMusicERK7musdata">
-<span id="_CPPv3N18MusicControlPannel9LoadMusicERK7musdata"></span><span id="_CPPv2N18MusicControlPannel9LoadMusicERK7musdata"></span><span id="MusicControlPannel::LoadMusic__musdataCR"></span><span class="target" id="classMusicControlPannel_1a80888f4f40256430b8482a42fb2f6d8d"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">LoadMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structmusdata.html#_CPPv47musdata" title="musdata"><span class="n"><span class="pre">musdata</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Mus</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel9LoadMusicER6litedbRK7musdata">
+<span id="_CPPv3N18MusicControlPannel9LoadMusicER6litedbRK7musdata"></span><span id="_CPPv2N18MusicControlPannel9LoadMusicER6litedbRK7musdata"></span><span id="MusicControlPannel::LoadMusic__litedbR.musdataCR"></span><span class="target" id="classMusicControlPannel_1abb7edb1051ec46ee153c1893ba5a3450"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">LoadMusic</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ROOTDB</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structmusdata.html#_CPPv47musdata" title="musdata"><span class="n"><span class="pre">musdata</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Mus</span></span><span class="sig-paren">)</span><br /></dt>
 <dd><p>loads music to the deck. doesn’t play music </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -213,8 +214,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel8CueMusicERK5TITLEKy">
-<span id="_CPPv3N18MusicControlPannel8CueMusicERK5TITLEKy"></span><span id="_CPPv2N18MusicControlPannel8CueMusicERK5TITLEKy"></span><span id="MusicControlPannel::CueMusic__TITLECR.unsigned-l-lC"></span><span class="target" id="classMusicControlPannel_1a76b9f68b3d3a4fd5b807e4ef9c541e85"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CueMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005.html#_CPPv45TITLE" title="TITLE"><span class="n"><span class="pre">TITLE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">newPos</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18MusicControlPannel8CueMusicERK5TITLEKy" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel8CueMusicERK11UNSANITIZEDKy">
+<span id="_CPPv3N18MusicControlPannel8CueMusicERK11UNSANITIZEDKy"></span><span id="_CPPv2N18MusicControlPannel8CueMusicERK11UNSANITIZEDKy"></span><span id="MusicControlPannel::CueMusic__UNSANITIZEDCR.unsigned-l-lC"></span><span class="target" id="classMusicControlPannel_1a7cc175695540fb5ba7c3c030da090681"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CueMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">newPos</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18MusicControlPannel8CueMusicERK11UNSANITIZEDKy" title="Link to this definition"></a><br /></dt>
 <dd><p>Change playback position of the music. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -233,8 +234,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel8SetMusicERK5TITLEKb">
-<span id="_CPPv3N18MusicControlPannel8SetMusicERK5TITLEKb"></span><span id="_CPPv2N18MusicControlPannel8SetMusicERK5TITLEKb"></span><span id="MusicControlPannel::SetMusic__TITLECR.bC"></span><span class="target" id="classMusicControlPannel_1a998210e51746edd2547833d6584ccece"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005.html#_CPPv45TITLE" title="TITLE"><span class="n"><span class="pre">TITLE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">onOff</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18MusicControlPannel8SetMusicERK5TITLEKb" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel8SetMusicERK11UNSANITIZEDKb">
+<span id="_CPPv3N18MusicControlPannel8SetMusicERK11UNSANITIZEDKb"></span><span id="_CPPv2N18MusicControlPannel8SetMusicERK11UNSANITIZEDKb"></span><span id="MusicControlPannel::SetMusic__UNSANITIZEDCR.bC"></span><span class="target" id="classMusicControlPannel_1a7402cd45c5ebeca17332417a3e1359d6"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">onOff</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18MusicControlPannel8SetMusicERK11UNSANITIZEDKb" title="Link to this definition"></a><br /></dt>
 <dd><p>turn on, off the music </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -258,14 +259,14 @@
 <dd><p>get music list on the deck </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="typedef_MusicControlPannel_8hpp_1a4c72c3001db71218d5703fe8033a6792.html#MusicControlPannel_8hpp_1a4c72c3001db71218d5703fe8033a6792"><span class="std std-ref">LOADED_LIST</span></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="typedef_MusicControlPannel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8.html#MusicControlPannel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8"><span class="std std-ref">LOADED_LIST</span></a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel11UnloadMusicERK5TITLE">
-<span id="_CPPv3N18MusicControlPannel11UnloadMusicERK5TITLE"></span><span id="_CPPv2N18MusicControlPannel11UnloadMusicERK5TITLE"></span><span id="MusicControlPannel::UnloadMusic__TITLECR"></span><span class="target" id="classMusicControlPannel_1aab9fd1214bab146fe3de2e4715f41e74"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnloadMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005.html#_CPPv45TITLE" title="TITLE"><span class="n"><span class="pre">TITLE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18MusicControlPannel11UnloadMusicERK5TITLE" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel11UnloadMusicERK11UNSANITIZED">
+<span id="_CPPv3N18MusicControlPannel11UnloadMusicERK11UNSANITIZED"></span><span id="_CPPv2N18MusicControlPannel11UnloadMusicERK11UNSANITIZED"></span><span id="MusicControlPannel::UnloadMusic__UNSANITIZEDCR"></span><span class="target" id="classMusicControlPannel_1a34dc2fe25fe8382f7f60823289cfb4ce"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnloadMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18MusicControlPannel11UnloadMusicERK11UNSANITIZED" title="Link to this definition"></a><br /></dt>
 <dd><p>unload music from deck. used to prevent memory leaks. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -301,8 +302,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel11getFXHandleERK5TITLE">
-<span id="_CPPv3N18MusicControlPannel11getFXHandleERK5TITLE"></span><span id="_CPPv2N18MusicControlPannel11getFXHandleERK5TITLE"></span><span id="MusicControlPannel::getFXHandle__TITLECR"></span><span class="target" id="classMusicControlPannel_1a42d3ed8e5b7de5f0aabedbdc5bf74d95"></span><a class="reference internal" href="classFXControlPannel.html#_CPPv415FXControlPannel" title="FXControlPannel"><span class="n"><span class="pre">FXControlPannel</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getFXHandle</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005.html#_CPPv45TITLE" title="TITLE"><span class="n"><span class="pre">TITLE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18MusicControlPannel11getFXHandleERK5TITLE" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel11getFXHandleERK11UNSANITIZED">
+<span id="_CPPv3N18MusicControlPannel11getFXHandleERK11UNSANITIZED"></span><span id="_CPPv2N18MusicControlPannel11getFXHandleERK11UNSANITIZED"></span><span id="MusicControlPannel::getFXHandle__UNSANITIZEDCR"></span><span class="target" id="classMusicControlPannel_1abc61176dfa07cf2da9ad733d873751a7"></span><a class="reference internal" href="classFXControlPannel.html#_CPPv415FXControlPannel" title="FXControlPannel"><span class="n"><span class="pre">FXControlPannel</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getFXHandle</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N18MusicControlPannel11getFXHandleERK11UNSANITIZED" title="Link to this definition"></a><br /></dt>
 <dd><p>gets FX handler </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

@@ -30,7 +30,11 @@ Includes
 --------
 
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 - ``musicDB.hpp`` (:ref:`file_include_db_musicDB.hpp`)
+
+- ``source_location``
 
 
 

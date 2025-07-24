@@ -105,7 +105,7 @@
 <span class="w">    </span><span class="n">BPMCHANGE</span><span class="p">,</span>
 <span class="p">};</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">PlayPosition</span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">PlayPosition</span><span class="p">{</span>
 <span class="w">    </span><span class="n">GLOBAL_POS</span><span class="w"> </span><span class="n">Gidx</span><span class="p">;</span>
 <span class="w">    </span><span class="n">LOCAL_POS</span><span class="w"> </span><span class="n">Lidx</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">OriginBPM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
@@ -114,7 +114,7 @@
 <span class="p">};</span>
 
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">Ingredients</span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">Ingredients</span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">SORT</span><span class="p">();</span>
 
@@ -126,7 +126,7 @@
 
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PlayPosition</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pos</span><span class="p">;</span>
 <span class="p">};</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">MUSIC_CTR</span><span class="p">{</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">MUSIC_CTR</span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">soundtouch</span><span class="o">::</span><span class="n">SoundTouch</span><span class="o">&gt;</span><span class="w"> </span><span class="n">st</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">Decoder</span><span class="o">&gt;</span><span class="w"> </span><span class="n">D</span><span class="p">;</span>
@@ -153,7 +153,7 @@
 <span class="w">    </span><span class="c1">// std::optional&lt;double&gt; originBpm;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">songPath</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">SIMD_FLOAT</span><span class="o">*&gt;</span>
-<span class="w">    </span><span class="n">Execute</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPM</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bpms</span><span class="p">,</span><span class="w"> </span><span class="n">SIMD_FLOAT</span><span class="o">*</span><span class="w"> </span><span class="n">PCMS</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dbRoot</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Execute</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPM</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bpms</span><span class="p">,</span><span class="w"> </span><span class="n">SIMD_FLOAT</span><span class="o">*</span><span class="w"> </span><span class="n">PCMS</span><span class="p">,</span><span class="w"> </span><span class="n">litedb</span><span class="o">&amp;</span><span class="w"> </span><span class="n">db</span><span class="p">);</span>
 
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">SendData</span><span class="p">(</span><span class="n">soundtouch</span><span class="o">::</span><span class="n">SoundTouch</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">stp</span><span class="p">,</span><span class="w"> </span><span class="n">Decoder</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">dp</span><span class="p">);</span>
 <span class="p">};</span>

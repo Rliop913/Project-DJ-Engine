@@ -32,9 +32,11 @@ Includes
 
 - ``Decoder.hpp`` (:ref:`file_include_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`)
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 - ``filesystem``
 
-- ``iostream``
+- ``fstream``
 
 
 

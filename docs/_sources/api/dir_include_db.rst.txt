@@ -25,6 +25,8 @@ Files
 - :ref:`file_include_db_dbRoot.hpp`
 - :ref:`file_include_db_dbState.cpp`
 - :ref:`file_include_db_dbState.hpp`
+- :ref:`file_include_db_fileNameSanitizer.cpp`
+- :ref:`file_include_db_fileNameSanitizer.hpp`
 - :ref:`file_include_db_musicDB.cpp`
 - :ref:`file_include_db_musicDB.hpp`
 - :ref:`file_include_db_trackDB.cpp`

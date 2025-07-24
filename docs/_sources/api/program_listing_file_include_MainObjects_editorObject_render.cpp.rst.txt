@@ -11,30 +11,10 @@ Program Listing for File render.cpp
 .. code-block:: cpp
 
    #include "editorObject.hpp"
-   
    bool
-   editorObject::render(const std::string& trackTitle, litedb& ROOTDB)
+   editorObject::render(const UNSANITIZED& trackTitle, litedb& ROOTDB)
    {
-       // trackdata td;
-       // auto mixRendered = E_obj->mixHandle.second.render();
-       // auto mixData = mixRendered->Wp->getDatas();
-       // std::unordered_map<std::string, std::string> titles;
-       // for(unsigned long long i=0; i < mixData.size();++i){
-       //     if(mixData[i].getType() == TypeEnum::LOAD){
-       //         titles.insert(std::pair(mixData[i].getFirst().cStr(), mixData[i].getSecond().cStr()));
-       //     }
-       // }
-       
-       // td.trackTitle = trackTitle;
-       // td.mixBinary = mixRendered->out();
-       // td.noteBinary = E_obj->noteHandle.second.render()->out();
-       // for(auto& i : titles){
-       //     td.cachedMixList+= (i.first + ",");
-       // }
-       // if(!titles.empty()){
-       //     td.cachedMixList.pop_back();
-       // }
-       std::unordered_map<std::string, std::string> titles;
+       std::unordered_map<SANITIZED, SANITIZED> titles;
        auto td = makeTrackData(trackTitle, titles);
        
        std::vector<musdata> mds;
@@ -43,14 +23,23 @@ Program Listing for File render.cpp
            
            auto rendered = i.jsonh.render();
            mds.back().title = i.musicName;
-           mds.back().bpmBinary = rendered->out();
-           mds.back().composer = i.jsonh["COMPOSER"];
-           mds.back().musicPath = i.jsonh["PATH"];
-           mds.back().firstBar = i.jsonh["FIRST_BAR"];
+           auto rdout = rendered->out();
+           mds.back().bpmBinary.assign(rdout.begin(), rdout.end());
+           auto tempCOMPOSER   = i.jsonh["COMPOSER"    ].get<SANITIZED>();
+           auto tempPATH       = i.jsonh["PATH"        ].get<SANITIZED>();
+           auto tempFIRST_BAR  = i.jsonh["FIRST_BAR"   ].get<DONT_SANITIZE>();
+           
+           mds.back().composer     = (tempCOMPOSER);
+           mds.back().musicPath    = (tempPATH);
+           mds.back().firstBar     = (tempFIRST_BAR);
            try{
                mds.back().bpm = std::stod(rendered->Wp->getDatas()[0].getBpm().cStr());
            }
-           catch(...){
+           catch(std::exception& e){
+               critlog("failed to convert bpm to double. from editorObject render. ErrException: ");
+               critlog(e.what());
+               critlog("music name: ");
+               critlog(i.musicName);
                continue;
            }
            titles[i.musicName] = "";
@@ -58,20 +47,34 @@ Program Listing for File render.cpp
    
        for(auto& i : titles){
            if(i.second != ""){
-               auto findFromRoot = musdata(i.first, i.second);
-               auto mus = ROOTDB<<findFromRoot;
+               
+               auto findFromRoot = musdata();
+               findFromRoot.title = i.first;
+               findFromRoot.composer = i.second;
+               auto mus = ROOTDB << findFromRoot;
                if(mus.has_value()){
                    if(mus->empty()) continue;
                    musdata fromRoot = mus->front();
-                   fromRoot.musicPath =
-                   fs::relative(
-                       fs::absolute(fs::path(ROOTDB.getRoot()).parent_path() / fromRoot.musicPath),
-                       projectRoot
-                   );
+                   try{
+                       fromRoot.musicPath =
+                       fs::relative(
+                           fs::absolute(ROOTDB.getRoot().parent_path() / fromRoot.musicPath),
+                           projectRoot
+                       ).string();
+                   }
+                   catch(std::exception& e){
+                       critlog("failed to convert relative path. from editorObject render. ErrException: ");
+                       critlog(e.what());
+                       critlog("music path: ");
+                       critlog(fromRoot.musicPath);
+                       critlog("project root: ");
+                       critlog(projectRoot.generic_string());
+                       return false;
+                   }
                    mds.push_back(fromRoot);
                }
            }
        }
    
-       projectLocalDB->BuildProject(td, mds);
+       return projectLocalDB->BuildProject(td, mds);
    }

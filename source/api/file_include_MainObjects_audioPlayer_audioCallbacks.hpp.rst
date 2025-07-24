@@ -32,6 +32,8 @@ Includes
 
 - ``MusicControlPannel.hpp`` (:ref:`file_include_audioRender_ManualMix_MusicControlPannel.hpp`)
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
+
 - ``miniaudio.h``
 
 - ``optional``

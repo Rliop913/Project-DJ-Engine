@@ -36,6 +36,10 @@ Includes
 
 - ``NoteBinary.capnp.h``
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
+
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 - ``capnp/message.h``
 
 - ``capnp/serialize.h``

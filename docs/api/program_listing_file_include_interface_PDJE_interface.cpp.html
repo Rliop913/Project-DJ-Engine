@@ -80,25 +80,33 @@
 <span id="program-listing-file-include-interface-pdje-interface-cpp"></span><h1>Program Listing for File PDJE_interface.cpp<a class="headerlink" href="#program-listing-for-file-pdje-interface-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_interface_PDJE_interface.cpp.html#file-include-interface-pdje-interface-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/interface/PDJE_interface.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_interface.hpp&quot;</span>
-
-<span class="n">PDJE</span><span class="o">::</span><span class="n">PDJE</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rootPath</span><span class="p">)</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
+<span class="n">PDJE</span><span class="o">::</span><span class="n">PDJE</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rootPath</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">DBROOT</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
+<span class="w">    </span><span class="n">startlog</span><span class="p">();</span>
+<span class="w">    </span><span class="n">DBROOT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">litedb</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="w">    </span><span class="n">DBROOT</span><span class="o">-&gt;</span><span class="n">openDB</span><span class="p">(</span><span class="n">rootPath</span><span class="p">);</span>
 
 <span class="p">}</span>
 
-
 <span class="n">TRACK_VEC</span>
-<span class="n">PDJE</span><span class="o">::</span><span class="n">SearchTrack</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Title</span><span class="p">)</span>
+<span class="n">PDJE</span><span class="o">::</span><span class="n">SearchTrack</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Title</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">trackdata</span><span class="w"> </span><span class="n">td</span><span class="p">;</span>
-<span class="w">    </span><span class="n">td</span><span class="p">.</span><span class="n">trackTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Title</span><span class="p">;</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">dbres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DBROOT</span><span class="p">.</span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">td</span><span class="p">;</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">safeTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Name_Sanitizer</span><span class="o">::</span><span class="n">sanitizeFileName</span><span class="p">(</span><span class="n">Title</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">safeTitle</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to make sanitized filename in PDJE SearchTrack. Errtitle: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">Title</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TRACK_VEC</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">td</span><span class="p">.</span><span class="n">trackTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">safeTitle</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">dbres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">DBROOT</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">td</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">dbres</span><span class="p">.</span><span class="n">has_value</span><span class="p">()){</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dbres</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;failed to find trackdata from PDJE database. Errtitle: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="n">Title</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">TRACK_VEC</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -106,19 +114,30 @@
 
 <span class="n">MUS_VEC</span>
 <span class="n">PDJE</span><span class="o">::</span><span class="n">SearchMusic</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Title</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">composer</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Title</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">composer</span><span class="p">,</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">bpm</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">musdata</span><span class="w"> </span><span class="n">md</span><span class="p">;</span>
-<span class="w">    </span><span class="n">md</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Title</span><span class="p">;</span>
-<span class="w">    </span><span class="n">md</span><span class="p">.</span><span class="n">composer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">composer</span><span class="p">;</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">safeTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Name_Sanitizer</span><span class="o">::</span><span class="n">sanitizeFileName</span><span class="p">(</span><span class="n">Title</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">safeComposer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Name_Sanitizer</span><span class="o">::</span><span class="n">sanitizeFileName</span><span class="p">(</span><span class="n">composer</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">safeTitle</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">safeComposer</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to sanitize filename in PDJE SearchMusic. Errs: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">Title</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">composer</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">MUS_VEC</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">md</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">safeTitle</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
+<span class="w">    </span><span class="n">md</span><span class="p">.</span><span class="n">composer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">safeComposer</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
 <span class="w">    </span><span class="n">md</span><span class="p">.</span><span class="n">bpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bpm</span><span class="p">;</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">dbres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DBROOT</span><span class="p">.</span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">md</span><span class="p">;</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">dbres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">DBROOT</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">md</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">dbres</span><span class="p">.</span><span class="n">has_value</span><span class="p">()){</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dbres</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;failed to find music from PDJE database. ErrTitle: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="n">Title</span><span class="p">);</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="n">composer</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">MUS_VEC</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -132,23 +151,26 @@
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PLAY_MODE</span><span class="o">::</span><span class="no">FULL_PRE_RENDER</span><span class="p">:</span>
-<span class="w">        </span><span class="n">player</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span>
-<span class="w">            </span><span class="n">DBROOT</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">player</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">audioPlayer</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">            </span><span class="p">(</span><span class="o">*</span><span class="n">DBROOT</span><span class="p">),</span>
 <span class="w">            </span><span class="n">td</span><span class="p">,</span>
 <span class="w">            </span><span class="n">FrameBufferSize</span><span class="p">,</span>
 <span class="w">            </span><span class="nb">false</span>
 <span class="w">            </span><span class="p">);</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PLAY_MODE</span><span class="o">::</span><span class="no">HYBRID_RENDER</span><span class="p">:</span>
-<span class="w">        </span><span class="n">player</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span>
-<span class="w">            </span><span class="n">DBROOT</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">player</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">audioPlayer</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">            </span><span class="p">(</span><span class="o">*</span><span class="n">DBROOT</span><span class="p">),</span>
 <span class="w">            </span><span class="n">td</span><span class="p">,</span>
 <span class="w">            </span><span class="n">FrameBufferSize</span><span class="p">,</span>
 <span class="w">            </span><span class="nb">true</span>
 <span class="w">        </span><span class="p">);</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PLAY_MODE</span><span class="o">::</span><span class="no">FULL_MANUAL_RENDER</span><span class="p">:</span>
-<span class="w">        </span><span class="n">player</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span>
+<span class="w">        </span><span class="n">player</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">audioPlayer</span><span class="o">&gt;</span><span class="p">(</span>
 <span class="w">            </span><span class="n">FrameBufferSize</span>
 <span class="w">        </span><span class="p">);</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
@@ -157,11 +179,14 @@
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">player</span><span class="p">.</span><span class="n">has_value</span><span class="p">()){</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">player</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to init player on PDJE initPlayer.&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">STATUS</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;OK&quot;</span><span class="p">){</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;PDJE initPlayer failed. STATUS not OK. ErrStatus: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">STATUS</span><span class="p">);</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">else</span><span class="p">{</span>
@@ -179,10 +204,19 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="n">CapReader</span><span class="o">&lt;</span><span class="n">NoteBinaryCapnpData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">notereader</span><span class="p">;</span>
 <span class="w">    </span><span class="n">CapReader</span><span class="o">&lt;</span><span class="n">MixBinaryCapnpData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mixreader</span><span class="p">;</span>
-<span class="w">    </span><span class="n">notereader</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">td</span><span class="p">.</span><span class="n">noteBinary</span><span class="p">);</span>
-<span class="w">    </span><span class="n">mixreader</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">td</span><span class="p">.</span><span class="n">mixBinary</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">notereader</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">td</span><span class="p">.</span><span class="n">noteBinary</span><span class="p">)){</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;failed to read notebinary from trackdata from PDJE GetNoteObjects&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">mixreader</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">td</span><span class="p">.</span><span class="n">mixBinary</span><span class="p">)){</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;failed to read mixBinary from trackdata from PDJE GetNoteObjects&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">noteTrans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NoteTranslator</span><span class="p">();</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">mixTrans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MixTranslator</span><span class="p">();</span>
+
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">mixTrans</span><span class="o">-&gt;</span><span class="n">bpms</span><span class="p">.</span><span class="n">has_value</span><span class="p">()){</span>
 <span class="w">        </span><span class="n">noteTrans</span><span class="o">-&gt;</span><span class="n">Read</span><span class="p">(</span>
 <span class="w">            </span><span class="n">notereader</span><span class="p">,</span>
@@ -190,6 +224,7 @@
 <span class="w">            </span><span class="n">ObjectSetCallback</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to emplace optional object from PDJE GetNoteObjects&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="n">noteTrans</span><span class="p">;</span>
 <span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="n">mixTrans</span><span class="p">;</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
@@ -203,11 +238,11 @@
 
 <span class="kt">bool</span>
 <span class="n">PDJE</span><span class="o">::</span><span class="n">InitEditor</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_name</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_email</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">projectRoot</span><span class="p">)</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_name</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_email</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">projectRoot</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">editor</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">auth_name</span><span class="p">,</span><span class="w"> </span><span class="n">auth_email</span><span class="p">);</span>
+<span class="w">    </span><span class="n">editor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">editorObject</span><span class="o">&gt;</span><span class="p">(</span><span class="n">auth_name</span><span class="p">,</span><span class="w"> </span><span class="n">auth_email</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">Open</span><span class="p">(</span><span class="n">projectRoot</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>

@@ -32,6 +32,8 @@ Includes
 
 - ``FrameCalc.hpp`` (:ref:`file_include_db_Capnp_Translators_FrameCalc.hpp`)
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 
 
 

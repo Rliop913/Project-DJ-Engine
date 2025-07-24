@@ -24,8 +24,8 @@ Program Listing for File interfaceTest.cpp
            return 1;
        }
        for(auto i : searchResult){
-           std::cout << "title: " << i.title 
-           << "path: "<< i.musicPath << std::endl;
+           std::cout << "title: " << std::string(i.title.begin(), i.title.end()) 
+           << "path: "<< std::string(i.musicPath.begin(), i.musicPath.end()) << std::endl;
        }
    
        auto trackSearch = testpdje->SearchTrack("testmix111");
@@ -37,7 +37,7 @@ Program Listing for File interfaceTest.cpp
        for(auto i: trackSearch){
            std::cout 
            << " track title: "
-           << i.trackTitle
+           << TO_STR(i.trackTitle)
            << " note binary size: "
            << i.noteBinary.size()
            << " mix binary size: "
@@ -58,8 +58,8 @@ Program Listing for File interfaceTest.cpp
        
        getchar();
        auto mus = testpdje->player->GetMusicControlPannel();
-       mus->LoadMusic(searchResult[0]);
-       std::cout << mus->GetLoadedMusicList()[0];
+       mus->LoadMusic(testpdje->DBROOT.value(), searchResult[0]);
+       std::cout << TO_STR(mus->GetLoadedMusicList()[0]);
        mus->SetMusic("WTC", true);
        getchar();
        for(auto i : (pannel)){

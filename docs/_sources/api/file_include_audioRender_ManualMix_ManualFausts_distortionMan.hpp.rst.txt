@@ -9,6 +9,11 @@ File distortionMan.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+Manual distortion effect controller. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none

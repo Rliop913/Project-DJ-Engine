@@ -52,7 +52,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api_root.html#class-hierarchy">Class Hierarchy</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="api_root.html#classes-and-structs">Classes and Structs</a><ul class="current">
@@ -62,10 +61,8 @@
 <li class="toctree-l4"><a class="reference internal" href="structBpmStruct.html">Struct BpmStruct</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structBranchJSON.html">Struct BranchJSON</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDecoder.html">Struct Decoder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDeviceData.html">Struct DeviceData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDiffResult.html">Struct DiffResult</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDJ__JOBS.html">Struct DJ_JOBS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDuckTypeDevice.html">Struct DuckTypeDevice</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEDIT__ARG__MUSIC.html">Struct EDIT_ARG_MUSIC</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEightPointValues.html">Struct EightPointValues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structgitwrap_1_1BranchHead.html">Struct BranchHead</a></li>
@@ -83,6 +80,9 @@
 <li class="toctree-l4"><a class="reference internal" href="structMusicOnDeck.html">Struct MusicOnDeck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structNoteArgs.html">Struct NoteArgs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Editor_1_1MusicHandleStruct.html">Struct PDJE_Editor::MusicHandleStruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV.html">Struct PDJE_IDEV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Finders.html">Struct PDJE_IDEV::Finders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Specifiers.html">Struct PDJE_IDEV::Specifiers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPlayPosition.html">Struct PlayPosition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPosition.html">Struct Position</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structstmt.html">Struct stmt</a></li>
@@ -117,7 +117,6 @@
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1branch.html">Class branch</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1logHandle.html">Class logHandle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classGitWrapper.html">Class GitWrapper</a></li>
-<li class="toctree-l4"><a class="reference internal" href="classInputEngine.html">Template Class InputEngine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classLinuxEVDEV.html">Class LinuxEVDEV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classlitedb.html">Class litedb</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classMeta.html">Class Meta</a></li>
@@ -135,7 +134,9 @@
 <li class="toctree-l4"><a class="reference internal" href="classPDJE.html">Class PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Editor.html">Class PDJE_Editor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__GitHandler.html">Class PDJE_GitHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Input.html">Class PDJE_Input</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JSONHandler.html">Template Class PDJE_JSONHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Name__Sanitizer.html">Class PDJE_Name_Sanitizer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaser__PDJE.html">Class Phaser_PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaserMan.html">Class PhaserMan</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classRobot__PDJE.html">Class Robot_PDJE</a></li>
@@ -195,12 +196,19 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv413CompressorMan">
 <span id="_CPPv313CompressorMan"></span><span id="_CPPv213CompressorMan"></span><span id="CompressorMan"></span><span class="target" id="classCompressorMan"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CompressorMan</span></span></span><a class="headerlink" href="#_CPPv413CompressorMan" title="Link to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>Manages compressor effect settings. </p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N13CompressorMan13makeArgSetterEv">
 <span id="_CPPv3N13CompressorMan13makeArgSetterEv"></span><span id="_CPPv2N13CompressorMan13makeArgSetterEv"></span><span id="CompressorMan::makeArgSetter"></span><span class="target" id="classCompressorMan_1aa629d5092ac65d1bf82c55d975ee7f1c"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="typedef_DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15.html#_CPPv49ARGSETTER" title="ARGSETTER"><span class="n"><span class="pre">ARGSETTER</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">makeArgSetter</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13CompressorMan13makeArgSetterEv" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Creates a map of argument setters for the compressor effect. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An <a class="reference internal" href="typedef_DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15.html#DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15"><span class="std std-ref">ARGSETTER</span></a> map for configuring the compressor. </p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
@@ -208,27 +216,32 @@
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N13CompressorMan8strengthE">
 <span id="_CPPv3N13CompressorMan8strengthE"></span><span id="_CPPv2N13CompressorMan8strengthE"></span><span id="CompressorMan::strength__float"></span><span class="target" id="classCompressorMan_1a0991af6cc3821d24bfb8ff63f9d80e45"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">strength</span></span></span><a class="headerlink" href="#_CPPv4N13CompressorMan8strengthE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>The compression ratio. </p>
+</dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N13CompressorMan8threshDBE">
 <span id="_CPPv3N13CompressorMan8threshDBE"></span><span id="_CPPv2N13CompressorMan8threshDBE"></span><span id="CompressorMan::threshDB__i"></span><span class="target" id="classCompressorMan_1a8140b83ef08938563cf244347232ec1d"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">threshDB</span></span></span><a class="headerlink" href="#_CPPv4N13CompressorMan8threshDBE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>The threshold in decibels. </p>
+</dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N13CompressorMan8attackMSE">
 <span id="_CPPv3N13CompressorMan8attackMSE"></span><span id="_CPPv2N13CompressorMan8attackMSE"></span><span id="CompressorMan::attackMS__i"></span><span class="target" id="classCompressorMan_1a438300cdca0884b95b010a7a06ca3b0c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">attackMS</span></span></span><a class="headerlink" href="#_CPPv4N13CompressorMan8attackMSE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>The attack time in milliseconds. </p>
+</dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N13CompressorMan9releaseMSE">
 <span id="_CPPv3N13CompressorMan9releaseMSE"></span><span id="_CPPv2N13CompressorMan9releaseMSE"></span><span id="CompressorMan::releaseMS__i"></span><span class="target" id="classCompressorMan_1a46e2578799add8e73b6345383e876724"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">releaseMS</span></span></span><a class="headerlink" href="#_CPPv4N13CompressorMan9releaseMSE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>The release time in milliseconds. </p>
+</dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N13CompressorMan6kneeDBE">
 <span id="_CPPv3N13CompressorMan6kneeDBE"></span><span id="_CPPv2N13CompressorMan6kneeDBE"></span><span id="CompressorMan::kneeDB__i"></span><span class="target" id="classCompressorMan_1adb7eb798909d05aecee667cd8e63a84d"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">kneeDB</span></span></span><a class="headerlink" href="#_CPPv4N13CompressorMan6kneeDBE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>The knee width in decibels. </p>
+</dd></dl>
 
 </div>
 </dd></dl>

@@ -9,6 +9,11 @@ File editorBranch.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+Wrapper utilities for manipulating Git branches. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none

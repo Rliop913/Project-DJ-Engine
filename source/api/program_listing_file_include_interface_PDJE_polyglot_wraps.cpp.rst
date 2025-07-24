@@ -11,27 +11,23 @@ Program Listing for File PDJE_polyglot_wraps.cpp
 .. code-block:: cpp
 
    #include "PDJE_interface.hpp"
+   #include "PDJE_LOG_SETTER.hpp"
    
-   
-   audioPlayer*
+   std::shared_ptr<audioPlayer>
    PDJE::GetPlayerObject()
    {
-       if(player.has_value()){
-           return &player.value();
-       }
-       else{
-           return nullptr;
-       }
+       return player;
    }
    
-   std::vector<std::string>
+   std::vector<DONT_SANITIZE>
    ARGSETTER_WRAPPER::GetFXArgKeys(FXList fx)
    {
        if(fxp == nullptr){
-           return std::vector<std::string>();
+           warnlog("cannot use wrapper. fx pointer is nullptr. from ARGSETTER_WRAPPER GetFXArgKeys");
+           return std::vector<DONT_SANITIZE>();
        }
        auto argkey = fxp->GetArgSetter(fx);
-       std::vector<std::string> keylist;
+       std::vector<DONT_SANITIZE> keylist;
        for(auto& i : argkey){
            keylist.push_back(i.first);
        }
@@ -41,11 +37,12 @@ Program Listing for File PDJE_polyglot_wraps.cpp
    void
    ARGSETTER_WRAPPER::SetFXArg(
        FXList fx, 
-       const std::string& key, 
+       const DONT_SANITIZE& key, 
        double arg
        )
    {
        if(fxp == nullptr){
+           warnlog("cannot use wrapper. fx pointer is nullptr. from ARGSETTER_WRAPPER SetFXArg");
            return;
        }
        auto argsetter = fxp->GetArgSetter(fx);

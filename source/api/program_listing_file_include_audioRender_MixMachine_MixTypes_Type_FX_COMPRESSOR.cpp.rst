@@ -23,6 +23,7 @@ Program Listing for File Type_FX_COMPRESSOR.cpp
            data.compressorData.back().strength =
            std::stof(ms.RP.getFirst().cStr());
            )
+           
        
        EightPointValues tk(ms.RP.getSecond().cStr());
        EightPointValues ar(ms.RP.getThird().cStr());

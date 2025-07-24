@@ -10,6 +10,7 @@ Program Listing for File DiffController.hpp
 
 .. code-block:: cpp
 
+   
    #pragma once
    
    #include <string>
@@ -18,11 +19,12 @@ Program Listing for File DiffController.hpp
    
    #include <git2.h>
    #include "editorCommit.hpp"
+   #include "fileNameSanitizer.hpp"
    // #include "CommitFinder.hpp"
    
    struct lineLog{
        unsigned int linenumber;
-       std::string text;
+       UNSANITIZED text;
    };
    
    struct DiffResult{

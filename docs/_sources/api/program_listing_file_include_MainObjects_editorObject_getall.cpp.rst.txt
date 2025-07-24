@@ -13,6 +13,7 @@ Program Listing for File getall.cpp
    #include "editorObject.hpp"
    
    template<>
+   PDJE_API
    void
    editorObject::getAll(std::function<void(const EDIT_ARG_KEY_VALUE& obj)> jsonCallback)
    {
@@ -20,6 +21,7 @@ Program Listing for File getall.cpp
    }
    
    template<>
+   PDJE_API
    void
    editorObject::getAll(std::function<void(const EDIT_ARG_MIX& obj)> jsonCallback)
    {
@@ -27,6 +29,7 @@ Program Listing for File getall.cpp
    }
    
    template<>
+   PDJE_API
    void
    editorObject::getAll(std::function<void(const EDIT_ARG_NOTE& obj)> jsonCallback)
    {
@@ -34,6 +37,7 @@ Program Listing for File getall.cpp
    }
    
    template<>
+   PDJE_API
    void
    editorObject::getAll(std::function<void(const EDIT_ARG_MUSIC& obj)> jsonCallback)
    {

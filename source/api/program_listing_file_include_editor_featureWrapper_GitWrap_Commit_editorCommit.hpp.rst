@@ -10,6 +10,7 @@ Program Listing for File editorCommit.hpp
 
 .. code-block:: cpp
 
+   
    #pragma once
    #include <git2.h>
    
@@ -17,12 +18,15 @@ Program Listing for File editorCommit.hpp
    #include <vector>
    #include <optional>
    #include <list>
+   
+   #include "PDJE_EXPORT_SETTER.hpp"
+   
    namespace gitwrap
    {
-       struct commit{
-           git_commit* commitPointer = nullptr;
-           git_oid commitID;
-           std::string msg;
+       struct PDJE_API commit{
+           git_commit* commitPointer = nullptr; 
+           git_oid commitID;                   
+           std::string msg;                    
            commit() = default;
            commit(git_oid commitID, git_repository* rep);
            commit(const std::string commitMSG, git_repository* rep);
@@ -32,7 +36,7 @@ Program Listing for File editorCommit.hpp
                }
            }
        };
-       struct commitList{
+       struct PDJE_API commitList{
            
            std::list<commit> clist; //Back is Newers
            
@@ -45,3 +49,4 @@ Program Listing for File editorCommit.hpp
        };
    
    }
+   

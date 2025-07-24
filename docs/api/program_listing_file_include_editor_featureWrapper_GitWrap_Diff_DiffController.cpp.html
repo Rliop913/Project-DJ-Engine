@@ -80,6 +80,7 @@
 <span id="program-listing-file-include-editor-featurewrapper-gitwrap-diff-diffcontroller-cpp"></span><h1>Program Listing for File DiffController.cpp<a class="headerlink" href="#program-listing-for-file-diffcontroller-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_editor_featureWrapper_GitWrap_Diff_DiffController.cpp.html#file-include-editor-featurewrapper-gitwrap-diff-diffcontroller-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/editor/featureWrapper/GitWrap/Diff/DiffController.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;DiffController.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
 
 <span class="n">DiffController</span><span class="o">::</span><span class="n">DiffController</span><span class="p">()</span>
 <span class="p">{</span>
@@ -94,13 +95,19 @@
 
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">OCommit</span><span class="p">.</span><span class="n">commitPointer</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">){</span>
 <span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">git_commit_tree</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Otree</span><span class="p">,</span><span class="w"> </span><span class="n">OCommit</span><span class="p">.</span><span class="n">commitPointer</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to init tree. from DiffController CommitToNow. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">            </span><span class="k">goto</span><span class="w"> </span><span class="n">OLD_TREE_INIT_FAILED</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">git_diff_tree_to_workdir</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Dobj</span><span class="p">,</span><span class="w"> </span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">Otree</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;diff failed. from DiffController CommitToNow. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">            </span><span class="k">goto</span><span class="w"> </span><span class="n">DIFF_FAILED</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to init commit. from DiffController CommitToNow. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">        </span><span class="k">goto</span><span class="w"> </span><span class="n">COMMIT_INIT_FAILED</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -127,16 +134,24 @@
 <span class="w">        </span><span class="n">OCommit</span><span class="p">.</span><span class="n">commitPointer</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">){</span>
 
 <span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">git_commit_tree</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Ntree</span><span class="p">,</span><span class="w"> </span><span class="n">NCommit</span><span class="p">.</span><span class="n">commitPointer</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to init new tree. from DiffController CommitToCommit. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">            </span><span class="k">goto</span><span class="w"> </span><span class="n">NEW_TREE_INIT_FAILED</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">git_commit_tree</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Otree</span><span class="p">,</span><span class="w"> </span><span class="n">OCommit</span><span class="p">.</span><span class="n">commitPointer</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to init old tree. from DiffController CommitToCommit. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">            </span><span class="k">goto</span><span class="w"> </span><span class="n">OLD_TREE_INIT_FAILED</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">git_diff_tree_to_tree</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Dobj</span><span class="p">,</span><span class="w"> </span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">Otree</span><span class="p">,</span><span class="w"> </span><span class="n">Ntree</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to diff. from DiffController CommitToCommit. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">            </span><span class="k">goto</span><span class="w"> </span><span class="n">DIFF_FAILED</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to init commit. from DiffController CommitToCommit. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">        </span><span class="k">goto</span><span class="w"> </span><span class="n">COMMIT_INIT_FAILED</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -182,6 +197,7 @@
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">        </span><span class="n">infolog</span><span class="p">(</span><span class="s">&quot;discarded case. from DiffController.cpp DiffCallback.&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="p">};</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -192,7 +208,7 @@
 <span class="kt">bool</span>
 <span class="n">DiffController</span><span class="o">::</span><span class="n">execute</span><span class="p">(</span><span class="n">DiffResult</span><span class="o">*</span><span class="w"> </span><span class="n">res</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">diffRes</span><span class="w"> </span><span class="o">=</span>
 <span class="w">    </span><span class="n">git_diff_foreach</span><span class="p">(</span>
 <span class="w">        </span><span class="n">Dobj</span><span class="p">,</span>
 <span class="w">        </span><span class="k">nullptr</span><span class="p">,</span>
@@ -201,6 +217,12 @@
 <span class="w">        </span><span class="n">DiffCallback</span><span class="p">,</span>
 <span class="w">        </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">diffRes</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to diff. from DiffController execute. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">diffRes</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="n">DiffController</span><span class="o">::~</span><span class="n">DiffController</span><span class="p">()</span>

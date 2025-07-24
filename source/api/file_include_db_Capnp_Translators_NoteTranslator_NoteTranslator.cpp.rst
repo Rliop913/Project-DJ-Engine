@@ -32,6 +32,8 @@ Includes
 
 - ``NoteTranslator.hpp`` (:ref:`file_include_db_Capnp_Translators_NoteTranslator_NoteTranslator.hpp`)
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 - ``string``
 
 

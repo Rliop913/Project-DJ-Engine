@@ -83,36 +83,78 @@
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-<span class="k">struct</span><span class="w"> </span><span class="nc">DuckTypeDevice</span><span class="p">{</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">HAS_KEY_Q_W_E_R_T_Y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">HAS_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">HAS_RELATIVE_AXIS_SENSOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">HAS_ABSOLUTE_AXIS_SENSOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+
+<span class="cp">#ifdef WIN32</span>
+<span class="c1">// #define WIN32_LEAN_AND_MEAN</span>
+<span class="c1">// #include &lt;Windows.h&gt;</span>
+<span class="c1">// using DevID = HANDLE;</span>
+
+<span class="cp">#else</span>
+
+<span class="cp">#endif</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_IDEV</span><span class="p">{</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Finders</span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">devName</span><span class="p">;</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">vendorID</span><span class="p">;</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">productID</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">busType</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">devType</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Specifiers</span><span class="p">{</span>
+<span class="w">        </span><span class="n">DevID</span><span class="w"> </span><span class="n">devID</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
 
 <span class="p">};</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">DeviceData</span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">deviceName</span><span class="p">;</span>
-<span class="w">    </span><span class="n">DuckTypeDevice</span><span class="w"> </span><span class="n">deviceType</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">using</span><span class="w"> </span><span class="n">DEV_LIST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="p">;</span>
-
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">OS_INPUT</span><span class="o">&gt;</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">InputEngine</span><span class="p">{</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_Input</span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
-<span class="w">    </span><span class="n">OS_INPUT</span><span class="w"> </span><span class="n">osAPI</span><span class="p">;</span>
-<span class="w">    </span><span class="n">DEV_LIST</span><span class="w"> </span><span class="n">activated_devices</span><span class="p">;</span>
+
 <span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="n">InputEngine</span><span class="p">();</span>
-<span class="w">    </span><span class="o">~</span><span class="n">InputEngine</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">StoreDeviceList</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DEV_LIST</span><span class="o">&amp;</span><span class="w"> </span><span class="n">list</span><span class="p">);</span>
-<span class="w">    </span><span class="n">DEV_LIST</span><span class="w"> </span><span class="nf">SearchDevices</span><span class="p">();</span>
-<span class="w">    </span><span class="n">DEV_LIST</span><span class="w"> </span><span class="nf">GetStoredDeviceList</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">setDevices</span><span class="p">(</span><span class="n">DEV_LIST</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">ActivateEngine</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">StopEngine</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">search</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">set</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">get</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">pair_job</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">PDJE_Input</span><span class="p">();</span>
+
+<span class="w">    </span><span class="o">~</span><span class="n">PDJE_Input</span><span class="p">();</span>
 <span class="p">};</span>
+
+
+<span class="c1">// struct DuckTypeDevice{</span>
+<span class="c1">//     bool HAS_KEY_Q_W_E_R_T_Y = false;</span>
+<span class="c1">//     bool HAS_KEY = false;</span>
+<span class="c1">//     bool HAS_RELATIVE_AXIS_SENSOR = false;</span>
+<span class="c1">//     bool HAS_ABSOLUTE_AXIS_SENSOR = false;</span>
+
+<span class="c1">// };</span>
+
+<span class="c1">// struct DeviceData{</span>
+<span class="c1">//     std::string deviceName;</span>
+<span class="c1">//     DuckTypeDevice deviceType;</span>
+<span class="c1">// };</span>
+
+<span class="c1">// using DEV_LIST = std::vector&lt;DeviceData&gt;;</span>
+
+<span class="c1">// template&lt;typename OS_INPUT&gt;</span>
+<span class="c1">// class InputEngine{</span>
+<span class="c1">// private:</span>
+<span class="c1">//     OS_INPUT osAPI;</span>
+<span class="c1">//     DEV_LIST activated_devices;</span>
+<span class="c1">// public:</span>
+<span class="c1">//     InputEngine();</span>
+<span class="c1">//     ~InputEngine();</span>
+<span class="c1">//     void StoreDeviceList(const DEV_LIST&amp; list);</span>
+<span class="c1">//     DEV_LIST SearchDevices();</span>
+<span class="c1">//     DEV_LIST GetStoredDeviceList();</span>
+<span class="c1">//     void setDevices(DEV_LIST);</span>
+<span class="c1">//     void ActivateEngine();</span>
+<span class="c1">//     void StopEngine();</span>
+<span class="c1">// };</span>
 </pre></div>
 </div>
 </section>

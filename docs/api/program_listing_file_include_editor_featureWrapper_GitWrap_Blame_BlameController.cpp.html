@@ -81,18 +81,24 @@
 <p>↰ <a class="reference internal" href="file_include_editor_featureWrapper_GitWrap_Blame_BlameController.cpp.html#file-include-editor-featurewrapper-gitwrap-blame-blamecontroller-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/editor/featureWrapper/GitWrap/Blame/BlameController.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;BlameController.hpp&quot;</span>
 
-
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
 
 <span class="kt">bool</span>
 <span class="nf">BlameController::BlameOpen</span><span class="p">(</span>
 <span class="w">    </span><span class="n">git_repository</span><span class="w"> </span><span class="o">*</span><span class="n">repo</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">,</span>
 <span class="w">    </span><span class="n">git_blame_options</span><span class="w"> </span><span class="o">*</span><span class="n">options</span><span class="p">)</span>
 <span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">safeStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">generic_string</span><span class="p">();</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">blame</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;blame is null. tried from BlameController BlameOpen. Errpath: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">git_blame_file</span><span class="p">(</span><span class="o">&amp;</span><span class="n">blame</span><span class="p">,</span><span class="w"> </span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">git_blame_file</span><span class="p">(</span><span class="o">&amp;</span><span class="n">blame</span><span class="p">,</span><span class="w"> </span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">safeStr</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">options</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to blame file. from BlameController BlameOpen. Errpath &amp; Errmsg : &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">blameAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">git_blame_get_hunk_count</span><span class="p">(</span><span class="n">blame</span><span class="p">);</span>
@@ -105,6 +111,7 @@
 <span class="n">BlameController</span><span class="o">::</span><span class="k">operator</span><span class="p">[](</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">idx</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">blameAmount</span><span class="p">){</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;index out of range. from BlameController op[]&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">temphunk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">git_blame_get_hunk_byindex</span><span class="p">(</span><span class="n">blame</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="p">);</span>
@@ -118,6 +125,8 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tempres</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to get hunk. from BlameController op []. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 

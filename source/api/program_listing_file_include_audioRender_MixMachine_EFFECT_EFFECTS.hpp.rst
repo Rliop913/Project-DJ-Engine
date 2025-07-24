@@ -30,8 +30,10 @@ Program Listing for File EFFECTS.hpp
    #include "FAUST_VOL.hpp"
    #include "FAUST_ROBOT.hpp"
    
+   #include "PDJE_EXPORT_SETTER.hpp"
+   
    template<typename Fclass>
-   class FaustDType : public Fclass{
+   class PDJE_API FaustDType : public Fclass{
    private:
        std::vector<float> L;
        std::vector<float> R;
@@ -85,7 +87,6 @@ Program Listing for File EFFECTS.hpp
        FaustClass managingClass;
        
        template<typename FClass>
-       // __attribute__((optimize("O2")))
        void consume(std::vector<FaustDType<FClass>>& jobs)
        {
            for(auto& i : jobs){

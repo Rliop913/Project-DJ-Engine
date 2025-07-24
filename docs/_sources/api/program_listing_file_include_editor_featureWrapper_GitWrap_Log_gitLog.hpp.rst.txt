@@ -10,25 +10,26 @@ Program Listing for File gitLog.hpp
 
 .. code-block:: cpp
 
+   
    #pragma once
    #include <unordered_map>
    #include <string>
    #include <vector>
    #include <cstdint>
    #include <bit>
-   
+   #include "fileNameSanitizer.hpp"
    #include "editorBranch.hpp"
    #include "editorCommit.hpp"
    namespace gitwrap{
        struct log{
            commit now;
            git_oid parentID = {{0}};
-           std::string authName;
-           std::string authEmail;
+           DONT_SANITIZE authName;
+           DONT_SANITIZE authEmail;
        };
    
        struct BranchHead{
-           std::string BranchName;
+           DONT_SANITIZE BranchName;
            git_oid head = {{0}};
        };
        
@@ -46,7 +47,7 @@ Program Listing for File gitLog.hpp
            void AddLog(const git_oid& id, git_oid& ChildID, const git_signature* & sign, const std::string& msg);
            
        public:
-           bool WalkBranch(const std::string& branchName);
+           bool WalkBranch(const DONT_SANITIZE& branchName);
            std::unordered_map<git_oid, log, OID_HASHER, OID_EQUAL> logs;
            git_oid ROOT_ID = {{0}};
            std::vector<BranchHead> heads;

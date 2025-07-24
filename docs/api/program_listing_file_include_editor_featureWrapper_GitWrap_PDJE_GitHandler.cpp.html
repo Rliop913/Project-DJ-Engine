@@ -84,12 +84,13 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;git2/repository.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gitWrapper.hpp&quot;</span>
 
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">filesystem</span><span class="p">;</span>
 
 
 
-<span class="n">PDJE_GitHandler</span><span class="o">::</span><span class="n">PDJE_GitHandler</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">auth_name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">auth_email</span><span class="p">)</span>
+<span class="n">PDJE_GitHandler</span><span class="o">::</span><span class="n">PDJE_GitHandler</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">auth_name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">auth_email</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">git_signature_now</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sign</span><span class="p">,</span><span class="w"> </span><span class="n">auth_name</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">auth_email</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
 
@@ -97,24 +98,39 @@
 
 <span class="n">PDJE_GitHandler</span><span class="o">::~</span><span class="n">PDJE_GitHandler</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">git_signature_free</span><span class="p">(</span><span class="n">sign</span><span class="p">);</span>
+<span class="w">    </span><span class="k">try</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">git_signature_free</span><span class="p">(</span><span class="n">sign</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to free signature. from PDJE_GitHandler::~PDJE_GitHandler. ErrException: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
 
 <span class="kt">bool</span>
-<span class="n">PDJE_GitHandler</span><span class="o">::</span><span class="n">Open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">)</span>
+<span class="n">PDJE_GitHandler</span><span class="o">::</span><span class="n">Open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">gw</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">openRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gw</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">openRes</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to open git. from PDJE_GitHandler Open. path: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">openRes</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span>
-<span class="n">PDJE_GitHandler</span><span class="o">::</span><span class="n">DeleteGIT</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">)</span>
+<span class="n">PDJE_GitHandler</span><span class="o">::</span><span class="n">DeleteGIT</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">)</span>
 <span class="p">{</span>
 
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="n">fs</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
 <span class="w">        </span><span class="o">!</span><span class="n">fs</span><span class="o">::</span><span class="n">is_directory</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
 <span class="w">        </span><span class="o">!</span><span class="n">Close</span><span class="p">())</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;something failed from PDJE_GitHandler DeleteGIT. path: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">remove_all</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
@@ -125,22 +141,39 @@
 <span class="kt">bool</span>
 <span class="n">PDJE_GitHandler</span><span class="o">::</span><span class="n">Close</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">gw</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">closeRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gw</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">closeRes</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to close git. from PDJE_GitHandler Close.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">closeRes</span><span class="p">;</span>
 <span class="p">}</span>
 
 
 <span class="kt">bool</span>
-<span class="n">PDJE_GitHandler</span><span class="o">::</span><span class="n">Save</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tracingFile</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">timeStamp</span><span class="p">)</span>
+<span class="n">PDJE_GitHandler</span><span class="o">::</span><span class="n">Save</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">tracingFile</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">timeStamp</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">gw</span><span class="p">.</span><span class="n">handleBranch</span><span class="o">-&gt;</span><span class="n">FLAG_TEMP_CHECKOUT</span><span class="p">.</span><span class="n">has_value</span><span class="p">()){</span>
 <span class="w">        </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="nf">tempcommit</span><span class="p">(</span><span class="n">gw</span><span class="p">.</span><span class="n">handleBranch</span><span class="o">-&gt;</span><span class="n">FLAG_TEMP_CHECKOUT</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span><span class="w"> </span><span class="n">gw</span><span class="p">.</span><span class="n">repo</span><span class="p">);</span>
 <span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">gw</span><span class="p">.</span><span class="n">handleBranch</span><span class="o">-&gt;</span><span class="n">MakeNewFromCommit</span><span class="p">(</span><span class="n">tempcommit</span><span class="p">,</span><span class="w"> </span><span class="n">gw</span><span class="p">.</span><span class="n">GenTimeStamp</span><span class="p">())){</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to save. from PDJE_GitHandler Save. file&amp;timestamp: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">tracingFile</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">timeStamp</span><span class="p">);</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">gw</span><span class="p">.</span><span class="n">handleBranch</span><span class="o">-&gt;</span><span class="n">FLAG_TEMP_CHECKOUT</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">gw</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">tracingFile</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">gw</span><span class="p">.</span><span class="n">commit</span><span class="p">(</span><span class="n">sign</span><span class="p">,</span><span class="w"> </span><span class="n">timeStamp</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">gw</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">tracingFile</span><span class="p">)){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to add. from PDJE_GitHandler Save. file&amp;timestamp: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">tracingFile</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">timeStamp</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">gw</span><span class="p">.</span><span class="n">commit</span><span class="p">(</span><span class="n">sign</span><span class="p">,</span><span class="w"> </span><span class="n">timeStamp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to commit. from PDJE_GitHandler Save. file&amp;timestamp: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">tracingFile</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">timeStamp</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -164,6 +197,7 @@
 <span class="w">                </span><span class="p">);</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="k">else</span><span class="p">{</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to getHead. from PDJE_GitHandler Undo.&quot;</span><span class="p">);</span>
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
@@ -172,10 +206,12 @@
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">else</span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to checkout to commit. from PDJE_GitHandler Undo.&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to update log. from PDJE_GitHandler Undo.&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -195,6 +231,7 @@
 <span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">                        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to checkout. from PDJE_GitHandler Redo.&quot;</span><span class="p">);</span>
 <span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                </span><span class="p">}</span>
@@ -204,11 +241,13 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">catch</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">RecentERR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">();</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;something failed. from PDJE_GitHandler Redo. ErrException: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">infolog</span><span class="p">(</span><span class="s">&quot;nothing to redo. returned false. from PDJE_GitHandler Redo. no err&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
@@ -221,36 +260,45 @@
 <span class="p">}</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">BranchJSON</span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">branchname</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">oid</span><span class="p">;</span>
+<span class="w">    </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="n">branchname</span><span class="p">;</span>
+<span class="w">    </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="n">oid</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">string</span>
+<span class="n">DONT_SANITIZE</span>
 <span class="nf">PDJE_GitHandler::GetLogWithJSONGraph</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">nj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="p">;</span>
 <span class="w">    </span><span class="n">nj</span><span class="w"> </span><span class="n">GraphRoot</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">gw</span><span class="p">.</span><span class="n">log_hdl</span><span class="o">-&gt;</span><span class="n">heads</span><span class="p">){</span>
-<span class="w">        </span><span class="n">nj</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
-<span class="w">        </span><span class="n">b</span><span class="p">[</span><span class="s">&quot;NAME&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">BranchName</span><span class="p">;</span>
-<span class="w">        </span><span class="n">b</span><span class="p">[</span><span class="s">&quot;OID&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">git_oid_tostr_s</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">.</span><span class="n">head</span><span class="p">));</span>
-<span class="w">        </span><span class="n">GraphRoot</span><span class="p">[</span><span class="s">&quot;BRANCH&quot;</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="k">try</span><span class="p">{</span>
+
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">gw</span><span class="p">.</span><span class="n">log_hdl</span><span class="o">-&gt;</span><span class="n">heads</span><span class="p">){</span>
+<span class="w">            </span><span class="n">nj</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">            </span><span class="n">b</span><span class="p">[</span><span class="s">&quot;NAME&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">BranchName</span><span class="p">;</span>
+<span class="w">            </span><span class="n">b</span><span class="p">[</span><span class="s">&quot;OID&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="p">(</span><span class="n">git_oid_tostr_s</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">.</span><span class="n">head</span><span class="p">));</span>
+<span class="w">            </span><span class="n">GraphRoot</span><span class="p">[</span><span class="s">&quot;BRANCH&quot;</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">gw</span><span class="p">.</span><span class="n">log_hdl</span><span class="o">-&gt;</span><span class="n">logs</span><span class="p">){</span>
+<span class="w">            </span><span class="n">nj</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">            </span><span class="n">c</span><span class="p">[</span><span class="s">&quot;OID&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="p">(</span><span class="n">git_oid_tostr_s</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">.</span><span class="n">first</span><span class="p">));</span>
+<span class="w">            </span><span class="n">c</span><span class="p">[</span><span class="s">&quot;EMAIL&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">authEmail</span><span class="p">;</span>
+<span class="w">            </span><span class="n">c</span><span class="p">[</span><span class="s">&quot;NAME&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">authName</span><span class="p">;</span>
+<span class="w">            </span><span class="n">c</span><span class="p">[</span><span class="s">&quot;PARENTID&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="p">(</span><span class="n">git_oid_tostr_s</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">parentID</span><span class="p">));</span>
+<span class="w">            </span><span class="n">GraphRoot</span><span class="p">[</span><span class="s">&quot;COMMIT&quot;</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">gw</span><span class="p">.</span><span class="n">log_hdl</span><span class="o">-&gt;</span><span class="n">logs</span><span class="p">){</span>
-<span class="w">        </span><span class="n">nj</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
-<span class="w">        </span><span class="n">c</span><span class="p">[</span><span class="s">&quot;OID&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">git_oid_tostr_s</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">.</span><span class="n">first</span><span class="p">));</span>
-<span class="w">        </span><span class="n">c</span><span class="p">[</span><span class="s">&quot;EMAIL&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">authEmail</span><span class="p">;</span>
-<span class="w">        </span><span class="n">c</span><span class="p">[</span><span class="s">&quot;NAME&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">authName</span><span class="p">;</span>
-<span class="w">        </span><span class="n">c</span><span class="p">[</span><span class="s">&quot;PARENTID&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">git_oid_tostr_s</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">parentID</span><span class="p">));</span>
-<span class="w">        </span><span class="n">GraphRoot</span><span class="p">[</span><span class="s">&quot;COMMIT&quot;</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+<span class="w">    </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to get log with json. from PDJE_GitHandler GitLogWithJSONGraph. ErrException: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GraphRoot</span><span class="p">.</span><span class="n">dump</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span>
-<span class="nf">PDJE_GitHandler::Go</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">branchName</span><span class="p">,</span><span class="w"> </span><span class="n">git_oid</span><span class="o">*</span><span class="w"> </span><span class="n">commitID</span><span class="p">)</span>
+<span class="nf">PDJE_GitHandler::Go</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">branchName</span><span class="p">,</span><span class="w"> </span><span class="n">git_oid</span><span class="o">*</span><span class="w"> </span><span class="n">commitID</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">gw</span><span class="p">.</span><span class="n">handleBranch</span><span class="o">-&gt;</span><span class="n">SetBranch</span><span class="p">(</span><span class="n">branchName</span><span class="p">)){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;setBranch failed. from PDJE_GitHandler Go.&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">headbranch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">gw</span><span class="p">.</span><span class="n">handleBranch</span><span class="o">-&gt;</span><span class="n">GetHEAD</span><span class="p">());</span>
@@ -261,6 +309,7 @@
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="k">else</span><span class="p">{</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;checkout head failed. from PDJE_GitHandler Go.&quot;</span><span class="p">);</span>
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
@@ -270,11 +319,13 @@
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="k">else</span><span class="p">{</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;checkout commit failed. from PDJE_GitHandler Go.&quot;</span><span class="p">);</span>
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;headBranch has no value. from PDJE_GitHandler Go.&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>

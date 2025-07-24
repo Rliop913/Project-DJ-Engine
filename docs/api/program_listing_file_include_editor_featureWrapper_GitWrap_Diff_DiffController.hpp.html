@@ -87,11 +87,12 @@
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;git2.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;editorCommit.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fileNameSanitizer.hpp&quot;</span>
 <span class="c1">// #include &quot;CommitFinder.hpp&quot;</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">lineLog</span><span class="p">{</span>
 <span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">linenumber</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">DiffResult</span><span class="p">{</span>

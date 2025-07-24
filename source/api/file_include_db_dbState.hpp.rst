@@ -30,6 +30,10 @@ Includes
 --------
 
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
+
+- ``fileNameSanitizer.hpp`` (:ref:`file_include_db_fileNameSanitizer.hpp`)
+
 - ``sqlite3.h``
 
 - ``string``

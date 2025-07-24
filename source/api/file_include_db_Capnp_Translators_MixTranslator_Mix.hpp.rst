@@ -32,6 +32,8 @@ Includes
 
 - ``FrameCalc.hpp`` (:ref:`file_include_db_Capnp_Translators_FrameCalc.hpp`)
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
+
 - ``algorithm``
 
 - ``mutex``

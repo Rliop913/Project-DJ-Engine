@@ -15,6 +15,8 @@ Program Listing for File DeckData.hpp
    #include <vector>
    #include <string>
    #include <functional>
+   #include "PDJE_EXPORT_SETTER.hpp"
+   
    using STR = std::string;
    using SETTER = std::function<void(double)>;
    using ARGSETTER = std::unordered_map<std::string, SETTER>;

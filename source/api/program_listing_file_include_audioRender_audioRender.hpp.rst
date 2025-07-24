@@ -14,7 +14,8 @@ Program Listing for File audioRender.hpp
    
    #include "MixMachine.hpp"
    #include "ManualMix.hpp"
-   class audioRender{
+   #include "PDJE_EXPORT_SETTER.hpp"
+   class PDJE_API audioRender{
    public:
        std::optional<std::vector<float>> rendered_frames;
    

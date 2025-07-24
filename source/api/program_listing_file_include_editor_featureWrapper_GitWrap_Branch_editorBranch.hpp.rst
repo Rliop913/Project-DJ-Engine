@@ -10,6 +10,7 @@ Program Listing for File editorBranch.hpp
 
 .. code-block:: cpp
 
+   
    #pragma once
    
    #include "editorCommit.hpp"
@@ -62,3 +63,4 @@ Program Listing for File editorBranch.hpp
            ~branch();
        };
    };
+   

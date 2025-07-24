@@ -9,6 +9,11 @@ File compressorMan.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+Manual compressor effect controller. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none

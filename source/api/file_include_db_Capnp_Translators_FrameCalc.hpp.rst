@@ -32,6 +32,8 @@ Includes
 
 - ``CapnpBinary.hpp`` (:ref:`file_include_db_Capnp_CapnpBinary_CapnpBinary.hpp`)
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
+
 - ``algorithm``
 
 - ``cmath``

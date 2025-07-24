@@ -81,37 +81,55 @@
 <p>↰ <a class="reference internal" href="file_include_db_musicDB.cpp.html#file-include-db-musicdb-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/db/musicDB.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;musicDB.hpp&quot;</span>
 <span class="c1">// #include &quot;errorTable.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;source_location&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
+
 
 
 <span class="cp">#define CHK_BIND(res)\</span>
 <span class="cp">if(res != SQLITE_OK){\</span>
-<span class="cp">return false;\</span>
+<span class="cp">    auto now = std::source_location::current();\</span>
+<span class="cp">    critlog(&quot;failed on sqlite.&quot;);\</span>
+<span class="cp">    critlog(now.file_name());\</span>
+<span class="cp">    std::string lineNumber = std::to_string(now.line());\</span>
+<span class="cp">    critlog(lineNumber);\</span>
+<span class="cp">    critlog(now.function_name());\</span>
+<span class="cp">    std::string sqlLog = sqlite3_errmsg(db);\</span>
+<span class="cp">    critlog(sqlLog);\</span>
+<span class="cp">    return false;\</span>
 <span class="cp">}</span>
-<span class="c1">// errpdje::ereport(&quot;sql bind errno: &quot; + std::to_string(SQLITE_LAST_ERRNO), errpdje::ERR_TYPE::SQL_ERROR, (&quot;musicDB bind &quot; + std::string(error_type)));}</span>
-
-
 
 <span class="n">musdata</span><span class="o">::</span><span class="n">musdata</span><span class="p">(</span><span class="n">stmt</span><span class="o">*</span><span class="w"> </span><span class="n">dbstate</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbstate</span><span class="o">-&gt;</span><span class="n">colGet</span><span class="o">&lt;</span><span class="n">COL_TYPE</span><span class="o">::</span><span class="n">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="w">    </span><span class="n">composer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbstate</span><span class="o">-&gt;</span><span class="n">colGet</span><span class="o">&lt;</span><span class="n">COL_TYPE</span><span class="o">::</span><span class="n">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="n">musicPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbstate</span><span class="o">-&gt;</span><span class="n">colGet</span><span class="o">&lt;</span><span class="n">COL_TYPE</span><span class="o">::</span><span class="n">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">    </span><span class="n">bpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbstate</span><span class="o">-&gt;</span><span class="n">colGet</span><span class="o">&lt;</span><span class="n">COL_TYPE</span><span class="o">::</span><span class="n">DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">    </span><span class="n">bpmBinary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbstate</span><span class="o">-&gt;</span><span class="n">colGet</span><span class="o">&lt;</span><span class="n">COL_TYPE</span><span class="o">::</span><span class="n">BLOB</span><span class="p">,</span><span class="w"> </span><span class="n">BIN</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-<span class="w">    </span><span class="n">firstBar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbstate</span><span class="o">-&gt;</span><span class="n">colGet</span><span class="o">&lt;</span><span class="n">COL_TYPE</span><span class="o">::</span><span class="n">TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbstate</span><span class="o">-&gt;</span><span class="n">colGet</span><span class="o">&lt;</span><span class="n">COL_TYPE</span><span class="o">::</span><span class="n">PDJE_TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">composer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbstate</span><span class="o">-&gt;</span><span class="n">colGet</span><span class="o">&lt;</span><span class="n">COL_TYPE</span><span class="o">::</span><span class="n">PDJE_TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">musicPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbstate</span><span class="o">-&gt;</span><span class="n">colGet</span><span class="o">&lt;</span><span class="n">COL_TYPE</span><span class="o">::</span><span class="n">PDJE_TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">bpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbstate</span><span class="o">-&gt;</span><span class="n">colGet</span><span class="o">&lt;</span><span class="n">COL_TYPE</span><span class="o">::</span><span class="n">PDJE_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="n">bpmBinary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbstate</span><span class="o">-&gt;</span><span class="n">colGet</span><span class="o">&lt;</span><span class="n">COL_TYPE</span><span class="o">::</span><span class="n">PDJE_BLOB</span><span class="p">,</span><span class="w"> </span><span class="n">BIN</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="w">    </span><span class="n">firstBar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbstate</span><span class="o">-&gt;</span><span class="n">colGet</span><span class="o">&lt;</span><span class="n">COL_TYPE</span><span class="o">::</span><span class="n">PDJE_TEXT</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="n">musdata</span><span class="o">::</span><span class="n">musdata</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">title__</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">composer__</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">musicPath__</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">title__</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">composer__</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">SANITIZED_ORNOT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">musicPath__</span><span class="p">,</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">bpm__</span>
 <span class="p">)</span><span class="o">:</span>
-<span class="n">title</span><span class="p">(</span><span class="n">title__</span><span class="p">),</span>
-<span class="n">composer</span><span class="p">(</span><span class="n">composer__</span><span class="p">),</span>
 <span class="n">musicPath</span><span class="p">(</span><span class="n">musicPath__</span><span class="p">),</span>
 <span class="n">bpm</span><span class="p">(</span><span class="n">bpm__</span><span class="p">)</span>
-<span class="p">{}</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">safeTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Name_Sanitizer</span><span class="o">::</span><span class="n">sanitizeFileName</span><span class="p">(</span><span class="n">title__</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">safeComposer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Name_Sanitizer</span><span class="o">::</span><span class="n">sanitizeFileName</span><span class="p">(</span><span class="n">composer__</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">safeTitle</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">safeComposer</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to sanitize filename. from musdata(title, composer, muspath, bpm). TileComposer: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">title__</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">composer__</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">safeTitle</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
+<span class="w">    </span><span class="n">composer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">safeComposer</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
+<span class="p">}</span>
 
 
 <span class="kt">bool</span>

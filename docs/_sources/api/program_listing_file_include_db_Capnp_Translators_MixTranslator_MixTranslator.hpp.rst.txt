@@ -22,8 +22,8 @@ Program Listing for File MixTranslator.hpp
    #include "CapnpBinary.hpp"
    #include "Mix.hpp"
    #include "Bpm.hpp"
-   
-   class MixTranslator{
+   #include "PDJE_EXPORT_SETTER.hpp"
+   class PDJE_API MixTranslator{
    private:
        unsigned int usable_threads = 0;
    public:

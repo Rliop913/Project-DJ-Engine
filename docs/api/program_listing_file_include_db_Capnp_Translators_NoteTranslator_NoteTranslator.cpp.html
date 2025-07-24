@@ -80,6 +80,7 @@
 <span id="program-listing-file-include-db-capnp-translators-notetranslator-notetranslator-cpp"></span><h1>Program Listing for File NoteTranslator.cpp<a class="headerlink" href="#program-listing-for-file-notetranslator-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_db_Capnp_Translators_NoteTranslator_NoteTranslator.cpp.html#file-include-db-capnp-translators-notetranslator-notetranslator-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;NoteTranslator.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 
 <span class="kt">bool</span>
@@ -90,6 +91,7 @@
 <span class="w">    </span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">lambdaCallback</span><span class="p">){</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;return false because lambda is empty. from NoteTranslator Read&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">br</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">binary</span><span class="p">.</span><span class="n">Rp</span><span class="o">-&gt;</span><span class="n">getDatas</span><span class="p">();</span>
@@ -107,8 +109,10 @@
 <span class="w">                </span><span class="n">fg</span><span class="p">.</span><span class="n">bpm</span><span class="w"> </span><span class="o">=</span>
 <span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">stod</span><span class="p">(</span><span class="n">br</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getFirst</span><span class="p">().</span><span class="n">cStr</span><span class="p">());</span>
 <span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">catch</span><span class="p">(...)</span>
+<span class="w">            </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
 <span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to convert string to double. from NoteTranslator Read. ExceptionLog: &quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="n">br</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getFirst</span><span class="p">().</span><span class="n">cStr</span><span class="p">());</span>
 <span class="w">                </span><span class="k">continue</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="n">bs</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">fg</span><span class="p">);</span>
@@ -116,6 +120,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">bs</span><span class="p">.</span><span class="n">sortFragment</span><span class="p">();</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">bs</span><span class="p">.</span><span class="n">calcFrame</span><span class="p">()){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to calculate frames. from NoteTranslator Read.&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">br</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">){</span>

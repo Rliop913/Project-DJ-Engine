@@ -1,10 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="BlameController_8hpp" kind="file" language="C++">
     <compoundname>BlameController.hpp</compoundname>
     <includes local="no">git2.h</includes>
     <includes local="no">string</includes>
     <includes local="no">optional</includes>
+    <includes local="no">filesystem</includes>
     <includedby refid="BlameController_8cpp" local="yes">include/editor/featureWrapper/GitWrap/Blame/BlameController.cpp</includedby>
     <includedby refid="gitWrapper_8hpp" local="yes">include/editor/featureWrapper/GitWrap/gitWrapper.hpp</includedby>
     <incdepgraph>
@@ -17,6 +18,11 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>filesystem</label>
       </node>
       <node id="2">
         <label>git2.h</label>
@@ -109,7 +115,7 @@
         <label>include/MainObjects/editorObject/updatelog.cpp</label>
         <link refid="updatelog_8cpp"/>
       </node>
-      <node id="23">
+      <node id="24">
         <label>include/editor/editor.cpp</label>
         <link refid="editor_8cpp"/>
       </node>
@@ -118,7 +124,7 @@
         <link refid="editor_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -133,11 +139,11 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="24">
+      <node id="25">
         <label>include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp</label>
         <link refid="PDJE__GitHandler_8cpp"/>
       </node>
-      <node id="25">
+      <node id="26">
         <label>include/editor/featureWrapper/GitWrap/gitWrapper.cpp</label>
         <link refid="gitWrapper_8cpp"/>
       </node>
@@ -146,11 +152,11 @@
         <link refid="gitWrapper_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
         <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="18">
@@ -170,16 +176,22 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
       </node>
       <node id="21">
         <label>include/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
       </node>
-      <node id="26">
+      <node id="22">
+        <label>include/tests/editorTest.cpp</label>
+        <link refid="editorTest_8cpp"/>
+      </node>
+      <node id="27">
         <label>include/tests/gittest.cpp</label>
         <link refid="gittest_8cpp"/>
       </node>
-      <node id="22">
+      <node id="23">
         <label>include/tests/interfaceTest.cpp</label>
         <link refid="interfaceTest_8cpp"/>
       </node>
@@ -198,46 +210,53 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp" line="17" column="1" bodyfile="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp" bodystart="17" bodyend="-1"/>
+        <location file="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp" line="25" column="1" bodyfile="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp" bodystart="25" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>Perform git blame operations. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;git2.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="5" refid="structBlameResult" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structBlameResult" kindref="compound">BlameResult</ref>{</highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight></codeline>
-<codeline lineno="7" refid="structBlameResult_1a3cd01bcf512b38f3decbcbe01573752b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>git_oid<sp/><ref refid="structBlameResult_1a3cd01bcf512b38f3decbcbe01573752b" kindref="member">commitID</ref>;</highlight></codeline>
-<codeline lineno="8" refid="structBlameResult_1aed72302e36c39abd34b66311d6b78621" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structBlameResult_1aed72302e36c39abd34b66311d6b78621" kindref="member">editStartLine</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="9" refid="structBlameResult_1ad52dee2a30a308fa21b1143cb79905c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structBlameResult_1ad52dee2a30a308fa21b1143cb79905c9" kindref="member">editedLines</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="11" refid="structBlameResult_1a14903f3655f3a4a6e3eebdd35558359a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>git_oid<sp/><ref refid="structBlameResult_1a14903f3655f3a4a6e3eebdd35558359a" kindref="member">originID</ref>;</highlight></codeline>
-<codeline lineno="12" refid="structBlameResult_1a1cdb2c9062e22b2046f61c9ffa766cc7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structBlameResult_1a1cdb2c9062e22b2046f61c9ffa766cc7" kindref="member">originStartLine</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="15"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17" refid="BlameController_8hpp_1af7f0dbdf8c9026039110dc2a505efee1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="BlameController_8hpp_1af7f0dbdf8c9026039110dc2a505efee1" kindref="member">MAYBE_BLAME_RESULT</ref><sp/>=<sp/>std::optional&lt;BlameResult&gt;;</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19" refid="classBlameController" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBlameController_1a9fba1a1e04cfd4b840142fd60a405b7d" kindref="member">BlameController</ref>{</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="21" refid="classBlameController_1aa220950500866fcfa710e8dca444a751" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_blame*<sp/><ref refid="classBlameController_1aa220950500866fcfa710e8dca444a751" kindref="member">blame</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="22" refid="classBlameController_1a45028fe059ce4f0d1fd9e3d422e1d589" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classBlameController_1a45028fe059ce4f0d1fd9e3d422e1d589" kindref="member">blameAmount</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="24" refid="classBlameController_1a9fba1a1e04cfd4b840142fd60a405b7d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBlameController_1a9fba1a1e04cfd4b840142fd60a405b7d" kindref="member">BlameController</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBlameController_1ae873b1a34192b67f078580d72107343d" kindref="member">BlameOpen</ref>(</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_repository<sp/>*repo,<sp/></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>path,<sp/></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_blame_options<sp/>*options<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BlameController_8hpp_1af7f0dbdf8c9026039110dc2a505efee1" kindref="member">MAYBE_BLAME_RESULT</ref><sp/><ref refid="classBlameController_1a056b997579895c483c7425fe1952cd67" kindref="member">operator[]</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>);</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBlameController_1a06d7b59a3d9db2abe57b32ea8e8446cf" kindref="member">~BlameController</ref>();</highlight></codeline>
-<codeline lineno="32"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;git2.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fs<sp/>=<sp/>std::filesystem;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="structBlameResult" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structBlameResult" kindref="compound">BlameResult</ref>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="structBlameResult_1a3cd01bcf512b38f3decbcbe01573752b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>git_oid<sp/><ref refid="structBlameResult_1a3cd01bcf512b38f3decbcbe01573752b" kindref="member">commitID</ref>;</highlight></codeline>
+<codeline lineno="16" refid="structBlameResult_1aed72302e36c39abd34b66311d6b78621" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structBlameResult_1aed72302e36c39abd34b66311d6b78621" kindref="member">editStartLine</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="17" refid="structBlameResult_1ad52dee2a30a308fa21b1143cb79905c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structBlameResult_1ad52dee2a30a308fa21b1143cb79905c9" kindref="member">editedLines</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="19" refid="structBlameResult_1a14903f3655f3a4a6e3eebdd35558359a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>git_oid<sp/><ref refid="structBlameResult_1a14903f3655f3a4a6e3eebdd35558359a" kindref="member">originID</ref>;</highlight></codeline>
+<codeline lineno="20" refid="structBlameResult_1a1cdb2c9062e22b2046f61c9ffa766cc7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structBlameResult_1a1cdb2c9062e22b2046f61c9ffa766cc7" kindref="member">originStartLine</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="BlameController_8hpp_1af7f0dbdf8c9026039110dc2a505efee1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="BlameController_8hpp_1af7f0dbdf8c9026039110dc2a505efee1" kindref="member">MAYBE_BLAME_RESULT</ref><sp/>=<sp/>std::optional&lt;BlameResult&gt;;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classBlameController" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBlameController_1a9fba1a1e04cfd4b840142fd60a405b7d" kindref="member">BlameController</ref>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32" refid="classBlameController_1aa220950500866fcfa710e8dca444a751" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_blame*<sp/><ref refid="classBlameController_1aa220950500866fcfa710e8dca444a751" kindref="member">blame</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33" refid="classBlameController_1a45028fe059ce4f0d1fd9e3d422e1d589" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classBlameController_1a45028fe059ce4f0d1fd9e3d422e1d589" kindref="member">blameAmount</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35" refid="classBlameController_1a9fba1a1e04cfd4b840142fd60a405b7d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBlameController_1a9fba1a1e04cfd4b840142fd60a405b7d" kindref="member">BlameController</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBlameController_1a10d00a9a218af4e2a8f570c49c590ad0" kindref="member">BlameOpen</ref>(</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_repository<sp/>*repo,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path&amp;<sp/>path,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_blame_options<sp/>*options<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BlameController_8hpp_1af7f0dbdf8c9026039110dc2a505efee1" kindref="member">MAYBE_BLAME_RESULT</ref><sp/><ref refid="classBlameController_1a056b997579895c483c7425fe1952cd67" kindref="member">operator[]</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBlameController_1a06d7b59a3d9db2abe57b32ea8e8446cf" kindref="member">~BlameController</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp"/>
   </compounddef>

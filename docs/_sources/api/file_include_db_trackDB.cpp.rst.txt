@@ -30,6 +30,12 @@ Includes
 --------
 
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
+- ``fileNameSanitizer.hpp`` (:ref:`file_include_db_fileNameSanitizer.hpp`)
+
+- ``source_location``
+
 - ``trackDB.hpp`` (:ref:`file_include_db_trackDB.hpp`)
 
 

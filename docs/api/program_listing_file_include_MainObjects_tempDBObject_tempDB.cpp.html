@@ -80,14 +80,23 @@
 <span id="program-listing-file-include-mainobjects-tempdbobject-tempdb-cpp"></span><h1>Program Listing for File tempDB.cpp<a class="headerlink" href="#program-listing-for-file-tempdb-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_MainObjects_tempDBObject_tempDB.cpp.html#file-include-mainobjects-tempdbobject-tempdb-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/MainObjects/tempDBObject/tempDB.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tempDB.hpp&quot;</span>
-
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
 <span class="kt">bool</span>
-<span class="nf">tempDB::Open</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">projectRoot</span><span class="p">)</span>
+<span class="nf">tempDB::Open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">projectRoot</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">tempROOT</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="n">tempROOT</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">tempROOT</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">openRes</span><span class="w"> </span><span class="o">=</span>
 <span class="w">    </span><span class="n">tempROOT</span><span class="o">-&gt;</span><span class="n">openDB</span><span class="p">(</span>
-<span class="w">        </span><span class="p">(</span><span class="n">projectRoot</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;LOCALDB.pdjedb&quot;</span><span class="p">).</span><span class="n">string</span><span class="p">()</span>
+<span class="w">        </span><span class="p">(</span><span class="n">projectRoot</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="s">&quot;LOCALDB&quot;</span><span class="p">))</span>
 <span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">openRes</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to open local database. from tempDB Open. path: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">logPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">projectRoot</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="s">&quot;LOCALDB&quot;</span><span class="p">));</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">logPath</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">openRes</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span>
@@ -95,15 +104,37 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">dbposition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tempROOT</span><span class="o">-&gt;</span><span class="n">getRoot</span><span class="p">();</span>
 <span class="w">    </span><span class="n">tempROOT</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">fs</span><span class="o">::</span><span class="n">remove</span><span class="p">(</span><span class="n">dbposition</span><span class="p">)){</span>
+<span class="w">    </span><span class="k">try</span><span class="p">{</span>
+
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">fs</span><span class="o">::</span><span class="n">remove_all</span><span class="p">(</span><span class="n">dbposition</span><span class="p">)){</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to remove local database. from tempDB BuildProject. path: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">dbposition</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to remove local database. from tempDB BuildProject. ErrException: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">tempROOT</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
 
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">tempROOT</span><span class="o">-&gt;</span><span class="n">openDB</span><span class="p">(</span><span class="n">dbposition</span><span class="p">))</span><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">tempROOT</span><span class="p">.</span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">td</span><span class="p">))</span><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">tempROOT</span><span class="o">-&gt;</span><span class="n">openDB</span><span class="p">(</span><span class="n">dbposition</span><span class="p">)){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to open local database. from tempDB BuildProject. path: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">dbposition</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">tempROOT</span><span class="p">.</span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">td</span><span class="p">)){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to push trackdata to local database. from tempDB BuildProject. trackTitle: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">td</span><span class="p">.</span><span class="n">trackTitle</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">mds</span><span class="p">){</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">tempROOT</span><span class="p">.</span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="p">))</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">tempROOT</span><span class="p">.</span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">i</span><span class="p">)){</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to push musicdata to local database. from tempDB BuildProject. musicTitle: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">title</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>

@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
+
 - ``dbRoot.hpp`` (:ref:`file_include_db_dbRoot.hpp`)
 
 - ``filesystem``

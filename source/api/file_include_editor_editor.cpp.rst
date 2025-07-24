@@ -30,9 +30,13 @@ Includes
 --------
 
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 - ``editor.hpp`` (:ref:`file_include_editor_editor.hpp`)
 
 - ``filesystem``
+
+- ``random``
 
 
 

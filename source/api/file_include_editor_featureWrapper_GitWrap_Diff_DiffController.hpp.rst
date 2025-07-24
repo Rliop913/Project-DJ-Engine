@@ -9,6 +9,11 @@ File DiffController.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+Helpers for generating diffs between Git commits. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none
@@ -31,6 +36,8 @@ Includes
 
 
 - ``editorCommit.hpp`` (:ref:`file_include_editor_featureWrapper_GitWrap_Commit_editorCommit.hpp`)
+
+- ``fileNameSanitizer.hpp`` (:ref:`file_include_db_fileNameSanitizer.hpp`)
 
 - ``git2.h``
 

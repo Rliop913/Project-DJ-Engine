@@ -9,6 +9,11 @@ File editorCommit.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+Lightweight wrappers around Git commit objects. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none
@@ -29,6 +34,8 @@ Definition (``include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp``)
 Includes
 --------
 
+
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
 
 - ``git2.h``
 

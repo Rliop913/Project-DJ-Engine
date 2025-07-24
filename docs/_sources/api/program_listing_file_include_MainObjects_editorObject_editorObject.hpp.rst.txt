@@ -16,11 +16,12 @@ Program Listing for File editorObject.hpp
    #include <filesystem>
    #include "editor.hpp"
    #include "audioPlayer.hpp"
-   
+   #include "PDJE_EXPORT_SETTER.hpp"
+   #include "PDJE_LOG_SETTER.hpp"
    #include "tempDB.hpp"
    
-   struct EDIT_ARG_MUSIC{
-       std::string musicName;
+   struct PDJE_API EDIT_ARG_MUSIC{
+       UNSANITIZED musicName;
        
        MusicArgs arg;
    };
@@ -28,9 +29,9 @@ Program Listing for File editorObject.hpp
    using EDIT_ARG_NOTE = NoteArgs;
    using EDIT_ARG_MIX  = MixArgs;
    using EDIT_ARG_KEY_VALUE = KEY_VALUE;
-   using TITLE_COMPOSER = std::unordered_map<std::string, std::string>;
+   using TITLE_COMPOSER = std::unordered_map<SANITIZED, SANITIZED>;
    
-   class editorObject {
+   class PDJE_API editorObject {
    private:
        std::optional<tempDB> projectLocalDB;
        fs::path projectRoot;
@@ -47,15 +48,51 @@ Program Listing for File editorObject.hpp
        bool DefaultSaveFuntion(PDJE_Editor::MusicHandleStruct& i, const EDIT_ARG_MUSIC& obj);
    
        trackdata makeTrackData(
-           const std::string& trackTitle, 
+           const UNSANITIZED& trackTitle, 
            TITLE_COMPOSER& titles);
    
    public:
+       git_repository* getMixRepo(){
+           if(E_obj.has_value()){
+               return E_obj->mixHandle.first->gw.repo;
+           }
+           else return nullptr;
+       }
+       git_repository* getMusicRepo(const UNSANITIZED& Title){
+           auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(Title);
+           if(!safeTitle){
+               return nullptr;
+           }
+           if(E_obj.has_value()){
+               for(auto& music : E_obj->musicHandle){
+                   if(music.musicName == safeTitle){
+                       return music.gith->gw.repo;
+                   }
+               }
+           }
+           else return nullptr;
+       }
+   
+       git_repository* getNoteRepo(){
+           if(E_obj.has_value()){
+               return E_obj->noteHandle.first->gw.repo;
+           }
+           else return nullptr;
+       }
+   
+       git_repository* getKVRepo(){
+           if(E_obj.has_value()){
+               return E_obj->KVHandler.first->gw.repo;
+           }
+           else return nullptr;
+       }
+   
+   
    
        template<typename EDIT_ARG_TYPE>
        bool AddLine(const EDIT_ARG_TYPE& obj);
    
-       bool AddLine(const std::string& musicName, const std::string& firstBar);
+       bool AddLine(const UNSANITIZED& musicName, const DONT_SANITIZE& firstBar);
        
        
        int deleteLine(
@@ -66,20 +103,19 @@ Program Listing for File editorObject.hpp
        template<typename EDIT_ARG_TYPE> 
        int deleteLine(const EDIT_ARG_TYPE& obj);
    
-       bool render(const std::string& trackTitle, litedb& ROOTDB);
+       bool render(const UNSANITIZED& trackTitle, litedb& ROOTDB);
    
        void demoPlayInit(
            std::optional<audioPlayer>& player, 
            unsigned int frameBufferSize, 
-           trackdata& td);
+           const UNSANITIZED& trackTitle);
    
-       bool pushToRootDB(litedb& ROOTDB, const std::string& trackTitleToPush);
-   
+       bool pushToRootDB(litedb& ROOTDB, const UNSANITIZED& trackTitleToPush);
+       
        bool pushToRootDB(
            litedb& ROOTDB, 
-           const std::string& musicTitle, 
-           const std::string& musicComposer);
-   
+           const UNSANITIZED& musicTitle, 
+           const UNSANITIZED& musicComposer);
        template<typename EDIT_ARG_TYPE> 
        void getAll(std::function<void(const EDIT_ARG_TYPE& obj)> jsonCallback);
        
@@ -87,51 +123,51 @@ Program Listing for File editorObject.hpp
        bool Undo();
        
        template<typename EDIT_ARG_TYPE> 
-       bool Undo(const std::string& musicName);
+       bool Undo(const UNSANITIZED& musicName);
        
        
        template<typename EDIT_ARG_TYPE> 
        bool Redo();
    
        template<typename EDIT_ARG_TYPE> 
-       bool Redo(const std::string& musicName);
+       bool Redo(const UNSANITIZED& musicName);
    
        template<typename EDIT_ARG_TYPE> 
-       bool Go(const std::string& branchName, git_oid* commitID);
+       bool Go(const DONT_SANITIZE& branchName, git_oid* commitID);
    
        template<typename EDIT_ARG_TYPE> 
-       std::string GetLogWithJSONGraph();
+       DONT_SANITIZE GetLogWithJSONGraph();
        
        template<typename EDIT_ARG_TYPE> 
-       std::string GetLogWithJSONGraph(const std::string& musicName);
+       DONT_SANITIZE GetLogWithJSONGraph(const UNSANITIZED& musicName);
        
    
        template<typename EDIT_ARG_TYPE> 
        bool UpdateLog();
    
        template<typename EDIT_ARG_TYPE> 
-       bool UpdateLog(const std::string& branchName);
+       bool UpdateLog(const DONT_SANITIZE& branchName);
    
        template<typename EDIT_ARG_TYPE> 
        DiffResult GetDiff(const gitwrap::commit& oldTimeStamp, const gitwrap::commit& newTimeStamp);
    
-       nj& operator[](const std::string& key){
+       nj& operator[](const DONT_SANITIZE& key){
            return E_obj->KVHandler.second[key];
        }
        
-       std::string DESTROY_PROJECT();
+       DONT_SANITIZE DESTROY_PROJECT();
    
-       bool ConfigNewMusic(const std::string& NewMusicName, 
-                           const std::string& composer,
-                           const std::string& musicPath,
-                           const std::string& firstBar = "0");
+       bool ConfigNewMusic(const UNSANITIZED& NewMusicName, 
+                           const UNSANITIZED& composer,
+                           const fs::path& musicPath,
+                           const DONT_SANITIZE& firstBar = "0");
    
    
-       bool Open(const std::string& projectPath);
+       bool Open(const fs::path& projectPath);
    
        editorObject() = delete;
    
-       editorObject(const std::string &auth_name, const std::string &auth_email){
+       editorObject(const DONT_SANITIZE &auth_name, const DONT_SANITIZE &auth_email){
            E_obj.emplace(auth_name, auth_email);
        }
    

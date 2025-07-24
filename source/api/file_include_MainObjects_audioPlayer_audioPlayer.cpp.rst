@@ -32,6 +32,8 @@ Includes
 
 - ``MusicControlPannel.hpp`` (:ref:`file_include_audioRender_ManualMix_MusicControlPannel.hpp`)
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 - ``audioPlayer.hpp`` (:ref:`file_include_MainObjects_audioPlayer_audioPlayer.hpp`)
 
 

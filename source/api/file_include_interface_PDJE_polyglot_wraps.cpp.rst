@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 - ``PDJE_interface.hpp`` (:ref:`file_include_interface_PDJE_interface.hpp`)
 
 

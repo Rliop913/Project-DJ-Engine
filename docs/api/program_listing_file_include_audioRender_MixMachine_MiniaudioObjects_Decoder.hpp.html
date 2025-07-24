@@ -86,18 +86,21 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;miniaudio.h&gt;</span>
-
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FrameCalc.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fileNameSanitizer.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;dbRoot.hpp&quot;</span>
 
+<span class="k">namespace</span><span class="w"> </span><span class="nn">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">filesystem</span><span class="p">;</span>
 <span class="c1">// using MAYBE_FRAME = std::optional&lt;std::vector&lt;float&gt;&gt;;</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">FRAME_POS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">;</span>
-<span class="k">struct</span><span class="w"> </span><span class="nc">Decoder</span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">Decoder</span><span class="p">{</span>
 <span class="w">    </span><span class="n">ma_decoder</span><span class="w"> </span><span class="n">dec</span><span class="p">;</span>
-
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">musicBinary</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Decoder</span><span class="p">();</span>
 <span class="w">    </span><span class="o">~</span><span class="n">Decoder</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">song_path</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">root_path</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="n">litedb</span><span class="o">&amp;</span><span class="w"> </span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">SANITIZED_ORNOT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">KeyOrPath</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">changePos</span><span class="p">(</span><span class="n">FRAME_POS</span><span class="w"> </span><span class="n">Pos</span><span class="p">);</span>
 
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">getPos</span><span class="p">(</span><span class="n">FRAME_POS</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pos</span><span class="p">);</span>

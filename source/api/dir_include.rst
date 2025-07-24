@@ -19,4 +19,10 @@ Subdirectories
 - :ref:`dir_include_tests`
 
 
+Files
+-----
+
+- :ref:`file_include_PDJE_EXPORT_SETTER.hpp`
+- :ref:`file_include_PDJE_LOG_SETTER.hpp`
+
 

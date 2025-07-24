@@ -12,18 +12,24 @@ Program Listing for File BlameController.cpp
 
    #include "BlameController.hpp"
    
-   
+   #include "PDJE_LOG_SETTER.hpp"
    
    bool
    BlameController::BlameOpen(
        git_repository *repo, 
-       const std::string& path, 
+       const fs::path& path, 
        git_blame_options *options)
    {
+       std::string safeStr = path.generic_string();
        if(blame != nullptr){
+           critlog("blame is null. tried from BlameController BlameOpen. Errpath: ");
+           critlog(path.generic_string());
            return false;
        }
-       if(git_blame_file(&blame, repo, path.c_str(), options) != 0){
+       if(git_blame_file(&blame, repo, safeStr.c_str(), options) != 0){
+           critlog("failed to blame file. from BlameController BlameOpen. Errpath & Errmsg : ");
+           critlog(path.generic_string());
+           critlog(git_error_last()->message);
            return false;
        }
        blameAmount = git_blame_get_hunk_count(blame);
@@ -36,6 +42,7 @@ Program Listing for File BlameController.cpp
    BlameController::operator[](unsigned int idx)
    {
        if(idx >= blameAmount){
+           warnlog("index out of range. from BlameController op[]");
            return std::nullopt;
        }
        auto temphunk = git_blame_get_hunk_byindex(blame, idx);
@@ -49,6 +56,8 @@ Program Listing for File BlameController.cpp
            return tempres;
        }
        else{
+           critlog("failed to get hunk. from BlameController op []. gitLog: ");
+           critlog(git_error_last()->message);
            return std::nullopt;
        }
        

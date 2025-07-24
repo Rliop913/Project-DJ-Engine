@@ -32,6 +32,8 @@ Includes
 
 - ``DiffController.hpp`` (:ref:`file_include_editor_featureWrapper_GitWrap_Diff_DiffController.hpp`)
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 
 
 

@@ -156,6 +156,11 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir_include_input_windows.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_include_interface.rst
 
 .. toctree::
@@ -410,6 +415,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_tests_editorTest.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_audioRender_MixMachine_EFFECT_EFFECTS.cpp.rst
 
 .. toctree::
@@ -436,6 +446,16 @@ Files
    :maxdepth: 5
 
    file_include_audioRender_MixMachine_FAUST_VALS_Faust_interpolate.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_db_fileNameSanitizer.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_db_fileNameSanitizer.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -556,6 +576,11 @@ Files
    :maxdepth: 5
 
    file_include_input_linux_LINUX_SUDO_GETTER.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_tests_logTest.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -700,6 +725,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_PDJE_EXPORT_SETTER.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_editor_featureWrapper_GitWrap_PDJE_GitHandler.cpp.rst
 
 .. toctree::
@@ -716,6 +746,11 @@ Files
    :maxdepth: 5
 
    file_include_interface_PDJE_interface.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_PDJE_LOG_SETTER.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -881,3 +916,8 @@ Files
    :maxdepth: 5
 
    file_include_audioRender_ManualMix_ManualFausts_volMan.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_windows_windows_I.hpp.rst

@@ -32,6 +32,8 @@ Includes
 
 - ``MixTranslator.hpp`` (:ref:`file_include_db_Capnp_Translators_MixTranslator_MixTranslator.hpp`)
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 
 
 

@@ -11,7 +11,7 @@ Program Listing for File MixMachine.cpp
 .. code-block:: cpp
 
    #include "MixMachine.hpp"
-   
+   #include "PDJE_LOG_SETTER.hpp"
    #include "MixMachine-inl.h"
    
    MixMachine::MixMachine()
@@ -36,9 +36,10 @@ Program Listing for File MixMachine.cpp
    
            return true;
        }
-       catch(...)
+       catch(std::exception& e)
        {
-   
+           critlog("failed to sort memorized datas. From MixMachine IDsort. logException: ");
+           critlog(e.what());
            return false;
        }
    }
@@ -50,8 +51,13 @@ Program Listing for File MixMachine.cpp
    MixMachine::mix(litedb& db, const BPM& bpms)
    {
        auto num_threads = Memorized.size();
+       std::vector<std::unique_ptr<std::thread>> renderPool;
+       // renderPool.clear();
+       renderPool.reserve(num_threads);
        for(auto& i: Memorized){
-           renderPool.emplace_back([i, this, &db, &bpms](){
+           renderPool.emplace_back(
+               std::make_unique<std::thread>(
+               [i, this, &db, &bpms](){
    
                auto MC = new MUSIC_CTR();
                auto DJ = new BattleDj();
@@ -136,9 +142,12 @@ Program Listing for File MixMachine.cpp
                    }
                }
    
-               auto result = (*DJ) << MC->Execute(bpms, &tempVec, db.getRoot());
+               auto result = (*DJ) << MC->Execute(bpms, &tempVec, db);
                if(!result.has_value()){
                    FLAG_SOMETHING_WRONG_ID = i.first;
+                   critlog("result has no value. From MixMachine mix. ErrID: ");
+                   std::string logTemp = std::to_string(i.first);
+                   critlog(logTemp);
                    return;
                }
                FX->consumeAll();
@@ -149,40 +158,19 @@ Program Listing for File MixMachine.cpp
                    rendered_out,
                    MC
                );
-   
-               // const hn::ScalableTag<float> hwyFTag;
-               // auto laneSize = hn::Lanes(hwyFTag);
-               // auto times = tempVec.size() / laneSize;
-               // auto remained = tempVec.size() % laneSize;
-   
-               // auto Tptr = tempVec.data();
-               // {
-               //     std::lock_guard<std::mutex> locks(renderLock);
-               //     if(rendered_out.size() < (MC->QDatas.pos.back().Gidx * CHANNEL)){
-               //         rendered_out.resize((MC->QDatas.pos.back().Gidx * CHANNEL));
-               //     }
-               //     auto Rptr = rendered_out.data() + (MC->QDatas.pos.front().Gidx * CHANNEL);
-   
-               //     for(size_t L = 0; L < times; ++L){
-               //         auto Tsimd = hn::Load(hwyFTag, Tptr);
-               //         auto Rsimd = hn::LoadU(hwyFTag, Rptr);
-               //         hn::StoreU(Rsimd + Tsimd, hwyFTag, Rptr);
-               //         Tptr += laneSize;
-               //         Rptr += laneSize;
-               //     }
-               //     for(size_t REM = 0; REM < remained; ++REM){
-               //         (*(Rptr++)) += (*(Tptr++));
-               //     }
-               // }
                delete MC;
                delete DJ;
                delete FX;
-           });
+           
+           }
+           )
+           );
        }
        for(auto& pool: renderPool){
-           pool.join();
+           pool->join();
        }
        if(FLAG_SOMETHING_WRONG_ID != FLAG_ALL_IS_OK){
+           critlog("mix failed because something is broken. From MixMachine mix");
            return false;
        }
        return true;

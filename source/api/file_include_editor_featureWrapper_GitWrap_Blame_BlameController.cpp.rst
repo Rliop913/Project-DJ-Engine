@@ -32,6 +32,8 @@ Includes
 
 - ``BlameController.hpp`` (:ref:`file_include_editor_featureWrapper_GitWrap_Blame_BlameController.hpp`)
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 
 
 

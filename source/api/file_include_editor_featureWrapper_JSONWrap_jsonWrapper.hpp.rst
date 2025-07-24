@@ -9,6 +9,11 @@ File jsonWrapper.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+JSON based storage helpers for editor data. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none
@@ -31,6 +36,12 @@ Includes
 
 
 - ``MixTranslator.hpp`` (:ref:`file_include_db_Capnp_Translators_MixTranslator_MixTranslator.hpp`)
+
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
+
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
+- ``fileNameSanitizer.hpp`` (:ref:`file_include_db_fileNameSanitizer.hpp`)
 
 - ``filesystem``
 
@@ -93,9 +104,9 @@ Typedefs
 --------
 
 
-- :ref:`exhale_typedef_jsonWrapper_8hpp_1a0b1764320e5d24d6e368919622c72105`
+- :ref:`exhale_typedef_jsonWrapper_8hpp_1a217a1073c4c083da1400cf99dab75f21`
 
-- :ref:`exhale_typedef_jsonWrapper_8hpp_1aae3e4e4ab8ed090405175ca4b279cad6`
+- :ref:`exhale_typedef_jsonWrapper_8hpp_1a67473814637ada120f046e947d522b64`
 
 - :ref:`exhale_typedef_jsonWrapper_8hpp_1a302aa5ab173d4395fe6526d00a2f9777`
 

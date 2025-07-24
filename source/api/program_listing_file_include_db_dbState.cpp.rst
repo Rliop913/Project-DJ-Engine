@@ -12,6 +12,7 @@ Program Listing for File dbState.cpp
 
    #include "dbState.hpp"
    #include <cstring>
+   #include "PDJE_LOG_SETTER.hpp"
    stmt::stmt()
    {
    }
@@ -30,15 +31,15 @@ Program Listing for File dbState.cpp
    }
    
    int 
-   stmt::bind_text(int idx, std::string& str)
+   stmt::bind_text(int idx, SANITIZED_ORNOT& str)
    {
-       return sqlite3_bind_text(S, idx, str.c_str(), str.size(), SQLITE_STATIC);
+       
+       return sqlite3_bind_text(S, idx, str.c_str(), str.size(), SQLITE_TRANSIENT);
    }
-   
    int 
    stmt::bind_blob(int idx, BIN& bin)
    {
-       return sqlite3_bind_blob(S, idx, bin.data(), bin.size(), SQLITE_STATIC);
+       return sqlite3_bind_blob(S, idx, bin.data(), bin.size(), SQLITE_TRANSIENT);
    }
    
    int 
@@ -58,41 +59,43 @@ Program Listing for File dbState.cpp
    bool
    stmt::activate(sqlite3* db)
    {
-       return (sqlite3_prepare_v2(db, placeHold.c_str(), -1, &S, nullptr) == SQLITE_OK);
+       bool activate_Res = (sqlite3_prepare_v2(db, placeHold.c_str(), -1, &S, nullptr) == SQLITE_OK);
+       if(!activate_Res){
+           critlog("failed to activate sql. from stmt activate. sqliteErr: ");
+           std::string sqlLog = sqlite3_errmsg(db);
+           critlog(sqlLog);
+       }
+       return activate_Res;
    }
    
    template<>
    int
-   stmt::colGet<COL_TYPE::INT>(int idx)
+   stmt::colGet<COL_TYPE::PDJE_INT>(int idx)
    {
        return sqlite3_column_int(S, idx);
    }
    
    template<>
    double
-   stmt::colGet<COL_TYPE::DOUBLE>(int idx)
+   stmt::colGet<COL_TYPE::PDJE_DOUBLE>(int idx)
    {
        return sqlite3_column_double(S, idx);
    }
    
+   
    template<>
-   std::string
-   stmt::colGet<COL_TYPE::TEXT>(int idx)
+   SANITIZED_ORNOT
+   stmt::colGet<COL_TYPE::PDJE_TEXT>(int idx)
    {   
        auto ptr = sqlite3_column_text(S, idx);
        auto sz = sqlite3_column_bytes(S, idx);
-       std::string tempstr;
-       if(sz != 0){
-           tempstr.resize(sz);
-           memcpy(tempstr.data(), ptr, sz);
-       }
-       return tempstr;
+       return SANITIZED_ORNOT(ptr, ptr + sz);
    }
    
    
    template<>
    BIN
-   stmt::colGet<COL_TYPE::BLOB>(int idx)
+   stmt::colGet<COL_TYPE::PDJE_BLOB>(int idx)
    {
        auto ptr = sqlite3_column_blob(S, idx);
        auto sz = sqlite3_column_bytes(S, idx);
@@ -100,5 +103,6 @@ Program Listing for File dbState.cpp
        if(sz != 0){
            return BIN(static_cast<const u_int8_t*>(ptr), static_cast<const u_int8_t*>(ptr) + sz);
        }
+       warnlog("colget cannot return valid binary. from stmt colget-blob");
        return BIN();
    }

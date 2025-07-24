@@ -13,6 +13,7 @@ Program Listing for File dbTest.cpp
    #include "dbRoot.hpp"
    #include <iostream>
    #include "CapnpBinary.hpp"
+   #include <string>
    int
    main()
    {
@@ -47,8 +48,8 @@ Program Listing for File dbTest.cpp
        //     return 1;
        // }
        for(auto i : mdret.value()){
-           std::cout << i.title << ", " << i.musicPath 
-           << ", " << i.composer << ", " << i.bpm << std::endl; 
+           std::cout << std::string(i.title.begin(), i.title.end()) << ", " << std::string(i.musicPath.begin(), i.musicPath.end())
+           << ", " << std::string(i.composer.begin(), i.composer.end()) << ", " << i.bpm << std::endl; 
            for(auto j : i.bpmBinary){
                std::cout<< j << std::endl;
            }

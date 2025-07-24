@@ -25,7 +25,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Template Class InputEngine" href="classInputEngine.html" />
+    <link rel="next" title="Class LinuxEVDEV" href="classLinuxEVDEV.html" />
     <link rel="prev" title="Class logHandle" href="classgitwrap_1_1logHandle.html" /> 
 </head>
 
@@ -52,7 +52,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api_root.html#class-hierarchy">Class Hierarchy</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="api_root.html#classes-and-structs">Classes and Structs</a><ul class="current">
@@ -62,10 +61,8 @@
 <li class="toctree-l4"><a class="reference internal" href="structBpmStruct.html">Struct BpmStruct</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structBranchJSON.html">Struct BranchJSON</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDecoder.html">Struct Decoder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDeviceData.html">Struct DeviceData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDiffResult.html">Struct DiffResult</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDJ__JOBS.html">Struct DJ_JOBS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDuckTypeDevice.html">Struct DuckTypeDevice</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEDIT__ARG__MUSIC.html">Struct EDIT_ARG_MUSIC</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEightPointValues.html">Struct EightPointValues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structgitwrap_1_1BranchHead.html">Struct BranchHead</a></li>
@@ -83,6 +80,9 @@
 <li class="toctree-l4"><a class="reference internal" href="structMusicOnDeck.html">Struct MusicOnDeck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structNoteArgs.html">Struct NoteArgs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Editor_1_1MusicHandleStruct.html">Struct PDJE_Editor::MusicHandleStruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV.html">Struct PDJE_IDEV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Finders.html">Struct PDJE_IDEV::Finders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Specifiers.html">Struct PDJE_IDEV::Specifiers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPlayPosition.html">Struct PlayPosition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPosition.html">Struct Position</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structstmt.html">Struct stmt</a></li>
@@ -117,7 +117,6 @@
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1branch.html">Class branch</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1logHandle.html">Class logHandle</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Class GitWrapper</a></li>
-<li class="toctree-l4"><a class="reference internal" href="classInputEngine.html">Template Class InputEngine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classLinuxEVDEV.html">Class LinuxEVDEV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classlitedb.html">Class litedb</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classMeta.html">Class Meta</a></li>
@@ -135,7 +134,9 @@
 <li class="toctree-l4"><a class="reference internal" href="classPDJE.html">Class PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Editor.html">Class PDJE_Editor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__GitHandler.html">Class PDJE_GitHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Input.html">Class PDJE_Input</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JSONHandler.html">Template Class PDJE_JSONHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Name__Sanitizer.html">Class PDJE_Name_Sanitizer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaser__PDJE.html">Class Phaser_PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaserMan.html">Class PhaserMan</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classRobot__PDJE.html">Class Robot_PDJE</a></li>
@@ -195,32 +196,38 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv410GitWrapper">
 <span id="_CPPv310GitWrapper"></span><span id="_CPPv210GitWrapper"></span><span id="GitWrapper"></span><span class="target" id="classGitWrapper"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GitWrapper</span></span></span><a class="headerlink" href="#_CPPv410GitWrapper" title="Link to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>Thin wrapper around libgit2 for common operations. </p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N10GitWrapper3addERKNSt6stringE">
-<span id="_CPPv3N10GitWrapper3addERKNSt6stringE"></span><span id="_CPPv2N10GitWrapper3addERKNSt6stringE"></span><span id="GitWrapper::add__ssCR"></span><span class="target" id="classGitWrapper_1a67e0f6593a307afee0db7166a725fec3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">add</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10GitWrapper3addERKNSt6stringE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object cpp" id="_CPPv4N10GitWrapper3addERKN2fs4pathE">
+<span id="_CPPv3N10GitWrapper3addERKN2fs4pathE"></span><span id="_CPPv2N10GitWrapper3addERKN2fs4pathE"></span><span id="GitWrapper::add__fs::pathCR"></span><span class="target" id="classGitWrapper_1a4405a8082a9c6abd3bd0f00a4706477e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">add</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10GitWrapper3addERKN2fs4pathE" title="Link to this definition"></a><br /></dt>
+<dd><p>Add a file to the repository index. </p>
+</dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N10GitWrapper4openERKNSt6stringE">
-<span id="_CPPv3N10GitWrapper4openERKNSt6stringE"></span><span id="_CPPv2N10GitWrapper4openERKNSt6stringE"></span><span id="GitWrapper::open__ssCR"></span><span class="target" id="classGitWrapper_1a43de6ab6d8ac6e079d5a652b7ac9ef86"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">open</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10GitWrapper4openERKNSt6stringE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object cpp" id="_CPPv4N10GitWrapper4openERKN2fs4pathE">
+<span id="_CPPv3N10GitWrapper4openERKN2fs4pathE"></span><span id="_CPPv2N10GitWrapper4openERKN2fs4pathE"></span><span id="GitWrapper::open__fs::pathCR"></span><span class="target" id="classGitWrapper_1a8d6ebb76c9cae0c577a631185f826b7d"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">open</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10GitWrapper4openERKN2fs4pathE" title="Link to this definition"></a><br /></dt>
+<dd><p>Open an existing repository. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10GitWrapper4diffERKN7gitwrap6commitERKN7gitwrap6commitE">
 <span id="_CPPv3N10GitWrapper4diffERKN7gitwrap6commitERKN7gitwrap6commitE"></span><span id="_CPPv2N10GitWrapper4diffERKN7gitwrap6commitERKN7gitwrap6commitE"></span><span id="GitWrapper::diff__gitwrap::commitCR.gitwrap::commitCR"></span><span class="target" id="classGitWrapper_1a9248ff6564221374cec0837c97747ca1"></span><a class="reference internal" href="structDiffResult.html#_CPPv410DiffResult" title="DiffResult"><span class="n"><span class="pre">DiffResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">diff</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">oldCommit</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newCommit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10GitWrapper4diffERKN7gitwrap6commitERKN7gitwrap6commitE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Get a diff between two commits. </p>
+</dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N10GitWrapper5BlameERKNSt6stringERKN7gitwrap6commitERKN7gitwrap6commitE">
-<span id="_CPPv3N10GitWrapper5BlameERKNSt6stringERKN7gitwrap6commitERKN7gitwrap6commitE"></span><span id="_CPPv2N10GitWrapper5BlameERKNSt6stringERKN7gitwrap6commitERKN7gitwrap6commitE"></span><span id="GitWrapper::Blame__ssCR.gitwrap::commitCR.gitwrap::commitCR"></span><span class="target" id="classGitWrapper_1a7f20922cba4a2a4aadcdde26d9aa910f"></span><a class="reference internal" href="typedef_gitWrapper_8hpp_1a40e5ded694a4fe46703b6961ad90bc9b.html#_CPPv411MAYBE_BLAME" title="MAYBE_BLAME"><span class="n"><span class="pre">MAYBE_BLAME</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Blame</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">filepath</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newCommit</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">oldCommit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10GitWrapper5BlameERKNSt6stringERKN7gitwrap6commitERKN7gitwrap6commitE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object cpp" id="_CPPv4N10GitWrapper5BlameERKN2fs4pathERKN7gitwrap6commitERKN7gitwrap6commitE">
+<span id="_CPPv3N10GitWrapper5BlameERKN2fs4pathERKN7gitwrap6commitERKN7gitwrap6commitE"></span><span id="_CPPv2N10GitWrapper5BlameERKN2fs4pathERKN7gitwrap6commitERKN7gitwrap6commitE"></span><span id="GitWrapper::Blame__fs::pathCR.gitwrap::commitCR.gitwrap::commitCR"></span><span class="target" id="classGitWrapper_1ac0d9714caa112b665d3170bf02a44d70"></span><a class="reference internal" href="typedef_gitWrapper_8hpp_1a40e5ded694a4fe46703b6961ad90bc9b.html#_CPPv411MAYBE_BLAME" title="MAYBE_BLAME"><span class="n"><span class="pre">MAYBE_BLAME</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Blame</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">filepath</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newCommit</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">oldCommit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10GitWrapper5BlameERKN2fs4pathERKN7gitwrap6commitERKN7gitwrap6commitE" title="Link to this definition"></a><br /></dt>
+<dd><p>Run git blame on a file between two commits. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10GitWrapper6commitEP13git_signatureRKNSt6stringE">
 <span id="_CPPv3N10GitWrapper6commitEP13git_signatureRKNSt6stringE"></span><span id="_CPPv2N10GitWrapper6commitEP13git_signatureRKNSt6stringE"></span><span id="GitWrapper::commit__git_signatureP.ssCR"></span><span class="target" id="classGitWrapper_1a4a8155aae8a8e414a3bd11410b95bef6"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">commit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">git_signature</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sign</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">message</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10GitWrapper6commitEP13git_signatureRKNSt6stringE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Commit staged changes using the provided signature. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10GitWrapper3logEv">
@@ -235,17 +242,20 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10GitWrapper5closeEv">
 <span id="_CPPv3N10GitWrapper5closeEv"></span><span id="_CPPv2N10GitWrapper5closeEv"></span><span id="GitWrapper::close"></span><span class="target" id="classGitWrapper_1a1b411134e5dac271fa3d400e66736df4"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">close</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10GitWrapper5closeEv" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Close the repository and free resources. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10GitWrapper10GitWrapperEv">
 <span id="_CPPv3N10GitWrapper10GitWrapperEv"></span><span id="_CPPv2N10GitWrapper10GitWrapperEv"></span><span id="GitWrapper::GitWrapper"></span><span class="target" id="classGitWrapper_1a2bd651dfe8cbd77c30d4e70186c43c03"></span><span class="sig-name descname"><span class="n"><span class="pre">GitWrapper</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10GitWrapper10GitWrapperEv" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Construct an empty wrapper. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10GitWrapperD0Ev">
 <span id="_CPPv3N10GitWrapperD0Ev"></span><span id="_CPPv2N10GitWrapperD0Ev"></span><span id="GitWrapper::~GitWrapper"></span><span class="target" id="classGitWrapper_1a36909e3fc709f3a3f24e1e7865254a8b"></span><span class="sig-name descname"><span class="n"><span class="pre">~GitWrapper</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10GitWrapperD0Ev" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Destructor. </p>
+</dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
@@ -270,7 +280,7 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10GitWrapper12GenTimeStampEv">
-<span id="_CPPv3N10GitWrapper12GenTimeStampEv"></span><span id="_CPPv2N10GitWrapper12GenTimeStampEv"></span><span id="GitWrapper::GenTimeStamp"></span><span class="target" id="classGitWrapper_1a70db700de34d6793b1c8b5f5c115519f"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GenTimeStamp</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10GitWrapper12GenTimeStampEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N10GitWrapper12GenTimeStampEv"></span><span id="_CPPv2N10GitWrapper12GenTimeStampEv"></span><span id="GitWrapper::GenTimeStamp"></span><span class="target" id="classGitWrapper_1a74944ba0a6187c24c46d8c39c4df349b"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GenTimeStamp</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10GitWrapper12GenTimeStampEv" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -284,7 +294,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="classgitwrap_1_1logHandle.html" class="btn btn-neutral float-left" title="Class logHandle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="classInputEngine.html" class="btn btn-neutral float-right" title="Template Class InputEngine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="classLinuxEVDEV.html" class="btn btn-neutral float-right" title="Class LinuxEVDEV" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

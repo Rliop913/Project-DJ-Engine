@@ -85,19 +85,19 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdint&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bit&gt;</span>
-
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fileNameSanitizer.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;editorBranch.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;editorCommit.hpp&quot;</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">gitwrap</span><span class="p">{</span>
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">log</span><span class="p">{</span>
 <span class="w">        </span><span class="n">commit</span><span class="w"> </span><span class="n">now</span><span class="p">;</span>
 <span class="w">        </span><span class="n">git_oid</span><span class="w"> </span><span class="n">parentID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="mi">0</span><span class="p">}};</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">authName</span><span class="p">;</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">authEmail</span><span class="p">;</span>
+<span class="w">        </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="n">authName</span><span class="p">;</span>
+<span class="w">        </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="n">authEmail</span><span class="p">;</span>
 <span class="w">    </span><span class="p">};</span>
 
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">BranchHead</span><span class="p">{</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">BranchName</span><span class="p">;</span>
+<span class="w">        </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="n">BranchName</span><span class="p">;</span>
 <span class="w">        </span><span class="n">git_oid</span><span class="w"> </span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="mi">0</span><span class="p">}};</span>
 <span class="w">    </span><span class="p">};</span>
 
@@ -115,7 +115,7 @@
 <span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">AddLog</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">git_oid</span><span class="o">&amp;</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">git_oid</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ChildID</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">git_signature</span><span class="o">*</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sign</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">);</span>
 
 <span class="w">    </span><span class="k">public</span><span class="o">:</span>
-<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">WalkBranch</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">branchName</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">WalkBranch</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">branchName</span><span class="p">);</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">git_oid</span><span class="p">,</span><span class="w"> </span><span class="n">log</span><span class="p">,</span><span class="w"> </span><span class="n">OID_HASHER</span><span class="p">,</span><span class="w"> </span><span class="n">OID_EQUAL</span><span class="o">&gt;</span><span class="w"> </span><span class="n">logs</span><span class="p">;</span>
 <span class="w">        </span><span class="n">git_oid</span><span class="w"> </span><span class="n">ROOT_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="mi">0</span><span class="p">}};</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BranchHead</span><span class="o">&gt;</span><span class="w"> </span><span class="n">heads</span><span class="p">;</span>

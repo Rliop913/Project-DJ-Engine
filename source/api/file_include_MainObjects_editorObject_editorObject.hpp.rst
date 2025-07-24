@@ -30,6 +30,10 @@ Includes
 --------
 
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
+
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 - ``audioPlayer.hpp`` (:ref:`file_include_MainObjects_audioPlayer_audioPlayer.hpp`)
 
 - ``editor.hpp`` (:ref:`file_include_editor_editor.hpp`)
@@ -96,5 +100,5 @@ Typedefs
 
 - :ref:`exhale_typedef_editorObject_8hpp_1a2de2e14491806b81a5ba85836b550f18`
 
-- :ref:`exhale_typedef_editorObject_8hpp_1a9a6e3086f73f288f3fea77e5b098a444`
+- :ref:`exhale_typedef_editorObject_8hpp_1a899c0028ff4e674c7145d4c77087f957`
 

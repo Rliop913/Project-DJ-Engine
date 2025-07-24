@@ -32,6 +32,8 @@ Includes
 
 - ``MusicTranslator.hpp`` (:ref:`file_include_db_Capnp_Translators_MusicTranslator_MusicTranslator.hpp`)
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 - ``string``
 
 

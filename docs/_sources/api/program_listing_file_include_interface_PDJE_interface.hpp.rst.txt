@@ -16,21 +16,23 @@ Program Listing for File PDJE_interface.hpp
    #include "dbRoot.hpp"
    #include "NoteTranslator.hpp"
    #include "editorObject.hpp"
-   
+   #include "PDJE_EXPORT_SETTER.hpp"
+   #include "PDJE_LOG_SETTER.hpp"
    enum PLAY_MODE{
        FULL_PRE_RENDER,
        HYBRID_RENDER,
        FULL_MANUAL_RENDER
    };
-   class PDJE{
+   class PDJE_API PDJE{
    private:
-       std::optional<litedb> DBROOT;
    public:
-       PDJE(const std::string& rootPath);
+       std::shared_ptr<litedb> DBROOT;
+       // std::optional<litedb> DBROOT;
+       PDJE(const fs::path& rootDir);
        ~PDJE() = default;
        
-       std::optional<audioPlayer> player;
-       std::optional<editorObject> editor;
+       std::shared_ptr<audioPlayer> player;
+       std::shared_ptr<editorObject> editor;
        bool
        InitPlayer(
            PLAY_MODE mode, 
@@ -40,9 +42,9 @@ Program Listing for File PDJE_interface.hpp
    
        bool
        InitEditor(
-           const std::string &auth_name, 
-           const std::string &auth_email,
-           const std::string& projectRoot
+           const DONT_SANITIZE &auth_name, 
+           const DONT_SANITIZE &auth_email,
+           const fs::path& projectRoot
        );
        bool
        GetNoteObjects(
@@ -51,15 +53,15 @@ Program Listing for File PDJE_interface.hpp
        );
        MUS_VEC 
        SearchMusic(
-           const std::string& Title, 
-           const std::string& composer, 
+           const UNSANITIZED& Title, 
+           const UNSANITIZED& composer, 
            const double bpm = -1);
-       TRACK_VEC SearchTrack(const std::string& Title);
-       audioPlayer* GetPlayerObject();
+       TRACK_VEC SearchTrack(const UNSANITIZED& Title);
+       std::shared_ptr<audioPlayer> GetPlayerObject();
    
        
    };
-   class ARGSETTER_WRAPPER{
+   class PDJE_API ARGSETTER_WRAPPER{
    private:
        FXControlPannel* fxp;
    public:
@@ -69,7 +71,7 @@ Program Listing for File PDJE_interface.hpp
        void
        SetFXArg(
            FXList fx, 
-           const std::string& key, 
+           const DONT_SANITIZE& key, 
            double arg);
    
    };

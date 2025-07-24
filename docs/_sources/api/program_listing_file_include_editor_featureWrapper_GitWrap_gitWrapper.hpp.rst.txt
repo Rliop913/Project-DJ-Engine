@@ -10,6 +10,7 @@ Program Listing for File gitWrapper.hpp
 
 .. code-block:: cpp
 
+   
    #pragma once
    #include <string>
    #include <optional>
@@ -26,6 +27,8 @@ Program Listing for File gitWrapper.hpp
    #include "git2/repository.h"
    #include "gitLog.hpp"
    
+   #include "PDJE_EXPORT_SETTER.hpp"
+   #include "fileNameSanitizer.hpp"
    
    using MAYBE_BLAME = std::optional<BlameController>;
    
@@ -34,7 +37,7 @@ Program Listing for File gitWrapper.hpp
    
    using BRANCH_HANDLE = std::optional<gitwrap::branch>;
    
-   class GitWrapper{
+   class PDJE_API GitWrapper{
    private:
        git_signature* auth_sign = nullptr;
        std::optional<AddController> addIndex;
@@ -43,15 +46,15 @@ Program Listing for File gitWrapper.hpp
        std::optional<gitwrap::logHandle> log_hdl;
        BRANCH_HANDLE handleBranch;
    
-       bool add(const std::string&  path);
-       bool open(const std::string&  path);
+       bool add(const fs::path&  path);
+       bool open(const fs::path&  path);
    
        DiffResult diff(
            const gitwrap::commit& oldCommit,
            const gitwrap::commit& newCommit);
    
        MAYBE_BLAME Blame(
-           const std::string& filepath,
+           const fs::path& filepath,
            const gitwrap::commit& newCommit,
            const gitwrap::commit& oldCommit);
    
@@ -65,13 +68,14 @@ Program Listing for File gitWrapper.hpp
    
    
        bool close();
+   
        GitWrapper();
        ~GitWrapper();
-   };
+   }; 
    
    
    
-   class PDJE_GitHandler{
+   class PDJE_API PDJE_GitHandler{
    private:
        git_signature* sign = nullptr;
    public:
@@ -94,13 +98,14 @@ Program Listing for File gitWrapper.hpp
    
        DiffResult GetDiff(const gitwrap::commit& oldTimeStamp, const gitwrap::commit& newTimeStamp);
    
-       bool DeleteGIT(const std::string& path);
-       bool Open(const std::string& path);
+       bool DeleteGIT(const fs::path& path);
+       bool Open(const fs::path& path);
        bool Close();
        // SaveDatas GetCommits();
    
-   
+       PDJE_GitHandler() = delete;
        PDJE_GitHandler(const std::string& auth_name, const std::string& auth_email);
        ~PDJE_GitHandler();
    
    };
+   

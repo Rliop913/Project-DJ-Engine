@@ -85,9 +85,9 @@
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;miniaudio.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MusicControlPannel.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
 
-
-<span class="k">struct</span><span class="w"> </span><span class="nc">audioEngineDataStruct</span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">audioEngineDataStruct</span><span class="p">{</span>
 <span class="w">    </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">faustPcmPP</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">FXControlPannel</span><span class="o">&gt;</span><span class="w"> </span><span class="n">FXManualPannel</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">MusicControlPannel</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MusCtrPannel</span><span class="p">;</span>

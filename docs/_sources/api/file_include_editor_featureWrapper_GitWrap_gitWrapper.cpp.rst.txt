@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 - ``chrono``
 
 - ``editorCommit.hpp`` (:ref:`file_include_editor_featureWrapper_GitWrap_Commit_editorCommit.hpp`)

@@ -52,7 +52,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api_root.html#class-hierarchy">Class Hierarchy</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="api_root.html#classes-and-structs">Classes and Structs</a><ul class="current">
@@ -62,10 +61,8 @@
 <li class="toctree-l4"><a class="reference internal" href="structBpmStruct.html">Struct BpmStruct</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structBranchJSON.html">Struct BranchJSON</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDecoder.html">Struct Decoder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDeviceData.html">Struct DeviceData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDiffResult.html">Struct DiffResult</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDJ__JOBS.html">Struct DJ_JOBS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDuckTypeDevice.html">Struct DuckTypeDevice</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEDIT__ARG__MUSIC.html">Struct EDIT_ARG_MUSIC</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEightPointValues.html">Struct EightPointValues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structgitwrap_1_1BranchHead.html">Struct BranchHead</a></li>
@@ -83,6 +80,9 @@
 <li class="toctree-l4"><a class="reference internal" href="structMusicOnDeck.html">Struct MusicOnDeck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structNoteArgs.html">Struct NoteArgs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Editor_1_1MusicHandleStruct.html">Struct PDJE_Editor::MusicHandleStruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV.html">Struct PDJE_IDEV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Finders.html">Struct PDJE_IDEV::Finders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Specifiers.html">Struct PDJE_IDEV::Specifiers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPlayPosition.html">Struct PlayPosition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPosition.html">Struct Position</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structstmt.html">Struct stmt</a></li>
@@ -117,7 +117,6 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Class branch</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1logHandle.html">Class logHandle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classGitWrapper.html">Class GitWrapper</a></li>
-<li class="toctree-l4"><a class="reference internal" href="classInputEngine.html">Template Class InputEngine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classLinuxEVDEV.html">Class LinuxEVDEV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classlitedb.html">Class litedb</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classMeta.html">Class Meta</a></li>
@@ -135,7 +134,9 @@
 <li class="toctree-l4"><a class="reference internal" href="classPDJE.html">Class PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Editor.html">Class PDJE_Editor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__GitHandler.html">Class PDJE_GitHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Input.html">Class PDJE_Input</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JSONHandler.html">Template Class PDJE_JSONHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Name__Sanitizer.html">Class PDJE_Name_Sanitizer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaser__PDJE.html">Class Phaser_PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaserMan.html">Class PhaserMan</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classRobot__PDJE.html">Class Robot_PDJE</a></li>
@@ -195,22 +196,26 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N7gitwrap6branchE">
 <span id="_CPPv3N7gitwrap6branchE"></span><span id="_CPPv2N7gitwrap6branchE"></span><span id="gitwrap::branch"></span><span class="target" id="classgitwrap_1_1branch"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">branch</span></span></span><a class="headerlink" href="#_CPPv4N7gitwrap6branchE" title="Link to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>Represents a Git branch and common branch operations. </p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7gitwrap6branch15ShowExistBranchEv">
 <span id="_CPPv3N7gitwrap6branch15ShowExistBranchEv"></span><span id="_CPPv2N7gitwrap6branch15ShowExistBranchEv"></span><span id="gitwrap::branch::ShowExistBranch"></span><span class="target" id="classgitwrap_1_1branch_1ae0d093973cfdaa5791802c46d3a9309b"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ShowExistBranch</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7gitwrap6branch15ShowExistBranchEv" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>List all branches in the repository. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7gitwrap6branch24ShowExistCommitsOnBranchERKNSt6stringE">
 <span id="_CPPv3N7gitwrap6branch24ShowExistCommitsOnBranchERKNSt6stringE"></span><span id="_CPPv2N7gitwrap6branch24ShowExistCommitsOnBranchERKNSt6stringE"></span><span id="gitwrap::branch::ShowExistCommitsOnBranch__ssCR"></span><span class="target" id="classgitwrap_1_1branch_1a55f244956fde3e69eba54f8454858684"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ShowExistCommitsOnBranch</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7gitwrap6branch24ShowExistCommitsOnBranchERKNSt6stringE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Get commits that exist on the given branch. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7gitwrap6branch9SetBranchERKNSt6stringE">
 <span id="_CPPv3N7gitwrap6branch9SetBranchERKNSt6stringE"></span><span id="_CPPv2N7gitwrap6branch9SetBranchERKNSt6stringE"></span><span id="gitwrap::branch::SetBranch__ssCR"></span><span class="target" id="classgitwrap_1_1branch_1a5e97f25efd4a6a61b06b0e31437c3bfb"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetBranch</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7gitwrap6branch9SetBranchERKNSt6stringE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Switch to the specified branch. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7gitwrap6branch15MakeNewFromHEADERKNSt6stringE">
@@ -240,7 +245,8 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7gitwrap6branch7GetHEADEv">
 <span id="_CPPv3N7gitwrap6branch7GetHEADEv"></span><span id="_CPPv2N7gitwrap6branch7GetHEADEv"></span><span id="gitwrap::branch::GetHEAD"></span><span class="target" id="classgitwrap_1_1branch_1a5df6117c678de498f588cdbb07473cf7"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetHEAD</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N7gitwrap6branch7GetHEADEv" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Retrieve the current HEAD commit. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N7gitwrap6branch13MergeToBranchERKNSt6stringE">
@@ -273,12 +279,14 @@
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7gitwrap6branch10branchNameE">
 <span id="_CPPv3N7gitwrap6branch10branchNameE"></span><span id="_CPPv2N7gitwrap6branch10branchNameE"></span><span id="gitwrap::branch::branchName__ss"></span><span class="target" id="classgitwrap_1_1branch_1a059d40014bd9076186a2450c8792790a"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">branchName</span></span></span><a class="headerlink" href="#_CPPv4N7gitwrap6branch10branchNameE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Name of the current branch. </p>
+</dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7gitwrap6branch18FLAG_TEMP_CHECKOUTE">
 <span id="_CPPv3N7gitwrap6branch18FLAG_TEMP_CHECKOUTE"></span><span id="_CPPv2N7gitwrap6branch18FLAG_TEMP_CHECKOUTE"></span><span id="gitwrap::branch::FLAG_TEMP_CHECKOUT__std::optional:git_oid:"></span><span class="target" id="classgitwrap_1_1branch_1a93b2d69e629d19540344910277a643c3"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">git_oid</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FLAG_TEMP_CHECKOUT</span></span></span><a class="headerlink" href="#_CPPv4N7gitwrap6branch18FLAG_TEMP_CHECKOUTE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Temporary checkout commit used when jumping to a commit. </p>
+</dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
@@ -286,7 +294,8 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4I0EN7gitwrap6branch15ToBranchRefNameENSt6stringE1T">
 <span id="_CPPv3I0EN7gitwrap6branch15ToBranchRefNameE1T"></span><span id="_CPPv2I0EN7gitwrap6branch15ToBranchRefNameE1T"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classgitwrap_1_1branch_1adf3f8cc3764e9600e78b738fa59e841e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ToBranchRefName</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EN7gitwrap6branch15ToBranchRefNameENSt6stringE1T" title="gitwrap::branch::ToBranchRefName::T"><span class="n"><span class="pre">T</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">branchName</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN7gitwrap6branch15ToBranchRefNameENSt6stringE1T" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Convert a name to a Git branch reference. </p>
+</dd></dl>
 
 </div>
 </dd></dl>

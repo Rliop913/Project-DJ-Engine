@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 - ``cstring``
 
 - ``dbState.hpp`` (:ref:`file_include_db_dbState.hpp`)
@@ -43,11 +45,11 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_dbState_8cpp_1af7be02f96d5af3cdb8a19fc6f2db71d8`
+- :ref:`exhale_function_dbState_8cpp_1af859cacf202fb1ac4ec76d0845332daa`
 
-- :ref:`exhale_function_dbState_8cpp_1a5d47d27cc11baf584888af642f83bcaa`
+- :ref:`exhale_function_dbState_8cpp_1a3fc8fa09151028ac2d501a806c5b55b2`
 
-- :ref:`exhale_function_dbState_8cpp_1a8db8a463750b0c2b331ef039a195a6ea`
+- :ref:`exhale_function_dbState_8cpp_1abd2e27c6282ca855010d94b6764b1ecc`
 
-- :ref:`exhale_function_dbState_8cpp_1a7f70c732839f6222f2f5620a390425f0`
+- :ref:`exhale_function_dbState_8cpp_1a51bf28f90683420ef8446614d0f63b23`
 

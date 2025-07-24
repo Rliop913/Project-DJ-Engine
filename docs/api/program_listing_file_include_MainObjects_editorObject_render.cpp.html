@@ -80,30 +80,10 @@
 <span id="program-listing-file-include-mainobjects-editorobject-render-cpp"></span><h1>Program Listing for File render.cpp<a class="headerlink" href="#program-listing-for-file-render-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_MainObjects_editorObject_render.cpp.html#file-include-mainobjects-editorobject-render-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/MainObjects/editorObject/render.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;editorObject.hpp&quot;</span>
-
 <span class="kt">bool</span>
-<span class="nf">editorObject::render</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">trackTitle</span><span class="p">,</span><span class="w"> </span><span class="n">litedb</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ROOTDB</span><span class="p">)</span>
+<span class="nf">editorObject::render</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">trackTitle</span><span class="p">,</span><span class="w"> </span><span class="n">litedb</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ROOTDB</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="c1">// trackdata td;</span>
-<span class="w">    </span><span class="c1">// auto mixRendered = E_obj-&gt;mixHandle.second.render();</span>
-<span class="w">    </span><span class="c1">// auto mixData = mixRendered-&gt;Wp-&gt;getDatas();</span>
-<span class="w">    </span><span class="c1">// std::unordered_map&lt;std::string, std::string&gt; titles;</span>
-<span class="w">    </span><span class="c1">// for(unsigned long long i=0; i &lt; mixData.size();++i){</span>
-<span class="w">    </span><span class="c1">//     if(mixData[i].getType() == TypeEnum::LOAD){</span>
-<span class="w">    </span><span class="c1">//         titles.insert(std::pair(mixData[i].getFirst().cStr(), mixData[i].getSecond().cStr()));</span>
-<span class="w">    </span><span class="c1">//     }</span>
-<span class="w">    </span><span class="c1">// }</span>
-
-<span class="w">    </span><span class="c1">// td.trackTitle = trackTitle;</span>
-<span class="w">    </span><span class="c1">// td.mixBinary = mixRendered-&gt;out();</span>
-<span class="w">    </span><span class="c1">// td.noteBinary = E_obj-&gt;noteHandle.second.render()-&gt;out();</span>
-<span class="w">    </span><span class="c1">// for(auto&amp; i : titles){</span>
-<span class="w">    </span><span class="c1">//     td.cachedMixList+= (i.first + &quot;,&quot;);</span>
-<span class="w">    </span><span class="c1">// }</span>
-<span class="w">    </span><span class="c1">// if(!titles.empty()){</span>
-<span class="w">    </span><span class="c1">//     td.cachedMixList.pop_back();</span>
-<span class="w">    </span><span class="c1">// }</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">titles</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">SANITIZED</span><span class="p">,</span><span class="w"> </span><span class="n">SANITIZED</span><span class="o">&gt;</span><span class="w"> </span><span class="n">titles</span><span class="p">;</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">td</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">makeTrackData</span><span class="p">(</span><span class="n">trackTitle</span><span class="p">,</span><span class="w"> </span><span class="n">titles</span><span class="p">);</span>
 
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">musdata</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mds</span><span class="p">;</span>
@@ -112,14 +92,23 @@
 
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">rendered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">jsonh</span><span class="p">.</span><span class="n">render</span><span class="p">();</span>
 <span class="w">        </span><span class="n">mds</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">musicName</span><span class="p">;</span>
-<span class="w">        </span><span class="n">mds</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">bpmBinary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">();</span>
-<span class="w">        </span><span class="n">mds</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">composer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">jsonh</span><span class="p">[</span><span class="s">&quot;COMPOSER&quot;</span><span class="p">];</span>
-<span class="w">        </span><span class="n">mds</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">musicPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">jsonh</span><span class="p">[</span><span class="s">&quot;PATH&quot;</span><span class="p">];</span>
-<span class="w">        </span><span class="n">mds</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">firstBar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">jsonh</span><span class="p">[</span><span class="s">&quot;FIRST_BAR&quot;</span><span class="p">];</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">rdout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">();</span>
+<span class="w">        </span><span class="n">mds</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">bpmBinary</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">rdout</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">rdout</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">tempCOMPOSER</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">jsonh</span><span class="p">[</span><span class="s">&quot;COMPOSER&quot;</span><span class="w">    </span><span class="p">].</span><span class="n">get</span><span class="o">&lt;</span><span class="n">SANITIZED</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">tempPATH</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">jsonh</span><span class="p">[</span><span class="s">&quot;PATH&quot;</span><span class="w">        </span><span class="p">].</span><span class="n">get</span><span class="o">&lt;</span><span class="n">SANITIZED</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">tempFIRST_BAR</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">jsonh</span><span class="p">[</span><span class="s">&quot;FIRST_BAR&quot;</span><span class="w">   </span><span class="p">].</span><span class="n">get</span><span class="o">&lt;</span><span class="n">DONT_SANITIZE</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">mds</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">composer</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">tempCOMPOSER</span><span class="p">);</span>
+<span class="w">        </span><span class="n">mds</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">musicPath</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">tempPATH</span><span class="p">);</span>
+<span class="w">        </span><span class="n">mds</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">firstBar</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">tempFIRST_BAR</span><span class="p">);</span>
 <span class="w">        </span><span class="k">try</span><span class="p">{</span>
 <span class="w">            </span><span class="n">mds</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">bpm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">stod</span><span class="p">(</span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">Wp</span><span class="o">-&gt;</span><span class="n">getDatas</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="n">getBpm</span><span class="p">().</span><span class="n">cStr</span><span class="p">());</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">catch</span><span class="p">(...){</span>
+<span class="w">        </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">){</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to convert bpm to double. from editorObject render. ErrException: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;music name: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">musicName</span><span class="p">);</span>
 <span class="w">            </span><span class="k">continue</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">.</span><span class="n">musicName</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
@@ -127,22 +116,36 @@
 
 <span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">titles</span><span class="p">){</span>
 <span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">){</span>
-<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">findFromRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musdata</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
-<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">mus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ROOTDB</span><span class="o">&lt;&lt;</span><span class="n">findFromRoot</span><span class="p">;</span>
+
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">findFromRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musdata</span><span class="p">();</span>
+<span class="w">            </span><span class="n">findFromRoot</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+<span class="w">            </span><span class="n">findFromRoot</span><span class="p">.</span><span class="n">composer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="n">mus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ROOTDB</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">findFromRoot</span><span class="p">;</span>
 <span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">mus</span><span class="p">.</span><span class="n">has_value</span><span class="p">()){</span>
 <span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">mus</span><span class="o">-&gt;</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
 <span class="w">                </span><span class="n">musdata</span><span class="w"> </span><span class="n">fromRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mus</span><span class="o">-&gt;</span><span class="n">front</span><span class="p">();</span>
-<span class="w">                </span><span class="n">fromRoot</span><span class="p">.</span><span class="n">musicPath</span><span class="w"> </span><span class="o">=</span>
-<span class="w">                </span><span class="n">fs</span><span class="o">::</span><span class="n">relative</span><span class="p">(</span>
-<span class="w">                    </span><span class="n">fs</span><span class="o">::</span><span class="n">absolute</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="n">ROOTDB</span><span class="p">.</span><span class="n">getRoot</span><span class="p">()).</span><span class="n">parent_path</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fromRoot</span><span class="p">.</span><span class="n">musicPath</span><span class="p">),</span>
-<span class="w">                    </span><span class="n">projectRoot</span>
-<span class="w">                </span><span class="p">);</span>
+<span class="w">                </span><span class="k">try</span><span class="p">{</span>
+<span class="w">                    </span><span class="n">fromRoot</span><span class="p">.</span><span class="n">musicPath</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                    </span><span class="n">fs</span><span class="o">::</span><span class="n">relative</span><span class="p">(</span>
+<span class="w">                        </span><span class="n">fs</span><span class="o">::</span><span class="n">absolute</span><span class="p">(</span><span class="n">ROOTDB</span><span class="p">.</span><span class="n">getRoot</span><span class="p">().</span><span class="n">parent_path</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fromRoot</span><span class="p">.</span><span class="n">musicPath</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">projectRoot</span>
+<span class="w">                    </span><span class="p">).</span><span class="n">string</span><span class="p">();</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">catch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">){</span>
+<span class="w">                    </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to convert relative path. from editorObject render. ErrException: &quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">                    </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;music path: &quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">critlog</span><span class="p">(</span><span class="n">fromRoot</span><span class="p">.</span><span class="n">musicPath</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;project root: &quot;</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">critlog</span><span class="p">(</span><span class="n">projectRoot</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
 <span class="w">                </span><span class="n">mds</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">fromRoot</span><span class="p">);</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">projectLocalDB</span><span class="o">-&gt;</span><span class="n">BuildProject</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="w"> </span><span class="n">mds</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">projectLocalDB</span><span class="o">-&gt;</span><span class="n">BuildProject</span><span class="p">(</span><span class="n">td</span><span class="p">,</span><span class="w"> </span><span class="n">mds</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>

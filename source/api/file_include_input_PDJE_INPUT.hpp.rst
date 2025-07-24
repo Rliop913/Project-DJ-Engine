@@ -49,16 +49,11 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structDeviceData`
+- :ref:`exhale_struct_structPDJE__IDEV`
 
-- :ref:`exhale_struct_structDuckTypeDevice`
+- :ref:`exhale_struct_structPDJE__IDEV_1_1Finders`
 
-- :ref:`exhale_class_classInputEngine`
+- :ref:`exhale_struct_structPDJE__IDEV_1_1Specifiers`
 
-
-Typedefs
---------
-
-
-- :ref:`exhale_typedef_PDJE__INPUT_8hpp_1a071ad4c80a013a30ce51bdc187a8b887`
+- :ref:`exhale_class_classPDJE__Input`
 

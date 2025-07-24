@@ -62,20 +62,21 @@ Program Listing for File MixJson.cpp
    PDJE_JSONHandler<MIX_W>::add(const MixArgs& args)
    {
        nj tempMix = {
-           {"type"     ,   static_cast<int>(args.type)     },
-           {"details"  ,   static_cast<int>(args.details)  },
-           {"ID"       ,   args.ID                         },
-           {"first"    ,   args.first                      },
-           {"second"   ,   args.second                     },
-           {"third"    ,   args.third                      },
-           {"bar"      ,   args.bar                        },
-           {"beat"     ,   args.beat                       },
-           {"separate" ,   args.separate                   },
-           {"Ebar"     ,   args.Ebar                       },
-           {"Ebeat"    ,   args.Ebeat                      },
-           {"Eseparate",   args.Eseparate                  }
+           {"type"     ,   static_cast<int>(args.type)                         },
+           {"details"  ,   static_cast<int>(args.details)                      },
+           {"ID"       ,   args.ID                                             },
+           {"first"    ,   args.first                                          },
+           {"second"   ,   args.second                                         },
+           {"third"    ,   args.third                                          },
+           {"bar"      ,   args.bar                                            },
+           {"beat"     ,   args.beat                                           },
+           {"separate" ,   args.separate                                       },
+           {"Ebar"     ,   args.Ebar                                           },
+           {"Ebeat"    ,   args.Ebeat                                          },
+           {"Eseparate",   args.Eseparate                                      }
        };
        if(!ROOT.contains(PDJEARR)){
+           critlog("mix json root not found. from PDJE_JSONHandler<MIX_W> add.");
            return false;
        }
        ROOT[PDJEARR].push_back(tempMix);
@@ -91,6 +92,7 @@ Program Listing for File MixJson.cpp
    )
    {
        if(!ROOT.contains(PDJEARR)){
+           critlog("mix json root not found. from PDJE_JSONHandler<MIX_W> getAll.");
            return;
        }
        for(auto& i : ROOT[PDJEARR]){
@@ -126,9 +128,9 @@ Program Listing for File MixJson.cpp
                filler[i].setType       (target["type"      ]);
                filler[i].setDetails    (target["details"   ]);
                filler[i].setId         (target["ID"        ]);
-               filler[i].setFirst      (target["first"     ].get<std::string>());
-               filler[i].setSecond     (target["second"    ].get<std::string>());
-               filler[i].setThird      (target["third"     ].get<std::string>());
+               filler[i].setFirst      (target["first"     ].get<SANITIZED_ORNOT>());
+               filler[i].setSecond     (target["second"    ].get<SANITIZED_ORNOT>());
+               filler[i].setThird      (target["third"     ].get<SANITIZED_ORNOT>());
                filler[i].setBar        (target["bar"       ]);
                filler[i].setBeat       (target["beat"      ]);
                filler[i].setSeparate   (target["separate"  ]);
@@ -139,7 +141,9 @@ Program Listing for File MixJson.cpp
    
            return tempMixBin;
        }
-       catch(...){
+       catch(std::exception& e){
+           critlog("something wrong. from PDJE_JSONHandler<MIX_W> render. ErrException: ");
+           critlog(e.what());
            return nullptr;
        }
    }
@@ -148,28 +152,43 @@ Program Listing for File MixJson.cpp
    
    template<>
    bool
-   PDJE_JSONHandler<MIX_W>::load(const std::string& path)
+   PDJE_JSONHandler<MIX_W>::load(const fs::path& path)
    {
-       auto filepath = fs::path(path); 
+       auto filepath = path / "mixmetadata.PDJE";
        if(fs::exists(filepath)){
            if(fs::is_regular_file(filepath)){
                std::ifstream jfile(filepath);
                
-               if(!jfile.is_open()) return false;
+               if(!jfile.is_open()){
+                   critlog("cannot open mix json data file. from PDJE_JSONHandler<MIX_W> load. path: ");
+                   critlog(path.generic_string());
+                   return false;
+               } 
    
                try{ jfile >> ROOT; }
-               catch(...){ return false; }
+               catch(std::exception& e){ 
+                   critlog("cannot load mix json data from file. from PDJE_JSONHandler<MIX_W> load. ErrException: ");
+                   critlog(e.what());
+                   return false; 
+               }
    
                jfile.close();
            }
            else{
+               critlog("json data file is not regular file. from PDJE_JSONHandler<MIX_W> load. path: ");
+               critlog(path.generic_string());
                return false;
            }
        }
        else{
            fs::create_directories(filepath.parent_path());
            std::ofstream jfile(filepath);
-           if(!jfile.is_open()) return false;
+           if(!jfile.is_open()){
+               critlog("failed to open or make new mix json file. from PDJE_JSONHandler<MIX_W> load. path: ");
+               critlog(path.generic_string());
+               return false;
+           } 
+           jfile << std::setw(4) << ROOT;
            jfile.close();
        }
    

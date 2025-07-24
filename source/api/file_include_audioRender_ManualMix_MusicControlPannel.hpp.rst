@@ -30,11 +30,19 @@ Includes
 --------
 
 
+- ``Decoder.hpp`` (:ref:`file_include_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`)
+
 - ``ManualMix.hpp`` (:ref:`file_include_audioRender_ManualMix_ManualMix.hpp`)
 
-- ``map``
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
 
-- ``miniaudio.h``
+- ``dbRoot.hpp`` (:ref:`file_include_db_dbRoot.hpp`)
+
+- ``fileNameSanitizer.hpp`` (:ref:`file_include_db_fileNameSanitizer.hpp`)
+
+- ``filesystem``
+
+- ``map``
 
 
 
@@ -64,9 +72,7 @@ Typedefs
 --------
 
 
-- :ref:`exhale_typedef_MusicControlPannel_8hpp_1a4c72c3001db71218d5703fe8033a6792`
+- :ref:`exhale_typedef_MusicControlPannel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8`
 
-- :ref:`exhale_typedef_MusicControlPannel_8hpp_1ab088038ca92417562a68857146129830`
-
-- :ref:`exhale_typedef_MusicControlPannel_8hpp_1aa42a227ab9a3ce0509fb104969175005`
+- :ref:`exhale_typedef_MusicControlPannel_8hpp_1ab133b0d81c222324c3cd46e91d30fb7d`
 

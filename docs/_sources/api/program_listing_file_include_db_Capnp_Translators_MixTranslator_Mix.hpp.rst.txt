@@ -18,10 +18,10 @@ Program Listing for File Mix.hpp
    #include <mutex>
    
    #include "FrameCalc.hpp"
-   
+   #include "PDJE_EXPORT_SETTER.hpp"
    class BPM;
    
-   class MIX{
+   class PDJE_API MIX{
    private:
        unsigned int usable_threads;
    public:

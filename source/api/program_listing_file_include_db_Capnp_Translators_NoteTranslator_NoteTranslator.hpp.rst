@@ -21,7 +21,7 @@ Program Listing for File NoteTranslator.hpp
    #include "FrameCalc.hpp"
    
    #include <functional>
-   
+   #include "PDJE_EXPORT_SETTER.hpp"
    
    using OBJ_SETTER_CALLBACK = 
    std::function<void(
@@ -35,7 +35,7 @@ Program Listing for File NoteTranslator.hpp
    )>;
    
    
-   class NoteTranslator{
+   class PDJE_API NoteTranslator{
    public:
        BpmStruct noteBpms;
        bool Read(

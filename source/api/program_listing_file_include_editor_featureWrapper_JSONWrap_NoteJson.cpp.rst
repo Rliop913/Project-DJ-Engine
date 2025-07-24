@@ -21,11 +21,11 @@ Program Listing for File NoteJson.cpp
    PDJE_JSONHandler<NOTE_W>::add(const NoteArgs& args)
    {
        nj tempMix = {
-           {"Note_Type"    ,   args.Note_Type  },
-           {"Note_Detail"  ,   args.Note_Detail},
-           {"first"        ,   args.first      },
-           {"second"       ,   args.second     },
-           {"third"        ,   args.third      },
+           {"Note_Type"    ,   SANITIZED_ORNOT(args.Note_Type.begin()  , args.Note_Type.end())     },
+           {"Note_Detail"  ,   SANITIZED_ORNOT(args.Note_Detail.begin(), args.Note_Detail.end())   },
+           {"first"        ,   SANITIZED_ORNOT(args.first.begin()      , args.first.end())         },
+           {"second"       ,   SANITIZED_ORNOT(args.second.begin()     , args.second.end())        },
+           {"third"        ,   SANITIZED_ORNOT(args.third.begin()      , args.third.end())         },
            {"bar"          ,   args.bar        },
            {"beat"         ,   args.beat       },
            {"separate"     ,   args.separate   },
@@ -34,6 +34,7 @@ Program Listing for File NoteJson.cpp
            {"Eseparate"    ,   args.Eseparate  }
        };
        if(!ROOT.contains(PDJENOTE)){
+           critlog("note json root not found. from PDJE_JSONHandler<NOTE_W> add.");
            return false;
        }
        ROOT[PDJENOTE].push_back(tempMix);
@@ -83,15 +84,17 @@ Program Listing for File NoteJson.cpp
    )
    {
        if(!ROOT.contains(PDJENOTE)){
+           critlog("note json root not found. from PDJE_JSONHandler<NOTE_W> add.");
            return;
        }
        for(auto& i : ROOT[PDJENOTE]){
+   
            NoteArgs tempargs{
-               i["Note_Type"   ],
-               i["Note_Detail" ],
-               i["first"       ],
-               i["second"      ],
-               i["third"       ],
+               i["Note_Type"   ].get<SANITIZED_ORNOT>(),
+               i["Note_Detail" ].get<SANITIZED_ORNOT>(),
+               i["first"       ].get<SANITIZED_ORNOT>(),
+               i["second"      ].get<SANITIZED_ORNOT>(),
+               i["third"       ].get<SANITIZED_ORNOT>(),
                i["bar"         ],
                i["beat"        ],
                i["separate"    ],
@@ -114,11 +117,11 @@ Program Listing for File NoteJson.cpp
            auto filler = tempMixBin->Wp->initDatas(rootsz);
            for(std::size_t i=0; i<rootsz; ++i){
                auto target = ROOT[PDJENOTE].at(i);
-               filler[i].setNoteType       (target["Note_Type"     ].get<std::string>());
-               filler[i].setNoteDetail     (target["Note_Detail"   ].get<std::string>());
-               filler[i].setFirst          (target["first"         ].get<std::string>());
-               filler[i].setSecond         (target["second"        ].get<std::string>());
-               filler[i].setThird          (target["third"         ].get<std::string>());
+               filler[i].setNoteType       (target["Note_Type"     ].get<SANITIZED_ORNOT>());
+               filler[i].setNoteDetail     (target["Note_Detail"   ].get<SANITIZED_ORNOT>());
+               filler[i].setFirst          (target["first"         ].get<SANITIZED_ORNOT>());
+               filler[i].setSecond         (target["second"        ].get<SANITIZED_ORNOT>());
+               filler[i].setThird          (target["third"         ].get<SANITIZED_ORNOT>());
                filler[i].setBar            (target["bar"           ]);
                filler[i].setBeat           (target["beat"          ]);
                filler[i].setSeparate       (target["separate"      ]);
@@ -128,7 +131,9 @@ Program Listing for File NoteJson.cpp
            }
            return tempMixBin;
        }
-       catch(...){
+       catch(std::exception& e){
+           critlog("something wrong. from PDJE_JSONHandler<NOTE_W> render. ErrException: ");
+           critlog(e.what());
            return nullptr;
        }
    }
@@ -137,21 +142,31 @@ Program Listing for File NoteJson.cpp
    
    template<>
    bool
-   PDJE_JSONHandler<NOTE_W>::load(const std::string& path)
+   PDJE_JSONHandler<NOTE_W>::load(const fs::path& path)
    {
-       auto filepath = fs::path(path); 
+       auto filepath = path / "notemetadata.PDJE";
        if(fs::exists(filepath)){
            if(fs::is_regular_file(filepath)){
                std::ifstream jfile(filepath);
                
-               if(!jfile.is_open()) return false;
+               if(!jfile.is_open()) {
+                   critlog("cannot open note json file. from PDJE_JSONHandler<NOTE_W> load. path: ");
+                   critlog(path.generic_string());
+                   return false;
+               }
    
                try{ jfile >> ROOT; }
-               catch(...){ return false; }
+               catch(std::exception& e){
+                   critlog("cannot load note data from json file. from PDJE_JSONHandler<NOTE_W> load. ErrException: ");
+                   critlog(e.what());
+                   return false; 
+               }
    
                jfile.close();
            }
            else{
+               critlog("filepath is not regular file. from PDJE_JSONHandler<NOTE_W> load. path: ");
+               critlog(path.generic_string());
                return false;
            }
        }
@@ -159,6 +174,7 @@ Program Listing for File NoteJson.cpp
            fs::create_directories(filepath.parent_path());
            std::ofstream jfile(filepath);
            if(!jfile.is_open()) return false;
+           jfile << std::setw(4) << ROOT;
            jfile.close();
        }
    
@@ -169,11 +185,3 @@ Program Listing for File NoteJson.cpp
        return true;
    
    }
-   
-   // template<>
-   // template<>
-   // int 
-   // PDJE_JSONHandler<NOTE_W>::deleteLine(
-   //         const NoteArgs& args,
-   //         bool skipType, 
-   //         bool skipDetail) = delete;

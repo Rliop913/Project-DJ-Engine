@@ -11,7 +11,7 @@ Program Listing for File audioPlayer.cpp
 .. code-block:: cpp
 
    #include "audioPlayer.hpp"
-   
+   #include "PDJE_LOG_SETTER.hpp"
    
    extern void FullPreRender_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount);
    
@@ -61,14 +61,14 @@ Program Listing for File audioPlayer.cpp
        }
        
        if(!renderer.LoadTrack(db, td)){
-           STATUS = "Failed to load track";
+           critlog("failed to load track. from audioPlayer::audioPlayer(db, td ,fbsize, hasmanual)");
            return;
        }
        engineDatas.pcmDataPoint = &renderer.rendered_frames.value();
        engineDatas.maxCursor = renderer.rendered_frames->size() / CHANNEL;
        
        if(ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS){
-           STATUS = "Failed to init device";
+           critlog("failed to init device. from audioPlayer::audioPlayer(db, td ,fbsize, hasmanual)");
            return;
        }
        
@@ -84,7 +84,7 @@ Program Listing for File audioPlayer.cpp
        
    
        if(ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS){
-           STATUS = "Failed to init device";
+           critlog("failed to init device. from audioPlayer::audioPlayer(fbsize)");
        }
        
    }
@@ -92,13 +92,21 @@ Program Listing for File audioPlayer.cpp
    bool
    audioPlayer::Activate()
    {
-       return ma_device_start(&player) == MA_SUCCESS;
+       bool Res = ma_device_start(&player) == MA_SUCCESS;
+       if(!Res){
+           critlog("failed to activate audioPlayer. from audioPlayer Activate");
+       }
+       return Res;
    }
    
    bool
    audioPlayer::Deactivate()
    {
-       return ma_device_stop(&player) == MA_SUCCESS;
+       bool Res = ma_device_stop(&player) == MA_SUCCESS;
+       if(!Res){
+           critlog("failed to deactivate audioPlayer. from audioPlayer Deactivate");
+       }
+       return Res;
    }
    
    
@@ -122,7 +130,7 @@ Program Listing for File audioPlayer.cpp
    }
    
    FXControlPannel*
-   audioPlayer::GetFXControlPannel(const std::string& title)
+   audioPlayer::GetFXControlPannel(const UNSANITIZED& title)
    {
        if(title == "__PDJE__MAIN__"){
            if(!engineDatas.FXManualPannel.has_value()){
@@ -135,6 +143,7 @@ Program Listing for File audioPlayer.cpp
                return engineDatas.MusCtrPannel->getFXHandle(title);
            }
            else{
+               critlog("failed to return fx control pannel. from audioPlayer GetFXControlPannel");
                return nullptr;
            }
        }
@@ -148,6 +157,7 @@ Program Listing for File audioPlayer.cpp
            return &(engineDatas.MusCtrPannel.value());
        }
        else{
+           critlog("failed to return music control pannel. from audioPlayer GetMusicControlPannel");
            return nullptr;
        }
    }

@@ -32,6 +32,12 @@ Includes
 
 - ``FrameCalc.hpp`` (:ref:`file_include_db_Capnp_Translators_FrameCalc.hpp`)
 
+- ``dbRoot.hpp`` (:ref:`file_include_db_dbRoot.hpp`)
+
+- ``fileNameSanitizer.hpp`` (:ref:`file_include_db_fileNameSanitizer.hpp`)
+
+- ``filesystem``
+
 - ``miniaudio.h``
 
 - ``optional``
@@ -45,6 +51,10 @@ Includes
 Included By
 -----------
 
+
+- :ref:`file_include_audioRender_ManualMix_MusicControlPannel.cpp`
+
+- :ref:`file_include_audioRender_ManualMix_MusicControlPannel.hpp`
 
 - :ref:`file_include_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp`
 

@@ -12,20 +12,24 @@ Program Listing for File MusicControlPannel.hpp
 
    #pragma once
    
-   #include <miniaudio.h>
+   #include "Decoder.hpp"
    
    #include <map>
    
    #include "ManualMix.hpp"
+   #include "PDJE_EXPORT_SETTER.hpp"
+   #include "dbRoot.hpp"
+   #include <filesystem>
+   #include "fileNameSanitizer.hpp"
    
+   namespace fs = std::filesystem;
    // #undef HWY_TARGET_INCLUDE
    // #define HWY_TARGET_INCLUDE "MusicControlPannel-inl.h"
    // #include "hwy/foreach_target.h"
    // #include <hwy/highway.h>
    
-   using TITLE         = std::string;
    
-   using LOADED_LIST   = std::vector<TITLE>;
+   using LOADED_LIST   = std::vector<std::string>;
    
    
    
@@ -33,11 +37,11 @@ Program Listing for File MusicControlPannel.hpp
    
    struct MusicOnDeck{
        bool play = false;
-       ma_decoder dec;
+       Decoder dec;
        FXControlPannel* fxP;
        MusicOnDeck() : fxP(new FXControlPannel(48000)) {};
        ~MusicOnDeck(){
-           ma_decoder_uninit(&dec);
+           // ma_decoder_uninit(&dec);
            delete fxP;
        }
    
@@ -45,9 +49,9 @@ Program Listing for File MusicControlPannel.hpp
    
    
    
-   using LOADS         = std::map<TITLE, MusicOnDeck>;
+   using LOADS         = std::map<std::string, MusicOnDeck>;
    
-   class MusicControlPannel{
+   class PDJE_API MusicControlPannel{
    private:
    
        LOADS deck; 
@@ -58,83 +62,21 @@ Program Listing for File MusicControlPannel.hpp
        SIMD_FLOAT tempFrames;
    
    public:
-       int LoadMusic(const musdata& Mus);
+       bool LoadMusic(litedb& ROOTDB, const musdata& Mus);
    
-       bool CueMusic(const TITLE& title, const unsigned long long newPos);
+       bool CueMusic(const UNSANITIZED& title, const unsigned long long newPos);
    
-       bool SetMusic(const TITLE& title, const bool onOff);
+       bool SetMusic(const UNSANITIZED& title, const bool onOff);
    
        LOADED_LIST GetLoadedMusicList();
    
-       bool UnloadMusic(const TITLE& title);
+       bool UnloadMusic(const UNSANITIZED& title);
    
        bool GetPCMFrames(float* array, const unsigned long FrameSize);
        
-       FXControlPannel* getFXHandle(const TITLE& title);
+       FXControlPannel* getFXHandle(const UNSANITIZED& title);
        MusicControlPannel(const unsigned long FrameSize): fsize(FrameSize){}
        ~MusicControlPannel();
    
    };
    
-   
-   // HWY_BEFORE_NAMESPACE();
-   
-   // namespace hwy{
-   // namespace HWY_NAMESPACE {
-   
-   // bool
-   // GetPCMFramesSIMD(
-   //     SIMD_FLOAT& tempFrames,
-   //     std::vector<float>& L,
-   //     std::vector<float>& R,
-   //     float** FaustStyle,
-   //     LOADS& deck,
-   //     float* array, 
-   //     const unsigned long FrameSize)
-   // {
-   //     const unsigned long long RAWFrameSize = FrameSize * CHANNEL;
-       
-   //     tempFrames.resize(RAWFrameSize);
-   //     L.resize(FrameSize);
-   //     R.resize(FrameSize);
-   //     FaustStyle[0] = L.data();
-   //     FaustStyle[1] = R.data();
-   //     const hn::ScalableTag<float> hwyFTag;
-   //     auto laneSize = hn::Lanes(hwyFTag);
-   //     auto times = RAWFrameSize / laneSize;
-   //     auto remained = RAWFrameSize % laneSize;
-   
-   //     for(auto& i : deck){
-   //         if(i.second.play){
-               
-   //             if(ma_decoder_read_pcm_frames(&i.second.dec, tempFrames.data(), FrameSize, NULL) != MA_SUCCESS){
-   //                 return false;
-   //             }
-   //             toFaustStylePCM(FaustStyle, tempFrames.data(), FrameSize);
-   //             i.second.fxP->addFX(FaustStyle, FrameSize);
-   //             toLRStylePCM(FaustStyle, tempFrames.data(), FrameSize);
-               
-   //             float* opoint = array;
-   //             float* tpoint = tempFrames.data();
-               
-   //             for(size_t j = 0; j < times; ++j){
-   //                 auto simdtemp = hn::Load(hwyFTag, tpoint);
-   //                 auto simdorigin = hn::LoadU(hwyFTag, opoint);
-   //                 auto res = simdtemp + simdorigin;
-   //                 hn::StoreU(res, hwyFTag, opoint);
-   //                 opoint += laneSize;
-   //                 tpoint += laneSize;
-   //             }
-               
-   //             for(size_t j=0; j<remained; ++j){
-   //                 (*(opoint++)) += (*(tpoint++));
-   //             }
-   //         }
-   //     }
-   //     return true;
-   // }
-   // }
-   // }
-   
-   
-   // HWY_AFTER_NAMESPACE();

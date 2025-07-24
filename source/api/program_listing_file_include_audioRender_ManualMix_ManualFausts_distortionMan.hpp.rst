@@ -10,12 +10,14 @@ Program Listing for File distortionMan.hpp
 
 .. code-block:: cpp
 
+   
    #pragma once
    #include "DeckData.hpp"
    
    class DistortionMan{
    public:
-       float distortionValue;
+       float distortionValue; 
+   
        ARGSETTER
        makeArgSetter(){
            return{

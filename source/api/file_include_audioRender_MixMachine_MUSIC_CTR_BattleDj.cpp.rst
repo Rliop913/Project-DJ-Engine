@@ -32,6 +32,8 @@ Includes
 
 - ``BattleDj.hpp`` (:ref:`file_include_audioRender_MixMachine_MUSIC_CTR_BattleDj.hpp`)
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 
 
 

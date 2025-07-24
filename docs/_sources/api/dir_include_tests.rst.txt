@@ -24,9 +24,11 @@ Files
 - :ref:`file_include_tests_audioTest.cpp`
 - :ref:`file_include_tests_CapnpTest.cpp`
 - :ref:`file_include_tests_dbTest.cpp`
+- :ref:`file_include_tests_editorTest.cpp`
 - :ref:`file_include_tests_gittest.cpp`
 - :ref:`file_include_tests_highway_Test.cpp`
 - :ref:`file_include_tests_interfaceTest.cpp`
+- :ref:`file_include_tests_logTest.cpp`
 - :ref:`file_include_tests_manualAudioTest.cpp`
 
 

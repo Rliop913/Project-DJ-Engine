@@ -18,7 +18,7 @@ Program Listing for File FrameCalc.hpp
    #include "CapnpBinary.hpp"
    
    
-   
+   #include "PDJE_EXPORT_SETTER.hpp"
    
    
    // #include <hwy/highway.h>
@@ -55,7 +55,7 @@ Program Listing for File FrameCalc.hpp
        );
    };
    
-   struct BpmFragment{
+   struct PDJE_API BpmFragment{
        unsigned long bar;
        unsigned long beat;
        unsigned long separate;
@@ -63,7 +63,7 @@ Program Listing for File FrameCalc.hpp
        double bpm;
    };
    
-   struct BpmStruct{
+   struct PDJE_API BpmStruct{
        std::vector<BpmFragment> fragments;
    
        void sortFragment();
@@ -78,7 +78,7 @@ Program Listing for File FrameCalc.hpp
        ) const;
    };
    
-   struct MixStruct{
+   struct PDJE_API MixStruct{
        unsigned long long frame_in;
        unsigned long long frame_out;
        MBData::Reader RP;

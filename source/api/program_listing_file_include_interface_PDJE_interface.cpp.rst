@@ -11,25 +11,33 @@ Program Listing for File PDJE_interface.cpp
 .. code-block:: cpp
 
    #include "PDJE_interface.hpp"
-   
-   PDJE::PDJE(const std::string& rootPath)
+   #include "PDJE_LOG_SETTER.hpp"
+   PDJE::PDJE(const fs::path& rootPath)
    {
-       DBROOT.emplace();
+       startlog();
+       DBROOT = std::make_shared<litedb>();
        DBROOT->openDB(rootPath);
        
    }
    
-   
    TRACK_VEC
-   PDJE::SearchTrack(const std::string& Title)
+   PDJE::SearchTrack(const UNSANITIZED& Title)
    {
        trackdata td;
-       td.trackTitle = Title;
-       auto dbres = DBROOT.value() << td;
+       auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(Title);
+       if(!safeTitle){
+           critlog("failed to make sanitized filename in PDJE SearchTrack. Errtitle: ");
+           critlog(Title);
+           return TRACK_VEC();
+       }
+       td.trackTitle = safeTitle.value();
+       auto dbres = (*DBROOT) << td;
        if(dbres.has_value()){
            return dbres.value();
        }
        else{
+           warnlog("failed to find trackdata from PDJE database. Errtitle: ");
+           warnlog(Title);
            return TRACK_VEC();
        }
    }
@@ -37,19 +45,30 @@ Program Listing for File PDJE_interface.cpp
    
    MUS_VEC
    PDJE::SearchMusic(
-       const std::string& Title, 
-       const std::string& composer, 
+       const UNSANITIZED& Title, 
+       const UNSANITIZED& composer, 
        const double bpm)
    {
        musdata md;
-       md.title = Title;
-       md.composer = composer;
+       auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(Title);
+       auto safeComposer = PDJE_Name_Sanitizer::sanitizeFileName(composer);
+       if(!safeTitle || !safeComposer){
+           critlog("failed to sanitize filename in PDJE SearchMusic. Errs: ");
+           critlog(Title);
+           critlog(composer);
+           return MUS_VEC();
+       }
+       md.title = safeTitle.value();
+       md.composer = safeComposer.value();
        md.bpm = bpm;
-       auto dbres = DBROOT.value() << md;
+       auto dbres = (*DBROOT) << md;
        if(dbres.has_value()){
            return dbres.value();
        }
        else{
+           warnlog("failed to find music from PDJE database. ErrTitle: ");
+           warnlog(Title);
+           warnlog(composer);
            return MUS_VEC();
        }
    }
@@ -63,23 +82,26 @@ Program Listing for File PDJE_interface.cpp
        switch (mode)
        {
        case PLAY_MODE::FULL_PRE_RENDER:
-           player.emplace(
-               DBROOT.value(),
+           player =
+           std::make_shared<audioPlayer>(
+               (*DBROOT),
                td,
                FrameBufferSize,
                false
                );
            break;
        case PLAY_MODE::HYBRID_RENDER:
-           player.emplace(
-               DBROOT.value(),
+           player =
+           std::make_shared<audioPlayer>(
+               (*DBROOT),
                td,
                FrameBufferSize,
                true
            );
            break;
        case PLAY_MODE::FULL_MANUAL_RENDER:
-           player.emplace(
+           player =
+           std::make_shared<audioPlayer>(
                FrameBufferSize
            );
            break;
@@ -88,11 +110,14 @@ Program Listing for File PDJE_interface.cpp
            break;
        }
    
-       if(!player.has_value()){
+       if(!player){
+           critlog("failed to init player on PDJE initPlayer.");
            return false;
        }
        else{
            if(player->STATUS != "OK"){
+               critlog("PDJE initPlayer failed. STATUS not OK. ErrStatus: ");
+               critlog(player->STATUS);
                return false;
            }
            else{
@@ -110,10 +135,19 @@ Program Listing for File PDJE_interface.cpp
    {
        CapReader<NoteBinaryCapnpData> notereader;
        CapReader<MixBinaryCapnpData> mixreader;
-       notereader.open(td.noteBinary);
-       mixreader.open(td.mixBinary);
+   
+       if( !notereader.open(td.noteBinary)){
+           warnlog("failed to read notebinary from trackdata from PDJE GetNoteObjects");
+           return false;
+       } 
+       if(!mixreader.open(td.mixBinary)){
+           warnlog("failed to read mixBinary from trackdata from PDJE GetNoteObjects");
+           return false;
+       }
+       
        auto noteTrans = new NoteTranslator();
        auto mixTrans = new MixTranslator();
+       
        if(mixTrans->bpms.has_value()){
            noteTrans->Read(
                notereader, 
@@ -121,6 +155,7 @@ Program Listing for File PDJE_interface.cpp
                ObjectSetCallback);
        }
        else{
+           critlog("failed to emplace optional object from PDJE GetNoteObjects");
            delete noteTrans;
            delete mixTrans;
            return false;
@@ -134,10 +169,10 @@ Program Listing for File PDJE_interface.cpp
    
    bool
    PDJE::InitEditor(
-       const std::string &auth_name, 
-       const std::string &auth_email,
-       const std::string& projectRoot)
+       const DONT_SANITIZE &auth_name, 
+       const DONT_SANITIZE &auth_email,
+       const fs::path& projectRoot)
    {
-       editor.emplace(auth_name, auth_email);
+       editor = std::make_shared<editorObject>(auth_name, auth_email);
        return editor->Open(projectRoot);
    }

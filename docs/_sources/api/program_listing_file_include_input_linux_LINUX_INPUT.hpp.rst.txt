@@ -18,5 +18,6 @@ Program Listing for File LINUX_INPUT.hpp
    class LinuxEVDEV{
    public:
        void getList();
+   
        void init();
    };

@@ -52,7 +52,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api_root.html#class-hierarchy">Class Hierarchy</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="api_root.html#classes-and-structs">Classes and Structs</a><ul class="current">
@@ -62,10 +61,8 @@
 <li class="toctree-l4"><a class="reference internal" href="structBpmStruct.html">Struct BpmStruct</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structBranchJSON.html">Struct BranchJSON</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDecoder.html">Struct Decoder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDeviceData.html">Struct DeviceData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDiffResult.html">Struct DiffResult</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDJ__JOBS.html">Struct DJ_JOBS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDuckTypeDevice.html">Struct DuckTypeDevice</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEDIT__ARG__MUSIC.html">Struct EDIT_ARG_MUSIC</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEightPointValues.html">Struct EightPointValues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structgitwrap_1_1BranchHead.html">Struct BranchHead</a></li>
@@ -83,6 +80,9 @@
 <li class="toctree-l4"><a class="reference internal" href="structMusicOnDeck.html">Struct MusicOnDeck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structNoteArgs.html">Struct NoteArgs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Editor_1_1MusicHandleStruct.html">Struct PDJE_Editor::MusicHandleStruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV.html">Struct PDJE_IDEV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Finders.html">Struct PDJE_IDEV::Finders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Specifiers.html">Struct PDJE_IDEV::Specifiers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPlayPosition.html">Struct PlayPosition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPosition.html">Struct Position</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structstmt.html">Struct stmt</a></li>
@@ -117,7 +117,6 @@
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1branch.html">Class branch</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1logHandle.html">Class logHandle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classGitWrapper.html">Class GitWrapper</a></li>
-<li class="toctree-l4"><a class="reference internal" href="classInputEngine.html">Template Class InputEngine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classLinuxEVDEV.html">Class LinuxEVDEV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classlitedb.html">Class litedb</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classMeta.html">Class Meta</a></li>
@@ -135,7 +134,9 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Class PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Editor.html">Class PDJE_Editor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__GitHandler.html">Class PDJE_GitHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Input.html">Class PDJE_Input</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JSONHandler.html">Template Class PDJE_JSONHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Name__Sanitizer.html">Class PDJE_Name_Sanitizer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaser__PDJE.html">Class Phaser_PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaserMan.html">Class PhaserMan</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classRobot__PDJE.html">Class Robot_PDJE</a></li>
@@ -223,8 +224,8 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N4PDJE4PDJEERKNSt6stringE">
-<span id="_CPPv3N4PDJE4PDJEERKNSt6stringE"></span><span id="_CPPv2N4PDJE4PDJEERKNSt6stringE"></span><span id="PDJE::PDJE__ssCR"></span><span class="target" id="classPDJE_1a96bb21d32ba8872056801ae1fad6902a"></span><span class="sig-name descname"><span class="n"><span class="pre">PDJE</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rootPath</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE4PDJEERKNSt6stringE" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE4PDJEERKN2fs4pathE">
+<span id="_CPPv3N4PDJE4PDJEERKN2fs4pathE"></span><span id="_CPPv2N4PDJE4PDJEERKN2fs4pathE"></span><span id="PDJE::PDJE__fs::pathCR"></span><span class="target" id="classPDJE_1a5eef40f586ffaaf4525f93b0f22cf007"></span><span class="sig-name descname"><span class="n"><span class="pre">PDJE</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rootDir</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE4PDJEERKN2fs4pathE" title="Link to this definition"></a><br /></dt>
 <dd><p>Construct a new <a class="reference internal" href="#classPDJE"><span class="std std-ref">PDJE</span></a> object. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -246,7 +247,7 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> – the play modes. you can choose “FULL_PRE_RENDER”, “HYBRID_RENDER”, “FULL_MANUAL_RENDER” </p></li>
-<li><p><strong>td</strong> – the track data. you can get this from <a class="reference internal" href="#classPDJE_1a31a19ebc3086151e08f083c63846fac2"><span class="std std-ref">SearchTrack()</span></a></p></li>
+<li><p><strong>td</strong> – the track data. you can get this from <a class="reference internal" href="#classPDJE_1a322160409e9c02e4700e966623bfd4d7"><span class="std std-ref">SearchTrack()</span></a></p></li>
 <li><p><strong>FrameBufferSize</strong> – the buffersize. in this project, it uses 48000 samplerate. if you use 48 as a value, in theory, it calls mixing function 1000 times per second. </p></li>
 </ul>
 </dd>
@@ -260,8 +261,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N4PDJE10InitEditorERKNSt6stringERKNSt6stringERKNSt6stringE">
-<span id="_CPPv3N4PDJE10InitEditorERKNSt6stringERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N4PDJE10InitEditorERKNSt6stringERKNSt6stringERKNSt6stringE"></span><span id="PDJE::InitEditor__ssCR.ssCR.ssCR"></span><span class="target" id="classPDJE_1ae0be290286d3397dc5e46112c546315a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InitEditor</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_email</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">projectRoot</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE10InitEditorERKNSt6stringERKNSt6stringERKNSt6stringE" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERKN2fs4pathE">
+<span id="_CPPv3N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERKN2fs4pathE"></span><span id="_CPPv2N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERKN2fs4pathE"></span><span id="PDJE::InitEditor__DONT_SANITIZECR.DONT_SANITIZECR.fs::pathCR"></span><span class="target" id="classPDJE_1aeda7155d7457c07bbd094161a5ba2200"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InitEditor</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_email</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">projectRoot</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERKN2fs4pathE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -271,7 +272,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>td</strong> – the track data. you can get this from <a class="reference internal" href="#classPDJE_1a31a19ebc3086151e08f083c63846fac2"><span class="std std-ref">SearchTrack()</span></a></p></li>
+<li><p><strong>td</strong> – the track data. you can get this from <a class="reference internal" href="#classPDJE_1a322160409e9c02e4700e966623bfd4d7"><span class="std std-ref">SearchTrack()</span></a></p></li>
 <li><p><strong>ObjectSetCallback</strong> – the lambda callback. give a function that could make a new note objects. it’s totally depends on you. </p></li>
 </ul>
 </dd>
@@ -285,8 +286,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N4PDJE11SearchMusicERKNSt6stringERKNSt6stringEKd">
-<span id="_CPPv3N4PDJE11SearchMusicERKNSt6stringERKNSt6stringEKd"></span><span id="_CPPv2N4PDJE11SearchMusicERKNSt6stringERKNSt6stringEKd"></span><span id="PDJE::SearchMusic__ssCR.ssCR.doubleC"></span><span class="target" id="classPDJE_1a3a6d5448f262f0f28335e803ce279548"></span><a class="reference internal" href="typedef_dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0.html#_CPPv47MUS_VEC" title="MUS_VEC"><span class="n"><span class="pre">MUS_VEC</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SearchMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">composer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bpm</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd">
+<span id="_CPPv3N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd"></span><span id="_CPPv2N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd"></span><span id="PDJE::SearchMusic__UNSANITIZEDCR.UNSANITIZEDCR.doubleC"></span><span class="target" id="classPDJE_1a2639f4ed0f7ac3770f5eb3b6c86ae800"></span><a class="reference internal" href="typedef_dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0.html#_CPPv47MUS_VEC" title="MUS_VEC"><span class="n"><span class="pre">MUS_VEC</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SearchMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">composer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bpm</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="sig-paren">)</span><br /></dt>
 <dd><p>searches musics and metadatas from database. if you don’t need to filter, send “” to the values </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -303,8 +304,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N4PDJE11SearchTrackERKNSt6stringE">
-<span id="_CPPv3N4PDJE11SearchTrackERKNSt6stringE"></span><span id="_CPPv2N4PDJE11SearchTrackERKNSt6stringE"></span><span id="PDJE::SearchTrack__ssCR"></span><span class="target" id="classPDJE_1a31a19ebc3086151e08f083c63846fac2"></span><a class="reference internal" href="typedef_dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470.html#_CPPv49TRACK_VEC" title="TRACK_VEC"><span class="n"><span class="pre">TRACK_VEC</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SearchTrack</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Title</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE11SearchTrackERK11UNSANITIZED">
+<span id="_CPPv3N4PDJE11SearchTrackERK11UNSANITIZED"></span><span id="_CPPv2N4PDJE11SearchTrackERK11UNSANITIZED"></span><span id="PDJE::SearchTrack__UNSANITIZEDCR"></span><span class="target" id="classPDJE_1a322160409e9c02e4700e966623bfd4d7"></span><a class="reference internal" href="typedef_dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470.html#_CPPv49TRACK_VEC" title="TRACK_VEC"><span class="n"><span class="pre">TRACK_VEC</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SearchTrack</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Title</span></span><span class="sig-paren">)</span><br /></dt>
 <dd><p>searches track the track contains the note data, mix data and included music lists. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -318,7 +319,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE15GetPlayerObjectEv">
-<span id="_CPPv3N4PDJE15GetPlayerObjectEv"></span><span id="_CPPv2N4PDJE15GetPlayerObjectEv"></span><span id="PDJE::GetPlayerObject"></span><span class="target" id="classPDJE_1a0fe16c71bf75baa2ddf9d24fa13d7230"></span><a class="reference internal" href="../How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetPlayerObject</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE15GetPlayerObjectEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N4PDJE15GetPlayerObjectEv"></span><span id="_CPPv2N4PDJE15GetPlayerObjectEv"></span><span id="PDJE::GetPlayerObject"></span><span class="target" id="classPDJE_1aea68b7f5b26bf7a204bdb173938fd430"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetPlayerObject</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE15GetPlayerObjectEv" title="Link to this definition"></a><br /></dt>
 <dd><p>music handler getter api for binded codes. this function gives you a music handler. you can access player directly in cpp, but not in binded languages. so this function exists. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -331,14 +332,20 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE6DBROOTE">
+<span id="_CPPv3N4PDJE6DBROOTE"></span><span id="_CPPv2N4PDJE6DBROOTE"></span><span id="PDJE::DBROOT__std::shared_ptr:litedb:"></span><span class="target" id="classPDJE_1af963dbf228fca558f4db2e9309370c4f"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DBROOT</span></span></span><a class="headerlink" href="#_CPPv4N4PDJE6DBROOTE" title="Link to this definition"></a><br /></dt>
+<dd><p>this is the Root Database. check before use. it contains music metadatas and trackdatas. </p>
+</dd></dl>
+
+<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE6playerE">
-<span id="_CPPv3N4PDJE6playerE"></span><span id="_CPPv2N4PDJE6playerE"></span><span id="PDJE::player__std::optional:audioPlayer:"></span><span class="target" id="classPDJE_1a6e7c6205e82e348fbb2cd31c04b02d3b"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">player</span></span></span><a class="headerlink" href="#_CPPv4N4PDJE6playerE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N4PDJE6playerE"></span><span id="_CPPv2N4PDJE6playerE"></span><span id="PDJE::player__std::shared_ptr:audioPlayer:"></span><span class="target" id="classPDJE_1a83a83d1efbe8c8cc73f2e5c94f96a24c"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">player</span></span></span><a class="headerlink" href="#_CPPv4N4PDJE6playerE" title="Link to this definition"></a><br /></dt>
 <dd><p>this is the music handler. you can play music, stop music, fx control, play/stop music manually in realtime. </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE6editorE">
-<span id="_CPPv3N4PDJE6editorE"></span><span id="_CPPv2N4PDJE6editorE"></span><span id="PDJE::editor__std::optional:editorObject:"></span><span class="target" id="classPDJE_1ae5144457b990d02000f6ae9b9792c9fd"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">editor</span></span></span><a class="headerlink" href="#_CPPv4N4PDJE6editorE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N4PDJE6editorE"></span><span id="_CPPv2N4PDJE6editorE"></span><span id="PDJE::editor__std::shared_ptr:editorObject:"></span><span class="target" id="classPDJE_1aca6a37c29318969dd3b8401940ee55de"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">editor</span></span></span><a class="headerlink" href="#_CPPv4N4PDJE6editorE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>

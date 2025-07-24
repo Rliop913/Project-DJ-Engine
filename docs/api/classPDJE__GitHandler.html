@@ -25,7 +25,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Template Class PDJE_JSONHandler" href="classPDJE__JSONHandler.html" />
+    <link rel="next" title="Class PDJE_Input" href="classPDJE__Input.html" />
     <link rel="prev" title="Class PDJE_Editor" href="classPDJE__Editor.html" /> 
 </head>
 
@@ -52,7 +52,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="api_root.html#class-hierarchy">Class Hierarchy</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="api_root.html#classes-and-structs">Classes and Structs</a><ul class="current">
@@ -62,10 +61,8 @@
 <li class="toctree-l4"><a class="reference internal" href="structBpmStruct.html">Struct BpmStruct</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structBranchJSON.html">Struct BranchJSON</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDecoder.html">Struct Decoder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDeviceData.html">Struct DeviceData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDiffResult.html">Struct DiffResult</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structDJ__JOBS.html">Struct DJ_JOBS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structDuckTypeDevice.html">Struct DuckTypeDevice</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEDIT__ARG__MUSIC.html">Struct EDIT_ARG_MUSIC</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structEightPointValues.html">Struct EightPointValues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structgitwrap_1_1BranchHead.html">Struct BranchHead</a></li>
@@ -83,6 +80,9 @@
 <li class="toctree-l4"><a class="reference internal" href="structMusicOnDeck.html">Struct MusicOnDeck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structNoteArgs.html">Struct NoteArgs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Editor_1_1MusicHandleStruct.html">Struct PDJE_Editor::MusicHandleStruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV.html">Struct PDJE_IDEV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Finders.html">Struct PDJE_IDEV::Finders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Specifiers.html">Struct PDJE_IDEV::Specifiers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPlayPosition.html">Struct PlayPosition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPosition.html">Struct Position</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structstmt.html">Struct stmt</a></li>
@@ -117,7 +117,6 @@
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1branch.html">Class branch</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classgitwrap_1_1logHandle.html">Class logHandle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classGitWrapper.html">Class GitWrapper</a></li>
-<li class="toctree-l4"><a class="reference internal" href="classInputEngine.html">Template Class InputEngine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classLinuxEVDEV.html">Class LinuxEVDEV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classlitedb.html">Class litedb</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classMeta.html">Class Meta</a></li>
@@ -135,7 +134,9 @@
 <li class="toctree-l4"><a class="reference internal" href="classPDJE.html">Class PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Editor.html">Class PDJE_Editor</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Class PDJE_GitHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Input.html">Class PDJE_Input</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JSONHandler.html">Template Class PDJE_JSONHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Name__Sanitizer.html">Class PDJE_Name_Sanitizer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaser__PDJE.html">Class Phaser_PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaserMan.html">Class PhaserMan</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classRobot__PDJE.html">Class Robot_PDJE</a></li>
@@ -195,12 +196,14 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv415PDJE_GitHandler">
 <span id="_CPPv315PDJE_GitHandler"></span><span id="_CPPv215PDJE_GitHandler"></span><span id="PDJE_GitHandler"></span><span class="target" id="classPDJE__GitHandler"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_GitHandler</span></span></span><a class="headerlink" href="#_CPPv415PDJE_GitHandler" title="Link to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>User facing helper that manages a Git repository and history. </p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler4SaveERKNSt6stringERKNSt6stringE">
 <span id="_CPPv3N15PDJE_GitHandler4SaveERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N15PDJE_GitHandler4SaveERKNSt6stringERKNSt6stringE"></span><span id="PDJE_GitHandler::Save__ssCR.ssCR"></span><span class="target" id="classPDJE__GitHandler_1a24c25b540b2d6f9ef29dc0126b1fee29"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Save</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">tracingFile</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">timeStamp</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15PDJE_GitHandler4SaveERKNSt6stringERKNSt6stringE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Commit changes with an autogenerated message. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler4UndoEv">
@@ -219,7 +222,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler19GetLogWithJSONGraphEv">
-<span id="_CPPv3N15PDJE_GitHandler19GetLogWithJSONGraphEv"></span><span id="_CPPv2N15PDJE_GitHandler19GetLogWithJSONGraphEv"></span><span id="PDJE_GitHandler::GetLogWithJSONGraph"></span><span class="target" id="classPDJE__GitHandler_1ac3d8d5c1c60e88103a39cddb8e8b1591"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetLogWithJSONGraph</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15PDJE_GitHandler19GetLogWithJSONGraphEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N15PDJE_GitHandler19GetLogWithJSONGraphEv"></span><span id="_CPPv2N15PDJE_GitHandler19GetLogWithJSONGraphEv"></span><span id="PDJE_GitHandler::GetLogWithJSONGraph"></span><span class="target" id="classPDJE__GitHandler_1a8d41732d18251e91ddb64a5f776c7037"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetLogWithJSONGraph</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15PDJE_GitHandler19GetLogWithJSONGraphEv" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -235,27 +238,37 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler7GetDiffERKN7gitwrap6commitERKN7gitwrap6commitE">
 <span id="_CPPv3N15PDJE_GitHandler7GetDiffERKN7gitwrap6commitERKN7gitwrap6commitE"></span><span id="_CPPv2N15PDJE_GitHandler7GetDiffERKN7gitwrap6commitERKN7gitwrap6commitE"></span><span id="PDJE_GitHandler::GetDiff__gitwrap::commitCR.gitwrap::commitCR"></span><span class="target" id="classPDJE__GitHandler_1a2af26b1d24cf2a5b97764c629380fba9"></span><a class="reference internal" href="structDiffResult.html#_CPPv410DiffResult" title="DiffResult"><span class="n"><span class="pre">DiffResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetDiff</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">oldTimeStamp</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newTimeStamp</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15PDJE_GitHandler7GetDiffERKN7gitwrap6commitERKN7gitwrap6commitE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Retrieve a diff between two timestamps. </p>
+</dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler9DeleteGITERKNSt6stringE">
-<span id="_CPPv3N15PDJE_GitHandler9DeleteGITERKNSt6stringE"></span><span id="_CPPv2N15PDJE_GitHandler9DeleteGITERKNSt6stringE"></span><span id="PDJE_GitHandler::DeleteGIT__ssCR"></span><span class="target" id="classPDJE__GitHandler_1adb7d3025ed1fdfbc94b64f1e640575f5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DeleteGIT</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15PDJE_GitHandler9DeleteGITERKNSt6stringE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler9DeleteGITERKN2fs4pathE">
+<span id="_CPPv3N15PDJE_GitHandler9DeleteGITERKN2fs4pathE"></span><span id="_CPPv2N15PDJE_GitHandler9DeleteGITERKN2fs4pathE"></span><span id="PDJE_GitHandler::DeleteGIT__fs::pathCR"></span><span class="target" id="classPDJE__GitHandler_1a4fcfd5e38b9eb455ab11ce44bb1a1c90"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DeleteGIT</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15PDJE_GitHandler9DeleteGITERKN2fs4pathE" title="Link to this definition"></a><br /></dt>
+<dd><p>Delete repository data at the given path. </p>
+</dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler4OpenERKNSt6stringE">
-<span id="_CPPv3N15PDJE_GitHandler4OpenERKNSt6stringE"></span><span id="_CPPv2N15PDJE_GitHandler4OpenERKNSt6stringE"></span><span id="PDJE_GitHandler::Open__ssCR"></span><span class="target" id="classPDJE__GitHandler_1a5fec5716874a70cce2f53ab08fdb4f7d"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Open</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15PDJE_GitHandler4OpenERKNSt6stringE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler4OpenERKN2fs4pathE">
+<span id="_CPPv3N15PDJE_GitHandler4OpenERKN2fs4pathE"></span><span id="_CPPv2N15PDJE_GitHandler4OpenERKN2fs4pathE"></span><span id="PDJE_GitHandler::Open__fs::pathCR"></span><span class="target" id="classPDJE__GitHandler_1a5d727e8ccb03541d0722398d0435b6e0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Open</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15PDJE_GitHandler4OpenERKN2fs4pathE" title="Link to this definition"></a><br /></dt>
+<dd><p>Initialize the handler with an existing repository path. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler5CloseEv">
 <span id="_CPPv3N15PDJE_GitHandler5CloseEv"></span><span id="_CPPv2N15PDJE_GitHandler5CloseEv"></span><span id="PDJE_GitHandler::Close"></span><span class="target" id="classPDJE__GitHandler_1aff50df952a46b5663341b6161d72ae2c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Close</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15PDJE_GitHandler5CloseEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Close the repository. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler15PDJE_GitHandlerEv">
+<span id="_CPPv3N15PDJE_GitHandler15PDJE_GitHandlerEv"></span><span id="_CPPv2N15PDJE_GitHandler15PDJE_GitHandlerEv"></span><span id="PDJE_GitHandler::PDJE_GitHandler"></span><span class="target" id="classPDJE__GitHandler_1a6522484931862293376b1a87270c346a"></span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_GitHandler</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">delete</span></span><a class="headerlink" href="#_CPPv4N15PDJE_GitHandler15PDJE_GitHandlerEv" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler15PDJE_GitHandlerERKNSt6stringERKNSt6stringE">
 <span id="_CPPv3N15PDJE_GitHandler15PDJE_GitHandlerERKNSt6stringERKNSt6stringE"></span><span id="_CPPv2N15PDJE_GitHandler15PDJE_GitHandlerERKNSt6stringERKNSt6stringE"></span><span id="PDJE_GitHandler::PDJE_GitHandler__ssCR.ssCR"></span><span class="target" id="classPDJE__GitHandler_1a5ff4e3a3248ecf88c2a1baad8f6a676a"></span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_GitHandler</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_email</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15PDJE_GitHandler15PDJE_GitHandlerERKNSt6stringERKNSt6stringE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Construct with author information for commits. </p>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandlerD0Ev">
@@ -286,7 +299,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="classPDJE__Editor.html" class="btn btn-neutral float-left" title="Class PDJE_Editor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="classPDJE__JSONHandler.html" class="btn btn-neutral float-right" title="Template Class PDJE_JSONHandler" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="classPDJE__Input.html" class="btn btn-neutral float-right" title="Class PDJE_Input" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -80,6 +80,7 @@
 <span id="program-listing-file-include-db-capnp-translators-mixtranslator-mixtranslator-cpp"></span><h1>Program Listing for File MixTranslator.cpp<a class="headerlink" href="#program-listing-for-file-mixtranslator-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_db_Capnp_Translators_MixTranslator_MixTranslator.cpp.html#file-include-db-capnp-translators-mixtranslator-mixtranslator-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/db/Capnp/Translators/MixTranslator/MixTranslator.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MixTranslator.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
 
 <span class="n">MixTranslator</span><span class="o">::</span><span class="n">MixTranslator</span><span class="p">()</span>
 <span class="p">{</span>
@@ -96,12 +97,15 @@
 <span class="n">MixTranslator</span><span class="o">::</span><span class="n">Read</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CapReader</span><span class="o">&lt;</span><span class="n">MixBinaryCapnpData</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">binary</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">mixs</span><span class="o">-&gt;</span><span class="n">openMix</span><span class="p">(</span><span class="n">binary</span><span class="p">.</span><span class="n">Rp</span><span class="p">.</span><span class="n">value</span><span class="p">())){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to open mix data. from MixTranslator Read.&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">bpms</span><span class="o">-&gt;</span><span class="n">getBpms</span><span class="p">(</span><span class="n">mixs</span><span class="p">.</span><span class="n">value</span><span class="p">())){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to get bpm datas. from MixTranslator Read&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">mixs</span><span class="o">-&gt;</span><span class="n">WriteFrames</span><span class="p">(</span><span class="n">bpms</span><span class="p">.</span><span class="n">value</span><span class="p">())){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to write frames. from MixTranslator Read&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>

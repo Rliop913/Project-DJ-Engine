@@ -12,37 +12,55 @@ Program Listing for File musicDB.cpp
 
    #include "musicDB.hpp"
    // #include "errorTable.hpp"
+   #include <source_location>
+   
+   #include "PDJE_LOG_SETTER.hpp"
+   
    
    
    #define CHK_BIND(res)\
    if(res != SQLITE_OK){\
-   return false;\
+       auto now = std::source_location::current();\
+       critlog("failed on sqlite.");\
+       critlog(now.file_name());\
+       std::string lineNumber = std::to_string(now.line());\
+       critlog(lineNumber);\
+       critlog(now.function_name());\
+       std::string sqlLog = sqlite3_errmsg(db);\
+       critlog(sqlLog);\
+       return false;\
    }
-   // errpdje::ereport("sql bind errno: " + std::to_string(SQLITE_LAST_ERRNO), errpdje::ERR_TYPE::SQL_ERROR, ("musicDB bind " + std::string(error_type)));}
-   
-   
    
    musdata::musdata(stmt* dbstate)
    {
-       title = dbstate->colGet<COL_TYPE::TEXT, std::string>(0);
-       composer = dbstate->colGet<COL_TYPE::TEXT, std::string>(1);
-       musicPath = dbstate->colGet<COL_TYPE::TEXT, std::string>(2);
-       bpm = dbstate->colGet<COL_TYPE::DOUBLE, double>(3);
-       bpmBinary = dbstate->colGet<COL_TYPE::BLOB, BIN>(4);
-       firstBar = dbstate->colGet<COL_TYPE::TEXT, std::string>(5);
+       title = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(0);
+       composer = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(1);
+       musicPath = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(2);
+       bpm = dbstate->colGet<COL_TYPE::PDJE_DOUBLE, double>(3);
+       bpmBinary = dbstate->colGet<COL_TYPE::PDJE_BLOB, BIN>(4);
+       firstBar = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(5);
    }
    
    musdata::musdata(
-       const std::string& title__,
-       const std::string& composer__,
-       const std::string& musicPath__,
+       const UNSANITIZED& title__,
+       const UNSANITIZED& composer__,
+       const SANITIZED_ORNOT& musicPath__,
        const double bpm__
    ):
-   title(title__),
-   composer(composer__),
    musicPath(musicPath__),
    bpm(bpm__)
-   {}
+   {
+       auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title__);
+       auto safeComposer = PDJE_Name_Sanitizer::sanitizeFileName(composer__);
+       if(!safeTitle || !safeComposer){
+           critlog("failed to sanitize filename. from musdata(title, composer, muspath, bpm). TileComposer: ");
+           critlog(title__);
+           critlog(composer__);
+           return;
+       }
+       title = safeTitle.value();
+       composer = safeComposer.value();
+   }
    
    
    bool

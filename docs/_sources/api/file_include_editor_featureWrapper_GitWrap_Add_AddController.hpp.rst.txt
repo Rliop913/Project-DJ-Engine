@@ -9,6 +9,11 @@ File AddController.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+Utility for staging files in Git repositories. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none
@@ -29,6 +34,8 @@ Definition (``include/editor/featureWrapper/GitWrap/Add/AddController.hpp``)
 Includes
 --------
 
+
+- ``filesystem``
 
 - ``git2.h``
 

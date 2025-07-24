@@ -11,6 +11,7 @@ Program Listing for File NoteTranslator.cpp
 .. code-block:: cpp
 
    #include "NoteTranslator.hpp"
+   #include "PDJE_LOG_SETTER.hpp"
    #include <string>
    
    bool
@@ -21,6 +22,7 @@ Program Listing for File NoteTranslator.cpp
        )
    {
        if(!lambdaCallback){
+           warnlog("return false because lambda is empty. from NoteTranslator Read");
            return false;
        }
        auto br = binary.Rp->getDatas();
@@ -38,8 +40,10 @@ Program Listing for File NoteTranslator.cpp
                    fg.bpm =
                    std::stod(br[i].getFirst().cStr());
                }
-               catch(...)
+               catch(std::exception& e)
                {
+                   critlog("failed to convert string to double. from NoteTranslator Read. ExceptionLog: ");
+                   critlog(br[i].getFirst().cStr());
                    continue;
                }
                bs.fragments.push_back(fg);
@@ -47,6 +51,7 @@ Program Listing for File NoteTranslator.cpp
        }
        bs.sortFragment();
        if(!bs.calcFrame()){
+           critlog("failed to calculate frames. from NoteTranslator Read.");
            return false;
        }
        for(size_t i=0; i < br.size(); ++i){

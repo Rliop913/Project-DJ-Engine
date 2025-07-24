@@ -20,7 +20,8 @@ Program Listing for File MusicTranslator.hpp
    
    #include "FrameCalc.hpp"
    
-   class MusicTranslator{
+   #include "PDJE_EXPORT_SETTER.hpp"
+   class PDJE_API MusicTranslator{
    public:
        BpmStruct bpms;
        bool Read(const CapReader<MusicBinaryCapnpData>& binary, unsigned long long startFrame);

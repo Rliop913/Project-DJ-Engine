@@ -36,6 +36,8 @@ Includes
 
 - ``iostream``
 
+- ``string``
+
 
 
 

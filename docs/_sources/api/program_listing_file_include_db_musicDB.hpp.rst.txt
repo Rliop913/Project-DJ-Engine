@@ -16,21 +16,23 @@ Program Listing for File musicDB.hpp
    #include <sqlite3.h>
    
    #include "dbState.hpp"
+   #include "PDJE_EXPORT_SETTER.hpp"
+   #include "fileNameSanitizer.hpp"
    
-   struct musdata{
+   struct PDJE_API musdata{
    public:
-       std::string title;
-       std::string composer;
-       std::string musicPath;
+       SANITIZED title;
+       SANITIZED composer;
+       SANITIZED_ORNOT musicPath;
        BIN bpmBinary;
        double bpm = -1.0;
-       std::string firstBar;
+       DONT_SANITIZE firstBar;
        musdata(stmt* dbstate);
    
        musdata(
-           const std::string& title__ = "",
-           const std::string& composer__ = "",
-           const std::string& musicPath__ = "",
+           const UNSANITIZED& title__ = "",
+           const UNSANITIZED& composer__ = "",
+           const SANITIZED_ORNOT& musicPath__ = "",
            const double bpm__ = -1.0
        );
        bool GenSearchSTMT(stmt& dbstate, sqlite3* db);

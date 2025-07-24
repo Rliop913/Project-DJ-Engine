@@ -16,6 +16,7 @@ Subdirectories
 --------------
 
 - :ref:`dir_include_input_linux`
+- :ref:`dir_include_input_windows`
 
 
 Files

@@ -85,21 +85,22 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sqlite3.h&gt;</span>
-
-<span class="cp">#ifdef __WINDOWS__</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fileNameSanitizer.hpp&quot;</span>
+<span class="cp">#ifdef WIN32</span>
 <span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">u_int8_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">uint8_t</span><span class="p">;</span>
 <span class="cp">#endif</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">BIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">u_int8_t</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="k">enum</span><span class="w"> </span><span class="nc">COL_TYPE</span><span class="p">{</span>
-<span class="w">    </span><span class="n">INT</span><span class="p">,</span>
-<span class="w">    </span><span class="n">DOUBLE</span><span class="p">,</span>
-<span class="w">    </span><span class="n">TEXT</span><span class="p">,</span>
-<span class="w">    </span><span class="n">BLOB</span>
+<span class="w">    </span><span class="n">PDJE_INT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">PDJE_DOUBLE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">PDJE_TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">PDJE_BLOB</span>
 <span class="p">};</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">stmt</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">stmt</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
 
@@ -107,7 +108,10 @@
 
 <span class="w">    </span><span class="n">sqlite3_stmt</span><span class="o">*</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">bind_null</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">bind_text</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">str</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">bind_text</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="n">SANITIZED_ORNOT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">str</span><span class="p">);</span>
+
+
+<span class="w">    </span><span class="c1">// int bind_u8text(int idx, std::u8string&amp; str);</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">bind_blob</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="n">BIN</span><span class="o">&amp;</span><span class="w"> </span><span class="n">bin</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">bind_double</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">bind_int</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>

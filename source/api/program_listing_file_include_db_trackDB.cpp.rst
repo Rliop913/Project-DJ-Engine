@@ -12,31 +12,43 @@ Program Listing for File trackDB.cpp
 
    #include "trackDB.hpp"
    // #include "errorTable.hpp"
-   
-   
+   #include "fileNameSanitizer.hpp"
+   #include <source_location>
+   #include "PDJE_LOG_SETTER.hpp"
    #define CHK_BIND(res)\
    if(res != SQLITE_OK){\
-   return false;\
+       auto now = std::source_location::current();\
+       critlog("failed on sqlite.");\
+       critlog(now.file_name());\
+       std::string lineNumber = std::to_string(now.line());\
+       critlog(lineNumber);\
+       critlog(now.function_name());\
+       std::string sqlLog = sqlite3_errmsg(db);\
+       critlog(sqlLog);\
+       return false;\
    }
-   // errpdje::ereport("sql bind errno: " + std::to_string(SQLITE_LAST_ERRNO), errpdje::ERR_TYPE::SQL_ERROR, ("trackDB bind " + std::string(error_type)));}
    
    
    trackdata::trackdata(stmt* dbstate)
    {
-       trackTitle = dbstate->colGet<COL_TYPE::TEXT, std::string>(0);
+       trackTitle = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(0);
        
-       mixBinary = dbstate->colGet<COL_TYPE::BLOB, BIN>(1);
+       mixBinary = dbstate->colGet<COL_TYPE::PDJE_BLOB, BIN>(1);
        
-       noteBinary = dbstate->colGet<COL_TYPE::BLOB, BIN>(2);
+       noteBinary = dbstate->colGet<COL_TYPE::PDJE_BLOB, BIN>(2);
        
-       cachedMixList = dbstate->colGet<COL_TYPE::TEXT, std::string>(3);
-       
+       cachedMixList = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(3);
    }
    
-   trackdata::trackdata(const std::string& trackTitle__)
-   :trackTitle(trackTitle__)
+   trackdata::trackdata(const UNSANITIZED& trackTitle__)
    {
-       
+       auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(trackTitle__);
+       if(!safeTitle){
+           critlog("failed to sanitize filename. from trackdata(tracktitle). ErrtrackTitle: ");
+           critlog(trackTitle__);
+           return;
+       }
+       trackTitle = safeTitle.value();
    }
    
    bool 
@@ -48,6 +60,7 @@ Program Listing for File trackDB.cpp
        "WHERE (? = -1 OR TrackTitle = ?);"
        ;
        if(!dbstate.activate(db)){
+           critlog("failed to execute sql. from trackdata GenSearchSTMT.");
            return false;
        }
        if(trackTitle == ""){
@@ -71,6 +84,7 @@ Program Listing for File trackDB.cpp
        "VALUES "
        "(?, ?, ?, ?); ";
        if(!dbstate.activate(db)){
+           critlog("failed to execute sql. from trackdata GenInsertSTMT.");
            return false;
        }
        CHK_BIND( dbstate.bind_text(1, trackTitle));
@@ -90,7 +104,10 @@ Program Listing for File trackDB.cpp
        "SET TrackTitle = ?, MixBinary = ?, NoteBinary = ?, CachedMixList = ? "
        "WHERE TrackTitle = ?; ";
    
-       if(!dbstate.activate(db)) return false;
+       if(!dbstate.activate(db)) {
+           critlog("failed to execute sql. from trackdata GenEditSTMT.");
+           return false;
+       }
        
        CHK_BIND(dbstate.bind_text  (1, toEdit.trackTitle   ))
        CHK_BIND(dbstate.bind_blob  (2, toEdit.mixBinary    ))
@@ -111,7 +128,10 @@ Program Listing for File trackDB.cpp
        "DELETE FROM TRACK "
        "WHERE TrackTitle = ?; ";
    
-       if(!dbstate.activate(db)) return false;
+       if(!dbstate.activate(db)){
+           critlog("failed to execute sql. from trackdata GenDeleteSTMT.");
+           return false;
+       }
    
        CHK_BIND(dbstate.bind_text(1, trackTitle))
        

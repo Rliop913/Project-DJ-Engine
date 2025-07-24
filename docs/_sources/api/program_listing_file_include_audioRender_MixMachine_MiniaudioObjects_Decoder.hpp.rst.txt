@@ -17,18 +17,21 @@ Program Listing for File Decoder.hpp
    #include <vector>
    
    #include <miniaudio.h>
-   
+   #include <filesystem>
    #include "FrameCalc.hpp"
+   #include "fileNameSanitizer.hpp"
+   #include "dbRoot.hpp"
    
+   namespace fs = std::filesystem;
    // using MAYBE_FRAME = std::optional<std::vector<float>>;
    
    using FRAME_POS = unsigned long long;
-   struct Decoder{
+   struct PDJE_API Decoder{
        ma_decoder dec;
-   
+       std::vector<uint8_t> musicBinary;
        Decoder();
        ~Decoder();
-       bool init(const std::string& song_path, const std::string& root_path);
+       bool init(litedb& db, const SANITIZED_ORNOT& KeyOrPath);
        bool changePos(FRAME_POS Pos);
    
        bool getPos(FRAME_POS& pos);

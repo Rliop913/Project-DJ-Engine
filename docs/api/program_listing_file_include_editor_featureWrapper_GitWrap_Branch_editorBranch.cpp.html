@@ -81,7 +81,7 @@
 <p>↰ <a class="reference internal" href="file_include_editor_featureWrapper_GitWrap_Branch_editorBranch.cpp.html#file-include-editor-featurewrapper-gitwrap-branch-editorbranch-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w">  </span><span class="cpf">&quot;editorBranch.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;git2/oid.h&quot;</span>
-
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">gitwrap</span><span class="p">;</span>
 
 
@@ -90,6 +90,8 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="n">git_branch_iterator</span><span class="o">*</span><span class="w"> </span><span class="n">branchIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">git_branch_iterator_new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">branchIT</span><span class="p">,</span><span class="w"> </span><span class="n">repo_pointer</span><span class="p">,</span><span class="w"> </span><span class="n">GIT_BRANCH_LOCAL</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to iterate branch. from gitwrap::branch ShowExistBranch. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -127,11 +129,15 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="n">git_revwalk</span><span class="o">*</span><span class="w"> </span><span class="n">walker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">git_revwalk_new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">walker</span><span class="p">,</span><span class="w"> </span><span class="n">repo_pointer</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to reverse walk. from gitwrap::branch ShowExistCommitsOnBranch. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">git_revwalk_push_ref</span><span class="p">(</span><span class="n">walker</span><span class="p">,</span><span class="w"> </span><span class="n">ToBranchRefName</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="n">branchName</span><span class="p">).</span><span class="n">c_str</span><span class="p">())</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
 <span class="w">        </span><span class="n">git_revwalk_free</span><span class="p">(</span><span class="n">walker</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to push reverse walk ref. from gitwrap::branch ShowExistCommitsOnBranch. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">commit</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -160,6 +166,8 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to set branch. from gitwrap::branch SetBranch. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -170,6 +178,7 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetHEAD</span><span class="p">();</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="p">.</span><span class="n">has_value</span><span class="p">()){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to get head. from gitwrap::branch MakeNewFromHEAD.&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">git_reference</span><span class="o">*</span><span class="w"> </span><span class="n">newbranch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
@@ -182,6 +191,8 @@
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">newbranch</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">){</span>
 <span class="w">        </span><span class="n">git_reference_free</span><span class="p">(</span><span class="n">newbranch</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to make new from head. from gitwrap::branch MakeNewFromHEAD. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -194,6 +205,8 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">SetBranch</span><span class="p">(</span><span class="n">newBranchName</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to create from commit . from gitwrap::branch MakeNewFromCommit. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -204,10 +217,14 @@
 
 <span class="w">    </span><span class="n">git_reference</span><span class="o">*</span><span class="w"> </span><span class="n">branchForDelete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">git_branch_lookup</span><span class="p">(</span><span class="o">&amp;</span><span class="n">branchForDelete</span><span class="p">,</span><span class="w"> </span><span class="n">repo_pointer</span><span class="p">,</span><span class="w"> </span><span class="n">branchName</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">GIT_BRANCH_LOCAL</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;failed to ref branch from gitwrap::branch DeleteBranch . gitLog: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">git_branch_delete</span><span class="p">(</span><span class="n">branchForDelete</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
 <span class="w">        </span><span class="n">git_reference_free</span><span class="p">(</span><span class="n">branchForDelete</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to delete branch. from gitwrap::branch DeleteBranch. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">git_reference_free</span><span class="p">(</span><span class="n">branchForDelete</span><span class="p">);</span>
@@ -219,7 +236,12 @@
 <span class="n">branch</span><span class="o">::</span><span class="n">CheckoutThisHEAD</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">FLAG_TEMP_CHECKOUT</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">git_checkout_head</span><span class="p">(</span><span class="n">repo_pointer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">checkoutOpts</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">chkHead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">git_checkout_head</span><span class="p">(</span><span class="n">repo_pointer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">checkoutOpts</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">chkHead</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to checkout to head. from gitwrap::branch CheckouotThisHEAD. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">chkHead</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span>
@@ -227,11 +249,15 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="n">git_object</span><span class="o">*</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">git_object_lookup</span><span class="p">(</span><span class="o">&amp;</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">repo_pointer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c</span><span class="p">.</span><span class="n">commitID</span><span class="p">,</span><span class="w"> </span><span class="n">GIT_OBJECT_COMMIT</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to ref target. from gitwrap::branch CheckoutCommitTemp. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">git_checkout_tree</span><span class="p">(</span><span class="n">repo_pointer</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">checkoutOpts</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">git_object_free</span><span class="p">(</span><span class="n">target</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to checkout to tree. from gitwrap::branch CheckoutCommitTemp. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">FLAG_TEMP_CHECKOUT</span><span class="p">.</span><span class="n">has_value</span><span class="p">()){</span>
@@ -260,6 +286,8 @@
 <span class="w">            </span><span class="n">git_reference_free</span><span class="p">(</span><span class="n">headref</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to getHead. from gitwrap::branch GetHEAD. gitLog: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">critlog</span><span class="p">(</span><span class="n">git_error_last</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
 <span class="p">}</span>
 

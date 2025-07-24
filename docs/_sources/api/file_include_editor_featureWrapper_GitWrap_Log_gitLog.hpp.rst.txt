@@ -9,6 +9,11 @@ File gitLog.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+Structures for storing commit logs and branch heads. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none
@@ -37,6 +42,8 @@ Includes
 - ``editorBranch.hpp`` (:ref:`file_include_editor_featureWrapper_GitWrap_Branch_editorBranch.hpp`)
 
 - ``editorCommit.hpp`` (:ref:`file_include_editor_featureWrapper_GitWrap_Commit_editorCommit.hpp`)
+
+- ``fileNameSanitizer.hpp`` (:ref:`file_include_db_fileNameSanitizer.hpp`)
 
 - ``string``
 

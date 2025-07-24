@@ -32,6 +32,10 @@ Includes
 
 - ``NoteTranslator.hpp`` (:ref:`file_include_db_Capnp_Translators_NoteTranslator_NoteTranslator.hpp`)
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
+
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 - ``audioPlayer.hpp`` (:ref:`file_include_MainObjects_audioPlayer_audioPlayer.hpp`)
 
 - ``dbRoot.hpp`` (:ref:`file_include_db_dbRoot.hpp`)
@@ -47,6 +51,8 @@ Included By
 - :ref:`file_include_interface_PDJE_interface.cpp`
 
 - :ref:`file_include_interface_PDJE_polyglot_wraps.cpp`
+
+- :ref:`file_include_tests_editorTest.cpp`
 
 - :ref:`file_include_tests_interfaceTest.cpp`
 

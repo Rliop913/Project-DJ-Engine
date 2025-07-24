@@ -81,36 +81,71 @@
 <p>↰ <a class="reference internal" href="file_include_audioRender_MixMachine_MiniaudioObjects_Decoder.cpp.html#file-include-audiorender-mixmachine-miniaudioobjects-decoder-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Decoder.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
 
 <span class="n">Decoder</span><span class="o">::</span><span class="n">Decoder</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="kt">bool</span>
-<span class="n">Decoder</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">song_path</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">root_path</span><span class="p">)</span>
+<span class="n">Decoder</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">litedb</span><span class="o">&amp;</span><span class="w"> </span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">SANITIZED_ORNOT</span><span class="o">&amp;</span><span class="w"> </span><span class="n">KeyOrPath</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">ma_decoder_config</span><span class="w"> </span><span class="n">dconf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ma_decoder_config_init</span><span class="p">(</span><span class="n">ma_format_f32</span><span class="p">,</span><span class="w"> </span><span class="n">CHANNEL</span><span class="p">,</span><span class="w"> </span><span class="n">SAMPLERATE</span><span class="p">);</span>
-<span class="w">    </span><span class="k">namespace</span><span class="w"> </span><span class="nn">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">filesystem</span><span class="p">;</span>
-<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="nf">relative_path</span><span class="p">(</span><span class="n">song_path</span><span class="p">);</span>
-<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="nf">root</span><span class="p">(</span><span class="n">root_path</span><span class="p">);</span>
-<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">fullpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="p">.</span><span class="n">parent_path</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">relative_path</span><span class="p">;</span>
-<span class="w">    </span><span class="n">fullpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fullpath</span><span class="p">.</span><span class="n">lexically_normal</span><span class="p">();</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ma_decoder_init_file</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">fullpath</span><span class="p">.</span><span class="n">u8string</span><span class="p">().</span><span class="n">c_str</span><span class="p">()),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dconf</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dec</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MA_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">KeyOrPath</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">npos</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">KeyOrPath</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">npos</span><span class="p">){</span>
+<span class="w">        </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">songPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="n">KeyOrPath</span><span class="p">).</span><span class="n">lexically_normal</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">fs</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="n">songPath</span><span class="p">)){</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to find music in findpath mode. Err from Decoder init. ErrPath: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">KeyOrPath</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="n">musicFile</span><span class="p">(</span><span class="n">songPath</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fileData</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">(</span><span class="n">musicFile</span><span class="p">),</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">        </span><span class="p">};</span>
+
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">fileData</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to read music binary data in findpath mode. Err from Decoder init. ErrPath: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">KeyOrPath</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">musicBinary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">fileData</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">tempBinary</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">db</span><span class="p">.</span><span class="n">KVGet</span><span class="p">(</span><span class="n">KeyOrPath</span><span class="p">,</span><span class="w"> </span><span class="n">tempBinary</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to get music from rocksdb. Err from Decoder init. ErrKey: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">KeyOrPath</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">musicBinary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">tempBinary</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">tempBinary</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ma_decoder_init_memory</span><span class="p">(</span><span class="n">musicBinary</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">musicBinary</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dconf</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dec</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MA_SUCCESS</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span>
 <span class="n">Decoder</span><span class="o">::</span><span class="n">changePos</span><span class="p">(</span><span class="n">FRAME_POS</span><span class="w"> </span><span class="n">Pos</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ma_decoder_seek_to_pcm_frame</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dec</span><span class="p">,</span><span class="w"> </span><span class="n">Pos</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MA_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">chposRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ma_decoder_seek_to_pcm_frame</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dec</span><span class="p">,</span><span class="w"> </span><span class="n">Pos</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MA_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">chposRes</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to change music play position. from Decoder changePos. &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">chposRes</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span>
 <span class="n">Decoder</span><span class="o">::</span><span class="n">getPos</span><span class="p">(</span><span class="n">FRAME_POS</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pos</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ma_decoder_get_cursor_in_pcm_frames</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dec</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pos</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MA_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">getPosRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ma_decoder_get_cursor_in_pcm_frames</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dec</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pos</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">MA_SUCCESS</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">getPosRes</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to get music play position. from Decoder getPos&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">getPosRes</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span>
@@ -121,6 +156,7 @@
 <span class="w">        </span><span class="n">buffer</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">BufferSize</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">ma_decoder_read_pcm_frames</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dec</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">numFrames</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MA_SUCCESS</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to read pcm frames from musicData. from Decoder getRange&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>

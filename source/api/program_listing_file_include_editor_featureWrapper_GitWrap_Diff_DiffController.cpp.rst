@@ -11,6 +11,7 @@ Program Listing for File DiffController.cpp
 .. code-block:: cpp
 
    #include "DiffController.hpp"
+   #include "PDJE_LOG_SETTER.hpp"
    
    DiffController::DiffController()
    {
@@ -25,13 +26,19 @@ Program Listing for File DiffController.cpp
        
        if(OCommit.commitPointer != nullptr){
            if(git_commit_tree(&Otree, OCommit.commitPointer) != 0){
+               critlog("failed to init tree. from DiffController CommitToNow. gitLog: ");
+               critlog(git_error_last()->message);
                goto OLD_TREE_INIT_FAILED;
            }
            if(git_diff_tree_to_workdir(&Dobj, repo, Otree, nullptr) != 0){
+               critlog("diff failed. from DiffController CommitToNow. gitLog: ");
+               critlog(git_error_last()->message);
                goto DIFF_FAILED;
            }
        }
        else{
+           critlog("failed to init commit. from DiffController CommitToNow. gitLog: ");
+           critlog(git_error_last()->message);
            goto COMMIT_INIT_FAILED;
        }
    
@@ -58,16 +65,24 @@ Program Listing for File DiffController.cpp
            OCommit.commitPointer != nullptr){
    
            if(git_commit_tree(&Ntree, NCommit.commitPointer) != 0){
+               critlog("failed to init new tree. from DiffController CommitToCommit. gitLog: ");
+               critlog(git_error_last()->message);
                goto NEW_TREE_INIT_FAILED;
            }
            if(git_commit_tree(&Otree, OCommit.commitPointer) != 0){
+               critlog("failed to init old tree. from DiffController CommitToCommit. gitLog: ");
+               critlog(git_error_last()->message);
                goto OLD_TREE_INIT_FAILED;
            }
            if(git_diff_tree_to_tree(&Dobj, repo, Otree, Ntree, nullptr) != 0){
+               critlog("failed to diff. from DiffController CommitToCommit. gitLog: ");
+               critlog(git_error_last()->message);
                goto DIFF_FAILED;
            }
        }
        else{
+           critlog("failed to init commit. from DiffController CommitToCommit. gitLog: ");
+           critlog(git_error_last()->message);
            goto COMMIT_INIT_FAILED;
        }
    
@@ -113,6 +128,7 @@ Program Listing for File DiffController.cpp
            break;
        }
        default:
+           infolog("discarded case. from DiffController.cpp DiffCallback.");
            break;
        };
        return 0;
@@ -123,7 +139,7 @@ Program Listing for File DiffController.cpp
    bool
    DiffController::execute(DiffResult* res)
    {
-       return
+       bool diffRes =
        git_diff_foreach(
            Dobj,
            nullptr,
@@ -132,6 +148,12 @@ Program Listing for File DiffController.cpp
            DiffCallback,
            reinterpret_cast<void*>(res)
        ) == 0;
+   
+       if(!diffRes){
+           critlog("failed to diff. from DiffController execute. gitLog: ");
+           critlog(git_error_last()->message);
+       }
+       return diffRes;
    }
    
    DiffController::~DiffController()

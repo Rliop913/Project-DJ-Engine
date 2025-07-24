@@ -32,6 +32,8 @@ Includes
 
 - ``AddController.hpp`` (:ref:`file_include_editor_featureWrapper_GitWrap_Add_AddController.hpp`)
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 
 
 

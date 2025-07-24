@@ -19,8 +19,8 @@ Program Listing for File Bpm.hpp
    
    #include "FrameCalc.hpp"
    #include "Mix.hpp"
-   
-   class BPM{
+   #include "PDJE_EXPORT_SETTER.hpp"
+   class PDJE_API BPM{
    private:
        unsigned usable_threads;
    public:

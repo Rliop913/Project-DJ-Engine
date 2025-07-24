@@ -94,17 +94,23 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Decoder.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;BattleDj.hpp&quot;</span>
 
-
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;source_location&gt;</span>
 <span class="cp">#define TRY(CODE)\</span>
 <span class="cp">try\</span>
 <span class="cp">{\</span>
 <span class="cp">    CODE\</span>
 <span class="cp">}\</span>
-<span class="cp">catch(...)\</span>
+<span class="cp">catch(std::exception&amp; e)\</span>
 <span class="cp">{\</span>
+<span class="cp">    auto now = std::source_location::current();\</span>
+<span class="cp">    critlog(now.file_name());\</span>
+<span class="cp">    std::string lineNumber = std::to_string(now.line());\</span>
+<span class="cp">    critlog(lineNumber);\</span>
+<span class="cp">    critlog(now.function_name());\</span>
+<span class="cp">    critlog(e.what());\</span>
 <span class="cp">    return false;\</span>
 <span class="cp">}</span>
-
 
 
 
@@ -116,7 +122,7 @@
 <span class="p">};</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">long</span><span class="p">;</span>
-<span class="k">struct</span><span class="w"> </span><span class="nc">EightPointValues</span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">EightPointValues</span><span class="p">{</span>
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">vals</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">};</span>
 <span class="w">    </span><span class="n">EightPointValues</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rawData</span><span class="p">){</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="nf">sdata</span><span class="p">(</span><span class="n">rawData</span><span class="p">);</span>
@@ -140,13 +146,13 @@
 
 <span class="cp">#define FLAG_ALL_IS_OK -99</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">MixMachine</span><span class="p">{</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">MixMachine</span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="c1">// FRAME_POS getMixSize(FRAME_POS frames);</span>
 <span class="k">public</span><span class="o">:</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">FLAG_SOMETHING_WRONG_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FLAG_ALL_IS_OK</span><span class="p">;</span><span class="w"> </span><span class="c1">//-99 is ok</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="w"> </span><span class="n">renderLock</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="o">&gt;</span><span class="w"> </span><span class="n">renderPool</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// std::vector&lt;std::thread&gt; renderPool;</span>
 
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">MixStruct</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Memorized</span><span class="p">;</span>
 

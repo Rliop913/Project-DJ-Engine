@@ -27,12 +27,14 @@ Program Listing for File deleteline.cpp
            return deleted_lines;
        }
        else{
+           infolog("nothing to remove. from note deleteLine");
            return 0;
        }
    }
    
    
    template<>
+   PDJE_API
    int
    editorObject::deleteLine(const EDIT_ARG_NOTE& obj)
    {
@@ -41,10 +43,14 @@ Program Listing for File deleteline.cpp
        if(DefaultSaveFuntion<EDIT_ARG_NOTE>()){
            return deleted_lines;
        }
-       return 0;
+       else{
+           infolog("nothing to remove. from note deleteLine");
+           return 0;
+       }
    }
    
    template<>
+   PDJE_API
    int
    editorObject::deleteLine(const EDIT_ARG_KEY_VALUE& obj)
    {
@@ -53,10 +59,14 @@ Program Listing for File deleteline.cpp
        if(DefaultSaveFuntion<EDIT_ARG_KEY_VALUE>()){
            return deleted_lines;
        }
-       return 0;
+       else{
+           infolog("nothing to remove. from KV deleteLine");
+           return 0;
+       }
    }
    
    template<>
+   PDJE_API
    int
    editorObject::deleteLine(const EDIT_ARG_MUSIC& obj)
    {
@@ -67,9 +77,11 @@ Program Listing for File deleteline.cpp
                    return deleted_lines;
                }
                else{
+                   infolog("nothing to remove. from music deleteLine");
                    return 0;
                }
            }
        }
+       warnlog("music is not exists. from editorObject deleteLine(Music obj)");
        return 0;
    }

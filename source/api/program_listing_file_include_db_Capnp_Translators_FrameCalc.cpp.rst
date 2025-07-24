@@ -12,6 +12,8 @@ Program Listing for File FrameCalc.cpp
 
    #include "FrameCalc.hpp"
    
+   #include "PDJE_LOG_SETTER.hpp"
+   
    namespace FrameCalc{
        unsigned long CountFrame(
            unsigned long Sbar,
@@ -67,6 +69,9 @@ Program Listing for File FrameCalc.cpp
        if(fragments.size() > 0){
            for(auto i : fragments){
                if(i.bpm <= 0){
+                   critlog("bpm safe check failed. from BpmStruct calcFrame. bpm: ");
+                   std::string bpmLog = std::to_string(i.bpm);
+                   critlog(bpmLog);
                    return false;
                }
            }
@@ -90,6 +95,7 @@ Program Listing for File FrameCalc.cpp
            return true;
        }
        else{
+           critlog("bpm fragment data is empty. from BpmStruct calcFrame.");
            return false;
        }
    }
@@ -122,7 +128,7 @@ Program Listing for File FrameCalc.cpp
            searchLambda
            );
        if(bpmIt == fragments.begin() || fragments.empty()){
-           throw "empty bpm fragments. Runtime Err";
+           critlog("cannot get affected bpm. empty bpm fragments. from BpmStruct getAffected-bpmfragment");
        }
        --bpmIt;
        #ifdef __WINDOWS__
@@ -154,7 +160,7 @@ Program Listing for File FrameCalc.cpp
            FrameSearchLambda
            );
        if(bpmIt == fragments.begin() || fragments.empty()){
-           throw "empty bpm fragments. Runtime Err";
+           critlog("cannot get affected bpm. empty bpm fragments. from BpmStruct getAffected-ull");
        }
        --bpmIt;
        #ifdef __WINDOWS__
@@ -184,7 +190,7 @@ Program Listing for File FrameCalc.cpp
            FrameSearchLambda
            );
        if(StartIT == fragments.begin() || fragments.empty()){
-           throw "empty bpm fragments. Runtime Err";
+           critlog("cannot get affected bpm. empty bpm fragments. from BpmStruct getAffectedList-StartIT");
        }
        --StartIT;
        auto EndIT = std::upper_bound(
@@ -194,10 +200,11 @@ Program Listing for File FrameCalc.cpp
            FrameSearchLambda
            );
        if(EndIT == fragments.begin() || fragments.empty()){
-           throw "empty bpm fragments. Runtime Err";
+           critlog("cannot get affected bpm. empty bpm fragments. from BpmStruct getAffectedList-EndIT");
        }
        --EndIT;
        if(StartIT == EndIT){
+           infolog("StartIT and EndIT is same. from BpmStruct getAffectedList");
            return std::vector<const BpmFragment*>();
        }
        std::vector<const BpmFragment*> BRange;

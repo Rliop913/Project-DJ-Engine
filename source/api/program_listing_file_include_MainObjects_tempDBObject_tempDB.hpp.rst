@@ -14,14 +14,15 @@ Program Listing for File tempDB.hpp
    
    #include <filesystem>
    namespace fs = std::filesystem;
-   
+   #include "PDJE_EXPORT_SETTER.hpp"
    #include "dbRoot.hpp"
    
-   class tempDB{
+   class PDJE_API tempDB{
    private:
        std::optional<litedb> tempROOT;
    public:
-       bool Open(fs::path& projectRoot);
+       std::string ERR = "";
+       bool Open(const fs::path& projectRoot);
        bool BuildProject(trackdata& td, std::vector<musdata>& mds);
        litedb& GetBuildedProject(){
            return tempROOT.value();

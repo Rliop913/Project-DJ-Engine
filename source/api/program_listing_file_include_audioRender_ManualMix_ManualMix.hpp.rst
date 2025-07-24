@@ -31,6 +31,8 @@ Program Listing for File ManualMix.hpp
    #include "musicDB.hpp"
    #include "FrameCalc.hpp"
    
+   #include "PDJE_EXPORT_SETTER.hpp"
+   
    enum FXList{
        COMPRESSOR = 0,
        DISTORTION,
@@ -47,7 +49,7 @@ Program Listing for File ManualMix.hpp
        VOL
    };
    
-   class FXControlPannel{
+   class PDJE_API FXControlPannel{
    private:
        std::pair<bool, CompressorFAUSTMan>  compressorPannel;
        std::pair<bool, DistortionFAUSTMan>  distortionPannel;

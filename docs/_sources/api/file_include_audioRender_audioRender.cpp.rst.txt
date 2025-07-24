@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)
+
 - ``audioRender.hpp`` (:ref:`file_include_audioRender_audioRender.hpp`)
 
 
