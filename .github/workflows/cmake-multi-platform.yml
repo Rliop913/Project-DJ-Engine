@@ -25,8 +25,8 @@ jobs:
       matrix:
         include:
           - os: windows-latest
-            c_compiler: clang
-            cpp_compiler: clang++
+            c_compiler: cl
+            cpp_compiler: cl
             build_type: Release
           - os: ubuntu-latest
             c_compiler: gcc
@@ -58,7 +58,14 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         sudo apt-get install libevdev-dev
-    
+
+    -name: set macos Swig
+      id: set_macos_swig
+      shell: bash
+      if: runner.os == 'macos'
+      run: 
+        brew install swig
+      
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
