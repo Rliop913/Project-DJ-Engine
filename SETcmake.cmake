@@ -6,6 +6,11 @@ set(CAPNP_BUILD_TESTS OFF)
 set(BUILD_TESTING OFF CACHE BOOL "Disable testing")
 set(HWY_ENABLE_TARGETS "scalar,sse4,avx,avx2" CACHE STRING "Enabled SIMD targets" FORCE)
 set(WITH_WERROR OFF CACHE BOOL "" FORCE)
+set(FAIL_ON_WARNINGS OFF CACHE BOOL "Disable Werror in rocksdb")
+set(CMAKE_C_COMPILER_LAUNCHER ccache)
+set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
+
+
 if(MSVC)
 add_compile_options(
     /arch:AVX2
