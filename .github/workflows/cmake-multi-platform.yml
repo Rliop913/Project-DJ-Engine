@@ -59,11 +59,11 @@ jobs:
       run: |
         sudo apt-get install libevdev-dev
 
-    -name: set macos Swig
+    - name: set macos Swig
       id: set_macos_swig
       shell: bash
       if: runner.os == 'macos'
-      run: 
+      run: |
         brew install swig
       
 
