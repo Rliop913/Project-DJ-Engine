@@ -94,7 +94,7 @@ public:
     bool render(const UNSANITIZED& trackTitle, litedb& ROOTDB);
 
     void demoPlayInit(
-        std::optional<audioPlayer>& player, 
+        std::shared_ptr<audioPlayer>& player, 
         unsigned int frameBufferSize, 
         const UNSANITIZED& trackTitle);
 
