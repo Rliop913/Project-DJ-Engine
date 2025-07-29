@@ -137,11 +137,8 @@ set(WITH_ZLIB OFF CACHE BOOL "" FORCE)
 set(WITH_GFLAGS OFF CACHE BOOL "" FORCE)
 FetchContent_Declare(
   rocksDB
-  GIT_REPOSITORY https://github.com/Rliop913/rocksdb_cxx20_atomic_fix.git
+  GIT_REPOSITORY https://github.com/facebook/rocksdb.git
   GIT_TAG main
-  # using fixed fork temporary. fix this after pr merged.
-  # GIT_REPOSITORY https://github.com/facebook/rocksdb.git
-  # GIT_TAG v10.2.1
 )
 
 
