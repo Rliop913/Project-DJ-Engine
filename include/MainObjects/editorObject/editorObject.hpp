@@ -61,26 +61,54 @@ public:
      * @brief Gets the Git repository for the mix data.
      * @return A pointer to the Git repository, or `nullptr` if not available.
      */
-    git_repository* getMixRepo();
+    git_repository* getMixRepo(){
+        if(E_obj.has_value()){
+            return E_obj->mixHandle.first->gw.repo;
+        }
+        else return nullptr;
+    }
 
     /**
      * @brief Gets the Git repository for a specific music entry.
      * @param Title The unsanitized title of the music.
      * @return A pointer to the Git repository, or `nullptr` if not found.
      */
-    git_repository* getMusicRepo(const UNSANITIZED& Title);
+    git_repository* getMusicRepo(const UNSANITIZED& Title){
+        auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(Title);
+        if(!safeTitle){
+            return nullptr;
+        }
+        if(E_obj.has_value()){
+            for(auto& music : E_obj->musicHandle){
+                if(music.musicName == safeTitle){
+                    return music.gith->gw.repo;
+                }
+            }
+        }
+        else return nullptr;
+    }
 
     /**
      * @brief Gets the Git repository for the note data.
      * @return A pointer to the Git repository, or `nullptr` if not available.
      */
-    git_repository* getNoteRepo();
+    git_repository* getNoteRepo(){
+        if(E_obj.has_value()){
+            return E_obj->noteHandle.first->gw.repo;
+        }
+        else return nullptr;
+    }
 
     /**
      * @brief Gets the Git repository for the key-value data.
      * @return A pointer to the Git repository, or `nullptr` if not available.
      */
-    git_repository* getKVRepo();
+    git_repository* getKVRepo(){
+        if(E_obj.has_value()){
+            return E_obj->KVHandler.first->gw.repo;
+        }
+        else return nullptr;
+    }
 
     /**
      * @brief Adds a new line of data to the editor.
