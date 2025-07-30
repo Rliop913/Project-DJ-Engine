@@ -296,7 +296,9 @@ public:
      * @param auth_name The name of the author.
      * @param auth_email The email of the author.
      */
-    editorObject(const DONT_SANITIZE &auth_name, const DONT_SANITIZE &auth_email);
+    editorObject(const DONT_SANITIZE &auth_name, const DONT_SANITIZE &auth_email){
+        E_obj.emplace(auth_name, auth_email);
+    }
 
     ~editorObject() = default;
 };
