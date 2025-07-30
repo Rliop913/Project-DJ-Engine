@@ -44,7 +44,9 @@ public:
      *
      * @return A reference to the `litedb` object.
      */
-    litedb& GetBuildedProject();
+    litedb& GetBuildedProject(){
+        return tempROOT.value();
+    }
 
     tempDB() = default;
     ~tempDB() = default;

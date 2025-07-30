@@ -30,6 +30,7 @@ if(WIN32)
 
     set(CMAKE_CXX_STANDARD 20)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
+    set(USE_SSPI OFF CACHE BOOL "" FORCE) # turn off for libgit
     # set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
     set(cmake_c_compiler "cl")
     set(cmake_cxx_compiler "cl")
