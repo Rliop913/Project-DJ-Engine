@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="structtrackdata" kind="struct" language="C++" prot="public">
+    <compoundname>trackdata</compoundname>
+    <includes refid="trackDB_8hpp" local="no">trackDB.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" prot="public" static="no" mutable="no">
+        <type><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
+        <definition>SANITIZED trackdata::trackTitle</definition>
+        <argsstring></argsstring>
+        <name>trackTitle</name>
+        <qualifiedname>trackdata::trackTitle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/trackDB.hpp" line="14" column="15" bodyfile="include/db/trackDB.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtrackdata_1a155e25ae9bef854aa3441d9702082ac3" prot="public" static="no" mutable="no">
+        <type><ref refid="dbState_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
+        <definition>BIN trackdata::mixBinary</definition>
+        <argsstring></argsstring>
+        <name>mixBinary</name>
+        <qualifiedname>trackdata::mixBinary</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/trackDB.hpp" line="15" column="9" bodyfile="include/db/trackDB.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtrackdata_1a0a2f02219cfb3b6f5e988fec61c37e7a" prot="public" static="no" mutable="no">
+        <type><ref refid="dbState_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
+        <definition>BIN trackdata::noteBinary</definition>
+        <argsstring></argsstring>
+        <name>noteBinary</name>
+        <qualifiedname>trackdata::noteBinary</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/trackDB.hpp" line="16" column="9" bodyfile="include/db/trackDB.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtrackdata_1aa1e66043414a3f6fe79c3b74ba7dfde8" prot="public" static="no" mutable="no">
+        <type><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
+        <definition>SANITIZED trackdata::cachedMixList</definition>
+        <argsstring></argsstring>
+        <name>cachedMixList</name>
+        <qualifiedname>trackdata::cachedMixList</qualifiedname>
+        <briefdescription>
+<para>Included music list, csv data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/trackDB.hpp" line="18" column="15" bodyfile="include/db/trackDB.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structtrackdata_1ad6d055f069e5dc899f7777a4f95ce001" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>trackdata::trackdata</definition>
+        <argsstring>(stmt *dbstate)</argsstring>
+        <name>trackdata</name>
+        <qualifiedname>trackdata::trackdata</qualifiedname>
+        <param>
+          <type><ref refid="structstmt" kindref="compound">stmt</ref> *</type>
+          <declname>dbstate</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. typically used for returning search results. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dbstate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the sqlite statement </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/trackDB.hpp" line="25" column="5" bodyfile="include/db/trackDB.cpp" bodystart="20" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="structtrackdata_1a90e40030d24d72f1c94756fb297dc785" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>trackdata::trackdata</definition>
+        <argsstring>(const UNSANITIZED &amp;trackTitle__=&quot;&quot;)</argsstring>
+        <name>trackdata</name>
+        <qualifiedname>trackdata::trackdata</qualifiedname>
+        <param>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
+          <declname>trackTitle__</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Construct used for filtering track entries. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Use this constructor to specify filtering conditions for a search query. Leave parameters blank</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trackTitle__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the title of the track </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/trackDB.hpp" line="35" column="5" bodyfile="include/db/trackDB.cpp" bodystart="31" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="structtrackdata_1af8e2ee5d3738db62af5e2555b83f24c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool trackdata::GenSearchSTMT</definition>
+        <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
+        <name>GenSearchSTMT</name>
+        <qualifiedname>trackdata::GenSearchSTMT</qualifiedname>
+        <param>
+          <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
+          <declname>dbstate</declname>
+        </param>
+        <param>
+          <type>sqlite3 *</type>
+          <declname>db</declname>
+        </param>
+        <briefdescription>
+<para>generates the search statement </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dbstate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>statement pointer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Root DB </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/trackDB.hpp" line="47" column="10" bodyfile="include/db/trackDB.cpp" bodystart="43" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="structtrackdata_1ab8894b76b74769bec56ce7ee0db0e3a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool trackdata::GenInsertSTMT</definition>
+        <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
+        <name>GenInsertSTMT</name>
+        <qualifiedname>trackdata::GenInsertSTMT</qualifiedname>
+        <param>
+          <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
+          <declname>dbstate</declname>
+        </param>
+        <param>
+          <type>sqlite3 *</type>
+          <declname>db</declname>
+        </param>
+        <briefdescription>
+<para>generates the insert statements </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dbstate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>statement pointer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Root DB </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/trackDB.hpp" line="57" column="10" bodyfile="include/db/trackDB.cpp" bodystart="66" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="structtrackdata_1a12a001e6ec36d4098ebcc21c732c8434" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool trackdata::GenEditSTMT</definition>
+        <argsstring>(stmt &amp;dbstate, sqlite3 *db, trackdata &amp;toEdit)</argsstring>
+        <name>GenEditSTMT</name>
+        <qualifiedname>trackdata::GenEditSTMT</qualifiedname>
+        <param>
+          <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
+          <declname>dbstate</declname>
+        </param>
+        <param>
+          <type>sqlite3 *</type>
+          <declname>db</declname>
+        </param>
+        <param>
+          <type><ref refid="structtrackdata" kindref="compound">trackdata</ref> &amp;</type>
+          <declname>toEdit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/trackDB.hpp" line="59" column="10" bodyfile="include/db/trackDB.cpp" bodystart="87" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="structtrackdata_1aea2673a94960b6ee2fcbc7b539c42de8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool trackdata::GenDeleteSTMT</definition>
+        <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
+        <name>GenDeleteSTMT</name>
+        <qualifiedname>trackdata::GenDeleteSTMT</qualifiedname>
+        <param>
+          <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
+          <declname>dbstate</declname>
+        </param>
+        <param>
+          <type>sqlite3 *</type>
+          <declname>db</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/trackDB.hpp" line="61" column="10" bodyfile="include/db/trackDB.cpp" bodystart="112" bodyend="127"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the music meta data&apos;s struct </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::vector&lt; u_int8_t &gt;</label>
+      </node>
+      <node id="1">
+        <label>trackdata</label>
+        <link refid="structtrackdata"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>cachedMixList</edgelabel>
+          <edgelabel>trackTitle</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>mixBinary</edgelabel>
+          <edgelabel>noteBinary</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/db/trackDB.hpp" line="12" column="1" bodyfile="include/db/trackDB.hpp" bodystart="12" bodyend="62"/>
+    <listofallmembers>
+      <member refid="structtrackdata_1aa1e66043414a3f6fe79c3b74ba7dfde8" prot="public" virt="non-virtual"><scope>trackdata</scope><name>cachedMixList</name></member>
+      <member refid="structtrackdata_1aea2673a94960b6ee2fcbc7b539c42de8" prot="public" virt="non-virtual"><scope>trackdata</scope><name>GenDeleteSTMT</name></member>
+      <member refid="structtrackdata_1a12a001e6ec36d4098ebcc21c732c8434" prot="public" virt="non-virtual"><scope>trackdata</scope><name>GenEditSTMT</name></member>
+      <member refid="structtrackdata_1ab8894b76b74769bec56ce7ee0db0e3a2" prot="public" virt="non-virtual"><scope>trackdata</scope><name>GenInsertSTMT</name></member>
+      <member refid="structtrackdata_1af8e2ee5d3738db62af5e2555b83f24c9" prot="public" virt="non-virtual"><scope>trackdata</scope><name>GenSearchSTMT</name></member>
+      <member refid="structtrackdata_1a155e25ae9bef854aa3441d9702082ac3" prot="public" virt="non-virtual"><scope>trackdata</scope><name>mixBinary</name></member>
+      <member refid="structtrackdata_1a0a2f02219cfb3b6f5e988fec61c37e7a" prot="public" virt="non-virtual"><scope>trackdata</scope><name>noteBinary</name></member>
+      <member refid="structtrackdata_1ad6d055f069e5dc899f7777a4f95ce001" prot="public" virt="non-virtual"><scope>trackdata</scope><name>trackdata</name></member>
+      <member refid="structtrackdata_1a90e40030d24d72f1c94756fb297dc785" prot="public" virt="non-virtual"><scope>trackdata</scope><name>trackdata</name></member>
+      <member refid="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" prot="public" virt="non-virtual"><scope>trackdata</scope><name>trackTitle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

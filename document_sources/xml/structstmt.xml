@@ -1,0 +1,398 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="structstmt" kind="struct" language="C++" prot="public">
+    <compoundname>stmt</compoundname>
+    <includes refid="dbState_8hpp" local="no">dbState.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structstmt_1ad512ebd1df9861c0bbe6cfd926735ae2" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string stmt::placeHold</definition>
+        <argsstring></argsstring>
+        <name>placeHold</name>
+        <qualifiedname>stmt::placeHold</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbState.hpp" line="30" column="17" bodyfile="include/db/dbState.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structstmt_1a411c1a2d054375b6bd93e937e4dadae5" prot="public" static="no" mutable="no">
+        <type>sqlite3_stmt *</type>
+        <definition>sqlite3_stmt* stmt::S</definition>
+        <argsstring></argsstring>
+        <name>S</name>
+        <qualifiedname>stmt::S</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbState.hpp" line="32" column="18" bodyfile="include/db/dbState.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstmt_1af5701984bdcd46068ff12283cb208379" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int stmt::bind_null</definition>
+        <argsstring>(int idx)</argsstring>
+        <name>bind_null</name>
+        <qualifiedname>stmt::bind_null</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+<para>binds null </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>starts with 1 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int sqlite err msg </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbState.hpp" line="36" column="9" bodyfile="include/db/dbState.cpp" bodystart="16" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int stmt::bind_text</definition>
+        <argsstring>(int idx, SANITIZED_ORNOT &amp;str)</argsstring>
+        <name>bind_text</name>
+        <qualifiedname>stmt::bind_text</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type><ref refid="fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref> &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+<para>binds text </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>starts with 1 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>text to bind </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int sqlite err msg </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbState.hpp" line="44" column="9" bodyfile="include/db/dbState.cpp" bodystart="22" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="structstmt_1a21b8975846c4d970c14ac5dd26091ddf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int stmt::bind_blob</definition>
+        <argsstring>(int idx, BIN &amp;bin)</argsstring>
+        <name>bind_blob</name>
+        <qualifiedname>stmt::bind_blob</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type><ref refid="dbState_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref> &amp;</type>
+          <declname>bin</declname>
+        </param>
+        <briefdescription>
+<para>binds blob </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>starts with 1 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>binary to bind </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int sqlite err msg </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbState.hpp" line="55" column="9" bodyfile="include/db/dbState.cpp" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="structstmt_1af90da95947c5442981422cade7f13802" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int stmt::bind_double</definition>
+        <argsstring>(int idx, double num)</argsstring>
+        <name>bind_double</name>
+        <qualifiedname>stmt::bind_double</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>num</declname>
+        </param>
+        <briefdescription>
+<para>binds double </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>starts with 1 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>double to bind </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int sqlite err msg </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbState.hpp" line="63" column="9" bodyfile="include/db/dbState.cpp" bodystart="34" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="structstmt_1a3955f3b5269cfbc74825a0307b66092a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int stmt::bind_int</definition>
+        <argsstring>(int idx, double num)</argsstring>
+        <name>bind_int</name>
+        <qualifiedname>stmt::bind_int</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>num</declname>
+        </param>
+        <briefdescription>
+<para>binds int </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>starts with 1 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>int to bind </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int sqlite err msg </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbState.hpp" line="71" column="9" bodyfile="include/db/dbState.cpp" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="structstmt_1a60bd7c4f63fb29c6d449cebcb4ff92fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>int</type>
+            <declname>T_COL</declname>
+            <defname>T_COL</defname>
+          </param>
+          <param>
+            <type>typename res</type>
+          </param>
+        </templateparamlist>
+        <type>res</type>
+        <definition>res stmt::colGet</definition>
+        <argsstring>(int idx)</argsstring>
+        <name>colGet</name>
+        <qualifiedname>stmt::colGet</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+<para>get a column </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T_COL</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the column type </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>res</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the result type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>idx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>starts with 1 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>res the column data </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbState.hpp" line="83" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="structstmt_1aa9f4add1e0445a7b42b3c32bf67b079e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool stmt::activate</definition>
+        <argsstring>(sqlite3 *db)</argsstring>
+        <name>activate</name>
+        <qualifiedname>stmt::activate</qualifiedname>
+        <param>
+          <type>sqlite3 *</type>
+          <declname>db</declname>
+        </param>
+        <briefdescription>
+<para>activates the query </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Root database </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbState.hpp" line="92" column="10" bodyfile="include/db/dbState.cpp" bodystart="48" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="structstmt_1adf5d8b39bbe9dfcb9f48e064c83aebdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>stmt::stmt</definition>
+        <argsstring>()</argsstring>
+        <name>stmt</name>
+        <qualifiedname>stmt::stmt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbState.hpp" line="94" column="5" bodyfile="include/db/dbState.cpp" bodystart="4" bodyend="6"/>
+      </memberdef>
+      <memberdef kind="function" id="structstmt_1a51c36286b06350a7b377911c9741749c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>stmt::~stmt</definition>
+        <argsstring>()</argsstring>
+        <name>~stmt</name>
+        <qualifiedname>stmt::~stmt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbState.hpp" line="95" column="5" bodyfile="include/db/dbState.cpp" bodystart="8" bodyend="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the statement wrapper for sqlite. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>stmt</label>
+        <link refid="structstmt"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>placeHold</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/db/dbState.hpp" line="26" column="1" bodyfile="include/db/dbState.hpp" bodystart="27" bodyend="96"/>
+    <listofallmembers>
+      <member refid="structstmt_1aa9f4add1e0445a7b42b3c32bf67b079e" prot="public" virt="non-virtual"><scope>stmt</scope><name>activate</name></member>
+      <member refid="structstmt_1a21b8975846c4d970c14ac5dd26091ddf" prot="public" virt="non-virtual"><scope>stmt</scope><name>bind_blob</name></member>
+      <member refid="structstmt_1af90da95947c5442981422cade7f13802" prot="public" virt="non-virtual"><scope>stmt</scope><name>bind_double</name></member>
+      <member refid="structstmt_1a3955f3b5269cfbc74825a0307b66092a" prot="public" virt="non-virtual"><scope>stmt</scope><name>bind_int</name></member>
+      <member refid="structstmt_1af5701984bdcd46068ff12283cb208379" prot="public" virt="non-virtual"><scope>stmt</scope><name>bind_null</name></member>
+      <member refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" prot="public" virt="non-virtual"><scope>stmt</scope><name>bind_text</name></member>
+      <member refid="structstmt_1a60bd7c4f63fb29c6d449cebcb4ff92fe" prot="public" virt="non-virtual"><scope>stmt</scope><name>colGet</name></member>
+      <member refid="structstmt_1ad512ebd1df9861c0bbe6cfd926735ae2" prot="public" virt="non-virtual"><scope>stmt</scope><name>placeHold</name></member>
+      <member refid="structstmt_1a411c1a2d054375b6bd93e937e4dadae5" prot="public" virt="non-virtual"><scope>stmt</scope><name>S</name></member>
+      <member refid="structstmt_1adf5d8b39bbe9dfcb9f48e064c83aebdf" prot="public" virt="non-virtual"><scope>stmt</scope><name>stmt</name></member>
+      <member refid="structstmt_1a51c36286b06350a7b377911c9741749c" prot="public" virt="non-virtual"><scope>stmt</scope><name>~stmt</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

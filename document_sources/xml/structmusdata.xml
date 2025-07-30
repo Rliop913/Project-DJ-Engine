@@ -1,0 +1,380 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="structmusdata" kind="struct" language="C++" prot="public">
+    <compoundname>musdata</compoundname>
+    <includes refid="musicDB_8hpp" local="no">musicDB.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structmusdata_1a9c537dbc78fd984f5316e3d167633f70" prot="public" static="no" mutable="no">
+        <type><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
+        <definition>SANITIZED musdata::title</definition>
+        <argsstring></argsstring>
+        <name>title</name>
+        <qualifiedname>musdata::title</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/musicDB.hpp" line="16" column="15" bodyfile="include/db/musicDB.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmusdata_1a401e0646fa7f98d230e9af9a6af577de" prot="public" static="no" mutable="no">
+        <type><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
+        <definition>SANITIZED musdata::composer</definition>
+        <argsstring></argsstring>
+        <name>composer</name>
+        <qualifiedname>musdata::composer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/musicDB.hpp" line="17" column="15" bodyfile="include/db/musicDB.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmusdata_1a5fcdc31f2bfb1fe90c038403791a00ae" prot="public" static="no" mutable="no">
+        <type><ref refid="fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref></type>
+        <definition>SANITIZED_ORNOT musdata::musicPath</definition>
+        <argsstring></argsstring>
+        <name>musicPath</name>
+        <qualifiedname>musdata::musicPath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/musicDB.hpp" line="18" column="21" bodyfile="include/db/musicDB.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmusdata_1aaba9b1ecc8a2a58f74a00ec2d9041a28" prot="public" static="no" mutable="no">
+        <type><ref refid="dbState_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
+        <definition>BIN musdata::bpmBinary</definition>
+        <argsstring></argsstring>
+        <name>bpmBinary</name>
+        <qualifiedname>musdata::bpmBinary</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/musicDB.hpp" line="19" column="9" bodyfile="include/db/musicDB.hpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmusdata_1a4739e5c5967894bb4a5d6566b8e2a422" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double musdata::bpm</definition>
+        <argsstring></argsstring>
+        <name>bpm</name>
+        <qualifiedname>musdata::bpm</qualifiedname>
+        <initializer>= -1.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/musicDB.hpp" line="20" column="12" bodyfile="include/db/musicDB.hpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structmusdata_1a93e5867704dfe0d19f3e3c3855aefbf6" prot="public" static="no" mutable="no">
+        <type><ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref></type>
+        <definition>DONT_SANITIZE musdata::firstBar</definition>
+        <argsstring></argsstring>
+        <name>firstBar</name>
+        <qualifiedname>musdata::firstBar</qualifiedname>
+        <briefdescription>
+<para>this means the first beat&apos;s position. The measurement unit is a PCM frame. For higher precision, double value is stored as strings in Cap’n Proto, so the corresponding variable is also a string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/musicDB.hpp" line="23" column="19" bodyfile="include/db/musicDB.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structmusdata_1a5ac662aaa154dffde0bbf676df945c22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>musdata::musdata</definition>
+        <argsstring>(stmt *dbstate)</argsstring>
+        <name>musdata</name>
+        <qualifiedname>musdata::musdata</qualifiedname>
+        <param>
+          <type><ref refid="structstmt" kindref="compound">stmt</ref> *</type>
+          <declname>dbstate</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. typically used for returning search results. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dbstate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the sqlite statement </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/musicDB.hpp" line="29" column="5" bodyfile="include/db/musicDB.cpp" bodystart="22" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="structmusdata_1ac8327833d3447f764c9c9f5b2a3a343f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>musdata::musdata</definition>
+        <argsstring>(const UNSANITIZED &amp;title__=&quot;&quot;, const UNSANITIZED &amp;composer__=&quot;&quot;, const SANITIZED_ORNOT &amp;musicPath__=&quot;&quot;, const double bpm__=-1.0)</argsstring>
+        <name>musdata</name>
+        <qualifiedname>musdata::musdata</qualifiedname>
+        <param>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
+          <declname>title__</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
+          <declname>composer__</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref> &amp;</type>
+          <declname>musicPath__</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>const double</type>
+          <declname>bpm__</declname>
+          <defval>-1.0</defval>
+        </param>
+        <briefdescription>
+<para>Constructor used for filtering music entries. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Use this constructor to specify filtering conditions for a search query. Leave parameters blank (or set to a negative value for bpm) if filtering by that field is not required.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>title__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The title of the music. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>composer__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The composer of the music. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>musicPath__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path to the music file, relative to the root of the database. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bpm__</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classBPM" kindref="compound">BPM</ref> (beats per minute) of the music. Use a negative value to ignore this field. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/musicDB.hpp" line="42" column="5" bodyfile="include/db/musicDB.cpp" bodystart="32" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="structmusdata_1a2b91926d793d176242d6689e2a4386f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool musdata::GenSearchSTMT</definition>
+        <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
+        <name>GenSearchSTMT</name>
+        <qualifiedname>musdata::GenSearchSTMT</qualifiedname>
+        <param>
+          <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
+          <declname>dbstate</declname>
+        </param>
+        <param>
+          <type>sqlite3 *</type>
+          <declname>db</declname>
+        </param>
+        <briefdescription>
+<para>generates the search statement </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dbstate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>statement pointer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Root DB </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/musicDB.hpp" line="56" column="10" bodyfile="include/db/musicDB.cpp" bodystart="55" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="structmusdata_1afdbc23e8fce465938ddbabfa7d8ee5a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool musdata::GenInsertSTMT</definition>
+        <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
+        <name>GenInsertSTMT</name>
+        <qualifiedname>musdata::GenInsertSTMT</qualifiedname>
+        <param>
+          <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
+          <declname>dbstate</declname>
+        </param>
+        <param>
+          <type>sqlite3 *</type>
+          <declname>db</declname>
+        </param>
+        <briefdescription>
+<para>generates the insert statement </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dbstate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>statement pointer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Root DB </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/musicDB.hpp" line="66" column="10" bodyfile="include/db/musicDB.cpp" bodystart="97" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="structmusdata_1ac7794d8c2f193614228937de860541c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool musdata::GenEditSTMT</definition>
+        <argsstring>(stmt &amp;dbstate, sqlite3 *db, musdata &amp;toEdit)</argsstring>
+        <name>GenEditSTMT</name>
+        <qualifiedname>musdata::GenEditSTMT</qualifiedname>
+        <param>
+          <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
+          <declname>dbstate</declname>
+        </param>
+        <param>
+          <type>sqlite3 *</type>
+          <declname>db</declname>
+        </param>
+        <param>
+          <type><ref refid="structmusdata" kindref="compound">musdata</ref> &amp;</type>
+          <declname>toEdit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/musicDB.hpp" line="68" column="10" bodyfile="include/db/musicDB.cpp" bodystart="121" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="structmusdata_1a150c5d78d901fe9cd851b57ab375c11e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool musdata::GenDeleteSTMT</definition>
+        <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
+        <name>GenDeleteSTMT</name>
+        <qualifiedname>musdata::GenDeleteSTMT</qualifiedname>
+        <param>
+          <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
+          <declname>dbstate</declname>
+        </param>
+        <param>
+          <type>sqlite3 *</type>
+          <declname>db</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/musicDB.hpp" line="70" column="10" bodyfile="include/db/musicDB.cpp" bodystart="148" bodyend="163"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the music meta data&apos;s struct </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>musdata</label>
+        <link refid="structmusdata"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>composer</edgelabel>
+          <edgelabel>firstBar</edgelabel>
+          <edgelabel>musicPath</edgelabel>
+          <edgelabel>title</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>bpmBinary</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::vector&lt; u_int8_t &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/db/musicDB.hpp" line="14" column="1" bodyfile="include/db/musicDB.hpp" bodystart="14" bodyend="72"/>
+    <listofallmembers>
+      <member refid="structmusdata_1a4739e5c5967894bb4a5d6566b8e2a422" prot="public" virt="non-virtual"><scope>musdata</scope><name>bpm</name></member>
+      <member refid="structmusdata_1aaba9b1ecc8a2a58f74a00ec2d9041a28" prot="public" virt="non-virtual"><scope>musdata</scope><name>bpmBinary</name></member>
+      <member refid="structmusdata_1a401e0646fa7f98d230e9af9a6af577de" prot="public" virt="non-virtual"><scope>musdata</scope><name>composer</name></member>
+      <member refid="structmusdata_1a93e5867704dfe0d19f3e3c3855aefbf6" prot="public" virt="non-virtual"><scope>musdata</scope><name>firstBar</name></member>
+      <member refid="structmusdata_1a150c5d78d901fe9cd851b57ab375c11e" prot="public" virt="non-virtual"><scope>musdata</scope><name>GenDeleteSTMT</name></member>
+      <member refid="structmusdata_1ac7794d8c2f193614228937de860541c9" prot="public" virt="non-virtual"><scope>musdata</scope><name>GenEditSTMT</name></member>
+      <member refid="structmusdata_1afdbc23e8fce465938ddbabfa7d8ee5a3" prot="public" virt="non-virtual"><scope>musdata</scope><name>GenInsertSTMT</name></member>
+      <member refid="structmusdata_1a2b91926d793d176242d6689e2a4386f3" prot="public" virt="non-virtual"><scope>musdata</scope><name>GenSearchSTMT</name></member>
+      <member refid="structmusdata_1a5ac662aaa154dffde0bbf676df945c22" prot="public" virt="non-virtual"><scope>musdata</scope><name>musdata</name></member>
+      <member refid="structmusdata_1ac8327833d3447f764c9c9f5b2a3a343f" prot="public" virt="non-virtual"><scope>musdata</scope><name>musdata</name></member>
+      <member refid="structmusdata_1a5fcdc31f2bfb1fe90c038403791a00ae" prot="public" virt="non-virtual"><scope>musdata</scope><name>musicPath</name></member>
+      <member refid="structmusdata_1a9c537dbc78fd984f5316e3d167633f70" prot="public" virt="non-virtual"><scope>musdata</scope><name>title</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

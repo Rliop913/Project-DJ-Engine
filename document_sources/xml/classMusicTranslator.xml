@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classMusicTranslator" kind="class" language="C++" prot="public">
+    <compoundname>MusicTranslator</compoundname>
+    <includes refid="MusicTranslator_8hpp" local="no">MusicTranslator.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classMusicTranslator_1a7e172da1c6f719f934d2d4f033294862" prot="public" static="no" mutable="no">
+        <type><ref refid="structBpmStruct" kindref="compound">BpmStruct</ref></type>
+        <definition>BpmStruct MusicTranslator::bpms</definition>
+        <argsstring></argsstring>
+        <name>bpms</name>
+        <qualifiedname>MusicTranslator::bpms</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp" line="22" column="15" bodyfile="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMusicTranslator_1ad7b2aaf459ad2ea5435fc99256b00e7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MusicTranslator::Read</definition>
+        <argsstring>(const CapReader&lt; MusicBinaryCapnpData &gt; &amp;binary, unsigned long long startFrame)</argsstring>
+        <name>Read</name>
+        <qualifiedname>MusicTranslator::Read</qualifiedname>
+        <param>
+          <type>const <ref refid="classCapReader" kindref="compound">CapReader</ref>&lt; MusicBinaryCapnpData &gt; &amp;</type>
+          <declname>binary</declname>
+        </param>
+        <param>
+          <type>unsigned long long</type>
+          <declname>startFrame</declname>
+        </param>
+        <briefdescription>
+<para>reads capnp music binary data and fills <ref refid="structBpmStruct" kindref="compound">BpmStruct</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>binary</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>capnp binary data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>startFrame</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the start beat&apos;s frame position. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp" line="31" column="10" bodyfile="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.cpp" bodystart="5" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classMusicTranslator_1acc12082c24de6d41efafacfd2e9d5437" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MusicTranslator::MusicTranslator</definition>
+        <argsstring>()=default</argsstring>
+        <name>MusicTranslator</name>
+        <qualifiedname>MusicTranslator::MusicTranslator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp" line="33" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classMusicTranslator_1a207ff4ccb2027e6a145f561d3842098e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MusicTranslator::~MusicTranslator</definition>
+        <argsstring>()=default</argsstring>
+        <name>~MusicTranslator</name>
+        <qualifiedname>MusicTranslator::~MusicTranslator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp" line="34" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>This Translate capnp data into cpp data sturct. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><dot>
+digraph MusicTranslator{
+     MusicTranslator -&gt; BpmStruct
+}
+</dot>
+ </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>BpmFragment</label>
+        <link refid="structBpmFragment"/>
+      </node>
+      <node id="2">
+        <label>BpmStruct</label>
+        <link refid="structBpmStruct"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>fragments</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>MusicTranslator</label>
+        <link refid="classMusicTranslator"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>bpms</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::vector&lt; BpmFragment &gt;</label>
+        <childnode refid="4" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp" line="20" column="1" bodyfile="include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp" bodystart="20" bodyend="35"/>
+    <listofallmembers>
+      <member refid="classMusicTranslator_1a7e172da1c6f719f934d2d4f033294862" prot="public" virt="non-virtual"><scope>MusicTranslator</scope><name>bpms</name></member>
+      <member refid="classMusicTranslator_1acc12082c24de6d41efafacfd2e9d5437" prot="public" virt="non-virtual"><scope>MusicTranslator</scope><name>MusicTranslator</name></member>
+      <member refid="classMusicTranslator_1ad7b2aaf459ad2ea5435fc99256b00e7a" prot="public" virt="non-virtual"><scope>MusicTranslator</scope><name>Read</name></member>
+      <member refid="classMusicTranslator_1a207ff4ccb2027e6a145f561d3842098e" prot="public" virt="non-virtual"><scope>MusicTranslator</scope><name>~MusicTranslator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

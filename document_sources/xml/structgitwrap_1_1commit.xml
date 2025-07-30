@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="structgitwrap_1_1commit" kind="struct" language="C++" prot="public">
+    <compoundname>gitwrap::commit</compoundname>
+    <includes refid="editorCommit_8hpp" local="no">editorCommit.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structgitwrap_1_1commit_1aed795b54d06cb41d5293e800ab7c06df" prot="public" static="no" mutable="no">
+        <type>git_commit *</type>
+        <definition>git_commit* gitwrap::commit::commitPointer</definition>
+        <argsstring></argsstring>
+        <name>commitPointer</name>
+        <qualifiedname>gitwrap::commit::commitPointer</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>pointer to libgit2 commit object </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" line="21" column="20" bodyfile="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structgitwrap_1_1commit_1a99f52037b3c4cc106d57ba5afb9a9084" prot="public" static="no" mutable="no">
+        <type>git_oid</type>
+        <definition>git_oid gitwrap::commit::commitID</definition>
+        <argsstring></argsstring>
+        <name>commitID</name>
+        <qualifiedname>gitwrap::commit::commitID</qualifiedname>
+        <briefdescription>
+<para>commit identifier </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" line="22" column="17" bodyfile="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structgitwrap_1_1commit_1ac0ad6b68f27f3a5accf8ad092c7dc3be" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string gitwrap::commit::msg</definition>
+        <argsstring></argsstring>
+        <name>msg</name>
+        <qualifiedname>gitwrap::commit::msg</qualifiedname>
+        <briefdescription>
+<para>commit message </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" line="23" column="21" bodyfile="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structgitwrap_1_1commit_1af3a2baf4c738eee329a5cd04df8da7cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gitwrap::commit::commit</definition>
+        <argsstring>()=default</argsstring>
+        <name>commit</name>
+        <qualifiedname>gitwrap::commit::commit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" line="24" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="structgitwrap_1_1commit_1a4a9e188a9a9034c0cac875043a3d95ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>commit::commit</definition>
+        <argsstring>(git_oid commitID, git_repository *rep)</argsstring>
+        <name>commit</name>
+        <qualifiedname>gitwrap::commit::commit</qualifiedname>
+        <param>
+          <type>git_oid</type>
+          <declname>commitID</declname>
+        </param>
+        <param>
+          <type>git_repository *</type>
+          <declname>rep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" line="25" column="9" bodyfile="include/editor/featureWrapper/GitWrap/Commit/editorCommit.cpp" bodystart="63" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="structgitwrap_1_1commit_1ad662cdb2a28929b7d089efd48d1bfb92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>commit::commit</definition>
+        <argsstring>(const std::string commitMSG, git_repository *rep)</argsstring>
+        <name>commit</name>
+        <qualifiedname>gitwrap::commit::commit</qualifiedname>
+        <param>
+          <type>const std::string</type>
+          <declname>commitMSG</declname>
+        </param>
+        <param>
+          <type>git_repository *</type>
+          <declname>rep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" line="26" column="9" bodyfile="include/editor/featureWrapper/GitWrap/Commit/editorCommit.cpp" bodystart="77" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="structgitwrap_1_1commit_1aac48133e3a2c89d5e5dac1423fdff473" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>gitwrap::commit::~commit</definition>
+        <argsstring>()</argsstring>
+        <name>~commit</name>
+        <qualifiedname>gitwrap::commit::~commit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" line="27" column="9" bodyfile="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" bodystart="27" bodyend="31"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a Git commit. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>gitwrap::commit</label>
+        <link refid="structgitwrap_1_1commit"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>msg</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" line="20" column="5" bodyfile="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" bodystart="20" bodyend="32"/>
+    <listofallmembers>
+      <member refid="structgitwrap_1_1commit_1af3a2baf4c738eee329a5cd04df8da7cb" prot="public" virt="non-virtual"><scope>gitwrap::commit</scope><name>commit</name></member>
+      <member refid="structgitwrap_1_1commit_1a4a9e188a9a9034c0cac875043a3d95ed" prot="public" virt="non-virtual"><scope>gitwrap::commit</scope><name>commit</name></member>
+      <member refid="structgitwrap_1_1commit_1ad662cdb2a28929b7d089efd48d1bfb92" prot="public" virt="non-virtual"><scope>gitwrap::commit</scope><name>commit</name></member>
+      <member refid="structgitwrap_1_1commit_1a99f52037b3c4cc106d57ba5afb9a9084" prot="public" virt="non-virtual"><scope>gitwrap::commit</scope><name>commitID</name></member>
+      <member refid="structgitwrap_1_1commit_1aed795b54d06cb41d5293e800ab7c06df" prot="public" virt="non-virtual"><scope>gitwrap::commit</scope><name>commitPointer</name></member>
+      <member refid="structgitwrap_1_1commit_1ac0ad6b68f27f3a5accf8ad092c7dc3be" prot="public" virt="non-virtual"><scope>gitwrap::commit</scope><name>msg</name></member>
+      <member refid="structgitwrap_1_1commit_1aac48133e3a2c89d5e5dac1423fdff473" prot="public" virt="non-virtual"><scope>gitwrap::commit</scope><name>~commit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

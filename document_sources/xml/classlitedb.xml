@@ -1,0 +1,535 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classlitedb" kind="class" language="C++" prot="public">
+    <compoundname>litedb</compoundname>
+    <includes refid="dbRoot_8hpp" local="no">dbRoot.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classlitedb_1a3fa0b6c88df33c15dd495450a6a9023c" prot="private" static="no" mutable="no">
+        <type>fs::path</type>
+        <definition>fs::path litedb::ROOT_PATH</definition>
+        <argsstring></argsstring>
+        <name>ROOT_PATH</name>
+        <qualifiedname>litedb::ROOT_PATH</qualifiedname>
+        <briefdescription>
+<para>the path to the database </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="38" column="14" bodyfile="include/db/dbRoot.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlitedb_1a480767651327a324c425de58a999bd13" prot="private" static="no" mutable="no">
+        <type>fs::path</type>
+        <definition>fs::path litedb::sqldbPath</definition>
+        <argsstring></argsstring>
+        <name>sqldbPath</name>
+        <qualifiedname>litedb::sqldbPath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="39" column="14" bodyfile="include/db/dbRoot.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlitedb_1a690e69d7f293b7ecbfc2d32be3cbca19" prot="private" static="no" mutable="no">
+        <type>fs::path</type>
+        <definition>fs::path litedb::kvdbPath</definition>
+        <argsstring></argsstring>
+        <name>kvdbPath</name>
+        <qualifiedname>litedb::kvdbPath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="40" column="14" bodyfile="include/db/dbRoot.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlitedb_1a6e6152c6612760ef978a5d505323519a" prot="private" static="no" mutable="no">
+        <type>fs::path</type>
+        <definition>fs::path litedb::vectordbPath</definition>
+        <argsstring></argsstring>
+        <name>vectordbPath</name>
+        <qualifiedname>litedb::vectordbPath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="41" column="14" bodyfile="include/db/dbRoot.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" prot="private" static="no" mutable="no">
+        <type>sqlite3 *</type>
+        <definition>sqlite3* litedb::sdb</definition>
+        <argsstring></argsstring>
+        <name>sdb</name>
+        <qualifiedname>litedb::sdb</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>sqlite pointer </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="43" column="13" bodyfile="include/db/dbRoot.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlitedb_1a5d6de7dee58fadfa03b125be11ac7696" prot="private" static="no" mutable="no">
+        <type>RDB::DB *</type>
+        <definition>RDB::DB* litedb::kvdb</definition>
+        <argsstring></argsstring>
+        <name>kvdb</name>
+        <qualifiedname>litedb::kvdb</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="44" column="13" bodyfile="include/db/dbRoot.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlitedb_1ab91ee89041471eaa2bc56988bedb7c10" prot="private" static="no" mutable="no">
+        <type>RDB::WriteOptions</type>
+        <definition>RDB::WriteOptions litedb::wops</definition>
+        <argsstring></argsstring>
+        <name>wops</name>
+        <qualifiedname>litedb::wops</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="45" column="23" bodyfile="include/db/dbRoot.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classlitedb_1a4d3a774674b1bd24f1269791ae8be880" prot="private" static="no" mutable="no">
+        <type>RDB::ReadOptions</type>
+        <definition>RDB::ReadOptions litedb::rops</definition>
+        <argsstring></argsstring>
+        <name>rops</name>
+        <qualifiedname>litedb::rops</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="46" column="22" bodyfile="include/db/dbRoot.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classlitedb_1ac516f0ac3215ae1f81a733037ae1cd67" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool litedb::CheckTables</definition>
+        <argsstring>()</argsstring>
+        <name>CheckTables</name>
+        <qualifiedname>litedb::CheckTables</qualifiedname>
+        <briefdescription>
+<para>checkes tables. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>OK / Not OK </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="50" column="10" bodyfile="include/db/dbRoot.cpp" bodystart="70" bodyend="123"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classlitedb_1ad34e34703f0871c6f7ac4eb1c3242a1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename DBType</type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; std::vector&lt; DBType &gt; &gt;</type>
+        <definition>std::optional&lt; std::vector&lt; DBType &gt; &gt; litedb::operator&lt;&lt;</definition>
+        <argsstring>(DBType &amp;searchClue)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <qualifiedname>litedb::operator&lt;&lt;</qualifiedname>
+        <param>
+          <type>DBType &amp;</type>
+          <declname>searchClue</declname>
+        </param>
+        <briefdescription>
+<para>the search query </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>DBType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>music or track data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>searchClue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the filters </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::optional&lt;std::vector&lt;DBType&gt;&gt; the result. check before use. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="50" column="10" bodyfile="include/db/dbRoot.hpp" bodystart="151" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1ad2789c301c55befe5e85284f272bb46d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename DBType</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool litedb::operator&lt;=</definition>
+        <argsstring>(DBType &amp;insertObject)</argsstring>
+        <name>operator&lt;=</name>
+        <qualifiedname>litedb::operator&lt;=</qualifiedname>
+        <param>
+          <type>DBType &amp;</type>
+          <declname>insertObject</declname>
+        </param>
+        <briefdescription>
+<para>the insert query </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>DBType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>music or track data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>insertObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="72" column="5" bodyfile="include/db/dbRoot.hpp" bodystart="168" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1aa3cd2c54c27a2d3d1a7d87a8607e6495" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename DBType</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool litedb::DeleteData</definition>
+        <argsstring>(DBType &amp;deleteObject)</argsstring>
+        <name>DeleteData</name>
+        <qualifiedname>litedb::DeleteData</qualifiedname>
+        <param>
+          <type>DBType &amp;</type>
+          <declname>deleteObject</declname>
+        </param>
+        <briefdescription>
+<para>Deletes data from the database. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>DBType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of database object (music or track data). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>deleteObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object to delete. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the data was deleted successfully, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="84" column="5" bodyfile="include/db/dbRoot.hpp" bodystart="189" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1a275cceb420462fbf3befb82bde3c3848" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename DBType</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool litedb::EditData</definition>
+        <argsstring>(DBType &amp;searchObject, DBType &amp;editObject)</argsstring>
+        <name>EditData</name>
+        <qualifiedname>litedb::EditData</qualifiedname>
+        <param>
+          <type>DBType &amp;</type>
+          <declname>searchObject</declname>
+        </param>
+        <param>
+          <type>DBType &amp;</type>
+          <declname>editObject</declname>
+        </param>
+        <briefdescription>
+<para>Edits data in the database. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>DBType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of database object (music or track data). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>searchObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object to search for. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>editObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The object with updated data. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the data was edited successfully, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="96" column="5" bodyfile="include/db/dbRoot.hpp" bodystart="204" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1a56ada182651e23ea48df4c1f1c951117" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool litedb::KVGet</definition>
+        <argsstring>(const SANITIZED &amp;K, DONT_SANITIZE &amp;V)</argsstring>
+        <name>KVGet</name>
+        <qualifiedname>litedb::KVGet</qualifiedname>
+        <param>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
+          <declname>K</declname>
+        </param>
+        <param>
+          <type><ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <briefdescription>
+<para>Retrieves a value from the key-value store. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>K</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key to retrieve. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>V</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The output parameter for the retrieved value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the key was found and value retrieved, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="106" column="5" bodyfile="include/db/dbRoot.cpp" bodystart="128" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1a9a63c34e488edf8f417df3328274f02e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool litedb::KVPut</definition>
+        <argsstring>(const SANITIZED &amp;K, const DONT_SANITIZE &amp;V)</argsstring>
+        <name>KVPut</name>
+        <qualifiedname>litedb::KVPut</qualifiedname>
+        <param>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
+          <declname>K</declname>
+        </param>
+        <param>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>V</declname>
+        </param>
+        <briefdescription>
+<para>Puts a key-value pair into the key-value store. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>K</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key to insert or update. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>V</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to associate with the key. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the operation was successful, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="116" column="5" bodyfile="include/db/dbRoot.cpp" bodystart="147" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1af5ef2daaba8dcdea92b28576e4d07178" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool litedb::openDB</definition>
+        <argsstring>(const fs::path &amp;dbPath)</argsstring>
+        <name>openDB</name>
+        <qualifiedname>litedb::openDB</qualifiedname>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>dbPath</declname>
+        </param>
+        <briefdescription>
+<para>opens the Root Database and initialize. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dbPath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>path to Root Database </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="125" column="10" bodyfile="include/db/dbRoot.cpp" bodystart="8" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1ad20271212217420ecfcd8c1552f87bb9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const fs::path</type>
+        <definition>const fs::path litedb::getRoot</definition>
+        <argsstring>()</argsstring>
+        <name>getRoot</name>
+        <qualifiedname>litedb::getRoot</qualifiedname>
+        <briefdescription>
+<para>Get path to Root database. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>const std::string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="133" column="5" bodyfile="include/db/dbRoot.hpp" bodystart="133" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1a9f3b4346801213c5cb95d7c86921a1c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>litedb::litedb</definition>
+        <argsstring>()</argsstring>
+        <name>litedb</name>
+        <qualifiedname>litedb::litedb</qualifiedname>
+        <briefdescription>
+<para>Constructs a new litedb object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="141" column="5" bodyfile="include/db/dbRoot.cpp" bodystart="5" bodyend="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classlitedb_1a81aed319e301d84ed8dde7bbe0e86c07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>litedb::~litedb</definition>
+        <argsstring>()</argsstring>
+        <name>~litedb</name>
+        <qualifiedname>litedb::~litedb</qualifiedname>
+        <briefdescription>
+<para>Destroys the litedb object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="146" column="5" bodyfile="include/db/dbRoot.cpp" bodystart="59" bodyend="67"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>the Root database Object </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/db/dbRoot.hpp" line="35" column="1" bodyfile="include/db/dbRoot.hpp" bodystart="35" bodyend="147"/>
+    <listofallmembers>
+      <member refid="classlitedb_1ac516f0ac3215ae1f81a733037ae1cd67" prot="private" virt="non-virtual"><scope>litedb</scope><name>CheckTables</name></member>
+      <member refid="classlitedb_1aa3cd2c54c27a2d3d1a7d87a8607e6495" prot="public" virt="non-virtual"><scope>litedb</scope><name>DeleteData</name></member>
+      <member refid="classlitedb_1a275cceb420462fbf3befb82bde3c3848" prot="public" virt="non-virtual"><scope>litedb</scope><name>EditData</name></member>
+      <member refid="classlitedb_1ad20271212217420ecfcd8c1552f87bb9" prot="public" virt="non-virtual"><scope>litedb</scope><name>getRoot</name></member>
+      <member refid="classlitedb_1a5d6de7dee58fadfa03b125be11ac7696" prot="private" virt="non-virtual"><scope>litedb</scope><name>kvdb</name></member>
+      <member refid="classlitedb_1a690e69d7f293b7ecbfc2d32be3cbca19" prot="private" virt="non-virtual"><scope>litedb</scope><name>kvdbPath</name></member>
+      <member refid="classlitedb_1a56ada182651e23ea48df4c1f1c951117" prot="public" virt="non-virtual"><scope>litedb</scope><name>KVGet</name></member>
+      <member refid="classlitedb_1a9a63c34e488edf8f417df3328274f02e" prot="public" virt="non-virtual"><scope>litedb</scope><name>KVPut</name></member>
+      <member refid="classlitedb_1a9f3b4346801213c5cb95d7c86921a1c3" prot="public" virt="non-virtual"><scope>litedb</scope><name>litedb</name></member>
+      <member refid="classlitedb_1af5ef2daaba8dcdea92b28576e4d07178" prot="public" virt="non-virtual"><scope>litedb</scope><name>openDB</name></member>
+      <member refid="classlitedb_1ad34e34703f0871c6f7ac4eb1c3242a1b" prot="public" virt="non-virtual"><scope>litedb</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classlitedb_1ad2789c301c55befe5e85284f272bb46d" prot="public" virt="non-virtual"><scope>litedb</scope><name>operator&lt;=</name></member>
+      <member refid="classlitedb_1a3fa0b6c88df33c15dd495450a6a9023c" prot="private" virt="non-virtual"><scope>litedb</scope><name>ROOT_PATH</name></member>
+      <member refid="classlitedb_1a4d3a774674b1bd24f1269791ae8be880" prot="private" virt="non-virtual"><scope>litedb</scope><name>rops</name></member>
+      <member refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" prot="private" virt="non-virtual"><scope>litedb</scope><name>sdb</name></member>
+      <member refid="classlitedb_1a480767651327a324c425de58a999bd13" prot="private" virt="non-virtual"><scope>litedb</scope><name>sqldbPath</name></member>
+      <member refid="classlitedb_1a6e6152c6612760ef978a5d505323519a" prot="private" virt="non-virtual"><scope>litedb</scope><name>vectordbPath</name></member>
+      <member refid="classlitedb_1ab91ee89041471eaa2bc56988bedb7c10" prot="private" virt="non-virtual"><scope>litedb</scope><name>wops</name></member>
+      <member refid="classlitedb_1a81aed319e301d84ed8dde7bbe0e86c07" prot="public" virt="non-virtual"><scope>litedb</scope><name>~litedb</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

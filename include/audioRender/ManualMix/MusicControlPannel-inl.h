@@ -1,4 +1,8 @@
 
+/**
+ * @file MusicControlPannel-inl.h
+ * @brief SIMD-optimized implementation for mixing PCM frames from multiple sources.
+ */
 #include "MusicControlPannel.hpp"
 
 #undef HWY_TARGET_INCLUDE
@@ -8,6 +12,22 @@
 
 namespace HWY_NAMESPACE {
 
+/**
+ * @brief Retrieves and mixes PCM frames from active audio decks using SIMD instructions.
+ *
+ * This function reads audio data from each active deck, applies any configured Faust effects,
+ * and mixes the resulting audio into a single output buffer. The mixing process is accelerated
+ * using the Highway SIMD library.
+ *
+ * @param[out] tempFrames A buffer to temporarily store raw PCM frames from a decoder.
+ * @param[out] L A buffer to store the left channel audio data for Faust processing.
+ * @param[out] R A buffer to store the right channel audio data for Faust processing.
+ * @param[in,out] FaustStyle A pointer array to the left and right channel buffers (`L` and `R`).
+ * @param[in] deck A map of loaded music decks to be processed.
+ * @param[in,out] array The output buffer where the final mixed PCM frames will be stored.
+ * @param[in] FrameSize The number of PCM frames to process.
+ * @return `true` if the frames were processed and mixed successfully, `false` otherwise.
+ */
 HWY_ATTR
 bool
 GetPCMFramesSIMD(

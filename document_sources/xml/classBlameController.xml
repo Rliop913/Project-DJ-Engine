@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classBlameController" kind="class" language="C++" prot="public">
+    <compoundname>BlameController</compoundname>
+    <includes refid="BlameController_8hpp" local="no">BlameController.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classBlameController_1aa220950500866fcfa710e8dca444a751" prot="private" static="no" mutable="no">
+        <type>git_blame *</type>
+        <definition>git_blame* BlameController::blame</definition>
+        <argsstring></argsstring>
+        <name>blame</name>
+        <qualifiedname>BlameController::blame</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp" line="32" column="19" bodyfile="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBlameController_1a45028fe059ce4f0d1fd9e3d422e1d589" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int BlameController::blameAmount</definition>
+        <argsstring></argsstring>
+        <name>blameAmount</name>
+        <qualifiedname>BlameController::blameAmount</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp" line="33" column="22" bodyfile="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBlameController_1a9fba1a1e04cfd4b840142fd60a405b7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BlameController::BlameController</definition>
+        <argsstring>()=default</argsstring>
+        <name>BlameController</name>
+        <qualifiedname>BlameController::BlameController</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp" line="35" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classBlameController_1a10d00a9a218af4e2a8f570c49c590ad0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BlameController::BlameOpen</definition>
+        <argsstring>(git_repository *repo, const fs::path &amp;path, git_blame_options *options=nullptr)</argsstring>
+        <name>BlameOpen</name>
+        <qualifiedname>BlameController::BlameOpen</qualifiedname>
+        <param>
+          <type>git_repository *</type>
+          <declname>repo</declname>
+        </param>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>git_blame_options *</type>
+          <declname>options</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Open a blame object for the given file. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp" line="40" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Blame/BlameController.cpp" bodystart="6" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBlameController_1a056b997579895c483c7425fe1952cd67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="BlameController_8hpp_1af7f0dbdf8c9026039110dc2a505efee1" kindref="member">MAYBE_BLAME_RESULT</ref></type>
+        <definition>MAYBE_BLAME_RESULT BlameController::operator[]</definition>
+        <argsstring>(unsigned int idx)</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>BlameController::operator[]</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve blame information by index. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp" line="46" column="28" bodyfile="include/editor/featureWrapper/GitWrap/Blame/BlameController.cpp" bodystart="30" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classBlameController_1a06d7b59a3d9db2abe57b32ea8e8446cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BlameController::~BlameController</definition>
+        <argsstring>()</argsstring>
+        <name>~BlameController</name>
+        <qualifiedname>BlameController::~BlameController</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp" line="47" column="9" bodyfile="include/editor/featureWrapper/GitWrap/Blame/BlameController.cpp" bodystart="54" bodyend="59"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Wrapper for libgit2 blame API. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp" line="30" column="1" bodyfile="include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp" bodystart="30" bodyend="48"/>
+    <listofallmembers>
+      <member refid="classBlameController_1aa220950500866fcfa710e8dca444a751" prot="private" virt="non-virtual"><scope>BlameController</scope><name>blame</name></member>
+      <member refid="classBlameController_1a45028fe059ce4f0d1fd9e3d422e1d589" prot="private" virt="non-virtual"><scope>BlameController</scope><name>blameAmount</name></member>
+      <member refid="classBlameController_1a9fba1a1e04cfd4b840142fd60a405b7d" prot="public" virt="non-virtual"><scope>BlameController</scope><name>BlameController</name></member>
+      <member refid="classBlameController_1a10d00a9a218af4e2a8f570c49c590ad0" prot="public" virt="non-virtual"><scope>BlameController</scope><name>BlameOpen</name></member>
+      <member refid="classBlameController_1a056b997579895c483c7425fe1952cd67" prot="public" virt="non-virtual"><scope>BlameController</scope><name>operator[]</name></member>
+      <member refid="classBlameController_1a06d7b59a3d9db2abe57b32ea8e8446cf" prot="public" virt="non-virtual"><scope>BlameController</scope><name>~BlameController</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

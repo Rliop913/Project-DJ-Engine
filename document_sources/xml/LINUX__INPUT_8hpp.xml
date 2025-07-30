@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="LINUX__INPUT_8hpp" kind="file" language="C++">
+    <compoundname>LINUX_INPUT.hpp</compoundname>
+    <includes refid="PDJE__INPUT_8hpp" local="yes">PDJE_INPUT.hpp</includes>
+    <includes local="no">libevdev-1.0/libevdev/libevdev.h</includes>
+    <includedby refid="LINUX__I_8cpp" local="yes">include/input/linux/LINUX_I.cpp</includedby>
+    <includedby refid="LINUX__SUDO__GETTER_8cpp" local="yes">include/input/linux/LINUX_SUDO_GETTER.cpp</includedby>
+    <includedby refid="evdevtest_8cpp" local="yes">include/tests/INPUT_TESTS/evdevtest.cpp</includedby>
+    <includedby refid="linux__I__WAITER_8cpp" local="yes">include/tests/INPUT_TESTS/linux_I_WAITER.cpp</includedby>
+    <includedby refid="linux__I__WAKER_8cpp" local="yes">include/tests/INPUT_TESTS/linux_I_WAKER.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>PDJE_INPUT.hpp</label>
+        <link refid="PDJE__INPUT_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/input/linux/LINUX_INPUT.hpp</label>
+        <link refid="LINUX__INPUT_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>libevdev-1.0/libevdev/libevdev.h</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/input/linux/LINUX_I.cpp</label>
+        <link refid="LINUX__I_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/input/linux/LINUX_INPUT.hpp</label>
+        <link refid="LINUX__INPUT_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/input/linux/LINUX_SUDO_GETTER.cpp</label>
+        <link refid="LINUX__SUDO__GETTER_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/tests/INPUT_TESTS/evdevtest.cpp</label>
+        <link refid="evdevtest_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/tests/INPUT_TESTS/linux_I_WAITER.cpp</label>
+        <link refid="linux__I__WAITER_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/tests/INPUT_TESTS/linux_I_WAKER.cpp</label>
+        <link refid="linux__I__WAKER_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classLinuxEVDEV" prot="public">LinuxEVDEV</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__INPUT_8hpp" kindref="compound">PDJE_INPUT.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;libevdev-1.0/libevdev/libevdev.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classLinuxEVDEV" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classLinuxEVDEV" kindref="compound">LinuxEVDEV</ref>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="14" refid="classLinuxEVDEV_1a03a86d2bbc4e7ee57f8d3e30a192c341" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLinuxEVDEV_1a03a86d2bbc4e7ee57f8d3e30a192c341" kindref="member">getList</ref>();</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classLinuxEVDEV_1a4f3b4d9a3c35df059dc1d5a2ea6d8240" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLinuxEVDEV_1a4f3b4d9a3c35df059dc1d5a2ea6d8240" kindref="member">init</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="include/input/linux/LINUX_INPUT.hpp"/>
+  </compounddef>
+</doxygen>

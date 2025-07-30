@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classFaustObject" kind="class" language="C++" prot="public">
+    <compoundname>FaustObject</compoundname>
+    <includes refid="EFFECTS_8hpp" local="no">EFFECTS.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename FaustClass</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classFaustObject_1a11b55545d1825f6ce5559bd5133c3c7c" prot="public" static="no" mutable="no">
+        <type>FaustClass</type>
+        <definition>FaustClass FaustObject&lt; FaustClass &gt;::managingClass</definition>
+        <argsstring></argsstring>
+        <name>managingClass</name>
+        <qualifiedname>FaustObject::managingClass</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/EFFECT/EFFECTS.hpp" line="93" column="16" bodyfile="include/audioRender/MixMachine/EFFECT/EFFECTS.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classFaustObject_1a22c6f81bb784e98ac2bedbd639850afe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FClass</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void FaustObject&lt; FaustClass &gt;::consume</definition>
+        <argsstring>(std::vector&lt; FaustDType&lt; FClass &gt; &gt; &amp;jobs)</argsstring>
+        <name>consume</name>
+        <qualifiedname>FaustObject::consume</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="classFaustDType" kindref="compound">FaustDType</ref>&lt; FClass &gt; &gt; &amp;</type>
+          <declname>jobs</declname>
+        </param>
+        <briefdescription>
+<para>Consumes and processes all FX jobs using the provided base class. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>FClass</parametername>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>base class </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>jobs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the FX jobs </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/EFFECT/EFFECTS.hpp" line="102" column="10" bodyfile="include/audioRender/MixMachine/EFFECT/EFFECTS.hpp" bodystart="102" bodyend="111"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A class that defines the behavior of an FX. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>FaustClass</parametername>
+<parametername>the</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>base class </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="include/audioRender/MixMachine/EFFECT/EFFECTS.hpp" line="90" column="1" bodyfile="include/audioRender/MixMachine/EFFECT/EFFECTS.hpp" bodystart="90" bodyend="112"/>
+    <listofallmembers>
+      <member refid="classFaustObject_1a22c6f81bb784e98ac2bedbd639850afe" prot="public" virt="non-virtual"><scope>FaustObject</scope><name>consume</name></member>
+      <member refid="classFaustObject_1a11b55545d1825f6ce5559bd5133c3c7c" prot="public" virt="non-virtual"><scope>FaustObject</scope><name>managingClass</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

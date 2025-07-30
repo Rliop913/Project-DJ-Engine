@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="85" column="19" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="85" bodyend="-1"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="97" column="19" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="97" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-attrib">
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="87" column="17" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="87" bodyend="-1"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="99" column="17" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPDJE__GitHandler_1afca3dc1b7559cebe370a5376f53d780a" prot="public" static="no" mutable="no">
         <type><ref refid="classGitWrapper" kindref="compound">GitWrapper</ref></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="88" column="16" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="88" bodyend="-1"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="100" column="16" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="91" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="72" bodyend="97"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="103" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="72" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1a5b61f3181d549700a51b3626487d76d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -81,12 +81,16 @@
         <name>Undo</name>
         <qualifiedname>PDJE_GitHandler::Undo</qualifiedname>
         <briefdescription>
+<para>Undoes the last commit. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the undo was successful, <computeroutput>false</computeroutput> otherwise. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="92" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="100" bodyend="136"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="109" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="100" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1a57ebdca70061f87ec7514cb475892eba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -95,12 +99,16 @@
         <name>Redo</name>
         <qualifiedname>PDJE_GitHandler::Redo</qualifiedname>
         <briefdescription>
+<para>Redoes the last undone commit. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the redo was successful, <computeroutput>false</computeroutput> otherwise. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="93" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="139" bodyend="173"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="115" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="139" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1a57628c3fd9705301a5e209399a57e7d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -117,12 +125,33 @@
           <declname>commitID</declname>
         </param>
         <briefdescription>
+<para>Checks out a specific branch or commit. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>branchName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the branch to check out. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>commitID</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the commit <ref refid="MixMachine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc" kindref="member">ID</ref> to check out (optional). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the checkout was successful, <computeroutput>false</computeroutput> otherwise. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="96" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="217" bodyend="249"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="125" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="217" bodyend="249"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1a8d41732d18251e91ddb64a5f776c7037" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -136,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="97" column="17" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="187" bodyend="214"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="126" column="17" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="187" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1a4a7a0b3a868e1f4b7e00e8eaa877bc7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -150,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="98" column="10" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="98" bodyend="100"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="127" column="10" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="127" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1ad425a11ce89a9a423222e9fedd9bbf59" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -168,7 +197,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="101" column="10" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="101" bodyend="103"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="130" column="10" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="130" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1a2af26b1d24cf2a5b97764c629380fba9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structDiffResult" kindref="compound">DiffResult</ref></type>
@@ -191,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="106" column="16" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="176" bodyend="179"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="135" column="16" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="176" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1a4fcfd5e38b9eb455ab11ce44bb1a1c90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -210,7 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="109" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="44" bodyend="57"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="138" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="44" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1a5d727e8ccb03541d0722398d0435b6e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -229,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="111" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="33" bodyend="41"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="140" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="33" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1aff50df952a46b5663341b6161d72ae2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -244,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="113" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="61" bodyend="68"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="142" column="10" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="61" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1a6522484931862293376b1a87270c346a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -258,7 +287,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="116" column="5"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="145" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1a5ff4e3a3248ecf88c2a1baad8f6a676a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -281,7 +310,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="118" column="5" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="12" bodyend="16"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="147" column="5" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="12" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__GitHandler_1a515cab8812e778b2f11a3565178f9977" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -295,7 +324,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="119" column="5" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="18" bodyend="29"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="148" column="5" bodyfile="include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp" bodystart="18" bodyend="29"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -327,7 +356,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="83" column="1" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="83" bodyend="121"/>
+    <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="95" column="1" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="95" bodyend="150"/>
     <listofallmembers>
       <member refid="classPDJE__GitHandler_1aff50df952a46b5663341b6161d72ae2c" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>Close</name></member>
       <member refid="classPDJE__GitHandler_1a4fcfd5e38b9eb455ab11ce44bb1a1c90" prot="public" virt="non-virtual"><scope>PDJE_GitHandler</scope><name>DeleteGIT</name></member>

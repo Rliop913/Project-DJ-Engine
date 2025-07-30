@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="ocsFilter_8hpp" kind="file" language="C++">
+    <compoundname>ocsFilter.hpp</compoundname>
+    <includes refid="Faust__interpolate_8hpp" local="yes">Faust_interpolate.hpp</includes>
+    <incdepgraph>
+      <node id="7">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="3">
+        <label>DeckData.hpp</label>
+        <link refid="DeckData_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Faust_interpolate.hpp</label>
+        <link refid="Faust__interpolate_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/audioRender/MixMachine/FAUST_VALS/ocsFilter.hpp</label>
+        <link refid="ocsFilter_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>functional</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classOcsFilter__PDJE" prot="public">OcsFilter_PDJE</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Faust__interpolate_8hpp" kindref="compound">Faust_interpolate.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="classOcsFilter__PDJE" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classOcsFilter__PDJE" kindref="compound">OcsFilter_PDJE</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classFaustInterpolate" kindref="compound">FaustInterpolate</ref>{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="6" refid="classOcsFilter__PDJE_1ab070455e949cd3587d8f81aa6350e801" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classOcsFilter__PDJE_1ab070455e949cd3587d8f81aa6350e801" kindref="member">ocsFilterHighLowSW</ref>;</highlight></codeline>
+<codeline lineno="7" refid="classOcsFilter__PDJE_1a25c9d524b386f0cddddc17e7ec26bd2c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classOcsFilter__PDJE_1a25c9d524b386f0cddddc17e7ec26bd2c" kindref="member">middleFreq</ref>;</highlight></codeline>
+<codeline lineno="8" refid="classOcsFilter__PDJE_1a556ebf994a7efeb603e23108b3ff8963" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classOcsFilter__PDJE_1a556ebf994a7efeb603e23108b3ff8963" kindref="member">rangeFreqHalf</ref>;</highlight></codeline>
+<codeline lineno="9" refid="classOcsFilter__PDJE_1a1d910c0e0aa9dff34037636373d09615" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classOcsFilter__PDJE_1a1d910c0e0aa9dff34037636373d09615" kindref="member">bps</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Duck&gt;</highlight></codeline>
+<codeline lineno="12" refid="classOcsFilter__PDJE_1a42e070f884011faf912ae9ecb5265391" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOcsFilter__PDJE_1a42e070f884011faf912ae9ecb5265391" kindref="member">copyDatas</ref>(Duck&amp;<sp/>dest){</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dest.ocsFilterHighLowSW<sp/>=<sp/><ref refid="classOcsFilter__PDJE_1ab070455e949cd3587d8f81aa6350e801" kindref="member">ocsFilterHighLowSW</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dest.middleFreq<sp/>=<sp/><ref refid="classOcsFilter__PDJE_1a25c9d524b386f0cddddc17e7ec26bd2c" kindref="member">middleFreq</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dest.rangeFreqHalf<sp/>=<sp/><ref refid="classOcsFilter__PDJE_1a556ebf994a7efeb603e23108b3ff8963" kindref="member">rangeFreqHalf</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dest.bps<sp/>=<sp/><ref refid="classOcsFilter__PDJE_1a1d910c0e0aa9dff34037636373d09615" kindref="member">bps</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Duck&gt;</highlight></codeline>
+<codeline lineno="20" refid="classOcsFilter__PDJE_1a5c8854a2f0484cb1ad0d43c839a54302" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOcsFilter__PDJE_1a5c8854a2f0484cb1ad0d43c839a54302" kindref="member">copySetting</ref>(Duck&amp;<sp/>dest){</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOcsFilter__PDJE_1a42e070f884011faf912ae9ecb5265391" kindref="member">copyDatas</ref>(dest);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFaustInterpolate_1a7caebc4c904bf93643b9500647503802" kindref="member">copyInterpolates</ref>(dest);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="include/audioRender/MixMachine/FAUST_VALS/ocsFilter.hpp"/>
+  </compounddef>
+</doxygen>

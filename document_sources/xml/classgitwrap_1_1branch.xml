@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classgitwrap_1_1branch" kind="class" language="C++" prot="public">
+    <compoundname>gitwrap::branch</compoundname>
+    <includes refid="editorBranch_8hpp" local="no">editorBranch.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classgitwrap_1_1branch_1ac5d4fc73cb2f76b3bc1646454840aa95" prot="private" static="no" mutable="no">
+        <type>git_repository *</type>
+        <definition>git_repository* gitwrap::branch::repo_pointer</definition>
+        <argsstring></argsstring>
+        <name>repo_pointer</name>
+        <qualifiedname>gitwrap::branch::repo_pointer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="22" column="24" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgitwrap_1_1branch_1a0c8c937a6057d4d638e4dac6e3482265" prot="private" static="no" mutable="no">
+        <type>git_checkout_options</type>
+        <definition>git_checkout_options gitwrap::branch::checkoutOpts</definition>
+        <argsstring></argsstring>
+        <name>checkoutOpts</name>
+        <qualifiedname>gitwrap::branch::checkoutOpts</qualifiedname>
+        <initializer>= GIT_CHECKOUT_OPTIONS_INIT</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="23" column="30" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classgitwrap_1_1branch_1a059d40014bd9076186a2450c8792790a" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string gitwrap::branch::branchName</definition>
+        <argsstring></argsstring>
+        <name>branchName</name>
+        <qualifiedname>gitwrap::branch::branchName</qualifiedname>
+        <briefdescription>
+<para>Name of the current branch. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="27" column="21" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgitwrap_1_1branch_1a93b2d69e629d19540344910277a643c3" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; git_oid &gt;</type>
+        <definition>std::optional&lt;git_oid&gt; gitwrap::branch::FLAG_TEMP_CHECKOUT</definition>
+        <argsstring></argsstring>
+        <name>FLAG_TEMP_CHECKOUT</name>
+        <qualifiedname>gitwrap::branch::FLAG_TEMP_CHECKOUT</qualifiedname>
+        <briefdescription>
+<para>Temporary checkout commit used when jumping to a commit. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="29" column="23" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classgitwrap_1_1branch_1adf3f8cc3764e9600e78b738fa59e841e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::string</type>
+        <definition>static std::string gitwrap::branch::ToBranchRefName</definition>
+        <argsstring>(T branchName)</argsstring>
+        <name>ToBranchRefName</name>
+        <qualifiedname>gitwrap::branch::ToBranchRefName</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>branchName</declname>
+        </param>
+        <briefdescription>
+<para>Convert a name to a Git branch reference. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="36" column="9"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classgitwrap_1_1branch_1ae0d093973cfdaa5791802c46d3a9309b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; branch::ShowExistBranch</definition>
+        <argsstring>()</argsstring>
+        <name>ShowExistBranch</name>
+        <qualifiedname>gitwrap::branch::ShowExistBranch</qualifiedname>
+        <briefdescription>
+<para>List all branches in the repository. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="39" column="21" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="8" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classgitwrap_1_1branch_1a55f244956fde3e69eba54f8454858684" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="structgitwrap_1_1commit" kindref="compound">commit</ref> &gt;</type>
+        <definition>std::vector&lt; commit &gt; branch::ShowExistCommitsOnBranch</definition>
+        <argsstring>(const std::string &amp;branchName)</argsstring>
+        <name>ShowExistCommitsOnBranch</name>
+        <qualifiedname>gitwrap::branch::ShowExistCommitsOnBranch</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>branchName</declname>
+        </param>
+        <briefdescription>
+<para>Get commits that exist on the given branch. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="41" column="21" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="47" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classgitwrap_1_1branch_1a5e97f25efd4a6a61b06b0e31437c3bfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool branch::SetBranch</definition>
+        <argsstring>(const std::string &amp;branchName)</argsstring>
+        <name>SetBranch</name>
+        <qualifiedname>gitwrap::branch::SetBranch</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>branchName</declname>
+        </param>
+        <briefdescription>
+<para>Switch to the specified branch. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="44" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="81" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classgitwrap_1_1branch_1a051bd627fd9204e95bcdf55f2356ca68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool branch::MakeNewFromHEAD</definition>
+        <argsstring>(const std::string &amp;newBranchName)</argsstring>
+        <name>MakeNewFromHEAD</name>
+        <qualifiedname>gitwrap::branch::MakeNewFromHEAD</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>newBranchName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="47" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="96" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classgitwrap_1_1branch_1a2e4615dedd0d65a107fd64548982d4f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool branch::MakeNewFromCommit</definition>
+        <argsstring>(commit &amp;c, const std::string &amp;newBranchName)</argsstring>
+        <name>MakeNewFromCommit</name>
+        <qualifiedname>gitwrap::branch::MakeNewFromCommit</qualifiedname>
+        <param>
+          <type><ref refid="structgitwrap_1_1commit" kindref="compound">commit</ref> &amp;</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>newBranchName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="48" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="119" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classgitwrap_1_1branch_1a5fc5405a63a380548fa4b8b6c720b672" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool branch::DeleteBranch</definition>
+        <argsstring>(const std::string &amp;branchName)</argsstring>
+        <name>DeleteBranch</name>
+        <qualifiedname>gitwrap::branch::DeleteBranch</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>branchName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="49" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="134" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="classgitwrap_1_1branch_1a544e4ab210cea6436eb8238b70946fdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool branch::CheckoutThisHEAD</definition>
+        <argsstring>()</argsstring>
+        <name>CheckoutThisHEAD</name>
+        <qualifiedname>gitwrap::branch::CheckoutThisHEAD</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="50" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="155" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="classgitwrap_1_1branch_1ab313aded5d74b26e3d6f4ccee8c36710" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool branch::CheckoutCommitTemp</definition>
+        <argsstring>(commit &amp;c)</argsstring>
+        <name>CheckoutCommitTemp</name>
+        <qualifiedname>gitwrap::branch::CheckoutCommitTemp</qualifiedname>
+        <param>
+          <type><ref refid="structgitwrap_1_1commit" kindref="compound">commit</ref> &amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="51" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="167" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="classgitwrap_1_1branch_1a5df6117c678de498f588cdbb07473cf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="structgitwrap_1_1commit" kindref="compound">commit</ref> &gt;</type>
+        <definition>std::optional&lt; commit &gt; branch::GetHEAD</definition>
+        <argsstring>()</argsstring>
+        <name>GetHEAD</name>
+        <qualifiedname>gitwrap::branch::GetHEAD</qualifiedname>
+        <briefdescription>
+<para>Retrieve the current HEAD commit. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="54" column="23" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="193" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="classgitwrap_1_1branch_1a18bc053bbb36db18ab0c9d1080c9f43c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool gitwrap::branch::MergeToBranch</definition>
+        <argsstring>(const std::string &amp;branchToMerge)</argsstring>
+        <name>MergeToBranch</name>
+        <qualifiedname>gitwrap::branch::MergeToBranch</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>branchToMerge</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="56" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classgitwrap_1_1branch_1ac3e5b561ef236b207fad3c4788fc7b89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>gitwrap::branch::branch</definition>
+        <argsstring>(git_repository *repo)</argsstring>
+        <name>branch</name>
+        <qualifiedname>gitwrap::branch::branch</qualifiedname>
+        <param>
+          <type>git_repository *</type>
+          <declname>repo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="58" column="9" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="58" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classgitwrap_1_1branch_1a68fbfd72e7aa5aa101e6c8c9822f370a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>branch::~branch</definition>
+        <argsstring>()</argsstring>
+        <name>~branch</name>
+        <qualifiedname>gitwrap::branch::~branch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="66" column="9" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="213" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="classgitwrap_1_1branch_1a9edf474f1e04ba4830b6d7ace83fc654" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>std::string</type>
+        <definition>std::string gitwrap::branch::ToBranchRefName</definition>
+        <argsstring>(const std::string &amp;branchName)</argsstring>
+        <name>ToBranchRefName</name>
+        <qualifiedname>gitwrap::branch::ToBranchRefName</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>branchName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" line="33" column="1" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="33" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classgitwrap_1_1branch_1acae49b5f6758173db14821aad1b9bb71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>std::string</type>
+        <definition>std::string gitwrap::branch::ToBranchRefName</definition>
+        <argsstring>(const char *branchName)</argsstring>
+        <name>ToBranchRefName</name>
+        <qualifiedname>gitwrap::branch::ToBranchRefName</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>branchName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" line="39" column="1" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp" bodystart="39" bodyend="41"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a Git branch and common branch operations. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>gitwrap::branch</label>
+        <link refid="classgitwrap_1_1branch"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>branchName</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" line="20" column="5" bodyfile="include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp" bodystart="20" bodyend="67"/>
+    <listofallmembers>
+      <member refid="classgitwrap_1_1branch_1ac3e5b561ef236b207fad3c4788fc7b89" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>branch</name></member>
+      <member refid="classgitwrap_1_1branch_1a059d40014bd9076186a2450c8792790a" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>branchName</name></member>
+      <member refid="classgitwrap_1_1branch_1ab313aded5d74b26e3d6f4ccee8c36710" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>CheckoutCommitTemp</name></member>
+      <member refid="classgitwrap_1_1branch_1a0c8c937a6057d4d638e4dac6e3482265" prot="private" virt="non-virtual"><scope>gitwrap::branch</scope><name>checkoutOpts</name></member>
+      <member refid="classgitwrap_1_1branch_1a544e4ab210cea6436eb8238b70946fdb" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>CheckoutThisHEAD</name></member>
+      <member refid="classgitwrap_1_1branch_1a5fc5405a63a380548fa4b8b6c720b672" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>DeleteBranch</name></member>
+      <member refid="classgitwrap_1_1branch_1a93b2d69e629d19540344910277a643c3" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>FLAG_TEMP_CHECKOUT</name></member>
+      <member refid="classgitwrap_1_1branch_1a5df6117c678de498f588cdbb07473cf7" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>GetHEAD</name></member>
+      <member refid="classgitwrap_1_1branch_1a2e4615dedd0d65a107fd64548982d4f2" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>MakeNewFromCommit</name></member>
+      <member refid="classgitwrap_1_1branch_1a051bd627fd9204e95bcdf55f2356ca68" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>MakeNewFromHEAD</name></member>
+      <member refid="classgitwrap_1_1branch_1a18bc053bbb36db18ab0c9d1080c9f43c" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>MergeToBranch</name></member>
+      <member refid="classgitwrap_1_1branch_1ac5d4fc73cb2f76b3bc1646454840aa95" prot="private" virt="non-virtual"><scope>gitwrap::branch</scope><name>repo_pointer</name></member>
+      <member refid="classgitwrap_1_1branch_1a5e97f25efd4a6a61b06b0e31437c3bfb" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>SetBranch</name></member>
+      <member refid="classgitwrap_1_1branch_1ae0d093973cfdaa5791802c46d3a9309b" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>ShowExistBranch</name></member>
+      <member refid="classgitwrap_1_1branch_1a55f244956fde3e69eba54f8454858684" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>ShowExistCommitsOnBranch</name></member>
+      <member refid="classgitwrap_1_1branch_1adf3f8cc3764e9600e78b738fa59e841e" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>ToBranchRefName</name></member>
+      <member refid="classgitwrap_1_1branch_1a9edf474f1e04ba4830b6d7ace83fc654" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>ToBranchRefName</name></member>
+      <member refid="classgitwrap_1_1branch_1acae49b5f6758173db14821aad1b9bb71" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>ToBranchRefName</name></member>
+      <member refid="classgitwrap_1_1branch_1a68fbfd72e7aa5aa101e6c8c9822f370a" prot="public" virt="non-virtual"><scope>gitwrap::branch</scope><name>~branch</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

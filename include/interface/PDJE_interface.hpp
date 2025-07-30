@@ -61,7 +61,7 @@ public:
      * 
      * @param rootPath the path to the Root Database. 
      */
-    PDJE(const fs::path& rootDir);
+    PDJE(const fs::path& rootPath);
     ~PDJE() = default;
     
     /// this is the music handler. you can play music, stop music, fx control, play/stop music manually in realtime.
@@ -83,6 +83,14 @@ public:
         const unsigned int FrameBufferSize);
 
 
+    /**
+     * @brief Initializes the editor.
+     *
+     * @param auth_name The author's name for Git commits.
+     * @param auth_email The author's email for Git commits.
+     * @param projectRoot The root directory of the editor project.
+     * @return `true` if the editor was initialized successfully, `false` otherwise.
+     */
     bool
     InitEditor(
         const DONT_SANITIZE &auth_name, 
@@ -120,7 +128,7 @@ public:
     /**
      * @brief searches track
      * the track contains the note data, mix data and included music lists.
-     * @param Title the tile of the track. send "" to skip filter
+     * @param Title the title of the track. send "" to skip filter
      * @return TRACK_VEC the array of the track_data. find what you want
      */
     TRACK_VEC SearchTrack(const UNSANITIZED& Title);
@@ -162,7 +170,7 @@ public:
     /**
      * @brief set fx in realtime.
      * sets the fx in realtime. better to check the fx key before use if you don't know.
-     * @param fx the tyoe of fx.
+     * @param fx the type of fx.
      * @param key the key of the fx arg
      * @param arg value to change
      */
