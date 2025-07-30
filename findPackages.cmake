@@ -87,7 +87,8 @@ ExternalProject_Add(
       -B <BINARY_DIR>
       -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
       -DBUILD_SHARED_LIBS=OFF
-      -DUSE_SSH=OFF 
+      -DUSE_SSH=OFF
+      -DUSE_SSPI=OFF
       -DUSE_HTTPS=OpenSSL
       -DREGEX_BACKEND=builtin
       -DUSE_BUNDLED_ZLIB=ON
