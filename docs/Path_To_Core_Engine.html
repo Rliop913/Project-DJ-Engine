@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Path_To_Core_Engine &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Path_To_Input_Engine" href="Path_To_Input_Engine.html" />
+    <link rel="prev" title="PDJE_Path" href="PDJE_Path.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="PDJE_Path.html">PDJE_Path</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Path_To_Core_Engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#player-step-1-initialize-pdje-core-engine">Player Step-1: initialize PDJE core engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#player-step-2-search-music-track">Player Step-2: Search Music &amp; Track</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#player-step-3-init-activate-deactivate-audio-player">Player Step-3: Init, Activate &amp; Deactivate Audio Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#player-step-4-get-use-music-controller-pannel">Player Step-4: Get &amp; Use Music Controller Pannel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Path_To_Input_Engine.html">Path_To_Input_Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path_To_Note_Engine.html">Path_To_Note_Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path_To_Util_Engine.html">Path_To_Util_Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PDJE_Format.html">PDJE_Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDJE_Format.html">PDJE_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="PDJE_Path.html">PDJE_Path</a></li>
+      <li class="breadcrumb-item active">Path_To_Core_Engine</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Path_To_Core_Engine.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="path-to-core-engine">
+<h1>Path_To_Core_Engine<a class="headerlink" href="#path-to-core-engine" title="Link to this heading"></a></h1>
+<section id="player-step-1-initialize-pdje-core-engine">
+<h2>Player Step-1: initialize PDJE core engine<a class="headerlink" href="#player-step-1-initialize-pdje-core-engine" title="Link to this heading"></a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-0">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;database/path&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-1">
+C#</label><div class="sd-tab-content docutils">
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">PDJE</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;database/path&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-2">
+PYTHON</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pypdje</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">pypdje</span><span class="o">.</span><span class="n">PDJE</span><span class="p">(</span><span class="s2">&quot;database/path&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-3">
+GDSCRIPT</label><div class="sd-tab-content docutils">
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">engine</span><span class="p">:</span><span class="n">PDJE_Wrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Wrapper</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">InitEngine</span><span class="p">(</span><span class="s2">&quot;res://database/path&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="player-step-2-search-music-track">
+<h2>Player Step-2: Search Music &amp; Track<a class="headerlink" href="#player-step-2-search-music-track" title="Link to this heading"></a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-4">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">trackdata</span><span class="w"> </span><span class="n">td</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">SearchTrack</span><span class="p">(</span><span class="s">&quot;Track name&quot;</span><span class="p">).</span><span class="n">front</span><span class="p">();</span>
+<span class="n">musdata</span><span class="w"> </span><span class="n">md</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s">&quot;music title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;composer name&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.0</span><span class="p">).</span><span class="n">front</span><span class="p">();</span>
+<span class="c1">//-1.0 means ignore bpm</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-5">
+C#</label><div class="sd-tab-content docutils">
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">TRACK_VEC</span><span class="w"> </span><span class="n">tdvec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">SearchTrack</span><span class="p">(</span><span class="s">&quot;Track name&quot;</span><span class="p">);</span>
+<span class="n">MUS_VEC</span><span class="w"> </span><span class="n">mdvec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s">&quot;music title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;composer name&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">);</span>
+<span class="c1">//-1.0 means ignore bpm</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-6">
+PYTHON</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pypdje</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">TRACK_VEC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">MUS_VEC</span>
+
+<span class="n">tdvec</span><span class="p">:</span><span class="n">TRACK_VEC</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">SearchTrack</span><span class="p">(</span><span class="s2">&quot;track name&quot;</span><span class="p">)</span>
+<span class="n">mdvec</span><span class="p">:</span><span class="n">MUS_VEC</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s2">&quot;music title&quot;</span><span class="p">,</span> <span class="s2">&quot;composer name&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="c1">#-1.0 means ignore bpm</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-7">
+GDSCRIPT</label><div class="sd-tab-content docutils">
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">tdlist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">SearchTrack</span><span class="p">(</span><span class="s2">&quot;track name&quot;</span><span class="p">)</span>
+<span class="k">var</span><span class="w"> </span><span class="n">mdlist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s2">&quot;music name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;composer name&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="c1">#-1.0 means ignore bpm</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="player-step-3-init-activate-deactivate-audio-player">
+<h2>Player Step-3: Init, Activate &amp; Deactivate Audio Player<a class="headerlink" href="#player-step-3-init-activate-deactivate-audio-player" title="Link to this heading"></a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-8">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">player_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">InitPlayer</span><span class="p">(</span><span class="n">PLAY_MODE</span><span class="o">::</span><span class="n">HYBRID_RENDER</span><span class="p">,</span><span class="w"> </span><span class="n">td</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">);</span>
+<span class="c1">//render mode, trackdata, sample buffer</span>
+
+<span class="n">engine</span><span class="o">-&gt;</span><span class="n">ResetPlayer</span><span class="p">();</span>
+<span class="c1">//reset player</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">activate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Activate</span><span class="p">();</span>
+<span class="c1">//start playback</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">deactivate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Deactivate</span><span class="p">();</span>
+<span class="c1">//stop playback</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-9" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-9">
+C#</label><div class="sd-tab-content docutils">
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">player_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">InitPlayer</span><span class="p">(</span><span class="n">PLAY_MODE</span><span class="p">::</span><span class="n">HYBRID_RENDER</span><span class="p">,</span><span class="w"> </span><span class="n">tdvec</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">48</span><span class="p">);</span>
+<span class="c1">//render mode, trackdata, sample buffer</span>
+
+<span class="kt">var</span><span class="w"> </span><span class="n">AudioP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">GetPlayer</span><span class="p">();</span>
+<span class="c1">//get player object</span>
+
+<span class="n">engine</span><span class="p">.</span><span class="n">ResetPlayer</span><span class="p">();</span>
+<span class="c1">//reset player object.</span>
+<span class="c1">//WARNING: after reset, AudioP becomes unavailable.</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">activate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">Activate</span><span class="p">();</span>
+<span class="c1">//start playback</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">deactivate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">Deactivate</span><span class="p">();</span>
+<span class="c1">//stop playback</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-10" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-10">
+PYTHON</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">audioPlayer</span>
+
+<span class="n">player_OK</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">InitPlayer</span><span class="p">(</span><span class="n">PLAY_MODE</span><span class="p">::</span><span class="n">HYBRID_RENDER</span><span class="p">,</span> <span class="n">tdvec</span><span class="o">.</span><span class="n">front</span><span class="p">(),</span> <span class="mi">48</span><span class="p">)</span>
+<span class="c1">#render mode, trackdata, sample buffer</span>
+
+<span class="n">AudioP</span><span class="p">:</span><span class="n">audioPlayer</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">GetPlayer</span><span class="p">()</span>
+<span class="c1">#get player object</span>
+
+<span class="n">engine</span><span class="o">.</span><span class="n">ResetPlayer</span><span class="p">();</span>
+<span class="c1">#reset player object.</span>
+<span class="c1">#WARNING: after reset, AudioP becomes unavailable.</span>
+
+<span class="n">activate_OK</span> <span class="o">=</span> <span class="n">AudioP</span><span class="o">.</span><span class="n">Activate</span><span class="p">()</span>
+<span class="c1">#start playback</span>
+
+<span class="n">deactivate_OK</span> <span class="o">=</span> <span class="n">AudioP</span><span class="o">.</span><span class="n">Deactivate</span><span class="p">()</span>
+<span class="c1">#stop playback</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-11" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-11">
+GDSCRIPT</label><div class="sd-tab-content docutils">
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">player_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">InitPlayer</span><span class="p">(</span><span class="n">PDJE_Wrapper</span><span class="p">::</span><span class="n">HYBRID_RENDER</span><span class="p">,</span><span class="w"> </span><span class="n">tdlist</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">48</span><span class="p">)</span>
+<span class="c1">#render mode, trackdata, sample buffer</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">AudioP</span><span class="p">:</span><span class="n">PlayerWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">GetPlayer</span><span class="p">()</span>
+<span class="c1">#get player object</span>
+
+<span class="n">engine</span><span class="o">.</span><span class="n">ResetPlayer</span><span class="p">();</span>
+<span class="c1">#reset player object.</span>
+<span class="c1">#WARNING: after reset, AudioP becomes unavailable.</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">activate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="o">.</span><span class="n">Activate</span><span class="p">()</span>
+<span class="c1">#start playback</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">deactivate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="o">.</span><span class="n">Deactivate</span><span class="p">()</span>
+<span class="c1">#stop playback</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="player-step-4-get-use-music-controller-pannel">
+<h2>Player Step-4: Get &amp; Use Music Controller Pannel<a class="headerlink" href="#player-step-4-get-use-music-controller-pannel" title="Link to this heading"></a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-12" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-12">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">musPannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetMusicControlPannel</span><span class="p">();</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">musicFound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;composer&quot;</span><span class="p">);</span>
+<span class="c1">//find music to playback manually</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">load_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">LoadMusic</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">DBROOT</span><span class="p">),</span><span class="w"> </span><span class="n">musicFound</span><span class="p">.</span><span class="n">front</span><span class="p">());</span>
+<span class="c1">// load found music to deck. music won&#39;t playback in here</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">unload_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">UnloadMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
+<span class="c1">// unload music from deck. don&#39;t forget for the memory space.</span>
+<span class="c1">// the deck always contains loaded music before calling musPannel.UnloadMusic or engine.ResetPlayer</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">onoff_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">SetMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="c1">// turn on the music. now music playbacks</span>
+
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">48000</span><span class="p">;</span>
+<span class="c1">//PCMFrame_position = second X SampleRate</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">cue_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">CueMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="p">);</span>
+<span class="c1">//set playback position of the music.</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">loaded_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">GetLoadedMusicList</span><span class="p">();</span>
+<span class="c1">//get loaded music list.</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-13" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-13">
+C#</label><div class="sd-tab-content docutils">
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">PDJE</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;database/path&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-14" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-14">
+PYTHON</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pypdje</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">pypdje</span><span class="o">.</span><span class="n">PDJE</span><span class="p">(</span><span class="s2">&quot;database/path&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-15" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-15">
+GDSCRIPT</label><div class="sd-tab-content docutils">
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">engine</span><span class="p">:</span><span class="n">PDJE_Wrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Wrapper</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">InitEngine</span><span class="p">(</span><span class="s2">&quot;res://database/path&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="PDJE_Path.html" class="btn btn-neutral float-left" title="PDJE_Path" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Path_To_Input_Engine.html" class="btn btn-neutral float-right" title="Path_To_Input_Engine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

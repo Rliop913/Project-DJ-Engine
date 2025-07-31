@@ -6,6 +6,7 @@
 #include "editorObject.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_LOG_SETTER.hpp"
+#include "PDJE_Core_DataLine.hpp"
 /**
  * @brief the play mode
  * you can use this to initialize the player(music handler)
@@ -82,6 +83,19 @@ public:
         trackdata& td, 
         const unsigned int FrameBufferSize);
 
+    /// @brief Reset the Player object 
+    void
+    ResetPlayer(){
+        player.reset();
+    }
+
+    /// @brief Reset the Editor object
+    void
+    ResetEditor(){
+        editor.reset();
+    }
+
+    PDJE_CORE_DATA_LINE PullOutDataLine();
 
     /**
      * @brief Initializes the editor.

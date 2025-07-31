@@ -16,7 +16,8 @@ import os
 extensions = [
     'breathe', 
     'exhale',
-    'sphinx.ext.graphviz' 
+    'sphinx.ext.graphviz',
+    'sphinx_design'
     ]
 
 graphviz_output_format = 'svg'

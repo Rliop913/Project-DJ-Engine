@@ -109,6 +109,8 @@ main()
         
         getchar();
         musPannel->SetMusic("ヒアソビ", true);
+        
+        // musPannel->
         getchar();
         auto Fxhandle = musPannel->getFXHandle("ヒアソビ");
         Fxhandle->FX_ON_OFF(FXList::OCSFILTER, true);

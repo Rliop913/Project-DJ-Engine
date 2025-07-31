@@ -164,3 +164,15 @@ PDJE::InitEditor(
     editor = std::make_shared<editorObject>(auth_name, auth_email);
     return editor->Open(projectRoot);
 }
+
+PDJE_CORE_DATA_LINE
+PDJE::PullOutDataLine()
+{
+    if(player){
+        return player->PullOutDataLine();
+    }
+    else{
+        PDJE_CORE_DATA_LINE errline;
+        return errline;
+    }
+}

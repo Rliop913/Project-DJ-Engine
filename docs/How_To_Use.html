@@ -9,6 +9,7 @@
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
 
   
   <!--[if lt IE 9]>
@@ -22,11 +23,10 @@
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
         <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="API Reference" href="api/api_root.html" />
-    <link rel="prev" title="Project_DJ_Engine(PDJE)" href="index.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,57 +48,56 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">HOW TO USE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#initialize-pdje-engine">Initialize PDJE Engine</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv44PDJE"><code class="docutils literal notranslate"><span class="pre">PDJE</span></code></a></li>
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">HOW TO USE</a><ul>
+<li><a class="reference internal" href="#initialize-pdje-engine">Initialize PDJE Engine</a><ul>
+<li><a class="reference internal" href="#_CPPv44PDJE"><code class="docutils literal notranslate"><span class="pre">PDJE</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#search-track-and-music">Search Track and Music</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd"><code class="docutils literal notranslate"><span class="pre">SearchMusic()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N4PDJE11SearchTrackERK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">SearchTrack()</span></code></a></li>
+<li><a class="reference internal" href="#search-track-and-music">Search Track and Music</a><ul>
+<li><a class="reference internal" href="#_CPPv4N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd"><code class="docutils literal notranslate"><span class="pre">SearchMusic()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N4PDJE11SearchTrackERK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">SearchTrack()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#initialize-player">Initialize Player</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj"><code class="docutils literal notranslate"><span class="pre">InitPlayer()</span></code></a></li>
+<li><a class="reference internal" href="#initialize-player">Initialize Player</a><ul>
+<li><a class="reference internal" href="#_CPPv4N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj"><code class="docutils literal notranslate"><span class="pre">InitPlayer()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#handle-player">Handle Player</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv411audioPlayer"><code class="docutils literal notranslate"><span class="pre">audioPlayer</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N11audioPlayer8ActivateEv"><code class="docutils literal notranslate"><span class="pre">Activate()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N11audioPlayer10DeactivateEv"><code class="docutils literal notranslate"><span class="pre">Deactivate()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N11audioPlayer18GetFXControlPannelERK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">GetFXControlPannel()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N11audioPlayer21GetMusicControlPannelEv"><code class="docutils literal notranslate"><span class="pre">GetMusicControlPannel()</span></code></a></li>
+<li><a class="reference internal" href="#handle-player">Handle Player</a><ul>
+<li><a class="reference internal" href="#_CPPv411audioPlayer"><code class="docutils literal notranslate"><span class="pre">audioPlayer</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N11audioPlayer8ActivateEv"><code class="docutils literal notranslate"><span class="pre">Activate()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N11audioPlayer10DeactivateEv"><code class="docutils literal notranslate"><span class="pre">Deactivate()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N11audioPlayer18GetFXControlPannelERK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">GetFXControlPannel()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N11audioPlayer21GetMusicControlPannelEv"><code class="docutils literal notranslate"><span class="pre">GetMusicControlPannel()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#handle-fxcontrolpannel">Handle FXControlPannel</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N15FXControlPannel9FX_ON_OFFE6FXListb"><code class="docutils literal notranslate"><span class="pre">FX_ON_OFF()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N15FXControlPannel12GetArgSetterE6FXList"><code class="docutils literal notranslate"><span class="pre">GetArgSetter()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N15FXControlPannel16checkSomethingOnEv"><code class="docutils literal notranslate"><span class="pre">checkSomethingOn()</span></code></a></li>
+<li><a class="reference internal" href="#handle-fxcontrolpannel">Handle FXControlPannel</a><ul>
+<li><a class="reference internal" href="#_CPPv4N15FXControlPannel9FX_ON_OFFE6FXListb"><code class="docutils literal notranslate"><span class="pre">FX_ON_OFF()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N15FXControlPannel12GetArgSetterE6FXList"><code class="docutils literal notranslate"><span class="pre">GetArgSetter()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N15FXControlPannel16checkSomethingOnEv"><code class="docutils literal notranslate"><span class="pre">checkSomethingOn()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#handle-musiccontrolpannel">Handle MusicControlPannel</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv418MusicControlPannel"><code class="docutils literal notranslate"><span class="pre">MusicControlPannel</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18MusicControlPannel9LoadMusicER6litedbRK7musdata"><code class="docutils literal notranslate"><span class="pre">LoadMusic()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18MusicControlPannel8CueMusicERK11UNSANITIZEDKy"><code class="docutils literal notranslate"><span class="pre">CueMusic()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18MusicControlPannel8SetMusicERK11UNSANITIZEDKb"><code class="docutils literal notranslate"><span class="pre">SetMusic()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18MusicControlPannel18GetLoadedMusicListEv"><code class="docutils literal notranslate"><span class="pre">GetLoadedMusicList()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18MusicControlPannel11UnloadMusicERK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">UnloadMusic()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N18MusicControlPannel11getFXHandleERK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">getFXHandle()</span></code></a></li>
+<li><a class="reference internal" href="#handle-musiccontrolpannel">Handle MusicControlPannel</a><ul>
+<li><a class="reference internal" href="#_CPPv418MusicControlPannel"><code class="docutils literal notranslate"><span class="pre">MusicControlPannel</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N18MusicControlPannel9LoadMusicER6litedbRK7musdata"><code class="docutils literal notranslate"><span class="pre">LoadMusic()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N18MusicControlPannel8CueMusicERK11UNSANITIZEDKy"><code class="docutils literal notranslate"><span class="pre">CueMusic()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N18MusicControlPannel8SetMusicERK11UNSANITIZEDKb"><code class="docutils literal notranslate"><span class="pre">SetMusic()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N18MusicControlPannel18GetLoadedMusicListEv"><code class="docutils literal notranslate"><span class="pre">GetLoadedMusicList()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N18MusicControlPannel11UnloadMusicERK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">UnloadMusic()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N18MusicControlPannel11getFXHandleERK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">getFXHandle()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#handle-editor">Handle Editor</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERKN2fs4pathE"><code class="docutils literal notranslate"><span class="pre">InitEditor()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N12editorObject4OpenERKN2fs4pathE"><code class="docutils literal notranslate"><span class="pre">Open()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#_CPPv4N12editorObject15DESTROY_PROJECTEv"><code class="docutils literal notranslate"><span class="pre">DESTROY_PROJECT()</span></code></a></li>
+<li><a class="reference internal" href="#handle-editor">Handle Editor</a><ul>
+<li><a class="reference internal" href="#_CPPv4N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERKN2fs4pathE"><code class="docutils literal notranslate"><span class="pre">InitEditor()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N12editorObject4OpenERKN2fs4pathE"><code class="docutils literal notranslate"><span class="pre">Open()</span></code></a></li>
+<li><a class="reference internal" href="#_CPPv4N12editorObject15DESTROY_PROJECTEv"><code class="docutils literal notranslate"><span class="pre">DESTROY_PROJECT()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a></li>
 </ul>
-
+</div>
         </div>
       </div>
     </nav>
@@ -174,8 +173,28 @@
 </dd></dl>
 
 <p>we use “PDJE” class as an interface.</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;path/to/root/sqlite/database.sql&quot;</span><span class="p">);</span>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-0">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;path/to/root/Database_path&quot;</span><span class="p">);</span>
 </pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-1">
+C#</label><div class="sd-tab-content docutils">
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">auto</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;path/to/root/Database_path&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-2">
+PYTHON</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span> <span class="o">=</span> <span class="n">PDJE</span><span class="p">(</span><span class="s2">&quot;path/to/root/Database_path&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 <p>this code Initialize engine and interfaces.</p>
 </section>
@@ -582,10 +601,7 @@ every add command calls save function, and will be recorded by git.</p>
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Project_DJ_Engine(PDJE)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="api/api_root.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

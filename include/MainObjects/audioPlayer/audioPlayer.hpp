@@ -6,6 +6,7 @@
 #include "audioRender.hpp"
 #include "audioCallbacks.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
+#include "PDJE_Core_DataLine.hpp"
 /**
  * @brief The music handler class
  * this is the music handler class.
@@ -88,6 +89,8 @@ public:
      * @param frameBufferSize the buffer size.
      */
     audioPlayer(const unsigned int frameBufferSize);
+
+    PDJE_CORE_DATA_LINE PullOutDataLine();
 
     ~audioPlayer();
 };
