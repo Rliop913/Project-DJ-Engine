@@ -48,9 +48,6 @@ class PDJE_Name_Sanitizer{
      * @return The original, de-sanitized file name.
      */
     static std::string getFileName(const SANITIZED& sanitized);
-
-    /// @brief A string constant representing a sanitization error.
-    static std::string PDJE_SANITIZE_ERROR;
     
     PDJE_Name_Sanitizer() = delete;
     ~PDJE_Name_Sanitizer() = delete;

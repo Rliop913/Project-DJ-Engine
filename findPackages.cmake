@@ -120,7 +120,7 @@ ExternalProject_Add(
     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
     -DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
-  BUILD_COMMAND cmake --build . --parallel 6
+  BUILD_COMMAND cmake --build . --parallel
   INSTALL_DIR "${CMAKE_BINARY_DIR}/libgitbin"
   INSTALL_COMMAND cmake --install . --prefix "${CMAKE_BINARY_DIR}/libgitbin"
   BUILD_BYPRODUCTS "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
@@ -142,7 +142,7 @@ ExternalProject_Add(
     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
     -DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
-  BUILD_COMMAND cmake --build . --parallel 6
+  BUILD_COMMAND cmake --build . --parallel
   INSTALL_DIR "${CMAKE_BINARY_DIR}/libgitbin"
   INSTALL_COMMAND cmake --install . --prefix "${CMAKE_BINARY_DIR}/libgitbin"
   BUILD_BYPRODUCTS "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
