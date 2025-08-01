@@ -1,6 +1,6 @@
 #include "PDJE_interface.hpp"
 #include "PDJE_LOG_SETTER.hpp"
-PDJE::PDJE(const fs::path& rootPath)
+PDJE::PDJE(const DONT_SANITIZE& rootPath)
 {
     startlog();
     DBROOT = std::make_shared<litedb>();
@@ -159,7 +159,7 @@ bool
 PDJE::InitEditor(
     const DONT_SANITIZE &auth_name, 
     const DONT_SANITIZE &auth_email,
-    const fs::path& projectRoot)
+    const DONT_SANITIZE& projectRoot)
 {
     editor = std::make_shared<editorObject>(auth_name, auth_email);
     return editor->Open(projectRoot);

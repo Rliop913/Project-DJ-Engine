@@ -1,5 +1,3 @@
-# set(GIT_USE_STAT_MTIMESPEC ON CACHE BOOL "Don't use nanosecond timestamps" FORCE)
-
 
 FetchContent_Declare(
   miniaudio

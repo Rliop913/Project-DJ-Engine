@@ -16,6 +16,7 @@ include(findPackages.cmake)
 if(WIN32)
   # find_package(hwy REQUIRED)
   add_compile_definitions(__WINDOWS__)
+  add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 else()
 endif()
 

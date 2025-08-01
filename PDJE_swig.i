@@ -29,7 +29,6 @@
 // %unique_ptr(litedb)
 
 %include "ManualMix.hpp"
-%apply std::string {std::filesystem::path};
 
 namespace std {
     namespace filesystem {class path;}

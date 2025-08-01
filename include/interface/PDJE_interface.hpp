@@ -61,7 +61,7 @@ public:
      * 
      * @param rootPath the path to the Root Database. 
      */
-    PDJE(const fs::path& rootDir);
+    PDJE(const DONT_SANITIZE& rootDir);
     ~PDJE() = default;
     
     /// this is the music handler. you can play music, stop music, fx control, play/stop music manually in realtime.
@@ -87,7 +87,7 @@ public:
     InitEditor(
         const DONT_SANITIZE &auth_name, 
         const DONT_SANITIZE &auth_email,
-        const fs::path& projectRoot
+        const DONT_SANITIZE& projectRoot
     );
     /**
      * @brief Parse Note data and calls received function.
