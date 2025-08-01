@@ -4,7 +4,11 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(HWY_ENABLE_TESTS OFF)
 set(CAPNP_BUILD_TESTS OFF)
 set(BUILD_TESTING OFF CACHE BOOL "Disable testing")
+if(APPLE)
+set(HWY_ENABLE_TARGETS "scalar,arm64" CACHE STRING "Enabled SIMD targets" FORCE)
+else()
 set(HWY_ENABLE_TARGETS "scalar,sse4,avx,avx2" CACHE STRING "Enabled SIMD targets" FORCE)
+endif()
 set(WITH_WERROR OFF CACHE BOOL "" FORCE)
 set(FAIL_ON_WARNINGS OFF CACHE BOOL "Disable Werror in rocksdb")
 set(CMAKE_C_COMPILER_LAUNCHER ccache)
@@ -16,7 +20,15 @@ add_compile_options(
     /arch:AVX2
 )
 add_compile_options(/W3 /GR /WX-)
+elseif(APPLE)
+
+add_compile_options(
+  -mcpu=apple-m1
+  -fvectorize
+  -ffast-math
+)
 else()
+
 add_compile_options(
   -march=haswell
   -msse4.1
