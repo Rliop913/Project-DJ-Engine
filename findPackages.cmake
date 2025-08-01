@@ -102,7 +102,29 @@ ExternalProject_Add(
 
 set(OPENSSL_USE_STATIC_LIBS TRUE)
 
+elseif(APPLE)
+ExternalProject_Add(
+  libgit2
+  GIT_REPOSITORY https://github.com/libgit2/libgit2.git
+  GIT_TAG v1.9.0
 
+  PREFIX "${CMAKE_BINARY_DIR}/_deps"
+  BUILD_IN_SOURCE 0
+  CMAKE_ARGS 
+    -DBUILD_SHARED_LIBS=OFF 
+    -DREGEX_BACKEND=builtin
+    -DUSE_BUNDLED_ZLIB=ON
+    -DUSE_SSH=OFF 
+    -DCMAKE_OSX_ARCHITECTURES=arm64
+    -DUSE_HTTPS=OpenSSL
+    -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+    -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+
+  BUILD_COMMAND cmake --build . --parallel 6
+  INSTALL_DIR "${CMAKE_BINARY_DIR}/libgitbin"
+  INSTALL_COMMAND cmake --install . --prefix "${CMAKE_BINARY_DIR}/libgitbin"
+  BUILD_BYPRODUCTS "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
+)
 else()
 ExternalProject_Add(
   libgit2
