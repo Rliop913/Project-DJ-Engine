@@ -156,6 +156,19 @@ elseif(UNIX AND NOT APPLE)
   
   
 elseif(APPLE)
+if(PDJE_BUILD_TESTS)
+target_link_libraries(testHighway PRIVATE iconv)
+target_link_libraries(testdb PRIVATE iconv)
+target_link_libraries(testaudio PRIVATE iconv)
+target_link_libraries(testCapnp PRIVATE iconv)
+target_link_libraries(testManualAudio PRIVATE iconv)
+target_link_libraries(testInterface PRIVATE iconv)
+target_link_libraries(testGIT PRIVATE iconv)
+endif()
+target_link_libraries(testEditor PRIVATE iconv)
+
+target_link_libraries(PDJE PUBLIC iconv)
+target_link_libraries(PDJE_dynamic PUBLIC iconv)
   
 endif()
 
