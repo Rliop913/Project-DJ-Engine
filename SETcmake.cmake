@@ -27,6 +27,7 @@ add_compile_options(
   -fvectorize
   -ffast-math
 )
+add_compile_options(-frtti)
 else()
 
 add_compile_options(
