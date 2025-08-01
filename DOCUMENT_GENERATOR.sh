@@ -1,3 +1,3 @@
 #!/bin/bash
 doxygen ./Doxyfile
-sphinx-build -b html ./source docs
+sphinx-build -b html ./document_sources docs

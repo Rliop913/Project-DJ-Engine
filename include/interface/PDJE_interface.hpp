@@ -6,6 +6,7 @@
 #include "editorObject.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_LOG_SETTER.hpp"
+#include "PDJE_Core_DataLine.hpp"
 /**
  * @brief the play mode
  * you can use this to initialize the player(music handler)
@@ -62,6 +63,7 @@ public:
      * @param rootPath the path to the Root Database. 
      */
     PDJE(const DONT_SANITIZE& rootDir);
+
     ~PDJE() = default;
     
     /// this is the music handler. you can play music, stop music, fx control, play/stop music manually in realtime.
@@ -82,7 +84,28 @@ public:
         trackdata& td, 
         const unsigned int FrameBufferSize);
 
+    /// @brief Reset the Player object 
+    void
+    ResetPlayer(){
+        player.reset();
+    }
 
+    /// @brief Reset the Editor object
+    void
+    ResetEditor(){
+        editor.reset();
+    }
+
+    PDJE_CORE_DATA_LINE PullOutDataLine();
+
+    /**
+     * @brief Initializes the editor.
+     *
+     * @param auth_name The author's name for Git commits.
+     * @param auth_email The author's email for Git commits.
+     * @param projectRoot The root directory of the editor project.
+     * @return `true` if the editor was initialized successfully, `false` otherwise.
+     */
     bool
     InitEditor(
         const DONT_SANITIZE &auth_name, 
@@ -120,7 +143,7 @@ public:
     /**
      * @brief searches track
      * the track contains the note data, mix data and included music lists.
-     * @param Title the tile of the track. send "" to skip filter
+     * @param Title the title of the track. send "" to skip filter
      * @return TRACK_VEC the array of the track_data. find what you want
      */
     TRACK_VEC SearchTrack(const UNSANITIZED& Title);
@@ -162,7 +185,7 @@ public:
     /**
      * @brief set fx in realtime.
      * sets the fx in realtime. better to check the fx key before use if you don't know.
-     * @param fx the tyoe of fx.
+     * @param fx the type of fx.
      * @param key the key of the fx arg
      * @param arg value to change
      */

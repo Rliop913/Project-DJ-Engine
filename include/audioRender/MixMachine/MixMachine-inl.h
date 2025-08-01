@@ -1,3 +1,7 @@
+/**
+ * @file MixMachine-inl.h
+ * @brief SIMD-optimized implementation for integrating PCM frames into a final mix.
+ */
 #include "MixMachine.hpp"
 
 #undef HWY_TARGET_INCLUDE
@@ -7,11 +11,20 @@
 #include <hwy/highway.h>
 #include "hwy/base.h"
 
-
-
-
 namespace HWY_NAMESPACE{
 
+/**
+ * @brief Integrates a temporary PCM buffer into the main rendered output using SIMD instructions.
+ *
+ * This function safely mixes a temporary vector of PCM data (`tempVec`) into the final
+ * output buffer (`rendered_out`). It uses a mutex to protect access to the output buffer
+ * and leverages the Highway library for SIMD-accelerated audio mixing.
+ *
+ * @param[in] tempVec The temporary buffer of PCM frames to be mixed.
+ * @param[in] renderLock A mutex to ensure thread-safe access to the output buffer.
+ * @param[in,out] rendered_out The final output buffer where the PCM data is mixed.
+ * @param[in] MC A pointer to the `MUSIC_CTR` object, which provides context for the mixing operation.
+ */
 HWY_ATTR
 void
 INTEGRATE_PCM_SIMD(

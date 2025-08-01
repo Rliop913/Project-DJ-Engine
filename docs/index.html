@@ -4,11 +4,12 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project_DJ_Engine(PDJE) &mdash; Project_DJ_Engine  documentation</title>
+  <title>Project_DJ_Engine – A Real‑Time Engine for Rhythm Games, DJing, and Audio Production &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
 
   
   <!--[if lt IE 9]>
@@ -22,10 +23,11 @@
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
         <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="HOW TO USE" href="How_To_Use.html" /> 
+    <link rel="next" title="PDJE_Path" href="PDJE_Path.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,10 +49,13 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="PDJE_Path.html">PDJE_Path</a></li>
 <li class="toctree-l1"><a class="reference internal" href="How_To_Use.html">HOW TO USE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDJE_Format.html">PDJE_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
 </ul>
 
         </div>
@@ -67,7 +72,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Project_DJ_Engine(PDJE)</li>
+      <li class="breadcrumb-item active">Project_DJ_Engine – A Real‑Time Engine for Rhythm Games, DJing, and Audio Production</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -77,14 +82,96 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="project-dj-engine-pdje">
-<h1>Project_DJ_Engine(PDJE)<a class="headerlink" href="#project-dj-engine-pdje" title="Link to this heading"></a></h1>
-<blockquote>
-<div><p>Rhythm game engine + DJ</p>
-</div></blockquote>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+  <section id="project-dj-engine-a-realtime-engine-for-rhythm-games-djing-and-audio-production">
+<h1>Project_DJ_Engine – A Real‑Time Engine for Rhythm Games, DJing, and Audio Production<a class="headerlink" href="#project-dj-engine-a-realtime-engine-for-rhythm-games-djing-and-audio-production" title="Link to this heading"></a></h1>
+<p><strong>Project_DJ_Engine (PDJE)</strong> is an integrated, production‑ready engine combining rhythm game mechanics, DJ performance tools, and digital audio workstation features into a single soft real‑time C++ system. It lets you create, reproduce, and remix DJ mixes, drive rhythm‑game note charts, and build interactive music experiences—all with low‑latency, millisecond‑level timing guarantees.</p>
+<p>PDJE’s modular core provides:</p>
+<ul class="simple">
+<li><p><strong>High‑performance audio processing</strong> and time synchronization</p></li>
+<li><p><strong>Real‑time DJ mixing</strong></p></li>
+<li><p><strong>Integrated editor suite</strong> for music metadata, mixset &amp; note‑chart authoring</p></li>
+<li><p><strong>Centralized data management</strong> for tracks, metadata, mixsets, and note-chart datas</p></li>
+<li><p><strong>Live interaction</strong> via MIDI, dynamic input, and automation APIs</p></li>
+</ul>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
+<p>Clone and build PDJE in a few steps:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Rliop913/Project_DJ_Engine.git
+<span class="nb">cd</span><span class="w"> </span>Project_DJ_Engine
+mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+cmake<span class="w"> </span>..
+cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--parallel
+</pre></div>
+</div>
+<p>Learn about PDJE’s modules and usage in the <a class="reference internal" href="PDJE_Path.html"><span class="doc">PDJE_Path</span></a> documentation.</p>
+</section>
+<section id="system-architecture">
+<h2>System Architecture<a class="headerlink" href="#system-architecture" title="Link to this heading"></a></h2>
+<p>PDJE is organized into independent, dynamically loadable modules:</p>
 <ul>
+<li><p><strong>Core Engine</strong> :
+The Core Engine is the most critical component of the PDJE project.</p>
+<p>It builds, queries, and modifies the core database required for engine operation, storing not only mixset data, note charts, and music metadata, but even the audio tracks themselves.</p>
+<p>Mixsets are converted into structured data and preprocessed into fully playable tracks before playback.</p>
+<p>During playback, new audio content from the database can be dynamically added to a mixset in real time.</p>
+<p>All audio tracks and mixsets being played can be fully controlled and processed with effects in real time.
+(Even without a mixset, the engine can operate in Full Manual Mode — allowing for truly live DJing.)</p>
+<p>The Core Engine also includes an integrated editor.
+It allows users to register and index music, create mixsets, and generate note charts typically used in rhythm games.</p>
+<p>All modifications are tracked and recorded using Git, enabling full version control and the ability to revert to any previous state at any time.</p>
+<p>For smoother integration (and to save developers from too much suffering), the editor is exposed as an API and runs in its own sandboxed playground.</p>
+</li>
+<li><p><strong>Input Engine</strong> :
+It is a cross-platform input engine designed to minimize latency by handling input at the lowest deployable level.</p>
+<p>It supports general-purpose inputs such as keyboard and mouse, as well as MIDI input.</p>
+<p>Available on linux, windows</p>
+</li>
+<li><p><strong>Note Engine</strong> :
+This engine is designed to handle rhythm game logic or real-time timing judgments.
+It can be used by connecting either the PDJE Input Engine or another input engine wrapped for compatibility.</p>
+<p>The timing resolution is determined when initializing the PDJE Core Engine.
+By default, the PDJE Core Engine plays audio at a sample rate of 48,000 Hz, meaning it processes 48,000 samples per second.</p>
+<p>Assuming the buffer size is set to 48 samples, the core updates its internal sample-accumulation counter 1,000 times per second (48,000 / 48).</p>
+<p>This results in a theoretical judgment resolution of 1,000 counts per second, or 1 millisecond per count,
+giving you a minimum resolution of approximately 1 ms + input latency.</p>
+</li>
+<li><p><strong>Utility Engine</strong> :
+This engine handles non-essential but highly useful functionalities beyond the core features.</p>
+<p>It can be integrated with the various modules mentioned above to provide optional capabilities such as AI inference, FFT processing, and music analysis using advanced algorithms.</p>
+<p>Some of these features may require GPU acceleration or SIMD support, and could demand high computational performance depending on the workload.</p>
+</li>
+</ul>
+</section>
+<section id="use-cases">
+<h2>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading"></a></h2>
+<p>PDJE is ideal for:</p>
+<ul class="simple">
+<li><p><strong>Custom rhythm‑game development</strong> with built‑in mixing</p></li>
+<li><p><strong>Realtime + Pre-made DJ performance</strong></p></li>
+<li><p><strong>In‑game music editors and DAW</strong> for dynamic chart and mixset creation</p></li>
+<li><p><strong>Low Latency Input</strong> for linux(io_uring) and windows(rawinput).</p></li>
+</ul>
+</section>
+<section id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>💻 <strong>GitHub</strong>: <a class="reference external" href="https://github.com/Rliop913/Project_DJ_Engine">https://github.com/Rliop913/Project_DJ_Engine</a></p></li>
+<li><p>📄 <strong>License</strong>: LGPLv2.1 (by SoundTouch License)</p></li>
+<li><p>🎮 <strong>Godot Plugin</strong>: <a class="reference external" href="https://github.com/Rliop913/PDJE_Godot_Plugin">https://github.com/Rliop913/PDJE_Godot_Plugin</a></p></li>
+</ul>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="PDJE_Path.html">PDJE_Path</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Path_To_Core_Engine.html">Path_To_Core_Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path_To_Input_Engine.html">Path_To_Input_Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path_To_Note_Engine.html">Path_To_Note_Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Path_To_Util_Engine.html">Path_To_Util_Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PDJE_Format.html">PDJE_Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="How_To_Use.html">HOW TO USE</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="How_To_Use.html#initialize-pdje-engine">Initialize PDJE Engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="How_To_Use.html#search-track-and-music">Search Track and Music</a></li>
@@ -92,21 +179,25 @@
 <li class="toctree-l2"><a class="reference internal" href="How_To_Use.html#handle-player">Handle Player</a></li>
 <li class="toctree-l2"><a class="reference internal" href="How_To_Use.html#handle-fxcontrolpannel">Handle FXControlPannel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="How_To_Use.html#handle-musiccontrolpannel">Handle MusicControlPannel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="How_To_Use.html#handle-editor">Handle Editor</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/api_root.html#full-api">Full API</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="PDJE_Format.html">PDJE_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
 </ul>
 </div>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="How_To_Use.html" class="btn btn-neutral float-right" title="HOW TO USE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="PDJE_Path.html" class="btn btn-neutral float-right" title="PDJE_Path" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

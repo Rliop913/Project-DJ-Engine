@@ -65,8 +65,23 @@ public:
      */
     bool GenInsertSTMT(stmt& dbstate, sqlite3* db);
 
+    /**
+     * @brief Generates the edit statement.
+     *
+     * @param dbstate The statement pointer.
+     * @param db The root database.
+     * @param toEdit The music data to edit.
+     * @return `true` if the statement was generated successfully, `false` otherwise.
+     */
     bool GenEditSTMT(stmt& dbstate, sqlite3* db, musdata& toEdit);
 
+    /**
+     * @brief Generates the delete statement.
+     *
+     * @param dbstate The statement pointer.
+     * @param db The root database.
+     * @return `true` if the statement was generated successfully, `false` otherwise.
+     */
     bool GenDeleteSTMT(stmt& dbstate, sqlite3* db);
 
 };

@@ -1,0 +1,39 @@
+
+PDJ modules
+================
+
+.. graphviz::
+    diagraph PDJ_modules {
+    PDJE -> core
+    PDJE -> input
+    PDJE -> note
+    PDJE -> util
+    }
+Project dj engine provides 4 moduled library for selective activation
+
+Each module will be communicated with provided data line, and runs with copy-less
+
+
+.. graphviz::
+    diagraph PDJE_core {
+    core -> audioRenderer
+    core -> db
+    core -> editor
+    }
+
+
+This core module is designed to provide practical and usable features for implementing DJing functionality.
+
+It supports the creation and reproduction of DJ mixes, along with real-time interaction capabilities.
+
+The system centrally manages and indexes music tracks, metadata, mixset reconstruction data, and note data suitable for games.
+
+An integrated editor is also included, enabling users to produce and edit these data assets directly.
+
+
+.. graphviz::
+    diagraph PDJE_core {
+    input -> general
+    input -> midi
+    }
+

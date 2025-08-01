@@ -136,4 +136,5 @@ set(INCLUDE_LIST
   ${nlohmann_json_SOURCE_DIR}/include
   ${hwy_SOURCE_DIR}
   ${sql_amalgam_SOURCE_DIR}
+  ${cppcodec_SOURCE_DIR}
   )
