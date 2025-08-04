@@ -26,7 +26,7 @@
  * @tparam Fclass, the base class
  */
 template<typename Fclass>
-class PDJE_API FaustDType : public Fclass{
+class FaustDType : public Fclass{
 private:
     std::vector<float> L;
     std::vector<float> R;
