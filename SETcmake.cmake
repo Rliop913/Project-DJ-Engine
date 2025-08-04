@@ -5,7 +5,7 @@ set(HWY_ENABLE_TESTS OFF)
 set(CAPNP_BUILD_TESTS OFF)
 set(BUILD_TESTING OFF CACHE BOOL "Disable testing")
 if(APPLE)
-set(HWY_ENABLE_TARGETS "scalar,arm64" CACHE STRING "Enabled SIMD targets" FORCE)
+set(HWY_ENABLE_TARGETS "NEON,scalar" CACHE STRING "Enabled SIMD targets" FORCE)
 else()
 set(HWY_ENABLE_TARGETS "scalar,sse4,avx,avx2" CACHE STRING "Enabled SIMD targets" FORCE)
 endif()
@@ -21,7 +21,7 @@ add_compile_options(
 )
 add_compile_options(/W3 /GR /WX-)
 elseif(APPLE)
-
+set(CMAKE_OSX_ARCHITECTURES arm64)
 add_compile_options(
   -mcpu=apple-m1
   -fvectorize

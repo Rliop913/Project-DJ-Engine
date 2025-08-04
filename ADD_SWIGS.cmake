@@ -40,7 +40,7 @@ target_include_directories(${SWIG_MODULE_pdje_python_REAL_NAME}
   PRIVATE ${Python_INCLUDE_DIRS}
 )
 
-target_link_libraries(${SWIG_MODULE_pdje_python_REAL_NAME} PRIVATE nlohmann_json::nlohmann_json Python::Python rocksdb Annoy)
+target_link_libraries(${SWIG_MODULE_pdje_python_REAL_NAME} PRIVATE nlohmann_json::nlohmann_json hwy Python::Python rocksdb Annoy)
 
 # target_link_libraries(${SWIG_MODULE_pdje_go_REAL_NAME} PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy)
 target_link_libraries(${SWIG_MODULE_pdje_csharp_REAL_NAME} PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy)
