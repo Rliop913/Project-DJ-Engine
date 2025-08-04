@@ -25,6 +25,7 @@ swig_add_library(pdje_python
 set_target_properties(${SWIG_MODULE_pdje_python_REAL_NAME} PROPERTIES
   OUTPUT_NAME "_pdje_python"
   LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/swig_python
+  MAP_IMPORTED_CONFIG_DEBUG Release
 )
 
 
@@ -32,6 +33,7 @@ set_target_properties(${SWIG_MODULE_pdje_python_REAL_NAME} PROPERTIES
 set_target_properties(${SWIG_MODULE_pdje_csharp_REAL_NAME} PROPERTIES
   OUTPUT_NAME "libpdje_csharp"
   LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/swig_csharp
+  MAP_IMPORTED_CONFIG_DEBUG Release
 )
 target_include_directories(${SWIG_MODULE_pdje_python_REAL_NAME}
   PRIVATE ${Python_INCLUDE_DIRS}
