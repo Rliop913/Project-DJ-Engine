@@ -51,24 +51,7 @@ FetchContent_Declare(
 include(ExternalProject)
 
 if(WIN32)
-# FetchContent_Declare(
-#     zlib
-#     GIT_REPOSITORY https://github.com/madler/zlib.git
-#     GIT_TAG v1.3.1
-#   )
-#   FetchContent_MakeAvailable(zlib)
-#   set(ZLIB_DEBUG_LIB_PATH   "${zlib_BINARY_DIR}/Debug/zlibd.lib")
-#   set(ZLIB_RELEASE_LIB_PATH "${zlib_BINARY_DIR}/Release/zlib.lib")
-  # include_directories(${zlib_SOURCE_DIR})
-  # include_directories(${zlib_BINARY_DIR})
-  # add_library(zlib_builded STATIC IMPORTED GLOBAL)
-  # target_link_libraries(zlib_builded INTERFACE
-  #   $<$<CONFIG:Debug>:${ZLIB_DEBUG_LIB_PATH}>
-  #   $<$<CONFIG:Release>:${ZLIB_RELEASE_LIB_PATH}>
-  # )
-  # if()
-  # include_directories(${zlib_SOURCE_DIR})
-# if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+
 ExternalProject_Add(
   libgit2
   GIT_REPOSITORY https://github.com/libgit2/libgit2.git
@@ -90,6 +73,7 @@ ExternalProject_Add(
       -DREGEX_BACKEND=builtin
       -DUSE_BUNDLED_ZLIB=ON
       -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+      -DCMAKE_REQUIRED_LIBRARIES=secur32
       # -DZLIB_LIBRARY:FILEPATH=$<IF:$<CONFIG:Debug>,${ZLIB_DEBUG_LIB_PATH},${ZLIB_RELEASE_LIB_PATH}>
 
   BUILD_COMMAND  ${CMAKE_COMMAND} --build . --config $<CONFIG>
