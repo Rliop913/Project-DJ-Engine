@@ -101,9 +101,9 @@ ExternalProject_Add(
     -DUSE_HTTPS=SecureTransport
     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
     -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-    -DCMAKE_EXE_LINKER_FLAGS=-liconv  
-    -DCMAKE_SHARED_LINKER_FLAGS=-liconv  
-    -DCMAKE_MODULE_LINKER_FLAGS=-liconv
+    -DCMAKE_EXE_LINKER_FLAGS=-liconv\ -framework\ CoreFoundation\ -framework\ Security
+    -DCMAKE_SHARED_LINKER_FLAGS=-liconv\ -framework\ CoreFoundation\ -framework\ Security
+    -DCMAKE_MODULE_LINKER_FLAGS=-liconv\ -framework\ CoreFoundation\ -framework\ Security
 
   BUILD_COMMAND cmake --build . --parallel
   INSTALL_DIR "${CMAKE_BINARY_DIR}/libgitbin"

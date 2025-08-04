@@ -55,8 +55,13 @@ add_dependencies(${SWIG_MODULE_pdje_csharp_REAL_NAME}  libgit2_static)
 # target_compile_definitions(${SWIG_MODULE_pdje_csharp_REAL_NAME} PUBLIC PDJE_WINDOWS_DLL)
 # target_compile_definitions(PDJE_dynamic PRIVATE PDJE_BUILDING)
 elseif(APPLE)
-target_link_libraries(${SWIG_MODULE_pdje_python_REAL_NAME} PRIVATE iconv)
+target_link_libraries(${SWIG_MODULE_pdje_python_REAL_NAME} PUBLIC iconv 
+  "-framework CoreFoundation"
+  "-framework Security")
 
-target_link_libraries(${SWIG_MODULE_pdje_csharp_REAL_NAME} PUBLIC iconv)
+target_link_libraries(${SWIG_MODULE_pdje_csharp_REAL_NAME} PUBLIC iconv
+  "-framework CoreFoundation"
+  "-framework Security"
+)
 
 endif()
