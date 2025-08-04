@@ -1,6 +1,11 @@
-# set(CMAKE_SWIG_FLAGS "-I/usr/share/swig/4.3.0" "-cpperraswarn")
+
 set(SWIG_USE_DEBUG_PYTHON OFF)
 set(Python_FIND_DEBUG FALSE)
+
+if (MSVC AND NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_definitions(${SWIG_MODULE_pdje_python_REAL_NAME} PRIVATE -U_DEBUG)
+endif()
+
 swig_add_library(pdje_csharp
   TYPE MODULE
   LANGUAGE CSharp
