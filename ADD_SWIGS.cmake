@@ -2,25 +2,25 @@
 set(SWIG_USE_DEBUG_PYTHON OFF)
 set(Python_FIND_DEBUG FALSE)
 
-if (MSVC AND NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_definitions(${SWIG_MODULE_pdje_python_REAL_NAME} PRIVATE -U_DEBUG)
-endif()
 
 swig_add_library(pdje_csharp
-  TYPE MODULE
-  LANGUAGE CSharp
-  OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/swig_csharp
-  SOURCES PDJE_swig.i ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource} ${nanolog_src}
+TYPE MODULE
+LANGUAGE CSharp
+OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/swig_csharp
+SOURCES PDJE_swig.i ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource} ${nanolog_src}
 )
 find_package(Python REQUIRED COMPONENTS Interpreter Development)
 
 swig_add_library(pdje_python
-  TYPE MODULE
-  LANGUAGE Python
-  OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/swig_python
-  SOURCES PDJE_swig.i ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource} ${nanolog_src}
+TYPE MODULE
+LANGUAGE Python
+OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/swig_python
+SOURCES PDJE_swig.i ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource} ${nanolog_src}
 )
 
+if (MSVC AND NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_definitions(${SWIG_MODULE_pdje_python_REAL_NAME} PRIVATE -U_DEBUG)
+endif()
 # swig_add_library(pdje_go
 #   TYPE STATIC
 #   LANGUAGE go
