@@ -1,7 +1,7 @@
 
 set(SWIG_USE_DEBUG_PYTHON OFF)
 set(Python_FIND_DEBUG FALSE)
-
+add_definitions(-DSWIG_PYTHON_INTERPRETER_NO_DEBUG)
 
 swig_add_library(pdje_csharp
 TYPE MODULE
