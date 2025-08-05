@@ -22,7 +22,7 @@ endif()
 
 
 option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
-
+option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
 
 # link_libraries(${SQLite3_LIBRARIES})
 
@@ -189,9 +189,11 @@ target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy rocks
 
 
 
-if(CMAKE_CFG_INTDIR STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "Release")
+
+if(PDJE_SWIG_BUILD)
 include(ADD_SWIGS.cmake)
 endif()
+
 # enable_testing()
 
 # add_test(NAME DB_TEST COMMAND testdb)
