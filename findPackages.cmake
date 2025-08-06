@@ -11,6 +11,14 @@ FetchContent_Declare(
 # )
 find_package(highway CONFIG REQUIRED)
 
+function(setHighwayReqLib targetName)
+  target_link_libraries(${targetName} PUBLIC
+  highway::hwy
+  )
+  target_include_directories(${targetName} PUBLIC ${highway_INCLUDE_DIR})
+endfunction(setHighwayReqLib)
+
+
 # FetchContent_Declare(
 #   CapnProto
 #   GIT_REPOSITORY https://github.com/capnproto/capnproto.git
@@ -246,7 +254,7 @@ endif()
 # get_cmake_property(_vars VARIABLES)
 
 # foreach(var ${_vars})
-#     if(var MATCHES "^CAPN")
+#     if(var MATCHES "^high")
 #         message(STATUS "환경변수: ${var} = [${${var}}]")
 #     endif()
 # endforeach()
