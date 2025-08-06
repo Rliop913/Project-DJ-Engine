@@ -180,11 +180,11 @@ target_link_libraries(testCapnp PRIVATE nlohmann_json::nlohmann_json hwy rocksdb
 target_link_libraries(testManualAudio PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
 target_link_libraries(testInterface PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
 target_link_libraries(testGIT PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
-endif()
 target_link_libraries(testEditor PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
+endif()
 
 target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
-target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
+target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy rocksdb-shared Annoy spdlog::spdlog)
 
 
 
