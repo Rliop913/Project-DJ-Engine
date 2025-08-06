@@ -78,7 +78,7 @@ jobs:
       shell: cmd
       if: runner.os == 'Windows'
       run: |
-        cd "${GITHUB_WORKSPACE}/Project_DJ_Engine"
+        cd "%GITHUB_WORKSPACE%/Project_DJ_Engine"
         bash BuildInitwithConan.bat .
     - name: init conan
       id: init_conan
