@@ -21,7 +21,7 @@ add_compile_options(
 )
 add_compile_options(/W3 /GR /WX-)
 elseif(APPLE)
-set(CMAKE_OSX_ARCHITECTURES arm64)
+set(CMAKE_OSX_ARCHITECTURES arm64 CACHE STRING "" FORCE)
 add_compile_options(
   -mcpu=apple-m1
   -fvectorize
