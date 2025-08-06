@@ -24,6 +24,7 @@ function(setCapnpReqLib targetName)
   CapnProto::capnp 
   CapnProto::capnpc 
   CapnProto::kj-gzip)
+  target_include_directories(${targetName} PUBLIC ${CAPNP_INCLUDE_DIRECTORY})
 endfunction(setCapnpReqLib)
 
 
@@ -67,9 +68,9 @@ function(setSpdlogReqLib targetName)
 endfunction(setSpdlogReqLib)
 
 
-include(ExternalProject)
+# include(ExternalProject)
 
-if(WIN32)
+# if(WIN32)
 
 # ExternalProject_Add(
 #   libgit2
@@ -110,53 +111,53 @@ endfunction(setLibgit2ReqLib)
 
 # set(OPENSSL_USE_STATIC_LIBS TRUE)
 
-elseif(APPLE)
-ExternalProject_Add(
-  libgit2
-  GIT_REPOSITORY https://github.com/libgit2/libgit2.git
-  GIT_TAG v1.9.0
+# elseif(APPLE)
+# ExternalProject_Add(
+#   libgit2
+#   GIT_REPOSITORY https://github.com/libgit2/libgit2.git
+#   GIT_TAG v1.9.0
 
-  PREFIX "${CMAKE_BINARY_DIR}/_deps"
-  BUILD_IN_SOURCE 0
-  CMAKE_ARGS 
-    -DBUILD_SHARED_LIBS=OFF 
-    -DREGEX_BACKEND=builtin
-    -DUSE_BUNDLED_ZLIB=ON
-    -DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}
-    -DUSE_HTTPS=SecureTransport
-    -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-    -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-    -DCMAKE_EXE_LINKER_FLAGS=-liconv\ -framework\ CoreFoundation\ -framework\ Security
-    -DCMAKE_SHARED_LINKER_FLAGS=-liconv\ -framework\ CoreFoundation\ -framework\ Security
-    -DCMAKE_MODULE_LINKER_FLAGS=-liconv\ -framework\ CoreFoundation\ -framework\ Security
+#   PREFIX "${CMAKE_BINARY_DIR}/_deps"
+#   BUILD_IN_SOURCE 0
+#   CMAKE_ARGS 
+#     -DBUILD_SHARED_LIBS=OFF 
+#     -DREGEX_BACKEND=builtin
+#     -DUSE_BUNDLED_ZLIB=ON
+#     -DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}
+#     -DUSE_HTTPS=SecureTransport
+#     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+#     -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+#     -DCMAKE_EXE_LINKER_FLAGS=-liconv\ -framework\ CoreFoundation\ -framework\ Security
+#     -DCMAKE_SHARED_LINKER_FLAGS=-liconv\ -framework\ CoreFoundation\ -framework\ Security
+#     -DCMAKE_MODULE_LINKER_FLAGS=-liconv\ -framework\ CoreFoundation\ -framework\ Security
 
-  BUILD_COMMAND cmake --build . --parallel
-  INSTALL_DIR "${CMAKE_BINARY_DIR}/libgitbin"
-  INSTALL_COMMAND cmake --install . --prefix "${CMAKE_BINARY_DIR}/libgitbin"
-  BUILD_BYPRODUCTS "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
-)
-else()
-ExternalProject_Add(
-  libgit2
-  GIT_REPOSITORY https://github.com/libgit2/libgit2.git
-  GIT_TAG v1.9.0
+#   BUILD_COMMAND cmake --build . --parallel
+#   INSTALL_DIR "${CMAKE_BINARY_DIR}/libgitbin"
+#   INSTALL_COMMAND cmake --install . --prefix "${CMAKE_BINARY_DIR}/libgitbin"
+#   BUILD_BYPRODUCTS "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
+# )
+# else()
+# ExternalProject_Add(
+#   libgit2
+#   GIT_REPOSITORY https://github.com/libgit2/libgit2.git
+#   GIT_TAG v1.9.0
 
-  PREFIX "${CMAKE_BINARY_DIR}/_deps"
-  BUILD_IN_SOURCE 0
-  CMAKE_ARGS 
-    -DBUILD_SHARED_LIBS=OFF 
-    -DREGEX_BACKEND=builtin
-    -DUSE_BUNDLED_ZLIB=ON
-    -DUSE_HTTPS=OpenSSL
-    -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-    -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+#   PREFIX "${CMAKE_BINARY_DIR}/_deps"
+#   BUILD_IN_SOURCE 0
+#   CMAKE_ARGS 
+#     -DBUILD_SHARED_LIBS=OFF 
+#     -DREGEX_BACKEND=builtin
+#     -DUSE_BUNDLED_ZLIB=ON
+#     -DUSE_HTTPS=OpenSSL
+#     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+#     -DCMAKE_POSITION_INDEPENDENT_CODE=ON
 
-  BUILD_COMMAND cmake --build . --parallel
-  INSTALL_DIR "${CMAKE_BINARY_DIR}/libgitbin"
-  INSTALL_COMMAND cmake --install . --prefix "${CMAKE_BINARY_DIR}/libgitbin"
-  BUILD_BYPRODUCTS "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
-)
-endif()
+#   BUILD_COMMAND cmake --build . --parallel
+#   INSTALL_DIR "${CMAKE_BINARY_DIR}/libgitbin"
+#   INSTALL_COMMAND cmake --install . --prefix "${CMAKE_BINARY_DIR}/libgitbin"
+#   BUILD_BYPRODUCTS "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
+# )
+# endif()
 
 # ExternalProject_Get_Property(libgit2 source_dir binary_dir install_dir)
 # message("환경변수-install: ${install_dir} $<CONFIG>")
@@ -178,18 +179,18 @@ FetchContent_Declare(
 find_package(OpenSSL REQUIRED)
 link_libraries(${OPENSSL_LIBRARIES})
 # link_directories(${install_dir}/lib)
-if(UNIX)
-add_library(libgit2_static STATIC IMPORTED GLOBAL)
+# if(UNIX)
+# add_library(libgit2_static STATIC IMPORTED GLOBAL)
 
-set_target_properties(libgit2_static PROPERTIES
-  IMPORTED_LOCATION "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
-  # INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_BINARY_DIR}/libgitbin/include"
-)
-add_dependencies(libgit2_static libgit2)
+# set_target_properties(libgit2_static PROPERTIES
+#   IMPORTED_LOCATION "${CMAKE_BINARY_DIR}/libgitbin/lib/libgit2.a"
+#   # INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_BINARY_DIR}/libgitbin/include"
+# )
+# add_dependencies(libgit2_static libgit2)
 
 
-link_libraries(libgit2_static)
-else()
+# link_libraries(libgit2_static)
+# else()
 # add_library(libgit2_static STATIC IMPORTED GLOBAL)
 
 # add_dependencies(libgit2_static libgit2)
@@ -211,7 +212,7 @@ else()
 #   $<$<CONFIG:Release>:${install_dir}/src/libgit2-build/Release/git2.lib>
 # )
 # link_libraries("$<$<CONFIG:Debug>:${install_dir}/src/libgit2-build/Debug/git2.lib>$<$<CONFIG:Release>:${install_dir}/src/libgit2-build/Release/git2.lib>")
-endif()
+# endif()
 # add_library(libgit2_static INTERFACE IMPORTED GLOBAL)
 
 # add_dependencies(libgit2_static libgit2)
@@ -242,13 +243,13 @@ set_target_properties(rocksdb PROPERTIES
   COMPILE_FLAGS "/wd4702 /WX-"
 )
 endif()
-get_cmake_property(_vars VARIABLES)
+# get_cmake_property(_vars VARIABLES)
 
-foreach(var ${_vars})
-    if(var MATCHES "^lib")
-        message(STATUS "환경변수: ${var} = [${${var}}]")
-    endif()
-endforeach()
+# foreach(var ${_vars})
+#     if(var MATCHES "^CAPN")
+#         message(STATUS "환경변수: ${var} = [${${var}}]")
+#     endif()
+# endforeach()
 include_directories(${nlohmann_json_SOURCE_DIR}/include)
 # include_directories(${hwy_SOURCE_DIR})
 include_directories(${sql_amalgam_SOURCE_DIR})
