@@ -184,10 +184,11 @@ target_link_libraries(testEditor PRIVATE nlohmann_json::nlohmann_json hwy rocksd
 endif()
 
 target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
+if(WIN32)
 target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy rocksdb-shared Annoy spdlog::spdlog)
-
-
-
+else()
+target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
+endif()
 
 
 if(PDJE_SWIG_BUILD)
