@@ -1,10 +1,10 @@
-
 include(SETcmake.cmake)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # set(CMAKE_CXX_EXTENSIONS OFF) # optional: -std=c++20 instead of -std=gnu++20
 cmake_minimum_required(VERSION 3.12)
+cmake_policy(SET CMP0091 NEW)
 project(
   PDJE
   VERSION 0.1
@@ -29,7 +29,7 @@ option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
 if(WIN32)
   include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/windows
-    ${CAPNP_INCLUDE_DIRS}
+    # ${CAPNP_INCLUDE_DIRS}
   )
 elseif(UNIX AND NOT APPLE)
   find_package(PkgConfig REQUIRED)
@@ -60,10 +60,10 @@ include(DBsrc.cmake)
 include(AUDIOsrc.cmake)
 include(EDITORsrc.cmake)
 if(WIN32)
-link_libraries(
-  CapnProto::kj 
-  CapnProto::capnp 
-)
+# link_libraries(
+#   CapnProto::kj 
+#   CapnProto::capnp 
+# )
 else()
 link_libraries(
   CapnProto::kj 
@@ -94,18 +94,18 @@ add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource
 
 
 add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
-endif(PDJE_BUILD_TESTS)
 add_executable(testEditor include/tests/editorTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
+add_library(PDJE_dynamic SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
+endif(PDJE_BUILD_TESTS)
 # add_executable(testLogger include/tests/logTest.cpp )
 
 add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
-add_library(PDJE_dynamic SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
 target_include_directories(PDJE PUBLIC ${INCLUDE_LIST})
-target_include_directories(PDJE_dynamic PUBLIC ${INCLUDE_LIST})
+# target_include_directories(PDJE_dynamic PUBLIC ${INCLUDE_LIST})
 
 if(WIN32)
-target_compile_definitions(PDJE_dynamic PUBLIC PDJE_WINDOWS_DLL)
-target_compile_definitions(PDJE_dynamic PRIVATE PDJE_BUILDING)
+# target_compile_definitions(PDJE_dynamic PUBLIC PDJE_WINDOWS_DLL)
+# target_compile_definitions(PDJE_dynamic PRIVATE PDJE_BUILDING)
 endif()
 
 if(WIN32)
@@ -130,12 +130,12 @@ if(WIN32)
   target_link_libraries(testGIT PRIVATE libgit2_static winhttp crypt32 rpcrt4 secur32  )
   add_dependencies(testGIT  libgit2_static)
   endif()
-  target_link_libraries(testEditor PRIVATE libgit2_static winhttp crypt32 rpcrt4 secur32  )
-  add_dependencies(testEditor libgit2_static)
-  target_link_libraries(PDJE PUBLIC libgit2_static winhttp crypt32 rpcrt4 secur32 )
-  add_dependencies(PDJE libgit2_static)
-  target_link_libraries(PDJE_dynamic PUBLIC libgit2_static winhttp crypt32 rpcrt4 secur32 )
-  add_dependencies(PDJE_dynamic libgit2_static)
+  # target_link_libraries(testEditor PRIVATE libgit2_static winhttp crypt32 rpcrt4 secur32  )
+  # add_dependencies(testEditor libgit2_static)
+  # target_link_libraries(PDJE PUBLIC libgit2_static winhttp crypt32 rpcrt4 secur32 )
+  # add_dependencies(PDJE libgit2_static)
+  # target_link_libraries(PDJE_dynamic PUBLIC libgit2_static winhttp crypt32 rpcrt4 secur32 )
+  # add_dependencies(PDJE_dynamic libgit2_static)
 elseif(UNIX AND NOT APPLE)
   # add_executable(EvdevAccModule include/input/linux/LINUX_SUDO_GETTER.cpp)
   # add_dependencies(EvdevAccModule libgit2)
@@ -173,22 +173,25 @@ target_link_libraries(PDJE_dynamic PUBLIC iconv "-framework CoreFoundation" "-fr
 endif()
 
 if(PDJE_BUILD_TESTS)
-target_link_libraries(testHighway PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
-target_link_libraries(testdb PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
-target_link_libraries(testaudio PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
-target_link_libraries(testCapnp PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
-target_link_libraries(testManualAudio PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
-target_link_libraries(testInterface PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
-target_link_libraries(testGIT PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
-target_link_libraries(testEditor PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
+target_link_libraries(testHighway PRIVATE nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
+target_link_libraries(testdb PRIVATE nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
+target_link_libraries(testaudio PRIVATE nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
+target_link_libraries(testCapnp PRIVATE nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
+target_link_libraries(testManualAudio PRIVATE nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
+target_link_libraries(testInterface PRIVATE nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
+target_link_libraries(testGIT PRIVATE nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
+target_link_libraries(testEditor PRIVATE nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
 endif()
 
-target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
-if(WIN32)
-target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy rocksdb-shared Annoy spdlog::spdlog)
-else()
-target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy rocksdb Annoy spdlog::spdlog)
-endif()
+target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
+setSpdlogReqLib(PDJE)
+setCapnpReqLib(PDJE)
+setLibgit2ReqLib(PDJE)
+# if(WIN32)
+# target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy::hwy rocksdb-shared Annoy::Annoy)
+# else()
+# target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
+# endif()
 
 
 if(PDJE_SWIG_BUILD)

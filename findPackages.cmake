@@ -1,21 +1,31 @@
-
 FetchContent_Declare(
   miniaudio
   GIT_REPOSITORY https://github.com/mackron/miniaudio.git
   GIT_TAG 0.11.21
 )
 
-FetchContent_Declare(
-  highway
-  GIT_REPOSITORY https://github.com/google/highway.git
-  GIT_TAG 1.2.0
-)
+# FetchContent_Declare(
+#   highway
+#   GIT_REPOSITORY https://github.com/google/highway.git
+#   GIT_TAG 1.2.0
+# )
+find_package(highway CONFIG REQUIRED)
 
-FetchContent_Declare(
-  CapnProto
-  GIT_REPOSITORY https://github.com/capnproto/capnproto.git
-  GIT_TAG v1.1.0
-)
+# FetchContent_Declare(
+#   CapnProto
+#   GIT_REPOSITORY https://github.com/capnproto/capnproto.git
+#   GIT_TAG v1.1.0
+# )
+find_package(CapnProto CONFIG REQUIRED)
+
+function(setCapnpReqLib targetName)
+  target_link_libraries(${targetName} PUBLIC 
+  CapnProto::kj 
+  CapnProto::capnp 
+  CapnProto::capnpc 
+  CapnProto::kj-gzip)
+endfunction(setCapnpReqLib)
+
 
 FetchContent_Declare(
   NHJson
@@ -34,56 +44,66 @@ FetchContent_Declare(
   GIT_TAG v0.2
 )
 
-FetchContent_Declare(
-  annoy
-  GIT_REPOSITORY https://github.com/spotify/annoy.git
-  GIT_TAG v1.17.3
-)
+# FetchContent_Declare(
+#   annoy
+#   GIT_REPOSITORY https://github.com/spotify/annoy.git
+#   GIT_TAG v1.17.3
+# )
+find_package(Annoy CONFIG REQUIRED)
 
+# FetchContent_Declare(
+#   spdlog
+#   GIT_REPOSITORY https://github.com/gabime/spdlog.git
+#   GIT_TAG v1.15.3
+# )
+find_package(spdlog CONFIG REQUIRED)
 
-FetchContent_Declare(
-  spdlog
-  GIT_REPOSITORY https://github.com/gabime/spdlog.git
-  GIT_TAG v1.15.3
-)
+function(setSpdlogReqLib targetName)
+  target_link_libraries(${targetName} PUBLIC spdlog::spdlog_header_only)
+endfunction(setSpdlogReqLib)
 
 
 include(ExternalProject)
 
 if(WIN32)
 
-ExternalProject_Add(
-  libgit2
-  GIT_REPOSITORY https://github.com/libgit2/libgit2.git
-  GIT_TAG v1.9.0
+# ExternalProject_Add(
+#   libgit2
+#   GIT_REPOSITORY https://github.com/libgit2/libgit2.git
+#   GIT_TAG v1.9.0
   
-  PREFIX "${CMAKE_BINARY_DIR}/_deps"
-  BUILD_IN_SOURCE 0
-  # DEPENDS        zlib
-  CONFIGURE_COMMAND
-    ${CMAKE_COMMAND}
-      -G "${CMAKE_GENERATOR}"
-      -A "${CMAKE_GENERATOR_PLATFORM}"
-      -S <SOURCE_DIR>
-      -B <BINARY_DIR>
-      -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
-      -DBUILD_SHARED_LIBS=OFF
-      -DUSE_HTTPS=OpenSSL
-      -DREGEX_BACKEND=builtin
-      -DUSE_BUNDLED_ZLIB=ON
-      -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-      -DCMAKE_REQUIRED_LIBRARIES=secur32
-      # -DZLIB_LIBRARY:FILEPATH=$<IF:$<CONFIG:Debug>,${ZLIB_DEBUG_LIB_PATH},${ZLIB_RELEASE_LIB_PATH}>
+#   PREFIX "${CMAKE_BINARY_DIR}/_deps"
+#   BUILD_IN_SOURCE 0
+#   # DEPENDS        zlib
+#   CONFIGURE_COMMAND
+#     ${CMAKE_COMMAND}
+#       -G "${CMAKE_GENERATOR}"
+#       -A "${CMAKE_GENERATOR_PLATFORM}"
+#       -S <SOURCE_DIR>
+#       -B <BINARY_DIR>
+#       -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+#       -DBUILD_SHARED_LIBS=OFF
+#       -DUSE_HTTPS=OpenSSL
+#       -DREGEX_BACKEND=builtin
+#       -DUSE_BUNDLED_ZLIB=ON
+#       -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+#       -DCMAKE_REQUIRED_LIBRARIES=secur32
+#       # -DZLIB_LIBRARY:FILEPATH=$<IF:$<CONFIG:Debug>,${ZLIB_DEBUG_LIB_PATH},${ZLIB_RELEASE_LIB_PATH}>
 
-  BUILD_COMMAND  ${CMAKE_COMMAND} --build . --config $<CONFIG>
-  INSTALL_COMMAND ${CMAKE_COMMAND} --install . --config $<CONFIG>
-)
+#   BUILD_COMMAND  ${CMAKE_COMMAND} --build . --config $<CONFIG>
+#   INSTALL_COMMAND ${CMAKE_COMMAND} --install . --config $<CONFIG>
+# )
+find_package(libgit2 CONFIG REQUIRED)
+function(setLibgit2ReqLib targetName)
+  target_link_libraries(${targetName} PUBLIC libgit2::libgit2package)
+endfunction(setLibgit2ReqLib)
+
 # link_libraries(
 #   debug "${ZLIB_DEBUG_LIB_PATH}"
 #   optimized "${ZLIB_RELEASE_LIB_PATH}"
 # )
 
-set(OPENSSL_USE_STATIC_LIBS TRUE)
+# set(OPENSSL_USE_STATIC_LIBS TRUE)
 
 elseif(APPLE)
 ExternalProject_Add(
@@ -133,7 +153,7 @@ ExternalProject_Add(
 )
 endif()
 
-ExternalProject_Get_Property(libgit2 source_dir binary_dir install_dir)
+# ExternalProject_Get_Property(libgit2 source_dir binary_dir install_dir)
 # message("환경변수-install: ${install_dir} $<CONFIG>")
 
 
@@ -165,15 +185,15 @@ add_dependencies(libgit2_static libgit2)
 
 link_libraries(libgit2_static)
 else()
-add_library(libgit2_static STATIC IMPORTED GLOBAL)
+# add_library(libgit2_static STATIC IMPORTED GLOBAL)
 
-add_dependencies(libgit2_static libgit2)
+# add_dependencies(libgit2_static libgit2)
 
-set_target_properties(libgit2_static PROPERTIES
-    IMPORTED_LOCATION_DEBUG   "${install_dir}/src/libgit2-build/Debug/git2.lib"
-  IMPORTED_LOCATION_RELEASE "${install_dir}/src/libgit2-build/Release/git2.lib"
-  INTERFACE_INCLUDE_DIRECTORIES "${source_dir}"
-)
+# set_target_properties(libgit2_static PROPERTIES
+#     IMPORTED_LOCATION_DEBUG   "${install_dir}/src/libgit2-build/Debug/git2.lib"
+#   IMPORTED_LOCATION_RELEASE "${install_dir}/src/libgit2-build/Release/git2.lib"
+#   INTERFACE_INCLUDE_DIRECTORIES "${source_dir}"
+# )
 # file(GLOB LIBGIT2_LIBRARIES "${CMAKE_BINARY_DIR}/src/libgit2-build/${CMAKE_BUILD_TYPE}/git2.lib")
 # link_libraries(${CMAKE_BINARY_DIR}/src/libgit2-build/${CMAKE_BUILD_TYPE}/git2.lib)
 # link_libraries(
@@ -200,18 +220,18 @@ endif()
 # message(${LIBGIT2_INCLUDE_DIR})
 # link_libraries(libgit2)
 # message("LOCATION위치: ${install_dir}/include")
-include_directories(${install_dir}/include)
+# include_directories(${install_dir}/include)
 # find_package(SQLite3 REQUIRED)
 
-FetchContent_MakeAvailable(CapnProto)
+# FetchContent_MakeAvailable(CapnProto)
 FetchContent_MakeAvailable(miniaudio)
-FetchContent_MakeAvailable(highway)
+# FetchContent_MakeAvailable(highway)
 FetchContent_MakeAvailable(NHJson)
 FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
 FetchContent_MakeAvailable(rocksDB)
-FetchContent_MakeAvailable(annoy)
-FetchContent_MakeAvailable(spdlog)
+# FetchContent_MakeAvailable(annoy)
+# FetchContent_MakeAvailable(spdlog)
 if(WIN32)
 set_target_properties(rocksdb PROPERTIES
   COMPILE_FLAGS "/wd4702 /WX-"
@@ -225,22 +245,22 @@ get_cmake_property(_vars VARIABLES)
 #     endif()
 # endforeach()
 include_directories(${nlohmann_json_SOURCE_DIR}/include)
-include_directories(${hwy_SOURCE_DIR})
+# include_directories(${hwy_SOURCE_DIR})
 include_directories(${sql_amalgam_SOURCE_DIR})
 include_directories(${cppcodec_SOURCE_DIR})
-include_directories(${spdlog_SOURCE_DIR}/include)
+# include_directories(${spdlog_SOURCE_DIR}/include)
 include_directories(${rocksdb_SOURCE_DIR}/include)
 
 # message(${nanolog_SOURCE_DIR})
 # include_directories(${nanolog_SOURCE_DIR})
 # link_libraries(${hwy_BINARY_DIR}/libhwy.a)
 # include_directories(${libgit2_INCLUDE_DIRS})
-set_target_properties(
-  capnp
-  capnpc
-  kj
-  capnp-json
-  PROPERTIES POSITION_INDEPENDENT_CODE ON
-)
+# set_target_properties(
+#   capnp
+#   capnpc
+#   kj
+#   capnp-json
+#   PROPERTIES POSITION_INDEPENDENT_CODE ON
+# )
 find_package(SWIG REQUIRED)
 include(UseSWIG)
