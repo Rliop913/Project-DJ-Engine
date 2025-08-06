@@ -78,8 +78,8 @@ jobs:
       shell: pwsh
       if: runner.os == 'Windows'
       run: |
-        echo $env:GITHUB_WORKSPACE
-        BuildInitwithConan.bat .
+        cd "$env:GITHUB_WORKSPACE"
+        ./BuildInitwithConan.bat .
     - name: init conan
       id: init_conan
       shell: bash
