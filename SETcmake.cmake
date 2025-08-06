@@ -1,3 +1,6 @@
+if(MSVC)
+set(CMAKE_INCLUDE_SYSTEM_FLAG_MSVC "")
+endif()
 set(cmake_cxx_standard 20)
 set(cmake_cxx_flags -std=c++20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -16,6 +19,7 @@ set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
 
 
 if(MSVC)
+set(CMAKE_INCLUDE_SYSTEM_FLAG_MSVC "")
 add_compile_options(
     /arch:AVX2
 )

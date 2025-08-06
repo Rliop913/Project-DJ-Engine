@@ -100,7 +100,7 @@ endif(PDJE_BUILD_TESTS)
 # add_executable(testLogger include/tests/logTest.cpp )
 
 add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
-target_include_directories(PDJE PUBLIC ${INCLUDE_LIST})
+# target_include_directories(PDJE PUBLIC ${INCLUDE_LIST})
 # target_include_directories(PDJE_dynamic PUBLIC ${INCLUDE_LIST})
 
 if(WIN32)
@@ -183,7 +183,7 @@ target_link_libraries(testGIT PRIVATE nlohmann_json::nlohmann_json hwy::hwy rock
 target_link_libraries(testEditor PRIVATE nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
 endif()
 
-target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
+target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json highway::hwy rocksdb Annoy::Annoy)
 setSpdlogReqLib(PDJE)
 setCapnpReqLib(PDJE)
 setLibgit2ReqLib(PDJE)

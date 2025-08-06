@@ -56,10 +56,14 @@ find_package(Annoy CONFIG REQUIRED)
 #   GIT_REPOSITORY https://github.com/gabime/spdlog.git
 #   GIT_TAG v1.15.3
 # )
+
+
 find_package(spdlog CONFIG REQUIRED)
 
 function(setSpdlogReqLib targetName)
   target_link_libraries(${targetName} PUBLIC spdlog::spdlog_header_only)
+  target_compile_definitions(${targetName} PUBLIC SPDLOG_USE_STD_FORMAT)
+  target_include_directories(${targetName} PUBLIC ${spdlog_INCLUDE_DIR})
 endfunction(setSpdlogReqLib)
 
 
@@ -95,7 +99,8 @@ if(WIN32)
 # )
 find_package(libgit2 CONFIG REQUIRED)
 function(setLibgit2ReqLib targetName)
-  target_link_libraries(${targetName} PUBLIC libgit2::libgit2package)
+  target_link_libraries(${targetName} PUBLIC libgit2::libgit2)
+  target_include_directories(${targetName} PUBLIC ${libgit2_INCLUDE_DIR})
 endfunction(setLibgit2ReqLib)
 
 # link_libraries(
@@ -239,11 +244,11 @@ set_target_properties(rocksdb PROPERTIES
 endif()
 get_cmake_property(_vars VARIABLES)
 
-# foreach(var ${_vars})
-#     if(var MATCHES "^rock")
-#         message(STATUS "환경변수: ${var} = [${${var}}]")
-#     endif()
-# endforeach()
+foreach(var ${_vars})
+    if(var MATCHES "^lib")
+        message(STATUS "환경변수: ${var} = [${${var}}]")
+    endif()
+endforeach()
 include_directories(${nlohmann_json_SOURCE_DIR}/include)
 # include_directories(${hwy_SOURCE_DIR})
 include_directories(${sql_amalgam_SOURCE_DIR})

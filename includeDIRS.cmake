@@ -26,7 +26,7 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/include/ERR
 	${miniaudio_SOURCE_DIR}/extras/miniaudio_split
   ${SQLite3_INCLUDE_DIR}
-  ${highway_INCLUDE_DIR}
+  # ${highway_INCLUDE_DIR}
 
 	${CMAKE_CURRENT_SOURCE_DIR}/third_party/SoundTouch/soundtouch_include
 	${CMAKE_CURRENT_SOURCE_DIR}/third_party/Faust/compiled
