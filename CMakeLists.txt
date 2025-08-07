@@ -93,6 +93,7 @@ add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_s
 add_executable(testEditor include/tests/editorTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
 endif(PDJE_BUILD_TESTS)
 # add_executable(testLogger include/tests/logTest.cpp )
+message("PDJE_LIST : ${PDJE_INCLUDE_LIST}")
 if(PDJE_DYNAMIC)
 add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_LIST})
