@@ -94,7 +94,6 @@ set(INCLUDE_LIST
   ${CMAKE_CURRENT_SOURCE_DIR}/include/db/Capnp/Translators/NoteTranslator
 
   ${CMAKE_CURRENT_SOURCE_DIR}/third_party/Capnp
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/ERR
 	${miniaudio_SOURCE_DIR}/extras/miniaudio_split
   ${SQLite3_INCLUDE_DIR}
   ${highway_INCLUDE_DIR}
@@ -134,7 +133,7 @@ set(INCLUDE_LIST
   ${CMAKE_CURRENT_SOURCE_DIR}/include/editor/renderer
   ${install_dir}/include
   ${nlohmann_json_SOURCE_DIR}/include
-  ${hwy_SOURCE_DIR}
+  # ${hwy_SOURCE_DIR}
   ${sql_amalgam_SOURCE_DIR}
   ${cppcodec_SOURCE_DIR}
   )

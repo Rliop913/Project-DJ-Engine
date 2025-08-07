@@ -94,13 +94,13 @@ add_executable(testEditor include/tests/editorTest.cpp ${editorSource} ${sql_ama
 endif(PDJE_BUILD_TESTS)
 # add_executable(testLogger include/tests/logTest.cpp )
 if(PDJE_DYNAMIC)
-add_library(PDJE_shared SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
+add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
+target_include_directories(PDJE PUBLIC ${INCLUDE_LIST})
 else()
 add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
+target_include_directories(PDJE PUBLIC ${INCLUDE_LIST})
 endif()
 
-# target_include_directories(PDJE PUBLIC ${INCLUDE_LIST})
-# target_include_directories(PDJE_dynamic PUBLIC ${INCLUDE_LIST})
 
 
 # if(WIN32)
@@ -178,19 +178,11 @@ target_link_libraries(testGIT PRIVATE nlohmann_json::nlohmann_json hwy::hwy rock
 target_link_libraries(testEditor PRIVATE nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
 endif()
 
-if(PDJE_DYNAMIC)
-target_link_libraries(PDJE_shared PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
-setSpdlogReqLib(PDJE_shared)
-setCapnpReqLib(PDJE_shared)
-setLibgit2ReqLib(PDJE_shared)
-setHighwayReqLib(PDJE_shared)
-else()
 target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
 setSpdlogReqLib(PDJE)
 setCapnpReqLib(PDJE)
 setLibgit2ReqLib(PDJE)
 setHighwayReqLib(PDJE)
-endif()
 
 if(PDJE_SWIG_BUILD)
 include(ADD_SWIGS.cmake)
