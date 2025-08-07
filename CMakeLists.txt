@@ -2,7 +2,6 @@ include(SETcmake.cmake)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# set(CMAKE_CXX_EXTENSIONS OFF) # optional: -std=c++20 instead of -std=gnu++20
 cmake_minimum_required(VERSION 3.12)
 cmake_policy(SET CMP0091 NEW)
 project(
@@ -14,17 +13,26 @@ Include(FetchContent)
 include(findPackages.cmake)
 
 if(WIN32)
-  # find_package(hwy REQUIRED)
   add_compile_definitions(__WINDOWS__)
   add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
+  
 else()
 endif()
 
 
 option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
 option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
+option(PDJE_DYNAMIC "Make Shared Library" OFF)
 
 # link_libraries(${SQLite3_LIBRARIES})
+
+if(PDJE_DYNAMIC)
+  if(WIN32)
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
+  else()
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+  endif()
+endif()
 
 if(WIN32)
   include_directories(
@@ -59,19 +67,7 @@ include(includeDIRS.cmake)
 include(DBsrc.cmake)
 include(AUDIOsrc.cmake)
 include(EDITORsrc.cmake)
-if(WIN32)
-# link_libraries(
-#   CapnProto::kj 
-#   CapnProto::capnp 
-# )
-else()
-link_libraries(
-  CapnProto::kj 
-  CapnProto::capnp 
-  # CapnProto::kj-gzip
-)
 
-endif()
 
 
 if(PDJE_BUILD_TESTS)
@@ -95,18 +91,17 @@ add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource
 
 add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
 add_executable(testEditor include/tests/editorTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
-add_library(PDJE_dynamic SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
 endif(PDJE_BUILD_TESTS)
 # add_executable(testLogger include/tests/logTest.cpp )
-
+if(PDJE_DYNAMIC)
+add_library(PDJE_shared SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
+else()
 add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
+endif()
+
 # target_include_directories(PDJE PUBLIC ${INCLUDE_LIST})
 # target_include_directories(PDJE_dynamic PUBLIC ${INCLUDE_LIST})
 
-if(WIN32)
-# target_compile_definitions(PDJE_dynamic PUBLIC PDJE_WINDOWS_DLL)
-# target_compile_definitions(PDJE_dynamic PRIVATE PDJE_BUILDING)
-endif()
 
 # if(WIN32)
 
@@ -183,17 +178,19 @@ target_link_libraries(testGIT PRIVATE nlohmann_json::nlohmann_json hwy::hwy rock
 target_link_libraries(testEditor PRIVATE nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
 endif()
 
+if(PDJE_DYNAMIC)
+target_link_libraries(PDJE_shared PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
+setSpdlogReqLib(PDJE_shared)
+setCapnpReqLib(PDJE_shared)
+setLibgit2ReqLib(PDJE_shared)
+setHighwayReqLib(PDJE_shared)
+else()
 target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
 setSpdlogReqLib(PDJE)
 setCapnpReqLib(PDJE)
 setLibgit2ReqLib(PDJE)
 setHighwayReqLib(PDJE)
-# if(WIN32)
-# target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy::hwy rocksdb-shared Annoy::Annoy)
-# else()
-# target_link_libraries(PDJE_dynamic PUBLIC nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
-# endif()
-
+endif()
 
 if(PDJE_SWIG_BUILD)
 include(ADD_SWIGS.cmake)
