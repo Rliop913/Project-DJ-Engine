@@ -86,7 +86,6 @@ set(PDJE_INCLUDE_LIST
 
   ${CMAKE_CURRENT_SOURCE_DIR}/include/audioRender/ManualMix
   ${CMAKE_CURRENT_SOURCE_DIR}/include/audioRender/ManualMix/ManualFausts
-  
   ${CMAKE_CURRENT_SOURCE_DIR}/include/db/Capnp/CapnpBinary
   ${CMAKE_CURRENT_SOURCE_DIR}/include/db/Capnp/Translators
   ${CMAKE_CURRENT_SOURCE_DIR}/include/db/Capnp/Translators/MixTranslator
