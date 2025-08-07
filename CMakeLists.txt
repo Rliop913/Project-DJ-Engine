@@ -95,10 +95,10 @@ endif(PDJE_BUILD_TESTS)
 # add_executable(testLogger include/tests/logTest.cpp )
 if(PDJE_DYNAMIC)
 add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
-target_include_directories(PDJE PUBLIC ${INCLUDE_LIST})
+target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_LIST})
 else()
 add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
-target_include_directories(PDJE PUBLIC ${INCLUDE_LIST})
+target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_LIST})
 endif()
 
 

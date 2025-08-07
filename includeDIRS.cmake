@@ -70,7 +70,7 @@ include_directories(
 )
 
 
-set(INCLUDE_LIST
+set(PDJE_INCLUDE_LIST
     ${CMAKE_CURRENT_SOURCE_DIR}/include
   ${CMAKE_CURRENT_SOURCE_DIR}/include/db
   ${CMAKE_CURRENT_SOURCE_DIR}/include/audioRender
@@ -131,9 +131,8 @@ set(INCLUDE_LIST
   ${CMAKE_CURRENT_SOURCE_DIR}/include/editor/featureWrapper/JSONWrap
   ${CMAKE_CURRENT_SOURCE_DIR}/include/editor/objects
   ${CMAKE_CURRENT_SOURCE_DIR}/include/editor/renderer
-  ${install_dir}/include
+  
   ${nlohmann_json_SOURCE_DIR}/include
-  # ${hwy_SOURCE_DIR}
   ${sql_amalgam_SOURCE_DIR}
   ${cppcodec_SOURCE_DIR}
   )
