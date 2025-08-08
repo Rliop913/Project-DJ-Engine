@@ -8,10 +8,10 @@ jobs:
     name: auto trig
     runs-on: ubuntu-latest
     env:
-      GH_TOKEN: ${{ secrets.PDJE_TRIG_TOKEN }}
+      GH_TOKEN: ${{ secrets.PDJE_AUTO_TRIG }}
     steps:
       - name: trig start
-      - run: |
+        run: |
           gh workflow run autouploadtest.yml \
             --repo Rliop913/PDJE_Godot_Plugin \
             --ref master
