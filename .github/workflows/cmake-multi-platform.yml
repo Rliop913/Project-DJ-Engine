@@ -26,7 +26,7 @@ jobs:
             c_compiler: clang
             cpp_compiler: clang++
             build_type: Release
-          - os: macos-latest
+          - os: macOS-14
             c_compiler: clang
             cpp_compiler: clang++
             build_type: Release
@@ -62,7 +62,7 @@ jobs:
     - name: set macos Swig
       id: set_macos_swig
       shell: bash
-      if: runner.os == 'macos'
+      if: runner.os == 'macOS'
       run: |
         brew install swig ccache
 
