@@ -92,7 +92,6 @@ add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource
 add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
 add_executable(testEditor include/tests/editorTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
 endif(PDJE_BUILD_TESTS)
-# add_executable(testLogger include/tests/logTest.cpp )
 
 if(PDJE_DYNAMIC)
 add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
@@ -188,6 +187,14 @@ setSpdlogReqLib(PDJE)
 setCapnpReqLib(PDJE)
 setLibgit2ReqLib(PDJE)
 setHighwayReqLib(PDJE)
+
+
+# target_link_libraries(testEditor PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
+# setSpdlogReqLib(testEditor)
+# setCapnpReqLib(testEditor)
+# setLibgit2ReqLib(testEditor)
+# setHighwayReqLib(testEditor)
+
 
 if(PDJE_SWIG_BUILD)
 include(ADD_SWIGS.cmake)
