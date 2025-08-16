@@ -38,7 +38,7 @@ cmake --build . --config Release --parallel #add your maximum number of cores
 
 ## Dependencies
 
-This project uses the following dependencies, which are automatically fetched using `FetchContent` or `ExternalProject_Add`:
+This project uses the following dependencies, which are automatically fetched using `FetchContent` or `Conan`:
 
 - **[miniaudio](https://github.com/mackron/miniaudio)**: Audio playback and capture library.
 - **[highway](https://github.com/google/highway)**: High-performance SIMD library.
