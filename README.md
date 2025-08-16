@@ -36,6 +36,13 @@ cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="../conan_cmakes/cona
 cmake --build . --config Release --parallel #add your maximum number of cores
 ```
 
+> ⚠️ **WARNING**  
+> To change the build type (Debug/Release) or switch between static and dynamic builds,  
+> you must re-run the `BuildInitwithConan` script with the new options.  
+> Otherwise, Conan dependencies may not be configured correctly.
+
+
+
 ## Dependencies
 
 This project uses the following dependencies, which are automatically fetched using `FetchContent` or `Conan`:
