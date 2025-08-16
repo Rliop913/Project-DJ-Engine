@@ -14,16 +14,27 @@ Prerequisites:
 - CMake 3.12 or later
 - SWIG
 - OpenSSL
-
+- [Conan](https://conan.io/)
+  
 To build the engine:
 
+on linux & macos
 ```bash
+bash ./BuildInitwithConan.sh . Release
 mkdir build
 cd build
-cmake ..
-cmake --build . --parallel
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="conan_cmakes/conan_toolchain.cmake" -DPDJE_DYNAMIC=OFF #to get dynamic library, change here
+cmake --build . --parallel #add your maximum number of cores
 ```
-
+on windows
+```cmd
+./BuildInitwithConan.bat . static Release
+::to get dynamic library, change static into dynamic
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="conan_cmakes/conan_toolchain.cmake" -DPDJE_DYNAMIC=OFF #to get dynamic library, change here
+cmake --build . --config Release --parallel #add your maximum number of cores
+```
 
 ## Dependencies
 
