@@ -1,4 +1,4 @@
-include(SETcmake.cmake)
+include(cmakes/SETcmake.cmake)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -10,7 +10,7 @@ project(
   LANGUAGES C CXX)
 
 Include(FetchContent)
-include(findPackages.cmake)
+include(cmakes/findPackages.cmake)
 
 if(WIN32)
   add_compile_definitions(__WINDOWS__)
@@ -62,11 +62,11 @@ elseif(APPLE)
 
 endif()
 
-include(thirdPartySource.cmake)
-include(includeDIRS.cmake)
-include(DBsrc.cmake)
-include(AUDIOsrc.cmake)
-include(EDITORsrc.cmake)
+include(cmakes/src/thirdPartySource.cmake)
+include(cmakes/includeDIRS.cmake)
+include(cmakes/src/DBsrc.cmake)
+include(cmakes/src/AUDIOsrc.cmake)
+include(cmakes/src/EDITORsrc.cmake)
 
 
 
@@ -95,81 +95,16 @@ endif(PDJE_BUILD_TESTS)
 
 if(PDJE_DYNAMIC)
 add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
-target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_LIST})
+target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
 if(WIN32)
   target_compile_definitions(PDJE PUBLIC PDJE_WINDOWS_DLL)
   target_compile_definitions(PDJE PRIVATE PDJE_BUILDING)
 endif()
 else()
 add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
-target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_LIST})
+target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
 endif()
 
-
-
-# if(WIN32)
-
-#   # link_libraries(
-#   #   debug "${zlib_BINARY_DIR}/Debug/zlibd.lib"
-#   #   optimized "${zlib_BINARY_DIR}/Release/zlib.lib"
-#   # )
-#   if(PDJE_BUILD_TESTS)
-#   target_link_libraries(testHighway PRIVATE libgit2_static winhttp crypt32 rpcrt4 secur32  )
-#   add_dependencies(testHighway  libgit2_static)
-#   target_link_libraries(testdb PRIVATE libgit2_static winhttp crypt32 rpcrt4 secur32  )
-#   add_dependencies(testdb  libgit2_static)
-#   target_link_libraries(testaudio PRIVATE libgit2_static winhttp crypt32 rpcrt4 secur32  )
-#   add_dependencies(testaudio  libgit2_static)
-#   target_link_libraries(testCapnp PRIVATE libgit2_static winhttp crypt32 rpcrt4 secur32  )
-#   add_dependencies(testCapnp  libgit2_static)
-#   target_link_libraries(testManualAudio PRIVATE libgit2_static winhttp crypt32 rpcrt4 secur32  )
-#   add_dependencies(testManualAudio  libgit2_static)
-#   target_link_libraries(testInterface PRIVATE libgit2_static winhttp crypt32 rpcrt4 secur32  )
-#   add_dependencies(testInterface  libgit2_static)
-#   target_link_libraries(testGIT PRIVATE libgit2_static winhttp crypt32 rpcrt4 secur32  )
-#   add_dependencies(testGIT  libgit2_static)
-#   endif()
-#   # target_link_libraries(testEditor PRIVATE libgit2_static winhttp crypt32 rpcrt4 secur32  )
-#   # add_dependencies(testEditor libgit2_static)
-#   # target_link_libraries(PDJE PUBLIC libgit2_static winhttp crypt32 rpcrt4 secur32 )
-#   # add_dependencies(PDJE libgit2_static)
-#   # target_link_libraries(PDJE_dynamic PUBLIC libgit2_static winhttp crypt32 rpcrt4 secur32 )
-#   # add_dependencies(PDJE_dynamic libgit2_static)
-# elseif(UNIX AND NOT APPLE)
-  # add_executable(EvdevAccModule include/input/linux/LINUX_SUDO_GETTER.cpp)
-  # add_dependencies(EvdevAccModule libgit2)
-
-  # add_executable(testLinuxInput_waiter include/tests/INPUT_TESTS/linux_I_WAITER.cpp)
-  # add_dependencies(testLinuxInput_waiter libgit2)
-  # add_executable(testLinuxInput_waker include/tests/INPUT_TESTS/linux_I_WAKER.cpp)
-  # add_dependencies(testLinuxInput_waker libgit2)
-  # add_executable(testLinuxInput include/tests/INPUT_TESTS/evdevtest.cpp ${input_src})
-  # add_dependencies(testLinuxInput libgit2)
-  # target_link_libraries(testHighway PRIVATE hwy )
-  # target_link_libraries(testdb PRIVATE hwy )
-  # target_link_libraries(testaudio PRIVATE hwy )
-  # target_link_libraries(testCapnp PRIVATE hwy )
-  # target_link_libraries(testManualAudio PRIVATE hwy )
-  # target_link_libraries(testInterface PRIVATE hwy)
-  # target_link_libraries(testGIT PRIVATE hwy)
-  
-  
-# elseif(APPLE)
-# if(PDJE_BUILD_TESTS)
-# target_link_libraries(testHighway PRIVATE iconv "-framework CoreFoundation" "-framework Security" )
-# target_link_libraries(testdb PRIVATE iconv "-framework CoreFoundation" "-framework Security" )
-# target_link_libraries(testaudio PRIVATE iconv "-framework CoreFoundation" "-framework Security" )
-# target_link_libraries(testCapnp PRIVATE iconv "-framework CoreFoundation" "-framework Security" )
-# target_link_libraries(testManualAudio PRIVATE iconv "-framework CoreFoundation" "-framework Security" )
-# target_link_libraries(testInterface PRIVATE iconv "-framework CoreFoundation" "-framework Security" )
-# target_link_libraries(testGIT PRIVATE iconv "-framework CoreFoundation" "-framework Security" )
-# endif()
-# target_link_libraries(testEditor PRIVATE iconv "-framework CoreFoundation" "-framework Security" )
-
-# target_link_libraries(PDJE PUBLIC iconv "-framework CoreFoundation" "-framework Security" )
-# target_link_libraries(PDJE_dynamic PUBLIC iconv "-framework CoreFoundation" "-framework Security" )
-  
-# endif()
 
 if(PDJE_BUILD_TESTS)
 target_link_libraries(testHighway PRIVATE nlohmann_json::nlohmann_json hwy::hwy rocksdb Annoy::Annoy)
@@ -189,15 +124,9 @@ setLibgit2ReqLib(PDJE)
 setHighwayReqLib(PDJE)
 
 
-# target_link_libraries(testEditor PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
-# setSpdlogReqLib(testEditor)
-# setCapnpReqLib(testEditor)
-# setLibgit2ReqLib(testEditor)
-# setHighwayReqLib(testEditor)
-
 
 if(PDJE_SWIG_BUILD)
-include(ADD_SWIGS.cmake)
+include(cmakes/ADD_SWIGS.cmake)
 endif()
 
 # enable_testing()

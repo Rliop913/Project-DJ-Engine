@@ -21,12 +21,6 @@ SOURCES PDJE_swig.i ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${db
 if (MSVC AND NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_compile_definitions(${SWIG_MODULE_pdje_python_REAL_NAME} PRIVATE -U_DEBUG)
 endif()
-# swig_add_library(pdje_go
-#   TYPE STATIC
-#   LANGUAGE go
-#   OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/swig_go
-#   SOURCES PDJE_swig.i ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${dbSource} ${sql_amalgam_src} ${editorSource} ${nanolog_src}
-# )
 
 set_target_properties(${SWIG_MODULE_pdje_python_REAL_NAME} PROPERTIES
   OUTPUT_NAME "_pdje_python"
@@ -47,15 +41,13 @@ target_include_directories(${SWIG_MODULE_pdje_python_REAL_NAME}
 
 target_link_libraries(${SWIG_MODULE_pdje_python_REAL_NAME} PRIVATE nlohmann_json::nlohmann_json hwy Python::Python rocksdb Annoy)
 
-# target_link_libraries(${SWIG_MODULE_pdje_go_REAL_NAME} PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy)
 target_link_libraries(${SWIG_MODULE_pdje_csharp_REAL_NAME} PRIVATE nlohmann_json::nlohmann_json hwy rocksdb Annoy)
 
 if(WIN32)
 target_link_libraries(${SWIG_MODULE_pdje_python_REAL_NAME} PRIVATE libgit2_static winhttp crypt32 rpcrt4 secur32)
-# target_link_libraries(${SWIG_MODULE_pdje_go_REAL_NAME} PRIVATE libgit2_static winhttp crypt32 rpcrt4 )
 target_link_libraries(${SWIG_MODULE_pdje_csharp_REAL_NAME} PRIVATE libgit2_static winhttp crypt32 rpcrt4 secur32)
 add_dependencies(${SWIG_MODULE_pdje_python_REAL_NAME}  libgit2_static)
-# add_dependencies(${SWIG_MODULE_pdje_go_REAL_NAME}  libgit2_static)
+
 add_dependencies(${SWIG_MODULE_pdje_csharp_REAL_NAME}  libgit2_static)
 # target_compile_definitions(${SWIG_MODULE_pdje_python_REAL_NAME} PUBLIC PDJE_WINDOWS_DLL)
 # target_compile_definitions(${SWIG_MODULE_pdje_csharp_REAL_NAME} PUBLIC PDJE_WINDOWS_DLL)
