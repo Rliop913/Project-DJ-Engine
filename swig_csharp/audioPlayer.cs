@@ -11,28 +11,15 @@
 
 public class audioPlayer : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
-  protected bool swigCMemOwn;
+  private bool swigCMemOwnBase;
 
   internal audioPlayer(global::System.IntPtr cPtr, bool cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
+    swigCMemOwnBase = cMemoryOwn;
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
   internal static global::System.Runtime.InteropServices.HandleRef getCPtr(audioPlayer obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
-  }
-
-  internal static global::System.Runtime.InteropServices.HandleRef swigRelease(audioPlayer obj) {
-    if (obj != null) {
-      if (!obj.swigCMemOwn)
-        throw new global::System.ApplicationException("Cannot release ownership as memory is not owned");
-      global::System.Runtime.InteropServices.HandleRef ptr = obj.swigCPtr;
-      obj.swigCMemOwn = false;
-      obj.Dispose();
-      return ptr;
-    } else {
-      return new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
-    }
   }
 
   ~audioPlayer() {
@@ -47,8 +34,8 @@ public class audioPlayer : global::System.IDisposable {
   protected virtual void Dispose(bool disposing) {
     lock(this) {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
-        if (swigCMemOwn) {
-          swigCMemOwn = false;
+        if (swigCMemOwnBase) {
+          swigCMemOwnBase = false;
           pdje_POLYGLOTPINVOKE.delete_audioPlayer(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
@@ -70,25 +57,30 @@ public class audioPlayer : global::System.IDisposable {
 
   public string GetStatus() {
     string ret = pdje_POLYGLOTPINVOKE.audioPlayer_GetStatus(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool Activate() {
     bool ret = pdje_POLYGLOTPINVOKE.audioPlayer_Activate(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool Deactivate() {
     bool ret = pdje_POLYGLOTPINVOKE.audioPlayer_Deactivate(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void ChangeCursorPos(ulong pos) {
     pdje_POLYGLOTPINVOKE.audioPlayer_ChangeCursorPos(swigCPtr, pos);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public ulong GetConsumedFrames() {
     ulong ret = pdje_POLYGLOTPINVOKE.audioPlayer_GetConsumedFrames(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
@@ -102,12 +94,14 @@ public class audioPlayer : global::System.IDisposable {
   public FXControlPannel GetFXControlPannel() {
     global::System.IntPtr cPtr = pdje_POLYGLOTPINVOKE.audioPlayer_GetFXControlPannel__SWIG_1(swigCPtr);
     FXControlPannel ret = (cPtr == global::System.IntPtr.Zero) ? null : new FXControlPannel(cPtr, false);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public SWIGTYPE_p_MusicControlPannel GetMusicControlPannel() {
+  public MusicControlPannel GetMusicControlPannel() {
     global::System.IntPtr cPtr = pdje_POLYGLOTPINVOKE.audioPlayer_GetMusicControlPannel(swigCPtr);
-    SWIGTYPE_p_MusicControlPannel ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_MusicControlPannel(cPtr, false);
+    MusicControlPannel ret = (cPtr == global::System.IntPtr.Zero) ? null : new MusicControlPannel(cPtr, false);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
@@ -120,6 +114,12 @@ public class audioPlayer : global::System.IDisposable {
   }
 
   public audioPlayer(uint frameBufferSize) : this(pdje_POLYGLOTPINVOKE.new_audioPlayer__SWIG_2(frameBufferSize), true) {
+  }
+
+  public SWIGTYPE_p_PDJE_CORE_DATA_LINE PullOutDataLine() {
+    SWIGTYPE_p_PDJE_CORE_DATA_LINE ret = new SWIGTYPE_p_PDJE_CORE_DATA_LINE(pdje_POLYGLOTPINVOKE.audioPlayer_PullOutDataLine(swigCPtr), true);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
   }
 
 }

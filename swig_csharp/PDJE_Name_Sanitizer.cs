@@ -68,16 +68,4 @@ public class PDJE_Name_Sanitizer : global::System.IDisposable {
     return ret;
   }
 
-  public static string PDJE_SANITIZE_ERROR {
-    set {
-      pdje_POLYGLOTPINVOKE.PDJE_Name_Sanitizer_PDJE_SANITIZE_ERROR_set(value);
-      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
-    } 
-    get {
-      string ret = pdje_POLYGLOTPINVOKE.PDJE_Name_Sanitizer_PDJE_SANITIZE_ERROR_get();
-      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
-      return ret;
-    } 
-  }
-
 }

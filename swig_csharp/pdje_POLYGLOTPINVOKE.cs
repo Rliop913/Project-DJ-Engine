@@ -255,7 +255,7 @@ class pdje_POLYGLOTPINVOKE {
   public static extern global::System.IntPtr PDJE_DBROOT_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_PDJE")]
-  public static extern global::System.IntPtr new_PDJE(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern global::System.IntPtr new_PDJE(string jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_PDJE")]
   public static extern void delete_PDJE(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -275,8 +275,17 @@ class pdje_POLYGLOTPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_InitPlayer")]
   public static extern bool PDJE_InitPlayer(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3, uint jarg4);
 
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_ResetPlayer")]
+  public static extern void PDJE_ResetPlayer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_ResetEditor")]
+  public static extern void PDJE_ResetEditor(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_PullOutDataLine")]
+  public static extern global::System.IntPtr PDJE_PullOutDataLine(global::System.Runtime.InteropServices.HandleRef jarg1);
+
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_InitEditor")]
-  public static extern bool PDJE_InitEditor(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, string jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern bool PDJE_InitEditor(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, string jarg3, string jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_GetNoteObjects")]
   public static extern bool PDJE_GetNoteObjects(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
@@ -315,7 +324,7 @@ class pdje_POLYGLOTPINVOKE {
   public static extern bool litedb_openDB(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_litedb_getRoot")]
-  public static extern string litedb_getRoot(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern global::System.IntPtr litedb_getRoot(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_litedb")]
   public static extern global::System.IntPtr new_litedb();
@@ -479,6 +488,9 @@ class pdje_POLYGLOTPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_audioPlayer__SWIG_2")]
   public static extern global::System.IntPtr new_audioPlayer__SWIG_2(uint jarg1);
 
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_audioPlayer_PullOutDataLine")]
+  public static extern global::System.IntPtr audioPlayer_PullOutDataLine(global::System.Runtime.InteropServices.HandleRef jarg1);
+
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_audioPlayer")]
   public static extern void delete_audioPlayer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
@@ -488,11 +500,56 @@ class pdje_POLYGLOTPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_Name_Sanitizer_getFileName")]
   public static extern string PDJE_Name_Sanitizer_getFileName(string jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_Name_Sanitizer_PDJE_SANITIZE_ERROR_set")]
-  public static extern void PDJE_Name_Sanitizer_PDJE_SANITIZE_ERROR_set(string jarg1);
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicOnDeck_play_set")]
+  public static extern void MusicOnDeck_play_set(global::System.Runtime.InteropServices.HandleRef jarg1, bool jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_PDJE_Name_Sanitizer_PDJE_SANITIZE_ERROR_get")]
-  public static extern string PDJE_Name_Sanitizer_PDJE_SANITIZE_ERROR_get();
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicOnDeck_play_get")]
+  public static extern bool MusicOnDeck_play_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicOnDeck_dec_set")]
+  public static extern void MusicOnDeck_dec_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicOnDeck_dec_get")]
+  public static extern global::System.IntPtr MusicOnDeck_dec_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicOnDeck_fxP_set")]
+  public static extern void MusicOnDeck_fxP_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicOnDeck_fxP_get")]
+  public static extern global::System.IntPtr MusicOnDeck_fxP_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_MusicOnDeck")]
+  public static extern global::System.IntPtr new_MusicOnDeck();
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_MusicOnDeck")]
+  public static extern void delete_MusicOnDeck(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicControlPannel_LoadMusic")]
+  public static extern bool MusicControlPannel_LoadMusic(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicControlPannel_CueMusic")]
+  public static extern bool MusicControlPannel_CueMusic(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, ulong jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicControlPannel_SetMusic")]
+  public static extern bool MusicControlPannel_SetMusic(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, bool jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicControlPannel_GetLoadedMusicList")]
+  public static extern global::System.IntPtr MusicControlPannel_GetLoadedMusicList(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicControlPannel_UnloadMusic")]
+  public static extern bool MusicControlPannel_UnloadMusic(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicControlPannel_GetPCMFrames")]
+  public static extern bool MusicControlPannel_GetPCMFrames(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicControlPannel_getFXHandle")]
+  public static extern global::System.IntPtr MusicControlPannel_getFXHandle(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_MusicControlPannel")]
+  public static extern global::System.IntPtr new_MusicControlPannel(uint jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_MusicControlPannel")]
+  public static extern void delete_MusicControlPannel(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_MUS_VEC__SWIG_0")]
   public static extern global::System.IntPtr new_MUS_VEC__SWIG_0();

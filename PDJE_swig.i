@@ -11,6 +11,7 @@
     #include <string>
     #include "ManualMix.hpp"
     #include "audioPlayer.hpp"
+    #include "MusicControlPannel.hpp"
     #include "fileNameSanitizer.hpp"
     // #include "editorObject.hpp"
     #include "rocksdb/rocksdb_namespace.h"
@@ -26,6 +27,9 @@
 %include <std_string.i>
 // %include <std_unique_ptr.i>
 %include <std_shared_ptr.i>
+%shared_ptr(audioPlayer)
+%shared_ptr(editorObject)
+%shared_ptr(litedb)
 // %unique_ptr(litedb)
 
 %include "ManualMix.hpp"
@@ -45,6 +49,7 @@ namespace ROCKSDB_NAMESPACE = rocksdb;
 %include "trackDB.hpp"
 %include "audioPlayer.hpp"
 %include "fileNameSanitizer.hpp"
+%include "MusicControlPannel.hpp"
 // %include "editorObject.hpp"
 %include "PDJE_EXPORT_SETTER.hpp"
 namespace fs = std::filesystem;

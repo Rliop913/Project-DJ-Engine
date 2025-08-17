@@ -2,6 +2,8 @@
 HOW TO USE
 ================
 
+DEPRECATED
+
 .. contents:: how to use
 
 Initialize PDJE Engine
@@ -17,17 +19,7 @@ we use "PDJE" class as an interface.
 
         auto engine = PDJE("path/to/root/Database_path");
     
-    .. code-block:: c#
 
-        auto engine = new PDJE("path/to/root/Database_path");
-    
-    .. code-block:: python
-
-        engine = PDJE("path/to/root/Database_path")
-
-    .. code-block:: gdscript
-        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
-        engine.InitEngine("path/to/root/Database_path")
             
 this code Initialize engine and interfaces.
 
