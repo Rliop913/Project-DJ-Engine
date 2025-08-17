@@ -24,7 +24,7 @@ Clone and build PDJE in a few steps:
    cmake ..
    cmake --build . --parallel
 
-Learn about PDJE's modules and usage in the :doc:`PDJE_Path` documentation.
+Learn about PDJE's modules and usage in the :doc:`Getting Started` documentation.
 
 
 System Architecture

@@ -56,39 +56,45 @@ public class PDJE : global::System.IDisposable {
     }
   }
 
-  public SWIGTYPE_p_std__shared_ptrT_litedb_t DBROOT {
+  public litedb DBROOT {
     set {
-      pdje_POLYGLOTPINVOKE.PDJE_DBROOT_set(swigCPtr, SWIGTYPE_p_std__shared_ptrT_litedb_t.getCPtr(value));
+      pdje_POLYGLOTPINVOKE.PDJE_DBROOT_set(swigCPtr, litedb.getCPtr(value));
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       global::System.IntPtr cPtr = pdje_POLYGLOTPINVOKE.PDJE_DBROOT_get(swigCPtr);
-      SWIGTYPE_p_std__shared_ptrT_litedb_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_std__shared_ptrT_litedb_t(cPtr, false);
+      litedb ret = (cPtr == global::System.IntPtr.Zero) ? null : new litedb(cPtr, true);
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
-  public PDJE(SWIGTYPE_p_std__filesystem__path rootDir) : this(pdje_POLYGLOTPINVOKE.new_PDJE(SWIGTYPE_p_std__filesystem__path.getCPtr(rootDir)), true) {
+  public PDJE(string rootDir) : this(pdje_POLYGLOTPINVOKE.new_PDJE(rootDir), true) {
     if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public SWIGTYPE_p_std__shared_ptrT_audioPlayer_t player {
+  public audioPlayer player {
     set {
-      pdje_POLYGLOTPINVOKE.PDJE_player_set(swigCPtr, SWIGTYPE_p_std__shared_ptrT_audioPlayer_t.getCPtr(value));
+      pdje_POLYGLOTPINVOKE.PDJE_player_set(swigCPtr, audioPlayer.getCPtr(value));
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       global::System.IntPtr cPtr = pdje_POLYGLOTPINVOKE.PDJE_player_get(swigCPtr);
-      SWIGTYPE_p_std__shared_ptrT_audioPlayer_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_std__shared_ptrT_audioPlayer_t(cPtr, false);
+      audioPlayer ret = (cPtr == global::System.IntPtr.Zero) ? null : new audioPlayer(cPtr, true);
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
 
-  public SWIGTYPE_p_std__shared_ptrT_editorObject_t editor {
+  public SWIGTYPE_p_editorObject editor {
     set {
-      pdje_POLYGLOTPINVOKE.PDJE_editor_set(swigCPtr, SWIGTYPE_p_std__shared_ptrT_editorObject_t.getCPtr(value));
+      pdje_POLYGLOTPINVOKE.PDJE_editor_set(swigCPtr, SWIGTYPE_p_editorObject.getCPtr(value));
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       global::System.IntPtr cPtr = pdje_POLYGLOTPINVOKE.PDJE_editor_get(swigCPtr);
-      SWIGTYPE_p_std__shared_ptrT_editorObject_t ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_std__shared_ptrT_editorObject_t(cPtr, false);
+      SWIGTYPE_p_editorObject ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_editorObject(cPtr, true);
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
   }
@@ -99,8 +105,21 @@ public class PDJE : global::System.IDisposable {
     return ret;
   }
 
-  public bool InitEditor(string auth_name, string auth_email, SWIGTYPE_p_std__filesystem__path projectRoot) {
-    bool ret = pdje_POLYGLOTPINVOKE.PDJE_InitEditor(swigCPtr, auth_name, auth_email, SWIGTYPE_p_std__filesystem__path.getCPtr(projectRoot));
+  public void ResetPlayer() {
+    pdje_POLYGLOTPINVOKE.PDJE_ResetPlayer(swigCPtr);
+  }
+
+  public void ResetEditor() {
+    pdje_POLYGLOTPINVOKE.PDJE_ResetEditor(swigCPtr);
+  }
+
+  public SWIGTYPE_p_PDJE_CORE_DATA_LINE PullOutDataLine() {
+    SWIGTYPE_p_PDJE_CORE_DATA_LINE ret = new SWIGTYPE_p_PDJE_CORE_DATA_LINE(pdje_POLYGLOTPINVOKE.PDJE_PullOutDataLine(swigCPtr), true);
+    return ret;
+  }
+
+  public bool InitEditor(string auth_name, string auth_email, string projectRoot) {
+    bool ret = pdje_POLYGLOTPINVOKE.PDJE_InitEditor(swigCPtr, auth_name, auth_email, projectRoot);
     if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
@@ -129,8 +148,9 @@ public class PDJE : global::System.IDisposable {
     return ret;
   }
 
-  public SWIGTYPE_p_std__shared_ptrT_audioPlayer_t GetPlayerObject() {
-    SWIGTYPE_p_std__shared_ptrT_audioPlayer_t ret = new SWIGTYPE_p_std__shared_ptrT_audioPlayer_t(pdje_POLYGLOTPINVOKE.PDJE_GetPlayerObject(swigCPtr), true);
+  public audioPlayer GetPlayerObject() {
+    global::System.IntPtr cPtr = pdje_POLYGLOTPINVOKE.PDJE_GetPlayerObject(swigCPtr);
+    audioPlayer ret = (cPtr == global::System.IntPtr.Zero) ? null : new audioPlayer(cPtr, true);
     return ret;
   }
 

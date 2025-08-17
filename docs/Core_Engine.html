@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Core_Engine &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDJE_Format.html">PDJE_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Core_Engine</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Core_Engine.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="core-engine">
+<h1>Core_Engine<a class="headerlink" href="#core-engine" title="Link to this heading"></a></h1>
+</section>
+<section id="before-playback">
+<h1>Before Playback<a class="headerlink" href="#before-playback" title="Link to this heading"></a></h1>
+<section id="before-playback-step-1-initialize-pdje-core-engine">
+<h2>Before Playback Step-1: initialize PDJE core engine<a class="headerlink" href="#before-playback-step-1-initialize-pdje-core-engine" title="Link to this heading"></a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv44PDJE">
+<span id="_CPPv34PDJE"></span><span id="_CPPv24PDJE"></span><span id="PDJE"></span><span class="target" id="classPDJE"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE</span></span></span><br /></dt>
+<dd><p>the main Interface of this Engine <a class="reference internal" href="api/classPDJE.html#classPDJE"><span class="std std-ref">PDJE</span></a> gets music data and track data from database. from that datas, you can activate music player and you can get a music player handler. with this player handler, you can control music’s mixing in real time. </p>
+<p>to-use<ol class="loweralpha simple">
+<li><p>make <a class="reference internal" href="api/classPDJE.html#classPDJE"><span class="std std-ref">PDJE</span></a> object</p></li>
+<li><p>call SearchTrack</p></li>
+<li><p>call InitPlayer</p></li>
+<li><p>use player. this is handler.</p></li>
+</ol>
+</p>
+<p><div class="graphviz"><object data="_images/graphviz-8a80928eed9900c4ebd403b1a2c215d73580278f.svg" type="image/svg+xml" class="graphviz">
+<p class="warning">digraph PDJE_Interface_Tree{
+     PDJE -&gt; Search_Tools;
+     PDJE -&gt; Player;
+     Player -&gt; Player_ON_OFF;
+     Player -&gt; FXController;
+     Player -&gt; MusicController;
+     FXController -&gt; FX_ON_OFF;
+     FXController -&gt; FX_arg_setter;
+     FX_arg_setter -&gt; change_FX_value;
+     MusicController -&gt; Load_Music;
+     MusicController -&gt; Unload_Music;
+     MusicController -&gt; ON_OFF_Music;
+     MusicController -&gt; Cue_Music;
+     MusicController -&gt; FXController;
+}</p></object></div>
+</p>
+</dd></dl>
+
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-0">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;database/path&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-1">
+C#</label><div class="sd-tab-content docutils">
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">PDJE</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;database/path&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-2">
+PYTHON</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pypdje</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">pypdje</span><span class="o">.</span><span class="n">PDJE</span><span class="p">(</span><span class="s2">&quot;database/path&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-3">
+GDSCRIPT</label><div class="sd-tab-content docutils">
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">engine</span><span class="p">:</span><span class="n">PDJE_Wrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Wrapper</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">InitEngine</span><span class="p">(</span><span class="s2">&quot;res://database/path&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="before-playback-step-2-search-music-track">
+<h2>Before Playback Step-2: Search Music &amp; Track<a class="headerlink" href="#before-playback-step-2-search-music-track" title="Link to this heading"></a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd">
+<span id="_CPPv3N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd"></span><span id="_CPPv2N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd"></span><span id="PDJE::SearchMusic__UNSANITIZEDCR.UNSANITIZEDCR.doubleC"></span><span class="target" id="classPDJE_1a2639f4ed0f7ac3770f5eb3b6c86ae800"></span><a class="reference internal" href="api/typedef_dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0.html#_CPPv47MUS_VEC" title="MUS_VEC"><span class="n"><span class="pre">MUS_VEC</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SearchMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">composer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bpm</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>searches musics and metadatas from database. if you don’t need to filter, send “” to the values </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Title</strong> – the title of the music </p></li>
+<li><p><strong>composer</strong> – the composer of the music </p></li>
+<li><p><strong>bpm</strong> – the bpm of the music. send under zero to skip filter </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api/typedef_dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0.html#dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0"><span class="std std-ref">MUS_VEC</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE11SearchTrackERK11UNSANITIZED">
+<span id="_CPPv3N4PDJE11SearchTrackERK11UNSANITIZED"></span><span id="_CPPv2N4PDJE11SearchTrackERK11UNSANITIZED"></span><span id="PDJE::SearchTrack__UNSANITIZEDCR"></span><span class="target" id="classPDJE_1a322160409e9c02e4700e966623bfd4d7"></span><a class="reference internal" href="api/typedef_dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470.html#_CPPv49TRACK_VEC" title="TRACK_VEC"><span class="n"><span class="pre">TRACK_VEC</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SearchTrack</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Title</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>searches track the track contains the note data, mix data and included music lists. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Title</strong> – the tile of the track. send “” to skip filter </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api/typedef_dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470.html#dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470"><span class="std std-ref">TRACK_VEC</span></a> the array of the track_data. find what you want </p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-4">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">trackdata</span><span class="w"> </span><span class="n">td</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">SearchTrack</span><span class="p">(</span><span class="s">&quot;Track name&quot;</span><span class="p">).</span><span class="n">front</span><span class="p">();</span>
+<span class="n">musdata</span><span class="w"> </span><span class="n">md</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s">&quot;music title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;composer name&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.0</span><span class="p">).</span><span class="n">front</span><span class="p">();</span>
+<span class="c1">//-1.0 means ignore bpm</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-5">
+C#</label><div class="sd-tab-content docutils">
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">TRACK_VEC</span><span class="w"> </span><span class="n">tdvec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">SearchTrack</span><span class="p">(</span><span class="s">&quot;Track name&quot;</span><span class="p">);</span>
+<span class="n">MUS_VEC</span><span class="w"> </span><span class="n">mdvec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s">&quot;music title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;composer name&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">);</span>
+<span class="c1">//-1.0 means ignore bpm</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-6">
+PYTHON</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pypdje</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">TRACK_VEC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">MUS_VEC</span>
+
+<span class="n">tdvec</span><span class="p">:</span><span class="n">TRACK_VEC</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">SearchTrack</span><span class="p">(</span><span class="s2">&quot;track name&quot;</span><span class="p">)</span>
+<span class="n">mdvec</span><span class="p">:</span><span class="n">MUS_VEC</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s2">&quot;music title&quot;</span><span class="p">,</span> <span class="s2">&quot;composer name&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="c1">#-1.0 means ignore bpm</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-7">
+GDSCRIPT</label><div class="sd-tab-content docutils">
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">tdlist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">SearchTrack</span><span class="p">(</span><span class="s2">&quot;track name&quot;</span><span class="p">)</span>
+<span class="k">var</span><span class="w"> </span><span class="n">mdlist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s2">&quot;music name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;composer name&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="c1">#-1.0 means ignore bpm</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="before-playback-step-3-init-activate-deactivate-audio-player">
+<h2>Before Playback Step-3: Init, Activate &amp; Deactivate Audio Player<a class="headerlink" href="#before-playback-step-3-init-activate-deactivate-audio-player" title="Link to this heading"></a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj">
+<span id="_CPPv3N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj"></span><span id="_CPPv2N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj"></span><span id="PDJE::InitPlayer__PLAY_MODE.trackdataR.unsigned-iC"></span><span class="target" id="classPDJE_1a9de8f88a9b0461472a99596fa0b5c978"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">InitPlayer</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/enum_PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16.html#_CPPv49PLAY_MODE" title="PLAY_MODE"><span class="n"><span class="pre">PLAY_MODE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mode</span></span>, <a class="reference internal" href="api/structtrackdata.html#_CPPv49trackdata" title="trackdata"><span class="n"><span class="pre">trackdata</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">td</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">FrameBufferSize</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>this inits the music handler. the music handler called a “player” it initializes the player </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> – the play modes. you can choose “FULL_PRE_RENDER”, “HYBRID_RENDER”, “FULL_MANUAL_RENDER” </p></li>
+<li><p><strong>td</strong> – the track data. you can get this from <a class="reference internal" href="api/classPDJE.html#classPDJE_1a322160409e9c02e4700e966623bfd4d7"><span class="std std-ref">SearchTrack()</span></a></p></li>
+<li><p><strong>FrameBufferSize</strong> – the buffersize. in this project, it uses 48000 samplerate. if you use 48 as a value, in theory, it calls mixing function 1000 times per second. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true no error </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false error </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer8ActivateEv">
+<span id="_CPPv3N11audioPlayer8ActivateEv"></span><span id="_CPPv2N11audioPlayer8ActivateEv"></span><span id="audioPlayer::Activate"></span><span class="target" id="classaudioPlayer_1a7e91ca8d0037ef8e2fb50ff7289317aa"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Activate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Plays music. </p>
+</dd></dl>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: Cannot find function “PDJE::ResetPlayer” in doxygen xml output for project “Project_DJ_Engine” from directory: ./xml</p>
+</div>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer10DeactivateEv">
+<span id="_CPPv3N11audioPlayer10DeactivateEv"></span><span id="_CPPv2N11audioPlayer10DeactivateEv"></span><span id="audioPlayer::Deactivate"></span><span class="target" id="classaudioPlayer_1a8b3239801762770164c7eba623301c3c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Deactivate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Stops music. </p>
+</dd></dl>
+
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-8">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">player_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">InitPlayer</span><span class="p">(</span><span class="n">PLAY_MODE</span><span class="o">::</span><span class="n">HYBRID_RENDER</span><span class="p">,</span><span class="w"> </span><span class="n">td</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">);</span>
+<span class="c1">//render mode, trackdata, sample buffer</span>
+
+<span class="n">engine</span><span class="o">-&gt;</span><span class="n">ResetPlayer</span><span class="p">();</span>
+<span class="c1">//reset player</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">activate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Activate</span><span class="p">();</span>
+<span class="c1">//start playback</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">deactivate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Deactivate</span><span class="p">();</span>
+<span class="c1">//stop playback</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-9" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-9">
+C#</label><div class="sd-tab-content docutils">
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">player_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">InitPlayer</span><span class="p">(</span><span class="n">PLAY_MODE</span><span class="p">.</span><span class="n">HYBRID_RENDER</span><span class="p">,</span><span class="w"> </span><span class="n">tdvec</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">48</span><span class="p">);</span>
+<span class="c1">//render mode, trackdata, sample buffer</span>
+
+<span class="kt">var</span><span class="w"> </span><span class="n">AudioP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">GetPlayerObject</span><span class="p">();</span>
+<span class="c1">//get player object</span>
+
+<span class="n">engine</span><span class="p">.</span><span class="n">ResetPlayer</span><span class="p">();</span>
+<span class="c1">//reset player object.</span>
+<span class="c1">//WARNING: after reset, AudioP becomes unavailable.</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">activate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">Activate</span><span class="p">();</span>
+<span class="c1">//start playback</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">deactivate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">Deactivate</span><span class="p">();</span>
+<span class="c1">//stop playback</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-10" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-10">
+PYTHON</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">audioPlayer</span>
+
+<span class="n">player_OK</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">InitPlayer</span><span class="p">(</span><span class="n">pyPDJE</span><span class="o">.</span><span class="n">HYBRID_RENDER</span><span class="p">,</span> <span class="n">tdvec</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">48</span><span class="p">)</span>
+<span class="c1">#render mode, trackdata, sample buffer</span>
+
+<span class="n">AudioP</span><span class="p">:</span><span class="n">audioPlayer</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">GetPlayerObject</span><span class="p">()</span>
+<span class="c1">#get player object</span>
+
+<span class="n">engine</span><span class="o">.</span><span class="n">ResetPlayer</span><span class="p">();</span>
+<span class="c1">#reset player object.</span>
+<span class="c1">#WARNING: after reset, AudioP becomes unavailable.</span>
+
+<span class="n">activate_OK</span> <span class="o">=</span> <span class="n">AudioP</span><span class="o">.</span><span class="n">Activate</span><span class="p">()</span>
+<span class="c1">#start playback</span>
+
+<span class="n">deactivate_OK</span> <span class="o">=</span> <span class="n">AudioP</span><span class="o">.</span><span class="n">Deactivate</span><span class="p">()</span>
+<span class="c1">#stop playback</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-11" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-11">
+GDSCRIPT</label><div class="sd-tab-content docutils">
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">player_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">InitPlayer</span><span class="p">(</span><span class="n">PDJE_Wrapper</span><span class="o">.</span><span class="n">HYBRID_RENDER</span><span class="p">,</span><span class="w"> </span><span class="n">tdlist</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="mi">48</span><span class="p">)</span>
+<span class="c1">#render mode, trackdata, sample buffer</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">AudioP</span><span class="p">:</span><span class="n">PlayerWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">GetPlayer</span><span class="p">()</span>
+<span class="c1">#get player object</span>
+
+<span class="n">engine</span><span class="o">.</span><span class="n">ResetPlayer</span><span class="p">();</span>
+<span class="c1">#reset player object.</span>
+<span class="c1">#WARNING: after reset, AudioP becomes unavailable.</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">activate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="o">.</span><span class="n">Activate</span><span class="p">()</span>
+<span class="c1">#start playback</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">deactivate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="o">.</span><span class="n">Deactivate</span><span class="p">()</span>
+<span class="c1">#stop playback</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="on-playback">
+<h1>On Playback<a class="headerlink" href="#on-playback" title="Link to this heading"></a></h1>
+<section id="on-playback-step-1-get-use-fx-controller-pannel">
+<h2>On Playback Step-1: Get &amp; Use FX Controller Pannel<a class="headerlink" href="#on-playback-step-1-get-use-fx-controller-pannel" title="Link to this heading"></a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer18GetFXControlPannelERK11UNSANITIZED">
+<span id="_CPPv3N11audioPlayer18GetFXControlPannelERK11UNSANITIZED"></span><span id="_CPPv2N11audioPlayer18GetFXControlPannelERK11UNSANITIZED"></span><span id="audioPlayer::GetFXControlPannel__UNSANITIZEDCR"></span><span class="target" id="classaudioPlayer_1a00c00b5c8146cd7af90abc6c1014ee26"></span><a class="reference internal" href="api/classFXControlPannel.html#_CPPv415FXControlPannel" title="FXControlPannel"><span class="n"><span class="pre">FXControlPannel</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetFXControlPannel</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;__PDJE__MAIN__&quot;</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>fx controller getter this returns the fx controller. with this, you can control the fx in realtime manually. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>title</strong> – the music to control. “__PDJE__MAIN__” means the prerendered music. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>FXControlPannel* but the “title” doesn’t exists, it returns nullptr. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15FXControlPannel9FX_ON_OFFE6FXListb">
+<span id="_CPPv3N15FXControlPannel9FX_ON_OFFE6FXListb"></span><span id="_CPPv2N15FXControlPannel9FX_ON_OFFE6FXListb"></span><span id="FXControlPannel::FX_ON_OFF__FXList.b"></span><span class="target" id="classFXControlPannel_1ab60d0d4d6ba4a5eccbb020050b6fff60"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classFXControlPannel.html#_CPPv415FXControlPannel" title="FXControlPannel"><span class="n"><span class="pre">FXControlPannel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">FX_ON_OFF</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/enum_ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3.html#_CPPv46FXList" title="FXList"><span class="n"><span class="pre">FXList</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">fx</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">onoff</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>activate/deactivate FX </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fx</strong> – the fx type </p></li>
+<li><p><strong>onoff</strong> – activate / deactivate </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv46FXList">
+<span id="_CPPv36FXList"></span><span id="_CPPv26FXList"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FXList</span></span></span><br /></dt>
+<dd><p>the usable fx list </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N6FXList10COMPRESSORE">
+<span id="_CPPv3N6FXList10COMPRESSORE"></span><span id="_CPPv2N6FXList10COMPRESSORE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a5425cca21e2a17519f4691670ea4fd53"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPRESSOR</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N6FXList10DISTORTIONE">
+<span id="_CPPv3N6FXList10DISTORTIONE"></span><span id="_CPPv2N6FXList10DISTORTIONE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3ac545d6ac23017a00a8eace8120d7df56"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISTORTION</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N6FXList4ECHOE">
+<span id="_CPPv3N6FXList4ECHOE"></span><span id="_CPPv2N6FXList4ECHOE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a6e074abc1ec6368da315a331ad35c00b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ECHO</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N6FXList2EQE">
+<span id="_CPPv3N6FXList2EQE"></span><span id="_CPPv2N6FXList2EQE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a9efdc855f3c1477957fb50affec07f8f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EQ</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N6FXList6FILTERE">
+<span id="_CPPv3N6FXList6FILTERE"></span><span id="_CPPv2N6FXList6FILTERE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a79b28719aca4e2f69cd372a3b7539c45"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FILTER</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N6FXList7FLANGERE">
+<span id="_CPPv3N6FXList7FLANGERE"></span><span id="_CPPv2N6FXList7FLANGERE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3af8e19c60d3e0151022fd4e848773826e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FLANGER</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N6FXList9OCSFILTERE">
+<span id="_CPPv3N6FXList9OCSFILTERE"></span><span id="_CPPv2N6FXList9OCSFILTERE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a2bbc5bc0a3b7027f874adc0a73aa6bc3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OCSFILTER</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N6FXList6PANNERE">
+<span id="_CPPv3N6FXList6PANNERE"></span><span id="_CPPv2N6FXList6PANNERE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a72479ee1ab5b1722db33133048cc89f6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PANNER</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N6FXList6PHASERE">
+<span id="_CPPv3N6FXList6PHASERE"></span><span id="_CPPv2N6FXList6PHASERE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3af7c4e25ebe7a4ed51ef766ce1b81c6f6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PHASER</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N6FXList5ROBOTE">
+<span id="_CPPv3N6FXList5ROBOTE"></span><span id="_CPPv2N6FXList5ROBOTE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3aabea9be20feeb2150a8ffbd68625beb4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ROBOT</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N6FXList4ROLLE">
+<span id="_CPPv3N6FXList4ROLLE"></span><span id="_CPPv2N6FXList4ROLLE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a2eeb9fef8a6a516fa6437a44a6efbd52"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ROLL</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N6FXList6TRANCEE">
+<span id="_CPPv3N6FXList6TRANCEE"></span><span id="_CPPv2N6FXList6TRANCEE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a5a878d6040996dc58170b350b180c3db"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TRANCE</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N6FXList3VOLE">
+<span id="_CPPv3N6FXList3VOLE"></span><span id="_CPPv2N6FXList3VOLE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a7963a24fafa6a2035ee732d001a2d62a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VOL</span></span></span><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15FXControlPannel12GetArgSetterE6FXList">
+<span id="_CPPv3N15FXControlPannel12GetArgSetterE6FXList"></span><span id="_CPPv2N15FXControlPannel12GetArgSetterE6FXList"></span><span id="FXControlPannel::GetArgSetter__FXList"></span><span class="target" id="classFXControlPannel_1ab3b6366e2e6848966dba20ccbfb4805b"></span><a class="reference internal" href="api/typedef_DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15.html#_CPPv49ARGSETTER" title="ARGSETTER"><span class="n"><span class="pre">ARGSETTER</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classFXControlPannel.html#_CPPv415FXControlPannel" title="FXControlPannel"><span class="n"><span class="pre">FXControlPannel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetArgSetter</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/enum_ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3.html#_CPPv46FXList" title="FXList"><span class="n"><span class="pre">FXList</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">fx</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Get the Arg Setter object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fx</strong> – the fx type </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api/typedef_DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15.html#DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15"><span class="std std-ref">ARGSETTER</span></a> the FX arg handler </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15FXControlPannel16checkSomethingOnEv">
+<span id="_CPPv3N15FXControlPannel16checkSomethingOnEv"></span><span id="_CPPv2N15FXControlPannel16checkSomethingOnEv"></span><span id="FXControlPannel::checkSomethingOn"></span><span class="target" id="classFXControlPannel_1a6f6bbb0a94d182faa065bcaafee6438f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classFXControlPannel.html#_CPPv415FXControlPannel" title="FXControlPannel"><span class="n"><span class="pre">FXControlPannel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">checkSomethingOn</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>check any FX is activated </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true , something is activated </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>false , nothing activated. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>fxArgs_document_here</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-12" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-12">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">FXControlPannel</span><span class="o">*</span><span class="w"> </span><span class="n">fx_pannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetFXControlPannel</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
+<span class="c1">//get music&#39;s fx controller.</span>
+
+<span class="n">fx_pannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetFXControlPannel</span><span class="p">();</span>
+<span class="c1">//or get mixed track&#39;s fx controller like this.</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">TurnON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="n">fx_pannel</span><span class="o">-&gt;</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="n">TurnON</span><span class="p">);</span>
+<span class="c1">//turn on EQ effect</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">argsetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fx_pannel</span><span class="o">-&gt;</span><span class="n">GetArgSetter</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">EQ</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">argsetter</span><span class="p">){</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;fx key: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// get argument setter for EQ</span>
+<span class="c1">// you can check configurable (settable) arg keys like this</span>
+
+<span class="n">argsetter</span><span class="p">[</span><span class="s">&quot;EQSelect&quot;</span><span class="p">](</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">argsetter</span><span class="p">[</span><span class="s">&quot;EQPower&quot;</span><span class="p">](</span><span class="mi">-32</span><span class="p">);</span>
+<span class="c1">// change FX args by key</span>
+<span class="c1">//for details, see FXArgs document</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-13" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-13">
+C#</label><div class="sd-tab-content docutils">
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">FXControlPannel</span><span class="w"> </span><span class="n">fx_pannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">GetFXControlPannel</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
+<span class="c1">//get music&#39;s fx controller</span>
+
+<span class="n">fx_pannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">GetFXControlPannel</span><span class="p">();</span>
+<span class="c1">//or get mixed track&#39;s fx controller like this.</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">TurnON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="n">fx_pannel</span><span class="p">.</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">FXList</span><span class="p">.</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="n">TurnON</span><span class="p">);</span>
+<span class="c1">//turn on EQ effect</span>
+
+<span class="n">ARGSETTER_WRAPPER</span><span class="w"> </span><span class="n">argsetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ARGSETTER_WRAPPER</span><span class="p">(</span><span class="n">fx_pannel</span><span class="p">);</span>
+<span class="n">KEY_VEC</span><span class="w"> </span><span class="n">keylist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argsetter</span><span class="p">.</span><span class="n">GetFXArgKeys</span><span class="p">(</span><span class="n">FXList</span><span class="p">.</span><span class="n">EQ</span><span class="p">);</span>
+<span class="k">foreach</span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">keys</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">keylist</span><span class="p">){</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">keys</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">//get argument setter wrapper and get configurable arg keys like this.</span>
+
+<span class="n">argsetter</span><span class="p">.</span><span class="n">SetFXArg</span><span class="p">(</span><span class="n">FXList</span><span class="p">.</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EQSelect&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">argsetter</span><span class="p">.</span><span class="n">SetFXArg</span><span class="p">(</span><span class="n">FXList</span><span class="p">.</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EQPower&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">32</span><span class="p">);</span>
+
+<span class="c1">//change FX args by key</span>
+<span class="c1">//for details, see FXArgs document</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-14" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-14">
+PYTHON</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pypdje</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">FXControlPannel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">ARGSETTER_WRAPPER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">KEY_VEC</span>
+
+<span class="c1">#...</span>
+
+<span class="n">fx_pannel</span><span class="p">:</span><span class="n">FXControlPannel</span> <span class="o">=</span> <span class="n">AudioP</span><span class="o">.</span><span class="n">GetFXControlPannel</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
+<span class="c1">#get music&#39;s fx controller</span>
+<span class="n">fx_pannel</span> <span class="o">=</span> <span class="n">AudioP</span><span class="o">.</span><span class="n">GetFXControlPannel</span><span class="p">()</span>
+<span class="c1">#or get mixed track&#39;s fx controller like this.</span>
+<span class="n">TurnON</span><span class="p">:</span><span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">fx_pannel</span><span class="o">.</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">pypdje</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span> <span class="n">TurnON</span><span class="p">)</span>
+<span class="c1">#turn on EQ effect</span>
+<span class="n">argsetter</span> <span class="o">=</span> <span class="n">ARGSETTER_WRAPPER</span><span class="p">(</span><span class="n">fx_pannel</span><span class="p">)</span>
+<span class="n">keylist</span><span class="p">:</span><span class="n">KEY_VEC</span> <span class="o">=</span> <span class="n">argsetter</span><span class="o">.</span><span class="n">GetFXArgKeys</span><span class="p">(</span><span class="n">pypdje</span><span class="o">.</span><span class="n">EQ</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">keylist</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;key: &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="c1">#get argument setter wrapper and get configurable arg keys like this.</span>
+
+<span class="n">argsetter</span><span class="o">.</span><span class="n">SetFXArg</span><span class="p">(</span><span class="n">pypdje</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span> <span class="s2">&quot;EQSelect&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">argsetter</span><span class="o">.</span><span class="n">SetFXArg</span><span class="p">(</span><span class="n">pypdje</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span> <span class="s2">&quot;EQPower&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">32</span><span class="p">)</span>
+<span class="c1">#change FX args by key</span>
+<span class="c1">#for details, see FXArgs document</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-15" name="sd-tab-set-3" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-15">
+GDSCRIPT</label><div class="sd-tab-content docutils">
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">fx_pannel</span><span class="p">:</span><span class="n">FXControlPannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="o">.</span><span class="n">GetFXControlPannel</span><span class="p">()</span>
+<span class="c1">#get mixed track&#39;s fx controller</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">TurnON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
+<span class="n">fx_pannel</span><span class="o">.</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">EnumWrapper</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="n">TurnON</span><span class="p">)</span>
+<span class="c1">#turn on EQ effect</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">argsetter</span><span class="p">:</span><span class="n">FXArgWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fx_pannel</span><span class="o">.</span><span class="n">GetArgSetter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">argsetter</span><span class="o">.</span><span class="n">GetFXArgKeys</span><span class="p">(</span><span class="n">EnumWrapper</span><span class="o">.</span><span class="n">EQ</span><span class="p">))</span>
+
+<span class="c1">#get argument setter wrapper and get configurable arg keys like this.</span>
+
+<span class="n">argsetter</span><span class="o">.</span><span class="n">SetFXArg</span><span class="p">(</span><span class="n">EnumWrapper</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;EQSelect&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="n">argsetter</span><span class="o">.</span><span class="n">SetFXArg</span><span class="p">(</span><span class="n">EnumWrapper</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;EQPower&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">32</span><span class="p">)</span>
+<span class="c1">#change FX args by key</span>
+<span class="c1">#for details, see FXArgs document</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="on-playback-step-2-get-use-music-controller-pannel">
+<h2>On Playback Step-2: Get &amp; Use Music Controller Pannel<a class="headerlink" href="#on-playback-step-2-get-use-music-controller-pannel" title="Link to this heading"></a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv418MusicControlPannel">
+<span id="_CPPv318MusicControlPannel"></span><span id="_CPPv218MusicControlPannel"></span><span id="MusicControlPannel"></span><span class="target" id="classMusicControlPannel"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MusicControlPannel</span></span></span><br /></dt>
+<dd><p>Music handler for manual mode. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer21GetMusicControlPannelEv">
+<span id="_CPPv3N11audioPlayer21GetMusicControlPannelEv"></span><span id="_CPPv2N11audioPlayer21GetMusicControlPannelEv"></span><span id="audioPlayer::GetMusicControlPannel"></span><span class="target" id="classaudioPlayer_1a373d7c2bf9c5f5a30f01c5d628d52d53"></span><a class="reference internal" href="How_To_Use.html#_CPPv418MusicControlPannel" title="MusicControlPannel"><span class="n"><span class="pre">MusicControlPannel</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetMusicControlPannel</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>music controller getter this returns the music controller. with this, you can load music, stop music in realtime manually. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>MusicControlPannel* if something wrong, it returns nullptr. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel9LoadMusicER6litedbRK7musdata">
+<span id="_CPPv3N18MusicControlPannel9LoadMusicER6litedbRK7musdata"></span><span id="_CPPv2N18MusicControlPannel9LoadMusicER6litedbRK7musdata"></span><span id="MusicControlPannel::LoadMusic__litedbR.musdataCR"></span><span class="target" id="classMusicControlPannel_1abb7edb1051ec46ee153c1893ba5a3450"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv418MusicControlPannel" title="MusicControlPannel"><span class="n"><span class="pre">MusicControlPannel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">LoadMusic</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ROOTDB</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/structmusdata.html#_CPPv47musdata" title="musdata"><span class="n"><span class="pre">musdata</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Mus</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>loads music to the deck. doesn’t play music </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Mus</strong> – Searched music </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>int, miniaudio Error code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel8SetMusicERK11UNSANITIZEDKb">
+<span id="_CPPv3N18MusicControlPannel8SetMusicERK11UNSANITIZEDKb"></span><span id="_CPPv2N18MusicControlPannel8SetMusicERK11UNSANITIZEDKb"></span><span id="MusicControlPannel::SetMusic__UNSANITIZEDCR.bC"></span><span class="target" id="classMusicControlPannel_1a7402cd45c5ebeca17332417a3e1359d6"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv418MusicControlPannel" title="MusicControlPannel"><span class="n"><span class="pre">MusicControlPannel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SetMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">onOff</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>turn on, off the music </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – the music title </p></li>
+<li><p><strong>onOff</strong> – True is on, False is off </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel8CueMusicERK11UNSANITIZEDKy">
+<span id="_CPPv3N18MusicControlPannel8CueMusicERK11UNSANITIZEDKy"></span><span id="_CPPv2N18MusicControlPannel8CueMusicERK11UNSANITIZEDKy"></span><span id="MusicControlPannel::CueMusic__UNSANITIZEDCR.unsigned-l-lC"></span><span class="target" id="classMusicControlPannel_1a7cc175695540fb5ba7c3c030da090681"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv418MusicControlPannel" title="MusicControlPannel"><span class="n"><span class="pre">MusicControlPannel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">CueMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">newPos</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Change playback position of the music. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – the music title </p></li>
+<li><p><strong>newPos</strong> – the new playback position of the music </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel18GetLoadedMusicListEv">
+<span id="_CPPv3N18MusicControlPannel18GetLoadedMusicListEv"></span><span id="_CPPv2N18MusicControlPannel18GetLoadedMusicListEv"></span><span id="MusicControlPannel::GetLoadedMusicList"></span><span class="target" id="classMusicControlPannel_1ad2ab2405535221002f7ad2d096169f9e"></span><a class="reference internal" href="api/typedef_MusicControlPannel_8hpp_1a4c72c3001db71218d5703fe8033a6792.html#_CPPv411LOADED_LIST" title="LOADED_LIST"><span class="n"><span class="pre">LOADED_LIST</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv418MusicControlPannel" title="MusicControlPannel"><span class="n"><span class="pre">MusicControlPannel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetLoadedMusicList</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>get music list on the deck </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="api/typedef_MusicControlPannel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8.html#MusicControlPannel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8"><span class="std std-ref">LOADED_LIST</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N18MusicControlPannel11getFXHandleERK11UNSANITIZED">
+<span id="_CPPv3N18MusicControlPannel11getFXHandleERK11UNSANITIZED"></span><span id="_CPPv2N18MusicControlPannel11getFXHandleERK11UNSANITIZED"></span><span id="MusicControlPannel::getFXHandle__UNSANITIZEDCR"></span><span class="target" id="classMusicControlPannel_1abc61176dfa07cf2da9ad733d873751a7"></span><a class="reference internal" href="api/classFXControlPannel.html#_CPPv415FXControlPannel" title="FXControlPannel"><span class="n"><span class="pre">FXControlPannel</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv418MusicControlPannel" title="MusicControlPannel"><span class="n"><span class="pre">MusicControlPannel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getFXHandle</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>gets FX handler </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>title</strong> – the title of the music </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>FXControlPannel*, the handler pointer </p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-16" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-16">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">musPannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetMusicControlPannel</span><span class="p">();</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">musicFound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;composer&quot;</span><span class="p">);</span>
+<span class="c1">//find music to playback manually</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">load_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">LoadMusic</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">DBROOT</span><span class="p">),</span><span class="w"> </span><span class="n">musicFound</span><span class="p">.</span><span class="n">front</span><span class="p">());</span>
+<span class="c1">// load found music to deck. music won&#39;t playback in here</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">unload_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">UnloadMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
+<span class="c1">// unload music from deck. don&#39;t forget for the memory space.</span>
+<span class="c1">// the deck always contains loaded music before calling musPannel.UnloadMusic or engine.ResetPlayer</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">onoff_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">SetMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="c1">// turn on the music. now music playbacks</span>
+
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">48000</span><span class="p">;</span>
+<span class="c1">//PCMFrame_position = second X SampleRate</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">cue_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">CueMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="p">);</span>
+<span class="c1">//set playback position of the music.</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">loaded_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">GetLoadedMusicList</span><span class="p">();</span>
+<span class="c1">//get loaded music list.</span>
+
+<span class="n">FXControlPannel</span><span class="o">*</span><span class="w"> </span><span class="n">Fxhandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">getFXHandle</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
+<span class="c1">//get music&#39;s fx handle</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-17" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-17">
+C#</label><div class="sd-tab-content docutils">
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">MusicControlPannel</span><span class="w"> </span><span class="n">musPannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">GetMusicControlPannel</span><span class="p">();</span>
+
+<span class="kt">var</span><span class="w"> </span><span class="n">musicFound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;composer&quot;</span><span class="p">);</span>
+<span class="c1">//find music to playback manually</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">load_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="p">.</span><span class="n">LoadMusic</span><span class="p">(</span><span class="n">engine</span><span class="p">.</span><span class="n">DBROOT</span><span class="p">,</span><span class="w"> </span><span class="n">musicFound</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="c1">// load found music to deck. music won&#39;t playback in here</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">unload_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="p">.</span><span class="n">UnloadMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
+<span class="c1">// unload music from deck. don&#39;t forget for the memory space.</span>
+<span class="c1">// the deck always contains loaded music before calling musPannel.UnloadMusic or engine.ResetPlayer</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">onoff_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="p">.</span><span class="n">SetMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="p">);</span>
+<span class="c1">// turn on the music. now music playbacks</span>
+
+<span class="kt">ulong</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
+<span class="kt">ulong</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">48000</span><span class="p">;</span>
+<span class="c1">//PCMFrame_position = second X SampleRate</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">cue_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="p">.</span><span class="n">CueMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="p">);</span>
+<span class="c1">//set playback position of the music.</span>
+
+<span class="n">KEY_VEC</span><span class="w"> </span><span class="n">loaded_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="p">.</span><span class="n">GetLoadedMusicList</span><span class="p">();</span>
+<span class="c1">//get loaded music list.</span>
+
+<span class="n">FXControlPannel</span><span class="w"> </span><span class="n">Fxhandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="p">.</span><span class="n">getFXHandle</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
+<span class="c1">//get music&#39;s fx handle</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-18" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-18">
+PYTHON</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pyPDJE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">MusicControlPannel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">FXControlPannel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">audioPlayer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">MUS_VEC</span>
+
+<span class="n">musPannel</span><span class="p">:</span><span class="n">MusicControlPannel</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">GetMusicControlPannel</span><span class="p">()</span>
+
+<span class="n">musicFound</span><span class="p">:</span><span class="n">MUS_VEC</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;composer&quot;</span><span class="p">)</span>
+<span class="c1">#find music to playback manually</span>
+
+<span class="n">load_OK</span> <span class="o">=</span> <span class="n">musPannel</span><span class="o">.</span><span class="n">LoadMusic</span><span class="p">(</span><span class="n">engine</span><span class="o">.</span><span class="n">DBROOT</span><span class="p">,</span> <span class="n">musicFound</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># load found music to deck. music won&#39;t playback in here</span>
+
+<span class="n">unload_OK</span> <span class="o">=</span> <span class="n">musPannel</span><span class="o">.</span><span class="n">UnloadMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
+<span class="c1"># unload music from deck. don&#39;t forget for the memory space.</span>
+<span class="c1"># the deck always contains loaded music before calling musPannel.UnloadMusic or engine.ResetPlayer</span>
+
+<span class="n">onoff_OK</span> <span class="o">=</span> <span class="n">musPannel</span><span class="o">.</span><span class="n">SetMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="c1"># turn on the music. now music playbacks</span>
+
+<span class="n">second</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">PCMFrame_position</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span> <span class="o">*</span> <span class="mi">48000</span>
+<span class="c1">#PCMFrame_position = second X SampleRate</span>
+
+<span class="n">cue_OK</span> <span class="o">=</span> <span class="n">musPannel</span><span class="o">.</span><span class="n">CueMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="n">PCMFrame_position</span><span class="p">)</span>
+<span class="c1">#set playback position of the music.</span>
+
+<span class="n">loaded_list</span> <span class="o">=</span> <span class="n">musPannel</span><span class="o">.</span><span class="n">GetLoadedMusicList</span><span class="p">()</span>
+<span class="c1">#get loaded music list.</span>
+
+<span class="n">Fxhandle</span><span class="p">:</span><span class="n">FXControlPannel</span> <span class="o">=</span> <span class="n">musPannel</span><span class="o">.</span><span class="n">getFXHandle</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
+<span class="c1">#get music&#39;s fx handle</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-19" name="sd-tab-set-4" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-19">
+GDSCRIPT</label><div class="sd-tab-content docutils">
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">musPannel</span><span class="p">:</span><span class="n">MusPannelWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="o">.</span><span class="n">GetMusicControlPannel</span><span class="p">()</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">musicFound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;composer&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="c1">#find music to playback manually</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">load_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">.</span><span class="n">LoadMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;composer&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="c1"># load found music to deck. music won&#39;t playback in here</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">unload_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">.</span><span class="n">UnloadMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
+<span class="c1"># unload music from deck. don&#39;t forget for the memory space.</span>
+<span class="c1"># the deck always contains loaded music before calling musPannel.UnloadMusic or engine.ResetPlayer</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">onoff_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">.</span><span class="n">SetMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">)</span>
+<span class="c1"># turn on the music. now music playbacks</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span>
+<span class="k">var</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">48000</span>
+<span class="c1">#PCMFrame_position = second X SampleRate</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">cue_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">.</span><span class="n">CueMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="p">)</span>
+<span class="c1">#set playback position of the music.</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">loaded_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">.</span><span class="n">GetLoadedMusicList</span><span class="p">()</span>
+<span class="c1">#get loaded music list.</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">Fxhandle</span><span class="p">:</span><span class="n">FXWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">.</span><span class="n">getFXHandle</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
+<span class="c1">#get music&#39;s fx handle</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

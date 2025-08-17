@@ -11,28 +11,15 @@
 
 public class litedb : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
-  protected bool swigCMemOwn;
+  private bool swigCMemOwnBase;
 
   internal litedb(global::System.IntPtr cPtr, bool cMemoryOwn) {
-    swigCMemOwn = cMemoryOwn;
+    swigCMemOwnBase = cMemoryOwn;
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
   internal static global::System.Runtime.InteropServices.HandleRef getCPtr(litedb obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
-  }
-
-  internal static global::System.Runtime.InteropServices.HandleRef swigRelease(litedb obj) {
-    if (obj != null) {
-      if (!obj.swigCMemOwn)
-        throw new global::System.ApplicationException("Cannot release ownership as memory is not owned");
-      global::System.Runtime.InteropServices.HandleRef ptr = obj.swigCPtr;
-      obj.swigCMemOwn = false;
-      obj.Dispose();
-      return ptr;
-    } else {
-      return new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
-    }
   }
 
   ~litedb() {
@@ -47,8 +34,8 @@ public class litedb : global::System.IDisposable {
   protected virtual void Dispose(bool disposing) {
     lock(this) {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
-        if (swigCMemOwn) {
-          swigCMemOwn = false;
+        if (swigCMemOwnBase) {
+          swigCMemOwnBase = false;
           pdje_POLYGLOTPINVOKE.delete_litedb(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
@@ -74,8 +61,9 @@ public class litedb : global::System.IDisposable {
     return ret;
   }
 
-  public string getRoot() {
-    string ret = pdje_POLYGLOTPINVOKE.litedb_getRoot(swigCPtr);
+  public SWIGTYPE_p_std__filesystem__path getRoot() {
+    SWIGTYPE_p_std__filesystem__path ret = new SWIGTYPE_p_std__filesystem__path(pdje_POLYGLOTPINVOKE.litedb_getRoot(swigCPtr), true);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 

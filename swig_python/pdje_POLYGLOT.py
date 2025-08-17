@@ -177,6 +177,15 @@ class PDJE(object):
     def InitPlayer(self, mode, td, FrameBufferSize):
         return _pdje_python.PDJE_InitPlayer(self, mode, td, FrameBufferSize)
 
+    def ResetPlayer(self):
+        return _pdje_python.PDJE_ResetPlayer(self)
+
+    def ResetEditor(self):
+        return _pdje_python.PDJE_ResetEditor(self)
+
+    def PullOutDataLine(self):
+        return _pdje_python.PDJE_PullOutDataLine(self)
+
     def InitEditor(self, auth_name, auth_email, projectRoot):
         return _pdje_python.PDJE_InitEditor(self, auth_name, auth_email, projectRoot)
 
@@ -314,6 +323,9 @@ class audioPlayer(object):
 
     def __init__(self, *args):
         _pdje_python.audioPlayer_swiginit(self, _pdje_python.new_audioPlayer(*args))
+
+    def PullOutDataLine(self):
+        return _pdje_python.audioPlayer_PullOutDataLine(self)
     __swig_destroy__ = _pdje_python.delete_audioPlayer
 
 # Register audioPlayer in _pdje_python:
@@ -332,12 +344,53 @@ class PDJE_Name_Sanitizer(object):
     @staticmethod
     def getFileName(sanitized):
         return _pdje_python.PDJE_Name_Sanitizer_getFileName(sanitized)
-    PDJE_SANITIZE_ERROR = property(_pdje_python.PDJE_Name_Sanitizer_PDJE_SANITIZE_ERROR_get, _pdje_python.PDJE_Name_Sanitizer_PDJE_SANITIZE_ERROR_set)
 
 # Register PDJE_Name_Sanitizer in _pdje_python:
 _pdje_python.PDJE_Name_Sanitizer_swigregister(PDJE_Name_Sanitizer)
-cvar = _pdje_python.cvar
+class MusicOnDeck(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    play = property(_pdje_python.MusicOnDeck_play_get, _pdje_python.MusicOnDeck_play_set)
+    dec = property(_pdje_python.MusicOnDeck_dec_get, _pdje_python.MusicOnDeck_dec_set)
+    fxP = property(_pdje_python.MusicOnDeck_fxP_get, _pdje_python.MusicOnDeck_fxP_set)
 
+    def __init__(self):
+        _pdje_python.MusicOnDeck_swiginit(self, _pdje_python.new_MusicOnDeck())
+    __swig_destroy__ = _pdje_python.delete_MusicOnDeck
+
+# Register MusicOnDeck in _pdje_python:
+_pdje_python.MusicOnDeck_swigregister(MusicOnDeck)
+class MusicControlPannel(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def LoadMusic(self, ROOTDB, Mus):
+        return _pdje_python.MusicControlPannel_LoadMusic(self, ROOTDB, Mus)
+
+    def CueMusic(self, title, newPos):
+        return _pdje_python.MusicControlPannel_CueMusic(self, title, newPos)
+
+    def SetMusic(self, title, onOff):
+        return _pdje_python.MusicControlPannel_SetMusic(self, title, onOff)
+
+    def GetLoadedMusicList(self):
+        return _pdje_python.MusicControlPannel_GetLoadedMusicList(self)
+
+    def UnloadMusic(self, title):
+        return _pdje_python.MusicControlPannel_UnloadMusic(self, title)
+
+    def GetPCMFrames(self, array, FrameSize):
+        return _pdje_python.MusicControlPannel_GetPCMFrames(self, array, FrameSize)
+
+    def getFXHandle(self, title):
+        return _pdje_python.MusicControlPannel_getFXHandle(self, title)
+
+    def __init__(self, FrameSize):
+        _pdje_python.MusicControlPannel_swiginit(self, _pdje_python.new_MusicControlPannel(FrameSize))
+    __swig_destroy__ = _pdje_python.delete_MusicControlPannel
+
+# Register MusicControlPannel in _pdje_python:
+_pdje_python.MusicControlPannel_swigregister(MusicControlPannel)
 class MUS_VEC(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
