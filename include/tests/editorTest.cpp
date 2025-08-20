@@ -122,6 +122,8 @@ main()
         ocshandle["bps"](2.2333333);
         ocshandle["OCSFilterDryWet"](0.7);
         getchar();
+        musPannel->ChangeBpm("ヒアソビ", 120, 60);
+        getchar();
         auto deactres = engine->player->Deactivate();
 
 
