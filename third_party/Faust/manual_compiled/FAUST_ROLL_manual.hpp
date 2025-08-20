@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------
 name: "ROLL"
-Code generated with Faust 2.75.7 (https://faust.grame.fr)
+Code generated with Faust 2.81.2 (https://faust.grame.fr)
 Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn RollFAUSTMan -scn RollMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32
 ------------------------------------------------------------ */
 
@@ -52,15 +52,14 @@ class RollFAUSTMan final : public RollMan {
 	
 	void metadata(Meta* m) { 
 		m->declare("basics.lib/name", "Faust Basic Element Library");
-		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
-		m->declare("basics.lib/version", "1.19.1");
+		m->declare("basics.lib/version", "1.21.0");
 		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn RollFAUSTMan -scn RollMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32");
 		m->declare("filename", "ROLL.dsp");
 		m->declare("maths.lib/author", "GRAME");
 		m->declare("maths.lib/copyright", "GRAME");
 		m->declare("maths.lib/license", "LGPL with exception");
 		m->declare("maths.lib/name", "Faust Math Library");
-		m->declare("maths.lib/version", "2.8.0");
+		m->declare("maths.lib/version", "2.8.1");
 		m->declare("name", "ROLL");
 		m->declare("platform.lib/name", "Generic Platform Library");
 		m->declare("platform.lib/version", "1.3.0");

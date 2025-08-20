@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------
 name: "FILTER"
-Code generated with Faust 2.75.7 (https://faust.grame.fr)
+Code generated with Faust 2.81.2 (https://faust.grame.fr)
 Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn FilterFAUSTMan -scn FilterMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32
 ------------------------------------------------------------ */
 
@@ -92,12 +92,12 @@ class FilterFAUSTMan final : public FilterMan {
 		m->declare("filters.lib/tf2s:author", "Julius O. Smith III");
 		m->declare("filters.lib/tf2s:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
 		m->declare("filters.lib/tf2s:license", "MIT-style STK-4.3 license");
-		m->declare("filters.lib/version", "1.3.0");
+		m->declare("filters.lib/version", "1.7.1");
 		m->declare("maths.lib/author", "GRAME");
 		m->declare("maths.lib/copyright", "GRAME");
 		m->declare("maths.lib/license", "LGPL with exception");
 		m->declare("maths.lib/name", "Faust Math Library");
-		m->declare("maths.lib/version", "2.8.0");
+		m->declare("maths.lib/version", "2.8.1");
 		m->declare("name", "FILTER");
 		m->declare("platform.lib/name", "Generic Platform Library");
 		m->declare("platform.lib/version", "1.3.0");
@@ -609,12 +609,12 @@ class FilterFAUSTMan final : public FilterMan {
 			/* Vectorizable loop 24 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(((iSlow27) ? fSlow25 * (fRec6[i - 2] + fRec6[i] + 2.0f * fRec6[i - 1]) : fSlow28 * (fRec0[i] + fRec0[i - 2] - 2.0f * fRec0[i - 1])));
+				output0[i] = FAUSTFLOAT(((iSlow27) ? fSlow25 * (fRec6[i - 2] + fRec6[i] + 2.0f * fRec6[i - 1]) : fSlow28 * (fRec0[i - 2] + (fRec0[i] - 2.0f * fRec0[i - 1]))));
 			}
 			/* Vectorizable loop 25 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(((iSlow27) ? fSlow25 * (fRec17[i - 2] + fRec17[i] + 2.0f * fRec17[i - 1]) : fSlow28 * (fRec11[i] + fRec11[i - 2] - 2.0f * fRec11[i - 1])));
+				output1[i] = FAUSTFLOAT(((iSlow27) ? fSlow25 * (fRec17[i - 2] + fRec17[i] + 2.0f * fRec17[i - 1]) : fSlow28 * (fRec11[i - 2] + (fRec11[i] - 2.0f * fRec11[i - 1]))));
 			}
 		}
 		/* Remaining frames */
@@ -923,12 +923,12 @@ class FilterFAUSTMan final : public FilterMan {
 			/* Vectorizable loop 24 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(((iSlow27) ? fSlow25 * (fRec6[i - 2] + fRec6[i] + 2.0f * fRec6[i - 1]) : fSlow28 * (fRec0[i] + fRec0[i - 2] - 2.0f * fRec0[i - 1])));
+				output0[i] = FAUSTFLOAT(((iSlow27) ? fSlow25 * (fRec6[i - 2] + fRec6[i] + 2.0f * fRec6[i - 1]) : fSlow28 * (fRec0[i - 2] + (fRec0[i] - 2.0f * fRec0[i - 1]))));
 			}
 			/* Vectorizable loop 25 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(((iSlow27) ? fSlow25 * (fRec17[i - 2] + fRec17[i] + 2.0f * fRec17[i - 1]) : fSlow28 * (fRec11[i] + fRec11[i - 2] - 2.0f * fRec11[i - 1])));
+				output1[i] = FAUSTFLOAT(((iSlow27) ? fSlow25 * (fRec17[i - 2] + fRec17[i] + 2.0f * fRec17[i - 1]) : fSlow28 * (fRec11[i - 2] + (fRec11[i] - 2.0f * fRec11[i - 1]))));
 			}
 		}
 	}

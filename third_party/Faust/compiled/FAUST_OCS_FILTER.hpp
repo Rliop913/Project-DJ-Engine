@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------
 name: "OCSFILTER"
-Code generated with Faust 2.75.7 (https://faust.grame.fr)
+Code generated with Faust 2.81.2 (https://faust.grame.fr)
 Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn OcsFilterFAUST -scn OcsFilter_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32
 ------------------------------------------------------------ */
 
@@ -42,24 +42,24 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
  private:
 	
 	int iVec0_perm[4];
-	int iRec0_perm[4];
 	int fSampleRate;
 	float fConst0;
 	float fConst1;
-	float fRec7_perm[4];
+	float fRec6_perm[4];
 	float ftbl0OcsFilterFAUSTSIG0[65536];
 	float fConst2;
-	float fRec6_perm[4];
 	float fRec5_perm[4];
 	float fRec4_perm[4];
 	float fRec3_perm[4];
 	float fRec2_perm[4];
 	float fRec1_perm[4];
-	float fRec13_perm[4];
+	float fRec0_perm[4];
 	float fRec12_perm[4];
 	float fRec11_perm[4];
 	float fRec10_perm[4];
 	float fRec9_perm[4];
+	float fRec8_perm[4];
+	int iRec13_perm[4];
 	float fRec19_perm[4];
 	float fRec18_perm[4];
 	float fRec17_perm[4];
@@ -72,7 +72,7 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 	float fRec21_perm[4];
 	float fRec20_perm[4];
 	int iVec1[2];
-	int iRec8[2];
+	int iRec7[2];
 	
  public:
 	OcsFilterFAUST() {
@@ -80,8 +80,7 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 	
 	void metadata(Meta* m) { 
 		m->declare("basics.lib/name", "Faust Basic Element Library");
-		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
-		m->declare("basics.lib/version", "1.19.1");
+		m->declare("basics.lib/version", "1.21.0");
 		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn OcsFilterFAUST -scn OcsFilter_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32");
 		m->declare("filename", "OCSFILTER.dsp");
 		m->declare("filters.lib/fir:author", "Julius O. Smith III");
@@ -104,7 +103,7 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 		m->declare("filters.lib/tf2s:author", "Julius O. Smith III");
 		m->declare("filters.lib/tf2s:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
 		m->declare("filters.lib/tf2s:license", "MIT-style STK-4.3 license");
-		m->declare("filters.lib/version", "1.3.0");
+		m->declare("filters.lib/version", "1.7.1");
 		m->declare("interpolators.lib/interpolate_cosine:author", "Stéphane Letz");
 		m->declare("interpolators.lib/interpolate_cosine:licence", "MIT");
 		m->declare("interpolators.lib/interpolate_cubic:author", "Stéphane Letz");
@@ -122,15 +121,15 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 		m->declare("interpolators.lib/interpolator_two_points:author", "Stéphane Letz");
 		m->declare("interpolators.lib/interpolator_two_points:licence", "MIT");
 		m->declare("interpolators.lib/name", "Faust Interpolator Library");
-		m->declare("interpolators.lib/version", "1.3.1");
+		m->declare("interpolators.lib/version", "1.4.0");
 		m->declare("maths.lib/author", "GRAME");
 		m->declare("maths.lib/copyright", "GRAME");
 		m->declare("maths.lib/license", "LGPL with exception");
 		m->declare("maths.lib/name", "Faust Math Library");
-		m->declare("maths.lib/version", "2.8.0");
+		m->declare("maths.lib/version", "2.8.1");
 		m->declare("name", "OCSFILTER");
 		m->declare("oscillators.lib/name", "Faust Oscillator Library");
-		m->declare("oscillators.lib/version", "1.5.1");
+		m->declare("oscillators.lib/version", "1.6.0");
 		m->declare("platform.lib/name", "Generic Platform Library");
 		m->declare("platform.lib/version", "1.3.0");
 		m->declare("routes.lib/name", "Faust Signal Routing Library");
@@ -153,18 +152,18 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 	static void classInit(int sample_rate) {}
 	
 	void staticInit(int sample_rate) {
-		for (int l3_re0 = 0; l3_re0 < 2; l3_re0 = l3_re0 + 1) {
-			iVec1[l3_re0] = 0;
+		for (int l2_re0 = 0; l2_re0 < 2; l2_re0 = l2_re0 + 1) {
+			iVec1[l2_re0] = 0;
 		}
-		for (int l4_re0 = 0; l4_re0 < 2; l4_re0 = l4_re0 + 1) {
-			iRec8[l4_re0] = 0;
+		for (int l3_re0 = 0; l3_re0 < 2; l3_re0 = l3_re0 + 1) {
+			iRec7[l3_re0] = 0;
 		}
 		for (int i1_re0 = 0; i1_re0 < 65536; i1_re0 = i1_re0 + 1) {
 			iVec1[0] = 1;
-			iRec8[0] = (iVec1[1] + iRec8[1]) % 65536;
-			ftbl0OcsFilterFAUSTSIG0[i1_re0] = std::cos(9.58738e-05f * float(iRec8[0]));
+			iRec7[0] = (iVec1[1] + iRec7[1]) % 65536;
+			ftbl0OcsFilterFAUSTSIG0[i1_re0] = std::cos(9.58738e-05f * float(iRec7[0]));
 			iVec1[1] = iVec1[0];
-			iRec8[1] = iRec8[0];
+			iRec7[1] = iRec7[0];
 		}
 	}
 	
@@ -183,43 +182,43 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			iVec0_perm[l0] = 0;
 		}
 		for (int l1 = 0; l1 < 4; l1 = l1 + 1) {
-			iRec0_perm[l1] = 0;
+			fRec6_perm[l1] = 0.0f;
 		}
-		for (int l2 = 0; l2 < 4; l2 = l2 + 1) {
-			fRec7_perm[l2] = 0.0f;
+		for (int l4 = 0; l4 < 4; l4 = l4 + 1) {
+			fRec5_perm[l4] = 0.0f;
 		}
 		for (int l5 = 0; l5 < 4; l5 = l5 + 1) {
-			fRec6_perm[l5] = 0.0f;
+			fRec4_perm[l5] = 0.0f;
 		}
 		for (int l6 = 0; l6 < 4; l6 = l6 + 1) {
-			fRec5_perm[l6] = 0.0f;
+			fRec3_perm[l6] = 0.0f;
 		}
 		for (int l7 = 0; l7 < 4; l7 = l7 + 1) {
-			fRec4_perm[l7] = 0.0f;
+			fRec2_perm[l7] = 0.0f;
 		}
 		for (int l8 = 0; l8 < 4; l8 = l8 + 1) {
-			fRec3_perm[l8] = 0.0f;
+			fRec1_perm[l8] = 0.0f;
 		}
 		for (int l9 = 0; l9 < 4; l9 = l9 + 1) {
-			fRec2_perm[l9] = 0.0f;
+			fRec0_perm[l9] = 0.0f;
 		}
 		for (int l10 = 0; l10 < 4; l10 = l10 + 1) {
-			fRec1_perm[l10] = 0.0f;
+			fRec12_perm[l10] = 0.0f;
 		}
 		for (int l11 = 0; l11 < 4; l11 = l11 + 1) {
-			fRec13_perm[l11] = 0.0f;
+			fRec11_perm[l11] = 0.0f;
 		}
 		for (int l12 = 0; l12 < 4; l12 = l12 + 1) {
-			fRec12_perm[l12] = 0.0f;
+			fRec10_perm[l12] = 0.0f;
 		}
 		for (int l13 = 0; l13 < 4; l13 = l13 + 1) {
-			fRec11_perm[l13] = 0.0f;
+			fRec9_perm[l13] = 0.0f;
 		}
 		for (int l14 = 0; l14 < 4; l14 = l14 + 1) {
-			fRec10_perm[l14] = 0.0f;
+			fRec8_perm[l14] = 0.0f;
 		}
 		for (int l15 = 0; l15 < 4; l15 = l15 + 1) {
-			fRec9_perm[l15] = 0.0f;
+			iRec13_perm[l15] = 0;
 		}
 		for (int l16 = 0; l16 < 4; l16 = l16 + 1) {
 			fRec19_perm[l16] = 0.0f;
@@ -285,55 +284,49 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 		FAUSTFLOAT* input1_ptr = inputs[1];
 		FAUSTFLOAT* output0_ptr = outputs[0];
 		FAUSTFLOAT* output1_ptr = outputs[1];
-		int iSlow0 = timerActive > 0;
-		int iSlow1 = frames;
 		int iVec0_tmp[36];
 		int* iVec0 = &iVec0_tmp[4];
-		int iRec0_tmp[36];
-		int* iRec0 = &iRec0_tmp[4];
-		float fSlow2 = fConst1 * bps;
+		float fSlow0 = fConst1 * bps;
 		float fZec0[32];
 		float fZec1[32];
-		float fRec7_tmp[36];
-		float* fRec7 = &fRec7_tmp[4];
-		float fSlow3 = float(rangeFreqHalf);
-		float fSlow4 = float(middleFreq);
+		float fRec6_tmp[36];
+		float* fRec6 = &fRec6_tmp[4];
+		float fSlow1 = float(rangeFreqHalf);
+		float fSlow2 = float(middleFreq);
 		float fZec2[32];
 		float fZec3[32];
 		float fZec4[32];
 		float fZec5[32];
 		float fZec6[32];
 		float fZec7[32];
-		float fRec6_tmp[36];
-		float* fRec6 = &fRec6_tmp[4];
+		float fRec5_tmp[36];
+		float* fRec5 = &fRec5_tmp[4];
 		float fZec8[32];
 		float fZec9[32];
 		float fZec10[32];
 		float fZec11[32];
-		float fRec5_tmp[36];
-		float* fRec5 = &fRec5_tmp[4];
+		float fRec4_tmp[36];
+		float* fRec4 = &fRec4_tmp[4];
 		float fZec12[32];
 		float fZec13[32];
 		float fZec14[32];
-		float fRec4_tmp[36];
-		float* fRec4 = &fRec4_tmp[4];
+		float fRec3_tmp[36];
+		float* fRec3 = &fRec3_tmp[4];
 		float fZec15[32];
 		float fZec16[32];
 		float fZec17[32];
-		float fRec3_tmp[36];
-		float* fRec3 = &fRec3_tmp[4];
+		float fRec2_tmp[36];
+		float* fRec2 = &fRec2_tmp[4];
 		float fZec18[32];
 		float fZec19[32];
 		float fZec20[32];
-		float fRec2_tmp[36];
-		float* fRec2 = &fRec2_tmp[4];
+		float fRec1_tmp[36];
+		float* fRec1 = &fRec1_tmp[4];
 		float fZec21[32];
 		float fZec22[32];
 		float fZec23[32];
-		float fRec1_tmp[36];
-		float* fRec1 = &fRec1_tmp[4];
-		float fRec13_tmp[36];
-		float* fRec13 = &fRec13_tmp[4];
+		float fRec0_tmp[36];
+		float* fRec0 = &fRec0_tmp[4];
 		float fRec12_tmp[36];
 		float* fRec12 = &fRec12_tmp[4];
 		float fRec11_tmp[36];
@@ -342,35 +335,41 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 		float* fRec10 = &fRec10_tmp[4];
 		float fRec9_tmp[36];
 		float* fRec9 = &fRec9_tmp[4];
-		int iSlow5 = ocsFilterHighLowSW;
+		float fRec8_tmp[36];
+		float* fRec8 = &fRec8_tmp[4];
+		int iSlow3 = timerActive > 0;
+		int iSlow4 = frames;
+		int iRec13_tmp[36];
+		int* iRec13 = &iRec13_tmp[4];
+		int iSlow5 = selectInterpolator;
+		int iSlow6 = iSlow5 >= 2;
+		int iSlow7 = iSlow5 >= 1;
+		float fSlow8 = 8.0f / float(iSlow4);
 		float fZec24[32];
-		int iSlow6 = selectInterpolator;
-		int iSlow7 = iSlow6 >= 2;
-		int iSlow8 = iSlow6 >= 1;
-		float fSlow9 = 8.0f / float(iSlow1);
-		float fZec25[32];
-		int iZec26[32];
-		float fSlow10 = v1;
-		float fSlow11 = v2;
-		float fSlow12 = v3;
-		float fSlow13 = v4;
-		float fSlow14 = v5;
-		float fSlow15 = v6;
-		float fSlow16 = v7;
-		float fSlow17 = v8;
-		float fZec27[32];
-		int iZec28[32];
+		int iZec25[32];
+		float fSlow9 = v1;
+		float fSlow10 = v2;
+		float fSlow11 = v3;
+		float fSlow12 = v4;
+		float fSlow13 = v5;
+		float fSlow14 = v6;
+		float fSlow15 = v7;
+		float fSlow16 = v8;
+		float fZec26[32];
+		int iZec27[32];
+		float fZec28[32];
 		float fZec29[32];
 		float fZec30[32];
 		float fZec31[32];
-		float fZec32[32];
-		int iSlow18 = iSlow6 >= 3;
-		int iZec33[32];
-		float fZec34[32];
-		int iZec35[32];
+		int iSlow17 = iSlow5 >= 3;
+		int iZec32[32];
+		float fZec33[32];
+		int iZec34[32];
+		float fZec35[32];
+		float fSlow18 = vZero;
 		float fZec36[32];
-		float fSlow19 = vZero;
 		float fZec37[32];
+		int iSlow19 = ocsFilterHighLowSW;
 		float fZec38[32];
 		float fRec19_tmp[36];
 		float* fRec19 = &fRec19_tmp[4];
@@ -418,23 +417,23 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 1 */
 			/* Pre code */
-			for (int j4 = 0; j4 < 4; j4 = j4 + 1) {
-				fRec7_tmp[j4] = fRec7_perm[j4];
+			for (int j2 = 0; j2 < 4; j2 = j2 + 1) {
+				fRec6_tmp[j2] = fRec6_perm[j2];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec0[i] = ((1 - iVec0[i - 1]) ? 0.0f : fSlow2 + fRec7[i - 1]);
+				fZec0[i] = ((1 - iVec0[i - 1]) ? 0.0f : fSlow0 + fRec6[i - 1]);
 				fZec1[i] = float(int(fZec0[i]));
-				fRec7[i] = fZec0[i] - ((fZec0[i] == fZec1[i]) ? fZec0[i] : ((fZec0[i] >= 0.0f) ? fZec1[i] : fZec1[i] + -1.0f));
+				fRec6[i] = fZec0[i] - ((fZec0[i] == fZec1[i]) ? fZec0[i] : ((fZec0[i] >= 0.0f) ? fZec1[i] : fZec1[i] + -1.0f));
 			}
 			/* Post code */
-			for (int j5 = 0; j5 < 4; j5 = j5 + 1) {
-				fRec7_perm[j5] = fRec7_tmp[vsize + j5];
+			for (int j3 = 0; j3 < 4; j3 = j3 + 1) {
+				fRec6_perm[j3] = fRec6_tmp[vsize + j3];
 			}
 			/* Vectorizable loop 2 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec2[i] = std::tan(fConst2 * std::min<float>(2.4e+04f, std::max<float>(1.0f, fSlow4 + fSlow3 * (ftbl0OcsFilterFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec7[i]), 65535))] + 1.0f))));
+				fZec2[i] = std::tan(fConst2 * std::min<float>(2.4e+04f, std::max<float>(1.0f, fSlow2 + fSlow1 * (ftbl0OcsFilterFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec6[i]), 65535))] + 1.0f))));
 			}
 			/* Vectorizable loop 3 */
 			/* Compute code */
@@ -446,51 +445,51 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			for (int i = 0; i < vsize; i = i + 1) {
 				fZec5[i] = OcsFilterFAUST_faustpower2_f(fZec2[i]);
 			}
-			/* Recursive loop 5 */
-			/* Pre code */
-			for (int j2 = 0; j2 < 4; j2 = j2 + 1) {
-				iRec0_tmp[j2] = iRec0_perm[j2];
-			}
-			/* Compute code */
-			for (int i = 0; i < vsize; i = i + 1) {
-				iRec0[i] = ((iSlow0) ? 0 : std::min<int>(iSlow1, iRec0[i - 1] + 1));
-			}
-			/* Post code */
-			for (int j3 = 0; j3 < 4; j3 = j3 + 1) {
-				iRec0_perm[j3] = iRec0_tmp[vsize + j3];
-			}
-			/* Vectorizable loop 6 */
+			/* Vectorizable loop 5 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
 				fZec4[i] = (fZec3[i] + 1.9828898f) / fZec2[i] + 1.0f;
 			}
-			/* Vectorizable loop 7 */
+			/* Vectorizable loop 6 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
 				fZec6[i] = 1.0f - 1.0f / fZec5[i];
 			}
-			/* Vectorizable loop 8 */
+			/* Vectorizable loop 7 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
 				fZec7[i] = (fZec3[i] + -1.9828898f) / fZec2[i] + 1.0f;
 			}
-			/* Recursive loop 9 */
+			/* Recursive loop 8 */
 			/* Pre code */
-			for (int j6 = 0; j6 < 4; j6 = j6 + 1) {
-				fRec6_tmp[j6] = fRec6_perm[j6];
+			for (int j26 = 0; j26 < 4; j26 = j26 + 1) {
+				iRec13_tmp[j26] = iRec13_perm[j26];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec6[i] = float(input0[i]) - (fRec6[i - 2] * fZec7[i] + 2.0f * fRec6[i - 1] * fZec6[i]) / fZec4[i];
+				iRec13[i] = ((iSlow3) ? 0 : std::min<int>(iSlow4, iRec13[i - 1] + 1));
 			}
 			/* Post code */
-			for (int j7 = 0; j7 < 4; j7 = j7 + 1) {
-				fRec6_perm[j7] = fRec6_tmp[vsize + j7];
+			for (int j27 = 0; j27 < 4; j27 = j27 + 1) {
+				iRec13_perm[j27] = iRec13_tmp[vsize + j27];
+			}
+			/* Recursive loop 9 */
+			/* Pre code */
+			for (int j4 = 0; j4 < 4; j4 = j4 + 1) {
+				fRec5_tmp[j4] = fRec5_perm[j4];
+			}
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fRec5[i] = float(input0[i]) - (fRec5[i - 2] * fZec7[i] + 2.0f * fRec5[i - 1] * fZec6[i]) / fZec4[i];
+			}
+			/* Post code */
+			for (int j5 = 0; j5 < 4; j5 = j5 + 1) {
+				fRec5_perm[j5] = fRec5_tmp[vsize + j5];
 			}
 			/* Vectorizable loop 10 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec25[i] = fSlow9 * float(iRec0[i]);
+				fZec24[i] = fSlow8 * float(iRec13[i]);
 			}
 			/* Recursive loop 11 */
 			/* Pre code */
@@ -523,12 +522,12 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			/* Vectorizable loop 15 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec11[i] = 2.0f * fRec6[i - 1];
+				fZec11[i] = 2.0f * fRec5[i - 1];
 			}
 			/* Vectorizable loop 16 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec26[i] = int(fZec25[i]);
+				iZec25[i] = int(fZec24[i]);
 			}
 			/* Vectorizable loop 17 */
 			/* Compute code */
@@ -537,16 +536,16 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 18 */
 			/* Pre code */
-			for (int j8 = 0; j8 < 4; j8 = j8 + 1) {
-				fRec5_tmp[j8] = fRec5_perm[j8];
+			for (int j6 = 0; j6 < 4; j6 = j6 + 1) {
+				fRec4_tmp[j6] = fRec4_perm[j6];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec5[i] = (fRec6[i - 2] + (fRec6[i] - fZec11[i])) / fZec10[i] - (fRec5[i - 2] * fZec9[i] + 2.0f * fZec6[i] * fRec5[i - 1]) / fZec8[i];
+				fRec4[i] = (fRec5[i - 2] + (fRec5[i] - fZec11[i])) / fZec10[i] - (fRec4[i - 2] * fZec9[i] + 2.0f * fZec6[i] * fRec4[i - 1]) / fZec8[i];
 			}
 			/* Post code */
-			for (int j9 = 0; j9 < 4; j9 = j9 + 1) {
-				fRec5_perm[j9] = fRec5_tmp[vsize + j9];
+			for (int j7 = 0; j7 < 4; j7 = j7 + 1) {
+				fRec4_perm[j7] = fRec4_tmp[vsize + j7];
 			}
 			/* Vectorizable loop 19 */
 			/* Compute code */
@@ -565,21 +564,21 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 22 */
 			/* Pre code */
-			for (int j18 = 0; j18 < 4; j18 = j18 + 1) {
-				fRec13_tmp[j18] = fRec13_perm[j18];
+			for (int j16 = 0; j16 < 4; j16 = j16 + 1) {
+				fRec12_tmp[j16] = fRec12_perm[j16];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec13[i] = (fRec6[i - 2] + fRec6[i] + fZec11[i]) / fZec4[i] - (fZec9[i] * fRec13[i - 2] + 2.0f * fZec6[i] * fRec13[i - 1]) / fZec8[i];
+				fRec12[i] = (fRec5[i - 2] + fRec5[i] + fZec11[i]) / fZec4[i] - (fZec9[i] * fRec12[i - 2] + 2.0f * fZec6[i] * fRec12[i - 1]) / fZec8[i];
 			}
 			/* Post code */
-			for (int j19 = 0; j19 < 4; j19 = j19 + 1) {
-				fRec13_perm[j19] = fRec13_tmp[vsize + j19];
+			for (int j17 = 0; j17 < 4; j17 = j17 + 1) {
+				fRec12_perm[j17] = fRec12_tmp[vsize + j17];
 			}
 			/* Vectorizable loop 23 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec28[i] = iZec26[i] + 1;
+				iZec27[i] = iZec25[i] + 1;
 			}
 			/* Recursive loop 24 */
 			/* Pre code */
@@ -609,16 +608,16 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 26 */
 			/* Pre code */
-			for (int j10 = 0; j10 < 4; j10 = j10 + 1) {
-				fRec4_tmp[j10] = fRec4_perm[j10];
+			for (int j8 = 0; j8 < 4; j8 = j8 + 1) {
+				fRec3_tmp[j8] = fRec3_perm[j8];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec4[i] = (fRec5[i - 2] + (fRec5[i] - 2.0f * fRec5[i - 1])) / fZec14[i] - (fRec4[i - 2] * fZec13[i] + 2.0f * fZec6[i] * fRec4[i - 1]) / fZec12[i];
+				fRec3[i] = (fRec4[i - 2] + (fRec4[i] - 2.0f * fRec4[i - 1])) / fZec14[i] - (fRec3[i - 2] * fZec13[i] + 2.0f * fZec6[i] * fRec3[i - 1]) / fZec12[i];
 			}
 			/* Post code */
-			for (int j11 = 0; j11 < 4; j11 = j11 + 1) {
-				fRec4_perm[j11] = fRec4_tmp[vsize + j11];
+			for (int j9 = 0; j9 < 4; j9 = j9 + 1) {
+				fRec3_perm[j9] = fRec3_tmp[vsize + j9];
 			}
 			/* Vectorizable loop 27 */
 			/* Compute code */
@@ -637,41 +636,41 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 30 */
 			/* Pre code */
-			for (int j20 = 0; j20 < 4; j20 = j20 + 1) {
-				fRec12_tmp[j20] = fRec12_perm[j20];
+			for (int j18 = 0; j18 < 4; j18 = j18 + 1) {
+				fRec11_tmp[j18] = fRec11_perm[j18];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec12[i] = (fRec13[i - 2] + fRec13[i] + 2.0f * fRec13[i - 1]) / fZec8[i] - (fZec13[i] * fRec12[i - 2] + 2.0f * fZec6[i] * fRec12[i - 1]) / fZec12[i];
+				fRec11[i] = (fRec12[i - 2] + fRec12[i] + 2.0f * fRec12[i - 1]) / fZec8[i] - (fZec13[i] * fRec11[i - 2] + 2.0f * fZec6[i] * fRec11[i - 1]) / fZec12[i];
 			}
 			/* Post code */
-			for (int j21 = 0; j21 < 4; j21 = j21 + 1) {
-				fRec12_perm[j21] = fRec12_tmp[vsize + j21];
+			for (int j19 = 0; j19 < 4; j19 = j19 + 1) {
+				fRec11_perm[j19] = fRec11_tmp[vsize + j19];
 			}
 			/* Vectorizable loop 31 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec27[i] = ((iZec26[i] >= 4) ? ((iZec26[i] >= 6) ? ((iZec26[i] >= 7) ? fSlow17 : fSlow16) : ((iZec26[i] >= 5) ? fSlow15 : fSlow14)) : ((iZec26[i] >= 2) ? ((iZec26[i] >= 3) ? fSlow13 : fSlow12) : ((iZec26[i] >= 1) ? fSlow11 : fSlow10)));
+				fZec26[i] = ((iZec25[i] >= 4) ? ((iZec25[i] >= 6) ? ((iZec25[i] >= 7) ? fSlow16 : fSlow15) : ((iZec25[i] >= 5) ? fSlow14 : fSlow13)) : ((iZec25[i] >= 2) ? ((iZec25[i] >= 3) ? fSlow12 : fSlow11) : ((iZec25[i] >= 1) ? fSlow10 : fSlow9)));
 			}
 			/* Vectorizable loop 32 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec29[i] = ((iZec28[i] >= 4) ? ((iZec28[i] >= 6) ? ((iZec28[i] >= 7) ? fSlow17 : fSlow16) : ((iZec28[i] >= 5) ? fSlow15 : fSlow14)) : ((iZec28[i] >= 2) ? ((iZec28[i] >= 3) ? fSlow13 : fSlow12) : ((iZec28[i] >= 1) ? fSlow11 : fSlow10)));
+				fZec28[i] = ((iZec27[i] >= 4) ? ((iZec27[i] >= 6) ? ((iZec27[i] >= 7) ? fSlow16 : fSlow15) : ((iZec27[i] >= 5) ? fSlow14 : fSlow13)) : ((iZec27[i] >= 2) ? ((iZec27[i] >= 3) ? fSlow12 : fSlow11) : ((iZec27[i] >= 1) ? fSlow10 : fSlow9)));
 			}
 			/* Vectorizable loop 33 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec31[i] = float(iZec26[i]);
+				fZec30[i] = float(iZec25[i]);
 			}
 			/* Vectorizable loop 34 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec33[i] = iZec26[i] + -1;
+				iZec32[i] = iZec25[i] + -1;
 			}
 			/* Vectorizable loop 35 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec35[i] = iZec26[i] + 2;
+				iZec34[i] = iZec25[i] + 2;
 			}
 			/* Recursive loop 36 */
 			/* Pre code */
@@ -701,16 +700,16 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 38 */
 			/* Pre code */
-			for (int j12 = 0; j12 < 4; j12 = j12 + 1) {
-				fRec3_tmp[j12] = fRec3_perm[j12];
+			for (int j10 = 0; j10 < 4; j10 = j10 + 1) {
+				fRec2_tmp[j10] = fRec2_perm[j10];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec3[i] = (fRec4[i - 2] + (fRec4[i] - 2.0f * fRec4[i - 1])) / fZec17[i] - (fRec3[i - 2] * fZec16[i] + 2.0f * fZec6[i] * fRec3[i - 1]) / fZec15[i];
+				fRec2[i] = (fRec3[i - 2] + (fRec3[i] - 2.0f * fRec3[i - 1])) / fZec17[i] - (fRec2[i - 2] * fZec16[i] + 2.0f * fZec6[i] * fRec2[i - 1]) / fZec15[i];
 			}
 			/* Post code */
-			for (int j13 = 0; j13 < 4; j13 = j13 + 1) {
-				fRec3_perm[j13] = fRec3_tmp[vsize + j13];
+			for (int j11 = 0; j11 < 4; j11 = j11 + 1) {
+				fRec2_perm[j11] = fRec2_tmp[vsize + j11];
 			}
 			/* Vectorizable loop 39 */
 			/* Compute code */
@@ -729,36 +728,36 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 42 */
 			/* Pre code */
-			for (int j22 = 0; j22 < 4; j22 = j22 + 1) {
-				fRec11_tmp[j22] = fRec11_perm[j22];
+			for (int j20 = 0; j20 < 4; j20 = j20 + 1) {
+				fRec10_tmp[j20] = fRec10_perm[j20];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec11[i] = (fRec12[i - 2] + fRec12[i] + 2.0f * fRec12[i - 1]) / fZec12[i] - (fZec16[i] * fRec11[i - 2] + 2.0f * fZec6[i] * fRec11[i - 1]) / fZec15[i];
+				fRec10[i] = (fRec11[i - 2] + fRec11[i] + 2.0f * fRec11[i - 1]) / fZec12[i] - (fZec16[i] * fRec10[i - 2] + 2.0f * fZec6[i] * fRec10[i - 1]) / fZec15[i];
 			}
 			/* Post code */
-			for (int j23 = 0; j23 < 4; j23 = j23 + 1) {
-				fRec11_perm[j23] = fRec11_tmp[vsize + j23];
+			for (int j21 = 0; j21 < 4; j21 = j21 + 1) {
+				fRec10_perm[j21] = fRec10_tmp[vsize + j21];
 			}
 			/* Vectorizable loop 43 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec30[i] = fZec29[i] - fZec27[i];
+				fZec29[i] = fZec28[i] - fZec26[i];
 			}
 			/* Vectorizable loop 44 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec32[i] = fZec25[i] - ((fZec25[i] == fZec31[i]) ? fZec25[i] : ((fZec25[i] >= 0.0f) ? fZec31[i] : fZec31[i] + -1.0f));
+				fZec31[i] = fZec24[i] - ((fZec24[i] == fZec30[i]) ? fZec24[i] : ((fZec24[i] >= 0.0f) ? fZec30[i] : fZec30[i] + -1.0f));
 			}
 			/* Vectorizable loop 45 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec34[i] = ((iZec33[i] >= 4) ? ((iZec33[i] >= 6) ? ((iZec33[i] >= 7) ? fSlow17 : fSlow16) : ((iZec33[i] >= 5) ? fSlow15 : fSlow14)) : ((iZec33[i] >= 2) ? ((iZec33[i] >= 3) ? fSlow13 : fSlow12) : ((iZec33[i] >= 1) ? fSlow11 : fSlow10)));
+				fZec33[i] = ((iZec32[i] >= 4) ? ((iZec32[i] >= 6) ? ((iZec32[i] >= 7) ? fSlow16 : fSlow15) : ((iZec32[i] >= 5) ? fSlow14 : fSlow13)) : ((iZec32[i] >= 2) ? ((iZec32[i] >= 3) ? fSlow12 : fSlow11) : ((iZec32[i] >= 1) ? fSlow10 : fSlow9)));
 			}
 			/* Vectorizable loop 46 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec36[i] = ((iZec35[i] >= 4) ? ((iZec35[i] >= 6) ? ((iZec35[i] >= 7) ? fSlow17 : fSlow16) : ((iZec35[i] >= 5) ? fSlow15 : fSlow14)) : ((iZec35[i] >= 2) ? ((iZec35[i] >= 3) ? fSlow13 : fSlow12) : ((iZec35[i] >= 1) ? fSlow11 : fSlow10)));
+				fZec35[i] = ((iZec34[i] >= 4) ? ((iZec34[i] >= 6) ? ((iZec34[i] >= 7) ? fSlow16 : fSlow15) : ((iZec34[i] >= 5) ? fSlow14 : fSlow13)) : ((iZec34[i] >= 2) ? ((iZec34[i] >= 3) ? fSlow12 : fSlow11) : ((iZec34[i] >= 1) ? fSlow10 : fSlow9)));
 			}
 			/* Recursive loop 47 */
 			/* Pre code */
@@ -788,16 +787,16 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 49 */
 			/* Pre code */
-			for (int j14 = 0; j14 < 4; j14 = j14 + 1) {
-				fRec2_tmp[j14] = fRec2_perm[j14];
+			for (int j12 = 0; j12 < 4; j12 = j12 + 1) {
+				fRec1_tmp[j12] = fRec1_perm[j12];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec2[i] = (fRec3[i - 2] + (fRec3[i] - 2.0f * fRec3[i - 1])) / fZec20[i] - (fRec2[i - 2] * fZec19[i] + 2.0f * fZec6[i] * fRec2[i - 1]) / fZec18[i];
+				fRec1[i] = (fRec2[i - 2] + (fRec2[i] - 2.0f * fRec2[i - 1])) / fZec20[i] - (fRec1[i - 2] * fZec19[i] + 2.0f * fZec6[i] * fRec1[i - 1]) / fZec18[i];
 			}
 			/* Post code */
-			for (int j15 = 0; j15 < 4; j15 = j15 + 1) {
-				fRec2_perm[j15] = fRec2_tmp[vsize + j15];
+			for (int j13 = 0; j13 < 4; j13 = j13 + 1) {
+				fRec1_perm[j13] = fRec1_tmp[vsize + j13];
 			}
 			/* Vectorizable loop 50 */
 			/* Compute code */
@@ -816,21 +815,21 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 53 */
 			/* Pre code */
-			for (int j24 = 0; j24 < 4; j24 = j24 + 1) {
-				fRec10_tmp[j24] = fRec10_perm[j24];
+			for (int j22 = 0; j22 < 4; j22 = j22 + 1) {
+				fRec9_tmp[j22] = fRec9_perm[j22];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec10[i] = (fRec11[i - 2] + fRec11[i] + 2.0f * fRec11[i - 1]) / fZec15[i] - (fZec19[i] * fRec10[i - 2] + 2.0f * fZec6[i] * fRec10[i - 1]) / fZec18[i];
+				fRec9[i] = (fRec10[i - 2] + fRec10[i] + 2.0f * fRec10[i - 1]) / fZec15[i] - (fZec19[i] * fRec9[i - 2] + 2.0f * fZec6[i] * fRec9[i - 1]) / fZec18[i];
 			}
 			/* Post code */
-			for (int j25 = 0; j25 < 4; j25 = j25 + 1) {
-				fRec10_perm[j25] = fRec10_tmp[vsize + j25];
+			for (int j23 = 0; j23 < 4; j23 = j23 + 1) {
+				fRec9_perm[j23] = fRec9_tmp[vsize + j23];
 			}
 			/* Vectorizable loop 54 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec37[i] = std::min<float>(1.0f, std::max<float>(0.0f, ((iSlow7) ? ((iSlow18) ? fSlow19 : fZec27[i] + 0.5f * fZec32[i] * (fZec29[i] + fZec32[i] * (2.0f * fZec34[i] + 4.0f * fZec29[i] + fZec32[i] * (fZec36[i] + 3.0f * (fZec27[i] - fZec29[i]) - fZec34[i]) - (5.0f * fZec27[i] + fZec36[i])) - fZec34[i])) : ((iSlow8) ? fZec27[i] + 0.5f * fZec30[i] * (1.0f - std::cos(3.1415927f * fZec32[i])) : fZec27[i] + fZec32[i] * fZec30[i]))));
+				fZec36[i] = std::min<float>(1.0f, std::max<float>(0.0f, ((iSlow6) ? ((iSlow17) ? fSlow18 : fZec26[i] + 0.5f * fZec31[i] * (fZec28[i] + fZec31[i] * (2.0f * fZec33[i] + 4.0f * fZec28[i] + fZec31[i] * (fZec35[i] + 3.0f * (fZec26[i] - fZec28[i]) - fZec33[i]) - (5.0f * fZec26[i] + fZec35[i])) - fZec33[i])) : ((iSlow7) ? fZec26[i] + 0.5f * fZec29[i] * (1.0f - std::cos(3.1415927f * fZec31[i])) : fZec26[i] + fZec31[i] * fZec29[i]))));
 			}
 			/* Recursive loop 55 */
 			/* Pre code */
@@ -860,39 +859,39 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 57 */
 			/* Pre code */
-			for (int j16 = 0; j16 < 4; j16 = j16 + 1) {
-				fRec1_tmp[j16] = fRec1_perm[j16];
+			for (int j14 = 0; j14 < 4; j14 = j14 + 1) {
+				fRec0_tmp[j14] = fRec0_perm[j14];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec1[i] = (fRec2[i - 2] + (fRec2[i] - 2.0f * fRec2[i - 1])) / fZec23[i] - (fRec1[i - 2] * fZec22[i] + 2.0f * fZec6[i] * fRec1[i - 1]) / fZec21[i];
+				fRec0[i] = (fRec1[i - 2] + (fRec1[i] - 2.0f * fRec1[i - 1])) / fZec23[i] - (fRec0[i - 2] * fZec22[i] + 2.0f * fZec6[i] * fRec0[i - 1]) / fZec21[i];
 			}
 			/* Post code */
-			for (int j17 = 0; j17 < 4; j17 = j17 + 1) {
-				fRec1_perm[j17] = fRec1_tmp[vsize + j17];
+			for (int j15 = 0; j15 < 4; j15 = j15 + 1) {
+				fRec0_perm[j15] = fRec0_tmp[vsize + j15];
 			}
 			/* Recursive loop 58 */
 			/* Pre code */
-			for (int j26 = 0; j26 < 4; j26 = j26 + 1) {
-				fRec9_tmp[j26] = fRec9_perm[j26];
+			for (int j24 = 0; j24 < 4; j24 = j24 + 1) {
+				fRec8_tmp[j24] = fRec8_perm[j24];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec9[i] = (fRec10[i - 2] + fRec10[i] + 2.0f * fRec10[i - 1]) / fZec18[i] - (fZec22[i] * fRec9[i - 2] + 2.0f * fZec6[i] * fRec9[i - 1]) / fZec21[i];
+				fRec8[i] = (fRec9[i - 2] + fRec9[i] + 2.0f * fRec9[i - 1]) / fZec18[i] - (fZec22[i] * fRec8[i - 2] + 2.0f * fZec6[i] * fRec8[i - 1]) / fZec21[i];
 			}
 			/* Post code */
-			for (int j27 = 0; j27 < 4; j27 = j27 + 1) {
-				fRec9_perm[j27] = fRec9_tmp[vsize + j27];
+			for (int j25 = 0; j25 < 4; j25 = j25 + 1) {
+				fRec8_perm[j25] = fRec8_tmp[vsize + j25];
 			}
 			/* Vectorizable loop 59 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec24[i] = fZec5[i] * fZec21[i];
+				fZec37[i] = 1.0f - fZec36[i];
 			}
 			/* Vectorizable loop 60 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec38[i] = 1.0f - fZec37[i];
+				fZec38[i] = fZec5[i] * fZec21[i];
 			}
 			/* Recursive loop 61 */
 			/* Pre code */
@@ -923,12 +922,12 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			/* Vectorizable loop 63 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(float(input0[i]) * fZec38[i] + fZec37[i] * ((iSlow5) ? (fRec9[i - 2] + fRec9[i] + 2.0f * fRec9[i - 1]) / fZec21[i] : (fRec1[i] + fRec1[i - 2] - 2.0f * fRec1[i - 1]) / fZec24[i]));
+				output0[i] = FAUSTFLOAT(((iSlow19) ? (fRec8[i - 2] + fRec8[i] + 2.0f * fRec8[i - 1]) / fZec21[i] : (fRec0[i - 2] + (fRec0[i] - 2.0f * fRec0[i - 1])) / fZec38[i]) * fZec36[i] + float(input0[i]) * fZec37[i]);
 			}
 			/* Vectorizable loop 64 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(float(input1[i]) * fZec38[i] + fZec37[i] * ((iSlow5) ? (fRec20[i - 2] + fRec20[i] + 2.0f * fRec20[i - 1]) / fZec21[i] : (fRec14[i] + fRec14[i - 2] - 2.0f * fRec14[i - 1]) / fZec24[i]));
+				output1[i] = FAUSTFLOAT(fZec36[i] * ((iSlow19) ? (fRec20[i - 2] + fRec20[i] + 2.0f * fRec20[i - 1]) / fZec21[i] : (fRec14[i - 2] + (fRec14[i] - 2.0f * fRec14[i - 1])) / fZec38[i]) + float(input1[i]) * fZec37[i]);
 			}
 		}
 		/* Remaining frames */
@@ -953,23 +952,23 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 1 */
 			/* Pre code */
-			for (int j4 = 0; j4 < 4; j4 = j4 + 1) {
-				fRec7_tmp[j4] = fRec7_perm[j4];
+			for (int j2 = 0; j2 < 4; j2 = j2 + 1) {
+				fRec6_tmp[j2] = fRec6_perm[j2];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec0[i] = ((1 - iVec0[i - 1]) ? 0.0f : fSlow2 + fRec7[i - 1]);
+				fZec0[i] = ((1 - iVec0[i - 1]) ? 0.0f : fSlow0 + fRec6[i - 1]);
 				fZec1[i] = float(int(fZec0[i]));
-				fRec7[i] = fZec0[i] - ((fZec0[i] == fZec1[i]) ? fZec0[i] : ((fZec0[i] >= 0.0f) ? fZec1[i] : fZec1[i] + -1.0f));
+				fRec6[i] = fZec0[i] - ((fZec0[i] == fZec1[i]) ? fZec0[i] : ((fZec0[i] >= 0.0f) ? fZec1[i] : fZec1[i] + -1.0f));
 			}
 			/* Post code */
-			for (int j5 = 0; j5 < 4; j5 = j5 + 1) {
-				fRec7_perm[j5] = fRec7_tmp[vsize + j5];
+			for (int j3 = 0; j3 < 4; j3 = j3 + 1) {
+				fRec6_perm[j3] = fRec6_tmp[vsize + j3];
 			}
 			/* Vectorizable loop 2 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec2[i] = std::tan(fConst2 * std::min<float>(2.4e+04f, std::max<float>(1.0f, fSlow4 + fSlow3 * (ftbl0OcsFilterFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec7[i]), 65535))] + 1.0f))));
+				fZec2[i] = std::tan(fConst2 * std::min<float>(2.4e+04f, std::max<float>(1.0f, fSlow2 + fSlow1 * (ftbl0OcsFilterFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec6[i]), 65535))] + 1.0f))));
 			}
 			/* Vectorizable loop 3 */
 			/* Compute code */
@@ -981,51 +980,51 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			for (int i = 0; i < vsize; i = i + 1) {
 				fZec5[i] = OcsFilterFAUST_faustpower2_f(fZec2[i]);
 			}
-			/* Recursive loop 5 */
-			/* Pre code */
-			for (int j2 = 0; j2 < 4; j2 = j2 + 1) {
-				iRec0_tmp[j2] = iRec0_perm[j2];
-			}
-			/* Compute code */
-			for (int i = 0; i < vsize; i = i + 1) {
-				iRec0[i] = ((iSlow0) ? 0 : std::min<int>(iSlow1, iRec0[i - 1] + 1));
-			}
-			/* Post code */
-			for (int j3 = 0; j3 < 4; j3 = j3 + 1) {
-				iRec0_perm[j3] = iRec0_tmp[vsize + j3];
-			}
-			/* Vectorizable loop 6 */
+			/* Vectorizable loop 5 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
 				fZec4[i] = (fZec3[i] + 1.9828898f) / fZec2[i] + 1.0f;
 			}
-			/* Vectorizable loop 7 */
+			/* Vectorizable loop 6 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
 				fZec6[i] = 1.0f - 1.0f / fZec5[i];
 			}
-			/* Vectorizable loop 8 */
+			/* Vectorizable loop 7 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
 				fZec7[i] = (fZec3[i] + -1.9828898f) / fZec2[i] + 1.0f;
 			}
-			/* Recursive loop 9 */
+			/* Recursive loop 8 */
 			/* Pre code */
-			for (int j6 = 0; j6 < 4; j6 = j6 + 1) {
-				fRec6_tmp[j6] = fRec6_perm[j6];
+			for (int j26 = 0; j26 < 4; j26 = j26 + 1) {
+				iRec13_tmp[j26] = iRec13_perm[j26];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec6[i] = float(input0[i]) - (fRec6[i - 2] * fZec7[i] + 2.0f * fRec6[i - 1] * fZec6[i]) / fZec4[i];
+				iRec13[i] = ((iSlow3) ? 0 : std::min<int>(iSlow4, iRec13[i - 1] + 1));
 			}
 			/* Post code */
-			for (int j7 = 0; j7 < 4; j7 = j7 + 1) {
-				fRec6_perm[j7] = fRec6_tmp[vsize + j7];
+			for (int j27 = 0; j27 < 4; j27 = j27 + 1) {
+				iRec13_perm[j27] = iRec13_tmp[vsize + j27];
+			}
+			/* Recursive loop 9 */
+			/* Pre code */
+			for (int j4 = 0; j4 < 4; j4 = j4 + 1) {
+				fRec5_tmp[j4] = fRec5_perm[j4];
+			}
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fRec5[i] = float(input0[i]) - (fRec5[i - 2] * fZec7[i] + 2.0f * fRec5[i - 1] * fZec6[i]) / fZec4[i];
+			}
+			/* Post code */
+			for (int j5 = 0; j5 < 4; j5 = j5 + 1) {
+				fRec5_perm[j5] = fRec5_tmp[vsize + j5];
 			}
 			/* Vectorizable loop 10 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec25[i] = fSlow9 * float(iRec0[i]);
+				fZec24[i] = fSlow8 * float(iRec13[i]);
 			}
 			/* Recursive loop 11 */
 			/* Pre code */
@@ -1058,12 +1057,12 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			/* Vectorizable loop 15 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec11[i] = 2.0f * fRec6[i - 1];
+				fZec11[i] = 2.0f * fRec5[i - 1];
 			}
 			/* Vectorizable loop 16 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec26[i] = int(fZec25[i]);
+				iZec25[i] = int(fZec24[i]);
 			}
 			/* Vectorizable loop 17 */
 			/* Compute code */
@@ -1072,16 +1071,16 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 18 */
 			/* Pre code */
-			for (int j8 = 0; j8 < 4; j8 = j8 + 1) {
-				fRec5_tmp[j8] = fRec5_perm[j8];
+			for (int j6 = 0; j6 < 4; j6 = j6 + 1) {
+				fRec4_tmp[j6] = fRec4_perm[j6];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec5[i] = (fRec6[i - 2] + (fRec6[i] - fZec11[i])) / fZec10[i] - (fRec5[i - 2] * fZec9[i] + 2.0f * fZec6[i] * fRec5[i - 1]) / fZec8[i];
+				fRec4[i] = (fRec5[i - 2] + (fRec5[i] - fZec11[i])) / fZec10[i] - (fRec4[i - 2] * fZec9[i] + 2.0f * fZec6[i] * fRec4[i - 1]) / fZec8[i];
 			}
 			/* Post code */
-			for (int j9 = 0; j9 < 4; j9 = j9 + 1) {
-				fRec5_perm[j9] = fRec5_tmp[vsize + j9];
+			for (int j7 = 0; j7 < 4; j7 = j7 + 1) {
+				fRec4_perm[j7] = fRec4_tmp[vsize + j7];
 			}
 			/* Vectorizable loop 19 */
 			/* Compute code */
@@ -1100,21 +1099,21 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 22 */
 			/* Pre code */
-			for (int j18 = 0; j18 < 4; j18 = j18 + 1) {
-				fRec13_tmp[j18] = fRec13_perm[j18];
+			for (int j16 = 0; j16 < 4; j16 = j16 + 1) {
+				fRec12_tmp[j16] = fRec12_perm[j16];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec13[i] = (fRec6[i - 2] + fRec6[i] + fZec11[i]) / fZec4[i] - (fZec9[i] * fRec13[i - 2] + 2.0f * fZec6[i] * fRec13[i - 1]) / fZec8[i];
+				fRec12[i] = (fRec5[i - 2] + fRec5[i] + fZec11[i]) / fZec4[i] - (fZec9[i] * fRec12[i - 2] + 2.0f * fZec6[i] * fRec12[i - 1]) / fZec8[i];
 			}
 			/* Post code */
-			for (int j19 = 0; j19 < 4; j19 = j19 + 1) {
-				fRec13_perm[j19] = fRec13_tmp[vsize + j19];
+			for (int j17 = 0; j17 < 4; j17 = j17 + 1) {
+				fRec12_perm[j17] = fRec12_tmp[vsize + j17];
 			}
 			/* Vectorizable loop 23 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec28[i] = iZec26[i] + 1;
+				iZec27[i] = iZec25[i] + 1;
 			}
 			/* Recursive loop 24 */
 			/* Pre code */
@@ -1144,16 +1143,16 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 26 */
 			/* Pre code */
-			for (int j10 = 0; j10 < 4; j10 = j10 + 1) {
-				fRec4_tmp[j10] = fRec4_perm[j10];
+			for (int j8 = 0; j8 < 4; j8 = j8 + 1) {
+				fRec3_tmp[j8] = fRec3_perm[j8];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec4[i] = (fRec5[i - 2] + (fRec5[i] - 2.0f * fRec5[i - 1])) / fZec14[i] - (fRec4[i - 2] * fZec13[i] + 2.0f * fZec6[i] * fRec4[i - 1]) / fZec12[i];
+				fRec3[i] = (fRec4[i - 2] + (fRec4[i] - 2.0f * fRec4[i - 1])) / fZec14[i] - (fRec3[i - 2] * fZec13[i] + 2.0f * fZec6[i] * fRec3[i - 1]) / fZec12[i];
 			}
 			/* Post code */
-			for (int j11 = 0; j11 < 4; j11 = j11 + 1) {
-				fRec4_perm[j11] = fRec4_tmp[vsize + j11];
+			for (int j9 = 0; j9 < 4; j9 = j9 + 1) {
+				fRec3_perm[j9] = fRec3_tmp[vsize + j9];
 			}
 			/* Vectorizable loop 27 */
 			/* Compute code */
@@ -1172,41 +1171,41 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 30 */
 			/* Pre code */
-			for (int j20 = 0; j20 < 4; j20 = j20 + 1) {
-				fRec12_tmp[j20] = fRec12_perm[j20];
+			for (int j18 = 0; j18 < 4; j18 = j18 + 1) {
+				fRec11_tmp[j18] = fRec11_perm[j18];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec12[i] = (fRec13[i - 2] + fRec13[i] + 2.0f * fRec13[i - 1]) / fZec8[i] - (fZec13[i] * fRec12[i - 2] + 2.0f * fZec6[i] * fRec12[i - 1]) / fZec12[i];
+				fRec11[i] = (fRec12[i - 2] + fRec12[i] + 2.0f * fRec12[i - 1]) / fZec8[i] - (fZec13[i] * fRec11[i - 2] + 2.0f * fZec6[i] * fRec11[i - 1]) / fZec12[i];
 			}
 			/* Post code */
-			for (int j21 = 0; j21 < 4; j21 = j21 + 1) {
-				fRec12_perm[j21] = fRec12_tmp[vsize + j21];
+			for (int j19 = 0; j19 < 4; j19 = j19 + 1) {
+				fRec11_perm[j19] = fRec11_tmp[vsize + j19];
 			}
 			/* Vectorizable loop 31 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec27[i] = ((iZec26[i] >= 4) ? ((iZec26[i] >= 6) ? ((iZec26[i] >= 7) ? fSlow17 : fSlow16) : ((iZec26[i] >= 5) ? fSlow15 : fSlow14)) : ((iZec26[i] >= 2) ? ((iZec26[i] >= 3) ? fSlow13 : fSlow12) : ((iZec26[i] >= 1) ? fSlow11 : fSlow10)));
+				fZec26[i] = ((iZec25[i] >= 4) ? ((iZec25[i] >= 6) ? ((iZec25[i] >= 7) ? fSlow16 : fSlow15) : ((iZec25[i] >= 5) ? fSlow14 : fSlow13)) : ((iZec25[i] >= 2) ? ((iZec25[i] >= 3) ? fSlow12 : fSlow11) : ((iZec25[i] >= 1) ? fSlow10 : fSlow9)));
 			}
 			/* Vectorizable loop 32 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec29[i] = ((iZec28[i] >= 4) ? ((iZec28[i] >= 6) ? ((iZec28[i] >= 7) ? fSlow17 : fSlow16) : ((iZec28[i] >= 5) ? fSlow15 : fSlow14)) : ((iZec28[i] >= 2) ? ((iZec28[i] >= 3) ? fSlow13 : fSlow12) : ((iZec28[i] >= 1) ? fSlow11 : fSlow10)));
+				fZec28[i] = ((iZec27[i] >= 4) ? ((iZec27[i] >= 6) ? ((iZec27[i] >= 7) ? fSlow16 : fSlow15) : ((iZec27[i] >= 5) ? fSlow14 : fSlow13)) : ((iZec27[i] >= 2) ? ((iZec27[i] >= 3) ? fSlow12 : fSlow11) : ((iZec27[i] >= 1) ? fSlow10 : fSlow9)));
 			}
 			/* Vectorizable loop 33 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec31[i] = float(iZec26[i]);
+				fZec30[i] = float(iZec25[i]);
 			}
 			/* Vectorizable loop 34 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec33[i] = iZec26[i] + -1;
+				iZec32[i] = iZec25[i] + -1;
 			}
 			/* Vectorizable loop 35 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec35[i] = iZec26[i] + 2;
+				iZec34[i] = iZec25[i] + 2;
 			}
 			/* Recursive loop 36 */
 			/* Pre code */
@@ -1236,16 +1235,16 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 38 */
 			/* Pre code */
-			for (int j12 = 0; j12 < 4; j12 = j12 + 1) {
-				fRec3_tmp[j12] = fRec3_perm[j12];
+			for (int j10 = 0; j10 < 4; j10 = j10 + 1) {
+				fRec2_tmp[j10] = fRec2_perm[j10];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec3[i] = (fRec4[i - 2] + (fRec4[i] - 2.0f * fRec4[i - 1])) / fZec17[i] - (fRec3[i - 2] * fZec16[i] + 2.0f * fZec6[i] * fRec3[i - 1]) / fZec15[i];
+				fRec2[i] = (fRec3[i - 2] + (fRec3[i] - 2.0f * fRec3[i - 1])) / fZec17[i] - (fRec2[i - 2] * fZec16[i] + 2.0f * fZec6[i] * fRec2[i - 1]) / fZec15[i];
 			}
 			/* Post code */
-			for (int j13 = 0; j13 < 4; j13 = j13 + 1) {
-				fRec3_perm[j13] = fRec3_tmp[vsize + j13];
+			for (int j11 = 0; j11 < 4; j11 = j11 + 1) {
+				fRec2_perm[j11] = fRec2_tmp[vsize + j11];
 			}
 			/* Vectorizable loop 39 */
 			/* Compute code */
@@ -1264,36 +1263,36 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 42 */
 			/* Pre code */
-			for (int j22 = 0; j22 < 4; j22 = j22 + 1) {
-				fRec11_tmp[j22] = fRec11_perm[j22];
+			for (int j20 = 0; j20 < 4; j20 = j20 + 1) {
+				fRec10_tmp[j20] = fRec10_perm[j20];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec11[i] = (fRec12[i - 2] + fRec12[i] + 2.0f * fRec12[i - 1]) / fZec12[i] - (fZec16[i] * fRec11[i - 2] + 2.0f * fZec6[i] * fRec11[i - 1]) / fZec15[i];
+				fRec10[i] = (fRec11[i - 2] + fRec11[i] + 2.0f * fRec11[i - 1]) / fZec12[i] - (fZec16[i] * fRec10[i - 2] + 2.0f * fZec6[i] * fRec10[i - 1]) / fZec15[i];
 			}
 			/* Post code */
-			for (int j23 = 0; j23 < 4; j23 = j23 + 1) {
-				fRec11_perm[j23] = fRec11_tmp[vsize + j23];
+			for (int j21 = 0; j21 < 4; j21 = j21 + 1) {
+				fRec10_perm[j21] = fRec10_tmp[vsize + j21];
 			}
 			/* Vectorizable loop 43 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec30[i] = fZec29[i] - fZec27[i];
+				fZec29[i] = fZec28[i] - fZec26[i];
 			}
 			/* Vectorizable loop 44 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec32[i] = fZec25[i] - ((fZec25[i] == fZec31[i]) ? fZec25[i] : ((fZec25[i] >= 0.0f) ? fZec31[i] : fZec31[i] + -1.0f));
+				fZec31[i] = fZec24[i] - ((fZec24[i] == fZec30[i]) ? fZec24[i] : ((fZec24[i] >= 0.0f) ? fZec30[i] : fZec30[i] + -1.0f));
 			}
 			/* Vectorizable loop 45 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec34[i] = ((iZec33[i] >= 4) ? ((iZec33[i] >= 6) ? ((iZec33[i] >= 7) ? fSlow17 : fSlow16) : ((iZec33[i] >= 5) ? fSlow15 : fSlow14)) : ((iZec33[i] >= 2) ? ((iZec33[i] >= 3) ? fSlow13 : fSlow12) : ((iZec33[i] >= 1) ? fSlow11 : fSlow10)));
+				fZec33[i] = ((iZec32[i] >= 4) ? ((iZec32[i] >= 6) ? ((iZec32[i] >= 7) ? fSlow16 : fSlow15) : ((iZec32[i] >= 5) ? fSlow14 : fSlow13)) : ((iZec32[i] >= 2) ? ((iZec32[i] >= 3) ? fSlow12 : fSlow11) : ((iZec32[i] >= 1) ? fSlow10 : fSlow9)));
 			}
 			/* Vectorizable loop 46 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec36[i] = ((iZec35[i] >= 4) ? ((iZec35[i] >= 6) ? ((iZec35[i] >= 7) ? fSlow17 : fSlow16) : ((iZec35[i] >= 5) ? fSlow15 : fSlow14)) : ((iZec35[i] >= 2) ? ((iZec35[i] >= 3) ? fSlow13 : fSlow12) : ((iZec35[i] >= 1) ? fSlow11 : fSlow10)));
+				fZec35[i] = ((iZec34[i] >= 4) ? ((iZec34[i] >= 6) ? ((iZec34[i] >= 7) ? fSlow16 : fSlow15) : ((iZec34[i] >= 5) ? fSlow14 : fSlow13)) : ((iZec34[i] >= 2) ? ((iZec34[i] >= 3) ? fSlow12 : fSlow11) : ((iZec34[i] >= 1) ? fSlow10 : fSlow9)));
 			}
 			/* Recursive loop 47 */
 			/* Pre code */
@@ -1323,16 +1322,16 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 49 */
 			/* Pre code */
-			for (int j14 = 0; j14 < 4; j14 = j14 + 1) {
-				fRec2_tmp[j14] = fRec2_perm[j14];
+			for (int j12 = 0; j12 < 4; j12 = j12 + 1) {
+				fRec1_tmp[j12] = fRec1_perm[j12];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec2[i] = (fRec3[i - 2] + (fRec3[i] - 2.0f * fRec3[i - 1])) / fZec20[i] - (fRec2[i - 2] * fZec19[i] + 2.0f * fZec6[i] * fRec2[i - 1]) / fZec18[i];
+				fRec1[i] = (fRec2[i - 2] + (fRec2[i] - 2.0f * fRec2[i - 1])) / fZec20[i] - (fRec1[i - 2] * fZec19[i] + 2.0f * fZec6[i] * fRec1[i - 1]) / fZec18[i];
 			}
 			/* Post code */
-			for (int j15 = 0; j15 < 4; j15 = j15 + 1) {
-				fRec2_perm[j15] = fRec2_tmp[vsize + j15];
+			for (int j13 = 0; j13 < 4; j13 = j13 + 1) {
+				fRec1_perm[j13] = fRec1_tmp[vsize + j13];
 			}
 			/* Vectorizable loop 50 */
 			/* Compute code */
@@ -1351,21 +1350,21 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 53 */
 			/* Pre code */
-			for (int j24 = 0; j24 < 4; j24 = j24 + 1) {
-				fRec10_tmp[j24] = fRec10_perm[j24];
+			for (int j22 = 0; j22 < 4; j22 = j22 + 1) {
+				fRec9_tmp[j22] = fRec9_perm[j22];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec10[i] = (fRec11[i - 2] + fRec11[i] + 2.0f * fRec11[i - 1]) / fZec15[i] - (fZec19[i] * fRec10[i - 2] + 2.0f * fZec6[i] * fRec10[i - 1]) / fZec18[i];
+				fRec9[i] = (fRec10[i - 2] + fRec10[i] + 2.0f * fRec10[i - 1]) / fZec15[i] - (fZec19[i] * fRec9[i - 2] + 2.0f * fZec6[i] * fRec9[i - 1]) / fZec18[i];
 			}
 			/* Post code */
-			for (int j25 = 0; j25 < 4; j25 = j25 + 1) {
-				fRec10_perm[j25] = fRec10_tmp[vsize + j25];
+			for (int j23 = 0; j23 < 4; j23 = j23 + 1) {
+				fRec9_perm[j23] = fRec9_tmp[vsize + j23];
 			}
 			/* Vectorizable loop 54 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec37[i] = std::min<float>(1.0f, std::max<float>(0.0f, ((iSlow7) ? ((iSlow18) ? fSlow19 : fZec27[i] + 0.5f * fZec32[i] * (fZec29[i] + fZec32[i] * (2.0f * fZec34[i] + 4.0f * fZec29[i] + fZec32[i] * (fZec36[i] + 3.0f * (fZec27[i] - fZec29[i]) - fZec34[i]) - (5.0f * fZec27[i] + fZec36[i])) - fZec34[i])) : ((iSlow8) ? fZec27[i] + 0.5f * fZec30[i] * (1.0f - std::cos(3.1415927f * fZec32[i])) : fZec27[i] + fZec32[i] * fZec30[i]))));
+				fZec36[i] = std::min<float>(1.0f, std::max<float>(0.0f, ((iSlow6) ? ((iSlow17) ? fSlow18 : fZec26[i] + 0.5f * fZec31[i] * (fZec28[i] + fZec31[i] * (2.0f * fZec33[i] + 4.0f * fZec28[i] + fZec31[i] * (fZec35[i] + 3.0f * (fZec26[i] - fZec28[i]) - fZec33[i]) - (5.0f * fZec26[i] + fZec35[i])) - fZec33[i])) : ((iSlow7) ? fZec26[i] + 0.5f * fZec29[i] * (1.0f - std::cos(3.1415927f * fZec31[i])) : fZec26[i] + fZec31[i] * fZec29[i]))));
 			}
 			/* Recursive loop 55 */
 			/* Pre code */
@@ -1395,39 +1394,39 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			}
 			/* Recursive loop 57 */
 			/* Pre code */
-			for (int j16 = 0; j16 < 4; j16 = j16 + 1) {
-				fRec1_tmp[j16] = fRec1_perm[j16];
+			for (int j14 = 0; j14 < 4; j14 = j14 + 1) {
+				fRec0_tmp[j14] = fRec0_perm[j14];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec1[i] = (fRec2[i - 2] + (fRec2[i] - 2.0f * fRec2[i - 1])) / fZec23[i] - (fRec1[i - 2] * fZec22[i] + 2.0f * fZec6[i] * fRec1[i - 1]) / fZec21[i];
+				fRec0[i] = (fRec1[i - 2] + (fRec1[i] - 2.0f * fRec1[i - 1])) / fZec23[i] - (fRec0[i - 2] * fZec22[i] + 2.0f * fZec6[i] * fRec0[i - 1]) / fZec21[i];
 			}
 			/* Post code */
-			for (int j17 = 0; j17 < 4; j17 = j17 + 1) {
-				fRec1_perm[j17] = fRec1_tmp[vsize + j17];
+			for (int j15 = 0; j15 < 4; j15 = j15 + 1) {
+				fRec0_perm[j15] = fRec0_tmp[vsize + j15];
 			}
 			/* Recursive loop 58 */
 			/* Pre code */
-			for (int j26 = 0; j26 < 4; j26 = j26 + 1) {
-				fRec9_tmp[j26] = fRec9_perm[j26];
+			for (int j24 = 0; j24 < 4; j24 = j24 + 1) {
+				fRec8_tmp[j24] = fRec8_perm[j24];
 			}
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fRec9[i] = (fRec10[i - 2] + fRec10[i] + 2.0f * fRec10[i - 1]) / fZec18[i] - (fZec22[i] * fRec9[i - 2] + 2.0f * fZec6[i] * fRec9[i - 1]) / fZec21[i];
+				fRec8[i] = (fRec9[i - 2] + fRec9[i] + 2.0f * fRec9[i - 1]) / fZec18[i] - (fZec22[i] * fRec8[i - 2] + 2.0f * fZec6[i] * fRec8[i - 1]) / fZec21[i];
 			}
 			/* Post code */
-			for (int j27 = 0; j27 < 4; j27 = j27 + 1) {
-				fRec9_perm[j27] = fRec9_tmp[vsize + j27];
+			for (int j25 = 0; j25 < 4; j25 = j25 + 1) {
+				fRec8_perm[j25] = fRec8_tmp[vsize + j25];
 			}
 			/* Vectorizable loop 59 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec24[i] = fZec5[i] * fZec21[i];
+				fZec37[i] = 1.0f - fZec36[i];
 			}
 			/* Vectorizable loop 60 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec38[i] = 1.0f - fZec37[i];
+				fZec38[i] = fZec5[i] * fZec21[i];
 			}
 			/* Recursive loop 61 */
 			/* Pre code */
@@ -1458,12 +1457,12 @@ class OcsFilterFAUST final : public OcsFilter_PDJE {
 			/* Vectorizable loop 63 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(float(input0[i]) * fZec38[i] + fZec37[i] * ((iSlow5) ? (fRec9[i - 2] + fRec9[i] + 2.0f * fRec9[i - 1]) / fZec21[i] : (fRec1[i] + fRec1[i - 2] - 2.0f * fRec1[i - 1]) / fZec24[i]));
+				output0[i] = FAUSTFLOAT(((iSlow19) ? (fRec8[i - 2] + fRec8[i] + 2.0f * fRec8[i - 1]) / fZec21[i] : (fRec0[i - 2] + (fRec0[i] - 2.0f * fRec0[i - 1])) / fZec38[i]) * fZec36[i] + float(input0[i]) * fZec37[i]);
 			}
 			/* Vectorizable loop 64 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(float(input1[i]) * fZec38[i] + fZec37[i] * ((iSlow5) ? (fRec20[i - 2] + fRec20[i] + 2.0f * fRec20[i - 1]) / fZec21[i] : (fRec14[i] + fRec14[i - 2] - 2.0f * fRec14[i - 1]) / fZec24[i]));
+				output1[i] = FAUSTFLOAT(fZec36[i] * ((iSlow19) ? (fRec20[i - 2] + fRec20[i] + 2.0f * fRec20[i - 1]) / fZec21[i] : (fRec14[i - 2] + (fRec14[i] - 2.0f * fRec14[i - 1])) / fZec38[i]) + float(input1[i]) * fZec37[i]);
 			}
 		}
 	}

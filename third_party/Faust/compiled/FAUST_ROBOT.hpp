@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------
 name: "ROBOT"
-Code generated with Faust 2.75.7 (https://faust.grame.fr)
+Code generated with Faust 2.81.2 (https://faust.grame.fr)
 Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn RobotFAUST -scn Robot_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32
 ------------------------------------------------------------ */
 
@@ -53,8 +53,7 @@ class RobotFAUST final : public Robot_PDJE {
 	
 	void metadata(Meta* m) { 
 		m->declare("basics.lib/name", "Faust Basic Element Library");
-		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
-		m->declare("basics.lib/version", "1.19.1");
+		m->declare("basics.lib/version", "1.21.0");
 		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn RobotFAUST -scn Robot_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32");
 		m->declare("filename", "ROBOT.dsp");
 		m->declare("interpolators.lib/interpolate_cosine:author", "Stéphane Letz");
@@ -74,18 +73,18 @@ class RobotFAUST final : public Robot_PDJE {
 		m->declare("interpolators.lib/interpolator_two_points:author", "Stéphane Letz");
 		m->declare("interpolators.lib/interpolator_two_points:licence", "MIT");
 		m->declare("interpolators.lib/name", "Faust Interpolator Library");
-		m->declare("interpolators.lib/version", "1.3.1");
+		m->declare("interpolators.lib/version", "1.4.0");
 		m->declare("maths.lib/author", "GRAME");
 		m->declare("maths.lib/copyright", "GRAME");
 		m->declare("maths.lib/license", "LGPL with exception");
 		m->declare("maths.lib/name", "Faust Math Library");
-		m->declare("maths.lib/version", "2.8.0");
+		m->declare("maths.lib/version", "2.8.1");
 		m->declare("misceffects.lib/dryWetMixer:author", "David Braun, revised by Stéphane Letz");
 		m->declare("misceffects.lib/name", "Misc Effects Library");
-		m->declare("misceffects.lib/version", "2.5.0");
+		m->declare("misceffects.lib/version", "2.5.1");
 		m->declare("name", "ROBOT");
 		m->declare("oscillators.lib/name", "Faust Oscillator Library");
-		m->declare("oscillators.lib/version", "1.5.1");
+		m->declare("oscillators.lib/version", "1.6.0");
 		m->declare("platform.lib/name", "Generic Platform Library");
 		m->declare("platform.lib/version", "1.3.0");
 		m->declare("routes.lib/name", "Faust Signal Routing Library");
@@ -212,6 +211,7 @@ class RobotFAUST final : public Robot_PDJE {
 		float fZec13[32];
 		float fSlow16 = vZero;
 		float fZec14[32];
+		float fZec15[32];
 		int vindex = 0;
 		/* Main loop */
 		for (vindex = 0; vindex <= (count - 32); vindex = vindex + 32) {
@@ -286,7 +286,27 @@ class RobotFAUST final : public Robot_PDJE {
 			for (int i = 0; i < vsize; i = i + 1) {
 				iZec12[i] = iZec3[i] + 2;
 			}
-			/* Recursive loop 10 */
+			/* Vectorizable loop 10 */
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec7[i] = fZec6[i] - fZec4[i];
+			}
+			/* Vectorizable loop 11 */
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec9[i] = fZec2[i] - ((fZec2[i] == fZec8[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec8[i] : fZec8[i] + -1.0f));
+			}
+			/* Vectorizable loop 12 */
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec11[i] = ((iZec10[i] >= 4) ? ((iZec10[i] >= 6) ? ((iZec10[i] >= 7) ? fSlow14 : fSlow13) : ((iZec10[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec10[i] >= 2) ? ((iZec10[i] >= 3) ? fSlow10 : fSlow9) : ((iZec10[i] >= 1) ? fSlow8 : fSlow7)));
+			}
+			/* Vectorizable loop 13 */
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec13[i] = ((iZec12[i] >= 4) ? ((iZec12[i] >= 6) ? ((iZec12[i] >= 7) ? fSlow14 : fSlow13) : ((iZec12[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec12[i] >= 2) ? ((iZec12[i] >= 3) ? fSlow10 : fSlow9) : ((iZec12[i] >= 1) ? fSlow8 : fSlow7)));
+			}
+			/* Recursive loop 14 */
 			/* Pre code */
 			for (int j4 = 0; j4 < 4; j4 = j4 + 1) {
 				fRec1_tmp[j4] = fRec1_perm[j4];
@@ -301,40 +321,25 @@ class RobotFAUST final : public Robot_PDJE {
 			for (int j5 = 0; j5 < 4; j5 = j5 + 1) {
 				fRec1_perm[j5] = fRec1_tmp[vsize + j5];
 			}
-			/* Vectorizable loop 11 */
-			/* Compute code */
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec7[i] = fZec6[i] - fZec4[i];
-			}
-			/* Vectorizable loop 12 */
-			/* Compute code */
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec9[i] = fZec2[i] - ((fZec2[i] == fZec8[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec8[i] : fZec8[i] + -1.0f));
-			}
-			/* Vectorizable loop 13 */
-			/* Compute code */
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec11[i] = ((iZec10[i] >= 4) ? ((iZec10[i] >= 6) ? ((iZec10[i] >= 7) ? fSlow14 : fSlow13) : ((iZec10[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec10[i] >= 2) ? ((iZec10[i] >= 3) ? fSlow10 : fSlow9) : ((iZec10[i] >= 1) ? fSlow8 : fSlow7)));
-			}
-			/* Vectorizable loop 14 */
-			/* Compute code */
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec13[i] = ((iZec12[i] >= 4) ? ((iZec12[i] >= 6) ? ((iZec12[i] >= 7) ? fSlow14 : fSlow13) : ((iZec12[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec12[i] >= 2) ? ((iZec12[i] >= 3) ? fSlow10 : fSlow9) : ((iZec12[i] >= 1) ? fSlow8 : fSlow7)));
-			}
 			/* Vectorizable loop 15 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec14[i] = 1.0f - std::min<float>(1.0f, std::max<float>(0.0f, ((iSlow4) ? ((iSlow15) ? fSlow16 : fZec4[i] + 0.5f * fZec9[i] * (fZec6[i] + fZec9[i] * (2.0f * fZec11[i] + 4.0f * fZec6[i] + fZec9[i] * (fZec13[i] + 3.0f * (fZec4[i] - fZec6[i]) - fZec11[i]) - (5.0f * fZec4[i] + fZec13[i])) - fZec11[i])) : ((iSlow5) ? fZec4[i] + 0.5f * fZec7[i] * (1.0f - std::cos(3.1415927f * fZec9[i])) : fZec4[i] + fZec9[i] * fZec7[i])))) * (1.0f - ftbl0RobotFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec1[i]), 65535))]);
+				fZec14[i] = std::min<float>(1.0f, std::max<float>(0.0f, ((iSlow4) ? ((iSlow15) ? fSlow16 : fZec4[i] + 0.5f * fZec9[i] * (fZec6[i] + fZec9[i] * (2.0f * fZec11[i] + 4.0f * fZec6[i] + fZec9[i] * (fZec13[i] + 3.0f * (fZec4[i] - fZec6[i]) - fZec11[i]) - (5.0f * fZec4[i] + fZec13[i])) - fZec11[i])) : ((iSlow5) ? fZec4[i] + 0.5f * fZec7[i] * (1.0f - std::cos(3.1415927f * fZec9[i])) : fZec4[i] + fZec9[i] * fZec7[i]))));
 			}
 			/* Vectorizable loop 16 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(float(input0[i]) * fZec14[i]);
+				fZec15[i] = 1.0f - fZec14[i] + ftbl0RobotFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec1[i]), 65535))] * fZec14[i];
 			}
 			/* Vectorizable loop 17 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(float(input1[i]) * fZec14[i]);
+				output0[i] = FAUSTFLOAT(float(input0[i]) * fZec15[i]);
+			}
+			/* Vectorizable loop 18 */
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				output1[i] = FAUSTFLOAT(float(input1[i]) * fZec15[i]);
 			}
 		}
 		/* Remaining frames */
@@ -410,7 +415,27 @@ class RobotFAUST final : public Robot_PDJE {
 			for (int i = 0; i < vsize; i = i + 1) {
 				iZec12[i] = iZec3[i] + 2;
 			}
-			/* Recursive loop 10 */
+			/* Vectorizable loop 10 */
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec7[i] = fZec6[i] - fZec4[i];
+			}
+			/* Vectorizable loop 11 */
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec9[i] = fZec2[i] - ((fZec2[i] == fZec8[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec8[i] : fZec8[i] + -1.0f));
+			}
+			/* Vectorizable loop 12 */
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec11[i] = ((iZec10[i] >= 4) ? ((iZec10[i] >= 6) ? ((iZec10[i] >= 7) ? fSlow14 : fSlow13) : ((iZec10[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec10[i] >= 2) ? ((iZec10[i] >= 3) ? fSlow10 : fSlow9) : ((iZec10[i] >= 1) ? fSlow8 : fSlow7)));
+			}
+			/* Vectorizable loop 13 */
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				fZec13[i] = ((iZec12[i] >= 4) ? ((iZec12[i] >= 6) ? ((iZec12[i] >= 7) ? fSlow14 : fSlow13) : ((iZec12[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec12[i] >= 2) ? ((iZec12[i] >= 3) ? fSlow10 : fSlow9) : ((iZec12[i] >= 1) ? fSlow8 : fSlow7)));
+			}
+			/* Recursive loop 14 */
 			/* Pre code */
 			for (int j4 = 0; j4 < 4; j4 = j4 + 1) {
 				fRec1_tmp[j4] = fRec1_perm[j4];
@@ -425,40 +450,25 @@ class RobotFAUST final : public Robot_PDJE {
 			for (int j5 = 0; j5 < 4; j5 = j5 + 1) {
 				fRec1_perm[j5] = fRec1_tmp[vsize + j5];
 			}
-			/* Vectorizable loop 11 */
-			/* Compute code */
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec7[i] = fZec6[i] - fZec4[i];
-			}
-			/* Vectorizable loop 12 */
-			/* Compute code */
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec9[i] = fZec2[i] - ((fZec2[i] == fZec8[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec8[i] : fZec8[i] + -1.0f));
-			}
-			/* Vectorizable loop 13 */
-			/* Compute code */
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec11[i] = ((iZec10[i] >= 4) ? ((iZec10[i] >= 6) ? ((iZec10[i] >= 7) ? fSlow14 : fSlow13) : ((iZec10[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec10[i] >= 2) ? ((iZec10[i] >= 3) ? fSlow10 : fSlow9) : ((iZec10[i] >= 1) ? fSlow8 : fSlow7)));
-			}
-			/* Vectorizable loop 14 */
-			/* Compute code */
-			for (int i = 0; i < vsize; i = i + 1) {
-				fZec13[i] = ((iZec12[i] >= 4) ? ((iZec12[i] >= 6) ? ((iZec12[i] >= 7) ? fSlow14 : fSlow13) : ((iZec12[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec12[i] >= 2) ? ((iZec12[i] >= 3) ? fSlow10 : fSlow9) : ((iZec12[i] >= 1) ? fSlow8 : fSlow7)));
-			}
 			/* Vectorizable loop 15 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec14[i] = 1.0f - std::min<float>(1.0f, std::max<float>(0.0f, ((iSlow4) ? ((iSlow15) ? fSlow16 : fZec4[i] + 0.5f * fZec9[i] * (fZec6[i] + fZec9[i] * (2.0f * fZec11[i] + 4.0f * fZec6[i] + fZec9[i] * (fZec13[i] + 3.0f * (fZec4[i] - fZec6[i]) - fZec11[i]) - (5.0f * fZec4[i] + fZec13[i])) - fZec11[i])) : ((iSlow5) ? fZec4[i] + 0.5f * fZec7[i] * (1.0f - std::cos(3.1415927f * fZec9[i])) : fZec4[i] + fZec9[i] * fZec7[i])))) * (1.0f - ftbl0RobotFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec1[i]), 65535))]);
+				fZec14[i] = std::min<float>(1.0f, std::max<float>(0.0f, ((iSlow4) ? ((iSlow15) ? fSlow16 : fZec4[i] + 0.5f * fZec9[i] * (fZec6[i] + fZec9[i] * (2.0f * fZec11[i] + 4.0f * fZec6[i] + fZec9[i] * (fZec13[i] + 3.0f * (fZec4[i] - fZec6[i]) - fZec11[i]) - (5.0f * fZec4[i] + fZec13[i])) - fZec11[i])) : ((iSlow5) ? fZec4[i] + 0.5f * fZec7[i] * (1.0f - std::cos(3.1415927f * fZec9[i])) : fZec4[i] + fZec9[i] * fZec7[i]))));
 			}
 			/* Vectorizable loop 16 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(float(input0[i]) * fZec14[i]);
+				fZec15[i] = 1.0f - fZec14[i] + ftbl0RobotFAUSTSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec1[i]), 65535))] * fZec14[i];
 			}
 			/* Vectorizable loop 17 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(float(input1[i]) * fZec14[i]);
+				output0[i] = FAUSTFLOAT(float(input0[i]) * fZec15[i]);
+			}
+			/* Vectorizable loop 18 */
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				output1[i] = FAUSTFLOAT(float(input1[i]) * fZec15[i]);
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------
 name: "EQ"
-Code generated with Faust 2.75.7 (https://faust.grame.fr)
+Code generated with Faust 2.81.2 (https://faust.grame.fr)
 Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn EQFAUST -scn EQ_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32
 ------------------------------------------------------------ */
 
@@ -93,8 +93,7 @@ class EQFAUST final : public EQ_PDJE {
 		m->declare("analyzers.lib/name", "Faust Analyzer Library");
 		m->declare("analyzers.lib/version", "1.2.0");
 		m->declare("basics.lib/name", "Faust Basic Element Library");
-		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
-		m->declare("basics.lib/version", "1.19.1");
+		m->declare("basics.lib/version", "1.21.0");
 		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn EQFAUST -scn EQ_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32");
 		m->declare("filename", "EQ.dsp");
 		m->declare("filters.lib/filterbank:author", "Julius O. Smith III");
@@ -135,7 +134,7 @@ class EQFAUST final : public EQ_PDJE {
 		m->declare("filters.lib/tf2s:author", "Julius O. Smith III");
 		m->declare("filters.lib/tf2s:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
 		m->declare("filters.lib/tf2s:license", "MIT-style STK-4.3 license");
-		m->declare("filters.lib/version", "1.3.0");
+		m->declare("filters.lib/version", "1.7.1");
 		m->declare("interpolators.lib/interpolate_cosine:author", "Stéphane Letz");
 		m->declare("interpolators.lib/interpolate_cosine:licence", "MIT");
 		m->declare("interpolators.lib/interpolate_cubic:author", "Stéphane Letz");
@@ -153,12 +152,12 @@ class EQFAUST final : public EQ_PDJE {
 		m->declare("interpolators.lib/interpolator_two_points:author", "Stéphane Letz");
 		m->declare("interpolators.lib/interpolator_two_points:licence", "MIT");
 		m->declare("interpolators.lib/name", "Faust Interpolator Library");
-		m->declare("interpolators.lib/version", "1.3.1");
+		m->declare("interpolators.lib/version", "1.4.0");
 		m->declare("maths.lib/author", "GRAME");
 		m->declare("maths.lib/copyright", "GRAME");
 		m->declare("maths.lib/license", "LGPL with exception");
 		m->declare("maths.lib/name", "Faust Math Library");
-		m->declare("maths.lib/version", "2.8.0");
+		m->declare("maths.lib/version", "2.8.1");
 		m->declare("name", "EQ");
 		m->declare("platform.lib/name", "Generic Platform Library");
 		m->declare("platform.lib/version", "1.3.0");
@@ -812,12 +811,12 @@ class EQFAUST final : public EQ_PDJE {
 			/* Vectorizable loop 47 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec6[i - 2] + fRec6[i] + 2.0f * fRec6[i - 1] + fConst17 * fZec21[i] * (fRec8[i] + fRec8[i - 2] - 2.0f * fRec8[i - 1])) : ((iSlow18) ? (fZec19[i] + fRec5[i] * fZec24[i] + fRec5[i - 2] * fZec23[i]) / fZec18[i] : fConst8 * ((fRec0[i - 2] + fRec0[i] + 2.0f * fRec0[i - 1]) * fZec21[i] + fConst5 * (fRec3[i] + fRec3[i - 2] - 2.0f * fRec3[i - 1])))));
+				output0[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec6[i - 2] + fRec6[i] + 2.0f * fRec6[i - 1] + fConst17 * fZec21[i] * (fRec8[i - 2] + (fRec8[i] - 2.0f * fRec8[i - 1]))) : ((iSlow18) ? (fZec19[i] + fRec5[i] * fZec24[i] + fRec5[i - 2] * fZec23[i]) / fZec18[i] : fConst8 * ((fRec0[i - 2] + fRec0[i] + 2.0f * fRec0[i - 1]) * fZec21[i] + fConst5 * (fRec3[i - 2] + (fRec3[i] - 2.0f * fRec3[i - 1]))))));
 			}
 			/* Vectorizable loop 48 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec15[i - 2] + fRec15[i] + 2.0f * fRec15[i - 1] + fConst17 * fZec21[i] * (fRec17[i] + fRec17[i - 2] - 2.0f * fRec17[i - 1])) : ((iSlow18) ? (fZec27[i] + fRec14[i] * fZec24[i] + fZec23[i] * fRec14[i - 2]) / fZec18[i] : fConst8 * (fZec21[i] * (fRec10[i - 2] + fRec10[i] + 2.0f * fRec10[i - 1]) + fConst5 * (fRec12[i] + fRec12[i - 2] - 2.0f * fRec12[i - 1])))));
+				output1[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec15[i - 2] + fRec15[i] + 2.0f * fRec15[i - 1] + fConst17 * fZec21[i] * (fRec17[i - 2] + (fRec17[i] - 2.0f * fRec17[i - 1]))) : ((iSlow18) ? (fZec27[i] + fRec14[i] * fZec24[i] + fZec23[i] * fRec14[i - 2]) / fZec18[i] : fConst8 * (fZec21[i] * (fRec10[i - 2] + fRec10[i] + 2.0f * fRec10[i - 1]) + fConst5 * (fRec12[i - 2] + (fRec12[i] - 2.0f * fRec12[i - 1]))))));
 			}
 		}
 		/* Remaining frames */
@@ -1235,12 +1234,12 @@ class EQFAUST final : public EQ_PDJE {
 			/* Vectorizable loop 47 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec6[i - 2] + fRec6[i] + 2.0f * fRec6[i - 1] + fConst17 * fZec21[i] * (fRec8[i] + fRec8[i - 2] - 2.0f * fRec8[i - 1])) : ((iSlow18) ? (fZec19[i] + fRec5[i] * fZec24[i] + fRec5[i - 2] * fZec23[i]) / fZec18[i] : fConst8 * ((fRec0[i - 2] + fRec0[i] + 2.0f * fRec0[i - 1]) * fZec21[i] + fConst5 * (fRec3[i] + fRec3[i - 2] - 2.0f * fRec3[i - 1])))));
+				output0[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec6[i - 2] + fRec6[i] + 2.0f * fRec6[i - 1] + fConst17 * fZec21[i] * (fRec8[i - 2] + (fRec8[i] - 2.0f * fRec8[i - 1]))) : ((iSlow18) ? (fZec19[i] + fRec5[i] * fZec24[i] + fRec5[i - 2] * fZec23[i]) / fZec18[i] : fConst8 * ((fRec0[i - 2] + fRec0[i] + 2.0f * fRec0[i - 1]) * fZec21[i] + fConst5 * (fRec3[i - 2] + (fRec3[i] - 2.0f * fRec3[i - 1]))))));
 			}
 			/* Vectorizable loop 48 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec15[i - 2] + fRec15[i] + 2.0f * fRec15[i - 1] + fConst17 * fZec21[i] * (fRec17[i] + fRec17[i - 2] - 2.0f * fRec17[i - 1])) : ((iSlow18) ? (fZec27[i] + fRec14[i] * fZec24[i] + fZec23[i] * fRec14[i - 2]) / fZec18[i] : fConst8 * (fZec21[i] * (fRec10[i - 2] + fRec10[i] + 2.0f * fRec10[i - 1]) + fConst5 * (fRec12[i] + fRec12[i - 2] - 2.0f * fRec12[i - 1])))));
+				output1[i] = FAUSTFLOAT(((iSlow17) ? fConst20 * (fRec15[i - 2] + fRec15[i] + 2.0f * fRec15[i - 1] + fConst17 * fZec21[i] * (fRec17[i - 2] + (fRec17[i] - 2.0f * fRec17[i - 1]))) : ((iSlow18) ? (fZec27[i] + fRec14[i] * fZec24[i] + fZec23[i] * fRec14[i - 2]) / fZec18[i] : fConst8 * (fZec21[i] * (fRec10[i - 2] + fRec10[i] + 2.0f * fRec10[i - 1]) + fConst5 * (fRec12[i - 2] + (fRec12[i] - 2.0f * fRec12[i - 1]))))));
 			}
 		}
 	}
