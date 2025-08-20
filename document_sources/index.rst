@@ -97,7 +97,7 @@ Additional Resources
   :maxdepth: 2
   :caption: Documentation:
 
-  PDJE_Path
+  Getting Started
   How_To_Use
   api/api_root
   PDJE_Format
