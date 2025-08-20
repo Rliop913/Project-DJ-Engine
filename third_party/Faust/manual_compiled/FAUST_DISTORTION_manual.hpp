@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------
 name: "DISTORTION"
-Code generated with Faust 2.75.7 (https://faust.grame.fr)
+Code generated with Faust 2.81.2 (https://faust.grame.fr)
 Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn DistortionFAUSTMan -scn DistortionMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32
 ------------------------------------------------------------ */
 
@@ -51,7 +51,7 @@ class DistortionFAUSTMan final : public DistortionMan {
 		m->declare("misceffects.lib/cubicnl:author", "Julius O. Smith III");
 		m->declare("misceffects.lib/cubicnl:license", "STK-4.3");
 		m->declare("misceffects.lib/name", "Misc Effects Library");
-		m->declare("misceffects.lib/version", "2.5.0");
+		m->declare("misceffects.lib/version", "2.5.1");
 		m->declare("name", "DISTORTION");
 	}
 

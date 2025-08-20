@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------
 name: "OCSFILTER"
-Code generated with Faust 2.75.7 (https://faust.grame.fr)
+Code generated with Faust 2.81.2 (https://faust.grame.fr)
 Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn OcsFilterFAUSTMan -scn OcsFilterMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32
 ------------------------------------------------------------ */
 
@@ -78,8 +78,7 @@ class OcsFilterFAUSTMan final : public OcsFilterMan {
 	
 	void metadata(Meta* m) { 
 		m->declare("basics.lib/name", "Faust Basic Element Library");
-		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
-		m->declare("basics.lib/version", "1.19.1");
+		m->declare("basics.lib/version", "1.21.0");
 		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn OcsFilterFAUSTMan -scn OcsFilterMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32");
 		m->declare("filename", "OCSFILTER.dsp");
 		m->declare("filters.lib/fir:author", "Julius O. Smith III");
@@ -102,15 +101,15 @@ class OcsFilterFAUSTMan final : public OcsFilterMan {
 		m->declare("filters.lib/tf2s:author", "Julius O. Smith III");
 		m->declare("filters.lib/tf2s:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
 		m->declare("filters.lib/tf2s:license", "MIT-style STK-4.3 license");
-		m->declare("filters.lib/version", "1.3.0");
+		m->declare("filters.lib/version", "1.7.1");
 		m->declare("maths.lib/author", "GRAME");
 		m->declare("maths.lib/copyright", "GRAME");
 		m->declare("maths.lib/license", "LGPL with exception");
 		m->declare("maths.lib/name", "Faust Math Library");
-		m->declare("maths.lib/version", "2.8.0");
+		m->declare("maths.lib/version", "2.8.1");
 		m->declare("name", "OCSFILTER");
 		m->declare("oscillators.lib/name", "Faust Oscillator Library");
-		m->declare("oscillators.lib/version", "1.5.1");
+		m->declare("oscillators.lib/version", "1.6.0");
 		m->declare("platform.lib/name", "Generic Platform Library");
 		m->declare("platform.lib/version", "1.3.0");
 	}
@@ -313,10 +312,10 @@ class OcsFilterFAUSTMan final : public OcsFilterMan {
 		float* fRec9 = &fRec9_tmp[4];
 		float fRec8_tmp[36];
 		float* fRec8 = &fRec8_tmp[4];
-		int iSlow3 = ocsFilterHighLowSW;
+		float fSlow3 = std::min<float>(1.0f, std::max<float>(0.0f, OCSFilterDryWet));
+		float fSlow4 = 1.0f - fSlow3;
+		int iSlow5 = ocsFilterHighLowSW;
 		float fZec24[32];
-		float fSlow4 = std::min<float>(1.0f, std::max<float>(0.0f, OCSFilterDryWet));
-		float fSlow5 = 1.0f - fSlow4;
 		float fRec18_tmp[36];
 		float* fRec18 = &fRec18_tmp[4];
 		float fZec25[32];
@@ -785,12 +784,12 @@ class OcsFilterFAUSTMan final : public OcsFilterMan {
 			/* Vectorizable loop 48 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(fSlow5 * float(input0[i]) + fSlow4 * ((iSlow3) ? (fRec8[i - 2] + fRec8[i] + 2.0f * fRec8[i - 1]) / fZec21[i] : (fRec0[i] + fRec0[i - 2] - 2.0f * fRec0[i - 1]) / fZec24[i]));
+				output0[i] = FAUSTFLOAT(fSlow3 * ((iSlow5) ? (fRec8[i - 2] + fRec8[i] + 2.0f * fRec8[i - 1]) / fZec21[i] : (fRec0[i - 2] + (fRec0[i] - 2.0f * fRec0[i - 1])) / fZec24[i]) + fSlow4 * float(input0[i]));
 			}
 			/* Vectorizable loop 49 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(fSlow5 * float(input1[i]) + fSlow4 * ((iSlow3) ? (fRec19[i - 2] + fRec19[i] + 2.0f * fRec19[i - 1]) / fZec21[i] : (fRec13[i] + fRec13[i - 2] - 2.0f * fRec13[i - 1]) / fZec24[i]));
+				output1[i] = FAUSTFLOAT(fSlow3 * ((iSlow5) ? (fRec19[i - 2] + fRec19[i] + 2.0f * fRec19[i - 1]) / fZec21[i] : (fRec13[i - 2] + (fRec13[i] - 2.0f * fRec13[i - 1])) / fZec24[i]) + fSlow4 * float(input1[i]));
 			}
 		}
 		/* Remaining frames */
@@ -1237,12 +1236,12 @@ class OcsFilterFAUSTMan final : public OcsFilterMan {
 			/* Vectorizable loop 48 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(fSlow5 * float(input0[i]) + fSlow4 * ((iSlow3) ? (fRec8[i - 2] + fRec8[i] + 2.0f * fRec8[i - 1]) / fZec21[i] : (fRec0[i] + fRec0[i - 2] - 2.0f * fRec0[i - 1]) / fZec24[i]));
+				output0[i] = FAUSTFLOAT(fSlow3 * ((iSlow5) ? (fRec8[i - 2] + fRec8[i] + 2.0f * fRec8[i - 1]) / fZec21[i] : (fRec0[i - 2] + (fRec0[i] - 2.0f * fRec0[i - 1])) / fZec24[i]) + fSlow4 * float(input0[i]));
 			}
 			/* Vectorizable loop 49 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(fSlow5 * float(input1[i]) + fSlow4 * ((iSlow3) ? (fRec19[i - 2] + fRec19[i] + 2.0f * fRec19[i - 1]) / fZec21[i] : (fRec13[i] + fRec13[i - 2] - 2.0f * fRec13[i - 1]) / fZec24[i]));
+				output1[i] = FAUSTFLOAT(fSlow3 * ((iSlow5) ? (fRec19[i - 2] + fRec19[i] + 2.0f * fRec19[i - 1]) / fZec21[i] : (fRec13[i - 2] + (fRec13[i] - 2.0f * fRec13[i - 1])) / fZec24[i]) + fSlow4 * float(input1[i]));
 			}
 		}
 	}

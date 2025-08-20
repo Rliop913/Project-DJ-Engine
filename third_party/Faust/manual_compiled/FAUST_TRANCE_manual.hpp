@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------
 name: "TRANCE"
-Code generated with Faust 2.75.7 (https://faust.grame.fr)
+Code generated with Faust 2.81.2 (https://faust.grame.fr)
 Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn TranceFAUSTMan -scn TranceMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32
 ------------------------------------------------------------ */
 
@@ -53,12 +53,12 @@ class TranceFAUSTMan final : public TranceMan {
 		m->declare("maths.lib/copyright", "GRAME");
 		m->declare("maths.lib/license", "LGPL with exception");
 		m->declare("maths.lib/name", "Faust Math Library");
-		m->declare("maths.lib/version", "2.8.0");
+		m->declare("maths.lib/version", "2.8.1");
 		m->declare("name", "TRANCE");
 		m->declare("oscillators.lib/lf_sawpos:author", "Bart Brouns, revised by Stéphane Letz");
 		m->declare("oscillators.lib/lf_sawpos:licence", "STK-4.3");
 		m->declare("oscillators.lib/name", "Faust Oscillator Library");
-		m->declare("oscillators.lib/version", "1.5.1");
+		m->declare("oscillators.lib/version", "1.6.0");
 		m->declare("platform.lib/name", "Generic Platform Library");
 		m->declare("platform.lib/version", "1.3.0");
 	}
@@ -138,6 +138,7 @@ class TranceFAUSTMan final : public TranceMan {
 		float fZec2[32];
 		float fZec3[32];
 		float fSlow2 = std::max<float>(0.0f, std::min<float>(1.0f, TranceDryWet));
+		float fSlow3 = 1.0f - fSlow2;
 		float fZec4[32];
 		int vindex = 0;
 		/* Main loop */
@@ -188,7 +189,7 @@ class TranceFAUSTMan final : public TranceMan {
 			/* Vectorizable loop 4 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec4[i] = 1.0f - fSlow2 * (1.0f - ((fZec2[i] == fZec3[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec3[i] + 1.0f : fZec3[i])));
+				fZec4[i] = fSlow3 + fSlow2 * ((fZec2[i] == fZec3[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec3[i] + 1.0f : fZec3[i]));
 			}
 			/* Vectorizable loop 5 */
 			/* Compute code */
@@ -249,7 +250,7 @@ class TranceFAUSTMan final : public TranceMan {
 			/* Vectorizable loop 4 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec4[i] = 1.0f - fSlow2 * (1.0f - ((fZec2[i] == fZec3[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec3[i] + 1.0f : fZec3[i])));
+				fZec4[i] = fSlow3 + fSlow2 * ((fZec2[i] == fZec3[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec3[i] + 1.0f : fZec3[i]));
 			}
 			/* Vectorizable loop 5 */
 			/* Compute code */

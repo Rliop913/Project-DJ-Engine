@@ -9,6 +9,7 @@
 #include "dbRoot.hpp"
 #include <filesystem>
 #include "fileNameSanitizer.hpp"
+#include "SoundTouch.h"
 
 namespace fs = std::filesystem;
 // #undef HWY_TARGET_INCLUDE
@@ -31,7 +32,15 @@ struct MusicOnDeck{
     bool play = false;
     Decoder dec;
     FXControlPannel* fxP;
-    MusicOnDeck() : fxP(new FXControlPannel(48000)) {};
+    std::optional<soundtouch::SoundTouch> st;
+    MusicOnDeck() : fxP(new FXControlPannel(48000)) {
+        st.emplace();
+        st->setChannels(CHANNEL);
+        st->setSampleRate(SAMPLERATE);
+        st->setSetting(0, 1);
+        st->setSetting(2, 0);
+        st->setTempo(1.0);
+    };
     ~MusicOnDeck(){
         // ma_decoder_uninit(&dec);
         delete fxP;
@@ -119,6 +128,20 @@ public:
      * @return FXControlPannel*, the handler pointer
      */
     FXControlPannel* getFXHandle(const UNSANITIZED& title);
+
+
+    /**
+     * @brief changes music's bpm
+     * 
+     * @param title the title of the music
+     * @param targetBpm the target bpm of the music
+     * @param originBpm the origin bpm of the music
+     * @return true
+     * @return false
+     */
+    bool ChangeBpm(const UNSANITIZED& title, const double targetBpm, const double originBpm);
+
+
     MusicControlPannel(const unsigned long FrameSize): fsize(FrameSize){}
     ~MusicControlPannel();
 

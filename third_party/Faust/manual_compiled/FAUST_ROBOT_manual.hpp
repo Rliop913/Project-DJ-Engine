@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------
 name: "ROBOT"
-Code generated with Faust 2.75.7 (https://faust.grame.fr)
+Code generated with Faust 2.81.2 (https://faust.grame.fr)
 Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn RobotFAUSTMan -scn RobotMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32
 ------------------------------------------------------------ */
 
@@ -51,21 +51,20 @@ class RobotFAUSTMan final : public RobotMan {
 	
 	void metadata(Meta* m) { 
 		m->declare("basics.lib/name", "Faust Basic Element Library");
-		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
-		m->declare("basics.lib/version", "1.19.1");
+		m->declare("basics.lib/version", "1.21.0");
 		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn RobotFAUSTMan -scn RobotMan -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32");
 		m->declare("filename", "ROBOT.dsp");
 		m->declare("maths.lib/author", "GRAME");
 		m->declare("maths.lib/copyright", "GRAME");
 		m->declare("maths.lib/license", "LGPL with exception");
 		m->declare("maths.lib/name", "Faust Math Library");
-		m->declare("maths.lib/version", "2.8.0");
+		m->declare("maths.lib/version", "2.8.1");
 		m->declare("misceffects.lib/dryWetMixer:author", "David Braun, revised by Stéphane Letz");
 		m->declare("misceffects.lib/name", "Misc Effects Library");
-		m->declare("misceffects.lib/version", "2.5.0");
+		m->declare("misceffects.lib/version", "2.5.1");
 		m->declare("name", "ROBOT");
 		m->declare("oscillators.lib/name", "Faust Oscillator Library");
-		m->declare("oscillators.lib/version", "1.5.1");
+		m->declare("oscillators.lib/version", "1.6.0");
 		m->declare("platform.lib/name", "Generic Platform Library");
 		m->declare("platform.lib/version", "1.3.0");
 		m->declare("signals.lib/name", "Faust Signal Routing Library");
@@ -157,6 +156,7 @@ class RobotFAUSTMan final : public RobotMan {
 		float fRec0_tmp[36];
 		float* fRec0 = &fRec0_tmp[4];
 		float fSlow1 = std::min<float>(1.0f, std::max<float>(0.0f, RobotDryWet));
+		float fSlow2 = 1.0f - fSlow1;
 		float fZec2[32];
 		int vindex = 0;
 		/* Main loop */
@@ -197,7 +197,7 @@ class RobotFAUSTMan final : public RobotMan {
 			/* Vectorizable loop 2 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec2[i] = 1.0f - fSlow1 * (1.0f - ftbl0RobotFAUSTManSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec0[i]), 65535))]);
+				fZec2[i] = fSlow2 + fSlow1 * ftbl0RobotFAUSTManSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec0[i]), 65535))];
 			}
 			/* Vectorizable loop 3 */
 			/* Compute code */
@@ -248,7 +248,7 @@ class RobotFAUSTMan final : public RobotMan {
 			/* Vectorizable loop 2 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec2[i] = 1.0f - fSlow1 * (1.0f - ftbl0RobotFAUSTManSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec0[i]), 65535))]);
+				fZec2[i] = fSlow2 + fSlow1 * ftbl0RobotFAUSTManSIG0[std::max<int>(0, std::min<int>(int(65536.0f * fRec0[i]), 65535))];
 			}
 			/* Vectorizable loop 3 */
 			/* Compute code */

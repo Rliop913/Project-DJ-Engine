@@ -75,5 +75,4 @@ FullManualRender_callback(ma_device* pDevice, void* pOutput, const void* pInput,
     auto Data = reinterpret_cast<audioEngineDataStruct*>(pDevice->pUserData);
     Data->MusCtrPannel->GetPCMFrames(reinterpret_cast<float*>(pOutput), frameCount);
     
-    
 }

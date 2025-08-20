@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------
 name: "TRANCE"
-Code generated with Faust 2.75.7 (https://faust.grame.fr)
+Code generated with Faust 2.81.2 (https://faust.grame.fr)
 Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn TranceFAUST -scn Trance_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32
 ------------------------------------------------------------ */
 
@@ -50,8 +50,7 @@ class TranceFAUST final : public Trance_PDJE {
 	
 	void metadata(Meta* m) { 
 		m->declare("basics.lib/name", "Faust Basic Element Library");
-		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
-		m->declare("basics.lib/version", "1.19.1");
+		m->declare("basics.lib/version", "1.21.0");
 		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn TranceFAUST -scn Trance_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32");
 		m->declare("filename", "TRANCE.dsp");
 		m->declare("interpolators.lib/interpolate_cosine:author", "Stéphane Letz");
@@ -71,17 +70,17 @@ class TranceFAUST final : public Trance_PDJE {
 		m->declare("interpolators.lib/interpolator_two_points:author", "Stéphane Letz");
 		m->declare("interpolators.lib/interpolator_two_points:licence", "MIT");
 		m->declare("interpolators.lib/name", "Faust Interpolator Library");
-		m->declare("interpolators.lib/version", "1.3.1");
+		m->declare("interpolators.lib/version", "1.4.0");
 		m->declare("maths.lib/author", "GRAME");
 		m->declare("maths.lib/copyright", "GRAME");
 		m->declare("maths.lib/license", "LGPL with exception");
 		m->declare("maths.lib/name", "Faust Math Library");
-		m->declare("maths.lib/version", "2.8.0");
+		m->declare("maths.lib/version", "2.8.1");
 		m->declare("name", "TRANCE");
 		m->declare("oscillators.lib/lf_sawpos:author", "Bart Brouns, revised by Stéphane Letz");
 		m->declare("oscillators.lib/lf_sawpos:licence", "STK-4.3");
 		m->declare("oscillators.lib/name", "Faust Oscillator Library");
-		m->declare("oscillators.lib/version", "1.5.1");
+		m->declare("oscillators.lib/version", "1.6.0");
 		m->declare("platform.lib/name", "Generic Platform Library");
 		m->declare("platform.lib/version", "1.3.0");
 		m->declare("routes.lib/name", "Faust Signal Routing Library");
@@ -166,36 +165,37 @@ class TranceFAUST final : public Trance_PDJE {
 		float fZec1[32];
 		float fRec1_tmp[36];
 		float* fRec1 = &fRec1_tmp[4];
-		float fSlow3 = gain;
+		int iSlow3 = selectInterpolator;
+		int iSlow4 = iSlow3 >= 2;
+		int iSlow5 = iSlow3 >= 1;
+		float fSlow6 = 8.0f / float(iSlow1);
 		float fZec2[32];
-		float fZec3[32];
-		int iSlow4 = selectInterpolator;
-		int iSlow5 = iSlow4 >= 2;
-		int iSlow6 = iSlow4 >= 1;
-		float fSlow7 = 8.0f / float(iSlow1);
+		int iZec3[32];
+		float fSlow7 = v1;
+		float fSlow8 = v2;
+		float fSlow9 = v3;
+		float fSlow10 = v4;
+		float fSlow11 = v5;
+		float fSlow12 = v6;
+		float fSlow13 = v7;
+		float fSlow14 = v8;
 		float fZec4[32];
 		int iZec5[32];
-		float fSlow8 = v1;
-		float fSlow9 = v2;
-		float fSlow10 = v3;
-		float fSlow11 = v4;
-		float fSlow12 = v5;
-		float fSlow13 = v6;
-		float fSlow14 = v7;
-		float fSlow15 = v8;
 		float fZec6[32];
-		int iZec7[32];
+		float fZec7[32];
 		float fZec8[32];
 		float fZec9[32];
-		float fZec10[32];
+		int iSlow15 = iSlow3 >= 3;
+		int iZec10[32];
 		float fZec11[32];
-		int iSlow16 = iSlow4 >= 3;
 		int iZec12[32];
 		float fZec13[32];
-		int iZec14[32];
+		float fSlow16 = vZero;
+		float fZec14[32];
+		float fSlow17 = gain;
 		float fZec15[32];
-		float fSlow17 = vZero;
 		float fZec16[32];
+		float fZec17[32];
 		int vindex = 0;
 		/* Main loop */
 		for (vindex = 0; vindex <= (count - 32); vindex = vindex + 32) {
@@ -233,14 +233,19 @@ class TranceFAUST final : public Trance_PDJE {
 			/* Vectorizable loop 2 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec4[i] = fSlow7 * float(iRec0[i]);
+				fZec2[i] = fSlow6 * float(iRec0[i]);
 			}
 			/* Vectorizable loop 3 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec5[i] = int(fZec4[i]);
+				iZec3[i] = int(fZec2[i]);
 			}
-			/* Recursive loop 4 */
+			/* Vectorizable loop 4 */
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				iZec5[i] = iZec3[i] + 1;
+			}
+			/* Recursive loop 5 */
 			/* Pre code */
 			for (int j4 = 0; j4 < 4; j4 = j4 + 1) {
 				fRec1_tmp[j4] = fRec1_perm[j4];
@@ -255,80 +260,80 @@ class TranceFAUST final : public Trance_PDJE {
 			for (int j5 = 0; j5 < 4; j5 = j5 + 1) {
 				fRec1_perm[j5] = fRec1_tmp[vsize + j5];
 			}
-			/* Vectorizable loop 5 */
-			/* Compute code */
-			for (int i = 0; i < vsize; i = i + 1) {
-				iZec7[i] = iZec5[i] + 1;
-			}
 			/* Vectorizable loop 6 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec2[i] = fSlow3 - fRec1[i];
+				fZec4[i] = ((iZec3[i] >= 4) ? ((iZec3[i] >= 6) ? ((iZec3[i] >= 7) ? fSlow14 : fSlow13) : ((iZec3[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec3[i] >= 2) ? ((iZec3[i] >= 3) ? fSlow10 : fSlow9) : ((iZec3[i] >= 1) ? fSlow8 : fSlow7)));
 			}
 			/* Vectorizable loop 7 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec6[i] = ((iZec5[i] >= 4) ? ((iZec5[i] >= 6) ? ((iZec5[i] >= 7) ? fSlow15 : fSlow14) : ((iZec5[i] >= 5) ? fSlow13 : fSlow12)) : ((iZec5[i] >= 2) ? ((iZec5[i] >= 3) ? fSlow11 : fSlow10) : ((iZec5[i] >= 1) ? fSlow9 : fSlow8)));
+				fZec6[i] = ((iZec5[i] >= 4) ? ((iZec5[i] >= 6) ? ((iZec5[i] >= 7) ? fSlow14 : fSlow13) : ((iZec5[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec5[i] >= 2) ? ((iZec5[i] >= 3) ? fSlow10 : fSlow9) : ((iZec5[i] >= 1) ? fSlow8 : fSlow7)));
 			}
 			/* Vectorizable loop 8 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec8[i] = ((iZec7[i] >= 4) ? ((iZec7[i] >= 6) ? ((iZec7[i] >= 7) ? fSlow15 : fSlow14) : ((iZec7[i] >= 5) ? fSlow13 : fSlow12)) : ((iZec7[i] >= 2) ? ((iZec7[i] >= 3) ? fSlow11 : fSlow10) : ((iZec7[i] >= 1) ? fSlow9 : fSlow8)));
+				fZec8[i] = float(iZec3[i]);
 			}
 			/* Vectorizable loop 9 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec10[i] = float(iZec5[i]);
+				iZec10[i] = iZec3[i] + -1;
 			}
 			/* Vectorizable loop 10 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec12[i] = iZec5[i] + -1;
+				iZec12[i] = iZec3[i] + 2;
 			}
 			/* Vectorizable loop 11 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec14[i] = iZec5[i] + 2;
+				fZec7[i] = fZec6[i] - fZec4[i];
 			}
 			/* Vectorizable loop 12 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec3[i] = float(int(fZec2[i]));
+				fZec9[i] = fZec2[i] - ((fZec2[i] == fZec8[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec8[i] : fZec8[i] + -1.0f));
 			}
 			/* Vectorizable loop 13 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec9[i] = fZec8[i] - fZec6[i];
+				fZec11[i] = ((iZec10[i] >= 4) ? ((iZec10[i] >= 6) ? ((iZec10[i] >= 7) ? fSlow14 : fSlow13) : ((iZec10[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec10[i] >= 2) ? ((iZec10[i] >= 3) ? fSlow10 : fSlow9) : ((iZec10[i] >= 1) ? fSlow8 : fSlow7)));
 			}
 			/* Vectorizable loop 14 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec11[i] = fZec4[i] - ((fZec4[i] == fZec10[i]) ? fZec4[i] : ((fZec4[i] >= 0.0f) ? fZec10[i] : fZec10[i] + -1.0f));
+				fZec13[i] = ((iZec12[i] >= 4) ? ((iZec12[i] >= 6) ? ((iZec12[i] >= 7) ? fSlow14 : fSlow13) : ((iZec12[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec12[i] >= 2) ? ((iZec12[i] >= 3) ? fSlow10 : fSlow9) : ((iZec12[i] >= 1) ? fSlow8 : fSlow7)));
 			}
 			/* Vectorizable loop 15 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec13[i] = ((iZec12[i] >= 4) ? ((iZec12[i] >= 6) ? ((iZec12[i] >= 7) ? fSlow15 : fSlow14) : ((iZec12[i] >= 5) ? fSlow13 : fSlow12)) : ((iZec12[i] >= 2) ? ((iZec12[i] >= 3) ? fSlow11 : fSlow10) : ((iZec12[i] >= 1) ? fSlow9 : fSlow8)));
+				fZec15[i] = fSlow17 - fRec1[i];
 			}
 			/* Vectorizable loop 16 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec15[i] = ((iZec14[i] >= 4) ? ((iZec14[i] >= 6) ? ((iZec14[i] >= 7) ? fSlow15 : fSlow14) : ((iZec14[i] >= 5) ? fSlow13 : fSlow12)) : ((iZec14[i] >= 2) ? ((iZec14[i] >= 3) ? fSlow11 : fSlow10) : ((iZec14[i] >= 1) ? fSlow9 : fSlow8)));
+				fZec14[i] = std::max<float>(0.0f, std::min<float>(1.0f, ((iSlow4) ? ((iSlow15) ? fSlow16 : fZec4[i] + 0.5f * fZec9[i] * (fZec6[i] + fZec9[i] * (2.0f * fZec11[i] + 4.0f * fZec6[i] + fZec9[i] * (fZec13[i] + 3.0f * (fZec4[i] - fZec6[i]) - fZec11[i]) - (5.0f * fZec4[i] + fZec13[i])) - fZec11[i])) : ((iSlow5) ? fZec4[i] + 0.5f * fZec7[i] * (1.0f - std::cos(3.1415927f * fZec9[i])) : fZec4[i] + fZec9[i] * fZec7[i]))));
 			}
 			/* Vectorizable loop 17 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec16[i] = 1.0f - std::max<float>(0.0f, std::min<float>(1.0f, ((iSlow5) ? ((iSlow16) ? fSlow17 : fZec6[i] + 0.5f * fZec11[i] * (fZec8[i] + fZec11[i] * (2.0f * fZec13[i] + 4.0f * fZec8[i] + fZec11[i] * (fZec15[i] + 3.0f * (fZec6[i] - fZec8[i]) - fZec13[i]) - (5.0f * fZec6[i] + fZec15[i])) - fZec13[i])) : ((iSlow6) ? fZec6[i] + 0.5f * fZec9[i] * (1.0f - std::cos(3.1415927f * fZec11[i])) : fZec6[i] + fZec11[i] * fZec9[i])))) * (1.0f - ((fZec2[i] == fZec3[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec3[i] + 1.0f : fZec3[i])));
+				fZec16[i] = float(int(fZec15[i]));
 			}
 			/* Vectorizable loop 18 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(float(input0[i]) * fZec16[i]);
+				fZec17[i] = 1.0f - fZec14[i] + ((fZec15[i] == fZec16[i]) ? fZec15[i] : ((fZec15[i] >= 0.0f) ? fZec16[i] + 1.0f : fZec16[i])) * fZec14[i];
 			}
 			/* Vectorizable loop 19 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(float(input1[i]) * fZec16[i]);
+				output0[i] = FAUSTFLOAT(float(input0[i]) * fZec17[i]);
+			}
+			/* Vectorizable loop 20 */
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				output1[i] = FAUSTFLOAT(float(input1[i]) * fZec17[i]);
 			}
 		}
 		/* Remaining frames */
@@ -367,14 +372,19 @@ class TranceFAUST final : public Trance_PDJE {
 			/* Vectorizable loop 2 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec4[i] = fSlow7 * float(iRec0[i]);
+				fZec2[i] = fSlow6 * float(iRec0[i]);
 			}
 			/* Vectorizable loop 3 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec5[i] = int(fZec4[i]);
+				iZec3[i] = int(fZec2[i]);
 			}
-			/* Recursive loop 4 */
+			/* Vectorizable loop 4 */
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				iZec5[i] = iZec3[i] + 1;
+			}
+			/* Recursive loop 5 */
 			/* Pre code */
 			for (int j4 = 0; j4 < 4; j4 = j4 + 1) {
 				fRec1_tmp[j4] = fRec1_perm[j4];
@@ -389,80 +399,80 @@ class TranceFAUST final : public Trance_PDJE {
 			for (int j5 = 0; j5 < 4; j5 = j5 + 1) {
 				fRec1_perm[j5] = fRec1_tmp[vsize + j5];
 			}
-			/* Vectorizable loop 5 */
-			/* Compute code */
-			for (int i = 0; i < vsize; i = i + 1) {
-				iZec7[i] = iZec5[i] + 1;
-			}
 			/* Vectorizable loop 6 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec2[i] = fSlow3 - fRec1[i];
+				fZec4[i] = ((iZec3[i] >= 4) ? ((iZec3[i] >= 6) ? ((iZec3[i] >= 7) ? fSlow14 : fSlow13) : ((iZec3[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec3[i] >= 2) ? ((iZec3[i] >= 3) ? fSlow10 : fSlow9) : ((iZec3[i] >= 1) ? fSlow8 : fSlow7)));
 			}
 			/* Vectorizable loop 7 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec6[i] = ((iZec5[i] >= 4) ? ((iZec5[i] >= 6) ? ((iZec5[i] >= 7) ? fSlow15 : fSlow14) : ((iZec5[i] >= 5) ? fSlow13 : fSlow12)) : ((iZec5[i] >= 2) ? ((iZec5[i] >= 3) ? fSlow11 : fSlow10) : ((iZec5[i] >= 1) ? fSlow9 : fSlow8)));
+				fZec6[i] = ((iZec5[i] >= 4) ? ((iZec5[i] >= 6) ? ((iZec5[i] >= 7) ? fSlow14 : fSlow13) : ((iZec5[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec5[i] >= 2) ? ((iZec5[i] >= 3) ? fSlow10 : fSlow9) : ((iZec5[i] >= 1) ? fSlow8 : fSlow7)));
 			}
 			/* Vectorizable loop 8 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec8[i] = ((iZec7[i] >= 4) ? ((iZec7[i] >= 6) ? ((iZec7[i] >= 7) ? fSlow15 : fSlow14) : ((iZec7[i] >= 5) ? fSlow13 : fSlow12)) : ((iZec7[i] >= 2) ? ((iZec7[i] >= 3) ? fSlow11 : fSlow10) : ((iZec7[i] >= 1) ? fSlow9 : fSlow8)));
+				fZec8[i] = float(iZec3[i]);
 			}
 			/* Vectorizable loop 9 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec10[i] = float(iZec5[i]);
+				iZec10[i] = iZec3[i] + -1;
 			}
 			/* Vectorizable loop 10 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec12[i] = iZec5[i] + -1;
+				iZec12[i] = iZec3[i] + 2;
 			}
 			/* Vectorizable loop 11 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				iZec14[i] = iZec5[i] + 2;
+				fZec7[i] = fZec6[i] - fZec4[i];
 			}
 			/* Vectorizable loop 12 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec3[i] = float(int(fZec2[i]));
+				fZec9[i] = fZec2[i] - ((fZec2[i] == fZec8[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec8[i] : fZec8[i] + -1.0f));
 			}
 			/* Vectorizable loop 13 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec9[i] = fZec8[i] - fZec6[i];
+				fZec11[i] = ((iZec10[i] >= 4) ? ((iZec10[i] >= 6) ? ((iZec10[i] >= 7) ? fSlow14 : fSlow13) : ((iZec10[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec10[i] >= 2) ? ((iZec10[i] >= 3) ? fSlow10 : fSlow9) : ((iZec10[i] >= 1) ? fSlow8 : fSlow7)));
 			}
 			/* Vectorizable loop 14 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec11[i] = fZec4[i] - ((fZec4[i] == fZec10[i]) ? fZec4[i] : ((fZec4[i] >= 0.0f) ? fZec10[i] : fZec10[i] + -1.0f));
+				fZec13[i] = ((iZec12[i] >= 4) ? ((iZec12[i] >= 6) ? ((iZec12[i] >= 7) ? fSlow14 : fSlow13) : ((iZec12[i] >= 5) ? fSlow12 : fSlow11)) : ((iZec12[i] >= 2) ? ((iZec12[i] >= 3) ? fSlow10 : fSlow9) : ((iZec12[i] >= 1) ? fSlow8 : fSlow7)));
 			}
 			/* Vectorizable loop 15 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec13[i] = ((iZec12[i] >= 4) ? ((iZec12[i] >= 6) ? ((iZec12[i] >= 7) ? fSlow15 : fSlow14) : ((iZec12[i] >= 5) ? fSlow13 : fSlow12)) : ((iZec12[i] >= 2) ? ((iZec12[i] >= 3) ? fSlow11 : fSlow10) : ((iZec12[i] >= 1) ? fSlow9 : fSlow8)));
+				fZec15[i] = fSlow17 - fRec1[i];
 			}
 			/* Vectorizable loop 16 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec15[i] = ((iZec14[i] >= 4) ? ((iZec14[i] >= 6) ? ((iZec14[i] >= 7) ? fSlow15 : fSlow14) : ((iZec14[i] >= 5) ? fSlow13 : fSlow12)) : ((iZec14[i] >= 2) ? ((iZec14[i] >= 3) ? fSlow11 : fSlow10) : ((iZec14[i] >= 1) ? fSlow9 : fSlow8)));
+				fZec14[i] = std::max<float>(0.0f, std::min<float>(1.0f, ((iSlow4) ? ((iSlow15) ? fSlow16 : fZec4[i] + 0.5f * fZec9[i] * (fZec6[i] + fZec9[i] * (2.0f * fZec11[i] + 4.0f * fZec6[i] + fZec9[i] * (fZec13[i] + 3.0f * (fZec4[i] - fZec6[i]) - fZec11[i]) - (5.0f * fZec4[i] + fZec13[i])) - fZec11[i])) : ((iSlow5) ? fZec4[i] + 0.5f * fZec7[i] * (1.0f - std::cos(3.1415927f * fZec9[i])) : fZec4[i] + fZec9[i] * fZec7[i]))));
 			}
 			/* Vectorizable loop 17 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				fZec16[i] = 1.0f - std::max<float>(0.0f, std::min<float>(1.0f, ((iSlow5) ? ((iSlow16) ? fSlow17 : fZec6[i] + 0.5f * fZec11[i] * (fZec8[i] + fZec11[i] * (2.0f * fZec13[i] + 4.0f * fZec8[i] + fZec11[i] * (fZec15[i] + 3.0f * (fZec6[i] - fZec8[i]) - fZec13[i]) - (5.0f * fZec6[i] + fZec15[i])) - fZec13[i])) : ((iSlow6) ? fZec6[i] + 0.5f * fZec9[i] * (1.0f - std::cos(3.1415927f * fZec11[i])) : fZec6[i] + fZec11[i] * fZec9[i])))) * (1.0f - ((fZec2[i] == fZec3[i]) ? fZec2[i] : ((fZec2[i] >= 0.0f) ? fZec3[i] + 1.0f : fZec3[i])));
+				fZec16[i] = float(int(fZec15[i]));
 			}
 			/* Vectorizable loop 18 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output0[i] = FAUSTFLOAT(float(input0[i]) * fZec16[i]);
+				fZec17[i] = 1.0f - fZec14[i] + ((fZec15[i] == fZec16[i]) ? fZec15[i] : ((fZec15[i] >= 0.0f) ? fZec16[i] + 1.0f : fZec16[i])) * fZec14[i];
 			}
 			/* Vectorizable loop 19 */
 			/* Compute code */
 			for (int i = 0; i < vsize; i = i + 1) {
-				output1[i] = FAUSTFLOAT(float(input1[i]) * fZec16[i]);
+				output0[i] = FAUSTFLOAT(float(input0[i]) * fZec17[i]);
+			}
+			/* Vectorizable loop 20 */
+			/* Compute code */
+			for (int i = 0; i < vsize; i = i + 1) {
+				output1[i] = FAUSTFLOAT(float(input1[i]) * fZec17[i]);
 			}
 		}
 	}

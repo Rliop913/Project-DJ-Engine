@@ -1,6 +1,6 @@
 /* ------------------------------------------------------------
 name: "PHASER"
-Code generated with Faust 2.75.7 (https://faust.grame.fr)
+Code generated with Faust 2.81.2 (https://faust.grame.fr)
 Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn PhaserFAUST -scn Phaser_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32
 ------------------------------------------------------------ */
 
@@ -73,8 +73,7 @@ class PhaserFAUST final : public Phaser_PDJE {
 	
 	void metadata(Meta* m) { 
 		m->declare("basics.lib/name", "Faust Basic Element Library");
-		m->declare("basics.lib/tabulateNd", "Copyright (C) 2023 Bart Brouns <bart@magnetophon.nl>");
-		m->declare("basics.lib/version", "1.19.1");
+		m->declare("basics.lib/version", "1.21.0");
 		m->declare("compile_options", "-lang cpp -light -it -nvi -ct 1 -mapp -cn PhaserFAUST -scn Phaser_PDJE -es 1 -exp10 -mcd 16 -mdd 1024 -mdy 33 -single -ftz 0 -vec -lv 0 -vs 32");
 		m->declare("filename", "PHASER.dsp");
 		m->declare("filters.lib/fir:author", "Julius O. Smith III");
@@ -91,7 +90,7 @@ class PhaserFAUST final : public Phaser_PDJE {
 		m->declare("filters.lib/tf2:author", "Julius O. Smith III");
 		m->declare("filters.lib/tf2:copyright", "Copyright (C) 2003-2019 by Julius O. Smith III <jos@ccrma.stanford.edu>");
 		m->declare("filters.lib/tf2:license", "MIT-style STK-4.3 license");
-		m->declare("filters.lib/version", "1.3.0");
+		m->declare("filters.lib/version", "1.7.1");
 		m->declare("interpolators.lib/interpolate_cosine:author", "Stéphane Letz");
 		m->declare("interpolators.lib/interpolate_cosine:licence", "MIT");
 		m->declare("interpolators.lib/interpolate_cubic:author", "Stéphane Letz");
@@ -109,15 +108,15 @@ class PhaserFAUST final : public Phaser_PDJE {
 		m->declare("interpolators.lib/interpolator_two_points:author", "Stéphane Letz");
 		m->declare("interpolators.lib/interpolator_two_points:licence", "MIT");
 		m->declare("interpolators.lib/name", "Faust Interpolator Library");
-		m->declare("interpolators.lib/version", "1.3.1");
+		m->declare("interpolators.lib/version", "1.4.0");
 		m->declare("maths.lib/author", "GRAME");
 		m->declare("maths.lib/copyright", "GRAME");
 		m->declare("maths.lib/license", "LGPL with exception");
 		m->declare("maths.lib/name", "Faust Math Library");
-		m->declare("maths.lib/version", "2.8.0");
+		m->declare("maths.lib/version", "2.8.1");
 		m->declare("name", "PHASER");
 		m->declare("oscillators.lib/name", "Faust Oscillator Library");
-		m->declare("oscillators.lib/version", "1.5.1");
+		m->declare("oscillators.lib/version", "1.6.0");
 		m->declare("phaflangers.lib/name", "Faust Phaser and Flanger Library");
 		m->declare("phaflangers.lib/version", "1.1.0");
 		m->declare("platform.lib/name", "Generic Platform Library");
@@ -532,7 +531,7 @@ class PhaserFAUST final : public Phaser_PDJE {
 				fRec15[i] = fRec16[i - 2] + fConst3 * (fRec16[i] - fRec15[i - 2]) - fConst5 * fZec15[i] * (fRec16[i - 1] - fRec15[i - 1]);
 				fRec14[i] = fRec15[i - 2] + fConst3 * (fRec15[i] - fRec14[i - 2]) - fConst5 * fZec15[i] * (fRec15[i - 1] - fRec14[i - 1]);
 				fRec13[i] = fRec14[i - 2] + fConst3 * (fRec14[i] - fRec13[i - 2]) - fConst5 * fZec15[i] * (fRec14[i - 1] - fRec13[i - 1]);
-				fRec12[i] = fConst3 * (fRec13[i] - fRec12[i - 2]) + fRec13[i - 2] + fConst5 * fZec15[i] * (fRec12[i - 1] - fRec13[i - 1]);
+				fRec12[i] = fRec13[i - 2] + fConst3 * (fRec13[i] - fRec12[i - 2]) - fConst5 * fZec15[i] * (fRec13[i - 1] - fRec12[i - 1]);
 				fRec11[i] = fRec12[i - 2] + fConst3 * (fRec12[i] - fRec11[i - 2]) - fConst5 * fZec15[i] * (fRec12[i - 1] - fRec11[i - 1]);
 				fRec10[i] = fRec11[i - 2] + fConst3 * fRec11[i] - fConst5 * fZec15[i] * fRec11[i - 1];
 			}
@@ -786,7 +785,7 @@ class PhaserFAUST final : public Phaser_PDJE {
 				fRec15[i] = fRec16[i - 2] + fConst3 * (fRec16[i] - fRec15[i - 2]) - fConst5 * fZec15[i] * (fRec16[i - 1] - fRec15[i - 1]);
 				fRec14[i] = fRec15[i - 2] + fConst3 * (fRec15[i] - fRec14[i - 2]) - fConst5 * fZec15[i] * (fRec15[i - 1] - fRec14[i - 1]);
 				fRec13[i] = fRec14[i - 2] + fConst3 * (fRec14[i] - fRec13[i - 2]) - fConst5 * fZec15[i] * (fRec14[i - 1] - fRec13[i - 1]);
-				fRec12[i] = fConst3 * (fRec13[i] - fRec12[i - 2]) + fRec13[i - 2] + fConst5 * fZec15[i] * (fRec12[i - 1] - fRec13[i - 1]);
+				fRec12[i] = fRec13[i - 2] + fConst3 * (fRec13[i] - fRec12[i - 2]) - fConst5 * fZec15[i] * (fRec13[i - 1] - fRec12[i - 1]);
 				fRec11[i] = fRec12[i - 2] + fConst3 * (fRec12[i] - fRec11[i - 2]) - fConst5 * fZec15[i] * (fRec12[i - 1] - fRec11[i - 1]);
 				fRec10[i] = fRec11[i - 2] + fConst3 * fRec11[i] - fConst5 * fZec15[i] * fRec11[i - 1];
 			}
