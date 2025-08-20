@@ -1,6 +1,6 @@
 import("stdfaust.lib");
 
-LOW_POWER = fvariable(int EQLow, "");
+LOW_POWER = fvariable(int EQLow, "eqMan.hpp");
 MID_POWER = fvariable(int EQMid, "");
 HIGH_POWER = fvariable(int EQHigh, "");
 

@@ -11,6 +11,7 @@ Compilation options: -lang cpp -light -it -nvi -ct 1 -mapp -cn EQFAUSTMan -scn E
 #define FAUSTFLOAT float
 #endif 
 
+#include "eqMan.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdint>

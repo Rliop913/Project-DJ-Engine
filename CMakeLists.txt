@@ -75,27 +75,29 @@ include(cmakes/src/EDITORsrc.cmake)
 
 if(PDJE_BUILD_TESTS)
   
+#DEPRECATE TESTS
+# add_executable(testdb ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource} ${sql_amalgam_src} ${editorSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
 
-add_executable(testdb ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource} ${sql_amalgam_src} ${editorSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
+# add_executable(testaudio ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/audioTest.cpp ${miniaudio_src}  ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
 
-add_executable(testaudio ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/audioTest.cpp ${miniaudio_src}  ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
-
-add_executable(testCapnp ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/CapnpTest.cpp ${miniaudio_src}  ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
-
-
-add_executable(testHighway include/tests/highway_Test.cpp ${sql_amalgam_src} )
+# add_executable(testCapnp ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/CapnpTest.cpp ${miniaudio_src}  ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
 
 
-add_executable(testManualAudio include/tests/manualAudioTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
+# add_executable(testHighway include/tests/highway_Test.cpp ${sql_amalgam_src} )
 
 
-add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
+# add_executable(testManualAudio include/tests/manualAudioTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
 
 
-add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
-endif(PDJE_BUILD_TESTS)
+# add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
+
+
+# add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
+
 add_executable(testEditor include/tests/editorTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
 target_include_directories(testEditor PUBLIC ${PDJE_INCLUDE_CORE})
+endif(PDJE_BUILD_TESTS)
+
 if(PDJE_DYNAMIC)
 add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
@@ -108,19 +110,6 @@ add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSo
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
 endif()
 
-
-if(PDJE_BUILD_TESTS)
-
-linkPDJELibs(testHighway)
-linkPDJELibs(testdb)
-linkPDJELibs(testaudio)
-linkPDJELibs(testCapnp)
-linkPDJELibs(testManualAudio)
-linkPDJELibs(testInterface)
-linkPDJELibs(testGIT)
-endif()
-
-
 function(linkPDJELibs targetName)
   target_link_libraries(${targetName} PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
   setSpdlogReqLib(${targetName})
@@ -129,8 +118,24 @@ function(linkPDJELibs targetName)
   setHighwayReqLib(${targetName})
 endfunction(linkPDJELibs)
 
-linkPDJELibs(PDJE)
+
+if(PDJE_BUILD_TESTS)
+#DEPRECATE TESTS
+# linkPDJELibs(testHighway)
+# linkPDJELibs(testdb)
+# linkPDJELibs(testaudio)
+# linkPDJELibs(testCapnp)
+# linkPDJELibs(testManualAudio)
+# linkPDJELibs(testInterface)
+# linkPDJELibs(testGIT)
 linkPDJELibs(testEditor)
+endif()
+
+
+
+
+linkPDJELibs(PDJE)
+
 # target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
 # setSpdlogReqLib(PDJE)
 # setCapnpReqLib(PDJE)
