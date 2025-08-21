@@ -4,7 +4,7 @@
 File audioCallbacks.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_MainObjects_audioPlayer>` (``include/MainObjects/audioPlayer``)
+|exhale_lsh| :ref:`Parent directory <dir_include_MainObjects_audioPlayer>` (``include\MainObjects\audioPlayer``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File audioCallbacks.hpp
    :local:
    :backlinks: none
 
-Definition (``include/MainObjects/audioPlayer/audioCallbacks.hpp``)
+Definition (``include\MainObjects\audioPlayer\audioCallbacks.hpp``)
 -------------------------------------------------------------------
 
 

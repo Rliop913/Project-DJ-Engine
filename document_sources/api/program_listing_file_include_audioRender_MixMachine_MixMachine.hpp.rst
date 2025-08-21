@@ -4,7 +4,7 @@
 Program Listing for File MixMachine.hpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_MixMachine_MixMachine.hpp>` (``include/audioRender/MixMachine/MixMachine.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_MixMachine_MixMachine.hpp>` (``include\audioRender\MixMachine\MixMachine.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

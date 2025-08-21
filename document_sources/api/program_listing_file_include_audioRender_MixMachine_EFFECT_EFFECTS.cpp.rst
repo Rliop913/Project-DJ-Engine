@@ -4,7 +4,7 @@
 Program Listing for File EFFECTS.cpp
 ====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_MixMachine_EFFECT_EFFECTS.cpp>` (``include/audioRender/MixMachine/EFFECT/EFFECTS.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_MixMachine_EFFECT_EFFECTS.cpp>` (``include\audioRender\MixMachine\EFFECT\EFFECTS.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

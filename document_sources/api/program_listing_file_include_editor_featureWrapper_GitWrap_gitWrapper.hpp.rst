@@ -4,7 +4,7 @@
 Program Listing for File gitWrapper.hpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_gitWrapper.hpp>` (``include/editor/featureWrapper/GitWrap/gitWrapper.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_gitWrapper.hpp>` (``include\editor\featureWrapper\GitWrap\gitWrapper.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

@@ -4,7 +4,7 @@
 File editorObject.hpp
 =====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_MainObjects_editorObject>` (``include/MainObjects/editorObject``)
+|exhale_lsh| :ref:`Parent directory <dir_include_MainObjects_editorObject>` (``include\MainObjects\editorObject``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File editorObject.hpp
    :local:
    :backlinks: none
 
-Definition (``include/MainObjects/editorObject/editorObject.hpp``)
+Definition (``include\MainObjects\editorObject\editorObject.hpp``)
 ------------------------------------------------------------------
 
 

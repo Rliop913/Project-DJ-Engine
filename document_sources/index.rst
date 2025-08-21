@@ -74,6 +74,35 @@ PDJE is organized into independent, dynamically loadable modules:
 
   Some of these features may require GPU acceleration or SIMD support, and could demand high computational performance depending on the workload.
 
+MileStones
+------------
+
+
+
+
+.. mermaid::
+  ---
+  config:
+    theme: 'forest'
+    themeVariables:
+      fontSize: '25px'
+  ---
+  timeline
+    section DJ + DAW Rhythm Engine
+      0.5.0 : Core Module Implemented
+      0.7.0 : Rhythm Game Judging Module Implemented
+      0.9.0 : CrossPlatform Input & MIDI Module Implemented
+      1.0.0 : Stable Release
+    section DJ + DAW + HPC + AI Rhythm Engine
+      1.2.0 : Basic Utility Module Implemented
+      1.5.0 : OnnxRuntime Integration Utility Module
+      2.0.0 : OnnxRuntime Integrated with OKL (OCCA Kernel Language)
+            : Cross-Vendor GPGPU Support Enabled
+
+
+
+
+
 Use Cases
 ---------
 

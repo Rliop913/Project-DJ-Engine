@@ -4,7 +4,7 @@
 File dbRoot.hpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_db>` (``include/db``)
+|exhale_lsh| :ref:`Parent directory <dir_include_db>` (``include\db``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File dbRoot.hpp
    :local:
    :backlinks: none
 
-Definition (``include/db/dbRoot.hpp``)
+Definition (``include\db\dbRoot.hpp``)
 --------------------------------------
 
 

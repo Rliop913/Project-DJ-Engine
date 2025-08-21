@@ -4,7 +4,7 @@
 File gitLog.hpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Log>` (``include/editor/featureWrapper/GitWrap/Log``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Log>` (``include\editor\featureWrapper\GitWrap\Log``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ Structures for storing commit logs and branch heads.
    :local:
    :backlinks: none
 
-Definition (``include/editor/featureWrapper/GitWrap/Log/gitLog.hpp``)
+Definition (``include\editor\featureWrapper\GitWrap\Log\gitLog.hpp``)
 ---------------------------------------------------------------------
 
 

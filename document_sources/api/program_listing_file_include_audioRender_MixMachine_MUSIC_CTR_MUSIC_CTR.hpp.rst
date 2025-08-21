@@ -4,7 +4,7 @@
 Program Listing for File MUSIC_CTR.hpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp>` (``include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp>` (``include\audioRender\MixMachine\MUSIC_CTR\MUSIC_CTR.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
