@@ -77,16 +77,9 @@ PDJE is organized into independent, dynamically loadable modules:
 MileStones
 ------------
 
-
-
-
 .. mermaid::
-  ---
-  config:
-    theme: 'forest'
-    themeVariables:
-      fontSize: '25px'
-  ---
+  :config: {"theme":"forest","themeVariables":{"fontSize":"25px"}}
+
   timeline
     section DJ + DAW Rhythm Engine
       0.5.0 : Core Module Implemented
@@ -123,10 +116,9 @@ Additional Resources
 --------------------
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 1
   :caption: Documentation:
 
   Getting Started
-  How_To_Use
   api/api_root
-  PDJE_Format
+  Data_Formats

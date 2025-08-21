@@ -4,7 +4,7 @@
 Program Listing for File robotMan.hpp
 =====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_robotMan.hpp>` (``include\audioRender\ManualMix\ManualFausts\robotMan.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_robotMan.hpp>` (``include/audioRender/ManualMix/ManualFausts/robotMan.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

@@ -4,7 +4,7 @@
 File LINUX_SUDO_GETTER.cpp
 ==========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_linux>` (``include\input\linux``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_linux>` (``include/input/linux``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File LINUX_SUDO_GETTER.cpp
    :local:
    :backlinks: none
 
-Definition (``include\input\linux\LINUX_SUDO_GETTER.cpp``)
+Definition (``include/input/linux/LINUX_SUDO_GETTER.cpp``)
 ----------------------------------------------------------
 
 

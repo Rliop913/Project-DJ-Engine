@@ -4,7 +4,7 @@
 Program Listing for File ocsFilterMan.hpp
 =========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_ocsFilterMan.hpp>` (``include\audioRender\ManualMix\ManualFausts\ocsFilterMan.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_ocsFilterMan.hpp>` (``include/audioRender/ManualMix/ManualFausts/ocsFilterMan.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

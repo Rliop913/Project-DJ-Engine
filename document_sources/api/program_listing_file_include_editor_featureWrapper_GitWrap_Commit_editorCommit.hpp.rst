@@ -4,7 +4,7 @@
 Program Listing for File editorCommit.hpp
 =========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_Commit_editorCommit.hpp>` (``include\editor\featureWrapper\GitWrap\Commit\editorCommit.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_Commit_editorCommit.hpp>` (``include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

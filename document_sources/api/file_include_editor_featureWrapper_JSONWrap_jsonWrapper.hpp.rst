@@ -4,7 +4,7 @@
 File jsonWrapper.hpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_JSONWrap>` (``include\editor\featureWrapper\JSONWrap``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_JSONWrap>` (``include/editor/featureWrapper/JSONWrap``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ JSON based storage helpers for editor data.
    :local:
    :backlinks: none
 
-Definition (``include\editor\featureWrapper\JSONWrap\jsonWrapper.hpp``)
+Definition (``include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp``)
 -----------------------------------------------------------------------
 
 

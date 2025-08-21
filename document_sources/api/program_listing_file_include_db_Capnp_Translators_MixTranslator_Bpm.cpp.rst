@@ -4,7 +4,7 @@
 Program Listing for File Bpm.cpp
 ================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_db_Capnp_Translators_MixTranslator_Bpm.cpp>` (``include\db\Capnp\Translators\MixTranslator\Bpm.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_db_Capnp_Translators_MixTranslator_Bpm.cpp>` (``include/db/Capnp/Translators/MixTranslator/Bpm.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

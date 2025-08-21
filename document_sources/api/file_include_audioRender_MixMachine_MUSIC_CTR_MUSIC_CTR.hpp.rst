@@ -4,7 +4,7 @@
 File MUSIC_CTR.hpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MUSIC_CTR>` (``include\audioRender\MixMachine\MUSIC_CTR``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MUSIC_CTR>` (``include/audioRender/MixMachine/MUSIC_CTR``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File MUSIC_CTR.hpp
    :local:
    :backlinks: none
 
-Definition (``include\audioRender\MixMachine\MUSIC_CTR\MUSIC_CTR.hpp``)
+Definition (``include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp``)
 -----------------------------------------------------------------------
 
 

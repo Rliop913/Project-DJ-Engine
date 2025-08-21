@@ -4,7 +4,7 @@
 File FrameCalc.hpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_db_Capnp_Translators>` (``include\db\Capnp\Translators``)
+|exhale_lsh| :ref:`Parent directory <dir_include_db_Capnp_Translators>` (``include/db/Capnp/Translators``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File FrameCalc.hpp
    :local:
    :backlinks: none
 
-Definition (``include\db\Capnp\Translators\FrameCalc.hpp``)
+Definition (``include/db/Capnp/Translators/FrameCalc.hpp``)
 -----------------------------------------------------------
 
 

@@ -10,7 +10,7 @@ Directory interface
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\interface``
+*Directory path:* ``include/interface``
 
 
 Files
