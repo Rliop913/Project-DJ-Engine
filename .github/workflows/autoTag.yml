@@ -1,0 +1,94 @@
+name: autoTag
+
+on:
+  push:
+    branches: [ main ]          # 필요에 맞게 변경
+    paths:
+      - PDJE_VERSION            # 이 파일이 바뀔 때만 실행
+  workflow_dispatch:             # 수동 실행도 가능
+
+permissions:
+  contents: write                # 태그 푸시에 필요
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout (with tags)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # 전체 히스토리 + 태그 필요
+
+      - name: Read PDJE_VERSION
+        id: readver
+        shell: bash
+        run: |
+          if [[ ! -f PDJE_VERSION ]]; then
+            echo "PDJE_VERSION file not found" >&2
+            exit 1
+          fi
+          VER="$(tr -d '[:space:]' < PDJE_VERSION)"
+          if [[ -z "$VER" ]]; then
+            echo "PDJE_VERSION is empty" >&2
+            exit 1
+          fi
+          if [[ ! "$VER" =~ ^v?[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Invalid version format: $VER" >&2
+            exit 1
+          fi
+          echo "version=$VER" >> "$GITHUB_OUTPUT"
+
+      - name: Ensure we have remote tags
+        run: |
+          git fetch --tags --force
+
+      - name: Check if tag already exists (local and remote)
+        id: check
+        shell: bash
+        run: |
+          VER="${{ steps.readver.outputs.version }}"
+
+          # on local
+          if git rev-parse -q --verify "refs/tags/$VER" >/dev/null; then
+            echo "exists_local=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists_local=false" >> "$GITHUB_OUTPUT"
+          fi
+
+          # on remote
+          if git ls-remote --tags origin "refs/tags/$VER" | grep -q "refs/tags/$VER$"; then
+            echo "exists_remote=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists_remote=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Stop if tag already exists and points to a different commit
+        if: |
+          steps.check.outputs.exists_remote == 'true'
+        shell: bash
+        run: |
+          VER="${{ steps.readver.outputs.version }}"
+          REMOTE_SHA="$(git ls-remote --tags origin "refs/tags/$VER" | awk '{print $1}')"
+          
+          HEAD_SHA="$(git rev-parse HEAD)"
+
+          if [[ "$REMOTE_SHA" != "$HEAD_SHA" ]]; then
+            echo "Tag '$VER' already exists on remote but points to a different commit ($REMOTE_SHA != $HEAD_SHA)." >&2
+            echo "Refusing to retag. Update PDJE_VERSION or create a new commit." >&2
+            exit 1
+          else
+            echo "Tag '$VER' already exists and points to this commit. Nothing to do."
+            exit 0
+          fi
+
+      - name: Create annotated tag
+        if: |
+          steps.check.outputs.exists_remote == 'false'
+        shell: bash
+        run: |
+          VER="${{ steps.readver.outputs.version }}"
+          git config user.name  "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git tag -a "$VER" -m "Release $VER (from PDJE_VERSION)"
+          git push origin "$VER"
