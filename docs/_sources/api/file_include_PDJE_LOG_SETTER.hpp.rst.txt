@@ -9,6 +9,11 @@ File PDJE_LOG_SETTER.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+Configures the logging framework for the application. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none

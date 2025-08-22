@@ -366,6 +366,7 @@ template <typename T> T SwigValueInit() {
     #include "audioPlayer.hpp"
     #include "MusicControlPannel.hpp"
     #include "fileNameSanitizer.hpp"
+    #include "editorObject.hpp"
     // #include "editorObject.hpp"
     #include "rocksdb/rocksdb_namespace.h"
     #include <filesystem>
@@ -917,11 +918,11 @@ SWIGEXPORT void SWIGSTDCALL CSharp_PDJE_ResetPlayer(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_PDJE_ResetEditor(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_PDJE_CloseEditor(void * jarg1) {
   PDJE *arg1 = (PDJE *) 0 ;
   
   arg1 = (PDJE *)jarg1; 
-  (arg1)->ResetEditor();
+  (arg1)->CloseEditor();
 }
 
 
@@ -1075,6 +1076,18 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_PDJE_GetPlayerObject(void * jarg1) {
   arg1 = (PDJE *)jarg1; 
   result = (arg1)->GetPlayerObject();
   jresult = result ? new std::shared_ptr< audioPlayer >(result) : 0; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_PDJE_GetEditorObject(void * jarg1) {
+  void * jresult ;
+  PDJE *arg1 = (PDJE *) 0 ;
+  std::shared_ptr< editorObject > result;
+  
+  arg1 = (PDJE *)jarg1; 
+  result = (arg1)->GetEditorObject();
+  jresult = result ? new std::shared_ptr< editorObject >(result) : 0; 
   return jresult;
 }
 
@@ -2230,6 +2243,34 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_MusicOnDeck_fxP_get(void * jarg1) {
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_MusicOnDeck_st_set(void * jarg1, void * jarg2) {
+  MusicOnDeck *arg1 = (MusicOnDeck *) 0 ;
+  std::optional< soundtouch::SoundTouch > arg2 ;
+  std::optional< soundtouch::SoundTouch > *argp2 ;
+  
+  arg1 = (MusicOnDeck *)jarg1; 
+  argp2 = (std::optional< soundtouch::SoundTouch > *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null std::optional< soundtouch::SoundTouch >", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  if (arg1) (arg1)->st = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_MusicOnDeck_st_get(void * jarg1) {
+  void * jresult ;
+  MusicOnDeck *arg1 = (MusicOnDeck *) 0 ;
+  std::optional< soundtouch::SoundTouch > result;
+  
+  arg1 = (MusicOnDeck *)jarg1; 
+  result =  ((arg1)->st);
+  jresult = new std::optional< soundtouch::SoundTouch >(result); 
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_MusicOnDeck() {
   void * jresult ;
   MusicOnDeck *result = 0 ;
@@ -2381,6 +2422,29 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_MusicControlPannel_getFXHandle(void * jarg1
 }
 
 
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_MusicControlPannel_ChangeBpm(void * jarg1, const char * jarg2, double jarg3, double jarg4) {
+  unsigned int jresult ;
+  MusicControlPannel *arg1 = (MusicControlPannel *) 0 ;
+  UNSANITIZED *arg2 = 0 ;
+  double arg3 ;
+  double arg4 ;
+  bool result;
+  
+  arg1 = (MusicControlPannel *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  UNSANITIZED arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  arg3 = (double)jarg3; 
+  arg4 = (double)jarg4; 
+  result = (bool)(arg1)->ChangeBpm((UNSANITIZED const &)*arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_MusicControlPannel(unsigned int jarg1) {
   void * jresult ;
   unsigned long arg1 ;
@@ -2398,6 +2462,467 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_MusicControlPannel(void * jarg1) {
   
   arg1 = (MusicControlPannel *)jarg1; 
   delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MUSIC_musicName_set(void * jarg1, const char * jarg2) {
+  EDIT_ARG_MUSIC *arg1 = (EDIT_ARG_MUSIC *) 0 ;
+  UNSANITIZED *arg2 = 0 ;
+  
+  arg1 = (EDIT_ARG_MUSIC *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  UNSANITIZED arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (arg1) (arg1)->musicName = *arg2;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_EDIT_ARG_MUSIC_musicName_get(void * jarg1) {
+  const char * jresult ;
+  EDIT_ARG_MUSIC *arg1 = (EDIT_ARG_MUSIC *) 0 ;
+  UNSANITIZED *result = 0 ;
+  
+  arg1 = (EDIT_ARG_MUSIC *)jarg1; 
+  result = (UNSANITIZED *) & ((arg1)->musicName);
+  jresult = SWIG_csharp_string_callback(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MUSIC_arg_set(void * jarg1, void * jarg2) {
+  EDIT_ARG_MUSIC *arg1 = (EDIT_ARG_MUSIC *) 0 ;
+  MusicArgs arg2 ;
+  MusicArgs *argp2 ;
+  
+  arg1 = (EDIT_ARG_MUSIC *)jarg1; 
+  argp2 = (MusicArgs *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null MusicArgs", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  if (arg1) (arg1)->arg = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_EDIT_ARG_MUSIC_arg_get(void * jarg1) {
+  void * jresult ;
+  EDIT_ARG_MUSIC *arg1 = (EDIT_ARG_MUSIC *) 0 ;
+  MusicArgs result;
+  
+  arg1 = (EDIT_ARG_MUSIC *)jarg1; 
+  result =  ((arg1)->arg);
+  jresult = new MusicArgs(result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_EDIT_ARG_MUSIC() {
+  void * jresult ;
+  EDIT_ARG_MUSIC *result = 0 ;
+  
+  result = (EDIT_ARG_MUSIC *)new EDIT_ARG_MUSIC();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_EDIT_ARG_MUSIC(void * jarg1) {
+  EDIT_ARG_MUSIC *arg1 = (EDIT_ARG_MUSIC *) 0 ;
+  
+  arg1 = (EDIT_ARG_MUSIC *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_editorObject_getMixRepo(void * jarg1) {
+  void * jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  git_repository *result = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (git_repository *)(arg1)->getMixRepo();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_editorObject_getMusicRepo(void * jarg1, const char * jarg2) {
+  void * jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  UNSANITIZED *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  git_repository *result = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  UNSANITIZED arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  result = (git_repository *)(arg1)->getMusicRepo((UNSANITIZED const &)*arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_editorObject_getNoteRepo(void * jarg1) {
+  void * jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  git_repository *result = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (git_repository *)(arg1)->getNoteRepo();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_editorObject_getKVRepo(void * jarg1) {
+  void * jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  git_repository *result = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (git_repository *)(arg1)->getKVRepo();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_AddLine(void * jarg1, const char * jarg2, const char * jarg3) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  UNSANITIZED *arg2 = 0 ;
+  DONT_SANITIZE *arg3 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  UNSANITIZED arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (!jarg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  DONT_SANITIZE arg3_str(jarg3);
+  arg3 = &arg3_str; 
+  result = (bool)(arg1)->AddLine((UNSANITIZED const &)*arg2,(DONT_SANITIZE const &)*arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_editorObject_deleteLine(void * jarg1, void * jarg2, unsigned int jarg3, unsigned int jarg4) {
+  int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_MIX *arg2 = 0 ;
+  bool arg3 ;
+  bool arg4 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (EDIT_ARG_MIX *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "EDIT_ARG_MIX const & is null", 0);
+    return 0;
+  } 
+  arg3 = jarg3 ? true : false; 
+  arg4 = jarg4 ? true : false; 
+  result = (int)(arg1)->deleteLine((EDIT_ARG_MIX const &)*arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_render(void * jarg1, const char * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  UNSANITIZED *arg2 = 0 ;
+  litedb *arg3 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  UNSANITIZED arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  
+  arg3 = (litedb *)(((std::shared_ptr<  litedb > *)jarg3) ? ((std::shared_ptr<  litedb > *)jarg3)->get() : 0);
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "litedb & reference is null", 0);
+    return 0;
+  } 
+  result = (bool)(arg1)->render((UNSANITIZED const &)*arg2,*arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_editorObject_demoPlayInit(void * jarg1, void * jarg2, unsigned int jarg3, const char * jarg4) {
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< audioPlayer > *arg2 = 0 ;
+  unsigned int arg3 ;
+  UNSANITIZED *arg4 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  std::shared_ptr< audioPlayer > tempnull2 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = jarg2 ? (std::shared_ptr< audioPlayer > *)jarg2 : &tempnull2; 
+  arg3 = (unsigned int)jarg3; 
+  if (!jarg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  UNSANITIZED arg4_str(jarg4);
+  arg4 = &arg4_str; 
+  (arg1)->demoPlayInit(*arg2,arg3,(UNSANITIZED const &)*arg4);
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_pushToRootDB__SWIG_0(void * jarg1, void * jarg2, const char * jarg3) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  litedb *arg2 = 0 ;
+  UNSANITIZED *arg3 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  
+  arg2 = (litedb *)(((std::shared_ptr<  litedb > *)jarg2) ? ((std::shared_ptr<  litedb > *)jarg2)->get() : 0);
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "litedb & reference is null", 0);
+    return 0;
+  } 
+  if (!jarg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  UNSANITIZED arg3_str(jarg3);
+  arg3 = &arg3_str; 
+  result = (bool)(arg1)->pushToRootDB(*arg2,(UNSANITIZED const &)*arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_pushToRootDB__SWIG_1(void * jarg1, void * jarg2, const char * jarg3, const char * jarg4) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  litedb *arg2 = 0 ;
+  UNSANITIZED *arg3 = 0 ;
+  UNSANITIZED *arg4 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  
+  arg2 = (litedb *)(((std::shared_ptr<  litedb > *)jarg2) ? ((std::shared_ptr<  litedb > *)jarg2)->get() : 0);
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "litedb & reference is null", 0);
+    return 0;
+  } 
+  if (!jarg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  UNSANITIZED arg3_str(jarg3);
+  arg3 = &arg3_str; 
+  if (!jarg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  UNSANITIZED arg4_str(jarg4);
+  arg4 = &arg4_str; 
+  result = (bool)(arg1)->pushToRootDB(*arg2,(UNSANITIZED const &)*arg3,(UNSANITIZED const &)*arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_editorObject_DESTROY_PROJECT(void * jarg1) {
+  const char * jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  DONT_SANITIZE result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (arg1)->DESTROY_PROJECT();
+  jresult = SWIG_csharp_string_callback((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_ConfigNewMusic__SWIG_0(void * jarg1, const char * jarg2, const char * jarg3, void * jarg4, const char * jarg5) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  UNSANITIZED *arg2 = 0 ;
+  UNSANITIZED *arg3 = 0 ;
+  std::filesystem::path *arg4 = 0 ;
+  DONT_SANITIZE *arg5 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  UNSANITIZED arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (!jarg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  UNSANITIZED arg3_str(jarg3);
+  arg3 = &arg3_str; 
+  arg4 = (std::filesystem::path *)jarg4;
+  if (!arg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::filesystem::path const & is null", 0);
+    return 0;
+  } 
+  if (!jarg5) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  DONT_SANITIZE arg5_str(jarg5);
+  arg5 = &arg5_str; 
+  result = (bool)(arg1)->ConfigNewMusic((UNSANITIZED const &)*arg2,(UNSANITIZED const &)*arg3,(std::filesystem::path const &)*arg4,(DONT_SANITIZE const &)*arg5);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_ConfigNewMusic__SWIG_1(void * jarg1, const char * jarg2, const char * jarg3, void * jarg4) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  UNSANITIZED *arg2 = 0 ;
+  UNSANITIZED *arg3 = 0 ;
+  std::filesystem::path *arg4 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  UNSANITIZED arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (!jarg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  UNSANITIZED arg3_str(jarg3);
+  arg3 = &arg3_str; 
+  arg4 = (std::filesystem::path *)jarg4;
+  if (!arg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::filesystem::path const & is null", 0);
+    return 0;
+  } 
+  result = (bool)(arg1)->ConfigNewMusic((UNSANITIZED const &)*arg2,(UNSANITIZED const &)*arg3,(std::filesystem::path const &)*arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_Open(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::filesystem::path *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (std::filesystem::path *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::filesystem::path const & is null", 0);
+    return 0;
+  } 
+  result = (bool)(arg1)->Open((std::filesystem::path const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_editorObject(const char * jarg1, const char * jarg2) {
+  void * jresult ;
+  DONT_SANITIZE *arg1 = 0 ;
+  DONT_SANITIZE *arg2 = 0 ;
+  editorObject *result = 0 ;
+  
+  if (!jarg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  DONT_SANITIZE arg1_str(jarg1);
+  arg1 = &arg1_str; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  DONT_SANITIZE arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  result = (editorObject *)new editorObject((DONT_SANITIZE const &)*arg1,(DONT_SANITIZE const &)*arg2);
+  
+  jresult = result ? new std::shared_ptr<  editorObject >(result SWIG_NO_NULL_DELETER_1) : 0;
+  
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_editorObject(void * jarg1) {
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
 }
 
 

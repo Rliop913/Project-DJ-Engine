@@ -10,6 +10,7 @@ Program Listing for File PDJE_EXPORT_SETTER.hpp
 
 .. code-block:: cpp
 
+   
    #pragma once
    
    #ifdef PDJE_WINDOWS_DLL
@@ -19,5 +20,5 @@ Program Listing for File PDJE_EXPORT_SETTER.hpp
            #define PDJE_API __declspec(dllimport)
        #endif
    #else
-   #define PDJE_API
+       #define PDJE_API
    #endif

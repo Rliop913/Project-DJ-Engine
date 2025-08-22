@@ -9,6 +9,11 @@ File MusicControlPannel-inl.h
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+SIMD-optimized implementation for mixing PCM frames from multiple sources. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none

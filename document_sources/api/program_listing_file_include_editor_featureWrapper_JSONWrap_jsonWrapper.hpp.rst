@@ -81,7 +81,7 @@ Program Listing for File jsonWrapper.hpp
    using KV_W = std::vector<KEY_VALUE>;
    
    template<typename CapnpWriterType>
-   class PDJE_API PDJE_JSONHandler{
+   class PDJE_JSONHandler{
    private:
        nj ROOT;
    public:

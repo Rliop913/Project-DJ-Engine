@@ -20,7 +20,7 @@ Program Listing for File phaserMan.hpp
        ARGSETTER
        makeArgSetter(){
            return {
-               {"bps", [this](double value) {
+               {"Bps", [this](double value) {
                    this->bps = static_cast<float>(value);
                }},
                {"PhaserDryWet", [this](double value) {

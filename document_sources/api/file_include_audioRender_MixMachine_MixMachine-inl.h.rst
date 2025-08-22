@@ -9,6 +9,11 @@ File MixMachine-inl.h
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+SIMD-optimized implementation for integrating PCM frames into a final mix. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none

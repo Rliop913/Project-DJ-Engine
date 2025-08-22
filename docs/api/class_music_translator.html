@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class MusicTranslator &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Class MusicTranslator</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/class_music_translator.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="class-musictranslator">
+<span id="exhale-class-class-music-translator"></span><h1>Class MusicTranslator<a class="headerlink" href="#class-musictranslator" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_include_db_Capnp_Translators_MusicTranslator_MusicTranslator.hpp.html#file-include-db-capnp-translators-musictranslator-musictranslator-hpp"><span class="std std-ref">File MusicTranslator.hpp</span></a></p></li>
+</ul>
+<section id="class-documentation">
+<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Link to this heading"></a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv415MusicTranslator">
+<span id="_CPPv315MusicTranslator"></span><span id="_CPPv215MusicTranslator"></span><span id="MusicTranslator"></span><span class="target" id="classMusicTranslator"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MusicTranslator</span></span></span><br /></dt>
+<dd><p>This Translate capnp data into cpp data sturct. </p>
+<p><div class="graphviz"><object data="../_images/graphviz-eb1eb31d5697e667e9c4c3aba49b47e165dd968c.svg" type="image/svg+xml" class="graphviz">
+<p class="warning">digraph MusicTranslator{
+     MusicTranslator -&gt; BpmStruct
+}</p></object></div>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15MusicTranslator4ReadERK9CapReaderI20MusicBinaryCapnpDataEy">
+<span id="_CPPv3N15MusicTranslator4ReadERK9CapReaderI20MusicBinaryCapnpDataEy"></span><span id="_CPPv2N15MusicTranslator4ReadERK9CapReaderI20MusicBinaryCapnpDataEy"></span><span id="MusicTranslator::Read__CapReader:MusicBinaryCapnpData:CR.unsigned-l-l"></span><span class="target" id="classMusicTranslator_1ad7b2aaf459ad2ea5435fc99256b00e7a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Read</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classCapReader.html#_CPPv4I0E9CapReader" title="CapReader"><span class="n"><span class="pre">CapReader</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">MusicBinaryCapnpData</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">binary</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">startFrame</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>reads capnp music binary data and fills <a class="reference internal" href="struct_bpm_struct.html#structBpmStruct"><span class="std std-ref">BpmStruct</span></a>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>binary</strong> – capnp binary data </p></li>
+<li><p><strong>startFrame</strong> – the start beat’s frame position. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15MusicTranslator15MusicTranslatorEv">
+<span id="_CPPv3N15MusicTranslator15MusicTranslatorEv"></span><span id="_CPPv2N15MusicTranslator15MusicTranslatorEv"></span><span id="MusicTranslator::MusicTranslator"></span><span class="target" id="classMusicTranslator_1acc12082c24de6d41efafacfd2e9d5437"></span><span class="sig-name descname"><span class="n"><span class="pre">MusicTranslator</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">default</span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N15MusicTranslatorD0Ev">
+<span id="_CPPv3N15MusicTranslatorD0Ev"></span><span id="_CPPv2N15MusicTranslatorD0Ev"></span><span id="MusicTranslator::~MusicTranslator"></span><span class="target" id="classMusicTranslator_1a207ff4ccb2027e6a145f561d3842098e"></span><span class="sig-name descname"><span class="n"><span class="pre">~MusicTranslator</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">default</span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15MusicTranslator4bpmsE">
+<span id="_CPPv3N15MusicTranslator4bpmsE"></span><span id="_CPPv2N15MusicTranslator4bpmsE"></span><span id="MusicTranslator::bpms__BpmStruct"></span><span class="target" id="classMusicTranslator_1a7e172da1c6f719f934d2d4f033294862"></span><a class="reference internal" href="structBpmStruct.html#_CPPv49BpmStruct" title="BpmStruct"><span class="n"><span class="pre">BpmStruct</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bpms</span></span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

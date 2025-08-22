@@ -9,6 +9,11 @@ File PDJE_EXPORT_SETTER.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+Defines the PDJE_API macro for DLL import/export. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none
@@ -79,6 +84,8 @@ Included By
 - :ref:`file_include_editor_featureWrapper_GitWrap_gitWrapper.hpp`
 
 - :ref:`file_include_editor_featureWrapper_JSONWrap_jsonWrapper.hpp`
+
+- :ref:`file_include_interface_PDJE_Core_DataLine.hpp`
 
 - :ref:`file_include_interface_PDJE_interface.hpp`
 

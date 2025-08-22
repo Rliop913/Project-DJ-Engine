@@ -9,6 +9,11 @@ File fileNameSanitizer.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+Provides utilities for sanitizing and de-sanitizing file names. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none

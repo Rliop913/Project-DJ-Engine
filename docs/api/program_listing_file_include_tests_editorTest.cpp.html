@@ -50,10 +50,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html">PDJE_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -194,9 +194,12 @@
 
 <span class="w">        </span><span class="n">getchar</span><span class="p">();</span>
 <span class="w">        </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">SetMusic</span><span class="p">(</span><span class="s">&quot;ヒアソビ&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// musPannel-&gt;</span>
 <span class="w">        </span><span class="n">getchar</span><span class="p">();</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">Fxhandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">getFXHandle</span><span class="p">(</span><span class="s">&quot;ヒアソビ&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">Fxhandle</span><span class="o">-&gt;</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">OCSFILTER</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Fxhandle</span><span class="o">-&gt;</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">ocshandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Fxhandle</span><span class="o">-&gt;</span><span class="n">GetArgSetter</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">OCSFILTER</span><span class="p">);</span>
 <span class="w">        </span><span class="n">ocshandle</span><span class="p">[</span><span class="s">&quot;ocsFilterHighLowSW&quot;</span><span class="p">](</span><span class="mi">1</span><span class="p">);</span>
 <span class="w">        </span><span class="n">ocshandle</span><span class="p">[</span><span class="s">&quot;rangeFreqHalf&quot;</span><span class="p">](</span><span class="mi">2500</span><span class="p">);</span>
@@ -204,6 +207,14 @@
 
 <span class="w">        </span><span class="n">ocshandle</span><span class="p">[</span><span class="s">&quot;bps&quot;</span><span class="p">](</span><span class="mf">2.2333333</span><span class="p">);</span>
 <span class="w">        </span><span class="n">ocshandle</span><span class="p">[</span><span class="s">&quot;OCSFilterDryWet&quot;</span><span class="p">](</span><span class="mf">0.7</span><span class="p">);</span>
+<span class="w">        </span><span class="n">getchar</span><span class="p">();</span>
+<span class="w">        </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">ChangeBpm</span><span class="p">(</span><span class="s">&quot;ヒアソビ&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">);</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">eqhandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Fxhandle</span><span class="o">-&gt;</span><span class="n">GetArgSetter</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">EQ</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">eqhandle</span><span class="p">[</span><span class="s">&quot;EQHigh&quot;</span><span class="p">](</span><span class="mi">-20</span><span class="p">);</span>
+<span class="w">        </span><span class="n">eqhandle</span><span class="p">[</span><span class="s">&quot;EQMid&quot;</span><span class="p">](</span><span class="mi">-20</span><span class="p">);</span>
+<span class="w">        </span><span class="n">eqhandle</span><span class="p">[</span><span class="s">&quot;EQLow&quot;</span><span class="p">](</span><span class="mi">20</span><span class="p">);</span>
+
 <span class="w">        </span><span class="n">getchar</span><span class="p">();</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">deactres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Deactivate</span><span class="p">();</span>
 

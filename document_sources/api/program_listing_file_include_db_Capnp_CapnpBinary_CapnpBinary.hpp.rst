@@ -23,8 +23,9 @@ Program Listing for File CapnpBinary.hpp
    #include "NoteBinary.capnp.h"
    #include "PDJE_EXPORT_SETTER.hpp"
    #include "PDJE_LOG_SETTER.hpp"
+   
    template<typename DType>
-   class PDJE_API CapReader{
+   class CapReader{
    private:
        std::vector<kj::byte> Origin;
        std::optional<capnp::FlatArrayMessageReader> capreader;
@@ -60,7 +61,7 @@ Program Listing for File CapnpBinary.hpp
    };
    
    template<typename DType>
-   class PDJE_API CapWriter{
+   class CapWriter{
    private:
        std::optional<capnp::MallocMessageBuilder> capwriter;
    public:

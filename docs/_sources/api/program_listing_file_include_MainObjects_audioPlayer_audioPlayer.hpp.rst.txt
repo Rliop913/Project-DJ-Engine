@@ -18,6 +18,7 @@ Program Listing for File audioPlayer.hpp
    #include "audioRender.hpp"
    #include "audioCallbacks.hpp"
    #include "PDJE_EXPORT_SETTER.hpp"
+   #include "PDJE_Core_DataLine.hpp"
    class PDJE_API audioPlayer{
    private:
        ma_device player;
@@ -53,6 +54,8 @@ Program Listing for File audioPlayer.hpp
        MusicControlPannel* GetMusicControlPannel();
        audioPlayer(litedb& db, trackdata& td, const unsigned int frameBufferSize, const bool hasManual = false);
        audioPlayer(const unsigned int frameBufferSize);
+   
+       PDJE_CORE_DATA_LINE PullOutDataLine();
    
        ~audioPlayer();
    };

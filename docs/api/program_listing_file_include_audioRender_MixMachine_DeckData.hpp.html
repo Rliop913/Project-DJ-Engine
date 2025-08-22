@@ -50,10 +50,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html">PDJE_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -91,8 +91,11 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">STR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span>
+
 <span class="k">using</span><span class="w"> </span><span class="n">SETTER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+
 <span class="k">using</span><span class="w"> </span><span class="n">ARGSETTER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">SETTER</span><span class="o">&gt;</span><span class="p">;</span>
+
 <span class="k">struct</span><span class="w"> </span><span class="nc">Position</span><span class="p">{</span>
 <span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">frame_in</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">frame_out</span><span class="p">;</span>

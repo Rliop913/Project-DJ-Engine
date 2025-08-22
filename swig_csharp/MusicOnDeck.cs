@@ -89,6 +89,18 @@ public class MusicOnDeck : global::System.IDisposable {
     } 
   }
 
+  public SWIGTYPE_p_std__optionalT_soundtouch__SoundTouch_t st {
+    set {
+      pdje_POLYGLOTPINVOKE.MusicOnDeck_st_set(swigCPtr, SWIGTYPE_p_std__optionalT_soundtouch__SoundTouch_t.getCPtr(value));
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    } 
+    get {
+      SWIGTYPE_p_std__optionalT_soundtouch__SoundTouch_t ret = new SWIGTYPE_p_std__optionalT_soundtouch__SoundTouch_t(pdje_POLYGLOTPINVOKE.MusicOnDeck_st_get(swigCPtr), true);
+      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+      return ret;
+    } 
+  }
+
   public MusicOnDeck() : this(pdje_POLYGLOTPINVOKE.new_MusicOnDeck(), true) {
   }
 

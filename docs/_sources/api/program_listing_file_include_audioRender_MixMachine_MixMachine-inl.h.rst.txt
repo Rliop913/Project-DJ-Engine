@@ -10,6 +10,7 @@ Program Listing for File MixMachine-inl.h
 
 .. code-block:: cpp
 
+   
    #include "MixMachine.hpp"
    
    #undef HWY_TARGET_INCLUDE
@@ -18,9 +19,6 @@ Program Listing for File MixMachine-inl.h
    
    #include <hwy/highway.h>
    #include "hwy/base.h"
-   
-   
-   
    
    namespace HWY_NAMESPACE{
    

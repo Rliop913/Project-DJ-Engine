@@ -43,12 +43,22 @@ Program Listing for File MusicControlPannel-inl.h
        auto times = RAWFrameSize / laneSize;
        auto remained = RAWFrameSize % laneSize;
    
+       SIMD_FLOAT solaVector;
        for(auto& i : deck){
            if(i.second.play){
-               
-               if(ma_decoder_read_pcm_frames(&i.second.dec.dec, tempFrames.data(), FrameSize, NULL) != MA_SUCCESS){
+               const FRAME_POS Sola = static_cast<FRAME_POS>(
+                   std::ceil(
+                       static_cast<double>(FrameSize) / i.second.st->getInputOutputSampleRatio()
+                   )
+               );
+               solaVector.resize(Sola * CHANNEL);
+               if(ma_decoder_read_pcm_frames(&i.second.dec.dec, solaVector.data(), Sola, NULL) != MA_SUCCESS){
                    return false;
                }
+   
+               i.second.st->putSamples(solaVector.data(), Sola);
+               i.second.st->receiveSamples(tempFrames.data(), FrameSize);
+   
                toFaustStylePCM(FaustStyle, tempFrames.data(), FrameSize);
                i.second.fxP->addFX(FaustStyle, FrameSize);
                toLRStylePCM(FaustStyle, tempFrames.data(), FrameSize);

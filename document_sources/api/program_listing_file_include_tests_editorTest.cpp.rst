@@ -121,9 +121,12 @@ Program Listing for File editorTest.cpp
            
            getchar();
            musPannel->SetMusic("ヒアソビ", true);
+           
+           // musPannel->
            getchar();
            auto Fxhandle = musPannel->getFXHandle("ヒアソビ");
            Fxhandle->FX_ON_OFF(FXList::OCSFILTER, true);
+           Fxhandle->FX_ON_OFF(FXList::EQ, true);
            auto ocshandle = Fxhandle->GetArgSetter(FXList::OCSFILTER);
            ocshandle["ocsFilterHighLowSW"](1);
            ocshandle["rangeFreqHalf"](2500);
@@ -131,6 +134,14 @@ Program Listing for File editorTest.cpp
            
            ocshandle["bps"](2.2333333);
            ocshandle["OCSFilterDryWet"](0.7);
+           getchar();
+           musPannel->ChangeBpm("ヒアソビ", 120, 60);
+           auto eqhandle = Fxhandle->GetArgSetter(FXList::EQ);
+           
+           eqhandle["EQHigh"](-20);
+           eqhandle["EQMid"](-20);
+           eqhandle["EQLow"](20);
+           
            getchar();
            auto deactres = engine->player->Deactivate();
    

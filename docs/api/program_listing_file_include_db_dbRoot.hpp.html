@@ -50,10 +50,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html">PDJE_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -171,25 +171,21 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">DBType</span><span class="o">&gt;</span>
 <span class="kt">bool</span>
 <span class="n">litedb</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;=</span><span class="p">(</span><span class="n">DBType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">insertObject</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">sdb</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;BEGIN TRANSACTION;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;dbRoot.hpp:115 operator&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;   &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="n">stmt</span><span class="w"> </span><span class="n">dbstate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stmt</span><span class="p">();</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">insertObject</span><span class="p">.</span><span class="n">GenInsertSTMT</span><span class="p">(</span><span class="n">dbstate</span><span class="p">,</span><span class="w"> </span><span class="n">sdb</span><span class="p">)){</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">insertRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlite3_step</span><span class="p">(</span><span class="n">dbstate</span><span class="p">.</span><span class="n">S</span><span class="p">);</span>
 <span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">insertRes</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SQLITE_DONE</span><span class="p">){</span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;dbRoot.hpp:119 FATAL ERROR: insertRes-&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">insertRes</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;   &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">            </span><span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">sdb</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ROLLBACK;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">sdb</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;COMMIT;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;dbRoot.hpp:124 FATAL ERROR: GenInsertSTMT ERROR&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="p">}</span>
 

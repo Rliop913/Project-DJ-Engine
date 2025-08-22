@@ -26,7 +26,7 @@ Program Listing for File addline.cpp
        for(auto& i : E_obj->musicHandle){
            if(i.musicName == safeMus.value()){
                i.jsonh.add(obj.arg);
-               return DefaultSaveFuntion<EDIT_ARG_MUSIC>(i, obj);
+               return DefaultSaveFunction<EDIT_ARG_MUSIC>(i, obj);
            }
        }
        warnlog("music is not exists. from editorObject AddLine(Music obj)");
@@ -69,7 +69,7 @@ Program Listing for File addline.cpp
                return false;
            }
        }
-       return DefaultSaveFuntion<EDIT_ARG_MIX>();
+       return DefaultSaveFunction<EDIT_ARG_MIX>();
    }
    
    template<> 
@@ -87,7 +87,7 @@ Program Listing for File addline.cpp
            critlog(obj.third);
            return false;
        }
-       return DefaultSaveFuntion<EDIT_ARG_NOTE>();
+       return DefaultSaveFunction<EDIT_ARG_NOTE>();
    }
    
    
@@ -105,7 +105,7 @@ Program Listing for File addline.cpp
            
            return false;
        }
-       return DefaultSaveFuntion<EDIT_ARG_KEY_VALUE>();
+       return DefaultSaveFunction<EDIT_ARG_KEY_VALUE>();
    }
    
    bool 

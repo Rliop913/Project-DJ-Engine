@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classtemp_d_b" kind="class" language="C++" prot="public">
+    <compoundname>tempDB</compoundname>
+    <includes refid="temp_d_b_8hpp" local="no">tempDB.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtemp_d_b_1a81dd4e4fb8d7278aad299a6a3824617e" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classlitedb" kindref="compound">litedb</ref> &gt;</type>
+        <definition>std::optional&lt;litedb&gt; tempDB::tempROOT</definition>
+        <argsstring></argsstring>
+        <name>tempROOT</name>
+        <qualifiedname>tempDB::tempROOT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MainObjects/tempDBObject/tempDB.hpp" line="20" column="19" bodyfile="include/MainObjects/tempDBObject/tempDB.hpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classtemp_d_b_1ae37c11d72cf18c2ce58e5197d82be71f" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string tempDB::ERR</definition>
+        <argsstring></argsstring>
+        <name>ERR</name>
+        <qualifiedname>tempDB::ERR</qualifiedname>
+        <initializer>= &quot;&quot;</initializer>
+        <briefdescription>
+<para>deprecated Error container. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MainObjects/tempDBObject/tempDB.hpp" line="23" column="17" bodyfile="include/MainObjects/tempDBObject/tempDB.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtemp_d_b_1a0885ce2d4508329e60aa0f66b969181c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tempDB::Open</definition>
+        <argsstring>(const fs::path &amp;projectRoot)</argsstring>
+        <name>Open</name>
+        <qualifiedname>tempDB::Open</qualifiedname>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>projectRoot</declname>
+        </param>
+        <briefdescription>
+<para>Opens the temporary database at the specified project root. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>projectRoot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The root directory of the project. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the database was opened successfully, <computeroutput>false</computeroutput> otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MainObjects/tempDBObject/tempDB.hpp" line="31" column="10" bodyfile="include/MainObjects/tempDBObject/tempDB.cpp" bodystart="4" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classtemp_d_b_1a217bb9700da48f42b3a0c5cf9b18e6f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool tempDB::BuildProject</definition>
+        <argsstring>(trackdata &amp;td, std::vector&lt; musdata &gt; &amp;mds)</argsstring>
+        <name>BuildProject</name>
+        <qualifiedname>tempDB::BuildProject</qualifiedname>
+        <param>
+          <type><ref refid="structtrackdata" kindref="compound">trackdata</ref> &amp;</type>
+          <declname>td</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structmusdata" kindref="compound">musdata</ref> &gt; &amp;</type>
+          <declname>mds</declname>
+        </param>
+        <briefdescription>
+<para>Builds a project in the temporary database. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>td</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The track data for the project. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mds</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A vector of music data for the project. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the project was built successfully, <computeroutput>false</computeroutput> otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MainObjects/tempDBObject/tempDB.hpp" line="40" column="10" bodyfile="include/MainObjects/tempDBObject/tempDB.cpp" bodystart="22" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classtemp_d_b_1a35e219f4738c263aecaeb8d99a912d6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classlitedb" kindref="compound">litedb</ref> &amp;</type>
+        <definition>litedb &amp; tempDB::GetBuildedProject</definition>
+        <argsstring>()</argsstring>
+        <name>GetBuildedProject</name>
+        <qualifiedname>tempDB::GetBuildedProject</qualifiedname>
+        <briefdescription>
+<para>Gets the underlying <computeroutput>litedb</computeroutput> object for the built project. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A reference to the <computeroutput>litedb</computeroutput> object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MainObjects/tempDBObject/tempDB.hpp" line="47" column="12" bodyfile="include/MainObjects/tempDBObject/tempDB.hpp" bodystart="47" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classtemp_d_b_1a2bf63d25dbd200d51a237c2f52b5b59f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tempDB::tempDB</definition>
+        <argsstring>()=default</argsstring>
+        <name>tempDB</name>
+        <qualifiedname>tempDB::tempDB</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MainObjects/tempDBObject/tempDB.hpp" line="51" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classtemp_d_b_1a9280c902042c20a036434fa39aff26ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tempDB::~tempDB</definition>
+        <argsstring>()=default</argsstring>
+        <name>~tempDB</name>
+        <qualifiedname>tempDB::~tempDB</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MainObjects/tempDBObject/tempDB.hpp" line="52" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A temporary database for managing project data. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides a temporary database to store and manage project data during the editing and rendering process. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>tempDB</label>
+        <link refid="classtemp_d_b"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>ERR</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/MainObjects/tempDBObject/tempDB.hpp" line="18" column="1" bodyfile="include/MainObjects/tempDBObject/tempDB.hpp" bodystart="18" bodyend="54"/>
+    <listofallmembers>
+      <member refid="classtemp_d_b_1a217bb9700da48f42b3a0c5cf9b18e6f1" prot="public" virt="non-virtual"><scope>tempDB</scope><name>BuildProject</name></member>
+      <member refid="classtemp_d_b_1ae37c11d72cf18c2ce58e5197d82be71f" prot="public" virt="non-virtual"><scope>tempDB</scope><name>ERR</name></member>
+      <member refid="classtemp_d_b_1a35e219f4738c263aecaeb8d99a912d6f" prot="public" virt="non-virtual"><scope>tempDB</scope><name>GetBuildedProject</name></member>
+      <member refid="classtemp_d_b_1a0885ce2d4508329e60aa0f66b969181c" prot="public" virt="non-virtual"><scope>tempDB</scope><name>Open</name></member>
+      <member refid="classtemp_d_b_1a2bf63d25dbd200d51a237c2f52b5b59f" prot="public" virt="non-virtual"><scope>tempDB</scope><name>tempDB</name></member>
+      <member refid="classtemp_d_b_1a81dd4e4fb8d7278aad299a6a3824617e" prot="private" virt="non-virtual"><scope>tempDB</scope><name>tempROOT</name></member>
+      <member refid="classtemp_d_b_1a9280c902042c20a036434fa39aff26ff" prot="public" virt="non-virtual"><scope>tempDB</scope><name>~tempDB</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

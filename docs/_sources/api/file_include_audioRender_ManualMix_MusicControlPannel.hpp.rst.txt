@@ -36,6 +36,8 @@ Includes
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
 
+- ``SoundTouch.h``
+
 - ``dbRoot.hpp`` (:ref:`file_include_db_dbRoot.hpp`)
 
 - ``fileNameSanitizer.hpp`` (:ref:`file_include_db_fileNameSanitizer.hpp`)
@@ -55,6 +57,8 @@ Included By
 - :ref:`file_include_MainObjects_audioPlayer_audioPlayer.cpp`
 
 - :ref:`file_include_audioRender_ManualMix_MusicControlPannel.cpp`
+
+- :ref:`file_include_interface_PDJE_Core_DataLine.hpp`
 
 
 

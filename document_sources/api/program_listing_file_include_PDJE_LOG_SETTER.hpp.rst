@@ -10,6 +10,7 @@ Program Listing for File PDJE_LOG_SETTER.hpp
 
 .. code-block:: cpp
 
+   
    #pragma once
    
    #include <spdlog/spdlog.h>
@@ -18,8 +19,6 @@ Program Listing for File PDJE_LOG_SETTER.hpp
    #include <filesystem>
    #include <type_traits>
    #include <string_view>
-   
-   
    
    inline
    void startlog(){

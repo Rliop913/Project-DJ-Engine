@@ -9,6 +9,11 @@ File tempDB.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+Defines a temporary database for managing project data. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none

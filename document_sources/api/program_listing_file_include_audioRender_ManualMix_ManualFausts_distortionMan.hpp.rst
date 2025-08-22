@@ -21,7 +21,7 @@ Program Listing for File distortionMan.hpp
        ARGSETTER
        makeArgSetter(){
            return{
-               {"distortionValue", [this](double value){
+               {"DistortionValue", [this](double value){
                    this->distortionValue = static_cast<float>(value);
                }}
            };

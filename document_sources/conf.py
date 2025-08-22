@@ -17,7 +17,8 @@ extensions = [
     'breathe', 
     'exhale',
     'sphinx.ext.graphviz',
-    'sphinx_design'
+    'sphinx_design',
+    'sphinxcontrib.mermaid',
     ]
 
 graphviz_output_format = 'svg'

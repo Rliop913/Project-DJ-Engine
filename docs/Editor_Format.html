@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editor_Format &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="FX_ARGS" href="FX_ARGS.html" />
+    <link rel="prev" title="Path_To_Util_Engine" href="Util_Engine.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Editor_Format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#track-data">Track Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#music-meta-data">Music Meta Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mix-data">Mix Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#note-data">Note Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#key-terms">Key Terms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="Getting%20Started.html">Getting Started</a></li>
+      <li class="breadcrumb-item active">Editor_Format</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Editor_Format.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="editor-format">
+<h1>Editor_Format<a class="headerlink" href="#editor-format" title="Link to this heading"></a></h1>
+<section id="track-data">
+<h2>Track Data<a class="headerlink" href="#track-data" title="Link to this heading"></a></h2>
+<p>Track is the core data structure in the PDJE engine that represents a single music mixset unit.</p>
+<p>Each track includes the song’s metadata, actual audio mixing information, rhythm game note data, and a cached mix list.</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Track Data Format</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>TrackTitle</p></th>
+<th class="head"><p>MixBinary</p></th>
+<th class="head"><p>NoteBinary</p></th>
+<th class="head"><p>CachedMixList</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Text</p></td>
+<td><p>Binary(CapNProto)</p></td>
+<td><p>Binary(CapNProto)</p></td>
+<td><p>Text(CSV)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="music-meta-data">
+<h2>Music Meta Data<a class="headerlink" href="#music-meta-data" title="Link to this heading"></a></h2>
+<p>Music Meta Data in the PDJE engine is a data structure that contains the attributes and fundamental information of a song itself.</p>
+<p>It defines the key data required for playback and analysis, such as the audio file path, composer, and BPM.</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Music Meta Data Format</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Title</p></th>
+<th class="head"><p>Composer</p></th>
+<th class="head"><p>MusicPath</p></th>
+<th class="head"><p>Bpm</p></th>
+<th class="head"><p>BpmBinary</p></th>
+<th class="head"><p>firstBar</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Text</p></td>
+<td><p>Text</p></td>
+<td><p>Text</p></td>
+<td><p>Double</p></td>
+<td><p>Binary(CapNProto)</p></td>
+<td><p>TEXT</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mix-data">
+<h2>Mix Data<a class="headerlink" href="#mix-data" title="Link to this heading"></a></h2>
+<p>Mix Data in the PDJE engine is a data structure that defines mixing events, effect parameter changes, and load/unload controls that occur during track playback.</p>
+<p>Each entry specifies what action takes place at a particular time (based on Bar/Beat), covering various audio control elements such as filters, EQ, volume, distortion, delay, and DJ scratching.</p>
+<p>Unlike rhythm game note events, this data records changes in audio processing parameters themselves, which are applied in real time during playback.</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Mix Data Format</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 8.3%" />
+<col style="width: 8.3%" />
+<col style="width: 8.3%" />
+<col style="width: 8.3%" />
+<col style="width: 8.3%" />
+<col style="width: 8.3%" />
+<col style="width: 8.3%" />
+<col style="width: 8.3%" />
+<col style="width: 8.3%" />
+<col style="width: 8.3%" />
+<col style="width: 8.3%" />
+<col style="width: 8.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>type</p></th>
+<th class="head"><p>details</p></th>
+<th class="head"><p>ID</p></th>
+<th class="head"><p>first</p></th>
+<th class="head"><p>second</p></th>
+<th class="head"><p>third</p></th>
+<th class="head"><p>bar</p></th>
+<th class="head"><p>beat</p></th>
+<th class="head"><p>separate</p></th>
+<th class="head"><p>Ebar</p></th>
+<th class="head"><p>Ebeat</p></th>
+<th class="head"><p>Eseparate</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TYPE_ENUM</p></td>
+<td><p>DETAIL_ENUM</p></td>
+<td><p>int</p></td>
+<td><p>TEXT</p></td>
+<td><p>TEXT</p></td>
+<td><p>TEXT</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Mix Data Table</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 6.7%" />
+<col style="width: 23.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 20.0%" />
+<col style="width: 13.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>type</p></th>
+<th class="head"><p>ID</p></th>
+<th class="head"><p>details</p></th>
+<th class="head"><p>first</p></th>
+<th class="head"><p>second</p></th>
+<th class="head"><p>third</p></th>
+<th class="head"><p>Interpolated Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FILTER(0)</p></td>
+<td><p>ID</p></td>
+<td><p>HIGH(0)/LOW(2)</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>NONE</p></td>
+<td><p>filter Frequency</p></td>
+</tr>
+<tr class="row-odd"><td><p>EQ(1)</p></td>
+<td><p>ID</p></td>
+<td><p>HIGH(0)/MID(1)/LOW(2)</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>NONE</p></td>
+<td><p>eq value</p></td>
+</tr>
+<tr class="row-even"><td><p>DISTORTION(2)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>NONE</p></td>
+<td><p>drive value</p></td>
+</tr>
+<tr class="row-odd"><td><p>CONTROL(3)</p></td>
+<td><p>ID</p></td>
+<td><p>PAUSE(3)/CUE(4)</p></td>
+<td><p>approx_loc</p></td>
+<td><p>X</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-even"><td><p>VOL(4)</p></td>
+<td><p>ID</p></td>
+<td><p>TRIM(7)/FADER(8)</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>NONE</p></td>
+<td><p>volume</p></td>
+</tr>
+<tr class="row-odd"><td><p>LOAD(5)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>title</p></td>
+<td><p>composer</p></td>
+<td><p>bpm</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-even"><td><p>UNLOAD(6)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-odd"><td><p>bpmControl(7)</p></td>
+<td><p>ID</p></td>
+<td><p>timeStretch(6)</p></td>
+<td><p>BPM(double)</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-even"><td><p>ECHO(8)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>BPM, feedback</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+<tr class="row-odd"><td><p>OCS_Filter(9)</p></td>
+<td><p>ID</p></td>
+<td><p>HIGH(0)/LOW(2)</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>BPM, MiddleFreq, RangeHalfFreq</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+<tr class="row-even"><td><p>FLANGER(10)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>BPM</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+<tr class="row-odd"><td><p>PHASER(11)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>BPM</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+<tr class="row-even"><td><p>TRANCE(12)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>BPM, GAIN</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+<tr class="row-odd"><td><p>PANNER(13)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>BPM, GAIN</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+<tr class="row-even"><td><p>BATTLE_DJ(14)</p></td>
+<td><p>ID</p></td>
+<td><p>SPIN(12)/PITCH(13)/REV(14)</p></td>
+<td><p>SPEED</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-odd"><td><p>BATTLE_DJ(14)</p></td>
+<td><p>ID</p></td>
+<td><p>SCRATCH(15)</p></td>
+<td><p>StartPosition</p></td>
+<td><p>SPEED</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-even"><td><p>ROLL(15)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>BPM</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+<tr class="row-odd"><td><p>COMPRESSOR(16)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>Strength</p></td>
+<td><p>Thresh, Knee</p></td>
+<td><p>ATT, REL</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-even"><td><p>ROBOT(17)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>ocsFreq</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+</tbody>
+</table>
+<p>KEYWORDS</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>ITPL</p></th>
+<th class="head"><p>8PointValues</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Choose Interpolator type(linear, cosine, cubic, flat)</p></td>
+<td><p>8 data points that define a waveform for the interpolator</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>On Flat interpolator type, you need to write just one value</p></li>
+<li><p>SPEED: -N ~ N (float) 1 Equals 100%, -1.0 Equals -100%(reverse play), 10.0 Equals 1000%. Based on BPM before time stretching.</p></li>
+</ul>
+</section>
+<section id="note-data">
+<h2>Note Data<a class="headerlink" href="#note-data" title="Link to this heading"></a></h2>
+<p>Note Data in the PDJE engine is a data structure that defines rhythm game note events.</p>
+<p>Each note specifies what kind of input is required at a particular point in time (Bar, Beat, Separate), and the player must respond accurately at that timing in order to score.</p>
+<p>Note data is the core element representing player interaction. Unlike Mix Data, which records changes to audio parameters, Note Data strictly handles “input events.”</p>
+<p>In particular, both Note_Type and Note_Detail are declared as TEXT fields, not as predefined ENUM values.</p>
+<p>Aside from reserved keywords such as the BPM prefix, users are expected to define and extend their own types and details. This design allows for flexible customization to support specific game modes, input devices, or user-defined rules.</p>
+<p>Additionally, any Note_Type beginning with BPM carries special meaning, as it represents an event that applies a tempo (BPM) change during playback.</p>
+<p>In this case, the first field is treated as the new BPM value, ensuring synchronization between note judgment timing and the actual playback speed of the track.</p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Note Table</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 8.6%" />
+<col style="width: 11.4%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 11.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Note_Type</p></th>
+<th class="head"><p>Note_Detail</p></th>
+<th class="head"><p>first</p></th>
+<th class="head"><p>second</p></th>
+<th class="head"><p>third</p></th>
+<th class="head"><p>bar</p></th>
+<th class="head"><p>beat</p></th>
+<th class="head"><p>separate</p></th>
+<th class="head"><p>Ebar</p></th>
+<th class="head"><p>Ebeat</p></th>
+<th class="head"><p>Eseparate</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TEXT</p></td>
+<td><p>TEXT</p></td>
+<td><p>TEXT</p></td>
+<td><p>TEXT</p></td>
+<td><p>TEXT</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>The “BPM” Note_Type name is prefixed for the default bpm change implementation.</p></li>
+</ul>
+</section>
+</section>
+<section id="about-bar-beat-separate">
+<h1>About Bar &amp; Beat &amp; Separate<a class="headerlink" href="#about-bar-beat-separate" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">Bar</span></code>, <code class="docutils literal notranslate"><span class="pre">Beat</span></code>, and <code class="docutils literal notranslate"><span class="pre">Separate</span></code> are indexing methods that represent music data based on <strong>BPM (tempo) and time signature</strong>.
+This concept is derived from the <strong>beat-based timeline representation</strong> commonly used in rhythm games and DAWs (Digital Audio Workstations).
+For example, in MIDI sequencing or DAWs, events are also placed at positions such as “which bar, which beat, and which subdivision.”</p>
+<p>—</p>
+<section id="key-terms">
+<h2>Key Terms<a class="headerlink" href="#key-terms" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>firstBeat</strong>
+The PCM frame (sample-level position) where the first beat begins.
+Used as the reference point for synchronization of the music.</p></li>
+<li><p><strong>bar</strong>
+The position of the measure (bar) calculated from BPM and time signature information.</p></li>
+<li><p><strong>beat</strong>
+The downbeat position within a bar.
+For example, in 4/4 time, there are four beats within one bar.</p></li>
+<li><p><strong>separate</strong>
+The subdivision index when a bar is divided into smaller parts.
+For instance, if <code class="docutils literal notranslate"><span class="pre">separate=192</span></code>, it means the bar is divided into 192 segments, and this value represents which segment is being referred to.</p></li>
+<li><p><strong>ebar / ebeat / eseparate</strong>
+The prefix <code class="docutils literal notranslate"><span class="pre">e</span></code> stands for <strong>end</strong>.
+These are used when an event spans over a duration (e.g., long notes, sustained effects), recording the bar/beat/separate position where the event ends.</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>firstBeat</strong> represents the actual PCM frame in the audio stream where the music begins.</p></li>
+<li><p><strong>bar / beat / separate</strong> describe the timeline position of an event according to the BPM and time signature.</p></li>
+<li><p><strong>ebar / ebeat / eseparate</strong> mark the ending position of the event, allowing representation of interval-based events.</p></li>
+</ul>
+<p>This structure enables the PDJE engine to achieve <strong>precise synchronization</strong> between the audio signal (PCM-level) and rhythm game events (beat-level).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Util_Engine.html" class="btn btn-neutral float-left" title="Path_To_Util_Engine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="FX_ARGS.html" class="btn btn-neutral float-right" title="FX_ARGS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

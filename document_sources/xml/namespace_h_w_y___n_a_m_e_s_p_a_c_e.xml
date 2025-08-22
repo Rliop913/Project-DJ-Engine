@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="namespace_h_w_y___n_a_m_e_s_p_a_c_e" kind="namespace" language="C++">
+    <compoundname>HWY_NAMESPACE</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespace_h_w_y___n_a_m_e_s_p_a_c_e_1ad074d697d201fc9b6c258e128a4ef91e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>HWY_ATTR bool</type>
+        <definition>HWY_ATTR bool HWY_NAMESPACE::GetPCMFramesSIMD</definition>
+        <argsstring>(SIMD_FLOAT &amp;tempFrames, std::vector&lt; float &gt; &amp;L, std::vector&lt; float &gt; &amp;R, float **FaustStyle, LOADS &amp;deck, float *array, const unsigned long FrameSize)</argsstring>
+        <name>GetPCMFramesSIMD</name>
+        <qualifiedname>HWY_NAMESPACE::GetPCMFramesSIMD</qualifiedname>
+        <param>
+          <type><ref refid="_frame_calc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref> &amp;</type>
+          <declname>tempFrames</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; float &gt; &amp;</type>
+          <declname>L</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; float &gt; &amp;</type>
+          <declname>R</declname>
+        </param>
+        <param>
+          <type>float **</type>
+          <declname>FaustStyle</declname>
+        </param>
+        <param>
+          <type><ref refid="_music_control_pannel_8hpp_1ab133b0d81c222324c3cd46e91d30fb7d" kindref="member">LOADS</ref> &amp;</type>
+          <declname>deck</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>const unsigned long</type>
+          <declname>FrameSize</declname>
+        </param>
+        <briefdescription>
+<para>Retrieves and mixes PCM frames from active audio decks using SIMD instructions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function reads audio data from each active deck, applies any configured Faust effects, and mixes the resulting audio into a single output buffer. The mixing process is accelerated using the Highway SIMD library.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="out">tempFrames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A buffer to temporarily store raw PCM frames from a decoder. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">L</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A buffer to store the left channel audio data for Faust processing. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">R</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A buffer to store the right channel audio data for Faust processing. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">FaustStyle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer array to the left and right channel buffers (<computeroutput>L</computeroutput> and <computeroutput>R</computeroutput>). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">deck</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A map of loaded music decks to be processed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">array</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The output buffer where the final mixed PCM frames will be stored. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">FrameSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of PCM frames to process. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the frames were processed and mixed successfully, <computeroutput>false</computeroutput> otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/ManualMix/MusicControlPannel-inl.h" line="33" column="1" bodyfile="include/audioRender/ManualMix/MusicControlPannel-inl.h" bodystart="33" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_h_w_y___n_a_m_e_s_p_a_c_e_1af0a22093ab08dd742f914c113783bec3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>HWY_ATTR void</type>
+        <definition>HWY_ATTR void HWY_NAMESPACE::INTEGRATE_PCM_SIMD</definition>
+        <argsstring>(SIMD_FLOAT &amp;tempVec, std::mutex &amp;renderLock, std::vector&lt; float &gt; &amp;rendered_out, MUSIC_CTR *&amp;MC)</argsstring>
+        <name>INTEGRATE_PCM_SIMD</name>
+        <qualifiedname>HWY_NAMESPACE::INTEGRATE_PCM_SIMD</qualifiedname>
+        <param>
+          <type><ref refid="_frame_calc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref> &amp;</type>
+          <declname>tempVec</declname>
+        </param>
+        <param>
+          <type>std::mutex &amp;</type>
+          <declname>renderLock</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; float &gt; &amp;</type>
+          <declname>rendered_out</declname>
+        </param>
+        <param>
+          <type><ref refid="class_m_u_s_i_c___c_t_r" kindref="compound">MUSIC_CTR</ref> *&amp;</type>
+          <declname>MC</declname>
+        </param>
+        <briefdescription>
+<para>Integrates a temporary PCM buffer into the main rendered output using SIMD instructions. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function safely mixes a temporary vector of PCM data (<computeroutput>tempVec</computeroutput>) into the final output buffer (<computeroutput>rendered_out</computeroutput>). It uses a mutex to protect access to the output buffer and leverages the Highway library for SIMD-accelerated audio mixing.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tempVec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The temporary buffer of PCM frames to be mixed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">renderLock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A mutex to ensure thread-safe access to the output buffer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">rendered_out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The final output buffer where the PCM data is mixed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">MC</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the <computeroutput><ref refid="class_m_u_s_i_c___c_t_r" kindref="compound">MUSIC_CTR</ref></computeroutput> object, which provides context for the mixing operation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine-inl.h" line="30" column="1" bodyfile="include/audioRender/MixMachine/MixMachine-inl.h" bodystart="30" bodyend="60"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/audioRender/ManualMix/MusicControlPannel-inl.h" line="13" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class MixTranslator &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Class MixTranslator</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/class_mix_translator.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="class-mixtranslator">
+<span id="exhale-class-class-mix-translator"></span><h1>Class MixTranslator<a class="headerlink" href="#class-mixtranslator" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_include_db_Capnp_Translators_MixTranslator_MixTranslator.hpp.html#file-include-db-capnp-translators-mixtranslator-mixtranslator-hpp"><span class="std std-ref">File MixTranslator.hpp</span></a></p></li>
+</ul>
+<section id="class-documentation">
+<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Link to this heading"></a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv413MixTranslator">
+<span id="_CPPv313MixTranslator"></span><span id="_CPPv213MixTranslator"></span><span id="MixTranslator"></span><span class="target" id="classMixTranslator"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MixTranslator</span></span></span><br /></dt>
+<dd><p>This Translate capnp data into cpp data sturct. </p>
+<p><div class="graphviz"><object data="../_images/graphviz-5ee4274223c9bd4f44daa15f1e8115aaef7b597d.svg" type="image/svg+xml" class="graphviz">
+<p class="warning">digraph MixTranslator{
+     MixTranslator -&gt; MIX;
+     MixTranslator -&gt; BPM;
+     BPM -&gt; BpmStruct;
+     BpmStruct -&gt; BpmFragment;
+}</p></object></div>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13MixTranslator4ReadERK9CapReaderI18MixBinaryCapnpDataE">
+<span id="_CPPv3N13MixTranslator4ReadERK9CapReaderI18MixBinaryCapnpDataE"></span><span id="_CPPv2N13MixTranslator4ReadERK9CapReaderI18MixBinaryCapnpDataE"></span><span id="MixTranslator::Read__CapReader:MixBinaryCapnpData:CR"></span><span class="target" id="classMixTranslator_1a693df1a107e2f02ce7c9e8eb48078151"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Read</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classCapReader.html#_CPPv4I0E9CapReader" title="CapReader"><span class="n"><span class="pre">CapReader</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">MixBinaryCapnpData</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">binary</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>read capnp mix binary data and init <a class="reference internal" href="class_m_i_x.html#classMIX"><span class="std std-ref">MIX</span></a> and <a class="reference internal" href="class_b_p_m.html#classBPM"><span class="std std-ref">BPM</span></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>binary</strong> – the capnp Mix binary reader wrapper </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13MixTranslator13MixTranslatorEv">
+<span id="_CPPv3N13MixTranslator13MixTranslatorEv"></span><span id="_CPPv2N13MixTranslator13MixTranslatorEv"></span><span id="MixTranslator::MixTranslator"></span><span class="target" id="classMixTranslator_1a8009a82dcf32d8c4f80bc7b85674bc1e"></span><span class="sig-name descname"><span class="n"><span class="pre">MixTranslator</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N13MixTranslatorD0Ev">
+<span id="_CPPv3N13MixTranslatorD0Ev"></span><span id="_CPPv2N13MixTranslatorD0Ev"></span><span id="MixTranslator::~MixTranslator"></span><span class="target" id="classMixTranslator_1aa7a05028f126f4e037e4b26401e56622"></span><span class="sig-name descname"><span class="n"><span class="pre">~MixTranslator</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13MixTranslator4mixsE">
+<span id="_CPPv3N13MixTranslator4mixsE"></span><span id="_CPPv2N13MixTranslator4mixsE"></span><span id="MixTranslator::mixs__std::optional:MIX:"></span><span class="target" id="classMixTranslator_1a9a92844279aa3116505ea6b546c5efe3"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classMIX.html#_CPPv43MIX" title="MIX"><span class="n"><span class="pre">MIX</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mixs</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N13MixTranslator4bpmsE">
+<span id="_CPPv3N13MixTranslator4bpmsE"></span><span id="_CPPv2N13MixTranslator4bpmsE"></span><span id="MixTranslator::bpms__std::optional:BPM:"></span><span class="target" id="classMixTranslator_1a286ceca666d2d1546dcaf7c6b8e2d3f5"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classBPM.html#_CPPv43BPM" title="BPM"><span class="n"><span class="pre">BPM</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bpms</span></span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -61,6 +61,7 @@ Program Listing for File gitWrapper.hpp
        bool commit(git_signature* sign, const std::string& message);
    
        bool log();
+   
        bool log(const std::string& branchName);
    
        static std::string GenTimeStamp();

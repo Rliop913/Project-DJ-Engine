@@ -9,6 +9,11 @@ File DeckData.hpp
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
+
+Defines core data structures and type aliases used in the audio mixing process. 
+
+
+
 .. contents:: Contents
    :local:
    :backlinks: none

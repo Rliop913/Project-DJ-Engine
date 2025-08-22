@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class NoteTranslator &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Class NoteTranslator</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/class_note_translator.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="class-notetranslator">
+<span id="exhale-class-class-note-translator"></span><h1>Class NoteTranslator<a class="headerlink" href="#class-notetranslator" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_include_db_Capnp_Translators_NoteTranslator_NoteTranslator.hpp.html#file-include-db-capnp-translators-notetranslator-notetranslator-hpp"><span class="std std-ref">File NoteTranslator.hpp</span></a></p></li>
+</ul>
+<section id="class-documentation">
+<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Link to this heading"></a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv414NoteTranslator">
+<span id="_CPPv314NoteTranslator"></span><span id="_CPPv214NoteTranslator"></span><span id="NoteTranslator"></span><span class="target" id="classNoteTranslator"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NoteTranslator</span></span></span><br /></dt>
+<dd><p>the note translator. this class reads the capnp binary datas and bpm datas, and parse them. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14NoteTranslator4ReadERK9CapReaderI19NoteBinaryCapnpDataERK9BpmStructR19OBJ_SETTER_CALLBACK">
+<span id="_CPPv3N14NoteTranslator4ReadERK9CapReaderI19NoteBinaryCapnpDataERK9BpmStructR19OBJ_SETTER_CALLBACK"></span><span id="_CPPv2N14NoteTranslator4ReadERK9CapReaderI19NoteBinaryCapnpDataERK9BpmStructR19OBJ_SETTER_CALLBACK"></span><span id="NoteTranslator::Read__CapReader:NoteBinaryCapnpData:CR.BpmStructCR.OBJ_SETTER_CALLBACKR"></span><span class="target" id="classNoteTranslator_1a660b66512165d3cc53fef9f5a09476ed"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Read</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classCapReader.html#_CPPv4I0E9CapReader" title="CapReader"><span class="n"><span class="pre">CapReader</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">NoteBinaryCapnpData</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">binary</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structBpmStruct.html#_CPPv49BpmStruct" title="BpmStruct"><span class="n"><span class="pre">BpmStruct</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">mainBpm</span></span>, <a class="reference internal" href="typedef_NoteTranslator_8hpp_1a7b43b91dca4a17f46dd3760542a7ec98.html#_CPPv419OBJ_SETTER_CALLBACK" title="OBJ_SETTER_CALLBACK"><span class="n"><span class="pre">OBJ_SETTER_CALLBACK</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">lambdaCallback</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Reads and parse capnp object. this function reads capnp binary data and note object’s bpm data and track data’s bpm data. after parse all of them, it calls the note object setter callback. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>binary</strong> – the capnp binary Reader object </p></li>
+<li><p><strong>mainBpm</strong> – the track data’s bpm data </p></li>
+<li><p><strong>lambdaCallback</strong> – the object setter lambda </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14NoteTranslator14NoteTranslatorEv">
+<span id="_CPPv3N14NoteTranslator14NoteTranslatorEv"></span><span id="_CPPv2N14NoteTranslator14NoteTranslatorEv"></span><span id="NoteTranslator::NoteTranslator"></span><span class="target" id="classNoteTranslator_1a9110295c3ec54ebd052c5bda80632c81"></span><span class="sig-name descname"><span class="n"><span class="pre">NoteTranslator</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">default</span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14NoteTranslatorD0Ev">
+<span id="_CPPv3N14NoteTranslatorD0Ev"></span><span id="_CPPv2N14NoteTranslatorD0Ev"></span><span id="NoteTranslator::~NoteTranslator"></span><span class="target" id="classNoteTranslator_1a691ed50a8d68596fb6bb0cf9ce9bf442"></span><span class="sig-name descname"><span class="n"><span class="pre">~NoteTranslator</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">default</span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14NoteTranslator8noteBpmsE">
+<span id="_CPPv3N14NoteTranslator8noteBpmsE"></span><span id="_CPPv2N14NoteTranslator8noteBpmsE"></span><span id="NoteTranslator::noteBpms__BpmStruct"></span><span class="target" id="classNoteTranslator_1ace395ceda2f9e280a390cd2535d07dc1"></span><a class="reference internal" href="structBpmStruct.html#_CPPv49BpmStruct" title="BpmStruct"><span class="n"><span class="pre">BpmStruct</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">noteBpms</span></span></span><br /></dt>
+<dd><p>the note object’s bpm datas </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

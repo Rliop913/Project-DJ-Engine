@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class editorObject &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Class editorObject</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/classeditor_object.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="class-editorobject">
+<span id="exhale-class-classeditor-object"></span><h1>Class editorObject<a class="headerlink" href="#class-editorobject" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_include_MainObjects_editorObject_editorObject.hpp.html#file-include-mainobjects-editorobject-editorobject-hpp"><span class="std std-ref">File editorObject.hpp</span></a></p></li>
+</ul>
+<section id="class-documentation">
+<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Link to this heading"></a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv412editorObject">
+<span id="_CPPv312editorObject"></span><span id="_CPPv212editorObject"></span><span id="editorObject"></span><span class="target" id="classeditorObject"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">editorObject</span></span></span><br /></dt>
+<dd><p>The main editor object for managing project data. </p>
+<p>This class provides a high-level interface for interacting with the editor, including file I/O, version control, and data rendering. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject10getMixRepoEv">
+<span id="_CPPv3N12editorObject10getMixRepoEv"></span><span id="_CPPv2N12editorObject10getMixRepoEv"></span><span id="editorObject::getMixRepo"></span><span class="target" id="classeditorObject_1ae5300f1a0b6d39b6fb1e6c79d2bcc91d"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">git_repository</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getMixRepo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Gets the Git repository for the mix data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A pointer to the Git repository, or <code class="docutils literal notranslate"><span class="pre">nullptr</span></code> if not available. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject12getMusicRepoERK11UNSANITIZED">
+<span id="_CPPv3N12editorObject12getMusicRepoERK11UNSANITIZED"></span><span id="_CPPv2N12editorObject12getMusicRepoERK11UNSANITIZED"></span><span id="editorObject::getMusicRepo__UNSANITIZEDCR"></span><span class="target" id="classeditorObject_1ad4983a3abef2c8acadc325f26a6128d6"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">git_repository</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getMusicRepo</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Title</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Gets the Git repository for a specific music entry. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Title</strong> – The unsanitized title of the music. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pointer to the Git repository, or <code class="docutils literal notranslate"><span class="pre">nullptr</span></code> if not found. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject11getNoteRepoEv">
+<span id="_CPPv3N12editorObject11getNoteRepoEv"></span><span id="_CPPv2N12editorObject11getNoteRepoEv"></span><span id="editorObject::getNoteRepo"></span><span class="target" id="classeditorObject_1a3bd541d0ff2a00541fad343c31742c71"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">git_repository</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getNoteRepo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Gets the Git repository for the note data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A pointer to the Git repository, or <code class="docutils literal notranslate"><span class="pre">nullptr</span></code> if not available. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject9getKVRepoEv">
+<span id="_CPPv3N12editorObject9getKVRepoEv"></span><span id="_CPPv2N12editorObject9getKVRepoEv"></span><span id="editorObject::getKVRepo"></span><span class="target" id="classeditorObject_1a7276d008fdf2ce71165d9f8f8332317d"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">git_repository</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getKVRepo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Gets the Git repository for the key-value data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A pointer to the Git repository, or <code class="docutils literal notranslate"><span class="pre">nullptr</span></code> if not available. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN12editorObject7AddLineEbRK13EDIT_ARG_TYPE">
+<span id="_CPPv3I0EN12editorObject7AddLineERK13EDIT_ARG_TYPE"></span><span id="_CPPv2I0EN12editorObject7AddLineERK13EDIT_ARG_TYPE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a77eaf52d8c470aadb9af3f3140e6beee"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AddLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classeditorObject.html#_CPPv4I0EN12editorObject7AddLineEbRK13EDIT_ARG_TYPE" title="editorObject::AddLine::EDIT_ARG_TYPE"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Adds a new line of data to the editor. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EDIT_ARG_TYPE</strong> – The type of data to add. </p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>obj</strong> – The data object to add. </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the line was added successfully, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject7AddLineERK11UNSANITIZEDRK13DONT_SANITIZE">
+<span id="_CPPv3N12editorObject7AddLineERK11UNSANITIZEDRK13DONT_SANITIZE"></span><span id="_CPPv2N12editorObject7AddLineERK11UNSANITIZEDRK13DONT_SANITIZE"></span><span id="editorObject::AddLine__UNSANITIZEDCR.DONT_SANITIZECR"></span><span class="target" id="classeditorObject_1a5bcc99b22a0c1b7377467c4090b31c3f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AddLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">firstBar</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Adds a new music entry with a specified first bar. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>musicName</strong> – The unsanitized name of the music. </p></li>
+<li><p><strong>firstBar</strong> – The first bar of the music. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the line was added successfully, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject10deleteLineERK12EDIT_ARG_MIXbb">
+<span id="_CPPv3N12editorObject10deleteLineERK12EDIT_ARG_MIXbb"></span><span id="_CPPv2N12editorObject10deleteLineERK12EDIT_ARG_MIXbb"></span><span id="editorObject::deleteLine__EDIT_ARG_MIXCR.b.b"></span><span class="target" id="classeditorObject_1acec5f49ab4cc77cd842d4eaf1a25ff87"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deleteLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a8c7c688d1e63ff780f13669e00fc091c.html#_CPPv412EDIT_ARG_MIX" title="EDIT_ARG_MIX"><span class="n"><span class="pre">EDIT_ARG_MIX</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">skipType</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">skipDetail</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Deletes a line of mix data. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> – The mix data to delete. </p></li>
+<li><p><strong>skipType</strong> – Whether to skip matching the <code class="docutils literal notranslate"><span class="pre">type</span></code> field. </p></li>
+<li><p><strong>skipDetail</strong> – Whether to skip matching the <code class="docutils literal notranslate"><span class="pre">details</span></code> field. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The number of lines deleted. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN12editorObject10deleteLineEiRK13EDIT_ARG_TYPE">
+<span id="_CPPv3I0EN12editorObject10deleteLineERK13EDIT_ARG_TYPE"></span><span id="_CPPv2I0EN12editorObject10deleteLineERK13EDIT_ARG_TYPE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a74c726d83f0402fa3df6f74ac501dfea"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deleteLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classeditorObject.html#_CPPv4I0EN12editorObject10deleteLineEiRK13EDIT_ARG_TYPE" title="editorObject::deleteLine::EDIT_ARG_TYPE"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Deletes a line of data from the editor. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EDIT_ARG_TYPE</strong> – The type of data to delete. </p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>obj</strong> – The data object to delete. </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The number of lines deleted. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject6renderERK11UNSANITIZEDR6litedb">
+<span id="_CPPv3N12editorObject6renderERK11UNSANITIZEDR6litedb"></span><span id="_CPPv2N12editorObject6renderERK11UNSANITIZEDR6litedb"></span><span id="editorObject::render__UNSANITIZEDCR.litedbR"></span><span class="target" id="classeditorObject_1a4d830121f5d68c47448ec062e015cae5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">render</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">trackTitle</span></span>, <a class="reference internal" href="classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ROOTDB</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Renders the project data to the root database. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trackTitle</strong> – The unsanitized title of the track to render. </p></li>
+<li><p><strong>ROOTDB</strong> – The root database to render to. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the rendering was successful, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject12demoPlayInitERNSt10shared_ptrI11audioPlayerEEjRK11UNSANITIZED">
+<span id="_CPPv3N12editorObject12demoPlayInitERNSt10shared_ptrI11audioPlayerEEjRK11UNSANITIZED"></span><span id="_CPPv2N12editorObject12demoPlayInitERNSt10shared_ptrI11audioPlayerEEjRK11UNSANITIZED"></span><span id="editorObject::demoPlayInit__std::shared_ptr:audioPlayer:R.unsigned-i.UNSANITIZEDCR"></span><span class="target" id="classeditorObject_1a394a200d5cf41ec74152c799d17b35e7"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">demoPlayInit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">player</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameBufferSize</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">trackTitle</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Initializes a demo player for a given track. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>player</strong> – <strong>[out]</strong> A shared pointer to the audio player to initialize. </p></li>
+<li><p><strong>frameBufferSize</strong> – The frame buffer size for the player. </p></li>
+<li><p><strong>trackTitle</strong> – The unsanitized title of the track to play. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject12pushToRootDBER6litedbRK11UNSANITIZED">
+<span id="_CPPv3N12editorObject12pushToRootDBER6litedbRK11UNSANITIZED"></span><span id="_CPPv2N12editorObject12pushToRootDBER6litedbRK11UNSANITIZED"></span><span id="editorObject::pushToRootDB__litedbR.UNSANITIZEDCR"></span><span class="target" id="classeditorObject_1ae4f8059616e377582bade705a44aafb6"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pushToRootDB</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ROOTDB</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">trackTitleToPush</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Pushes a track to the root database. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ROOTDB</strong> – The root database to push to. </p></li>
+<li><p><strong>trackTitleToPush</strong> – The unsanitized title of the track to push. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the push was successful, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject12pushToRootDBER6litedbRK11UNSANITIZEDRK11UNSANITIZED">
+<span id="_CPPv3N12editorObject12pushToRootDBER6litedbRK11UNSANITIZEDRK11UNSANITIZED"></span><span id="_CPPv2N12editorObject12pushToRootDBER6litedbRK11UNSANITIZEDRK11UNSANITIZED"></span><span id="editorObject::pushToRootDB__litedbR.UNSANITIZEDCR.UNSANITIZEDCR"></span><span class="target" id="classeditorObject_1a634c551a93f376650075d82dcbe1ffd5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pushToRootDB</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ROOTDB</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicTitle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicComposer</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Pushes a music entry to the root database. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ROOTDB</strong> – The root database to push to. </p></li>
+<li><p><strong>musicTitle</strong> – The unsanitized title of the music. </p></li>
+<li><p><strong>musicComposer</strong> – The unsanitized composer of the music. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the push was successful, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN12editorObject6getAllEvNSt8functionIFvRK13EDIT_ARG_TYPEEEE">
+<span id="_CPPv3I0EN12editorObject6getAllENSt8functionIFvRK13EDIT_ARG_TYPEEEE"></span><span id="_CPPv2I0EN12editorObject6getAllENSt8functionIFvRK13EDIT_ARG_TYPEEEE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a720a623f570f5fbeafb28e812a127938"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getAll</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="classeditorObject.html#_CPPv4I0EN12editorObject6getAllEvNSt8functionIFvRK13EDIT_ARG_TYPEEEE" title="editorObject::getAll::EDIT_ARG_TYPE"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">jsonCallback</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Gets all data of a specific type from the editor. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EDIT_ARG_TYPE</strong> – The type of data to get. </p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jsonCallback</strong> – A callback function to process each data object. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN12editorObject4UndoEbv">
+<span id="_CPPv3I0EN12editorObject4UndoEv"></span><span id="_CPPv2I0EN12editorObject4UndoEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1af807921cf49ccaa0d561badcb5348087"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Undoes the last operation. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EDIT_ARG_TYPE</strong> – The type of data to undo. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the undo was successful, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN12editorObject4UndoEbRK11UNSANITIZED">
+<span id="_CPPv3I0EN12editorObject4UndoERK11UNSANITIZED"></span><span id="_CPPv2I0EN12editorObject4UndoERK11UNSANITIZED"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a70a6c28f2ad7b19ff50427f14378291a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Undoes the last operation for a specific music entry. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EDIT_ARG_TYPE</strong> – The type of data to undo. </p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>musicName</strong> – The unsanitized name of the music. </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the undo was successful, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN12editorObject4RedoEbv">
+<span id="_CPPv3I0EN12editorObject4RedoEv"></span><span id="_CPPv2I0EN12editorObject4RedoEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1ae24df06774592614acbfb17701f4e2e1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Redo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Redoes the last undone operation. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EDIT_ARG_TYPE</strong> – The type of data to redo. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the redo was successful, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN12editorObject4RedoEbRK11UNSANITIZED">
+<span id="_CPPv3I0EN12editorObject4RedoERK11UNSANITIZED"></span><span id="_CPPv2I0EN12editorObject4RedoERK11UNSANITIZED"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a2987ce88cb1d9a435871f80398a76e63"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Redo</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Redoes the last undone operation for a specific music entry. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EDIT_ARG_TYPE</strong> – The type of data to redo. </p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>musicName</strong> – The unsanitized name of the music. </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the redo was successful, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN12editorObject2GoEbRK13DONT_SANITIZEP7git_oid">
+<span id="_CPPv3I0EN12editorObject2GoERK13DONT_SANITIZEP7git_oid"></span><span id="_CPPv2I0EN12editorObject2GoERK13DONT_SANITIZEP7git_oid"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a03c8ce3bddba220df4e2f9c90ab25ca0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span>, <span class="n"><span class="pre">git_oid</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">commitID</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Switches to a specific branch or commit. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EDIT_ARG_TYPE</strong> – The type of data to operate on. </p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>branchName</strong> – The name of the branch to switch to. </p></li>
+<li><p><strong>commitID</strong> – A pointer to the commit <a class="reference internal" href="typedef__mix_machine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc.html#MixMachine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc"><span class="std std-ref">ID</span></a> to switch to (optional). </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation was successful, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN12editorObject19GetLogWithJSONGraphE13DONT_SANITIZEv">
+<span id="_CPPv3I0EN12editorObject19GetLogWithJSONGraphEv"></span><span id="_CPPv2I0EN12editorObject19GetLogWithJSONGraphEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a360e0000f965db643a0127f7240a425a"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetLogWithJSONGraph</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Gets the commit log as a JSON graph. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EDIT_ARG_TYPE</strong> – The type of data to get the log for. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The commit log as a JSON string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN12editorObject19GetLogWithJSONGraphE13DONT_SANITIZERK11UNSANITIZED">
+<span id="_CPPv3I0EN12editorObject19GetLogWithJSONGraphERK11UNSANITIZED"></span><span id="_CPPv2I0EN12editorObject19GetLogWithJSONGraphERK11UNSANITIZED"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a994b27da4e10c21758c374d77b638cad"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetLogWithJSONGraph</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Gets the commit log for a specific music entry as a JSON graph. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EDIT_ARG_TYPE</strong> – The type of data to get the log for. </p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>musicName</strong> – The unsanitized name of the music. </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The commit log as a JSON string. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN12editorObject9UpdateLogEbv">
+<span id="_CPPv3I0EN12editorObject9UpdateLogEv"></span><span id="_CPPv2I0EN12editorObject9UpdateLogEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1af72d99c3cb239afe1f633ad592327ae7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Updates the commit log. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EDIT_ARG_TYPE</strong> – The type of data to update the log for. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the update was successful, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN12editorObject9UpdateLogEbRK13DONT_SANITIZE">
+<span id="_CPPv3I0EN12editorObject9UpdateLogERK13DONT_SANITIZE"></span><span id="_CPPv2I0EN12editorObject9UpdateLogERK13DONT_SANITIZE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a551a8f7e02b6d1723a8699af450daa79"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Updates the commit log for a specific branch. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EDIT_ARG_TYPE</strong> – The type of data to update the log for. </p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>branchName</strong> – The name of the branch to update. </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the update was successful, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN12editorObject7GetDiffE10DiffResultRKN7gitwrap6commitERKN7gitwrap6commitE">
+<span id="_CPPv3I0EN12editorObject7GetDiffERKN7gitwrap6commitERKN7gitwrap6commitE"></span><span id="_CPPv2I0EN12editorObject7GetDiffERKN7gitwrap6commitERKN7gitwrap6commitE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EDIT_ARG_TYPE</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a28dc3aa435512e4ad16ad0f821c64907"></span><a class="reference internal" href="structDiffResult.html#_CPPv410DiffResult" title="DiffResult"><span class="n"><span class="pre">DiffResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetDiff</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">oldTimeStamp</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newTimeStamp</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Gets the diff between two timestamps. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>EDIT_ARG_TYPE</strong> – The type of data to get the diff for. </p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>oldTimeStamp</strong> – The old timestamp. </p></li>
+<li><p><strong>newTimeStamp</strong> – The new timestamp. </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A <code class="docutils literal notranslate"><a class="reference internal" href="struct_diff_result.html#structDiffResult"><span class="std std-ref"><span class="pre">DiffResult</span></span></a></code> object containing the diff. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObjectixERK13DONT_SANITIZE">
+<span id="_CPPv3N12editorObjectixERK13DONT_SANITIZE"></span><span id="_CPPv2N12editorObjectixERK13DONT_SANITIZE"></span><span id="editorObject::subscript-operator__DONT_SANITIZECR"></span><span class="target" id="classeditorObject_1aa664471474287d500e65d09f08f61001"></span><a class="reference internal" href="typedef_jsonWrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9.html#_CPPv42nj" title="nj"><span class="n"><span class="pre">nj</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="o"><span class="pre">[]</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">key</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Provides access to the underlying JSON data for key-value pairs. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>key</strong> – The key to access. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A reference to the JSON value. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject15DESTROY_PROJECTEv">
+<span id="_CPPv3N12editorObject15DESTROY_PROJECTEv"></span><span id="_CPPv2N12editorObject15DESTROY_PROJECTEv"></span><span id="editorObject::DESTROY_PROJECT"></span><span class="target" id="classeditorObject_1a9e14b13d0a93115510856587e3d0b597"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DESTROY_PROJECT</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Destroys the entire project. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This operation is irreversible. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A string indicating the result of the operation. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject14ConfigNewMusicERK11UNSANITIZEDRK11UNSANITIZEDRKN2fs4pathERK13DONT_SANITIZE">
+<span id="_CPPv3N12editorObject14ConfigNewMusicERK11UNSANITIZEDRK11UNSANITIZEDRKN2fs4pathERK13DONT_SANITIZE"></span><span id="_CPPv2N12editorObject14ConfigNewMusicERK11UNSANITIZEDRK11UNSANITIZEDRKN2fs4pathERK13DONT_SANITIZE"></span><span id="editorObject::ConfigNewMusic__UNSANITIZEDCR.UNSANITIZEDCR.fs::pathCR.DONT_SANITIZECR"></span><span class="target" id="classeditorObject_1a21d30e041cf35f40d4070a622256575c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ConfigNewMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">NewMusicName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">composer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicPath</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">firstBar</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;0&quot;</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Configures a new music entry. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>NewMusicName</strong> – The unsanitized name of the new music. </p></li>
+<li><p><strong>composer</strong> – The unsanitized composer of the new music. </p></li>
+<li><p><strong>musicPath</strong> – The path to the music file. </p></li>
+<li><p><strong>firstBar</strong> – The first bar of the music (defaults to “0”). </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the configuration was successful, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject4OpenERKN2fs4pathE">
+<span id="_CPPv3N12editorObject4OpenERKN2fs4pathE"></span><span id="_CPPv2N12editorObject4OpenERKN2fs4pathE"></span><span id="editorObject::Open__fs::pathCR"></span><span class="target" id="classeditorObject_1adb7115154add6c06baf9c4e090977d24"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Open</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">projectPath</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Opens an existing editor project. if <a class="reference internal" href="class_p_d_j_e.html#classPDJE"><span class="std std-ref">PDJE</span></a> called InitEditor, you don’t need to call this again. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>projectPath</strong> – The path to the project. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the project was opened successfully, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject12editorObjectEv">
+<span id="_CPPv3N12editorObject12editorObjectEv"></span><span id="_CPPv2N12editorObject12editorObjectEv"></span><span id="editorObject::editorObject"></span><span class="target" id="classeditorObject_1a690ad4f1302edbb56c2ae2cdba91189d"></span><span class="sig-name descname"><span class="n"><span class="pre">editorObject</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">delete</span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObject12editorObjectERK13DONT_SANITIZERK13DONT_SANITIZE">
+<span id="_CPPv3N12editorObject12editorObjectERK13DONT_SANITIZERK13DONT_SANITIZE"></span><span id="_CPPv2N12editorObject12editorObjectERK13DONT_SANITIZERK13DONT_SANITIZE"></span><span id="editorObject::editorObject__DONT_SANITIZECR.DONT_SANITIZECR"></span><span class="target" id="classeditorObject_1a7a44ba5a8abd1bdacdf538b08360339b"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">editorObject</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_email</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Constructs a new editor object with author information. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>auth_name</strong> – The name of the author. </p></li>
+<li><p><strong>auth_email</strong> – The email of the author. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12editorObjectD0Ev">
+<span id="_CPPv3N12editorObjectD0Ev"></span><span id="_CPPv2N12editorObjectD0Ev"></span><span id="editorObject::~editorObject"></span><span class="target" id="classeditorObject_1ae5c4229489a3b798968960d7806a96a9"></span><span class="sig-name descname"><span class="n"><span class="pre">~editorObject</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">default</span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject7AddLineEbRK14EDIT_ARG_MUSIC">
+<span id="_CPPv3IEN12editorObject7AddLineERK14EDIT_ARG_MUSIC"></span><span id="_CPPv2IEN12editorObject7AddLineERK14EDIT_ARG_MUSIC"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1ad3274f4153e7e8845a5c5d048f037901"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AddLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structEDIT__ARG__MUSIC.html#_CPPv414EDIT_ARG_MUSIC" title="EDIT_ARG_MUSIC"><span class="n"><span class="pre">EDIT_ARG_MUSIC</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject7AddLineEbRK12EDIT_ARG_MIX">
+<span id="_CPPv3IEN12editorObject7AddLineERK12EDIT_ARG_MIX"></span><span id="_CPPv2IEN12editorObject7AddLineERK12EDIT_ARG_MIX"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a85dd1bfab830dc51fd12f6f27956ec19"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AddLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a8c7c688d1e63ff780f13669e00fc091c.html#_CPPv412EDIT_ARG_MIX" title="EDIT_ARG_MIX"><span class="n"><span class="pre">EDIT_ARG_MIX</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject7AddLineEbRK13EDIT_ARG_NOTE">
+<span id="_CPPv3IEN12editorObject7AddLineERK13EDIT_ARG_NOTE"></span><span id="_CPPv2IEN12editorObject7AddLineERK13EDIT_ARG_NOTE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1aa6a8bd9998b64a8ee9bc46cd185b518f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AddLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a2de2e14491806b81a5ba85836b550f18.html#_CPPv413EDIT_ARG_NOTE" title="EDIT_ARG_NOTE"><span class="n"><span class="pre">EDIT_ARG_NOTE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject7AddLineEbRK18EDIT_ARG_KEY_VALUE">
+<span id="_CPPv3IEN12editorObject7AddLineERK18EDIT_ARG_KEY_VALUE"></span><span id="_CPPv2IEN12editorObject7AddLineERK18EDIT_ARG_KEY_VALUE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a307c57aa6a231f6394d82be67a1d94ae"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AddLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a305098bfe154230cbef2fbe44e5f9220.html#_CPPv418EDIT_ARG_KEY_VALUE" title="EDIT_ARG_KEY_VALUE"><span class="n"><span class="pre">EDIT_ARG_KEY_VALUE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject10deleteLineEiRK13EDIT_ARG_NOTE">
+<span id="_CPPv3IEN12editorObject10deleteLineERK13EDIT_ARG_NOTE"></span><span id="_CPPv2IEN12editorObject10deleteLineERK13EDIT_ARG_NOTE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a1470c80235c92292a246fa3f9ce15865"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deleteLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a2de2e14491806b81a5ba85836b550f18.html#_CPPv413EDIT_ARG_NOTE" title="EDIT_ARG_NOTE"><span class="n"><span class="pre">EDIT_ARG_NOTE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject10deleteLineEiRK18EDIT_ARG_KEY_VALUE">
+<span id="_CPPv3IEN12editorObject10deleteLineERK18EDIT_ARG_KEY_VALUE"></span><span id="_CPPv2IEN12editorObject10deleteLineERK18EDIT_ARG_KEY_VALUE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a0d5200a4e92a2faee32536810298f590"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deleteLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a305098bfe154230cbef2fbe44e5f9220.html#_CPPv418EDIT_ARG_KEY_VALUE" title="EDIT_ARG_KEY_VALUE"><span class="n"><span class="pre">EDIT_ARG_KEY_VALUE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject10deleteLineEiRK14EDIT_ARG_MUSIC">
+<span id="_CPPv3IEN12editorObject10deleteLineERK14EDIT_ARG_MUSIC"></span><span id="_CPPv2IEN12editorObject10deleteLineERK14EDIT_ARG_MUSIC"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a6ab0f93838db62d7e61e9d4f97838e2b"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deleteLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structEDIT__ARG__MUSIC.html#_CPPv414EDIT_ARG_MUSIC" title="EDIT_ARG_MUSIC"><span class="n"><span class="pre">EDIT_ARG_MUSIC</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject4UndoEbv">
+<span id="_CPPv3IEN12editorObject4UndoEv"></span><span id="_CPPv2IEN12editorObject4UndoEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject4UndoEbRK11UNSANITIZED">
+<span id="_CPPv3IEN12editorObject4UndoERK11UNSANITIZED"></span><span id="_CPPv2IEN12editorObject4UndoERK11UNSANITIZED"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a789f87b8ed201e8e08b22ba6bc3311b7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id2"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AddLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a2de2e14491806b81a5ba85836b550f18.html#_CPPv413EDIT_ARG_NOTE" title="EDIT_ARG_NOTE"><span class="n"><span class="pre">EDIT_ARG_NOTE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AddLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a8c7c688d1e63ff780f13669e00fc091c.html#_CPPv412EDIT_ARG_MIX" title="EDIT_ARG_MIX"><span class="n"><span class="pre">EDIT_ARG_MIX</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id4"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AddLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a305098bfe154230cbef2fbe44e5f9220.html#_CPPv418EDIT_ARG_KEY_VALUE" title="EDIT_ARG_KEY_VALUE"><span class="n"><span class="pre">EDIT_ARG_KEY_VALUE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AddLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structEDIT__ARG__MUSIC.html#_CPPv414EDIT_ARG_MUSIC" title="EDIT_ARG_MUSIC"><span class="n"><span class="pre">EDIT_ARG_MUSIC</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id6"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deleteLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a2de2e14491806b81a5ba85836b550f18.html#_CPPv413EDIT_ARG_NOTE" title="EDIT_ARG_NOTE"><span class="n"><span class="pre">EDIT_ARG_NOTE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id7"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deleteLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a305098bfe154230cbef2fbe44e5f9220.html#_CPPv418EDIT_ARG_KEY_VALUE" title="EDIT_ARG_KEY_VALUE"><span class="n"><span class="pre">EDIT_ARG_KEY_VALUE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id8"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deleteLine</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structEDIT__ARG__MUSIC.html#_CPPv414EDIT_ARG_MUSIC" title="EDIT_ARG_MUSIC"><span class="n"><span class="pre">EDIT_ARG_MUSIC</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject6getAllEvNSt8functionIFvRK13EDIT_ARG_NOTEEEE">
+<span id="_CPPv3IEN12editorObject6getAllENSt8functionIFvRK13EDIT_ARG_NOTEEEE"></span><span id="_CPPv2IEN12editorObject6getAllENSt8functionIFvRK13EDIT_ARG_NOTEEEE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a77db8c854567b251bec9cebd5e91c662"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getAll</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a2de2e14491806b81a5ba85836b550f18.html#_CPPv413EDIT_ARG_NOTE" title="EDIT_ARG_NOTE"><span class="n"><span class="pre">EDIT_ARG_NOTE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">jsonCallback</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject6getAllEvNSt8functionIFvRK12EDIT_ARG_MIXEEE">
+<span id="_CPPv3IEN12editorObject6getAllENSt8functionIFvRK12EDIT_ARG_MIXEEE"></span><span id="_CPPv2IEN12editorObject6getAllENSt8functionIFvRK12EDIT_ARG_MIXEEE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a16ef00ce6ae7569f39a60ff8f382bd1c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getAll</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a8c7c688d1e63ff780f13669e00fc091c.html#_CPPv412EDIT_ARG_MIX" title="EDIT_ARG_MIX"><span class="n"><span class="pre">EDIT_ARG_MIX</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">jsonCallback</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject6getAllEvNSt8functionIFvRK18EDIT_ARG_KEY_VALUEEEE">
+<span id="_CPPv3IEN12editorObject6getAllENSt8functionIFvRK18EDIT_ARG_KEY_VALUEEEE"></span><span id="_CPPv2IEN12editorObject6getAllENSt8functionIFvRK18EDIT_ARG_KEY_VALUEEEE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a479985c5e13f1986c6b88ceac67924c6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getAll</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a305098bfe154230cbef2fbe44e5f9220.html#_CPPv418EDIT_ARG_KEY_VALUE" title="EDIT_ARG_KEY_VALUE"><span class="n"><span class="pre">EDIT_ARG_KEY_VALUE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">jsonCallback</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject6getAllEvNSt8functionIFvRK14EDIT_ARG_MUSICEEE">
+<span id="_CPPv3IEN12editorObject6getAllENSt8functionIFvRK14EDIT_ARG_MUSICEEE"></span><span id="_CPPv2IEN12editorObject6getAllENSt8functionIFvRK14EDIT_ARG_MUSICEEE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a5fff7bdde5101a29d10a25989c8e248d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getAll</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structEDIT__ARG__MUSIC.html#_CPPv414EDIT_ARG_MUSIC" title="EDIT_ARG_MUSIC"><span class="n"><span class="pre">EDIT_ARG_MUSIC</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">jsonCallback</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject7GetDiffE10DiffResultRKN7gitwrap6commitERKN7gitwrap6commitE">
+<span id="_CPPv3IEN12editorObject7GetDiffERKN7gitwrap6commitERKN7gitwrap6commitE"></span><span id="_CPPv2IEN12editorObject7GetDiffERKN7gitwrap6commitERKN7gitwrap6commitE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0"></span><a class="reference internal" href="structDiffResult.html#_CPPv410DiffResult" title="DiffResult"><span class="n"><span class="pre">DiffResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetDiff</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">oldTimeStamp</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newTimeStamp</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id9"></span><a class="reference internal" href="structDiffResult.html#_CPPv410DiffResult" title="DiffResult"><span class="n"><span class="pre">DiffResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetDiff</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">oldTimeStamp</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newTimeStamp</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id10"></span><a class="reference internal" href="structDiffResult.html#_CPPv410DiffResult" title="DiffResult"><span class="n"><span class="pre">DiffResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetDiff</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">oldTimeStamp</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newTimeStamp</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id11"></span><a class="reference internal" href="structDiffResult.html#_CPPv410DiffResult" title="DiffResult"><span class="n"><span class="pre">DiffResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetDiff</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">oldTimeStamp</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newTimeStamp</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject19GetLogWithJSONGraphE13DONT_SANITIZEv">
+<span id="_CPPv3IEN12editorObject19GetLogWithJSONGraphEv"></span><span id="_CPPv2IEN12editorObject19GetLogWithJSONGraphEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetLogWithJSONGraph</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id12"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetLogWithJSONGraph</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id13"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetLogWithJSONGraph</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id14"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetLogWithJSONGraph</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject2GoEbRK13DONT_SANITIZEP7git_oid">
+<span id="_CPPv3IEN12editorObject2GoERK13DONT_SANITIZEP7git_oid"></span><span id="_CPPv2IEN12editorObject2GoERK13DONT_SANITIZEP7git_oid"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a2ee81b0f18d25ee10416514f6c38a9e8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span>, <span class="n"><span class="pre">git_oid</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">commitID</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id15"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span>, <span class="n"><span class="pre">git_oid</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">commitID</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id16"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span>, <span class="n"><span class="pre">git_oid</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">commitID</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id17"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span>, <span class="n"><span class="pre">git_oid</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">commitID</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject4RedoEbv">
+<span id="_CPPv3IEN12editorObject4RedoEv"></span><span id="_CPPv2IEN12editorObject4RedoEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1aefa353d96fd225e77138f1ebb482f2a8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Redo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id18"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Redo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id19"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Redo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject4RedoEbRK11UNSANITIZED">
+<span id="_CPPv3IEN12editorObject4RedoERK11UNSANITIZED"></span><span id="_CPPv2IEN12editorObject4RedoERK11UNSANITIZED"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a6c4c8c3a96ae891026202464c3117f5d"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Redo</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id20"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id21"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id22"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id23"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject9UpdateLogEbv">
+<span id="_CPPv3IEN12editorObject9UpdateLogEv"></span><span id="_CPPv2IEN12editorObject9UpdateLogEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject9UpdateLogEbRK13DONT_SANITIZE">
+<span id="_CPPv3IEN12editorObject9UpdateLogERK13DONT_SANITIZE"></span><span id="_CPPv2IEN12editorObject9UpdateLogERK13DONT_SANITIZE"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a78f427458b3e66f7102182ddec828eb0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id24"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id25"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id26"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id27"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id28"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject9UpdateLogEbRK11UNSANITIZED">
+<span id="_CPPv3IEN12editorObject9UpdateLogERK11UNSANITIZED"></span><span id="_CPPv2IEN12editorObject9UpdateLogERK11UNSANITIZED"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a08bd920f3c202193ee69524f86ebfa66"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id29"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getAll</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a305098bfe154230cbef2fbe44e5f9220.html#_CPPv418EDIT_ARG_KEY_VALUE" title="EDIT_ARG_KEY_VALUE"><span class="n"><span class="pre">EDIT_ARG_KEY_VALUE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">jsonCallback</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id30"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getAll</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a8c7c688d1e63ff780f13669e00fc091c.html#_CPPv412EDIT_ARG_MIX" title="EDIT_ARG_MIX"><span class="n"><span class="pre">EDIT_ARG_MIX</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">jsonCallback</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id31"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getAll</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_editorObject_8hpp_1a2de2e14491806b81a5ba85836b550f18.html#_CPPv413EDIT_ARG_NOTE" title="EDIT_ARG_NOTE"><span class="n"><span class="pre">EDIT_ARG_NOTE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">jsonCallback</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id32"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getAll</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="structEDIT__ARG__MUSIC.html#_CPPv414EDIT_ARG_MUSIC" title="EDIT_ARG_MUSIC"><span class="n"><span class="pre">EDIT_ARG_MUSIC</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">jsonCallback</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id33"></span><a class="reference internal" href="structDiffResult.html#_CPPv410DiffResult" title="DiffResult"><span class="n"><span class="pre">DiffResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetDiff</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">oldTimeStamp</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newTimeStamp</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id34"></span><a class="reference internal" href="structDiffResult.html#_CPPv410DiffResult" title="DiffResult"><span class="n"><span class="pre">DiffResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetDiff</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">oldTimeStamp</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newTimeStamp</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id35"></span><a class="reference internal" href="structDiffResult.html#_CPPv410DiffResult" title="DiffResult"><span class="n"><span class="pre">DiffResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetDiff</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">oldTimeStamp</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newTimeStamp</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id36"></span><a class="reference internal" href="structDiffResult.html#_CPPv410DiffResult" title="DiffResult"><span class="n"><span class="pre">DiffResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetDiff</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">oldTimeStamp</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">gitwrap</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="structgitwrap_1_1commit.html#_CPPv4N7gitwrap6commitE" title="gitwrap::commit"><span class="n"><span class="pre">commit</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newTimeStamp</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id37"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetLogWithJSONGraph</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id38"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetLogWithJSONGraph</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id39"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetLogWithJSONGraph</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4IEN12editorObject19GetLogWithJSONGraphE13DONT_SANITIZERK11UNSANITIZED">
+<span id="_CPPv3IEN12editorObject19GetLogWithJSONGraphERK11UNSANITIZED"></span><span id="_CPPv2IEN12editorObject19GetLogWithJSONGraphERK11UNSANITIZED"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="classeditorObject_1a5028cdb2062742b460a6586acefc1a01"></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetLogWithJSONGraph</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id40"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span>, <span class="n"><span class="pre">git_oid</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">commitID</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id41"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span>, <span class="n"><span class="pre">git_oid</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">commitID</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id42"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span>, <span class="n"><span class="pre">git_oid</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">commitID</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id43"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span>, <span class="n"><span class="pre">git_oid</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">commitID</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id44"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Redo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id45"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Redo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id46"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Redo</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id47"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Redo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id48"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id49"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id50"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id51"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id52"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id53"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id54"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id55"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id56"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id57"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id58"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="target" id="id59"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateLog</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicName</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

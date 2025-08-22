@@ -50,10 +50,10 @@ Program Listing for File editorObject.cpp
    
    void 
    editorObject::demoPlayInit(
-       std::optional<audioPlayer>& player, 
+       std::shared_ptr<audioPlayer>& player, 
        unsigned int frameBufferSize, const UNSANITIZED& trackTitle)
    {
-       if(player.has_value()){
+       if(player){
            player.reset();
        }
        trackdata tdtemp(trackTitle);
@@ -68,7 +68,7 @@ Program Listing for File editorObject.cpp
            warnlog(trackTitle);
            return;
        }
-       player.emplace(
+       player = std::make_shared<audioPlayer>(
            projectLocalDB->GetBuildedProject(),
            searchedTd->front(),
            frameBufferSize,

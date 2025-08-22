@@ -180,8 +180,8 @@ class PDJE(object):
     def ResetPlayer(self):
         return _pdje_python.PDJE_ResetPlayer(self)
 
-    def ResetEditor(self):
-        return _pdje_python.PDJE_ResetEditor(self)
+    def CloseEditor(self):
+        return _pdje_python.PDJE_CloseEditor(self)
 
     def PullOutDataLine(self):
         return _pdje_python.PDJE_PullOutDataLine(self)
@@ -200,6 +200,9 @@ class PDJE(object):
 
     def GetPlayerObject(self):
         return _pdje_python.PDJE_GetPlayerObject(self)
+
+    def GetEditorObject(self):
+        return _pdje_python.PDJE_GetEditorObject(self)
 
 # Register PDJE in _pdje_python:
 _pdje_python.PDJE_swigregister(PDJE)
@@ -353,6 +356,7 @@ class MusicOnDeck(object):
     play = property(_pdje_python.MusicOnDeck_play_get, _pdje_python.MusicOnDeck_play_set)
     dec = property(_pdje_python.MusicOnDeck_dec_get, _pdje_python.MusicOnDeck_dec_set)
     fxP = property(_pdje_python.MusicOnDeck_fxP_get, _pdje_python.MusicOnDeck_fxP_set)
+    st = property(_pdje_python.MusicOnDeck_st_get, _pdje_python.MusicOnDeck_st_set)
 
     def __init__(self):
         _pdje_python.MusicOnDeck_swiginit(self, _pdje_python.new_MusicOnDeck())
@@ -385,12 +389,73 @@ class MusicControlPannel(object):
     def getFXHandle(self, title):
         return _pdje_python.MusicControlPannel_getFXHandle(self, title)
 
+    def ChangeBpm(self, title, targetBpm, originBpm):
+        return _pdje_python.MusicControlPannel_ChangeBpm(self, title, targetBpm, originBpm)
+
     def __init__(self, FrameSize):
         _pdje_python.MusicControlPannel_swiginit(self, _pdje_python.new_MusicControlPannel(FrameSize))
     __swig_destroy__ = _pdje_python.delete_MusicControlPannel
 
 # Register MusicControlPannel in _pdje_python:
 _pdje_python.MusicControlPannel_swigregister(MusicControlPannel)
+class EDIT_ARG_MUSIC(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    musicName = property(_pdje_python.EDIT_ARG_MUSIC_musicName_get, _pdje_python.EDIT_ARG_MUSIC_musicName_set)
+    arg = property(_pdje_python.EDIT_ARG_MUSIC_arg_get, _pdje_python.EDIT_ARG_MUSIC_arg_set)
+
+    def __init__(self):
+        _pdje_python.EDIT_ARG_MUSIC_swiginit(self, _pdje_python.new_EDIT_ARG_MUSIC())
+    __swig_destroy__ = _pdje_python.delete_EDIT_ARG_MUSIC
+
+# Register EDIT_ARG_MUSIC in _pdje_python:
+_pdje_python.EDIT_ARG_MUSIC_swigregister(EDIT_ARG_MUSIC)
+class editorObject(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def getMixRepo(self):
+        return _pdje_python.editorObject_getMixRepo(self)
+
+    def getMusicRepo(self, Title):
+        return _pdje_python.editorObject_getMusicRepo(self, Title)
+
+    def getNoteRepo(self):
+        return _pdje_python.editorObject_getNoteRepo(self)
+
+    def getKVRepo(self):
+        return _pdje_python.editorObject_getKVRepo(self)
+
+    def AddLine(self, musicName, firstBar):
+        return _pdje_python.editorObject_AddLine(self, musicName, firstBar)
+
+    def deleteLine(self, obj, skipType, skipDetail):
+        return _pdje_python.editorObject_deleteLine(self, obj, skipType, skipDetail)
+
+    def render(self, trackTitle, ROOTDB):
+        return _pdje_python.editorObject_render(self, trackTitle, ROOTDB)
+
+    def demoPlayInit(self, player, frameBufferSize, trackTitle):
+        return _pdje_python.editorObject_demoPlayInit(self, player, frameBufferSize, trackTitle)
+
+    def pushToRootDB(self, *args):
+        return _pdje_python.editorObject_pushToRootDB(self, *args)
+
+    def DESTROY_PROJECT(self):
+        return _pdje_python.editorObject_DESTROY_PROJECT(self)
+
+    def ConfigNewMusic(self, *args):
+        return _pdje_python.editorObject_ConfigNewMusic(self, *args)
+
+    def Open(self, projectPath):
+        return _pdje_python.editorObject_Open(self, projectPath)
+
+    def __init__(self, auth_name, auth_email):
+        _pdje_python.editorObject_swiginit(self, _pdje_python.new_editorObject(auth_name, auth_email))
+    __swig_destroy__ = _pdje_python.delete_editorObject
+
+# Register editorObject in _pdje_python:
+_pdje_python.editorObject_swigregister(editorObject)
 class MUS_VEC(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr

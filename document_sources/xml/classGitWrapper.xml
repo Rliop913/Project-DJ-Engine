@@ -198,12 +198,16 @@
         <name>log</name>
         <qualifiedname>GitWrapper::log</qualifiedname>
         <briefdescription>
+<para>Walks the commit history and builds a log. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the log was built successfully, <computeroutput>false</computeroutput> otherwise. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="62" column="10" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.cpp" bodystart="209" bodyend="229"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="67" column="10" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.cpp" bodystart="209" bodyend="229"/>
       </memberdef>
       <memberdef kind="function" id="classGitWrapper_1abe24ea986dc68b04555cf2328b5424ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -216,12 +220,25 @@
           <declname>branchName</declname>
         </param>
         <briefdescription>
+<para>Walks the commit history of a specific branch and builds a log. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>branchName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the branch to log. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the log was built successfully, <computeroutput>false</computeroutput> otherwise. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="63" column="10" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.cpp" bodystart="232" bodyend="243"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="75" column="10" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.cpp" bodystart="232" bodyend="243"/>
       </memberdef>
       <memberdef kind="function" id="classGitWrapper_1a1b411134e5dac271fa3d400e66736df4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -236,7 +253,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="70" column="10" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.cpp" bodystart="106" bodyend="116"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="82" column="10" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.cpp" bodystart="106" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="classGitWrapper_1a2bd651dfe8cbd77c30d4e70186c43c03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -251,7 +268,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="73" column="5" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.cpp" bodystart="118" bodyend="121"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="85" column="5" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.cpp" bodystart="118" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="classGitWrapper_1a36909e3fc709f3a3f24e1e7865254a8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -266,7 +283,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="75" column="5" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.cpp" bodystart="123" bodyend="132"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="87" column="5" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.cpp" bodystart="123" bodyend="132"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -282,7 +299,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="65" column="24" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.cpp" bodystart="246" bodyend="267"/>
+        <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="77" column="24" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.cpp" bodystart="246" bodyend="267"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -290,7 +307,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="34" column="1" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="34" bodyend="76"/>
+    <location file="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" line="34" column="1" bodyfile="include/editor/featureWrapper/GitWrap/gitWrapper.hpp" bodystart="34" bodyend="88"/>
     <listofallmembers>
       <member refid="classGitWrapper_1a4405a8082a9c6abd3bd0f00a4706477e" prot="public" virt="non-virtual"><scope>GitWrapper</scope><name>add</name></member>
       <member refid="classGitWrapper_1a168f82a04ce859e339f9fc4e0286e04d" prot="private" virt="non-virtual"><scope>GitWrapper</scope><name>addIndex</name></member>

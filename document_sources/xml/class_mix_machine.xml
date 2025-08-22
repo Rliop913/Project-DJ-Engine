@@ -1,0 +1,538 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_mix_machine" kind="class" language="C++" prot="public">
+    <compoundname>MixMachine</compoundname>
+    <includes refid="_mix_machine_8hpp" local="no">MixMachine.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_mix_machine_1a4f6afbca2361cd38d330a5476fe39aa0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MixMachine::FLAG_SOMETHING_WRONG_ID</definition>
+        <argsstring></argsstring>
+        <name>FLAG_SOMETHING_WRONG_ID</name>
+        <qualifiedname>MixMachine::FLAG_SOMETHING_WRONG_ID</qualifiedname>
+        <initializer>= <ref refid="_mix_machine_8hpp_1aced6e73a38e524a5e798f93c5d5cc3c8" kindref="member">FLAG_ALL_IS_OK</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="84" column="9" bodyfile="include/audioRender/MixMachine/MixMachine.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mix_machine_1a0549fb7913543182e30326524e148e48" prot="public" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex MixMachine::renderLock</definition>
+        <argsstring></argsstring>
+        <name>renderLock</name>
+        <qualifiedname>MixMachine::renderLock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="85" column="16" bodyfile="include/audioRender/MixMachine/MixMachine.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mix_machine_1a48e80186685f1f15f3c343e2db5867ac" prot="public" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="_mix_machine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc" kindref="member">ID</ref>, std::vector&lt; <ref refid="struct_mix_struct" kindref="compound">MixStruct</ref> &gt; &gt;</type>
+        <definition>std::unordered_map&lt;ID, std::vector&lt;MixStruct&gt; &gt; MixMachine::Memorized</definition>
+        <argsstring></argsstring>
+        <name>Memorized</name>
+        <qualifiedname>MixMachine::Memorized</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="88" column="24" bodyfile="include/audioRender/MixMachine/MixMachine.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mix_machine_1a4c003381ce08662f74439bd25978694f" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt;float&gt; MixMachine::rendered_out</definition>
+        <argsstring></argsstring>
+        <name>rendered_out</name>
+        <qualifiedname>MixMachine::rendered_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="109" column="17" bodyfile="include/audioRender/MixMachine/MixMachine.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mix_machine_1a083b4b40d0a1c1a76030ce55305d819b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MixMachine::IDsort</definition>
+        <argsstring>(const MixTranslator &amp;binary)</argsstring>
+        <name>IDsort</name>
+        <qualifiedname>MixMachine::IDsort</qualifiedname>
+        <param>
+          <type>const <ref refid="class_mix_translator" kindref="compound">MixTranslator</ref> &amp;</type>
+          <declname>binary</declname>
+        </param>
+        <briefdescription>
+<para>Sorts data by <ref refid="_mix_machine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc" kindref="member">ID</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>binary</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the translated capnp data. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="97" column="10" bodyfile="include/audioRender/MixMachine/MixMachine.cpp" bodystart="12" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mix_machine_1a81471c37b7168d1269ea7a3067a603d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MixMachine::mix</definition>
+        <argsstring>(litedb &amp;db, const BPM &amp;bpms)</argsstring>
+        <name>mix</name>
+        <qualifiedname>MixMachine::mix</qualifiedname>
+        <param>
+          <type><ref refid="classlitedb" kindref="compound">litedb</ref> &amp;</type>
+          <declname>db</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_b_p_m" kindref="compound">BPM</ref> &amp;</type>
+          <declname>bpms</declname>
+        </param>
+        <briefdescription>
+<para>Main function — executes Prerender. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>RootDB </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bpms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="class_b_p_m" kindref="compound">BPM</ref> object </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="107" column="10" bodyfile="include/audioRender/MixMachine/MixMachine.cpp" bodystart="39" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mix_machine_1a3976bc28930adfa29e317ccac28d1336" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>TypeEnum</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool MixMachine::TypeWorks</definition>
+        <argsstring>(MixStruct &amp;ms, T &amp;data)</argsstring>
+        <name>TypeWorks</name>
+        <qualifiedname>MixMachine::TypeWorks</qualifiedname>
+        <param>
+          <type><ref refid="struct_mix_struct" kindref="compound">MixStruct</ref> &amp;</type>
+          <declname>ms</declname>
+        </param>
+        <param>
+          <type>T &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Implements behavior for each type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>TypeEnum</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="122" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mix_machine_1a12415ff6b9ca664f7e98773fe9a28a59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>TypeEnum</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool MixMachine::TypeWorks</definition>
+        <argsstring>(MixStruct &amp;ms, T &amp;data, litedb &amp;db)</argsstring>
+        <name>TypeWorks</name>
+        <qualifiedname>MixMachine::TypeWorks</qualifiedname>
+        <param>
+          <type><ref refid="struct_mix_struct" kindref="compound">MixStruct</ref> &amp;</type>
+          <declname>ms</declname>
+        </param>
+        <param>
+          <type>T &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="classlitedb" kindref="compound">litedb</ref> &amp;</type>
+          <declname>db</declname>
+        </param>
+        <briefdescription>
+<para>Implements behavior for each type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>ypeEnum</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="135" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mix_machine_1aef8dc7a7f061522399d97721c529ebf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>TypeEnum</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool MixMachine::TypeWorks</definition>
+        <argsstring>(MixStruct &amp;ms, T &amp;data, SIMD_FLOAT *Vec)</argsstring>
+        <name>TypeWorks</name>
+        <qualifiedname>MixMachine::TypeWorks</qualifiedname>
+        <param>
+          <type><ref refid="struct_mix_struct" kindref="compound">MixStruct</ref> &amp;</type>
+          <declname>ms</declname>
+        </param>
+        <param>
+          <type>T &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="_frame_calc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref> *</type>
+          <declname>Vec</declname>
+        </param>
+        <briefdescription>
+<para>Implements behavior for each type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>ypeEnum</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Vec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="148" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mix_machine_1a4a12bc66383b122701c79fc747950aa9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FXtype</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool MixMachine::InterpolateInit</definition>
+        <argsstring>(FXtype &amp;FXvec, SIMD_FLOAT *&amp;PCMvec, MixStruct &amp;ms)</argsstring>
+        <name>InterpolateInit</name>
+        <qualifiedname>MixMachine::InterpolateInit</qualifiedname>
+        <param>
+          <type>FXtype &amp;</type>
+          <declname>FXvec</declname>
+        </param>
+        <param>
+          <type><ref refid="_frame_calc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref> *&amp;</type>
+          <declname>PCMvec</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_mix_struct" kindref="compound">MixStruct</ref> &amp;</type>
+          <declname>ms</declname>
+        </param>
+        <briefdescription>
+<para>initialize interpolator class </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>FXtype</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>FXvec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>PCMvec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="161" column="10" bodyfile="include/audioRender/MixMachine/MixMachine.hpp" bodystart="161" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mix_machine_1add8cf1c7d2cade3a7f7c8a97a2405efa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MixMachine::MixMachine</definition>
+        <argsstring>()</argsstring>
+        <name>MixMachine</name>
+        <qualifiedname>MixMachine::MixMachine</qualifiedname>
+        <briefdescription>
+<para>Constructs a new <ref refid="class_mix_machine" kindref="compound">MixMachine</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="195" column="5" bodyfile="include/audioRender/MixMachine/MixMachine.cpp" bodystart="5" bodyend="7"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mix_machine_1a611f7baefac6b45de2a18f71964ef8fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MixMachine::~MixMachine</definition>
+        <argsstring>()</argsstring>
+        <name>~MixMachine</name>
+        <qualifiedname>MixMachine::~MixMachine</qualifiedname>
+        <briefdescription>
+<para>Destroys the <ref refid="class_mix_machine" kindref="compound">MixMachine</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="200" column="5" bodyfile="include/audioRender/MixMachine/MixMachine.cpp" bodystart="167" bodyend="170"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>prerenderer class </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>MixMachine</label>
+        <link refid="class_mix_machine"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>renderLock</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>Memorized</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>rendered_out</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>MixStruct</label>
+        <link refid="struct_mix_struct"/>
+      </node>
+      <node id="2">
+        <label>std::mutex</label>
+      </node>
+      <node id="3">
+        <label>std::unordered_map&lt; ID, std::vector&lt; MixStruct &gt; &gt;</label>
+        <childnode refid="4" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::vector&lt; MixStruct &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>std::vector&lt; float &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/audioRender/MixMachine/MixMachine.hpp" line="80" column="1" bodyfile="include/audioRender/MixMachine/MixMachine.hpp" bodystart="80" bodyend="201"/>
+    <listofallmembers>
+      <member refid="class_mix_machine_1a4f6afbca2361cd38d330a5476fe39aa0" prot="public" virt="non-virtual"><scope>MixMachine</scope><name>FLAG_SOMETHING_WRONG_ID</name></member>
+      <member refid="class_mix_machine_1a083b4b40d0a1c1a76030ce55305d819b" prot="public" virt="non-virtual"><scope>MixMachine</scope><name>IDsort</name></member>
+      <member refid="class_mix_machine_1a4a12bc66383b122701c79fc747950aa9" prot="public" virt="non-virtual"><scope>MixMachine</scope><name>InterpolateInit</name></member>
+      <member refid="class_mix_machine_1a48e80186685f1f15f3c343e2db5867ac" prot="public" virt="non-virtual"><scope>MixMachine</scope><name>Memorized</name></member>
+      <member refid="class_mix_machine_1a81471c37b7168d1269ea7a3067a603d2" prot="public" virt="non-virtual"><scope>MixMachine</scope><name>mix</name></member>
+      <member refid="class_mix_machine_1add8cf1c7d2cade3a7f7c8a97a2405efa" prot="public" virt="non-virtual"><scope>MixMachine</scope><name>MixMachine</name></member>
+      <member refid="class_mix_machine_1a4c003381ce08662f74439bd25978694f" prot="public" virt="non-virtual"><scope>MixMachine</scope><name>rendered_out</name></member>
+      <member refid="class_mix_machine_1a0549fb7913543182e30326524e148e48" prot="public" virt="non-virtual"><scope>MixMachine</scope><name>renderLock</name></member>
+      <member refid="class_mix_machine_1a3976bc28930adfa29e317ccac28d1336" prot="public" virt="non-virtual"><scope>MixMachine</scope><name>TypeWorks</name></member>
+      <member refid="class_mix_machine_1a12415ff6b9ca664f7e98773fe9a28a59" prot="public" virt="non-virtual"><scope>MixMachine</scope><name>TypeWorks</name></member>
+      <member refid="class_mix_machine_1aef8dc7a7f061522399d97721c529ebf7" prot="public" virt="non-virtual"><scope>MixMachine</scope><name>TypeWorks</name></member>
+      <member refid="class_mix_machine_1a611f7baefac6b45de2a18f71964ef8fe" prot="public" virt="non-virtual"><scope>MixMachine</scope><name>~MixMachine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

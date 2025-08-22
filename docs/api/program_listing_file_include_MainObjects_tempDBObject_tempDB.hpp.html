@@ -50,10 +50,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html">PDJE_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -95,11 +95,15 @@
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">litedb</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tempROOT</span><span class="p">;</span>
 <span class="k">public</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">ERR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">projectRoot</span><span class="p">);</span>
+
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">BuildProject</span><span class="p">(</span><span class="n">trackdata</span><span class="o">&amp;</span><span class="w"> </span><span class="n">td</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">musdata</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">mds</span><span class="p">);</span>
+
 <span class="w">    </span><span class="n">litedb</span><span class="o">&amp;</span><span class="w"> </span><span class="nf">GetBuildedProject</span><span class="p">(){</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tempROOT</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="n">tempDB</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 <span class="w">    </span><span class="o">~</span><span class="n">tempDB</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 

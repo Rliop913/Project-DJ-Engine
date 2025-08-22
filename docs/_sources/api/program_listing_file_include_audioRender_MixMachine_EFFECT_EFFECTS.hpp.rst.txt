@@ -33,7 +33,7 @@ Program Listing for File EFFECTS.hpp
    #include "PDJE_EXPORT_SETTER.hpp"
    
    template<typename Fclass>
-   class PDJE_API FaustDType : public Fclass{
+   class FaustDType : public Fclass{
    private:
        std::vector<float> L;
        std::vector<float> R;

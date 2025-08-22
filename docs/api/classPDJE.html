@@ -52,7 +52,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
@@ -81,6 +81,7 @@
 <li class="toctree-l4"><a class="reference internal" href="structMusicArgs.html">Struct MusicArgs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structMusicOnDeck.html">Struct MusicOnDeck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structNoteArgs.html">Struct NoteArgs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__CORE__DATA__LINE.html">Struct PDJE_CORE_DATA_LINE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Editor_1_1MusicHandleStruct.html">Struct PDJE_Editor::MusicHandleStruct</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV.html">Struct PDJE_IDEV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Finders.html">Struct PDJE_IDEV::Finders</a></li>
@@ -161,8 +162,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html">PDJE_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -228,8 +229,8 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N4PDJE4PDJEERKN2fs4pathE">
-<span id="_CPPv3N4PDJE4PDJEERKN2fs4pathE"></span><span id="_CPPv2N4PDJE4PDJEERKN2fs4pathE"></span><span id="PDJE::PDJE__fs::pathCR"></span><span class="target" id="classPDJE_1a5eef40f586ffaaf4525f93b0f22cf007"></span><span class="sig-name descname"><span class="n"><span class="pre">PDJE</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rootDir</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE4PDJEERKN2fs4pathE" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE4PDJEERK13DONT_SANITIZE">
+<span id="_CPPv3N4PDJE4PDJEERK13DONT_SANITIZE"></span><span id="_CPPv2N4PDJE4PDJEERK13DONT_SANITIZE"></span><span id="PDJE::PDJE__DONT_SANITIZECR"></span><span class="target" id="classPDJE_1aeef01aa77bc39de01b3971a21c0a7ea6"></span><span class="sig-name descname"><span class="n"><span class="pre">PDJE</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rootDir</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE4PDJEERK13DONT_SANITIZE" title="Link to this definition"></a><br /></dt>
 <dd><p>Construct a new <a class="reference internal" href="#classPDJE"><span class="std std-ref">PDJE</span></a> object. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -265,9 +266,39 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERKN2fs4pathE">
-<span id="_CPPv3N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERKN2fs4pathE"></span><span id="_CPPv2N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERKN2fs4pathE"></span><span id="PDJE::InitEditor__DONT_SANITIZECR.DONT_SANITIZECR.fs::pathCR"></span><span class="target" id="classPDJE_1aeda7155d7457c07bbd094161a5ba2200"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InitEditor</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_email</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">projectRoot</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERKN2fs4pathE" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE11ResetPlayerEv">
+<span id="_CPPv3N4PDJE11ResetPlayerEv"></span><span id="_CPPv2N4PDJE11ResetPlayerEv"></span><span id="PDJE::ResetPlayer"></span><span class="target" id="classPDJE_1a681b2b4f9c1fe2f29f9c6a2be6d0a40c"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ResetPlayer</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Reset the Player object. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE11CloseEditorEv">
+<span id="_CPPv3N4PDJE11CloseEditorEv"></span><span id="_CPPv2N4PDJE11CloseEditorEv"></span><span id="PDJE::CloseEditor"></span><span class="target" id="classPDJE_1a06c15a20dc06ab0fd8d0276856758002"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CloseEditor</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Close the Editor object. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE15PullOutDataLineEv">
+<span id="_CPPv3N4PDJE15PullOutDataLineEv"></span><span id="_CPPv2N4PDJE15PullOutDataLineEv"></span><span id="PDJE::PullOutDataLine"></span><span class="target" id="classPDJE_1a99c83bfe063652b508a6fd5e63e028da"></span><a class="reference internal" href="structPDJE__CORE__DATA__LINE.html#_CPPv419PDJE_CORE_DATA_LINE" title="PDJE_CORE_DATA_LINE"><span class="n"><span class="pre">PDJE_CORE_DATA_LINE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PullOutDataLine</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE15PullOutDataLineEv" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE">
+<span id="_CPPv3N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE"></span><span id="_CPPv2N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE"></span><span id="PDJE::InitEditor__DONT_SANITIZECR.DONT_SANITIZECR.DONT_SANITIZECR"></span><span class="target" id="classPDJE_1ae7f3ced4d2b444627df6e3efd9882e17"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InitEditor</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_email</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">projectRoot</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Initializes the editor. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>auth_name</strong> – The author’s name for Git commits. </p></li>
+<li><p><strong>auth_email</strong> – The author’s email for Git commits. </p></li>
+<li><p><strong>projectRoot</strong> – The root directory of the editor project. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the editor was initialized successfully, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE14GetNoteObjectsER9trackdataR19OBJ_SETTER_CALLBACK">
@@ -313,7 +344,7 @@
 <dd><p>searches track the track contains the note data, mix data and included music lists. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>Title</strong> – the tile of the track. send “” to skip filter </p>
+<dd class="field-odd"><p><strong>Title</strong> – the title of the track. send “” to skip filter </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="typedef_dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470.html#dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470"><span class="std std-ref">TRACK_VEC</span></a> the array of the track_data. find what you want </p>
@@ -328,6 +359,17 @@
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>audioPlayer* the player object.check nullptr before use. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE15GetEditorObjectEv">
+<span id="_CPPv3N4PDJE15GetEditorObjectEv"></span><span id="_CPPv2N4PDJE15GetEditorObjectEv"></span><span id="PDJE::GetEditorObject"></span><span class="target" id="classPDJE_1afc08d1de925ce319492f0e57ed788321"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetEditorObject</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>editor handler getter api for binded codes. this function gives you a editor handler. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>editorObject* the editor object. check nullptr before use. </p>
 </dd>
 </dl>
 </dd></dl>

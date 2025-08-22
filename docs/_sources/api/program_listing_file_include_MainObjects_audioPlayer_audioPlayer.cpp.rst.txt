@@ -161,3 +161,22 @@ Program Listing for File audioPlayer.cpp
            return nullptr;
        }
    }
+   
+   PDJE_CORE_DATA_LINE
+   audioPlayer::PullOutDataLine()
+   {
+       PDJE_CORE_DATA_LINE dline;
+       dline.used_frame = &engineDatas.consumedFrames;
+       dline.nowCursor = &engineDatas.nowCursor;
+       dline.maxCursor = &engineDatas.maxCursor;
+       if(!engineDatas.pcmDataPoint->empty()){
+           dline.preRenderedData = engineDatas.pcmDataPoint->data();
+       }
+       if(engineDatas.FXManualPannel.has_value()){
+           dline.fx = &engineDatas.FXManualPannel.value();
+       }
+       if(engineDatas.MusCtrPannel.has_value()){
+           dline.musp = &engineDatas.MusCtrPannel.value();
+       }
+       return dline;
+   }

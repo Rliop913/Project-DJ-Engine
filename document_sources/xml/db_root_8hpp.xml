@@ -1,0 +1,757 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="db_root_8hpp" kind="file" language="C++">
+    <compoundname>dbRoot.hpp</compoundname>
+    <includes local="no">string</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">sqlite3.h</includes>
+    <includes local="no">rocksdb/db.h</includes>
+    <includes local="no">rocksdb/options.h</includes>
+    <includes local="no">rocksdb/table.h</includes>
+    <includes local="no">rocksdb/filter_policy.h</includes>
+    <includes refid="music_d_b_8hpp" local="yes">musicDB.hpp</includes>
+    <includes refid="track_d_b_8hpp" local="yes">trackDB.hpp</includes>
+    <includes local="no">filesystem</includes>
+    <includes refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
+    <includedby refid="temp_d_b_8hpp" local="yes">include/MainObjects/tempDBObject/tempDB.hpp</includedby>
+    <includedby refid="_music_control_pannel_8hpp" local="yes">include/audioRender/ManualMix/MusicControlPannel.hpp</includedby>
+    <includedby refid="_m_u_s_i_c___c_t_r_8hpp" local="yes">include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</includedby>
+    <includedby refid="_decoder_8hpp" local="yes">include/audioRender/MixMachine/MiniaudioObjects/Decoder.hpp</includedby>
+    <includedby refid="_mix_machine_8hpp" local="yes">include/audioRender/MixMachine/MixMachine.hpp</includedby>
+    <includedby refid="db_root_8cpp" local="yes">include/db/dbRoot.cpp</includedby>
+    <includedby refid="editor_8hpp" local="yes">include/editor/editor.hpp</includedby>
+    <includedby refid="_p_d_j_e__interface_8hpp" local="yes">include/interface/PDJE_interface.hpp</includedby>
+    <includedby refid="audio_test_8cpp" local="yes">include/tests/audioTest.cpp</includedby>
+    <includedby refid="db_test_8cpp" local="yes">include/tests/dbTest.cpp</includedby>
+    <incdepgraph>
+      <node id="12">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="1">
+        <label>include/db/dbRoot.hpp</label>
+        <link refid="db_root_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>dbState.hpp</label>
+        <link refid="db_state_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="file_name_sanitizer_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>musicDB.hpp</label>
+        <link refid="music_d_b_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>trackDB.hpp</label>
+        <link refid="track_d_b_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>cppcodec/base64_url_unpadded.hpp</label>
+      </node>
+      <node id="14">
+        <label>filesystem</label>
+      </node>
+      <node id="4">
+        <label>optional</label>
+      </node>
+      <node id="6">
+        <label>rocksdb/db.h</label>
+      </node>
+      <node id="9">
+        <label>rocksdb/filter_policy.h</label>
+      </node>
+      <node id="7">
+        <label>rocksdb/options.h</label>
+      </node>
+      <node id="8">
+        <label>rocksdb/table.h</label>
+      </node>
+      <node id="5">
+        <label>sqlite3.h</label>
+      </node>
+      <node id="2">
+        <label>string</label>
+      </node>
+      <node id="3">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="25">
+        <label>include/MainObjects/audioPlayer/audioCallbacks.cpp</label>
+        <link refid="audio_callbacks_8cpp"/>
+      </node>
+      <node id="24">
+        <label>include/MainObjects/audioPlayer/audioCallbacks.hpp</label>
+        <link refid="audio_callbacks_8hpp"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>include/MainObjects/audioPlayer/audioPlayer.cpp</label>
+        <link refid="audio_player_8cpp"/>
+      </node>
+      <node id="26">
+        <label>include/MainObjects/audioPlayer/audioPlayer.hpp</label>
+        <link refid="audio_player_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/MainObjects/editorObject/addline.cpp</label>
+        <link refid="addline_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/MainObjects/editorObject/commonfunction.cpp</label>
+        <link refid="commonfunction_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/MainObjects/editorObject/deleteline.cpp</label>
+        <link refid="deleteline_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/MainObjects/editorObject/editorObject.cpp</label>
+        <link refid="editor_object_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/MainObjects/editorObject/editorObject.hpp</label>
+        <link refid="editor_object_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/MainObjects/editorObject/getall.cpp</label>
+        <link refid="getall_8cpp"/>
+      </node>
+      <node id="9">
+        <label>include/MainObjects/editorObject/getdiff.cpp</label>
+        <link refid="getdiff_8cpp"/>
+      </node>
+      <node id="10">
+        <label>include/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <link refid="getlogwithjsongraph_8cpp"/>
+      </node>
+      <node id="11">
+        <label>include/MainObjects/editorObject/go.cpp</label>
+        <link refid="go_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/MainObjects/editorObject/redo.cpp</label>
+        <link refid="redo_8cpp"/>
+      </node>
+      <node id="13">
+        <label>include/MainObjects/editorObject/render.cpp</label>
+        <link refid="render_8cpp"/>
+      </node>
+      <node id="14">
+        <label>include/MainObjects/editorObject/undo.cpp</label>
+        <link refid="undo_8cpp"/>
+      </node>
+      <node id="15">
+        <label>include/MainObjects/editorObject/updatelog.cpp</label>
+        <link refid="updatelog_8cpp"/>
+      </node>
+      <node id="22">
+        <label>include/MainObjects/tempDBObject/tempDB.cpp</label>
+        <link refid="temp_d_b_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/MainObjects/tempDBObject/tempDB.hpp</label>
+        <link refid="temp_d_b_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>include/audioRender/ManualMix/MusicControlPannel-inl.h</label>
+        <link refid="_music_control_pannel-inl_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>include/audioRender/ManualMix/MusicControlPannel.cpp</label>
+        <link refid="_music_control_pannel_8cpp"/>
+      </node>
+      <node id="23">
+        <label>include/audioRender/ManualMix/MusicControlPannel.hpp</label>
+        <link refid="_music_control_pannel_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp</label>
+        <link refid="_battle_dj_8cpp"/>
+      </node>
+      <node id="33">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/BattleDj.hpp</label>
+        <link refid="_battle_dj_8hpp"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp</label>
+        <link refid="_m_u_s_i_c___c_t_r_8cpp"/>
+      </node>
+      <node id="32">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</label>
+        <link refid="_m_u_s_i_c___c_t_r_8hpp"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp</label>
+        <link refid="_set_cue_8cpp"/>
+      </node>
+      <node id="58">
+        <label>include/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp</label>
+        <link refid="_decoder_8cpp"/>
+      </node>
+      <node id="57">
+        <label>include/audioRender/MixMachine/MiniaudioObjects/Decoder.hpp</label>
+        <link refid="_decoder_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>include/audioRender/MixMachine/MixMachine-inl.h</label>
+        <link refid="_mix_machine-inl_8h"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>include/audioRender/MixMachine/MixMachine.cpp</label>
+        <link refid="_mix_machine_8cpp"/>
+      </node>
+      <node id="35">
+        <label>include/audioRender/MixMachine/MixMachine.hpp</label>
+        <link refid="_mix_machine_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_COMPRESSOR.cpp</label>
+        <link refid="_type___f_x___c_o_m_p_r_e_s_s_o_r_8cpp"/>
+      </node>
+      <node id="39">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_DISTORTION.cpp</label>
+        <link refid="_type___f_x___d_i_s_t_o_r_t_i_o_n_8cpp"/>
+      </node>
+      <node id="40">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ECHO.cpp</label>
+        <link refid="_type___f_x___e_c_h_o_8cpp"/>
+      </node>
+      <node id="41">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_EQ.cpp</label>
+        <link refid="_type___f_x___e_q_8cpp"/>
+      </node>
+      <node id="42">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_FILTER.cpp</label>
+        <link refid="_type___f_x___f_i_l_t_e_r_8cpp"/>
+      </node>
+      <node id="43">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_FLANGER.cpp</label>
+        <link refid="_type___f_x___f_l_a_n_g_e_r_8cpp"/>
+      </node>
+      <node id="44">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_OCS_FILTER.cpp</label>
+        <link refid="_type___f_x___o_c_s___f_i_l_t_e_r_8cpp"/>
+      </node>
+      <node id="45">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_PANNER.cpp</label>
+        <link refid="_type___f_x___p_a_n_n_e_r_8cpp"/>
+      </node>
+      <node id="46">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_PHASER.cpp</label>
+        <link refid="_type___f_x___p_h_a_s_e_r_8cpp"/>
+      </node>
+      <node id="47">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp</label>
+        <link refid="_type___f_x___r_o_b_o_t_8cpp"/>
+      </node>
+      <node id="48">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp</label>
+        <link refid="_type___f_x___r_o_l_l_8cpp"/>
+      </node>
+      <node id="49">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_TRANCE.cpp</label>
+        <link refid="_type___f_x___t_r_a_n_c_e_8cpp"/>
+      </node>
+      <node id="50">
+        <label>include/audioRender/MixMachine/MixTypes/Type_MUSCTR.cpp</label>
+        <link refid="_type___m_u_s_c_t_r_8cpp"/>
+      </node>
+      <node id="51">
+        <label>include/audioRender/MixMachine/MixTypes/Type_VOL.cpp</label>
+        <link refid="_type___v_o_l_8cpp"/>
+      </node>
+      <node id="53">
+        <label>include/audioRender/audioRender.cpp</label>
+        <link refid="audio_render_8cpp"/>
+      </node>
+      <node id="52">
+        <label>include/audioRender/audioRender.hpp</label>
+        <link refid="audio_render_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>include/db/dbRoot.cpp</label>
+        <link refid="db_root_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/db/dbRoot.hpp</label>
+        <link refid="db_root_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>include/editor/editor.cpp</label>
+        <link refid="editor_8cpp"/>
+      </node>
+      <node id="60">
+        <label>include/editor/editor.hpp</label>
+        <link refid="editor_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
+        <link refid="_music_json_8cpp"/>
+      </node>
+      <node id="31">
+        <label>include/interface/PDJE_Core_DataLine.hpp</label>
+        <link refid="_p_d_j_e___core___data_line_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>include/interface/PDJE_interface.cpp</label>
+        <link refid="_p_d_j_e__interface_8cpp"/>
+      </node>
+      <node id="17">
+        <label>include/interface/PDJE_interface.hpp</label>
+        <link refid="_p_d_j_e__interface_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
+        <link refid="_p_d_j_e__polyglot__wraps_8cpp"/>
+      </node>
+      <node id="56">
+        <label>include/tests/CapnpTest.cpp</label>
+        <link refid="_capnp_test_8cpp"/>
+      </node>
+      <node id="28">
+        <label>include/tests/audioTest.cpp</label>
+        <link refid="audio_test_8cpp"/>
+      </node>
+      <node id="62">
+        <label>include/tests/dbTest.cpp</label>
+        <link refid="db_test_8cpp"/>
+      </node>
+      <node id="20">
+        <label>include/tests/editorTest.cpp</label>
+        <link refid="editor_test_8cpp"/>
+      </node>
+      <node id="21">
+        <label>include/tests/interfaceTest.cpp</label>
+        <link refid="interface_test_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classlitedb" prot="public">litedb</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="db_root_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="structmusdata" kindref="compound">musdata</ref> &gt;</type>
+        <definition>using MUS_VEC =  std::vector&lt;musdata&gt;</definition>
+        <argsstring></argsstring>
+        <name>MUS_VEC</name>
+        <briefdescription>
+<para>music data vector </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="21" column="1" bodyfile="include/db/dbRoot.hpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="db_root_8hpp_1a1bb451b755a8140750f0c66ddd292a40" prot="public" static="no">
+        <type>std::optional&lt; <ref refid="db_root_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0" kindref="member">MUS_VEC</ref> &gt;</type>
+        <definition>using MAYBE_MUS_VEC =  std::optional&lt;MUS_VEC&gt;</definition>
+        <argsstring></argsstring>
+        <name>MAYBE_MUS_VEC</name>
+        <briefdescription>
+<para>music data vector. check before use. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="23" column="1" bodyfile="include/db/dbRoot.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="db_root_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="structtrackdata" kindref="compound">trackdata</ref> &gt;</type>
+        <definition>using TRACK_VEC =  std::vector&lt;trackdata&gt;</definition>
+        <argsstring></argsstring>
+        <name>TRACK_VEC</name>
+        <briefdescription>
+<para>track data vector </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="26" column="1" bodyfile="include/db/dbRoot.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="db_root_8hpp_1a6ab0599a5878a648af6017d8ff86b842" prot="public" static="no">
+        <type>std::optional&lt; <ref refid="db_root_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470" kindref="member">TRACK_VEC</ref> &gt;</type>
+        <definition>using MAYBE_TRACK_VEC =  std::optional&lt;TRACK_VEC&gt;</definition>
+        <argsstring></argsstring>
+        <name>MAYBE_TRACK_VEC</name>
+        <briefdescription>
+<para>track data vector. check before use. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/dbRoot.hpp" line="28" column="1" bodyfile="include/db/dbRoot.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="classlitedb_1ad34e34703f0871c6f7ac4eb1c3242a1b" refkind="member"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sqlite3.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;rocksdb/db.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;rocksdb/options.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;rocksdb/table.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;rocksdb/filter_policy.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="music_d_b_8hpp" kindref="compound">musicDB.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="track_d_b_8hpp" kindref="compound">trackDB.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp" kindref="compound">PDJE_EXPORT_SETTER.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fs<sp/>=<sp/>std::filesystem;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="db_root_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="db_root_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0" kindref="member">MUS_VEC</ref><sp/>=<sp/>std::vector&lt;musdata&gt;;</highlight></codeline>
+<codeline lineno="23" refid="db_root_8hpp_1a1bb451b755a8140750f0c66ddd292a40" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="db_root_8hpp_1a1bb451b755a8140750f0c66ddd292a40" kindref="member">MAYBE_MUS_VEC</ref><sp/>=<sp/>std::optional&lt;MUS_VEC&gt;;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="db_root_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="db_root_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470" kindref="member">TRACK_VEC</ref><sp/>=<sp/>std::vector&lt;trackdata&gt;;</highlight></codeline>
+<codeline lineno="28" refid="db_root_8hpp_1a6ab0599a5878a648af6017d8ff86b842" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="db_root_8hpp_1a6ab0599a5878a648af6017d8ff86b842" kindref="member">MAYBE_TRACK_VEC</ref><sp/>=<sp/>std::optional&lt;TRACK_VEC&gt;;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">RDB<sp/>=<sp/>ROCKSDB_NAMESPACE;</highlight></codeline>
+<codeline lineno="35" refid="classlitedb" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="classlitedb_1a9f3b4346801213c5cb95d7c86921a1c3" kindref="member">litedb</ref>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="38" refid="classlitedb_1a3fa0b6c88df33c15dd495450a6a9023c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>fs::path<sp/><ref refid="classlitedb_1a3fa0b6c88df33c15dd495450a6a9023c" kindref="member">ROOT_PATH</ref>;</highlight></codeline>
+<codeline lineno="39" refid="classlitedb_1a480767651327a324c425de58a999bd13" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>fs::path<sp/><ref refid="classlitedb_1a480767651327a324c425de58a999bd13" kindref="member">sqldbPath</ref>;</highlight></codeline>
+<codeline lineno="40" refid="classlitedb_1a690e69d7f293b7ecbfc2d32be3cbca19" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>fs::path<sp/><ref refid="classlitedb_1a690e69d7f293b7ecbfc2d32be3cbca19" kindref="member">kvdbPath</ref>;</highlight></codeline>
+<codeline lineno="41" refid="classlitedb_1a6e6152c6612760ef978a5d505323519a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>fs::path<sp/><ref refid="classlitedb_1a6e6152c6612760ef978a5d505323519a" kindref="member">vectordbPath</ref>;</highlight></codeline>
+<codeline lineno="43" refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sqlite3*<sp/><ref refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" kindref="member">sdb</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44" refid="classlitedb_1a5d6de7dee58fadfa03b125be11ac7696" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>RDB::DB*<sp/><ref refid="classlitedb_1a5d6de7dee58fadfa03b125be11ac7696" kindref="member">kvdb</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45" refid="classlitedb_1ab91ee89041471eaa2bc56988bedb7c10" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>RDB::WriteOptions<sp/><ref refid="classlitedb_1ab91ee89041471eaa2bc56988bedb7c10" kindref="member">wops</ref>;</highlight></codeline>
+<codeline lineno="46" refid="classlitedb_1a4d3a774674b1bd24f1269791ae8be880" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>RDB::ReadOptions<sp/><ref refid="classlitedb_1a4d3a774674b1bd24f1269791ae8be880" kindref="member">rops</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classlitedb_1ac516f0ac3215ae1f81a733037ae1cd67" kindref="member">CheckTables</ref>();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DBType&gt;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;std::vector&lt;DBType&gt;&gt;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1ad34e34703f0871c6f7ac4eb1c3242a1b" kindref="member">operator&lt;&lt;</ref>(DBType&amp;<sp/>searchClue);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DBType&gt;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1ad2789c301c55befe5e85284f272bb46d" kindref="member">operator&lt;=</ref>(DBType&amp;<sp/>insertObject);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DBType&gt;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1aa3cd2c54c27a2d3d1a7d87a8607e6495" kindref="member">DeleteData</ref>(DBType&amp;<sp/>deleteObject);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DBType&gt;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1a275cceb420462fbf3befb82bde3c3848" kindref="member">EditData</ref>(DBType&amp;<sp/>searchObject,<sp/>DBType&amp;<sp/>editObject);<sp/></highlight><highlight class="comment">//to-do<sp/>impl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1a56ada182651e23ea48df4c1f1c951117" kindref="member">KVGet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref>&amp;<sp/>K,<sp/><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref>&amp;<sp/>V);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1a9a63c34e488edf8f417df3328274f02e" kindref="member">KVPut</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref>&amp;<sp/>K,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref>&amp;<sp/>V);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classlitedb_1af5ef2daaba8dcdea92b28576e4d07178" kindref="member">openDB</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path&amp;<sp/>dbPath);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path</highlight></codeline>
+<codeline lineno="133" refid="classlitedb_1ad20271212217420ecfcd8c1552f87bb9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1ad20271212217420ecfcd8c1552f87bb9" kindref="member">getRoot</ref>(){</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlitedb_1a3fa0b6c88df33c15dd495450a6a9023c" kindref="member">ROOT_PATH</ref>;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb" kindref="compound">litedb</ref>();</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb" kindref="compound">~litedb</ref>();</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DBType&gt;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">std::optional&lt;std::vector&lt;DBType&gt;&gt;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><ref refid="classlitedb_1ad34e34703f0871c6f7ac4eb1c3242a1b" kindref="member">litedb::operator&lt;&lt;</ref>(DBType&amp;<sp/>searchClue)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>stmt<sp/>dbstate<sp/>=<sp/>stmt();</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(searchClue.GenSearchSTMT(dbstate,<sp/><ref refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" kindref="member">sdb</ref>)){</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;DBType&gt;<sp/>data;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(sqlite3_step(dbstate.<ref refid="structstmt_1a411c1a2d054375b6bd93e937e4dadae5" kindref="member">S</ref>)<sp/>==<sp/>SQLITE_ROW){</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data.emplace_back(&amp;dbstate);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::move(data);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DBType&gt;</highlight></codeline>
+<codeline lineno="166" refid="classlitedb_1ad2789c301c55befe5e85284f272bb46d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><ref refid="classlitedb_1ad2789c301c55befe5e85284f272bb46d" kindref="member">litedb::operator&lt;=</ref>(DBType&amp;<sp/>insertObject)</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>sqlite3_exec(<ref refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" kindref="member">sdb</ref>,<sp/></highlight><highlight class="stringliteral">&quot;BEGIN<sp/>TRANSACTION;&quot;</highlight><highlight class="normal">,<sp/>NULL,<sp/>NULL,<sp/>NULL);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structstmt" kindref="compound">stmt</ref><sp/>dbstate<sp/>=<sp/><ref refid="structstmt" kindref="compound">stmt</ref>();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(insertObject.GenInsertSTMT(dbstate,<sp/><ref refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" kindref="member">sdb</ref>)){</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>insertRes<sp/>=<sp/>sqlite3_step(dbstate.<ref refid="structstmt_1a411c1a2d054375b6bd93e937e4dadae5" kindref="member">S</ref>);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(insertRes<sp/>!=<sp/>SQLITE_DONE){</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sqlite3_exec(<ref refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" kindref="member">sdb</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ROLLBACK;&quot;</highlight><highlight class="normal">,<sp/>NULL,<sp/>NULL,<sp/>NULL);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sqlite3_exec(<ref refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" kindref="member">sdb</ref>,<sp/></highlight><highlight class="stringliteral">&quot;COMMIT;&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>NULL);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DBType&gt;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="classlitedb_1aa3cd2c54c27a2d3d1a7d87a8607e6495" refkind="member"><highlight class="normal"><ref refid="classlitedb_1aa3cd2c54c27a2d3d1a7d87a8607e6495" kindref="member">litedb::DeleteData</ref>(DBType&amp;<sp/>deleteObject)</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structstmt" kindref="compound">stmt</ref><sp/>dbstate<sp/>=<sp/><ref refid="structstmt" kindref="compound">stmt</ref>();</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(deleteObject.GenDeleteSTMT(dbstate,<sp/><ref refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" kindref="member">sdb</ref>)){</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>deleteRes<sp/>=<sp/>sqlite3_step(dbstate.<ref refid="structstmt_1a411c1a2d054375b6bd93e937e4dadae5" kindref="member">S</ref>);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(deleteRes<sp/>!=<sp/>SQLITE_DONE){</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DBType&gt;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="classlitedb_1a275cceb420462fbf3befb82bde3c3848" refkind="member"><highlight class="normal"><ref refid="classlitedb_1a275cceb420462fbf3befb82bde3c3848" kindref="member">litedb::EditData</ref>(DBType&amp;<sp/>searchObject,<sp/>DBType&amp;<sp/>editObject)</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structstmt" kindref="compound">stmt</ref><sp/>dbstate<sp/>=<sp/><ref refid="structstmt" kindref="compound">stmt</ref>();</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(searchObject.GenEditSTMT(dbstate,<sp/><ref refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" kindref="member">sdb</ref>,<sp/>editObject)){</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>editRes<sp/>=<sp/>sqlite3_step(dbstate.<ref refid="structstmt_1a411c1a2d054375b6bd93e937e4dadae5" kindref="member">S</ref>);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(editRes<sp/>!=<sp/>SQLITE_DONE){</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="include/db/dbRoot.hpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_mix_translator" kind="class" language="C++" prot="public">
+    <compoundname>MixTranslator</compoundname>
+    <includes refid="_mix_translator_8hpp" local="no">MixTranslator.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_mix_translator_1afef392deff2496a8dd01cb7f3ea8740a" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int MixTranslator::usable_threads</definition>
+        <argsstring></argsstring>
+        <name>usable_threads</name>
+        <qualifiedname>MixTranslator::usable_threads</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="27" column="18" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_mix_translator_1a9a92844279aa3116505ea6b546c5efe3" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="class_m_i_x" kindref="compound">MIX</ref> &gt;</type>
+        <definition>std::optional&lt;MIX&gt; MixTranslator::mixs</definition>
+        <argsstring></argsstring>
+        <name>mixs</name>
+        <qualifiedname>MixTranslator::mixs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="29" column="19" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mix_translator_1a286ceca666d2d1546dcaf7c6b8e2d3f5" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="class_b_p_m" kindref="compound">BPM</ref> &gt;</type>
+        <definition>std::optional&lt;BPM&gt; MixTranslator::bpms</definition>
+        <argsstring></argsstring>
+        <name>bpms</name>
+        <qualifiedname>MixTranslator::bpms</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="30" column="19" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mix_translator_1a693df1a107e2f02ce7c9e8eb48078151" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MixTranslator::Read</definition>
+        <argsstring>(const CapReader&lt; MixBinaryCapnpData &gt; &amp;binary)</argsstring>
+        <name>Read</name>
+        <qualifiedname>MixTranslator::Read</qualifiedname>
+        <param>
+          <type>const <ref refid="class_cap_reader" kindref="compound">CapReader</ref>&lt; MixBinaryCapnpData &gt; &amp;</type>
+          <declname>binary</declname>
+        </param>
+        <briefdescription>
+<para>read capnp mix binary data and init <ref refid="class_m_i_x" kindref="compound">MIX</ref> and <ref refid="class_b_p_m" kindref="compound">BPM</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>binary</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the capnp Mix binary reader wrapper </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true </para>
+</simplesect>
+<simplesect kind="return"><para>false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="39" column="10" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.cpp" bodystart="16" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mix_translator_1a8009a82dcf32d8c4f80bc7b85674bc1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MixTranslator::MixTranslator</definition>
+        <argsstring>()</argsstring>
+        <name>MixTranslator</name>
+        <qualifiedname>MixTranslator::MixTranslator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="41" column="5" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.cpp" bodystart="4" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mix_translator_1aa7a05028f126f4e037e4b26401e56622" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MixTranslator::~MixTranslator</definition>
+        <argsstring>()</argsstring>
+        <name>~MixTranslator</name>
+        <qualifiedname>MixTranslator::~MixTranslator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="42" column="5" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.cpp" bodystart="36" bodyend="39"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>This Translate capnp data into cpp data sturct. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><dot>
+digraph MixTranslator{
+     MixTranslator -&gt; MIX;
+     MixTranslator -&gt; BPM;
+     BPM -&gt; BpmStruct;
+     BpmStruct -&gt; BpmFragment;
+}
+</dot>
+ </para>
+    </detaileddescription>
+    <location file="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" line="25" column="1" bodyfile="include/db/Capnp/Translators/MixTranslator/MixTranslator.hpp" bodystart="25" bodyend="43"/>
+    <listofallmembers>
+      <member refid="class_mix_translator_1a286ceca666d2d1546dcaf7c6b8e2d3f5" prot="public" virt="non-virtual"><scope>MixTranslator</scope><name>bpms</name></member>
+      <member refid="class_mix_translator_1a9a92844279aa3116505ea6b546c5efe3" prot="public" virt="non-virtual"><scope>MixTranslator</scope><name>mixs</name></member>
+      <member refid="class_mix_translator_1a8009a82dcf32d8c4f80bc7b85674bc1e" prot="public" virt="non-virtual"><scope>MixTranslator</scope><name>MixTranslator</name></member>
+      <member refid="class_mix_translator_1a693df1a107e2f02ce7c9e8eb48078151" prot="public" virt="non-virtual"><scope>MixTranslator</scope><name>Read</name></member>
+      <member refid="class_mix_translator_1afef392deff2496a8dd01cb7f3ea8740a" prot="private" virt="non-virtual"><scope>MixTranslator</scope><name>usable_threads</name></member>
+      <member refid="class_mix_translator_1aa7a05028f126f4e037e4b26401e56622" prot="public" virt="non-virtual"><scope>MixTranslator</scope><name>~MixTranslator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

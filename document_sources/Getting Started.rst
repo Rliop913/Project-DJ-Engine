@@ -1,5 +1,5 @@
 Getting Started
-==========
+================
 
 
 .. toctree::
@@ -11,4 +11,5 @@ Getting Started
     Note_Engine
     Util_Engine
 
-    PDJE_Format
+    Editor_Format
+    FX_ARGS

@@ -52,7 +52,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
@@ -81,6 +81,7 @@
 <li class="toctree-l4"><a class="reference internal" href="structMusicArgs.html">Struct MusicArgs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structMusicOnDeck.html">Struct MusicOnDeck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structNoteArgs.html">Struct NoteArgs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__CORE__DATA__LINE.html">Struct PDJE_CORE_DATA_LINE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Editor_1_1MusicHandleStruct.html">Struct PDJE_Editor::MusicHandleStruct</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV.html">Struct PDJE_IDEV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Finders.html">Struct PDJE_IDEV::Finders</a></li>
@@ -161,8 +162,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html">PDJE_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -200,22 +201,51 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv46tempDB">
 <span id="_CPPv36tempDB"></span><span id="_CPPv26tempDB"></span><span id="tempDB"></span><span class="target" id="classtempDB"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tempDB</span></span></span><a class="headerlink" href="#_CPPv46tempDB" title="Link to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>A temporary database for managing project data. </p>
+<p>This class provides a temporary database to store and manage project data during the editing and rendering process. </p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N6tempDB4OpenERKN2fs4pathE">
 <span id="_CPPv3N6tempDB4OpenERKN2fs4pathE"></span><span id="_CPPv2N6tempDB4OpenERKN2fs4pathE"></span><span id="tempDB::Open__fs::pathCR"></span><span class="target" id="classtempDB_1a0885ce2d4508329e60aa0f66b969181c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Open</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">projectRoot</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6tempDB4OpenERKN2fs4pathE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Opens the temporary database at the specified project root. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>projectRoot</strong> – The root directory of the project. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the database was opened successfully, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N6tempDB12BuildProjectER9trackdataRNSt6vectorI7musdataEE">
 <span id="_CPPv3N6tempDB12BuildProjectER9trackdataRNSt6vectorI7musdataEE"></span><span id="_CPPv2N6tempDB12BuildProjectER9trackdataRNSt6vectorI7musdataEE"></span><span id="tempDB::BuildProject__trackdataR.std::vector:musdata:R"></span><span class="target" id="classtempDB_1a217bb9700da48f42b3a0c5cf9b18e6f1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BuildProject</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structtrackdata.html#_CPPv49trackdata" title="trackdata"><span class="n"><span class="pre">trackdata</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">td</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="structmusdata.html#_CPPv47musdata" title="musdata"><span class="n"><span class="pre">musdata</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">mds</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6tempDB12BuildProjectER9trackdataRNSt6vectorI7musdataEE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Builds a project in the temporary database. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>td</strong> – The track data for the project. </p></li>
+<li><p><strong>mds</strong> – A vector of music data for the project. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the project was built successfully, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N6tempDB17GetBuildedProjectEv">
 <span id="_CPPv3N6tempDB17GetBuildedProjectEv"></span><span id="_CPPv2N6tempDB17GetBuildedProjectEv"></span><span id="tempDB::GetBuildedProject"></span><span class="target" id="classtempDB_1a35e219f4738c263aecaeb8d99a912d6f"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetBuildedProject</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6tempDB17GetBuildedProjectEv" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Gets the underlying <code class="docutils literal notranslate"><span class="pre">litedb</span></code> object for the built project. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A reference to the <code class="docutils literal notranslate"><span class="pre">litedb</span></code> object. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N6tempDB6tempDBEv">
@@ -233,7 +263,8 @@
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N6tempDB3ERRE">
 <span id="_CPPv3N6tempDB3ERRE"></span><span id="_CPPv2N6tempDB3ERRE"></span><span id="tempDB::ERR__ss"></span><span class="target" id="classtempDB_1ae37c11d72cf18c2ce58e5197d82be71f"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ERR</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;&quot;</span></span><a class="headerlink" href="#_CPPv4N6tempDB3ERRE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>deprecated Error container. </p>
+</dd></dl>
 
 </div>
 </dd></dl>

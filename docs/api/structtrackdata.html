@@ -52,7 +52,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
@@ -81,6 +81,7 @@
 <li class="toctree-l4"><a class="reference internal" href="structMusicArgs.html">Struct MusicArgs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structMusicOnDeck.html">Struct MusicOnDeck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structNoteArgs.html">Struct NoteArgs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__CORE__DATA__LINE.html">Struct PDJE_CORE_DATA_LINE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Editor_1_1MusicHandleStruct.html">Struct PDJE_Editor::MusicHandleStruct</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV.html">Struct PDJE_IDEV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Finders.html">Struct PDJE_IDEV::Finders</a></li>
@@ -161,8 +162,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html">PDJE_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -269,12 +270,37 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N9trackdata11GenEditSTMTER4stmtP7sqlite3R9trackdata">
 <span id="_CPPv3N9trackdata11GenEditSTMTER4stmtP7sqlite3R9trackdata"></span><span id="_CPPv2N9trackdata11GenEditSTMTER4stmtP7sqlite3R9trackdata"></span><span id="trackdata::GenEditSTMT__stmtR.sqlite3P.trackdataR"></span><span class="target" id="structtrackdata_1a12a001e6ec36d4098ebcc21c732c8434"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GenEditSTMT</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structstmt.html#_CPPv44stmt" title="stmt"><span class="n"><span class="pre">stmt</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dbstate</span></span>, <span class="n"><span class="pre">sqlite3</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">db</span></span>, <a class="reference internal" href="#_CPPv49trackdata" title="trackdata"><span class="n"><span class="pre">trackdata</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">toEdit</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9trackdata11GenEditSTMTER4stmtP7sqlite3R9trackdata" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Generates the edit statement. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dbstate</strong> – The statement pointer. </p></li>
+<li><p><strong>db</strong> – The root database. </p></li>
+<li><p><strong>toEdit</strong> – The track data to edit. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the statement was generated successfully, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N9trackdata13GenDeleteSTMTER4stmtP7sqlite3">
 <span id="_CPPv3N9trackdata13GenDeleteSTMTER4stmtP7sqlite3"></span><span id="_CPPv2N9trackdata13GenDeleteSTMTER4stmtP7sqlite3"></span><span id="trackdata::GenDeleteSTMT__stmtR.sqlite3P"></span><span class="target" id="structtrackdata_1aea2673a94960b6ee2fcbc7b539c42de8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GenDeleteSTMT</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structstmt.html#_CPPv44stmt" title="stmt"><span class="n"><span class="pre">stmt</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">dbstate</span></span>, <span class="n"><span class="pre">sqlite3</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">db</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N9trackdata13GenDeleteSTMTER4stmtP7sqlite3" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Generates the delete statement. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dbstate</strong> – The statement pointer. </p></li>
+<li><p><strong>db</strong> – The root database. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the statement was generated successfully, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">

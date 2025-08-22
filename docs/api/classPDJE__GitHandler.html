@@ -52,7 +52,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
@@ -81,6 +81,7 @@
 <li class="toctree-l4"><a class="reference internal" href="structMusicArgs.html">Struct MusicArgs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structMusicOnDeck.html">Struct MusicOnDeck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structNoteArgs.html">Struct NoteArgs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__CORE__DATA__LINE.html">Struct PDJE_CORE_DATA_LINE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Editor_1_1MusicHandleStruct.html">Struct PDJE_Editor::MusicHandleStruct</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV.html">Struct PDJE_IDEV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Finders.html">Struct PDJE_IDEV::Finders</a></li>
@@ -161,8 +162,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html">PDJE_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -212,17 +213,41 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler4UndoEv">
 <span id="_CPPv3N15PDJE_GitHandler4UndoEv"></span><span id="_CPPv2N15PDJE_GitHandler4UndoEv"></span><span id="PDJE_GitHandler::Undo"></span><span class="target" id="classPDJE__GitHandler_1a5b61f3181d549700a51b3626487d76d0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Undo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15PDJE_GitHandler4UndoEv" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Undoes the last commit. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the undo was successful, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler4RedoEv">
 <span id="_CPPv3N15PDJE_GitHandler4RedoEv"></span><span id="_CPPv2N15PDJE_GitHandler4RedoEv"></span><span id="PDJE_GitHandler::Redo"></span><span class="target" id="classPDJE__GitHandler_1a57ebdca70061f87ec7514cb475892eba"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Redo</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15PDJE_GitHandler4RedoEv" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Redoes the last undone commit. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the redo was successful, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler2GoERKNSt6stringEP7git_oid">
 <span id="_CPPv3N15PDJE_GitHandler2GoERKNSt6stringEP7git_oid"></span><span id="_CPPv2N15PDJE_GitHandler2GoERKNSt6stringEP7git_oid"></span><span id="PDJE_GitHandler::Go__ssCR.git_oidP"></span><span class="target" id="classPDJE__GitHandler_1a57628c3fd9705301a5e209399a57e7d9"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Go</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">branchName</span></span>, <span class="n"><span class="pre">git_oid</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">commitID</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N15PDJE_GitHandler2GoERKNSt6stringEP7git_oid" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Checks out a specific branch or commit. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>branchName</strong> – The name of the branch to check out. </p></li>
+<li><p><strong>commitID</strong> – A pointer to the commit <a class="reference internal" href="typedef_MixMachine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc.html#MixMachine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc"><span class="std std-ref">ID</span></a> to check out (optional). </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if the checkout was successful, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N15PDJE_GitHandler19GetLogWithJSONGraphEv">

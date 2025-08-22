@@ -47,10 +47,10 @@ private:
     std::optional<PDJE_Editor> E_obj;
 
     template<typename EDIT_ARG_TYPE>
-    bool DefaultSaveFuntion();
+    bool DefaultSaveFunction();
 
     template<typename EDIT_ARG_TYPE>
-    bool DefaultSaveFuntion(PDJE_Editor::MusicHandleStruct& i, const EDIT_ARG_MUSIC& obj);
+    bool DefaultSaveFunction(PDJE_Editor::MusicHandleStruct& i, const EDIT_ARG_MUSIC& obj);
 
     trackdata makeTrackData(
         const UNSANITIZED& trackTitle, 
@@ -311,7 +311,7 @@ public:
                         const DONT_SANITIZE& firstBar = "0");
 
     /**
-     * @brief Opens an existing editor project.
+     * @brief Opens an existing editor project. if PDJE called InitEditor, you don't need to call this again.
      * @param projectPath The path to the project.
      * @return `true` if the project was opened successfully, `false` otherwise.
      */
@@ -330,3 +330,61 @@ public:
 
     ~editorObject() = default;
 };
+
+template<> PDJE_API bool editorObject::Undo<EDIT_ARG_NOTE>();
+template<> PDJE_API bool editorObject::Undo<EDIT_ARG_MIX>();
+template<> PDJE_API bool editorObject::Undo<EDIT_ARG_KEY_VALUE>();
+template<> PDJE_API bool editorObject::Undo<EDIT_ARG_MUSIC>(const UNSANITIZED& musicName);
+
+template<> PDJE_API bool editorObject::AddLine<EDIT_ARG_NOTE>(const EDIT_ARG_NOTE& obj);
+template<> PDJE_API bool editorObject::AddLine<EDIT_ARG_MIX>(const EDIT_ARG_MIX& obj);
+template<> PDJE_API bool editorObject::AddLine<EDIT_ARG_KEY_VALUE>(const EDIT_ARG_KEY_VALUE& obj);
+template<> PDJE_API bool editorObject::AddLine<EDIT_ARG_MUSIC>(const EDIT_ARG_MUSIC& obj);
+
+template<> PDJE_API bool editorObject::DefaultSaveFunction<EDIT_ARG_NOTE>();
+template<> PDJE_API bool editorObject::DefaultSaveFunction<EDIT_ARG_MIX>();
+template<> PDJE_API bool editorObject::DefaultSaveFunction<EDIT_ARG_KEY_VALUE>();
+template<> PDJE_API bool editorObject::DefaultSaveFunction<EDIT_ARG_MUSIC>(PDJE_Editor::MusicHandleStruct& i, const EDIT_ARG_MUSIC& obj);
+
+template<> PDJE_API int editorObject::deleteLine<EDIT_ARG_NOTE>(const EDIT_ARG_NOTE& obj);
+template<> PDJE_API int editorObject::deleteLine<EDIT_ARG_KEY_VALUE>(const EDIT_ARG_KEY_VALUE& obj);
+template<> PDJE_API int editorObject::deleteLine<EDIT_ARG_MUSIC>(const EDIT_ARG_MUSIC& obj);
+
+template<> PDJE_API void editorObject::getAll<EDIT_ARG_NOTE>(std::function<void(const EDIT_ARG_NOTE& obj)> jsonCallback);
+template<> PDJE_API void editorObject::getAll<EDIT_ARG_MIX>(std::function<void(const EDIT_ARG_MIX& obj)> jsonCallback);
+template<> PDJE_API void editorObject::getAll<EDIT_ARG_KEY_VALUE>(std::function<void(const EDIT_ARG_KEY_VALUE& obj)> jsonCallback);
+template<> PDJE_API void editorObject::getAll<EDIT_ARG_MUSIC>(std::function<void(const EDIT_ARG_MUSIC& obj)> jsonCallback);
+
+template<> PDJE_API DiffResult editorObject::GetDiff<EDIT_ARG_NOTE>(const gitwrap::commit& oldTimeStamp, const gitwrap::commit& newTimeStamp);
+template<> PDJE_API DiffResult editorObject::GetDiff<EDIT_ARG_MIX>(const gitwrap::commit& oldTimeStamp, const gitwrap::commit& newTimeStamp);
+template<> PDJE_API DiffResult editorObject::GetDiff<EDIT_ARG_KEY_VALUE>(const gitwrap::commit& oldTimeStamp, const gitwrap::commit& newTimeStamp);
+template<> PDJE_API DiffResult editorObject::GetDiff<EDIT_ARG_MUSIC>(const gitwrap::commit& oldTimeStamp, const gitwrap::commit& newTimeStamp);
+
+template<> PDJE_API DONT_SANITIZE editorObject::GetLogWithJSONGraph<EDIT_ARG_NOTE>();
+template<> PDJE_API DONT_SANITIZE editorObject::GetLogWithJSONGraph<EDIT_ARG_MIX>();
+template<> PDJE_API DONT_SANITIZE editorObject::GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
+template<> PDJE_API DONT_SANITIZE editorObject::GetLogWithJSONGraph<EDIT_ARG_MUSIC>();
+
+template<> PDJE_API bool editorObject::Go<EDIT_ARG_NOTE>(const DONT_SANITIZE& branchName, git_oid* commitID);
+template<> PDJE_API bool editorObject::Go<EDIT_ARG_MIX>(const DONT_SANITIZE& branchName, git_oid* commitID);
+template<> PDJE_API bool editorObject::Go<EDIT_ARG_KEY_VALUE>(const DONT_SANITIZE& branchName, git_oid* commitID);
+template<> PDJE_API bool editorObject::Go<EDIT_ARG_MUSIC>(const DONT_SANITIZE& branchName, git_oid* commitID);
+
+template<> PDJE_API bool editorObject::Redo<EDIT_ARG_NOTE>();
+template<> PDJE_API bool editorObject::Redo<EDIT_ARG_MIX>();
+template<> PDJE_API bool editorObject::Redo<EDIT_ARG_KEY_VALUE>();
+template<> PDJE_API bool editorObject::Redo<EDIT_ARG_MUSIC>(const UNSANITIZED& musicName);
+
+template<> PDJE_API bool editorObject::Undo<EDIT_ARG_NOTE>();
+template<> PDJE_API bool editorObject::Undo<EDIT_ARG_MIX>();
+template<> PDJE_API bool editorObject::Undo<EDIT_ARG_KEY_VALUE>();
+template<> PDJE_API bool editorObject::Undo<EDIT_ARG_MUSIC>(const UNSANITIZED& musicName);
+
+template<> PDJE_API bool editorObject::UpdateLog<EDIT_ARG_NOTE>();
+template<> PDJE_API bool editorObject::UpdateLog<EDIT_ARG_NOTE>(const DONT_SANITIZE& branchName);
+template<> PDJE_API bool editorObject::UpdateLog<EDIT_ARG_MIX>();
+template<> PDJE_API bool editorObject::UpdateLog<EDIT_ARG_MIX>(const DONT_SANITIZE& branchName);
+template<> PDJE_API bool editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>();
+template<> PDJE_API bool editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>(const DONT_SANITIZE& branchName);
+template<> PDJE_API bool editorObject::UpdateLog<EDIT_ARG_MUSIC>();
+template<> PDJE_API bool editorObject::UpdateLog<EDIT_ARG_MUSIC>(const UNSANITIZED& musicName);

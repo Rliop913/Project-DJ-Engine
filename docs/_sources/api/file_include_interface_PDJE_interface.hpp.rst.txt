@@ -32,6 +32,8 @@ Includes
 
 - ``NoteTranslator.hpp`` (:ref:`file_include_db_Capnp_Translators_NoteTranslator_NoteTranslator.hpp`)
 
+- ``PDJE_Core_DataLine.hpp`` (:ref:`file_include_interface_PDJE_Core_DataLine.hpp`)
+
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
 
 - ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_PDJE_LOG_SETTER.hpp`)

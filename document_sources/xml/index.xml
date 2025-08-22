@@ -46,6 +46,7 @@
     <member refid="classaudioPlayer_1a373d7c2bf9c5f5a30f01c5d628d52d53" kind="function"><name>GetMusicControlPannel</name></member>
     <member refid="classaudioPlayer_1a3bf1fd80625892dd716c4fdd0f759f06" kind="function"><name>audioPlayer</name></member>
     <member refid="classaudioPlayer_1a0e1432cd3d066e05d52116f9bdd8df22" kind="function"><name>audioPlayer</name></member>
+    <member refid="classaudioPlayer_1aa04a5f49cbe437425f93d78b985d3d9a" kind="function"><name>PullOutDataLine</name></member>
     <member refid="classaudioPlayer_1afb33af34b0a934cacbd96b61b5c1731b" kind="function"><name>~audioPlayer</name></member>
   </compound>
   <compound refid="classaudioRender" kind="class"><name>audioRender</name>
@@ -243,13 +244,17 @@
     <member refid="classeditorObject_1a1a72aaa0a758b9c32f2bcd603a607f3c" kind="variable"><name>kvFilePath</name></member>
     <member refid="classeditorObject_1a76050465d4780555d62af1f9faee05e7" kind="variable"><name>musicFileRootPath</name></member>
     <member refid="classeditorObject_1a23655580a822a7ae6c96ece123f0574d" kind="variable"><name>E_obj</name></member>
-    <member refid="classeditorObject_1a59f64efda4392df5f97a1fc893d234dc" kind="function"><name>DefaultSaveFuntion</name></member>
-    <member refid="classeditorObject_1aebd96635e0fb0919b6560d2e8cd0a5ec" kind="function"><name>DefaultSaveFuntion</name></member>
+    <member refid="classeditorObject_1a70ea370646618a4ac7bd3d3ef50abc7d" kind="function"><name>DefaultSaveFunction</name></member>
+    <member refid="classeditorObject_1aad816e22a3a63d00cb319bf4d985d950" kind="function"><name>DefaultSaveFunction</name></member>
     <member refid="classeditorObject_1a3bb22fbeed9a7e1516f3ab6461698f0b" kind="function"><name>makeTrackData</name></member>
-    <member refid="classeditorObject_1a0a2005b586956c8e00cf5dc434360f01" kind="function"><name>DefaultSaveFuntion</name></member>
-    <member refid="classeditorObject_1a0a2005b586956c8e00cf5dc434360f01" kind="function"><name>DefaultSaveFuntion</name></member>
-    <member refid="classeditorObject_1a0a2005b586956c8e00cf5dc434360f01" kind="function"><name>DefaultSaveFuntion</name></member>
-    <member refid="classeditorObject_1a7701a7956fd850031ef6adef9e9a2947" kind="function"><name>DefaultSaveFuntion</name></member>
+    <member refid="classeditorObject_1afdb9406f4e2aae843f1de7921be5f796" kind="function"><name>DefaultSaveFunction</name></member>
+    <member refid="classeditorObject_1afdb9406f4e2aae843f1de7921be5f796" kind="function"><name>DefaultSaveFunction</name></member>
+    <member refid="classeditorObject_1afdb9406f4e2aae843f1de7921be5f796" kind="function"><name>DefaultSaveFunction</name></member>
+    <member refid="classeditorObject_1a785b7a8cdc22a9c424f5f79b6b031e88" kind="function"><name>DefaultSaveFunction</name></member>
+    <member refid="classeditorObject_1afdb9406f4e2aae843f1de7921be5f796" kind="function"><name>DefaultSaveFunction</name></member>
+    <member refid="classeditorObject_1afdb9406f4e2aae843f1de7921be5f796" kind="function"><name>DefaultSaveFunction</name></member>
+    <member refid="classeditorObject_1afdb9406f4e2aae843f1de7921be5f796" kind="function"><name>DefaultSaveFunction</name></member>
+    <member refid="classeditorObject_1a785b7a8cdc22a9c424f5f79b6b031e88" kind="function"><name>DefaultSaveFunction</name></member>
     <member refid="classeditorObject_1ae5300f1a0b6d39b6fb1e6c79d2bcc91d" kind="function"><name>getMixRepo</name></member>
     <member refid="classeditorObject_1ad4983a3abef2c8acadc325f26a6128d6" kind="function"><name>getMusicRepo</name></member>
     <member refid="classeditorObject_1a3bd541d0ff2a00541fad343c31742c71" kind="function"><name>getNoteRepo</name></member>
@@ -259,7 +264,7 @@
     <member refid="classeditorObject_1acec5f49ab4cc77cd842d4eaf1a25ff87" kind="function"><name>deleteLine</name></member>
     <member refid="classeditorObject_1a74c726d83f0402fa3df6f74ac501dfea" kind="function"><name>deleteLine</name></member>
     <member refid="classeditorObject_1a4d830121f5d68c47448ec062e015cae5" kind="function"><name>render</name></member>
-    <member refid="classeditorObject_1abc0c3f801d6a2a5c5aefc260097ad71c" kind="function"><name>demoPlayInit</name></member>
+    <member refid="classeditorObject_1a394a200d5cf41ec74152c799d17b35e7" kind="function"><name>demoPlayInit</name></member>
     <member refid="classeditorObject_1ae4f8059616e377582bade705a44aafb6" kind="function"><name>pushToRootDB</name></member>
     <member refid="classeditorObject_1a634c551a93f376650075d82dcbe1ffd5" kind="function"><name>pushToRootDB</name></member>
     <member refid="classeditorObject_1a720a623f570f5fbeafb28e812a127938" kind="function"><name>getAll</name></member>
@@ -280,45 +285,88 @@
     <member refid="classeditorObject_1a690ad4f1302edbb56c2ae2cdba91189d" kind="function"><name>editorObject</name></member>
     <member refid="classeditorObject_1a7a44ba5a8abd1bdacdf538b08360339b" kind="function"><name>editorObject</name></member>
     <member refid="classeditorObject_1ae5c4229489a3b798968960d7806a96a9" kind="function"><name>~editorObject</name></member>
-    <member refid="classeditorObject_1a7c16eefe332608bafb37c26698bce30d" kind="function"><name>AddLine</name></member>
-    <member refid="classeditorObject_1a58952da718803281ea57414250a0d1a7" kind="function"><name>AddLine</name></member>
-    <member refid="classeditorObject_1a615a1f759e859e6b33a534ed9f463aa6" kind="function"><name>AddLine</name></member>
-    <member refid="classeditorObject_1a7114ff449a4f6f057020da88acf1b7cd" kind="function"><name>AddLine</name></member>
-    <member refid="classeditorObject_1affb96a97230130694103174193185c63" kind="function"><name>deleteLine</name></member>
-    <member refid="classeditorObject_1a4039d7882c1b739e1729ff2e92b26aca" kind="function"><name>deleteLine</name></member>
-    <member refid="classeditorObject_1a203de908ea6b1b165bd3db4d1c6ad9ea" kind="function"><name>deleteLine</name></member>
-    <member refid="classeditorObject_1aa98ae8a1affe56149fce60791cc095b1" kind="function"><name>getAll</name></member>
-    <member refid="classeditorObject_1ad2bd7260eb834fb55e0971862edab937" kind="function"><name>getAll</name></member>
-    <member refid="classeditorObject_1a6982572c1a01fa74ae3574562274af29" kind="function"><name>getAll</name></member>
-    <member refid="classeditorObject_1af6b09aa1cea6655b5a63f3e6e25ddba8" kind="function"><name>getAll</name></member>
-    <member refid="classeditorObject_1a2b6e0ddcc5927083e534abeb7330abc2" kind="function"><name>GetDiff</name></member>
-    <member refid="classeditorObject_1a2b6e0ddcc5927083e534abeb7330abc2" kind="function"><name>GetDiff</name></member>
-    <member refid="classeditorObject_1a2b6e0ddcc5927083e534abeb7330abc2" kind="function"><name>GetDiff</name></member>
-    <member refid="classeditorObject_1a2b6e0ddcc5927083e534abeb7330abc2" kind="function"><name>GetDiff</name></member>
-    <member refid="classeditorObject_1a083291e2d68bd0105a45351d38a79d90" kind="function"><name>GetLogWithJSONGraph</name></member>
-    <member refid="classeditorObject_1a083291e2d68bd0105a45351d38a79d90" kind="function"><name>GetLogWithJSONGraph</name></member>
-    <member refid="classeditorObject_1a083291e2d68bd0105a45351d38a79d90" kind="function"><name>GetLogWithJSONGraph</name></member>
-    <member refid="classeditorObject_1ad0b23d260054975199e1053bd6598ece" kind="function"><name>GetLogWithJSONGraph</name></member>
-    <member refid="classeditorObject_1a81f7af7c5f4dee33a21bd22d01c68171" kind="function"><name>Go</name></member>
-    <member refid="classeditorObject_1a81f7af7c5f4dee33a21bd22d01c68171" kind="function"><name>Go</name></member>
-    <member refid="classeditorObject_1a81f7af7c5f4dee33a21bd22d01c68171" kind="function"><name>Go</name></member>
-    <member refid="classeditorObject_1a81f7af7c5f4dee33a21bd22d01c68171" kind="function"><name>Go</name></member>
-    <member refid="classeditorObject_1ad1d187780c05e8be6b4a674b39439410" kind="function"><name>Redo</name></member>
-    <member refid="classeditorObject_1ad1d187780c05e8be6b4a674b39439410" kind="function"><name>Redo</name></member>
-    <member refid="classeditorObject_1a6e1f247bff8d06697d445d47d3c27fa3" kind="function"><name>Redo</name></member>
-    <member refid="classeditorObject_1ad1d187780c05e8be6b4a674b39439410" kind="function"><name>Redo</name></member>
-    <member refid="classeditorObject_1a6c49a7cb6015b83bcb83ab0344df989d" kind="function"><name>Undo</name></member>
-    <member refid="classeditorObject_1a6c49a7cb6015b83bcb83ab0344df989d" kind="function"><name>Undo</name></member>
-    <member refid="classeditorObject_1aa8965e5b43d8b4ad823bb5f0630ba0d9" kind="function"><name>Undo</name></member>
-    <member refid="classeditorObject_1a6c49a7cb6015b83bcb83ab0344df989d" kind="function"><name>Undo</name></member>
-    <member refid="classeditorObject_1a4a5b660ce635b5eb25bf31d1e7f0ec63" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a2b82635c605b3ec08aa3bd84b692f809" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a4a5b660ce635b5eb25bf31d1e7f0ec63" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a2b82635c605b3ec08aa3bd84b692f809" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a4a5b660ce635b5eb25bf31d1e7f0ec63" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a2b82635c605b3ec08aa3bd84b692f809" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a4a5b660ce635b5eb25bf31d1e7f0ec63" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1ae5268e6cb844181d61a2735a3f1a1c79" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1ad3274f4153e7e8845a5c5d048f037901" kind="function"><name>AddLine</name></member>
+    <member refid="classeditorObject_1a85dd1bfab830dc51fd12f6f27956ec19" kind="function"><name>AddLine</name></member>
+    <member refid="classeditorObject_1aa6a8bd9998b64a8ee9bc46cd185b518f" kind="function"><name>AddLine</name></member>
+    <member refid="classeditorObject_1a307c57aa6a231f6394d82be67a1d94ae" kind="function"><name>AddLine</name></member>
+    <member refid="classeditorObject_1a1470c80235c92292a246fa3f9ce15865" kind="function"><name>deleteLine</name></member>
+    <member refid="classeditorObject_1a0d5200a4e92a2faee32536810298f590" kind="function"><name>deleteLine</name></member>
+    <member refid="classeditorObject_1a6ab0f93838db62d7e61e9d4f97838e2b" kind="function"><name>deleteLine</name></member>
+    <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" kind="function"><name>Undo</name></member>
+    <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" kind="function"><name>Undo</name></member>
+    <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" kind="function"><name>Undo</name></member>
+    <member refid="classeditorObject_1a789f87b8ed201e8e08b22ba6bc3311b7" kind="function"><name>Undo</name></member>
+    <member refid="classeditorObject_1aa6a8bd9998b64a8ee9bc46cd185b518f" kind="function"><name>AddLine</name></member>
+    <member refid="classeditorObject_1a85dd1bfab830dc51fd12f6f27956ec19" kind="function"><name>AddLine</name></member>
+    <member refid="classeditorObject_1a307c57aa6a231f6394d82be67a1d94ae" kind="function"><name>AddLine</name></member>
+    <member refid="classeditorObject_1ad3274f4153e7e8845a5c5d048f037901" kind="function"><name>AddLine</name></member>
+    <member refid="classeditorObject_1a1470c80235c92292a246fa3f9ce15865" kind="function"><name>deleteLine</name></member>
+    <member refid="classeditorObject_1a0d5200a4e92a2faee32536810298f590" kind="function"><name>deleteLine</name></member>
+    <member refid="classeditorObject_1a6ab0f93838db62d7e61e9d4f97838e2b" kind="function"><name>deleteLine</name></member>
+    <member refid="classeditorObject_1a77db8c854567b251bec9cebd5e91c662" kind="function"><name>getAll</name></member>
+    <member refid="classeditorObject_1a16ef00ce6ae7569f39a60ff8f382bd1c" kind="function"><name>getAll</name></member>
+    <member refid="classeditorObject_1a479985c5e13f1986c6b88ceac67924c6" kind="function"><name>getAll</name></member>
+    <member refid="classeditorObject_1a5fff7bdde5101a29d10a25989c8e248d" kind="function"><name>getAll</name></member>
+    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
+    <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
+    <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
+    <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
+    <member refid="classeditorObject_1a2ee81b0f18d25ee10416514f6c38a9e8" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1a2ee81b0f18d25ee10416514f6c38a9e8" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1a2ee81b0f18d25ee10416514f6c38a9e8" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1a2ee81b0f18d25ee10416514f6c38a9e8" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1aefa353d96fd225e77138f1ebb482f2a8" kind="function"><name>Redo</name></member>
+    <member refid="classeditorObject_1aefa353d96fd225e77138f1ebb482f2a8" kind="function"><name>Redo</name></member>
+    <member refid="classeditorObject_1aefa353d96fd225e77138f1ebb482f2a8" kind="function"><name>Redo</name></member>
+    <member refid="classeditorObject_1a6c4c8c3a96ae891026202464c3117f5d" kind="function"><name>Redo</name></member>
+    <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" kind="function"><name>Undo</name></member>
+    <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" kind="function"><name>Undo</name></member>
+    <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" kind="function"><name>Undo</name></member>
+    <member refid="classeditorObject_1a789f87b8ed201e8e08b22ba6bc3311b7" kind="function"><name>Undo</name></member>
+    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a78f427458b3e66f7102182ddec828eb0" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a78f427458b3e66f7102182ddec828eb0" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a78f427458b3e66f7102182ddec828eb0" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a08bd920f3c202193ee69524f86ebfa66" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a479985c5e13f1986c6b88ceac67924c6" kind="function"><name>getAll</name></member>
+    <member refid="classeditorObject_1a16ef00ce6ae7569f39a60ff8f382bd1c" kind="function"><name>getAll</name></member>
+    <member refid="classeditorObject_1a77db8c854567b251bec9cebd5e91c662" kind="function"><name>getAll</name></member>
+    <member refid="classeditorObject_1a5fff7bdde5101a29d10a25989c8e248d" kind="function"><name>getAll</name></member>
+    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
+    <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
+    <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
+    <member refid="classeditorObject_1a5028cdb2062742b460a6586acefc1a01" kind="function"><name>GetLogWithJSONGraph</name></member>
+    <member refid="classeditorObject_1a2ee81b0f18d25ee10416514f6c38a9e8" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1a2ee81b0f18d25ee10416514f6c38a9e8" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1a2ee81b0f18d25ee10416514f6c38a9e8" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1a2ee81b0f18d25ee10416514f6c38a9e8" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1aefa353d96fd225e77138f1ebb482f2a8" kind="function"><name>Redo</name></member>
+    <member refid="classeditorObject_1aefa353d96fd225e77138f1ebb482f2a8" kind="function"><name>Redo</name></member>
+    <member refid="classeditorObject_1a6c4c8c3a96ae891026202464c3117f5d" kind="function"><name>Redo</name></member>
+    <member refid="classeditorObject_1aefa353d96fd225e77138f1ebb482f2a8" kind="function"><name>Redo</name></member>
+    <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" kind="function"><name>Undo</name></member>
+    <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" kind="function"><name>Undo</name></member>
+    <member refid="classeditorObject_1a789f87b8ed201e8e08b22ba6bc3311b7" kind="function"><name>Undo</name></member>
+    <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" kind="function"><name>Undo</name></member>
+    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a78f427458b3e66f7102182ddec828eb0" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a78f427458b3e66f7102182ddec828eb0" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a78f427458b3e66f7102182ddec828eb0" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a08bd920f3c202193ee69524f86ebfa66" kind="function"><name>UpdateLog</name></member>
   </compound>
   <compound refid="structEightPointValues" kind="struct"><name>EightPointValues</name>
     <member refid="structEightPointValues_1a3550757b6366b0f7752f6ca58673ad5e" kind="variable"><name>vals</name></member>
@@ -330,8 +378,9 @@
     <member refid="classEQ__PDJE_1afcc5ed74a2c18dc07d283f68d6d49a3d" kind="function"><name>copySetting</name></member>
   </compound>
   <compound refid="classEQMan" kind="class"><name>EQMan</name>
-    <member refid="classEQMan_1a20fdd4cbf9b080cc06a2f1ed8a26f29b" kind="variable"><name>EQSelect</name></member>
-    <member refid="classEQMan_1aa4e64f2f4b0a84eaecfa1e9f134ed885" kind="variable"><name>EQPower</name></member>
+    <member refid="classEQMan_1a63081706124345e1c0edd76961068709" kind="variable"><name>EQLow</name></member>
+    <member refid="classEQMan_1a7a7a3099dcc5603232a60af9cf76bfaf" kind="variable"><name>EQMid</name></member>
+    <member refid="classEQMan_1a6a9a00fa191786fcc8cbb8166357e50e" kind="variable"><name>EQHigh</name></member>
     <member refid="classEQMan_1a7232ec791ed4fcfcf36701f7f4446944" kind="function"><name>makeArgSetter</name></member>
   </compound>
   <compound refid="classFaustDType" kind="class"><name>FaustDType</name>
@@ -615,6 +664,7 @@
     <member refid="classMusicControlPannel_1a34dc2fe25fe8382f7f60823289cfb4ce" kind="function"><name>UnloadMusic</name></member>
     <member refid="classMusicControlPannel_1ac5484c7b650f475d92edaa7bcd7c32d0" kind="function"><name>GetPCMFrames</name></member>
     <member refid="classMusicControlPannel_1abc61176dfa07cf2da9ad733d873751a7" kind="function"><name>getFXHandle</name></member>
+    <member refid="classMusicControlPannel_1a823d22774a12b51e8bdf2c7b900522c9" kind="function"><name>ChangeBpm</name></member>
     <member refid="classMusicControlPannel_1a5cda48876a96b5ff01e56493ea52f1b7" kind="function"><name>MusicControlPannel</name></member>
     <member refid="classMusicControlPannel_1ad81a485f6df7756f01a2f97779ab1bab" kind="function"><name>~MusicControlPannel</name></member>
   </compound>
@@ -633,6 +683,7 @@
     <member refid="structMusicOnDeck_1ad0a6052696e1eda69e1de2ca883377d9" kind="variable"><name>play</name></member>
     <member refid="structMusicOnDeck_1a1f21ed340dc5a0de10c6ea3ef5f02ae2" kind="variable"><name>dec</name></member>
     <member refid="structMusicOnDeck_1adb0236f205c3fb887572956235e910b2" kind="variable"><name>fxP</name></member>
+    <member refid="structMusicOnDeck_1a676df855f013b4c7efebfeda13fcab32" kind="variable"><name>st</name></member>
     <member refid="structMusicOnDeck_1a25b320b8236579fcccd0d33682b98bd6" kind="function"><name>MusicOnDeck</name></member>
     <member refid="structMusicOnDeck_1ac8fb7619e76b328d2714d273deb77518" kind="function"><name>~MusicOnDeck</name></member>
   </compound>
@@ -699,14 +750,26 @@
     <member refid="classPDJE_1af963dbf228fca558f4db2e9309370c4f" kind="variable"><name>DBROOT</name></member>
     <member refid="classPDJE_1a83a83d1efbe8c8cc73f2e5c94f96a24c" kind="variable"><name>player</name></member>
     <member refid="classPDJE_1aca6a37c29318969dd3b8401940ee55de" kind="variable"><name>editor</name></member>
-    <member refid="classPDJE_1a5eef40f586ffaaf4525f93b0f22cf007" kind="function"><name>PDJE</name></member>
+    <member refid="classPDJE_1aeef01aa77bc39de01b3971a21c0a7ea6" kind="function"><name>PDJE</name></member>
     <member refid="classPDJE_1a042b3df5b955022a4828cb1f63aaa05b" kind="function"><name>~PDJE</name></member>
     <member refid="classPDJE_1a9de8f88a9b0461472a99596fa0b5c978" kind="function"><name>InitPlayer</name></member>
-    <member refid="classPDJE_1aeda7155d7457c07bbd094161a5ba2200" kind="function"><name>InitEditor</name></member>
+    <member refid="classPDJE_1a681b2b4f9c1fe2f29f9c6a2be6d0a40c" kind="function"><name>ResetPlayer</name></member>
+    <member refid="classPDJE_1a06c15a20dc06ab0fd8d0276856758002" kind="function"><name>CloseEditor</name></member>
+    <member refid="classPDJE_1a99c83bfe063652b508a6fd5e63e028da" kind="function"><name>PullOutDataLine</name></member>
+    <member refid="classPDJE_1ae7f3ced4d2b444627df6e3efd9882e17" kind="function"><name>InitEditor</name></member>
     <member refid="classPDJE_1a14f12cabddceb731d57b608530053587" kind="function"><name>GetNoteObjects</name></member>
     <member refid="classPDJE_1a2639f4ed0f7ac3770f5eb3b6c86ae800" kind="function"><name>SearchMusic</name></member>
     <member refid="classPDJE_1a322160409e9c02e4700e966623bfd4d7" kind="function"><name>SearchTrack</name></member>
     <member refid="classPDJE_1aea68b7f5b26bf7a204bdb173938fd430" kind="function"><name>GetPlayerObject</name></member>
+    <member refid="classPDJE_1afc08d1de925ce319492f0e57ed788321" kind="function"><name>GetEditorObject</name></member>
+  </compound>
+  <compound refid="structPDJE__CORE__DATA__LINE" kind="struct"><name>PDJE_CORE_DATA_LINE</name>
+    <member refid="structPDJE__CORE__DATA__LINE_1a6c9877db2cee46d9f72fe28f03ed451d" kind="variable"><name>used_frame</name></member>
+    <member refid="structPDJE__CORE__DATA__LINE_1a6f4a3b68d7529669518aac2323a934ca" kind="variable"><name>nowCursor</name></member>
+    <member refid="structPDJE__CORE__DATA__LINE_1a16f98f5d8805be6f536a19939c8a6481" kind="variable"><name>maxCursor</name></member>
+    <member refid="structPDJE__CORE__DATA__LINE_1a1a05b5925c47c070a74434a10a0992ab" kind="variable"><name>preRenderedData</name></member>
+    <member refid="structPDJE__CORE__DATA__LINE_1afda4b0837b42addf09266c5caa3126cc" kind="variable"><name>fx</name></member>
+    <member refid="structPDJE__CORE__DATA__LINE_1ab784d05467940b8f4574e9f7443301c3" kind="variable"><name>musp</name></member>
   </compound>
   <compound refid="classPDJE__Editor" kind="class"><name>PDJE_Editor</name>
     <member refid="classPDJE__Editor_1a3f0dad32adc184ab2e8c2833b5f2163a" kind="variable"><name>pt</name></member>
@@ -793,7 +856,6 @@
     <member refid="classPDJE__JSONHandler_1ae83dea4e2bbe7b7710090ed97b370fcf" kind="function"><name>load</name></member>
   </compound>
   <compound refid="classPDJE__Name__Sanitizer" kind="class"><name>PDJE_Name_Sanitizer</name>
-    <member refid="classPDJE__Name__Sanitizer_1a052555eea07a1c31313ddc9602690f8c" kind="variable"><name>PDJE_SANITIZE_ERROR</name></member>
     <member refid="classPDJE__Name__Sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" kind="function"><name>sanitizeFileName</name></member>
     <member refid="classPDJE__Name__Sanitizer_1af67eaa02761870480e60b4a22e558fe6" kind="function"><name>getFileName</name></member>
     <member refid="classPDJE__Name__Sanitizer_1ab140c48c375c3287f623d9c6c1f4b0ac" kind="function"><name>PDJE_Name_Sanitizer</name></member>
@@ -1250,6 +1312,8 @@
   <compound refid="PDJE__INPUT_8hpp" kind="file"><name>PDJE_INPUT.hpp</name>
   </compound>
   <compound refid="windows__I_8hpp" kind="file"><name>windows_I.hpp</name>
+  </compound>
+  <compound refid="PDJE__Core__DataLine_8hpp" kind="file"><name>PDJE_Core_DataLine.hpp</name>
   </compound>
   <compound refid="PDJE__interface_8cpp" kind="file"><name>PDJE_interface.cpp</name>
   </compound>

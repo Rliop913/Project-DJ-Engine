@@ -12,7 +12,7 @@ Program Listing for File PDJE_interface.cpp
 
    #include "PDJE_interface.hpp"
    #include "PDJE_LOG_SETTER.hpp"
-   PDJE::PDJE(const fs::path& rootPath)
+   PDJE::PDJE(const DONT_SANITIZE& rootPath)
    {
        startlog();
        DBROOT = std::make_shared<litedb>();
@@ -171,8 +171,20 @@ Program Listing for File PDJE_interface.cpp
    PDJE::InitEditor(
        const DONT_SANITIZE &auth_name, 
        const DONT_SANITIZE &auth_email,
-       const fs::path& projectRoot)
+       const DONT_SANITIZE& projectRoot)
    {
        editor = std::make_shared<editorObject>(auth_name, auth_email);
        return editor->Open(projectRoot);
+   }
+   
+   PDJE_CORE_DATA_LINE
+   PDJE::PullOutDataLine()
+   {
+       if(player){
+           return player->PullOutDataLine();
+       }
+       else{
+           PDJE_CORE_DATA_LINE errline;
+           return errline;
+       }
    }

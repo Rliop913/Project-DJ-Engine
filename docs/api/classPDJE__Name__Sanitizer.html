@@ -52,7 +52,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api_root.html">API Reference</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="api_root.html#full-api">Full API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
@@ -81,6 +81,7 @@
 <li class="toctree-l4"><a class="reference internal" href="structMusicArgs.html">Struct MusicArgs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structMusicOnDeck.html">Struct MusicOnDeck</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structNoteArgs.html">Struct NoteArgs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__CORE__DATA__LINE.html">Struct PDJE_CORE_DATA_LINE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Editor_1_1MusicHandleStruct.html">Struct PDJE_Editor::MusicHandleStruct</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV.html">Struct PDJE_IDEV</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__IDEV_1_1Finders.html">Struct PDJE_IDEV::Finders</a></li>
@@ -161,8 +162,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html">PDJE_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -200,7 +201,9 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv419PDJE_Name_Sanitizer">
 <span id="_CPPv319PDJE_Name_Sanitizer"></span><span id="_CPPv219PDJE_Name_Sanitizer"></span><span id="PDJE_Name_Sanitizer"></span><span class="target" id="classPDJE__Name__Sanitizer"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_Name_Sanitizer</span></span></span><a class="headerlink" href="#_CPPv419PDJE_Name_Sanitizer" title="Link to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>A utility class for sanitizing and de-sanitizing file names. </p>
+<p>This class provides static methods to encode and decode file names using a URL-safe base64 encoding. This is useful for ensuring that file names do not contain characters that are incompatible with the file system. </p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N19PDJE_Name_Sanitizer19PDJE_Name_SanitizerEv">
@@ -218,20 +221,30 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N19PDJE_Name_Sanitizer16sanitizeFileNameERKNSt6stringE">
 <span id="_CPPv3N19PDJE_Name_Sanitizer16sanitizeFileNameERKNSt6stringE"></span><span id="_CPPv2N19PDJE_Name_Sanitizer16sanitizeFileNameERKNSt6stringE"></span><span id="PDJE_Name_Sanitizer::sanitizeFileName__ssCR"></span><span class="target" id="classPDJE__Name__Sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07.html#_CPPv49SANITIZED" title="SANITIZED"><span class="n"><span class="pre">SANITIZED</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sanitizeFileName</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">fileName</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19PDJE_Name_Sanitizer16sanitizeFileNameERKNSt6stringE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>Sanitizes a file name using base64 URL-unpadded encoding. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fileName</strong> – The file name to sanitize. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An optional containing the sanitized file name, or <code class="docutils literal notranslate"><span class="pre">std::nullopt</span></code> if an error occurs. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N19PDJE_Name_Sanitizer11getFileNameERK9SANITIZED">
 <span id="_CPPv3N19PDJE_Name_Sanitizer11getFileNameERK9SANITIZED"></span><span id="_CPPv2N19PDJE_Name_Sanitizer11getFileNameERK9SANITIZED"></span><span id="PDJE_Name_Sanitizer::getFileName__SANITIZEDCR"></span><span class="target" id="classPDJE__Name__Sanitizer_1af67eaa02761870480e60b4a22e558fe6"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getFileName</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07.html#_CPPv49SANITIZED" title="SANITIZED"><span class="n"><span class="pre">SANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">sanitized</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19PDJE_Name_Sanitizer11getFileNameERK9SANITIZED" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-attributes">Public Static Attributes</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N19PDJE_Name_Sanitizer19PDJE_SANITIZE_ERRORE">
-<span id="_CPPv3N19PDJE_Name_Sanitizer19PDJE_SANITIZE_ERRORE"></span><span id="_CPPv2N19PDJE_Name_Sanitizer19PDJE_SANITIZE_ERRORE"></span><span id="PDJE_Name_Sanitizer::PDJE_SANITIZE_ERROR__ss"></span><span class="target" id="classPDJE__Name__Sanitizer_1a052555eea07a1c31313ddc9602690f8c"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_SANITIZE_ERROR</span></span></span><a class="headerlink" href="#_CPPv4N19PDJE_Name_Sanitizer19PDJE_SANITIZE_ERRORE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
+<dd><p>De-sanitizes a file name that was sanitized with <code class="docutils literal notranslate"><span class="pre">sanitizeFileName</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sanitized</strong> – The sanitized file name. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The original, de-sanitized file name. </p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 </dd></dl>

@@ -10,6 +10,7 @@ Program Listing for File DeckData.hpp
 
 .. code-block:: cpp
 
+   
    #pragma once
    
    #include <vector>
@@ -18,11 +19,14 @@ Program Listing for File DeckData.hpp
    #include "PDJE_EXPORT_SETTER.hpp"
    
    using STR = std::string;
+   
    using SETTER = std::function<void(double)>;
+   
    using ARGSETTER = std::unordered_map<std::string, SETTER>;
+   
    struct Position{
-       unsigned long frame_in;
-       unsigned long frame_out;
+       unsigned long frame_in;  
+       unsigned long frame_out; 
    };
    
    class Meta{

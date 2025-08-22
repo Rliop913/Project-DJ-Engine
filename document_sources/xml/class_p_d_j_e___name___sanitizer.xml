@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_p_d_j_e___name___sanitizer" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_Name_Sanitizer</compoundname>
+    <includes refid="file_name_sanitizer_8hpp" local="no">fileNameSanitizer.hpp</includes>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_p_d_j_e___name___sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &gt;</type>
+        <definition>std::optional&lt; SANITIZED &gt; PDJE_Name_Sanitizer::sanitizeFileName</definition>
+        <argsstring>(const std::string &amp;fileName)</argsstring>
+        <name>sanitizeFileName</name>
+        <qualifiedname>PDJE_Name_Sanitizer::sanitizeFileName</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fileName</declname>
+        </param>
+        <briefdescription>
+<para>Sanitizes a file name using base64 URL-unpadded encoding. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fileName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The file name to sanitize. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An optional containing the sanitized file name, or <computeroutput>std::nullopt</computeroutput> if an error occurs. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/fileNameSanitizer.hpp" line="42" column="26" bodyfile="include/db/fileNameSanitizer.cpp" bodystart="5" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___name___sanitizer_1af67eaa02761870480e60b4a22e558fe6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string PDJE_Name_Sanitizer::getFileName</definition>
+        <argsstring>(const SANITIZED &amp;sanitized)</argsstring>
+        <name>getFileName</name>
+        <qualifiedname>PDJE_Name_Sanitizer::getFileName</qualifiedname>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
+          <declname>sanitized</declname>
+        </param>
+        <briefdescription>
+<para>De-sanitizes a file name that was sanitized with <computeroutput>sanitizeFileName</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sanitized</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The sanitized file name. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The original, de-sanitized file name. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/fileNameSanitizer.hpp" line="50" column="24" bodyfile="include/db/fileNameSanitizer.cpp" bodystart="17" bodyend="21"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_p_d_j_e___name___sanitizer_1ab140c48c375c3287f623d9c6c1f4b0ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_Name_Sanitizer::PDJE_Name_Sanitizer</definition>
+        <argsstring>()=delete</argsstring>
+        <name>PDJE_Name_Sanitizer</name>
+        <qualifiedname>PDJE_Name_Sanitizer::PDJE_Name_Sanitizer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/fileNameSanitizer.hpp" line="52" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___name___sanitizer_1ab336046cda451b24dc8511b6d93873c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_Name_Sanitizer::~PDJE_Name_Sanitizer</definition>
+        <argsstring>()=delete</argsstring>
+        <name>~PDJE_Name_Sanitizer</name>
+        <qualifiedname>PDJE_Name_Sanitizer::~PDJE_Name_Sanitizer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/db/fileNameSanitizer.hpp" line="53" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>A utility class for sanitizing and de-sanitizing file names. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides static methods to encode and decode file names using a URL-safe base64 encoding. This is useful for ensuring that file names do not contain characters that are incompatible with the file system. </para>
+    </detaileddescription>
+    <location file="include/db/fileNameSanitizer.hpp" line="34" column="1" bodyfile="include/db/fileNameSanitizer.hpp" bodystart="34" bodyend="54"/>
+    <listofallmembers>
+      <member refid="class_p_d_j_e___name___sanitizer_1af67eaa02761870480e60b4a22e558fe6" prot="public" virt="non-virtual"><scope>PDJE_Name_Sanitizer</scope><name>getFileName</name></member>
+      <member refid="class_p_d_j_e___name___sanitizer_1ab140c48c375c3287f623d9c6c1f4b0ac" prot="public" virt="non-virtual"><scope>PDJE_Name_Sanitizer</scope><name>PDJE_Name_Sanitizer</name></member>
+      <member refid="class_p_d_j_e___name___sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" prot="public" virt="non-virtual"><scope>PDJE_Name_Sanitizer</scope><name>sanitizeFileName</name></member>
+      <member refid="class_p_d_j_e___name___sanitizer_1ab336046cda451b24dc8511b6d93873c1" prot="public" virt="non-virtual"><scope>PDJE_Name_Sanitizer</scope><name>~PDJE_Name_Sanitizer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -13,6 +13,7 @@
     #include "audioPlayer.hpp"
     #include "MusicControlPannel.hpp"
     #include "fileNameSanitizer.hpp"
+    #include "editorObject.hpp"
     // #include "editorObject.hpp"
     #include "rocksdb/rocksdb_namespace.h"
     #include <filesystem>
@@ -50,6 +51,7 @@ namespace ROCKSDB_NAMESPACE = rocksdb;
 %include "audioPlayer.hpp"
 %include "fileNameSanitizer.hpp"
 %include "MusicControlPannel.hpp"
+%include "editorObject.hpp"
 // %include "editorObject.hpp"
 %include "PDJE_EXPORT_SETTER.hpp"
 namespace fs = std::filesystem;

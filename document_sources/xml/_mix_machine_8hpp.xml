@@ -1,0 +1,998 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="_mix_machine_8hpp" kind="file" language="C++">
+    <compoundname>MixMachine.hpp</compoundname>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">thread</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">sstream</includes>
+    <includes local="no">mutex</includes>
+    <includes refid="_mix_translator_8hpp" local="yes">MixTranslator.hpp</includes>
+    <includes refid="db_root_8hpp" local="yes">dbRoot.hpp</includes>
+    <includes refid="_e_f_f_e_c_t_s_8hpp" local="yes">EFFECTS.hpp</includes>
+    <includes refid="_decoder_8hpp" local="yes">Decoder.hpp</includes>
+    <includes refid="_battle_dj_8hpp" local="yes">BattleDj.hpp</includes>
+    <includes refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
+    <includes local="no">source_location</includes>
+    <includedby refid="audio_player_8hpp" local="yes">include/MainObjects/audioPlayer/audioPlayer.hpp</includedby>
+    <includedby refid="_mix_machine-inl_8h" local="yes">include/audioRender/MixMachine/MixMachine-inl.h</includedby>
+    <includedby refid="_mix_machine_8cpp" local="yes">include/audioRender/MixMachine/MixMachine.cpp</includedby>
+    <includedby refid="_type___f_x___c_o_m_p_r_e_s_s_o_r_8cpp" local="yes">include/audioRender/MixMachine/MixTypes/Type_FX_COMPRESSOR.cpp</includedby>
+    <includedby refid="_type___f_x___d_i_s_t_o_r_t_i_o_n_8cpp" local="yes">include/audioRender/MixMachine/MixTypes/Type_FX_DISTORTION.cpp</includedby>
+    <includedby refid="_type___f_x___e_c_h_o_8cpp" local="yes">include/audioRender/MixMachine/MixTypes/Type_FX_ECHO.cpp</includedby>
+    <includedby refid="_type___f_x___e_q_8cpp" local="yes">include/audioRender/MixMachine/MixTypes/Type_FX_EQ.cpp</includedby>
+    <includedby refid="_type___f_x___f_i_l_t_e_r_8cpp" local="yes">include/audioRender/MixMachine/MixTypes/Type_FX_FILTER.cpp</includedby>
+    <includedby refid="_type___f_x___f_l_a_n_g_e_r_8cpp" local="yes">include/audioRender/MixMachine/MixTypes/Type_FX_FLANGER.cpp</includedby>
+    <includedby refid="_type___f_x___o_c_s___f_i_l_t_e_r_8cpp" local="yes">include/audioRender/MixMachine/MixTypes/Type_FX_OCS_FILTER.cpp</includedby>
+    <includedby refid="_type___f_x___p_a_n_n_e_r_8cpp" local="yes">include/audioRender/MixMachine/MixTypes/Type_FX_PANNER.cpp</includedby>
+    <includedby refid="_type___f_x___p_h_a_s_e_r_8cpp" local="yes">include/audioRender/MixMachine/MixTypes/Type_FX_PHASER.cpp</includedby>
+    <includedby refid="_type___f_x___r_o_b_o_t_8cpp" local="yes">include/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp</includedby>
+    <includedby refid="_type___f_x___r_o_l_l_8cpp" local="yes">include/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp</includedby>
+    <includedby refid="_type___f_x___t_r_a_n_c_e_8cpp" local="yes">include/audioRender/MixMachine/MixTypes/Type_FX_TRANCE.cpp</includedby>
+    <includedby refid="_type___m_u_s_c_t_r_8cpp" local="yes">include/audioRender/MixMachine/MixTypes/Type_MUSCTR.cpp</includedby>
+    <includedby refid="_type___v_o_l_8cpp" local="yes">include/audioRender/MixMachine/MixTypes/Type_VOL.cpp</includedby>
+    <includedby refid="audio_render_8hpp" local="yes">include/audioRender/audioRender.hpp</includedby>
+    <includedby refid="audio_test_8cpp" local="yes">include/tests/audioTest.cpp</includedby>
+    <incdepgraph>
+      <node id="17">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="18">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>DeckData.hpp</label>
+        <link refid="_deck_data_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>EFFECTS.hpp</label>
+        <link refid="_e_f_f_e_c_t_s_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>BattleDj.hpp</label>
+        <link refid="_battle_dj_8hpp"/>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>MUSIC_CTR.hpp</label>
+        <link refid="_m_u_s_i_c___c_t_r_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>Decoder.hpp</label>
+        <link refid="_decoder_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/audioRender/MixMachine/MixMachine.hpp</label>
+        <link refid="_mix_machine_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>CapnpBinary.hpp</label>
+        <link refid="_capnp_binary_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>FrameCalc.hpp</label>
+        <link refid="_frame_calc_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>Bpm.hpp</label>
+        <link refid="_bpm_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>Mix.hpp</label>
+        <link refid="_mix_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>MixTranslator.hpp</label>
+        <link refid="_mix_translator_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>MusicTranslator.hpp</label>
+        <link refid="_music_translator_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>dbRoot.hpp</label>
+        <link refid="db_root_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>dbState.hpp</label>
+        <link refid="db_state_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="file_name_sanitizer_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>musicDB.hpp</label>
+        <link refid="music_d_b_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>trackDB.hpp</label>
+        <link refid="track_d_b_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>FAUST_COMPRESSOR.hpp</label>
+      </node>
+      <node id="45">
+        <label>FAUST_DISTORTION.hpp</label>
+      </node>
+      <node id="46">
+        <label>FAUST_ECHO.hpp</label>
+      </node>
+      <node id="47">
+        <label>FAUST_EQ.hpp</label>
+      </node>
+      <node id="48">
+        <label>FAUST_FILTERS.hpp</label>
+      </node>
+      <node id="49">
+        <label>FAUST_FLANGER.hpp</label>
+      </node>
+      <node id="50">
+        <label>FAUST_OCS_FILTER.hpp</label>
+      </node>
+      <node id="51">
+        <label>FAUST_PANNER.hpp</label>
+      </node>
+      <node id="52">
+        <label>FAUST_PHASER.hpp</label>
+      </node>
+      <node id="56">
+        <label>FAUST_ROBOT.hpp</label>
+      </node>
+      <node id="53">
+        <label>FAUST_ROLL.hpp</label>
+      </node>
+      <node id="54">
+        <label>FAUST_TRANCE.hpp</label>
+      </node>
+      <node id="55">
+        <label>FAUST_VOL.hpp</label>
+      </node>
+      <node id="14">
+        <label>MixBinary.capnp.h</label>
+      </node>
+      <node id="15">
+        <label>MusicBinary.capnp.h</label>
+      </node>
+      <node id="16">
+        <label>NoteBinary.capnp.h</label>
+      </node>
+      <node id="60">
+        <label>SoundTouch.h</label>
+      </node>
+      <node id="9">
+        <label>algorithm</label>
+      </node>
+      <node id="12">
+        <label>capnp/message.h</label>
+      </node>
+      <node id="13">
+        <label>capnp/serialize.h</label>
+      </node>
+      <node id="27">
+        <label>cmath</label>
+      </node>
+      <node id="39">
+        <label>cppcodec/base64_url_unpadded.hpp</label>
+      </node>
+      <node id="22">
+        <label>filesystem</label>
+      </node>
+      <node id="43">
+        <label>functional</label>
+      </node>
+      <node id="28">
+        <label>hwy/aligned_allocator.h</label>
+      </node>
+      <node id="58">
+        <label>miniaudio.h</label>
+      </node>
+      <node id="6">
+        <label>mutex</label>
+      </node>
+      <node id="4">
+        <label>optional</label>
+      </node>
+      <node id="32">
+        <label>rocksdb/db.h</label>
+      </node>
+      <node id="35">
+        <label>rocksdb/filter_policy.h</label>
+      </node>
+      <node id="33">
+        <label>rocksdb/options.h</label>
+      </node>
+      <node id="34">
+        <label>rocksdb/table.h</label>
+      </node>
+      <node id="63">
+        <label>source_location</label>
+      </node>
+      <node id="20">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="21">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="19">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="31">
+        <label>sqlite3.h</label>
+      </node>
+      <node id="5">
+        <label>sstream</label>
+      </node>
+      <node id="10">
+        <label>string</label>
+      </node>
+      <node id="24">
+        <label>string_view</label>
+      </node>
+      <node id="3">
+        <label>thread</label>
+      </node>
+      <node id="23">
+        <label>type_traits</label>
+      </node>
+      <node id="2">
+        <label>unordered_map</label>
+      </node>
+      <node id="8">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>include/MainObjects/audioPlayer/audioPlayer.cpp</label>
+        <link refid="audio_player_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/MainObjects/audioPlayer/audioPlayer.hpp</label>
+        <link refid="audio_player_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/MainObjects/editorObject/addline.cpp</label>
+        <link refid="addline_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/MainObjects/editorObject/commonfunction.cpp</label>
+        <link refid="commonfunction_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/MainObjects/editorObject/deleteline.cpp</label>
+        <link refid="deleteline_8cpp"/>
+      </node>
+      <node id="8">
+        <label>include/MainObjects/editorObject/editorObject.cpp</label>
+        <link refid="editor_object_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/MainObjects/editorObject/editorObject.hpp</label>
+        <link refid="editor_object_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/MainObjects/editorObject/getall.cpp</label>
+        <link refid="getall_8cpp"/>
+      </node>
+      <node id="10">
+        <label>include/MainObjects/editorObject/getdiff.cpp</label>
+        <link refid="getdiff_8cpp"/>
+      </node>
+      <node id="11">
+        <label>include/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <link refid="getlogwithjsongraph_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/MainObjects/editorObject/go.cpp</label>
+        <link refid="go_8cpp"/>
+      </node>
+      <node id="13">
+        <label>include/MainObjects/editorObject/redo.cpp</label>
+        <link refid="redo_8cpp"/>
+      </node>
+      <node id="14">
+        <label>include/MainObjects/editorObject/render.cpp</label>
+        <link refid="render_8cpp"/>
+      </node>
+      <node id="15">
+        <label>include/MainObjects/editorObject/undo.cpp</label>
+        <link refid="undo_8cpp"/>
+      </node>
+      <node id="16">
+        <label>include/MainObjects/editorObject/updatelog.cpp</label>
+        <link refid="updatelog_8cpp"/>
+      </node>
+      <node id="24">
+        <label>include/audioRender/MixMachine/MixMachine-inl.h</label>
+        <link refid="_mix_machine-inl_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>include/audioRender/MixMachine/MixMachine.cpp</label>
+        <link refid="_mix_machine_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/audioRender/MixMachine/MixMachine.hpp</label>
+        <link refid="_mix_machine_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_COMPRESSOR.cpp</label>
+        <link refid="_type___f_x___c_o_m_p_r_e_s_s_o_r_8cpp"/>
+      </node>
+      <node id="27">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_DISTORTION.cpp</label>
+        <link refid="_type___f_x___d_i_s_t_o_r_t_i_o_n_8cpp"/>
+      </node>
+      <node id="28">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ECHO.cpp</label>
+        <link refid="_type___f_x___e_c_h_o_8cpp"/>
+      </node>
+      <node id="29">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_EQ.cpp</label>
+        <link refid="_type___f_x___e_q_8cpp"/>
+      </node>
+      <node id="30">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_FILTER.cpp</label>
+        <link refid="_type___f_x___f_i_l_t_e_r_8cpp"/>
+      </node>
+      <node id="31">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_FLANGER.cpp</label>
+        <link refid="_type___f_x___f_l_a_n_g_e_r_8cpp"/>
+      </node>
+      <node id="32">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_OCS_FILTER.cpp</label>
+        <link refid="_type___f_x___o_c_s___f_i_l_t_e_r_8cpp"/>
+      </node>
+      <node id="33">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_PANNER.cpp</label>
+        <link refid="_type___f_x___p_a_n_n_e_r_8cpp"/>
+      </node>
+      <node id="34">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_PHASER.cpp</label>
+        <link refid="_type___f_x___p_h_a_s_e_r_8cpp"/>
+      </node>
+      <node id="35">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp</label>
+        <link refid="_type___f_x___r_o_b_o_t_8cpp"/>
+      </node>
+      <node id="36">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp</label>
+        <link refid="_type___f_x___r_o_l_l_8cpp"/>
+      </node>
+      <node id="37">
+        <label>include/audioRender/MixMachine/MixTypes/Type_FX_TRANCE.cpp</label>
+        <link refid="_type___f_x___t_r_a_n_c_e_8cpp"/>
+      </node>
+      <node id="38">
+        <label>include/audioRender/MixMachine/MixTypes/Type_MUSCTR.cpp</label>
+        <link refid="_type___m_u_s_c_t_r_8cpp"/>
+      </node>
+      <node id="39">
+        <label>include/audioRender/MixMachine/MixTypes/Type_VOL.cpp</label>
+        <link refid="_type___v_o_l_8cpp"/>
+      </node>
+      <node id="41">
+        <label>include/audioRender/audioRender.cpp</label>
+        <link refid="audio_render_8cpp"/>
+      </node>
+      <node id="40">
+        <label>include/audioRender/audioRender.hpp</label>
+        <link refid="audio_render_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
+        <link refid="_music_json_8cpp"/>
+      </node>
+      <node id="19">
+        <label>include/interface/PDJE_interface.cpp</label>
+        <link refid="_p_d_j_e__interface_8cpp"/>
+      </node>
+      <node id="18">
+        <label>include/interface/PDJE_interface.hpp</label>
+        <link refid="_p_d_j_e__interface_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
+        <link refid="_p_d_j_e__polyglot__wraps_8cpp"/>
+      </node>
+      <node id="23">
+        <label>include/tests/audioTest.cpp</label>
+        <link refid="audio_test_8cpp"/>
+      </node>
+      <node id="21">
+        <label>include/tests/editorTest.cpp</label>
+        <link refid="editor_test_8cpp"/>
+      </node>
+      <node id="22">
+        <label>include/tests/interfaceTest.cpp</label>
+        <link refid="interface_test_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_eight_point_values" prot="public">EightPointValues</innerclass>
+    <innerclass refid="class_mix_machine" prot="public">MixMachine</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="_mix_machine_8hpp_1ab971e7c89e0f2091fa98ccb992d0b3b6" prot="public" static="no">
+        <name>TRY</name>
+        <param><defname>CODE</defname></param>
+        <initializer>try\
+{\
+    CODE\
+}\
+catch(std::exception&amp; e)\
+{\
+    auto now = std::source_location::current();\
+    <ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(now.file_name());\
+    std::string lineNumber = std::to_string(now.line());\
+    <ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(lineNumber);\
+    <ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(now.function_name());\
+    <ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(e.what());\
+    return false;\
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="18" column="11" bodyfile="include/audioRender/MixMachine/MixMachine.hpp" bodystart="18" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="define" id="_mix_machine_8hpp_1aced6e73a38e524a5e798f93c5d5cc3c8" prot="public" static="no">
+        <name>FLAG_ALL_IS_OK</name>
+        <initializer>-99</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="74" column="9" bodyfile="include/audioRender/MixMachine/MixMachine.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93a" prot="public" static="no" strong="no">
+        <type></type>
+        <name>InterpolateType</name>
+        <enumvalue id="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93aadc101ebf31c49c2d4b80b7c6f59f22cb" prot="public">
+          <name>LINEAR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93aa5bb1ecbc04aa23580a0dedf2d9165851" prot="public">
+          <name>COSINE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93aab3387b440e4cd9efe5c4b75467d0e809" prot="public">
+          <name>CUBIC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93aa0338024d4d0d5bffed604c279f8f5550" prot="public">
+          <name>FLAT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>interpolator options </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="40" column="1" bodyfile="include/audioRender/MixMachine/MixMachine.hpp" bodystart="40" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_mix_machine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc" prot="public" static="no">
+        <type>long</type>
+        <definition>using ID =  long</definition>
+        <argsstring></argsstring>
+        <name>ID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/audioRender/MixMachine/MixMachine.hpp" line="47" column="1" bodyfile="include/audioRender/MixMachine/MixMachine.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;thread&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_mix_translator_8hpp" kindref="compound">MixTranslator.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="db_root_8hpp" kindref="compound">dbRoot.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_e_f_f_e_c_t_s_8hpp" kindref="compound">EFFECTS.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_decoder_8hpp" kindref="compound">Decoder.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_battle_dj_8hpp" kindref="compound">BattleDj.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp" kindref="compound">PDJE_LOG_SETTER.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;source_location&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="_mix_machine_8hpp_1ab971e7c89e0f2091fa98ccb992d0b3b6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TRY(CODE)\</highlight></codeline>
+<codeline lineno="19"><highlight class="preprocessor">try\</highlight></codeline>
+<codeline lineno="20"><highlight class="preprocessor">{\</highlight></codeline>
+<codeline lineno="21"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>CODE\</highlight></codeline>
+<codeline lineno="22"><highlight class="preprocessor">}\</highlight></codeline>
+<codeline lineno="23"><highlight class="preprocessor">catch(std::exception&amp;<sp/>e)\</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor">{\</highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>auto<sp/>now<sp/>=<sp/>std::source_location::current();\</highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>critlog(now.file_name());\</highlight></codeline>
+<codeline lineno="27"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>std::string<sp/>lineNumber<sp/>=<sp/>std::to_string(now.line());\</highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>critlog(lineNumber);\</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>critlog(now.function_name());\</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>critlog(e.what());\</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>return<sp/>false;\</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor">}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93a" kindref="member">InterpolateType</ref>{</highlight></codeline>
+<codeline lineno="41" refid="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93aadc101ebf31c49c2d4b80b7c6f59f22cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93aadc101ebf31c49c2d4b80b7c6f59f22cb" kindref="member">LINEAR</ref>,</highlight></codeline>
+<codeline lineno="42" refid="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93aa5bb1ecbc04aa23580a0dedf2d9165851" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93aa5bb1ecbc04aa23580a0dedf2d9165851" kindref="member">COSINE</ref>,</highlight></codeline>
+<codeline lineno="43" refid="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93aab3387b440e4cd9efe5c4b75467d0e809" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93aab3387b440e4cd9efe5c4b75467d0e809" kindref="member">CUBIC</ref>,</highlight></codeline>
+<codeline lineno="44" refid="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93aa0338024d4d0d5bffed604c279f8f5550" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93aa0338024d4d0d5bffed604c279f8f5550" kindref="member">FLAT</ref></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="_mix_machine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="_mix_machine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc" kindref="member">ID</ref><sp/>=<sp/>long;</highlight></codeline>
+<codeline lineno="52" refid="struct_eight_point_values" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="struct_eight_point_values_1a518cc95d6d94ef623f2619efcbf2a43f" kindref="member">EightPointValues</ref>{</highlight></codeline>
+<codeline lineno="53" refid="struct_eight_point_values_1a3550757b6366b0f7752f6ca58673ad5e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="struct_eight_point_values_1a3550757b6366b0f7752f6ca58673ad5e" kindref="member">vals</ref>[8]<sp/>=<sp/>{0,<sp/>};</highlight></codeline>
+<codeline lineno="54" refid="struct_eight_point_values_1a518cc95d6d94ef623f2619efcbf2a43f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_eight_point_values_1a518cc95d6d94ef623f2619efcbf2a43f" kindref="member">EightPointValues</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>rawData){</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::stringstream<sp/>sdata(rawData);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>token;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>counter<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(std::getline(sdata,<sp/>token,<sp/></highlight><highlight class="charliteral">&apos;,&apos;</highlight><highlight class="normal">)){</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_eight_point_values_1a3550757b6366b0f7752f6ca58673ad5e" kindref="member">vals</ref>[counter++]<sp/>=<sp/>std::stof(token);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(counter<sp/>&gt;<sp/>7){</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal">(...)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="_mix_machine_8hpp_1aced6e73a38e524a5e798f93c5d5cc3c8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FLAG_ALL_IS_OK<sp/>-99</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="class_mix_machine" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="class_mix_machine_1add8cf1c7d2cade3a7f7c8a97a2405efa" kindref="member">MixMachine</ref>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>FRAME_POS<sp/>getMixSize(FRAME_POS<sp/>frames);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="84" refid="class_mix_machine_1a4f6afbca2361cd38d330a5476fe39aa0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_mix_machine_1a4f6afbca2361cd38d330a5476fe39aa0" kindref="member">FLAG_SOMETHING_WRONG_ID</ref><sp/>=<sp/><ref refid="_mix_machine_8hpp_1aced6e73a38e524a5e798f93c5d5cc3c8" kindref="member">FLAG_ALL_IS_OK</ref>;<sp/></highlight><highlight class="comment">//-99<sp/>is<sp/>ok</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="class_mix_machine_1a0549fb7913543182e30326524e148e48" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::mutex<sp/><ref refid="class_mix_machine_1a0549fb7913543182e30326524e148e48" kindref="member">renderLock</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::vector&lt;std::thread&gt;<sp/>renderPool;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="class_mix_machine_1a48e80186685f1f15f3c343e2db5867ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;ID,<sp/>std::vector&lt;MixStruct&gt;&gt;<sp/><ref refid="class_mix_machine_1a48e80186685f1f15f3c343e2db5867ac" kindref="member">Memorized</ref>;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_mix_machine_1a083b4b40d0a1c1a76030ce55305d819b" kindref="member">IDsort</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_mix_translator" kindref="compound">MixTranslator</ref>&amp;<sp/>binary);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_mix_machine_1a81471c37b7168d1269ea7a3067a603d2" kindref="member">mix</ref>(<ref refid="classlitedb" kindref="compound">litedb</ref>&amp;<sp/>db,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_b_p_m" kindref="compound">BPM</ref>&amp;<sp/>bpms);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109" refid="class_mix_machine_1a4c003381ce08662f74439bd25978694f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;<sp/><ref refid="class_mix_machine_1a4c003381ce08662f74439bd25978694f" kindref="member">rendered_out</ref>;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;TypeEnum,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="122" refid="class_mix_machine_1a3976bc28930adfa29e317ccac28d1336" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_mix_machine_1a3976bc28930adfa29e317ccac28d1336" kindref="member">TypeWorks</ref>(<ref refid="struct_mix_struct" kindref="compound">MixStruct</ref>&amp;<sp/>ms,<sp/>T&amp;<sp/>data);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;TypeEnum,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="135" refid="class_mix_machine_1a12415ff6b9ca664f7e98773fe9a28a59" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_mix_machine_1a12415ff6b9ca664f7e98773fe9a28a59" kindref="member">TypeWorks</ref>(<ref refid="struct_mix_struct" kindref="compound">MixStruct</ref>&amp;<sp/>ms,<sp/>T&amp;<sp/>data,<sp/><ref refid="classlitedb" kindref="compound">litedb</ref>&amp;<sp/>db);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;TypeEnum,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="148" refid="class_mix_machine_1aef8dc7a7f061522399d97721c529ebf7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_mix_machine_1aef8dc7a7f061522399d97721c529ebf7" kindref="member">TypeWorks</ref>(<ref refid="struct_mix_struct" kindref="compound">MixStruct</ref>&amp;<sp/>ms,<sp/>T&amp;<sp/>data,<sp/><ref refid="_frame_calc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref>*<sp/>Vec);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FXtype&gt;</highlight></codeline>
+<codeline lineno="161" refid="class_mix_machine_1a4a12bc66383b122701c79fc747950aa9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_mix_machine_1a4a12bc66383b122701c79fc747950aa9" kindref="member">InterpolateInit</ref>(FXtype&amp;<sp/>FXvec,<sp/><ref refid="_frame_calc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref>*&amp;<sp/>PCMvec,<sp/><ref refid="struct_mix_struct" kindref="compound">MixStruct</ref>&amp;<sp/>ms){</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FXvec.emplace_back(PCMvec,<sp/>ms.<ref refid="struct_mix_struct_1a8365853d102a34b5904d7b1308baf80b" kindref="member">frame_in</ref>,<sp/>ms.<ref refid="struct_mix_struct_1ac575a8968166219b32c60b339a5f035c" kindref="member">frame_out</ref>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_mix_machine_8hpp_1ab971e7c89e0f2091fa98ccb992d0b3b6" kindref="member">TRY</ref>(</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FXvec.back().selectInterpolator<sp/>=</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::stoi(ms.<ref refid="struct_mix_struct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getFirst().cStr());</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(FXvec.back().selectInterpolator<sp/>==<sp/><ref refid="_mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93aa0338024d4d0d5bffed604c279f8f5550" kindref="member">InterpolateType::FLAT</ref>){</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_mix_machine_8hpp_1ab971e7c89e0f2091fa98ccb992d0b3b6" kindref="member">TRY</ref>(</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FXvec.back().vZero<sp/>=</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::stof(ms.<ref refid="struct_mix_struct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getSecond().cStr());</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_eight_point_values" kindref="compound">EightPointValues</ref><sp/>EPV(ms.<ref refid="struct_mix_struct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getSecond().cStr());</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FXvec.back().v1<sp/>=<sp/>EPV.<ref refid="struct_eight_point_values_1a3550757b6366b0f7752f6ca58673ad5e" kindref="member">vals</ref>[0];</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FXvec.back().v2<sp/>=<sp/>EPV.<ref refid="struct_eight_point_values_1a3550757b6366b0f7752f6ca58673ad5e" kindref="member">vals</ref>[1];</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FXvec.back().v3<sp/>=<sp/>EPV.<ref refid="struct_eight_point_values_1a3550757b6366b0f7752f6ca58673ad5e" kindref="member">vals</ref>[2];</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FXvec.back().v4<sp/>=<sp/>EPV.<ref refid="struct_eight_point_values_1a3550757b6366b0f7752f6ca58673ad5e" kindref="member">vals</ref>[3];</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FXvec.back().v5<sp/>=<sp/>EPV.<ref refid="struct_eight_point_values_1a3550757b6366b0f7752f6ca58673ad5e" kindref="member">vals</ref>[4];</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FXvec.back().v6<sp/>=<sp/>EPV.<ref refid="struct_eight_point_values_1a3550757b6366b0f7752f6ca58673ad5e" kindref="member">vals</ref>[5];</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FXvec.back().v7<sp/>=<sp/>EPV.<ref refid="struct_eight_point_values_1a3550757b6366b0f7752f6ca58673ad5e" kindref="member">vals</ref>[6];</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FXvec.back().v8<sp/>=<sp/>EPV.<ref refid="struct_eight_point_values_1a3550757b6366b0f7752f6ca58673ad5e" kindref="member">vals</ref>[7];</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FXvec.back().frames<sp/>=<sp/>ms.<ref refid="struct_mix_struct_1ac575a8968166219b32c60b339a5f035c" kindref="member">frame_out</ref><sp/>-<sp/>ms.<ref refid="struct_mix_struct_1a8365853d102a34b5904d7b1308baf80b" kindref="member">frame_in</ref>;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FXvec.back().timerActive<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_mix_machine" kindref="compound">MixMachine</ref>();</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_mix_machine" kindref="compound">~MixMachine</ref>();</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/audioRender/MixMachine/MixMachine.hpp"/>
+  </compounddef>
+</doxygen>

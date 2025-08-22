@@ -50,10 +50,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html">PDJE_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -209,6 +209,26 @@
 <span class="w">    </span><span class="k">else</span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">deck</span><span class="p">[</span><span class="n">safeTitle</span><span class="p">.</span><span class="n">value</span><span class="p">()].</span><span class="n">fxP</span><span class="p">;</span>
 
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span>
+<span class="nf">MusicControlPannel::ChangeBpm</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">targetBpm</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">originBpm</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">safeTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Name_Sanitizer</span><span class="o">::</span><span class="n">sanitizeFileName</span><span class="p">(</span><span class="n">title</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">safeTitle</span><span class="p">){</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to sanitize title from MusicControlPannel SetMusic. ErrTitle: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">title</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">deck</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">safeTitle</span><span class="p">.</span><span class="n">value</span><span class="p">())</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">deck</span><span class="p">.</span><span class="n">end</span><span class="p">()){</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;failed to find music from deck from MusicControlPannel SetMusic. ErrTitle: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="n">title</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">deck</span><span class="p">[</span><span class="n">safeTitle</span><span class="p">.</span><span class="n">value</span><span class="p">()].</span><span class="n">st</span><span class="o">-&gt;</span><span class="n">setTempo</span><span class="p">(</span><span class="n">targetBpm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">originBpm</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>

@@ -87,5 +87,4 @@ Program Listing for File audioCallbacks.cpp
        auto Data = reinterpret_cast<audioEngineDataStruct*>(pDevice->pUserData);
        Data->MusCtrPannel->GetPCMFrames(reinterpret_cast<float*>(pOutput), frameCount);
        
-       
    }

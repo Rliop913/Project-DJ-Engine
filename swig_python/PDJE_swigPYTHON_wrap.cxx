@@ -3211,47 +3211,56 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_ARGSETTER_WRAPPER swig_types[1]
 #define SWIGTYPE_p_BIN swig_types[2]
 #define SWIGTYPE_p_Decoder swig_types[3]
-#define SWIGTYPE_p_FXControlPannel swig_types[4]
-#define SWIGTYPE_p_MusicControlPannel swig_types[5]
-#define SWIGTYPE_p_MusicOnDeck swig_types[6]
-#define SWIGTYPE_p_OBJ_SETTER_CALLBACK swig_types[7]
-#define SWIGTYPE_p_PDJE swig_types[8]
-#define SWIGTYPE_p_PDJE_CORE_DATA_LINE swig_types[9]
-#define SWIGTYPE_p_PDJE_Name_Sanitizer swig_types[10]
-#define SWIGTYPE_p_allocator_type swig_types[11]
-#define SWIGTYPE_p_audioPlayer swig_types[12]
-#define SWIGTYPE_p_char swig_types[13]
-#define SWIGTYPE_p_cppcodec__base64_url_unpadded swig_types[14]
-#define SWIGTYPE_p_difference_type swig_types[15]
-#define SWIGTYPE_p_float swig_types[16]
-#define SWIGTYPE_p_litedb swig_types[17]
-#define SWIGTYPE_p_musdata swig_types[18]
-#define SWIGTYPE_p_p_PyObject swig_types[19]
-#define SWIGTYPE_p_p_float swig_types[20]
-#define SWIGTYPE_p_size_type swig_types[21]
-#define SWIGTYPE_p_sqlite3 swig_types[22]
-#define SWIGTYPE_p_std__allocatorT_musdata_t swig_types[23]
-#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[24]
-#define SWIGTYPE_p_std__allocatorT_trackdata_t swig_types[25]
-#define SWIGTYPE_p_std__filesystem__path swig_types[26]
-#define SWIGTYPE_p_std__invalid_argument swig_types[27]
-#define SWIGTYPE_p_std__mapT_std__string_MusicOnDeck_t swig_types[28]
-#define SWIGTYPE_p_std__optionalT_std__string_t swig_types[29]
-#define SWIGTYPE_p_std__optionalT_std__vectorT_musdata_t_t swig_types[30]
-#define SWIGTYPE_p_std__optionalT_std__vectorT_trackdata_t_t swig_types[31]
-#define SWIGTYPE_p_std__shared_ptrT_audioPlayer_t swig_types[32]
-#define SWIGTYPE_p_std__shared_ptrT_editorObject_t swig_types[33]
-#define SWIGTYPE_p_std__shared_ptrT_litedb_t swig_types[34]
-#define SWIGTYPE_p_std__string swig_types[35]
-#define SWIGTYPE_p_std__vectorT_musdata_t swig_types[36]
-#define SWIGTYPE_p_std__vectorT_std__string_t swig_types[37]
-#define SWIGTYPE_p_std__vectorT_trackdata_t swig_types[38]
-#define SWIGTYPE_p_stmt swig_types[39]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[40]
-#define SWIGTYPE_p_trackdata swig_types[41]
-#define SWIGTYPE_p_value_type swig_types[42]
-static swig_type_info *swig_types[44];
-static swig_module_info swig_module = {swig_types, 43, 0, 0, 0, 0};
+#define SWIGTYPE_p_EDIT_ARG_MUSIC swig_types[4]
+#define SWIGTYPE_p_FXControlPannel swig_types[5]
+#define SWIGTYPE_p_KEY_VALUE swig_types[6]
+#define SWIGTYPE_p_MixArgs swig_types[7]
+#define SWIGTYPE_p_MusicArgs swig_types[8]
+#define SWIGTYPE_p_MusicControlPannel swig_types[9]
+#define SWIGTYPE_p_MusicOnDeck swig_types[10]
+#define SWIGTYPE_p_NoteArgs swig_types[11]
+#define SWIGTYPE_p_OBJ_SETTER_CALLBACK swig_types[12]
+#define SWIGTYPE_p_PDJE swig_types[13]
+#define SWIGTYPE_p_PDJE_CORE_DATA_LINE swig_types[14]
+#define SWIGTYPE_p_PDJE_Name_Sanitizer swig_types[15]
+#define SWIGTYPE_p_allocator_type swig_types[16]
+#define SWIGTYPE_p_audioPlayer swig_types[17]
+#define SWIGTYPE_p_char swig_types[18]
+#define SWIGTYPE_p_cppcodec__base64_url_unpadded swig_types[19]
+#define SWIGTYPE_p_difference_type swig_types[20]
+#define SWIGTYPE_p_editorObject swig_types[21]
+#define SWIGTYPE_p_float swig_types[22]
+#define SWIGTYPE_p_git_repository swig_types[23]
+#define SWIGTYPE_p_litedb swig_types[24]
+#define SWIGTYPE_p_musdata swig_types[25]
+#define SWIGTYPE_p_p_PyObject swig_types[26]
+#define SWIGTYPE_p_p_float swig_types[27]
+#define SWIGTYPE_p_size_type swig_types[28]
+#define SWIGTYPE_p_sqlite3 swig_types[29]
+#define SWIGTYPE_p_std__allocatorT_musdata_t swig_types[30]
+#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[31]
+#define SWIGTYPE_p_std__allocatorT_trackdata_t swig_types[32]
+#define SWIGTYPE_p_std__filesystem__path swig_types[33]
+#define SWIGTYPE_p_std__invalid_argument swig_types[34]
+#define SWIGTYPE_p_std__mapT_std__string_MusicOnDeck_t swig_types[35]
+#define SWIGTYPE_p_std__optionalT_soundtouch__SoundTouch_t swig_types[36]
+#define SWIGTYPE_p_std__optionalT_std__string_t swig_types[37]
+#define SWIGTYPE_p_std__optionalT_std__vectorT_musdata_t_t swig_types[38]
+#define SWIGTYPE_p_std__optionalT_std__vectorT_trackdata_t_t swig_types[39]
+#define SWIGTYPE_p_std__shared_ptrT_audioPlayer_t swig_types[40]
+#define SWIGTYPE_p_std__shared_ptrT_editorObject_t swig_types[41]
+#define SWIGTYPE_p_std__shared_ptrT_litedb_t swig_types[42]
+#define SWIGTYPE_p_std__string swig_types[43]
+#define SWIGTYPE_p_std__unordered_mapT_std__string_std__string_t swig_types[44]
+#define SWIGTYPE_p_std__vectorT_musdata_t swig_types[45]
+#define SWIGTYPE_p_std__vectorT_std__string_t swig_types[46]
+#define SWIGTYPE_p_std__vectorT_trackdata_t swig_types[47]
+#define SWIGTYPE_p_stmt swig_types[48]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[49]
+#define SWIGTYPE_p_trackdata swig_types[50]
+#define SWIGTYPE_p_value_type swig_types[51]
+static swig_type_info *swig_types[53];
+static swig_module_info swig_module = {swig_types, 52, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3411,6 +3420,7 @@ namespace swig {
     #include "audioPlayer.hpp"
     #include "MusicControlPannel.hpp"
     #include "fileNameSanitizer.hpp"
+    #include "editorObject.hpp"
     // #include "editorObject.hpp"
     #include "rocksdb/rocksdb_namespace.h"
     #include <filesystem>
@@ -7005,7 +7015,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PDJE_ResetEditor(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_PDJE_CloseEditor(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   PDJE *arg1 = (PDJE *) 0 ;
   void *argp1 = 0 ;
@@ -7017,10 +7027,10 @@ SWIGINTERN PyObject *_wrap_PDJE_ResetEditor(PyObject *self, PyObject *args) {
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PDJE, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_ResetEditor" "', argument " "1"" of type '" "PDJE *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_CloseEditor" "', argument " "1"" of type '" "PDJE *""'"); 
   }
   arg1 = reinterpret_cast< PDJE * >(argp1);
-  (arg1)->ResetEditor();
+  (arg1)->CloseEditor();
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -7393,6 +7403,33 @@ SWIGINTERN PyObject *_wrap_PDJE_GetPlayerObject(PyObject *self, PyObject *args) 
   {
     std::shared_ptr<  audioPlayer > *smartresult = result ? new std::shared_ptr<  audioPlayer >(result) : 0;
     resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__shared_ptrT_audioPlayer_t, SWIG_POINTER_OWN);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PDJE_GetEditorObject(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  PDJE *arg1 = (PDJE *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::shared_ptr< editorObject > result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PDJE, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PDJE_GetEditorObject" "', argument " "1"" of type '" "PDJE *""'"); 
+  }
+  arg1 = reinterpret_cast< PDJE * >(argp1);
+  result = (arg1)->GetEditorObject();
+  {
+    std::shared_ptr<  editorObject > *smartresult = result ? new std::shared_ptr<  editorObject >(result) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__shared_ptrT_editorObject_t, SWIG_POINTER_OWN);
   }
   return resultobj;
 fail:
@@ -10256,6 +10293,68 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_MusicOnDeck_st_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicOnDeck *arg1 = (MusicOnDeck *) 0 ;
+  std::optional< soundtouch::SoundTouch > arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MusicOnDeck_st_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MusicOnDeck, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MusicOnDeck_st_set" "', argument " "1"" of type '" "MusicOnDeck *""'"); 
+  }
+  arg1 = reinterpret_cast< MusicOnDeck * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__optionalT_soundtouch__SoundTouch_t,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MusicOnDeck_st_set" "', argument " "2"" of type '" "std::optional< soundtouch::SoundTouch >""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "MusicOnDeck_st_set" "', argument " "2"" of type '" "std::optional< soundtouch::SoundTouch >""'");
+    } else {
+      std::optional< soundtouch::SoundTouch > * temp = reinterpret_cast< std::optional< soundtouch::SoundTouch > * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  if (arg1) (arg1)->st = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MusicOnDeck_st_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicOnDeck *arg1 = (MusicOnDeck *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::optional< soundtouch::SoundTouch > result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MusicOnDeck, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MusicOnDeck_st_get" "', argument " "1"" of type '" "MusicOnDeck *""'"); 
+  }
+  arg1 = reinterpret_cast< MusicOnDeck * >(argp1);
+  result =  ((arg1)->st);
+  resultobj = SWIG_NewPointerObj((new std::optional< soundtouch::SoundTouch >(result)), SWIGTYPE_p_std__optionalT_soundtouch__SoundTouch_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_MusicOnDeck(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   MusicOnDeck *result = 0 ;
@@ -10590,6 +10689,60 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_MusicControlPannel_ChangeBpm(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicControlPannel *arg1 = (MusicControlPannel *) 0 ;
+  UNSANITIZED *arg2 = 0 ;
+  double arg3 ;
+  double arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  PyObject *swig_obj[4] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MusicControlPannel_ChangeBpm", 4, 4, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MusicControlPannel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MusicControlPannel_ChangeBpm" "', argument " "1"" of type '" "MusicControlPannel *""'"); 
+  }
+  arg1 = reinterpret_cast< MusicControlPannel * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MusicControlPannel_ChangeBpm" "', argument " "2"" of type '" "UNSANITIZED const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "MusicControlPannel_ChangeBpm" "', argument " "2"" of type '" "UNSANITIZED const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MusicControlPannel_ChangeBpm" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "MusicControlPannel_ChangeBpm" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  result = (bool)(arg1)->ChangeBpm((UNSANITIZED const &)*arg2,arg3,arg4);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_MusicControlPannel(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   unsigned long arg1 ;
@@ -10645,6 +10798,1220 @@ SWIGINTERN PyObject *MusicControlPannel_swigregister(PyObject *SWIGUNUSEDPARM(se
 }
 
 SWIGINTERN PyObject *MusicControlPannel_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MUSIC_musicName_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  EDIT_ARG_MUSIC *arg1 = (EDIT_ARG_MUSIC *) 0 ;
+  UNSANITIZED *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_MUSIC_musicName_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_EDIT_ARG_MUSIC, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MUSIC_musicName_set" "', argument " "1"" of type '" "EDIT_ARG_MUSIC *""'"); 
+  }
+  arg1 = reinterpret_cast< EDIT_ARG_MUSIC * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EDIT_ARG_MUSIC_musicName_set" "', argument " "2"" of type '" "UNSANITIZED const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "EDIT_ARG_MUSIC_musicName_set" "', argument " "2"" of type '" "UNSANITIZED const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->musicName = *arg2;
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MUSIC_musicName_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  EDIT_ARG_MUSIC *arg1 = (EDIT_ARG_MUSIC *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  UNSANITIZED *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_EDIT_ARG_MUSIC, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MUSIC_musicName_get" "', argument " "1"" of type '" "EDIT_ARG_MUSIC *""'"); 
+  }
+  arg1 = reinterpret_cast< EDIT_ARG_MUSIC * >(argp1);
+  result = (UNSANITIZED *) & ((arg1)->musicName);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MUSIC_arg_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  EDIT_ARG_MUSIC *arg1 = (EDIT_ARG_MUSIC *) 0 ;
+  MusicArgs arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_MUSIC_arg_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_EDIT_ARG_MUSIC, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MUSIC_arg_set" "', argument " "1"" of type '" "EDIT_ARG_MUSIC *""'"); 
+  }
+  arg1 = reinterpret_cast< EDIT_ARG_MUSIC * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_MusicArgs,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EDIT_ARG_MUSIC_arg_set" "', argument " "2"" of type '" "MusicArgs""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "EDIT_ARG_MUSIC_arg_set" "', argument " "2"" of type '" "MusicArgs""'");
+    } else {
+      MusicArgs * temp = reinterpret_cast< MusicArgs * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  if (arg1) (arg1)->arg = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MUSIC_arg_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  EDIT_ARG_MUSIC *arg1 = (EDIT_ARG_MUSIC *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  MusicArgs result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_EDIT_ARG_MUSIC, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MUSIC_arg_get" "', argument " "1"" of type '" "EDIT_ARG_MUSIC *""'"); 
+  }
+  arg1 = reinterpret_cast< EDIT_ARG_MUSIC * >(argp1);
+  result =  ((arg1)->arg);
+  resultobj = SWIG_NewPointerObj((new MusicArgs(result)), SWIGTYPE_p_MusicArgs, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_EDIT_ARG_MUSIC(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  EDIT_ARG_MUSIC *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "new_EDIT_ARG_MUSIC", 0, 0, 0)) SWIG_fail;
+  result = (EDIT_ARG_MUSIC *)new EDIT_ARG_MUSIC();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_EDIT_ARG_MUSIC, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_EDIT_ARG_MUSIC(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  EDIT_ARG_MUSIC *arg1 = (EDIT_ARG_MUSIC *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_EDIT_ARG_MUSIC, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EDIT_ARG_MUSIC" "', argument " "1"" of type '" "EDIT_ARG_MUSIC *""'"); 
+  }
+  arg1 = reinterpret_cast< EDIT_ARG_MUSIC * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *EDIT_ARG_MUSIC_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj = NULL;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_EDIT_ARG_MUSIC, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *EDIT_ARG_MUSIC_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_editorObject_getMixRepo(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  git_repository *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_getMixRepo" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (git_repository *)(arg1)->getMixRepo();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_git_repository, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_getMusicRepo(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  UNSANITIZED *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  git_repository *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_getMusicRepo", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_getMusicRepo" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_getMusicRepo" "', argument " "2"" of type '" "UNSANITIZED const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_getMusicRepo" "', argument " "2"" of type '" "UNSANITIZED const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (git_repository *)(arg1)->getMusicRepo((UNSANITIZED const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_git_repository, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_getNoteRepo(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  git_repository *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_getNoteRepo" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (git_repository *)(arg1)->getNoteRepo();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_git_repository, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_getKVRepo(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  git_repository *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_getKVRepo" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (git_repository *)(arg1)->getKVRepo();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_git_repository, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_AddLine(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  UNSANITIZED *arg2 = 0 ;
+  DONT_SANITIZE *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[3] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_AddLine", 3, 3, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_AddLine" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_AddLine" "', argument " "2"" of type '" "UNSANITIZED const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_AddLine" "', argument " "2"" of type '" "UNSANITIZED const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "editorObject_AddLine" "', argument " "3"" of type '" "DONT_SANITIZE const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_AddLine" "', argument " "3"" of type '" "DONT_SANITIZE const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  result = (bool)(arg1)->AddLine((UNSANITIZED const &)*arg2,(DONT_SANITIZE const &)*arg3);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_deleteLine(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_MIX *arg2 = 0 ;
+  bool arg3 ;
+  bool arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  PyObject *swig_obj[4] ;
+  int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_deleteLine", 4, 4, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_deleteLine" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_MixArgs,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_deleteLine" "', argument " "2"" of type '" "EDIT_ARG_MIX const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_deleteLine" "', argument " "2"" of type '" "EDIT_ARG_MIX const &""'"); 
+  }
+  arg2 = reinterpret_cast< EDIT_ARG_MIX * >(argp2);
+  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "editorObject_deleteLine" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = static_cast< bool >(val3);
+  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "editorObject_deleteLine" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
+  result = (int)(arg1)->deleteLine((EDIT_ARG_MIX const &)*arg2,arg3,arg4);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_render(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  UNSANITIZED *arg2 = 0 ;
+  litedb *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  std::shared_ptr< litedb > tempshared3 ;
+  PyObject *swig_obj[3] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_render", 3, 3, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_render" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_render" "', argument " "2"" of type '" "UNSANITIZED const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_render" "', argument " "2"" of type '" "UNSANITIZED const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    int newmem = 0;
+    res3 = SWIG_ConvertPtrAndOwn(swig_obj[2], &argp3, SWIGTYPE_p_std__shared_ptrT_litedb_t,  0 , &newmem);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "editorObject_render" "', argument " "3"" of type '" "litedb &""'");
+    }
+    if (!argp3) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_render" "', argument " "3"" of type '" "litedb &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared3 = *reinterpret_cast< std::shared_ptr<  litedb > * >(argp3);
+      delete reinterpret_cast< std::shared_ptr<  litedb > * >(argp3);
+      arg3 = const_cast< litedb * >(tempshared3.get());
+    } else {
+      arg3 = const_cast< litedb * >(reinterpret_cast< std::shared_ptr<  litedb > * >(argp3)->get());
+    }
+  }
+  result = (bool)(arg1)->render((UNSANITIZED const &)*arg2,*arg3);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_demoPlayInit(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< audioPlayer > *arg2 = 0 ;
+  unsigned int arg3 ;
+  UNSANITIZED *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  std::shared_ptr< audioPlayer > tempshared2 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  int res4 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[4] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_demoPlayInit", 4, 4, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_demoPlayInit" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_std__shared_ptrT_audioPlayer_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_demoPlayInit" "', argument " "2"" of type '" "std::shared_ptr< audioPlayer > &""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      if (argp2) tempshared2 = *reinterpret_cast< std::shared_ptr< audioPlayer > * >(argp2);
+      delete reinterpret_cast< std::shared_ptr< audioPlayer > * >(argp2);
+      arg2 = &tempshared2;
+    } else {
+      arg2 = (argp2) ? reinterpret_cast< std::shared_ptr< audioPlayer > * >(argp2) : &tempshared2;
+    }
+  }
+  ecode3 = SWIG_AsVal_unsigned_SS_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "editorObject_demoPlayInit" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  {
+    std::string *ptr = (std::string *)0;
+    res4 = SWIG_AsPtr_std_string(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "editorObject_demoPlayInit" "', argument " "4"" of type '" "UNSANITIZED const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_demoPlayInit" "', argument " "4"" of type '" "UNSANITIZED const &""'"); 
+    }
+    arg4 = ptr;
+  }
+  (arg1)->demoPlayInit(*arg2,arg3,(UNSANITIZED const &)*arg4);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_pushToRootDB__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  litedb *arg2 = 0 ;
+  UNSANITIZED *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  std::shared_ptr< litedb > tempshared2 ;
+  int res3 = SWIG_OLDOBJ ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_pushToRootDB" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_std__shared_ptrT_litedb_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_pushToRootDB" "', argument " "2"" of type '" "litedb &""'");
+    }
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_pushToRootDB" "', argument " "2"" of type '" "litedb &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared2 = *reinterpret_cast< std::shared_ptr<  litedb > * >(argp2);
+      delete reinterpret_cast< std::shared_ptr<  litedb > * >(argp2);
+      arg2 = const_cast< litedb * >(tempshared2.get());
+    } else {
+      arg2 = const_cast< litedb * >(reinterpret_cast< std::shared_ptr<  litedb > * >(argp2)->get());
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "editorObject_pushToRootDB" "', argument " "3"" of type '" "UNSANITIZED const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_pushToRootDB" "', argument " "3"" of type '" "UNSANITIZED const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  result = (bool)(arg1)->pushToRootDB(*arg2,(UNSANITIZED const &)*arg3);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_pushToRootDB__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  litedb *arg2 = 0 ;
+  UNSANITIZED *arg3 = 0 ;
+  UNSANITIZED *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  std::shared_ptr< litedb > tempshared2 ;
+  int res3 = SWIG_OLDOBJ ;
+  int res4 = SWIG_OLDOBJ ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_pushToRootDB" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    int newmem = 0;
+    res2 = SWIG_ConvertPtrAndOwn(swig_obj[1], &argp2, SWIGTYPE_p_std__shared_ptrT_litedb_t,  0 , &newmem);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_pushToRootDB" "', argument " "2"" of type '" "litedb &""'");
+    }
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_pushToRootDB" "', argument " "2"" of type '" "litedb &""'"); 
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared2 = *reinterpret_cast< std::shared_ptr<  litedb > * >(argp2);
+      delete reinterpret_cast< std::shared_ptr<  litedb > * >(argp2);
+      arg2 = const_cast< litedb * >(tempshared2.get());
+    } else {
+      arg2 = const_cast< litedb * >(reinterpret_cast< std::shared_ptr<  litedb > * >(argp2)->get());
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "editorObject_pushToRootDB" "', argument " "3"" of type '" "UNSANITIZED const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_pushToRootDB" "', argument " "3"" of type '" "UNSANITIZED const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res4 = SWIG_AsPtr_std_string(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "editorObject_pushToRootDB" "', argument " "4"" of type '" "UNSANITIZED const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_pushToRootDB" "', argument " "4"" of type '" "UNSANITIZED const &""'"); 
+    }
+    arg4 = ptr;
+  }
+  result = (bool)(arg1)->pushToRootDB(*arg2,(UNSANITIZED const &)*arg3,(UNSANITIZED const &)*arg4);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res4)) delete arg4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_pushToRootDB(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "editorObject_pushToRootDB", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v = 0;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__shared_ptrT_litedb_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsPtr_std_string(argv[2], (std::string**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_editorObject_pushToRootDB__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v = 0;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__shared_ptrT_litedb_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsPtr_std_string(argv[2], (std::string**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_AsPtr_std_string(argv[3], (std::string**)(0));
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_editorObject_pushToRootDB__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'editorObject_pushToRootDB'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    editorObject::pushToRootDB(litedb &,UNSANITIZED const &)\n"
+    "    editorObject::pushToRootDB(litedb &,UNSANITIZED const &,UNSANITIZED const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_DESTROY_PROJECT(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  DONT_SANITIZE result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_DESTROY_PROJECT" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (arg1)->DESTROY_PROJECT();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_ConfigNewMusic__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  UNSANITIZED *arg2 = 0 ;
+  UNSANITIZED *arg3 = 0 ;
+  std::filesystem::path *arg4 = 0 ;
+  DONT_SANITIZE *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  int res5 = SWIG_OLDOBJ ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_ConfigNewMusic" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_ConfigNewMusic" "', argument " "2"" of type '" "UNSANITIZED const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_ConfigNewMusic" "', argument " "2"" of type '" "UNSANITIZED const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "editorObject_ConfigNewMusic" "', argument " "3"" of type '" "UNSANITIZED const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_ConfigNewMusic" "', argument " "3"" of type '" "UNSANITIZED const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_std__filesystem__path,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "editorObject_ConfigNewMusic" "', argument " "4"" of type '" "std::filesystem::path const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_ConfigNewMusic" "', argument " "4"" of type '" "std::filesystem::path const &""'"); 
+  }
+  arg4 = reinterpret_cast< std::filesystem::path * >(argp4);
+  {
+    std::string *ptr = (std::string *)0;
+    res5 = SWIG_AsPtr_std_string(swig_obj[4], &ptr);
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "editorObject_ConfigNewMusic" "', argument " "5"" of type '" "DONT_SANITIZE const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_ConfigNewMusic" "', argument " "5"" of type '" "DONT_SANITIZE const &""'"); 
+    }
+    arg5 = ptr;
+  }
+  result = (bool)(arg1)->ConfigNewMusic((UNSANITIZED const &)*arg2,(UNSANITIZED const &)*arg3,(std::filesystem::path const &)*arg4,(DONT_SANITIZE const &)*arg5);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res5)) delete arg5;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  if (SWIG_IsNewObj(res5)) delete arg5;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_ConfigNewMusic__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  UNSANITIZED *arg2 = 0 ;
+  UNSANITIZED *arg3 = 0 ;
+  std::filesystem::path *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  bool result;
+  
+  (void)self;
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_ConfigNewMusic" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_ConfigNewMusic" "', argument " "2"" of type '" "UNSANITIZED const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_ConfigNewMusic" "', argument " "2"" of type '" "UNSANITIZED const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "editorObject_ConfigNewMusic" "', argument " "3"" of type '" "UNSANITIZED const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_ConfigNewMusic" "', argument " "3"" of type '" "UNSANITIZED const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_std__filesystem__path,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "editorObject_ConfigNewMusic" "', argument " "4"" of type '" "std::filesystem::path const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_ConfigNewMusic" "', argument " "4"" of type '" "std::filesystem::path const &""'"); 
+  }
+  arg4 = reinterpret_cast< std::filesystem::path * >(argp4);
+  result = (bool)(arg1)->ConfigNewMusic((UNSANITIZED const &)*arg2,(UNSANITIZED const &)*arg3,(std::filesystem::path const &)*arg4);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_ConfigNewMusic(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[6] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "editorObject_ConfigNewMusic", 0, 5, argv))) SWIG_fail;
+  --argc;
+  if (argc == 4) {
+    int _v = 0;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsPtr_std_string(argv[2], (std::string**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_std__filesystem__path, SWIG_POINTER_NO_NULL | 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_editorObject_ConfigNewMusic__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v = 0;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsPtr_std_string(argv[2], (std::string**)(0));
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_std__filesystem__path, SWIG_POINTER_NO_NULL | 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            int res = SWIG_AsPtr_std_string(argv[4], (std::string**)(0));
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_editorObject_ConfigNewMusic__SWIG_0(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'editorObject_ConfigNewMusic'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    editorObject::ConfigNewMusic(UNSANITIZED const &,UNSANITIZED const &,std::filesystem::path const &,DONT_SANITIZE const &)\n"
+    "    editorObject::ConfigNewMusic(UNSANITIZED const &,UNSANITIZED const &,std::filesystem::path const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_Open(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::filesystem::path *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_Open", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_Open" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__filesystem__path,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_Open" "', argument " "2"" of type '" "std::filesystem::path const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_Open" "', argument " "2"" of type '" "std::filesystem::path const &""'"); 
+  }
+  arg2 = reinterpret_cast< std::filesystem::path * >(argp2);
+  result = (bool)(arg1)->Open((std::filesystem::path const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_editorObject(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  DONT_SANITIZE *arg1 = 0 ;
+  DONT_SANITIZE *arg2 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  editorObject *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "new_editorObject", 2, 2, swig_obj)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_editorObject" "', argument " "1"" of type '" "DONT_SANITIZE const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "new_editorObject" "', argument " "1"" of type '" "DONT_SANITIZE const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_editorObject" "', argument " "2"" of type '" "DONT_SANITIZE const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "new_editorObject" "', argument " "2"" of type '" "DONT_SANITIZE const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (editorObject *)new editorObject((DONT_SANITIZE const &)*arg1,(DONT_SANITIZE const &)*arg2);
+  {
+    std::shared_ptr<  editorObject > *smartresult = result ? new std::shared_ptr<  editorObject >(result SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW) : 0;
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(smartresult), SWIGTYPE_p_std__shared_ptrT_editorObject_t, SWIG_POINTER_NEW | SWIG_POINTER_OWN);
+  }
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_editorObject(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_editorObject" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  (void)arg1; delete smartarg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *editorObject_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj = NULL;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_std__shared_ptrT_editorObject_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *editorObject_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -16317,13 +17684,14 @@ static PyMethodDef SwigMethods[] = {
 	 { "PDJE_editor_get", _wrap_PDJE_editor_get, METH_O, NULL},
 	 { "PDJE_InitPlayer", _wrap_PDJE_InitPlayer, METH_VARARGS, NULL},
 	 { "PDJE_ResetPlayer", _wrap_PDJE_ResetPlayer, METH_O, NULL},
-	 { "PDJE_ResetEditor", _wrap_PDJE_ResetEditor, METH_O, NULL},
+	 { "PDJE_CloseEditor", _wrap_PDJE_CloseEditor, METH_O, NULL},
 	 { "PDJE_PullOutDataLine", _wrap_PDJE_PullOutDataLine, METH_O, NULL},
 	 { "PDJE_InitEditor", _wrap_PDJE_InitEditor, METH_VARARGS, NULL},
 	 { "PDJE_GetNoteObjects", _wrap_PDJE_GetNoteObjects, METH_VARARGS, NULL},
 	 { "PDJE_SearchMusic", _wrap_PDJE_SearchMusic, METH_VARARGS, NULL},
 	 { "PDJE_SearchTrack", _wrap_PDJE_SearchTrack, METH_VARARGS, NULL},
 	 { "PDJE_GetPlayerObject", _wrap_PDJE_GetPlayerObject, METH_O, NULL},
+	 { "PDJE_GetEditorObject", _wrap_PDJE_GetEditorObject, METH_O, NULL},
 	 { "PDJE_swigregister", PDJE_swigregister, METH_O, NULL},
 	 { "PDJE_swiginit", PDJE_swiginit, METH_VARARGS, NULL},
 	 { "new_ARGSETTER_WRAPPER", _wrap_new_ARGSETTER_WRAPPER, METH_O, NULL},
@@ -16399,6 +17767,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "MusicOnDeck_dec_get", _wrap_MusicOnDeck_dec_get, METH_O, NULL},
 	 { "MusicOnDeck_fxP_set", _wrap_MusicOnDeck_fxP_set, METH_VARARGS, NULL},
 	 { "MusicOnDeck_fxP_get", _wrap_MusicOnDeck_fxP_get, METH_O, NULL},
+	 { "MusicOnDeck_st_set", _wrap_MusicOnDeck_st_set, METH_VARARGS, NULL},
+	 { "MusicOnDeck_st_get", _wrap_MusicOnDeck_st_get, METH_O, NULL},
 	 { "new_MusicOnDeck", _wrap_new_MusicOnDeck, METH_NOARGS, NULL},
 	 { "delete_MusicOnDeck", _wrap_delete_MusicOnDeck, METH_O, NULL},
 	 { "MusicOnDeck_swigregister", MusicOnDeck_swigregister, METH_O, NULL},
@@ -16410,10 +17780,35 @@ static PyMethodDef SwigMethods[] = {
 	 { "MusicControlPannel_UnloadMusic", _wrap_MusicControlPannel_UnloadMusic, METH_VARARGS, NULL},
 	 { "MusicControlPannel_GetPCMFrames", _wrap_MusicControlPannel_GetPCMFrames, METH_VARARGS, NULL},
 	 { "MusicControlPannel_getFXHandle", _wrap_MusicControlPannel_getFXHandle, METH_VARARGS, NULL},
+	 { "MusicControlPannel_ChangeBpm", _wrap_MusicControlPannel_ChangeBpm, METH_VARARGS, NULL},
 	 { "new_MusicControlPannel", _wrap_new_MusicControlPannel, METH_O, NULL},
 	 { "delete_MusicControlPannel", _wrap_delete_MusicControlPannel, METH_O, NULL},
 	 { "MusicControlPannel_swigregister", MusicControlPannel_swigregister, METH_O, NULL},
 	 { "MusicControlPannel_swiginit", MusicControlPannel_swiginit, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MUSIC_musicName_set", _wrap_EDIT_ARG_MUSIC_musicName_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MUSIC_musicName_get", _wrap_EDIT_ARG_MUSIC_musicName_get, METH_O, NULL},
+	 { "EDIT_ARG_MUSIC_arg_set", _wrap_EDIT_ARG_MUSIC_arg_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MUSIC_arg_get", _wrap_EDIT_ARG_MUSIC_arg_get, METH_O, NULL},
+	 { "new_EDIT_ARG_MUSIC", _wrap_new_EDIT_ARG_MUSIC, METH_NOARGS, NULL},
+	 { "delete_EDIT_ARG_MUSIC", _wrap_delete_EDIT_ARG_MUSIC, METH_O, NULL},
+	 { "EDIT_ARG_MUSIC_swigregister", EDIT_ARG_MUSIC_swigregister, METH_O, NULL},
+	 { "EDIT_ARG_MUSIC_swiginit", EDIT_ARG_MUSIC_swiginit, METH_VARARGS, NULL},
+	 { "editorObject_getMixRepo", _wrap_editorObject_getMixRepo, METH_O, NULL},
+	 { "editorObject_getMusicRepo", _wrap_editorObject_getMusicRepo, METH_VARARGS, NULL},
+	 { "editorObject_getNoteRepo", _wrap_editorObject_getNoteRepo, METH_O, NULL},
+	 { "editorObject_getKVRepo", _wrap_editorObject_getKVRepo, METH_O, NULL},
+	 { "editorObject_AddLine", _wrap_editorObject_AddLine, METH_VARARGS, NULL},
+	 { "editorObject_deleteLine", _wrap_editorObject_deleteLine, METH_VARARGS, NULL},
+	 { "editorObject_render", _wrap_editorObject_render, METH_VARARGS, NULL},
+	 { "editorObject_demoPlayInit", _wrap_editorObject_demoPlayInit, METH_VARARGS, NULL},
+	 { "editorObject_pushToRootDB", _wrap_editorObject_pushToRootDB, METH_VARARGS, NULL},
+	 { "editorObject_DESTROY_PROJECT", _wrap_editorObject_DESTROY_PROJECT, METH_O, NULL},
+	 { "editorObject_ConfigNewMusic", _wrap_editorObject_ConfigNewMusic, METH_VARARGS, NULL},
+	 { "editorObject_Open", _wrap_editorObject_Open, METH_VARARGS, NULL},
+	 { "new_editorObject", _wrap_new_editorObject, METH_VARARGS, NULL},
+	 { "delete_editorObject", _wrap_delete_editorObject, METH_O, NULL},
+	 { "editorObject_swigregister", editorObject_swigregister, METH_O, NULL},
+	 { "editorObject_swiginit", editorObject_swiginit, METH_VARARGS, NULL},
 	 { "MUS_VEC_iterator", _wrap_MUS_VEC_iterator, METH_O, NULL},
 	 { "MUS_VEC___nonzero__", _wrap_MUS_VEC___nonzero__, METH_O, NULL},
 	 { "MUS_VEC___bool__", _wrap_MUS_VEC___bool__, METH_O, NULL},
@@ -16529,9 +17924,14 @@ static swig_type_info _swigt__p_ARGSETTER = {"_p_ARGSETTER", "ARGSETTER *", 0, 0
 static swig_type_info _swigt__p_ARGSETTER_WRAPPER = {"_p_ARGSETTER_WRAPPER", "ARGSETTER_WRAPPER *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_BIN = {"_p_BIN", "BIN *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Decoder = {"_p_Decoder", "Decoder *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_EDIT_ARG_MUSIC = {"_p_EDIT_ARG_MUSIC", "EDIT_ARG_MUSIC *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FXControlPannel = {"_p_FXControlPannel", "FXControlPannel *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_KEY_VALUE = {"_p_KEY_VALUE", "EDIT_ARG_KEY_VALUE *|KEY_VALUE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_MixArgs = {"_p_MixArgs", "EDIT_ARG_MIX *|MixArgs *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_MusicArgs = {"_p_MusicArgs", "MusicArgs *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MusicControlPannel = {"_p_MusicControlPannel", "MusicControlPannel *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MusicOnDeck = {"_p_MusicOnDeck", "MusicOnDeck *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_NoteArgs = {"_p_NoteArgs", "EDIT_ARG_NOTE *|NoteArgs *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_OBJ_SETTER_CALLBACK = {"_p_OBJ_SETTER_CALLBACK", "OBJ_SETTER_CALLBACK *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PDJE = {"_p_PDJE", "PDJE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PDJE_CORE_DATA_LINE = {"_p_PDJE_CORE_DATA_LINE", "PDJE_CORE_DATA_LINE *", 0, 0, (void*)0, 0};
@@ -16541,7 +17941,9 @@ static swig_type_info _swigt__p_audioPlayer = {"_p_audioPlayer", "audioPlayer *"
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cppcodec__base64_url_unpadded = {"_p_cppcodec__base64_url_unpadded", "cbase *|cppcodec::base64_url_unpadded *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_editorObject = {"_p_editorObject", "editorObject *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_float = {"_p_float", "float *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_git_repository = {"_p_git_repository", "git_repository *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_litedb = {"_p_litedb", "litedb *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_musdata = {"_p_musdata", "std::vector< musdata >::value_type *|musdata *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_PyObject = {"_p_p_PyObject", "PyObject **", 0, 0, (void*)0, 0};
@@ -16554,6 +17956,7 @@ static swig_type_info _swigt__p_std__allocatorT_trackdata_t = {"_p_std__allocato
 static swig_type_info _swigt__p_std__filesystem__path = {"_p_std__filesystem__path", "std::filesystem::path *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__invalid_argument = {"_p_std__invalid_argument", "std::invalid_argument *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__mapT_std__string_MusicOnDeck_t = {"_p_std__mapT_std__string_MusicOnDeck_t", "LOADS *|std::map< std::string,MusicOnDeck > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__optionalT_soundtouch__SoundTouch_t = {"_p_std__optionalT_soundtouch__SoundTouch_t", "std::optional< soundtouch::SoundTouch > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__optionalT_std__string_t = {"_p_std__optionalT_std__string_t", "std::optional< SANITIZED > *|std::optional< std::string > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__optionalT_std__vectorT_musdata_t_t = {"_p_std__optionalT_std__vectorT_musdata_t_t", "MAYBE_MUS_VEC *|std::optional< std::vector< musdata,std::allocator< musdata > > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__optionalT_std__vectorT_trackdata_t_t = {"_p_std__optionalT_std__vectorT_trackdata_t_t", "MAYBE_TRACK_VEC *|std::optional< std::vector< trackdata,std::allocator< trackdata > > > *", 0, 0, (void*)0, 0};
@@ -16561,6 +17964,7 @@ static swig_type_info _swigt__p_std__shared_ptrT_audioPlayer_t = {"_p_std__share
 static swig_type_info _swigt__p_std__shared_ptrT_editorObject_t = {"_p_std__shared_ptrT_editorObject_t", "std::shared_ptr< editorObject > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_litedb_t = {"_p_std__shared_ptrT_litedb_t", "std::shared_ptr< litedb > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "DONT_SANITIZE *|SANITIZED *|SANITIZED_ORNOT *|UNSANITIZED *|std::string *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__unordered_mapT_std__string_std__string_t = {"_p_std__unordered_mapT_std__string_std__string_t", "TITLE_COMPOSER *|std::unordered_map< std::string,std::string > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_musdata_t = {"_p_std__vectorT_musdata_t", "MUS_VEC *|std::vector< musdata,std::allocator< musdata > > *|std::vector< musdata > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__string_t = {"_p_std__vectorT_std__string_t", "LOADED_LIST *|std::vector< std::string,std::allocator< std::string > > *|std::vector< std::string > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_trackdata_t = {"_p_std__vectorT_trackdata_t", "TRACK_VEC *|std::vector< trackdata,std::allocator< trackdata > > *|std::vector< trackdata > *", 0, 0, (void*)0, 0};
@@ -16574,9 +17978,14 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_ARGSETTER_WRAPPER,
   &_swigt__p_BIN,
   &_swigt__p_Decoder,
+  &_swigt__p_EDIT_ARG_MUSIC,
   &_swigt__p_FXControlPannel,
+  &_swigt__p_KEY_VALUE,
+  &_swigt__p_MixArgs,
+  &_swigt__p_MusicArgs,
   &_swigt__p_MusicControlPannel,
   &_swigt__p_MusicOnDeck,
+  &_swigt__p_NoteArgs,
   &_swigt__p_OBJ_SETTER_CALLBACK,
   &_swigt__p_PDJE,
   &_swigt__p_PDJE_CORE_DATA_LINE,
@@ -16586,7 +17995,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
   &_swigt__p_cppcodec__base64_url_unpadded,
   &_swigt__p_difference_type,
+  &_swigt__p_editorObject,
   &_swigt__p_float,
+  &_swigt__p_git_repository,
   &_swigt__p_litedb,
   &_swigt__p_musdata,
   &_swigt__p_p_PyObject,
@@ -16599,6 +18010,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__filesystem__path,
   &_swigt__p_std__invalid_argument,
   &_swigt__p_std__mapT_std__string_MusicOnDeck_t,
+  &_swigt__p_std__optionalT_soundtouch__SoundTouch_t,
   &_swigt__p_std__optionalT_std__string_t,
   &_swigt__p_std__optionalT_std__vectorT_musdata_t_t,
   &_swigt__p_std__optionalT_std__vectorT_trackdata_t_t,
@@ -16606,6 +18018,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__shared_ptrT_editorObject_t,
   &_swigt__p_std__shared_ptrT_litedb_t,
   &_swigt__p_std__string,
+  &_swigt__p_std__unordered_mapT_std__string_std__string_t,
   &_swigt__p_std__vectorT_musdata_t,
   &_swigt__p_std__vectorT_std__string_t,
   &_swigt__p_std__vectorT_trackdata_t,
@@ -16619,9 +18032,14 @@ static swig_cast_info _swigc__p_ARGSETTER[] = {  {&_swigt__p_ARGSETTER, 0, 0, 0}
 static swig_cast_info _swigc__p_ARGSETTER_WRAPPER[] = {  {&_swigt__p_ARGSETTER_WRAPPER, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_BIN[] = {  {&_swigt__p_BIN, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Decoder[] = {  {&_swigt__p_Decoder, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_EDIT_ARG_MUSIC[] = {  {&_swigt__p_EDIT_ARG_MUSIC, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FXControlPannel[] = {  {&_swigt__p_FXControlPannel, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_KEY_VALUE[] = {  {&_swigt__p_KEY_VALUE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_MixArgs[] = {  {&_swigt__p_MixArgs, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_MusicArgs[] = {  {&_swigt__p_MusicArgs, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MusicControlPannel[] = {  {&_swigt__p_MusicControlPannel, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MusicOnDeck[] = {  {&_swigt__p_MusicOnDeck, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_NoteArgs[] = {  {&_swigt__p_NoteArgs, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_OBJ_SETTER_CALLBACK[] = {  {&_swigt__p_OBJ_SETTER_CALLBACK, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PDJE[] = {  {&_swigt__p_PDJE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PDJE_CORE_DATA_LINE[] = {  {&_swigt__p_PDJE_CORE_DATA_LINE, 0, 0, 0},{0, 0, 0, 0}};
@@ -16631,7 +18049,9 @@ static swig_cast_info _swigc__p_audioPlayer[] = {  {&_swigt__p_audioPlayer, 0, 0
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cppcodec__base64_url_unpadded[] = {  {&_swigt__p_cppcodec__base64_url_unpadded, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_editorObject[] = {  {&_swigt__p_editorObject, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_git_repository[] = {  {&_swigt__p_git_repository, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_litedb[] = {  {&_swigt__p_litedb, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_musdata[] = {  {&_swigt__p_musdata, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_PyObject[] = {  {&_swigt__p_p_PyObject, 0, 0, 0},{0, 0, 0, 0}};
@@ -16644,6 +18064,7 @@ static swig_cast_info _swigc__p_std__allocatorT_trackdata_t[] = {  {&_swigt__p_s
 static swig_cast_info _swigc__p_std__filesystem__path[] = {  {&_swigt__p_std__filesystem__path, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__invalid_argument[] = {  {&_swigt__p_std__invalid_argument, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__mapT_std__string_MusicOnDeck_t[] = {  {&_swigt__p_std__mapT_std__string_MusicOnDeck_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__optionalT_soundtouch__SoundTouch_t[] = {  {&_swigt__p_std__optionalT_soundtouch__SoundTouch_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__optionalT_std__string_t[] = {  {&_swigt__p_std__optionalT_std__string_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__optionalT_std__vectorT_musdata_t_t[] = {  {&_swigt__p_std__optionalT_std__vectorT_musdata_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__optionalT_std__vectorT_trackdata_t_t[] = {  {&_swigt__p_std__optionalT_std__vectorT_trackdata_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -16651,6 +18072,7 @@ static swig_cast_info _swigc__p_std__shared_ptrT_audioPlayer_t[] = {  {&_swigt__
 static swig_cast_info _swigc__p_std__shared_ptrT_editorObject_t[] = {  {&_swigt__p_std__shared_ptrT_editorObject_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_litedb_t[] = {  {&_swigt__p_std__shared_ptrT_litedb_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__unordered_mapT_std__string_std__string_t[] = {  {&_swigt__p_std__unordered_mapT_std__string_std__string_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_musdata_t[] = {  {&_swigt__p_std__vectorT_musdata_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__string_t[] = {  {&_swigt__p_std__vectorT_std__string_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_trackdata_t[] = {  {&_swigt__p_std__vectorT_trackdata_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -16664,9 +18086,14 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_ARGSETTER_WRAPPER,
   _swigc__p_BIN,
   _swigc__p_Decoder,
+  _swigc__p_EDIT_ARG_MUSIC,
   _swigc__p_FXControlPannel,
+  _swigc__p_KEY_VALUE,
+  _swigc__p_MixArgs,
+  _swigc__p_MusicArgs,
   _swigc__p_MusicControlPannel,
   _swigc__p_MusicOnDeck,
+  _swigc__p_NoteArgs,
   _swigc__p_OBJ_SETTER_CALLBACK,
   _swigc__p_PDJE,
   _swigc__p_PDJE_CORE_DATA_LINE,
@@ -16676,7 +18103,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
   _swigc__p_cppcodec__base64_url_unpadded,
   _swigc__p_difference_type,
+  _swigc__p_editorObject,
   _swigc__p_float,
+  _swigc__p_git_repository,
   _swigc__p_litedb,
   _swigc__p_musdata,
   _swigc__p_p_PyObject,
@@ -16689,6 +18118,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__filesystem__path,
   _swigc__p_std__invalid_argument,
   _swigc__p_std__mapT_std__string_MusicOnDeck_t,
+  _swigc__p_std__optionalT_soundtouch__SoundTouch_t,
   _swigc__p_std__optionalT_std__string_t,
   _swigc__p_std__optionalT_std__vectorT_musdata_t_t,
   _swigc__p_std__optionalT_std__vectorT_trackdata_t_t,
@@ -16696,6 +18126,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__shared_ptrT_editorObject_t,
   _swigc__p_std__shared_ptrT_litedb_t,
   _swigc__p_std__string,
+  _swigc__p_std__unordered_mapT_std__string_std__string_t,
   _swigc__p_std__vectorT_musdata_t,
   _swigc__p_std__vectorT_std__string_t,
   _swigc__p_std__vectorT_trackdata_t,

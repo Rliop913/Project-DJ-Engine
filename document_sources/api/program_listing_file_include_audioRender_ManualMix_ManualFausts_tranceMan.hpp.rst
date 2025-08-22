@@ -21,10 +21,10 @@ Program Listing for File tranceMan.hpp
        ARGSETTER
        makeArgSetter(){
            return {
-               {"bps", [this](double value) {
+               {"Bps", [this](double value) {
                    this->bps = static_cast<float>(value);
                }},
-               {"gain", [this](double value) {
+               {"Gain", [this](double value) {
                    this->gain = static_cast<float>(value);
                }},
                {"TranceDryWet", [this](double value) {

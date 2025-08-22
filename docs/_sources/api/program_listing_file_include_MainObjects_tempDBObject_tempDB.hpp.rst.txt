@@ -10,6 +10,7 @@ Program Listing for File tempDB.hpp
 
 .. code-block:: cpp
 
+   
    #pragma once
    
    #include <filesystem>
@@ -22,11 +23,15 @@ Program Listing for File tempDB.hpp
        std::optional<litedb> tempROOT;
    public:
        std::string ERR = "";
+   
        bool Open(const fs::path& projectRoot);
+   
        bool BuildProject(trackdata& td, std::vector<musdata>& mds);
+   
        litedb& GetBuildedProject(){
            return tempROOT.value();
        }
+   
        tempDB() = default;
        ~tempDB() = default;
        

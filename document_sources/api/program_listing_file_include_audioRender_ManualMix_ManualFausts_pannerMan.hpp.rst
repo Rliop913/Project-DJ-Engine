@@ -21,7 +21,7 @@ Program Listing for File pannerMan.hpp
        ARGSETTER
        makeArgSetter(){
            return {
-               {"bps", [this](double value) {
+               {"Bps", [this](double value) {
                    this->bps = static_cast<float>(value);
                }},
                {"PGain", [this](double value) {

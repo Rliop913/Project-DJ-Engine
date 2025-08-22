@@ -90,9 +90,9 @@ public:
         player.reset();
     }
 
-    /// @brief Reset the Editor object
+    /// @brief Close the Editor object
     void
-    ResetEditor(){
+    CloseEditor(){
         editor.reset();
     }
 
@@ -156,8 +156,17 @@ public:
      * @return audioPlayer* the player object.check nullptr before use.
      */
     std::shared_ptr<audioPlayer> GetPlayerObject();
-
     
+
+    /**
+     * @brief editor handler getter api for binded codes.
+     * this function gives you a editor handler.
+     * 
+     * @return editorObject* the editor object. check nullptr before use.
+     */
+    std::shared_ptr<editorObject> GetEditorObject(){
+        return editor;
+    }
 };
 /**
  * @brief the realtime fx controller wrapper class for binded languages.

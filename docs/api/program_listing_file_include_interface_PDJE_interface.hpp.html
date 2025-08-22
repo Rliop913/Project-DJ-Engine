@@ -50,10 +50,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html">PDJE_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -91,6 +91,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;editorObject.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Core_DataLine.hpp&quot;</span>
 <span class="k">enum</span><span class="w"> </span><span class="nc">PLAY_MODE</span><span class="p">{</span>
 <span class="w">    </span><span class="n">FULL_PRE_RENDER</span><span class="p">,</span>
 <span class="w">    </span><span class="n">HYBRID_RENDER</span><span class="p">,</span>
@@ -101,7 +102,8 @@
 <span class="k">public</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">litedb</span><span class="o">&gt;</span><span class="w"> </span><span class="n">DBROOT</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// std::optional&lt;litedb&gt; DBROOT;</span>
-<span class="w">    </span><span class="n">PDJE</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rootDir</span><span class="p">);</span>
+<span class="w">    </span><span class="n">PDJE</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">rootDir</span><span class="p">);</span>
+
 <span class="w">    </span><span class="o">~</span><span class="n">PDJE</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">audioPlayer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">player</span><span class="p">;</span>
@@ -112,12 +114,23 @@
 <span class="w">        </span><span class="n">trackdata</span><span class="o">&amp;</span><span class="w"> </span><span class="n">td</span><span class="p">,</span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">FrameBufferSize</span><span class="p">);</span>
 
+<span class="w">    </span><span class="kt">void</span>
+<span class="w">    </span><span class="nf">ResetPlayer</span><span class="p">(){</span>
+<span class="w">        </span><span class="n">player</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span>
+<span class="w">    </span><span class="nf">CloseEditor</span><span class="p">(){</span>
+<span class="w">        </span><span class="n">editor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">PDJE_CORE_DATA_LINE</span><span class="w"> </span><span class="nf">PullOutDataLine</span><span class="p">();</span>
 
 <span class="w">    </span><span class="kt">bool</span>
 <span class="w">    </span><span class="nf">InitEditor</span><span class="p">(</span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_name</span><span class="p">,</span>
 <span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_email</span><span class="p">,</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">projectRoot</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">projectRoot</span>
 <span class="w">    </span><span class="p">);</span>
 <span class="w">    </span><span class="kt">bool</span>
 <span class="w">    </span><span class="nf">GetNoteObjects</span><span class="p">(</span>
@@ -133,6 +146,9 @@
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">audioPlayer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetPlayerObject</span><span class="p">();</span>
 
 
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">editorObject</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetEditorObject</span><span class="p">(){</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">editor</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">ARGSETTER_WRAPPER</span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>

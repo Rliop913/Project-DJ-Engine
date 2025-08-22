@@ -15,16 +15,20 @@ Program Listing for File eqMan.hpp
    
    class EQMan{
    public:
-       int EQSelect;
-       int EQPower;
+       int EQLow = 0;
+       int EQMid = 0;
+       int EQHigh = 0;
        ARGSETTER
        makeArgSetter(){
            return {
-               {"EQSelect", [this](double value) {
-                   this->EQSelect = static_cast<int>(value);
+               {"EQLow", [this](double value) {
+                   this->EQLow = static_cast<int>(value);
                }},
-               {"EQPower", [this](double value) {
-                   this->EQPower = static_cast<int>(value);
+               {"EQMid", [this](double value) {
+                   this->EQMid = static_cast<int>(value);
+               }},
+               {"EQHigh", [this](double value) {
+                   this->EQHigh = static_cast<int>(value);
                }}
            };
        }

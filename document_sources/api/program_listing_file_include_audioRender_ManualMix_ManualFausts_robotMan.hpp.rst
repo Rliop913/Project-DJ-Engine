@@ -20,7 +20,7 @@ Program Listing for File robotMan.hpp
        ARGSETTER
        makeArgSetter(){
            return {
-               {"robotFreq", [this](double value) {
+               {"RobotFreq", [this](double value) {
                     this->robotFreq = static_cast<int>(value);
                }},
                {"RobotDryWet", [this](double value) {

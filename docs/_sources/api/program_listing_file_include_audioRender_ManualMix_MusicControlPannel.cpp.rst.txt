@@ -138,3 +138,23 @@ Program Listing for File MusicControlPannel.cpp
    
        }
    }
+   
+   bool
+   MusicControlPannel::ChangeBpm(const UNSANITIZED& title, const double targetBpm, const double originBpm)
+   {
+       auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
+       if(!safeTitle){
+           critlog("failed to sanitize title from MusicControlPannel SetMusic. ErrTitle: ");
+           critlog(title);
+           return false;
+       }
+       if(deck.find(safeTitle.value()) == deck.end()){
+           warnlog("failed to find music from deck from MusicControlPannel SetMusic. ErrTitle: ");
+           warnlog(title);
+           return false;
+       }
+       else{
+           deck[safeTitle.value()].st->setTempo(targetBpm / originBpm);
+           return true;
+       }
+   }
