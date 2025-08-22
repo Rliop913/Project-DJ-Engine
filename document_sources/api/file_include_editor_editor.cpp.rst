@@ -4,7 +4,7 @@
 File editor.cpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor>` (``include\editor``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor>` (``include/editor``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File editor.cpp
    :local:
    :backlinks: none
 
-Definition (``include\editor\editor.cpp``)
+Definition (``include/editor/editor.cpp``)
 ------------------------------------------
 
 

@@ -4,7 +4,7 @@
 File Type_FX_EQ.cpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MixTypes>` (``include\audioRender\MixMachine\MixTypes``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MixTypes>` (``include/audioRender/MixMachine/MixTypes``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Type_FX_EQ.cpp
    :local:
    :backlinks: none
 
-Definition (``include\audioRender\MixMachine\MixTypes\Type_FX_EQ.cpp``)
+Definition (``include/audioRender/MixMachine/MixTypes/Type_FX_EQ.cpp``)
 -----------------------------------------------------------------------
 
 
@@ -41,5 +41,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function__type___f_x___e_q_8cpp_1aa0cc97aac50f46095675b4df3f9f8cfc`
+- :ref:`exhale_function_Type__FX__EQ_8cpp_1aa0cc97aac50f46095675b4df3f9f8cfc`
 

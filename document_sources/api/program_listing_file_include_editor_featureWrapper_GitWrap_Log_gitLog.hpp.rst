@@ -4,7 +4,7 @@
 Program Listing for File gitLog.hpp
 ===================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_Log_gitLog.hpp>` (``include\editor\featureWrapper\GitWrap\Log\gitLog.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_Log_gitLog.hpp>` (``include/editor/featureWrapper/GitWrap/Log/gitLog.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

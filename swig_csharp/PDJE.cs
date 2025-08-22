@@ -86,14 +86,14 @@ public class PDJE : global::System.IDisposable {
     } 
   }
 
-  public SWIGTYPE_p_editorObject editor {
+  public editorObject editor {
     set {
-      pdje_POLYGLOTPINVOKE.PDJE_editor_set(swigCPtr, SWIGTYPE_p_editorObject.getCPtr(value));
+      pdje_POLYGLOTPINVOKE.PDJE_editor_set(swigCPtr, editorObject.getCPtr(value));
       if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     } 
     get {
       global::System.IntPtr cPtr = pdje_POLYGLOTPINVOKE.PDJE_editor_get(swigCPtr);
-      SWIGTYPE_p_editorObject ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_editorObject(cPtr, true);
+      editorObject ret = (cPtr == global::System.IntPtr.Zero) ? null : new editorObject(cPtr, true);
       if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
       return ret;
     } 
@@ -109,8 +109,8 @@ public class PDJE : global::System.IDisposable {
     pdje_POLYGLOTPINVOKE.PDJE_ResetPlayer(swigCPtr);
   }
 
-  public void ResetEditor() {
-    pdje_POLYGLOTPINVOKE.PDJE_ResetEditor(swigCPtr);
+  public void CloseEditor() {
+    pdje_POLYGLOTPINVOKE.PDJE_CloseEditor(swigCPtr);
   }
 
   public SWIGTYPE_p_PDJE_CORE_DATA_LINE PullOutDataLine() {
@@ -151,6 +151,12 @@ public class PDJE : global::System.IDisposable {
   public audioPlayer GetPlayerObject() {
     global::System.IntPtr cPtr = pdje_POLYGLOTPINVOKE.PDJE_GetPlayerObject(swigCPtr);
     audioPlayer ret = (cPtr == global::System.IntPtr.Zero) ? null : new audioPlayer(cPtr, true);
+    return ret;
+  }
+
+  public editorObject GetEditorObject() {
+    global::System.IntPtr cPtr = pdje_POLYGLOTPINVOKE.PDJE_GetEditorObject(swigCPtr);
+    editorObject ret = (cPtr == global::System.IntPtr.Zero) ? null : new editorObject(cPtr, true);
     return ret;
   }
 

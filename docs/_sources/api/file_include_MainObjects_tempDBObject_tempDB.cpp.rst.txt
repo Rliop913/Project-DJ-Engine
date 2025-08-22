@@ -4,7 +4,7 @@
 File tempDB.cpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_MainObjects_tempDBObject>` (``include\MainObjects\tempDBObject``)
+|exhale_lsh| :ref:`Parent directory <dir_include_MainObjects_tempDBObject>` (``include/MainObjects/tempDBObject``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File tempDB.cpp
    :local:
    :backlinks: none
 
-Definition (``include\MainObjects\tempDBObject\tempDB.cpp``)
+Definition (``include/MainObjects/tempDBObject/tempDB.cpp``)
 ------------------------------------------------------------
 
 

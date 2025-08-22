@@ -4,7 +4,7 @@
 File Type_FX_TRANCE.cpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MixTypes>` (``include\audioRender\MixMachine\MixTypes``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MixTypes>` (``include/audioRender/MixMachine/MixTypes``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Type_FX_TRANCE.cpp
    :local:
    :backlinks: none
 
-Definition (``include\audioRender\MixMachine\MixTypes\Type_FX_TRANCE.cpp``)
+Definition (``include/audioRender/MixMachine/MixTypes/Type_FX_TRANCE.cpp``)
 ---------------------------------------------------------------------------
 
 
@@ -41,5 +41,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function__type___f_x___t_r_a_n_c_e_8cpp_1ad83f7af37fa5c4ed61cf22a69b1332d5`
+- :ref:`exhale_function_Type__FX__TRANCE_8cpp_1ad83f7af37fa5c4ed61cf22a69b1332d5`
 

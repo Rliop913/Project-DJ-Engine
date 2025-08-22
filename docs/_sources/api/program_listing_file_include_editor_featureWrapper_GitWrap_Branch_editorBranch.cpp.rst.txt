@@ -4,7 +4,7 @@
 Program Listing for File editorBranch.cpp
 =========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_Branch_editorBranch.cpp>` (``include\editor\featureWrapper\GitWrap\Branch\editorBranch.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_Branch_editorBranch.cpp>` (``include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

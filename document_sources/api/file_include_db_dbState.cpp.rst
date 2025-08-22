@@ -4,7 +4,7 @@
 File dbState.cpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_db>` (``include\db``)
+|exhale_lsh| :ref:`Parent directory <dir_include_db>` (``include/db``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File dbState.cpp
    :local:
    :backlinks: none
 
-Definition (``include\db\dbState.cpp``)
+Definition (``include/db/dbState.cpp``)
 ---------------------------------------
 
 
@@ -45,11 +45,11 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_db_state_8cpp_1af859cacf202fb1ac4ec76d0845332daa`
+- :ref:`exhale_function_dbState_8cpp_1af859cacf202fb1ac4ec76d0845332daa`
 
-- :ref:`exhale_function_db_state_8cpp_1a3fc8fa09151028ac2d501a806c5b55b2`
+- :ref:`exhale_function_dbState_8cpp_1a3fc8fa09151028ac2d501a806c5b55b2`
 
-- :ref:`exhale_function_db_state_8cpp_1abd2e27c6282ca855010d94b6764b1ecc`
+- :ref:`exhale_function_dbState_8cpp_1abd2e27c6282ca855010d94b6764b1ecc`
 
-- :ref:`exhale_function_db_state_8cpp_1a51bf28f90683420ef8446614d0f63b23`
+- :ref:`exhale_function_dbState_8cpp_1a51bf28f90683420ef8446614d0f63b23`
 

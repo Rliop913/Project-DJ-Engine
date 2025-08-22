@@ -4,7 +4,7 @@
 File gitLog.cpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Log>` (``include\editor\featureWrapper\GitWrap\Log``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Log>` (``include/editor/featureWrapper/GitWrap/Log``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File gitLog.cpp
    :local:
    :backlinks: none
 
-Definition (``include\editor\featureWrapper\GitWrap\Log\gitLog.cpp``)
+Definition (``include/editor/featureWrapper/GitWrap/Log/gitLog.cpp``)
 ---------------------------------------------------------------------
 
 
@@ -47,5 +47,5 @@ Defines
 -------
 
 
-- :ref:`exhale_define_git_log_8cpp_1a4f3e7136eeec135942dffd940e28e3d8`
+- :ref:`exhale_define_gitLog_8cpp_1a4f3e7136eeec135942dffd940e28e3d8`
 

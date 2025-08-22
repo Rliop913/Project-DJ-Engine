@@ -4,7 +4,7 @@
 File render.cpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_MainObjects_editorObject>` (``include\MainObjects\editorObject``)
+|exhale_lsh| :ref:`Parent directory <dir_include_MainObjects_editorObject>` (``include/MainObjects/editorObject``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File render.cpp
    :local:
    :backlinks: none
 
-Definition (``include\MainObjects\editorObject\render.cpp``)
+Definition (``include/MainObjects/editorObject/render.cpp``)
 ------------------------------------------------------------
 
 

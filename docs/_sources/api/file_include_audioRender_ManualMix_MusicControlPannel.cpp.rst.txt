@@ -4,7 +4,7 @@
 File MusicControlPannel.cpp
 ===========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_ManualMix>` (``include\audioRender\ManualMix``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_ManualMix>` (``include/audioRender/ManualMix``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File MusicControlPannel.cpp
    :local:
    :backlinks: none
 
-Definition (``include\audioRender\ManualMix\MusicControlPannel.cpp``)
+Definition (``include/audioRender/ManualMix/MusicControlPannel.cpp``)
 ---------------------------------------------------------------------
 
 
@@ -47,5 +47,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function__music_control_pannel_8cpp_1abcdde12a1996c1207e1dd830cc2643ff`
+- :ref:`exhale_function_MusicControlPannel_8cpp_1abcdde12a1996c1207e1dd830cc2643ff`
 

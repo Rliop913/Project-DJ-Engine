@@ -4,7 +4,7 @@
 Program Listing for File go.cpp
 ===============================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_editorObject_go.cpp>` (``include\MainObjects\editorObject\go.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_editorObject_go.cpp>` (``include/MainObjects/editorObject/go.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

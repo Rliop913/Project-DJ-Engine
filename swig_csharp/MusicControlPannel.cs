@@ -97,6 +97,12 @@ public class MusicControlPannel : global::System.IDisposable {
     return ret;
   }
 
+  public bool ChangeBpm(string title, double targetBpm, double originBpm) {
+    bool ret = pdje_POLYGLOTPINVOKE.MusicControlPannel_ChangeBpm(swigCPtr, title, targetBpm, originBpm);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
   public MusicControlPannel(uint FrameSize) : this(pdje_POLYGLOTPINVOKE.new_MusicControlPannel(FrameSize), true) {
   }
 

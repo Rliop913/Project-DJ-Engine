@@ -4,7 +4,7 @@
 Program Listing for File tempDB.cpp
 ===================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_tempDBObject_tempDB.cpp>` (``include\MainObjects\tempDBObject\tempDB.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_tempDBObject_tempDB.cpp>` (``include/MainObjects/tempDBObject/tempDB.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
