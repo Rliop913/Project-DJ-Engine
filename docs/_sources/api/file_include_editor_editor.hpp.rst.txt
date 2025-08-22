@@ -4,13 +4,13 @@
 File editor.hpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor>` (``include/editor``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor>` (``include\editor``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
 
-High level editor interface for :ref:`exhale_class_classPDJE` projects. 
+High level editor interface for :ref:`exhale_class_class_p_d_j_e` projects. 
 
 
 
@@ -18,7 +18,7 @@ High level editor interface for :ref:`exhale_class_classPDJE` projects.
    :local:
    :backlinks: none
 
-Definition (``include/editor/editor.hpp``)
+Definition (``include\editor\editor.hpp``)
 ------------------------------------------
 
 
@@ -64,7 +64,7 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__Editor_1_1MusicHandleStruct`
+- :ref:`exhale_struct_struct_p_d_j_e___editor_1_1_music_handle_struct`
 
-- :ref:`exhale_class_classPDJE__Editor`
+- :ref:`exhale_class_class_p_d_j_e___editor`
 

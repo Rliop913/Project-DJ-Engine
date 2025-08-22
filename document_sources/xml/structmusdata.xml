@@ -2,10 +2,10 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="structmusdata" kind="struct" language="C++" prot="public">
     <compoundname>musdata</compoundname>
-    <includes refid="musicDB_8hpp" local="no">musicDB.hpp</includes>
+    <includes refid="music_d_b_8hpp" local="no">musicDB.hpp</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structmusdata_1a9c537dbc78fd984f5316e3d167633f70" prot="public" static="no" mutable="no">
-        <type><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
+        <type><ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
         <definition>SANITIZED musdata::title</definition>
         <argsstring></argsstring>
         <name>title</name>
@@ -19,7 +19,7 @@
         <location file="include/db/musicDB.hpp" line="16" column="15" bodyfile="include/db/musicDB.hpp" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmusdata_1a401e0646fa7f98d230e9af9a6af577de" prot="public" static="no" mutable="no">
-        <type><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
+        <type><ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
         <definition>SANITIZED musdata::composer</definition>
         <argsstring></argsstring>
         <name>composer</name>
@@ -33,7 +33,7 @@
         <location file="include/db/musicDB.hpp" line="17" column="15" bodyfile="include/db/musicDB.hpp" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmusdata_1a5fcdc31f2bfb1fe90c038403791a00ae" prot="public" static="no" mutable="no">
-        <type><ref refid="fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref></type>
+        <type><ref refid="file_name_sanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref></type>
         <definition>SANITIZED_ORNOT musdata::musicPath</definition>
         <argsstring></argsstring>
         <name>musicPath</name>
@@ -47,7 +47,7 @@
         <location file="include/db/musicDB.hpp" line="18" column="21" bodyfile="include/db/musicDB.hpp" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmusdata_1aaba9b1ecc8a2a58f74a00ec2d9041a28" prot="public" static="no" mutable="no">
-        <type><ref refid="dbState_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
+        <type><ref refid="db_state_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
         <definition>BIN musdata::bpmBinary</definition>
         <argsstring></argsstring>
         <name>bpmBinary</name>
@@ -76,7 +76,7 @@
         <location file="include/db/musicDB.hpp" line="20" column="12" bodyfile="include/db/musicDB.hpp" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmusdata_1a93e5867704dfe0d19f3e3c3855aefbf6" prot="public" static="no" mutable="no">
-        <type><ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref></type>
+        <type><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref></type>
         <definition>DONT_SANITIZE musdata::firstBar</definition>
         <argsstring></argsstring>
         <name>firstBar</name>
@@ -128,17 +128,17 @@
         <name>musdata</name>
         <qualifiedname>musdata::musdata</qualifiedname>
         <param>
-          <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>title__</declname>
           <defval>&quot;&quot;</defval>
         </param>
         <param>
-          <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>composer__</declname>
           <defval>&quot;&quot;</defval>
         </param>
         <param>
-          <type>const <ref refid="fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref> &amp;</type>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref> &amp;</type>
           <declname>musicPath__</declname>
           <defval>&quot;&quot;</defval>
         </param>
@@ -181,7 +181,7 @@
 <parametername>bpm__</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The <ref refid="classBPM" kindref="compound">BPM</ref> (beats per minute) of the music. Use a negative value to ignore this field. </para>
+<para>The <ref refid="class_b_p_m" kindref="compound">BPM</ref> (beats per minute) of the music. Use a negative value to ignore this field. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -300,12 +300,41 @@
           <declname>toEdit</declname>
         </param>
         <briefdescription>
+<para>Generates the edit statement. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dbstate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The statement pointer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The root database. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>toEdit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The music data to edit. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the statement was generated successfully, <computeroutput>false</computeroutput> otherwise. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/musicDB.hpp" line="68" column="10" bodyfile="include/db/musicDB.cpp" bodystart="121" bodyend="144"/>
+        <location file="include/db/musicDB.hpp" line="76" column="10" bodyfile="include/db/musicDB.cpp" bodystart="121" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="structmusdata_1a150c5d78d901fe9cd851b57ab375c11e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -322,12 +351,33 @@
           <declname>db</declname>
         </param>
         <briefdescription>
+<para>Generates the delete statement. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dbstate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The statement pointer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The root database. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the statement was generated successfully, <computeroutput>false</computeroutput> otherwise. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/musicDB.hpp" line="70" column="10" bodyfile="include/db/musicDB.cpp" bodystart="148" bodyend="163"/>
+        <location file="include/db/musicDB.hpp" line="85" column="10" bodyfile="include/db/musicDB.cpp" bodystart="148" bodyend="163"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -361,7 +411,7 @@
         <label>std::vector&lt; u_int8_t &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/db/musicDB.hpp" line="14" column="1" bodyfile="include/db/musicDB.hpp" bodystart="14" bodyend="72"/>
+    <location file="include/db/musicDB.hpp" line="14" column="1" bodyfile="include/db/musicDB.hpp" bodystart="14" bodyend="87"/>
     <listofallmembers>
       <member refid="structmusdata_1a4739e5c5967894bb4a5d6566b8e2a422" prot="public" virt="non-virtual"><scope>musdata</scope><name>bpm</name></member>
       <member refid="structmusdata_1aaba9b1ecc8a2a58f74a00ec2d9041a28" prot="public" virt="non-virtual"><scope>musdata</scope><name>bpmBinary</name></member>

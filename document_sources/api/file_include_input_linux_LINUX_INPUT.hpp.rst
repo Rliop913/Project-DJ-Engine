@@ -4,7 +4,7 @@
 File LINUX_INPUT.hpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_linux>` (``include/input/linux``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_linux>` (``include\input\linux``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File LINUX_INPUT.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/linux/LINUX_INPUT.hpp``)
+Definition (``include\input\linux\LINUX_INPUT.hpp``)
 ----------------------------------------------------
 
 
@@ -57,5 +57,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classLinuxEVDEV`
+- :ref:`exhale_class_class_linux_e_v_d_e_v`
 

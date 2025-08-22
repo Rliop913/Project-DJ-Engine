@@ -4,7 +4,7 @@
 Program Listing for File tranceMan.hpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_tranceMan.hpp>` (``include/audioRender/ManualMix/ManualFausts/tranceMan.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_tranceMan.hpp>` (``include\audioRender\ManualMix\ManualFausts\tranceMan.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -21,10 +21,10 @@ Program Listing for File tranceMan.hpp
        ARGSETTER
        makeArgSetter(){
            return {
-               {"bps", [this](double value) {
+               {"Bps", [this](double value) {
                    this->bps = static_cast<float>(value);
                }},
-               {"gain", [this](double value) {
+               {"Gain", [this](double value) {
                    this->gain = static_cast<float>(value);
                }},
                {"TranceDryWet", [this](double value) {

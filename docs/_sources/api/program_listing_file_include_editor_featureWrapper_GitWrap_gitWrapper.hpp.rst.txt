@@ -4,7 +4,7 @@
 Program Listing for File gitWrapper.hpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_gitWrapper.hpp>` (``include/editor/featureWrapper/GitWrap/gitWrapper.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_gitWrapper.hpp>` (``include\editor\featureWrapper\GitWrap\gitWrapper.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -61,6 +61,7 @@ Program Listing for File gitWrapper.hpp
        bool commit(git_signature* sign, const std::string& message);
    
        bool log();
+   
        bool log(const std::string& branchName);
    
        static std::string GenTimeStamp();

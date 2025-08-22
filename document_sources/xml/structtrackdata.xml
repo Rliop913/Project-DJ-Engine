@@ -2,10 +2,10 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="structtrackdata" kind="struct" language="C++" prot="public">
     <compoundname>trackdata</compoundname>
-    <includes refid="trackDB_8hpp" local="no">trackDB.hpp</includes>
+    <includes refid="track_d_b_8hpp" local="no">trackDB.hpp</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" prot="public" static="no" mutable="no">
-        <type><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
+        <type><ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
         <definition>SANITIZED trackdata::trackTitle</definition>
         <argsstring></argsstring>
         <name>trackTitle</name>
@@ -19,7 +19,7 @@
         <location file="include/db/trackDB.hpp" line="14" column="15" bodyfile="include/db/trackDB.hpp" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structtrackdata_1a155e25ae9bef854aa3441d9702082ac3" prot="public" static="no" mutable="no">
-        <type><ref refid="dbState_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
+        <type><ref refid="db_state_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
         <definition>BIN trackdata::mixBinary</definition>
         <argsstring></argsstring>
         <name>mixBinary</name>
@@ -33,7 +33,7 @@
         <location file="include/db/trackDB.hpp" line="15" column="9" bodyfile="include/db/trackDB.hpp" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structtrackdata_1a0a2f02219cfb3b6f5e988fec61c37e7a" prot="public" static="no" mutable="no">
-        <type><ref refid="dbState_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
+        <type><ref refid="db_state_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
         <definition>BIN trackdata::noteBinary</definition>
         <argsstring></argsstring>
         <name>noteBinary</name>
@@ -47,7 +47,7 @@
         <location file="include/db/trackDB.hpp" line="16" column="9" bodyfile="include/db/trackDB.hpp" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structtrackdata_1aa1e66043414a3f6fe79c3b74ba7dfde8" prot="public" static="no" mutable="no">
-        <type><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
+        <type><ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
         <definition>SANITIZED trackdata::cachedMixList</definition>
         <argsstring></argsstring>
         <name>cachedMixList</name>
@@ -99,7 +99,7 @@
         <name>trackdata</name>
         <qualifiedname>trackdata::trackdata</qualifiedname>
         <param>
-          <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>trackTitle__</declname>
           <defval>&quot;&quot;</defval>
         </param>
@@ -232,12 +232,41 @@
           <declname>toEdit</declname>
         </param>
         <briefdescription>
+<para>Generates the edit statement. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dbstate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The statement pointer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The root database. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>toEdit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The track data to edit. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the statement was generated successfully, <computeroutput>false</computeroutput> otherwise. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/trackDB.hpp" line="59" column="10" bodyfile="include/db/trackDB.cpp" bodystart="87" bodyend="108"/>
+        <location file="include/db/trackDB.hpp" line="67" column="10" bodyfile="include/db/trackDB.cpp" bodystart="87" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="structtrackdata_1aea2673a94960b6ee2fcbc7b539c42de8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -254,12 +283,33 @@
           <declname>db</declname>
         </param>
         <briefdescription>
+<para>Generates the delete statement. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dbstate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The statement pointer. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>db</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The root database. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the statement was generated successfully, <computeroutput>false</computeroutput> otherwise. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/trackDB.hpp" line="61" column="10" bodyfile="include/db/trackDB.cpp" bodystart="112" bodyend="127"/>
+        <location file="include/db/trackDB.hpp" line="76" column="10" bodyfile="include/db/trackDB.cpp" bodystart="112" bodyend="127"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -292,7 +342,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/db/trackDB.hpp" line="12" column="1" bodyfile="include/db/trackDB.hpp" bodystart="12" bodyend="62"/>
+    <location file="include/db/trackDB.hpp" line="12" column="1" bodyfile="include/db/trackDB.hpp" bodystart="12" bodyend="77"/>
     <listofallmembers>
       <member refid="structtrackdata_1aa1e66043414a3f6fe79c3b74ba7dfde8" prot="public" virt="non-virtual"><scope>trackdata</scope><name>cachedMixList</name></member>
       <member refid="structtrackdata_1aea2673a94960b6ee2fcbc7b539c42de8" prot="public" virt="non-virtual"><scope>trackdata</scope><name>GenDeleteSTMT</name></member>

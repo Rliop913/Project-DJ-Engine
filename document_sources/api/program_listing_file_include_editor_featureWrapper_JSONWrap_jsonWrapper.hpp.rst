@@ -4,7 +4,7 @@
 Program Listing for File jsonWrapper.hpp
 ========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_JSONWrap_jsonWrapper.hpp>` (``include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_JSONWrap_jsonWrapper.hpp>` (``include\editor\featureWrapper\JSONWrap\jsonWrapper.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -81,7 +81,7 @@ Program Listing for File jsonWrapper.hpp
    using KV_W = std::vector<KEY_VALUE>;
    
    template<typename CapnpWriterType>
-   class PDJE_API PDJE_JSONHandler{
+   class PDJE_JSONHandler{
    private:
        nj ROOT;
    public:

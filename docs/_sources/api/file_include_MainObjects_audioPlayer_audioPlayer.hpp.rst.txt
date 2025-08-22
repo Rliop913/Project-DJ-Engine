@@ -4,7 +4,7 @@
 File audioPlayer.hpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_MainObjects_audioPlayer>` (``include/MainObjects/audioPlayer``)
+|exhale_lsh| :ref:`Parent directory <dir_include_MainObjects_audioPlayer>` (``include\MainObjects\audioPlayer``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File audioPlayer.hpp
    :local:
    :backlinks: none
 
-Definition (``include/MainObjects/audioPlayer/audioPlayer.hpp``)
+Definition (``include\MainObjects\audioPlayer\audioPlayer.hpp``)
 ----------------------------------------------------------------
 
 
@@ -33,6 +33,8 @@ Includes
 - ``ManualMix.hpp`` (:ref:`file_include_audioRender_ManualMix_ManualMix.hpp`)
 
 - ``MixMachine.hpp`` (:ref:`file_include_audioRender_MixMachine_MixMachine.hpp`)
+
+- ``PDJE_Core_DataLine.hpp`` (:ref:`file_include_interface_PDJE_Core_DataLine.hpp`)
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_PDJE_EXPORT_SETTER.hpp`)
 
@@ -63,5 +65,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classaudioPlayer`
+- :ref:`exhale_class_classaudio_player`
 

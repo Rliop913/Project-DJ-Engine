@@ -4,7 +4,7 @@
 Program Listing for File fileNameSanitizer.cpp
 ==============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_db_fileNameSanitizer.cpp>` (``include/db/fileNameSanitizer.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_db_fileNameSanitizer.cpp>` (``include\db\fileNameSanitizer.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

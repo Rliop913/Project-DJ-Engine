@@ -4,7 +4,7 @@
 File filterMan.hpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_ManualMix_ManualFausts>` (``include/audioRender/ManualMix/ManualFausts``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_ManualMix_ManualFausts>` (``include\audioRender\ManualMix\ManualFausts``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File filterMan.hpp
    :local:
    :backlinks: none
 
-Definition (``include/audioRender/ManualMix/ManualFausts/filterMan.hpp``)
+Definition (``include\audioRender\ManualMix\ManualFausts\filterMan.hpp``)
 -------------------------------------------------------------------------
 
 
@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classFilterMan`
+- :ref:`exhale_class_class_filter_man`
 

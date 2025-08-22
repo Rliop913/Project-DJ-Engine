@@ -14,7 +14,7 @@ editorObject::AddLine(const EDIT_ARG_MUSIC& obj)
     for(auto& i : E_obj->musicHandle){
         if(i.musicName == safeMus.value()){
             i.jsonh.add(obj.arg);
-            return DefaultSaveFuntion<EDIT_ARG_MUSIC>(i, obj);
+            return DefaultSaveFunction<EDIT_ARG_MUSIC>(i, obj);
         }
     }
     warnlog("music is not exists. from editorObject AddLine(Music obj)");
@@ -57,7 +57,7 @@ editorObject::AddLine(const EDIT_ARG_MIX& obj)
             return false;
         }
     }
-    return DefaultSaveFuntion<EDIT_ARG_MIX>();
+    return DefaultSaveFunction<EDIT_ARG_MIX>();
 }
 
 template<> 
@@ -75,7 +75,7 @@ editorObject::AddLine(const EDIT_ARG_NOTE& obj)
         critlog(obj.third);
         return false;
     }
-    return DefaultSaveFuntion<EDIT_ARG_NOTE>();
+    return DefaultSaveFunction<EDIT_ARG_NOTE>();
 }
 
 
@@ -93,7 +93,7 @@ editorObject::AddLine(const EDIT_ARG_KEY_VALUE& obj)
         
         return false;
     }
-    return DefaultSaveFuntion<EDIT_ARG_KEY_VALUE>();
+    return DefaultSaveFunction<EDIT_ARG_KEY_VALUE>();
 }
 
 bool 

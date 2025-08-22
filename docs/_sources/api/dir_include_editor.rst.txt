@@ -10,7 +10,7 @@ Directory editor
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include/editor``
+*Directory path:* ``include\editor``
 
 Subdirectories
 --------------

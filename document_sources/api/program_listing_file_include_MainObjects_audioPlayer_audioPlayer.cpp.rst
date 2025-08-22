@@ -4,7 +4,7 @@
 Program Listing for File audioPlayer.cpp
 ========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_audioPlayer_audioPlayer.cpp>` (``include/MainObjects/audioPlayer/audioPlayer.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_audioPlayer_audioPlayer.cpp>` (``include\MainObjects\audioPlayer\audioPlayer.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -160,4 +160,23 @@ Program Listing for File audioPlayer.cpp
            critlog("failed to return music control pannel. from audioPlayer GetMusicControlPannel");
            return nullptr;
        }
+   }
+   
+   PDJE_CORE_DATA_LINE
+   audioPlayer::PullOutDataLine()
+   {
+       PDJE_CORE_DATA_LINE dline;
+       dline.used_frame = &engineDatas.consumedFrames;
+       dline.nowCursor = &engineDatas.nowCursor;
+       dline.maxCursor = &engineDatas.maxCursor;
+       if(!engineDatas.pcmDataPoint->empty()){
+           dline.preRenderedData = engineDatas.pcmDataPoint->data();
+       }
+       if(engineDatas.FXManualPannel.has_value()){
+           dline.fx = &engineDatas.FXManualPannel.value();
+       }
+       if(engineDatas.MusCtrPannel.has_value()){
+           dline.musp = &engineDatas.MusCtrPannel.value();
+       }
+       return dline;
    }

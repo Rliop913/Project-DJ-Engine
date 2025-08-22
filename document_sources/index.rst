@@ -121,4 +121,4 @@ Additional Resources
 
   Getting Started
   api/api_root
-  Data_Formats
+  Editor_Format

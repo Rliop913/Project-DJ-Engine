@@ -4,7 +4,7 @@
 Program Listing for File NoteJson.cpp
 =====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_JSONWrap_NoteJson.cpp>` (``include/editor/featureWrapper/JSONWrap/NoteJson.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_JSONWrap_NoteJson.cpp>` (``include\editor\featureWrapper\JSONWrap\NoteJson.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

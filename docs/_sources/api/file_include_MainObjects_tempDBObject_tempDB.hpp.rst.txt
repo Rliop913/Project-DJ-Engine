@@ -4,16 +4,21 @@
 File tempDB.hpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_MainObjects_tempDBObject>` (``include/MainObjects/tempDBObject``)
+|exhale_lsh| :ref:`Parent directory <dir_include_MainObjects_tempDBObject>` (``include\MainObjects\tempDBObject``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+
+Defines a temporary database for managing project data. 
+
 
 
 .. contents:: Contents
    :local:
    :backlinks: none
 
-Definition (``include/MainObjects/tempDBObject/tempDB.hpp``)
+Definition (``include\MainObjects\tempDBObject\tempDB.hpp``)
 ------------------------------------------------------------
 
 
@@ -53,5 +58,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classtempDB`
+- :ref:`exhale_class_classtemp_d_b`
 

@@ -4,7 +4,7 @@
 File jsonWrapper.hpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_JSONWrap>` (``include/editor/featureWrapper/JSONWrap``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_JSONWrap>` (``include\editor\featureWrapper\JSONWrap``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ JSON based storage helpers for editor data.
    :local:
    :backlinks: none
 
-Definition (``include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp``)
+Definition (``include\editor\featureWrapper\JSONWrap\jsonWrapper.hpp``)
 -----------------------------------------------------------------------
 
 
@@ -80,41 +80,41 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structMixArgs`
+- :ref:`exhale_struct_struct_mix_args`
 
-- :ref:`exhale_struct_structMusicArgs`
+- :ref:`exhale_struct_struct_music_args`
 
-- :ref:`exhale_struct_structNoteArgs`
+- :ref:`exhale_struct_struct_note_args`
 
-- :ref:`exhale_class_classPDJE__JSONHandler`
+- :ref:`exhale_class_class_p_d_j_e___j_s_o_n_handler`
 
 
 Defines
 -------
 
 
-- :ref:`exhale_define_jsonWrapper_8hpp_1aaf52e36627a4534b1b419cc19d90e4d6`
+- :ref:`exhale_define_json_wrapper_8hpp_1aaf52e36627a4534b1b419cc19d90e4d6`
 
-- :ref:`exhale_define_jsonWrapper_8hpp_1ac928e8a97a547b183c1517879bfc52b4`
+- :ref:`exhale_define_json_wrapper_8hpp_1ac928e8a97a547b183c1517879bfc52b4`
 
-- :ref:`exhale_define_jsonWrapper_8hpp_1a1032385d46bc88a23def4210f4ff6d1c`
+- :ref:`exhale_define_json_wrapper_8hpp_1a1032385d46bc88a23def4210f4ff6d1c`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_jsonWrapper_8hpp_1a217a1073c4c083da1400cf99dab75f21`
+- :ref:`exhale_typedef_json_wrapper_8hpp_1a217a1073c4c083da1400cf99dab75f21`
 
-- :ref:`exhale_typedef_jsonWrapper_8hpp_1a67473814637ada120f046e947d522b64`
+- :ref:`exhale_typedef_json_wrapper_8hpp_1a67473814637ada120f046e947d522b64`
 
-- :ref:`exhale_typedef_jsonWrapper_8hpp_1a302aa5ab173d4395fe6526d00a2f9777`
+- :ref:`exhale_typedef_json_wrapper_8hpp_1a302aa5ab173d4395fe6526d00a2f9777`
 
-- :ref:`exhale_typedef_jsonWrapper_8hpp_1a62a8aadaf6e33bd03a591749fca41482`
+- :ref:`exhale_typedef_json_wrapper_8hpp_1a62a8aadaf6e33bd03a591749fca41482`
 
-- :ref:`exhale_typedef_jsonWrapper_8hpp_1a5ce6d29d6001f496835f6401276a682e`
+- :ref:`exhale_typedef_json_wrapper_8hpp_1a5ce6d29d6001f496835f6401276a682e`
 
-- :ref:`exhale_typedef_jsonWrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9`
+- :ref:`exhale_typedef_json_wrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9`
 
-- :ref:`exhale_typedef_jsonWrapper_8hpp_1a29a06c37bb7adf0275ebf5975fb7cb89`
+- :ref:`exhale_typedef_json_wrapper_8hpp_1a29a06c37bb7adf0275ebf5975fb7cb89`
 

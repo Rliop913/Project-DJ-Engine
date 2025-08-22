@@ -4,7 +4,7 @@
 Program Listing for File deleteline.cpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_editorObject_deleteline.cpp>` (``include/MainObjects/editorObject/deleteline.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_editorObject_deleteline.cpp>` (``include\MainObjects\editorObject\deleteline.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -23,7 +23,7 @@ Program Listing for File deleteline.cpp
            skipType,
            skipDetail
        );
-       if(DefaultSaveFuntion<EDIT_ARG_MIX>()){
+       if(DefaultSaveFunction<EDIT_ARG_MIX>()){
            return deleted_lines;
        }
        else{
@@ -40,7 +40,7 @@ Program Listing for File deleteline.cpp
    {
        const int deleted_lines = 
        E_obj->noteHandle.second.deleteLine(obj);
-       if(DefaultSaveFuntion<EDIT_ARG_NOTE>()){
+       if(DefaultSaveFunction<EDIT_ARG_NOTE>()){
            return deleted_lines;
        }
        else{
@@ -56,7 +56,7 @@ Program Listing for File deleteline.cpp
    {
        const int deleted_lines =
        E_obj->KVHandler.second.deleteLine(obj.second);
-       if(DefaultSaveFuntion<EDIT_ARG_KEY_VALUE>()){
+       if(DefaultSaveFunction<EDIT_ARG_KEY_VALUE>()){
            return deleted_lines;
        }
        else{
@@ -73,7 +73,7 @@ Program Listing for File deleteline.cpp
        for(auto& i : E_obj->musicHandle){
            if(i.musicName == obj.musicName){
                const int deleted_lines = i.jsonh.deleteLine(obj.arg);
-               if(DefaultSaveFuntion<EDIT_ARG_MUSIC>(i, obj)){
+               if(DefaultSaveFunction<EDIT_ARG_MUSIC>(i, obj)){
                    return deleted_lines;
                }
                else{

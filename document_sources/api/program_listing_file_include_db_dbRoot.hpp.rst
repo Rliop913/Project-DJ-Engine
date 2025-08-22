@@ -4,7 +4,7 @@
 Program Listing for File dbRoot.hpp
 ===================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_db_dbRoot.hpp>` (``include/db/dbRoot.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_db_dbRoot.hpp>` (``include\db\dbRoot.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -98,25 +98,21 @@ Program Listing for File dbRoot.hpp
            return std::nullopt;
        }
    }
-   #include <iostream>
    template<typename DBType>
    bool
    litedb::operator<=(DBType& insertObject)
    {
        sqlite3_exec(sdb, "BEGIN TRANSACTION;", NULL, NULL, NULL);
-       std::cout << "dbRoot.hpp:115 operator" << "   " << std::endl;
        stmt dbstate = stmt();
        if(insertObject.GenInsertSTMT(dbstate, sdb)){
            auto insertRes = sqlite3_step(dbstate.S);
            if(insertRes != SQLITE_DONE){
-               std::cout << "dbRoot.hpp:119 FATAL ERROR: insertRes-" << insertRes << "   " << std::endl;
                sqlite3_exec(sdb, "ROLLBACK;", NULL, NULL, NULL);
                return false;
            }
            sqlite3_exec(sdb, "COMMIT;", nullptr, nullptr, NULL);
            return true;
        }
-       std::cout << "dbRoot.hpp:124 FATAL ERROR: GenInsertSTMT ERROR" << std::endl;
        return false;
    }
    

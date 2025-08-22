@@ -4,12 +4,13 @@
 Program Listing for File MixMachine-inl.h
 =========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_MixMachine_MixMachine-inl.h>` (``include/audioRender/MixMachine/MixMachine-inl.h``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_MixMachine_MixMachine-inl.h>` (``include\audioRender\MixMachine\MixMachine-inl.h``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 .. code-block:: cpp
 
+   
    #include "MixMachine.hpp"
    
    #undef HWY_TARGET_INCLUDE
@@ -18,9 +19,6 @@ Program Listing for File MixMachine-inl.h
    
    #include <hwy/highway.h>
    #include "hwy/base.h"
-   
-   
-   
    
    namespace HWY_NAMESPACE{
    

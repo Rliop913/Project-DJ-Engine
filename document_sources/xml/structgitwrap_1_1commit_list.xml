@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="structgitwrap_1_1commit_list" kind="struct" language="C++" prot="public">
+    <compoundname>gitwrap::commitList</compoundname>
+    <includes refid="editor_commit_8hpp" local="no">editorCommit.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structgitwrap_1_1commit_list_1a6573ddcbbf6381d3173c8ca90be8d04c" prot="public" static="no" mutable="no">
+        <type>std::list&lt; <ref refid="structgitwrap_1_1commit" kindref="compound">commit</ref> &gt;</type>
+        <definition>std::list&lt;commit&gt; gitwrap::commitList::clist</definition>
+        <argsstring></argsstring>
+        <name>clist</name>
+        <qualifiedname>gitwrap::commitList::clist</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" line="38" column="19" bodyfile="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structgitwrap_1_1commit_list_1a8de11397242e04266368fc4a2f43ce47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void gitwrap::commitList::Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <qualifiedname>gitwrap::commitList::Reset</qualifiedname>
+        <briefdescription>
+<para>Clear the stored commit list. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" line="42" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" bodystart="42" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="structgitwrap_1_1commit_list_1aa584021b448354638997a7c062455769" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool commitList::UpdateCommits</definition>
+        <argsstring>(git_repository *repo)</argsstring>
+        <name>UpdateCommits</name>
+        <qualifiedname>gitwrap::commitList::UpdateCommits</qualifiedname>
+        <param>
+          <type>git_repository *</type>
+          <declname>repo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" line="45" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Commit/editorCommit.cpp" bodystart="7" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="structgitwrap_1_1commit_list_1a600434315a2afd3e33d7de8d1ca39379" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool commitList::OkToAdd</definition>
+        <argsstring>(git_oid id)</argsstring>
+        <name>OkToAdd</name>
+        <qualifiedname>gitwrap::commitList::OkToAdd</qualifiedname>
+        <param>
+          <type>git_oid</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" line="46" column="14" bodyfile="include/editor/featureWrapper/GitWrap/Commit/editorCommit.cpp" bodystart="46" bodyend="57"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Container of commits ordered from oldest to newest. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>gitwrap::commit</label>
+        <link refid="structgitwrap_1_1commit"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>msg</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>gitwrap::commitList</label>
+        <link refid="structgitwrap_1_1commit_list"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>clist</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::list&lt; gitwrap::commit &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::string</label>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" line="36" column="5" bodyfile="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp" bodystart="36" bodyend="47"/>
+    <listofallmembers>
+      <member refid="structgitwrap_1_1commit_list_1a6573ddcbbf6381d3173c8ca90be8d04c" prot="public" virt="non-virtual"><scope>gitwrap::commitList</scope><name>clist</name></member>
+      <member refid="structgitwrap_1_1commit_list_1a600434315a2afd3e33d7de8d1ca39379" prot="public" virt="non-virtual"><scope>gitwrap::commitList</scope><name>OkToAdd</name></member>
+      <member refid="structgitwrap_1_1commit_list_1a8de11397242e04266368fc4a2f43ce47" prot="public" virt="non-virtual"><scope>gitwrap::commitList</scope><name>Reset</name></member>
+      <member refid="structgitwrap_1_1commit_list_1aa584021b448354638997a7c062455769" prot="public" virt="non-virtual"><scope>gitwrap::commitList</scope><name>UpdateCommits</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

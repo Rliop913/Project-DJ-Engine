@@ -4,7 +4,7 @@
 File MusicTranslator.cpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_db_Capnp_Translators_MusicTranslator>` (``include/db/Capnp/Translators/MusicTranslator``)
+|exhale_lsh| :ref:`Parent directory <dir_include_db_Capnp_Translators_MusicTranslator>` (``include\db\Capnp\Translators\MusicTranslator``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File MusicTranslator.cpp
    :local:
    :backlinks: none
 
-Definition (``include/db/Capnp/Translators/MusicTranslator/MusicTranslator.cpp``)
+Definition (``include\db\Capnp\Translators\MusicTranslator\MusicTranslator.cpp``)
 ---------------------------------------------------------------------------------
 
 

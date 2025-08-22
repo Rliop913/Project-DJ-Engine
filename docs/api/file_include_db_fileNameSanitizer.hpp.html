@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>File fileNameSanitizer.hpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../_static/doctools.js?v=9bcbadda"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -50,10 +48,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html">PDJE_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -82,11 +80,12 @@
              
   <section id="file-filenamesanitizer-hpp">
 <span id="file-include-db-filenamesanitizer-hpp"></span><h1>File fileNameSanitizer.hpp<a class="headerlink" href="#file-filenamesanitizer-hpp" title="Link to this heading"></a></h1>
-<p>↰ <a class="reference internal" href="dir_include_db.html#dir-include-db"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">include/db</span></code>)</p>
+<p>↰ <a class="reference internal" href="dir_include_db.html#dir-include-db"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">include\db</span></code>)</p>
+<p>Provides utilities for sanitizing and de-sanitizing file names.</p>
 <nav class="contents local" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#definition-include-db-filenamesanitizer-hpp" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">include/db/fileNameSanitizer.hpp</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#definition-include-db-filenamesanitizer-hpp" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">include\db\fileNameSanitizer.hpp</span></code>)</a></p></li>
 <li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
 <li><p><a class="reference internal" href="#included-by" id="id3">Included By</a></p></li>
 <li><p><a class="reference internal" href="#classes" id="id4">Classes</a></p></li>
@@ -94,7 +93,7 @@
 </ul>
 </nav>
 <section id="definition-include-db-filenamesanitizer-hpp">
-<h2>Definition (<code class="docutils literal notranslate"><span class="pre">include/db/fileNameSanitizer.hpp</span></code>)<a class="headerlink" href="#definition-include-db-filenamesanitizer-hpp" title="Link to this heading"></a></h2>
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">include\db\fileNameSanitizer.hpp</span></code>)<a class="headerlink" href="#definition-include-db-filenamesanitizer-hpp" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="program_listing_file_include_db_fileNameSanitizer.hpp.html">Program Listing for File fileNameSanitizer.hpp</a></li>
@@ -130,17 +129,17 @@
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="classPDJE__Name__Sanitizer.html#exhale-class-classpdje-name-sanitizer"><span class="std std-ref">Class PDJE_Name_Sanitizer</span></a></p></li>
+<li><p><a class="reference internal" href="class_p_d_j_e___name___sanitizer.html#exhale-class-class-p-d-j-e-name-sanitizer"><span class="std std-ref">Class PDJE_Name_Sanitizer</span></a></p></li>
 </ul>
 </section>
 <section id="typedefs">
 <h2>Typedefs<a class="headerlink" href="#typedefs" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a88085bd22d8528eaa8829bdb233b53dc.html#exhale-typedef-filenamesanitizer-8hpp-1a88085bd22d8528eaa8829bdb233b53dc"><span class="std std-ref">Typedef cbase</span></a></p></li>
-<li><p><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#exhale-typedef-filenamesanitizer-8hpp-1a2ec6d785f45dccabee178706d40c0d7d"><span class="std std-ref">Typedef DONT_SANITIZE</span></a></p></li>
-<li><p><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07.html#exhale-typedef-filenamesanitizer-8hpp-1a42b314db575a72ce50d61bf37a153f07"><span class="std std-ref">Typedef SANITIZED</span></a></p></li>
-<li><p><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47.html#exhale-typedef-filenamesanitizer-8hpp-1a0662da7f5befd667eac83e4e3566cd47"><span class="std std-ref">Typedef SANITIZED_ORNOT</span></a></p></li>
-<li><p><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#exhale-typedef-filenamesanitizer-8hpp-1a3dbfced66c4bb073515956060fd59604"><span class="std std-ref">Typedef UNSANITIZED</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_file_name_sanitizer_8hpp_1a88085bd22d8528eaa8829bdb233b53dc.html#exhale-typedef-file-name-sanitizer-8hpp-1a88085bd22d8528eaa8829bdb233b53dc"><span class="std std-ref">Typedef cbase</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#exhale-typedef-file-name-sanitizer-8hpp-1a2ec6d785f45dccabee178706d40c0d7d"><span class="std std-ref">Typedef DONT_SANITIZE</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07.html#exhale-typedef-file-name-sanitizer-8hpp-1a42b314db575a72ce50d61bf37a153f07"><span class="std std-ref">Typedef SANITIZED</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_file_name_sanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47.html#exhale-typedef-file-name-sanitizer-8hpp-1a0662da7f5befd667eac83e4e3566cd47"><span class="std std-ref">Typedef SANITIZED_ORNOT</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#exhale-typedef-file-name-sanitizer-8hpp-1a3dbfced66c4bb073515956060fd59604"><span class="std std-ref">Typedef UNSANITIZED</span></a></p></li>
 </ul>
 </section>
 </section>

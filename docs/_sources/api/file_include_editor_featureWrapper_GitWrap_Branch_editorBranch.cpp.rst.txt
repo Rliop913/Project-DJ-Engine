@@ -4,7 +4,7 @@
 File editorBranch.cpp
 =====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Branch>` (``include/editor/featureWrapper/GitWrap/Branch``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Branch>` (``include\editor\featureWrapper\GitWrap\Branch``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File editorBranch.cpp
    :local:
    :backlinks: none
 
-Definition (``include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp``)
+Definition (``include\editor\featureWrapper\GitWrap\Branch\editorBranch.cpp``)
 ------------------------------------------------------------------------------
 
 

@@ -4,7 +4,7 @@
 Program Listing for File MusicControlPannel.hpp
 ===============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_MusicControlPannel.hpp>` (``include/audioRender/ManualMix/MusicControlPannel.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_MusicControlPannel.hpp>` (``include\audioRender\ManualMix\MusicControlPannel.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -21,6 +21,7 @@ Program Listing for File MusicControlPannel.hpp
    #include "dbRoot.hpp"
    #include <filesystem>
    #include "fileNameSanitizer.hpp"
+   #include "SoundTouch.h"
    
    namespace fs = std::filesystem;
    // #undef HWY_TARGET_INCLUDE
@@ -39,7 +40,15 @@ Program Listing for File MusicControlPannel.hpp
        bool play = false;
        Decoder dec;
        FXControlPannel* fxP;
-       MusicOnDeck() : fxP(new FXControlPannel(48000)) {};
+       std::optional<soundtouch::SoundTouch> st;
+       MusicOnDeck() : fxP(new FXControlPannel(48000)) {
+           st.emplace();
+           st->setChannels(CHANNEL);
+           st->setSampleRate(SAMPLERATE);
+           st->setSetting(0, 1);
+           st->setSetting(2, 0);
+           st->setTempo(1.0);
+       };
        ~MusicOnDeck(){
            // ma_decoder_uninit(&dec);
            delete fxP;
@@ -75,6 +84,11 @@ Program Listing for File MusicControlPannel.hpp
        bool GetPCMFrames(float* array, const unsigned long FrameSize);
        
        FXControlPannel* getFXHandle(const UNSANITIZED& title);
+   
+   
+       bool ChangeBpm(const UNSANITIZED& title, const double targetBpm, const double originBpm);
+   
+   
        MusicControlPannel(const unsigned long FrameSize): fsize(FrameSize){}
        ~MusicControlPannel();
    

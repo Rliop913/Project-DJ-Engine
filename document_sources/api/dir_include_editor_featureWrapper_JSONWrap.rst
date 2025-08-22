@@ -5,12 +5,12 @@ Directory JSONWrap
 ==================
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper>` (``include/editor/featureWrapper``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper>` (``include\editor\featureWrapper``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include/editor/featureWrapper/JSONWrap``
+*Directory path:* ``include\editor\featureWrapper\JSONWrap``
 
 
 Files

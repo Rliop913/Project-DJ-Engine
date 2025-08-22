@@ -4,12 +4,13 @@
 Program Listing for File PDJE_LOG_SETTER.hpp
 ============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_PDJE_LOG_SETTER.hpp>` (``include/PDJE_LOG_SETTER.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_PDJE_LOG_SETTER.hpp>` (``include\PDJE_LOG_SETTER.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 .. code-block:: cpp
 
+   
    #pragma once
    
    #include <spdlog/spdlog.h>
@@ -18,8 +19,6 @@ Program Listing for File PDJE_LOG_SETTER.hpp
    #include <filesystem>
    #include <type_traits>
    #include <string_view>
-   
-   
    
    inline
    void startlog(){

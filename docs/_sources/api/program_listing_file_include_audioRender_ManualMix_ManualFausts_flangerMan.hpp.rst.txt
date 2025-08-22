@@ -4,7 +4,7 @@
 Program Listing for File flangerMan.hpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_flangerMan.hpp>` (``include/audioRender/ManualMix/ManualFausts/flangerMan.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_flangerMan.hpp>` (``include\audioRender\ManualMix\ManualFausts\flangerMan.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -20,7 +20,7 @@ Program Listing for File flangerMan.hpp
        ARGSETTER
        makeArgSetter(){
            return {
-               {"bps", [this](double value) {
+               {"Bps", [this](double value) {
                    this->bps = static_cast<float>(value);
                }},
                {"FlangerDryWet", [this](double value) {

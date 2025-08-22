@@ -4,7 +4,7 @@
 Program Listing for File gitLog.cpp
 ===================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_Log_gitLog.cpp>` (``include/editor/featureWrapper/GitWrap/Log/gitLog.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_Log_gitLog.cpp>` (``include\editor\featureWrapper\GitWrap\Log\gitLog.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

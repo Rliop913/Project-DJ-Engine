@@ -4,7 +4,7 @@
 Program Listing for File CapnpBinary.hpp
 ========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_db_Capnp_CapnpBinary_CapnpBinary.hpp>` (``include/db/Capnp/CapnpBinary/CapnpBinary.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_db_Capnp_CapnpBinary_CapnpBinary.hpp>` (``include\db\Capnp\CapnpBinary\CapnpBinary.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -23,8 +23,9 @@ Program Listing for File CapnpBinary.hpp
    #include "NoteBinary.capnp.h"
    #include "PDJE_EXPORT_SETTER.hpp"
    #include "PDJE_LOG_SETTER.hpp"
+   
    template<typename DType>
-   class PDJE_API CapReader{
+   class CapReader{
    private:
        std::vector<kj::byte> Origin;
        std::optional<capnp::FlatArrayMessageReader> capreader;
@@ -60,7 +61,7 @@ Program Listing for File CapnpBinary.hpp
    };
    
    template<typename DType>
-   class PDJE_API CapWriter{
+   class CapWriter{
    private:
        std::optional<capnp::MallocMessageBuilder> capwriter;
    public:

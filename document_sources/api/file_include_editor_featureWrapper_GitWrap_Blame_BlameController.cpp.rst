@@ -4,7 +4,7 @@
 File BlameController.cpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Blame>` (``include/editor/featureWrapper/GitWrap/Blame``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Blame>` (``include\editor\featureWrapper\GitWrap\Blame``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File BlameController.cpp
    :local:
    :backlinks: none
 
-Definition (``include/editor/featureWrapper/GitWrap/Blame/BlameController.cpp``)
+Definition (``include\editor\featureWrapper\GitWrap\Blame\BlameController.cpp``)
 --------------------------------------------------------------------------------
 
 

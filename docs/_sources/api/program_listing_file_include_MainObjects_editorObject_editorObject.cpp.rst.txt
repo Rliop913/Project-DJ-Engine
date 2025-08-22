@@ -4,7 +4,7 @@
 Program Listing for File editorObject.cpp
 =========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_editorObject_editorObject.cpp>` (``include/MainObjects/editorObject/editorObject.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_editorObject_editorObject.cpp>` (``include\MainObjects\editorObject\editorObject.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -50,10 +50,10 @@ Program Listing for File editorObject.cpp
    
    void 
    editorObject::demoPlayInit(
-       std::optional<audioPlayer>& player, 
+       std::shared_ptr<audioPlayer>& player, 
        unsigned int frameBufferSize, const UNSANITIZED& trackTitle)
    {
-       if(player.has_value()){
+       if(player){
            player.reset();
        }
        trackdata tdtemp(trackTitle);
@@ -68,7 +68,7 @@ Program Listing for File editorObject.cpp
            warnlog(trackTitle);
            return;
        }
-       player.emplace(
+       player = std::make_shared<audioPlayer>(
            projectLocalDB->GetBuildedProject(),
            searchedTd->front(),
            frameBufferSize,

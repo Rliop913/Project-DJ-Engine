@@ -4,7 +4,7 @@
 Program Listing for File phaserMan.hpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_phaserMan.hpp>` (``include/audioRender/ManualMix/ManualFausts/phaserMan.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_phaserMan.hpp>` (``include\audioRender\ManualMix\ManualFausts\phaserMan.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -20,7 +20,7 @@ Program Listing for File phaserMan.hpp
        ARGSETTER
        makeArgSetter(){
            return {
-               {"bps", [this](double value) {
+               {"Bps", [this](double value) {
                    this->bps = static_cast<float>(value);
                }},
                {"PhaserDryWet", [this](double value) {

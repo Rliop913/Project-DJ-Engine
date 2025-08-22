@@ -4,7 +4,7 @@
 Program Listing for File compressorMan.hpp
 ==========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_compressorMan.hpp>` (``include/audioRender/ManualMix/ManualFausts/compressorMan.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_compressorMan.hpp>` (``include\audioRender\ManualMix\ManualFausts\compressorMan.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -25,19 +25,19 @@ Program Listing for File compressorMan.hpp
        ARGSETTER
        makeArgSetter(){
            return{
-               {"strength", [this](double value){
+               {"Strength", [this](double value){
                    this->strength = static_cast<float>(value);
                }},
-               {"threshDB", [this](double value){
+               {"ThreshDB", [this](double value){
                    this->threshDB = static_cast<int>(value);
                }},
-               {"attackMS", [this](double value){
+               {"AttackMS", [this](double value){
                    this->attackMS = static_cast<int>(value);
                }},
-               {"releaseMS", [this](double value){
+               {"ReleaseMS", [this](double value){
                    this->releaseMS = static_cast<int>(value);
                }},
-               {"kneeDB", [this](double value){
+               {"KneeDB", [this](double value){
                    this->kneeDB = static_cast<int>(value);
                }}
            };

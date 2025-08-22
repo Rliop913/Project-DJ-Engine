@@ -725,6 +725,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_interface_PDJE_Core_DataLine.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_PDJE_EXPORT_SETTER.hpp.rst
 
 .. toctree::

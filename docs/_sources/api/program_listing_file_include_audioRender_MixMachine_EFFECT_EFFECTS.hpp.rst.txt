@@ -4,7 +4,7 @@
 Program Listing for File EFFECTS.hpp
 ====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_MixMachine_EFFECT_EFFECTS.hpp>` (``include/audioRender/MixMachine/EFFECT/EFFECTS.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_MixMachine_EFFECT_EFFECTS.hpp>` (``include\audioRender\MixMachine\EFFECT\EFFECTS.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -33,7 +33,7 @@ Program Listing for File EFFECTS.hpp
    #include "PDJE_EXPORT_SETTER.hpp"
    
    template<typename Fclass>
-   class PDJE_API FaustDType : public Fclass{
+   class FaustDType : public Fclass{
    private:
        std::vector<float> L;
        std::vector<float> R;

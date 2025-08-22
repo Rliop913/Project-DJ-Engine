@@ -4,7 +4,7 @@
 Program Listing for File ocsFilterMan.hpp
 =========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_ocsFilterMan.hpp>` (``include/audioRender/ManualMix/ManualFausts/ocsFilterMan.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_ocsFilterMan.hpp>` (``include\audioRender\ManualMix\ManualFausts\ocsFilterMan.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -23,16 +23,16 @@ Program Listing for File ocsFilterMan.hpp
        ARGSETTER
        makeArgSetter(){
            return {
-               {"ocsFilterHighLowSW", [this](double value) {
+               {"OcsFilterHighLowSW", [this](double value) {
                    this->ocsFilterHighLowSW = static_cast<int>(value);
                }},
-               {"middleFreq", [this](double value) {
+               {"MiddleFreq", [this](double value) {
                    this->middleFreq = static_cast<int>(value);
                }},
-               {"rangeFreqHalf", [this](double value) {
+               {"RangeFreqHalf", [this](double value) {
                    this->rangeFreqHalf = static_cast<int>(value);
                }},
-               {"bps", [this](double value) {
+               {"Bps", [this](double value) {
                    this->bps = static_cast<float>(value);
                }},
                {"OCSFilterDryWet", [this](double value) {

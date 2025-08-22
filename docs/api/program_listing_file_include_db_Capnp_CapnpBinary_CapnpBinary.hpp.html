@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Program Listing for File CapnpBinary.hpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../_static/doctools.js?v=9bcbadda"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -50,10 +48,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../How_To_Use.html">HOW TO USE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html">PDJE_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PDJE_Format.html#fx-list-enum">FX LIST &amp; ENUM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -82,7 +80,7 @@
              
   <section id="program-listing-for-file-capnpbinary-hpp">
 <span id="program-listing-file-include-db-capnp-capnpbinary-capnpbinary-hpp"></span><h1>Program Listing for File CapnpBinary.hpp<a class="headerlink" href="#program-listing-for-file-capnpbinary-hpp" title="Link to this heading"></a></h1>
-<p>↰ <a class="reference internal" href="file_include_db_Capnp_CapnpBinary_CapnpBinary.hpp.html#file-include-db-capnp-capnpbinary-capnpbinary-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/db/Capnp/CapnpBinary/CapnpBinary.hpp</span></code>)</p>
+<p>↰ <a class="reference internal" href="file_include_db_Capnp_CapnpBinary_CapnpBinary.hpp.html#file-include-db-capnp-capnpbinary-capnpbinary-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\db\Capnp\CapnpBinary\CapnpBinary.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
@@ -96,8 +94,9 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;NoteBinary.capnp.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
+
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">DType</span><span class="o">&gt;</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">CapReader</span><span class="p">{</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CapReader</span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">kj</span><span class="o">::</span><span class="n">byte</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Origin</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">capnp</span><span class="o">::</span><span class="n">FlatArrayMessageReader</span><span class="o">&gt;</span><span class="w"> </span><span class="n">capreader</span><span class="p">;</span>
@@ -133,7 +132,7 @@
 <span class="p">};</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">DType</span><span class="o">&gt;</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">CapWriter</span><span class="p">{</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CapWriter</span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">capnp</span><span class="o">::</span><span class="n">MallocMessageBuilder</span><span class="o">&gt;</span><span class="w"> </span><span class="n">capwriter</span><span class="p">;</span>
 <span class="k">public</span><span class="o">:</span>

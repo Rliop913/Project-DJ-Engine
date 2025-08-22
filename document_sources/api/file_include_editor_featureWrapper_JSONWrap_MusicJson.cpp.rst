@@ -4,7 +4,7 @@
 File MusicJson.cpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_JSONWrap>` (``include/editor/featureWrapper/JSONWrap``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_JSONWrap>` (``include\editor\featureWrapper\JSONWrap``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File MusicJson.cpp
    :local:
    :backlinks: none
 
-Definition (``include/editor/featureWrapper/JSONWrap/MusicJson.cpp``)
+Definition (``include\editor\featureWrapper\JSONWrap\MusicJson.cpp``)
 ---------------------------------------------------------------------
 
 

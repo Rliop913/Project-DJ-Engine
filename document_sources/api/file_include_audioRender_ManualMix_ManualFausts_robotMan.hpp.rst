@@ -4,7 +4,7 @@
 File robotMan.hpp
 =================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_ManualMix_ManualFausts>` (``include/audioRender/ManualMix/ManualFausts``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_ManualMix_ManualFausts>` (``include\audioRender\ManualMix\ManualFausts``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File robotMan.hpp
    :local:
    :backlinks: none
 
-Definition (``include/audioRender/ManualMix/ManualFausts/robotMan.hpp``)
+Definition (``include\audioRender\ManualMix\ManualFausts\robotMan.hpp``)
 ------------------------------------------------------------------------
 
 
@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classRobotMan`
+- :ref:`exhale_class_class_robot_man`
 

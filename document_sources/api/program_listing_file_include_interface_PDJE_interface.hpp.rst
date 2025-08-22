@@ -4,7 +4,7 @@
 Program Listing for File PDJE_interface.hpp
 ===========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_interface_PDJE_interface.hpp>` (``include/interface/PDJE_interface.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_interface_PDJE_interface.hpp>` (``include\interface\PDJE_interface.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,6 +18,7 @@ Program Listing for File PDJE_interface.hpp
    #include "editorObject.hpp"
    #include "PDJE_EXPORT_SETTER.hpp"
    #include "PDJE_LOG_SETTER.hpp"
+   #include "PDJE_Core_DataLine.hpp"
    enum PLAY_MODE{
        FULL_PRE_RENDER,
        HYBRID_RENDER,
@@ -28,7 +29,8 @@ Program Listing for File PDJE_interface.hpp
    public:
        std::shared_ptr<litedb> DBROOT;
        // std::optional<litedb> DBROOT;
-       PDJE(const fs::path& rootDir);
+       PDJE(const DONT_SANITIZE& rootDir);
+   
        ~PDJE() = default;
        
        std::shared_ptr<audioPlayer> player;
@@ -39,12 +41,23 @@ Program Listing for File PDJE_interface.hpp
            trackdata& td, 
            const unsigned int FrameBufferSize);
    
+       void
+       ResetPlayer(){
+           player.reset();
+       }
+   
+       void
+       CloseEditor(){
+           editor.reset();
+       }
+   
+       PDJE_CORE_DATA_LINE PullOutDataLine();
    
        bool
        InitEditor(
            const DONT_SANITIZE &auth_name, 
            const DONT_SANITIZE &auth_email,
-           const fs::path& projectRoot
+           const DONT_SANITIZE& projectRoot
        );
        bool
        GetNoteObjects(
@@ -58,8 +71,11 @@ Program Listing for File PDJE_interface.hpp
            const double bpm = -1);
        TRACK_VEC SearchTrack(const UNSANITIZED& Title);
        std::shared_ptr<audioPlayer> GetPlayerObject();
-   
        
+   
+       std::shared_ptr<editorObject> GetEditorObject(){
+           return editor;
+       }
    };
    class PDJE_API ARGSETTER_WRAPPER{
    private:

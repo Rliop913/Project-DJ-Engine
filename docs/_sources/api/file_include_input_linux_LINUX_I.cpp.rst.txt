@@ -4,7 +4,7 @@
 File LINUX_I.cpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_linux>` (``include/input/linux``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_linux>` (``include\input\linux``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File LINUX_I.cpp
    :local:
    :backlinks: none
 
-Definition (``include/input/linux/LINUX_I.cpp``)
+Definition (``include\input\linux\LINUX_I.cpp``)
 ------------------------------------------------
 
 

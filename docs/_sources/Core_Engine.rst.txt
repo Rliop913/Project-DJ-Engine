@@ -6,7 +6,7 @@ Before Playback
 
 
 Before Playback Step-1: initialize PDJE core engine
----------------------------------------------
+-----------------------------------------------------
 
 .. doxygenclass:: PDJE
     :project: Project_DJ_Engine
@@ -32,7 +32,7 @@ Before Playback Step-1: initialize PDJE core engine
         engine.InitEngine("res://database/path")
 
 Before Playback Step-2: Search Music & Track
-------------------------------------
+-----------------------------------------------------
 
 .. doxygenfunction:: PDJE::SearchMusic
     :project: Project_DJ_Engine
@@ -72,7 +72,7 @@ Before Playback Step-2: Search Music & Track
         #-1.0 means ignore bpm
 
 Before Playback Step-3: Init, Activate & Deactivate Audio Player
---------------------------------------------------------
+------------------------------------------------------------------------
 
 .. doxygenfunction:: PDJE::InitPlayer
     :project: Project_DJ_Engine
@@ -131,7 +131,7 @@ Before Playback Step-3: Init, Activate & Deactivate Audio Player
         AudioP:audioPlayer = engine.GetPlayerObject()
         #get player object
 
-        engine.ResetPlayer();
+        engine.ResetPlayer()
         #reset player object.
         #WARNING: after reset, AudioP becomes unavailable.
 
@@ -149,7 +149,7 @@ Before Playback Step-3: Init, Activate & Deactivate Audio Player
         var AudioP:PlayerWrapper = engine.GetPlayer()
         #get player object
 
-        engine.ResetPlayer();
+        engine.ResetPlayer()
         #reset player object.
         #WARNING: after reset, AudioP becomes unavailable.
 
@@ -182,8 +182,9 @@ On Playback Step-1: Get & Use FX Controller Pannel
 .. doxygenfunction:: FXControlPannel::checkSomethingOn
     :project: Project_DJ_Engine
 
-fxArgs_document_here
 
+
+to see Available args, See: :doc:`/FX_ARGS`
 
 .. tab-set-code:: 
 
@@ -437,3 +438,95 @@ On Playback Step-2: Get & Use Music Controller Pannel
 
         var Fxhandle:FXWrapper = musPannel.getFXHandle("title")
         #get music's fx handle
+
+Editor API
+=============
+
+The PDJE editor provides only an API and does not include a built-in graphical user interface (GUI).
+
+With the editor API, you can:
+
+- Add audio files to the PDJE database (DB) and generate metadata
+- Create and edit mix sets (combinations of multiple tracks) using the registered music in the DB
+- Create and edit note data that can be used in rhythm games
+
+Editor Step-1: Create & Manage DB
+----------------------------------------
+
+
+.. doxygenfunction:: PDJE::InitEditor
+    :project: Project_DJ_Engine
+
+.. doxygenfunction:: PDJE::CloseEditor
+    :project: Project_DJ_Engine
+
+.. doxygenfunction:: PDJE::GetEditorObject
+    :project: Project_DJ_Engine
+
+.. doxygenfunction:: editorObject::DESTROY_PROJECT
+    :project: Project_DJ_Engine
+
+
+.. tab-set-code:: 
+
+    .. code-block:: c++
+
+        bool initRes = engine->InitEditor("my name", "my@email, no need to fill", "ProjectRoot");
+        auto editor = engine->GetEditorObject();
+        std::string destroyRes = editor->DESTROY_PROJECT();
+        engine->CloseEditor();
+
+    .. code-block:: c#
+
+        PDJE engine = new PDJE("database/path");
+
+    .. code-block:: python
+
+        import pdje_POLYGLOT as pypdje
+        engine = pypdje.PDJE("database/path")
+
+    .. code-block:: gdscript
+
+        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
+        engine.InitEngine("res://database/path")
+
+
+Editor Step-2: Editing Control & History view
+----------------------------------------
+
+
+
+.. doxygenfunction:: editorObject::Undo(const UNSANITIZED& musicName)
+    :project: Project_DJ_Engine
+
+.. doxygenfunction:: editorObject::Redo()
+    :project: Project_DJ_Engine
+
+.. doxygenfunction:: editorObject::Go
+    :project: Project_DJ_Engine
+
+.. doxygenfunction:: editorObject::GetLogWithJSONGraph
+    :project: Project_DJ_Engine
+
+.. doxygenfunction:: editorObject::GetDiff
+    :project: Project_DJ_Engine
+
+.. tab-set-code:: 
+
+    .. code-block:: c++
+
+        bool undoRes = editor->Undo(); // undo on
+
+    .. code-block:: c#
+
+        PDJE engine = new PDJE("database/path");
+
+    .. code-block:: python
+
+        import pdje_POLYGLOT as pypdje
+        engine = pypdje.PDJE("database/path")
+
+    .. code-block:: gdscript
+
+        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
+        engine.InitEngine("res://database/path")

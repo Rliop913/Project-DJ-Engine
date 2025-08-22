@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="git_log_8cpp" kind="file" language="C++">
+    <compoundname>gitLog.cpp</compoundname>
+    <includes refid="git_log_8hpp" local="yes">gitLog.hpp</includes>
+    <includes local="no">array</includes>
+    <includes refid="editor_branch_8hpp" local="yes">editorBranch.hpp</includes>
+    <includes refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
+    <incdepgraph>
+      <node id="16">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="18">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="file_name_sanitizer_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>editorBranch.hpp</label>
+        <link refid="editor_branch_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>editorCommit.hpp</label>
+        <link refid="editor_commit_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/editor/featureWrapper/GitWrap/Log/gitLog.cpp</label>
+        <link refid="git_log_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>gitLog.hpp</label>
+        <link refid="git_log_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>array</label>
+      </node>
+      <node id="7">
+        <label>bit</label>
+      </node>
+      <node id="11">
+        <label>cppcodec/base64_url_unpadded.hpp</label>
+      </node>
+      <node id="6">
+        <label>cstdint</label>
+      </node>
+      <node id="9">
+        <label>filesystem</label>
+      </node>
+      <node id="14">
+        <label>git2.h</label>
+      </node>
+      <node id="15">
+        <label>list</label>
+      </node>
+      <node id="10">
+        <label>optional</label>
+      </node>
+      <node id="20">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="21">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="19">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="23">
+        <label>string_view</label>
+      </node>
+      <node id="22">
+        <label>type_traits</label>
+      </node>
+      <node id="3">
+        <label>unordered_map</label>
+      </node>
+      <node id="5">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="git_log_8cpp_1a4f3e7136eeec135942dffd940e28e3d8" prot="public" static="no">
+        <name>HASH_KNUTH</name>
+        <initializer>0x9e3779b9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/editor/featureWrapper/GitWrap/Log/gitLog.cpp" line="7" column="9" bodyfile="include/editor/featureWrapper/GitWrap/Log/gitLog.cpp" bodystart="7" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="git_log_8hpp" kindref="compound">gitLog.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="editor_branch_8hpp" kindref="compound">editorBranch.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp" kindref="compound">PDJE_LOG_SETTER.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacegitwrap" kindref="compound">gitwrap</ref>;</highlight></codeline>
+<codeline lineno="7" refid="git_log_8cpp_1a4f3e7136eeec135942dffd940e28e3d8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HASH_KNUTH<sp/>0x9e3779b9</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">std::size_t</highlight></codeline>
+<codeline lineno="11" refid="structgitwrap_1_1log_handle_1_1_o_i_d___h_a_s_h_e_r_1ab3aae66b8957c4b9c974d2fe8ec20fbb" refkind="member"><highlight class="normal"><ref refid="structgitwrap_1_1log_handle_1_1_o_i_d___h_a_s_h_e_r_1ab3aae66b8957c4b9c974d2fe8ec20fbb" kindref="member">logHandle::OID_HASHER::operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>git_oid&amp;<sp/>oid)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>part0<sp/>=<sp/>std::bit_cast&lt;uint64_t&gt;(std::array&lt;unsigned<sp/>char,<sp/>8&gt;{oid.id[0]<sp/>,<sp/>oid.id[1]<sp/>,<sp/>oid.id[2]<sp/>,<sp/>oid.id[3]<sp/>,<sp/>oid.id[4]<sp/>,<sp/>oid.id[5]<sp/>,<sp/>oid.id[6]<sp/>,<sp/>oid.id[7]<sp/>});</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>part1<sp/>=<sp/>std::bit_cast&lt;uint64_t&gt;(std::array&lt;unsigned<sp/>char,<sp/>8&gt;{oid.id[8]<sp/>,<sp/>oid.id[9]<sp/>,<sp/>oid.id[10],<sp/>oid.id[11],<sp/>oid.id[12],<sp/>oid.id[13],<sp/>oid.id[14],<sp/>oid.id[15]});</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>part2<sp/>=<sp/>std::bit_cast&lt;uint32_t&gt;(std::array&lt;unsigned<sp/>char,<sp/>4&gt;{oid.id[16],<sp/>oid.id[17],<sp/>oid.id[18],<sp/>oid.id[19]});</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>해시<sp/>결합</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>std::size_t<sp/>seed<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>seed<sp/>^=<sp/>std::hash&lt;uint64_t&gt;()(part0)<sp/>+<sp/><ref refid="git_log_8cpp_1a4f3e7136eeec135942dffd940e28e3d8" kindref="member">HASH_KNUTH</ref><sp/>+<sp/>(seed<sp/>&lt;&lt;<sp/>6)<sp/>+<sp/>(seed<sp/>&gt;&gt;<sp/>2);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>seed<sp/>^=<sp/>std::hash&lt;uint64_t&gt;()(part1)<sp/>+<sp/><ref refid="git_log_8cpp_1a4f3e7136eeec135942dffd940e28e3d8" kindref="member">HASH_KNUTH</ref><sp/>+<sp/>(seed<sp/>&lt;&lt;<sp/>6)<sp/>+<sp/>(seed<sp/>&gt;&gt;<sp/>2);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>seed<sp/>^=<sp/>std::hash&lt;uint32_t&gt;()(part2)<sp/>+<sp/><ref refid="git_log_8cpp_1a4f3e7136eeec135942dffd940e28e3d8" kindref="member">HASH_KNUTH</ref><sp/>+<sp/>(seed<sp/>&lt;&lt;<sp/>6)<sp/>+<sp/>(seed<sp/>&gt;&gt;<sp/>2);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>seed;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classgitwrap_1_1log_handle_1ac6a7eafa275e397620d65d4cf43d43a9" refkind="member"><highlight class="normal"><ref refid="classgitwrap_1_1log_handle_1ac6a7eafa275e397620d65d4cf43d43a9" kindref="member">logHandle::WalkBranch</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref>&amp;<sp/>branchName)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>git_revwalk<sp/>*walker<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>git_revwalk_new(&amp;walker,<sp/><ref refid="classgitwrap_1_1log_handle_1a753671e59426a6944d630e73f899592d" kindref="member">repoPointer</ref>);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>git_revwalk_sorting(walker,<sp/>GIT_SORT_TIME);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>브랜치<sp/>참조<sp/>추가</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>refBranchName<sp/>=<sp/><ref refid="classgitwrap_1_1branch_1adf3f8cc3764e9600e78b738fa59e841e" kindref="member">branch::ToBranchRefName&lt;const DONT_SANITIZE&amp;&gt;</ref>(branchName);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(git_revwalk_push_ref(walker,<sp/>refBranchName.c_str())<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>revwalk<sp/>push<sp/>ref.<sp/>from<sp/>logHandle<sp/>WalkBranch.<sp/>gitLog:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(git_error_last()-&gt;message);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_revwalk_free(walker);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>git_oid<sp/>oid;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>git_oid<sp/>child_oid<sp/>=<sp/>{{0}};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structgitwrap_1_1_branch_head" kindref="compound">BranchHead</ref><sp/>bh;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>bh.<ref refid="structgitwrap_1_1_branch_head_1a86d4e85c43b6df3ad504cc19620f2e93" kindref="member">BranchName</ref><sp/>=<sp/>branchName;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>FLAG_ROOT_REACHED<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>FLAG_DID_SOMETHING<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!git_revwalk_next(&amp;oid,<sp/>walker))<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_commit<sp/>*commitref<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(git_commit_lookup(&amp;commitref,<sp/><ref refid="classgitwrap_1_1log_handle_1a753671e59426a6944d630e73f899592d" kindref="member">repoPointer</ref>,<sp/>&amp;oid)<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classgitwrap_1_1log_handle_1aca80a03c5e78e5325cf7c15c40a6261e" kindref="member">logs</ref>.contains(oid)){</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_commit_free(commitref);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FLAG_DID_SOMETHING<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FLAG_ROOT_REACHED<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FLAG_DID_SOMETHING<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>authref<sp/>=<sp/>git_commit_author(commitref);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref><sp/>msg<sp/>=<sp/>git_commit_message(commitref);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(git_oid_is_zero(&amp;child_oid)<sp/>==<sp/>1){</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_oid_cpy(&amp;bh.<ref refid="structgitwrap_1_1_branch_head_1af33159005e69d70f5df63512e0751b7f" kindref="member">head</ref>,<sp/>&amp;oid);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classgitwrap_1_1log_handle_1a6c4342d961a62096a4122a914b607e53" kindref="member">AddLog</ref>(oid,<sp/>child_oid,<sp/>authref,<sp/>msg);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_oid_cpy(&amp;child_oid,<sp/>&amp;oid);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_commit_free(commitref);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<sp/>FLAG_DID_SOMETHING<sp/>&amp;&amp;<sp/>FLAG_ROOT_REACHED){</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_oid_cpy(&amp;<ref refid="classgitwrap_1_1log_handle_1a743926f38143b9e13b48a46a07d9a19c" kindref="member">ROOT_ID</ref>,<sp/>&amp;child_oid);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(git_oid_is_zero(&amp;bh.<ref refid="structgitwrap_1_1_branch_head_1af33159005e69d70f5df63512e0751b7f" kindref="member">head</ref>)<sp/>==<sp/>0){</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classgitwrap_1_1log_handle_1aedfd7990069d74a9d196ffeb2b15ede7" kindref="member">heads</ref>.push_back(bh);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>git_revwalk_free(walker);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classgitwrap_1_1log_handle_1a6c4342d961a62096a4122a914b607e53" refkind="member"><highlight class="normal"><ref refid="classgitwrap_1_1log_handle_1a6c4342d961a62096a4122a914b607e53" kindref="member">logHandle::AddLog</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>git_oid&amp;<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>git_oid&amp;<sp/>ChildID,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>git_signature*&amp;<sp/>sign,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref>&amp;<sp/>msg)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structgitwrap_1_1log" kindref="compound">log</ref><sp/>templog;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>git_oid_cpy(&amp;templog.<ref refid="structgitwrap_1_1log_1a779d069a857448b22a12edad2e89760a" kindref="member">now</ref>.<ref refid="structgitwrap_1_1commit_1a99f52037b3c4cc106d57ba5afb9a9084" kindref="member">commitID</ref>,<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>templog.<ref refid="structgitwrap_1_1log_1a779d069a857448b22a12edad2e89760a" kindref="member">now</ref>.<ref refid="structgitwrap_1_1commit_1aed795b54d06cb41d5293e800ab7c06df" kindref="member">commitPointer</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>templog.<ref refid="structgitwrap_1_1log_1a779d069a857448b22a12edad2e89760a" kindref="member">now</ref>.<ref refid="structgitwrap_1_1commit_1ac0ad6b68f27f3a5accf8ad092c7dc3be" kindref="member">msg</ref><sp/>=<sp/>msg;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>templog.<ref refid="structgitwrap_1_1log_1a7d37828db9744b7c9af2f8d6a56fda1d" kindref="member">authName</ref><sp/>=<sp/>sign-&gt;name;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>templog.<ref refid="structgitwrap_1_1log_1ac55d0c6505063c9cd54a89421d14a50c" kindref="member">authEmail</ref><sp/>=<sp/>sign-&gt;email;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(git_oid_is_zero(&amp;ChildID)<sp/>==<sp/>0){</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classgitwrap_1_1log_handle_1aca80a03c5e78e5325cf7c15c40a6261e" kindref="member">logs</ref>.contains(ChildID)){</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_oid_cpy(&amp;<ref refid="classgitwrap_1_1log_handle_1aca80a03c5e78e5325cf7c15c40a6261e" kindref="member">logs</ref>[ChildID].parentID,<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classgitwrap_1_1log_handle_1aca80a03c5e78e5325cf7c15c40a6261e" kindref="member">logs</ref>[id]<sp/>=<sp/>templog;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="include/editor/featureWrapper/GitWrap/Log/gitLog.cpp"/>
+  </compounddef>
+</doxygen>
