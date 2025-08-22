@@ -478,17 +478,24 @@ Editor Step-1: Create & Manage DB
 
     .. code-block:: c#
 
-        PDJE engine = new PDJE("database/path");
+        bool initRes = engine.InitEditor("my name", "my@email, no need to fill", "ProjectRoot");
+        var editor = engine.GetEditorObject();
+        var destroyRes = engine.DESTROY_PROJECT();
+        engine.CloseEditor();
 
     .. code-block:: python
 
-        import pdje_POLYGLOT as pypdje
-        engine = pypdje.PDJE("database/path")
+        init_res = engine.InitEditor("my name", "my@email, no need to fill", "ProjectRoot")
+        editor:editorObject = engine.GetEditorObject()
+        destroy_res = editor.DESTROY_PROJECT()
+        engine.CloseEditor()
 
     .. code-block:: gdscript
 
-        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
-        engine.InitEngine("res://database/path")
+        var init_res = engine.InitEditor("my name", "my@email, no need to fill", "ProjectRoot")
+        var editor = engine.GetEditor()
+        editor.DESTROY_PROJECT()
+        engine.CloseEditor()
 
 
 Editor Step-2: Editing Control & History view
@@ -496,7 +503,7 @@ Editor Step-2: Editing Control & History view
 
 To see all functions, check :doc:`/api/classeditorObject`
 
-
+editing...
 
 .. tab-set-code:: 
 

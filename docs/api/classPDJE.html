@@ -201,9 +201,9 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv44PDJE">
 <span id="_CPPv34PDJE"></span><span id="_CPPv24PDJE"></span><span id="PDJE"></span><span class="target" id="classPDJE"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE</span></span></span><br /></dt>
-<dd><p>the main Interface of this Engine <a class="reference internal" href="class_p_d_j_e.html#classPDJE"><span class="std std-ref">PDJE</span></a> gets music data and track data from database. from that datas, you can activate music player and you can get a music player handler. with this player handler, you can control music’s mixing in real time. </p>
+<dd><p>the main Interface of this Engine <a class="reference internal" href="#classPDJE"><span class="std std-ref">PDJE</span></a> gets music data and track data from database. from that datas, you can activate music player and you can get a music player handler. with this player handler, you can control music’s mixing in real time. </p>
 <p>to-use<ol class="loweralpha simple">
-<li><p>make <a class="reference internal" href="class_p_d_j_e.html#classPDJE"><span class="std std-ref">PDJE</span></a> object</p></li>
+<li><p>make <a class="reference internal" href="#classPDJE"><span class="std std-ref">PDJE</span></a> object</p></li>
 <li><p>call SearchTrack</p></li>
 <li><p>call InitPlayer</p></li>
 <li><p>use player. this is handler.</p></li>
@@ -231,7 +231,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE4PDJEERK13DONT_SANITIZE">
 <span id="_CPPv3N4PDJE4PDJEERK13DONT_SANITIZE"></span><span id="_CPPv2N4PDJE4PDJEERK13DONT_SANITIZE"></span><span id="PDJE::PDJE__DONT_SANITIZECR"></span><span class="target" id="classPDJE_1aeef01aa77bc39de01b3971a21c0a7ea6"></span><span class="sig-name descname"><span class="n"><span class="pre">PDJE</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rootDir</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE4PDJEERK13DONT_SANITIZE" title="Link to this definition"></a><br /></dt>
-<dd><p>Construct a new <a class="reference internal" href="class_p_d_j_e.html#classPDJE"><span class="std std-ref">PDJE</span></a> object. </p>
+<dd><p>Construct a new <a class="reference internal" href="#classPDJE"><span class="std std-ref">PDJE</span></a> object. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>rootPath</strong> – the path to the Root Database. </p>
@@ -252,7 +252,7 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> – the play modes. you can choose “FULL_PRE_RENDER”, “HYBRID_RENDER”, “FULL_MANUAL_RENDER” </p></li>
-<li><p><strong>td</strong> – the track data. you can get this from <a class="reference internal" href="class_p_d_j_e.html#classPDJE_1a322160409e9c02e4700e966623bfd4d7"><span class="std std-ref">SearchTrack()</span></a></p></li>
+<li><p><strong>td</strong> – the track data. you can get this from <a class="reference internal" href="#classPDJE_1a322160409e9c02e4700e966623bfd4d7"><span class="std std-ref">SearchTrack()</span></a></p></li>
 <li><p><strong>FrameBufferSize</strong> – the buffersize. in this project, it uses 48000 samplerate. if you use 48 as a value, in theory, it calls mixing function 1000 times per second. </p></li>
 </ul>
 </dd>
@@ -307,7 +307,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>td</strong> – the track data. you can get this from <a class="reference internal" href="class_p_d_j_e.html#classPDJE_1a322160409e9c02e4700e966623bfd4d7"><span class="std std-ref">SearchTrack()</span></a></p></li>
+<li><p><strong>td</strong> – the track data. you can get this from <a class="reference internal" href="#classPDJE_1a322160409e9c02e4700e966623bfd4d7"><span class="std std-ref">SearchTrack()</span></a></p></li>
 <li><p><strong>ObjectSetCallback</strong> – the lambda callback. give a function that could make a new note objects. it’s totally depends on you. </p></li>
 </ul>
 </dd>
@@ -333,7 +333,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="typedef_db_root_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0.html#dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0"><span class="std std-ref">MUS_VEC</span></a></p>
+<dd class="field-even"><p><a class="reference internal" href="typedef_dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0.html#dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0"><span class="std std-ref">MUS_VEC</span></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -347,7 +347,7 @@
 <dd class="field-odd"><p><strong>Title</strong> – the title of the track. send “” to skip filter </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="typedef_db_root_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470.html#dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470"><span class="std std-ref">TRACK_VEC</span></a> the array of the track_data. find what you want </p>
+<dd class="field-even"><p><a class="reference internal" href="typedef_dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470.html#dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470"><span class="std std-ref">TRACK_VEC</span></a> the array of the track_data. find what you want </p>
 </dd>
 </dl>
 </dd></dl>
