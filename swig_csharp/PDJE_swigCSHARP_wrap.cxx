@@ -9,6 +9,7 @@
 
 #define SWIG_VERSION 0x040301
 #define SWIGCSHARP
+#define SWIG_DIRECTORS
 
 /* -----------------------------------------------------------------------------
  *  This section contains generic SWIG labels for method/variable
@@ -304,6 +305,87 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_pdje_POLYGLOT(SWIG_CSharp
 
 #define SWIG_contract_assert(nullreturn, expr, msg) do { if (!(expr)) {SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, msg, ""); return nullreturn; } } while (0)
 
+/* SWIG Errors applicable to all language modules, values are reserved from -1 to -99 */
+#define  SWIG_UnknownError    	   -1
+#define  SWIG_IOError        	   -2
+#define  SWIG_RuntimeError   	   -3
+#define  SWIG_IndexError     	   -4
+#define  SWIG_TypeError      	   -5
+#define  SWIG_DivisionByZero 	   -6
+#define  SWIG_OverflowError  	   -7
+#define  SWIG_SyntaxError    	   -8
+#define  SWIG_ValueError     	   -9
+#define  SWIG_SystemError    	   -10
+#define  SWIG_AttributeError 	   -11
+#define  SWIG_MemoryError    	   -12
+#define  SWIG_NullReferenceError   -13
+
+
+/* -----------------------------------------------------------------------------
+ * director_common.swg
+ *
+ * This file contains support for director classes which is common between
+ * languages.
+ * ----------------------------------------------------------------------------- */
+
+/*
+  Use -DSWIG_DIRECTOR_STATIC if you prefer to avoid the use of the
+  'Swig' namespace. This could be useful for multi-modules projects.
+*/
+#ifdef SWIG_DIRECTOR_STATIC
+/* Force anonymous (static) namespace */
+#define Swig
+#endif
+/* -----------------------------------------------------------------------------
+ * director.swg
+ *
+ * This file contains support for director classes so that C# proxy
+ * methods can be called from C++.
+ * ----------------------------------------------------------------------------- */
+
+#if defined(DEBUG_DIRECTOR_OWNED)
+#include <iostream>
+#endif
+#include <string>
+#include <exception>
+
+namespace Swig {
+  /* Director base class - not currently used in C# directors */
+  class Director {
+  };
+
+  /* Base class for director exceptions */
+  class DirectorException : public std::exception {
+  protected:
+    std::string swig_msg;
+
+  public:
+    DirectorException(const char *msg) : swig_msg(msg) {
+    }
+
+    DirectorException(const std::string &msg) : swig_msg(msg) {
+    }
+
+    virtual ~DirectorException() throw() {
+    }
+
+    const char *what() const throw() {
+      return swig_msg.c_str();
+    }
+  };
+
+  /* Pure virtual method exception */
+  class DirectorPureVirtualException : public DirectorException {
+  public:
+    DirectorPureVirtualException(const char *msg) : DirectorException(std::string("Attempt to invoke pure virtual method ") + msg) {
+    }
+
+    static void raise(const char *msg) {
+      throw DirectorPureVirtualException(msg);
+    }
+  };
+}
+
 
 #ifdef __cplusplus
 #include <utility>
@@ -367,6 +449,10 @@ template <typename T> T SwigValueInit() {
     #include "MusicControlPannel.hpp"
     #include "fileNameSanitizer.hpp"
     #include "editorObject.hpp"
+    #include "editorCommit.hpp"
+    #include "SWIG_editor_visitor.hpp"
+    #include "EditorArgs.hpp"
+    
     // #include "editorObject.hpp"
     #include "rocksdb/rocksdb_namespace.h"
     #include <filesystem>
@@ -396,6 +482,151 @@ struct SWIG_null_deleter {
 #define SWIG_NO_NULL_DELETER_1
 #define SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW
 #define SWIG_NO_NULL_DELETER_SWIG_POINTER_OWN
+
+SWIGINTERN bool editorObject_AddLineNote(editorObject *self,EDIT_ARG_NOTE const &obj){
+    return self->AddLine<EDIT_ARG_NOTE>(obj);
+  }
+SWIGINTERN bool editorObject_AddLineMix(editorObject *self,EDIT_ARG_MIX const &obj){
+    return self->AddLine<EDIT_ARG_MIX>(obj);
+  }
+SWIGINTERN bool editorObject_AddLineKV(editorObject *self,EDIT_ARG_KEY_VALUE const &obj){
+    return self->AddLine<EDIT_ARG_KEY_VALUE>(obj);
+  }
+SWIGINTERN bool editorObject_AddLineMusic(editorObject *self,EDIT_ARG_MUSIC const &obj){
+    return self->AddLine<EDIT_ARG_MUSIC>(obj);
+  }
+SWIGINTERN int editorObject_DeleteLineNote(editorObject *self,EDIT_ARG_NOTE const &obj){
+    return self->deleteLine<EDIT_ARG_NOTE>(obj);
+  }
+SWIGINTERN int editorObject_DeleteLineKV(editorObject *self,EDIT_ARG_KEY_VALUE const &obj){
+    return self->deleteLine<EDIT_ARG_KEY_VALUE>(obj);
+  }
+SWIGINTERN int editorObject_DeleteLineMusic(editorObject *self,EDIT_ARG_MUSIC const &obj){
+    return self->deleteLine<EDIT_ARG_MUSIC>(obj);
+  }
+SWIGINTERN void editorObject_GetAllNotes(editorObject *self,NoteVisitor *v){
+    self->getAll<EDIT_ARG_NOTE>([&](const EDIT_ARG_NOTE& o){ v->on_item(o); });
+  }
+SWIGINTERN void editorObject_GetAllMixes(editorObject *self,MixVisitor *v){
+    
+    self->getAll<EDIT_ARG_MIX>([&](const EDIT_ARG_MIX& o){ v->on_item(o); });
+    
+  }
+SWIGINTERN void editorObject_GetAllKeyValues(editorObject *self,KVVisitor *v){
+    self->getAll<EDIT_ARG_KEY_VALUE>([&](const EDIT_ARG_KEY_VALUE& o){ v->on_item(o); });
+  }
+SWIGINTERN void editorObject_GetAllMusics(editorObject *self,MusicVisitor *v){
+    self->getAll<EDIT_ARG_MUSIC>([&](const EDIT_ARG_MUSIC& o){ v->on_item(o); });
+  }
+SWIGINTERN bool editorObject_UndoNote(editorObject *self){ return self->Undo<EDIT_ARG_NOTE>(); }
+SWIGINTERN bool editorObject_UndoMix(editorObject *self){ return self->Undo<EDIT_ARG_MIX>(); }
+SWIGINTERN bool editorObject_UndoKV(editorObject *self){ return self->Undo<EDIT_ARG_KEY_VALUE>(); }
+SWIGINTERN bool editorObject_UndoMusic(editorObject *self,std::string const &musicName){
+    return self->Undo<EDIT_ARG_MUSIC>(musicName);
+  }
+SWIGINTERN bool editorObject_RedoNote(editorObject *self){ return self->Redo<EDIT_ARG_NOTE>(); }
+SWIGINTERN bool editorObject_RedoMix(editorObject *self){ return self->Redo<EDIT_ARG_MIX>(); }
+SWIGINTERN bool editorObject_RedoKV(editorObject *self){ return self->Redo<EDIT_ARG_KEY_VALUE>(); }
+SWIGINTERN bool editorObject_RedoMusic(editorObject *self,std::string const &musicName){
+    return self->Redo<EDIT_ARG_MUSIC>(musicName);
+  }
+SWIGINTERN bool editorObject_GoNote(editorObject *self,std::string const &branchName,git_oid *commitID){
+    return self->Go<EDIT_ARG_NOTE>(branchName, commitID);
+  }
+SWIGINTERN bool editorObject_GoMix(editorObject *self,std::string const &branchName,git_oid *commitID){
+    return self->Go<EDIT_ARG_MIX>(branchName, commitID);
+  }
+SWIGINTERN bool editorObject_GoKV(editorObject *self,std::string const &branchName,git_oid *commitID){
+    return self->Go<EDIT_ARG_KEY_VALUE>(branchName, commitID);
+  }
+SWIGINTERN bool editorObject_GoMusic(editorObject *self,std::string const &branchName,git_oid *commitID){
+    return self->Go<EDIT_ARG_MUSIC>(branchName, commitID);
+  }
+SWIGINTERN std::string editorObject_GetLogNoteJSON(editorObject *self){
+    return self->GetLogWithJSONGraph<EDIT_ARG_NOTE>();
+  }
+SWIGINTERN std::string editorObject_GetLogMixJSON(editorObject *self){
+    return self->GetLogWithJSONGraph<EDIT_ARG_MIX>();
+  }
+SWIGINTERN std::string editorObject_GetLogKVJSON(editorObject *self){
+    return self->GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
+  }
+SWIGINTERN std::string editorObject_GetLogMusicJSON(editorObject *self){
+    return self->GetLogWithJSONGraph<EDIT_ARG_MUSIC>();
+  }
+SWIGINTERN DiffResult editorObject_GetDiffNote(editorObject *self,gitwrap::commit const &oldC,gitwrap::commit const &newC){
+    return self->GetDiff<EDIT_ARG_NOTE>(oldC, newC);
+  }
+SWIGINTERN DiffResult editorObject_GetDiffMix(editorObject *self,gitwrap::commit const &oldC,gitwrap::commit const &newC){
+    return self->GetDiff<EDIT_ARG_MIX>(oldC, newC);
+  }
+SWIGINTERN DiffResult editorObject_GetDiffKV(editorObject *self,gitwrap::commit const &oldC,gitwrap::commit const &newC){
+    return self->GetDiff<EDIT_ARG_KEY_VALUE>(oldC, newC);
+  }
+SWIGINTERN DiffResult editorObject_GetDiffMusic(editorObject *self,gitwrap::commit const &oldC,gitwrap::commit const &newC){
+    return self->GetDiff<EDIT_ARG_MUSIC>(oldC, newC);
+  }
+SWIGINTERN bool editorObject_UpdateLogNote(editorObject *self){ return self->UpdateLog<EDIT_ARG_NOTE>(); }
+SWIGINTERN bool editorObject_UpdateLogMix(editorObject *self){ return self->UpdateLog<EDIT_ARG_MIX>(); }
+SWIGINTERN bool editorObject_UpdateLogKV(editorObject *self){ return self->UpdateLog<EDIT_ARG_KEY_VALUE>(); }
+SWIGINTERN bool editorObject_UpdateLogMusic(editorObject *self){ return self->UpdateLog<EDIT_ARG_MUSIC>(); }
+SWIGINTERN bool editorObject_UpdateLogNoteOn(editorObject *self,std::string const &branchName){
+    return self->UpdateLog<EDIT_ARG_NOTE>(branchName);
+  }
+SWIGINTERN bool editorObject_UpdateLogMixOn(editorObject *self,std::string const &branchName){
+    return self->UpdateLog<EDIT_ARG_MIX>(branchName);
+  }
+SWIGINTERN bool editorObject_UpdateLogKVOn(editorObject *self,std::string const &branchName){
+    return self->UpdateLog<EDIT_ARG_KEY_VALUE>(branchName);
+  }
+SWIGINTERN bool editorObject_UpdateLogMusicOn(editorObject *self,std::string const &musicName){
+    return self->UpdateLog<EDIT_ARG_MUSIC>(musicName);
+  }
+
+SWIGINTERN void SWIG_CSharpException(int code, const char *msg) {
+  if (code == SWIG_ValueError) {
+    SWIG_CSharpExceptionArgumentCodes exception_code = SWIG_CSharpArgumentOutOfRangeException;
+    SWIG_CSharpSetPendingExceptionArgument(exception_code, msg, 0);
+  } else {
+    SWIG_CSharpExceptionCodes exception_code = SWIG_CSharpApplicationException;
+    switch(code) {
+    case SWIG_MemoryError:
+      exception_code = SWIG_CSharpOutOfMemoryException;
+      break;
+    case SWIG_IndexError:
+      exception_code = SWIG_CSharpIndexOutOfRangeException;
+      break;
+    case SWIG_DivisionByZero:
+      exception_code = SWIG_CSharpDivideByZeroException;
+      break;
+    case SWIG_IOError:
+      exception_code = SWIG_CSharpIOException;
+      break;
+    case SWIG_OverflowError:
+      exception_code = SWIG_CSharpOverflowException;
+      break;
+    case SWIG_NullReferenceError:
+      exception_code = SWIG_CSharpNullReferenceException;
+      break;
+    case SWIG_RuntimeError:
+    case SWIG_TypeError:
+    case SWIG_SyntaxError:
+    case SWIG_SystemError:
+    case SWIG_UnknownError:
+    default:
+      exception_code = SWIG_CSharpApplicationException;
+      break;
+    }
+    SWIG_CSharpSetPendingException(exception_code, msg);
+  }
+}
+
+
+#include <typeinfo>
+#include <stdexcept>
+
+
+#include <utility>
 
 SWIGINTERN std::vector< musdata > *new_std_vector_Sl_musdata_Sg___SWIG_2(int capacity){
         std::vector< musdata >* pv = 0;
@@ -695,6 +926,17 @@ SWIGINTERN bool std_vector_Sl_std_string_Sg__Remove(std::vector< std::string > *
         }
         return false;
       }
+
+struct git_oid;
+
+
+
+/* ---------------------------------------------------
+ * C++ director class methods
+ * --------------------------------------------------- */
+
+#include "PDJE_swigCSHARP_wrap.h"
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -2494,28 +2736,22 @@ SWIGEXPORT const char * SWIGSTDCALL CSharp_EDIT_ARG_MUSIC_musicName_get(void * j
 
 SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MUSIC_arg_set(void * jarg1, void * jarg2) {
   EDIT_ARG_MUSIC *arg1 = (EDIT_ARG_MUSIC *) 0 ;
-  MusicArgs arg2 ;
-  MusicArgs *argp2 ;
+  MusicArgs *arg2 = (MusicArgs *) 0 ;
   
   arg1 = (EDIT_ARG_MUSIC *)jarg1; 
-  argp2 = (MusicArgs *)jarg2; 
-  if (!argp2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null MusicArgs", 0);
-    return ;
-  }
-  arg2 = *argp2; 
-  if (arg1) (arg1)->arg = arg2;
+  arg2 = (MusicArgs *)jarg2; 
+  if (arg1) (arg1)->arg = *arg2;
 }
 
 
 SWIGEXPORT void * SWIGSTDCALL CSharp_EDIT_ARG_MUSIC_arg_get(void * jarg1) {
   void * jresult ;
   EDIT_ARG_MUSIC *arg1 = (EDIT_ARG_MUSIC *) 0 ;
-  MusicArgs result;
+  MusicArgs *result = 0 ;
   
   arg1 = (EDIT_ARG_MUSIC *)jarg1; 
-  result =  ((arg1)->arg);
-  jresult = new MusicArgs(result); 
+  result = (MusicArgs *)& ((arg1)->arg);
+  jresult = (void *)result; 
   return jresult;
 }
 
@@ -2923,6 +3159,1863 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_editorObject(void * jarg1) {
   smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
   arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
   (void)arg1; delete smartarg1;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_AddLineNote(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_NOTE *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (EDIT_ARG_NOTE *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "EDIT_ARG_NOTE const & is null", 0);
+    return 0;
+  } 
+  result = (bool)editorObject_AddLineNote(arg1,(NoteArgs const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_AddLineMix(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_MIX *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (EDIT_ARG_MIX *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "EDIT_ARG_MIX const & is null", 0);
+    return 0;
+  } 
+  result = (bool)editorObject_AddLineMix(arg1,(MixArgs const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_AddLineKV(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_KEY_VALUE *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (EDIT_ARG_KEY_VALUE *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "EDIT_ARG_KEY_VALUE const & is null", 0);
+    return 0;
+  } 
+  result = (bool)editorObject_AddLineKV(arg1,(std::pair< std::string,std::string > const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_AddLineMusic(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_MUSIC *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (EDIT_ARG_MUSIC *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "EDIT_ARG_MUSIC const & is null", 0);
+    return 0;
+  } 
+  result = (bool)editorObject_AddLineMusic(arg1,(EDIT_ARG_MUSIC const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_editorObject_DeleteLineNote(void * jarg1, void * jarg2) {
+  int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_NOTE *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (EDIT_ARG_NOTE *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "EDIT_ARG_NOTE const & is null", 0);
+    return 0;
+  } 
+  result = (int)editorObject_DeleteLineNote(arg1,(NoteArgs const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_editorObject_DeleteLineKV(void * jarg1, void * jarg2) {
+  int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_KEY_VALUE *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (EDIT_ARG_KEY_VALUE *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "EDIT_ARG_KEY_VALUE const & is null", 0);
+    return 0;
+  } 
+  result = (int)editorObject_DeleteLineKV(arg1,(std::pair< std::string,std::string > const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_editorObject_DeleteLineMusic(void * jarg1, void * jarg2) {
+  int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_MUSIC *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (EDIT_ARG_MUSIC *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "EDIT_ARG_MUSIC const & is null", 0);
+    return 0;
+  } 
+  result = (int)editorObject_DeleteLineMusic(arg1,(EDIT_ARG_MUSIC const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_editorObject_GetAllNotes(void * jarg1, void * jarg2) {
+  editorObject *arg1 = (editorObject *) 0 ;
+  NoteVisitor *arg2 = (NoteVisitor *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (NoteVisitor *)jarg2; 
+  editorObject_GetAllNotes(arg1,arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_editorObject_GetAllMixes(void * jarg1, void * jarg2) {
+  editorObject *arg1 = (editorObject *) 0 ;
+  MixVisitor *arg2 = (MixVisitor *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (MixVisitor *)jarg2; 
+  editorObject_GetAllMixes(arg1,arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_editorObject_GetAllKeyValues(void * jarg1, void * jarg2) {
+  editorObject *arg1 = (editorObject *) 0 ;
+  KVVisitor *arg2 = (KVVisitor *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (KVVisitor *)jarg2; 
+  editorObject_GetAllKeyValues(arg1,arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_editorObject_GetAllMusics(void * jarg1, void * jarg2) {
+  editorObject *arg1 = (editorObject *) 0 ;
+  MusicVisitor *arg2 = (MusicVisitor *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (MusicVisitor *)jarg2; 
+  editorObject_GetAllMusics(arg1,arg2);
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_UndoNote(void * jarg1) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (bool)editorObject_UndoNote(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_UndoMix(void * jarg1) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (bool)editorObject_UndoMix(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_UndoKV(void * jarg1) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (bool)editorObject_UndoKV(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_UndoMusic(void * jarg1, const char * jarg2) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  result = (bool)editorObject_UndoMusic(arg1,(std::string const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_RedoNote(void * jarg1) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (bool)editorObject_RedoNote(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_RedoMix(void * jarg1) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (bool)editorObject_RedoMix(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_RedoKV(void * jarg1) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (bool)editorObject_RedoKV(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_RedoMusic(void * jarg1, const char * jarg2) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  result = (bool)editorObject_RedoMusic(arg1,(std::string const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_GoNote(void * jarg1, const char * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  git_oid *arg3 = (git_oid *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  arg3 = (git_oid *)jarg3; 
+  result = (bool)editorObject_GoNote(arg1,(std::string const &)*arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_GoMix(void * jarg1, const char * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  git_oid *arg3 = (git_oid *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  arg3 = (git_oid *)jarg3; 
+  result = (bool)editorObject_GoMix(arg1,(std::string const &)*arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_GoKV(void * jarg1, const char * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  git_oid *arg3 = (git_oid *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  arg3 = (git_oid *)jarg3; 
+  result = (bool)editorObject_GoKV(arg1,(std::string const &)*arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_GoMusic(void * jarg1, const char * jarg2, void * jarg3) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  git_oid *arg3 = (git_oid *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  arg3 = (git_oid *)jarg3; 
+  result = (bool)editorObject_GoMusic(arg1,(std::string const &)*arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_editorObject_GetLogNoteJSON(void * jarg1) {
+  const char * jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  std::string result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = editorObject_GetLogNoteJSON(arg1);
+  jresult = SWIG_csharp_string_callback((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_editorObject_GetLogMixJSON(void * jarg1) {
+  const char * jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  std::string result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = editorObject_GetLogMixJSON(arg1);
+  jresult = SWIG_csharp_string_callback((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_editorObject_GetLogKVJSON(void * jarg1) {
+  const char * jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  std::string result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = editorObject_GetLogKVJSON(arg1);
+  jresult = SWIG_csharp_string_callback((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_editorObject_GetLogMusicJSON(void * jarg1) {
+  const char * jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  std::string result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = editorObject_GetLogMusicJSON(arg1);
+  jresult = SWIG_csharp_string_callback((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_editorObject_GetDiffNote(void * jarg1, void * jarg2, void * jarg3) {
+  void * jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  gitwrap::commit *arg2 = 0 ;
+  gitwrap::commit *arg3 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  DiffResult result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (gitwrap::commit *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "gitwrap::commit const & is null", 0);
+    return 0;
+  } 
+  arg3 = (gitwrap::commit *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "gitwrap::commit const & is null", 0);
+    return 0;
+  } 
+  result = editorObject_GetDiffNote(arg1,(gitwrap::commit const &)*arg2,(gitwrap::commit const &)*arg3);
+  jresult = new DiffResult(result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_editorObject_GetDiffMix(void * jarg1, void * jarg2, void * jarg3) {
+  void * jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  gitwrap::commit *arg2 = 0 ;
+  gitwrap::commit *arg3 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  DiffResult result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (gitwrap::commit *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "gitwrap::commit const & is null", 0);
+    return 0;
+  } 
+  arg3 = (gitwrap::commit *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "gitwrap::commit const & is null", 0);
+    return 0;
+  } 
+  result = editorObject_GetDiffMix(arg1,(gitwrap::commit const &)*arg2,(gitwrap::commit const &)*arg3);
+  jresult = new DiffResult(result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_editorObject_GetDiffKV(void * jarg1, void * jarg2, void * jarg3) {
+  void * jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  gitwrap::commit *arg2 = 0 ;
+  gitwrap::commit *arg3 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  DiffResult result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (gitwrap::commit *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "gitwrap::commit const & is null", 0);
+    return 0;
+  } 
+  arg3 = (gitwrap::commit *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "gitwrap::commit const & is null", 0);
+    return 0;
+  } 
+  result = editorObject_GetDiffKV(arg1,(gitwrap::commit const &)*arg2,(gitwrap::commit const &)*arg3);
+  jresult = new DiffResult(result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_editorObject_GetDiffMusic(void * jarg1, void * jarg2, void * jarg3) {
+  void * jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  gitwrap::commit *arg2 = 0 ;
+  gitwrap::commit *arg3 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  DiffResult result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  arg2 = (gitwrap::commit *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "gitwrap::commit const & is null", 0);
+    return 0;
+  } 
+  arg3 = (gitwrap::commit *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "gitwrap::commit const & is null", 0);
+    return 0;
+  } 
+  result = editorObject_GetDiffMusic(arg1,(gitwrap::commit const &)*arg2,(gitwrap::commit const &)*arg3);
+  jresult = new DiffResult(result); 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_UpdateLogNote(void * jarg1) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (bool)editorObject_UpdateLogNote(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_UpdateLogMix(void * jarg1) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (bool)editorObject_UpdateLogMix(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_UpdateLogKV(void * jarg1) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (bool)editorObject_UpdateLogKV(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_UpdateLogMusic(void * jarg1) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (bool)editorObject_UpdateLogMusic(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_UpdateLogNoteOn(void * jarg1, const char * jarg2) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  result = (bool)editorObject_UpdateLogNoteOn(arg1,(std::string const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_UpdateLogMixOn(void * jarg1, const char * jarg2) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  result = (bool)editorObject_UpdateLogMixOn(arg1,(std::string const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_UpdateLogKVOn(void * jarg1, const char * jarg2) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  result = (bool)editorObject_UpdateLogKVOn(arg1,(std::string const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_editorObject_UpdateLogMusicOn(void * jarg1, const char * jarg2) {
+  unsigned int jresult ;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  bool result;
+  
+  
+  smartarg1 = (std::shared_ptr<  editorObject > *)jarg1;
+  arg1 = (editorObject *)(smartarg1 ? smartarg1->get() : 0); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  result = (bool)editorObject_UpdateLogMusicOn(arg1,(std::string const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_commit_commitPointer_set(void * jarg1, void * jarg2) {
+  gitwrap::commit *arg1 = (gitwrap::commit *) 0 ;
+  git_commit *arg2 = (git_commit *) 0 ;
+  
+  arg1 = (gitwrap::commit *)jarg1; 
+  arg2 = (git_commit *)jarg2; 
+  if (arg1) (arg1)->commitPointer = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_commit_commitPointer_get(void * jarg1) {
+  void * jresult ;
+  gitwrap::commit *arg1 = (gitwrap::commit *) 0 ;
+  git_commit *result = 0 ;
+  
+  arg1 = (gitwrap::commit *)jarg1; 
+  result = (git_commit *) ((arg1)->commitPointer);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_commit_commitID_set(void * jarg1, void * jarg2) {
+  gitwrap::commit *arg1 = (gitwrap::commit *) 0 ;
+  git_oid *arg2 = (git_oid *) 0 ;
+  
+  arg1 = (gitwrap::commit *)jarg1; 
+  arg2 = (git_oid *)jarg2; 
+  if (arg1) (arg1)->commitID = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_commit_commitID_get(void * jarg1) {
+  void * jresult ;
+  gitwrap::commit *arg1 = (gitwrap::commit *) 0 ;
+  git_oid *result = 0 ;
+  
+  arg1 = (gitwrap::commit *)jarg1; 
+  result = (git_oid *)& ((arg1)->commitID);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_commit_msg_set(void * jarg1, const char * jarg2) {
+  gitwrap::commit *arg1 = (gitwrap::commit *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  arg1 = (gitwrap::commit *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (arg1) (arg1)->msg = *arg2;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_commit_msg_get(void * jarg1) {
+  const char * jresult ;
+  gitwrap::commit *arg1 = (gitwrap::commit *) 0 ;
+  std::string *result = 0 ;
+  
+  arg1 = (gitwrap::commit *)jarg1; 
+  result = (std::string *) & ((arg1)->msg);
+  jresult = SWIG_csharp_string_callback(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_commit__SWIG_0() {
+  void * jresult ;
+  gitwrap::commit *result = 0 ;
+  
+  result = (gitwrap::commit *)new gitwrap::commit();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_commit__SWIG_1(void * jarg1, void * jarg2) {
+  void * jresult ;
+  git_oid arg1 ;
+  git_repository *arg2 = (git_repository *) 0 ;
+  git_oid *argp1 ;
+  gitwrap::commit *result = 0 ;
+  
+  argp1 = (git_oid *)jarg1; 
+  if (!argp1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null git_oid", 0);
+    return 0;
+  }
+  arg1 = *argp1; 
+  arg2 = (git_repository *)jarg2; 
+  result = (gitwrap::commit *)new gitwrap::commit(SWIG_STD_MOVE(arg1),arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_commit__SWIG_2(const char * jarg1, void * jarg2) {
+  void * jresult ;
+  std::string arg1 ;
+  git_repository *arg2 = (git_repository *) 0 ;
+  gitwrap::commit *result = 0 ;
+  
+  if (!jarg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  (&arg1)->assign(jarg1); 
+  arg2 = (git_repository *)jarg2; 
+  result = (gitwrap::commit *)new gitwrap::commit(SWIG_STD_MOVE(arg1),arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_commit(void * jarg1) {
+  gitwrap::commit *arg1 = (gitwrap::commit *) 0 ;
+  
+  arg1 = (gitwrap::commit *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_commitList_clist_set(void * jarg1, void * jarg2) {
+  gitwrap::commitList *arg1 = (gitwrap::commitList *) 0 ;
+  std::list< gitwrap::commit > *arg2 = (std::list< gitwrap::commit > *) 0 ;
+  
+  arg1 = (gitwrap::commitList *)jarg1; 
+  arg2 = (std::list< gitwrap::commit > *)jarg2; 
+  if (arg1) (arg1)->clist = *arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_commitList_clist_get(void * jarg1) {
+  void * jresult ;
+  gitwrap::commitList *arg1 = (gitwrap::commitList *) 0 ;
+  std::list< gitwrap::commit > *result = 0 ;
+  
+  arg1 = (gitwrap::commitList *)jarg1; 
+  result = (std::list< gitwrap::commit > *)& ((arg1)->clist);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_commitList_Reset(void * jarg1) {
+  gitwrap::commitList *arg1 = (gitwrap::commitList *) 0 ;
+  
+  arg1 = (gitwrap::commitList *)jarg1; 
+  (arg1)->Reset();
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_commitList_UpdateCommits(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  gitwrap::commitList *arg1 = (gitwrap::commitList *) 0 ;
+  git_repository *arg2 = (git_repository *) 0 ;
+  bool result;
+  
+  arg1 = (gitwrap::commitList *)jarg1; 
+  arg2 = (git_repository *)jarg2; 
+  result = (bool)(arg1)->UpdateCommits(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_commitList_OkToAdd(void * jarg1, void * jarg2) {
+  unsigned int jresult ;
+  gitwrap::commitList *arg1 = (gitwrap::commitList *) 0 ;
+  git_oid arg2 ;
+  git_oid *argp2 ;
+  bool result;
+  
+  arg1 = (gitwrap::commitList *)jarg1; 
+  argp2 = (git_oid *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null git_oid", 0);
+    return 0;
+  }
+  arg2 = *argp2; 
+  result = (bool)(arg1)->OkToAdd(SWIG_STD_MOVE(arg2));
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_commitList() {
+  void * jresult ;
+  gitwrap::commitList *result = 0 ;
+  
+  result = (gitwrap::commitList *)new gitwrap::commitList();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_commitList(void * jarg1) {
+  gitwrap::commitList *arg1 = (gitwrap::commitList *) 0 ;
+  
+  arg1 = (gitwrap::commitList *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_STRING_PAIR__SWIG_0() {
+  void * jresult ;
+  std::pair< std::string,std::string > *result = 0 ;
+  
+  result = (std::pair< std::string,std::string > *)new std::pair< std::string,std::string >();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_STRING_PAIR__SWIG_1(const char * jarg1, const char * jarg2) {
+  void * jresult ;
+  std::string arg1 ;
+  std::string arg2 ;
+  std::pair< std::string,std::string > *result = 0 ;
+  
+  if (!jarg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  (&arg1)->assign(jarg1); 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  (&arg2)->assign(jarg2); 
+  result = (std::pair< std::string,std::string > *)new std::pair< std::string,std::string >(SWIG_STD_MOVE(arg1),SWIG_STD_MOVE(arg2));
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_STRING_PAIR__SWIG_2(void * jarg1) {
+  void * jresult ;
+  std::pair< std::string,std::string > *arg1 = 0 ;
+  std::pair< std::string,std::string > *result = 0 ;
+  
+  arg1 = (std::pair< std::string,std::string > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::pair< std::string,std::string > const & is null", 0);
+    return 0;
+  } 
+  result = (std::pair< std::string,std::string > *)new std::pair< std::string,std::string >((std::pair< std::string,std::string > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_STRING_PAIR_first_set(void * jarg1, const char * jarg2) {
+  std::pair< std::string,std::string > *arg1 = (std::pair< std::string,std::string > *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  arg1 = (std::pair< std::string,std::string > *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (arg1) (arg1)->first = *arg2;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_STRING_PAIR_first_get(void * jarg1) {
+  const char * jresult ;
+  std::pair< std::string,std::string > *arg1 = (std::pair< std::string,std::string > *) 0 ;
+  std::string *result = 0 ;
+  
+  arg1 = (std::pair< std::string,std::string > *)jarg1; 
+  result = (std::string *) & ((arg1)->first);
+  jresult = SWIG_csharp_string_callback(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_STRING_PAIR_second_set(void * jarg1, const char * jarg2) {
+  std::pair< std::string,std::string > *arg1 = (std::pair< std::string,std::string > *) 0 ;
+  std::string *arg2 = 0 ;
+  
+  arg1 = (std::pair< std::string,std::string > *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (arg1) (arg1)->second = *arg2;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_STRING_PAIR_second_get(void * jarg1) {
+  const char * jresult ;
+  std::pair< std::string,std::string > *arg1 = (std::pair< std::string,std::string > *) 0 ;
+  std::string *result = 0 ;
+  
+  arg1 = (std::pair< std::string,std::string > *)jarg1; 
+  result = (std::string *) & ((arg1)->second);
+  jresult = SWIG_csharp_string_callback(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_STRING_PAIR(void * jarg1) {
+  std::pair< std::string,std::string > *arg1 = (std::pair< std::string,std::string > *) 0 ;
+  
+  arg1 = (std::pair< std::string,std::string > *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MIX_type_set(void * jarg1, void * jarg2) {
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  TypeEnum arg2 ;
+  TypeEnum *argp2 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  argp2 = (TypeEnum *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null TypeEnum", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  if (arg1) (arg1)->type = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_EDIT_ARG_MIX_type_get(void * jarg1) {
+  void * jresult ;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  TypeEnum result;
+  
+  arg1 = (MixArgs *)jarg1; 
+  result =  ((arg1)->type);
+  jresult = new TypeEnum(result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MIX_details_set(void * jarg1, void * jarg2) {
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  DetailEnum arg2 ;
+  DetailEnum *argp2 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  argp2 = (DetailEnum *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null DetailEnum", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  if (arg1) (arg1)->details = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_EDIT_ARG_MIX_details_get(void * jarg1) {
+  void * jresult ;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  DetailEnum result;
+  
+  arg1 = (MixArgs *)jarg1; 
+  result =  ((arg1)->details);
+  jresult = new DetailEnum(result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MIX_ID_set(void * jarg1, int jarg2) {
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  int arg2 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->ID = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_EDIT_ARG_MIX_ID_get(void * jarg1) {
+  int jresult ;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  int result;
+  
+  arg1 = (MixArgs *)jarg1; 
+  result = (int) ((arg1)->ID);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MIX_first_set(void * jarg1, const char * jarg2) {
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  SANITIZED_ORNOT arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (arg1) (arg1)->first = *arg2;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_EDIT_ARG_MIX_first_get(void * jarg1) {
+  const char * jresult ;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  result = (SANITIZED_ORNOT *) & ((arg1)->first);
+  jresult = SWIG_csharp_string_callback(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MIX_second_set(void * jarg1, const char * jarg2) {
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  SANITIZED_ORNOT arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (arg1) (arg1)->second = *arg2;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_EDIT_ARG_MIX_second_get(void * jarg1) {
+  const char * jresult ;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  result = (SANITIZED_ORNOT *) & ((arg1)->second);
+  jresult = SWIG_csharp_string_callback(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MIX_third_set(void * jarg1, const char * jarg2) {
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  SANITIZED_ORNOT arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (arg1) (arg1)->third = *arg2;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_EDIT_ARG_MIX_third_get(void * jarg1) {
+  const char * jresult ;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  result = (SANITIZED_ORNOT *) & ((arg1)->third);
+  jresult = SWIG_csharp_string_callback(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MIX_bar_set(void * jarg1, long long jarg2) {
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->bar = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_EDIT_ARG_MIX_bar_get(void * jarg1) {
+  long long jresult ;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long result;
+  
+  arg1 = (MixArgs *)jarg1; 
+  result = (long long) ((arg1)->bar);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MIX_beat_set(void * jarg1, long long jarg2) {
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->beat = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_EDIT_ARG_MIX_beat_get(void * jarg1) {
+  long long jresult ;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long result;
+  
+  arg1 = (MixArgs *)jarg1; 
+  result = (long long) ((arg1)->beat);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MIX_separate_set(void * jarg1, long long jarg2) {
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->separate = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_EDIT_ARG_MIX_separate_get(void * jarg1) {
+  long long jresult ;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long result;
+  
+  arg1 = (MixArgs *)jarg1; 
+  result = (long long) ((arg1)->separate);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MIX_Ebar_set(void * jarg1, long long jarg2) {
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->Ebar = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_EDIT_ARG_MIX_Ebar_get(void * jarg1) {
+  long long jresult ;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long result;
+  
+  arg1 = (MixArgs *)jarg1; 
+  result = (long long) ((arg1)->Ebar);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MIX_Ebeat_set(void * jarg1, long long jarg2) {
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->Ebeat = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_EDIT_ARG_MIX_Ebeat_get(void * jarg1) {
+  long long jresult ;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long result;
+  
+  arg1 = (MixArgs *)jarg1; 
+  result = (long long) ((arg1)->Ebeat);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_MIX_Eseparate_set(void * jarg1, long long jarg2) {
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->Eseparate = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_EDIT_ARG_MIX_Eseparate_get(void * jarg1) {
+  long long jresult ;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long result;
+  
+  arg1 = (MixArgs *)jarg1; 
+  result = (long long) ((arg1)->Eseparate);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_EDIT_ARG_MIX() {
+  void * jresult ;
+  MixArgs *result = 0 ;
+  
+  result = (MixArgs *)new MixArgs();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_EDIT_ARG_MIX(void * jarg1) {
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  
+  arg1 = (MixArgs *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_NOTE_Note_Type_set(void * jarg1, const char * jarg2) {
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  SANITIZED_ORNOT arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (arg1) (arg1)->Note_Type = *arg2;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_EDIT_ARG_NOTE_Note_Type_get(void * jarg1) {
+  const char * jresult ;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  result = (SANITIZED_ORNOT *) & ((arg1)->Note_Type);
+  jresult = SWIG_csharp_string_callback(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_NOTE_Note_Detail_set(void * jarg1, const char * jarg2) {
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  SANITIZED_ORNOT arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (arg1) (arg1)->Note_Detail = *arg2;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_EDIT_ARG_NOTE_Note_Detail_get(void * jarg1) {
+  const char * jresult ;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  result = (SANITIZED_ORNOT *) & ((arg1)->Note_Detail);
+  jresult = SWIG_csharp_string_callback(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_NOTE_first_set(void * jarg1, const char * jarg2) {
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  SANITIZED_ORNOT arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (arg1) (arg1)->first = *arg2;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_EDIT_ARG_NOTE_first_get(void * jarg1) {
+  const char * jresult ;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  result = (SANITIZED_ORNOT *) & ((arg1)->first);
+  jresult = SWIG_csharp_string_callback(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_NOTE_second_set(void * jarg1, const char * jarg2) {
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  SANITIZED_ORNOT arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (arg1) (arg1)->second = *arg2;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_EDIT_ARG_NOTE_second_get(void * jarg1) {
+  const char * jresult ;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  result = (SANITIZED_ORNOT *) & ((arg1)->second);
+  jresult = SWIG_csharp_string_callback(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_NOTE_third_set(void * jarg1, const char * jarg2) {
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  SANITIZED_ORNOT arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (arg1) (arg1)->third = *arg2;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_EDIT_ARG_NOTE_third_get(void * jarg1) {
+  const char * jresult ;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  result = (SANITIZED_ORNOT *) & ((arg1)->third);
+  jresult = SWIG_csharp_string_callback(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_NOTE_bar_set(void * jarg1, long long jarg2) {
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->bar = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_EDIT_ARG_NOTE_bar_get(void * jarg1) {
+  long long jresult ;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long result;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  result = (long long) ((arg1)->bar);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_NOTE_beat_set(void * jarg1, long long jarg2) {
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->beat = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_EDIT_ARG_NOTE_beat_get(void * jarg1) {
+  long long jresult ;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long result;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  result = (long long) ((arg1)->beat);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_NOTE_separate_set(void * jarg1, long long jarg2) {
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->separate = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_EDIT_ARG_NOTE_separate_get(void * jarg1) {
+  long long jresult ;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long result;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  result = (long long) ((arg1)->separate);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_NOTE_Ebar_set(void * jarg1, long long jarg2) {
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->Ebar = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_EDIT_ARG_NOTE_Ebar_get(void * jarg1) {
+  long long jresult ;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long result;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  result = (long long) ((arg1)->Ebar);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_NOTE_Ebeat_set(void * jarg1, long long jarg2) {
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->Ebeat = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_EDIT_ARG_NOTE_Ebeat_get(void * jarg1) {
+  long long jresult ;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long result;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  result = (long long) ((arg1)->Ebeat);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_EDIT_ARG_NOTE_Eseparate_set(void * jarg1, long long jarg2) {
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->Eseparate = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_EDIT_ARG_NOTE_Eseparate_get(void * jarg1) {
+  long long jresult ;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long result;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  result = (long long) ((arg1)->Eseparate);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_EDIT_ARG_NOTE() {
+  void * jresult ;
+  NoteArgs *result = 0 ;
+  
+  result = (NoteArgs *)new NoteArgs();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_EDIT_ARG_NOTE(void * jarg1) {
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  
+  arg1 = (NoteArgs *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_MusicArgs_bpm_set(void * jarg1, const char * jarg2) {
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  DONT_SANITIZE *arg2 = 0 ;
+  
+  arg1 = (MusicArgs *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return ;
+  }
+  DONT_SANITIZE arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  if (arg1) (arg1)->bpm = *arg2;
+}
+
+
+SWIGEXPORT const char * SWIGSTDCALL CSharp_MusicArgs_bpm_get(void * jarg1) {
+  const char * jresult ;
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  DONT_SANITIZE *result = 0 ;
+  
+  arg1 = (MusicArgs *)jarg1; 
+  result = (DONT_SANITIZE *) & ((arg1)->bpm);
+  jresult = SWIG_csharp_string_callback(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_MusicArgs_bar_set(void * jarg1, long long jarg2) {
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (MusicArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->bar = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_MusicArgs_bar_get(void * jarg1) {
+  long long jresult ;
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  long long result;
+  
+  arg1 = (MusicArgs *)jarg1; 
+  result = (long long) ((arg1)->bar);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_MusicArgs_beat_set(void * jarg1, long long jarg2) {
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (MusicArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->beat = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_MusicArgs_beat_get(void * jarg1) {
+  long long jresult ;
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  long long result;
+  
+  arg1 = (MusicArgs *)jarg1; 
+  result = (long long) ((arg1)->beat);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_MusicArgs_separate_set(void * jarg1, long long jarg2) {
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  long long arg2 ;
+  
+  arg1 = (MusicArgs *)jarg1; 
+  arg2 = (long long)jarg2; 
+  if (arg1) (arg1)->separate = arg2;
+}
+
+
+SWIGEXPORT long long SWIGSTDCALL CSharp_MusicArgs_separate_get(void * jarg1) {
+  long long jresult ;
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  long long result;
+  
+  arg1 = (MusicArgs *)jarg1; 
+  result = (long long) ((arg1)->separate);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_MusicArgs() {
+  void * jresult ;
+  MusicArgs *result = 0 ;
+  
+  result = (MusicArgs *)new MusicArgs();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_MusicArgs(void * jarg1) {
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  
+  arg1 = (MusicArgs *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_NoteVisitor(void * jarg1) {
+  NoteVisitor *arg1 = (NoteVisitor *) 0 ;
+  
+  arg1 = (NoteVisitor *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_NoteVisitor_on_item(void * jarg1, void * jarg2) {
+  NoteVisitor *arg1 = (NoteVisitor *) 0 ;
+  EDIT_ARG_NOTE *arg2 = 0 ;
+  
+  arg1 = (NoteVisitor *)jarg1; 
+  arg2 = (EDIT_ARG_NOTE *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "EDIT_ARG_NOTE const & is null", 0);
+    return ;
+  } 
+  (arg1)->on_item((EDIT_ARG_NOTE const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_MixVisitor(void * jarg1) {
+  MixVisitor *arg1 = (MixVisitor *) 0 ;
+  
+  arg1 = (MixVisitor *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_MixVisitor_on_item(void * jarg1, void * jarg2) {
+  MixVisitor *arg1 = (MixVisitor *) 0 ;
+  EDIT_ARG_MIX *arg2 = 0 ;
+  
+  arg1 = (MixVisitor *)jarg1; 
+  arg2 = (EDIT_ARG_MIX *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "EDIT_ARG_MIX const & is null", 0);
+    return ;
+  } 
+  (arg1)->on_item((EDIT_ARG_MIX const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_KVVisitor(void * jarg1) {
+  KVVisitor *arg1 = (KVVisitor *) 0 ;
+  
+  arg1 = (KVVisitor *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_KVVisitor_on_item(void * jarg1, void * jarg2) {
+  KVVisitor *arg1 = (KVVisitor *) 0 ;
+  EDIT_ARG_KEY_VALUE *arg2 = 0 ;
+  
+  arg1 = (KVVisitor *)jarg1; 
+  arg2 = (EDIT_ARG_KEY_VALUE *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "EDIT_ARG_KEY_VALUE const & is null", 0);
+    return ;
+  } 
+  (arg1)->on_item((EDIT_ARG_KEY_VALUE const &)*arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_MusicVisitor(void * jarg1) {
+  MusicVisitor *arg1 = (MusicVisitor *) 0 ;
+  
+  arg1 = (MusicVisitor *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_MusicVisitor_on_item(void * jarg1, void * jarg2) {
+  MusicVisitor *arg1 = (MusicVisitor *) 0 ;
+  EDIT_ARG_MUSIC *arg2 = 0 ;
+  
+  arg1 = (MusicVisitor *)jarg1; 
+  arg2 = (EDIT_ARG_MUSIC *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "EDIT_ARG_MUSIC const & is null", 0);
+    return ;
+  } 
+  (arg1)->on_item((EDIT_ARG_MUSIC const &)*arg2);
 }
 
 

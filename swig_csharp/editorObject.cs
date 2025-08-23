@@ -77,8 +77,8 @@ public class editorObject : global::System.IDisposable {
     return ret;
   }
 
-  public int deleteLine(SWIGTYPE_p_MixArgs obj, bool skipType, bool skipDetail) {
-    int ret = pdje_POLYGLOTPINVOKE.editorObject_deleteLine(swigCPtr, SWIGTYPE_p_MixArgs.getCPtr(obj), skipType, skipDetail);
+  public int deleteLine(EDIT_ARG_MIX obj, bool skipType, bool skipDetail) {
+    int ret = pdje_POLYGLOTPINVOKE.editorObject_deleteLine(swigCPtr, EDIT_ARG_MIX.getCPtr(obj), skipType, skipDetail);
     if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
@@ -132,6 +132,236 @@ public class editorObject : global::System.IDisposable {
 
   public editorObject(string auth_name, string auth_email) : this(pdje_POLYGLOTPINVOKE.new_editorObject(auth_name, auth_email), true) {
     if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public bool AddLineNote(EDIT_ARG_NOTE obj) {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_AddLineNote(swigCPtr, EDIT_ARG_NOTE.getCPtr(obj));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool AddLineMix(EDIT_ARG_MIX obj) {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_AddLineMix(swigCPtr, EDIT_ARG_MIX.getCPtr(obj));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool AddLineKV(STRING_PAIR obj) {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_AddLineKV(swigCPtr, STRING_PAIR.getCPtr(obj));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool AddLineMusic(EDIT_ARG_MUSIC obj) {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_AddLineMusic(swigCPtr, EDIT_ARG_MUSIC.getCPtr(obj));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public int DeleteLineNote(EDIT_ARG_NOTE obj) {
+    int ret = pdje_POLYGLOTPINVOKE.editorObject_DeleteLineNote(swigCPtr, EDIT_ARG_NOTE.getCPtr(obj));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public int DeleteLineKV(STRING_PAIR obj) {
+    int ret = pdje_POLYGLOTPINVOKE.editorObject_DeleteLineKV(swigCPtr, STRING_PAIR.getCPtr(obj));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public int DeleteLineMusic(EDIT_ARG_MUSIC obj) {
+    int ret = pdje_POLYGLOTPINVOKE.editorObject_DeleteLineMusic(swigCPtr, EDIT_ARG_MUSIC.getCPtr(obj));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public void GetAllNotes(NoteVisitor v) {
+    pdje_POLYGLOTPINVOKE.editorObject_GetAllNotes(swigCPtr, NoteVisitor.getCPtr(v));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public void GetAllMixes(MixVisitor v) {
+    pdje_POLYGLOTPINVOKE.editorObject_GetAllMixes(swigCPtr, MixVisitor.getCPtr(v));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public void GetAllKeyValues(KVVisitor v) {
+    pdje_POLYGLOTPINVOKE.editorObject_GetAllKeyValues(swigCPtr, KVVisitor.getCPtr(v));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public void GetAllMusics(MusicVisitor v) {
+    pdje_POLYGLOTPINVOKE.editorObject_GetAllMusics(swigCPtr, MusicVisitor.getCPtr(v));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public bool UndoNote() {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_UndoNote(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool UndoMix() {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_UndoMix(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool UndoKV() {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_UndoKV(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool UndoMusic(string musicName) {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_UndoMusic(swigCPtr, musicName);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool RedoNote() {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_RedoNote(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool RedoMix() {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_RedoMix(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool RedoKV() {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_RedoKV(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool RedoMusic(string musicName) {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_RedoMusic(swigCPtr, musicName);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool GoNote(string branchName, SWIGTYPE_p_git_oid commitID) {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_GoNote(swigCPtr, branchName, SWIGTYPE_p_git_oid.getCPtr(commitID));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool GoMix(string branchName, SWIGTYPE_p_git_oid commitID) {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_GoMix(swigCPtr, branchName, SWIGTYPE_p_git_oid.getCPtr(commitID));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool GoKV(string branchName, SWIGTYPE_p_git_oid commitID) {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_GoKV(swigCPtr, branchName, SWIGTYPE_p_git_oid.getCPtr(commitID));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool GoMusic(string branchName, SWIGTYPE_p_git_oid commitID) {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_GoMusic(swigCPtr, branchName, SWIGTYPE_p_git_oid.getCPtr(commitID));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public string GetLogNoteJSON() {
+    string ret = pdje_POLYGLOTPINVOKE.editorObject_GetLogNoteJSON(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public string GetLogMixJSON() {
+    string ret = pdje_POLYGLOTPINVOKE.editorObject_GetLogMixJSON(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public string GetLogKVJSON() {
+    string ret = pdje_POLYGLOTPINVOKE.editorObject_GetLogKVJSON(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public string GetLogMusicJSON() {
+    string ret = pdje_POLYGLOTPINVOKE.editorObject_GetLogMusicJSON(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public SWIGTYPE_p_DiffResult GetDiffNote(commit oldC, commit newC) {
+    SWIGTYPE_p_DiffResult ret = new SWIGTYPE_p_DiffResult(pdje_POLYGLOTPINVOKE.editorObject_GetDiffNote(swigCPtr, commit.getCPtr(oldC), commit.getCPtr(newC)), true);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public SWIGTYPE_p_DiffResult GetDiffMix(commit oldC, commit newC) {
+    SWIGTYPE_p_DiffResult ret = new SWIGTYPE_p_DiffResult(pdje_POLYGLOTPINVOKE.editorObject_GetDiffMix(swigCPtr, commit.getCPtr(oldC), commit.getCPtr(newC)), true);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public SWIGTYPE_p_DiffResult GetDiffKV(commit oldC, commit newC) {
+    SWIGTYPE_p_DiffResult ret = new SWIGTYPE_p_DiffResult(pdje_POLYGLOTPINVOKE.editorObject_GetDiffKV(swigCPtr, commit.getCPtr(oldC), commit.getCPtr(newC)), true);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public SWIGTYPE_p_DiffResult GetDiffMusic(commit oldC, commit newC) {
+    SWIGTYPE_p_DiffResult ret = new SWIGTYPE_p_DiffResult(pdje_POLYGLOTPINVOKE.editorObject_GetDiffMusic(swigCPtr, commit.getCPtr(oldC), commit.getCPtr(newC)), true);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool UpdateLogNote() {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_UpdateLogNote(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool UpdateLogMix() {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_UpdateLogMix(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool UpdateLogKV() {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_UpdateLogKV(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool UpdateLogMusic() {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_UpdateLogMusic(swigCPtr);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool UpdateLogNoteOn(string branchName) {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_UpdateLogNoteOn(swigCPtr, branchName);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool UpdateLogMixOn(string branchName) {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_UpdateLogMixOn(swigCPtr, branchName);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool UpdateLogKVOn(string branchName) {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_UpdateLogKVOn(swigCPtr, branchName);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool UpdateLogMusicOn(string musicName) {
+    bool ret = pdje_POLYGLOTPINVOKE.editorObject_UpdateLogMusicOn(swigCPtr, musicName);
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
   }
 
 }

@@ -26,45 +26,7 @@
 using nj = nlohmann::json;
 namespace fs = std::filesystem;
 namespace vs = std::views;
-
-/// Arguments describing a mix entry
-struct PDJE_API MixArgs{
-    TypeEnum type           = TypeEnum::EQ      ;
-    DetailEnum details      = DetailEnum::HIGH  ;
-    int ID                  = -1                ;
-    SANITIZED_ORNOT first   = ""                ;
-    SANITIZED_ORNOT second  = ""                ;
-    SANITIZED_ORNOT third   = ""                ;
-    long long bar           = -1                ;
-    long long beat          = -1                ;
-    long long separate      = -1                ;
-    long long Ebar          = -1                ;
-    long long Ebeat         = -1                ;
-    long long Eseparate     = -1                ;
-};
-
-/// Arguments describing a note entry
-struct PDJE_API NoteArgs{
-    SANITIZED_ORNOT Note_Type   = "";
-    SANITIZED_ORNOT Note_Detail = "";
-    SANITIZED_ORNOT first       = "";
-    SANITIZED_ORNOT second      = "";
-    SANITIZED_ORNOT third       = "";
-    long long bar               = -1;
-    long long beat              = -1;
-    long long separate          = -1;
-    long long Ebar              = -1;
-    long long Ebeat             = -1;
-    long long Eseparate         = -1;
-};
-
-/// Arguments describing a music entry
-struct PDJE_API MusicArgs{
-    DONT_SANITIZE bpm       = ""                ;
-    long long bar           = -1                ;
-    long long beat          = -1                ;
-    long long separate      = -1                ;
-};
+#include "EditorArgs.hpp"
 
 using MIX_W = CapWriter<MixBinaryCapnpData>;
 using NOTE_W = CapWriter<NoteBinaryCapnpData>;

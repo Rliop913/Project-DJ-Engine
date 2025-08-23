@@ -58,6 +58,8 @@ class _SwigNonDynamicMeta(type):
     __setattr__ = _swig_setattr_nondynamic_class_variable(type.__setattr__)
 
 
+import weakref
+
 class SwigPyIterator(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
 
@@ -454,8 +456,293 @@ class editorObject(object):
         _pdje_python.editorObject_swiginit(self, _pdje_python.new_editorObject(auth_name, auth_email))
     __swig_destroy__ = _pdje_python.delete_editorObject
 
+    def AddLineNote(self, obj):
+        return _pdje_python.editorObject_AddLineNote(self, obj)
+
+    def AddLineMix(self, obj):
+        return _pdje_python.editorObject_AddLineMix(self, obj)
+
+    def AddLineKV(self, obj):
+        return _pdje_python.editorObject_AddLineKV(self, obj)
+
+    def AddLineMusic(self, obj):
+        return _pdje_python.editorObject_AddLineMusic(self, obj)
+
+    def DeleteLineNote(self, obj):
+        return _pdje_python.editorObject_DeleteLineNote(self, obj)
+
+    def DeleteLineKV(self, obj):
+        return _pdje_python.editorObject_DeleteLineKV(self, obj)
+
+    def DeleteLineMusic(self, obj):
+        return _pdje_python.editorObject_DeleteLineMusic(self, obj)
+
+    def GetAllNotes(self, v):
+        return _pdje_python.editorObject_GetAllNotes(self, v)
+
+    def GetAllMixes(self, v):
+        return _pdje_python.editorObject_GetAllMixes(self, v)
+
+    def GetAllKeyValues(self, v):
+        return _pdje_python.editorObject_GetAllKeyValues(self, v)
+
+    def GetAllMusics(self, v):
+        return _pdje_python.editorObject_GetAllMusics(self, v)
+
+    def UndoNote(self):
+        return _pdje_python.editorObject_UndoNote(self)
+
+    def UndoMix(self):
+        return _pdje_python.editorObject_UndoMix(self)
+
+    def UndoKV(self):
+        return _pdje_python.editorObject_UndoKV(self)
+
+    def UndoMusic(self, musicName):
+        return _pdje_python.editorObject_UndoMusic(self, musicName)
+
+    def RedoNote(self):
+        return _pdje_python.editorObject_RedoNote(self)
+
+    def RedoMix(self):
+        return _pdje_python.editorObject_RedoMix(self)
+
+    def RedoKV(self):
+        return _pdje_python.editorObject_RedoKV(self)
+
+    def RedoMusic(self, musicName):
+        return _pdje_python.editorObject_RedoMusic(self, musicName)
+
+    def GoNote(self, branchName, commitID):
+        return _pdje_python.editorObject_GoNote(self, branchName, commitID)
+
+    def GoMix(self, branchName, commitID):
+        return _pdje_python.editorObject_GoMix(self, branchName, commitID)
+
+    def GoKV(self, branchName, commitID):
+        return _pdje_python.editorObject_GoKV(self, branchName, commitID)
+
+    def GoMusic(self, branchName, commitID):
+        return _pdje_python.editorObject_GoMusic(self, branchName, commitID)
+
+    def GetLogNoteJSON(self):
+        return _pdje_python.editorObject_GetLogNoteJSON(self)
+
+    def GetLogMixJSON(self):
+        return _pdje_python.editorObject_GetLogMixJSON(self)
+
+    def GetLogKVJSON(self):
+        return _pdje_python.editorObject_GetLogKVJSON(self)
+
+    def GetLogMusicJSON(self):
+        return _pdje_python.editorObject_GetLogMusicJSON(self)
+
+    def GetDiffNote(self, oldC, newC):
+        return _pdje_python.editorObject_GetDiffNote(self, oldC, newC)
+
+    def GetDiffMix(self, oldC, newC):
+        return _pdje_python.editorObject_GetDiffMix(self, oldC, newC)
+
+    def GetDiffKV(self, oldC, newC):
+        return _pdje_python.editorObject_GetDiffKV(self, oldC, newC)
+
+    def GetDiffMusic(self, oldC, newC):
+        return _pdje_python.editorObject_GetDiffMusic(self, oldC, newC)
+
+    def UpdateLogNote(self):
+        return _pdje_python.editorObject_UpdateLogNote(self)
+
+    def UpdateLogMix(self):
+        return _pdje_python.editorObject_UpdateLogMix(self)
+
+    def UpdateLogKV(self):
+        return _pdje_python.editorObject_UpdateLogKV(self)
+
+    def UpdateLogMusic(self):
+        return _pdje_python.editorObject_UpdateLogMusic(self)
+
+    def UpdateLogNoteOn(self, branchName):
+        return _pdje_python.editorObject_UpdateLogNoteOn(self, branchName)
+
+    def UpdateLogMixOn(self, branchName):
+        return _pdje_python.editorObject_UpdateLogMixOn(self, branchName)
+
+    def UpdateLogKVOn(self, branchName):
+        return _pdje_python.editorObject_UpdateLogKVOn(self, branchName)
+
+    def UpdateLogMusicOn(self, musicName):
+        return _pdje_python.editorObject_UpdateLogMusicOn(self, musicName)
+
 # Register editorObject in _pdje_python:
 _pdje_python.editorObject_swigregister(editorObject)
+class commit(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    commitPointer = property(_pdje_python.commit_commitPointer_get, _pdje_python.commit_commitPointer_set)
+    commitID = property(_pdje_python.commit_commitID_get, _pdje_python.commit_commitID_set)
+    msg = property(_pdje_python.commit_msg_get, _pdje_python.commit_msg_set)
+
+    def __init__(self, *args):
+        _pdje_python.commit_swiginit(self, _pdje_python.new_commit(*args))
+    __swig_destroy__ = _pdje_python.delete_commit
+
+# Register commit in _pdje_python:
+_pdje_python.commit_swigregister(commit)
+class commitList(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    clist = property(_pdje_python.commitList_clist_get, _pdje_python.commitList_clist_set)
+
+    def Reset(self):
+        return _pdje_python.commitList_Reset(self)
+
+    def UpdateCommits(self, repo):
+        return _pdje_python.commitList_UpdateCommits(self, repo)
+
+    def OkToAdd(self, id):
+        return _pdje_python.commitList_OkToAdd(self, id)
+
+    def __init__(self):
+        _pdje_python.commitList_swiginit(self, _pdje_python.new_commitList())
+    __swig_destroy__ = _pdje_python.delete_commitList
+
+# Register commitList in _pdje_python:
+_pdje_python.commitList_swigregister(commitList)
+class STRING_PAIR(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        _pdje_python.STRING_PAIR_swiginit(self, _pdje_python.new_STRING_PAIR(*args))
+    first = property(_pdje_python.STRING_PAIR_first_get, _pdje_python.STRING_PAIR_first_set)
+    second = property(_pdje_python.STRING_PAIR_second_get, _pdje_python.STRING_PAIR_second_set)
+    def __len__(self):
+        return 2
+    def __repr__(self):
+        return str((self.first, self.second))
+    def __getitem__(self, index): 
+        if not (index % 2):
+            return self.first
+        else:
+            return self.second
+    def __setitem__(self, index, val):
+        if not (index % 2):
+            self.first = val
+        else:
+            self.second = val
+    __swig_destroy__ = _pdje_python.delete_STRING_PAIR
+
+# Register STRING_PAIR in _pdje_python:
+_pdje_python.STRING_PAIR_swigregister(STRING_PAIR)
+class EDIT_ARG_MIX(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    type = property(_pdje_python.EDIT_ARG_MIX_type_get, _pdje_python.EDIT_ARG_MIX_type_set)
+    details = property(_pdje_python.EDIT_ARG_MIX_details_get, _pdje_python.EDIT_ARG_MIX_details_set)
+    ID = property(_pdje_python.EDIT_ARG_MIX_ID_get, _pdje_python.EDIT_ARG_MIX_ID_set)
+    first = property(_pdje_python.EDIT_ARG_MIX_first_get, _pdje_python.EDIT_ARG_MIX_first_set)
+    second = property(_pdje_python.EDIT_ARG_MIX_second_get, _pdje_python.EDIT_ARG_MIX_second_set)
+    third = property(_pdje_python.EDIT_ARG_MIX_third_get, _pdje_python.EDIT_ARG_MIX_third_set)
+    bar = property(_pdje_python.EDIT_ARG_MIX_bar_get, _pdje_python.EDIT_ARG_MIX_bar_set)
+    beat = property(_pdje_python.EDIT_ARG_MIX_beat_get, _pdje_python.EDIT_ARG_MIX_beat_set)
+    separate = property(_pdje_python.EDIT_ARG_MIX_separate_get, _pdje_python.EDIT_ARG_MIX_separate_set)
+    Ebar = property(_pdje_python.EDIT_ARG_MIX_Ebar_get, _pdje_python.EDIT_ARG_MIX_Ebar_set)
+    Ebeat = property(_pdje_python.EDIT_ARG_MIX_Ebeat_get, _pdje_python.EDIT_ARG_MIX_Ebeat_set)
+    Eseparate = property(_pdje_python.EDIT_ARG_MIX_Eseparate_get, _pdje_python.EDIT_ARG_MIX_Eseparate_set)
+
+    def __init__(self):
+        _pdje_python.EDIT_ARG_MIX_swiginit(self, _pdje_python.new_EDIT_ARG_MIX())
+    __swig_destroy__ = _pdje_python.delete_EDIT_ARG_MIX
+
+# Register EDIT_ARG_MIX in _pdje_python:
+_pdje_python.EDIT_ARG_MIX_swigregister(EDIT_ARG_MIX)
+class EDIT_ARG_NOTE(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    Note_Type = property(_pdje_python.EDIT_ARG_NOTE_Note_Type_get, _pdje_python.EDIT_ARG_NOTE_Note_Type_set)
+    Note_Detail = property(_pdje_python.EDIT_ARG_NOTE_Note_Detail_get, _pdje_python.EDIT_ARG_NOTE_Note_Detail_set)
+    first = property(_pdje_python.EDIT_ARG_NOTE_first_get, _pdje_python.EDIT_ARG_NOTE_first_set)
+    second = property(_pdje_python.EDIT_ARG_NOTE_second_get, _pdje_python.EDIT_ARG_NOTE_second_set)
+    third = property(_pdje_python.EDIT_ARG_NOTE_third_get, _pdje_python.EDIT_ARG_NOTE_third_set)
+    bar = property(_pdje_python.EDIT_ARG_NOTE_bar_get, _pdje_python.EDIT_ARG_NOTE_bar_set)
+    beat = property(_pdje_python.EDIT_ARG_NOTE_beat_get, _pdje_python.EDIT_ARG_NOTE_beat_set)
+    separate = property(_pdje_python.EDIT_ARG_NOTE_separate_get, _pdje_python.EDIT_ARG_NOTE_separate_set)
+    Ebar = property(_pdje_python.EDIT_ARG_NOTE_Ebar_get, _pdje_python.EDIT_ARG_NOTE_Ebar_set)
+    Ebeat = property(_pdje_python.EDIT_ARG_NOTE_Ebeat_get, _pdje_python.EDIT_ARG_NOTE_Ebeat_set)
+    Eseparate = property(_pdje_python.EDIT_ARG_NOTE_Eseparate_get, _pdje_python.EDIT_ARG_NOTE_Eseparate_set)
+
+    def __init__(self):
+        _pdje_python.EDIT_ARG_NOTE_swiginit(self, _pdje_python.new_EDIT_ARG_NOTE())
+    __swig_destroy__ = _pdje_python.delete_EDIT_ARG_NOTE
+
+# Register EDIT_ARG_NOTE in _pdje_python:
+_pdje_python.EDIT_ARG_NOTE_swigregister(EDIT_ARG_NOTE)
+class MusicArgs(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    bpm = property(_pdje_python.MusicArgs_bpm_get, _pdje_python.MusicArgs_bpm_set)
+    bar = property(_pdje_python.MusicArgs_bar_get, _pdje_python.MusicArgs_bar_set)
+    beat = property(_pdje_python.MusicArgs_beat_get, _pdje_python.MusicArgs_beat_set)
+    separate = property(_pdje_python.MusicArgs_separate_get, _pdje_python.MusicArgs_separate_set)
+
+    def __init__(self):
+        _pdje_python.MusicArgs_swiginit(self, _pdje_python.new_MusicArgs())
+    __swig_destroy__ = _pdje_python.delete_MusicArgs
+
+# Register MusicArgs in _pdje_python:
+_pdje_python.MusicArgs_swigregister(MusicArgs)
+class NoteVisitor(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _pdje_python.delete_NoteVisitor
+
+    def on_item(self, o):
+        return _pdje_python.NoteVisitor_on_item(self, o)
+
+# Register NoteVisitor in _pdje_python:
+_pdje_python.NoteVisitor_swigregister(NoteVisitor)
+class MixVisitor(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _pdje_python.delete_MixVisitor
+
+    def on_item(self, o):
+        return _pdje_python.MixVisitor_on_item(self, o)
+
+# Register MixVisitor in _pdje_python:
+_pdje_python.MixVisitor_swigregister(MixVisitor)
+class KVVisitor(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _pdje_python.delete_KVVisitor
+
+    def on_item(self, o):
+        return _pdje_python.KVVisitor_on_item(self, o)
+
+# Register KVVisitor in _pdje_python:
+_pdje_python.KVVisitor_swigregister(KVVisitor)
+class MusicVisitor(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _pdje_python.delete_MusicVisitor
+
+    def on_item(self, o):
+        return _pdje_python.MusicVisitor_on_item(self, o)
+
+# Register MusicVisitor in _pdje_python:
+_pdje_python.MusicVisitor_swigregister(MusicVisitor)
 class MUS_VEC(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
