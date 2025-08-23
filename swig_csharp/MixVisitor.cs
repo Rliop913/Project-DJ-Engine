@@ -9,20 +9,20 @@
 //------------------------------------------------------------------------------
 
 
-public class EDIT_ARG_MUSIC : global::System.IDisposable {
+public class MixVisitor : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal EDIT_ARG_MUSIC(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal MixVisitor(global::System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(EDIT_ARG_MUSIC obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(MixVisitor obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef swigRelease(EDIT_ARG_MUSIC obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef swigRelease(MixVisitor obj) {
     if (obj != null) {
       if (!obj.swigCMemOwn)
         throw new global::System.ApplicationException("Cannot release ownership as memory is not owned");
@@ -35,7 +35,7 @@ public class EDIT_ARG_MUSIC : global::System.IDisposable {
     }
   }
 
-  ~EDIT_ARG_MUSIC() {
+  ~MixVisitor() {
     Dispose(false);
   }
 
@@ -49,37 +49,16 @@ public class EDIT_ARG_MUSIC : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          pdje_POLYGLOTPINVOKE.delete_EDIT_ARG_MUSIC(swigCPtr);
+          pdje_POLYGLOTPINVOKE.delete_MixVisitor(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
     }
   }
 
-  public string musicName {
-    set {
-      pdje_POLYGLOTPINVOKE.EDIT_ARG_MUSIC_musicName_set(swigCPtr, value);
-      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
-    } 
-    get {
-      string ret = pdje_POLYGLOTPINVOKE.EDIT_ARG_MUSIC_musicName_get(swigCPtr);
-      if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
-      return ret;
-    } 
-  }
-
-  public MusicArgs arg {
-    set {
-      pdje_POLYGLOTPINVOKE.EDIT_ARG_MUSIC_arg_set(swigCPtr, MusicArgs.getCPtr(value));
-    } 
-    get {
-      global::System.IntPtr cPtr = pdje_POLYGLOTPINVOKE.EDIT_ARG_MUSIC_arg_get(swigCPtr);
-      MusicArgs ret = (cPtr == global::System.IntPtr.Zero) ? null : new MusicArgs(cPtr, false);
-      return ret;
-    } 
-  }
-
-  public EDIT_ARG_MUSIC() : this(pdje_POLYGLOTPINVOKE.new_EDIT_ARG_MUSIC(), true) {
+  public virtual void on_item(EDIT_ARG_MIX o) {
+    pdje_POLYGLOTPINVOKE.MixVisitor_on_item(swigCPtr, EDIT_ARG_MIX.getCPtr(o));
+    if (pdje_POLYGLOTPINVOKE.SWIGPendingException.Pending) throw pdje_POLYGLOTPINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

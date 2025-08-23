@@ -629,6 +629,402 @@ class pdje_POLYGLOTPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_editorObject")]
   public static extern void delete_editorObject(global::System.Runtime.InteropServices.HandleRef jarg1);
 
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_AddLineNote")]
+  public static extern bool editorObject_AddLineNote(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_AddLineMix")]
+  public static extern bool editorObject_AddLineMix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_AddLineKV")]
+  public static extern bool editorObject_AddLineKV(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_AddLineMusic")]
+  public static extern bool editorObject_AddLineMusic(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_DeleteLineNote")]
+  public static extern int editorObject_DeleteLineNote(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_DeleteLineKV")]
+  public static extern int editorObject_DeleteLineKV(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_DeleteLineMusic")]
+  public static extern int editorObject_DeleteLineMusic(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GetAllNotes")]
+  public static extern void editorObject_GetAllNotes(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GetAllMixes")]
+  public static extern void editorObject_GetAllMixes(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GetAllKeyValues")]
+  public static extern void editorObject_GetAllKeyValues(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GetAllMusics")]
+  public static extern void editorObject_GetAllMusics(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_UndoNote")]
+  public static extern bool editorObject_UndoNote(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_UndoMix")]
+  public static extern bool editorObject_UndoMix(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_UndoKV")]
+  public static extern bool editorObject_UndoKV(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_UndoMusic")]
+  public static extern bool editorObject_UndoMusic(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_RedoNote")]
+  public static extern bool editorObject_RedoNote(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_RedoMix")]
+  public static extern bool editorObject_RedoMix(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_RedoKV")]
+  public static extern bool editorObject_RedoKV(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_RedoMusic")]
+  public static extern bool editorObject_RedoMusic(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GoNote")]
+  public static extern bool editorObject_GoNote(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GoMix")]
+  public static extern bool editorObject_GoMix(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GoKV")]
+  public static extern bool editorObject_GoKV(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GoMusic")]
+  public static extern bool editorObject_GoMusic(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GetLogNoteJSON")]
+  public static extern string editorObject_GetLogNoteJSON(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GetLogMixJSON")]
+  public static extern string editorObject_GetLogMixJSON(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GetLogKVJSON")]
+  public static extern string editorObject_GetLogKVJSON(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GetLogMusicJSON")]
+  public static extern string editorObject_GetLogMusicJSON(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GetDiffNote")]
+  public static extern global::System.IntPtr editorObject_GetDiffNote(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GetDiffMix")]
+  public static extern global::System.IntPtr editorObject_GetDiffMix(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GetDiffKV")]
+  public static extern global::System.IntPtr editorObject_GetDiffKV(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_GetDiffMusic")]
+  public static extern global::System.IntPtr editorObject_GetDiffMusic(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_UpdateLogNote")]
+  public static extern bool editorObject_UpdateLogNote(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_UpdateLogMix")]
+  public static extern bool editorObject_UpdateLogMix(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_UpdateLogKV")]
+  public static extern bool editorObject_UpdateLogKV(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_UpdateLogMusic")]
+  public static extern bool editorObject_UpdateLogMusic(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_UpdateLogNoteOn")]
+  public static extern bool editorObject_UpdateLogNoteOn(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_UpdateLogMixOn")]
+  public static extern bool editorObject_UpdateLogMixOn(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_UpdateLogKVOn")]
+  public static extern bool editorObject_UpdateLogKVOn(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_editorObject_UpdateLogMusicOn")]
+  public static extern bool editorObject_UpdateLogMusicOn(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_commit_commitPointer_set")]
+  public static extern void commit_commitPointer_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_commit_commitPointer_get")]
+  public static extern global::System.IntPtr commit_commitPointer_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_commit_commitID_set")]
+  public static extern void commit_commitID_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_commit_commitID_get")]
+  public static extern global::System.IntPtr commit_commitID_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_commit_msg_set")]
+  public static extern void commit_msg_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_commit_msg_get")]
+  public static extern string commit_msg_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_commit__SWIG_0")]
+  public static extern global::System.IntPtr new_commit__SWIG_0();
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_commit__SWIG_1")]
+  public static extern global::System.IntPtr new_commit__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_commit__SWIG_2")]
+  public static extern global::System.IntPtr new_commit__SWIG_2(string jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_commit")]
+  public static extern void delete_commit(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_commitList_clist_set")]
+  public static extern void commitList_clist_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_commitList_clist_get")]
+  public static extern global::System.IntPtr commitList_clist_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_commitList_Reset")]
+  public static extern void commitList_Reset(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_commitList_UpdateCommits")]
+  public static extern bool commitList_UpdateCommits(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_commitList_OkToAdd")]
+  public static extern bool commitList_OkToAdd(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_commitList")]
+  public static extern global::System.IntPtr new_commitList();
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_commitList")]
+  public static extern void delete_commitList(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_STRING_PAIR__SWIG_0")]
+  public static extern global::System.IntPtr new_STRING_PAIR__SWIG_0();
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_STRING_PAIR__SWIG_1")]
+  public static extern global::System.IntPtr new_STRING_PAIR__SWIG_1(string jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_STRING_PAIR__SWIG_2")]
+  public static extern global::System.IntPtr new_STRING_PAIR__SWIG_2(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_STRING_PAIR_first_set")]
+  public static extern void STRING_PAIR_first_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_STRING_PAIR_first_get")]
+  public static extern string STRING_PAIR_first_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_STRING_PAIR_second_set")]
+  public static extern void STRING_PAIR_second_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_STRING_PAIR_second_get")]
+  public static extern string STRING_PAIR_second_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_STRING_PAIR")]
+  public static extern void delete_STRING_PAIR(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_type_set")]
+  public static extern void EDIT_ARG_MIX_type_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_type_get")]
+  public static extern global::System.IntPtr EDIT_ARG_MIX_type_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_details_set")]
+  public static extern void EDIT_ARG_MIX_details_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_details_get")]
+  public static extern global::System.IntPtr EDIT_ARG_MIX_details_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_ID_set")]
+  public static extern void EDIT_ARG_MIX_ID_set(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_ID_get")]
+  public static extern int EDIT_ARG_MIX_ID_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_first_set")]
+  public static extern void EDIT_ARG_MIX_first_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_first_get")]
+  public static extern string EDIT_ARG_MIX_first_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_second_set")]
+  public static extern void EDIT_ARG_MIX_second_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_second_get")]
+  public static extern string EDIT_ARG_MIX_second_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_third_set")]
+  public static extern void EDIT_ARG_MIX_third_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_third_get")]
+  public static extern string EDIT_ARG_MIX_third_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_bar_set")]
+  public static extern void EDIT_ARG_MIX_bar_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_bar_get")]
+  public static extern long EDIT_ARG_MIX_bar_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_beat_set")]
+  public static extern void EDIT_ARG_MIX_beat_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_beat_get")]
+  public static extern long EDIT_ARG_MIX_beat_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_separate_set")]
+  public static extern void EDIT_ARG_MIX_separate_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_separate_get")]
+  public static extern long EDIT_ARG_MIX_separate_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_Ebar_set")]
+  public static extern void EDIT_ARG_MIX_Ebar_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_Ebar_get")]
+  public static extern long EDIT_ARG_MIX_Ebar_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_Ebeat_set")]
+  public static extern void EDIT_ARG_MIX_Ebeat_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_Ebeat_get")]
+  public static extern long EDIT_ARG_MIX_Ebeat_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_Eseparate_set")]
+  public static extern void EDIT_ARG_MIX_Eseparate_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_MIX_Eseparate_get")]
+  public static extern long EDIT_ARG_MIX_Eseparate_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_EDIT_ARG_MIX")]
+  public static extern global::System.IntPtr new_EDIT_ARG_MIX();
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_EDIT_ARG_MIX")]
+  public static extern void delete_EDIT_ARG_MIX(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_Note_Type_set")]
+  public static extern void EDIT_ARG_NOTE_Note_Type_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_Note_Type_get")]
+  public static extern string EDIT_ARG_NOTE_Note_Type_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_Note_Detail_set")]
+  public static extern void EDIT_ARG_NOTE_Note_Detail_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_Note_Detail_get")]
+  public static extern string EDIT_ARG_NOTE_Note_Detail_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_first_set")]
+  public static extern void EDIT_ARG_NOTE_first_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_first_get")]
+  public static extern string EDIT_ARG_NOTE_first_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_second_set")]
+  public static extern void EDIT_ARG_NOTE_second_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_second_get")]
+  public static extern string EDIT_ARG_NOTE_second_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_third_set")]
+  public static extern void EDIT_ARG_NOTE_third_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_third_get")]
+  public static extern string EDIT_ARG_NOTE_third_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_bar_set")]
+  public static extern void EDIT_ARG_NOTE_bar_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_bar_get")]
+  public static extern long EDIT_ARG_NOTE_bar_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_beat_set")]
+  public static extern void EDIT_ARG_NOTE_beat_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_beat_get")]
+  public static extern long EDIT_ARG_NOTE_beat_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_separate_set")]
+  public static extern void EDIT_ARG_NOTE_separate_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_separate_get")]
+  public static extern long EDIT_ARG_NOTE_separate_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_Ebar_set")]
+  public static extern void EDIT_ARG_NOTE_Ebar_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_Ebar_get")]
+  public static extern long EDIT_ARG_NOTE_Ebar_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_Ebeat_set")]
+  public static extern void EDIT_ARG_NOTE_Ebeat_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_Ebeat_get")]
+  public static extern long EDIT_ARG_NOTE_Ebeat_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_Eseparate_set")]
+  public static extern void EDIT_ARG_NOTE_Eseparate_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_EDIT_ARG_NOTE_Eseparate_get")]
+  public static extern long EDIT_ARG_NOTE_Eseparate_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_EDIT_ARG_NOTE")]
+  public static extern global::System.IntPtr new_EDIT_ARG_NOTE();
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_EDIT_ARG_NOTE")]
+  public static extern void delete_EDIT_ARG_NOTE(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicArgs_bpm_set")]
+  public static extern void MusicArgs_bpm_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicArgs_bpm_get")]
+  public static extern string MusicArgs_bpm_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicArgs_bar_set")]
+  public static extern void MusicArgs_bar_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicArgs_bar_get")]
+  public static extern long MusicArgs_bar_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicArgs_beat_set")]
+  public static extern void MusicArgs_beat_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicArgs_beat_get")]
+  public static extern long MusicArgs_beat_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicArgs_separate_set")]
+  public static extern void MusicArgs_separate_set(global::System.Runtime.InteropServices.HandleRef jarg1, long jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicArgs_separate_get")]
+  public static extern long MusicArgs_separate_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_MusicArgs")]
+  public static extern global::System.IntPtr new_MusicArgs();
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_MusicArgs")]
+  public static extern void delete_MusicArgs(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_NoteVisitor")]
+  public static extern void delete_NoteVisitor(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_NoteVisitor_on_item")]
+  public static extern void NoteVisitor_on_item(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_MixVisitor")]
+  public static extern void delete_MixVisitor(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MixVisitor_on_item")]
+  public static extern void MixVisitor_on_item(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_KVVisitor")]
+  public static extern void delete_KVVisitor(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_KVVisitor_on_item")]
+  public static extern void KVVisitor_on_item(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_delete_MusicVisitor")]
+  public static extern void delete_MusicVisitor(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_MusicVisitor_on_item")]
+  public static extern void MusicVisitor_on_item(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
   [global::System.Runtime.InteropServices.DllImport("libpdje_csharp", EntryPoint="CSharp_new_MUS_VEC__SWIG_0")]
   public static extern global::System.IntPtr new_MUS_VEC__SWIG_0();
 

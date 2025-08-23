@@ -9,6 +9,7 @@
 
 #define SWIG_VERSION 0x040301
 #define SWIGPYTHON
+#define SWIG_DIRECTORS
 #define SWIG_PYTHON_DIRECTOR_NO_VTABLE
 
 #define SWIG_name    "_pdje_python"
@@ -3204,63 +3205,584 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
   #define SWIG_exception(code, msg) do { SWIG_Error(code, msg); SWIG_fail;; } while(0) 
 
+/* -----------------------------------------------------------------------------
+ * director_common.swg
+ *
+ * This file contains support for director classes which is common between
+ * languages.
+ * ----------------------------------------------------------------------------- */
+
+/*
+  Use -DSWIG_DIRECTOR_STATIC if you prefer to avoid the use of the
+  'Swig' namespace. This could be useful for multi-modules projects.
+*/
+#ifdef SWIG_DIRECTOR_STATIC
+/* Force anonymous (static) namespace */
+#define Swig
+#endif
+/* -----------------------------------------------------------------------------
+ * director_py_mutex.swg
+ *
+ * contains python mutex for threads
+ * ----------------------------------------------------------------------------- */
+
+#if defined(SWIG_PYTHON_THREADS) && !defined(SWIG_THREADS)
+#define SWIG_THREADS 1
+#endif
+#if defined(SWIG_THREADS) && !defined(Py_LIMITED_API)
+#include "pythread.h"
+#define SWIG_HAVE_MUTEX
+namespace Swig {
+   class Mutex
+   {
+       PyThread_type_lock mutex_;
+   public:
+       Mutex() : mutex_(PyThread_allocate_lock()) {}
+       ~Mutex() { PyThread_free_lock(mutex_); }
+       void lock() { PyThread_acquire_lock(mutex_, WAIT_LOCK); }
+       void unlock() { PyThread_release_lock(mutex_); }
+   };
+}
+#endif
+/* -----------------------------------------------------------------------------
+ * director_guard.swg
+ *
+ * Generic Mutex implementation for directors
+ *
+ * Before including this file, there are two macros to define for choosing
+ * an implementation as follows:
+ * - SWIG_THREADS:
+ *   If defined than mutexes are used.
+ *   If not defined then mutexes are not used.
+ * - SWIG_HAVE_MUTEX:
+ *   If there is a target language defined 'Mutex' class available, the target
+ *     language will define this macro to use the class over the options below.
+ *     The language 'Mutex' class needs to be Basic Lockable.
+ *     It must have public 'void lock()' and 'void unlock()' methods.
+ *     See: https://en.cppreference.com/w/cpp/named_req/BasicLockable
+ *   If the macro is not defined, one of the following will be used in this order:
+ *   - std::mutex if using C++11 or later.
+ *   - CRITICAL_SECTION on Windows.
+ *   - POSIX pthread mutex.
+ * ----------------------------------------------------------------------------- */
+
+#ifdef SWIG_THREADS
+
+#if __cplusplus >= 201103L
+/*
+ * C++ 11 or above
+ * std::mutex        https://en.cppreference.com/w/cpp/thread/mutex
+ * std::unique_lock  https://en.cppreference.com/w/cpp/thread/unique_lock
+ */
+#include <mutex>
+#ifdef SWIG_HAVE_MUTEX
+/* Use Language defined Mutex class */
+#define SWIG_GUARD(_mutex) std::unique_lock<Mutex> _guard(_mutex)
+#define SWIG_GUARD_DEFINITION(_cls, _mutex) Mutex _cls::_mutex
+#define SWIG_GUARD_DECLARATION(_mutex) static Mutex _mutex
+#else
+#define SWIG_GUARD(_mutex) std::unique_lock<std::mutex> _guard(_mutex)
+#define SWIG_GUARD_DEFINITION(_cls, _mutex) std::mutex _cls::_mutex
+#define SWIG_GUARD_DECLARATION(_mutex) static std::mutex _mutex
+#endif
+
+#else /* __cplusplus */
+
+#ifdef SWIG_HAVE_MUTEX
+/* Use Language defined Mutex class */
+
+#elif defined(_WIN32)
+/*
+ * Windows Critical Section Objects
+ * https://learn.microsoft.com/en-us/windows/win32/Sync/critical-section-objects
+ */
+#include <windows.h>
+#include <synchapi.h>
+namespace Swig {
+    class Mutex {
+        CRITICAL_SECTION mutex_;
+    public:
+        Mutex() { InitializeCriticalSection(&mutex_); }
+        ~Mutex() { DeleteCriticalSection(&mutex_); }
+        void lock() { EnterCriticalSection(&mutex_); }
+        void unlock() { LeaveCriticalSection(&mutex_); }
+    };
+}
+
+#else /* _WIN32 */
+/*
+ * POSIX Thread mutex
+ * https://pubs.opengroup.org/onlinepubs/7908799/xsh/pthread.h.html
+ */
+#include <pthread.h>
+namespace Swig {
+    class Mutex {
+        pthread_mutex_t mutex_;
+    public:
+        Mutex() { pthread_mutex_init(&mutex_, NULL); }
+        ~Mutex() { pthread_mutex_destroy(&mutex_); }
+        void lock() { pthread_mutex_lock(&mutex_); }
+        void unlock() { pthread_mutex_unlock(&mutex_); }
+    };
+}
+
+#endif /* _WIN32 */
+
+namespace Swig {
+    class Unique_lock {
+        Mutex &mutex_;
+    public:
+        Unique_lock(Mutex &_mutex) : mutex_(_mutex) { mutex_.lock(); }
+        ~Unique_lock() { mutex_.unlock(); }
+    };
+}
+#define SWIG_GUARD(_mutex) Unique_lock _guard(_mutex)
+#define SWIG_GUARD_DEFINITION(_cls, _mutex) Mutex _cls::_mutex
+#define SWIG_GUARD_DECLARATION(_mutex) static Mutex _mutex
+
+#endif /* __cplusplus */
+
+#else /* SWIG_THREADS */
+
+#define SWIG_GUARD(_mutex)
+#define SWIG_GUARD_DEFINITION(_cls, _mutex)
+#define SWIG_GUARD_DECLARATION(_mutex)
+
+#endif /* SWIG_THREADS */
+/* -----------------------------------------------------------------------------
+ * director.swg
+ *
+ * This file contains support for director classes so that Python proxy
+ * methods can be called from C++.
+ * ----------------------------------------------------------------------------- */
+
+#ifndef SWIG_DIRECTOR_PYTHON_HEADER_
+#define SWIG_DIRECTOR_PYTHON_HEADER_
+
+#include <string>
+#include <iostream>
+#include <exception>
+#include <vector>
+#include <map>
+
+/*
+  Use -DSWIG_PYTHON_DIRECTOR_NO_VTABLE if you don't want to generate a 'virtual
+  table', and avoid multiple GetAttr calls to retrieve the python
+  methods.
+*/
+
+#ifndef SWIG_PYTHON_DIRECTOR_NO_VTABLE
+#ifndef SWIG_PYTHON_DIRECTOR_VTABLE
+#define SWIG_PYTHON_DIRECTOR_VTABLE
+#endif
+#endif
+
+
+
+/*
+  Use -DSWIG_DIRECTOR_NO_UEH if you prefer to avoid the use of the
+  Undefined Exception Handler provided by swig.
+*/
+#ifndef SWIG_DIRECTOR_NO_UEH
+#ifndef SWIG_DIRECTOR_UEH
+#define SWIG_DIRECTOR_UEH
+#endif
+#endif
+
+
+/*
+  Use -DSWIG_DIRECTOR_NORTTI if you prefer to avoid the use of the
+  native C++ RTTI and dynamic_cast<>. But be aware that directors
+  could stop working when using this option.
+*/
+#ifdef SWIG_DIRECTOR_NORTTI
+/*
+   When we don't use the native C++ RTTI, we implement a minimal one
+   only for Directors.
+*/
+# ifndef SWIG_DIRECTOR_RTDIR
+# define SWIG_DIRECTOR_RTDIR
+
+namespace Swig {
+  class Director;
+  SWIGINTERN std::map<void *, Director *>& get_rtdir_map() {
+    static std::map<void *, Director *> rtdir_map;
+    return rtdir_map;
+  }
+
+  SWIGINTERNINLINE void set_rtdir(void *vptr, Director *rtdir) {
+    get_rtdir_map()[vptr] = rtdir;
+  }
+
+  SWIGINTERNINLINE Director *get_rtdir(void *vptr) {
+    std::map<void *, Director *>::const_iterator pos = get_rtdir_map().find(vptr);
+    Director *rtdir = (pos != get_rtdir_map().end()) ? pos->second : 0;
+    return rtdir;
+  }
+}
+# endif /* SWIG_DIRECTOR_RTDIR */
+
+# define SWIG_DIRECTOR_CAST(ARG) Swig::get_rtdir(static_cast<void *>(ARG))
+# define SWIG_DIRECTOR_RGTR(ARG1, ARG2) Swig::set_rtdir(static_cast<void *>(ARG1), ARG2)
+
+#else
+
+# define SWIG_DIRECTOR_CAST(ARG) dynamic_cast<Swig::Director *>(ARG)
+# define SWIG_DIRECTOR_RGTR(ARG1, ARG2)
+
+#endif /* SWIG_DIRECTOR_NORTTI */
+
+extern "C" {
+  struct swig_type_info;
+}
+
+namespace Swig {
+
+  /* memory handler */
+  struct GCItem {
+    virtual ~GCItem() {}
+
+    virtual int get_own() const {
+      return 0;
+    }
+  };
+
+  struct GCItem_var {
+    GCItem_var(GCItem *item = 0) : _item(item) {
+    }
+
+    GCItem_var& operator=(GCItem *item) {
+      GCItem *tmp = _item;
+      _item = item;
+      delete tmp;
+      return *this;
+    }
+
+    ~GCItem_var() {
+      delete _item;
+    }
+
+    GCItem * operator->() const {
+      return _item;
+    }
+
+  private:
+    GCItem *_item;
+  };
+
+  struct GCItem_Object : GCItem {
+    GCItem_Object(int own) : _own(own) {
+    }
+
+    virtual ~GCItem_Object() {
+    }
+
+    int get_own() const {
+      return _own;
+    }
+
+  private:
+    int _own;
+  };
+
+  template <typename Type>
+  struct GCItem_T : GCItem {
+    GCItem_T(Type *ptr) : _ptr(ptr) {
+    }
+
+    virtual ~GCItem_T() {
+      delete _ptr;
+    }
+
+  private:
+    Type *_ptr;
+  };
+
+  template <typename Type>
+  struct GCArray_T : GCItem {
+    GCArray_T(Type *ptr) : _ptr(ptr) {
+    }
+
+    virtual ~GCArray_T() {
+      delete[] _ptr;
+    }
+
+  private:
+    Type *_ptr;
+  };
+
+  /* base class for director exceptions */
+  class DirectorException : public std::exception {
+  protected:
+    std::string swig_msg;
+  public:
+    DirectorException(PyObject *error, const char *hdr ="", const char *msg ="") : swig_msg(hdr) {
+      SWIG_PYTHON_THREAD_BEGIN_BLOCK;
+      if (msg[0]) {
+        swig_msg += " ";
+        swig_msg += msg;
+      }
+      if (!PyErr_Occurred()) {
+        PyErr_SetString(error, swig_msg.c_str());
+      }
+      SWIG_PYTHON_THREAD_END_BLOCK;
+    }
+
+    virtual ~DirectorException() throw() {
+    }
+
+    /* Deprecated, use what() instead */
+    const char *getMessage() const {
+      return what();
+    }
+
+    const char *what() const throw() {
+      return swig_msg.c_str();
+    }
+
+    static void raise(PyObject *error, const char *msg) {
+      throw DirectorException(error, msg);
+    }
+
+    static void raise(const char *msg) {
+      raise(PyExc_RuntimeError, msg);
+    }
+  };
+
+  /* type mismatch in the return value from a python method call */
+  class DirectorTypeMismatchException : public DirectorException {
+  public:
+    DirectorTypeMismatchException(PyObject *error, const char *msg="")
+      : DirectorException(error, "SWIG director type mismatch", msg) {
+    }
+
+    DirectorTypeMismatchException(const char *msg="")
+      : DirectorException(PyExc_TypeError, "SWIG director type mismatch", msg) {
+    }
+
+    static void raise(PyObject *error, const char *msg) {
+      throw DirectorTypeMismatchException(error, msg);
+    }
+
+    static void raise(const char *msg) {
+      throw DirectorTypeMismatchException(msg);
+    }
+  };
+
+  /* any python exception that occurs during a director method call */
+  class DirectorMethodException : public DirectorException {
+  public:
+    DirectorMethodException(const char *msg = "")
+      : DirectorException(PyExc_RuntimeError, "SWIG director method error.", msg) {
+    }
+
+    static void raise(const char *msg) {
+      throw DirectorMethodException(msg);
+    }
+  };
+
+  /* attempt to call a pure virtual method via a director method */
+  class DirectorPureVirtualException : public DirectorException {
+  public:
+    DirectorPureVirtualException(const char *msg = "")
+      : DirectorException(PyExc_RuntimeError, "SWIG director pure virtual method called", msg) {
+    }
+
+    static void raise(const char *msg) {
+      throw DirectorPureVirtualException(msg);
+    }
+  };
+
+
+
+  /* director base class */
+  class Director {
+  private:
+    /* pointer to the wrapped python object */
+    PyObject *swig_self;
+    /* flag indicating whether the object is owned by python or c++ */
+    mutable bool swig_disown_flag;
+
+    /* decrement the reference count of the wrapped python object */
+    void swig_decref() const {
+      if (swig_disown_flag) {
+        SWIG_PYTHON_THREAD_BEGIN_BLOCK;
+        SWIG_Py_DECREF(swig_self);
+        SWIG_PYTHON_THREAD_END_BLOCK;
+      }
+    }
+
+  public:
+    /* wrap a python object. */
+    Director(PyObject *self) : swig_self(self), swig_disown_flag(false) {
+    }
+
+    /* discard our reference at destruction */
+    virtual ~Director() {
+      swig_decref();
+    }
+
+    /* return a pointer to the wrapped python object */
+    PyObject *swig_get_self() const {
+      return swig_self;
+    }
+
+    /* acquire ownership of the wrapped python object (the sense of "disown" is from python) */
+    void swig_disown() const {
+      if (!swig_disown_flag) {
+        swig_disown_flag=true;
+        swig_incref();
+      }
+    }
+
+    /* increase the reference count of the wrapped python object */
+    void swig_incref() const {
+      if (swig_disown_flag) {
+        SWIG_Py_INCREF(swig_self);
+      }
+    }
+
+    /* methods to implement pseudo protected director members */
+    virtual bool swig_get_inner(const char * /* swig_protected_method_name */) const {
+      return true;
+    }
+
+    virtual void swig_set_inner(const char * /* swig_protected_method_name */, bool /* swig_val */) const {
+    }
+
+  /* ownership management */
+  private:
+    typedef std::map<void *, GCItem_var> swig_ownership_map;
+    mutable swig_ownership_map swig_owner;
+    SWIG_GUARD_DECLARATION(swig_mutex_own);
+
+  public:
+    template <typename Type>
+    void swig_acquire_ownership_array(Type *vptr) const {
+      if (vptr) {
+        SWIG_GUARD(swig_mutex_own);
+        swig_owner[vptr] = new GCArray_T<Type>(vptr);
+      }
+    }
+
+    template <typename Type>
+    void swig_acquire_ownership(Type *vptr) const {
+      if (vptr) {
+        SWIG_GUARD(swig_mutex_own);
+        swig_owner[vptr] = new GCItem_T<Type>(vptr);
+      }
+    }
+
+    void swig_acquire_ownership_obj(void *vptr, int own) const {
+      if (vptr && own) {
+        SWIG_GUARD(swig_mutex_own);
+        swig_owner[vptr] = new GCItem_Object(own);
+      }
+    }
+
+    int swig_release_ownership(void *vptr) const {
+      int own = 0;
+      if (vptr) {
+        SWIG_GUARD(swig_mutex_own);
+        swig_ownership_map::iterator iter = swig_owner.find(vptr);
+        if (iter != swig_owner.end()) {
+          own = iter->second->get_own();
+          swig_owner.erase(iter);
+        }
+      }
+      return own;
+    }
+
+    template <typename Type>
+    static PyObject *swig_pyobj_disown(PyObject *pyobj, PyObject *SWIGUNUSEDPARM(args)) {
+      SwigPyObject *sobj = (SwigPyObject *)pyobj;
+      sobj->own = 0;
+      Director *d = SWIG_DIRECTOR_CAST(reinterpret_cast<Type *>(sobj->ptr));
+      if (d)
+        d->swig_disown();
+      return PyWeakref_NewProxy(pyobj, NULL);
+    }
+  };
+
+  SWIG_GUARD_DEFINITION(Director, swig_mutex_own);
+}
+
+#endif
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_ARGSETTER swig_types[0]
 #define SWIGTYPE_p_ARGSETTER_WRAPPER swig_types[1]
 #define SWIGTYPE_p_BIN swig_types[2]
-#define SWIGTYPE_p_Decoder swig_types[3]
-#define SWIGTYPE_p_EDIT_ARG_MUSIC swig_types[4]
-#define SWIGTYPE_p_FXControlPannel swig_types[5]
-#define SWIGTYPE_p_KEY_VALUE swig_types[6]
-#define SWIGTYPE_p_MixArgs swig_types[7]
-#define SWIGTYPE_p_MusicArgs swig_types[8]
-#define SWIGTYPE_p_MusicControlPannel swig_types[9]
-#define SWIGTYPE_p_MusicOnDeck swig_types[10]
-#define SWIGTYPE_p_NoteArgs swig_types[11]
-#define SWIGTYPE_p_OBJ_SETTER_CALLBACK swig_types[12]
-#define SWIGTYPE_p_PDJE swig_types[13]
-#define SWIGTYPE_p_PDJE_CORE_DATA_LINE swig_types[14]
-#define SWIGTYPE_p_PDJE_Name_Sanitizer swig_types[15]
-#define SWIGTYPE_p_allocator_type swig_types[16]
-#define SWIGTYPE_p_audioPlayer swig_types[17]
-#define SWIGTYPE_p_char swig_types[18]
-#define SWIGTYPE_p_cppcodec__base64_url_unpadded swig_types[19]
-#define SWIGTYPE_p_difference_type swig_types[20]
-#define SWIGTYPE_p_editorObject swig_types[21]
-#define SWIGTYPE_p_float swig_types[22]
-#define SWIGTYPE_p_git_repository swig_types[23]
-#define SWIGTYPE_p_litedb swig_types[24]
-#define SWIGTYPE_p_musdata swig_types[25]
-#define SWIGTYPE_p_p_PyObject swig_types[26]
-#define SWIGTYPE_p_p_float swig_types[27]
-#define SWIGTYPE_p_size_type swig_types[28]
-#define SWIGTYPE_p_sqlite3 swig_types[29]
-#define SWIGTYPE_p_std__allocatorT_musdata_t swig_types[30]
-#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[31]
-#define SWIGTYPE_p_std__allocatorT_trackdata_t swig_types[32]
-#define SWIGTYPE_p_std__filesystem__path swig_types[33]
-#define SWIGTYPE_p_std__invalid_argument swig_types[34]
-#define SWIGTYPE_p_std__mapT_std__string_MusicOnDeck_t swig_types[35]
-#define SWIGTYPE_p_std__optionalT_soundtouch__SoundTouch_t swig_types[36]
-#define SWIGTYPE_p_std__optionalT_std__string_t swig_types[37]
-#define SWIGTYPE_p_std__optionalT_std__vectorT_musdata_t_t swig_types[38]
-#define SWIGTYPE_p_std__optionalT_std__vectorT_trackdata_t_t swig_types[39]
-#define SWIGTYPE_p_std__shared_ptrT_audioPlayer_t swig_types[40]
-#define SWIGTYPE_p_std__shared_ptrT_editorObject_t swig_types[41]
-#define SWIGTYPE_p_std__shared_ptrT_litedb_t swig_types[42]
-#define SWIGTYPE_p_std__string swig_types[43]
-#define SWIGTYPE_p_std__unordered_mapT_std__string_std__string_t swig_types[44]
-#define SWIGTYPE_p_std__vectorT_musdata_t swig_types[45]
-#define SWIGTYPE_p_std__vectorT_std__string_t swig_types[46]
-#define SWIGTYPE_p_std__vectorT_trackdata_t swig_types[47]
-#define SWIGTYPE_p_stmt swig_types[48]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[49]
-#define SWIGTYPE_p_trackdata swig_types[50]
-#define SWIGTYPE_p_value_type swig_types[51]
-static swig_type_info *swig_types[53];
-static swig_module_info swig_module = {swig_types, 52, 0, 0, 0, 0};
+#define SWIGTYPE_p_CapWriterT_MixBinaryCapnpData_t swig_types[3]
+#define SWIGTYPE_p_CapWriterT_MusicBinaryCapnpData_t swig_types[4]
+#define SWIGTYPE_p_CapWriterT_NoteBinaryCapnpData_t swig_types[5]
+#define SWIGTYPE_p_Decoder swig_types[6]
+#define SWIGTYPE_p_DetailEnum swig_types[7]
+#define SWIGTYPE_p_DiffResult swig_types[8]
+#define SWIGTYPE_p_EDIT_ARG_MUSIC swig_types[9]
+#define SWIGTYPE_p_FXControlPannel swig_types[10]
+#define SWIGTYPE_p_KVVisitor swig_types[11]
+#define SWIGTYPE_p_MixArgs swig_types[12]
+#define SWIGTYPE_p_MixVisitor swig_types[13]
+#define SWIGTYPE_p_MusicArgs swig_types[14]
+#define SWIGTYPE_p_MusicControlPannel swig_types[15]
+#define SWIGTYPE_p_MusicOnDeck swig_types[16]
+#define SWIGTYPE_p_MusicVisitor swig_types[17]
+#define SWIGTYPE_p_NoteArgs swig_types[18]
+#define SWIGTYPE_p_NoteVisitor swig_types[19]
+#define SWIGTYPE_p_OBJ_SETTER_CALLBACK swig_types[20]
+#define SWIGTYPE_p_PDJE swig_types[21]
+#define SWIGTYPE_p_PDJE_CORE_DATA_LINE swig_types[22]
+#define SWIGTYPE_p_PDJE_Name_Sanitizer swig_types[23]
+#define SWIGTYPE_p_TypeEnum swig_types[24]
+#define SWIGTYPE_p_allocator_type swig_types[25]
+#define SWIGTYPE_p_audioPlayer swig_types[26]
+#define SWIGTYPE_p_char swig_types[27]
+#define SWIGTYPE_p_cppcodec__base64_url_unpadded swig_types[28]
+#define SWIGTYPE_p_difference_type swig_types[29]
+#define SWIGTYPE_p_editorObject swig_types[30]
+#define SWIGTYPE_p_first_type swig_types[31]
+#define SWIGTYPE_p_float swig_types[32]
+#define SWIGTYPE_p_git_commit swig_types[33]
+#define SWIGTYPE_p_git_oid swig_types[34]
+#define SWIGTYPE_p_git_repository swig_types[35]
+#define SWIGTYPE_p_gitwrap__commit swig_types[36]
+#define SWIGTYPE_p_gitwrap__commitList swig_types[37]
+#define SWIGTYPE_p_litedb swig_types[38]
+#define SWIGTYPE_p_musdata swig_types[39]
+#define SWIGTYPE_p_p_PyObject swig_types[40]
+#define SWIGTYPE_p_p_float swig_types[41]
+#define SWIGTYPE_p_second_type swig_types[42]
+#define SWIGTYPE_p_size_type swig_types[43]
+#define SWIGTYPE_p_sqlite3 swig_types[44]
+#define SWIGTYPE_p_std__allocatorT_musdata_t swig_types[45]
+#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[46]
+#define SWIGTYPE_p_std__allocatorT_trackdata_t swig_types[47]
+#define SWIGTYPE_p_std__filesystem__path swig_types[48]
+#define SWIGTYPE_p_std__invalid_argument swig_types[49]
+#define SWIGTYPE_p_std__listT_gitwrap__commit_t swig_types[50]
+#define SWIGTYPE_p_std__mapT_std__string_MusicOnDeck_t swig_types[51]
+#define SWIGTYPE_p_std__optionalT_soundtouch__SoundTouch_t swig_types[52]
+#define SWIGTYPE_p_std__optionalT_std__string_t swig_types[53]
+#define SWIGTYPE_p_std__optionalT_std__vectorT_musdata_t_t swig_types[54]
+#define SWIGTYPE_p_std__optionalT_std__vectorT_trackdata_t_t swig_types[55]
+#define SWIGTYPE_p_std__pairT_std__string_std__string_t swig_types[56]
+#define SWIGTYPE_p_std__shared_ptrT_audioPlayer_t swig_types[57]
+#define SWIGTYPE_p_std__shared_ptrT_editorObject_t swig_types[58]
+#define SWIGTYPE_p_std__shared_ptrT_litedb_t swig_types[59]
+#define SWIGTYPE_p_std__string swig_types[60]
+#define SWIGTYPE_p_std__unordered_mapT_std__string_std__string_t swig_types[61]
+#define SWIGTYPE_p_std__vectorT_musdata_t swig_types[62]
+#define SWIGTYPE_p_std__vectorT_std__pairT_std__string_std__string_t_std__allocatorT_std__pairT_std__string_std__string_t_t_t swig_types[63]
+#define SWIGTYPE_p_std__vectorT_std__string_t swig_types[64]
+#define SWIGTYPE_p_std__vectorT_trackdata_t swig_types[65]
+#define SWIGTYPE_p_stmt swig_types[66]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[67]
+#define SWIGTYPE_p_trackdata swig_types[68]
+#define SWIGTYPE_p_value_type swig_types[69]
+static swig_type_info *swig_types[71];
+static swig_module_info swig_module = {swig_types, 70, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3421,6 +3943,10 @@ namespace swig {
     #include "MusicControlPannel.hpp"
     #include "fileNameSanitizer.hpp"
     #include "editorObject.hpp"
+    #include "editorCommit.hpp"
+    #include "SWIG_editor_visitor.hpp"
+    #include "EditorArgs.hpp"
+    
     // #include "editorObject.hpp"
     #include "rocksdb/rocksdb_namespace.h"
     #include <filesystem>
@@ -4179,6 +4705,126 @@ SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
 }
 #endif
 
+SWIGINTERN bool editorObject_AddLineNote(editorObject *self,EDIT_ARG_NOTE const &obj){
+    return self->AddLine<EDIT_ARG_NOTE>(obj);
+  }
+SWIGINTERN bool editorObject_AddLineMix(editorObject *self,EDIT_ARG_MIX const &obj){
+    return self->AddLine<EDIT_ARG_MIX>(obj);
+  }
+SWIGINTERN bool editorObject_AddLineKV(editorObject *self,EDIT_ARG_KEY_VALUE const &obj){
+    return self->AddLine<EDIT_ARG_KEY_VALUE>(obj);
+  }
+SWIGINTERN bool editorObject_AddLineMusic(editorObject *self,EDIT_ARG_MUSIC const &obj){
+    return self->AddLine<EDIT_ARG_MUSIC>(obj);
+  }
+SWIGINTERN int editorObject_DeleteLineNote(editorObject *self,EDIT_ARG_NOTE const &obj){
+    return self->deleteLine<EDIT_ARG_NOTE>(obj);
+  }
+SWIGINTERN int editorObject_DeleteLineKV(editorObject *self,EDIT_ARG_KEY_VALUE const &obj){
+    return self->deleteLine<EDIT_ARG_KEY_VALUE>(obj);
+  }
+SWIGINTERN int editorObject_DeleteLineMusic(editorObject *self,EDIT_ARG_MUSIC const &obj){
+    return self->deleteLine<EDIT_ARG_MUSIC>(obj);
+  }
+SWIGINTERN void editorObject_GetAllNotes(editorObject *self,NoteVisitor *v){
+    self->getAll<EDIT_ARG_NOTE>([&](const EDIT_ARG_NOTE& o){ v->on_item(o); });
+  }
+SWIGINTERN void editorObject_GetAllMixes(editorObject *self,MixVisitor *v){
+    
+    self->getAll<EDIT_ARG_MIX>([&](const EDIT_ARG_MIX& o){ v->on_item(o); });
+    
+  }
+SWIGINTERN void editorObject_GetAllKeyValues(editorObject *self,KVVisitor *v){
+    self->getAll<EDIT_ARG_KEY_VALUE>([&](const EDIT_ARG_KEY_VALUE& o){ v->on_item(o); });
+  }
+SWIGINTERN void editorObject_GetAllMusics(editorObject *self,MusicVisitor *v){
+    self->getAll<EDIT_ARG_MUSIC>([&](const EDIT_ARG_MUSIC& o){ v->on_item(o); });
+  }
+SWIGINTERN bool editorObject_UndoNote(editorObject *self){ return self->Undo<EDIT_ARG_NOTE>(); }
+SWIGINTERN bool editorObject_UndoMix(editorObject *self){ return self->Undo<EDIT_ARG_MIX>(); }
+SWIGINTERN bool editorObject_UndoKV(editorObject *self){ return self->Undo<EDIT_ARG_KEY_VALUE>(); }
+SWIGINTERN bool editorObject_UndoMusic(editorObject *self,std::string const &musicName){
+    return self->Undo<EDIT_ARG_MUSIC>(musicName);
+  }
+SWIGINTERN bool editorObject_RedoNote(editorObject *self){ return self->Redo<EDIT_ARG_NOTE>(); }
+SWIGINTERN bool editorObject_RedoMix(editorObject *self){ return self->Redo<EDIT_ARG_MIX>(); }
+SWIGINTERN bool editorObject_RedoKV(editorObject *self){ return self->Redo<EDIT_ARG_KEY_VALUE>(); }
+SWIGINTERN bool editorObject_RedoMusic(editorObject *self,std::string const &musicName){
+    return self->Redo<EDIT_ARG_MUSIC>(musicName);
+  }
+SWIGINTERN bool editorObject_GoNote(editorObject *self,std::string const &branchName,git_oid *commitID){
+    return self->Go<EDIT_ARG_NOTE>(branchName, commitID);
+  }
+SWIGINTERN bool editorObject_GoMix(editorObject *self,std::string const &branchName,git_oid *commitID){
+    return self->Go<EDIT_ARG_MIX>(branchName, commitID);
+  }
+SWIGINTERN bool editorObject_GoKV(editorObject *self,std::string const &branchName,git_oid *commitID){
+    return self->Go<EDIT_ARG_KEY_VALUE>(branchName, commitID);
+  }
+SWIGINTERN bool editorObject_GoMusic(editorObject *self,std::string const &branchName,git_oid *commitID){
+    return self->Go<EDIT_ARG_MUSIC>(branchName, commitID);
+  }
+SWIGINTERN std::string editorObject_GetLogNoteJSON(editorObject *self){
+    return self->GetLogWithJSONGraph<EDIT_ARG_NOTE>();
+  }
+SWIGINTERN std::string editorObject_GetLogMixJSON(editorObject *self){
+    return self->GetLogWithJSONGraph<EDIT_ARG_MIX>();
+  }
+SWIGINTERN std::string editorObject_GetLogKVJSON(editorObject *self){
+    return self->GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
+  }
+SWIGINTERN std::string editorObject_GetLogMusicJSON(editorObject *self){
+    return self->GetLogWithJSONGraph<EDIT_ARG_MUSIC>();
+  }
+SWIGINTERN DiffResult editorObject_GetDiffNote(editorObject *self,gitwrap::commit const &oldC,gitwrap::commit const &newC){
+    return self->GetDiff<EDIT_ARG_NOTE>(oldC, newC);
+  }
+SWIGINTERN DiffResult editorObject_GetDiffMix(editorObject *self,gitwrap::commit const &oldC,gitwrap::commit const &newC){
+    return self->GetDiff<EDIT_ARG_MIX>(oldC, newC);
+  }
+SWIGINTERN DiffResult editorObject_GetDiffKV(editorObject *self,gitwrap::commit const &oldC,gitwrap::commit const &newC){
+    return self->GetDiff<EDIT_ARG_KEY_VALUE>(oldC, newC);
+  }
+SWIGINTERN DiffResult editorObject_GetDiffMusic(editorObject *self,gitwrap::commit const &oldC,gitwrap::commit const &newC){
+    return self->GetDiff<EDIT_ARG_MUSIC>(oldC, newC);
+  }
+SWIGINTERN bool editorObject_UpdateLogNote(editorObject *self){ return self->UpdateLog<EDIT_ARG_NOTE>(); }
+SWIGINTERN bool editorObject_UpdateLogMix(editorObject *self){ return self->UpdateLog<EDIT_ARG_MIX>(); }
+SWIGINTERN bool editorObject_UpdateLogKV(editorObject *self){ return self->UpdateLog<EDIT_ARG_KEY_VALUE>(); }
+SWIGINTERN bool editorObject_UpdateLogMusic(editorObject *self){ return self->UpdateLog<EDIT_ARG_MUSIC>(); }
+SWIGINTERN bool editorObject_UpdateLogNoteOn(editorObject *self,std::string const &branchName){
+    return self->UpdateLog<EDIT_ARG_NOTE>(branchName);
+  }
+SWIGINTERN bool editorObject_UpdateLogMixOn(editorObject *self,std::string const &branchName){
+    return self->UpdateLog<EDIT_ARG_MIX>(branchName);
+  }
+SWIGINTERN bool editorObject_UpdateLogKVOn(editorObject *self,std::string const &branchName){
+    return self->UpdateLog<EDIT_ARG_KEY_VALUE>(branchName);
+  }
+SWIGINTERN bool editorObject_UpdateLogMusicOn(editorObject *self,std::string const &musicName){
+    return self->UpdateLog<EDIT_ARG_MUSIC>(musicName);
+  }
+
+#include <utility>
+
+
+SWIGINTERN int
+SWIG_AsVal_std_string (PyObject * obj, std::string *val)
+{
+  std::string* v = (std::string *) 0;
+  int res = SWIG_AsPtr_std_string (obj, &v);
+  if (!SWIG_IsOK(res)) return res;
+  if (v) {
+    if (val) *val = *v;
+    if (SWIG_IsNewObj(res)) {
+      delete v;
+      res = SWIG_DelNewMask(res);
+    }
+    return res;
+  }
+  return SWIG_ERROR;
+}
+
 
 namespace swig {
   template <class Type>
@@ -4456,6 +5102,191 @@ namespace swig {
   }
 }
 
+
+namespace swig {
+  template <> struct traits< std::string > {
+    typedef value_category category;
+    static const char* type_name() { return"std::string"; }
+  };
+  template <>  struct traits_asval< std::string > {
+    typedef std::string value_type;
+    static int asval(PyObject *obj, value_type *val) {
+      return SWIG_AsVal_std_string (obj, val);
+    }
+  };
+  template <>  struct traits_from< std::string > {
+    typedef std::string value_type;
+    static PyObject *from(const value_type& val) {
+      return SWIG_From_std_string  (val);
+    }
+  };
+}
+
+
+  namespace swig {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    template <class T, class U >
+    struct traits_asptr<std::pair<T,U> >  {
+      typedef std::pair<T,U> value_type;
+
+      static int get_pair(PyObject* first, PyObject* second,
+			  std::pair<T,U> **val) 
+      {
+	if (val) {
+	  value_type *vp = (new std::pair<T,U>());
+	  T *pfirst = &(vp->first);
+	  int res1 = swig::asval((PyObject*)first, pfirst);
+	  if (!SWIG_IsOK(res1)) {
+	    delete vp;
+	    return res1;
+	  }
+	  U *psecond = &(vp->second);
+	  int res2 = swig::asval((PyObject*)second, psecond);
+	  if (!SWIG_IsOK(res2)) {
+	    delete vp;
+	    return res2;
+	  }
+	  *val = vp;
+	  return SWIG_AddNewMask(res1 > res2 ? res1 : res2);
+	} else {
+	  T *pfirst = 0;
+	  int res1 = swig::asval((PyObject*)first, pfirst);
+	  if (!SWIG_IsOK(res1)) return res1;
+	  U *psecond = 0;
+	  int res2 = swig::asval((PyObject*)second, psecond);
+	  if (!SWIG_IsOK(res2)) return res2;
+	  return res1 > res2 ? res1 : res2;
+	}
+      }
+
+      static int asptr(PyObject *obj, std::pair<T,U> **val) {
+	int res = SWIG_ERROR;
+	if (PyTuple_Check(obj)) {
+	  if (PyTuple_GET_SIZE(obj) == 2) {
+	    res = get_pair(PyTuple_GET_ITEM(obj,0),PyTuple_GET_ITEM(obj,1), val);
+	  }
+	} else if (PySequence_Check(obj)) {
+	  if (PySequence_Size(obj) == 2) {
+	    swig::SwigVar_PyObject first = PySequence_GetItem(obj,0);
+	    swig::SwigVar_PyObject second = PySequence_GetItem(obj,1);
+	    res = get_pair(first, second, val);
+	  }
+	} else {
+	  value_type *p = 0;
+	  swig_type_info *descriptor = swig::type_info<value_type>();
+	  res = descriptor ? SWIG_ConvertPtr(obj, (void **)&p, descriptor, 0) : SWIG_ERROR;
+	  if (SWIG_IsOK(res) && val)  *val = p;
+	}
+	return res;
+      }
+    };
+
+
+    template <class T, class U >
+    struct traits_from<std::pair<T,U> >   {
+      static PyObject *from(const std::pair<T,U>& val) {
+	PyObject* obj = PyTuple_New(2);
+	PyTuple_SetItem(obj,0,swig::from(val.first));
+	PyTuple_SetItem(obj,1,swig::from(val.second));
+	return obj;
+      }
+    };
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      namespace swig {
+	template <>  struct traits<std::pair< std::string, std::string > > {
+	  typedef pointer_category category;
+	  static const char* type_name() {
+	    return "std::pair<" "std::string" "," "std::string" " >";
+	  }
+	};
+      }
+    
 
 #if defined(__SUNPRO_CC) && defined(_RWSTD_VER)
 #  if !defined(SWIG_NO_STD_NOITERATOR_TRAITS_STL)
@@ -5440,44 +6271,6 @@ SWIGINTERN std::vector< trackdata >::iterator std_vector_Sl_trackdata_Sg__erase_
 SWIGINTERN std::vector< trackdata >::iterator std_vector_Sl_trackdata_Sg__insert__SWIG_0(std::vector< trackdata > *self,std::vector< trackdata >::iterator pos,std::vector< trackdata >::value_type const &x){ return self->insert(pos, x); }
 SWIGINTERN void std_vector_Sl_trackdata_Sg__insert__SWIG_1(std::vector< trackdata > *self,std::vector< trackdata >::iterator pos,std::vector< trackdata >::size_type n,std::vector< trackdata >::value_type const &x){ self->insert(pos, n, x); }
 
-SWIGINTERN int
-SWIG_AsVal_std_string (PyObject * obj, std::string *val)
-{
-  std::string* v = (std::string *) 0;
-  int res = SWIG_AsPtr_std_string (obj, &v);
-  if (!SWIG_IsOK(res)) return res;
-  if (v) {
-    if (val) *val = *v;
-    if (SWIG_IsNewObj(res)) {
-      delete v;
-      res = SWIG_DelNewMask(res);
-    }
-    return res;
-  }
-  return SWIG_ERROR;
-}
-
-
-namespace swig {
-  template <> struct traits< std::string > {
-    typedef value_category category;
-    static const char* type_name() { return"std::string"; }
-  };
-  template <>  struct traits_asval< std::string > {
-    typedef std::string value_type;
-    static int asval(PyObject *obj, value_type *val) {
-      return SWIG_AsVal_std_string (obj, val);
-    }
-  };
-  template <>  struct traits_from< std::string > {
-    typedef std::string value_type;
-    static PyObject *from(const value_type& val) {
-      return SWIG_From_std_string  (val);
-    }
-  };
-}
-
-
       namespace swig {
 	template <>  struct traits<std::vector< std::string, std::allocator< std::string > > > {
 	  typedef pointer_category category;
@@ -5578,6 +6371,17 @@ SWIGINTERN std::vector< std::string >::iterator std_vector_Sl_std_string_Sg__era
 SWIGINTERN std::vector< std::string >::iterator std_vector_Sl_std_string_Sg__erase__SWIG_1(std::vector< std::string > *self,std::vector< std::string >::iterator first,std::vector< std::string >::iterator last){ return self->erase(first, last); }
 SWIGINTERN std::vector< std::string >::iterator std_vector_Sl_std_string_Sg__insert__SWIG_0(std::vector< std::string > *self,std::vector< std::string >::iterator pos,std::vector< std::string >::value_type const &x){ return self->insert(pos, x); }
 SWIGINTERN void std_vector_Sl_std_string_Sg__insert__SWIG_1(std::vector< std::string > *self,std::vector< std::string >::iterator pos,std::vector< std::string >::size_type n,std::vector< std::string >::value_type const &x){ self->insert(pos, n, x); }
+
+struct git_oid;
+
+
+
+/* ---------------------------------------------------
+ * C++ director class methods
+ * --------------------------------------------------- */
+
+#include "PDJE_swigPYTHON_wrap.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -10865,10 +11669,10 @@ fail:
 SWIGINTERN PyObject *_wrap_EDIT_ARG_MUSIC_arg_set(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   EDIT_ARG_MUSIC *arg1 = (EDIT_ARG_MUSIC *) 0 ;
-  MusicArgs arg2 ;
+  MusicArgs *arg2 = (MusicArgs *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
+  void *argp2 = 0 ;
   int res2 = 0 ;
   PyObject *swig_obj[2] ;
   
@@ -10879,20 +11683,12 @@ SWIGINTERN PyObject *_wrap_EDIT_ARG_MUSIC_arg_set(PyObject *self, PyObject *args
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MUSIC_arg_set" "', argument " "1"" of type '" "EDIT_ARG_MUSIC *""'"); 
   }
   arg1 = reinterpret_cast< EDIT_ARG_MUSIC * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_MusicArgs,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EDIT_ARG_MUSIC_arg_set" "', argument " "2"" of type '" "MusicArgs""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "EDIT_ARG_MUSIC_arg_set" "', argument " "2"" of type '" "MusicArgs""'");
-    } else {
-      MusicArgs * temp = reinterpret_cast< MusicArgs * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_MusicArgs, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EDIT_ARG_MUSIC_arg_set" "', argument " "2"" of type '" "MusicArgs *""'"); 
   }
-  if (arg1) (arg1)->arg = arg2;
+  arg2 = reinterpret_cast< MusicArgs * >(argp2);
+  if (arg1) (arg1)->arg = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -10906,7 +11702,7 @@ SWIGINTERN PyObject *_wrap_EDIT_ARG_MUSIC_arg_get(PyObject *self, PyObject *args
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  MusicArgs result;
+  MusicArgs *result = 0 ;
   
   (void)self;
   if (!args) SWIG_fail;
@@ -10916,8 +11712,8 @@ SWIGINTERN PyObject *_wrap_EDIT_ARG_MUSIC_arg_get(PyObject *self, PyObject *args
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MUSIC_arg_get" "', argument " "1"" of type '" "EDIT_ARG_MUSIC *""'"); 
   }
   arg1 = reinterpret_cast< EDIT_ARG_MUSIC * >(argp1);
-  result =  ((arg1)->arg);
-  resultobj = SWIG_NewPointerObj((new MusicArgs(result)), SWIGTYPE_p_MusicArgs, SWIG_POINTER_OWN |  0 );
+  result = (MusicArgs *)& ((arg1)->arg);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_MusicArgs, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -12004,6 +12800,1760 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_editorObject_AddLineNote(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_NOTE *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_AddLineNote", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_AddLineNote" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_NoteArgs,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_AddLineNote" "', argument " "2"" of type '" "EDIT_ARG_NOTE const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_AddLineNote" "', argument " "2"" of type '" "EDIT_ARG_NOTE const &""'"); 
+  }
+  arg2 = reinterpret_cast< EDIT_ARG_NOTE * >(argp2);
+  result = (bool)editorObject_AddLineNote(arg1,(NoteArgs const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_AddLineMix(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_MIX *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_AddLineMix", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_AddLineMix" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_MixArgs,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_AddLineMix" "', argument " "2"" of type '" "EDIT_ARG_MIX const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_AddLineMix" "', argument " "2"" of type '" "EDIT_ARG_MIX const &""'"); 
+  }
+  arg2 = reinterpret_cast< EDIT_ARG_MIX * >(argp2);
+  result = (bool)editorObject_AddLineMix(arg1,(MixArgs const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_AddLineKV(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_KEY_VALUE *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_AddLineKV", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_AddLineKV" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__pairT_std__string_std__string_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_AddLineKV" "', argument " "2"" of type '" "EDIT_ARG_KEY_VALUE const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_AddLineKV" "', argument " "2"" of type '" "EDIT_ARG_KEY_VALUE const &""'"); 
+  }
+  arg2 = reinterpret_cast< EDIT_ARG_KEY_VALUE * >(argp2);
+  result = (bool)editorObject_AddLineKV(arg1,(std::pair< std::string,std::string > const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_AddLineMusic(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_MUSIC *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_AddLineMusic", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_AddLineMusic" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_EDIT_ARG_MUSIC,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_AddLineMusic" "', argument " "2"" of type '" "EDIT_ARG_MUSIC const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_AddLineMusic" "', argument " "2"" of type '" "EDIT_ARG_MUSIC const &""'"); 
+  }
+  arg2 = reinterpret_cast< EDIT_ARG_MUSIC * >(argp2);
+  result = (bool)editorObject_AddLineMusic(arg1,(EDIT_ARG_MUSIC const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_DeleteLineNote(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_NOTE *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_DeleteLineNote", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_DeleteLineNote" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_NoteArgs,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_DeleteLineNote" "', argument " "2"" of type '" "EDIT_ARG_NOTE const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_DeleteLineNote" "', argument " "2"" of type '" "EDIT_ARG_NOTE const &""'"); 
+  }
+  arg2 = reinterpret_cast< EDIT_ARG_NOTE * >(argp2);
+  result = (int)editorObject_DeleteLineNote(arg1,(NoteArgs const &)*arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_DeleteLineKV(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_KEY_VALUE *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_DeleteLineKV", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_DeleteLineKV" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__pairT_std__string_std__string_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_DeleteLineKV" "', argument " "2"" of type '" "EDIT_ARG_KEY_VALUE const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_DeleteLineKV" "', argument " "2"" of type '" "EDIT_ARG_KEY_VALUE const &""'"); 
+  }
+  arg2 = reinterpret_cast< EDIT_ARG_KEY_VALUE * >(argp2);
+  result = (int)editorObject_DeleteLineKV(arg1,(std::pair< std::string,std::string > const &)*arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_DeleteLineMusic(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  EDIT_ARG_MUSIC *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  int result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_DeleteLineMusic", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_DeleteLineMusic" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_EDIT_ARG_MUSIC,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_DeleteLineMusic" "', argument " "2"" of type '" "EDIT_ARG_MUSIC const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_DeleteLineMusic" "', argument " "2"" of type '" "EDIT_ARG_MUSIC const &""'"); 
+  }
+  arg2 = reinterpret_cast< EDIT_ARG_MUSIC * >(argp2);
+  result = (int)editorObject_DeleteLineMusic(arg1,(EDIT_ARG_MUSIC const &)*arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GetAllNotes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  NoteVisitor *arg2 = (NoteVisitor *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_GetAllNotes", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GetAllNotes" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_NoteVisitor, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_GetAllNotes" "', argument " "2"" of type '" "NoteVisitor *""'"); 
+  }
+  arg2 = reinterpret_cast< NoteVisitor * >(argp2);
+  editorObject_GetAllNotes(arg1,arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GetAllMixes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  MixVisitor *arg2 = (MixVisitor *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_GetAllMixes", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GetAllMixes" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_MixVisitor, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_GetAllMixes" "', argument " "2"" of type '" "MixVisitor *""'"); 
+  }
+  arg2 = reinterpret_cast< MixVisitor * >(argp2);
+  editorObject_GetAllMixes(arg1,arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GetAllKeyValues(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  KVVisitor *arg2 = (KVVisitor *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_GetAllKeyValues", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GetAllKeyValues" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_KVVisitor, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_GetAllKeyValues" "', argument " "2"" of type '" "KVVisitor *""'"); 
+  }
+  arg2 = reinterpret_cast< KVVisitor * >(argp2);
+  editorObject_GetAllKeyValues(arg1,arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GetAllMusics(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  MusicVisitor *arg2 = (MusicVisitor *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_GetAllMusics", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GetAllMusics" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_MusicVisitor, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_GetAllMusics" "', argument " "2"" of type '" "MusicVisitor *""'"); 
+  }
+  arg2 = reinterpret_cast< MusicVisitor * >(argp2);
+  editorObject_GetAllMusics(arg1,arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_UndoNote(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_UndoNote" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (bool)editorObject_UndoNote(arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_UndoMix(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_UndoMix" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (bool)editorObject_UndoMix(arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_UndoKV(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_UndoKV" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (bool)editorObject_UndoKV(arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_UndoMusic(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_UndoMusic", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_UndoMusic" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_UndoMusic" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_UndoMusic" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)editorObject_UndoMusic(arg1,(std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_RedoNote(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_RedoNote" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (bool)editorObject_RedoNote(arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_RedoMix(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_RedoMix" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (bool)editorObject_RedoMix(arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_RedoKV(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_RedoKV" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (bool)editorObject_RedoKV(arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_RedoMusic(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_RedoMusic", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_RedoMusic" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_RedoMusic" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_RedoMusic" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)editorObject_RedoMusic(arg1,(std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GoNote(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  git_oid *arg3 = (git_oid *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_GoNote", 3, 3, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GoNote" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_GoNote" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_GoNote" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_git_oid, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "editorObject_GoNote" "', argument " "3"" of type '" "git_oid *""'"); 
+  }
+  arg3 = reinterpret_cast< git_oid * >(argp3);
+  result = (bool)editorObject_GoNote(arg1,(std::string const &)*arg2,arg3);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GoMix(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  git_oid *arg3 = (git_oid *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_GoMix", 3, 3, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GoMix" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_GoMix" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_GoMix" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_git_oid, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "editorObject_GoMix" "', argument " "3"" of type '" "git_oid *""'"); 
+  }
+  arg3 = reinterpret_cast< git_oid * >(argp3);
+  result = (bool)editorObject_GoMix(arg1,(std::string const &)*arg2,arg3);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GoKV(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  git_oid *arg3 = (git_oid *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_GoKV", 3, 3, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GoKV" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_GoKV" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_GoKV" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_git_oid, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "editorObject_GoKV" "', argument " "3"" of type '" "git_oid *""'"); 
+  }
+  arg3 = reinterpret_cast< git_oid * >(argp3);
+  result = (bool)editorObject_GoKV(arg1,(std::string const &)*arg2,arg3);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GoMusic(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  git_oid *arg3 = (git_oid *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_GoMusic", 3, 3, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GoMusic" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_GoMusic" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_GoMusic" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_git_oid, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "editorObject_GoMusic" "', argument " "3"" of type '" "git_oid *""'"); 
+  }
+  arg3 = reinterpret_cast< git_oid * >(argp3);
+  result = (bool)editorObject_GoMusic(arg1,(std::string const &)*arg2,arg3);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GetLogNoteJSON(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GetLogNoteJSON" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = editorObject_GetLogNoteJSON(arg1);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GetLogMixJSON(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GetLogMixJSON" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = editorObject_GetLogMixJSON(arg1);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GetLogKVJSON(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GetLogKVJSON" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = editorObject_GetLogKVJSON(arg1);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GetLogMusicJSON(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GetLogMusicJSON" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = editorObject_GetLogMusicJSON(arg1);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GetDiffNote(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  gitwrap::commit *arg2 = 0 ;
+  gitwrap::commit *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  DiffResult result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_GetDiffNote", 3, 3, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GetDiffNote" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_gitwrap__commit,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_GetDiffNote" "', argument " "2"" of type '" "gitwrap::commit const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_GetDiffNote" "', argument " "2"" of type '" "gitwrap::commit const &""'"); 
+  }
+  arg2 = reinterpret_cast< gitwrap::commit * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_gitwrap__commit,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "editorObject_GetDiffNote" "', argument " "3"" of type '" "gitwrap::commit const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_GetDiffNote" "', argument " "3"" of type '" "gitwrap::commit const &""'"); 
+  }
+  arg3 = reinterpret_cast< gitwrap::commit * >(argp3);
+  result = editorObject_GetDiffNote(arg1,(gitwrap::commit const &)*arg2,(gitwrap::commit const &)*arg3);
+  resultobj = SWIG_NewPointerObj((new DiffResult(result)), SWIGTYPE_p_DiffResult, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GetDiffMix(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  gitwrap::commit *arg2 = 0 ;
+  gitwrap::commit *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  DiffResult result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_GetDiffMix", 3, 3, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GetDiffMix" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_gitwrap__commit,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_GetDiffMix" "', argument " "2"" of type '" "gitwrap::commit const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_GetDiffMix" "', argument " "2"" of type '" "gitwrap::commit const &""'"); 
+  }
+  arg2 = reinterpret_cast< gitwrap::commit * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_gitwrap__commit,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "editorObject_GetDiffMix" "', argument " "3"" of type '" "gitwrap::commit const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_GetDiffMix" "', argument " "3"" of type '" "gitwrap::commit const &""'"); 
+  }
+  arg3 = reinterpret_cast< gitwrap::commit * >(argp3);
+  result = editorObject_GetDiffMix(arg1,(gitwrap::commit const &)*arg2,(gitwrap::commit const &)*arg3);
+  resultobj = SWIG_NewPointerObj((new DiffResult(result)), SWIGTYPE_p_DiffResult, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GetDiffKV(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  gitwrap::commit *arg2 = 0 ;
+  gitwrap::commit *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  DiffResult result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_GetDiffKV", 3, 3, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GetDiffKV" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_gitwrap__commit,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_GetDiffKV" "', argument " "2"" of type '" "gitwrap::commit const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_GetDiffKV" "', argument " "2"" of type '" "gitwrap::commit const &""'"); 
+  }
+  arg2 = reinterpret_cast< gitwrap::commit * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_gitwrap__commit,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "editorObject_GetDiffKV" "', argument " "3"" of type '" "gitwrap::commit const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_GetDiffKV" "', argument " "3"" of type '" "gitwrap::commit const &""'"); 
+  }
+  arg3 = reinterpret_cast< gitwrap::commit * >(argp3);
+  result = editorObject_GetDiffKV(arg1,(gitwrap::commit const &)*arg2,(gitwrap::commit const &)*arg3);
+  resultobj = SWIG_NewPointerObj((new DiffResult(result)), SWIGTYPE_p_DiffResult, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_GetDiffMusic(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  gitwrap::commit *arg2 = 0 ;
+  gitwrap::commit *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  DiffResult result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_GetDiffMusic", 3, 3, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_GetDiffMusic" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_gitwrap__commit,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_GetDiffMusic" "', argument " "2"" of type '" "gitwrap::commit const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_GetDiffMusic" "', argument " "2"" of type '" "gitwrap::commit const &""'"); 
+  }
+  arg2 = reinterpret_cast< gitwrap::commit * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_gitwrap__commit,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "editorObject_GetDiffMusic" "', argument " "3"" of type '" "gitwrap::commit const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_GetDiffMusic" "', argument " "3"" of type '" "gitwrap::commit const &""'"); 
+  }
+  arg3 = reinterpret_cast< gitwrap::commit * >(argp3);
+  result = editorObject_GetDiffMusic(arg1,(gitwrap::commit const &)*arg2,(gitwrap::commit const &)*arg3);
+  resultobj = SWIG_NewPointerObj((new DiffResult(result)), SWIGTYPE_p_DiffResult, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_UpdateLogNote(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_UpdateLogNote" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (bool)editorObject_UpdateLogNote(arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_UpdateLogMix(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_UpdateLogMix" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (bool)editorObject_UpdateLogMix(arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_UpdateLogKV(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_UpdateLogKV" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (bool)editorObject_UpdateLogKV(arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_UpdateLogMusic(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_UpdateLogMusic" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  result = (bool)editorObject_UpdateLogMusic(arg1);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_UpdateLogNoteOn(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_UpdateLogNoteOn", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_UpdateLogNoteOn" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_UpdateLogNoteOn" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_UpdateLogNoteOn" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)editorObject_UpdateLogNoteOn(arg1,(std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_UpdateLogMixOn(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_UpdateLogMixOn", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_UpdateLogMixOn" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_UpdateLogMixOn" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_UpdateLogMixOn" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)editorObject_UpdateLogMixOn(arg1,(std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_UpdateLogKVOn(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_UpdateLogKVOn", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_UpdateLogKVOn" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_UpdateLogKVOn" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_UpdateLogKVOn" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)editorObject_UpdateLogKVOn(arg1,(std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_editorObject_UpdateLogMusicOn(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  editorObject *arg1 = (editorObject *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::shared_ptr< editorObject > tempshared1 ;
+  std::shared_ptr< editorObject > *smartarg1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "editorObject_UpdateLogMusicOn", 2, 2, swig_obj)) SWIG_fail;
+  {
+    int newmem = 0;
+    res1 = SWIG_ConvertPtrAndOwn(swig_obj[0], &argp1, SWIGTYPE_p_std__shared_ptrT_editorObject_t, 0 |  0 , &newmem);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "editorObject_UpdateLogMusicOn" "', argument " "1"" of type '" "editorObject *""'");
+    }
+    if (newmem & SWIG_CAST_NEW_MEMORY) {
+      tempshared1 = *reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      delete reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >(tempshared1.get());
+    } else {
+      smartarg1 = reinterpret_cast< std::shared_ptr<  editorObject > * >(argp1);
+      arg1 = const_cast< editorObject * >((smartarg1 ? smartarg1->get() : 0));
+    }
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "editorObject_UpdateLogMusicOn" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "editorObject_UpdateLogMusicOn" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)editorObject_UpdateLogMusicOn(arg1,(std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *editorObject_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj = NULL;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
@@ -12013,6 +14563,2748 @@ SWIGINTERN PyObject *editorObject_swigregister(PyObject *SWIGUNUSEDPARM(self), P
 
 SWIGINTERN PyObject *editorObject_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_commit_commitPointer_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  gitwrap::commit *arg1 = (gitwrap::commit *) 0 ;
+  git_commit *arg2 = (git_commit *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "commit_commitPointer_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_gitwrap__commit, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "commit_commitPointer_set" "', argument " "1"" of type '" "gitwrap::commit *""'"); 
+  }
+  arg1 = reinterpret_cast< gitwrap::commit * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_git_commit, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "commit_commitPointer_set" "', argument " "2"" of type '" "git_commit *""'"); 
+  }
+  arg2 = reinterpret_cast< git_commit * >(argp2);
+  if (arg1) (arg1)->commitPointer = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_commit_commitPointer_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  gitwrap::commit *arg1 = (gitwrap::commit *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  git_commit *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_gitwrap__commit, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "commit_commitPointer_get" "', argument " "1"" of type '" "gitwrap::commit *""'"); 
+  }
+  arg1 = reinterpret_cast< gitwrap::commit * >(argp1);
+  result = (git_commit *) ((arg1)->commitPointer);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_git_commit, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_commit_commitID_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  gitwrap::commit *arg1 = (gitwrap::commit *) 0 ;
+  git_oid *arg2 = (git_oid *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "commit_commitID_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_gitwrap__commit, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "commit_commitID_set" "', argument " "1"" of type '" "gitwrap::commit *""'"); 
+  }
+  arg1 = reinterpret_cast< gitwrap::commit * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_git_oid, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "commit_commitID_set" "', argument " "2"" of type '" "git_oid *""'"); 
+  }
+  arg2 = reinterpret_cast< git_oid * >(argp2);
+  if (arg1) (arg1)->commitID = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_commit_commitID_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  gitwrap::commit *arg1 = (gitwrap::commit *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  git_oid *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_gitwrap__commit, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "commit_commitID_get" "', argument " "1"" of type '" "gitwrap::commit *""'"); 
+  }
+  arg1 = reinterpret_cast< gitwrap::commit * >(argp1);
+  result = (git_oid *)& ((arg1)->commitID);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_git_oid, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_commit_msg_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  gitwrap::commit *arg1 = (gitwrap::commit *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "commit_msg_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_gitwrap__commit, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "commit_msg_set" "', argument " "1"" of type '" "gitwrap::commit *""'"); 
+  }
+  arg1 = reinterpret_cast< gitwrap::commit * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "commit_msg_set" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "commit_msg_set" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->msg = *arg2;
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_commit_msg_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  gitwrap::commit *arg1 = (gitwrap::commit *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_gitwrap__commit, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "commit_msg_get" "', argument " "1"" of type '" "gitwrap::commit *""'"); 
+  }
+  arg1 = reinterpret_cast< gitwrap::commit * >(argp1);
+  result = (std::string *) & ((arg1)->msg);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_commit__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  gitwrap::commit *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  result = (gitwrap::commit *)new gitwrap::commit();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_gitwrap__commit, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_commit__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  git_oid arg1 ;
+  git_repository *arg2 = (git_repository *) 0 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  gitwrap::commit *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_git_oid,  0  | 0);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_commit" "', argument " "1"" of type '" "git_oid""'"); 
+    }  
+    if (!argp1) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "new_commit" "', argument " "1"" of type '" "git_oid""'");
+    } else {
+      git_oid * temp = reinterpret_cast< git_oid * >(argp1);
+      arg1 = *temp;
+      if (SWIG_IsNewObj(res1)) delete temp;
+    }
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_git_repository, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_commit" "', argument " "2"" of type '" "git_repository *""'"); 
+  }
+  arg2 = reinterpret_cast< git_repository * >(argp2);
+  result = (gitwrap::commit *)new gitwrap::commit(SWIG_STD_MOVE(arg1),arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_gitwrap__commit, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_commit__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string arg1 ;
+  git_repository *arg2 = (git_repository *) 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  gitwrap::commit *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_commit" "', argument " "1"" of type '" "std::string const""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_git_repository, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_commit" "', argument " "2"" of type '" "git_repository *""'"); 
+  }
+  arg2 = reinterpret_cast< git_repository * >(argp2);
+  result = (gitwrap::commit *)new gitwrap::commit(SWIG_STD_MOVE(arg1),arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_gitwrap__commit, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_commit(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_commit", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_commit__SWIG_0(self, argc, argv);
+  }
+  if (argc == 2) {
+    int _v = 0;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_git_oid, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_git_repository, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_commit__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v = 0;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_git_repository, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_commit__SWIG_2(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_commit'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    gitwrap::commit::commit()\n"
+    "    gitwrap::commit::commit(git_oid,git_repository *)\n"
+    "    gitwrap::commit::commit(std::string const,git_repository *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_commit(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  gitwrap::commit *arg1 = (gitwrap::commit *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_gitwrap__commit, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_commit" "', argument " "1"" of type '" "gitwrap::commit *""'"); 
+  }
+  arg1 = reinterpret_cast< gitwrap::commit * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *commit_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj = NULL;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_gitwrap__commit, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *commit_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_commitList_clist_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  gitwrap::commitList *arg1 = (gitwrap::commitList *) 0 ;
+  std::list< gitwrap::commit > *arg2 = (std::list< gitwrap::commit > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "commitList_clist_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_gitwrap__commitList, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "commitList_clist_set" "', argument " "1"" of type '" "gitwrap::commitList *""'"); 
+  }
+  arg1 = reinterpret_cast< gitwrap::commitList * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_std__listT_gitwrap__commit_t, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "commitList_clist_set" "', argument " "2"" of type '" "std::list< gitwrap::commit > *""'"); 
+  }
+  arg2 = reinterpret_cast< std::list< gitwrap::commit > * >(argp2);
+  if (arg1) (arg1)->clist = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_commitList_clist_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  gitwrap::commitList *arg1 = (gitwrap::commitList *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::list< gitwrap::commit > *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_gitwrap__commitList, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "commitList_clist_get" "', argument " "1"" of type '" "gitwrap::commitList *""'"); 
+  }
+  arg1 = reinterpret_cast< gitwrap::commitList * >(argp1);
+  result = (std::list< gitwrap::commit > *)& ((arg1)->clist);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__listT_gitwrap__commit_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_commitList_Reset(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  gitwrap::commitList *arg1 = (gitwrap::commitList *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_gitwrap__commitList, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "commitList_Reset" "', argument " "1"" of type '" "gitwrap::commitList *""'"); 
+  }
+  arg1 = reinterpret_cast< gitwrap::commitList * >(argp1);
+  (arg1)->Reset();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_commitList_UpdateCommits(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  gitwrap::commitList *arg1 = (gitwrap::commitList *) 0 ;
+  git_repository *arg2 = (git_repository *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "commitList_UpdateCommits", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_gitwrap__commitList, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "commitList_UpdateCommits" "', argument " "1"" of type '" "gitwrap::commitList *""'"); 
+  }
+  arg1 = reinterpret_cast< gitwrap::commitList * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_git_repository, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "commitList_UpdateCommits" "', argument " "2"" of type '" "git_repository *""'"); 
+  }
+  arg2 = reinterpret_cast< git_repository * >(argp2);
+  result = (bool)(arg1)->UpdateCommits(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_commitList_OkToAdd(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  gitwrap::commitList *arg1 = (gitwrap::commitList *) 0 ;
+  git_oid arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "commitList_OkToAdd", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_gitwrap__commitList, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "commitList_OkToAdd" "', argument " "1"" of type '" "gitwrap::commitList *""'"); 
+  }
+  arg1 = reinterpret_cast< gitwrap::commitList * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_git_oid,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "commitList_OkToAdd" "', argument " "2"" of type '" "git_oid""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "commitList_OkToAdd" "', argument " "2"" of type '" "git_oid""'");
+    } else {
+      git_oid * temp = reinterpret_cast< git_oid * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  result = (bool)(arg1)->OkToAdd(SWIG_STD_MOVE(arg2));
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_commitList(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  gitwrap::commitList *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "new_commitList", 0, 0, 0)) SWIG_fail;
+  result = (gitwrap::commitList *)new gitwrap::commitList();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_gitwrap__commitList, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_commitList(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  gitwrap::commitList *arg1 = (gitwrap::commitList *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_gitwrap__commitList, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_commitList" "', argument " "1"" of type '" "gitwrap::commitList *""'"); 
+  }
+  arg1 = reinterpret_cast< gitwrap::commitList * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *commitList_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj = NULL;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_gitwrap__commitList, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *commitList_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_STRING_PAIR__SWIG_0(PyObject *self, Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  std::pair< std::string,std::string > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  result = (std::pair< std::string,std::string > *)new std::pair< std::string,std::string >();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__pairT_std__string_std__string_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_STRING_PAIR__SWIG_1(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::string arg1 ;
+  std::string arg2 ;
+  std::pair< std::string,std::string > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_STRING_PAIR" "', argument " "1"" of type '" "std::string""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_STRING_PAIR" "', argument " "2"" of type '" "std::string""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = (std::pair< std::string,std::string > *)new std::pair< std::string,std::string >(SWIG_STD_MOVE(arg1),SWIG_STD_MOVE(arg2));
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__pairT_std__string_std__string_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_STRING_PAIR__SWIG_2(PyObject *self, Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::pair< std::string,std::string > *arg1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
+  std::pair< std::string,std::string > *result = 0 ;
+  
+  (void)self;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    std::pair< std::string,std::string > *ptr = (std::pair< std::string,std::string > *)0;
+    res1 = swig::asptr(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_STRING_PAIR" "', argument " "1"" of type '" "std::pair< std::string,std::string > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "new_STRING_PAIR" "', argument " "1"" of type '" "std::pair< std::string,std::string > const &""'"); 
+    }
+    arg1 = ptr;
+  }
+  result = (std::pair< std::string,std::string > *)new std::pair< std::string,std::string >((std::pair< std::string,std::string > const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__pairT_std__string_std__string_t, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_STRING_PAIR(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_STRING_PAIR", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_STRING_PAIR__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v = 0;
+    int res = swig::asptr(argv[0], (std::pair< std::string,std::string >**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_STRING_PAIR__SWIG_2(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v = 0;
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_STRING_PAIR__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_STRING_PAIR'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    std::pair< std::string,std::string >::pair()\n"
+    "    std::pair< std::string,std::string >::pair(std::string,std::string)\n"
+    "    std::pair< std::string,std::string >::pair(std::pair< std::string,std::string > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_STRING_PAIR_first_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::pair< std::string,std::string > *arg1 = (std::pair< std::string,std::string > *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "STRING_PAIR_first_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__pairT_std__string_std__string_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "STRING_PAIR_first_set" "', argument " "1"" of type '" "std::pair< std::string,std::string > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::pair< std::string,std::string > * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "STRING_PAIR_first_set" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "STRING_PAIR_first_set" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->first = *arg2;
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_STRING_PAIR_first_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::pair< std::string,std::string > *arg1 = (std::pair< std::string,std::string > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__pairT_std__string_std__string_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "STRING_PAIR_first_get" "', argument " "1"" of type '" "std::pair< std::string,std::string > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::pair< std::string,std::string > * >(argp1);
+  result = (std::string *) & ((arg1)->first);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_STRING_PAIR_second_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::pair< std::string,std::string > *arg1 = (std::pair< std::string,std::string > *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "STRING_PAIR_second_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__pairT_std__string_std__string_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "STRING_PAIR_second_set" "', argument " "1"" of type '" "std::pair< std::string,std::string > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::pair< std::string,std::string > * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "STRING_PAIR_second_set" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "STRING_PAIR_second_set" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->second = *arg2;
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_STRING_PAIR_second_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::pair< std::string,std::string > *arg1 = (std::pair< std::string,std::string > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__pairT_std__string_std__string_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "STRING_PAIR_second_get" "', argument " "1"" of type '" "std::pair< std::string,std::string > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::pair< std::string,std::string > * >(argp1);
+  result = (std::string *) & ((arg1)->second);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_STRING_PAIR(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  std::pair< std::string,std::string > *arg1 = (std::pair< std::string,std::string > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_std__pairT_std__string_std__string_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_STRING_PAIR" "', argument " "1"" of type '" "std::pair< std::string,std::string > *""'"); 
+  }
+  arg1 = reinterpret_cast< std::pair< std::string,std::string > * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *STRING_PAIR_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj = NULL;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_std__pairT_std__string_std__string_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *STRING_PAIR_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_type_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  TypeEnum arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_MIX_type_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_type_set" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_TypeEnum,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EDIT_ARG_MIX_type_set" "', argument " "2"" of type '" "TypeEnum""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "EDIT_ARG_MIX_type_set" "', argument " "2"" of type '" "TypeEnum""'");
+    } else {
+      TypeEnum * temp = reinterpret_cast< TypeEnum * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  if (arg1) (arg1)->type = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_type_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  TypeEnum result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_type_get" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  result =  ((arg1)->type);
+  resultobj = SWIG_NewPointerObj((new TypeEnum(result)), SWIGTYPE_p_TypeEnum, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_details_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  DetailEnum arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_MIX_details_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_details_set" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_DetailEnum,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EDIT_ARG_MIX_details_set" "', argument " "2"" of type '" "DetailEnum""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "EDIT_ARG_MIX_details_set" "', argument " "2"" of type '" "DetailEnum""'");
+    } else {
+      DetailEnum * temp = reinterpret_cast< DetailEnum * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  if (arg1) (arg1)->details = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_details_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  DetailEnum result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_details_get" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  result =  ((arg1)->details);
+  resultobj = SWIG_NewPointerObj((new DetailEnum(result)), SWIGTYPE_p_DetailEnum, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_ID_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_MIX_ID_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_ID_set" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EDIT_ARG_MIX_ID_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->ID = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_ID_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_ID_get" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  result = (int) ((arg1)->ID);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_first_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_MIX_first_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_first_set" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EDIT_ARG_MIX_first_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "EDIT_ARG_MIX_first_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->first = *arg2;
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_first_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_first_get" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  result = (SANITIZED_ORNOT *) & ((arg1)->first);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_second_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_MIX_second_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_second_set" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EDIT_ARG_MIX_second_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "EDIT_ARG_MIX_second_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->second = *arg2;
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_second_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_second_get" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  result = (SANITIZED_ORNOT *) & ((arg1)->second);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_third_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_MIX_third_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_third_set" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EDIT_ARG_MIX_third_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "EDIT_ARG_MIX_third_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->third = *arg2;
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_third_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_third_get" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  result = (SANITIZED_ORNOT *) & ((arg1)->third);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_bar_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_MIX_bar_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_bar_set" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EDIT_ARG_MIX_bar_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->bar = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_bar_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_bar_get" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  result = (long long) ((arg1)->bar);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_beat_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_MIX_beat_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_beat_set" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EDIT_ARG_MIX_beat_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->beat = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_beat_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_beat_get" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  result = (long long) ((arg1)->beat);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_separate_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_MIX_separate_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_separate_set" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EDIT_ARG_MIX_separate_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->separate = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_separate_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_separate_get" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  result = (long long) ((arg1)->separate);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_Ebar_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_MIX_Ebar_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_Ebar_set" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EDIT_ARG_MIX_Ebar_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->Ebar = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_Ebar_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_Ebar_get" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  result = (long long) ((arg1)->Ebar);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_Ebeat_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_MIX_Ebeat_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_Ebeat_set" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EDIT_ARG_MIX_Ebeat_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->Ebeat = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_Ebeat_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_Ebeat_get" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  result = (long long) ((arg1)->Ebeat);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_Eseparate_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_MIX_Eseparate_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_Eseparate_set" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EDIT_ARG_MIX_Eseparate_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->Eseparate = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_MIX_Eseparate_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_MIX_Eseparate_get" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  result = (long long) ((arg1)->Eseparate);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_EDIT_ARG_MIX(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "new_EDIT_ARG_MIX", 0, 0, 0)) SWIG_fail;
+  result = (MixArgs *)new MixArgs();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_MixArgs, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_EDIT_ARG_MIX(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixArgs *arg1 = (MixArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixArgs, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EDIT_ARG_MIX" "', argument " "1"" of type '" "MixArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MixArgs * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *EDIT_ARG_MIX_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj = NULL;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_MixArgs, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *EDIT_ARG_MIX_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_Note_Type_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_NOTE_Note_Type_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_Note_Type_set" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EDIT_ARG_NOTE_Note_Type_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "EDIT_ARG_NOTE_Note_Type_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->Note_Type = *arg2;
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_Note_Type_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_Note_Type_get" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  result = (SANITIZED_ORNOT *) & ((arg1)->Note_Type);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_Note_Detail_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_NOTE_Note_Detail_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_Note_Detail_set" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EDIT_ARG_NOTE_Note_Detail_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "EDIT_ARG_NOTE_Note_Detail_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->Note_Detail = *arg2;
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_Note_Detail_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_Note_Detail_get" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  result = (SANITIZED_ORNOT *) & ((arg1)->Note_Detail);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_first_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_NOTE_first_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_first_set" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EDIT_ARG_NOTE_first_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "EDIT_ARG_NOTE_first_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->first = *arg2;
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_first_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_first_get" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  result = (SANITIZED_ORNOT *) & ((arg1)->first);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_second_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_NOTE_second_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_second_set" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EDIT_ARG_NOTE_second_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "EDIT_ARG_NOTE_second_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->second = *arg2;
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_second_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_second_get" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  result = (SANITIZED_ORNOT *) & ((arg1)->second);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_third_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  SANITIZED_ORNOT *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_NOTE_third_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_third_set" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EDIT_ARG_NOTE_third_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "EDIT_ARG_NOTE_third_set" "', argument " "2"" of type '" "SANITIZED_ORNOT const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->third = *arg2;
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_third_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  SANITIZED_ORNOT *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_third_get" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  result = (SANITIZED_ORNOT *) & ((arg1)->third);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_bar_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_NOTE_bar_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_bar_set" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EDIT_ARG_NOTE_bar_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->bar = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_bar_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_bar_get" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  result = (long long) ((arg1)->bar);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_beat_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_NOTE_beat_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_beat_set" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EDIT_ARG_NOTE_beat_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->beat = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_beat_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_beat_get" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  result = (long long) ((arg1)->beat);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_separate_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_NOTE_separate_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_separate_set" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EDIT_ARG_NOTE_separate_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->separate = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_separate_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_separate_get" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  result = (long long) ((arg1)->separate);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_Ebar_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_NOTE_Ebar_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_Ebar_set" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EDIT_ARG_NOTE_Ebar_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->Ebar = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_Ebar_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_Ebar_get" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  result = (long long) ((arg1)->Ebar);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_Ebeat_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_NOTE_Ebeat_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_Ebeat_set" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EDIT_ARG_NOTE_Ebeat_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->Ebeat = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_Ebeat_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_Ebeat_get" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  result = (long long) ((arg1)->Ebeat);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_Eseparate_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "EDIT_ARG_NOTE_Eseparate_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_Eseparate_set" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "EDIT_ARG_NOTE_Eseparate_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->Eseparate = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EDIT_ARG_NOTE_Eseparate_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EDIT_ARG_NOTE_Eseparate_get" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  result = (long long) ((arg1)->Eseparate);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_EDIT_ARG_NOTE(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "new_EDIT_ARG_NOTE", 0, 0, 0)) SWIG_fail;
+  result = (NoteArgs *)new NoteArgs();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_NoteArgs, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_EDIT_ARG_NOTE(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteArgs *arg1 = (NoteArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteArgs, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_EDIT_ARG_NOTE" "', argument " "1"" of type '" "NoteArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteArgs * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *EDIT_ARG_NOTE_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj = NULL;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_NoteArgs, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *EDIT_ARG_NOTE_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_MusicArgs_bpm_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  DONT_SANITIZE *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MusicArgs_bpm_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MusicArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MusicArgs_bpm_set" "', argument " "1"" of type '" "MusicArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MusicArgs * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MusicArgs_bpm_set" "', argument " "2"" of type '" "DONT_SANITIZE const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "MusicArgs_bpm_set" "', argument " "2"" of type '" "DONT_SANITIZE const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (arg1) (arg1)->bpm = *arg2;
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MusicArgs_bpm_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  DONT_SANITIZE *result = 0 ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MusicArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MusicArgs_bpm_get" "', argument " "1"" of type '" "MusicArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MusicArgs * >(argp1);
+  result = (DONT_SANITIZE *) & ((arg1)->bpm);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MusicArgs_bar_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MusicArgs_bar_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MusicArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MusicArgs_bar_set" "', argument " "1"" of type '" "MusicArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MusicArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MusicArgs_bar_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->bar = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MusicArgs_bar_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MusicArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MusicArgs_bar_get" "', argument " "1"" of type '" "MusicArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MusicArgs * >(argp1);
+  result = (long long) ((arg1)->bar);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MusicArgs_beat_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MusicArgs_beat_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MusicArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MusicArgs_beat_set" "', argument " "1"" of type '" "MusicArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MusicArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MusicArgs_beat_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->beat = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MusicArgs_beat_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MusicArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MusicArgs_beat_get" "', argument " "1"" of type '" "MusicArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MusicArgs * >(argp1);
+  result = (long long) ((arg1)->beat);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MusicArgs_separate_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  long long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long long val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MusicArgs_separate_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MusicArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MusicArgs_separate_set" "', argument " "1"" of type '" "MusicArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MusicArgs * >(argp1);
+  ecode2 = SWIG_AsVal_long_SS_long(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MusicArgs_separate_set" "', argument " "2"" of type '" "long long""'");
+  } 
+  arg2 = static_cast< long long >(val2);
+  if (arg1) (arg1)->separate = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MusicArgs_separate_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long long result;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MusicArgs, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MusicArgs_separate_get" "', argument " "1"" of type '" "MusicArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MusicArgs * >(argp1);
+  result = (long long) ((arg1)->separate);
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_MusicArgs(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicArgs *result = 0 ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "new_MusicArgs", 0, 0, 0)) SWIG_fail;
+  result = (MusicArgs *)new MusicArgs();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_MusicArgs, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_MusicArgs(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicArgs *arg1 = (MusicArgs *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MusicArgs, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_MusicArgs" "', argument " "1"" of type '" "MusicArgs *""'"); 
+  }
+  arg1 = reinterpret_cast< MusicArgs * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *MusicArgs_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj = NULL;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_MusicArgs, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *MusicArgs_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_delete_NoteVisitor(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteVisitor *arg1 = (NoteVisitor *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteVisitor, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_NoteVisitor" "', argument " "1"" of type '" "NoteVisitor *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteVisitor * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NoteVisitor_on_item(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  NoteVisitor *arg1 = (NoteVisitor *) 0 ;
+  EDIT_ARG_NOTE *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "NoteVisitor_on_item", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NoteVisitor, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NoteVisitor_on_item" "', argument " "1"" of type '" "NoteVisitor *""'"); 
+  }
+  arg1 = reinterpret_cast< NoteVisitor * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_NoteArgs,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NoteVisitor_on_item" "', argument " "2"" of type '" "EDIT_ARG_NOTE const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "NoteVisitor_on_item" "', argument " "2"" of type '" "EDIT_ARG_NOTE const &""'"); 
+  }
+  arg2 = reinterpret_cast< EDIT_ARG_NOTE * >(argp2);
+  (arg1)->on_item((EDIT_ARG_NOTE const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *NoteVisitor_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj = NULL;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_NoteVisitor, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_delete_MixVisitor(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixVisitor *arg1 = (MixVisitor *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixVisitor, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_MixVisitor" "', argument " "1"" of type '" "MixVisitor *""'"); 
+  }
+  arg1 = reinterpret_cast< MixVisitor * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MixVisitor_on_item(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MixVisitor *arg1 = (MixVisitor *) 0 ;
+  EDIT_ARG_MIX *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MixVisitor_on_item", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MixVisitor, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixVisitor_on_item" "', argument " "1"" of type '" "MixVisitor *""'"); 
+  }
+  arg1 = reinterpret_cast< MixVisitor * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_MixArgs,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixVisitor_on_item" "', argument " "2"" of type '" "EDIT_ARG_MIX const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "MixVisitor_on_item" "', argument " "2"" of type '" "EDIT_ARG_MIX const &""'"); 
+  }
+  arg2 = reinterpret_cast< EDIT_ARG_MIX * >(argp2);
+  (arg1)->on_item((EDIT_ARG_MIX const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *MixVisitor_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj = NULL;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_MixVisitor, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_delete_KVVisitor(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  KVVisitor *arg1 = (KVVisitor *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_KVVisitor, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_KVVisitor" "', argument " "1"" of type '" "KVVisitor *""'"); 
+  }
+  arg1 = reinterpret_cast< KVVisitor * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KVVisitor_on_item(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  KVVisitor *arg1 = (KVVisitor *) 0 ;
+  EDIT_ARG_KEY_VALUE *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "KVVisitor_on_item", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_KVVisitor, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KVVisitor_on_item" "', argument " "1"" of type '" "KVVisitor *""'"); 
+  }
+  arg1 = reinterpret_cast< KVVisitor * >(argp1);
+  {
+    std::pair< std::string,std::string > *ptr = (std::pair< std::string,std::string > *)0;
+    res2 = swig::asptr(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KVVisitor_on_item" "', argument " "2"" of type '" "EDIT_ARG_KEY_VALUE const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "KVVisitor_on_item" "', argument " "2"" of type '" "EDIT_ARG_KEY_VALUE const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->on_item((EDIT_ARG_KEY_VALUE const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *KVVisitor_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj = NULL;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_KVVisitor, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_delete_MusicVisitor(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicVisitor *arg1 = (MusicVisitor *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  (void)self;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MusicVisitor, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_MusicVisitor" "', argument " "1"" of type '" "MusicVisitor *""'"); 
+  }
+  arg1 = reinterpret_cast< MusicVisitor * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MusicVisitor_on_item(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  MusicVisitor *arg1 = (MusicVisitor *) 0 ;
+  EDIT_ARG_MUSIC *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  (void)self;
+  if (!SWIG_Python_UnpackTuple(args, "MusicVisitor_on_item", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MusicVisitor, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MusicVisitor_on_item" "', argument " "1"" of type '" "MusicVisitor *""'"); 
+  }
+  arg1 = reinterpret_cast< MusicVisitor * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_EDIT_ARG_MUSIC,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MusicVisitor_on_item" "', argument " "2"" of type '" "EDIT_ARG_MUSIC const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_NullReferenceError, "invalid null reference " "in method '" "MusicVisitor_on_item" "', argument " "2"" of type '" "EDIT_ARG_MUSIC const &""'"); 
+  }
+  arg2 = reinterpret_cast< EDIT_ARG_MUSIC * >(argp2);
+  (arg1)->on_item((EDIT_ARG_MUSIC const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *MusicVisitor_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj = NULL;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_MusicVisitor, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
 }
 
 SWIGINTERN PyObject *_wrap_MUS_VEC_iterator(PyObject *self, PyObject *args) {
@@ -17807,8 +23099,152 @@ static PyMethodDef SwigMethods[] = {
 	 { "editorObject_Open", _wrap_editorObject_Open, METH_VARARGS, NULL},
 	 { "new_editorObject", _wrap_new_editorObject, METH_VARARGS, NULL},
 	 { "delete_editorObject", _wrap_delete_editorObject, METH_O, NULL},
+	 { "editorObject_AddLineNote", _wrap_editorObject_AddLineNote, METH_VARARGS, NULL},
+	 { "editorObject_AddLineMix", _wrap_editorObject_AddLineMix, METH_VARARGS, NULL},
+	 { "editorObject_AddLineKV", _wrap_editorObject_AddLineKV, METH_VARARGS, NULL},
+	 { "editorObject_AddLineMusic", _wrap_editorObject_AddLineMusic, METH_VARARGS, NULL},
+	 { "editorObject_DeleteLineNote", _wrap_editorObject_DeleteLineNote, METH_VARARGS, NULL},
+	 { "editorObject_DeleteLineKV", _wrap_editorObject_DeleteLineKV, METH_VARARGS, NULL},
+	 { "editorObject_DeleteLineMusic", _wrap_editorObject_DeleteLineMusic, METH_VARARGS, NULL},
+	 { "editorObject_GetAllNotes", _wrap_editorObject_GetAllNotes, METH_VARARGS, NULL},
+	 { "editorObject_GetAllMixes", _wrap_editorObject_GetAllMixes, METH_VARARGS, NULL},
+	 { "editorObject_GetAllKeyValues", _wrap_editorObject_GetAllKeyValues, METH_VARARGS, NULL},
+	 { "editorObject_GetAllMusics", _wrap_editorObject_GetAllMusics, METH_VARARGS, NULL},
+	 { "editorObject_UndoNote", _wrap_editorObject_UndoNote, METH_O, NULL},
+	 { "editorObject_UndoMix", _wrap_editorObject_UndoMix, METH_O, NULL},
+	 { "editorObject_UndoKV", _wrap_editorObject_UndoKV, METH_O, NULL},
+	 { "editorObject_UndoMusic", _wrap_editorObject_UndoMusic, METH_VARARGS, NULL},
+	 { "editorObject_RedoNote", _wrap_editorObject_RedoNote, METH_O, NULL},
+	 { "editorObject_RedoMix", _wrap_editorObject_RedoMix, METH_O, NULL},
+	 { "editorObject_RedoKV", _wrap_editorObject_RedoKV, METH_O, NULL},
+	 { "editorObject_RedoMusic", _wrap_editorObject_RedoMusic, METH_VARARGS, NULL},
+	 { "editorObject_GoNote", _wrap_editorObject_GoNote, METH_VARARGS, NULL},
+	 { "editorObject_GoMix", _wrap_editorObject_GoMix, METH_VARARGS, NULL},
+	 { "editorObject_GoKV", _wrap_editorObject_GoKV, METH_VARARGS, NULL},
+	 { "editorObject_GoMusic", _wrap_editorObject_GoMusic, METH_VARARGS, NULL},
+	 { "editorObject_GetLogNoteJSON", _wrap_editorObject_GetLogNoteJSON, METH_O, NULL},
+	 { "editorObject_GetLogMixJSON", _wrap_editorObject_GetLogMixJSON, METH_O, NULL},
+	 { "editorObject_GetLogKVJSON", _wrap_editorObject_GetLogKVJSON, METH_O, NULL},
+	 { "editorObject_GetLogMusicJSON", _wrap_editorObject_GetLogMusicJSON, METH_O, NULL},
+	 { "editorObject_GetDiffNote", _wrap_editorObject_GetDiffNote, METH_VARARGS, NULL},
+	 { "editorObject_GetDiffMix", _wrap_editorObject_GetDiffMix, METH_VARARGS, NULL},
+	 { "editorObject_GetDiffKV", _wrap_editorObject_GetDiffKV, METH_VARARGS, NULL},
+	 { "editorObject_GetDiffMusic", _wrap_editorObject_GetDiffMusic, METH_VARARGS, NULL},
+	 { "editorObject_UpdateLogNote", _wrap_editorObject_UpdateLogNote, METH_O, NULL},
+	 { "editorObject_UpdateLogMix", _wrap_editorObject_UpdateLogMix, METH_O, NULL},
+	 { "editorObject_UpdateLogKV", _wrap_editorObject_UpdateLogKV, METH_O, NULL},
+	 { "editorObject_UpdateLogMusic", _wrap_editorObject_UpdateLogMusic, METH_O, NULL},
+	 { "editorObject_UpdateLogNoteOn", _wrap_editorObject_UpdateLogNoteOn, METH_VARARGS, NULL},
+	 { "editorObject_UpdateLogMixOn", _wrap_editorObject_UpdateLogMixOn, METH_VARARGS, NULL},
+	 { "editorObject_UpdateLogKVOn", _wrap_editorObject_UpdateLogKVOn, METH_VARARGS, NULL},
+	 { "editorObject_UpdateLogMusicOn", _wrap_editorObject_UpdateLogMusicOn, METH_VARARGS, NULL},
 	 { "editorObject_swigregister", editorObject_swigregister, METH_O, NULL},
 	 { "editorObject_swiginit", editorObject_swiginit, METH_VARARGS, NULL},
+	 { "commit_commitPointer_set", _wrap_commit_commitPointer_set, METH_VARARGS, NULL},
+	 { "commit_commitPointer_get", _wrap_commit_commitPointer_get, METH_O, NULL},
+	 { "commit_commitID_set", _wrap_commit_commitID_set, METH_VARARGS, NULL},
+	 { "commit_commitID_get", _wrap_commit_commitID_get, METH_O, NULL},
+	 { "commit_msg_set", _wrap_commit_msg_set, METH_VARARGS, NULL},
+	 { "commit_msg_get", _wrap_commit_msg_get, METH_O, NULL},
+	 { "new_commit", _wrap_new_commit, METH_VARARGS, NULL},
+	 { "delete_commit", _wrap_delete_commit, METH_O, NULL},
+	 { "commit_swigregister", commit_swigregister, METH_O, NULL},
+	 { "commit_swiginit", commit_swiginit, METH_VARARGS, NULL},
+	 { "commitList_clist_set", _wrap_commitList_clist_set, METH_VARARGS, NULL},
+	 { "commitList_clist_get", _wrap_commitList_clist_get, METH_O, NULL},
+	 { "commitList_Reset", _wrap_commitList_Reset, METH_O, NULL},
+	 { "commitList_UpdateCommits", _wrap_commitList_UpdateCommits, METH_VARARGS, NULL},
+	 { "commitList_OkToAdd", _wrap_commitList_OkToAdd, METH_VARARGS, NULL},
+	 { "new_commitList", _wrap_new_commitList, METH_NOARGS, NULL},
+	 { "delete_commitList", _wrap_delete_commitList, METH_O, NULL},
+	 { "commitList_swigregister", commitList_swigregister, METH_O, NULL},
+	 { "commitList_swiginit", commitList_swiginit, METH_VARARGS, NULL},
+	 { "new_STRING_PAIR", _wrap_new_STRING_PAIR, METH_VARARGS, NULL},
+	 { "STRING_PAIR_first_set", _wrap_STRING_PAIR_first_set, METH_VARARGS, NULL},
+	 { "STRING_PAIR_first_get", _wrap_STRING_PAIR_first_get, METH_O, NULL},
+	 { "STRING_PAIR_second_set", _wrap_STRING_PAIR_second_set, METH_VARARGS, NULL},
+	 { "STRING_PAIR_second_get", _wrap_STRING_PAIR_second_get, METH_O, NULL},
+	 { "delete_STRING_PAIR", _wrap_delete_STRING_PAIR, METH_O, NULL},
+	 { "STRING_PAIR_swigregister", STRING_PAIR_swigregister, METH_O, NULL},
+	 { "STRING_PAIR_swiginit", STRING_PAIR_swiginit, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MIX_type_set", _wrap_EDIT_ARG_MIX_type_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MIX_type_get", _wrap_EDIT_ARG_MIX_type_get, METH_O, NULL},
+	 { "EDIT_ARG_MIX_details_set", _wrap_EDIT_ARG_MIX_details_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MIX_details_get", _wrap_EDIT_ARG_MIX_details_get, METH_O, NULL},
+	 { "EDIT_ARG_MIX_ID_set", _wrap_EDIT_ARG_MIX_ID_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MIX_ID_get", _wrap_EDIT_ARG_MIX_ID_get, METH_O, NULL},
+	 { "EDIT_ARG_MIX_first_set", _wrap_EDIT_ARG_MIX_first_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MIX_first_get", _wrap_EDIT_ARG_MIX_first_get, METH_O, NULL},
+	 { "EDIT_ARG_MIX_second_set", _wrap_EDIT_ARG_MIX_second_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MIX_second_get", _wrap_EDIT_ARG_MIX_second_get, METH_O, NULL},
+	 { "EDIT_ARG_MIX_third_set", _wrap_EDIT_ARG_MIX_third_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MIX_third_get", _wrap_EDIT_ARG_MIX_third_get, METH_O, NULL},
+	 { "EDIT_ARG_MIX_bar_set", _wrap_EDIT_ARG_MIX_bar_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MIX_bar_get", _wrap_EDIT_ARG_MIX_bar_get, METH_O, NULL},
+	 { "EDIT_ARG_MIX_beat_set", _wrap_EDIT_ARG_MIX_beat_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MIX_beat_get", _wrap_EDIT_ARG_MIX_beat_get, METH_O, NULL},
+	 { "EDIT_ARG_MIX_separate_set", _wrap_EDIT_ARG_MIX_separate_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MIX_separate_get", _wrap_EDIT_ARG_MIX_separate_get, METH_O, NULL},
+	 { "EDIT_ARG_MIX_Ebar_set", _wrap_EDIT_ARG_MIX_Ebar_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MIX_Ebar_get", _wrap_EDIT_ARG_MIX_Ebar_get, METH_O, NULL},
+	 { "EDIT_ARG_MIX_Ebeat_set", _wrap_EDIT_ARG_MIX_Ebeat_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MIX_Ebeat_get", _wrap_EDIT_ARG_MIX_Ebeat_get, METH_O, NULL},
+	 { "EDIT_ARG_MIX_Eseparate_set", _wrap_EDIT_ARG_MIX_Eseparate_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_MIX_Eseparate_get", _wrap_EDIT_ARG_MIX_Eseparate_get, METH_O, NULL},
+	 { "new_EDIT_ARG_MIX", _wrap_new_EDIT_ARG_MIX, METH_NOARGS, NULL},
+	 { "delete_EDIT_ARG_MIX", _wrap_delete_EDIT_ARG_MIX, METH_O, NULL},
+	 { "EDIT_ARG_MIX_swigregister", EDIT_ARG_MIX_swigregister, METH_O, NULL},
+	 { "EDIT_ARG_MIX_swiginit", EDIT_ARG_MIX_swiginit, METH_VARARGS, NULL},
+	 { "EDIT_ARG_NOTE_Note_Type_set", _wrap_EDIT_ARG_NOTE_Note_Type_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_NOTE_Note_Type_get", _wrap_EDIT_ARG_NOTE_Note_Type_get, METH_O, NULL},
+	 { "EDIT_ARG_NOTE_Note_Detail_set", _wrap_EDIT_ARG_NOTE_Note_Detail_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_NOTE_Note_Detail_get", _wrap_EDIT_ARG_NOTE_Note_Detail_get, METH_O, NULL},
+	 { "EDIT_ARG_NOTE_first_set", _wrap_EDIT_ARG_NOTE_first_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_NOTE_first_get", _wrap_EDIT_ARG_NOTE_first_get, METH_O, NULL},
+	 { "EDIT_ARG_NOTE_second_set", _wrap_EDIT_ARG_NOTE_second_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_NOTE_second_get", _wrap_EDIT_ARG_NOTE_second_get, METH_O, NULL},
+	 { "EDIT_ARG_NOTE_third_set", _wrap_EDIT_ARG_NOTE_third_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_NOTE_third_get", _wrap_EDIT_ARG_NOTE_third_get, METH_O, NULL},
+	 { "EDIT_ARG_NOTE_bar_set", _wrap_EDIT_ARG_NOTE_bar_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_NOTE_bar_get", _wrap_EDIT_ARG_NOTE_bar_get, METH_O, NULL},
+	 { "EDIT_ARG_NOTE_beat_set", _wrap_EDIT_ARG_NOTE_beat_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_NOTE_beat_get", _wrap_EDIT_ARG_NOTE_beat_get, METH_O, NULL},
+	 { "EDIT_ARG_NOTE_separate_set", _wrap_EDIT_ARG_NOTE_separate_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_NOTE_separate_get", _wrap_EDIT_ARG_NOTE_separate_get, METH_O, NULL},
+	 { "EDIT_ARG_NOTE_Ebar_set", _wrap_EDIT_ARG_NOTE_Ebar_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_NOTE_Ebar_get", _wrap_EDIT_ARG_NOTE_Ebar_get, METH_O, NULL},
+	 { "EDIT_ARG_NOTE_Ebeat_set", _wrap_EDIT_ARG_NOTE_Ebeat_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_NOTE_Ebeat_get", _wrap_EDIT_ARG_NOTE_Ebeat_get, METH_O, NULL},
+	 { "EDIT_ARG_NOTE_Eseparate_set", _wrap_EDIT_ARG_NOTE_Eseparate_set, METH_VARARGS, NULL},
+	 { "EDIT_ARG_NOTE_Eseparate_get", _wrap_EDIT_ARG_NOTE_Eseparate_get, METH_O, NULL},
+	 { "new_EDIT_ARG_NOTE", _wrap_new_EDIT_ARG_NOTE, METH_NOARGS, NULL},
+	 { "delete_EDIT_ARG_NOTE", _wrap_delete_EDIT_ARG_NOTE, METH_O, NULL},
+	 { "EDIT_ARG_NOTE_swigregister", EDIT_ARG_NOTE_swigregister, METH_O, NULL},
+	 { "EDIT_ARG_NOTE_swiginit", EDIT_ARG_NOTE_swiginit, METH_VARARGS, NULL},
+	 { "MusicArgs_bpm_set", _wrap_MusicArgs_bpm_set, METH_VARARGS, NULL},
+	 { "MusicArgs_bpm_get", _wrap_MusicArgs_bpm_get, METH_O, NULL},
+	 { "MusicArgs_bar_set", _wrap_MusicArgs_bar_set, METH_VARARGS, NULL},
+	 { "MusicArgs_bar_get", _wrap_MusicArgs_bar_get, METH_O, NULL},
+	 { "MusicArgs_beat_set", _wrap_MusicArgs_beat_set, METH_VARARGS, NULL},
+	 { "MusicArgs_beat_get", _wrap_MusicArgs_beat_get, METH_O, NULL},
+	 { "MusicArgs_separate_set", _wrap_MusicArgs_separate_set, METH_VARARGS, NULL},
+	 { "MusicArgs_separate_get", _wrap_MusicArgs_separate_get, METH_O, NULL},
+	 { "new_MusicArgs", _wrap_new_MusicArgs, METH_NOARGS, NULL},
+	 { "delete_MusicArgs", _wrap_delete_MusicArgs, METH_O, NULL},
+	 { "MusicArgs_swigregister", MusicArgs_swigregister, METH_O, NULL},
+	 { "MusicArgs_swiginit", MusicArgs_swiginit, METH_VARARGS, NULL},
+	 { "delete_NoteVisitor", _wrap_delete_NoteVisitor, METH_O, NULL},
+	 { "NoteVisitor_on_item", _wrap_NoteVisitor_on_item, METH_VARARGS, NULL},
+	 { "NoteVisitor_swigregister", NoteVisitor_swigregister, METH_O, NULL},
+	 { "delete_MixVisitor", _wrap_delete_MixVisitor, METH_O, NULL},
+	 { "MixVisitor_on_item", _wrap_MixVisitor_on_item, METH_VARARGS, NULL},
+	 { "MixVisitor_swigregister", MixVisitor_swigregister, METH_O, NULL},
+	 { "delete_KVVisitor", _wrap_delete_KVVisitor, METH_O, NULL},
+	 { "KVVisitor_on_item", _wrap_KVVisitor_on_item, METH_VARARGS, NULL},
+	 { "KVVisitor_swigregister", KVVisitor_swigregister, METH_O, NULL},
+	 { "delete_MusicVisitor", _wrap_delete_MusicVisitor, METH_O, NULL},
+	 { "MusicVisitor_on_item", _wrap_MusicVisitor_on_item, METH_VARARGS, NULL},
+	 { "MusicVisitor_swigregister", MusicVisitor_swigregister, METH_O, NULL},
 	 { "MUS_VEC_iterator", _wrap_MUS_VEC_iterator, METH_O, NULL},
 	 { "MUS_VEC___nonzero__", _wrap_MUS_VEC___nonzero__, METH_O, NULL},
 	 { "MUS_VEC___bool__", _wrap_MUS_VEC___bool__, METH_O, NULL},
@@ -17923,31 +23359,46 @@ static PyMethodDef SwigMethods[] = {
 static swig_type_info _swigt__p_ARGSETTER = {"_p_ARGSETTER", "ARGSETTER *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ARGSETTER_WRAPPER = {"_p_ARGSETTER_WRAPPER", "ARGSETTER_WRAPPER *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_BIN = {"_p_BIN", "BIN *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_CapWriterT_MixBinaryCapnpData_t = {"_p_CapWriterT_MixBinaryCapnpData_t", "MIX_W *|CapWriter< MixBinaryCapnpData > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_CapWriterT_MusicBinaryCapnpData_t = {"_p_CapWriterT_MusicBinaryCapnpData_t", "MUSIC_W *|CapWriter< MusicBinaryCapnpData > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_CapWriterT_NoteBinaryCapnpData_t = {"_p_CapWriterT_NoteBinaryCapnpData_t", "NOTE_W *|CapWriter< NoteBinaryCapnpData > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Decoder = {"_p_Decoder", "Decoder *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DetailEnum = {"_p_DetailEnum", "DetailEnum *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DiffResult = {"_p_DiffResult", "DiffResult *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_EDIT_ARG_MUSIC = {"_p_EDIT_ARG_MUSIC", "EDIT_ARG_MUSIC *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FXControlPannel = {"_p_FXControlPannel", "FXControlPannel *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_KEY_VALUE = {"_p_KEY_VALUE", "EDIT_ARG_KEY_VALUE *|KEY_VALUE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_KVVisitor = {"_p_KVVisitor", "KVVisitor *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MixArgs = {"_p_MixArgs", "EDIT_ARG_MIX *|MixArgs *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_MixVisitor = {"_p_MixVisitor", "MixVisitor *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MusicArgs = {"_p_MusicArgs", "MusicArgs *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MusicControlPannel = {"_p_MusicControlPannel", "MusicControlPannel *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MusicOnDeck = {"_p_MusicOnDeck", "MusicOnDeck *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_MusicVisitor = {"_p_MusicVisitor", "MusicVisitor *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_NoteArgs = {"_p_NoteArgs", "EDIT_ARG_NOTE *|NoteArgs *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_NoteVisitor = {"_p_NoteVisitor", "NoteVisitor *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_OBJ_SETTER_CALLBACK = {"_p_OBJ_SETTER_CALLBACK", "OBJ_SETTER_CALLBACK *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PDJE = {"_p_PDJE", "PDJE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PDJE_CORE_DATA_LINE = {"_p_PDJE_CORE_DATA_LINE", "PDJE_CORE_DATA_LINE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PDJE_Name_Sanitizer = {"_p_PDJE_Name_Sanitizer", "PDJE_Name_Sanitizer *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_TypeEnum = {"_p_TypeEnum", "TypeEnum *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_audioPlayer = {"_p_audioPlayer", "audioPlayer *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_cppcodec__base64_url_unpadded = {"_p_cppcodec__base64_url_unpadded", "cbase *|cppcodec::base64_url_unpadded *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_editorObject = {"_p_editorObject", "editorObject *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_first_type = {"_p_first_type", "first_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_float = {"_p_float", "float *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_git_commit = {"_p_git_commit", "git_commit *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_git_oid = {"_p_git_oid", "git_oid *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_git_repository = {"_p_git_repository", "git_repository *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_gitwrap__commit = {"_p_gitwrap__commit", "gitwrap::commit *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_gitwrap__commitList = {"_p_gitwrap__commitList", "gitwrap::commitList *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_litedb = {"_p_litedb", "litedb *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_musdata = {"_p_musdata", "std::vector< musdata >::value_type *|musdata *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_PyObject = {"_p_p_PyObject", "PyObject **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_float = {"_p_p_float", "float **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_second_type = {"_p_second_type", "second_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_sqlite3 = {"_p_sqlite3", "sqlite3 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_musdata_t = {"_p_std__allocatorT_musdata_t", "std::vector< musdata >::allocator_type *|std::allocator< musdata > *", 0, 0, (void*)0, 0};
@@ -17955,17 +23406,20 @@ static swig_type_info _swigt__p_std__allocatorT_std__string_t = {"_p_std__alloca
 static swig_type_info _swigt__p_std__allocatorT_trackdata_t = {"_p_std__allocatorT_trackdata_t", "std::vector< trackdata >::allocator_type *|std::allocator< trackdata > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__filesystem__path = {"_p_std__filesystem__path", "std::filesystem::path *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__invalid_argument = {"_p_std__invalid_argument", "std::invalid_argument *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__listT_gitwrap__commit_t = {"_p_std__listT_gitwrap__commit_t", "std::list< gitwrap::commit > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__mapT_std__string_MusicOnDeck_t = {"_p_std__mapT_std__string_MusicOnDeck_t", "LOADS *|std::map< std::string,MusicOnDeck > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__optionalT_soundtouch__SoundTouch_t = {"_p_std__optionalT_soundtouch__SoundTouch_t", "std::optional< soundtouch::SoundTouch > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__optionalT_std__string_t = {"_p_std__optionalT_std__string_t", "std::optional< SANITIZED > *|std::optional< std::string > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__optionalT_std__vectorT_musdata_t_t = {"_p_std__optionalT_std__vectorT_musdata_t_t", "MAYBE_MUS_VEC *|std::optional< std::vector< musdata,std::allocator< musdata > > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__optionalT_std__vectorT_trackdata_t_t = {"_p_std__optionalT_std__vectorT_trackdata_t_t", "MAYBE_TRACK_VEC *|std::optional< std::vector< trackdata,std::allocator< trackdata > > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__pairT_std__string_std__string_t = {"_p_std__pairT_std__string_std__string_t", "EDIT_ARG_KEY_VALUE *|KEY_VALUE *|std::pair< std::string,std::string > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_audioPlayer_t = {"_p_std__shared_ptrT_audioPlayer_t", "std::shared_ptr< audioPlayer > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_editorObject_t = {"_p_std__shared_ptrT_editorObject_t", "std::shared_ptr< editorObject > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__shared_ptrT_litedb_t = {"_p_std__shared_ptrT_litedb_t", "std::shared_ptr< litedb > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__string = {"_p_std__string", "DONT_SANITIZE *|SANITIZED *|SANITIZED_ORNOT *|UNSANITIZED *|std::string *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__string = {"_p_std__string", "DONT_SANITIZE *|KEY *|SANITIZED *|SANITIZED_ORNOT *|UNSANITIZED *|std::string *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__unordered_mapT_std__string_std__string_t = {"_p_std__unordered_mapT_std__string_std__string_t", "TITLE_COMPOSER *|std::unordered_map< std::string,std::string > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_musdata_t = {"_p_std__vectorT_musdata_t", "MUS_VEC *|std::vector< musdata,std::allocator< musdata > > *|std::vector< musdata > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_std__pairT_std__string_std__string_t_std__allocatorT_std__pairT_std__string_std__string_t_t_t = {"_p_std__vectorT_std__pairT_std__string_std__string_t_std__allocatorT_std__pairT_std__string_std__string_t_t_t", "KV_W *|std::vector< std::pair< std::string,std::string >,std::allocator< std::pair< std::string,std::string > > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_std__string_t = {"_p_std__vectorT_std__string_t", "LOADED_LIST *|std::vector< std::string,std::allocator< std::string > > *|std::vector< std::string > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_trackdata_t = {"_p_std__vectorT_trackdata_t", "TRACK_VEC *|std::vector< trackdata,std::allocator< trackdata > > *|std::vector< trackdata > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_stmt = {"_p_stmt", "stmt *", 0, 0, (void*)0, 0};
@@ -17977,31 +23431,46 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_ARGSETTER,
   &_swigt__p_ARGSETTER_WRAPPER,
   &_swigt__p_BIN,
+  &_swigt__p_CapWriterT_MixBinaryCapnpData_t,
+  &_swigt__p_CapWriterT_MusicBinaryCapnpData_t,
+  &_swigt__p_CapWriterT_NoteBinaryCapnpData_t,
   &_swigt__p_Decoder,
+  &_swigt__p_DetailEnum,
+  &_swigt__p_DiffResult,
   &_swigt__p_EDIT_ARG_MUSIC,
   &_swigt__p_FXControlPannel,
-  &_swigt__p_KEY_VALUE,
+  &_swigt__p_KVVisitor,
   &_swigt__p_MixArgs,
+  &_swigt__p_MixVisitor,
   &_swigt__p_MusicArgs,
   &_swigt__p_MusicControlPannel,
   &_swigt__p_MusicOnDeck,
+  &_swigt__p_MusicVisitor,
   &_swigt__p_NoteArgs,
+  &_swigt__p_NoteVisitor,
   &_swigt__p_OBJ_SETTER_CALLBACK,
   &_swigt__p_PDJE,
   &_swigt__p_PDJE_CORE_DATA_LINE,
   &_swigt__p_PDJE_Name_Sanitizer,
+  &_swigt__p_TypeEnum,
   &_swigt__p_allocator_type,
   &_swigt__p_audioPlayer,
   &_swigt__p_char,
   &_swigt__p_cppcodec__base64_url_unpadded,
   &_swigt__p_difference_type,
   &_swigt__p_editorObject,
+  &_swigt__p_first_type,
   &_swigt__p_float,
+  &_swigt__p_git_commit,
+  &_swigt__p_git_oid,
   &_swigt__p_git_repository,
+  &_swigt__p_gitwrap__commit,
+  &_swigt__p_gitwrap__commitList,
   &_swigt__p_litedb,
   &_swigt__p_musdata,
   &_swigt__p_p_PyObject,
   &_swigt__p_p_float,
+  &_swigt__p_second_type,
   &_swigt__p_size_type,
   &_swigt__p_sqlite3,
   &_swigt__p_std__allocatorT_musdata_t,
@@ -18009,17 +23478,20 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__allocatorT_trackdata_t,
   &_swigt__p_std__filesystem__path,
   &_swigt__p_std__invalid_argument,
+  &_swigt__p_std__listT_gitwrap__commit_t,
   &_swigt__p_std__mapT_std__string_MusicOnDeck_t,
   &_swigt__p_std__optionalT_soundtouch__SoundTouch_t,
   &_swigt__p_std__optionalT_std__string_t,
   &_swigt__p_std__optionalT_std__vectorT_musdata_t_t,
   &_swigt__p_std__optionalT_std__vectorT_trackdata_t_t,
+  &_swigt__p_std__pairT_std__string_std__string_t,
   &_swigt__p_std__shared_ptrT_audioPlayer_t,
   &_swigt__p_std__shared_ptrT_editorObject_t,
   &_swigt__p_std__shared_ptrT_litedb_t,
   &_swigt__p_std__string,
   &_swigt__p_std__unordered_mapT_std__string_std__string_t,
   &_swigt__p_std__vectorT_musdata_t,
+  &_swigt__p_std__vectorT_std__pairT_std__string_std__string_t_std__allocatorT_std__pairT_std__string_std__string_t_t_t,
   &_swigt__p_std__vectorT_std__string_t,
   &_swigt__p_std__vectorT_trackdata_t,
   &_swigt__p_stmt,
@@ -18031,31 +23503,46 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_ARGSETTER[] = {  {&_swigt__p_ARGSETTER, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ARGSETTER_WRAPPER[] = {  {&_swigt__p_ARGSETTER_WRAPPER, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_BIN[] = {  {&_swigt__p_BIN, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_CapWriterT_MixBinaryCapnpData_t[] = {  {&_swigt__p_CapWriterT_MixBinaryCapnpData_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_CapWriterT_MusicBinaryCapnpData_t[] = {  {&_swigt__p_CapWriterT_MusicBinaryCapnpData_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_CapWriterT_NoteBinaryCapnpData_t[] = {  {&_swigt__p_CapWriterT_NoteBinaryCapnpData_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Decoder[] = {  {&_swigt__p_Decoder, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DetailEnum[] = {  {&_swigt__p_DetailEnum, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DiffResult[] = {  {&_swigt__p_DiffResult, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_EDIT_ARG_MUSIC[] = {  {&_swigt__p_EDIT_ARG_MUSIC, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FXControlPannel[] = {  {&_swigt__p_FXControlPannel, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_KEY_VALUE[] = {  {&_swigt__p_KEY_VALUE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_KVVisitor[] = {  {&_swigt__p_KVVisitor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MixArgs[] = {  {&_swigt__p_MixArgs, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_MixVisitor[] = {  {&_swigt__p_MixVisitor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MusicArgs[] = {  {&_swigt__p_MusicArgs, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MusicControlPannel[] = {  {&_swigt__p_MusicControlPannel, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MusicOnDeck[] = {  {&_swigt__p_MusicOnDeck, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_MusicVisitor[] = {  {&_swigt__p_MusicVisitor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_NoteArgs[] = {  {&_swigt__p_NoteArgs, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_NoteVisitor[] = {  {&_swigt__p_NoteVisitor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_OBJ_SETTER_CALLBACK[] = {  {&_swigt__p_OBJ_SETTER_CALLBACK, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PDJE[] = {  {&_swigt__p_PDJE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PDJE_CORE_DATA_LINE[] = {  {&_swigt__p_PDJE_CORE_DATA_LINE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PDJE_Name_Sanitizer[] = {  {&_swigt__p_PDJE_Name_Sanitizer, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_TypeEnum[] = {  {&_swigt__p_TypeEnum, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_audioPlayer[] = {  {&_swigt__p_audioPlayer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_cppcodec__base64_url_unpadded[] = {  {&_swigt__p_cppcodec__base64_url_unpadded, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_editorObject[] = {  {&_swigt__p_editorObject, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_first_type[] = {  {&_swigt__p_first_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_git_commit[] = {  {&_swigt__p_git_commit, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_git_oid[] = {  {&_swigt__p_git_oid, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_git_repository[] = {  {&_swigt__p_git_repository, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_gitwrap__commit[] = {  {&_swigt__p_gitwrap__commit, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_gitwrap__commitList[] = {  {&_swigt__p_gitwrap__commitList, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_litedb[] = {  {&_swigt__p_litedb, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_musdata[] = {  {&_swigt__p_musdata, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_PyObject[] = {  {&_swigt__p_p_PyObject, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_float[] = {  {&_swigt__p_p_float, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_second_type[] = {  {&_swigt__p_second_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_sqlite3[] = {  {&_swigt__p_sqlite3, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_musdata_t[] = {  {&_swigt__p_std__allocatorT_musdata_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -18063,17 +23550,20 @@ static swig_cast_info _swigc__p_std__allocatorT_std__string_t[] = {  {&_swigt__p
 static swig_cast_info _swigc__p_std__allocatorT_trackdata_t[] = {  {&_swigt__p_std__allocatorT_trackdata_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__filesystem__path[] = {  {&_swigt__p_std__filesystem__path, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__invalid_argument[] = {  {&_swigt__p_std__invalid_argument, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__listT_gitwrap__commit_t[] = {  {&_swigt__p_std__listT_gitwrap__commit_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__mapT_std__string_MusicOnDeck_t[] = {  {&_swigt__p_std__mapT_std__string_MusicOnDeck_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__optionalT_soundtouch__SoundTouch_t[] = {  {&_swigt__p_std__optionalT_soundtouch__SoundTouch_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__optionalT_std__string_t[] = {  {&_swigt__p_std__optionalT_std__string_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__optionalT_std__vectorT_musdata_t_t[] = {  {&_swigt__p_std__optionalT_std__vectorT_musdata_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__optionalT_std__vectorT_trackdata_t_t[] = {  {&_swigt__p_std__optionalT_std__vectorT_trackdata_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__pairT_std__string_std__string_t[] = {  {&_swigt__p_std__pairT_std__string_std__string_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_audioPlayer_t[] = {  {&_swigt__p_std__shared_ptrT_audioPlayer_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_editorObject_t[] = {  {&_swigt__p_std__shared_ptrT_editorObject_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__shared_ptrT_litedb_t[] = {  {&_swigt__p_std__shared_ptrT_litedb_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__unordered_mapT_std__string_std__string_t[] = {  {&_swigt__p_std__unordered_mapT_std__string_std__string_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_musdata_t[] = {  {&_swigt__p_std__vectorT_musdata_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_std__pairT_std__string_std__string_t_std__allocatorT_std__pairT_std__string_std__string_t_t_t[] = {  {&_swigt__p_std__vectorT_std__pairT_std__string_std__string_t_std__allocatorT_std__pairT_std__string_std__string_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_std__string_t[] = {  {&_swigt__p_std__vectorT_std__string_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_trackdata_t[] = {  {&_swigt__p_std__vectorT_trackdata_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_stmt[] = {  {&_swigt__p_stmt, 0, 0, 0},{0, 0, 0, 0}};
@@ -18085,31 +23575,46 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_ARGSETTER,
   _swigc__p_ARGSETTER_WRAPPER,
   _swigc__p_BIN,
+  _swigc__p_CapWriterT_MixBinaryCapnpData_t,
+  _swigc__p_CapWriterT_MusicBinaryCapnpData_t,
+  _swigc__p_CapWriterT_NoteBinaryCapnpData_t,
   _swigc__p_Decoder,
+  _swigc__p_DetailEnum,
+  _swigc__p_DiffResult,
   _swigc__p_EDIT_ARG_MUSIC,
   _swigc__p_FXControlPannel,
-  _swigc__p_KEY_VALUE,
+  _swigc__p_KVVisitor,
   _swigc__p_MixArgs,
+  _swigc__p_MixVisitor,
   _swigc__p_MusicArgs,
   _swigc__p_MusicControlPannel,
   _swigc__p_MusicOnDeck,
+  _swigc__p_MusicVisitor,
   _swigc__p_NoteArgs,
+  _swigc__p_NoteVisitor,
   _swigc__p_OBJ_SETTER_CALLBACK,
   _swigc__p_PDJE,
   _swigc__p_PDJE_CORE_DATA_LINE,
   _swigc__p_PDJE_Name_Sanitizer,
+  _swigc__p_TypeEnum,
   _swigc__p_allocator_type,
   _swigc__p_audioPlayer,
   _swigc__p_char,
   _swigc__p_cppcodec__base64_url_unpadded,
   _swigc__p_difference_type,
   _swigc__p_editorObject,
+  _swigc__p_first_type,
   _swigc__p_float,
+  _swigc__p_git_commit,
+  _swigc__p_git_oid,
   _swigc__p_git_repository,
+  _swigc__p_gitwrap__commit,
+  _swigc__p_gitwrap__commitList,
   _swigc__p_litedb,
   _swigc__p_musdata,
   _swigc__p_p_PyObject,
   _swigc__p_p_float,
+  _swigc__p_second_type,
   _swigc__p_size_type,
   _swigc__p_sqlite3,
   _swigc__p_std__allocatorT_musdata_t,
@@ -18117,17 +23622,20 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__allocatorT_trackdata_t,
   _swigc__p_std__filesystem__path,
   _swigc__p_std__invalid_argument,
+  _swigc__p_std__listT_gitwrap__commit_t,
   _swigc__p_std__mapT_std__string_MusicOnDeck_t,
   _swigc__p_std__optionalT_soundtouch__SoundTouch_t,
   _swigc__p_std__optionalT_std__string_t,
   _swigc__p_std__optionalT_std__vectorT_musdata_t_t,
   _swigc__p_std__optionalT_std__vectorT_trackdata_t_t,
+  _swigc__p_std__pairT_std__string_std__string_t,
   _swigc__p_std__shared_ptrT_audioPlayer_t,
   _swigc__p_std__shared_ptrT_editorObject_t,
   _swigc__p_std__shared_ptrT_litedb_t,
   _swigc__p_std__string,
   _swigc__p_std__unordered_mapT_std__string_std__string_t,
   _swigc__p_std__vectorT_musdata_t,
+  _swigc__p_std__vectorT_std__pairT_std__string_std__string_t_std__allocatorT_std__pairT_std__string_std__string_t_t_t,
   _swigc__p_std__vectorT_std__string_t,
   _swigc__p_std__vectorT_trackdata_t,
   _swigc__p_stmt,
