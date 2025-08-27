@@ -4,7 +4,7 @@
 Program Listing for File CapnpTest.cpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_CapnpTest.cpp>` (``include/tests/CapnpTest.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_CapnpTest.cpp>` (``include\tests\CapnpTest.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

@@ -133,6 +133,14 @@ main()
         getchar();
         auto deactres = engine->player->Deactivate();
 
+        auto editor = engine->GetEditorObject();
+        std::string logs = editor->GetLogWithJSONGraph();
+        auto jj = nlohmann::json::parse(logs);
+        std::string branchName = jj["BRANCH"].at(0)["NAME"];
+        std::string oid = jj["BRANCH"].at(0)["OID"];
+        
+
+        editor->Go<EDIT_ARG_NOTE>(branchName, oid);
 
         // engine
         

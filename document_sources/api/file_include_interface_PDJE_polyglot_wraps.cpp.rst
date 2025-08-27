@@ -4,7 +4,7 @@
 File PDJE_polyglot_wraps.cpp
 ============================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_interface>` (``include/interface``)
+|exhale_lsh| :ref:`Parent directory <dir_include_interface>` (``include\interface``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_polyglot_wraps.cpp
    :local:
    :backlinks: none
 
-Definition (``include/interface/PDJE_polyglot_wraps.cpp``)
+Definition (``include\interface\PDJE_polyglot_wraps.cpp``)
 ----------------------------------------------------------
 
 

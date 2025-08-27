@@ -4,7 +4,7 @@
 Program Listing for File BlameController.cpp
 ============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_Blame_BlameController.cpp>` (``include/editor/featureWrapper/GitWrap/Blame/BlameController.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_Blame_BlameController.cpp>` (``include\editor\featureWrapper\GitWrap\Blame\BlameController.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

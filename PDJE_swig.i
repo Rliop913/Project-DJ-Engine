@@ -216,8 +216,8 @@ struct git_oid;
   std::string GetLogKVJSON() {
     return $self->GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
   }
-  std::string GetLogMusicJSON() {
-    return $self->GetLogWithJSONGraph<EDIT_ARG_MUSIC>();
+  std::string GetLogMusicJSON(const std::string& musicName) {
+    return $self->GetLogWithJSONGraph<EDIT_ARG_MUSIC>(musicName);
   }
 
   // ========== GetDiff ==========

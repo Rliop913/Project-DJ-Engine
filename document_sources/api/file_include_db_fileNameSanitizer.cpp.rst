@@ -4,7 +4,7 @@
 File fileNameSanitizer.cpp
 ==========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_db>` (``include/db``)
+|exhale_lsh| :ref:`Parent directory <dir_include_db>` (``include\db``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File fileNameSanitizer.cpp
    :local:
    :backlinks: none
 
-Definition (``include/db/fileNameSanitizer.cpp``)
+Definition (``include\db\fileNameSanitizer.cpp``)
 -------------------------------------------------
 
 

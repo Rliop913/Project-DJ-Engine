@@ -4,7 +4,7 @@
 File DiffController.cpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Diff>` (``include/editor/featureWrapper/GitWrap/Diff``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Diff>` (``include\editor\featureWrapper\GitWrap\Diff``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File DiffController.cpp
    :local:
    :backlinks: none
 
-Definition (``include/editor/featureWrapper/GitWrap/Diff/DiffController.cpp``)
+Definition (``include\editor\featureWrapper\GitWrap\Diff\DiffController.cpp``)
 ------------------------------------------------------------------------------
 
 

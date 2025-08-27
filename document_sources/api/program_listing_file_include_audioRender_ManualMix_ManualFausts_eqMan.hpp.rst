@@ -4,7 +4,7 @@
 Program Listing for File eqMan.hpp
 ==================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_eqMan.hpp>` (``include/audioRender/ManualMix/ManualFausts/eqMan.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualFausts_eqMan.hpp>` (``include\audioRender\ManualMix\ManualFausts\eqMan.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

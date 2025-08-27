@@ -233,11 +233,11 @@ public:
      * @brief Switches to a specific branch or commit.
      * @tparam EDIT_ARG_TYPE The type of data to operate on.
      * @param branchName The name of the branch to switch to.
-     * @param commitID A pointer to the commit ID to switch to (optional).
+     * @param commitOID A oid string to the commit ID to switch to.
      * @return `true` if the operation was successful, `false` otherwise.
      */
     template<typename EDIT_ARG_TYPE> 
-    bool Go(const DONT_SANITIZE& branchName, git_oid* commitID);
+    bool Go(const DONT_SANITIZE& branchName, const DONT_SANITIZE& commitOID);
 
     /**
      * @brief Gets the commit log as a JSON graph.
@@ -365,10 +365,10 @@ template<> PDJE_API DONT_SANITIZE editorObject::GetLogWithJSONGraph<EDIT_ARG_MIX
 template<> PDJE_API DONT_SANITIZE editorObject::GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
 template<> PDJE_API DONT_SANITIZE editorObject::GetLogWithJSONGraph<EDIT_ARG_MUSIC>();
 
-template<> PDJE_API bool editorObject::Go<EDIT_ARG_NOTE>(const DONT_SANITIZE& branchName, git_oid* commitID);
-template<> PDJE_API bool editorObject::Go<EDIT_ARG_MIX>(const DONT_SANITIZE& branchName, git_oid* commitID);
-template<> PDJE_API bool editorObject::Go<EDIT_ARG_KEY_VALUE>(const DONT_SANITIZE& branchName, git_oid* commitID);
-template<> PDJE_API bool editorObject::Go<EDIT_ARG_MUSIC>(const DONT_SANITIZE& branchName, git_oid* commitID);
+template<> PDJE_API bool editorObject::Go<EDIT_ARG_NOTE>(const DONT_SANITIZE& branchName, const DONT_SANITIZE& commitOID);
+template<> PDJE_API bool editorObject::Go<EDIT_ARG_MIX>(const DONT_SANITIZE& branchName, const DONT_SANITIZE& commitOID);
+template<> PDJE_API bool editorObject::Go<EDIT_ARG_KEY_VALUE>(const DONT_SANITIZE& branchName, const DONT_SANITIZE& commitOID);
+template<> PDJE_API bool editorObject::Go<EDIT_ARG_MUSIC>(const DONT_SANITIZE& branchName, const DONT_SANITIZE& commitOID);
 
 template<> PDJE_API bool editorObject::Redo<EDIT_ARG_NOTE>();
 template<> PDJE_API bool editorObject::Redo<EDIT_ARG_MIX>();

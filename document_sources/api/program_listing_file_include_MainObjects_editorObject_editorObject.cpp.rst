@@ -4,7 +4,7 @@
 Program Listing for File editorObject.cpp
 =========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_editorObject_editorObject.cpp>` (``include/MainObjects/editorObject/editorObject.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_editorObject_editorObject.cpp>` (``include\MainObjects\editorObject\editorObject.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

@@ -4,7 +4,7 @@
 File MixMachine-inl.h
 =====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine>` (``include/audioRender/MixMachine``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine>` (``include\audioRender\MixMachine``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ SIMD-optimized implementation for integrating PCM frames into a final mix.
    :local:
    :backlinks: none
 
-Definition (``include/audioRender/MixMachine/MixMachine-inl.h``)
+Definition (``include\audioRender\MixMachine\MixMachine-inl.h``)
 ----------------------------------------------------------------
 
 

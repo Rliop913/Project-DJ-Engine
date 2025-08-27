@@ -4,7 +4,7 @@
 File echoMan.hpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_ManualMix_ManualFausts>` (``include/audioRender/ManualMix/ManualFausts``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_ManualMix_ManualFausts>` (``include\audioRender\ManualMix\ManualFausts``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File echoMan.hpp
    :local:
    :backlinks: none
 
-Definition (``include/audioRender/ManualMix/ManualFausts/echoMan.hpp``)
+Definition (``include\audioRender\ManualMix\ManualFausts\echoMan.hpp``)
 -----------------------------------------------------------------------
 
 

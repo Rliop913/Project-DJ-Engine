@@ -4,7 +4,7 @@
 File windows_I.hpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_windows>` (``include/input/windows``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_windows>` (``include\input\windows``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File windows_I.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/windows/windows_I.hpp``)
+Definition (``include\input\windows\windows_I.hpp``)
 ----------------------------------------------------
 
 
