@@ -4,7 +4,7 @@
 File flanger.hpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_FAUST_VALS>` (``include/audioRender/MixMachine/FAUST_VALS``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_FAUST_VALS>` (``include\audioRender\MixMachine\FAUST_VALS``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File flanger.hpp
    :local:
    :backlinks: none
 
-Definition (``include/audioRender/MixMachine/FAUST_VALS/flanger.hpp``)
+Definition (``include\audioRender\MixMachine\FAUST_VALS\flanger.hpp``)
 ----------------------------------------------------------------------
 
 

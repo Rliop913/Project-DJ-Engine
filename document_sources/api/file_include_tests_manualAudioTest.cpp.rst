@@ -4,7 +4,7 @@
 File manualAudioTest.cpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_tests>` (``include/tests``)
+|exhale_lsh| :ref:`Parent directory <dir_include_tests>` (``include\tests``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File manualAudioTest.cpp
    :local:
    :backlinks: none
 
-Definition (``include/tests/manualAudioTest.cpp``)
+Definition (``include\tests\manualAudioTest.cpp``)
 --------------------------------------------------
 
 

@@ -4,7 +4,7 @@
 File gitWrapper.cpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap>` (``include/editor/featureWrapper/GitWrap``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap>` (``include\editor\featureWrapper\GitWrap``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File gitWrapper.cpp
    :local:
    :backlinks: none
 
-Definition (``include/editor/featureWrapper/GitWrap/gitWrapper.cpp``)
+Definition (``include\editor\featureWrapper\GitWrap\gitWrapper.cpp``)
 ---------------------------------------------------------------------
 
 

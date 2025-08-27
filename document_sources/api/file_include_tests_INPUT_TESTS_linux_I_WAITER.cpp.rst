@@ -4,7 +4,7 @@
 File linux_I_WAITER.cpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_tests_INPUT_TESTS>` (``include/tests/INPUT_TESTS``)
+|exhale_lsh| :ref:`Parent directory <dir_include_tests_INPUT_TESTS>` (``include\tests\INPUT_TESTS``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File linux_I_WAITER.cpp
    :local:
    :backlinks: none
 
-Definition (``include/tests/INPUT_TESTS/linux_I_WAITER.cpp``)
+Definition (``include\tests\INPUT_TESTS\linux_I_WAITER.cpp``)
 -------------------------------------------------------------
 
 

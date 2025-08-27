@@ -503,13 +503,286 @@ Editor Step-2: Editing Control & History view
 
 To see all functions, check :doc:`/api/classeditorObject`
 
-editing...
+Undo
+------
 
 .. tab-set-code:: 
 
     .. code-block:: c++
 
-        bool undoRes = editor->Undo(); // undo on
+        // Undo Mix
+        bool undoRes = editor->Undo<EDIT_ARG_MIX>();
+        
+        // Undo Note
+        undoRes = editor->Undo<EDIT_ARG_NOTE>();
+
+        // Undo KV
+        undoRes = editor->Undo<EDIT_ARG_KEY_VALUE>();
+        
+        // Undo Music
+        undoRes = editor->Undo<EDIT_ARG_MUSIC>();
+        
+    .. code-block:: c#
+
+        bool undoRes = editor->UndoNote();
+        undoRes = editor->UndoMix();
+        undoRes = editor->UndoKV();
+        undoRes = editor->UndoMusic();
+
+    .. code-block:: python
+
+        import pdje_POLYGLOT as pypdje
+        from pdje_POLYGLOT import editorObject
+        undoRes = editor.UndoNote()
+        undoRes = editor.UndoKV()
+        undoRes = editor.UndoMix()
+        undoRes = editor.UndoMusic()
+        
+    .. code-block:: gdscript
+
+        var undoRes = editor.Undo(editor.NOTE, "")
+        undoRes = editor.Undo(editor.MUSIC, "music name")
+        undoRes = editor.Undo(editor.MIX, "")
+        undoRes = editor.Undo(editor.KV, "")
+
+Redo
+-------
+
+.. tab-set-code:: 
+
+    .. code-block:: c++
+
+        // Redo Mix
+        bool RedoRes = editor->Redo<EDIT_ARG_MIX>();
+        
+        // Redo Note
+        RedoRes = editor->Redo<EDIT_ARG_NOTE>();
+
+        // Redo KV
+        RedoRes = editor->Redo<EDIT_ARG_KEY_VALUE>();
+        
+        // Redo Music
+        RedoRes = editor->Redo<EDIT_ARG_MUSIC>();
+        
+    .. code-block:: c#
+
+        bool RedoRes = editor->RedoNote();
+        RedoRes = editor->RedoMix();
+        RedoRes = editor->RedoKV();
+        RedoRes = editor->RedoMusic();
+
+    .. code-block:: python
+
+        import pdje_POLYGLOT as pypdje
+        from pdje_POLYGLOT import editorObject
+        RedoRes = editor.RedoNote()
+        RedoRes = editor.RedoKV()
+        RedoRes = editor.RedoMix()
+        RedoRes = editor.RedoMusic()
+        
+    .. code-block:: gdscript
+
+        var RedoRes = editor.Redo(editor.NOTE, "")
+        RedoRes = editor.Redo(editor.MUSIC, "music name")
+        RedoRes = editor.Redo(editor.MIX, "")
+        RedoRes = editor.Redo(editor.KV, "")
+
+
+Time travel
+-------------
+
+.. tab-set-code:: 
+
+    .. code-block:: c++
+        
+        //get note edit logs
+        std::string logs = editor->GetLogWithJSONGraph<EDIT_ARG_NOTE>();
+        // std::string logs = editor->GetLogWithJSONGraph<EDIT_ARG_MIX>();
+        // std::string logs = editor->GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
+        // std::string logs = editor->GetLogWithJSONGraph<EDIT_ARG_MUSIC>("music name"); // this is the only difference
+        
+        //parse json. try print them.
+        auto jj = nlohmann::json::parse(logs);
+        
+        //the "BRANCH" has branch lists. this is json array.
+        std::string branchName = jj["BRANCH"].at(0)["NAME"];
+        std::string branch_head_oid = jj["BRANCH"].at(0)["OID"];
+        // "BRANCH" is an array of { "NAME": "...", "OID": "..." }
+        //it has two keys. "NAME", "OID". the oid means the head commit oid of the branch.
+
+        bool GoRes = editor->Go<EDIT_ARG_NOTE>(branchName, branch_head_oid);
+        //bool GoRes = editor->Go<EDIT_ARG_MIX>(branchName, branch_head_oid);
+        //bool GoRes = editor->Go<EDIT_ARG_KEY_VALUE>(branchName, branch_head_oid);
+        //bool GoRes = editor->Go<EDIT_ARG_MUSIC>(branchName, branch_head_oid);
+
+    .. code-block:: c#
+
+        //get logs
+        string logs = editor.GetLogMixJSON();
+        //string logs = editor.GetLogNoteJSON();
+        //string logs = editor.GetLogMusicJSON("music name");
+        //string logs = editor.GetLogKVJSON();
+
+        //editing...
+        
+
+    .. code-block:: python
+
+        import pdje_POLYGLOT as pypdje
+        engine = pypdje.PDJE("database/path")
+
+    .. code-block:: gdscript
+
+        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
+        engine.InitEngine("res://database/path")
+
+
+
+Add line
+-----------
+
+.. tab-set-code:: 
+
+    .. code-block:: c++
+
+        auto engine = new PDJE("database/path");
+
+    .. code-block:: c#
+
+        PDJE engine = new PDJE("database/path");
+
+    .. code-block:: python
+
+        import pdje_POLYGLOT as pypdje
+        engine = pypdje.PDJE("database/path")
+
+    .. code-block:: gdscript
+
+        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
+        engine.InitEngine("res://database/path")
+
+Delete line
+--------------
+
+.. tab-set-code:: 
+
+    .. code-block:: c++
+
+        auto engine = new PDJE("database/path");
+
+    .. code-block:: c#
+
+        PDJE engine = new PDJE("database/path");
+
+    .. code-block:: python
+
+        import pdje_POLYGLOT as pypdje
+        engine = pypdje.PDJE("database/path")
+
+    .. code-block:: gdscript
+
+        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
+        engine.InitEngine("res://database/path")
+
+Get all lines
+--------------
+
+.. tab-set-code:: 
+
+    .. code-block:: c++
+
+        auto engine = new PDJE("database/path");
+
+    .. code-block:: c#
+
+        PDJE engine = new PDJE("database/path");
+
+    .. code-block:: python
+
+        import pdje_POLYGLOT as pypdje
+        engine = pypdje.PDJE("database/path")
+
+    .. code-block:: gdscript
+
+        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
+        engine.InitEngine("res://database/path")
+
+Get diff
+------------
+
+.. tab-set-code:: 
+
+    .. code-block:: c++
+
+        auto engine = new PDJE("database/path");
+
+    .. code-block:: c#
+
+        PDJE engine = new PDJE("database/path");
+
+    .. code-block:: python
+
+        import pdje_POLYGLOT as pypdje
+        engine = pypdje.PDJE("database/path")
+
+    .. code-block:: gdscript
+
+        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
+        engine.InitEngine("res://database/path")
+
+Get edit logs
+---------------
+
+
+.. tab-set-code:: 
+
+    .. code-block:: c++
+
+        /*
+        JSON structure produced:
+
+        {
+        "BRANCH": [                          // branch head list
+            {
+            "NAME": string,                  // branch name (e.g., "main")
+            "OID":  string                   // head commit oid (40-hex from git_oid_tostr_s)
+            },
+            ...
+        ],
+        "COMMIT": [                          // commit metadata list
+            {
+            "OID":      string,              // commit oid (40-hex)
+            "EMAIL":    string,              // author email
+            "NAME":     string,              // author name
+            "PARENTID": string               // parent commit oid (may be empty/zero for initial)
+            },
+            ...
+        ]
+        }
+        */
+        auto engine = new PDJE("database/path");
+
+    .. code-block:: c#
+
+        PDJE engine = new PDJE("database/path");
+
+    .. code-block:: python
+
+        import pdje_POLYGLOT as pypdje
+        engine = pypdje.PDJE("database/path")
+
+    .. code-block:: gdscript
+
+        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
+        engine.InitEngine("res://database/path")
+
+Update edit logs
+
+.. tab-set-code:: 
+
+    .. code-block:: c++
+
+        auto engine = new PDJE("database/path");
 
     .. code-block:: c#
 

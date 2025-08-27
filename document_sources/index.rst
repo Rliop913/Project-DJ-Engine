@@ -14,15 +14,37 @@ PDJE’s modular core provides:
 Quick Start
 -----------
 
+Prerequisites:
+
+- C++20 compatible compiler
+- CMake 3.12 or later
+- SWIG
+- OpenSSL
+- [Conan](https://conan.io/)
+
 Clone and build PDJE in a few steps:
-
+on linux & macos
 .. code-block:: bash
+  bash ./BuildInitwithConan.sh . Release
+  mkdir build
+  cd build
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="../conan_cmakes/conan_toolchain.cmake" -DPDJE_DYNAMIC=OFF #to get dynamic library, change here
+  cmake --build . --parallel #add your maximum number of cores
 
-   git clone https://github.com/Rliop913/Project_DJ_Engine.git
-   cd Project_DJ_Engine
-   mkdir build && cd build
-   cmake ..
-   cmake --build . --parallel
+on windows
+.. code-block:: bash  
+  ./BuildInitwithConan.bat . static Release
+  #to get dynamic library, change static into dynamic
+  mkdir build
+  cd build
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="../conan_cmakes/conan_toolchain.cmake" -DPDJE_DYNAMIC=OFF #to get dynamic library, change here
+  cmake --build . --config Release --parallel #add your maximum number of cores
+
+.. warning:: 
+  To change the build type (Debug/Release) or switch between static and dynamic builds,  
+  you must re-run the `BuildInitwithConan` script with the new options.  
+  Otherwise, Conan dependencies may not be configured correctly.
+
 
 Learn about PDJE's modules and usage in the :doc:`Getting Started` documentation.
 
@@ -112,8 +134,23 @@ Additional Resources
 - 💻 **GitHub**: https://github.com/Rliop913/Project_DJ_Engine  
 - 📄 **License**: LGPLv2.1 (by SoundTouch License)
 - 🎮 **Godot Plugin**: https://github.com/Rliop913/PDJE_Godot_Plugin
-
+- 📦 **Plugin Prebuilt**: https://github.com/Rliop913/Project_DJ_Godot
+  
 --------------------
+
+CI/CD Call Graph
+-------------------
+
+.. mermaid:: 
+  
+  flowchart TD
+  Project_DJ_Engine --> PDJE_Godot_Plugin
+  PDJE_Godot_Plugin --> Project_DJ_Godot
+
+  origin_build_success --> Project_DJ_Engine
+  manual_release --> PDJE_Godot_Plugin
+
+
 
 .. toctree::
   :maxdepth: 1

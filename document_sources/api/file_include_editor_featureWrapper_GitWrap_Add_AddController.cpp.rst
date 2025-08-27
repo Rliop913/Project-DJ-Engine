@@ -4,7 +4,7 @@
 File AddController.cpp
 ======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Add>` (``include/editor/featureWrapper/GitWrap/Add``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Add>` (``include\editor\featureWrapper\GitWrap\Add``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File AddController.cpp
    :local:
    :backlinks: none
 
-Definition (``include/editor/featureWrapper/GitWrap/Add/AddController.cpp``)
+Definition (``include\editor\featureWrapper\GitWrap\Add\AddController.cpp``)
 ----------------------------------------------------------------------------
 
 

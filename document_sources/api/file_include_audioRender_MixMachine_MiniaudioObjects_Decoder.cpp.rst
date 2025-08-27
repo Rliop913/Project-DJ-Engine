@@ -4,7 +4,7 @@
 File Decoder.cpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MiniaudioObjects>` (``include/audioRender/MixMachine/MiniaudioObjects``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MiniaudioObjects>` (``include\audioRender\MixMachine\MiniaudioObjects``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Decoder.cpp
    :local:
    :backlinks: none
 
-Definition (``include/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp``)
+Definition (``include\audioRender\MixMachine\MiniaudioObjects\Decoder.cpp``)
 ----------------------------------------------------------------------------
 
 

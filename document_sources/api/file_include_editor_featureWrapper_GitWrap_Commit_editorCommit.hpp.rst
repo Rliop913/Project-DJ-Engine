@@ -4,7 +4,7 @@
 File editorCommit.hpp
 =====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Commit>` (``include/editor/featureWrapper/GitWrap/Commit``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Commit>` (``include\editor\featureWrapper\GitWrap\Commit``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ Lightweight wrappers around Git commit objects.
    :local:
    :backlinks: none
 
-Definition (``include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp``)
+Definition (``include\editor\featureWrapper\GitWrap\Commit\editorCommit.hpp``)
 ------------------------------------------------------------------------------
 
 

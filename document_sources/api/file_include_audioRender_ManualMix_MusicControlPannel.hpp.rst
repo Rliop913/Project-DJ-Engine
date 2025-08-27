@@ -4,7 +4,7 @@
 File MusicControlPannel.hpp
 ===========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_ManualMix>` (``include/audioRender/ManualMix``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_ManualMix>` (``include\audioRender\ManualMix``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File MusicControlPannel.hpp
    :local:
    :backlinks: none
 
-Definition (``include/audioRender/ManualMix/MusicControlPannel.hpp``)
+Definition (``include\audioRender\ManualMix\MusicControlPannel.hpp``)
 ---------------------------------------------------------------------
 
 
