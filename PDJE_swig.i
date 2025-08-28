@@ -17,7 +17,7 @@
     #include "editorCommit.hpp"
     #include "SWIG_editor_visitor.hpp"
     #include "EditorArgs.hpp"
-    
+    #include "MixBinary.capnp.h"
     // #include "editorObject.hpp"
     #include "rocksdb/rocksdb_namespace.h"
     #include <filesystem>
@@ -28,6 +28,7 @@
 %}
 
 %include "PDJE_EXPORT_SETTER.hpp"
+
 %include <std_vector.i>
 %include <std_string.i>
 // %include <std_unique_ptr.i>
@@ -82,6 +83,68 @@ namespace fs = std::filesystem;
 %feature("director") KVVisitor;
 
 %feature("director") MusicVisitor;
+
+%inline %{
+#ifdef SWIG
+namespace PDJE_ENUM {
+  enum class TypeEnum :uint16_t{
+    FILTER = 0,
+    EQ,
+    DISTORTION,
+    CONTROL,
+    VOL,
+    LOAD,
+    UNLOAD,
+    BPM_CONTROL,
+    ECHO,
+    OSC_FILTER,
+    FLANGER,
+    PHASER,
+    TRANCE,
+    PANNER,
+    BATTLE_DJ,
+    ROLL,
+    COMPRESSOR,
+    ROBOT,
+  };
+  enum class DetailEnum :uint16_t{
+    HIGH = 0,
+    MID,
+    LOW,
+    PAUSE,
+    CUE,
+    TRIM,
+    FADER,
+    TIME_STRETCH,
+    SPIN,
+    PITCH,
+    REV,
+    SCRATCH,
+    BSCRATCH,
+  };
+  enum ITPL_ENUM {
+    ITPL_LINEAR =0,
+    ITPL_COSINE,
+    ITPL_CUBIC,
+    ITPL_FLAT
+  };
+}
+#else
+namespace PDJE_ENUM{
+
+  using TypeEnum = ::capnp::schemas::TypeEnum_f4ee4873bc65f8f0;
+  using DetailEnum = ::capnp::schemas::DetailEnum_c6c88c32e11afb23;
+  enum ITPL_ENUM {
+    ITPL_LINEAR =0,
+    ITPL_COSINE,
+    ITPL_CUBIC,
+    ITPL_FLAT
+  };
+}
+#endif
+
+%}
+
 
 
 %inline %{
@@ -192,16 +255,16 @@ struct git_oid;
 
   // ========== Go (브랜치 스위치) ==========
   // 편의 오버로드: commitID 생략
-  bool GoNote(const std::string& branchName, git_oid* commitID) {
+  bool GoNote(const std::string& branchName, const std::string& commitID) {
     return $self->Go<EDIT_ARG_NOTE>(branchName, commitID);
   }
-  bool GoMix(const std::string& branchName, git_oid* commitID) {
+  bool GoMix(const std::string& branchName, const std::string& commitID) {
     return $self->Go<EDIT_ARG_MIX>(branchName, commitID);
   }
-  bool GoKV(const std::string& branchName, git_oid* commitID) {
+  bool GoKV(const std::string& branchName, const std::string& commitID) {
     return $self->Go<EDIT_ARG_KEY_VALUE>(branchName, commitID);
   }
-  bool GoMusic(const std::string& branchName, git_oid* commitID) {
+  bool GoMusic(const std::string& branchName, const std::string& commitID) {
     return $self->Go<EDIT_ARG_MUSIC>(branchName, commitID);
   }
 

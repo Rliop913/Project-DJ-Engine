@@ -42,3 +42,10 @@ class PDJE_API audioRender {
     audioRender()  = default;
     ~audioRender() = default;
 };
+
+enum ITPL_ENUM {
+  ITPL_LINEAR =0,
+  ITPL_COSINE,
+  ITPL_CUBIC,
+  ITPL_FLAT
+};

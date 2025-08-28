@@ -673,35 +673,52 @@ To get necessary args, See :ref:`get-edit-logs`
 Add line
 -----------
 
+See :ref:`about-mix-data` first.
+
 .. tab-set-code:: 
 
     .. code-block:: c++
 
-        //mix args examples
         EDIT_ARG_MIX mixs;
         
-        mixs.type;
-        mixs.details;
-        
-        mixs.ID;
-        
-        mixs.bar;
-        mixs.beat;
-        mixs.separate;
+        mixs.type = TypeEnum::FILTER; //Filter
+        mixs.details = DetailEnum::LOW; //Low pass
 
-        mixs.first;
-        mixs.second;
-        mixs.third;
-        
-        mixs.Ebar;
-        mixs.Ebeat;
-        mixs.Eseparate;
+        mixs.ID = 1; //Deck number. access music with this.
 
-        auto engine = new PDJE("database/path");
+        mixs.first = ITPL_ENUM::ITPL_COSINE; // first arg
+        mixs.second = "5000,1000,2000,3000,4000,5000,5500,6000"; // second arg, eight point values
+        // mixs.first = ITPL_ENUM::ITPL_FLAT; // if no need interpolation
+        // mixs.second = "5000"; // just one value
+        
+        mixs.third = "NONE"; // third arg
+
+        mixs.beat = 0;
+        mixs.subBeat = 0;
+        mixs.separate = 0;
+        //"start_position" = beat + (beat / separate) * subBeat
+
+        mixs.Ebeat = 16;//end beat
+        mixs.EsubBeat = 2;//end subBeat
+        mixs.Eseparate = 4;//end separate
+        //"end_position" = ebeat + (ebeat / eseparate) * esubBeat
+
+        //summation: add low pass filter from "start_position" to "end_position" with interpolation
+
+        editor->AddLine(mixs);//add mix data
+
+        // EDIT_ARG_NOTE data;
+        // EDIT_ARG_KEY_VALUE data;
+        // EDIT_ARG_MUSIC data;
+
+        // editor->AddLine(data);
+
 
     .. code-block:: c#
 
-        PDJE engine = new PDJE("database/path");
+        EDIT_ARG_MIX mixs = new EDIT_ARG_MIX();
+
+        engine.editor.AddLineMix(mixs);
 
     .. code-block:: python
 
