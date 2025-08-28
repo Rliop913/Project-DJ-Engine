@@ -2,6 +2,7 @@
 %{
     #include <vector>
     #include <memory>
+    #include "MixBinary.capnp.h"
     #include "PDJE_EXPORT_SETTER.hpp"
     #include <optional>
     #include "PDJE_interface.hpp"
@@ -17,7 +18,7 @@
     #include "editorCommit.hpp"
     #include "SWIG_editor_visitor.hpp"
     #include "EditorArgs.hpp"
-    #include "MixBinary.capnp.h"
+    
     // #include "editorObject.hpp"
     #include "rocksdb/rocksdb_namespace.h"
     #include <filesystem>
@@ -32,6 +33,10 @@
 %include <std_vector.i>
 %include <std_string.i>
 // %include <std_unique_ptr.i>
+
+%rename(TypeEnum) capnp::schemas::TypeEnum_f4ee4873bc65f8f0;
+%rename(DetailEnum) capnp::schemas::DetailEnum_c6c88c32e11afb23;
+%include "FAKE_CAPNP_ENUMS_FOR_SWIG.hpp"
 %include <std_shared_ptr.i>
 %shared_ptr(audioPlayer)
 %shared_ptr(editorObject)
@@ -84,66 +89,66 @@ namespace fs = std::filesystem;
 
 %feature("director") MusicVisitor;
 
-%inline %{
-#ifdef SWIG
-namespace PDJE_ENUM {
-  enum class TypeEnum :uint16_t{
-    FILTER = 0,
-    EQ,
-    DISTORTION,
-    CONTROL,
-    VOL,
-    LOAD,
-    UNLOAD,
-    BPM_CONTROL,
-    ECHO,
-    OSC_FILTER,
-    FLANGER,
-    PHASER,
-    TRANCE,
-    PANNER,
-    BATTLE_DJ,
-    ROLL,
-    COMPRESSOR,
-    ROBOT,
-  };
-  enum class DetailEnum :uint16_t{
-    HIGH = 0,
-    MID,
-    LOW,
-    PAUSE,
-    CUE,
-    TRIM,
-    FADER,
-    TIME_STRETCH,
-    SPIN,
-    PITCH,
-    REV,
-    SCRATCH,
-    BSCRATCH,
-  };
-  enum ITPL_ENUM {
-    ITPL_LINEAR =0,
-    ITPL_COSINE,
-    ITPL_CUBIC,
-    ITPL_FLAT
-  };
-}
-#else
-namespace PDJE_ENUM{
+// %inline %{
+// #ifdef SWIG
+// namespace PDJE_ENUM {
+//   enum class TypeEnum :uint16_t{
+//     FILTER = 0,
+//     EQ,
+//     DISTORTION,
+//     CONTROL,
+//     VOL,
+//     LOAD,
+//     UNLOAD,
+//     BPM_CONTROL,
+//     ECHO,
+//     OSC_FILTER,
+//     FLANGER,
+//     PHASER,
+//     TRANCE,
+//     PANNER,
+//     BATTLE_DJ,
+//     ROLL,
+//     COMPRESSOR,
+//     ROBOT,
+//   };
+//   enum class DetailEnum :uint16_t{
+//     HIGH = 0,
+//     MID,
+//     LOW,
+//     PAUSE,
+//     CUE,
+//     TRIM,
+//     FADER,
+//     TIME_STRETCH,
+//     SPIN,
+//     PITCH,
+//     REV,
+//     SCRATCH,
+//     BSCRATCH,
+//   };
+//   enum ITPL_ENUM {
+//     ITPL_LINEAR =0,
+//     ITPL_COSINE,
+//     ITPL_CUBIC,
+//     ITPL_FLAT
+//   };
+// }
+// #else
+// namespace PDJE_ENUM{
 
-  using TypeEnum = ::capnp::schemas::TypeEnum_f4ee4873bc65f8f0;
-  using DetailEnum = ::capnp::schemas::DetailEnum_c6c88c32e11afb23;
-  enum ITPL_ENUM {
-    ITPL_LINEAR =0,
-    ITPL_COSINE,
-    ITPL_CUBIC,
-    ITPL_FLAT
-  };
-}
-#endif
+//   using TypeEnum = ::capnp::schemas::TypeEnum_f4ee4873bc65f8f0;
+//   using DetailEnum = ::capnp::schemas::DetailEnum_c6c88c32e11afb23;
+//   enum ITPL_ENUM {
+//     ITPL_LINEAR =0,
+//     ITPL_COSINE,
+//     ITPL_CUBIC,
+//     ITPL_FLAT
+//   };
+// }
+// #endif
 
-%}
+// %}
 
 
 
