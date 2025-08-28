@@ -1,19 +1,19 @@
 #pragma once
 #include "DeckData.hpp"
 
-class PhaserMan{
-public:
+class PhaserMan {
+  public:
     float bps;
     float PhaserDryWet;
     ARGSETTER
-    makeArgSetter(){
-        return {
-            {"Bps", [this](double value) {
-                this->bps = static_cast<float>(value);
-            }},
-            {"PhaserDryWet", [this](double value) {
-                this->PhaserDryWet = static_cast<float>(value);
-            }}
-        };
+    makeArgSetter()
+    {
+        return { { "Bps",
+                   [this](double value) {
+                       this->bps = static_cast<float>(value);
+                   } },
+                 { "PhaserDryWet", [this](double value) {
+                      this->PhaserDryWet = static_cast<float>(value);
+                  } } };
     }
 };

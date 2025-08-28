@@ -15,18 +15,17 @@
 /**
  * @brief Generic device identifier used by the input module.
  */
-struct PDJE_IDEV{
-    struct Finders{
+struct PDJE_IDEV {
+    struct Finders {
         std::string devName;
         std::string vendorID;
         std::string productID;
     };
     std::string busType;
     std::string devType;
-    struct Specifiers{
+    struct Specifiers {
         DevID devID;
     };
-
 };
 
 /**
@@ -34,29 +33,32 @@ struct PDJE_IDEV{
  *
  * Searches for connected devices and pairs them with the engine.
  */
-class PDJE_Input{
-private:
-
-public:
+class PDJE_Input {
+  private:
+  public:
     /**
      * @brief Scan the system for available input devices.
      */
-    void search();
+    void
+    search();
 
     /**
      * @brief Register a device with the engine.
      */
-    void set();
+    void
+    set();
 
     /**
      * @brief Retrieve the current device state.
      */
-    void get();
+    void
+    get();
 
     /**
      * @brief Pair the found devices with appropriate handlers.
      */
-    void pair_job();
+    void
+    pair_job();
 
     /// Constructor.
     PDJE_Input();
@@ -65,13 +67,12 @@ public:
     ~PDJE_Input();
 };
 
-
 // struct DuckTypeDevice{
 //     bool HAS_KEY_Q_W_E_R_T_Y = false;
 //     bool HAS_KEY = false;
 //     bool HAS_RELATIVE_AXIS_SENSOR = false;
 //     bool HAS_ABSOLUTE_AXIS_SENSOR = false;
-    
+
 // };
 
 // struct DeviceData{

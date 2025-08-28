@@ -1,15 +1,15 @@
 #pragma once
 
-#include <vector>
 #include <algorithm>
-#include <string>
-#include <thread>
 #include <mutex>
 #include <optional>
+#include <string>
+#include <thread>
+#include <vector>
 
+#include "Bpm.hpp"
 #include "CapnpBinary.hpp"
 #include "Mix.hpp"
-#include "Bpm.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
 /**
  * @brief This Translate capnp data into cpp data sturct.
@@ -22,21 +22,23 @@
  * }
  * \enddot
  */
-class PDJE_API MixTranslator{
-private:
+class PDJE_API MixTranslator {
+  private:
     unsigned int usable_threads = 0;
-public:
+
+  public:
     std::optional<MIX> mixs;
     std::optional<BPM> bpms;
 
     /**
      * @brief read capnp mix binary data and init MIX and BPM
-     * 
+     *
      * @param binary the capnp Mix binary reader wrapper
-     * @return true 
-     * @return false 
+     * @return true
+     * @return false
      */
-    bool Read(const CapReader<MixBinaryCapnpData>& binary);
+    bool
+    Read(const CapReader<MixBinaryCapnpData> &binary);
 
     MixTranslator();
     ~MixTranslator();

@@ -17,19 +17,21 @@
  * }
  * \enddot
  */
-class PDJE_API MusicTranslator{
-public:
+class PDJE_API MusicTranslator {
+  public:
     BpmStruct bpms;
     /**
      * @brief reads capnp music binary data and fills BpmStruct.
-     * 
+     *
      * @param binary capnp binary data
      * @param startFrame the start beat's frame position.
-     * @return true 
-     * @return false 
+     * @return true
+     * @return false
      */
-    bool Read(const CapReader<MusicBinaryCapnpData>& binary, unsigned long long startFrame);
+    bool
+    Read(const CapReader<MusicBinaryCapnpData> &binary,
+         unsigned long long                     startFrame);
 
-    MusicTranslator() = default;
+    MusicTranslator()  = default;
     ~MusicTranslator() = default;
 };

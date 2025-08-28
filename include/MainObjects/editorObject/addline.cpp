@@ -1,18 +1,18 @@
 #include "editorObject.hpp"
 
-template<> 
-PDJE_API
-bool
-editorObject::AddLine(const EDIT_ARG_MUSIC& obj)
+template <>
+PDJE_API bool
+editorObject::AddLine(const EDIT_ARG_MUSIC &obj)
 {
     auto safeMus = PDJE_Name_Sanitizer::sanitizeFileName(obj.musicName);
-    if(!safeMus){
-        critlog("Music name is not sanitized from editorObject Addline. musicName: ");
+    if (!safeMus) {
+        critlog("Music name is not sanitized from editorObject Addline. "
+                "musicName: ");
         critlog(obj.musicName);
         return false;
     }
-    for(auto& i : E_obj->musicHandle){
-        if(i.musicName == safeMus.value()){
+    for (auto &i : E_obj->musicHandle) {
+        if (i.musicName == safeMus.value()) {
             i.jsonh.add(obj.arg);
             return DefaultSaveFunction<EDIT_ARG_MUSIC>(i, obj);
         }
@@ -21,52 +21,50 @@ editorObject::AddLine(const EDIT_ARG_MUSIC& obj)
     return false;
 }
 
-template<> 
-PDJE_API
-bool
-editorObject::AddLine(const EDIT_ARG_MIX& obj)
+template <>
+PDJE_API bool
+editorObject::AddLine(const EDIT_ARG_MIX &obj)
 {
-    if(obj.type == TypeEnum::LOAD){
+    if (obj.type == TypeEnum::LOAD) {
         auto safeObj = obj;
-        auto first = PDJE_Name_Sanitizer::sanitizeFileName(safeObj.first);
-        auto second = PDJE_Name_Sanitizer::sanitizeFileName(safeObj.second);
-        if(!first || !second){
-            critlog("Mix name is not sanitized from editorObject Addline. first: ");
+        auto first   = PDJE_Name_Sanitizer::sanitizeFileName(safeObj.first);
+        auto second  = PDJE_Name_Sanitizer::sanitizeFileName(safeObj.second);
+        if (!first || !second) {
+            critlog(
+                "Mix name is not sanitized from editorObject Addline. first: ");
             critlog(obj.first);
             critlog("second: ");
             critlog(obj.second);
             return false;
         }
-        safeObj.first = first.value();
+        safeObj.first  = first.value();
         safeObj.second = second.value();
-        if(!E_obj->mixHandle.second.add(safeObj)){
+        if (!E_obj->mixHandle.second.add(safeObj)) {
             critlog("load Mix add failed from editorObject Addline. first: ");
             critlog(obj.first);
             critlog("second: ");
             critlog(obj.second);
             return false;
         }
-    }
-    else{
-        if(!E_obj->mixHandle.second.add(obj)){
+    } else {
+        if (!E_obj->mixHandle.second.add(obj)) {
             critlog("Mix add failed from editorObject Addline. obj: ");
             critlog(obj.first);
             critlog("second: ");
             critlog(obj.second);
-            
+
             return false;
         }
     }
     return DefaultSaveFunction<EDIT_ARG_MIX>();
 }
 
-template<> 
-PDJE_API
-bool
-editorObject::AddLine(const EDIT_ARG_NOTE& obj)
+template <>
+PDJE_API bool
+editorObject::AddLine(const EDIT_ARG_NOTE &obj)
 {
 
-    if(!E_obj->noteHandle.second.add(obj)){
+    if (!E_obj->noteHandle.second.add(obj)) {
         critlog("Note add failed from editorObject Addline. obj: ");
         critlog(obj.first);
         critlog("second: ");
@@ -78,40 +76,41 @@ editorObject::AddLine(const EDIT_ARG_NOTE& obj)
     return DefaultSaveFunction<EDIT_ARG_NOTE>();
 }
 
-
-template<> 
-PDJE_API
-bool
-editorObject::AddLine(const EDIT_ARG_KEY_VALUE& obj)
+template <>
+PDJE_API bool
+editorObject::AddLine(const EDIT_ARG_KEY_VALUE &obj)
 {
 
-    if(!E_obj->KVHandler.second.add(obj)) {
+    if (!E_obj->KVHandler.second.add(obj)) {
         critlog("KV add failed from editorObject Addline. obj: ");
         critlog(obj.first);
         critlog("second: ");
         critlog(obj.second);
-        
+
         return false;
     }
     return DefaultSaveFunction<EDIT_ARG_KEY_VALUE>();
 }
 
-bool 
-editorObject::AddLine(const UNSANITIZED& musicName, const DONT_SANITIZE& firstBeat)
+bool
+editorObject::AddLine(const UNSANITIZED   &musicName,
+                      const DONT_SANITIZE &firstBeat)
 {
     auto safeMus = PDJE_Name_Sanitizer::sanitizeFileName(musicName);
-    if(!safeMus){
-        critlog("Music name is not sanitized from editorObject Addline. musicName: ");
+    if (!safeMus) {
+        critlog("Music name is not sanitized from editorObject Addline. "
+                "musicName: ");
         critlog(musicName);
         return false;
     }
-    for(auto& i : E_obj->musicHandle){
-        if(i.musicName == safeMus){
+    for (auto &i : E_obj->musicHandle) {
+        if (i.musicName == safeMus) {
             i.jsonh["FIRST_BEAT"] = firstBeat;
             return true;
         }
     }
-    warnlog("music is not exists. from editorObject AddLine(musicName, firstBeat)");
-    
+    warnlog(
+        "music is not exists. from editorObject AddLine(musicName, firstBeat)");
+
     return false;
 }

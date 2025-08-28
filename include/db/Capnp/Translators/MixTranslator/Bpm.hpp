@@ -1,9 +1,9 @@
 #pragma once
 
-#include <vector>
-#include <thread>
 #include <mutex>
 #include <string>
+#include <thread>
+#include <vector>
 
 #include "FrameCalc.hpp"
 #include "Mix.hpp"
@@ -17,12 +17,14 @@
  * }
  * \enddot
  */
-class PDJE_API BPM{
-private:
+class PDJE_API BPM {
+  private:
     unsigned usable_threads;
-public:
+
+  public:
     BpmStruct bpmVec;
-    bool getBpms(MIX& mixx);
+    bool
+    getBpms(MIX &mixx);
     BPM();
     ~BPM();
 };

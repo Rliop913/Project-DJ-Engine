@@ -1,21 +1,23 @@
 #include "editorCommit.hpp"
-#include <cstring>
 #include "PDJE_LOG_SETTER.hpp"
+#include <cstring>
 using namespace gitwrap;
 
 bool
-commitList::UpdateCommits(git_repository* repo)
+commitList::UpdateCommits(git_repository *repo)
 {
     clist.back();
-    git_revwalk* walker = nullptr;
-    if(git_revwalk_new(&walker, repo) != 0){
-        critlog("failed to walk reverse from commitList UpdateCommits. gitLog: ");
+    git_revwalk *walker = nullptr;
+    if (git_revwalk_new(&walker, repo) != 0) {
+        critlog(
+            "failed to walk reverse from commitList UpdateCommits. gitLog: ");
         critlog(git_error_last()->message);
         return false;
     }
-    
-    if(git_revwalk_push_head(walker) != 0){
-        critlog("failed to revwalk push head from commitList UpdateCommits. gitLog: ");
+
+    if (git_revwalk_push_head(walker) != 0) {
+        critlog("failed to revwalk push head from commitList UpdateCommits. "
+                "gitLog: ");
         critlog(git_error_last()->message);
         git_revwalk_free(walker);
         return false;
@@ -23,17 +25,19 @@ commitList::UpdateCommits(git_repository* repo)
 
     git_revwalk_sorting(walker, GIT_SORT_TIME);
 
-    git_oid tempid;
+    git_oid           tempid;
     std::list<commit> templist;
-    while(git_revwalk_next(&tempid, walker) == 0){
-        if(OkToAdd(tempid)){
+    while (git_revwalk_next(&tempid, walker) == 0) {
+        if (OkToAdd(tempid)) {
             templist.emplace_front();
             templist.front().commitID = tempid;
-            if(git_commit_lookup(&templist.front().commitPointer, repo, &templist.front().commitID) == 0){
-                templist.front().msg = std::string(git_commit_message(templist.front().commitPointer));
+            if (git_commit_lookup(&templist.front().commitPointer,
+                                  repo,
+                                  &templist.front().commitID) == 0) {
+                templist.front().msg = std::string(
+                    git_commit_message(templist.front().commitPointer));
             }
-        }
-        else{
+        } else {
             clist.splice(clist.end(), templist);
             break;
         }
@@ -45,56 +49,47 @@ commitList::UpdateCommits(git_repository* repo)
 bool
 commitList::OkToAdd(git_oid id)
 {
-    if(clist.empty()){
+    if (clist.empty()) {
         return true;
-    }
-    else if(git_oid_cmp(&clist.back().commitID, &id) != 0){
+    } else if (git_oid_cmp(&clist.back().commitID, &id) != 0) {
         return true;
-    }
-    else{
+    } else {
         return false;
     }
 }
 
-
-
-
-
-commit::commit(git_oid oid, git_repository* rep)
-: commitID(oid) 
+commit::commit(git_oid oid, git_repository *rep) : commitID(oid)
 {
-    if(git_commit_lookup(&commitPointer, rep, &commitID) == 0){
+    if (git_commit_lookup(&commitPointer, rep, &commitID) == 0) {
         msg = git_commit_message(commitPointer);
-    }
-    else{
-        critlog("failed to lookup commit pointer. from commit::commit(oid, rep). gitLog: ");
+    } else {
+        critlog("failed to lookup commit pointer. from commit::commit(oid, "
+                "rep). gitLog: ");
         critlog(git_error_last()->message);
         commitPointer = nullptr;
     }
 }
 
-
-commit::commit(const std::string commitMSG, git_repository* rep)
-    : msg(commitMSG) 
+commit::commit(const std::string commitMSG, git_repository *rep)
+    : msg(commitMSG)
 {
-    git_revwalk* walker = nullptr;
+    git_revwalk *walker = nullptr;
     git_revwalk_new(&walker, rep);
     git_revwalk_push_head(walker);
 
     git_oid tempoid;
-    while(git_revwalk_next(&tempoid, walker) == 0){
+    while (git_revwalk_next(&tempoid, walker) == 0) {
         git_commit_lookup(&commitPointer, rep, &tempoid);
-        if(strcmp( git_commit_message(commitPointer), msg.c_str()) == 0){
+        if (strcmp(git_commit_message(commitPointer), msg.c_str()) == 0) {
             commitID = tempoid;
             break;
-        }
-        else{
-            critlog("something failed. from commit::commit(msg, rep). gitLog: ");
+        } else {
+            critlog(
+                "something failed. from commit::commit(msg, rep). gitLog: ");
             critlog(git_error_last()->message);
             git_commit_free(commitPointer);
             commitPointer = nullptr;
         }
     }
     git_revwalk_free(walker);
-    
 }

@@ -1,36 +1,38 @@
 #include "LINUX_INPUT.hpp"
-#include <fcntl.h>
-#include <unistd.h>
-#include <iostream>
-#include <sys/syscall.h>
-#include <linux/futex.h>
-#include <sys/mman.h>
-#include <spawn.h>
-#include <sys/wait.h>
 #include <chrono>
+#include <fcntl.h>
+#include <iostream>
+#include <linux/futex.h>
+#include <spawn.h>
+#include <sys/mman.h>
+#include <sys/syscall.h>
+#include <sys/wait.h>
+#include <unistd.h>
 
 void
-futex_wait(int* addr)
+futex_wait(int *addr)
 {
     syscall(SYS_futex, addr, FUTEX_WAIT, 0, NULL, NULL, 0);
 }
 
 void
-futex_wake(int* addr)
+futex_wake(int *addr)
 {
     syscall(SYS_futex, addr, FUTEX_WAKE, 1, NULL, NULL, 0);
 }
 
 extern char **environ;
 
-int main()
+int
+main()
 {
-    std::string SHM_FUTEX_NAME = "/PDJE_SHARED_MEMORY_FOR_FUTEX";
+    std::string SHM_FUTEX_NAME        = "/PDJE_SHARED_MEMORY_FOR_FUTEX";
     std::string SHM_EVDEV_MIRROR_NAME = "/PDJE_SHARED_MEMORY_FOR_EVDEV_MIRROR";
-    std::string SHM_DELAY = "/PDJE_DELAY_CHECK";
+    std::string SHM_DELAY             = "/PDJE_DELAY_CHECK";
     int delay_shm_fd = shm_open(SHM_DELAY.c_str(), O_CREAT | O_RDWR, 0666);
     int futex_shm_fd = shm_open(SHM_FUTEX_NAME.c_str(), O_CREAT | O_RDWR, 0666);
-    int evdev_shm = shm_open(SHM_EVDEV_MIRROR_NAME.c_str(), O_CREAT | O_RDWR, 0666);
+    int evdev_shm =
+        shm_open(SHM_EVDEV_MIRROR_NAME.c_str(), O_CREAT | O_RDWR, 0666);
 
     auto temp = std::chrono::high_resolution_clock::now();
 
@@ -38,46 +40,54 @@ int main()
     ftruncate(evdev_shm, sizeof(int));
     ftruncate(delay_shm_fd, sizeof(std::chrono::_V2::system_clock::time_point));
 
-    int* futexVar = (int*)mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, futex_shm_fd, 0);
-    int* tempstopper = (int*)mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, evdev_shm, 0);
-    int* evdevEventFD = (int*)mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, evdev_shm, 0);
-    
-    std::chrono::_V2::system_clock::time_point* delay_checker =
-        (std::chrono::_V2::system_clock::time_point*)mmap(
-            NULL, sizeof(std::chrono::_V2::system_clock::time_point),
-            PROT_READ | PROT_WRITE, MAP_SHARED, delay_shm_fd, 0
-        );
+    int *futexVar = (int *)mmap(
+        NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, futex_shm_fd, 0);
+    int *tempstopper = (int *)mmap(
+        NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, evdev_shm, 0);
+    int *evdevEventFD = (int *)mmap(
+        NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, evdev_shm, 0);
+
+    std::chrono::_V2::system_clock::time_point *delay_checker =
+        (std::chrono::_V2::system_clock::time_point *)mmap(
+            NULL,
+            sizeof(std::chrono::_V2::system_clock::time_point),
+            PROT_READ | PROT_WRITE,
+            MAP_SHARED,
+            delay_shm_fd,
+            0);
     *tempstopper = 0;
-    int times = 10;
-    
+    int times    = 10;
+
     pid_t pid;
-    
-    char *waker_args[] = {
-        (char*)"pkexec",
-        (char*)"./testLinuxInput_waker",
-        (char*)SHM_FUTEX_NAME.c_str(),
-        (char*)SHM_EVDEV_MIRROR_NAME.c_str(),
-        nullptr
-    };
-    
-    int status = posix_spawnp(&pid, "pkexec", nullptr, nullptr, waker_args, environ);
+
+    char *waker_args[] = { (char *)"pkexec",
+                           (char *)"./testLinuxInput_waker",
+                           (char *)SHM_FUTEX_NAME.c_str(),
+                           (char *)SHM_EVDEV_MIRROR_NAME.c_str(),
+                           nullptr };
+
+    int status =
+        posix_spawnp(&pid, "pkexec", nullptr, nullptr, waker_args, environ);
 
     // std::system(EXEC_COMMAND.c_str());
     std::chrono::_V2::system_clock::time_point delay;
     // std::chrono::_V2::system_clock::duration delayResult;
-    std::chrono::duration<double, std::nano> nano_duration;
+    std::chrono::duration<double, std::nano>  nano_duration;
     std::chrono::duration<double, std::micro> micro_duration;
-    while(true){
+    while (true) {
         futex_wait(futexVar);
         delay = std::chrono::high_resolution_clock::now();
-        // delayResult = std::chrono::duration_cast<std::chrono::nanoseconds>(delay - (*delay_checker));
-        nano_duration = delay - (*delay_checker);
+        // delayResult =
+        // std::chrono::duration_cast<std::chrono::nanoseconds>(delay -
+        // (*delay_checker));
+        nano_duration  = delay - (*delay_checker);
         micro_duration = delay - (*delay_checker);
-        std::cout << "From Waiter, Delay(Nanosecond): " << nano_duration.count() << std::endl;
-        std::cout << "From Waiter, Delay(Microsecond): " << micro_duration.count() << std::endl;
-        
+        std::cout << "From Waiter, Delay(Nanosecond): " << nano_duration.count()
+                  << std::endl;
+        std::cout << "From Waiter, Delay(Microsecond): "
+                  << micro_duration.count() << std::endl;
 
-        if(times < 0){
+        if (times < 0) {
             *tempstopper = 1;
             sleep(2);
             break;
@@ -94,14 +104,13 @@ int main()
     shm_unlink(SHM_FUTEX_NAME.c_str());
     shm_unlink(SHM_EVDEV_MIRROR_NAME.c_str());
     shm_unlink(SHM_DELAY.c_str());
-    
-    
+
     // int fd;
     // int rc = 1;
     // std::string posname = "/dev/input/event";
     // int test;
     // syscall(SYS_futex, &test, FUTEX_WAIT, 0, NULL, NULL, 0);
-    
+
     // // seteuid(1000);
     // if(getuid() != 0){
     //     std::cout << "Need SUDO" << getuid() << std::endl;
@@ -137,5 +146,4 @@ int main()
     // libevdev_free(dev);
     return 0;
     // std::cout << "" << std::endl;
-    
 }

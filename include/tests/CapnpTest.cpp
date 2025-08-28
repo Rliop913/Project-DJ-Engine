@@ -1,24 +1,25 @@
 
-#include <hwy/highway.h>
 #include "MUSIC_CTR.hpp"
+#include <hwy/highway.h>
 #include <iostream>
-int main()
+int
+main()
 {
-    Ingredients ing;
+    Ingredients  ing;
     PlayPosition spp;
-    spp.Gidx = 0;
-    spp.Lidx = 123;
+    spp.Gidx   = 0;
+    spp.Lidx   = 123;
     spp.status = MIXSTATE::PLAY;
     PlayPosition Epp;
-    Epp.Gidx = 4800000;
-    Epp.Lidx = Epp.Gidx + spp.Lidx;
+    Epp.Gidx   = 4800000;
+    Epp.Lidx   = Epp.Gidx + spp.Lidx;
     Epp.status = MIXSTATE::END;
     ing.pos.push_back(spp);
     ing.pos.push_back(Epp);
 
     PlayPosition Cpp;
-    Cpp.Gidx = 480000;
-    Cpp.Lidx = 123;
+    Cpp.Gidx   = 480000;
+    Cpp.Lidx   = 123;
     Cpp.status = MIXSTATE::PLAY;
     ing.pos.push_back(Cpp);
 
@@ -26,43 +27,43 @@ int main()
     BpmStruct Lb;
     {
         Gb.fragments.emplace_back();
-        Gb.fragments.back().beat = 0;
-        Gb.fragments.back().subBeat = 0;
-        Gb.fragments.back().bpm = 60;
+        Gb.fragments.back().beat     = 0;
+        Gb.fragments.back().subBeat  = 0;
+        Gb.fragments.back().bpm      = 60;
         Gb.fragments.back().separate = 4;
         Gb.fragments.emplace_back();
-        Gb.fragments.back().beat = 4;
-        Gb.fragments.back().subBeat = 0;
-        Gb.fragments.back().bpm = 120;
+        Gb.fragments.back().beat     = 4;
+        Gb.fragments.back().subBeat  = 0;
+        Gb.fragments.back().bpm      = 120;
         Gb.fragments.back().separate = 4;
         Gb.fragments.emplace_back();
-        Gb.fragments.back().beat = 8;
-        Gb.fragments.back().subBeat = 0;
-        Gb.fragments.back().bpm = 60;
+        Gb.fragments.back().beat     = 8;
+        Gb.fragments.back().subBeat  = 0;
+        Gb.fragments.back().bpm      = 60;
         Gb.fragments.back().separate = 4;
     }
     {
         Lb.fragments.emplace_back();
-        Lb.fragments.back().beat = 0;
+        Lb.fragments.back().beat    = 0;
         Lb.fragments.back().subBeat = 0;
-        Lb.fragments.back().bpm = 120;
+        Lb.fragments.back().bpm     = 120;
         Lb.fragments.emplace_back();
-        Lb.fragments.back().beat = 4;
+        Lb.fragments.back().beat    = 4;
         Lb.fragments.back().subBeat = 0;
-        Lb.fragments.back().bpm = 60;
+        Lb.fragments.back().bpm     = 60;
         Lb.fragments.emplace_back();
-        Lb.fragments.back().beat = 8;
+        Lb.fragments.back().beat    = 8;
         Lb.fragments.back().subBeat = 0;
-        Lb.fragments.back().bpm = 120;
+        Lb.fragments.back().bpm     = 120;
     }
-    
+
     Lb.sortFragment();
     Gb.sortFragment();
     Lb.calcFrame(spp.Lidx);
     Gb.calcFrame();
     ing.Ready(Gb, Lb);
 
-    if(Lb.calcFrame() && Gb.calcFrame()){
+    if (Lb.calcFrame() && Gb.calcFrame()) {
 
         // auto res = ing.FirstStage(Gb, Lb);
         int temp = 0;
