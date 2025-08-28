@@ -155,7 +155,7 @@ MUSIC_CTR::setLOAD(MBData::Reader& RP, litedb& db, FRAME_POS FrameIn)
     startpos.Gidx = FrameIn;
     
     try{
-        startpos.Lidx = std::stoull(searchRes.value()[0].firstBar);
+        startpos.Lidx = std::stoull(searchRes.value()[0].firstBeat);
     }
     catch(std::exception& e){
         critlog("failed to convert string to unsigned longlong. From MUSIC_CTR setLOAD. ErrTitle: ");

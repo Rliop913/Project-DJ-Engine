@@ -92,7 +92,7 @@ editorObject::ConfigNewMusic(
     const UNSANITIZED& NewMusicName, 
     const UNSANITIZED& composer,
     const fs::path& musicPath,
-    const DONT_SANITIZE& firstBar)
+    const DONT_SANITIZE& firstBeat)
 {
     auto safeMus = PDJE_Name_Sanitizer::sanitizeFileName(NewMusicName);
     auto safeComposer = PDJE_Name_Sanitizer::sanitizeFileName(composer);
@@ -130,7 +130,7 @@ editorObject::ConfigNewMusic(
             critlog(e.what());
             return false;
         }
-        E_obj->musicHandle.back().jsonh["FIRST_BAR"] = firstBar;
+        E_obj->musicHandle.back().jsonh["FIRST_BEAT"] = firstBeat;
         return true;
     }
     else{

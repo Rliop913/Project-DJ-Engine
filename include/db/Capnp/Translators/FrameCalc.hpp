@@ -25,13 +25,13 @@ using SIMD_FLOAT    = std::vector<float, hwy::AlignedAllocator<float>>;
 #define DMINUTE 60.0
 
 /**
- * @brief Macro for calculates bar-beat approx position
+ * @brief Macro for calculates beat-subBeat approx position
  * 
  */
-#define APPRX(TYPE, BAR, BEAT, SEP)\
-static_cast<TYPE>(BAR) +\
+#define APPRX(TYPE, BEAT, SUBBEAT, SEP)\
+static_cast<TYPE>(BEAT) +\
 (\
-    static_cast<TYPE>(BEAT) / \
+    static_cast<TYPE>(SUBBEAT) / \
     static_cast<TYPE>(SEP)\
 )
 
@@ -41,23 +41,23 @@ static_cast<TYPE>(BAR) +\
  */
 namespace FrameCalc{
     /**
-     * @brief count frame between two bar-beat position.
+     * @brief count frame between two beat-subBeat position.
      * 
-     * @param Sbar start bar
      * @param Sbeat start beat
-     * @param Sseparate start bar-beat's separate value
-     * @param Ebar end bar
+     * @param SsubBeat start subBeat
+     * @param Sseparate start beat-subBeat's separate value
      * @param Ebeat end beat
-     * @param Eseparate end bar-beat's separate value
+     * @param EsubBeat end subBeat
+     * @param Eseparate end beat-subBeat's separate value
      * @param bpm applied bpm.
      * @return unsigned long the calculated Frame Range
      */
     extern unsigned long CountFrame(
-        unsigned long Sbar,
         unsigned long Sbeat,
+        unsigned long SsubBeat,
         unsigned long Sseparate,
-        unsigned long Ebar,
         unsigned long Ebeat,
+        unsigned long EsubBeat,
         unsigned long Eseparate,
         double bpm
     );
@@ -68,8 +68,8 @@ namespace FrameCalc{
  * 
  */
 struct PDJE_API BpmFragment{
-    unsigned long bar;
     unsigned long beat;
+    unsigned long subBeat;
     unsigned long separate;
     unsigned long long frame_to_here = 0;
     double bpm;
@@ -83,7 +83,7 @@ struct PDJE_API BpmStruct{
     /// @brief the fragment data.
     std::vector<BpmFragment> fragments;
 
-    /// @brief Sort the fragments Ascending by the bar-beat approx 
+    /// @brief Sort the fragments Ascending by the beat-beat approx 
     void sortFragment();
     /**
      * @brief fills the value "frame_to_here" in BpmFragments
@@ -96,7 +96,7 @@ struct PDJE_API BpmStruct{
     /**
      * @brief Get the Affected BpmFragment
      * 
-     * @param searchFrag the BpmFragment for search affected position. you should fill bar-beat before use.
+     * @param searchFrag the BpmFragment for search affected position. you should fill beat-beat before use.
      * @return const BpmFragment& the affected BpmFragment
      */
     const BpmFragment& getAffected(const BpmFragment& searchFrag) const;

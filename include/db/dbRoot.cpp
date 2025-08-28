@@ -93,7 +93,7 @@ litedb::CheckTables()
         "MusicPath TEXT NOT NULL, "
         "Bpm DOUBLE NOT NULL, "
         "BpmBinary BLOB NOT NULL, "
-        "FirstBar TEXT NOT NULL "
+        "FirstBeat TEXT NOT NULL "
         ");";
         if(sqlite3_exec(sdb, musmake.c_str(), nullptr, nullptr, nullptr) != SQLITE_OK){
             critlog("failed to create music sqlite exec. from litedb CheckTables. sqliteErrmsg: ");

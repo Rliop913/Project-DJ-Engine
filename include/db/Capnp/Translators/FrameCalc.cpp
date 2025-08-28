@@ -4,11 +4,11 @@
 
 namespace FrameCalc{
     unsigned long CountFrame(
-        unsigned long Sbar,
         unsigned long Sbeat,
+        unsigned long SsubBeat,
         unsigned long Sseparate,
-        unsigned long Ebar,
         unsigned long Ebeat,
+        unsigned long EsubBeat,
         unsigned long Eseparate,
         double bpm
     )
@@ -16,8 +16,8 @@ namespace FrameCalc{
         Sseparate = Sseparate > 0 ? Sseparate : 1;
         Eseparate = Eseparate > 0 ? Eseparate : 1;
         bpm = bpm > 0 ? bpm : 1;
-        auto Sapprx = APPRX(double, Sbar, Sbeat, Sseparate);
-        auto Eapprx = APPRX(double, Ebar, Ebeat, Eseparate);
+        auto Sapprx = APPRX(double, Sbeat, SsubBeat, Sseparate);
+        auto Eapprx = APPRX(double, Ebeat, EsubBeat, Eseparate);
         return static_cast<unsigned long>(
             std::round(
                 (Eapprx - Sapprx) * (DMINUTE / bpm) * DSAMPLERATE
@@ -30,13 +30,13 @@ bool
 sortLambda(const BpmFragment& first, const BpmFragment& second)
 {
     auto F = 
-    static_cast<double>(first.bar) + (
-        static_cast<double>(first.beat) /
+    static_cast<double>(first.beat) + (
+        static_cast<double>(first.subBeat) /
         static_cast<double>(first.separate)
     );
     auto S = 
-    static_cast<double>(second.bar) + (
-        static_cast<double>(second.beat) /
+    static_cast<double>(second.beat) + (
+        static_cast<double>(second.subBeat) /
         static_cast<double>(second.separate)
     );
     return F < S;
@@ -71,8 +71,8 @@ BpmStruct::calcFrame(unsigned long long StartPos)
                 Ep->frame_to_here =
                 Sp->frame_to_here +
                 FrameCalc::CountFrame(
-                    Sp->bar, Sp->beat, Sp->separate,
-                    Ep->bar, Ep->beat, Ep->separate,
+                    Sp->beat, Sp->subBeat, Sp->separate,
+                    Ep->beat, Ep->subBeat, Ep->separate,
                     Sp->bpm
                 );
                 ++Sp;
@@ -93,13 +93,13 @@ searchLambda(const BpmFragment& first, const BpmFragment& second)
 {
     double FA = APPRX(
         double, 
-        first.bar,
         first.beat,
+        first.subBeat,
         first.separate);
     double SA = APPRX(
         double,
-        second.bar,
         second.beat,
+        second.subBeat,
         second.separate);
     return FA < SA;
 }

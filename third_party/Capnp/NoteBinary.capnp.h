@@ -89,15 +89,15 @@ public:
   inline bool hasThird() const;
   inline  ::capnp::Text::Reader getThird() const;
 
-  inline  ::int64_t getBar() const;
-
   inline  ::int64_t getBeat() const;
+
+  inline  ::int64_t getSubBeat() const;
 
   inline  ::int64_t getSeparate() const;
 
-  inline  ::int64_t getEBar() const;
+  inline  ::int64_t getEbeat() const;
 
-  inline  ::int64_t getEBeat() const;
+  inline  ::int64_t getEsubBeat() const;
 
   inline  ::int64_t getESeparate() const;
 
@@ -164,20 +164,20 @@ public:
   inline void adoptThird(::capnp::Orphan< ::capnp::Text>&& value);
   inline ::capnp::Orphan< ::capnp::Text> disownThird();
 
-  inline  ::int64_t getBar();
-  inline void setBar( ::int64_t value);
-
   inline  ::int64_t getBeat();
   inline void setBeat( ::int64_t value);
+
+  inline  ::int64_t getSubBeat();
+  inline void setSubBeat( ::int64_t value);
 
   inline  ::int64_t getSeparate();
   inline void setSeparate( ::int64_t value);
 
-  inline  ::int64_t getEBar();
-  inline void setEBar( ::int64_t value);
+  inline  ::int64_t getEbeat();
+  inline void setEbeat( ::int64_t value);
 
-  inline  ::int64_t getEBeat();
-  inline void setEBeat( ::int64_t value);
+  inline  ::int64_t getEsubBeat();
+  inline void setEsubBeat( ::int64_t value);
 
   inline  ::int64_t getESeparate();
   inline void setESeparate( ::int64_t value);
@@ -461,30 +461,30 @@ inline ::capnp::Orphan< ::capnp::Text> NoteBinaryData::Builder::disownThird() {
       ::capnp::bounded<4>() * ::capnp::POINTERS));
 }
 
-inline  ::int64_t NoteBinaryData::Reader::getBar() const {
-  return _reader.getDataField< ::int64_t>(
-      ::capnp::bounded<0>() * ::capnp::ELEMENTS);
-}
-
-inline  ::int64_t NoteBinaryData::Builder::getBar() {
-  return _builder.getDataField< ::int64_t>(
-      ::capnp::bounded<0>() * ::capnp::ELEMENTS);
-}
-inline void NoteBinaryData::Builder::setBar( ::int64_t value) {
-  _builder.setDataField< ::int64_t>(
-      ::capnp::bounded<0>() * ::capnp::ELEMENTS, value);
-}
-
 inline  ::int64_t NoteBinaryData::Reader::getBeat() const {
   return _reader.getDataField< ::int64_t>(
-      ::capnp::bounded<1>() * ::capnp::ELEMENTS);
+      ::capnp::bounded<0>() * ::capnp::ELEMENTS);
 }
 
 inline  ::int64_t NoteBinaryData::Builder::getBeat() {
   return _builder.getDataField< ::int64_t>(
-      ::capnp::bounded<1>() * ::capnp::ELEMENTS);
+      ::capnp::bounded<0>() * ::capnp::ELEMENTS);
 }
 inline void NoteBinaryData::Builder::setBeat( ::int64_t value) {
+  _builder.setDataField< ::int64_t>(
+      ::capnp::bounded<0>() * ::capnp::ELEMENTS, value);
+}
+
+inline  ::int64_t NoteBinaryData::Reader::getSubBeat() const {
+  return _reader.getDataField< ::int64_t>(
+      ::capnp::bounded<1>() * ::capnp::ELEMENTS);
+}
+
+inline  ::int64_t NoteBinaryData::Builder::getSubBeat() {
+  return _builder.getDataField< ::int64_t>(
+      ::capnp::bounded<1>() * ::capnp::ELEMENTS);
+}
+inline void NoteBinaryData::Builder::setSubBeat( ::int64_t value) {
   _builder.setDataField< ::int64_t>(
       ::capnp::bounded<1>() * ::capnp::ELEMENTS, value);
 }
@@ -503,30 +503,30 @@ inline void NoteBinaryData::Builder::setSeparate( ::int64_t value) {
       ::capnp::bounded<2>() * ::capnp::ELEMENTS, value);
 }
 
-inline  ::int64_t NoteBinaryData::Reader::getEBar() const {
+inline  ::int64_t NoteBinaryData::Reader::getEbeat() const {
   return _reader.getDataField< ::int64_t>(
       ::capnp::bounded<3>() * ::capnp::ELEMENTS);
 }
 
-inline  ::int64_t NoteBinaryData::Builder::getEBar() {
+inline  ::int64_t NoteBinaryData::Builder::getEbeat() {
   return _builder.getDataField< ::int64_t>(
       ::capnp::bounded<3>() * ::capnp::ELEMENTS);
 }
-inline void NoteBinaryData::Builder::setEBar( ::int64_t value) {
+inline void NoteBinaryData::Builder::setEbeat( ::int64_t value) {
   _builder.setDataField< ::int64_t>(
       ::capnp::bounded<3>() * ::capnp::ELEMENTS, value);
 }
 
-inline  ::int64_t NoteBinaryData::Reader::getEBeat() const {
+inline  ::int64_t NoteBinaryData::Reader::getEsubBeat() const {
   return _reader.getDataField< ::int64_t>(
       ::capnp::bounded<4>() * ::capnp::ELEMENTS);
 }
 
-inline  ::int64_t NoteBinaryData::Builder::getEBeat() {
+inline  ::int64_t NoteBinaryData::Builder::getEsubBeat() {
   return _builder.getDataField< ::int64_t>(
       ::capnp::bounded<4>() * ::capnp::ELEMENTS);
 }
-inline void NoteBinaryData::Builder::setEBeat( ::int64_t value) {
+inline void NoteBinaryData::Builder::setEsubBeat( ::int64_t value) {
   _builder.setDataField< ::int64_t>(
       ::capnp::bounded<4>() * ::capnp::ELEMENTS, value);
 }

@@ -11,11 +11,11 @@ struct PDJE_API MixArgs{
     SANITIZED_ORNOT first   = ""                ;
     SANITIZED_ORNOT second  = ""                ;
     SANITIZED_ORNOT third   = ""                ;
-    long long bar           = -1                ;
     long long beat          = -1                ;
+    long long subBeat       = -1                ;
     long long separate      = -1                ;
-    long long Ebar          = -1                ;
     long long Ebeat         = -1                ;
+    long long EsubBeat      = -1                ;
     long long Eseparate     = -1                ;
 };
 
@@ -26,19 +26,19 @@ struct PDJE_API NoteArgs{
     SANITIZED_ORNOT first       = "";
     SANITIZED_ORNOT second      = "";
     SANITIZED_ORNOT third       = "";
-    long long bar               = -1;
     long long beat              = -1;
+    long long subBeat           = -1;
     long long separate          = -1;
-    long long Ebar              = -1;
     long long Ebeat             = -1;
+    long long EsubBeat          = -1;
     long long Eseparate         = -1;
 };
 
 /// Arguments describing a music entry
 struct PDJE_API MusicArgs{
     DONT_SANITIZE bpm       = ""                ;
-    long long bar           = -1                ;
     long long beat          = -1                ;
+    long long subBeat       = -1                ;
     long long separate      = -1                ;
 };
 

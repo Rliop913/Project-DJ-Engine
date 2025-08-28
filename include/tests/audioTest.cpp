@@ -15,17 +15,17 @@ fill(
     int idx,
     TypeEnum Ty,
     DetailEnum De,
-    int bar,
-    int ebar,
+    int beat,
+    int ebeat,
     std::string first,
     std::string second="",
     std::string third=""
 )
 {
-    ret[idx].setBar(bar);
+    ret[idx].setbeat(beat);
     ret[idx].setBeat(0);
     ret[idx].setSeparate(4);
-    ret[idx].setEbar(ebar);
+    ret[idx].setEbeat(ebeat);
     ret[idx].setEbeat(0);
     ret[idx].setEseparate(4);
     ret[idx].setType(Ty);

@@ -8,8 +8,8 @@ MusicTranslator::Read(const CapReader<MusicBinaryCapnpData>& binary, unsigned lo
     for(unsigned long i=0; i<DVec.size(); ++i){
         if(DVec[i].hasBpm()){
             BpmFragment frg;
-            frg.bar = DVec[i].getBar();
             frg.beat = DVec[i].getBeat();
+            frg.subBeat = DVec[i].getSubBeat();
             frg.separate = DVec[i].getSeparate();
             try
             {

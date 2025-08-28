@@ -26,7 +26,7 @@ musdata::musdata(stmt* dbstate)
     musicPath = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(2);
     bpm = dbstate->colGet<COL_TYPE::PDJE_DOUBLE, double>(3);
     bpmBinary = dbstate->colGet<COL_TYPE::PDJE_BLOB, BIN>(4);
-    firstBar = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(5);
+    firstBeat = dbstate->colGet<COL_TYPE::PDJE_TEXT, std::string>(5);
 }
 
 musdata::musdata(
@@ -99,7 +99,7 @@ musdata::GenInsertSTMT(stmt& dbstate, sqlite3* db)
     dbstate.placeHold
     =
     "INSERT INTO MUSIC "
-    "( Title, Composer, MusicPath, Bpm, BpmBinary, FirstBar ) "
+    "( Title, Composer, MusicPath, Bpm, BpmBinary, FirstBeat ) "
     "VALUES "
     "( ?, ?, ?, ?, ?, ?); ";
 
@@ -111,7 +111,7 @@ musdata::GenInsertSTMT(stmt& dbstate, sqlite3* db)
     CHK_BIND( dbstate.bind_text(3, musicPath))
     CHK_BIND( dbstate.bind_double(4, bpm))
     CHK_BIND( dbstate.bind_blob(5, bpmBinary))
-    CHK_BIND( dbstate.bind_text(6, firstBar))
+    CHK_BIND( dbstate.bind_text(6, firstBeat))
 
     return true;
 
@@ -123,7 +123,7 @@ musdata::GenEditSTMT(stmt& dbstate, sqlite3* db, musdata& toEdit)
     dbstate.placeHold
     =
     "UPDATE MUSIC "
-    "SET Title = ?, Composer = ?, MusicPath = ?, Bpm = ?, BpmBinary = ?, FirstBar = ? "
+    "SET Title = ?, Composer = ?, MusicPath = ?, Bpm = ?, BpmBinary = ?, FirstBeat = ? "
     "WHERE Title = ? AND Composer = ? AND MusicPath = ? AND Bpm = ?; ";
 
     if(!dbstate.activate(db)) return false;
@@ -133,7 +133,7 @@ musdata::GenEditSTMT(stmt& dbstate, sqlite3* db, musdata& toEdit)
     CHK_BIND(dbstate.bind_text   (3, toEdit.musicPath))
     CHK_BIND(dbstate.bind_double (4, toEdit.bpm      ))
     CHK_BIND(dbstate.bind_blob   (5, toEdit.bpmBinary))
-    CHK_BIND(dbstate.bind_text   (6, toEdit.firstBar ))
+    CHK_BIND(dbstate.bind_text   (6, toEdit.firstBeat ))
     CHK_BIND(dbstate.bind_text   (7, title           ))
     CHK_BIND(dbstate.bind_text   (8, composer        ))
     CHK_BIND(dbstate.bind_text   (9, musicPath       ))

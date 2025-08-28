@@ -14,11 +14,11 @@ PDJE_JSONHandler<NOTE_W>::add(const NoteArgs& args)
         {"first"        ,   SANITIZED_ORNOT(args.first.begin()      , args.first.end())         },
         {"second"       ,   SANITIZED_ORNOT(args.second.begin()     , args.second.end())        },
         {"third"        ,   SANITIZED_ORNOT(args.third.begin()      , args.third.end())         },
-        {"bar"          ,   args.bar        },
         {"beat"         ,   args.beat       },
+        {"subBeat"      ,   args.subBeat    },
         {"separate"     ,   args.separate   },
-        {"Ebar"         ,   args.Ebar       },
         {"Ebeat"        ,   args.Ebeat      },
+        {"EsubBeat"     ,   args.EsubBeat   },
         {"Eseparate"    ,   args.Eseparate  }
     };
     if(!ROOT.contains(PDJENOTE)){
@@ -44,11 +44,11 @@ PDJE_JSONHandler<NOTE_W>::deleteLine(const NoteArgs& args)
             if(Target["first"]      != args.first       && args.first       != ""   )   continue;
             if(Target["second"]     != args.second      && args.second      != ""   )   continue;
             if(Target["third"]      != args.third       && args.third       != ""   )   continue;
-            if(Target["bar"]        != args.bar         && args.bar         != -1   )   continue;
             if(Target["beat"]       != args.beat        && args.beat        != -1   )   continue;
+            if(Target["subBeat"]    != args.subBeat     && args.subBeat     != -1   )   continue;
             if(Target["separate"]   != args.separate    && args.separate    != -1   )   continue;
-            if(Target["Ebar"]       != args.Ebar        && args.Ebar        != -1   )   continue;
             if(Target["Ebeat"]      != args.Ebeat       && args.Ebeat       != -1   )   continue;
+            if(Target["EsubBeat"]   != args.EsubBeat    && args.EsubBeat    != -1   )   continue;
             if(Target["Eseparate"]  != args.Eseparate   && args.Eseparate   != -1   )   continue;
             targetIDX.push_back(i);
         }
@@ -83,11 +83,11 @@ PDJE_JSONHandler<NOTE_W>::getAll(
             i["first"       ].get<SANITIZED_ORNOT>(),
             i["second"      ].get<SANITIZED_ORNOT>(),
             i["third"       ].get<SANITIZED_ORNOT>(),
-            i["bar"         ],
             i["beat"        ],
+            i["subBeat"     ],
             i["separate"    ],
-            i["Ebar"        ],
             i["Ebeat"       ],
+            i["EsubBeat"    ],
             i["Eseparate"   ]
         };
         jsonCallback(tempargs);
@@ -110,11 +110,11 @@ PDJE_JSONHandler<NOTE_W>::render()
             filler[i].setFirst          (target["first"         ].get<SANITIZED_ORNOT>());
             filler[i].setSecond         (target["second"        ].get<SANITIZED_ORNOT>());
             filler[i].setThird          (target["third"         ].get<SANITIZED_ORNOT>());
-            filler[i].setBar            (target["bar"           ]);
             filler[i].setBeat           (target["beat"          ]);
+            filler[i].setSubBeat        (target["subBeat"       ]);
             filler[i].setSeparate       (target["separate"      ]);
-            filler[i].setEBar           (target["Ebar"          ]);
-            filler[i].setEBeat          (target["Ebeat"         ]);
+            filler[i].setEbeat          (target["Ebeat"         ]);
+            filler[i].setEsubBeat       (target["EsubBeat"      ]);
             filler[i].setESeparate      (target["Eseparate"     ]);
         }
         return tempMixBin;

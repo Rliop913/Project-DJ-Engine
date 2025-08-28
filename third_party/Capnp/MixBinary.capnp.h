@@ -132,15 +132,15 @@ public:
   inline bool hasThird() const;
   inline  ::capnp::Text::Reader getThird() const;
 
-  inline  ::int64_t getBar() const;
-
   inline  ::int64_t getBeat() const;
+
+  inline  ::int64_t getSubBeat() const;
 
   inline  ::int64_t getSeparate() const;
 
-  inline  ::int64_t getEbar() const;
-
   inline  ::int64_t getEbeat() const;
+
+  inline  ::int64_t getEsubBeat() const;
 
   inline  ::int64_t getEseparate() const;
 
@@ -202,20 +202,20 @@ public:
   inline void adoptThird(::capnp::Orphan< ::capnp::Text>&& value);
   inline ::capnp::Orphan< ::capnp::Text> disownThird();
 
-  inline  ::int64_t getBar();
-  inline void setBar( ::int64_t value);
-
   inline  ::int64_t getBeat();
   inline void setBeat( ::int64_t value);
+
+  inline  ::int64_t getSubBeat();
+  inline void setSubBeat( ::int64_t value);
 
   inline  ::int64_t getSeparate();
   inline void setSeparate( ::int64_t value);
 
-  inline  ::int64_t getEbar();
-  inline void setEbar( ::int64_t value);
-
   inline  ::int64_t getEbeat();
   inline void setEbeat( ::int64_t value);
+
+  inline  ::int64_t getEsubBeat();
+  inline void setEsubBeat( ::int64_t value);
 
   inline  ::int64_t getEseparate();
   inline void setEseparate( ::int64_t value);
@@ -473,30 +473,30 @@ inline ::capnp::Orphan< ::capnp::Text> MBData::Builder::disownThird() {
       ::capnp::bounded<2>() * ::capnp::POINTERS));
 }
 
-inline  ::int64_t MBData::Reader::getBar() const {
-  return _reader.getDataField< ::int64_t>(
-      ::capnp::bounded<1>() * ::capnp::ELEMENTS);
-}
-
-inline  ::int64_t MBData::Builder::getBar() {
-  return _builder.getDataField< ::int64_t>(
-      ::capnp::bounded<1>() * ::capnp::ELEMENTS);
-}
-inline void MBData::Builder::setBar( ::int64_t value) {
-  _builder.setDataField< ::int64_t>(
-      ::capnp::bounded<1>() * ::capnp::ELEMENTS, value);
-}
-
 inline  ::int64_t MBData::Reader::getBeat() const {
   return _reader.getDataField< ::int64_t>(
-      ::capnp::bounded<2>() * ::capnp::ELEMENTS);
+      ::capnp::bounded<1>() * ::capnp::ELEMENTS);
 }
 
 inline  ::int64_t MBData::Builder::getBeat() {
   return _builder.getDataField< ::int64_t>(
-      ::capnp::bounded<2>() * ::capnp::ELEMENTS);
+      ::capnp::bounded<1>() * ::capnp::ELEMENTS);
 }
 inline void MBData::Builder::setBeat( ::int64_t value) {
+  _builder.setDataField< ::int64_t>(
+      ::capnp::bounded<1>() * ::capnp::ELEMENTS, value);
+}
+
+inline  ::int64_t MBData::Reader::getSubBeat() const {
+  return _reader.getDataField< ::int64_t>(
+      ::capnp::bounded<2>() * ::capnp::ELEMENTS);
+}
+
+inline  ::int64_t MBData::Builder::getSubBeat() {
+  return _builder.getDataField< ::int64_t>(
+      ::capnp::bounded<2>() * ::capnp::ELEMENTS);
+}
+inline void MBData::Builder::setSubBeat( ::int64_t value) {
   _builder.setDataField< ::int64_t>(
       ::capnp::bounded<2>() * ::capnp::ELEMENTS, value);
 }
@@ -515,30 +515,30 @@ inline void MBData::Builder::setSeparate( ::int64_t value) {
       ::capnp::bounded<3>() * ::capnp::ELEMENTS, value);
 }
 
-inline  ::int64_t MBData::Reader::getEbar() const {
-  return _reader.getDataField< ::int64_t>(
-      ::capnp::bounded<4>() * ::capnp::ELEMENTS);
-}
-
-inline  ::int64_t MBData::Builder::getEbar() {
-  return _builder.getDataField< ::int64_t>(
-      ::capnp::bounded<4>() * ::capnp::ELEMENTS);
-}
-inline void MBData::Builder::setEbar( ::int64_t value) {
-  _builder.setDataField< ::int64_t>(
-      ::capnp::bounded<4>() * ::capnp::ELEMENTS, value);
-}
-
 inline  ::int64_t MBData::Reader::getEbeat() const {
   return _reader.getDataField< ::int64_t>(
-      ::capnp::bounded<5>() * ::capnp::ELEMENTS);
+      ::capnp::bounded<4>() * ::capnp::ELEMENTS);
 }
 
 inline  ::int64_t MBData::Builder::getEbeat() {
   return _builder.getDataField< ::int64_t>(
-      ::capnp::bounded<5>() * ::capnp::ELEMENTS);
+      ::capnp::bounded<4>() * ::capnp::ELEMENTS);
 }
 inline void MBData::Builder::setEbeat( ::int64_t value) {
+  _builder.setDataField< ::int64_t>(
+      ::capnp::bounded<4>() * ::capnp::ELEMENTS, value);
+}
+
+inline  ::int64_t MBData::Reader::getEsubBeat() const {
+  return _reader.getDataField< ::int64_t>(
+      ::capnp::bounded<5>() * ::capnp::ELEMENTS);
+}
+
+inline  ::int64_t MBData::Builder::getEsubBeat() {
+  return _builder.getDataField< ::int64_t>(
+      ::capnp::bounded<5>() * ::capnp::ELEMENTS);
+}
+inline void MBData::Builder::setEsubBeat( ::int64_t value) {
   _builder.setDataField< ::int64_t>(
       ::capnp::bounded<5>() * ::capnp::ELEMENTS, value);
 }

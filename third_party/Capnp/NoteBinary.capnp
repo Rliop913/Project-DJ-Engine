@@ -7,11 +7,11 @@ struct NoteBinaryData{
     first @2 :Text;
     second @3 :Text;
     third @4 :Text;
-    bar @5 :Int64;
-    beat @6 :Int64;
+    beat @5 :Int64;
+    subBeat @6 :Int64;
     separate @7 :Int64;
-    eBar @8 :Int64;
-    eBeat @9 :Int64;
+    ebeat @8 :Int64;
+    esubBeat @9 :Int64;
     eSeparate @10 :Int64;
 }
 

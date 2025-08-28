@@ -24,15 +24,15 @@ main()
                 
                 EDIT_ARG_MUSIC temp;
                 temp.musicName = "testMiku";
-                temp.arg.bar=0;
                 temp.arg.beat=0;
+                temp.arg.subBeat=0;
                 temp.arg.separate=4;
                 temp.arg.bpm="138";
                 engine->editor->AddLine<EDIT_ARG_MUSIC>(temp);
 
                 EDIT_ARG_MIX bpmSet;
-                bpmSet.bar=0;
                 bpmSet.beat=0;
+                bpmSet.subBeat=0;
                 bpmSet.type=TypeEnum::BPM_CONTROL;
                 bpmSet.details=DetailEnum::TIME_STRETCH;
                 bpmSet.separate=4;
@@ -41,8 +41,8 @@ main()
                 engine->editor->AddLine<EDIT_ARG_MIX>(bpmSet);
 
                 EDIT_ARG_MIX loadMusic;
-                loadMusic.bar=0;
                 loadMusic.beat=0;
+                loadMusic.subBeat=0;
                 loadMusic.type=TypeEnum::LOAD;
                 
                 loadMusic.separate=4;
@@ -53,8 +53,8 @@ main()
                 engine->editor->AddLine<EDIT_ARG_MIX>(loadMusic);
                 
                 EDIT_ARG_MIX changeBpm;
-                changeBpm.bar=40;
-                changeBpm.beat=0;
+                changeBpm.beat=40;
+                changeBpm.subBeat=0;
                 changeBpm.type=TypeEnum::BPM_CONTROL;
                 changeBpm.details=DetailEnum::TIME_STRETCH;
                 changeBpm.separate=4;
@@ -63,8 +63,8 @@ main()
                 engine->editor->AddLine<EDIT_ARG_MIX>(changeBpm);
 
                 EDIT_ARG_MIX unloadMusic;
-                unloadMusic.bar=200;
-                unloadMusic.beat=0;
+                unloadMusic.beat=200;
+                unloadMusic.subBeat=0;
                 unloadMusic.type=TypeEnum::UNLOAD;
                 unloadMusic.ID=0;
                 unloadMusic.separate=4;
@@ -79,8 +79,8 @@ main()
             if(engine->editor->ConfigNewMusic("ヒアソビ", "Camellia", "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav")){
                 EDIT_ARG_MUSIC temp;
                 temp.musicName = "ヒアソビ";
-                temp.arg.bar=0;
                 temp.arg.beat=0;
+                temp.arg.subBeat=0;
                 temp.arg.separate=4;
                 temp.arg.bpm="134";
                 engine->editor->AddLine<EDIT_ARG_MUSIC>(temp);
@@ -134,14 +134,27 @@ main()
         auto deactres = engine->player->Deactivate();
 
         auto editor = engine->GetEditorObject();
-        std::string logs = editor->GetLogWithJSONGraph();
-        auto jj = nlohmann::json::parse(logs);
-        std::string branchName = jj["BRANCH"].at(0)["NAME"];
-        std::string oid = jj["BRANCH"].at(0)["OID"];
+        // EDIT_ARG_MIX mixs;
         
+        // mixs.type = TypeEnum::FILTER;//filter
+        // mixs.details = DetailEnum::LOW;//lowpass
+        
+        // mixs.ID = 0;//deck number, access music with this.
+        
+        // mixs.beat = 10;
+        // mixs.subBeat = 2;
+        // mixs.separate = 4;
 
-        editor->Go<EDIT_ARG_NOTE>(branchName, oid);
-
+        // mixs.first;
+        // mixs.second;
+        // mixs.third;
+        
+        // mixs.Ebeat;
+        // mixs.EsubBeat;
+        // mixs.Eseparate;
+        
+        
+        
         // engine
         
     }
