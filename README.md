@@ -40,6 +40,8 @@ cmake --build . --config Release --parallel #add your maximum number of cores
 > To change the build type (Debug/Release) or switch between static and dynamic builds,  
 > you must re-run the `BuildInitwithConan` script with the new options.  
 > Otherwise, Conan dependencies may not be configured correctly.
+> 
+> If you plan to build Swig binding, you should use dynamic build on windows. static build may cause link errors.
 
 
 

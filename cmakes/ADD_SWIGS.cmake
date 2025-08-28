@@ -4,6 +4,8 @@ set(Python_FIND_DEBUG FALSE)
 add_definitions(-DSWIG_PYTHON_INTERPRETER_NO_DEBUG)
 set(SWIG_USE_TARGET_INCLUDE_DIRECTORIES ON)
 
+set_source_files_properties(PDJE_swig.i PROPERTIES CPLUSPLUS ON)
+
 set(CMAKE_SWIG_OUTDIR ${CMAKE_CURRENT_SOURCE_DIR}/swig_csharp)
 swig_add_library(pdje_csharp
 TYPE MODULE
