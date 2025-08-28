@@ -120,12 +120,12 @@ public:
     bool AddLine(const EDIT_ARG_TYPE& obj);
 
     /**
-     * @brief Adds a new music entry with a specified first bar.
+     * @brief Adds a new music entry with a specified first Beat.
      * @param musicName The unsanitized name of the music.
-     * @param firstBar The first bar of the music.
+     * @param firstBeat The first Beat of the music.
      * @return `true` if the line was added successfully, `false` otherwise.
      */
-    bool AddLine(const UNSANITIZED& musicName, const DONT_SANITIZE& firstBar);
+    bool AddLine(const UNSANITIZED& musicName, const DONT_SANITIZE& firstBeat);
     
     /**
      * @brief Deletes a line of mix data.
@@ -302,13 +302,13 @@ public:
      * @param NewMusicName The unsanitized name of the new music.
      * @param composer The unsanitized composer of the new music.
      * @param musicPath The path to the music file.
-     * @param firstBar The first bar of the music (defaults to "0").
+     * @param firstBeat The first Beat of the music (defaults to "0").
      * @return `true` if the configuration was successful, `false` otherwise.
      */
     bool ConfigNewMusic(const UNSANITIZED& NewMusicName, 
                         const UNSANITIZED& composer,
                         const fs::path& musicPath,
-                        const DONT_SANITIZE& firstBar = "0");
+                        const DONT_SANITIZE& firstBeat = "0");
 
     /**
      * @brief Opens an existing editor project. if PDJE called InitEditor, you don't need to call this again.

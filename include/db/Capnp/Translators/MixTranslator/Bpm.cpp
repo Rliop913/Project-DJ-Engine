@@ -27,8 +27,8 @@ bpm_thread(
         if(mp->RP.getType() == TypeEnum::BPM_CONTROL){
             auto bpmStr = std::string(mp->RP.getFirst().cStr());
             BpmFragment tempbpm;
-            tempbpm.bar = mp->RP.getBar();
             tempbpm.beat = mp->RP.getBeat();
+            tempbpm.subBeat = mp->RP.getSubBeat();
             tempbpm.separate = mp->RP.getSeparate();
             try
             {
@@ -91,8 +91,8 @@ BPM::getBpms(MIX& mixx)
     bpmVec.sortFragment();
     if(
         bpmVec.fragments.empty() ||
-        bpmVec.fragments[0].bar != 0 ||
-        bpmVec.fragments[0].beat != 0
+        bpmVec.fragments[0].beat != 0 ||
+        bpmVec.fragments[0].subBeat != 0
     ){
         critlog("failed to sort bpmFragments. from BPM getBpms.");
         return false;

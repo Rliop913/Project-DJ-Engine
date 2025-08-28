@@ -77,9 +77,9 @@ public:
   inline bool hasBpm() const;
   inline  ::capnp::Text::Reader getBpm() const;
 
-  inline  ::int64_t getBar() const;
-
   inline  ::int64_t getBeat() const;
+
+  inline  ::int64_t getSubBeat() const;
 
   inline  ::int64_t getSeparate() const;
 
@@ -118,11 +118,11 @@ public:
   inline void adoptBpm(::capnp::Orphan< ::capnp::Text>&& value);
   inline ::capnp::Orphan< ::capnp::Text> disownBpm();
 
-  inline  ::int64_t getBar();
-  inline void setBar( ::int64_t value);
-
   inline  ::int64_t getBeat();
   inline void setBeat( ::int64_t value);
+
+  inline  ::int64_t getSubBeat();
+  inline void setSubBeat( ::int64_t value);
 
   inline  ::int64_t getSeparate();
   inline void setSeparate( ::int64_t value);
@@ -270,30 +270,30 @@ inline ::capnp::Orphan< ::capnp::Text> MMeta::Builder::disownBpm() {
       ::capnp::bounded<0>() * ::capnp::POINTERS));
 }
 
-inline  ::int64_t MMeta::Reader::getBar() const {
-  return _reader.getDataField< ::int64_t>(
-      ::capnp::bounded<0>() * ::capnp::ELEMENTS);
-}
-
-inline  ::int64_t MMeta::Builder::getBar() {
-  return _builder.getDataField< ::int64_t>(
-      ::capnp::bounded<0>() * ::capnp::ELEMENTS);
-}
-inline void MMeta::Builder::setBar( ::int64_t value) {
-  _builder.setDataField< ::int64_t>(
-      ::capnp::bounded<0>() * ::capnp::ELEMENTS, value);
-}
-
 inline  ::int64_t MMeta::Reader::getBeat() const {
   return _reader.getDataField< ::int64_t>(
-      ::capnp::bounded<1>() * ::capnp::ELEMENTS);
+      ::capnp::bounded<0>() * ::capnp::ELEMENTS);
 }
 
 inline  ::int64_t MMeta::Builder::getBeat() {
   return _builder.getDataField< ::int64_t>(
-      ::capnp::bounded<1>() * ::capnp::ELEMENTS);
+      ::capnp::bounded<0>() * ::capnp::ELEMENTS);
 }
 inline void MMeta::Builder::setBeat( ::int64_t value) {
+  _builder.setDataField< ::int64_t>(
+      ::capnp::bounded<0>() * ::capnp::ELEMENTS, value);
+}
+
+inline  ::int64_t MMeta::Reader::getSubBeat() const {
+  return _reader.getDataField< ::int64_t>(
+      ::capnp::bounded<1>() * ::capnp::ELEMENTS);
+}
+
+inline  ::int64_t MMeta::Builder::getSubBeat() {
+  return _builder.getDataField< ::int64_t>(
+      ::capnp::bounded<1>() * ::capnp::ELEMENTS);
+}
+inline void MMeta::Builder::setSubBeat( ::int64_t value) {
   _builder.setDataField< ::int64_t>(
       ::capnp::bounded<1>() * ::capnp::ELEMENTS, value);
 }

@@ -591,6 +591,8 @@ Redo
 Time travel
 -------------
 
+To get necessary args, See :ref:`get-edit-logs`
+
 .. tab-set-code:: 
 
     .. code-block:: c++
@@ -623,18 +625,48 @@ Time travel
         //string logs = editor.GetLogMusicJSON("music name");
         //string logs = editor.GetLogKVJSON();
 
-        //editing...
+        //get branch name, oid from logs
+
+        // editor.GoNote(name, oid);
+        editor.GoMix(name, oid);
+        // editor.GoKV(name, oid);
+        // editor.GoMusic(name, oid);
+        
         
 
     .. code-block:: python
-
+        
         import pdje_POLYGLOT as pypdje
-        engine = pypdje.PDJE("database/path")
+        from pdje_POLYGLOT import editorObject
+
+        #...
+
+        logs = editor.GetLogMixJSON()
+        # logs = editor.GetLogKVJSON()
+        # logs = editor.GetLogMusicJSON("music name")
+        # logs = editor.GetLogNoteJSON()
+
+        # get branch name, oid from logs
+
+        # editor.GoKV(name, oid)
+        # editor.GoNote(name, oid)
+        # editor.GoMusic(name, oid)
+        editor.GoMix(name, oid)
 
     .. code-block:: gdscript
 
-        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
-        engine.InitEngine("res://database/path")
+        var logs = editor.GetLogWithJSONGraph(editor.NOTE, "")
+        # var logs = editor.GetLogWithJSONGraph(editor.MUSIC, "music name")
+        # var logs = editor.GetLogWithJSONGraph(editor.KV, "")
+        # var logs = editor.GetLogWithJSONGraph(editor.MIX, "")
+
+        #get branch name, oid from logs
+
+        editor.Go(editor.NOTE, name, oid)
+        # editor.Go(editor.MUSIC, name, oid)
+        # editor.Go(editor.MIX, name, oid)
+        # editor.Go(editor.KV, name, oid)
+        
 
 
 
@@ -644,6 +676,26 @@ Add line
 .. tab-set-code:: 
 
     .. code-block:: c++
+
+        //mix args examples
+        EDIT_ARG_MIX mixs;
+        
+        mixs.type;
+        mixs.details;
+        
+        mixs.ID;
+        
+        mixs.bar;
+        mixs.beat;
+        mixs.separate;
+
+        mixs.first;
+        mixs.second;
+        mixs.third;
+        
+        mixs.Ebar;
+        mixs.Ebeat;
+        mixs.Eseparate;
 
         auto engine = new PDJE("database/path");
 
@@ -729,6 +781,8 @@ Get diff
 
         var engine:PDJE_Wrapper = PDJE_Wrapper.new()
         engine.InitEngine("res://database/path")
+
+.. _get-edit-logs:
 
 Get edit logs
 ---------------

@@ -19,8 +19,8 @@ PDJE_JSONHandler<MUSIC_W>::deleteLine(const MusicArgs& args)
     try{
         for(unsigned long long i=0; i < ROOT[PDJEMUSICBPM].size(); ++i){
             auto Target = ROOT[PDJEMUSICBPM].at(i);
-            if(Target["bar"]        != args.bar         && args.bar         != -1   )   continue;
             if(Target["beat"]       != args.beat        && args.beat        != -1   )   continue;
+            if(Target["subBeat"]    != args.subBeat     && args.subBeat     != -1   )   continue;
             if(Target["separate"]   != args.separate    && args.separate    != -1   )   continue;
             if(Target["bpm"]        != args.bpm         && args.bpm         != ""   )   continue;
             
@@ -43,8 +43,8 @@ PDJE_JSONHandler<MUSIC_W>::add(const MusicArgs& args)
 {
     nj tempMus = {
         {"bpm"      ,   args.bpm        },
-        {"bar"      ,   args.bar        },
         {"beat"     ,   args.beat       },
+        {"subBeat"  ,   args.subBeat    },
         {"separate" ,   args.separate   }
     };
     if(!ROOT.contains(PDJEMUSICBPM)){
@@ -66,8 +66,8 @@ PDJE_JSONHandler<MUSIC_W>::render()
         auto filler = tempMusBin->Wp->initDatas(rootsz);
         for(std::size_t i=0; i<rootsz; ++i){
             auto target = ROOT[PDJEMUSICBPM].at(i);
-            filler[i].setBar        (target["bar"       ]);
             filler[i].setBeat       (target["beat"      ]);
+            filler[i].setSubBeat    (target["subBeat"   ]);
             filler[i].setBpm        (target["bpm"       ].get<DONT_SANITIZE>());
             filler[i].setSeparate   (target["separate"  ]);
         }
@@ -100,8 +100,8 @@ PDJE_JSONHandler<MUSIC_W>::getAll(
         auto tempBpm = i["bpm"].get<DONT_SANITIZE>();
         tempargs.arg = {
             tempBpm         ,
-            i["bar"         ],
             i["beat"        ],
+            i["subBeat"     ],
             i["separate"    ]
         };
         jsonCallback(tempargs);

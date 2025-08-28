@@ -26,33 +26,33 @@ int main()
     BpmStruct Lb;
     {
         Gb.fragments.emplace_back();
-        Gb.fragments.back().bar = 0;
         Gb.fragments.back().beat = 0;
+        Gb.fragments.back().subBeat = 0;
         Gb.fragments.back().bpm = 60;
         Gb.fragments.back().separate = 4;
         Gb.fragments.emplace_back();
-        Gb.fragments.back().bar = 4;
-        Gb.fragments.back().beat = 0;
+        Gb.fragments.back().beat = 4;
+        Gb.fragments.back().subBeat = 0;
         Gb.fragments.back().bpm = 120;
         Gb.fragments.back().separate = 4;
         Gb.fragments.emplace_back();
-        Gb.fragments.back().bar = 8;
-        Gb.fragments.back().beat = 0;
+        Gb.fragments.back().beat = 8;
+        Gb.fragments.back().subBeat = 0;
         Gb.fragments.back().bpm = 60;
         Gb.fragments.back().separate = 4;
     }
     {
         Lb.fragments.emplace_back();
-        Lb.fragments.back().bar = 0;
         Lb.fragments.back().beat = 0;
+        Lb.fragments.back().subBeat = 0;
         Lb.fragments.back().bpm = 120;
         Lb.fragments.emplace_back();
-        Lb.fragments.back().bar = 4;
-        Lb.fragments.back().beat = 0;
+        Lb.fragments.back().beat = 4;
+        Lb.fragments.back().subBeat = 0;
         Lb.fragments.back().bpm = 60;
         Lb.fragments.emplace_back();
-        Lb.fragments.back().bar = 8;
-        Lb.fragments.back().beat = 0;
+        Lb.fragments.back().beat = 8;
+        Lb.fragments.back().subBeat = 0;
         Lb.fragments.back().bpm = 120;
     }
     

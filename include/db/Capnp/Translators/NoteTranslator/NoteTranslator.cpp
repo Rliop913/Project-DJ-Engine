@@ -20,8 +20,8 @@ NoteTranslator::Read(
     for(size_t i=0; i < br.size(); ++i){
         if(strcmp(br[i].getNoteType().cStr(), "BPM") == 0){
             auto fg= BpmFragment();
-            fg.bar = br[i].getBar();
             fg.beat = br[i].getBeat();
+            fg.subBeat = br[i].getSubBeat();
             fg.separate = br[i].getSeparate();
             try
             {
@@ -45,18 +45,18 @@ NoteTranslator::Read(
     for(size_t i=0; i < br.size(); ++i){
         if(strcmp(br[i].getNoteType().cStr(), "BPM") != 0){
             BpmFragment searchfragment;
-            searchfragment.bar = br[i].getBar();
             searchfragment.beat = br[i].getBeat();
+            searchfragment.subBeat = br[i].getSubBeat();
             searchfragment.separate = br[i].getSeparate();
             auto affects = bs.getAffected(searchfragment);
             unsigned long long position =
             affects.frame_to_here +
             FrameCalc::CountFrame(
-                affects.bar,
                 affects.beat,
+                affects.subBeat,
                 affects.separate,
-                searchfragment.bar,
                 searchfragment.beat,
+                searchfragment.subBeat,
                 searchfragment.separate,
                 affects.bpm
             );
@@ -67,18 +67,18 @@ NoteTranslator::Read(
             }
             else{
                 BpmFragment secondpos;
-                secondpos.bar = br[i].getEBar();
-                secondpos.beat = br[i].getEBeat();
+                secondpos.beat = br[i].getEbeat();
+                secondpos.subBeat = br[i].getEsubBeat();
                 secondpos.separate = br[i].getESeparate();
                 auto res = bs.getAffected(secondpos);
                 pos2 =
                 res.frame_to_here +
                 FrameCalc::CountFrame(
-                    res.bar,
                     res.beat,
+                    res.subBeat,
                     res.separate,
-                    searchfragment.bar,
                     searchfragment.beat,
+                    searchfragment.subBeat,
                     searchfragment.separate,
                     res.bpm
                 );

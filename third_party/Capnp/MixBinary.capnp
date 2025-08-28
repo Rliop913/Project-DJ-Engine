@@ -45,11 +45,11 @@ struct MBData{
     first @3 :Text;
     second @4 :Text;
     third @5 :Text;
-    bar @6 :Int64;
-    beat @7 :Int64;
+    beat @6 :Int64;
+    subBeat @7 :Int64;
     separate @8 :Int64;
-    ebar @9 :Int64;
-    ebeat @10 :Int64;
+    ebeat @9 :Int64;
+    esubBeat @10 :Int64;
     eseparate @11 :Int64;
     
 }

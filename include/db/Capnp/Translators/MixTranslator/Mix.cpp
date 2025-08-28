@@ -30,13 +30,13 @@ MIX::openMix(const MixBinaryCapnpData::Reader& Rptr)
         }
         std::sort(mixVec.begin(), mixVec.end(), [](const MixStruct& first, MixStruct second){
             auto F = 
-            static_cast<double>(first.RP.getBar()) + (
-                static_cast<double>(first.RP.getBeat()) /
+            static_cast<double>(first.RP.getBeat()) + (
+                static_cast<double>(first.RP.getSubBeat()) /
                 static_cast<double>(first.RP.getSeparate())
             );
             auto S = 
-            static_cast<double>(second.RP.getBar()) + (
-                static_cast<double>(second.RP.getBeat()) /
+            static_cast<double>(second.RP.getBeat()) + (
+                static_cast<double>(second.RP.getSubBeat()) /
                 static_cast<double>(second.RP.getSeparate())
             );
             return F < S;
@@ -64,11 +64,11 @@ FillFrame(const BpmFragment& bs, BPM* B)
     auto bpmIt = B->bpmVec.getAffected(bs);
     return 
     FrameCalc::CountFrame(
-        bpmIt.bar,
         bpmIt.beat,
+        bpmIt.subBeat,
         bpmIt.separate,
-        bs.bar,
         bs.beat,
+        bs.subBeat,
         bs.separate,
         bpmIt.bpm
     ) + bpmIt.frame_to_here;
@@ -91,11 +91,11 @@ mix_thread(
     for(unsigned long i=0; i<range; ++i){
         BpmFragment bsin;
         BpmFragment bsout;
-        bsin.bar = M->RP.getBar();
         bsin.beat = M->RP.getBeat();
+        bsin.subBeat = M->RP.getSubBeat();
         bsin.separate = M->RP.getSeparate();
-        bsout.bar = M->RP.getEbar();
         bsout.beat = M->RP.getEbeat();
+        bsout.subBeat = M->RP.getEsubBeat();
         bsout.separate = M->RP.getEseparate();
         M->frame_in = FillFrame(bsin, B);
         M->frame_out = FillFrame(bsout, B);

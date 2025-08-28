@@ -15,11 +15,11 @@ editorObject::render(const UNSANITIZED& trackTitle, litedb& ROOTDB)
         mds.back().bpmBinary.assign(rdout.begin(), rdout.end());
         auto tempCOMPOSER   = i.jsonh["COMPOSER"    ].get<SANITIZED>();
         auto tempPATH       = i.jsonh["PATH"        ].get<SANITIZED>();
-        auto tempFIRST_BAR  = i.jsonh["FIRST_BAR"   ].get<DONT_SANITIZE>();
+        auto tempFIRST_BEAT = i.jsonh["FIRST_BEAT"  ].get<DONT_SANITIZE>();
         
         mds.back().composer     = (tempCOMPOSER);
         mds.back().musicPath    = (tempPATH);
-        mds.back().firstBar     = (tempFIRST_BAR);
+        mds.back().firstBeat    = (tempFIRST_BEAT);
         try{
             mds.back().bpm = std::stod(rendered->Wp->getDatas()[0].getBpm().cStr());
         }

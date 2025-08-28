@@ -97,7 +97,7 @@ editorObject::AddLine(const EDIT_ARG_KEY_VALUE& obj)
 }
 
 bool 
-editorObject::AddLine(const UNSANITIZED& musicName, const DONT_SANITIZE& firstBar)
+editorObject::AddLine(const UNSANITIZED& musicName, const DONT_SANITIZE& firstBeat)
 {
     auto safeMus = PDJE_Name_Sanitizer::sanitizeFileName(musicName);
     if(!safeMus){
@@ -107,11 +107,11 @@ editorObject::AddLine(const UNSANITIZED& musicName, const DONT_SANITIZE& firstBa
     }
     for(auto& i : E_obj->musicHandle){
         if(i.musicName == safeMus){
-            i.jsonh["FIRST_BAR"] = firstBar;
+            i.jsonh["FIRST_BEAT"] = firstBeat;
             return true;
         }
     }
-    warnlog("music is not exists. from editorObject AddLine(musicName, firstBar)");
+    warnlog("music is not exists. from editorObject AddLine(musicName, firstBeat)");
     
     return false;
 }
