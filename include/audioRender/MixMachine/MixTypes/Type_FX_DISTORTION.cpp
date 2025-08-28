@@ -1,11 +1,12 @@
 #include "MixMachine.hpp"
 
-template<>
+template <>
 bool
-MixMachine::TypeWorks<TypeEnum::DISTORTION, FaustEffects>
-(MixStruct& ms, FaustEffects& data, SIMD_FLOAT* Vec)
+MixMachine::TypeWorks<TypeEnum::DISTORTION, FaustEffects>(MixStruct    &ms,
+                                                          FaustEffects &data,
+                                                          SIMD_FLOAT   *Vec)
 {
-    if(!InterpolateInit(data.distortionData, Vec, ms)){
+    if (!InterpolateInit(data.distortionData, Vec, ms)) {
         return false;
     }
     return true;

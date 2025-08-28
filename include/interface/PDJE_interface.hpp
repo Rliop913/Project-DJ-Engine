@@ -1,35 +1,32 @@
 #pragma once
 
-#include "audioPlayer.hpp"
-#include "dbRoot.hpp"
 #include "NoteTranslator.hpp"
-#include "editorObject.hpp"
+#include "PDJE_Core_DataLine.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_LOG_SETTER.hpp"
-#include "PDJE_Core_DataLine.hpp"
+#include "audioPlayer.hpp"
+#include "dbRoot.hpp"
+#include "editorObject.hpp"
 /**
  * @brief the play mode
  * you can use this to initialize the player(music handler)
  * to use fx control in real time, do not use Full pre render.
- * 
+ *
  */
-enum PLAY_MODE{
-    FULL_PRE_RENDER,
-    HYBRID_RENDER,
-    FULL_MANUAL_RENDER
-};
+enum PLAY_MODE { FULL_PRE_RENDER, HYBRID_RENDER, FULL_MANUAL_RENDER };
 /**
  * @brief the main Interface of this Engine
- * PDJE gets music data and track data from database. 
- * from that datas, you can activate music player and you can get a music player handler.
- * with this player handler, you can control music's mixing in real time.
- * 
+ * PDJE gets music data and track data from database.
+ * from that datas, you can activate music player and you can get a music player
+ * handler. with this player handler, you can control music's mixing in real
+ * time.
+ *
  * to-use
  * 1. make PDJE object
  * 2. call SearchTrack
  * 3. call InitPlayer
  * 4. use player. this is handler.
- * 
+ *
  * \dot
  * digraph PDJE_Interface_Tree{
  *      PDJE -> Search_Tools;
@@ -47,11 +44,11 @@ enum PLAY_MODE{
  *      MusicController -> FXController;
  * }
  * \enddot
- * 
+ *
  */
-class PDJE_API PDJE{
-private:
-public:
+class PDJE_API PDJE {
+  private:
+  public:
     /// @brief this is the Root Database.
     /// check before use.
     /// it contains music metadatas and trackdatas.
@@ -59,44 +56,50 @@ public:
     // std::optional<litedb> DBROOT;
     /**
      * @brief Construct a new PDJE object
-     * 
-     * @param rootPath the path to the Root Database. 
+     *
+     * @param rootPath the path to the Root Database.
      */
-    PDJE(const DONT_SANITIZE& rootDir);
+    PDJE(const DONT_SANITIZE &rootDir);
 
     ~PDJE() = default;
-    
-    /// this is the music handler. you can play music, stop music, fx control, play/stop music manually in realtime.
-    std::shared_ptr<audioPlayer> player;
+
+    /// this is the music handler. you can play music, stop music, fx control,
+    /// play/stop music manually in realtime.
+    std::shared_ptr<audioPlayer>  player;
     std::shared_ptr<editorObject> editor;
     /**
      * @brief this inits the music handler. the music handler called a "player"
      * it initializes the player
-     * @param mode the play modes. you can choose "FULL_PRE_RENDER", "HYBRID_RENDER", "FULL_MANUAL_RENDER"
-     * @param td the track data. you can get this from SearchTrack() 
-     * @param FrameBufferSize the buffersize. in this project, it uses 48000 samplerate. if you use 48 as a value, in theory, it calls mixing function 1000 times per second.
+     * @param mode the play modes. you can choose "FULL_PRE_RENDER",
+     * "HYBRID_RENDER", "FULL_MANUAL_RENDER"
+     * @param td the track data. you can get this from SearchTrack()
+     * @param FrameBufferSize the buffersize. in this project, it uses 48000
+     * samplerate. if you use 48 as a value, in theory, it calls mixing function
+     * 1000 times per second.
      * @return true  no error
      * @return false  error
      */
     bool
-    InitPlayer(
-        PLAY_MODE mode, 
-        trackdata& td, 
-        const unsigned int FrameBufferSize);
+    InitPlayer(PLAY_MODE          mode,
+               trackdata         &td,
+               const unsigned int FrameBufferSize);
 
-    /// @brief Reset the Player object 
+    /// @brief Reset the Player object
     void
-    ResetPlayer(){
+    ResetPlayer()
+    {
         player.reset();
     }
 
     /// @brief Close the Editor object
     void
-    CloseEditor(){
+    CloseEditor()
+    {
         editor.reset();
     }
 
-    PDJE_CORE_DATA_LINE PullOutDataLine();
+    PDJE_CORE_DATA_LINE
+    PullOutDataLine();
 
     /**
      * @brief Initializes the editor.
@@ -104,85 +107,86 @@ public:
      * @param auth_name The author's name for Git commits.
      * @param auth_email The author's email for Git commits.
      * @param projectRoot The root directory of the editor project.
-     * @return `true` if the editor was initialized successfully, `false` otherwise.
+     * @return `true` if the editor was initialized successfully, `false`
+     * otherwise.
      */
     bool
-    InitEditor(
-        const DONT_SANITIZE &auth_name, 
-        const DONT_SANITIZE &auth_email,
-        const DONT_SANITIZE& projectRoot
-    );
+    InitEditor(const DONT_SANITIZE &auth_name,
+               const DONT_SANITIZE &auth_email,
+               const DONT_SANITIZE &projectRoot);
     /**
      * @brief Parse Note data and calls received function.
      * this function parse the note datas in the database.
      * after parsing the note datas, this function calls received function.
      * you should make your custom function that can make your own note object
      * @param td the track data. you can get this from SearchTrack()
-     * @param ObjectSetCallback the lambda callback. give a function that could make a new note objects. it's totally depends on you.
-     * @return true 
-     * @return false 
+     * @param ObjectSetCallback the lambda callback. give a function that could
+     * make a new note objects. it's totally depends on you.
+     * @return true
+     * @return false
      */
     bool
-    GetNoteObjects(
-        trackdata& td,
-        OBJ_SETTER_CALLBACK& ObjectSetCallback
-    );
+    GetNoteObjects(trackdata &td, OBJ_SETTER_CALLBACK &ObjectSetCallback);
     /**
      * @brief searches musics and metadatas from database.
      * if you don't need to filter, send "" to the values
      * @param Title the title of the music
      * @param composer the composer of the music
      * @param bpm the bpm of the music. send under zero to skip filter
-     * @return MUS_VEC 
+     * @return MUS_VEC
      */
-    MUS_VEC 
-    SearchMusic(
-        const UNSANITIZED& Title, 
-        const UNSANITIZED& composer, 
-        const double bpm = -1);
+    MUS_VEC
+    SearchMusic(const UNSANITIZED &Title,
+                const UNSANITIZED &composer,
+                const double       bpm = -1);
     /**
      * @brief searches track
      * the track contains the note data, mix data and included music lists.
      * @param Title the title of the track. send "" to skip filter
      * @return TRACK_VEC the array of the track_data. find what you want
      */
-    TRACK_VEC SearchTrack(const UNSANITIZED& Title);
+    TRACK_VEC
+    SearchTrack(const UNSANITIZED &Title);
     /**
      * @brief music handler getter api for binded codes.
      * this function gives you a music handler.
      * you can access player directly in cpp, but not in binded languages.
      * so this function exists.
-     * 
+     *
      * @return audioPlayer* the player object.check nullptr before use.
      */
-    std::shared_ptr<audioPlayer> GetPlayerObject();
-    
+    std::shared_ptr<audioPlayer>
+    GetPlayerObject();
 
     /**
      * @brief editor handler getter api for binded codes.
      * this function gives you a editor handler.
-     * 
+     *
      * @return editorObject* the editor object. check nullptr before use.
      */
-    std::shared_ptr<editorObject> GetEditorObject(){
+    std::shared_ptr<editorObject>
+    GetEditorObject()
+    {
         return editor;
     }
 };
 /**
  * @brief the realtime fx controller wrapper class for binded languages.
- * the argsetter is basically unordered_map. but the binded languges can't use that, so this wrapper exists.
- * with this, you can control fx in realtime.
+ * the argsetter is basically unordered_map. but the binded languges can't use
+ * that, so this wrapper exists. with this, you can control fx in realtime.
  */
-class PDJE_API ARGSETTER_WRAPPER{
-private:
-    FXControlPannel* fxp;
-public:
+class PDJE_API ARGSETTER_WRAPPER {
+  private:
+    FXControlPannel *fxp;
+
+  public:
     /**
      * @brief Construct a new argsetter wrapper object
      * wraps the FXControlPannel object.
-     * @param pointer the controlpannel object, you can get this from music handler.
+     * @param pointer the controlpannel object, you can get this from music
+     * handler.
      */
-    ARGSETTER_WRAPPER(FXControlPannel* pointer): fxp(pointer){};
+    ARGSETTER_WRAPPER(FXControlPannel *pointer) : fxp(pointer) {};
     ~ARGSETTER_WRAPPER() = default;
     /**
      * @brief gets the available fx list
@@ -190,18 +194,16 @@ public:
      * @param fx the type of fx. check the FXList.
      * @return std::vector<std::string> the key list.
      */
-    std::vector<std::string> GetFXArgKeys(FXList fx);
+    std::vector<std::string>
+    GetFXArgKeys(FXList fx);
     /**
      * @brief set fx in realtime.
-     * sets the fx in realtime. better to check the fx key before use if you don't know.
+     * sets the fx in realtime. better to check the fx key before use if you
+     * don't know.
      * @param fx the type of fx.
      * @param key the key of the fx arg
      * @param arg value to change
      */
     void
-    SetFXArg(
-        FXList fx, 
-        const DONT_SANITIZE& key, 
-        double arg);
-
+    SetFXArg(FXList fx, const DONT_SANITIZE &key, double arg);
 };

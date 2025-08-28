@@ -8,8 +8,8 @@
 /**
  * @brief Manages distortion effect settings.
  */
-class DistortionMan{
-public:
+class DistortionMan {
+  public:
     float distortionValue; ///< The amount of distortion to apply.
 
     /**
@@ -17,11 +17,10 @@ public:
      * @return An ARGSETTER map for configuring the distortion.
      */
     ARGSETTER
-    makeArgSetter(){
-        return{
-            {"DistortionValue", [this](double value){
-                this->distortionValue = static_cast<float>(value);
-            }}
-        };
+    makeArgSetter()
+    {
+        return { { "DistortionValue", [this](double value) {
+                      this->distortionValue = static_cast<float>(value);
+                  } } };
     }
 };
