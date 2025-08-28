@@ -149,27 +149,8 @@ main()
         auto deactres = engine->player->Deactivate();
 
         auto editor = engine->GetEditorObject();
-        // EDIT_ARG_MIX mixs;
-
-        // mixs.type = TypeEnum::FILTER;//filter
-        // mixs.details = DetailEnum::LOW;//lowpass
-
-        // mixs.ID = 0;//deck number, access music with this.
-
-        // mixs.beat = 10;
-        // mixs.subBeat = 2;
-        // mixs.separate = 4;
-
-        // mixs.first;
-        // mixs.second;
-        // mixs.third;
-
-        // mixs.Ebeat;
-        // mixs.EsubBeat;
-        // mixs.Eseparate;
-
-        // engine
-
+        DetailEnum::HIGH
+        
     } else {
         std::cout << "init failed " << std::endl;
         delete engine;
