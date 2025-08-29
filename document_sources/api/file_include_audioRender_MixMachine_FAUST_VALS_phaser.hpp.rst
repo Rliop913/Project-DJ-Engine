@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPhaser__PDJE`
+- :ref:`exhale_class_class_phaser___p_d_j_e`
 

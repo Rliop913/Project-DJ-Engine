@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Program Listing for File DiffController.hpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../_static/doctools.js?v=9bcbadda"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -53,7 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -82,38 +80,40 @@
              
   <section id="program-listing-for-file-diffcontroller-hpp">
 <span id="program-listing-file-include-editor-featurewrapper-gitwrap-diff-diffcontroller-hpp"></span><h1>Program Listing for File DiffController.hpp<a class="headerlink" href="#program-listing-for-file-diffcontroller-hpp" title="Link to this heading"></a></h1>
-<p>↰ <a class="reference internal" href="file_include_editor_featureWrapper_GitWrap_Diff_DiffController.hpp.html#file-include-editor-featurewrapper-gitwrap-diff-diffcontroller-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/editor/featureWrapper/GitWrap/Diff/DiffController.hpp</span></code>)</p>
+<p>↰ <a class="reference internal" href="file_include_editor_featureWrapper_GitWrap_Diff_DiffController.hpp.html#file-include-editor-featurewrapper-gitwrap-diff-diffcontroller-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\editor\featureWrapper\GitWrap\Diff\DiffController.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;git2.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;editorCommit.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fileNameSanitizer.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;git2.h&gt;</span>
 <span class="c1">// #include &quot;CommitFinder.hpp&quot;</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">lineLog</span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">lineLog</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">linenumber</span><span class="p">;</span>
-<span class="w">    </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="n">text</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UNSANITIZED</span><span class="w">  </span><span class="n">text</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">DiffResult</span><span class="p">{</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">DiffResult</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">lineLog</span><span class="o">&gt;</span><span class="w"> </span><span class="n">NewLines</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">lineLog</span><span class="o">&gt;</span><span class="w"> </span><span class="n">OldLines</span><span class="p">;</span>
 <span class="p">};</span>
 
-
-<span class="k">class</span><span class="w"> </span><span class="nc">DiffController</span><span class="p">{</span>
-<span class="k">private</span><span class="o">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DiffController</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">git_diff</span><span class="w"> </span><span class="o">*</span><span class="n">Dobj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 
-<span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">CommitToCommit</span><span class="p">(</span><span class="n">git_repository</span><span class="o">*</span><span class="w"> </span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">git_oid</span><span class="w"> </span><span class="n">newID</span><span class="p">,</span><span class="w"> </span><span class="n">git_oid</span><span class="w"> </span><span class="n">oldID</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">CommitToNow</span><span class="p">(</span><span class="n">git_repository</span><span class="o">*</span><span class="w"> </span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">git_oid</span><span class="w"> </span><span class="n">oldID</span><span class="p">);</span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="n">CommitToCommit</span><span class="p">(</span><span class="n">git_repository</span><span class="w"> </span><span class="o">*</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">git_oid</span><span class="w"> </span><span class="n">newID</span><span class="p">,</span><span class="w"> </span><span class="n">git_oid</span><span class="w"> </span><span class="n">oldID</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">CommitToNow</span><span class="p">(</span><span class="n">git_repository</span><span class="w"> </span><span class="o">*</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">git_oid</span><span class="w"> </span><span class="n">oldID</span><span class="p">);</span>
 
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">DiffResult</span><span class="o">*</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">execute</span><span class="p">(</span><span class="n">DiffResult</span><span class="w"> </span><span class="o">*</span><span class="n">res</span><span class="p">);</span>
 
 <span class="w">    </span><span class="n">DiffController</span><span class="p">();</span>
 <span class="w">    </span><span class="o">~</span><span class="n">DiffController</span><span class="p">();</span>

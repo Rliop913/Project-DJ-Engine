@@ -58,5 +58,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classAddController`
+- :ref:`exhale_class_class_add_controller`
 

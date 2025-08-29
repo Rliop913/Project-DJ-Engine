@@ -11,21 +11,20 @@ Program Listing for File dbRoot.hpp
 .. code-block:: cpp
 
    #pragma once
-   #include <string>
-   #include <vector>
    #include <optional>
    #include <sqlite3.h>
+   #include <string>
+   #include <vector>
    
    #include <rocksdb/db.h>
+   #include <rocksdb/filter_policy.h>
    #include <rocksdb/options.h>
    #include <rocksdb/table.h>
-   #include <rocksdb/filter_policy.h>
    
-   
+   #include "PDJE_EXPORT_SETTER.hpp"
    #include "musicDB.hpp"
    #include "trackDB.hpp"
    #include <filesystem>
-   #include "PDJE_EXPORT_SETTER.hpp"
    
    namespace fs = std::filesystem;
    
@@ -36,45 +35,49 @@ Program Listing for File dbRoot.hpp
    using MAYBE_TRACK_VEC = std::optional<TRACK_VEC>;
    
    namespace RDB = ROCKSDB_NAMESPACE;
-   class PDJE_API litedb{
-   private:
+   class PDJE_API litedb {
+     private:
        fs::path ROOT_PATH;
        fs::path sqldbPath;
        fs::path kvdbPath;
        fs::path vectordbPath;
-       sqlite3* sdb = nullptr;
-       RDB::DB* kvdb = nullptr;
+       sqlite3          *sdb  = nullptr;
+       RDB::DB          *kvdb = nullptr;
        RDB::WriteOptions wops;
-       RDB::ReadOptions rops;
+       RDB::ReadOptions  rops;
    
-       bool CheckTables();
-   public:
-       template<typename DBType>
+       bool
+       CheckTables();
+   
+     public:
+       template <typename DBType>
        std::optional<std::vector<DBType>>
-       operator<<(DBType& searchClue);
+       operator<<(DBType &searchClue);
    
-       template<typename DBType>
+       template <typename DBType>
        bool
-       operator<=(DBType& insertObject);
+       operator<=(DBType &insertObject);
    
-       template<typename DBType>
+       template <typename DBType>
        bool
-       DeleteData(DBType& deleteObject);
+       DeleteData(DBType &deleteObject);
    
-       template<typename DBType>
+       template <typename DBType>
        bool
-       EditData(DBType& searchObject, DBType& editObject); //to-do impl
-   
-       bool
-       KVGet(const SANITIZED& K, DONT_SANITIZE& V);
+       EditData(DBType &searchObject, DBType &editObject); // to-do impl
    
        bool
-       KVPut(const SANITIZED& K, const DONT_SANITIZE& V);
+       KVGet(const SANITIZED &K, DONT_SANITIZE &V);
    
-       bool openDB(const fs::path& dbPath);
-       
+       bool
+       KVPut(const SANITIZED &K, const DONT_SANITIZE &V);
+   
+       bool
+       openDB(const fs::path &dbPath);
+   
        const fs::path
-       getRoot(){
+       getRoot()
+       {
            return ROOT_PATH;
        }
    
@@ -82,31 +85,30 @@ Program Listing for File dbRoot.hpp
        ~litedb();
    };
    
-   template<typename DBType>
+   template <typename DBType>
    std::optional<std::vector<DBType>>
-   litedb::operator<<(DBType& searchClue)
+   litedb::operator<<(DBType &searchClue)
    {
        stmt dbstate = stmt();
-       if(searchClue.GenSearchSTMT(dbstate, sdb)){
+       if (searchClue.GenSearchSTMT(dbstate, sdb)) {
            std::vector<DBType> data;
-           while(sqlite3_step(dbstate.S) == SQLITE_ROW){
+           while (sqlite3_step(dbstate.S) == SQLITE_ROW) {
                data.emplace_back(&dbstate);
            }
            return std::move(data);
-       }
-       else{
+       } else {
            return std::nullopt;
        }
    }
-   template<typename DBType>
+   template <typename DBType>
    bool
-   litedb::operator<=(DBType& insertObject)
+   litedb::operator<=(DBType &insertObject)
    {
        sqlite3_exec(sdb, "BEGIN TRANSACTION;", NULL, NULL, NULL);
        stmt dbstate = stmt();
-       if(insertObject.GenInsertSTMT(dbstate, sdb)){
+       if (insertObject.GenInsertSTMT(dbstate, sdb)) {
            auto insertRes = sqlite3_step(dbstate.S);
-           if(insertRes != SQLITE_DONE){
+           if (insertRes != SQLITE_DONE) {
                sqlite3_exec(sdb, "ROLLBACK;", NULL, NULL, NULL);
                return false;
            }
@@ -116,14 +118,14 @@ Program Listing for File dbRoot.hpp
        return false;
    }
    
-   template<typename DBType>
+   template <typename DBType>
    bool
-   litedb::DeleteData(DBType& deleteObject)
+   litedb::DeleteData(DBType &deleteObject)
    {
        stmt dbstate = stmt();
-       if(deleteObject.GenDeleteSTMT(dbstate, sdb)){
+       if (deleteObject.GenDeleteSTMT(dbstate, sdb)) {
            auto deleteRes = sqlite3_step(dbstate.S);
-           if(deleteRes != SQLITE_DONE){
+           if (deleteRes != SQLITE_DONE) {
                return false;
            }
            return true;
@@ -131,14 +133,14 @@ Program Listing for File dbRoot.hpp
        return false;
    }
    
-   template<typename DBType>
+   template <typename DBType>
    bool
-   litedb::EditData(DBType& searchObject, DBType& editObject)
+   litedb::EditData(DBType &searchObject, DBType &editObject)
    {
        stmt dbstate = stmt();
-       if(searchObject.GenEditSTMT(dbstate, sdb, editObject)){
+       if (searchObject.GenEditSTMT(dbstate, sdb, editObject)) {
            auto editRes = sqlite3_step(dbstate.S);
-           if(editRes != SQLITE_DONE){
+           if (editRes != SQLITE_DONE) {
                return false;
            }
            return true;

@@ -45,7 +45,7 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd`
+- :ref:`exhale_function__mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd`
 
-- :ref:`exhale_function_Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527`
+- :ref:`exhale_function__mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527`
 

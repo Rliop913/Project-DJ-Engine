@@ -64,9 +64,9 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structDiffResult`
+- :ref:`exhale_struct_struct_diff_result`
 
-- :ref:`exhale_struct_structlineLog`
+- :ref:`exhale_struct_structline_log`
 
-- :ref:`exhale_class_classDiffController`
+- :ref:`exhale_class_class_diff_controller`
 

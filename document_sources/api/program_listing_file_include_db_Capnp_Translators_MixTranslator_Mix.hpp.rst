@@ -13,22 +13,25 @@ Program Listing for File Mix.hpp
    #pragma once
    
    #include <algorithm>
+   #include <mutex>
    #include <thread>
    #include <vector>
-   #include <mutex>
    
    #include "FrameCalc.hpp"
    #include "PDJE_EXPORT_SETTER.hpp"
    class BPM;
    
-   class PDJE_API MIX{
-   private:
+   class PDJE_API MIX {
+     private:
        unsigned int usable_threads;
-   public:
-       std::vector<MixStruct> mixVec;
-       bool openMix(const MixBinaryCapnpData::Reader& Rptr);
    
-       bool WriteFrames(BPM& bpmm);
+     public:
+       std::vector<MixStruct> mixVec;
+       bool
+       openMix(const MixBinaryCapnpData::Reader &Rptr);
+   
+       bool
+       WriteFrames(BPM &bpmm);
    
        MIX();
        ~MIX();

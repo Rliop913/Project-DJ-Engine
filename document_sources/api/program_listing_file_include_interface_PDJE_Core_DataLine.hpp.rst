@@ -15,12 +15,12 @@ Program Listing for File PDJE_Core_DataLine.hpp
    #include "PDJE_EXPORT_SETTER.hpp"
    
    #include "MusicControlPannel.hpp"
-   struct PDJE_API PDJE_CORE_DATA_LINE{
-       unsigned long long* used_frame = nullptr;
-       unsigned long long* nowCursor = nullptr;
-       unsigned long long* maxCursor = nullptr;
-       float* preRenderedData = nullptr;
+   struct PDJE_API PDJE_CORE_DATA_LINE {
+       unsigned long long *used_frame      = nullptr;
+       unsigned long long *nowCursor       = nullptr;
+       unsigned long long *maxCursor       = nullptr;
+       float              *preRenderedData = nullptr;
    
-       FXControlPannel* fx = nullptr;
-       MusicControlPannel* musp = nullptr;
+       FXControlPannel    *fx   = nullptr;
+       MusicControlPannel *musp = nullptr;
    };

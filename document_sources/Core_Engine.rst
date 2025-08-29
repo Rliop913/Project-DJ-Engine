@@ -713,6 +713,8 @@ See :ref:`about-mix-data` first.
 
         // editor->AddLine(data);
 
+        // editor->AddLine("music name", "48000") // this changes the music's first beat position
+
 
     .. code-block:: c#
 
@@ -720,10 +722,173 @@ See :ref:`about-mix-data` first.
 
         engine.editor.AddLineMix(mixs);
 
+
+        mixs.type = TypeEnum.FILTER; //Filter
+        mixs.details = DetailEnum.LOW; //Low pass
+
+        mixs.ID = 1; //Deck number. access music with this.
+
+        mixs.first = ITPL_ENUM.ITPL_COSINE.ToString(); // first arg
+        mixs.second = "5000,1000,2000,3000,4000,5000,5500,6000"; // second arg, eight point values
+        // mixs.first = ITPL_ENUM.ITPL_FLAT.ToString(); // if no need interpolation
+        // mixs.second = "5000"; // just one value
+
+        mixs.third = "NONE"; // third arg
+
+        mixs.beat = 0;
+        mixs.subBeat = 0;
+        mixs.separate = 0;
+        //"start_position" = beat + (beat / separate) * subBeat
+
+        mixs.Ebeat = 16;//end beat
+        mixs.EsubBeat = 2;//end subBeat
+        mixs.Eseparate = 4;//end separate
+        //"end_position" = ebeat + (ebeat / eseparate) * esubBeat
+
+        //summation: add low pass filter from "start_position" to "end_position" with interpolation
+
+        engine.editor.AddLineMix(mixs);//add mix data
+        // EDIT_ARG_NOTE data;
+        // editor.AddLineNote(data);
+
+        // EDIT_ARG_KEY_VALUE data;
+        // editor.AddLineKV(data);
+
+        // EDIT_ARG_MUSIC data;
+        // editor.AddLineMusic(data);
+
+        // editor.AddLine("music name", "48000"); // this changes the music's first beat position.
+
     .. code-block:: python
 
         import pdje_POLYGLOT as pypdje
-        engine = pypdje.PDJE("database/path")
+
+        from pdje_POLYGLOT import EDIT_ARG_MIX
+        from pdje_POLYGLOT import EDIT_ARG_MUSIC
+        from pdje_POLYGLOT import EDIT_ARG_KEY_VALUE
+
+        from pdje_POLYGLOT import EDIT_ARG_NOTE
+        from pdje_POLYGLOT import editorObject
+
+        mixs = EDIT_ARG_MIX()
+
+        editor.AddLineMix(mixs)
+
+        pypdje.TypeEnum_BATTLE_DJ
+
+
+        mixs.type = pypdje.TypeEnum_FILTER #Filter
+        mixs.details = pypdje.DetailEnum_LOW #Low pass
+
+        mixs.ID = 1 #Deck number. access music with this.
+
+        mixs.first = pypdje.ITPL_COSINE.ToString() # first arg
+        mixs.second = "5000,1000,2000,3000,4000,5000,5500,6000" # second arg, eight point values
+        # mixs.first = pypdje.ITPL_FLAT.ToString() # if no need interpolation
+        # mixs.second = "5000" # just one value
+
+        mixs.third = "NONE" # third arg
+
+        mixs.beat = 0
+        mixs.subBeat = 0
+        mixs.separate = 0
+        #"start_position" = beat + (beat / separate) * subBeat
+
+        mixs.Ebeat = 16#end beat
+        mixs.EsubBeat = 2#end subBeat
+        mixs.Eseparate = 4#end separate
+        #"end_position" = ebeat + (ebeat / eseparate) * esubBeat
+
+        #summation: add low pass filter from "start_position" to "end_position" with interpolation
+
+        editor.AddLineMix(mixs)#add mix data
+        # data = EDIT_ARG_NOTE()
+        # editor.AddLineNote(data)
+
+        # data = EDIT_ARG_KEY_VALUE()
+        # editor.AddLineKV(data)
+
+        # data = EDIT_ARG_MUSIC()
+        # editor.AddLineMusic(data)
+
+        # editor.AddLine("music name", "48000") # this changes the music's first beat position.
+
+    .. code-block:: gdscript
+        
+        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
+        engine.InitEngine("res://database/path")
+
+
+Get all lines
+--------------
+
+.. tab-set-code:: 
+
+    .. code-block:: c++
+
+        std::vector<EDIT_ARG_MIX> mixFound;
+        editor->getAll([&mixFound](const EDIT_ARG_MIX& mix_arg){//single threaded. will add multithreaded , faster getter soon.
+            if(mix_arg.beat < 50){
+                mixFound.push_back();
+            }
+        });
+
+        // std::vector<EDIT_ARG_NOTE> Found;
+        // editor->getAll([&Found](const EDIT_ARG_NOTE& arg);
+
+        // std::vector<EDIT_ARG_KEY_VALUE> Found;
+        // editor->getAll([&Found](const EDIT_ARG_KEY_VALUE& arg);
+
+        // std::vector<EDIT_ARG_MUSIC> Found;
+        // editor->getAll([&Found](const EDIT_ARG_MUSIC& arg);
+        
+
+    .. code-block:: c#
+
+        MixCall caller = new MixCall();
+
+        editor.GetAllMixes(caller);
+
+        // editor.GetAllKeyValues(caller);
+        // editor.GetAllMusics(caller);
+        // editor.GetAllNotes(caller);
+
+        public class MixCall : MixVisitor { // MusicVisitor, NoteVisitor, KVVisitor
+            public List<EDIT_ARG_MIX> mixs = new List<EDIT_ARG_MIX>();
+            public override void on_item(EDIT_ARG_MIX o)// override this function
+            {
+                if (o.beat > 50)
+                {
+                    mixs.Add(o);
+                }
+            }
+        };// Just change MIX into NOTE, KEY_VALUE, MUSIC
+
+
+    .. code-block:: python
+
+        import pdje_POLYGLOT as pypdje
+        
+        class MixCall(pypdje.MixVisitor):# MusicVisitor, NoteVisitor, KVVisitor
+            def __init__(self):
+                super().__init__()
+                self.mixs = []
+
+            def on_item(self, o:EDIT_ARG_MIX):# def this function
+                if o.beat > 50:
+                    self.mixs.append(o)
+
+        caller = MixCall()
+
+        editor.GetAllMixes(caller)
+
+        # editor.GetAllKeyValues(caller)
+        # editor.GetAllMusics(caller)
+        # editor.GetAllNotes(caller)
+
+        for i in caller.mixs:
+            print(i)
+            
 
     .. code-block:: gdscript
 
@@ -737,67 +902,91 @@ Delete line
 
     .. code-block:: c++
 
-        auto engine = new PDJE("database/path");
+        std::vector<EDIT_ARG_NOTE> noteFound;
+
+        //find delete targets with getAll function.
+
+        for(const auto& delete_target : noteFound){
+            editor->deleteLine(delete_target);
+        }
+
+        std::vector<EDIT_ARG_MIX> mixFound;
+
+        //find delete targets with getAll function.
+
+        bool skipType = true;
+        bool skipDetail = false;
+        for(const auto& delete_target : mixFound){
+            editor->deleteLine(delete_target, skipType, skipDetail); //mix arg is special.
+        }
 
     .. code-block:: c#
 
-        PDJE engine = new PDJE("database/path");
+        MixCall caller = new MixCall();
+
+        editor.GetAllMixes(caller);
+        bool skipType = true;
+        bool skipDetail = false;
+        foreach (var target in caller.mixs)
+        {
+            editor.deleteLine(target, skipType, skipDetail);
+            // editor.deleteLineKV(target);
+            // editor.deleteLineMusic(target);
+            // editor.deleteLineNote(target);
+        }
 
     .. code-block:: python
 
-        import pdje_POLYGLOT as pypdje
-        engine = pypdje.PDJE("database/path")
+        class MixCall(pypdje.MixVisitor):
+            def __init__(self):
+                super().__init__()
+                self.mixs = []
+
+            def on_item(self, o:EDIT_ARG_MIX):
+                if o.beat > 50:
+                    self.mixs.append(o)
+
+        caller = MixCall()
+
+        editor.GetAllMixes(caller)
+
+        skip_type = False
+        skip_detail = True
+
+        for i in caller.mixs:
+            editor.deleteLine(i, skip_type, skip_detail)
+            # editor.deleteLineKV(i)
+            # editor.deleteLineMusic(i)
+            # editor.deleteLineNote(i)
 
     .. code-block:: gdscript
 
         var engine:PDJE_Wrapper = PDJE_Wrapper.new()
         engine.InitEngine("res://database/path")
 
-Get all lines
---------------
 
-.. tab-set-code:: 
+.. Get diff
+.. ------------
 
-    .. code-block:: c++
+.. .. tab-set-code:: 
 
-        auto engine = new PDJE("database/path");
+..     .. code-block:: c++
 
-    .. code-block:: c#
+..         auto engine = new PDJE("database/path");
 
-        PDJE engine = new PDJE("database/path");
+..     .. code-block:: c#
 
-    .. code-block:: python
+..         PDJE engine = new PDJE("database/path");
 
-        import pdje_POLYGLOT as pypdje
-        engine = pypdje.PDJE("database/path")
+..     .. code-block:: python
 
-    .. code-block:: gdscript
+..         import pdje_POLYGLOT as pypdje
+..         engine = pypdje.PDJE("database/path")
 
-        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
-        engine.InitEngine("res://database/path")
+..     .. code-block:: gdscript
 
-Get diff
-------------
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        auto engine = new PDJE("database/path");
-
-    .. code-block:: c#
-
-        PDJE engine = new PDJE("database/path");
-
-    .. code-block:: python
-
-        import pdje_POLYGLOT as pypdje
-        engine = pypdje.PDJE("database/path")
-
-    .. code-block:: gdscript
-
-        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
-        engine.InitEngine("res://database/path")
+..         var engine:PDJE_Wrapper = PDJE_Wrapper.new()
+..         engine.InitEngine("res://database/path")
 
 .. _get-edit-logs:
 
@@ -831,16 +1020,68 @@ Get edit logs
         ]
         }
         */
-        auto engine = new PDJE("database/path");
+        std::string mix_json_graph = editor->GetLogWithJSONGraph<EDIT_ARG_MIX>();
+        std::string key_value_json_graph = editor->GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
+        std::string note_json_graph = editor->GetLogWithJSONGraph<EDIT_ARG_NOTE>();
+        std::string music_json_graph = editor->GetLogWithJSONGraph<EDIT_ARG_MUSIC>("music name");
 
     .. code-block:: c#
 
-        PDJE engine = new PDJE("database/path");
+        /*
+        JSON structure produced:
+
+        {
+        "BRANCH": [                          // branch head list
+            {
+            "NAME": string,                  // branch name (e.g., "main")
+            "OID":  string                   // head commit oid (40-hex from git_oid_tostr_s)
+            },
+            ...
+        ],
+        "COMMIT": [                          // commit metadata list
+            {
+            "OID":      string,              // commit oid (40-hex)
+            "EMAIL":    string,              // author email
+            "NAME":     string,              // author name
+            "PARENTID": string               // parent commit oid (may be empty/zero for initial)
+            },
+            ...
+        ]
+        }
+        */
+        string KV_json_graph = editor.GetLogKVJSON();
+        string Mix_json_graph = editor.GetLogMixJSON();
+        string Music_json_graph = editor.GetLogMusicJSON("music name");
+        string Note_json_graph = editor.GetLogNoteJSON();
 
     .. code-block:: python
 
-        import pdje_POLYGLOT as pypdje
-        engine = pypdje.PDJE("database/path")
+        """
+        JSON structure produced:
+
+        {
+        "BRANCH": [                          // branch head list
+            {
+            "NAME": string,                  // branch name (e.g., "main")
+            "OID":  string                   // head commit oid (40-hex from git_oid_tostr_s)
+            },
+            ...
+        ],
+        "COMMIT": [                          // commit metadata list
+            {
+            "OID":      string,              // commit oid (40-hex)
+            "EMAIL":    string,              // author email
+            "NAME":     string,              // author name
+            "PARENTID": string               // parent commit oid (may be empty/zero for initial)
+            },
+            ...
+        ]
+        }
+        """
+        KV_json_graph = editor.GetLogKVJSON()
+        Mix_json_graph = editor.GetLogMixJSON()
+        Music_json_graph = editor.GetLogMusicJSON("music name")
+        Note_json_graph = editor.GetLogNoteJSON()
 
     .. code-block:: gdscript
 

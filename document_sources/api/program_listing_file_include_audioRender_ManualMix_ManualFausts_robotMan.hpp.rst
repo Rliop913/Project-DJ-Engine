@@ -13,19 +13,19 @@ Program Listing for File robotMan.hpp
    #pragma once
    #include "DeckData.hpp"
    
-   class RobotMan{
-   public:
-       int robotFreq;
+   class RobotMan {
+     public:
+       int   robotFreq;
        float RobotDryWet;
        ARGSETTER
-       makeArgSetter(){
-           return {
-               {"RobotFreq", [this](double value) {
-                    this->robotFreq = static_cast<int>(value);
-               }},
-               {"RobotDryWet", [this](double value) {
-                    this->RobotDryWet = static_cast<float>(value);
-               }}
-           };
+       makeArgSetter()
+       {
+           return { { "RobotFreq",
+                      [this](double value) {
+                          this->robotFreq = static_cast<int>(value);
+                      } },
+                    { "RobotDryWet", [this](double value) {
+                         this->RobotDryWet = static_cast<float>(value);
+                     } } };
        }
    };

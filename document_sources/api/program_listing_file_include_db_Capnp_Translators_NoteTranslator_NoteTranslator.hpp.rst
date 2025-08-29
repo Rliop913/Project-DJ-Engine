@@ -12,37 +12,34 @@ Program Listing for File NoteTranslator.hpp
 
    #pragma once
    
-   #include <optional>
-   #include <vector>
-   #include <string>
    #include "CapnpBinary.hpp"
    #include "NoteBinary.capnp.h"
+   #include <optional>
+   #include <string>
+   #include <vector>
    
    #include "FrameCalc.hpp"
    
-   #include <functional>
    #include "PDJE_EXPORT_SETTER.hpp"
+   #include <functional>
    
-   using OBJ_SETTER_CALLBACK = 
-   std::function<void(
+   using OBJ_SETTER_CALLBACK = std::function<void(
        const std::string,
-       const std::string, 
-       const std::string, 
-       const std::string, 
-       const std::string, 
+       const std::string,
+       const std::string,
+       const std::string,
+       const std::string,
        const unsigned long long,
-       const unsigned long long
-   )>;
+       const unsigned long long)>;
    
-   
-   class PDJE_API NoteTranslator{
-   public:
+   class PDJE_API NoteTranslator {
+     public:
        BpmStruct noteBpms;
-       bool Read(
-           const CapReader<NoteBinaryCapnpData>& binary, 
-           const BpmStruct& mainBpm,
-           OBJ_SETTER_CALLBACK& lambdaCallback);
+       bool
+       Read(const CapReader<NoteBinaryCapnpData> &binary,
+            const BpmStruct                      &mainBpm,
+            OBJ_SETTER_CALLBACK                  &lambdaCallback);
    
-       NoteTranslator() = default;
+       NoteTranslator()  = default;
        ~NoteTranslator() = default;
    };

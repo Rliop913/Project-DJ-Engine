@@ -58,5 +58,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classtempDB`
+- :ref:`exhale_class_classtemp_d_b`
 

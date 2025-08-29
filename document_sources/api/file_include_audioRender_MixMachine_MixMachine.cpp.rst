@@ -45,5 +45,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_MixMachine_8cpp_1a2cf5e4fd933ff187fc184934669cb42d`
+- :ref:`exhale_function__mix_machine_8cpp_1a2cf5e4fd933ff187fc184934669cb42d`
 

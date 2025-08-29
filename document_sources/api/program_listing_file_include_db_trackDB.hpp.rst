@@ -14,27 +14,29 @@ Program Listing for File trackDB.hpp
    #include <sqlite3.h>
    #include <string>
    
-   #include "dbState.hpp"
    #include "PDJE_EXPORT_SETTER.hpp"
+   #include "dbState.hpp"
    #include "fileNameSanitizer.hpp"
-   struct PDJE_API trackdata{
-   public:
+   struct PDJE_API trackdata {
+     public:
        SANITIZED trackTitle;
-       BIN mixBinary;
-       BIN noteBinary;
+       BIN       mixBinary;
+       BIN       noteBinary;
        SANITIZED cachedMixList;
    
-       trackdata(stmt* dbstate);
+       trackdata(stmt *dbstate);
    
-       trackdata(
-           const UNSANITIZED& trackTitle__ = ""
-       );
+       trackdata(const UNSANITIZED &trackTitle__ = "");
    
-       bool GenSearchSTMT(stmt& dbstate, sqlite3* db);
+       bool
+       GenSearchSTMT(stmt &dbstate, sqlite3 *db);
    
-       bool GenInsertSTMT(stmt& dbstate, sqlite3* db);
+       bool
+       GenInsertSTMT(stmt &dbstate, sqlite3 *db);
    
-       bool GenEditSTMT(stmt& dbstate, sqlite3* db, trackdata& toEdit);
+       bool
+       GenEditSTMT(stmt &dbstate, sqlite3 *db, trackdata &toEdit);
    
-       bool GenDeleteSTMT(stmt& dbstate, sqlite3* db);
+       bool
+       GenDeleteSTMT(stmt &dbstate, sqlite3 *db);
    };

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Program Listing for File MusicControlPannel.hpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../_static/doctools.js?v=9bcbadda"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -53,7 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -82,7 +80,7 @@
              
   <section id="program-listing-for-file-musiccontrolpannel-hpp">
 <span id="program-listing-file-include-audiorender-manualmix-musiccontrolpannel-hpp"></span><h1>Program Listing for File MusicControlPannel.hpp<a class="headerlink" href="#program-listing-for-file-musiccontrolpannel-hpp" title="Link to this heading"></a></h1>
-<p>↰ <a class="reference internal" href="file_include_audioRender_ManualMix_MusicControlPannel.hpp.html#file-include-audiorender-manualmix-musiccontrolpannel-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/audioRender/ManualMix/MusicControlPannel.hpp</span></code>)</p>
+<p>↰ <a class="reference internal" href="file_include_audioRender_ManualMix_MusicControlPannel.hpp.html#file-include-audiorender-manualmix-musiccontrolpannel-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\audioRender\ManualMix\MusicControlPannel.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Decoder.hpp&quot;</span>
@@ -91,10 +89,10 @@
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ManualMix.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;dbRoot.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fileNameSanitizer.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;SoundTouch.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;dbRoot.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fileNameSanitizer.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">filesystem</span><span class="p">;</span>
 <span class="c1">// #undef HWY_TARGET_INCLUDE</span>
@@ -102,19 +100,15 @@
 <span class="c1">// #include &quot;hwy/foreach_target.h&quot;</span>
 <span class="c1">// #include &lt;hwy/highway.h&gt;</span>
 
+<span class="k">using</span><span class="w"> </span><span class="n">LOADED_LIST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">;</span>
 
-<span class="k">using</span><span class="w"> </span><span class="n">LOADED_LIST</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">;</span>
-
-
-
-
-
-<span class="k">struct</span><span class="w"> </span><span class="nc">MusicOnDeck</span><span class="p">{</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">play</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Decoder</span><span class="w"> </span><span class="n">dec</span><span class="p">;</span>
-<span class="w">    </span><span class="n">FXControlPannel</span><span class="o">*</span><span class="w"> </span><span class="n">fxP</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">MusicOnDeck</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">                                  </span><span class="n">play</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Decoder</span><span class="w">                               </span><span class="n">dec</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FXControlPannel</span><span class="w">                      </span><span class="o">*</span><span class="n">fxP</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">soundtouch</span><span class="o">::</span><span class="n">SoundTouch</span><span class="o">&gt;</span><span class="w"> </span><span class="n">st</span><span class="p">;</span>
-<span class="w">    </span><span class="n">MusicOnDeck</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">fxP</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FXControlPannel</span><span class="p">(</span><span class="mi">48000</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">MusicOnDeck</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">fxP</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FXControlPannel</span><span class="p">(</span><span class="mi">48000</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">st</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
 <span class="w">        </span><span class="n">st</span><span class="o">-&gt;</span><span class="n">setChannels</span><span class="p">(</span><span class="n">CHANNEL</span><span class="p">);</span>
 <span class="w">        </span><span class="n">st</span><span class="o">-&gt;</span><span class="n">setSampleRate</span><span class="p">(</span><span class="n">SAMPLERATE</span><span class="p">);</span>
@@ -122,49 +116,55 @@
 <span class="w">        </span><span class="n">st</span><span class="o">-&gt;</span><span class="n">setSetting</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <span class="w">        </span><span class="n">st</span><span class="o">-&gt;</span><span class="n">setTempo</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
 <span class="w">    </span><span class="p">};</span>
-<span class="w">    </span><span class="o">~</span><span class="n">MusicOnDeck</span><span class="p">(){</span>
+<span class="w">    </span><span class="o">~</span><span class="n">MusicOnDeck</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// ma_decoder_uninit(&amp;dec);</span>
 <span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="n">fxP</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-
 <span class="p">};</span>
 
+<span class="k">using</span><span class="w"> </span><span class="n">LOADS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">MusicOnDeck</span><span class="o">&gt;</span><span class="p">;</span>
 
-
-<span class="k">using</span><span class="w"> </span><span class="n">LOADS</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">MusicOnDeck</span><span class="o">&gt;</span><span class="p">;</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">MusicControlPannel</span><span class="p">{</span>
-<span class="k">private</span><span class="o">:</span>
-
-<span class="w">    </span><span class="n">LOADS</span><span class="w"> </span><span class="n">deck</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">fsize</span><span class="p">;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">MusicControlPannel</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">LOADS</span><span class="w">              </span><span class="n">deck</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w">      </span><span class="n">fsize</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">L</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">R</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">FaustStyle</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-<span class="w">    </span><span class="n">SIMD_FLOAT</span><span class="w"> </span><span class="n">tempFrames</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w">             </span><span class="o">*</span><span class="n">FaustStyle</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="w">    </span><span class="n">SIMD_FLOAT</span><span class="w">         </span><span class="n">tempFrames</span><span class="p">;</span>
 
-<span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">LoadMusic</span><span class="p">(</span><span class="n">litedb</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ROOTDB</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">musdata</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Mus</span><span class="p">);</span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="n">LoadMusic</span><span class="p">(</span><span class="n">litedb</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ROOTDB</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">musdata</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Mus</span><span class="p">);</span>
 
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">CueMusic</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">newPos</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">CueMusic</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">newPos</span><span class="p">);</span>
 
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">SetMusic</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">onOff</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">SetMusic</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">onOff</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">LOADED_LIST</span><span class="w"> </span><span class="nf">GetLoadedMusicList</span><span class="p">();</span>
+<span class="w">    </span><span class="n">LOADED_LIST</span>
+<span class="w">    </span><span class="nf">GetLoadedMusicList</span><span class="p">();</span>
 
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">UnloadMusic</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">title</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">UnloadMusic</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">title</span><span class="p">);</span>
 
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">GetPCMFrames</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">FrameSize</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">GetPCMFrames</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">FrameSize</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">FXControlPannel</span><span class="o">*</span><span class="w"> </span><span class="nf">getFXHandle</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">title</span><span class="p">);</span>
+<span class="w">    </span><span class="n">FXControlPannel</span><span class="w"> </span><span class="o">*</span>
+<span class="w">    </span><span class="nf">getFXHandle</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">title</span><span class="p">);</span>
 
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">ChangeBpm</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">title</span><span class="p">,</span>
+<span class="w">              </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w">       </span><span class="n">targetBpm</span><span class="p">,</span>
+<span class="w">              </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w">       </span><span class="n">originBpm</span><span class="p">);</span>
 
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">ChangeBpm</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">targetBpm</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">originBpm</span><span class="p">);</span>
-
-
-<span class="w">    </span><span class="n">MusicControlPannel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">FrameSize</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">fsize</span><span class="p">(</span><span class="n">FrameSize</span><span class="p">){}</span>
+<span class="w">    </span><span class="n">MusicControlPannel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">FrameSize</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">fsize</span><span class="p">(</span><span class="n">FrameSize</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="o">~</span><span class="n">MusicControlPannel</span><span class="p">();</span>
-
 <span class="p">};</span>
 </pre></div>
 </div>

@@ -18,21 +18,25 @@ Program Listing for File tempDB.hpp
    #include "PDJE_EXPORT_SETTER.hpp"
    #include "dbRoot.hpp"
    
-   class PDJE_API tempDB{
-   private:
+   class PDJE_API tempDB {
+     private:
        std::optional<litedb> tempROOT;
-   public:
+   
+     public:
        std::string ERR = "";
    
-       bool Open(const fs::path& projectRoot);
+       bool
+       Open(const fs::path &projectRoot);
    
-       bool BuildProject(trackdata& td, std::vector<musdata>& mds);
+       bool
+       BuildProject(trackdata &td, std::vector<musdata> &mds);
    
-       litedb& GetBuildedProject(){
+       litedb &
+       GetBuildedProject()
+       {
            return tempROOT.value();
        }
    
-       tempDB() = default;
+       tempDB()  = default;
        ~tempDB() = default;
-       
    };

@@ -16,6 +16,7 @@ Directory JSONWrap
 Files
 -----
 
+- :ref:`file_include_editor_featureWrapper_JSONWrap_EditorArgs.hpp`
 - :ref:`file_include_editor_featureWrapper_JSONWrap_jsonWrapper.hpp`
 - :ref:`file_include_editor_featureWrapper_JSONWrap_KVJson.cpp`
 - :ref:`file_include_editor_featureWrapper_JSONWrap_MixJson.cpp`

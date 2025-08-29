@@ -12,21 +12,21 @@ Program Listing for File Type_MUSCTR.cpp
 
    #include "MixMachine.hpp"
    
-   template<>
+   template <>
    bool
-   MixMachine::TypeWorks<TypeEnum::LOAD, MUSIC_CTR>
-   (MixStruct& ms, MUSIC_CTR& data, litedb& db)
+   MixMachine::TypeWorks<TypeEnum::LOAD, MUSIC_CTR>(MixStruct &ms,
+                                                    MUSIC_CTR &data,
+                                                    litedb    &db)
    {
-       if(!data.setLOAD(ms.RP, db, ms.frame_in)){
+       if (!data.setLOAD(ms.RP, db, ms.frame_in)) {
            return false;
        }
        return true;
    }
    
-   template<>
+   template <>
    bool
-   MixMachine::TypeWorks<TypeEnum::LOAD, BattleDj>
-   (MixStruct& ms, BattleDj& data)
+   MixMachine::TypeWorks<TypeEnum::LOAD, BattleDj>(MixStruct &ms, BattleDj &data)
    {
        data.StartPos = ms.frame_in;
        return true;
@@ -41,32 +41,29 @@ Program Listing for File Type_MUSCTR.cpp
    //     return true;
    // }
    
-   
-   
-   
-   template<>
+   template <>
    bool
-   MixMachine::TypeWorks<TypeEnum::BATTLE_DJ, BattleDj>
-   (MixStruct& ms, BattleDj& data)
+   MixMachine::TypeWorks<TypeEnum::BATTLE_DJ, BattleDj>(MixStruct &ms,
+                                                        BattleDj  &data)
    {
-       switch (ms.RP.getDetails()){
+       switch (ms.RP.getDetails()) {
        case DetailEnum::SPIN:
-           if(!data.Spin(ms)){
+           if (!data.Spin(ms)) {
                return false;
            }
            break;
        case DetailEnum::REV:
-           if(!data.Rev(ms)){
+           if (!data.Rev(ms)) {
                return false;
            }
            break;
        case DetailEnum::PITCH:
-           if(!data.Pitch(ms)){
+           if (!data.Pitch(ms)) {
                return false;
            }
            break;
        case DetailEnum::SCRATCH:
-           if(!data.Scratch(ms)){
+           if (!data.Scratch(ms)) {
                return false;
            }
            break;
@@ -76,33 +73,26 @@ Program Listing for File Type_MUSCTR.cpp
        return true;
    }
    
-   template<>
+   template <>
    bool
-   MixMachine::TypeWorks<TypeEnum::CONTROL>
-   (MixStruct& ms, MUSIC_CTR& data)
+   MixMachine::TypeWorks<TypeEnum::CONTROL>(MixStruct &ms, MUSIC_CTR &data)
    {
-       switch (ms.RP.getDetails())
-       {
-       case DetailEnum::PAUSE:
-           {
-               PlayPosition pause;
-               pause.Gidx = ms.frame_in;
-               pause.Lidx = 0;
-               pause.status = MIXSTATE::PAUSE;
-               data.QDatas.pos.push_back(pause);
-           }
-           break;
+       switch (ms.RP.getDetails()) {
+       case DetailEnum::PAUSE: {
+           PlayPosition pause;
+           pause.Gidx   = ms.frame_in;
+           pause.Lidx   = 0;
+           pause.status = MIXSTATE::PAUSE;
+           data.QDatas.pos.push_back(pause);
+       } break;
        case DetailEnum::CUE:
-           try
-           {
+           try {
                PlayPosition cuepos;
-               cuepos.Gidx = ms.frame_in;
-               cuepos.Lidx = std::stoull(ms.RP.getFirst().cStr());
+               cuepos.Gidx   = ms.frame_in;
+               cuepos.Lidx   = std::stoull(ms.RP.getFirst().cStr());
                cuepos.status = MIXSTATE::PLAY;
                data.QDatas.pos.push_back(cuepos);
-           }
-           catch(...)
-           {
+           } catch (...) {
                return false;
            }
            break;
@@ -112,15 +102,13 @@ Program Listing for File Type_MUSCTR.cpp
        return true;
    }
    
-   template<>
+   template <>
    bool
-   MixMachine::TypeWorks<TypeEnum::UNLOAD>
-   (MixStruct& ms, MUSIC_CTR& data)
+   MixMachine::TypeWorks<TypeEnum::UNLOAD>(MixStruct &ms, MUSIC_CTR &data)
    {
        PlayPosition unload;
-       unload.Gidx = ms.frame_in;
+       unload.Gidx   = ms.frame_in;
        unload.status = MIXSTATE::END;
        data.QDatas.pos.push_back(unload);
        return true;
    }
-   

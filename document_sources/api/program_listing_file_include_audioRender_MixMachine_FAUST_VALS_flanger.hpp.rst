@@ -14,20 +14,22 @@ Program Listing for File flanger.hpp
    
    #include "Faust_interpolate.hpp"
    
-   
-   class Flanger_PDJE : public FaustInterpolate{
-   public:
+   class Flanger_PDJE : public FaustInterpolate {
+     public:
        float bps;
    
-       template<typename Duck>
-       void copyDatas(Duck& dest){
+       template <typename Duck>
+       void
+       copyDatas(Duck &dest)
+       {
            dest.bps = bps;
        }
    
-       template<typename Duck>
-       void copySetting(Duck& dest){
+       template <typename Duck>
+       void
+       copySetting(Duck &dest)
+       {
            copyDatas(dest);
            copyInterpolates(dest);
        }
-   
    };

@@ -47,5 +47,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_MusicControlPannel_8cpp_1abcdde12a1996c1207e1dd830cc2643ff`
+- :ref:`exhale_function__music_control_pannel_8cpp_1abcdde12a1996c1207e1dd830cc2643ff`
 

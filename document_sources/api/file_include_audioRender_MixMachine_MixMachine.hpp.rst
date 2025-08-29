@@ -103,30 +103,30 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structEightPointValues`
+- :ref:`exhale_struct_struct_eight_point_values`
 
-- :ref:`exhale_class_classMixMachine`
+- :ref:`exhale_class_class_mix_machine`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum_MixMachine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93a`
+- :ref:`exhale_enum__mix_machine_8hpp_1aa664d9e96a2364ae133e6eef7fe2b93a`
 
 
 Defines
 -------
 
 
-- :ref:`exhale_define_MixMachine_8hpp_1aced6e73a38e524a5e798f93c5d5cc3c8`
+- :ref:`exhale_define__mix_machine_8hpp_1aced6e73a38e524a5e798f93c5d5cc3c8`
 
-- :ref:`exhale_define_MixMachine_8hpp_1ab971e7c89e0f2091fa98ccb992d0b3b6`
+- :ref:`exhale_define__mix_machine_8hpp_1ab971e7c89e0f2091fa98ccb992d0b3b6`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_MixMachine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc`
+- :ref:`exhale_typedef__mix_machine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc`
 

@@ -4,7 +4,7 @@
 File Type_FX_ROBOT.cpp
 ======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MixTypes>` (``include/audioRender/MixMachine/MixTypes``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MixTypes>` (``include\audioRender\MixMachine\MixTypes``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Type_FX_ROBOT.cpp
    :local:
    :backlinks: none
 
-Definition (``include/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp``)
+Definition (``include\audioRender\MixMachine\MixTypes\Type_FX_ROBOT.cpp``)
 --------------------------------------------------------------------------
 
 
@@ -41,5 +41,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_Type__FX__ROBOT_8cpp_1a9d8264556f7c293a252a97320a6eedac`
+- :ref:`exhale_function__type___f_x___r_o_b_o_t_8cpp_1a9d8264556f7c293a252a97320a6eedac`
 

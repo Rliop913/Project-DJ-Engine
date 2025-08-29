@@ -4,7 +4,7 @@
 File BattleDj.hpp
 =================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MUSIC_CTR>` (``include/audioRender/MixMachine/MUSIC_CTR``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MUSIC_CTR>` (``include\audioRender\MixMachine\MUSIC_CTR``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File BattleDj.hpp
    :local:
    :backlinks: none
 
-Definition (``include/audioRender/MixMachine/MUSIC_CTR/BattleDj.hpp``)
+Definition (``include\audioRender\MixMachine\MUSIC_CTR\BattleDj.hpp``)
 ----------------------------------------------------------------------
 
 
@@ -57,14 +57,14 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structDJ__JOBS`
+- :ref:`exhale_struct_struct_d_j___j_o_b_s`
 
-- :ref:`exhale_class_classBattleDj`
+- :ref:`exhale_class_class_battle_dj`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum_BattleDj_8hpp_1a92a47c456c39736698ef8ba5fb6dcded`
+- :ref:`exhale_enum__battle_dj_8hpp_1a92a47c456c39736698ef8ba5fb6dcded`
 

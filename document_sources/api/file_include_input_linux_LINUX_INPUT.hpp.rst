@@ -57,5 +57,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classLinuxEVDEV`
+- :ref:`exhale_class_class_linux_e_v_d_e_v`
 

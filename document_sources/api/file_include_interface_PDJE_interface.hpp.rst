@@ -65,14 +65,14 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classARGSETTER__WRAPPER`
+- :ref:`exhale_class_class_a_r_g_s_e_t_t_e_r___w_r_a_p_p_e_r`
 
-- :ref:`exhale_class_classPDJE`
+- :ref:`exhale_class_class_p_d_j_e`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum_PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16`
+- :ref:`exhale_enum__p_d_j_e__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16`
 

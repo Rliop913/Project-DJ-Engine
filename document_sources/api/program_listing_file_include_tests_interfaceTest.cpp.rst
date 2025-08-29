@@ -13,39 +13,36 @@ Program Listing for File interfaceTest.cpp
    #include "PDJE_interface.hpp"
    
    #include <iostream>
-   int 
+   int
    main()
    {
-       auto testpdje = new PDJE("./tempdb.db");
+       auto testpdje     = new PDJE("./tempdb.db");
        auto searchResult = testpdje->SearchMusic("WTC", "");
-       if(searchResult.empty()){
+       if (searchResult.empty()) {
            std::cout << "can't search" << std::endl;
            delete testpdje;
            return 1;
        }
-       for(auto i : searchResult){
-           std::cout << "title: " << std::string(i.title.begin(), i.title.end()) 
-           << "path: "<< std::string(i.musicPath.begin(), i.musicPath.end()) << std::endl;
+       for (auto i : searchResult) {
+           std::cout << "title: " << std::string(i.title.begin(), i.title.end())
+                     << "path: "
+                     << std::string(i.musicPath.begin(), i.musicPath.end())
+                     << std::endl;
        }
    
        auto trackSearch = testpdje->SearchTrack("testmix111");
-       if(trackSearch.empty()){
+       if (trackSearch.empty()) {
            std::cout << "can't search track" << std::endl;
            delete testpdje;
            return 1;
        }
-       for(auto i: trackSearch){
-           std::cout 
-           << " track title: "
-           << TO_STR(i.trackTitle)
-           << " note binary size: "
-           << i.noteBinary.size()
-           << " mix binary size: "
-           << i.mixBinary.size()
-           << std::endl;
+       for (auto i : trackSearch) {
+           std::cout << " track title: " << TO_STR(i.trackTitle)
+                     << " note binary size: " << i.noteBinary.size()
+                     << " mix binary size: " << i.mixBinary.size() << std::endl;
        }
        testpdje->InitPlayer(PLAY_MODE::HYBRID_RENDER, trackSearch[0], 48);
-       if(!testpdje->player.has_value()){
+       if (!testpdje->player.has_value()) {
            std::cout << "can't search track" << std::endl;
            delete testpdje;
            return 1;
@@ -53,20 +50,18 @@ Program Listing for File interfaceTest.cpp
        testpdje->player->Activate();
        getchar();
        testpdje->player->GetFXControlPannel()->FX_ON_OFF(FXList::DISTORTION, true);
-       auto pannel = testpdje->player->GetFXControlPannel()->GetArgSetter(FXList::DISTORTION);
+       auto pannel = testpdje->player->GetFXControlPannel()->GetArgSetter(
+           FXList::DISTORTION);
        pannel["distortionValue"](2);
-       
+   
        getchar();
        auto mus = testpdje->player->GetMusicControlPannel();
        mus->LoadMusic(testpdje->DBROOT.value(), searchResult[0]);
        std::cout << TO_STR(mus->GetLoadedMusicList()[0]);
        mus->SetMusic("WTC", true);
        getchar();
-       for(auto i : (pannel)){
-           std::cout 
-           << i.first
-           << " "
-           << std::endl;
+       for (auto i : (pannel)) {
+           std::cout << i.first << " " << std::endl;
        }
        testpdje->player->Deactivate();
        getchar();

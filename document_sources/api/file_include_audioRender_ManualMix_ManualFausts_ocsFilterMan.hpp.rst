@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classOcsFilterMan`
+- :ref:`exhale_class_class_ocs_filter_man`
 

@@ -12,16 +12,16 @@ Program Listing for File audioPlayer.hpp
 
    #pragma once
    
-   #include <miniaudio.h>
-   #include "MixMachine.hpp"
    #include "ManualMix.hpp"
-   #include "audioRender.hpp"
-   #include "audioCallbacks.hpp"
-   #include "PDJE_EXPORT_SETTER.hpp"
+   #include "MixMachine.hpp"
    #include "PDJE_Core_DataLine.hpp"
-   class PDJE_API audioPlayer{
-   private:
-       ma_device player;
+   #include "PDJE_EXPORT_SETTER.hpp"
+   #include "audioCallbacks.hpp"
+   #include "audioRender.hpp"
+   #include <miniaudio.h>
+   class PDJE_API audioPlayer {
+     private:
+       ma_device  player;
        ma_context ctxt;
    
        audioRender renderer;
@@ -32,30 +32,45 @@ Program Listing for File audioPlayer.hpp
    
        audioEngineDataStruct engineDatas;
    
-       ma_device_config DefaultInit(const unsigned int frameBufferSize);
+       ma_device_config
+       DefaultInit(const unsigned int frameBufferSize);
    
-       void ContextInit();
-   public:
+       void
+       ContextInit();
+   
+     public:
        std::string STATUS = "OK";
    
-       const std::string GetStatus(){
+       const std::string
+       GetStatus()
+       {
            return STATUS;
        }
    
-       bool Activate();
+       bool
+       Activate();
    
-       bool Deactivate();
+       bool
+       Deactivate();
    
-       void ChangeCursorPos(unsigned long long pos);
+       void
+       ChangeCursorPos(unsigned long long pos);
    
-       unsigned long long GetConsumedFrames();
-       FXControlPannel* GetFXControlPannel(const UNSANITIZED& title = "__PDJE__MAIN__");
+       unsigned long long
+       GetConsumedFrames();
+       FXControlPannel *
+       GetFXControlPannel(const UNSANITIZED &title = "__PDJE__MAIN__");
    
-       MusicControlPannel* GetMusicControlPannel();
-       audioPlayer(litedb& db, trackdata& td, const unsigned int frameBufferSize, const bool hasManual = false);
+       MusicControlPannel *
+       GetMusicControlPannel();
+       audioPlayer(litedb            &db,
+                   trackdata         &td,
+                   const unsigned int frameBufferSize,
+                   const bool         hasManual = false);
        audioPlayer(const unsigned int frameBufferSize);
    
-       PDJE_CORE_DATA_LINE PullOutDataLine();
+       PDJE_CORE_DATA_LINE
+       PullOutDataLine();
    
        ~audioPlayer();
    };

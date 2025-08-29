@@ -4,7 +4,7 @@
 Program Listing for File MusicControlPannel-inl.h
 =================================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_MusicControlPannel-inl.h>` (``include/audioRender/ManualMix/MusicControlPannel-inl.h``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_MusicControlPannel-inl.h>` (``include\audioRender\ManualMix\MusicControlPannel-inl.h``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -22,14 +22,13 @@ Program Listing for File MusicControlPannel-inl.h
    
    HWY_ATTR
    bool
-   GetPCMFramesSIMD(
-       SIMD_FLOAT& tempFrames,
-       std::vector<float>& L,
-       std::vector<float>& R,
-       float** FaustStyle,
-       LOADS& deck,
-       float* array,
-       const unsigned long FrameSize)
+   GetPCMFramesSIMD(SIMD_FLOAT         &tempFrames,
+                    std::vector<float> &L,
+                    std::vector<float> &R,
+                    float             **FaustStyle,
+                    LOADS              &deck,
+                    float              *array,
+                    const unsigned long FrameSize)
    {
        const unsigned long long RAWFrameSize = FrameSize * CHANNEL;
    
@@ -40,19 +39,19 @@ Program Listing for File MusicControlPannel-inl.h
        FaustStyle[1] = R.data();
        const hwy::HWY_NAMESPACE::ScalableTag<float> hwyFTag;
        auto laneSize = hwy::HWY_NAMESPACE::Lanes(hwyFTag);
-       auto times = RAWFrameSize / laneSize;
+       auto times    = RAWFrameSize / laneSize;
        auto remained = RAWFrameSize % laneSize;
    
        SIMD_FLOAT solaVector;
-       for(auto& i : deck){
-           if(i.second.play){
+       for (auto &i : deck) {
+           if (i.second.play) {
                const FRAME_POS Sola = static_cast<FRAME_POS>(
-                   std::ceil(
-                       static_cast<double>(FrameSize) / i.second.st->getInputOutputSampleRatio()
-                   )
-               );
+                   std::ceil(static_cast<double>(FrameSize) /
+                             i.second.st->getInputOutputSampleRatio()));
                solaVector.resize(Sola * CHANNEL);
-               if(ma_decoder_read_pcm_frames(&i.second.dec.dec, solaVector.data(), Sola, NULL) != MA_SUCCESS){
+               if (ma_decoder_read_pcm_frames(
+                       &i.second.dec.dec, solaVector.data(), Sola, NULL) !=
+                   MA_SUCCESS) {
                    return false;
                }
    
@@ -63,23 +62,23 @@ Program Listing for File MusicControlPannel-inl.h
                i.second.fxP->addFX(FaustStyle, FrameSize);
                toLRStylePCM(FaustStyle, tempFrames.data(), FrameSize);
    
-               float* opoint = array;
-               float* tpoint = tempFrames.data();
+               float *opoint = array;
+               float *tpoint = tempFrames.data();
    
-               for(size_t j = 0; j < times; ++j){
-                   auto simdtemp = hwy::HWY_NAMESPACE::Load(hwyFTag, tpoint);
+               for (size_t j = 0; j < times; ++j) {
+                   auto simdtemp   = hwy::HWY_NAMESPACE::Load(hwyFTag, tpoint);
                    auto simdorigin = hwy::HWY_NAMESPACE::LoadU(hwyFTag, opoint);
-                   auto res = simdtemp + simdorigin;
+                   auto res        = simdtemp + simdorigin;
                    hwy::HWY_NAMESPACE::StoreU(res, hwyFTag, opoint);
                    opoint += laneSize;
                    tpoint += laneSize;
                }
    
-               for(size_t j=0; j<remained; ++j){
+               for (size_t j = 0; j < remained; ++j) {
                    (*(opoint++)) += (*(tpoint++));
                }
            }
        }
        return true;
    }
-   }
+   } // namespace HWY_NAMESPACE

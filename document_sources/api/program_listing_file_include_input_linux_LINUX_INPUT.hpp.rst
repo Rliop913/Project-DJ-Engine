@@ -14,10 +14,11 @@ Program Listing for File LINUX_INPUT.hpp
    #include "PDJE_INPUT.hpp"
    #include <libevdev-1.0/libevdev/libevdev.h>
    
+   class LinuxEVDEV {
+     public:
+       void
+       getList();
    
-   class LinuxEVDEV{
-   public:
-       void getList();
-   
-       void init();
+       void
+       init();
    };

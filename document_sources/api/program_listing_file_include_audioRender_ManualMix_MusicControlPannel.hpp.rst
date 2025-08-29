@@ -18,10 +18,10 @@ Program Listing for File MusicControlPannel.hpp
    
    #include "ManualMix.hpp"
    #include "PDJE_EXPORT_SETTER.hpp"
-   #include "dbRoot.hpp"
-   #include <filesystem>
-   #include "fileNameSanitizer.hpp"
    #include "SoundTouch.h"
+   #include "dbRoot.hpp"
+   #include "fileNameSanitizer.hpp"
+   #include <filesystem>
    
    namespace fs = std::filesystem;
    // #undef HWY_TARGET_INCLUDE
@@ -29,19 +29,15 @@ Program Listing for File MusicControlPannel.hpp
    // #include "hwy/foreach_target.h"
    // #include <hwy/highway.h>
    
+   using LOADED_LIST = std::vector<std::string>;
    
-   using LOADED_LIST   = std::vector<std::string>;
-   
-   
-   
-   
-   
-   struct MusicOnDeck{
-       bool play = false;
-       Decoder dec;
-       FXControlPannel* fxP;
+   struct MusicOnDeck {
+       bool                                  play = false;
+       Decoder                               dec;
+       FXControlPannel                      *fxP;
        std::optional<soundtouch::SoundTouch> st;
-       MusicOnDeck() : fxP(new FXControlPannel(48000)) {
+       MusicOnDeck() : fxP(new FXControlPannel(48000))
+       {
            st.emplace();
            st->setChannels(CHANNEL);
            st->setSampleRate(SAMPLERATE);
@@ -49,48 +45,53 @@ Program Listing for File MusicControlPannel.hpp
            st->setSetting(2, 0);
            st->setTempo(1.0);
        };
-       ~MusicOnDeck(){
+       ~MusicOnDeck()
+       {
            // ma_decoder_uninit(&dec);
            delete fxP;
        }
-   
    };
    
+   using LOADS = std::map<std::string, MusicOnDeck>;
    
-   
-   using LOADS         = std::map<std::string, MusicOnDeck>;
-   
-   class PDJE_API MusicControlPannel{
-   private:
-   
-       LOADS deck; 
-       unsigned long fsize;
+   class PDJE_API MusicControlPannel {
+     private:
+       LOADS              deck;
+       unsigned long      fsize;
        std::vector<float> L;
        std::vector<float> R;
-       float* FaustStyle[2];
-       SIMD_FLOAT tempFrames;
+       float             *FaustStyle[2];
+       SIMD_FLOAT         tempFrames;
    
-   public:
-       bool LoadMusic(litedb& ROOTDB, const musdata& Mus);
+     public:
+       bool
+       LoadMusic(litedb &ROOTDB, const musdata &Mus);
    
-       bool CueMusic(const UNSANITIZED& title, const unsigned long long newPos);
+       bool
+       CueMusic(const UNSANITIZED &title, const unsigned long long newPos);
    
-       bool SetMusic(const UNSANITIZED& title, const bool onOff);
+       bool
+       SetMusic(const UNSANITIZED &title, const bool onOff);
    
-       LOADED_LIST GetLoadedMusicList();
+       LOADED_LIST
+       GetLoadedMusicList();
    
-       bool UnloadMusic(const UNSANITIZED& title);
+       bool
+       UnloadMusic(const UNSANITIZED &title);
    
-       bool GetPCMFrames(float* array, const unsigned long FrameSize);
-       
-       FXControlPannel* getFXHandle(const UNSANITIZED& title);
+       bool
+       GetPCMFrames(float *array, const unsigned long FrameSize);
    
+       FXControlPannel *
+       getFXHandle(const UNSANITIZED &title);
    
-       bool ChangeBpm(const UNSANITIZED& title, const double targetBpm, const double originBpm);
+       bool
+       ChangeBpm(const UNSANITIZED &title,
+                 const double       targetBpm,
+                 const double       originBpm);
    
-   
-       MusicControlPannel(const unsigned long FrameSize): fsize(FrameSize){}
+       MusicControlPannel(const unsigned long FrameSize) : fsize(FrameSize)
+       {
+       }
        ~MusicControlPannel();
-   
    };
-   

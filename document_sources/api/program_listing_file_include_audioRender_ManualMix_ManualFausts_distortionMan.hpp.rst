@@ -14,16 +14,15 @@ Program Listing for File distortionMan.hpp
    #pragma once
    #include "DeckData.hpp"
    
-   class DistortionMan{
-   public:
+   class DistortionMan {
+     public:
        float distortionValue; 
    
        ARGSETTER
-       makeArgSetter(){
-           return{
-               {"DistortionValue", [this](double value){
-                   this->distortionValue = static_cast<float>(value);
-               }}
-           };
+       makeArgSetter()
+       {
+           return { { "DistortionValue", [this](double value) {
+                         this->distortionValue = static_cast<float>(value);
+                     } } };
        }
    };

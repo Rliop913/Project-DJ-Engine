@@ -12,16 +12,24 @@ Program Listing for File audioRender.hpp
 
    #pragma once
    
-   #include "MixMachine.hpp"
    #include "ManualMix.hpp"
+   #include "MixMachine.hpp"
    #include "PDJE_EXPORT_SETTER.hpp"
-   class PDJE_API audioRender{
-   public:
+   class PDJE_API audioRender {
+     public:
        std::optional<std::vector<float>> rendered_frames;
    
-       bool LoadTrack(litedb& db, trackdata& td);
-       bool LoadTrackFromMixData(litedb& db, BIN& mixData);
-       audioRender() = default;
+       bool
+       LoadTrack(litedb &db, trackdata &td);
+       bool
+       LoadTrackFromMixData(litedb &db, BIN &mixData);
+       audioRender()  = default;
        ~audioRender() = default;
+   };
    
+   enum ITPL_ENUM {
+     ITPL_LINEAR =0,
+     ITPL_COSINE,
+     ITPL_CUBIC,
+     ITPL_FLAT
    };

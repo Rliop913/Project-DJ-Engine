@@ -18,6 +18,7 @@
     #include "editorCommit.hpp"
     #include "SWIG_editor_visitor.hpp"
     #include "EditorArgs.hpp"
+    #include "audioRender.hpp"
     
     // #include "editorObject.hpp"
     #include "rocksdb/rocksdb_namespace.h"
@@ -63,23 +64,16 @@ namespace ROCKSDB_NAMESPACE = rocksdb;
 %include "MusicControlPannel.hpp"
 %include "editorObject.hpp"
 %include "editorCommit.hpp"
+%include "audioRender.hpp"
 %include <std_pair.i>  
 namespace fs = std::filesystem;
 
-%template(STRING_PAIR) std::pair<std::string, std::string>;
+%template(EDIT_ARG_KEY_VALUE) std::pair<std::string, std::string>;
 
 %rename(EDIT_ARG_NOTE) NoteArgs;
 %rename(EDIT_ARG_MIX)  MixArgs;
-%rename(EDIT_ARG_KEY_VALUE) STRING_PAIR;
 %include "EditorArgs.hpp"
 %include "PDJE_EXPORT_SETTER.hpp"
-%include "SWIG_editor_visitor.hpp"
-// %include "jsonWrapper.hpp"
-
-
-%template(MUS_VEC) std::vector<musdata>;
-%template(TRACK_VEC) std::vector<trackdata>;
-%template(KEY_VEC) std::vector<std::string>;
 
 %feature("director") NoteVisitor;
 
@@ -89,64 +83,24 @@ namespace fs = std::filesystem;
 
 %feature("director") MusicVisitor;
 
-// %inline %{
-// #ifdef SWIG
-// namespace PDJE_ENUM {
-//   enum class TypeEnum :uint16_t{
-//     FILTER = 0,
-//     EQ,
-//     DISTORTION,
-//     CONTROL,
-//     VOL,
-//     LOAD,
-//     UNLOAD,
-//     BPM_CONTROL,
-//     ECHO,
-//     OSC_FILTER,
-//     FLANGER,
-//     PHASER,
-//     TRANCE,
-//     PANNER,
-//     BATTLE_DJ,
-//     ROLL,
-//     COMPRESSOR,
-//     ROBOT,
-//   };
-//   enum class DetailEnum :uint16_t{
-//     HIGH = 0,
-//     MID,
-//     LOW,
-//     PAUSE,
-//     CUE,
-//     TRIM,
-//     FADER,
-//     TIME_STRETCH,
-//     SPIN,
-//     PITCH,
-//     REV,
-//     SCRATCH,
-//     BSCRATCH,
-//   };
-//   enum ITPL_ENUM {
-//     ITPL_LINEAR =0,
-//     ITPL_COSINE,
-//     ITPL_CUBIC,
-//     ITPL_FLAT
-//   };
-// }
-// #else
-// namespace PDJE_ENUM{
+%include "SWIG_editor_visitor.hpp"
+// %include "jsonWrapper.hpp"
 
-//   using TypeEnum = ::capnp::schemas::TypeEnum_f4ee4873bc65f8f0;
-//   using DetailEnum = ::capnp::schemas::DetailEnum_c6c88c32e11afb23;
+
+%template(MUS_VEC) std::vector<musdata>;
+%template(TRACK_VEC) std::vector<trackdata>;
+%template(KEY_VEC) std::vector<std::string>;
+
+
+// %inline %{
+// namespace PDJE_ENUM{
 //   enum ITPL_ENUM {
-//     ITPL_LINEAR =0,
+//     ITPL_LINEAR = 0,
 //     ITPL_COSINE,
 //     ITPL_CUBIC,
 //     ITPL_FLAT
 //   };
 // }
-// #endif
 
 // %}
 
@@ -217,13 +171,13 @@ struct git_oid;
   }
 
   // ========== deleteLine ==========
-  int DeleteLineNote(const EDIT_ARG_NOTE& obj) {
+  int deleteLineNote(const EDIT_ARG_NOTE& obj) {
     return $self->deleteLine<EDIT_ARG_NOTE>(obj);
   }
-  int DeleteLineKV(const EDIT_ARG_KEY_VALUE& obj) {
+  int deleteLineKV(const EDIT_ARG_KEY_VALUE& obj) {
     return $self->deleteLine<EDIT_ARG_KEY_VALUE>(obj);
   }
-  int DeleteLineMusic(const EDIT_ARG_MUSIC& obj) {
+  int deleteLineMusic(const EDIT_ARG_MUSIC& obj) {
     return $self->deleteLine<EDIT_ARG_MUSIC>(obj);
   }
 

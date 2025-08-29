@@ -83,9 +83,9 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classFaustDType`
+- :ref:`exhale_class_class_faust_d_type`
 
-- :ref:`exhale_class_classFaustEffects`
+- :ref:`exhale_class_class_faust_effects`
 
-- :ref:`exhale_class_classFaustObject`
+- :ref:`exhale_class_class_faust_object`
 

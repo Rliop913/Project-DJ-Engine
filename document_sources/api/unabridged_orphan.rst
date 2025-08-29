@@ -385,6 +385,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_editor_featureWrapper_JSONWrap_EditorArgs.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_editor_featureWrapper_GitWrap_Branch_editorBranch.cpp.rst
 
 .. toctree::
@@ -441,6 +446,11 @@ Files
    :maxdepth: 5
 
    file_include_tests_INPUT_TESTS_evdevtest.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_FAKE_CAPNP_ENUMS_FOR_SWIG.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -806,6 +816,11 @@ Files
    :maxdepth: 5
 
    file_include_audioRender_MixMachine_MUSIC_CTR_SetCue.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_SWIG_editor_visitor.hpp.rst
 
 .. toctree::
    :maxdepth: 5

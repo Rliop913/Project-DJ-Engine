@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Program Listing for File audioPlayer.hpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../_static/doctools.js?v=9bcbadda"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -53,7 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -82,19 +80,19 @@
              
   <section id="program-listing-for-file-audioplayer-hpp">
 <span id="program-listing-file-include-mainobjects-audioplayer-audioplayer-hpp"></span><h1>Program Listing for File audioPlayer.hpp<a class="headerlink" href="#program-listing-for-file-audioplayer-hpp" title="Link to this heading"></a></h1>
-<p>↰ <a class="reference internal" href="file_include_MainObjects_audioPlayer_audioPlayer.hpp.html#file-include-mainobjects-audioplayer-audioplayer-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/MainObjects/audioPlayer/audioPlayer.hpp</span></code>)</p>
+<p>↰ <a class="reference internal" href="file_include_MainObjects_audioPlayer_audioPlayer.hpp.html#file-include-mainobjects-audioplayer-audioplayer-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\MainObjects\audioPlayer\audioPlayer.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;miniaudio.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MixMachine.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ManualMix.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;audioRender.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;audioCallbacks.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MixMachine.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Core_DataLine.hpp&quot;</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">audioPlayer</span><span class="p">{</span>
-<span class="k">private</span><span class="o">:</span>
-<span class="w">    </span><span class="n">ma_device</span><span class="w"> </span><span class="n">player</span><span class="p">;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;audioCallbacks.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;audioRender.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;miniaudio.h&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">audioPlayer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">ma_device</span><span class="w">  </span><span class="n">player</span><span class="p">;</span>
 <span class="w">    </span><span class="n">ma_context</span><span class="w"> </span><span class="n">ctxt</span><span class="p">;</span>
 
 <span class="w">    </span><span class="n">audioRender</span><span class="w"> </span><span class="n">renderer</span><span class="p">;</span>
@@ -105,30 +103,45 @@
 
 <span class="w">    </span><span class="n">audioEngineDataStruct</span><span class="w"> </span><span class="n">engineDatas</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">ma_device_config</span><span class="w"> </span><span class="nf">DefaultInit</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">frameBufferSize</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ma_device_config</span>
+<span class="w">    </span><span class="nf">DefaultInit</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">frameBufferSize</span><span class="p">);</span>
 
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">ContextInit</span><span class="p">();</span>
-<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span>
+<span class="w">    </span><span class="nf">ContextInit</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">STATUS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;OK&quot;</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">GetStatus</span><span class="p">(){</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span>
+<span class="w">    </span><span class="nf">GetStatus</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">STATUS</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Activate</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">Activate</span><span class="p">();</span>
 
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Deactivate</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">Deactivate</span><span class="p">();</span>
 
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">ChangeCursorPos</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">pos</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">void</span>
+<span class="w">    </span><span class="nf">ChangeCursorPos</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">pos</span><span class="p">);</span>
 
-<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">GetConsumedFrames</span><span class="p">();</span>
-<span class="w">    </span><span class="n">FXControlPannel</span><span class="o">*</span><span class="w"> </span><span class="n">GetFXControlPannel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;__PDJE__MAIN__&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span>
+<span class="w">    </span><span class="nf">GetConsumedFrames</span><span class="p">();</span>
+<span class="w">    </span><span class="n">FXControlPannel</span><span class="w"> </span><span class="o">*</span>
+<span class="w">    </span><span class="n">GetFXControlPannel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;__PDJE__MAIN__&quot;</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">MusicControlPannel</span><span class="o">*</span><span class="w"> </span><span class="nf">GetMusicControlPannel</span><span class="p">();</span>
-<span class="w">    </span><span class="n">audioPlayer</span><span class="p">(</span><span class="n">litedb</span><span class="o">&amp;</span><span class="w"> </span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">trackdata</span><span class="o">&amp;</span><span class="w"> </span><span class="n">td</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">frameBufferSize</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">hasManual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MusicControlPannel</span><span class="w"> </span><span class="o">*</span>
+<span class="w">    </span><span class="nf">GetMusicControlPannel</span><span class="p">();</span>
+<span class="w">    </span><span class="n">audioPlayer</span><span class="p">(</span><span class="n">litedb</span><span class="w">            </span><span class="o">&amp;</span><span class="n">db</span><span class="p">,</span>
+<span class="w">                </span><span class="n">trackdata</span><span class="w">         </span><span class="o">&amp;</span><span class="n">td</span><span class="p">,</span>
+<span class="w">                </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">frameBufferSize</span><span class="p">,</span>
+<span class="w">                </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w">         </span><span class="n">hasManual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
 <span class="w">    </span><span class="n">audioPlayer</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">frameBufferSize</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">PDJE_CORE_DATA_LINE</span><span class="w"> </span><span class="nf">PullOutDataLine</span><span class="p">();</span>
+<span class="w">    </span><span class="n">PDJE_CORE_DATA_LINE</span>
+<span class="w">    </span><span class="nf">PullOutDataLine</span><span class="p">();</span>
 
 <span class="w">    </span><span class="o">~</span><span class="n">audioPlayer</span><span class="p">();</span>
 <span class="p">};</span>

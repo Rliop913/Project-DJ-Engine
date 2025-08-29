@@ -12,25 +12,27 @@ Program Listing for File MixTranslator.hpp
 
    #pragma once
    
-   #include <vector>
    #include <algorithm>
-   #include <string>
-   #include <thread>
    #include <mutex>
    #include <optional>
+   #include <string>
+   #include <thread>
+   #include <vector>
    
+   #include "Bpm.hpp"
    #include "CapnpBinary.hpp"
    #include "Mix.hpp"
-   #include "Bpm.hpp"
    #include "PDJE_EXPORT_SETTER.hpp"
-   class PDJE_API MixTranslator{
-   private:
+   class PDJE_API MixTranslator {
+     private:
        unsigned int usable_threads = 0;
-   public:
+   
+     public:
        std::optional<MIX> mixs;
        std::optional<BPM> bpms;
    
-       bool Read(const CapReader<MixBinaryCapnpData>& binary);
+       bool
+       Read(const CapReader<MixBinaryCapnpData> &binary);
    
        MixTranslator();
        ~MixTranslator();

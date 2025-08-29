@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Program Listing for File deleteline.cpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../_static/doctools.js?v=9bcbadda"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -53,7 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -82,74 +80,60 @@
              
   <section id="program-listing-for-file-deleteline-cpp">
 <span id="program-listing-file-include-mainobjects-editorobject-deleteline-cpp"></span><h1>Program Listing for File deleteline.cpp<a class="headerlink" href="#program-listing-for-file-deleteline-cpp" title="Link to this heading"></a></h1>
-<p>↰ <a class="reference internal" href="file_include_MainObjects_editorObject_deleteline.cpp.html#file-include-mainobjects-editorobject-deleteline-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/MainObjects/editorObject/deleteline.cpp</span></code>)</p>
+<p>↰ <a class="reference internal" href="file_include_MainObjects_editorObject_deleteline.cpp.html#file-include-mainobjects-editorobject-deleteline-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\MainObjects\editorObject\deleteline.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;editorObject.hpp&quot;</span>
 
 <span class="kt">int</span>
-<span class="nf">editorObject::deleteLine</span><span class="p">(</span><span class="w">   </span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_MIX</span><span class="o">&amp;</span><span class="w"> </span><span class="n">obj</span><span class="p">,</span>
-<span class="w">                            </span><span class="kt">bool</span><span class="w"> </span><span class="n">skipType</span><span class="p">,</span>
-<span class="w">                            </span><span class="kt">bool</span><span class="w"> </span><span class="n">skipDetail</span><span class="p">)</span>
+<span class="nf">editorObject::deleteLine</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_MIX</span><span class="w"> </span><span class="o">&amp;</span><span class="n">obj</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">bool</span><span class="w">                </span><span class="n">skipType</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">bool</span><span class="w">                </span><span class="n">skipDetail</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">deleted_lines</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">mixHandle</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">deleteLine</span><span class="p">(</span>
-<span class="w">        </span><span class="n">obj</span><span class="p">,</span>
-<span class="w">        </span><span class="n">skipType</span><span class="p">,</span>
-<span class="w">        </span><span class="n">skipDetail</span>
-<span class="w">    </span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">DefaultSaveFunction</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">()){</span>
+<span class="w">        </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">mixHandle</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">deleteLine</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">skipType</span><span class="p">,</span><span class="w"> </span><span class="n">skipDetail</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DefaultSaveFunction</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">deleted_lines</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">infolog</span><span class="p">(</span><span class="s">&quot;nothing to remove. from note deleteLine&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-
-<span class="k">template</span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span>
-<span class="kt">int</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">deleteLine</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_NOTE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
+<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">int</span>
+<span class="n">editorObject</span><span class="o">::</span><span class="n">deleteLine</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_NOTE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">obj</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">deleted_lines</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">noteHandle</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">deleteLine</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">DefaultSaveFunction</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">()){</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">deleted_lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">noteHandle</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">deleteLine</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DefaultSaveFunction</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">deleted_lines</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">infolog</span><span class="p">(</span><span class="s">&quot;nothing to remove. from note deleteLine&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">template</span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span>
-<span class="kt">int</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">deleteLine</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
+<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">int</span>
+<span class="n">editorObject</span><span class="o">::</span><span class="n">deleteLine</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">obj</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">deleted_lines</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">KVHandler</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">deleteLine</span><span class="p">(</span><span class="n">obj</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">DefaultSaveFunction</span><span class="o">&lt;</span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&gt;</span><span class="p">()){</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">deleted_lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">KVHandler</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">deleteLine</span><span class="p">(</span><span class="n">obj</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DefaultSaveFunction</span><span class="o">&lt;</span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">deleted_lines</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">infolog</span><span class="p">(</span><span class="s">&quot;nothing to remove. from KV deleteLine&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">template</span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span>
-<span class="kt">int</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">deleteLine</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&amp;</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
+<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">int</span>
+<span class="n">editorObject</span><span class="o">::</span><span class="n">deleteLine</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_MUSIC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">obj</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">musicHandle</span><span class="p">){</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">musicName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">obj</span><span class="p">.</span><span class="n">musicName</span><span class="p">){</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">musicHandle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">musicName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">obj</span><span class="p">.</span><span class="n">musicName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">deleted_lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">jsonh</span><span class="p">.</span><span class="n">deleteLine</span><span class="p">(</span><span class="n">obj</span><span class="p">.</span><span class="n">arg</span><span class="p">);</span>
-<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">DefaultSaveFunction</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">obj</span><span class="p">)){</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DefaultSaveFunction</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">obj</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">deleted_lines</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">else</span><span class="p">{</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="n">infolog</span><span class="p">(</span><span class="s">&quot;nothing to remove. from music deleteLine&quot;</span><span class="p">);</span>
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>

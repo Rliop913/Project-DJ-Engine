@@ -78,31 +78,31 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structBpmFragment`
+- :ref:`exhale_struct_struct_bpm_fragment`
 
-- :ref:`exhale_struct_structBpmStruct`
+- :ref:`exhale_struct_struct_bpm_struct`
 
-- :ref:`exhale_struct_structMixStruct`
+- :ref:`exhale_struct_struct_mix_struct`
 
 
 Defines
 -------
 
 
-- :ref:`exhale_define_FrameCalc_8hpp_1a77d68434346ec687853b8ea548906924`
+- :ref:`exhale_define__frame_calc_8hpp_1a9fda6fc883a43c8152d04158950473e1`
 
-- :ref:`exhale_define_FrameCalc_8hpp_1ace6a11e892466500d47d1f45f042bc53`
+- :ref:`exhale_define__frame_calc_8hpp_1ace6a11e892466500d47d1f45f042bc53`
 
-- :ref:`exhale_define_FrameCalc_8hpp_1ae4044ba6c1478138f538dd783e4f15a8`
+- :ref:`exhale_define__frame_calc_8hpp_1ae4044ba6c1478138f538dd783e4f15a8`
 
-- :ref:`exhale_define_FrameCalc_8hpp_1a8d49b592a3ad78882f8a1b8988043f51`
+- :ref:`exhale_define__frame_calc_8hpp_1a8d49b592a3ad78882f8a1b8988043f51`
 
-- :ref:`exhale_define_FrameCalc_8hpp_1a538e0cad3acb787a49e16b1e53787610`
+- :ref:`exhale_define__frame_calc_8hpp_1a538e0cad3acb787a49e16b1e53787610`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_FrameCalc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a`
+- :ref:`exhale_typedef__frame_calc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a`
 

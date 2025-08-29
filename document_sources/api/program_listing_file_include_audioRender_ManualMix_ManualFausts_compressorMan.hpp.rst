@@ -14,32 +14,35 @@ Program Listing for File compressorMan.hpp
    #pragma once
    #include "DeckData.hpp"
    
-   class CompressorMan{
-   public:
-       float strength; 
-       int threshDB;   
-       int attackMS;   
-       int releaseMS;  
-       int kneeDB;     
+   class CompressorMan {
+     public:
+       float strength;  
+       int   threshDB;  
+       int   attackMS;  
+       int   releaseMS; 
+       int   kneeDB;    
    
        ARGSETTER
-       makeArgSetter(){
-           return{
-               {"Strength", [this](double value){
-                   this->strength = static_cast<float>(value);
-               }},
-               {"ThreshDB", [this](double value){
-                   this->threshDB = static_cast<int>(value);
-               }},
-               {"AttackMS", [this](double value){
-                   this->attackMS = static_cast<int>(value);
-               }},
-               {"ReleaseMS", [this](double value){
-                   this->releaseMS = static_cast<int>(value);
-               }},
-               {"KneeDB", [this](double value){
-                   this->kneeDB = static_cast<int>(value);
-               }}
-           };
+       makeArgSetter()
+       {
+           return { { "Strength",
+                      [this](double value) {
+                          this->strength = static_cast<float>(value);
+                      } },
+                    { "ThreshDB",
+                      [this](double value) {
+                          this->threshDB = static_cast<int>(value);
+                      } },
+                    { "AttackMS",
+                      [this](double value) {
+                          this->attackMS = static_cast<int>(value);
+                      } },
+                    { "ReleaseMS",
+                      [this](double value) {
+                          this->releaseMS = static_cast<int>(value);
+                      } },
+                    { "KneeDB", [this](double value) {
+                         this->kneeDB = static_cast<int>(value);
+                     } } };
        }
    };

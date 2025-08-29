@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPhaserMan`
+- :ref:`exhale_class_class_phaser_man`
 

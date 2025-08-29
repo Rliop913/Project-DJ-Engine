@@ -55,9 +55,9 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_linux__I__WAKER_8cpp_1a14d1abfa2c583630b00b9bf1e7e7bad3`
+- :ref:`exhale_function_linux___i___w_a_k_e_r_8cpp_1a14d1abfa2c583630b00b9bf1e7e7bad3`
 
-- :ref:`exhale_function_linux__I__WAKER_8cpp_1a2c56e7fd51cd8f2cbbdd35c013019d74`
+- :ref:`exhale_function_linux___i___w_a_k_e_r_8cpp_1a2c56e7fd51cd8f2cbbdd35c013019d74`
 
-- :ref:`exhale_function_linux__I__WAKER_8cpp_1a0ddf1224851353fc92bfbff6f499fa97`
+- :ref:`exhale_function_linux___i___w_a_k_e_r_8cpp_1a0ddf1224851353fc92bfbff6f499fa97`
 

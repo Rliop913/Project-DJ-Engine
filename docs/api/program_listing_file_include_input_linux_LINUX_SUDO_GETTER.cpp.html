@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Program Listing for File LINUX_SUDO_GETTER.cpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../_static/doctools.js?v=9bcbadda"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -53,7 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -82,28 +80,28 @@
              
   <section id="program-listing-for-file-linux-sudo-getter-cpp">
 <span id="program-listing-file-include-input-linux-linux-sudo-getter-cpp"></span><h1>Program Listing for File LINUX_SUDO_GETTER.cpp<a class="headerlink" href="#program-listing-for-file-linux-sudo-getter-cpp" title="Link to this heading"></a></h1>
-<p>↰ <a class="reference internal" href="file_include_input_linux_LINUX_SUDO_GETTER.cpp.html#file-include-input-linux-linux-sudo-getter-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/input/linux/LINUX_SUDO_GETTER.cpp</span></code>)</p>
+<p>↰ <a class="reference internal" href="file_include_input_linux_LINUX_SUDO_GETTER.cpp.html#file-include-input-linux-linux-sudo-getter-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\input\linux\LINUX_SUDO_GETTER.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;LINUX_INPUT.hpp&quot;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
 <span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">EVENT_ROOT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/dev/input/&quot;</span><span class="p">;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">filesystem</span><span class="p">;</span>
 
-<span class="k">using</span><span class="w"> </span><span class="n">EV_LIST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">EV_LIST</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="k">using</span><span class="w"> </span><span class="n">DEV_LIST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="n">EV_LIST</span>
 <span class="nf">EventListGetter</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">fs</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="n">EVENT_ROOT</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">fs</span><span class="o">::</span><span class="n">is_directory</span><span class="p">(</span><span class="n">EVENT_ROOT</span><span class="p">)){</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">fs</span><span class="o">::</span><span class="n">exists</span><span class="p">(</span><span class="n">EVENT_ROOT</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">fs</span><span class="o">::</span><span class="n">is_directory</span><span class="p">(</span><span class="n">EVENT_ROOT</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">EV_LIST</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">EV_LIST</span><span class="w"> </span><span class="n">lists</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">fitr</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">directory_iterator</span><span class="p">(</span><span class="n">EVENT_ROOT</span><span class="p">)){</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">fitr</span><span class="p">.</span><span class="n">path</span><span class="p">().</span><span class="n">filename</span><span class="p">().</span><span class="n">string</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;event&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fitr</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">directory_iterator</span><span class="p">(</span><span class="n">EVENT_ROOT</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fitr</span><span class="p">.</span><span class="n">path</span><span class="p">().</span><span class="n">filename</span><span class="p">().</span><span class="n">string</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;event&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">lists</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">fs</span><span class="o">::</span><span class="n">absolute</span><span class="p">(</span><span class="n">fitr</span><span class="p">.</span><span class="n">path</span><span class="p">()));</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -111,30 +109,27 @@
 <span class="p">}</span>
 
 <span class="kt">bool</span>
-<span class="nf">CHK_QWERTY</span><span class="p">(</span><span class="n">libevdev</span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="p">)</span>
+<span class="nf">CHK_QWERTY</span><span class="p">(</span><span class="n">libevdev</span><span class="w"> </span><span class="o">*</span><span class="n">dev</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span>
-<span class="w">    </span><span class="n">libevdev_has_event_code</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">EV_KEY</span><span class="p">,</span><span class="w"> </span><span class="n">KEY_Q</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">    </span><span class="n">libevdev_has_event_code</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">EV_KEY</span><span class="p">,</span><span class="w"> </span><span class="n">KEY_W</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">    </span><span class="n">libevdev_has_event_code</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">EV_KEY</span><span class="p">,</span><span class="w"> </span><span class="n">KEY_E</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">    </span><span class="n">libevdev_has_event_code</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">EV_KEY</span><span class="p">,</span><span class="w"> </span><span class="n">KEY_R</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">    </span><span class="n">libevdev_has_event_code</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">EV_KEY</span><span class="p">,</span><span class="w"> </span><span class="n">KEY_T</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">    </span><span class="n">libevdev_has_event_code</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">EV_KEY</span><span class="p">,</span><span class="w"> </span><span class="n">KEY_Y</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">libevdev_has_event_code</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">EV_KEY</span><span class="p">,</span><span class="w"> </span><span class="n">KEY_Q</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">           </span><span class="n">libevdev_has_event_code</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">EV_KEY</span><span class="p">,</span><span class="w"> </span><span class="n">KEY_W</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">           </span><span class="n">libevdev_has_event_code</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">EV_KEY</span><span class="p">,</span><span class="w"> </span><span class="n">KEY_E</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">           </span><span class="n">libevdev_has_event_code</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">EV_KEY</span><span class="p">,</span><span class="w"> </span><span class="n">KEY_R</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">           </span><span class="n">libevdev_has_event_code</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">EV_KEY</span><span class="p">,</span><span class="w"> </span><span class="n">KEY_T</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">           </span><span class="n">libevdev_has_event_code</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">EV_KEY</span><span class="p">,</span><span class="w"> </span><span class="n">KEY_Y</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="n">DEV_LIST</span>
-<span class="nf">DeviceDataGetter</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EV_LIST</span><span class="o">&amp;</span><span class="w"> </span><span class="n">list</span><span class="p">)</span>
+<span class="nf">DeviceDataGetter</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EV_LIST</span><span class="w"> </span><span class="o">&amp;</span><span class="n">list</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">DEV_LIST</span><span class="w"> </span><span class="n">outs</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">evp</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">list</span><span class="p">){</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">evpFd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">evp</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="p">);</span>
-<span class="w">        </span><span class="n">libevdev</span><span class="o">*</span><span class="w"> </span><span class="n">dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">libevdev_new_from_fd</span><span class="p">(</span><span class="n">evpFd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dev</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">evp</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w">       </span><span class="n">evpFd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">evp</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="p">);</span>
+<span class="w">        </span><span class="n">libevdev</span><span class="w"> </span><span class="o">*</span><span class="n">dev</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">libevdev_new_from_fd</span><span class="p">(</span><span class="n">evpFd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dev</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">close</span><span class="p">(</span><span class="n">evpFd</span><span class="p">);</span>
 <span class="w">            </span><span class="k">continue</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">DeviceData</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
 <span class="w">            </span><span class="n">temp</span><span class="p">.</span><span class="n">deviceName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">libevdev_get_name</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
 <span class="w">            </span><span class="n">temp</span><span class="p">.</span><span class="n">deviceType</span><span class="p">.</span><span class="n">HAS_ABSOLUTE_AXIS_SENSOR</span><span class="w"> </span><span class="o">=</span>
@@ -142,11 +137,9 @@
 <span class="w">            </span><span class="n">temp</span><span class="p">.</span><span class="n">deviceType</span><span class="p">.</span><span class="n">HAS_KEY_Q_W_E_R_T_Y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CHK_QWERTY</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
 <span class="w">            </span><span class="n">temp</span><span class="p">.</span><span class="n">deviceType</span><span class="p">.</span><span class="n">HAS_RELATIVE_AXIS_SENSOR</span><span class="w"> </span><span class="o">=</span>
 <span class="w">                </span><span class="n">libevdev_has_event_type</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">EV_REL</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">            </span><span class="k">if</span><span class="p">(</span>
-<span class="w">                </span><span class="n">temp</span><span class="p">.</span><span class="n">deviceType</span><span class="p">.</span><span class="n">HAS_ABSOLUTE_AXIS_SENSOR</span><span class="w"> </span><span class="o">||</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">temp</span><span class="p">.</span><span class="n">deviceType</span><span class="p">.</span><span class="n">HAS_ABSOLUTE_AXIS_SENSOR</span><span class="w"> </span><span class="o">||</span>
 <span class="w">                </span><span class="n">temp</span><span class="p">.</span><span class="n">deviceType</span><span class="p">.</span><span class="n">HAS_KEY_Q_W_E_R_T_Y</span><span class="w"> </span><span class="o">||</span>
-<span class="w">                </span><span class="n">temp</span><span class="p">.</span><span class="n">deviceType</span><span class="p">.</span><span class="n">HAS_RELATIVE_AXIS_SENSOR</span>
-<span class="w">            </span><span class="p">){</span>
+<span class="w">                </span><span class="n">temp</span><span class="p">.</span><span class="n">deviceType</span><span class="p">.</span><span class="n">HAS_RELATIVE_AXIS_SENSOR</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="n">outs</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="n">close</span><span class="p">(</span><span class="n">evpFd</span><span class="p">);</span>
@@ -158,19 +151,17 @@
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="kt">int</span>
-<span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EventListGetter</span><span class="p">();</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">res</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">EventListGetter</span><span class="p">();</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">Dres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DeviceDataGetter</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
-<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Dres</span><span class="p">){</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span>
-<span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">deviceName</span>
-<span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span>
-<span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; Has qwerty: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">deviceType</span><span class="p">.</span><span class="n">HAS_KEY_Q_W_E_R_T_Y</span>
-<span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; Has Abs sensor: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">deviceType</span><span class="p">.</span><span class="n">HAS_ABSOLUTE_AXIS_SENSOR</span>
-<span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; Has Rel sensor: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">deviceType</span><span class="p">.</span><span class="n">HAS_RELATIVE_AXIS_SENSOR</span>
-<span class="w">        </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Dres</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">deviceName</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; Has qwerty: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">deviceType</span><span class="p">.</span><span class="n">HAS_KEY_Q_W_E_R_T_Y</span>
+<span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; Has Abs sensor: &quot;</span>
+<span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">deviceType</span><span class="p">.</span><span class="n">HAS_ABSOLUTE_AXIS_SENSOR</span>
+<span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; Has Rel sensor: &quot;</span>
+<span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">deviceType</span><span class="p">.</span><span class="n">HAS_RELATIVE_AXIS_SENSOR</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>

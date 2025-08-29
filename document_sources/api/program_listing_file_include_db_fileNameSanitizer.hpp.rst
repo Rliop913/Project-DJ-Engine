@@ -12,10 +12,10 @@ Program Listing for File fileNameSanitizer.hpp
 
    
    #pragma once
-   #include <string>
+   #include <cppcodec/base64_url_unpadded.hpp>
    #include <filesystem>
    #include <optional>
-   #include <cppcodec/base64_url_unpadded.hpp>
+   #include <string>
    namespace fs = std::filesystem;
    
    using SANITIZED = std::string;
@@ -28,12 +28,14 @@ Program Listing for File fileNameSanitizer.hpp
    
    using cbase = cppcodec::base64_url_unpadded;
    
-   class PDJE_Name_Sanitizer{
-       public:
-       static std::optional<SANITIZED> sanitizeFileName(const std::string& fileName);
+   class PDJE_Name_Sanitizer {
+     public:
+       static std::optional<SANITIZED>
+       sanitizeFileName(const std::string &fileName);
    
-       static std::string getFileName(const SANITIZED& sanitized);
-       
-       PDJE_Name_Sanitizer() = delete;
+       static std::string
+       getFileName(const SANITIZED &sanitized);
+   
+       PDJE_Name_Sanitizer()  = delete;
        ~PDJE_Name_Sanitizer() = delete;
    };

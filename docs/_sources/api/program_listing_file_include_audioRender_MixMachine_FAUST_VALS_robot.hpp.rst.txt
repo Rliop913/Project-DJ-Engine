@@ -4,7 +4,7 @@
 Program Listing for File robot.hpp
 ==================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_MixMachine_FAUST_VALS_robot.hpp>` (``include/audioRender/MixMachine/FAUST_VALS/robot.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_MixMachine_FAUST_VALS_robot.hpp>` (``include\audioRender\MixMachine\FAUST_VALS\robot.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,17 +13,21 @@ Program Listing for File robot.hpp
    #pragma once
    #include "Faust_interpolate.hpp"
    
-   class Robot_PDJE: public FaustInterpolate {
-   public:
+   class Robot_PDJE : public FaustInterpolate {
+     public:
        int robotFreq;
    
-       template<typename Duck>
-       void copyDatas(Duck& dest){
+       template <typename Duck>
+       void
+       copyDatas(Duck &dest)
+       {
            dest.robotFreq = robotFreq;
        }
    
-       template<typename Duck>
-       void copySetting(Duck& dest){
+       template <typename Duck>
+       void
+       copySetting(Duck &dest)
+       {
            copyDatas(dest);
            copyInterpolates(dest);
        }

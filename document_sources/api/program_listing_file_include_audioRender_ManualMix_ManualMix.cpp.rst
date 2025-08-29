@@ -14,90 +14,90 @@ Program Listing for File ManualMix.cpp
    
    FXControlPannel::FXControlPannel(int sampleRate)
    {
-       compressorPannel.first  = false;
-       distortionPannel.first  = false;
-       echoPannel.first        = false;
-       eqPannel.first          = false;
-       filterPannel.first      = false;
-       flangerPannel.first     = false;
-       ocsFilterPannel.first   = false;
-       pannerPannel.first      = false;
-       phaserPannel.first      = false;
-       robotPannel.first       = false;
-       rollPannel.first        = false;
-       trancePannel.first      = false;
-       volPannel.first         = false;
+       compressorPannel.first = false;
+       distortionPannel.first = false;
+       echoPannel.first       = false;
+       eqPannel.first         = false;
+       filterPannel.first     = false;
+       flangerPannel.first    = false;
+       ocsFilterPannel.first  = false;
+       pannerPannel.first     = false;
+       phaserPannel.first     = false;
+       robotPannel.first      = false;
+       rollPannel.first       = false;
+       trancePannel.first     = false;
+       volPannel.first        = false;
    
-       compressorPannel.second .init(sampleRate);
-       distortionPannel.second .init(sampleRate);
-       echoPannel.second       .init(sampleRate);
-       eqPannel.second         .init(sampleRate);
-       filterPannel.second     .init(sampleRate);
-       flangerPannel.second    .init(sampleRate);
-       ocsFilterPannel.second  .init(sampleRate);
-       pannerPannel.second     .init(sampleRate);
-       phaserPannel.second     .init(sampleRate);
-       robotPannel.second      .init(sampleRate);
-       rollPannel.second       .init(sampleRate);
-       trancePannel.second     .init(sampleRate);
-       volPannel.second        .init(sampleRate);
+       compressorPannel.second.init(sampleRate);
+       distortionPannel.second.init(sampleRate);
+       echoPannel.second.init(sampleRate);
+       eqPannel.second.init(sampleRate);
+       filterPannel.second.init(sampleRate);
+       flangerPannel.second.init(sampleRate);
+       ocsFilterPannel.second.init(sampleRate);
+       pannerPannel.second.init(sampleRate);
+       phaserPannel.second.init(sampleRate);
+       robotPannel.second.init(sampleRate);
+       rollPannel.second.init(sampleRate);
+       trancePannel.second.init(sampleRate);
+       volPannel.second.init(sampleRate);
    }
    
    void
    FXControlPannel::FX_ON_OFF(FXList fx, bool onoff)
    {
-       switch (fx){
-           
+       switch (fx) {
+   
        case FXList::COMPRESSOR:
-           compressorPannel.first  = onoff;
+           compressorPannel.first = onoff;
            break;
    
        case FXList::DISTORTION:
-           distortionPannel.first  = onoff;
+           distortionPannel.first = onoff;
            break;
    
        case FXList::ECHO:
-           echoPannel.first        = onoff;
+           echoPannel.first = onoff;
            break;
    
        case FXList::EQ:
-           eqPannel.first          = onoff;
+           eqPannel.first = onoff;
            break;
    
        case FXList::FILTER:
-           filterPannel.first      = onoff;
+           filterPannel.first = onoff;
            break;
    
        case FXList::FLANGER:
-           flangerPannel.first     = onoff;
+           flangerPannel.first = onoff;
            break;
    
        case FXList::OCSFILTER:
-           ocsFilterPannel.first   = onoff;
+           ocsFilterPannel.first = onoff;
            break;
    
        case FXList::PANNER:
-           pannerPannel.first      = onoff;
+           pannerPannel.first = onoff;
            break;
    
        case FXList::PHASER:
-           phaserPannel.first      = onoff;
+           phaserPannel.first = onoff;
            break;
    
        case FXList::ROBOT:
-           robotPannel.first       = onoff;
+           robotPannel.first = onoff;
            break;
    
        case FXList::ROLL:
-           rollPannel.first        = onoff;
+           rollPannel.first = onoff;
            break;
    
        case FXList::TRANCE:
-           trancePannel.first      = onoff;
+           trancePannel.first = onoff;
            break;
    
        case FXList::VOL:
-           volPannel.first         = onoff;
+           volPannel.first = onoff;
            break;
    
        default:
@@ -108,8 +108,7 @@ Program Listing for File ManualMix.cpp
    ARGSETTER
    FXControlPannel::GetArgSetter(FXList fx)
    {
-       switch (fx)
-       {
+       switch (fx) {
        case FXList::COMPRESSOR:
            return compressorPannel.second.makeArgSetter();
            break;
@@ -161,7 +160,7 @@ Program Listing for File ManualMix.cpp
        case FXList::VOL:
            return volPannel.second.makeArgSetter();
            break;
-           
+   
        default:
            return ARGSETTER();
            break;
@@ -169,7 +168,7 @@ Program Listing for File ManualMix.cpp
    }
    
    void
-   FXControlPannel::addFX(float** pcm, int samples)
+   FXControlPannel::addFX(float **pcm, int samples)
    {
        checkAndUse(pcm, samples, compressorPannel);
        checkAndUse(pcm, samples, distortionPannel);
@@ -184,24 +183,14 @@ Program Listing for File ManualMix.cpp
        checkAndUse(pcm, samples, rollPannel);
        checkAndUse(pcm, samples, trancePannel);
        checkAndUse(pcm, samples, volPannel);
-       
    }
    
    bool
    FXControlPannel::checkSomethingOn()
    {
-       return
-           compressorPannel.first ||
-           distortionPannel.first ||
-           echoPannel.first ||
-           eqPannel.first ||
-           filterPannel.first ||
-           flangerPannel.first ||
-           ocsFilterPannel.first ||
-           pannerPannel.first ||
-           phaserPannel.first ||
-           robotPannel.first ||
-           rollPannel.first ||
-           trancePannel.first ||
-           volPannel.first;
+       return compressorPannel.first || distortionPannel.first ||
+              echoPannel.first || eqPannel.first || filterPannel.first ||
+              flangerPannel.first || ocsFilterPannel.first || pannerPannel.first ||
+              phaserPannel.first || robotPannel.first || rollPannel.first ||
+              trancePannel.first || volPannel.first;
    }

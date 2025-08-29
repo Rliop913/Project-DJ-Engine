@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Editor_Format &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="_static/doctools.js?v=9bcbadda"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -61,7 +59,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#note-data">Note Data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#key-terms">Key Terms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
 </ul>
@@ -143,7 +141,7 @@
 <th class="head"><p>MusicPath</p></th>
 <th class="head"><p>Bpm</p></th>
 <th class="head"><p>BpmBinary</p></th>
-<th class="head"><p>firstBar</p></th>
+<th class="head"><p>firstBeat</p></th>
 </tr>
 </thead>
 <tbody>
@@ -158,9 +156,9 @@
 </table>
 </section>
 <section id="mix-data">
-<h2>Mix Data<a class="headerlink" href="#mix-data" title="Link to this heading"></a></h2>
+<span id="about-mix-data"></span><h2>Mix Data<a class="headerlink" href="#mix-data" title="Link to this heading"></a></h2>
 <p>Mix Data in the PDJE engine is a data structure that defines mixing events, effect parameter changes, and load/unload controls that occur during track playback.</p>
-<p>Each entry specifies what action takes place at a particular time (based on Bar/Beat), covering various audio control elements such as filters, EQ, volume, distortion, delay, and DJ scratching.</p>
+<p>Each entry specifies what action takes place at a particular time (based on Beat/subBeat), covering various audio control elements such as filters, EQ, volume, distortion, delay, and DJ scratching.</p>
 <p>Unlike rhythm game note events, this data records changes in audio processing parameters themselves, which are applied in real time during playback.</p>
 <table class="docutils align-default" id="id3">
 <caption><span class="caption-text">Mix Data Format</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
@@ -185,11 +183,11 @@
 <th class="head"><p>first</p></th>
 <th class="head"><p>second</p></th>
 <th class="head"><p>third</p></th>
-<th class="head"><p>bar</p></th>
 <th class="head"><p>beat</p></th>
+<th class="head"><p>subBeat</p></th>
 <th class="head"><p>separate</p></th>
-<th class="head"><p>Ebar</p></th>
 <th class="head"><p>Ebeat</p></th>
+<th class="head"><p>EsubBeat</p></th>
 <th class="head"><p>Eseparate</p></th>
 </tr>
 </thead>
@@ -398,15 +396,32 @@
 </tr>
 </tbody>
 </table>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">EightPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;5000,1000,2000,3000,4000,5000,5500,6000&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>this means</p>
+<img alt="_images/eightPoint_example.png" src="_images/eightPoint_example.png" />
+<p>We interpolate this data using various interpolation methods.</p>
+<p>Point Index 1 corresponds to the <strong>Start Position</strong>, defined as:
+<cite>beat + (beat / separate) * subBeat</cite></p>
+<p>Point Index 8 corresponds to the <strong>End Position</strong>, defined as:
+<cite>Ebeat + (Ebeat / Eseparate) * EsubBeat</cite></p>
+<p>As you may have noticed, the data provided through <cite>8PointValues</cite> is transformed into a graph consisting of 8 key points.
+This data serves as the <cite>Interpolated Value</cite>, which transitions smoothly from the <strong>Start Position</strong> to the <strong>End Position</strong> using the specified <cite>ITPL</cite> interpolation method—such as linear, cosine, cubic, or flat.</p>
+<p>This mechanism allows for precise control of parameters (e.g., filter frequency, volume, drive) that vary over time, enabling <strong>smooth and continuous modulation</strong> within audio effect modules.</p>
+<p>In other words, rather than relying on static values, the system supports <strong>curve-based, time-dependent control</strong>, allowing for more <strong>dynamic and expressive musical behavior</strong>.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
 <ul class="simple">
 <li><p>On Flat interpolator type, you need to write just one value</p></li>
 <li><p>SPEED: -N ~ N (float) 1 Equals 100%, -1.0 Equals -100%(reverse play), 10.0 Equals 1000%. Based on BPM before time stretching.</p></li>
 </ul>
+</div>
 </section>
 <section id="note-data">
 <h2>Note Data<a class="headerlink" href="#note-data" title="Link to this heading"></a></h2>
 <p>Note Data in the PDJE engine is a data structure that defines rhythm game note events.</p>
-<p>Each note specifies what kind of input is required at a particular point in time (Bar, Beat, Separate), and the player must respond accurately at that timing in order to score.</p>
+<p>Each note specifies what kind of input is required at a particular point in time (Beat, subBeat, Separate), and the player must respond accurately at that timing in order to score.</p>
 <p>Note data is the core element representing player interaction. Unlike Mix Data, which records changes to audio parameters, Note Data strictly handles “input events.”</p>
 <p>In particular, both Note_Type and Note_Detail are declared as TEXT fields, not as predefined ENUM values.</p>
 <p>Aside from reserved keywords such as the BPM prefix, users are expected to define and extend their own types and details. This design allows for flexible customization to support specific game modes, input devices, or user-defined rules.</p>
@@ -433,11 +448,11 @@
 <th class="head"><p>first</p></th>
 <th class="head"><p>second</p></th>
 <th class="head"><p>third</p></th>
-<th class="head"><p>bar</p></th>
 <th class="head"><p>beat</p></th>
+<th class="head"><p>subBeat</p></th>
 <th class="head"><p>separate</p></th>
-<th class="head"><p>Ebar</p></th>
 <th class="head"><p>Ebeat</p></th>
+<th class="head"><p>EsubBeat</p></th>
 <th class="head"><p>Eseparate</p></th>
 </tr>
 </thead>
@@ -461,29 +476,30 @@
 </ul>
 </section>
 </section>
-<section id="about-bar-beat-separate">
-<h1>About Bar &amp; Beat &amp; Separate<a class="headerlink" href="#about-bar-beat-separate" title="Link to this heading"></a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">Bar</span></code>, <code class="docutils literal notranslate"><span class="pre">Beat</span></code>, and <code class="docutils literal notranslate"><span class="pre">Separate</span></code> are indexing methods that represent music data based on <strong>BPM (tempo) and time signature</strong>.
-This concept is derived from the <strong>beat-based timeline representation</strong> commonly used in rhythm games and DAWs (Digital Audio Workstations).
-For example, in MIDI sequencing or DAWs, events are also placed at positions such as “which bar, which beat, and which subdivision.”</p>
-<p>—</p>
+<section id="about-beat-subbeat-separate">
+<h1>About Beat &amp; subBeat &amp; Separate<a class="headerlink" href="#about-beat-subbeat-separate" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">Beat</span></code>, <code class="docutils literal notranslate"><span class="pre">subBeat</span></code>, and <code class="docutils literal notranslate"><span class="pre">Separate</span></code> are indexing methods derived from the Beat Grid concept (See: :<a class="reference external" href="https://support.serato.com/hc/en-us/articles/202523390-Introduction-to-Beatgrids">Serato Beat Grid</a> ), which is widely used in DAWs (Digital Audio Workstations), DJ software  and MIDI sequencing.</p>
+<p>A Beat Grid divides musical time based on <strong>BPM (tempo)</strong> and <strong>time signature</strong>, providing a precise rhythmic framework for placing musical events along a timeline.</p>
+<p>Within this framework, <code class="docutils literal notranslate"><span class="pre">Beat</span></code> represents the primary rhythmic unit (typically a quarter note in 4/4 time), <code class="docutils literal notranslate"><span class="pre">subBeat</span></code> further subdivides each beat into smaller logical segments (such as 1/4 or 1/8 of a beat), and <code class="docutils literal notranslate"><span class="pre">Separate</span></code> defines custom high-resolution divisions used for fine-grained quantization or event positioning.</p>
+<p>This indexing method is conceptually aligned with timeline systems used in rhythm games and digital audio applications, where accurate synchronization and sub-beat resolution are essential.</p>
 <section id="key-terms">
 <h2>Key Terms<a class="headerlink" href="#key-terms" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><strong>firstBeat</strong>
-The PCM frame (sample-level position) where the first beat begins.
+The PCM frame (sample-level position) where the first Beat begins.
 Used as the reference point for synchronization of the music.</p></li>
-<li><p><strong>bar</strong>
-The position of the measure (bar) calculated from BPM and time signature information.</p></li>
 <li><p><strong>beat</strong>
-The downbeat position within a bar.
-For example, in 4/4 time, there are four beats within one bar.</p></li>
+The position of the <strong>beat</strong> (not the measure) calculated based on BPM and time signature.
+It represents the primary rhythmic unit (e.g., a quarter note in 4/4 time).</p></li>
+<li><p><strong>subBeat</strong>
+The position within a beat that divides it into smaller rhythmic units.
+Typically used for finer timing precision within a beat.</p></li>
 <li><p><strong>separate</strong>
-The subdivision index when a bar is divided into smaller parts.
-For instance, if <code class="docutils literal notranslate"><span class="pre">separate=192</span></code>, it means the bar is divided into 192 segments, and this value represents which segment is being referred to.</p></li>
-<li><p><strong>ebar / ebeat / eseparate</strong>
+The index of a fine-grained subdivision when a beat is divided into smaller, fixed segments.
+For example, if separate = 192, it means the beat is sliced into 192 equal parts, and this value specifies the current segment number.</p></li>
+<li><p><strong>ebeat / esubBeat / eseparate</strong>
 The prefix <code class="docutils literal notranslate"><span class="pre">e</span></code> stands for <strong>end</strong>.
-These are used when an event spans over a duration (e.g., long notes, sustained effects), recording the bar/beat/separate position where the event ends.</p></li>
+These fields indicate the ending positions of an event that spans a duration (e.g., long notes, sustained effects), using the same beat/subBeat/separate indexing system.</p></li>
 </ul>
 <p>—</p>
 </section>
@@ -491,8 +507,8 @@ These are used when an event spans over a duration (e.g., long notes, sustained 
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><strong>firstBeat</strong> represents the actual PCM frame in the audio stream where the music begins.</p></li>
-<li><p><strong>bar / beat / separate</strong> describe the timeline position of an event according to the BPM and time signature.</p></li>
-<li><p><strong>ebar / ebeat / eseparate</strong> mark the ending position of the event, allowing representation of interval-based events.</p></li>
+<li><p><strong>beat / subBeat / separate</strong> describe the timeline position of an event according to the BPM and time signature.</p></li>
+<li><p><strong>ebeat / esubBeat / eseparate</strong> mark the ending position of the event, allowing representation of interval-based events.</p></li>
 </ul>
 <p>This structure enables the PDJE engine to achieve <strong>precise synchronization</strong> between the audio signal (PCM-level) and rhythm game events (beat-level).</p>
 </section>

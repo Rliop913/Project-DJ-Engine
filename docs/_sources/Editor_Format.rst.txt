@@ -39,7 +39,7 @@ It defines the key data required for playback and analysis, such as the audio fi
       - MusicPath
       - Bpm
       - BpmBinary
-      - firstBar
+      - firstBeat
     * - Text
       - Text
       - Text
@@ -47,13 +47,14 @@ It defines the key data required for playback and analysis, such as the audio fi
       - Binary(CapNProto)
       - TEXT
 
+.. _about-mix-data:
 
 Mix Data
 -----------
 
 Mix Data in the PDJE engine is a data structure that defines mixing events, effect parameter changes, and load/unload controls that occur during track playback. 
 
-Each entry specifies what action takes place at a particular time (based on Bar/Beat), covering various audio control elements such as filters, EQ, volume, distortion, delay, and DJ scratching.
+Each entry specifies what action takes place at a particular time (based on Beat/subBeat), covering various audio control elements such as filters, EQ, volume, distortion, delay, and DJ scratching.
 
 Unlike rhythm game note events, this data records changes in audio processing parameters themselves, which are applied in real time during playback.
 
@@ -67,11 +68,11 @@ Unlike rhythm game note events, this data records changes in audio processing pa
       - first
       - second
       - third
-      - bar
       - beat
+      - subBeat
       - separate
-      - Ebar
       - Ebeat
+      - EsubBeat
       - Eseparate
     * - TYPE_ENUM
       - DETAIL_ENUM
@@ -119,16 +120,41 @@ ITPL                                                            8PointValues
 Choose Interpolator type(linear, cosine, cubic, flat)           8 data points that define a waveform for the interpolator
 ======================================================        ============================================================
 
-- On Flat interpolator type, you need to write just one value
 
-- SPEED: -N ~ N (float) 1 Equals 100%, -1.0 Equals -100%(reverse play), 10.0 Equals 1000%. Based on BPM before time stretching.
+.. code-block:: c++
+
+  std::string EightPoint = "5000,1000,2000,3000,4000,5000,5500,6000";
+
+this means
+
+.. image:: _static/eightPoint_example.png
+
+We interpolate this data using various interpolation methods.
+
+Point Index 1 corresponds to the **Start Position**, defined as:  
+`beat + (beat / separate) * subBeat`
+
+Point Index 8 corresponds to the **End Position**, defined as:  
+`Ebeat + (Ebeat / Eseparate) * EsubBeat`
+
+As you may have noticed, the data provided through `8PointValues` is transformed into a graph consisting of 8 key points.  
+This data serves as the `Interpolated Value`, which transitions smoothly from the **Start Position** to the **End Position** using the specified `ITPL` interpolation method—such as linear, cosine, cubic, or flat.
+
+This mechanism allows for precise control of parameters (e.g., filter frequency, volume, drive) that vary over time, enabling **smooth and continuous modulation** within audio effect modules.
+
+In other words, rather than relying on static values, the system supports **curve-based, time-dependent control**, allowing for more **dynamic and expressive musical behavior**.
+
+.. attention:: 
+  - On Flat interpolator type, you need to write just one value
+
+  - SPEED: -N ~ N (float) 1 Equals 100%, -1.0 Equals -100%(reverse play), 10.0 Equals 1000%. Based on BPM before time stretching.
 
 Note Data
 ------------
 
 Note Data in the PDJE engine is a data structure that defines rhythm game note events. 
 
-Each note specifies what kind of input is required at a particular point in time (Bar, Beat, Separate), and the player must respond accurately at that timing in order to score.
+Each note specifies what kind of input is required at a particular point in time (Beat, subBeat, Separate), and the player must respond accurately at that timing in order to score.
 
 Note data is the core element representing player interaction. Unlike Mix Data, which records changes to audio parameters, Note Data strictly handles “input events.”
 
@@ -149,11 +175,11 @@ In this case, the first field is treated as the new BPM value, ensuring synchron
      - first
      - second
      - third
-     - bar
      - beat
+     - subBeat
      - separate
-     - Ebar
      - Ebeat
+     - EsubBeat
      - Eseparate
    * - TEXT
      - TEXT
@@ -172,36 +198,44 @@ In this case, the first field is treated as the new BPM value, ensuring synchron
 
 
 
-About Bar & Beat & Separate
-============================
+About Beat & subBeat & Separate
+=================================
 
-``Bar``, ``Beat``, and ``Separate`` are indexing methods that represent music data based on **BPM (tempo) and time signature**.  
-This concept is derived from the **beat-based timeline representation** commonly used in rhythm games and DAWs (Digital Audio Workstations).  
-For example, in MIDI sequencing or DAWs, events are also placed at positions such as "which bar, which beat, and which subdivision."
+``Beat``, ``subBeat``, and ``Separate`` are indexing methods derived from the Beat Grid concept (See: :`Serato Beat Grid <https://support.serato.com/hc/en-us/articles/202523390-Introduction-to-Beatgrids>`_ ), which is widely used in DAWs (Digital Audio Workstations), DJ software  and MIDI sequencing.
 
----
+
+A Beat Grid divides musical time based on **BPM (tempo)** and **time signature**, providing a precise rhythmic framework for placing musical events along a timeline.
+
+
+Within this framework, ``Beat`` represents the primary rhythmic unit (typically a quarter note in 4/4 time), ``subBeat`` further subdivides each beat into smaller logical segments (such as 1/4 or 1/8 of a beat), and ``Separate`` defines custom high-resolution divisions used for fine-grained quantization or event positioning.
+
+
+This indexing method is conceptually aligned with timeline systems used in rhythm games and digital audio applications, where accurate synchronization and sub-beat resolution are essential.
+
 
 Key Terms
 ---------
 
 - **firstBeat**  
-  The PCM frame (sample-level position) where the first beat begins.  
+  The PCM frame (sample-level position) where the first Beat begins.  
   Used as the reference point for synchronization of the music.
 
-- **bar**  
-  The position of the measure (bar) calculated from BPM and time signature information.
-
 - **beat**  
-  The downbeat position within a bar.  
-  For example, in 4/4 time, there are four beats within one bar.
+  The position of the **beat** (not the measure) calculated based on BPM and time signature.
+  It represents the primary rhythmic unit (e.g., a quarter note in 4/4 time).
+
+- **subBeat**  
+  The position within a beat that divides it into smaller rhythmic units.
+  Typically used for finer timing precision within a beat.
 
 - **separate**  
-  The subdivision index when a bar is divided into smaller parts.  
-  For instance, if ``separate=192``, it means the bar is divided into 192 segments, and this value represents which segment is being referred to.
+  The index of a fine-grained subdivision when a beat is divided into smaller, fixed segments.
+  For example, if separate = 192, it means the beat is sliced into 192 equal parts, and this value specifies the current segment number.
 
-- **ebar / ebeat / eseparate**  
-  The prefix ``e`` stands for **end**.  
-  These are used when an event spans over a duration (e.g., long notes, sustained effects), recording the bar/beat/separate position where the event ends.
+- **ebeat / esubBeat / eseparate**  
+  The prefix ``e`` stands for **end**.
+  These fields indicate the ending positions of an event that spans a duration (e.g., long notes, sustained effects), using the same beat/subBeat/separate indexing system.
+
 
 ---
 
@@ -209,7 +243,7 @@ Summary
 -------
 
 - **firstBeat** represents the actual PCM frame in the audio stream where the music begins.  
-- **bar / beat / separate** describe the timeline position of an event according to the BPM and time signature.  
-- **ebar / ebeat / eseparate** mark the ending position of the event, allowing representation of interval-based events.  
+- **beat / subBeat / separate** describe the timeline position of an event according to the BPM and time signature.  
+- **ebeat / esubBeat / eseparate** mark the ending position of the event, allowing representation of interval-based events.  
 
 This structure enables the PDJE engine to achieve **precise synchronization** between the audio signal (PCM-level) and rhythm game events (beat-level).

@@ -49,12 +49,12 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_highway__Test_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
+- :ref:`exhale_function_highway___test_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
 
 
 Defines
 -------
 
 
-- :ref:`exhale_define_highway__Test_8cpp_1a1fef9e7ada729f067830f0704cb85cc1`
+- :ref:`exhale_define_highway___test_8cpp_1a1fef9e7ada729f067830f0704cb85cc1`
 

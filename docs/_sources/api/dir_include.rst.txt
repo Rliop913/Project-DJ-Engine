@@ -22,7 +22,9 @@ Subdirectories
 Files
 -----
 
+- :ref:`file_include_FAKE_CAPNP_ENUMS_FOR_SWIG.hpp`
 - :ref:`file_include_PDJE_EXPORT_SETTER.hpp`
 - :ref:`file_include_PDJE_LOG_SETTER.hpp`
+- :ref:`file_include_SWIG_editor_visitor.hpp`
 
 

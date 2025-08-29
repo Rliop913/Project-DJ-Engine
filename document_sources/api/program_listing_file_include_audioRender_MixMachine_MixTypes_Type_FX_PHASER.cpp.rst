@@ -12,17 +12,15 @@ Program Listing for File Type_FX_PHASER.cpp
 
    #include "MixMachine.hpp"
    
-   
-   template<>
+   template <>
    bool
-   MixMachine::TypeWorks<TypeEnum::PHASER, FaustEffects>
-   (MixStruct& ms, FaustEffects& data, SIMD_FLOAT* Vec)
+   MixMachine::TypeWorks<TypeEnum::PHASER, FaustEffects>(MixStruct    &ms,
+                                                         FaustEffects &data,
+                                                         SIMD_FLOAT   *Vec)
    {
-       if(!InterpolateInit(data.phaserData, Vec, ms)){
+       if (!InterpolateInit(data.phaserData, Vec, ms)) {
            return false;
        }
-       TRY(
-           data.phaserData.back().bps = std::stof(ms.RP.getThird().cStr()) / 60.0;
-       )
+       TRY(data.phaserData.back().bps = std::stof(ms.RP.getThird().cStr()) / 60.0;)
        return true;
    }

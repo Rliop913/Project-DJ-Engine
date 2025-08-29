@@ -49,11 +49,11 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__IDEV`
+- :ref:`exhale_struct_struct_p_d_j_e___i_d_e_v`
 
-- :ref:`exhale_struct_structPDJE__IDEV_1_1Finders`
+- :ref:`exhale_struct_struct_p_d_j_e___i_d_e_v_1_1_finders`
 
-- :ref:`exhale_struct_structPDJE__IDEV_1_1Specifiers`
+- :ref:`exhale_struct_struct_p_d_j_e___i_d_e_v_1_1_specifiers`
 
-- :ref:`exhale_class_classPDJE__Input`
+- :ref:`exhale_class_class_p_d_j_e___input`
 

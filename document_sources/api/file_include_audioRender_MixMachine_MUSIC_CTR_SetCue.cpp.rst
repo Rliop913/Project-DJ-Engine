@@ -43,12 +43,12 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_SetCue_8cpp_1a1f615c872155c73a92999c0b91f904eb`
+- :ref:`exhale_function__set_cue_8cpp_1a1f615c872155c73a92999c0b91f904eb`
 
 
 Defines
 -------
 
 
-- :ref:`exhale_define_SetCue_8cpp_1afa79dd1db9e2fd2c971c2cf4912a65c6`
+- :ref:`exhale_define__set_cue_8cpp_1afa79dd1db9e2fd2c971c2cf4912a65c6`
 

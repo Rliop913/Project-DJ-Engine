@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Program Listing for File dbRoot.cpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../_static/doctools.js?v=9bcbadda"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -53,7 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -82,25 +80,29 @@
              
   <section id="program-listing-for-file-dbroot-cpp">
 <span id="program-listing-file-include-db-dbroot-cpp"></span><h1>Program Listing for File dbRoot.cpp<a class="headerlink" href="#program-listing-for-file-dbroot-cpp" title="Link to this heading"></a></h1>
-<p>↰ <a class="reference internal" href="file_include_db_dbRoot.cpp.html#file-include-db-dbroot-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/db/dbRoot.cpp</span></code>)</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;dbRoot.hpp&quot;</span>
+<p>↰ <a class="reference internal" href="file_include_db_dbRoot.cpp.html#file-include-db-dbroot-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\db\dbRoot.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;dbRoot.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
-<span class="n">litedb</span><span class="o">::</span><span class="n">litedb</span><span class="p">(){}</span>
+<span class="n">litedb</span><span class="o">::</span><span class="n">litedb</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
 
 <span class="kt">bool</span>
-<span class="n">litedb</span><span class="o">::</span><span class="n">openDB</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dbPath</span><span class="p">)</span>
+<span class="n">litedb</span><span class="o">::</span><span class="n">openDB</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dbPath</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="c1">// std::u8string u8str = dbPath.generic_u8string();</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">fs</span><span class="o">::</span><span class="n">is_directory</span><span class="p">(</span><span class="n">dbPath</span><span class="p">)){</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">fs</span><span class="o">::</span><span class="n">is_directory</span><span class="p">(</span><span class="n">dbPath</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">        </span><span class="n">infolog</span><span class="p">(</span><span class="s">&quot;directory not found. making new one. from litedb openDB. path: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dbPath</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
+<span class="w">        </span><span class="n">infolog</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;directory not found. making new one. from litedb openDB. path: &quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">dbPath</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
 <span class="w">        </span><span class="c1">// infolog(dbPath.generic_string());</span>
 <span class="w">        </span><span class="n">fs</span><span class="o">::</span><span class="n">create_directories</span><span class="p">(</span><span class="n">dbPath</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">sqldbPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbPath</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="s">&quot;sqlite.db&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">kvdbPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbPath</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="s">&quot;rocksdb.db&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">sqldbPath</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">dbPath</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="s">&quot;sqlite.db&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">kvdbPath</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">dbPath</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="s">&quot;rocksdb.db&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="n">vectordbPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbPath</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="s">&quot;annoy.db&quot;</span><span class="p">);</span>
 
 <span class="w">    </span><span class="n">RDB</span><span class="o">::</span><span class="n">Options</span><span class="w"> </span><span class="n">rdbops</span><span class="p">;</span>
@@ -112,28 +114,28 @@
 <span class="w">    </span><span class="n">rdbops</span><span class="p">.</span><span class="n">table_factory</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="n">NewBlockBasedTableFactory</span><span class="p">(</span><span class="n">table_options</span><span class="p">));</span>
 <span class="w">    </span><span class="n">rdbops</span><span class="p">.</span><span class="n">compression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RDB</span><span class="o">::</span><span class="n">kNoCompression</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">wops</span><span class="p">.</span><span class="n">sync</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="n">wops</span><span class="p">.</span><span class="n">sync</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">    </span><span class="n">wops</span><span class="p">.</span><span class="n">disableWAL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 
 <span class="w">    </span><span class="n">rops</span><span class="p">.</span><span class="n">verify_checksums</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">    </span><span class="n">rops</span><span class="p">.</span><span class="n">fill_cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rops</span><span class="p">.</span><span class="n">fill_cache</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">sqlRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlite3_open</span><span class="p">(</span><span class="n">sqldbPath</span><span class="p">.</span><span class="n">generic_string</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sdb</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">sdb</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PRAGMA synchronous   = FULL;&quot;</span><span class="p">,</span><span class="w">   </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">sdb</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PRAGMA synchronous   = FULL;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">kvdbRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RDB</span><span class="o">::</span><span class="n">DB</span><span class="o">::</span><span class="n">Open</span><span class="p">(</span><span class="n">rdbops</span><span class="p">,</span><span class="w"> </span><span class="n">kvdbPath</span><span class="p">.</span><span class="n">generic_string</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">kvdb</span><span class="p">);</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sqlRes</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SQLITE_OK</span><span class="p">){</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sqlRes</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SQLITE_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to open sqlite. from litedb openDB. sqliteErrmsg: &quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">sqlite3_errmsg</span><span class="p">(</span><span class="n">sdb</span><span class="p">));</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">kvdbRes</span><span class="p">.</span><span class="n">ok</span><span class="p">()){</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">kvdbRes</span><span class="p">.</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to open rocksDB. from litedb openDB. rocksdbErrmsg: &quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">kvdbRes</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">CheckTables</span><span class="p">()){</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">CheckTables</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to check tables. from litedb openDB.&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
@@ -143,10 +145,10 @@
 
 <span class="n">litedb</span><span class="o">::~</span><span class="n">litedb</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">sdb</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">){</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sdb</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">sqlite3_close</span><span class="p">(</span><span class="n">sdb</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">kvdb</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">){</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">kvdb</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="n">kvdb</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -154,49 +156,55 @@
 <span class="kt">bool</span>
 <span class="n">litedb</span><span class="o">::</span><span class="n">CheckTables</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">sqlite3_stmt</span><span class="o">*</span><span class="w"> </span><span class="n">chk_mus</span><span class="p">;</span>
-<span class="w">    </span><span class="n">sqlite3_stmt</span><span class="o">*</span><span class="w"> </span><span class="n">chk_trk</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">msql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;PRAGMA table_info(&#39;MUSIC&#39;)&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">tsql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;PRAGMA table_info(&#39;TRACK&#39;)&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sqlite3_prepare_v2</span><span class="p">(</span><span class="n">sdb</span><span class="p">,</span><span class="w"> </span><span class="n">msql</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">chk_mus</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SQLITE_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to prepare music sql. from litedb CheckTables. sqliteErrmsg: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">sqlite3_stmt</span><span class="w"> </span><span class="o">*</span><span class="n">chk_mus</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sqlite3_stmt</span><span class="w"> </span><span class="o">*</span><span class="n">chk_trk</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">   </span><span class="n">msql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;PRAGMA table_info(&#39;MUSIC&#39;)&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">   </span><span class="n">tsql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;PRAGMA table_info(&#39;TRACK&#39;)&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sqlite3_prepare_v2</span><span class="p">(</span><span class="n">sdb</span><span class="p">,</span><span class="w"> </span><span class="n">msql</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">chk_mus</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span>
+<span class="w">        </span><span class="n">SQLITE_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to prepare music sql. from litedb CheckTables. &quot;</span>
+<span class="w">                </span><span class="s">&quot;sqliteErrmsg: &quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sqlLog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlite3_errmsg</span><span class="p">(</span><span class="n">sdb</span><span class="p">);</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">sqlLog</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sqlite3_prepare_v2</span><span class="p">(</span><span class="n">sdb</span><span class="p">,</span><span class="w"> </span><span class="n">tsql</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">chk_trk</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SQLITE_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to prepare track sql. from litedb CheckTables. sqliteErrmsg: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sqlite3_prepare_v2</span><span class="p">(</span><span class="n">sdb</span><span class="p">,</span><span class="w"> </span><span class="n">tsql</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">chk_trk</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span>
+<span class="w">        </span><span class="n">SQLITE_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to prepare track sql. from litedb CheckTables. &quot;</span>
+<span class="w">                </span><span class="s">&quot;sqliteErrmsg: &quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sqlLog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlite3_errmsg</span><span class="p">(</span><span class="n">sdb</span><span class="p">);</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">sqlLog</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">sqlite3_step</span><span class="p">(</span><span class="n">chk_mus</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SQLITE_ROW</span><span class="p">){</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">musmake</span><span class="w"> </span><span class="o">=</span>
-<span class="w">        </span><span class="s">&quot;CREATE TABLE MUSIC ( &quot;</span>
-<span class="w">        </span><span class="s">&quot;Title TEXT NOT NULL, &quot;</span>
-<span class="w">        </span><span class="s">&quot;Composer TEXT NOT NULL, &quot;</span>
-<span class="w">        </span><span class="s">&quot;MusicPath TEXT NOT NULL, &quot;</span>
-<span class="w">        </span><span class="s">&quot;Bpm DOUBLE NOT NULL, &quot;</span>
-<span class="w">        </span><span class="s">&quot;BpmBinary BLOB NOT NULL, &quot;</span>
-<span class="w">        </span><span class="s">&quot;FirstBar TEXT NOT NULL &quot;</span>
-<span class="w">        </span><span class="s">&quot;);&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">sdb</span><span class="p">,</span><span class="w"> </span><span class="n">musmake</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SQLITE_OK</span><span class="p">){</span>
-<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to create music sqlite exec. from litedb CheckTables. sqliteErrmsg: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sqlite3_step</span><span class="p">(</span><span class="n">chk_mus</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SQLITE_ROW</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">musmake</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CREATE TABLE MUSIC ( &quot;</span>
+<span class="w">                              </span><span class="s">&quot;Title TEXT NOT NULL, &quot;</span>
+<span class="w">                              </span><span class="s">&quot;Composer TEXT NOT NULL, &quot;</span>
+<span class="w">                              </span><span class="s">&quot;MusicPath TEXT NOT NULL, &quot;</span>
+<span class="w">                              </span><span class="s">&quot;Bpm DOUBLE NOT NULL, &quot;</span>
+<span class="w">                              </span><span class="s">&quot;BpmBinary BLOB NOT NULL, &quot;</span>
+<span class="w">                              </span><span class="s">&quot;FirstBeat TEXT NOT NULL &quot;</span>
+<span class="w">                              </span><span class="s">&quot;);&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">sdb</span><span class="p">,</span><span class="w"> </span><span class="n">musmake</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span>
+<span class="w">            </span><span class="n">SQLITE_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to create music sqlite exec. from litedb &quot;</span>
+<span class="w">                    </span><span class="s">&quot;CheckTables. sqliteErrmsg: &quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sqlLog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlite3_errmsg</span><span class="p">(</span><span class="n">sdb</span><span class="p">);</span>
 <span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">sqlLog</span><span class="p">);</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">sqlite3_step</span><span class="p">(</span><span class="n">chk_trk</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SQLITE_ROW</span><span class="p">){</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">trackmake</span><span class="w"> </span><span class="o">=</span>
-<span class="w">        </span><span class="s">&quot;CREATE TABLE TRACK ( &quot;</span>
-<span class="w">        </span><span class="s">&quot;TrackTitle TEXT NOT NULL, &quot;</span>
-<span class="w">        </span><span class="s">&quot;MixBinary BLOB NOT NULL, &quot;</span>
-<span class="w">        </span><span class="s">&quot;NoteBinary BLOB NOT NULL, &quot;</span>
-<span class="w">        </span><span class="s">&quot;CachedMixList TEXT NOT NULL &quot;</span>
-<span class="w">        </span><span class="s">&quot;);&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">sdb</span><span class="p">,</span><span class="w"> </span><span class="n">trackmake</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SQLITE_OK</span><span class="p">){</span>
-<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to create track sqlite exec. from litedb CheckTables. sqliteErrmsg: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sqlite3_step</span><span class="p">(</span><span class="n">chk_trk</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SQLITE_ROW</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">trackmake</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CREATE TABLE TRACK ( &quot;</span>
+<span class="w">                                </span><span class="s">&quot;TrackTitle TEXT NOT NULL, &quot;</span>
+<span class="w">                                </span><span class="s">&quot;MixBinary BLOB NOT NULL, &quot;</span>
+<span class="w">                                </span><span class="s">&quot;NoteBinary BLOB NOT NULL, &quot;</span>
+<span class="w">                                </span><span class="s">&quot;CachedMixList TEXT NOT NULL &quot;</span>
+<span class="w">                                </span><span class="s">&quot;);&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">sdb</span><span class="p">,</span><span class="w"> </span><span class="n">trackmake</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span>
+<span class="w">            </span><span class="n">SQLITE_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to create track sqlite exec. from litedb &quot;</span>
+<span class="w">                    </span><span class="s">&quot;CheckTables. sqliteErrmsg: &quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">sqlLog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlite3_errmsg</span><span class="p">(</span><span class="n">sdb</span><span class="p">);</span>
 <span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">sqlLog</span><span class="p">);</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
@@ -207,20 +215,20 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
-
-
 <span class="kt">bool</span>
-<span class="n">litedb</span><span class="o">::</span><span class="n">KVGet</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">V</span><span class="p">)</span>
+<span class="n">litedb</span><span class="o">::</span><span class="n">KVGet</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">V</span><span class="p">)</span>
 <span class="p">{</span>
 
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">getRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kvdb</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="n">rops</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">V</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">getRes</span><span class="p">.</span><span class="n">IsNotFound</span><span class="p">()){</span>
-<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;cannot find music from database. from litedb KVGet. Keydata: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">getRes</span><span class="p">.</span><span class="n">IsNotFound</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;cannot find music from database. from litedb KVGet. Keydata: &quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="n">K</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">getRes</span><span class="p">.</span><span class="n">ok</span><span class="p">()){</span>
-<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to get music from database. from litedb KVGet. rocksdbErr: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">getRes</span><span class="p">.</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to get music from database. from litedb KVGet. &quot;</span>
+<span class="w">                </span><span class="s">&quot;rocksdbErr: &quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">resErr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getRes</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">resErr</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
@@ -229,11 +237,12 @@
 <span class="p">}</span>
 
 <span class="kt">bool</span>
-<span class="n">litedb</span><span class="o">::</span><span class="n">KVPut</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SANITIZED</span><span class="o">&amp;</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="o">&amp;</span><span class="w"> </span><span class="n">V</span><span class="p">)</span>
+<span class="n">litedb</span><span class="o">::</span><span class="n">KVPut</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">V</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">putRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kvdb</span><span class="o">-&gt;</span><span class="n">Put</span><span class="p">(</span><span class="n">wops</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">putRes</span><span class="p">.</span><span class="n">ok</span><span class="p">()){</span>
-<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to put new datas to database. from litedb KVPut. rocksdbErr: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">putRes</span><span class="p">.</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to put new datas to database. from litedb KVPut. &quot;</span>
+<span class="w">                </span><span class="s">&quot;rocksdbErr: &quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">resErr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">putRes</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">resErr</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>

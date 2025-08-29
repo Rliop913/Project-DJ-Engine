@@ -41,5 +41,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_Type__FX__PHASER_8cpp_1aa19b6d0ead3ced5cf0d67de52b1d8030`
+- :ref:`exhale_function__type___f_x___p_h_a_s_e_r_8cpp_1aa19b6d0ead3ced5cf0d67de52b1d8030`
 

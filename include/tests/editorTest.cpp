@@ -149,7 +149,11 @@ main()
         auto deactres = engine->player->Deactivate();
 
         auto editor = engine->GetEditorObject();
-        DetailEnum::HIGH
+        editor->GetLogWithJSONGraph<EDIT_ARG_MIX>();
+        editor->GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
+        editor->GetLogWithJSONGraph<EDIT_ARG_NOTE>();
+        editor->GetLogWithJSONGraph<EDIT_ARG_MUSIC>("music name");
+
         
     } else {
         std::cout << "init failed " << std::endl;

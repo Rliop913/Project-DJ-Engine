@@ -20,12 +20,13 @@ Program Listing for File AddController.hpp
    namespace fs = std::filesystem;
    
    class AddController {
-   public:
-       git_index* index = nullptr;
-       AddController() = default;
-       bool open(git_repository* repo);
+     public:
+       git_index *index = nullptr;
+       AddController()  = default;
+       bool
+       open(git_repository *repo);
    
-       bool addFile(const fs::path& path);
+       bool
+       addFile(const fs::path &path);
        ~AddController();
    };
-   

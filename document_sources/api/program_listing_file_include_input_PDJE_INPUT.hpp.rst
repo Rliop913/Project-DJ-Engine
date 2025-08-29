@@ -24,44 +24,45 @@ Program Listing for File PDJE_INPUT.hpp
    
    #endif
    
-   struct PDJE_IDEV{
-       struct Finders{
+   struct PDJE_IDEV {
+       struct Finders {
            std::string devName;
            std::string vendorID;
            std::string productID;
        };
        std::string busType;
        std::string devType;
-       struct Specifiers{
+       struct Specifiers {
            DevID devID;
        };
-   
    };
    
-   class PDJE_Input{
-   private:
+   class PDJE_Input {
+     private:
+     public:
+       void
+       search();
    
-   public:
-       void search();
+       void
+       set();
    
-       void set();
+       void
+       get();
    
-       void get();
-   
-       void pair_job();
+       void
+       pair_job();
    
        PDJE_Input();
    
        ~PDJE_Input();
    };
    
-   
    // struct DuckTypeDevice{
    //     bool HAS_KEY_Q_W_E_R_T_Y = false;
    //     bool HAS_KEY = false;
    //     bool HAS_RELATIVE_AXIS_SENSOR = false;
    //     bool HAS_ABSOLUTE_AXIS_SENSOR = false;
-       
+   
    // };
    
    // struct DeviceData{

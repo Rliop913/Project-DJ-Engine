@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classEchoMan`
+- :ref:`exhale_class_class_echo_man`
 

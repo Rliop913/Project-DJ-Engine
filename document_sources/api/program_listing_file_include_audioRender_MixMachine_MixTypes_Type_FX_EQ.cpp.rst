@@ -12,17 +12,16 @@ Program Listing for File Type_FX_EQ.cpp
 
    #include "MixMachine.hpp"
    
-   
-   template<>
+   template <>
    bool
-   MixMachine::TypeWorks<TypeEnum::EQ, FaustEffects>
-   (MixStruct& ms, FaustEffects& data, SIMD_FLOAT* Vec)
+   MixMachine::TypeWorks<TypeEnum::EQ, FaustEffects>(MixStruct    &ms,
+                                                     FaustEffects &data,
+                                                     SIMD_FLOAT   *Vec)
    {
-       if(!InterpolateInit(data.eqData, Vec, ms)){
+       if (!InterpolateInit(data.eqData, Vec, ms)) {
            return false;
        }
-       switch (ms.RP.getDetails())
-       {
+       switch (ms.RP.getDetails()) {
        case DetailEnum::HIGH:
            data.eqData.back().EQSelect = 0;
            break;

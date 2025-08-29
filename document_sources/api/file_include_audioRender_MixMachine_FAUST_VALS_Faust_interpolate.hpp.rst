@@ -67,5 +67,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classFaustInterpolate`
+- :ref:`exhale_class_class_faust_interpolate`
 

@@ -12,19 +12,17 @@ Program Listing for File Type_FX_ROLL.cpp
 
    #include "MixMachine.hpp"
    
-   
-   template<>
+   template <>
    bool
-   MixMachine::TypeWorks<TypeEnum::ROLL, FaustEffects>
-   (MixStruct& ms, FaustEffects& data, SIMD_FLOAT* Vec)
+   MixMachine::TypeWorks<TypeEnum::ROLL, FaustEffects>(MixStruct    &ms,
+                                                       FaustEffects &data,
+                                                       SIMD_FLOAT   *Vec)
    {
-       if(!InterpolateInit(data.rollData, Vec, ms)){
+       if (!InterpolateInit(data.rollData, Vec, ms)) {
            return false;
        }
    
-       TRY(
-           data.rollData.back().RollBpm = std::stof(ms.RP.getThird().cStr());
-       )
-       
+       TRY(data.rollData.back().RollBpm = std::stof(ms.RP.getThird().cStr());)
+   
        return true;
    }

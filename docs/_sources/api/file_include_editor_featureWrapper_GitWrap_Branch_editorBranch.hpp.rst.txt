@@ -4,7 +4,7 @@
 File editorBranch.hpp
 =====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Branch>` (``include/editor/featureWrapper/GitWrap/Branch``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Branch>` (``include\editor\featureWrapper\GitWrap\Branch``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ Wrapper utilities for manipulating Git branches.
    :local:
    :backlinks: none
 
-Definition (``include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp``)
+Definition (``include\editor\featureWrapper\GitWrap\Branch\editorBranch.hpp``)
 ------------------------------------------------------------------------------
 
 

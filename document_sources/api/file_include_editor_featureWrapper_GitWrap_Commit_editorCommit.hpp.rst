@@ -79,5 +79,5 @@ Classes
 
 - :ref:`exhale_struct_structgitwrap_1_1commit`
 
-- :ref:`exhale_struct_structgitwrap_1_1commitList`
+- :ref:`exhale_struct_structgitwrap_1_1commit_list`
 

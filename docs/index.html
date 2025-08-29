@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -6,29 +8,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project_DJ_Engine – A Real‑Time Engine for Rhythm Games, DJing, and Audio Production &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="_static/doctools.js?v=9bcbadda"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="_static/design-tabs.js?v=f930bc37"></script>
-        <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
-        <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
-        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
-        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
-        <script type="module">
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">
 import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
 window.addEventListener("load", () => mermaid.run());
 </script>
@@ -62,7 +60,7 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l1"><a class="reference internal" href="Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -102,13 +100,39 @@ window.addEventListener("load", () => mermaid.run());
 </ul>
 <section id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
-<p>Clone and build PDJE in a few steps:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Rliop913/Project_DJ_Engine.git
-<span class="nb">cd</span><span class="w"> </span>Project_DJ_Engine
-mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
-cmake<span class="w"> </span>..
-cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>--parallel
-</pre></div>
+<p>Prerequisites:</p>
+<ul class="simple">
+<li><p>C++20 compatible compiler</p></li>
+<li><p>CMake 3.12 or later</p></li>
+<li><p>SWIG</p></li>
+<li><p>OpenSSL</p></li>
+<li><p>[Conan](<a class="reference external" href="https://conan.io/">https://conan.io/</a>)</p></li>
+</ul>
+<p>Clone and build PDJE in a few steps:
+on linux &amp; macos
+.. code-block:: bash</p>
+<blockquote>
+<div><p>bash ./BuildInitwithConan.sh . Release
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=”../conan_cmakes/conan_toolchain.cmake” -DPDJE_DYNAMIC=OFF #to get dynamic library, change here
+cmake –build . –parallel #add your maximum number of cores</p>
+</div></blockquote>
+<p>on windows
+.. code-block:: bash</p>
+<blockquote>
+<div><p>./BuildInitwithConan.bat . static Release
+#to get dynamic library, change static into dynamic
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=”../conan_cmakes/conan_toolchain.cmake” -DPDJE_DYNAMIC=OFF #to get dynamic library, change here
+cmake –build . –config Release –parallel #add your maximum number of cores</p>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To change the build type (Debug/Release) or switch between static and dynamic builds,
+you must re-run the <cite>BuildInitwithConan</cite> script with the new options.
+Otherwise, Conan dependencies may not be configured correctly.</p>
 </div>
 <p>Learn about PDJE’s modules and usage in the <a class="reference internal" href="Getting%20Started.html"><span class="doc">Getting Started</span></a> documentation.</p>
 </section>
@@ -187,15 +211,26 @@ timeline
 <li><p>💻 <strong>GitHub</strong>: <a class="reference external" href="https://github.com/Rliop913/Project_DJ_Engine">https://github.com/Rliop913/Project_DJ_Engine</a></p></li>
 <li><p>📄 <strong>License</strong>: LGPLv2.1 (by SoundTouch License)</p></li>
 <li><p>🎮 <strong>Godot Plugin</strong>: <a class="reference external" href="https://github.com/Rliop913/PDJE_Godot_Plugin">https://github.com/Rliop913/PDJE_Godot_Plugin</a></p></li>
+<li><p>📦 <strong>Plugin Prebuilt</strong>: <a class="reference external" href="https://github.com/Rliop913/Project_DJ_Godot">https://github.com/Rliop913/Project_DJ_Godot</a></p></li>
 </ul>
+</section>
 <hr class="docutils" />
-<div class="toctree-wrapper compound">
+<section id="ci-cd-call-graph">
+<h2>CI/CD Call Graph<a class="headerlink" href="#ci-cd-call-graph" title="Link to this heading"></a></h2>
+<pre  class="mermaid">
+        flowchart TD
+Project_DJ_Engine --&gt; PDJE_Godot_Plugin
+PDJE_Godot_Plugin --&gt; Project_DJ_Godot
+
+origin_build_success --&gt; Project_DJ_Engine
+manual_release --&gt; PDJE_Godot_Plugin
+    </pre><div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Editor_Format.html#about-bar-beat-separate">About Bar &amp; Beat &amp; Separate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 </div>
 </section>

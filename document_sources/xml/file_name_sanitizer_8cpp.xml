@@ -8,13 +8,13 @@
       <node id="7">
         <label>PDJE_LOG_SETTER.hpp</label>
         <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -41,7 +41,7 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="6">
+      <node id="3">
         <label>cppcodec/base64_url_unpadded.hpp</label>
       </node>
       <node id="4">
@@ -50,22 +50,22 @@
       <node id="5">
         <label>optional</label>
       </node>
-      <node id="9">
+      <node id="8">
         <label>spdlog/sinks/basic_file_sink.h</label>
       </node>
-      <node id="10">
+      <node id="9">
         <label>spdlog/sinks/stdout_color_sinks.h</label>
       </node>
-      <node id="8">
+      <node id="10">
         <label>spdlog/spdlog.h</label>
       </node>
-      <node id="3">
+      <node id="6">
         <label>string</label>
       </node>
-      <node id="12">
+      <node id="11">
         <label>string_view</label>
       </node>
-      <node id="11">
+      <node id="12">
         <label>type_traits</label>
       </node>
     </incdepgraph>
@@ -77,20 +77,20 @@
 <codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="file_name_sanitizer_8hpp" kindref="compound">fileNameSanitizer.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp" kindref="compound">PDJE_LOG_SETTER.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal">std::optional&lt;SANITIZED&gt;<sp/></highlight></codeline>
-<codeline lineno="5" refid="class_p_d_j_e___name___sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" refkind="member"><highlight class="normal"><ref refid="class_p_d_j_e___name___sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" kindref="member">PDJE_Name_Sanitizer::sanitizeFileName</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fileName)</highlight></codeline>
+<codeline lineno="4"><highlight class="normal">std::optional&lt;SANITIZED&gt;</highlight></codeline>
+<codeline lineno="5" refid="class_p_d_j_e___name___sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" refkind="member"><highlight class="normal"><ref refid="class_p_d_j_e___name___sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" kindref="member">PDJE_Name_Sanitizer::sanitizeFileName</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;fileName)</highlight></codeline>
 <codeline lineno="6"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(cbase::encoded_size(fileName.size())<sp/>&gt;=<sp/>255){</highlight></codeline>
-<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>sanitize<sp/>filename.<sp/>from<sp/>PDJE_Name_Sanitizer<sp/>sanitizeFileName.<sp/>ErrfileName:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(fileName);</highlight></codeline>
-<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cbase::encode(fileName);</highlight></codeline>
-<codeline lineno="13"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cbase::encoded_size(fileName.size())<sp/>&gt;=<sp/>255)<sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>sanitize<sp/>filename.<sp/>from<sp/>PDJE_Name_Sanitizer<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sanitizeFileName.<sp/>ErrfileName:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(fileName);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cbase::encode(fileName);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal">std::string</highlight></codeline>
-<codeline lineno="17" refid="class_p_d_j_e___name___sanitizer_1af67eaa02761870480e60b4a22e558fe6" refkind="member"><highlight class="normal"><ref refid="class_p_d_j_e___name___sanitizer_1af67eaa02761870480e60b4a22e558fe6" kindref="member">PDJE_Name_Sanitizer::getFileName</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref>&amp;<sp/>sanitized)</highlight></codeline>
+<codeline lineno="17" refid="class_p_d_j_e___name___sanitizer_1af67eaa02761870480e60b4a22e558fe6" refkind="member"><highlight class="normal"><ref refid="class_p_d_j_e___name___sanitizer_1af67eaa02761870480e60b4a22e558fe6" kindref="member">PDJE_Name_Sanitizer::getFileName</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref><sp/>&amp;sanitized)</highlight></codeline>
 <codeline lineno="18"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>decoded<sp/>=<sp/>cbase::decode(sanitized);</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(decoded.begin(),<sp/>decoded.end());</highlight></codeline>

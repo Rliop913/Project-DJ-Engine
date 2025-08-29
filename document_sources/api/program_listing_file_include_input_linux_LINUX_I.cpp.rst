@@ -11,5 +11,3 @@ Program Listing for File LINUX_I.cpp
 .. code-block:: cpp
 
    #include "LINUX_INPUT.hpp"
-   
-   

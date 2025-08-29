@@ -46,5 +46,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classCompressorMan`
+- :ref:`exhale_class_class_compressor_man`
 

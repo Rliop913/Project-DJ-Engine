@@ -47,5 +47,5 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structBranchJSON`
+- :ref:`exhale_struct_struct_branch_j_s_o_n`
 

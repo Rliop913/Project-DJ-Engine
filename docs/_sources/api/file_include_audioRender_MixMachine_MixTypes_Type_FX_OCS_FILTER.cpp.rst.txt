@@ -4,7 +4,7 @@
 File Type_FX_OCS_FILTER.cpp
 ===========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MixTypes>` (``include/audioRender/MixMachine/MixTypes``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MixTypes>` (``include\audioRender\MixMachine\MixTypes``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Type_FX_OCS_FILTER.cpp
    :local:
    :backlinks: none
 
-Definition (``include/audioRender/MixMachine/MixTypes/Type_FX_OCS_FILTER.cpp``)
+Definition (``include\audioRender\MixMachine\MixTypes\Type_FX_OCS_FILTER.cpp``)
 -------------------------------------------------------------------------------
 
 
@@ -41,5 +41,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_Type__FX__OCS__FILTER_8cpp_1ade6268bae366fc7c656622d7f1454140`
+- :ref:`exhale_function__type___f_x___o_c_s___f_i_l_t_e_r_8cpp_1ade6268bae366fc7c656622d7f1454140`
 

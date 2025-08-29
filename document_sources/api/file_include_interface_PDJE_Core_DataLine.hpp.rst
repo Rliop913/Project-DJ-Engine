@@ -51,5 +51,5 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__CORE__DATA__LINE`
+- :ref:`exhale_struct_struct_p_d_j_e___c_o_r_e___d_a_t_a___l_i_n_e`
 

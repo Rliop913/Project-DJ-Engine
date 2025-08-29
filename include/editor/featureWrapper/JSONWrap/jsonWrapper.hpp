@@ -63,6 +63,7 @@ template <typename CapnpWriterType> class PDJE_JSONHandler {
     template <typename Target>
     void
     getAll(std::function<void(const Target &args)> jsonCallback);
+    //add multi-threaded faster getter later
 
     bool
     load(const fs::path &path);

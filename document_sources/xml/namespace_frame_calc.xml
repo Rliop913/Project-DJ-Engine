@@ -3,19 +3,19 @@
   <compounddef id="namespace_frame_calc" kind="namespace" language="C++">
     <compoundname>FrameCalc</compoundname>
     <sectiondef kind="func">
-      <memberdef kind="function" id="namespace_frame_calc_1a33e5bb72b55b4d3b470cd4503b96e237" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespace_frame_calc_1a12e18e06211c6b6148f77eef662555ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned long</type>
         <definition>unsigned long FrameCalc::CountFrame</definition>
-        <argsstring>(unsigned long Sbar, unsigned long Sbeat, unsigned long Sseparate, unsigned long Ebar, unsigned long Ebeat, unsigned long Eseparate, double bpm)</argsstring>
+        <argsstring>(unsigned long Sbeat, unsigned long SsubBeat, unsigned long Sseparate, unsigned long Ebeat, unsigned long EsubBeat, unsigned long Eseparate, double bpm)</argsstring>
         <name>CountFrame</name>
         <qualifiedname>FrameCalc::CountFrame</qualifiedname>
         <param>
           <type>unsigned long</type>
-          <declname>Sbar</declname>
+          <declname>Sbeat</declname>
         </param>
         <param>
           <type>unsigned long</type>
-          <declname>Sbeat</declname>
+          <declname>SsubBeat</declname>
         </param>
         <param>
           <type>unsigned long</type>
@@ -23,11 +23,11 @@
         </param>
         <param>
           <type>unsigned long</type>
-          <declname>Ebar</declname>
+          <declname>Ebeat</declname>
         </param>
         <param>
           <type>unsigned long</type>
-          <declname>Ebeat</declname>
+          <declname>EsubBeat</declname>
         </param>
         <param>
           <type>unsigned long</type>
@@ -38,18 +38,10 @@
           <declname>bpm</declname>
         </param>
         <briefdescription>
-<para>count frame between two bar-beat position. </para>
+<para>count frame between two beat-subBeat position. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>Sbar</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>start bar </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
 <parameternamelist>
 <parametername>Sbeat</parametername>
 </parameternamelist>
@@ -59,18 +51,18 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername>Sseparate</parametername>
+<parametername>SsubBeat</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>start bar-beat&apos;s separate value </para>
+<para>start subBeat </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername>Ebar</parametername>
+<parametername>Sseparate</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>end bar </para>
+<para>start beat-subBeat&apos;s separate value </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -83,10 +75,18 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
+<parametername>EsubBeat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>end subBeat </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
 <parametername>Eseparate</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>end bar-beat&apos;s separate value </para>
+<para>end beat-subBeat&apos;s separate value </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -104,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/Translators/FrameCalc.cpp" line="6" column="19" bodyfile="include/db/Capnp/Translators/FrameCalc.cpp" bodystart="6" bodyend="26" declfile="include/db/Capnp/Translators/FrameCalc.hpp" declline="55" declcolumn="26"/>
+        <location file="include/db/Capnp/Translators/FrameCalc.cpp" line="7" column="1" bodyfile="include/db/Capnp/Translators/FrameCalc.cpp" bodystart="7" bodyend="22" declfile="include/db/Capnp/Translators/FrameCalc.hpp" declline="48" declcolumn="1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

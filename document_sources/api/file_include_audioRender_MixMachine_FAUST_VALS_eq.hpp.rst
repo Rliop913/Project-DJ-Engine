@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classEQ__PDJE`
+- :ref:`exhale_class_class_e_q___p_d_j_e`
 

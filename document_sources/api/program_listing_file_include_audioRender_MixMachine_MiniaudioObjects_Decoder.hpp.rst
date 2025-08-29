@@ -12,30 +12,33 @@ Program Listing for File Decoder.hpp
 
    #pragma once
    
-   #include <string>
    #include <optional>
+   #include <string>
    #include <vector>
    
-   #include <miniaudio.h>
-   #include <filesystem>
    #include "FrameCalc.hpp"
-   #include "fileNameSanitizer.hpp"
    #include "dbRoot.hpp"
+   #include "fileNameSanitizer.hpp"
+   #include <filesystem>
+   #include <miniaudio.h>
    
    namespace fs = std::filesystem;
    // using MAYBE_FRAME = std::optional<std::vector<float>>;
    
    using FRAME_POS = unsigned long long;
-   struct PDJE_API Decoder{
-       ma_decoder dec;
+   struct PDJE_API Decoder {
+       ma_decoder           dec;
        std::vector<uint8_t> musicBinary;
        Decoder();
        ~Decoder();
-       bool init(litedb& db, const SANITIZED_ORNOT& KeyOrPath);
-       bool changePos(FRAME_POS Pos);
+       bool
+       init(litedb &db, const SANITIZED_ORNOT &KeyOrPath);
+       bool
+       changePos(FRAME_POS Pos);
    
-       bool getPos(FRAME_POS& pos);
+       bool
+       getPos(FRAME_POS &pos);
    
-       bool getRange(FRAME_POS numFrames, std::vector<float>& buffer);
-   
+       bool
+       getRange(FRAME_POS numFrames, std::vector<float> &buffer);
    };

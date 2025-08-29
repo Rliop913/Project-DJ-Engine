@@ -41,5 +41,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_Type__VOL_8cpp_1a7cfced04a421604ad56dfde16097f3f6`
+- :ref:`exhale_function__type___v_o_l_8cpp_1a7cfced04a421604ad56dfde16097f3f6`
 

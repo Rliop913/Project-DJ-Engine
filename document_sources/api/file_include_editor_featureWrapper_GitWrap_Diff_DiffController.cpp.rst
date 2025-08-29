@@ -43,5 +43,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_DiffController_8cpp_1a578d9eaeb5f221f100df0e9c937e9b9b`
+- :ref:`exhale_function__diff_controller_8cpp_1a578d9eaeb5f221f100df0e9c937e9b9b`
 

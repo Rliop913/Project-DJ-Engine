@@ -4,7 +4,7 @@
 File audioRender.cpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender>` (``include/audioRender``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender>` (``include\audioRender``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File audioRender.cpp
    :local:
    :backlinks: none
 
-Definition (``include/audioRender/audioRender.cpp``)
+Definition (``include\audioRender\audioRender.cpp``)
 ----------------------------------------------------
 
 
