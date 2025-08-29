@@ -99,8 +99,8 @@ editorObject::ConfigNewMusic(const UNSANITIZED   &NewMusicName,
     fs::path tempDataPath;
     if (E_obj->AddMusicConfig(safeMus.value(), tempDataPath)) {
 
-        E_obj->musicHandle.back().jsonh["TITLE"]    = safeMus.value();
-        E_obj->musicHandle.back().jsonh["COMPOSER"] = safeComposer.value();
+        E_obj->musicHandle.back().jsonh[PDJE_JSON_TITLE]    = safeMus.value();
+        E_obj->musicHandle.back().jsonh[PDJE_JSON_COMPOSER] = safeComposer.value();
         E_obj->musicHandle.back().dataPath          = tempDataPath;
         try {
             if (!fs::exists(musicPath)) {
@@ -115,14 +115,14 @@ editorObject::ConfigNewMusic(const UNSANITIZED   &NewMusicName,
             } else {
                 absPath = fs::absolute(musicPath).lexically_normal();
             }
-            E_obj->musicHandle.back().jsonh["PATH"] = absPath;
+            E_obj->musicHandle.back().jsonh[PDJE_JSON_PATH] = absPath;
         } catch (const std::exception &e) {
             critlog("something failed in editorObject ConfigNewMusic. "
                     "ErrException: ");
             critlog(e.what());
             return false;
         }
-        E_obj->musicHandle.back().jsonh["FIRST_BEAT"] = firstBeat;
+        E_obj->musicHandle.back().jsonh[PDJE_JSON_FIRST_BEAT] = firstBeat;
         return true;
     } else {
         critlog("failed to add music config. from editorObject ConfigNewMusic. "

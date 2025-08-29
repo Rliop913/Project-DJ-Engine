@@ -105,7 +105,7 @@ editorObject::AddLine(const UNSANITIZED   &musicName,
     }
     for (auto &i : E_obj->musicHandle) {
         if (i.musicName == safeMus) {
-            i.jsonh["FIRST_BEAT"] = firstBeat;
+            i.jsonh[PDJE_JSON_FIRST_BEAT] = firstBeat;
             return true;
         }
     }

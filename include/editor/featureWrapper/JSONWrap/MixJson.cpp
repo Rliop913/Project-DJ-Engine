@@ -16,29 +16,29 @@ PDJE_JSONHandler<MIX_W>::deleteLine(const MixArgs &args,
     try {
         for (unsigned long long i = 0; i < ROOT[PDJEARR].size(); ++i) {
             auto Target = ROOT[PDJEARR].at(i);
-            if (Target["type"] != args.type && !skipType)
+            if (Target[PDJE_JSON_TYPE] != args.type && !skipType)
                 continue;
-            if (Target["details"] != args.details && !skipDetail)
+            if (Target[PDJE_JSON_DETAILS] != args.details && !skipDetail)
                 continue;
-            if (Target["ID"] != args.ID && args.ID != -1)
+            if (Target[PDJE_JSON_ID] != args.ID && args.ID != -1)
                 continue;
-            if (Target["first"] != args.first && args.first != "")
+            if (Target[PDJE_JSON_FIRST] != args.first && args.first != "")
                 continue;
-            if (Target["second"] != args.second && args.second != "")
+            if (Target[PDJE_JSON_SECOND] != args.second && args.second != "")
                 continue;
-            if (Target["third"] != args.third && args.third != "")
+            if (Target[PDJE_JSON_THIRD] != args.third && args.third != "")
                 continue;
-            if (Target["beat"] != args.beat && args.beat != -1)
+            if (Target[PDJE_JSON_BEAT] != args.beat && args.beat != -1)
                 continue;
-            if (Target["subBeat"] != args.subBeat && args.subBeat != -1)
+            if (Target[PDJE_JSON_SUBBEAT] != args.subBeat && args.subBeat != -1)
                 continue;
-            if (Target["separate"] != args.separate && args.separate != -1)
+            if (Target[PDJE_JSON_SEPARATE] != args.separate && args.separate != -1)
                 continue;
-            if (Target["Ebeat"] != args.Ebeat && args.Ebeat != -1)
+            if (Target[PDJE_JSON_EBEAT] != args.Ebeat && args.Ebeat != -1)
                 continue;
-            if (Target["EsubBeat"] != args.EsubBeat && args.EsubBeat != -1)
+            if (Target[PDJE_JSON_ESUBBEAT] != args.EsubBeat && args.EsubBeat != -1)
                 continue;
-            if (Target["Eseparate"] != args.Eseparate && args.Eseparate != -1)
+            if (Target[PDJE_JSON_ESEPARATE] != args.Eseparate && args.Eseparate != -1)
                 continue;
             targetIDX.push_back(i);
         }
@@ -56,18 +56,18 @@ template <>
 bool
 PDJE_JSONHandler<MIX_W>::add(const MixArgs &args)
 {
-    nj tempMix = { { "type", static_cast<int>(args.type) },
-                   { "details", static_cast<int>(args.details) },
-                   { "ID", args.ID },
-                   { "first", args.first },
-                   { "second", args.second },
-                   { "third", args.third },
-                   { "beat", args.beat },
-                   { "subBeat", args.subBeat },
-                   { "separate", args.separate },
-                   { "Ebeat", args.Ebeat },
-                   { "EsubBeat", args.EsubBeat },
-                   { "Eseparate", args.Eseparate } };
+    nj tempMix = { { PDJE_JSON_TYPE, static_cast<int>(args.type) },
+                   { PDJE_JSON_DETAILS, static_cast<int>(args.details) },
+                   { PDJE_JSON_ID, args.ID },
+                   { PDJE_JSON_FIRST, args.first },
+                   { PDJE_JSON_SECOND, args.second },
+                   { PDJE_JSON_THIRD, args.third },
+                   { PDJE_JSON_BEAT, args.beat },
+                   { PDJE_JSON_SUBBEAT, args.subBeat },
+                   { PDJE_JSON_SEPARATE, args.separate },
+                   { PDJE_JSON_EBEAT, args.Ebeat },
+                   { PDJE_JSON_ESUBBEAT, args.EsubBeat },
+                   { PDJE_JSON_ESEPARATE, args.Eseparate } };
     if (!ROOT.contains(PDJEARR)) {
         critlog("mix json root not found. from PDJE_JSONHandler<MIX_W> add.");
         return false;
@@ -88,10 +88,10 @@ PDJE_JSONHandler<MIX_W>::getAll(
         return;
     }
     for (auto &i : ROOT[PDJEARR]) {
-        MixArgs tempargs{ i["type"],  i["details"],  i["ID"],
-                          i["first"], i["second"],   i["third"],
-                          i["beat"],  i["subBeat"],  i["separate"],
-                          i["Ebeat"], i["EsubBeat"], i["Eseparate"] };
+        MixArgs tempargs{ i[PDJE_JSON_TYPE],  i[PDJE_JSON_DETAILS],  i[PDJE_JSON_ID],
+                          i[PDJE_JSON_FIRST], i[PDJE_JSON_SECOND],   i[PDJE_JSON_THIRD],
+                          i[PDJE_JSON_BEAT],  i[PDJE_JSON_SUBBEAT],  i[PDJE_JSON_SEPARATE],
+                          i[PDJE_JSON_EBEAT], i[PDJE_JSON_ESUBBEAT], i[PDJE_JSON_ESEPARATE] };
         jsonCallback(tempargs);
     }
 }
@@ -107,18 +107,18 @@ PDJE_JSONHandler<MIX_W>::render()
         auto filler = tempMixBin->Wp->initDatas(rootsz);
         for (std::size_t i = 0; i < rootsz; ++i) {
             auto target = ROOT[PDJEARR].at(i);
-            filler[i].setType(target["type"]);
-            filler[i].setDetails(target["details"]);
-            filler[i].setId(target["ID"]);
-            filler[i].setFirst(target["first"].get<SANITIZED_ORNOT>());
-            filler[i].setSecond(target["second"].get<SANITIZED_ORNOT>());
-            filler[i].setThird(target["third"].get<SANITIZED_ORNOT>());
-            filler[i].setBeat(target["beat"]);
-            filler[i].setSubBeat(target["subBeat"]);
-            filler[i].setSeparate(target["separate"]);
-            filler[i].setEbeat(target["Ebeat"]);
-            filler[i].setEsubBeat(target["EsubBeat"]);
-            filler[i].setEseparate(target["Eseparate"]);
+            filler[i].setType(target[PDJE_JSON_TYPE]);
+            filler[i].setDetails(target[PDJE_JSON_DETAILS]);
+            filler[i].setId(target[PDJE_JSON_ID]);
+            filler[i].setFirst(target[PDJE_JSON_FIRST].get<SANITIZED_ORNOT>());
+            filler[i].setSecond(target[PDJE_JSON_SECOND].get<SANITIZED_ORNOT>());
+            filler[i].setThird(target[PDJE_JSON_THIRD].get<SANITIZED_ORNOT>());
+            filler[i].setBeat(target[PDJE_JSON_BEAT]);
+            filler[i].setSubBeat(target[PDJE_JSON_SUBBEAT]);
+            filler[i].setSeparate(target[PDJE_JSON_SEPARATE]);
+            filler[i].setEbeat(target[PDJE_JSON_EBEAT]);
+            filler[i].setEsubBeat(target[PDJE_JSON_ESUBBEAT]);
+            filler[i].setEseparate(target[PDJE_JSON_ESEPARATE]);
         }
 
         return tempMixBin;

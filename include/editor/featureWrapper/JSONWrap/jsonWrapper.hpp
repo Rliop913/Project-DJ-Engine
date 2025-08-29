@@ -101,3 +101,30 @@ template <typename CapnpWriterType> class PDJE_JSONHandler {
     PDJE_JSONHandler()  = default;
     ~PDJE_JSONHandler() = default;
 };
+
+
+#define PDJE_JSON_TYPE      "type"
+#define PDJE_JSON_DETAILS   "details"
+#define PDJE_JSON_ID        "id"
+#define PDJE_JSON_FIRST     "first"
+#define PDJE_JSON_SECOND    "second"
+#define PDJE_JSON_THIRD     "third"
+#define PDJE_JSON_BEAT      "beat"
+#define PDJE_JSON_SUBBEAT   "sub_beat"
+#define PDJE_JSON_SEPARATE  "separate"
+#define PDJE_JSON_EBEAT     "e_beat"
+#define PDJE_JSON_ESUBBEAT  "e_subBeat"
+#define PDJE_JSON_ESEPARATE "e_separate"
+
+#define PDJE_JSON_BPM       "bpm"
+
+#define PDJE_JSON_TITLE "title"
+#define PDJE_JSON_COMPOSER "composer"
+#define PDJE_JSON_PATH "path"
+
+
+#define PDJE_JSON_NOTE_TYPE "note_type"
+#define PDJE_JSON_NOTE_DETAIL "note_detail"
+
+
+#define PDJE_JSON_FIRST_BEAT "first_beat"

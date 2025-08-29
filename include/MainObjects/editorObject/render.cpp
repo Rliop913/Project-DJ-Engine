@@ -13,9 +13,9 @@ editorObject::render(const UNSANITIZED &trackTitle, litedb &ROOTDB)
         mds.back().title = i.musicName;
         auto rdout       = rendered->out();
         mds.back().bpmBinary.assign(rdout.begin(), rdout.end());
-        auto tempCOMPOSER   = i.jsonh["COMPOSER"].get<SANITIZED>();
-        auto tempPATH       = i.jsonh["PATH"].get<SANITIZED>();
-        auto tempFIRST_BEAT = i.jsonh["FIRST_BEAT"].get<DONT_SANITIZE>();
+        auto tempCOMPOSER   = i.jsonh[PDJE_JSON_COMPOSER].get<SANITIZED>();
+        auto tempPATH       = i.jsonh[PDJE_JSON_PATH].get<SANITIZED>();
+        auto tempFIRST_BEAT = i.jsonh[PDJE_JSON_FIRST_BEAT].get<DONT_SANITIZE>();
 
         mds.back().composer  = (tempCOMPOSER);
         mds.back().musicPath = (tempPATH);
