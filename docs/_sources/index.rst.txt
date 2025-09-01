@@ -1,7 +1,7 @@
-Project_DJ_Engine – A Real‑Time Engine for Rhythm Games, DJing, and Audio Production
+Project-DJ-Engine – A Real‑Time Engine for Rhythm Games, DJing, and Audio Production
 ======================================================================================
 
-**Project_DJ_Engine (PDJE)** is an integrated, production‑ready engine combining rhythm game mechanics, DJ performance tools, and digital audio workstation features into a single soft real‑time C++ system. It lets you create, reproduce, and remix DJ mixes, drive rhythm‑game note charts, and build interactive music experiences—all with low‑latency, millisecond‑level timing guarantees.
+**Project-DJ-Engine (PDJE)** is an integrated, production‑ready engine combining rhythm game mechanics, DJ performance tools, and digital audio workstation features into a single soft real‑time C++ system. It lets you create, reproduce, and remix DJ mixes, drive rhythm‑game note charts, and build interactive music experiences—all with low‑latency, millisecond‑level timing guarantees.
 
 PDJE’s modular core provides:
 
@@ -131,9 +131,9 @@ PDJE is ideal for:
 Additional Resources
 --------------------
 
-- 💻 **GitHub**: https://github.com/Rliop913/Project_DJ_Engine  
+- 💻 **GitHub**: https://github.com/Rliop913/Project-DJ-Engine  
 - 📄 **License**: LGPLv2.1 (by SoundTouch License)
-- 🎮 **Godot Plugin**: https://github.com/Rliop913/PDJE_Godot_Plugin
+- 🎮 **Godot Plugin**: https://github.com/Rliop913/PDJE-Godot-Plugin
 - 📦 **Plugin Prebuilt**: https://github.com/Rliop913/Project_DJ_Godot
   
 --------------------
