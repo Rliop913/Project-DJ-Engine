@@ -4,7 +4,7 @@ This project is a DJ/rhythm game engine written in C++. All sources live under `
 
 ## Document
 
-See **[document Website](https://rliop913.github.io/Project_DJ_Engine/)**
+See **[document Website](https://rliop913.github.io/Project-DJ-Engine/)**
 
 ## Building
 
