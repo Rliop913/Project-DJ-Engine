@@ -4,7 +4,7 @@
 File editorCommit.cpp
 =====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Commit>` (``include\editor\featureWrapper\GitWrap\Commit``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Commit>` (``include/editor/featureWrapper/GitWrap/Commit``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File editorCommit.cpp
    :local:
    :backlinks: none
 
-Definition (``include\editor\featureWrapper\GitWrap\Commit\editorCommit.cpp``)
+Definition (``include/editor/featureWrapper/GitWrap/Commit/editorCommit.cpp``)
 ------------------------------------------------------------------------------
 
 

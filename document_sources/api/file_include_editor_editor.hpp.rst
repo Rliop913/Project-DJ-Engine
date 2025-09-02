@@ -4,7 +4,7 @@
 File editor.hpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor>` (``include\editor``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor>` (``include/editor``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ High level editor interface for :ref:`exhale_class_class_p_d_j_e` projects.
    :local:
    :backlinks: none
 
-Definition (``include\editor\editor.hpp``)
+Definition (``include/editor/editor.hpp``)
 ------------------------------------------
 
 

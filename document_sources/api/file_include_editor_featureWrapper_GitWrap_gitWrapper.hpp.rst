@@ -4,7 +4,7 @@
 File gitWrapper.hpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap>` (``include\editor\featureWrapper\GitWrap``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap>` (``include/editor/featureWrapper/GitWrap``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ High level Git helpers used by the editor.
    :local:
    :backlinks: none
 
-Definition (``include\editor\featureWrapper\GitWrap\gitWrapper.hpp``)
+Definition (``include/editor/featureWrapper/GitWrap/gitWrapper.hpp``)
 ---------------------------------------------------------------------
 
 

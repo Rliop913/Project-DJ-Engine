@@ -18,7 +18,7 @@ Defines the PDJE_API macro for DLL import/export.
    :local:
    :backlinks: none
 
-Definition (``include\PDJE_EXPORT_SETTER.hpp``)
+Definition (``include/PDJE_EXPORT_SETTER.hpp``)
 -----------------------------------------------
 
 

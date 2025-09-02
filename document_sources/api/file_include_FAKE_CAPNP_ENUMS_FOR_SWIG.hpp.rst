@@ -13,7 +13,7 @@ File FAKE_CAPNP_ENUMS_FOR_SWIG.hpp
    :local:
    :backlinks: none
 
-Definition (``include\FAKE_CAPNP_ENUMS_FOR_SWIG.hpp``)
+Definition (``include/FAKE_CAPNP_ENUMS_FOR_SWIG.hpp``)
 ------------------------------------------------------
 
 

@@ -13,7 +13,7 @@ File SWIG_editor_visitor.hpp
    :local:
    :backlinks: none
 
-Definition (``include\SWIG_editor_visitor.hpp``)
+Definition (``include/SWIG_editor_visitor.hpp``)
 ------------------------------------------------
 
 

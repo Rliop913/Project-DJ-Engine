@@ -18,7 +18,7 @@ Configures the logging framework for the application.
    :local:
    :backlinks: none
 
-Definition (``include\PDJE_LOG_SETTER.hpp``)
+Definition (``include/PDJE_LOG_SETTER.hpp``)
 --------------------------------------------
 
 

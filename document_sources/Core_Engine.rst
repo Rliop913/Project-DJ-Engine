@@ -1094,16 +1094,41 @@ Update edit logs
 
     .. code-block:: c++
 
-        auto engine = new PDJE("database/path");
+        bool updateRes = false;
+        updateRes = editor->UpdateLog<EDIT_ARG_MIX>();
+        updateRes = editor->UpdateLog<EDIT_ARG_MIX>("branch name");
+        // updateRes = editor->UpdateLog<EDIT_ARG_KEY_VALUE>();
+        // updateRes = editor->UpdateLog<EDIT_ARG_KEY_VALUE>("branch name");
+        // updateRes = editor->UpdateLog<EDIT_ARG_MUSIC>();
+        // updateRes = editor->UpdateLog<EDIT_ARG_MUSIC>("music name");
+        // updateRes = editor->UpdateLog<EDIT_ARG_NOTE>();
+        // updateRes = editor->UpdateLog<EDIT_ARG_NOTE>("branch name");
+        
 
     .. code-block:: c#
 
-        PDJE engine = new PDJE("database/path");
+        bool updateRes = false;
+        updateRes = editor.UpdateLogMix();
+        updateRes = editor.UpdateLogMixOn("branch name");
+        // updateRes = editor.UpdateLogKV();
+        // updateRes = editor.UpdateLogKVOn("branch name");
+        // updateRes = editor.UpdateLogMusic();
+        // updateRes = editor.UpdateLogMusicOn("music name");
+        // updateRes = editor.UpdateLogNote();
+        // updateRes = editor.UpdateLogNoteOn("branch name");
 
     .. code-block:: python
 
         import pdje_POLYGLOT as pypdje
-        engine = pypdje.PDJE("database/path")
+        
+        updateRes = editor.UpdateLogMix();
+        updateRes = editor.UpdateLogMixOn("branch name");
+        # updateRes = editor.UpdateLogKV();
+        # updateRes = editor.UpdateLogKVOn("branch name");
+        # updateRes = editor.UpdateLogMusic();
+        # updateRes = editor.UpdateLogMusicOn("music name");
+        # updateRes = editor.UpdateLogNote();
+        # updateRes = editor.UpdateLogNoteOn("branch name");
 
     .. code-block:: gdscript
 
