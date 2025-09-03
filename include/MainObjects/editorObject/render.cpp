@@ -7,6 +7,9 @@ editorObject::render(const UNSANITIZED &trackTitle, litedb &ROOTDB)
 
     std::vector<musdata> mds;
     for (auto &i : E_obj->musicHandle) {
+        if(i.musicName == "" || !fs::exists(i.dataPath)){
+            continue;
+        }
         mds.emplace_back();
 
         auto rendered    = i.jsonh.render();
@@ -36,7 +39,6 @@ editorObject::render(const UNSANITIZED &trackTitle, litedb &ROOTDB)
 
     for (auto &i : titles) {
         if (i.second != "") {
-
             auto findFromRoot     = musdata();
             findFromRoot.title    = i.first;
             findFromRoot.composer = i.second;
