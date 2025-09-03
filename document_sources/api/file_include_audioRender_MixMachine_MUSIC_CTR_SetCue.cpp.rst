@@ -4,7 +4,7 @@
 File SetCue.cpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MUSIC_CTR>` (``include\audioRender\MixMachine\MUSIC_CTR``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MUSIC_CTR>` (``include/audioRender/MixMachine/MUSIC_CTR``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File SetCue.cpp
    :local:
    :backlinks: none
 
-Definition (``include\audioRender\MixMachine\MUSIC_CTR\SetCue.cpp``)
+Definition (``include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp``)
 --------------------------------------------------------------------
 
 

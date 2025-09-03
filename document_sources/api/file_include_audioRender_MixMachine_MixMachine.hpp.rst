@@ -4,7 +4,7 @@
 File MixMachine.hpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine>` (``include\audioRender\MixMachine``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine>` (``include/audioRender/MixMachine``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File MixMachine.hpp
    :local:
    :backlinks: none
 
-Definition (``include\audioRender\MixMachine\MixMachine.hpp``)
+Definition (``include/audioRender/MixMachine/MixMachine.hpp``)
 --------------------------------------------------------------
 
 

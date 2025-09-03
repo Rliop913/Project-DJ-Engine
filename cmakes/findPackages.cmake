@@ -73,7 +73,7 @@ endif()
 FetchContent_Declare(
   rocksDB
   GIT_REPOSITORY https://github.com/facebook/rocksdb.git
-  GIT_TAG main
+  GIT_TAG v10.5.1
 )
 
 

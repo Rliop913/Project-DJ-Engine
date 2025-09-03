@@ -4,7 +4,7 @@
 File CapnpBinary.hpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_db_Capnp_CapnpBinary>` (``include\db\Capnp\CapnpBinary``)
+|exhale_lsh| :ref:`Parent directory <dir_include_db_Capnp_CapnpBinary>` (``include/db/Capnp/CapnpBinary``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File CapnpBinary.hpp
    :local:
    :backlinks: none
 
-Definition (``include\db\Capnp\CapnpBinary\CapnpBinary.hpp``)
+Definition (``include/db/Capnp/CapnpBinary/CapnpBinary.hpp``)
 -------------------------------------------------------------
 
 

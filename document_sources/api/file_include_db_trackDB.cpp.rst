@@ -4,7 +4,7 @@
 File trackDB.cpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_db>` (``include\db``)
+|exhale_lsh| :ref:`Parent directory <dir_include_db>` (``include/db``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File trackDB.cpp
    :local:
    :backlinks: none
 
-Definition (``include\db\trackDB.cpp``)
+Definition (``include/db/trackDB.cpp``)
 ---------------------------------------
 
 

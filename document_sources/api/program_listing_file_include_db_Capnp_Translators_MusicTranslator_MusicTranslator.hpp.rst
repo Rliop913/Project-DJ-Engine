@@ -4,7 +4,7 @@
 Program Listing for File MusicTranslator.hpp
 ============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_db_Capnp_Translators_MusicTranslator_MusicTranslator.hpp>` (``include\db\Capnp\Translators\MusicTranslator\MusicTranslator.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_db_Capnp_Translators_MusicTranslator_MusicTranslator.hpp>` (``include/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

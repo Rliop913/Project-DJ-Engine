@@ -4,7 +4,7 @@
 File MusicControlPannel-inl.h
 =============================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_ManualMix>` (``include\audioRender\ManualMix``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_ManualMix>` (``include/audioRender/ManualMix``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ SIMD-optimized implementation for mixing PCM frames from multiple sources.
    :local:
    :backlinks: none
 
-Definition (``include\audioRender\ManualMix\MusicControlPannel-inl.h``)
+Definition (``include/audioRender/ManualMix/MusicControlPannel-inl.h``)
 -----------------------------------------------------------------------
 
 

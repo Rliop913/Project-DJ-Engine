@@ -4,7 +4,7 @@
 File DeckData.hpp
 =================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine>` (``include\audioRender\MixMachine``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine>` (``include/audioRender/MixMachine``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ Defines core data structures and type aliases used in the audio mixing process.
    :local:
    :backlinks: none
 
-Definition (``include\audioRender\MixMachine\DeckData.hpp``)
+Definition (``include/audioRender/MixMachine/DeckData.hpp``)
 ------------------------------------------------------------
 
 

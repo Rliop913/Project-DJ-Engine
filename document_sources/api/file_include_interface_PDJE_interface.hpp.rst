@@ -4,7 +4,7 @@
 File PDJE_interface.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_interface>` (``include\interface``)
+|exhale_lsh| :ref:`Parent directory <dir_include_interface>` (``include/interface``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_interface.hpp
    :local:
    :backlinks: none
 
-Definition (``include\interface\PDJE_interface.hpp``)
+Definition (``include/interface/PDJE_interface.hpp``)
 -----------------------------------------------------
 
 
