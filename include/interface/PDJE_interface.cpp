@@ -21,7 +21,23 @@ PDJE::SearchTrack(const UNSANITIZED &Title)
     td.trackTitle = safeTitle.value();
     auto dbres    = (*DBROOT) << td;
     if (dbres.has_value()) {
-        return dbres.value();
+        TRACK_VEC result_track;
+        for(auto& tracks : dbres.value()){
+            tracks.trackTitle = PDJE_Name_Sanitizer::getFileName(tracks.trackTitle);
+            std::stringstream before_csv(tracks.cachedMixList);
+            std::string sanitized_music_name;
+            std::string unsanitized_csv;
+            while(std::getline(before_csv, sanitized_music_name, ',')){
+                unsanitized_csv += PDJE_Name_Sanitizer::getFileName(sanitized_music_name);
+                unsanitized_csv += ',';
+            }
+            if(!unsanitized_csv.empty()){
+                unsanitized_csv.pop_back();
+            }
+            tracks.cachedMixList = unsanitized_csv;
+            result_track.push_back(tracks);
+        }
+        return result_track;
     } else {
         warnlog("failed to find trackdata from PDJE database. Errtitle: ");
         warnlog(Title);
@@ -48,7 +64,13 @@ PDJE::SearchMusic(const UNSANITIZED &Title,
     md.bpm      = bpm;
     auto dbres  = (*DBROOT) << md;
     if (dbres.has_value()) {
-        return dbres.value();
+        MUS_VEC music_result;
+        for(auto& music : dbres.value()){
+            music.composer = PDJE_Name_Sanitizer::getFileName(music.composer);
+            music.title = PDJE_Name_Sanitizer::getFileName(music.title);
+            music_result.push_back(music);
+        }
+        return music_result;
     } else {
         warnlog("failed to find music from PDJE database. ErrTitle: ");
         warnlog(Title);
