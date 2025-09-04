@@ -3,7 +3,7 @@
  * @brief Provides utilities for sanitizing and de-sanitizing file names.
  */
 #pragma once
-#include <cppcodec/base64_url_unpadded.hpp>
+#include <cppcodec/base64_default_url.hpp>
 #include <filesystem>
 #include <optional>
 #include <string>
@@ -22,7 +22,7 @@ using DONT_SANITIZE = std::string;
 using SANITIZED_ORNOT = std::string;
 
 /// @brief Type alias for the base64 URL unpadded codec.
-using cbase = cppcodec::base64_url_unpadded;
+using cbase = cppcodec::base64_url;
 
 /**
  * @brief A utility class for sanitizing and de-sanitizing file names.
