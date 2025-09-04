@@ -7,6 +7,7 @@
 #include <filesystem>
 #include <optional>
 #include <string>
+#include "PDJE_EXPORT_SETTER.hpp"
 namespace fs = std::filesystem;
 
 /// @brief Type alias for a sanitized string.
@@ -31,7 +32,7 @@ using cbase = cppcodec::base64_url;
  * URL-safe base64 encoding. This is useful for ensuring that file names do not
  * contain characters that are incompatible with the file system.
  */
-class PDJE_Name_Sanitizer {
+class PDJE_API PDJE_Name_Sanitizer {
   public:
     /**
      * @brief Sanitizes a file name using base64 URL-unpadded encoding.
