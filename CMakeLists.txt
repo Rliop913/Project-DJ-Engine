@@ -24,7 +24,7 @@ endif()
 
 
 option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
-option(PDJE_SWIG_BUILD "Enable build with multiple languages" ON)
+option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
 option(PDJE_DYNAMIC "Make Shared Library" OFF)
 
 # link_libraries(${SQLite3_LIBRARIES})
@@ -95,7 +95,10 @@ if(PDJE_BUILD_TESTS)
 # add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
 
 add_executable(testEditor include/tests/editorTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
+add_executable(DBTester include/tests/dbTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
 target_include_directories(testEditor PUBLIC ${PDJE_INCLUDE_CORE})
+target_include_directories(DBTester PUBLIC ${PDJE_INCLUDE_CORE})
+
 endif(PDJE_BUILD_TESTS)
 
 if(PDJE_DYNAMIC)
@@ -129,6 +132,8 @@ if(PDJE_BUILD_TESTS)
 # linkPDJELibs(testInterface)
 # linkPDJELibs(testGIT)
 linkPDJELibs(testEditor)
+linkPDJELibs(DBTester)
+
 endif()
 
 
