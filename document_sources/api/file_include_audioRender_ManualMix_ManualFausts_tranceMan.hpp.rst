@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_trance_man`
+- :ref:`exhale_class_classTranceMan`
 

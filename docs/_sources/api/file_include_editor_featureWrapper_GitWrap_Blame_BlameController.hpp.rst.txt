@@ -4,7 +4,7 @@
 File BlameController.hpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Blame>` (``include\editor\featureWrapper\GitWrap\Blame``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap_Blame>` (``include/editor/featureWrapper/GitWrap/Blame``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ Perform git blame operations.
    :local:
    :backlinks: none
 
-Definition (``include\editor\featureWrapper\GitWrap\Blame\BlameController.hpp``)
+Definition (``include/editor/featureWrapper/GitWrap/Blame/BlameController.hpp``)
 --------------------------------------------------------------------------------
 
 
@@ -60,14 +60,14 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_blame_result`
+- :ref:`exhale_struct_structBlameResult`
 
-- :ref:`exhale_class_class_blame_controller`
+- :ref:`exhale_class_classBlameController`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef__blame_controller_8hpp_1af7f0dbdf8c9026039110dc2a505efee1`
+- :ref:`exhale_typedef_BlameController_8hpp_1af7f0dbdf8c9026039110dc2a505efee1`
 

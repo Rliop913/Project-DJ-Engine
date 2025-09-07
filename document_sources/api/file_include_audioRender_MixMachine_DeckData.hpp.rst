@@ -88,20 +88,20 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_position`
+- :ref:`exhale_struct_structPosition`
 
-- :ref:`exhale_class_class_meta`
+- :ref:`exhale_class_classMeta`
 
-- :ref:`exhale_class_class_u_i`
+- :ref:`exhale_class_classUI`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef__deck_data_8hpp_1a678187c26c21fa39643ad237d950bf15`
+- :ref:`exhale_typedef_DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15`
 
-- :ref:`exhale_typedef__deck_data_8hpp_1ac4ebe7004f5b235bb2db75a37940cea5`
+- :ref:`exhale_typedef_DeckData_8hpp_1ac4ebe7004f5b235bb2db75a37940cea5`
 
-- :ref:`exhale_typedef__deck_data_8hpp_1a7b7c76e8330d99613645d303d0c09d77`
+- :ref:`exhale_typedef_DeckData_8hpp_1a7b7c76e8330d99613645d303d0c09d77`
 

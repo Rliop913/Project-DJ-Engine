@@ -4,7 +4,7 @@
 Program Listing for File ManualMix.cpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualMix.cpp>` (``include\audioRender\ManualMix\ManualMix.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_audioRender_ManualMix_ManualMix.cpp>` (``include/audioRender/ManualMix/ManualMix.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

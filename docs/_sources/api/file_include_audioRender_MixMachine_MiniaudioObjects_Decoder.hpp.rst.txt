@@ -4,7 +4,7 @@
 File Decoder.hpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MiniaudioObjects>` (``include\audioRender\MixMachine\MiniaudioObjects``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MiniaudioObjects>` (``include/audioRender/MixMachine/MiniaudioObjects``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Decoder.hpp
    :local:
    :backlinks: none
 
-Definition (``include\audioRender\MixMachine\MiniaudioObjects\Decoder.hpp``)
+Definition (``include/audioRender/MixMachine/MiniaudioObjects/Decoder.hpp``)
 ----------------------------------------------------------------------------
 
 
@@ -69,12 +69,12 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_decoder`
+- :ref:`exhale_struct_structDecoder`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef__decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c`
+- :ref:`exhale_typedef_Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c`
 

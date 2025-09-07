@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_e_q_man`
+- :ref:`exhale_class_classEQMan`
 

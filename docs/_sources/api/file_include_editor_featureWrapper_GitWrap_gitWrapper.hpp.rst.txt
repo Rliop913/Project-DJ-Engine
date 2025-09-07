@@ -4,7 +4,7 @@
 File gitWrapper.hpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap>` (``include\editor\featureWrapper\GitWrap``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap>` (``include/editor/featureWrapper/GitWrap``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ High level Git helpers used by the editor.
    :local:
    :backlinks: none
 
-Definition (``include\editor\featureWrapper\GitWrap\gitWrapper.hpp``)
+Definition (``include/editor/featureWrapper/GitWrap/gitWrapper.hpp``)
 ---------------------------------------------------------------------
 
 
@@ -80,18 +80,18 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_git_wrapper`
+- :ref:`exhale_class_classGitWrapper`
 
-- :ref:`exhale_class_class_p_d_j_e___git_handler`
+- :ref:`exhale_class_classPDJE__GitHandler`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_git_wrapper_8hpp_1abf5aad0c0dda41ba18471ae87c3b2346`
+- :ref:`exhale_typedef_gitWrapper_8hpp_1abf5aad0c0dda41ba18471ae87c3b2346`
 
-- :ref:`exhale_typedef_git_wrapper_8hpp_1aab2903aca0a871672d3dc36b7673f266`
+- :ref:`exhale_typedef_gitWrapper_8hpp_1aab2903aca0a871672d3dc36b7673f266`
 
-- :ref:`exhale_typedef_git_wrapper_8hpp_1a40e5ded694a4fe46703b6961ad90bc9b`
+- :ref:`exhale_typedef_gitWrapper_8hpp_1a40e5ded694a4fe46703b6961ad90bc9b`
 

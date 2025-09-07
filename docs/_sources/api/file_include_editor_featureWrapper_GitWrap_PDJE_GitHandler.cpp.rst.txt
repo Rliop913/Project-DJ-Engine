@@ -4,7 +4,7 @@
 File PDJE_GitHandler.cpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap>` (``include\editor\featureWrapper\GitWrap``)
+|exhale_lsh| :ref:`Parent directory <dir_include_editor_featureWrapper_GitWrap>` (``include/editor/featureWrapper/GitWrap``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_GitHandler.cpp
    :local:
    :backlinks: none
 
-Definition (``include\editor\featureWrapper\GitWrap\PDJE_GitHandler.cpp``)
+Definition (``include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp``)
 --------------------------------------------------------------------------
 
 
@@ -47,5 +47,5 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_branch_j_s_o_n`
+- :ref:`exhale_struct_structBranchJSON`
 

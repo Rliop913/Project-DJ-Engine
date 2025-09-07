@@ -65,12 +65,12 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespace_h_w_y___n_a_m_e_s_p_a_c_e_1af0a22093ab08dd742f914c113783bec3`
+- :ref:`exhale_function_namespaceHWY__NAMESPACE_1af0a22093ab08dd742f914c113783bec3`
 
 
 Defines
 -------
 
 
-- :ref:`exhale_define__mix_machine-inl_8h_1a1929b8491aa4123269baabf05fa21d8e`
+- :ref:`exhale_define_MixMachine-inl_8h_1a1929b8491aa4123269baabf05fa21d8e`
 

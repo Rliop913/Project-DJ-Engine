@@ -3,10 +3,10 @@
   <compounddef id="editorCommit_8hpp" kind="file" language="C++">
     <compoundname>editorCommit.hpp</compoundname>
     <includes local="no">git2.h</includes>
+    <includes local="no">list</includes>
+    <includes local="no">optional</includes>
     <includes local="no">string</includes>
     <includes local="no">vector</includes>
-    <includes local="no">optional</includes>
-    <includes local="no">list</includes>
     <includes refid="PDJE__EXPORT__SETTER_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
     <includedby refid="editorBranch_8hpp" local="yes">include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp</includedby>
     <includedby refid="editorCommit_8cpp" local="yes">include/editor/featureWrapper/GitWrap/Commit/editorCommit.cpp</includedby>
@@ -37,16 +37,16 @@
       <node id="2">
         <label>git2.h</label>
       </node>
-      <node id="6">
+      <node id="3">
         <label>list</label>
       </node>
-      <node id="5">
+      <node id="4">
         <label>optional</label>
       </node>
-      <node id="3">
+      <node id="5">
         <label>string</label>
       </node>
-      <node id="4">
+      <node id="6">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -98,6 +98,8 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
       </node>
       <node id="13">
         <label>include/MainObjects/editorObject/getall.cpp</label>
@@ -131,7 +133,11 @@
         <label>include/MainObjects/editorObject/updatelog.cpp</label>
         <link refid="updatelog_8cpp"/>
       </node>
-      <node id="27">
+      <node id="21">
+        <label>include/SWIG_editor_visitor.hpp</label>
+        <link refid="SWIG__editor__visitor_8hpp"/>
+      </node>
+      <node id="28">
         <label>include/editor/editor.cpp</label>
         <link refid="editor_8cpp"/>
       </node>
@@ -140,7 +146,7 @@
         <link refid="editor_8hpp"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -159,7 +165,7 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="32">
         <label>include/editor/featureWrapper/GitWrap/Commit/editorCommit.cpp</label>
         <link refid="editorCommit_8cpp"/>
       </node>
@@ -168,23 +174,23 @@
         <link refid="editorCommit_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
         <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="34">
         <label>include/editor/featureWrapper/GitWrap/Diff/DiffController.cpp</label>
         <link refid="DiffController_8cpp"/>
       </node>
-      <node id="32">
+      <node id="33">
         <label>include/editor/featureWrapper/GitWrap/Diff/DiffController.hpp</label>
         <link refid="DiffController_8hpp"/>
-        <childnode refid="33" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -201,11 +207,11 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="29">
         <label>include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp</label>
         <link refid="PDJE__GitHandler_8cpp"/>
       </node>
-      <node id="29">
+      <node id="30">
         <label>include/editor/featureWrapper/GitWrap/gitWrapper.cpp</label>
         <link refid="gitWrapper_8cpp"/>
       </node>
@@ -214,46 +220,46 @@
         <link refid="gitWrapper_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
       </node>
-      <node id="21">
+      <node id="22">
         <label>include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
         <link refid="MusicJson_8cpp"/>
       </node>
-      <node id="23">
+      <node id="24">
         <label>include/interface/PDJE_interface.cpp</label>
         <link refid="PDJE__interface_8cpp"/>
       </node>
-      <node id="22">
+      <node id="23">
         <label>include/interface/PDJE_interface.hpp</label>
         <link refid="PDJE__interface_8hpp"/>
-        <childnode refid="23" relation="include">
-        </childnode>
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
       </node>
-      <node id="24">
+      <node id="25">
         <label>include/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
       </node>
-      <node id="25">
+      <node id="26">
         <label>include/tests/editorTest.cpp</label>
         <link refid="editorTest_8cpp"/>
       </node>
-      <node id="30">
+      <node id="31">
         <label>include/tests/gittest.cpp</label>
         <link refid="gittest_8cpp"/>
       </node>
-      <node id="26">
+      <node id="27">
         <label>include/tests/interfaceTest.cpp</label>
         <link refid="interfaceTest_8cpp"/>
       </node>
@@ -271,42 +277,44 @@
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;git2.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;list&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;list&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__EXPORT__SETTER_8hpp" kindref="compound">PDJE_EXPORT_SETTER.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacegitwrap" kindref="compound">gitwrap</ref></highlight></codeline>
-<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="20" refid="structgitwrap_1_1commit" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="structgitwrap_1_1commit_1af3a2baf4c738eee329a5cd04df8da7cb" kindref="member">commit</ref>{</highlight></codeline>
-<codeline lineno="21" refid="structgitwrap_1_1commit_1aed795b54d06cb41d5293e800ab7c06df" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_commit*<sp/><ref refid="structgitwrap_1_1commit_1aed795b54d06cb41d5293e800ab7c06df" kindref="member">commitPointer</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/></highlight></codeline>
-<codeline lineno="22" refid="structgitwrap_1_1commit_1a99f52037b3c4cc106d57ba5afb9a9084" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_oid<sp/><ref refid="structgitwrap_1_1commit_1a99f52037b3c4cc106d57ba5afb9a9084" kindref="member">commitID</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="23" refid="structgitwrap_1_1commit_1ac0ad6b68f27f3a5accf8ad092c7dc3be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structgitwrap_1_1commit_1ac0ad6b68f27f3a5accf8ad092c7dc3be" kindref="member">msg</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="24" refid="structgitwrap_1_1commit_1af3a2baf4c738eee329a5cd04df8da7cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structgitwrap_1_1commit_1af3a2baf4c738eee329a5cd04df8da7cb" kindref="member">commit</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structgitwrap_1_1commit_1af3a2baf4c738eee329a5cd04df8da7cb" kindref="member">commit</ref>(git_oid<sp/><ref refid="structgitwrap_1_1commit_1a99f52037b3c4cc106d57ba5afb9a9084" kindref="member">commitID</ref>,<sp/>git_repository*<sp/>rep);</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structgitwrap_1_1commit_1af3a2baf4c738eee329a5cd04df8da7cb" kindref="member">commit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>commitMSG,<sp/>git_repository*<sp/>rep);</highlight></codeline>
-<codeline lineno="27" refid="structgitwrap_1_1commit_1aac48133e3a2c89d5e5dac1423fdff473" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structgitwrap_1_1commit_1aac48133e3a2c89d5e5dac1423fdff473" kindref="member">~commit</ref>(){</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="structgitwrap_1_1commit_1aed795b54d06cb41d5293e800ab7c06df" kindref="member">commitPointer</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">){</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_commit_free(<ref refid="structgitwrap_1_1commit_1aed795b54d06cb41d5293e800ab7c06df" kindref="member">commitPointer</ref>);</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="36" refid="structgitwrap_1_1commitList" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="structgitwrap_1_1commitList" kindref="compound">commitList</ref>{</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="38" refid="structgitwrap_1_1commitList_1a6573ddcbbf6381d3173c8ca90be8d04c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::list&lt;commit&gt;<sp/><ref refid="structgitwrap_1_1commitList_1a6573ddcbbf6381d3173c8ca90be8d04c" kindref="member">clist</ref>;<sp/></highlight><highlight class="comment">//Back<sp/>is<sp/>Newers</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42" refid="structgitwrap_1_1commitList_1a8de11397242e04266368fc4a2f43ce47" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structgitwrap_1_1commitList_1a8de11397242e04266368fc4a2f43ce47" kindref="member">Reset</ref>(){</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structgitwrap_1_1commitList_1a6573ddcbbf6381d3173c8ca90be8d04c" kindref="member">clist</ref>.clear();</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>UpdateCommits(git_repository*<sp/>repo);</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>OkToAdd(git_oid<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacegitwrap" kindref="compound">gitwrap</ref><sp/>{</highlight></codeline>
+<codeline lineno="19" refid="structgitwrap_1_1commit" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="structgitwrap_1_1commit_1af3a2baf4c738eee329a5cd04df8da7cb" kindref="member">commit</ref><sp/>{</highlight></codeline>
+<codeline lineno="20" refid="structgitwrap_1_1commit_1aed795b54d06cb41d5293e800ab7c06df" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>git_commit<sp/>*<ref refid="structgitwrap_1_1commit_1aed795b54d06cb41d5293e800ab7c06df" kindref="member">commitPointer</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="21" refid="structgitwrap_1_1commit_1a99f52037b3c4cc106d57ba5afb9a9084" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>git_oid<sp/><sp/><sp/><sp/><sp/><ref refid="structgitwrap_1_1commit_1a99f52037b3c4cc106d57ba5afb9a9084" kindref="member">commitID</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="22" refid="structgitwrap_1_1commit_1ac0ad6b68f27f3a5accf8ad092c7dc3be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structgitwrap_1_1commit_1ac0ad6b68f27f3a5accf8ad092c7dc3be" kindref="member">msg</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="23" refid="structgitwrap_1_1commit_1af3a2baf4c738eee329a5cd04df8da7cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structgitwrap_1_1commit_1af3a2baf4c738eee329a5cd04df8da7cb" kindref="member">commit</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structgitwrap_1_1commit_1af3a2baf4c738eee329a5cd04df8da7cb" kindref="member">commit</ref>(git_oid<sp/><ref refid="structgitwrap_1_1commit_1a99f52037b3c4cc106d57ba5afb9a9084" kindref="member">commitID</ref>,<sp/>git_repository<sp/>*rep);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structgitwrap_1_1commit_1af3a2baf4c738eee329a5cd04df8da7cb" kindref="member">commit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>commitMSG,<sp/>git_repository<sp/>*rep);</highlight></codeline>
+<codeline lineno="26" refid="structgitwrap_1_1commit_1aac48133e3a2c89d5e5dac1423fdff473" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structgitwrap_1_1commit_1aac48133e3a2c89d5e5dac1423fdff473" kindref="member">~commit</ref>()</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structgitwrap_1_1commit_1aed795b54d06cb41d5293e800ab7c06df" kindref="member">commitPointer</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_commit_free(<ref refid="structgitwrap_1_1commit_1aed795b54d06cb41d5293e800ab7c06df" kindref="member">commitPointer</ref>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="36" refid="structgitwrap_1_1commitList" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="structgitwrap_1_1commitList" kindref="compound">commitList</ref><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="structgitwrap_1_1commitList_1a6573ddcbbf6381d3173c8ca90be8d04c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::list&lt;commit&gt;<sp/><ref refid="structgitwrap_1_1commitList_1a6573ddcbbf6381d3173c8ca90be8d04c" kindref="member">clist</ref>;<sp/></highlight><highlight class="comment">//<sp/>Back<sp/>is<sp/>Newers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="structgitwrap_1_1commitList_1a8de11397242e04266368fc4a2f43ce47" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structgitwrap_1_1commitList_1a8de11397242e04266368fc4a2f43ce47" kindref="member">Reset</ref>()</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structgitwrap_1_1commitList_1a6573ddcbbf6381d3173c8ca90be8d04c" kindref="member">clist</ref>.clear();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>UpdateCommits(git_repository<sp/>*repo);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>OkToAdd(git_oid<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>gitwrap</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp"/>
   </compounddef>

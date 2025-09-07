@@ -4,7 +4,7 @@
 File panner.hpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_FAUST_VALS>` (``include\audioRender\MixMachine\FAUST_VALS``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_FAUST_VALS>` (``include/audioRender/MixMachine/FAUST_VALS``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File panner.hpp
    :local:
    :backlinks: none
 
-Definition (``include\audioRender\MixMachine\FAUST_VALS\panner.hpp``)
+Definition (``include/audioRender/MixMachine/FAUST_VALS/panner.hpp``)
 ---------------------------------------------------------------------
 
 
@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_panner___p_d_j_e`
+- :ref:`exhale_class_classPanner__PDJE`
 

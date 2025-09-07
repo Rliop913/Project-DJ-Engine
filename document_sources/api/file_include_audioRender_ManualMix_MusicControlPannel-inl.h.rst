@@ -63,12 +63,12 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespace_h_w_y___n_a_m_e_s_p_a_c_e_1ad074d697d201fc9b6c258e128a4ef91e`
+- :ref:`exhale_function_namespaceHWY__NAMESPACE_1ad074d697d201fc9b6c258e128a4ef91e`
 
 
 Defines
 -------
 
 
-- :ref:`exhale_define__music_control_pannel-inl_8h_1a1929b8491aa4123269baabf05fa21d8e`
+- :ref:`exhale_define_MusicControlPannel-inl_8h_1a1929b8491aa4123269baabf05fa21d8e`
 

@@ -41,5 +41,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function__type___f_x___c_o_m_p_r_e_s_s_o_r_8cpp_1a1719ae88ed885c1f9789bde83850b06b`
+- :ref:`exhale_function_Type__FX__COMPRESSOR_8cpp_1a1719ae88ed885c1f9789bde83850b06b`
 

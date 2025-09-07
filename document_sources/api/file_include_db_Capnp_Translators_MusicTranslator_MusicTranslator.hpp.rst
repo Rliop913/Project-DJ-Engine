@@ -59,5 +59,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_music_translator`
+- :ref:`exhale_class_classMusicTranslator`
 

@@ -7,24 +7,24 @@
     <includes refid="MusicControlPannel-inl_8h" local="yes">MusicControlPannel-inl.h</includes>
     <includes refid="PDJE__LOG__SETTER_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
     <incdepgraph>
-      <node id="18">
+      <node id="16">
         <label>PDJE_EXPORT_SETTER.hpp</label>
         <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
-      <node id="19">
+      <node id="17">
         <label>PDJE_LOG_SETTER.hpp</label>
         <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
         <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="38">
@@ -58,11 +58,11 @@
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="54">
@@ -84,7 +84,7 @@
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -96,15 +96,15 @@
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -118,21 +118,25 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="12">
+      <node id="10">
         <label>CapnpBinary.hpp</label>
         <link refid="CapnpBinary_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -144,107 +148,105 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
       </node>
-      <node id="9">
+      <node id="7">
         <label>FrameCalc.hpp</label>
         <link refid="FrameCalc_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="25">
         <label>dbRoot.hpp</label>
         <link refid="dbRoot_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
         <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>dbState.hpp</label>
+        <link refid="dbState_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>musicDB.hpp</label>
+        <link refid="musicDB_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
       </node>
       <node id="35">
-        <label>dbState.hpp</label>
-        <link refid="dbState_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
+        <label>trackDB.hpp</label>
+        <link refid="trackDB_8hpp"/>
         <childnode refid="26" relation="include">
-        </childnode>
-      </node>
-      <node id="26">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-      </node>
-      <node id="34">
-        <label>musicDB.hpp</label>
-        <link refid="musicDB_8hpp"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-      </node>
-      <node id="36">
-        <label>trackDB.hpp</label>
-        <link refid="trackDB_8hpp"/>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
       <node id="40">
@@ -286,37 +288,37 @@
       <node id="52">
         <label>FAUST_VOL_manual.hpp</label>
       </node>
-      <node id="15">
+      <node id="13">
         <label>MixBinary.capnp.h</label>
       </node>
-      <node id="16">
+      <node id="14">
         <label>MusicBinary.capnp.h</label>
       </node>
-      <node id="17">
+      <node id="15">
         <label>NoteBinary.capnp.h</label>
       </node>
       <node id="53">
         <label>SoundTouch.h</label>
       </node>
-      <node id="11">
+      <node id="8">
         <label>algorithm</label>
       </node>
-      <node id="13">
+      <node id="11">
         <label>capnp/message.h</label>
       </node>
-      <node id="14">
+      <node id="12">
         <label>capnp/serialize.h</label>
       </node>
-      <node id="10">
+      <node id="9">
         <label>cmath</label>
       </node>
-      <node id="27">
-        <label>cppcodec/base64_url_unpadded.hpp</label>
+      <node id="34">
+        <label>cppcodec/base64_default_url.hpp</label>
       </node>
-      <node id="8">
+      <node id="18">
         <label>filesystem</label>
       </node>
-      <node id="25">
+      <node id="24">
         <label>hwy/aligned_allocator.h</label>
       </node>
       <node id="55">
@@ -331,40 +333,40 @@
       <node id="39">
         <label>memory</label>
       </node>
-      <node id="7">
+      <node id="36">
         <label>miniaudio.h</label>
       </node>
-      <node id="5">
+      <node id="4">
         <label>optional</label>
       </node>
-      <node id="30">
+      <node id="27">
         <label>rocksdb/db.h</label>
       </node>
-      <node id="33">
+      <node id="28">
         <label>rocksdb/filter_policy.h</label>
       </node>
-      <node id="31">
+      <node id="29">
         <label>rocksdb/options.h</label>
       </node>
-      <node id="32">
+      <node id="30">
         <label>rocksdb/table.h</label>
       </node>
-      <node id="21">
+      <node id="19">
         <label>spdlog/sinks/basic_file_sink.h</label>
       </node>
-      <node id="22">
+      <node id="20">
         <label>spdlog/sinks/stdout_color_sinks.h</label>
       </node>
-      <node id="20">
+      <node id="21">
         <label>spdlog/spdlog.h</label>
       </node>
-      <node id="29">
+      <node id="26">
         <label>sqlite3.h</label>
       </node>
-      <node id="4">
+      <node id="5">
         <label>string</label>
       </node>
-      <node id="24">
+      <node id="22">
         <label>string_view</label>
       </node>
       <node id="23">
@@ -389,7 +391,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/audioRender/ManualMix/MusicControlPannel.cpp" line="93" column="1" declfile="include/audioRender/ManualMix/MusicControlPannel.cpp" declline="93" declcolumn="1"/>
+        <location file="include/audioRender/ManualMix/MusicControlPannel.cpp" line="92" column="1" declfile="include/audioRender/ManualMix/MusicControlPannel.cpp" declline="92" declcolumn="1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -409,142 +411,136 @@
 <codeline lineno="10"><highlight class="normal"></highlight></codeline>
 <codeline lineno="11" refid="classMusicControlPannel_1ad81a485f6df7756f01a2f97779ab1bab" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1ad81a485f6df7756f01a2f97779ab1bab" kindref="member">MusicControlPannel::~MusicControlPannel</ref>()</highlight></codeline>
 <codeline lineno="12"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="17" refid="classMusicControlPannel_1abb7edb1051ec46ee153c1893ba5a3450" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1abb7edb1051ec46ee153c1893ba5a3450" kindref="member">MusicControlPannel::LoadMusic</ref>(<ref refid="classlitedb" kindref="compound">litedb</ref>&amp;<sp/>ROOTDB,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmusdata" kindref="compound">musdata</ref>&amp;<sp/>Mus)</highlight></codeline>
-<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!<ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.try_emplace(Mus.<ref refid="structmusdata_1a9c537dbc78fd984f5316e3d167633f70" kindref="member">title</ref>).second){</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>load<sp/>music<sp/>from<sp/>MusicControlPannel<sp/>LoadMusic.<sp/>ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classMusicControlPannel_1abb7edb1051ec46ee153c1893ba5a3450" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1abb7edb1051ec46ee153c1893ba5a3450" kindref="member">MusicControlPannel::LoadMusic</ref>(<ref refid="classlitedb" kindref="compound">litedb</ref><sp/>&amp;ROOTDB,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structmusdata" kindref="compound">musdata</ref><sp/>&amp;Mus)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.try_emplace(Mus.<ref refid="structmusdata_1a9c537dbc78fd984f5316e3d167633f70" kindref="member">title</ref>).second)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>load<sp/>music<sp/>from<sp/>MusicControlPannel<sp/>LoadMusic.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(Mus.<ref refid="structmusdata_1a9c537dbc78fd984f5316e3d167633f70" kindref="member">title</ref>);</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>[Mus.<ref refid="structmusdata_1a9c537dbc78fd984f5316e3d167633f70" kindref="member">title</ref>].dec.init(ROOTDB,<sp/>Mus.<ref refid="structmusdata_1a5fcdc31f2bfb1fe90c038403791a00ae" kindref="member">musicPath</ref>);</highlight></codeline>
 <codeline lineno="25"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29" refid="classMusicControlPannel_1a7cc175695540fb5ba7c3c030da090681" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1a7cc175695540fb5ba7c3c030da090681" kindref="member">MusicControlPannel::CueMusic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref>&amp;<sp/>title,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>newPos)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classMusicControlPannel_1a7cc175695540fb5ba7c3c030da090681" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1a7cc175695540fb5ba7c3c030da090681" kindref="member">MusicControlPannel::CueMusic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;title,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>newPos)</highlight></codeline>
 <codeline lineno="30"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>safeTitle<sp/>=<sp/><ref refid="classPDJE__Name__Sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" kindref="member">PDJE_Name_Sanitizer::sanitizeFileName</ref>(title);</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!safeTitle){</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>sanitize<sp/>title<sp/>from<sp/>MusicControlPannel<sp/>CueMusic.<sp/>ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(title);</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.find(safeTitle.value())<sp/>==<sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.end()){</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>find<sp/>music<sp/>from<sp/>deck<sp/>from<sp/>MusicControlPannel<sp/>CueMusic.<sp/>ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(title);</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>[safeTitle.value()].dec.changePos(newPos<sp/>*<sp/><ref refid="FrameCalc_8hpp_1ace6a11e892466500d47d1f45f042bc53" kindref="member">CHANNEL</ref>);</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!safeTitle)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>sanitize<sp/>title<sp/>from<sp/>MusicControlPannel<sp/>CueMusic.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(title);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.find(safeTitle.value())<sp/>==<sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>find<sp/>music<sp/>from<sp/>deck<sp/>from<sp/>MusicControlPannel<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;CueMusic.<sp/>ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(title);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>[safeTitle.value()].dec.changePos(newPos<sp/>*<sp/><ref refid="FrameCalc_8hpp_1ace6a11e892466500d47d1f45f042bc53" kindref="member">CHANNEL</ref>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49" refid="classMusicControlPannel_1a7402cd45c5ebeca17332417a3e1359d6" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1a7402cd45c5ebeca17332417a3e1359d6" kindref="member">MusicControlPannel::SetMusic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref>&amp;<sp/>title,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>onOff)</highlight></codeline>
+<codeline lineno="49" refid="classMusicControlPannel_1a7402cd45c5ebeca17332417a3e1359d6" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1a7402cd45c5ebeca17332417a3e1359d6" kindref="member">MusicControlPannel::SetMusic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref><sp/>&amp;title,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>onOff)</highlight></codeline>
 <codeline lineno="50"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>safeTitle<sp/>=<sp/><ref refid="classPDJE__Name__Sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" kindref="member">PDJE_Name_Sanitizer::sanitizeFileName</ref>(title);</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!safeTitle){</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>sanitize<sp/>title<sp/>from<sp/>MusicControlPannel<sp/>SetMusic.<sp/>ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(title);</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.find(safeTitle.value())<sp/>==<sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.end()){</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>find<sp/>music<sp/>from<sp/>deck<sp/>from<sp/>MusicControlPannel<sp/>SetMusic.<sp/>ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(title);</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>[safeTitle.value()].play<sp/>=<sp/>onOff;</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><ref refid="MusicControlPannel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8" kindref="member">LOADED_LIST</ref></highlight></codeline>
-<codeline lineno="68" refid="classMusicControlPannel_1ad2ab2405535221002f7ad2d096169f9e" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1ad2ab2405535221002f7ad2d096169f9e" kindref="member">MusicControlPannel::GetLoadedMusicList</ref>()</highlight></codeline>
-<codeline lineno="69"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="MusicControlPannel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8" kindref="member">LOADED_LIST</ref><sp/>list;</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>i<sp/>:<sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>){</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref><sp/>originTitle<sp/>=<sp/><ref refid="classPDJE__Name__Sanitizer_1af67eaa02761870480e60b4a22e558fe6" kindref="member">PDJE_Name_Sanitizer::getFileName</ref>(i.first);</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>list.push_back(originTitle);</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::move(list);</highlight></codeline>
-<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!safeTitle)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>sanitize<sp/>title<sp/>from<sp/>MusicControlPannel<sp/>SetMusic.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(title);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.find(safeTitle.value())<sp/>==<sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>find<sp/>music<sp/>from<sp/>deck<sp/>from<sp/>MusicControlPannel<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SetMusic.<sp/>ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(title);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>[safeTitle.value()].play<sp/>=<sp/>onOff;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><ref refid="MusicControlPannel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8" kindref="member">LOADED_LIST</ref></highlight></codeline>
+<codeline lineno="69" refid="classMusicControlPannel_1ad2ab2405535221002f7ad2d096169f9e" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1ad2ab2405535221002f7ad2d096169f9e" kindref="member">MusicControlPannel::GetLoadedMusicList</ref>()</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="MusicControlPannel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8" kindref="member">LOADED_LIST</ref><sp/>list;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;i<sp/>:<sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref><sp/>originTitle<sp/>=<sp/><ref refid="classPDJE__Name__Sanitizer_1af67eaa02761870480e60b4a22e558fe6" kindref="member">PDJE_Name_Sanitizer::getFileName</ref>(i.first);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>list.push_back(originTitle);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::move(list);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80" refid="classMusicControlPannel_1a34dc2fe25fe8382f7f60823289cfb4ce" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1a34dc2fe25fe8382f7f60823289cfb4ce" kindref="member">MusicControlPannel::UnloadMusic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref>&amp;<sp/>title)</highlight></codeline>
+<codeline lineno="80" refid="classMusicControlPannel_1a34dc2fe25fe8382f7f60823289cfb4ce" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1a34dc2fe25fe8382f7f60823289cfb4ce" kindref="member">MusicControlPannel::UnloadMusic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref><sp/>&amp;title)</highlight></codeline>
 <codeline lineno="81"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>safeTitle<sp/>=<sp/><ref refid="classPDJE__Name__Sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" kindref="member">PDJE_Name_Sanitizer::sanitizeFileName</ref>(title);</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!safeTitle){</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>sanitize<sp/>title<sp/>from<sp/>MusicControlPannel<sp/>UnloadMusic.<sp/>ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(title);</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.erase(safeTitle.value())<sp/>!=<sp/>0;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!safeTitle)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>sanitize<sp/>title<sp/>from<sp/>MusicControlPannel<sp/>UnloadMusic.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(title);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.erase(safeTitle.value())<sp/>!=<sp/>0;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="93" refid="MusicControlPannel_8cpp_1abcdde12a1996c1207e1dd830cc2643ff" refkind="member"><highlight class="normal"><ref refid="MusicControlPannel_8cpp_1abcdde12a1996c1207e1dd830cc2643ff" kindref="member">HWY_EXPORT</ref>(GetPCMFramesSIMD);</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="96" refid="classMusicControlPannel_1ac5484c7b650f475d92edaa7bcd7c32d0" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1ac5484c7b650f475d92edaa7bcd7c32d0" kindref="member">MusicControlPannel::GetPCMFrames</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>array,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>FrameSize)</highlight></codeline>
-<codeline lineno="97"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>HWY_DYNAMIC_DISPATCH(GetPCMFramesSIMD)(</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1aa9c6be0915123d9a4a24681b04a756f7" kindref="member">tempFrames</ref>,</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1a782d114ee5d83f0904a556ff19d58706" kindref="member">L</ref>,</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1a50d07acc06b3befe66b5bd149916acd7" kindref="member">R</ref>,</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1a5cadec26088b9207b4bbe3a6df1710e4" kindref="member">FaustStyle</ref>,</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>,</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>array,</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FrameSize</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref>*</highlight></codeline>
-<codeline lineno="111" refid="classMusicControlPannel_1abc61176dfa07cf2da9ad733d873751a7" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1abc61176dfa07cf2da9ad733d873751a7" kindref="member">MusicControlPannel::getFXHandle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref>&amp;<sp/>title)</highlight></codeline>
-<codeline lineno="112"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>safeTitle<sp/>=<sp/><ref refid="classPDJE__Name__Sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" kindref="member">PDJE_Name_Sanitizer::sanitizeFileName</ref>(title);</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!safeTitle){</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>sanitize<sp/>title<sp/>from<sp/>MusicControlPannel<sp/>getFXHandle.<sp/>ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(title);</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="92" refid="MusicControlPannel_8cpp_1abcdde12a1996c1207e1dd830cc2643ff" refkind="member"><highlight class="normal"><ref refid="MusicControlPannel_8cpp_1abcdde12a1996c1207e1dd830cc2643ff" kindref="member">HWY_EXPORT</ref>(GetPCMFramesSIMD);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="classMusicControlPannel_1ac5484c7b650f475d92edaa7bcd7c32d0" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1ac5484c7b650f475d92edaa7bcd7c32d0" kindref="member">MusicControlPannel::GetPCMFrames</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*array,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>FrameSize)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>HWY_DYNAMIC_DISPATCH(GetPCMFramesSIMD)(</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1aa9c6be0915123d9a4a24681b04a756f7" kindref="member">tempFrames</ref>,<sp/><ref refid="classMusicControlPannel_1a782d114ee5d83f0904a556ff19d58706" kindref="member">L</ref>,<sp/><ref refid="classMusicControlPannel_1a50d07acc06b3befe66b5bd149916acd7" kindref="member">R</ref>,<sp/><ref refid="classMusicControlPannel_1a5cadec26088b9207b4bbe3a6df1710e4" kindref="member">FaustStyle</ref>,<sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>,<sp/>array,<sp/>FrameSize);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref><sp/>*</highlight></codeline>
+<codeline lineno="102" refid="classMusicControlPannel_1abc61176dfa07cf2da9ad733d873751a7" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1abc61176dfa07cf2da9ad733d873751a7" kindref="member">MusicControlPannel::getFXHandle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref><sp/>&amp;title)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>safeTitle<sp/>=<sp/><ref refid="classPDJE__Name__Sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" kindref="member">PDJE_Name_Sanitizer::sanitizeFileName</ref>(title);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!safeTitle)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>sanitize<sp/>title<sp/>from<sp/>MusicControlPannel<sp/>getFXHandle.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(title);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.find(safeTitle.value())<sp/>==<sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>find<sp/>music<sp/>from<sp/>deck.<sp/>Err<sp/>from<sp/>MusicControlPannel<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;getFXHandle.<sp/>ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(title);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>[safeTitle.value()].fxP;</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.find(safeTitle.value())<sp/>==<sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.end()){</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>find<sp/>music<sp/>from<sp/>deck.<sp/>Err<sp/>from<sp/>MusicControlPannel<sp/>getFXHandle.<sp/>ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(title);</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>[safeTitle.value()].fxP;</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="128"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="131" refid="classMusicControlPannel_1a823d22774a12b51e8bdf2c7b900522c9" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1a823d22774a12b51e8bdf2c7b900522c9" kindref="member">MusicControlPannel::ChangeBpm</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref>&amp;<sp/>title,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>targetBpm,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>originBpm)</highlight></codeline>
-<codeline lineno="132"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>safeTitle<sp/>=<sp/><ref refid="classPDJE__Name__Sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" kindref="member">PDJE_Name_Sanitizer::sanitizeFileName</ref>(title);</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!safeTitle){</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>sanitize<sp/>title<sp/>from<sp/>MusicControlPannel<sp/>SetMusic.<sp/>ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(title);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="classMusicControlPannel_1a823d22774a12b51e8bdf2c7b900522c9" refkind="member"><highlight class="normal"><ref refid="classMusicControlPannel_1a823d22774a12b51e8bdf2c7b900522c9" kindref="member">MusicControlPannel::ChangeBpm</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref><sp/>&amp;title,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>targetBpm,</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>originBpm)</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>safeTitle<sp/>=<sp/><ref refid="classPDJE__Name__Sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" kindref="member">PDJE_Name_Sanitizer::sanitizeFileName</ref>(title);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!safeTitle)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>sanitize<sp/>title<sp/>from<sp/>MusicControlPannel<sp/>SetMusic.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(title);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.find(safeTitle.value())<sp/>==<sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>find<sp/>music<sp/>from<sp/>deck<sp/>from<sp/>MusicControlPannel<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SetMusic.<sp/>ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(title);</highlight></codeline>
 <codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.find(safeTitle.value())<sp/>==<sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>.end()){</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>find<sp/>music<sp/>from<sp/>deck<sp/>from<sp/>MusicControlPannel<sp/>SetMusic.<sp/>ErrTitle:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(title);</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>[safeTitle.value()].st-&gt;setTempo(targetBpm<sp/>/<sp/>originBpm);</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel_1aaeddd0b360590bc2d0479e78d8c8cc26" kindref="member">deck</ref>[safeTitle.value()].st-&gt;setTempo(targetBpm<sp/>/<sp/>originBpm);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="include/audioRender/ManualMix/MusicControlPannel.cpp"/>
   </compounddef>

@@ -4,7 +4,7 @@
 File Type_FX_PHASER.cpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MixTypes>` (``include\audioRender\MixMachine\MixTypes``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MixTypes>` (``include/audioRender/MixMachine/MixTypes``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Type_FX_PHASER.cpp
    :local:
    :backlinks: none
 
-Definition (``include\audioRender\MixMachine\MixTypes\Type_FX_PHASER.cpp``)
+Definition (``include/audioRender/MixMachine/MixTypes/Type_FX_PHASER.cpp``)
 ---------------------------------------------------------------------------
 
 
@@ -41,5 +41,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function__type___f_x___p_h_a_s_e_r_8cpp_1aa19b6d0ead3ced5cf0d67de52b1d8030`
+- :ref:`exhale_function_Type__FX__PHASER_8cpp_1aa19b6d0ead3ced5cf0d67de52b1d8030`
 

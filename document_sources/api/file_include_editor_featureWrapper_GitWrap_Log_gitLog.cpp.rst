@@ -47,5 +47,5 @@ Defines
 -------
 
 
-- :ref:`exhale_define_git_log_8cpp_1a4f3e7136eeec135942dffd940e28e3d8`
+- :ref:`exhale_define_gitLog_8cpp_1a4f3e7136eeec135942dffd940e28e3d8`
 

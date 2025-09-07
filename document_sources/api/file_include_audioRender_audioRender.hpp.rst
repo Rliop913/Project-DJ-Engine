@@ -53,12 +53,12 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classaudio_render`
+- :ref:`exhale_class_classaudioRender`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum_audio_render_8hpp_1a8c3d331aef2fa577eb826cd22becbe28`
+- :ref:`exhale_enum_audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28`
 

@@ -87,21 +87,21 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_f_x_control_pannel`
+- :ref:`exhale_class_classFXControlPannel`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum__manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3`
+- :ref:`exhale_enum_ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3`
 
 
 Functions
 ---------
 
 
-- :ref:`exhale_function__manual_mix_8hpp_1a79df2887c22c06f21513214917ebbdc4`
+- :ref:`exhale_function_ManualMix_8hpp_1a79df2887c22c06f21513214917ebbdc4`
 
-- :ref:`exhale_function__manual_mix_8hpp_1ab241d30c14975d15f937dd81b05efc80`
+- :ref:`exhale_function_ManualMix_8hpp_1ab241d30c14975d15f937dd81b05efc80`
 

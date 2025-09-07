@@ -24,7 +24,9 @@ Prerequisites:
 
 Clone and build PDJE in a few steps:
 on linux & macos
+
 .. code-block:: bash
+  
   bash ./BuildInitwithConan.sh . Release
   mkdir build
   cd build
@@ -32,7 +34,9 @@ on linux & macos
   cmake --build . --parallel #add your maximum number of cores
 
 on windows
+
 .. code-block:: bash  
+
   ./BuildInitwithConan.bat . static Release
   #to get dynamic library, change static into dynamic
   mkdir build

@@ -4,7 +4,7 @@
 Program Listing for File render.cpp
 ===================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_editorObject_render.cpp>` (``include\MainObjects\editorObject\render.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_MainObjects_editorObject_render.cpp>` (``include/MainObjects/editorObject/render.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -19,6 +19,9 @@ Program Listing for File render.cpp
    
        std::vector<musdata> mds;
        for (auto &i : E_obj->musicHandle) {
+           if(i.musicName == "" || !fs::exists(i.dataPath)){
+               continue;
+           }
            mds.emplace_back();
    
            auto rendered    = i.jsonh.render();
@@ -48,7 +51,6 @@ Program Listing for File render.cpp
    
        for (auto &i : titles) {
            if (i.second != "") {
-   
                auto findFromRoot     = musdata();
                findFromRoot.title    = i.first;
                findFromRoot.composer = i.second;

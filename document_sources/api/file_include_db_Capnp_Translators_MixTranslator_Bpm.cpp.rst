@@ -41,5 +41,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function__bpm_8cpp_1a88b0de12ebc7f29ffc71e140169681b3`
+- :ref:`exhale_function_Bpm_8cpp_1a88b0de12ebc7f29ffc71e140169681b3`
 

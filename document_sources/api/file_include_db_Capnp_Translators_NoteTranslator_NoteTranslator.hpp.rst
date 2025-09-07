@@ -63,12 +63,12 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_note_translator`
+- :ref:`exhale_class_classNoteTranslator`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef__note_translator_8hpp_1ab8f339ae52f7b01e26f4de03178814e3`
+- :ref:`exhale_typedef_NoteTranslator_8hpp_1ab8f339ae52f7b01e26f4de03178814e3`
 
