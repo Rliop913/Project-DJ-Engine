@@ -57,14 +57,14 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_d_j___j_o_b_s`
+- :ref:`exhale_struct_structDJ__JOBS`
 
-- :ref:`exhale_class_class_battle_dj`
+- :ref:`exhale_class_classBattleDj`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum__battle_dj_8hpp_1a92a47c456c39736698ef8ba5fb6dcded`
+- :ref:`exhale_enum_BattleDj_8hpp_1a92a47c456c39736698ef8ba5fb6dcded`
 

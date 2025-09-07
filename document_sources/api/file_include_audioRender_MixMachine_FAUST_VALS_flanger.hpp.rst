@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_flanger___p_d_j_e`
+- :ref:`exhale_class_classFlanger__PDJE`
 

@@ -3,9 +3,9 @@
   <compounddef id="Mix_8hpp" kind="file" language="C++">
     <compoundname>Mix.hpp</compoundname>
     <includes local="no">algorithm</includes>
+    <includes local="no">mutex</includes>
     <includes local="no">thread</includes>
     <includes local="no">vector</includes>
-    <includes local="no">mutex</includes>
     <includes refid="FrameCalc_8hpp" local="yes">FrameCalc.hpp</includes>
     <includes refid="PDJE__EXPORT__SETTER_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
     <includedby refid="Bpm_8hpp" local="yes">include/db/Capnp/Translators/MixTranslator/Bpm.hpp</includedby>
@@ -35,9 +35,9 @@
       <node id="8">
         <label>CapnpBinary.hpp</label>
         <link refid="CapnpBinary_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -57,9 +57,9 @@
       <node id="6">
         <label>FrameCalc.hpp</label>
         <link refid="FrameCalc_8hpp"/>
-        <childnode refid="7" relation="include">
-        </childnode>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -105,13 +105,13 @@
       <node id="7">
         <label>cmath</label>
       </node>
-      <node id="20">
+      <node id="17">
         <label>filesystem</label>
       </node>
       <node id="23">
         <label>hwy/aligned_allocator.h</label>
       </node>
-      <node id="5">
+      <node id="3">
         <label>mutex</label>
       </node>
       <node id="9">
@@ -123,19 +123,19 @@
       <node id="19">
         <label>spdlog/sinks/stdout_color_sinks.h</label>
       </node>
-      <node id="17">
+      <node id="20">
         <label>spdlog/spdlog.h</label>
       </node>
-      <node id="22">
+      <node id="21">
         <label>string_view</label>
       </node>
-      <node id="3">
+      <node id="4">
         <label>thread</label>
       </node>
-      <node id="21">
+      <node id="22">
         <label>type_traits</label>
       </node>
-      <node id="4">
+      <node id="5">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -151,9 +151,9 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
       <node id="12">
@@ -203,6 +203,8 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
       </node>
       <node id="16">
         <label>include/MainObjects/editorObject/getall.cpp</label>
@@ -236,6 +238,10 @@
         <label>include/MainObjects/editorObject/updatelog.cpp</label>
         <link refid="updatelog_8cpp"/>
       </node>
+      <node id="24">
+        <label>include/SWIG_editor_visitor.hpp</label>
+        <link refid="SWIG__editor__visitor_8hpp"/>
+      </node>
       <node id="7">
         <label>include/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp</label>
         <link refid="BattleDj_8cpp"/>
@@ -248,33 +254,33 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="50">
+      <node id="51">
         <label>include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp</label>
         <link refid="MUSIC__CTR_8cpp"/>
       </node>
-      <node id="49">
+      <node id="50">
         <label>include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</label>
         <link refid="MUSIC__CTR_8hpp"/>
         <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="50" relation="include">
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
       </node>
-      <node id="51">
+      <node id="52">
         <label>include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp</label>
         <link refid="SetCue_8cpp"/>
       </node>
-      <node id="31">
+      <node id="32">
         <label>include/audioRender/MixMachine/MixMachine-inl.h</label>
         <link refid="MixMachine-inl_8h"/>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="33">
         <label>include/audioRender/MixMachine/MixMachine.cpp</label>
         <link refid="MixMachine_8cpp"/>
       </node>
@@ -282,8 +288,6 @@
         <label>include/audioRender/MixMachine/MixMachine.hpp</label>
         <link refid="MixMachine_8hpp"/>
         <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
@@ -317,75 +321,77 @@
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="34">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_COMPRESSOR.cpp</label>
         <link refid="Type__FX__COMPRESSOR_8cpp"/>
       </node>
-      <node id="34">
+      <node id="35">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_DISTORTION.cpp</label>
         <link refid="Type__FX__DISTORTION_8cpp"/>
       </node>
-      <node id="35">
+      <node id="36">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_ECHO.cpp</label>
         <link refid="Type__FX__ECHO_8cpp"/>
       </node>
-      <node id="36">
+      <node id="37">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_EQ.cpp</label>
         <link refid="Type__FX__EQ_8cpp"/>
       </node>
-      <node id="37">
+      <node id="38">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_FILTER.cpp</label>
         <link refid="Type__FX__FILTER_8cpp"/>
       </node>
-      <node id="38">
+      <node id="39">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_FLANGER.cpp</label>
         <link refid="Type__FX__FLANGER_8cpp"/>
       </node>
-      <node id="39">
+      <node id="40">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_OCS_FILTER.cpp</label>
         <link refid="Type__FX__OCS__FILTER_8cpp"/>
       </node>
-      <node id="40">
+      <node id="41">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_PANNER.cpp</label>
         <link refid="Type__FX__PANNER_8cpp"/>
       </node>
-      <node id="41">
+      <node id="42">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_PHASER.cpp</label>
         <link refid="Type__FX__PHASER_8cpp"/>
       </node>
-      <node id="42">
+      <node id="43">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp</label>
         <link refid="Type__FX__ROBOT_8cpp"/>
       </node>
-      <node id="43">
+      <node id="44">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp</label>
         <link refid="Type__FX__ROLL_8cpp"/>
       </node>
-      <node id="44">
+      <node id="45">
         <label>include/audioRender/MixMachine/MixTypes/Type_FX_TRANCE.cpp</label>
         <link refid="Type__FX__TRANCE_8cpp"/>
       </node>
-      <node id="45">
+      <node id="46">
         <label>include/audioRender/MixMachine/MixTypes/Type_MUSCTR.cpp</label>
         <link refid="Type__MUSCTR_8cpp"/>
       </node>
-      <node id="46">
+      <node id="47">
         <label>include/audioRender/MixMachine/MixTypes/Type_VOL.cpp</label>
         <link refid="Type__VOL_8cpp"/>
       </node>
-      <node id="48">
+      <node id="49">
         <label>include/audioRender/audioRender.cpp</label>
         <link refid="audioRender_8cpp"/>
       </node>
-      <node id="47">
+      <node id="48">
         <label>include/audioRender/audioRender.hpp</label>
         <link refid="audioRender_8hpp"/>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -416,7 +422,7 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="53">
+      <node id="54">
         <label>include/db/Capnp/Translators/MixTranslator/MixTranslator.cpp</label>
         <link refid="MixTranslator_8cpp"/>
       </node>
@@ -425,92 +431,100 @@
         <link refid="MixTranslator_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
         <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="56">
+      <node id="58">
         <label>include/editor/editor.cpp</label>
         <link refid="editor_8cpp"/>
       </node>
-      <node id="55">
+      <node id="57">
         <label>include/editor/editor.hpp</label>
         <link refid="editor_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>include/editor/featureWrapper/JSONWrap/EditorArgs.hpp</label>
+        <link refid="EditorArgs_8hpp"/>
         <childnode refid="56" relation="include">
         </childnode>
       </node>
-      <node id="57">
+      <node id="59">
         <label>include/editor/featureWrapper/JSONWrap/KVJson.cpp</label>
         <link refid="KVJson_8cpp"/>
       </node>
-      <node id="58">
+      <node id="60">
         <label>include/editor/featureWrapper/JSONWrap/MixJson.cpp</label>
         <link refid="MixJson_8cpp"/>
       </node>
-      <node id="24">
+      <node id="25">
         <label>include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
         <link refid="MusicJson_8cpp"/>
       </node>
-      <node id="59">
+      <node id="61">
         <label>include/editor/featureWrapper/JSONWrap/NoteJson.cpp</label>
         <link refid="NoteJson_8cpp"/>
       </node>
-      <node id="54">
+      <node id="56">
         <label>include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp</label>
         <link refid="jsonWrapper_8hpp"/>
-        <childnode refid="55" relation="include">
-        </childnode>
         <childnode refid="57" relation="include">
-        </childnode>
-        <childnode refid="58" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="59" relation="include">
         </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
       </node>
-      <node id="26">
+      <node id="27">
         <label>include/interface/PDJE_interface.cpp</label>
         <link refid="PDJE__interface_8cpp"/>
       </node>
-      <node id="25">
+      <node id="26">
         <label>include/interface/PDJE_interface.hpp</label>
         <link refid="PDJE__interface_8hpp"/>
-        <childnode refid="26" relation="include">
-        </childnode>
         <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
       </node>
-      <node id="27">
+      <node id="28">
         <label>include/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
       </node>
-      <node id="52">
+      <node id="53">
         <label>include/tests/CapnpTest.cpp</label>
         <link refid="CapnpTest_8cpp"/>
       </node>
-      <node id="30">
+      <node id="31">
         <label>include/tests/audioTest.cpp</label>
         <link refid="audioTest_8cpp"/>
       </node>
-      <node id="28">
+      <node id="29">
         <label>include/tests/editorTest.cpp</label>
         <link refid="editorTest_8cpp"/>
       </node>
-      <node id="29">
+      <node id="30">
         <label>include/tests/interfaceTest.cpp</label>
         <link refid="interfaceTest_8cpp"/>
       </node>
@@ -524,26 +538,29 @@
 <codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;thread&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;thread&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="FrameCalc_8hpp" kindref="compound">FrameCalc.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__EXPORT__SETTER_8hpp" kindref="compound">PDJE_EXPORT_SETTER.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBPM" kindref="compound">BPM</ref>;</highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="16" refid="classMIX" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="classMIX_1ae9b676e51101f203d5bf01d7182a80d4" kindref="member">MIX</ref>{</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="16" refid="classMIX" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="classMIX_1ae9b676e51101f203d5bf01d7182a80d4" kindref="member">MIX</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="18" refid="classMIX_1a06e7de64345ce562df36eaf0eb9de6d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMIX_1a06e7de64345ce562df36eaf0eb9de6d0" kindref="member">usable_threads</ref>;</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="20" refid="classMIX_1a8195224b3dde178a14717c9356150538" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;MixStruct&gt;<sp/><ref refid="classMIX_1a8195224b3dde178a14717c9356150538" kindref="member">mixVec</ref>;</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMIX_1a966f3d134dd98369a3baa0894959ea06" kindref="member">openMix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>MixBinaryCapnpData::Reader&amp;<sp/>Rptr);</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMIX_1a13334cf8c60b64f5703b0333213478e9" kindref="member">WriteFrames</ref>(<ref refid="classBPM" kindref="compound">BPM</ref>&amp;<sp/>bpmm);</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMIX_1ae9b676e51101f203d5bf01d7182a80d4" kindref="member">MIX</ref>();</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMIX_1ae9b676e51101f203d5bf01d7182a80d4" kindref="member">~MIX</ref>();</highlight></codeline>
-<codeline lineno="41"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="21" refid="classMIX_1a8195224b3dde178a14717c9356150538" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;MixStruct&gt;<sp/><ref refid="classMIX_1a8195224b3dde178a14717c9356150538" kindref="member">mixVec</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMIX_1a966f3d134dd98369a3baa0894959ea06" kindref="member">openMix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>MixBinaryCapnpData::Reader<sp/>&amp;Rptr);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMIX_1a13334cf8c60b64f5703b0333213478e9" kindref="member">WriteFrames</ref>(<ref refid="classBPM" kindref="compound">BPM</ref><sp/>&amp;bpmm);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMIX_1ae9b676e51101f203d5bf01d7182a80d4" kindref="member">MIX</ref>();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMIX_1ae9b676e51101f203d5bf01d7182a80d4" kindref="member">~MIX</ref>();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="include/db/Capnp/Translators/MixTranslator/Mix.hpp"/>
   </compounddef>

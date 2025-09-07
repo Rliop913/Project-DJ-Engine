@@ -61,5 +61,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_m_i_x`
+- :ref:`exhale_class_classMIX`
 

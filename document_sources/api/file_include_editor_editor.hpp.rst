@@ -10,7 +10,7 @@ File editor.hpp
 
 
 
-High level editor interface for :ref:`exhale_class_class_p_d_j_e` projects. 
+High level editor interface for :ref:`exhale_class_classPDJE` projects. 
 
 
 
@@ -64,7 +64,7 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___editor_1_1_music_handle_struct`
+- :ref:`exhale_struct_structPDJE__Editor_1_1MusicHandleStruct`
 
-- :ref:`exhale_class_class_p_d_j_e___editor`
+- :ref:`exhale_class_classPDJE__Editor`
 

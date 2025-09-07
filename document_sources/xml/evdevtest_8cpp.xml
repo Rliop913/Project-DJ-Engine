@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="evdevtest_8cpp" kind="file" language="C++">
     <compoundname>evdevtest.cpp</compoundname>
-    <includes refid="_l_i_n_u_x___i_n_p_u_t_8hpp" local="yes">LINUX_INPUT.hpp</includes>
+    <includes refid="LINUX__INPUT_8hpp" local="yes">LINUX_INPUT.hpp</includes>
     <includes local="no">chrono</includes>
     <includes local="no">fcntl.h</includes>
     <includes local="no">iostream</includes>
@@ -13,7 +13,7 @@
     <incdepgraph>
       <node id="3">
         <label>PDJE_INPUT.hpp</label>
-        <link refid="_p_d_j_e___i_n_p_u_t_8hpp"/>
+        <link refid="PDJE__INPUT_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
@@ -21,7 +21,7 @@
       </node>
       <node id="2">
         <label>LINUX_INPUT.hpp</label>
-        <link refid="_l_i_n_u_x___i_n_p_u_t_8hpp"/>
+        <link refid="LINUX__INPUT_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
@@ -107,7 +107,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_l_i_n_u_x___i_n_p_u_t_8hpp" kindref="compound">LINUX_INPUT.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="LINUX__INPUT_8hpp" kindref="compound">LINUX_INPUT.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fcntl.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -117,7 +117,7 @@
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="11" refid="evdevtest_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"><ref refid="audio_test_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*argv[])</highlight></codeline>
+<codeline lineno="11" refid="evdevtest_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"><ref refid="audioTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*argv[])</highlight></codeline>
 <codeline lineno="12"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>posRoot<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/dev/input/event&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>evdevEventFD;</highlight></codeline>

@@ -46,5 +46,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_distortion_man`
+- :ref:`exhale_class_classDistortionMan`
 

@@ -63,5 +63,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_b_p_m`
+- :ref:`exhale_class_classBPM`
 

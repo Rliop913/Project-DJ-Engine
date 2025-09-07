@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_roll_man`
+- :ref:`exhale_class_classRollMan`
 

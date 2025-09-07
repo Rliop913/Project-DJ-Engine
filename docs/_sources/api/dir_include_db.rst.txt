@@ -10,7 +10,7 @@ Directory db
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\db``
+*Directory path:* ``include/db``
 
 Subdirectories
 --------------

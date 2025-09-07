@@ -67,16 +67,16 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_music_on_deck`
+- :ref:`exhale_struct_structMusicOnDeck`
 
-- :ref:`exhale_class_class_music_control_pannel`
+- :ref:`exhale_class_classMusicControlPannel`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef__music_control_pannel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8`
+- :ref:`exhale_typedef_MusicControlPannel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8`
 
-- :ref:`exhale_typedef__music_control_pannel_8hpp_1ab133b0d81c222324c3cd46e91d30fb7d`
+- :ref:`exhale_typedef_MusicControlPannel_8hpp_1ab133b0d81c222324c3cd46e91d30fb7d`
 

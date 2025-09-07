@@ -41,11 +41,11 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_k_v_visitor`
+- :ref:`exhale_struct_structKVVisitor`
 
-- :ref:`exhale_struct_struct_mix_visitor`
+- :ref:`exhale_struct_structMixVisitor`
 
-- :ref:`exhale_struct_struct_music_visitor`
+- :ref:`exhale_struct_structMusicVisitor`
 
-- :ref:`exhale_struct_struct_note_visitor`
+- :ref:`exhale_struct_structNoteVisitor`
 

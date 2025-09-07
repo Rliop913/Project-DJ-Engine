@@ -4,7 +4,7 @@
 Program Listing for File DiffController.cpp
 ===========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_Diff_DiffController.cpp>` (``include\editor\featureWrapper\GitWrap\Diff\DiffController.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_editor_featureWrapper_GitWrap_Diff_DiffController.cpp>` (``include/editor/featureWrapper/GitWrap/Diff/DiffController.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

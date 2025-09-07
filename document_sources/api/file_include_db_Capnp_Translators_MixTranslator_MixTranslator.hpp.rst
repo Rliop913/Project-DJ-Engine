@@ -77,5 +77,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_mix_translator`
+- :ref:`exhale_class_classMixTranslator`
 

@@ -696,12 +696,12 @@ See :ref:`about-mix-data` first.
         mixs.beat = 0;
         mixs.subBeat = 0;
         mixs.separate = 0;
-        //"start_position" = beat + (beat / separate) * subBeat
+        //"start_position" = beat + (subBeat / separate)
 
         mixs.Ebeat = 16;//end beat
         mixs.EsubBeat = 2;//end subBeat
         mixs.Eseparate = 4;//end separate
-        //"end_position" = ebeat + (ebeat / eseparate) * esubBeat
+        //"end_position" = ebeat + (esubBeat / eseparate)
 
         //summation: add low pass filter from "start_position" to "end_position" with interpolation
 
@@ -720,9 +720,6 @@ See :ref:`about-mix-data` first.
 
         EDIT_ARG_MIX mixs = new EDIT_ARG_MIX();
 
-        engine.editor.AddLineMix(mixs);
-
-
         mixs.type = TypeEnum.FILTER; //Filter
         mixs.details = DetailEnum.LOW; //Low pass
 
@@ -738,12 +735,12 @@ See :ref:`about-mix-data` first.
         mixs.beat = 0;
         mixs.subBeat = 0;
         mixs.separate = 0;
-        //"start_position" = beat + (beat / separate) * subBeat
+        //"start_position" = beat + (subBeat / separate)
 
         mixs.Ebeat = 16;//end beat
         mixs.EsubBeat = 2;//end subBeat
         mixs.Eseparate = 4;//end separate
-        //"end_position" = ebeat + (ebeat / eseparate) * esubBeat
+        //"end_position" = ebeat + (esubBeat / eseparate)
 
         //summation: add low pass filter from "start_position" to "end_position" with interpolation
 
@@ -772,11 +769,6 @@ See :ref:`about-mix-data` first.
 
         mixs = EDIT_ARG_MIX()
 
-        editor.AddLineMix(mixs)
-
-        pypdje.TypeEnum_BATTLE_DJ
-
-
         mixs.type = pypdje.TypeEnum_FILTER #Filter
         mixs.details = pypdje.DetailEnum_LOW #Low pass
 
@@ -792,12 +784,12 @@ See :ref:`about-mix-data` first.
         mixs.beat = 0
         mixs.subBeat = 0
         mixs.separate = 0
-        #"start_position" = beat + (beat / separate) * subBeat
+        #"start_position" = beat + (subBeat / separate)
 
         mixs.Ebeat = 16#end beat
         mixs.EsubBeat = 2#end subBeat
         mixs.Eseparate = 4#end separate
-        #"end_position" = ebeat + (ebeat / eseparate) * esubBeat
+        #"end_position" = ebeat + (esubBeat / eseparate)
 
         #summation: add low pass filter from "start_position" to "end_position" with interpolation
 
@@ -815,8 +807,47 @@ See :ref:`about-mix-data` first.
 
     .. code-block:: gdscript
         
-        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
-        engine.InitEngine("res://database/path")
+        var mixs = PDJE_EDITOR_ARG.new()
+        mixs.InitMixArg(
+            PDJE_EDITOR_ARG.EDITOR_TYPE_LIST.FILTER,
+            PDJE_EDITOR_ARG.EDITOR_DETAIL_LIST.LOW,
+            1,
+            "1",
+            "5000,1000,2000,3000,4000,5000,5500,6000",
+            "NONE",
+            16,
+            0,
+            0,
+            32,
+            0,
+            0)
+        #"start_position" = beat + (subBeat / separate)
+        #"end_position" = ebeat + (esubBeat / eseparate)
+        #summation: add low pass filter from "start_position" to "end_position" with interpolation
+        editor.AddLine(mixs)#add mix data
+        
+        var data = PDJE_EDITOR_ARG.new()
+        data.InitKeyValueArg("", "")
+        editor.AddLine(data) #add key-value args
+        
+        data = PDJE_EDITOR_ARG.new()
+        data.InitNoteArg(
+            "something. ex- tap note", 
+            "something. ex- color red", 
+            "something. ex- line number", 
+            "something. ex- tap sound",
+            "something. ex- ??",
+            4,0,0,
+            4,0,0)
+        editor.AddLine(data)#add custom simple red tap note data on music's 4th beat
+        
+        data = PDJE_EDITOR_ARG.new()
+        data.InitMusicArg("temp music title", "120", 0, 0, 0)
+        editor.AddLine(data)#music starts with 120 bpm
+        var data2 = PDJE_EDITOR_ARG.new()
+        data2.InitMusicArg("temp music title", "240", 64, 0, 0)
+        editor.AddLine(data2)#music starts with 120 bpm and it changes into 240 bpm in 64th beat
+        
 
 
 Get all lines
@@ -892,8 +923,7 @@ Get all lines
 
     .. code-block:: gdscript
 
-        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
-        engine.InitEngine("res://database/path")
+        var edited_data:Dictionary = editor.getAll()
 
 Delete line
 --------------
@@ -961,8 +991,23 @@ Delete line
 
     .. code-block:: gdscript
 
-        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
-        engine.InitEngine("res://database/path")
+        var edited_data:Dictionary = editor.getAll()
+        for delete_target in edited_data["noteDatas"]:
+            var target = PDJE_EDITOR_ARG.new()
+            target.InitNoteArg(
+                delete_target["Note_Type"],
+                delete_target["Note_Detail"],
+                delete_target["first"],
+                delete_target["second"],
+                delete_target["third"],
+                delete_target["beat"],
+                delete_target["subBeat"],
+                delete_target["separate"],
+                delete_target["Ebeat"],
+                delete_target["EsubBeat"],
+                delete_target["Eseparate"],
+                )
+            editor.deleteLine(target, false, false)
 
 
 .. Get diff
@@ -1085,27 +1130,205 @@ Get edit logs
 
     .. code-block:: gdscript
 
-        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
-        engine.InitEngine("res://database/path")
+        """
+        JSON structure produced:
+
+        {
+        "BRANCH": [                          // branch head list
+            {
+            "NAME": string,                  // branch name (e.g., "main")
+            "OID":  string                   // head commit oid (40-hex from git_oid_tostr_s)
+            },
+            ...
+        ],
+        "COMMIT": [                          // commit metadata list
+            {
+            "OID":      string,              // commit oid (40-hex)
+            "EMAIL":    string,              // author email
+            "NAME":     string,              // author name
+            "PARENTID": string               // parent commit oid (may be empty/zero for initial)
+            },
+            ...
+        ]
+        }
+        """
+        editor.GetLogWithJSONGraph(EditorWrapper.MIX, "")
 
 Update edit logs
+-------------------
 
 .. tab-set-code:: 
 
     .. code-block:: c++
 
-        auto engine = new PDJE("database/path");
+        bool updateRes = false;
+        updateRes = editor->UpdateLog<EDIT_ARG_MIX>();
+        updateRes = editor->UpdateLog<EDIT_ARG_MIX>("branch name");
+        // updateRes = editor->UpdateLog<EDIT_ARG_KEY_VALUE>();
+        // updateRes = editor->UpdateLog<EDIT_ARG_KEY_VALUE>("branch name");
+        // updateRes = editor->UpdateLog<EDIT_ARG_MUSIC>();
+        // updateRes = editor->UpdateLog<EDIT_ARG_MUSIC>("music name");
+        // updateRes = editor->UpdateLog<EDIT_ARG_NOTE>();
+        // updateRes = editor->UpdateLog<EDIT_ARG_NOTE>("branch name");
+        
 
     .. code-block:: c#
 
-        PDJE engine = new PDJE("database/path");
+        bool updateRes = false;
+        updateRes = editor.UpdateLogMix();
+        updateRes = editor.UpdateLogMixOn("branch name");
+        // updateRes = editor.UpdateLogKV();
+        // updateRes = editor.UpdateLogKVOn("branch name");
+        // updateRes = editor.UpdateLogMusic();
+        // updateRes = editor.UpdateLogMusicOn("music name");
+        // updateRes = editor.UpdateLogNote();
+        // updateRes = editor.UpdateLogNoteOn("branch name");
 
     .. code-block:: python
 
         import pdje_POLYGLOT as pypdje
-        engine = pypdje.PDJE("database/path")
+        
+        updateRes = editor.UpdateLogMix();
+        updateRes = editor.UpdateLogMixOn("branch name");
+        # updateRes = editor.UpdateLogKV();
+        # updateRes = editor.UpdateLogKVOn("branch name");
+        # updateRes = editor.UpdateLogMusic();
+        # updateRes = editor.UpdateLogMusicOn("music name");
+        # updateRes = editor.UpdateLogNote();
+        # updateRes = editor.UpdateLogNoteOn("branch name");
 
     .. code-block:: gdscript
 
-        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
-        engine.InitEngine("res://database/path")
+        editor.UpdateLog(EditorWrapper.MIX,"")
+        editor.UpdateLog(EditorWrapper.MUSIC,"music title")
+        editor.UpdateLog(EditorWrapper.NOTE,"")
+        editor.UpdateLog(EditorWrapper.KV,"")
+
+
+Editor Step-3: Config new Music & Render & apply to root db
+-------------------------------------------------------------
+
+.. doxygenfunction:: editorObject::ConfigNewMusic
+    :project: Project_DJ_Engine
+
+
+.. doxygenfunction:: editorObject::render
+    :project: Project_DJ_Engine
+
+.. doxygenfunction:: editorObject::pushToRootDB(litedb &ROOTDB, const UNSANITIZED &trackTitleToPush)
+    :project: Project_DJ_Engine
+
+
+.. doxygenfunction:: editorObject::pushToRootDB(litedb &ROOTDB, const UNSANITIZED &musicTitle, const UNSANITIZED &musicComposer)
+    :project: Project_DJ_Engine
+
+
+.. tab-set-code:: 
+
+    .. code-block:: c++
+
+        editor->ConfigNewMusic("music name", "composer name", "C://path.wav", "4800");
+        //configure new music meta data. the 4800 means the music's first beat is on (4800 / 48000)second after begin of the music.
+        editor->render("track name", *(engine->DBROOT));
+        //renders track. builds track and music binary data from editor data.
+        //if you want to add just musics, you don't need to edit or add track data. doesn't need to care about track name
+        //track or music data must contain bpm data on 0beat, 0subBeat position.
+
+        editor->pushToRootDB(*engine->DBROOT, "track title");
+        //push rendered binary track data to Root DB.
+        //all related musics will be pushed too.
+        
+        editor->pushToRootDB(*engine->DBROOT, "music name", "composer name");
+        //just push rendered binary music data to Root DB.
+        
+        //you should render before pushing music or track data.
+
+    .. code-block:: c#
+
+        editor.ConfigNewMusic("music name", "composer name", "C://path.wav", "4800");
+        //configure new music meta data. the 4800 means the music's first beat is on (4800 / 48000)second after begin of the music.
+        editor.render("track name", (engine.DBROOT));
+        //renders track. builds track and music binary data from editor data.
+        //if you want to add just musics, you don't need to edit or add track data. doesn't need to care about track name
+        //track or music data must contain bpm data on 0beat, 0subBeat position.
+
+        editor.pushToRootDB(engine.DBROOT, "track title");
+        //push rendered binary track data to Root DB.
+        //all related musics will be pushed too.
+        
+        editor.pushToRootDB(engine.DBROOT, "music name", "composer name");
+        //just push rendered binary music data to Root DB.
+        
+        //you should render before pushing music or track data.
+
+    .. code-block:: python
+
+        import pdje_POLYGLOT as pypdje
+        editor.ConfigNewMusic("music name", "composer name", "C://path.wav", "4800")
+        #configure new music meta data. the 4800 means the music's first beat is on (4800 / 48000)second after begin of the music.
+        editor.render("track name", (engine.DBROOT))
+        #renders track. builds track and music binary data from editor data.
+        #if you want to add just musics, you don't need to edit or add track data. doesn't need to care about track name
+        #track or music data must contain bpm data on 0beat, 0subBeat position.
+
+        editor.pushToRootDB(engine.DBROOT, "track title")
+        #push rendered binary track data to Root DB.
+        #all related musics will be pushed too.
+        
+        editor.pushToRootDB(engine.DBROOT, "music name", "composer name")
+        #just push rendered binary music data to Root DB.
+        
+        #you should render before pushing music or track data.
+
+    .. code-block:: gdscript
+
+        editor.ConfigNewMusic("music name", "composer name", "C://path.wav", "4800");
+        #configure new music meta data. the 4800 means the music's first beat is on (4800 / 48000)second after begin of the music.
+        editor.render("track name");
+        #renders track. builds track and music binary data from editor data.
+        #if you want to add just musics, you don't need to edit or add track data. doesn't need to care about track name
+        #track or music data must contain bpm data on 0beat, 0subBeat position.
+
+        editor.pushTrackToRootDB("track title")
+        #push rendered binary track data to Root DB.
+        #all related musics will be pushed too.
+        
+        editor.pushToRootDB("music name","composer name")
+        #just push rendered binary music data to Root DB.
+        
+        #you should render before pushing music or track data.
+
+Editor Step-4: playback editing project
+-------------------------------------------------------------
+
+.. doxygenfunction:: editorObject::demoPlayInit
+    :project: Project_DJ_Engine
+
+
+.. tab-set-code:: 
+
+    .. code-block:: c++
+
+        std::shared_ptr<audioPlayer> demoplayer;
+        editor->demoPlayInit(demoplayer, 48, "track title");
+        demoplayer->Activate();
+
+    .. code-block:: c#
+
+        audioPlayer demoplayer = new audioPlayer(48);
+        editor.demoPlayInit(demoplayer, 48, "track title");
+        demoplayer.Activate();
+
+    .. code-block:: python
+
+        import pdje_POLYGLOT as pypdje
+        from pdje_POLYGLOT import audioPlayer
+        demoplayer:audioPlayer = audioPlayer(48)
+        editor.demoPlayInit(demoplayer, 48, "track title")
+        demoplayer.Activate()
+
+    .. code-block:: gdscript
+
+        editor.demoPlayInit(48, "track title")
+        var demoplayer = engine.GetPlayer()
+        demoplayer.Activate()

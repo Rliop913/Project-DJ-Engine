@@ -50,11 +50,11 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespace_frame_calc_1a12e18e06211c6b6148f77eef662555ad`
+- :ref:`exhale_function_namespaceFrameCalc_1a12e18e06211c6b6148f77eef662555ad`
 
-- :ref:`exhale_function__frame_calc_8cpp_1a9cdb1949d4582c32a77bdd45679bcb7e`
+- :ref:`exhale_function_FrameCalc_8cpp_1a9cdb1949d4582c32a77bdd45679bcb7e`
 
-- :ref:`exhale_function__frame_calc_8cpp_1a4c447701d1106c733e9cb25640baaa06`
+- :ref:`exhale_function_FrameCalc_8cpp_1a4c447701d1106c733e9cb25640baaa06`
 
-- :ref:`exhale_function__frame_calc_8cpp_1a8d656643f107e8a222b009a37a3459c4`
+- :ref:`exhale_function_FrameCalc_8cpp_1a8d656643f107e8a222b009a37a3459c4`
 

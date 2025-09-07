@@ -65,5 +65,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classaudio_player`
+- :ref:`exhale_class_classaudioPlayer`
 

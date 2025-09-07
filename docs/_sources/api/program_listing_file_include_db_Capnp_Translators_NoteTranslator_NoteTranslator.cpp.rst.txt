@@ -4,7 +4,7 @@
 Program Listing for File NoteTranslator.cpp
 ===========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_db_Capnp_Translators_NoteTranslator_NoteTranslator.cpp>` (``include\db\Capnp\Translators\NoteTranslator\NoteTranslator.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_db_Capnp_Translators_NoteTranslator_NoteTranslator.cpp>` (``include/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

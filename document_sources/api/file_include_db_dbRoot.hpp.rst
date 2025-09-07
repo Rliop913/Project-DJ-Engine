@@ -94,11 +94,11 @@ Typedefs
 --------
 
 
-- :ref:`exhale_typedef_db_root_8hpp_1a1bb451b755a8140750f0c66ddd292a40`
+- :ref:`exhale_typedef_dbRoot_8hpp_1a1bb451b755a8140750f0c66ddd292a40`
 
-- :ref:`exhale_typedef_db_root_8hpp_1a6ab0599a5878a648af6017d8ff86b842`
+- :ref:`exhale_typedef_dbRoot_8hpp_1a6ab0599a5878a648af6017d8ff86b842`
 
-- :ref:`exhale_typedef_db_root_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0`
+- :ref:`exhale_typedef_dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0`
 
-- :ref:`exhale_typedef_db_root_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470`
+- :ref:`exhale_typedef_dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470`
 

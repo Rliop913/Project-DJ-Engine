@@ -66,12 +66,12 @@ Enums
 -----
 
 
-- :ref:`exhale_enum_db_state_8hpp_1a4d98816c34e64c3b12d375764f940013`
+- :ref:`exhale_enum_dbState_8hpp_1a4d98816c34e64c3b12d375764f940013`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_db_state_8hpp_1a32af0badd6a40566b8e04071484b2f83`
+- :ref:`exhale_typedef_dbState_8hpp_1a32af0badd6a40566b8e04071484b2f83`
 

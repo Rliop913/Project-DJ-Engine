@@ -73,7 +73,7 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_cap_reader`
+- :ref:`exhale_class_classCapReader`
 
-- :ref:`exhale_class_class_cap_writer`
+- :ref:`exhale_class_classCapWriter`
 

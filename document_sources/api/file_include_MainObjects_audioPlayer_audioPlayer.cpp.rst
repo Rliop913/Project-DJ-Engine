@@ -45,9 +45,9 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_audio_player_8cpp_1ae5e4af00326247af37e277759ed98708`
+- :ref:`exhale_function_audioPlayer_8cpp_1ae5e4af00326247af37e277759ed98708`
 
-- :ref:`exhale_function_audio_player_8cpp_1a1ed2dfba5eeffc302e4639bd95443901`
+- :ref:`exhale_function_audioPlayer_8cpp_1a1ed2dfba5eeffc302e4639bd95443901`
 
-- :ref:`exhale_function_audio_player_8cpp_1a7d838e56a4484d297c33aa7a2c01ca91`
+- :ref:`exhale_function_audioPlayer_8cpp_1a7d838e56a4484d297c33aa7a2c01ca91`
 

@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_panner_man`
+- :ref:`exhale_class_classPannerMan`
 

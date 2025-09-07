@@ -45,5 +45,5 @@ Defines
 -------
 
 
-- :ref:`exhale_define_music_d_b_8cpp_1a5090bcd20a9440df71fc228776cdeef3`
+- :ref:`exhale_define_musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3`
 

@@ -4,7 +4,7 @@
 File Type_FX_DISTORTION.cpp
 ===========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MixTypes>` (``include\audioRender\MixMachine\MixTypes``)
+|exhale_lsh| :ref:`Parent directory <dir_include_audioRender_MixMachine_MixTypes>` (``include/audioRender/MixMachine/MixTypes``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Type_FX_DISTORTION.cpp
    :local:
    :backlinks: none
 
-Definition (``include\audioRender\MixMachine\MixTypes\Type_FX_DISTORTION.cpp``)
+Definition (``include/audioRender/MixMachine/MixTypes/Type_FX_DISTORTION.cpp``)
 -------------------------------------------------------------------------------
 
 
@@ -41,5 +41,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function__type___f_x___d_i_s_t_o_r_t_i_o_n_8cpp_1a20a2491a8b42291eeae5d4c07b214d26`
+- :ref:`exhale_function_Type__FX__DISTORTION_8cpp_1a20a2491a8b42291eeae5d4c07b214d26`
 

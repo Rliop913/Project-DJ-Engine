@@ -60,14 +60,14 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_blame_result`
+- :ref:`exhale_struct_structBlameResult`
 
-- :ref:`exhale_class_class_blame_controller`
+- :ref:`exhale_class_classBlameController`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef__blame_controller_8hpp_1af7f0dbdf8c9026039110dc2a505efee1`
+- :ref:`exhale_typedef_BlameController_8hpp_1af7f0dbdf8c9026039110dc2a505efee1`
 

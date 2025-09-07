@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_compressor___p_d_j_e`
+- :ref:`exhale_class_classCompressor__PDJE`
 

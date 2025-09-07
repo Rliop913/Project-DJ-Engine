@@ -69,12 +69,12 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_decoder`
+- :ref:`exhale_struct_structDecoder`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef__decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c`
+- :ref:`exhale_typedef_Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c`
 

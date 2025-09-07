@@ -4,7 +4,7 @@
 File addline.cpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_MainObjects_editorObject>` (``include\MainObjects\editorObject``)
+|exhale_lsh| :ref:`Parent directory <dir_include_MainObjects_editorObject>` (``include/MainObjects/editorObject``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File addline.cpp
    :local:
    :backlinks: none
 
-Definition (``include\MainObjects\editorObject\addline.cpp``)
+Definition (``include/MainObjects/editorObject/addline.cpp``)
 -------------------------------------------------------------
 
 

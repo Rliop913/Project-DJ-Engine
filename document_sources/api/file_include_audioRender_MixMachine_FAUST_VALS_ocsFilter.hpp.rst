@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_ocs_filter___p_d_j_e`
+- :ref:`exhale_class_classOcsFilter__PDJE`
 

@@ -55,5 +55,5 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structaudio_engine_data_struct`
+- :ref:`exhale_struct_structaudioEngineDataStruct`
 

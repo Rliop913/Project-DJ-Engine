@@ -73,6 +73,8 @@ Included By
 
 - :ref:`file_include_db_dbState.hpp`
 
+- :ref:`file_include_db_fileNameSanitizer.hpp`
+
 - :ref:`file_include_db_musicDB.hpp`
 
 - :ref:`file_include_db_trackDB.hpp`
@@ -98,5 +100,5 @@ Defines
 -------
 
 
-- :ref:`exhale_define__p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp_1a881b531a2da9c72650a79edb575b6c8c`
+- :ref:`exhale_define_PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c`
 

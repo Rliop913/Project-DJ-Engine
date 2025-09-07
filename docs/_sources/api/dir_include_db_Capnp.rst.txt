@@ -5,12 +5,12 @@ Directory Capnp
 ===============
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_db>` (``include\db``)
+|exhale_lsh| :ref:`Parent directory <dir_include_db>` (``include/db``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\db\Capnp``
+*Directory path:* ``include/db/Capnp``
 
 Subdirectories
 --------------
