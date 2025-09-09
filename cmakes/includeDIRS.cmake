@@ -55,6 +55,7 @@ set(PDJE_INCLUDE_CORE
   ${CMAKE_CURRENT_SOURCE_DIR}/include/editor/featureWrapper/GitWrap/Blame
   ${CMAKE_CURRENT_SOURCE_DIR}/include/editor/featureWrapper/GitWrap/Diff
   ${CMAKE_CURRENT_SOURCE_DIR}/include/editor/featureWrapper/GitWrap/Log
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/editor/pdjeLinter
   
   ${CMAKE_CURRENT_SOURCE_DIR}/include/editor/featureWrapper/JSONWrap
   ${CMAKE_CURRENT_SOURCE_DIR}/include/editor/objects

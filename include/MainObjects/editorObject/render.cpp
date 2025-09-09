@@ -1,9 +1,16 @@
 #include "editorObject.hpp"
+#include "fileNameSanitizer.hpp"
+#include "pdjeLinter.hpp"
+#include "trackDB.hpp"
+
 bool
-editorObject::render(const UNSANITIZED &trackTitle, litedb &ROOTDB)
+editorObject::render(const UNSANITIZED &trackTitle, litedb &ROOTDB, UNSANITIZED& lint_msg)
 {
     std::unordered_map<SANITIZED, SANITIZED> titles;
     auto td = makeTrackData(trackTitle, titles);
+    if(!PDJE_Linter<trackdata>::Lint(td, lint_msg)){
+        return false;
+    }
 
     std::vector<musdata> mds;
     for (auto &i : E_obj->musicHandle) {
