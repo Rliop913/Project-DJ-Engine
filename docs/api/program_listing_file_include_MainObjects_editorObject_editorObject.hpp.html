@@ -89,6 +89,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;audioPlayer.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;editor.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;pdjeLinter.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tempDB.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
@@ -186,7 +187,9 @@
 <span class="w">    </span><span class="n">deleteLine</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_TYPE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">obj</span><span class="p">);</span>
 
 <span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="nf">render</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">trackTitle</span><span class="p">,</span><span class="w"> </span><span class="n">litedb</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ROOTDB</span><span class="p">);</span>
+<span class="w">    </span><span class="nf">render</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">trackTitle</span><span class="p">,</span>
+<span class="w">           </span><span class="n">litedb</span><span class="w">            </span><span class="o">&amp;</span><span class="n">ROOTDB</span><span class="p">,</span>
+<span class="w">           </span><span class="n">UNSANITIZED</span><span class="w">       </span><span class="o">&amp;</span><span class="n">lint_msg</span><span class="p">);</span>
 
 <span class="w">    </span><span class="kt">void</span>
 <span class="w">    </span><span class="nf">demoPlayInit</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">audioPlayer</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">player</span><span class="p">,</span>

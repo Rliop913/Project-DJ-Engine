@@ -51,6 +51,8 @@ Included By
 -----------
 
 
+- :ref:`file_include_MainObjects_editorObject_render.cpp`
+
 - :ref:`file_include_audioRender_ManualMix_MusicControlPannel.hpp`
 
 - :ref:`file_include_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`
@@ -76,6 +78,8 @@ Included By
 - :ref:`file_include_editor_featureWrapper_JSONWrap_EditorArgs.hpp`
 
 - :ref:`file_include_editor_featureWrapper_JSONWrap_jsonWrapper.hpp`
+
+- :ref:`file_include_editor_pdjeLinter_trackLinter.cpp`
 
 
 

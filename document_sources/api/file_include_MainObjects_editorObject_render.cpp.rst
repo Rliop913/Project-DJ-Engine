@@ -32,6 +32,12 @@ Includes
 
 - ``editorObject.hpp`` (:ref:`file_include_MainObjects_editorObject_editorObject.hpp`)
 
+- ``fileNameSanitizer.hpp`` (:ref:`file_include_db_fileNameSanitizer.hpp`)
+
+- ``pdjeLinter.hpp`` (:ref:`file_include_editor_pdjeLinter_pdjeLinter.hpp`)
+
+- ``trackDB.hpp`` (:ref:`file_include_db_trackDB.hpp`)
+
 
 
 

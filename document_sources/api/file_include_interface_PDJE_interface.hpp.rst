@@ -54,6 +54,8 @@ Included By
 
 - :ref:`file_include_interface_PDJE_polyglot_wraps.cpp`
 
+- :ref:`file_include_tests_dbTest.cpp`
+
 - :ref:`file_include_tests_editorTest.cpp`
 
 - :ref:`file_include_tests_interfaceTest.cpp`

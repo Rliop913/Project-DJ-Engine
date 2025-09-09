@@ -34,7 +34,8 @@ Program Listing for File MusicJson.cpp
                    continue;
                if (Target[PDJE_JSON_SUBBEAT] != args.subBeat && args.subBeat != -1)
                    continue;
-               if (Target[PDJE_JSON_SEPARATE] != args.separate && args.separate != -1)
+               if (Target[PDJE_JSON_SEPARATE] != args.separate &&
+                   args.separate != -1)
                    continue;
                if (Target[PDJE_JSON_BPM] != args.bpm && args.bpm != "")
                    continue;
@@ -107,11 +108,14 @@ Program Listing for File MusicJson.cpp
        for (auto &i : ROOT[PDJEMUSICBPM]) {
            EDIT_ARG_MUSIC tempargs;
    
-           tempargs.musicName =
-               PDJE_Name_Sanitizer::getFileName(ROOT[PDJE_JSON_TITLE].get<SANITIZED>());
+           tempargs.musicName = PDJE_Name_Sanitizer::getFileName(
+               ROOT[PDJE_JSON_TITLE].get<SANITIZED>());
    
            auto tempBpm = i[PDJE_JSON_BPM].get<DONT_SANITIZE>();
-           tempargs.arg = { tempBpm, i[PDJE_JSON_BEAT], i[PDJE_JSON_SUBBEAT], i[PDJE_JSON_SEPARATE] };
+           tempargs.arg = { tempBpm,
+                            i[PDJE_JSON_BEAT],
+                            i[PDJE_JSON_SUBBEAT],
+                            i[PDJE_JSON_SEPARATE] };
            jsonCallback(tempargs);
        }
    }

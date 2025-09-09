@@ -361,6 +361,8 @@
       <node id="41">
         <label>fileNameSanitizer.hpp</label>
         <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="28" relation="include">
+        </childnode>
         <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
@@ -368,8 +370,6 @@
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="37">
@@ -591,7 +591,7 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -680,7 +680,7 @@
         <label>include/SWIG_editor_visitor.hpp</label>
         <link refid="SWIG__editor__visitor_8hpp"/>
       </node>
-      <node id="25">
+      <node id="26">
         <label>include/audioRender/audioRender.cpp</label>
         <link refid="audioRender_8cpp"/>
       </node>
@@ -689,7 +689,7 @@
         <link refid="audioRender_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="18">
@@ -711,20 +711,26 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
       </node>
       <node id="21">
         <label>include/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
       </node>
-      <node id="24">
+      <node id="25">
         <label>include/tests/audioTest.cpp</label>
         <link refid="audioTest_8cpp"/>
       </node>
       <node id="22">
+        <label>include/tests/dbTest.cpp</label>
+        <link refid="dbTest_8cpp"/>
+      </node>
+      <node id="23">
         <label>include/tests/editorTest.cpp</label>
         <link refid="editorTest_8cpp"/>
       </node>
-      <node id="23">
+      <node id="24">
         <label>include/tests/interfaceTest.cpp</label>
         <link refid="interfaceTest_8cpp"/>
       </node>
@@ -736,7 +742,7 @@
         <name>ITPL_ENUM</name>
         <enumvalue id="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28a3c4025390f0d77ea4f892d804a429c05" prot="public">
           <name>ITPL_LINEAR</name>
-          <initializer>=0</initializer>
+          <initializer>= 0</initializer>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -769,7 +775,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/audioRender/audioRender.hpp" line="46" column="1" bodyfile="include/audioRender/audioRender.hpp" bodystart="46" bodyend="51"/>
+        <location file="include/audioRender/audioRender.hpp" line="46" column="1" bodyfile="include/audioRender/audioRender.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -794,12 +800,7 @@
 <codeline lineno="43" refid="classaudioRender_1a4fc2ea859169b006941152415635859d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaudioRender_1a4fc2ea859169b006941152415635859d" kindref="member">~audioRender</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="44"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46" refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28" kindref="member">ITPL_ENUM</ref><sp/>{</highlight></codeline>
-<codeline lineno="47" refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28a3c4025390f0d77ea4f892d804a429c05" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28a3c4025390f0d77ea4f892d804a429c05" kindref="member">ITPL_LINEAR</ref><sp/>=0,</highlight></codeline>
-<codeline lineno="48" refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28a884eb7aa49f4b2aa60a887550229600c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28a884eb7aa49f4b2aa60a887550229600c" kindref="member">ITPL_COSINE</ref>,</highlight></codeline>
-<codeline lineno="49" refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28ae539c8732dac05aa238788901761141d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28ae539c8732dac05aa238788901761141d" kindref="member">ITPL_CUBIC</ref>,</highlight></codeline>
-<codeline lineno="50" refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28a60d4232c15ed7e04f65658d7861270a8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28a60d4232c15ed7e04f65658d7861270a8" kindref="member">ITPL_FLAT</ref></highlight></codeline>
-<codeline lineno="51"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="46" refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28a884eb7aa49f4b2aa60a887550229600c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28" kindref="member">ITPL_ENUM</ref><sp/>{<sp/><ref refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28a3c4025390f0d77ea4f892d804a429c05" kindref="member">ITPL_LINEAR</ref><sp/>=<sp/>0,<sp/><ref refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28a884eb7aa49f4b2aa60a887550229600c" kindref="member">ITPL_COSINE</ref>,<sp/><ref refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28ae539c8732dac05aa238788901761141d" kindref="member">ITPL_CUBIC</ref>,<sp/><ref refid="audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28a60d4232c15ed7e04f65658d7861270a8" kindref="member">ITPL_FLAT</ref><sp/>};</highlight></codeline>
     </programlisting>
     <location file="include/audioRender/audioRender.hpp"/>
   </compounddef>

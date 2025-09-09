@@ -166,7 +166,6 @@ Program Listing for File editorTest.cpp
            editor->GetLogWithJSONGraph<EDIT_ARG_NOTE>();
            editor->GetLogWithJSONGraph<EDIT_ARG_MUSIC>("music name");
    
-           
        } else {
            std::cout << "init failed " << std::endl;
            delete engine;

@@ -1229,7 +1229,8 @@ Editor Step-3: Config new Music & Render & apply to root db
 
         editor->ConfigNewMusic("music name", "composer name", "C://path.wav", "4800");
         //configure new music meta data. the 4800 means the music's first beat is on (4800 / 48000)second after begin of the music.
-        editor->render("track name", *(engine->DBROOT));
+        std::string linter_message;
+        editor->render("track name", *(engine->DBROOT), linter_message);
         //renders track. builds track and music binary data from editor data.
         //if you want to add just musics, you don't need to edit or add track data. doesn't need to care about track name
         //track or music data must contain bpm data on 0beat, 0subBeat position.
@@ -1247,7 +1248,8 @@ Editor Step-3: Config new Music & Render & apply to root db
 
         editor.ConfigNewMusic("music name", "composer name", "C://path.wav", "4800");
         //configure new music meta data. the 4800 means the music's first beat is on (4800 / 48000)second after begin of the music.
-        editor.render("track name", (engine.DBROOT));
+        var linter_msg = "";
+        editor.render("track name", (engine.DBROOT), linter_msg);
         //renders track. builds track and music binary data from editor data.
         //if you want to add just musics, you don't need to edit or add track data. doesn't need to care about track name
         //track or music data must contain bpm data on 0beat, 0subBeat position.
@@ -1266,7 +1268,9 @@ Editor Step-3: Config new Music & Render & apply to root db
         import pdje_POLYGLOT as pypdje
         editor.ConfigNewMusic("music name", "composer name", "C://path.wav", "4800")
         #configure new music meta data. the 4800 means the music's first beat is on (4800 / 48000)second after begin of the music.
-        editor.render("track name", (engine.DBROOT))
+        
+        linter_msg = ""
+        editor.render("track name", (engine.DBROOT), linter_msg)
         #renders track. builds track and music binary data from editor data.
         #if you want to add just musics, you don't need to edit or add track data. doesn't need to care about track name
         #track or music data must contain bpm data on 0beat, 0subBeat position.
@@ -1284,7 +1288,7 @@ Editor Step-3: Config new Music & Render & apply to root db
 
         editor.ConfigNewMusic("music name", "composer name", "C://path.wav", "4800");
         #configure new music meta data. the 4800 means the music's first beat is on (4800 / 48000)second after begin of the music.
-        editor.render("track name");
+        var linter_msg = editor.render("track name");
         #renders track. builds track and music binary data from editor data.
         #if you want to add just musics, you don't need to edit or add track data. doesn't need to care about track name
         #track or music data must contain bpm data on 0beat, 0subBeat position.

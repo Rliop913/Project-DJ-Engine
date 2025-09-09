@@ -10,55 +10,84 @@ Program Listing for File dbTest.cpp
 
 .. code-block:: cpp
 
-   #include "CapnpBinary.hpp"
-   #include "dbRoot.hpp"
+   #include "PDJE_interface.hpp"
+   
    #include <iostream>
    #include <string>
    int
    main()
    {
-       litedb dbr = litedb();
-       if (!dbr.openDB("./tempdb.db")) {
-           return 1;
-       }
-       auto td          = trackdata("first");
-       auto md          = musdata("WTC", "TEST", "./WTC.wav", 175);
-       md.firstBeat     = "1056";
-       auto musicBinary = CapWriter<MusicBinaryCapnpData>();
-       musicBinary.makeNew();
-       auto aubuilder = musicBinary.Wp->initDatas(2);
-       aubuilder[0].setBeat(0);
-       aubuilder[0].setSubBeat(0);
-       aubuilder[0].setSeparate(4);
-       aubuilder[0].setBpm("175.0");
-       aubuilder[1].setBeat(32);
-       aubuilder[1].setBeat(0);
-       aubuilder[1].setSeparate(4);
-       aubuilder[1].setBpm("88.0");
-       md.bpmBinary = musicBinary.out();
+       auto pdje   = new PDJE("ROOT_DB");
+       auto Musics = pdje->SearchMusic("", "");
+       auto Tracks = pdje->SearchTrack("");
+       std::cout << "============musics==================" << std::endl;
+       for (const auto &musd : Musics) {
    
-       dbr <= md;
-       auto mdret = dbr << md;
-       // auto tdret = dbr << td;
-       if (!mdret.has_value()) {
+           std::cout << "title: " << PDJE_Name_Sanitizer::getFileName(musd.title)
+                     << std::endl;
+           std::cout << "composer: "
+                     << PDJE_Name_Sanitizer::getFileName(musd.composer)
+                     << std::endl;
    
-           return 1;
+           std::cout << "bpm: " << musd.bpm << std::endl;
+           CapReader<MusicBinaryCapnpData> bpmReader;
+           bpmReader.open(musd.bpmBinary);
+           auto datas = bpmReader.Rp->getDatas();
+           std::cout << "getting bpm binaries" << musd.bpm << std::endl;
+           for (int i = 0; i < datas.size(); ++i) {
+               std::cout << "beat: " << datas[i].getBeat()
+                         << " subBeat: " << datas[i].getSubBeat()
+                         << " separate: " << datas[i].getSeparate() << std::endl;
+           }
+   
+           std::cout << "first beat: " << musd.firstBeat << std::endl;
+           std::cout << "musicPath: "
+                     << PDJE_Name_Sanitizer::getFileName(musd.musicPath)
+                     << std::endl;
        }
-       // if(!tdret.has_value()){
-       //     return 1;
-       // }
-       for (auto i : mdret.value()) {
-           std::cout << std::string(i.title.begin(), i.title.end()) << ", "
-                     << std::string(i.musicPath.begin(), i.musicPath.end()) << ", "
-                     << std::string(i.composer.begin(), i.composer.end()) << ", "
-                     << i.bpm << std::endl;
-           for (auto j : i.bpmBinary) {
-               std::cout << j << std::endl;
+   
+       std::cout << "==============tracks====================" << std::endl;
+       for (const auto &trackd : Tracks) {
+           std::cout << "track title"
+                     << PDJE_Name_Sanitizer::getFileName(trackd.trackTitle)
+                     << std::endl;
+           std::cout << "getting mix binary" << std::endl;
+           CapReader<MixBinaryCapnpData> mixReader;
+           mixReader.open(trackd.mixBinary);
+           auto mixs = mixReader.Rp->getDatas();
+           for (int i = 0; i < mixs.size(); ++i) {
+   
+               std::cout << " Type: " << static_cast<int64_t>(mixs[i].getType())
+                         << " Detail: "
+                         << static_cast<int64_t>(mixs[i].getDetails())
+                         << " ID: " << mixs[i].getId() << std::endl;
+               std::cout << " first: " << mixs[i].getFirst().cStr()
+                         << " Second: " << mixs[i].getSecond().cStr()
+                         << " Third: " << mixs[i].getThird().cStr() << std::endl;
+               std::cout << " beat: " << mixs[i].getBeat()
+                         << " subBeat: " << mixs[i].getSubBeat()
+                         << " separate: " << mixs[i].getSeparate() << std::endl;
+               std::cout << " Ebeat: " << mixs[i].getEbeat()
+                         << " Esubbeat: " << mixs[i].getEsubBeat()
+                         << " Eseparate: " << mixs[i].getEseparate() << std::endl;
+           }
+           CapReader<NoteBinaryCapnpData> noteReader;
+           noteReader.open(trackd.mixBinary);
+           auto notes = noteReader.Rp->getDatas();
+           for (int i = 0; i < notes.size(); ++i) {
+               std::cout << " NoteType: " << notes[i].getNoteType().cStr()
+                         << " NoteDetail: " << notes[i].getNoteDetail().cStr()
+                         << std::endl;
+               std::cout << " first: " << notes[i].getFirst().cStr()
+                         << " Second: " << notes[i].getSecond().cStr()
+                         << " Third: " << notes[i].getThird().cStr() << std::endl;
+               std::cout << " beat: " << notes[i].getBeat()
+                         << " subBeat: " << notes[i].getSubBeat()
+                         << " separate: " << notes[i].getSeparate() << std::endl;
+               std::cout << " Ebeat: " << notes[i].getEbeat()
+                         << " Esubbeat: " << notes[i].getEsubBeat()
+                         << " Eseparate: " << notes[i].getESeparate() << std::endl;
            }
        }
-       // for(auto i : tdret.value()){
-       //     std::cout << i.trackTitle << std::endl;
-       // }
-   
        return 0;
    }

@@ -46,6 +46,8 @@ Included By
 -----------
 
 
+- :ref:`file_include_MainObjects_editorObject_render.cpp`
+
 - :ref:`file_include_db_dbRoot.hpp`
 
 - :ref:`file_include_db_trackDB.cpp`
