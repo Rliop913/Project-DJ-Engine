@@ -17,6 +17,7 @@ Program Listing for File editorObject.hpp
    #include "PDJE_LOG_SETTER.hpp"
    #include "audioPlayer.hpp"
    #include "editor.hpp"
+   #include "pdjeLinter.hpp"
    #include "tempDB.hpp"
    #include <filesystem>
    #include <optional>
@@ -114,7 +115,9 @@ Program Listing for File editorObject.hpp
        deleteLine(const EDIT_ARG_TYPE &obj);
    
        bool
-       render(const UNSANITIZED &trackTitle, litedb &ROOTDB);
+       render(const UNSANITIZED &trackTitle,
+              litedb            &ROOTDB,
+              UNSANITIZED       &lint_msg);
    
        void
        demoPlayInit(std::shared_ptr<audioPlayer> &player,

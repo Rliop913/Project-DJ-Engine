@@ -11,6 +11,7 @@
     <includes refid="editorObject_8hpp" local="yes">editorObject.hpp</includes>
     <includedby refid="PDJE__interface_8cpp" local="yes">include/interface/PDJE_interface.cpp</includedby>
     <includedby refid="PDJE__polyglot__wraps_8cpp" local="yes">include/interface/PDJE_polyglot_wraps.cpp</includedby>
+    <includedby refid="dbTest_8cpp" local="yes">include/tests/dbTest.cpp</includedby>
     <includedby refid="editorTest_8cpp" local="yes">include/tests/editorTest.cpp</includedby>
     <includedby refid="interfaceTest_8cpp" local="yes">include/tests/interfaceTest.cpp</includedby>
     <incdepgraph>
@@ -57,12 +58,14 @@
         </childnode>
         <childnode refid="106" relation="include">
         </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="106">
+      <node id="107">
         <label>tempDB.hpp</label>
         <link refid="tempDB_8hpp"/>
         <childnode refid="13" relation="include">
@@ -465,6 +468,8 @@
       <node id="36">
         <label>fileNameSanitizer.hpp</label>
         <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
         <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
@@ -472,8 +477,6 @@
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
         </childnode>
       </node>
       <node id="34">
@@ -674,6 +677,12 @@
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="105" relation="include">
+        </childnode>
+      </node>
+      <node id="106">
+        <label>pdjeLinter.hpp</label>
+        <link refid="pdjeLinter_8hpp"/>
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="25">
@@ -920,16 +929,22 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>include/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
       </node>
       <node id="4">
+        <label>include/tests/dbTest.cpp</label>
+        <link refid="dbTest_8cpp"/>
+      </node>
+      <node id="5">
         <label>include/tests/editorTest.cpp</label>
         <link refid="editorTest_8cpp"/>
       </node>
-      <node id="5">
+      <node id="6">
         <label>include/tests/interfaceTest.cpp</label>
         <link refid="interfaceTest_8cpp"/>
       </node>

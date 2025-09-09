@@ -74,11 +74,11 @@ Included By
 
 - :ref:`file_include_editor_editor.hpp`
 
+- :ref:`file_include_editor_pdjeLinter_pdjeLinter.hpp`
+
 - :ref:`file_include_interface_PDJE_interface.hpp`
 
 - :ref:`file_include_tests_audioTest.cpp`
-
-- :ref:`file_include_tests_dbTest.cpp`
 
 
 

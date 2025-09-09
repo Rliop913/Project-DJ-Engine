@@ -16,6 +16,7 @@ Subdirectories
 --------------
 
 - :ref:`dir_include_editor_featureWrapper`
+- :ref:`dir_include_editor_pdjeLinter`
 
 
 Files

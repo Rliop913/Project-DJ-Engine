@@ -140,7 +140,7 @@
 <span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Target</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="kt">void</span>
 <span class="w">    </span><span class="n">getAll</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Target</span><span class="w"> </span><span class="o">&amp;</span><span class="n">args</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">jsonCallback</span><span class="p">);</span>
-<span class="w">    </span><span class="c1">//add multi-threaded faster getter later</span>
+<span class="w">    </span><span class="c1">// add multi-threaded faster getter later</span>
 
 <span class="w">    </span><span class="kt">bool</span>
 <span class="w">    </span><span class="nf">load</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="o">&amp;</span><span class="n">path</span><span class="p">);</span>
@@ -177,30 +177,27 @@
 <span class="w">    </span><span class="o">~</span><span class="n">PDJE_JSONHandler</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 <span class="p">};</span>
 
-
-<span class="cp">#define PDJE_JSON_TYPE      &quot;type&quot;</span>
-<span class="cp">#define PDJE_JSON_DETAILS   &quot;details&quot;</span>
-<span class="cp">#define PDJE_JSON_ID        &quot;id&quot;</span>
-<span class="cp">#define PDJE_JSON_FIRST     &quot;first&quot;</span>
-<span class="cp">#define PDJE_JSON_SECOND    &quot;second&quot;</span>
-<span class="cp">#define PDJE_JSON_THIRD     &quot;third&quot;</span>
-<span class="cp">#define PDJE_JSON_BEAT      &quot;beat&quot;</span>
-<span class="cp">#define PDJE_JSON_SUBBEAT   &quot;sub_beat&quot;</span>
-<span class="cp">#define PDJE_JSON_SEPARATE  &quot;separate&quot;</span>
-<span class="cp">#define PDJE_JSON_EBEAT     &quot;e_beat&quot;</span>
-<span class="cp">#define PDJE_JSON_ESUBBEAT  &quot;e_subBeat&quot;</span>
+<span class="cp">#define PDJE_JSON_TYPE &quot;type&quot;</span>
+<span class="cp">#define PDJE_JSON_DETAILS &quot;details&quot;</span>
+<span class="cp">#define PDJE_JSON_ID &quot;id&quot;</span>
+<span class="cp">#define PDJE_JSON_FIRST &quot;first&quot;</span>
+<span class="cp">#define PDJE_JSON_SECOND &quot;second&quot;</span>
+<span class="cp">#define PDJE_JSON_THIRD &quot;third&quot;</span>
+<span class="cp">#define PDJE_JSON_BEAT &quot;beat&quot;</span>
+<span class="cp">#define PDJE_JSON_SUBBEAT &quot;sub_beat&quot;</span>
+<span class="cp">#define PDJE_JSON_SEPARATE &quot;separate&quot;</span>
+<span class="cp">#define PDJE_JSON_EBEAT &quot;e_beat&quot;</span>
+<span class="cp">#define PDJE_JSON_ESUBBEAT &quot;e_subBeat&quot;</span>
 <span class="cp">#define PDJE_JSON_ESEPARATE &quot;e_separate&quot;</span>
 
-<span class="cp">#define PDJE_JSON_BPM       &quot;bpm&quot;</span>
+<span class="cp">#define PDJE_JSON_BPM &quot;bpm&quot;</span>
 
 <span class="cp">#define PDJE_JSON_TITLE &quot;title&quot;</span>
 <span class="cp">#define PDJE_JSON_COMPOSER &quot;composer&quot;</span>
 <span class="cp">#define PDJE_JSON_PATH &quot;path&quot;</span>
 
-
 <span class="cp">#define PDJE_JSON_NOTE_TYPE &quot;note_type&quot;</span>
 <span class="cp">#define PDJE_JSON_NOTE_DETAIL &quot;note_detail&quot;</span>
-
 
 <span class="cp">#define PDJE_JSON_FIRST_BEAT &quot;first_beat&quot;</span>
 </pre></div>

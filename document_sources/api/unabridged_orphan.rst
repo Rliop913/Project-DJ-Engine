@@ -146,6 +146,11 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir_include_editor_pdjeLinter.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_include_input.rst
 
 .. toctree::
@@ -775,6 +780,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_editor_pdjeLinter_pdjeLinter.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_audioRender_MixMachine_FAUST_VALS_phaser.hpp.rst
 
 .. toctree::
@@ -841,6 +851,11 @@ Files
    :maxdepth: 5
 
    file_include_db_trackDB.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_editor_pdjeLinter_trackLinter.cpp.rst
 
 .. toctree::
    :maxdepth: 5

@@ -47,6 +47,8 @@ Includes
 
 - ``optional``
 
+- ``pdjeLinter.hpp`` (:ref:`file_include_editor_pdjeLinter_pdjeLinter.hpp`)
+
 - ``tempDB.hpp`` (:ref:`file_include_MainObjects_tempDBObject_tempDB.hpp`)
 
 

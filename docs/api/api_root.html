@@ -151,6 +151,7 @@
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__GitHandler.html">Class PDJE_GitHandler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Input.html">Class PDJE_Input</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JSONHandler.html">Template Class PDJE_JSONHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Linter.html">Template Class PDJE_Linter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Name__Sanitizer.html">Class PDJE_Name_Sanitizer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaser__PDJE.html">Class Phaser_PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaserMan.html">Class PhaserMan</a></li>
@@ -180,6 +181,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="function_SetCue_8cpp_1a1f615c872155c73a92999c0b91f904eb.html">Function AddGBpm</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_Bpm_8cpp_1a88b0de12ebc7f29ffc71e140169681b3.html">Function bpm_thread</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_trackLinter_8cpp_1aac890445b835eeb8cac2351e3150ed80.html">Function CheckIDHasLoad</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_LINUX__SUDO__GETTER_8cpp_1a9bd9474de4c81e5a75a37839d77b2377.html">Function CHK_QWERTY</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_LINUX__SUDO__GETTER_8cpp_1ab97e546c7a36e4221b605b874bcf9182.html">Function DeviceDataGetter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_DiffController_8cpp_1a578d9eaeb5f221f100df0e9c937e9b9b.html">Function DiffCallback</a></li>
@@ -187,6 +189,7 @@
 <li class="toctree-l4"><a class="reference internal" href="function_audioTest_8cpp_1a84c51840ce6fd545243e9fb8a92d0074.html">Function fill</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_audioTest_8cpp_1a73d594cb294696b98fee4abe0a5d84ae.html">Function fillDatas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd.html">Function FillFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_trackLinter_8cpp_1a13cfef94ef7a20443052ffa72751e656.html">Function FillIdHasLoad</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_namespaceFrameCalc_1a12e18e06211c6b6148f77eef662555ad.html">Function FrameCalc::CountFrame</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_FrameCalc_8cpp_1a9cdb1949d4582c32a77bdd45679bcb7e.html">Function FrameSearchLambda</a></li>
 <li class="toctree-l4"><a class="reference internal" href="function_audioCallbacks_8cpp_1ae5e4af00326247af37e277759ed98708.html">Function FullManualRender_callback(ma_device *, void *, const void *, ma_uint32)</a></li>
@@ -320,6 +323,7 @@
 <li class="toctree-l4"><a class="reference internal" href="typedef_Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c.html">Typedef FRAME_POS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="typedef_MUSIC__CTR_8hpp_1a8eb890bb773b5395e6df7e10882ee435.html">Typedef GLOBAL_POS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="typedef_MixMachine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc.html">Typedef ID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="typedef_trackLinter_8cpp_1a3d5cd7d6a2752dc413cb5ccb5ce21bc6.html">Typedef ID_LOADED</a></li>
 <li class="toctree-l4"><a class="reference internal" href="typedef_EditorArgs_8hpp_1a217a1073c4c083da1400cf99dab75f21.html">Typedef KEY</a></li>
 <li class="toctree-l4"><a class="reference internal" href="typedef_EditorArgs_8hpp_1a67473814637ada120f046e947d522b64.html">Typedef KEY_VALUE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="typedef_jsonWrapper_8hpp_1a67473814637ada120f046e947d522b64.html">Typedef KEY_VALUE</a></li>
@@ -1415,7 +1419,7 @@
 <li class="toctree-l4"><a class="reference internal" href="classeditorObject.html#_CPPv4N12editorObject7AddLineERK11UNSANITIZEDRK13DONT_SANITIZE"><code class="docutils literal notranslate"><span class="pre">AddLine()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="classeditorObject.html#_CPPv4N12editorObject10deleteLineERK12EDIT_ARG_MIXbb"><code class="docutils literal notranslate"><span class="pre">deleteLine()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="classeditorObject.html#_CPPv4I0EN12editorObject10deleteLineEiRK13EDIT_ARG_TYPE"><code class="docutils literal notranslate"><span class="pre">deleteLine()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="classeditorObject.html#_CPPv4N12editorObject6renderERK11UNSANITIZEDR6litedb"><code class="docutils literal notranslate"><span class="pre">render()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="classeditorObject.html#_CPPv4N12editorObject6renderERK11UNSANITIZEDR6litedbR11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">render()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="classeditorObject.html#_CPPv4N12editorObject12demoPlayInitERNSt10shared_ptrI11audioPlayerEEjRK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">demoPlayInit()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="classeditorObject.html#_CPPv4N12editorObject12pushToRootDBER6litedbRK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">pushToRootDB()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="classeditorObject.html#_CPPv4N12editorObject12pushToRootDBER6litedbRK11UNSANITIZEDRK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">pushToRootDB()</span></code></a></li>
@@ -2211,6 +2215,21 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="classPDJE__Linter.html">Template Class PDJE_Linter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classPDJE__Linter.html#class-documentation">Class Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classPDJE__Linter.html#_CPPv4I0E11PDJE_Linter"><code class="docutils literal notranslate"><span class="pre">PDJE_Linter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Linter.html#_CPPv4N11PDJE_Linter4LintERK9trackdataR11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">Lint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__Linter.html#_CPPv4N11PDJE_Linter4LintERK8DataTypeR11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">Lint()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="classPDJE__Name__Sanitizer.html">Class PDJE_Name_Sanitizer</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="classPDJE__Name__Sanitizer.html#class-documentation">Class Documentation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="classPDJE__Name__Sanitizer.html#_CPPv419PDJE_Name_Sanitizer"><code class="docutils literal notranslate"><span class="pre">PDJE_Name_Sanitizer</span></code></a><ul>
@@ -2633,6 +2652,14 @@
 </div>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="function_trackLinter_8cpp_1aac890445b835eeb8cac2351e3150ed80.html">Function CheckIDHasLoad</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_trackLinter_8cpp_1aac890445b835eeb8cac2351e3150ed80.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="function_LINUX__SUDO__GETTER_8cpp_1a9bd9474de4c81e5a75a37839d77b2377.html">Function CHK_QWERTY</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="function_LINUX__SUDO__GETTER_8cpp_1a9bd9474de4c81e5a75a37839d77b2377.html#function-documentation">Function Documentation</a></li>
 </ul>
@@ -2683,6 +2710,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="function_Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd.html">Function FillFrame</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="function_Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="function_trackLinter_8cpp_1a13cfef94ef7a20443052ffa72751e656.html">Function FillIdHasLoad</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="function_trackLinter_8cpp_1a13cfef94ef7a20443052ffa72751e656.html#function-documentation">Function Documentation</a></li>
 </ul>
 </li>
 </ul>
@@ -3852,6 +3887,14 @@
 <li class="toctree-l3"><a class="reference internal" href="typedef_MixMachine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc.html#_CPPv42ID"><code class="docutils literal notranslate"><span class="pre">ID</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="typedef_trackLinter_8cpp_1a3d5cd7d6a2752dc413cb5ccb5ce21bc6.html">Typedef ID_LOADED</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="typedef_trackLinter_8cpp_1a3d5cd7d6a2752dc413cb5ccb5ce21bc6.html#typedef-documentation">Typedef Documentation</a></li>
 </ul>
 </li>
 </ul>

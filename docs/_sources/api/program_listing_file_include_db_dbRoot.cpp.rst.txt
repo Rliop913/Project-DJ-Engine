@@ -38,7 +38,8 @@ Program Listing for File dbRoot.cpp
        rdbops.create_if_missing = true;
        rdbops.OptimizeForPointLookup(512 * 1024 * 1024);
        rdbops.OptimizeLevelStyleCompaction();
-       rdbops.file_checksum_gen_factory = rocksdb::GetFileChecksumGenCrc32cFactory();
+       rdbops.file_checksum_gen_factory =
+           rocksdb::GetFileChecksumGenCrc32cFactory();
        RDB::BlockBasedTableOptions table_options;
        table_options.filter_policy.reset(RDB::NewBloomFilterPolicy(10, true));
        rdbops.table_factory.reset(NewBlockBasedTableFactory(table_options));

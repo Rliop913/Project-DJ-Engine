@@ -12,11 +12,11 @@ Program Listing for File fileNameSanitizer.hpp
 
    
    #pragma once
+   #include "PDJE_EXPORT_SETTER.hpp"
    #include <cppcodec/base64_default_url.hpp>
    #include <filesystem>
    #include <optional>
    #include <string>
-   #include "PDJE_EXPORT_SETTER.hpp"
    namespace fs = std::filesystem;
    
    using SANITIZED = std::string;
