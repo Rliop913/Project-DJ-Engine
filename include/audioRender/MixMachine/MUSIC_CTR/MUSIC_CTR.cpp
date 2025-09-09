@@ -43,10 +43,9 @@ MUSIC_CTR::checkUsable()
     if (!Usable) {
         critlog("usable check failed. Decoder or songpath not valid from "
                 "MUSIC_CTR checkUsable.");
-        if(D.has_value()){
+        if (D.has_value()) {
             critlog("songPath is not valid");
-        }
-        else{
+        } else {
             critlog("Decoder is not valid");
         }
     }

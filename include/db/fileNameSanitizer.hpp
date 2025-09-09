@@ -3,11 +3,11 @@
  * @brief Provides utilities for sanitizing and de-sanitizing file names.
  */
 #pragma once
+#include "PDJE_EXPORT_SETTER.hpp"
 #include <cppcodec/base64_default_url.hpp>
 #include <filesystem>
 #include <optional>
 #include <string>
-#include "PDJE_EXPORT_SETTER.hpp"
 namespace fs = std::filesystem;
 
 /// @brief Type alias for a sanitized string.

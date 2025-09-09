@@ -102,22 +102,26 @@ editorObject::ConfigNewMusic(const UNSANITIZED   &NewMusicName,
         critlog(musicPath.generic_string());
         return false;
     }
-    ma_decoder test_decoder;
-    ma_decoder_config test_decconf = ma_decoder_config_init(ma_format_s32, 2, 48000);
+    ma_decoder        test_decoder;
+    ma_decoder_config test_decconf =
+        ma_decoder_config_init(ma_format_s32, 2, 48000);
 
-    auto init_result = ma_decoder_init_file(musicPath.string().c_str(), &test_decconf, &test_decoder);
+    auto init_result = ma_decoder_init_file(
+        musicPath.string().c_str(), &test_decconf, &test_decoder);
     ma_decoder_uninit(&test_decoder);
-    if(init_result != MA_SUCCESS){
-        critlog("music file is not available. from editorObject ConfigNewMusic. path:");
+    if (init_result != MA_SUCCESS) {
+        critlog("music file is not available. from editorObject "
+                "ConfigNewMusic. path:");
         critlog(musicPath.generic_string());
         return false;
     }
     fs::path tempDataPath;
     if (E_obj->AddMusicConfig(safeMus.value(), tempDataPath)) {
 
-        E_obj->musicHandle.back().jsonh[PDJE_JSON_TITLE]    = safeMus.value();
-        E_obj->musicHandle.back().jsonh[PDJE_JSON_COMPOSER] = safeComposer.value();
-        E_obj->musicHandle.back().dataPath                  = tempDataPath;
+        E_obj->musicHandle.back().jsonh[PDJE_JSON_TITLE] = safeMus.value();
+        E_obj->musicHandle.back().jsonh[PDJE_JSON_COMPOSER] =
+            safeComposer.value();
+        E_obj->musicHandle.back().dataPath = tempDataPath;
         try {
             fs::path absPath;
             if (musicPath.is_absolute()) {

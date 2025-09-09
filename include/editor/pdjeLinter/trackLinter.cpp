@@ -1,7 +1,7 @@
+#include "CapnpBinary.hpp"
 #include "MixBinary.capnp.h"
 #include "fileNameSanitizer.hpp"
 #include "pdjeLinter.hpp"
-#include "CapnpBinary.hpp"
 #include <cstdint>
 #include <string>
 #include <unordered_map>
@@ -9,67 +9,58 @@
 using ID_LOADED = std::unordered_map<int32_t, int>;
 
 void
-FillIdHasLoad(ID_LOADED& accumulate_data, const TypeEnum& type, const int32_t& id)
+FillIdHasLoad(ID_LOADED      &accumulate_data,
+              const TypeEnum &type,
+              const int32_t  &id)
 {
-    if(!accumulate_data.contains(id)){
+    if (!accumulate_data.contains(id)) {
         accumulate_data[id] = 0;
     }
 
-    if(type == TypeEnum::LOAD){
+    if (type == TypeEnum::LOAD) {
         accumulate_data[id] += 1;
     }
 }
 
 bool
-CheckIDHasLoad(const ID_LOADED& acc_data, UNSANITIZED& msg)
+CheckIDHasLoad(const ID_LOADED &acc_data, UNSANITIZED &msg)
 {
     bool FLAG_OK = true;
-    for(const auto& id : acc_data){
-        if(id.second != 1){
+    for (const auto &id : acc_data) {
+        if (id.second != 1) {
             FLAG_OK = false;
-            msg += 
-            " ID " 
-            + std::to_string(id.first) 
-            + " has "
-            + (
-                id.second > 1 ? 
-                (std::to_string(id.second) + " load command.\n")
-                : 
-                "no load command.\n"
-            )
-            ;
+            msg += " ID " + std::to_string(id.first) + " has " +
+                   (id.second > 1
+                        ? (std::to_string(id.second) + " load command.\n")
+                        : "no load command.\n");
         }
     }
     return FLAG_OK;
 }
 
-template<>
+template <>
 bool
-PDJE_Linter<trackdata>::Lint(const trackdata& target, UNSANITIZED& lint_msg)
+PDJE_Linter<trackdata>::Lint(const trackdata &target, UNSANITIZED &lint_msg)
 {
     auto trackReader = CapReader<MixBinaryCapnpData>();
-    if(!trackReader.open(target.mixBinary)){
+    if (!trackReader.open(target.mixBinary)) {
         lint_msg = "failed to open mix data.";
         return false;
     }
     auto td = trackReader.Rp->getDatas();
-    if(td.size() == 0){
+    if (td.size() == 0) {
         lint_msg = "mix data is empty";
         return false;
     }
     ID_LOADED id_has_load;
 
-    for(size_t i=0; i<td.size(); ++i){
+    for (size_t i = 0; i < td.size(); ++i) {
         FillIdHasLoad(id_has_load, td[i].getType(), td[i].getId());
-
     }
     bool FLAG_RESULT = true;
-    if(!CheckIDHasLoad(id_has_load, lint_msg)){
+    if (!CheckIDHasLoad(id_has_load, lint_msg)) {
         FLAG_RESULT = false;
     }
 
-
-
     return FLAG_RESULT;
-    
 }
