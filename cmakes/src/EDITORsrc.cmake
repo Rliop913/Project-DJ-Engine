@@ -18,6 +18,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/include/editor/featureWrapper/GitWrap/Branch/editorB
 ${CMAKE_CURRENT_SOURCE_DIR}/include/editor/featureWrapper/GitWrap/Commit/editorCommit.cpp
 
 ${CMAKE_CURRENT_SOURCE_DIR}/include/editor/editor.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/editor/pdjeLinter/trackLinter.cpp
 
 ${CMAKE_CURRENT_SOURCE_DIR}/include/MainObjects/editorObject/addline.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/MainObjects/editorObject/deleteline.cpp

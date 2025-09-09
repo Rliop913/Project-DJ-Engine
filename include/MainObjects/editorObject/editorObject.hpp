@@ -8,6 +8,7 @@
 #include "PDJE_LOG_SETTER.hpp"
 #include "audioPlayer.hpp"
 #include "editor.hpp"
+#include "pdjeLinter.hpp"
 #include "tempDB.hpp"
 #include <filesystem>
 #include <optional>
@@ -166,7 +167,9 @@ class PDJE_API editorObject {
      * @return `true` if the rendering was successful, `false` otherwise.
      */
     bool
-    render(const UNSANITIZED &trackTitle, litedb &ROOTDB);
+    render(const UNSANITIZED &trackTitle,
+           litedb            &ROOTDB,
+           UNSANITIZED       &lint_msg);
 
     /**
      * @brief Initializes a demo player for a given track.

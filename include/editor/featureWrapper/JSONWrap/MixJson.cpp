@@ -32,13 +32,16 @@ PDJE_JSONHandler<MIX_W>::deleteLine(const MixArgs &args,
                 continue;
             if (Target[PDJE_JSON_SUBBEAT] != args.subBeat && args.subBeat != -1)
                 continue;
-            if (Target[PDJE_JSON_SEPARATE] != args.separate && args.separate != -1)
+            if (Target[PDJE_JSON_SEPARATE] != args.separate &&
+                args.separate != -1)
                 continue;
             if (Target[PDJE_JSON_EBEAT] != args.Ebeat && args.Ebeat != -1)
                 continue;
-            if (Target[PDJE_JSON_ESUBBEAT] != args.EsubBeat && args.EsubBeat != -1)
+            if (Target[PDJE_JSON_ESUBBEAT] != args.EsubBeat &&
+                args.EsubBeat != -1)
                 continue;
-            if (Target[PDJE_JSON_ESEPARATE] != args.Eseparate && args.Eseparate != -1)
+            if (Target[PDJE_JSON_ESEPARATE] != args.Eseparate &&
+                args.Eseparate != -1)
                 continue;
             targetIDX.push_back(i);
         }
@@ -88,10 +91,12 @@ PDJE_JSONHandler<MIX_W>::getAll(
         return;
     }
     for (auto &i : ROOT[PDJEARR]) {
-        MixArgs tempargs{ i[PDJE_JSON_TYPE],  i[PDJE_JSON_DETAILS],  i[PDJE_JSON_ID],
-                          i[PDJE_JSON_FIRST], i[PDJE_JSON_SECOND],   i[PDJE_JSON_THIRD],
-                          i[PDJE_JSON_BEAT],  i[PDJE_JSON_SUBBEAT],  i[PDJE_JSON_SEPARATE],
-                          i[PDJE_JSON_EBEAT], i[PDJE_JSON_ESUBBEAT], i[PDJE_JSON_ESEPARATE] };
+        MixArgs tempargs{ i[PDJE_JSON_TYPE],     i[PDJE_JSON_DETAILS],
+                          i[PDJE_JSON_ID],       i[PDJE_JSON_FIRST],
+                          i[PDJE_JSON_SECOND],   i[PDJE_JSON_THIRD],
+                          i[PDJE_JSON_BEAT],     i[PDJE_JSON_SUBBEAT],
+                          i[PDJE_JSON_SEPARATE], i[PDJE_JSON_EBEAT],
+                          i[PDJE_JSON_ESUBBEAT], i[PDJE_JSON_ESEPARATE] };
         jsonCallback(tempargs);
     }
 }
@@ -111,7 +116,8 @@ PDJE_JSONHandler<MIX_W>::render()
             filler[i].setDetails(target[PDJE_JSON_DETAILS]);
             filler[i].setId(target[PDJE_JSON_ID]);
             filler[i].setFirst(target[PDJE_JSON_FIRST].get<SANITIZED_ORNOT>());
-            filler[i].setSecond(target[PDJE_JSON_SECOND].get<SANITIZED_ORNOT>());
+            filler[i].setSecond(
+                target[PDJE_JSON_SECOND].get<SANITIZED_ORNOT>());
             filler[i].setThird(target[PDJE_JSON_THIRD].get<SANITIZED_ORNOT>());
             filler[i].setBeat(target[PDJE_JSON_BEAT]);
             filler[i].setSubBeat(target[PDJE_JSON_SUBBEAT]);
