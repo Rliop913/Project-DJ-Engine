@@ -48,10 +48,7 @@ PDJE_Linter<trackdata>::Lint(const trackdata &target, UNSANITIZED &lint_msg)
         return false;
     }
     auto td = trackReader.Rp->getDatas();
-    if (td.size() == 0) {
-        lint_msg = "mix data is empty";
-        return false;
-    }
+    
     ID_LOADED id_has_load;
 
     for (size_t i = 0; i < td.size(); ++i) {
