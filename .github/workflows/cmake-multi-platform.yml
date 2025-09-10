@@ -112,7 +112,7 @@ jobs:
     name: auto trig
     needs: build
     runs-on: ubuntu-latest
-    if: success()
+    if: ${{ github.event_name == 'push' && needs.build.result == 'success' }}
     env:
       GH_TOKEN: ${{ secrets.PDJE_AUTO_TRIG }}
     steps:
