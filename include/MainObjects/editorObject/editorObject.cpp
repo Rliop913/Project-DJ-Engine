@@ -1,4 +1,8 @@
 #include "editorObject.hpp"
+#include "PDJE_LOG_SETTER.hpp"
+#include "fileNameSanitizer.hpp"
+#include "tempDB.hpp"
+#include "trackDB.hpp"
 
 trackdata
 editorObject::makeTrackData(const UNSANITIZED &trackTitle,
@@ -163,6 +167,22 @@ editorObject::Open(const fs::path &projectPath)
 bool
 editorObject::pushToRootDB(litedb &ROOTDB, const UNSANITIZED &trackTitleToPush)
 {
+    trackdata searchQuery;
+    searchQuery.trackTitle =
+        PDJE_Name_Sanitizer::sanitizeFileName(trackTitleToPush).value_or("");
+    auto localSearched = projectLocalDB->GetBuildedProject() << searchQuery;
+    if (!localSearched.has_value()) {
+        critlog("failed to search track data. from editorObject "
+                "pushToRootDB(litedb, UNSANITIZED); trackTitle: ");
+        critlog(trackTitleToPush.c_str());
+        return false;
+    }
+    if (localSearched->size() < 1) {
+        warnlog("cannot find track data from data base. from editorObject "
+                "pushToRootDB(litedb, UNSANITIZED);");
+        return false;
+    }
+
     TITLE_COMPOSER tcData;
     auto           td = makeTrackData(trackTitleToPush, tcData);
     if (!(ROOTDB <= td)) {
