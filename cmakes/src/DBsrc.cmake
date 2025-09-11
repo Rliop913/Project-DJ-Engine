@@ -11,7 +11,6 @@ ${CMAKE_CURRENT_SOURCE_DIR}/include/core/db/Capnp/Translators/MusicTranslator/Mu
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp
 
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/db/Capnp/Translators/FrameCalc.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/include/core/db/fileNameSanitizer.cpp
 
 ${CMAKE_CURRENT_SOURCE_DIR}/third_party/Capnp/MixBinary.capnp.c++
 ${CMAKE_CURRENT_SOURCE_DIR}/third_party/Capnp/MusicBinary.capnp.c++

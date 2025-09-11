@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 
+#include "PDJE_Input_DataLine.hpp"
+
 #ifdef WIN32
 // #define WIN32_LEAN_AND_MEAN
 // #include <Windows.h>
@@ -59,6 +61,9 @@ class PDJE_Input {
      */
     void
     pair_job();
+
+    PDJE_INPUT_DATA_LINE
+    PullOutDataLine();
 
     /// Constructor.
     PDJE_Input();
