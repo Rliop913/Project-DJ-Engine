@@ -3,7 +3,7 @@
 Variable idx
 ============
 
-- Defined in :ref:`file_include_tests_audioTest.cpp`
+- Defined in :ref:`file_core_include_tests_audioTest.cpp`
 
 
 Variable Documentation

@@ -3,7 +3,7 @@
 Typedef DetailEnum
 ==================
 
-- Defined in :ref:`file_include_FAKE_CAPNP_ENUMS_FOR_SWIG.hpp`
+- Defined in :ref:`file_core_include_FAKE_CAPNP_ENUMS_FOR_SWIG.hpp`
 
 
 Typedef Documentation

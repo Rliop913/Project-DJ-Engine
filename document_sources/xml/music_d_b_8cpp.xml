@@ -6,26 +6,6 @@
     <includes local="no">source_location</includes>
     <includes refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
     <incdepgraph>
-      <node id="6">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
-      </node>
-      <node id="13">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
       <node id="7">
         <label>dbState.hpp</label>
         <link refid="db_state_8hpp"/>
@@ -43,6 +23,8 @@
       <node id="8">
         <label>fileNameSanitizer.hpp</label>
         <link refid="file_name_sanitizer_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
@@ -53,7 +35,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>include/db/musicDB.cpp</label>
+        <label>core_include/db/musicDB.cpp</label>
         <link refid="music_d_b_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -78,8 +60,28 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
+      <node id="6">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="13">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
       <node id="9">
-        <label>cppcodec/base64_url_unpadded.hpp</label>
+        <label>cppcodec/base64_default_url.hpp</label>
       </node>
       <node id="10">
         <label>filesystem</label>
@@ -136,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/musicDB.cpp" line="7" column="9" bodyfile="include/db/musicDB.cpp" bodystart="7" bodyend="18"/>
+        <location file="core_include/db/musicDB.cpp" line="7" column="9" bodyfile="core_include/db/musicDB.cpp" bodystart="7" bodyend="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -291,6 +293,6 @@
 <codeline lineno="145"><highlight class="normal"></highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHK_BIND</highlight></codeline>
     </programlisting>
-    <location file="include/db/musicDB.cpp"/>
+    <location file="core_include/db/musicDB.cpp"/>
   </compounddef>
 </doxygen>

@@ -3,7 +3,7 @@
 Define infolog
 ==============
 
-- Defined in :ref:`file_include_PDJE_LOG_SETTER.hpp`
+- Defined in :ref:`file_global_include_PDJE_LOG_SETTER.hpp`
 
 
 Define Documentation

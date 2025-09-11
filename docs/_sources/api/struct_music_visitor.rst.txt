@@ -3,7 +3,7 @@
 Struct MusicVisitor
 ===================
 
-- Defined in :ref:`file_include_SWIG_editor_visitor.hpp`
+- Defined in :ref:`file_core_include_SWIG_editor_visitor.hpp`
 
 
 Struct Documentation

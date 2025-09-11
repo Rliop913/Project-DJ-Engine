@@ -3,7 +3,7 @@
 Define CHK_BIND
 ===============
 
-- Defined in :ref:`file_include_db_trackDB.cpp`
+- Defined in :ref:`file_core_include_db_trackDB.cpp`
 
 
 Define Documentation

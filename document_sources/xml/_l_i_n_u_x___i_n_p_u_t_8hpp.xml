@@ -4,11 +4,11 @@
     <compoundname>LINUX_INPUT.hpp</compoundname>
     <includes refid="_p_d_j_e___i_n_p_u_t_8hpp" local="yes">PDJE_INPUT.hpp</includes>
     <includes local="no">libevdev-1.0/libevdev/libevdev.h</includes>
-    <includedby refid="_l_i_n_u_x___i_8cpp" local="yes">include/input/linux/LINUX_I.cpp</includedby>
-    <includedby refid="_l_i_n_u_x___s_u_d_o___g_e_t_t_e_r_8cpp" local="yes">include/input/linux/LINUX_SUDO_GETTER.cpp</includedby>
-    <includedby refid="evdevtest_8cpp" local="yes">include/tests/INPUT_TESTS/evdevtest.cpp</includedby>
-    <includedby refid="linux___i___w_a_i_t_e_r_8cpp" local="yes">include/tests/INPUT_TESTS/linux_I_WAITER.cpp</includedby>
-    <includedby refid="linux___i___w_a_k_e_r_8cpp" local="yes">include/tests/INPUT_TESTS/linux_I_WAKER.cpp</includedby>
+    <includedby refid="_l_i_n_u_x___i_8cpp" local="yes">core_include/input/linux/LINUX_I.cpp</includedby>
+    <includedby refid="_l_i_n_u_x___s_u_d_o___g_e_t_t_e_r_8cpp" local="yes">core_include/input/linux/LINUX_SUDO_GETTER.cpp</includedby>
+    <includedby refid="evdevtest_8cpp" local="yes">core_include/tests/INPUT_TESTS/evdevtest.cpp</includedby>
+    <includedby refid="linux___i___w_a_i_t_e_r_8cpp" local="yes">core_include/tests/INPUT_TESTS/linux_I_WAITER.cpp</includedby>
+    <includedby refid="linux___i___w_a_k_e_r_8cpp" local="yes">core_include/tests/INPUT_TESTS/linux_I_WAKER.cpp</includedby>
     <incdepgraph>
       <node id="2">
         <label>PDJE_INPUT.hpp</label>
@@ -19,7 +19,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>include/input/linux/LINUX_INPUT.hpp</label>
+        <label>core_include/input/linux/LINUX_INPUT.hpp</label>
         <link refid="_l_i_n_u_x___i_n_p_u_t_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -38,11 +38,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
-        <label>include/input/linux/LINUX_I.cpp</label>
+        <label>core_include/input/linux/LINUX_I.cpp</label>
         <link refid="_l_i_n_u_x___i_8cpp"/>
       </node>
       <node id="1">
-        <label>include/input/linux/LINUX_INPUT.hpp</label>
+        <label>core_include/input/linux/LINUX_INPUT.hpp</label>
         <link refid="_l_i_n_u_x___i_n_p_u_t_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -56,19 +56,19 @@
         </childnode>
       </node>
       <node id="3">
-        <label>include/input/linux/LINUX_SUDO_GETTER.cpp</label>
+        <label>core_include/input/linux/LINUX_SUDO_GETTER.cpp</label>
         <link refid="_l_i_n_u_x___s_u_d_o___g_e_t_t_e_r_8cpp"/>
       </node>
       <node id="4">
-        <label>include/tests/INPUT_TESTS/evdevtest.cpp</label>
+        <label>core_include/tests/INPUT_TESTS/evdevtest.cpp</label>
         <link refid="evdevtest_8cpp"/>
       </node>
       <node id="5">
-        <label>include/tests/INPUT_TESTS/linux_I_WAITER.cpp</label>
+        <label>core_include/tests/INPUT_TESTS/linux_I_WAITER.cpp</label>
         <link refid="linux___i___w_a_i_t_e_r_8cpp"/>
       </node>
       <node id="6">
-        <label>include/tests/INPUT_TESTS/linux_I_WAKER.cpp</label>
+        <label>core_include/tests/INPUT_TESTS/linux_I_WAKER.cpp</label>
         <link refid="linux___i___w_a_k_e_r_8cpp"/>
       </node>
     </invincdepgraph>
@@ -91,6 +91,6 @@
 <codeline lineno="20" refid="class_linux_e_v_d_e_v_1a4f3b4d9a3c35df059dc1d5a2ea6d8240" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_linux_e_v_d_e_v_1a4f3b4d9a3c35df059dc1d5a2ea6d8240" kindref="member">init</ref>();</highlight></codeline>
 <codeline lineno="21"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="include/input/linux/LINUX_INPUT.hpp"/>
+    <location file="core_include/input/linux/LINUX_INPUT.hpp"/>
   </compounddef>
 </doxygen>

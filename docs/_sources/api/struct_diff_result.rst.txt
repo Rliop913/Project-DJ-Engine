@@ -3,7 +3,7 @@
 Struct DiffResult
 =================
 
-- Defined in :ref:`file_include_editor_featureWrapper_GitWrap_Diff_DiffController.hpp`
+- Defined in :ref:`file_core_include_editor_featureWrapper_GitWrap_Diff_DiffController.hpp`
 
 
 Struct Documentation

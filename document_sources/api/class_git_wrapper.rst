@@ -3,7 +3,7 @@
 Class GitWrapper
 ================
 
-- Defined in :ref:`file_include_editor_featureWrapper_GitWrap_gitWrapper.hpp`
+- Defined in :ref:`file_core_include_editor_featureWrapper_GitWrap_gitWrapper.hpp`
 
 
 Class Documentation

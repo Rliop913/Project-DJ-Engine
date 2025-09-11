@@ -3,7 +3,7 @@
 Function mix_thread
 ===================
 
-- Defined in :ref:`file_include_db_Capnp_Translators_MixTranslator_Mix.cpp`
+- Defined in :ref:`file_core_include_db_Capnp_Translators_MixTranslator_Mix.cpp`
 
 
 Function Documentation

@@ -3,7 +3,7 @@
 Class PhaserMan
 ===============
 
-- Defined in :ref:`file_include_audioRender_ManualMix_ManualFausts_phaserMan.hpp`
+- Defined in :ref:`file_core_include_audioRender_ManualMix_ManualFausts_phaserMan.hpp`
 
 
 Class Documentation

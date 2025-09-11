@@ -3,7 +3,7 @@
 Class OcsFilter_PDJE
 ====================
 
-- Defined in :ref:`file_include_audioRender_MixMachine_FAUST_VALS_ocsFilter.hpp`
+- Defined in :ref:`file_core_include_audioRender_MixMachine_FAUST_VALS_ocsFilter.hpp`
 
 
 Inheritance Relationships

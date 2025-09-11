@@ -10,29 +10,9 @@
     <includes refid="_frame_calc_8hpp" local="yes">FrameCalc.hpp</includes>
     <includes refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
     <includes local="no">functional</includes>
-    <includedby refid="_note_translator_8cpp" local="yes">include/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp</includedby>
-    <includedby refid="_p_d_j_e__interface_8hpp" local="yes">include/interface/PDJE_interface.hpp</includedby>
+    <includedby refid="_note_translator_8cpp" local="yes">core_include/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp</includedby>
+    <includedby refid="_p_d_j_e__interface_8hpp" local="yes">core_include/interface/PDJE_interface.hpp</includedby>
     <incdepgraph>
-      <node id="10">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
-      </node>
-      <node id="11">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-      </node>
       <node id="2">
         <label>CapnpBinary.hpp</label>
         <link refid="_capnp_binary_8hpp"/>
@@ -70,7 +50,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp</label>
+        <label>core_include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp</label>
         <link refid="_note_translator_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -87,6 +67,26 @@
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="11">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="7">
@@ -146,11 +146,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
-        <label>include/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp</label>
+        <label>core_include/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp</label>
         <link refid="_note_translator_8cpp"/>
       </node>
       <node id="1">
-        <label>include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp</label>
+        <label>core_include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp</label>
         <link refid="_note_translator_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -158,11 +158,11 @@
         </childnode>
       </node>
       <node id="4">
-        <label>include/interface/PDJE_interface.cpp</label>
+        <label>core_include/interface/PDJE_interface.cpp</label>
         <link refid="_p_d_j_e__interface_8cpp"/>
       </node>
       <node id="3">
-        <label>include/interface/PDJE_interface.hpp</label>
+        <label>core_include/interface/PDJE_interface.hpp</label>
         <link refid="_p_d_j_e__interface_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
@@ -172,17 +172,23 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
       <node id="5">
-        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
+        <label>core_include/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="_p_d_j_e__polyglot__wraps_8cpp"/>
       </node>
       <node id="6">
-        <label>include/tests/editorTest.cpp</label>
-        <link refid="editor_test_8cpp"/>
+        <label>core_include/tests/dbTest.cpp</label>
+        <link refid="db_test_8cpp"/>
       </node>
       <node id="7">
-        <label>include/tests/interfaceTest.cpp</label>
+        <label>core_include/tests/editorTest.cpp</label>
+        <link refid="editor_test_8cpp"/>
+      </node>
+      <node id="8">
+        <label>core_include/tests/interfaceTest.cpp</label>
         <link refid="interface_test_8cpp"/>
       </node>
     </invincdepgraph>
@@ -229,7 +235,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="42" column="1" bodyfile="include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" bodystart="42" bodyend="-1"/>
+        <location file="core_include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="42" column="1" bodyfile="core_include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -271,6 +277,6 @@
 <codeline lineno="83" refid="class_note_translator_1a691ed50a8d68596fb6bb0cf9ce9bf442" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_note_translator_1a691ed50a8d68596fb6bb0cf9ce9bf442" kindref="member">~NoteTranslator</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="84"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp"/>
+    <location file="core_include/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp"/>
   </compounddef>
 </doxygen>

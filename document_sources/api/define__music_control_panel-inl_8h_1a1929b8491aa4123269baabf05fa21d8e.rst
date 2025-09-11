@@ -1,0 +1,14 @@
+.. _exhale_define__music_control_panel-inl_8h_1a1929b8491aa4123269baabf05fa21d8e:
+
+Define HWY_TARGET_INCLUDE
+=========================
+
+- Defined in :ref:`file_core_include_audioRender_ManualMix_MusicControlPanel-inl.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: HWY_TARGET_INCLUDE
+   :project: Project_DJ_Engine

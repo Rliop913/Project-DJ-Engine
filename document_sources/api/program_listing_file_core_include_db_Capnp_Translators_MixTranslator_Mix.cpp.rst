@@ -1,0 +1,120 @@
+
+.. _program_listing_file_core_include_db_Capnp_Translators_MixTranslator_Mix.cpp:
+
+Program Listing for File Mix.cpp
+================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_core_include_db_Capnp_Translators_MixTranslator_Mix.cpp>` (``core_include\db\Capnp\Translators\MixTranslator\Mix.cpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #include "Mix.hpp"
+   #include "Bpm.hpp"
+   #include "PDJE_LOG_SETTER.hpp"
+   MIX::MIX()
+   {
+       usable_threads = std::thread::hardware_concurrency();
+       if (usable_threads == 0) {
+           usable_threads = 1;
+       }
+   }
+   
+   MIX::~MIX()
+   {
+   }
+   
+   bool
+   MIX::openMix(const MixBinaryCapnpData::Reader &Rptr)
+   {
+       try {
+           auto mixDatas = Rptr.getDatas();
+           auto mixSize  = mixDatas.size();
+   
+           mixVec.resize(mixSize);
+           auto MP = &(mixVec[0]);
+           for (unsigned long i = 0; i < mixSize; ++i) {
+               MP->RP = mixDatas[i];
+               ++MP;
+           }
+           std::sort(mixVec.begin(),
+                     mixVec.end(),
+                     [](const MixStruct &first, MixStruct second) {
+                         auto F = static_cast<double>(first.RP.getBeat()) +
+                                  (static_cast<double>(first.RP.getSubBeat()) /
+                                   static_cast<double>(first.RP.getSeparate()));
+                         auto S = static_cast<double>(second.RP.getBeat()) +
+                                  (static_cast<double>(second.RP.getSubBeat()) /
+                                   static_cast<double>(second.RP.getSeparate()));
+                         return F < S;
+                     });
+           return true;
+       } catch (std::exception &e) {
+           critlog(
+               "failed to open capnpMixdata. from MIX openMix. ExceptionLog: ");
+           critlog(e.what());
+           return false;
+       }
+   }
+   
+   unsigned long
+   FillFrame(const BpmFragment &bs, BPM *B)
+   {
+       auto bpmIt = B->bpmVec.getAffected(bs);
+       return FrameCalc::CountFrame(bpmIt.beat,
+                                    bpmIt.subBeat,
+                                    bpmIt.separate,
+                                    bs.beat,
+                                    bs.subBeat,
+                                    bs.separate,
+                                    bpmIt.bpm) +
+              bpmIt.frame_to_here;
+   }
+   
+   void
+   mix_thread(MixStruct *M, BPM *B, unsigned long range)
+   {
+       for (unsigned long i = 0; i < range; ++i) {
+           BpmFragment bsin;
+           BpmFragment bsout;
+           bsin.beat      = M->RP.getBeat();
+           bsin.subBeat   = M->RP.getSubBeat();
+           bsin.separate  = M->RP.getSeparate();
+           bsout.beat     = M->RP.getEbeat();
+           bsout.subBeat  = M->RP.getEsubBeat();
+           bsout.separate = M->RP.getEseparate();
+           M->frame_in    = FillFrame(bsin, B);
+           M->frame_out   = FillFrame(bsout, B);
+           ++M;
+       }
+   }
+   
+   bool
+   MIX::WriteFrames(BPM &bpmm)
+   {
+       unsigned long jobs_per_thread = mixVec.size() / usable_threads;
+       if (jobs_per_thread == 0) {
+           mix_thread(&(mixVec[0]), &(bpmm), mixVec.size());
+       } else {
+           unsigned long remained_job =
+               mixVec.size() - (jobs_per_thread * usable_threads);
+           std::vector<std::thread> thread_pool;
+           unsigned long            idx = 0;
+           for (unsigned int i = 0; i < (usable_threads - 1); ++i) {
+               thread_pool.emplace_back(
+                   mix_thread, &(mixVec[idx]), &(bpmm), jobs_per_thread);
+               idx += jobs_per_thread;
+           }
+           thread_pool.emplace_back(mix_thread,
+                                    &(mixVec[idx]),
+                                    &(bpmm),
+                                    jobs_per_thread + remained_job);
+   
+           for (int i = 0; i < thread_pool.size(); ++i) {
+               thread_pool[i].join();
+           }
+       }
+   
+       return true;
+   }

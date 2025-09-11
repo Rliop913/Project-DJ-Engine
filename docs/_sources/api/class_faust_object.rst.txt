@@ -3,7 +3,7 @@
 Template Class FaustObject
 ==========================
 
-- Defined in :ref:`file_include_audioRender_MixMachine_EFFECT_EFFECTS.hpp`
+- Defined in :ref:`file_core_include_audioRender_MixMachine_EFFECT_EFFECTS.hpp`
 
 
 Class Documentation

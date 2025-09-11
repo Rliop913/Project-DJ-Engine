@@ -3,7 +3,7 @@
 Class RollMan
 =============
 
-- Defined in :ref:`file_include_audioRender_ManualMix_ManualFausts_rollMan.hpp`
+- Defined in :ref:`file_core_include_audioRender_ManualMix_ManualFausts_rollMan.hpp`
 
 
 Class Documentation

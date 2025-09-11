@@ -3,7 +3,7 @@
 Class MusicTranslator
 =====================
 
-- Defined in :ref:`file_include_db_Capnp_Translators_MusicTranslator_MusicTranslator.hpp`
+- Defined in :ref:`file_core_include_db_Capnp_Translators_MusicTranslator_MusicTranslator.hpp`
 
 
 Class Documentation

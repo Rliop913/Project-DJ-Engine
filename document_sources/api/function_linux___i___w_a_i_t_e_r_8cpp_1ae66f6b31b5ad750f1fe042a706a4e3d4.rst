@@ -3,7 +3,7 @@
 Function main()
 ===============
 
-- Defined in :ref:`file_include_tests_INPUT_TESTS_linux_I_WAITER.cpp`
+- Defined in :ref:`file_core_include_tests_INPUT_TESTS_linux_I_WAITER.cpp`
 
 
 Function Documentation

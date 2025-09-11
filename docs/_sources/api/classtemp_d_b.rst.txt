@@ -3,7 +3,7 @@
 Class tempDB
 ============
 
-- Defined in :ref:`file_include_MainObjects_tempDBObject_tempDB.hpp`
+- Defined in :ref:`file_core_include_MainObjects_tempDBObject_tempDB.hpp`
 
 
 Class Documentation

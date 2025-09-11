@@ -3,7 +3,7 @@
 Typedef EDIT_ARG_KEY_VALUE
 ==========================
 
-- Defined in :ref:`file_include_MainObjects_editorObject_editorObject.hpp`
+- Defined in :ref:`file_core_include_MainObjects_editorObject_editorObject.hpp`
 
 
 Typedef Documentation

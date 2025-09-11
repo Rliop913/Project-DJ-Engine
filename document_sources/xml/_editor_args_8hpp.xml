@@ -5,28 +5,8 @@
     <includes refid="_mix_translator_8hpp" local="yes">MixTranslator.hpp</includes>
     <includes refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
     <includes refid="file_name_sanitizer_8hpp" local="yes">fileNameSanitizer.hpp</includes>
-    <includedby refid="json_wrapper_8hpp" local="yes">include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp</includedby>
+    <includedby refid="json_wrapper_8hpp" local="yes">core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp</includedby>
     <incdepgraph>
-      <node id="18">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
-      </node>
-      <node id="19">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-      </node>
       <node id="12">
         <label>CapnpBinary.hpp</label>
         <link refid="_capnp_binary_8hpp"/>
@@ -124,6 +104,8 @@
       <node id="28">
         <label>fileNameSanitizer.hpp</label>
         <link refid="file_name_sanitizer_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
@@ -134,13 +116,33 @@
         </childnode>
       </node>
       <node id="1">
-        <label>include/editor/featureWrapper/JSONWrap/EditorArgs.hpp</label>
+        <label>core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp</label>
         <link refid="_editor_args_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="19">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -165,7 +167,7 @@
         <label>cmath</label>
       </node>
       <node id="29">
-        <label>cppcodec/base64_url_unpadded.hpp</label>
+        <label>cppcodec/base64_default_url.hpp</label>
       </node>
       <node id="20">
         <label>filesystem</label>
@@ -206,23 +208,23 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="5">
-        <label>include/MainObjects/editorObject/addline.cpp</label>
+        <label>core_include/MainObjects/editorObject/addline.cpp</label>
         <link refid="addline_8cpp"/>
       </node>
       <node id="6">
-        <label>include/MainObjects/editorObject/commonfunction.cpp</label>
+        <label>core_include/MainObjects/editorObject/commonfunction.cpp</label>
         <link refid="commonfunction_8cpp"/>
       </node>
       <node id="7">
-        <label>include/MainObjects/editorObject/deleteline.cpp</label>
+        <label>core_include/MainObjects/editorObject/deleteline.cpp</label>
         <link refid="deleteline_8cpp"/>
       </node>
       <node id="8">
-        <label>include/MainObjects/editorObject/editorObject.cpp</label>
+        <label>core_include/MainObjects/editorObject/editorObject.cpp</label>
         <link refid="editor_object_8cpp"/>
       </node>
       <node id="4">
-        <label>include/MainObjects/editorObject/editorObject.hpp</label>
+        <label>core_include/MainObjects/editorObject/editorObject.hpp</label>
         <link refid="editor_object_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
@@ -256,95 +258,95 @@
         </childnode>
       </node>
       <node id="9">
-        <label>include/MainObjects/editorObject/getall.cpp</label>
+        <label>core_include/MainObjects/editorObject/getall.cpp</label>
         <link refid="getall_8cpp"/>
       </node>
       <node id="10">
-        <label>include/MainObjects/editorObject/getdiff.cpp</label>
+        <label>core_include/MainObjects/editorObject/getdiff.cpp</label>
         <link refid="getdiff_8cpp"/>
       </node>
       <node id="11">
-        <label>include/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <label>core_include/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
         <link refid="getlogwithjsongraph_8cpp"/>
       </node>
       <node id="12">
-        <label>include/MainObjects/editorObject/go.cpp</label>
+        <label>core_include/MainObjects/editorObject/go.cpp</label>
         <link refid="go_8cpp"/>
       </node>
       <node id="13">
-        <label>include/MainObjects/editorObject/redo.cpp</label>
+        <label>core_include/MainObjects/editorObject/redo.cpp</label>
         <link refid="redo_8cpp"/>
       </node>
       <node id="14">
-        <label>include/MainObjects/editorObject/render.cpp</label>
+        <label>core_include/MainObjects/editorObject/render.cpp</label>
         <link refid="render_8cpp"/>
       </node>
       <node id="15">
-        <label>include/MainObjects/editorObject/undo.cpp</label>
+        <label>core_include/MainObjects/editorObject/undo.cpp</label>
         <link refid="undo_8cpp"/>
       </node>
       <node id="16">
-        <label>include/MainObjects/editorObject/updatelog.cpp</label>
+        <label>core_include/MainObjects/editorObject/updatelog.cpp</label>
         <link refid="updatelog_8cpp"/>
       </node>
       <node id="17">
-        <label>include/SWIG_editor_visitor.hpp</label>
+        <label>core_include/SWIG_editor_visitor.hpp</label>
         <link refid="_s_w_i_g__editor__visitor_8hpp"/>
       </node>
-      <node id="24">
-        <label>include/editor/editor.cpp</label>
+      <node id="25">
+        <label>core_include/editor/editor.cpp</label>
         <link refid="editor_8cpp"/>
       </node>
       <node id="3">
-        <label>include/editor/editor.hpp</label>
+        <label>core_include/editor/editor.hpp</label>
         <link refid="editor_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="1">
-        <label>include/editor/featureWrapper/JSONWrap/EditorArgs.hpp</label>
+        <label>core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp</label>
         <link refid="_editor_args_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="25">
-        <label>include/editor/featureWrapper/JSONWrap/KVJson.cpp</label>
+      <node id="26">
+        <label>core_include/editor/featureWrapper/JSONWrap/KVJson.cpp</label>
         <link refid="_k_v_json_8cpp"/>
       </node>
-      <node id="26">
-        <label>include/editor/featureWrapper/JSONWrap/MixJson.cpp</label>
+      <node id="27">
+        <label>core_include/editor/featureWrapper/JSONWrap/MixJson.cpp</label>
         <link refid="_mix_json_8cpp"/>
       </node>
       <node id="18">
-        <label>include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
+        <label>core_include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
         <link refid="_music_json_8cpp"/>
       </node>
-      <node id="27">
-        <label>include/editor/featureWrapper/JSONWrap/NoteJson.cpp</label>
+      <node id="28">
+        <label>core_include/editor/featureWrapper/JSONWrap/NoteJson.cpp</label>
         <link refid="_note_json_8cpp"/>
       </node>
       <node id="2">
-        <label>include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp</label>
+        <label>core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp</label>
         <link refid="json_wrapper_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
         <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
       </node>
       <node id="20">
-        <label>include/interface/PDJE_interface.cpp</label>
+        <label>core_include/interface/PDJE_interface.cpp</label>
         <link refid="_p_d_j_e__interface_8cpp"/>
       </node>
       <node id="19">
-        <label>include/interface/PDJE_interface.hpp</label>
+        <label>core_include/interface/PDJE_interface.hpp</label>
         <link refid="_p_d_j_e__interface_8hpp"/>
         <childnode refid="20" relation="include">
         </childnode>
@@ -354,17 +356,23 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
       </node>
       <node id="21">
-        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
+        <label>core_include/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="_p_d_j_e__polyglot__wraps_8cpp"/>
       </node>
       <node id="22">
-        <label>include/tests/editorTest.cpp</label>
-        <link refid="editor_test_8cpp"/>
+        <label>core_include/tests/dbTest.cpp</label>
+        <link refid="db_test_8cpp"/>
       </node>
       <node id="23">
-        <label>include/tests/interfaceTest.cpp</label>
+        <label>core_include/tests/editorTest.cpp</label>
+        <link refid="editor_test_8cpp"/>
+      </node>
+      <node id="24">
+        <label>core_include/tests/interfaceTest.cpp</label>
         <link refid="interface_test_8cpp"/>
       </node>
     </invincdepgraph>
@@ -383,7 +391,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="45" column="1" bodyfile="include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="45" bodyend="-1"/>
+        <location file="core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="45" column="1" bodyfile="core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_editor_args_8hpp_1a29a06c37bb7adf0275ebf5975fb7cb89" prot="public" static="no">
         <type><ref refid="class_cap_writer" kindref="compound">CapWriter</ref>&lt; NoteBinaryCapnpData &gt;</type>
@@ -396,7 +404,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="46" column="1" bodyfile="include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="46" bodyend="-1"/>
+        <location file="core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="46" column="1" bodyfile="core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_editor_args_8hpp_1a5ce6d29d6001f496835f6401276a682e" prot="public" static="no">
         <type><ref refid="class_cap_writer" kindref="compound">CapWriter</ref>&lt; MusicBinaryCapnpData &gt;</type>
@@ -409,7 +417,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="47" column="1" bodyfile="include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="47" bodyend="-1"/>
+        <location file="core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="47" column="1" bodyfile="core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_editor_args_8hpp_1a217a1073c4c083da1400cf99dab75f21" prot="public" static="no">
         <type><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref></type>
@@ -422,7 +430,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="49" column="1" bodyfile="include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="49" bodyend="-1"/>
+        <location file="core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="49" column="1" bodyfile="core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_editor_args_8hpp_1a67473814637ada120f046e947d522b64" prot="public" static="no">
         <type>std::pair&lt; <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref>, <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &gt;</type>
@@ -435,7 +443,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="50" column="1" bodyfile="include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="50" bodyend="-1"/>
+        <location file="core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="50" column="1" bodyfile="core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_editor_args_8hpp_1a302aa5ab173d4395fe6526d00a2f9777" prot="public" static="no">
         <type>std::vector&lt; <ref refid="_editor_args_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref> &gt;</type>
@@ -448,7 +456,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="51" column="1" bodyfile="include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="51" bodyend="-1"/>
+        <location file="core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="51" column="1" bodyfile="core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -505,6 +513,6 @@
 <codeline lineno="50" refid="_editor_args_8hpp_1a67473814637ada120f046e947d522b64" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="_editor_args_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref><sp/>=<sp/>std::pair&lt;DONT_SANITIZE,<sp/>DONT_SANITIZE&gt;;</highlight></codeline>
 <codeline lineno="51" refid="_editor_args_8hpp_1a302aa5ab173d4395fe6526d00a2f9777" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="_editor_args_8hpp_1a302aa5ab173d4395fe6526d00a2f9777" kindref="member">KV_W</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>std::vector&lt;KEY_VALUE&gt;;</highlight></codeline>
     </programlisting>
-    <location file="include/editor/featureWrapper/JSONWrap/EditorArgs.hpp"/>
+    <location file="core_include/editor/featureWrapper/JSONWrap/EditorArgs.hpp"/>
   </compounddef>
 </doxygen>

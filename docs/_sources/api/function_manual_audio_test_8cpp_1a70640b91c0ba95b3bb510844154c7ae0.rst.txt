@@ -3,7 +3,7 @@
 Function Lvec
 =============
 
-- Defined in :ref:`file_include_tests_manualAudioTest.cpp`
+- Defined in :ref:`file_core_include_tests_manualAudioTest.cpp`
 
 
 Function Documentation

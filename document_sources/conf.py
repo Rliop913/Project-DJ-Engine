@@ -32,7 +32,7 @@ exhale_args = {
     "containmentFolder" : "./api",
     "rootFileName": "api_root.rst",
     "rootFileTitle": "API Reference",
-    "doxygenStripFromPath": "../include",
+    "doxygenStripFromPath": os.path.abspath(".."),
     "createTreeView": True,
     "exhaleExecutesDoxygen": False
 }

@@ -22,4 +22,4 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespaceFrameCalc_1a12e18e06211c6b6148f77eef662555ad`
+- :ref:`exhale_function_namespace_frame_calc_1a12e18e06211c6b6148f77eef662555ad`
