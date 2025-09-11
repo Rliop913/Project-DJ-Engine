@@ -3,7 +3,7 @@
 Define FLAG_ALL_IS_OK
 =====================
 
-- Defined in :ref:`file_include_audioRender_MixMachine_MixMachine.hpp`
+- Defined in :ref:`file_core_include_audioRender_MixMachine_MixMachine.hpp`
 
 
 Define Documentation

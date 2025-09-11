@@ -3,7 +3,7 @@
 Typedef SANITIZED_ORNOT
 =======================
 
-- Defined in :ref:`file_include_db_fileNameSanitizer.hpp`
+- Defined in :ref:`file_core_include_db_fileNameSanitizer.hpp`
 
 
 Typedef Documentation

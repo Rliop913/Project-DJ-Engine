@@ -1,0 +1,97 @@
+
+.. _program_listing_file_core_include_audioRender_ManualMix_MusicControlPanel.hpp:
+
+Program Listing for File MusicControlPanel.hpp
+==============================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_core_include_audioRender_ManualMix_MusicControlPanel.hpp>` (``core_include\audioRender\ManualMix\MusicControlPanel.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   
+   #include "Decoder.hpp"
+   
+   #include <map>
+   
+   #include "ManualMix.hpp"
+   #include "PDJE_EXPORT_SETTER.hpp"
+   #include "SoundTouch.h"
+   #include "dbRoot.hpp"
+   #include "fileNameSanitizer.hpp"
+   #include <filesystem>
+   
+   namespace fs = std::filesystem;
+   // #undef HWY_TARGET_INCLUDE
+   // #define HWY_TARGET_INCLUDE "MusicControlPanel-inl.h"
+   // #include "hwy/foreach_target.h"
+   // #include <hwy/highway.h>
+   
+   using LOADED_LIST = std::vector<std::string>;
+   
+   struct MusicOnDeck {
+       bool                                  play = false;
+       Decoder                               dec;
+       FXControlPanel                      *fxP;
+       std::optional<soundtouch::SoundTouch> st;
+       MusicOnDeck() : fxP(new FXControlPanel(48000))
+       {
+           st.emplace();
+           st->setChannels(CHANNEL);
+           st->setSampleRate(SAMPLERATE);
+           st->setSetting(0, 1);
+           st->setSetting(2, 0);
+           st->setTempo(1.0);
+       };
+       ~MusicOnDeck()
+       {
+           // ma_decoder_uninit(&dec);
+           delete fxP;
+       }
+   };
+   
+   using LOADS = std::map<std::string, MusicOnDeck>;
+   
+   class PDJE_API MusicControlPanel {
+     private:
+       LOADS              deck;
+       unsigned long      fsize;
+       std::vector<float> L;
+       std::vector<float> R;
+       float             *FaustStyle[2];
+       SIMD_FLOAT         tempFrames;
+   
+     public:
+       bool
+       LoadMusic(litedb &ROOTDB, const musdata &Mus);
+   
+       bool
+       CueMusic(const UNSANITIZED &title, const unsigned long long newPos);
+   
+       bool
+       SetMusic(const UNSANITIZED &title, const bool onOff);
+   
+       LOADED_LIST
+       GetLoadedMusicList();
+   
+       bool
+       UnloadMusic(const UNSANITIZED &title);
+   
+       bool
+       GetPCMFrames(float *array, const unsigned long FrameSize);
+   
+       FXControlPanel *
+       getFXHandle(const UNSANITIZED &title);
+   
+       bool
+       ChangeBpm(const UNSANITIZED &title,
+                 const double       targetBpm,
+                 const double       originBpm);
+   
+       MusicControlPanel(const unsigned long FrameSize) : fsize(FrameSize)
+       {
+       }
+       ~MusicControlPanel();
+   };

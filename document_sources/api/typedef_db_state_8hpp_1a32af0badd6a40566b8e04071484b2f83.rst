@@ -3,7 +3,7 @@
 Typedef BIN
 ===========
 
-- Defined in :ref:`file_include_db_dbState.hpp`
+- Defined in :ref:`file_core_include_db_dbState.hpp`
 
 
 Typedef Documentation

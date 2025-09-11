@@ -3,7 +3,7 @@
 Struct PDJE_IDEV::Specifiers
 ============================
 
-- Defined in :ref:`file_include_input_PDJE_INPUT.hpp`
+- Defined in :ref:`file_core_include_input_PDJE_INPUT.hpp`
 
 
 Nested Relationships

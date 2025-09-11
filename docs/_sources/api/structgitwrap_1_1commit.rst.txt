@@ -3,7 +3,7 @@
 Struct commit
 =============
 
-- Defined in :ref:`file_include_editor_featureWrapper_GitWrap_Commit_editorCommit.hpp`
+- Defined in :ref:`file_core_include_editor_featureWrapper_GitWrap_Commit_editorCommit.hpp`
 
 
 Struct Documentation

@@ -6,28 +6,8 @@
     <includes local="yes">hwy/foreach_target.h</includes>
     <includes local="yes">hwy/base.h</includes>
     <includes local="no">hwy/highway.h</includes>
-    <includedby refid="_mix_machine_8cpp" local="yes">include/audioRender/MixMachine/MixMachine.cpp</includedby>
+    <includedby refid="_mix_machine_8cpp" local="yes">core_include/audioRender/MixMachine/MixMachine.cpp</includedby>
     <incdepgraph>
-      <node id="13">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
-      </node>
-      <node id="26">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-      </node>
       <node id="12">
         <label>DeckData.hpp</label>
         <link refid="_deck_data_8hpp"/>
@@ -131,7 +111,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>include/audioRender/MixMachine/MixMachine-inl.h</label>
+        <label>core_include/audioRender/MixMachine/MixMachine-inl.h</label>
         <link refid="_mix_machine-inl_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -325,6 +305,8 @@
       <node id="42">
         <label>fileNameSanitizer.hpp</label>
         <link refid="file_name_sanitizer_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
         <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
@@ -362,6 +344,26 @@
         <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="26">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
       <node id="51">
@@ -428,7 +430,7 @@
         <label>cmath</label>
       </node>
       <node id="43">
-        <label>cppcodec/base64_url_unpadded.hpp</label>
+        <label>cppcodec/base64_default_url.hpp</label>
       </node>
       <node id="27">
         <label>filesystem</label>
@@ -508,13 +510,13 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="1">
-        <label>include/audioRender/MixMachine/MixMachine-inl.h</label>
+        <label>core_include/audioRender/MixMachine/MixMachine-inl.h</label>
         <link refid="_mix_machine-inl_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="2">
-        <label>include/audioRender/MixMachine/MixMachine.cpp</label>
+        <label>core_include/audioRender/MixMachine/MixMachine.cpp</label>
         <link refid="_mix_machine_8cpp"/>
       </node>
     </invincdepgraph>
@@ -529,7 +531,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/audioRender/MixMachine/MixMachine-inl.h" line="9" column="10" bodyfile="include/audioRender/MixMachine/MixMachine-inl.h" bodystart="9" bodyend="-1"/>
+        <location file="core_include/audioRender/MixMachine/MixMachine-inl.h" line="9" column="10" bodyfile="core_include/audioRender/MixMachine/MixMachine-inl.h" bodystart="9" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -586,6 +588,6 @@
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>HWY_NAMESPACE</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="include/audioRender/MixMachine/MixMachine-inl.h"/>
+    <location file="core_include/audioRender/MixMachine/MixMachine-inl.h"/>
   </compounddef>
 </doxygen>

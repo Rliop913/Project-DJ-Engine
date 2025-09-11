@@ -48,12 +48,14 @@
         </childnode>
         <childnode refid="107" relation="include">
         </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="107">
+      <node id="108">
         <label>tempDB.hpp</label>
         <link refid="temp_d_b_8hpp"/>
         <childnode refid="14" relation="include">
@@ -61,26 +63,6 @@
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
-      </node>
-      <node id="13">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="42">
@@ -122,8 +104,8 @@
         </childnode>
       </node>
       <node id="27">
-        <label>MusicControlPannel.hpp</label>
-        <link refid="_music_control_pannel_8hpp"/>
+        <label>MusicControlPanel.hpp</label>
+        <link refid="_music_control_panel_8hpp"/>
         <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
@@ -456,6 +438,8 @@
       <node id="37">
         <label>fileNameSanitizer.hpp</label>
         <link refid="file_name_sanitizer_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
         <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
@@ -665,12 +649,10 @@
         <childnode refid="106" relation="include">
         </childnode>
       </node>
-      <node id="26">
-        <label>PDJE_Core_DataLine.hpp</label>
-        <link refid="_p_d_j_e___core___data_line_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
+      <node id="107">
+        <label>pdjeLinter.hpp</label>
+        <link refid="pdje_linter_8hpp"/>
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -692,11 +674,39 @@
         </childnode>
       </node>
       <node id="1">
-        <label>include/tests/interfaceTest.cpp</label>
+        <label>core_include/tests/interfaceTest.cpp</label>
         <link refid="interface_test_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="108" relation="include">
+        <childnode refid="109" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>PDJE_Core_DataLine.hpp</label>
+        <link refid="_p_d_j_e___core___data_line_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="13">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="72">
@@ -805,7 +815,7 @@
         <label>cmath</label>
       </node>
       <node id="38">
-        <label>cppcodec/base64_url_unpadded.hpp</label>
+        <label>cppcodec/base64_default_url.hpp</label>
       </node>
       <node id="102">
         <label>cstdint</label>
@@ -828,7 +838,7 @@
       <node id="24">
         <label>hwy/aligned_allocator.h</label>
       </node>
-      <node id="108">
+      <node id="109">
         <label>iostream</label>
       </node>
       <node id="97">
@@ -916,7 +926,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/tests/interfaceTest.cpp" line="5" column="1" bodyfile="include/tests/interfaceTest.cpp" bodystart="5" bodyend="58"/>
+        <location file="core_include/tests/interfaceTest.cpp" line="5" column="1" bodyfile="core_include/tests/interfaceTest.cpp" bodystart="5" bodyend="58"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -963,18 +973,18 @@
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>testpdje-&gt;player-&gt;Activate();</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>getchar();</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>testpdje-&gt;player-&gt;GetFXControlPannel()-&gt;FX_ON_OFF(<ref refid="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3ac545d6ac23017a00a8eace8120d7df56" kindref="member">FXList::DISTORTION</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>pannel<sp/>=<sp/>testpdje-&gt;player-&gt;GetFXControlPannel()-&gt;GetArgSetter(</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>testpdje-&gt;player-&gt;GetFXControlPanel()-&gt;FX_ON_OFF(<ref refid="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3ac545d6ac23017a00a8eace8120d7df56" kindref="member">FXList::DISTORTION</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>panel<sp/>=<sp/>testpdje-&gt;player-&gt;GetFXControlPanel()-&gt;GetArgSetter(</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3ac545d6ac23017a00a8eace8120d7df56" kindref="member">FXList::DISTORTION</ref>);</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>pannel[</highlight><highlight class="stringliteral">&quot;distortionValue&quot;</highlight><highlight class="normal">](2);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>panel[</highlight><highlight class="stringliteral">&quot;distortionValue&quot;</highlight><highlight class="normal">](2);</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>getchar();</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>mus<sp/>=<sp/>testpdje-&gt;player-&gt;GetMusicControlPannel();</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>mus<sp/>=<sp/>testpdje-&gt;player-&gt;GetMusicControlPanel();</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>mus-&gt;LoadMusic(testpdje-&gt;DBROOT.value(),<sp/>searchResult[0]);</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>TO_STR(mus-&gt;GetLoadedMusicList()[0]);</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>mus-&gt;SetMusic(</highlight><highlight class="stringliteral">&quot;WTC&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>getchar();</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>i<sp/>:<sp/>(pannel))<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>i<sp/>:<sp/>(panel))<sp/>{</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>i.first<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>testpdje-&gt;player-&gt;Deactivate();</highlight></codeline>
@@ -983,6 +993,6 @@
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="58"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="include/tests/interfaceTest.cpp"/>
+    <location file="core_include/tests/interfaceTest.cpp"/>
   </compounddef>
 </doxygen>

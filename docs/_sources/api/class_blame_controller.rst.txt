@@ -3,7 +3,7 @@
 Class BlameController
 =====================
 
-- Defined in :ref:`file_include_editor_featureWrapper_GitWrap_Blame_BlameController.hpp`
+- Defined in :ref:`file_core_include_editor_featureWrapper_GitWrap_Blame_BlameController.hpp`
 
 
 Class Documentation

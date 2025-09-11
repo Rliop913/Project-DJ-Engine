@@ -3,7 +3,7 @@
 Struct MusicOnDeck
 ==================
 
-- Defined in :ref:`file_include_audioRender_ManualMix_MusicControlPannel.hpp`
+- Defined in :ref:`file_core_include_audioRender_ManualMix_MusicControlPanel.hpp`
 
 
 Struct Documentation

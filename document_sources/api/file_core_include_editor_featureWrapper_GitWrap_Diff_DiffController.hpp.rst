@@ -1,0 +1,72 @@
+
+.. _file_core_include_editor_featureWrapper_GitWrap_Diff_DiffController.hpp:
+
+File DiffController.hpp
+=======================
+
+|exhale_lsh| :ref:`Parent directory <dir_core_include_editor_featureWrapper_GitWrap_Diff>` (``core_include\editor\featureWrapper\GitWrap\Diff``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+
+Helpers for generating diffs between Git commits. 
+
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``core_include\editor\featureWrapper\GitWrap\Diff\DiffController.hpp``)
+-----------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_core_include_editor_featureWrapper_GitWrap_Diff_DiffController.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``editorCommit.hpp`` (:ref:`file_core_include_editor_featureWrapper_GitWrap_Commit_editorCommit.hpp`)
+
+- ``fileNameSanitizer.hpp`` (:ref:`file_core_include_db_fileNameSanitizer.hpp`)
+
+- ``git2.h``
+
+- ``optional``
+
+- ``string``
+
+- ``vector``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_core_include_editor_featureWrapper_GitWrap_Diff_DiffController.cpp`
+
+- :ref:`file_core_include_editor_featureWrapper_GitWrap_gitWrapper.hpp`
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_struct_diff_result`
+
+- :ref:`exhale_struct_structline_log`
+
+- :ref:`exhale_class_class_diff_controller`
+

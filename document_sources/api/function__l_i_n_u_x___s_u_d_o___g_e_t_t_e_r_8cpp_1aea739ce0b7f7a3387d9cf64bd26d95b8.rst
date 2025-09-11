@@ -3,7 +3,7 @@
 Function EventListGetter
 ========================
 
-- Defined in :ref:`file_include_input_linux_LINUX_SUDO_GETTER.cpp`
+- Defined in :ref:`file_core_include_input_linux_LINUX_SUDO_GETTER.cpp`
 
 
 Function Documentation

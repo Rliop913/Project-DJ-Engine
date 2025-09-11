@@ -3,7 +3,7 @@
 Class EQMan
 ===========
 
-- Defined in :ref:`file_include_audioRender_ManualMix_ManualFausts_eqMan.hpp`
+- Defined in :ref:`file_core_include_audioRender_ManualMix_ManualFausts_eqMan.hpp`
 
 
 Class Documentation

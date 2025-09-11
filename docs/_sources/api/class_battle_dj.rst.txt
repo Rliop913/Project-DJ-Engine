@@ -3,7 +3,7 @@
 Class BattleDj
 ==============
 
-- Defined in :ref:`file_include_audioRender_MixMachine_MUSIC_CTR_BattleDj.hpp`
+- Defined in :ref:`file_core_include_audioRender_MixMachine_MUSIC_CTR_BattleDj.hpp`
 
 
 Class Documentation

@@ -5,26 +5,6 @@
     <includes refid="_battle_dj_8hpp" local="yes">BattleDj.hpp</includes>
     <includes refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
     <incdepgraph>
-      <node id="8">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
-      </node>
-      <node id="21">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-      </node>
       <node id="7">
         <label>DeckData.hpp</label>
         <link refid="_deck_data_8hpp"/>
@@ -38,7 +18,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>include/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp</label>
+        <label>core_include/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp</label>
         <link refid="_battle_dj_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -252,6 +232,8 @@
       <node id="37">
         <label>fileNameSanitizer.hpp</label>
         <link refid="file_name_sanitizer_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
         <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
@@ -291,6 +273,26 @@
         <childnode refid="37" relation="include">
         </childnode>
       </node>
+      <node id="8">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="21">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
       <node id="18">
         <label>MixBinary.capnp.h</label>
       </node>
@@ -316,7 +318,7 @@
         <label>cmath</label>
       </node>
       <node id="38">
-        <label>cppcodec/base64_url_unpadded.hpp</label>
+        <label>cppcodec/base64_default_url.hpp</label>
       </node>
       <node id="22">
         <label>filesystem</label>
@@ -586,6 +588,6 @@
 <codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Array;</highlight></codeline>
 <codeline lineno="204"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="include/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp"/>
+    <location file="core_include/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp"/>
   </compounddef>
 </doxygen>

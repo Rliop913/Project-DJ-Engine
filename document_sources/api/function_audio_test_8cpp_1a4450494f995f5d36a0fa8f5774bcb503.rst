@@ -3,7 +3,7 @@
 Function idle_callback(ma_device \*, void \*, const void \*, ma_uint32)
 =======================================================================
 
-- Defined in :ref:`file_include_tests_audioTest.cpp`
+- Defined in :ref:`file_core_include_tests_audioTest.cpp`
 
 
 Function Documentation

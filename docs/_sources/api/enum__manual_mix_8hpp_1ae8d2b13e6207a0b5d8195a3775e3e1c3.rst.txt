@@ -3,7 +3,7 @@
 Enum FXList
 ===========
 
-- Defined in :ref:`file_include_audioRender_ManualMix_ManualMix.hpp`
+- Defined in :ref:`file_core_include_audioRender_ManualMix_ManualMix.hpp`
 
 
 Enum Documentation

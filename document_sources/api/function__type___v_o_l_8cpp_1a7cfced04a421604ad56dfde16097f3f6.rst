@@ -3,7 +3,7 @@
 Specialized Template Function MixMachine::TypeWorks< TypeEnum::VOL, FaustEffects >
 ==================================================================================
 
-- Defined in :ref:`file_include_audioRender_MixMachine_MixTypes_Type_VOL.cpp`
+- Defined in :ref:`file_core_include_audioRender_MixMachine_MixTypes_Type_VOL.cpp`
 
 
 Function Documentation

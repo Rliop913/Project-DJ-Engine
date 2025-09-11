@@ -5,28 +5,12 @@
     <includes refid="file_name_sanitizer_8hpp" local="yes">fileNameSanitizer.hpp</includes>
     <includes refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
     <incdepgraph>
-      <node id="7">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
       <node id="1">
-        <label>include/db/fileNameSanitizer.cpp</label>
+        <label>core_include/db/fileNameSanitizer.cpp</label>
         <link refid="file_name_sanitizer_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -40,32 +24,54 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
       <node id="3">
-        <label>cppcodec/base64_url_unpadded.hpp</label>
-      </node>
-      <node id="4">
-        <label>filesystem</label>
-      </node>
-      <node id="5">
-        <label>optional</label>
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
       </node>
       <node id="8">
-        <label>spdlog/sinks/basic_file_sink.h</label>
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
       </node>
-      <node id="9">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      <node id="4">
+        <label>cppcodec/base64_default_url.hpp</label>
       </node>
-      <node id="10">
-        <label>spdlog/spdlog.h</label>
+      <node id="5">
+        <label>filesystem</label>
       </node>
       <node id="6">
-        <label>string</label>
+        <label>optional</label>
+      </node>
+      <node id="9">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="10">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
       </node>
       <node id="11">
-        <label>string_view</label>
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="7">
+        <label>string</label>
       </node>
       <node id="12">
+        <label>string_view</label>
+      </node>
+      <node id="13">
         <label>type_traits</label>
       </node>
     </incdepgraph>
@@ -96,6 +102,6 @@
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(decoded.begin(),<sp/>decoded.end());</highlight></codeline>
 <codeline lineno="21"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="include/db/fileNameSanitizer.cpp"/>
+    <location file="core_include/db/fileNameSanitizer.cpp"/>
   </compounddef>
 </doxygen>

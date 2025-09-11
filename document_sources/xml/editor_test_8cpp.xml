@@ -49,12 +49,14 @@
         </childnode>
         <childnode refid="107" relation="include">
         </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="107">
+      <node id="108">
         <label>tempDB.hpp</label>
         <link refid="temp_d_b_8hpp"/>
         <childnode refid="14" relation="include">
@@ -62,26 +64,6 @@
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
-      </node>
-      <node id="13">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="42">
@@ -123,8 +105,8 @@
         </childnode>
       </node>
       <node id="27">
-        <label>MusicControlPannel.hpp</label>
-        <link refid="_music_control_pannel_8hpp"/>
+        <label>MusicControlPanel.hpp</label>
+        <link refid="_music_control_panel_8hpp"/>
         <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
@@ -457,6 +439,8 @@
       <node id="37">
         <label>fileNameSanitizer.hpp</label>
         <link refid="file_name_sanitizer_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
         <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
@@ -666,12 +650,10 @@
         <childnode refid="106" relation="include">
         </childnode>
       </node>
-      <node id="26">
-        <label>PDJE_Core_DataLine.hpp</label>
-        <link refid="_p_d_j_e___core___data_line_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
+      <node id="107">
+        <label>pdjeLinter.hpp</label>
+        <link refid="pdje_linter_8hpp"/>
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -693,13 +675,41 @@
         </childnode>
       </node>
       <node id="1">
-        <label>include/tests/editorTest.cpp</label>
+        <label>core_include/tests/editorTest.cpp</label>
         <link refid="editor_test_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="108" relation="include">
+        <childnode refid="109" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>PDJE_Core_DataLine.hpp</label>
+        <link refid="_p_d_j_e___core___data_line_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="13">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="72">
@@ -808,7 +818,7 @@
         <label>cmath</label>
       </node>
       <node id="38">
-        <label>cppcodec/base64_url_unpadded.hpp</label>
+        <label>cppcodec/base64_default_url.hpp</label>
       </node>
       <node id="102">
         <label>cstdint</label>
@@ -831,7 +841,7 @@
       <node id="24">
         <label>hwy/aligned_allocator.h</label>
       </node>
-      <node id="108">
+      <node id="109">
         <label>iostream</label>
       </node>
       <node id="97">
@@ -919,7 +929,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/tests/editorTest.cpp" line="8" column="1" bodyfile="include/tests/editorTest.cpp" bodystart="8" bodyend="167"/>
+        <location file="core_include/tests/editorTest.cpp" line="8" column="1" bodyfile="core_include/tests/editorTest.cpp" bodystart="8" bodyend="166"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1047,16 +1057,16 @@
 <codeline lineno="118"><highlight class="normal"></highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>initres<sp/><sp/><sp/>=<sp/>engine-&gt;InitPlayer(<ref refid="_p_d_j_e__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16add88da32dbee24cb0fa797a5203593a7" kindref="member">PLAY_MODE::HYBRID_RENDER</ref>,<sp/>td,<sp/>48);</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>activeres<sp/>=<sp/>engine-&gt;player-&gt;Activate();</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>musPannel<sp/>=<sp/>engine-&gt;player-&gt;GetMusicControlPannel();</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>musPanel<sp/>=<sp/>engine-&gt;player-&gt;GetMusicControlPanel();</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>muses<sp/><sp/><sp/><sp/><sp/>=<sp/>engine-&gt;SearchMusic(</highlight><highlight class="stringliteral">&quot;ヒアソビ&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Camellia&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>musPannel-&gt;LoadMusic(*(engine-&gt;DBROOT),<sp/>muses.front());</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>musPanel-&gt;LoadMusic(*(engine-&gt;DBROOT),<sp/>muses.front());</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>getchar();</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>musPannel-&gt;SetMusic(</highlight><highlight class="stringliteral">&quot;ヒアソビ&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>musPanel-&gt;SetMusic(</highlight><highlight class="stringliteral">&quot;ヒアソビ&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>musPannel-&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>musPanel-&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>getchar();</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>Fxhandle<sp/>=<sp/>musPannel-&gt;getFXHandle(</highlight><highlight class="stringliteral">&quot;ヒアソビ&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>Fxhandle<sp/>=<sp/>musPanel-&gt;getFXHandle(</highlight><highlight class="stringliteral">&quot;ヒアソビ&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Fxhandle-&gt;FX_ON_OFF(<ref refid="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a2bbc5bc0a3b7027f874adc0a73aa6bc3" kindref="member">FXList::OCSFILTER</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Fxhandle-&gt;FX_ON_OFF(<ref refid="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a9efdc855f3c1477957fb50affec07f8f" kindref="member">FXList::EQ</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ocshandle<sp/>=<sp/>Fxhandle-&gt;GetArgSetter(<ref refid="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a2bbc5bc0a3b7027f874adc0a73aa6bc3" kindref="member">FXList::OCSFILTER</ref>);</highlight></codeline>
@@ -1067,7 +1077,7 @@
 <codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ocshandle[</highlight><highlight class="stringliteral">&quot;bps&quot;</highlight><highlight class="normal">](2.2333333);</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ocshandle[</highlight><highlight class="stringliteral">&quot;OCSFilterDryWet&quot;</highlight><highlight class="normal">](0.7);</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>getchar();</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>musPannel-&gt;ChangeBpm(</highlight><highlight class="stringliteral">&quot;ヒアソビ&quot;</highlight><highlight class="normal">,<sp/>120,<sp/>60);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>musPanel-&gt;ChangeBpm(</highlight><highlight class="stringliteral">&quot;ヒアソビ&quot;</highlight><highlight class="normal">,<sp/>120,<sp/>60);</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>eqhandle<sp/>=<sp/>Fxhandle-&gt;GetArgSetter(<ref refid="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a9efdc855f3c1477957fb50affec07f8f" kindref="member">FXList::EQ</ref>);</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"></highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>eqhandle[</highlight><highlight class="stringliteral">&quot;EQHigh&quot;</highlight><highlight class="normal">](-20);</highlight></codeline>
@@ -1083,18 +1093,17 @@
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>editor-&gt;GetLogWithJSONGraph&lt;<ref refid="editor_object_8hpp_1a2de2e14491806b81a5ba85836b550f18" kindref="member">EDIT_ARG_NOTE</ref>&gt;();</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>editor-&gt;GetLogWithJSONGraph&lt;<ref refid="struct_e_d_i_t___a_r_g___m_u_s_i_c" kindref="compound">EDIT_ARG_MUSIC</ref>&gt;(</highlight><highlight class="stringliteral">&quot;music<sp/>name&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;init<sp/>failed<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>engine;</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>engine;</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout&lt;&lt;engine.InitEditor(&quot;test&quot;,<sp/>&quot;test&quot;,<sp/>&quot;./testEditorProject&quot;)<sp/>&lt;&lt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::endl;<sp/>engine.editor-&gt;ConfigNewMusic(&quot;testMiku&quot;,<sp/>&quot;Camellia&quot;,<sp/>&quot;&quot;)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;init<sp/>failed<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>engine;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>engine;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout&lt;&lt;engine.InitEditor(&quot;test&quot;,<sp/>&quot;test&quot;,<sp/>&quot;./testEditorProject&quot;)<sp/>&lt;&lt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::endl;<sp/>engine.editor-&gt;ConfigNewMusic(&quot;testMiku&quot;,<sp/>&quot;Camellia&quot;,<sp/>&quot;&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="include/tests/editorTest.cpp"/>
+    <location file="core_include/tests/editorTest.cpp"/>
   </compounddef>
 </doxygen>

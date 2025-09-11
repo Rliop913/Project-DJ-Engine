@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File MUSIC_CTR.cpp &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File MUSIC_CTR.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_core_include_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.cpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-music-ctr-cpp">
+<span id="program-listing-file-core-include-audiorender-mixmachine-music-ctr-music-ctr-cpp"></span><h1>Program Listing for File MUSIC_CTR.cpp<a class="headerlink" href="#program-listing-for-file-music-ctr-cpp" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file_core_include_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.cpp.html#file-core-include-audiorender-mixmachine-music-ctr-music-ctr-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">core_include\audioRender\MixMachine\MUSIC_CTR\MUSIC_CTR.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MUSIC_CTR.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
+
+<span class="n">MUSIC_CTR</span><span class="o">::</span><span class="n">MUSIC_CTR</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">st</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
+<span class="w">    </span><span class="n">st</span><span class="o">-&gt;</span><span class="n">setChannels</span><span class="p">(</span><span class="n">CHANNEL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">st</span><span class="o">-&gt;</span><span class="n">setSampleRate</span><span class="p">(</span><span class="n">SAMPLERATE</span><span class="p">);</span>
+<span class="w">    </span><span class="n">st</span><span class="o">-&gt;</span><span class="n">setSetting</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">st</span><span class="o">-&gt;</span><span class="n">setSetting</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">st</span><span class="o">-&gt;</span><span class="n">setTempo</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">D</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span>
+<span class="n">MUSIC_CTR</span><span class="o">::</span><span class="n">SendData</span><span class="p">(</span><span class="n">soundtouch</span><span class="o">::</span><span class="n">SoundTouch</span><span class="w"> </span><span class="o">*&amp;</span><span class="n">stp</span><span class="p">,</span><span class="w"> </span><span class="n">Decoder</span><span class="w"> </span><span class="o">*&amp;</span><span class="n">dp</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">st</span><span class="p">.</span><span class="n">has_value</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">D</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">stp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="p">(</span><span class="n">st</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
+<span class="w">        </span><span class="n">dp</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="p">(</span><span class="n">D</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to give soundtouch &amp; decoder object from MUSIC_CTR &quot;</span>
+<span class="w">                </span><span class="s">&quot;SendData.&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span>
+<span class="n">MUSIC_CTR</span><span class="o">::</span><span class="n">ChangeBpm</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">targetbpm</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">originBpm</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">st</span><span class="o">-&gt;</span><span class="n">setTempo</span><span class="p">(</span><span class="n">targetbpm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">originBpm</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span>
+<span class="n">MUSIC_CTR</span><span class="o">::</span><span class="n">checkUsable</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// if(!PausePos.has_value() &amp;&amp; FullPos.has_value()){</span>
+<span class="w">    </span><span class="c1">//     PausePos = FullPos.value();</span>
+<span class="w">    </span><span class="c1">// }</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">Usable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">D</span><span class="p">.</span><span class="n">has_value</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">songPath</span><span class="p">.</span><span class="n">has_value</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Usable</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;usable check failed. Decoder or songpath not valid from &quot;</span>
+<span class="w">                </span><span class="s">&quot;MUSIC_CTR checkUsable.&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">D</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;songPath is not valid&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;Decoder is not valid&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Usable</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span>
+<span class="n">MUSIC_CTR</span><span class="o">::</span><span class="n">TimeStretch</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FRAME_POS</span><span class="w"> </span><span class="n">Frame</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*&amp;</span><span class="n">masterPTR</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FRAME_POS</span><span class="w"> </span><span class="n">Sola</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Frame</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">st</span><span class="o">-&gt;</span><span class="n">getInputOutputSampleRatio</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">D</span><span class="o">-&gt;</span><span class="n">getRange</span><span class="p">(</span><span class="n">Sola</span><span class="p">,</span><span class="w"> </span><span class="n">timeStretchBuffer</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to get musicdata from decoder. From MUSIC_CTR &quot;</span>
+<span class="w">                </span><span class="s">&quot;timeStretch.&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">st</span><span class="o">-&gt;</span><span class="n">putSamples</span><span class="p">(</span><span class="n">timeStretchBuffer</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">Sola</span><span class="p">);</span>
+<span class="w">    </span><span class="n">st</span><span class="o">-&gt;</span><span class="n">receiveSamples</span><span class="p">(</span><span class="n">masterPTR</span><span class="p">,</span><span class="w"> </span><span class="n">Frame</span><span class="p">);</span>
+<span class="w">    </span><span class="n">masterPTR</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">Frame</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CHANNEL</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span>
+<span class="n">MUSIC_CTR</span><span class="o">::</span><span class="n">Render</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w">     </span><span class="n">targetBpm</span><span class="p">,</span>
+<span class="w">                  </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w">     </span><span class="n">originBpm</span><span class="p">,</span>
+<span class="w">                  </span><span class="k">const</span><span class="w"> </span><span class="n">LOCAL_POS</span><span class="w">  </span><span class="n">LocalIDX</span><span class="p">,</span>
+<span class="w">                  </span><span class="k">const</span><span class="w"> </span><span class="n">GLOBAL_POS</span><span class="w"> </span><span class="n">RenderAmount</span><span class="p">,</span>
+<span class="w">                  </span><span class="kt">float</span><span class="w">          </span><span class="o">*&amp;</span><span class="n">masterPTR</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">D</span><span class="o">-&gt;</span><span class="n">changePos</span><span class="p">(</span><span class="n">LocalIDX</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ChangeBpm</span><span class="p">(</span><span class="n">targetBpm</span><span class="p">,</span><span class="w"> </span><span class="n">originBpm</span><span class="p">);</span>
+<span class="w">    </span><span class="n">FRAME_POS</span><span class="w"> </span><span class="n">ItrTimes</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">RenderAmount</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">BPM_WINDOWS_SIZE</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FRAME_POS</span><span class="w"> </span><span class="n">remainLast</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RenderAmount</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">BPM_WINDOWS_SIZE</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItrTimes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">TimeStretch</span><span class="p">(</span><span class="n">BPM_WINDOWS_SIZE</span><span class="p">,</span><span class="w"> </span><span class="n">masterPTR</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to Timestretch. From MUSIC_CTR Render&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">TimeStretch</span><span class="p">(</span><span class="n">BPM_WINDOWS_SIZE</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">remainLast</span><span class="p">,</span><span class="w"> </span><span class="n">masterPTR</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to Timestretch. From MUSIC_CTR Render&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">SIMD_FLOAT</span><span class="w"> </span><span class="o">*&gt;</span>
+<span class="n">MUSIC_CTR</span><span class="o">::</span><span class="n">Execute</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">BPM</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bpms</span><span class="p">,</span><span class="w"> </span><span class="n">SIMD_FLOAT</span><span class="w"> </span><span class="o">*</span><span class="n">PCMS</span><span class="p">,</span><span class="w"> </span><span class="n">litedb</span><span class="w"> </span><span class="o">&amp;</span><span class="n">db</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">checkUsable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to execute because usable check failed. From MUSIC_CTR &quot;</span>
+<span class="w">                </span><span class="s">&quot;Execute&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">D</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">songPath</span><span class="p">.</span><span class="n">value</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to execute because Decoder init failed. From MUSIC_CTR &quot;</span>
+<span class="w">                </span><span class="s">&quot;Execute&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">QDatas</span><span class="p">.</span><span class="n">Ready</span><span class="p">(</span><span class="n">bpms</span><span class="p">.</span><span class="n">bpmVec</span><span class="p">,</span><span class="w"> </span><span class="n">Mus</span><span class="p">.</span><span class="n">bpms</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">GLOBAL_POS</span><span class="w"> </span><span class="n">RfullFrameSize</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">Gidx</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">front</span><span class="p">().</span><span class="n">Gidx</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">PCMS</span><span class="o">-&gt;</span><span class="n">resize</span><span class="p">(</span><span class="n">RfullFrameSize</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CHANNEL</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">masterPTR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PCMS</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">PLAY</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">GLOBAL_POS</span><span class="w"> </span><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">].</span><span class="n">Gidx</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">Gidx</span><span class="p">;</span>
+<span class="w">            </span><span class="n">Render</span><span class="p">(</span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">TargetBPM</span><span class="p">,</span>
+<span class="w">                   </span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">OriginBPM</span><span class="p">,</span>
+<span class="w">                   </span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">Lidx</span><span class="p">,</span>
+<span class="w">                   </span><span class="n">range</span><span class="p">,</span>
+<span class="w">                   </span><span class="n">masterPTR</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">PCMS</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">bool</span>
+<span class="n">MUSIC_CTR</span><span class="o">::</span><span class="n">setLOAD</span><span class="p">(</span><span class="n">MBData</span><span class="o">::</span><span class="n">Reader</span><span class="w"> </span><span class="o">&amp;</span><span class="n">RP</span><span class="p">,</span><span class="w"> </span><span class="n">litedb</span><span class="w"> </span><span class="o">&amp;</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="n">FRAME_POS</span><span class="w"> </span><span class="n">FrameIn</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">musdata</span><span class="w"> </span><span class="n">md</span><span class="p">;</span>
+<span class="w">    </span><span class="n">md</span><span class="p">.</span><span class="n">title</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">RP</span><span class="p">.</span><span class="n">getFirst</span><span class="p">();</span>
+<span class="w">    </span><span class="n">md</span><span class="p">.</span><span class="n">composer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RP</span><span class="p">.</span><span class="n">getSecond</span><span class="p">();</span>
+<span class="w">    </span><span class="n">md</span><span class="p">.</span><span class="n">bpm</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">stod</span><span class="p">(</span><span class="n">RP</span><span class="p">.</span><span class="n">getThird</span><span class="p">().</span><span class="n">cStr</span><span class="p">());</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">searchRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">md</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">searchRes</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;search music failed. From MUSIC_CTR setLOAD. ErrTitle: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">md</span><span class="p">.</span><span class="n">title</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">searchRes</span><span class="o">-&gt;</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;cannot find music from DB. From MUSIC_CTR setLOAD. ErrTitle: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">md</span><span class="p">.</span><span class="n">title</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">songPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">searchRes</span><span class="p">.</span><span class="n">value</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="n">musicPath</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PlayPosition</span><span class="w"> </span><span class="n">startpos</span><span class="p">;</span>
+<span class="w">    </span><span class="n">startpos</span><span class="p">.</span><span class="n">Gidx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FrameIn</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">startpos</span><span class="p">.</span><span class="n">Lidx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">stoull</span><span class="p">(</span><span class="n">searchRes</span><span class="p">.</span><span class="n">value</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="n">firstBeat</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to convert string to unsigned longlong. From MUSIC_CTR &quot;</span>
+<span class="w">                </span><span class="s">&quot;setLOAD. ErrTitle: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">md</span><span class="p">.</span><span class="n">title</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">startpos</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MIXSTATE</span><span class="o">::</span><span class="n">PLAY</span><span class="p">;</span>
+<span class="w">    </span><span class="n">QDatas</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">startpos</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">capnpMus</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">searchRes</span><span class="p">.</span><span class="n">value</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="n">bpmBinary</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;failed to open capnpBinary. From MUSIC_CTR setLOAD. ErrTitle: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">md</span><span class="p">.</span><span class="n">title</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Mus</span><span class="p">.</span><span class="n">Read</span><span class="p">(</span><span class="n">capnpMus</span><span class="p">,</span><span class="w"> </span><span class="n">startpos</span><span class="p">.</span><span class="n">Lidx</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;failed to Read CapnpReader. From MUSIC_CTR setLOAD. ErrTitle: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">md</span><span class="p">.</span><span class="n">title</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

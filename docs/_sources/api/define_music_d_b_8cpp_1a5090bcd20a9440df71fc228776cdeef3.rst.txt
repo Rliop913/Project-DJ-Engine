@@ -3,7 +3,7 @@
 Define CHK_BIND
 ===============
 
-- Defined in :ref:`file_include_db_musicDB.cpp`
+- Defined in :ref:`file_core_include_db_musicDB.cpp`
 
 
 Define Documentation

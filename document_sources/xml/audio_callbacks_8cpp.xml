@@ -7,7 +7,7 @@
     <includes local="no">cstring</includes>
     <incdepgraph>
       <node id="1">
-        <label>include/MainObjects/audioPlayer/audioCallbacks.cpp</label>
+        <label>core_include/MainObjects/audioPlayer/audioCallbacks.cpp</label>
         <link refid="audio_callbacks_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -26,26 +26,6 @@
         <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
-      </node>
-      <node id="18">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="39">
@@ -87,8 +67,8 @@
         </childnode>
       </node>
       <node id="4">
-        <label>MusicControlPannel.hpp</label>
-        <link refid="_music_control_pannel_8hpp"/>
+        <label>MusicControlPanel.hpp</label>
+        <link refid="_music_control_panel_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
@@ -207,6 +187,8 @@
       <node id="34">
         <label>fileNameSanitizer.hpp</label>
         <link refid="file_name_sanitizer_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
         <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
@@ -244,6 +226,26 @@
         <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="18">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="41">
@@ -310,7 +312,7 @@
         <label>cmath</label>
       </node>
       <node id="35">
-        <label>cppcodec/base64_url_unpadded.hpp</label>
+        <label>cppcodec/base64_default_url.hpp</label>
       </node>
       <node id="55">
         <label>cstring</label>
@@ -398,7 +400,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/MainObjects/audioPlayer/audioCallbacks.cpp" line="54" column="1" bodyfile="include/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="54" bodyend="63"/>
+        <location file="core_include/MainObjects/audioPlayer/audioCallbacks.cpp" line="54" column="1" bodyfile="core_include/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="54" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="audio_callbacks_8cpp_1a7d838e56a4484d297c33aa7a2c01ca91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -427,7 +429,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/MainObjects/audioPlayer/audioCallbacks.cpp" line="66" column="1" bodyfile="include/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="66" bodyend="77"/>
+        <location file="core_include/MainObjects/audioPlayer/audioCallbacks.cpp" line="66" column="1" bodyfile="core_include/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="66" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="audio_callbacks_8cpp_1ae5e4af00326247af37e277759ed98708" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -456,7 +458,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/MainObjects/audioPlayer/audioCallbacks.cpp" line="80" column="1" bodyfile="include/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="80" bodyend="88"/>
+        <location file="core_include/MainObjects/audioPlayer/audioCallbacks.cpp" line="80" column="1" bodyfile="core_include/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="80" bodyend="88"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -489,16 +491,16 @@
 <codeline lineno="23" refid="structaudio_engine_data_struct_1aa66ef36888faee74e89b103ebfae4b9e" refkind="member"><highlight class="normal"><ref refid="structaudio_engine_data_struct_1aa66ef36888faee74e89b103ebfae4b9e" kindref="member">audioEngineDataStruct::GetAfterManFX</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*pOutput,</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>frameCount)</highlight></codeline>
 <codeline lineno="25"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="structaudio_engine_data_struct_1aa167b5265c10b8a4a5fab1dbfd32b530" kindref="member">FXManualPannel</ref>.has_value())<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="structaudio_engine_data_struct_1a43d868f597776d70780535bfa6e6e944" kindref="member">FXManualPanel</ref>.has_value())<sp/>{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>getres<sp/>=<sp/><ref refid="structaudio_engine_data_struct_1a5458ea6743868149c4fd47af1c96197b" kindref="member">getNowfPointer</ref>(frameCount);</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!getres.has_value())<sp/>{</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structaudio_engine_data_struct_1aa167b5265c10b8a4a5fab1dbfd32b530" kindref="member">FXManualPannel</ref>-&gt;checkSomethingOn())<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structaudio_engine_data_struct_1a43d868f597776d70780535bfa6e6e944" kindref="member">FXManualPanel</ref>-&gt;checkSomethingOn())<sp/>{</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_manual_mix_8hpp_1a79df2887c22c06f21513214917ebbdc4" kindref="member">toFaustStylePCM</ref>(<ref refid="structaudio_engine_data_struct_1aab0d65b85bfb5bf76929c7773a239b26" kindref="member">faustPcmPP</ref>,<sp/>getres.value(),<sp/>frameCount);</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaudio_engine_data_struct_1aa167b5265c10b8a4a5fab1dbfd32b530" kindref="member">FXManualPannel</ref>-&gt;addFX(<ref refid="structaudio_engine_data_struct_1aab0d65b85bfb5bf76929c7773a239b26" kindref="member">faustPcmPP</ref>,<sp/>frameCount);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaudio_engine_data_struct_1a43d868f597776d70780535bfa6e6e944" kindref="member">FXManualPanel</ref>-&gt;addFX(<ref refid="structaudio_engine_data_struct_1aab0d65b85bfb5bf76929c7773a239b26" kindref="member">faustPcmPP</ref>,<sp/>frameCount);</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_manual_mix_8hpp_1ab241d30c14975d15f937dd81b05efc80" kindref="member">toLRStylePCM</ref>(<ref refid="structaudio_engine_data_struct_1aab0d65b85bfb5bf76929c7773a239b26" kindref="member">faustPcmPP</ref>,<sp/>pOutput,<sp/>frameCount);</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
@@ -537,7 +539,7 @@
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>rendered<sp/>=</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><ref refid="structaudio_engine_data_struct" kindref="compound">audioEngineDataStruct</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(pDevice-&gt;pUserData);</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>rendered-&gt;<ref refid="structaudio_engine_data_struct_1aa66ef36888faee74e89b103ebfae4b9e" kindref="member">GetAfterManFX</ref>(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(pOutput),<sp/>frameCount);</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>rendered-&gt;MusCtrPannel-&gt;GetPCMFrames(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(pOutput),</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>rendered-&gt;MusCtrPanel-&gt;GetPCMFrames(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(pOutput),</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameCount);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>rendered-&gt;CountUp(frameCount);</highlight></codeline>
 <codeline lineno="77"><highlight class="normal">}</highlight></codeline>
@@ -549,10 +551,10 @@
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ma_uint32<sp/><sp/><sp/>frameCount)</highlight></codeline>
 <codeline lineno="84"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>Data<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><ref refid="structaudio_engine_data_struct" kindref="compound">audioEngineDataStruct</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(pDevice-&gt;pUserData);</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>Data-&gt;<ref refid="structaudio_engine_data_struct_1a074c72e507813acdd18e4c6c09f3de16" kindref="member">MusCtrPannel</ref>-&gt;GetPCMFrames(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(pOutput),</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>Data-&gt;<ref refid="structaudio_engine_data_struct_1af8e16a70120ec10649b46c1a29edd024" kindref="member">MusCtrPanel</ref>-&gt;GetPCMFrames(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(pOutput),</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frameCount);</highlight></codeline>
 <codeline lineno="88"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="include/MainObjects/audioPlayer/audioCallbacks.cpp"/>
+    <location file="core_include/MainObjects/audioPlayer/audioCallbacks.cpp"/>
   </compounddef>
 </doxygen>

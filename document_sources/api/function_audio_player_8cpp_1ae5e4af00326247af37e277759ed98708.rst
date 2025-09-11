@@ -3,7 +3,7 @@
 Function FullManualRender_callback(ma_device \*, void \*, const void \*, ma_uint32)
 ===================================================================================
 
-- Defined in :ref:`file_include_MainObjects_audioPlayer_audioPlayer.cpp`
+- Defined in :ref:`file_core_include_MainObjects_audioPlayer_audioPlayer.cpp`
 
 
 Function Documentation

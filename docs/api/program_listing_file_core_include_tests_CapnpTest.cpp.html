@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File CapnpTest.cpp &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File CapnpTest.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_core_include_tests_CapnpTest.cpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-capnptest-cpp">
+<span id="program-listing-file-core-include-tests-capnptest-cpp"></span><h1>Program Listing for File CapnpTest.cpp<a class="headerlink" href="#program-listing-for-file-capnptest-cpp" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file_core_include_tests_CapnpTest.cpp.html#file-core-include-tests-capnptest-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">core_include\tests\CapnpTest.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MUSIC_CTR.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;hwy/highway.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Ingredients</span><span class="w">  </span><span class="n">ing</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PlayPosition</span><span class="w"> </span><span class="n">spp</span><span class="p">;</span>
+<span class="w">    </span><span class="n">spp</span><span class="p">.</span><span class="n">Gidx</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">spp</span><span class="p">.</span><span class="n">Lidx</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">123</span><span class="p">;</span>
+<span class="w">    </span><span class="n">spp</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MIXSTATE</span><span class="o">::</span><span class="n">PLAY</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PlayPosition</span><span class="w"> </span><span class="n">Epp</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Epp</span><span class="p">.</span><span class="n">Gidx</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">4800000</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Epp</span><span class="p">.</span><span class="n">Lidx</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">Epp</span><span class="p">.</span><span class="n">Gidx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">spp</span><span class="p">.</span><span class="n">Lidx</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Epp</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MIXSTATE</span><span class="o">::</span><span class="n">END</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ing</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">spp</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ing</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Epp</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">PlayPosition</span><span class="w"> </span><span class="n">Cpp</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Cpp</span><span class="p">.</span><span class="n">Gidx</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">480000</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Cpp</span><span class="p">.</span><span class="n">Lidx</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">123</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Cpp</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MIXSTATE</span><span class="o">::</span><span class="n">PLAY</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ing</span><span class="p">.</span><span class="n">pos</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Cpp</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">BpmStruct</span><span class="w"> </span><span class="n">Gb</span><span class="p">;</span>
+<span class="w">    </span><span class="n">BpmStruct</span><span class="w"> </span><span class="n">Lb</span><span class="p">;</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">beat</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">subBeat</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">bpm</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">separate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">beat</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">subBeat</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">bpm</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">120</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">separate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">beat</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">subBeat</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">bpm</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Gb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">separate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Lb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Lb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">beat</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Lb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">subBeat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Lb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">bpm</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">120</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Lb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Lb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">beat</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Lb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">subBeat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Lb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">bpm</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Lb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Lb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">beat</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Lb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">subBeat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Lb</span><span class="p">.</span><span class="n">fragments</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">bpm</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">120</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">Lb</span><span class="p">.</span><span class="n">sortFragment</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Gb</span><span class="p">.</span><span class="n">sortFragment</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Lb</span><span class="p">.</span><span class="n">calcFrame</span><span class="p">(</span><span class="n">spp</span><span class="p">.</span><span class="n">Lidx</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Gb</span><span class="p">.</span><span class="n">calcFrame</span><span class="p">();</span>
+<span class="w">    </span><span class="n">ing</span><span class="p">.</span><span class="n">Ready</span><span class="p">(</span><span class="n">Gb</span><span class="p">,</span><span class="w"> </span><span class="n">Lb</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Lb</span><span class="p">.</span><span class="n">calcFrame</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">Gb</span><span class="p">.</span><span class="n">calcFrame</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">// auto res = ing.FirstStage(Gb, Lb);</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// for(auto i : res){</span>
+<span class="w">        </span><span class="c1">//     std::cout&lt;&lt; &quot;Global BPM: &quot; &lt;&lt; i.GlobalBpm &lt;&lt; std::endl;</span>
+<span class="w">        </span><span class="c1">//     std::cout&lt;&lt; &quot;Local BPM: &quot; &lt;&lt; i.LocalBpm &lt;&lt; std::endl;</span>
+<span class="w">        </span><span class="c1">//     std::cout&lt;&lt; &quot;Global Position: &quot; &lt;&lt; i.Gpos &lt;&lt; std::endl;</span>
+<span class="w">        </span><span class="c1">//     std::cout&lt;&lt; &quot;--------------------&gt;&quot; &lt;&lt; temp++ &lt;&lt; std::endl;</span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
