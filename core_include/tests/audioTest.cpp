@@ -122,11 +122,11 @@ main()
         std::cout << "Completele same" << std::endl;
     }
     auto AP     = new audioPlayer(dbb, restd.value().front(), 48, true);
-    auto pannel = AP->GetFXControlPannel();
+    auto panel = AP->GetFXControlPanel();
     AP->Activate();
     getchar();
-    pannel->FX_ON_OFF(FXList::FILTER, true);
-    auto filter_handle = pannel->GetArgSetter(FXList::FILTER);
+    panel->FX_ON_OFF(FXList::FILTER, true);
+    auto filter_handle = panel->GetArgSetter(FXList::FILTER);
     for (auto i : filter_handle) {
         std::cout << i.first << std::endl;
     }

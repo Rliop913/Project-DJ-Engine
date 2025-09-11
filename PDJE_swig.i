@@ -12,7 +12,7 @@
     #include <string>
     #include "ManualMix.hpp"
     #include "audioPlayer.hpp"
-    #include "MusicControlPannel.hpp"
+    #include "MusicControlPanel.hpp"
     #include "fileNameSanitizer.hpp"
     #include "editorObject.hpp"
     #include "editorCommit.hpp"
@@ -61,7 +61,7 @@ namespace ROCKSDB_NAMESPACE = rocksdb;
 %include "trackDB.hpp"
 %include "audioPlayer.hpp"
 %include "fileNameSanitizer.hpp"
-%include "MusicControlPannel.hpp"
+%include "MusicControlPanel.hpp"
 %include "editorObject.hpp"
 %include "editorCommit.hpp"
 %include "audioRender.hpp"

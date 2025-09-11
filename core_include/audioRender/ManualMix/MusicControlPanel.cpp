@@ -1,22 +1,22 @@
-#include "MusicControlPannel.hpp"
+#include "MusicControlPanel.hpp"
 
 // #undef HWY_TARGET_INCLUDE
-// #define HWY_TARGET_INCLUDE "MusicControlPannel-inl.h"
+// #define HWY_TARGET_INCLUDE "MusicControlPanel-inl.h"
 // #include "hwy/foreach_target.h"
 // #include <hwy/highway.h>
 #include "Decoder.hpp"
-#include "MusicControlPannel-inl.h"
+#include "MusicControlPanel-inl.h"
 #include "PDJE_LOG_SETTER.hpp"
 
-MusicControlPannel::~MusicControlPannel()
+MusicControlPanel::~MusicControlPanel()
 {
 }
 
 bool
-MusicControlPannel::LoadMusic(litedb &ROOTDB, const musdata &Mus)
+MusicControlPanel::LoadMusic(litedb &ROOTDB, const musdata &Mus)
 {
     if (!deck.try_emplace(Mus.title).second) {
-        critlog("failed to load music from MusicControlPannel LoadMusic. "
+        critlog("failed to load music from MusicControlPanel LoadMusic. "
                 "ErrTitle: ");
         critlog(Mus.title);
         return false;
@@ -25,18 +25,18 @@ MusicControlPannel::LoadMusic(litedb &ROOTDB, const musdata &Mus)
 }
 
 bool
-MusicControlPannel::CueMusic(const UNSANITIZED       &title,
+MusicControlPanel::CueMusic(const UNSANITIZED       &title,
                              const unsigned long long newPos)
 {
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
     if (!safeTitle) {
-        critlog("failed to sanitize title from MusicControlPannel CueMusic. "
+        critlog("failed to sanitize title from MusicControlPanel CueMusic. "
                 "ErrTitle: ");
         critlog(title);
         return false;
     }
     if (deck.find(safeTitle.value()) == deck.end()) {
-        warnlog("failed to find music from deck from MusicControlPannel "
+        warnlog("failed to find music from deck from MusicControlPanel "
                 "CueMusic. ErrTitle: ");
         warnlog(title);
         return false;
@@ -46,17 +46,17 @@ MusicControlPannel::CueMusic(const UNSANITIZED       &title,
 }
 
 bool
-MusicControlPannel::SetMusic(const UNSANITIZED &title, const bool onOff)
+MusicControlPanel::SetMusic(const UNSANITIZED &title, const bool onOff)
 {
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
     if (!safeTitle) {
-        critlog("failed to sanitize title from MusicControlPannel SetMusic. "
+        critlog("failed to sanitize title from MusicControlPanel SetMusic. "
                 "ErrTitle: ");
         critlog(title);
         return false;
     }
     if (deck.find(safeTitle.value()) == deck.end()) {
-        warnlog("failed to find music from deck from MusicControlPannel "
+        warnlog("failed to find music from deck from MusicControlPanel "
                 "SetMusic. ErrTitle: ");
         warnlog(title);
         return false;
@@ -66,7 +66,7 @@ MusicControlPannel::SetMusic(const UNSANITIZED &title, const bool onOff)
 }
 
 LOADED_LIST
-MusicControlPannel::GetLoadedMusicList()
+MusicControlPanel::GetLoadedMusicList()
 {
     LOADED_LIST list;
     for (auto &i : deck) {
@@ -77,11 +77,11 @@ MusicControlPannel::GetLoadedMusicList()
 }
 
 bool
-MusicControlPannel::UnloadMusic(const UNSANITIZED &title)
+MusicControlPanel::UnloadMusic(const UNSANITIZED &title)
 {
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
     if (!safeTitle) {
-        critlog("failed to sanitize title from MusicControlPannel UnloadMusic. "
+        critlog("failed to sanitize title from MusicControlPanel UnloadMusic. "
                 "ErrTitle: ");
         critlog(title);
         return false;
@@ -92,24 +92,24 @@ MusicControlPannel::UnloadMusic(const UNSANITIZED &title)
 HWY_EXPORT(GetPCMFramesSIMD);
 
 bool
-MusicControlPannel::GetPCMFrames(float *array, const unsigned long FrameSize)
+MusicControlPanel::GetPCMFrames(float *array, const unsigned long FrameSize)
 {
     return HWY_DYNAMIC_DISPATCH(GetPCMFramesSIMD)(
         tempFrames, L, R, FaustStyle, deck, array, FrameSize);
 }
 
-FXControlPannel *
-MusicControlPannel::getFXHandle(const UNSANITIZED &title)
+FXControlPanel *
+MusicControlPanel::getFXHandle(const UNSANITIZED &title)
 {
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
     if (!safeTitle) {
-        critlog("failed to sanitize title from MusicControlPannel getFXHandle. "
+        critlog("failed to sanitize title from MusicControlPanel getFXHandle. "
                 "ErrTitle: ");
         critlog(title);
         return nullptr;
     }
     if (deck.find(safeTitle.value()) == deck.end()) {
-        warnlog("failed to find music from deck. Err from MusicControlPannel "
+        warnlog("failed to find music from deck. Err from MusicControlPanel "
                 "getFXHandle. ErrTitle: ");
         warnlog(title);
         return nullptr;
@@ -119,19 +119,19 @@ MusicControlPannel::getFXHandle(const UNSANITIZED &title)
 }
 
 bool
-MusicControlPannel::ChangeBpm(const UNSANITIZED &title,
+MusicControlPanel::ChangeBpm(const UNSANITIZED &title,
                               const double       targetBpm,
                               const double       originBpm)
 {
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
     if (!safeTitle) {
-        critlog("failed to sanitize title from MusicControlPannel SetMusic. "
+        critlog("failed to sanitize title from MusicControlPanel SetMusic. "
                 "ErrTitle: ");
         critlog(title);
         return false;
     }
     if (deck.find(safeTitle.value()) == deck.end()) {
-        warnlog("failed to find music from deck from MusicControlPannel "
+        warnlog("failed to find music from deck from MusicControlPanel "
                 "SetMusic. ErrTitle: ");
         warnlog(title);
         return false;

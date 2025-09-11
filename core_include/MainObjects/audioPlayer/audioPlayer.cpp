@@ -18,7 +18,7 @@ FullManualRender_callback(ma_device  *pDevice,
                           const void *pInput,
                           ma_uint32   frameCount);
 
-#include "MusicControlPannel.hpp"
+#include "MusicControlPanel.hpp"
 
 void
 audioPlayer::ContextInit()
@@ -54,8 +54,8 @@ audioPlayer::audioPlayer(litedb            &db,
     auto conf = DefaultInit(frameBufferSize);
     if (hasManual) {
         conf.dataCallback = HybridRender_callback;
-        engineDatas.FXManualPannel.emplace(SAMPLERATE);
-        engineDatas.MusCtrPannel.emplace(SAMPLERATE);
+        engineDatas.FXManualPanel.emplace(SAMPLERATE);
+        engineDatas.MusCtrPanel.emplace(SAMPLERATE);
     } else {
         conf.dataCallback = FullPreRender_callback;
     }
@@ -80,8 +80,8 @@ audioPlayer::audioPlayer(const unsigned int frameBufferSize)
     ma_device_config conf = DefaultInit(frameBufferSize);
 
     conf.dataCallback = FullManualRender_callback;
-    engineDatas.FXManualPannel.emplace(SAMPLERATE);
-    engineDatas.MusCtrPannel.emplace(SAMPLERATE);
+    engineDatas.FXManualPanel.emplace(SAMPLERATE);
+    engineDatas.MusCtrPanel.emplace(SAMPLERATE);
 
     if (ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS) {
         critlog("failed to init device. from audioPlayer::audioPlayer(fbsize)");
@@ -127,33 +127,33 @@ audioPlayer::GetConsumedFrames()
     return engineDatas.consumedFrames;
 }
 
-FXControlPannel *
-audioPlayer::GetFXControlPannel(const UNSANITIZED &title)
+FXControlPanel *
+audioPlayer::GetFXControlPanel(const UNSANITIZED &title)
 {
     if (title == "__PDJE__MAIN__") {
-        if (!engineDatas.FXManualPannel.has_value()) {
-            engineDatas.FXManualPannel.emplace(48000);
+        if (!engineDatas.FXManualPanel.has_value()) {
+            engineDatas.FXManualPanel.emplace(48000);
         }
-        return &engineDatas.FXManualPannel.value();
+        return &engineDatas.FXManualPanel.value();
     } else {
-        if (engineDatas.MusCtrPannel.has_value()) {
-            return engineDatas.MusCtrPannel->getFXHandle(title);
+        if (engineDatas.MusCtrPanel.has_value()) {
+            return engineDatas.MusCtrPanel->getFXHandle(title);
         } else {
-            critlog("failed to return fx control pannel. from audioPlayer "
-                    "GetFXControlPannel");
+            critlog("failed to return fx control panel. from audioPlayer "
+                    "GetFXControlPanel");
             return nullptr;
         }
     }
 }
 
-MusicControlPannel *
-audioPlayer::GetMusicControlPannel()
+MusicControlPanel *
+audioPlayer::GetMusicControlPanel()
 {
-    if (engineDatas.MusCtrPannel.has_value()) {
-        return &(engineDatas.MusCtrPannel.value());
+    if (engineDatas.MusCtrPanel.has_value()) {
+        return &(engineDatas.MusCtrPanel.value());
     } else {
-        critlog("failed to return music control pannel. from audioPlayer "
-                "GetMusicControlPannel");
+        critlog("failed to return music control panel. from audioPlayer "
+                "GetMusicControlPanel");
         return nullptr;
     }
 }
@@ -168,11 +168,11 @@ audioPlayer::PullOutDataLine()
     if (!engineDatas.pcmDataPoint->empty()) {
         dline.preRenderedData = engineDatas.pcmDataPoint->data();
     }
-    if (engineDatas.FXManualPannel.has_value()) {
-        dline.fx = &engineDatas.FXManualPannel.value();
+    if (engineDatas.FXManualPanel.has_value()) {
+        dline.fx = &engineDatas.FXManualPanel.value();
     }
-    if (engineDatas.MusCtrPannel.has_value()) {
-        dline.musp = &engineDatas.MusCtrPannel.value();
+    if (engineDatas.MusCtrPanel.has_value()) {
+        dline.musp = &engineDatas.MusCtrPanel.value();
     }
     return dline;
 }

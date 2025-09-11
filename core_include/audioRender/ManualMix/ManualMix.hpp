@@ -45,29 +45,29 @@ enum FXList {
  * @brief FX Controller class
  *
  */
-class PDJE_API FXControlPannel {
+class PDJE_API FXControlPanel {
   private:
-    std::pair<bool, CompressorFAUSTMan> compressorPannel;
-    std::pair<bool, DistortionFAUSTMan> distortionPannel;
-    std::pair<bool, EchoFAUSTMan>       echoPannel;
-    std::pair<bool, EQFAUSTMan>         eqPannel;
-    std::pair<bool, FilterFAUSTMan>     filterPannel;
-    std::pair<bool, FlangerFAUSTMan>    flangerPannel;
-    std::pair<bool, OcsFilterFAUSTMan>  ocsFilterPannel;
-    std::pair<bool, PannerFAUSTMan>     pannerPannel;
-    std::pair<bool, PhaserFAUSTMan>     phaserPannel;
-    std::pair<bool, RobotFAUSTMan>      robotPannel;
-    std::pair<bool, RollFAUSTMan>       rollPannel;
-    std::pair<bool, TranceFAUSTMan>     trancePannel;
-    std::pair<bool, VolFAUSTMan>        volPannel;
+    std::pair<bool, CompressorFAUSTMan> compressorPanel;
+    std::pair<bool, DistortionFAUSTMan> distortionPanel;
+    std::pair<bool, EchoFAUSTMan>       echoPanel;
+    std::pair<bool, EQFAUSTMan>         eqPanel;
+    std::pair<bool, FilterFAUSTMan>     filterPanel;
+    std::pair<bool, FlangerFAUSTMan>    flangerPanel;
+    std::pair<bool, OcsFilterFAUSTMan>  ocsFilterPanel;
+    std::pair<bool, PannerFAUSTMan>     pannerPanel;
+    std::pair<bool, PhaserFAUSTMan>     phaserPanel;
+    std::pair<bool, RobotFAUSTMan>      robotPanel;
+    std::pair<bool, RollFAUSTMan>       rollPanel;
+    std::pair<bool, TranceFAUSTMan>     trancePanel;
+    std::pair<bool, VolFAUSTMan>        volPanel;
 
     /**
-     * @brief checks fxPannel activated and apply fx
+     * @brief checks fxPanel activated and apply fx
      *
-     * @tparam ManName FXPannel Type
+     * @tparam ManName FXPanel Type
      * @param pcm Faust Style float array
      * @param samples length of float array
-     * @param man FXPannel Object
+     * @param man FXPanel Object
      */
     template <typename ManName>
     void
@@ -80,11 +80,11 @@ class PDJE_API FXControlPannel {
 
   public:
     /**
-     * @brief Construct a new FXControlPannel object
+     * @brief Construct a new FXControlPanel object
      *
      * @param sampleRate the sample rate. we use 48000
      */
-    FXControlPannel(int sampleRate);
+    FXControlPanel(int sampleRate);
     /**
      * @brief Get the Arg Setter object
      *

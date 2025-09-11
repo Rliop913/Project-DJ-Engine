@@ -37,33 +37,30 @@ if(PDJE_DYNAMIC)
   endif()
 endif()
 
-if(WIN32)
-  include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/windows
-    # ${CAPNP_INCLUDE_DIRS}
-  )
-elseif(UNIX AND NOT APPLE)
-  find_package(PkgConfig REQUIRED)
-  pkg_check_modules(LIBEVDEV REQUIRED libevdev)
+# if(WIN32)
+  
+# elseif(UNIX AND NOT APPLE)
+#   # find_package(PkgConfig REQUIRED)
+#   # pkg_check_modules(LIBEVDEV REQUIRED libevdev)
 
-  include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux
-    ${LIBEVDEV_INCLUDE_DIRS}
-  )
-  link_libraries(
-    ${LIBEVDEV_LIBRARIES}
-  )
+# #   include_directories(
+# #     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux
+# #     ${LIBEVDEV_INCLUDE_DIRS}
+# #   )
+# #   link_libraries(
+# #     ${LIBEVDEV_LIBRARIES}
+# #   )
 
-  set(input_src
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/LINUX_I.cpp
-  )
+# #   set(input_src
+# #     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/LINUX_I.cpp
+# #   )
 
-elseif(APPLE)
-  include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/macos
-  )
+# # elseif(APPLE)
+# #   include_directories(
+# #     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/macos
+# #   )
 
-endif()
+# endif()
 
 include(cmakes/src/thirdPartySource.cmake)
 include(cmakes/includeDIRS.cmake)
@@ -74,28 +71,9 @@ include(cmakes/src/EDITORsrc.cmake)
 
 
 if(PDJE_BUILD_TESTS)
-  
-#DEPRECATE TESTS
-# add_executable(testdb ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${dbSource} ${sql_amalgam_src} ${editorSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
+add_executable(testEditor core_include/tests/editorTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
+add_executable(DBTester core_include/tests/dbTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
 
-# add_executable(testaudio ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/audioTest.cpp ${miniaudio_src}  ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
-
-# add_executable(testCapnp ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/CapnpTest.cpp ${miniaudio_src}  ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource})
-
-
-# add_executable(testHighway include/tests/highway_Test.cpp ${sql_amalgam_src} )
-
-
-# add_executable(testManualAudio include/tests/manualAudioTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
-
-
-# add_executable(testInterface include/tests/interfaceTest.cpp ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
-
-
-# add_executable(testGIT include/tests/gittest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
-
-add_executable(testEditor include/tests/editorTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
-add_executable(DBTester include/tests/dbTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} )
 target_include_directories(testEditor PUBLIC ${PDJE_INCLUDE_CORE})
 target_include_directories(DBTester PUBLIC ${PDJE_INCLUDE_CORE})
 

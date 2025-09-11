@@ -1,13 +1,13 @@
 
 /**
- * @file MusicControlPannel-inl.h
+ * @file MusicControlPanel-inl.h
  * @brief SIMD-optimized implementation for mixing PCM frames from multiple
  * sources.
  */
-#include "MusicControlPannel.hpp"
+#include "MusicControlPanel.hpp"
 
 #undef HWY_TARGET_INCLUDE
-#define HWY_TARGET_INCLUDE "MusicControlPannel-inl.h"
+#define HWY_TARGET_INCLUDE "MusicControlPanel-inl.h"
 #include "hwy/foreach_target.h"
 #include <hwy/highway.h>
 
