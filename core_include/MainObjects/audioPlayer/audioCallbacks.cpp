@@ -23,16 +23,16 @@ void
 audioEngineDataStruct::GetAfterManFX(float              *pOutput,
                                      const unsigned long frameCount)
 {
-    if (!FXManualPannel.has_value()) {
+    if (!FXManualPanel.has_value()) {
         return;
     }
     auto getres = getNowfPointer(frameCount);
     if (!getres.has_value()) {
         return;
     }
-    if (FXManualPannel->checkSomethingOn()) {
+    if (FXManualPanel->checkSomethingOn()) {
         toFaustStylePCM(faustPcmPP, getres.value(), frameCount);
-        FXManualPannel->addFX(faustPcmPP, frameCount);
+        FXManualPanel->addFX(faustPcmPP, frameCount);
         toLRStylePCM(faustPcmPP, pOutput, frameCount);
     } else {
 
@@ -71,7 +71,7 @@ HybridRender_callback(ma_device  *pDevice,
     auto rendered =
         reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
     rendered->GetAfterManFX(reinterpret_cast<float *>(pOutput), frameCount);
-    rendered->MusCtrPannel->GetPCMFrames(reinterpret_cast<float *>(pOutput),
+    rendered->MusCtrPanel->GetPCMFrames(reinterpret_cast<float *>(pOutput),
                                          frameCount);
     rendered->CountUp(frameCount);
 }
@@ -83,6 +83,6 @@ FullManualRender_callback(ma_device  *pDevice,
                           ma_uint32   frameCount)
 {
     auto Data = reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
-    Data->MusCtrPannel->GetPCMFrames(reinterpret_cast<float *>(pOutput),
+    Data->MusCtrPanel->GetPCMFrames(reinterpret_cast<float *>(pOutput),
                                      frameCount);
 }

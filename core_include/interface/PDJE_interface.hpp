@@ -177,16 +177,16 @@ class PDJE_API PDJE {
  */
 class PDJE_API ARGSETTER_WRAPPER {
   private:
-    FXControlPannel *fxp;
+    FXControlPanel *fxp;
 
   public:
     /**
      * @brief Construct a new argsetter wrapper object
-     * wraps the FXControlPannel object.
-     * @param pointer the controlpannel object, you can get this from music
+     * wraps the FXControlPanel object.
+     * @param pointer the controlpanel object, you can get this from music
      * handler.
      */
-    ARGSETTER_WRAPPER(FXControlPannel *pointer) : fxp(pointer) {};
+    ARGSETTER_WRAPPER(FXControlPanel *pointer) : fxp(pointer) {};
     ~ARGSETTER_WRAPPER() = default;
     /**
      * @brief gets the available fx list

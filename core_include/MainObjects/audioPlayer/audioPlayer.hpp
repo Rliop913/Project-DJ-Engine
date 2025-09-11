@@ -77,20 +77,20 @@ class PDJE_API audioPlayer {
      * realtime manually.
      * @param title the music to control. "__PDJE__MAIN__" means the prerendered
      * music.
-     * @return FXControlPannel* but the "title" doesn't exists, it returns
+     * @return FXControlPanel* but the "title" doesn't exists, it returns
      * nullptr.
      */
-    FXControlPannel *
-    GetFXControlPannel(const UNSANITIZED &title = "__PDJE__MAIN__");
+    FXControlPanel *
+    GetFXControlPanel(const UNSANITIZED &title = "__PDJE__MAIN__");
 
     /**
      * @brief music controller getter
      * this returns the music controller. with this, you can load music, stop
      * music in realtime manually.
-     * @return MusicControlPannel* if something wrong, it returns nullptr.
+     * @return MusicControlPanel* if something wrong, it returns nullptr.
      */
-    MusicControlPannel *
-    GetMusicControlPannel();
+    MusicControlPanel *
+    GetMusicControlPanel();
     /**
      * @brief audio handler constructor. specified for pre-render mode.
      *

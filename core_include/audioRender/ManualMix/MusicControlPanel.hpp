@@ -13,7 +13,7 @@
 
 namespace fs = std::filesystem;
 // #undef HWY_TARGET_INCLUDE
-// #define HWY_TARGET_INCLUDE "MusicControlPannel-inl.h"
+// #define HWY_TARGET_INCLUDE "MusicControlPanel-inl.h"
 // #include "hwy/foreach_target.h"
 // #include <hwy/highway.h>
 
@@ -26,9 +26,9 @@ using LOADED_LIST = std::vector<std::string>;
 struct MusicOnDeck {
     bool                                  play = false;
     Decoder                               dec;
-    FXControlPannel                      *fxP;
+    FXControlPanel                      *fxP;
     std::optional<soundtouch::SoundTouch> st;
-    MusicOnDeck() : fxP(new FXControlPannel(48000))
+    MusicOnDeck() : fxP(new FXControlPanel(48000))
     {
         st.emplace();
         st->setChannels(CHANNEL);
@@ -50,7 +50,7 @@ using LOADS = std::map<std::string, MusicOnDeck>;
  * @brief Music handler for manual mode
  *
  */
-class PDJE_API MusicControlPannel {
+class PDJE_API MusicControlPanel {
   private:
     LOADS              deck;
     unsigned long      fsize;
@@ -124,9 +124,9 @@ class PDJE_API MusicControlPannel {
      * @brief gets FX handler
      *
      * @param title the title of the music
-     * @return FXControlPannel*, the handler pointer
+     * @return FXControlPanel*, the handler pointer
      */
-    FXControlPannel *
+    FXControlPanel *
     getFXHandle(const UNSANITIZED &title);
 
     /**
@@ -143,8 +143,8 @@ class PDJE_API MusicControlPannel {
               const double       targetBpm,
               const double       originBpm);
 
-    MusicControlPannel(const unsigned long FrameSize) : fsize(FrameSize)
+    MusicControlPanel(const unsigned long FrameSize) : fsize(FrameSize)
     {
     }
-    ~MusicControlPannel();
+    ~MusicControlPanel();
 };

@@ -37,18 +37,18 @@ main()
     }
     testpdje->player->Activate();
     getchar();
-    testpdje->player->GetFXControlPannel()->FX_ON_OFF(FXList::DISTORTION, true);
-    auto pannel = testpdje->player->GetFXControlPannel()->GetArgSetter(
+    testpdje->player->GetFXControlPanel()->FX_ON_OFF(FXList::DISTORTION, true);
+    auto panel = testpdje->player->GetFXControlPanel()->GetArgSetter(
         FXList::DISTORTION);
-    pannel["distortionValue"](2);
+    panel["distortionValue"](2);
 
     getchar();
-    auto mus = testpdje->player->GetMusicControlPannel();
+    auto mus = testpdje->player->GetMusicControlPanel();
     mus->LoadMusic(testpdje->DBROOT.value(), searchResult[0]);
     std::cout << TO_STR(mus->GetLoadedMusicList()[0]);
     mus->SetMusic("WTC", true);
     getchar();
-    for (auto i : (pannel)) {
+    for (auto i : (panel)) {
         std::cout << i.first << " " << std::endl;
     }
     testpdje->player->Deactivate();

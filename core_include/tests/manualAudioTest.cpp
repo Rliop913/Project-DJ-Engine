@@ -4,7 +4,7 @@
 #include "miniaudio.h"
 
 auto               idx = 0;
-FXControlPannel   *fxcp;
+FXControlPanel   *fxcp;
 std::vector<float> Lvec(480);
 std::vector<float> Rvec(480);
 
@@ -48,7 +48,7 @@ main(int argc, char *argv[])
 
     ma_device dev;
 
-    fxcp = new FXControlPannel(48000);
+    fxcp = new FXControlPanel(48000);
 
     ma_decoder_config decconf = ma_decoder_config_init(ma_format_f32, 2, 48000);
     ma_decoder        dec;

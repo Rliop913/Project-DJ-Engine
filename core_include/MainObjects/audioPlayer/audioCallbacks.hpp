@@ -2,7 +2,7 @@
 
 #include <optional>
 
-#include "MusicControlPannel.hpp"
+#include "MusicControlPanel.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
 #include <miniaudio.h>
 
@@ -12,8 +12,8 @@
  */
 struct PDJE_API audioEngineDataStruct {
     float                            *faustPcmPP[2];
-    std::optional<FXControlPannel>    FXManualPannel;
-    std::optional<MusicControlPannel> MusCtrPannel;
+    std::optional<FXControlPanel>    FXManualPanel;
+    std::optional<MusicControlPanel> MusCtrPanel;
     std::vector<float>               *pcmDataPoint;
     unsigned long long                nowCursor      = 0;
     unsigned long long                maxCursor      = 0;
