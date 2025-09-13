@@ -15,6 +15,8 @@ Program Listing for File PDJE_INPUT.hpp
    #include <string>
    #include <vector>
    
+   #include "PDJE_Input_DataLine.hpp"
+   
    #ifdef WIN32
    // #define WIN32_LEAN_AND_MEAN
    // #include <Windows.h>
@@ -51,6 +53,9 @@ Program Listing for File PDJE_INPUT.hpp
    
        void
        pair_job();
+   
+       PDJE_INPUT_DATA_LINE
+       PullOutDataLine();
    
        PDJE_Input();
    

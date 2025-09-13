@@ -7,26 +7,6 @@
     <includes refid="fileNameSanitizer_8hpp" local="yes">fileNameSanitizer.hpp</includes>
     <includes local="no">source_location</includes>
     <incdepgraph>
-      <node id="5">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
-      </node>
-      <node id="12">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="PDJE__LOG__SETTER_8hpp"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-      </node>
       <node id="6">
         <label>dbState.hpp</label>
         <link refid="dbState_8hpp"/>
@@ -41,22 +21,8 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
       <node id="1">
-        <label>include/db/trackDB.cpp</label>
+        <label>include/core/db/trackDB.cpp</label>
         <link refid="trackDB_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -79,6 +45,40 @@
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="12">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/db/trackDB.cpp" line="6" column="12" bodyfile="include/db/trackDB.cpp" bodystart="6" bodyend="17"/>
+        <location file="include/core/db/trackDB.cpp" line="6" column="12" bodyfile="include/core/db/trackDB.cpp" bodystart="6" bodyend="17"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -263,6 +263,6 @@
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>CHK_BIND</highlight></codeline>
     </programlisting>
-    <location file="include/db/trackDB.cpp"/>
+    <location file="include/core/db/trackDB.cpp"/>
   </compounddef>
 </doxygen>

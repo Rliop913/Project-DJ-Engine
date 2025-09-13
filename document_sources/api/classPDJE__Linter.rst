@@ -3,7 +3,7 @@
 Template Class PDJE_Linter
 ==========================
 
-- Defined in :ref:`file_include_editor_pdjeLinter_pdjeLinter.hpp`
+- Defined in :ref:`file_include_core_editor_pdjeLinter_pdjeLinter.hpp`
 
 
 Class Documentation

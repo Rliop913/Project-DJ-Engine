@@ -3,7 +3,7 @@
 Struct PDJE_CORE_DATA_LINE
 ==========================
 
-- Defined in :ref:`file_include_interface_PDJE_Core_DataLine.hpp`
+- Defined in :ref:`file_include_global_DataLines_PDJE_Core_DataLine.hpp`
 
 
 Struct Documentation

@@ -3,7 +3,7 @@
 Class Robot_PDJE
 ================
 
-- Defined in :ref:`file_include_audioRender_MixMachine_FAUST_VALS_robot.hpp`
+- Defined in :ref:`file_include_core_audioRender_MixMachine_FAUST_VALS_robot.hpp`
 
 
 Inheritance Relationships

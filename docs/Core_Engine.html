@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -8,20 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Core_Engine &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
-      <script src="_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
-      <script src="_static/design-tabs.js?v=f930bc37"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -72,11 +74,24 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#on-playback">On Playback</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#on-playback-step-1-get-use-fx-controller-pannel">On Playback Step-1: Get &amp; Use FX Controller Pannel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#on-playback-step-1-get-use-fx-controller-panel">On Playback Step-1: Get &amp; Use FX Controller Panel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N11audioPlayer17GetFXControlPanelERK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">GetFXControlPanel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14FXControlPanel9FX_ON_OFFE6FXListb"><code class="docutils literal notranslate"><span class="pre">FX_ON_OFF()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv46FXList"><code class="docutils literal notranslate"><span class="pre">FXList</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14FXControlPanel12GetArgSetterE6FXList"><code class="docutils literal notranslate"><span class="pre">GetArgSetter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14FXControlPanel16checkSomethingOnEv"><code class="docutils literal notranslate"><span class="pre">checkSomethingOn()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#on-playback-step-2-get-use-music-controller-pannel">On Playback Step-2: Get &amp; Use Music Controller Pannel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#on-playback-step-2-get-use-music-controller-panel">On Playback Step-2: Get &amp; Use Music Controller Panel</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv417MusicControlPanel"><code class="docutils literal notranslate"><span class="pre">MusicControlPanel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N11audioPlayer20GetMusicControlPanelEv"><code class="docutils literal notranslate"><span class="pre">GetMusicControlPanel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17MusicControlPanel9LoadMusicER6litedbRK7musdata"><code class="docutils literal notranslate"><span class="pre">LoadMusic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17MusicControlPanel8SetMusicERK11UNSANITIZEDKb"><code class="docutils literal notranslate"><span class="pre">SetMusic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17MusicControlPanel8CueMusicERK11UNSANITIZEDKy"><code class="docutils literal notranslate"><span class="pre">CueMusic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17MusicControlPanel18GetLoadedMusicListEv"><code class="docutils literal notranslate"><span class="pre">GetLoadedMusicList()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17MusicControlPanel11getFXHandleERK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">getFXHandle()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#editor-api">Editor API</a><ul>
@@ -157,10 +172,10 @@
 <h2>Before Playback Step-1: initialize PDJE core engine<a class="headerlink" href="#before-playback-step-1-initialize-pdje-core-engine" title="Link to this heading"></a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv44PDJE">
-<span id="_CPPv34PDJE"></span><span id="_CPPv24PDJE"></span><span id="PDJE"></span><span class="target" id="class_p_d_j_e"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE</span></span></span><a class="headerlink" href="#_CPPv44PDJE" title="Link to this definition"></a><br /></dt>
-<dd><p>the main Interface of this Engine <a class="reference internal" href="api/class_p_d_j_e.html#class_p_d_j_e"><span class="std std-ref">PDJE</span></a> gets music data and track data from database. from that datas, you can activate music player and you can get a music player handler. with this player handler, you can control music’s mixing in real time. </p>
+<span id="_CPPv34PDJE"></span><span id="_CPPv24PDJE"></span><span id="PDJE"></span><span class="target" id="classPDJE"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE</span></span></span><a class="headerlink" href="#_CPPv44PDJE" title="Link to this definition"></a><br /></dt>
+<dd><p>the main Interface of this Engine <a class="reference internal" href="api/class_p_d_j_e.html#classPDJE"><span class="std std-ref">PDJE</span></a> gets music data and track data from database. from that datas, you can activate music player and you can get a music player handler. with this player handler, you can control music’s mixing in real time. </p>
 <p>to-use<ol class="loweralpha simple">
-<li><p>make <a class="reference internal" href="api/class_p_d_j_e.html#class_p_d_j_e"><span class="std std-ref">PDJE</span></a> object</p></li>
+<li><p>make <a class="reference internal" href="api/class_p_d_j_e.html#classPDJE"><span class="std std-ref">PDJE</span></a> object</p></li>
 <li><p>call SearchTrack</p></li>
 <li><p>call InitPlayer</p></li>
 <li><p>use player. this is handler.</p></li>
@@ -222,7 +237,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <h2>Before Playback Step-2: Search Music &amp; Track<a class="headerlink" href="#before-playback-step-2-search-music-track" title="Link to this heading"></a></h2>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd">
-<span id="_CPPv3N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd"></span><span id="_CPPv2N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd"></span><span id="PDJE::SearchMusic__UNSANITIZEDCR.UNSANITIZEDCR.doubleC"></span><span class="target" id="class_p_d_j_e_1a2639f4ed0f7ac3770f5eb3b6c86ae800"></span><a class="reference internal" href="api/typedef_dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0.html#_CPPv47MUS_VEC" title="MUS_VEC"><span class="n"><span class="pre">MUS_VEC</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SearchMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">composer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bpm</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd"></span><span id="_CPPv2N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd"></span><span id="PDJE::SearchMusic__UNSANITIZEDCR.UNSANITIZEDCR.doubleC"></span><span class="target" id="classPDJE_1a2639f4ed0f7ac3770f5eb3b6c86ae800"></span><a class="reference internal" href="api/typedef_dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0.html#_CPPv47MUS_VEC" title="MUS_VEC"><span class="n"><span class="pre">MUS_VEC</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SearchMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">composer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bpm</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd" title="Link to this definition"></a><br /></dt>
 <dd><p>searches musics and metadatas from database. if you don’t need to filter, send “” to the values </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -233,21 +248,21 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="api/typedef_db_root_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0.html#db_root_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0"><span class="std std-ref">MUS_VEC</span></a></p>
+<dd class="field-even"><p><a class="reference internal" href="api/typedef_db_root_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0.html#dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0"><span class="std std-ref">MUS_VEC</span></a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE11SearchTrackERK11UNSANITIZED">
-<span id="_CPPv3N4PDJE11SearchTrackERK11UNSANITIZED"></span><span id="_CPPv2N4PDJE11SearchTrackERK11UNSANITIZED"></span><span id="PDJE::SearchTrack__UNSANITIZEDCR"></span><span class="target" id="class_p_d_j_e_1a322160409e9c02e4700e966623bfd4d7"></span><a class="reference internal" href="api/typedef_dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470.html#_CPPv49TRACK_VEC" title="TRACK_VEC"><span class="n"><span class="pre">TRACK_VEC</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SearchTrack</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Title</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE11SearchTrackERK11UNSANITIZED" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N4PDJE11SearchTrackERK11UNSANITIZED"></span><span id="_CPPv2N4PDJE11SearchTrackERK11UNSANITIZED"></span><span id="PDJE::SearchTrack__UNSANITIZEDCR"></span><span class="target" id="classPDJE_1a322160409e9c02e4700e966623bfd4d7"></span><a class="reference internal" href="api/typedef_dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470.html#_CPPv49TRACK_VEC" title="TRACK_VEC"><span class="n"><span class="pre">TRACK_VEC</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SearchTrack</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Title</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE11SearchTrackERK11UNSANITIZED" title="Link to this definition"></a><br /></dt>
 <dd><p>searches track the track contains the note data, mix data and included music lists. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>Title</strong> – the title of the track. send “” to skip filter </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="api/typedef_db_root_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470.html#db_root_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470"><span class="std std-ref">TRACK_VEC</span></a> the array of the track_data. find what you want </p>
+<dd class="field-even"><p><a class="reference internal" href="api/typedef_db_root_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470.html#dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470"><span class="std std-ref">TRACK_VEC</span></a> the array of the track_data. find what you want </p>
 </dd>
 </dl>
 </dd></dl>
@@ -299,13 +314,13 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <h2>Before Playback Step-3: Init, Activate &amp; Deactivate Audio Player<a class="headerlink" href="#before-playback-step-3-init-activate-deactivate-audio-player" title="Link to this heading"></a></h2>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj">
-<span id="_CPPv3N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj"></span><span id="_CPPv2N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj"></span><span id="PDJE::InitPlayer__PLAY_MODE.trackdataR.unsigned-iC"></span><span class="target" id="class_p_d_j_e_1a9de8f88a9b0461472a99596fa0b5c978"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">InitPlayer</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/enum_PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16.html#_CPPv49PLAY_MODE" title="PLAY_MODE"><span class="n"><span class="pre">PLAY_MODE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mode</span></span>, <a class="reference internal" href="api/structtrackdata.html#_CPPv49trackdata" title="trackdata"><span class="n"><span class="pre">trackdata</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">td</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">FrameBufferSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj"></span><span id="_CPPv2N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj"></span><span id="PDJE::InitPlayer__PLAY_MODE.trackdataR.unsigned-iC"></span><span class="target" id="classPDJE_1a9de8f88a9b0461472a99596fa0b5c978"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">InitPlayer</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/enum_PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16.html#_CPPv49PLAY_MODE" title="PLAY_MODE"><span class="n"><span class="pre">PLAY_MODE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mode</span></span>, <a class="reference internal" href="api/structtrackdata.html#_CPPv49trackdata" title="trackdata"><span class="n"><span class="pre">trackdata</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">td</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">FrameBufferSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj" title="Link to this definition"></a><br /></dt>
 <dd><p>this inits the music handler. the music handler called a “player” it initializes the player </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mode</strong> – the play modes. you can choose “FULL_PRE_RENDER”, “HYBRID_RENDER”, “FULL_MANUAL_RENDER” </p></li>
-<li><p><strong>td</strong> – the track data. you can get this from <a class="reference internal" href="api/class_p_d_j_e.html#class_p_d_j_e_1a322160409e9c02e4700e966623bfd4d7"><span class="std std-ref">SearchTrack()</span></a></p></li>
+<li><p><strong>td</strong> – the track data. you can get this from <a class="reference internal" href="api/class_p_d_j_e.html#classPDJE_1a322160409e9c02e4700e966623bfd4d7"><span class="std std-ref">SearchTrack()</span></a></p></li>
 <li><p><strong>FrameBufferSize</strong> – the buffersize. in this project, it uses 48000 samplerate. if you use 48 as a value, in theory, it calls mixing function 1000 times per second. </p></li>
 </ul>
 </dd>
@@ -320,19 +335,19 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer8ActivateEv">
-<span id="_CPPv3N11audioPlayer8ActivateEv"></span><span id="_CPPv2N11audioPlayer8ActivateEv"></span><span id="audioPlayer::Activate"></span><span class="target" id="classaudio_player_1a7e91ca8d0037ef8e2fb50ff7289317aa"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Activate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11audioPlayer8ActivateEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N11audioPlayer8ActivateEv"></span><span id="_CPPv2N11audioPlayer8ActivateEv"></span><span id="audioPlayer::Activate"></span><span class="target" id="classaudioPlayer_1a7e91ca8d0037ef8e2fb50ff7289317aa"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Activate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11audioPlayer8ActivateEv" title="Link to this definition"></a><br /></dt>
 <dd><p>Plays music. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE11ResetPlayerEv">
-<span id="_CPPv3N4PDJE11ResetPlayerEv"></span><span id="_CPPv2N4PDJE11ResetPlayerEv"></span><span id="PDJE::ResetPlayer"></span><span class="target" id="class_p_d_j_e_1a681b2b4f9c1fe2f29f9c6a2be6d0a40c"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ResetPlayer</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE11ResetPlayerEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N4PDJE11ResetPlayerEv"></span><span id="_CPPv2N4PDJE11ResetPlayerEv"></span><span id="PDJE::ResetPlayer"></span><span class="target" id="classPDJE_1a681b2b4f9c1fe2f29f9c6a2be6d0a40c"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ResetPlayer</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE11ResetPlayerEv" title="Link to this definition"></a><br /></dt>
 <dd><p>Reset the Player object. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer10DeactivateEv">
-<span id="_CPPv3N11audioPlayer10DeactivateEv"></span><span id="_CPPv2N11audioPlayer10DeactivateEv"></span><span id="audioPlayer::Deactivate"></span><span class="target" id="classaudio_player_1a8b3239801762770164c7eba623301c3c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Deactivate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11audioPlayer10DeactivateEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N11audioPlayer10DeactivateEv"></span><span id="_CPPv2N11audioPlayer10DeactivateEv"></span><span id="audioPlayer::Deactivate"></span><span class="target" id="classaudioPlayer_1a8b3239801762770164c7eba623301c3c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Deactivate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11audioPlayer10DeactivateEv" title="Link to this definition"></a><br /></dt>
 <dd><p>Stops music. </p>
 </dd></dl>
 
@@ -424,112 +439,152 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </section>
 <section id="on-playback">
 <h1>On Playback<a class="headerlink" href="#on-playback" title="Link to this heading"></a></h1>
-<section id="on-playback-step-1-get-use-fx-controller-pannel">
-<h2>On Playback Step-1: Get &amp; Use FX Controller Pannel<a class="headerlink" href="#on-playback-step-1-get-use-fx-controller-pannel" title="Link to this heading"></a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenfunction: Cannot find function “audioPlayer::GetFXControlPannel” in doxygen xml output for project “Project_DJ_Engine” from directory: ./xml</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenfunction: Cannot find function “FXControlPannel::FX_ON_OFF” in doxygen xml output for project “Project_DJ_Engine” from directory: ./xml</p>
-</div>
+<section id="on-playback-step-1-get-use-fx-controller-panel">
+<h2>On Playback Step-1: Get &amp; Use FX Controller Panel<a class="headerlink" href="#on-playback-step-1-get-use-fx-controller-panel" title="Link to this heading"></a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer17GetFXControlPanelERK11UNSANITIZED">
+<span id="_CPPv3N11audioPlayer17GetFXControlPanelERK11UNSANITIZED"></span><span id="_CPPv2N11audioPlayer17GetFXControlPanelERK11UNSANITIZED"></span><span id="audioPlayer::GetFXControlPanel__UNSANITIZEDCR"></span><span class="target" id="classaudioPlayer_1ae2925d5fcbdb789de63a4b2856aa6b5d"></span><a class="reference internal" href="api/classFXControlPanel.html#_CPPv414FXControlPanel" title="FXControlPanel"><span class="n"><span class="pre">FXControlPanel</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetFXControlPanel</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;__PDJE__MAIN__&quot;</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11audioPlayer17GetFXControlPanelERK11UNSANITIZED" title="Link to this definition"></a><br /></dt>
+<dd><p>fx controller getter this returns the fx controller. with this, you can control the fx in realtime manually. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>title</strong> – the music to control. “__PDJE__MAIN__” means the prerendered music. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>FXControlPanel* but the “title” doesn’t exists, it returns nullptr. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14FXControlPanel9FX_ON_OFFE6FXListb">
+<span id="_CPPv3N14FXControlPanel9FX_ON_OFFE6FXListb"></span><span id="_CPPv2N14FXControlPanel9FX_ON_OFFE6FXListb"></span><span id="FXControlPanel::FX_ON_OFF__FXList.b"></span><span class="target" id="classFXControlPanel_1a746328d3baad8d1cf87ada7fdfafd8f6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classFXControlPanel.html#_CPPv414FXControlPanel" title="FXControlPanel"><span class="n"><span class="pre">FXControlPanel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">FX_ON_OFF</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv46FXList" title="FXList"><span class="n"><span class="pre">FXList</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">fx</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">onoff</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14FXControlPanel9FX_ON_OFFE6FXListb" title="Link to this definition"></a><br /></dt>
+<dd><p>activate/deactivate FX </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fx</strong> – the fx type </p></li>
+<li><p><strong>onoff</strong> – activate / deactivate </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="cpp enum">
 <dt class="sig sig-object cpp" id="_CPPv46FXList">
-<span id="_CPPv36FXList"></span><span id="_CPPv26FXList"></span><span class="target" id="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FXList</span></span></span><a class="headerlink" href="#_CPPv46FXList" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv36FXList"></span><span id="_CPPv26FXList"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FXList</span></span></span><a class="headerlink" href="#_CPPv46FXList" title="Link to this definition"></a><br /></dt>
 <dd><p>the usable fx list </p>
 <p><em>Values:</em></p>
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N6FXList10COMPRESSORE">
-<span id="_CPPv3N6FXList10COMPRESSORE"></span><span id="_CPPv2N6FXList10COMPRESSORE"></span><span class="target" id="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a5425cca21e2a17519f4691670ea4fd53"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPRESSOR</span></span></span><a class="headerlink" href="#_CPPv4N6FXList10COMPRESSORE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N6FXList10COMPRESSORE"></span><span id="_CPPv2N6FXList10COMPRESSORE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a5425cca21e2a17519f4691670ea4fd53"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">COMPRESSOR</span></span></span><a class="headerlink" href="#_CPPv4N6FXList10COMPRESSORE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N6FXList10DISTORTIONE">
-<span id="_CPPv3N6FXList10DISTORTIONE"></span><span id="_CPPv2N6FXList10DISTORTIONE"></span><span class="target" id="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3ac545d6ac23017a00a8eace8120d7df56"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISTORTION</span></span></span><a class="headerlink" href="#_CPPv4N6FXList10DISTORTIONE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N6FXList10DISTORTIONE"></span><span id="_CPPv2N6FXList10DISTORTIONE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3ac545d6ac23017a00a8eace8120d7df56"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DISTORTION</span></span></span><a class="headerlink" href="#_CPPv4N6FXList10DISTORTIONE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N6FXList4ECHOE">
-<span id="_CPPv3N6FXList4ECHOE"></span><span id="_CPPv2N6FXList4ECHOE"></span><span class="target" id="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a6e074abc1ec6368da315a331ad35c00b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ECHO</span></span></span><a class="headerlink" href="#_CPPv4N6FXList4ECHOE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N6FXList4ECHOE"></span><span id="_CPPv2N6FXList4ECHOE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a6e074abc1ec6368da315a331ad35c00b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ECHO</span></span></span><a class="headerlink" href="#_CPPv4N6FXList4ECHOE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N6FXList2EQE">
-<span id="_CPPv3N6FXList2EQE"></span><span id="_CPPv2N6FXList2EQE"></span><span class="target" id="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a9efdc855f3c1477957fb50affec07f8f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EQ</span></span></span><a class="headerlink" href="#_CPPv4N6FXList2EQE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N6FXList2EQE"></span><span id="_CPPv2N6FXList2EQE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a9efdc855f3c1477957fb50affec07f8f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EQ</span></span></span><a class="headerlink" href="#_CPPv4N6FXList2EQE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N6FXList6FILTERE">
-<span id="_CPPv3N6FXList6FILTERE"></span><span id="_CPPv2N6FXList6FILTERE"></span><span class="target" id="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a79b28719aca4e2f69cd372a3b7539c45"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FILTER</span></span></span><a class="headerlink" href="#_CPPv4N6FXList6FILTERE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N6FXList6FILTERE"></span><span id="_CPPv2N6FXList6FILTERE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a79b28719aca4e2f69cd372a3b7539c45"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FILTER</span></span></span><a class="headerlink" href="#_CPPv4N6FXList6FILTERE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N6FXList7FLANGERE">
-<span id="_CPPv3N6FXList7FLANGERE"></span><span id="_CPPv2N6FXList7FLANGERE"></span><span class="target" id="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3af8e19c60d3e0151022fd4e848773826e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FLANGER</span></span></span><a class="headerlink" href="#_CPPv4N6FXList7FLANGERE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N6FXList7FLANGERE"></span><span id="_CPPv2N6FXList7FLANGERE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3af8e19c60d3e0151022fd4e848773826e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FLANGER</span></span></span><a class="headerlink" href="#_CPPv4N6FXList7FLANGERE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N6FXList9OCSFILTERE">
-<span id="_CPPv3N6FXList9OCSFILTERE"></span><span id="_CPPv2N6FXList9OCSFILTERE"></span><span class="target" id="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a2bbc5bc0a3b7027f874adc0a73aa6bc3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OCSFILTER</span></span></span><a class="headerlink" href="#_CPPv4N6FXList9OCSFILTERE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N6FXList9OCSFILTERE"></span><span id="_CPPv2N6FXList9OCSFILTERE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a2bbc5bc0a3b7027f874adc0a73aa6bc3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OCSFILTER</span></span></span><a class="headerlink" href="#_CPPv4N6FXList9OCSFILTERE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N6FXList6PANNERE">
-<span id="_CPPv3N6FXList6PANNERE"></span><span id="_CPPv2N6FXList6PANNERE"></span><span class="target" id="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a72479ee1ab5b1722db33133048cc89f6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PANNER</span></span></span><a class="headerlink" href="#_CPPv4N6FXList6PANNERE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N6FXList6PANNERE"></span><span id="_CPPv2N6FXList6PANNERE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a72479ee1ab5b1722db33133048cc89f6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PANNER</span></span></span><a class="headerlink" href="#_CPPv4N6FXList6PANNERE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N6FXList6PHASERE">
-<span id="_CPPv3N6FXList6PHASERE"></span><span id="_CPPv2N6FXList6PHASERE"></span><span class="target" id="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3af7c4e25ebe7a4ed51ef766ce1b81c6f6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PHASER</span></span></span><a class="headerlink" href="#_CPPv4N6FXList6PHASERE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N6FXList6PHASERE"></span><span id="_CPPv2N6FXList6PHASERE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3af7c4e25ebe7a4ed51ef766ce1b81c6f6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PHASER</span></span></span><a class="headerlink" href="#_CPPv4N6FXList6PHASERE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N6FXList5ROBOTE">
-<span id="_CPPv3N6FXList5ROBOTE"></span><span id="_CPPv2N6FXList5ROBOTE"></span><span class="target" id="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3aabea9be20feeb2150a8ffbd68625beb4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ROBOT</span></span></span><a class="headerlink" href="#_CPPv4N6FXList5ROBOTE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N6FXList5ROBOTE"></span><span id="_CPPv2N6FXList5ROBOTE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3aabea9be20feeb2150a8ffbd68625beb4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ROBOT</span></span></span><a class="headerlink" href="#_CPPv4N6FXList5ROBOTE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N6FXList4ROLLE">
-<span id="_CPPv3N6FXList4ROLLE"></span><span id="_CPPv2N6FXList4ROLLE"></span><span class="target" id="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a2eeb9fef8a6a516fa6437a44a6efbd52"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ROLL</span></span></span><a class="headerlink" href="#_CPPv4N6FXList4ROLLE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N6FXList4ROLLE"></span><span id="_CPPv2N6FXList4ROLLE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a2eeb9fef8a6a516fa6437a44a6efbd52"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ROLL</span></span></span><a class="headerlink" href="#_CPPv4N6FXList4ROLLE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N6FXList6TRANCEE">
-<span id="_CPPv3N6FXList6TRANCEE"></span><span id="_CPPv2N6FXList6TRANCEE"></span><span class="target" id="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a5a878d6040996dc58170b350b180c3db"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TRANCE</span></span></span><a class="headerlink" href="#_CPPv4N6FXList6TRANCEE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N6FXList6TRANCEE"></span><span id="_CPPv2N6FXList6TRANCEE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a5a878d6040996dc58170b350b180c3db"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TRANCE</span></span></span><a class="headerlink" href="#_CPPv4N6FXList6TRANCEE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N6FXList3VOLE">
-<span id="_CPPv3N6FXList3VOLE"></span><span id="_CPPv2N6FXList3VOLE"></span><span class="target" id="_manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a7963a24fafa6a2035ee732d001a2d62a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VOL</span></span></span><a class="headerlink" href="#_CPPv4N6FXList3VOLE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N6FXList3VOLE"></span><span id="_CPPv2N6FXList3VOLE"></span><span class="target" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a7963a24fafa6a2035ee732d001a2d62a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VOL</span></span></span><a class="headerlink" href="#_CPPv4N6FXList3VOLE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenfunction: Cannot find function “FXControlPannel::GetArgSetter” in doxygen xml output for project “Project_DJ_Engine” from directory: ./xml</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenfunction: Cannot find function “FXControlPannel::checkSomethingOn” in doxygen xml output for project “Project_DJ_Engine” from directory: ./xml</p>
-</div>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14FXControlPanel12GetArgSetterE6FXList">
+<span id="_CPPv3N14FXControlPanel12GetArgSetterE6FXList"></span><span id="_CPPv2N14FXControlPanel12GetArgSetterE6FXList"></span><span id="FXControlPanel::GetArgSetter__FXList"></span><span class="target" id="classFXControlPanel_1a54b7f9660db326c0991deeac1acb0ff0"></span><a class="reference internal" href="api/typedef_DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15.html#_CPPv49ARGSETTER" title="ARGSETTER"><span class="n"><span class="pre">ARGSETTER</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classFXControlPanel.html#_CPPv414FXControlPanel" title="FXControlPanel"><span class="n"><span class="pre">FXControlPanel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetArgSetter</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv46FXList" title="FXList"><span class="n"><span class="pre">FXList</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">fx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14FXControlPanel12GetArgSetterE6FXList" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the Arg Setter object. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fx</strong> – the fx type </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="api/typedef__deck_data_8hpp_1a678187c26c21fa39643ad237d950bf15.html#DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15"><span class="std std-ref">ARGSETTER</span></a> the FX arg handler </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N14FXControlPanel16checkSomethingOnEv">
+<span id="_CPPv3N14FXControlPanel16checkSomethingOnEv"></span><span id="_CPPv2N14FXControlPanel16checkSomethingOnEv"></span><span id="FXControlPanel::checkSomethingOn"></span><span class="target" id="classFXControlPanel_1aab2afb29579bb54771cbc3b5ae81b3bf"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classFXControlPanel.html#_CPPv414FXControlPanel" title="FXControlPanel"><span class="n"><span class="pre">FXControlPanel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">checkSomethingOn</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N14FXControlPanel16checkSomethingOnEv" title="Link to this definition"></a><br /></dt>
+<dd><p>check any FX is activated </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>true , something is activated </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>false , nothing activated. </p>
+</dd>
+</dl>
+</dd></dl>
+
 <p>to see Available args, See: <a class="reference internal" href="FX_ARGS.html"><span class="doc">FX_ARGS</span></a></p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-12" name="sd-tab-set-3" type="radio">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-12">
 C++</label><div class="sd-tab-content docutils">
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">FXControlPannel</span><span class="o">*</span><span class="w"> </span><span class="n">fx_pannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetFXControlPannel</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">FXControlPanel</span><span class="o">*</span><span class="w"> </span><span class="n">fx_panel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetFXControlPanel</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
 <span class="c1">//get music&#39;s fx controller.</span>
 
-<span class="n">fx_pannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetFXControlPannel</span><span class="p">();</span>
+<span class="n">fx_panel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetFXControlPanel</span><span class="p">();</span>
 <span class="c1">//or get mixed track&#39;s fx controller like this.</span>
 
 <span class="kt">bool</span><span class="w"> </span><span class="n">TurnON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="n">fx_pannel</span><span class="o">-&gt;</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="n">TurnON</span><span class="p">);</span>
+<span class="n">fx_panel</span><span class="o">-&gt;</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="n">TurnON</span><span class="p">);</span>
 <span class="c1">//turn on EQ effect</span>
 
-<span class="k">auto</span><span class="w"> </span><span class="n">argsetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fx_pannel</span><span class="o">-&gt;</span><span class="n">GetArgSetter</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">EQ</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">argsetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fx_panel</span><span class="o">-&gt;</span><span class="n">GetArgSetter</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">EQ</span><span class="p">);</span>
 <span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">argsetter</span><span class="p">){</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;fx key: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
@@ -546,17 +601,17 @@ C++</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-13" name="sd-tab-set-3" type="radio">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-13">
 C#</label><div class="sd-tab-content docutils">
-<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">FXControlPannel</span><span class="w"> </span><span class="n">fx_pannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">GetFXControlPannel</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">FXControlPanel</span><span class="w"> </span><span class="n">fx_panel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">GetFXControlPanel</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
 <span class="c1">//get music&#39;s fx controller</span>
 
-<span class="n">fx_pannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">GetFXControlPannel</span><span class="p">();</span>
+<span class="n">fx_panel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">GetFXControlPanel</span><span class="p">();</span>
 <span class="c1">//or get mixed track&#39;s fx controller like this.</span>
 
 <span class="kt">bool</span><span class="w"> </span><span class="n">TurnON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
-<span class="n">fx_pannel</span><span class="p">.</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">FXList</span><span class="p">.</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="n">TurnON</span><span class="p">);</span>
+<span class="n">fx_panel</span><span class="p">.</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">FXList</span><span class="p">.</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="n">TurnON</span><span class="p">);</span>
 <span class="c1">//turn on EQ effect</span>
 
-<span class="n">ARGSETTER_WRAPPER</span><span class="w"> </span><span class="n">argsetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ARGSETTER_WRAPPER</span><span class="p">(</span><span class="n">fx_pannel</span><span class="p">);</span>
+<span class="n">ARGSETTER_WRAPPER</span><span class="w"> </span><span class="n">argsetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ARGSETTER_WRAPPER</span><span class="p">(</span><span class="n">fx_panel</span><span class="p">);</span>
 <span class="n">KEY_VEC</span><span class="w"> </span><span class="n">keylist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argsetter</span><span class="p">.</span><span class="n">GetFXArgKeys</span><span class="p">(</span><span class="n">FXList</span><span class="p">.</span><span class="n">EQ</span><span class="p">);</span>
 <span class="k">foreach</span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">keys</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">keylist</span><span class="p">){</span>
 <span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">keys</span><span class="p">);</span>
@@ -575,20 +630,20 @@ C#</label><div class="sd-tab-content docutils">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-14">
 PYTHON</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pypdje</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">FXControlPannel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">FXControlPanel</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">ARGSETTER_WRAPPER</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">KEY_VEC</span>
 
 <span class="c1">#...</span>
 
-<span class="n">fx_pannel</span><span class="p">:</span><span class="n">FXControlPannel</span> <span class="o">=</span> <span class="n">AudioP</span><span class="o">.</span><span class="n">GetFXControlPannel</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
+<span class="n">fx_panel</span><span class="p">:</span><span class="n">FXControlPanel</span> <span class="o">=</span> <span class="n">AudioP</span><span class="o">.</span><span class="n">GetFXControlPanel</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
 <span class="c1">#get music&#39;s fx controller</span>
-<span class="n">fx_pannel</span> <span class="o">=</span> <span class="n">AudioP</span><span class="o">.</span><span class="n">GetFXControlPannel</span><span class="p">()</span>
+<span class="n">fx_panel</span> <span class="o">=</span> <span class="n">AudioP</span><span class="o">.</span><span class="n">GetFXControlPanel</span><span class="p">()</span>
 <span class="c1">#or get mixed track&#39;s fx controller like this.</span>
 <span class="n">TurnON</span><span class="p">:</span><span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">fx_pannel</span><span class="o">.</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">pypdje</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span> <span class="n">TurnON</span><span class="p">)</span>
+<span class="n">fx_panel</span><span class="o">.</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">pypdje</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span> <span class="n">TurnON</span><span class="p">)</span>
 <span class="c1">#turn on EQ effect</span>
-<span class="n">argsetter</span> <span class="o">=</span> <span class="n">ARGSETTER_WRAPPER</span><span class="p">(</span><span class="n">fx_pannel</span><span class="p">)</span>
+<span class="n">argsetter</span> <span class="o">=</span> <span class="n">ARGSETTER_WRAPPER</span><span class="p">(</span><span class="n">fx_panel</span><span class="p">)</span>
 <span class="n">keylist</span><span class="p">:</span><span class="n">KEY_VEC</span> <span class="o">=</span> <span class="n">argsetter</span><span class="o">.</span><span class="n">GetFXArgKeys</span><span class="p">(</span><span class="n">pypdje</span><span class="o">.</span><span class="n">EQ</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">keylist</span><span class="p">:</span>
@@ -605,14 +660,14 @@ PYTHON</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-15" name="sd-tab-set-3" type="radio">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-15">
 GDSCRIPT</label><div class="sd-tab-content docutils">
-<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">fx_pannel</span><span class="p">:</span><span class="n">FXControlPannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="o">.</span><span class="n">GetFXControlPannel</span><span class="p">()</span>
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">fx_panel</span><span class="p">:</span><span class="n">FXControlPanel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="o">.</span><span class="n">GetFXControlPanel</span><span class="p">()</span>
 <span class="c1">#get mixed track&#39;s fx controller</span>
 
 <span class="k">var</span><span class="w"> </span><span class="n">TurnON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">true</span>
-<span class="n">fx_pannel</span><span class="o">.</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">EnumWrapper</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="n">TurnON</span><span class="p">)</span>
+<span class="n">fx_panel</span><span class="o">.</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">EnumWrapper</span><span class="o">.</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="n">TurnON</span><span class="p">)</span>
 <span class="c1">#turn on EQ effect</span>
 
-<span class="k">var</span><span class="w"> </span><span class="n">argsetter</span><span class="p">:</span><span class="n">FXArgWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fx_pannel</span><span class="o">.</span><span class="n">GetArgSetter</span><span class="p">()</span>
+<span class="k">var</span><span class="w"> </span><span class="n">argsetter</span><span class="p">:</span><span class="n">FXArgWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fx_panel</span><span class="o">.</span><span class="n">GetArgSetter</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">argsetter</span><span class="o">.</span><span class="n">GetFXArgKeys</span><span class="p">(</span><span class="n">EnumWrapper</span><span class="o">.</span><span class="n">EQ</span><span class="p">))</span>
 
 <span class="c1">#get argument setter wrapper and get configurable arg keys like this.</span>
@@ -626,66 +681,134 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-<section id="on-playback-step-2-get-use-music-controller-pannel">
-<h2>On Playback Step-2: Get &amp; Use Music Controller Pannel<a class="headerlink" href="#on-playback-step-2-get-use-music-controller-pannel" title="Link to this heading"></a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenclass: Cannot find class “MusicControlPannel” in doxygen xml output for project “Project_DJ_Engine” from directory: ./xml</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenfunction: Cannot find function “audioPlayer::GetMusicControlPannel” in doxygen xml output for project “Project_DJ_Engine” from directory: ./xml</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenfunction: Cannot find function “MusicControlPannel::LoadMusic” in doxygen xml output for project “Project_DJ_Engine” from directory: ./xml</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenfunction: Cannot find function “MusicControlPannel::SetMusic” in doxygen xml output for project “Project_DJ_Engine” from directory: ./xml</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenfunction: Cannot find function “MusicControlPannel::CueMusic” in doxygen xml output for project “Project_DJ_Engine” from directory: ./xml</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenfunction: Cannot find function “MusicControlPannel::GetLoadedMusicList” in doxygen xml output for project “Project_DJ_Engine” from directory: ./xml</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenfunction: Cannot find function “MusicControlPannel::getFXHandle” in doxygen xml output for project “Project_DJ_Engine” from directory: ./xml</p>
-</div>
+<section id="on-playback-step-2-get-use-music-controller-panel">
+<h2>On Playback Step-2: Get &amp; Use Music Controller Panel<a class="headerlink" href="#on-playback-step-2-get-use-music-controller-panel" title="Link to this heading"></a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv417MusicControlPanel">
+<span id="_CPPv317MusicControlPanel"></span><span id="_CPPv217MusicControlPanel"></span><span id="MusicControlPanel"></span><span class="target" id="classMusicControlPanel"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MusicControlPanel</span></span></span><a class="headerlink" href="#_CPPv417MusicControlPanel" title="Link to this definition"></a><br /></dt>
+<dd><p>Music handler for manual mode. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer20GetMusicControlPanelEv">
+<span id="_CPPv3N11audioPlayer20GetMusicControlPanelEv"></span><span id="_CPPv2N11audioPlayer20GetMusicControlPanelEv"></span><span id="audioPlayer::GetMusicControlPanel"></span><span class="target" id="classaudioPlayer_1a41f212f29855c20d17c04e2d73551dd9"></span><a class="reference internal" href="#_CPPv417MusicControlPanel" title="MusicControlPanel"><span class="n"><span class="pre">MusicControlPanel</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-prename descclassname"><a class="reference internal" href="How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetMusicControlPanel</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11audioPlayer20GetMusicControlPanelEv" title="Link to this definition"></a><br /></dt>
+<dd><p>music controller getter this returns the music controller. with this, you can load music, stop music in realtime manually. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>MusicControlPanel* if something wrong, it returns nullptr. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N17MusicControlPanel9LoadMusicER6litedbRK7musdata">
+<span id="_CPPv3N17MusicControlPanel9LoadMusicER6litedbRK7musdata"></span><span id="_CPPv2N17MusicControlPanel9LoadMusicER6litedbRK7musdata"></span><span id="MusicControlPanel::LoadMusic__litedbR.musdataCR"></span><span class="target" id="classMusicControlPanel_1a9be0839875b9dff117fdbcdf73f4e65b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417MusicControlPanel" title="MusicControlPanel"><span class="n"><span class="pre">MusicControlPanel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">LoadMusic</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ROOTDB</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/structmusdata.html#_CPPv47musdata" title="musdata"><span class="n"><span class="pre">musdata</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Mus</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17MusicControlPanel9LoadMusicER6litedbRK7musdata" title="Link to this definition"></a><br /></dt>
+<dd><p>loads music to the deck. doesn’t play music </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Mus</strong> – Searched music </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>int, miniaudio Error code. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N17MusicControlPanel8SetMusicERK11UNSANITIZEDKb">
+<span id="_CPPv3N17MusicControlPanel8SetMusicERK11UNSANITIZEDKb"></span><span id="_CPPv2N17MusicControlPanel8SetMusicERK11UNSANITIZEDKb"></span><span id="MusicControlPanel::SetMusic__UNSANITIZEDCR.bC"></span><span class="target" id="classMusicControlPanel_1a1d0dc5b2e370204451d3cb825d06b447"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417MusicControlPanel" title="MusicControlPanel"><span class="n"><span class="pre">MusicControlPanel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SetMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">onOff</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17MusicControlPanel8SetMusicERK11UNSANITIZEDKb" title="Link to this definition"></a><br /></dt>
+<dd><p>turn on, off the music </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – the music title </p></li>
+<li><p><strong>onOff</strong> – True is on, False is off </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N17MusicControlPanel8CueMusicERK11UNSANITIZEDKy">
+<span id="_CPPv3N17MusicControlPanel8CueMusicERK11UNSANITIZEDKy"></span><span id="_CPPv2N17MusicControlPanel8CueMusicERK11UNSANITIZEDKy"></span><span id="MusicControlPanel::CueMusic__UNSANITIZEDCR.unsigned-l-lC"></span><span class="target" id="classMusicControlPanel_1aff83252ee3ea2fdfaadee240a6b4767f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417MusicControlPanel" title="MusicControlPanel"><span class="n"><span class="pre">MusicControlPanel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">CueMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">newPos</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17MusicControlPanel8CueMusicERK11UNSANITIZEDKy" title="Link to this definition"></a><br /></dt>
+<dd><p>Change playback position of the music. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – the music title </p></li>
+<li><p><strong>newPos</strong> – the new playback position of the music </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true </p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>false </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N17MusicControlPanel18GetLoadedMusicListEv">
+<span id="_CPPv3N17MusicControlPanel18GetLoadedMusicListEv"></span><span id="_CPPv2N17MusicControlPanel18GetLoadedMusicListEv"></span><span id="MusicControlPanel::GetLoadedMusicList"></span><span class="target" id="classMusicControlPanel_1a9c907708f446fc07c35b86d4b418e528"></span><a class="reference internal" href="api/typedef_MusicControlPanel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8.html#_CPPv411LOADED_LIST" title="LOADED_LIST"><span class="n"><span class="pre">LOADED_LIST</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417MusicControlPanel" title="MusicControlPanel"><span class="n"><span class="pre">MusicControlPanel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetLoadedMusicList</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17MusicControlPanel18GetLoadedMusicListEv" title="Link to this definition"></a><br /></dt>
+<dd><p>get music list on the deck </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="api/typedef__music_control_pannel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8.html#MusicControlPanel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8"><span class="std std-ref">LOADED_LIST</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N17MusicControlPanel11getFXHandleERK11UNSANITIZED">
+<span id="_CPPv3N17MusicControlPanel11getFXHandleERK11UNSANITIZED"></span><span id="_CPPv2N17MusicControlPanel11getFXHandleERK11UNSANITIZED"></span><span id="MusicControlPanel::getFXHandle__UNSANITIZEDCR"></span><span class="target" id="classMusicControlPanel_1a2ea5356a473fdcf9cf14ec319f138dfd"></span><a class="reference internal" href="api/classFXControlPanel.html#_CPPv414FXControlPanel" title="FXControlPanel"><span class="n"><span class="pre">FXControlPanel</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv417MusicControlPanel" title="MusicControlPanel"><span class="n"><span class="pre">MusicControlPanel</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">getFXHandle</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17MusicControlPanel11getFXHandleERK11UNSANITIZED" title="Link to this definition"></a><br /></dt>
+<dd><p>gets FX handler </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>title</strong> – the title of the music </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>FXControlPanel*, the handler pointer </p>
+</dd>
+</dl>
+</dd></dl>
+
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-16" name="sd-tab-set-4" type="radio">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-16">
 C++</label><div class="sd-tab-content docutils">
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">musPannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetMusicControlPannel</span><span class="p">();</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">musPanel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetMusicControlPanel</span><span class="p">();</span>
 
 <span class="k">auto</span><span class="w"> </span><span class="n">musicFound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;composer&quot;</span><span class="p">);</span>
 <span class="c1">//find music to playback manually</span>
 
-<span class="kt">bool</span><span class="w"> </span><span class="n">load_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">LoadMusic</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">DBROOT</span><span class="p">),</span><span class="w"> </span><span class="n">musicFound</span><span class="p">.</span><span class="n">front</span><span class="p">());</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">load_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="o">-&gt;</span><span class="n">LoadMusic</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">DBROOT</span><span class="p">),</span><span class="w"> </span><span class="n">musicFound</span><span class="p">.</span><span class="n">front</span><span class="p">());</span>
 <span class="c1">// load found music to deck. music won&#39;t playback in here</span>
 
-<span class="kt">bool</span><span class="w"> </span><span class="n">unload_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">UnloadMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">unload_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="o">-&gt;</span><span class="n">UnloadMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
 <span class="c1">// unload music from deck. don&#39;t forget for the memory space.</span>
-<span class="c1">// the deck always contains loaded music before calling musPannel.UnloadMusic or engine.ResetPlayer</span>
+<span class="c1">// the deck always contains loaded music before calling musPanel.UnloadMusic or engine.ResetPlayer</span>
 
-<span class="kt">bool</span><span class="w"> </span><span class="n">onoff_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">SetMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">onoff_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="o">-&gt;</span><span class="n">SetMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
 <span class="c1">// turn on the music. now music playbacks</span>
 
 <span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
 <span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">48000</span><span class="p">;</span>
 <span class="c1">//PCMFrame_position = second X SampleRate</span>
 
-<span class="kt">bool</span><span class="w"> </span><span class="n">cue_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">CueMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="p">);</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">cue_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="o">-&gt;</span><span class="n">CueMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="p">);</span>
 <span class="c1">//set playback position of the music.</span>
 
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">loaded_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">GetLoadedMusicList</span><span class="p">();</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">loaded_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="o">-&gt;</span><span class="n">GetLoadedMusicList</span><span class="p">();</span>
 <span class="c1">//get loaded music list.</span>
 
-<span class="n">FXControlPannel</span><span class="o">*</span><span class="w"> </span><span class="n">Fxhandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">-&gt;</span><span class="n">getFXHandle</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
+<span class="n">FXControlPanel</span><span class="o">*</span><span class="w"> </span><span class="n">Fxhandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="o">-&gt;</span><span class="n">getFXHandle</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
 <span class="c1">//get music&#39;s fx handle</span>
 </pre></div>
 </div>
@@ -693,32 +816,32 @@ C++</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-17" name="sd-tab-set-4" type="radio">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-17">
 C#</label><div class="sd-tab-content docutils">
-<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">MusicControlPannel</span><span class="w"> </span><span class="n">musPannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">GetMusicControlPannel</span><span class="p">();</span>
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">MusicControlPanel</span><span class="w"> </span><span class="n">musPanel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">GetMusicControlPanel</span><span class="p">();</span>
 
 <span class="kt">var</span><span class="w"> </span><span class="n">musicFound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;composer&quot;</span><span class="p">);</span>
 <span class="c1">//find music to playback manually</span>
 
-<span class="kt">bool</span><span class="w"> </span><span class="n">load_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="p">.</span><span class="n">LoadMusic</span><span class="p">(</span><span class="n">engine</span><span class="p">.</span><span class="n">DBROOT</span><span class="p">,</span><span class="w"> </span><span class="n">musicFound</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">load_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="p">.</span><span class="n">LoadMusic</span><span class="p">(</span><span class="n">engine</span><span class="p">.</span><span class="n">DBROOT</span><span class="p">,</span><span class="w"> </span><span class="n">musicFound</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
 <span class="c1">// load found music to deck. music won&#39;t playback in here</span>
 
-<span class="kt">bool</span><span class="w"> </span><span class="n">unload_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="p">.</span><span class="n">UnloadMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">unload_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="p">.</span><span class="n">UnloadMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
 <span class="c1">// unload music from deck. don&#39;t forget for the memory space.</span>
-<span class="c1">// the deck always contains loaded music before calling musPannel.UnloadMusic or engine.ResetPlayer</span>
+<span class="c1">// the deck always contains loaded music before calling musPanel.UnloadMusic or engine.ResetPlayer</span>
 
-<span class="kt">bool</span><span class="w"> </span><span class="n">onoff_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="p">.</span><span class="n">SetMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="p">);</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">onoff_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="p">.</span><span class="n">SetMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="p">);</span>
 <span class="c1">// turn on the music. now music playbacks</span>
 
 <span class="kt">ulong</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
 <span class="kt">ulong</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">48000</span><span class="p">;</span>
 <span class="c1">//PCMFrame_position = second X SampleRate</span>
 
-<span class="kt">bool</span><span class="w"> </span><span class="n">cue_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="p">.</span><span class="n">CueMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="p">);</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">cue_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="p">.</span><span class="n">CueMusic</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="p">);</span>
 <span class="c1">//set playback position of the music.</span>
 
-<span class="n">KEY_VEC</span><span class="w"> </span><span class="n">loaded_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="p">.</span><span class="n">GetLoadedMusicList</span><span class="p">();</span>
+<span class="n">KEY_VEC</span><span class="w"> </span><span class="n">loaded_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="p">.</span><span class="n">GetLoadedMusicList</span><span class="p">();</span>
 <span class="c1">//get loaded music list.</span>
 
-<span class="n">FXControlPannel</span><span class="w"> </span><span class="n">Fxhandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="p">.</span><span class="n">getFXHandle</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
+<span class="n">FXControlPanel</span><span class="w"> </span><span class="n">Fxhandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="p">.</span><span class="n">getFXHandle</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">);</span>
 <span class="c1">//get music&#39;s fx handle</span>
 </pre></div>
 </div>
@@ -727,37 +850,37 @@ C#</label><div class="sd-tab-content docutils">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-18">
 PYTHON</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pyPDJE</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">MusicControlPannel</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">FXControlPannel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">MusicControlPanel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">FXControlPanel</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">audioPlayer</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="kn">import</span> <span class="n">MUS_VEC</span>
 
-<span class="n">musPannel</span><span class="p">:</span><span class="n">MusicControlPannel</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">GetMusicControlPannel</span><span class="p">()</span>
+<span class="n">musPanel</span><span class="p">:</span><span class="n">MusicControlPanel</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">GetMusicControlPanel</span><span class="p">()</span>
 
 <span class="n">musicFound</span><span class="p">:</span><span class="n">MUS_VEC</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;composer&quot;</span><span class="p">)</span>
 <span class="c1">#find music to playback manually</span>
 
-<span class="n">load_OK</span> <span class="o">=</span> <span class="n">musPannel</span><span class="o">.</span><span class="n">LoadMusic</span><span class="p">(</span><span class="n">engine</span><span class="o">.</span><span class="n">DBROOT</span><span class="p">,</span> <span class="n">musicFound</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">load_OK</span> <span class="o">=</span> <span class="n">musPanel</span><span class="o">.</span><span class="n">LoadMusic</span><span class="p">(</span><span class="n">engine</span><span class="o">.</span><span class="n">DBROOT</span><span class="p">,</span> <span class="n">musicFound</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="c1"># load found music to deck. music won&#39;t playback in here</span>
 
-<span class="n">unload_OK</span> <span class="o">=</span> <span class="n">musPannel</span><span class="o">.</span><span class="n">UnloadMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
+<span class="n">unload_OK</span> <span class="o">=</span> <span class="n">musPanel</span><span class="o">.</span><span class="n">UnloadMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
 <span class="c1"># unload music from deck. don&#39;t forget for the memory space.</span>
-<span class="c1"># the deck always contains loaded music before calling musPannel.UnloadMusic or engine.ResetPlayer</span>
+<span class="c1"># the deck always contains loaded music before calling musPanel.UnloadMusic or engine.ResetPlayer</span>
 
-<span class="n">onoff_OK</span> <span class="o">=</span> <span class="n">musPannel</span><span class="o">.</span><span class="n">SetMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">onoff_OK</span> <span class="o">=</span> <span class="n">musPanel</span><span class="o">.</span><span class="n">SetMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 <span class="c1"># turn on the music. now music playbacks</span>
 
 <span class="n">second</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span>
 <span class="n">PCMFrame_position</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span> <span class="o">*</span> <span class="mi">48000</span>
 <span class="c1">#PCMFrame_position = second X SampleRate</span>
 
-<span class="n">cue_OK</span> <span class="o">=</span> <span class="n">musPannel</span><span class="o">.</span><span class="n">CueMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="n">PCMFrame_position</span><span class="p">)</span>
+<span class="n">cue_OK</span> <span class="o">=</span> <span class="n">musPanel</span><span class="o">.</span><span class="n">CueMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="n">PCMFrame_position</span><span class="p">)</span>
 <span class="c1">#set playback position of the music.</span>
 
-<span class="n">loaded_list</span> <span class="o">=</span> <span class="n">musPannel</span><span class="o">.</span><span class="n">GetLoadedMusicList</span><span class="p">()</span>
+<span class="n">loaded_list</span> <span class="o">=</span> <span class="n">musPanel</span><span class="o">.</span><span class="n">GetLoadedMusicList</span><span class="p">()</span>
 <span class="c1">#get loaded music list.</span>
 
-<span class="n">Fxhandle</span><span class="p">:</span><span class="n">FXControlPannel</span> <span class="o">=</span> <span class="n">musPannel</span><span class="o">.</span><span class="n">getFXHandle</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
+<span class="n">Fxhandle</span><span class="p">:</span><span class="n">FXControlPanel</span> <span class="o">=</span> <span class="n">musPanel</span><span class="o">.</span><span class="n">getFXHandle</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
 <span class="c1">#get music&#39;s fx handle</span>
 </pre></div>
 </div>
@@ -765,32 +888,32 @@ PYTHON</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-19" name="sd-tab-set-4" type="radio">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-19">
 GDSCRIPT</label><div class="sd-tab-content docutils">
-<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">musPannel</span><span class="p">:</span><span class="n">MusPannelWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="o">.</span><span class="n">GetMusicControlPannel</span><span class="p">()</span>
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">musPanel</span><span class="p">:</span><span class="n">MusPanelWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="o">.</span><span class="n">GetMusicControlPanel</span><span class="p">()</span>
 
 <span class="k">var</span><span class="w"> </span><span class="n">musicFound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;composer&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="c1">#find music to playback manually</span>
 
-<span class="k">var</span><span class="w"> </span><span class="n">load_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">.</span><span class="n">LoadMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;composer&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="k">var</span><span class="w"> </span><span class="n">load_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="o">.</span><span class="n">LoadMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;composer&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="c1"># load found music to deck. music won&#39;t playback in here</span>
 
-<span class="k">var</span><span class="w"> </span><span class="n">unload_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">.</span><span class="n">UnloadMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
+<span class="k">var</span><span class="w"> </span><span class="n">unload_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="o">.</span><span class="n">UnloadMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
 <span class="c1"># unload music from deck. don&#39;t forget for the memory space.</span>
-<span class="c1"># the deck always contains loaded music before calling musPannel.UnloadMusic or engine.ResetPlayer</span>
+<span class="c1"># the deck always contains loaded music before calling musPanel.UnloadMusic or engine.ResetPlayer</span>
 
-<span class="k">var</span><span class="w"> </span><span class="n">onoff_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">.</span><span class="n">SetMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">)</span>
+<span class="k">var</span><span class="w"> </span><span class="n">onoff_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="o">.</span><span class="n">SetMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="bp">true</span><span class="p">)</span>
 <span class="c1"># turn on the music. now music playbacks</span>
 
 <span class="k">var</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span>
 <span class="k">var</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">48000</span>
 <span class="c1">#PCMFrame_position = second X SampleRate</span>
 
-<span class="k">var</span><span class="w"> </span><span class="n">cue_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">.</span><span class="n">CueMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="p">)</span>
+<span class="k">var</span><span class="w"> </span><span class="n">cue_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="o">.</span><span class="n">CueMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">PCMFrame_position</span><span class="p">)</span>
 <span class="c1">#set playback position of the music.</span>
 
-<span class="k">var</span><span class="w"> </span><span class="n">loaded_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">.</span><span class="n">GetLoadedMusicList</span><span class="p">()</span>
+<span class="k">var</span><span class="w"> </span><span class="n">loaded_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="o">.</span><span class="n">GetLoadedMusicList</span><span class="p">()</span>
 <span class="c1">#get loaded music list.</span>
 
-<span class="k">var</span><span class="w"> </span><span class="n">Fxhandle</span><span class="p">:</span><span class="n">FXWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPannel</span><span class="o">.</span><span class="n">getFXHandle</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
+<span class="k">var</span><span class="w"> </span><span class="n">Fxhandle</span><span class="p">:</span><span class="n">FXWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="o">.</span><span class="n">getFXHandle</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)</span>
 <span class="c1">#get music&#39;s fx handle</span>
 </pre></div>
 </div>
@@ -811,7 +934,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <h2>Editor Step-1: Create &amp; Manage DB<a class="headerlink" href="#editor-step-1-create-manage-db" title="Link to this heading"></a></h2>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE">
-<span id="_CPPv3N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE"></span><span id="_CPPv2N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE"></span><span id="PDJE::InitEditor__DONT_SANITIZECR.DONT_SANITIZECR.DONT_SANITIZECR"></span><span class="target" id="class_p_d_j_e_1ae7f3ced4d2b444627df6e3efd9882e17"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">InitEditor</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_email</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">projectRoot</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE"></span><span id="_CPPv2N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE"></span><span id="PDJE::InitEditor__DONT_SANITIZECR.DONT_SANITIZECR.DONT_SANITIZECR"></span><span class="target" id="classPDJE_1ae7f3ced4d2b444627df6e3efd9882e17"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">InitEditor</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_email</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">projectRoot</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE" title="Link to this definition"></a><br /></dt>
 <dd><p>Initializes the editor. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -829,13 +952,13 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE11CloseEditorEv">
-<span id="_CPPv3N4PDJE11CloseEditorEv"></span><span id="_CPPv2N4PDJE11CloseEditorEv"></span><span id="PDJE::CloseEditor"></span><span class="target" id="class_p_d_j_e_1a06c15a20dc06ab0fd8d0276856758002"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">CloseEditor</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE11CloseEditorEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N4PDJE11CloseEditorEv"></span><span id="_CPPv2N4PDJE11CloseEditorEv"></span><span id="PDJE::CloseEditor"></span><span class="target" id="classPDJE_1a06c15a20dc06ab0fd8d0276856758002"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">CloseEditor</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE11CloseEditorEv" title="Link to this definition"></a><br /></dt>
 <dd><p>Close the Editor object. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE15GetEditorObjectEv">
-<span id="_CPPv3N4PDJE15GetEditorObjectEv"></span><span id="_CPPv2N4PDJE15GetEditorObjectEv"></span><span id="PDJE::GetEditorObject"></span><span class="target" id="class_p_d_j_e_1afc08d1de925ce319492f0e57ed788321"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetEditorObject</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE15GetEditorObjectEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N4PDJE15GetEditorObjectEv"></span><span id="_CPPv2N4PDJE15GetEditorObjectEv"></span><span id="PDJE::GetEditorObject"></span><span class="target" id="classPDJE_1afc08d1de925ce319492f0e57ed788321"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetEditorObject</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE15GetEditorObjectEv" title="Link to this definition"></a><br /></dt>
 <dd><p>editor handler getter api for binded codes. this function gives you a editor handler. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -846,7 +969,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N12editorObject15DESTROY_PROJECTEv">
-<span id="_CPPv3N12editorObject15DESTROY_PROJECTEv"></span><span id="_CPPv2N12editorObject15DESTROY_PROJECTEv"></span><span id="editorObject::DESTROY_PROJECT"></span><span class="target" id="classeditor_object_1a9e14b13d0a93115510856587e3d0b597"></span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">DESTROY_PROJECT</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12editorObject15DESTROY_PROJECTEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N12editorObject15DESTROY_PROJECTEv"></span><span id="_CPPv2N12editorObject15DESTROY_PROJECTEv"></span><span id="editorObject::DESTROY_PROJECT"></span><span class="target" id="classeditorObject_1a9e14b13d0a93115510856587e3d0b597"></span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">DESTROY_PROJECT</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12editorObject15DESTROY_PROJECTEv" title="Link to this definition"></a><br /></dt>
 <dd><p>Destroys the entire project. </p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1665,7 +1788,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <h2>Editor Step-3: Config new Music &amp; Render &amp; apply to root db<a class="headerlink" href="#editor-step-3-config-new-music-render-apply-to-root-db" title="Link to this heading"></a></h2>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N12editorObject14ConfigNewMusicERK11UNSANITIZEDRK11UNSANITIZEDRKN2fs4pathERK13DONT_SANITIZE">
-<span id="_CPPv3N12editorObject14ConfigNewMusicERK11UNSANITIZEDRK11UNSANITIZEDRKN2fs4pathERK13DONT_SANITIZE"></span><span id="_CPPv2N12editorObject14ConfigNewMusicERK11UNSANITIZEDRK11UNSANITIZEDRKN2fs4pathERK13DONT_SANITIZE"></span><span id="editorObject::ConfigNewMusic__UNSANITIZEDCR.UNSANITIZEDCR.fs::pathCR.DONT_SANITIZECR"></span><span class="target" id="classeditor_object_1a3ec9d3ccf73457ee3067cd3f47ac23c1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ConfigNewMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">NewMusicName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">composer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicPath</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">firstBeat</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;0&quot;</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12editorObject14ConfigNewMusicERK11UNSANITIZEDRK11UNSANITIZEDRKN2fs4pathERK13DONT_SANITIZE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N12editorObject14ConfigNewMusicERK11UNSANITIZEDRK11UNSANITIZEDRKN2fs4pathERK13DONT_SANITIZE"></span><span id="_CPPv2N12editorObject14ConfigNewMusicERK11UNSANITIZEDRK11UNSANITIZEDRKN2fs4pathERK13DONT_SANITIZE"></span><span id="editorObject::ConfigNewMusic__UNSANITIZEDCR.UNSANITIZEDCR.fs::pathCR.DONT_SANITIZECR"></span><span class="target" id="classeditorObject_1a3ec9d3ccf73457ee3067cd3f47ac23c1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ConfigNewMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">NewMusicName</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">composer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">fs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicPath</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">firstBeat</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;0&quot;</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12editorObject14ConfigNewMusicERK11UNSANITIZEDRK11UNSANITIZEDRKN2fs4pathERK13DONT_SANITIZE" title="Link to this definition"></a><br /></dt>
 <dd><p>Configures a new music entry. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1684,7 +1807,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N12editorObject6renderERK11UNSANITIZEDR6litedbR11UNSANITIZED">
-<span id="_CPPv3N12editorObject6renderERK11UNSANITIZEDR6litedbR11UNSANITIZED"></span><span id="_CPPv2N12editorObject6renderERK11UNSANITIZEDR6litedbR11UNSANITIZED"></span><span id="editorObject::render__UNSANITIZEDCR.litedbR.UNSANITIZEDR"></span><span class="target" id="classeditor_object_1a40875c244c49f43d99238e7302b90927"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">render</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">trackTitle</span></span>, <a class="reference internal" href="api/classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ROOTDB</span></span>, <a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">lint_msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12editorObject6renderERK11UNSANITIZEDR6litedbR11UNSANITIZED" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N12editorObject6renderERK11UNSANITIZEDR6litedbR11UNSANITIZED"></span><span id="_CPPv2N12editorObject6renderERK11UNSANITIZEDR6litedbR11UNSANITIZED"></span><span id="editorObject::render__UNSANITIZEDCR.litedbR.UNSANITIZEDR"></span><span class="target" id="classeditorObject_1a40875c244c49f43d99238e7302b90927"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">render</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">trackTitle</span></span>, <a class="reference internal" href="api/classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ROOTDB</span></span>, <a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">lint_msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12editorObject6renderERK11UNSANITIZEDR6litedbR11UNSANITIZED" title="Link to this definition"></a><br /></dt>
 <dd><p>Renders the project data to the root database. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1701,7 +1824,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N12editorObject12pushToRootDBER6litedbRK11UNSANITIZED">
-<span id="_CPPv3N12editorObject12pushToRootDBER6litedbRK11UNSANITIZED"></span><span id="_CPPv2N12editorObject12pushToRootDBER6litedbRK11UNSANITIZED"></span><span id="editorObject::pushToRootDB__litedbR.UNSANITIZEDCR"></span><span class="target" id="classeditor_object_1ae4f8059616e377582bade705a44aafb6"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">pushToRootDB</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ROOTDB</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">trackTitleToPush</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12editorObject12pushToRootDBER6litedbRK11UNSANITIZED" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N12editorObject12pushToRootDBER6litedbRK11UNSANITIZED"></span><span id="_CPPv2N12editorObject12pushToRootDBER6litedbRK11UNSANITIZED"></span><span id="editorObject::pushToRootDB__litedbR.UNSANITIZEDCR"></span><span class="target" id="classeditorObject_1ae4f8059616e377582bade705a44aafb6"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">pushToRootDB</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ROOTDB</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">trackTitleToPush</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12editorObject12pushToRootDBER6litedbRK11UNSANITIZED" title="Link to this definition"></a><br /></dt>
 <dd><p>Pushes a track to the root database. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1718,7 +1841,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N12editorObject12pushToRootDBER6litedbRK11UNSANITIZEDRK11UNSANITIZED">
-<span id="_CPPv3N12editorObject12pushToRootDBER6litedbRK11UNSANITIZEDRK11UNSANITIZED"></span><span id="_CPPv2N12editorObject12pushToRootDBER6litedbRK11UNSANITIZEDRK11UNSANITIZED"></span><span id="editorObject::pushToRootDB__litedbR.UNSANITIZEDCR.UNSANITIZEDCR"></span><span class="target" id="classeditor_object_1a634c551a93f376650075d82dcbe1ffd5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">pushToRootDB</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ROOTDB</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicTitle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicComposer</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12editorObject12pushToRootDBER6litedbRK11UNSANITIZEDRK11UNSANITIZED" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N12editorObject12pushToRootDBER6litedbRK11UNSANITIZEDRK11UNSANITIZED"></span><span id="_CPPv2N12editorObject12pushToRootDBER6litedbRK11UNSANITIZEDRK11UNSANITIZED"></span><span id="editorObject::pushToRootDB__litedbR.UNSANITIZEDCR.UNSANITIZEDCR"></span><span class="target" id="classeditorObject_1a634c551a93f376650075d82dcbe1ffd5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">pushToRootDB</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/classlitedb.html#_CPPv46litedb" title="litedb"><span class="n"><span class="pre">litedb</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">ROOTDB</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicTitle</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">musicComposer</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12editorObject12pushToRootDBER6litedbRK11UNSANITIZEDRK11UNSANITIZED" title="Link to this definition"></a><br /></dt>
 <dd><p>Pushes a music entry to the root database. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1830,7 +1953,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <h2>Editor Step-4: playback editing project<a class="headerlink" href="#editor-step-4-playback-editing-project" title="Link to this heading"></a></h2>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N12editorObject12demoPlayInitERNSt10shared_ptrI11audioPlayerEEjRK11UNSANITIZED">
-<span id="_CPPv3N12editorObject12demoPlayInitERNSt10shared_ptrI11audioPlayerEEjRK11UNSANITIZED"></span><span id="_CPPv2N12editorObject12demoPlayInitERNSt10shared_ptrI11audioPlayerEEjRK11UNSANITIZED"></span><span id="editorObject::demoPlayInit__std::shared_ptr:audioPlayer:R.unsigned-i.UNSANITIZEDCR"></span><span class="target" id="classeditor_object_1a394a200d5cf41ec74152c799d17b35e7"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">demoPlayInit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">player</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameBufferSize</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">trackTitle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12editorObject12demoPlayInitERNSt10shared_ptrI11audioPlayerEEjRK11UNSANITIZED" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N12editorObject12demoPlayInitERNSt10shared_ptrI11audioPlayerEEjRK11UNSANITIZED"></span><span id="_CPPv2N12editorObject12demoPlayInitERNSt10shared_ptrI11audioPlayerEEjRK11UNSANITIZED"></span><span id="editorObject::demoPlayInit__std::shared_ptr:audioPlayer:R.unsigned-i.UNSANITIZEDCR"></span><span class="target" id="classeditorObject_1a394a200d5cf41ec74152c799d17b35e7"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">demoPlayInit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="How_To_Use.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">player</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameBufferSize</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">trackTitle</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12editorObject12demoPlayInitERNSt10shared_ptrI11audioPlayerEEjRK11UNSANITIZED" title="Link to this definition"></a><br /></dt>
 <dd><p>Initializes a demo player for a given track. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

@@ -5,11 +5,12 @@
     <includes local="no">filesystem</includes>
     <includes refid="PDJE__EXPORT__SETTER_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
     <includes refid="dbRoot_8hpp" local="yes">dbRoot.hpp</includes>
-    <includedby refid="editorObject_8hpp" local="yes">include/MainObjects/editorObject/editorObject.hpp</includedby>
-    <includedby refid="tempDB_8cpp" local="yes">include/MainObjects/tempDBObject/tempDB.cpp</includedby>
+    <includedby refid="editorObject_8cpp" local="yes">include/core/MainObjects/editorObject/editorObject.cpp</includedby>
+    <includedby refid="editorObject_8hpp" local="yes">include/core/MainObjects/editorObject/editorObject.hpp</includedby>
+    <includedby refid="tempDB_8cpp" local="yes">include/core/MainObjects/tempDBObject/tempDB.cpp</includedby>
     <incdepgraph>
       <node id="1">
-        <label>include/MainObjects/tempDBObject/tempDB.hpp</label>
+        <label>include/core/MainObjects/tempDBObject/tempDB.hpp</label>
         <link refid="tempDB_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -17,10 +18,6 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-      </node>
-      <node id="3">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
       <node id="4">
         <label>dbRoot.hpp</label>
@@ -64,20 +61,6 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="15">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
       <node id="13">
         <label>musicDB.hpp</label>
         <link refid="musicDB_8hpp"/>
@@ -107,6 +90,24 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
+      </node>
+      <node id="15">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
       <node id="16">
         <label>cppcodec/base64_default_url.hpp</label>
@@ -140,32 +141,32 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3">
-        <label>include/MainObjects/editorObject/addline.cpp</label>
+      <node id="4">
+        <label>include/core/MainObjects/editorObject/addline.cpp</label>
         <link refid="addline_8cpp"/>
       </node>
-      <node id="4">
-        <label>include/MainObjects/editorObject/commonfunction.cpp</label>
+      <node id="5">
+        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
         <link refid="commonfunction_8cpp"/>
       </node>
-      <node id="5">
-        <label>include/MainObjects/editorObject/deleteline.cpp</label>
+      <node id="6">
+        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
         <link refid="deleteline_8cpp"/>
       </node>
-      <node id="6">
-        <label>include/MainObjects/editorObject/editorObject.cpp</label>
+      <node id="2">
+        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
         <link refid="editorObject_8cpp"/>
       </node>
-      <node id="2">
-        <label>include/MainObjects/editorObject/editorObject.hpp</label>
+      <node id="3">
+        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
         <link refid="editorObject_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -191,63 +192,65 @@
         </childnode>
       </node>
       <node id="7">
-        <label>include/MainObjects/editorObject/getall.cpp</label>
+        <label>include/core/MainObjects/editorObject/getall.cpp</label>
         <link refid="getall_8cpp"/>
       </node>
       <node id="8">
-        <label>include/MainObjects/editorObject/getdiff.cpp</label>
+        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
         <link refid="getdiff_8cpp"/>
       </node>
       <node id="9">
-        <label>include/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
         <link refid="getlogwithjsongraph_8cpp"/>
       </node>
       <node id="10">
-        <label>include/MainObjects/editorObject/go.cpp</label>
+        <label>include/core/MainObjects/editorObject/go.cpp</label>
         <link refid="go_8cpp"/>
       </node>
       <node id="11">
-        <label>include/MainObjects/editorObject/redo.cpp</label>
+        <label>include/core/MainObjects/editorObject/redo.cpp</label>
         <link refid="redo_8cpp"/>
       </node>
       <node id="12">
-        <label>include/MainObjects/editorObject/render.cpp</label>
+        <label>include/core/MainObjects/editorObject/render.cpp</label>
         <link refid="render_8cpp"/>
       </node>
       <node id="13">
-        <label>include/MainObjects/editorObject/undo.cpp</label>
+        <label>include/core/MainObjects/editorObject/undo.cpp</label>
         <link refid="undo_8cpp"/>
       </node>
       <node id="14">
-        <label>include/MainObjects/editorObject/updatelog.cpp</label>
+        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
         <link refid="updatelog_8cpp"/>
       </node>
       <node id="23">
-        <label>include/MainObjects/tempDBObject/tempDB.cpp</label>
+        <label>include/core/MainObjects/tempDBObject/tempDB.cpp</label>
         <link refid="tempDB_8cpp"/>
       </node>
       <node id="1">
-        <label>include/MainObjects/tempDBObject/tempDB.hpp</label>
+        <label>include/core/MainObjects/tempDBObject/tempDB.hpp</label>
         <link refid="tempDB_8hpp"/>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="15">
-        <label>include/SWIG_editor_visitor.hpp</label>
+        <label>include/core/SWIG_editor_visitor.hpp</label>
         <link refid="SWIG__editor__visitor_8hpp"/>
       </node>
       <node id="16">
-        <label>include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
+        <label>include/core/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
         <link refid="MusicJson_8cpp"/>
       </node>
       <node id="18">
-        <label>include/interface/PDJE_interface.cpp</label>
+        <label>include/core/interface/PDJE_interface.cpp</label>
         <link refid="PDJE__interface_8cpp"/>
       </node>
       <node id="17">
-        <label>include/interface/PDJE_interface.hpp</label>
+        <label>include/core/interface/PDJE_interface.hpp</label>
         <link refid="PDJE__interface_8hpp"/>
         <childnode refid="18" relation="include">
         </childnode>
@@ -261,7 +264,7 @@
         </childnode>
       </node>
       <node id="19">
-        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
+        <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
       </node>
       <node id="20">
@@ -315,6 +318,6 @@
 <codeline lineno="58" refid="classtempDB_1a9280c902042c20a036434fa39aff26ff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classtempDB_1a9280c902042c20a036434fa39aff26ff" kindref="member">~tempDB</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="59"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="include/MainObjects/tempDBObject/tempDB.hpp"/>
+    <location file="include/core/MainObjects/tempDBObject/tempDB.hpp"/>
   </compounddef>
 </doxygen>

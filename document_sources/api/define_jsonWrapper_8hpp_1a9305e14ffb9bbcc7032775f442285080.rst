@@ -3,7 +3,7 @@
 Define PDJE_JSON_TITLE
 ======================
 
-- Defined in :ref:`file_include_editor_featureWrapper_JSONWrap_jsonWrapper.hpp`
+- Defined in :ref:`file_include_core_editor_featureWrapper_JSONWrap_jsonWrapper.hpp`
 
 
 Define Documentation

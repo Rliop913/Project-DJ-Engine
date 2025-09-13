@@ -1,0 +1,64 @@
+
+.. _file_include_core_MainObjects_tempDBObject_tempDB.hpp:
+
+File tempDB.hpp
+===============
+
+|exhale_lsh| :ref:`Parent directory <dir_include_core_MainObjects_tempDBObject>` (``include/core/MainObjects/tempDBObject``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+
+Defines a temporary database for managing project data. 
+
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/core/MainObjects/tempDBObject/tempDB.hpp``)
+-----------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_core_MainObjects_tempDBObject_tempDB.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
+
+- ``dbRoot.hpp`` (:ref:`file_include_core_db_dbRoot.hpp`)
+
+- ``filesystem``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_include_core_MainObjects_editorObject_editorObject.cpp`
+
+- :ref:`file_include_core_MainObjects_editorObject_editorObject.hpp`
+
+- :ref:`file_include_core_MainObjects_tempDBObject_tempDB.cpp`
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classtempDB`
+

@@ -3,7 +3,7 @@
 Define warnlog
 ==============
 
-- Defined in :ref:`file_include_PDJE_LOG_SETTER.hpp`
+- Defined in :ref:`file_include_global_PDJE_LOG_SETTER.hpp`
 
 
 Define Documentation

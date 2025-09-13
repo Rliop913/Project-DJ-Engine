@@ -3,7 +3,7 @@
 Class Compressor_PDJE
 =====================
 
-- Defined in :ref:`file_include_audioRender_MixMachine_FAUST_VALS_compressor.hpp`
+- Defined in :ref:`file_include_core_audioRender_MixMachine_FAUST_VALS_compressor.hpp`
 
 
 Inheritance Relationships

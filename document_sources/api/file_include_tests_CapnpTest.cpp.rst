@@ -30,7 +30,7 @@ Includes
 --------
 
 
-- ``MUSIC_CTR.hpp`` (:ref:`file_include_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp`)
+- ``MUSIC_CTR.hpp`` (:ref:`file_include_core_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp`)
 
 - ``hwy/highway.h``
 

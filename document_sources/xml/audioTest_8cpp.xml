@@ -11,12 +11,12 @@
     <includes local="no">algorithm</includes>
     <includes local="no">iostream</includes>
     <incdepgraph>
-      <node id="84">
+      <node id="82">
         <label>audioCallbacks.hpp</label>
         <link refid="audioCallbacks_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -34,31 +34,11 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="84" relation="include">
+        <childnode refid="82" relation="include">
         </childnode>
         <childnode refid="85" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
-        </childnode>
-      </node>
-      <node id="10">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
-      </node>
-      <node id="11">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="PDJE__LOG__SETTER_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="66">
@@ -99,12 +79,12 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="82">
-        <label>MusicControlPannel.hpp</label>
-        <link refid="MusicControlPannel_8hpp"/>
+      <node id="83">
+        <label>MusicControlPanel.hpp</label>
+        <link refid="MusicControlPanel_8hpp"/>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="83" relation="include">
+        <childnode refid="84" relation="include">
         </childnode>
         <childnode refid="66" relation="include">
         </childnode>
@@ -411,20 +391,6 @@
         <childnode refid="35" relation="include">
         </childnode>
       </node>
-      <node id="42">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
       <node id="40">
         <label>musicDB.hpp</label>
         <link refid="musicDB_8hpp"/>
@@ -460,7 +426,39 @@
         <link refid="PDJE__Core__DataLine_8hpp"/>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+      </node>
+      <node id="42">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="11">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -600,7 +598,7 @@
       <node id="86">
         <label>iostream</label>
       </node>
-      <node id="83">
+      <node id="84">
         <label>map</label>
       </node>
       <node id="67">
@@ -921,11 +919,11 @@
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Completele<sp/>same&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>AP<sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classaudioPlayer" kindref="compound">audioPlayer</ref>(dbb,<sp/>restd.value().front(),<sp/>48,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>pannel<sp/>=<sp/>AP-&gt;GetFXControlPannel();</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>panel<sp/>=<sp/>AP-&gt;GetFXControlPanel();</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>AP-&gt;Activate();</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>getchar();</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>pannel-&gt;FX_ON_OFF(<ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a79b28719aca4e2f69cd372a3b7539c45" kindref="member">FXList::FILTER</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>filter_handle<sp/>=<sp/>pannel-&gt;GetArgSetter(<ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a79b28719aca4e2f69cd372a3b7539c45" kindref="member">FXList::FILTER</ref>);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>panel-&gt;FX_ON_OFF(<ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a79b28719aca4e2f69cd372a3b7539c45" kindref="member">FXList::FILTER</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>filter_handle<sp/>=<sp/>panel-&gt;GetArgSetter(<ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a79b28719aca4e2f69cd372a3b7539c45" kindref="member">FXList::FILTER</ref>);</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>i<sp/>:<sp/>filter_handle)<sp/>{</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>i.first<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

@@ -3,7 +3,7 @@
 Function main(int, char \*)
 ===========================
 
-- Defined in :ref:`file_core_include_tests_INPUT_TESTS_evdevtest.cpp`
+- Defined in :ref:`file_include_tests_INPUT_TESTS_evdevtest.cpp`
 
 
 Function Documentation

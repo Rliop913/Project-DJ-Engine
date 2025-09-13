@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -8,20 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data_Lines &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
-      <script src="_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
-      <script src="_static/design-tabs.js?v=f930bc37"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -140,7 +142,7 @@ It lets you read values such as frame/cursor positions and pre-rendered buffers 
 <h3>Recommended usage<a class="headerlink" href="#recommended-usage" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>Read-mostly</strong>: Treat cursors/frames/buffers as primarily <em>read-only</em>.
-Even if mutation is technically possible, for stability/portability <strong>use the ``FXControlPannel`` / ``MusicControlPannel`` APIs</strong> to change state.</p></li>
+Even if mutation is technically possible, for stability/portability <strong>use the ``FXControlPanel`` / ``MusicControlPanel`` APIs</strong> to change state.</p></li>
 <li><p><strong>Null/size checks</strong>: If a pointer is <code class="docutils literal notranslate"><span class="pre">nullptr</span></code> or the buffer length is unknown, do not dereference; use the engine/wrapper’s length/query APIs.</p></li>
 <li><p><strong>ABI caution</strong>: The struct layout may evolve. Check the documented versions (<code class="docutils literal notranslate"><span class="pre">PDJE_VERSION</span></code>, <code class="docutils literal notranslate"><span class="pre">PDJE_WRAPPER_VERSION</span></code>).</p></li>
 </ul>
@@ -155,12 +157,12 @@ In concurrent environments, capture short snapshots within a small critical sect
 <h2>Core Data Line<a class="headerlink" href="#core-data-line" title="Link to this heading"></a></h2>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE15PullOutDataLineEv">
-<span id="_CPPv3N4PDJE15PullOutDataLineEv"></span><span id="_CPPv2N4PDJE15PullOutDataLineEv"></span><span id="PDJE::PullOutDataLine"></span><span class="target" id="class_p_d_j_e_1a99c83bfe063652b508a6fd5e63e028da"></span><a class="reference internal" href="#_CPPv419PDJE_CORE_DATA_LINE" title="PDJE_CORE_DATA_LINE"><span class="n"><span class="pre">PDJE_CORE_DATA_LINE</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="Core_Engine.html#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">PullOutDataLine</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE15PullOutDataLineEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N4PDJE15PullOutDataLineEv"></span><span id="_CPPv2N4PDJE15PullOutDataLineEv"></span><span id="PDJE::PullOutDataLine"></span><span class="target" id="classPDJE_1a99c83bfe063652b508a6fd5e63e028da"></span><a class="reference internal" href="#_CPPv419PDJE_CORE_DATA_LINE" title="PDJE_CORE_DATA_LINE"><span class="n"><span class="pre">PDJE_CORE_DATA_LINE</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="Core_Engine.html#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">PullOutDataLine</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE15PullOutDataLineEv" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv419PDJE_CORE_DATA_LINE">
-<span id="_CPPv319PDJE_CORE_DATA_LINE"></span><span id="_CPPv219PDJE_CORE_DATA_LINE"></span><span id="PDJE_CORE_DATA_LINE"></span><span class="target" id="struct_p_d_j_e___c_o_r_e___d_a_t_a___l_i_n_e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_CORE_DATA_LINE</span></span></span><a class="headerlink" href="#_CPPv419PDJE_CORE_DATA_LINE" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv319PDJE_CORE_DATA_LINE"></span><span id="_CPPv219PDJE_CORE_DATA_LINE"></span><span id="PDJE_CORE_DATA_LINE"></span><span class="target" id="structPDJE__CORE__DATA__LINE"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_CORE_DATA_LINE</span></span></span><a class="headerlink" href="#_CPPv419PDJE_CORE_DATA_LINE" title="Link to this definition"></a><br /></dt>
 <dd><p>data line for transmission with other mosudles. all datas are pointer. use carefully. </p>
 </dd></dl>
 
@@ -169,7 +171,26 @@ In concurrent environments, capture short snapshots within a small critical sect
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-0">
 C++</label><div class="sd-tab-content docutils">
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;database/path&quot;</span><span class="p">);</span>
-<span class="n">PDJE_CORE_DATA_LINE</span><span class="w"> </span><span class="n">engineLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">PullOutDataLine</span><span class="p">();</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">core_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">PullOutDataLine</span><span class="p">();</span>
+<span class="n">core_line</span><span class="p">.</span><span class="n">preRenderedData</span><span class="p">;</span>
+<span class="c1">// Pre-rendered PCM audio data (float32 array).</span>
+<span class="c1">// Interleaved stereo format: [L0, R0, L1, R1, L2, R2, ...]</span>
+<span class="c1">// To access a specific frame&#39;s left/right channels:</span>
+<span class="c1">//   Left  = preRenderedData[frameIndex * 2]</span>
+<span class="c1">//   Right = preRenderedData[frameIndex * 2 + 1]</span>
+
+<span class="n">core_line</span><span class="p">.</span><span class="n">maxCursor</span><span class="p">;</span>
+<span class="c1">// Total number of PCM frames per channel.</span>
+<span class="c1">// For stereo, preRenderedData will contain (maxCursor * 2) float samples.</span>
+
+<span class="n">core_line</span><span class="p">.</span><span class="n">nowCursor</span><span class="p">;</span>
+<span class="c1">// Current playback position in PCM frames (per channel).</span>
+<span class="c1">// This value can jump if seeking occurs.</span>
+<span class="c1">// Multiply by 2 to index into preRenderedData (stereo interleaving).</span>
+
+<span class="n">core_line</span><span class="p">.</span><span class="n">used_frame</span><span class="p">;</span>
+<span class="c1">// Total number of PCM frames actually played (accumulated).</span>
+<span class="c1">// Does not decrease when seeking; represents playback progress.</span>
 </pre></div>
 </div>
 </div>
@@ -177,7 +198,26 @@ C++</label><div class="sd-tab-content docutils">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-1">
 C#</label><div class="sd-tab-content docutils">
 <div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">PDJE</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;database/path&quot;</span><span class="p">);</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">engineLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">();</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">core_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">();</span>
+<span class="n">core_line</span><span class="p">.</span><span class="n">preRenderedData</span><span class="p">;</span>
+<span class="c1">// Pre-rendered PCM audio data (float32 array).</span>
+<span class="c1">// Interleaved stereo format: [L0, R0, L1, R1, L2, R2, ...]</span>
+<span class="c1">// To access a specific frame&#39;s left/right channels:</span>
+<span class="c1">//   Left  = preRenderedData[frameIndex * 2]</span>
+<span class="c1">//   Right = preRenderedData[frameIndex * 2 + 1]</span>
+
+<span class="n">core_line</span><span class="p">.</span><span class="n">maxCursor</span><span class="p">;</span>
+<span class="c1">// Total number of PCM frames per channel.</span>
+<span class="c1">// For stereo, preRenderedData will contain (maxCursor * 2) float samples.</span>
+
+<span class="n">core_line</span><span class="p">.</span><span class="n">nowCursor</span><span class="p">;</span>
+<span class="c1">// Current playback position in PCM frames (per channel).</span>
+<span class="c1">// This value can jump if seeking occurs.</span>
+<span class="c1">// Multiply by 2 to index into preRenderedData (stereo interleaving).</span>
+
+<span class="n">core_line</span><span class="p">.</span><span class="n">used_frame</span><span class="p">;</span>
+<span class="c1">// Total number of PCM frames actually played (accumulated).</span>
+<span class="c1">// Does not decrease when seeking; represents playback progress.</span>
 </pre></div>
 </div>
 </div>
@@ -186,7 +226,26 @@ C#</label><div class="sd-tab-content docutils">
 PYTHON</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pypdje</span>
 <span class="n">engine</span> <span class="o">=</span> <span class="n">pypdje</span><span class="o">.</span><span class="n">PDJE</span><span class="p">(</span><span class="s2">&quot;database/path&quot;</span><span class="p">)</span>
-<span class="n">engineLine</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">PullOutDataLine</span><span class="p">()</span>
+<span class="n">core_line</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">PullOutDataLine</span><span class="p">()</span>
+<span class="n">core_line</span><span class="o">.</span><span class="n">preRenderedData</span>
+<span class="c1"># Pre-rendered PCM audio data (float32 array).</span>
+<span class="c1"># Interleaved stereo format: [L0, R0, L1, R1, L2, R2, ...]</span>
+<span class="c1"># To access a specific frame&#39;s left/right channels:</span>
+<span class="c1">#   Left  = preRenderedData[frameIndex * 2]</span>
+<span class="c1">#   Right = preRenderedData[frameIndex * 2 + 1]</span>
+
+<span class="n">core_line</span><span class="o">.</span><span class="n">maxCursor</span>
+<span class="c1"># Total number of PCM frames per channel.</span>
+<span class="c1"># For stereo, preRenderedData will contain (maxCursor * 2) float samples.</span>
+
+<span class="n">core_line</span><span class="o">.</span><span class="n">nowCursor</span>
+<span class="c1"># Current playback position in PCM frames (per channel).</span>
+<span class="c1"># This value can jump if seeking occurs.</span>
+<span class="c1"># Multiply by 2 to index into preRenderedData (stereo interleaving).</span>
+
+<span class="n">core_line</span><span class="o">.</span><span class="n">used_frame</span>
+<span class="c1"># Total number of PCM frames actually played (accumulated).</span>
+<span class="c1"># Does not decrease when seeking; represents playback progress.</span>
 </pre></div>
 </div>
 </div>
@@ -195,7 +254,27 @@ PYTHON</label><div class="sd-tab-content docutils">
 GDSCRIPT</label><div class="sd-tab-content docutils">
 <div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">engine</span><span class="p">:</span><span class="n">PDJE_Wrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Wrapper</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 <span class="n">engine</span><span class="o">.</span><span class="n">InitEngine</span><span class="p">(</span><span class="s2">&quot;res://database/path&quot;</span><span class="p">)</span>
-<span class="k">var</span><span class="w"> </span><span class="n">engineLine</span><span class="p">:</span><span class="n">CoreLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">PullOutCoreLine</span><span class="p">()</span>
+<span class="k">var</span><span class="w"> </span><span class="n">core_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">PullOutCoreLine</span><span class="p">()</span>
+
+<span class="n">core_line</span><span class="o">.</span><span class="n">GetPreRenderedFrames</span><span class="p">()</span>
+<span class="c1"># Pre-rendered PCM audio data (float32 array).</span>
+<span class="c1"># Interleaved stereo format: [L0, R0, L1, R1, L2, R2, ...]</span>
+<span class="c1"># To access a specific frame&#39;s left/right channels:</span>
+<span class="c1">#   Left  = preRenderedData[frameIndex * 2]</span>
+<span class="c1">#   Right = preRenderedData[frameIndex * 2 + 1]</span>
+
+<span class="n">core_line</span><span class="o">.</span><span class="n">GetMaxCursor</span><span class="p">()</span>
+<span class="c1"># Total number of PCM frames per channel.</span>
+<span class="c1"># For stereo, preRenderedData will contain (maxCursor * 2) float samples.</span>
+
+<span class="n">core_line</span><span class="o">.</span><span class="n">GetNowCursor</span><span class="p">()</span>
+<span class="c1"># Current playback position in PCM frames (per channel).</span>
+<span class="c1"># This value can jump if seeking occurs.</span>
+<span class="c1"># Multiply by 2 to index into preRenderedData (stereo interleaving).</span>
+
+<span class="n">core_line</span><span class="o">.</span><span class="n">GetUsedFrame</span><span class="p">()</span>
+<span class="c1"># Total number of PCM frames actually played (accumulated).</span>
+<span class="c1"># Does not decrease when seeking; represents playback progress.</span>
 </pre></div>
 </div>
 </div>

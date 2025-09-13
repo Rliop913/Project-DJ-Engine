@@ -9,17 +9,17 @@
     <includes refid="audioCallbacks_8hpp" local="yes">audioCallbacks.hpp</includes>
     <includes refid="audioRender_8hpp" local="yes">audioRender.hpp</includes>
     <includes local="no">miniaudio.h</includes>
-    <includedby refid="audioPlayer_8cpp" local="yes">include/MainObjects/audioPlayer/audioPlayer.cpp</includedby>
-    <includedby refid="editorObject_8hpp" local="yes">include/MainObjects/editorObject/editorObject.hpp</includedby>
-    <includedby refid="PDJE__interface_8hpp" local="yes">include/interface/PDJE_interface.hpp</includedby>
+    <includedby refid="audioPlayer_8cpp" local="yes">include/core/MainObjects/audioPlayer/audioPlayer.cpp</includedby>
+    <includedby refid="editorObject_8hpp" local="yes">include/core/MainObjects/editorObject/editorObject.hpp</includedby>
+    <includedby refid="PDJE__interface_8hpp" local="yes">include/core/interface/PDJE_interface.hpp</includedby>
     <includedby refid="audioTest_8cpp" local="yes">include/tests/audioTest.cpp</includedby>
     <incdepgraph>
-      <node id="83">
+      <node id="81">
         <label>audioCallbacks.hpp</label>
         <link refid="audioCallbacks_8hpp"/>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="82" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
@@ -27,7 +27,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>include/MainObjects/audioPlayer/audioPlayer.hpp</label>
+        <label>include/core/MainObjects/audioPlayer/audioPlayer.hpp</label>
         <link refid="audioPlayer_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -37,31 +37,11 @@
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="83" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
         <childnode refid="84" relation="include">
         </childnode>
         <childnode refid="60" relation="include">
-        </childnode>
-      </node>
-      <node id="28">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
-      </node>
-      <node id="29">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="PDJE__LOG__SETTER_8hpp"/>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -102,12 +82,12 @@
         <childnode refid="28" relation="include">
         </childnode>
       </node>
-      <node id="81">
-        <label>MusicControlPannel.hpp</label>
-        <link refid="MusicControlPannel_8hpp"/>
+      <node id="82">
+        <label>MusicControlPanel.hpp</label>
+        <link refid="MusicControlPanel_8hpp"/>
         <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -414,20 +394,6 @@
         <childnode refid="38" relation="include">
         </childnode>
       </node>
-      <node id="41">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-      </node>
       <node id="37">
         <label>musicDB.hpp</label>
         <link refid="musicDB_8hpp"/>
@@ -463,7 +429,39 @@
         <link refid="PDJE__Core__DataLine_8hpp"/>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+      </node>
+      <node id="41">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="29">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
       <node id="66">
@@ -580,7 +578,7 @@
       <node id="36">
         <label>hwy/aligned_allocator.h</label>
       </node>
-      <node id="82">
+      <node id="83">
         <label>map</label>
       </node>
       <node id="3">
@@ -646,11 +644,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
-        <label>include/MainObjects/audioPlayer/audioPlayer.cpp</label>
+        <label>include/core/MainObjects/audioPlayer/audioPlayer.cpp</label>
         <link refid="audioPlayer_8cpp"/>
       </node>
       <node id="1">
-        <label>include/MainObjects/audioPlayer/audioPlayer.hpp</label>
+        <label>include/core/MainObjects/audioPlayer/audioPlayer.hpp</label>
         <link refid="audioPlayer_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -662,23 +660,23 @@
         </childnode>
       </node>
       <node id="4">
-        <label>include/MainObjects/editorObject/addline.cpp</label>
+        <label>include/core/MainObjects/editorObject/addline.cpp</label>
         <link refid="addline_8cpp"/>
       </node>
       <node id="5">
-        <label>include/MainObjects/editorObject/commonfunction.cpp</label>
+        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
         <link refid="commonfunction_8cpp"/>
       </node>
       <node id="6">
-        <label>include/MainObjects/editorObject/deleteline.cpp</label>
+        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
         <link refid="deleteline_8cpp"/>
       </node>
       <node id="7">
-        <label>include/MainObjects/editorObject/editorObject.cpp</label>
+        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
         <link refid="editorObject_8cpp"/>
       </node>
       <node id="3">
-        <label>include/MainObjects/editorObject/editorObject.hpp</label>
+        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
         <link refid="editorObject_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
@@ -712,51 +710,51 @@
         </childnode>
       </node>
       <node id="8">
-        <label>include/MainObjects/editorObject/getall.cpp</label>
+        <label>include/core/MainObjects/editorObject/getall.cpp</label>
         <link refid="getall_8cpp"/>
       </node>
       <node id="9">
-        <label>include/MainObjects/editorObject/getdiff.cpp</label>
+        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
         <link refid="getdiff_8cpp"/>
       </node>
       <node id="10">
-        <label>include/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
         <link refid="getlogwithjsongraph_8cpp"/>
       </node>
       <node id="11">
-        <label>include/MainObjects/editorObject/go.cpp</label>
+        <label>include/core/MainObjects/editorObject/go.cpp</label>
         <link refid="go_8cpp"/>
       </node>
       <node id="12">
-        <label>include/MainObjects/editorObject/redo.cpp</label>
+        <label>include/core/MainObjects/editorObject/redo.cpp</label>
         <link refid="redo_8cpp"/>
       </node>
       <node id="13">
-        <label>include/MainObjects/editorObject/render.cpp</label>
+        <label>include/core/MainObjects/editorObject/render.cpp</label>
         <link refid="render_8cpp"/>
       </node>
       <node id="14">
-        <label>include/MainObjects/editorObject/undo.cpp</label>
+        <label>include/core/MainObjects/editorObject/undo.cpp</label>
         <link refid="undo_8cpp"/>
       </node>
       <node id="15">
-        <label>include/MainObjects/editorObject/updatelog.cpp</label>
+        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
         <link refid="updatelog_8cpp"/>
       </node>
       <node id="16">
-        <label>include/SWIG_editor_visitor.hpp</label>
+        <label>include/core/SWIG_editor_visitor.hpp</label>
         <link refid="SWIG__editor__visitor_8hpp"/>
       </node>
       <node id="17">
-        <label>include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
+        <label>include/core/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
         <link refid="MusicJson_8cpp"/>
       </node>
       <node id="19">
-        <label>include/interface/PDJE_interface.cpp</label>
+        <label>include/core/interface/PDJE_interface.cpp</label>
         <link refid="PDJE__interface_8cpp"/>
       </node>
       <node id="18">
-        <label>include/interface/PDJE_interface.hpp</label>
+        <label>include/core/interface/PDJE_interface.hpp</label>
         <link refid="PDJE__interface_8hpp"/>
         <childnode refid="19" relation="include">
         </childnode>
@@ -770,7 +768,7 @@
         </childnode>
       </node>
       <node id="20">
-        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
+        <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
       </node>
       <node id="24">
@@ -844,11 +842,11 @@
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>GetConsumedFrames();</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref><sp/>*</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>GetFXControlPannel(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref><sp/>&amp;title<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;__PDJE__MAIN__&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFXControlPanel" kindref="compound">FXControlPanel</ref><sp/>*</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>GetFXControlPanel(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref><sp/>&amp;title<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;__PDJE__MAIN__&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMusicControlPannel" kindref="compound">MusicControlPannel</ref><sp/>*</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>GetMusicControlPannel();</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMusicControlPanel" kindref="compound">MusicControlPanel</ref><sp/>*</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>GetMusicControlPanel();</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaudioPlayer" kindref="compound">audioPlayer</ref>(<ref refid="classlitedb" kindref="compound">litedb</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;db,</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structtrackdata" kindref="compound">trackdata</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;td,</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>frameBufferSize,</highlight></codeline>
@@ -861,6 +859,6 @@
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classaudioPlayer" kindref="compound">~audioPlayer</ref>();</highlight></codeline>
 <codeline lineno="118"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="include/MainObjects/audioPlayer/audioPlayer.hpp"/>
+    <location file="include/core/MainObjects/audioPlayer/audioPlayer.hpp"/>
   </compounddef>
 </doxygen>

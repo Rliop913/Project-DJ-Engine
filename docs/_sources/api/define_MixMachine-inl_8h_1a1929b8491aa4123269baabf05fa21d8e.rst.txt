@@ -3,7 +3,7 @@
 Define HWY_TARGET_INCLUDE
 =========================
 
-- Defined in :ref:`file_include_audioRender_MixMachine_MixMachine-inl.h`
+- Defined in :ref:`file_include_core_audioRender_MixMachine_MixMachine-inl.h`
 
 
 Define Documentation

@@ -3,7 +3,7 @@
 Struct BranchJSON
 =================
 
-- Defined in :ref:`file_include_editor_featureWrapper_GitWrap_PDJE_GitHandler.cpp`
+- Defined in :ref:`file_include_core_editor_featureWrapper_GitWrap_PDJE_GitHandler.cpp`
 
 
 Struct Documentation

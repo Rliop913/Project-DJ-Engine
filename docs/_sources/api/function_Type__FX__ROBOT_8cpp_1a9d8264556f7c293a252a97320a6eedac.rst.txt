@@ -3,7 +3,7 @@
 Specialized Template Function MixMachine::TypeWorks< TypeEnum::ROBOT, FaustEffects >
 ====================================================================================
 
-- Defined in :ref:`file_include_audioRender_MixMachine_MixTypes_Type_FX_ROBOT.cpp`
+- Defined in :ref:`file_include_core_audioRender_MixMachine_MixTypes_Type_FX_ROBOT.cpp`
 
 
 Function Documentation

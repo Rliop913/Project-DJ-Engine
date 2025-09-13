@@ -3,7 +3,7 @@
 Struct musdata
 ==============
 
-- Defined in :ref:`file_core_include_db_musicDB.hpp`
+- Defined in :ref:`file_include_core_db_musicDB.hpp`
 
 
 Struct Documentation

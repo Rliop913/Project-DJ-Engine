@@ -3,7 +3,7 @@
 Typedef OBJ_SETTER_CALLBACK
 ===========================
 
-- Defined in :ref:`file_include_db_Capnp_Translators_NoteTranslator_NoteTranslator.hpp`
+- Defined in :ref:`file_include_core_db_Capnp_Translators_NoteTranslator_NoteTranslator.hpp`
 
 
 Typedef Documentation

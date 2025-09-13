@@ -30,7 +30,7 @@ Includes
 --------
 
 
-- ``PDJE_interface.hpp`` (:ref:`file_include_interface_PDJE_interface.hpp`)
+- ``PDJE_interface.hpp`` (:ref:`file_include_core_interface_PDJE_interface.hpp`)
 
 - ``iostream``
 

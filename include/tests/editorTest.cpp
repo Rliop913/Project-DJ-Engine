@@ -92,8 +92,9 @@ main()
             }
         }
         if (engine->SearchMusic("testMiku", "Camellia").empty()) {
-            bool renderRes =
-                engine->editor->render("testTrack", *(engine->DBROOT));
+            std::string linter_msg;
+            bool        renderRes = engine->editor->render(
+                "testTrack", *(engine->DBROOT), linter_msg);
             bool pushRes = engine->editor->pushToRootDB(
                 *(engine->DBROOT), "testMiku", "Camellia");
             bool pushResSecond = engine->editor->pushToRootDB(
@@ -118,7 +119,7 @@ main()
 
         auto initres   = engine->InitPlayer(PLAY_MODE::HYBRID_RENDER, td, 48);
         auto activeres = engine->player->Activate();
-        auto musPanel = engine->player->GetMusicControlPanel();
+        auto musPanel  = engine->player->GetMusicControlPanel();
         auto muses     = engine->SearchMusic("ヒアソビ", "Camellia");
         musPanel->LoadMusic(*(engine->DBROOT), muses.front());
 
@@ -153,6 +154,11 @@ main()
         editor->GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
         editor->GetLogWithJSONGraph<EDIT_ARG_NOTE>();
         editor->GetLogWithJSONGraph<EDIT_ARG_MUSIC>("music name");
+        auto core_line = engine->PullOutDataLine();
+        core_line.preRenderedData;
+        core_line.maxCursor;
+        core_line.nowCursor;
+        core_line.used_frame;
 
     } else {
         std::cout << "init failed " << std::endl;

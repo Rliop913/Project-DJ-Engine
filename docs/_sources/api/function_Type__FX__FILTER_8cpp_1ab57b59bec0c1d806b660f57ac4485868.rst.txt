@@ -3,7 +3,7 @@
 Specialized Template Function MixMachine::TypeWorks< TypeEnum::FILTER, FaustEffects >
 =====================================================================================
 
-- Defined in :ref:`file_include_audioRender_MixMachine_MixTypes_Type_FX_FILTER.cpp`
+- Defined in :ref:`file_include_core_audioRender_MixMachine_MixTypes_Type_FX_FILTER.cpp`
 
 
 Function Documentation

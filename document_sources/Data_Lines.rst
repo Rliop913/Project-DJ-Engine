@@ -31,7 +31,7 @@ Recommended usage
 ^^^^^^^^^^^^^^^^^
 
 - **Read-mostly**: Treat cursors/frames/buffers as primarily *read-only*.  
-  Even if mutation is technically possible, for stability/portability **use the ``FXControlPannel`` / ``MusicControlPannel`` APIs** to change state.
+  Even if mutation is technically possible, for stability/portability **use the ``FXControlPanel`` / ``MusicControlPanel`` APIs** to change state.
 - **Null/size checks**: If a pointer is ``nullptr`` or the buffer length is unknown, do not dereference; use the engine/wrapper’s length/query APIs.
 - **ABI caution**: The struct layout may evolve. Check the documented versions (``PDJE_VERSION``, ``PDJE_WRAPPER_VERSION``).
 
@@ -55,23 +55,102 @@ Core Data Line
     .. code-block:: c++
 
         auto engine = new PDJE("database/path");
-        PDJE_CORE_DATA_LINE engineLine = engine->PullOutDataLine();
+        auto core_line = engine->PullOutDataLine();
+        core_line.preRenderedData;
+        // Pre-rendered PCM audio data (float32 array).
+        // Interleaved stereo format: [L0, R0, L1, R1, L2, R2, ...]
+        // To access a specific frame's left/right channels:
+        //   Left  = preRenderedData[frameIndex * 2]
+        //   Right = preRenderedData[frameIndex * 2 + 1]
 
+        core_line.maxCursor;
+        // Total number of PCM frames per channel.
+        // For stereo, preRenderedData will contain (maxCursor * 2) float samples.
+
+        core_line.nowCursor;
+        // Current playback position in PCM frames (per channel).
+        // This value can jump if seeking occurs.
+        // Multiply by 2 to index into preRenderedData (stereo interleaving).
+
+        core_line.used_frame;
+        // Total number of PCM frames actually played (accumulated).
+        // Does not decrease when seeking; represents playback progress.
 
     .. code-block:: c#
 
         PDJE engine = new PDJE("database/path");
-        var engineLine = engine.PullOutDataLine();
+        var core_line = engine.PullOutDataLine();
+        core_line.preRenderedData;
+        // Pre-rendered PCM audio data (float32 array).
+        // Interleaved stereo format: [L0, R0, L1, R1, L2, R2, ...]
+        // To access a specific frame's left/right channels:
+        //   Left  = preRenderedData[frameIndex * 2]
+        //   Right = preRenderedData[frameIndex * 2 + 1]
+
+        core_line.maxCursor;
+        // Total number of PCM frames per channel.
+        // For stereo, preRenderedData will contain (maxCursor * 2) float samples.
+
+        core_line.nowCursor;
+        // Current playback position in PCM frames (per channel).
+        // This value can jump if seeking occurs.
+        // Multiply by 2 to index into preRenderedData (stereo interleaving).
+
+        core_line.used_frame;
+        // Total number of PCM frames actually played (accumulated).
+        // Does not decrease when seeking; represents playback progress.
+
 
     .. code-block:: python
 
         import pdje_POLYGLOT as pypdje
         engine = pypdje.PDJE("database/path")
-        engineLine = engine.PullOutDataLine()
+        core_line = engine.PullOutDataLine()
+        core_line.preRenderedData
+        # Pre-rendered PCM audio data (float32 array).
+        # Interleaved stereo format: [L0, R0, L1, R1, L2, R2, ...]
+        # To access a specific frame's left/right channels:
+        #   Left  = preRenderedData[frameIndex * 2]
+        #   Right = preRenderedData[frameIndex * 2 + 1]
+
+        core_line.maxCursor
+        # Total number of PCM frames per channel.
+        # For stereo, preRenderedData will contain (maxCursor * 2) float samples.
+
+        core_line.nowCursor
+        # Current playback position in PCM frames (per channel).
+        # This value can jump if seeking occurs.
+        # Multiply by 2 to index into preRenderedData (stereo interleaving).
+
+        core_line.used_frame
+        # Total number of PCM frames actually played (accumulated).
+        # Does not decrease when seeking; represents playback progress.
+
 
     .. code-block:: gdscript
 
         var engine:PDJE_Wrapper = PDJE_Wrapper.new()
         engine.InitEngine("res://database/path")
-        var engineLine:CoreLine = engine.PullOutCoreLine()
+        var core_line = engine.PullOutCoreLine()
+
+        core_line.GetPreRenderedFrames()
+        # Pre-rendered PCM audio data (float32 array).
+        # Interleaved stereo format: [L0, R0, L1, R1, L2, R2, ...]
+        # To access a specific frame's left/right channels:
+        #   Left  = preRenderedData[frameIndex * 2]
+        #   Right = preRenderedData[frameIndex * 2 + 1]
+
+        core_line.GetMaxCursor()
+        # Total number of PCM frames per channel.
+        # For stereo, preRenderedData will contain (maxCursor * 2) float samples.
+
+        core_line.GetNowCursor()
+        # Current playback position in PCM frames (per channel).
+        # This value can jump if seeking occurs.
+        # Multiply by 2 to index into preRenderedData (stereo interleaving).
+
+        core_line.GetUsedFrame()
+        # Total number of PCM frames actually played (accumulated).
+        # Does not decrease when seeking; represents playback progress.
+
 
