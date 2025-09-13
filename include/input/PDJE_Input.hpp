@@ -26,7 +26,7 @@ struct PDJE_IDEV {
     std::string busType;
     std::string devType;
     struct Specifiers {
-        DevID devID;
+        // DevID devID;
     };
 };
 
