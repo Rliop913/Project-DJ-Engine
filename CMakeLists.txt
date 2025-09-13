@@ -138,6 +138,9 @@ endif()
 # linkPDJELibs(PDJE_MODULE_JUDGE)
 linkPDJELibs(PDJE)
 
+setSpdlogReqLib(PDJE_MODULE_INPUT)
+setSpdlogReqLib(PDJE_MODULE_JUDGE)
+
 # target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
 # setSpdlogReqLib(PDJE)
 # setCapnpReqLib(PDJE)
