@@ -100,7 +100,7 @@ if(WIN32)
   
 endif()
 else()
-add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource})
+add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource} ${globalSource})
 add_library(PDJE_MODULE_JUDGE ${judgeSource} ${globalSource})
 add_library(PDJE_MODULE_INPUT ${inputSource} ${globalSource})
 
