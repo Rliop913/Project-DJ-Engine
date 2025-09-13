@@ -3,7 +3,7 @@
 Function searchLambda
 =====================
 
-- Defined in :ref:`file_include_db_Capnp_Translators_FrameCalc.cpp`
+- Defined in :ref:`file_include_core_db_Capnp_Translators_FrameCalc.cpp`
 
 
 Function Documentation

@@ -3,7 +3,7 @@
 Typedef ARGSETTER
 =================
 
-- Defined in :ref:`file_include_audioRender_MixMachine_DeckData.hpp`
+- Defined in :ref:`file_include_core_audioRender_MixMachine_DeckData.hpp`
 
 
 Typedef Documentation

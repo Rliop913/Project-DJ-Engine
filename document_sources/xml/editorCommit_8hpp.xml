@@ -8,18 +8,14 @@
     <includes local="no">string</includes>
     <includes local="no">vector</includes>
     <includes refid="PDJE__EXPORT__SETTER_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
-    <includedby refid="editorBranch_8hpp" local="yes">include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp</includedby>
-    <includedby refid="editorCommit_8cpp" local="yes">include/editor/featureWrapper/GitWrap/Commit/editorCommit.cpp</includedby>
-    <includedby refid="DiffController_8hpp" local="yes">include/editor/featureWrapper/GitWrap/Diff/DiffController.hpp</includedby>
-    <includedby refid="gitLog_8hpp" local="yes">include/editor/featureWrapper/GitWrap/Log/gitLog.hpp</includedby>
-    <includedby refid="gitWrapper_8cpp" local="yes">include/editor/featureWrapper/GitWrap/gitWrapper.cpp</includedby>
+    <includedby refid="editorBranch_8hpp" local="yes">include/core/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp</includedby>
+    <includedby refid="editorCommit_8cpp" local="yes">include/core/editor/featureWrapper/GitWrap/Commit/editorCommit.cpp</includedby>
+    <includedby refid="DiffController_8hpp" local="yes">include/core/editor/featureWrapper/GitWrap/Diff/DiffController.hpp</includedby>
+    <includedby refid="gitLog_8hpp" local="yes">include/core/editor/featureWrapper/GitWrap/Log/gitLog.hpp</includedby>
+    <includedby refid="gitWrapper_8cpp" local="yes">include/core/editor/featureWrapper/GitWrap/gitWrapper.cpp</includedby>
     <incdepgraph>
-      <node id="7">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
-      </node>
       <node id="1">
-        <label>include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp</label>
+        <label>include/core/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp</label>
         <link refid="editorCommit_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -33,6 +29,10 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+      </node>
+      <node id="7">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
       <node id="2">
         <label>git2.h</label>
@@ -52,23 +52,23 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="9">
-        <label>include/MainObjects/editorObject/addline.cpp</label>
+        <label>include/core/MainObjects/editorObject/addline.cpp</label>
         <link refid="addline_8cpp"/>
       </node>
       <node id="10">
-        <label>include/MainObjects/editorObject/commonfunction.cpp</label>
+        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
         <link refid="commonfunction_8cpp"/>
       </node>
       <node id="11">
-        <label>include/MainObjects/editorObject/deleteline.cpp</label>
+        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
         <link refid="deleteline_8cpp"/>
       </node>
       <node id="12">
-        <label>include/MainObjects/editorObject/editorObject.cpp</label>
+        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
         <link refid="editorObject_8cpp"/>
       </node>
       <node id="8">
-        <label>include/MainObjects/editorObject/editorObject.hpp</label>
+        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
         <link refid="editorObject_8hpp"/>
         <childnode refid="9" relation="include">
         </childnode>
@@ -102,47 +102,47 @@
         </childnode>
       </node>
       <node id="13">
-        <label>include/MainObjects/editorObject/getall.cpp</label>
+        <label>include/core/MainObjects/editorObject/getall.cpp</label>
         <link refid="getall_8cpp"/>
       </node>
       <node id="14">
-        <label>include/MainObjects/editorObject/getdiff.cpp</label>
+        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
         <link refid="getdiff_8cpp"/>
       </node>
       <node id="15">
-        <label>include/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
         <link refid="getlogwithjsongraph_8cpp"/>
       </node>
       <node id="16">
-        <label>include/MainObjects/editorObject/go.cpp</label>
+        <label>include/core/MainObjects/editorObject/go.cpp</label>
         <link refid="go_8cpp"/>
       </node>
       <node id="17">
-        <label>include/MainObjects/editorObject/redo.cpp</label>
+        <label>include/core/MainObjects/editorObject/redo.cpp</label>
         <link refid="redo_8cpp"/>
       </node>
       <node id="18">
-        <label>include/MainObjects/editorObject/render.cpp</label>
+        <label>include/core/MainObjects/editorObject/render.cpp</label>
         <link refid="render_8cpp"/>
       </node>
       <node id="19">
-        <label>include/MainObjects/editorObject/undo.cpp</label>
+        <label>include/core/MainObjects/editorObject/undo.cpp</label>
         <link refid="undo_8cpp"/>
       </node>
       <node id="20">
-        <label>include/MainObjects/editorObject/updatelog.cpp</label>
+        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
         <link refid="updatelog_8cpp"/>
       </node>
       <node id="21">
-        <label>include/SWIG_editor_visitor.hpp</label>
+        <label>include/core/SWIG_editor_visitor.hpp</label>
         <link refid="SWIG__editor__visitor_8hpp"/>
       </node>
       <node id="29">
-        <label>include/editor/editor.cpp</label>
+        <label>include/core/editor/editor.cpp</label>
         <link refid="editor_8cpp"/>
       </node>
       <node id="7">
-        <label>include/editor/editor.hpp</label>
+        <label>include/core/editor/editor.hpp</label>
         <link refid="editor_8hpp"/>
         <childnode refid="8" relation="include">
         </childnode>
@@ -150,11 +150,11 @@
         </childnode>
       </node>
       <node id="3">
-        <label>include/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp</label>
+        <label>include/core/editor/featureWrapper/GitWrap/Branch/editorBranch.cpp</label>
         <link refid="editorBranch_8cpp"/>
       </node>
       <node id="2">
-        <label>include/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp</label>
+        <label>include/core/editor/featureWrapper/GitWrap/Branch/editorBranch.hpp</label>
         <link refid="editorBranch_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
@@ -166,11 +166,11 @@
         </childnode>
       </node>
       <node id="33">
-        <label>include/editor/featureWrapper/GitWrap/Commit/editorCommit.cpp</label>
+        <label>include/core/editor/featureWrapper/GitWrap/Commit/editorCommit.cpp</label>
         <link refid="editorCommit_8cpp"/>
       </node>
       <node id="1">
-        <label>include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp</label>
+        <label>include/core/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp</label>
         <link refid="editorCommit_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -184,11 +184,11 @@
         </childnode>
       </node>
       <node id="35">
-        <label>include/editor/featureWrapper/GitWrap/Diff/DiffController.cpp</label>
+        <label>include/core/editor/featureWrapper/GitWrap/Diff/DiffController.cpp</label>
         <link refid="DiffController_8cpp"/>
       </node>
       <node id="34">
-        <label>include/editor/featureWrapper/GitWrap/Diff/DiffController.hpp</label>
+        <label>include/core/editor/featureWrapper/GitWrap/Diff/DiffController.hpp</label>
         <link refid="DiffController_8hpp"/>
         <childnode refid="35" relation="include">
         </childnode>
@@ -196,11 +196,11 @@
         </childnode>
       </node>
       <node id="4">
-        <label>include/editor/featureWrapper/GitWrap/Log/gitLog.cpp</label>
+        <label>include/core/editor/featureWrapper/GitWrap/Log/gitLog.cpp</label>
         <link refid="gitLog_8cpp"/>
       </node>
       <node id="5">
-        <label>include/editor/featureWrapper/GitWrap/Log/gitLog.hpp</label>
+        <label>include/core/editor/featureWrapper/GitWrap/Log/gitLog.hpp</label>
         <link refid="gitLog_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
@@ -208,15 +208,15 @@
         </childnode>
       </node>
       <node id="30">
-        <label>include/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp</label>
+        <label>include/core/editor/featureWrapper/GitWrap/PDJE_GitHandler.cpp</label>
         <link refid="PDJE__GitHandler_8cpp"/>
       </node>
       <node id="31">
-        <label>include/editor/featureWrapper/GitWrap/gitWrapper.cpp</label>
+        <label>include/core/editor/featureWrapper/GitWrap/gitWrapper.cpp</label>
         <link refid="gitWrapper_8cpp"/>
       </node>
       <node id="6">
-        <label>include/editor/featureWrapper/GitWrap/gitWrapper.hpp</label>
+        <label>include/core/editor/featureWrapper/GitWrap/gitWrapper.hpp</label>
         <link refid="gitWrapper_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
@@ -228,15 +228,15 @@
         </childnode>
       </node>
       <node id="22">
-        <label>include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
+        <label>include/core/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
         <link refid="MusicJson_8cpp"/>
       </node>
       <node id="24">
-        <label>include/interface/PDJE_interface.cpp</label>
+        <label>include/core/interface/PDJE_interface.cpp</label>
         <link refid="PDJE__interface_8cpp"/>
       </node>
       <node id="23">
-        <label>include/interface/PDJE_interface.hpp</label>
+        <label>include/core/interface/PDJE_interface.hpp</label>
         <link refid="PDJE__interface_8hpp"/>
         <childnode refid="24" relation="include">
         </childnode>
@@ -250,7 +250,7 @@
         </childnode>
       </node>
       <node id="25">
-        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
+        <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
       </node>
       <node id="26">
@@ -322,6 +322,6 @@
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>gitwrap</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="include/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp"/>
+    <location file="include/core/editor/featureWrapper/GitWrap/Commit/editorCommit.hpp"/>
   </compounddef>
 </doxygen>

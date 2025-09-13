@@ -3,7 +3,7 @@
 Class litedb
 ============
 
-- Defined in :ref:`file_core_include_db_dbRoot.hpp`
+- Defined in :ref:`file_include_core_db_dbRoot.hpp`
 
 
 Class Documentation

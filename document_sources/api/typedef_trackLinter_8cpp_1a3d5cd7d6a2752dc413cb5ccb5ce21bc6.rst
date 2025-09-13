@@ -3,7 +3,7 @@
 Typedef ID_LOADED
 =================
 
-- Defined in :ref:`file_include_editor_pdjeLinter_trackLinter.cpp`
+- Defined in :ref:`file_include_core_editor_pdjeLinter_trackLinter.cpp`
 
 
 Typedef Documentation

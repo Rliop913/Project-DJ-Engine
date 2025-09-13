@@ -10,26 +10,6 @@
     <includes local="no">string</includes>
     <includes local="no">unordered_map</includes>
     <incdepgraph>
-      <node id="10">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
-      </node>
-      <node id="11">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="PDJE__LOG__SETTER_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-      </node>
       <node id="2">
         <label>CapnpBinary.hpp</label>
         <link refid="CapnpBinary_8hpp"/>
@@ -94,20 +74,6 @@
         <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="18">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-      </node>
       <node id="28">
         <label>musicDB.hpp</label>
         <link refid="musicDB_8hpp"/>
@@ -145,7 +111,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>include/editor/pdjeLinter/trackLinter.cpp</label>
+        <label>include/core/editor/pdjeLinter/trackLinter.cpp</label>
         <link refid="trackLinter_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -160,6 +126,40 @@
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="11">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="7">
@@ -241,7 +241,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/pdjeLinter/trackLinter.cpp" line="9" column="1" bodyfile="include/editor/pdjeLinter/trackLinter.cpp" bodystart="9" bodyend="-1"/>
+        <location file="include/core/editor/pdjeLinter/trackLinter.cpp" line="9" column="1" bodyfile="include/core/editor/pdjeLinter/trackLinter.cpp" bodystart="9" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -268,7 +268,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/pdjeLinter/trackLinter.cpp" line="12" column="1" bodyfile="include/editor/pdjeLinter/trackLinter.cpp" bodystart="12" bodyend="23"/>
+        <location file="include/core/editor/pdjeLinter/trackLinter.cpp" line="12" column="1" bodyfile="include/core/editor/pdjeLinter/trackLinter.cpp" bodystart="12" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="trackLinter_8cpp_1aac890445b835eeb8cac2351e3150ed80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -289,7 +289,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/editor/pdjeLinter/trackLinter.cpp" line="26" column="1" bodyfile="include/editor/pdjeLinter/trackLinter.cpp" bodystart="26" bodyend="39"/>
+        <location file="include/core/editor/pdjeLinter/trackLinter.cpp" line="26" column="1" bodyfile="include/core/editor/pdjeLinter/trackLinter.cpp" bodystart="26" bodyend="39"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -347,23 +347,20 @@
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>td<sp/>=<sp/>trackReader.Rp-&gt;getDatas();</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(td.size()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lint_msg<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;mix<sp/>data<sp/>is<sp/>empty&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="trackLinter_8cpp_1a3d5cd7d6a2752dc413cb5ccb5ce21bc6" kindref="member">ID_LOADED</ref><sp/>id_has_load;</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>td.size();<sp/>++i)<sp/>{</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="trackLinter_8cpp_1a13cfef94ef7a20443052ffa72751e656" kindref="member">FillIdHasLoad</ref>(id_has_load,<sp/>td[i].getType(),<sp/>td[i].getId());</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>FLAG_RESULT<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="trackLinter_8cpp_1aac890445b835eeb8cac2351e3150ed80" kindref="member">CheckIDHasLoad</ref>(id_has_load,<sp/>lint_msg))<sp/>{</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FLAG_RESULT<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>FLAG_RESULT;</highlight></codeline>
-<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="trackLinter_8cpp_1a3d5cd7d6a2752dc413cb5ccb5ce21bc6" kindref="member">ID_LOADED</ref><sp/>id_has_load;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>td.size();<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="trackLinter_8cpp_1a13cfef94ef7a20443052ffa72751e656" kindref="member">FillIdHasLoad</ref>(id_has_load,<sp/>td[i].getType(),<sp/>td[i].getId());</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>FLAG_RESULT<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="trackLinter_8cpp_1aac890445b835eeb8cac2351e3150ed80" kindref="member">CheckIDHasLoad</ref>(id_has_load,<sp/>lint_msg))<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FLAG_RESULT<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>FLAG_RESULT;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="include/editor/pdjeLinter/trackLinter.cpp"/>
+    <location file="include/core/editor/pdjeLinter/trackLinter.cpp"/>
   </compounddef>
 </doxygen>

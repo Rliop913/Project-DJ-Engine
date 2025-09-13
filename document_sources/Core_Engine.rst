@@ -164,22 +164,22 @@ On Playback
 ==============
 
 
-On Playback Step-1: Get & Use FX Controller Pannel
+On Playback Step-1: Get & Use FX Controller Panel
 -----------------------------------------------------------
 
-.. doxygenfunction:: audioPlayer::GetFXControlPannel
+.. doxygenfunction:: audioPlayer::GetFXControlPanel
     :project: Project_DJ_Engine
 
-.. doxygenfunction:: FXControlPannel::FX_ON_OFF
+.. doxygenfunction:: FXControlPanel::FX_ON_OFF
     :project: Project_DJ_Engine
 
 .. doxygenenum:: FXList
     :project: Project_DJ_Engine
 
-.. doxygenfunction:: FXControlPannel::GetArgSetter
+.. doxygenfunction:: FXControlPanel::GetArgSetter
     :project: Project_DJ_Engine
 
-.. doxygenfunction:: FXControlPannel::checkSomethingOn
+.. doxygenfunction:: FXControlPanel::checkSomethingOn
     :project: Project_DJ_Engine
 
 
@@ -190,17 +190,17 @@ to see Available args, See: :doc:`/FX_ARGS`
 
     .. code-block:: c++
 
-        FXControlPannel* fx_pannel = engine->player->GetFXControlPannel("title");
+        FXControlPanel* fx_panel = engine->player->GetFXControlPanel("title");
         //get music's fx controller.
 
-        fx_pannel = engine->player->GetFXControlPannel();
+        fx_panel = engine->player->GetFXControlPanel();
         //or get mixed track's fx controller like this.
 
         bool TurnON = true;
-        fx_pannel->FX_ON_OFF(FXList::EQ, TurnON);
+        fx_panel->FX_ON_OFF(FXList::EQ, TurnON);
         //turn on EQ effect
 
-        auto argsetter = fx_pannel->GetArgSetter(FXList::EQ);
+        auto argsetter = fx_panel->GetArgSetter(FXList::EQ);
         for(auto& i : argsetter){
             std::cout << "fx key: " << i.first << std::endl;
         }
@@ -214,17 +214,17 @@ to see Available args, See: :doc:`/FX_ARGS`
 
     .. code-block:: c#
 
-        FXControlPannel fx_pannel = AudioP.GetFXControlPannel("title");
+        FXControlPanel fx_panel = AudioP.GetFXControlPanel("title");
         //get music's fx controller
 
-        fx_pannel = AudioP.GetFXControlPannel();
+        fx_panel = AudioP.GetFXControlPanel();
         //or get mixed track's fx controller like this.
         
         bool TurnON = true;
-        fx_pannel.FX_ON_OFF(FXList.EQ, TurnON);
+        fx_panel.FX_ON_OFF(FXList.EQ, TurnON);
         //turn on EQ effect
 
-        ARGSETTER_WRAPPER argsetter = new ARGSETTER_WRAPPER(fx_pannel);
+        ARGSETTER_WRAPPER argsetter = new ARGSETTER_WRAPPER(fx_panel);
         KEY_VEC keylist = argsetter.GetFXArgKeys(FXList.EQ);
         foreach(var keys in keylist){
             Console.WriteLine(keys);
@@ -240,20 +240,20 @@ to see Available args, See: :doc:`/FX_ARGS`
     .. code-block:: python
 
         import pdje_POLYGLOT as pypdje
-        from pdje_POLYGLOT import FXControlPannel
+        from pdje_POLYGLOT import FXControlPanel
         from pdje_POLYGLOT import ARGSETTER_WRAPPER
         from pdje_POLYGLOT import KEY_VEC
 
         #...
 
-        fx_pannel:FXControlPannel = AudioP.GetFXControlPannel("title")
+        fx_panel:FXControlPanel = AudioP.GetFXControlPanel("title")
         #get music's fx controller
-        fx_pannel = AudioP.GetFXControlPannel()
+        fx_panel = AudioP.GetFXControlPanel()
         #or get mixed track's fx controller like this.
         TurnON:bool = True
-        fx_pannel.FX_ON_OFF(pypdje.EQ, TurnON)
+        fx_panel.FX_ON_OFF(pypdje.EQ, TurnON)
         #turn on EQ effect
-        argsetter = ARGSETTER_WRAPPER(fx_pannel)
+        argsetter = ARGSETTER_WRAPPER(fx_panel)
         keylist:KEY_VEC = argsetter.GetFXArgKeys(pypdje.EQ)
 
         for i in keylist:
@@ -268,14 +268,14 @@ to see Available args, See: :doc:`/FX_ARGS`
 
     .. code-block:: gdscript
 
-        var fx_pannel:FXControlPannel = AudioP.GetFXControlPannel()
+        var fx_panel:FXControlPanel = AudioP.GetFXControlPanel()
         #get mixed track's fx controller
         
         var TurnON = true
-        fx_pannel.FX_ON_OFF(EnumWrapper.EQ, TurnON)
+        fx_panel.FX_ON_OFF(EnumWrapper.EQ, TurnON)
         #turn on EQ effect
 
-        var argsetter:FXArgWrapper = fx_pannel.GetArgSetter()
+        var argsetter:FXArgWrapper = fx_panel.GetArgSetter()
         print(argsetter.GetFXArgKeys(EnumWrapper.EQ))
 
         #get argument setter wrapper and get configurable arg keys like this.
@@ -286,157 +286,157 @@ to see Available args, See: :doc:`/FX_ARGS`
         #for details, see FXArgs document
 
 
-On Playback Step-2: Get & Use Music Controller Pannel
+On Playback Step-2: Get & Use Music Controller Panel
 -----------------------------------------------------------
 
-.. doxygenclass:: MusicControlPannel
+.. doxygenclass:: MusicControlPanel
     :project: Project_DJ_Engine
 
-.. doxygenfunction:: audioPlayer::GetMusicControlPannel
+.. doxygenfunction:: audioPlayer::GetMusicControlPanel
     :project: Project_DJ_Engine
 
-.. doxygenfunction:: MusicControlPannel::LoadMusic
+.. doxygenfunction:: MusicControlPanel::LoadMusic
     :project: Project_DJ_Engine
 
-.. doxygenfunction:: MusicControlPannel::SetMusic
+.. doxygenfunction:: MusicControlPanel::SetMusic
     :project: Project_DJ_Engine
 
-.. doxygenfunction:: MusicControlPannel::CueMusic
+.. doxygenfunction:: MusicControlPanel::CueMusic
     :project: Project_DJ_Engine
 
-.. doxygenfunction:: MusicControlPannel::GetLoadedMusicList
+.. doxygenfunction:: MusicControlPanel::GetLoadedMusicList
     :project: Project_DJ_Engine
 
-.. doxygenfunction:: MusicControlPannel::getFXHandle
+.. doxygenfunction:: MusicControlPanel::getFXHandle
     :project: Project_DJ_Engine
 
 .. tab-set-code:: 
 
     .. code-block:: c++
 
-        auto musPannel = engine->player->GetMusicControlPannel();
+        auto musPanel = engine->player->GetMusicControlPanel();
         
         auto musicFound = engine->SearchMusic("title", "composer");
         //find music to playback manually
 
-        bool load_OK = musPannel->LoadMusic(*(engine->DBROOT), musicFound.front());
+        bool load_OK = musPanel->LoadMusic(*(engine->DBROOT), musicFound.front());
         // load found music to deck. music won't playback in here
 
-        bool unload_OK = musPannel->UnloadMusic("title");
+        bool unload_OK = musPanel->UnloadMusic("title");
         // unload music from deck. don't forget for the memory space.
-        // the deck always contains loaded music before calling musPannel.UnloadMusic or engine.ResetPlayer
+        // the deck always contains loaded music before calling musPanel.UnloadMusic or engine.ResetPlayer
 
-        bool onoff_OK = musPannel->SetMusic("title", true);
+        bool onoff_OK = musPanel->SetMusic("title", true);
         // turn on the music. now music playbacks
 
         unsigned long long second = 15;
         unsigned long long PCMFrame_position = 15 * 48000;
         //PCMFrame_position = second X SampleRate
 
-        bool cue_OK = musPannel->CueMusic("title", PCMFrame_position);
+        bool cue_OK = musPanel->CueMusic("title", PCMFrame_position);
         //set playback position of the music.
 
-        std::vector<std::string> loaded_list = musPannel->GetLoadedMusicList();
+        std::vector<std::string> loaded_list = musPanel->GetLoadedMusicList();
         //get loaded music list.
 
-        FXControlPannel* Fxhandle = musPannel->getFXHandle("title");
+        FXControlPanel* Fxhandle = musPanel->getFXHandle("title");
         //get music's fx handle
 
     .. code-block:: c#
 
         
-        MusicControlPannel musPannel = AudioP.GetMusicControlPannel();
+        MusicControlPanel musPanel = AudioP.GetMusicControlPanel();
         
         var musicFound = engine.SearchMusic("title", "composer");
         //find music to playback manually
 
-        bool load_OK = musPannel.LoadMusic(engine.DBROOT, musicFound[0]);
+        bool load_OK = musPanel.LoadMusic(engine.DBROOT, musicFound[0]);
         // load found music to deck. music won't playback in here
 
-        bool unload_OK = musPannel.UnloadMusic("title");
+        bool unload_OK = musPanel.UnloadMusic("title");
         // unload music from deck. don't forget for the memory space.
-        // the deck always contains loaded music before calling musPannel.UnloadMusic or engine.ResetPlayer
+        // the deck always contains loaded music before calling musPanel.UnloadMusic or engine.ResetPlayer
 
-        bool onoff_OK = musPannel.SetMusic("title", true);
+        bool onoff_OK = musPanel.SetMusic("title", true);
         // turn on the music. now music playbacks
 
         ulong second = 15;
         ulong PCMFrame_position = 15 * 48000;
         //PCMFrame_position = second X SampleRate
 
-        bool cue_OK = musPannel.CueMusic("title", PCMFrame_position);
+        bool cue_OK = musPanel.CueMusic("title", PCMFrame_position);
         //set playback position of the music.
 
-        KEY_VEC loaded_list = musPannel.GetLoadedMusicList();
+        KEY_VEC loaded_list = musPanel.GetLoadedMusicList();
         //get loaded music list.
 
-        FXControlPannel Fxhandle = musPannel.getFXHandle("title");
+        FXControlPanel Fxhandle = musPanel.getFXHandle("title");
         //get music's fx handle
 
     .. code-block:: python
 
         import pdje_POLYGLOT as pyPDJE
-        from pdje_POLYGLOT import MusicControlPannel
-        from pdje_POLYGLOT import FXControlPannel
+        from pdje_POLYGLOT import MusicControlPanel
+        from pdje_POLYGLOT import FXControlPanel
         from pdje_POLYGLOT import audioPlayer
         from pdje_POLYGLOT import MUS_VEC
         
-        musPannel:MusicControlPannel = engine.player.GetMusicControlPannel()
+        musPanel:MusicControlPanel = engine.player.GetMusicControlPanel()
         
         musicFound:MUS_VEC = engine.SearchMusic("title", "composer")
         #find music to playback manually
 
-        load_OK = musPannel.LoadMusic(engine.DBROOT, musicFound[0])
+        load_OK = musPanel.LoadMusic(engine.DBROOT, musicFound[0])
         # load found music to deck. music won't playback in here
 
-        unload_OK = musPannel.UnloadMusic("title")
+        unload_OK = musPanel.UnloadMusic("title")
         # unload music from deck. don't forget for the memory space.
-        # the deck always contains loaded music before calling musPannel.UnloadMusic or engine.ResetPlayer
+        # the deck always contains loaded music before calling musPanel.UnloadMusic or engine.ResetPlayer
 
-        onoff_OK = musPannel.SetMusic("title", True)
+        onoff_OK = musPanel.SetMusic("title", True)
         # turn on the music. now music playbacks
 
         second:int = 15
         PCMFrame_position:int = 15 * 48000
         #PCMFrame_position = second X SampleRate
 
-        cue_OK = musPannel.CueMusic("title", PCMFrame_position)
+        cue_OK = musPanel.CueMusic("title", PCMFrame_position)
         #set playback position of the music.
 
-        loaded_list = musPannel.GetLoadedMusicList()
+        loaded_list = musPanel.GetLoadedMusicList()
         #get loaded music list.
 
-        Fxhandle:FXControlPannel = musPannel.getFXHandle("title")
+        Fxhandle:FXControlPanel = musPanel.getFXHandle("title")
         #get music's fx handle
 
     .. code-block:: gdscript
 
-        var musPannel:MusPannelWrapper = AudioP.GetMusicControlPannel()
+        var musPanel:MusPanelWrapper = AudioP.GetMusicControlPanel()
         
         var musicFound = engine.SearchMusic("title", "composer", -1.0)
         #find music to playback manually
 
-        var load_OK = musPannel.LoadMusic("title", "composer", -1.0)
+        var load_OK = musPanel.LoadMusic("title", "composer", -1.0)
         # load found music to deck. music won't playback in here
 
-        var unload_OK = musPannel.UnloadMusic("title")
+        var unload_OK = musPanel.UnloadMusic("title")
         # unload music from deck. don't forget for the memory space.
-        # the deck always contains loaded music before calling musPannel.UnloadMusic or engine.ResetPlayer
+        # the deck always contains loaded music before calling musPanel.UnloadMusic or engine.ResetPlayer
 
-        var onoff_OK = musPannel.SetMusic("title", true)
+        var onoff_OK = musPanel.SetMusic("title", true)
         # turn on the music. now music playbacks
 
         var second = 15
         var PCMFrame_position = 15 * 48000
         #PCMFrame_position = second X SampleRate
 
-        var cue_OK = musPannel.CueMusic("title", PCMFrame_position)
+        var cue_OK = musPanel.CueMusic("title", PCMFrame_position)
         #set playback position of the music.
 
-        var loaded_list = musPannel.GetLoadedMusicList()
+        var loaded_list = musPanel.GetLoadedMusicList()
         #get loaded music list.
 
-        var Fxhandle:FXWrapper = musPannel.getFXHandle("title")
+        var Fxhandle:FXWrapper = musPanel.getFXHandle("title")
         #get music's fx handle
 
 Editor API

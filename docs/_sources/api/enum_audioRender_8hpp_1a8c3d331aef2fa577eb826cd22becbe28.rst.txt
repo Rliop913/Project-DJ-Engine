@@ -3,7 +3,7 @@
 Enum ITPL_ENUM
 ==============
 
-- Defined in :ref:`file_include_audioRender_audioRender.hpp`
+- Defined in :ref:`file_include_core_audioRender_audioRender.hpp`
 
 
 Enum Documentation

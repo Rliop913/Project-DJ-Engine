@@ -3,7 +3,7 @@
 Struct Ingredients
 ==================
 
-- Defined in :ref:`file_include_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp`
+- Defined in :ref:`file_include_core_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp`
 
 
 Struct Documentation

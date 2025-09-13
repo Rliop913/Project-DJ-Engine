@@ -7,26 +7,6 @@
     <includes local="yes">miniaudio.h</includes>
     <includes local="no">iostream</includes>
     <incdepgraph>
-      <node id="28">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
-      </node>
-      <node id="29">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="PDJE__LOG__SETTER_8hpp"/>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-      </node>
       <node id="2">
         <label>ManualMix.hpp</label>
         <link refid="ManualMix_8hpp"/>
@@ -165,20 +145,6 @@
         <childnode refid="38" relation="include">
         </childnode>
       </node>
-      <node id="41">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-      </node>
       <node id="37">
         <label>musicDB.hpp</label>
         <link refid="musicDB_8hpp"/>
@@ -193,6 +159,40 @@
         <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="29">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -373,9 +373,9 @@
         </inbodydescription>
         <location file="include/tests/manualAudioTest.cpp" line="6" column="20" bodyfile="include/tests/manualAudioTest.cpp" bodystart="6" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="manualAudioTest_8cpp_1a101779b5e04ec5dd91c06dde9109c3b5" prot="public" static="no" mutable="no">
-        <type><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref> *</type>
-        <definition>FXControlPannel* fxcp</definition>
+      <memberdef kind="variable" id="manualAudioTest_8cpp_1a1268ed98ba54ca935dd6542e3b89b9cb" prot="public" static="no" mutable="no">
+        <type><ref refid="classFXControlPanel" kindref="compound">FXControlPanel</ref> *</type>
+        <definition>FXControlPanel* fxcp</definition>
         <argsstring></argsstring>
         <name>fxcp</name>
         <briefdescription>
@@ -384,7 +384,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/tests/manualAudioTest.cpp" line="7" column="19" bodyfile="include/tests/manualAudioTest.cpp" bodystart="7" bodyend="-1"/>
+        <location file="include/tests/manualAudioTest.cpp" line="7" column="18" bodyfile="include/tests/manualAudioTest.cpp" bodystart="7" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -483,7 +483,7 @@
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;miniaudio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
 <codeline lineno="6" refid="manualAudioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="7" refid="manualAudioTest_8cpp_1a101779b5e04ec5dd91c06dde9109c3b5" refkind="member"><highlight class="normal"><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref><sp/><sp/><sp/>*<ref refid="manualAudioTest_8cpp_1a101779b5e04ec5dd91c06dde9109c3b5" kindref="member">fxcp</ref>;</highlight></codeline>
+<codeline lineno="7" refid="manualAudioTest_8cpp_1a1268ed98ba54ca935dd6542e3b89b9cb" refkind="member"><highlight class="normal"><ref refid="classFXControlPanel" kindref="compound">FXControlPanel</ref><sp/><sp/><sp/>*<ref refid="manualAudioTest_8cpp_1a1268ed98ba54ca935dd6542e3b89b9cb" kindref="member">fxcp</ref>;</highlight></codeline>
 <codeline lineno="8" refid="manualAudioTest_8cpp_1a70640b91c0ba95b3bb510844154c7ae0" refkind="member"><highlight class="normal">std::vector&lt;float&gt;<sp/><ref refid="manualAudioTest_8cpp_1a70640b91c0ba95b3bb510844154c7ae0" kindref="member">Lvec</ref>(480);</highlight></codeline>
 <codeline lineno="9" refid="manualAudioTest_8cpp_1ae7e64aa5f55fdf29e77fb1569cf77d4f" refkind="member"><highlight class="normal">std::vector&lt;float&gt;<sp/><ref refid="manualAudioTest_8cpp_1ae7e64aa5f55fdf29e77fb1569cf77d4f" kindref="member">Rvec</ref>(480);</highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight></codeline>
@@ -504,7 +504,7 @@
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*(rp++)<sp/>=<sp/>*(op++);</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*Fpcm[2]<sp/>=<sp/>{<sp/><ref refid="manualAudioTest_8cpp_1a70640b91c0ba95b3bb510844154c7ae0" kindref="member">Lvec</ref>.data(),<sp/><ref refid="manualAudioTest_8cpp_1ae7e64aa5f55fdf29e77fb1569cf77d4f" kindref="member">Rvec</ref>.data()<sp/>};</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manualAudioTest_8cpp_1a101779b5e04ec5dd91c06dde9109c3b5" kindref="member">fxcp</ref>-&gt;addFX(Fpcm,<sp/>frameCount);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manualAudioTest_8cpp_1a1268ed98ba54ca935dd6542e3b89b9cb" kindref="member">fxcp</ref>-&gt;addFX(Fpcm,<sp/>frameCount);</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>lp<sp/>=<sp/><ref refid="manualAudioTest_8cpp_1a70640b91c0ba95b3bb510844154c7ae0" kindref="member">Lvec</ref>.data();</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>rp<sp/>=<sp/><ref refid="manualAudioTest_8cpp_1ae7e64aa5f55fdf29e77fb1569cf77d4f" kindref="member">Rvec</ref>.data();</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>op<sp/>=<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*)pOutput;</highlight></codeline>
@@ -527,7 +527,7 @@
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>ma_device<sp/>dev;</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manualAudioTest_8cpp_1a101779b5e04ec5dd91c06dde9109c3b5" kindref="member">fxcp</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref>(48000);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manualAudioTest_8cpp_1a1268ed98ba54ca935dd6542e3b89b9cb" kindref="member">fxcp</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classFXControlPanel" kindref="compound">FXControlPanel</ref>(48000);</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>ma_decoder_config<sp/>decconf<sp/>=<sp/>ma_decoder_config_init(ma_format_f32,<sp/>2,<sp/>48000);</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>ma_decoder<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dec;</highlight></codeline>
@@ -547,8 +547,8 @@
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>getchar();</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manualAudioTest_8cpp_1a101779b5e04ec5dd91c06dde9109c3b5" kindref="member">fxcp</ref>-&gt;FX_ON_OFF(<ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a9efdc855f3c1477957fb50affec07f8f" kindref="member">FXList::EQ</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>args<sp/>=<sp/><ref refid="manualAudioTest_8cpp_1a101779b5e04ec5dd91c06dde9109c3b5" kindref="member">fxcp</ref>-&gt;GetArgSetter(<ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a9efdc855f3c1477957fb50affec07f8f" kindref="member">FXList::EQ</ref>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="manualAudioTest_8cpp_1a1268ed98ba54ca935dd6542e3b89b9cb" kindref="member">fxcp</ref>-&gt;FX_ON_OFF(<ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a9efdc855f3c1477957fb50affec07f8f" kindref="member">FXList::EQ</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>args<sp/>=<sp/><ref refid="manualAudioTest_8cpp_1a1268ed98ba54ca935dd6542e3b89b9cb" kindref="member">fxcp</ref>-&gt;GetArgSetter(<ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a9efdc855f3c1477957fb50affec07f8f" kindref="member">FXList::EQ</ref>);</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>i<sp/>:<sp/>args)<sp/>{</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>i.first<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -566,7 +566,7 @@
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>getchar();</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="manualAudioTest_8cpp_1a101779b5e04ec5dd91c06dde9109c3b5" kindref="member">fxcp</ref>;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="manualAudioTest_8cpp_1a1268ed98ba54ca935dd6542e3b89b9cb" kindref="member">fxcp</ref>;</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="92"><highlight class="normal">}</highlight></codeline>
     </programlisting>

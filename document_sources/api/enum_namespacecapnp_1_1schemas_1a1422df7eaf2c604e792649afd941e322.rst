@@ -3,7 +3,7 @@
 Enum TypeEnum_f4ee4873bc65f8f0
 ==============================
 
-- Defined in :ref:`file_core_include_FAKE_CAPNP_ENUMS_FOR_SWIG.hpp`
+- Defined in :ref:`file_include_core_FAKE_CAPNP_ENUMS_FOR_SWIG.hpp`
 
 
 Enum Documentation

@@ -3,7 +3,7 @@
 Struct logHandle::OID_EQUAL
 ===========================
 
-- Defined in :ref:`file_include_editor_featureWrapper_GitWrap_Log_gitLog.hpp`
+- Defined in :ref:`file_include_core_editor_featureWrapper_GitWrap_Log_gitLog.hpp`
 
 
 Nested Relationships

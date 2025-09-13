@@ -3,7 +3,7 @@
 Function HWY_EXPORT(INTEGRATE_PCM_SIMD)
 =======================================
 
-- Defined in :ref:`file_include_audioRender_MixMachine_MixMachine.cpp`
+- Defined in :ref:`file_include_core_audioRender_MixMachine_MixMachine.cpp`
 
 
 Function Documentation

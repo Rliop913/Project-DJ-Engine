@@ -19,34 +19,14 @@
     <includes refid="FrameCalc_8hpp" local="yes">FrameCalc.hpp</includes>
     <includes refid="musicDB_8hpp" local="yes">musicDB.hpp</includes>
     <includes refid="PDJE__EXPORT__SETTER_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
-    <includedby refid="audioPlayer_8hpp" local="yes">include/MainObjects/audioPlayer/audioPlayer.hpp</includedby>
-    <includedby refid="ManualMix_8cpp" local="yes">include/audioRender/ManualMix/ManualMix.cpp</includedby>
-    <includedby refid="MusicControlPannel_8hpp" local="yes">include/audioRender/ManualMix/MusicControlPannel.hpp</includedby>
-    <includedby refid="audioRender_8hpp" local="yes">include/audioRender/audioRender.hpp</includedby>
+    <includedby refid="audioPlayer_8hpp" local="yes">include/core/MainObjects/audioPlayer/audioPlayer.hpp</includedby>
+    <includedby refid="ManualMix_8cpp" local="yes">include/core/audioRender/ManualMix/ManualMix.cpp</includedby>
+    <includedby refid="MusicControlPanel_8hpp" local="yes">include/core/audioRender/ManualMix/MusicControlPanel.hpp</includedby>
+    <includedby refid="audioRender_8hpp" local="yes">include/core/audioRender/audioRender.hpp</includedby>
     <includedby refid="manualAudioTest_8cpp" local="yes">include/tests/manualAudioTest.cpp</includedby>
     <incdepgraph>
-      <node id="27">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
-      </node>
-      <node id="28">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="PDJE__LOG__SETTER_8hpp"/>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-      </node>
       <node id="1">
-        <label>include/audioRender/ManualMix/ManualMix.hpp</label>
+        <label>include/core/audioRender/ManualMix/ManualMix.hpp</label>
         <link refid="ManualMix_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -133,20 +113,6 @@
         <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="40">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-      </node>
       <node id="36">
         <label>musicDB.hpp</label>
         <link refid="musicDB_8hpp"/>
@@ -161,6 +127,40 @@
         <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="28">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -265,11 +265,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="29">
-        <label>include/MainObjects/audioPlayer/audioCallbacks.cpp</label>
+        <label>include/core/MainObjects/audioPlayer/audioCallbacks.cpp</label>
         <link refid="audioCallbacks_8cpp"/>
       </node>
       <node id="28">
-        <label>include/MainObjects/audioPlayer/audioCallbacks.hpp</label>
+        <label>include/core/MainObjects/audioPlayer/audioCallbacks.hpp</label>
         <link refid="audioCallbacks_8hpp"/>
         <childnode refid="29" relation="include">
         </childnode>
@@ -277,11 +277,11 @@
         </childnode>
       </node>
       <node id="3">
-        <label>include/MainObjects/audioPlayer/audioPlayer.cpp</label>
+        <label>include/core/MainObjects/audioPlayer/audioPlayer.cpp</label>
         <link refid="audioPlayer_8cpp"/>
       </node>
       <node id="2">
-        <label>include/MainObjects/audioPlayer/audioPlayer.hpp</label>
+        <label>include/core/MainObjects/audioPlayer/audioPlayer.hpp</label>
         <link refid="audioPlayer_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
@@ -293,23 +293,23 @@
         </childnode>
       </node>
       <node id="5">
-        <label>include/MainObjects/editorObject/addline.cpp</label>
+        <label>include/core/MainObjects/editorObject/addline.cpp</label>
         <link refid="addline_8cpp"/>
       </node>
       <node id="6">
-        <label>include/MainObjects/editorObject/commonfunction.cpp</label>
+        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
         <link refid="commonfunction_8cpp"/>
       </node>
       <node id="7">
-        <label>include/MainObjects/editorObject/deleteline.cpp</label>
+        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
         <link refid="deleteline_8cpp"/>
       </node>
       <node id="8">
-        <label>include/MainObjects/editorObject/editorObject.cpp</label>
+        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
         <link refid="editorObject_8cpp"/>
       </node>
       <node id="4">
-        <label>include/MainObjects/editorObject/editorObject.hpp</label>
+        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
         <link refid="editorObject_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
@@ -343,47 +343,47 @@
         </childnode>
       </node>
       <node id="9">
-        <label>include/MainObjects/editorObject/getall.cpp</label>
+        <label>include/core/MainObjects/editorObject/getall.cpp</label>
         <link refid="getall_8cpp"/>
       </node>
       <node id="10">
-        <label>include/MainObjects/editorObject/getdiff.cpp</label>
+        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
         <link refid="getdiff_8cpp"/>
       </node>
       <node id="11">
-        <label>include/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
         <link refid="getlogwithjsongraph_8cpp"/>
       </node>
       <node id="12">
-        <label>include/MainObjects/editorObject/go.cpp</label>
+        <label>include/core/MainObjects/editorObject/go.cpp</label>
         <link refid="go_8cpp"/>
       </node>
       <node id="13">
-        <label>include/MainObjects/editorObject/redo.cpp</label>
+        <label>include/core/MainObjects/editorObject/redo.cpp</label>
         <link refid="redo_8cpp"/>
       </node>
       <node id="14">
-        <label>include/MainObjects/editorObject/render.cpp</label>
+        <label>include/core/MainObjects/editorObject/render.cpp</label>
         <link refid="render_8cpp"/>
       </node>
       <node id="15">
-        <label>include/MainObjects/editorObject/undo.cpp</label>
+        <label>include/core/MainObjects/editorObject/undo.cpp</label>
         <link refid="undo_8cpp"/>
       </node>
       <node id="16">
-        <label>include/MainObjects/editorObject/updatelog.cpp</label>
+        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
         <link refid="updatelog_8cpp"/>
       </node>
       <node id="17">
-        <label>include/SWIG_editor_visitor.hpp</label>
+        <label>include/core/SWIG_editor_visitor.hpp</label>
         <link refid="SWIG__editor__visitor_8hpp"/>
       </node>
       <node id="26">
-        <label>include/audioRender/ManualMix/ManualMix.cpp</label>
+        <label>include/core/audioRender/ManualMix/ManualMix.cpp</label>
         <link refid="ManualMix_8cpp"/>
       </node>
       <node id="1">
-        <label>include/audioRender/ManualMix/ManualMix.hpp</label>
+        <label>include/core/audioRender/ManualMix/ManualMix.hpp</label>
         <link refid="ManualMix_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -391,24 +391,24 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="30">
-        <label>include/audioRender/ManualMix/MusicControlPannel-inl.h</label>
-        <link refid="MusicControlPannel-inl_8h"/>
+        <label>include/core/audioRender/ManualMix/MusicControlPanel-inl.h</label>
+        <link refid="MusicControlPanel-inl_8h"/>
         <childnode refid="31" relation="include">
         </childnode>
       </node>
       <node id="31">
-        <label>include/audioRender/ManualMix/MusicControlPannel.cpp</label>
-        <link refid="MusicControlPannel_8cpp"/>
+        <label>include/core/audioRender/ManualMix/MusicControlPanel.cpp</label>
+        <link refid="MusicControlPanel_8cpp"/>
       </node>
       <node id="27">
-        <label>include/audioRender/ManualMix/MusicControlPannel.hpp</label>
-        <link refid="MusicControlPannel_8hpp"/>
+        <label>include/core/audioRender/ManualMix/MusicControlPanel.hpp</label>
+        <link refid="MusicControlPanel_8hpp"/>
         <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
@@ -417,39 +417,29 @@
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-      </node>
-      <node id="34">
-        <label>include/audioRender/audioRender.cpp</label>
-        <link refid="audioRender_8cpp"/>
       </node>
       <node id="33">
-        <label>include/audioRender/audioRender.hpp</label>
+        <label>include/core/audioRender/audioRender.cpp</label>
+        <link refid="audioRender_8cpp"/>
+      </node>
+      <node id="32">
+        <label>include/core/audioRender/audioRender.hpp</label>
         <link refid="audioRender_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
       <node id="18">
-        <label>include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
+        <label>include/core/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
         <link refid="MusicJson_8cpp"/>
       </node>
-      <node id="32">
-        <label>include/interface/PDJE_Core_DataLine.hpp</label>
-        <link refid="PDJE__Core__DataLine_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
       <node id="20">
-        <label>include/interface/PDJE_interface.cpp</label>
+        <label>include/core/interface/PDJE_interface.cpp</label>
         <link refid="PDJE__interface_8cpp"/>
       </node>
       <node id="19">
-        <label>include/interface/PDJE_interface.hpp</label>
+        <label>include/core/interface/PDJE_interface.hpp</label>
         <link refid="PDJE__interface_8hpp"/>
         <childnode refid="20" relation="include">
         </childnode>
@@ -463,7 +453,7 @@
         </childnode>
       </node>
       <node id="21">
-        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
+        <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
       </node>
       <node id="25">
@@ -482,12 +472,12 @@
         <label>include/tests/interfaceTest.cpp</label>
         <link refid="interfaceTest_8cpp"/>
       </node>
-      <node id="35">
+      <node id="34">
         <label>include/tests/manualAudioTest.cpp</label>
         <link refid="manualAudioTest_8cpp"/>
       </node>
     </invincdepgraph>
-    <innerclass refid="classFXControlPannel" prot="public">FXControlPannel</innerclass>
+    <innerclass refid="classFXControlPanel" prot="public">FXControlPanel</innerclass>
     <sectiondef kind="enum">
       <memberdef kind="enum" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3" prot="public" static="no" strong="no">
         <type></type>
@@ -591,7 +581,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/audioRender/ManualMix/ManualMix.hpp" line="28" column="1" bodyfile="include/audioRender/ManualMix/ManualMix.hpp" bodystart="28" bodyend="42"/>
+        <location file="include/core/audioRender/ManualMix/ManualMix.hpp" line="28" column="1" bodyfile="include/core/audioRender/ManualMix/ManualMix.hpp" bodystart="28" bodyend="42"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -618,7 +608,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/audioRender/ManualMix/ManualMix.hpp" line="125" column="1" bodyfile="include/audioRender/ManualMix/ManualMix.hpp" bodystart="125" bodyend="134"/>
+        <location file="include/core/audioRender/ManualMix/ManualMix.hpp" line="125" column="1" bodyfile="include/core/audioRender/ManualMix/ManualMix.hpp" bodystart="125" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="ManualMix_8hpp_1ab241d30c14975d15f937dd81b05efc80" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -643,7 +633,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/audioRender/ManualMix/ManualMix.hpp" line="137" column="1" bodyfile="include/audioRender/ManualMix/ManualMix.hpp" bodystart="137" bodyend="146"/>
+        <location file="include/core/audioRender/ManualMix/ManualMix.hpp" line="137" column="1" bodyfile="include/core/audioRender/ManualMix/ManualMix.hpp" bodystart="137" bodyend="146"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -690,25 +680,25 @@
 <codeline lineno="41" refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a7963a24fafa6a2035ee732d001a2d62a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a7963a24fafa6a2035ee732d001a2d62a" kindref="member">VOL</ref></highlight></codeline>
 <codeline lineno="42"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48" refid="classFXControlPannel" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="classFXControlPannel_1a9b46ab7d18c65bb058df6710febe258b" kindref="member">FXControlPannel</ref><sp/>{</highlight></codeline>
+<codeline lineno="48" refid="classFXControlPanel" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="classFXControlPanel_1a9d7c58aadc4dc08af932759399820b8c" kindref="member">FXControlPanel</ref><sp/>{</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="50" refid="classFXControlPannel_1a235676d8895c04fee54687a3e4ffd690" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>CompressorFAUSTMan&gt;<sp/><ref refid="classFXControlPannel_1a235676d8895c04fee54687a3e4ffd690" kindref="member">compressorPannel</ref>;</highlight></codeline>
-<codeline lineno="51" refid="classFXControlPannel_1ab8bb9fed585e2c0fde3ac2e7e0ce0a49" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>DistortionFAUSTMan&gt;<sp/><ref refid="classFXControlPannel_1ab8bb9fed585e2c0fde3ac2e7e0ce0a49" kindref="member">distortionPannel</ref>;</highlight></codeline>
-<codeline lineno="52" refid="classFXControlPannel_1aeccd32fe18abc62b2260977582d7c404" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>EchoFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel_1aeccd32fe18abc62b2260977582d7c404" kindref="member">echoPannel</ref>;</highlight></codeline>
-<codeline lineno="53" refid="classFXControlPannel_1a07428b195a5319c2047f03e72d5c0303" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>EQFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel_1a07428b195a5319c2047f03e72d5c0303" kindref="member">eqPannel</ref>;</highlight></codeline>
-<codeline lineno="54" refid="classFXControlPannel_1a8b0eb1f6a6be994d2d1d5e73003f8d75" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>FilterFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel_1a8b0eb1f6a6be994d2d1d5e73003f8d75" kindref="member">filterPannel</ref>;</highlight></codeline>
-<codeline lineno="55" refid="classFXControlPannel_1aa5fba91a3004a89946006aa3f6f04284" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>FlangerFAUSTMan&gt;<sp/><sp/><sp/><sp/><ref refid="classFXControlPannel_1aa5fba91a3004a89946006aa3f6f04284" kindref="member">flangerPannel</ref>;</highlight></codeline>
-<codeline lineno="56" refid="classFXControlPannel_1a50f22bd3aa11553ddc03ded7f8c672ff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>OcsFilterFAUSTMan&gt;<sp/><sp/><ref refid="classFXControlPannel_1a50f22bd3aa11553ddc03ded7f8c672ff" kindref="member">ocsFilterPannel</ref>;</highlight></codeline>
-<codeline lineno="57" refid="classFXControlPannel_1a5d643b6cfbc0e4f62af986abb31e8f7f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>PannerFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel_1a5d643b6cfbc0e4f62af986abb31e8f7f" kindref="member">pannerPannel</ref>;</highlight></codeline>
-<codeline lineno="58" refid="classFXControlPannel_1ac070563ff39ba32aefcb1629228db29e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>PhaserFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel_1ac070563ff39ba32aefcb1629228db29e" kindref="member">phaserPannel</ref>;</highlight></codeline>
-<codeline lineno="59" refid="classFXControlPannel_1a6bb110465adc072b354b89805aadef4c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>RobotFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel_1a6bb110465adc072b354b89805aadef4c" kindref="member">robotPannel</ref>;</highlight></codeline>
-<codeline lineno="60" refid="classFXControlPannel_1a66583a06d4a809ca3bb69e2252d72801" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>RollFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel_1a66583a06d4a809ca3bb69e2252d72801" kindref="member">rollPannel</ref>;</highlight></codeline>
-<codeline lineno="61" refid="classFXControlPannel_1ae37b4892bc24250c24bdb8a0035bf0d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>TranceFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel_1ae37b4892bc24250c24bdb8a0035bf0d7" kindref="member">trancePannel</ref>;</highlight></codeline>
-<codeline lineno="62" refid="classFXControlPannel_1a1881a798bee5df42635ccc3a9fb4be0e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>VolFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel_1a1881a798bee5df42635ccc3a9fb4be0e" kindref="member">volPannel</ref>;</highlight></codeline>
+<codeline lineno="50" refid="classFXControlPanel_1a14dfbffe2406893a4b52ce52c7febeb6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>CompressorFAUSTMan&gt;<sp/><ref refid="classFXControlPanel_1a14dfbffe2406893a4b52ce52c7febeb6" kindref="member">compressorPanel</ref>;</highlight></codeline>
+<codeline lineno="51" refid="classFXControlPanel_1ab5341be772459cc601795257b767839c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>DistortionFAUSTMan&gt;<sp/><ref refid="classFXControlPanel_1ab5341be772459cc601795257b767839c" kindref="member">distortionPanel</ref>;</highlight></codeline>
+<codeline lineno="52" refid="classFXControlPanel_1ab027f4a9def0ac586e69dd8ee80861d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>EchoFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPanel_1ab027f4a9def0ac586e69dd8ee80861d7" kindref="member">echoPanel</ref>;</highlight></codeline>
+<codeline lineno="53" refid="classFXControlPanel_1a520b114f69a0ec1f88da4ef67d1e2841" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>EQFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPanel_1a520b114f69a0ec1f88da4ef67d1e2841" kindref="member">eqPanel</ref>;</highlight></codeline>
+<codeline lineno="54" refid="classFXControlPanel_1a0282a15dca70f998e7da439086be5be7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>FilterFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPanel_1a0282a15dca70f998e7da439086be5be7" kindref="member">filterPanel</ref>;</highlight></codeline>
+<codeline lineno="55" refid="classFXControlPanel_1a7ca09046178d9d7e8313734aee477f0b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>FlangerFAUSTMan&gt;<sp/><sp/><sp/><sp/><ref refid="classFXControlPanel_1a7ca09046178d9d7e8313734aee477f0b" kindref="member">flangerPanel</ref>;</highlight></codeline>
+<codeline lineno="56" refid="classFXControlPanel_1ac20d087f89fab1bfd590f421988c0c76" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>OcsFilterFAUSTMan&gt;<sp/><sp/><ref refid="classFXControlPanel_1ac20d087f89fab1bfd590f421988c0c76" kindref="member">ocsFilterPanel</ref>;</highlight></codeline>
+<codeline lineno="57" refid="classFXControlPanel_1aa346f1054cb3738343cc16ad6ad01213" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>PannerFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPanel_1aa346f1054cb3738343cc16ad6ad01213" kindref="member">pannerPanel</ref>;</highlight></codeline>
+<codeline lineno="58" refid="classFXControlPanel_1a88e8fa12eabf760022ab0513ee5ae7c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>PhaserFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPanel_1a88e8fa12eabf760022ab0513ee5ae7c8" kindref="member">phaserPanel</ref>;</highlight></codeline>
+<codeline lineno="59" refid="classFXControlPanel_1a82f86681d0b0d7609abfef6d14dde295" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>RobotFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPanel_1a82f86681d0b0d7609abfef6d14dde295" kindref="member">robotPanel</ref>;</highlight></codeline>
+<codeline lineno="60" refid="classFXControlPanel_1a869cfde0296482c8f4308a1b6036fd3c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>RollFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPanel_1a869cfde0296482c8f4308a1b6036fd3c" kindref="member">rollPanel</ref>;</highlight></codeline>
+<codeline lineno="61" refid="classFXControlPanel_1a64321b3be218041262cc7f01ebae51ad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>TranceFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPanel_1a64321b3be218041262cc7f01ebae51ad" kindref="member">trancePanel</ref>;</highlight></codeline>
+<codeline lineno="62" refid="classFXControlPanel_1af29a57610f2affa5457f109ef322042d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>VolFAUSTMan&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classFXControlPanel_1af29a57610f2affa5457f109ef322042d" kindref="member">volPanel</ref>;</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ManName&gt;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74" refid="classFXControlPannel_1a52eff12c731e67236a2b5111bd8ed492" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel_1a52eff12c731e67236a2b5111bd8ed492" kindref="member">checkAndUse</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>**pcm,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>samples,<sp/>ManName<sp/>&amp;man)</highlight></codeline>
+<codeline lineno="74" refid="classFXControlPanel_1a9688c9c671bca33c397298cbd86d67bd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFXControlPanel_1a9688c9c671bca33c397298cbd86d67bd" kindref="member">checkAndUse</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>**pcm,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>samples,<sp/>ManName<sp/>&amp;man)</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(man.first)<sp/>{</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>man.second.compute(samples,<sp/>pcm,<sp/>pcm);</highlight></codeline>
@@ -716,7 +706,7 @@
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sampleRate);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFXControlPanel" kindref="compound">FXControlPanel</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sampleRate);</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15" kindref="member">ARGSETTER</ref></highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>GetArgSetter(<ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3" kindref="member">FXList</ref><sp/>fx);</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
@@ -753,6 +743,6 @@
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="146"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="include/audioRender/ManualMix/ManualMix.hpp"/>
+    <location file="include/core/audioRender/ManualMix/ManualMix.hpp"/>
   </compounddef>
 </doxygen>

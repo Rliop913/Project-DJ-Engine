@@ -3,7 +3,7 @@
 Typedef TITLE_COMPOSER
 ======================
 
-- Defined in :ref:`file_include_MainObjects_editorObject_editorObject.hpp`
+- Defined in :ref:`file_include_core_MainObjects_editorObject_editorObject.hpp`
 
 
 Typedef Documentation

@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="structMusicOnDeck" kind="struct" language="C++" prot="public">
     <compoundname>MusicOnDeck</compoundname>
-    <includes refid="MusicControlPannel_8hpp" local="no">MusicControlPannel.hpp</includes>
+    <includes refid="MusicControlPanel_8hpp" local="no">MusicControlPanel.hpp</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structMusicOnDeck_1ad0a6052696e1eda69e1de2ca883377d9" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/audioRender/ManualMix/MusicControlPannel.hpp" line="27" column="43" bodyfile="include/audioRender/ManualMix/MusicControlPannel.hpp" bodystart="27" bodyend="-1"/>
+        <location file="include/core/audioRender/ManualMix/MusicControlPanel.hpp" line="27" column="43" bodyfile="include/core/audioRender/ManualMix/MusicControlPanel.hpp" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structMusicOnDeck_1a1f21ed340dc5a0de10c6ea3ef5f02ae2" prot="public" static="no" mutable="no">
         <type><ref refid="structDecoder" kindref="compound">Decoder</ref></type>
@@ -31,11 +31,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/audioRender/ManualMix/MusicControlPannel.hpp" line="28" column="43" bodyfile="include/audioRender/ManualMix/MusicControlPannel.hpp" bodystart="28" bodyend="-1"/>
+        <location file="include/core/audioRender/ManualMix/MusicControlPanel.hpp" line="28" column="43" bodyfile="include/core/audioRender/ManualMix/MusicControlPanel.hpp" bodystart="28" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structMusicOnDeck_1adb0236f205c3fb887572956235e910b2" prot="public" static="no" mutable="no">
-        <type><ref refid="classFXControlPannel" kindref="compound">FXControlPannel</ref> *</type>
-        <definition>FXControlPannel* MusicOnDeck::fxP</definition>
+      <memberdef kind="variable" id="structMusicOnDeck_1a40f67a5fdbed5601ec7e8bc624adda81" prot="public" static="no" mutable="no">
+        <type><ref refid="classFXControlPanel" kindref="compound">FXControlPanel</ref> *</type>
+        <definition>FXControlPanel* MusicOnDeck::fxP</definition>
         <argsstring></argsstring>
         <name>fxP</name>
         <qualifiedname>MusicOnDeck::fxP</qualifiedname>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/audioRender/ManualMix/MusicControlPannel.hpp" line="29" column="42" bodyfile="include/audioRender/ManualMix/MusicControlPannel.hpp" bodystart="29" bodyend="-1"/>
+        <location file="include/core/audioRender/ManualMix/MusicControlPanel.hpp" line="29" column="41" bodyfile="include/core/audioRender/ManualMix/MusicControlPanel.hpp" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structMusicOnDeck_1a676df855f013b4c7efebfeda13fcab32" prot="public" static="no" mutable="no">
         <type>std::optional&lt; soundtouch::SoundTouch &gt;</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/audioRender/ManualMix/MusicControlPannel.hpp" line="30" column="19" bodyfile="include/audioRender/ManualMix/MusicControlPannel.hpp" bodystart="30" bodyend="-1"/>
+        <location file="include/core/audioRender/ManualMix/MusicControlPanel.hpp" line="30" column="19" bodyfile="include/core/audioRender/ManualMix/MusicControlPanel.hpp" bodystart="30" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/audioRender/ManualMix/MusicControlPannel.hpp" line="31" column="5" bodyfile="include/audioRender/ManualMix/MusicControlPannel.hpp" bodystart="31" bodyend="39"/>
+        <location file="include/core/audioRender/ManualMix/MusicControlPanel.hpp" line="31" column="5" bodyfile="include/core/audioRender/ManualMix/MusicControlPanel.hpp" bodystart="31" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="structMusicOnDeck_1ac8fb7619e76b328d2714d273deb77518" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/audioRender/ManualMix/MusicControlPannel.hpp" line="40" column="5" bodyfile="include/audioRender/ManualMix/MusicControlPannel.hpp" bodystart="40" bodyend="44"/>
+        <location file="include/core/audioRender/ManualMix/MusicControlPanel.hpp" line="40" column="5" bodyfile="include/core/audioRender/ManualMix/MusicControlPanel.hpp" bodystart="40" bodyend="44"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -106,46 +106,46 @@
         </childnode>
       </node>
       <node id="4">
-        <label>FXControlPannel</label>
-        <link refid="classFXControlPannel"/>
+        <label>FXControlPanel</label>
+        <link refid="classFXControlPanel"/>
         <childnode refid="5" relation="usage">
-          <edgelabel>compressorPannel</edgelabel>
+          <edgelabel>compressorPanel</edgelabel>
         </childnode>
         <childnode refid="6" relation="usage">
-          <edgelabel>distortionPannel</edgelabel>
+          <edgelabel>distortionPanel</edgelabel>
         </childnode>
         <childnode refid="7" relation="usage">
-          <edgelabel>echoPannel</edgelabel>
+          <edgelabel>echoPanel</edgelabel>
         </childnode>
         <childnode refid="8" relation="usage">
-          <edgelabel>eqPannel</edgelabel>
+          <edgelabel>eqPanel</edgelabel>
         </childnode>
         <childnode refid="9" relation="usage">
-          <edgelabel>filterPannel</edgelabel>
+          <edgelabel>filterPanel</edgelabel>
         </childnode>
         <childnode refid="10" relation="usage">
-          <edgelabel>flangerPannel</edgelabel>
+          <edgelabel>flangerPanel</edgelabel>
         </childnode>
         <childnode refid="11" relation="usage">
-          <edgelabel>ocsFilterPannel</edgelabel>
+          <edgelabel>ocsFilterPanel</edgelabel>
         </childnode>
         <childnode refid="12" relation="usage">
-          <edgelabel>pannerPannel</edgelabel>
+          <edgelabel>pannerPanel</edgelabel>
         </childnode>
         <childnode refid="13" relation="usage">
-          <edgelabel>phaserPannel</edgelabel>
+          <edgelabel>phaserPanel</edgelabel>
         </childnode>
         <childnode refid="14" relation="usage">
-          <edgelabel>robotPannel</edgelabel>
+          <edgelabel>robotPanel</edgelabel>
         </childnode>
         <childnode refid="15" relation="usage">
-          <edgelabel>rollPannel</edgelabel>
+          <edgelabel>rollPanel</edgelabel>
         </childnode>
         <childnode refid="16" relation="usage">
-          <edgelabel>trancePannel</edgelabel>
+          <edgelabel>trancePanel</edgelabel>
         </childnode>
         <childnode refid="17" relation="usage">
-          <edgelabel>volPannel</edgelabel>
+          <edgelabel>volPanel</edgelabel>
         </childnode>
       </node>
       <node id="1">
@@ -201,10 +201,10 @@
         <label>std::vector&lt; uint8_t &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/audioRender/ManualMix/MusicControlPannel.hpp" line="26" column="1" bodyfile="include/audioRender/ManualMix/MusicControlPannel.hpp" bodystart="26" bodyend="45"/>
+    <location file="include/core/audioRender/ManualMix/MusicControlPanel.hpp" line="26" column="1" bodyfile="include/core/audioRender/ManualMix/MusicControlPanel.hpp" bodystart="26" bodyend="45"/>
     <listofallmembers>
       <member refid="structMusicOnDeck_1a1f21ed340dc5a0de10c6ea3ef5f02ae2" prot="public" virt="non-virtual"><scope>MusicOnDeck</scope><name>dec</name></member>
-      <member refid="structMusicOnDeck_1adb0236f205c3fb887572956235e910b2" prot="public" virt="non-virtual"><scope>MusicOnDeck</scope><name>fxP</name></member>
+      <member refid="structMusicOnDeck_1a40f67a5fdbed5601ec7e8bc624adda81" prot="public" virt="non-virtual"><scope>MusicOnDeck</scope><name>fxP</name></member>
       <member refid="structMusicOnDeck_1a25b320b8236579fcccd0d33682b98bd6" prot="public" virt="non-virtual"><scope>MusicOnDeck</scope><name>MusicOnDeck</name></member>
       <member refid="structMusicOnDeck_1ad0a6052696e1eda69e1de2ca883377d9" prot="public" virt="non-virtual"><scope>MusicOnDeck</scope><name>play</name></member>
       <member refid="structMusicOnDeck_1a676df855f013b4c7efebfeda13fcab32" prot="public" virt="non-virtual"><scope>MusicOnDeck</scope><name>st</name></member>

@@ -104,8 +104,9 @@ Program Listing for File editorTest.cpp
                }
            }
            if (engine->SearchMusic("testMiku", "Camellia").empty()) {
-               bool renderRes =
-                   engine->editor->render("testTrack", *(engine->DBROOT));
+               std::string linter_msg;
+               bool        renderRes = engine->editor->render(
+                   "testTrack", *(engine->DBROOT), linter_msg);
                bool pushRes = engine->editor->pushToRootDB(
                    *(engine->DBROOT), "testMiku", "Camellia");
                bool pushResSecond = engine->editor->pushToRootDB(
@@ -130,16 +131,16 @@ Program Listing for File editorTest.cpp
    
            auto initres   = engine->InitPlayer(PLAY_MODE::HYBRID_RENDER, td, 48);
            auto activeres = engine->player->Activate();
-           auto musPannel = engine->player->GetMusicControlPannel();
+           auto musPanel  = engine->player->GetMusicControlPanel();
            auto muses     = engine->SearchMusic("ヒアソビ", "Camellia");
-           musPannel->LoadMusic(*(engine->DBROOT), muses.front());
+           musPanel->LoadMusic(*(engine->DBROOT), muses.front());
    
            getchar();
-           musPannel->SetMusic("ヒアソビ", true);
+           musPanel->SetMusic("ヒアソビ", true);
    
-           // musPannel->
+           // musPanel->
            getchar();
-           auto Fxhandle = musPannel->getFXHandle("ヒアソビ");
+           auto Fxhandle = musPanel->getFXHandle("ヒアソビ");
            Fxhandle->FX_ON_OFF(FXList::OCSFILTER, true);
            Fxhandle->FX_ON_OFF(FXList::EQ, true);
            auto ocshandle = Fxhandle->GetArgSetter(FXList::OCSFILTER);
@@ -150,7 +151,7 @@ Program Listing for File editorTest.cpp
            ocshandle["bps"](2.2333333);
            ocshandle["OCSFilterDryWet"](0.7);
            getchar();
-           musPannel->ChangeBpm("ヒアソビ", 120, 60);
+           musPanel->ChangeBpm("ヒアソビ", 120, 60);
            auto eqhandle = Fxhandle->GetArgSetter(FXList::EQ);
    
            eqhandle["EQHigh"](-20);
@@ -165,6 +166,11 @@ Program Listing for File editorTest.cpp
            editor->GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
            editor->GetLogWithJSONGraph<EDIT_ARG_NOTE>();
            editor->GetLogWithJSONGraph<EDIT_ARG_MUSIC>("music name");
+           auto core_line = engine->PullOutDataLine();
+           core_line.preRenderedData;
+           core_line.maxCursor;
+           core_line.nowCursor;
+           core_line.used_frame;
    
        } else {
            std::cout << "init failed " << std::endl;

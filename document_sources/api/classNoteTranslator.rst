@@ -3,7 +3,7 @@
 Class NoteTranslator
 ====================
 
-- Defined in :ref:`file_include_db_Capnp_Translators_NoteTranslator_NoteTranslator.hpp`
+- Defined in :ref:`file_include_core_db_Capnp_Translators_NoteTranslator_NoteTranslator.hpp`
 
 
 Class Documentation

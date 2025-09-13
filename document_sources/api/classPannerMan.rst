@@ -3,7 +3,7 @@
 Class PannerMan
 ===============
 
-- Defined in :ref:`file_include_audioRender_ManualMix_ManualFausts_pannerMan.hpp`
+- Defined in :ref:`file_include_core_audioRender_ManualMix_ManualFausts_pannerMan.hpp`
 
 
 Class Documentation

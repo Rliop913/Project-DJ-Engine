@@ -30,9 +30,9 @@ Includes
 --------
 
 
-- ``EFFECTS.hpp`` (:ref:`file_include_audioRender_MixMachine_EFFECT_EFFECTS.hpp`)
+- ``EFFECTS.hpp`` (:ref:`file_include_core_audioRender_MixMachine_EFFECT_EFFECTS.hpp`)
 
-- ``ManualMix.hpp`` (:ref:`file_include_audioRender_ManualMix_ManualMix.hpp`)
+- ``ManualMix.hpp`` (:ref:`file_include_core_audioRender_ManualMix_ManualMix.hpp`)
 
 - ``iostream``
 
@@ -60,7 +60,7 @@ Variables
 ---------
 
 
-- :ref:`exhale_variable_manualAudioTest_8cpp_1a101779b5e04ec5dd91c06dde9109c3b5`
+- :ref:`exhale_variable_manualAudioTest_8cpp_1a1268ed98ba54ca935dd6542e3b89b9cb`
 
 - :ref:`exhale_variable_manualAudioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330`
 

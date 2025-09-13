@@ -3,7 +3,7 @@
 Class ARGSETTER_WRAPPER
 =======================
 
-- Defined in :ref:`file_include_interface_PDJE_interface.hpp`
+- Defined in :ref:`file_include_core_interface_PDJE_interface.hpp`
 
 
 Class Documentation

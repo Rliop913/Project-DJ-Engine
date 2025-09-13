@@ -30,17 +30,17 @@ Includes
 --------
 
 
-- ``CapnpBinary.hpp`` (:ref:`file_include_db_Capnp_CapnpBinary_CapnpBinary.hpp`)
+- ``CapnpBinary.hpp`` (:ref:`file_include_core_db_Capnp_CapnpBinary_CapnpBinary.hpp`)
 
-- ``MixMachine.hpp`` (:ref:`file_include_audioRender_MixMachine_MixMachine.hpp`)
+- ``MixMachine.hpp`` (:ref:`file_include_core_audioRender_MixMachine_MixMachine.hpp`)
 
-- ``MixTranslator.hpp`` (:ref:`file_include_db_Capnp_Translators_MixTranslator_MixTranslator.hpp`)
+- ``MixTranslator.hpp`` (:ref:`file_include_core_db_Capnp_Translators_MixTranslator_MixTranslator.hpp`)
 
 - ``algorithm``
 
-- ``audioPlayer.hpp`` (:ref:`file_include_MainObjects_audioPlayer_audioPlayer.hpp`)
+- ``audioPlayer.hpp`` (:ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.hpp`)
 
-- ``dbRoot.hpp`` (:ref:`file_include_db_dbRoot.hpp`)
+- ``dbRoot.hpp`` (:ref:`file_include_core_db_dbRoot.hpp`)
 
 - ``iostream``
 

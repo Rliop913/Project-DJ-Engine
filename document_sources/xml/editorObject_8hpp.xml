@@ -10,28 +10,28 @@
     <includes refid="tempDB_8hpp" local="yes">tempDB.hpp</includes>
     <includes local="no">filesystem</includes>
     <includes local="no">optional</includes>
-    <includedby refid="addline_8cpp" local="yes">include/MainObjects/editorObject/addline.cpp</includedby>
-    <includedby refid="commonfunction_8cpp" local="yes">include/MainObjects/editorObject/commonfunction.cpp</includedby>
-    <includedby refid="deleteline_8cpp" local="yes">include/MainObjects/editorObject/deleteline.cpp</includedby>
-    <includedby refid="editorObject_8cpp" local="yes">include/MainObjects/editorObject/editorObject.cpp</includedby>
-    <includedby refid="getall_8cpp" local="yes">include/MainObjects/editorObject/getall.cpp</includedby>
-    <includedby refid="getdiff_8cpp" local="yes">include/MainObjects/editorObject/getdiff.cpp</includedby>
-    <includedby refid="getlogwithjsongraph_8cpp" local="yes">include/MainObjects/editorObject/getlogwithjsongraph.cpp</includedby>
-    <includedby refid="go_8cpp" local="yes">include/MainObjects/editorObject/go.cpp</includedby>
-    <includedby refid="redo_8cpp" local="yes">include/MainObjects/editorObject/redo.cpp</includedby>
-    <includedby refid="render_8cpp" local="yes">include/MainObjects/editorObject/render.cpp</includedby>
-    <includedby refid="undo_8cpp" local="yes">include/MainObjects/editorObject/undo.cpp</includedby>
-    <includedby refid="updatelog_8cpp" local="yes">include/MainObjects/editorObject/updatelog.cpp</includedby>
-    <includedby refid="SWIG__editor__visitor_8hpp" local="yes">include/SWIG_editor_visitor.hpp</includedby>
-    <includedby refid="MusicJson_8cpp" local="yes">include/editor/featureWrapper/JSONWrap/MusicJson.cpp</includedby>
-    <includedby refid="PDJE__interface_8hpp" local="yes">include/interface/PDJE_interface.hpp</includedby>
+    <includedby refid="addline_8cpp" local="yes">include/core/MainObjects/editorObject/addline.cpp</includedby>
+    <includedby refid="commonfunction_8cpp" local="yes">include/core/MainObjects/editorObject/commonfunction.cpp</includedby>
+    <includedby refid="deleteline_8cpp" local="yes">include/core/MainObjects/editorObject/deleteline.cpp</includedby>
+    <includedby refid="editorObject_8cpp" local="yes">include/core/MainObjects/editorObject/editorObject.cpp</includedby>
+    <includedby refid="getall_8cpp" local="yes">include/core/MainObjects/editorObject/getall.cpp</includedby>
+    <includedby refid="getdiff_8cpp" local="yes">include/core/MainObjects/editorObject/getdiff.cpp</includedby>
+    <includedby refid="getlogwithjsongraph_8cpp" local="yes">include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</includedby>
+    <includedby refid="go_8cpp" local="yes">include/core/MainObjects/editorObject/go.cpp</includedby>
+    <includedby refid="redo_8cpp" local="yes">include/core/MainObjects/editorObject/redo.cpp</includedby>
+    <includedby refid="render_8cpp" local="yes">include/core/MainObjects/editorObject/render.cpp</includedby>
+    <includedby refid="undo_8cpp" local="yes">include/core/MainObjects/editorObject/undo.cpp</includedby>
+    <includedby refid="updatelog_8cpp" local="yes">include/core/MainObjects/editorObject/updatelog.cpp</includedby>
+    <includedby refid="SWIG__editor__visitor_8hpp" local="yes">include/core/SWIG_editor_visitor.hpp</includedby>
+    <includedby refid="MusicJson_8cpp" local="yes">include/core/editor/featureWrapper/JSONWrap/MusicJson.cpp</includedby>
+    <includedby refid="PDJE__interface_8hpp" local="yes">include/core/interface/PDJE_interface.hpp</includedby>
     <incdepgraph>
-      <node id="84">
+      <node id="82">
         <label>audioCallbacks.hpp</label>
         <link refid="audioCallbacks_8hpp"/>
         <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -49,7 +49,7 @@
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="84" relation="include">
+        <childnode refid="82" relation="include">
         </childnode>
         <childnode refid="85" relation="include">
         </childnode>
@@ -57,7 +57,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>include/MainObjects/editorObject/editorObject.hpp</label>
+        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
         <link refid="editorObject_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -84,26 +84,6 @@
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
-      </node>
-      <node id="3">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="PDJE__LOG__SETTER_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="11">
@@ -144,12 +124,12 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="82">
-        <label>MusicControlPannel.hpp</label>
-        <link refid="MusicControlPannel_8hpp"/>
+      <node id="83">
+        <label>MusicControlPanel.hpp</label>
+        <link refid="MusicControlPanel_8hpp"/>
         <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="83" relation="include">
+        <childnode refid="84" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -456,20 +436,6 @@
         <childnode refid="39" relation="include">
         </childnode>
       </node>
-      <node id="42">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-      </node>
       <node id="38">
         <label>musicDB.hpp</label>
         <link refid="musicDB_8hpp"/>
@@ -681,7 +647,39 @@
         <link refid="PDJE__Core__DataLine_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+      </node>
+      <node id="42">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="3">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="67">
@@ -816,7 +814,7 @@
       <node id="94">
         <label>list</label>
       </node>
-      <node id="83">
+      <node id="84">
         <label>map</label>
       </node>
       <node id="12">
@@ -888,23 +886,23 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
-        <label>include/MainObjects/editorObject/addline.cpp</label>
+        <label>include/core/MainObjects/editorObject/addline.cpp</label>
         <link refid="addline_8cpp"/>
       </node>
       <node id="3">
-        <label>include/MainObjects/editorObject/commonfunction.cpp</label>
+        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
         <link refid="commonfunction_8cpp"/>
       </node>
       <node id="4">
-        <label>include/MainObjects/editorObject/deleteline.cpp</label>
+        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
         <link refid="deleteline_8cpp"/>
       </node>
       <node id="5">
-        <label>include/MainObjects/editorObject/editorObject.cpp</label>
+        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
         <link refid="editorObject_8cpp"/>
       </node>
       <node id="1">
-        <label>include/MainObjects/editorObject/editorObject.hpp</label>
+        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
         <link refid="editorObject_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -938,51 +936,51 @@
         </childnode>
       </node>
       <node id="6">
-        <label>include/MainObjects/editorObject/getall.cpp</label>
+        <label>include/core/MainObjects/editorObject/getall.cpp</label>
         <link refid="getall_8cpp"/>
       </node>
       <node id="7">
-        <label>include/MainObjects/editorObject/getdiff.cpp</label>
+        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
         <link refid="getdiff_8cpp"/>
       </node>
       <node id="8">
-        <label>include/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
         <link refid="getlogwithjsongraph_8cpp"/>
       </node>
       <node id="9">
-        <label>include/MainObjects/editorObject/go.cpp</label>
+        <label>include/core/MainObjects/editorObject/go.cpp</label>
         <link refid="go_8cpp"/>
       </node>
       <node id="10">
-        <label>include/MainObjects/editorObject/redo.cpp</label>
+        <label>include/core/MainObjects/editorObject/redo.cpp</label>
         <link refid="redo_8cpp"/>
       </node>
       <node id="11">
-        <label>include/MainObjects/editorObject/render.cpp</label>
+        <label>include/core/MainObjects/editorObject/render.cpp</label>
         <link refid="render_8cpp"/>
       </node>
       <node id="12">
-        <label>include/MainObjects/editorObject/undo.cpp</label>
+        <label>include/core/MainObjects/editorObject/undo.cpp</label>
         <link refid="undo_8cpp"/>
       </node>
       <node id="13">
-        <label>include/MainObjects/editorObject/updatelog.cpp</label>
+        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
         <link refid="updatelog_8cpp"/>
       </node>
       <node id="14">
-        <label>include/SWIG_editor_visitor.hpp</label>
+        <label>include/core/SWIG_editor_visitor.hpp</label>
         <link refid="SWIG__editor__visitor_8hpp"/>
       </node>
       <node id="15">
-        <label>include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
+        <label>include/core/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
         <link refid="MusicJson_8cpp"/>
       </node>
       <node id="17">
-        <label>include/interface/PDJE_interface.cpp</label>
+        <label>include/core/interface/PDJE_interface.cpp</label>
         <link refid="PDJE__interface_8cpp"/>
       </node>
       <node id="16">
-        <label>include/interface/PDJE_interface.hpp</label>
+        <label>include/core/interface/PDJE_interface.hpp</label>
         <link refid="PDJE__interface_8hpp"/>
         <childnode refid="17" relation="include">
         </childnode>
@@ -996,7 +994,7 @@
         </childnode>
       </node>
       <node id="18">
-        <label>include/interface/PDJE_polyglot_wraps.cpp</label>
+        <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
       </node>
       <node id="19">
@@ -1027,7 +1025,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/MainObjects/editorObject/editorObject.hpp" line="26" column="1" bodyfile="include/MainObjects/editorObject/editorObject.hpp" bodystart="26" bodyend="-1"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="26" column="1" bodyfile="include/core/MainObjects/editorObject/editorObject.hpp" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="editorObject_8hpp_1a8c7c688d1e63ff780f13669e00fc091c" prot="public" static="no">
         <type><ref refid="structMixArgs" kindref="compound">MixArgs</ref></type>
@@ -1041,7 +1039,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/MainObjects/editorObject/editorObject.hpp" line="28" column="1" bodyfile="include/MainObjects/editorObject/editorObject.hpp" bodystart="28" bodyend="-1"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="28" column="1" bodyfile="include/core/MainObjects/editorObject/editorObject.hpp" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="editorObject_8hpp_1a305098bfe154230cbef2fbe44e5f9220" prot="public" static="no">
         <type><ref refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref></type>
@@ -1055,7 +1053,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/MainObjects/editorObject/editorObject.hpp" line="30" column="1" bodyfile="include/MainObjects/editorObject/editorObject.hpp" bodystart="30" bodyend="-1"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="30" column="1" bodyfile="include/core/MainObjects/editorObject/editorObject.hpp" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="editorObject_8hpp_1a899c0028ff4e674c7145d4c77087f957" prot="public" static="no">
         <type>std::unordered_map&lt; <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref>, <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &gt;</type>
@@ -1069,7 +1067,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/MainObjects/editorObject/editorObject.hpp" line="32" column="1" bodyfile="include/MainObjects/editorObject/editorObject.hpp" bodystart="32" bodyend="-1"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="32" column="1" bodyfile="include/core/MainObjects/editorObject/editorObject.hpp" bodystart="32" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1436,6 +1434,6 @@
 <codeline lineno="531" refid="classeditorObject_1a08bd920f3c202193ee69524f86ebfa66" refkind="member"><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="532"><highlight class="normal"><ref refid="classeditorObject_1af72d99c3cb239afe1f633ad592327ae7" kindref="member">editorObject::UpdateLog&lt;EDIT_ARG_MUSIC&gt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref><sp/>&amp;musicName);</highlight></codeline>
     </programlisting>
-    <location file="include/MainObjects/editorObject/editorObject.hpp"/>
+    <location file="include/core/MainObjects/editorObject/editorObject.hpp"/>
   </compounddef>
 </doxygen>

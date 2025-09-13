@@ -3,7 +3,7 @@
 Struct NoteVisitor
 ==================
 
-- Defined in :ref:`file_include_SWIG_editor_visitor.hpp`
+- Defined in :ref:`file_include_core_SWIG_editor_visitor.hpp`
 
 
 Struct Documentation
