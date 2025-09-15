@@ -14,20 +14,45 @@
 
 #endif
 
-/**
- * @brief Generic device identifier used by the input module.
- */
-struct PDJE_IDEV {
-    struct Finders {
-        std::string devName;
-        std::string vendorID;
-        std::string productID;
-    };
-    std::string busType;
-    std::string devType;
-    struct Specifiers {
-        // DevID devID;
-    };
+enum PDJE_INPUT_TYPE{
+    KEYBOARD = 0,
+    MOUSE,
+    MIDI
+};
+
+enum PDJE_MIDI_EVENTS{
+
+};
+
+struct Input_Type{
+    std::string device_name;
+    PDJE_INPUT_TYPE type;
+};
+
+
+using PDJE_KEY_CODE = std::string; // temp
+
+struct Keyboard_Input_Data{
+    PDJE_KEY_CODE key_code;
+    bool down;
+};
+
+struct Mouse_Input_Data{
+    bool is_btn_type;
+    bool is_rel;
+    int x;
+    int y;
+};
+
+struct Midi_Input_Data{
+    PDJE_MIDI_EVENTS event_type;
+    uint8_t channel;
+    uint8_t note;
+    uint8_t velocity;
+};
+
+struct Input_Event{
+
 };
 
 /**
