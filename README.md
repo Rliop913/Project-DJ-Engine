@@ -60,6 +60,7 @@ This project uses the following dependencies, which are automatically fetched us
 - **[libgit2](https://github.com/libgit2/libgit2)**: Git core library.
 - **[rocksdb](https://github.com/facebook/rocksdb)**: A library that provides an embeddable, persistent key-value store for fast storage.
 - **[SoundTouch](https://www.surina.net/soundtouch/)**: Audio processing library.
+- **[Faust language](https://github.com/grame-cncm/faust)**: Functional Programming Language for Real Time Signal Processing
 
 ## Generating Documentation
 
