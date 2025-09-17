@@ -107,5 +107,10 @@ include_directories(${sql_amalgam_SOURCE_DIR})
 include_directories(${cppcodec_SOURCE_DIR})
 include_directories(${rocksdb_SOURCE_DIR}/include)
 
+
+
+
+
+
 find_package(SWIG REQUIRED)
 include(UseSWIG)

@@ -1,0 +1,9 @@
+#pragma once
+
+enum PDJE_INPUT_STATE{
+    DEVICE_CONFIG_STATE = 0,
+    INPUT_LOOP_READY,
+    INPUT_LOOP_RUNNING,
+    DEAD
+};
+

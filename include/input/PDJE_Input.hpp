@@ -4,15 +4,16 @@
 #include <vector>
 
 #include "PDJE_Input_DataLine.hpp"
+#include "Input_State.hpp"
 
 #ifdef WIN32
-// #define WIN32_LEAN_AND_MEAN
-// #include <Windows.h>
-// using DevID = HANDLE;
+    #include "windows_input.hpp"
+#elif defined(__APPLE__)
 
 #else
 
 #endif
+
 
 enum PDJE_INPUT_TYPE{
     KEYBOARD = 0,
@@ -55,38 +56,29 @@ struct Input_Event{
 
 };
 
+struct DeviceData{
+    std::string Type;
+    std::wstring Name;
+};
+
 /**
  * @brief Input device manager.
  *
  * Searches for connected devices and pairs them with the engine.
  */
 class PDJE_Input {
-  private:
-  public:
-    /**
-     * @brief Scan the system for available input devices.
-     */
-    void
-    search();
-
-    /**
-     * @brief Register a device with the engine.
-     */
-    void
-    set();
-
-    /**
-     * @brief Retrieve the current device state.
-     */
-    void
-    get();
-
-    /**
-     * @brief Pair the found devices with appropriate handlers.
-     */
-    void
-    pair_job();
-
+private:
+    OS_Input data;
+    bool Init();
+    bool Config();
+    bool Run();
+    bool Kill();
+public:
+    std::string ErrLog;
+    
+    PDJE_INPUT_STATE state = PDJE_INPUT_STATE::DEAD;
+    std::vector<DeviceData> GetDevs();
+    void NEXT();
     PDJE_INPUT_DATA_LINE
     PullOutDataLine();
 
@@ -96,34 +88,3 @@ class PDJE_Input {
     /// Destructor.
     ~PDJE_Input();
 };
-
-// struct DuckTypeDevice{
-//     bool HAS_KEY_Q_W_E_R_T_Y = false;
-//     bool HAS_KEY = false;
-//     bool HAS_RELATIVE_AXIS_SENSOR = false;
-//     bool HAS_ABSOLUTE_AXIS_SENSOR = false;
-
-// };
-
-// struct DeviceData{
-//     std::string deviceName;
-//     DuckTypeDevice deviceType;
-// };
-
-// using DEV_LIST = std::vector<DeviceData>;
-
-// template<typename OS_INPUT>
-// class InputEngine{
-// private:
-//     OS_INPUT osAPI;
-//     DEV_LIST activated_devices;
-// public:
-//     InputEngine();
-//     ~InputEngine();
-//     void StoreDeviceList(const DEV_LIST& list);
-//     DEV_LIST SearchDevices();
-//     DEV_LIST GetStoredDeviceList();
-//     void setDevices(DEV_LIST);
-//     void ActivateEngine();
-//     void StopEngine();
-// };

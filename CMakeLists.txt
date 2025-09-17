@@ -37,31 +37,6 @@ if(PDJE_DYNAMIC)
   endif()
 endif()
 
-# if(WIN32)
-  
-# elseif(UNIX AND NOT APPLE)
-#   # find_package(PkgConfig REQUIRED)
-#   # pkg_check_modules(LIBEVDEV REQUIRED libevdev)
-
-# #   include_directories(
-# #     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux
-# #     ${LIBEVDEV_INCLUDE_DIRS}
-# #   )
-# #   link_libraries(
-# #     ${LIBEVDEV_LIBRARIES}
-# #   )
-
-# #   set(input_src
-# #     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/LINUX_I.cpp
-# #   )
-
-# # elseif(APPLE)
-# #   include_directories(
-# #     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/macos
-# #   )
-
-# endif()
-
 include(cmakes/src/thirdPartySource.cmake)
 include(cmakes/includeDIRS.cmake)
 include(cmakes/src/DBsrc.cmake)
@@ -140,6 +115,8 @@ linkPDJELibs(PDJE)
 
 setSpdlogReqLib(PDJE_MODULE_INPUT)
 setSpdlogReqLib(PDJE_MODULE_JUDGE)
+
+PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT)
 
 # target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
 # setSpdlogReqLib(PDJE)
