@@ -133,13 +133,31 @@ OS_Input::work()
 
     if(!msgOnly) return;
 
-    config_lock.lock();
-    config_lock.unlock();
+    auto device_datas = config_data.get();
+    std::vector<RAWINPUTDEVICE> devTypes;
+    bool hasKeyBoard = false;
+    bool hasMouse = false;
+    bool hasHID = false;
+    for(const auto& dev : device_datas){
+        if(dev.Type == "MOUSE") hasMouse = true;
+        else if(dev.Type == "KEYBOARD") hasKeyBoard = true;
+        else if(dev.Type == "HID") hasHID = true;
+    }
 
-    RAWINPUTDEVICE rids[1]{};
-    rids[0] = {0x01, 0x06, RIDEV_INPUTSINK | RIDEV_NOLEGACY, msgOnly};
+    if(hasKeyBoard){
+        auto temp = RAWINPUTDEVICE{0x01, 0x06, RIDEV_INPUTSINK | RIDEV_NOLEGACY, msgOnly};
+        devTypes.push_back(temp);
+    }
+    if(hasMouse){
+        auto temp = RAWINPUTDEVICE{0x01, 0x02, RIDEV_INPUTSINK | RIDEV_NOLEGACY, msgOnly};
+        devTypes.push_back(temp);
+    }
+    if(hasHID){
+        auto temp = RAWINPUTDEVICE{0x0C, 0x01, RIDEV_INPUTSINK | RIDEV_NOLEGACY, msgOnly};
+        devTypes.push_back(temp);
+    }
 
-    auto regres = RegisterRawInputDevices(rids, 1, sizeof(RAWINPUTDEVICE));
+    auto regres = RegisterRawInputDevices(devTypes.data(), devTypes.size(), sizeof(RAWINPUTDEVICE));
     if(!regres){
         return;
     }

@@ -125,9 +125,10 @@ public:
     std::wstring Invisible_window_name = L"PDJE_Invisible_RawInput_Worker";
     DWORD ThreadID;
 
-    std::promise<void> config_data;
+    // std::promise<DeviceData> config_data;
+    std::future<std::vector<DeviceData>> config_data;
     std::optional<std::thread> worker;
-    std::mutex config_lock;
+    // std::mutex config_lock;
     std::mutex run_lock;
     void work();
 };
