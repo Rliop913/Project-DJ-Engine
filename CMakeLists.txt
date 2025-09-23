@@ -23,7 +23,7 @@ else()
 endif()
 
 
-option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
+option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
 option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
 option(PDJE_DYNAMIC "Make Shared Library" OFF)
 
@@ -54,6 +54,10 @@ add_executable(DBTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${e
 target_include_directories(testEditor PUBLIC ${PDJE_INCLUDE_CORE})
 target_include_directories(DBTester PUBLIC ${PDJE_INCLUDE_CORE})
 
+add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${PDJE_OS_INPUT_SRC})
+target_include_directories(testInput PRIVATE ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
+
+PDJE_INPUT_LINK_LIB(testInput)
 endif(PDJE_BUILD_TESTS)
 
 if(PDJE_DYNAMIC)

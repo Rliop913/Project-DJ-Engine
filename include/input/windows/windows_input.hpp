@@ -119,16 +119,17 @@ private:
     HWND init();
     bool config();
     void run();
-public:
-    std::vector<RawDeviceData> getDevices();
-    static std::wstring hid_label_from_path(const std::wstring& path);
-    std::wstring Invisible_window_name = L"PDJE_Invisible_RawInput_Worker";
+    std::vector<RawDeviceData> getRawDeviceDatas();
+    std::wstring hid_label_from_path(const std::wstring& path);
     DWORD ThreadID;
-
-    // std::promise<DeviceData> config_data;
-    std::future<std::vector<DeviceData>> config_data;
-    std::optional<std::thread> worker;
-    // std::mutex config_lock;
-    std::mutex run_lock;
+public:
+    bool kill();
     void work();
+    std::vector<DeviceData> getDevices();
+    
+    std::wstring Invisible_window_name = L"PDJE_Invisible_RawInput_Worker";
+
+    ONE_SHOT_DEV_FUTURE config_data;
+    ONE_SHOT_RUN_FUTURE run_ok;
+    std::optional<std::thread> worker;
 };

@@ -1,75 +1,6 @@
 #include "windows_input.hpp"
 #include "PDJE_Input.hpp"
 
-
-PDJE_Input::PDJE_Input()
-{
-    data.config_lock.lock();
-    data.run_lock.lock();
-}
-
-bool
-PDJE_Input::Init()
-{
-    if(state != PDJE_INPUT_STATE::DEAD){
-        return false;
-    }
-    try
-    {
-        data.worker.emplace(std::thread([this](){
-            this->data.work();
-        }));
-        state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
-        return true;
-    }
-    catch(const std::exception& e)
-    {
-        ErrLog += e.what();
-        ErrLog += "\n";
-        return false;
-    }
-}
-
-bool
-PDJE_Input::Config()
-{
-    if(state != PDJE_INPUT_STATE::DEVICE_CONFIG_STATE){
-        return false;
-    }
-    data.config_lock.unlock();
-    state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
-    return true;
-}
-
-bool
-PDJE_Input::Run()
-{
-    if(state != PDJE_INPUT_STATE::INPUT_LOOP_READY){
-        return false;
-    }
-    data.run_lock.unlock();
-    
-    state = PDJE_INPUT_STATE::INPUT_LOOP_RUNNING;
-    return true;
-}
-
-bool
-PDJE_Input::Kill()
-{
-    if(state != PDJE_INPUT_STATE::INPUT_LOOP_RUNNING){
-        return false;
-    }
-    bool flagOK = PostThreadMessageW(data.ThreadID, WM_QUIT, 0, 0);
-    if(!flagOK){
-        return false;
-    }
-    data.worker->join();
-    state = PDJE_INPUT_STATE::DEAD;
-    data.config_lock.lock();
-    data.run_lock.lock();
-    return true;
-}
-
 HWND
 OS_Input::init()
 {
@@ -78,7 +9,7 @@ OS_Input::init()
     wc.lpfnWndProc = DefWindowProc;
     wc.hInstance = hst;
     wc.lpszClassName = Invisible_window_name.c_str();
-    RegisterClass(&wc);
+    RegisterClassW(&wc);
 
     return CreateWindowExW(
         0, wc.lpszClassName, L"",
@@ -133,7 +64,7 @@ OS_Input::work()
 
     if(!msgOnly) return;
 
-    auto device_datas = config_data.get();
+    auto device_datas = config_data->get();
     std::vector<RAWINPUTDEVICE> devTypes;
     bool hasKeyBoard = false;
     bool hasMouse = false;
@@ -179,8 +110,11 @@ OS_Input::work()
     #endif
     ThreadID = GetCurrentThreadId();
 
-    run_lock.lock();
-    run_lock.unlock();
+    bool ok = run_ok->get();
+    if(!ok){
+        if (task) AvRevertMmThreadCharacteristics(task);
+        return;
+    }
 
     run();
 
@@ -191,7 +125,7 @@ OS_Input::work()
 
 
 std::vector<RawDeviceData> 
-OS_Input::getDevices()
+OS_Input::getRawDeviceDatas()
 {
     UINT num = 0;
     if (GetRawInputDeviceList(nullptr, &num, sizeof(RAWINPUTDEVICELIST)) != 0 || num == 0)
@@ -227,7 +161,7 @@ OS_Input::getDevices()
     }
     return out;
 }
-
+#include <iostream>
 std::wstring
 OS_Input::hid_label_from_path(const std::wstring& path)
 {
@@ -240,20 +174,27 @@ OS_Input::hid_label_from_path(const std::wstring& path)
 
     WCHAR man[128]{}, prod[128]{};
     std::wstring out;
+    HIDD_ATTRIBUTES attrs{sizeof attrs};
+    if(HidD_GetAttributes(fh, &attrs)){
+        wchar_t buf[64];
+        swprintf(buf, 64, L"VID_%04X PID_%04X", attrs.VendorID, attrs.ProductID);
+        // label = buf; // 제조사/제품 문자열 없을 때 대체 표기
+        std::wcout << L"out: " << buf <<  L'\n';
+    }
     if (HidD_GetManufacturerString(fh, man, sizeof(man))) out += man;
     if (HidD_GetProductString(fh, prod, sizeof(prod))) {
         if (!out.empty()) out += L" ";
         out += prod;
     }
     CloseHandle(fh);
+    
     return out;
 }
-
-
+#include <iostream>
 std::vector<DeviceData>
-PDJE_Input::GetDevs()
+OS_Input::getDevices()
 {
-    auto devs = data.getDevices();
+    auto devs = getRawDeviceDatas();
     std::vector<DeviceData> out;
     out.reserve(devs.size());
     for(auto& i : devs){
@@ -272,8 +213,15 @@ PDJE_Input::GetDevs()
             tempdata.Type = "???";
             break;
         }
-        tempdata.Name = data.hid_label_from_path(i.deviceHIDPath);
+        tempdata.Name = hid_label_from_path(i.deviceHIDPath);
         out.push_back(tempdata);
     }
     return out;
+}
+
+
+bool
+OS_Input::kill()
+{
+    return PostThreadMessageW(ThreadID, WM_QUIT, 0, 0);
 }

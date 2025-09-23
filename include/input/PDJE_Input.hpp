@@ -2,7 +2,7 @@
 
 #include <string>
 #include <vector>
-
+#include <future>
 #include "PDJE_Input_DataLine.hpp"
 #include "Input_State.hpp"
 
@@ -15,52 +15,6 @@
 #endif
 
 
-enum PDJE_INPUT_TYPE{
-    KEYBOARD = 0,
-    MOUSE,
-    MIDI
-};
-
-enum PDJE_MIDI_EVENTS{
-
-};
-
-struct Input_Type{
-    std::string device_name;
-    PDJE_INPUT_TYPE type;
-};
-
-
-using PDJE_KEY_CODE = std::string; // temp
-
-struct Keyboard_Input_Data{
-    PDJE_KEY_CODE key_code;
-    bool down;
-};
-
-struct Mouse_Input_Data{
-    bool is_btn_type;
-    bool is_rel;
-    int x;
-    int y;
-};
-
-struct Midi_Input_Data{
-    PDJE_MIDI_EVENTS event_type;
-    uint8_t channel;
-    uint8_t note;
-    uint8_t velocity;
-};
-
-struct Input_Event{
-
-};
-
-struct DeviceData{
-    std::string Type;
-    std::wstring Name;
-};
-
 /**
  * @brief Input device manager.
  *
@@ -70,21 +24,49 @@ class PDJE_Input {
 private:
     OS_Input data;
     bool Init();
-    bool Config();
+    bool Config(std::vector<DeviceData>& devs);
     bool Run();
     bool Kill();
+
+    template<typename P, typename F>
+    void InitOneShot(P& promise, F& future);
+
+    template<typename P, typename F>
+    void ResetOneShot(P& promise, F& future);
+    std::vector<DeviceData> activated_devices;
+    PDJE_INPUT_STATE state = PDJE_INPUT_STATE::DEAD;
 public:
     std::string ErrLog;
     
-    PDJE_INPUT_STATE state = PDJE_INPUT_STATE::DEAD;
     std::vector<DeviceData> GetDevs();
-    void NEXT();
-    PDJE_INPUT_DATA_LINE
-    PullOutDataLine();
-
+    void SetDevs(const std::vector<DeviceData>& devs);
+    PDJE_INPUT_STATE GetState();
+    PDJE_INPUT_STATE NEXT();
+    PDJE_INPUT_DATA_LINE PullOutDataLine();
+    
+    ONE_SHOT_DEV_PROMISE config_promise;
+    ONE_SHOT_RUN_PROMISE run_command;
     /// Constructor.
-    PDJE_Input();
+    PDJE_Input() = default;
 
     /// Destructor.
-    ~PDJE_Input();
+    ~PDJE_Input() = default;
 };
+
+
+template<typename P, typename F>
+void
+PDJE_Input::InitOneShot(P& promise, F& future)
+{
+    promise.emplace();
+    future.emplace();
+    future = promise->get_future();
+}
+
+template<typename P, typename F>
+void 
+PDJE_Input::ResetOneShot(P& promise, F& future)
+{
+    promise.reset();
+    future.reset();
+}
