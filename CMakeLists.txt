@@ -84,10 +84,19 @@ add_library(PDJE_MODULE_JUDGE ${judgeSource} ${globalSource})
 add_library(PDJE_MODULE_INPUT ${inputSource} ${globalSource})
 
 
+
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
 target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE})
 target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
 
+endif()
+
+if(LINUX)
+
+add_executable(PDJE_MODULE_INPUT_RTMAIN ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTMain.cpp ${inputSource} ${globalSource})
+
+target_include_directories(PDJE_MODULE_INPUT_RTMAIN PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
+PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT_RTMAIN)
 endif()
 
 function(linkPDJELibs targetName)
