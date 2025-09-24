@@ -22,9 +22,6 @@ PDJE_Input::Init()
     PDJE_INPUT_DEFAULT_TRY_CATCH(InitOneShot(config_promise, data.config_data);
                                  InitOneShot(run_command, data.run_ok);
                                  data.TrigLoop();
-                                 // data.worker.emplace(std::thread([this](){
-                                 //     this->data.work();
-                                 // }));
                                  state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
                                  return true;)
 }
@@ -66,12 +63,9 @@ PDJE_Input::Kill()
         return false;
     }
     data.ResetLoop();
-    // data.worker->join();
     state = PDJE_INPUT_STATE::DEAD;
     ResetOneShot(config_promise, data.config_data);
     ResetOneShot(run_command, data.run_ok);
-    // data.worker.reset();
-
     return true;
 }
 

@@ -187,8 +187,17 @@ OS_Input::hid_label_from_path(const std::wstring& path)
         out += prod;
     }
     CloseHandle(fh);
-    
+    if(out.empty()){
+        out = friendly_name_from_path(path);
+    }
     return out;
+}
+
+std::wstring
+OS_Input::friendly_name_from_path(const std::wstring& path)
+{
+    HDEVINFO h = SetupDiGetClassDevsW(&GUID_DEVINTERFACE_HID, nullptr, nullptr, DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
+
 }
 #include <iostream>
 std::vector<DeviceData>
@@ -224,4 +233,20 @@ bool
 OS_Input::kill()
 {
     return PostThreadMessageW(ThreadID, WM_QUIT, 0, 0);
+}
+
+
+void
+OS_Input::TrigLoop()
+{
+    worker.emplace(std::thread([this](){
+        this->work();
+    }));
+}
+
+void
+OS_Input::ResetLoop()
+{
+    worker->join();
+    worker.reset();
 }

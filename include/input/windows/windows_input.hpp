@@ -10,6 +10,7 @@
 #include "Input_State.hpp"
 #include <mutex>
 #include <hidsdi.h>
+#include <SetupAPI.h>
 // void 
 // input_worker(DWORD& tid) 
 // {
@@ -121,9 +122,12 @@ private:
     void run();
     std::vector<RawDeviceData> getRawDeviceDatas();
     std::wstring hid_label_from_path(const std::wstring& path);
+    std::wstring friendly_name_from_path(const std::wstring& path);
     DWORD ThreadID;
 public:
     bool kill();
+    void TrigLoop();
+    void ResetLoop();
     void work();
     std::vector<DeviceData> getDevices();
     
