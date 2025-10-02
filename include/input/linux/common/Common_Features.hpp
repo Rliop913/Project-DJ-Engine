@@ -101,4 +101,12 @@ ParseMsg(std::string_view msg)
 {
 }
 
+void
+TOCTOU_DODGE()
+{
+    // todo- impl
+    // impl with hash compare - random re-compare + random fake execution +
+    // random sleep time
+}
+
 }; // namespace Common_Features
