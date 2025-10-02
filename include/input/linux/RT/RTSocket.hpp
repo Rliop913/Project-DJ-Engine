@@ -11,6 +11,9 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <unistd.h>
+
+#include "Common_Features.hpp"
+
 struct RT_ID {
     int host_socket = -1;
 };
@@ -35,7 +38,7 @@ class RTSocket {
     SocketClose();
     int
     SocketRecv();
-    RTSocket();
+    RTSocket() = default;
     ~RTSocket();
     std::string ErrMsg;
 };

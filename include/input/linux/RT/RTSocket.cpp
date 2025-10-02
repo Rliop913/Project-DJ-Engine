@@ -1,4 +1,5 @@
 #include "RTSocket.hpp"
+#include "Common_Features.hpp"
 #include <sys/mman.h>
 #include <sys/socket.h>
 #include <sys/un.h>
@@ -99,6 +100,10 @@ RTSocket::SocketOpen(const std::string &socket_path)
 int
 RTSocket::SocketRecv()
 {
+    std::string msg;
+    while (true) {
+        Common_Features::LPRecv(importants.host_socket, msg);
+    }
 }
 
 int

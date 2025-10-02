@@ -31,14 +31,24 @@ class OS_Input {
     ONE_SHOT_DEV_FUTURE config_data;
     ONE_SHOT_RUN_FUTURE run_ok;
     bool
-    kill();
+    kill()
+    {
+        return false;
+    } // todo- impl this
     std::vector<DeviceData>
-    getDevices();
+    getDevices()
+    {
+        return std::vector<DeviceData>();
+    } // todo- impl this
 
     void
-    TrigLoop();
+    TrigLoop()
+    {
+    } // todo- impl this
     void
-    ResetLoop();
+    ResetLoop()
+    {
+    } // todo- impl this
 };
 
 template <typename T, int MEM_PROT_FLAG>

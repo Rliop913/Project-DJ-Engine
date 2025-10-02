@@ -23,7 +23,7 @@ else()
 endif()
 
 
-option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
+option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
 option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
 option(PDJE_DYNAMIC "Make Shared Library" OFF)
 
@@ -45,6 +45,36 @@ include(cmakes/src/EDITORsrc.cmake)
 include(cmakes/src/JUDGEsrc.cmake)
 include(cmakes/src/GLOBALsrc.cmake)
 include(cmakes/src/INPUTsrc.cmake)
+
+if(LINUX)
+
+add_executable(PDJE_MODULE_INPUT_RTMAIN ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTMain.cpp ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC})
+
+target_include_directories(PDJE_MODULE_INPUT_RTMAIN PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
+PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT_RTMAIN)
+setSpdlogReqLib(PDJE_MODULE_INPUT_RTMAIN)
+
+set(RT_HASH_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/common/RT_EXEC_HASH.hpp)
+
+add_custom_command(
+  OUTPUT ${RT_HASH_HEADER}
+  COMMAND ${CMAKE_COMMAND}
+    -DRT_BIN=$<TARGET_FILE:PDJE_MODULE_INPUT_RTMAIN>
+    -DOUT_HDR=${RT_HASH_HEADER}
+    -P ${CMAKE_CURRENT_SOURCE_DIR}/cmakes/GenRTHASH.cmake
+  DEPENDS PDJE_MODULE_INPUT_RTMAIN $<TARGET_FILE:PDJE_MODULE_INPUT_RTMAIN>
+  BYPRODUCTS ${RT_HASH_HEADER}
+  VERBATIM
+  USES_TERMINAL
+)
+
+add_custom_target(gen_RT_HASH ALL DEPENDS ${RT_HASH_HEADER})
+
+
+
+endif()
+
+
 
 
 if(PDJE_BUILD_TESTS)
@@ -91,12 +121,13 @@ target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE
 
 endif()
 
+
 if(LINUX)
 
-add_executable(PDJE_MODULE_INPUT_RTMAIN ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTMain.cpp ${inputSource} ${globalSource})
+target_link_libraries(PDJE_MODULE_INPUT PUBLIC OpenSSL::Crypto)
 
-target_include_directories(PDJE_MODULE_INPUT_RTMAIN PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
-PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT_RTMAIN)
+add_dependencies(PDJE_MODULE_INPUT gen_RT_HASH)
+
 endif()
 
 function(linkPDJELibs targetName)

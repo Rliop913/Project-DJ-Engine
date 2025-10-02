@@ -4,8 +4,12 @@
 #include <cstddef>
 #include <cstdint>
 #include <limits>
+#include <netinet/in.h>
 #include <string>
+#include <string_view>
 #include <sys/socket.h>
+
+#include <nlohmann/json.hpp>
 namespace Common_Features {
 
 static int
@@ -20,12 +24,12 @@ SendByte(int dest_fd, const void *data, size_t len)
                 continue; // ignore signal
             if (errno == EAGAIN)
                 continue; // nonblock
-            return -1;
+            return -errno;
         } else if (sended_bytes == 0) {
-            return -2;
+            return -EPIPE;
         }
-        p += sended_bytes;
-        len -= sended_bytes;
+        p += static_cast<size_t>(sended_bytes);
+        len -= static_cast<size_t>(sended_bytes);
     }
     return len;
 }
@@ -42,12 +46,12 @@ RecvByte(int dest_fd, void *data, size_t len)
                 continue; // ignore signal
             if (errno == EAGAIN)
                 continue; // nonblock
-            return -1;
+            return -errno;
         } else if (readed_bytes == 0) {
-            return -2;
+            return -EPIPE;
         }
-        p += readed_bytes;
-        len -= readed_bytes;
+        p += static_cast<size_t>(readed_bytes);
+        len -= static_cast<size_t>(readed_bytes);
     }
     return len;
 }
@@ -58,10 +62,10 @@ LPSend(int dest_fd, const std::string &data)
 {
     auto len = data.size();
     if (len > std::numeric_limits<uint32_t>::max()) {
-        return -1;
+        return -EMSGSIZE;
     }
     if (len == 0) {
-        return -2;
+        return -1;
     }
     auto net_len = htonl(static_cast<uint32_t>(len));
     if (SendByte(dest_fd, &net_len, sizeof(uint32_t)) < 0) {
@@ -76,5 +80,25 @@ LPSend(int dest_fd, const std::string &data)
 static int
 LPRecv(int dest_fd, std::string &data)
 {
+    uint32_t net_len;
+    if (RecvByte(dest_fd, &net_len, sizeof(uint32_t)) < 0) {
+        return errno;
+    }
+    auto len = ntohl(net_len);
+    if (len == 0) {
+        return -1;
+    }
+    data.resize(len);
+
+    if (RecvByte(dest_fd, data.data(), len) < 0) {
+        return errno;
+    }
+    return 0;
 }
+
+static std::string
+ParseMsg(std::string_view msg)
+{
+}
+
 }; // namespace Common_Features

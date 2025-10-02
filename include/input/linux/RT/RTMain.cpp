@@ -15,6 +15,10 @@ main(int argc, char **argv)
 
     rs.SocketOpen(argv[1]);
 
+    rs.SocketRecv();
+
+    // run
+
     rs.SocketClose();
     return 0;
 }

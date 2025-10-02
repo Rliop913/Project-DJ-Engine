@@ -97,5 +97,8 @@ set(PDJE_INCLUDE_INPUT_OS ${CMAKE_CURRENT_SOURCE_DIR}/include/input/windows)
 elseif(APPLE)
 set(PDJE_INCLUDE_INPUT_OS ${CMAKE_CURRENT_SOURCE_DIR}/include/input/apple)
 else()
-set(PDJE_INCLUDE_INPUT_OS ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT)
+set(PDJE_INCLUDE_INPUT_OS ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux 
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/common
+  )
 endif()
