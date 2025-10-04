@@ -10,8 +10,9 @@ main(int argc, char **argv)
     }
     std::cout << "client on" << std::endl;
     std::unique_ptr<RTSocket> rs;
+    RTEvent                   rtev;
     try {
-        rs = std::make_unique<RTSocket>(argv[1]);
+        rs = std::make_unique<RTSocket>(argv[1], &rtev);
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
         std::cout << "from RT" << std::endl;
@@ -23,6 +24,6 @@ main(int argc, char **argv)
 
     std::cout << "end client" << std::endl;
     // run
-
+    rtev.Trig();
     return 0;
 }

@@ -110,6 +110,5 @@ PDJE_Input::NEXT()
 
     default:
         throw std::logic_error("State machine broken.");
-        return state;
     }
 }

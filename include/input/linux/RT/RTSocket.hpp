@@ -1,8 +1,13 @@
 #pragma once
+#include "Common_Features.hpp"
+#include "Input_State.hpp"
+#include "RTEvent.hpp"
+#include "nlohmann/json_fwd.hpp"
 #include <cstddef>
 #include <fcntl.h>
+#include <filesystem>
 #include <functional>
-#include <libevdev/libevdev.h>
+
 #include <numa.h>
 #include <numaif.h>
 #include <sched.h>
@@ -13,22 +18,19 @@
 #include <sys/un.h>
 #include <unistd.h>
 
-#include "Common_Features.hpp"
-#include "nlohmann/json_fwd.hpp"
-
 #include <nlohmann/json.hpp>
-#include <unordered_map>
 
 using nj            = nlohmann::json;
 using data_body     = std::vector<std::string>;
 using regi_function = std::function<int(const data_body &)>;
-
+namespace fs        = std::filesystem;
 struct RT_ID {
     int host_socket = -1;
 };
 
 class RTSocket {
   private:
+    RTEvent                                       *rtev;
     std::unordered_map<std::string, regi_function> functionRegistry;
     std::unordered_map<int, std::function<void()>> errorHandler;
     int
@@ -52,13 +54,17 @@ class RTSocket {
     void
     RegisterFunctions();
 
+    DEV_LIST
+    ListDevices();
+
   public:
+    std::unordered_map<std::string, fs::path> stored_dev_path;
     void
     SendMsg(const std::string &msg);
     int
     Communication();
 
-    RTSocket(const std::string &socket_path);
+    RTSocket(const std::string &socket_path, RTEvent *ptr);
     ~RTSocket();
     std::string ErrMsg;
 };

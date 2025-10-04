@@ -46,8 +46,8 @@ struct Midi_Input_Data {
 struct Input_Event {};
 
 struct DeviceData {
-    std::string  Type;
-    std::wstring Name;
+    std::string Type;
+    std::string Name;
 };
 
 using DEV_LIST             = std::vector<DeviceData>;

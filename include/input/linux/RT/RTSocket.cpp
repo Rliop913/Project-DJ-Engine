@@ -1,5 +1,6 @@
 #include "RTSocket.hpp"
 #include "Common_Features.hpp"
+#include "RTEvent.hpp"
 #include <exception>
 #include <stdexcept>
 #include <string>
@@ -145,8 +146,9 @@ RTSocket::~RTSocket()
     munlockall();
 }
 
-RTSocket::RTSocket(const std::string &socket_path)
+RTSocket::RTSocket(const std::string &socket_path, RTEvent *ptr)
 {
+    rtev = ptr;
     if (!FixCPU()) {
         throw std::runtime_error("failed to fix cpu. ERRMSG:" + ErrMsg);
     }

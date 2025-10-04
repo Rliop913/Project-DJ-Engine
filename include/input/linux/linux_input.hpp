@@ -40,6 +40,8 @@ class OS_Input {
     } // todo- impl this
     std::vector<DeviceData>
     getDevices();
+    std::string
+    setDevices(const DEV_LIST &devs);
 
     void
     EndSocketTransmission();

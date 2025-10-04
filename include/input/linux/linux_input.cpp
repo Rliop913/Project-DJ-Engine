@@ -1,6 +1,7 @@
 #include "linux_input.hpp"
 #include "Common_Features.hpp"
 #include "Input_State.hpp"
+#include "RTSocket.hpp"
 #include "spawn.h"
 #include <cerrno>
 #include <sys/mman.h>
@@ -103,9 +104,41 @@ OS_Input::getDevices()
     std::string msggot;
     Common_Features::LPSend(importants.client_fd, toSend.dump());
     Common_Features::LPRecv(importants.client_fd, msggot);
-    std::cout << msggot << std::endl;
+    DEV_LIST   lsDev;
+    auto       got       = Common_Features::ReadMSG("GET_DEV", msggot);
+    bool       flag_name = true;
+    DeviceData dd;
+    for (const auto &dev : got) {
+        if (flag_name) {
+            dd.Name   = dev;
+            flag_name = false;
+        } else {
+            dd.Type   = dev;
+            flag_name = true;
+            lsDev.push_back(dd);
+            dd = DeviceData();
+        }
+    }
 
-    return std::vector<DeviceData>();
+    return lsDev;
+}
+
+std::string
+OS_Input::setDevices(const DEV_LIST &devs)
+{
+    data_body db;
+    for (const auto &dev : devs) {
+        db.push_back(dev.Name);
+    }
+    Common_Features::LPSend(importants.client_fd,
+                            Common_Features::MakeMSG("SET_DEV", db));
+    std::string msggot;
+    Common_Features::LPRecv(importants.client_fd, msggot);
+    auto readed = Common_Features::ReadMSG("SET_DEV", msggot);
+    if (readed.empty()) {
+        return "";
+    }
+    return readed.front();
 }
 
 void
