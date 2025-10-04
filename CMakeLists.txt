@@ -23,7 +23,7 @@ else()
 endif()
 
 
-option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
+option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
 option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
 option(PDJE_DYNAMIC "Make Shared Library" OFF)
 

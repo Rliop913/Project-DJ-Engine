@@ -1,5 +1,8 @@
 #include "RTSocket.hpp"
 #include "Common_Features.hpp"
+#include <exception>
+#include <stdexcept>
+#include <string>
 #include <sys/mman.h>
 #include <sys/socket.h>
 #include <sys/un.h>
@@ -10,10 +13,10 @@ RTSocket::FixCPU(int core_number)
     int valid_res = CoreValid(core_number);
     if (valid_res < 0) {
         switch (valid_res) {
-        case -1:
+        case PDJE_RT_ERROR::FAILED_TO_SCHED_GETAFFINITY:
             ErrMsg += "failed to sched getaffinity\n";
             break;
-        case -2:
+        case PDJE_RT_ERROR::FAILED_TO_SET_CPU_NUMBER:
             ErrMsg += "failed to set cpu number\n";
             break;
         }
@@ -65,7 +68,7 @@ RTSocket::CoreValid(int core_number)
     CPU_ZERO(&allowed);
 
     if (sched_getaffinity(0, sizeof(allowed), &allowed) != 0) {
-        return -1;
+        return PDJE_RT_ERROR::FAILED_TO_SCHED_GETAFFINITY;
     }
 
     if (!CPU_ISSET(core_number, &allowed)) {
@@ -77,12 +80,12 @@ RTSocket::CoreValid(int core_number)
             }
         }
         if (!CPU_ISSET(core_number, &allowed)) {
-            return -2;
+            return PDJE_RT_ERROR::FAILED_TO_SET_CPU_NUMBER;
         }
     }
     return 0;
 }
-
+#include <iostream>
 int
 RTSocket::SocketOpen(const std::string &socket_path)
 {
@@ -93,16 +96,35 @@ RTSocket::SocketOpen(const std::string &socket_path)
     if (connect(importants.host_socket,
                 reinterpret_cast<sockaddr *>(&addr),
                 sizeof(addr)) < 0) {
+        std::cerr << errno << std::endl;
         return errno;
     }
+    return 0;
 }
 
 int
-RTSocket::SocketRecv()
+RTSocket::Communication()
 {
     std::string msg;
+    int         resFlag = 0;
     while (true) {
-        Common_Features::LPRecv(importants.host_socket, msg);
+        msg.clear();
+        resFlag = Common_Features::LPRecv(importants.host_socket, msg);
+        if (resFlag != 0) {
+            return resFlag;
+        }
+        int parseFlag = ParseMsg(msg);
+        if (parseFlag > 0) {
+            return 0;
+        }
+
+        if (parseFlag != 0) {
+            if (!errorHandler.contains(parseFlag)) {
+                throw std::runtime_error("failed to handle error." +
+                                         std::to_string(parseFlag));
+            }
+            errorHandler.at(parseFlag)();
+        }
     }
 }
 
@@ -119,5 +141,42 @@ RTSocket::MLock()
 
 RTSocket::~RTSocket()
 {
+    SocketClose();
     munlockall();
+}
+
+RTSocket::RTSocket(const std::string &socket_path)
+{
+    if (!FixCPU()) {
+        throw std::runtime_error("failed to fix cpu. ERRMSG:" + ErrMsg);
+    }
+    MLock();
+    SocketOpen(socket_path);
+    RegisterFunctions();
+}
+#include <iostream> //debug
+int
+RTSocket::ParseMsg(const std::string &raw_json_msg)
+{
+    nj parsed;
+    try {
+        parsed = nj::parse(raw_json_msg);
+
+    } catch (const std::exception &e) {
+        return PDJE_RT_ERROR::FAILED_TO_PARSE_JSON;
+    }
+    if (parsed.contains("HEAD") && parsed.contains("BODY")) {
+        if (parsed["HEAD"].is_string() && parsed["BODY"].is_array() &&
+            functionRegistry.contains(parsed["HEAD"].get<std::string>())) {
+            return functionRegistry[parsed["HEAD"].get<std::string>()](
+                parsed["BODY"].get<std::vector<std::string>>());
+
+        } else {
+            std::cout << raw_json_msg << std::endl;
+
+            return PDJE_RT_ERROR::FAILED_TO_PARSE_JSON_HEAD_BODY;
+        }
+    } else {
+        return PDJE_RT_ERROR::INVALID_JSON_FORMAT;
+    }
 }

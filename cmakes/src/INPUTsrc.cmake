@@ -21,6 +21,7 @@ set(PDJE_OS_INPUT_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/PDJE_Input.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/linux_input.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTSocket.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTFunctionRegister.cpp
     
 )
 

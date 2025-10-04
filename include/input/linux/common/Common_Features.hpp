@@ -6,10 +6,17 @@
 #include <limits>
 #include <netinet/in.h>
 #include <string>
-#include <string_view>
 #include <sys/socket.h>
 
-#include <nlohmann/json.hpp>
+enum PDJE_RT_ERROR {
+    FAILED_TO_PARSE_JSON                     = -1,
+    FAILED_TO_PARSE_JSON_HEAD_BODY           = -2,
+    INVALID_JSON_FORMAT                      = -3,
+    FAILED_TO_SCHED_GETAFFINITY              = -4,
+    FAILED_TO_SET_CPU_NUMBER                 = -5,
+    FAILED_TO_SEND_RECV__DATA_LENGTH_IS_ZERO = -6
+};
+
 namespace Common_Features {
 
 static int
@@ -65,7 +72,7 @@ LPSend(int dest_fd, const std::string &data)
         return -EMSGSIZE;
     }
     if (len == 0) {
-        return -1;
+        return PDJE_RT_ERROR::FAILED_TO_SEND_RECV__DATA_LENGTH_IS_ZERO;
     }
     auto net_len = htonl(static_cast<uint32_t>(len));
     if (SendByte(dest_fd, &net_len, sizeof(uint32_t)) < 0) {
@@ -86,7 +93,7 @@ LPRecv(int dest_fd, std::string &data)
     }
     auto len = ntohl(net_len);
     if (len == 0) {
-        return -1;
+        return PDJE_RT_ERROR::FAILED_TO_SEND_RECV__DATA_LENGTH_IS_ZERO;
     }
     data.resize(len);
 
@@ -96,17 +103,12 @@ LPRecv(int dest_fd, std::string &data)
     return 0;
 }
 
-static std::string
-ParseMsg(std::string_view msg)
-{
-}
-
-void
-TOCTOU_DODGE()
-{
-    // todo- impl
-    // impl with hash compare - random re-compare + random fake execution +
-    // random sleep time
-}
+// void
+// TOCTOU_DODGE()
+// {
+//     // todo- impl
+//     // impl with hash compare - random re-compare + random fake execution +
+//     // random sleep time
+// }
 
 }; // namespace Common_Features

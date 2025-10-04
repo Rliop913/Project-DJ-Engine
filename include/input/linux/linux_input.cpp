@@ -1,4 +1,5 @@
 #include "linux_input.hpp"
+#include "Common_Features.hpp"
 #include "Input_State.hpp"
 #include "spawn.h"
 #include <cerrno>
@@ -71,4 +72,53 @@ OS_Input::SocketOpen(const std::string &exec_path)
     if (importants.client_fd < 0) {
         return errno;
     }
+    return 0;
+}
+
+int
+OS_Input::CloseClient()
+{
+    // somthing to close client
+    return 0;
+}
+
+void
+OS_Input::SocketClose()
+{
+    CloseClient();
+    close(importants.client_fd);
+    close(importants.socket_fd);
+    unlink(importants.socket_path.c_str());
+}
+#include <iostream>
+std::vector<DeviceData>
+OS_Input::getDevices()
+{
+    nlohmann::json toSend;
+    toSend["HEAD"] = "GET_DEV";
+
+    std::vector<std::string> strlist;
+    strlist.push_back("temp");
+    toSend["BODY"] = strlist;
+    std::string msggot;
+    Common_Features::LPSend(importants.client_fd, toSend.dump());
+    Common_Features::LPRecv(importants.client_fd, msggot);
+    std::cout << msggot << std::endl;
+
+    return std::vector<DeviceData>();
+}
+
+void
+OS_Input::EndSocketTransmission()
+{
+    nlohmann::json toSend;
+    toSend["HEAD"] = "END_SOCKET";
+
+    std::vector<std::string> strlist;
+    strlist.push_back("temp");
+    toSend["BODY"] = strlist;
+    std::string msggot;
+    Common_Features::LPSend(importants.client_fd, toSend.dump());
+    Common_Features::LPRecv(importants.client_fd, msggot);
+    std::cout << msggot << std::endl;
 }

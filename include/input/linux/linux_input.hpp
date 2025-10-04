@@ -1,7 +1,9 @@
 #pragma once
+#include "Common_Features.hpp"
 #include "IPC_SHARE_MEM.hpp"
 #include "Input_State.hpp"
 #include <ctime>
+#include <nlohmann/json.hpp>
 #include <sys/socket.h>
 struct ID {
     int         socket_fd = -1;
@@ -13,10 +15,6 @@ struct ID {
 
 class OS_Input {
   private:
-    int
-    SocketOpen(const std::string &exec_path);
-    int
-    SocketClose();
     int
     OpenClientWithSudo(const std::string &exec_path, const std::string &arg);
     int
@@ -30,17 +28,21 @@ class OS_Input {
   public:
     ONE_SHOT_DEV_FUTURE config_data;
     ONE_SHOT_RUN_FUTURE run_ok;
+
+    int
+    SocketOpen(const std::string &exec_path);
+    void
+    SocketClose();
     bool
     kill()
     {
         return false;
     } // todo- impl this
     std::vector<DeviceData>
-    getDevices()
-    {
-        return std::vector<DeviceData>();
-    } // todo- impl this
+    getDevices();
 
+    void
+    EndSocketTransmission();
     void
     TrigLoop()
     {

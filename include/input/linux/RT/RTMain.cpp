@@ -1,24 +1,28 @@
 #include "RTSocket.hpp"
+#include <exception>
 #include <iostream>
+#include <memory>
 int
 main(int argc, char **argv)
 {
-    if (argc < 1) {
+    if (argc < 2) {
         return -1;
     }
-    RTSocket rs = RTSocket();
-    if (!rs.FixCPU()) {
-        std::cout << rs.ErrMsg;
+    std::cout << "client on" << std::endl;
+    std::unique_ptr<RTSocket> rs;
+    try {
+        rs = std::make_unique<RTSocket>(argv[1]);
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
+        std::cout << "from RT" << std::endl;
         return -2;
     }
-    rs.MLock();
 
-    rs.SocketOpen(argv[1]);
+    std::cout << "in communication" << std::endl;
+    rs->Communication();
 
-    rs.SocketRecv();
-
+    std::cout << "end client" << std::endl;
     // run
 
-    rs.SocketClose();
     return 0;
 }
