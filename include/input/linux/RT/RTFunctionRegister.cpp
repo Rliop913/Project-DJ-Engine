@@ -31,9 +31,7 @@ RTSocket::RegisterFunctions()
         std::cout << "got end socket" << std::endl;
         Common_Features::LPSend(
             importants.host_socket,
-            Common_Features::MakeMSG("END_SOCKET",
-                                     "got end signal. end socket."));
-        std::cout << "sent end socket echo" << std::endl;
+            Common_Features::MakeMSG("END_SOCKET", "Ended Ready Loop"));
         return 1;
     };
 

@@ -21,9 +21,9 @@ main(int argc, char **argv)
 
     std::cout << "in communication" << std::endl;
     rs->Communication();
-
+    std::cout << "trig loop" << std::endl;
+    rtev.Trig();
     std::cout << "end client" << std::endl;
     // run
-    rtev.Trig();
     return 0;
 }

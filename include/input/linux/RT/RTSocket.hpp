@@ -1,6 +1,7 @@
 #pragma once
 #include "Common_Features.hpp"
 #include "Input_State.hpp"
+#include "OneTimeSysSetup.hpp"
 #include "RTEvent.hpp"
 #include "nlohmann/json_fwd.hpp"
 #include <cstddef>
@@ -8,9 +9,8 @@
 #include <filesystem>
 #include <functional>
 
-#include <numa.h>
-#include <numaif.h>
-#include <sched.h>
+#include <optional>
+
 #include <string>
 #include <sys/epoll.h>
 #include <sys/mman.h>
@@ -33,17 +33,11 @@ class RTSocket {
     RTEvent                                       *rtev;
     std::unordered_map<std::string, regi_function> functionRegistry;
     std::unordered_map<int, std::function<void()>> errorHandler;
-    int
-          CoreValid(int core_number);
-    RT_ID importants;
+    std::optional<OneTimeSysSetup>                 setups;
+    RT_ID                                          importants;
 
     int
     ParseMsg(const std::string &raw_json_msg);
-
-    bool
-    FixCPU(int core_number = 2);
-    void
-    MLock();
 
     int
     SocketOpen(const std::string &socket_path);
