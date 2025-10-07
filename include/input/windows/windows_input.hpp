@@ -1,5 +1,6 @@
 #pragma once
 #include <optional>
+#include <unordered_map>
 #include <Windows.h>
 #include <thread>
 #include <vector>
@@ -11,119 +12,32 @@
 #include <mutex>
 #include <hidsdi.h>
 #include <SetupAPI.h>
-// void 
-// input_worker(DWORD& tid) 
-// {
-//     // 윈도우 클래스 등록
-//     // auto now = qpc_now();
-//     HINSTANCE hst = GetModuleHandleW(nullptr);
-//     WNDCLASSW wc{};
-//     wc.lpfnWndProc   = DefWindowProc;
-//     wc.hInstance     = hst;
-//     wc.lpszClassName = L"RawInputDemoWndClass";
-//     RegisterClassW(&wc);
-
-
-//     HWND msgOnly = CreateWindowExW(
-//         0, wc.lpszClassName, L"",
-//         0,0,0,0,0,
-//         HWND_MESSAGE, nullptr, hst, nullptr
-//     );
-    
-//     if (!msgOnly) return;
-
-
-//     //=========================================================================================Dev Config=============================================================================================================
-//     RAWINPUTDEVICE rids[2]{};
-//     rids[0] = {0x01, 0x02, RIDEV_INPUTSINK | RIDEV_NOLEGACY, msgOnly}; // mouse
-//     rids[1] = {0x01, 0x06, RIDEV_INPUTSINK | RIDEV_NOLEGACY, msgOnly}; // keyboard
-//     auto regres = RegisterRawInputDevices(rids, 2, sizeof(RAWINPUTDEVICE));
-//     if(!regres){
-//         return;
-//     }
-    
-//     //up thread priority
-        
-//     HANDLE task = nullptr;
-//     DWORD  idx  = 0;
-//     task = AvSetMmThreadCharacteristicsW(L"Games", &idx);
-//     if (task) {
-//         AvSetMmThreadPriority(task, AVRT_PRIORITY_HIGH);
-//     }
-
-//     //stop power throttling
-//     #ifdef THREAD_POWER_THROTTLING_CURRENT_VERSION
-//         THREAD_POWER_THROTTLING_STATE s{};
-//         s.Version = THREAD_POWER_THROTTLING_CURRENT_VERSION;
-//         s.ControlMask = THREAD_POWER_THROTTLING_EXECUTION_SPEED;
-//         s.StateMask   = 0; // Disable throttling
-//         SetThreadInformation(GetCurrentThread(), ThreadPowerThrottling, &s, sizeof(s));
-//     #endif
-//     tid = GetCurrentThreadId();
-//     MSG msg;
-//     int temp = 0;
-//     double ms = 0;
-
-
-
-//     //=========================================================================================Before loop=============================================================================================================
-
-
-//     // now = qpc_now();
-//     // RawInputParser msgp = RawInputParser();
-//     while(true){
-//         //=========================================================================================IN loop=============================================================================================================
-//         DWORD w = MsgWaitForMultipleObjectsEx(
-//             0, nullptr, INFINITE,
-//             QS_RAWINPUT | QS_POSTMESSAGE,
-//             MWMO_INPUTAVAILABLE | MWMO_ALERTABLE
-//         );
-//         if(w == WAIT_OBJECT_0){
-
-//             if(PeekMessageW(&msg, nullptr, WM_QUIT, WM_QUIT, PM_REMOVE)){
-//                 // std::cout << "trigged" << std::endl;
-//                 break;
-//             }
-//             while(PeekMessageW(&msg, nullptr, WM_INPUT, WM_INPUT, PM_REMOVE)){
-//                 // std::cout << "pressed" << qpc_ticks_to_ms(qpc_now() - now) << std::endl;
-//                 // msgp.msgparse(reinterpret_cast<HRAWINPUT>(msg.lParam));
-//                 // ms += qpc_ticks_to_ms(qpc_now() - now);
-//                 // now = qpc_now();
-//                 ++temp;
-                
-//                 // reinterpret_cast<HRAWINPUT>(msg.lParam);
-//                 //use msg
-//             }
-            
-//             while (PeekMessageW(&msg, nullptr, 0, WM_QUIT - 1, PM_REMOVE)) {}
-
-//             while (PeekMessageW(&msg, nullptr, WM_QUIT + 1, 0xFFFF, PM_REMOVE)) {}
-//         }
-//     }
-//     //=========================================================================================DEAD=============================================================================================================
-//     if (task) AvRevertMmThreadCharacteristics(task);
-    
-//     // std::cout << "result" << ms / static_cast<double>(temp) << std::endl;
-//     return;
-// }
-
 #include <future>
 
+#include "PDJE_Input_DataLine.hpp"
+#include "PDJE_Buffer.hpp"
 
 struct RawDeviceData {
     RID_DEVICE_INFO info{};
     std::wstring deviceHIDPath;
 };
 
-struct OS_Input{
+using PDJE_DEV_PATH = std::string;
+
+
+
+class OS_Input{
 private:
     HWND init();
     bool config();
     void run();
     std::vector<RawDeviceData> getRawDeviceDatas();
-    std::wstring hid_label_from_path(const std::wstring& path);
-    std::wstring friendly_name_from_path(const std::wstring& path);
+    std::string hid_label_from_path(const std::wstring& path);
     DWORD ThreadID;
+    QPC_Timer qpc;
+    std::unordered_map<PDJE_DEV_PATH, PDJE_NAME> unlisted_targets;
+    std::unordered_map<PDJE_ID, PDJE_NAME> id_name;
+    PDJE_Buffer_Arena<PDJE_Input_Log> input_buffer;
 public:
     bool kill();
     void TrigLoop();
@@ -136,4 +50,10 @@ public:
     ONE_SHOT_DEV_FUTURE config_data;
     ONE_SHOT_RUN_FUTURE run_ok;
     std::optional<std::thread> worker;
+    PDJE_INPUT_DATA_LINE
+    PullOutDataLine();
+
+    OS_Input() = default;
+    ~OS_Input() = default;
+    
 };

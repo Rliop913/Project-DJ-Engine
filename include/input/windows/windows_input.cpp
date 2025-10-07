@@ -1,6 +1,9 @@
 #include "windows_input.hpp"
 #include "PDJE_Input.hpp"
-
+#include <format>
+#include <memory_resource>
+#include <SetupAPI.h>
+#include "dev_path_to_name.hpp"
 HWND
 OS_Input::init()
 {
@@ -19,6 +22,26 @@ OS_Input::init()
     
 }
 
+inline std::string wstring_to_utf8_nt(const std::wstring& w) {
+    if (w.empty()) return {};
+    auto target = w;
+    if (target.rfind(L"\\??\\", 0) == 0) {
+            target.replace(0, 4, L"\\\\?\\");
+    }
+
+    int required = WideCharToMultiByte(CP_UTF8, WC_ERR_INVALID_CHARS,
+                                       target.c_str(), -1, nullptr, 0, nullptr, nullptr);
+    if (required <= 0) throw std::runtime_error("WideCharToMultiByte size failed");
+
+    std::string out(required, '\0');
+    int written = WideCharToMultiByte(CP_UTF8, WC_ERR_INVALID_CHARS,
+                                      target.c_str(), -1, out.data(), required, nullptr, nullptr);
+    if (written <= 0) throw std::runtime_error("WideCharToMultiByte convert failed");
+
+    if (!out.empty() && out.back() == '\0') out.pop_back();
+    return out;
+}
+
 void
 OS_Input::run()
 {
@@ -26,6 +49,12 @@ OS_Input::run()
     MSG msg;
 
     DWORD w;
+    UINT size = 0;
+    uint64_t now;
+    PDJE_Dev_Type dtype;
+    thread_local std::pmr::unsynchronized_pool_resource mono_arena;
+    std::string handlestr;
+    handlestr.reserve(100);
     while(true){
         w = MsgWaitForMultipleObjectsEx(
             0, nullptr, INFINITE,
@@ -39,14 +68,60 @@ OS_Input::run()
                 break;
             }
             while(PeekMessageW(&msg, nullptr, WM_INPUT, WM_INPUT, PM_REMOVE)){
-                // std::cout << "pressed" << qpc_ticks_to_ms(qpc_now() - now) << std::endl;
-                // msgp.msgparse(reinterpret_cast<HRAWINPUT>(msg.lParam));
-                // ms += qpc_ticks_to_ms(qpc_now() - now);
-                // now = qpc_now();
-                // ++temp;
+                now = qpc.now();
+                if (GetRawInputData(reinterpret_cast<HRAWINPUT>(msg.lParam),
+                                    RID_INPUT, nullptr, &size, sizeof(RAWINPUTHEADER)) != 0 || size == 0) {
+                    continue;
+                }
+                std::pmr::vector<BYTE> buf(&mono_arena);
+                buf.reserve(size);
+                if (GetRawInputData(reinterpret_cast<HRAWINPUT>(msg.lParam),
+                                    RID_INPUT, buf.data(), &size, sizeof(RAWINPUTHEADER)) != size) {
+                    continue;
+                }
                 
-                // reinterpret_cast<HRAWINPUT>(msg.lParam);
-                //use msg
+                const RAWINPUT* ri = reinterpret_cast<const RAWINPUT*>(buf.data());
+                switch(ri->header.dwType){
+                    case RIM_TYPEMOUSE:
+                        dtype = PDJE_Dev_Type::MOUSE;
+                        break;
+                    case RIM_TYPEKEYBOARD:
+                        dtype = PDJE_Dev_Type::KEYBOARD;
+                        break;
+                    case RIM_TYPEHID:
+                        dtype = PDJE_Dev_Type::HID;
+                        break;
+                    default:
+                        dtype = PDJE_Dev_Type::UNKNOWN;
+                        break;
+                }
+                handlestr = std::to_string(
+                        reinterpret_cast<uintptr_t>(ri->header.hDevice));
+                
+                if(!unlisted_targets.empty()){
+                    if(!id_name.contains(handlestr)){
+
+                        if (GetRawInputDeviceInfoW(ri->header.hDevice, RIDI_DEVICENAME, nullptr, &size) == (UINT)-1 || size == 0){}
+                        else{
+                            std::wstring path(size, L'\0');
+                            if (GetRawInputDeviceInfoW(ri->header.hDevice, RIDI_DEVICENAME, path.data(), &size) == (UINT)-1){}
+                            else{
+                                if (!path.empty() && path.back() == L'\0') path.pop_back();
+                                std::string device_path = wstring_to_utf8_nt(path);
+                                if(unlisted_targets.contains(device_path)){
+                                    id_name[handlestr] =
+                                    unlisted_targets[device_path];
+                                    unlisted_targets.erase(device_path);
+                                }
+                            }
+                        }
+                    }
+                }
+                input_buffer.Write({
+                    .type=dtype, 
+                    .id = handlestr,
+                    .microSecond = qpc.to_micro(now)
+                });
             }
             
             while (PeekMessageW(&msg, nullptr, 0, WM_QUIT - 1, PM_REMOVE)) {}
@@ -65,14 +140,26 @@ OS_Input::work()
     if(!msgOnly) return;
 
     auto device_datas = config_data->get();
+    
     std::vector<RAWINPUTDEVICE> devTypes;
     bool hasKeyBoard = false;
     bool hasMouse = false;
     bool hasHID = false;
     for(const auto& dev : device_datas){
-        if(dev.Type == "MOUSE") hasMouse = true;
-        else if(dev.Type == "KEYBOARD") hasKeyBoard = true;
-        else if(dev.Type == "HID") hasHID = true;
+        switch (dev.Type)
+        {
+        case PDJE_Dev_Type::MOUSE:
+            hasMouse=true;
+            break;
+        case PDJE_Dev_Type::KEYBOARD:
+            hasKeyBoard = true;
+            break;
+        case PDJE_Dev_Type::HID:
+            hasHID = true;
+        default:
+            break;
+        }
+        unlisted_targets[dev.device_specific_id] = dev.Name;
     }
 
     if(hasKeyBoard){
@@ -162,43 +249,16 @@ OS_Input::getRawDeviceDatas()
     return out;
 }
 #include <iostream>
-std::wstring
+
+#include <filesystem>
+std::string
 OS_Input::hid_label_from_path(const std::wstring& path)
 {
-    HANDLE fh = CreateFileW(path.c_str(),
-                            GENERIC_READ,
-                            FILE_SHARE_READ | FILE_SHARE_WRITE,
-                            nullptr, OPEN_EXISTING,
-                            FILE_ATTRIBUTE_NORMAL, nullptr);
-    if (fh == INVALID_HANDLE_VALUE) return L"";
-
-    WCHAR man[128]{}, prod[128]{};
-    std::wstring out;
-    HIDD_ATTRIBUTES attrs{sizeof attrs};
-    if(HidD_GetAttributes(fh, &attrs)){
-        wchar_t buf[64];
-        swprintf(buf, 64, L"VID_%04X PID_%04X", attrs.VendorID, attrs.ProductID);
-        // label = buf; // 제조사/제품 문자열 없을 때 대체 표기
-        std::wcout << L"out: " << buf <<  L'\n';
-    }
-    if (HidD_GetManufacturerString(fh, man, sizeof(man))) out += man;
-    if (HidD_GetProductString(fh, prod, sizeof(prod))) {
-        if (!out.empty()) out += L" ";
-        out += prod;
-    }
-    CloseHandle(fh);
-    if(out.empty()){
-        out = friendly_name_from_path(path);
-    }
-    return out;
+    auto name = GetFriendlyNameFromHidPath(path);
+    return wstring_to_utf8_nt(name);
+    
 }
 
-std::wstring
-OS_Input::friendly_name_from_path(const std::wstring& path)
-{
-    HDEVINFO h = SetupDiGetClassDevsW(&GUID_DEVINTERFACE_HID, nullptr, nullptr, DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
-
-}
 #include <iostream>
 std::vector<DeviceData>
 OS_Input::getDevices()
@@ -210,19 +270,20 @@ OS_Input::getDevices()
         DeviceData tempdata;
         switch(i.info.dwType){
         case RIM_TYPEMOUSE:    
-            tempdata.Type = "MOUSE";
+            tempdata.Type = PDJE_Dev_Type::MOUSE;
             break;
         case RIM_TYPEKEYBOARD: 
-            tempdata.Type = "KEYBOARD";
+            tempdata.Type = PDJE_Dev_Type::KEYBOARD;
             break;
         case RIM_TYPEHID:
-            tempdata.Type = "HID";
+            tempdata.Type = PDJE_Dev_Type::HID;
             break;
         default:
-            tempdata.Type = "???";
+            tempdata.Type = PDJE_Dev_Type::UNKNOWN;
             break;
         }
         tempdata.Name = hid_label_from_path(i.deviceHIDPath);
+        tempdata.device_specific_id = wstring_to_utf8_nt(i.deviceHIDPath);
         out.push_back(tempdata);
     }
     return out;
@@ -249,4 +310,14 @@ OS_Input::ResetLoop()
 {
     worker->join();
     worker.reset();
+}
+
+
+PDJE_INPUT_DATA_LINE
+OS_Input::PullOutDataLine()
+{
+    PDJE_INPUT_DATA_LINE dline;
+    dline.input_arena = &input_buffer;
+    dline.id_name_conv = &id_name;
+    return dline;
 }

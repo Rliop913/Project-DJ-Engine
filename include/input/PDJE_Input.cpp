@@ -112,3 +112,9 @@ PDJE_Input::NEXT()
         throw std::logic_error("State machine broken.");
     }
 }
+
+PDJE_INPUT_DATA_LINE
+PDJE_Input::PullOutDataLine()
+{
+    return data.PullOutDataLine();
+}

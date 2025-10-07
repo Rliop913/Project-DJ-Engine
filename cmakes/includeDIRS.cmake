@@ -31,9 +31,6 @@ set(PDJE_INCLUDE_CORE
   ${CMAKE_CURRENT_SOURCE_DIR}/third_party/Faust/manual_compiled
   
 
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/core/input
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/core/input/linux
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/core/input/macos
   
   ${CMAKE_CURRENT_SOURCE_DIR}/include/core/MainObjects
   ${CMAKE_CURRENT_SOURCE_DIR}/include/core/MainObjects/audioPlayer

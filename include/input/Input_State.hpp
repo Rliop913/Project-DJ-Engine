@@ -3,7 +3,7 @@
 #include <optional>
 #include <string>
 #include <vector>
-
+#include <PDJE_Input_DataLine.hpp>
 enum PDJE_INPUT_STATE {
     DEVICE_CONFIG_STATE = 0,
     INPUT_LOOP_READY,
@@ -11,16 +11,15 @@ enum PDJE_INPUT_STATE {
     DEAD
 };
 
-enum PDJE_INPUT_TYPE { KEYBOARD = 0, MOUSE, MIDI };
 
 enum PDJE_MIDI_EVENTS {
 
 };
 
-struct Input_Type {
-    std::string     device_name;
-    PDJE_INPUT_TYPE type;
-};
+// struct Input_Type {
+//     std::string     device_name;
+//     PDJE_INPUT_TYPE type;
+// };
 
 using PDJE_KEY_CODE = std::string; // temp
 
@@ -43,11 +42,11 @@ struct Midi_Input_Data {
     uint8_t          velocity;
 };
 
-struct Input_Event {};
 
 struct DeviceData {
-    std::string Type;
+    PDJE_Dev_Type Type;
     std::string Name;
+    std::string device_specific_id;
 };
 
 using DEV_LIST             = std::vector<DeviceData>;

@@ -5,7 +5,6 @@
 #include <future>
 #include <string>
 #include <vector>
-
 #ifdef WIN32
 #include "windows_input.hpp"
 #elif defined(__APPLE__)
@@ -40,7 +39,7 @@ class PDJE_Input {
                             ResetOneShot(P &promise, F &future);
     std::vector<DeviceData> activated_devices;
     PDJE_INPUT_STATE        state = PDJE_INPUT_STATE::DEAD;
-
+    
   public:
     std::string ErrLog;
 

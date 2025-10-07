@@ -13,6 +13,7 @@ public:
     uint64_t now();
     double to_second(uint64_t tick);
     double to_ms(uint64_t tick);
+    uint64_t to_micro(uint64_t tick);
     QPC_Timer();
     ~QPC_Timer() = default;
 };

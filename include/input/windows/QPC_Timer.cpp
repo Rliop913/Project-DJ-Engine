@@ -32,3 +32,11 @@ QPC_Timer::to_ms(uint64_t tick)
         (static_cast<double>(tick / qpc_freq) * 1000.0) + 
             (static_cast<double>(tick % qpc_freq) * 1000.0) / static_cast<double>(qpc_freq);
 }
+
+uint64_t
+QPC_Timer::to_micro(uint64_t tick)
+{
+    return 
+    static_cast<uint64_t>(tick / qpc_freq) * static_cast<uint64_t>(1000000) +
+    static_cast<uint64_t>(tick % qpc_freq) * static_cast<uint64_t>(1000000) / qpc_freq;
+}
