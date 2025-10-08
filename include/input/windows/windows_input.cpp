@@ -5,6 +5,7 @@
 #include <SetupAPI.h>
 #include "dev_path_to_name.hpp"
 #include "windows_keyboard_fill.hpp"
+#include <bitset>
 HWND
 OS_Input::init()
 {
@@ -59,6 +60,8 @@ OS_Input::run()
     PDJE_Input_Event tempEv;
     handlestr.reserve(100);
     PDJE_HID_Event hidEv;
+    std::bitset<101> isPressed;
+    bool Writable = true;
     while(true){
 
         w = MsgWaitForMultipleObjectsEx(
@@ -73,6 +76,7 @@ OS_Input::run()
                 break;
             }
             while(PeekMessageW(&msg, nullptr, WM_INPUT, WM_INPUT, PM_REMOVE)){
+                Writable = true;
                 now = qpc.now();
                 if (GetRawInputData(reinterpret_cast<HRAWINPUT>(msg.lParam),
                                     RID_INPUT, nullptr, &size, sizeof(RAWINPUTHEADER)) != 0 || size == 0) {
@@ -94,8 +98,13 @@ OS_Input::run()
                         break;
                     case RIM_TYPEKEYBOARD:
                         dtype = PDJE_Dev_Type::KEYBOARD;
-                        
                         PDJE_RAWINPUT::FillKeyboardInput(tempEv, ri);
+                        if(isPressed.test(tempEv.keyboard.k) && tempEv.keyboard.pressed){
+                            Writable = false;
+                        }
+                        else{
+                            isPressed.set(tempEv.keyboard.k, tempEv.keyboard.pressed);
+                        }
 
                         break;
                     case RIM_TYPEHID:
@@ -128,13 +137,16 @@ OS_Input::run()
                         }
                     }
                 }
-                input_buffer.Write({
-                    .type=dtype,
-                    .event=tempEv,
-                    .hid_event = hidEv,
-                    .id = handlestr,
-                    .microSecond = qpc.to_micro(now)
-                });
+                if(Writable){
+
+                    input_buffer.Write({
+                        .type=dtype,
+                        .event=tempEv,
+                        .hid_event = hidEv,
+                        .id = handlestr,
+                        .microSecond = qpc.to_micro(now)
+                    });
+                }
             }
             
             while (PeekMessageW(&msg, nullptr, 0, WM_QUIT - 1, PM_REMOVE)) {}

@@ -36,8 +36,8 @@ enum PDJE_MIDI_EVENTS {
 #define PDJE_MOUSE_XWHEEL 0x0400
 #define PDJE_MOUSE_YWHEEL 0x0800
 
-enum class PDJE_KEY{
-    F_1, F_2, F_3, F_4, F_5, F_6, F_7, F_8, F_9, F_10, F_11, F_12, 
+enum PDJE_KEY{
+    F_1 = 0, F_2, F_3, F_4, F_5, F_6, F_7, F_8, F_9, F_10, F_11, F_12, 
     D1, D2, D3, D4, D5, D6, D7, D8, D9, D0, 
     Q, W, E, R, T, Y, U, I, O, P, 
     A, S, D, F, G, H, J, K, L, 
