@@ -4,6 +4,7 @@
 #include <memory_resource>
 #include <SetupAPI.h>
 #include "dev_path_to_name.hpp"
+#include "windows_keyboard_fill.hpp"
 HWND
 OS_Input::init()
 {
@@ -53,9 +54,13 @@ OS_Input::run()
     uint64_t now;
     PDJE_Dev_Type dtype;
     thread_local std::pmr::unsynchronized_pool_resource mono_arena;
+    std::pmr::unsynchronized_pool_resource hid_arena;
     std::string handlestr;
+    PDJE_Input_Event tempEv;
     handlestr.reserve(100);
+    PDJE_HID_Event hidEv;
     while(true){
+
         w = MsgWaitForMultipleObjectsEx(
             0, nullptr, INFINITE,
             QS_RAWINPUT | QS_POSTMESSAGE,
@@ -81,15 +86,21 @@ OS_Input::run()
                 }
                 
                 const RAWINPUT* ri = reinterpret_cast<const RAWINPUT*>(buf.data());
+                
                 switch(ri->header.dwType){
                     case RIM_TYPEMOUSE:
                         dtype = PDJE_Dev_Type::MOUSE;
+                        PDJE_RAWINPUT::FillMouseInput(tempEv, ri);
                         break;
                     case RIM_TYPEKEYBOARD:
                         dtype = PDJE_Dev_Type::KEYBOARD;
+                        
+                        PDJE_RAWINPUT::FillKeyboardInput(tempEv, ri);
+
                         break;
                     case RIM_TYPEHID:
                         dtype = PDJE_Dev_Type::HID;
+                        hidEv.hid_buffer = PDJE_RAWINPUT::FillHIDInput(hid_arena, ri, hidEv.hid_byte_size);
                         break;
                     default:
                         dtype = PDJE_Dev_Type::UNKNOWN;
@@ -118,7 +129,9 @@ OS_Input::run()
                     }
                 }
                 input_buffer.Write({
-                    .type=dtype, 
+                    .type=dtype,
+                    .event=tempEv,
+                    .hid_event = hidEv,
                     .id = handlestr,
                     .microSecond = qpc.to_micro(now)
                 });

@@ -2,6 +2,7 @@
 
 #include "Input_State.hpp"
 #include "PDJE_Input_DataLine.hpp"
+#include "PDJE_Input_Device_Data.hpp"
 #include <future>
 #include <string>
 #include <vector>

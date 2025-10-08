@@ -17,10 +17,10 @@ main()
         {
         case PDJE_Dev_Type::MOUSE:
             std::cout << "type: mouse"<< std::endl;
-            set_targets.push_back(i);
             break;
         case PDJE_Dev_Type::KEYBOARD:
             std::cout << "type: keyboard"<< std::endl;
+            set_targets.push_back(i);
             break;
         case PDJE_Dev_Type::HID:
             std::cout << "type: hid"<< std::endl;
@@ -49,6 +49,9 @@ main()
                 if(name != dline.id_name_conv->end()){
                     std::cout << "name: " << name->second << std::endl;
                     std::cout << "time: " << i.microSecond << std::endl;
+                    std::cout << "keyNumber: " << static_cast<int>(i.event.keyboard.k) << std::endl;
+                    std::cout << "pressed" << i.event.keyboard.pressed << std::endl;
+
                     times--;
                     if(times< 0){
                         return;

@@ -2,18 +2,16 @@
 
 #include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_Buffer.hpp"
-enum class PDJE_Dev_Type{
-    MOUSE,
-    KEYBOARD,
-    HID,
-    UNKNOWN
-};
+#include "Input_State.hpp"
+#include "PDJE_Input_Device_Data.hpp"
 
 using PDJE_NAME = std::string;
 using PDJE_ID = std::string;
 
 struct PDJE_Input_Log{
     PDJE_Dev_Type type;
+    PDJE_Input_Event event;
+    PDJE_HID_Event hid_event;
     std::string id;
     uint64_t microSecond;
 };
