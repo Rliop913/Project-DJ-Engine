@@ -23,7 +23,7 @@ else()
 endif()
 
 
-option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
+option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
 option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
 option(PDJE_DYNAMIC "Make Shared Library" OFF)
 
@@ -92,13 +92,17 @@ endif(PDJE_BUILD_TESTS)
 
 if(PDJE_DYNAMIC)
 add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource} ${globalSource})
+
+if(WIN32)#windows only. for now
 add_library(PDJE_MODULE_JUDGE SHARED ${judgeSource} ${globalSource})
 add_library(PDJE_MODULE_INPUT SHARED ${inputSource} ${globalSource})
+endif()
 
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
+if(WIN32)#windows only. for now
 target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE})
 target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
-
+endif()
 if(WIN32)
   target_compile_definitions(PDJE PUBLIC PDJE_WINDOWS_DLL)
   target_compile_definitions(PDJE PRIVATE PDJE_BUILDING)
@@ -110,18 +114,23 @@ if(WIN32)
 endif()
 else()
 add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource} ${globalSource})
+
+
+if(WIN32)#windows only. for now
 add_library(PDJE_MODULE_JUDGE ${judgeSource} ${globalSource})
 add_library(PDJE_MODULE_INPUT ${inputSource} ${globalSource})
-
-
-
-target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
-target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE})
-target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
-
 endif()
 
 
+target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
+if(WIN32)#windows only. for now
+target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE})
+target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
+endif()
+
+endif()
+
+if(WIN32)#windows only. for now
 if(LINUX)
 
 target_link_libraries(PDJE_MODULE_INPUT PUBLIC OpenSSL::Crypto)
@@ -129,6 +138,7 @@ target_link_libraries(PDJE_MODULE_INPUT PUBLIC OpenSSL::Crypto)
 add_dependencies(PDJE_MODULE_INPUT gen_RT_HASH)
 
 endif()
+endif()#skip linux
 
 function(linkPDJELibs targetName)
   target_link_libraries(${targetName} PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
