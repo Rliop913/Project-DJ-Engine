@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="RTEvent_8hpp" kind="file" language="C++">
+    <compoundname>RTEvent.hpp</compoundname>
+    <includes local="no">filesystem</includes>
+    <includes local="no">libevdev/libevdev.h</includes>
+    <includes local="no">unordered_map</includes>
+    <includedby refid="RTEvent_8cpp" local="yes">include/input/linux/RT/RTEvent.cpp</includedby>
+    <includedby refid="RTSocket_8cpp" local="yes">include/input/linux/RT/RTSocket.cpp</includedby>
+    <includedby refid="RTSocket_8hpp" local="yes">include/input/linux/RT/RTSocket.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/input/linux/RT/RTEvent.hpp</label>
+        <link refid="RTEvent_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>filesystem</label>
+      </node>
+      <node id="3">
+        <label>libevdev/libevdev.h</label>
+      </node>
+      <node id="4">
+        <label>unordered_map</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/input/linux/RT/RTEvent.cpp</label>
+        <link refid="RTEvent_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/input/linux/RT/RTEvent.hpp</label>
+        <link refid="RTEvent_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/input/linux/RT/RTFunctionRegister.cpp</label>
+        <link refid="RTFunctionRegister_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/input/linux/RT/RTMain.cpp</label>
+        <link refid="RTMain_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/input/linux/RT/RTSocket.cpp</label>
+        <link refid="RTSocket_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/input/linux/RT/RTSocket.hpp</label>
+        <link refid="RTSocket_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>include/input/linux/linux_input.cpp</label>
+        <link refid="linux__input_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classRTEvent" prot="public">RTEvent</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;libevdev/libevdev.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fs<sp/>=<sp/>std::filesystem;</highlight></codeline>
+<codeline lineno="6" refid="classRTEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRTEvent_1a24d0218409c270a46c3983304a932aca" kindref="member">RTEvent</ref><sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="8" refid="classRTEvent_1afa33e186864ea6c3bf2ac4f1bc57b20b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;int,<sp/>libevdev<sp/>*&gt;<sp/><ref refid="classRTEvent_1afa33e186864ea6c3bf2ac4f1bc57b20b" kindref="member">events</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRTEvent_1ae701086909faf89e51c7a96b78815c90" kindref="member">DrainEvents</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>epFD,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>FD,<sp/>libevdev<sp/>*evdev);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRTEvent_1a15f201cbda3e915545e56589f7a217cc" kindref="member">use_event</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>input_event<sp/>&amp;evtrig);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRTEvent_1a33e492d1ad0a73a58d759a37e93b9abc" kindref="member">Reset</ref>();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRTEvent_1a7c6b7b49d583adaa3382f426052e881a" kindref="member">Add</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>&amp;target);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRTEvent_1ad4752e36f2999d8121f03104f860a222" kindref="member">Trig</ref>();</highlight></codeline>
+<codeline lineno="21" refid="classRTEvent_1a24d0218409c270a46c3983304a932aca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRTEvent_1a24d0218409c270a46c3983304a932aca" kindref="member">RTEvent</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRTEvent_1abf2f15d758052a3a06bdb40ab6522aa9" kindref="member">~RTEvent</ref>();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="include/input/linux/RT/RTEvent.hpp"/>
+  </compounddef>
+</doxygen>

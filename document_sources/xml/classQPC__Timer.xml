@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classQPC__Timer" kind="class" language="C++" prot="public">
+    <compoundname>QPC_Timer</compoundname>
+    <includes refid="QPC__Timer_8hpp" local="no">QPC_Timer.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQPC__Timer_1a9725fb836599de869b17b990b08f285c" prot="private" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t QPC_Timer::qpc_freq</definition>
+        <argsstring></argsstring>
+        <name>qpc_freq</name>
+        <qualifiedname>QPC_Timer::qpc_freq</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/QPC_Timer.hpp" line="8" column="14" bodyfile="include/input/windows/QPC_Timer.hpp" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQPC__Timer_1aa7af7da6e19f0072b06c75e920055b21" prot="private" static="no" mutable="no">
+        <type>LARGE_INTEGER</type>
+        <definition>LARGE_INTEGER QPC_Timer::temp_int</definition>
+        <argsstring></argsstring>
+        <name>temp_int</name>
+        <qualifiedname>QPC_Timer::temp_int</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/QPC_Timer.hpp" line="9" column="19" bodyfile="include/input/windows/QPC_Timer.hpp" bodystart="9" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQPC__Timer_1a4db4c317e67be448736c36b55a293bf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t QPC_Timer::now</definition>
+        <argsstring>()</argsstring>
+        <name>now</name>
+        <qualifiedname>QPC_Timer::now</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/QPC_Timer.hpp" line="13" column="14" bodyfile="include/input/windows/QPC_Timer.cpp" bodystart="12" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classQPC__Timer_1a8dc5cd509e6060c8ef51d821e1cde93a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QPC_Timer::to_second</definition>
+        <argsstring>(uint64_t tick)</argsstring>
+        <name>to_second</name>
+        <qualifiedname>QPC_Timer::to_second</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>tick</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/QPC_Timer.hpp" line="14" column="12" bodyfile="include/input/windows/QPC_Timer.cpp" bodystart="20" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classQPC__Timer_1af78396474952c5ea8ec31ae056eca064" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QPC_Timer::to_ms</definition>
+        <argsstring>(uint64_t tick)</argsstring>
+        <name>to_ms</name>
+        <qualifiedname>QPC_Timer::to_ms</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>tick</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/QPC_Timer.hpp" line="15" column="12" bodyfile="include/input/windows/QPC_Timer.cpp" bodystart="29" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classQPC__Timer_1ac285942b80ee6921247c74ec39bb4397" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t QPC_Timer::to_micro</definition>
+        <argsstring>(uint64_t tick)</argsstring>
+        <name>to_micro</name>
+        <qualifiedname>QPC_Timer::to_micro</qualifiedname>
+        <param>
+          <type>uint64_t</type>
+          <declname>tick</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/QPC_Timer.hpp" line="16" column="14" bodyfile="include/input/windows/QPC_Timer.cpp" bodystart="37" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classQPC__Timer_1a7e43a09bc4bd83857a5bebb254a9efce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QPC_Timer::QPC_Timer</definition>
+        <argsstring>()</argsstring>
+        <name>QPC_Timer</name>
+        <qualifiedname>QPC_Timer::QPC_Timer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/QPC_Timer.hpp" line="17" column="5" bodyfile="include/input/windows/QPC_Timer.cpp" bodystart="4" bodyend="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classQPC__Timer_1aeb16983fa883fef83dd761ae3080ada0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QPC_Timer::~QPC_Timer</definition>
+        <argsstring>()=default</argsstring>
+        <name>~QPC_Timer</name>
+        <qualifiedname>QPC_Timer::~QPC_Timer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/QPC_Timer.hpp" line="18" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/input/windows/QPC_Timer.hpp" line="6" column="1" bodyfile="include/input/windows/QPC_Timer.hpp" bodystart="6" bodyend="19"/>
+    <listofallmembers>
+      <member refid="classQPC__Timer_1a4db4c317e67be448736c36b55a293bf3" prot="public" virt="non-virtual"><scope>QPC_Timer</scope><name>now</name></member>
+      <member refid="classQPC__Timer_1a9725fb836599de869b17b990b08f285c" prot="private" virt="non-virtual"><scope>QPC_Timer</scope><name>qpc_freq</name></member>
+      <member refid="classQPC__Timer_1a7e43a09bc4bd83857a5bebb254a9efce" prot="public" virt="non-virtual"><scope>QPC_Timer</scope><name>QPC_Timer</name></member>
+      <member refid="classQPC__Timer_1aa7af7da6e19f0072b06c75e920055b21" prot="private" virt="non-virtual"><scope>QPC_Timer</scope><name>temp_int</name></member>
+      <member refid="classQPC__Timer_1ac285942b80ee6921247c74ec39bb4397" prot="public" virt="non-virtual"><scope>QPC_Timer</scope><name>to_micro</name></member>
+      <member refid="classQPC__Timer_1af78396474952c5ea8ec31ae056eca064" prot="public" virt="non-virtual"><scope>QPC_Timer</scope><name>to_ms</name></member>
+      <member refid="classQPC__Timer_1a8dc5cd509e6060c8ef51d821e1cde93a" prot="public" virt="non-virtual"><scope>QPC_Timer</scope><name>to_second</name></member>
+      <member refid="classQPC__Timer_1aeb16983fa883fef83dd761ae3080ada0" prot="public" virt="non-virtual"><scope>QPC_Timer</scope><name>~QPC_Timer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

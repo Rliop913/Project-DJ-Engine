@@ -3,7 +3,7 @@
 Struct DeviceData
 =================
 
-- Defined in :ref:`file_include_input_PDJE_INPUT.hpp`
+- Defined in :ref:`file_include_global_DataLines_PDJE_Input_Device_Data.hpp`
 
 
 Struct Documentation

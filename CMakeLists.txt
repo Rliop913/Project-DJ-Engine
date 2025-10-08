@@ -37,31 +37,6 @@ if(PDJE_DYNAMIC)
   endif()
 endif()
 
-# if(WIN32)
-  
-# elseif(UNIX AND NOT APPLE)
-#   # find_package(PkgConfig REQUIRED)
-#   # pkg_check_modules(LIBEVDEV REQUIRED libevdev)
-
-# #   include_directories(
-# #     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux
-# #     ${LIBEVDEV_INCLUDE_DIRS}
-# #   )
-# #   link_libraries(
-# #     ${LIBEVDEV_LIBRARIES}
-# #   )
-
-# #   set(input_src
-# #     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/LINUX_I.cpp
-# #   )
-
-# # elseif(APPLE)
-# #   include_directories(
-# #     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/macos
-# #   )
-
-# endif()
-
 include(cmakes/src/thirdPartySource.cmake)
 include(cmakes/includeDIRS.cmake)
 include(cmakes/src/DBsrc.cmake)
@@ -71,6 +46,37 @@ include(cmakes/src/JUDGEsrc.cmake)
 include(cmakes/src/GLOBALsrc.cmake)
 include(cmakes/src/INPUTsrc.cmake)
 
+if(WIN32)#windows only. for now
+if(LINUX)
+
+add_executable(PDJE_MODULE_INPUT_RTMAIN ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTMain.cpp ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC})
+
+target_include_directories(PDJE_MODULE_INPUT_RTMAIN PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
+PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT_RTMAIN)
+setSpdlogReqLib(PDJE_MODULE_INPUT_RTMAIN)
+
+set(RT_HASH_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/common/RT_EXEC_HASH.hpp)
+
+add_custom_command(
+  OUTPUT ${RT_HASH_HEADER}
+  COMMAND ${CMAKE_COMMAND}
+    -DRT_BIN=$<TARGET_FILE:PDJE_MODULE_INPUT_RTMAIN>
+    -DOUT_HDR=${RT_HASH_HEADER}
+    -P ${CMAKE_CURRENT_SOURCE_DIR}/cmakes/GenRTHASH.cmake
+  DEPENDS PDJE_MODULE_INPUT_RTMAIN $<TARGET_FILE:PDJE_MODULE_INPUT_RTMAIN>
+  BYPRODUCTS ${RT_HASH_HEADER}
+  VERBATIM
+  USES_TERMINAL
+)
+
+add_custom_target(gen_RT_HASH ALL DEPENDS ${RT_HASH_HEADER})
+
+
+
+endif()
+
+endif()#windows only. for now
+
 
 if(PDJE_BUILD_TESTS)
 add_executable(testEditor ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/editorTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${globalSource})
@@ -79,17 +85,25 @@ add_executable(DBTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${e
 target_include_directories(testEditor PUBLIC ${PDJE_INCLUDE_CORE})
 target_include_directories(DBTester PUBLIC ${PDJE_INCLUDE_CORE})
 
+add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${PDJE_OS_INPUT_SRC})
+target_include_directories(testInput PRIVATE ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
+
+PDJE_INPUT_LINK_LIB(testInput)
 endif(PDJE_BUILD_TESTS)
 
 if(PDJE_DYNAMIC)
 add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource} ${globalSource})
+
+if(WIN32)#windows only. for now
 add_library(PDJE_MODULE_JUDGE SHARED ${judgeSource} ${globalSource})
 add_library(PDJE_MODULE_INPUT SHARED ${inputSource} ${globalSource})
+endif()
 
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
+if(WIN32)#windows only. for now
 target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE})
 target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
-
+endif()
 if(WIN32)
   target_compile_definitions(PDJE PUBLIC PDJE_WINDOWS_DLL)
   target_compile_definitions(PDJE PRIVATE PDJE_BUILDING)
@@ -101,15 +115,31 @@ if(WIN32)
 endif()
 else()
 add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource} ${globalSource})
+
+
+if(WIN32)#windows only. for now
 add_library(PDJE_MODULE_JUDGE ${judgeSource} ${globalSource})
 add_library(PDJE_MODULE_INPUT ${inputSource} ${globalSource})
+endif()
 
 
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
+if(WIN32)#windows only. for now
 target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE})
 target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
+endif()
 
 endif()
+
+if(WIN32)#windows only. for now
+if(LINUX)
+
+target_link_libraries(PDJE_MODULE_INPUT PUBLIC OpenSSL::Crypto)
+
+add_dependencies(PDJE_MODULE_INPUT gen_RT_HASH)
+
+endif()
+endif()#skip linux
 
 function(linkPDJELibs targetName)
   target_link_libraries(${targetName} PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
@@ -138,8 +168,11 @@ endif()
 # linkPDJELibs(PDJE_MODULE_JUDGE)
 linkPDJELibs(PDJE)
 
-setSpdlogReqLib(PDJE_MODULE_INPUT)
+if(WIN32)#windows only. for now
 setSpdlogReqLib(PDJE_MODULE_JUDGE)
+setSpdlogReqLib(PDJE_MODULE_INPUT)
+PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT)
+endif()
 
 # target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
 # setSpdlogReqLib(PDJE)

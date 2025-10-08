@@ -180,11 +180,5 @@ Program Listing for File audioPlayer.cpp
        if (!engineDatas.pcmDataPoint->empty()) {
            dline.preRenderedData = engineDatas.pcmDataPoint->data();
        }
-       if (engineDatas.FXManualPanel.has_value()) {
-           dline.fx = &engineDatas.FXManualPanel.value();
-       }
-       if (engineDatas.MusCtrPanel.has_value()) {
-           dline.musp = &engineDatas.MusCtrPanel.value();
-       }
        return dline;
    }

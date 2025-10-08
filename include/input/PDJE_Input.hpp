@@ -1,34 +1,18 @@
 #pragma once
 
+#include "Input_State.hpp"
+#include "PDJE_Input_DataLine.hpp"
+#include "PDJE_Input_Device_Data.hpp"
+#include <future>
 #include <string>
 #include <vector>
-
-#include "PDJE_Input_DataLine.hpp"
-
 #ifdef WIN32
-// #define WIN32_LEAN_AND_MEAN
-// #include <Windows.h>
-// using DevID = HANDLE;
+#include "windows_input.hpp"
+#elif defined(__APPLE__)
 
 #else
-
+#include "linux_input.hpp"
 #endif
-
-/**
- * @brief Generic device identifier used by the input module.
- */
-struct PDJE_IDEV {
-    struct Finders {
-        std::string devName;
-        std::string vendorID;
-        std::string productID;
-    };
-    std::string busType;
-    std::string devType;
-    struct Specifiers {
-        // DevID devID;
-    };
-};
 
 /**
  * @brief Input device manager.
@@ -37,68 +21,62 @@ struct PDJE_IDEV {
  */
 class PDJE_Input {
   private:
+    OS_Input data;
+    bool
+    Init();
+    bool
+    Config(std::vector<DeviceData> &devs);
+    bool
+    Run();
+    bool
+    Kill();
+
+    template <typename P, typename F>
+    void
+    InitOneShot(P &promise, F &future);
+
+    template <typename P, typename F>
+    void
+                            ResetOneShot(P &promise, F &future);
+    std::vector<DeviceData> activated_devices;
+    PDJE_INPUT_STATE        state = PDJE_INPUT_STATE::DEAD;
+    
   public:
-    /**
-     * @brief Scan the system for available input devices.
-     */
-    void
-    search();
+    std::string ErrLog;
 
-    /**
-     * @brief Register a device with the engine.
-     */
+    std::vector<DeviceData>
+    GetDevs();
     void
-    set();
-
-    /**
-     * @brief Retrieve the current device state.
-     */
-    void
-    get();
-
-    /**
-     * @brief Pair the found devices with appropriate handlers.
-     */
-    void
-    pair_job();
-
+    SetDevs(const std::vector<DeviceData> &devs);
+    PDJE_INPUT_STATE
+    GetState();
+    PDJE_INPUT_STATE
+    NEXT();
     PDJE_INPUT_DATA_LINE
     PullOutDataLine();
 
+    ONE_SHOT_DEV_PROMISE config_promise;
+    ONE_SHOT_RUN_PROMISE run_command;
     /// Constructor.
-    PDJE_Input();
+    PDJE_Input() = default;
 
     /// Destructor.
-    ~PDJE_Input();
+    ~PDJE_Input() = default;
 };
 
-// struct DuckTypeDevice{
-//     bool HAS_KEY_Q_W_E_R_T_Y = false;
-//     bool HAS_KEY = false;
-//     bool HAS_RELATIVE_AXIS_SENSOR = false;
-//     bool HAS_ABSOLUTE_AXIS_SENSOR = false;
+template <typename P, typename F>
+void
+PDJE_Input::InitOneShot(P &promise, F &future)
+{
+    promise.emplace();
+    future.emplace();
+    future = promise->get_future();
+}
 
-// };
-
-// struct DeviceData{
-//     std::string deviceName;
-//     DuckTypeDevice deviceType;
-// };
-
-// using DEV_LIST = std::vector<DeviceData>;
-
-// template<typename OS_INPUT>
-// class InputEngine{
-// private:
-//     OS_INPUT osAPI;
-//     DEV_LIST activated_devices;
-// public:
-//     InputEngine();
-//     ~InputEngine();
-//     void StoreDeviceList(const DEV_LIST& list);
-//     DEV_LIST SearchDevices();
-//     DEV_LIST GetStoredDeviceList();
-//     void setDevices(DEV_LIST);
-//     void ActivateEngine();
-//     void StopEngine();
-// };
+template <typename P, typename F>
+void
+PDJE_Input::ResetOneShot(P &promise, F &future)
+{
+    promise.reset();
+    future.reset();
+}

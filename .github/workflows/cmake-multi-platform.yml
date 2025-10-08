@@ -57,7 +57,7 @@ jobs:
       shell: bash
       if: runner.os == 'Linux'
       run: |
-        sudo apt-get install libevdev-dev ccache
+        sudo apt-get install libevdev-dev ccache libnuma-dev
 
     - name: set macos Swig
       id: set_macos_swig
@@ -86,6 +86,7 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: >
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
         -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/conan_cmakes/conan_toolchain.cmake
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
@@ -96,6 +97,13 @@ jobs:
     - name: Build
       # Build your program with the given configuration. Note that --config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
       run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }}
+      
+    # - name: Hash Compare
+    #   id: linux_RT_Hash_Compare
+    #   shell: bash
+    #   if: runner.os == 'Linux'
+    #   run: |
+    #       bash HASH_COMPARE.sh ${{ steps.strings.outputs.build-output-dir }}/PDJE_MODULE_INPUT_RTMAIN ./include/input/linux/common/RT_EXEC_HASH.hpp
 
     - name: Test
       working-directory: ${{ steps.strings.outputs.build-output-dir }}
