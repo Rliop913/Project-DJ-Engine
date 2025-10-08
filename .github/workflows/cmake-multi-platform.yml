@@ -57,7 +57,7 @@ jobs:
       shell: bash
       if: runner.os == 'Linux'
       run: |
-        sudo apt-get install libevdev-dev ccache
+        sudo apt-get install libevdev-dev ccache libnuma-dev
 
     - name: set macos Swig
       id: set_macos_swig
@@ -86,6 +86,7 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: >
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
         -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/conan_cmakes/conan_toolchain.cmake
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
