@@ -46,6 +46,7 @@ include(cmakes/src/JUDGEsrc.cmake)
 include(cmakes/src/GLOBALsrc.cmake)
 include(cmakes/src/INPUTsrc.cmake)
 
+if(WIN32)#windows only. for now
 if(LINUX)
 
 add_executable(PDJE_MODULE_INPUT_RTMAIN ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTMain.cpp ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC})
@@ -74,7 +75,7 @@ add_custom_target(gen_RT_HASH ALL DEPENDS ${RT_HASH_HEADER})
 
 endif()
 
-
+endif()#windows only. for now
 
 
 if(PDJE_BUILD_TESTS)
