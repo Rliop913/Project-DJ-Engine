@@ -74,7 +74,7 @@
           <declname>binary</declname>
         </param>
         <briefdescription>
-<para>Sorts data by <ref refid="MixMachine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc" kindref="member">ID</ref>. </para>
+<para>Sorts data by <ref refid="structID" kindref="compound">ID</ref>. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -147,7 +147,7 @@
             <type><ref refid="namespacecapnp_1_1schemas_1a1422df7eaf2c604e792649afd941e322" kindref="member">TypeEnum</ref></type>
           </param>
           <param>
-            <type>typename T</type>
+            <type>typename <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref></type>
           </param>
         </templateparamlist>
         <type>bool</type>
@@ -160,7 +160,7 @@
           <declname>ms</declname>
         </param>
         <param>
-          <type>T &amp;</type>
+          <type><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &amp;</type>
           <declname>data</declname>
         </param>
         <briefdescription>
@@ -217,7 +217,7 @@
             <type><ref refid="namespacecapnp_1_1schemas_1a1422df7eaf2c604e792649afd941e322" kindref="member">TypeEnum</ref></type>
           </param>
           <param>
-            <type>typename T</type>
+            <type>typename <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref></type>
           </param>
         </templateparamlist>
         <type>bool</type>
@@ -230,7 +230,7 @@
           <declname>ms</declname>
         </param>
         <param>
-          <type>T &amp;</type>
+          <type><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &amp;</type>
           <declname>data</declname>
         </param>
         <param>
@@ -299,7 +299,7 @@
             <type><ref refid="namespacecapnp_1_1schemas_1a1422df7eaf2c604e792649afd941e322" kindref="member">TypeEnum</ref></type>
           </param>
           <param>
-            <type>typename T</type>
+            <type>typename <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref></type>
           </param>
         </templateparamlist>
         <type>bool</type>
@@ -312,7 +312,7 @@
           <declname>ms</declname>
         </param>
         <param>
-          <type>T &amp;</type>
+          <type><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &amp;</type>
           <declname>data</declname>
         </param>
         <param>
@@ -483,6 +483,13 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
+      <node id="4">
+        <label>ID</label>
+        <link refid="structID"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>socket_path</edgelabel>
+        </childnode>
+      </node>
       <node id="1">
         <label>MixMachine</label>
         <link refid="classMixMachine"/>
@@ -492,30 +499,41 @@
         <childnode refid="3" relation="usage">
           <edgelabel>Memorized</edgelabel>
         </childnode>
-        <childnode refid="6" relation="usage">
+        <childnode refid="9" relation="usage">
           <edgelabel>rendered_out</edgelabel>
         </childnode>
       </node>
-      <node id="5">
+      <node id="8">
         <label>MixStruct</label>
         <link refid="structMixStruct"/>
+      </node>
+      <node id="6">
+        <label>std::basic_string&lt; Char &gt;</label>
       </node>
       <node id="2">
         <label>std::mutex</label>
       </node>
+      <node id="5">
+        <label>std::string</label>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="3">
         <label>std::unordered_map&lt; ID, std::vector&lt; MixStruct &gt; &gt;</label>
         <childnode refid="4" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="4">
+      <node id="7">
         <label>std::vector&lt; MixStruct &gt;</label>
-        <childnode refid="5" relation="usage">
+        <childnode refid="8" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="6">
+      <node id="9">
         <label>std::vector&lt; float &gt;</label>
       </node>
     </collaborationgraph>

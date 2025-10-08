@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="QPC__Timer_8hpp" kind="file" language="C++">
+    <compoundname>QPC_Timer.hpp</compoundname>
+    <includes local="no">windows.h</includes>
+    <includes local="no">cstdint</includes>
+    <includedby refid="QPC__Timer_8cpp" local="yes">include/input/windows/QPC_Timer.cpp</includedby>
+    <includedby refid="windows__input_8hpp" local="yes">include/input/windows/windows_input.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/input/windows/QPC_Timer.hpp</label>
+        <link refid="QPC__Timer_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="2">
+        <label>windows.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/input/windows/QPC_Timer.cpp</label>
+        <link refid="QPC__Timer_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/input/windows/QPC_Timer.hpp</label>
+        <link refid="QPC__Timer_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/input/windows/windows_input.cpp</label>
+        <link refid="windows__input_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/input/windows/windows_input.hpp</label>
+        <link refid="windows__input_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classQPC__Timer" prot="public">QPC_Timer</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;windows.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="classQPC__Timer" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classQPC__Timer_1a7e43a09bc4bd83857a5bebb254a9efce" kindref="member">QPC_Timer</ref><sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="8" refid="classQPC__Timer_1a9725fb836599de869b17b990b08f285c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="classQPC__Timer_1a9725fb836599de869b17b990b08f285c" kindref="member">qpc_freq</ref>;</highlight></codeline>
+<codeline lineno="9" refid="classQPC__Timer_1aa7af7da6e19f0072b06c75e920055b21" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>LARGE_INTEGER<sp/><ref refid="classQPC__Timer_1aa7af7da6e19f0072b06c75e920055b21" kindref="member">temp_int</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="classQPC__Timer_1a4db4c317e67be448736c36b55a293bf3" kindref="member">now</ref>();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classQPC__Timer_1a8dc5cd509e6060c8ef51d821e1cde93a" kindref="member">to_second</ref>(uint64_t<sp/>tick);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classQPC__Timer_1af78396474952c5ea8ec31ae056eca064" kindref="member">to_ms</ref>(uint64_t<sp/>tick);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="classQPC__Timer_1ac285942b80ee6921247c74ec39bb4397" kindref="member">to_micro</ref>(uint64_t<sp/>tick);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classQPC__Timer_1a7e43a09bc4bd83857a5bebb254a9efce" kindref="member">QPC_Timer</ref>();</highlight></codeline>
+<codeline lineno="18" refid="classQPC__Timer_1aeb16983fa883fef83dd761ae3080ada0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classQPC__Timer_1aeb16983fa883fef83dd761ae3080ada0" kindref="member">~QPC_Timer</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/input/windows/QPC_Timer.hpp"/>
+  </compounddef>
+</doxygen>

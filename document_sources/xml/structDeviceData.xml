@@ -1,36 +1,50 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="structDeviceData" kind="struct" language="C++" prot="public">
     <compoundname>DeviceData</compoundname>
-    <includes refid="PDJE__INPUT_8hpp" local="no">PDJE_INPUT.hpp</includes>
+    <includes refid="PDJE__Input__Device__Data_8hpp" local="no">PDJE_Input_Device_Data.hpp</includes>
     <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="structDeviceData_1a9334063376a361508dd705edd934a05a" prot="public" static="no" mutable="no">
-        <type>std::string</type>
-        <definition>std::string DeviceData::deviceName</definition>
+      <memberdef kind="variable" id="structDeviceData_1a1625318317b776adb58e8528a461f641" prot="public" static="no" mutable="no">
+        <type><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456" kindref="member">PDJE_Dev_Type</ref></type>
+        <definition>PDJE_Dev_Type DeviceData::Type</definition>
         <argsstring></argsstring>
-        <name>deviceName</name>
-        <qualifiedname>DeviceData::deviceName</qualifiedname>
+        <name>Type</name>
+        <qualifiedname>DeviceData::Type</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_INPUT.hpp" line="14" column="17" bodyfile="include/input/PDJE_INPUT.hpp" bodystart="14" bodyend="-1"/>
+        <location file="include/global/DataLines/PDJE_Input_Device_Data.hpp" line="14" column="19" bodyfile="include/global/DataLines/PDJE_Input_Device_Data.hpp" bodystart="14" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structDeviceData_1a21ae13203c74ead91d1fef649451dd7e" prot="public" static="no" mutable="no">
-        <type><ref refid="structDuckTypeDevice" kindref="compound">DuckTypeDevice</ref></type>
-        <definition>DuckTypeDevice DeviceData::deviceType</definition>
+      <memberdef kind="variable" id="structDeviceData_1ae518021605f9684f8e9d9861f69b0f09" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string DeviceData::Name</definition>
         <argsstring></argsstring>
-        <name>deviceType</name>
-        <qualifiedname>DeviceData::deviceType</qualifiedname>
+        <name>Name</name>
+        <qualifiedname>DeviceData::Name</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_INPUT.hpp" line="15" column="20" bodyfile="include/input/PDJE_INPUT.hpp" bodystart="15" bodyend="-1"/>
+        <location file="include/global/DataLines/PDJE_Input_Device_Data.hpp" line="15" column="17" bodyfile="include/global/DataLines/PDJE_Input_Device_Data.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structDeviceData_1ae053091ec1c51e0c75b0f11067d0af1b" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string DeviceData::device_specific_id</definition>
+        <argsstring></argsstring>
+        <name>device_specific_id</name>
+        <qualifiedname>DeviceData::device_specific_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Input_Device_Data.hpp" line="16" column="17" bodyfile="include/global/DataLines/PDJE_Input_Device_Data.hpp" bodystart="16" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -42,15 +56,9 @@
         <label>DeviceData</label>
         <link refid="structDeviceData"/>
         <childnode refid="2" relation="usage">
-          <edgelabel>deviceName</edgelabel>
+          <edgelabel>Name</edgelabel>
+          <edgelabel>device_specific_id</edgelabel>
         </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>deviceType</edgelabel>
-        </childnode>
-      </node>
-      <node id="4">
-        <label>DuckTypeDevice</label>
-        <link refid="structDuckTypeDevice"/>
       </node>
       <node id="3">
         <label>std::basic_string&lt; Char &gt;</label>
@@ -61,10 +69,11 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/input/PDJE_INPUT.hpp" line="13" column="1" bodyfile="include/input/PDJE_INPUT.hpp" bodystart="13" bodyend="16"/>
+    <location file="include/global/DataLines/PDJE_Input_Device_Data.hpp" line="13" column="1" bodyfile="include/global/DataLines/PDJE_Input_Device_Data.hpp" bodystart="13" bodyend="17"/>
     <listofallmembers>
-      <member refid="structDeviceData_1a9334063376a361508dd705edd934a05a" prot="public" virt="non-virtual"><scope>DeviceData</scope><name>deviceName</name></member>
-      <member refid="structDeviceData_1a21ae13203c74ead91d1fef649451dd7e" prot="public" virt="non-virtual"><scope>DeviceData</scope><name>deviceType</name></member>
+      <member refid="structDeviceData_1ae053091ec1c51e0c75b0f11067d0af1b" prot="public" virt="non-virtual"><scope>DeviceData</scope><name>device_specific_id</name></member>
+      <member refid="structDeviceData_1ae518021605f9684f8e9d9861f69b0f09" prot="public" virt="non-virtual"><scope>DeviceData</scope><name>Name</name></member>
+      <member refid="structDeviceData_1a1625318317b776adb58e8528a461f641" prot="public" virt="non-virtual"><scope>DeviceData</scope><name>Type</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

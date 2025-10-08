@@ -84,6 +84,125 @@
 <span id="program-listing-file-include-input-pdje-input-cpp"></span><h1>Program Listing for File PDJE_Input.cpp<a class="headerlink" href="#program-listing-for-file-pdje-input-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_input_PDJE_Input.cpp.html#file-include-input-pdje-input-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/input/PDJE_Input.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input.hpp&quot;</span>
+
+<span class="cp">#define PDJE_INPUT_DEFAULT_TRY_CATCH(CODE)                                     \</span>
+<span class="cp">    try {                                                                      \</span>
+<span class="cp">        CODE                                                                   \</span>
+<span class="cp">    } catch (const std::exception &amp;e) {                                        \</span>
+<span class="cp">        ResetOneShot(config_promise, data.config_data);                        \</span>
+<span class="cp">        ResetOneShot(run_command, data.run_ok);                                \</span>
+<span class="cp">                                                                               \</span>
+<span class="cp">        state = PDJE_INPUT_STATE::DEAD;                                        \</span>
+<span class="cp">        ErrLog += e.what();                                                    \</span>
+<span class="cp">        ErrLog += &quot;\n&quot;;                                                        \</span>
+<span class="cp">        return false;                                                          \</span>
+<span class="cp">    }</span>
+
+<span class="kt">bool</span>
+<span class="nf">PDJE_Input::Init</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEAD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">PDJE_INPUT_DEFAULT_TRY_CATCH</span><span class="p">(</span><span class="n">InitOneShot</span><span class="p">(</span><span class="n">config_promise</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">config_data</span><span class="p">);</span>
+<span class="w">                                 </span><span class="n">InitOneShot</span><span class="p">(</span><span class="n">run_command</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">run_ok</span><span class="p">);</span>
+<span class="w">                                 </span><span class="n">data</span><span class="p">.</span><span class="n">TrigLoop</span><span class="p">();</span>
+<span class="w">                                 </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEVICE_CONFIG_STATE</span><span class="p">;</span>
+<span class="w">                                 </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;)</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span>
+<span class="nf">PDJE_Input::Config</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">devs</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEVICE_CONFIG_STATE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">PDJE_INPUT_DEFAULT_TRY_CATCH</span><span class="p">(</span><span class="n">config_promise</span><span class="o">-&gt;</span><span class="n">set_value</span><span class="p">(</span><span class="n">devs</span><span class="p">);)</span>
+
+<span class="w">    </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">INPUT_LOOP_READY</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span>
+<span class="nf">PDJE_Input::Run</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">INPUT_LOOP_READY</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">PDJE_INPUT_DEFAULT_TRY_CATCH</span><span class="p">(</span><span class="n">run_command</span><span class="o">-&gt;</span><span class="n">set_value</span><span class="p">(</span><span class="nb">true</span><span class="p">);)</span>
+
+<span class="w">    </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">INPUT_LOOP_RUNNING</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span>
+<span class="nf">PDJE_Input::Kill</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">INPUT_LOOP_RUNNING</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">flagOK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">kill</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">flagOK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">data</span><span class="p">.</span><span class="n">ResetLoop</span><span class="p">();</span>
+<span class="w">    </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEAD</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ResetOneShot</span><span class="p">(</span><span class="n">config_promise</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">config_data</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ResetOneShot</span><span class="p">(</span><span class="n">run_command</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">run_ok</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span>
+<span class="n">PDJE_Input</span><span class="o">::</span><span class="n">GetDevs</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">getDevices</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span>
+<span class="n">PDJE_Input</span><span class="o">::</span><span class="n">SetDevs</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">devs</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">activated_devices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">devs</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_INPUT_STATE</span>
+<span class="n">PDJE_Input</span><span class="o">::</span><span class="n">GetState</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_INPUT_STATE</span>
+<span class="n">PDJE_Input</span><span class="o">::</span><span class="n">NEXT</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_INPUT_STATE</span><span class="o">::</span><span class="no">DEAD</span><span class="p">:</span>
+<span class="w">        </span><span class="n">Init</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_INPUT_STATE</span><span class="o">::</span><span class="no">DEVICE_CONFIG_STATE</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">activated_devices</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">Config</span><span class="p">(</span><span class="n">activated_devices</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_INPUT_STATE</span><span class="o">::</span><span class="no">INPUT_LOOP_READY</span><span class="p">:</span>
+<span class="w">        </span><span class="n">Run</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_INPUT_STATE</span><span class="o">::</span><span class="no">INPUT_LOOP_RUNNING</span><span class="p">:</span>
+<span class="w">        </span><span class="n">Kill</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">logic_error</span><span class="p">(</span><span class="s">&quot;State machine broken.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_INPUT_DATA_LINE</span>
+<span class="n">PDJE_Input</span><span class="o">::</span><span class="n">PullOutDataLine</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>

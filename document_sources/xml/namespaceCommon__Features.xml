@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="namespaceCommon__Features" kind="namespace" language="C++">
+    <compoundname>Common_Features</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceCommon__Features_1a85ba412f5bb7fcc163ff85b1a6dedfdf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Common_Features::SendByte</definition>
+        <argsstring>(int dest_fd, const void *data, size_t len)</argsstring>
+        <name>SendByte</name>
+        <qualifiedname>Common_Features::SendByte</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>dest_fd</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/common/Common_Features.hpp" line="27" column="1" bodyfile="include/input/linux/common/Common_Features.hpp" bodystart="27" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCommon__Features_1a9d2554538ffced3a2d625f562d80365e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Common_Features::RecvByte</definition>
+        <argsstring>(int dest_fd, void *data, size_t len)</argsstring>
+        <name>RecvByte</name>
+        <qualifiedname>Common_Features::RecvByte</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>dest_fd</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/common/Common_Features.hpp" line="49" column="1" bodyfile="include/input/linux/common/Common_Features.hpp" bodystart="49" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCommon__Features_1ae7de45f5bf7f824894a45151efe97313" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Common_Features::LPSend</definition>
+        <argsstring>(int dest_fd, const std::string &amp;data)</argsstring>
+        <name>LPSend</name>
+        <qualifiedname>Common_Features::LPSend</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>dest_fd</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>length prefixed message send </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/common/Common_Features.hpp" line="72" column="1" bodyfile="include/input/linux/common/Common_Features.hpp" bodystart="72" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCommon__Features_1af19798f328e422f395131cd603101c1a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int Common_Features::LPRecv</definition>
+        <argsstring>(int dest_fd, std::string &amp;data)</argsstring>
+        <name>LPRecv</name>
+        <qualifiedname>Common_Features::LPRecv</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>dest_fd</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/common/Common_Features.hpp" line="92" column="1" bodyfile="include/input/linux/common/Common_Features.hpp" bodystart="92" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCommon__Features_1a1fa285f8cefd7d04b62d4c0c1d738b24" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string Common_Features::MakeMSG</definition>
+        <argsstring>(const std::string &amp;head, const std::vector&lt; std::string &gt; &amp;datas)</argsstring>
+        <name>MakeMSG</name>
+        <qualifiedname>Common_Features::MakeMSG</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>head</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>datas</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/common/Common_Features.hpp" line="111" column="1" bodyfile="include/input/linux/common/Common_Features.hpp" bodystart="111" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCommon__Features_1a1dee95f359d7ba86c375b585edab2b4c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string Common_Features::MakeMSG</definition>
+        <argsstring>(const std::string &amp;head, const std::string &amp;msg)</argsstring>
+        <name>MakeMSG</name>
+        <qualifiedname>Common_Features::MakeMSG</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>head</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/common/Common_Features.hpp" line="120" column="1" bodyfile="include/input/linux/common/Common_Features.hpp" bodystart="120" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceCommon__Features_1a9819433dbb3c04ccbcf39523f8185eaf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>static std::vector&lt; std::string &gt; Common_Features::ReadMSG</definition>
+        <argsstring>(const std::string &amp;head, const std::string &amp;raw_json_msg)</argsstring>
+        <name>ReadMSG</name>
+        <qualifiedname>Common_Features::ReadMSG</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>head</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>raw_json_msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/common/Common_Features.hpp" line="131" column="1" bodyfile="include/input/linux/common/Common_Features.hpp" bodystart="131" bodyend="155"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/input/linux/common/Common_Features.hpp" line="24" column="1"/>
+  </compounddef>
+</doxygen>

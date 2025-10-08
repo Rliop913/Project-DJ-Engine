@@ -2,8 +2,58 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="PDJE__Input_8cpp" kind="file" language="C++">
     <compoundname>PDJE_Input.cpp</compoundname>
-    <includes local="yes">PDJE_Input.hpp</includes>
+    <includes refid="PDJE__Input_8hpp" local="yes">PDJE_Input.hpp</includes>
     <incdepgraph>
+      <node id="11">
+        <label>PDJE_Buffer.hpp</label>
+        <link refid="PDJE__Buffer_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>PDJE_Input_DataLine.hpp</label>
+        <link refid="PDJE__Input__DataLine_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>PDJE_Input_Device_Data.hpp</label>
+        <link refid="PDJE__Input__Device__Data_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="3">
+        <label>Input_State.hpp</label>
+        <link refid="Input__State_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>include/input/PDJE_Input.cpp</label>
         <link refid="PDJE__Input_8cpp"/>
@@ -12,15 +62,275 @@
       </node>
       <node id="2">
         <label>PDJE_Input.hpp</label>
+        <link refid="PDJE__Input_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>IPC_SHARE_MEM.hpp</label>
+        <link refid="IPC__SHARE__MEM_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>Common_Features.hpp</label>
+        <link refid="Common__Features_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>linux_input.hpp</label>
+        <link refid="linux__input_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="12">
+        <label>atomic</label>
+      </node>
+      <node id="17">
+        <label>cerrno</label>
+      </node>
+      <node id="18">
+        <label>cstddef</label>
+      </node>
+      <node id="19">
+        <label>cstdint</label>
+      </node>
+      <node id="27">
+        <label>ctime</label>
+      </node>
+      <node id="4">
+        <label>future</label>
+      </node>
+      <node id="20">
+        <label>limits</label>
+      </node>
+      <node id="8">
+        <label>memory_resource</label>
+      </node>
+      <node id="21">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="22">
+        <label>nlohmann/json.hpp</label>
+      </node>
+      <node id="5">
+        <label>optional</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="25">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="23">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="26">
+        <label>unistd.h</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
       </node>
     </incdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="PDJE__Input_8cpp_1a8fe83ba44412d3ac8156adc7d8a68e35" prot="public" static="no">
+        <name>PDJE_INPUT_DEFAULT_TRY_CATCH</name>
+        <param><defname>CODE</defname></param>
+        <initializer>    try {                                                                      \
+        CODE                                                                   \
+    } catch (const std::exception &amp;e) {                                        \
+        ResetOneShot(config_promise, data.config_data);                        \
+        ResetOneShot(run_command, data.run_ok);                                \
+                                                                               \
+        state = <ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a11fd9ca455f92c69c084484d5cd803c2" kindref="member">PDJE_INPUT_STATE::DEAD</ref>;                                        \
+        ErrLog += e.what();                                                    \
+        ErrLog += &quot;\n&quot;;                                                        \
+        return false;                                                          \
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.cpp" line="3" column="9" bodyfile="include/input/PDJE_Input.cpp" bodystart="3" bodyend="14"/>
+      </memberdef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;PDJE_Input.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__Input_8hpp" kindref="compound">PDJE_Input.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="PDJE__Input_8cpp_1a8fe83ba44412d3ac8156adc7d8a68e35" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_INPUT_DEFAULT_TRY_CATCH(CODE)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="4"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>try<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="5"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CODE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="6"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(const<sp/>std::exception<sp/>&amp;e)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="7"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ResetOneShot(config_promise,<sp/>data.config_data);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="8"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ResetOneShot(run_command,<sp/>data.run_ok);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="9"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="10"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state<sp/>=<sp/>PDJE_INPUT_STATE::DEAD;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="11"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ErrLog<sp/>+=<sp/>e.what();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="12"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ErrLog<sp/>+=<sp/>&quot;\n&quot;;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="13"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>false;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="14"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classPDJE__Input_1a5e124b018f37cd0d4ebdb1aa0f4e234e" refkind="member"><highlight class="normal"><ref refid="classPDJE__Input_1a5e124b018f37cd0d4ebdb1aa0f4e234e" kindref="member">PDJE_Input::Init</ref>()</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref><sp/>!=<sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a11fd9ca455f92c69c084484d5cd803c2" kindref="member">PDJE_INPUT_STATE::DEAD</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__Input_8cpp_1a8fe83ba44412d3ac8156adc7d8a68e35" kindref="member">PDJE_INPUT_DEFAULT_TRY_CATCH</ref>(<ref refid="classPDJE__Input_1aa129aebaaaa605cd347cbcd9e1de0e4b" kindref="member">InitOneShot</ref>(<ref refid="classPDJE__Input_1a3e124e131d2d68031d2e64f280670290" kindref="member">config_promise</ref>,<sp/><ref refid="classPDJE__Input_1aff9a7701bc1e1e257ce7eb08f0aef00e" kindref="member">data</ref>.config_data);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Input_1aa129aebaaaa605cd347cbcd9e1de0e4b" kindref="member">InitOneShot</ref>(<ref refid="classPDJE__Input_1a64f4fb961c7524dac21a22119352d330" kindref="member">run_command</ref>,<sp/><ref refid="classPDJE__Input_1aff9a7701bc1e1e257ce7eb08f0aef00e" kindref="member">data</ref>.run_ok);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Input_1aff9a7701bc1e1e257ce7eb08f0aef00e" kindref="member">data</ref>.TrigLoop();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref><sp/>=<sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a16ce19414b9020f53f0543a1f623a3ee" kindref="member">PDJE_INPUT_STATE::DEVICE_CONFIG_STATE</ref>;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classPDJE__Input_1a60b8fafb986f4a289ab6fc80b792afd3" refkind="member"><highlight class="normal"><ref refid="classPDJE__Input_1a60b8fafb986f4a289ab6fc80b792afd3" kindref="member">PDJE_Input::Config</ref>(std::vector&lt;DeviceData&gt;<sp/>&amp;devs)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref><sp/>!=<sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a16ce19414b9020f53f0543a1f623a3ee" kindref="member">PDJE_INPUT_STATE::DEVICE_CONFIG_STATE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__Input_8cpp_1a8fe83ba44412d3ac8156adc7d8a68e35" kindref="member">PDJE_INPUT_DEFAULT_TRY_CATCH</ref>(<ref refid="classPDJE__Input_1a3e124e131d2d68031d2e64f280670290" kindref="member">config_promise</ref>-&gt;set_value(devs);)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref><sp/>=<sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a620f732f3889ae9e7cdd222aeaaa5211" kindref="member">PDJE_INPUT_STATE::INPUT_LOOP_READY</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classPDJE__Input_1a141055482bcb2c52442ad9f596d72cba" refkind="member"><highlight class="normal"><ref refid="classPDJE__Input_1a141055482bcb2c52442ad9f596d72cba" kindref="member">PDJE_Input::Run</ref>()</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref><sp/>!=<sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a620f732f3889ae9e7cdd222aeaaa5211" kindref="member">PDJE_INPUT_STATE::INPUT_LOOP_READY</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__Input_8cpp_1a8fe83ba44412d3ac8156adc7d8a68e35" kindref="member">PDJE_INPUT_DEFAULT_TRY_CATCH</ref>(<ref refid="classPDJE__Input_1a64f4fb961c7524dac21a22119352d330" kindref="member">run_command</ref>-&gt;set_value(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref><sp/>=<sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a78692e16c48c8defdb53b5d7daaa70a2" kindref="member">PDJE_INPUT_STATE::INPUT_LOOP_RUNNING</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classPDJE__Input_1acd31c013ea5cf83003795bb58c60f9e5" refkind="member"><highlight class="normal"><ref refid="classPDJE__Input_1acd31c013ea5cf83003795bb58c60f9e5" kindref="member">PDJE_Input::Kill</ref>()</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref><sp/>!=<sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a78692e16c48c8defdb53b5d7daaa70a2" kindref="member">PDJE_INPUT_STATE::INPUT_LOOP_RUNNING</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>flagOK<sp/>=<sp/><ref refid="classPDJE__Input_1aff9a7701bc1e1e257ce7eb08f0aef00e" kindref="member">data</ref>.kill();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!flagOK)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Input_1aff9a7701bc1e1e257ce7eb08f0aef00e" kindref="member">data</ref>.ResetLoop();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref><sp/>=<sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a11fd9ca455f92c69c084484d5cd803c2" kindref="member">PDJE_INPUT_STATE::DEAD</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Input_1a649e395d73b91ab1fc28b47f7e838ba9" kindref="member">ResetOneShot</ref>(<ref refid="classPDJE__Input_1a3e124e131d2d68031d2e64f280670290" kindref="member">config_promise</ref>,<sp/><ref refid="classPDJE__Input_1aff9a7701bc1e1e257ce7eb08f0aef00e" kindref="member">data</ref>.config_data);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Input_1a649e395d73b91ab1fc28b47f7e838ba9" kindref="member">ResetOneShot</ref>(<ref refid="classPDJE__Input_1a64f4fb961c7524dac21a22119352d330" kindref="member">run_command</ref>,<sp/><ref refid="classPDJE__Input_1aff9a7701bc1e1e257ce7eb08f0aef00e" kindref="member">data</ref>.run_ok);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal">std::vector&lt;DeviceData&gt;</highlight></codeline>
+<codeline lineno="73" refid="classPDJE__Input_1a57ffda3b7e96de7b73deb3557b089e9b" refkind="member"><highlight class="normal"><ref refid="classPDJE__Input_1a57ffda3b7e96de7b73deb3557b089e9b" kindref="member">PDJE_Input::GetDevs</ref>()</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__Input_1aff9a7701bc1e1e257ce7eb08f0aef00e" kindref="member">data</ref>.getDevices();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="classPDJE__Input_1a643acbd02fc91fb774235fcbfe4b34c3" refkind="member"><highlight class="normal"><ref refid="classPDJE__Input_1a643acbd02fc91fb774235fcbfe4b34c3" kindref="member">PDJE_Input::SetDevs</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;DeviceData&gt;<sp/>&amp;devs)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Input_1afbc7b278ba6404113b45393d365c646f" kindref="member">activated_devices</ref><sp/>=<sp/>devs;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9" kindref="member">PDJE_INPUT_STATE</ref></highlight></codeline>
+<codeline lineno="85" refid="classPDJE__Input_1a618aaec5a5067bf8f729e4e6b31812c9" refkind="member"><highlight class="normal"><ref refid="classPDJE__Input_1a618aaec5a5067bf8f729e4e6b31812c9" kindref="member">PDJE_Input::GetState</ref>()</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9" kindref="member">PDJE_INPUT_STATE</ref></highlight></codeline>
+<codeline lineno="91" refid="classPDJE__Input_1a6c9beb44c4c5247f41ff16dcbc9c07a9" refkind="member"><highlight class="normal"><ref refid="classPDJE__Input_1a6c9beb44c4c5247f41ff16dcbc9c07a9" kindref="member">PDJE_Input::NEXT</ref>()</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a11fd9ca455f92c69c084484d5cd803c2" kindref="member">PDJE_INPUT_STATE::DEAD</ref>:</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Input_1a5e124b018f37cd0d4ebdb1aa0f4e234e" kindref="member">Init</ref>();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a16ce19414b9020f53f0543a1f623a3ee" kindref="member">PDJE_INPUT_STATE::DEVICE_CONFIG_STATE</ref>:</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__Input_1afbc7b278ba6404113b45393d365c646f" kindref="member">activated_devices</ref>.empty())<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Input_1a60b8fafb986f4a289ab6fc80b792afd3" kindref="member">Config</ref>(<ref refid="classPDJE__Input_1afbc7b278ba6404113b45393d365c646f" kindref="member">activated_devices</ref>);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a620f732f3889ae9e7cdd222aeaaa5211" kindref="member">PDJE_INPUT_STATE::INPUT_LOOP_READY</ref>:</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Input_1a141055482bcb2c52442ad9f596d72cba" kindref="member">Run</ref>();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a78692e16c48c8defdb53b5d7daaa70a2" kindref="member">PDJE_INPUT_STATE::INPUT_LOOP_RUNNING</ref>:</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Input_1acd31c013ea5cf83003795bb58c60f9e5" kindref="member">Kill</ref>();</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::logic_error(</highlight><highlight class="stringliteral">&quot;State<sp/>machine<sp/>broken.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><ref refid="structPDJE__INPUT__DATA__LINE" kindref="compound">PDJE_INPUT_DATA_LINE</ref></highlight></codeline>
+<codeline lineno="117" refid="classPDJE__Input_1ac4a8a1fc6bce51c498176db187c03e34" refkind="member"><highlight class="normal"><ref refid="classPDJE__Input_1ac4a8a1fc6bce51c498176db187c03e34" kindref="member">PDJE_Input::PullOutDataLine</ref>()</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__Input_1aff9a7701bc1e1e257ce7eb08f0aef00e" kindref="member">data</ref>.PullOutDataLine();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="include/input/PDJE_Input.cpp"/>
   </compounddef>

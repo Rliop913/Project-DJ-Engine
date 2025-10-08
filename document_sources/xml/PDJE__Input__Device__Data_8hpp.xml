@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="PDJE__Input__Device__Data_8hpp" kind="file" language="C++">
+    <compoundname>PDJE_Input_Device_Data.hpp</compoundname>
+    <includes local="no">string</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="PDJE__Input__DataLine_8hpp" local="yes">include/global/DataLines/PDJE_Input_DataLine.hpp</includedby>
+    <includedby refid="PDJE__Input_8hpp" local="yes">include/input/PDJE_Input.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/global/DataLines/PDJE_Input_Device_Data.hpp</label>
+        <link refid="PDJE__Input__Device__Data_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>optional</label>
+      </node>
+      <node id="2">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/global/DataLines/PDJE_Input_DataLine.hpp</label>
+        <link refid="PDJE__Input__DataLine_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/global/DataLines/PDJE_Input_Device_Data.hpp</label>
+        <link refid="PDJE__Input__Device__Data_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/input/PDJE_Input.cpp</label>
+        <link refid="PDJE__Input_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/input/PDJE_Input.hpp</label>
+        <link refid="PDJE__Input_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/input/windows/windows_input.cpp</label>
+        <link refid="windows__input_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/input/windows/windows_input.hpp</label>
+        <link refid="windows__input_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
+        <link refid="pdjeInputTest_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structDeviceData" prot="public">DeviceData</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>PDJE_Dev_Type</name>
+        <enumvalue id="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a2ec2be318cc86a1224c0e9dcc71321e4" prot="public">
+          <name>MOUSE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456aedda266cdb6345b9f6914cc2e7577475" prot="public">
+          <name>KEYBOARD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a4695654d9a54210407e32e78a14d5cbb" prot="public">
+          <name>HID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a696b031073e74bf2cb98e5ef201d4aa3" prot="public">
+          <name>UNKNOWN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Input_Device_Data.hpp" line="6" column="1" bodyfile="include/global/DataLines/PDJE_Input_Device_Data.hpp" bodystart="6" bodyend="11"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="PDJE__Input__Device__Data_8hpp_1a58503d463081ac24677b1da5c0cf3d87" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt;</type>
+        <definition>typedef std::vector&lt; DeviceData &gt; DEV_LIST =  std::vector&lt;DeviceData&gt;</definition>
+        <argsstring></argsstring>
+        <name>DEV_LIST</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Input_Device_Data.hpp" line="18" column="1" bodyfile="include/global/DataLines/PDJE_Input_Device_Data.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="PDJE__Input__Device__Data_8hpp_1a5d02ce2645cbc7cc15547ae58f2d2d23" prot="public" static="no">
+        <type>std::optional&lt; std::promise&lt; <ref refid="PDJE__Input__Device__Data_8hpp_1a58503d463081ac24677b1da5c0cf3d87" kindref="member">DEV_LIST</ref> &gt; &gt;</type>
+        <definition>using ONE_SHOT_DEV_PROMISE =  std::optional&lt;std::promise&lt;DEV_LIST&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>ONE_SHOT_DEV_PROMISE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Input_Device_Data.hpp" line="19" column="1" bodyfile="include/global/DataLines/PDJE_Input_Device_Data.hpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="PDJE__Input__Device__Data_8hpp_1a3a873a3d426e1f5e696c75ac9a68e557" prot="public" static="no">
+        <type>std::optional&lt; std::future&lt; <ref refid="PDJE__Input__Device__Data_8hpp_1a58503d463081ac24677b1da5c0cf3d87" kindref="member">DEV_LIST</ref> &gt; &gt;</type>
+        <definition>using ONE_SHOT_DEV_FUTURE =  std::optional&lt;std::future&lt;DEV_LIST&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>ONE_SHOT_DEV_FUTURE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Input_Device_Data.hpp" line="20" column="1" bodyfile="include/global/DataLines/PDJE_Input_Device_Data.hpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456" kindref="member">PDJE_Dev_Type</ref>{</highlight></codeline>
+<codeline lineno="7" refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a2ec2be318cc86a1224c0e9dcc71321e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a2ec2be318cc86a1224c0e9dcc71321e4" kindref="member">MOUSE</ref>,</highlight></codeline>
+<codeline lineno="8" refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456aedda266cdb6345b9f6914cc2e7577475" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456aedda266cdb6345b9f6914cc2e7577475" kindref="member">KEYBOARD</ref>,</highlight></codeline>
+<codeline lineno="9" refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a4695654d9a54210407e32e78a14d5cbb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a4695654d9a54210407e32e78a14d5cbb" kindref="member">HID</ref>,</highlight></codeline>
+<codeline lineno="10" refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a696b031073e74bf2cb98e5ef201d4aa3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca6ce26a62afab55d7606ad4e92428b30c" kindref="member">UNKNOWN</ref></highlight></codeline>
+<codeline lineno="11"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="structDeviceData" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structDeviceData" kindref="compound">DeviceData</ref><sp/>{</highlight></codeline>
+<codeline lineno="14" refid="structDeviceData_1a1625318317b776adb58e8528a461f641" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456" kindref="member">PDJE_Dev_Type</ref><sp/><ref refid="structDeviceData_1a1625318317b776adb58e8528a461f641" kindref="member">Type</ref>;</highlight></codeline>
+<codeline lineno="15" refid="structDeviceData_1ae518021605f9684f8e9d9861f69b0f09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structDeviceData_1ae518021605f9684f8e9d9861f69b0f09" kindref="member">Name</ref>;</highlight></codeline>
+<codeline lineno="16" refid="structDeviceData_1ae053091ec1c51e0c75b0f11067d0af1b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structDeviceData_1ae053091ec1c51e0c75b0f11067d0af1b" kindref="member">device_specific_id</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="18" refid="PDJE__Input__Device__Data_8hpp_1a58503d463081ac24677b1da5c0cf3d87" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="PDJE__Input__Device__Data_8hpp_1a58503d463081ac24677b1da5c0cf3d87" kindref="member">DEV_LIST</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>std::vector&lt;DeviceData&gt;;</highlight></codeline>
+<codeline lineno="19" refid="PDJE__Input__Device__Data_8hpp_1a5d02ce2645cbc7cc15547ae58f2d2d23" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="PDJE__Input__Device__Data_8hpp_1a5d02ce2645cbc7cc15547ae58f2d2d23" kindref="member">ONE_SHOT_DEV_PROMISE</ref><sp/>=<sp/>std::optional&lt;std::promise&lt;DEV_LIST&gt;&gt;;</highlight></codeline>
+<codeline lineno="20" refid="PDJE__Input__Device__Data_8hpp_1a3a873a3d426e1f5e696c75ac9a68e557" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="PDJE__Input__Device__Data_8hpp_1a3a873a3d426e1f5e696c75ac9a68e557" kindref="member">ONE_SHOT_DEV_FUTURE</ref><sp/><sp/>=<sp/>std::optional&lt;std::future&lt;DEV_LIST&gt;&gt;;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="PDJE__Input__Device__Data_8hpp_1a58503d463081ac24677b1da5c0cf3d87" kindref="member">DEV_LIST</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>std::vector&lt;DeviceData&gt;;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="PDJE__Input__Device__Data_8hpp_1a5d02ce2645cbc7cc15547ae58f2d2d23" kindref="member">ONE_SHOT_DEV_PROMISE</ref><sp/>=<sp/>std::optional&lt;std::promise&lt;DEV_LIST&gt;&gt;;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="PDJE__Input__Device__Data_8hpp_1a3a873a3d426e1f5e696c75ac9a68e557" kindref="member">ONE_SHOT_DEV_FUTURE</ref><sp/><sp/>=<sp/>std::optional&lt;std::future&lt;DEV_LIST&gt;&gt;;</highlight></codeline>
+    </programlisting>
+    <location file="include/global/DataLines/PDJE_Input_Device_Data.hpp"/>
+  </compounddef>
+</doxygen>

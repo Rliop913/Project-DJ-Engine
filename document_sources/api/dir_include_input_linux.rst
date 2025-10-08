@@ -12,12 +12,18 @@ Directory linux
 
 *Directory path:* ``include/input/linux``
 
+Subdirectories
+--------------
+
+- :ref:`dir_include_input_linux_common`
+- :ref:`dir_include_input_linux_RT`
+
 
 Files
 -----
 
-- :ref:`file_include_input_linux_LINUX_I.cpp`
-- :ref:`file_include_input_linux_LINUX_INPUT.hpp`
-- :ref:`file_include_input_linux_LINUX_SUDO_GETTER.cpp`
+- :ref:`file_include_input_linux_IPC_SHARE_MEM.hpp`
+- :ref:`file_include_input_linux_linux_input.cpp`
+- :ref:`file_include_input_linux_linux_input.hpp`
 
 

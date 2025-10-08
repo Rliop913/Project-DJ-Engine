@@ -196,6 +196,11 @@
     <member refid="structDecoder_1a1f27ca66c9fc6096fb7c06c19c4f3b30" kind="function"><name>getPos</name></member>
     <member refid="structDecoder_1af5edf9c75d6929fc76133c87166cee2f" kind="function"><name>getRange</name></member>
   </compound>
+  <compound refid="structDeviceData" kind="struct"><name>DeviceData</name>
+    <member refid="structDeviceData_1a1625318317b776adb58e8528a461f641" kind="variable"><name>Type</name></member>
+    <member refid="structDeviceData_1ae518021605f9684f8e9d9861f69b0f09" kind="variable"><name>Name</name></member>
+    <member refid="structDeviceData_1ae053091ec1c51e0c75b0f11067d0af1b" kind="variable"><name>device_specific_id</name></member>
+  </compound>
   <compound refid="classDiffController" kind="class"><name>DiffController</name>
     <member refid="classDiffController_1ab23387a522be0df57c18c763394118f3" kind="variable"><name>Dobj</name></member>
     <member refid="classDiffController_1a735f7b75bc7cafe8ab7afef88e3a5ebf" kind="function"><name>CommitToCommit</name></member>
@@ -454,11 +459,6 @@
     <member refid="classFilterMan_1a02eb1d9f4f088df73ea85e41f262b440" kind="variable"><name>Filterfreq</name></member>
     <member refid="classFilterMan_1a087fe80377c689aeecb262673803dbc2" kind="function"><name>makeArgSetter</name></member>
   </compound>
-  <compound refid="structPDJE__IDEV_1_1Finders" kind="struct"><name>PDJE_IDEV::Finders</name>
-    <member refid="structPDJE__IDEV_1_1Finders_1a12328c0dc82a2206b75d9cbfa89aa48c" kind="variable"><name>devName</name></member>
-    <member refid="structPDJE__IDEV_1_1Finders_1ac7b206e31547f5990e3ff7f5affced51" kind="variable"><name>vendorID</name></member>
-    <member refid="structPDJE__IDEV_1_1Finders_1a20d8e9d63e1024a59d9517511ef3ad46" kind="variable"><name>productID</name></member>
-  </compound>
   <compound refid="classFlanger__PDJE" kind="class"><name>Flanger_PDJE</name>
     <member refid="classFlanger__PDJE_1a27ae3d2c0c674de95c5f2b511046fda2" kind="variable"><name>bps</name></member>
     <member refid="classFlanger__PDJE_1ac0bc52fcd4194464e36a57bc7b60d1d2" kind="function"><name>copyDatas</name></member>
@@ -508,6 +508,12 @@
     <member refid="classGitWrapper_1a36909e3fc709f3a3f24e1e7865254a8b" kind="function"><name>~GitWrapper</name></member>
     <member refid="classGitWrapper_1a74944ba0a6187c24c46d8c39c4df349b" kind="function"><name>GenTimeStamp</name></member>
   </compound>
+  <compound refid="structID" kind="struct"><name>ID</name>
+    <member refid="structID_1a4fed0482e215955e307d8bc6537a77d9" kind="variable"><name>socket_fd</name></member>
+    <member refid="structID_1a46c35781bce85bd345ba5689ab6d14ae" kind="variable"><name>client_fd</name></member>
+    <member refid="structID_1a5a4969e1e296cb42b3024ee34e34a86a" kind="variable"><name>rt_pid</name></member>
+    <member refid="structID_1a62cd160f637530664553ee647b66ccef" kind="variable"><name>socket_path</name></member>
+  </compound>
   <compound refid="structIngredients" kind="struct"><name>Ingredients</name>
     <member refid="structIngredients_1a7e4785fdee02fc7bbd011d90923c621b" kind="variable"><name>pos</name></member>
     <member refid="structIngredients_1ae41e97f65aee799e5714b33b8f78f78f" kind="function"><name>SORT</name></member>
@@ -516,6 +522,18 @@
     <member refid="structIngredients_1a7210e8202f533b09a297998e7b69219a" kind="function"><name>GetSameGidx</name></member>
     <member refid="structIngredients_1a408def0555c4f3c401aeeef44a86e3fc" kind="function"><name>Ready</name></member>
   </compound>
+  <compound refid="classIPCSharedMem" kind="class"><name>IPCSharedMem</name>
+    <member refid="classIPCSharedMem_1a2108153a8d72032eba29bd46aeb53d59" kind="variable"><name>ptr</name></member>
+    <member refid="classIPCSharedMem_1a4ce0fae47486d1ad09821f8ed652e740" kind="variable"><name>FD</name></member>
+    <member refid="classIPCSharedMem_1ae03800f1f566f8f4ae695d24bcdae5ca" kind="variable"><name>count</name></member>
+    <member refid="classIPCSharedMem_1ad2c21807417f4902b1cb81a5330d7ed3" kind="variable"><name>bytes</name></member>
+    <member refid="classIPCSharedMem_1ae694a6764fb7e1685254e54e778c42b1" kind="variable"><name>external_logger</name></member>
+    <member refid="classIPCSharedMem_1ad1283679201f9398abd0bf9c916adc85" kind="function"><name>IPCSharedMem</name></member>
+    <member refid="classIPCSharedMem_1a0344140e3c40c95fd54fb0feeef5a820" kind="function"><name>IPCSharedMem</name></member>
+    <member refid="classIPCSharedMem_1a0754ac3cb4fe56f5c71a4921996acacf" kind="function"><name>operator=</name></member>
+    <member refid="classIPCSharedMem_1ae822beb5f4e9a83fba4dc9f605c3664a" kind="function"><name>MakeIPCSharedMemory</name></member>
+    <member refid="classIPCSharedMem_1a860f870a9868a38ae077f1c216cefcf7" kind="function"><name>~IPCSharedMem</name></member>
+  </compound>
   <compound refid="structKVVisitor" kind="struct"><name>KVVisitor</name>
     <member refid="structKVVisitor_1a242671cc47822be8d1edcaee66149704" kind="function"><name>~KVVisitor</name></member>
     <member refid="structKVVisitor_1a7c91db5130667abd38d9fd8840cce826" kind="function"><name>on_item</name></member>
@@ -523,10 +541,6 @@
   <compound refid="structlineLog" kind="struct"><name>lineLog</name>
     <member refid="structlineLog_1a99660c397d6b1d74c546e555d93bf171" kind="variable"><name>linenumber</name></member>
     <member refid="structlineLog_1a12b4c09c0f75a43fe9913b7229b8132d" kind="variable"><name>text</name></member>
-  </compound>
-  <compound refid="classLinuxEVDEV" kind="class"><name>LinuxEVDEV</name>
-    <member refid="classLinuxEVDEV_1a03a86d2bbc4e7ee57f8d3e30a192c341" kind="function"><name>getList</name></member>
-    <member refid="classLinuxEVDEV_1a4f3b4d9a3c35df059dc1d5a2ea6d8240" kind="function"><name>init</name></member>
   </compound>
   <compound refid="classlitedb" kind="class"><name>litedb</name>
     <member refid="classlitedb_1a3fa0b6c88df33c15dd495450a6a9023c" kind="variable"><name>ROOT_PATH</name></member>
@@ -566,6 +580,12 @@
   </compound>
   <compound refid="classMeta" kind="class"><name>Meta</name>
     <member refid="classMeta_1a1c094ad5d97860bb0957eaee4a19d8c5" kind="function"><name>declare</name></member>
+  </compound>
+  <compound refid="structMidi__Input__Data" kind="struct"><name>Midi_Input_Data</name>
+    <member refid="structMidi__Input__Data_1abdc61727210b22c28e8f2d12e1044ce1" kind="variable"><name>event_type</name></member>
+    <member refid="structMidi__Input__Data_1ac3f8bb76c34207f816a3a53849f03fe8" kind="variable"><name>channel</name></member>
+    <member refid="structMidi__Input__Data_1a7a2d8cf0ea266e8f9c7a3040974a0162" kind="variable"><name>note</name></member>
+    <member refid="structMidi__Input__Data_1aa6ffdb4f987f70f7eb5bf15802893718" kind="variable"><name>velocity</name></member>
   </compound>
   <compound refid="classMIX" kind="class"><name>MIX</name>
     <member refid="classMIX_1a06e7de64345ce562df36eaf0eb9de6d0" kind="variable"><name>usable_threads</name></member>
@@ -750,6 +770,49 @@
   <compound refid="structgitwrap_1_1logHandle_1_1OID__HASHER" kind="struct"><name>gitwrap::logHandle::OID_HASHER</name>
     <member refid="structgitwrap_1_1logHandle_1_1OID__HASHER_1ab3aae66b8957c4b9c974d2fe8ec20fbb" kind="function"><name>operator()</name></member>
   </compound>
+  <compound refid="classOneTimeSysSetup" kind="class"><name>OneTimeSysSetup</name>
+    <member refid="classOneTimeSysSetup_1ae88903f38175d29e544303cfd4d16458" kind="function"><name>CoreValid</name></member>
+    <member refid="classOneTimeSysSetup_1adb2cad175e6084b31a8fcc3f25054765" kind="function"><name>FixCPU</name></member>
+    <member refid="classOneTimeSysSetup_1a3d4c1b4fdb4a87a202df6fc15dc8b340" kind="function"><name>MLock</name></member>
+    <member refid="classOneTimeSysSetup_1aaa1b843318e0dc4bd974a8bceb60d73b" kind="function"><name>OneTimeSysSetup</name></member>
+    <member refid="classOneTimeSysSetup_1a4b8cc91c89ed0f4a5aceba2e4a494385" kind="function"><name>~OneTimeSysSetup</name></member>
+  </compound>
+  <compound refid="classOS__Input" kind="class"><name>OS_Input</name>
+    <member refid="classOS__Input_1a1b378445bf9547af392a2b1b12f74b4d" kind="variable"><name>importants</name></member>
+    <member refid="classOS__Input_1abdcf0f9cc7f71efc80f7206118fab14a" kind="variable"><name>ThreadID</name></member>
+    <member refid="classOS__Input_1a8cd9d6130d410d3310ea442302d48230" kind="variable"><name>qpc</name></member>
+    <member refid="classOS__Input_1a28f8aba8f3d1db86907df43ff6132dec" kind="variable"><name>unlisted_targets</name></member>
+    <member refid="classOS__Input_1a68dd8fd823ef4917b06720cc54cbd8d5" kind="variable"><name>id_name</name></member>
+    <member refid="classOS__Input_1ae2eae088a2a00f8fce44883f317f0bf2" kind="variable"><name>input_buffer</name></member>
+    <member refid="classOS__Input_1a60d0ad2aae20ad34df25f7ced3f6dda9" kind="variable"><name>config_data</name></member>
+    <member refid="classOS__Input_1a1534b3f617505438f0b84929c32bb261" kind="variable"><name>run_ok</name></member>
+    <member refid="classOS__Input_1ac04fd8a51c01e38de60c3e00922a1ea3" kind="variable"><name>Invisible_window_name</name></member>
+    <member refid="classOS__Input_1a875f2737b8c7de13cba9ce7b979a0459" kind="variable"><name>worker</name></member>
+    <member refid="classOS__Input_1a6666290654c4183177b46c68d11ab3a0" kind="function"><name>OpenClientWithSudo</name></member>
+    <member refid="classOS__Input_1a5787a6efcbe23e455a8a641f52592227" kind="function"><name>CloseClient</name></member>
+    <member refid="classOS__Input_1ac18afc431328e05451cc99881e0c31aa" kind="function"><name>Send_IPCMEM_ToRT</name></member>
+    <member refid="classOS__Input_1a34e174a7bf24af7ff8c09426601be2e5" kind="function"><name>init</name></member>
+    <member refid="classOS__Input_1a4487a23afd8f4d9ca390d7f284850191" kind="function"><name>config</name></member>
+    <member refid="classOS__Input_1a989606f220472d794ad7f72e427ae5ea" kind="function"><name>run</name></member>
+    <member refid="classOS__Input_1a794e58c59427871c2554c28c132baca4" kind="function"><name>getRawDeviceDatas</name></member>
+    <member refid="classOS__Input_1a6a2dcd4d8bc49fe8463b88ce332538f3" kind="function"><name>hid_label_from_path</name></member>
+    <member refid="classOS__Input_1aa75064f53d9640242cab6d395eaefcb0" kind="function"><name>SocketOpen</name></member>
+    <member refid="classOS__Input_1a40c0218fb24c4ef4de9eee228657e2df" kind="function"><name>SocketClose</name></member>
+    <member refid="classOS__Input_1a3a94e57f03ba728c189020de199610f6" kind="function"><name>kill</name></member>
+    <member refid="classOS__Input_1a1e267997049cb562cb4b8d4dfe2f218e" kind="function"><name>getDevices</name></member>
+    <member refid="classOS__Input_1a1c5d8c5f98de73baa8282fe5b1afcf6a" kind="function"><name>setDevices</name></member>
+    <member refid="classOS__Input_1a40d69fae9cf08cdaf17e5f4f09a3af22" kind="function"><name>EndSocketTransmission</name></member>
+    <member refid="classOS__Input_1aefbbfd14e2902be2a2bb8fabb1d23cdd" kind="function"><name>TrigLoop</name></member>
+    <member refid="classOS__Input_1ae3c00214a561fe8736dc37024b88e420" kind="function"><name>ResetLoop</name></member>
+    <member refid="classOS__Input_1a3a94e57f03ba728c189020de199610f6" kind="function"><name>kill</name></member>
+    <member refid="classOS__Input_1aefbbfd14e2902be2a2bb8fabb1d23cdd" kind="function"><name>TrigLoop</name></member>
+    <member refid="classOS__Input_1ae3c00214a561fe8736dc37024b88e420" kind="function"><name>ResetLoop</name></member>
+    <member refid="classOS__Input_1af79ca528ebceb44b8c429091a36666bd" kind="function"><name>work</name></member>
+    <member refid="classOS__Input_1a1e267997049cb562cb4b8d4dfe2f218e" kind="function"><name>getDevices</name></member>
+    <member refid="classOS__Input_1ad9e86505f15f2af9e0e772e99032f5de" kind="function"><name>PullOutDataLine</name></member>
+    <member refid="classOS__Input_1ad60a928a455493a7648d1a4d0f97842b" kind="function"><name>OS_Input</name></member>
+    <member refid="classOS__Input_1aaa92fde24c900ea303ff039882a076bf" kind="function"><name>~OS_Input</name></member>
+  </compound>
   <compound refid="classPanner__PDJE" kind="class"><name>Panner_PDJE</name>
     <member refid="classPanner__PDJE_1af4a6b44caffcbcaa39be5a20e67e2d64" kind="variable"><name>bps</name></member>
     <member refid="classPanner__PDJE_1a91c05bc80865adcd5ed6728f8bdc1265" kind="variable"><name>PGain</name></member>
@@ -778,6 +841,17 @@
     <member refid="classPDJE_1a322160409e9c02e4700e966623bfd4d7" kind="function"><name>SearchTrack</name></member>
     <member refid="classPDJE_1aea68b7f5b26bf7a204bdb173938fd430" kind="function"><name>GetPlayerObject</name></member>
     <member refid="classPDJE_1afc08d1de925ce319492f0e57ed788321" kind="function"><name>GetEditorObject</name></member>
+  </compound>
+  <compound refid="classPDJE__Buffer__Arena" kind="class"><name>PDJE_Buffer_Arena</name>
+    <member refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" kind="variable"><name>arena</name></member>
+    <member refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kind="variable"><name>buf1</name></member>
+    <member refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" kind="variable"><name>buf2</name></member>
+    <member refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" kind="variable"><name>lock</name></member>
+    <member refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" kind="variable"><name>buf_first</name></member>
+    <member refid="classPDJE__Buffer__Arena_1a933fbb7468c92d0edadc7cde7eb989a0" kind="function"><name>Write</name></member>
+    <member refid="classPDJE__Buffer__Arena_1a8a0f1ef287e498607251c5ecda60efca" kind="function"><name>Get</name></member>
+    <member refid="classPDJE__Buffer__Arena_1a8e87e9f89928cbcec67d1ddd67f4b8d4" kind="function"><name>PDJE_Buffer_Arena</name></member>
+    <member refid="classPDJE__Buffer__Arena_1a29f47d258d824c510c8bb960ba52f826" kind="function"><name>~PDJE_Buffer_Arena</name></member>
   </compound>
   <compound refid="structPDJE__CORE__DATA__LINE" kind="struct"><name>PDJE_CORE_DATA_LINE</name>
     <member refid="structPDJE__CORE__DATA__LINE_1a6c9877db2cee46d9f72fe28f03ed451d" kind="variable"><name>used_frame</name></member>
@@ -821,20 +895,45 @@
     <member refid="classPDJE__GitHandler_1a5ff4e3a3248ecf88c2a1baad8f6a676a" kind="function"><name>PDJE_GitHandler</name></member>
     <member refid="classPDJE__GitHandler_1a515cab8812e778b2f11a3565178f9977" kind="function"><name>~PDJE_GitHandler</name></member>
   </compound>
-  <compound refid="structPDJE__IDEV" kind="struct"><name>PDJE_IDEV</name>
-    <member refid="structPDJE__IDEV_1af225b7cb09428409f7acf7c3b0fac8d8" kind="variable"><name>busType</name></member>
-    <member refid="structPDJE__IDEV_1a940be480ff4b0f0c55a9e5213af839da" kind="variable"><name>devType</name></member>
+  <compound refid="structPDJE__HID__Event" kind="struct"><name>PDJE_HID_Event</name>
+    <member refid="structPDJE__HID__Event_1a629cf3d710368a4b458ea094128e3268" kind="variable"><name>hid_buffer</name></member>
+    <member refid="structPDJE__HID__Event_1a7e965747cf6c3ff00bfeebca092556b6" kind="variable"><name>hid_byte_size</name></member>
   </compound>
   <compound refid="classPDJE__Input" kind="class"><name>PDJE_Input</name>
-    <member refid="classPDJE__Input_1aa9a859453d5c33ff3f6654ad8727da88" kind="function"><name>search</name></member>
-    <member refid="classPDJE__Input_1a58d3d946a55de99607621f084ec7025e" kind="function"><name>set</name></member>
-    <member refid="classPDJE__Input_1abac24ac6ea9eded988492efdd37a25ad" kind="function"><name>get</name></member>
-    <member refid="classPDJE__Input_1aab3694b2a2a3ba066f1835f73e968eb8" kind="function"><name>pair_job</name></member>
+    <member refid="classPDJE__Input_1aff9a7701bc1e1e257ce7eb08f0aef00e" kind="variable"><name>data</name></member>
+    <member refid="classPDJE__Input_1afbc7b278ba6404113b45393d365c646f" kind="variable"><name>activated_devices</name></member>
+    <member refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kind="variable"><name>state</name></member>
+    <member refid="classPDJE__Input_1abe8f6f2a3c505c91b5c1ad6a4f020b9d" kind="variable"><name>ErrLog</name></member>
+    <member refid="classPDJE__Input_1a3e124e131d2d68031d2e64f280670290" kind="variable"><name>config_promise</name></member>
+    <member refid="classPDJE__Input_1a64f4fb961c7524dac21a22119352d330" kind="variable"><name>run_command</name></member>
+    <member refid="classPDJE__Input_1a5e124b018f37cd0d4ebdb1aa0f4e234e" kind="function"><name>Init</name></member>
+    <member refid="classPDJE__Input_1a60b8fafb986f4a289ab6fc80b792afd3" kind="function"><name>Config</name></member>
+    <member refid="classPDJE__Input_1a141055482bcb2c52442ad9f596d72cba" kind="function"><name>Run</name></member>
+    <member refid="classPDJE__Input_1acd31c013ea5cf83003795bb58c60f9e5" kind="function"><name>Kill</name></member>
+    <member refid="classPDJE__Input_1aa129aebaaaa605cd347cbcd9e1de0e4b" kind="function"><name>InitOneShot</name></member>
+    <member refid="classPDJE__Input_1a649e395d73b91ab1fc28b47f7e838ba9" kind="function"><name>ResetOneShot</name></member>
+    <member refid="classPDJE__Input_1a57ffda3b7e96de7b73deb3557b089e9b" kind="function"><name>GetDevs</name></member>
+    <member refid="classPDJE__Input_1a643acbd02fc91fb774235fcbfe4b34c3" kind="function"><name>SetDevs</name></member>
+    <member refid="classPDJE__Input_1a618aaec5a5067bf8f729e4e6b31812c9" kind="function"><name>GetState</name></member>
+    <member refid="classPDJE__Input_1a6c9beb44c4c5247f41ff16dcbc9c07a9" kind="function"><name>NEXT</name></member>
     <member refid="classPDJE__Input_1ac4a8a1fc6bce51c498176db187c03e34" kind="function"><name>PullOutDataLine</name></member>
-    <member refid="classPDJE__Input_1a6a66c5c863c7c489d9a0da4be2de97bc" kind="function"><name>PDJE_Input</name></member>
-    <member refid="classPDJE__Input_1a2459c713b4af968b34679f87ca9dcdfd" kind="function"><name>~PDJE_Input</name></member>
+    <member refid="classPDJE__Input_1aeb8f457672b5f9643c2d08d55c7abf60" kind="function"><name>PDJE_Input</name></member>
+    <member refid="classPDJE__Input_1a340963eba591d40540b8920dc2a95e50" kind="function"><name>~PDJE_Input</name></member>
   </compound>
   <compound refid="structPDJE__INPUT__DATA__LINE" kind="struct"><name>PDJE_INPUT_DATA_LINE</name>
+    <member refid="structPDJE__INPUT__DATA__LINE_1a98608967b476ffd18c5b2f14ea36194b" kind="variable"><name>input_arena</name></member>
+    <member refid="structPDJE__INPUT__DATA__LINE_1a3b102228ea21b8855b2b7c140944875f" kind="variable"><name>id_name_conv</name></member>
+  </compound>
+  <compound refid="unionPDJE__Input__Event" kind="union"><name>PDJE_Input_Event</name>
+    <member refid="unionPDJE__Input__Event_1aeb7ebf56db1f094bca3a335d71870dab" kind="variable"><name>mouse</name></member>
+    <member refid="unionPDJE__Input__Event_1af1262bc0a6a920aee57a13cbf033cc0d" kind="variable"><name>keyboard</name></member>
+  </compound>
+  <compound refid="structPDJE__Input__Log" kind="struct"><name>PDJE_Input_Log</name>
+    <member refid="structPDJE__Input__Log_1aa64073bde0f836582ef86ce7484b4011" kind="variable"><name>type</name></member>
+    <member refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" kind="variable"><name>event</name></member>
+    <member refid="structPDJE__Input__Log_1a122a3be1ee635a767643927bbb9fcade" kind="variable"><name>hid_event</name></member>
+    <member refid="structPDJE__Input__Log_1aaefc2fdec36f5877ee575be7b9daf7bc" kind="variable"><name>id</name></member>
+    <member refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" kind="variable"><name>microSecond</name></member>
   </compound>
   <compound refid="classPDJE__JSONHandler" kind="class"><name>PDJE_JSONHandler</name>
     <member refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kind="variable"><name>ROOT</name></member>
@@ -877,9 +976,20 @@
     <member refid="classPDJE__JUDGE_1a29572ee20b176051d0e6a022c51dd9ec" kind="function"><name>PDJE_JUDGE</name></member>
     <member refid="classPDJE__JUDGE_1a9ed0afd12cca726d34f9d99874c5907d" kind="function"><name>~PDJE_JUDGE</name></member>
   </compound>
+  <compound refid="structPDJE__Keyboard__Event" kind="struct"><name>PDJE_Keyboard_Event</name>
+    <member refid="structPDJE__Keyboard__Event_1a1b408a0d1716613a9f0e81142b06574e" kind="variable"><name>k</name></member>
+    <member refid="structPDJE__Keyboard__Event_1a9b876596da025316eb8180d50a8e7f05" kind="variable"><name>pressed</name></member>
+  </compound>
   <compound refid="classPDJE__Linter" kind="class"><name>PDJE_Linter</name>
     <member refid="classPDJE__Linter_1aba3baadd7e99ff1082bc5ba75a132fdb" kind="function"><name>Lint</name></member>
     <member refid="classPDJE__Linter_1ae20f9acb9212f82e3ab44a47b9d8ba0a" kind="function"><name>Lint</name></member>
+  </compound>
+  <compound refid="structPDJE__Mouse__Event" kind="struct"><name>PDJE_Mouse_Event</name>
+    <member refid="structPDJE__Mouse__Event_1ac4ea4bd8d902c54ff7dc9ba62dbad482" kind="variable"><name>button_type</name></member>
+    <member refid="structPDJE__Mouse__Event_1a64a5d462f17c9f64cf4944315ce094a0" kind="variable"><name>wheel_move</name></member>
+    <member refid="structPDJE__Mouse__Event_1a9cb3ddb469590896ce4373e10b05c370" kind="variable"><name>axis_type</name></member>
+    <member refid="structPDJE__Mouse__Event_1af7262260704bc09b85ecf8dda0bf3aa9" kind="variable"><name>x</name></member>
+    <member refid="structPDJE__Mouse__Event_1afd88f5bb8052a707e0e208ad5307683e" kind="variable"><name>y</name></member>
   </compound>
   <compound refid="classPDJE__Name__Sanitizer" kind="class"><name>PDJE_Name_Sanitizer</name>
     <member refid="classPDJE__Name__Sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" kind="function"><name>sanitizeFileName</name></member>
@@ -908,6 +1018,20 @@
     <member refid="structPosition_1a3e9db580e023618c153f5f0039e757a4" kind="variable"><name>frame_in</name></member>
     <member refid="structPosition_1ac079c4b481a5ba40015db7d1e04717a1" kind="variable"><name>frame_out</name></member>
   </compound>
+  <compound refid="classQPC__Timer" kind="class"><name>QPC_Timer</name>
+    <member refid="classQPC__Timer_1a9725fb836599de869b17b990b08f285c" kind="variable"><name>qpc_freq</name></member>
+    <member refid="classQPC__Timer_1aa7af7da6e19f0072b06c75e920055b21" kind="variable"><name>temp_int</name></member>
+    <member refid="classQPC__Timer_1a4db4c317e67be448736c36b55a293bf3" kind="function"><name>now</name></member>
+    <member refid="classQPC__Timer_1a8dc5cd509e6060c8ef51d821e1cde93a" kind="function"><name>to_second</name></member>
+    <member refid="classQPC__Timer_1af78396474952c5ea8ec31ae056eca064" kind="function"><name>to_ms</name></member>
+    <member refid="classQPC__Timer_1ac285942b80ee6921247c74ec39bb4397" kind="function"><name>to_micro</name></member>
+    <member refid="classQPC__Timer_1a7e43a09bc4bd83857a5bebb254a9efce" kind="function"><name>QPC_Timer</name></member>
+    <member refid="classQPC__Timer_1aeb16983fa883fef83dd761ae3080ada0" kind="function"><name>~QPC_Timer</name></member>
+  </compound>
+  <compound refid="structRawDeviceData" kind="struct"><name>RawDeviceData</name>
+    <member refid="structRawDeviceData_1a2d4254bd4d3b0451b736d9ca3540dd5b" kind="variable"><name>info</name></member>
+    <member refid="structRawDeviceData_1a02ccacd6e6eb1bb11d6b60af75bdca60" kind="variable"><name>deviceHIDPath</name></member>
+  </compound>
   <compound refid="classRobot__PDJE" kind="class"><name>Robot_PDJE</name>
     <member refid="classRobot__PDJE_1a8e8b7d346892ad9a9a1c2352a13434a5" kind="variable"><name>robotFreq</name></member>
     <member refid="classRobot__PDJE_1a7d3b410f2f984800fe28252082f24b57" kind="function"><name>copyDatas</name></member>
@@ -929,8 +1053,36 @@
     <member refid="classRollMan_1aaeba40b711b9f16bf1c52addf26ad573" kind="variable"><name>RollPower</name></member>
     <member refid="classRollMan_1a3211e867ecae385fbf535ff230d6eb8c" kind="function"><name>makeArgSetter</name></member>
   </compound>
-  <compound refid="structPDJE__IDEV_1_1Specifiers" kind="struct"><name>PDJE_IDEV::Specifiers</name>
-    <member refid="structPDJE__IDEV_1_1Specifiers_1aee7a242198fb1f34a5e7187963bfde20" kind="variable"><name>devID</name></member>
+  <compound refid="structRT__ID" kind="struct"><name>RT_ID</name>
+    <member refid="structRT__ID_1a4622d6fde0b06fb273cd9d170be665c6" kind="variable"><name>host_socket</name></member>
+  </compound>
+  <compound refid="classRTEvent" kind="class"><name>RTEvent</name>
+    <member refid="classRTEvent_1afa33e186864ea6c3bf2ac4f1bc57b20b" kind="variable"><name>events</name></member>
+    <member refid="classRTEvent_1ae701086909faf89e51c7a96b78815c90" kind="function"><name>DrainEvents</name></member>
+    <member refid="classRTEvent_1a15f201cbda3e915545e56589f7a217cc" kind="function"><name>use_event</name></member>
+    <member refid="classRTEvent_1a33e492d1ad0a73a58d759a37e93b9abc" kind="function"><name>Reset</name></member>
+    <member refid="classRTEvent_1a7c6b7b49d583adaa3382f426052e881a" kind="function"><name>Add</name></member>
+    <member refid="classRTEvent_1ad4752e36f2999d8121f03104f860a222" kind="function"><name>Trig</name></member>
+    <member refid="classRTEvent_1a24d0218409c270a46c3983304a932aca" kind="function"><name>RTEvent</name></member>
+    <member refid="classRTEvent_1abf2f15d758052a3a06bdb40ab6522aa9" kind="function"><name>~RTEvent</name></member>
+  </compound>
+  <compound refid="classRTSocket" kind="class"><name>RTSocket</name>
+    <member refid="classRTSocket_1ab38c96818fdc24dd3325f2feb4dbf083" kind="variable"><name>rtev</name></member>
+    <member refid="classRTSocket_1a34fa7968f4c1daddad58f62535b1db87" kind="variable"><name>functionRegistry</name></member>
+    <member refid="classRTSocket_1a1a6d068a007e09e4be4e67fb276b8254" kind="variable"><name>errorHandler</name></member>
+    <member refid="classRTSocket_1af7143437d4ffb98b34a5f70ead71d64d" kind="variable"><name>setups</name></member>
+    <member refid="classRTSocket_1aee78e6b1e43694700b080655f3b93a6a" kind="variable"><name>importants</name></member>
+    <member refid="classRTSocket_1a1c117631320d839a548fcc3d94e8047b" kind="variable"><name>stored_dev_path</name></member>
+    <member refid="classRTSocket_1aa9c0b8a8e86631e76044aca71284bf99" kind="variable"><name>ErrMsg</name></member>
+    <member refid="classRTSocket_1a8f66337c926a88e954c59d0571a5b79b" kind="function"><name>ParseMsg</name></member>
+    <member refid="classRTSocket_1a7cb721e57123e746ec987d74cb1c0b3e" kind="function"><name>SocketOpen</name></member>
+    <member refid="classRTSocket_1a5e524ba9ab67e87eaf2d8759ef6958f7" kind="function"><name>SocketClose</name></member>
+    <member refid="classRTSocket_1ae21b5e390bb947cc76d5c0781f669b8e" kind="function"><name>RegisterFunctions</name></member>
+    <member refid="classRTSocket_1a31892786cbfa7e01640393f65c5842b3" kind="function"><name>ListDevices</name></member>
+    <member refid="classRTSocket_1a1863eb9d242254c481a5dfa7ceafd212" kind="function"><name>SendMsg</name></member>
+    <member refid="classRTSocket_1a0b314c5175b7bd885350e50f31cdd468" kind="function"><name>Communication</name></member>
+    <member refid="classRTSocket_1a958cda83cd413cf934271ebb45631b3c" kind="function"><name>RTSocket</name></member>
+    <member refid="classRTSocket_1ad28d8bbd83682e15de69a0a90f8d66ea" kind="function"><name>~RTSocket</name></member>
   </compound>
   <compound refid="structstmt" kind="struct"><name>stmt</name>
     <member refid="structstmt_1ad512ebd1df9861c0bbe6cfd926735ae2" kind="variable"><name>placeHold</name></member>
@@ -1025,6 +1177,15 @@
     <member refid="namespacecapnp_1_1schemas_1a123cf68bf6bfbda0bf27469dcb63e4c1" kind="typedef"><name>TypeEnum</name></member>
     <member refid="namespacecapnp_1_1schemas_1a28016f8cf19daee7e05b37b539124533" kind="typedef"><name>DetailEnum</name></member>
   </compound>
+  <compound refid="namespaceCommon__Features" kind="namespace"><name>Common_Features</name>
+    <member refid="namespaceCommon__Features_1a85ba412f5bb7fcc163ff85b1a6dedfdf" kind="function"><name>SendByte</name></member>
+    <member refid="namespaceCommon__Features_1a9d2554538ffced3a2d625f562d80365e" kind="function"><name>RecvByte</name></member>
+    <member refid="namespaceCommon__Features_1ae7de45f5bf7f824894a45151efe97313" kind="function"><name>LPSend</name></member>
+    <member refid="namespaceCommon__Features_1af19798f328e422f395131cd603101c1a" kind="function"><name>LPRecv</name></member>
+    <member refid="namespaceCommon__Features_1a1fa285f8cefd7d04b62d4c0c1d738b24" kind="function"><name>MakeMSG</name></member>
+    <member refid="namespaceCommon__Features_1a1dee95f359d7ba86c375b585edab2b4c" kind="function"><name>MakeMSG</name></member>
+    <member refid="namespaceCommon__Features_1a9819433dbb3c04ccbcf39523f8185eaf" kind="function"><name>ReadMSG</name></member>
+  </compound>
   <compound refid="namespaceFrameCalc" kind="namespace"><name>FrameCalc</name>
     <member refid="namespaceFrameCalc_1a12e18e06211c6b6148f77eef662555ad" kind="function"><name>CountFrame</name></member>
   </compound>
@@ -1033,6 +1194,11 @@
   <compound refid="namespaceHWY__NAMESPACE" kind="namespace"><name>HWY_NAMESPACE</name>
     <member refid="namespaceHWY__NAMESPACE_1ad074d697d201fc9b6c258e128a4ef91e" kind="function"><name>GetPCMFramesSIMD</name></member>
     <member refid="namespaceHWY__NAMESPACE_1af0a22093ab08dd742f914c113783bec3" kind="function"><name>INTEGRATE_PCM_SIMD</name></member>
+  </compound>
+  <compound refid="namespacePDJE__RAWINPUT" kind="namespace"><name>PDJE_RAWINPUT</name>
+    <member refid="namespacePDJE__RAWINPUT_1af3d9b0dc9168afb6956d5809b21d1973" kind="function"><name>FillMouseInput</name></member>
+    <member refid="namespacePDJE__RAWINPUT_1a5e04c9834f130fb62d04b35bd3723f1e" kind="function"><name>FillKeyboardInput</name></member>
+    <member refid="namespacePDJE__RAWINPUT_1a48e9c69018daa084dab26f77fb3e78fa" kind="function"><name>FillHIDInput</name></member>
   </compound>
   <compound refid="namespacestd" kind="namespace"><name>std</name>
   </compound>
@@ -1463,9 +1629,24 @@
     <member refid="fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kind="typedef"><name>SANITIZED_ORNOT</name></member>
     <member refid="fileNameSanitizer_8hpp_1a60e6f3a42a8bab43c807f31be0e7aab1" kind="typedef"><name>cbase</name></member>
   </compound>
+  <compound refid="PDJE__Buffer_8hpp" kind="file"><name>PDJE_Buffer.hpp</name>
+    <member refid="PDJE__Buffer_8hpp_1a01cb5e075b875399bbcbd1ac4a91349b" kind="define"><name>RESET_PMR_VECTOR</name></member>
+  </compound>
   <compound refid="PDJE__Core__DataLine_8hpp" kind="file"><name>PDJE_Core_DataLine.hpp</name>
   </compound>
   <compound refid="PDJE__Input__DataLine_8hpp" kind="file"><name>PDJE_Input_DataLine.hpp</name>
+    <member refid="PDJE__Input__DataLine_8hpp_1ad2b191944fa7dd4314a1a49b2b243e62" kind="typedef"><name>PDJE_NAME</name></member>
+    <member refid="PDJE__Input__DataLine_8hpp_1a73ea437825558867dcad305e6ab74cd9" kind="typedef"><name>PDJE_ID</name></member>
+  </compound>
+  <compound refid="PDJE__Input__Device__Data_8hpp" kind="file"><name>PDJE_Input_Device_Data.hpp</name>
+    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456" kind="enum"><name>PDJE_Dev_Type</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a2ec2be318cc86a1224c0e9dcc71321e4" kind="enumvalue"><name>MOUSE</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456aedda266cdb6345b9f6914cc2e7577475" kind="enumvalue"><name>KEYBOARD</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a4695654d9a54210407e32e78a14d5cbb" kind="enumvalue"><name>HID</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a696b031073e74bf2cb98e5ef201d4aa3" kind="enumvalue"><name>UNKNOWN</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1a58503d463081ac24677b1da5c0cf3d87" kind="typedef"><name>DEV_LIST</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1a5d02ce2645cbc7cc15547ae58f2d2d23" kind="typedef"><name>ONE_SHOT_DEV_PROMISE</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1a3a873a3d426e1f5e696c75ac9a68e557" kind="typedef"><name>ONE_SHOT_DEV_FUTURE</name></member>
   </compound>
   <compound refid="PDJE__EXPORT__SETTER_8hpp" kind="file"><name>PDJE_EXPORT_SETTER.hpp</name>
     <member refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kind="define"><name>PDJE_API</name></member>
@@ -1476,24 +1657,194 @@
     <member refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kind="define"><name>critlog</name></member>
     <member refid="PDJE__LOG__SETTER_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36" kind="function"><name>startlog</name></member>
   </compound>
-  <compound refid="LINUX__I_8cpp" kind="file"><name>LINUX_I.cpp</name>
+  <compound refid="Input__State_8hpp" kind="file"><name>Input_State.hpp</name>
+    <member refid="Input__State_8hpp_1af7586f410ce5333bcf76fb8cae134ffd" kind="define"><name>PDJE_MOUSE_L_BTN_DOWN</name></member>
+    <member refid="Input__State_8hpp_1acdb937bd2193bcddde688cae1d926c5f" kind="define"><name>PDJE_MOUSE_L_BTN_UP</name></member>
+    <member refid="Input__State_8hpp_1a81120971482c7ad20820dbb20d470e11" kind="define"><name>PDJE_MOUSE_R_BTN_DOWN</name></member>
+    <member refid="Input__State_8hpp_1a74db0959bac6041d5b6e65e22de4641e" kind="define"><name>PDJE_MOUSE_R_BTN_UP</name></member>
+    <member refid="Input__State_8hpp_1ab9055847fbd4a2cd39ea69035fa2bd14" kind="define"><name>PDJE_MOUSE_M_BTN_DOWN</name></member>
+    <member refid="Input__State_8hpp_1a29d804cf0835d1a8affcbe6e09cfff7a" kind="define"><name>PDJE_MOUSE_M_BTN_UP</name></member>
+    <member refid="Input__State_8hpp_1afac9556f444d78e35bc6cb186e772abc" kind="define"><name>PDJE_MOUSE_SIDE_BTN_DOWN</name></member>
+    <member refid="Input__State_8hpp_1acd3802791bed4a2414fa2d7b381ac06f" kind="define"><name>PDJE_MOUSE_SIDE_BTN_UP</name></member>
+    <member refid="Input__State_8hpp_1a9c9ffdfa31c19bc779a484b66e79fcde" kind="define"><name>PDJE_MOUSE_EX_BTN_DOWN</name></member>
+    <member refid="Input__State_8hpp_1a4defe0cbf2218a93a0f5d3c7c302a6cc" kind="define"><name>PDJE_MOUSE_EX_BTN_UP</name></member>
+    <member refid="Input__State_8hpp_1a20b91215de82755052db3f4e57f607a3" kind="define"><name>PDJE_MOUSE_XWHEEL</name></member>
+    <member refid="Input__State_8hpp_1a0e21e913c078608aaec0577624781c0c" kind="define"><name>PDJE_MOUSE_YWHEEL</name></member>
+    <member refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9" kind="enum"><name>PDJE_INPUT_STATE</name></member>
+    <member refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a16ce19414b9020f53f0543a1f623a3ee" kind="enumvalue"><name>DEVICE_CONFIG_STATE</name></member>
+    <member refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a620f732f3889ae9e7cdd222aeaaa5211" kind="enumvalue"><name>INPUT_LOOP_READY</name></member>
+    <member refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a78692e16c48c8defdb53b5d7daaa70a2" kind="enumvalue"><name>INPUT_LOOP_RUNNING</name></member>
+    <member refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a11fd9ca455f92c69c084484d5cd803c2" kind="enumvalue"><name>DEAD</name></member>
+    <member refid="Input__State_8hpp_1a5ae841a031c4bff77d818c3722b0ec40" kind="enum"><name>PDJE_MIDI_EVENTS</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55c" kind="enum"><name>PDJE_KEY</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca92c96db0eaf1a8c3846cb313fa584939" kind="enumvalue"><name>F_1</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf52e4e29ebcc0cf42482ff7d90cff0b7" kind="enumvalue"><name>F_2</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca3fab70d5b1b68ca04b09d36cf63aa949" kind="enumvalue"><name>F_3</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca5aea1ae6d3d3b5638cb7fcd7c93cae73" kind="enumvalue"><name>F_4</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf1ecc2e4c4eaf5fe28f1aeaf4494c3d8" kind="enumvalue"><name>F_5</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca334fce92784e49c24cf9eb6b26c32372" kind="enumvalue"><name>F_6</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca1ef9542307b9d3b44e7b0ccd988d037b" kind="enumvalue"><name>F_7</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca404baa5c90a354eecebecfe7d7759bc1" kind="enumvalue"><name>F_8</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf7812ef6b43b755d3eb02016606911a9" kind="enumvalue"><name>F_9</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cadcd7c6608794b8594c10e150ceefd193" kind="enumvalue"><name>F_10</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca1b6c4f76b06981ce384260851c733929" kind="enumvalue"><name>F_11</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cad68f8e8fe3778ffe7abdc3094f5ac20d" kind="enumvalue"><name>F_12</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca29b8ecb29049f38cbf752d95f479bff7" kind="enumvalue"><name>D1</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca86c69dc8849d17673b52b9a8d94d8b9f" kind="enumvalue"><name>D2</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cade8ef7573c5fa770f07ac7616cbf5d34" kind="enumvalue"><name>D3</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca12761dd9f3b74590b720d87d6ca9fbcf" kind="enumvalue"><name>D4</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca9bfc9615ce2836fe43fe37e0eda2a68a" kind="enumvalue"><name>D5</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cab6e74cb404ad3a7370b6cbb05f004fcb" kind="enumvalue"><name>D6</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca0701f86c777d8dde5be3a916a510cdfa" kind="enumvalue"><name>D7</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caea0726597b1f1d4e1fbe5bc51978a5e1" kind="enumvalue"><name>D8</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cad8ff471f40b06f8793851f05c87d4fdf" kind="enumvalue"><name>D9</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca5484c6144a8cba103d5d23f4be32afcf" kind="enumvalue"><name>D0</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caa53ab217f1572250a530c8c2b3c820cf" kind="enumvalue"><name>Q</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cab722ceeb601c72cd78fbd35f3581fdf7" kind="enumvalue"><name>W</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cab199e021998d49b1f09338d8b9b18ecb" kind="enumvalue"><name>E</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca1784b1a3d7cbd43c45ff82c72d05e4ae" kind="enumvalue"><name>R</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kind="enumvalue"><name>T</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca5596231eabd6cf29050967d5ac83ad84" kind="enumvalue"><name>Y</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cac461e84f27bbb236874e1011cd66031f" kind="enumvalue"><name>U</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cad091b8e376f7cf432dc367e1eda65e85" kind="enumvalue"><name>I</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf4b8b7698dfedf5562a7db2bdb07010a" kind="enumvalue"><name>O</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca82f05f38f6a17b117cdd2b83227912c6" kind="enumvalue"><name>P</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca42a4ade1acd55a49164099104990e09f" kind="enumvalue"><name>A</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf1ce01387d2348f8b858721a7db81670" kind="enumvalue"><name>S</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca77a6b11f9898c052926f1d49765861e8" kind="enumvalue"><name>D</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf382a63cc3d6491bf26b59e66f46826d" kind="enumvalue"><name>F</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca2fe993340f6abb2234e543cd427df70b" kind="enumvalue"><name>G</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca5008b1179f399a2273fd3f6a7fc3b292" kind="enumvalue"><name>H</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca03605500b0c55f3d95874e8edfcf4e30" kind="enumvalue"><name>J</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca660a38111995acbeb2820648e82f0d8c" kind="enumvalue"><name>K</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kind="enumvalue"><name>L</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caa70478ce277ffc322f8e1e3418e07355" kind="enumvalue"><name>Z</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca58833a3110c570fb05130d40c365d1e4" kind="enumvalue"><name>X</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca739ce3f516592d245d16fd8a3893472c" kind="enumvalue"><name>C</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca28f41f1144eee94834387e9a6a088bc1" kind="enumvalue"><name>V</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca3f2a77ecd272aa6d6b5902faa5e5fc68" kind="enumvalue"><name>B</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca2c63acbe79d9f41ba6bb7766e9c37702" kind="enumvalue"><name>N</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca51ca6c63d97347ee58cc7da59ab6994b" kind="enumvalue"><name>M</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca2f86521bc3f49b411e1c0f8f34f659e3" kind="enumvalue"><name>KP_1</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca736e1673887af269c2920de5bda9c6a0" kind="enumvalue"><name>KP_2</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca9304b76eb683861adfabde75da22696c" kind="enumvalue"><name>KP_3</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca0b64cb8053000950713a91b5f6955e2b" kind="enumvalue"><name>KP_4</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca73dc18a3ce71f87e95d7f5855c06eaba" kind="enumvalue"><name>KP_5</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca165fc763e9badcc109652ae3d808dbcd" kind="enumvalue"><name>KP_6</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca1dc97b60bf4dab75b1635f70dc8b630d" kind="enumvalue"><name>KP_7</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca206390b10f393e451c932810dfe20703" kind="enumvalue"><name>KP_8</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cab963d5d2104bd7dfbd92db9c9f1540aa" kind="enumvalue"><name>KP_9</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caca44b2ff5b17ad46f145ba6762e9187a" kind="enumvalue"><name>KP_0</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cae0aa74c7b89fe4291ee497fd2d5986ca" kind="enumvalue"><name>KP_DOT</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca4e79730883424b83fb6e300c8ca93216" kind="enumvalue"><name>KP_ENTER</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca8b2a2dd8c13d2a64dc80bf1b27a44e9f" kind="enumvalue"><name>KP_PLUS</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cadc5f5745557e11dfa663a73499fa3920" kind="enumvalue"><name>KP_NUMLOCK</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cacabb7bdd3326aff400d547be68e95500" kind="enumvalue"><name>KP_SLASH</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca8481db8261508bc7f1d0a3d9a31b032f" kind="enumvalue"><name>KP_STAR</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf2e2f7a2fba41c87f15dc3aa7601c81e" kind="enumvalue"><name>KP_MINUS</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca951ab68bb8f7daafb78951107080904e" kind="enumvalue"><name>ENTER</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf5297152557c7da396243000ca240e89" kind="enumvalue"><name>ESC</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cad2534cebcf6f430484b7c931dd657ddc" kind="enumvalue"><name>BACKSPACE</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca920380215591395ea33ee5df8e293e19" kind="enumvalue"><name>TAB</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cac08dae7edcb5c5bb959fee5971fbad95" kind="enumvalue"><name>SPACE</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca7ecc84d86e54a9b3f0e4a1c3aabc050e" kind="enumvalue"><name>CAPSLK</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cadb45120aafd37a973140edee24708065" kind="enumvalue"><name>LEFT</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caec8379af7490bb9eaaf579cf17876f38" kind="enumvalue"><name>RIGHT</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caba595d8bca8bc5e67c37c0a9d89becfa" kind="enumvalue"><name>UP</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca9b0b4a95b99523966e0e34ffdadac9da" kind="enumvalue"><name>DOWN</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf7829657638cac08b350bcc89b019686" kind="enumvalue"><name>LCTRL</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cabff57a488a35993c295f4724cc7d681a" kind="enumvalue"><name>RCTRL</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca04016f71a33b0eb0588266c888d97fa2" kind="enumvalue"><name>LALT</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca0de6b26d338b5491c6911e5b2d951d93" kind="enumvalue"><name>RALT</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca39afc29636d1da3daa8d63a694fd326a" kind="enumvalue"><name>LSHIFT</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caab6449326eb99b043532c550e60c1502" kind="enumvalue"><name>RSHIFT</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf613d73b4e7b570ffd967df4a13c4225" kind="enumvalue"><name>MINUS</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca59a84258a4cb9025b567ee5139455029" kind="enumvalue"><name>EQUAL</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca0cec39b7d239ce3b136a6a5c8dce4733" kind="enumvalue"><name>LBRACKET</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cae5a45530be18692845ef7dde05247664" kind="enumvalue"><name>RBRACKET</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca18eb037ebe08a2b3e9ea4d4f86699be6" kind="enumvalue"><name>BACKSLASH</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caaabdfe7000ca535236502bb0c87ad944" kind="enumvalue"><name>SLASH</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca55eebe3c7e08b49cd5969442f4f8c4ce" kind="enumvalue"><name>SEMICOLON</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca1d294cd452a1bd17423ca8b41857f855" kind="enumvalue"><name>APOSTROPHE</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca14234884830e79618b4ee96253423963" kind="enumvalue"><name>GRAVE</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf81277bcd86412fe04bb68718ea09392" kind="enumvalue"><name>COMMA</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf65a8a7e47ca896d414e6c098e100038" kind="enumvalue"><name>PERIOD</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca31c9274e4329f65ba390a35e8eafe13a" kind="enumvalue"><name>NONUS_BACKSLASH</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caea0b3c0bf6b9668e7b9609cca1583010" kind="enumvalue"><name>SP_PRINT_SCREEN</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca57b6bc9506b1cb1e21e529a44c47d64d" kind="enumvalue"><name>SP_SCROLL_LOCK</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca3434e2897cfb3f581f9bc1748b31b9d6" kind="enumvalue"><name>SP_INSERT</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca79b821cb60633c0f2be4c59881b6f0a7" kind="enumvalue"><name>SP_HOME</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca7f470a1df0d6a4dc075f163ef0630ae1" kind="enumvalue"><name>SP_END</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca9964c6924a12ac3971a4016064762ae9" kind="enumvalue"><name>SP_DELETE</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca2fe50b7a7d85fc24d70688caaa8a7fff" kind="enumvalue"><name>SP_PAGE_UP</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca0aba32cb5aa31f64b182e5a60b5c2e2b" kind="enumvalue"><name>SP_PAGE_DOWN</name></member>
+    <member refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca6ce26a62afab55d7606ad4e92428b30c" kind="enumvalue"><name>UNKNOWN</name></member>
+    <member refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726f" kind="enum"><name>PDJE_Mouse_Axis_Type</name></member>
+    <member refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726fab2082544bca640e70f0bb74d17a98082" kind="enumvalue"><name>REL</name></member>
+    <member refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726fa62f7ef0a404defa34640e94940792147" kind="enumvalue"><name>ABS</name></member>
+    <member refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726fa8086cff93400d8fe2e9c1bc571c6a353" kind="enumvalue"><name>VIRTUAL_DESKTOP_ABS</name></member>
+    <member refid="Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107" kind="typedef"><name>BITMASK</name></member>
+    <member refid="Input__State_8hpp_1a14bdefbd858b34cd4cb0b0af52f6332e" kind="typedef"><name>ONE_SHOT_RUN_PROMISE</name></member>
+    <member refid="Input__State_8hpp_1a821478f084c5bbe8413cfe70b427f702" kind="typedef"><name>ONE_SHOT_RUN_FUTURE</name></member>
   </compound>
-  <compound refid="LINUX__INPUT_8hpp" kind="file"><name>LINUX_INPUT.hpp</name>
+  <compound refid="Common__Features_8hpp" kind="file"><name>Common_Features.hpp</name>
+    <member refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bd" kind="enum"><name>PDJE_RT_ERROR</name></member>
+    <member refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bdaaf239de32489d60f6a3b18626375e581" kind="enumvalue"><name>FAILED_TO_PARSE_JSON</name></member>
+    <member refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bda727d7acad26e69422b9ed0acda046bec" kind="enumvalue"><name>FAILED_TO_PARSE_JSON_HEAD_BODY</name></member>
+    <member refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bdabe5927afeb17bdd16e0c7441407469ee" kind="enumvalue"><name>INVALID_JSON_FORMAT</name></member>
+    <member refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bda527917a15b1909e5805f59e3b654401b" kind="enumvalue"><name>FAILED_TO_SCHED_GETAFFINITY</name></member>
+    <member refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bdab926bccb8ac7deb770a6ca918f43b9c6" kind="enumvalue"><name>FAILED_TO_SET_CPU_NUMBER</name></member>
+    <member refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bda66de88aaa69356a9fcd43a6e9395ff7e" kind="enumvalue"><name>FAILED_TO_SEND_RECV__DATA_LENGTH_IS_ZERO</name></member>
+    <member refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bda7520ff0aa90ad7219136d08ddf2a9a03" kind="enumvalue"><name>FAILED_TO_SET_DEV__INVALID_DATA</name></member>
   </compound>
-  <compound refid="LINUX__SUDO__GETTER_8cpp" kind="file"><name>LINUX_SUDO_GETTER.cpp</name>
-    <member refid="LINUX__SUDO__GETTER_8cpp_1a07c29355b1960208b10a600ba440b745" kind="typedef"><name>EV_LIST</name></member>
-    <member refid="LINUX__SUDO__GETTER_8cpp_1a071ad4c80a013a30ce51bdc187a8b887" kind="typedef"><name>DEV_LIST</name></member>
-    <member refid="LINUX__SUDO__GETTER_8cpp_1a392860ee66fd37997232c4adaeb5013f" kind="variable"><name>EVENT_ROOT</name></member>
-    <member refid="LINUX__SUDO__GETTER_8cpp_1aea739ce0b7f7a3387d9cf64bd26d95b8" kind="function"><name>EventListGetter</name></member>
-    <member refid="LINUX__SUDO__GETTER_8cpp_1a9bd9474de4c81e5a75a37839d77b2377" kind="function"><name>CHK_QWERTY</name></member>
-    <member refid="LINUX__SUDO__GETTER_8cpp_1ab97e546c7a36e4221b605b874bcf9182" kind="function"><name>DeviceDataGetter</name></member>
-    <member refid="LINUX__SUDO__GETTER_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+  <compound refid="RT__EXEC__HASH_8hpp" kind="file"><name>RT_EXEC_HASH.hpp</name>
+    <member refid="RT__EXEC__HASH_8hpp_1ad73b9790a9814fd41cf2923709c8d366" kind="variable"><name>EMBEDDED_CHILD_SHA256</name></member>
+  </compound>
+  <compound refid="IPC__SHARE__MEM_8hpp" kind="file"><name>IPC_SHARE_MEM.hpp</name>
+  </compound>
+  <compound refid="linux__input_8cpp" kind="file"><name>linux_input.cpp</name>
+  </compound>
+  <compound refid="linux__input_8hpp" kind="file"><name>linux_input.hpp</name>
+  </compound>
+  <compound refid="OneTimeSysSetup_8cpp" kind="file"><name>OneTimeSysSetup.cpp</name>
+  </compound>
+  <compound refid="OneTimeSysSetup_8hpp" kind="file"><name>OneTimeSysSetup.hpp</name>
+  </compound>
+  <compound refid="RTEvent_8cpp" kind="file"><name>RTEvent.cpp</name>
+  </compound>
+  <compound refid="RTEvent_8hpp" kind="file"><name>RTEvent.hpp</name>
+  </compound>
+  <compound refid="RTFunctionRegister_8cpp" kind="file"><name>RTFunctionRegister.cpp</name>
+  </compound>
+  <compound refid="RTMain_8cpp" kind="file"><name>RTMain.cpp</name>
+    <member refid="RTMain_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="RTSocket_8cpp" kind="file"><name>RTSocket.cpp</name>
+  </compound>
+  <compound refid="RTSocket_8hpp" kind="file"><name>RTSocket.hpp</name>
+    <member refid="RTSocket_8hpp_1a4a5d8fd04da75f13c58e95aea630c308" kind="typedef"><name>data_body</name></member>
+    <member refid="RTSocket_8hpp_1a9fe2c28cc016fecdfc4909a9f5c74a0b" kind="typedef"><name>regi_function</name></member>
   </compound>
   <compound refid="PDJE__Input_8cpp" kind="file"><name>PDJE_Input.cpp</name>
+    <member refid="PDJE__Input_8cpp_1a8fe83ba44412d3ac8156adc7d8a68e35" kind="define"><name>PDJE_INPUT_DEFAULT_TRY_CATCH</name></member>
   </compound>
-  <compound refid="PDJE__INPUT_8hpp" kind="file"><name>PDJE_INPUT.hpp</name>
+  <compound refid="PDJE__Input_8hpp" kind="file"><name>PDJE_Input.hpp</name>
+  </compound>
+  <compound refid="dev__path__to__name_8hpp" kind="file"><name>dev_path_to_name.hpp</name>
+    <member refid="dev__path__to__name_8hpp_1a35f557ba79bc284006eaa0ea1135e1a1" kind="function"><name>NormalizeNt</name></member>
+    <member refid="dev__path__to__name_8hpp_1a68b15c9bc07d944024a7b6d8216cc9c7" kind="function"><name>GetFriendlyNameFromHidPath</name></member>
+  </compound>
+  <compound refid="QPC__Timer_8cpp" kind="file"><name>QPC_Timer.cpp</name>
+  </compound>
+  <compound refid="QPC__Timer_8hpp" kind="file"><name>QPC_Timer.hpp</name>
+  </compound>
+  <compound refid="windows__input_8cpp" kind="file"><name>windows_input.cpp</name>
+    <member refid="windows__input_8cpp_1a0c57a1c76a00e13db135c6b41005f0ad" kind="function"><name>wstring_to_utf8_nt</name></member>
   </compound>
   <compound refid="windows__input_8hpp" kind="file"><name>windows_input.hpp</name>
+    <member refid="windows__input_8hpp_1a7704eb10de7beb5b7bc393f8b062446a" kind="typedef"><name>PDJE_DEV_PATH</name></member>
+  </compound>
+  <compound refid="windows__keyboard__fill_8hpp" kind="file"><name>windows_keyboard_fill.hpp</name>
   </compound>
   <compound refid="PDJE__Judge_8cpp" kind="file"><name>PDJE_Judge.cpp</name>
   </compound>
@@ -1536,6 +1887,9 @@
     <member refid="linux__I__WAKER_8cpp_1a2c56e7fd51cd8f2cbbdd35c013019d74" kind="function"><name>futex_wake</name></member>
     <member refid="linux__I__WAKER_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
   </compound>
+  <compound refid="pdjeInputTest_8cpp" kind="file"><name>pdjeInputTest.cpp</name>
+    <member refid="pdjeInputTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
   <compound refid="interfaceTest_8cpp" kind="file"><name>interfaceTest.cpp</name>
     <member refid="interfaceTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
   </compound>
@@ -1564,6 +1918,8 @@
   <compound refid="dir_335fcd3fc623029a3195a5a4e3ef1f15" kind="dir"><name>include/core/db/Capnp/CapnpBinary</name>
   </compound>
   <compound refid="dir_831e032be99eda75b56b7a8dce0d0177" kind="dir"><name>include/core/editor/featureWrapper/GitWrap/Commit</name>
+  </compound>
+  <compound refid="dir_77b26bcd6cc16d9a891a5cf6bb6985e3" kind="dir"><name>include/input/linux/common</name>
   </compound>
   <compound refid="dir_3d69f64eaf81436fe2b22361382717e5" kind="dir"><name>include/core</name>
   </compound>
@@ -1624,6 +1980,8 @@
   <compound refid="dir_56d2716a27252db85311e7620b189731" kind="dir"><name>include/core/db/Capnp/Translators/NoteTranslator</name>
   </compound>
   <compound refid="dir_fcec5fb50f7aa8fd4fa780069036d830" kind="dir"><name>include/core/editor/pdjeLinter</name>
+  </compound>
+  <compound refid="dir_9f6bd92ca734390fd23a9b3053d83ba7" kind="dir"><name>include/input/linux/RT</name>
   </compound>
   <compound refid="dir_2d714543e6a0e39c8f4ee11136c19c5c" kind="dir"><name>include/core/MainObjects/tempDBObject</name>
   </compound>

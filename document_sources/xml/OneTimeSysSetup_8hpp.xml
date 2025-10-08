@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="OneTimeSysSetup_8hpp" kind="file" language="C++">
+    <compoundname>OneTimeSysSetup.hpp</compoundname>
+    <includes refid="Common__Features_8hpp" local="yes">Common_Features.hpp</includes>
+    <includes local="no">numa.h</includes>
+    <includes local="no">numaif.h</includes>
+    <includes local="no">sched.h</includes>
+    <includes local="no">sys/mman.h</includes>
+    <includedby refid="OneTimeSysSetup_8cpp" local="yes">include/input/linux/RT/OneTimeSysSetup.cpp</includedby>
+    <includedby refid="RTSocket_8hpp" local="yes">include/input/linux/RT/RTSocket.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/input/linux/RT/OneTimeSysSetup.hpp</label>
+        <link refid="OneTimeSysSetup_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Common_Features.hpp</label>
+        <link refid="Common__Features_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="4">
+        <label>cerrno</label>
+      </node>
+      <node id="5">
+        <label>cstddef</label>
+      </node>
+      <node id="6">
+        <label>cstdint</label>
+      </node>
+      <node id="7">
+        <label>limits</label>
+      </node>
+      <node id="8">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="9">
+        <label>nlohmann/json.hpp</label>
+      </node>
+      <node id="13">
+        <label>numa.h</label>
+      </node>
+      <node id="14">
+        <label>numaif.h</label>
+      </node>
+      <node id="15">
+        <label>sched.h</label>
+      </node>
+      <node id="10">
+        <label>string</label>
+      </node>
+      <node id="16">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="11">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="12">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/input/linux/RT/OneTimeSysSetup.cpp</label>
+        <link refid="OneTimeSysSetup_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/input/linux/RT/OneTimeSysSetup.hpp</label>
+        <link refid="OneTimeSysSetup_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/input/linux/RT/RTEvent.cpp</label>
+        <link refid="RTEvent_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/input/linux/RT/RTFunctionRegister.cpp</label>
+        <link refid="RTFunctionRegister_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/input/linux/RT/RTMain.cpp</label>
+        <link refid="RTMain_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/input/linux/RT/RTSocket.cpp</label>
+        <link refid="RTSocket_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/input/linux/RT/RTSocket.hpp</label>
+        <link refid="RTSocket_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/input/linux/linux_input.cpp</label>
+        <link refid="linux__input_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classOneTimeSysSetup" prot="public">OneTimeSysSetup</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Common__Features_8hpp" kindref="compound">Common_Features.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;numa.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;numaif.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sched.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/mman.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="classOneTimeSysSetup" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classOneTimeSysSetup_1aaa1b843318e0dc4bd974a8bceb60d73b" kindref="member">OneTimeSysSetup</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOneTimeSysSetup_1ae88903f38175d29e544303cfd4d16458" kindref="member">CoreValid</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>core_number);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOneTimeSysSetup_1adb2cad175e6084b31a8fcc3f25054765" kindref="member">FixCPU</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>core_number<sp/>=<sp/>2);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOneTimeSysSetup_1a3d4c1b4fdb4a87a202df6fc15dc8b340" kindref="member">MLock</ref>();</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17" refid="classOneTimeSysSetup_1aaa1b843318e0dc4bd974a8bceb60d73b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOneTimeSysSetup_1aaa1b843318e0dc4bd974a8bceb60d73b" kindref="member">OneTimeSysSetup</ref>()</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOneTimeSysSetup_1adb2cad175e6084b31a8fcc3f25054765" kindref="member">FixCPU</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOneTimeSysSetup_1a3d4c1b4fdb4a87a202df6fc15dc8b340" kindref="member">MLock</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="22" refid="classOneTimeSysSetup_1a4b8cc91c89ed0f4a5aceba2e4a494385" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOneTimeSysSetup_1a4b8cc91c89ed0f4a5aceba2e4a494385" kindref="member">~OneTimeSysSetup</ref>()</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>munlockall();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="include/input/linux/RT/OneTimeSysSetup.hpp"/>
+  </compounddef>
+</doxygen>

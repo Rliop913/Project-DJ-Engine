@@ -19,5 +19,6 @@ Files
 - :ref:`file_include_tests_INPUT_TESTS_evdevtest.cpp`
 - :ref:`file_include_tests_INPUT_TESTS_linux_I_WAITER.cpp`
 - :ref:`file_include_tests_INPUT_TESTS_linux_I_WAKER.cpp`
+- :ref:`file_include_tests_INPUT_TESTS_pdjeInputTest.cpp`
 
 

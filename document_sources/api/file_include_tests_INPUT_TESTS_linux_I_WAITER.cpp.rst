@@ -30,7 +30,7 @@ Includes
 --------
 
 
-- ``LINUX_INPUT.hpp`` (:ref:`file_include_input_linux_LINUX_INPUT.hpp`)
+- ``LINUX_INPUT.hpp``
 
 - ``chrono``
 

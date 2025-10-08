@@ -253,12 +253,6 @@
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">engineDatas</span><span class="p">.</span><span class="n">pcmDataPoint</span><span class="o">-&gt;</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">dline</span><span class="p">.</span><span class="n">preRenderedData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engineDatas</span><span class="p">.</span><span class="n">pcmDataPoint</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">engineDatas</span><span class="p">.</span><span class="n">FXManualPanel</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">dline</span><span class="p">.</span><span class="n">fx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">engineDatas</span><span class="p">.</span><span class="n">FXManualPanel</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">engineDatas</span><span class="p">.</span><span class="n">MusCtrPanel</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">dline</span><span class="p">.</span><span class="n">musp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">engineDatas</span><span class="p">.</span><span class="n">MusCtrPanel</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dline</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>

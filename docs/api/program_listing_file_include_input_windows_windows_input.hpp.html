@@ -84,6 +84,64 @@
 <span id="program-listing-file-include-input-windows-windows-input-hpp"></span><h1>Program Listing for File windows_input.hpp<a class="headerlink" href="#program-listing-for-file-windows-input-hpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_input_windows_windows_input.hpp.html#file-include-input-windows-windows-input-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/input/windows/windows_input.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unordered_map&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Windows.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;avrt.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mmsystem.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QPC_Timer.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Input_State.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;hidsdi.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;SetupAPI.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;future&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_DataLine.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Buffer.hpp&quot;</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">RawDeviceData</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">RID_DEVICE_INFO</span><span class="w"> </span><span class="n">info</span><span class="p">{};</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">wstring</span><span class="w"> </span><span class="n">deviceHIDPath</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">PDJE_DEV_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">OS_Input</span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">HWND</span><span class="w"> </span><span class="n">init</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">config</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">();</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">RawDeviceData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getRawDeviceDatas</span><span class="p">();</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">hid_label_from_path</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">wstring</span><span class="o">&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DWORD</span><span class="w"> </span><span class="n">ThreadID</span><span class="p">;</span>
+<span class="w">    </span><span class="n">QPC_Timer</span><span class="w"> </span><span class="n">qpc</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">PDJE_DEV_PATH</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_NAME</span><span class="o">&gt;</span><span class="w"> </span><span class="n">unlisted_targets</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">PDJE_ID</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_NAME</span><span class="o">&gt;</span><span class="w"> </span><span class="n">id_name</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_Buffer_Arena</span><span class="o">&lt;</span><span class="n">PDJE_Input_Log</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input_buffer</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">kill</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">TrigLoop</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">ResetLoop</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">work</span><span class="p">();</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getDevices</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">wstring</span><span class="w"> </span><span class="n">Invisible_window_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sa">L</span><span class="s">&quot;PDJE_Invisible_RawInput_Worker&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">ONE_SHOT_DEV_FUTURE</span><span class="w"> </span><span class="n">config_data</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ONE_SHOT_RUN_FUTURE</span><span class="w"> </span><span class="n">run_ok</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="o">&gt;</span><span class="w"> </span><span class="n">worker</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_INPUT_DATA_LINE</span>
+<span class="w">    </span><span class="nf">PullOutDataLine</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">OS_Input</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="o">~</span><span class="n">OS_Input</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+
+<span class="p">};</span>
 </pre></div>
 </div>
 </section>
