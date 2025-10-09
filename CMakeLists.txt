@@ -172,6 +172,7 @@ if(WIN32)#windows only. for now
 setSpdlogReqLib(PDJE_MODULE_JUDGE)
 setSpdlogReqLib(PDJE_MODULE_INPUT)
 PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT)
+
 endif()
 
 # target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)

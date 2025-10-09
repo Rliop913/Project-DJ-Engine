@@ -72,6 +72,7 @@ set(PDJE_INCLUDE_JUDGE
 ${CMAKE_CURRENT_SOURCE_DIR}/include/global
 ${CMAKE_CURRENT_SOURCE_DIR}/include/global/DataLines
 ${CMAKE_CURRENT_SOURCE_DIR}/include/judge
+${CMAKE_CURRENT_SOURCE_DIR}/include/judge/NoteOBJ
 
 #external include
 # ${CMAKE_CURRENT_SOURCE_DIR}/include/core/audioRender/ManualMix
