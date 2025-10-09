@@ -28,7 +28,7 @@ namespace PDJE_JUDGE{
         void Fill(const NOTE& data);
         
         template<bool>
-        void Get(unsigned long long limit, unsigned long long cut_limit, std::vector<NOTE*>& found);
+        void Get(unsigned long long limit,  std::vector<NOTE*>& found);
 
         template<bool>
         void Cut();
