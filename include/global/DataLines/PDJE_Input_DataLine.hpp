@@ -18,6 +18,6 @@ struct PDJE_Input_Log{
 
 
 struct PDJE_API PDJE_INPUT_DATA_LINE {
-    PDJE_Buffer_Arena<PDJE_Input_Log>* input_arena;
-    std::unordered_map<PDJE_ID, PDJE_NAME>* id_name_conv;
+    PDJE_Buffer_Arena<PDJE_Input_Log>* input_arena = nullptr;
+    std::unordered_map<PDJE_ID, PDJE_NAME>* id_name_conv = nullptr;
 };
