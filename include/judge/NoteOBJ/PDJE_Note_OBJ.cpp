@@ -1,5 +1,6 @@
 #include "PDJE_Note_OBJ.hpp"
 #include <algorithm>
+#include <memory>
 namespace PDJE_JUDGE {
 
 template <>
@@ -29,7 +30,7 @@ OBJ::Sort()
 
 template <>
 void
-OBJ::Get<IN>(unsigned long long limit, std::vector<NOTE *> &found)
+OBJ::Get<IN>(const unsigned long long limit, std::vector<NOTE *> &found)
 {
     found.clear();
     while (true) { // pull iterator
@@ -52,11 +53,11 @@ OBJ::Get<IN>(unsigned long long limit, std::vector<NOTE *> &found)
 
 template <>
 void
-OBJ::Get<OUT>(unsigned long long limit, std::vector<NOTE *> &found)
+OBJ::Get<OUT>(const unsigned long long limit, std::vector<NOTE *> &found)
 {
     found.clear();
     while (true) { // pull iterator
-        if (oitr != in.end() && oitr->used) {
+        if (oitr != out.end() && oitr->used) {
             ++oitr;
         } else {
             break;
@@ -64,12 +65,42 @@ OBJ::Get<OUT>(unsigned long long limit, std::vector<NOTE *> &found)
     }
     auto titr = oitr;
     while (true) {
-        if ((titr != in.end()) && titr->pos <= limit && !titr->used) {
+        if ((titr != out.end()) && titr->pos <= limit && !titr->used) {
             found.push_back(std::addressof(*titr));
             ++titr;
         } else {
             break;
         }
+    }
+}
+
+template <>
+void
+OBJ::Cut<IN>(const unsigned long long limit, std::vector<NOTE> &cuts)
+{
+    cuts.clear();
+    auto titr = iitr;
+    while (titr != in.end() && titr->pos <= limit) {
+        if (!titr->used) {
+            cuts.push_back(*titr);
+            titr->used = true;
+        }
+        ++titr;
+    }
+}
+
+template <>
+void
+OBJ::Cut<OUT>(const unsigned long long limit, std::vector<NOTE> &cuts)
+{
+    cuts.clear();
+    auto titr = oitr;
+    while (titr != out.end() && titr->pos <= limit) {
+        if (!titr->used) {
+            cuts.push_back(*titr);
+            titr->used = true;
+        }
+        ++titr;
     }
 }
 

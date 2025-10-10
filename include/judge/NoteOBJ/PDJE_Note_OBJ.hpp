@@ -31,10 +31,12 @@ class OBJ {
 
     template <bool>
     void
-    Get(unsigned long long limit, std::vector<NOTE *> &found);
+    Get(const unsigned long long limit, std::vector<NOTE *> &found);
 
     template <bool>
     void
-    Cut();
+    Cut(const unsigned long long limit, std::vector<NOTE> &cuts);
+    OBJ()  = default;
+    ~OBJ() = default;
 };
 }; // namespace PDJE_JUDGE

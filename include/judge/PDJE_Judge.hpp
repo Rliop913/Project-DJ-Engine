@@ -4,7 +4,11 @@
 
 #include "PDJE_Core_DataLine.hpp"
 #include "PDJE_Input_DataLine.hpp"
+#include "PDJE_Note_OBJ.hpp"
+#include <atomic>
+#include <thread>
 #include <vector>
+namespace PDJE_JUDGE {
 enum JUDGE_STATUS {
     OK                   = 0,
     CORE_LINE_IS_MISSING = 1,
@@ -12,13 +16,17 @@ enum JUDGE_STATUS {
     NOTE_OBJECT_IS_MISSING,
 };
 
-class PDJE_JUDGE {
+class JUDGE {
   private:
     std::optional<PDJE_CORE_DATA_LINE>  core;
     std::optional<PDJE_INPUT_DATA_LINE> input;
-    bool                                gotCoreLine    = false;
-    bool                                gotInputLine   = false;
-    bool                                gotNoteObjects = false;
+    std::optional<OBJ>                  note_obj;
+    std::optional<std::thread>          loop;
+    JUDGE_STATUS                        status = JUDGE_STATUS::OK;
+    std::atomic<bool>                   loop_switch;
+
+    void
+    Judge_Loop();
 
   public:
     void
@@ -37,8 +45,11 @@ class PDJE_JUDGE {
 
     JUDGE_STATUS
     Start();
+    void
+    End();
     JUDGE_STATUS
     CheckStatus();
-    PDJE_JUDGE()  = default;
-    ~PDJE_JUDGE() = default;
+    JUDGE()  = default;
+    ~JUDGE() = default;
 };
+}; // namespace PDJE_JUDGE
