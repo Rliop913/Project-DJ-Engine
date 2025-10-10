@@ -11,13 +11,13 @@
  *
  */
 struct PDJE_API audioEngineDataStruct {
-    float                            *faustPcmPP[2];
+    float                           *faustPcmPP[2];
     std::optional<FXControlPanel>    FXManualPanel;
     std::optional<MusicControlPanel> MusCtrPanel;
-    std::vector<float>               *pcmDataPoint;
-    unsigned long long                nowCursor      = 0;
-    unsigned long long                maxCursor      = 0;
-    unsigned long long                consumedFrames = 0;
+    std::vector<float>              *pcmDataPoint;
+    unsigned long long               nowCursor      = 0;
+    unsigned long long               maxCursor      = 0;
+    unsigned long long               consumedFrames = 0;
 
     /**
      * @brief Get Current playback point

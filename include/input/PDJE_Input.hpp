@@ -40,7 +40,7 @@ class PDJE_Input {
                             ResetOneShot(P &promise, F &future);
     std::vector<DeviceData> activated_devices;
     PDJE_INPUT_STATE        state = PDJE_INPUT_STATE::DEAD;
-    
+
   public:
     std::string ErrLog;
 

@@ -94,14 +94,14 @@ endif(PDJE_BUILD_TESTS)
 if(PDJE_DYNAMIC)
 add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource} ${globalSource})
 
-if(WIN32)#windows only. for now
 add_library(PDJE_MODULE_JUDGE SHARED ${judgeSource} ${globalSource})
+if(WIN32)#windows only. for now
 add_library(PDJE_MODULE_INPUT SHARED ${inputSource} ${globalSource})
 endif()
 
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
-if(WIN32)#windows only. for now
 target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE})
+if(WIN32)#windows only. for now
 target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
 endif()
 if(WIN32)
@@ -117,15 +117,15 @@ else()
 add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource} ${globalSource})
 
 
-if(WIN32)#windows only. for now
 add_library(PDJE_MODULE_JUDGE ${judgeSource} ${globalSource})
+if(WIN32)#windows only. for now
 add_library(PDJE_MODULE_INPUT ${inputSource} ${globalSource})
 endif()
 
 
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
-if(WIN32)#windows only. for now
 target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE})
+if(WIN32)#windows only. for now
 target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
 endif()
 
@@ -168,8 +168,8 @@ endif()
 # linkPDJELibs(PDJE_MODULE_JUDGE)
 linkPDJELibs(PDJE)
 
-if(WIN32)#windows only. for now
 setSpdlogReqLib(PDJE_MODULE_JUDGE)
+if(WIN32)#windows only. for now
 setSpdlogReqLib(PDJE_MODULE_INPUT)
 PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT)
 

@@ -1,16 +1,15 @@
 #pragma once
 #include <future>
+#include <memory_resource>
 #include <optional>
 #include <string>
 #include <vector>
-#include <memory_resource>
 enum PDJE_INPUT_STATE {
     DEVICE_CONFIG_STATE = 0,
     INPUT_LOOP_READY,
     INPUT_LOOP_RUNNING,
     DEAD
 };
-
 
 enum PDJE_MIDI_EVENTS {
 
@@ -36,54 +35,141 @@ enum PDJE_MIDI_EVENTS {
 #define PDJE_MOUSE_XWHEEL 0x0400
 #define PDJE_MOUSE_YWHEEL 0x0800
 
-enum PDJE_KEY{
-    F_1 = 0, F_2, F_3, F_4, F_5, F_6, F_7, F_8, F_9, F_10, F_11, F_12, 
-    D1, D2, D3, D4, D5, D6, D7, D8, D9, D0, 
-    Q, W, E, R, T, Y, U, I, O, P, 
-    A, S, D, F, G, H, J, K, L, 
-    Z, X, C, V, B, N, M,
+enum PDJE_KEY {
+    F_1 = 0,
+    F_2,
+    F_3,
+    F_4,
+    F_5,
+    F_6,
+    F_7,
+    F_8,
+    F_9,
+    F_10,
+    F_11,
+    F_12,
+    D1,
+    D2,
+    D3,
+    D4,
+    D5,
+    D6,
+    D7,
+    D8,
+    D9,
+    D0,
+    Q,
+    W,
+    E,
+    R,
+    T,
+    Y,
+    U,
+    I,
+    O,
+    P,
+    A,
+    S,
+    D,
+    F,
+    G,
+    H,
+    J,
+    K,
+    L,
+    Z,
+    X,
+    C,
+    V,
+    B,
+    N,
+    M,
 
-    KP_1, KP_2, KP_3, KP_4, KP_5, KP_6, KP_7, KP_8, KP_9, KP_0, 
-    KP_DOT, KP_ENTER, KP_PLUS,  KP_NUMLOCK,  KP_SLASH,  KP_STAR,  KP_MINUS, 
-    
-    ENTER, ESC, BACKSPACE, TAB, SPACE, CAPSLK, 
+    KP_1,
+    KP_2,
+    KP_3,
+    KP_4,
+    KP_5,
+    KP_6,
+    KP_7,
+    KP_8,
+    KP_9,
+    KP_0,
+    KP_DOT,
+    KP_ENTER,
+    KP_PLUS,
+    KP_NUMLOCK,
+    KP_SLASH,
+    KP_STAR,
+    KP_MINUS,
 
-    LEFT, RIGHT, UP, DOWN, 
+    ENTER,
+    ESC,
+    BACKSPACE,
+    TAB,
+    SPACE,
+    CAPSLK,
 
-    LCTRL, RCTRL, LALT, RALT, LSHIFT, RSHIFT,
+    LEFT,
+    RIGHT,
+    UP,
+    DOWN,
 
-    MINUS, EQUAL, LBRACKET, RBRACKET, BACKSLASH, SLASH, SEMICOLON, APOSTROPHE, GRAVE,  COMMA,  PERIOD, NONUS_BACKSLASH,
+    LCTRL,
+    RCTRL,
+    LALT,
+    RALT,
+    LSHIFT,
+    RSHIFT,
 
-    SP_PRINT_SCREEN, SP_SCROLL_LOCK, 
-    SP_INSERT,  SP_HOME,  SP_END, SP_DELETE,  SP_PAGE_UP,  SP_PAGE_DOWN,
+    MINUS,
+    EQUAL,
+    LBRACKET,
+    RBRACKET,
+    BACKSLASH,
+    SLASH,
+    SEMICOLON,
+    APOSTROPHE,
+    GRAVE,
+    COMMA,
+    PERIOD,
+    NONUS_BACKSLASH,
+
+    SP_PRINT_SCREEN,
+    SP_SCROLL_LOCK,
+    SP_INSERT,
+    SP_HOME,
+    SP_END,
+    SP_DELETE,
+    SP_PAGE_UP,
+    SP_PAGE_DOWN,
     UNKNOWN
 };
 
-enum PDJE_Mouse_Axis_Type{
-    REL=0,
-    ABS=1,
-    VIRTUAL_DESKTOP_ABS=2//maybe windows only
+enum PDJE_Mouse_Axis_Type {
+    REL                 = 0,
+    ABS                 = 1,
+    VIRTUAL_DESKTOP_ABS = 2 // maybe windows only
 };
 
 using BITMASK = uint16_t;
 struct PDJE_Mouse_Event {
-    BITMASK button_type;
-    int wheel_move;
+    BITMASK              button_type;
+    int                  wheel_move;
     PDJE_Mouse_Axis_Type axis_type;
-    int  x;
-    int  y;
+    int                  x;
+    int                  y;
 };
 
-struct PDJE_Keyboard_Event{
+struct PDJE_Keyboard_Event {
     PDJE_KEY k;
-    bool pressed;
+    bool     pressed;
 };
 
-struct PDJE_HID_Event{
+struct PDJE_HID_Event {
     std::pmr::vector<uint8_t> hid_buffer;
-    unsigned long hid_byte_size=0;
+    unsigned long             hid_byte_size = 0;
 };
-
 
 struct Midi_Input_Data {
     PDJE_MIDI_EVENTS event_type;
@@ -92,13 +178,10 @@ struct Midi_Input_Data {
     uint8_t          velocity;
 };
 
-
-union PDJE_Input_Event{
-    PDJE_Mouse_Event mouse;
+union PDJE_Input_Event {
+    PDJE_Mouse_Event    mouse;
     PDJE_Keyboard_Event keyboard;
 };
-
-
 
 using ONE_SHOT_RUN_PROMISE = std::optional<std::promise<bool>>;
 using ONE_SHOT_RUN_FUTURE  = std::optional<std::future<bool>>;

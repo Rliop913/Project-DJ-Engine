@@ -121,7 +121,7 @@ main()
     if (restd.value().front().mixBinary.size() == rb.out().size()) {
         std::cout << "Completele same" << std::endl;
     }
-    auto AP     = new audioPlayer(dbb, restd.value().front(), 48, true);
+    auto AP    = new audioPlayer(dbb, restd.value().front(), 48, true);
     auto panel = AP->GetFXControlPanel();
     AP->Activate();
     getchar();

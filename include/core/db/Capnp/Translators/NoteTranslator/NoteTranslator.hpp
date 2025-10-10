@@ -9,9 +9,8 @@
 #include "FrameCalc.hpp"
 
 #include "PDJE_EXPORT_SETTER.hpp"
-#include <functional>
 #include "PDJE_OBJ_SETTER.hpp"
-
+#include <functional>
 
 /**
  * @brief the note translator.

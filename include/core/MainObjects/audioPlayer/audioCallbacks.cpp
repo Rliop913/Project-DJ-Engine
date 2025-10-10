@@ -72,7 +72,7 @@ HybridRender_callback(ma_device  *pDevice,
         reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
     rendered->GetAfterManFX(reinterpret_cast<float *>(pOutput), frameCount);
     rendered->MusCtrPanel->GetPCMFrames(reinterpret_cast<float *>(pOutput),
-                                         frameCount);
+                                        frameCount);
     rendered->CountUp(frameCount);
 }
 
@@ -84,5 +84,5 @@ FullManualRender_callback(ma_device  *pDevice,
 {
     auto Data = reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
     Data->MusCtrPanel->GetPCMFrames(reinterpret_cast<float *>(pOutput),
-                                     frameCount);
+                                    frameCount);
 }
