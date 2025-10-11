@@ -79,7 +79,8 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
                            std::string(br[i].getSecond().cStr()),
                            std::string(br[i].getThird().cStr()),
                            position,
-                           pos2);
+                           pos2,
+                           br[i].getRailID());
         }
     }
     return true;

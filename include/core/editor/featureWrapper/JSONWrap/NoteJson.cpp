@@ -21,7 +21,8 @@ PDJE_JSONHandler<NOTE_W>::add(const NoteArgs &args)
         { PDJE_JSON_SEPARATE, args.separate },
         { PDJE_JSON_EBEAT, args.Ebeat },
         { PDJE_JSON_ESUBBEAT, args.EsubBeat },
-        { PDJE_JSON_ESEPARATE, args.Eseparate }
+        { PDJE_JSON_ESEPARATE, args.Eseparate },
+        { PDJE_JSON_RAILID, args.railID }
     };
     if (!ROOT.contains(PDJENOTE)) {
         critlog("note json root not found. from PDJE_JSONHandler<NOTE_W> add.");
@@ -67,6 +68,8 @@ PDJE_JSONHandler<NOTE_W>::deleteLine(const NoteArgs &args)
             if (Target[PDJE_JSON_ESEPARATE] != args.Eseparate &&
                 args.Eseparate != -1)
                 continue;
+            if (Target[PDJE_JSON_RAILID] != args.railID)
+                continue;
             targetIDX.push_back(i);
         }
         for (auto i : targetIDX | vs::reverse) {
@@ -100,7 +103,8 @@ PDJE_JSONHandler<NOTE_W>::getAll(
                            i[PDJE_JSON_SEPARATE],
                            i[PDJE_JSON_EBEAT],
                            i[PDJE_JSON_ESUBBEAT],
-                           i[PDJE_JSON_ESEPARATE] };
+                           i[PDJE_JSON_ESEPARATE],
+                           i[PDJE_JSON_RAILID] };
         jsonCallback(tempargs);
     }
 }
@@ -130,6 +134,7 @@ PDJE_JSONHandler<NOTE_W>::render()
             filler[i].setEbeat(target[PDJE_JSON_EBEAT]);
             filler[i].setEsubBeat(target[PDJE_JSON_ESUBBEAT]);
             filler[i].setESeparate(target[PDJE_JSON_ESEPARATE]);
+            filler[i].setRailID(target[PDJE_JSON_RAILID]);
         }
         return tempMixBin;
     } catch (std::exception &e) {

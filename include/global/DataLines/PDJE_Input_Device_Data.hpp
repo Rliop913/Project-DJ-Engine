@@ -1,4 +1,5 @@
 #pragma once
+#include <future>
 #include <optional>
 #include <string>
 #include <vector>

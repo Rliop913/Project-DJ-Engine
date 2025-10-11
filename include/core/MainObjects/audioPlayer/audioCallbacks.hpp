@@ -1,9 +1,11 @@
 #pragma once
 
+#include <cstdint>
 #include <optional>
 
 #include "MusicControlPanel.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
+#include "PDJE_Highres_Clock.hpp"
 #include <miniaudio.h>
 
 /**
@@ -18,7 +20,8 @@ struct PDJE_API audioEngineDataStruct {
     unsigned long long               nowCursor      = 0;
     unsigned long long               maxCursor      = 0;
     unsigned long long               consumedFrames = 0;
-
+    uint64_t                         microsecond    = 0;
+    PDJE_HIGHRES_CLOCK::CLOCK        highres_clock;
     /**
      * @brief Get Current playback point
      *

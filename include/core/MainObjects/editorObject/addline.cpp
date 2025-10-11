@@ -1,3 +1,4 @@
+#include "PDJE_LOG_SETTER.hpp"
 #include "editorObject.hpp"
 
 template <>
@@ -71,6 +72,9 @@ editorObject::AddLine(const EDIT_ARG_NOTE &obj)
         critlog(obj.second);
         critlog("third: ");
         critlog(obj.third);
+        critlog("railID: ");
+        critlog(obj.railID);
+
         return false;
     }
     return DefaultSaveFunction<EDIT_ARG_NOTE>();

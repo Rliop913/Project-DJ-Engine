@@ -162,9 +162,10 @@ PDJE_CORE_DATA_LINE
 audioPlayer::PullOutDataLine()
 {
     PDJE_CORE_DATA_LINE dline;
-    dline.used_frame = &engineDatas.consumedFrames;
-    dline.nowCursor  = &engineDatas.nowCursor;
-    dline.maxCursor  = &engineDatas.maxCursor;
+    dline.used_frame  = &engineDatas.consumedFrames;
+    dline.nowCursor   = &engineDatas.nowCursor;
+    dline.maxCursor   = &engineDatas.maxCursor;
+    dline.microsecond = &engineDatas.microsecond;
     if (!engineDatas.pcmDataPoint->empty()) {
         dline.preRenderedData = engineDatas.pcmDataPoint->data();
     }

@@ -14,6 +14,20 @@ function(setHighwayReqLib targetName)
 endfunction(setHighwayReqLib)
 
 find_package(CapnProto CONFIG REQUIRED)
+set(SCHEMAS
+  ${CMAKE_CURRENT_SOURCE_DIR}/third_party/Capnp/MixBinary.capnp
+  ${CMAKE_CURRENT_SOURCE_DIR}/third_party/Capnp/MusicBinary.capnp
+  ${CMAKE_CURRENT_SOURCE_DIR}/third_party/Capnp/NoteBinary.capnp
+)
+
+set(CAPNPC_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/capnpGen CACHE STRING "" FORCE)
+file(MAKE_DIRECTORY ${CAPNPC_OUTPUT_DIR})
+
+capnp_generate_cpp(CAPNP_SRCS CAPNP_HDRS 
+  ${SCHEMAS}
+  # OUTPUT_DIR ${GEN_DIR}
+)
+
 
 function(setCapnpReqLib targetName)
   target_link_libraries(${targetName} PUBLIC 
@@ -21,7 +35,7 @@ function(setCapnpReqLib targetName)
   CapnProto::capnp 
   CapnProto::capnpc 
   CapnProto::kj-gzip)
-  target_include_directories(${targetName} PUBLIC ${CAPNP_INCLUDE_DIRECTORY})
+  target_include_directories(${targetName} PUBLIC ${CAPNPC_OUTPUT_DIR})
 endfunction(setCapnpReqLib)
 
 

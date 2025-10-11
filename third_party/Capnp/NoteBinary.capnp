@@ -13,6 +13,7 @@ struct NoteBinaryData{
     ebeat @8 :Int64;
     esubBeat @9 :Int64;
     eSeparate @10 :Int64;
+    railID @11 : UInt64;
 }
 
 struct NoteBinaryCapnpData{

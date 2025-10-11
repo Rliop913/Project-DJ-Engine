@@ -1,20 +1,21 @@
 #include "PDJE_Note_OBJ.hpp"
 #include <algorithm>
+#include <cstdint>
 #include <memory>
 namespace PDJE_JUDGE {
 
 template <>
 void
-OBJ::Fill<IN>(const NOTE &data)
+OBJ::Fill<IN>(const NOTE &data, uint64_t rail_id)
 {
-    in.push_back(data);
+    in[rail_id].vec.push_back(data);
 }
 
 template <>
 void
-OBJ::Fill<OUT>(const NOTE &data)
+OBJ::Fill<OUT>(const NOTE &data, uint64_t rail_id)
 {
-    out.push_back(data);
+    out[rail_id].vec.push_back(data);
 }
 
 void
@@ -22,27 +23,35 @@ OBJ::Sort()
 {
     auto compare = [](const NOTE &a, const NOTE &b) { return a.pos < b.pos; };
 
-    std::sort(in.begin(), in.end(), compare);
-    std::sort(out.begin(), out.end(), compare);
-    iitr = in.begin();
-    oitr = out.begin();
+    for (auto &i : in) {
+
+        std::sort(i.second.vec.begin(), i.second.vec.end(), compare);
+        i.second.itr = i.second.vec.begin();
+    }
+    for (auto &o : out) {
+        std::sort(o.second.vec.begin(), o.second.vec.end(), compare);
+        o.second.itr = o.second.vec.begin();
+    }
 }
 
 template <>
 void
-OBJ::Get<IN>(const unsigned long long limit, std::vector<NOTE *> &found)
+OBJ::Get<IN>(const uint64_t limit, uint64_t railID, P_NOTE_VEC &found)
 {
     found.clear();
+    auto rail = in[railID];
+
     while (true) { // pull iterator
-        if (iitr != in.end() && iitr->used) {
-            ++iitr;
+        if (rail.itr != rail.vec.end() && rail.itr->used) {
+            ++rail.itr;
         } else {
             break;
         }
     }
-    auto titr = iitr;
+
+    auto titr = in[railID].itr;
     while (true) {
-        if ((titr != in.end()) && titr->pos <= limit && !titr->used) {
+        if ((titr != rail.vec.end()) && titr->pos <= limit && !titr->used) {
             found.push_back(std::addressof(*titr));
             ++titr;
         } else {
@@ -53,19 +62,22 @@ OBJ::Get<IN>(const unsigned long long limit, std::vector<NOTE *> &found)
 
 template <>
 void
-OBJ::Get<OUT>(const unsigned long long limit, std::vector<NOTE *> &found)
+OBJ::Get<OUT>(const uint64_t limit, uint64_t railID, P_NOTE_VEC &found)
 {
     found.clear();
+    auto rail = out[railID];
+
     while (true) { // pull iterator
-        if (oitr != out.end() && oitr->used) {
-            ++oitr;
+        if (rail.itr != rail.vec.end() && rail.itr->used) {
+            ++rail.itr;
         } else {
             break;
         }
     }
-    auto titr = oitr;
+
+    auto titr = out[railID].itr;
     while (true) {
-        if ((titr != out.end()) && titr->pos <= limit && !titr->used) {
+        if ((titr != rail.vec.end()) && titr->pos <= limit && !titr->used) {
             found.push_back(std::addressof(*titr));
             ++titr;
         } else {
@@ -73,34 +85,39 @@ OBJ::Get<OUT>(const unsigned long long limit, std::vector<NOTE *> &found)
         }
     }
 }
-
 template <>
 void
-OBJ::Cut<IN>(const unsigned long long limit, std::vector<NOTE> &cuts)
+OBJ::Cut<IN>(const unsigned long long                limit,
+             std::unordered_map<uint64_t, NOTE_VEC> &cuts)
 {
     cuts.clear();
-    auto titr = iitr;
-    while (titr != in.end() && titr->pos <= limit) {
-        if (!titr->used) {
-            cuts.push_back(*titr);
-            titr->used = true;
+    for (auto &rail : in) {
+        auto titr = rail.second.itr;
+        while (titr != rail.second.vec.end() && titr->pos <= limit) {
+            if (!titr->used) {
+                cuts[rail.first].push_back(*titr);
+                titr->used = true;
+            }
+            ++titr;
         }
-        ++titr;
     }
 }
 
 template <>
 void
-OBJ::Cut<OUT>(const unsigned long long limit, std::vector<NOTE> &cuts)
+OBJ::Cut<OUT>(const unsigned long long                limit,
+              std::unordered_map<uint64_t, NOTE_VEC> &cuts)
 {
     cuts.clear();
-    auto titr = oitr;
-    while (titr != out.end() && titr->pos <= limit) {
-        if (!titr->used) {
-            cuts.push_back(*titr);
-            titr->used = true;
+    for (auto &rail : out) {
+        auto titr = rail.second.itr;
+        while (titr != rail.second.vec.end() && titr->pos <= limit) {
+            if (!titr->used) {
+                cuts[rail.first].push_back(*titr);
+                titr->used = true;
+            }
+            ++titr;
         }
-        ++titr;
     }
 }
 

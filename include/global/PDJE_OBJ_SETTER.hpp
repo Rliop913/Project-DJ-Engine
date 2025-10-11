@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 #include <functional>
 #include <string>
 /** @brief note object setter callback
@@ -43,4 +44,6 @@ using OBJ_SETTER_CALLBACK = std::function<void(
     /// Y axis position
     const unsigned long long,
     /// Y axis position 2, 0 as default
-    const unsigned long long)>;
+    const unsigned long long,
+    /// rail id
+    const uint64_t)>;

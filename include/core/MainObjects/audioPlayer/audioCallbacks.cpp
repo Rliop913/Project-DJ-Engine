@@ -17,6 +17,7 @@ audioEngineDataStruct::CountUp(const unsigned long frameCount)
 {
     nowCursor += frameCount;
     consumedFrames += frameCount;
+    microsecond = highres_clock.Get_MicroSecond();
 }
 
 void

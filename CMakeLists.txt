@@ -51,7 +51,7 @@ if(LINUX)
 
 add_executable(PDJE_MODULE_INPUT_RTMAIN ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTMain.cpp ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC})
 
-target_include_directories(PDJE_MODULE_INPUT_RTMAIN PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
+target_include_directories(PDJE_MODULE_INPUT_RTMAIN PUBLIC ${PDJE_INCLUDE_INPUT})
 PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT_RTMAIN)
 setSpdlogReqLib(PDJE_MODULE_INPUT_RTMAIN)
 
@@ -86,7 +86,7 @@ target_include_directories(testEditor PUBLIC ${PDJE_INCLUDE_CORE})
 target_include_directories(DBTester PUBLIC ${PDJE_INCLUDE_CORE})
 
 add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${PDJE_OS_INPUT_SRC})
-target_include_directories(testInput PRIVATE ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
+target_include_directories(testInput PRIVATE ${PDJE_INCLUDE_INPUT} )
 
 PDJE_INPUT_LINK_LIB(testInput)
 endif(PDJE_BUILD_TESTS)
@@ -102,7 +102,7 @@ endif()
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
 target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE})
 if(WIN32)#windows only. for now
-target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
+target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} )
 endif()
 if(WIN32)
   target_compile_definitions(PDJE PUBLIC PDJE_WINDOWS_DLL)
@@ -126,7 +126,7 @@ endif()
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
 target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE})
 if(WIN32)#windows only. for now
-target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_INPUT_OS})
+target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} )
 endif()
 
 endif()
@@ -169,6 +169,7 @@ endif()
 linkPDJELibs(PDJE)
 
 setSpdlogReqLib(PDJE_MODULE_JUDGE)
+setCapnpReqLib(PDJE_MODULE_JUDGE)
 if(WIN32)#windows only. for now
 setSpdlogReqLib(PDJE_MODULE_INPUT)
 PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT)

@@ -2,6 +2,7 @@
 #include "MixTranslator.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
 #include "fileNameSanitizer.hpp"
+#include <cstdint>
 
 /// Arguments describing a mix entry
 struct PDJE_API MixArgs {
@@ -32,6 +33,7 @@ struct PDJE_API NoteArgs {
     long long       Ebeat       = -1;
     long long       EsubBeat    = -1;
     long long       Eseparate   = -1;
+    uint64_t        railID      = 0;
 };
 
 /// Arguments describing a music entry

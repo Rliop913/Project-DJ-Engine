@@ -1,5 +1,8 @@
 #pragma once
+#include "PDJE_Input_Device_Data.hpp"
+#include <cstdint>
 #include <string>
+#include <unordered_map>
 #include <vector>
 namespace PDJE_JUDGE {
 constexpr bool IN  = true;
@@ -13,13 +16,17 @@ struct NOTE {
     unsigned long long pos  = 0;
     bool               used = false;
 };
-
+using NOTE_VEC   = std::vector<NOTE>;
+using P_NOTE_VEC = std::vector<NOTE *>;
+struct NOTE_ITR {
+    NOTE_VEC           vec;
+    NOTE_VEC::iterator itr;
+};
+using RAIL = std::unordered_map<uint64_t, NOTE_ITR>;
 class OBJ {
   private:
-    std::vector<NOTE>           in;
-    std::vector<NOTE>::iterator iitr;
-    std::vector<NOTE>           out;
-    std::vector<NOTE>::iterator oitr;
+    RAIL in;
+    RAIL out;
 
   public:
     void
@@ -27,15 +34,16 @@ class OBJ {
 
     template <bool>
     void
-    Fill(const NOTE &data);
+    Fill(const NOTE &data, uint64_t rail_id);
 
     template <bool>
     void
-    Get(const unsigned long long limit, std::vector<NOTE *> &found);
+    Get(const uint64_t limit, uint64_t railID, P_NOTE_VEC &found);
 
     template <bool>
     void
-    Cut(const unsigned long long limit, std::vector<NOTE> &cuts);
+    Cut(const unsigned long long                limit,
+        std::unordered_map<uint64_t, NOTE_VEC> &cuts);
     OBJ()  = default;
     ~OBJ() = default;
 };

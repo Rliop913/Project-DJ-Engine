@@ -3,20 +3,32 @@
 #include <cstdint>
 #include <windows.h>
 
-class QPC_Timer {
+#pragma once
+#include <cstdint>
+#include <time.h>
+namespace PDJE_HIGHRES_CLOCK {
+
+class CLOCK {
   private:
-    uint64_t      qpc_freq;
-    LARGE_INTEGER temp_int;
+    struct timespec ts;
+    uint64_t        qpc_freq;
+    uint65_t        temp_int;
 
   public:
+    CLOCK()
+    {
+        QueryPerformanceFrequency(&temp_int);
+        qpc_freq = static_cast<uint64_t>(temp_int.QuadPart);
+    }
     uint64_t
-    now();
-    double
-    to_second(uint64_t tick);
-    double
-    to_ms(uint64_t tick);
-    uint64_t
-    to_micro(uint64_t tick);
-    QPC_Timer();
-    ~QPC_Timer() = default;
+    Get_MicroSecond()
+    {
+        QueryPerformanceCounter(&temp_int);
+        return static_cast<uint64_t>(temp_int / qpc_freq) *
+                   static_cast<uint64_t>(1000000) +
+               static_cast<uint64_t>(temp_int % qpc_freq) *
+                   static_cast<uint64_t>(1000000) / qpc_freq;
+    }
+    ~CLOCK() = default;
 };
+}; // namespace PDJE_HIGHRES_CLOCK

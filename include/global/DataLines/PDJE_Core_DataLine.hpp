@@ -1,6 +1,7 @@
 #pragma once
 
 #include "PDJE_EXPORT_SETTER.hpp"
+#include <cstdint>
 
 // #include "MusicControlPanel.hpp"
 /**
@@ -12,6 +13,7 @@ struct PDJE_API PDJE_CORE_DATA_LINE {
     unsigned long long *nowCursor       = nullptr;
     unsigned long long *maxCursor       = nullptr;
     float              *preRenderedData = nullptr;
+    uint64_t           *microsecond     = nullptr;
 
     // FXControlPanel    *fx   = nullptr;
     // MusicControlPanel *musp = nullptr;
