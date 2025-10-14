@@ -101,7 +101,7 @@ OS_Input::run()
             }
             while (PeekMessageW(&msg, nullptr, WM_INPUT, WM_INPUT, PM_REMOVE)) {
                 Writable = true;
-                now      = qpc.now();
+                now      = timer.Get_MicroSecond();
                 if (GetRawInputData(reinterpret_cast<HRAWINPUT>(msg.lParam),
                                     RID_INPUT,
                                     nullptr,
@@ -186,7 +186,7 @@ OS_Input::run()
                                          .event       = tempEv,
                                          .hid_event   = hidEv,
                                          .id          = handlestr,
-                                         .microSecond = qpc.to_micro(now) });
+                                         .microSecond = now });
                 }
             }
 

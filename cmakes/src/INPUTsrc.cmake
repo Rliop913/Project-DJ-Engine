@@ -2,7 +2,6 @@
 if(WIN32)
 set(PDJE_OS_INPUT_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/PDJE_Input.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/windows/QPC_Timer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/windows/windows_input.cpp
 
 )

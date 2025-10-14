@@ -155,10 +155,10 @@ main()
         editor->GetLogWithJSONGraph<EDIT_ARG_NOTE>();
         editor->GetLogWithJSONGraph<EDIT_ARG_MUSIC>("music name");
         auto core_line = engine->PullOutDataLine();
-        core_line.preRenderedData;
-        core_line.maxCursor;
-        core_line.nowCursor;
-        core_line.used_frame;
+        // core_line.preRenderedData;
+        // core_line.maxCursor;
+        // core_line.nowCursor;
+        // core_line.used_frame;
 
     } else {
         std::cout << "init failed " << std::endl;

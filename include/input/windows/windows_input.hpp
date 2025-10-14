@@ -1,6 +1,6 @@
 #pragma once
 #include "Input_State.hpp"
-#include "QPC_Timer.hpp"
+#include "PDJE_Highres_Clock.hpp"
 #include <SetupAPI.h>
 #include <Windows.h>
 #include <avrt.h>
@@ -35,9 +35,9 @@ class OS_Input {
     std::vector<RawDeviceData>
     getRawDeviceDatas();
     std::string
-              hid_label_from_path(const std::wstring &path);
-    DWORD     ThreadID;
-    QPC_Timer qpc;
+                              hid_label_from_path(const std::wstring &path);
+    DWORD                     ThreadID;
+    PDJE_HIGHRES_CLOCK::CLOCK timer;
     std::unordered_map<PDJE_DEV_PATH, PDJE_NAME> unlisted_targets;
     std::unordered_map<PDJE_ID, PDJE_NAME>       id_name;
     PDJE_Buffer_Arena<PDJE_Input_Log>            input_buffer;

@@ -177,7 +177,7 @@ JUDGE::Match(const PDJE_Input_Log &input,
 void
 JUDGE::Judge_Loop()
 {
-
+    bool TypeOK = true;
     while (loop_switch) {
         // init cut time
         input_log = input->input_arena->Get();
@@ -199,7 +199,7 @@ JUDGE::Judge_Loop()
 
         sync_data = core->syncD->load(std::memory_order_acquire);
         // sync with core engine
-
+        TypeOK = true;
         for (const auto &input_ev : *input_log) {
 
             ir.Device_ID = input_ev.id;
@@ -221,10 +221,12 @@ JUDGE::Judge_Loop()
                 break;
             }
             default:
-                goto CONTINUE;
+                TypeOK = false;
                 break;
             }
-
+            if (!TypeOK) {
+                continue;
+            }
             ir.MatchType = input_ev.type;
 
             if (auto device_itr = dev_rules.find(ir);
@@ -233,15 +235,14 @@ JUDGE::Judge_Loop()
             } else {
                 continue;
             }
-
-            if (Pressed) {
-                note_obj->Get<IN>(use_time, railID, related_list_in);
-                Match(input_ev, related_list_in, IN);
-            } else {
-                note_obj->Get<OUT>(use_time, railID, related_list_out);
-                Match(input_ev, related_list_out, OUT);
-            }
-        CONTINUE:
+            // todo - impl
+            //  if (Pressed) {
+            //      note_obj->Get<IN>(use_time, railID, related_list_in);
+            //      Match(input_ev, related_list_in, IN);
+            //  } else {
+            //      note_obj->Get<OUT>(use_time, railID, related_list_out);
+            //      Match(input_ev, related_list_out, OUT);
+            //  }
         }
     }
 }

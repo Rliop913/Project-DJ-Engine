@@ -64,7 +64,7 @@ main()
         auto notes = noteReader.Rp->getDatas();
         for (int i = 0; i < notes.size(); ++i) {
             std::cout << " NoteType: " << notes[i].getNoteType().cStr()
-                      << " NoteDetail: " << notes[i].getNoteDetail().cStr()
+                      << " NoteDetail: " << notes[i].getNoteDetail()
                       << std::endl;
             std::cout << " first: " << notes[i].getFirst().cStr()
                       << " Second: " << notes[i].getSecond().cStr()
