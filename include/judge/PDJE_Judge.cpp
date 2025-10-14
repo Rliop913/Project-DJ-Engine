@@ -60,15 +60,19 @@ JUDGE::NoteObjectCollector(const std::string        noteType,
     tempobj.pos = Y_Axis;
     switch (tempobj.type) {
     case PDJE_Dev_Type::KEYBOARD: {
-        note_obj->Fill<IN>(tempobj, railID);
-        if (Y_Axis != 0) {
+        note_obj->Fill<KEY_IN>(tempobj, railID);
+        if (Y_Axis_2 != 0) {
             tempobj.pos = Y_Axis_2;
-            note_obj->Fill<OUT>(tempobj, railID);
+            note_obj->Fill<KEY_OUT>(tempobj, railID);
         }
         break;
     }
     case PDJE_Dev_Type::MOUSE: {
-        note_obj->Fill<AXIS_DEV>(tempobj, railID);
+        note_obj->Fill<AXIS_DEV_IN>(tempobj, railID);
+        if (Y_Axis_2 != 0){
+            tempobj.pos = Y_Axis_2;
+            note_obj->Fill<AXIS_DEV_OUT>(tempobj, railID);
+        }
         break;
     }
     case PDJE_Dev_Type::HID: {
@@ -175,9 +179,27 @@ JUDGE::Match(const PDJE_Input_Log &input,
 }
 
 void
+JUDGE::Parse_Mouse(BITMASK ev, std::vector<int>& parsed_res)
+{
+    if(ev & PDJE_MOUSE_L_BTN_DOWN) parsed_res.push_back(DEVICE_MOUSE_EVENT::BTN_L_IN);
+    if(ev & PDJE_MOUSE_L_BTN_UP) parsed_res.push_back(DEVICE_MOUSE_EVENT::BTN_L_OUT);
+    if(ev & PDJE_MOUSE_R_BTN_DOWN) parsed_res.push_back(DEVICE_MOUSE_EVENT::BTN_R_IN);
+    if(ev & PDJE_MOUSE_R_BTN_UP) parsed_res.push_back(DEVICE_MOUSE_EVENT::BTN_R_OUT);
+    if(ev & PDJE_MOUSE_M_BTN_DOWN) parsed_res.push_back(DEVICE_MOUSE_EVENT::BTN_M_IN);
+    if(ev & PDJE_MOUSE_M_BTN_UP) parsed_res.push_back(DEVICE_MOUSE_EVENT::BTN_M_OUT);
+    if(ev & PDJE_MOUSE_SIDE_BTN_DOWN) parsed_res.push_back(DEVICE_MOUSE_EVENT::BTN_SIDE_IN);
+    if(ev & PDJE_MOUSE_SIDE_BTN_UP) parsed_res.push_back(DEVICE_MOUSE_EVENT::BTN_SIDE_OUT);
+    if(ev & PDJE_MOUSE_EX_BTN_DOWN) parsed_res.push_back(DEVICE_MOUSE_EVENT::BTN_EX_IN);
+    if(ev & PDJE_MOUSE_EX_BTN_UP) parsed_res.push_back(DEVICE_MOUSE_EVENT::BTN_EX_OUT);
+    if(ev & PDJE_MOUSE_XWHEEL) parsed_res.push_back(DEVICE_MOUSE_EVENT::WHEEL_X);
+    if(ev & PDJE_MOUSE_YWHEEL) parsed_res.push_back(DEVICE_MOUSE_EVENT::WHEEL_Y);
+}
+
+void
 JUDGE::Judge_Loop()
 {
     bool TypeOK = true;
+    I_stat = std::vector<int>(13);
     while (loop_switch) {
         // init cut time
         input_log = input->input_arena->Get();
@@ -189,8 +211,13 @@ JUDGE::Judge_Loop()
                              ? log_begin_time - ev_rule->miss_range_microsecond
                              : 0;
         // cut
-        note_obj->Cut<IN>(cut_time, missed_in);
-        note_obj->Cut<OUT>(cut_time, missed_out);
+        note_obj->Cut<KEY_IN>(cut_time, missed_in);
+        note_obj->Cut<KEY_OUT>(cut_time, missed_out);
+        note_obj->Cut<AXIS_DEV_IN>(cut_time, missed_axis_in);
+        note_obj->Cut<AXIS_DEV_OUT>(cut_time, missed_axis_out);
+        note_obj->Cut<HID_DEV>(cut_time, missed_hid);
+        
+        
         judge_event.missed_event(missed_in, missed_out);
 
         // init maximum get time
@@ -201,19 +228,19 @@ JUDGE::Judge_Loop()
         // sync with core engine
         TypeOK = true;
         for (const auto &input_ev : *input_log) {
-
+            I_stat.clear();
             ir.Device_ID = input_ev.id;
             switch (input_ev.type) {
             case PDJE_Dev_Type::KEYBOARD: {
                 ir.MatchDetail = input_ev.event.keyboard.k;
-                I_stat         = input_ev.event.keyboard.pressed ? 1 : 0;
+                I_stat.push_back(
+                input_ev.event.keyboard.pressed ? 1 : 0);
 
                 break;
             }
             case PDJE_Dev_Type::MOUSE: {
-                ir.MatchDetail = input_ev.event.mouse.button_type;
-                I_stat         = Parse_Mouse(input_ev.event.mouse.button_type,
-                                     input_ev.event.mouse.axis_type);
+                ir.MatchDetail = noimplcrash;
+                Parse_Mouse(input_ev.event.mouse.button_type, I_stat);
                 break;
             }
             case PDJE_Dev_Type::HID: {
@@ -235,14 +262,26 @@ JUDGE::Judge_Loop()
             } else {
                 continue;
             }
-            // todo - impl
-            //  if (Pressed) {
-            //      note_obj->Get<IN>(use_time, railID, related_list_in);
-            //      Match(input_ev, related_list_in, IN);
-            //  } else {
-            //      note_obj->Get<OUT>(use_time, railID, related_list_out);
-            //      Match(input_ev, related_list_out, OUT);
-            //  }
+            switch (input_ev.type)
+            {
+            case PDJE_Dev_Type::KEYBOARD:
+                if(I_stat.front() == 1){
+                    note_obj->Get<IN>(use_time, railID, related_list_in);
+                    Match(input_ev, related_list_in, true);
+                }
+                else{
+                    note_obj->Get<IN>(use_time, railID, related_list_out);
+                    Match(input_ev, related_list_out, false);
+                }
+                break;
+            case PDJE_Dev_Type::MOUSE:
+                for(const auto& i : I_stat){
+                    //todo - impl
+                }
+            default:
+                break;
+            }
+            
         }
     }
 }

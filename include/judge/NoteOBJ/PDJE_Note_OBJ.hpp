@@ -7,9 +7,10 @@
 #include <utility>
 #include <vector>
 namespace PDJE_JUDGE {
-constexpr int IN       = 0;
-constexpr int OUT      = 1;
-constexpr int AXIS_DEV = 2;
+constexpr int KEY_IN       = 0;
+constexpr int KEY_OUT      = 1;
+constexpr int AXIS_DEV_IN = 2;
+constexpr int AXIS_DEV_OUT = 3;
 constexpr int HID_DEV  = 3;
 struct NOTE {
     PDJE_Dev_Type      type;
@@ -29,21 +30,24 @@ struct NOTE_ITR {
 using DEV_AND_NOTE = std::unordered_map<uint64_t, NOTE_ITR>;
 class OBJ {
   private:
-    DEV_AND_NOTE in;
-    DEV_AND_NOTE out;
-    DEV_AND_NOTE axis;
+    DEV_AND_NOTE key_in;
+    DEV_AND_NOTE key_out;
+    DEV_AND_NOTE axis_in;
+    DEV_AND_NOTE axis_out;
     DEV_AND_NOTE hid;
 
     template <int I>
     DEV_AND_NOTE *
     pick_dan()
     {
-        if constexpr (I == IN) {
-            return &in;
-        } else if constexpr (I == OUT) {
-            return &out;
-        } else if constexpr (I == AXIS_DEV) {
-            return &axis;
+        if constexpr (I == KEY_IN) {
+            return &key_in;
+        } else if constexpr (I == KEY_OUT) {
+            return &key_out;
+        } else if constexpr (I == AXIS_DEV_IN) {
+            return &axis_in;
+        } else if constexpr (I == AXIS_DEV_OUT) {
+            return &axis_out;
         } else {
             return &hid;
         }

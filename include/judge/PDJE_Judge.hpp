@@ -24,12 +24,17 @@ enum JUDGE_STATUS {
     NOTE_OBJECT_IS_MISSING,
 };
 
+
 using RAIL_ID = uint64_t;
 class JUDGE {
   private: // cached values
     std::pmr::vector<PDJE_Input_Log>      *input_log;
     std::unordered_map<uint64_t, NOTE_VEC> missed_in;
     std::unordered_map<uint64_t, NOTE_VEC> missed_out;
+    std::unordered_map<uint64_t, NOTE_VEC> missed_axis_in;
+    std::unordered_map<uint64_t, NOTE_VEC> missed_axis_out;
+    std::unordered_map<uint64_t, NOTE_VEC> missed_hid;
+    
     P_NOTE_VEC                             related_list_in;
     P_NOTE_VEC                             related_list_out;
 
@@ -43,7 +48,7 @@ class JUDGE {
     audioSyncData sync_data;
 
     // flags
-    int  I_stat;
+    std::vector<int>  I_stat;
     bool isLate;
 
     // extras
@@ -72,8 +77,8 @@ class JUDGE {
     void
     Judge_Loop();
 
-    int
-    Parse_Mouse(BITMASK ev, PDJE_Mouse_Axis_Type axis_stat);
+    void
+    Parse_Mouse(BITMASK ev, std::vector<int>& parsed_res);
 
   public:
     uint64_t
