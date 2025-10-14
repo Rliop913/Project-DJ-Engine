@@ -74,7 +74,7 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
                                              res.bpm);
             }
             lambdaCallback(std::string(br[i].getNoteType().cStr()),
-                           std::string(br[i].getNoteDetail().cStr()),
+                           br[i].getNoteDetail(),
                            std::string(br[i].getFirst().cStr()),
                            std::string(br[i].getSecond().cStr()),
                            std::string(br[i].getThird().cStr()),

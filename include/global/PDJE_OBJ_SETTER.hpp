@@ -34,7 +34,7 @@ using OBJ_SETTER_CALLBACK = std::function<void(
     /// noteType
     const std::string,
     /// note Detail
-    const std::string,
+    const uint16_t,
     /// firstArg
     const std::string,
     /// secondArg

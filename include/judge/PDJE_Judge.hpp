@@ -3,11 +3,13 @@
 #include <cstdint>
 #include <optional>
 
+#include "Input_State.hpp"
 #include "PDJE_Core_DataLine.hpp"
 #include "PDJE_Events.hpp"
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Note_OBJ.hpp"
 #include "PDJE_Rule.hpp"
+#include "PDJE_SYNC_CORE.hpp"
 #include <atomic>
 #include <thread>
 #include <unordered_map>
@@ -38,11 +40,10 @@ class JUDGE {
     uint64_t use_time;
     uint64_t cut_time;
 
-    uint64_t nowFrame;
-    uint64_t nowMicro;
+    audioSyncData sync_data;
 
     // flags
-    bool Pressed;
+    int  I_stat;
     bool isLate;
 
     // extras
@@ -71,6 +72,9 @@ class JUDGE {
     void
     Judge_Loop();
 
+    int
+    Parse_Mouse(BITMASK ev, PDJE_Mouse_Axis_Type axis_stat);
+
   public:
     uint64_t
     FrameToMicro(uint64_t frame,
@@ -83,7 +87,7 @@ class JUDGE {
     SetEventRule(const EVENT_RULE &event_rule);
     void
     NoteObjectCollector(const std::string        noteType,
-                        const std::string        noteDetail,
+                        const uint16_t           noteDetail,
                         const std::string        firstArg,
                         const std::string        secondArg,
                         const std::string        thirdArg,

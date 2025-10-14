@@ -7,6 +7,7 @@
 #include <functional>
 #include <string>
 namespace PDJE_JUDGE {
+
 struct INPUT_RULE {
     std::string   Device_ID   = "";
     PDJE_Dev_Type MatchType   = PDJE_Dev_Type::UNKNOWN;

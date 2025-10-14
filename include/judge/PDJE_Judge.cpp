@@ -3,8 +3,8 @@
 #include "PDJE_Input_Device_Data.hpp"
 #include "PDJE_Note_OBJ.hpp"
 #include "PDJE_Rule.hpp"
+#include <atomic>
 #include <cstdint>
-#include <cstdlib>
 #include <thread>
 #include <unordered_map>
 namespace PDJE_JUDGE {
@@ -13,7 +13,7 @@ void
 JUDGE::SetCoreLine(const PDJE_CORE_DATA_LINE &coreline)
 {
     if (coreline.maxCursor != nullptr && coreline.nowCursor != nullptr &&
-        coreline.preRenderedData != nullptr && coreline.used_frame != nullptr) {
+        coreline.preRenderedData != nullptr && coreline.syncD != nullptr) {
         core = coreline;
     }
 }
@@ -28,7 +28,7 @@ JUDGE::SetInputLine(const PDJE_INPUT_DATA_LINE &inputline)
 
 void
 JUDGE::NoteObjectCollector(const std::string        noteType,
-                           const std::string        noteDetail,
+                           const uint16_t           noteDetail,
                            const std::string        firstArg,
                            const std::string        secondArg,
                            const std::string        thirdArg,
@@ -39,7 +39,17 @@ JUDGE::NoteObjectCollector(const std::string        noteType,
     if (!note_obj.has_value()) {
         note_obj.emplace();
     }
-    auto tempobj = NOTE{ .type   = noteType,
+    PDJE_Dev_Type dtype;
+    if (noteType == "KEYBOARD") {
+        dtype = PDJE_Dev_Type::KEYBOARD;
+    } else if (noteType == "MOUSE") {
+        dtype = PDJE_Dev_Type::MOUSE;
+    } else if (noteType == "HID") {
+        dtype = PDJE_Dev_Type::HID;
+    } else {
+        dtype = PDJE_Dev_Type::UNKNOWN;
+    }
+    auto tempobj = NOTE{ .type   = dtype,
                          .detail = noteDetail,
                          .first  = firstArg,
                          .second = secondArg,
@@ -48,10 +58,25 @@ JUDGE::NoteObjectCollector(const std::string        noteType,
                          .used   = false };
 
     tempobj.pos = Y_Axis;
-    note_obj->Fill<IN>(tempobj, railID);
-    if (Y_Axis != 0) {
-        tempobj.pos = Y_Axis_2;
-        note_obj->Fill<OUT>(tempobj, railID);
+    switch (tempobj.type) {
+    case PDJE_Dev_Type::KEYBOARD: {
+        note_obj->Fill<IN>(tempobj, railID);
+        if (Y_Axis != 0) {
+            tempobj.pos = Y_Axis_2;
+            note_obj->Fill<OUT>(tempobj, railID);
+        }
+        break;
+    }
+    case PDJE_Dev_Type::MOUSE: {
+        note_obj->Fill<AXIS_DEV>(tempobj, railID);
+        break;
+    }
+    case PDJE_Dev_Type::HID: {
+        note_obj->Fill<HID_DEV>(tempobj, railID);
+        break;
+    }
+    default:
+        break;
     }
 }
 
@@ -134,8 +159,9 @@ JUDGE::Match(const PDJE_Input_Log &input,
 
     INPUT_RULE ir;
     for (const auto &note_local : note_list) {
-        noteMicro = FrameToMicro(note_local->pos, nowFrame, nowMicro);
-        isLate    = noteMicro < input.microSecond;
+        noteMicro = FrameToMicro(
+            note_local->pos, sync_data.consumed_frames, sync_data.microsecond);
+        isLate = noteMicro < input.microSecond;
 
         diff = isLate ? input.microSecond - noteMicro
                       : noteMicro - input.microSecond;
@@ -171,21 +197,34 @@ JUDGE::Judge_Loop()
         log_end_time = input_log->back().microSecond;
         use_time     = log_end_time + ev_rule->use_range_microsecond;
 
+        sync_data = core->syncD->load(std::memory_order_acquire);
         // sync with core engine
-        nowFrame = *core->used_frame;
-        nowMicro = *core->microsecond;
 
         for (const auto &input_ev : *input_log) {
+
             ir.Device_ID = input_ev.id;
-            if (input_ev.type == PDJE_Dev_Type::KEYBOARD) {
+            switch (input_ev.type) {
+            case PDJE_Dev_Type::KEYBOARD: {
                 ir.MatchDetail = input_ev.event.keyboard.k;
-                Pressed        = input_ev.event.keyboard.pressed;
-            } else if (input_ev.type == PDJE_Dev_Type::MOUSE) {
-                ir.MatchDetail = input_ev.event.mouse.button_type;
-                Pressed        = false; // todo - impl parse mouse event
-            } else if (input_ev.type == PDJE_Dev_Type::HID) {
-                ir.MatchDetail = 0;
+                I_stat         = input_ev.event.keyboard.pressed ? 1 : 0;
+
+                break;
             }
+            case PDJE_Dev_Type::MOUSE: {
+                ir.MatchDetail = input_ev.event.mouse.button_type;
+                I_stat         = Parse_Mouse(input_ev.event.mouse.button_type,
+                                     input_ev.event.mouse.axis_type);
+                break;
+            }
+            case PDJE_Dev_Type::HID: {
+                ir.MatchDetail = 0;
+                break;
+            }
+            default:
+                goto CONTINUE;
+                break;
+            }
+
             ir.MatchType = input_ev.type;
 
             if (auto device_itr = dev_rules.find(ir);
@@ -202,6 +241,7 @@ JUDGE::Judge_Loop()
                 note_obj->Get<OUT>(use_time, railID, related_list_out);
                 Match(input_ev, related_list_out, OUT);
             }
+        CONTINUE:
         }
     }
 }

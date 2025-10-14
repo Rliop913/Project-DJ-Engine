@@ -1,5 +1,6 @@
 #include "audioCallbacks.hpp"
 #include "FrameCalc.hpp"
+#include <atomic>
 #include <cstring>
 
 std::optional<float *>
@@ -16,8 +17,10 @@ void
 audioEngineDataStruct::CountUp(const unsigned long frameCount)
 {
     nowCursor += frameCount;
-    consumedFrames += frameCount;
-    microsecond = highres_clock.Get_MicroSecond();
+    cacheSync = syncData.load(std::memory_order_acquire);
+    cacheSync.consumed_frames += frameCount;
+    cacheSync.microsecond = highres_clock.Get_MicroSecond();
+    syncData.store(cacheSync, std::memory_order_release);
 }
 
 void

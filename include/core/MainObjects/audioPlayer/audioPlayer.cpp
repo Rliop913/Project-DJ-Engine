@@ -1,5 +1,7 @@
 #include "audioPlayer.hpp"
 #include "PDJE_LOG_SETTER.hpp"
+#include "audioCallbacks.hpp"
+#include <atomic>
 
 extern void
 FullPreRender_callback(ma_device  *pDevice,
@@ -124,7 +126,7 @@ audioPlayer::ChangeCursorPos(unsigned long long pos)
 unsigned long long
 audioPlayer::GetConsumedFrames()
 {
-    return engineDatas.consumedFrames;
+    return engineDatas.syncData.load(std::memory_order_acquire).consumed_frames;
 }
 
 FXControlPanel *
@@ -162,10 +164,10 @@ PDJE_CORE_DATA_LINE
 audioPlayer::PullOutDataLine()
 {
     PDJE_CORE_DATA_LINE dline;
-    dline.used_frame  = &engineDatas.consumedFrames;
-    dline.nowCursor   = &engineDatas.nowCursor;
-    dline.maxCursor   = &engineDatas.maxCursor;
-    dline.microsecond = &engineDatas.microsecond;
+
+    dline.nowCursor = &engineDatas.nowCursor;
+    dline.maxCursor = &engineDatas.maxCursor;
+    dline.syncD     = &engineDatas.syncData;
     if (!engineDatas.pcmDataPoint->empty()) {
         dline.preRenderedData = engineDatas.pcmDataPoint->data();
     }

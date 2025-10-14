@@ -3,7 +3,7 @@
 
 struct NoteBinaryData{
     noteType @0 :Text;
-    noteDetail @1 :Text;
+    noteDetail @1 :UInt16;
     first @2 :Text;
     second @3 :Text;
     third @4 :Text;

@@ -23,7 +23,7 @@ struct PDJE_API MixArgs {
 /// Arguments describing a note entry
 struct PDJE_API NoteArgs {
     SANITIZED_ORNOT Note_Type   = "";
-    SANITIZED_ORNOT Note_Detail = "";
+    uint16_t        Note_Detail = 0;
     SANITIZED_ORNOT first       = "";
     SANITIZED_ORNOT second      = "";
     SANITIZED_ORNOT third       = "";

@@ -1,12 +1,13 @@
 #pragma once
 
-#include <cstdint>
-#include <optional>
-
 #include "MusicControlPanel.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_Highres_Clock.hpp"
+#include "PDJE_SYNC_CORE.hpp"
+#include <atomic>
+#include <cstdint>
 #include <miniaudio.h>
+#include <optional>
 
 /**
  * @brief the core Data
@@ -17,11 +18,12 @@ struct PDJE_API audioEngineDataStruct {
     std::optional<FXControlPanel>    FXManualPanel;
     std::optional<MusicControlPanel> MusCtrPanel;
     std::vector<float>              *pcmDataPoint;
-    unsigned long long               nowCursor      = 0;
-    unsigned long long               maxCursor      = 0;
-    unsigned long long               consumedFrames = 0;
-    uint64_t                         microsecond    = 0;
-    PDJE_HIGHRES_CLOCK::CLOCK        highres_clock;
+    unsigned long long               nowCursor = 0;
+    unsigned long long               maxCursor = 0;
+    std::atomic<audioSyncData>       syncData =
+        audioSyncData{ .consumed_frames = 0, .microsecond = 0 };
+    audioSyncData             cacheSync;
+    PDJE_HIGHRES_CLOCK::CLOCK highres_clock;
     /**
      * @brief Get Current playback point
      *
