@@ -8,23 +8,21 @@
 #include <string>
 namespace PDJE_JUDGE {
 
-enum DEVICE_MOUSE_EVENT{
-    BTN_EX_OUT = -5,
-    BTN_SIDE_OUT = -4,
-    BTN_M_OUT = -3,
-    BTN_R_OUT = -2,
-    BTN_L_OUT = -1,
-    ZERO = 0,
-    BTN_L_IN = 1,
-    BTN_R_IN = 2,
-    BTN_M_IN=3,
-    BTN_SIDE_IN=4,
-    BTN_EX_IN=5,
-    WHEEL_X=6,
-    WHEEL_Y=7,
-    
+enum DEVICE_MOUSE_EVENT {
+    BTN_EX_UP     = -5,
+    BTN_SIDE_UP   = -4,
+    BTN_M_UP      = -3,
+    BTN_R_UP      = -2,
+    BTN_L_UP      = -1,
+    AXIS_MOVE     = 0,
+    BTN_L_DOWN    = 1,
+    BTN_R_DOWN    = 2,
+    BTN_M_DOWN    = 3,
+    BTN_SIDE_DOWN = 4,
+    BTN_EX_DOWN   = 5,
+    WHEEL_X       = 6,
+    WHEEL_Y       = 7,
 };
-
 
 struct INPUT_RULE {
     std::string   Device_ID   = "";
