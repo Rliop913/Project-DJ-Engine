@@ -7,49 +7,45 @@
 #include <utility>
 #include <vector>
 namespace PDJE_JUDGE {
-constexpr int KEY_IN       = 0;
-constexpr int KEY_OUT      = 1;
-constexpr int AXIS_DEV_IN = 2;
-constexpr int AXIS_DEV_OUT = 3;
-constexpr int HID_DEV  = 3;
+constexpr int BUFFER_MAIN = 0;
+constexpr int BUFFER_SUB  = 1;
+
 struct NOTE {
-    PDJE_Dev_Type      type;
-    BITMASK            detail;
+    std::string        type;
+    uint16_t           detail;
     std::string        first;
     std::string        second;
     std::string        third;
-    unsigned long long pos  = 0;
-    bool               used = false;
+    unsigned long long pos    = 0;
+    bool               used   = false;
+    bool               isDown = true;
 };
+
 using NOTE_VEC   = std::vector<NOTE>;
 using P_NOTE_VEC = std::vector<NOTE *>;
+
 struct NOTE_ITR {
     NOTE_VEC           vec;
     NOTE_VEC::iterator itr;
 };
-using DEV_AND_NOTE = std::unordered_map<uint64_t, NOTE_ITR>;
+
+using DEVID_TO_NOTE = std::unordered_map<uint64_t, NOTE_ITR>;
+
 class OBJ {
   private:
-    DEV_AND_NOTE key_in;
-    DEV_AND_NOTE key_out;
-    DEV_AND_NOTE axis_in;
-    DEV_AND_NOTE axis_out;
-    DEV_AND_NOTE hid;
+    DEVID_TO_NOTE Buffer_Main;
+    DEVID_TO_NOTE Buffer_Sub;
 
     template <int I>
-    DEV_AND_NOTE *
+    DEVID_TO_NOTE *
     pick_dan()
     {
-        if constexpr (I == KEY_IN) {
-            return &key_in;
-        } else if constexpr (I == KEY_OUT) {
-            return &key_out;
-        } else if constexpr (I == AXIS_DEV_IN) {
-            return &axis_in;
-        } else if constexpr (I == AXIS_DEV_OUT) {
-            return &axis_out;
-        } else {
-            return &hid;
+        if constexpr (I == BUFFER_MAIN) {
+            return &Buffer_Main;
+        } else
+
+        {
+            return &Buffer_Sub;
         }
     }
 
@@ -61,9 +57,9 @@ class OBJ {
     void
     Fill(const NOTE &data, uint64_t rail_id)
     {
-        static_assert(I == IN || I == OUT || I == AXIS_DEV || I == HID_DEV,
+        static_assert(I == BUFFER_MAIN || I == BUFFER_SUB,
                       "invalid use of fill.");
-        DEV_AND_NOTE *dan = pick_dan<I>();
+        DEVID_TO_NOTE *dan = pick_dan<I>();
         (*dan)[rail_id].vec.push_back(data);
     }
 
@@ -71,9 +67,9 @@ class OBJ {
     void
     Get(const uint64_t limit, uint64_t railID, P_NOTE_VEC &found)
     {
-        static_assert(I == IN || I == OUT || I == AXIS_DEV || I == HID_DEV,
+        static_assert(I == BUFFER_MAIN || I == BUFFER_SUB,
                       "invalid use of get.");
-        DEV_AND_NOTE *dan = pick_dan<I>();
+        DEVID_TO_NOTE *dan = pick_dan<I>();
 
         found.clear();
         auto &note = (*dan)[railID];
@@ -102,9 +98,9 @@ class OBJ {
     Cut(const unsigned long long                limit,
         std::unordered_map<uint64_t, NOTE_VEC> &cuts)
     {
-        static_assert(I == IN || I == OUT || I == AXIS_DEV || I == HID_DEV,
+        static_assert(I == BUFFER_MAIN || I == BUFFER_SUB,
                       "invalid use of cut.");
-        DEV_AND_NOTE *dan = pick_dan<I>();
+        DEVID_TO_NOTE *dan = pick_dan<I>();
 
         cuts.clear();
         for (auto &rail : *dan) {

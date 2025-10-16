@@ -9,19 +9,11 @@ OBJ::Sort()
 {
     auto compare = [](const NOTE &a, const NOTE &b) { return a.pos < b.pos; };
 
-    for (auto &o : in) {
+    for (auto &o : Buffer_Main) {
         std::sort(o.second.vec.begin(), o.second.vec.end(), compare);
         o.second.itr = o.second.vec.begin();
     }
-    for (auto &o : out) {
-        std::sort(o.second.vec.begin(), o.second.vec.end(), compare);
-        o.second.itr = o.second.vec.begin();
-    }
-    for (auto &o : axis) {
-        std::sort(o.second.vec.begin(), o.second.vec.end(), compare);
-        o.second.itr = o.second.vec.begin();
-    }
-    for (auto &o : hid) {
+    for (auto &o : Buffer_Sub) {
         std::sort(o.second.vec.begin(), o.second.vec.end(), compare);
         o.second.itr = o.second.vec.begin();
     }

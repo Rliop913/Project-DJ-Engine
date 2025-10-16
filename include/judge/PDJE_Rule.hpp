@@ -9,19 +9,14 @@
 namespace PDJE_JUDGE {
 
 enum DEVICE_MOUSE_EVENT {
-    BTN_EX_UP     = -5,
-    BTN_SIDE_UP   = -4,
-    BTN_M_UP      = -3,
-    BTN_R_UP      = -2,
-    BTN_L_UP      = -1,
-    AXIS_MOVE     = 0,
-    BTN_L_DOWN    = 1,
-    BTN_R_DOWN    = 2,
-    BTN_M_DOWN    = 3,
-    BTN_SIDE_DOWN = 4,
-    BTN_EX_DOWN   = 5,
-    WHEEL_X       = 6,
-    WHEEL_Y       = 7,
+    BTN_EX   = 0,
+    BTN_SIDE = 1,
+    BTN_M,
+    BTN_R,
+    BTN_L,
+    WHEEL_X,
+    WHEEL_Y,
+    AXIS_MOVE
 };
 
 struct INPUT_RULE {

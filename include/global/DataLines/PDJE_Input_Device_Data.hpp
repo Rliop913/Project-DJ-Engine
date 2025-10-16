@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-enum class PDJE_Dev_Type { MOUSE, KEYBOARD, HID, UNKNOWN };
+enum class PDJE_Dev_Type { MOUSE, KEYBOARD, MIDI, HID, UNKNOWN };
 
 struct DeviceData {
     PDJE_Dev_Type Type;

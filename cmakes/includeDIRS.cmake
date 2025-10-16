@@ -68,7 +68,8 @@ set(PDJE_INCLUDE_CORE
 set(PDJE_INCLUDE_JUDGE
 ${CMAKE_CURRENT_SOURCE_DIR}/include/judge
 ${CMAKE_CURRENT_SOURCE_DIR}/include/judge/NoteOBJ
-${CMAKE_CURRENT_SOURCE_DIR}/include/judge/Events
+${CMAKE_CURRENT_SOURCE_DIR}/include/judge/Init
+${CMAKE_CURRENT_SOURCE_DIR}/include/judge/Loop
 
 ${CAPNPC_OUTPUT_DIR}/third_party/Capnp
 )
