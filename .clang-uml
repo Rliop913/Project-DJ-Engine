@@ -1,0 +1,27 @@
+compilation_database_dir: ./build
+output_directory: diagrams
+diagrams:
+    class_diagram:
+        type: class
+        glob:
+            include:
+                - r: ".*/include/core/.*"
+            exclude:
+                - r: ".*/_deps/.*"
+                - r: ".*/include/judge/.*"
+                - r: ".*/include/input/.*"
+                
+
+        include:
+            paths: 
+                - include/core
+        exclude:
+            paths: 
+                - build/_deps
+            namespaces:
+                - std
+                - fmt
+                - spdlog
+                - absl
+                - RDB
+        

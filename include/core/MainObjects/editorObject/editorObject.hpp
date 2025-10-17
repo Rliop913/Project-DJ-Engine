@@ -91,8 +91,8 @@ class PDJE_API editorObject {
                     return music.gith->gw.repo;
                 }
             }
-        } else
-            return nullptr;
+        }
+        return nullptr;
     }
 
     /**
