@@ -4,7 +4,7 @@ namespace PDJE_JUDGE {
 Judge_Loop::Judge_Loop(Judge_Init &inits)
 {
     init_datas = &inits;
-    temp_rules.reserve(7);
+    Cached.mouse_btn_event_queue.reserve(7);
 }
 bool
 Judge_Loop::FindRailID(const INPUT_RULE &rule, uint64_t &id)
@@ -25,22 +25,24 @@ Judge_Loop::Match(const uint64_t    input_time,
                   const bool        isPressed)
 {
     for (const auto &note_local : note_list) {
-        noteMicro = FrameToMicro(note_local->pos,
-                                 synced_data.consumed_frames,
-                                 synced_data.microsecond);
-        isLate    = noteMicro < input_time;
+        Cached.noteMicro = FrameToMicro(note_local->pos,
+                                        Cached.synced_data.consumed_frames,
+                                        Cached.synced_data.microsecond);
+        Cached.isLate    = Cached.noteMicro < input_time;
 
-        diff = isLate ? input_time - noteMicro : noteMicro - input_time;
-        if (diff < init_datas->ev_rule->use_range_microsecond) {
+        Cached.diff = Cached.isLate ? input_time - Cached.noteMicro
+                                    : Cached.noteMicro - input_time;
+        if (Cached.diff < init_datas->ev_rule->use_range_microsecond) {
             note_local->used = true;
-            if (init_datas->use.has_value()) {
-                init_datas->usedDatas =
-                    Judge_Init::usedStruct{ .railid  = railid,
-                                            .Pressed = isPressed,
-                                            .IsLate  = isLate,
-                                            .diff    = diff };
-                init_datas->use->signal();
-            }
+            // trig use event
+            //  if (init_datas->use.has_value()) {
+            //      init_datas->usedDatas =
+            //          Judge_Init::usedStruct{ .railid  = railid,
+            //                                  .Pressed = isPressed,
+            //                                  .IsLate  = isLate,
+            //                                  .diff    = diff };
+            //      init_datas->use->signal();
+            //  }
 
             break;
         }
@@ -70,25 +72,29 @@ Judge_Loop::PreProcess()
         return false;
     }
 
-    log_begin_time = input_log->front().microSecond;
-    cut_range_time =
-        log_begin_time > init_datas->ev_rule->miss_range_microsecond
-            ? log_begin_time - init_datas->ev_rule->miss_range_microsecond
+    Cached.log_begin = input_log->front().microSecond;
+    Cached.cut_range =
+        Cached.log_begin > init_datas->ev_rule->miss_range_microsecond
+            ? Cached.log_begin - init_datas->ev_rule->miss_range_microsecond
             : 0;
     // cut
-    init_datas->note_objects->Cut<BUFFER_MAIN>(cut_range_time, missed_buffers);
-    init_datas->note_objects->Cut<BUFFER_SUB>(cut_range_time, missed_buffers);
+    Cached.missed_buffers.clear();
+    init_datas->note_objects->Cut<BUFFER_MAIN>(Cached.cut_range,
+                                               Cached.missed_buffers);
+    init_datas->note_objects->Cut<BUFFER_SUB>(Cached.cut_range,
+                                              Cached.missed_buffers);
     // call miss event
-    if (init_datas->miss.has_value()) {
-        init_datas->missDatas = missed_buffers;
-        init_datas->miss->signal();
-    }
+    // if (init_datas->miss.has_value()) {
+    //     init_datas->missDatas = missed_buffers;
+    //     init_datas->miss->signal();
+    // }
 
     // init maximum get time
-    log_end_time   = input_log->back().microSecond;
-    use_range_time = log_end_time + init_datas->ev_rule->use_range_microsecond;
-
-    synced_data = init_datas->coreline->syncD->load(std::memory_order_acquire);
+    Cached.log_end = input_log->back().microSecond;
+    Cached.use_range =
+        Cached.log_end + init_datas->ev_rule->use_range_microsecond;
+    Cached.synced_data =
+        init_datas->coreline->syncD->load(std::memory_order_acquire);
     return true;
 }
 void

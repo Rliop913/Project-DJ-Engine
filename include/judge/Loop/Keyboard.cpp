@@ -11,17 +11,17 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::KEYBOARD>(const PDJE_Input_Log &ilog)
     rule.MatchType   = ilog.type;
     rule.MatchDetail = ilog.event.keyboard.k;
 
-    if (!FindRailID(rule, railID)) {
+    if (!FindRailID(rule, Cached.railID)) {
         return;
     }
     if (ilog.event.keyboard.pressed) {
         init_datas->note_objects->Get<BUFFER_MAIN>(
-            use_range_time, railID, found_list);
-        Match(ilog.microSecond, found_list, railID, true);
+            Cached.use_range, Cached.railID, Cached.found_list);
+        Match(ilog.microSecond, Cached.found_list, Cached.railID, true);
     } else {
         init_datas->note_objects->Get<BUFFER_SUB>(
-            use_range_time, railID, found_list);
-        Match(ilog.microSecond, found_list, railID, false);
+            Cached.use_range, Cached.railID, Cached.found_list);
+        Match(ilog.microSecond, Cached.found_list, Cached.railID, false);
     }
 }
 }; // namespace PDJE_JUDGE

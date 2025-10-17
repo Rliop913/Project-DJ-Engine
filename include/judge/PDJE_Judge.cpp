@@ -1,10 +1,6 @@
 #include "PDJE_Judge.hpp"
-#include "Input_State.hpp"
-#include "PDJE_Input_Device_Data.hpp"
 #include "PDJE_Note_OBJ.hpp"
-#include "PDJE_Rule.hpp"
 #include <atomic>
-#include <cstdint>
 #include <thread>
 #include <unordered_map>
 namespace PDJE_JUDGE {

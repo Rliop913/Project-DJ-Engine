@@ -1,4 +1,4 @@
-#include "PDJE_Judge.hpp"
+#include "PDJE_Judge_Init.hpp"
 
 namespace PDJE_JUDGE {
 
@@ -12,13 +12,9 @@ Judge_Init::SetCoreLine(const PDJE_CORE_DATA_LINE &_coreline)
 }
 
 void
-Judge_Init::SetUseEvent(
-    std::function<void(std::unordered_map<uint64_t, NOTE_VEC>)> _missed_event,
-    std::function<void(
-        uint64_t railid, bool Pressed, bool IsLate, uint64_t diff)> _used_event)
+Judge_Init::SetCustomEvents(const Custom_Events &events)
 {
-    missed_event = _missed_event;
-    used_event   = _used_event;
+    lambdas = events;
 }
 
 void

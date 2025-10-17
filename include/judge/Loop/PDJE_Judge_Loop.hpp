@@ -9,43 +9,59 @@
 
 namespace PDJE_JUDGE {
 class Judge_Loop {
+
   private:
-    std::pmr::vector<PDJE_Input_Log>      *input_log;
-    std::unordered_map<uint64_t, NOTE_VEC> missed_buffers;
+    struct {
+        std::optional<ATOMIC_EVENT> miss_event_trigger;
+        std::optional<ATOMIC_EVENT> use_event_trigger;
+    } Event_Controls;
 
-    P_NOTE_VEC found_list;
-    P_NOTE_VEC related_list_out;
+    struct {
+        std::unordered_map<uint64_t, NOTE_VEC> missDatas;
 
-    // time values
-    uint64_t log_begin_time;
-    uint64_t log_end_time;
+        uint64_t railid; // use datas
+        bool     Pressed;
+        bool     IsLate;
+        uint64_t diff;
+    } Event_Datas;
 
-    uint64_t use_range_time;
-    uint64_t cut_range_time;
-
-    audioSyncData synced_data;
-
-    bool isLate;
-
-    uint64_t railID;
-
-    uint64_t noteMicro;
-
-    uint64_t diff;
-
-    struct railid_is_Down {
-        uint64_t id     = 0;
-        int      status = -1;
+  private: // cached values
+    std::pmr::vector<PDJE_Input_Log> *input_log;
+    struct mouse_btn_event {
+        uint64_t rail_id = 0;
+        int      status  = -1;
     };
-    std::vector<railid_is_Down> temp_rules;
+    struct {
+
+        std::unordered_map<uint64_t, NOTE_VEC> missed_buffers;
+
+        P_NOTE_VEC found_list;
+        P_NOTE_VEC related_list_out;
+
+        // time values
+        uint64_t log_begin;
+        uint64_t log_end;
+
+        uint64_t use_range;
+        uint64_t cut_range;
+
+        audioSyncData synced_data;
+
+        bool isLate;
+
+        uint64_t railID;
+
+        uint64_t noteMicro;
+
+        uint64_t                     diff;
+        std::vector<mouse_btn_event> mouse_btn_event_queue;
+    } Cached;
 
     Judge_Init *init_datas;
     bool
     PreProcess();
     void
-    ParseMouse(INPUT_RULE                  &rule,
-               const BITMASK                ev,
-               std::vector<railid_is_Down> &res);
+    ParseMouse(INPUT_RULE &rule, const BITMASK ev);
     template <PDJE_Dev_Type D>
     void
     UseEvent(const PDJE_Input_Log &ilog);

@@ -24,18 +24,17 @@ class JUDGE {
     std::optional<Judge_Loop> loop_obj;
 
   private:
-    Judge_Init inits;
-
     // thread relates
     std::optional<std::thread> loop;
-    std::optional<std::thread> use_event_loop;
-    std::atomic<bool>          use_switch;
-    std::optional<std::thread> miss_event_loop;
-    std::atomic<bool>          miss_switch;
+    // std::optional<std::thread> use_event_loop;
+    // std::atomic<bool>          use_switch;
+    // std::optional<std::thread> miss_event_loop;
+    // std::atomic<bool>          miss_switch;
 
     JUDGE_STATUS status = JUDGE_STATUS::OK;
 
   public:
+    Judge_Init inits;
     JUDGE_STATUS
     Start();
     void

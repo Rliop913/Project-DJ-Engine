@@ -42,9 +42,7 @@ class OBJ {
     {
         if constexpr (I == BUFFER_MAIN) {
             return &Buffer_Main;
-        } else
-
-        {
+        } else {
             return &Buffer_Sub;
         }
     }
@@ -102,7 +100,6 @@ class OBJ {
                       "invalid use of cut.");
         DEVID_TO_NOTE *dan = pick_dan<I>();
 
-        cuts.clear();
         for (auto &rail : *dan) {
             auto titr = rail.second.itr;
             while (titr != rail.second.vec.end() && titr->pos <= limit) {

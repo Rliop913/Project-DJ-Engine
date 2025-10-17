@@ -11,6 +11,20 @@ namespace PDJE_JUDGE {
 
 using RAIL_ID = uint64_t;
 
+struct Custom_Events {
+    std::function<void(std::unordered_map<uint64_t, NOTE_VEC>)> missed_event;
+    std::function<void(
+        uint64_t railid, bool Pressed, bool IsLate, uint64_t diff)>
+        used_event;
+    std::function<void(uint64_t             microSecond,
+                       const P_NOTE_VEC    &found_events,
+                       uint64_t             railID,
+                       int                  x,
+                       int                  y,
+                       PDJE_Mouse_Axis_Type axis_type)>
+        custom_axis_parse;
+};
+
 class Judge_Init {
   private:
     void
@@ -20,31 +34,9 @@ class Judge_Init {
                 const uint64_t axis2);
 
   public:
-    std::function<void(std::unordered_map<uint64_t, NOTE_VEC>)> missed_event;
-    std::function<void(
-        uint64_t railid, bool Pressed, bool IsLate, uint64_t diff)>
-                                           used_event;
-    std::unordered_map<uint64_t, NOTE_VEC> missDatas;
-    struct usedStruct {
-        uint64_t railid;
-        bool     Pressed;
-        bool     IsLate;
-        uint64_t diff;
-    };
-    usedStruct usedDatas;
-
+    Custom_Events                       lambdas;
     std::optional<PDJE_CORE_DATA_LINE>  coreline;
     std::optional<PDJE_INPUT_DATA_LINE> inputline;
-
-    std::optional<ATOMIC_EVENT> miss;
-    std::optional<ATOMIC_EVENT> use;
-    std::function<void(uint64_t             microSecond,
-                       const P_NOTE_VEC    &found_events,
-                       uint64_t             railID,
-                       int                  x,
-                       int                  y,
-                       PDJE_Mouse_Axis_Type axis_type)>
-        custom_axis_parse;
 
     // note object
     std::optional<OBJ> note_objects;
@@ -59,11 +51,7 @@ class Judge_Init {
     SetEventRule(const EVENT_RULE &event_rule);
 
     void
-    SetUseEvent(std::function<void(std::unordered_map<uint64_t, NOTE_VEC>)>
-                    missed_event,
-                std::function<void(
-                    uint64_t railid, bool Pressed, bool IsLate, uint64_t diff)>
-                    used_event);
+    SetCustomEvents(const Custom_Events &events);
 
     void
     NoteObjectCollector(const std::string        noteType,
