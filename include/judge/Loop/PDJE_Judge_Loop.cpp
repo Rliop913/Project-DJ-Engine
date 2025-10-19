@@ -1,4 +1,7 @@
 #include "PDJE_Judge_Loop.hpp"
+#include <chrono>
+#include <ratio>
+#include <thread>
 
 namespace PDJE_JUDGE {
 Judge_Loop::Judge_Loop(Judge_Init &inits)
@@ -34,15 +37,8 @@ Judge_Loop::Match(const uint64_t    input_time,
                                     : Cached.noteMicro - input_time;
         if (Cached.diff < init_datas->ev_rule->use_range_microsecond) {
             note_local->used = true;
-            // trig use event
-            //  if (init_datas->use.has_value()) {
-            //      init_datas->usedDatas =
-            //          Judge_Init::usedStruct{ .railid  = railid,
-            //                                  .Pressed = isPressed,
-            //                                  .IsLate  = isLate,
-            //                                  .diff    = diff };
-            //      init_datas->use->signal();
-            //  }
+            Event_Datas.use_queue.Write(
+                { Cached.railID, isPressed, Cached.isLate, Cached.diff });
 
             break;
         }
@@ -81,14 +77,10 @@ Judge_Loop::PreProcess()
     Cached.missed_buffers.clear();
     init_datas->note_objects->Cut<BUFFER_MAIN>(Cached.cut_range,
                                                Cached.missed_buffers);
+    Event_Datas.miss_queue.Write(Cached.missed_buffers);
     init_datas->note_objects->Cut<BUFFER_SUB>(Cached.cut_range,
                                               Cached.missed_buffers);
-    // call miss event
-    // if (init_datas->miss.has_value()) {
-    //     init_datas->missDatas = missed_buffers;
-    //     init_datas->miss->signal();
-    // }
-
+    Event_Datas.miss_queue.Write(Cached.missed_buffers);
     // init maximum get time
     Cached.log_end = input_log->back().microSecond;
     Cached.use_range =
@@ -126,6 +118,47 @@ Judge_Loop::loop()
             }
         }
     }
+}
+void
+Judge_Loop::StartEventLoop()
+{
+    Event_Controls.use_event_switch = true;
+    Event_Controls.use_event_thread.emplace([this]() {
+        auto use_clock = std::chrono::steady_clock::now();
+        while (Event_Controls.use_event_switch) {
+            use_clock += init_datas->lambdas.use_event_sleep_time;
+            std::this_thread::sleep_until(use_clock);
+
+            auto queue = Event_Datas.use_queue.Get();
+
+            for (const auto &log : *queue) {
+                init_datas->lambdas.used_event(
+                    log.railid, log.Pressed, log.IsLate, log.diff);
+            }
+        }
+    });
+    Event_Controls.miss_event_switch = true;
+    Event_Controls.miss_event_thread.emplace([this]() {
+        auto miss_clock = std::chrono::steady_clock::now();
+        while (Event_Controls.miss_event_switch) {
+            miss_clock += init_datas->lambdas.miss_event_sleep_time;
+            std::this_thread::sleep_for(
+                init_datas->lambdas.miss_event_sleep_time);
+            auto queue = Event_Datas.miss_queue.Get();
+            for (const auto &log : *queue) {
+                init_datas->lambdas.missed_event(log);
+            }
+        }
+    });
+}
+
+void
+Judge_Loop::EndEventLoop()
+{
+    Event_Controls.use_event_switch  = false;
+    Event_Controls.miss_event_switch = false;
+    Event_Controls.use_event_thread->join();
+    Event_Controls.miss_event_thread->join();
 }
 
 }; // namespace PDJE_JUDGE

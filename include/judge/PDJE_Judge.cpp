@@ -25,29 +25,7 @@ JUDGE::Start()
     }
     inits.note_objects->Sort();
 
-    if (inits.used_event) {
-        inits.use.emplace();
-        use_switch = true;
-        use_event_loop.emplace([this]() {
-            while (use_switch) {
-                inits.use->wait();
-                inits.used_event(inits.usedDatas.railid,
-                                 inits.usedDatas.Pressed,
-                                 inits.usedDatas.IsLate,
-                                 inits.usedDatas.diff);
-            }
-        });
-    }
-    if (inits.missed_event) {
-        inits.miss.emplace();
-        miss_switch = true;
-        miss_event_loop.emplace([this]() {
-            while (miss_switch) {
-                inits.miss->wait();
-                inits.missed_event(inits.missDatas);
-            }
-        });
-    }
+    loop_obj->StartEventLoop();
 
     loop.emplace([this]() {
         loop_obj.emplace(inits);
@@ -67,6 +45,7 @@ void
 JUDGE::End()
 {
     loop_obj->loop_switch = false;
+    loop_obj->EndEventLoop();
     loop->join();
     inits.coreline.reset();
     inits.inputline.reset();

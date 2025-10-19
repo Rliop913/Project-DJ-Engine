@@ -1,9 +1,12 @@
 #pragma once
 #include "Input_State.hpp"
+#include "PDJE_Buffer.hpp"
 #include "PDJE_Judge_Init.hpp"
 #include "PDJE_Rule.hpp"
 #include "PDJE_SYNC_CORE.hpp"
 #include <cstdint>
+#include <optional>
+#include <thread>
 #include <unordered_map>
 #include <vector>
 
@@ -12,17 +15,23 @@ class Judge_Loop {
 
   private:
     struct {
-        std::optional<ATOMIC_EVENT> miss_event_trigger;
-        std::optional<ATOMIC_EVENT> use_event_trigger;
+        std::optional<bool> use_event_switch;
+        std::optional<bool> miss_event_switch;
+
+        std::optional<std::thread> use_event_thread;
+        std::optional<std::thread> miss_event_thread;
     } Event_Controls;
 
     struct {
-        std::unordered_map<uint64_t, NOTE_VEC> missDatas;
+        PDJE_Buffer_Arena<std::unordered_map<uint64_t, NOTE_VEC>> miss_queue;
 
-        uint64_t railid; // use datas
-        bool     Pressed;
-        bool     IsLate;
-        uint64_t diff;
+        struct useDatas {
+            uint64_t railid;
+            bool     Pressed;
+            bool     IsLate;
+            uint64_t diff;
+        };
+        PDJE_Buffer_Arena<useDatas> use_queue;
     } Event_Datas;
 
   private: // cached values
@@ -79,7 +88,12 @@ class Judge_Loop {
 
   public:
     void
-                      loop();
+    EndEventLoop();
+    void
+    StartEventLoop();
+    void
+    loop();
+
     std::atomic<bool> loop_switch;
     Judge_Loop(Judge_Init &inits);
     ~Judge_Loop() = default;
