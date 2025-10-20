@@ -26,10 +26,6 @@ class JUDGE {
   private:
     // thread relates
     std::optional<std::thread> loop;
-    // std::optional<std::thread> use_event_loop;
-    // std::atomic<bool>          use_switch;
-    // std::optional<std::thread> miss_event_loop;
-    // std::atomic<bool>          miss_switch;
 
     JUDGE_STATUS status = JUDGE_STATUS::OK;
 

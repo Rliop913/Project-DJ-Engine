@@ -23,7 +23,7 @@ else()
 endif()
 
 
-option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
+option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
 option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
 option(PDJE_DYNAMIC "Make Shared Library" OFF)
 
@@ -87,8 +87,13 @@ target_include_directories(DBTester PUBLIC ${PDJE_INCLUDE_CORE})
 
 add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${PDJE_OS_INPUT_SRC})
 target_include_directories(testInput PRIVATE ${PDJE_INCLUDE_INPUT} )
-
 PDJE_INPUT_LINK_LIB(testInput)
+
+
+add_executable(testJudge ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/JUDGE_TESTS/judgeTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${globalSource} ${PDJE_OS_INPUT_SRC} ${judgeSource})
+target_include_directories(testJudge PRIVATE ${PDJE_INCLUDE_CORE} ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_GLOBAL})
+PDJE_INPUT_LINK_LIB(testJudge)
+
 endif(PDJE_BUILD_TESTS)
 
 if(PDJE_DYNAMIC)
@@ -161,6 +166,7 @@ if(PDJE_BUILD_TESTS)
 # linkPDJELibs(testGIT)
 linkPDJELibs(testEditor)
 linkPDJELibs(DBTester)
+linkPDJELibs(testJudge)
 
 endif()
 

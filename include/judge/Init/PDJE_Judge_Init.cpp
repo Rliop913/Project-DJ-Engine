@@ -7,7 +7,7 @@ Judge_Init::SetCoreLine(const PDJE_CORE_DATA_LINE &_coreline)
 {
     if (_coreline.maxCursor != nullptr && _coreline.nowCursor != nullptr &&
         _coreline.preRenderedData != nullptr && _coreline.syncD != nullptr) {
-        coreline = coreline;
+        coreline = _coreline;
     }
 }
 
