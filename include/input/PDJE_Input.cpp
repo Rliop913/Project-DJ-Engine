@@ -4,8 +4,8 @@
     try {                                                                      \
         CODE                                                                   \
     } catch (const std::exception &e) {                                        \
-        ResetOneShot(config_promise, data.config_data);                        \
-        ResetOneShot(run_command, data.run_ok);                                \
+        ResetOneShot(config_promise, data.config_data, data.config_sync);                        \
+        ResetOneShot(run_command, data.run_ok, data.run_sync);                                \
                                                                                \
         state = PDJE_INPUT_STATE::DEAD;                                        \
         ErrLog += e.what();                                                    \
@@ -19,8 +19,8 @@ PDJE_Input::Init()
     if (state != PDJE_INPUT_STATE::DEAD) {
         return false;
     }
-    PDJE_INPUT_DEFAULT_TRY_CATCH(InitOneShot(config_promise, data.config_data);
-                                 InitOneShot(run_command, data.run_ok);
+    PDJE_INPUT_DEFAULT_TRY_CATCH(InitOneShot(config_promise, data.config_data, data.config_sync);
+                                 InitOneShot(run_command, data.run_ok, data.run_sync);
                                  data.TrigLoop();
                                  state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
                                  return true;)
@@ -32,7 +32,9 @@ PDJE_Input::Config(std::vector<DeviceData> &devs)
     if (state != PDJE_INPUT_STATE::DEVICE_CONFIG_STATE) {
         return false;
     }
-    PDJE_INPUT_DEFAULT_TRY_CATCH(config_promise->set_value(devs);)
+    PDJE_INPUT_DEFAULT_TRY_CATCH(config_promise->set_value(devs);
+    data.config_sync->arrive_and_wait();
+    )
 
     state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
     return true;
@@ -45,7 +47,9 @@ PDJE_Input::Run()
         return false;
     }
 
-    PDJE_INPUT_DEFAULT_TRY_CATCH(run_command->set_value(true);)
+    PDJE_INPUT_DEFAULT_TRY_CATCH(run_command->set_value(true);
+    data.run_sync->arrive_and_wait();
+    )
 
     state = PDJE_INPUT_STATE::INPUT_LOOP_RUNNING;
     return true;
@@ -54,18 +58,36 @@ PDJE_Input::Run()
 bool
 PDJE_Input::Kill()
 {
-    if (state != PDJE_INPUT_STATE::INPUT_LOOP_RUNNING) {
-        return false;
+    switch (state)
+    {
+    case PDJE_INPUT_STATE::DEAD:
+        return true;
+    
+    case PDJE_INPUT_STATE::DEVICE_CONFIG_STATE:{
+        auto empty_devs = DEV_LIST();
+        Config(empty_devs);
+        data.config_sync->arrive_and_wait();
+        break;
     }
-
-    bool flagOK = data.kill();
-    if (!flagOK) {
+    case PDJE_INPUT_STATE::INPUT_LOOP_READY:
+        PDJE_INPUT_DEFAULT_TRY_CATCH(run_command->set_value(false);
+        data.run_sync->arrive_and_wait();
+        )
+        break;
+    case PDJE_INPUT_STATE::INPUT_LOOP_RUNNING:{
+        if (!data.kill()) {
+            return false;
+        }
+    }
+        break;
+    default:
         return false;
+        
     }
     data.ResetLoop();
     state = PDJE_INPUT_STATE::DEAD;
-    ResetOneShot(config_promise, data.config_data);
-    ResetOneShot(run_command, data.run_ok);
+    ResetOneShot(config_promise, data.config_data, data.config_sync);
+    ResetOneShot(run_command, data.run_ok, data.run_sync);
     return true;
 }
 
@@ -75,42 +97,10 @@ PDJE_Input::GetDevs()
     return data.getDevices();
 }
 
-void
-PDJE_Input::SetDevs(const std::vector<DeviceData> &devs)
-{
-    activated_devices = devs;
-}
-
 PDJE_INPUT_STATE
 PDJE_Input::GetState()
 {
     return state;
-}
-
-PDJE_INPUT_STATE
-PDJE_Input::NEXT()
-{
-    switch (state) {
-    case PDJE_INPUT_STATE::DEAD:
-        Init();
-        return state;
-    case PDJE_INPUT_STATE::DEVICE_CONFIG_STATE:
-        if (activated_devices.empty()) {
-            return state;
-        }
-        Config(activated_devices);
-        return state;
-
-    case PDJE_INPUT_STATE::INPUT_LOOP_READY:
-        Run();
-        return state;
-    case PDJE_INPUT_STATE::INPUT_LOOP_RUNNING:
-        Kill();
-        return state;
-
-    default:
-        throw std::logic_error("State machine broken.");
-    }
 }
 
 PDJE_INPUT_DATA_LINE

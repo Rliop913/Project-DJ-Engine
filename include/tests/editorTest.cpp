@@ -90,6 +90,12 @@ main()
                 temp.arg.bpm      = "134";
                 engine->editor->AddLine<EDIT_ARG_MUSIC>(temp);
             }
+            EDIT_ARG_NOTE notetemp;
+            notetemp.railID = 1;
+            for(int i = 0; i< 100 ; ++i){
+                notetemp.beat=i;
+                engine->editor->AddLine<EDIT_ARG_NOTE>(notetemp);
+            }
         }
         if (engine->SearchMusic("testMiku", "Camellia").empty()) {
             std::string linter_msg;
@@ -132,7 +138,7 @@ main()
         Fxhandle->FX_ON_OFF(FXList::OCSFILTER, true);
         Fxhandle->FX_ON_OFF(FXList::EQ, true);
         auto ocshandle = Fxhandle->GetArgSetter(FXList::OCSFILTER);
-        ocshandle["ocsFilterHighLowSW"](1);
+        ocshandle["OCSFilterHighLowSW"](1);
         ocshandle["rangeFreqHalf"](2500);
         ocshandle["middleFreq"](5000);
 

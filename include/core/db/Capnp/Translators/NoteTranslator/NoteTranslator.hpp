@@ -17,9 +17,10 @@
  * this class reads the capnp binary datas and bpm datas, and parse them.
  */
 class PDJE_API NoteTranslator {
-  public:
+  private:
     /// the note object's bpm datas
     BpmStruct noteBpms;
+  public:
     /**
      * @brief Reads and parse capnp object.
      * this function reads capnp binary data and note object's bpm data and

@@ -210,6 +210,10 @@ OS_Input::work()
         return;
 
     auto device_datas = config_data->get();
+    config_sync->arrive_and_wait();
+    if(device_datas.empty()){
+        return;
+    }
 
     std::vector<RAWINPUTDEVICE> devTypes;
     bool                        hasKeyBoard = false;
@@ -275,6 +279,7 @@ OS_Input::work()
     ThreadID = GetCurrentThreadId();
 
     bool ok = run_ok->get();
+    run_sync->arrive_and_wait();
     if (!ok) {
         if (task)
             AvRevertMmThreadCharacteristics(task);

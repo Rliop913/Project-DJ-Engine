@@ -1,5 +1,5 @@
 #include "PDJE_Judge_Init.hpp"
-
+#include <iostream>
 namespace PDJE_JUDGE {
 
 void
@@ -90,6 +90,7 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
     switch (key.MatchType) {
     case PDJE_Dev_Type::KEYBOARD:
         DefaultFill(tempobj, railID, Y_Axis, Y_Axis_2);
+        std::cout << "push keyboard, " << Y_Axis << ", " << Y_Axis_2 << std::endl;
         break;
     case PDJE_Dev_Type::MOUSE:
         if (tempobj.type == "AXIS") { // axis type

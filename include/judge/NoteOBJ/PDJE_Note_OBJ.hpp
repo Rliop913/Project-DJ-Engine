@@ -1,5 +1,6 @@
 #pragma once
 #include "Input_State.hpp"
+#include <iostream>
 #include "PDJE_Input_Device_Data.hpp"
 #include <cstdint>
 #include <string>
@@ -28,6 +29,24 @@ struct NOTE_ITR {
     NOTE_VEC           vec;
     NOTE_VEC::iterator itr;
 };
+
+constexpr double OneSample = 1000.0 / 48.0;
+static
+uint64_t
+FrameToMicro(uint64_t frame,
+                         uint64_t origin_frame,
+                         uint64_t origin_microsecond)
+{
+    if (origin_frame > frame) {
+        auto diff = origin_frame - frame;
+        diff *= OneSample;
+        return origin_microsecond - diff;
+    } else {
+        auto diff = frame - origin_frame;
+        diff *= OneSample;
+        return origin_microsecond + diff;
+    }
+}
 
 using DEVID_TO_NOTE = std::unordered_map<uint64_t, NOTE_ITR>;
 
@@ -63,7 +82,7 @@ class OBJ {
 
     template <int I>
     void
-    Get(const uint64_t limit, uint64_t railID, P_NOTE_VEC &found)
+    Get(const uint64_t limit_microsecond, uint64_t railID, P_NOTE_VEC &found, uint64_t origin_frame, uint64_t origin_microsecond)
     {
         static_assert(I == BUFFER_MAIN || I == BUFFER_SUB,
                       "invalid use of get.");
@@ -81,8 +100,10 @@ class OBJ {
         }
 
         auto titr = (*dan)[railID].itr;
+        uint64_t note_microsecond;
         while (true) {
-            if ((titr != note.vec.end()) && titr->pos <= limit && !titr->used) {
+            note_microsecond = FrameToMicro(titr->pos, origin_frame, origin_microsecond);
+            if ((titr != note.vec.end()) && note_microsecond <= limit_microsecond && !titr->used) {
                 found.push_back(std::addressof(*titr));
                 ++titr;
             } else {
@@ -90,19 +111,21 @@ class OBJ {
             }
         }
     }
-
+    
     template <int I>
     void
-    Cut(const unsigned long long                limit,
-        std::unordered_map<uint64_t, NOTE_VEC> &cuts)
+    Cut(const unsigned long long                limit_microsecond,
+        std::unordered_map<uint64_t, NOTE_VEC> &cuts, uint64_t origin_frame, uint64_t origin_microsecond)
     {
         static_assert(I == BUFFER_MAIN || I == BUFFER_SUB,
                       "invalid use of cut.");
         DEVID_TO_NOTE *dan = pick_dan<I>();
-
+        uint64_t note_microsecond;
         for (auto &rail : *dan) {
             auto titr = rail.second.itr;
-            while (titr != rail.second.vec.end() && titr->pos <= limit) {
+            note_microsecond = FrameToMicro(titr->pos, origin_frame, origin_microsecond);
+            std::cout << "cutting" << titr->pos << " nmic: " << note_microsecond << " limit: " << limit_microsecond << std::endl;
+            while (titr != rail.second.vec.end() && note_microsecond <= limit_microsecond) {
                 if (!titr->used) {
                     cuts[rail.first].push_back(*titr);
                     titr->used = true;

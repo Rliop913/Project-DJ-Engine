@@ -8,7 +8,7 @@ int
 main()
 {
     PDJE_Input pip;
-    pip.NEXT();
+    pip.Init();
     auto     devs = pip.GetDevs();
     DEV_LIST set_targets;
     for (auto i : devs) {
@@ -34,10 +34,11 @@ main()
         std::cout << "dev path: " << i.device_specific_id << std::endl;
     }
 
-    pip.SetDevs(set_targets);
-    pip.NEXT();
+    pip.Config(set_targets);
+    // pip.NEXT();
     auto dline = pip.PullOutDataLine();
-    pip.NEXT();
+    pip.Run();
+    // pip.NEXT();
     int         times = 100;
     std::thread watcher([&]() {
         while (true) {
@@ -64,7 +65,7 @@ main()
     });
 
     watcher.join();
-    pip.NEXT();
+    pip.Kill();
 
     // OS_Input linux_oi;
     // linux_oi.SocketOpen("./PDJE_MODULE_INPUT_RTMAIN");

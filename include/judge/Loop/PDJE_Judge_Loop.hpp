@@ -4,6 +4,7 @@
 #include "PDJE_Judge_Init.hpp"
 #include "PDJE_Rule.hpp"
 #include "PDJE_SYNC_CORE.hpp"
+#include "PDJE_Highres_Clock.hpp"
 #include <cstdint>
 #include <optional>
 #include <thread>
@@ -21,16 +22,14 @@ class Judge_Loop {
         std::optional<std::thread> use_event_thread;
         std::optional<std::thread> miss_event_thread;
     } Event_Controls;
-
+    struct useDatas {
+        uint64_t railid;
+        bool     Pressed;
+        bool     IsLate;
+        uint64_t diff;
+    };
     struct {
         PDJE_Buffer_Arena<std::unordered_map<uint64_t, NOTE_VEC>> miss_queue;
-
-        struct useDatas {
-            uint64_t railid;
-            bool     Pressed;
-            bool     IsLate;
-            uint64_t diff;
-        };
         PDJE_Buffer_Arena<useDatas> use_queue;
     } Event_Datas;
 
@@ -67,6 +66,8 @@ class Judge_Loop {
     } Cached;
 
     Judge_Init *init_datas;
+    PDJE_HIGHRES_CLOCK::CLOCK clock_root;
+    inline void Cut();
     bool
     PreProcess();
     void
@@ -81,10 +82,6 @@ class Judge_Loop {
           const P_NOTE_VEC &note_list,
           const uint64_t    railid,
           const bool        isPressed);
-    uint64_t
-    FrameToMicro(uint64_t frame,
-                 uint64_t origin_frame,
-                 uint64_t origin_microsecond);
 
   public:
     void

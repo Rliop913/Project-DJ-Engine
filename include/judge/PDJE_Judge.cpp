@@ -25,11 +25,11 @@ JUDGE::Start()
     }
     inits.note_objects->Sort();
 
-    loop_obj->StartEventLoop();
-
+    
     loop.emplace([this]() {
         loop_obj.emplace(inits);
         loop_obj->loop_switch = true;
+        loop_obj->StartEventLoop();
         loop_obj->loop();
     });
     return JUDGE_STATUS::OK;

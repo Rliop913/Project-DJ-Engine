@@ -13,9 +13,9 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
         return false;
     }
     auto      br = binary.Rp->getDatas();
-    BpmStruct bs;
+    
 
-    bs.fragments = noteBpms.fragments;
+    noteBpms.fragments = mainBpm.fragments;
     for (size_t i = 0; i < br.size(); ++i) {
         if (strcmp(br[i].getNoteType().cStr(), "BPM") == 0) {
             auto fg     = BpmFragment();
@@ -30,11 +30,11 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
                 critlog(br[i].getFirst().cStr());
                 continue;
             }
-            bs.fragments.push_back(fg);
+            noteBpms.fragments.push_back(fg);
         }
     }
-    bs.sortFragment();
-    if (!bs.calcFrame()) {
+    noteBpms.sortFragment();
+    if (!noteBpms.calcFrame()) {
         critlog("failed to calculate frames. from NoteTranslator Read.");
         return false;
     }
@@ -44,7 +44,7 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
             searchfragment.beat        = br[i].getBeat();
             searchfragment.subBeat     = br[i].getSubBeat();
             searchfragment.separate    = br[i].getSeparate();
-            auto               affects = bs.getAffected(searchfragment);
+            auto               affects = noteBpms.getAffected(searchfragment);
             unsigned long long position =
                 affects.frame_to_here +
                 FrameCalc::CountFrame(affects.beat,
@@ -63,7 +63,7 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
                 secondpos.beat     = br[i].getEbeat();
                 secondpos.subBeat  = br[i].getEsubBeat();
                 secondpos.separate = br[i].getESeparate();
-                auto res           = bs.getAffected(secondpos);
+                auto res           = noteBpms.getAffected(secondpos);
                 pos2               = res.frame_to_here +
                        FrameCalc::CountFrame(res.beat,
                                              res.subBeat,

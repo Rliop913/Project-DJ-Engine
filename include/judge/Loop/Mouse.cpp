@@ -98,33 +98,33 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::MOUSE>(const PDJE_Input_Log &ilog)
         switch (mev.status) {
         case DOWN:
             init_datas->note_objects->Get<BUFFER_MAIN>(
-                Cached.use_range, mev.rail_id, Cached.found_list);
+                Cached.use_range, mev.rail_id, Cached.found_list, Cached.synced_data.consumed_frames, Cached.synced_data.microsecond);
             Match(ilog.microSecond, Cached.found_list, mev.rail_id, true);
             break;
         case UP:
             init_datas->note_objects->Get<BUFFER_SUB>(
-                Cached.use_range, mev.rail_id, Cached.found_list);
+                Cached.use_range, mev.rail_id, Cached.found_list, Cached.synced_data.consumed_frames, Cached.synced_data.microsecond);
             Match(ilog.microSecond, Cached.found_list, mev.rail_id, false);
             break;
         case X:
             if (ilog.event.mouse.wheel_move > 0) {
                 init_datas->note_objects->Get<BUFFER_MAIN>(
-                    Cached.use_range, mev.rail_id, Cached.found_list);
+                    Cached.use_range, mev.rail_id, Cached.found_list, Cached.synced_data.consumed_frames, Cached.synced_data.microsecond);
                 Match(ilog.microSecond, Cached.found_list, mev.rail_id, true);
             } else if (ilog.event.mouse.wheel_move < 0) {
                 init_datas->note_objects->Get<BUFFER_SUB>(
-                    Cached.use_range, mev.rail_id, Cached.found_list);
+                    Cached.use_range, mev.rail_id, Cached.found_list, Cached.synced_data.consumed_frames, Cached.synced_data.microsecond);
                 Match(ilog.microSecond, Cached.found_list, mev.rail_id, false);
             }
             break;
         case Y:
             if (ilog.event.mouse.wheel_move > 0) {
                 init_datas->note_objects->Get<BUFFER_MAIN>(
-                    Cached.use_range, mev.rail_id, Cached.found_list);
+                    Cached.use_range, mev.rail_id, Cached.found_list, Cached.synced_data.consumed_frames, Cached.synced_data.microsecond);
                 Match(ilog.microSecond, Cached.found_list, mev.rail_id, true);
             } else if (ilog.event.mouse.wheel_move < 0) {
                 init_datas->note_objects->Get<BUFFER_SUB>(
-                    Cached.use_range, mev.rail_id, Cached.found_list);
+                    Cached.use_range, mev.rail_id, Cached.found_list, Cached.synced_data.consumed_frames, Cached.synced_data.microsecond);
                 Match(ilog.microSecond, Cached.found_list, mev.rail_id, false);
             }
             break;
@@ -137,7 +137,7 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::MOUSE>(const PDJE_Input_Log &ilog)
         rule.MatchDetail = DEVICE_MOUSE_EVENT::AXIS_MOVE;
         if (FindRailID(rule, Cached.railID)) {
             init_datas->note_objects->Get<BUFFER_SUB>(
-                Cached.use_range, Cached.railID, Cached.found_list);
+                Cached.use_range, Cached.railID, Cached.found_list, Cached.synced_data.consumed_frames, Cached.synced_data.microsecond);
             init_datas->lambdas.custom_axis_parse(ilog.microSecond,
                                                   Cached.found_list,
                                                   Cached.railID,

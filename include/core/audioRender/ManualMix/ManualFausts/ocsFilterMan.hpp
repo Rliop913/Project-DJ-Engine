@@ -11,7 +11,7 @@ class OcsFilterMan {
     ARGSETTER
     makeArgSetter()
     {
-        return { { "OcsFilterHighLowSW",
+        return { { "OCSFilterHighLowSW",
                    [this](double value) {
                        this->ocsFilterHighLowSW = static_cast<int>(value);
                    } },
