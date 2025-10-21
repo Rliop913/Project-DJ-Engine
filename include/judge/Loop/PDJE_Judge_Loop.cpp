@@ -1,8 +1,9 @@
 #include "PDJE_Judge_Loop.hpp"
+#include "PDJE_Judge_Init.hpp"
 #include <chrono>
+#include <iostream>
 #include <ratio>
 #include <thread>
-#include <iostream>
 namespace PDJE_JUDGE {
 Judge_Loop::Judge_Loop(Judge_Init &inits)
 {
@@ -28,7 +29,7 @@ Judge_Loop::Match(const uint64_t    input_time,
                   const bool        isPressed)
 {
     for (const auto &note_local : note_list) {
-        Cached.noteMicro = FrameToMicro(note_local->pos,
+        Cached.noteMicro = FrameToMicro(note_local->microsecond,
                                         Cached.synced_data.consumed_frames,
                                         Cached.synced_data.microsecond);
         Cached.isLate    = Cached.noteMicro < input_time;
@@ -45,19 +46,24 @@ Judge_Loop::Match(const uint64_t    input_time,
     }
 }
 
-
 void
 Judge_Loop::Cut()
 {
     Cached.missed_buffers.clear();
-    init_datas->note_objects->Cut<BUFFER_MAIN>(Cached.cut_range,
-                                            Cached.missed_buffers, Cached.synced_data.consumed_frames, Cached.synced_data.microsecond);
-    if(!Cached.missed_buffers.empty()){
+    init_datas->note_objects->Cut<BUFFER_MAIN>(
+        Cached.cut_range,
+        Cached.missed_buffers,
+        Cached.synced_data.consumed_frames,
+        Cached.synced_data.microsecond);
+    if (!Cached.missed_buffers.empty()) {
         Event_Datas.miss_queue.Write(Cached.missed_buffers);
     }
-    init_datas->note_objects->Cut<BUFFER_SUB>(Cached.cut_range,
-                                            Cached.missed_buffers, Cached.synced_data.consumed_frames, Cached.synced_data.microsecond);
-    if(!Cached.missed_buffers.empty()){
+    init_datas->note_objects->Cut<BUFFER_SUB>(
+        Cached.cut_range,
+        Cached.missed_buffers,
+        Cached.synced_data.consumed_frames,
+        Cached.synced_data.microsecond);
+    if (!Cached.missed_buffers.empty()) {
         Event_Datas.miss_queue.Write(Cached.missed_buffers);
     }
 }
@@ -68,20 +74,28 @@ Judge_Loop::PreProcess()
     input_log = init_datas->inputline->input_arena->Get();
     Cached.synced_data =
         init_datas->coreline->syncD->load(std::memory_order_acquire);
-    if (input_log->empty()) {
-        Cached.cut_range = clock_root.Get_MicroSecond() - init_datas->ev_rule->miss_range_microsecond;
 
+    Cached.local_microsecond_position =
+        Convert_Frame_Into_MicroSecond(Cached.synced_data.consumed_frames);
+    Cached.global_local_diff =
+        Cached.synced_data.microsecond - Cached.local_microsecond_position;
+
+    if (input_log->empty()) {
+        Cached.cut_range = Cached.local_microsecond_position -
+                           init_datas->ev_rule->miss_range_microsecond;
         Cut();
         return false;
     }
     std::cout << "preproccessed" << std::endl;
-    Cached.log_begin = input_log->front().microSecond;
-    Cached.cut_range = Cached.log_begin - init_datas->ev_rule->miss_range_microsecond;
-    
+    Cached.log_begin =
+        input_log->front().microSecond - Cached.global_local_diff;
+    Cached.cut_range =
+        Cached.log_begin - init_datas->ev_rule->miss_range_microsecond;
+
     Cut();
 
     // init maximum get time
-    Cached.log_end = input_log->back().microSecond;
+    Cached.log_end = input_log->back().microSecond - Cached.global_local_diff;
     Cached.use_range =
         Cached.log_end + init_datas->ev_rule->use_range_microsecond;
     return true;

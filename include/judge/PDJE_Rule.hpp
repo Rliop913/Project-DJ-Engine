@@ -20,9 +20,9 @@ enum DEVICE_MOUSE_EVENT {
 };
 
 struct INPUT_RULE {
-    std::string   Device_ID   = "";
-    PDJE_Dev_Type MatchType   = PDJE_Dev_Type::UNKNOWN;
-    BITMASK       MatchDetail = 0;
+    std::string   Device_ID  = "";
+    PDJE_Dev_Type DeviceType = PDJE_Dev_Type::UNKNOWN;
+    BITMASK       DeviceKey  = 0;
     bool
     operator==(const INPUT_RULE &) const = default;
 };
@@ -42,8 +42,8 @@ template <> struct std::hash<PDJE_JUDGE::INPUT_RULE> {
     std::size_t
     operator()(const PDJE_JUDGE::INPUT_RULE &rule) const noexcept
     {
-        size_t h1 = std::hash<int>()(static_cast<int>(rule.MatchType));
-        size_t h2 = std::hash<BITMASK>()(rule.MatchDetail);
+        size_t h1 = std::hash<int>()(static_cast<int>(rule.DeviceType));
+        size_t h2 = std::hash<BITMASK>()(rule.DeviceKey);
         size_t h3 = std::hash<std::string>()(rule.Device_ID);
 
         size_t seed = h1;

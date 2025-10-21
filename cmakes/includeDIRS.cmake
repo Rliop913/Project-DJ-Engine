@@ -84,26 +84,28 @@ set(PDJE_INCLUDE_GLOBAL
   ${CMAKE_CURRENT_SOURCE_DIR}/include/global/DataLines
 )
 if(WIN32)
-list(APPEND PDJE_INCLUDE_GLOBAL
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Highres_Clock/Windows
-)
-list(APPEND PDJE_INCLUDE_INPUT
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/input/windows
-)
-elseif(APPLE)
-list(APPEND PDJE_INCLUDE_GLOBAL
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Highres_Clock/Mac
-)
-list(APPEND PDJE_INCLUDE_INPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/input/apple)
-else()
-list(APPEND PDJE_INCLUDE_GLOBAL
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Highres_Clock/Linux
-)
-list(APPEND PDJE_INCLUDE_INPUT
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux 
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/common
+  list(APPEND PDJE_INCLUDE_GLOBAL
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Highres_Clock/Windows
   )
+  list(APPEND PDJE_INCLUDE_INPUT
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/windows
+  )
+elseif(APPLE)
+  list(APPEND PDJE_INCLUDE_GLOBAL
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Highres_Clock/Mac
+  )
+  list(APPEND PDJE_INCLUDE_INPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/input/apple)
+else()
+  list(APPEND PDJE_INCLUDE_GLOBAL
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Highres_Clock/Linux
+  )
+  list(APPEND PDJE_INCLUDE_INPUT
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/common
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/socket
+    
+    )
 endif()
 
 list(APPEND PDJE_INCLUDE_JUDGE

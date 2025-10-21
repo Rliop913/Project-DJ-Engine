@@ -6,6 +6,7 @@
 #include <avrt.h>
 #include <future>
 #include <hidsdi.h>
+#include <latch>
 #include <mmsystem.h>
 #include <mutex>
 #include <optional>
@@ -13,7 +14,6 @@
 #include <thread>
 #include <unordered_map>
 #include <vector>
-#include <latch>
 
 #include "PDJE_Buffer.hpp"
 #include "PDJE_Input_DataLine.hpp"
@@ -58,9 +58,9 @@ class OS_Input {
     std::wstring Invisible_window_name = L"PDJE_Invisible_RawInput_Worker";
 
     ONE_SHOT_DEV_FUTURE        config_data;
-    ONE_SHOT_SYNC config_sync;
+    ONE_SHOT_SYNC              config_sync;
     ONE_SHOT_RUN_FUTURE        run_ok;
-    ONE_SHOT_SYNC run_sync;
+    ONE_SHOT_SYNC              run_sync;
     std::optional<std::thread> worker;
     PDJE_INPUT_DATA_LINE
     PullOutDataLine();

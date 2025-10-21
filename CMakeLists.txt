@@ -23,7 +23,8 @@ else()
 endif()
 
 
-option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
+option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
+option(PDJE_DEVELOP_INPUT "Enable linux develop build" ON)
 option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
 option(PDJE_DYNAMIC "Make Shared Library" OFF)
 
@@ -46,7 +47,7 @@ include(cmakes/src/JUDGEsrc.cmake)
 include(cmakes/src/GLOBALsrc.cmake)
 include(cmakes/src/INPUTsrc.cmake)
 
-if(WIN32)#windows only. for now
+if(PDJE_DEVELOP_INPUT)
 if(LINUX)
 
 add_executable(PDJE_MODULE_INPUT_RTMAIN ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTMain.cpp ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC})
@@ -75,7 +76,7 @@ add_custom_target(gen_RT_HASH ALL DEPENDS ${RT_HASH_HEADER})
 
 endif()
 
-endif()#windows only. for now
+endif()
 
 
 if(PDJE_BUILD_TESTS)
@@ -90,7 +91,7 @@ target_include_directories(testInput PRIVATE ${PDJE_INCLUDE_INPUT} )
 PDJE_INPUT_LINK_LIB(testInput)
 
 
-add_executable(testJudge ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/JUDGE_TESTS/judgeTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${globalSource} ${PDJE_OS_INPUT_SRC} ${judgeSource})
+add_executable(testJudge ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/JUDGE_TESTS/judgeTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${globalSource} ${judgeSource})
 target_include_directories(testJudge PRIVATE ${PDJE_INCLUDE_CORE} ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_GLOBAL})
 PDJE_INPUT_LINK_LIB(testJudge)
 
@@ -100,13 +101,13 @@ if(PDJE_DYNAMIC)
 add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource} ${globalSource})
 
 add_library(PDJE_MODULE_JUDGE SHARED ${judgeSource} ${globalSource})
-if(WIN32)#windows only. for now
+if(PDJE_DEVELOP_INPUT)
 add_library(PDJE_MODULE_INPUT SHARED ${inputSource} ${globalSource})
 endif()
 
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
 target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE})
-if(WIN32)#windows only. for now
+if(PDJE_DEVELOP_INPUT)
 target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} )
 endif()
 if(WIN32)
@@ -123,25 +124,25 @@ add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSo
 
 
 add_library(PDJE_MODULE_JUDGE ${judgeSource} ${globalSource})
-if(WIN32)#windows only. for now
+if(PDJE_DEVELOP_INPUT)
 add_library(PDJE_MODULE_INPUT ${inputSource} ${globalSource})
 endif()
 
 
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
 target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE})
-if(WIN32)#windows only. for now
+if(PDJE_DEVELOP_INPUT)
 target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} )
 endif()
 
 endif()
 
-if(WIN32)#windows only. for now
+if(PDJE_DEVELOP_INPUT)
 if(LINUX)
 
 target_link_libraries(PDJE_MODULE_INPUT PUBLIC OpenSSL::Crypto)
 
-add_dependencies(PDJE_MODULE_INPUT gen_RT_HASH)
+# add_dependencies(PDJE_MODULE_INPUT gen_RT_HASH)
 
 endif()
 endif()#skip linux
@@ -156,14 +157,6 @@ endfunction(linkPDJELibs)
 
 
 if(PDJE_BUILD_TESTS)
-#DEPRECATE TESTS
-# linkPDJELibs(testHighway)
-# linkPDJELibs(testdb)
-# linkPDJELibs(testaudio)
-# linkPDJELibs(testCapnp)
-# linkPDJELibs(testManualAudio)
-# linkPDJELibs(testInterface)
-# linkPDJELibs(testGIT)
 linkPDJELibs(testEditor)
 linkPDJELibs(DBTester)
 linkPDJELibs(testJudge)
@@ -176,17 +169,12 @@ linkPDJELibs(PDJE)
 
 setSpdlogReqLib(PDJE_MODULE_JUDGE)
 setCapnpReqLib(PDJE_MODULE_JUDGE)
-if(WIN32)#windows only. for now
+if(PDJE_DEVELOP_INPUT)
 setSpdlogReqLib(PDJE_MODULE_INPUT)
 PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT)
 
 endif()
 
-# target_link_libraries(PDJE PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
-# setSpdlogReqLib(PDJE)
-# setCapnpReqLib(PDJE)
-# setLibgit2ReqLib(PDJE)
-# setHighwayReqLib(PDJE)
 
 
 

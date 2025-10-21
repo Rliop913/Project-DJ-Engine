@@ -49,7 +49,7 @@ class RTSocket {
     void
     RegisterFunctions();
 
-    DeviceData
+    DEV_LIST
     ListDevices();
 
   public:

@@ -1,10 +1,10 @@
 #pragma once
 #include "Input_State.hpp"
 #include "PDJE_Buffer.hpp"
+#include "PDJE_Highres_Clock.hpp"
 #include "PDJE_Judge_Init.hpp"
 #include "PDJE_Rule.hpp"
 #include "PDJE_SYNC_CORE.hpp"
-#include "PDJE_Highres_Clock.hpp"
 #include <cstdint>
 #include <optional>
 #include <thread>
@@ -30,7 +30,7 @@ class Judge_Loop {
     };
     struct {
         PDJE_Buffer_Arena<std::unordered_map<uint64_t, NOTE_VEC>> miss_queue;
-        PDJE_Buffer_Arena<useDatas> use_queue;
+        PDJE_Buffer_Arena<useDatas>                               use_queue;
     } Event_Datas;
 
   private: // cached values
@@ -47,6 +47,9 @@ class Judge_Loop {
         P_NOTE_VEC related_list_out;
 
         // time values
+        uint64_t local_microsecond_position;
+        uint64_t global_local_diff;
+
         uint64_t log_begin;
         uint64_t log_end;
 
@@ -59,15 +62,14 @@ class Judge_Loop {
 
         uint64_t railID;
 
-        uint64_t noteMicro;
-
         uint64_t                     diff;
         std::vector<mouse_btn_event> mouse_btn_event_queue;
     } Cached;
 
-    Judge_Init *init_datas;
+    Judge_Init               *init_datas;
     PDJE_HIGHRES_CLOCK::CLOCK clock_root;
-    inline void Cut();
+    inline void
+    Cut();
     bool
     PreProcess();
     void

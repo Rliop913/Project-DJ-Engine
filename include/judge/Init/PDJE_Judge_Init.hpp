@@ -10,6 +10,14 @@
 #include <unordered_map>
 namespace PDJE_JUDGE {
 
+constexpr long double TO_MICRO = 125.0 / 6.0;
+inline uint64_t
+Convert_Frame_Into_MicroSecond(const uint64_t pcm_frame)
+{
+    return static_cast<uint64_t>(static_cast<long double>(pcm_frame) *
+                                 TO_MICRO);
+}
+
 using RAIL_ID = uint64_t;
 using MISS_CALLBACK =
     std::function<void(std::unordered_map<uint64_t, NOTE_VEC>)>;

@@ -4,8 +4,8 @@
     try {                                                                      \
         CODE                                                                   \
     } catch (const std::exception &e) {                                        \
-        ResetOneShot(config_promise, data.config_data, data.config_sync);                        \
-        ResetOneShot(run_command, data.run_ok, data.run_sync);                                \
+        ResetOneShot(config_promise, data.config_data, data.config_sync);      \
+        ResetOneShot(run_command, data.run_ok, data.run_sync);                 \
                                                                                \
         state = PDJE_INPUT_STATE::DEAD;                                        \
         ErrLog += e.what();                                                    \
@@ -19,11 +19,12 @@ PDJE_Input::Init()
     if (state != PDJE_INPUT_STATE::DEAD) {
         return false;
     }
-    PDJE_INPUT_DEFAULT_TRY_CATCH(InitOneShot(config_promise, data.config_data, data.config_sync);
-                                 InitOneShot(run_command, data.run_ok, data.run_sync);
-                                 data.TrigLoop();
-                                 state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
-                                 return true;)
+    PDJE_INPUT_DEFAULT_TRY_CATCH(
+        InitOneShot(config_promise, data.config_data, data.config_sync);
+        InitOneShot(run_command, data.run_ok, data.run_sync);
+        data.TrigLoop();
+        state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
+        return true;)
 }
 
 bool
@@ -33,8 +34,7 @@ PDJE_Input::Config(std::vector<DeviceData> &devs)
         return false;
     }
     PDJE_INPUT_DEFAULT_TRY_CATCH(config_promise->set_value(devs);
-    data.config_sync->arrive_and_wait();
-    )
+                                 data.config_sync->arrive_and_wait();)
 
     state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
     return true;
@@ -48,8 +48,7 @@ PDJE_Input::Run()
     }
 
     PDJE_INPUT_DEFAULT_TRY_CATCH(run_command->set_value(true);
-    data.run_sync->arrive_and_wait();
-    )
+                                 data.run_sync->arrive_and_wait();)
 
     state = PDJE_INPUT_STATE::INPUT_LOOP_RUNNING;
     return true;
@@ -58,12 +57,11 @@ PDJE_Input::Run()
 bool
 PDJE_Input::Kill()
 {
-    switch (state)
-    {
+    switch (state) {
     case PDJE_INPUT_STATE::DEAD:
         return true;
-    
-    case PDJE_INPUT_STATE::DEVICE_CONFIG_STATE:{
+
+    case PDJE_INPUT_STATE::DEVICE_CONFIG_STATE: {
         auto empty_devs = DEV_LIST();
         Config(empty_devs);
         data.config_sync->arrive_and_wait();
@@ -71,18 +69,15 @@ PDJE_Input::Kill()
     }
     case PDJE_INPUT_STATE::INPUT_LOOP_READY:
         PDJE_INPUT_DEFAULT_TRY_CATCH(run_command->set_value(false);
-        data.run_sync->arrive_and_wait();
-        )
+                                     data.run_sync->arrive_and_wait();)
         break;
-    case PDJE_INPUT_STATE::INPUT_LOOP_RUNNING:{
+    case PDJE_INPUT_STATE::INPUT_LOOP_RUNNING: {
         if (!data.kill()) {
             return false;
         }
-    }
-        break;
+    } break;
     default:
         return false;
-        
     }
     data.ResetLoop();
     state = PDJE_INPUT_STATE::DEAD;
