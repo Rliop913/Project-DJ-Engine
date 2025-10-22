@@ -1,4 +1,5 @@
 #include "PDJE_Judge_Init.hpp"
+#include "PDJE_Note_OBJ.hpp"
 #include <iostream>
 namespace PDJE_JUDGE {
 
@@ -41,10 +42,10 @@ Judge_Init::SetEventRule(const EVENT_RULE &event_rule)
     ev_rule = event_rule;
 }
 void
-Judge_Init::DefaultFill(NOTE          &obj,
-                        const uint64_t railid,
-                        const uint64_t axis1,
-                        const uint64_t axis2)
+Judge_Init::DefaultFill(NOTE            &obj,
+                        const uint64_t   railid,
+                        const LOCAL_TIME axis1,
+                        const LOCAL_TIME axis2)
 {
     note_objects->Fill<BUFFER_MAIN>(obj, railid);
     if (axis2 != 0 && axis2 > axis1) {
@@ -69,7 +70,7 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
     if (!note_objects.has_value()) {
         note_objects.emplace();
     }
-    auto tempobj        = NOTE{ .type        = noteType,
+    auto       tempobj  = NOTE{ .type        = noteType,
                                 .detail      = noteDetail,
                                 .first       = firstArg,
                                 .second      = secondArg,
@@ -77,8 +78,8 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
                                 .microsecond = 0,
                                 .used        = false,
                                 .isDown      = true };
-    auto micro_Y1       = Convert_Frame_Into_MicroSecond(Y_Axis);
-    auto micro_Y2       = Convert_Frame_Into_MicroSecond(Y_Axis_2);
+    LOCAL_TIME micro_Y1 = Convert_Frame_Into_MicroSecond(Y_Axis);
+    LOCAL_TIME micro_Y2 = Convert_Frame_Into_MicroSecond(Y_Axis_2);
     tempobj.microsecond = micro_Y1;
     INPUT_RULE key;
     for (const auto &k : dev_rules) {

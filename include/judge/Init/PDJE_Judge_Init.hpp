@@ -9,7 +9,6 @@
 #include <optional>
 #include <unordered_map>
 namespace PDJE_JUDGE {
-
 constexpr long double TO_MICRO = 125.0 / 6.0;
 inline uint64_t
 Convert_Frame_Into_MicroSecond(const uint64_t pcm_frame)
@@ -24,7 +23,7 @@ using MISS_CALLBACK =
 using USE_CALLBACK = std::function<void(
     uint64_t railid, bool Pressed, bool IsLate, uint64_t diff)>;
 using MOUSE_AXIS_PARSE_CALLBACK =
-    std::function<void(uint64_t             microSecond,
+    std::function<void(const LOCAL_TIME     microSecond,
                        const P_NOTE_VEC    &found_events,
                        uint64_t             railID,
                        int                  x,
@@ -43,10 +42,10 @@ struct Custom_Events {
 class Judge_Init {
   private:
     void
-    DefaultFill(NOTE          &obj,
-                const uint64_t railid,
-                const uint64_t axis1,
-                const uint64_t axis2);
+    DefaultFill(NOTE            &obj,
+                const uint64_t   railid,
+                const LOCAL_TIME axis1,
+                const LOCAL_TIME axis2);
 
   public:
     Custom_Events                       lambdas;

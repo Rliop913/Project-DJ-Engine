@@ -1,7 +1,7 @@
 #pragma once
 #include "Input_State.hpp"
 #include "PDJE_Input_Device_Data.hpp"
-#include "PDJE_Judge_Init.hpp"
+
 #include <cstdint>
 #include <iostream>
 #include <string>
@@ -12,13 +12,15 @@ namespace PDJE_JUDGE {
 constexpr int BUFFER_MAIN = 0;
 constexpr int BUFFER_SUB  = 1;
 
+using GLOBAL_TIME = uint64_t;
+using LOCAL_TIME  = uint64_t;
 struct NOTE {
     std::string type;
     uint16_t    detail;
     std::string first;
     std::string second;
     std::string third;
-    uint64_t    microsecond = 0;
+    LOCAL_TIME  microsecond = 0;
     bool        used        = false;
     bool        isDown      = true;
 };
@@ -65,7 +67,7 @@ class OBJ {
 
     template <int I>
     void
-    Get(const uint64_t limit, uint64_t railID, P_NOTE_VEC &found)
+    Get(const LOCAL_TIME limit, uint64_t railID, P_NOTE_VEC &found)
     {
         static_assert(I == BUFFER_MAIN || I == BUFFER_SUB,
                       "invalid use of get.");
@@ -97,7 +99,7 @@ class OBJ {
 
     template <int I>
     void
-    Cut(const uint64_t limit, std::unordered_map<uint64_t, NOTE_VEC> &cuts)
+    Cut(const LOCAL_TIME limit, std::unordered_map<uint64_t, NOTE_VEC> &cuts)
     {
         static_assert(I == BUFFER_MAIN || I == BUFFER_SUB,
                       "invalid use of cut.");

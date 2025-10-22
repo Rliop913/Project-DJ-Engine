@@ -3,6 +3,7 @@
 #include "PDJE_Buffer.hpp"
 #include "PDJE_Highres_Clock.hpp"
 #include "PDJE_Judge_Init.hpp"
+#include "PDJE_Note_OBJ.hpp"
 #include "PDJE_Rule.hpp"
 #include "PDJE_SYNC_CORE.hpp"
 #include <cstdint>
@@ -47,14 +48,14 @@ class Judge_Loop {
         P_NOTE_VEC related_list_out;
 
         // time values
-        uint64_t local_microsecond_position;
-        uint64_t global_local_diff;
+        LOCAL_TIME local_microsecond_position;
+        uint64_t   global_local_diff;
 
-        uint64_t log_begin;
-        uint64_t log_end;
+        LOCAL_TIME log_begin;
+        LOCAL_TIME log_end;
 
-        uint64_t use_range;
-        uint64_t cut_range;
+        LOCAL_TIME use_range;
+        LOCAL_TIME cut_range;
 
         audioSyncData synced_data;
 
@@ -80,7 +81,7 @@ class Judge_Loop {
     bool
     FindRailID(const INPUT_RULE &rule, uint64_t &id);
     void
-    Match(const uint64_t    input_time,
+    Match(const LOCAL_TIME  input_time,
           const P_NOTE_VEC &note_list,
           const uint64_t    railid,
           const bool        isPressed);
