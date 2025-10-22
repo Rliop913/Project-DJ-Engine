@@ -7,7 +7,7 @@ namespace PDJE_JUDGE {
 void
 OBJ::Sort()
 {
-    auto compare = [](const NOTE &a, const NOTE &b) { return a.pos < b.pos; };
+    auto compare = [](const NOTE &a, const NOTE &b) { return a.microsecond < b.microsecond; };
 
     for (auto &o : Buffer_Main) {
         std::sort(o.second.vec.begin(), o.second.vec.end(), compare);
