@@ -18,15 +18,18 @@ main()
     auto     devs  = input.GetDevs();
     auto     judge = PDJE_JUDGE::JUDGE();
     DEV_LIST list;
+    
     for (auto &d : devs) {
         if (d.Type == PDJE_Dev_Type::KEYBOARD) {
-            std::cout << "DEVICE ID: " << d.device_specific_id << std::endl;
+            
+            std::cout << "DEVICE id: " << d.device_specific_id << std::endl;
             std::cout << "DEVICE NAME: " << d.Name << std::endl;
+            
             list.push_back(d);
 
             PDJE_JUDGE::INPUT_CONFIG conf;
 
-            conf.Device_ID  = d.device_specific_id;
+            conf.Device_ID  = d.Name;
             conf.DeviceType = d.Type;
             conf.DeviceKey  = PDJE_KEY::A;
             conf.MatchRail  = 1;
@@ -35,6 +38,8 @@ main()
         }
     }
     input.Config(list);
+    auto iline = input.PullOutDataLine();
+    
     OBJ_SETTER_CALLBACK cb = [&](const std::string        noteType,
                                  const uint16_t           noteDetail,
                                  const std::string        firstArg,
@@ -54,7 +59,7 @@ main()
     };
     engine.GetNoteObjects(td.front(), cb);
     judge.inits.SetEventRule(
-        { .miss_range_microsecond = 100000, .use_range_microsecond = 40000 });
+        { .miss_range_microsecond = 100000000, .use_range_microsecond = 90000000 });
     judge.inits.SetInputLine(input.PullOutDataLine());
     PDJE_JUDGE::MISS_CALLBACK missed =
         [](std::unordered_map<uint64_t, PDJE_JUDGE::NOTE_VEC> misses) {

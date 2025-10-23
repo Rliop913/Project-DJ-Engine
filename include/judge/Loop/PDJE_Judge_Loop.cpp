@@ -14,6 +14,7 @@ Judge_Loop::Judge_Loop(Judge_Init &inits)
 bool
 Judge_Loop::FindRailID(const INPUT_RULE &rule, uint64_t &id)
 {
+    std::cout << "dev rule size: " << init_datas->dev_rules.size() << std::endl;
     if (auto device_itr = init_datas->dev_rules.find(rule);
         device_itr != init_datas->dev_rules.end()) {
         id = device_itr->second;
@@ -51,12 +52,14 @@ Judge_Loop::Cut()
     Cached.missed_buffers.clear();
     init_datas->note_objects->Cut<BUFFER_MAIN>(Cached.cut_range,
                                                Cached.missed_buffers);
+                                               
     if (!Cached.missed_buffers.empty()) {
         Event_Datas.miss_queue.Write(Cached.missed_buffers);
     }
     init_datas->note_objects->Cut<BUFFER_SUB>(Cached.cut_range,
                                               Cached.missed_buffers);
     if (!Cached.missed_buffers.empty()) {
+    
         Event_Datas.miss_queue.Write(Cached.missed_buffers);
     }
 }
@@ -74,15 +77,23 @@ Judge_Loop::PreProcess()
         Cached.synced_data.microsecond - Cached.local_microsecond_position;
 
     if (input_log->empty()) {
-        Cached.cut_range = Cached.local_microsecond_position -
+        
+        Cached.cut_range = Cached.local_microsecond_position < init_datas->ev_rule->miss_range_microsecond ? 0 :
+        Cached.local_microsecond_position -
                            init_datas->ev_rule->miss_range_microsecond;
         Cut();
         return false;
     }
-    std::cout << "preproccessed" << std::endl;
+    
     Cached.log_begin =
+        input_log->front().microSecond < Cached.global_local_diff ?
+        0
+        :
         input_log->front().microSecond - Cached.global_local_diff;
     Cached.cut_range =
+        Cached.log_begin < init_datas->ev_rule->miss_range_microsecond ?
+        0
+        :
         Cached.log_begin - init_datas->ev_rule->miss_range_microsecond;
 
     Cut();
