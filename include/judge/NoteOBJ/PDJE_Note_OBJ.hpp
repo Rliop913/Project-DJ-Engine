@@ -80,7 +80,7 @@ class OBJ {
         }
         while (true) { // pull iterator
             if (note.itr != note.vec.end() && note.itr->used) {
-                std::cout << "pulled" << std::endl;
+                
                 ++note.itr;
             } else {
                 break;
@@ -92,7 +92,7 @@ class OBJ {
         while (true) {
             if ((titr != note.vec.end()) && titr->microsecond <= limit &&
                 !titr->used) {
-                    std::cout << "found to use" << std::endl;
+                    
                 found.push_back(std::addressof(*titr));
                 ++titr;
             } else {
@@ -108,10 +108,11 @@ class OBJ {
         static_assert(I == BUFFER_MAIN || I == BUFFER_SUB,
                       "invalid use of cut.");
         DEVID_TO_NOTE *dan = pick_dan<I>();
-        // if(dan->empty()){
-        //     return;
-        // }
+        
         for (auto &rail : *dan) {
+            if(rail.second.vec.empty()){
+                continue;
+            }
             auto titr = rail.second.itr;
 
             while (titr != rail.second.vec.end() &&

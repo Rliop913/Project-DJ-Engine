@@ -14,7 +14,6 @@ Judge_Loop::Judge_Loop(Judge_Init &inits)
 bool
 Judge_Loop::FindRailID(const INPUT_RULE &rule, uint64_t &id)
 {
-    std::cout << "dev rule size: " << init_datas->dev_rules.size() << std::endl;
     if (auto device_itr = init_datas->dev_rules.find(rule);
         device_itr != init_datas->dev_rules.end()) {
         id = device_itr->second;
@@ -36,7 +35,7 @@ Judge_Loop::Match(const LOCAL_TIME  input_time,
 
         Cached.diff = Cached.isLate ? input_time - note_local->microsecond
                                     : note_local->microsecond - input_time;
-        if (Cached.diff < init_datas->ev_rule->use_range_microsecond) {
+        if (Cached.diff <= init_datas->ev_rule->use_range_microsecond) {
             note_local->used = true;
             Event_Datas.use_queue.Write(
                 { Cached.railID, isPressed, Cached.isLate, Cached.diff });
@@ -56,6 +55,7 @@ Judge_Loop::Cut()
     if (!Cached.missed_buffers.empty()) {
         Event_Datas.miss_queue.Write(Cached.missed_buffers);
     }
+    Cached.missed_buffers.clear();
     init_datas->note_objects->Cut<BUFFER_SUB>(Cached.cut_range,
                                               Cached.missed_buffers);
     if (!Cached.missed_buffers.empty()) {

@@ -3,13 +3,13 @@
 #include "PDJE_LOG_SETTER.hpp"
 
 namespace FrameCalc {
-unsigned long
-CountFrame(unsigned long Sbeat,
-           unsigned long SsubBeat,
-           unsigned long Sseparate,
-           unsigned long Ebeat,
-           unsigned long EsubBeat,
-           unsigned long Eseparate,
+uint64_t
+CountFrame(uint64_t Sbeat,
+           uint64_t SsubBeat,
+           uint64_t Sseparate,
+           uint64_t Ebeat,
+           uint64_t EsubBeat,
+           uint64_t Eseparate,
            double        bpm)
 {
     Sseparate   = Sseparate > 0 ? Sseparate : 1;
@@ -17,6 +17,12 @@ CountFrame(unsigned long Sbeat,
     bpm         = bpm > 0 ? bpm : 1;
     auto Sapprx = APPRX(double, Sbeat, SsubBeat, Sseparate);
     auto Eapprx = APPRX(double, Ebeat, EsubBeat, Eseparate);
+    if(Sapprx > Eapprx){
+        critlog("Failed to Count Frame. Start apprx position is bigger than End apprx position. Start apprx: ");
+        critlog(Sapprx);
+        critlog("End apprx: ");
+        critlog(Eapprx);
+    }
     return static_cast<unsigned long>(
         std::round((Eapprx - Sapprx) * (DMINUTE / bpm) * DSAMPLERATE));
 }
@@ -83,8 +89,8 @@ BpmStruct::calcFrame(unsigned long long StartPos)
 bool
 searchLambda(const BpmFragment &first, const BpmFragment &second)
 {
-    double FA = APPRX(double, first.beat, first.subBeat, first.separate);
-    double SA = APPRX(double, second.beat, second.subBeat, second.separate);
+    double FA = APPRX(double, first.beat, first.subBeat, (first.separate == 0 ? 1 : first.separate));
+    double SA = APPRX(double, second.beat, second.subBeat, (second.separate == 0 ? 1 : second.separate));
     return FA < SA;
 }
 

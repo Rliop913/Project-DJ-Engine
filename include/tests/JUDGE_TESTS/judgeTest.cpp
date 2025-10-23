@@ -8,7 +8,7 @@ main()
     auto engine = PDJE("testRoot.db");
     auto td     = engine.SearchTrack("");
 
-    engine.InitPlayer(PLAY_MODE::FULL_PRE_RENDER, td.front(), 48);
+    engine.InitPlayer(PLAY_MODE::FULL_PRE_RENDER, td.front(), 480);
     // engine.player->Activate();
     // getchar();
     // engine.player->Deactivate();
@@ -39,7 +39,7 @@ main()
     }
     input.Config(list);
     auto iline = input.PullOutDataLine();
-    
+    int note_add_count = 0;
     OBJ_SETTER_CALLBACK cb = [&](const std::string        noteType,
                                  const uint16_t           noteDetail,
                                  const std::string        firstArg,
@@ -56,18 +56,23 @@ main()
                                         Y_Axis,
                                         Y_Axis_2,
                                         railID);
+                                        note_add_count++;
     };
     engine.GetNoteObjects(td.front(), cb);
+    std::cout << "notes: " << note_add_count << std::endl;
     judge.inits.SetEventRule(
-        { .miss_range_microsecond = 100000000, .use_range_microsecond = 90000000 });
+        { .miss_range_microsecond = 100000, .use_range_microsecond = 90000 });
     judge.inits.SetInputLine(input.PullOutDataLine());
+    
+    int miss_count = 0;
     PDJE_JUDGE::MISS_CALLBACK missed =
-        [](std::unordered_map<uint64_t, PDJE_JUDGE::NOTE_VEC> misses) {
-            std::cout << "missed!!!" << std::endl;
+        [&miss_count](std::unordered_map<uint64_t, PDJE_JUDGE::NOTE_VEC> misses) {
+            
+            std::cout << "missed!!!" << miss_count++ << std::endl;
         };
     PDJE_JUDGE::USE_CALLBACK used =
         [](uint64_t railid, bool Pressed, bool IsLate, uint64_t diff) {
-            std::cout << "used!!!" << std::endl;
+            std::cout << "used!!!" << diff / 1000 << (IsLate ? " late " : " early ") << std::endl;
         };
     PDJE_JUDGE::MOUSE_AXIS_PARSE_CALLBACK mouse_parse =
         [](uint64_t                      microSecond,
@@ -78,7 +83,10 @@ main()
            PDJE_Mouse_Axis_Type          axis_type) { return; };
     judge.inits.SetCustomEvents({ .missed_event      = missed,
                                   .used_event        = used,
-                                  .custom_axis_parse = mouse_parse });
+                                  .custom_axis_parse = mouse_parse,
+                                  .use_event_sleep_time = std::chrono::milliseconds(0),
+                                .miss_event_sleep_time = std::chrono::milliseconds(0)
+                            });
     judge.inits.SetCoreLine(engine.PullOutDataLine());
     judge.Start();
     input.Run();

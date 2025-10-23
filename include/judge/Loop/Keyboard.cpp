@@ -18,11 +18,10 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::KEYBOARD>(const PDJE_Input_Log &ilog)
     rule.DeviceKey  = ilog.event.keyboard.k;
     
     if (!FindRailID(rule, Cached.railID)) {
-        std::cout << "cutted on second" << std::endl;
+        std::cout << "cutted on second. " << ilog.microSecond - Cached.synced_data.microsecond << std::endl;
         return;
     }
     if (ilog.event.keyboard.pressed) {
-        std::cout << "use range: " << Cached.use_range << std::endl;
         init_datas->note_objects->Get<BUFFER_MAIN>(
             Cached.use_range, Cached.railID, Cached.found_list);
         Match(ilog.microSecond - Cached.global_local_diff,

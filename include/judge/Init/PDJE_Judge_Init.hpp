@@ -9,7 +9,7 @@
 #include <optional>
 #include <unordered_map>
 namespace PDJE_JUDGE {
-constexpr long double TO_MICRO = 125.0 / 6.0;
+constexpr long double TO_MICRO = 1000.0 / 48.0;
 inline uint64_t
 Convert_Frame_Into_MicroSecond(const uint64_t pcm_frame)
 {

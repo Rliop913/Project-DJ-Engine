@@ -26,7 +26,7 @@ endif()
 option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
 option(PDJE_DEVELOP_INPUT "Enable linux develop build" ON)
 option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
-option(PDJE_DYNAMIC "Make Shared Library" ON)
+option(PDJE_DYNAMIC "Make Shared Library" OFF)
 
 # link_libraries(${SQLite3_LIBRARIES})
 

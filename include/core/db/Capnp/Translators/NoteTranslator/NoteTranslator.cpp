@@ -43,25 +43,33 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
             searchfragment.beat        = br[i].getBeat();
             searchfragment.subBeat     = br[i].getSubBeat();
             searchfragment.separate    = br[i].getSeparate();
+            if(searchfragment.separate == 0){
+                searchfragment.separate = 1;
+            }
             auto               affects = noteBpms.getAffected(searchfragment);
             unsigned long long position =
                 affects.frame_to_here +
-                FrameCalc::CountFrame(affects.beat,
-                                      affects.subBeat,
-                                      affects.separate,
-                                      searchfragment.beat,
-                                      searchfragment.subBeat,
-                                      searchfragment.separate,
+                FrameCalc::CountFrame(
+                                    affects.beat,
+                                    affects.subBeat,
+                                    affects.separate,
+                                    searchfragment.beat,
+                                    searchfragment.subBeat,
+                                    searchfragment.separate,
                                       affects.bpm);
 
             unsigned long long pos2;
-            if (br[i].getESeparate() < 0) {
+
+            if (br[i].getEbeat() == 0 && br[i].getEsubBeat() == 0) {
                 pos2 = 0;
             } else {
                 BpmFragment secondpos;
                 secondpos.beat     = br[i].getEbeat();
                 secondpos.subBeat  = br[i].getEsubBeat();
                 secondpos.separate = br[i].getESeparate();
+                if(secondpos.separate == 0){
+                    secondpos.separate = 1;
+                }
                 auto res           = noteBpms.getAffected(secondpos);
                 pos2               = res.frame_to_here +
                        FrameCalc::CountFrame(res.beat,
