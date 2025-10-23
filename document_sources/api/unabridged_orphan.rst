@@ -191,6 +191,26 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir_include_global_Highres_Clock.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_global_Highres_Clock_Linux.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_global_Highres_Clock_Mac.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_global_Highres_Clock_Windows.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_include_input.rst
 
 .. toctree::
@@ -211,6 +231,11 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir_include_input_linux_socket.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_include_input_windows.rst
 
 .. toctree::
@@ -221,12 +246,32 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir_include_judge_Init.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_judge_Loop.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_judge_NoteOBJ.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_include_tests.rst
 
 .. toctree::
    :maxdepth: 5
 
    dir_include_tests_INPUT_TESTS.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_tests_JUDGE_TESTS.rst
 
 Files
 *****
@@ -590,12 +635,17 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_judge_Loop_HID.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_tests_highway_Test.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_Input_State.hpp.rst
+   file_include_global_DataLines_Input_State.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -611,6 +661,16 @@ Files
    :maxdepth: 5
 
    file_include_core_editor_featureWrapper_JSONWrap_jsonWrapper.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_tests_JUDGE_TESTS_judgeTest.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_judge_Loop_Keyboard.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -640,6 +700,16 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_input_linux_socket_linux_socket.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_linux_socket_linux_socket.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_tests_logTest.cpp.rst
 
 .. toctree::
@@ -656,6 +726,11 @@ Files
    :maxdepth: 5
 
    file_include_core_audioRender_ManualMix_ManualMix.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_judge_Loop_MIDI.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -696,6 +771,11 @@ Files
    :maxdepth: 5
 
    file_include_core_db_Capnp_Translators_MixTranslator_MixTranslator.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_judge_Loop_Mouse.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -795,6 +875,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_global_PDJE_ATOMIC_EVENT.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_global_DataLines_PDJE_Buffer.hpp.rst
 
 .. toctree::
@@ -811,6 +896,21 @@ Files
    :maxdepth: 5
 
    file_include_core_editor_featureWrapper_GitWrap_PDJE_GitHandler.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_Highres_Clock_Linux_PDJE_Highres_Clock.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_Highres_Clock_Mac_PDJE_Highres_Clock.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_Highres_Clock_Windows_PDJE_Highres_Clock.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -855,12 +955,57 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_judge_Init_PDJE_Judge_Init.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_judge_Init_PDJE_Judge_Init.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_judge_Loop_PDJE_Judge_Loop.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_judge_Loop_PDJE_Judge_Loop.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_global_PDJE_LOG_SETTER.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
+   file_include_judge_NoteOBJ_PDJE_Note_OBJ.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_judge_NoteOBJ_PDJE_Note_OBJ.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_PDJE_OBJ_SETTER.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_core_interface_PDJE_polyglot_wraps.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_judge_PDJE_Rule.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_PDJE_SYNC_CORE.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -881,16 +1026,6 @@ Files
    :maxdepth: 5
 
    file_include_core_audioRender_ManualMix_ManualFausts_phaserMan.hpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_input_windows_QPC_Timer.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_input_windows_QPC_Timer.hpp.rst
 
 .. toctree::
    :maxdepth: 5

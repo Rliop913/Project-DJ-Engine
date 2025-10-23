@@ -92,8 +92,8 @@ main()
             }
             EDIT_ARG_NOTE notetemp;
             notetemp.railID = 1;
-            for(int i = 0; i< 100 ; ++i){
-                notetemp.beat=i;
+            for (int i = 0; i < 100; ++i) {
+                notetemp.beat = i;
                 engine->editor->AddLine<EDIT_ARG_NOTE>(notetemp);
             }
         }

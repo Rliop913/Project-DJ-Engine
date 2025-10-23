@@ -38,7 +38,7 @@ Program Listing for File MusicControlPanel.cpp
    
    bool
    MusicControlPanel::CueMusic(const UNSANITIZED       &title,
-                                const unsigned long long newPos)
+                               const unsigned long long newPos)
    {
        auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
        if (!safeTitle) {
@@ -132,8 +132,8 @@ Program Listing for File MusicControlPanel.cpp
    
    bool
    MusicControlPanel::ChangeBpm(const UNSANITIZED &title,
-                                 const double       targetBpm,
-                                 const double       originBpm)
+                                const double       targetBpm,
+                                const double       originBpm)
    {
        auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
        if (!safeTitle) {

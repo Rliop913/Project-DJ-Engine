@@ -34,7 +34,7 @@ Program Listing for File MusicControlPanel.hpp
    struct MusicOnDeck {
        bool                                  play = false;
        Decoder                               dec;
-       FXControlPanel                      *fxP;
+       FXControlPanel                       *fxP;
        std::optional<soundtouch::SoundTouch> st;
        MusicOnDeck() : fxP(new FXControlPanel(48000))
        {

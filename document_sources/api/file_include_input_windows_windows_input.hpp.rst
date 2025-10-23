@@ -30,13 +30,13 @@ Includes
 --------
 
 
-- ``Input_State.hpp`` (:ref:`file_include_input_Input_State.hpp`)
+- ``Input_State.hpp`` (:ref:`file_include_global_DataLines_Input_State.hpp`)
 
 - ``PDJE_Buffer.hpp`` (:ref:`file_include_global_DataLines_PDJE_Buffer.hpp`)
 
-- ``PDJE_Input_DataLine.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_DataLine.hpp`)
+- ``PDJE_Highres_Clock.hpp`` (:ref:`file_include_global_Highres_Clock_Linux_PDJE_Highres_Clock.hpp`)
 
-- ``QPC_Timer.hpp`` (:ref:`file_include_input_windows_QPC_Timer.hpp`)
+- ``PDJE_Input_DataLine.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_DataLine.hpp`)
 
 - ``SetupAPI.h``
 
@@ -47,6 +47,8 @@ Includes
 - ``future``
 
 - ``hidsdi.h``
+
+- ``latch``
 
 - ``mmsystem.h``
 

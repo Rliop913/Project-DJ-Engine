@@ -4,21 +4,6 @@
     <compoundname>PDJE_CORE_DATA_LINE</compoundname>
     <includes refid="PDJE__Core__DataLine_8hpp" local="no">PDJE_Core_DataLine.hpp</includes>
     <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="structPDJE__CORE__DATA__LINE_1a6c9877db2cee46d9f72fe28f03ed451d" prot="public" static="no" mutable="no">
-        <type>unsigned long long *</type>
-        <definition>unsigned long long* PDJE_CORE_DATA_LINE::used_frame</definition>
-        <argsstring></argsstring>
-        <name>used_frame</name>
-        <qualifiedname>PDJE_CORE_DATA_LINE::used_frame</qualifiedname>
-        <initializer>= nullptr</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Core_DataLine.hpp" line="11" column="24" bodyfile="include/global/DataLines/PDJE_Core_DataLine.hpp" bodystart="11" bodyend="-1"/>
-      </memberdef>
       <memberdef kind="variable" id="structPDJE__CORE__DATA__LINE_1a6f4a3b68d7529669518aac2323a934ca" prot="public" static="no" mutable="no">
         <type>unsigned long long *</type>
         <definition>unsigned long long* PDJE_CORE_DATA_LINE::nowCursor</definition>
@@ -32,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Core_DataLine.hpp" line="12" column="24" bodyfile="include/global/DataLines/PDJE_Core_DataLine.hpp" bodystart="12" bodyend="-1"/>
+        <location file="include/global/DataLines/PDJE_Core_DataLine.hpp" line="13" column="32" bodyfile="include/global/DataLines/PDJE_Core_DataLine.hpp" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structPDJE__CORE__DATA__LINE_1a16f98f5d8805be6f536a19939c8a6481" prot="public" static="no" mutable="no">
         <type>unsigned long long *</type>
@@ -47,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Core_DataLine.hpp" line="13" column="24" bodyfile="include/global/DataLines/PDJE_Core_DataLine.hpp" bodystart="13" bodyend="-1"/>
+        <location file="include/global/DataLines/PDJE_Core_DataLine.hpp" line="14" column="32" bodyfile="include/global/DataLines/PDJE_Core_DataLine.hpp" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structPDJE__CORE__DATA__LINE_1a1a05b5925c47c070a74434a10a0992ab" prot="public" static="no" mutable="no">
         <type>float *</type>
@@ -62,7 +47,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Core_DataLine.hpp" line="14" column="24" bodyfile="include/global/DataLines/PDJE_Core_DataLine.hpp" bodystart="14" bodyend="-1"/>
+        <location file="include/global/DataLines/PDJE_Core_DataLine.hpp" line="15" column="32" bodyfile="include/global/DataLines/PDJE_Core_DataLine.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPDJE__CORE__DATA__LINE_1a42df6f89471d474f97448e10dc8c6331" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="structaudioSyncData" kindref="compound">audioSyncData</ref> &gt; *</type>
+        <definition>std::atomic&lt;audioSyncData&gt;* PDJE_CORE_DATA_LINE::syncD</definition>
+        <argsstring></argsstring>
+        <name>syncD</name>
+        <qualifiedname>PDJE_CORE_DATA_LINE::syncD</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Core_DataLine.hpp" line="16" column="17" bodyfile="include/global/DataLines/PDJE_Core_DataLine.hpp" bodystart="16" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -70,12 +70,31 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/global/DataLines/PDJE_Core_DataLine.hpp" line="10" column="1" bodyfile="include/global/DataLines/PDJE_Core_DataLine.hpp" bodystart="10" bodyend="18"/>
+    <collaborationgraph>
+      <node id="1">
+        <label>PDJE_CORE_DATA_LINE</label>
+        <link refid="structPDJE__CORE__DATA__LINE"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>syncD</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>audioSyncData</label>
+        <link refid="structaudioSyncData"/>
+      </node>
+      <node id="2">
+        <label>std::atomic&lt; audioSyncData &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/global/DataLines/PDJE_Core_DataLine.hpp" line="12" column="1" bodyfile="include/global/DataLines/PDJE_Core_DataLine.hpp" bodystart="12" bodyend="17"/>
     <listofallmembers>
       <member refid="structPDJE__CORE__DATA__LINE_1a16f98f5d8805be6f536a19939c8a6481" prot="public" virt="non-virtual"><scope>PDJE_CORE_DATA_LINE</scope><name>maxCursor</name></member>
       <member refid="structPDJE__CORE__DATA__LINE_1a6f4a3b68d7529669518aac2323a934ca" prot="public" virt="non-virtual"><scope>PDJE_CORE_DATA_LINE</scope><name>nowCursor</name></member>
       <member refid="structPDJE__CORE__DATA__LINE_1a1a05b5925c47c070a74434a10a0992ab" prot="public" virt="non-virtual"><scope>PDJE_CORE_DATA_LINE</scope><name>preRenderedData</name></member>
-      <member refid="structPDJE__CORE__DATA__LINE_1a6c9877db2cee46d9f72fe28f03ed451d" prot="public" virt="non-virtual"><scope>PDJE_CORE_DATA_LINE</scope><name>used_frame</name></member>
+      <member refid="structPDJE__CORE__DATA__LINE_1a42df6f89471d474f97448e10dc8c6331" prot="public" virt="non-virtual"><scope>PDJE_CORE_DATA_LINE</scope><name>syncD</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

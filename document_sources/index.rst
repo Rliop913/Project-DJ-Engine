@@ -82,7 +82,7 @@ PDJE is organized into independent, dynamically loadable modules:
   It supports general-purpose inputs such as keyboard and mouse, as well as MIDI input.
   
   Available on linux, windows
-- **Note Engine** :
+- **Judge Engine** :
   This engine is designed to handle rhythm game logic or real-time timing judgments.
   It can be used by connecting either the PDJE Input Engine or another input engine wrapped for compatibility.
 

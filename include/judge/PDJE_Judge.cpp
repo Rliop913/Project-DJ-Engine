@@ -25,7 +25,6 @@ JUDGE::Start()
     }
     inits.note_objects->Sort();
 
-    
     loop.emplace([this]() {
         loop_obj.emplace(inits);
         loop_obj->loop_switch = true;

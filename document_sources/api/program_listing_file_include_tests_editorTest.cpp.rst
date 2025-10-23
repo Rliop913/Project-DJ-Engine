@@ -102,6 +102,12 @@ Program Listing for File editorTest.cpp
                    temp.arg.bpm      = "134";
                    engine->editor->AddLine<EDIT_ARG_MUSIC>(temp);
                }
+               EDIT_ARG_NOTE notetemp;
+               notetemp.railID = 1;
+               for (int i = 0; i < 100; ++i) {
+                   notetemp.beat = i;
+                   engine->editor->AddLine<EDIT_ARG_NOTE>(notetemp);
+               }
            }
            if (engine->SearchMusic("testMiku", "Camellia").empty()) {
                std::string linter_msg;
@@ -144,7 +150,7 @@ Program Listing for File editorTest.cpp
            Fxhandle->FX_ON_OFF(FXList::OCSFILTER, true);
            Fxhandle->FX_ON_OFF(FXList::EQ, true);
            auto ocshandle = Fxhandle->GetArgSetter(FXList::OCSFILTER);
-           ocshandle["ocsFilterHighLowSW"](1);
+           ocshandle["OCSFilterHighLowSW"](1);
            ocshandle["rangeFreqHalf"](2500);
            ocshandle["middleFreq"](5000);
    
@@ -167,10 +173,10 @@ Program Listing for File editorTest.cpp
            editor->GetLogWithJSONGraph<EDIT_ARG_NOTE>();
            editor->GetLogWithJSONGraph<EDIT_ARG_MUSIC>("music name");
            auto core_line = engine->PullOutDataLine();
-           core_line.preRenderedData;
-           core_line.maxCursor;
-           core_line.nowCursor;
-           core_line.used_frame;
+           // core_line.preRenderedData;
+           // core_line.maxCursor;
+           // core_line.nowCursor;
+           // core_line.used_frame;
    
        } else {
            std::cout << "init failed " << std::endl;

@@ -17,7 +17,7 @@
     <includedby refid="RTSocket_8cpp" local="yes">include/input/linux/RT/RTSocket.cpp</includedby>
     <includedby refid="RTSocket_8hpp" local="yes">include/input/linux/RT/RTSocket.hpp</includedby>
     <includedby refid="linux__input_8cpp" local="yes">include/input/linux/linux_input.cpp</includedby>
-    <includedby refid="linux__input_8hpp" local="yes">include/input/linux/linux_input.hpp</includedby>
+    <includedby refid="linux__socket_8cpp" local="yes">include/input/linux/socket/linux_socket.cpp</includedby>
     <incdepgraph>
       <node id="1">
         <label>include/input/linux/common/Common_Features.hpp</label>
@@ -75,20 +75,6 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="12">
-        <label>include/input/PDJE_Input.cpp</label>
-        <link refid="PDJE__Input_8cpp"/>
-      </node>
-      <node id="11">
-        <label>include/input/PDJE_Input.hpp</label>
-        <link refid="PDJE__Input_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
       <node id="3">
         <label>include/input/linux/RT/OneTimeSysSetup.cpp</label>
         <link refid="OneTimeSysSetup_8cpp"/>
@@ -152,20 +138,8 @@
         <link refid="linux__input_8cpp"/>
       </node>
       <node id="10">
-        <label>include/input/linux/linux_input.hpp</label>
-        <link refid="linux__input_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>include/input/windows/windows_input.cpp</label>
-        <link refid="windows__input_8cpp"/>
-      </node>
-      <node id="14">
-        <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
-        <link refid="pdjeInputTest_8cpp"/>
+        <label>include/input/linux/socket/linux_socket.cpp</label>
+        <link refid="linux__socket_8cpp"/>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespaceCommon__Features">Common_Features</innernamespace>

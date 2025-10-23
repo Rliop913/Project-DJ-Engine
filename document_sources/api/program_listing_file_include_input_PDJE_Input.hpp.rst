@@ -15,6 +15,7 @@ Program Listing for File PDJE_Input.hpp
    #include "Input_State.hpp"
    #include "PDJE_Input_DataLine.hpp"
    #include "PDJE_Input_Device_Data.hpp"
+   #include <barrier>
    #include <future>
    #include <string>
    #include <vector>
@@ -29,36 +30,37 @@ Program Listing for File PDJE_Input.hpp
    class PDJE_Input {
      private:
        OS_Input data;
+   
+       template <typename P, typename F>
+       void
+       InitOneShot(P &promise, F &future, ONE_SHOT_SYNC &sync);
+   
+       template <typename P, typename F>
+       void
+       ResetOneShot(P &promise, F &future, ONE_SHOT_SYNC &sync);
+       // std::vector<DeviceData> activated_devices;
+       PDJE_INPUT_STATE state = PDJE_INPUT_STATE::DEAD;
+   
+     public:
+       std::string ErrLog;
+       std::vector<DeviceData>
+       GetDevs();
+   
        bool
        Init();
+   
        bool
        Config(std::vector<DeviceData> &devs);
+   
        bool
        Run();
+   
        bool
        Kill();
    
-       template <typename P, typename F>
-       void
-       InitOneShot(P &promise, F &future);
-   
-       template <typename P, typename F>
-       void
-                               ResetOneShot(P &promise, F &future);
-       std::vector<DeviceData> activated_devices;
-       PDJE_INPUT_STATE        state = PDJE_INPUT_STATE::DEAD;
-       
-     public:
-       std::string ErrLog;
-   
-       std::vector<DeviceData>
-       GetDevs();
-       void
-       SetDevs(const std::vector<DeviceData> &devs);
        PDJE_INPUT_STATE
        GetState();
-       PDJE_INPUT_STATE
-       NEXT();
+   
        PDJE_INPUT_DATA_LINE
        PullOutDataLine();
    
@@ -71,17 +73,19 @@ Program Listing for File PDJE_Input.hpp
    
    template <typename P, typename F>
    void
-   PDJE_Input::InitOneShot(P &promise, F &future)
+   PDJE_Input::InitOneShot(P &promise, F &future, ONE_SHOT_SYNC &sync)
    {
        promise.emplace();
        future.emplace();
+       sync.emplace(2);
        future = promise->get_future();
    }
    
    template <typename P, typename F>
    void
-   PDJE_Input::ResetOneShot(P &promise, F &future)
+   PDJE_Input::ResetOneShot(P &promise, F &future, ONE_SHOT_SYNC &sync)
    {
        promise.reset();
        future.reset();
+       sync.reset();
    }

@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="linux__socket_8hpp" kind="file" language="C++">
+    <compoundname>linux_socket.hpp</compoundname>
+    <includes refid="IPC__SHARE__MEM_8hpp" local="yes">IPC_SHARE_MEM.hpp</includes>
+    <includes local="no">string</includes>
+    <includes local="no">sys/socket.h</includes>
+    <includedby refid="linux__input_8hpp" local="yes">include/input/linux/linux_input.hpp</includedby>
+    <includedby refid="linux__socket_8cpp" local="yes">include/input/linux/socket/linux_socket.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>IPC_SHARE_MEM.hpp</label>
+        <link refid="IPC__SHARE__MEM_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/input/linux/socket/linux_socket.hpp</label>
+        <link refid="linux__socket_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>limits</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="5">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="7">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="6">
+        <label>unistd.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>include/input/PDJE_Input.cpp</label>
+        <link refid="PDJE__Input_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/input/PDJE_Input.hpp</label>
+        <link refid="PDJE__Input_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/input/linux/linux_input.cpp</label>
+        <link refid="linux__input_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/input/linux/linux_input.hpp</label>
+        <link refid="linux__input_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/input/linux/socket/linux_socket.cpp</label>
+        <link refid="linux__socket_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/input/linux/socket/linux_socket.hpp</label>
+        <link refid="linux__socket_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/input/windows/windows_input.cpp</label>
+        <link refid="windows__input_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
+        <link refid="pdjeInputTest_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judgeTest_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classPDJE__LINUX_1_1PDJE__Socket" prot="public">PDJE_LINUX::PDJE_Socket</innerclass>
+    <innernamespace refid="namespacePDJE__LINUX">PDJE_LINUX</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="IPC__SHARE__MEM_8hpp" kindref="compound">IPC_SHARE_MEM.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__LINUX" kindref="compound">PDJE_LINUX</ref><sp/>{</highlight></codeline>
+<codeline lineno="6" refid="classPDJE__LINUX_1_1PDJE__Socket" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a9fb3eae11661dbe4843b1d794c2b3160" kindref="member">PDJE_Socket</ref><sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9" refid="classPDJE__LINUX_1_1PDJE__Socket_1ae0fdbeaee5bf81b4ce128694feae8e7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1ae0fdbeaee5bf81b4ce128694feae8e7b" kindref="member">socket_fd</ref><sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="10" refid="classPDJE__LINUX_1_1PDJE__Socket_1a9e981cb51a4255741f1cbb24312814cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a9e981cb51a4255741f1cbb24312814cc" kindref="member">client_fd</ref><sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="11" refid="classPDJE__LINUX_1_1PDJE__Socket_1aa05ec895be8a33531927a90b64956fe6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pid_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1aa05ec895be8a33531927a90b64956fe6" kindref="member">rt_pid</ref><sp/><sp/><sp/><sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="12" refid="classPDJE__LINUX_1_1PDJE__Socket_1a3a9951070b83ee6b45f6c6ee8e1b7ec8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a3a9951070b83ee6b45f6c6ee8e1b7ec8" kindref="member">socket_path</ref><sp/>=</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;/tmp/pdje_input_module_libevdev_socket_path.sock&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14" refid="classPDJE__LINUX_1_1PDJE__Socket_1a45ce5b9dace1d633b314451ae0c6ff42" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a45ce5b9dace1d633b314451ae0c6ff42" kindref="member">importants</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a35e535f7557b6733c8b1e82521702043" kindref="member">OpenClientWithSudo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;exec_path,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;arg);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1ac71db7adb5dea58bc45b09c397100c7e" kindref="member">CloseClient</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>MEM_PROT_FLAG&gt;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1ab4321b7cd31541dd4a567a8b459d3cf8" kindref="member">Send_IPCMEM_ToRT</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classIPCSharedMem" kindref="compound">IPCSharedMem&lt;T, MEM_PROT_FLAG&gt;</ref><sp/>&amp;shared_IPC_mem);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a55c910a885875c7adb5732a8c7bd69f4" kindref="member">SocketOpen</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;exec_path);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a31edc7aeec4b4a36aec7260a38b5a8e8" kindref="member">SocketClose</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1ad7b3a4045e530ab44a5927cc468e9cf9" kindref="member">QueryClient</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;query,<sp/>std::string<sp/>&amp;result);</highlight></codeline>
+<codeline lineno="33" refid="classPDJE__LINUX_1_1PDJE__Socket_1a9fb3eae11661dbe4843b1d794c2b3160" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a9fb3eae11661dbe4843b1d794c2b3160" kindref="member">PDJE_Socket</ref>()<sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34" refid="classPDJE__LINUX_1_1PDJE__Socket_1ae39193f31e05b4716f9629c985b657a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1ae39193f31e05b4716f9629c985b657a0" kindref="member">~PDJE_Socket</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>MEM_PROT_FLAG&gt;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classPDJE__LINUX_1_1PDJE__Socket_1ab4321b7cd31541dd4a567a8b459d3cf8" refkind="member"><highlight class="normal"><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1ab4321b7cd31541dd4a567a8b459d3cf8" kindref="member">PDJE_Socket::Send_IPCMEM_ToRT</ref>(</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classIPCSharedMem" kindref="compound">IPCSharedMem&lt;T, MEM_PROT_FLAG&gt;</ref><sp/>&amp;shared_IPC_mem)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">msghdr<sp/>msg<sp/>=<sp/>{<sp/>0<sp/>};</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>data<sp/>trans</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">iovec<sp/>iov<sp/>=<sp/>{<sp/>.iov_base<sp/>=</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)</highlight><highlight class="stringliteral">&quot;F&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="comment">//<sp/>실제<sp/>payload<sp/>데이터<sp/>(필수는<sp/>아님)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.iov_len<sp/>=<sp/>1<sp/>};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.msg_iov<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>&amp;iov;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.msg_iovlen<sp/><sp/><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>end<sp/>dummy<sp/>data<sp/>trans</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>cmsgbuf[CMSG_SPACE(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))];<sp/></highlight><highlight class="comment">//<sp/>ancillary<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.msg_control<sp/><sp/><sp/><sp/>=<sp/>cmsgbuf;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.msg_controllen<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(cmsgbuf);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">cmsghdr<sp/>*cmsg<sp/>=<sp/>CMSG_FIRSTHDR(&amp;msg);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>cmsg-&gt;cmsg_level<sp/><sp/><sp/><sp/><sp/>=<sp/>SOL_SOCKET;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>cmsg-&gt;cmsg_type<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>SCM_RIGHTS;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>cmsg-&gt;cmsg_len<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>CMSG_LEN(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(CMSG_DATA(cmsg),<sp/>&amp;shared_IPC_mem.<ref refid="classIPCSharedMem_1a4ce0fae47486d1ad09821f8ed652e740" kindref="member">FD</ref>,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sendmsg(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a45ce5b9dace1d633b314451ae0c6ff42" kindref="member">importants</ref>.client_fd,<sp/>&amp;msg,<sp/>0);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_LINUX</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/input/linux/socket/linux_socket.hpp"/>
+  </compounddef>
+</doxygen>

@@ -34,6 +34,14 @@ Includes
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
 
+- ``PDJE_Highres_Clock.hpp`` (:ref:`file_include_global_Highres_Clock_Linux_PDJE_Highres_Clock.hpp`)
+
+- ``PDJE_SYNC_CORE.hpp`` (:ref:`file_include_global_PDJE_SYNC_CORE.hpp`)
+
+- ``atomic``
+
+- ``cstdint``
+
 - ``miniaudio.h``
 
 - ``optional``
@@ -45,6 +53,8 @@ Included By
 
 
 - :ref:`file_include_core_MainObjects_audioPlayer_audioCallbacks.cpp`
+
+- :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.cpp`
 
 - :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.hpp`
 

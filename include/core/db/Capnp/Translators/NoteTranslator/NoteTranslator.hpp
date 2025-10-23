@@ -20,6 +20,7 @@ class PDJE_API NoteTranslator {
   private:
     /// the note object's bpm datas
     BpmStruct noteBpms;
+
   public:
     /**
      * @brief Reads and parse capnp object.

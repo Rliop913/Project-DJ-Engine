@@ -3,7 +3,7 @@
 Struct PDJE_Mouse_Event
 =======================
 
-- Defined in :ref:`file_include_input_Input_State.hpp`
+- Defined in :ref:`file_include_global_DataLines_Input_State.hpp`
 
 
 Struct Documentation

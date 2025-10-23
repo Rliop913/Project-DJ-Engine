@@ -14,6 +14,7 @@ Program Listing for File RTSocket.hpp
    #include "Common_Features.hpp"
    #include "Input_State.hpp"
    #include "OneTimeSysSetup.hpp"
+   #include "PDJE_Input_Device_Data.hpp"
    #include "RTEvent.hpp"
    #include "nlohmann/json_fwd.hpp"
    #include <cstddef>

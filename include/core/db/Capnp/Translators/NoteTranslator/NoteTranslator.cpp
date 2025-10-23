@@ -12,8 +12,7 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
             "return false because lambda is empty. from NoteTranslator Read");
         return false;
     }
-    auto      br = binary.Rp->getDatas();
-    
+    auto br = binary.Rp->getDatas();
 
     noteBpms.fragments = mainBpm.fragments;
     for (size_t i = 0; i < br.size(); ++i) {

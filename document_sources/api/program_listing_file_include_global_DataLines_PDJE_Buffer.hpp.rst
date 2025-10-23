@@ -12,29 +12,27 @@ Program Listing for File PDJE_Buffer.hpp
 
    #pragma once
    
+   #include <atomic>
    #include <memory_resource>
    #include <optional>
-   #include <atomic>
    
-   #define RESET_PMR_VECTOR(ARENA, VEC) std::pmr::vector<T>{&ARENA}.swap(VEC)  
+   #define RESET_PMR_VECTOR(ARENA, VEC) std::pmr::vector<T>{ &ARENA }.swap(VEC)
    
-   template<typename T>
-   class PDJE_Buffer_Arena{
-   private:
+   template <typename T> class PDJE_Buffer_Arena {
+     private:
        std::pmr::unsynchronized_pool_resource arena;
-       std::pmr::vector<T> buf1;
-       std::pmr::vector<T> buf2;
-       std::atomic_flag lock = ATOMIC_FLAG_INIT;
-       bool buf_first = true;
-   public:
-       
-       void Write(const T& data);
-       std::pmr::vector<T>* Get();
+       std::pmr::vector<T>                    buf1;
+       std::pmr::vector<T>                    buf2;
+       std::atomic_flag                       lock      = ATOMIC_FLAG_INIT;
+       bool                                   buf_first = true;
    
-       PDJE_Buffer_Arena():
-       arena{},
-       buf1(&arena),
-       buf2(&arena)
+     public:
+       void
+       Write(const T &data);
+       std::pmr::vector<T> *
+       Get();
+   
+       PDJE_Buffer_Arena() : arena{}, buf1(&arena), buf2(&arena)
        {
            buf1.reserve(2048);
            RESET_PMR_VECTOR(arena, buf1);
@@ -42,28 +40,29 @@ Program Listing for File PDJE_Buffer.hpp
        ~PDJE_Buffer_Arena() = default;
    };
    
-   template<typename T>
+   template <typename T>
    void
-   PDJE_Buffer_Arena<T>::Write(const T& data)
+   PDJE_Buffer_Arena<T>::Write(const T &data)
    {
-       while(lock.test_and_set(std::memory_order_acquire)){}
-       //locked
-       if(buf_first){
-           buf1.push_back(data);
+       while (lock.test_and_set(std::memory_order_acquire)) {
        }
-       else{
+       // locked
+       if (buf_first) {
+           buf1.push_back(data);
+       } else {
            buf2.push_back(data);
        }
-       
+   
        lock.clear(std::memory_order_release);
-       //unlock
+       // unlock
    }
    
-   template<typename T>
-   std::pmr::vector<T>*
+   template <typename T>
+   std::pmr::vector<T> *
    PDJE_Buffer_Arena<T>::Get()
    {
-       while(lock.test_and_set(std::memory_order_acquire)){}
+       while (lock.test_and_set(std::memory_order_acquire)) {
+       }
        buf_first ? buf2.clear() : buf1.clear();
        buf_first = !buf_first;
        lock.clear(std::memory_order_release);

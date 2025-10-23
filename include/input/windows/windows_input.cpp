@@ -211,7 +211,7 @@ OS_Input::work()
 
     auto device_datas = config_data->get();
     config_sync->arrive_and_wait();
-    if(device_datas.empty()){
+    if (device_datas.empty()) {
         return;
     }
 

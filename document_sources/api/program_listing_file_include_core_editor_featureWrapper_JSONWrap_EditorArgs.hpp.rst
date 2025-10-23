@@ -14,6 +14,7 @@ Program Listing for File EditorArgs.hpp
    #include "MixTranslator.hpp"
    #include "PDJE_EXPORT_SETTER.hpp"
    #include "fileNameSanitizer.hpp"
+   #include <cstdint>
    
    struct PDJE_API MixArgs {
        TypeEnum        type      = TypeEnum::EQ;
@@ -32,7 +33,7 @@ Program Listing for File EditorArgs.hpp
    
    struct PDJE_API NoteArgs {
        SANITIZED_ORNOT Note_Type   = "";
-       SANITIZED_ORNOT Note_Detail = "";
+       uint16_t        Note_Detail = 0;
        SANITIZED_ORNOT first       = "";
        SANITIZED_ORNOT second      = "";
        SANITIZED_ORNOT third       = "";
@@ -42,6 +43,7 @@ Program Listing for File EditorArgs.hpp
        long long       Ebeat       = -1;
        long long       EsubBeat    = -1;
        long long       Eseparate   = -1;
+       uint64_t        railID      = 0;
    };
    
    struct PDJE_API MusicArgs {

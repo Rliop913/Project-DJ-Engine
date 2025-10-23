@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/interface/PDJE_interface.hpp" line="102" column="5" bodyfile="include/core/interface/PDJE_interface.cpp" bodystart="140" bodyend="148"/>
+        <location file="include/core/interface/PDJE_interface.hpp" line="102" column="5" bodyfile="include/core/interface/PDJE_interface.cpp" bodystart="142" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE_1ae7f3ced4d2b444627df6e3efd9882e17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -247,7 +247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/interface/PDJE_interface.hpp" line="114" column="5" bodyfile="include/core/interface/PDJE_interface.cpp" bodystart="131" bodyend="137"/>
+        <location file="include/core/interface/PDJE_interface.hpp" line="114" column="5" bodyfile="include/core/interface/PDJE_interface.cpp" bodystart="133" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE_1a14f12cabddceb731d57b608530053587" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -260,7 +260,7 @@
           <declname>td</declname>
         </param>
         <param>
-          <type><ref refid="NoteTranslator_8hpp_1ab8f339ae52f7b01e26f4de03178814e3" kindref="member">OBJ_SETTER_CALLBACK</ref> &amp;</type>
+          <type><ref refid="PDJE__OBJ__SETTER_8hpp_1a16cf29d9f8af2ffe9f8fc5cab62f723c" kindref="member">OBJ_SETTER_CALLBACK</ref> &amp;</type>
           <declname>ObjectSetCallback</declname>
         </param>
         <briefdescription>
@@ -292,7 +292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/interface/PDJE_interface.hpp" line="129" column="5" bodyfile="include/core/interface/PDJE_interface.cpp" bodystart="97" bodyend="128"/>
+        <location file="include/core/interface/PDJE_interface.hpp" line="129" column="5" bodyfile="include/core/interface/PDJE_interface.cpp" bodystart="97" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE_1a2639f4ed0f7ac3770f5eb3b6c86ae800" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0" kindref="member">MUS_VEC</ref></type>
@@ -458,15 +458,28 @@ digraph PDJE_Interface_Tree{
         <childnode refid="4" relation="usage">
           <edgelabel>player</edgelabel>
         </childnode>
-        <childnode refid="11" relation="usage">
+        <childnode refid="14" relation="usage">
           <edgelabel>editor</edgelabel>
         </childnode>
+      </node>
+      <node id="11">
+        <label>PDJE_HIGHRES_CLOCK::CLOCK</label>
+        <link refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK"/>
       </node>
       <node id="8">
         <label>audioEngineDataStruct</label>
         <link refid="structaudioEngineDataStruct"/>
         <childnode refid="7" relation="usage">
           <edgelabel>pcmDataPoint</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>syncData</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>cacheSync</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>highres_clock</edgelabel>
         </childnode>
       </node>
       <node id="5">
@@ -482,7 +495,7 @@ digraph PDJE_Interface_Tree{
         <childnode refid="8" relation="usage">
           <edgelabel>engineDatas</edgelabel>
         </childnode>
-        <childnode refid="9" relation="usage">
+        <childnode refid="12" relation="usage">
           <edgelabel>STATUS</edgelabel>
         </childnode>
       </node>
@@ -490,7 +503,11 @@ digraph PDJE_Interface_Tree{
         <label>audioRender</label>
         <link refid="classaudioRender"/>
       </node>
-      <node id="12">
+      <node id="10">
+        <label>audioSyncData</label>
+        <link refid="structaudioSyncData"/>
+      </node>
+      <node id="15">
         <label>editorObject</label>
         <link refid="classeditorObject"/>
       </node>
@@ -498,7 +515,13 @@ digraph PDJE_Interface_Tree{
         <label>litedb</label>
         <link refid="classlitedb"/>
       </node>
-      <node id="10">
+      <node id="9">
+        <label>std::atomic&lt; audioSyncData &gt;</label>
+        <childnode refid="10" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="13">
         <label>std::basic_string&lt; Char &gt;</label>
       </node>
       <node id="4">
@@ -507,9 +530,9 @@ digraph PDJE_Interface_Tree{
           <edgelabel>ptr</edgelabel>
         </childnode>
       </node>
-      <node id="11">
+      <node id="14">
         <label>std::shared_ptr&lt; editorObject &gt;</label>
-        <childnode refid="12" relation="usage">
+        <childnode refid="15" relation="usage">
           <edgelabel>ptr</edgelabel>
         </childnode>
       </node>
@@ -519,9 +542,9 @@ digraph PDJE_Interface_Tree{
           <edgelabel>ptr</edgelabel>
         </childnode>
       </node>
-      <node id="9">
+      <node id="12">
         <label>std::string</label>
-        <childnode refid="10" relation="public-inheritance">
+        <childnode refid="13" relation="public-inheritance">
         </childnode>
       </node>
       <node id="7">

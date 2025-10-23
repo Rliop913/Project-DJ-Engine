@@ -109,11 +109,10 @@ PDJE::GetNoteObjects(trackdata &td, OBJ_SETTER_CALLBACK &ObjectSetCallback)
             "failed to read mixBinary from trackdata from PDJE GetNoteObjects");
         return false;
     }
-    
 
     auto noteTrans = new NoteTranslator();
     auto mixTrans  = new MixTranslator();
-    
+
     mixTrans->Read(mixreader);
 
     if (mixTrans->bpms.has_value()) {

@@ -95,6 +95,8 @@ Included By
 
 - :ref:`file_include_global_DataLines_fileNameSanitizer.hpp`
 
+- :ref:`file_include_global_PDJE_SYNC_CORE.hpp`
+
 
 
 

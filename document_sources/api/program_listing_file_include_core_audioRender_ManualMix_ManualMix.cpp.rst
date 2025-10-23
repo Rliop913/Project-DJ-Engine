@@ -188,9 +188,9 @@ Program Listing for File ManualMix.cpp
    bool
    FXControlPanel::checkSomethingOn()
    {
-       return compressorPanel.first || distortionPanel.first ||
-              echoPanel.first || eqPanel.first || filterPanel.first ||
-              flangerPanel.first || ocsFilterPanel.first || pannerPanel.first ||
-              phaserPanel.first || robotPanel.first || rollPanel.first ||
-              trancePanel.first || volPanel.first;
+       return compressorPanel.first || distortionPanel.first || echoPanel.first ||
+              eqPanel.first || filterPanel.first || flangerPanel.first ||
+              ocsFilterPanel.first || pannerPanel.first || phaserPanel.first ||
+              robotPanel.first || rollPanel.first || trancePanel.first ||
+              volPanel.first;
    }

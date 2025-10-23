@@ -3,8 +3,8 @@
   <compounddef id="classNoteTranslator" kind="class" language="C++" prot="public">
     <compoundname>NoteTranslator</compoundname>
     <includes refid="NoteTranslator_8hpp" local="no">NoteTranslator.hpp</includes>
-    <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="classNoteTranslator_1ace395ceda2f9e280a390cd2535d07dc1" prot="public" static="no" mutable="no">
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classNoteTranslator_1ace395ceda2f9e280a390cd2535d07dc1" prot="private" static="no" mutable="no">
         <type><ref refid="structBpmStruct" kindref="compound">BpmStruct</ref></type>
         <definition>BpmStruct NoteTranslator::noteBpms</definition>
         <argsstring></argsstring>
@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="65" column="15" bodyfile="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" bodystart="65" bodyend="-1"/>
+        <location file="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="22" column="15" bodyfile="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" bodystart="22" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -36,7 +36,7 @@
           <declname>mainBpm</declname>
         </param>
         <param>
-          <type><ref refid="NoteTranslator_8hpp_1ab8f339ae52f7b01e26f4de03178814e3" kindref="member">OBJ_SETTER_CALLBACK</ref> &amp;</type>
+          <type><ref refid="PDJE__OBJ__SETTER_8hpp_1a16cf29d9f8af2ffe9f8fc5cab62f723c" kindref="member">OBJ_SETTER_CALLBACK</ref> &amp;</type>
           <declname>lambdaCallback</declname>
         </param>
         <briefdescription>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="78" column="5" bodyfile="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp" bodystart="6" bodyend="86"/>
+        <location file="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="37" column="5" bodyfile="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp" bodystart="6" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classNoteTranslator_1a9110295c3ec54ebd052c5bda80632c81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -90,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="82" column="5"/>
+        <location file="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="41" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classNoteTranslator_1a691ed50a8d68596fb6bb0cf9ce9bf442" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -104,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="83" column="5"/>
+        <location file="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="42" column="5"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -138,9 +138,9 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="62" column="1" bodyfile="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" bodystart="62" bodyend="84"/>
+    <location file="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="19" column="1" bodyfile="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" bodystart="19" bodyend="43"/>
     <listofallmembers>
-      <member refid="classNoteTranslator_1ace395ceda2f9e280a390cd2535d07dc1" prot="public" virt="non-virtual"><scope>NoteTranslator</scope><name>noteBpms</name></member>
+      <member refid="classNoteTranslator_1ace395ceda2f9e280a390cd2535d07dc1" prot="private" virt="non-virtual"><scope>NoteTranslator</scope><name>noteBpms</name></member>
       <member refid="classNoteTranslator_1a9110295c3ec54ebd052c5bda80632c81" prot="public" virt="non-virtual"><scope>NoteTranslator</scope><name>NoteTranslator</name></member>
       <member refid="classNoteTranslator_1a660b66512165d3cc53fef9f5a09476ed" prot="public" virt="non-virtual"><scope>NoteTranslator</scope><name>Read</name></member>
       <member refid="classNoteTranslator_1a691ed50a8d68596fb6bb0cf9ce9bf442" prot="public" virt="non-virtual"><scope>NoteTranslator</scope><name>~NoteTranslator</name></member>

@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="PDJE__OBJ__SETTER_8hpp" kind="file" language="C++">
+    <compoundname>PDJE_OBJ_SETTER.hpp</compoundname>
+    <includes local="no">cstdint</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">string</includes>
+    <includedby refid="NoteTranslator_8hpp" local="yes">include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/global/PDJE_OBJ_SETTER.hpp</label>
+        <link refid="PDJE__OBJ__SETTER_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+      <node id="3">
+        <label>functional</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp</label>
+        <link refid="NoteTranslator_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp</label>
+        <link refid="NoteTranslator_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/core/interface/PDJE_interface.cpp</label>
+        <link refid="PDJE__interface_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/core/interface/PDJE_interface.hpp</label>
+        <link refid="PDJE__interface_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
+        <link refid="PDJE__polyglot__wraps_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/global/PDJE_OBJ_SETTER.hpp</label>
+        <link refid="PDJE__OBJ__SETTER_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judgeTest_8cpp"/>
+      </node>
+      <node id="8">
+        <label>include/tests/dbTest.cpp</label>
+        <link refid="dbTest_8cpp"/>
+      </node>
+      <node id="9">
+        <label>include/tests/editorTest.cpp</label>
+        <link refid="editorTest_8cpp"/>
+      </node>
+      <node id="10">
+        <label>include/tests/interfaceTest.cpp</label>
+        <link refid="interfaceTest_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="PDJE__OBJ__SETTER_8hpp_1a16cf29d9f8af2ffe9f8fc5cab62f723c" prot="public" static="no">
+        <type>std::function&lt; void( const std::string, const uint16_t, const std::string, const std::string, const std::string, const unsigned long long, const unsigned long long, const uint64_t)&gt;</type>
+        <definition>using OBJ_SETTER_CALLBACK =  std::function&lt;void(
+    
+    const std::string,
+    
+    const uint16_t,
+    
+    const std::string,
+    
+    const std::string,
+    
+    const std::string,
+    
+    const unsigned long long,
+    
+    const unsigned long long,
+    
+    const uint64_t)&gt;</definition>
+        <argsstring></argsstring>
+        <name>OBJ_SETTER_CALLBACK</name>
+        <briefdescription>
+<para>note object setter callback </para>
+        </briefdescription>
+        <detaileddescription>
+<sect1 id="PDJE__OBJ__SETTER_8hpp_1autotoc_md1">
+<title><blockquote><para><blockquote><para>&gt;REMEMBER&lt;&lt;&lt;</para>
+</blockquote></para>
+</blockquote></title><para>The function passes only the arguments for creating an object. Created objects must be stored in global variables or variables captured by </para>
+</sect1>
+<sect1 id="PDJE__OBJ__SETTER_8hpp_1autotoc_md2">
+<title>reference when creating a lambda function.</title><para>Args describe  </para>
+<para>1 noteType, the note type. e.g) hold, tap, slide</para>
+<para>2 noteDetail, the detail</para>
+<para>3 firstArg</para>
+<para>4 secondArg</para>
+<para>5 thirdArg</para>
+<para>1~5 these are meta datas for note.</para>
+<para>6 Y axis position, the first logical position of note 7 Y axis position 2, the second logical position of note, use for long notes or else </para>
+</sect1>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/PDJE_OBJ_SETTER.hpp" line="33" column="1" bodyfile="include/global/PDJE_OBJ_SETTER.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="PDJE__OBJ__SETTER_8hpp_1a16cf29d9f8af2ffe9f8fc5cab62f723c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="PDJE__OBJ__SETTER_8hpp_1a16cf29d9f8af2ffe9f8fc5cab62f723c" kindref="member">OBJ_SETTER_CALLBACK</ref><sp/>=<sp/>std::function&lt;void(</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t)&gt;;</highlight></codeline>
+    </programlisting>
+    <location file="include/global/PDJE_OBJ_SETTER.hpp"/>
+  </compounddef>
+</doxygen>

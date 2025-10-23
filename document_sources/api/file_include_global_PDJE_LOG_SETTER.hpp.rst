@@ -55,6 +55,8 @@ Included By
 
 - :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.cpp`
 
+- :ref:`file_include_core_MainObjects_editorObject_addline.cpp`
+
 - :ref:`file_include_core_MainObjects_editorObject_editorObject.cpp`
 
 - :ref:`file_include_core_MainObjects_editorObject_editorObject.hpp`

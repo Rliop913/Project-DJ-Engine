@@ -12,6 +12,7 @@ Program Listing for File audioCallbacks.cpp
 
    #include "audioCallbacks.hpp"
    #include "FrameCalc.hpp"
+   #include <atomic>
    #include <cstring>
    
    std::optional<float *>
@@ -28,7 +29,10 @@ Program Listing for File audioCallbacks.cpp
    audioEngineDataStruct::CountUp(const unsigned long frameCount)
    {
        nowCursor += frameCount;
-       consumedFrames += frameCount;
+       cacheSync = syncData.load(std::memory_order_acquire);
+       cacheSync.consumed_frames += frameCount;
+       cacheSync.microsecond = highres_clock.Get_MicroSecond();
+       syncData.store(cacheSync, std::memory_order_release);
    }
    
    void
@@ -84,7 +88,7 @@ Program Listing for File audioCallbacks.cpp
            reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
        rendered->GetAfterManFX(reinterpret_cast<float *>(pOutput), frameCount);
        rendered->MusCtrPanel->GetPCMFrames(reinterpret_cast<float *>(pOutput),
-                                            frameCount);
+                                           frameCount);
        rendered->CountUp(frameCount);
    }
    
@@ -96,5 +100,5 @@ Program Listing for File audioCallbacks.cpp
    {
        auto Data = reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
        Data->MusCtrPanel->GetPCMFrames(reinterpret_cast<float *>(pOutput),
-                                        frameCount);
+                                       frameCount);
    }

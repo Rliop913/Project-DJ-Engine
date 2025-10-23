@@ -2,11 +2,12 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="PDJE__Buffer_8hpp" kind="file" language="C++">
     <compoundname>PDJE_Buffer.hpp</compoundname>
+    <includes local="no">atomic</includes>
     <includes local="no">memory_resource</includes>
     <includes local="no">optional</includes>
-    <includes local="no">atomic</includes>
     <includedby refid="PDJE__Input__DataLine_8hpp" local="yes">include/global/DataLines/PDJE_Input_DataLine.hpp</includedby>
     <includedby refid="windows__input_8hpp" local="yes">include/input/windows/windows_input.hpp</includedby>
+    <includedby refid="PDJE__Judge__Loop_8hpp" local="yes">include/judge/Loop/PDJE_Judge_Loop.hpp</includedby>
     <incdepgraph>
       <node id="1">
         <label>include/global/DataLines/PDJE_Buffer.hpp</label>
@@ -18,13 +19,13 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="4">
+      <node id="2">
         <label>atomic</label>
       </node>
-      <node id="2">
+      <node id="3">
         <label>memory_resource</label>
       </node>
-      <node id="3">
+      <node id="4">
         <label>optional</label>
       </node>
     </incdepgraph>
@@ -34,7 +35,9 @@
         <link refid="PDJE__Buffer_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -42,7 +45,11 @@
         <link refid="PDJE__Input__DataLine_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -58,20 +65,100 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/input/linux/linux_input.cpp</label>
+        <link refid="linux__input_8cpp"/>
+      </node>
+      <node id="8">
+        <label>include/input/linux/linux_input.hpp</label>
+        <link refid="linux__input_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
       <node id="5">
         <label>include/input/windows/windows_input.cpp</label>
         <link refid="windows__input_8cpp"/>
       </node>
-      <node id="7">
+      <node id="10">
         <label>include/input/windows/windows_input.hpp</label>
         <link refid="windows__input_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
+      <node id="12">
+        <label>include/judge/Init/PDJE_Judge_Init.cpp</label>
+        <link refid="PDJE__Judge__Init_8cpp"/>
+      </node>
+      <node id="11">
+        <label>include/judge/Init/PDJE_Judge_Init.hpp</label>
+        <link refid="PDJE__Judge__Init_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>include/judge/Loop/HID.cpp</label>
+        <link refid="HID_8cpp"/>
+      </node>
+      <node id="16">
+        <label>include/judge/Loop/Keyboard.cpp</label>
+        <link refid="Keyboard_8cpp"/>
+      </node>
+      <node id="17">
+        <label>include/judge/Loop/MIDI.cpp</label>
+        <link refid="MIDI_8cpp"/>
+      </node>
+      <node id="18">
+        <label>include/judge/Loop/Mouse.cpp</label>
+        <link refid="Mouse_8cpp"/>
+      </node>
+      <node id="13">
+        <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
+        <link refid="PDJE__Judge__Loop_8cpp"/>
+      </node>
+      <node id="14">
+        <label>include/judge/Loop/PDJE_Judge_Loop.hpp</label>
+        <link refid="PDJE__Judge__Loop_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>include/judge/PDJE_Judge.cpp</label>
+        <link refid="PDJE__Judge_8cpp"/>
+      </node>
+      <node id="19">
+        <label>include/judge/PDJE_Judge.hpp</label>
+        <link refid="PDJE__Judge_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
       <node id="6">
         <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
         <link refid="pdjeInputTest_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judgeTest_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classPDJE__Buffer__Arena" prot="public">PDJE_Buffer_Arena</innerclass>
@@ -80,7 +167,7 @@
         <name>RESET_PMR_VECTOR</name>
         <param><defname>ARENA</defname></param>
         <param><defname>VEC</defname></param>
-        <initializer>std::pmr::vector&lt;<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref>&gt;{&amp;ARENA}.swap(VEC)</initializer>
+        <initializer>std::pmr::vector&lt;<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref>&gt;{ &amp;ARENA }.swap(VEC)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -97,63 +184,62 @@
     <programlisting>
 <codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory_resource&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory_resource&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
-<codeline lineno="7" refid="PDJE__Buffer_8hpp_1a01cb5e075b875399bbcbd1ac4a91349b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RESET_PMR_VECTOR(ARENA,<sp/>VEC)<sp/>std::pmr::vector&lt;T&gt;{&amp;ARENA}.swap(VEC)<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="PDJE__Buffer_8hpp_1a01cb5e075b875399bbcbd1ac4a91349b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>RESET_PMR_VECTOR(ARENA,<sp/>VEC)<sp/>std::pmr::vector&lt;T&gt;{<sp/>&amp;ARENA<sp/>}.swap(VEC)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="10" refid="classPDJE__Buffer__Arena" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__Buffer__Arena_1a8e87e9f89928cbcec67d1ddd67f4b8d4" kindref="member">PDJE_Buffer_Arena</ref>{</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="12" refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pmr::unsynchronized_pool_resource<sp/><ref refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" kindref="member">arena</ref>;</highlight></codeline>
-<codeline lineno="13" refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pmr::vector&lt;T&gt;<sp/><ref refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kindref="member">buf1</ref>;</highlight></codeline>
-<codeline lineno="14" refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pmr::vector&lt;T&gt;<sp/><ref refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" kindref="member">buf2</ref>;</highlight></codeline>
-<codeline lineno="15" refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic_flag<sp/><ref refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" kindref="member">lock</ref><sp/>=<sp/>ATOMIC_FLAG_INIT;</highlight></codeline>
-<codeline lineno="16" refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" kindref="member">buf_first</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="19" refid="classPDJE__Buffer__Arena_1a933fbb7468c92d0edadc7cde7eb989a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classPDJE__Buffer__Arena_1a933fbb7468c92d0edadc7cde7eb989a0" kindref="member">Write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref>&amp;<sp/>data);</highlight></codeline>
-<codeline lineno="20" refid="classPDJE__Buffer__Arena_1a8a0f1ef287e498607251c5ecda60efca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pmr::vector&lt;T&gt;*<sp/><ref refid="classPDJE__Buffer__Arena_1a8a0f1ef287e498607251c5ecda60efca" kindref="member">Get</ref>();</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22" refid="classPDJE__Buffer__Arena_1a8e87e9f89928cbcec67d1ddd67f4b8d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a8e87e9f89928cbcec67d1ddd67f4b8d4" kindref="member">PDJE_Buffer_Arena</ref>():</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" kindref="member">arena</ref>{},</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kindref="member">buf1</ref>(&amp;<ref refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" kindref="member">arena</ref>),</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" kindref="member">buf2</ref>(&amp;<ref refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" kindref="member">arena</ref>)</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kindref="member">buf1</ref>.reserve(2048);</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__Buffer_8hpp_1a01cb5e075b875399bbcbd1ac4a91349b" kindref="member">RESET_PMR_VECTOR</ref>(<ref refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" kindref="member">arena</ref>,<sp/><ref refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kindref="member">buf1</ref>);</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="30" refid="classPDJE__Buffer__Arena_1a29f47d258d824c510c8bb960ba52f826" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a29f47d258d824c510c8bb960ba52f826" kindref="member">~PDJE_Buffer_Arena</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="31"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35" refid="classPDJE__Buffer__Arena_1a933fbb7468c92d0edadc7cde7eb989a0" refkind="member"><highlight class="normal"><ref refid="classPDJE__Buffer__Arena_1a933fbb7468c92d0edadc7cde7eb989a0" kindref="member">PDJE_Buffer_Arena&lt;T&gt;::Write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref>&amp;<sp/>data)</highlight></codeline>
-<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(<ref refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" kindref="member">lock</ref>.test_and_set(std::memory_order_acquire)){}</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//locked</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" kindref="member">buf_first</ref>){</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kindref="member">buf1</ref>.push_back(data);</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" kindref="member">buf2</ref>.push_back(data);</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" kindref="member">lock</ref>.clear(std::memory_order_release);</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//unlock</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal">std::pmr::vector&lt;T&gt;*</highlight></codeline>
-<codeline lineno="52" refid="classPDJE__Buffer__Arena_1a8a0f1ef287e498607251c5ecda60efca" refkind="member"><highlight class="normal"><ref refid="classPDJE__Buffer__Arena_1a8a0f1ef287e498607251c5ecda60efca" kindref="member">PDJE_Buffer_Arena&lt;T&gt;::Get</ref>()</highlight></codeline>
-<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(<ref refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" kindref="member">lock</ref>.test_and_set(std::memory_order_acquire)){}</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" kindref="member">buf_first</ref><sp/>?<sp/><ref refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" kindref="member">buf2</ref>.clear()<sp/>:<sp/><ref refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kindref="member">buf1</ref>.clear();</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" kindref="member">buf_first</ref><sp/>=<sp/>!<ref refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" kindref="member">buf_first</ref>;</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" kindref="member">lock</ref>.clear(std::memory_order_release);</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" kindref="member">buf_first</ref><sp/>?<sp/>&amp;<ref refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" kindref="member">buf2</ref><sp/>:<sp/>&amp;<ref refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kindref="member">buf1</ref>;</highlight></codeline>
-<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="9" refid="classPDJE__Buffer__Arena" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__Buffer__Arena_1a8e87e9f89928cbcec67d1ddd67f4b8d4" kindref="member">PDJE_Buffer_Arena</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="11" refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pmr::unsynchronized_pool_resource<sp/><ref refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" kindref="member">arena</ref>;</highlight></codeline>
+<codeline lineno="12" refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pmr::vector&lt;T&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kindref="member">buf1</ref>;</highlight></codeline>
+<codeline lineno="13" refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pmr::vector&lt;T&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" kindref="member">buf2</ref>;</highlight></codeline>
+<codeline lineno="14" refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic_flag<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" kindref="member">lock</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>ATOMIC_FLAG_INIT;</highlight></codeline>
+<codeline lineno="15" refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" kindref="member">buf_first</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classPDJE__Buffer__Arena_1a933fbb7468c92d0edadc7cde7eb989a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a933fbb7468c92d0edadc7cde7eb989a0" kindref="member">Write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/>&amp;data);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pmr::vector&lt;T&gt;<sp/>*</highlight></codeline>
+<codeline lineno="21" refid="classPDJE__Buffer__Arena_1a8a0f1ef287e498607251c5ecda60efca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a8a0f1ef287e498607251c5ecda60efca" kindref="member">Get</ref>();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classPDJE__Buffer__Arena_1a8e87e9f89928cbcec67d1ddd67f4b8d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a8e87e9f89928cbcec67d1ddd67f4b8d4" kindref="member">PDJE_Buffer_Arena</ref>()<sp/>:<sp/><ref refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" kindref="member">arena</ref>{},<sp/><ref refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kindref="member">buf1</ref>(&amp;<ref refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" kindref="member">arena</ref>),<sp/><ref refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" kindref="member">buf2</ref>(&amp;<ref refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" kindref="member">arena</ref>)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kindref="member">buf1</ref>.reserve(2048);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__Buffer_8hpp_1a01cb5e075b875399bbcbd1ac4a91349b" kindref="member">RESET_PMR_VECTOR</ref>(<ref refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" kindref="member">arena</ref>,<sp/><ref refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kindref="member">buf1</ref>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28" refid="classPDJE__Buffer__Arena_1a29f47d258d824c510c8bb960ba52f826" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a29f47d258d824c510c8bb960ba52f826" kindref="member">~PDJE_Buffer_Arena</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classPDJE__Buffer__Arena_1a933fbb7468c92d0edadc7cde7eb989a0" refkind="member"><highlight class="normal"><ref refid="classPDJE__Buffer__Arena_1a933fbb7468c92d0edadc7cde7eb989a0" kindref="member">PDJE_Buffer_Arena&lt;T&gt;::Write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/>&amp;data)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" kindref="member">lock</ref>.test_and_set(std::memory_order_acquire))<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>locked</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" kindref="member">buf_first</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kindref="member">buf1</ref>.push_back(data);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" kindref="member">buf2</ref>.push_back(data);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" kindref="member">lock</ref>.clear(std::memory_order_release);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>unlock</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">std::pmr::vector&lt;T&gt;<sp/>*</highlight></codeline>
+<codeline lineno="50" refid="classPDJE__Buffer__Arena_1a8a0f1ef287e498607251c5ecda60efca" refkind="member"><highlight class="normal"><ref refid="classPDJE__Buffer__Arena_1a8a0f1ef287e498607251c5ecda60efca" kindref="member">PDJE_Buffer_Arena&lt;T&gt;::Get</ref>()</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" kindref="member">lock</ref>.test_and_set(std::memory_order_acquire))<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" kindref="member">buf_first</ref><sp/>?<sp/><ref refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" kindref="member">buf2</ref>.clear()<sp/>:<sp/><ref refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kindref="member">buf1</ref>.clear();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" kindref="member">buf_first</ref><sp/>=<sp/>!<ref refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" kindref="member">buf_first</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" kindref="member">lock</ref>.clear(std::memory_order_release);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" kindref="member">buf_first</ref><sp/>?<sp/>&amp;<ref refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" kindref="member">buf2</ref><sp/>:<sp/>&amp;<ref refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kindref="member">buf1</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="include/global/DataLines/PDJE_Buffer.hpp"/>
   </compounddef>
