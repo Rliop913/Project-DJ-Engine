@@ -30,10 +30,16 @@ PDJE_Input::Init()
 bool
 PDJE_Input::Config(std::vector<DeviceData> &devs)
 {
+    std::vector<DeviceData> sanitized_devs;
+    for(const auto& d : devs){
+        if(d.Name != "" && d.device_specific_id != "" && d.Type != PDJE_Dev_Type::UNKNOWN){
+            sanitized_devs.push_back(d);
+        }
+    }
     if (state != PDJE_INPUT_STATE::DEVICE_CONFIG_STATE) {
         return false;
     }
-    PDJE_INPUT_DEFAULT_TRY_CATCH(config_promise->set_value(devs);
+    PDJE_INPUT_DEFAULT_TRY_CATCH(config_promise->set_value(sanitized_devs);
                                  data.config_sync->arrive_and_wait();)
 
     state = PDJE_INPUT_STATE::INPUT_LOOP_READY;

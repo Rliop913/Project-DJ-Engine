@@ -38,7 +38,7 @@ Judge_Loop::Match(const LOCAL_TIME  input_time,
         if (Cached.diff <= init_datas->ev_rule->use_range_microsecond) {
             note_local->used = true;
             Event_Datas.use_queue.Write(
-                { Cached.railID, isPressed, Cached.isLate, Cached.diff });
+                { railid, isPressed, Cached.isLate, Cached.diff });
 
             break;
         }

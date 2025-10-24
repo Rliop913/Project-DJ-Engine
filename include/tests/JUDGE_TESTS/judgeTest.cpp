@@ -36,8 +36,26 @@ main()
 
             judge.inits.SetInputRule(conf);
         }
+        if (d.Type == PDJE_Dev_Type::MOUSE) {
+            
+            std::cout << "DEVICE id: " << d.device_specific_id << std::endl;
+            std::cout << "DEVICE NAME: " << d.Name << std::endl;
+            
+            list.push_back(d);
+
+            PDJE_JUDGE::INPUT_CONFIG conf;
+
+            conf.Device_ID  = d.Name;
+            conf.DeviceType = d.Type;
+            conf.DeviceKey  = PDJE_JUDGE::DEVICE_MOUSE_EVENT::BTN_L;
+            conf.MatchRail  = 1;
+
+            judge.inits.SetInputRule(conf);
+        }
     }
-    input.Config(list);
+    if(!input.Config(list)){
+        std::cout << "config failed" << std::endl;
+    }
     auto iline = input.PullOutDataLine();
     int note_add_count = 0;
     OBJ_SETTER_CALLBACK cb = [&](const std::string        noteType,
@@ -84,8 +102,8 @@ main()
     judge.inits.SetCustomEvents({ .missed_event      = missed,
                                   .used_event        = used,
                                   .custom_axis_parse = mouse_parse,
-                                  .use_event_sleep_time = std::chrono::milliseconds(0),
-                                .miss_event_sleep_time = std::chrono::milliseconds(0)
+                                  .use_event_sleep_time = std::chrono::milliseconds(1),
+                                .miss_event_sleep_time = std::chrono::milliseconds(1)
                             });
     judge.inits.SetCoreLine(engine.PullOutDataLine());
     judge.Start();
