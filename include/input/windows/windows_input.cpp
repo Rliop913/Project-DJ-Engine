@@ -49,10 +49,12 @@ wstring_to_utf8_nt(const std::wstring &w)
                                        0,
                                        nullptr,
                                        nullptr);
-    if (required <= 0)
+    if (required <= 0) {
+
         critlog(
             "pdje input module-Windows impl- WideCharToMultiByte size failed");
-    throw std::runtime_error("WideCharToMultiByte size failed");
+        throw std::runtime_error("WideCharToMultiByte size failed");
+    }
 
     std::string out(required, '\0');
     int         written = WideCharToMultiByte(CP_UTF8,
@@ -63,10 +65,12 @@ wstring_to_utf8_nt(const std::wstring &w)
                                       required,
                                       nullptr,
                                       nullptr);
-    if (written <= 0)
+    if (written <= 0) {
+
         critlog("pdje input module-Windows impl- WideCharToMultiByte convert "
                 "failed");
-    throw std::runtime_error("WideCharToMultiByte convert failed");
+        throw std::runtime_error("WideCharToMultiByte convert failed");
+    }
 
     if (!out.empty() && out.back() == '\0')
         out.pop_back();
