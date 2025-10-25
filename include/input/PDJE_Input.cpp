@@ -1,5 +1,5 @@
 #include "PDJE_Input.hpp"
-
+#include "PDJE_LOG_SETTER.hpp"
 #define PDJE_INPUT_DEFAULT_TRY_CATCH(CODE)                                     \
     try {                                                                      \
         CODE                                                                   \
@@ -13,10 +13,16 @@
         return false;                                                          \
     }
 
+PDJE_Input::PDJE_Input()
+{
+    startlog();
+}
+
 bool
 PDJE_Input::Init()
 {
     if (state != PDJE_INPUT_STATE::DEAD) {
+        warnlog("pdje init failed. pdje input state is not dead.");
         return false;
     }
     PDJE_INPUT_DEFAULT_TRY_CATCH(
@@ -31,8 +37,9 @@ bool
 PDJE_Input::Config(std::vector<DeviceData> &devs)
 {
     std::vector<DeviceData> sanitized_devs;
-    for(const auto& d : devs){
-        if(d.Name != "" && d.device_specific_id != "" && d.Type != PDJE_Dev_Type::UNKNOWN){
+    for (const auto &d : devs) {
+        if (d.Name != "" && d.device_specific_id != "" &&
+            d.Type != PDJE_Dev_Type::UNKNOWN) {
             sanitized_devs.push_back(d);
         }
     }

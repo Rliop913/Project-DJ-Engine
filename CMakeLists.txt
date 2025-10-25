@@ -107,6 +107,7 @@ endif()
 
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
 target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE})
+
 if(PDJE_DEVELOP_INPUT)
 target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} )
 endif()

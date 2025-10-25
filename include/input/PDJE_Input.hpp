@@ -83,7 +83,7 @@ class PDJE_API PDJE_Input {
     /**
     @brief Constructor.
     */
-    PDJE_Input() = default;
+    PDJE_Input();
 
     /**
     @brief Destructor.
