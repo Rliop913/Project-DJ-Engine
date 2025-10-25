@@ -102,7 +102,7 @@ add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} 
 
 add_library(PDJE_MODULE_JUDGE SHARED ${judgeSource} ${globalSource})
 if(PDJE_DEVELOP_INPUT)
-add_library(PDJE_MODULE_INPUT SHARED ${inputSource} ${globalSource})
+add_library(PDJE_MODULE_INPUT SHARED ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC})
 endif()
 
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
@@ -126,7 +126,7 @@ add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSo
 
 add_library(PDJE_MODULE_JUDGE ${judgeSource} ${globalSource})
 if(PDJE_DEVELOP_INPUT)
-add_library(PDJE_MODULE_INPUT ${inputSource} ${globalSource})
+add_library(PDJE_MODULE_INPUT ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC})
 endif()
 
 
