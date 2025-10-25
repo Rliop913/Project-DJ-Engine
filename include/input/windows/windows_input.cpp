@@ -266,6 +266,8 @@ OS_Input::work()
     auto regres = RegisterRawInputDevices(
         devTypes.data(), devTypes.size(), sizeof(RAWINPUTDEVICE));
     if (!regres) {
+        critlog("failed to register rawinput devices. maybe configed invalid "
+                "devices.");
         return;
     }
 
