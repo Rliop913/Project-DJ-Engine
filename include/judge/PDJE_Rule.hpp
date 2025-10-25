@@ -1,7 +1,7 @@
 #pragma once
 #include "Input_State.hpp"
+#include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_Input_Device_Data.hpp"
-
 #include <cstddef>
 #include <cstdint>
 #include <functional>
@@ -19,7 +19,7 @@ enum DEVICE_MOUSE_EVENT {
     AXIS_MOVE
 };
 
-struct INPUT_RULE {
+struct PDJE_API INPUT_RULE {
     std::string   Device_ID  = "";
     PDJE_Dev_Type DeviceType = PDJE_Dev_Type::UNKNOWN;
     BITMASK       DeviceKey  = 0;
@@ -27,11 +27,11 @@ struct INPUT_RULE {
     operator==(const INPUT_RULE &) const = default;
 };
 
-struct INPUT_CONFIG : INPUT_RULE {
+struct PDJE_API INPUT_CONFIG : INPUT_RULE {
     uint64_t MatchRail = 0;
 };
 
-struct EVENT_RULE {
+struct PDJE_API EVENT_RULE {
     uint64_t miss_range_microsecond = 0;
     uint64_t use_range_microsecond  = 0;
 };

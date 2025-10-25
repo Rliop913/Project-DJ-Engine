@@ -1,12 +1,13 @@
 #pragma once
 
+#include "PDJE_EXPORT_SETTER.hpp"
 #include <atomic>
 #include <memory_resource>
 #include <optional>
 
 #define RESET_PMR_VECTOR(ARENA, VEC) std::pmr::vector<T>{ &ARENA }.swap(VEC)
 
-template <typename T> class PDJE_Buffer_Arena {
+template <typename T> class PDJE_API PDJE_Buffer_Arena {
   private:
     std::pmr::unsynchronized_pool_resource arena;
     std::pmr::vector<T>                    buf1;

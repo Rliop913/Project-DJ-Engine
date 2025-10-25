@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Input_State.hpp"
+#include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Input_Device_Data.hpp"
 #include <barrier>
@@ -20,7 +21,7 @@
  *
  * Searches for connected devices and pairs them with the engine.
  */
-class PDJE_Input {
+class PDJE_API PDJE_Input {
   private:
     OS_Input data;
 

@@ -1,9 +1,9 @@
 #pragma once
 
+#include "PDJE_EXPORT_SETTER.hpp"
 #include <atomic>
 #include <thread>
-
-class ATOMIC_EVENT {
+class PDJE_API ATOMIC_EVENT {
   private:
     std::atomic<bool> flag{ false };
 

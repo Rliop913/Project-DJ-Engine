@@ -4,6 +4,7 @@
 #include <optional>
 
 #include "Input_State.hpp"
+#include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_Judge_Loop.hpp"
 #include <atomic>
 #include <thread>
@@ -19,7 +20,7 @@ enum JUDGE_STATUS {
     NOTE_OBJECT_IS_MISSING,
 };
 
-class JUDGE {
+class PDJE_API JUDGE {
   private: // cached values
     std::optional<Judge_Loop> loop_obj;
 

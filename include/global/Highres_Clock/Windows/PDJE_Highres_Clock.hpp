@@ -1,5 +1,6 @@
 #pragma once
 
+#include "PDJE_EXPORT_SETTER.hpp"
 #include <cstdint>
 #include <windows.h>
 
@@ -8,7 +9,7 @@
 #include <time.h>
 namespace PDJE_HIGHRES_CLOCK {
 
-class CLOCK {
+class PDJE_API CLOCK {
   private:
     struct timespec ts;
     uint64_t        qpc_freq;
