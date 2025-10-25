@@ -38,7 +38,7 @@ class PDJE_API JUDGE {
     End();
     JUDGE_STATUS
     CheckStatus();
-    JUDGE()  = default;
+    JUDGE();
     ~JUDGE() = default;
 };
 }; // namespace PDJE_JUDGE

@@ -1,7 +1,7 @@
 #pragma once
 #include "Input_State.hpp"
+#include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_Input_Device_Data.hpp"
-
 #include <cstdint>
 #include <iostream>
 #include <string>
@@ -14,7 +14,7 @@ constexpr int BUFFER_SUB  = 1;
 
 using GLOBAL_TIME = uint64_t;
 using LOCAL_TIME  = uint64_t;
-struct NOTE {
+struct PDJE_API NOTE {
     std::string type;
     uint16_t    detail;
     std::string first;
@@ -28,14 +28,14 @@ struct NOTE {
 using NOTE_VEC   = std::vector<NOTE>;
 using P_NOTE_VEC = std::vector<NOTE *>;
 
-struct NOTE_ITR {
+struct PDJE_API NOTE_ITR {
     NOTE_VEC           vec;
     NOTE_VEC::iterator itr;
 };
 
 using DEVID_TO_NOTE = std::unordered_map<uint64_t, NOTE_ITR>;
 
-class OBJ {
+class PDJE_API OBJ {
   private:
     DEVID_TO_NOTE Buffer_Main;
     DEVID_TO_NOTE Buffer_Sub;
@@ -75,12 +75,12 @@ class OBJ {
 
         found.clear();
         auto &note = (*dan)[railID];
-        if(note.vec.empty()){
+        if (note.vec.empty()) {
             return;
         }
         while (true) { // pull iterator
             if (note.itr != note.vec.end() && note.itr->used) {
-                
+
                 ++note.itr;
             } else {
                 break;
@@ -88,11 +88,11 @@ class OBJ {
         }
 
         auto titr = note.itr;
-        
+
         while (true) {
             if ((titr != note.vec.end()) && titr->microsecond <= limit &&
                 !titr->used) {
-                    
+
                 found.push_back(std::addressof(*titr));
                 ++titr;
             } else {
@@ -108,9 +108,9 @@ class OBJ {
         static_assert(I == BUFFER_MAIN || I == BUFFER_SUB,
                       "invalid use of cut.");
         DEVID_TO_NOTE *dan = pick_dan<I>();
-        
+
         for (auto &rail : *dan) {
-            if(rail.second.vec.empty()){
+            if (rail.second.vec.empty()) {
                 continue;
             }
             auto titr = rail.second.itr;

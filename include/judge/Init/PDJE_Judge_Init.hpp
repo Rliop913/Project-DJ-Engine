@@ -1,6 +1,7 @@
 #pragma once
 #include "PDJE_ATOMIC_EVENT.hpp"
 #include "PDJE_Core_DataLine.hpp"
+#include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Note_OBJ.hpp"
 #include "PDJE_Rule.hpp"
@@ -29,7 +30,7 @@ using MOUSE_AXIS_PARSE_CALLBACK =
                        int                  x,
                        int                  y,
                        PDJE_Mouse_Axis_Type axis_type)>;
-struct Custom_Events {
+struct PDJE_API Custom_Events {
     MISS_CALLBACK             missed_event;
     USE_CALLBACK              used_event;
     MOUSE_AXIS_PARSE_CALLBACK custom_axis_parse;
@@ -39,7 +40,7 @@ struct Custom_Events {
         std::chrono::milliseconds(200);
 };
 
-class Judge_Init {
+class PDJE_API Judge_Init {
   private:
     void
     DefaultFill(NOTE            &obj,

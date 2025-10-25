@@ -13,6 +13,7 @@
 #include <vector>
 
 namespace PDJE_JUDGE {
+
 class Judge_Loop {
 
   private:

@@ -1,5 +1,6 @@
 #include "windows_input.hpp"
 #include "PDJE_Input.hpp"
+#include "PDJE_LOG_SETTER.hpp"
 #include "dev_path_to_name.hpp"
 #include "windows_keyboard_fill.hpp"
 #include <SetupAPI.h>
@@ -49,7 +50,9 @@ wstring_to_utf8_nt(const std::wstring &w)
                                        nullptr,
                                        nullptr);
     if (required <= 0)
-        throw std::runtime_error("WideCharToMultiByte size failed");
+        critlog(
+            "pdje input module-Windows impl- WideCharToMultiByte size failed");
+    throw std::runtime_error("WideCharToMultiByte size failed");
 
     std::string out(required, '\0');
     int         written = WideCharToMultiByte(CP_UTF8,
@@ -61,7 +64,9 @@ wstring_to_utf8_nt(const std::wstring &w)
                                       nullptr,
                                       nullptr);
     if (written <= 0)
-        throw std::runtime_error("WideCharToMultiByte convert failed");
+        critlog("pdje input module-Windows impl- WideCharToMultiByte convert "
+                "failed");
+    throw std::runtime_error("WideCharToMultiByte convert failed");
 
     if (!out.empty() && out.back() == '\0')
         out.pop_back();
@@ -96,7 +101,7 @@ OS_Input::run()
         if (w == WAIT_OBJECT_0) {
 
             if (PeekMessageW(&msg, nullptr, WM_QUIT, WM_QUIT, PM_REMOVE)) {
-                // std::cout << "trigged" << std::endl;
+
                 break;
             }
             while (PeekMessageW(&msg, nullptr, WM_INPUT, WM_INPUT, PM_REMOVE)) {

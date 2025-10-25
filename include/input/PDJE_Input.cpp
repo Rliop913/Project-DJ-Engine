@@ -8,6 +8,8 @@
         ResetOneShot(run_command, data.run_ok, data.run_sync);                 \
                                                                                \
         state = PDJE_INPUT_STATE::DEAD;                                        \
+        critlog("failed to execute code. WHY: ");                              \
+        critlog(e.what());                                                     \
         ErrLog += e.what();                                                    \
         ErrLog += "\n";                                                        \
         return false;                                                          \
@@ -22,7 +24,8 @@ bool
 PDJE_Input::Init()
 {
     if (state != PDJE_INPUT_STATE::DEAD) {
-        warnlog("pdje init failed. pdje input state is not dead.");
+        warnlog("pdje input module init failed. pdje input state is not dead. "
+                "maybe input module is running or configuring.");
         return false;
     }
     PDJE_INPUT_DEFAULT_TRY_CATCH(
@@ -44,6 +47,8 @@ PDJE_Input::Config(std::vector<DeviceData> &devs)
         }
     }
     if (state != PDJE_INPUT_STATE::DEVICE_CONFIG_STATE) {
+        warnlog("pdje input module config failed. pdje input state is not on "
+                "device config state. Init it first.");
         return false;
     }
     PDJE_INPUT_DEFAULT_TRY_CATCH(config_promise->set_value(sanitized_devs);
@@ -57,6 +62,8 @@ bool
 PDJE_Input::Run()
 {
     if (state != PDJE_INPUT_STATE::INPUT_LOOP_READY) {
+        warnlog("pdje init module run failed. pdje input state is not on loop "
+                "ready state. config it first.");
         return false;
     }
 
@@ -86,10 +93,13 @@ PDJE_Input::Kill()
         break;
     case PDJE_INPUT_STATE::INPUT_LOOP_RUNNING: {
         if (!data.kill()) {
+            critlog("failed to kill pdje input module. maybe thread is broken. "
+                    "issue this.");
             return false;
         }
     } break;
     default:
+        critlog("the pdje input module state is broken...why?");
         return false;
     }
     data.ResetLoop();

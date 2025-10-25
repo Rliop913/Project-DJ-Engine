@@ -1,7 +1,12 @@
 #include "PDJE_Judge_Loop.hpp"
+#include "MixMachine.hpp"
+#include "PDJE_Buffer.hpp"
+#include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Judge_Init.hpp"
+#include "PDJE_LOG_SETTER.hpp"
 #include "PDJE_Note_OBJ.hpp"
 #include <chrono>
+#include <exception>
 #include <iostream>
 #include <ratio>
 #include <thread>
@@ -51,7 +56,7 @@ Judge_Loop::Cut()
     Cached.missed_buffers.clear();
     init_datas->note_objects->Cut<BUFFER_MAIN>(Cached.cut_range,
                                                Cached.missed_buffers);
-                                               
+
     if (!Cached.missed_buffers.empty()) {
         Event_Datas.miss_queue.Write(Cached.missed_buffers);
     }
@@ -59,7 +64,7 @@ Judge_Loop::Cut()
     init_datas->note_objects->Cut<BUFFER_SUB>(Cached.cut_range,
                                               Cached.missed_buffers);
     if (!Cached.missed_buffers.empty()) {
-    
+
         Event_Datas.miss_queue.Write(Cached.missed_buffers);
     }
 }
@@ -77,24 +82,25 @@ Judge_Loop::PreProcess()
         Cached.synced_data.microsecond - Cached.local_microsecond_position;
 
     if (input_log->empty()) {
-        
-        Cached.cut_range = Cached.local_microsecond_position < init_datas->ev_rule->miss_range_microsecond ? 0 :
-        Cached.local_microsecond_position -
-                           init_datas->ev_rule->miss_range_microsecond;
+
+        Cached.cut_range =
+            Cached.local_microsecond_position <
+                    init_datas->ev_rule->miss_range_microsecond
+                ? 0
+                : Cached.local_microsecond_position -
+                      init_datas->ev_rule->miss_range_microsecond;
         Cut();
         return false;
     }
-    
+
     Cached.log_begin =
-        input_log->front().microSecond < Cached.global_local_diff ?
-        0
-        :
-        input_log->front().microSecond - Cached.global_local_diff;
+        input_log->front().microSecond < Cached.global_local_diff
+            ? 0
+            : input_log->front().microSecond - Cached.global_local_diff;
     Cached.cut_range =
-        Cached.log_begin < init_datas->ev_rule->miss_range_microsecond ?
-        0
-        :
-        Cached.log_begin - init_datas->ev_rule->miss_range_microsecond;
+        Cached.log_begin < init_datas->ev_rule->miss_range_microsecond
+            ? 0
+            : Cached.log_begin - init_datas->ev_rule->miss_range_microsecond;
 
     Cut();
 
@@ -140,14 +146,19 @@ Judge_Loop::StartEventLoop()
     Event_Controls.use_event_thread.emplace([this]() {
         auto use_clock = std::chrono::steady_clock::now();
         while (Event_Controls.use_event_switch.value()) {
-            use_clock += init_datas->lambdas.use_event_sleep_time;
-            std::this_thread::sleep_until(use_clock);
+            try {
+                use_clock += init_datas->lambdas.use_event_sleep_time;
+                std::this_thread::sleep_until(use_clock);
 
-            auto queue = Event_Datas.use_queue.Get();
+                auto queue = Event_Datas.use_queue.Get();
 
-            for (const auto &log : *queue) {
-                init_datas->lambdas.used_event(
-                    log.railid, log.Pressed, log.IsLate, log.diff);
+                for (const auto &log : *queue) {
+                    init_datas->lambdas.used_event(
+                        log.railid, log.Pressed, log.IsLate, log.diff);
+                }
+            } catch (const std::exception &e) {
+                critlog("caught error on use event loop. Why:");
+                critlog(e.what());
             }
         }
     });
@@ -155,12 +166,17 @@ Judge_Loop::StartEventLoop()
     Event_Controls.miss_event_thread.emplace([this]() {
         auto miss_clock = std::chrono::steady_clock::now();
         while (Event_Controls.miss_event_switch.value()) {
-            miss_clock += init_datas->lambdas.miss_event_sleep_time;
-            std::this_thread::sleep_for(
-                init_datas->lambdas.miss_event_sleep_time);
-            auto queue = Event_Datas.miss_queue.Get();
-            for (const auto &log : *queue) {
-                init_datas->lambdas.missed_event(log);
+            try {
+                miss_clock += init_datas->lambdas.miss_event_sleep_time;
+                std::this_thread::sleep_for(
+                    init_datas->lambdas.miss_event_sleep_time);
+                auto queue = Event_Datas.miss_queue.Get();
+                for (const auto &log : *queue) {
+                    init_datas->lambdas.missed_event(log);
+                }
+            } catch (const std::exception &e) {
+                critlog("caught error on miss event loop. Why:");
+                critlog(e.what());
             }
         }
     });
