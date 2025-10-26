@@ -24,19 +24,21 @@
         <link refid="PDJE__Buffer_8hpp"/>
         <childnode refid="10" relation="include">
         </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="16">
         <label>PDJE_Core_DataLine.hpp</label>
         <link refid="PDJE__Core__DataLine_8hpp"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
@@ -48,7 +50,7 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -69,32 +71,36 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="14">
         <label>PDJE_ATOMIC_EVENT.hpp</label>
         <link refid="PDJE__ATOMIC__EVENT_8hpp"/>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="10">
         <label>PDJE_EXPORT_SETTER.hpp</label>
         <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
       <node id="17">
         <label>PDJE_SYNC_CORE.hpp</label>
         <link refid="PDJE__SYNC__CORE_8hpp"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="12">
+      <node id="13">
         <label>PDJE_Judge_Init.hpp</label>
         <link refid="PDJE__Judge__Init_8hpp"/>
-        <childnode refid="13" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -126,9 +132,9 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -140,7 +146,7 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -151,6 +157,8 @@
         <label>PDJE_Note_OBJ.hpp</label>
         <link refid="PDJE__Note__OBJ_8hpp"/>
         <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -172,6 +180,8 @@
         <link refid="PDJE__Rule_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
@@ -183,10 +193,10 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="11">
+      <node id="12">
         <label>PDJE_Highres_Clock.hpp</label>
       </node>
-      <node id="10">
+      <node id="11">
         <label>atomic</label>
       </node>
       <node id="29">
@@ -219,7 +229,7 @@
       <node id="7">
         <label>string</label>
       </node>
-      <node id="14">
+      <node id="15">
         <label>thread</label>
       </node>
       <node id="22">
@@ -248,32 +258,36 @@
 <codeline lineno="8"><highlight class="normal"><ref refid="classPDJE__JUDGE_1_1Judge__Loop_1a6e2cd11e0a7ee3f45bfcee18e41a459b" kindref="member">Judge_Loop::UseEvent&lt;PDJE_Dev_Type::KEYBOARD&gt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref><sp/>&amp;ilog)</highlight></codeline>
 <codeline lineno="9"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ilog.<ref refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" kindref="member">microSecond</ref><sp/>&lt;<sp/>Cached.global_local_diff)<sp/>{</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__JUDGE_1_1INPUT__RULE" kindref="compound">INPUT_RULE</ref><sp/>rule;</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>rule.<ref refid="structPDJE__JUDGE_1_1INPUT__RULE_1aa9e71f2f4ec766fc1c0e4df000f0e607" kindref="member">Device_ID</ref><sp/><sp/>=<sp/>ilog.<ref refid="structPDJE__Input__Log_1aaefc2fdec36f5877ee575be7b9daf7bc" kindref="member">id</ref>;</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>rule.<ref refid="structPDJE__JUDGE_1_1INPUT__RULE_1a665a8072fc88db62bc59bdaa52a004b8" kindref="member">DeviceType</ref><sp/>=<sp/>ilog.<ref refid="structPDJE__Input__Log_1aa64073bde0f836582ef86ce7484b4011" kindref="member">type</ref>;</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>rule.<ref refid="structPDJE__JUDGE_1_1INPUT__RULE_1a26595261d4164af5259c5a81392c7984" kindref="member">DeviceKey</ref><sp/><sp/>=<sp/>ilog.<ref refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" kindref="member">event</ref>.<ref refid="unionPDJE__Input__Event_1af1262bc0a6a920aee57a13cbf033cc0d" kindref="member">keyboard</ref>.<ref refid="structPDJE__Keyboard__Event_1a1b408a0d1716613a9f0e81142b06574e" kindref="member">k</ref>;</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!FindRailID(rule,<sp/>Cached.railID))<sp/>{</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ilog.<ref refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" kindref="member">event</ref>.<ref refid="unionPDJE__Input__Event_1af1262bc0a6a920aee57a13cbf033cc0d" kindref="member">keyboard</ref>.<ref refid="structPDJE__Keyboard__Event_1a9b876596da025316eb8180d50a8e7f05" kindref="member">pressed</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>init_datas-&gt;note_objects-&gt;Get&lt;<ref refid="namespacePDJE__JUDGE_1a3aa3f3217bddb4a172ca3ee463aa47de" kindref="member">BUFFER_MAIN</ref>&gt;(</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cached.use_range,<sp/>Cached.railID,<sp/>Cached.found_list);</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Match(ilog.<ref refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" kindref="member">microSecond</ref><sp/>-<sp/>Cached.global_local_diff,</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cached.found_list,</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cached.railID,</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>init_datas-&gt;note_objects-&gt;Get&lt;<ref refid="namespacePDJE__JUDGE_1ab5a4f76ae4935af0703bfc44f3212e2b" kindref="member">BUFFER_SUB</ref>&gt;(</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cached.use_range,<sp/>Cached.railID,<sp/>Cached.found_list);</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Match(ilog.<ref refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" kindref="member">microSecond</ref><sp/>-<sp/>Cached.global_local_diff,</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cached.found_list,</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cached.railID,</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="36"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_JUDGE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;cutted<sp/>on<sp/>first&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__JUDGE_1_1INPUT__RULE" kindref="compound">INPUT_RULE</ref><sp/>rule;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>rule.<ref refid="structPDJE__JUDGE_1_1INPUT__RULE_1aa9e71f2f4ec766fc1c0e4df000f0e607" kindref="member">Device_ID</ref><sp/><sp/>=<sp/>(*init_datas-&gt;inputline-&gt;id_name_conv)[ilog.<ref refid="structPDJE__Input__Log_1aaefc2fdec36f5877ee575be7b9daf7bc" kindref="member">id</ref>];<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>rule.<ref refid="structPDJE__JUDGE_1_1INPUT__RULE_1a665a8072fc88db62bc59bdaa52a004b8" kindref="member">DeviceType</ref><sp/>=<sp/>ilog.<ref refid="structPDJE__Input__Log_1aa64073bde0f836582ef86ce7484b4011" kindref="member">type</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>rule.<ref refid="structPDJE__JUDGE_1_1INPUT__RULE_1a26595261d4164af5259c5a81392c7984" kindref="member">DeviceKey</ref><sp/><sp/>=<sp/>ilog.<ref refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" kindref="member">event</ref>.<ref refid="unionPDJE__Input__Event_1af1262bc0a6a920aee57a13cbf033cc0d" kindref="member">keyboard</ref>.<ref refid="structPDJE__Keyboard__Event_1a1b408a0d1716613a9f0e81142b06574e" kindref="member">k</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!FindRailID(rule,<sp/>Cached.railID))<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;cutted<sp/>on<sp/>second.<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>ilog.<ref refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" kindref="member">microSecond</ref><sp/>-<sp/>Cached.synced_data.microsecond<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ilog.<ref refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" kindref="member">event</ref>.<ref refid="unionPDJE__Input__Event_1af1262bc0a6a920aee57a13cbf033cc0d" kindref="member">keyboard</ref>.<ref refid="structPDJE__Keyboard__Event_1a9b876596da025316eb8180d50a8e7f05" kindref="member">pressed</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>init_datas-&gt;note_objects-&gt;Get&lt;<ref refid="namespacePDJE__JUDGE_1a3aa3f3217bddb4a172ca3ee463aa47de" kindref="member">BUFFER_MAIN</ref>&gt;(</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cached.use_range,<sp/>Cached.railID,<sp/>Cached.found_list);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Match(ilog.<ref refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" kindref="member">microSecond</ref><sp/>-<sp/>Cached.global_local_diff,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cached.found_list,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cached.railID,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>init_datas-&gt;note_objects-&gt;Get&lt;<ref refid="namespacePDJE__JUDGE_1ab5a4f76ae4935af0703bfc44f3212e2b" kindref="member">BUFFER_SUB</ref>&gt;(</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cached.use_range,<sp/>Cached.railID,<sp/>Cached.found_list);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Match(ilog.<ref refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" kindref="member">microSecond</ref><sp/>-<sp/>Cached.global_local_diff,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cached.found_list,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Cached.railID,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_JUDGE</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/judge/Loop/Keyboard.cpp"/>
   </compounddef>

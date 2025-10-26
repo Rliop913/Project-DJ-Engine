@@ -30,11 +30,13 @@ Includes
 --------
 
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
+
 - ``atomic``
 
 - ``memory_resource``
 
-- ``optional``
+- ``vector``
 
 
 
@@ -46,6 +48,8 @@ Included By
 
 - :ref:`file_include_input_windows_windows_input.hpp`
 
+- :ref:`file_include_judge_Loop_PDJE_Judge_Loop.cpp`
+
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.hpp`
 
 
@@ -56,11 +60,4 @@ Classes
 
 
 - :ref:`exhale_class_classPDJE__Buffer__Arena`
-
-
-Defines
--------
-
-
-- :ref:`exhale_define_PDJE__Buffer_8hpp_1a01cb5e075b875399bbcbd1ac4a91349b`
 

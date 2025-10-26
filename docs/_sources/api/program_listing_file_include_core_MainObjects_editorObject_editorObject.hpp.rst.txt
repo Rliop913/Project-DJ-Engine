@@ -78,8 +78,8 @@ Program Listing for File editorObject.hpp
                        return music.gith->gw.repo;
                    }
                }
-           } else
-               return nullptr;
+           }
+           return nullptr;
        }
    
        git_repository *

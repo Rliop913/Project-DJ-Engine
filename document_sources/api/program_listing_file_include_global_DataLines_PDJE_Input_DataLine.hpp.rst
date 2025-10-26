@@ -20,7 +20,7 @@ Program Listing for File PDJE_Input_DataLine.hpp
    using PDJE_NAME = std::string;
    using PDJE_ID   = std::string;
    
-   struct PDJE_Input_Log {
+   struct PDJE_API PDJE_Input_Log {
        PDJE_Dev_Type    type;
        PDJE_Input_Event event;
        PDJE_HID_Event   hid_event;

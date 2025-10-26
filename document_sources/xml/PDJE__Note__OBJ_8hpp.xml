@@ -3,6 +3,7 @@
   <compounddef id="PDJE__Note__OBJ_8hpp" kind="file" language="C++">
     <compoundname>PDJE_Note_OBJ.hpp</compoundname>
     <includes refid="Input__State_8hpp" local="yes">Input_State.hpp</includes>
+    <includes refid="PDJE__EXPORT__SETTER_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
     <includes refid="PDJE__Input__Device__Data_8hpp" local="yes">PDJE_Input_Device_Data.hpp</includes>
     <includes local="no">cstdint</includes>
     <includes local="no">iostream</includes>
@@ -32,12 +33,12 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="8">
+      <node id="9">
         <label>PDJE_Input_Device_Data.hpp</label>
         <link refid="PDJE__Input__Device__Data_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -46,6 +47,10 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
+      <node id="8">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
       <node id="1">
         <label>include/judge/NoteOBJ/PDJE_Note_OBJ.hpp</label>
         <link refid="PDJE__Note__OBJ_8hpp"/>
@@ -53,29 +58,31 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="10">
+      <node id="11">
         <label>cstdint</label>
       </node>
       <node id="3">
         <label>future</label>
       </node>
-      <node id="11">
+      <node id="12">
         <label>iostream</label>
       </node>
-      <node id="9">
+      <node id="10">
         <label>latch</label>
       </node>
       <node id="4">
@@ -87,10 +94,10 @@
       <node id="6">
         <label>string</label>
       </node>
-      <node id="12">
+      <node id="13">
         <label>unordered_map</label>
       </node>
-      <node id="13">
+      <node id="14">
         <label>utility</label>
       </node>
       <node id="7">
@@ -198,8 +205,8 @@
     <programlisting>
 <codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Input__State_8hpp" kindref="compound">Input_State.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__Input__Device__Data_8hpp" kindref="compound">PDJE_Input_Device_Data.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__EXPORT__SETTER_8hpp" kindref="compound">PDJE_EXPORT_SETTER.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__Input__Device__Data_8hpp" kindref="compound">PDJE_Input_Device_Data.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -212,7 +219,7 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15" refid="namespacePDJE__JUDGE_1a0e0549990dbec87c7f25b9ae22f4dc39" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__JUDGE_1a0e0549990dbec87c7f25b9ae22f4dc39" kindref="member">GLOBAL_TIME</ref><sp/>=<sp/>uint64_t;</highlight></codeline>
 <codeline lineno="16" refid="namespacePDJE__JUDGE_1a182d502cf8e15e13ed25f3550c82a53a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__JUDGE_1a182d502cf8e15e13ed25f3550c82a53a" kindref="member">LOCAL_TIME</ref><sp/><sp/>=<sp/>uint64_t;</highlight></codeline>
-<codeline lineno="17" refid="structPDJE__JUDGE_1_1NOTE" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structPDJE__JUDGE_1_1NOTE" kindref="compound">NOTE</ref><sp/>{</highlight></codeline>
+<codeline lineno="17" refid="structPDJE__JUDGE_1_1NOTE" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="structPDJE__JUDGE_1_1NOTE" kindref="compound">NOTE</ref><sp/>{</highlight></codeline>
 <codeline lineno="18" refid="structPDJE__JUDGE_1_1NOTE_1a865136f5145d6ee0dc905693606b1910" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structPDJE__JUDGE_1_1NOTE_1a865136f5145d6ee0dc905693606b1910" kindref="member">type</ref>;</highlight></codeline>
 <codeline lineno="19" refid="structPDJE__JUDGE_1_1NOTE_1a4ebcad5f2ede5403eb41d919d0088660" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint16_t<sp/><sp/><sp/><sp/><ref refid="structPDJE__JUDGE_1_1NOTE_1a4ebcad5f2ede5403eb41d919d0088660" kindref="member">detail</ref>;</highlight></codeline>
 <codeline lineno="20" refid="structPDJE__JUDGE_1_1NOTE_1a159fa5f8d3dcc13f4bec5e3698e6fa27" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structPDJE__JUDGE_1_1NOTE_1a159fa5f8d3dcc13f4bec5e3698e6fa27" kindref="member">first</ref>;</highlight></codeline>
@@ -226,14 +233,14 @@
 <codeline lineno="28" refid="namespacePDJE__JUDGE_1ad8c8d340702b0759a8cecb53091de1e0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__JUDGE_1ad8c8d340702b0759a8cecb53091de1e0" kindref="member">NOTE_VEC</ref><sp/><sp/><sp/>=<sp/>std::vector&lt;NOTE&gt;;</highlight></codeline>
 <codeline lineno="29" refid="namespacePDJE__JUDGE_1ad73c9d4a59c40cc7c1a9fce27dc1be72" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__JUDGE_1ad73c9d4a59c40cc7c1a9fce27dc1be72" kindref="member">P_NOTE_VEC</ref><sp/>=<sp/>std::vector&lt;NOTE<sp/>*&gt;;</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31" refid="structPDJE__JUDGE_1_1NOTE__ITR" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structPDJE__JUDGE_1_1NOTE__ITR" kindref="compound">NOTE_ITR</ref><sp/>{</highlight></codeline>
+<codeline lineno="31" refid="structPDJE__JUDGE_1_1NOTE__ITR" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="structPDJE__JUDGE_1_1NOTE__ITR" kindref="compound">NOTE_ITR</ref><sp/>{</highlight></codeline>
 <codeline lineno="32" refid="structPDJE__JUDGE_1_1NOTE__ITR_1a1c96883596a986664ea6eb9ad81d75f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__JUDGE_1ad8c8d340702b0759a8cecb53091de1e0" kindref="member">NOTE_VEC</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__JUDGE_1_1NOTE__ITR_1a1c96883596a986664ea6eb9ad81d75f7" kindref="member">vec</ref>;</highlight></codeline>
 <codeline lineno="33" refid="structPDJE__JUDGE_1_1NOTE__ITR_1ab88bc1079275d363f71461854f172c92" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>NOTE_VEC::iterator<sp/><ref refid="structPDJE__JUDGE_1_1NOTE__ITR_1ab88bc1079275d363f71461854f172c92" kindref="member">itr</ref>;</highlight></codeline>
 <codeline lineno="34"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36" refid="namespacePDJE__JUDGE_1ab03e3d67f9117a97f80f2a0a98221919" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__JUDGE_1ab03e3d67f9117a97f80f2a0a98221919" kindref="member">DEVID_TO_NOTE</ref><sp/>=<sp/>std::unordered_map&lt;uint64_t,<sp/>NOTE_ITR&gt;;</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38" refid="classPDJE__JUDGE_1_1OBJ" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__JUDGE_1_1OBJ_1ad879931f442e0265ba8cb4be08567e6c" kindref="member">OBJ</ref><sp/>{</highlight></codeline>
+<codeline lineno="38" refid="classPDJE__JUDGE_1_1OBJ" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="classPDJE__JUDGE_1_1OBJ_1ad879931f442e0265ba8cb4be08567e6c" kindref="member">OBJ</ref><sp/>{</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="40" refid="classPDJE__JUDGE_1_1OBJ_1aec80fb3ee176aa880d2210d3b9fc7c64" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__JUDGE_1ab03e3d67f9117a97f80f2a0a98221919" kindref="member">DEVID_TO_NOTE</ref><sp/><ref refid="classPDJE__JUDGE_1_1OBJ_1aec80fb3ee176aa880d2210d3b9fc7c64" kindref="member">Buffer_Main</ref>;</highlight></codeline>
 <codeline lineno="41" refid="classPDJE__JUDGE_1_1OBJ_1a69ae59950fa70c74971c90fa6d9c8431" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__JUDGE_1ab03e3d67f9117a97f80f2a0a98221919" kindref="member">DEVID_TO_NOTE</ref><sp/><ref refid="classPDJE__JUDGE_1_1OBJ_1a69ae59950fa70c74971c90fa6d9c8431" kindref="member">Buffer_Sub</ref>;</highlight></codeline>
@@ -251,7 +258,7 @@
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__JUDGE_1_1OBJ_1a5cd76686f8d5452b67221e03d39f1465" kindref="member">Sort</ref>();<sp/></highlight><highlight class="comment">//<sp/>use<sp/>only<sp/>for<sp/>init</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>Sort();<sp/></highlight><highlight class="comment">//<sp/>use<sp/>only<sp/>for<sp/>init</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>I&gt;</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
@@ -273,53 +280,60 @@
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>found.clear();</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;note<sp/>=<sp/>(*dan)[railID];</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>pull<sp/>iterator</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(note.itr<sp/>!=<sp/>note.vec.end()<sp/>&amp;&amp;<sp/>note.itr-&gt;used)<sp/>{</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++note.itr;</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>titr<sp/>=<sp/>(*dan)[railID].itr;</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((titr<sp/>!=<sp/>note.vec.end())<sp/>&amp;&amp;<sp/>titr-&gt;microsecond<sp/>&lt;=<sp/>limit<sp/>&amp;&amp;</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>!titr-&gt;used)<sp/>{</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>found.push_back(std::addressof(*titr));</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++titr;</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>I&gt;</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="102" refid="classPDJE__JUDGE_1_1OBJ_1a6d38c29010273ad4a189dd6533d69924" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__JUDGE_1_1OBJ_1a6d38c29010273ad4a189dd6533d69924" kindref="member">Cut</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__JUDGE_1a182d502cf8e15e13ed25f3550c82a53a" kindref="member">LOCAL_TIME</ref><sp/>limit,<sp/>std::unordered_map&lt;uint64_t,<sp/>NOTE_VEC&gt;<sp/>&amp;cuts)</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cad091b8e376f7cf432dc367e1eda65e85" kindref="member">I</ref><sp/>==<sp/><ref refid="namespacePDJE__JUDGE_1a3aa3f3217bddb4a172ca3ee463aa47de" kindref="member">BUFFER_MAIN</ref><sp/>||<sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cad091b8e376f7cf432dc367e1eda65e85" kindref="member">I</ref><sp/>==<sp/><ref refid="namespacePDJE__JUDGE_1ab5a4f76ae4935af0703bfc44f3212e2b" kindref="member">BUFFER_SUB</ref>,</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;invalid<sp/>use<sp/>of<sp/>cut.&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__JUDGE_1ab03e3d67f9117a97f80f2a0a98221919" kindref="member">DEVID_TO_NOTE</ref><sp/>*dan<sp/>=<sp/><ref refid="classPDJE__JUDGE_1_1OBJ_1a4d81809f120785ce0aabd28788f10a62" kindref="member">pick_dan&lt;I&gt;</ref>();</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;rail<sp/>:<sp/>*dan)<sp/>{</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>titr<sp/>=<sp/>rail.second.itr;</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(titr<sp/>!=<sp/>rail.second.vec.end()<sp/>&amp;&amp;</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>titr-&gt;microsecond<sp/>&lt;=<sp/>limit)<sp/>{</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!titr-&gt;used)<sp/>{</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cuts[rail.first].push_back(*titr);</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>titr-&gt;used<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++titr;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="121" refid="classPDJE__JUDGE_1_1OBJ_1ad879931f442e0265ba8cb4be08567e6c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__JUDGE_1_1OBJ_1ad879931f442e0265ba8cb4be08567e6c" kindref="member">OBJ</ref>()<sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="122" refid="classPDJE__JUDGE_1_1OBJ_1a13638340306e350afb0312a07cd428d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__JUDGE_1_1OBJ_1a13638340306e350afb0312a07cd428d6" kindref="member">~OBJ</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="123"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="124"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_JUDGE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(note.vec.empty())<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>pull<sp/>iterator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(note.itr<sp/>!=<sp/>note.vec.end()<sp/>&amp;&amp;<sp/>note.itr-&gt;used)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++note.itr;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>titr<sp/>=<sp/>note.itr;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((titr<sp/>!=<sp/>note.vec.end())<sp/>&amp;&amp;<sp/>titr-&gt;microsecond<sp/>&lt;=<sp/>limit<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>!titr-&gt;used)<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>found.push_back(std::addressof(*titr));</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++titr;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>I&gt;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="classPDJE__JUDGE_1_1OBJ_1a6d38c29010273ad4a189dd6533d69924" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__JUDGE_1_1OBJ_1a6d38c29010273ad4a189dd6533d69924" kindref="member">Cut</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__JUDGE_1a182d502cf8e15e13ed25f3550c82a53a" kindref="member">LOCAL_TIME</ref><sp/>limit,<sp/>std::unordered_map&lt;uint64_t,<sp/>NOTE_VEC&gt;<sp/>&amp;cuts)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cad091b8e376f7cf432dc367e1eda65e85" kindref="member">I</ref><sp/>==<sp/><ref refid="namespacePDJE__JUDGE_1a3aa3f3217bddb4a172ca3ee463aa47de" kindref="member">BUFFER_MAIN</ref><sp/>||<sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cad091b8e376f7cf432dc367e1eda65e85" kindref="member">I</ref><sp/>==<sp/><ref refid="namespacePDJE__JUDGE_1ab5a4f76ae4935af0703bfc44f3212e2b" kindref="member">BUFFER_SUB</ref>,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;invalid<sp/>use<sp/>of<sp/>cut.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__JUDGE_1ab03e3d67f9117a97f80f2a0a98221919" kindref="member">DEVID_TO_NOTE</ref><sp/>*dan<sp/>=<sp/><ref refid="classPDJE__JUDGE_1_1OBJ_1a4d81809f120785ce0aabd28788f10a62" kindref="member">pick_dan&lt;I&gt;</ref>();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;rail<sp/>:<sp/>*dan)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rail.second.vec.empty())<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>titr<sp/>=<sp/>rail.second.itr;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(titr<sp/>!=<sp/>rail.second.vec.end()<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>titr-&gt;microsecond<sp/>&lt;=<sp/>limit)<sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!titr-&gt;used)<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cuts[rail.first].push_back(*titr);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>titr-&gt;used<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++titr;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="128" refid="classPDJE__JUDGE_1_1OBJ_1ad879931f442e0265ba8cb4be08567e6c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__JUDGE_1_1OBJ_1ad879931f442e0265ba8cb4be08567e6c" kindref="member">OBJ</ref>()<sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129" refid="classPDJE__JUDGE_1_1OBJ_1a13638340306e350afb0312a07cd428d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__JUDGE_1_1OBJ_1a13638340306e350afb0312a07cd428d6" kindref="member">~OBJ</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_JUDGE</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp"/>
   </compounddef>

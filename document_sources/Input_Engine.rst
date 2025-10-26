@@ -83,7 +83,17 @@ Usage
 
     .. code-block:: gdscript
 
-        #no impl
+        var pdjeinput:PDJE_Input_Module = PDJE_Input_Module.new()
+        pdjeinput.Init()
+        var devs:Array = pdjeinput.GetDevs()
+        print(devs)
+        Config(devs)
+        var input_line:InputLine = pdjeinput.PullOutDataLine()
+        pdjeinput.Run()
+
+        #after use
+
+        pdjeinput.Kill()
 
 see you soon.
 

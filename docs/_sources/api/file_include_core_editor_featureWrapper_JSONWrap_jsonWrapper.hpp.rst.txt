@@ -115,6 +115,8 @@ Defines
 
 - :ref:`exhale_define_jsonWrapper_8hpp_1a65af82b6af1af7e1faf054f2e8cd760d`
 
+- :ref:`exhale_define_jsonWrapper_8hpp_1a5241e7fce23269cf6f4c4452245dca22`
+
 - :ref:`exhale_define_jsonWrapper_8hpp_1a5bbf814d8d2ee9221baeb83fb995746f`
 
 - :ref:`exhale_define_jsonWrapper_8hpp_1a692eb1c09064e09d157c813583852103`

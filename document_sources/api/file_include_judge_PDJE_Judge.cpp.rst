@@ -32,6 +32,8 @@ Includes
 
 - ``PDJE_Judge.hpp`` (:ref:`file_include_judge_PDJE_Judge.hpp`)
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
+
 - ``PDJE_Note_OBJ.hpp`` (:ref:`file_include_judge_NoteOBJ_PDJE_Note_OBJ.hpp`)
 
 - ``atomic``

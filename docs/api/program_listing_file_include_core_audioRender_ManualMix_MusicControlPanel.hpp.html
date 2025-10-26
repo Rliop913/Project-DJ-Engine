@@ -107,7 +107,7 @@
 <span class="k">struct</span><span class="w"> </span><span class="nc">MusicOnDeck</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w">                                  </span><span class="n">play</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Decoder</span><span class="w">                               </span><span class="n">dec</span><span class="p">;</span>
-<span class="w">    </span><span class="n">FXControlPanel</span><span class="w">                      </span><span class="o">*</span><span class="n">fxP</span><span class="p">;</span>
+<span class="w">    </span><span class="n">FXControlPanel</span><span class="w">                       </span><span class="o">*</span><span class="n">fxP</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">soundtouch</span><span class="o">::</span><span class="n">SoundTouch</span><span class="o">&gt;</span><span class="w"> </span><span class="n">st</span><span class="p">;</span>
 <span class="w">    </span><span class="n">MusicOnDeck</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">fxP</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FXControlPanel</span><span class="p">(</span><span class="mi">48000</span><span class="p">))</span>
 <span class="w">    </span><span class="p">{</span>

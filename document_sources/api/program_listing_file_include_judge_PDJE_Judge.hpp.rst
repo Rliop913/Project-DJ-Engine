@@ -16,6 +16,7 @@ Program Listing for File PDJE_Judge.hpp
    #include <optional>
    
    #include "Input_State.hpp"
+   #include "PDJE_EXPORT_SETTER.hpp"
    #include "PDJE_Judge_Loop.hpp"
    #include <atomic>
    #include <thread>
@@ -31,7 +32,7 @@ Program Listing for File PDJE_Judge.hpp
        NOTE_OBJECT_IS_MISSING,
    };
    
-   class JUDGE {
+   class PDJE_API JUDGE {
      private: // cached values
        std::optional<Judge_Loop> loop_obj;
    
@@ -49,7 +50,7 @@ Program Listing for File PDJE_Judge.hpp
        End();
        JUDGE_STATUS
        CheckStatus();
-       JUDGE()  = default;
+       JUDGE();
        ~JUDGE() = default;
    };
    }; // namespace PDJE_JUDGE

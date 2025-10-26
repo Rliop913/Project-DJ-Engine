@@ -36,7 +36,7 @@ Program Listing for File editorTest.cpp
                if (engine->editor->ConfigNewMusic(
                        "testMiku",
                        "Camellia",
-                       "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav")) {
+                       "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav", "83040")) {
    
                    EDIT_ARG_MUSIC temp;
                    temp.musicName    = "testMiku";
@@ -93,13 +93,13 @@ Program Listing for File editorTest.cpp
                if (engine->editor->ConfigNewMusic(
                        "ヒアソビ",
                        "Camellia",
-                       "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav")) {
+                       "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav", "83040")) {
                    EDIT_ARG_MUSIC temp;
                    temp.musicName    = "ヒアソビ";
                    temp.arg.beat     = 0;
                    temp.arg.subBeat  = 0;
                    temp.arg.separate = 4;
-                   temp.arg.bpm      = "134";
+                   temp.arg.bpm      = "138";
                    engine->editor->AddLine<EDIT_ARG_MUSIC>(temp);
                }
                EDIT_ARG_NOTE notetemp;
@@ -151,10 +151,10 @@ Program Listing for File editorTest.cpp
            Fxhandle->FX_ON_OFF(FXList::EQ, true);
            auto ocshandle = Fxhandle->GetArgSetter(FXList::OCSFILTER);
            ocshandle["OCSFilterHighLowSW"](1);
-           ocshandle["rangeFreqHalf"](2500);
-           ocshandle["middleFreq"](5000);
+           ocshandle["RangeFreqHalf"](2500);
+           ocshandle["MiddleFreq"](5000);
    
-           ocshandle["bps"](2.2333333);
+           ocshandle["Bps"](2.2333333);
            ocshandle["OCSFilterDryWet"](0.7);
            getchar();
            musPanel->ChangeBpm("ヒアソビ", 120, 60);
@@ -168,6 +168,11 @@ Program Listing for File editorTest.cpp
            auto deactres = engine->player->Deactivate();
    
            auto editor = engine->GetEditorObject();
+           editor->UpdateLog<EDIT_ARG_MIX>();
+           editor->UpdateLog<EDIT_ARG_KEY_VALUE>();
+           editor->UpdateLog<EDIT_ARG_NOTE>();
+           editor->UpdateLog<EDIT_ARG_MUSIC>();
+           
            editor->GetLogWithJSONGraph<EDIT_ARG_MIX>();
            editor->GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
            editor->GetLogWithJSONGraph<EDIT_ARG_NOTE>();

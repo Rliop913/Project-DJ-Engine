@@ -85,6 +85,7 @@
 <p>↰ <a class="reference internal" href="file_include_core_MainObjects_audioPlayer_audioCallbacks.cpp.html#file-include-core-mainobjects-audioplayer-audiocallbacks-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/core/MainObjects/audioPlayer/audioCallbacks.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;audioCallbacks.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FrameCalc.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;atomic&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstring&gt;</span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="kt">float</span><span class="w"> </span><span class="o">*&gt;</span>
@@ -101,7 +102,10 @@
 <span class="n">audioEngineDataStruct</span><span class="o">::</span><span class="n">CountUp</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">frameCount</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">nowCursor</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">frameCount</span><span class="p">;</span>
-<span class="w">    </span><span class="n">consumedFrames</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">frameCount</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cacheSync</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">syncData</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_acquire</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cacheSync</span><span class="p">.</span><span class="n">consumed_frames</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">frameCount</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cacheSync</span><span class="p">.</span><span class="n">microsecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">highres_clock</span><span class="p">.</span><span class="n">Get_MicroSecond</span><span class="p">();</span>
+<span class="w">    </span><span class="n">syncData</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">cacheSync</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_release</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span>
@@ -142,9 +146,9 @@
 <span class="w">                       </span><span class="n">ma_uint32</span><span class="w">   </span><span class="n">frameCount</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">rendered</span><span class="w"> </span><span class="o">=</span>
-<span class="w">        </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">audioEngineDataStruct</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pDevice</span><span class="o">-&gt;</span><span class="n">pUserData</span><span class="p">);</span>
-<span class="w">    </span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pOutput</span><span class="p">),</span><span class="w"> </span><span class="n">frameCount</span><span class="p">);</span>
+<span class="w">    </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">audioEngineDataStruct</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pDevice</span><span class="o">-&gt;</span><span class="n">pUserData</span><span class="p">);</span>
 <span class="w">    </span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">CountUp</span><span class="p">(</span><span class="n">frameCount</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pOutput</span><span class="p">),</span><span class="w"> </span><span class="n">frameCount</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span>
@@ -154,11 +158,11 @@
 <span class="w">                      </span><span class="n">ma_uint32</span><span class="w">   </span><span class="n">frameCount</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">rendered</span><span class="w"> </span><span class="o">=</span>
-<span class="w">        </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">audioEngineDataStruct</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pDevice</span><span class="o">-&gt;</span><span class="n">pUserData</span><span class="p">);</span>
+<span class="w">    </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">audioEngineDataStruct</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pDevice</span><span class="o">-&gt;</span><span class="n">pUserData</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">CountUp</span><span class="p">(</span><span class="n">frameCount</span><span class="p">);</span>
 <span class="w">    </span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">GetAfterManFX</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pOutput</span><span class="p">),</span><span class="w"> </span><span class="n">frameCount</span><span class="p">);</span>
 <span class="w">    </span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">MusCtrPanel</span><span class="o">-&gt;</span><span class="n">GetPCMFrames</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pOutput</span><span class="p">),</span>
-<span class="w">                                         </span><span class="n">frameCount</span><span class="p">);</span>
-<span class="w">    </span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">CountUp</span><span class="p">(</span><span class="n">frameCount</span><span class="p">);</span>
+<span class="w">                                        </span><span class="n">frameCount</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span>
@@ -168,8 +172,9 @@
 <span class="w">                          </span><span class="n">ma_uint32</span><span class="w">   </span><span class="n">frameCount</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">Data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">audioEngineDataStruct</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pDevice</span><span class="o">-&gt;</span><span class="n">pUserData</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Data</span><span class="o">-&gt;</span><span class="n">CountUp</span><span class="p">(</span><span class="n">frameCount</span><span class="p">);</span>
 <span class="w">    </span><span class="n">Data</span><span class="o">-&gt;</span><span class="n">MusCtrPanel</span><span class="o">-&gt;</span><span class="n">GetPCMFrames</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pOutput</span><span class="p">),</span>
-<span class="w">                                     </span><span class="n">frameCount</span><span class="p">);</span>
+<span class="w">                                    </span><span class="n">frameCount</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File judgeTest.cpp &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File judgeTest.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_include_tests_JUDGE_TESTS_judgeTest.cpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-judgetest-cpp">
+<span id="program-listing-file-include-tests-judge-tests-judgetest-cpp"></span><h1>Program Listing for File judgeTest.cpp<a class="headerlink" href="#program-listing-for-file-judgetest-cpp" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file_include_tests_JUDGE_TESTS_judgeTest.cpp.html#file-include-tests-judge-tests-judgetest-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/tests/JUDGE_TESTS/judgeTest.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Judge.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_interface.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;testRoot.db&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">td</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">SearchTrack</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">engine</span><span class="p">.</span><span class="n">InitPlayer</span><span class="p">(</span><span class="n">PLAY_MODE</span><span class="o">::</span><span class="n">FULL_PRE_RENDER</span><span class="p">,</span><span class="w"> </span><span class="n">td</span><span class="p">.</span><span class="n">front</span><span class="p">(),</span><span class="w"> </span><span class="mi">480</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// engine.player-&gt;Activate();</span>
+<span class="w">    </span><span class="c1">// getchar();</span>
+<span class="w">    </span><span class="c1">// engine.player-&gt;Deactivate();</span>
+<span class="w">    </span><span class="c1">// return 0;</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Input</span><span class="p">();</span>
+<span class="w">    </span><span class="n">input</span><span class="p">.</span><span class="n">Init</span><span class="p">();</span>
+<span class="w">    </span><span class="k">auto</span><span class="w">     </span><span class="n">devs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">GetDevs</span><span class="p">();</span>
+<span class="w">    </span><span class="k">auto</span><span class="w">     </span><span class="n">judge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">JUDGE</span><span class="p">();</span>
+<span class="w">    </span><span class="n">DEV_LIST</span><span class="w"> </span><span class="n">list</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">devs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">Type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">KEYBOARD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;DEVICE id: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">device_specific_id</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;DEVICE NAME: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">            </span><span class="n">list</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+
+<span class="w">            </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">INPUT_CONFIG</span><span class="w"> </span><span class="n">conf</span><span class="p">;</span>
+
+<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">Device_ID</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span>
+<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">DeviceType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">Type</span><span class="p">;</span>
+<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">DeviceKey</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">A</span><span class="p">;</span>
+<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">MatchRail</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">            </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetInputRule</span><span class="p">(</span><span class="n">conf</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">Type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">MOUSE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;DEVICE id: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">device_specific_id</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;DEVICE NAME: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">            </span><span class="n">list</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+
+<span class="w">            </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">INPUT_CONFIG</span><span class="w"> </span><span class="n">conf</span><span class="p">;</span>
+
+<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">Device_ID</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span>
+<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">DeviceType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">Type</span><span class="p">;</span>
+<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">DeviceKey</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">DEVICE_MOUSE_EVENT</span><span class="o">::</span><span class="n">BTN_L</span><span class="p">;</span>
+<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">MatchRail</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">            </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetInputRule</span><span class="p">(</span><span class="n">conf</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">input</span><span class="p">.</span><span class="n">Config</span><span class="p">(</span><span class="n">list</span><span class="p">)){</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;config failed&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">iline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">note_add_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">OBJ_SETTER_CALLBACK</span><span class="w"> </span><span class="n">cb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">        </span><span class="n">noteType</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w">           </span><span class="n">noteDetail</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">        </span><span class="n">firstArg</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">        </span><span class="n">secondArg</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">        </span><span class="n">thirdArg</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">Y_Axis</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">Y_Axis_2</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w">           </span><span class="n">railID</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">NoteObjectCollector</span><span class="p">(</span><span class="n">noteType</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">noteDetail</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">firstArg</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">secondArg</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">thirdArg</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">Y_Axis</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">Y_Axis_2</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">railID</span><span class="p">);</span>
+<span class="w">                                        </span><span class="n">note_add_count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="n">engine</span><span class="p">.</span><span class="n">GetNoteObjects</span><span class="p">(</span><span class="n">td</span><span class="p">.</span><span class="n">front</span><span class="p">(),</span><span class="w"> </span><span class="n">cb</span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;notes: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">note_add_count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetEventRule</span><span class="p">(</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">miss_range_microsecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">use_range_microsecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">90000</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetInputLine</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">());</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">miss_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">MISS_CALLBACK</span><span class="w"> </span><span class="n">missed</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="p">[</span><span class="o">&amp;</span><span class="n">miss_count</span><span class="p">](</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">NOTE_VEC</span><span class="o">&gt;</span><span class="w"> </span><span class="n">misses</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;missed!!!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">miss_count</span><span class="o">++</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">    </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">USE_CALLBACK</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="p">[](</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">railid</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">Pressed</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">IsLate</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">diff</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;used!!!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">IsLate</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot; late &quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot; early &quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">    </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">MOUSE_AXIS_PARSE_CALLBACK</span><span class="w"> </span><span class="n">mouse_parse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="p">[](</span><span class="kt">uint64_t</span><span class="w">                      </span><span class="n">microSecond</span><span class="p">,</span>
+<span class="w">           </span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">P_NOTE_VEC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">found_events</span><span class="p">,</span>
+<span class="w">           </span><span class="kt">uint64_t</span><span class="w">                      </span><span class="n">railID</span><span class="p">,</span>
+<span class="w">           </span><span class="kt">int</span><span class="w">                           </span><span class="n">x</span><span class="p">,</span>
+<span class="w">           </span><span class="kt">int</span><span class="w">                           </span><span class="n">y</span><span class="p">,</span>
+<span class="w">           </span><span class="n">PDJE_Mouse_Axis_Type</span><span class="w">          </span><span class="n">axis_type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetCustomEvents</span><span class="p">({</span><span class="w"> </span><span class="p">.</span><span class="n">missed_event</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">missed</span><span class="p">,</span>
+<span class="w">                                  </span><span class="p">.</span><span class="n">used_event</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">used</span><span class="p">,</span>
+<span class="w">                                  </span><span class="p">.</span><span class="n">custom_axis_parse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mouse_parse</span><span class="p">,</span>
+<span class="w">                                  </span><span class="p">.</span><span class="n">use_event_sleep_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">                                </span><span class="p">.</span><span class="n">miss_event_sleep_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">                            </span><span class="p">});</span>
+<span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetCoreLine</span><span class="p">(</span><span class="n">engine</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">());</span>
+<span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+<span class="w">    </span><span class="n">input</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+<span class="w">    </span><span class="n">engine</span><span class="p">.</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Activate</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// end</span>
+<span class="w">    </span><span class="n">getchar</span><span class="p">();</span>
+<span class="w">    </span><span class="n">engine</span><span class="p">.</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Deactivate</span><span class="p">();</span>
+<span class="w">    </span><span class="n">input</span><span class="p">.</span><span class="n">Kill</span><span class="p">();</span>
+<span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">End</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

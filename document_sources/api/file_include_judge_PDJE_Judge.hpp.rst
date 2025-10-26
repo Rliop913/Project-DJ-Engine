@@ -32,6 +32,8 @@ Includes
 
 - ``Input_State.hpp`` (:ref:`file_include_global_DataLines_Input_State.hpp`)
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
+
 - ``PDJE_Judge_Loop.hpp`` (:ref:`file_include_judge_Loop_PDJE_Judge_Loop.hpp`)
 
 - ``atomic``

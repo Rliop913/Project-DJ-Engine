@@ -111,7 +111,7 @@ MileStones
       0.5.0 : Core Module Implemented
       0.6.0 : PDJE_Input module implement-Windows
       0.7.0 : PDJE_Judge module implement
-      0.8.0 : PDjE_Input module implement-Linux
+      0.8.0 : PDjE_Input module implement-Linux, MIDI
       0.9.0 : PDJE_Input module implement-Mac
       1.0.0 : Stable Release
     section DJ + DAW + HPC + AI Rhythm Engine

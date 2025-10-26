@@ -34,6 +34,10 @@ Includes
 
 - ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
 
+- ``atomic``
+
+- ``audioCallbacks.hpp`` (:ref:`file_include_core_MainObjects_audioPlayer_audioCallbacks.hpp`)
+
 - ``audioPlayer.hpp`` (:ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.hpp`)
 
 

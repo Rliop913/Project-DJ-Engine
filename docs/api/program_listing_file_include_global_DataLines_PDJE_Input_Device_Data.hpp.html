@@ -84,28 +84,22 @@
 <span id="program-listing-file-include-global-datalines-pdje-input-device-data-hpp"></span><h1>Program Listing for File PDJE_Input_Device_Data.hpp<a class="headerlink" href="#program-listing-for-file-pdje-input-device-data-hpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_global_DataLines_PDJE_Input_Device_Data.hpp.html#file-include-global-datalines-pdje-input-device-data-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/global/DataLines/PDJE_Input_Device_Data.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;future&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;latch&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-
-<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PDJE_Dev_Type</span><span class="p">{</span>
-<span class="w">    </span><span class="n">MOUSE</span><span class="p">,</span>
-<span class="w">    </span><span class="n">KEYBOARD</span><span class="p">,</span>
-<span class="w">    </span><span class="n">HID</span><span class="p">,</span>
-<span class="w">    </span><span class="n">UNKNOWN</span>
-<span class="p">};</span>
+<span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PDJE_Dev_Type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">MOUSE</span><span class="p">,</span><span class="w"> </span><span class="n">KEYBOARD</span><span class="p">,</span><span class="w"> </span><span class="n">MIDI</span><span class="p">,</span><span class="w"> </span><span class="n">HID</span><span class="p">,</span><span class="w"> </span><span class="n">UNKNOWN</span><span class="w"> </span><span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">DeviceData</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">PDJE_Dev_Type</span><span class="w"> </span><span class="n">Type</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">Name</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">device_specific_id</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">   </span><span class="n">Name</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">   </span><span class="n">device_specific_id</span><span class="p">;</span>
 <span class="p">};</span>
 <span class="k">using</span><span class="w"> </span><span class="n">DEV_LIST</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="k">using</span><span class="w"> </span><span class="n">ONE_SHOT_DEV_PROMISE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">promise</span><span class="o">&lt;</span><span class="n">DEV_LIST</span><span class="o">&gt;&gt;</span><span class="p">;</span>
 <span class="k">using</span><span class="w"> </span><span class="n">ONE_SHOT_DEV_FUTURE</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="n">DEV_LIST</span><span class="o">&gt;&gt;</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="n">DEV_LIST</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="n">ONE_SHOT_DEV_PROMISE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">promise</span><span class="o">&lt;</span><span class="n">DEV_LIST</span><span class="o">&gt;&gt;</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="n">ONE_SHOT_DEV_FUTURE</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="n">DEV_LIST</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">ONE_SHOT_SYNC</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">latch</span><span class="o">&gt;</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>

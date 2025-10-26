@@ -12,6 +12,7 @@ Program Listing for File pdjeInputTest.cpp
 
    #include "Input_State.hpp"
    #include "PDJE_Input.hpp"
+   #include "PDJE_Input_Device_Data.hpp"
    #include <thread>
    // #include "linux/linux_input.hpp"
    #include <iostream>
@@ -59,13 +60,17 @@ Program Listing for File pdjeInputTest.cpp
                for (const auto &i : *got) {
                    auto name = dline.id_name_conv->find(i.id);
                    if (name != dline.id_name_conv->end()) {
+   
                        std::cout << "name: " << name->second << std::endl;
                        std::cout << "time: " << i.microSecond << std::endl;
-                       std::cout
-                           << "keyNumber: " << static_cast<int>(i.event.keyboard.k)
-                           << std::endl;
-                       std::cout << "pressed" << i.event.keyboard.pressed
-                                 << std::endl;
+                       if (i.type == PDJE_Dev_Type::KEYBOARD) {
+   
+                           std::cout << "keyNumber: "
+                                     << static_cast<int>(i.event.keyboard.k)
+                                     << std::endl;
+                           std::cout << "pressed" << i.event.keyboard.pressed
+                                     << std::endl;
+                       }
    
                        times--;
                        if (times < 0) {

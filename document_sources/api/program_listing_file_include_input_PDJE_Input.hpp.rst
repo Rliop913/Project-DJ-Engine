@@ -13,6 +13,7 @@ Program Listing for File PDJE_Input.hpp
    #pragma once
    
    #include "Input_State.hpp"
+   #include "PDJE_EXPORT_SETTER.hpp"
    #include "PDJE_Input_DataLine.hpp"
    #include "PDJE_Input_Device_Data.hpp"
    #include <barrier>
@@ -27,7 +28,7 @@ Program Listing for File PDJE_Input.hpp
    #include "linux_input.hpp"
    #endif
    
-   class PDJE_Input {
+   class PDJE_API PDJE_Input {
      private:
        OS_Input data;
    
@@ -66,7 +67,7 @@ Program Listing for File PDJE_Input.hpp
    
        ONE_SHOT_DEV_PROMISE config_promise;
        ONE_SHOT_RUN_PROMISE run_command;
-       PDJE_Input() = default;
+       PDJE_Input();
    
        ~PDJE_Input() = default;
    };

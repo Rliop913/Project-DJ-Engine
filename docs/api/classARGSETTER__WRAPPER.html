@@ -27,7 +27,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Class audioPlayer" href="classaudioPlayer.html" />
+    <link rel="next" title="Class ATOMIC_EVENT" href="classATOMIC__EVENT.html" />
     <link rel="prev" title="Class AddController" href="classAddController.html" /> 
 </head>
 
@@ -58,6 +58,7 @@
 <li class="toctree-l3"><a class="reference internal" href="api_root.html#namespaces">Namespaces</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="api_root.html#classes-and-structs">Classes and Structs</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="structaudioEngineDataStruct.html">Struct audioEngineDataStruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structaudioSyncData.html">Struct audioSyncData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structBlameResult.html">Struct BlameResult</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structBpmFragment.html">Struct BpmFragment</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structBpmStruct.html">Struct BpmStruct</a></li>
@@ -74,7 +75,6 @@
 <li class="toctree-l4"><a class="reference internal" href="structgitwrap_1_1log.html">Struct log</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structgitwrap_1_1logHandle_1_1OID__EQUAL.html">Struct logHandle::OID_EQUAL</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structgitwrap_1_1logHandle_1_1OID__HASHER.html">Struct logHandle::OID_HASHER</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structID.html">Struct ID</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structIngredients.html">Struct Ingredients</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structKVVisitor.html">Struct KVVisitor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structlineLog.html">Struct lineLog</a></li>
@@ -93,16 +93,26 @@
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__HID__Event.html">Struct PDJE_HID_Event</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__INPUT__DATA__LINE.html">Struct PDJE_INPUT_DATA_LINE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Input__Log.html">Struct PDJE_Input_Log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1Custom__Events.html">Struct Custom_Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1EVENT__RULE.html">Struct EVENT_RULE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1INPUT__CONFIG.html">Struct INPUT_CONFIG</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1INPUT__RULE.html">Struct INPUT_RULE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1Judge__Loop_1_1mouse__btn__event.html">Struct Judge_Loop::mouse_btn_event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas.html">Struct Judge_Loop::useDatas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1NOTE.html">Struct NOTE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1NOTE__ITR.html">Struct NOTE_ITR</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Keyboard__Event.html">Struct PDJE_Keyboard_Event</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Mouse__Event.html">Struct PDJE_Mouse_Event</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPlayPosition.html">Struct PlayPosition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPosition.html">Struct Position</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structRawDeviceData.html">Struct RawDeviceData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structRT__ID.html">Struct RT_ID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structstd_1_1hash_3_01PDJE__JUDGE_1_1INPUT__RULE_01_4.html">Template Struct hash&lt; PDJE_JUDGE::INPUT_RULE &gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structstmt.html">Struct stmt</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structtrackdata.html">Struct trackdata</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classAddController.html">Class AddController</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Class ARGSETTER_WRAPPER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classATOMIC__EVENT.html">Class ATOMIC_EVENT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classaudioPlayer.html">Class audioPlayer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classaudioRender.html">Class audioRender</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classBattleDj.html">Class BattleDj</a></li>
@@ -151,14 +161,18 @@
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Buffer__Arena.html">Template Class PDJE_Buffer_Arena</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Editor.html">Class PDJE_Editor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__GitHandler.html">Class PDJE_GitHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__HIGHRES__CLOCK_1_1CLOCK.html">Class CLOCK</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Input.html">Class PDJE_Input</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JSONHandler.html">Template Class PDJE_JSONHandler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="classPDJE__JUDGE.html">Class PDJE_JUDGE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__JUDGE_1_1JUDGE.html">Class JUDGE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__JUDGE_1_1Judge__Init.html">Class Judge_Init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__JUDGE_1_1Judge__Loop.html">Class Judge_Loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__JUDGE_1_1OBJ.html">Class OBJ</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Linter.html">Template Class PDJE_Linter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__LINUX_1_1PDJE__Socket.html">Class PDJE_Socket</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Name__Sanitizer.html">Class PDJE_Name_Sanitizer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaser__PDJE.html">Class Phaser_PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPhaserMan.html">Class PhaserMan</a></li>
-<li class="toctree-l4"><a class="reference internal" href="classQPC__Timer.html">Class QPC_Timer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classRobot__PDJE.html">Class Robot_PDJE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classRobotMan.html">Class RobotMan</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classRoll__PDJE.html">Class Roll_PDJE</a></li>
@@ -280,7 +294,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="classAddController.html" class="btn btn-neutral float-left" title="Class AddController" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="classaudioPlayer.html" class="btn btn-neutral float-right" title="Class audioPlayer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="classATOMIC__EVENT.html" class="btn btn-neutral float-right" title="Class ATOMIC_EVENT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

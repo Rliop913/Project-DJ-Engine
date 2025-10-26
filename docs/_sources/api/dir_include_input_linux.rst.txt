@@ -17,6 +17,7 @@ Subdirectories
 
 - :ref:`dir_include_input_linux_common`
 - :ref:`dir_include_input_linux_RT`
+- :ref:`dir_include_input_linux_socket`
 
 
 Files

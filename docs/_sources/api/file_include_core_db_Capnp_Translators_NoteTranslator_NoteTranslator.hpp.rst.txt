@@ -38,6 +38,8 @@ Includes
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
 
+- ``PDJE_OBJ_SETTER.hpp`` (:ref:`file_include_global_PDJE_OBJ_SETTER.hpp`)
+
 - ``functional``
 
 - ``optional``
@@ -64,11 +66,4 @@ Classes
 
 
 - :ref:`exhale_class_classNoteTranslator`
-
-
-Typedefs
---------
-
-
-- :ref:`exhale_typedef_NoteTranslator_8hpp_1ab8f339ae52f7b01e26f4de03178814e3`
 

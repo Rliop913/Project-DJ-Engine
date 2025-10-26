@@ -89,6 +89,8 @@
         <link refid="PDJE__LOG__SETTER_8hpp"/>
         <childnode refid="19" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
@@ -219,9 +221,9 @@
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mp-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getType()<sp/>==<sp/>TypeEnum::BPM_CONTROL)<sp/>{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bpmStr<sp/>=<sp/>std::string(mp-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getFirst().cStr());</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBpmFragment" kindref="compound">BpmFragment</ref><sp/>tempbpm;</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tempbpm.<ref refid="structBpmFragment_1a9f2f09c2a59575d2aaf85decfaca4f62" kindref="member">beat</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>mp-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getBeat();</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tempbpm.<ref refid="structBpmFragment_1a464d98afe02f129e661709925f5ffa13" kindref="member">subBeat</ref><sp/><sp/>=<sp/>mp-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getSubBeat();</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tempbpm.<ref refid="structBpmFragment_1a8cb01948227beb2939e67b0aed378fab" kindref="member">separate</ref><sp/>=<sp/>mp-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getSeparate();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tempbpm.<ref refid="structBpmFragment_1a6df9ed3787b58f0cbdb2ae50dcee381c" kindref="member">beat</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>mp-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getBeat();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tempbpm.<ref refid="structBpmFragment_1aace6d5fa7d6febcccb3d383dba2de1ff" kindref="member">subBeat</ref><sp/><sp/>=<sp/>mp-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getSubBeat();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tempbpm.<ref refid="structBpmFragment_1ab49167c4e1474b25e83ee1294435d6db" kindref="member">separate</ref><sp/>=<sp/>mp-&gt;<ref refid="structMixStruct_1a314c1d61023e8cd69d16e3fed823f0f5" kindref="member">RP</ref>.getSeparate();</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tempbpm.<ref refid="structBpmFragment_1aff3e11fa4ee76d171b5bf93da9a27002" kindref="member">bpm</ref><sp/>=<sp/>std::stod(bpmStr);</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>

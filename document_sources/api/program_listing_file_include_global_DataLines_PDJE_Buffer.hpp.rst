@@ -12,15 +12,16 @@ Program Listing for File PDJE_Buffer.hpp
 
    #pragma once
    
+   #include "PDJE_EXPORT_SETTER.hpp"
    #include <atomic>
    #include <memory_resource>
-   #include <optional>
    
-   #define RESET_PMR_VECTOR(ARENA, VEC) std::pmr::vector<T>{ &ARENA }.swap(VEC)
+   #include <vector>
    
    template <typename T> class PDJE_Buffer_Arena {
      private:
        std::pmr::unsynchronized_pool_resource arena;
+       std::pmr::polymorphic_allocator<T>     allocator;
        std::pmr::vector<T>                    buf1;
        std::pmr::vector<T>                    buf2;
        std::atomic_flag                       lock      = ATOMIC_FLAG_INIT;
@@ -29,14 +30,17 @@ Program Listing for File PDJE_Buffer.hpp
      public:
        void
        Write(const T &data);
+   
        std::pmr::vector<T> *
        Get();
    
-       PDJE_Buffer_Arena() : arena{}, buf1(&arena), buf2(&arena)
+       PDJE_Buffer_Arena()
+           : arena{}, allocator(&arena), buf1(allocator), buf2(allocator)
        {
-           buf1.reserve(2048);
-           RESET_PMR_VECTOR(arena, buf1);
+           std::pmr::vector<T> tempVec{ allocator };
+           tempVec.reserve(2048);
        }
+   
        ~PDJE_Buffer_Arena() = default;
    };
    

@@ -12,6 +12,7 @@ Program Listing for File windows_input.cpp
 
    #include "windows_input.hpp"
    #include "PDJE_Input.hpp"
+   #include "PDJE_LOG_SETTER.hpp"
    #include "dev_path_to_name.hpp"
    #include "windows_keyboard_fill.hpp"
    #include <SetupAPI.h>
@@ -60,8 +61,12 @@ Program Listing for File windows_input.cpp
                                           0,
                                           nullptr,
                                           nullptr);
-       if (required <= 0)
+       if (required <= 0) {
+   
+           critlog(
+               "pdje input module-Windows impl- WideCharToMultiByte size failed");
            throw std::runtime_error("WideCharToMultiByte size failed");
+       }
    
        std::string out(required, '\0');
        int         written = WideCharToMultiByte(CP_UTF8,
@@ -72,8 +77,12 @@ Program Listing for File windows_input.cpp
                                          required,
                                          nullptr,
                                          nullptr);
-       if (written <= 0)
+       if (written <= 0) {
+   
+           critlog("pdje input module-Windows impl- WideCharToMultiByte convert "
+                   "failed");
            throw std::runtime_error("WideCharToMultiByte convert failed");
+       }
    
        if (!out.empty() && out.back() == '\0')
            out.pop_back();
@@ -108,7 +117,7 @@ Program Listing for File windows_input.cpp
            if (w == WAIT_OBJECT_0) {
    
                if (PeekMessageW(&msg, nullptr, WM_QUIT, WM_QUIT, PM_REMOVE)) {
-                   // std::cout << "trigged" << std::endl;
+   
                    break;
                }
                while (PeekMessageW(&msg, nullptr, WM_INPUT, WM_INPUT, PM_REMOVE)) {
@@ -269,6 +278,8 @@ Program Listing for File windows_input.cpp
        auto regres = RegisterRawInputDevices(
            devTypes.data(), devTypes.size(), sizeof(RAWINPUTDEVICE));
        if (!regres) {
+           critlog("failed to register rawinput devices. maybe configed invalid "
+                   "devices.");
            return;
        }
    

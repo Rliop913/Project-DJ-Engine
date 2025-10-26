@@ -34,6 +34,8 @@ Includes
 
 - ``PDJE_Input.hpp`` (:ref:`file_include_input_PDJE_Input.hpp`)
 
+- ``PDJE_Input_Device_Data.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_Device_Data.hpp`)
+
 - ``iostream``
 
 - ``thread``

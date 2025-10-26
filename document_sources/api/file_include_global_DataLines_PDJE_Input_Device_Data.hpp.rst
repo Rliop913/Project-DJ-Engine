@@ -62,6 +62,8 @@ Included By
 
 - :ref:`file_include_judge_PDJE_Rule.hpp`
 
+- :ref:`file_include_tests_INPUT_TESTS_pdjeInputTest.cpp`
+
 
 
 

@@ -32,6 +32,8 @@ Includes
 
 - ``PDJE_Input.hpp`` (:ref:`file_include_input_PDJE_Input.hpp`)
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
+
 - ``SetupAPI.h``
 
 - ``bitset``

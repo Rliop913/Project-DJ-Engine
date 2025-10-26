@@ -32,6 +32,8 @@ Includes
 
 - ``Input_State.hpp`` (:ref:`file_include_global_DataLines_Input_State.hpp`)
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
+
 - ``PDJE_Input_DataLine.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_DataLine.hpp`)
 
 - ``PDJE_Input_Device_Data.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_Device_Data.hpp`)

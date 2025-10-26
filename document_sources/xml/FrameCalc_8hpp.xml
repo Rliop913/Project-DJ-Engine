@@ -50,7 +50,7 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="12">
@@ -71,6 +71,8 @@
         <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -97,25 +99,28 @@
       <node id="14">
         <label>filesystem</label>
       </node>
-      <node id="20">
+      <node id="21">
         <label>hwy/aligned_allocator.h</label>
+      </node>
+      <node id="15">
+        <label>mutex</label>
       </node>
       <node id="5">
         <label>optional</label>
       </node>
-      <node id="15">
+      <node id="16">
         <label>spdlog/sinks/basic_file_sink.h</label>
       </node>
-      <node id="16">
+      <node id="17">
         <label>spdlog/sinks/stdout_color_sinks.h</label>
       </node>
-      <node id="17">
+      <node id="18">
         <label>spdlog/spdlog.h</label>
       </node>
-      <node id="18">
+      <node id="19">
         <label>string_view</label>
       </node>
-      <node id="19">
+      <node id="20">
         <label>type_traits</label>
       </node>
       <node id="6">
@@ -777,22 +782,22 @@
 <codeline lineno="28"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(static_cast&lt;TYPE&gt;(SUBBEAT)<sp/>/<sp/>static_cast&lt;TYPE&gt;(SEP))</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceFrameCalc" kindref="compound">FrameCalc</ref><sp/>{</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><ref refid="namespaceFrameCalc_1a12e18e06211c6b6148f77eef662555ad" kindref="member">CountFrame</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>Sbeat,</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>SsubBeat,</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>Sseparate,</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>Ebeat,</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>EsubBeat,</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>Eseparate,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>uint64_t</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><ref refid="namespaceFrameCalc_1aed991cda2f4549b15a01ad2e71019d69" kindref="member">CountFrame</ref>(uint64_t<sp/>Sbeat,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>SsubBeat,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>Sseparate,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>Ebeat,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>EsubBeat,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>Eseparate,</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bpm);</highlight></codeline>
 <codeline lineno="55"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>FrameCalc</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="61" refid="structBpmFragment" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="structBpmFragment" kindref="compound">BpmFragment</ref><sp/>{</highlight></codeline>
-<codeline lineno="62" refid="structBpmFragment_1a9f2f09c2a59575d2aaf85decfaca4f62" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBpmFragment_1a9f2f09c2a59575d2aaf85decfaca4f62" kindref="member">beat</ref>;</highlight></codeline>
-<codeline lineno="63" refid="structBpmFragment_1a464d98afe02f129e661709925f5ffa13" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBpmFragment_1a464d98afe02f129e661709925f5ffa13" kindref="member">subBeat</ref>;</highlight></codeline>
-<codeline lineno="64" refid="structBpmFragment_1a8cb01948227beb2939e67b0aed378fab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBpmFragment_1a8cb01948227beb2939e67b0aed378fab" kindref="member">separate</ref>;</highlight></codeline>
-<codeline lineno="65" refid="structBpmFragment_1a2a8288e055869bb966d381378b908b48" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="structBpmFragment_1a2a8288e055869bb966d381378b908b48" kindref="member">frame_to_here</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="66" refid="structBpmFragment_1aff3e11fa4ee76d171b5bf93da9a27002" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBpmFragment_1aff3e11fa4ee76d171b5bf93da9a27002" kindref="member">bpm</ref>;</highlight></codeline>
+<codeline lineno="62" refid="structBpmFragment_1a6df9ed3787b58f0cbdb2ae50dcee381c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBpmFragment_1a6df9ed3787b58f0cbdb2ae50dcee381c" kindref="member">beat</ref>=0;</highlight></codeline>
+<codeline lineno="63" refid="structBpmFragment_1aace6d5fa7d6febcccb3d383dba2de1ff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBpmFragment_1aace6d5fa7d6febcccb3d383dba2de1ff" kindref="member">subBeat</ref>=0;</highlight></codeline>
+<codeline lineno="64" refid="structBpmFragment_1ab49167c4e1474b25e83ee1294435d6db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBpmFragment_1ab49167c4e1474b25e83ee1294435d6db" kindref="member">separate</ref>=0;</highlight></codeline>
+<codeline lineno="65" refid="structBpmFragment_1a16345d6c43cda5a23c75e76ca90f535a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="structBpmFragment_1a16345d6c43cda5a23c75e76ca90f535a" kindref="member">frame_to_here</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="66" refid="structBpmFragment_1aff3e11fa4ee76d171b5bf93da9a27002" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBpmFragment_1aff3e11fa4ee76d171b5bf93da9a27002" kindref="member">bpm</ref>=0;</highlight></codeline>
 <codeline lineno="67"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="73" refid="structBpmStruct" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="structBpmStruct" kindref="compound">BpmStruct</ref><sp/>{</highlight></codeline>

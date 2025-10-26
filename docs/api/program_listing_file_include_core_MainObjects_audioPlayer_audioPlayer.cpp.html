@@ -85,6 +85,8 @@
 <p>↰ <a class="reference internal" href="file_include_core_MainObjects_audioPlayer_audioPlayer.cpp.html#file-include-core-mainobjects-audioplayer-audioplayer-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/core/MainObjects/audioPlayer/audioPlayer.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;audioPlayer.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;audioCallbacks.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;atomic&gt;</span>
 
 <span class="k">extern</span><span class="w"> </span><span class="kt">void</span>
 <span class="nf">FullPreRender_callback</span><span class="p">(</span><span class="n">ma_device</span><span class="w">  </span><span class="o">*</span><span class="n">pDevice</span><span class="p">,</span>
@@ -209,7 +211,7 @@
 <span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span>
 <span class="n">audioPlayer</span><span class="o">::</span><span class="n">GetConsumedFrames</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">engineDatas</span><span class="p">.</span><span class="n">consumedFrames</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">engineDatas</span><span class="p">.</span><span class="n">syncData</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_acquire</span><span class="p">).</span><span class="n">consumed_frames</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="n">FXControlPanel</span><span class="w"> </span><span class="o">*</span>
@@ -247,9 +249,10 @@
 <span class="n">audioPlayer</span><span class="o">::</span><span class="n">PullOutDataLine</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">PDJE_CORE_DATA_LINE</span><span class="w"> </span><span class="n">dline</span><span class="p">;</span>
-<span class="w">    </span><span class="n">dline</span><span class="p">.</span><span class="n">used_frame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">engineDatas</span><span class="p">.</span><span class="n">consumedFrames</span><span class="p">;</span>
-<span class="w">    </span><span class="n">dline</span><span class="p">.</span><span class="n">nowCursor</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">engineDatas</span><span class="p">.</span><span class="n">nowCursor</span><span class="p">;</span>
-<span class="w">    </span><span class="n">dline</span><span class="p">.</span><span class="n">maxCursor</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">engineDatas</span><span class="p">.</span><span class="n">maxCursor</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">dline</span><span class="p">.</span><span class="n">nowCursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">engineDatas</span><span class="p">.</span><span class="n">nowCursor</span><span class="p">;</span>
+<span class="w">    </span><span class="n">dline</span><span class="p">.</span><span class="n">maxCursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">engineDatas</span><span class="p">.</span><span class="n">maxCursor</span><span class="p">;</span>
+<span class="w">    </span><span class="n">dline</span><span class="p">.</span><span class="n">syncD</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">engineDatas</span><span class="p">.</span><span class="n">syncData</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">engineDatas</span><span class="p">.</span><span class="n">pcmDataPoint</span><span class="o">-&gt;</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">dline</span><span class="p">.</span><span class="n">preRenderedData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engineDatas</span><span class="p">.</span><span class="n">pcmDataPoint</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>

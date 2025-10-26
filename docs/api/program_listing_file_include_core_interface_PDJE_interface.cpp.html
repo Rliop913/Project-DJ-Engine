@@ -198,6 +198,8 @@
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">noteTrans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NoteTranslator</span><span class="p">();</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">mixTrans</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MixTranslator</span><span class="p">();</span>
 
+<span class="w">    </span><span class="n">mixTrans</span><span class="o">-&gt;</span><span class="n">Read</span><span class="p">(</span><span class="n">mixreader</span><span class="p">);</span>
+
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mixTrans</span><span class="o">-&gt;</span><span class="n">bpms</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">noteTrans</span><span class="o">-&gt;</span><span class="n">Read</span><span class="p">(</span>
 <span class="w">            </span><span class="n">notereader</span><span class="p">,</span><span class="w"> </span><span class="n">mixTrans</span><span class="o">-&gt;</span><span class="n">bpms</span><span class="p">.</span><span class="n">value</span><span class="p">().</span><span class="n">bpmVec</span><span class="p">,</span><span class="w"> </span><span class="n">ObjectSetCallback</span><span class="p">);</span>

@@ -18,6 +18,7 @@ Files
 
 - :ref:`file_include_global_DataLines_fileNameSanitizer.cpp`
 - :ref:`file_include_global_DataLines_fileNameSanitizer.hpp`
+- :ref:`file_include_global_DataLines_Input_State.hpp`
 - :ref:`file_include_global_DataLines_PDJE_Buffer.hpp`
 - :ref:`file_include_global_DataLines_PDJE_Core_DataLine.hpp`
 - :ref:`file_include_global_DataLines_PDJE_Input_DataLine.hpp`

@@ -111,7 +111,7 @@
 
 <span class="kt">bool</span>
 <span class="n">MusicControlPanel</span><span class="o">::</span><span class="n">CueMusic</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w">       </span><span class="o">&amp;</span><span class="n">title</span><span class="p">,</span>
-<span class="w">                             </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">newPos</span><span class="p">)</span>
+<span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">newPos</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">safeTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Name_Sanitizer</span><span class="o">::</span><span class="n">sanitizeFileName</span><span class="p">(</span><span class="n">title</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">safeTitle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -205,8 +205,8 @@
 
 <span class="kt">bool</span>
 <span class="nf">MusicControlPanel::ChangeBpm</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">title</span><span class="p">,</span>
-<span class="w">                              </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w">       </span><span class="n">targetBpm</span><span class="p">,</span>
-<span class="w">                              </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w">       </span><span class="n">originBpm</span><span class="p">)</span>
+<span class="w">                             </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w">       </span><span class="n">targetBpm</span><span class="p">,</span>
+<span class="w">                             </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w">       </span><span class="n">originBpm</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">safeTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Name_Sanitizer</span><span class="o">::</span><span class="n">sanitizeFileName</span><span class="p">(</span><span class="n">title</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">safeTitle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
