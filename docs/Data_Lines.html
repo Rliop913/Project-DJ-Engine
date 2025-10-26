@@ -73,6 +73,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv419PDJE_CORE_DATA_LINE"><code class="docutils literal notranslate"><span class="pre">PDJE_CORE_DATA_LINE</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#input-data-line">Input Data Line</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_Input15PullOutDataLineEv"><code class="docutils literal notranslate"><span class="pre">PullOutDataLine()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv420PDJE_INPUT_DATA_LINE"><code class="docutils literal notranslate"><span class="pre">PDJE_INPUT_DATA_LINE</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
@@ -275,6 +280,70 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <span class="n">core_line</span><span class="o">.</span><span class="n">GetUsedFrame</span><span class="p">()</span>
 <span class="c1"># Total number of PCM frames actually played (accumulated).</span>
 <span class="c1"># Does not decrease when seeking; represents playback progress.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="input-data-line">
+<h2>Input Data Line<a class="headerlink" href="#input-data-line" title="Link to this heading"></a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input15PullOutDataLineEv">
+<span id="_CPPv3N10PDJE_Input15PullOutDataLineEv"></span><span id="_CPPv2N10PDJE_Input15PullOutDataLineEv"></span><span id="PDJE_Input::PullOutDataLine"></span><span class="target" id="classPDJE__Input_1ac4a8a1fc6bce51c498176db187c03e34"></span><a class="reference internal" href="api/structPDJE__INPUT__DATA__LINE.html#_CPPv420PDJE_INPUT_DATA_LINE" title="PDJE_INPUT_DATA_LINE"><span class="n"><span class="pre">PDJE_INPUT_DATA_LINE</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classPDJE__Input.html#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">PullOutDataLine</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd><p>pull out input data line. The input Loop will pass datas in here. </p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv420PDJE_INPUT_DATA_LINE">
+<span id="_CPPv320PDJE_INPUT_DATA_LINE"></span><span id="_CPPv220PDJE_INPUT_DATA_LINE"></span><span id="PDJE_INPUT_DATA_LINE"></span><span class="target" id="structPDJE__INPUT__DATA__LINE"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_INPUT_DATA_LINE</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-4">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">dline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pdje_input_object</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">();</span>
+<span class="n">pdje_input_object</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">got</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dline</span><span class="p">.</span><span class="n">input_arena</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">*</span><span class="n">got</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dline</span><span class="p">.</span><span class="n">id_name_conv</span><span class="o">-&gt;</span><span class="n">find</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">dline</span><span class="p">.</span><span class="n">id_name_conv</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;name: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name</span><span class="o">-&gt;</span><span class="n">second</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;time: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">microSecond</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">KEYBOARD</span><span class="p">){</span>
+<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span>
+<span class="w">                </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;keyNumber: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">k</span><span class="p">)</span>
+<span class="w">                </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="c1">//check PDJE_KEY::</span>
+<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;pressed&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">pressed</span>
+<span class="w">                </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-5">
+C#</label><div class="sd-tab-content docutils">
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="c1">//no impl</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-6">
+PYTHON</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#no impl</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-7">
+GDSCRIPT</label><div class="sd-tab-content docutils">
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="c1">#no impl</span>
 </pre></div>
 </div>
 </div>

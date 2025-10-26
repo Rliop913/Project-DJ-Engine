@@ -17,8 +17,6 @@ Files
 -----
 
 - :ref:`file_include_input_windows_dev_path_to_name.hpp`
-- :ref:`file_include_input_windows_QPC_Timer.cpp`
-- :ref:`file_include_input_windows_QPC_Timer.hpp`
 - :ref:`file_include_input_windows_windows_input.cpp`
 - :ref:`file_include_input_windows_windows_input.hpp`
 - :ref:`file_include_input_windows_windows_keyboard_fill.hpp`

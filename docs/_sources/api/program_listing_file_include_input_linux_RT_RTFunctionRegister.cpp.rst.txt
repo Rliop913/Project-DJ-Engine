@@ -12,6 +12,7 @@ Program Listing for File RTFunctionRegister.cpp
 
    #include "Common_Features.hpp"
    #include "Input_State.hpp"
+   #include "PDJE_Input_Device_Data.hpp"
    #include "RTSocket.hpp"
    #include <filesystem>
    #include <iconv.h>
@@ -28,7 +29,8 @@ Program Listing for File RTFunctionRegister.cpp
            data_body db;
            for (const auto &dev : devs) {
                db.push_back(dev.Name);
-               db.push_back(dev.Type);
+               // db.push_back(dev.Type);
+               // todo- change this
            }
    
            int sendFlag = Common_Features::LPSend(
@@ -106,22 +108,22 @@ Program Listing for File RTFunctionRegister.cpp
                        libevdev_has_event_code(info, EV_KEY, KEY_A) &&
                        libevdev_has_event_code(info, EV_KEY, KEY_SPACE) &&
                        libevdev_has_event_code(info, EV_KEY, KEY_ENTER)) {
-                       dd.Type = "KEYBOARD";
+                       dd.Type = PDJE_Dev_Type::KEYBOARD;
                    } else if (libevdev_has_event_type(info, EV_REL) &&
                               libevdev_has_event_code(info, EV_REL, REL_X) &&
                               libevdev_has_event_code(info, EV_REL, REL_Y)) {
-                       dd.Type = "MOUSE";
+                       dd.Type = PDJE_Dev_Type::MOUSE;
                    } else if (libevdev_has_event_type(info, EV_ABS) &&
                               (libevdev_has_event_code(
                                    info, EV_KEY, BTN_GAMEPAD) ||
                                libevdev_has_event_code(
                                    info, EV_KEY, BTN_JOYSTICK))) {
-                       dd.Type = "GAMEPAD";
+                       dd.Type = PDJE_Dev_Type::HID;
                    } else if (libevdev_has_event_type(info, EV_ABS) &&
                               libevdev_has_event_code(info, EV_KEY, BTN_TOUCH)) {
-                       dd.Type = "TOUCH";
+                       dd.Type = PDJE_Dev_Type::MOUSE;
                    } else {
-                       dd.Type = "HID";
+                       dd.Type = PDJE_Dev_Type::HID;
                    }
                    lsdev.push_back(dd);
                }

@@ -85,58 +85,61 @@
 <p>↰ <a class="reference internal" href="file_include_global_DataLines_PDJE_Buffer.hpp.html#file-include-global-datalines-pdje-buffer-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/global/DataLines/PDJE_Buffer.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory_resource&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;atomic&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory_resource&gt;</span>
 
-<span class="cp">#define RESET_PMR_VECTOR(ARENA, VEC) std::pmr::vector&lt;T&gt;{&amp;ARENA}.swap(VEC)</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_Buffer_Arena</span><span class="p">{</span>
-<span class="k">private</span><span class="o">:</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PDJE_Buffer_Arena</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">unsynchronized_pool_resource</span><span class="w"> </span><span class="n">arena</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">buf1</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">buf2</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">atomic_flag</span><span class="w"> </span><span class="n">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ATOMIC_FLAG_INIT</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">buf_first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">polymorphic_allocator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w">     </span><span class="n">allocator</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w">                    </span><span class="n">buf1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w">                    </span><span class="n">buf2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">atomic_flag</span><span class="w">                       </span><span class="n">lock</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">ATOMIC_FLAG_INIT</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">                                   </span><span class="n">buf_first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Write</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span><span class="w"> </span><span class="n">Get</span><span class="p">();</span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span>
+<span class="w">    </span><span class="n">Write</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">data</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">PDJE_Buffer_Arena</span><span class="p">()</span><span class="o">:</span>
-<span class="w">    </span><span class="n">arena</span><span class="p">{},</span>
-<span class="w">    </span><span class="n">buf1</span><span class="p">(</span><span class="o">&amp;</span><span class="n">arena</span><span class="p">),</span>
-<span class="w">    </span><span class="n">buf2</span><span class="p">(</span><span class="o">&amp;</span><span class="n">arena</span><span class="p">)</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span>
+<span class="w">    </span><span class="n">Get</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">PDJE_Buffer_Arena</span><span class="p">()</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">arena</span><span class="p">{},</span><span class="w"> </span><span class="n">allocator</span><span class="p">(</span><span class="o">&amp;</span><span class="n">arena</span><span class="p">),</span><span class="w"> </span><span class="n">buf1</span><span class="p">(</span><span class="n">allocator</span><span class="p">),</span><span class="w"> </span><span class="n">buf2</span><span class="p">(</span><span class="n">allocator</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">buf1</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="mi">2048</span><span class="p">);</span>
-<span class="w">        </span><span class="n">RESET_PMR_VECTOR</span><span class="p">(</span><span class="n">arena</span><span class="p">,</span><span class="w"> </span><span class="n">buf1</span><span class="p">);</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tempVec</span><span class="p">{</span><span class="w"> </span><span class="n">allocator</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="n">tempVec</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="mi">2048</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="o">~</span><span class="n">PDJE_Buffer_Arena</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
 <span class="kt">void</span>
-<span class="n">PDJE_Buffer_Arena</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Write</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="n">PDJE_Buffer_Arena</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Write</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">data</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">lock</span><span class="p">.</span><span class="n">test_and_set</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_acquire</span><span class="p">)){}</span>
-<span class="w">    </span><span class="c1">//locked</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">buf_first</span><span class="p">){</span>
-<span class="w">        </span><span class="n">buf1</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">lock</span><span class="p">.</span><span class="n">test_and_set</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_acquire</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// locked</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buf_first</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">buf1</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">buf2</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="n">lock</span><span class="p">.</span><span class="n">clear</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_release</span><span class="p">);</span>
-<span class="w">    </span><span class="c1">//unlock</span>
+<span class="w">    </span><span class="c1">// unlock</span>
 <span class="p">}</span>
 
-<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span>
 <span class="n">PDJE_Buffer_Arena</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Get</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">lock</span><span class="p">.</span><span class="n">test_and_set</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_acquire</span><span class="p">)){}</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">lock</span><span class="p">.</span><span class="n">test_and_set</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_acquire</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">buf_first</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">buf2</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">buf1</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
 <span class="w">    </span><span class="n">buf_first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">buf_first</span><span class="p">;</span>
 <span class="w">    </span><span class="n">lock</span><span class="p">.</span><span class="n">clear</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_release</span><span class="p">);</span>

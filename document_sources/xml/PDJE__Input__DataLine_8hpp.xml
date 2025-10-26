@@ -2,21 +2,41 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="PDJE__Input__DataLine_8hpp" kind="file" language="C++">
     <compoundname>PDJE_Input_DataLine.hpp</compoundname>
-    <includes refid="PDJE__EXPORT__SETTER_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
-    <includes refid="PDJE__Buffer_8hpp" local="yes">PDJE_Buffer.hpp</includes>
     <includes refid="Input__State_8hpp" local="yes">Input_State.hpp</includes>
+    <includes refid="PDJE__Buffer_8hpp" local="yes">PDJE_Buffer.hpp</includes>
+    <includes refid="PDJE__EXPORT__SETTER_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
     <includes refid="PDJE__Input__Device__Data_8hpp" local="yes">PDJE_Input_Device_Data.hpp</includes>
+    <includes local="no">unordered_map</includes>
     <includedby refid="PDJE__Input_8hpp" local="yes">include/input/PDJE_Input.hpp</includedby>
+    <includedby refid="linux__input_8hpp" local="yes">include/input/linux/linux_input.hpp</includedby>
     <includedby refid="windows__input_8hpp" local="yes">include/input/windows/windows_input.hpp</includedby>
+    <includedby refid="PDJE__Judge__Init_8hpp" local="yes">include/judge/Init/PDJE_Judge_Init.hpp</includedby>
+    <includedby refid="PDJE__Judge__Loop_8cpp" local="yes">include/judge/Loop/PDJE_Judge_Loop.cpp</includedby>
     <incdepgraph>
-      <node id="3">
-        <label>PDJE_Buffer.hpp</label>
-        <link refid="PDJE__Buffer_8hpp"/>
+      <node id="2">
+        <label>Input_State.hpp</label>
+        <link refid="Input__State_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>PDJE_Buffer.hpp</label>
+        <link refid="PDJE__Buffer_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -24,46 +44,41 @@
         <link refid="PDJE__Input__DataLine_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="11">
         <label>PDJE_Input_Device_Data.hpp</label>
         <link refid="PDJE__Input__Device__Data_8hpp"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="2">
+      <node id="9">
         <label>PDJE_EXPORT_SETTER.hpp</label>
         <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
-      <node id="7">
-        <label>Input_State.hpp</label>
-        <link refid="Input__State_8hpp"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
+      <node id="10">
         <label>atomic</label>
       </node>
-      <node id="8">
+      <node id="3">
         <label>future</label>
+      </node>
+      <node id="12">
+        <label>latch</label>
       </node>
       <node id="4">
         <label>memory_resource</label>
@@ -71,10 +86,13 @@
       <node id="5">
         <label>optional</label>
       </node>
-      <node id="9">
+      <node id="6">
         <label>string</label>
       </node>
-      <node id="10">
+      <node id="13">
+        <label>unordered_map</label>
+      </node>
+      <node id="7">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -84,7 +102,13 @@
         <link refid="PDJE__Input__DataLine_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -100,20 +124,100 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/input/linux/linux_input.cpp</label>
+        <link refid="linux__input_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/input/linux/linux_input.hpp</label>
+        <link refid="linux__input_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
       <node id="4">
         <label>include/input/windows/windows_input.cpp</label>
         <link refid="windows__input_8cpp"/>
       </node>
-      <node id="6">
+      <node id="9">
         <label>include/input/windows/windows_input.hpp</label>
         <link refid="windows__input_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
+      <node id="11">
+        <label>include/judge/Init/PDJE_Judge_Init.cpp</label>
+        <link refid="PDJE__Judge__Init_8cpp"/>
+      </node>
+      <node id="10">
+        <label>include/judge/Init/PDJE_Judge_Init.hpp</label>
+        <link refid="PDJE__Judge__Init_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>include/judge/Loop/HID.cpp</label>
+        <link refid="HID_8cpp"/>
+      </node>
+      <node id="15">
+        <label>include/judge/Loop/Keyboard.cpp</label>
+        <link refid="Keyboard_8cpp"/>
+      </node>
+      <node id="16">
+        <label>include/judge/Loop/MIDI.cpp</label>
+        <link refid="MIDI_8cpp"/>
+      </node>
+      <node id="17">
+        <label>include/judge/Loop/Mouse.cpp</label>
+        <link refid="Mouse_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
+        <link refid="PDJE__Judge__Loop_8cpp"/>
+      </node>
+      <node id="13">
+        <label>include/judge/Loop/PDJE_Judge_Loop.hpp</label>
+        <link refid="PDJE__Judge__Loop_8hpp"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>include/judge/PDJE_Judge.cpp</label>
+        <link refid="PDJE__Judge_8cpp"/>
+      </node>
+      <node id="18">
+        <label>include/judge/PDJE_Judge.hpp</label>
+        <link refid="PDJE__Judge_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
       <node id="5">
         <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
         <link refid="pdjeInputTest_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judgeTest_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structPDJE__Input__Log" prot="public">PDJE_Input_Log</innerclass>
@@ -153,27 +257,26 @@
     <programlisting>
 <codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__EXPORT__SETTER_8hpp" kindref="compound">PDJE_EXPORT_SETTER.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Input__State_8hpp" kindref="compound">Input_State.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__Buffer_8hpp" kindref="compound">PDJE_Buffer.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Input__State_8hpp" kindref="compound">Input_State.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__EXPORT__SETTER_8hpp" kindref="compound">PDJE_EXPORT_SETTER.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__Input__Device__Data_8hpp" kindref="compound">PDJE_Input_Device_Data.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8" refid="PDJE__Input__DataLine_8hpp_1ad2b191944fa7dd4314a1a49b2b243e62" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="PDJE__Input__DataLine_8hpp_1ad2b191944fa7dd4314a1a49b2b243e62" kindref="member">PDJE_NAME</ref><sp/>=<sp/>std::string;</highlight></codeline>
-<codeline lineno="9" refid="PDJE__Input__DataLine_8hpp_1a73ea437825558867dcad305e6ab74cd9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="PDJE__Input__DataLine_8hpp_1a73ea437825558867dcad305e6ab74cd9" kindref="member">PDJE_ID</ref><sp/>=<sp/>std::string;</highlight></codeline>
+<codeline lineno="9" refid="PDJE__Input__DataLine_8hpp_1a73ea437825558867dcad305e6ab74cd9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="PDJE__Input__DataLine_8hpp_1a73ea437825558867dcad305e6ab74cd9" kindref="member">PDJE_ID</ref><sp/><sp/><sp/>=<sp/>std::string;</highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight></codeline>
-<codeline lineno="11" refid="structPDJE__Input__Log" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref>{</highlight></codeline>
-<codeline lineno="12" refid="structPDJE__Input__Log_1aa64073bde0f836582ef86ce7484b4011" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456" kindref="member">PDJE_Dev_Type</ref><sp/><ref refid="structPDJE__Input__Log_1aa64073bde0f836582ef86ce7484b4011" kindref="member">type</ref>;</highlight></codeline>
+<codeline lineno="11" refid="structPDJE__Input__Log" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref><sp/>{</highlight></codeline>
+<codeline lineno="12" refid="structPDJE__Input__Log_1aa64073bde0f836582ef86ce7484b4011" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456" kindref="member">PDJE_Dev_Type</ref><sp/><sp/><sp/><sp/><ref refid="structPDJE__Input__Log_1aa64073bde0f836582ef86ce7484b4011" kindref="member">type</ref>;</highlight></codeline>
 <codeline lineno="13" refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="unionPDJE__Input__Event" kindref="compound">PDJE_Input_Event</ref><sp/><ref refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" kindref="member">event</ref>;</highlight></codeline>
-<codeline lineno="14" refid="structPDJE__Input__Log_1a122a3be1ee635a767643927bbb9fcade" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__HID__Event" kindref="compound">PDJE_HID_Event</ref><sp/><ref refid="structPDJE__Input__Log_1a122a3be1ee635a767643927bbb9fcade" kindref="member">hid_event</ref>;</highlight></codeline>
-<codeline lineno="15" refid="structPDJE__Input__Log_1aaefc2fdec36f5877ee575be7b9daf7bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structPDJE__Input__Log_1aaefc2fdec36f5877ee575be7b9daf7bc" kindref="member">id</ref>;</highlight></codeline>
-<codeline lineno="16" refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" kindref="member">microSecond</ref>;</highlight></codeline>
+<codeline lineno="14" refid="structPDJE__Input__Log_1a122a3be1ee635a767643927bbb9fcade" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__HID__Event" kindref="compound">PDJE_HID_Event</ref><sp/><sp/><sp/><ref refid="structPDJE__Input__Log_1a122a3be1ee635a767643927bbb9fcade" kindref="member">hid_event</ref>;</highlight></codeline>
+<codeline lineno="15" refid="structPDJE__Input__Log_1aaefc2fdec36f5877ee575be7b9daf7bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__Input__Log_1aaefc2fdec36f5877ee575be7b9daf7bc" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="16" refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" kindref="member">microSecond</ref>;</highlight></codeline>
 <codeline lineno="17"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20" refid="structPDJE__INPUT__DATA__LINE" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="structPDJE__INPUT__DATA__LINE" kindref="compound">PDJE_INPUT_DATA_LINE</ref><sp/>{</highlight></codeline>
-<codeline lineno="21" refid="structPDJE__INPUT__DATA__LINE_1a98608967b476ffd18c5b2f14ea36194b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena" kindref="compound">PDJE_Buffer_Arena&lt;PDJE_Input_Log&gt;</ref>*<sp/><ref refid="structPDJE__INPUT__DATA__LINE_1a98608967b476ffd18c5b2f14ea36194b" kindref="member">input_arena</ref>;</highlight></codeline>
-<codeline lineno="22" refid="structPDJE__INPUT__DATA__LINE_1a3b102228ea21b8855b2b7c140944875f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;PDJE_ID,<sp/>PDJE_NAME&gt;*<sp/><ref refid="structPDJE__INPUT__DATA__LINE_1a3b102228ea21b8855b2b7c140944875f" kindref="member">id_name_conv</ref>;</highlight></codeline>
-<codeline lineno="23"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="19" refid="structPDJE__INPUT__DATA__LINE" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="structPDJE__INPUT__DATA__LINE" kindref="compound">PDJE_INPUT_DATA_LINE</ref><sp/>{</highlight></codeline>
+<codeline lineno="20" refid="structPDJE__INPUT__DATA__LINE_1a98608967b476ffd18c5b2f14ea36194b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__Buffer__Arena" kindref="compound">PDJE_Buffer_Arena&lt;PDJE_Input_Log&gt;</ref><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="structPDJE__INPUT__DATA__LINE_1a98608967b476ffd18c5b2f14ea36194b" kindref="member">input_arena</ref><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21" refid="structPDJE__INPUT__DATA__LINE_1a3b102228ea21b8855b2b7c140944875f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;PDJE_ID,<sp/>PDJE_NAME&gt;<sp/>*<ref refid="structPDJE__INPUT__DATA__LINE_1a3b102228ea21b8855b2b7c140944875f" kindref="member">id_name_conv</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="include/global/DataLines/PDJE_Input_DataLine.hpp"/>
   </compounddef>

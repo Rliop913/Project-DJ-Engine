@@ -1,28 +1,28 @@
 #include "jsonWrapper.hpp"
+#include <cstdint>
 
 template <>
 template <>
 bool
 PDJE_JSONHandler<NOTE_W>::add(const NoteArgs &args)
 {
-    nj tempMix = {
-        { PDJE_JSON_NOTE_TYPE,
-          SANITIZED_ORNOT(args.Note_Type.begin(), args.Note_Type.end()) },
-        { PDJE_JSON_NOTE_DETAIL,
-          SANITIZED_ORNOT(args.Note_Detail.begin(), args.Note_Detail.end()) },
-        { PDJE_JSON_FIRST,
-          SANITIZED_ORNOT(args.first.begin(), args.first.end()) },
-        { PDJE_JSON_SECOND,
-          SANITIZED_ORNOT(args.second.begin(), args.second.end()) },
-        { PDJE_JSON_THIRD,
-          SANITIZED_ORNOT(args.third.begin(), args.third.end()) },
-        { PDJE_JSON_BEAT, args.beat },
-        { PDJE_JSON_SUBBEAT, args.subBeat },
-        { PDJE_JSON_SEPARATE, args.separate },
-        { PDJE_JSON_EBEAT, args.Ebeat },
-        { PDJE_JSON_ESUBBEAT, args.EsubBeat },
-        { PDJE_JSON_ESEPARATE, args.Eseparate }
-    };
+    nj tempMix = { { PDJE_JSON_NOTE_TYPE,
+                     SANITIZED_ORNOT(args.Note_Type.begin(),
+                                     args.Note_Type.end()) },
+                   { PDJE_JSON_NOTE_DETAIL, args.Note_Detail },
+                   { PDJE_JSON_FIRST,
+                     SANITIZED_ORNOT(args.first.begin(), args.first.end()) },
+                   { PDJE_JSON_SECOND,
+                     SANITIZED_ORNOT(args.second.begin(), args.second.end()) },
+                   { PDJE_JSON_THIRD,
+                     SANITIZED_ORNOT(args.third.begin(), args.third.end()) },
+                   { PDJE_JSON_BEAT, args.beat },
+                   { PDJE_JSON_SUBBEAT, args.subBeat },
+                   { PDJE_JSON_SEPARATE, args.separate },
+                   { PDJE_JSON_EBEAT, args.Ebeat },
+                   { PDJE_JSON_ESUBBEAT, args.EsubBeat },
+                   { PDJE_JSON_ESEPARATE, args.Eseparate },
+                   { PDJE_JSON_RAILID, args.railID } };
     if (!ROOT.contains(PDJENOTE)) {
         critlog("note json root not found. from PDJE_JSONHandler<NOTE_W> add.");
         return false;
@@ -43,8 +43,7 @@ PDJE_JSONHandler<NOTE_W>::deleteLine(const NoteArgs &args)
             if (Target[PDJE_JSON_NOTE_TYPE] != args.Note_Type &&
                 args.Note_Type != "")
                 continue;
-            if (Target[PDJE_JSON_NOTE_DETAIL] != args.Note_Detail &&
-                args.Note_Detail != "")
+            if (Target[PDJE_JSON_NOTE_DETAIL] != args.Note_Detail)
                 continue;
             if (Target[PDJE_JSON_FIRST] != args.first && args.first != "")
                 continue;
@@ -66,6 +65,8 @@ PDJE_JSONHandler<NOTE_W>::deleteLine(const NoteArgs &args)
                 continue;
             if (Target[PDJE_JSON_ESEPARATE] != args.Eseparate &&
                 args.Eseparate != -1)
+                continue;
+            if (Target[PDJE_JSON_RAILID] != args.railID)
                 continue;
             targetIDX.push_back(i);
         }
@@ -91,7 +92,7 @@ PDJE_JSONHandler<NOTE_W>::getAll(
     for (auto &i : ROOT[PDJENOTE]) {
 
         NoteArgs tempargs{ i[PDJE_JSON_NOTE_TYPE].get<SANITIZED_ORNOT>(),
-                           i[PDJE_JSON_NOTE_DETAIL].get<SANITIZED_ORNOT>(),
+                           i[PDJE_JSON_NOTE_DETAIL].get<uint16_t>(),
                            i[PDJE_JSON_FIRST].get<SANITIZED_ORNOT>(),
                            i[PDJE_JSON_SECOND].get<SANITIZED_ORNOT>(),
                            i[PDJE_JSON_THIRD].get<SANITIZED_ORNOT>(),
@@ -100,7 +101,8 @@ PDJE_JSONHandler<NOTE_W>::getAll(
                            i[PDJE_JSON_SEPARATE],
                            i[PDJE_JSON_EBEAT],
                            i[PDJE_JSON_ESUBBEAT],
-                           i[PDJE_JSON_ESEPARATE] };
+                           i[PDJE_JSON_ESEPARATE],
+                           i[PDJE_JSON_RAILID] };
         jsonCallback(tempargs);
     }
 }
@@ -119,7 +121,7 @@ PDJE_JSONHandler<NOTE_W>::render()
             filler[i].setNoteType(
                 target[PDJE_JSON_NOTE_TYPE].get<SANITIZED_ORNOT>());
             filler[i].setNoteDetail(
-                target[PDJE_JSON_NOTE_DETAIL].get<SANITIZED_ORNOT>());
+                target[PDJE_JSON_NOTE_DETAIL].get<uint16_t>());
             filler[i].setFirst(target[PDJE_JSON_FIRST].get<SANITIZED_ORNOT>());
             filler[i].setSecond(
                 target[PDJE_JSON_SECOND].get<SANITIZED_ORNOT>());
@@ -130,6 +132,7 @@ PDJE_JSONHandler<NOTE_W>::render()
             filler[i].setEbeat(target[PDJE_JSON_EBEAT]);
             filler[i].setEsubBeat(target[PDJE_JSON_ESUBBEAT]);
             filler[i].setESeparate(target[PDJE_JSON_ESEPARATE]);
+            filler[i].setRailID(target[PDJE_JSON_RAILID]);
         }
         return tempMixBin;
     } catch (std::exception &e) {

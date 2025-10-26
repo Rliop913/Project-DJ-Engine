@@ -6,7 +6,7 @@
     <includes local="no">string</includes>
     <includes local="no">sys/mman.h</includes>
     <includes local="no">unistd.h</includes>
-    <includedby refid="linux__input_8hpp" local="yes">include/input/linux/linux_input.hpp</includedby>
+    <includedby refid="linux__socket_8hpp" local="yes">include/input/linux/socket/linux_socket.hpp</includedby>
     <incdepgraph>
       <node id="1">
         <label>include/input/linux/IPC_SHARE_MEM.hpp</label>
@@ -34,18 +34,20 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="4">
+      <node id="5">
         <label>include/input/PDJE_Input.cpp</label>
         <link refid="PDJE__Input_8cpp"/>
       </node>
-      <node id="3">
+      <node id="4">
         <label>include/input/PDJE_Input.hpp</label>
         <link refid="PDJE__Input_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -54,25 +56,41 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="9">
         <label>include/input/linux/linux_input.cpp</label>
         <link refid="linux__input_8cpp"/>
       </node>
-      <node id="2">
+      <node id="3">
         <label>include/input/linux/linux_input.hpp</label>
         <link refid="linux__input_8hpp"/>
-        <childnode refid="3" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="10">
+        <label>include/input/linux/socket/linux_socket.cpp</label>
+        <link refid="linux__socket_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/input/linux/socket/linux_socket.hpp</label>
+        <link refid="linux__socket_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
         <label>include/input/windows/windows_input.cpp</label>
         <link refid="windows__input_8cpp"/>
       </node>
-      <node id="6">
+      <node id="7">
         <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
         <link refid="pdjeInputTest_8cpp"/>
+      </node>
+      <node id="8">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judgeTest_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classIPCSharedMem" prot="public">IPCSharedMem</innerclass>

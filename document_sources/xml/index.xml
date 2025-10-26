@@ -14,6 +14,11 @@
     <member refid="classARGSETTER__WRAPPER_1aed999b41685582b95d772c2a6e1626d6" kind="function"><name>GetFXArgKeys</name></member>
     <member refid="classARGSETTER__WRAPPER_1ab491d3bb6a3d781e366280aa4b867d75" kind="function"><name>SetFXArg</name></member>
   </compound>
+  <compound refid="classATOMIC__EVENT" kind="class"><name>ATOMIC_EVENT</name>
+    <member refid="classATOMIC__EVENT_1afa0766b127f00b4c35b9152cfb7f6bf8" kind="variable"><name>flag</name></member>
+    <member refid="classATOMIC__EVENT_1a8b59c50dd5494e290c3aa6ae7a474ee0" kind="function"><name>wait</name></member>
+    <member refid="classATOMIC__EVENT_1add642a493860d7d07f4fe083d90382a5" kind="function"><name>signal</name></member>
+  </compound>
   <compound refid="structaudioEngineDataStruct" kind="struct"><name>audioEngineDataStruct</name>
     <member refid="structaudioEngineDataStruct_1aab0d65b85bfb5bf76929c7773a239b26" kind="variable"><name>faustPcmPP</name></member>
     <member refid="structaudioEngineDataStruct_1a43d868f597776d70780535bfa6e6e944" kind="variable"><name>FXManualPanel</name></member>
@@ -21,7 +26,9 @@
     <member refid="structaudioEngineDataStruct_1a8d268640e253174af00cbbfe8a53df17" kind="variable"><name>pcmDataPoint</name></member>
     <member refid="structaudioEngineDataStruct_1a8c80d4c0987b22ecd0d36d0865790294" kind="variable"><name>nowCursor</name></member>
     <member refid="structaudioEngineDataStruct_1ad4d8e64bb991cbc14357cae3d68f339a" kind="variable"><name>maxCursor</name></member>
-    <member refid="structaudioEngineDataStruct_1a512848b50b0f9afb708157c42f21a42a" kind="variable"><name>consumedFrames</name></member>
+    <member refid="structaudioEngineDataStruct_1a13daa0ec5eccfa3235b4dfa0223435c1" kind="variable"><name>syncData</name></member>
+    <member refid="structaudioEngineDataStruct_1a993ef28e30d1588f0518c6d5a209325d" kind="variable"><name>cacheSync</name></member>
+    <member refid="structaudioEngineDataStruct_1a7f40a0b02a4ff37f86191b9691f968de" kind="variable"><name>highres_clock</name></member>
     <member refid="structaudioEngineDataStruct_1a5458ea6743868149c4fd47af1c96197b" kind="function"><name>getNowfPointer</name></member>
     <member refid="structaudioEngineDataStruct_1acfbc94880ac9ca5289ed34fef118f561" kind="function"><name>CountUp</name></member>
     <member refid="structaudioEngineDataStruct_1aa66ef36888faee74e89b103ebfae4b9e" kind="function"><name>GetAfterManFX</name></member>
@@ -55,6 +62,10 @@
     <member refid="classaudioRender_1a998d4deb5083e6188cb13a12b5db2db4" kind="function"><name>LoadTrackFromMixData</name></member>
     <member refid="classaudioRender_1ab69d180edcaa08ebe31522fca882c410" kind="function"><name>audioRender</name></member>
     <member refid="classaudioRender_1a4fc2ea859169b006941152415635859d" kind="function"><name>~audioRender</name></member>
+  </compound>
+  <compound refid="structaudioSyncData" kind="struct"><name>audioSyncData</name>
+    <member refid="structaudioSyncData_1a57a2f969ca2c40d9fbcf0d7dbdbfc59a" kind="variable"><name>consumed_frames</name></member>
+    <member refid="structaudioSyncData_1a89638dc0409e8c24aa2ba7d10b901575" kind="variable"><name>microsecond</name></member>
   </compound>
   <compound refid="classBattleDj" kind="class"><name>BattleDj</name>
     <member refid="classBattleDj_1a31baa2dbeebab8bd00aa79da874698dd" kind="variable"><name>st</name></member>
@@ -93,10 +104,10 @@
     <member refid="classBPM_1a7efee7a2cf514afbd302c1f88ad320ff" kind="function"><name>~BPM</name></member>
   </compound>
   <compound refid="structBpmFragment" kind="struct"><name>BpmFragment</name>
-    <member refid="structBpmFragment_1a9f2f09c2a59575d2aaf85decfaca4f62" kind="variable"><name>beat</name></member>
-    <member refid="structBpmFragment_1a464d98afe02f129e661709925f5ffa13" kind="variable"><name>subBeat</name></member>
-    <member refid="structBpmFragment_1a8cb01948227beb2939e67b0aed378fab" kind="variable"><name>separate</name></member>
-    <member refid="structBpmFragment_1a2a8288e055869bb966d381378b908b48" kind="variable"><name>frame_to_here</name></member>
+    <member refid="structBpmFragment_1a6df9ed3787b58f0cbdb2ae50dcee381c" kind="variable"><name>beat</name></member>
+    <member refid="structBpmFragment_1aace6d5fa7d6febcccb3d383dba2de1ff" kind="variable"><name>subBeat</name></member>
+    <member refid="structBpmFragment_1ab49167c4e1474b25e83ee1294435d6db" kind="variable"><name>separate</name></member>
+    <member refid="structBpmFragment_1a16345d6c43cda5a23c75e76ca90f535a" kind="variable"><name>frame_to_here</name></member>
     <member refid="structBpmFragment_1aff3e11fa4ee76d171b5bf93da9a27002" kind="variable"><name>bpm</name></member>
   </compound>
   <compound refid="structBpmStruct" kind="struct"><name>BpmStruct</name>
@@ -154,6 +165,13 @@
     <member refid="classCapWriter_1a8c8b4f75beb779d91e2b4e9a3a2d8d73" kind="function"><name>makeNew</name></member>
     <member refid="classCapWriter_1ac4a894288306c7e0d6afc75fba103f3c" kind="function"><name>out</name></member>
   </compound>
+  <compound refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK" kind="class"><name>PDJE_HIGHRES_CLOCK::CLOCK</name>
+    <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1ad2232e60c615b31184a7b549dbf8f70d" kind="variable"><name>ts</name></member>
+    <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1aea1f448a293eddcadccafa16242cb277" kind="function"><name>CLOCK</name></member>
+    <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1a3ce5e2cecb9d9fd5c1f4be217213d0cd" kind="function"><name>~CLOCK</name></member>
+    <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1ae3ea2350d7de5834d668a0ef3e1502e8" kind="function"><name>Get_MicroSecond</name></member>
+    <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1ae3ea2350d7de5834d668a0ef3e1502e8" kind="function"><name>Get_MicroSecond</name></member>
+  </compound>
   <compound refid="structgitwrap_1_1commit" kind="struct"><name>gitwrap::commit</name>
     <member refid="structgitwrap_1_1commit_1aed795b54d06cb41d5293e800ab7c06df" kind="variable"><name>commitPointer</name></member>
     <member refid="structgitwrap_1_1commit_1a99f52037b3c4cc106d57ba5afb9a9084" kind="variable"><name>commitID</name></member>
@@ -185,6 +203,13 @@
     <member refid="classCompressorMan_1a46e2578799add8e73b6345383e876724" kind="variable"><name>releaseMS</name></member>
     <member refid="classCompressorMan_1adb7eb798909d05aecee667cd8e63a84d" kind="variable"><name>kneeDB</name></member>
     <member refid="classCompressorMan_1aa629d5092ac65d1bf82c55d975ee7f1c" kind="function"><name>makeArgSetter</name></member>
+  </compound>
+  <compound refid="structPDJE__JUDGE_1_1Custom__Events" kind="struct"><name>PDJE_JUDGE::Custom_Events</name>
+    <member refid="structPDJE__JUDGE_1_1Custom__Events_1a4db6c99f75571e359c688f36f7e01961" kind="variable"><name>missed_event</name></member>
+    <member refid="structPDJE__JUDGE_1_1Custom__Events_1ac9fead0d0e799aad95fb3825d69f7bab" kind="variable"><name>used_event</name></member>
+    <member refid="structPDJE__JUDGE_1_1Custom__Events_1aee092b68259fb8a8a59117d46b362376" kind="variable"><name>custom_axis_parse</name></member>
+    <member refid="structPDJE__JUDGE_1_1Custom__Events_1abc300e047e2427cc143e494c0098fa59" kind="variable"><name>use_event_sleep_time</name></member>
+    <member refid="structPDJE__JUDGE_1_1Custom__Events_1ae2d2669b98b039c5d8bf2d4ec354f0b6" kind="variable"><name>miss_event_sleep_time</name></member>
   </compound>
   <compound refid="structDecoder" kind="struct"><name>Decoder</name>
     <member refid="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" kind="variable"><name>dec</name></member>
@@ -388,6 +413,10 @@
     <member refid="classEQMan_1a6a9a00fa191786fcc8cbb8166357e50e" kind="variable"><name>EQHigh</name></member>
     <member refid="classEQMan_1a7232ec791ed4fcfcf36701f7f4446944" kind="function"><name>makeArgSetter</name></member>
   </compound>
+  <compound refid="structPDJE__JUDGE_1_1EVENT__RULE" kind="struct"><name>PDJE_JUDGE::EVENT_RULE</name>
+    <member refid="structPDJE__JUDGE_1_1EVENT__RULE_1af92c301596640a944455fc74e119554b" kind="variable"><name>miss_range_microsecond</name></member>
+    <member refid="structPDJE__JUDGE_1_1EVENT__RULE_1ab72695162ff41af3b364f4d922a73e38" kind="variable"><name>use_range_microsecond</name></member>
+  </compound>
   <compound refid="classFaustDType" kind="class"><name>FaustDType</name>
     <member refid="classFaustDType_1af219ec2896ec4254ba9e0787a11fa668" kind="variable"><name>L</name></member>
     <member refid="classFaustDType_1a407262b4820e0e01daa1338fe948072f" kind="variable"><name>R</name></member>
@@ -508,11 +537,8 @@
     <member refid="classGitWrapper_1a36909e3fc709f3a3f24e1e7865254a8b" kind="function"><name>~GitWrapper</name></member>
     <member refid="classGitWrapper_1a74944ba0a6187c24c46d8c39c4df349b" kind="function"><name>GenTimeStamp</name></member>
   </compound>
-  <compound refid="structID" kind="struct"><name>ID</name>
-    <member refid="structID_1a4fed0482e215955e307d8bc6537a77d9" kind="variable"><name>socket_fd</name></member>
-    <member refid="structID_1a46c35781bce85bd345ba5689ab6d14ae" kind="variable"><name>client_fd</name></member>
-    <member refid="structID_1a5a4969e1e296cb42b3024ee34e34a86a" kind="variable"><name>rt_pid</name></member>
-    <member refid="structID_1a62cd160f637530664553ee647b66ccef" kind="variable"><name>socket_path</name></member>
+  <compound refid="structstd_1_1hash_3_01PDJE__JUDGE_1_1INPUT__RULE_01_4" kind="struct"><name>std::hash&lt; PDJE_JUDGE::INPUT_RULE &gt;</name>
+    <member refid="structstd_1_1hash_3_01PDJE__JUDGE_1_1INPUT__RULE_01_4_1a45be55624ec18000f2b8dc2db99b15c2" kind="function"><name>operator()</name></member>
   </compound>
   <compound refid="structIngredients" kind="struct"><name>Ingredients</name>
     <member refid="structIngredients_1a7e4785fdee02fc7bbd011d90923c621b" kind="variable"><name>pos</name></member>
@@ -521,6 +547,15 @@
     <member refid="structIngredients_1aff9ab6a76facc3cc2352b587659726cb" kind="function"><name>FillLocal</name></member>
     <member refid="structIngredients_1a7210e8202f533b09a297998e7b69219a" kind="function"><name>GetSameGidx</name></member>
     <member refid="structIngredients_1a408def0555c4f3c401aeeef44a86e3fc" kind="function"><name>Ready</name></member>
+  </compound>
+  <compound refid="structPDJE__JUDGE_1_1INPUT__CONFIG" kind="struct"><name>PDJE_JUDGE::INPUT_CONFIG</name>
+    <member refid="structPDJE__JUDGE_1_1INPUT__CONFIG_1a600cd56e6fe0c50bf1b7d4d97d104cf8" kind="variable"><name>MatchRail</name></member>
+  </compound>
+  <compound refid="structPDJE__JUDGE_1_1INPUT__RULE" kind="struct"><name>PDJE_JUDGE::INPUT_RULE</name>
+    <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1aa9e71f2f4ec766fc1c0e4df000f0e607" kind="variable"><name>Device_ID</name></member>
+    <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1a665a8072fc88db62bc59bdaa52a004b8" kind="variable"><name>DeviceType</name></member>
+    <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1a26595261d4164af5259c5a81392c7984" kind="variable"><name>DeviceKey</name></member>
+    <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1a9e677d142dbff730cfe41d85bca696f4" kind="function"><name>operator==</name></member>
   </compound>
   <compound refid="classIPCSharedMem" kind="class"><name>IPCSharedMem</name>
     <member refid="classIPCSharedMem_1a2108153a8d72032eba29bd46aeb53d59" kind="variable"><name>ptr</name></member>
@@ -533,6 +568,72 @@
     <member refid="classIPCSharedMem_1a0754ac3cb4fe56f5c71a4921996acacf" kind="function"><name>operator=</name></member>
     <member refid="classIPCSharedMem_1ae822beb5f4e9a83fba4dc9f605c3664a" kind="function"><name>MakeIPCSharedMemory</name></member>
     <member refid="classIPCSharedMem_1a860f870a9868a38ae077f1c216cefcf7" kind="function"><name>~IPCSharedMem</name></member>
+  </compound>
+  <compound refid="classPDJE__JUDGE_1_1JUDGE" kind="class"><name>PDJE_JUDGE::JUDGE</name>
+    <member refid="classPDJE__JUDGE_1_1JUDGE_1a7b4906f8734f2968e35971bf5ff06cfc" kind="variable"><name>loop_obj</name></member>
+    <member refid="classPDJE__JUDGE_1_1JUDGE_1ae26f9445faad1d53a73693c3fbee493c" kind="variable"><name>loop</name></member>
+    <member refid="classPDJE__JUDGE_1_1JUDGE_1a2a46e4eb45663143e4b203196169608b" kind="variable"><name>status</name></member>
+    <member refid="classPDJE__JUDGE_1_1JUDGE_1a6c475f5254a06c021a8a5d5f37e73c24" kind="variable"><name>inits</name></member>
+    <member refid="classPDJE__JUDGE_1_1JUDGE_1a30f241ffd38a848fe2f5d9f44a21e81a" kind="function"><name>Start</name></member>
+    <member refid="classPDJE__JUDGE_1_1JUDGE_1a9ddd42aee977d33d3aaf47f11755e1f4" kind="function"><name>End</name></member>
+    <member refid="classPDJE__JUDGE_1_1JUDGE_1a58e311d4b8b36f1192900e48d57946f9" kind="function"><name>CheckStatus</name></member>
+    <member refid="classPDJE__JUDGE_1_1JUDGE_1ac2bf8a01bd794508c57cea1820b9b699" kind="function"><name>JUDGE</name></member>
+    <member refid="classPDJE__JUDGE_1_1JUDGE_1a1d1a37bb156c69f4bc51b4cabc1e0e6b" kind="function"><name>~JUDGE</name></member>
+  </compound>
+  <compound refid="classPDJE__JUDGE_1_1Judge__Init" kind="class"><name>PDJE_JUDGE::Judge_Init</name>
+    <member refid="classPDJE__JUDGE_1_1Judge__Init_1a8c4648b939291f5e3553707199bb9c64" kind="variable"><name>lambdas</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Init_1acc951cfc00f868e9d20bb1b5cde6dc71" kind="variable"><name>coreline</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Init_1a4d193f14775e1cd10bf9d726e4edb0be" kind="variable"><name>inputline</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Init_1ae412677047fe5a8ca815c6ec6235a87e" kind="variable"><name>note_objects</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Init_1a786320148ee67bb0c04585208eb222cc" kind="variable"><name>ev_rule</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Init_1a5f67532d39353c45e663de20d3166be1" kind="variable"><name>dev_rules</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Init_1a1cd961087df9003eecb048233147a744" kind="function"><name>DefaultFill</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Init_1a287bb28017981c359d38b6b99bedc946" kind="function"><name>SetInputRule</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Init_1aa9d5d05218f808e518e003a22c1b0f9b" kind="function"><name>SetEventRule</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Init_1aef003f853b0becb3ac7183678cb1a0ad" kind="function"><name>SetCustomEvents</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Init_1a048fe1975b1a885ad7b350963735a88d" kind="function"><name>NoteObjectCollector</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Init_1a472a1bdec4dd3ba28b9a6a3e74a5bf0e" kind="function"><name>SetCoreLine</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Init_1a61e19ba068e539f8b3a5c57f56b4a0b6" kind="function"><name>SetInputLine</name></member>
+  </compound>
+  <compound refid="classPDJE__JUDGE_1_1Judge__Loop" kind="class"><name>PDJE_JUDGE::Judge_Loop</name>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a1c6c0f273c53d34870c6e7d8b798547c" kind="variable"><name>use_event_switch</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a544ba868eba82a07f4b56f4ca299e9ee" kind="variable"><name>miss_event_switch</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a1dcb4f97ade522e8451cbc88dda4776a" kind="variable"><name>use_event_thread</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a299d1149ed378146f507f247cadbed31" kind="variable"><name>miss_event_thread</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a4ac3087e2b0b08ae4f4e809218701906" kind="variable"><name>miss_queue</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a077d4b0809582d5df2c279ae3739fae8" kind="variable"><name>use_queue</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1ad7092065b16ebf0d7299b24ebe1733f8" kind="variable"><name>missed_buffers</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a2284745434399364cb69b723ed493451" kind="variable"><name>found_list</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1ae46ab2b6a05fa2f3b67453cef821bd78" kind="variable"><name>related_list_out</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1adb1b352cc08bd8bf7a809c8e40d31253" kind="variable"><name>local_microsecond_position</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1ad033b4f4fbaa3ed3179b70cba831b06e" kind="variable"><name>global_local_diff</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1ad915b3cc0007e379627fb1d9e2827534" kind="variable"><name>log_begin</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1af88df723d7a1ec0a00f27039d9f5a63b" kind="variable"><name>log_end</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1afd871d32dac25575660ca3b280dfb7c3" kind="variable"><name>use_range</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a4a978e15af400bea553643cff5b2687f" kind="variable"><name>cut_range</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a13fd57265411a7a29da122c190227be6" kind="variable"><name>synced_data</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a1ac8a7683284fc148ee15e9e1adc59a2" kind="variable"><name>isLate</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a3c677872283bc48ee0743032779f2823" kind="variable"><name>railID</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a39bb2e58882e680627b0b4d09cc1abf9" kind="variable"><name>diff</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1aa2f5525b62f3704d43c21f5ac3464524" kind="variable"><name>mouse_btn_event_queue</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a6a1c8a69e6d357f3c0b9947f4c724f6e" kind="variable"><name>loop_switch</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a81cd5ae989dab565e1561071855ce503" kind="variable"><name>Event_Controls</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1ac4866caabbe91a0e6e8f62b2d4b1bf6c" kind="variable"><name>Event_Datas</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a8a0be8f23d2496bb0aa26691810af5f6" kind="variable"><name>input_log</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a9b80efe075182e8319e826d98e7dd610" kind="variable"><name>Cached</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a69efbd4f2cc56ceebb5fd64079c32fd6" kind="variable"><name>init_datas</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1afe717039a39b035ea821e8d91e980742" kind="variable"><name>clock_root</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1abca460c02b7136a73278854ab69b9a89" kind="function"><name>Cut</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a3449ddb97b42a6f4f4d0d240fa52c482" kind="function"><name>PreProcess</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1aa12c4ac9165e4cbf67734f21449ae8a9" kind="function"><name>ParseMouse</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a6e2cd11e0a7ee3f45bfcee18e41a459b" kind="function"><name>UseEvent</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a4ec9598e00e8a62e7363fc075a25abb9" kind="function"><name>FindRailID</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a6bf3bca605e3b5dcb7ce013e1a9561f3" kind="function"><name>Match</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a1d951b7c9e9d506938445c8ef6d59b6c" kind="function"><name>EndEventLoop</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a2c55c0fab64896c8b5bebd3d936eef0a" kind="function"><name>StartEventLoop</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a3c906ba70fb33c241955350c80acf3e7" kind="function"><name>loop</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a25e2f3c1a098379ced0102c23ed6e58e" kind="function"><name>Judge_Loop</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1adddbd44613a72c2b2f91a1375d8738ce" kind="function"><name>~Judge_Loop</name></member>
   </compound>
   <compound refid="structKVVisitor" kind="struct"><name>KVVisitor</name>
     <member refid="structKVVisitor_1a242671cc47822be8d1edcaee66149704" kind="function"><name>~KVVisitor</name></member>
@@ -602,12 +703,12 @@
     <member refid="structMixArgs_1affbb68a2a39371abd15e9fdf93172b6a" kind="variable"><name>first</name></member>
     <member refid="structMixArgs_1a3cf558d05b3e90f1f00282301c86c6ad" kind="variable"><name>second</name></member>
     <member refid="structMixArgs_1ac254f5483830615296953ce641cd7b68" kind="variable"><name>third</name></member>
-    <member refid="structMixArgs_1aaf996185f2a3937439183086d5fe4a1c" kind="variable"><name>beat</name></member>
-    <member refid="structMixArgs_1ad6be78dd92f0f161e18ab51722fae35f" kind="variable"><name>subBeat</name></member>
-    <member refid="structMixArgs_1a0d17d85a85e03a5537380ca89449e598" kind="variable"><name>separate</name></member>
-    <member refid="structMixArgs_1afaf68125d1b94af2ba87c91c8ef3f870" kind="variable"><name>Ebeat</name></member>
-    <member refid="structMixArgs_1acdf6f22927a8b2fec601ca9d28884992" kind="variable"><name>EsubBeat</name></member>
-    <member refid="structMixArgs_1a26deb78cc6b8561be69a63db248c65f2" kind="variable"><name>Eseparate</name></member>
+    <member refid="structMixArgs_1a5466e87436e63588cbeba7c7119751b0" kind="variable"><name>beat</name></member>
+    <member refid="structMixArgs_1a63e496ce4acb412e4f621764708657ef" kind="variable"><name>subBeat</name></member>
+    <member refid="structMixArgs_1a0cafa6a3e94bed395a08af4e36b3c79c" kind="variable"><name>separate</name></member>
+    <member refid="structMixArgs_1aa57b6597e0431b0cd8db14dfef436cf1" kind="variable"><name>Ebeat</name></member>
+    <member refid="structMixArgs_1a60c7679aadaacace006013b9ab985e67" kind="variable"><name>EsubBeat</name></member>
+    <member refid="structMixArgs_1ae79d7f890d85f3d327c34ebedeb302ff" kind="variable"><name>Eseparate</name></member>
   </compound>
   <compound refid="classMixMachine" kind="class"><name>MixMachine</name>
     <member refid="classMixMachine_1a4f6afbca2361cd38d330a5476fe39aa0" kind="variable"><name>FLAG_SOMETHING_WRONG_ID</name></member>
@@ -639,6 +740,10 @@
   <compound refid="structMixVisitor" kind="struct"><name>MixVisitor</name>
     <member refid="structMixVisitor_1ac13c90f9bfc5f6e6b1fb3b8a9a755769" kind="function"><name>~MixVisitor</name></member>
     <member refid="structMixVisitor_1a6d0e3a102194e6f6281bcfb283a1bd65" kind="function"><name>on_item</name></member>
+  </compound>
+  <compound refid="structPDJE__JUDGE_1_1Judge__Loop_1_1mouse__btn__event" kind="struct"><name>PDJE_JUDGE::Judge_Loop::mouse_btn_event</name>
+    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1mouse__btn__event_1a0c2d123c8aa897e2f863de290c56b7a0" kind="variable"><name>rail_id</name></member>
+    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1mouse__btn__event_1abca43fcdca741cde9b47fe2bda128b3c" kind="variable"><name>status</name></member>
   </compound>
   <compound refid="structmusdata" kind="struct"><name>musdata</name>
     <member refid="structmusdata_1a9c537dbc78fd984f5316e3d167633f70" kind="variable"><name>title</name></member>
@@ -674,9 +779,9 @@
   </compound>
   <compound refid="structMusicArgs" kind="struct"><name>MusicArgs</name>
     <member refid="structMusicArgs_1adba854dcfb217bce55991f66d18fa89d" kind="variable"><name>bpm</name></member>
-    <member refid="structMusicArgs_1a8fa480eb59cd0772d7315f22eee16ce2" kind="variable"><name>beat</name></member>
-    <member refid="structMusicArgs_1a5f494ffbc1463ee3ad72a4250b5b2b86" kind="variable"><name>subBeat</name></member>
-    <member refid="structMusicArgs_1a28fa54c74d6d2a54fc7d85bf443794aa" kind="variable"><name>separate</name></member>
+    <member refid="structMusicArgs_1a121d40680744269a8d81e098b927f35d" kind="variable"><name>beat</name></member>
+    <member refid="structMusicArgs_1ac239bab4824547bc4b2a40efda7c6887" kind="variable"><name>subBeat</name></member>
+    <member refid="structMusicArgs_1abbf768d9ae882ada6f0af245fbf13b08" kind="variable"><name>separate</name></member>
   </compound>
   <compound refid="classMusicControlPanel" kind="class"><name>MusicControlPanel</name>
     <member refid="classMusicControlPanel_1af36b0923a3d05ae3d9cea0905a7400cf" kind="variable"><name>deck</name></member>
@@ -725,18 +830,33 @@
     <member refid="structMusicVisitor_1a57e520424beb4abb7fa534d774d01216" kind="function"><name>~MusicVisitor</name></member>
     <member refid="structMusicVisitor_1a3c654cb6a56d319491288f5dee76106c" kind="function"><name>on_item</name></member>
   </compound>
+  <compound refid="structPDJE__JUDGE_1_1NOTE" kind="struct"><name>PDJE_JUDGE::NOTE</name>
+    <member refid="structPDJE__JUDGE_1_1NOTE_1a865136f5145d6ee0dc905693606b1910" kind="variable"><name>type</name></member>
+    <member refid="structPDJE__JUDGE_1_1NOTE_1a4ebcad5f2ede5403eb41d919d0088660" kind="variable"><name>detail</name></member>
+    <member refid="structPDJE__JUDGE_1_1NOTE_1a159fa5f8d3dcc13f4bec5e3698e6fa27" kind="variable"><name>first</name></member>
+    <member refid="structPDJE__JUDGE_1_1NOTE_1a5dcdc62afeb02b70744d8ba831d3df19" kind="variable"><name>second</name></member>
+    <member refid="structPDJE__JUDGE_1_1NOTE_1ac38e6342fb38ad204b5895bfbf0e191a" kind="variable"><name>third</name></member>
+    <member refid="structPDJE__JUDGE_1_1NOTE_1ac03b96069366b4f2b92a5927313c1bda" kind="variable"><name>microsecond</name></member>
+    <member refid="structPDJE__JUDGE_1_1NOTE_1ae301f69cbb57d7de5ae12822d173c029" kind="variable"><name>used</name></member>
+    <member refid="structPDJE__JUDGE_1_1NOTE_1a61a27546fc108204d17755c902c9918f" kind="variable"><name>isDown</name></member>
+  </compound>
+  <compound refid="structPDJE__JUDGE_1_1NOTE__ITR" kind="struct"><name>PDJE_JUDGE::NOTE_ITR</name>
+    <member refid="structPDJE__JUDGE_1_1NOTE__ITR_1a1c96883596a986664ea6eb9ad81d75f7" kind="variable"><name>vec</name></member>
+    <member refid="structPDJE__JUDGE_1_1NOTE__ITR_1ab88bc1079275d363f71461854f172c92" kind="variable"><name>itr</name></member>
+  </compound>
   <compound refid="structNoteArgs" kind="struct"><name>NoteArgs</name>
     <member refid="structNoteArgs_1a30667b1c60d32ffdeddfd63a23c86f65" kind="variable"><name>Note_Type</name></member>
-    <member refid="structNoteArgs_1aec8ae73666f7d5cb9dd850c9748df921" kind="variable"><name>Note_Detail</name></member>
+    <member refid="structNoteArgs_1a9d989487bd21e17a3b70ecb5fd8d86dc" kind="variable"><name>Note_Detail</name></member>
     <member refid="structNoteArgs_1a5db1615cbd389985012a5f470c4786b8" kind="variable"><name>first</name></member>
     <member refid="structNoteArgs_1ab2abf15588609e724e71c2f8121ef08c" kind="variable"><name>second</name></member>
     <member refid="structNoteArgs_1aa98c0aab76a10c3312683fa7453c77ed" kind="variable"><name>third</name></member>
-    <member refid="structNoteArgs_1ad1b32305efea2e7ff5eb9c15b37363f7" kind="variable"><name>beat</name></member>
-    <member refid="structNoteArgs_1a6e24d0243435cd93e91bea48d47dae01" kind="variable"><name>subBeat</name></member>
-    <member refid="structNoteArgs_1a78543c5ee8381f87062a502350f8fbf4" kind="variable"><name>separate</name></member>
-    <member refid="structNoteArgs_1aba49b8045c09c7bcdd49de5c773c1966" kind="variable"><name>Ebeat</name></member>
-    <member refid="structNoteArgs_1a7a3a2da3d0cba0b838f99fec895bad79" kind="variable"><name>EsubBeat</name></member>
-    <member refid="structNoteArgs_1afb7ec6ffa06e18136dfe86a062123b06" kind="variable"><name>Eseparate</name></member>
+    <member refid="structNoteArgs_1a408ae078d0f5019cf27e45dac6b14561" kind="variable"><name>beat</name></member>
+    <member refid="structNoteArgs_1ab434c412fe26b8433e36db13390528de" kind="variable"><name>subBeat</name></member>
+    <member refid="structNoteArgs_1ab760a9c96fddea8a62dd76c3e7b7a3d5" kind="variable"><name>separate</name></member>
+    <member refid="structNoteArgs_1a25a391566e1129683ae731a395c859b2" kind="variable"><name>Ebeat</name></member>
+    <member refid="structNoteArgs_1af87542dd558be430e6c485b4819fa8a2" kind="variable"><name>EsubBeat</name></member>
+    <member refid="structNoteArgs_1a04040ec0f4bef77116165772ef83828c" kind="variable"><name>Eseparate</name></member>
+    <member refid="structNoteArgs_1a12bc57233af1a0df4bc66bb162ea1bd0" kind="variable"><name>railID</name></member>
   </compound>
   <compound refid="classNoteTranslator" kind="class"><name>NoteTranslator</name>
     <member refid="classNoteTranslator_1ace395ceda2f9e280a390cd2535d07dc1" kind="variable"><name>noteBpms</name></member>
@@ -747,6 +867,17 @@
   <compound refid="structNoteVisitor" kind="struct"><name>NoteVisitor</name>
     <member refid="structNoteVisitor_1afeff0dde21d2eec5ebfe904a219ceedc" kind="function"><name>~NoteVisitor</name></member>
     <member refid="structNoteVisitor_1a2392078cf670cc1a9c990627d3d8f9d3" kind="function"><name>on_item</name></member>
+  </compound>
+  <compound refid="classPDJE__JUDGE_1_1OBJ" kind="class"><name>PDJE_JUDGE::OBJ</name>
+    <member refid="classPDJE__JUDGE_1_1OBJ_1aec80fb3ee176aa880d2210d3b9fc7c64" kind="variable"><name>Buffer_Main</name></member>
+    <member refid="classPDJE__JUDGE_1_1OBJ_1a69ae59950fa70c74971c90fa6d9c8431" kind="variable"><name>Buffer_Sub</name></member>
+    <member refid="classPDJE__JUDGE_1_1OBJ_1a4d81809f120785ce0aabd28788f10a62" kind="function"><name>pick_dan</name></member>
+    <member refid="classPDJE__JUDGE_1_1OBJ_1a5cd76686f8d5452b67221e03d39f1465" kind="function"><name>Sort</name></member>
+    <member refid="classPDJE__JUDGE_1_1OBJ_1a8742e06da867b0761e3944ceb8945172" kind="function"><name>Fill</name></member>
+    <member refid="classPDJE__JUDGE_1_1OBJ_1aff08be13eec5cdd93fd2c72b8c8ff95e" kind="function"><name>Get</name></member>
+    <member refid="classPDJE__JUDGE_1_1OBJ_1a6d38c29010273ad4a189dd6533d69924" kind="function"><name>Cut</name></member>
+    <member refid="classPDJE__JUDGE_1_1OBJ_1ad879931f442e0265ba8cb4be08567e6c" kind="function"><name>OBJ</name></member>
+    <member refid="classPDJE__JUDGE_1_1OBJ_1a13638340306e350afb0312a07cd428d6" kind="function"><name>~OBJ</name></member>
   </compound>
   <compound refid="classOcsFilter__PDJE" kind="class"><name>OcsFilter_PDJE</name>
     <member refid="classOcsFilter__PDJE_1ab070455e949cd3587d8f81aa6350e801" kind="variable"><name>ocsFilterHighLowSW</name></member>
@@ -778,32 +909,27 @@
     <member refid="classOneTimeSysSetup_1a4b8cc91c89ed0f4a5aceba2e4a494385" kind="function"><name>~OneTimeSysSetup</name></member>
   </compound>
   <compound refid="classOS__Input" kind="class"><name>OS_Input</name>
-    <member refid="classOS__Input_1a1b378445bf9547af392a2b1b12f74b4d" kind="variable"><name>importants</name></member>
+    <member refid="classOS__Input_1ac0fb5fb7bfcc38a496f3ef475c3ef543" kind="variable"><name>socket</name></member>
     <member refid="classOS__Input_1abdcf0f9cc7f71efc80f7206118fab14a" kind="variable"><name>ThreadID</name></member>
-    <member refid="classOS__Input_1a8cd9d6130d410d3310ea442302d48230" kind="variable"><name>qpc</name></member>
+    <member refid="classOS__Input_1a982445a0d90b07619b163d8752a51bf9" kind="variable"><name>timer</name></member>
     <member refid="classOS__Input_1a28f8aba8f3d1db86907df43ff6132dec" kind="variable"><name>unlisted_targets</name></member>
     <member refid="classOS__Input_1a68dd8fd823ef4917b06720cc54cbd8d5" kind="variable"><name>id_name</name></member>
     <member refid="classOS__Input_1ae2eae088a2a00f8fce44883f317f0bf2" kind="variable"><name>input_buffer</name></member>
     <member refid="classOS__Input_1a60d0ad2aae20ad34df25f7ced3f6dda9" kind="variable"><name>config_data</name></member>
+    <member refid="classOS__Input_1a1ae2beb6665f273f99a0f9c167bd1df4" kind="variable"><name>config_sync</name></member>
     <member refid="classOS__Input_1a1534b3f617505438f0b84929c32bb261" kind="variable"><name>run_ok</name></member>
+    <member refid="classOS__Input_1a570ff78c4ddb662dce1fdeac51bb70a3" kind="variable"><name>run_sync</name></member>
     <member refid="classOS__Input_1ac04fd8a51c01e38de60c3e00922a1ea3" kind="variable"><name>Invisible_window_name</name></member>
     <member refid="classOS__Input_1a875f2737b8c7de13cba9ce7b979a0459" kind="variable"><name>worker</name></member>
-    <member refid="classOS__Input_1a6666290654c4183177b46c68d11ab3a0" kind="function"><name>OpenClientWithSudo</name></member>
-    <member refid="classOS__Input_1a5787a6efcbe23e455a8a641f52592227" kind="function"><name>CloseClient</name></member>
-    <member refid="classOS__Input_1ac18afc431328e05451cc99881e0c31aa" kind="function"><name>Send_IPCMEM_ToRT</name></member>
-    <member refid="classOS__Input_1a34e174a7bf24af7ff8c09426601be2e5" kind="function"><name>init</name></member>
-    <member refid="classOS__Input_1a4487a23afd8f4d9ca390d7f284850191" kind="function"><name>config</name></member>
-    <member refid="classOS__Input_1a989606f220472d794ad7f72e427ae5ea" kind="function"><name>run</name></member>
-    <member refid="classOS__Input_1a794e58c59427871c2554c28c132baca4" kind="function"><name>getRawDeviceDatas</name></member>
-    <member refid="classOS__Input_1a6a2dcd4d8bc49fe8463b88ce332538f3" kind="function"><name>hid_label_from_path</name></member>
-    <member refid="classOS__Input_1aa75064f53d9640242cab6d395eaefcb0" kind="function"><name>SocketOpen</name></member>
-    <member refid="classOS__Input_1a40c0218fb24c4ef4de9eee228657e2df" kind="function"><name>SocketClose</name></member>
+    <member refid="classOS__Input_1ad9e86505f15f2af9e0e772e99032f5de" kind="function"><name>PullOutDataLine</name></member>
     <member refid="classOS__Input_1a3a94e57f03ba728c189020de199610f6" kind="function"><name>kill</name></member>
     <member refid="classOS__Input_1a1e267997049cb562cb4b8d4dfe2f218e" kind="function"><name>getDevices</name></member>
     <member refid="classOS__Input_1a1c5d8c5f98de73baa8282fe5b1afcf6a" kind="function"><name>setDevices</name></member>
-    <member refid="classOS__Input_1a40d69fae9cf08cdaf17e5f4f09a3af22" kind="function"><name>EndSocketTransmission</name></member>
     <member refid="classOS__Input_1aefbbfd14e2902be2a2bb8fabb1d23cdd" kind="function"><name>TrigLoop</name></member>
     <member refid="classOS__Input_1ae3c00214a561fe8736dc37024b88e420" kind="function"><name>ResetLoop</name></member>
+    <member refid="classOS__Input_1a40d69fae9cf08cdaf17e5f4f09a3af22" kind="function"><name>EndSocketTransmission</name></member>
+    <member refid="classOS__Input_1ad60a928a455493a7648d1a4d0f97842b" kind="function"><name>OS_Input</name></member>
+    <member refid="classOS__Input_1aaa92fde24c900ea303ff039882a076bf" kind="function"><name>~OS_Input</name></member>
     <member refid="classOS__Input_1a3a94e57f03ba728c189020de199610f6" kind="function"><name>kill</name></member>
     <member refid="classOS__Input_1aefbbfd14e2902be2a2bb8fabb1d23cdd" kind="function"><name>TrigLoop</name></member>
     <member refid="classOS__Input_1ae3c00214a561fe8736dc37024b88e420" kind="function"><name>ResetLoop</name></member>
@@ -812,6 +938,11 @@
     <member refid="classOS__Input_1ad9e86505f15f2af9e0e772e99032f5de" kind="function"><name>PullOutDataLine</name></member>
     <member refid="classOS__Input_1ad60a928a455493a7648d1a4d0f97842b" kind="function"><name>OS_Input</name></member>
     <member refid="classOS__Input_1aaa92fde24c900ea303ff039882a076bf" kind="function"><name>~OS_Input</name></member>
+    <member refid="classOS__Input_1a34e174a7bf24af7ff8c09426601be2e5" kind="function"><name>init</name></member>
+    <member refid="classOS__Input_1a4487a23afd8f4d9ca390d7f284850191" kind="function"><name>config</name></member>
+    <member refid="classOS__Input_1a989606f220472d794ad7f72e427ae5ea" kind="function"><name>run</name></member>
+    <member refid="classOS__Input_1a794e58c59427871c2554c28c132baca4" kind="function"><name>getRawDeviceDatas</name></member>
+    <member refid="classOS__Input_1a6a2dcd4d8bc49fe8463b88ce332538f3" kind="function"><name>hid_label_from_path</name></member>
   </compound>
   <compound refid="classPanner__PDJE" kind="class"><name>Panner_PDJE</name>
     <member refid="classPanner__PDJE_1af4a6b44caffcbcaa39be5a20e67e2d64" kind="variable"><name>bps</name></member>
@@ -844,6 +975,7 @@
   </compound>
   <compound refid="classPDJE__Buffer__Arena" kind="class"><name>PDJE_Buffer_Arena</name>
     <member refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" kind="variable"><name>arena</name></member>
+    <member refid="classPDJE__Buffer__Arena_1a822fe4a99b5142f964f5c8982eef68ff" kind="variable"><name>allocator</name></member>
     <member refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" kind="variable"><name>buf1</name></member>
     <member refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" kind="variable"><name>buf2</name></member>
     <member refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" kind="variable"><name>lock</name></member>
@@ -854,10 +986,10 @@
     <member refid="classPDJE__Buffer__Arena_1a29f47d258d824c510c8bb960ba52f826" kind="function"><name>~PDJE_Buffer_Arena</name></member>
   </compound>
   <compound refid="structPDJE__CORE__DATA__LINE" kind="struct"><name>PDJE_CORE_DATA_LINE</name>
-    <member refid="structPDJE__CORE__DATA__LINE_1a6c9877db2cee46d9f72fe28f03ed451d" kind="variable"><name>used_frame</name></member>
     <member refid="structPDJE__CORE__DATA__LINE_1a6f4a3b68d7529669518aac2323a934ca" kind="variable"><name>nowCursor</name></member>
     <member refid="structPDJE__CORE__DATA__LINE_1a16f98f5d8805be6f536a19939c8a6481" kind="variable"><name>maxCursor</name></member>
     <member refid="structPDJE__CORE__DATA__LINE_1a1a05b5925c47c070a74434a10a0992ab" kind="variable"><name>preRenderedData</name></member>
+    <member refid="structPDJE__CORE__DATA__LINE_1a42df6f89471d474f97448e10dc8c6331" kind="variable"><name>syncD</name></member>
   </compound>
   <compound refid="classPDJE__Editor" kind="class"><name>PDJE_Editor</name>
     <member refid="classPDJE__Editor_1a3f0dad32adc184ab2e8c2833b5f2163a" kind="variable"><name>pt</name></member>
@@ -901,23 +1033,20 @@
   </compound>
   <compound refid="classPDJE__Input" kind="class"><name>PDJE_Input</name>
     <member refid="classPDJE__Input_1aff9a7701bc1e1e257ce7eb08f0aef00e" kind="variable"><name>data</name></member>
-    <member refid="classPDJE__Input_1afbc7b278ba6404113b45393d365c646f" kind="variable"><name>activated_devices</name></member>
     <member refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" kind="variable"><name>state</name></member>
     <member refid="classPDJE__Input_1abe8f6f2a3c505c91b5c1ad6a4f020b9d" kind="variable"><name>ErrLog</name></member>
     <member refid="classPDJE__Input_1a3e124e131d2d68031d2e64f280670290" kind="variable"><name>config_promise</name></member>
     <member refid="classPDJE__Input_1a64f4fb961c7524dac21a22119352d330" kind="variable"><name>run_command</name></member>
+    <member refid="classPDJE__Input_1a77f16c774040551db7de7d320570b5f8" kind="function"><name>InitOneShot</name></member>
+    <member refid="classPDJE__Input_1ada0fe962d2dd376df34ec7c32beb6239" kind="function"><name>ResetOneShot</name></member>
+    <member refid="classPDJE__Input_1a57ffda3b7e96de7b73deb3557b089e9b" kind="function"><name>GetDevs</name></member>
     <member refid="classPDJE__Input_1a5e124b018f37cd0d4ebdb1aa0f4e234e" kind="function"><name>Init</name></member>
     <member refid="classPDJE__Input_1a60b8fafb986f4a289ab6fc80b792afd3" kind="function"><name>Config</name></member>
     <member refid="classPDJE__Input_1a141055482bcb2c52442ad9f596d72cba" kind="function"><name>Run</name></member>
     <member refid="classPDJE__Input_1acd31c013ea5cf83003795bb58c60f9e5" kind="function"><name>Kill</name></member>
-    <member refid="classPDJE__Input_1aa129aebaaaa605cd347cbcd9e1de0e4b" kind="function"><name>InitOneShot</name></member>
-    <member refid="classPDJE__Input_1a649e395d73b91ab1fc28b47f7e838ba9" kind="function"><name>ResetOneShot</name></member>
-    <member refid="classPDJE__Input_1a57ffda3b7e96de7b73deb3557b089e9b" kind="function"><name>GetDevs</name></member>
-    <member refid="classPDJE__Input_1a643acbd02fc91fb774235fcbfe4b34c3" kind="function"><name>SetDevs</name></member>
     <member refid="classPDJE__Input_1a618aaec5a5067bf8f729e4e6b31812c9" kind="function"><name>GetState</name></member>
-    <member refid="classPDJE__Input_1a6c9beb44c4c5247f41ff16dcbc9c07a9" kind="function"><name>NEXT</name></member>
     <member refid="classPDJE__Input_1ac4a8a1fc6bce51c498176db187c03e34" kind="function"><name>PullOutDataLine</name></member>
-    <member refid="classPDJE__Input_1aeb8f457672b5f9643c2d08d55c7abf60" kind="function"><name>PDJE_Input</name></member>
+    <member refid="classPDJE__Input_1a6a66c5c863c7c489d9a0da4be2de97bc" kind="function"><name>PDJE_Input</name></member>
     <member refid="classPDJE__Input_1a340963eba591d40540b8920dc2a95e50" kind="function"><name>~PDJE_Input</name></member>
   </compound>
   <compound refid="structPDJE__INPUT__DATA__LINE" kind="struct"><name>PDJE_INPUT_DATA_LINE</name>
@@ -971,11 +1100,6 @@
     <member refid="classPDJE__JSONHandler_1ac9abd82d3716a90c1190d0f924ac4bc3" kind="function"><name>render</name></member>
     <member refid="classPDJE__JSONHandler_1ae83dea4e2bbe7b7710090ed97b370fcf" kind="function"><name>load</name></member>
   </compound>
-  <compound refid="classPDJE__JUDGE" kind="class"><name>PDJE_JUDGE</name>
-    <member refid="classPDJE__JUDGE_1a1ab9ae6e2fb65aa9c272245d3a0b5c3a" kind="variable"><name>core</name></member>
-    <member refid="classPDJE__JUDGE_1a29572ee20b176051d0e6a022c51dd9ec" kind="function"><name>PDJE_JUDGE</name></member>
-    <member refid="classPDJE__JUDGE_1a9ed0afd12cca726d34f9d99874c5907d" kind="function"><name>~PDJE_JUDGE</name></member>
-  </compound>
   <compound refid="structPDJE__Keyboard__Event" kind="struct"><name>PDJE_Keyboard_Event</name>
     <member refid="structPDJE__Keyboard__Event_1a1b408a0d1716613a9f0e81142b06574e" kind="variable"><name>k</name></member>
     <member refid="structPDJE__Keyboard__Event_1a9b876596da025316eb8180d50a8e7f05" kind="variable"><name>pressed</name></member>
@@ -997,6 +1121,21 @@
     <member refid="classPDJE__Name__Sanitizer_1ab140c48c375c3287f623d9c6c1f4b0ac" kind="function"><name>PDJE_Name_Sanitizer</name></member>
     <member refid="classPDJE__Name__Sanitizer_1ab336046cda451b24dc8511b6d93873c1" kind="function"><name>~PDJE_Name_Sanitizer</name></member>
   </compound>
+  <compound refid="classPDJE__LINUX_1_1PDJE__Socket" kind="class"><name>PDJE_LINUX::PDJE_Socket</name>
+    <member refid="classPDJE__LINUX_1_1PDJE__Socket_1ae0fdbeaee5bf81b4ce128694feae8e7b" kind="variable"><name>socket_fd</name></member>
+    <member refid="classPDJE__LINUX_1_1PDJE__Socket_1a9e981cb51a4255741f1cbb24312814cc" kind="variable"><name>client_fd</name></member>
+    <member refid="classPDJE__LINUX_1_1PDJE__Socket_1aa05ec895be8a33531927a90b64956fe6" kind="variable"><name>rt_pid</name></member>
+    <member refid="classPDJE__LINUX_1_1PDJE__Socket_1a3a9951070b83ee6b45f6c6ee8e1b7ec8" kind="variable"><name>socket_path</name></member>
+    <member refid="classPDJE__LINUX_1_1PDJE__Socket_1a45ce5b9dace1d633b314451ae0c6ff42" kind="variable"><name>importants</name></member>
+    <member refid="classPDJE__LINUX_1_1PDJE__Socket_1a35e535f7557b6733c8b1e82521702043" kind="function"><name>OpenClientWithSudo</name></member>
+    <member refid="classPDJE__LINUX_1_1PDJE__Socket_1ac71db7adb5dea58bc45b09c397100c7e" kind="function"><name>CloseClient</name></member>
+    <member refid="classPDJE__LINUX_1_1PDJE__Socket_1ab4321b7cd31541dd4a567a8b459d3cf8" kind="function"><name>Send_IPCMEM_ToRT</name></member>
+    <member refid="classPDJE__LINUX_1_1PDJE__Socket_1a55c910a885875c7adb5732a8c7bd69f4" kind="function"><name>SocketOpen</name></member>
+    <member refid="classPDJE__LINUX_1_1PDJE__Socket_1a31edc7aeec4b4a36aec7260a38b5a8e8" kind="function"><name>SocketClose</name></member>
+    <member refid="classPDJE__LINUX_1_1PDJE__Socket_1ad7b3a4045e530ab44a5927cc468e9cf9" kind="function"><name>QueryClient</name></member>
+    <member refid="classPDJE__LINUX_1_1PDJE__Socket_1a9fb3eae11661dbe4843b1d794c2b3160" kind="function"><name>PDJE_Socket</name></member>
+    <member refid="classPDJE__LINUX_1_1PDJE__Socket_1ae39193f31e05b4716f9629c985b657a0" kind="function"><name>~PDJE_Socket</name></member>
+  </compound>
   <compound refid="classPhaser__PDJE" kind="class"><name>Phaser_PDJE</name>
     <member refid="classPhaser__PDJE_1ae310a30872101bd00c78faf30ba79c41" kind="variable"><name>bps</name></member>
     <member refid="classPhaser__PDJE_1a2ec5be71e9aedaf15e1ace925a42399e" kind="function"><name>copyDatas</name></member>
@@ -1017,16 +1156,6 @@
   <compound refid="structPosition" kind="struct"><name>Position</name>
     <member refid="structPosition_1a3e9db580e023618c153f5f0039e757a4" kind="variable"><name>frame_in</name></member>
     <member refid="structPosition_1ac079c4b481a5ba40015db7d1e04717a1" kind="variable"><name>frame_out</name></member>
-  </compound>
-  <compound refid="classQPC__Timer" kind="class"><name>QPC_Timer</name>
-    <member refid="classQPC__Timer_1a9725fb836599de869b17b990b08f285c" kind="variable"><name>qpc_freq</name></member>
-    <member refid="classQPC__Timer_1aa7af7da6e19f0072b06c75e920055b21" kind="variable"><name>temp_int</name></member>
-    <member refid="classQPC__Timer_1a4db4c317e67be448736c36b55a293bf3" kind="function"><name>now</name></member>
-    <member refid="classQPC__Timer_1a8dc5cd509e6060c8ef51d821e1cde93a" kind="function"><name>to_second</name></member>
-    <member refid="classQPC__Timer_1af78396474952c5ea8ec31ae056eca064" kind="function"><name>to_ms</name></member>
-    <member refid="classQPC__Timer_1ac285942b80ee6921247c74ec39bb4397" kind="function"><name>to_micro</name></member>
-    <member refid="classQPC__Timer_1a7e43a09bc4bd83857a5bebb254a9efce" kind="function"><name>QPC_Timer</name></member>
-    <member refid="classQPC__Timer_1aeb16983fa883fef83dd761ae3080ada0" kind="function"><name>~QPC_Timer</name></member>
   </compound>
   <compound refid="structRawDeviceData" kind="struct"><name>RawDeviceData</name>
     <member refid="structRawDeviceData_1a2d4254bd4d3b0451b736d9ca3540dd5b" kind="variable"><name>info</name></member>
@@ -1134,6 +1263,12 @@
     <member refid="classUI_1a84b1b67909cbfdcfa66f101416ee52d5" kind="function"><name>openVerticalBox</name></member>
     <member refid="classUI_1aeb849a71ade69617333d1d8f0f16529c" kind="function"><name>closeBox</name></member>
   </compound>
+  <compound refid="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas" kind="struct"><name>PDJE_JUDGE::Judge_Loop::useDatas</name>
+    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas_1a2d45f43706caba58b2fdbc6ae545f767" kind="variable"><name>railid</name></member>
+    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas_1a7fb7e35447559e20405d0bf4d05a8cc9" kind="variable"><name>Pressed</name></member>
+    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas_1a9beaef267554afd875461a7e35b33384" kind="variable"><name>IsLate</name></member>
+    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas_1af60282c9950feca5809cb815188cc50f" kind="variable"><name>diff</name></member>
+  </compound>
   <compound refid="classVolMan" kind="class"><name>VolMan</name>
     <member refid="classVolMan_1a9ebe8a729a26956f068d262bdeef6161" kind="variable"><name>VolPower</name></member>
     <member refid="classVolMan_1a93ffc757b06c39447e11eaca0d3325b7" kind="function"><name>makeArgSetter</name></member>
@@ -1187,13 +1322,56 @@
     <member refid="namespaceCommon__Features_1a9819433dbb3c04ccbcf39523f8185eaf" kind="function"><name>ReadMSG</name></member>
   </compound>
   <compound refid="namespaceFrameCalc" kind="namespace"><name>FrameCalc</name>
-    <member refid="namespaceFrameCalc_1a12e18e06211c6b6148f77eef662555ad" kind="function"><name>CountFrame</name></member>
+    <member refid="namespaceFrameCalc_1aed991cda2f4549b15a01ad2e71019d69" kind="function"><name>CountFrame</name></member>
   </compound>
   <compound refid="namespacegitwrap" kind="namespace"><name>gitwrap</name>
   </compound>
   <compound refid="namespaceHWY__NAMESPACE" kind="namespace"><name>HWY_NAMESPACE</name>
     <member refid="namespaceHWY__NAMESPACE_1ad074d697d201fc9b6c258e128a4ef91e" kind="function"><name>GetPCMFramesSIMD</name></member>
     <member refid="namespaceHWY__NAMESPACE_1af0a22093ab08dd742f914c113783bec3" kind="function"><name>INTEGRATE_PCM_SIMD</name></member>
+  </compound>
+  <compound refid="namespacePDJE__HIGHRES__CLOCK" kind="namespace"><name>PDJE_HIGHRES_CLOCK</name>
+  </compound>
+  <compound refid="namespacePDJE__JUDGE" kind="namespace"><name>PDJE_JUDGE</name>
+    <member refid="namespacePDJE__JUDGE_1afa6381f8f229ccd5c5f8dbae248cebb2" kind="enum"><name>JUDGE_STATUS</name></member>
+    <member refid="namespacePDJE__JUDGE_1afa6381f8f229ccd5c5f8dbae248cebb2a8fcd227f94f0b4cec915b9bbb9d7d7e5" kind="enumvalue"><name>OK</name></member>
+    <member refid="namespacePDJE__JUDGE_1afa6381f8f229ccd5c5f8dbae248cebb2a770c1fa477d0d9e5feb0837edad251d8" kind="enumvalue"><name>CORE_LINE_IS_MISSING</name></member>
+    <member refid="namespacePDJE__JUDGE_1afa6381f8f229ccd5c5f8dbae248cebb2a2aa3bc631c38953c03cd8745e509880c" kind="enumvalue"><name>INPUT_LINE_IS_MISSING</name></member>
+    <member refid="namespacePDJE__JUDGE_1afa6381f8f229ccd5c5f8dbae248cebb2ab57771cf5ca88642787e51bc35ccb9b9" kind="enumvalue"><name>EVENT_RULE_IS_EMPTY</name></member>
+    <member refid="namespacePDJE__JUDGE_1afa6381f8f229ccd5c5f8dbae248cebb2a79d41203617fa88cbb3c5a7c046dd64f" kind="enumvalue"><name>INPUT_RULE_IS_EMPTY</name></member>
+    <member refid="namespacePDJE__JUDGE_1afa6381f8f229ccd5c5f8dbae248cebb2a85a577818899872aea6443d33efddbeb" kind="enumvalue"><name>NOTE_OBJECT_IS_MISSING</name></member>
+    <member refid="namespacePDJE__JUDGE_1ab1e6fff79298188ed6da7c8b294f109d" kind="enum"><name>DEVICE_MOUSE_EVENT</name></member>
+    <member refid="namespacePDJE__JUDGE_1ab1e6fff79298188ed6da7c8b294f109dab0e496d306bee8872f2d8394b3bb68a7" kind="enumvalue"><name>BTN_EX</name></member>
+    <member refid="namespacePDJE__JUDGE_1ab1e6fff79298188ed6da7c8b294f109daa0b59bd360d7c90e6169bb298d055ba9" kind="enumvalue"><name>BTN_SIDE</name></member>
+    <member refid="namespacePDJE__JUDGE_1ab1e6fff79298188ed6da7c8b294f109da49b5e4b85cc2d2f8329590a876b273b5" kind="enumvalue"><name>BTN_M</name></member>
+    <member refid="namespacePDJE__JUDGE_1ab1e6fff79298188ed6da7c8b294f109da69b59f63dc0a65be2c9691321e09affd" kind="enumvalue"><name>BTN_R</name></member>
+    <member refid="namespacePDJE__JUDGE_1ab1e6fff79298188ed6da7c8b294f109dafdb2be01de00acb8b6c25447465e1c49" kind="enumvalue"><name>BTN_L</name></member>
+    <member refid="namespacePDJE__JUDGE_1ab1e6fff79298188ed6da7c8b294f109da8572ee5ecb04a02fdd98aefca19c779d" kind="enumvalue"><name>WHEEL_X</name></member>
+    <member refid="namespacePDJE__JUDGE_1ab1e6fff79298188ed6da7c8b294f109da808b9b16707d725aebfb55b1558fb222" kind="enumvalue"><name>WHEEL_Y</name></member>
+    <member refid="namespacePDJE__JUDGE_1ab1e6fff79298188ed6da7c8b294f109da8be8291ed4a15ca135b8ece74fe0263e" kind="enumvalue"><name>AXIS_MOVE</name></member>
+    <member refid="namespacePDJE__JUDGE_1a9ae87742de7e899c6e006447f27a9eba" kind="typedef"><name>RAIL_ID</name></member>
+    <member refid="namespacePDJE__JUDGE_1a74a76cb2add5051c233d27fbedba793c" kind="typedef"><name>MISS_CALLBACK</name></member>
+    <member refid="namespacePDJE__JUDGE_1a404264babe4bb096766de0bef9d0eea6" kind="typedef"><name>USE_CALLBACK</name></member>
+    <member refid="namespacePDJE__JUDGE_1a23d1bbaefe85c70073b4779f17d63f3d" kind="typedef"><name>MOUSE_AXIS_PARSE_CALLBACK</name></member>
+    <member refid="namespacePDJE__JUDGE_1a0e0549990dbec87c7f25b9ae22f4dc39" kind="typedef"><name>GLOBAL_TIME</name></member>
+    <member refid="namespacePDJE__JUDGE_1a182d502cf8e15e13ed25f3550c82a53a" kind="typedef"><name>LOCAL_TIME</name></member>
+    <member refid="namespacePDJE__JUDGE_1ad8c8d340702b0759a8cecb53091de1e0" kind="typedef"><name>NOTE_VEC</name></member>
+    <member refid="namespacePDJE__JUDGE_1ad73c9d4a59c40cc7c1a9fce27dc1be72" kind="typedef"><name>P_NOTE_VEC</name></member>
+    <member refid="namespacePDJE__JUDGE_1ab03e3d67f9117a97f80f2a0a98221919" kind="typedef"><name>DEVID_TO_NOTE</name></member>
+    <member refid="namespacePDJE__JUDGE_1a714bad3267563db99990da3e32a42c5c" kind="variable"><name>TO_MICRO</name></member>
+    <member refid="namespacePDJE__JUDGE_1a49aeda368d2cf3a66f5f62f6a9238714" kind="variable"><name>DOWN</name></member>
+    <member refid="namespacePDJE__JUDGE_1ada74348e8e211eaf4e1157ab15e4a8ae" kind="variable"><name>UP</name></member>
+    <member refid="namespacePDJE__JUDGE_1a72dcdac22038e2ce36656f54d1508b33" kind="variable"><name>X</name></member>
+    <member refid="namespacePDJE__JUDGE_1a2d43d7eed1b6862ea3826d296da18492" kind="variable"><name>Y</name></member>
+    <member refid="namespacePDJE__JUDGE_1a3aa3f3217bddb4a172ca3ee463aa47de" kind="variable"><name>BUFFER_MAIN</name></member>
+    <member refid="namespacePDJE__JUDGE_1ab5a4f76ae4935af0703bfc44f3212e2b" kind="variable"><name>BUFFER_SUB</name></member>
+    <member refid="namespacePDJE__JUDGE_1aa78869a4b4648bc707f541ee760da05e" kind="function"><name>Convert_Frame_Into_MicroSecond</name></member>
+    <member refid="namespacePDJE__JUDGE_1aa9e54016cdfa5952aac53d9fbd2a7b9b" kind="function"><name>Judge_Loop::UseEvent&lt; PDJE_Dev_Type::HID &gt;</name></member>
+    <member refid="namespacePDJE__JUDGE_1a6068f2d8f2ed5980a2ce0bcb23530813" kind="function"><name>Judge_Loop::UseEvent&lt; PDJE_Dev_Type::KEYBOARD &gt;</name></member>
+    <member refid="namespacePDJE__JUDGE_1a551cc1174944d4a5f4e97d8c47e77460" kind="function"><name>Judge_Loop::UseEvent&lt; PDJE_Dev_Type::MIDI &gt;</name></member>
+    <member refid="namespacePDJE__JUDGE_1ad3fe64a9717d83ab967a9b830758bbce" kind="function"><name>Judge_Loop::UseEvent&lt; PDJE_Dev_Type::MOUSE &gt;</name></member>
+  </compound>
+  <compound refid="namespacePDJE__LINUX" kind="namespace"><name>PDJE_LINUX</name>
   </compound>
   <compound refid="namespacePDJE__RAWINPUT" kind="namespace"><name>PDJE_RAWINPUT</name>
     <member refid="namespacePDJE__RAWINPUT_1af3d9b0dc9168afb6956d5809b21d1973" kind="function"><name>FillMouseInput</name></member>
@@ -1429,7 +1607,6 @@
   <compound refid="NoteTranslator_8cpp" kind="file"><name>NoteTranslator.cpp</name>
   </compound>
   <compound refid="NoteTranslator_8hpp" kind="file"><name>NoteTranslator.hpp</name>
-    <member refid="NoteTranslator_8hpp_1ab8f339ae52f7b01e26f4de03178814e3" kind="typedef"><name>OBJ_SETTER_CALLBACK</name></member>
   </compound>
   <compound refid="dbRoot_8cpp" kind="file"><name>dbRoot.cpp</name>
   </compound>
@@ -1527,6 +1704,7 @@
     <member refid="jsonWrapper_8hpp_1a881ac4cc4cc65908544ccb94cebf27f4" kind="define"><name>PDJE_JSON_EBEAT</name></member>
     <member refid="jsonWrapper_8hpp_1a852928669ed3cb08cc8b6ccf6b46e85b" kind="define"><name>PDJE_JSON_ESUBBEAT</name></member>
     <member refid="jsonWrapper_8hpp_1a4f7054fd01f81b21d4cf32be9c907344" kind="define"><name>PDJE_JSON_ESEPARATE</name></member>
+    <member refid="jsonWrapper_8hpp_1a5241e7fce23269cf6f4c4452245dca22" kind="define"><name>PDJE_JSON_RAILID</name></member>
     <member refid="jsonWrapper_8hpp_1a653c3f67231cd777efc831a704f3e0a3" kind="define"><name>PDJE_JSON_BPM</name></member>
     <member refid="jsonWrapper_8hpp_1a9305e14ffb9bbcc7032775f442285080" kind="define"><name>PDJE_JSON_TITLE</name></member>
     <member refid="jsonWrapper_8hpp_1ab4d04600c2327cfae8980b076400a4f0" kind="define"><name>PDJE_JSON_COMPOSER</name></member>
@@ -1628,34 +1806,6 @@
     <member refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kind="typedef"><name>DONT_SANITIZE</name></member>
     <member refid="fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kind="typedef"><name>SANITIZED_ORNOT</name></member>
     <member refid="fileNameSanitizer_8hpp_1a60e6f3a42a8bab43c807f31be0e7aab1" kind="typedef"><name>cbase</name></member>
-  </compound>
-  <compound refid="PDJE__Buffer_8hpp" kind="file"><name>PDJE_Buffer.hpp</name>
-    <member refid="PDJE__Buffer_8hpp_1a01cb5e075b875399bbcbd1ac4a91349b" kind="define"><name>RESET_PMR_VECTOR</name></member>
-  </compound>
-  <compound refid="PDJE__Core__DataLine_8hpp" kind="file"><name>PDJE_Core_DataLine.hpp</name>
-  </compound>
-  <compound refid="PDJE__Input__DataLine_8hpp" kind="file"><name>PDJE_Input_DataLine.hpp</name>
-    <member refid="PDJE__Input__DataLine_8hpp_1ad2b191944fa7dd4314a1a49b2b243e62" kind="typedef"><name>PDJE_NAME</name></member>
-    <member refid="PDJE__Input__DataLine_8hpp_1a73ea437825558867dcad305e6ab74cd9" kind="typedef"><name>PDJE_ID</name></member>
-  </compound>
-  <compound refid="PDJE__Input__Device__Data_8hpp" kind="file"><name>PDJE_Input_Device_Data.hpp</name>
-    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456" kind="enum"><name>PDJE_Dev_Type</name></member>
-    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a2ec2be318cc86a1224c0e9dcc71321e4" kind="enumvalue"><name>MOUSE</name></member>
-    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456aedda266cdb6345b9f6914cc2e7577475" kind="enumvalue"><name>KEYBOARD</name></member>
-    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a4695654d9a54210407e32e78a14d5cbb" kind="enumvalue"><name>HID</name></member>
-    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a696b031073e74bf2cb98e5ef201d4aa3" kind="enumvalue"><name>UNKNOWN</name></member>
-    <member refid="PDJE__Input__Device__Data_8hpp_1a58503d463081ac24677b1da5c0cf3d87" kind="typedef"><name>DEV_LIST</name></member>
-    <member refid="PDJE__Input__Device__Data_8hpp_1a5d02ce2645cbc7cc15547ae58f2d2d23" kind="typedef"><name>ONE_SHOT_DEV_PROMISE</name></member>
-    <member refid="PDJE__Input__Device__Data_8hpp_1a3a873a3d426e1f5e696c75ac9a68e557" kind="typedef"><name>ONE_SHOT_DEV_FUTURE</name></member>
-  </compound>
-  <compound refid="PDJE__EXPORT__SETTER_8hpp" kind="file"><name>PDJE_EXPORT_SETTER.hpp</name>
-    <member refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kind="define"><name>PDJE_API</name></member>
-  </compound>
-  <compound refid="PDJE__LOG__SETTER_8hpp" kind="file"><name>PDJE_LOG_SETTER.hpp</name>
-    <member refid="PDJE__LOG__SETTER_8hpp_1a2721d826078db7a962e7664a9d2f4016" kind="define"><name>infolog</name></member>
-    <member refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kind="define"><name>warnlog</name></member>
-    <member refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kind="define"><name>critlog</name></member>
-    <member refid="PDJE__LOG__SETTER_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36" kind="function"><name>startlog</name></member>
   </compound>
   <compound refid="Input__State_8hpp" kind="file"><name>Input_State.hpp</name>
     <member refid="Input__State_8hpp_1af7586f410ce5333bcf76fb8cae134ffd" kind="define"><name>PDJE_MOUSE_L_BTN_DOWN</name></member>
@@ -1787,6 +1937,49 @@
     <member refid="Input__State_8hpp_1a14bdefbd858b34cd4cb0b0af52f6332e" kind="typedef"><name>ONE_SHOT_RUN_PROMISE</name></member>
     <member refid="Input__State_8hpp_1a821478f084c5bbe8413cfe70b427f702" kind="typedef"><name>ONE_SHOT_RUN_FUTURE</name></member>
   </compound>
+  <compound refid="PDJE__Buffer_8hpp" kind="file"><name>PDJE_Buffer.hpp</name>
+  </compound>
+  <compound refid="PDJE__Core__DataLine_8hpp" kind="file"><name>PDJE_Core_DataLine.hpp</name>
+  </compound>
+  <compound refid="PDJE__Input__DataLine_8hpp" kind="file"><name>PDJE_Input_DataLine.hpp</name>
+    <member refid="PDJE__Input__DataLine_8hpp_1ad2b191944fa7dd4314a1a49b2b243e62" kind="typedef"><name>PDJE_NAME</name></member>
+    <member refid="PDJE__Input__DataLine_8hpp_1a73ea437825558867dcad305e6ab74cd9" kind="typedef"><name>PDJE_ID</name></member>
+  </compound>
+  <compound refid="PDJE__Input__Device__Data_8hpp" kind="file"><name>PDJE_Input_Device_Data.hpp</name>
+    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456" kind="enum"><name>PDJE_Dev_Type</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a2ec2be318cc86a1224c0e9dcc71321e4" kind="enumvalue"><name>MOUSE</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456aedda266cdb6345b9f6914cc2e7577475" kind="enumvalue"><name>KEYBOARD</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a46f18c989bcd3e6eaa843fe3225ff380" kind="enumvalue"><name>MIDI</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a4695654d9a54210407e32e78a14d5cbb" kind="enumvalue"><name>HID</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a696b031073e74bf2cb98e5ef201d4aa3" kind="enumvalue"><name>UNKNOWN</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kind="typedef"><name>DEV_LIST</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1a5d02ce2645cbc7cc15547ae58f2d2d23" kind="typedef"><name>ONE_SHOT_DEV_PROMISE</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1a3a873a3d426e1f5e696c75ac9a68e557" kind="typedef"><name>ONE_SHOT_DEV_FUTURE</name></member>
+    <member refid="PDJE__Input__Device__Data_8hpp_1ad828f376eddb4ee05af4efb4f169f1df" kind="typedef"><name>ONE_SHOT_SYNC</name></member>
+  </compound>
+  <compound refid="Linux_2PDJE__Highres__Clock_8hpp" kind="file"><name>PDJE_Highres_Clock.hpp</name>
+  </compound>
+  <compound refid="Mac_2PDJE__Highres__Clock_8hpp" kind="file"><name>PDJE_Highres_Clock.hpp</name>
+  </compound>
+  <compound refid="Windows_2PDJE__Highres__Clock_8hpp" kind="file"><name>PDJE_Highres_Clock.hpp</name>
+  </compound>
+  <compound refid="PDJE__ATOMIC__EVENT_8hpp" kind="file"><name>PDJE_ATOMIC_EVENT.hpp</name>
+  </compound>
+  <compound refid="PDJE__EXPORT__SETTER_8hpp" kind="file"><name>PDJE_EXPORT_SETTER.hpp</name>
+    <member refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kind="define"><name>PDJE_API</name></member>
+  </compound>
+  <compound refid="PDJE__LOG__SETTER_8hpp" kind="file"><name>PDJE_LOG_SETTER.hpp</name>
+    <member refid="PDJE__LOG__SETTER_8hpp_1a2721d826078db7a962e7664a9d2f4016" kind="define"><name>infolog</name></member>
+    <member refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kind="define"><name>warnlog</name></member>
+    <member refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kind="define"><name>critlog</name></member>
+    <member refid="PDJE__LOG__SETTER_8hpp_1aafde7a4d32d3efc555088bc1babf0e88" kind="variable"><name>SPD_LOG_ONCE_FLAG</name></member>
+    <member refid="PDJE__LOG__SETTER_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36" kind="function"><name>startlog</name></member>
+  </compound>
+  <compound refid="PDJE__OBJ__SETTER_8hpp" kind="file"><name>PDJE_OBJ_SETTER.hpp</name>
+    <member refid="PDJE__OBJ__SETTER_8hpp_1a16cf29d9f8af2ffe9f8fc5cab62f723c" kind="typedef"><name>OBJ_SETTER_CALLBACK</name></member>
+  </compound>
+  <compound refid="PDJE__SYNC__CORE_8hpp" kind="file"><name>PDJE_SYNC_CORE.hpp</name>
+  </compound>
   <compound refid="Common__Features_8hpp" kind="file"><name>Common_Features.hpp</name>
     <member refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bd" kind="enum"><name>PDJE_RT_ERROR</name></member>
     <member refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bdaaf239de32489d60f6a3b18626375e581" kind="enumvalue"><name>FAILED_TO_PARSE_JSON</name></member>
@@ -1825,6 +2018,10 @@
     <member refid="RTSocket_8hpp_1a4a5d8fd04da75f13c58e95aea630c308" kind="typedef"><name>data_body</name></member>
     <member refid="RTSocket_8hpp_1a9fe2c28cc016fecdfc4909a9f5c74a0b" kind="typedef"><name>regi_function</name></member>
   </compound>
+  <compound refid="linux__socket_8cpp" kind="file"><name>linux_socket.cpp</name>
+  </compound>
+  <compound refid="linux__socket_8hpp" kind="file"><name>linux_socket.hpp</name>
+  </compound>
   <compound refid="PDJE__Input_8cpp" kind="file"><name>PDJE_Input.cpp</name>
     <member refid="PDJE__Input_8cpp_1a8fe83ba44412d3ac8156adc7d8a68e35" kind="define"><name>PDJE_INPUT_DEFAULT_TRY_CATCH</name></member>
   </compound>
@@ -1834,10 +2031,6 @@
     <member refid="dev__path__to__name_8hpp_1a35f557ba79bc284006eaa0ea1135e1a1" kind="function"><name>NormalizeNt</name></member>
     <member refid="dev__path__to__name_8hpp_1a68b15c9bc07d944024a7b6d8216cc9c7" kind="function"><name>GetFriendlyNameFromHidPath</name></member>
   </compound>
-  <compound refid="QPC__Timer_8cpp" kind="file"><name>QPC_Timer.cpp</name>
-  </compound>
-  <compound refid="QPC__Timer_8hpp" kind="file"><name>QPC_Timer.hpp</name>
-  </compound>
   <compound refid="windows__input_8cpp" kind="file"><name>windows_input.cpp</name>
     <member refid="windows__input_8cpp_1a0c57a1c76a00e13db135c6b41005f0ad" kind="function"><name>wstring_to_utf8_nt</name></member>
   </compound>
@@ -1846,9 +2039,31 @@
   </compound>
   <compound refid="windows__keyboard__fill_8hpp" kind="file"><name>windows_keyboard_fill.hpp</name>
   </compound>
+  <compound refid="PDJE__Judge__Init_8cpp" kind="file"><name>PDJE_Judge_Init.cpp</name>
+  </compound>
+  <compound refid="PDJE__Judge__Init_8hpp" kind="file"><name>PDJE_Judge_Init.hpp</name>
+  </compound>
+  <compound refid="HID_8cpp" kind="file"><name>HID.cpp</name>
+  </compound>
+  <compound refid="Keyboard_8cpp" kind="file"><name>Keyboard.cpp</name>
+  </compound>
+  <compound refid="MIDI_8cpp" kind="file"><name>MIDI.cpp</name>
+  </compound>
+  <compound refid="Mouse_8cpp" kind="file"><name>Mouse.cpp</name>
+  </compound>
+  <compound refid="PDJE__Judge__Loop_8cpp" kind="file"><name>PDJE_Judge_Loop.cpp</name>
+  </compound>
+  <compound refid="PDJE__Judge__Loop_8hpp" kind="file"><name>PDJE_Judge_Loop.hpp</name>
+  </compound>
+  <compound refid="PDJE__Note__OBJ_8cpp" kind="file"><name>PDJE_Note_OBJ.cpp</name>
+  </compound>
+  <compound refid="PDJE__Note__OBJ_8hpp" kind="file"><name>PDJE_Note_OBJ.hpp</name>
+  </compound>
   <compound refid="PDJE__Judge_8cpp" kind="file"><name>PDJE_Judge.cpp</name>
   </compound>
   <compound refid="PDJE__Judge_8hpp" kind="file"><name>PDJE_Judge.hpp</name>
+  </compound>
+  <compound refid="PDJE__Rule_8hpp" kind="file"><name>PDJE_Rule.hpp</name>
   </compound>
   <compound refid="audioTest_8cpp" kind="file"><name>audioTest.cpp</name>
     <member refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kind="variable"><name>idx</name></member>
@@ -1892,6 +2107,9 @@
   </compound>
   <compound refid="interfaceTest_8cpp" kind="file"><name>interfaceTest.cpp</name>
     <member refid="interfaceTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="judgeTest_8cpp" kind="file"><name>judgeTest.cpp</name>
+    <member refid="judgeTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
   </compound>
   <compound refid="logTest_8cpp" kind="file"><name>logTest.cpp</name>
   </compound>
@@ -1943,7 +2161,11 @@
   </compound>
   <compound refid="dir_87bf3c13ffa0785e1f4cdcb726b9dfec" kind="dir"><name>include/global</name>
   </compound>
+  <compound refid="dir_17668bf6ddeb2b4f6cc5c25966f2c7e6" kind="dir"><name>include/global/Highres_Clock</name>
+  </compound>
   <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
+  </compound>
+  <compound refid="dir_1418b65ace02cf47dbd99b1b09ec93a7" kind="dir"><name>include/judge/Init</name>
   </compound>
   <compound refid="dir_9f5c276ab9fb4f37ad248a8f0e5ee4a1" kind="dir"><name>include/input</name>
   </compound>
@@ -1955,9 +2177,17 @@
   </compound>
   <compound refid="dir_fb16984359168171d183d90a4f706910" kind="dir"><name>include/judge</name>
   </compound>
+  <compound refid="dir_6e4e7940a8bf4aab717c0b7c1436b407" kind="dir"><name>include/tests/JUDGE_TESTS</name>
+  </compound>
+  <compound refid="dir_2195019a25cfae979fef62ec3f76cf87" kind="dir"><name>include/global/Highres_Clock/Linux</name>
+  </compound>
   <compound refid="dir_bcba7e3a497454d4e73ae7ebd088a69d" kind="dir"><name>include/input/linux</name>
   </compound>
   <compound refid="dir_8cb63b91acd5a50e4445493535225015" kind="dir"><name>include/core/editor/featureWrapper/GitWrap/Log</name>
+  </compound>
+  <compound refid="dir_6621bf596c0532f84b8de820ac433615" kind="dir"><name>include/judge/Loop</name>
+  </compound>
+  <compound refid="dir_8052a0a11e62975c75c2078f9c755ffd" kind="dir"><name>include/global/Highres_Clock/Mac</name>
   </compound>
   <compound refid="dir_aee694eea64247cbd2ed973b72bd496f" kind="dir"><name>include/core/MainObjects</name>
   </compound>
@@ -1977,17 +2207,23 @@
   </compound>
   <compound refid="dir_2d36ffd9782eb08e08be0bc6a6e3790c" kind="dir"><name>include/core/db/Capnp/Translators/MusicTranslator</name>
   </compound>
+  <compound refid="dir_2c5ced4fc933b70da576d2f7134e379e" kind="dir"><name>include/judge/NoteOBJ</name>
+  </compound>
   <compound refid="dir_56d2716a27252db85311e7620b189731" kind="dir"><name>include/core/db/Capnp/Translators/NoteTranslator</name>
   </compound>
   <compound refid="dir_fcec5fb50f7aa8fd4fa780069036d830" kind="dir"><name>include/core/editor/pdjeLinter</name>
   </compound>
   <compound refid="dir_9f6bd92ca734390fd23a9b3053d83ba7" kind="dir"><name>include/input/linux/RT</name>
   </compound>
+  <compound refid="dir_b1ecd32e67fce4e2c377c0fedb72ad98" kind="dir"><name>include/input/linux/socket</name>
+  </compound>
   <compound refid="dir_2d714543e6a0e39c8f4ee11136c19c5c" kind="dir"><name>include/core/MainObjects/tempDBObject</name>
   </compound>
   <compound refid="dir_4abf8571c1830d727ba746fd6ad81b8d" kind="dir"><name>include/tests</name>
   </compound>
   <compound refid="dir_8ab63cf3da73e134fc2ec11861f63c26" kind="dir"><name>include/core/db/Capnp/Translators</name>
+  </compound>
+  <compound refid="dir_6de2bafdcd380889bda911a16a85dfd3" kind="dir"><name>include/global/Highres_Clock/Windows</name>
   </compound>
   <compound refid="dir_aca6f158152cd14c5f0f57ba8470e619" kind="dir"><name>include/input/windows</name>
   </compound>

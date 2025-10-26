@@ -4,7 +4,7 @@
 #include "miniaudio.h"
 
 auto               idx = 0;
-FXControlPanel   *fxcp;
+FXControlPanel    *fxcp;
 std::vector<float> Lvec(480);
 std::vector<float> Rvec(480);
 

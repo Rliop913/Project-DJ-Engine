@@ -82,7 +82,7 @@ PDJE is organized into independent, dynamically loadable modules:
   It supports general-purpose inputs such as keyboard and mouse, as well as MIDI input.
   
   Available on linux, windows
-- **Note Engine** :
+- **Judge Engine** :
   This engine is designed to handle rhythm game logic or real-time timing judgments.
   It can be used by connecting either the PDJE Input Engine or another input engine wrapped for compatibility.
 
@@ -111,7 +111,7 @@ MileStones
       0.5.0 : Core Module Implemented
       0.6.0 : PDJE_Input module implement-Windows
       0.7.0 : PDJE_Judge module implement
-      0.8.0 : PDjE_Input module implement-Linux
+      0.8.0 : PDjE_Input module implement-Linux, MIDI
       0.9.0 : PDJE_Input module implement-Mac
       1.0.0 : Stable Release
     section DJ + DAW + HPC + AI Rhythm Engine

@@ -1,57 +1,60 @@
 #pragma once
 
-#include <memory_resource>
-#include <optional>
+#include "PDJE_EXPORT_SETTER.hpp"
 #include <atomic>
+#include <memory_resource>
 
-#define RESET_PMR_VECTOR(ARENA, VEC) std::pmr::vector<T>{&ARENA}.swap(VEC)  
+#include <vector>
 
-template<typename T>
-class PDJE_Buffer_Arena{
-private:
+template <typename T> class PDJE_Buffer_Arena {
+  private:
     std::pmr::unsynchronized_pool_resource arena;
-    std::pmr::vector<T> buf1;
-    std::pmr::vector<T> buf2;
-    std::atomic_flag lock = ATOMIC_FLAG_INIT;
-    bool buf_first = true;
-public:
-    
-    void Write(const T& data);
-    std::pmr::vector<T>* Get();
+    std::pmr::polymorphic_allocator<T>     allocator;
+    std::pmr::vector<T>                    buf1;
+    std::pmr::vector<T>                    buf2;
+    std::atomic_flag                       lock      = ATOMIC_FLAG_INIT;
+    bool                                   buf_first = true;
 
-    PDJE_Buffer_Arena():
-    arena{},
-    buf1(&arena),
-    buf2(&arena)
+  public:
+    void
+    Write(const T &data);
+
+    std::pmr::vector<T> *
+    Get();
+
+    PDJE_Buffer_Arena()
+        : arena{}, allocator(&arena), buf1(allocator), buf2(allocator)
     {
-        buf1.reserve(2048);
-        RESET_PMR_VECTOR(arena, buf1);
+        std::pmr::vector<T> tempVec{ allocator };
+        tempVec.reserve(2048);
     }
+
     ~PDJE_Buffer_Arena() = default;
 };
 
-template<typename T>
+template <typename T>
 void
-PDJE_Buffer_Arena<T>::Write(const T& data)
+PDJE_Buffer_Arena<T>::Write(const T &data)
 {
-    while(lock.test_and_set(std::memory_order_acquire)){}
-    //locked
-    if(buf_first){
-        buf1.push_back(data);
+    while (lock.test_and_set(std::memory_order_acquire)) {
     }
-    else{
+    // locked
+    if (buf_first) {
+        buf1.push_back(data);
+    } else {
         buf2.push_back(data);
     }
-    
+
     lock.clear(std::memory_order_release);
-    //unlock
+    // unlock
 }
 
-template<typename T>
-std::pmr::vector<T>*
+template <typename T>
+std::pmr::vector<T> *
 PDJE_Buffer_Arena<T>::Get()
 {
-    while(lock.test_and_set(std::memory_order_acquire)){}
+    while (lock.test_and_set(std::memory_order_acquire)) {
+    }
     buf_first ? buf2.clear() : buf1.clear();
     buf_first = !buf_first;
     lock.clear(std::memory_order_release);

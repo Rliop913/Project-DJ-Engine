@@ -86,8 +86,10 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Input_State.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_DataLine.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_Device_Data.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;barrier&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;future&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
@@ -99,64 +101,67 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;linux_input.hpp&quot;</span>
 <span class="cp">#endif</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_Input</span><span class="w"> </span><span class="p">{</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">PDJE_Input</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">OS_Input</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="nf">Init</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="nf">Config</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">devs</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="nf">Run</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="nf">Kill</span><span class="p">();</span>
 
 <span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">P</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="kt">void</span>
-<span class="w">    </span><span class="n">InitOneShot</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">&amp;</span><span class="n">promise</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;</span><span class="n">future</span><span class="p">);</span>
+<span class="w">    </span><span class="n">InitOneShot</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">&amp;</span><span class="n">promise</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;</span><span class="n">future</span><span class="p">,</span><span class="w"> </span><span class="n">ONE_SHOT_SYNC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sync</span><span class="p">);</span>
 
 <span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">P</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="kt">void</span>
-<span class="w">                            </span><span class="n">ResetOneShot</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">&amp;</span><span class="n">promise</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;</span><span class="n">future</span><span class="p">);</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activated_devices</span><span class="p">;</span>
-<span class="w">    </span><span class="n">PDJE_INPUT_STATE</span><span class="w">        </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEAD</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ResetOneShot</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">&amp;</span><span class="n">promise</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;</span><span class="n">future</span><span class="p">,</span><span class="w"> </span><span class="n">ONE_SHOT_SYNC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sync</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// std::vector&lt;DeviceData&gt; activated_devices;</span>
+<span class="w">    </span><span class="n">PDJE_INPUT_STATE</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEAD</span><span class="p">;</span>
 
 <span class="w">  </span><span class="k">public</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">ErrLog</span><span class="p">;</span>
-
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="n">GetDevs</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">void</span>
-<span class="w">    </span><span class="nf">SetDevs</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">devs</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">Init</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">Config</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">devs</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">Run</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">Kill</span><span class="p">();</span>
+
 <span class="w">    </span><span class="n">PDJE_INPUT_STATE</span>
 <span class="w">    </span><span class="nf">GetState</span><span class="p">();</span>
-<span class="w">    </span><span class="n">PDJE_INPUT_STATE</span>
-<span class="w">    </span><span class="nf">NEXT</span><span class="p">();</span>
+
 <span class="w">    </span><span class="n">PDJE_INPUT_DATA_LINE</span>
 <span class="w">    </span><span class="nf">PullOutDataLine</span><span class="p">();</span>
 
 <span class="w">    </span><span class="n">ONE_SHOT_DEV_PROMISE</span><span class="w"> </span><span class="n">config_promise</span><span class="p">;</span>
 <span class="w">    </span><span class="n">ONE_SHOT_RUN_PROMISE</span><span class="w"> </span><span class="n">run_command</span><span class="p">;</span>
-<span class="w">    </span><span class="n">PDJE_Input</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_Input</span><span class="p">();</span>
 
 <span class="w">    </span><span class="o">~</span><span class="n">PDJE_Input</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">P</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span>
 <span class="kt">void</span>
-<span class="n">PDJE_Input</span><span class="o">::</span><span class="n">InitOneShot</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">&amp;</span><span class="n">promise</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;</span><span class="n">future</span><span class="p">)</span>
+<span class="n">PDJE_Input</span><span class="o">::</span><span class="n">InitOneShot</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">&amp;</span><span class="n">promise</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;</span><span class="n">future</span><span class="p">,</span><span class="w"> </span><span class="n">ONE_SHOT_SYNC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sync</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">promise</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
 <span class="w">    </span><span class="n">future</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
+<span class="w">    </span><span class="n">sync</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 <span class="w">    </span><span class="n">future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">promise</span><span class="o">-&gt;</span><span class="n">get_future</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">P</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span>
 <span class="kt">void</span>
-<span class="n">PDJE_Input</span><span class="o">::</span><span class="n">ResetOneShot</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">&amp;</span><span class="n">promise</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;</span><span class="n">future</span><span class="p">)</span>
+<span class="n">PDJE_Input</span><span class="o">::</span><span class="n">ResetOneShot</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">&amp;</span><span class="n">promise</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;</span><span class="n">future</span><span class="p">,</span><span class="w"> </span><span class="n">ONE_SHOT_SYNC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sync</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">promise</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
 <span class="w">    </span><span class="n">future</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">sync</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 </div>

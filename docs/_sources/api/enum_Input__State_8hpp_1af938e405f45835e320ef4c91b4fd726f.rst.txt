@@ -3,7 +3,7 @@
 Enum PDJE_Mouse_Axis_Type
 =========================
 
-- Defined in :ref:`file_include_input_Input_State.hpp`
+- Defined in :ref:`file_include_global_DataLines_Input_State.hpp`
 
 
 Enum Documentation

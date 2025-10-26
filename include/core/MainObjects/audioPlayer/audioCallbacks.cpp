@@ -1,5 +1,6 @@
 #include "audioCallbacks.hpp"
 #include "FrameCalc.hpp"
+#include <atomic>
 #include <cstring>
 
 std::optional<float *>
@@ -16,7 +17,10 @@ void
 audioEngineDataStruct::CountUp(const unsigned long frameCount)
 {
     nowCursor += frameCount;
-    consumedFrames += frameCount;
+    cacheSync = syncData.load(std::memory_order_acquire);
+    cacheSync.consumed_frames += frameCount;
+    cacheSync.microsecond = highres_clock.Get_MicroSecond();
+    syncData.store(cacheSync, std::memory_order_release);
 }
 
 void
@@ -57,9 +61,9 @@ FullPreRender_callback(ma_device  *pDevice,
                        ma_uint32   frameCount)
 {
     auto rendered =
-        reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
-    rendered->Get(reinterpret_cast<float *>(pOutput), frameCount);
+    reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
     rendered->CountUp(frameCount);
+    rendered->Get(reinterpret_cast<float *>(pOutput), frameCount);
 }
 
 void
@@ -69,11 +73,11 @@ HybridRender_callback(ma_device  *pDevice,
                       ma_uint32   frameCount)
 {
     auto rendered =
-        reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
+    reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
+    rendered->CountUp(frameCount);
     rendered->GetAfterManFX(reinterpret_cast<float *>(pOutput), frameCount);
     rendered->MusCtrPanel->GetPCMFrames(reinterpret_cast<float *>(pOutput),
-                                         frameCount);
-    rendered->CountUp(frameCount);
+                                        frameCount);
 }
 
 void
@@ -83,6 +87,7 @@ FullManualRender_callback(ma_device  *pDevice,
                           ma_uint32   frameCount)
 {
     auto Data = reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
+    Data->CountUp(frameCount);
     Data->MusCtrPanel->GetPCMFrames(reinterpret_cast<float *>(pOutput),
-                                     frameCount);
+                                    frameCount);
 }

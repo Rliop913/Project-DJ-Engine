@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="structPDJE__JUDGE_1_1INPUT__RULE" kind="struct" language="C++" prot="public">
+    <compoundname>PDJE_JUDGE::INPUT_RULE</compoundname>
+    <derivedcompoundref refid="structPDJE__JUDGE_1_1INPUT__CONFIG" prot="public" virt="non-virtual">PDJE_JUDGE::INPUT_CONFIG</derivedcompoundref>
+    <includes refid="PDJE__Rule_8hpp" local="no">PDJE_Rule.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structPDJE__JUDGE_1_1INPUT__RULE_1aa9e71f2f4ec766fc1c0e4df000f0e607" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string PDJE_JUDGE::INPUT_RULE::Device_ID</definition>
+        <argsstring></argsstring>
+        <name>Device_ID</name>
+        <qualifiedname>PDJE_JUDGE::INPUT_RULE::Device_ID</qualifiedname>
+        <initializer>= &quot;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Rule.hpp" line="23" column="19" bodyfile="include/judge/PDJE_Rule.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPDJE__JUDGE_1_1INPUT__RULE_1a665a8072fc88db62bc59bdaa52a004b8" prot="public" static="no" mutable="no">
+        <type><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456" kindref="member">PDJE_Dev_Type</ref></type>
+        <definition>PDJE_Dev_Type PDJE_JUDGE::INPUT_RULE::DeviceType</definition>
+        <argsstring></argsstring>
+        <name>DeviceType</name>
+        <qualifiedname>PDJE_JUDGE::INPUT_RULE::DeviceType</qualifiedname>
+        <initializer>= <ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a696b031073e74bf2cb98e5ef201d4aa3" kindref="member">PDJE_Dev_Type::UNKNOWN</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Rule.hpp" line="24" column="19" bodyfile="include/judge/PDJE_Rule.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPDJE__JUDGE_1_1INPUT__RULE_1a26595261d4164af5259c5a81392c7984" prot="public" static="no" mutable="no">
+        <type><ref refid="Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107" kindref="member">BITMASK</ref></type>
+        <definition>BITMASK PDJE_JUDGE::INPUT_RULE::DeviceKey</definition>
+        <argsstring></argsstring>
+        <name>DeviceKey</name>
+        <qualifiedname>PDJE_JUDGE::INPUT_RULE::DeviceKey</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Rule.hpp" line="25" column="19" bodyfile="include/judge/PDJE_Rule.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structPDJE__JUDGE_1_1INPUT__RULE_1a9e677d142dbff730cfe41d85bca696f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_JUDGE::INPUT_RULE::operator==</definition>
+        <argsstring>(const INPUT_RULE &amp;) const =default</argsstring>
+        <name>operator==</name>
+        <qualifiedname>PDJE_JUDGE::INPUT_RULE::operator==</qualifiedname>
+        <param>
+          <type>const <ref refid="structPDJE__JUDGE_1_1INPUT__RULE" kindref="compound">INPUT_RULE</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Rule.hpp" line="27" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>PDJE_JUDGE::INPUT_CONFIG</label>
+        <link refid="structPDJE__JUDGE_1_1INPUT__CONFIG"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>PDJE_JUDGE::INPUT_RULE</label>
+        <link refid="structPDJE__JUDGE_1_1INPUT__RULE"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>PDJE_JUDGE::INPUT_RULE</label>
+        <link refid="structPDJE__JUDGE_1_1INPUT__RULE"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>Device_ID</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/judge/PDJE_Rule.hpp" line="22" column="1" bodyfile="include/judge/PDJE_Rule.hpp" bodystart="22" bodyend="28"/>
+    <listofallmembers>
+      <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1aa9e71f2f4ec766fc1c0e4df000f0e607" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_RULE</scope><name>Device_ID</name></member>
+      <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1a26595261d4164af5259c5a81392c7984" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_RULE</scope><name>DeviceKey</name></member>
+      <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1a665a8072fc88db62bc59bdaa52a004b8" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_RULE</scope><name>DeviceType</name></member>
+      <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1a9e677d142dbff730cfe41d85bca696f4" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_RULE</scope><name>operator==</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

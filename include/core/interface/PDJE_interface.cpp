@@ -113,6 +113,8 @@ PDJE::GetNoteObjects(trackdata &td, OBJ_SETTER_CALLBACK &ObjectSetCallback)
     auto noteTrans = new NoteTranslator();
     auto mixTrans  = new MixTranslator();
 
+    mixTrans->Read(mixreader);
+
     if (mixTrans->bpms.has_value()) {
         noteTrans->Read(
             notereader, mixTrans->bpms.value().bpmVec, ObjectSetCallback);

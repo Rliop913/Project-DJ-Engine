@@ -26,7 +26,7 @@ using LOADED_LIST = std::vector<std::string>;
 struct MusicOnDeck {
     bool                                  play = false;
     Decoder                               dec;
-    FXControlPanel                      *fxP;
+    FXControlPanel                       *fxP;
     std::optional<soundtouch::SoundTouch> st;
     MusicOnDeck() : fxP(new FXControlPanel(48000))
     {

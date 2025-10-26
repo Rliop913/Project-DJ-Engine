@@ -26,7 +26,7 @@ MusicControlPanel::LoadMusic(litedb &ROOTDB, const musdata &Mus)
 
 bool
 MusicControlPanel::CueMusic(const UNSANITIZED       &title,
-                             const unsigned long long newPos)
+                            const unsigned long long newPos)
 {
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
     if (!safeTitle) {
@@ -120,8 +120,8 @@ MusicControlPanel::getFXHandle(const UNSANITIZED &title)
 
 bool
 MusicControlPanel::ChangeBpm(const UNSANITIZED &title,
-                              const double       targetBpm,
-                              const double       originBpm)
+                             const double       targetBpm,
+                             const double       originBpm)
 {
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
     if (!safeTitle) {

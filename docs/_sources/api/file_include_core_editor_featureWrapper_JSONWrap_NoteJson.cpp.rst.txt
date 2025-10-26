@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``cstdint``
+
 - ``jsonWrapper.hpp`` (:ref:`file_include_core_editor_featureWrapper_JSONWrap_jsonWrapper.hpp`)
 
 

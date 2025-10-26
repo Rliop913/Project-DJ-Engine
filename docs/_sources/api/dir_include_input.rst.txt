@@ -22,7 +22,6 @@ Subdirectories
 Files
 -----
 
-- :ref:`file_include_input_Input_State.hpp`
 - :ref:`file_include_input_PDJE_Input.cpp`
 - :ref:`file_include_input_PDJE_Input.hpp`
 

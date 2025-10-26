@@ -12,7 +12,8 @@ ${CMAKE_CURRENT_SOURCE_DIR}/include/core/db/Capnp/Translators/NoteTranslator/Not
 
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/db/Capnp/Translators/FrameCalc.cpp
 
-${CMAKE_CURRENT_SOURCE_DIR}/third_party/Capnp/MixBinary.capnp.c++
-${CMAKE_CURRENT_SOURCE_DIR}/third_party/Capnp/MusicBinary.capnp.c++
-${CMAKE_CURRENT_SOURCE_DIR}/third_party/Capnp/NoteBinary.capnp.c++
+${CAPNP_SRCS}
+# ${CMAKE_CURRENT_SOURCE_DIR}/third_party/Capnp/MixBinary.capnp.c++
+# ${CMAKE_CURRENT_SOURCE_DIR}/third_party/Capnp/MusicBinary.capnp.c++
+# ${CMAKE_CURRENT_SOURCE_DIR}/third_party/Capnp/NoteBinary.capnp.c++
 )

@@ -1,8 +1,10 @@
 #pragma once
 
 #include "Input_State.hpp"
+#include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Input_Device_Data.hpp"
+#include <barrier>
 #include <future>
 #include <string>
 #include <vector>
@@ -19,64 +21,91 @@
  *
  * Searches for connected devices and pairs them with the engine.
  */
-class PDJE_Input {
+class PDJE_API PDJE_Input {
   private:
     OS_Input data;
+
+    template <typename P, typename F>
+    void
+    InitOneShot(P &promise, F &future, ONE_SHOT_SYNC &sync);
+
+    template <typename P, typename F>
+    void
+    ResetOneShot(P &promise, F &future, ONE_SHOT_SYNC &sync);
+    // std::vector<DeviceData> activated_devices;
+    PDJE_INPUT_STATE state = PDJE_INPUT_STATE::DEAD;
+
+  public:
+    std::string ErrLog;
+    /** @brief Get All Connected devices.
+     */
+    std::vector<DeviceData>
+    GetDevs();
+
+    /**
+    @brief initialize pdje input.
+    */
     bool
     Init();
+
+    /**
+    @brief configure device data.
+    */
     bool
     Config(std::vector<DeviceData> &devs);
+
+    /**
+    @brief run input Loop
+    */
     bool
     Run();
+
+    /**
+    @brief kill input Loop
+    */
     bool
     Kill();
 
-    template <typename P, typename F>
-    void
-    InitOneShot(P &promise, F &future);
-
-    template <typename P, typename F>
-    void
-                            ResetOneShot(P &promise, F &future);
-    std::vector<DeviceData> activated_devices;
-    PDJE_INPUT_STATE        state = PDJE_INPUT_STATE::DEAD;
-    
-  public:
-    std::string ErrLog;
-
-    std::vector<DeviceData>
-    GetDevs();
-    void
-    SetDevs(const std::vector<DeviceData> &devs);
+    /**
+    @brief get pdje input module's configuration & running state
+    */
     PDJE_INPUT_STATE
     GetState();
-    PDJE_INPUT_STATE
-    NEXT();
+
+    /**
+    @brief pull out input data line. The input Loop will pass datas in here.
+    */
     PDJE_INPUT_DATA_LINE
     PullOutDataLine();
 
     ONE_SHOT_DEV_PROMISE config_promise;
     ONE_SHOT_RUN_PROMISE run_command;
-    /// Constructor.
-    PDJE_Input() = default;
+    /**
+    @brief Constructor.
+    */
+    PDJE_Input();
 
-    /// Destructor.
+    /**
+    @brief Destructor.
+    */
     ~PDJE_Input() = default;
 };
 
 template <typename P, typename F>
 void
-PDJE_Input::InitOneShot(P &promise, F &future)
+PDJE_Input::InitOneShot(P &promise, F &future, ONE_SHOT_SYNC &sync)
 {
     promise.emplace();
     future.emplace();
+    sync.emplace(2);
     future = promise->get_future();
 }
 
 template <typename P, typename F>
 void
-PDJE_Input::ResetOneShot(P &promise, F &future)
+PDJE_Input::ResetOneShot(P &promise, F &future, ONE_SHOT_SYNC &sync)
 {
     promise.reset();
     future.reset();
+    sync.reset();
 }

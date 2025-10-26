@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File Input_State.hpp &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File Input_State.hpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_include_global_DataLines_Input_State.hpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-input-state-hpp">
+<span id="program-listing-file-include-global-datalines-input-state-hpp"></span><h1>Program Listing for File Input_State.hpp<a class="headerlink" href="#program-listing-for-file-input-state-hpp" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file_include_global_DataLines_Input_State.hpp.html#file-include-global-datalines-input-state-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/global/DataLines/Input_State.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;future&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory_resource&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">PDJE_INPUT_STATE</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DEVICE_CONFIG_STATE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">INPUT_LOOP_READY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">INPUT_LOOP_RUNNING</span><span class="p">,</span>
+<span class="w">    </span><span class="n">DEAD</span>
+<span class="p">};</span>
+
+<span class="k">enum</span><span class="w"> </span><span class="nc">PDJE_MIDI_EVENTS</span><span class="w"> </span><span class="p">{</span>
+
+<span class="p">};</span>
+
+<span class="cp">#define PDJE_MOUSE_L_BTN_DOWN 0x0001</span>
+<span class="cp">#define PDJE_MOUSE_L_BTN_UP 0x0002</span>
+<span class="cp">#define PDJE_MOUSE_R_BTN_DOWN 0x0004</span>
+<span class="cp">#define PDJE_MOUSE_R_BTN_UP 0x0008</span>
+<span class="cp">#define PDJE_MOUSE_M_BTN_DOWN 0x0010</span>
+<span class="cp">#define PDJE_MOUSE_M_BTN_UP 0x0020</span>
+<span class="cp">#define PDJE_MOUSE_SIDE_BTN_DOWN 0x0040</span>
+<span class="cp">#define PDJE_MOUSE_SIDE_BTN_UP 0x0080</span>
+<span class="cp">#define PDJE_MOUSE_EX_BTN_DOWN 0x0100</span>
+<span class="cp">#define PDJE_MOUSE_EX_BTN_UP 0x0200</span>
+<span class="cp">#define PDJE_MOUSE_XWHEEL 0x0400</span>
+<span class="cp">#define PDJE_MOUSE_YWHEEL 0x0800</span>
+
+<span class="k">enum</span><span class="w"> </span><span class="nc">PDJE_KEY</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">F_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">F_2</span><span class="p">,</span>
+<span class="w">    </span><span class="n">F_3</span><span class="p">,</span>
+<span class="w">    </span><span class="n">F_4</span><span class="p">,</span>
+<span class="w">    </span><span class="n">F_5</span><span class="p">,</span>
+<span class="w">    </span><span class="n">F_6</span><span class="p">,</span>
+<span class="w">    </span><span class="n">F_7</span><span class="p">,</span>
+<span class="w">    </span><span class="n">F_8</span><span class="p">,</span>
+<span class="w">    </span><span class="n">F_9</span><span class="p">,</span>
+<span class="w">    </span><span class="n">F_10</span><span class="p">,</span>
+<span class="w">    </span><span class="n">F_11</span><span class="p">,</span>
+<span class="w">    </span><span class="n">F_12</span><span class="p">,</span>
+<span class="w">    </span><span class="n">D1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">D2</span><span class="p">,</span>
+<span class="w">    </span><span class="n">D3</span><span class="p">,</span>
+<span class="w">    </span><span class="n">D4</span><span class="p">,</span>
+<span class="w">    </span><span class="n">D5</span><span class="p">,</span>
+<span class="w">    </span><span class="n">D6</span><span class="p">,</span>
+<span class="w">    </span><span class="n">D7</span><span class="p">,</span>
+<span class="w">    </span><span class="n">D8</span><span class="p">,</span>
+<span class="w">    </span><span class="n">D9</span><span class="p">,</span>
+<span class="w">    </span><span class="n">D0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Q</span><span class="p">,</span>
+<span class="w">    </span><span class="n">W</span><span class="p">,</span>
+<span class="w">    </span><span class="n">E</span><span class="p">,</span>
+<span class="w">    </span><span class="n">R</span><span class="p">,</span>
+<span class="w">    </span><span class="n">T</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Y</span><span class="p">,</span>
+<span class="w">    </span><span class="n">U</span><span class="p">,</span>
+<span class="w">    </span><span class="n">I</span><span class="p">,</span>
+<span class="w">    </span><span class="n">O</span><span class="p">,</span>
+<span class="w">    </span><span class="n">P</span><span class="p">,</span>
+<span class="w">    </span><span class="n">A</span><span class="p">,</span>
+<span class="w">    </span><span class="n">S</span><span class="p">,</span>
+<span class="w">    </span><span class="n">D</span><span class="p">,</span>
+<span class="w">    </span><span class="n">F</span><span class="p">,</span>
+<span class="w">    </span><span class="n">G</span><span class="p">,</span>
+<span class="w">    </span><span class="n">H</span><span class="p">,</span>
+<span class="w">    </span><span class="n">J</span><span class="p">,</span>
+<span class="w">    </span><span class="n">K</span><span class="p">,</span>
+<span class="w">    </span><span class="n">L</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Z</span><span class="p">,</span>
+<span class="w">    </span><span class="n">X</span><span class="p">,</span>
+<span class="w">    </span><span class="n">C</span><span class="p">,</span>
+<span class="w">    </span><span class="n">V</span><span class="p">,</span>
+<span class="w">    </span><span class="n">B</span><span class="p">,</span>
+<span class="w">    </span><span class="n">N</span><span class="p">,</span>
+<span class="w">    </span><span class="n">M</span><span class="p">,</span>
+
+<span class="w">    </span><span class="n">KP_1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_2</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_3</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_4</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_5</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_6</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_7</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_8</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_9</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_DOT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_ENTER</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_PLUS</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_NUMLOCK</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_SLASH</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_STAR</span><span class="p">,</span>
+<span class="w">    </span><span class="n">KP_MINUS</span><span class="p">,</span>
+
+<span class="w">    </span><span class="n">ENTER</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ESC</span><span class="p">,</span>
+<span class="w">    </span><span class="n">BACKSPACE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">TAB</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SPACE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">CAPSLK</span><span class="p">,</span>
+
+<span class="w">    </span><span class="n">LEFT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RIGHT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">UP</span><span class="p">,</span>
+<span class="w">    </span><span class="n">DOWN</span><span class="p">,</span>
+
+<span class="w">    </span><span class="n">LCTRL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RCTRL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">LALT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RALT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">LSHIFT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RSHIFT</span><span class="p">,</span>
+
+<span class="w">    </span><span class="n">MINUS</span><span class="p">,</span>
+<span class="w">    </span><span class="n">EQUAL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">LBRACKET</span><span class="p">,</span>
+<span class="w">    </span><span class="n">RBRACKET</span><span class="p">,</span>
+<span class="w">    </span><span class="n">BACKSLASH</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SLASH</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SEMICOLON</span><span class="p">,</span>
+<span class="w">    </span><span class="n">APOSTROPHE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">GRAVE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">COMMA</span><span class="p">,</span>
+<span class="w">    </span><span class="n">PERIOD</span><span class="p">,</span>
+<span class="w">    </span><span class="n">NONUS_BACKSLASH</span><span class="p">,</span>
+
+<span class="w">    </span><span class="n">SP_PRINT_SCREEN</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SP_SCROLL_LOCK</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SP_INSERT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SP_HOME</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SP_END</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SP_DELETE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SP_PAGE_UP</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SP_PAGE_DOWN</span><span class="p">,</span>
+<span class="w">    </span><span class="n">UNKNOWN</span>
+<span class="p">};</span>
+
+<span class="k">enum</span><span class="w"> </span><span class="nc">PDJE_Mouse_Axis_Type</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">REL</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ABS</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">VIRTUAL_DESKTOP_ABS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="c1">// maybe windows only</span>
+<span class="p">};</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">BITMASK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">uint16_t</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_Mouse_Event</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">BITMASK</span><span class="w">              </span><span class="n">button_type</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">                  </span><span class="n">wheel_move</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_Mouse_Axis_Type</span><span class="w"> </span><span class="n">axis_type</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">                  </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">                  </span><span class="n">y</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_Keyboard_Event</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">PDJE_KEY</span><span class="w"> </span><span class="n">k</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">     </span><span class="n">pressed</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_HID_Event</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hid_buffer</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w">             </span><span class="n">hid_byte_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Midi_Input_Data</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">PDJE_MIDI_EVENTS</span><span class="w"> </span><span class="n">event_type</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">          </span><span class="n">channel</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">          </span><span class="n">note</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w">          </span><span class="n">velocity</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">union</span><span class="w"> </span><span class="nc">PDJE_Input_Event</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">PDJE_Mouse_Event</span><span class="w">    </span><span class="n">mouse</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_Keyboard_Event</span><span class="w"> </span><span class="n">keyboard</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">ONE_SHOT_RUN_PROMISE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">promise</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">ONE_SHOT_RUN_FUTURE</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

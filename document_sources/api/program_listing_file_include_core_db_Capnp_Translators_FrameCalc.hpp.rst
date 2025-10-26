@@ -36,22 +36,22 @@ Program Listing for File FrameCalc.hpp
            (static_cast<TYPE>(SUBBEAT) / static_cast<TYPE>(SEP))
    
    namespace FrameCalc {
-   extern unsigned long
-   CountFrame(unsigned long Sbeat,
-              unsigned long SsubBeat,
-              unsigned long Sseparate,
-              unsigned long Ebeat,
-              unsigned long EsubBeat,
-              unsigned long Eseparate,
+   extern uint64_t
+   CountFrame(uint64_t Sbeat,
+              uint64_t SsubBeat,
+              uint64_t Sseparate,
+              uint64_t Ebeat,
+              uint64_t EsubBeat,
+              uint64_t Eseparate,
               double        bpm);
    }; // namespace FrameCalc
    
    struct PDJE_API BpmFragment {
-       unsigned long      beat;
-       unsigned long      subBeat;
-       unsigned long      separate;
-       unsigned long long frame_to_here = 0;
-       double             bpm;
+       uint64_t      beat=0;
+       uint64_t      subBeat=0;
+       uint64_t      separate=0;
+       uint64_t frame_to_here = 0;
+       double             bpm=0;
    };
    
    struct PDJE_API BpmStruct {

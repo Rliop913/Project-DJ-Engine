@@ -16,6 +16,7 @@ Subdirectories
 --------------
 
 - :ref:`dir_include_tests_INPUT_TESTS`
+- :ref:`dir_include_tests_JUDGE_TESTS`
 
 
 Files

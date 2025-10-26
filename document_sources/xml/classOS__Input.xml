@@ -4,19 +4,19 @@
     <compoundname>OS_Input</compoundname>
     <includes refid="linux__input_8hpp" local="no">linux_input.hpp</includes>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classOS__Input_1a1b378445bf9547af392a2b1b12f74b4d" prot="private" static="no" mutable="no">
-        <type><ref refid="structID" kindref="compound">ID</ref></type>
-        <definition>ID OS_Input::importants</definition>
+      <memberdef kind="variable" id="classOS__Input_1ac0fb5fb7bfcc38a496f3ef475c3ef543" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__LINUX_1_1PDJE__Socket" kindref="compound">PDJE_LINUX::PDJE_Socket</ref></type>
+        <definition>PDJE_LINUX::PDJE_Socket OS_Input::socket</definition>
         <argsstring></argsstring>
-        <name>importants</name>
-        <qualifiedname>OS_Input::importants</qualifiedname>
+        <name>socket</name>
+        <qualifiedname>OS_Input::socket</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/linux/linux_input.hpp" line="26" column="8" bodyfile="include/input/linux/linux_input.hpp" bodystart="26" bodyend="-1"/>
+        <location file="include/input/linux/linux_input.hpp" line="11" column="29" bodyfile="include/input/linux/linux_input.hpp" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classOS__Input_1abdcf0f9cc7f71efc80f7206118fab14a" prot="private" static="no" mutable="no">
         <type>DWORD</type>
@@ -30,21 +30,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="36" column="11" bodyfile="include/input/windows/windows_input.hpp" bodystart="36" bodyend="-1"/>
+        <location file="include/input/windows/windows_input.hpp" line="40" column="31" bodyfile="include/input/windows/windows_input.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classOS__Input_1a8cd9d6130d410d3310ea442302d48230" prot="private" static="no" mutable="no">
-        <type><ref refid="classQPC__Timer" kindref="compound">QPC_Timer</ref></type>
-        <definition>QPC_Timer OS_Input::qpc</definition>
+      <memberdef kind="variable" id="classOS__Input_1a982445a0d90b07619b163d8752a51bf9" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK" kindref="compound">PDJE_HIGHRES_CLOCK::CLOCK</ref></type>
+        <definition>PDJE_HIGHRES_CLOCK::CLOCK OS_Input::timer</definition>
         <argsstring></argsstring>
-        <name>qpc</name>
-        <qualifiedname>OS_Input::qpc</qualifiedname>
+        <name>timer</name>
+        <qualifiedname>OS_Input::timer</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="37" column="15" bodyfile="include/input/windows/windows_input.hpp" bodystart="37" bodyend="-1"/>
+        <location file="include/input/windows/windows_input.hpp" line="41" column="31" bodyfile="include/input/windows/windows_input.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classOS__Input_1a28f8aba8f3d1db86907df43ff6132dec" prot="private" static="no" mutable="no">
         <type>std::unordered_map&lt; <ref refid="windows__input_8hpp_1a7704eb10de7beb5b7bc393f8b062446a" kindref="member">PDJE_DEV_PATH</ref>, <ref refid="PDJE__Input__DataLine_8hpp_1ad2b191944fa7dd4314a1a49b2b243e62" kindref="member">PDJE_NAME</ref> &gt;</type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="38" column="24" bodyfile="include/input/windows/windows_input.hpp" bodystart="38" bodyend="-1"/>
+        <location file="include/input/windows/windows_input.hpp" line="42" column="24" bodyfile="include/input/windows/windows_input.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classOS__Input_1a68dd8fd823ef4917b06720cc54cbd8d5" prot="private" static="no" mutable="no">
         <type>std::unordered_map&lt; <ref refid="PDJE__Input__DataLine_8hpp_1a73ea437825558867dcad305e6ab74cd9" kindref="member">PDJE_ID</ref>, <ref refid="PDJE__Input__DataLine_8hpp_1ad2b191944fa7dd4314a1a49b2b243e62" kindref="member">PDJE_NAME</ref> &gt;</type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="39" column="24" bodyfile="include/input/windows/windows_input.hpp" bodystart="39" bodyend="-1"/>
+        <location file="include/input/windows/windows_input.hpp" line="43" column="30" bodyfile="include/input/windows/windows_input.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classOS__Input_1ae2eae088a2a00f8fce44883f317f0bf2" prot="private" static="no" mutable="no">
         <type><ref refid="classPDJE__Buffer__Arena" kindref="compound">PDJE_Buffer_Arena</ref>&lt; <ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref> &gt;</type>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="40" column="23" bodyfile="include/input/windows/windows_input.hpp" bodystart="40" bodyend="-1"/>
+        <location file="include/input/windows/windows_input.hpp" line="44" column="34" bodyfile="include/input/windows/windows_input.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-attrib">
@@ -102,7 +102,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/linux/linux_input.hpp" line="29" column="25" bodyfile="include/input/linux/linux_input.hpp" bodystart="29" bodyend="-1"/>
+        <location file="include/input/linux/linux_input.hpp" line="14" column="25" bodyfile="include/input/linux/linux_input.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classOS__Input_1a1ae2beb6665f273f99a0f9c167bd1df4" prot="public" static="no" mutable="no">
+        <type><ref refid="PDJE__Input__Device__Data_8hpp_1ad828f376eddb4ee05af4efb4f169f1df" kindref="member">ONE_SHOT_SYNC</ref></type>
+        <definition>ONE_SHOT_SYNC OS_Input::config_sync</definition>
+        <argsstring></argsstring>
+        <name>config_sync</name>
+        <qualifiedname>OS_Input::config_sync</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/linux_input.hpp" line="15" column="25" bodyfile="include/input/linux/linux_input.hpp" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classOS__Input_1a1534b3f617505438f0b84929c32bb261" prot="public" static="no" mutable="no">
         <type><ref refid="Input__State_8hpp_1a821478f084c5bbe8413cfe70b427f702" kindref="member">ONE_SHOT_RUN_FUTURE</ref></type>
@@ -116,7 +130,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/linux/linux_input.hpp" line="30" column="25" bodyfile="include/input/linux/linux_input.hpp" bodystart="30" bodyend="-1"/>
+        <location file="include/input/linux/linux_input.hpp" line="16" column="25" bodyfile="include/input/linux/linux_input.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classOS__Input_1a570ff78c4ddb662dce1fdeac51bb70a3" prot="public" static="no" mutable="no">
+        <type><ref refid="PDJE__Input__Device__Data_8hpp_1ad828f376eddb4ee05af4efb4f169f1df" kindref="member">ONE_SHOT_SYNC</ref></type>
+        <definition>ONE_SHOT_SYNC OS_Input::run_sync</definition>
+        <argsstring></argsstring>
+        <name>run_sync</name>
+        <qualifiedname>OS_Input::run_sync</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/linux_input.hpp" line="17" column="25" bodyfile="include/input/linux/linux_input.hpp" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classOS__Input_1ac04fd8a51c01e38de60c3e00922a1ea3" prot="public" static="no" mutable="no">
         <type>std::wstring</type>
@@ -131,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="48" column="18" bodyfile="include/input/windows/windows_input.hpp" bodystart="48" bodyend="-1"/>
+        <location file="include/input/windows/windows_input.hpp" line="58" column="18" bodyfile="include/input/windows/windows_input.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classOS__Input_1a875f2737b8c7de13cba9ce7b979a0459" prot="public" static="no" mutable="no">
         <type>std::optional&lt; std::thread &gt;</type>
@@ -145,74 +173,254 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="52" column="19" bodyfile="include/input/windows/windows_input.hpp" bodystart="52" bodyend="-1"/>
+        <location file="include/input/windows/windows_input.hpp" line="64" column="19" bodyfile="include/input/windows/windows_input.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classOS__Input_1ad9e86505f15f2af9e0e772e99032f5de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structPDJE__INPUT__DATA__LINE" kindref="compound">PDJE_INPUT_DATA_LINE</ref></type>
+        <definition>PDJE_INPUT_DATA_LINE OS_Input::PullOutDataLine</definition>
+        <argsstring>()</argsstring>
+        <name>PullOutDataLine</name>
+        <qualifiedname>OS_Input::PullOutDataLine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/linux_input.hpp" line="20" column="5" bodyfile="include/input/windows/windows_input.cpp" bodystart="408" bodyend="414"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1a3a94e57f03ba728c189020de199610f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool OS_Input::kill</definition>
+        <argsstring>()</argsstring>
+        <name>kill</name>
+        <qualifiedname>OS_Input::kill</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/linux_input.hpp" line="22" column="5" bodyfile="include/input/linux/linux_input.hpp" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1a1e267997049cb562cb4b8d4dfe2f218e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt;</type>
+        <definition>std::vector&lt; DeviceData &gt; OS_Input::getDevices</definition>
+        <argsstring>()</argsstring>
+        <name>getDevices</name>
+        <qualifiedname>OS_Input::getDevices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/linux_input.hpp" line="27" column="5" bodyfile="include/input/linux/linux_input.cpp" bodystart="15" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1a1c5d8c5f98de73baa8282fe5b1afcf6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string OS_Input::setDevices</definition>
+        <argsstring>(const DEV_LIST &amp;devs)</argsstring>
+        <name>setDevices</name>
+        <qualifiedname>OS_Input::setDevices</qualifiedname>
+        <param>
+          <type>const <ref refid="PDJE__Input__Device__Data_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref> &amp;</type>
+          <declname>devs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/linux_input.hpp" line="29" column="5" bodyfile="include/input/linux/linux_input.cpp" bodystart="46" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1aefbbfd14e2902be2a2bb8fabb1d23cdd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_Input::TrigLoop</definition>
+        <argsstring>()</argsstring>
+        <name>TrigLoop</name>
+        <qualifiedname>OS_Input::TrigLoop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/linux_input.hpp" line="32" column="5" bodyfile="include/input/linux/linux_input.hpp" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1ae3c00214a561fe8736dc37024b88e420" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_Input::ResetLoop</definition>
+        <argsstring>()</argsstring>
+        <name>ResetLoop</name>
+        <qualifiedname>OS_Input::ResetLoop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/linux_input.hpp" line="36" column="5" bodyfile="include/input/linux/linux_input.hpp" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1a40d69fae9cf08cdaf17e5f4f09a3af22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_Input::EndSocketTransmission</definition>
+        <argsstring>()</argsstring>
+        <name>EndSocketTransmission</name>
+        <qualifiedname>OS_Input::EndSocketTransmission</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/linux_input.hpp" line="41" column="5" bodyfile="include/input/linux/linux_input.cpp" bodystart="62" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1ad60a928a455493a7648d1a4d0f97842b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>OS_Input::OS_Input</definition>
+        <argsstring>()=default</argsstring>
+        <name>OS_Input</name>
+        <qualifiedname>OS_Input::OS_Input</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/linux_input.hpp" line="42" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1aaa92fde24c900ea303ff039882a076bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>OS_Input::~OS_Input</definition>
+        <argsstring>()=default</argsstring>
+        <name>~OS_Input</name>
+        <qualifiedname>OS_Input::~OS_Input</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/linux/linux_input.hpp" line="43" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1a3a94e57f03ba728c189020de199610f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool OS_Input::kill</definition>
+        <argsstring>()</argsstring>
+        <name>kill</name>
+        <qualifiedname>OS_Input::kill</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/windows_input.hpp" line="48" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1aefbbfd14e2902be2a2bb8fabb1d23cdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_Input::TrigLoop</definition>
+        <argsstring>()</argsstring>
+        <name>TrigLoop</name>
+        <qualifiedname>OS_Input::TrigLoop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/windows_input.hpp" line="50" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1ae3c00214a561fe8736dc37024b88e420" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_Input::ResetLoop</definition>
+        <argsstring>()</argsstring>
+        <name>ResetLoop</name>
+        <qualifiedname>OS_Input::ResetLoop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/windows_input.hpp" line="52" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1af79ca528ebceb44b8c429091a36666bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void OS_Input::work</definition>
+        <argsstring>()</argsstring>
+        <name>work</name>
+        <qualifiedname>OS_Input::work</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/windows_input.hpp" line="54" column="5" bodyfile="include/input/windows/windows_input.cpp" bodystart="213" bodyend="306"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1a1e267997049cb562cb4b8d4dfe2f218e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt;</type>
+        <definition>std::vector&lt; DeviceData &gt; OS_Input::getDevices</definition>
+        <argsstring>()</argsstring>
+        <name>getDevices</name>
+        <qualifiedname>OS_Input::getDevices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/windows_input.hpp" line="56" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1ad9e86505f15f2af9e0e772e99032f5de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structPDJE__INPUT__DATA__LINE" kindref="compound">PDJE_INPUT_DATA_LINE</ref></type>
+        <definition>PDJE_INPUT_DATA_LINE OS_Input::PullOutDataLine</definition>
+        <argsstring>()</argsstring>
+        <name>PullOutDataLine</name>
+        <qualifiedname>OS_Input::PullOutDataLine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/windows_input.hpp" line="66" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1ad60a928a455493a7648d1a4d0f97842b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>OS_Input::OS_Input</definition>
+        <argsstring>()=default</argsstring>
+        <name>OS_Input</name>
+        <qualifiedname>OS_Input::OS_Input</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/windows_input.hpp" line="68" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classOS__Input_1aaa92fde24c900ea303ff039882a076bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>OS_Input::~OS_Input</definition>
+        <argsstring>()=default</argsstring>
+        <name>~OS_Input</name>
+        <qualifiedname>OS_Input::~OS_Input</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/windows/windows_input.hpp" line="69" column="5"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
-      <memberdef kind="function" id="classOS__Input_1a6666290654c4183177b46c68d11ab3a0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>int OS_Input::OpenClientWithSudo</definition>
-        <argsstring>(const std::string &amp;exec_path, const std::string &amp;arg)</argsstring>
-        <name>OpenClientWithSudo</name>
-        <qualifiedname>OS_Input::OpenClientWithSudo</qualifiedname>
-        <param>
-          <type>const std::string &amp;</type>
-          <declname>exec_path</declname>
-        </param>
-        <param>
-          <type>const std::string &amp;</type>
-          <declname>arg</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/linux/linux_input.hpp" line="19" column="5" bodyfile="include/input/linux/linux_input.cpp" bodystart="13" bodyend="47"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1a5787a6efcbe23e455a8a641f52592227" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>int OS_Input::CloseClient</definition>
-        <argsstring>()</argsstring>
-        <name>CloseClient</name>
-        <qualifiedname>OS_Input::CloseClient</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/linux/linux_input.hpp" line="21" column="5" bodyfile="include/input/linux/linux_input.cpp" bodystart="80" bodyend="84"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1ac18afc431328e05451cc99881e0c31aa" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref></type>
-          </param>
-          <param>
-            <type>int</type>
-            <declname>MEM_PROT_FLAG</declname>
-            <defname>MEM_PROT_FLAG</defname>
-          </param>
-        </templateparamlist>
-        <type>int</type>
-        <definition>int OS_Input::Send_IPCMEM_ToRT</definition>
-        <argsstring>(const IPCSharedMem&lt; T, MEM_PROT_FLAG &gt; &amp;shared_IPC_mem)</argsstring>
-        <name>Send_IPCMEM_ToRT</name>
-        <qualifiedname>OS_Input::Send_IPCMEM_ToRT</qualifiedname>
-        <param>
-          <type>const <ref refid="classIPCSharedMem" kindref="compound">IPCSharedMem</ref>&lt; <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref>, MEM_PROT_FLAG &gt; &amp;</type>
-          <declname>shared_IPC_mem</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/linux/linux_input.hpp" line="24" column="5" bodyfile="include/input/linux/linux_input.hpp" bodystart="60" bodyend="82"/>
-      </memberdef>
       <memberdef kind="function" id="classOS__Input_1a34e174a7bf24af7ff8c09426601be2e5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>HWND</type>
         <definition>HWND OS_Input::init</definition>
@@ -225,7 +433,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="31" column="10" bodyfile="include/input/windows/windows_input.cpp" bodystart="10" bodyend="25"/>
+        <location file="include/input/windows/windows_input.hpp" line="31" column="5" bodyfile="include/input/windows/windows_input.cpp" bodystart="11" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classOS__Input_1a4487a23afd8f4d9ca390d7f284850191" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -239,7 +447,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="32" column="10"/>
+        <location file="include/input/windows/windows_input.hpp" line="33" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classOS__Input_1a989606f220472d794ad7f72e427ae5ea" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -253,7 +461,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="33" column="10" bodyfile="include/input/windows/windows_input.cpp" bodystart="48" bodyend="157"/>
+        <location file="include/input/windows/windows_input.hpp" line="35" column="5" bodyfile="include/input/windows/windows_input.cpp" bodystart="81" bodyend="210"/>
       </memberdef>
       <memberdef kind="function" id="classOS__Input_1a794e58c59427871c2554c28c132baca4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="structRawDeviceData" kindref="compound">RawDeviceData</ref> &gt;</type>
@@ -267,7 +475,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="34" column="17" bodyfile="include/input/windows/windows_input.cpp" bodystart="240" bodyend="275"/>
+        <location file="include/input/windows/windows_input.hpp" line="37" column="5" bodyfile="include/input/windows/windows_input.cpp" bodystart="309" bodyend="347"/>
       </memberdef>
       <memberdef kind="function" id="classOS__Input_1a6a2dcd4d8bc49fe8463b88ce332538f3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -285,241 +493,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="35" column="17" bodyfile="include/input/windows/windows_input.cpp" bodystart="280" bodyend="285"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
-      <memberdef kind="function" id="classOS__Input_1aa75064f53d9640242cab6d395eaefcb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>int OS_Input::SocketOpen</definition>
-        <argsstring>(const std::string &amp;exec_path)</argsstring>
-        <name>SocketOpen</name>
-        <qualifiedname>OS_Input::SocketOpen</qualifiedname>
-        <param>
-          <type>const std::string &amp;</type>
-          <declname>exec_path</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/linux/linux_input.hpp" line="33" column="5" bodyfile="include/input/linux/linux_input.cpp" bodystart="50" bodyend="77"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1a40c0218fb24c4ef4de9eee228657e2df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void OS_Input::SocketClose</definition>
-        <argsstring>()</argsstring>
-        <name>SocketClose</name>
-        <qualifiedname>OS_Input::SocketClose</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/linux/linux_input.hpp" line="35" column="5" bodyfile="include/input/linux/linux_input.cpp" bodystart="87" bodyend="93"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1a3a94e57f03ba728c189020de199610f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool OS_Input::kill</definition>
-        <argsstring>()</argsstring>
-        <name>kill</name>
-        <qualifiedname>OS_Input::kill</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/linux/linux_input.hpp" line="37" column="5" bodyfile="include/input/linux/linux_input.hpp" bodystart="37" bodyend="40"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1a1e267997049cb562cb4b8d4dfe2f218e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt;</type>
-        <definition>std::vector&lt; DeviceData &gt; OS_Input::getDevices</definition>
-        <argsstring>()</argsstring>
-        <name>getDevices</name>
-        <qualifiedname>OS_Input::getDevices</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/linux/linux_input.hpp" line="42" column="5" bodyfile="include/input/linux/linux_input.cpp" bodystart="96" bodyend="124"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1a1c5d8c5f98de73baa8282fe5b1afcf6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::string</type>
-        <definition>std::string OS_Input::setDevices</definition>
-        <argsstring>(const DEV_LIST &amp;devs)</argsstring>
-        <name>setDevices</name>
-        <qualifiedname>OS_Input::setDevices</qualifiedname>
-        <param>
-          <type>const <ref refid="PDJE__Input__Device__Data_8hpp_1a58503d463081ac24677b1da5c0cf3d87" kindref="member">DEV_LIST</ref> &amp;</type>
-          <declname>devs</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/linux/linux_input.hpp" line="44" column="5" bodyfile="include/input/linux/linux_input.cpp" bodystart="127" bodyend="142"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1a40d69fae9cf08cdaf17e5f4f09a3af22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void OS_Input::EndSocketTransmission</definition>
-        <argsstring>()</argsstring>
-        <name>EndSocketTransmission</name>
-        <qualifiedname>OS_Input::EndSocketTransmission</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/linux/linux_input.hpp" line="47" column="5" bodyfile="include/input/linux/linux_input.cpp" bodystart="145" bodyend="157"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1aefbbfd14e2902be2a2bb8fabb1d23cdd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
-        <definition>void OS_Input::TrigLoop</definition>
-        <argsstring>()</argsstring>
-        <name>TrigLoop</name>
-        <qualifiedname>OS_Input::TrigLoop</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/linux/linux_input.hpp" line="49" column="5" bodyfile="include/input/linux/linux_input.hpp" bodystart="49" bodyend="51"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1ae3c00214a561fe8736dc37024b88e420" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
-        <definition>void OS_Input::ResetLoop</definition>
-        <argsstring>()</argsstring>
-        <name>ResetLoop</name>
-        <qualifiedname>OS_Input::ResetLoop</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/linux/linux_input.hpp" line="53" column="5" bodyfile="include/input/linux/linux_input.hpp" bodystart="53" bodyend="55"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1a3a94e57f03ba728c189020de199610f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool OS_Input::kill</definition>
-        <argsstring>()</argsstring>
-        <name>kill</name>
-        <qualifiedname>OS_Input::kill</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="42" column="10"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1aefbbfd14e2902be2a2bb8fabb1d23cdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void OS_Input::TrigLoop</definition>
-        <argsstring>()</argsstring>
-        <name>TrigLoop</name>
-        <qualifiedname>OS_Input::TrigLoop</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="43" column="10"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1ae3c00214a561fe8736dc37024b88e420" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void OS_Input::ResetLoop</definition>
-        <argsstring>()</argsstring>
-        <name>ResetLoop</name>
-        <qualifiedname>OS_Input::ResetLoop</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="44" column="10"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1af79ca528ebceb44b8c429091a36666bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void OS_Input::work</definition>
-        <argsstring>()</argsstring>
-        <name>work</name>
-        <qualifiedname>OS_Input::work</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="45" column="10" bodyfile="include/input/windows/windows_input.cpp" bodystart="160" bodyend="236"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1a1e267997049cb562cb4b8d4dfe2f218e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt;</type>
-        <definition>std::vector&lt; DeviceData &gt; OS_Input::getDevices</definition>
-        <argsstring>()</argsstring>
-        <name>getDevices</name>
-        <qualifiedname>OS_Input::getDevices</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="46" column="17"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1ad9e86505f15f2af9e0e772e99032f5de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="structPDJE__INPUT__DATA__LINE" kindref="compound">PDJE_INPUT_DATA_LINE</ref></type>
-        <definition>PDJE_INPUT_DATA_LINE OS_Input::PullOutDataLine</definition>
-        <argsstring>()</argsstring>
-        <name>PullOutDataLine</name>
-        <qualifiedname>OS_Input::PullOutDataLine</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="54" column="5" bodyfile="include/input/windows/windows_input.cpp" bodystart="342" bodyend="348"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1ad60a928a455493a7648d1a4d0f97842b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>OS_Input::OS_Input</definition>
-        <argsstring>()=default</argsstring>
-        <name>OS_Input</name>
-        <qualifiedname>OS_Input::OS_Input</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="56" column="5"/>
-      </memberdef>
-      <memberdef kind="function" id="classOS__Input_1aaa92fde24c900ea303ff039882a076bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>OS_Input::~OS_Input</definition>
-        <argsstring>()=default</argsstring>
-        <name>~OS_Input</name>
-        <qualifiedname>OS_Input::~OS_Input</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/windows/windows_input.hpp" line="57" column="5"/>
+        <location file="include/input/windows/windows_input.hpp" line="39" column="31" bodyfile="include/input/windows/windows_input.cpp" bodystart="352" bodyend="356"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -531,95 +505,105 @@
         <label>OS_Input</label>
         <link refid="classOS__Input"/>
         <childnode refid="2" relation="usage">
-          <edgelabel>qpc</edgelabel>
+          <edgelabel>socket</edgelabel>
         </childnode>
-        <childnode refid="3" relation="usage">
-          <edgelabel>unlisted_targets</edgelabel>
+        <childnode refid="5" relation="usage">
+          <edgelabel>timer</edgelabel>
         </childnode>
         <childnode refid="6" relation="usage">
-          <edgelabel>id_name</edgelabel>
+          <edgelabel>unlisted_targets</edgelabel>
         </childnode>
         <childnode refid="7" relation="usage">
-          <edgelabel>input_buffer</edgelabel>
+          <edgelabel>id_name</edgelabel>
         </childnode>
         <childnode refid="8" relation="usage">
+          <edgelabel>input_buffer</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
           <edgelabel>Invisible_window_name</edgelabel>
         </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>PDJE_Buffer_Arena&lt; PDJE_Input_Log &gt;</label>
         <link refid="classPDJE__Buffer__Arena"/>
       </node>
-      <node id="2">
-        <label>QPC_Timer</label>
-        <link refid="classQPC__Timer"/>
-      </node>
       <node id="5">
-        <label>std::basic_string&lt; Char &gt;</label>
+        <label>PDJE_HIGHRES_CLOCK::CLOCK</label>
+        <link refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK"/>
       </node>
-      <node id="9">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
-      <node id="4">
-        <label>std::string</label>
-        <childnode refid="5" relation="public-inheritance">
+      <node id="2">
+        <label>PDJE_LINUX::PDJE_Socket</label>
+        <link refid="classPDJE__LINUX_1_1PDJE__Socket"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>socket_path</edgelabel>
         </childnode>
       </node>
+      <node id="4">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="10">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
       <node id="3">
-        <label>std::unordered_map&lt; PDJE_DEV_PATH, PDJE_NAME &gt;</label>
-        <childnode refid="4" relation="usage">
-          <edgelabel>elements</edgelabel>
-          <edgelabel>keys</edgelabel>
+        <label>std::string</label>
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
       <node id="6">
-        <label>std::unordered_map&lt; PDJE_ID, PDJE_NAME &gt;</label>
-        <childnode refid="4" relation="usage">
+        <label>std::unordered_map&lt; PDJE_DEV_PATH, PDJE_NAME &gt;</label>
+        <childnode refid="3" relation="usage">
           <edgelabel>elements</edgelabel>
           <edgelabel>keys</edgelabel>
         </childnode>
       </node>
-      <node id="8">
+      <node id="7">
+        <label>std::unordered_map&lt; PDJE_ID, PDJE_NAME &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>elements</edgelabel>
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
         <label>std::wstring</label>
-        <childnode refid="9" relation="public-inheritance">
+        <childnode refid="10" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/input/linux/linux_input.hpp" line="16" column="1" bodyfile="include/input/linux/linux_input.hpp" bodystart="16" bodyend="56"/>
+    <location file="include/input/linux/linux_input.hpp" line="9" column="1" bodyfile="include/input/linux/linux_input.hpp" bodystart="9" bodyend="44"/>
     <listofallmembers>
-      <member refid="classOS__Input_1a5787a6efcbe23e455a8a641f52592227" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>CloseClient</name></member>
       <member refid="classOS__Input_1a4487a23afd8f4d9ca390d7f284850191" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>config</name></member>
       <member refid="classOS__Input_1a60d0ad2aae20ad34df25f7ced3f6dda9" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>config_data</name></member>
+      <member refid="classOS__Input_1a1ae2beb6665f273f99a0f9c167bd1df4" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>config_sync</name></member>
       <member refid="classOS__Input_1a40d69fae9cf08cdaf17e5f4f09a3af22" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>EndSocketTransmission</name></member>
       <member refid="classOS__Input_1a1e267997049cb562cb4b8d4dfe2f218e" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>getDevices</name></member>
       <member refid="classOS__Input_1a1e267997049cb562cb4b8d4dfe2f218e" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>getDevices</name></member>
       <member refid="classOS__Input_1a794e58c59427871c2554c28c132baca4" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>getRawDeviceDatas</name></member>
       <member refid="classOS__Input_1a6a2dcd4d8bc49fe8463b88ce332538f3" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>hid_label_from_path</name></member>
       <member refid="classOS__Input_1a68dd8fd823ef4917b06720cc54cbd8d5" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>id_name</name></member>
-      <member refid="classOS__Input_1a1b378445bf9547af392a2b1b12f74b4d" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>importants</name></member>
       <member refid="classOS__Input_1a34e174a7bf24af7ff8c09426601be2e5" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>init</name></member>
       <member refid="classOS__Input_1ae2eae088a2a00f8fce44883f317f0bf2" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>input_buffer</name></member>
       <member refid="classOS__Input_1ac04fd8a51c01e38de60c3e00922a1ea3" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>Invisible_window_name</name></member>
       <member refid="classOS__Input_1a3a94e57f03ba728c189020de199610f6" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>kill</name></member>
       <member refid="classOS__Input_1a3a94e57f03ba728c189020de199610f6" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>kill</name></member>
-      <member refid="classOS__Input_1a6666290654c4183177b46c68d11ab3a0" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>OpenClientWithSudo</name></member>
+      <member refid="classOS__Input_1ad60a928a455493a7648d1a4d0f97842b" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>OS_Input</name></member>
       <member refid="classOS__Input_1ad60a928a455493a7648d1a4d0f97842b" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>OS_Input</name></member>
       <member refid="classOS__Input_1ad9e86505f15f2af9e0e772e99032f5de" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>PullOutDataLine</name></member>
-      <member refid="classOS__Input_1a8cd9d6130d410d3310ea442302d48230" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>qpc</name></member>
+      <member refid="classOS__Input_1ad9e86505f15f2af9e0e772e99032f5de" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>PullOutDataLine</name></member>
       <member refid="classOS__Input_1ae3c00214a561fe8736dc37024b88e420" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>ResetLoop</name></member>
       <member refid="classOS__Input_1ae3c00214a561fe8736dc37024b88e420" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>ResetLoop</name></member>
       <member refid="classOS__Input_1a989606f220472d794ad7f72e427ae5ea" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>run</name></member>
       <member refid="classOS__Input_1a1534b3f617505438f0b84929c32bb261" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>run_ok</name></member>
-      <member refid="classOS__Input_1ac18afc431328e05451cc99881e0c31aa" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>Send_IPCMEM_ToRT</name></member>
+      <member refid="classOS__Input_1a570ff78c4ddb662dce1fdeac51bb70a3" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>run_sync</name></member>
       <member refid="classOS__Input_1a1c5d8c5f98de73baa8282fe5b1afcf6a" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>setDevices</name></member>
-      <member refid="classOS__Input_1a40c0218fb24c4ef4de9eee228657e2df" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>SocketClose</name></member>
-      <member refid="classOS__Input_1aa75064f53d9640242cab6d395eaefcb0" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>SocketOpen</name></member>
+      <member refid="classOS__Input_1ac0fb5fb7bfcc38a496f3ef475c3ef543" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>socket</name></member>
       <member refid="classOS__Input_1abdcf0f9cc7f71efc80f7206118fab14a" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>ThreadID</name></member>
+      <member refid="classOS__Input_1a982445a0d90b07619b163d8752a51bf9" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>timer</name></member>
       <member refid="classOS__Input_1aefbbfd14e2902be2a2bb8fabb1d23cdd" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>TrigLoop</name></member>
       <member refid="classOS__Input_1aefbbfd14e2902be2a2bb8fabb1d23cdd" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>TrigLoop</name></member>
       <member refid="classOS__Input_1a28f8aba8f3d1db86907df43ff6132dec" prot="private" virt="non-virtual"><scope>OS_Input</scope><name>unlisted_targets</name></member>
       <member refid="classOS__Input_1af79ca528ebceb44b8c429091a36666bd" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>work</name></member>
       <member refid="classOS__Input_1a875f2737b8c7de13cba9ce7b979a0459" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>worker</name></member>
+      <member refid="classOS__Input_1aaa92fde24c900ea303ff039882a076bf" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>~OS_Input</name></member>
       <member refid="classOS__Input_1aaa92fde24c900ea303ff039882a076bf" prot="public" virt="non-virtual"><scope>OS_Input</scope><name>~OS_Input</name></member>
     </listofallmembers>
   </compounddef>

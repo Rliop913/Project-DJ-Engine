@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
+
 - ``editorObject.hpp`` (:ref:`file_include_core_MainObjects_editorObject_editorObject.hpp`)
 
 

@@ -188,7 +188,9 @@ Program Listing for File PDJE_GitHandler.cpp
        using nj = nlohmann::json;
        nj GraphRoot;
        try {
-   
+           if(!gw.log_hdl.has_value()){
+               throw std::runtime_error("log handle is empty.");
+           }
            for (auto &i : gw.log_hdl->heads) {
                nj b;
                b["NAME"] = i.BranchName;

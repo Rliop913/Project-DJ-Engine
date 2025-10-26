@@ -32,6 +32,12 @@ Includes
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
 
+- ``PDJE_SYNC_CORE.hpp`` (:ref:`file_include_global_PDJE_SYNC_CORE.hpp`)
+
+- ``atomic``
+
+- ``cstdint``
+
 
 
 Included By
@@ -42,7 +48,7 @@ Included By
 
 - :ref:`file_include_core_interface_PDJE_interface.hpp`
 
-- :ref:`file_include_judge_PDJE_Judge.hpp`
+- :ref:`file_include_judge_Init_PDJE_Judge_Init.hpp`
 
 
 

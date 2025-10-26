@@ -38,8 +38,8 @@ main()
     testpdje->player->Activate();
     getchar();
     testpdje->player->GetFXControlPanel()->FX_ON_OFF(FXList::DISTORTION, true);
-    auto panel = testpdje->player->GetFXControlPanel()->GetArgSetter(
-        FXList::DISTORTION);
+    auto panel =
+        testpdje->player->GetFXControlPanel()->GetArgSetter(FXList::DISTORTION);
     panel["distortionValue"](2);
 
     getchar();

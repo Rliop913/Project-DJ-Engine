@@ -12,10 +12,9 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
             "return false because lambda is empty. from NoteTranslator Read");
         return false;
     }
-    auto      br = binary.Rp->getDatas();
-    BpmStruct bs;
+    auto br = binary.Rp->getDatas();
 
-    bs.fragments = noteBpms.fragments;
+    noteBpms.fragments = mainBpm.fragments;
     for (size_t i = 0; i < br.size(); ++i) {
         if (strcmp(br[i].getNoteType().cStr(), "BPM") == 0) {
             auto fg     = BpmFragment();
@@ -30,11 +29,11 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
                 critlog(br[i].getFirst().cStr());
                 continue;
             }
-            bs.fragments.push_back(fg);
+            noteBpms.fragments.push_back(fg);
         }
     }
-    bs.sortFragment();
-    if (!bs.calcFrame()) {
+    noteBpms.sortFragment();
+    if (!noteBpms.calcFrame()) {
         critlog("failed to calculate frames. from NoteTranslator Read.");
         return false;
     }
@@ -44,26 +43,34 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
             searchfragment.beat        = br[i].getBeat();
             searchfragment.subBeat     = br[i].getSubBeat();
             searchfragment.separate    = br[i].getSeparate();
-            auto               affects = bs.getAffected(searchfragment);
+            if(searchfragment.separate == 0){
+                searchfragment.separate = 1;
+            }
+            auto               affects = noteBpms.getAffected(searchfragment);
             unsigned long long position =
                 affects.frame_to_here +
-                FrameCalc::CountFrame(affects.beat,
-                                      affects.subBeat,
-                                      affects.separate,
-                                      searchfragment.beat,
-                                      searchfragment.subBeat,
-                                      searchfragment.separate,
+                FrameCalc::CountFrame(
+                                    affects.beat,
+                                    affects.subBeat,
+                                    affects.separate,
+                                    searchfragment.beat,
+                                    searchfragment.subBeat,
+                                    searchfragment.separate,
                                       affects.bpm);
 
             unsigned long long pos2;
-            if (br[i].getESeparate() < 0) {
+
+            if (br[i].getEbeat() == 0 && br[i].getEsubBeat() == 0) {
                 pos2 = 0;
             } else {
                 BpmFragment secondpos;
                 secondpos.beat     = br[i].getEbeat();
                 secondpos.subBeat  = br[i].getEsubBeat();
                 secondpos.separate = br[i].getESeparate();
-                auto res           = bs.getAffected(secondpos);
+                if(secondpos.separate == 0){
+                    secondpos.separate = 1;
+                }
+                auto res           = noteBpms.getAffected(secondpos);
                 pos2               = res.frame_to_here +
                        FrameCalc::CountFrame(res.beat,
                                              res.subBeat,
@@ -74,12 +81,13 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
                                              res.bpm);
             }
             lambdaCallback(std::string(br[i].getNoteType().cStr()),
-                           std::string(br[i].getNoteDetail().cStr()),
+                           br[i].getNoteDetail(),
                            std::string(br[i].getFirst().cStr()),
                            std::string(br[i].getSecond().cStr()),
                            std::string(br[i].getThird().cStr()),
                            position,
-                           pos2);
+                           pos2,
+                           br[i].getRailID());
         }
     }
     return true;

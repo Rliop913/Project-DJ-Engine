@@ -3,7 +3,7 @@
 
 struct NoteBinaryData{
     noteType @0 :Text;
-    noteDetail @1 :Text;
+    noteDetail @1 :UInt16;
     first @2 :Text;
     second @3 :Text;
     third @4 :Text;
@@ -13,6 +13,7 @@ struct NoteBinaryData{
     ebeat @8 :Int64;
     esubBeat @9 :Int64;
     eSeparate @10 :Int64;
+    railID @11 : UInt64;
 }
 
 struct NoteBinaryCapnpData{

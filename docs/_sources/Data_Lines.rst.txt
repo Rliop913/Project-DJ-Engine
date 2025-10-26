@@ -154,3 +154,51 @@ Core Data Line
         # Does not decrease when seeking; represents playback progress.
 
 
+Input Data Line
+-----------------
+
+
+.. doxygenfunction:: PDJE_Input::PullOutDataLine
+    :project: Project_DJ_Engine
+
+.. doxygenstruct:: PDJE_INPUT_DATA_LINE
+    :project: Project_DJ_Engine
+
+.. tab-set-code:: 
+
+    .. code-block:: c++
+
+        auto dline = pdje_input_object.PullOutDataLine();
+        pdje_input_object.Run();
+        while (true) {
+            auto got = dline.input_arena->Get();
+
+            for (const auto &i : *got) {
+                auto name = dline.id_name_conv->find(i.id);
+                if (name != dline.id_name_conv->end()) {
+                    std::cout << "name: " << name->second << std::endl;
+                    std::cout << "time: " << i.microSecond << std::endl;
+                    if(i.type == PDJE_Dev_Type::KEYBOARD){
+                        std::cout
+                        << "keyNumber: " << static_cast<int>(i.event.keyboard.k)
+                        << std::endl;//check PDJE_KEY::
+                        std::cout << "pressed" << i.event.keyboard.pressed
+                        << std::endl;
+                    }
+
+                }
+            }
+        }
+
+    .. code-block:: c#
+
+        //no impl
+
+    .. code-block:: python
+
+        #no impl
+
+
+    .. code-block:: gdscript
+
+        #no impl

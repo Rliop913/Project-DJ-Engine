@@ -21,20 +21,14 @@ Program Listing for File NoteTranslator.hpp
    #include "FrameCalc.hpp"
    
    #include "PDJE_EXPORT_SETTER.hpp"
+   #include "PDJE_OBJ_SETTER.hpp"
    #include <functional>
    
-   using OBJ_SETTER_CALLBACK = std::function<void(
-       const std::string,
-       const std::string,
-       const std::string,
-       const std::string,
-       const std::string,
-       const unsigned long long,
-       const unsigned long long)>;
-   
    class PDJE_API NoteTranslator {
-     public:
+     private:
        BpmStruct noteBpms;
+   
+     public:
        bool
        Read(const CapReader<NoteBinaryCapnpData> &binary,
             const BpmStruct                      &mainBpm,

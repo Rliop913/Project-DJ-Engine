@@ -94,22 +94,16 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FrameCalc.hpp&quot;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_OBJ_SETTER.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span>
 
-<span class="k">using</span><span class="w"> </span><span class="n">OBJ_SETTER_CALLBACK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">,</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
-
 <span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">NoteTranslator</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">  </span><span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">BpmStruct</span><span class="w"> </span><span class="n">noteBpms</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
 <span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="nf">Read</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CapReader</span><span class="o">&lt;</span><span class="n">NoteBinaryCapnpData</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">binary</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Read</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">CapReader</span><span class="o">&lt;</span><span class="n">NoteBinaryCapnpData</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">binary</span><span class="p">,</span>
 <span class="w">         </span><span class="k">const</span><span class="w"> </span><span class="n">BpmStruct</span><span class="w">                      </span><span class="o">&amp;</span><span class="n">mainBpm</span><span class="p">,</span>
 <span class="w">         </span><span class="n">OBJ_SETTER_CALLBACK</span><span class="w">                  </span><span class="o">&amp;</span><span class="n">lambdaCallback</span><span class="p">);</span>
 

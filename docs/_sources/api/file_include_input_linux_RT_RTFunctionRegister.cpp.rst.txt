@@ -32,7 +32,9 @@ Includes
 
 - ``Common_Features.hpp`` (:ref:`file_include_input_linux_common_Common_Features.hpp`)
 
-- ``Input_State.hpp`` (:ref:`file_include_input_Input_State.hpp`)
+- ``Input_State.hpp`` (:ref:`file_include_global_DataLines_Input_State.hpp`)
+
+- ``PDJE_Input_Device_Data.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_Device_Data.hpp`)
 
 - ``RTSocket.hpp`` (:ref:`file_include_input_linux_RT_RTSocket.hpp`)
 

@@ -74,7 +74,7 @@
           <declname>binary</declname>
         </param>
         <briefdescription>
-<para>Sorts data by <ref refid="structID" kindref="compound">ID</ref>. </para>
+<para>Sorts data by <ref refid="MixMachine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc" kindref="member">ID</ref>. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -483,13 +483,6 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4">
-        <label>ID</label>
-        <link refid="structID"/>
-        <childnode refid="5" relation="usage">
-          <edgelabel>socket_path</edgelabel>
-        </childnode>
-      </node>
       <node id="1">
         <label>MixMachine</label>
         <link refid="classMixMachine"/>
@@ -499,41 +492,30 @@
         <childnode refid="3" relation="usage">
           <edgelabel>Memorized</edgelabel>
         </childnode>
-        <childnode refid="9" relation="usage">
+        <childnode refid="6" relation="usage">
           <edgelabel>rendered_out</edgelabel>
         </childnode>
       </node>
-      <node id="8">
+      <node id="5">
         <label>MixStruct</label>
         <link refid="structMixStruct"/>
-      </node>
-      <node id="6">
-        <label>std::basic_string&lt; Char &gt;</label>
       </node>
       <node id="2">
         <label>std::mutex</label>
       </node>
-      <node id="5">
-        <label>std::string</label>
-        <childnode refid="6" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="3">
         <label>std::unordered_map&lt; ID, std::vector&lt; MixStruct &gt; &gt;</label>
         <childnode refid="4" relation="usage">
-          <edgelabel>keys</edgelabel>
-        </childnode>
-        <childnode refid="7" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="7">
+      <node id="4">
         <label>std::vector&lt; MixStruct &gt;</label>
-        <childnode refid="8" relation="usage">
+        <childnode refid="5" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="9">
+      <node id="6">
         <label>std::vector&lt; float &gt;</label>
       </node>
     </collaborationgraph>

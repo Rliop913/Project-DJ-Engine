@@ -115,6 +115,7 @@ template <typename CapnpWriterType> class PDJE_JSONHandler {
 #define PDJE_JSON_EBEAT "e_beat"
 #define PDJE_JSON_ESUBBEAT "e_subBeat"
 #define PDJE_JSON_ESEPARATE "e_separate"
+#define PDJE_JSON_RAILID "rail_id"
 
 #define PDJE_JSON_BPM "bpm"
 

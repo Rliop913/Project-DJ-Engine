@@ -21,7 +21,6 @@ set(PDJE_INCLUDE_CORE
   ${CMAKE_CURRENT_SOURCE_DIR}/include/core/db/Capnp/Translators/MusicTranslator
   ${CMAKE_CURRENT_SOURCE_DIR}/include/core/db/Capnp/Translators/NoteTranslator
 
-  ${CMAKE_CURRENT_SOURCE_DIR}/third_party/Capnp
 	${miniaudio_SOURCE_DIR}/extras/miniaudio_split
   ${SQLite3_INCLUDE_DIR}
   ${highway_INCLUDE_DIR}
@@ -58,9 +57,7 @@ set(PDJE_INCLUDE_CORE
   ${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/objects
   ${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/renderer
   
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/global
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/global/DataLines
-
+  ${CAPNPC_OUTPUT_DIR}/third_party/Capnp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/input
 
   ${nlohmann_json_SOURCE_DIR}/include
@@ -69,33 +66,54 @@ set(PDJE_INCLUDE_CORE
   )
 
 set(PDJE_INCLUDE_JUDGE
-${CMAKE_CURRENT_SOURCE_DIR}/include/global
-${CMAKE_CURRENT_SOURCE_DIR}/include/global/DataLines
 ${CMAKE_CURRENT_SOURCE_DIR}/include/judge
+${CMAKE_CURRENT_SOURCE_DIR}/include/judge/NoteOBJ
+${CMAKE_CURRENT_SOURCE_DIR}/include/judge/Init
+${CMAKE_CURRENT_SOURCE_DIR}/include/judge/Loop
 
-#external include
-# ${CMAKE_CURRENT_SOURCE_DIR}/include/core/audioRender/ManualMix
-# ${CMAKE_CURRENT_SOURCE_DIR}/include/core/db/
-# ${CMAKE_CURRENT_SOURCE_DIR}/include/core/audioRender/MixMachine/MiniaudioObjects
-# ${CMAKE_CURRENT_SOURCE_DIR}/include/core/db/Capnp/Translators
-# ${CMAKE_CURRENT_SOURCE_DIR}/include/core/db/Capnp/CapnpBinary
-# ${CMAKE_CURRENT_SOURCE_DIR}/third_party/Capnp
+${CAPNPC_OUTPUT_DIR}/third_party/Capnp
 )
 
 set(PDJE_INCLUDE_INPUT
-${CMAKE_CURRENT_SOURCE_DIR}/include/global
-${CMAKE_CURRENT_SOURCE_DIR}/include/global/DataLines
 ${CMAKE_CURRENT_SOURCE_DIR}/include/input
 ${CMAKE_CURRENT_SOURCE_DIR}/include/input/midi
 )
 
+set(PDJE_INCLUDE_GLOBAL
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/global
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/global/DataLines
+)
 if(WIN32)
-set(PDJE_INCLUDE_INPUT_OS ${CMAKE_CURRENT_SOURCE_DIR}/include/input/windows)
-elseif(APPLE)
-set(PDJE_INCLUDE_INPUT_OS ${CMAKE_CURRENT_SOURCE_DIR}/include/input/apple)
-else()
-set(PDJE_INCLUDE_INPUT_OS ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux 
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/common
+  list(APPEND PDJE_INCLUDE_GLOBAL
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Highres_Clock/Windows
   )
+  list(APPEND PDJE_INCLUDE_INPUT
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/windows
+  )
+elseif(APPLE)
+  list(APPEND PDJE_INCLUDE_GLOBAL
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Highres_Clock/Mac
+  )
+  list(APPEND PDJE_INCLUDE_INPUT ${CMAKE_CURRENT_SOURCE_DIR}/include/input/apple)
+else()
+  list(APPEND PDJE_INCLUDE_GLOBAL
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Highres_Clock/Linux
+  )
+  list(APPEND PDJE_INCLUDE_INPUT
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/common
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/socket
+    
+    )
 endif()
+
+list(APPEND PDJE_INCLUDE_JUDGE
+  ${PDJE_INCLUDE_GLOBAL}
+)
+list(APPEND PDJE_INCLUDE_CORE
+  ${PDJE_INCLUDE_GLOBAL}
+)
+list(APPEND PDJE_INCLUDE_INPUT
+  ${PDJE_INCLUDE_GLOBAL}
+)

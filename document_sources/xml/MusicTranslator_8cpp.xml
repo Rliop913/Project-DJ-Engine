@@ -28,18 +28,18 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="20">
         <label>FrameCalc.hpp</label>
         <link refid="FrameCalc_8hpp"/>
-        <childnode refid="20" relation="include">
-        </childnode>
         <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -49,7 +49,7 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -63,7 +63,7 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -87,6 +87,8 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
       </node>
       <node id="8">
         <label>MixBinary.capnp.h</label>
@@ -97,7 +99,7 @@
       <node id="10">
         <label>NoteBinary.capnp.h</label>
       </node>
-      <node id="20">
+      <node id="21">
         <label>algorithm</label>
       </node>
       <node id="6">
@@ -106,34 +108,37 @@
       <node id="7">
         <label>capnp/serialize.h</label>
       </node>
-      <node id="21">
+      <node id="22">
         <label>cmath</label>
       </node>
       <node id="13">
         <label>filesystem</label>
       </node>
-      <node id="22">
+      <node id="23">
         <label>hwy/aligned_allocator.h</label>
+      </node>
+      <node id="14">
+        <label>mutex</label>
       </node>
       <node id="3">
         <label>optional</label>
       </node>
-      <node id="14">
+      <node id="15">
         <label>spdlog/sinks/basic_file_sink.h</label>
       </node>
-      <node id="15">
+      <node id="16">
         <label>spdlog/sinks/stdout_color_sinks.h</label>
       </node>
-      <node id="16">
+      <node id="17">
         <label>spdlog/spdlog.h</label>
       </node>
-      <node id="23">
+      <node id="24">
         <label>string</label>
       </node>
-      <node id="17">
+      <node id="18">
         <label>string_view</label>
       </node>
-      <node id="18">
+      <node id="19">
         <label>type_traits</label>
       </node>
       <node id="4">
@@ -156,9 +161,9 @@
 <codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>DVec.size();<sp/>++i)<sp/>{</highlight></codeline>
 <codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(DVec[i].hasBpm())<sp/>{</highlight></codeline>
 <codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBpmFragment" kindref="compound">BpmFragment</ref><sp/>frg;</highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frg.<ref refid="structBpmFragment_1a9f2f09c2a59575d2aaf85decfaca4f62" kindref="member">beat</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>DVec[i].getBeat();</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frg.<ref refid="structBpmFragment_1a464d98afe02f129e661709925f5ffa13" kindref="member">subBeat</ref><sp/><sp/>=<sp/>DVec[i].getSubBeat();</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frg.<ref refid="structBpmFragment_1a8cb01948227beb2939e67b0aed378fab" kindref="member">separate</ref><sp/>=<sp/>DVec[i].getSeparate();</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frg.<ref refid="structBpmFragment_1a6df9ed3787b58f0cbdb2ae50dcee381c" kindref="member">beat</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>DVec[i].getBeat();</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frg.<ref refid="structBpmFragment_1aace6d5fa7d6febcccb3d383dba2de1ff" kindref="member">subBeat</ref><sp/><sp/>=<sp/>DVec[i].getSubBeat();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frg.<ref refid="structBpmFragment_1ab49167c4e1474b25e83ee1294435d6db" kindref="member">separate</ref><sp/>=<sp/>DVec[i].getSeparate();</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>frg.<ref refid="structBpmFragment_1aff3e11fa4ee76d171b5bf93da9a27002" kindref="member">bpm</ref><sp/>=<sp/>std::stod(DVec[i].getBpm().cStr());</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight></codeline>
