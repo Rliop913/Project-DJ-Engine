@@ -23,8 +23,13 @@ else()
 endif()
 
 
-option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
+option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
+if(WIN32)
 option(PDJE_DEVELOP_INPUT "Enable linux develop build" ON)
+else()
+option(PDJE_DEVELOP_INPUT "Enable linux develop build" OFF)
+endif()
+
 option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
 option(PDJE_DYNAMIC "Make Shared Library" OFF)
 
