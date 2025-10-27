@@ -113,9 +113,6 @@ FetchContent_MakeAvailable(cppCodec)
 FetchContent_MakeAvailable(rocksDB)
 FetchContent_MakeAvailable(picoSHA)
 
-function(set_picoSHA_ReqLib targetName)
-  target_include_directories(${targetName} PUBLIC ${picosha_SOURCE_DIR})
-endfunction(set_picoSHA_ReqLib)
 if(WIN32)
 set_target_properties(rocksdb PROPERTIES
   COMPILE_FLAGS "/wd4702 /WX-"
@@ -132,7 +129,7 @@ include_directories(${nlohmann_json_SOURCE_DIR}/include)
 include_directories(${sql_amalgam_SOURCE_DIR})
 include_directories(${cppcodec_SOURCE_DIR})
 include_directories(${rocksdb_SOURCE_DIR}/include)
-
+include_directories(${picosha_SOURCE_DIR})
 
 
 

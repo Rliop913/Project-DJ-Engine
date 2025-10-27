@@ -6,6 +6,7 @@
 #include <fstream>
 #include <ios>
 #include <limits>
+
 #include <picosha2.h>
 #include <sstream>
 #include <string>
@@ -19,9 +20,9 @@
 namespace PDJE_IPC_UTILS {
 
 #ifdef WIN32
-constexpr int PDJE_IPC_SHARE_MEM_RW = PROT_READ | PROT_WRITE;
-constexpr int PDJE_IPC_SHARE_MEM_R  = PROT_READ;
-constexpr int PDJE_IPC_SHARE_MEM_W  = PROT_WRITE;
+constexpr int PDJE_IPC_SHARE_MEM_RW = 2;
+constexpr int PDJE_IPC_SHARE_MEM_R  = 1;
+constexpr int PDJE_IPC_SHARE_MEM_W  = 0;
 #else
 constexpr int PDJE_IPC_SHARE_MEM_RW = PROT_READ | PROT_WRITE;
 constexpr int PDJE_IPC_SHARE_MEM_R  = PROT_READ;
@@ -29,7 +30,9 @@ constexpr int PDJE_IPC_SHARE_MEM_W  = PROT_WRITE;
 #endif
 
 namespace fs = std::filesystem;
+#ifdef WIN32
 
+#else
 template <typename T, int MEM_PROT_FLAG> class IPCSharedMem {
   public:
     IPCSharedMem()
@@ -106,6 +109,7 @@ template <typename T, int MEM_PROT_FLAG> class IPCSharedMem {
         }
     }
 };
+#endif
 
 static inline fs::path
 GetValidProcessExecutor()
@@ -130,12 +134,12 @@ GetValidProcessExecutor()
         std::vector<char> bin(sz);
         if (!exfile.read(bin.data(), sz)) {
             continue;
-        }
-        unsigned char hash[EVP_MAX_MD_SIZE];
-        size_t        hashlen = sizeof(hash);
+        }//todo - impl with picosha
+        // unsigned char hash[EVP_MAX_MD_SIZE];
+        // size_t        hashlen = sizeof(hash);
 
-        EVP_Q_digest(NULL, "SHA256", NULL, bin.data(), sz, hash, &hashlen);
-        hash;
+        // EVP_Q_digest(NULL, "SHA256", NULL, bin.data(), sz, hash, &hashlen);
+        // hash;
     }
 }
 

@@ -53,7 +53,7 @@ include(cmakes/src/GLOBALsrc.cmake)
 include(cmakes/src/INPUTsrc.cmake)
 
 if(PDJE_DEVELOP_INPUT)
-if(LINUX)
+
 
 add_executable(PDJE_MODULE_INPUT_PROCESS ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC} ${PDJE_INPUT_PROCESS_SRC})
 
@@ -79,7 +79,7 @@ add_custom_target(gen_RT_HASH ALL DEPENDS ${RT_HASH_HEADER})
 
 
 
-endif()
+
 
 endif()
 
@@ -147,7 +147,7 @@ endif()
 
 if(PDJE_DEVELOP_INPUT)
 
-target_link_libraries(PDJE_MODULE_INPUT PUBLIC OpenSSL::Crypto)
+# target_link_libraries(PDJE_MODULE_INPUT PUBLIC OpenSSL::Crypto)
 add_dependencies(PDJE_MODULE_INPUT gen_RT_HASH)
 
 
