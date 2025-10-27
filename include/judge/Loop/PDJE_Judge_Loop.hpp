@@ -30,13 +30,16 @@ class Judge_Loop {
         bool     IsLate;
         uint64_t diff;
     };
-    struct {
+    struct Queues{
         PDJE_Buffer_Arena<std::unordered_map<uint64_t, NOTE_VEC>> miss_queue;
         PDJE_Buffer_Arena<useDatas>                               use_queue;
-    } Event_Datas;
+        Queues(): miss_queue(100), use_queue(100){}
+    };
+    Queues Event_Datas;
 
   private: // cached values
-    std::pmr::vector<PDJE_Input_Log> *input_log;
+    std::pair<PDJE_Input_Log*, uint64_t> input_log;
+    
     struct mouse_btn_event {
         uint64_t rail_id = 0;
         int      status  = -1;

@@ -70,7 +70,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/include/judge
 ${CMAKE_CURRENT_SOURCE_DIR}/include/judge/NoteOBJ
 ${CMAKE_CURRENT_SOURCE_DIR}/include/judge/Init
 ${CMAKE_CURRENT_SOURCE_DIR}/include/judge/Loop
-
+${CMAKE_CURRENT_SOURCE_DIR}/include/global/Process
 ${CAPNPC_OUTPUT_DIR}/third_party/Capnp
 )
 

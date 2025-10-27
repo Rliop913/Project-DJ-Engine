@@ -44,19 +44,20 @@ main()
     std::thread watcher([&]() {
         while (true) {
             auto got = dline.input_arena->Get();
-
-            for (const auto &i : *got) {
-                auto name = dline.id_name_conv->find(i.id);
+            for(uint64_t idx=0; idx < got.second ; ++idx)
+            
+            {
+                auto name = dline.id_name_conv->find(got.first[idx].id);
                 if (name != dline.id_name_conv->end()) {
 
                     std::cout << "name: " << name->second << std::endl;
-                    std::cout << "time: " << i.microSecond << std::endl;
-                    if (i.type == PDJE_Dev_Type::KEYBOARD) {
+                    std::cout << "time: " << got.first[idx].microSecond << std::endl;
+                    if (got.first[idx].type == PDJE_Dev_Type::KEYBOARD) {
 
                         std::cout << "keyNumber: "
-                                  << static_cast<int>(i.event.keyboard.k)
+                                  << static_cast<int>(got.first[idx].event.keyboard.k)
                                   << std::endl;
-                        std::cout << "pressed" << i.event.keyboard.pressed
+                        std::cout << "pressed" << got.first[idx].event.keyboard.pressed
                                   << std::endl;
                     }
 

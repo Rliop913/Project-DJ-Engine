@@ -23,7 +23,7 @@ else()
 endif()
 
 
-option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
+option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
 if(WIN32)
 option(PDJE_DEVELOP_INPUT "Enable linux develop build" ON)
 else()
@@ -55,7 +55,7 @@ include(cmakes/src/INPUTsrc.cmake)
 if(PDJE_DEVELOP_INPUT)
 
 
-add_executable(PDJE_MODULE_INPUT_PROCESS ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC} ${PDJE_INPUT_PROCESS_SRC})
+add_executable(PDJE_MODULE_INPUT_PROCESS ${inputSource} ${globalSource}  ${PDJE_INPUT_PROCESS_SRC})
 
 target_include_directories(PDJE_MODULE_INPUT_PROCESS PUBLIC ${PDJE_INCLUDE_INPUT})
 PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT_PROCESS)
@@ -92,14 +92,15 @@ target_include_directories(testEditor PUBLIC ${PDJE_INCLUDE_CORE})
 target_include_directories(DBTester PUBLIC ${PDJE_INCLUDE_CORE})
 
 add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${PDJE_OS_INPUT_SRC})
-target_include_directories(testInput PRIVATE ${PDJE_INCLUDE_INPUT} )
+target_include_directories(testInput PRIVATE ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_GLOBAL})
 PDJE_INPUT_LINK_LIB(testInput)
+setSpdlogReqLib(testInput)
 
 
 add_executable(testJudge ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/JUDGE_TESTS/judgeTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${globalSource} ${PDJE_OS_INPUT_SRC} ${judgeSource})
 target_include_directories(testJudge PRIVATE ${PDJE_INCLUDE_CORE} ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_GLOBAL})
 PDJE_INPUT_LINK_LIB(testJudge)
-
+setSpdlogReqLib(testJudge)
 endif(PDJE_BUILD_TESTS)
 
 if(PDJE_DYNAMIC)
@@ -108,7 +109,7 @@ add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} 
 add_library(PDJE_MODULE_JUDGE SHARED ${judgeSource} ${globalSource})
 if(PDJE_DEVELOP_INPUT)
 add_library(PDJE_MODULE_INPUT SHARED ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC})
-set_picoSHA_ReqLib(PDJE_MODULE_INPUT)
+
 endif()
 
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
@@ -149,7 +150,12 @@ if(PDJE_DEVELOP_INPUT)
 
 # target_link_libraries(PDJE_MODULE_INPUT PUBLIC OpenSSL::Crypto)
 add_dependencies(PDJE_MODULE_INPUT gen_RT_HASH)
+add_dependencies(PDJE_MODULE_JUDGE gen_RT_HASH)
+if(PDJE_BUILD_TESTS)
+add_dependencies(testInput gen_RT_HASH)
+add_dependencies(testJudge gen_RT_HASH)
 
+endif()
 
 endif()
 
@@ -177,6 +183,7 @@ setSpdlogReqLib(PDJE_MODULE_JUDGE)
 setCapnpReqLib(PDJE_MODULE_JUDGE)
 if(PDJE_DEVELOP_INPUT)
   setSpdlogReqLib(PDJE_MODULE_INPUT)
+  setSpdlogReqLib(PDJE_MODULE_INPUT_PROCESS)
   PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT)
 
 endif()
