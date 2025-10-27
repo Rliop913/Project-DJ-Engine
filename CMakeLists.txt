@@ -55,21 +55,21 @@ include(cmakes/src/INPUTsrc.cmake)
 if(PDJE_DEVELOP_INPUT)
 if(LINUX)
 
-add_executable(PDJE_MODULE_INPUT_RTMAIN ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTMain.cpp ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC})
+add_executable(PDJE_MODULE_INPUT_PROCESS ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC} ${PDJE_INPUT_PROCESS_SRC})
 
-target_include_directories(PDJE_MODULE_INPUT_RTMAIN PUBLIC ${PDJE_INCLUDE_INPUT})
-PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT_RTMAIN)
-setSpdlogReqLib(PDJE_MODULE_INPUT_RTMAIN)
+target_include_directories(PDJE_MODULE_INPUT_PROCESS PUBLIC ${PDJE_INCLUDE_INPUT})
+PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT_PROCESS)
+setSpdlogReqLib(PDJE_MODULE_INPUT_PROCESS)
 
-set(RT_HASH_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/common/RT_EXEC_HASH.hpp)
+set(RT_HASH_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Process/PDJE_INPUT_PROCESS_HASH.hpp)
 
 add_custom_command(
   OUTPUT ${RT_HASH_HEADER}
   COMMAND ${CMAKE_COMMAND}
-    -DRT_BIN=$<TARGET_FILE:PDJE_MODULE_INPUT_RTMAIN>
+    -DRT_BIN=$<TARGET_FILE:PDJE_MODULE_INPUT_PROCESS>
     -DOUT_HDR=${RT_HASH_HEADER}
     -P ${CMAKE_CURRENT_SOURCE_DIR}/cmakes/GenRTHASH.cmake
-  DEPENDS PDJE_MODULE_INPUT_RTMAIN $<TARGET_FILE:PDJE_MODULE_INPUT_RTMAIN>
+  DEPENDS PDJE_MODULE_INPUT_PROCESS $<TARGET_FILE:PDJE_MODULE_INPUT_PROCESS>
   BYPRODUCTS ${RT_HASH_HEADER}
   VERBATIM
   USES_TERMINAL
@@ -108,6 +108,7 @@ add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} 
 add_library(PDJE_MODULE_JUDGE SHARED ${judgeSource} ${globalSource})
 if(PDJE_DEVELOP_INPUT)
 add_library(PDJE_MODULE_INPUT SHARED ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC})
+set_picoSHA_ReqLib(PDJE_MODULE_INPUT)
 endif()
 
 target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
@@ -116,6 +117,7 @@ target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE})
 if(PDJE_DEVELOP_INPUT)
 target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} )
 endif()
+
 if(WIN32)
   target_compile_definitions(PDJE PUBLIC PDJE_WINDOWS_DLL)
   target_compile_definitions(PDJE PRIVATE PDJE_BUILDING)
@@ -144,14 +146,12 @@ endif()
 endif()
 
 if(PDJE_DEVELOP_INPUT)
-if(LINUX)
 
 target_link_libraries(PDJE_MODULE_INPUT PUBLIC OpenSSL::Crypto)
+add_dependencies(PDJE_MODULE_INPUT gen_RT_HASH)
 
-# add_dependencies(PDJE_MODULE_INPUT gen_RT_HASH)
 
 endif()
-endif()#skip linux
 
 function(linkPDJELibs targetName)
   target_link_libraries(${targetName} PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
@@ -163,9 +163,9 @@ endfunction(linkPDJELibs)
 
 
 if(PDJE_BUILD_TESTS)
-linkPDJELibs(testEditor)
-linkPDJELibs(DBTester)
-linkPDJELibs(testJudge)
+  linkPDJELibs(testEditor)
+  linkPDJELibs(DBTester)
+  linkPDJELibs(testJudge)
 
 endif()
 
@@ -176,8 +176,8 @@ linkPDJELibs(PDJE)
 setSpdlogReqLib(PDJE_MODULE_JUDGE)
 setCapnpReqLib(PDJE_MODULE_JUDGE)
 if(PDJE_DEVELOP_INPUT)
-setSpdlogReqLib(PDJE_MODULE_INPUT)
-PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT)
+  setSpdlogReqLib(PDJE_MODULE_INPUT)
+  PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT)
 
 endif()
 
@@ -185,7 +185,7 @@ endif()
 
 
 if(PDJE_SWIG_BUILD)
-include(cmakes/ADD_SWIGS.cmake)
+  include(cmakes/ADD_SWIGS.cmake)
 endif()
 
 # enable_testing()

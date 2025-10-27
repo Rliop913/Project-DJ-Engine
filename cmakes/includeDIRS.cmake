@@ -77,6 +77,7 @@ ${CAPNPC_OUTPUT_DIR}/third_party/Capnp
 set(PDJE_INCLUDE_INPUT
 ${CMAKE_CURRENT_SOURCE_DIR}/include/input
 ${CMAKE_CURRENT_SOURCE_DIR}/include/input/midi
+${CMAKE_CURRENT_SOURCE_DIR}/include/global/Process
 )
 
 set(PDJE_INCLUDE_GLOBAL
