@@ -78,6 +78,8 @@ set(PDJE_INCLUDE_INPUT
 ${CMAKE_CURRENT_SOURCE_DIR}/include/input
 ${CMAKE_CURRENT_SOURCE_DIR}/include/input/midi
 ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Process
+${CMAKE_CURRENT_SOURCE_DIR}/include/global/Process/utils
+
 )
 
 set(PDJE_INCLUDE_GLOBAL

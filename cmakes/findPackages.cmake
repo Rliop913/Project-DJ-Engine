@@ -62,6 +62,12 @@ FetchContent_Declare(
   GIT_TAG v1.0.1
 )
 
+FetchContent_Declare(
+  cppHttp
+  GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
+  GIT_TAG v0.27.0
+)
+
 find_package(Annoy CONFIG REQUIRED)
 
 find_package(spdlog CONFIG REQUIRED)
@@ -112,6 +118,8 @@ FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
 FetchContent_MakeAvailable(rocksDB)
 FetchContent_MakeAvailable(picoSHA)
+FetchContent_MakeAvailable(cppHttp)
+
 
 if(WIN32)
 set_target_properties(rocksdb PROPERTIES
@@ -121,7 +129,7 @@ endif()
 # get_cmake_property(_vars VARIABLES)
 
 # foreach(var ${_vars})
-#     if(var MATCHES "^pico")
+#     if(var MATCHES "^http")
 #         message(STATUS "환경변수: ${var} = [${${var}}]")
 #     endif()
 # endforeach()
@@ -130,6 +138,7 @@ include_directories(${sql_amalgam_SOURCE_DIR})
 include_directories(${cppcodec_SOURCE_DIR})
 include_directories(${rocksdb_SOURCE_DIR}/include)
 include_directories(${picosha_SOURCE_DIR})
+include_directories(${httplib_SOURCE_DIR})
 
 
 
