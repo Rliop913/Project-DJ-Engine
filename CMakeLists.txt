@@ -22,6 +22,7 @@ if(WIN32)
 else()
 endif()
 
+set(PDJE_INCLUDE_ROOT  ${CMAKE_SOURCE_DIR})
 
 option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
 if(WIN32)
@@ -57,7 +58,7 @@ if(PDJE_DEVELOP_INPUT)
 
 add_executable(PDJE_MODULE_INPUT_PROCESS ${inputSource} ${globalSource}  ${PDJE_INPUT_PROCESS_SRC})
 
-target_include_directories(PDJE_MODULE_INPUT_PROCESS PRIVATE ${PDJE_INCLUDE_INPUT})
+target_include_directories(PDJE_MODULE_INPUT_PROCESS PUBLIC ${PDJE_INCLUDE_INPUT})
 PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT_PROCESS)
 setSpdlogReqLib(PDJE_MODULE_INPUT_PROCESS)
 
@@ -88,17 +89,17 @@ if(PDJE_BUILD_TESTS)
 add_executable(testEditor ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/editorTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${globalSource})
 add_executable(DBTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${globalSource})
 
-target_include_directories(testEditor PRIVATE ${PDJE_INCLUDE_CORE})
-target_include_directories(DBTester PRIVATE ${PDJE_INCLUDE_CORE})
+target_include_directories(testEditor PUBLIC ${PDJE_INCLUDE_CORE})
+target_include_directories(DBTester PUBLIC ${PDJE_INCLUDE_CORE})
 
 add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${PDJE_OS_INPUT_SRC})
-target_include_directories(testInput PRIVATE ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_GLOBAL})
+target_include_directories(testInput PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_GLOBAL})
 PDJE_INPUT_LINK_LIB(testInput)
 setSpdlogReqLib(testInput)
 
 
 add_executable(testJudge ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/JUDGE_TESTS/judgeTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${globalSource} ${PDJE_OS_INPUT_SRC} ${judgeSource})
-target_include_directories(testJudge PRIVATE ${PDJE_INCLUDE_CORE} ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_GLOBAL})
+target_include_directories(testJudge PUBLIC ${PDJE_INCLUDE_CORE} ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_GLOBAL})
 PDJE_INPUT_LINK_LIB(testJudge)
 setSpdlogReqLib(testJudge)
 endif(PDJE_BUILD_TESTS)
@@ -112,11 +113,11 @@ if(PDJE_DEVELOP_INPUT)
 
 endif()
 
-target_include_directories(PDJE PRIVATE ${PDJE_INCLUDE_CORE})
-target_include_directories(PDJE_MODULE_JUDGE PRIVATE ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_INPUT})
+target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
+target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_INPUT})
 
 if(PDJE_DEVELOP_INPUT)
-  target_include_directories(PDJE_MODULE_INPUT PRIVATE ${PDJE_INCLUDE_INPUT} )
+  target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} )
 endif()
 
 if(WIN32)
@@ -138,10 +139,10 @@ if(PDJE_DEVELOP_INPUT)
 endif()
 
 
-target_include_directories(PDJE PRIVATE ${PDJE_INCLUDE_CORE})
-target_include_directories(PDJE_MODULE_JUDGE PRIVATE ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_INPUT})
+target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
+target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_INPUT})
 if(PDJE_DEVELOP_INPUT)
-target_include_directories(PDJE_MODULE_INPUT PRIVATE ${PDJE_INCLUDE_INPUT} )
+target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} )
 endif()
 
 endif()
@@ -161,13 +162,13 @@ endif()
 
 function(LinuxSetAtomic targetName)
 if(LINUX)
-    target_link_libraries(${targetName} PRIVATE atomic)
-    target_link_options(${targetName} PRIVATE -Wl,-z,defs)
+    target_link_libraries(${targetName} PUBLIC atomic)
+    target_link_options(${targetName} PUBLIC -Wl,-z,defs)
   endif()
 endfunction()
 
 function(linkPDJELibs targetName)
-  target_link_libraries(${targetName} PRIVATE nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
+  target_link_libraries(${targetName} PUBLIC nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
   setSpdlogReqLib(${targetName})
   setCapnpReqLib(${targetName})
   setLibgit2ReqLib(${targetName})
