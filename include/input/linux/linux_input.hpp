@@ -17,7 +17,10 @@ class OS_Input {
     ONE_SHOT_SYNC       run_sync;
 
     PDJE_INPUT_DATA_LINE
-    PullOutDataLine();
+    PullOutDataLine()
+    {
+        return {};
+    }
     bool
     kill()
     {

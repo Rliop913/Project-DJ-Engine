@@ -108,7 +108,7 @@ MainProcess::SendIPCSharedMemory(const IPCSharedMem<T, MEM_PROT_FLAG> &mem,
             return true;
 #else
             auto shmem_share = IPC_SHM_LINUX(mem);
-            auto send_res    = sendmsg(imp.client_fd, shmem_share.msg, 0);
+            auto send_res    = sendmsg(imp.child_fd, shmem_share.msg, 0);
             if (send_res != 0) {
                 critlog("failed to send shared memory fd in linux socket "
                         "protocol.");
