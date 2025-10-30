@@ -65,6 +65,8 @@ class OS_Input {
     PDJE_INPUT_DATA_LINE
     PullOutDataLine();
 
-    OS_Input()  = default;
+    OS_Input(): input_buffer(2048){
+
+    }
     ~OS_Input() = default;
 };

@@ -96,6 +96,7 @@ OS_Input::run()
     std::bitset<101> isPressed;
     bool             Writable = true;
     while (true) {
+        try{
 
         w = MsgWaitForMultipleObjectsEx(0,
                                         nullptr,
@@ -206,7 +207,11 @@ OS_Input::run()
                 PeekMessageW(&msg, nullptr, WM_QUIT + 1, 0xFFFF, PM_REMOVE)) {
             }
         }
+    }catch(const std::exception& e){
+        critlog("runtime err. what: ");
+        critlog(e.what());
     }
+}
 }
 
 void

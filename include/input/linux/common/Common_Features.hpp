@@ -153,13 +153,4 @@ ReadMSG(const std::string &head, const std::string &raw_json_msg)
         return std::vector<std::string>();
     }
 }
-
-// void
-// TOCTOU_DODGE()
-// {
-//     // todo- impl
-//     // impl with hash compare - random re-compare + random fake execution +
-//     // random sleep time
-// }
-
 }; // namespace Common_Features
