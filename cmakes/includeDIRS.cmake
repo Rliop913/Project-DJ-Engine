@@ -85,6 +85,7 @@ ${PDJE_INCLUDE_ROOT}/include/global/Process/utils
 set(PDJE_INCLUDE_GLOBAL
   ${PDJE_INCLUDE_ROOT}/include/global
   ${PDJE_INCLUDE_ROOT}/include/global/DataLines
+  ${picosha_SOURCE_DIR}
 )
 if(WIN32)
   list(APPEND PDJE_INCLUDE_GLOBAL
