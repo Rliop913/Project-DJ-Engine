@@ -1,8 +1,6 @@
 #pragma once
 #include "PDJE_IPC_SHARE_MEM_UTIL.hpp"
 #include "PDJE_LOG_SETTER.hpp"
-#include "nlohmann/json_fwd.hpp"
-#include <asm-generic/socket.h>
 #include <filesystem>
 #include <functional>
 #include <httplib.h>
@@ -17,7 +15,13 @@
 namespace PDJE_IPC_UTILS {
 using nj = nlohmann::json;
 #ifdef WIN32
-
+struct Importants {
+    // int         socket_fd = -1;
+    // int         child_fd  = -1;
+    // pid_t       child_pid = -1;
+    // std::string socket_path =
+    //     "/tmp/pdje_input_module_libevdev_socket_path.sock";
+};
 #else
 
 template <typename T, int MEM_PROT_FLAG> struct IPC_SHM_LINUX {

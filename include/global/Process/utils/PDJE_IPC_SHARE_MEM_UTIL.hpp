@@ -87,7 +87,9 @@ template <typename T, int MEM_PROT_FLAG> class IPCSharedMem {
         }
 
         if (MEM_PROT_FLAG == PDJE_NO_IPC) {
-            ptr        = new T(count);
+            
+            ptr        = new T[count];
+            
             data_count = count;
             return true;
         }
