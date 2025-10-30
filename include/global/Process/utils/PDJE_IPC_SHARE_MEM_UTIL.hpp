@@ -18,7 +18,8 @@
 #define NOMINMAX
 #include <Windows.h>
 
-#else
+#endif
+#ifdef __linux__
 #include <sys/mman.h>
 #include <unistd.h>
 #endif
@@ -44,7 +45,8 @@ template <typename T, int MEM_PROT_FLAG> class IPCSharedMem {
 
 #ifdef WIN32
     HANDLE memory_handle = nullptr;
-#else
+#endif
+#ifdef __linux__
     int FD = -1;
 #endif
     uint64_t data_count = 0;
@@ -68,7 +70,8 @@ template <typename T, int MEM_PROT_FLAG> class IPCSharedMem {
             return false;
         }
         return true;
-#else
+#endif
+#ifdef __linux__
         return false; // todo -impl
 #endif
     }
@@ -129,7 +132,8 @@ template <typename T, int MEM_PROT_FLAG> class IPCSharedMem {
 
         return true;
 
-#else
+#endif
+#ifdef __linux__
         FD = memfd_create(memfd_name.string().c_str(), MFD_CLOEXEC);
         if (FD < 0) {
             critlog("memfd not created");
@@ -174,7 +178,8 @@ template <typename T, int MEM_PROT_FLAG> class IPCSharedMem {
             CloseHandle(memory_handle);
         }
 
-#else
+#endif
+#ifdef __linux__
 
         if (ptr) {
             if (munmap(ptr, sizeof(T) * data_count) == -1) {

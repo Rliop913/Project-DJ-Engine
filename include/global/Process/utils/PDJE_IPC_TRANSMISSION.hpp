@@ -9,7 +9,8 @@
 #include <unordered_map>
 #ifdef WIN32
 
-#else
+#endif
+#ifdef __linux__
 #include <sys/socket.h>
 #endif
 namespace PDJE_IPC_UTILS {
@@ -22,7 +23,8 @@ struct Importants {
     // std::string socket_path =
     //     "/tmp/pdje_input_module_libevdev_socket_path.sock";
 };
-#else
+#endif
+#ifdef __linux__
 
 template <typename T, int MEM_PROT_FLAG> struct IPC_SHM_LINUX {
   private:
@@ -110,7 +112,8 @@ MainProcess::SendIPCSharedMemory(const IPCSharedMem<T, MEM_PROT_FLAG> &mem,
         if (res->status / 100 == 2) {
 #ifdef WIN32
             return true;
-#else
+#endif
+#ifdef __linux__
             auto shmem_share = IPC_SHM_LINUX(mem);
             auto send_res    = sendmsg(imp.child_fd, shmem_share.msg, 0);
             if (send_res != 0) {
