@@ -27,11 +27,9 @@ startlog()
     std::call_once(SPD_LOG_ONCE_FLAG, []() {
         std::filesystem::create_directories("logs");
         auto fileSink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(
-            "logs/pdjeLog.txt", true);
-        auto consoleSink =
-            std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-
-        std::vector<spdlog::sink_ptr> sinks{ consoleSink, fileSink };
+            "logs/pdjeLog.txt", false);
+        
+        std::vector<spdlog::sink_ptr> sinks{ fileSink };
 
         auto logger = std::make_shared<spdlog::logger>(
             "global_logger", sinks.begin(), sinks.end());
