@@ -1,7 +1,7 @@
 #pragma once
 
 #include "PDJE_INPUT_PROCESS_HASH.hpp"
-#include "PDJE_IPC_SHARE_MEM_UTIL.hpp"
+#include "ipc_shared_memory.hpp"
 #include "PDJE_LOG_SETTER.hpp"
 #include <algorithm>
 #include <cctype>
@@ -14,7 +14,7 @@
 #include <string>
 #include <vector>
 
-namespace PDJE_IPC_UTILS {
+namespace PDJE_IPC {
 namespace fs = std::filesystem;
 
 static inline fs::path

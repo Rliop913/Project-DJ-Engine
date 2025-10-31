@@ -12,13 +12,15 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::KEYBOARD>(const PDJE_Input_Log &ilog)
         return;
     }
     INPUT_RULE rule;
-    
-    rule.Device_ID  = (*init_datas->inputline->id_name_conv)[ilog.id];    
+
+    rule.Device_ID  = (*init_datas->inputline->id_name_conv)[ilog.id];
     rule.DeviceType = ilog.type;
     rule.DeviceKey  = ilog.event.keyboard.k;
-    
+
     if (!FindRailID(rule, Cached.railID)) {
-        std::cout << "cutted on second. " << ilog.microSecond - Cached.synced_data.microsecond << std::endl;
+        std::cout << "cutted on second. "
+                  << ilog.microSecond - Cached.synced_data.microsecond
+                  << std::endl;
         return;
     }
     if (ilog.event.keyboard.pressed) {

@@ -1,5 +1,5 @@
 #pragma once
-#include "PDJE_IPC_SHARE_MEM_UTIL.hpp"
+#include "ipc_shared_memory.hpp"
 #include "PDJE_LOG_SETTER.hpp"
 #include <filesystem>
 #include <functional>
@@ -13,7 +13,7 @@
 #ifdef __linux__
 #include <sys/socket.h>
 #endif
-namespace PDJE_IPC_UTILS {
+namespace PDJE_IPC {
 using nj = nlohmann::json;
 #ifdef WIN32
 struct Importants {

@@ -30,7 +30,7 @@ Judge_Init::SetInputLine(const PDJE_INPUT_DATA_LINE &_inputline)
 void
 Judge_Init::SetInputRule(const INPUT_CONFIG &device_config)
 {
-    if(device_config.Device_ID == ""){
+    if (device_config.Device_ID == "") {
         return;
     }
     INPUT_RULE rule{ .Device_ID  = device_config.Device_ID,
@@ -107,7 +107,7 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
         } else {
             DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
             std::cout << "push mouse, " << micro_Y1 << ", " << micro_Y2
-                  << std::endl;
+                      << std::endl;
         }
         break;
     case PDJE_Dev_Type::MIDI:

@@ -24,7 +24,8 @@ main()
             if (engine->editor->ConfigNewMusic(
                     "testMiku",
                     "Camellia",
-                    "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav", "83040")) {
+                    "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav",
+                    "83040")) {
 
                 EDIT_ARG_MUSIC temp;
                 temp.musicName    = "testMiku";
@@ -81,7 +82,8 @@ main()
             if (engine->editor->ConfigNewMusic(
                     "ヒアソビ",
                     "Camellia",
-                    "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav", "83040")) {
+                    "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav",
+                    "83040")) {
                 EDIT_ARG_MUSIC temp;
                 temp.musicName    = "ヒアソビ";
                 temp.arg.beat     = 0;
@@ -160,7 +162,7 @@ main()
         editor->UpdateLog<EDIT_ARG_KEY_VALUE>();
         editor->UpdateLog<EDIT_ARG_NOTE>();
         editor->UpdateLog<EDIT_ARG_MUSIC>();
-        
+
         editor->GetLogWithJSONGraph<EDIT_ARG_MIX>();
         editor->GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
         editor->GetLogWithJSONGraph<EDIT_ARG_NOTE>();

@@ -5,9 +5,21 @@
 // #include "linux/linux_input.hpp"
 #include <iostream>
 // #include <unistd.h>
+#include "MainProcess.hpp"
 int
 main()
 {
+    auto mp = PDJE_IPC::MainProcess(84300);
+    std::cout << "opened connection" << std::endl;
+    if(mp.EndTransmission()){
+        std::cout << "Ended Transmission" << std::endl;
+    }
+    else{
+        std::cout << "Failed to End Transmission" << std::endl;
+    }
+    
+
+    return 0;
     PDJE_Input pip;
     pip.Init();
     auto     devs = pip.GetDevs();
@@ -44,20 +56,23 @@ main()
     std::thread watcher([&]() {
         while (true) {
             auto got = dline.input_arena->Get();
-            for(uint64_t idx=0; idx < got.second ; ++idx)
-            
+            for (uint64_t idx = 0; idx < got.second; ++idx)
+
             {
                 auto name = dline.id_name_conv->find(got.first[idx].id);
                 if (name != dline.id_name_conv->end()) {
 
                     std::cout << "name: " << name->second << std::endl;
-                    std::cout << "time: " << got.first[idx].microSecond << std::endl;
+                    std::cout << "time: " << got.first[idx].microSecond
+                              << std::endl;
                     if (got.first[idx].type == PDJE_Dev_Type::KEYBOARD) {
 
-                        std::cout << "keyNumber: "
-                                  << static_cast<int>(got.first[idx].event.keyboard.k)
-                                  << std::endl;
-                        std::cout << "pressed" << got.first[idx].event.keyboard.pressed
+                        std::cout
+                            << "keyNumber: "
+                            << static_cast<int>(got.first[idx].event.keyboard.k)
+                            << std::endl;
+                        std::cout << "pressed"
+                                  << got.first[idx].event.keyboard.pressed
                                   << std::endl;
                     }
 

@@ -1,7 +1,5 @@
-#include "PDJE_IPC_TRANSMISSION.hpp"
+#include "MainProcess.hpp"
 
-#include "PDJE_IPC_UTILS.hpp"
-#include "PDJE_LOG_SETTER.hpp"
 #include "httplib.h"
 #include <spawn.h>
 #include <sys/socket.h>
@@ -48,7 +46,7 @@ OpenProcess(const fs::path &pt, pid_t *child_pid)
     return false;
 }
 
-MainProcess::MainProcess(int port)
+MainProcess::MainProcess(const int port)
 {
     unlink(imp.socket_path.c_str());
     imp.socket_fd = socket(AF_UNIX, SOCK_STREAM, 0);

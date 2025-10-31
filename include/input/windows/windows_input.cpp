@@ -96,122 +96,125 @@ OS_Input::run()
     std::bitset<101> isPressed;
     bool             Writable = true;
     while (true) {
-        try{
+        try {
 
-        w = MsgWaitForMultipleObjectsEx(0,
-                                        nullptr,
-                                        INFINITE,
-                                        QS_RAWINPUT | QS_POSTMESSAGE,
-                                        MWMO_INPUTAVAILABLE | MWMO_ALERTABLE);
-        if (w == WAIT_OBJECT_0) {
+            w = MsgWaitForMultipleObjectsEx(0,
+                                            nullptr,
+                                            INFINITE,
+                                            QS_RAWINPUT | QS_POSTMESSAGE,
+                                            MWMO_INPUTAVAILABLE |
+                                                MWMO_ALERTABLE);
+            if (w == WAIT_OBJECT_0) {
 
-            if (PeekMessageW(&msg, nullptr, WM_QUIT, WM_QUIT, PM_REMOVE)) {
+                if (PeekMessageW(&msg, nullptr, WM_QUIT, WM_QUIT, PM_REMOVE)) {
 
-                break;
-            }
-            while (PeekMessageW(&msg, nullptr, WM_INPUT, WM_INPUT, PM_REMOVE)) {
-                Writable = true;
-                now      = timer.Get_MicroSecond();
-                if (GetRawInputData(reinterpret_cast<HRAWINPUT>(msg.lParam),
-                                    RID_INPUT,
-                                    nullptr,
-                                    &size,
-                                    sizeof(RAWINPUTHEADER)) != 0 ||
-                    size == 0) {
-                    continue;
-                }
-                std::pmr::vector<BYTE> buf(&mono_arena);
-                buf.reserve(size);
-                if (GetRawInputData(reinterpret_cast<HRAWINPUT>(msg.lParam),
-                                    RID_INPUT,
-                                    buf.data(),
-                                    &size,
-                                    sizeof(RAWINPUTHEADER)) != size) {
-                    continue;
-                }
-
-                const RAWINPUT *ri =
-                    reinterpret_cast<const RAWINPUT *>(buf.data());
-
-                switch (ri->header.dwType) {
-                case RIM_TYPEMOUSE:
-                    dtype = PDJE_Dev_Type::MOUSE;
-                    PDJE_RAWINPUT::FillMouseInput(tempEv, ri);
                     break;
-                case RIM_TYPEKEYBOARD:
-                    dtype = PDJE_Dev_Type::KEYBOARD;
-                    PDJE_RAWINPUT::FillKeyboardInput(tempEv, ri);
-                    if (isPressed.test(tempEv.keyboard.k) &&
-                        tempEv.keyboard.pressed) {
-                        Writable = false;
-                    } else {
-                        isPressed.set(tempEv.keyboard.k,
-                                      tempEv.keyboard.pressed);
+                }
+                while (PeekMessageW(
+                    &msg, nullptr, WM_INPUT, WM_INPUT, PM_REMOVE)) {
+                    Writable = true;
+                    now      = timer.Get_MicroSecond();
+                    if (GetRawInputData(reinterpret_cast<HRAWINPUT>(msg.lParam),
+                                        RID_INPUT,
+                                        nullptr,
+                                        &size,
+                                        sizeof(RAWINPUTHEADER)) != 0 ||
+                        size == 0) {
+                        continue;
+                    }
+                    std::pmr::vector<BYTE> buf(&mono_arena);
+                    buf.reserve(size);
+                    if (GetRawInputData(reinterpret_cast<HRAWINPUT>(msg.lParam),
+                                        RID_INPUT,
+                                        buf.data(),
+                                        &size,
+                                        sizeof(RAWINPUTHEADER)) != size) {
+                        continue;
                     }
 
-                    break;
-                case RIM_TYPEHID:
-                    dtype            = PDJE_Dev_Type::HID;
-                    hidEv.hid_buffer = PDJE_RAWINPUT::FillHIDInput(
-                        hid_arena, ri, hidEv.hid_byte_size);
-                    break;
-                default:
-                    dtype = PDJE_Dev_Type::UNKNOWN;
-                    break;
-                }
-                handlestr = std::to_string(
-                    reinterpret_cast<uintptr_t>(ri->header.hDevice));
+                    const RAWINPUT *ri =
+                        reinterpret_cast<const RAWINPUT *>(buf.data());
 
-                if (!unlisted_targets.empty()) {
-                    if (!id_name.contains(handlestr)) {
-
-                        if (GetRawInputDeviceInfoW(ri->header.hDevice,
-                                                   RIDI_DEVICENAME,
-                                                   nullptr,
-                                                   &size) == (UINT)-1 ||
-                            size == 0) {
+                    switch (ri->header.dwType) {
+                    case RIM_TYPEMOUSE:
+                        dtype = PDJE_Dev_Type::MOUSE;
+                        PDJE_RAWINPUT::FillMouseInput(tempEv, ri);
+                        break;
+                    case RIM_TYPEKEYBOARD:
+                        dtype = PDJE_Dev_Type::KEYBOARD;
+                        PDJE_RAWINPUT::FillKeyboardInput(tempEv, ri);
+                        if (isPressed.test(tempEv.keyboard.k) &&
+                            tempEv.keyboard.pressed) {
+                            Writable = false;
                         } else {
-                            std::wstring path(size, L'\0');
+                            isPressed.set(tempEv.keyboard.k,
+                                          tempEv.keyboard.pressed);
+                        }
+
+                        break;
+                    case RIM_TYPEHID:
+                        dtype            = PDJE_Dev_Type::HID;
+                        hidEv.hid_buffer = PDJE_RAWINPUT::FillHIDInput(
+                            hid_arena, ri, hidEv.hid_byte_size);
+                        break;
+                    default:
+                        dtype = PDJE_Dev_Type::UNKNOWN;
+                        break;
+                    }
+                    handlestr = std::to_string(
+                        reinterpret_cast<uintptr_t>(ri->header.hDevice));
+
+                    if (!unlisted_targets.empty()) {
+                        if (!id_name.contains(handlestr)) {
+
                             if (GetRawInputDeviceInfoW(ri->header.hDevice,
                                                        RIDI_DEVICENAME,
-                                                       path.data(),
-                                                       &size) == (UINT)-1) {
+                                                       nullptr,
+                                                       &size) == (UINT)-1 ||
+                                size == 0) {
                             } else {
-                                if (!path.empty() && path.back() == L'\0')
-                                    path.pop_back();
-                                std::string device_path =
-                                    wstring_to_utf8_nt(path);
-                                if (unlisted_targets.contains(device_path)) {
-                                    id_name[handlestr] =
-                                        unlisted_targets[device_path];
-                                    unlisted_targets.erase(device_path);
+                                std::wstring path(size, L'\0');
+                                if (GetRawInputDeviceInfoW(ri->header.hDevice,
+                                                           RIDI_DEVICENAME,
+                                                           path.data(),
+                                                           &size) == (UINT)-1) {
+                                } else {
+                                    if (!path.empty() && path.back() == L'\0')
+                                        path.pop_back();
+                                    std::string device_path =
+                                        wstring_to_utf8_nt(path);
+                                    if (unlisted_targets.contains(
+                                            device_path)) {
+                                        id_name[handlestr] =
+                                            unlisted_targets[device_path];
+                                        unlisted_targets.erase(device_path);
+                                    }
                                 }
                             }
                         }
                     }
+                    if (Writable) {
+
+                        input_buffer.Write({ .type        = dtype,
+                                             .event       = tempEv,
+                                             .hid_event   = hidEv,
+                                             .id          = handlestr,
+                                             .microSecond = now });
+                    }
                 }
-                if (Writable) {
 
-                    input_buffer.Write({ .type        = dtype,
-                                         .event       = tempEv,
-                                         .hid_event   = hidEv,
-                                         .id          = handlestr,
-                                         .microSecond = now });
+                while (PeekMessageW(&msg, nullptr, 0, WM_QUIT - 1, PM_REMOVE)) {
+                }
+
+                while (PeekMessageW(
+                    &msg, nullptr, WM_QUIT + 1, 0xFFFF, PM_REMOVE)) {
                 }
             }
-
-            while (PeekMessageW(&msg, nullptr, 0, WM_QUIT - 1, PM_REMOVE)) {
-            }
-
-            while (
-                PeekMessageW(&msg, nullptr, WM_QUIT + 1, 0xFFFF, PM_REMOVE)) {
-            }
+        } catch (const std::exception &e) {
+            critlog("runtime err. what: ");
+            critlog(e.what());
         }
-    }catch(const std::exception& e){
-        critlog("runtime err. what: ");
-        critlog(e.what());
     }
-}
 }
 
 void

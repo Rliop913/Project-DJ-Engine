@@ -3,8 +3,6 @@ if(WIN32)
     set(PDJE_OS_INPUT_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/PDJE_Input.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/windows/windows_input.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Process/Windows_IPC.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Process/utils/PDJE_IPC_TRANSMISSION.cpp
     )
     set(PDJE_INPUT_PROCESS_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/windows/process/Input_Process_Main.cpp
@@ -24,10 +22,6 @@ else()
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/PDJE_Input.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/linux_input.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/socket/linux_socket.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Process/Linux_IPC.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Process/utils/PDJE_IPC_TRANSMISSION.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Process/utils/TRANSMISSION_LINUX.cpp
-        
         )
         
     set(PDJE_INPUT_PROCESS_SRC

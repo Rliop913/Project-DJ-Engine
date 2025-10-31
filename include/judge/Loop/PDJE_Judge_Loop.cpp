@@ -72,7 +72,7 @@ Judge_Loop::Cut()
 bool
 Judge_Loop::PreProcess()
 {
-    
+
     input_log = init_datas->inputline->input_arena->Get();
     Cached.synced_data =
         init_datas->coreline->syncD->load(std::memory_order_acquire);
@@ -106,7 +106,8 @@ Judge_Loop::PreProcess()
     Cut();
 
     // init maximum get time
-    Cached.log_end = input_log.first[input_log.second - 1].microSecond - Cached.global_local_diff;
+    Cached.log_end = input_log.first[input_log.second - 1].microSecond -
+                     Cached.global_local_diff;
     Cached.use_range =
         Cached.log_end + init_datas->ev_rule->use_range_microsecond;
     return true;
@@ -114,16 +115,15 @@ Judge_Loop::PreProcess()
 void
 Judge_Loop::loop()
 {
-    bool OK = true;
-    PDJE_Input_Log * input_ev;
+    bool            OK = true;
+    PDJE_Input_Log *input_ev;
     while (loop_switch) {
         OK = PreProcess();
         if (!OK) {
             continue;
         }
         input_ev = input_log.first;
-        for(uint64_t idx = 0; idx < input_log.second; ++idx)
-        {
+        for (uint64_t idx = 0; idx < input_log.second; ++idx) {
             switch (input_ev->type) {
             case PDJE_Dev_Type::KEYBOARD:
                 UseEvent<PDJE_Dev_Type::KEYBOARD>(*input_ev);
@@ -156,16 +156,13 @@ Judge_Loop::StartEventLoop()
                 std::this_thread::sleep_until(use_clock);
 
                 auto queue = Event_Datas.use_queue.Get();
-                for(uint64_t idx=0; idx < queue.second; ++idx){
-                    init_datas->lambdas.used_event(
-                        queue.first[idx].railid,
-                        queue.first[idx].Pressed,
-                        queue.first[idx].IsLate,
-                        queue.first[idx].diff
-                    );
+                for (uint64_t idx = 0; idx < queue.second; ++idx) {
+                    init_datas->lambdas.used_event(queue.first[idx].railid,
+                                                   queue.first[idx].Pressed,
+                                                   queue.first[idx].IsLate,
+                                                   queue.first[idx].diff);
                 }
-                
-                
+
             } catch (const std::exception &e) {
                 critlog("caught error on use event loop. Why:");
                 critlog(e.what());
@@ -181,7 +178,7 @@ Judge_Loop::StartEventLoop()
                 std::this_thread::sleep_for(
                     init_datas->lambdas.miss_event_sleep_time);
                 auto queue = Event_Datas.miss_queue.Get();
-                for(uint64_t idx=0; idx < queue.second; ++idx){
+                for (uint64_t idx = 0; idx < queue.second; ++idx) {
                     init_datas->lambdas.missed_event(queue.first[idx]);
                 }
             } catch (const std::exception &e) {

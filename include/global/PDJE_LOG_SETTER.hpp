@@ -28,7 +28,7 @@ startlog()
         std::filesystem::create_directories("logs");
         auto fileSink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(
             "logs/pdjeLog.txt", false);
-        
+
         std::vector<spdlog::sink_ptr> sinks{ fileSink };
 
         auto logger = std::make_shared<spdlog::logger>(
