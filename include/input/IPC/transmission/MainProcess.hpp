@@ -48,10 +48,44 @@ class MainProcess {
                         const std::string                 &dataType);
     template <typename T>
                         bool
-    SendBufferArena(const PDJE_Buffer_Arena<T> &mem); //todo -impl
+    SendBufferArena(const PDJE_Buffer_Arena<T> &mem);
     
     std::vector<DeviceData> 
-    GetDevices();
+    GetDevices(){
+      auto res = cli->Get("/lsdev");
+      std::vector<DeviceData> ddvector;
+      if(res->status == 200){
+        nj jj = nj::parse(res->body);
+        for(const auto& i : jj["body"]){
+          DeviceData dd;
+          dd.device_specific_id = i.at("id").get<std::string>();
+          dd.Name = i.at("name").get<std::string>();
+          std::string tp = i.at("type").get<std::string>();
+          if(tp == "KEYBOARD"){
+              dd.Type = PDJE_Dev_Type::KEYBOARD;
+          }
+          else if(tp == "MOUSE"){
+              dd.Type = PDJE_Dev_Type::MOUSE;
+          }
+          else if(tp == "MIDI"){
+              dd.Type = PDJE_Dev_Type::MIDI;
+          }
+          else if(tp == "HID"){
+              dd.Type = PDJE_Dev_Type::HID;
+          }
+          else{
+              continue;
+          }
+          ddvector.push_back(dd);
+        }
+        return ddvector;
+      }else{
+        critlog("failed to get device. status code: ");
+        critlog(res->status);
+        return {};
+      }
+      
+    }
 
     bool
     QueryConfig(const std::string& dumped_json){
@@ -69,7 +103,16 @@ class MainProcess {
     EndTransmission();
 
     bool
-    Kill();
+    Kill(){
+      auto res = cli->Get("/kill");
+      if(res->status == 200){
+        return true;
+      }
+      else{
+        critlog(res->body);
+        return false;
+      }
+    }
 
     MainProcess(const int port);
     ~MainProcess();

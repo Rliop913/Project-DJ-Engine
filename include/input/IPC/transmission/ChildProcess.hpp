@@ -7,11 +7,28 @@
 #include <httplib.h>
 #include <optional>
 #include <nlohmann/json.hpp>
+#include "Input_State.hpp"
+#include "PDJE_Buffer.hpp"
+#include "PDJE_Highres_Clock.hpp"
+#include "PDJE_Input_DataLine.hpp"
 namespace PDJE_IPC{
+    struct RawDeviceData {
+    RID_DEVICE_INFO info{};
+    std::wstring    deviceHIDPath;
+};
+using PDJE_DEV_PATH = std::string;
+using PDJE_NAME = std::string;
     class ChildProcess {
         private:
+        DWORD                     ThreadID;
         std::unordered_map<std::string, std::function<void()>> callables;
         httplib::Server server;
+        
+        std::unordered_map<PDJE_ID, PDJE_NAME>       id_name;
+        std::optional<PDJE_Buffer_Arena<PDJE_Input_Log>>            input_buffer;
+        std::optional<PDJE_IPC::SharedMem<int, PDJE_IPC::PDJE_IPC_RW>> spinlock_run;// 0 = stop, 1 = go, -1 = terminate
+
+
         void
         EndTransmission(const httplib::Request &, httplib::Response &res);
         
@@ -19,14 +36,17 @@ namespace PDJE_IPC{
         RecvIPCSharedMem(const std::string& mem_path, const std::string& dataType, const uint64_t data_count); //todo - impl
 
         std::vector<DeviceData> configed_devices;
+        std::unordered_map<PDJE_DEV_PATH, PDJE_NAME> unlisted_targets;
 
         std::string
-        ListDev();//todo - impl
+        ListDev();
         
         public:
+        bool KillCheck = false;
         ChildProcess()
         {
             startlog();
+            server.Get("/kill", [&](const httplib::Request &req, httplib::Response &res){EndTransmission(req, res); KillCheck = true;});
             server.Get("/stop", [&](const httplib::Request &req, httplib::Response &res){EndTransmission(req, res);});
             server.Get("/health",
                [&](const httplib::Request &, httplib::Response &res) {
@@ -100,8 +120,12 @@ namespace PDJE_IPC{
                 }
             });
         }
-
+        PDJE_HIGHRES_CLOCK::CLOCK timer;
         void RunServer(const int port);
+        void* Init();
+        void LoopTrig();
+        void Run();
+
         ~ChildProcess() = default;
     };
 };

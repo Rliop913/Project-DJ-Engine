@@ -13,7 +13,7 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::KEYBOARD>(const PDJE_Input_Log &ilog)
     }
     INPUT_RULE rule;
 
-    rule.Device_ID  = (*init_datas->inputline->id_name_conv)[ilog.id];
+    rule.Device_ID  = ilog.name;
     rule.DeviceType = ilog.type;
     rule.DeviceKey  = ilog.event.keyboard.k;
 

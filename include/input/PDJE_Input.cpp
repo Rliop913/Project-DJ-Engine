@@ -37,6 +37,7 @@ PDJE_Input::Init()
         http_bridge.emplace(port);
 
         http_bridge->SendBufferArena(input_buffer);
+        
         spinlock_run.MakeIPCSharedMemory(SHM_PATH(std::string("PDJE_SPINLOCK")), 1);
         (*spinlock_run.ptr) = 0;
         http_bridge->SendIPCSharedMemory(spinlock_run, SHM_PATH(std::string("PDJE_SPINLOCK")), "spinlock");
@@ -101,7 +102,8 @@ PDJE_Input::Config(std::vector<DeviceData> &devs)
     }
     http_bridge->QueryConfig(nj.dump());
     state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
-    return true;
+    return http_bridge->EndTransmission();
+    
 }catch(const std::exception& e){
     critlog("failed to config. WHY: ");
     critlog(e.what());
@@ -168,7 +170,6 @@ PDJE_INPUT_DATA_LINE
 PDJE_Input::PullOutDataLine()
 {
     PDJE_INPUT_DATA_LINE line;
-    line.id_name_conv = &id_name;
     line.input_arena = &input_buffer;
     return line;
 }

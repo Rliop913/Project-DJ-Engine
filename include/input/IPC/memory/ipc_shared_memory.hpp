@@ -44,70 +44,13 @@ template <typename T, int MEM_PROT_FLAG> class SharedMem {
 #endif
 
     bool
-    GetIPCSharedMemory(const fs::path &memfd_name);
-    //     {
-    // #ifdef WIN32
-    // #include "windows_get_ipc_shmem.inl"
-    // #elif defined(__linux__)
-    // #include "linux_get_ipc_shmem.inl"
-    // #endif
-    //     }
+    GetIPCSharedMemory(const fs::path &memfd_name, const uint64_t count);
 
     bool
     MakeIPCSharedMemory(const fs::path &memfd_name, const uint64_t count);
-    //     {
-    //         if (count == 0) {
-    //             return false;
-    //         }
-    //         data_count = count;
-
-    //         const uint64_t bsize = sizeof(T);
-    //         if (count > ((std::numeric_limits<uint64_t>::max)() / bsize)) {
-    //             return false;
-    //         }
-
-    //         if (MEM_PROT_FLAG == PDJE_NO_IPC) {
-
-    //             ptr = new T[count];
-
-    //             data_count = count;
-    //             return true;
-    //         }
-    // #ifdef WIN32
-    // #include "windows_make_ipc_shmem.inl"
-    // #elif defined(__linux__)
-    // #include "linux_make_ipc_shmem.inl"
-    // #endif
-    //     }
 
     ~SharedMem();
-    //     {
-    //         if (MEM_PROT_FLAG == PDJE_NO_IPC) {
-    //             if (ptr) {
-    //                 delete ptr;
-    //             }
-    //             return;
-    //         }
-    // #ifdef WIN32
-    //         if (ptr) {
-    //             UnmapViewOfFile(ptr);
-    //         }
-    //         if (memory_handle) {
-    //             CloseHandle(memory_handle);
-    //         }
-    // #elif defined(__linux__)
-    //         if (ptr) {
-    //             if (munmap(ptr, sizeof(T) * data_count) == -1) {
-    //                 critlog("failed to munmap");
-    //             }
-    //         }
-    //         if (FD != -1) {
-    //             if (close(FD) == -1) {
-    //                 critlog("failed to close FD");
-    //             }
-    //         }
-    // #endif
-    //     }
+
 };
 
 }; // namespace PDJE_IPC

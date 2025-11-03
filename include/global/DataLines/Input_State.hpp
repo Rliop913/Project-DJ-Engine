@@ -167,7 +167,7 @@ struct PDJE_Keyboard_Event {
 };
 
 struct PDJE_HID_Event {
-    std::pmr::vector<uint8_t> hid_buffer;
+    uint8_t hid_buffer[512];
     unsigned long             hid_byte_size = 0;
 };
 
@@ -182,6 +182,3 @@ union PDJE_Input_Event {
     PDJE_Mouse_Event    mouse;
     PDJE_Keyboard_Event keyboard;
 };
-
-using ONE_SHOT_RUN_PROMISE = std::optional<std::promise<bool>>;
-using ONE_SHOT_RUN_FUTURE  = std::optional<std::future<bool>>;

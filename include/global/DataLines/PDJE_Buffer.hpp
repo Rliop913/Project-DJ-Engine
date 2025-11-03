@@ -6,13 +6,16 @@
 #include <memory_resource>
 #include <random>
 #include <vector>
+#ifdef WIN32
+#define SHM_PATH(P) std::string(P)
+#elif defined(__APPLE__)
 
+#else
+#define SHM_PATH(P) P
+#endif
+namespace fs = std::filesystem;
 template <typename T> class PDJE_Buffer_Arena {
   private:
-    // std::pmr::unsynchronized_pool_resource arena;
-    // std::pmr::polymorphic_allocator<T>     allocator;
-    // std::pmr::vector<T>                    buf1;
-    // std::pmr::vector<T>                    buf2;
     PDJE_IPC::SharedMem<T, PDJE_IPC::PDJE_IPC_RW>        buf1;
     PDJE_IPC::SharedMem<T, PDJE_IPC::PDJE_IPC_RW>        buf2;
     PDJE_IPC::SharedMem<uint64_t, PDJE_IPC::PDJE_IPC_RW> first_count;
@@ -20,14 +23,12 @@ template <typename T> class PDJE_Buffer_Arena {
 
     PDJE_IPC::SharedMem<std::atomic_flag, PDJE_IPC::PDJE_IPC_RW> lock;
     PDJE_IPC::SharedMem<uint8_t, PDJE_IPC::PDJE_IPC_RW>          buf_first;
-    // std::atomic_flag                       lock      = ATOMIC_FLAG_INIT;
-    // bool                                   buf_first = true;
-
+    
     T       *buffer_first_pointer_cache  = nullptr;
     T       *buffer_second_pointer_cache = nullptr;
+    
+    public:
     uint64_t BUFFER_COUNT                = 0;
-
-  public:
     std::filesystem::path ID;
     void
     Write(const T &data);
@@ -35,64 +36,50 @@ template <typename T> class PDJE_Buffer_Arena {
     std::pair<T *, uint64_t>
     Get();
 
+    PDJE_Buffer_Arena(const std::string& id, const uint64_t count)
+    {
+        BUFFER_COUNT = count;
+        buf1.GetIPCSharedMemory(
+            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_FIRST") + id), BUFFER_COUNT);
+        buf2.GetIPCSharedMemory(
+            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_SECOND") + id), BUFFER_COUNT);
+        first_count.GetIPCSharedMemory(
+            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_COUNT_FIRST") + id), 1);
+        second_count.GetIPCSharedMemory(
+            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_COUNT_SECOND") + id), 1);
+        lock.GetIPCSharedMemory(
+            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_LOCK") + id), 1);
+        buf_first.GetIPCSharedMemory(
+            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUFFER_SWITCH") + id), 1);
+        buffer_first_pointer_cache  = buf1.ptr;
+        buffer_second_pointer_cache = buf2.ptr;
+    }
+
     PDJE_Buffer_Arena(const uint64_t count)
     {
         BUFFER_COUNT = count;
         std::random_device                 rd;
         std::mt19937                       gen(rd());
         std::uniform_int_distribution<int> dis(0, INT_MAX);
-        ID = std::filesystem::path(std::to_string(dis(gen)));
+        ID = fs::path(std::to_string(dis(gen)));
         buf1.MakeIPCSharedMemory(
-#ifdef WIN32
-            std::filesystem::path(L"Local\\PDJE_INPUT_SHMEM_BUF_FIRST" +
-                                  ID.wstring()),
-#else
-            std::filesystem::path("PDJE_INPUT_SHMEM_BUF_FIRST"),
-#endif
-            BUFFER_COUNT);
+            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_FIRST") +
+                                  ID.string()),BUFFER_COUNT);
         buf2.MakeIPCSharedMemory(
-#ifdef WIN32
-            std::filesystem::path(L"Local\\PDJE_INPUT_SHMEM_BUF_SECOND" +
-                                  ID.wstring()),
-#else
-            std::filesystem::path("PDJE_INPUT_SHMEM_BUF_SECOND" + ID.string()),
-#endif
-            BUFFER_COUNT);
+            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_SECOND") +
+                                  ID.string()), BUFFER_COUNT);
         first_count.MakeIPCSharedMemory(
-#ifdef WIN32
-            std::filesystem::path(L"Local\\PDJE_INPUT_SHMEM_BUF_COUNT_FIRST" +
-                                  ID.wstring()),
-#else
-            std::filesystem::path("PDJE_INPUT_SHMEM_BUF_COUNT_FIRST" +
-                                  ID.string()),
-#endif
-            1);
+            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_COUNT_FIRST") +
+                                  ID.string()), 1);
         second_count.MakeIPCSharedMemory(
-#ifdef WIN32
-            std::filesystem::path(L"Local\\PDJE_INPUT_SHMEM_BUF_COUNT_SECOND" +
-                                  ID.wstring()),
-#else
-            std::filesystem::path("PDJE_INPUT_SHMEM_BUF_COUNT_SECOND" +
-                                  ID.string()),
-#endif
-            1);
+            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_COUNT_SECOND") +
+                                  ID.string()), 1);
         lock.MakeIPCSharedMemory(
-#ifdef WIN32
-            std::filesystem::path(L"Local\\PDJE_INPUT_SHMEM_LOCK" +
-                                  ID.wstring()),
-#else
-            std::filesystem::path("PDJE_INPUT_SHMEM_LOCK" + ID.string()),
-#endif
-            1);
+            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_LOCK") +
+                                  ID.string()), 1);
         buf_first.MakeIPCSharedMemory(
-#ifdef WIN32
-            std::filesystem::path(L"Local\\PDJE_INPUT_SHMEM_BUFFER_SWITCH" +
-                                  ID.wstring()),
-#else
-            std::filesystem::path("PDJE_INPUT_SHMEM_BUFFER_SWITCH" +
-                                  ID.string()),
-#endif
-            1);
+            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUFFER_SWITCH") +
+                                  ID.string()), 1);
         buffer_first_pointer_cache  = buf1.ptr;
         buffer_second_pointer_cache = buf2.ptr;
         new (lock.ptr) std::atomic_flag();
@@ -151,7 +138,7 @@ PDJE_Buffer_Arena<T>::Get()
     (*buf_first.ptr) = (*buf_first.ptr == 1) ? 0 : 1;
 
     lock.ptr->clear(std::memory_order_release);
-    if ((*buf_first.ptr)) {
+    if ((*buf_first.ptr) == 1) {
         return std::pair(buf2.ptr, (*second_count.ptr));
     } else {
         return std::pair(buf1.ptr, (*first_count.ptr));

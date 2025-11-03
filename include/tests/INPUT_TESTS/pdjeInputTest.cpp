@@ -15,15 +15,15 @@ main()
 {
     // std::cout << GenExecuteShell("./PDJE_MODULE_INPUT_PROCESS", 84300)
     //           << std::endl;
-    auto mp = PDJE_IPC::MainProcess(54335);
-    std::cout << "opened connection" << std::endl;
-    if (mp.EndTransmission()) {
-        std::cout << "Ended Transmission" << std::endl;
-    } else {
-        std::cout << "Failed to End Transmission" << std::endl;
-    }
+    // auto mp = PDJE_IPC::MainProcess(54335);
+    // std::cout << "opened connection" << std::endl;
+    // if (mp.EndTransmission()) {
+    //     std::cout << "Ended Transmission" << std::endl;
+    // } else {
+    //     std::cout << "Failed to End Transmission" << std::endl;
+    // }
 
-    return 0;
+    // return 0;
     PDJE_Input pip;
     pip.Init();
     auto     devs = pip.GetDevs();
@@ -53,38 +53,43 @@ main()
 
     pip.Config(set_targets);
     // pip.NEXT();
+    
     auto dline = pip.PullOutDataLine();
-    pip.Run();
+    pip.Run();//todo - impl process terminator
     // pip.NEXT();
     int         times = 100;
     std::thread watcher([&]() {
         while (true) {
-            auto got = dline.input_arena->Get();
-            for (uint64_t idx = 0; idx < got.second; ++idx)
+            try{
 
-            {
-                auto name = dline.id_name_conv->find(got.first[idx].id);
-                if (name != dline.id_name_conv->end()) {
-
-                    std::cout << "name: " << name->second << std::endl;
-                    std::cout << "time: " << got.first[idx].microSecond
-                              << std::endl;
+                auto got = dline.input_arena->Get();
+                for (uint64_t idx = 0; idx < got.second; ++idx)
+                
+                {
+                        
+                    std::cout << "time: " << got.first[idx].microSecond << std::endl;
+                    // std::cout << "id: " << got.first[idx].id << std::endl;
+                    // std::cout << "name: " << got.first[idx].name << std::endl;
+                    
                     if (got.first[idx].type == PDJE_Dev_Type::KEYBOARD) {
-
+                        
                         std::cout
-                            << "keyNumber: "
-                            << static_cast<int>(got.first[idx].event.keyboard.k)
-                            << std::endl;
+                        << "keyNumber: "
+                        << static_cast<int>(got.first[idx].event.keyboard.k)
+                        << std::endl;
                         std::cout << "pressed"
-                                  << got.first[idx].event.keyboard.pressed
-                                  << std::endl;
+                        << got.first[idx].event.keyboard.pressed
+                        << std::endl;
                     }
-
+                    
                     times--;
                     if (times < 0) {
                         return;
                     }
+                    // }
                 }
+            } catch(const std::exception& e){
+                std::cout << e.what() << std::endl;
             }
         }
     });

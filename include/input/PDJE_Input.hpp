@@ -13,13 +13,12 @@
 #include "MainProcess.hpp"
 
 #ifdef WIN32
-#include "windows_input.hpp"
-#define SHM_PATH(P) "LOCAL\\" + P
+// #include "windows_input.hpp"
+
 #elif defined(__APPLE__)
 
 #else
-#include "linux_input.hpp"
-#define SHM_PATH(P) P
+// #include "linux_input.hpp"
 #endif
 
 /**
@@ -31,7 +30,8 @@ class PDJE_API PDJE_Input {
   private:
     std::optional<PDJE_IPC::MainProcess> http_bridge;
     
-    std::unordered_map<PDJE_ID, PDJE_NAME>       id_name;
+    PDJE_IPC::SharedMem<std::unordered_map<PDJE_ID, PDJE_NAME>, PDJE_IPC::PDJE_IPC_RW>       id_name;
+    
     PDJE_Buffer_Arena<PDJE_Input_Log>            input_buffer;
 
     PDJE_IPC::SharedMem<int, PDJE_IPC::PDJE_IPC_RW> spinlock_run;// 0 = stop, 1 = go, -1 = terminate

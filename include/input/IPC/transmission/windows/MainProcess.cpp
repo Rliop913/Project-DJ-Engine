@@ -45,6 +45,7 @@ MainProcess::~MainProcess()
     if (exitCode != 0) {
         critlog("child process exit code is not zero. ErrCode: ");
         critlog(exitCode);
+        return;
     }
     CloseHandle(imp.process_info.hThread);
     CloseHandle(imp.process_info.hProcess);
