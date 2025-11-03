@@ -1,12 +1,12 @@
 #include "MainProcess.hpp"
-
 #include "httplib.h"
+#include "ipc_util.hpp"
 #include <spawn.h>
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <unistd.h>
 
-namespace PDJE_IPC_UTILS {
+namespace PDJE_IPC {
 
 static std::string
 GenExecuteShell(const fs::path &exec_path)
@@ -81,7 +81,7 @@ MainProcess::MainProcess(const int port)
         critlog(errno);
         return;
     }
-    cli.emplace("0.0.0.0", port);
+    cli.emplace("127.0.0.1", port);
     cli->set_connection_timeout(5, 0);
     cli->set_read_timeout(5, 0);
     cli->set_write_timeout(5, 0);
@@ -97,4 +97,14 @@ MainProcess::~MainProcess()
     }
     unlink(imp.socket_path.c_str());
 }
-}; // namespace PDJE_IPC_UTILS
+bool
+MainProcess::EndTransmission()
+{
+    auto res = cli->Get("/stop");
+    if (res) {
+        return true;
+    } else {
+        return false;
+    }
+}
+}; // namespace PDJE_IPC

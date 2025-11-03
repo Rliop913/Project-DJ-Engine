@@ -13,17 +13,13 @@ template <typename T> class PDJE_Buffer_Arena {
     // std::pmr::polymorphic_allocator<T>     allocator;
     // std::pmr::vector<T>                    buf1;
     // std::pmr::vector<T>                    buf2;
-    PDJE_IPC::SharedMem<T, PDJE_IPC::PDJE_IPC_RW> buf1;
-    PDJE_IPC::SharedMem<T, PDJE_IPC::PDJE_IPC_RW> buf2;
-    PDJE_IPC::SharedMem<uint64_t, PDJE_IPC::PDJE_IPC_RW>
-        first_count;
-    PDJE_IPC::SharedMem<uint64_t, PDJE_IPC::PDJE_IPC_RW>
-        second_count;
+    PDJE_IPC::SharedMem<T, PDJE_IPC::PDJE_IPC_RW>        buf1;
+    PDJE_IPC::SharedMem<T, PDJE_IPC::PDJE_IPC_RW>        buf2;
+    PDJE_IPC::SharedMem<uint64_t, PDJE_IPC::PDJE_IPC_RW> first_count;
+    PDJE_IPC::SharedMem<uint64_t, PDJE_IPC::PDJE_IPC_RW> second_count;
 
-    PDJE_IPC::SharedMem<std::atomic_flag, PDJE_IPC::PDJE_IPC_RW>
-        lock;
-    PDJE_IPC::SharedMem<uint8_t, PDJE_IPC::PDJE_IPC_RW>
-        buf_first;
+    PDJE_IPC::SharedMem<std::atomic_flag, PDJE_IPC::PDJE_IPC_RW> lock;
+    PDJE_IPC::SharedMem<uint8_t, PDJE_IPC::PDJE_IPC_RW>          buf_first;
     // std::atomic_flag                       lock      = ATOMIC_FLAG_INIT;
     // bool                                   buf_first = true;
 
