@@ -126,12 +126,11 @@ MainProcess::MainProcess(const int port)
     cli->set_connection_timeout(0, 200'000); // 200ms
     cli->set_read_timeout(0, 200'000);
     cli->set_write_timeout(0, 200'000);
-    auto interval = std::chrono::milliseconds(200);
     while (true) {
         if (auto res = cli->Get("/health"); res && res->status == 200) {
             break;
         }
-        std::this_thread::sleep_for(interval);
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }
 }
 
