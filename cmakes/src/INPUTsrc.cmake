@@ -25,11 +25,11 @@ else()
         )
         
     set(PDJE_INPUT_PROCESS_SRC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTSocket.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTFunctionRegister.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTEvent.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/OneTimeSysSetup.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Process/Linux_IPC.cpp
+        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTSocket.cpp
+        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTFunctionRegister.cpp
+        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTEvent.cpp
+        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/OneTimeSysSetup.cpp
+        # # ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Process/Linux_IPC.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTMain.cpp
         
     

@@ -28,7 +28,7 @@ option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
 if(WIN32)
 option(PDJE_DEVELOP_INPUT "Enable linux develop build" ON)
 else()
-option(PDJE_DEVELOP_INPUT "Enable linux develop build" OFF)
+option(PDJE_DEVELOP_INPUT "Enable linux develop build" ON)
 endif()
 
 option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)

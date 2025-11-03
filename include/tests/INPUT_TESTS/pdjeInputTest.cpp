@@ -1,23 +1,27 @@
 #include "Input_State.hpp"
 #include "PDJE_Input.hpp"
 #include "PDJE_Input_Device_Data.hpp"
+#include <string>
 #include <thread>
 // #include "linux/linux_input.hpp"
 #include <iostream>
 // #include <unistd.h>
 #include "MainProcess.hpp"
+#include <filesystem>
+#include <format>
+namespace fs = std::filesystem;
 int
 main()
 {
-    auto mp = PDJE_IPC::MainProcess(84300);
+    // std::cout << GenExecuteShell("./PDJE_MODULE_INPUT_PROCESS", 84300)
+    //           << std::endl;
+    auto mp = PDJE_IPC::MainProcess(54335);
     std::cout << "opened connection" << std::endl;
-    if(mp.EndTransmission()){
+    if (mp.EndTransmission()) {
         std::cout << "Ended Transmission" << std::endl;
-    }
-    else{
+    } else {
         std::cout << "Failed to End Transmission" << std::endl;
     }
-    
 
     return 0;
     PDJE_Input pip;

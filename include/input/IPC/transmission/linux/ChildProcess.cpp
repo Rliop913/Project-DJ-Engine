@@ -8,13 +8,18 @@ ChildProcess::ChildProcess()
         res.set_content("stopped", "text/plain");
         EndTransmission();
     });
+    server.Get("/health",
+               [&](const httplib::Request &, httplib::Response &res) {
+                   res.set_content("serverOK", "text/plain");
+                   // EndTransmission();
+               });
     // stop request
 }
 
 void
 ChildProcess::RunServer(const int port)
 {
-    server.listen("127.0.0.1", port);
+    server.listen("0.0.0.0", port);
 }
 void
 ChildProcess::EndTransmission()

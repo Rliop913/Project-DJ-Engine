@@ -1,28 +1,69 @@
 #include "MainProcess.hpp"
+#include "PDJE_INPUT_PROCESS_HASH.hpp"
 #include "httplib.h"
 #include "ipc_util.hpp"
+#include <chrono>
+#include <format>
+#include <iostream>
 #include <spawn.h>
+#include <string>
 #include <sys/socket.h>
 #include <sys/un.h>
+#include <thread>
 #include <unistd.h>
-
 namespace PDJE_IPC {
-
 static std::string
-GenExecuteShell(const fs::path &exec_path)
+GenCommand(const std::string &store_value,
+           const std::string &command,
+           const std::string &arg1,
+           const std::string &arg2)
 {
-    auto shell =
-        "sha256sum libPDJE_MODULE_INPUT.a | tr -s ' ' | cut -d ' ' -f1";
+    return store_value + "=$(" + command + " " + arg1 + " " + arg2 + ");";
+}
+static std::string
+GenIF(const std::string &A,
+      const std::string &plain_text,
+      const std::string &THEN)
+{
+    return std::format("[[ \"${}\" == \"{}\" ]] &&", A, plain_text) + " { " +
+           THEN + " };";
+}
+static std::string
+GenExecuteShell(const fs::path &exec_path, const int port)
+{
+    std::string tmpBlob =
+        "umask 077; tmp=$(mktemp /dev/shm/blob.XXXXXX) || exit 1;";
+    tmpBlob +=
+        "trap '[ -n \"${tmp:-}\" ] && { shred -u -- \"$tmp\" 2>/dev/null "
+        "|| rm -f -- \"$tmp\"; }' EXIT;";
+    std::string fillTMP = std::format("cat -- {} > \"$tmp\";",
+                                      "\"" + exec_path.generic_string() + "\"");
+    auto        command = GenCommand("exec_hash",
+                              "sha256sum --",
+                              ("\"$tmp\""),
+                              "| tr -s ' ' | cut -d ' ' -f1");
+    std::string then    = "chmod 700 \"$tmp\";exec {fd}<\"$tmp\";rm "
+                          "-f -- \"$tmp\";trap - EXIT; exec \"/proc/$$/fd/$fd\" " +
+                       std::to_string(port) + " || exit 2; ";
+    command += GenIF("exec_hash", EMBEDDED_INPUT_PROCESS_SHA256, then);
+    return tmpBlob + fillTMP + command;
 }
 
 static bool
-OpenProcess(const fs::path &pt, pid_t *child_pid)
+OpenProcess(const fs::path &pt, pid_t *child_pid, const int port)
 {
+    auto        bash  = "/bin/bash";
+    std::string Shell = GenExecuteShell(pt, port);
+    std::cout << Shell << std::endl;
     char *pkexec_args[] = { (char *)"pkexec",
-                            (char *)GenExecuteShell(pt).c_str(),
+                            (char *)bash,
+                            (char *)"-c",
+                            (char *)Shell.c_str(),
                             nullptr };
     char *sudo_args[]   = { (char *)"sudo",
-                            (char *)GenExecuteShell(pt).c_str(),
+                            (char *)bash,
+                            (char *)"-c",
+                            (char *)Shell.c_str(),
                             nullptr };
 
     if ((getenv("DISPLAY") || getenv("WAYLAND_DISPLAY")) &&
@@ -69,22 +110,29 @@ MainProcess::MainProcess(const int port)
         return;
     }
     auto path = GetValidProcessExecutor();
-    if (!OpenProcess(path, &imp.child_pid)) {
+    if (!OpenProcess(path, &imp.child_pid, port)) {
         critlog("failed to open child process. errno:");
         critlog(errno);
         return;
     }
 
-    imp.child_fd = accept(imp.socket_fd, nullptr, nullptr);
-    if (imp.child_fd < 0) {
-        critlog("failed to get child process fd. errno:");
-        critlog(errno);
-        return;
-    }
+    // imp.child_fd = accept(imp.socket_fd, nullptr, nullptr);
+    // if (imp.child_fd < 0) {
+    //     critlog("failed to get child process fd. errno:");
+    //     critlog(errno);
+    //     return;
+    // }
     cli.emplace("127.0.0.1", port);
-    cli->set_connection_timeout(5, 0);
-    cli->set_read_timeout(5, 0);
-    cli->set_write_timeout(5, 0);
+    cli->set_connection_timeout(0, 200'000); // 200ms
+    cli->set_read_timeout(0, 200'000);
+    cli->set_write_timeout(0, 200'000);
+    auto interval = std::chrono::milliseconds(200);
+    while (true) {
+        if (auto res = cli->Get("/health"); res && res->status == 200) {
+            break;
+        }
+        std::this_thread::sleep_for(interval);
+    }
 }
 
 MainProcess::~MainProcess()
