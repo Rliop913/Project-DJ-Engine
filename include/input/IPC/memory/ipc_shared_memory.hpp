@@ -112,7 +112,7 @@ template <typename T, int MEM_PROT_FLAG> class SharedMem {
 
 }; // namespace PDJE_IPC
 #ifdef WIN32
-#include "windows_ipc.inl"
+#include "windows_ipc.tpp"
 #elif defined(__linux__)
 #include "linux_ipc.tpp"
 #endif

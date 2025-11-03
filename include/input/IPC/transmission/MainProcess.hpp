@@ -8,11 +8,11 @@
 #include <optional>
 #include <unordered_map>
 
-#include <sys/socket.h>
 
 #ifdef WIN32
 
 #elif defined(__linux__)
+#include <sys/socket.h>
 #include "pack_ipc.hpp"
 #endif
 
@@ -50,12 +50,10 @@ class MainProcess {
     ~MainProcess();
 };
 
-/*********************************************************************************/
-
 }; // namespace PDJE_IPC
 
 #ifdef WIN32
-#include "ipc_Send.tpp"
+#include "ipc_Send_Windows.tpp"
 #elif defined(__linux__)
 #include "ipc_Send_Linux.tpp"
 #endif

@@ -1,5 +1,5 @@
 #include "MainProcess.hpp"
-
+#include "ipc_util.hpp"
 namespace PDJE_IPC {
 
 static bool

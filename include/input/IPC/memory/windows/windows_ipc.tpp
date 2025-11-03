@@ -14,35 +14,25 @@
 #include <string>
 #include <vector>
 
+// evade lsp flag. disable red lines temporary. do not activate on build step.
+// #define EVADE_LSP
+
+#ifdef EVADE_LSP
+#include "ipc_shared_memory.hpp"
+#endif
+
 #define NOMINMAX
 #include <Windows.h>
 
 namespace PDJE_IPC {
 
 namespace fs              = std::filesystem;
-constexpr int PDJE_NO_IPC = 2;
-constexpr int PDJE_IPC_R  = 1;
-constexpr int PDJE_IPC_RW = 0;
 
-template <typename T, int MEM_PROT_FLAG> class SharedMem {
-  public:
-    SharedMem()
-    {
-        startlog();
-    }
 
-    SharedMem(const SharedMem &) = delete;
-    SharedMem &
-    operator=(const SharedMem &) = delete;
-
-    T *ptr = nullptr;
-
-    HANDLE memory_handle = nullptr;
-
-    uint64_t data_count = 0;
+template <typename T, int MEM_PROT_FLAG>
 
     bool
-    GetIPCSharedMemory(const fs::path &memfd_name)
+    SharedMem<T, MEM_PROT_FLAG>::GetIPCSharedMemory(const fs::path &memfd_name)
     {
 
         constexpr DWORD mapAccess =
@@ -60,9 +50,9 @@ template <typename T, int MEM_PROT_FLAG> class SharedMem {
         }
         return true;
     }
-
+template <typename T, int MEM_PROT_FLAG>
     bool
-    MakeIPCSharedMemory(const fs::path &memfd_name, const uint64_t count)
+    SharedMem<T, MEM_PROT_FLAG>::MakeIPCSharedMemory(const fs::path &memfd_name, const uint64_t count)
     {
         if (count == 0) {
             return false;
@@ -115,8 +105,8 @@ template <typename T, int MEM_PROT_FLAG> class SharedMem {
 
         return true;
     }
-
-    ~SharedMem()
+template <typename T, int MEM_PROT_FLAG>
+    SharedMem<T, MEM_PROT_FLAG>::~SharedMem()
     {
         if (MEM_PROT_FLAG == PDJE_NO_IPC) {
             if (ptr) {
@@ -132,6 +122,6 @@ template <typename T, int MEM_PROT_FLAG> class SharedMem {
             CloseHandle(memory_handle);
         }
     }
-};
+
 
 }; // namespace PDJE_IPC_UTILS
