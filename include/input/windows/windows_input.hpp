@@ -17,7 +17,9 @@
 
 #include "PDJE_Buffer.hpp"
 #include "PDJE_Input_DataLine.hpp"
-
+/********************
+ * DEPRECATED HEADER
+ */
 struct RawDeviceData {
     RID_DEVICE_INFO info{};
     std::wstring    deviceHIDPath;

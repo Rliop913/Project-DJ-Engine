@@ -1,6 +1,8 @@
 #pragma once
 #include "PDJE_LOG_SETTER.hpp"
 #include "ipc_shared_memory.hpp"
+#include "PDJE_Buffer.hpp"
+#include "PDJE_Input_DataLine.hpp"
 #include <filesystem>
 #include <functional>
 #include <httplib.h>
@@ -44,8 +46,31 @@ class MainProcess {
     SendIPCSharedMemory(const SharedMem<T, MEM_PROT_FLAG> &mem,
                         const std::string                 &mem_path,
                         const std::string                 &dataType);
+    template <typename T>
+                        bool
+    SendBufferArena(const PDJE_Buffer_Arena<T> &mem); //todo -impl
+    
+    std::vector<DeviceData> 
+    GetDevices();
+
+    bool
+    QueryConfig(const std::string& dumped_json){
+      auto res = cli->Post("/config", dumped_json, "application/json");
+      if(res->status == 200){
+        return true;
+      }
+      else{
+        critlog(res->body);
+        return false;
+      }
+    }
+
     bool
     EndTransmission();
+
+    bool
+    Kill();
+
     MainProcess(const int port);
     ~MainProcess();
 };

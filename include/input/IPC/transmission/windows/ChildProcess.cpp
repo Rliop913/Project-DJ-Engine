@@ -2,27 +2,15 @@
 #include "ipc_shared_memory.hpp"
 namespace PDJE_IPC {
 
-ChildProcess::ChildProcess()
-{
-    server.Get("/stop", [&](const httplib::Request &, httplib::Response &res) {
-        res.set_content("stopped", "text/plain");
-        EndTransmission();
-    });
-    server.Get("/health",
-               [&](const httplib::Request &, httplib::Response &res) {
-                   res.set_content("serverOK", "text/plain");
-                   // EndTransmission();
-               });
-}
-
 void
 ChildProcess::RunServer(const int port)
 {
     server.listen("127.0.0.1", port);
 }
 void
-ChildProcess::EndTransmission()
+ChildProcess::EndTransmission(const httplib::Request &, httplib::Response &res)
 {
+    res.set_content("stopped", "text/plain");
     server.stop();
 }
 }; // namespace PDJE_IPC

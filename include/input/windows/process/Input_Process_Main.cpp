@@ -10,6 +10,8 @@ int main(int argc, char const *argv[])
     auto port = std::stoi(argv[1]);
     std::cout << "open transmission on port " << argv[1] << std::endl;
     serv.RunServer(port);
+
+
     std::cout << "Ended Transmission on server" <<std::endl;
     return 0;
 }
