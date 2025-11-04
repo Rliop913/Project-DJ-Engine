@@ -24,11 +24,13 @@ Program Listing for File PDJE_Input_DataLine.hpp
        PDJE_Dev_Type    type;
        PDJE_Input_Event event;
        PDJE_HID_Event   hid_event;
-       std::string      id;
+       char      id[256];
+       char     name[256];
+       uint16_t id_len;
+       uint16_t name_len;
        uint64_t         microSecond;
    };
    
    struct PDJE_API PDJE_INPUT_DATA_LINE {
        PDJE_Buffer_Arena<PDJE_Input_Log>      *input_arena  = nullptr;
-       std::unordered_map<PDJE_ID, PDJE_NAME> *id_name_conv = nullptr;
    };

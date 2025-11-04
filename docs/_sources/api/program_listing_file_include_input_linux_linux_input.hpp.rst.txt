@@ -23,13 +23,11 @@ Program Listing for File linux_input.hpp
        PDJE_LINUX::PDJE_Socket socket;
    
      public:
-       ONE_SHOT_DEV_FUTURE config_data;
-       ONE_SHOT_SYNC       config_sync;
-       ONE_SHOT_RUN_FUTURE run_ok;
-       ONE_SHOT_SYNC       run_sync;
-   
        PDJE_INPUT_DATA_LINE
-       PullOutDataLine();
+       PullOutDataLine()
+       {
+           return {};
+       }
        bool
        kill()
        {

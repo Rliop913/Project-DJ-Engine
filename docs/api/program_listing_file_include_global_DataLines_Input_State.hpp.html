@@ -245,7 +245,7 @@
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_HID_Event</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hid_buffer</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">hid_buffer</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
 <span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w">             </span><span class="n">hid_byte_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -260,9 +260,6 @@
 <span class="w">    </span><span class="n">PDJE_Mouse_Event</span><span class="w">    </span><span class="n">mouse</span><span class="p">;</span>
 <span class="w">    </span><span class="n">PDJE_Keyboard_Event</span><span class="w"> </span><span class="n">keyboard</span><span class="p">;</span>
 <span class="p">};</span>
-
-<span class="k">using</span><span class="w"> </span><span class="n">ONE_SHOT_RUN_PROMISE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">promise</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;&gt;</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="n">ONE_SHOT_RUN_FUTURE</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;&gt;</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>

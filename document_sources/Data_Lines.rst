@@ -201,4 +201,4 @@ Input Data Line
 
     .. code-block:: gdscript
 
-        #no impl
+        #see Input Engine document.

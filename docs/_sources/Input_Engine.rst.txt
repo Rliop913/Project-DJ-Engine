@@ -2,7 +2,7 @@ Input_Engine
 ======================
 
 .. warning:: 
-    Current project version is now on 0.7.x.
+    Current project version is now on 0.6.x.
 
     Currently only Windows implementation is supported.
 
@@ -83,18 +83,35 @@ Usage
 
     .. code-block:: gdscript
 
-        var pdjeinput:PDJE_Input_Module = PDJE_Input_Module.new()
-        pdjeinput.Init()
-        var devs:Array = pdjeinput.GetDevs()
-        print(devs)
-        Config(devs)
-        var input_line:InputLine = pdjeinput.PullOutDataLine()
-        pdjeinput.Run()
+    .. code-block:: gdscript
 
-        #after use
+        #with InputLine Node
+        
+    .. code-block:: gdscript
+        
+        extends Node
+        var IM:PDJE_Input_Module
 
-        pdjeinput.Kill()
+        func _ready():
+            IM = PDJE_Input_Module.new()
+            IM.Init()
+            var configlist:Array
+            for i in dev:
+                if i["type"] == "KEYBOARD":
+                    configlist.push_back(i)
+            
+            IM.InitializeInputLine($InputLine)#connect InputLine Node. you can find it in "Add Child Node" tab
+            IM.Run()
 
-see you soon.
+        func _process():
+            $InputLine.emit_input_signal()
+
+        #connect this function with InputLine Node. you can find it in the signals tab. beside the inspector tab.
+        func _on_input_line_pdje_input_keyboard_signal(device_id:String, device_name:String, microsecond_string:String, keyboard_key:int, isPressed:bool):
+            print(device_id, device_name, microsecond_string)
+        
+        
+        #IM.Kill()#use kill function to deactivate input module. use after game stage.
+
 
 To use PDJE without Input Engine module, use :doc:`/Data_Lines`.

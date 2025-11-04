@@ -3,7 +3,7 @@
 Function NormalizeNt
 ====================
 
-- Defined in :ref:`file_include_input_windows_dev_path_to_name.hpp`
+- Defined in :ref:`file_include_input_IPC_transmission_windows_dev_path_to_name.hpp`
 
 
 Function Documentation

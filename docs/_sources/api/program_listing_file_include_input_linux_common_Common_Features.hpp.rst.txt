@@ -164,13 +164,4 @@ Program Listing for File Common_Features.hpp
            return std::vector<std::string>();
        }
    }
-   
-   // void
-   // TOCTOU_DODGE()
-   // {
-   //     // todo- impl
-   //     // impl with hash compare - random re-compare + random fake execution +
-   //     // random sleep time
-   // }
-   
    }; // namespace Common_Features

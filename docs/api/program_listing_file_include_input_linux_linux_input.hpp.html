@@ -96,15 +96,13 @@
 <span class="w">    </span><span class="n">PDJE_LINUX</span><span class="o">::</span><span class="n">PDJE_Socket</span><span class="w"> </span><span class="n">socket</span><span class="p">;</span>
 
 <span class="w">  </span><span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="n">ONE_SHOT_DEV_FUTURE</span><span class="w"> </span><span class="n">config_data</span><span class="p">;</span>
-<span class="w">    </span><span class="n">ONE_SHOT_SYNC</span><span class="w">       </span><span class="n">config_sync</span><span class="p">;</span>
-<span class="w">    </span><span class="n">ONE_SHOT_RUN_FUTURE</span><span class="w"> </span><span class="n">run_ok</span><span class="p">;</span>
-<span class="w">    </span><span class="n">ONE_SHOT_SYNC</span><span class="w">       </span><span class="n">run_sync</span><span class="p">;</span>
-
 <span class="w">    </span><span class="n">PDJE_INPUT_DATA_LINE</span>
-<span class="w">    </span><span class="nf">PullOutDataLine</span><span class="p">();</span>
+<span class="w">    </span><span class="n">PullOutDataLine</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="nf">kill</span><span class="p">()</span>
+<span class="w">    </span><span class="n">kill</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// todo- impl this</span>

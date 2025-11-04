@@ -995,17 +995,18 @@ Delete line
         for delete_target in edited_data["noteDatas"]:
             var target = PDJE_EDITOR_ARG.new()
             target.InitNoteArg(
-                delete_target["Note_Type"],
-                delete_target["Note_Detail"],
+                delete_target["note_type"],
+                delete_target["note_detail"],
                 delete_target["first"],
                 delete_target["second"],
                 delete_target["third"],
                 delete_target["beat"],
                 delete_target["subBeat"],
                 delete_target["separate"],
-                delete_target["Ebeat"],
-                delete_target["EsubBeat"],
-                delete_target["Eseparate"],
+                delete_target["e_beat"],
+                delete_target["e_subBeat"],
+                delete_target["e_separate"],
+                delete_target["rail_id"],
                 )
             editor.deleteLine(target, false, false)
 
@@ -1334,5 +1335,5 @@ Editor Step-4: playback editing project
     .. code-block:: gdscript
 
         editor.demoPlayInit(48, "track title")
-        var demoplayer = engine.GetPlayer()
+        var demoplayer = engine.GetPlayerdd()
         demoplayer.Activate()

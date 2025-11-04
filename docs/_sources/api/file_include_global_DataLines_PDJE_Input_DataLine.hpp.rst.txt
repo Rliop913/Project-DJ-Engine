@@ -46,11 +46,13 @@ Included By
 -----------
 
 
+- :ref:`file_include_input_IPC_transmission_ChildProcess.hpp`
+
+- :ref:`file_include_input_IPC_transmission_MainProcess.hpp`
+
 - :ref:`file_include_input_PDJE_Input.hpp`
 
 - :ref:`file_include_input_linux_linux_input.hpp`
-
-- :ref:`file_include_input_windows_windows_input.hpp`
 
 - :ref:`file_include_judge_Init_PDJE_Judge_Init.hpp`
 

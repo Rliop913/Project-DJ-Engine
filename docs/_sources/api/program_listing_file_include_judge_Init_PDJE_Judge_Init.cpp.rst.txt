@@ -33,8 +33,7 @@ Program Listing for File PDJE_Judge_Init.cpp
    void
    Judge_Init::SetInputLine(const PDJE_INPUT_DATA_LINE &_inputline)
    {
-       if (_inputline.input_arena != nullptr &&
-           _inputline.id_name_conv != nullptr) {
+       if (_inputline.input_arena != nullptr) {
            inputline = _inputline;
        }
    }
@@ -42,7 +41,7 @@ Program Listing for File PDJE_Judge_Init.cpp
    void
    Judge_Init::SetInputRule(const INPUT_CONFIG &device_config)
    {
-       if(device_config.Device_ID == ""){
+       if (device_config.Device_ID == "") {
            return;
        }
        INPUT_RULE rule{ .Device_ID  = device_config.Device_ID,
@@ -119,7 +118,7 @@ Program Listing for File PDJE_Judge_Init.cpp
            } else {
                DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
                std::cout << "push mouse, " << micro_Y1 << ", " << micro_Y2
-                     << std::endl;
+                         << std::endl;
            }
            break;
        case PDJE_Dev_Type::MIDI:

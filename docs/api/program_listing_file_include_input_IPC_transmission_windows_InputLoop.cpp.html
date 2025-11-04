@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File InputLoop.cpp &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File InputLoop.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_include_input_IPC_transmission_windows_InputLoop.cpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-inputloop-cpp">
+<span id="program-listing-file-include-input-ipc-transmission-windows-inputloop-cpp"></span><h1>Program Listing for File InputLoop.cpp<a class="headerlink" href="#program-listing-for-file-inputloop-cpp" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file_include_input_IPC_transmission_windows_InputLoop.cpp.html#file-include-input-ipc-transmission-windows-inputloop-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/input/IPC/transmission/windows/InputLoop.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ChildProcess.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Windows.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bitset&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;windows_keyboard_fill.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ListDevice.hpp&quot;</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_IPC</span><span class="p">{</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="o">*</span>
+<span class="w">    </span><span class="nf">ChildProcess::Init</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="n">HINSTANCE</span><span class="w"> </span><span class="n">hst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetModuleHandleW</span><span class="p">(</span><span class="k">nullptr</span><span class="p">);</span>
+<span class="w">    </span><span class="n">WNDCLASSW</span><span class="w"> </span><span class="n">wc</span><span class="p">{};</span>
+<span class="w">    </span><span class="n">wc</span><span class="p">.</span><span class="n">lpfnWndProc</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">DefWindowProc</span><span class="p">;</span>
+<span class="w">    </span><span class="n">wc</span><span class="p">.</span><span class="n">hInstance</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">hst</span><span class="p">;</span>
+<span class="w">    </span><span class="n">wc</span><span class="p">.</span><span class="n">lpszClassName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sa">L</span><span class="s">&quot;PDJE_Invisible_RawInput_Worker&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">RegisterClassW</span><span class="p">(</span><span class="o">&amp;</span><span class="n">wc</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">CreateWindowExW</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">wc</span><span class="p">.</span><span class="n">lpszClassName</span><span class="p">,</span>
+<span class="w">                           </span><span class="sa">L</span><span class="s">&quot;&quot;</span><span class="p">,</span>
+<span class="w">                           </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                           </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                           </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                           </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                           </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">HWND_MESSAGE</span><span class="p">,</span>
+<span class="w">                           </span><span class="k">nullptr</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">hst</span><span class="p">,</span>
+<span class="w">                           </span><span class="k">nullptr</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="kt">void</span>
+<span class="w">    </span><span class="nf">ChildProcess::Run</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+
+<span class="w">    </span><span class="n">MSG</span><span class="w"> </span><span class="n">msg</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">DWORD</span><span class="w">                                               </span><span class="n">w</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UINT</span><span class="w">                                                </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint64_t</span><span class="w">                                            </span><span class="n">now</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_Dev_Type</span><span class="w">                                       </span><span class="n">dtype</span><span class="p">;</span>
+<span class="w">    </span><span class="k">thread_local</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">unsynchronized_pool_resource</span><span class="w"> </span><span class="n">mono_arena</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">                                         </span><span class="n">handlestr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">namestr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_Input_Event</span><span class="w">                                    </span><span class="n">tempEv</span><span class="p">;</span>
+<span class="w">    </span><span class="n">handlestr</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="w">    </span><span class="n">PDJE_HID_Event</span><span class="w">   </span><span class="n">hidEv</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">102</span><span class="o">&gt;</span><span class="w"> </span><span class="n">isPressed</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">             </span><span class="n">Writable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">killer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](){</span>
+<span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">spinlock_run</span><span class="o">-&gt;</span><span class="n">ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">){</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">500</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">PostThreadMessageW</span><span class="p">(</span><span class="n">ThreadID</span><span class="p">,</span><span class="w"> </span><span class="n">WM_QUIT</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="n">PDJE_Input_Log</span><span class="w"> </span><span class="n">cachedLog</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">            </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MsgWaitForMultipleObjectsEx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                                            </span><span class="k">nullptr</span><span class="p">,</span>
+<span class="w">                                            </span><span class="n">INFINITE</span><span class="p">,</span>
+<span class="w">                                            </span><span class="n">QS_RAWINPUT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">QS_POSTMESSAGE</span><span class="p">,</span>
+<span class="w">                                            </span><span class="n">MWMO_INPUTAVAILABLE</span><span class="w"> </span><span class="o">|</span>
+<span class="w">                                                </span><span class="n">MWMO_ALERTABLE</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">w</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">WAIT_OBJECT_0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">PeekMessageW</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="n">WM_QUIT</span><span class="p">,</span><span class="w"> </span><span class="n">WM_QUIT</span><span class="p">,</span><span class="w"> </span><span class="n">PM_REMOVE</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">PeekMessageW</span><span class="p">(</span>
+<span class="w">                    </span><span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="n">WM_INPUT</span><span class="p">,</span><span class="w"> </span><span class="n">WM_INPUT</span><span class="p">,</span><span class="w"> </span><span class="n">PM_REMOVE</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">Writable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">                    </span><span class="n">now</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">timer</span><span class="p">.</span><span class="n">Get_MicroSecond</span><span class="p">();</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">GetRawInputData</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">HRAWINPUT</span><span class="o">&gt;</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">lParam</span><span class="p">),</span>
+<span class="w">                                        </span><span class="n">RID_INPUT</span><span class="p">,</span>
+<span class="w">                                        </span><span class="k">nullptr</span><span class="p">,</span>
+<span class="w">                                        </span><span class="o">&amp;</span><span class="n">size</span><span class="p">,</span>
+<span class="w">                                        </span><span class="k">sizeof</span><span class="p">(</span><span class="n">RAWINPUTHEADER</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span>
+<span class="w">                        </span><span class="n">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">BYTE</span><span class="o">&gt;</span><span class="w"> </span><span class="n">buf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mono_arena</span><span class="p">);</span>
+<span class="w">                    </span><span class="n">buf</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">GetRawInputData</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">HRAWINPUT</span><span class="o">&gt;</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">lParam</span><span class="p">),</span>
+<span class="w">                                        </span><span class="n">RID_INPUT</span><span class="p">,</span>
+<span class="w">                                        </span><span class="n">buf</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span>
+<span class="w">                                        </span><span class="o">&amp;</span><span class="n">size</span><span class="p">,</span>
+<span class="w">                                        </span><span class="k">sizeof</span><span class="p">(</span><span class="n">RAWINPUTHEADER</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">RAWINPUT</span><span class="w"> </span><span class="o">*</span><span class="n">ri</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                        </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">RAWINPUT</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">buf</span><span class="p">.</span><span class="n">data</span><span class="p">());</span>
+
+<span class="w">                    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">header</span><span class="p">.</span><span class="n">dwType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">case</span><span class="w"> </span><span class="no">RIM_TYPEMOUSE</span><span class="p">:</span>
+<span class="w">                        </span><span class="n">dtype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">MOUSE</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">PDJE_RAWINPUT</span><span class="o">::</span><span class="n">FillMouseInput</span><span class="p">(</span><span class="n">tempEv</span><span class="p">,</span><span class="w"> </span><span class="n">ri</span><span class="p">);</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">case</span><span class="w"> </span><span class="no">RIM_TYPEKEYBOARD</span><span class="p">:</span>
+<span class="w">                        </span><span class="n">dtype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">KEYBOARD</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">PDJE_RAWINPUT</span><span class="o">::</span><span class="n">FillKeyboardInput</span><span class="p">(</span><span class="n">tempEv</span><span class="p">,</span><span class="w"> </span><span class="n">ri</span><span class="p">);</span>
+<span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isPressed</span><span class="p">.</span><span class="n">test</span><span class="p">(</span><span class="n">tempEv</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">                            </span><span class="n">tempEv</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">pressed</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="n">Writable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="n">isPressed</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="n">tempEv</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">k</span><span class="p">,</span>
+<span class="w">                                          </span><span class="n">tempEv</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">pressed</span><span class="p">);</span>
+<span class="w">                        </span><span class="p">}</span>
+
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">case</span><span class="w"> </span><span class="no">RIM_TYPEHID</span><span class="p">:</span>
+<span class="w">                        </span><span class="n">dtype</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">HID</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">PDJE_RAWINPUT</span><span class="o">::</span><span class="n">FillHIDInput</span><span class="p">(</span><span class="w"> </span><span class="n">hidEv</span><span class="p">.</span><span class="n">hid_buffer</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">ri</span><span class="p">,</span><span class="w"> </span><span class="n">hidEv</span><span class="p">.</span><span class="n">hid_byte_size</span><span class="p">);</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">                        </span><span class="n">dtype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">UNKNOWN</span><span class="p">;</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="n">handlestr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span>
+<span class="w">                        </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">uintptr_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">header</span><span class="p">.</span><span class="n">hDevice</span><span class="p">));</span>
+
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">unlisted_targets</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">id_name</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">handlestr</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">                            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">GetRawInputDeviceInfoW</span><span class="p">(</span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">header</span><span class="p">.</span><span class="n">hDevice</span><span class="p">,</span>
+<span class="w">                                                       </span><span class="n">RIDI_DEVICENAME</span><span class="p">,</span>
+<span class="w">                                                       </span><span class="k">nullptr</span><span class="p">,</span>
+<span class="w">                                                       </span><span class="o">&amp;</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">(</span><span class="n">UINT</span><span class="p">)</span><span class="mi">-1</span><span class="w"> </span><span class="o">||</span>
+<span class="w">                                </span><span class="n">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                </span><span class="n">std</span><span class="o">::</span><span class="n">wstring</span><span class="w"> </span><span class="n">path</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="sa">L</span><span class="sc">&#39;\0&#39;</span><span class="p">);</span>
+<span class="w">                                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">GetRawInputDeviceInfoW</span><span class="p">(</span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">header</span><span class="p">.</span><span class="n">hDevice</span><span class="p">,</span>
+<span class="w">                                                           </span><span class="n">RIDI_DEVICENAME</span><span class="p">,</span>
+<span class="w">                                                           </span><span class="n">path</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span>
+<span class="w">                                                           </span><span class="o">&amp;</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">(</span><span class="n">UINT</span><span class="p">)</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">path</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">back</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sa">L</span><span class="sc">&#39;\0&#39;</span><span class="p">)</span>
+<span class="w">                                        </span><span class="n">path</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+<span class="w">                                    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">device_path</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                                        </span><span class="n">wstring_to_utf8_nt</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+<span class="w">                                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">unlisted_targets</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span>
+<span class="w">                                            </span><span class="n">device_path</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                        </span><span class="n">id_name</span><span class="p">[</span><span class="n">handlestr</span><span class="p">]</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                                            </span><span class="n">unlisted_targets</span><span class="p">[</span><span class="n">device_path</span><span class="p">];</span>
+<span class="w">                                        </span><span class="n">unlisted_targets</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">device_path</span><span class="p">);</span>
+<span class="w">                                    </span><span class="p">}</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Writable</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtype</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tempEv</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">hid_event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hidEv</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">id_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">handlestr</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">handlestr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">                        </span><span class="n">memcpy</span><span class="p">(</span><span class="n">cachedLog</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">handlestr</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">cachedLog</span><span class="p">.</span><span class="n">id_len</span><span class="p">));</span>
+<span class="w">                        </span><span class="n">namestr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id_name</span><span class="p">[</span><span class="n">handlestr</span><span class="p">];</span>
+<span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">name_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">namestr</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">namestr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">                        </span><span class="n">memcpy</span><span class="p">(</span><span class="n">cachedLog</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">namestr</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">cachedLog</span><span class="p">.</span><span class="n">name_len</span><span class="p">));</span>
+<span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">microSecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">input_buffer</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">(</span><span class="n">cachedLog</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">PeekMessageW</span><span class="p">(</span><span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">WM_QUIT</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">PM_REMOVE</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">PeekMessageW</span><span class="p">(</span>
+<span class="w">                    </span><span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="n">WM_QUIT</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mh">0xFFFF</span><span class="p">,</span><span class="w"> </span><span class="n">PM_REMOVE</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;runtime err. what: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">killer</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

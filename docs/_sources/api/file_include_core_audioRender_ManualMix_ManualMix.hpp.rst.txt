@@ -60,7 +60,7 @@ Includes
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
 
-- ``memory``
+- ``memory`` (:ref:`file_include_input_IPC_memory_ipc_shared_memory.hpp`)
 
 - ``musicDB.hpp`` (:ref:`file_include_core_db_musicDB.hpp`)
 

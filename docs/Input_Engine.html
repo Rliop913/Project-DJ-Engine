@@ -111,7 +111,7 @@
 <h1>Input_Engine<a class="headerlink" href="#input-engine" title="Link to this heading"></a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Current project version is now on 0.7.x.</p>
+<p>Current project version is now on 0.6.x.</p>
 <p>Currently only Windows implementation is supported.</p>
 </div>
 <section id="usage">
@@ -210,22 +210,47 @@ PYTHON</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-3">
 GDSCRIPT</label><div class="sd-tab-content docutils">
-<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">pdjeinput</span><span class="p">:</span><span class="n">PDJE_Input_Module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Input_Module</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-<span class="n">pdjeinput</span><span class="o">.</span><span class="n">Init</span><span class="p">()</span>
-<span class="k">var</span><span class="w"> </span><span class="n">devs</span><span class="p">:</span><span class="nb nb-Type">Array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pdjeinput</span><span class="o">.</span><span class="n">GetDevs</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">devs</span><span class="p">)</span>
-<span class="n">Config</span><span class="p">(</span><span class="n">devs</span><span class="p">)</span>
-<span class="k">var</span><span class="w"> </span><span class="n">input_line</span><span class="p">:</span><span class="n">InputLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pdjeinput</span><span class="o">.</span><span class="n">PullOutDataLine</span><span class="p">()</span>
-<span class="n">pdjeinput</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-4">
+GDSCRIPT</label><div class="sd-tab-content docutils">
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="c1">#with InputLine Node</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-5">
+GDSCRIPT</label><div class="sd-tab-content docutils">
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">extends</span><span class="w"> </span><span class="n">Node</span>
+<span class="k">var</span><span class="w"> </span><span class="n">IM</span><span class="p">:</span><span class="n">PDJE_Input_Module</span>
 
-<span class="c1">#after use</span>
+<span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
+<span class="w">    </span><span class="n">IM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Input_Module</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="w">    </span><span class="n">IM</span><span class="o">.</span><span class="n">Init</span><span class="p">()</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">configlist</span><span class="p">:</span><span class="nb nb-Type">Array</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">dev</span><span class="p">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;KEYBOARD&quot;</span><span class="p">:</span>
+<span class="w">            </span><span class="n">configlist</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
-<span class="n">pdjeinput</span><span class="o">.</span><span class="n">Kill</span><span class="p">()</span>
+<span class="w">    </span><span class="n">IM</span><span class="o">.</span><span class="n">InitializeInputLine</span><span class="p">(</span><span class="o">$</span><span class="n">InputLine</span><span class="p">)</span><span class="c1">#connect InputLine Node. you can find it in &quot;Add Child Node&quot; tab</span>
+<span class="w">    </span><span class="n">IM</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+
+<span class="k">func</span><span class="w"> </span><span class="n">_process</span><span class="p">():</span>
+<span class="w">    </span><span class="o">$</span><span class="n">InputLine</span><span class="o">.</span><span class="n">emit_input_signal</span><span class="p">()</span>
+
+<span class="c1">#connect this function with InputLine Node. you can find it in the signals tab. beside the inspector tab.</span>
+<span class="k">func</span><span class="w"> </span><span class="n">_on_input_line_pdje_input_keyboard_signal</span><span class="p">(</span><span class="n">device_id</span><span class="p">:</span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">device_name</span><span class="p">:</span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">microsecond_string</span><span class="p">:</span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">keyboard_key</span><span class="p">:</span><span class="nb nb-Type">int</span><span class="p">,</span><span class="w"> </span><span class="n">isPressed</span><span class="p">:</span><span class="nb nb-Type">bool</span><span class="p">):</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">device_name</span><span class="p">,</span><span class="w"> </span><span class="n">microsecond_string</span><span class="p">)</span>
+
+
+<span class="c1">#IM.Kill()#use kill function to deactivate input module. use after game stage.</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>see you soon.</p>
 <p>To use PDJE without Input Engine module, use <a class="reference internal" href="Data_Lines.html"><span class="doc">Data_Lines</span></a>.</p>
 </section>
 </section>

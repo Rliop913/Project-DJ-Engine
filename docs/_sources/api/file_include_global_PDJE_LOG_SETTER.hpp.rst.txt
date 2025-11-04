@@ -129,9 +129,13 @@ Included By
 
 - :ref:`file_include_global_DataLines_fileNameSanitizer.cpp`
 
-- :ref:`file_include_input_PDJE_Input.cpp`
+- :ref:`file_include_input_IPC_common_ipc_util.hpp`
 
-- :ref:`file_include_input_windows_windows_input.cpp`
+- :ref:`file_include_input_IPC_memory_ipc_shared_memory.hpp`
+
+- :ref:`file_include_input_IPC_transmission_MainProcess.hpp`
+
+- :ref:`file_include_input_PDJE_Input.cpp`
 
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.cpp`
 

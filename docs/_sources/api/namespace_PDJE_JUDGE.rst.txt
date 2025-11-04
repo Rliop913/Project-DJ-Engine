@@ -27,6 +27,8 @@ Classes
 
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1Judge__Loop_1_1mouse__btn__event`
 
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1Judge__Loop_1_1Queues`
+
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas`
 
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1NOTE`

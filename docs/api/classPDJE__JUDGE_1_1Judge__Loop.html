@@ -93,11 +93,15 @@
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__HID__Event.html">Struct PDJE_HID_Event</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__INPUT__DATA__LINE.html">Struct PDJE_INPUT_DATA_LINE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Input__Log.html">Struct PDJE_Input_Log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IPC_1_1Importants.html">Struct Importants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IPC_1_1IPC__SHM__LINUX.html">Template Struct IPC_SHM_LINUX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IPC_1_1RawDeviceData.html">Struct RawDeviceData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1Custom__Events.html">Struct Custom_Events</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1EVENT__RULE.html">Struct EVENT_RULE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1INPUT__CONFIG.html">Struct INPUT_CONFIG</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1INPUT__RULE.html">Struct INPUT_RULE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1Judge__Loop_1_1mouse__btn__event.html">Struct Judge_Loop::mouse_btn_event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1Judge__Loop_1_1Queues.html">Struct Judge_Loop::Queues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas.html">Struct Judge_Loop::useDatas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1NOTE.html">Struct NOTE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1NOTE__ITR.html">Struct NOTE_ITR</a></li>
@@ -105,7 +109,6 @@
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Mouse__Event.html">Struct PDJE_Mouse_Event</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPlayPosition.html">Struct PlayPosition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPosition.html">Struct Position</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structRawDeviceData.html">Struct RawDeviceData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structRT__ID.html">Struct RT_ID</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structstd_1_1hash_3_01PDJE__JUDGE_1_1INPUT__RULE_01_4.html">Template Struct hash&lt; PDJE_JUDGE::INPUT_RULE &gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structstmt.html">Struct stmt</a></li>
@@ -163,6 +166,9 @@
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__GitHandler.html">Class PDJE_GitHandler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__HIGHRES__CLOCK_1_1CLOCK.html">Class CLOCK</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Input.html">Class PDJE_Input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__IPC_1_1ChildProcess.html">Class ChildProcess</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__IPC_1_1MainProcess.html">Class MainProcess</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__IPC_1_1SharedMem.html">Template Class SharedMem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JSONHandler.html">Template Class PDJE_JSONHandler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JUDGE_1_1JUDGE.html">Class JUDGE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JUDGE_1_1Judge__Init.html">Class Judge_Init</a></li>
@@ -235,6 +241,7 @@
 <section id="nested-types">
 <h3>Nested Types<a class="headerlink" href="#nested-types" title="Link to this heading"></a></h3>
 <ul class="simple">
+<li><p><a class="reference internal" href="structPDJE__JUDGE_1_1Judge__Loop_1_1Queues.html#exhale-struct-structpdje-judge-1-1judge-loop-1-1queues"><span class="std std-ref">Struct Judge_Loop::Queues</span></a></p></li>
 <li><p><a class="reference internal" href="structPDJE__JUDGE_1_1Judge__Loop_1_1mouse__btn__event.html#exhale-struct-structpdje-judge-1-1judge-loop-1-1mouse-btn-event"><span class="std std-ref">Struct Judge_Loop::mouse_btn_event</span></a></p></li>
 <li><p><a class="reference internal" href="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas.html#exhale-struct-structpdje-judge-1-1judge-loop-1-1usedatas"><span class="std std-ref">Struct Judge_Loop::useDatas</span></a></p></li>
 </ul>
@@ -293,16 +300,6 @@
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N10PDJE_JUDGE10Judge_Loop17miss_event_threadE">
 <span id="_CPPv3N10PDJE_JUDGE10Judge_Loop17miss_event_threadE"></span><span id="_CPPv2N10PDJE_JUDGE10Judge_Loop17miss_event_threadE"></span><span id="PDJE_JUDGE::Judge_Loop::miss_event_thread__std::optional:std::thread:"></span><span class="target" id="classPDJE__JUDGE_1_1Judge__Loop_1a299d1149ed378146f507f247cadbed31"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">optional</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">thread</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">miss_event_thread</span></span></span><a class="headerlink" href="#_CPPv4N10PDJE_JUDGE10Judge_Loop17miss_event_threadE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N10PDJE_JUDGE10Judge_Loop10miss_queueE">
-<span id="_CPPv3N10PDJE_JUDGE10Judge_Loop10miss_queueE"></span><span id="_CPPv2N10PDJE_JUDGE10Judge_Loop10miss_queueE"></span><span id="PDJE_JUDGE::Judge_Loop::miss_queue__PDJE_Buffer_Arena:std::unordered_map:uint64_t.NOTE_VEC::"></span><span class="target" id="classPDJE__JUDGE_1_1Judge__Loop_1a4ac3087e2b0b08ae4f4e809218701906"></span><a class="reference internal" href="classPDJE__Buffer__Arena.html#_CPPv4I0E17PDJE_Buffer_Arena" title="PDJE_Buffer_Arena"><span class="n"><span class="pre">PDJE_Buffer_Arena</span></span></a><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">unordered_map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">uint64_t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="typedef_namespacePDJE__JUDGE_1ad8c8d340702b0759a8cecb53091de1e0.html#_CPPv4N10PDJE_JUDGE8NOTE_VECE" title="PDJE_JUDGE::NOTE_VEC"><span class="n"><span class="pre">NOTE_VEC</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">miss_queue</span></span></span><a class="headerlink" href="#_CPPv4N10PDJE_JUDGE10Judge_Loop10miss_queueE" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N10PDJE_JUDGE10Judge_Loop9use_queueE">
-<span id="_CPPv3N10PDJE_JUDGE10Judge_Loop9use_queueE"></span><span id="_CPPv2N10PDJE_JUDGE10Judge_Loop9use_queueE"></span><span id="PDJE_JUDGE::Judge_Loop::use_queue__PDJE_Buffer_Arena:useDatas:"></span><span class="target" id="classPDJE__JUDGE_1_1Judge__Loop_1a077d4b0809582d5df2c279ae3739fae8"></span><a class="reference internal" href="classPDJE__Buffer__Arena.html#_CPPv4I0E17PDJE_Buffer_Arena" title="PDJE_Buffer_Arena"><span class="n"><span class="pre">PDJE_Buffer_Arena</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas.html#_CPPv4N10PDJE_JUDGE10Judge_Loop8useDatasE" title="PDJE_JUDGE::Judge_Loop::useDatas"><span class="n"><span class="pre">useDatas</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">use_queue</span></span></span><a class="headerlink" href="#_CPPv4N10PDJE_JUDGE10Judge_Loop9use_queueE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">

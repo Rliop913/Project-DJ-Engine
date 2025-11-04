@@ -97,13 +97,15 @@
 <span class="w">    </span><span class="n">PDJE_Dev_Type</span><span class="w">    </span><span class="n">type</span><span class="p">;</span>
 <span class="w">    </span><span class="n">PDJE_Input_Event</span><span class="w"> </span><span class="n">event</span><span class="p">;</span>
 <span class="w">    </span><span class="n">PDJE_HID_Event</span><span class="w">   </span><span class="n">hid_event</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">      </span><span class="n">id</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w">      </span><span class="n">id</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">char</span><span class="w">     </span><span class="n">name</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">id_len</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">name_len</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">uint64_t</span><span class="w">         </span><span class="n">microSecond</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">PDJE_INPUT_DATA_LINE</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">PDJE_Buffer_Arena</span><span class="o">&lt;</span><span class="n">PDJE_Input_Log</span><span class="o">&gt;</span><span class="w">      </span><span class="o">*</span><span class="n">input_arena</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">PDJE_ID</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_NAME</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">id_name_conv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></div>
 </div>
