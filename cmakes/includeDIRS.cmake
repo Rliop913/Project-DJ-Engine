@@ -70,7 +70,6 @@ ${PDJE_INCLUDE_ROOT}/include/judge
 ${PDJE_INCLUDE_ROOT}/include/judge/NoteOBJ
 ${PDJE_INCLUDE_ROOT}/include/judge/Init
 ${PDJE_INCLUDE_ROOT}/include/judge/Loop
-${PDJE_INCLUDE_ROOT}/include/global/Process
 ${CAPNPC_OUTPUT_DIR}/third_party/Capnp
 )
 
