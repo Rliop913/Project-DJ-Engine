@@ -196,11 +196,9 @@ ChildProcess::LoopTrig()
         }
     
     Run();
-        std::cout << "reached end run" <<std::endl;
     if (task){
         AvRevertMmThreadCharacteristics(task);
     }
-std::cout << "reached return" <<std::endl;
     return;
 }
 
