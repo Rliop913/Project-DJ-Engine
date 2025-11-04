@@ -20,8 +20,8 @@ elseif(APPLE)
 else()
     set(PDJE_OS_INPUT_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/PDJE_Input.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/linux_input.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/socket/linux_socket.cpp
+        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/linux_input.cpp
+        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/socket/linux_socket.cpp
         )
         
     set(PDJE_INPUT_PROCESS_SRC

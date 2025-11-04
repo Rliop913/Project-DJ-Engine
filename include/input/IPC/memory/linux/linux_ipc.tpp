@@ -29,7 +29,8 @@ namespace PDJE_IPC {
 // template <typename T, int MEM_PROT_FLAG> class SharedMem
 template <typename T, int MEM_PROT_FLAG>
 bool
-SharedMem<T, MEM_PROT_FLAG>::GetIPCSharedMemory(const fs::path &memfd_name)
+SharedMem<T, MEM_PROT_FLAG>::GetIPCSharedMemory(const fs::path &memfd_name,
+                                                const uint64_t  count)
 {
 
     return false; // todo -impl

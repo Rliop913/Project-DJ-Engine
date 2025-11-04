@@ -13,18 +13,16 @@ template <typename T>
 bool
 MainProcess::SendBufferArena(const PDJE_Buffer_Arena<T> &mem)
 {
- if(!cli){
-    critlog("mainprocess is not initialized.");
-    return false;
- }
+    if (!cli) {
+        critlog("mainprocess is not initialized.");
+        return false;
+    }
     nj j;
     j["PATH"]     = mem.ID;
     j["DATATYPE"] = "input_buffer";
     j["COUNT"]    = mem.BUFFER_COUNT;
-    auto res = cli->Post("/shmem", j.dump(), "application/json");
-    
+    auto res      = cli->Post("/shmem", j.dump(), "application/json");
 }
-
 
 template <typename T, int MEM_PROT_FLAG>
 bool
@@ -48,7 +46,7 @@ MainProcess::SendIPCSharedMemory(const SharedMem<T, MEM_PROT_FLAG> &mem,
         if (res->status / 100 == 2) {
 
             auto shmem_share = IPC_SHM_LINUX(mem);
-            auto send_res    = sendmsg(imp.child_fd, shmem_share.msg, 0);
+            auto send_res    = sendmsg(imp.child_fd, &shmem_share.msg, 0);
             if (send_res != 0) {
                 critlog("failed to send shared memory fd in linux socket "
                         "protocol.");
@@ -64,4 +62,5 @@ MainProcess::SendIPCSharedMemory(const SharedMem<T, MEM_PROT_FLAG> &mem,
         }
     }
 }
+
 }; // namespace PDJE_IPC

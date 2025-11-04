@@ -1,9 +1,12 @@
 #pragma once
 #include "ChildProcess.hpp"
 #include "dev_path_to_name.hpp"
-namespace PDJE_IPC{
-static
-std::vector<RawDeviceData>
+namespace PDJE_IPC {
+struct RawDeviceData {
+    RID_DEVICE_INFO info{};
+    std::wstring    deviceHIDPath;
+};
+static std::vector<RawDeviceData>
 getRawDeviceDatas()
 {
     UINT num = 0;
@@ -90,12 +93,11 @@ wstring_to_utf8_nt(const std::wstring &w)
     return out;
 }
 
-static
-std::string
+static std::string
 hid_label_from_path(const std::wstring &path)
 {
     auto name = GetFriendlyNameFromHidPath(path);
     return wstring_to_utf8_nt(name);
 }
 
-};
+}; // namespace PDJE_IPC
