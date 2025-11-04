@@ -18,7 +18,7 @@ PDJE_OpenProcess(const fs::path &pt, Importants &imps, const int port)
                                  nullptr,
                                  nullptr,
                                  FALSE,
-                                 0,
+                                 CREATE_NO_WINDOW,
                                  nullptr,
                                  nullptr,
                                  &imps.start_up_info,
