@@ -84,6 +84,7 @@ Program Listing for File PDJE_Judge_Loop.cpp
    bool
    Judge_Loop::PreProcess()
    {
+   
        input_log = init_datas->inputline->input_arena->Get();
        Cached.synced_data =
            init_datas->coreline->syncD->load(std::memory_order_acquire);
@@ -93,7 +94,7 @@ Program Listing for File PDJE_Judge_Loop.cpp
        Cached.global_local_diff =
            Cached.synced_data.microsecond - Cached.local_microsecond_position;
    
-       if (input_log->empty()) {
+       if (input_log.second == 0) {
    
            Cached.cut_range =
                Cached.local_microsecond_position <
@@ -106,9 +107,9 @@ Program Listing for File PDJE_Judge_Loop.cpp
        }
    
        Cached.log_begin =
-           input_log->front().microSecond < Cached.global_local_diff
+           input_log.first[0].microSecond < Cached.global_local_diff
                ? 0
-               : input_log->front().microSecond - Cached.global_local_diff;
+               : input_log.first[0].microSecond - Cached.global_local_diff;
        Cached.cut_range =
            Cached.log_begin < init_datas->ev_rule->miss_range_microsecond
                ? 0
@@ -117,7 +118,8 @@ Program Listing for File PDJE_Judge_Loop.cpp
        Cut();
    
        // init maximum get time
-       Cached.log_end = input_log->back().microSecond - Cached.global_local_diff;
+       Cached.log_end = input_log.first[input_log.second - 1].microSecond -
+                        Cached.global_local_diff;
        Cached.use_range =
            Cached.log_end + init_datas->ev_rule->use_range_microsecond;
        return true;
@@ -125,29 +127,32 @@ Program Listing for File PDJE_Judge_Loop.cpp
    void
    Judge_Loop::loop()
    {
-       bool OK = true;
+       bool            OK = true;
+       PDJE_Input_Log *input_ev;
        while (loop_switch) {
            OK = PreProcess();
            if (!OK) {
                continue;
            }
-           for (const auto &input_ev : *input_log) {
-               switch (input_ev.type) {
+           input_ev = input_log.first;
+           for (uint64_t idx = 0; idx < input_log.second; ++idx) {
+               switch (input_ev->type) {
                case PDJE_Dev_Type::KEYBOARD:
-                   UseEvent<PDJE_Dev_Type::KEYBOARD>(input_ev);
+                   UseEvent<PDJE_Dev_Type::KEYBOARD>(*input_ev);
                    break;
                case PDJE_Dev_Type::MOUSE:
-                   UseEvent<PDJE_Dev_Type::MOUSE>(input_ev);
+                   UseEvent<PDJE_Dev_Type::MOUSE>(*input_ev);
                    break;
                case PDJE_Dev_Type::MIDI:
-                   UseEvent<PDJE_Dev_Type::MIDI>(input_ev);
+                   UseEvent<PDJE_Dev_Type::MIDI>(*input_ev);
                    break;
                case PDJE_Dev_Type::HID:
-                   UseEvent<PDJE_Dev_Type::HID>(input_ev);
+                   UseEvent<PDJE_Dev_Type::HID>(*input_ev);
                    break;
                default:
                    break;
                }
+               ++input_ev;
            }
        }
    }
@@ -163,11 +168,13 @@ Program Listing for File PDJE_Judge_Loop.cpp
                    std::this_thread::sleep_until(use_clock);
    
                    auto queue = Event_Datas.use_queue.Get();
-   
-                   for (const auto &log : *queue) {
-                       init_datas->lambdas.used_event(
-                           log.railid, log.Pressed, log.IsLate, log.diff);
+                   for (uint64_t idx = 0; idx < queue.second; ++idx) {
+                       init_datas->lambdas.used_event(queue.first[idx].railid,
+                                                      queue.first[idx].Pressed,
+                                                      queue.first[idx].IsLate,
+                                                      queue.first[idx].diff);
                    }
+   
                } catch (const std::exception &e) {
                    critlog("caught error on use event loop. Why:");
                    critlog(e.what());
@@ -183,8 +190,8 @@ Program Listing for File PDJE_Judge_Loop.cpp
                    std::this_thread::sleep_for(
                        init_datas->lambdas.miss_event_sleep_time);
                    auto queue = Event_Datas.miss_queue.Get();
-                   for (const auto &log : *queue) {
-                       init_datas->lambdas.missed_event(log);
+                   for (uint64_t idx = 0; idx < queue.second; ++idx) {
+                       init_datas->lambdas.missed_event(queue.first[idx]);
                    }
                } catch (const std::exception &e) {
                    critlog("caught error on miss event loop. Why:");

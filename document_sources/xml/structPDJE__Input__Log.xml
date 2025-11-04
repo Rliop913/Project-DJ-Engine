@@ -46,10 +46,10 @@
         </inbodydescription>
         <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="14" column="22" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="14" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structPDJE__Input__Log_1aaefc2fdec36f5877ee575be7b9daf7bc" prot="public" static="no" mutable="no">
-        <type>std::string</type>
-        <definition>std::string PDJE_Input_Log::id</definition>
-        <argsstring></argsstring>
+      <memberdef kind="variable" id="structPDJE__Input__Log_1a45e6f08789d468bed9999afa1edebb6a" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char PDJE_Input_Log::id[256]</definition>
+        <argsstring>[256]</argsstring>
         <name>id</name>
         <qualifiedname>PDJE_Input_Log::id</qualifiedname>
         <briefdescription>
@@ -58,7 +58,49 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="15" column="22" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="15" bodyend="-1"/>
+        <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="15" column="15" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPDJE__Input__Log_1aa05c1ccf620d4958cc621c2a087508c6" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char PDJE_Input_Log::name[256]</definition>
+        <argsstring>[256]</argsstring>
+        <name>name</name>
+        <qualifiedname>PDJE_Input_Log::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="16" column="14" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPDJE__Input__Log_1a5ba85807a2787dd387c12318793547e9" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t PDJE_Input_Log::id_len</definition>
+        <argsstring></argsstring>
+        <name>id_len</name>
+        <qualifiedname>PDJE_Input_Log::id_len</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="17" column="14" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPDJE__Input__Log_1a66db400701b3e89e59c17a4f466ae118" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t PDJE_Input_Log::name_len</definition>
+        <argsstring></argsstring>
+        <name>name_len</name>
+        <qualifiedname>PDJE_Input_Log::name_len</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="18" column="14" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" prot="public" static="no" mutable="no">
         <type>uint64_t</type>
@@ -72,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="16" column="22" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="16" bodyend="-1"/>
+        <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="19" column="22" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="19" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -103,9 +145,6 @@
         <childnode refid="5" relation="usage">
           <edgelabel>hid_event</edgelabel>
         </childnode>
-        <childnode refid="6" relation="usage">
-          <edgelabel>id</edgelabel>
-        </childnode>
       </node>
       <node id="4">
         <label>PDJE_Keyboard_Event</label>
@@ -115,21 +154,16 @@
         <label>PDJE_Mouse_Event</label>
         <link refid="structPDJE__Mouse__Event"/>
       </node>
-      <node id="7">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
-      <node id="6">
-        <label>std::string</label>
-        <childnode refid="7" relation="public-inheritance">
-        </childnode>
-      </node>
     </collaborationgraph>
-    <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="11" column="1" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="11" bodyend="17"/>
+    <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="11" column="1" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="11" bodyend="20"/>
     <listofallmembers>
       <member refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" prot="public" virt="non-virtual"><scope>PDJE_Input_Log</scope><name>event</name></member>
       <member refid="structPDJE__Input__Log_1a122a3be1ee635a767643927bbb9fcade" prot="public" virt="non-virtual"><scope>PDJE_Input_Log</scope><name>hid_event</name></member>
-      <member refid="structPDJE__Input__Log_1aaefc2fdec36f5877ee575be7b9daf7bc" prot="public" virt="non-virtual"><scope>PDJE_Input_Log</scope><name>id</name></member>
+      <member refid="structPDJE__Input__Log_1a45e6f08789d468bed9999afa1edebb6a" prot="public" virt="non-virtual"><scope>PDJE_Input_Log</scope><name>id</name></member>
+      <member refid="structPDJE__Input__Log_1a5ba85807a2787dd387c12318793547e9" prot="public" virt="non-virtual"><scope>PDJE_Input_Log</scope><name>id_len</name></member>
       <member refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" prot="public" virt="non-virtual"><scope>PDJE_Input_Log</scope><name>microSecond</name></member>
+      <member refid="structPDJE__Input__Log_1aa05c1ccf620d4958cc621c2a087508c6" prot="public" virt="non-virtual"><scope>PDJE_Input_Log</scope><name>name</name></member>
+      <member refid="structPDJE__Input__Log_1a66db400701b3e89e59c17a4f466ae118" prot="public" virt="non-virtual"><scope>PDJE_Input_Log</scope><name>name_len</name></member>
       <member refid="structPDJE__Input__Log_1aa64073bde0f836582ef86ce7484b4011" prot="public" virt="non-virtual"><scope>PDJE_Input_Log</scope><name>type</name></member>
     </listofallmembers>
   </compounddef>

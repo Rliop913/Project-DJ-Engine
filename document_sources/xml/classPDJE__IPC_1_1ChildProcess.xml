@@ -1,0 +1,372 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classPDJE__IPC_1_1ChildProcess" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_IPC::ChildProcess</compoundname>
+    <includes refid="ChildProcess_8hpp" local="no">ChildProcess.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1af67855514dc8ca516ed47feb978b00fe" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, std::function&lt; void()&gt; &gt;</type>
+        <definition>std::unordered_map&lt;std::string, std::function&lt;void()&gt; &gt; PDJE_IPC::ChildProcess::callables</definition>
+        <argsstring></argsstring>
+        <name>callables</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::callables</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="25" column="24" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1ae433a4c4dbd599c890fc2c67b06eac3c" prot="private" static="no" mutable="no">
+        <type>httplib::Server</type>
+        <definition>httplib::Server PDJE_IPC::ChildProcess::server</definition>
+        <argsstring></argsstring>
+        <name>server</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::server</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="26" column="60" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1a960afc9f9aaa3935e4f9d0033f308638" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="PDJE__Input__DataLine_8hpp_1a73ea437825558867dcad305e6ab74cd9" kindref="member">PDJE_ID</ref>, <ref refid="namespacePDJE__IPC_1afa0a7b47d125684c3f3557e194fc5e56" kindref="member">PDJE_NAME</ref> &gt;</type>
+        <definition>std::unordered_map&lt;PDJE_ID, PDJE_NAME&gt; PDJE_IPC::ChildProcess::id_name</definition>
+        <argsstring></argsstring>
+        <name>id_name</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::id_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="28" column="34" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1a6393c9a400a3bf748024f0a0f27e1d54" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classPDJE__Buffer__Arena" kindref="compound">PDJE_Buffer_Arena</ref>&lt; <ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref> &gt; &gt;</type>
+        <definition>std::optional&lt;PDJE_Buffer_Arena&lt;PDJE_Input_Log&gt; &gt; PDJE_IPC::ChildProcess::input_buffer</definition>
+        <argsstring></argsstring>
+        <name>input_buffer</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::input_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="29" column="19" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1a8c4cbe6737af94e6a955015d07ff7ca6" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">PDJE_IPC::SharedMem</ref>&lt; int, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC::PDJE_IPC_RW</ref> &gt; &gt;</type>
+        <definition>std::optional&lt;PDJE_IPC::SharedMem&lt;int, PDJE_IPC::PDJE_IPC_RW&gt; &gt; PDJE_IPC::ChildProcess::spinlock_run</definition>
+        <argsstring></argsstring>
+        <name>spinlock_run</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::spinlock_run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="31" column="9" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1a4b1737bb5d9aee0d540a7b18bafdd05d" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt;</type>
+        <definition>std::vector&lt;DeviceData&gt; PDJE_IPC::ChildProcess::configed_devices</definition>
+        <argsstring></argsstring>
+        <name>configed_devices</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::configed_devices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="41" column="38" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1a637e213f668bf8bb9e24d04fe6c88afb" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="namespacePDJE__IPC_1aaf89512571dfd440f5c2d0d57df24042" kindref="member">PDJE_DEV_PATH</ref>, <ref refid="namespacePDJE__IPC_1afa0a7b47d125684c3f3557e194fc5e56" kindref="member">PDJE_NAME</ref> &gt;</type>
+        <definition>std::unordered_map&lt;PDJE_DEV_PATH, PDJE_NAME&gt; PDJE_IPC::ChildProcess::unlisted_targets</definition>
+        <argsstring></argsstring>
+        <name>unlisted_targets</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::unlisted_targets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="42" column="24" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1ab783b7c833180d5745b5b1aea0b6eb2a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PDJE_IPC::ChildProcess::KillCheck</definition>
+        <argsstring></argsstring>
+        <name>KillCheck</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::KillCheck</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="48" column="10" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1afb349220476fcc63c91695093b550c77" prot="public" static="no" mutable="no">
+        <type><ref refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK" kindref="compound">PDJE_HIGHRES_CLOCK::CLOCK</ref></type>
+        <definition>PDJE_HIGHRES_CLOCK::CLOCK PDJE_IPC::ChildProcess::timer</definition>
+        <argsstring></argsstring>
+        <name>timer</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::timer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="135" column="31" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1a38faf210d4b2c2798b91254275e2d1bb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::ChildProcess::EndTransmission</definition>
+        <argsstring>(const httplib::Request &amp;, httplib::Response &amp;res)</argsstring>
+        <name>EndTransmission</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::EndTransmission</qualifiedname>
+        <param>
+          <type>const httplib::Request &amp;</type>
+        </param>
+        <param>
+          <type>httplib::Response &amp;</type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="34" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="11" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1afe9b0f30368a296df243c2d2ce57dfa2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_IPC::ChildProcess::RecvIPCSharedMem</definition>
+        <argsstring>(const std::string &amp;mem_path, const std::string &amp;dataType, const uint64_t data_count)</argsstring>
+        <name>RecvIPCSharedMem</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::RecvIPCSharedMem</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>mem_path</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>dataType</declname>
+        </param>
+        <param>
+          <type>const uint64_t</type>
+          <declname>data_count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="37" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="17" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1adfd56f3914cbddc381f6dc3d98fe0553" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string PDJE_IPC::ChildProcess::ListDev</definition>
+        <argsstring>()</argsstring>
+        <name>ListDev</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::ListDev</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="45" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="24" bodyend="27"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1a70dcc361fd40d69c36b539dca174b376" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::ChildProcess::ChildProcess</definition>
+        <argsstring>()</argsstring>
+        <name>ChildProcess</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::ChildProcess</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="49" column="5" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="49" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1a5cea39de39ff116294c543cefc169488" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::ChildProcess::RunServer</definition>
+        <argsstring>(const int port)</argsstring>
+        <name>RunServer</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::RunServer</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="137" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="6" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1a5d7ed4a541784f3b0ec8a214b7b22494" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * PDJE_IPC::ChildProcess::Init</definition>
+        <argsstring>()</argsstring>
+        <name>Init</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::Init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="139" column="5" bodyfile="include/input/IPC/transmission/windows/InputLoop.cpp" bodystart="9" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1ac998742bac92e33b0f7f3fe42df868c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::ChildProcess::LoopTrig</definition>
+        <argsstring>()</argsstring>
+        <name>LoopTrig</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::LoopTrig</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="141" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="30" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1a7d772ad7584d5d5daa81174ebe6204a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::ChildProcess::Run</definition>
+        <argsstring>()</argsstring>
+        <name>Run</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::Run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="143" column="5" bodyfile="include/input/IPC/transmission/windows/InputLoop.cpp" bodystart="32" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1afa1ab7ce6992a493853bdbee1b9daf80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::ChildProcess::~ChildProcess</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ChildProcess</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::~ChildProcess</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="145" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="8">
+        <label>PDJE_HIGHRES_CLOCK::CLOCK</label>
+        <link refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK"/>
+      </node>
+      <node id="1">
+        <label>PDJE_IPC::ChildProcess</label>
+        <link refid="classPDJE__IPC_1_1ChildProcess"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>callables</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>id_name</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>configed_devices</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>unlisted_targets</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>timer</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="3">
+        <label>std::string</label>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>std::unordered_map&lt; PDJE_DEV_PATH, PDJE_NAME &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>elements</edgelabel>
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::unordered_map&lt; PDJE_ID, PDJE_NAME &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>elements</edgelabel>
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::unordered_map&lt; std::string, std::function&lt; void()&gt; &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>std::vector&lt; DeviceData &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/IPC/transmission/ChildProcess.hpp" line="18" column="1" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="18" bodyend="146"/>
+    <listofallmembers>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1af67855514dc8ca516ed47feb978b00fe" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>callables</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1a70dcc361fd40d69c36b539dca174b376" prot="public" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>ChildProcess</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1a4b1737bb5d9aee0d540a7b18bafdd05d" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>configed_devices</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1a38faf210d4b2c2798b91254275e2d1bb" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>EndTransmission</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1a960afc9f9aaa3935e4f9d0033f308638" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>id_name</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1a5d7ed4a541784f3b0ec8a214b7b22494" prot="public" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>Init</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1a6393c9a400a3bf748024f0a0f27e1d54" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>input_buffer</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1ab783b7c833180d5745b5b1aea0b6eb2a" prot="public" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>KillCheck</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1adfd56f3914cbddc381f6dc3d98fe0553" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>ListDev</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1ac998742bac92e33b0f7f3fe42df868c2" prot="public" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>LoopTrig</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1afe9b0f30368a296df243c2d2ce57dfa2" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>RecvIPCSharedMem</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1a7d772ad7584d5d5daa81174ebe6204a0" prot="public" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>Run</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1a5cea39de39ff116294c543cefc169488" prot="public" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>RunServer</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1ae433a4c4dbd599c890fc2c67b06eac3c" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>server</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1a8c4cbe6737af94e6a955015d07ff7ca6" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>spinlock_run</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1afb349220476fcc63c91695093b550c77" prot="public" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>timer</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1a637e213f668bf8bb9e24d04fe6c88afb" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>unlisted_targets</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1afa1ab7ce6992a493853bdbee1b9daf80" prot="public" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>~ChildProcess</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

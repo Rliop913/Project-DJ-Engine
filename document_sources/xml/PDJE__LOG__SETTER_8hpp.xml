@@ -46,8 +46,10 @@
     <includedby refid="PDJE__interface_8hpp" local="yes">include/core/interface/PDJE_interface.hpp</includedby>
     <includedby refid="PDJE__polyglot__wraps_8cpp" local="yes">include/core/interface/PDJE_polyglot_wraps.cpp</includedby>
     <includedby refid="fileNameSanitizer_8cpp" local="yes">include/global/DataLines/fileNameSanitizer.cpp</includedby>
+    <includedby refid="ipc__util_8hpp" local="yes">include/input/IPC/common/ipc_util.hpp</includedby>
+    <includedby refid="ipc__shared__memory_8hpp" local="yes">include/input/IPC/memory/ipc_shared_memory.hpp</includedby>
+    <includedby refid="MainProcess_8hpp" local="yes">include/input/IPC/transmission/MainProcess.hpp</includedby>
     <includedby refid="PDJE__Input_8cpp" local="yes">include/input/PDJE_Input.cpp</includedby>
-    <includedby refid="windows__input_8cpp" local="yes">include/input/windows/windows_input.cpp</includedby>
     <includedby refid="PDJE__Judge__Loop_8cpp" local="yes">include/judge/Loop/PDJE_Judge_Loop.cpp</includedby>
     <includedby refid="PDJE__Judge_8cpp" local="yes">include/judge/PDJE_Judge.cpp</includedby>
     <incdepgraph>
@@ -676,6 +678,36 @@
         <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
       </node>
+      <node id="103">
+        <label>include/global/DataLines/PDJE_Buffer.hpp</label>
+        <link refid="PDJE__Buffer_8hpp"/>
+        <childnode refid="104" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+      </node>
+      <node id="104">
+        <label>include/global/DataLines/PDJE_Input_DataLine.hpp</label>
+        <link refid="PDJE__Input__DataLine_8hpp"/>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+      </node>
       <node id="98">
         <label>include/global/DataLines/fileNameSanitizer.cpp</label>
         <link refid="fileNameSanitizer_8cpp"/>
@@ -759,32 +791,204 @@
         </childnode>
         <childnode refid="99" relation="include">
         </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+      </node>
+      <node id="99">
+        <label>include/input/IPC/common/ipc_util.hpp</label>
+        <link refid="ipc__util_8hpp"/>
         <childnode refid="100" relation="include">
         </childnode>
         <childnode refid="101" relation="include">
         </childnode>
-        <childnode refid="102" relation="include">
+      </node>
+      <node id="102">
+        <label>include/input/IPC/memory/ipc_shared_memory.hpp</label>
+        <link refid="ipc__shared__memory_8hpp"/>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="105" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
         </childnode>
       </node>
-      <node id="99">
+      <node id="105">
+        <label>include/input/IPC/transmission/ChildProcess.hpp</label>
+        <link refid="ChildProcess_8hpp"/>
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="110" relation="include">
+        </childnode>
+        <childnode refid="111" relation="include">
+        </childnode>
+      </node>
+      <node id="112">
+        <label>include/input/IPC/transmission/MainProcess.hpp</label>
+        <link refid="MainProcess_8hpp"/>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+      </node>
+      <node id="106">
+        <label>include/input/IPC/transmission/linux/ChildProcess.cpp</label>
+        <link refid="linux_2ChildProcess_8cpp"/>
+      </node>
+      <node id="100">
+        <label>include/input/IPC/transmission/linux/MainProcess.cpp</label>
+        <link refid="linux_2MainProcess_8cpp"/>
+      </node>
+      <node id="128">
+        <label>include/input/IPC/transmission/linux/pack_ipc.hpp</label>
+        <link refid="pack__ipc_8hpp"/>
+      </node>
+      <node id="107">
+        <label>include/input/IPC/transmission/windows/ChildProcess.cpp</label>
+        <link refid="windows_2ChildProcess_8cpp"/>
+      </node>
+      <node id="108">
+        <label>include/input/IPC/transmission/windows/InputLoop.cpp</label>
+        <link refid="InputLoop_8cpp"/>
+      </node>
+      <node id="109">
+        <label>include/input/IPC/transmission/windows/ListDevice.hpp</label>
+        <link refid="ListDevice_8hpp"/>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+      </node>
+      <node id="101">
+        <label>include/input/IPC/transmission/windows/MainProcess.cpp</label>
+        <link refid="windows_2MainProcess_8cpp"/>
+      </node>
+      <node id="114">
         <label>include/input/PDJE_Input.cpp</label>
         <link refid="PDJE__Input_8cpp"/>
       </node>
-      <node id="100">
-        <label>include/input/windows/windows_input.cpp</label>
-        <link refid="windows__input_8cpp"/>
+      <node id="113">
+        <label>include/input/PDJE_Input.hpp</label>
+        <link refid="PDJE__Input_8hpp"/>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
       </node>
-      <node id="101">
+      <node id="110">
+        <label>include/input/linux/RT/RTMain.cpp</label>
+        <link refid="RTMain_8cpp"/>
+      </node>
+      <node id="117">
+        <label>include/input/linux/linux_input.cpp</label>
+        <link refid="linux__input_8cpp"/>
+      </node>
+      <node id="116">
+        <label>include/input/linux/linux_input.hpp</label>
+        <link refid="linux__input_8hpp"/>
+        <childnode refid="117" relation="include">
+        </childnode>
+      </node>
+      <node id="111">
+        <label>include/input/windows/process/Input_Process_Main.cpp</label>
+        <link refid="Input__Process__Main_8cpp"/>
+      </node>
+      <node id="119">
+        <label>include/judge/Init/PDJE_Judge_Init.cpp</label>
+        <link refid="PDJE__Judge__Init_8cpp"/>
+      </node>
+      <node id="118">
+        <label>include/judge/Init/PDJE_Judge_Init.hpp</label>
+        <link refid="PDJE__Judge__Init_8hpp"/>
+        <childnode refid="119" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+      </node>
+      <node id="122">
+        <label>include/judge/Loop/HID.cpp</label>
+        <link refid="HID_8cpp"/>
+      </node>
+      <node id="123">
+        <label>include/judge/Loop/Keyboard.cpp</label>
+        <link refid="Keyboard_8cpp"/>
+      </node>
+      <node id="124">
+        <label>include/judge/Loop/MIDI.cpp</label>
+        <link refid="MIDI_8cpp"/>
+      </node>
+      <node id="125">
+        <label>include/judge/Loop/Mouse.cpp</label>
+        <link refid="Mouse_8cpp"/>
+      </node>
+      <node id="120">
         <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
         <link refid="PDJE__Judge__Loop_8cpp"/>
       </node>
-      <node id="102">
+      <node id="121">
+        <label>include/judge/Loop/PDJE_Judge_Loop.hpp</label>
+        <link refid="PDJE__Judge__Loop_8hpp"/>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="123" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="126" relation="include">
+        </childnode>
+      </node>
+      <node id="127">
         <label>include/judge/PDJE_Judge.cpp</label>
         <link refid="PDJE__Judge_8cpp"/>
+      </node>
+      <node id="126">
+        <label>include/judge/PDJE_Judge.hpp</label>
+        <link refid="PDJE__Judge_8hpp"/>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
       </node>
       <node id="66">
         <label>include/tests/CapnpTest.cpp</label>
         <link refid="CapnpTest_8cpp"/>
+      </node>
+      <node id="115">
+        <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
+        <link refid="pdjeInputTest_8cpp"/>
       </node>
       <node id="21">
         <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
@@ -821,7 +1025,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/PDJE_LOG_SETTER.hpp" line="59" column="10" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="59" bodyend="-1"/>
+        <location file="include/global/PDJE_LOG_SETTER.hpp" line="57" column="10" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" prot="public" static="no">
         <name>warnlog</name>
@@ -832,7 +1036,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/PDJE_LOG_SETTER.hpp" line="69" column="10" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="69" bodyend="-1"/>
+        <location file="include/global/PDJE_LOG_SETTER.hpp" line="67" column="10" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" prot="public" static="no">
         <name>critlog</name>
@@ -845,7 +1049,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/PDJE_LOG_SETTER.hpp" line="76" column="9" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="76" bodyend="-1"/>
+        <location file="include/global/PDJE_LOG_SETTER.hpp" line="74" column="9" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="var">
@@ -877,7 +1081,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/PDJE_LOG_SETTER.hpp" line="24" column="1" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="24" bodyend="49"/>
+        <location file="include/global/PDJE_LOG_SETTER.hpp" line="24" column="1" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="24" bodyend="47"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -905,46 +1109,44 @@
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>std::call_once(<ref refid="PDJE__LOG__SETTER_8hpp_1aafde7a4d32d3efc555088bc1babf0e88" kindref="member">SPD_LOG_ONCE_FLAG</ref>,<sp/>[]()<sp/>{</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::create_directories(</highlight><highlight class="stringliteral">&quot;logs&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fileSink<sp/>=<sp/>std::make_shared&lt;spdlog::sinks::basic_file_sink_mt&gt;(</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;logs/pdjeLog.txt&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>consoleSink<sp/>=</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::make_shared&lt;spdlog::sinks::stdout_color_sink_mt&gt;();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;logs/pdjeLog.txt&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;spdlog::sink_ptr&gt;<sp/>sinks{<sp/>fileSink<sp/>};</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;spdlog::sink_ptr&gt;<sp/>sinks{<sp/>consoleSink,<sp/>fileSink<sp/>};</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>logger<sp/>=<sp/>std::make_shared&lt;spdlog::logger&gt;(</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;global_logger&quot;</highlight><highlight class="normal">,<sp/>sinks.begin(),<sp/>sinks.end());</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger-&gt;set_level(spdlog::level::debug);</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger-&gt;set_level(spdlog::level::err);</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger-&gt;flush_on(spdlog::level::err);</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger-&gt;set_pattern(</highlight><highlight class="stringliteral">&quot;[%Y-%m-%d<sp/>%H:%M:%S.%e]<sp/>[%^%l%$]<sp/>%v&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>spdlog::set_default_logger(logger);</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LOG_OFF</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ENABLE_INFO_LOG</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>infolog(...)<sp/>SPDLOG_INFO(__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59" refid="PDJE__LOG__SETTER_8hpp_1a2721d826078db7a962e7664a9d2f4016" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>infolog(...)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ENABLE_WARN_LOG</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>warnlog(...)<sp/>SPDLOG_WARN(__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69" refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>warnlog(...)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76" refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>critlog(...)<sp/>SPDLOG_CRITICAL(__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>infolog(...)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>warnlog(...)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>critlog(...)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>logger<sp/>=<sp/>std::make_shared&lt;spdlog::logger&gt;(</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;global_logger&quot;</highlight><highlight class="normal">,<sp/>sinks.begin(),<sp/>sinks.end());</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger-&gt;set_level(spdlog::level::debug);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger-&gt;set_level(spdlog::level::err);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger-&gt;flush_on(spdlog::level::err);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger-&gt;set_pattern(</highlight><highlight class="stringliteral">&quot;[%Y-%m-%d<sp/>%H:%M:%S.%e]<sp/>[%^%l%$]<sp/>%v&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>spdlog::set_default_logger(logger);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LOG_OFF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ENABLE_INFO_LOG</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>infolog(...)<sp/>SPDLOG_INFO(__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="PDJE__LOG__SETTER_8hpp_1a2721d826078db7a962e7664a9d2f4016" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>infolog(...)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ENABLE_WARN_LOG</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>warnlog(...)<sp/>SPDLOG_WARN(__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>warnlog(...)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>critlog(...)<sp/>SPDLOG_CRITICAL(__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>infolog(...)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>warnlog(...)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>critlog(...)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/global/PDJE_LOG_SETTER.hpp"/>
   </compounddef>

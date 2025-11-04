@@ -43,15 +43,15 @@ Program Listing for File FrameCalc.hpp
               uint64_t Ebeat,
               uint64_t EsubBeat,
               uint64_t Eseparate,
-              double        bpm);
+              double   bpm);
    }; // namespace FrameCalc
    
    struct PDJE_API BpmFragment {
-       uint64_t      beat=0;
-       uint64_t      subBeat=0;
-       uint64_t      separate=0;
+       uint64_t beat          = 0;
+       uint64_t subBeat       = 0;
+       uint64_t separate      = 0;
        uint64_t frame_to_here = 0;
-       double             bpm=0;
+       double   bpm           = 0;
    };
    
    struct PDJE_API BpmStruct {

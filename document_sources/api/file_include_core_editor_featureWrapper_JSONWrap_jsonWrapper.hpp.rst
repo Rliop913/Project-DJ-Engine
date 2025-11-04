@@ -51,7 +51,7 @@ Includes
 
 - ``functional``
 
-- ``memory``
+- ``memory`` (:ref:`file_include_input_IPC_memory_ipc_shared_memory.hpp`)
 
 - ``nlohmann/json.hpp``
 

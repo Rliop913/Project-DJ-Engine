@@ -4,10 +4,10 @@
     <compoundname>windows_keyboard_fill.hpp</compoundname>
     <includes local="no">WinUser.h</includes>
     <includes local="no">Windows.h</includes>
-    <includedby refid="windows__input_8cpp" local="yes">include/input/windows/windows_input.cpp</includedby>
+    <includedby refid="InputLoop_8cpp" local="yes">include/input/IPC/transmission/windows/InputLoop.cpp</includedby>
     <incdepgraph>
       <node id="1">
-        <label>include/input/windows/windows_keyboard_fill.hpp</label>
+        <label>include/input/IPC/transmission/windows/windows_keyboard_fill.hpp</label>
         <link refid="windows__keyboard__fill_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -23,11 +23,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
-        <label>include/input/windows/windows_input.cpp</label>
-        <link refid="windows__input_8cpp"/>
+        <label>include/input/IPC/transmission/windows/InputLoop.cpp</label>
+        <link refid="InputLoop_8cpp"/>
       </node>
       <node id="1">
-        <label>include/input/windows/windows_keyboard_fill.hpp</label>
+        <label>include/input/IPC/transmission/windows/windows_keyboard_fill.hpp</label>
         <link refid="windows__keyboard__fill_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -397,21 +397,25 @@
 <codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/>tempEv.<ref refid="unionPDJE__Input__Event_1af1262bc0a6a920aee57a13cbf033cc0d" kindref="member">keyboard</ref>.<ref refid="structPDJE__Keyboard__Event_1a9b876596da025316eb8180d50a8e7f05" kindref="member">pressed</ref><sp/>=<sp/>(ri-&gt;data.keyboard.Flags<sp/>&amp;<sp/>RI_KEY_BREAK)<sp/>==<sp/>0;</highlight></codeline>
 <codeline lineno="357"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="358"><highlight class="normal"></highlight></codeline>
-<codeline lineno="359"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::pmr::vector&lt;uint8_t&gt;</highlight></codeline>
-<codeline lineno="360" refid="namespacePDJE__RAWINPUT_1a48e9c69018daa084dab26f77fb3e78fa" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__RAWINPUT_1a48e9c69018daa084dab26f77fb3e78fa" kindref="member">FillHIDInput</ref>(std::pmr::unsynchronized_pool_resource<sp/>&amp;arena,</highlight></codeline>
-<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>RAWINPUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*ri,</highlight></codeline>
-<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;byteSize)</highlight></codeline>
-<codeline lineno="363"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="364"><highlight class="normal"></highlight></codeline>
-<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pmr::vector&lt;uint8_t&gt;<sp/>hidB(&amp;arena);</highlight></codeline>
-<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/>hidB.resize(ri-&gt;data.hid.dwCount<sp/>*<sp/>ri-&gt;data.hid.dwSizeHid);</highlight></codeline>
-<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(hidB.data(),<sp/>ri-&gt;data.hid.bRawData,<sp/>hidB.size()<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(uint8_t));</highlight></codeline>
-<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/>byteSize<sp/>=<sp/>ri-&gt;data.hid.dwSizeHid;</highlight></codeline>
-<codeline lineno="369"><highlight class="normal"></highlight></codeline>
-<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>hidB;</highlight></codeline>
-<codeline lineno="371"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="372"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_RAWINPUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="361" refid="namespacePDJE__RAWINPUT_1af9c332f59392e1b590f13c90b85d46bd" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__RAWINPUT_1af9c332f59392e1b590f13c90b85d46bd" kindref="member">FillHIDInput</ref>(uint8_t<sp/>buffer[],</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>RAWINPUT<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*ri,</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;byteSize)</highlight></codeline>
+<codeline lineno="364"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hidB.resize(ri-&gt;data.hid.dwCount<sp/>*<sp/>ri-&gt;data.hid.dwSizeHid);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>sz<sp/>=<sp/>ri-&gt;data.hid.dwCount<sp/>*<sp/>ri-&gt;data.hid.dwSizeHid;</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(sz<sp/>&gt;<sp/>512){</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(buffer,<sp/>ri-&gt;data.hid.bRawData,<sp/>sz<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(uint8_t));</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/>byteSize<sp/>=<sp/>ri-&gt;data.hid.dwSizeHid;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="375"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="376"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_RAWINPUT</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="include/input/windows/windows_keyboard_fill.hpp"/>
+    <location file="include/input/IPC/transmission/windows/windows_keyboard_fill.hpp"/>
   </compounddef>
 </doxygen>

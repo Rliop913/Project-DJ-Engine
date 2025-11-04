@@ -83,16 +83,32 @@ PDJE is organized into independent, dynamically loadable modules:
   
   Available on linux, windows
 - **Judge Engine** :
-  This engine is designed to handle rhythm game logic or real-time timing judgments.
-  It can be used by connecting either the PDJE Input Engine or another input engine wrapped for compatibility.
+  
 
-  The timing resolution is determined when initializing the PDJE Core Engine.
-  By default, the PDJE Core Engine plays audio at a sample rate of 48,000 Hz, meaning it processes 48,000 samples per second.
+  The Judge Engine handles rhythm-game timing logic and real-time judgments.
+  It can run with the PDJE Input Engine or with any compatible, wrapped input source.
 
-  Assuming the buffer size is set to 48 samples, the core updates its internal sample-accumulation counter 1,000 times per second (48,000 / 48).
+  **High-resolution timebase (update)**
 
-  This results in a theoretical judgment resolution of 1,000 counts per second, or 1 millisecond per count,
-  giving you a minimum resolution of approximately 1 ms + input latency.
+  The input module timestamps each input event, and the core engine timestamps each audio callback using the same monotonic, high-resolution clock.
+  By synchronizing these timebases, the judge computes the time difference between an input event and the expected note time with **microsecond-level accuracy**.
+
+  **What changed**
+
+  * Judgment resolution is no longer limited by the audio buffer cadence.
+  * Sample rate and buffer size still affect audio scheduling and overall latency, but **they do not cap judgment precision**.
+
+  **Audio cadence (context)**
+
+  By default, the PDJE Core Engine runs at 48,000 Hz.
+  With a 48-sample buffer, the audio callback cadence is 1,000 Hz (48,000 / 48).
+  Previously this implied ~1 ms timing steps; now the judge uses synchronized timestamps for microsecond-level precision and applies audio/buffer latency compensation separately.
+
+  **Practical notes**
+
+  * Input and audio threads share the same monotonic clock (e.g., Windows `QPC`, Linux `CLOCK_MONOTONIC`/`CLOCK_MONOTONIC_RAW`).
+  * Initial synchronization (with periodic drift checks) aligns the input and audio epochs so the computed time differences reflect true inter-event timing.
+
 - **Utility Engine** :
   This engine handles non-essential but highly useful functionalities beyond the core features.
 
@@ -146,11 +162,13 @@ Additional Resources
 CI/CD Call Graph
 -------------------
 
-.. mermaid:: 
-  
-%%{init: {'flowchart': {'curve': 'stepAfter'}}}%%
-flowchart TD
+  .. :config: {"theme":"forest","themeVariables":{"fontSize":"25px"}}
 
+.. mermaid::
+
+  %%{init: {'flowchart': {'curve': 'stepAfter'}}}%%
+
+  flowchart TD
   subgraph CORE_DEVELOP
     push_to_core/dev --> core/dev
     core/dev --> core/dev_build_test

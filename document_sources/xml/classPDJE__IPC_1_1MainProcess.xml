@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classPDJE__IPC_1_1MainProcess" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_IPC::MainProcess</compoundname>
+    <includes refid="MainProcess_8hpp" local="no">MainProcess.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPDJE__IPC_1_1MainProcess_1a85c0cc2ab3df6cbf694b16f08fb8b7ac" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; httplib::Client &gt;</type>
+        <definition>std::optional&lt;httplib::Client&gt; PDJE_IPC::MainProcess::cli</definition>
+        <argsstring></argsstring>
+        <name>cli</name>
+        <qualifiedname>PDJE_IPC::MainProcess::cli</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/MainProcess.hpp" line="39" column="19" bodyfile="include/input/IPC/transmission/MainProcess.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1MainProcess_1a5036bacb01c576f898f830fdda84d6b3" prot="private" static="no" mutable="no">
+        <type><ref refid="structPDJE__IPC_1_1Importants" kindref="compound">Importants</ref></type>
+        <definition>Importants PDJE_IPC::MainProcess::imp</definition>
+        <argsstring></argsstring>
+        <name>imp</name>
+        <qualifiedname>PDJE_IPC::MainProcess::imp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/MainProcess.hpp" line="41" column="16" bodyfile="include/input/IPC/transmission/MainProcess.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPDJE__IPC_1_1MainProcess_1a3224547091a9979a4388caf962610959" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref></type>
+          </param>
+          <param>
+            <type>int</type>
+            <declname>MEM_PROT_FLAG</declname>
+            <defname>MEM_PROT_FLAG</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool PDJE_IPC::MainProcess::SendIPCSharedMemory</definition>
+        <argsstring>(const SharedMem&lt; T, MEM_PROT_FLAG &gt; &amp;mem, const std::string &amp;mem_path, const std::string &amp;dataType)</argsstring>
+        <name>SendIPCSharedMemory</name>
+        <qualifiedname>PDJE_IPC::MainProcess::SendIPCSharedMemory</qualifiedname>
+        <param>
+          <type>const <ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">SharedMem</ref>&lt; <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref>, MEM_PROT_FLAG &gt; &amp;</type>
+          <declname>mem</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>mem_path</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>dataType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/MainProcess.hpp" line="46" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1MainProcess_1aabc39f12e65f0c665151b97f409f0703" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref></type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool PDJE_IPC::MainProcess::SendBufferArena</definition>
+        <argsstring>(const PDJE_Buffer_Arena&lt; T &gt; &amp;mem)</argsstring>
+        <name>SendBufferArena</name>
+        <qualifiedname>PDJE_IPC::MainProcess::SendBufferArena</qualifiedname>
+        <param>
+          <type>const <ref refid="classPDJE__Buffer__Arena" kindref="compound">PDJE_Buffer_Arena</ref>&lt; <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &gt; &amp;</type>
+          <declname>mem</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/MainProcess.hpp" line="51" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1MainProcess_1a6903c9046613e30857aa321ad56fc2f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt;</type>
+        <definition>std::vector&lt; DeviceData &gt; PDJE_IPC::MainProcess::GetDevices</definition>
+        <argsstring>()</argsstring>
+        <name>GetDevices</name>
+        <qualifiedname>PDJE_IPC::MainProcess::GetDevices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/MainProcess.hpp" line="54" column="5" bodyfile="include/input/IPC/transmission/MainProcess.hpp" bodystart="54" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1MainProcess_1a30b0f7b096aa1e09cdf86695a467f681" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_IPC::MainProcess::QueryConfig</definition>
+        <argsstring>(const std::string &amp;dumped_json)</argsstring>
+        <name>QueryConfig</name>
+        <qualifiedname>PDJE_IPC::MainProcess::QueryConfig</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>dumped_json</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/MainProcess.hpp" line="91" column="5" bodyfile="include/input/IPC/transmission/MainProcess.hpp" bodystart="91" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1MainProcess_1a4ebeb4ad726f6249b5dc3406b54612e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_IPC::MainProcess::EndTransmission</definition>
+        <argsstring>()</argsstring>
+        <name>EndTransmission</name>
+        <qualifiedname>PDJE_IPC::MainProcess::EndTransmission</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/MainProcess.hpp" line="103" column="5" bodyfile="include/input/IPC/transmission/linux/MainProcess.cpp" bodystart="148" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1MainProcess_1a93d89de242f0dfe2e4acce6fee34f4d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_IPC::MainProcess::Kill</definition>
+        <argsstring>()</argsstring>
+        <name>Kill</name>
+        <qualifiedname>PDJE_IPC::MainProcess::Kill</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/MainProcess.hpp" line="106" column="5" bodyfile="include/input/IPC/transmission/MainProcess.hpp" bodystart="106" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1MainProcess_1a0b91f844ac937acea0b101d163e285f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::MainProcess::MainProcess</definition>
+        <argsstring>(const int port)</argsstring>
+        <name>MainProcess</name>
+        <qualifiedname>PDJE_IPC::MainProcess::MainProcess</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/MainProcess.hpp" line="117" column="5" bodyfile="include/input/IPC/transmission/linux/MainProcess.cpp" bodystart="90" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1MainProcess_1a1d57b596ceeebae474ca8bac99291bb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::MainProcess::~MainProcess</definition>
+        <argsstring>()</argsstring>
+        <name>~MainProcess</name>
+        <qualifiedname>PDJE_IPC::MainProcess::~MainProcess</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/MainProcess.hpp" line="118" column="5" bodyfile="include/input/IPC/transmission/linux/MainProcess.cpp" bodystart="137" bodyend="146"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>PDJE_IPC::Importants</label>
+        <link refid="structPDJE__IPC_1_1Importants"/>
+      </node>
+      <node id="1">
+        <label>PDJE_IPC::MainProcess</label>
+        <link refid="classPDJE__IPC_1_1MainProcess"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>imp</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/IPC/transmission/MainProcess.hpp" line="37" column="1" bodyfile="include/input/IPC/transmission/MainProcess.hpp" bodystart="37" bodyend="119"/>
+    <listofallmembers>
+      <member refid="classPDJE__IPC_1_1MainProcess_1a85c0cc2ab3df6cbf694b16f08fb8b7ac" prot="private" virt="non-virtual"><scope>PDJE_IPC::MainProcess</scope><name>cli</name></member>
+      <member refid="classPDJE__IPC_1_1MainProcess_1a4ebeb4ad726f6249b5dc3406b54612e1" prot="public" virt="non-virtual"><scope>PDJE_IPC::MainProcess</scope><name>EndTransmission</name></member>
+      <member refid="classPDJE__IPC_1_1MainProcess_1a6903c9046613e30857aa321ad56fc2f1" prot="public" virt="non-virtual"><scope>PDJE_IPC::MainProcess</scope><name>GetDevices</name></member>
+      <member refid="classPDJE__IPC_1_1MainProcess_1a5036bacb01c576f898f830fdda84d6b3" prot="private" virt="non-virtual"><scope>PDJE_IPC::MainProcess</scope><name>imp</name></member>
+      <member refid="classPDJE__IPC_1_1MainProcess_1a93d89de242f0dfe2e4acce6fee34f4d4" prot="public" virt="non-virtual"><scope>PDJE_IPC::MainProcess</scope><name>Kill</name></member>
+      <member refid="classPDJE__IPC_1_1MainProcess_1a0b91f844ac937acea0b101d163e285f7" prot="public" virt="non-virtual"><scope>PDJE_IPC::MainProcess</scope><name>MainProcess</name></member>
+      <member refid="classPDJE__IPC_1_1MainProcess_1a30b0f7b096aa1e09cdf86695a467f681" prot="public" virt="non-virtual"><scope>PDJE_IPC::MainProcess</scope><name>QueryConfig</name></member>
+      <member refid="classPDJE__IPC_1_1MainProcess_1aabc39f12e65f0c665151b97f409f0703" prot="public" virt="non-virtual"><scope>PDJE_IPC::MainProcess</scope><name>SendBufferArena</name></member>
+      <member refid="classPDJE__IPC_1_1MainProcess_1a3224547091a9979a4388caf962610959" prot="public" virt="non-virtual"><scope>PDJE_IPC::MainProcess</scope><name>SendIPCSharedMemory</name></member>
+      <member refid="classPDJE__IPC_1_1MainProcess_1a1d57b596ceeebae474ca8bac99291bb9" prot="public" virt="non-virtual"><scope>PDJE_IPC::MainProcess</scope><name>~MainProcess</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

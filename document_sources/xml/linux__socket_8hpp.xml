@@ -47,23 +47,7 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="4">
-        <label>include/input/PDJE_Input.cpp</label>
-        <link refid="PDJE__Input_8cpp"/>
-      </node>
       <node id="3">
-        <label>include/input/PDJE_Input.hpp</label>
-        <link refid="PDJE__Input_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
         <label>include/input/linux/linux_input.cpp</label>
         <link refid="linux__input_8cpp"/>
       </node>
@@ -72,10 +56,8 @@
         <link refid="linux__input_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
       </node>
-      <node id="9">
+      <node id="4">
         <label>include/input/linux/socket/linux_socket.cpp</label>
         <link refid="linux__socket_8cpp"/>
       </node>
@@ -84,20 +66,8 @@
         <link refid="linux__socket_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-      </node>
-      <node id="5">
-        <label>include/input/windows/windows_input.cpp</label>
-        <link refid="windows__input_8cpp"/>
-      </node>
-      <node id="6">
-        <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
-        <link refid="pdjeInputTest_8cpp"/>
-      </node>
-      <node id="7">
-        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
-        <link refid="judgeTest_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classPDJE__LINUX_1_1PDJE__Socket" prot="public">PDJE_LINUX::PDJE_Socket</innerclass>
