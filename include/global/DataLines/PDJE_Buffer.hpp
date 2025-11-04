@@ -6,13 +6,6 @@
 #include <memory_resource>
 #include <random>
 #include <vector>
-#ifdef WIN32
-#define SHM_PATH(P) std::string(P)
-#elif defined(__APPLE__)
-
-#else
-#define SHM_PATH(P) P
-#endif
 namespace fs = std::filesystem;
 template <typename T> class PDJE_Buffer_Arena {
   private:
@@ -40,17 +33,17 @@ template <typename T> class PDJE_Buffer_Arena {
     {
         BUFFER_COUNT = count;
         buf1.GetIPCSharedMemory(
-            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_FIRST") + id), BUFFER_COUNT);
+            fs::path(std::string("PDJE_INPUT_SHMEM_BUF_FIRST") + id), BUFFER_COUNT);
         buf2.GetIPCSharedMemory(
-            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_SECOND") + id), BUFFER_COUNT);
+            fs::path(std::string("PDJE_INPUT_SHMEM_BUF_SECOND") + id), BUFFER_COUNT);
         first_count.GetIPCSharedMemory(
-            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_COUNT_FIRST") + id), 1);
+            fs::path(std::string("PDJE_INPUT_SHMEM_BUF_COUNT_FIRST") + id), 1);
         second_count.GetIPCSharedMemory(
-            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_COUNT_SECOND") + id), 1);
+            fs::path(std::string("PDJE_INPUT_SHMEM_BUF_COUNT_SECOND") + id), 1);
         lock.GetIPCSharedMemory(
-            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_LOCK") + id), 1);
+            fs::path(std::string("PDJE_INPUT_SHMEM_LOCK") + id), 1);
         buf_first.GetIPCSharedMemory(
-            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUFFER_SWITCH") + id), 1);
+            fs::path(std::string("PDJE_INPUT_SHMEM_BUFFER_SWITCH") + id), 1);
         buffer_first_pointer_cache  = buf1.ptr;
         buffer_second_pointer_cache = buf2.ptr;
     }
@@ -63,22 +56,22 @@ template <typename T> class PDJE_Buffer_Arena {
         std::uniform_int_distribution<int> dis(0, INT_MAX);
         ID = fs::path(std::to_string(dis(gen)));
         buf1.MakeIPCSharedMemory(
-            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_FIRST") +
+            fs::path(std::string("PDJE_INPUT_SHMEM_BUF_FIRST") +
                                   ID.string()),BUFFER_COUNT);
         buf2.MakeIPCSharedMemory(
-            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_SECOND") +
+            fs::path(std::string("PDJE_INPUT_SHMEM_BUF_SECOND") +
                                   ID.string()), BUFFER_COUNT);
         first_count.MakeIPCSharedMemory(
-            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_COUNT_FIRST") +
+            fs::path(std::string("PDJE_INPUT_SHMEM_BUF_COUNT_FIRST") +
                                   ID.string()), 1);
         second_count.MakeIPCSharedMemory(
-            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUF_COUNT_SECOND") +
+            fs::path(std::string("PDJE_INPUT_SHMEM_BUF_COUNT_SECOND") +
                                   ID.string()), 1);
         lock.MakeIPCSharedMemory(
-            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_LOCK") +
+            fs::path(std::string("PDJE_INPUT_SHMEM_LOCK") +
                                   ID.string()), 1);
         buf_first.MakeIPCSharedMemory(
-            fs::path(SHM_PATH("PDJE_INPUT_SHMEM_BUFFER_SWITCH") +
+            fs::path(std::string("PDJE_INPUT_SHMEM_BUFFER_SWITCH") +
                                   ID.string()), 1);
         buffer_first_pointer_cache  = buf1.ptr;
         buffer_second_pointer_cache = buf2.ptr;

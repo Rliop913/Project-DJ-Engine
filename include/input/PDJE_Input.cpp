@@ -1,16 +1,6 @@
 #include "PDJE_Input.hpp"
 #include "PDJE_LOG_SETTER.hpp"
-#define PDJE_INPUT_DEFAULT_TRY_CATCH(CODE)                                     \
-    try {                                                                      \
-        CODE                                                                   \
-    } catch (const std::exception &e) {                                        \
-        state = PDJE_INPUT_STATE::DEAD;                                        \
-        critlog("failed to execute code. WHY: ");                              \
-        critlog(e.what());                                                     \
-        ErrLog += e.what();                                                    \
-        ErrLog += "\n";                                                        \
-        return false;                                                          \
-    }
+
 
 PDJE_Input::PDJE_Input()
 : input_buffer(2048)
@@ -38,9 +28,9 @@ PDJE_Input::Init()
 
         http_bridge->SendBufferArena(input_buffer);
         
-        spinlock_run.MakeIPCSharedMemory(SHM_PATH(std::string("PDJE_SPINLOCK")), 1);
+        spinlock_run.MakeIPCSharedMemory(std::string("PDJE_SPINLOCK"), 1);
         (*spinlock_run.ptr) = 0;
-        http_bridge->SendIPCSharedMemory(spinlock_run, SHM_PATH(std::string("PDJE_SPINLOCK")), "spinlock");
+        http_bridge->SendIPCSharedMemory(spinlock_run, std::string("PDJE_SPINLOCK"), "spinlock");
             state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
             return true;
         }
@@ -50,10 +40,6 @@ PDJE_Input::Init()
             critlog(e.what());
             return false;
         }
-    // PDJE_INPUT_DEFAULT_TRY_CATCH(
-    //     // data.TrigLoop();
-    //     state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
-    //     return true;)
 }
 
 bool
@@ -146,10 +132,7 @@ PDJE_Input::Kill()
         critlog("the pdje input module state is broken...why?");
         return false;
     }
-    // data.ResetLoop();
     state = PDJE_INPUT_STATE::DEAD;
-    // ResetOneShot(config_promise, data.config_data, data.config_sync);
-    // ResetOneShot(run_command, data.run_ok, data.run_sync);
     return true;
 }
 
