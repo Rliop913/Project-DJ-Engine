@@ -79,6 +79,7 @@ ${PDJE_INCLUDE_ROOT}/include/input/IPC/
 ${PDJE_INCLUDE_ROOT}/include/input/IPC/common
 ${PDJE_INCLUDE_ROOT}/include/input/IPC/memory
 ${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission
+${httplib_SOURCE_DIR}
 )
 
 
