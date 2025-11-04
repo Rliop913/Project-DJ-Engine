@@ -68,8 +68,8 @@ main()
                 {
                         
                     std::cout << "time: " << got.first[idx].microSecond << std::endl;
-                    // std::cout << "id: " << got.first[idx].id << std::endl;
-                    // std::cout << "name: " << got.first[idx].name << std::endl;
+                    std::cout << "id: " << got.first[idx].id << std::endl;
+                    std::cout << "name: " << got.first[idx].name << std::endl;
                     
                     if (got.first[idx].type == PDJE_Dev_Type::KEYBOARD) {
                         

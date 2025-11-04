@@ -23,9 +23,9 @@ template <typename T> class PDJE_Buffer_Arena {
 
     PDJE_IPC::SharedMem<std::atomic_flag, PDJE_IPC::PDJE_IPC_RW> lock;
     PDJE_IPC::SharedMem<uint8_t, PDJE_IPC::PDJE_IPC_RW>          buf_first;
-    
+
     T       *buffer_first_pointer_cache  = nullptr;
-    T       *buffer_second_pointer_cache = nullptr;
+    T       *buffer_second_pointer_cache = nullptr;    
     
     public:
     uint64_t BUFFER_COUNT                = 0;
@@ -92,7 +92,6 @@ template <typename T> class PDJE_Buffer_Arena {
 
     ~PDJE_Buffer_Arena() = default;
 };
-
 template <typename T>
 void
 PDJE_Buffer_Arena<T>::Write(const T &data)
@@ -106,16 +105,17 @@ PDJE_Buffer_Arena<T>::Write(const T &data)
             lock.ptr->clear(std::memory_order_release); // unlock
             return;
         }
-        *buffer_first_pointer_cache = data;
-        ++buffer_first_pointer_cache;
+        
+        buf1.ptr[*(first_count.ptr)] = data;
         ++(*first_count.ptr);
+        
+
     } else {
         if ((*second_count.ptr) >= BUFFER_COUNT) {
             lock.ptr->clear(std::memory_order_release); // unlock
             return;
         }
-        *buffer_second_pointer_cache = data;
-        ++buffer_second_pointer_cache;
+        buf2.ptr[(*second_count.ptr)] = data;
         ++(*second_count.ptr);
     }
     lock.ptr->clear(std::memory_order_release); // unlock
@@ -128,10 +128,8 @@ PDJE_Buffer_Arena<T>::Get()
     while (lock.ptr->test_and_set(std::memory_order_acquire)) {
     }
     if (*buf_first.ptr == 1) {
-        buffer_second_pointer_cache = buf2.ptr;
         (*second_count.ptr)         = 0;
     } else {
-        buffer_first_pointer_cache = buf1.ptr;
         (*first_count.ptr)         = 0;
     }
 
@@ -139,8 +137,8 @@ PDJE_Buffer_Arena<T>::Get()
 
     lock.ptr->clear(std::memory_order_release);
     if ((*buf_first.ptr) == 1) {
-        return std::pair(buf2.ptr, (*second_count.ptr));
+        return std::pair(buffer_second_pointer_cache, (*second_count.ptr));
     } else {
-        return std::pair(buf1.ptr, (*first_count.ptr));
+        return std::pair(buffer_first_pointer_cache, (*first_count.ptr));
     }
 }

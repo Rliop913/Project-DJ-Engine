@@ -45,7 +45,7 @@ void
     PDJE_Input_Event                                    tempEv;
     handlestr.reserve(100);
     PDJE_HID_Event   hidEv;
-    std::bitset<101> isPressed;
+    std::bitset<102> isPressed;
     bool             Writable = true;
     auto killer = std::thread([&](){
         while(*spinlock_run->ptr == 1){
@@ -163,13 +163,6 @@ void
                         memcpy(cachedLog.name, namestr.data(), sizeof(char)*(cachedLog.name_len));
                         cachedLog.microSecond = now;
                         input_buffer->Write(cachedLog);
-                        CRASH_HERE.//버퍼 싱크 이상함. cachedLog는 정상, MainProcess에서 분석할때 이상한 데이터를 받음. 예상으론, 처음 기록을 받으나, 이후 get에서 새로운 데이터로 갱신되지 않고 있음.
-                        critlog(cachedLog.microSecond);
-                        critlog((int)(cachedLog.event.keyboard.k));
-                        critlog(cachedLog.event.keyboard.pressed);
-                        // critlog(cachedLog.microSecond);
-                        
-                        // std::cout << cachedLog.microSecond << ", " <<cachedLog.event.keyboard.k << ",," << cachedLog.event.keyboard.pressed <<std::endl;
                     }
                 }
 
@@ -185,6 +178,8 @@ void
             critlog(e.what());
         }
     }
+    
+    killer.join();
     }
 
 };
