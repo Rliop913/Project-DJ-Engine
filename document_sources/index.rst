@@ -117,11 +117,11 @@ MileStones
     section DJ + DAW + HPC + AI Rhythm Engine
       1.2.0 : Basic Utility Module Implemented
       1.5.0 : OnnxRuntime Integration Utility Module
-      2.0.0 : OnnxRuntime Integrated with OKL (OCCA Kernel Language)
+      2.0.0 : OnnxRuntime Integrated with AdaptiveCPP
             : Cross-Vendor GPGPU Support Enabled
 
 
-
+See: AdaptiveCPP (https://github.com/AdaptiveCpp/AdaptiveCpp)
 
 Use Cases
 ---------
@@ -131,7 +131,7 @@ PDJE is ideal for:
 - **Custom rhythm‑game development** with built‑in mixing
 - **Realtime + Pre-made DJ performance**
 - **In‑game music editors and DAW** for dynamic chart and mixset creation
-- **Low Latency Input** for linux(io_uring) and windows(rawinput).
+- **Low Latency Input** for linux(epoll + RT mode) and windows(rawinput).
   
 Additional Resources
 --------------------
@@ -148,12 +148,37 @@ CI/CD Call Graph
 
 .. mermaid:: 
   
-  flowchart TD
-  Project_DJ_Engine --> PDJE_Godot_Plugin
-  PDJE_Godot_Plugin --> Project_DJ_Godot
+%%{init: {'flowchart': {'curve': 'stepAfter'}}}%%
+flowchart TD
 
-  origin_build_success --> Project_DJ_Engine
-  manual_release --> PDJE_Godot_Plugin
+  subgraph CORE_DEVELOP
+    push_to_core/dev --> core/dev
+    core/dev --> core/dev_build_test
+    core/dev_build_test --> core/main
+    core/main --> core/main_build_test
+  end
+
+  subgraph VALID_CHECK
+    RELEASE --> self_clone/git_lfs_test
+    self_clone/git_lfs_test --> PASS
+    self_clone/git_lfs_test --> FAIL
+    FAIL --> revert_commit
+  end
+  subgraph WRAPPER_DEVELOP
+    push_to_wrapper/dev --> wrapper/dev
+    wrapper/dev --> wrapper/dev_build_test
+    core/dev --> wrapper/dev_build_test
+    wrapper/dev_build_test --> wrapper/main
+    wrapper/main --> wrapper/main_build_test
+    core/main --> wrapper/main_build_test
+  end
+
+CORE_DEVELOP --> Project_DJ_Engine
+WRAPPER_DEVELOP --> PDJE_Godot_Plugin
+Project_DJ_Engine -->|TRIG_CICD| PDJE_Godot_Plugin
+PDJE_Godot_Plugin -->|RELEASE| Project_DJ_Godot
+Project_DJ_Godot --> VALID_CHECK
+
 
 
 

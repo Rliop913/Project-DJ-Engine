@@ -1,7 +1,7 @@
 
-.. _file_include_input_linux_linux_input.hpp:
+.. _file_include_input_linux_LINUX_INPUT.hpp:
 
-File linux_input.hpp
+File LINUX_INPUT.hpp
 ====================
 
 |exhale_lsh| :ref:`Parent directory <dir_include_input_linux>` (``include/input/linux``)
@@ -13,14 +13,14 @@ File linux_input.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/linux/linux_input.hpp``)
+Definition (``include/input/linux/LINUX_INPUT.hpp``)
 ----------------------------------------------------
 
 
 .. toctree::
    :maxdepth: 1
 
-   program_listing_file_include_input_linux_linux_input.hpp.rst
+   program_listing_file_include_input_linux_LINUX_INPUT.hpp.rst
 
 
 
@@ -30,15 +30,9 @@ Includes
 --------
 
 
-- ``Input_State.hpp`` (:ref:`file_include_global_DataLines_Input_State.hpp`)
+- ``PDJE_INPUT.hpp`` (:ref:`file_include_input_PDJE_INPUT.hpp`)
 
-- ``PDJE_Input_DataLine.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_DataLine.hpp`)
-
-- ``PDJE_Input_Device_Data.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_Device_Data.hpp`)
-
-- ``linux_socket.hpp`` (:ref:`file_include_input_linux_socket_linux_socket.hpp`)
-
-- ``nlohmann/json.hpp``
+- ``libevdev-1.0/libevdev/libevdev.h``
 
 
 
@@ -46,9 +40,15 @@ Included By
 -----------
 
 
-- :ref:`file_include_input_PDJE_Input.hpp`
+- :ref:`file_include_input_linux_LINUX_I.cpp`
 
-- :ref:`file_include_input_linux_linux_input.cpp`
+- :ref:`file_include_input_linux_LINUX_SUDO_GETTER.cpp`
+
+- :ref:`file_include_tests_INPUT_TESTS_evdevtest.cpp`
+
+- :ref:`file_include_tests_INPUT_TESTS_linux_I_WAITER.cpp`
+
+- :ref:`file_include_tests_INPUT_TESTS_linux_I_WAKER.cpp`
 
 
 
@@ -57,5 +57,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classOS__Input`
+- :ref:`exhale_class_classLinuxEVDEV`
 
