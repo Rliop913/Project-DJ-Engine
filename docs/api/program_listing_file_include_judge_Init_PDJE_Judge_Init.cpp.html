@@ -106,8 +106,7 @@
 <span class="kt">void</span>
 <span class="nf">Judge_Init::SetInputLine</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_INPUT_DATA_LINE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">_inputline</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_inputline</span><span class="p">.</span><span class="n">input_arena</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">        </span><span class="n">_inputline</span><span class="p">.</span><span class="n">id_name_conv</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_inputline</span><span class="p">.</span><span class="n">input_arena</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">inputline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_inputline</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -115,7 +114,7 @@
 <span class="kt">void</span>
 <span class="nf">Judge_Init::SetInputRule</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">INPUT_CONFIG</span><span class="w"> </span><span class="o">&amp;</span><span class="n">device_config</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">device_config</span><span class="p">.</span><span class="n">Device_ID</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">){</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">device_config</span><span class="p">.</span><span class="n">Device_ID</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">INPUT_RULE</span><span class="w"> </span><span class="n">rule</span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">Device_ID</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">device_config</span><span class="p">.</span><span class="n">Device_ID</span><span class="p">,</span>
@@ -192,7 +191,7 @@
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">DefaultFill</span><span class="p">(</span><span class="n">tempobj</span><span class="p">,</span><span class="w"> </span><span class="n">railID</span><span class="p">,</span><span class="w"> </span><span class="n">micro_Y1</span><span class="p">,</span><span class="w"> </span><span class="n">micro_Y2</span><span class="p">);</span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;push mouse, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">micro_Y1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">micro_Y2</span>
-<span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">                      </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">MIDI</span><span class="p">:</span>

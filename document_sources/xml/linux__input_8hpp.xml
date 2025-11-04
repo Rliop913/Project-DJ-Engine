@@ -7,7 +7,6 @@
     <includes refid="PDJE__Input__Device__Data_8hpp" local="yes">PDJE_Input_Device_Data.hpp</includes>
     <includes refid="linux__socket_8hpp" local="yes">linux_socket.hpp</includes>
     <includes local="no">nlohmann/json.hpp</includes>
-    <includedby refid="PDJE__Input_8hpp" local="yes">include/input/PDJE_Input.hpp</includedby>
     <includedby refid="linux__input_8cpp" local="yes">include/input/linux/linux_input.cpp</includedby>
     <incdepgraph>
       <node id="2">
@@ -31,7 +30,11 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
         <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -45,17 +48,17 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="12">
+      <node id="30">
         <label>PDJE_Input_Device_Data.hpp</label>
         <link refid="PDJE__Input__Device__Data_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -68,16 +71,66 @@
         <label>PDJE_EXPORT_SETTER.hpp</label>
         <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
-      <node id="16">
-        <label>IPC_SHARE_MEM.hpp</label>
-        <link refid="IPC__SHARE__MEM_8hpp"/>
-        <childnode refid="17" relation="include">
+      <node id="13">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>PDJE_INPUT_PROCESS_HASH.hpp</label>
+        <link refid="PDJE__INPUT__PROCESS__HASH_8hpp"/>
+      </node>
+      <node id="11">
+        <label>ipc_shared_memory.hpp</label>
+        <link refid="ipc__shared__memory_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>IPC_SHARE_MEM.hpp</label>
+        <link refid="IPC__SHARE__MEM_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -87,57 +140,99 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="33">
         <label>linux_socket.hpp</label>
         <link refid="linux__socket_8hpp"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="11">
+      <node id="21">
+        <label>algorithm</label>
+      </node>
+      <node id="28">
         <label>atomic</label>
+      </node>
+      <node id="22">
+        <label>cctype</label>
+      </node>
+      <node id="23">
+        <label>cstddef</label>
+      </node>
+      <node id="14">
+        <label>filesystem</label>
+      </node>
+      <node id="24">
+        <label>fstream</label>
       </node>
       <node id="3">
         <label>future</label>
       </node>
-      <node id="13">
+      <node id="25">
+        <label>ios</label>
+      </node>
+      <node id="31">
         <label>latch</label>
       </node>
-      <node id="17">
+      <node id="26">
         <label>limits</label>
       </node>
       <node id="4">
         <label>memory_resource</label>
       </node>
-      <node id="21">
+      <node id="15">
+        <label>mutex</label>
+      </node>
+      <node id="38">
         <label>nlohmann/json.hpp</label>
       </node>
       <node id="5">
         <label>optional</label>
       </node>
+      <node id="27">
+        <label>picosha2.h</label>
+      </node>
+      <node id="29">
+        <label>random</label>
+      </node>
+      <node id="16">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="17">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="18">
+        <label>spdlog/spdlog.h</label>
+      </node>
       <node id="6">
         <label>string</label>
       </node>
-      <node id="18">
+      <node id="19">
+        <label>string_view</label>
+      </node>
+      <node id="35">
         <label>sys/mman.h</label>
       </node>
-      <node id="20">
+      <node id="37">
         <label>sys/socket.h</label>
       </node>
-      <node id="19">
+      <node id="20">
+        <label>type_traits</label>
+      </node>
+      <node id="36">
         <label>unistd.h</label>
       </node>
-      <node id="14">
+      <node id="32">
         <label>unordered_map</label>
       </node>
       <node id="7">
@@ -145,23 +240,7 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3">
-        <label>include/input/PDJE_Input.cpp</label>
-        <link refid="PDJE__Input_8cpp"/>
-      </node>
       <node id="2">
-        <label>include/input/PDJE_Input.hpp</label>
-        <link refid="PDJE__Input_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
         <label>include/input/linux/linux_input.cpp</label>
         <link refid="linux__input_8cpp"/>
       </node>
@@ -170,20 +249,6 @@
         <link refid="linux__input_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>include/input/windows/windows_input.cpp</label>
-        <link refid="windows__input_8cpp"/>
-      </node>
-      <node id="5">
-        <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
-        <link refid="pdjeInputTest_8cpp"/>
-      </node>
-      <node id="6">
-        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
-        <link refid="judgeTest_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classOS__Input" prot="public">OS_Input</innerclass>
@@ -205,37 +270,35 @@
 <codeline lineno="11" refid="classOS__Input_1ac0fb5fb7bfcc38a496f3ef475c3ef543" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket" kindref="compound">PDJE_LINUX::PDJE_Socket</ref><sp/><ref refid="classOS__Input_1ac0fb5fb7bfcc38a496f3ef475c3ef543" kindref="member">socket</ref>;</highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="14" refid="classOS__Input_1a60d0ad2aae20ad34df25f7ced3f6dda9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1a3a873a3d426e1f5e696c75ac9a68e557" kindref="member">ONE_SHOT_DEV_FUTURE</ref><sp/><ref refid="classOS__Input_1a60d0ad2aae20ad34df25f7ced3f6dda9" kindref="member">config_data</ref>;</highlight></codeline>
-<codeline lineno="15" refid="classOS__Input_1a1ae2beb6665f273f99a0f9c167bd1df4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1ad828f376eddb4ee05af4efb4f169f1df" kindref="member">ONE_SHOT_SYNC</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1a1ae2beb6665f273f99a0f9c167bd1df4" kindref="member">config_sync</ref>;</highlight></codeline>
-<codeline lineno="16" refid="classOS__Input_1a1534b3f617505438f0b84929c32bb261" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a821478f084c5bbe8413cfe70b427f702" kindref="member">ONE_SHOT_RUN_FUTURE</ref><sp/><ref refid="classOS__Input_1a1534b3f617505438f0b84929c32bb261" kindref="member">run_ok</ref>;</highlight></codeline>
-<codeline lineno="17" refid="classOS__Input_1a570ff78c4ddb662dce1fdeac51bb70a3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1ad828f376eddb4ee05af4efb4f169f1df" kindref="member">ONE_SHOT_SYNC</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1a570ff78c4ddb662dce1fdeac51bb70a3" kindref="member">run_sync</ref>;</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__INPUT__DATA__LINE" kindref="compound">PDJE_INPUT_DATA_LINE</ref></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1ad9e86505f15f2af9e0e772e99032f5de" kindref="member">PullOutDataLine</ref>();</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22" refid="classOS__Input_1a3a94e57f03ba728c189020de199610f6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1a3a94e57f03ba728c189020de199610f6" kindref="member">kill</ref>()</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>todo-<sp/>impl<sp/>this</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;DeviceData&gt;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1a1e267997049cb562cb4b8d4dfe2f218e" kindref="member">getDevices</ref>();</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1a1c5d8c5f98de73baa8282fe5b1afcf6a" kindref="member">setDevices</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref><sp/>&amp;devs);</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32" refid="classOS__Input_1aefbbfd14e2902be2a2bb8fabb1d23cdd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1aefbbfd14e2902be2a2bb8fabb1d23cdd" kindref="member">TrigLoop</ref>()</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>todo-<sp/>impl<sp/>this</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36" refid="classOS__Input_1ae3c00214a561fe8736dc37024b88e420" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1ae3c00214a561fe8736dc37024b88e420" kindref="member">ResetLoop</ref>()</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>todo-<sp/>impl<sp/>this</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1a40d69fae9cf08cdaf17e5f4f09a3af22" kindref="member">EndSocketTransmission</ref>();</highlight></codeline>
-<codeline lineno="42" refid="classOS__Input_1ad60a928a455493a7648d1a4d0f97842b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1ad60a928a455493a7648d1a4d0f97842b" kindref="member">OS_Input</ref>()<sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="43" refid="classOS__Input_1aaa92fde24c900ea303ff039882a076bf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1aaa92fde24c900ea303ff039882a076bf" kindref="member">~OS_Input</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="44"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__INPUT__DATA__LINE" kindref="compound">PDJE_INPUT_DATA_LINE</ref></highlight></codeline>
+<codeline lineno="15" refid="classOS__Input_1ad9e86505f15f2af9e0e772e99032f5de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1ad9e86505f15f2af9e0e772e99032f5de" kindref="member">PullOutDataLine</ref>()</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{};</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classOS__Input_1a3a94e57f03ba728c189020de199610f6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1a3a94e57f03ba728c189020de199610f6" kindref="member">kill</ref>()</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>todo-<sp/>impl<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;DeviceData&gt;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1a1e267997049cb562cb4b8d4dfe2f218e" kindref="member">getDevices</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1a1c5d8c5f98de73baa8282fe5b1afcf6a" kindref="member">setDevices</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref><sp/>&amp;devs);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classOS__Input_1aefbbfd14e2902be2a2bb8fabb1d23cdd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1aefbbfd14e2902be2a2bb8fabb1d23cdd" kindref="member">TrigLoop</ref>()</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>todo-<sp/>impl<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classOS__Input_1ae3c00214a561fe8736dc37024b88e420" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1ae3c00214a561fe8736dc37024b88e420" kindref="member">ResetLoop</ref>()</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>todo-<sp/>impl<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1a40d69fae9cf08cdaf17e5f4f09a3af22" kindref="member">EndSocketTransmission</ref>();</highlight></codeline>
+<codeline lineno="40" refid="classOS__Input_1ad60a928a455493a7648d1a4d0f97842b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1ad60a928a455493a7648d1a4d0f97842b" kindref="member">OS_Input</ref>()<sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41" refid="classOS__Input_1aaa92fde24c900ea303ff039882a076bf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1aaa92fde24c900ea303ff039882a076bf" kindref="member">~OS_Input</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="include/input/linux/linux_input.hpp"/>
   </compounddef>

@@ -9,37 +9,9 @@
       </param>
     </templateparamlist>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" prot="private" static="no" mutable="no">
-        <type>std::pmr::unsynchronized_pool_resource</type>
-        <definition>std::pmr::unsynchronized_pool_resource PDJE_Buffer_Arena&lt; T &gt;::arena</definition>
-        <argsstring></argsstring>
-        <name>arena</name>
-        <qualifiedname>PDJE_Buffer_Arena::arena</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="11" column="44" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="11" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1a822fe4a99b5142f964f5c8982eef68ff" prot="private" static="no" mutable="no">
-        <type>std::pmr::polymorphic_allocator&lt; <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &gt;</type>
-        <definition>std::pmr::polymorphic_allocator&lt;T&gt; PDJE_Buffer_Arena&lt; T &gt;::allocator</definition>
-        <argsstring></argsstring>
-        <name>allocator</name>
-        <qualifiedname>PDJE_Buffer_Arena::allocator</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="12" column="41" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="12" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" prot="private" static="no" mutable="no">
-        <type>std::pmr::vector&lt; <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &gt;</type>
-        <definition>std::pmr::vector&lt;T&gt; PDJE_Buffer_Arena&lt; T &gt;::buf1</definition>
+      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1a0f375d3a7e96e70f251312d106cd6482" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">PDJE_IPC::SharedMem</ref>&lt; <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref>, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC::PDJE_IPC_RW</ref> &gt;</type>
+        <definition>PDJE_IPC::SharedMem&lt;T, PDJE_IPC::PDJE_IPC_RW&gt; PDJE_Buffer_Arena&lt; T &gt;::buf1</definition>
         <argsstring></argsstring>
         <name>buf1</name>
         <qualifiedname>PDJE_Buffer_Arena::buf1</qualifiedname>
@@ -49,11 +21,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="13" column="41" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="13" bodyend="-1"/>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="12" column="32" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="12" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" prot="private" static="no" mutable="no">
-        <type>std::pmr::vector&lt; <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &gt;</type>
-        <definition>std::pmr::vector&lt;T&gt; PDJE_Buffer_Arena&lt; T &gt;::buf2</definition>
+      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1a833aa120793d571725ceda8199b80b7b" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">PDJE_IPC::SharedMem</ref>&lt; <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref>, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC::PDJE_IPC_RW</ref> &gt;</type>
+        <definition>PDJE_IPC::SharedMem&lt;T, PDJE_IPC::PDJE_IPC_RW&gt; PDJE_Buffer_Arena&lt; T &gt;::buf2</definition>
         <argsstring></argsstring>
         <name>buf2</name>
         <qualifiedname>PDJE_Buffer_Arena::buf2</qualifiedname>
@@ -63,37 +35,124 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="14" column="41" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="14" bodyend="-1"/>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="13" column="32" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="13" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" prot="private" static="no" mutable="no">
-        <type>std::atomic_flag</type>
-        <definition>std::atomic_flag PDJE_Buffer_Arena&lt; T &gt;::lock</definition>
+      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1a1a7921597b771bae140df75ce57f6f7f" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">PDJE_IPC::SharedMem</ref>&lt; uint64_t, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC::PDJE_IPC_RW</ref> &gt;</type>
+        <definition>PDJE_IPC::SharedMem&lt;uint64_t, PDJE_IPC::PDJE_IPC_RW&gt; PDJE_Buffer_Arena&lt; T &gt;::first_count</definition>
+        <argsstring></argsstring>
+        <name>first_count</name>
+        <qualifiedname>PDJE_Buffer_Arena::first_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="14" column="25" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1a4f3883e92e9dc5f597c85b689fd03a98" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">PDJE_IPC::SharedMem</ref>&lt; uint64_t, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC::PDJE_IPC_RW</ref> &gt;</type>
+        <definition>PDJE_IPC::SharedMem&lt;uint64_t, PDJE_IPC::PDJE_IPC_RW&gt; PDJE_Buffer_Arena&lt; T &gt;::second_count</definition>
+        <argsstring></argsstring>
+        <name>second_count</name>
+        <qualifiedname>PDJE_Buffer_Arena::second_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="15" column="25" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1ae4a02e55484c80248f01a67077dd92ff" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">PDJE_IPC::SharedMem</ref>&lt; std::atomic_flag, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC::PDJE_IPC_RW</ref> &gt;</type>
+        <definition>PDJE_IPC::SharedMem&lt;std::atomic_flag, PDJE_IPC::PDJE_IPC_RW&gt; PDJE_Buffer_Arena&lt; T &gt;::lock</definition>
         <argsstring></argsstring>
         <name>lock</name>
         <qualifiedname>PDJE_Buffer_Arena::lock</qualifiedname>
-        <initializer>= ATOMIC_FLAG_INIT</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="15" column="44" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="15" bodyend="-1"/>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="17" column="25" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="17" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool PDJE_Buffer_Arena&lt; T &gt;::buf_first</definition>
+      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1a9de4c7b2af884a97edd7de4f026a8c01" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">PDJE_IPC::SharedMem</ref>&lt; uint8_t, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC::PDJE_IPC_RW</ref> &gt;</type>
+        <definition>PDJE_IPC::SharedMem&lt;uint8_t, PDJE_IPC::PDJE_IPC_RW&gt; PDJE_Buffer_Arena&lt; T &gt;::buf_first</definition>
         <argsstring></argsstring>
         <name>buf_first</name>
         <qualifiedname>PDJE_Buffer_Arena::buf_first</qualifiedname>
-        <initializer>= true</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="16" column="44" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="16" bodyend="-1"/>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="18" column="34" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1a34327e05a9b199a9fb19cc01af0d6c04" prot="private" static="no" mutable="no">
+        <type><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> *</type>
+        <definition>T* PDJE_Buffer_Arena&lt; T &gt;::buffer_first_pointer_cache</definition>
+        <argsstring></argsstring>
+        <name>buffer_first_pointer_cache</name>
+        <qualifiedname>PDJE_Buffer_Arena::buffer_first_pointer_cache</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="20" column="13" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1a0603cedc1f602284dd8e40b8b9f294f8" prot="private" static="no" mutable="no">
+        <type><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> *</type>
+        <definition>T* PDJE_Buffer_Arena&lt; T &gt;::buffer_second_pointer_cache</definition>
+        <argsstring></argsstring>
+        <name>buffer_second_pointer_cache</name>
+        <qualifiedname>PDJE_Buffer_Arena::buffer_second_pointer_cache</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="21" column="13" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1a9e91f0749cac862651e4f6243704d3cc" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t PDJE_Buffer_Arena&lt; T &gt;::BUFFER_COUNT</definition>
+        <argsstring></argsstring>
+        <name>BUFFER_COUNT</name>
+        <qualifiedname>PDJE_Buffer_Arena::BUFFER_COUNT</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="24" column="14" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Buffer__Arena_1a3d479077681e9d3a6e868318e3689d7e" prot="public" static="no" mutable="no">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path PDJE_Buffer_Arena&lt; T &gt;::ID</definition>
+        <argsstring></argsstring>
+        <name>ID</name>
+        <qualifiedname>PDJE_Buffer_Arena::ID</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="25" column="27" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="25" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -113,11 +172,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="20" column="5" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="37" bodyend="50"/>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="27" column="5" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="90" bodyend="115"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__Buffer__Arena_1a8a0f1ef287e498607251c5ecda60efca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::pmr::vector&lt; <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &gt; *</type>
-        <definition>std::pmr::vector&lt; T &gt; * PDJE_Buffer_Arena&lt; T &gt;::Get</definition>
+      <memberdef kind="function" id="classPDJE__Buffer__Arena_1a97d9a8c0dffc0806f9c1de8a0b79d93c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::pair&lt; <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> *, uint64_t &gt;</type>
+        <definition>std::pair&lt; T *, uint64_t &gt; PDJE_Buffer_Arena&lt; T &gt;::Get</definition>
         <argsstring>()</argsstring>
         <name>Get</name>
         <qualifiedname>PDJE_Buffer_Arena::Get</qualifiedname>
@@ -127,21 +186,47 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="23" column="5" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="54" bodyend="62"/>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="30" column="5" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="119" bodyend="137"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__Buffer__Arena_1a8e87e9f89928cbcec67d1ddd67f4b8d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__Buffer__Arena_1a68a9dac418baa258b9fc06ed71bb68b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PDJE_Buffer_Arena&lt; T &gt;::PDJE_Buffer_Arena</definition>
-        <argsstring>()</argsstring>
+        <argsstring>(const std::string &amp;id, const uint64_t count)</argsstring>
         <name>PDJE_Buffer_Arena</name>
         <qualifiedname>PDJE_Buffer_Arena::PDJE_Buffer_Arena</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const uint64_t</type>
+          <declname>count</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="25" column="5" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="25" bodyend="30"/>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="32" column="5" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="32" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__Buffer__Arena_1a539ef48af24b36aa1c36437091a3731a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_Buffer_Arena&lt; T &gt;::PDJE_Buffer_Arena</definition>
+        <argsstring>(const uint64_t count)</argsstring>
+        <name>PDJE_Buffer_Arena</name>
+        <qualifiedname>PDJE_Buffer_Arena::PDJE_Buffer_Arena</qualifiedname>
+        <param>
+          <type>const uint64_t</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="51" column="5" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="51" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Buffer__Arena_1a29f47d258d824c510c8bb960ba52f826" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -155,23 +240,64 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="32" column="5"/>
+        <location file="include/global/DataLines/PDJE_Buffer.hpp" line="86" column="5"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/global/DataLines/PDJE_Buffer.hpp" line="9" column="12" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="9" bodyend="33"/>
+    <collaborationgraph>
+      <node id="1">
+        <label>PDJE_Buffer_Arena&lt; T &gt;</label>
+        <link refid="classPDJE__Buffer__Arena"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>buf1</edgelabel>
+          <edgelabel>buf2</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>first_count</edgelabel>
+          <edgelabel>second_count</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>lock</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>buf_first</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PDJE_IPC::SharedMem&lt; T, PDJE_IPC::PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="4">
+        <label>PDJE_IPC::SharedMem&lt; std::atomic_flag, PDJE_IPC::PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="3">
+        <label>PDJE_IPC::SharedMem&lt; uint64_t, PDJE_IPC::PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="5">
+        <label>PDJE_IPC::SharedMem&lt; uint8_t, PDJE_IPC::PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/global/DataLines/PDJE_Buffer.hpp" line="10" column="12" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="10" bodyend="87"/>
     <listofallmembers>
-      <member refid="classPDJE__Buffer__Arena_1a822fe4a99b5142f964f5c8982eef68ff" prot="private" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>allocator</name></member>
-      <member refid="classPDJE__Buffer__Arena_1a3a11fc9b53c1adc113d4a5ff014b0261" prot="private" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>arena</name></member>
-      <member refid="classPDJE__Buffer__Arena_1adc947df2fd02e978f98f93abdd12f078" prot="private" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>buf1</name></member>
-      <member refid="classPDJE__Buffer__Arena_1a1a936df6ba5b1a3612268a2afa51aefb" prot="private" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>buf2</name></member>
-      <member refid="classPDJE__Buffer__Arena_1ad68a6e8d87cebbe7d22c0464d29429e7" prot="private" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>buf_first</name></member>
-      <member refid="classPDJE__Buffer__Arena_1a8a0f1ef287e498607251c5ecda60efca" prot="public" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>Get</name></member>
-      <member refid="classPDJE__Buffer__Arena_1a8750ae066282aae19b57609277dc2c5a" prot="private" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>lock</name></member>
-      <member refid="classPDJE__Buffer__Arena_1a8e87e9f89928cbcec67d1ddd67f4b8d4" prot="public" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>PDJE_Buffer_Arena</name></member>
+      <member refid="classPDJE__Buffer__Arena_1a0f375d3a7e96e70f251312d106cd6482" prot="private" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>buf1</name></member>
+      <member refid="classPDJE__Buffer__Arena_1a833aa120793d571725ceda8199b80b7b" prot="private" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>buf2</name></member>
+      <member refid="classPDJE__Buffer__Arena_1a9de4c7b2af884a97edd7de4f026a8c01" prot="private" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>buf_first</name></member>
+      <member refid="classPDJE__Buffer__Arena_1a9e91f0749cac862651e4f6243704d3cc" prot="public" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>BUFFER_COUNT</name></member>
+      <member refid="classPDJE__Buffer__Arena_1a34327e05a9b199a9fb19cc01af0d6c04" prot="private" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>buffer_first_pointer_cache</name></member>
+      <member refid="classPDJE__Buffer__Arena_1a0603cedc1f602284dd8e40b8b9f294f8" prot="private" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>buffer_second_pointer_cache</name></member>
+      <member refid="classPDJE__Buffer__Arena_1a1a7921597b771bae140df75ce57f6f7f" prot="private" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>first_count</name></member>
+      <member refid="classPDJE__Buffer__Arena_1a97d9a8c0dffc0806f9c1de8a0b79d93c" prot="public" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>Get</name></member>
+      <member refid="classPDJE__Buffer__Arena_1a3d479077681e9d3a6e868318e3689d7e" prot="public" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>ID</name></member>
+      <member refid="classPDJE__Buffer__Arena_1ae4a02e55484c80248f01a67077dd92ff" prot="private" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>lock</name></member>
+      <member refid="classPDJE__Buffer__Arena_1a68a9dac418baa258b9fc06ed71bb68b1" prot="public" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>PDJE_Buffer_Arena</name></member>
+      <member refid="classPDJE__Buffer__Arena_1a539ef48af24b36aa1c36437091a3731a" prot="public" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>PDJE_Buffer_Arena</name></member>
+      <member refid="classPDJE__Buffer__Arena_1a4f3883e92e9dc5f597c85b689fd03a98" prot="private" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>second_count</name></member>
       <member refid="classPDJE__Buffer__Arena_1a933fbb7468c92d0edadc7cde7eb989a0" prot="public" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>Write</name></member>
       <member refid="classPDJE__Buffer__Arena_1a29f47d258d824c510c8bb960ba52f826" prot="public" virt="non-virtual"><scope>PDJE_Buffer_Arena</scope><name>~PDJE_Buffer_Arena</name></member>
     </listofallmembers>

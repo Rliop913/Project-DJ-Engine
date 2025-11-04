@@ -30,13 +30,15 @@ Includes
 --------
 
 
-- ``RTSocket.hpp`` (:ref:`file_include_input_linux_RT_RTSocket.hpp`)
+- ``ChildProcess.hpp`` (:ref:`file_include_input_IPC_transmission_ChildProcess.hpp`)
+
+- ``cstdio``
 
 - ``exception``
 
 - ``iostream``
 
-- ``memory``
+- ``memory`` (:ref:`file_include_input_IPC_memory_ipc_shared_memory.hpp`)
 
 
 

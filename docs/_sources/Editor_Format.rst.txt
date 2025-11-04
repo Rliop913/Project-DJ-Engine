@@ -168,7 +168,7 @@ In this case, the first field is treated as the new BPM value, ensuring synchron
 
 .. list-table:: Note Table
    :header-rows: 1
-   :widths: 15 20 15 15 15 15 15 15 15 15 20
+   :widths: 15 20 15 15 15 15 15 15 15 15 20 15
 
    * - Note_Type
      - Note_Detail
@@ -181,21 +181,23 @@ In this case, the first field is treated as the new BPM value, ensuring synchron
      - Ebeat
      - EsubBeat
      - Eseparate
+     - RailID
    * - TEXT
+     - uint16
      - TEXT
      - TEXT
      - TEXT
-     - TEXT
      - long
      - long
      - long
      - long
      - long
      - long
+     - uint64
 
 
 - The "BPM" Note_Type name is prefixed for the default bpm change implementation.
-
+- The "AXIS" Note_Type name is prefixed for the mouse movements. Warn: you need to implement your own judge logic
 
 
 About Beat & subBeat & Separate

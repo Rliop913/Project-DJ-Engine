@@ -76,8 +76,6 @@ Included By
 
 - :ref:`file_include_input_linux_RT_RTFunctionRegister.cpp`
 
-- :ref:`file_include_input_linux_RT_RTMain.cpp`
-
 - :ref:`file_include_input_linux_RT_RTSocket.cpp`
 
 - :ref:`file_include_input_linux_linux_input.cpp`

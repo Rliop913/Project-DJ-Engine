@@ -1575,17 +1575,18 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <span class="k">for</span><span class="w"> </span><span class="n">delete_target</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">edited_data</span><span class="p">[</span><span class="s2">&quot;noteDatas&quot;</span><span class="p">]:</span>
 <span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_EDITOR_ARG</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
 <span class="w">    </span><span class="n">target</span><span class="o">.</span><span class="n">InitNoteArg</span><span class="p">(</span>
-<span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;Note_Type&quot;</span><span class="p">],</span>
-<span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;Note_Detail&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;note_type&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;note_detail&quot;</span><span class="p">],</span>
 <span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">],</span>
 <span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;second&quot;</span><span class="p">],</span>
 <span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;third&quot;</span><span class="p">],</span>
 <span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;beat&quot;</span><span class="p">],</span>
 <span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;subBeat&quot;</span><span class="p">],</span>
 <span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;separate&quot;</span><span class="p">],</span>
-<span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;Ebeat&quot;</span><span class="p">],</span>
-<span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;EsubBeat&quot;</span><span class="p">],</span>
-<span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;Eseparate&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;e_beat&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;e_subBeat&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;e_separate&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="n">delete_target</span><span class="p">[</span><span class="s2">&quot;rail_id&quot;</span><span class="p">],</span>
 <span class="w">        </span><span class="p">)</span>
 <span class="w">    </span><span class="n">editor</span><span class="o">.</span><span class="n">deleteLine</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="bp">false</span><span class="p">,</span><span class="w"> </span><span class="bp">false</span><span class="p">)</span>
 </pre></div>
@@ -2000,7 +2001,7 @@ PYTHON</label><div class="sd-tab-content docutils">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-63">
 GDSCRIPT</label><div class="sd-tab-content docutils">
 <div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="n">editor</span><span class="o">.</span><span class="n">demoPlayInit</span><span class="p">(</span><span class="mi">48</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;track title&quot;</span><span class="p">)</span>
-<span class="k">var</span><span class="w"> </span><span class="n">demoplayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">GetPlayer</span><span class="p">()</span>
+<span class="k">var</span><span class="w"> </span><span class="n">demoplayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">GetPlayerdd</span><span class="p">()</span>
 <span class="n">demoplayer</span><span class="o">.</span><span class="n">Activate</span><span class="p">()</span>
 </pre></div>
 </div>

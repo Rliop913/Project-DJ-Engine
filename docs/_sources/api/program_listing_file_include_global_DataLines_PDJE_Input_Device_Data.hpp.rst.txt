@@ -24,6 +24,3 @@ Program Listing for File PDJE_Input_Device_Data.hpp
        std::string   device_specific_id;
    };
    using DEV_LIST             = std::vector<DeviceData>;
-   using ONE_SHOT_DEV_PROMISE = std::optional<std::promise<DEV_LIST>>;
-   using ONE_SHOT_DEV_FUTURE  = std::optional<std::future<DEV_LIST>>;
-   using ONE_SHOT_SYNC        = std::optional<std::latch>;

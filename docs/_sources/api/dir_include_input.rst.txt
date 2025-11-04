@@ -15,6 +15,7 @@ Directory input
 Subdirectories
 --------------
 
+- :ref:`dir_include_input_IPC`
 - :ref:`dir_include_input_linux`
 - :ref:`dir_include_input_windows`
 

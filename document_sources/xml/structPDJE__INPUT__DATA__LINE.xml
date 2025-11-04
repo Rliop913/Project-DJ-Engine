@@ -17,22 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="20" column="28" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="20" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="structPDJE__INPUT__DATA__LINE_1a3b102228ea21b8855b2b7c140944875f" prot="public" static="no" mutable="no">
-        <type>std::unordered_map&lt; <ref refid="PDJE__Input__DataLine_8hpp_1a73ea437825558867dcad305e6ab74cd9" kindref="member">PDJE_ID</ref>, <ref refid="PDJE__Input__DataLine_8hpp_1ad2b191944fa7dd4314a1a49b2b243e62" kindref="member">PDJE_NAME</ref> &gt; *</type>
-        <definition>std::unordered_map&lt;PDJE_ID, PDJE_NAME&gt;* PDJE_INPUT_DATA_LINE::id_name_conv</definition>
-        <argsstring></argsstring>
-        <name>id_name_conv</name>
-        <qualifiedname>PDJE_INPUT_DATA_LINE::id_name_conv</qualifiedname>
-        <initializer>= nullptr</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="21" column="24" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="21" bodyend="-1"/>
+        <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="23" column="28" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="23" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -43,6 +28,28 @@
       <node id="2">
         <label>PDJE_Buffer_Arena&lt; PDJE_Input_Log &gt;</label>
         <link refid="classPDJE__Buffer__Arena"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>buf1</edgelabel>
+          <edgelabel>buf2</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>first_count</edgelabel>
+          <edgelabel>second_count</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>lock</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>buf_first</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>buffer_first_pointer_cache</edgelabel>
+          <edgelabel>buffer_second_pointer_cache</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>PDJE_HID_Event</label>
+        <link refid="structPDJE__HID__Event"/>
       </node>
       <node id="1">
         <label>PDJE_INPUT_DATA_LINE</label>
@@ -50,29 +57,57 @@
         <childnode refid="2" relation="usage">
           <edgelabel>input_arena</edgelabel>
         </childnode>
-        <childnode refid="3" relation="usage">
-          <edgelabel>id_name_conv</edgelabel>
-        </childnode>
-      </node>
-      <node id="5">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
-      <node id="4">
-        <label>std::string</label>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
       </node>
       <node id="3">
-        <label>std::unordered_map&lt; PDJE_ID, PDJE_NAME &gt;</label>
+        <label>PDJE_IPC::SharedMem&lt; PDJE_Input_Log, PDJE_IPC::PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
         <childnode refid="4" relation="usage">
-          <edgelabel>elements</edgelabel>
-          <edgelabel>keys</edgelabel>
+          <edgelabel>ptr</edgelabel>
         </childnode>
       </node>
+      <node id="10">
+        <label>PDJE_IPC::SharedMem&lt; std::atomic_flag, PDJE_IPC::PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="9">
+        <label>PDJE_IPC::SharedMem&lt; uint64_t, PDJE_IPC::PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="11">
+        <label>PDJE_IPC::SharedMem&lt; uint8_t, PDJE_IPC::PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="5">
+        <label>PDJE_Input_Event</label>
+        <link refid="unionPDJE__Input__Event"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>mouse</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>keyboard</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>PDJE_Input_Log</label>
+        <link refid="structPDJE__Input__Log"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>event</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>hid_event</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>PDJE_Keyboard_Event</label>
+        <link refid="structPDJE__Keyboard__Event"/>
+      </node>
+      <node id="6">
+        <label>PDJE_Mouse_Event</label>
+        <link refid="structPDJE__Mouse__Event"/>
+      </node>
     </collaborationgraph>
-    <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="19" column="1" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="19" bodyend="22"/>
+    <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="22" column="1" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="22" bodyend="24"/>
     <listofallmembers>
-      <member refid="structPDJE__INPUT__DATA__LINE_1a3b102228ea21b8855b2b7c140944875f" prot="public" virt="non-virtual"><scope>PDJE_INPUT_DATA_LINE</scope><name>id_name_conv</name></member>
       <member refid="structPDJE__INPUT__DATA__LINE_1a98608967b476ffd18c5b2f14ea36194b" prot="public" virt="non-virtual"><scope>PDJE_INPUT_DATA_LINE</scope><name>input_arena</name></member>
     </listofallmembers>
   </compounddef>

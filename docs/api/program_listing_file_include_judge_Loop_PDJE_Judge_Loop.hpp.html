@@ -115,13 +115,18 @@
 <span class="w">        </span><span class="kt">bool</span><span class="w">     </span><span class="n">IsLate</span><span class="p">;</span>
 <span class="w">        </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">diff</span><span class="p">;</span>
 <span class="w">    </span><span class="p">};</span>
-<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">Queues</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">PDJE_Buffer_Arena</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="p">,</span><span class="w"> </span><span class="n">NOTE_VEC</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">miss_queue</span><span class="p">;</span>
 <span class="w">        </span><span class="n">PDJE_Buffer_Arena</span><span class="o">&lt;</span><span class="n">useDatas</span><span class="o">&gt;</span><span class="w">                               </span><span class="n">use_queue</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">Event_Datas</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Queues</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">miss_queue</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="w"> </span><span class="n">use_queue</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="n">Queues</span><span class="w"> </span><span class="n">Event_Datas</span><span class="p">;</span>
 
 <span class="w">  </span><span class="k">private</span><span class="o">:</span><span class="w"> </span><span class="c1">// cached values</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PDJE_Input_Log</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="n">input_log</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">PDJE_Input_Log</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input_log</span><span class="p">;</span>
+
 <span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">mouse_btn_event</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">rail_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">        </span><span class="kt">int</span><span class="w">      </span><span class="n">status</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>

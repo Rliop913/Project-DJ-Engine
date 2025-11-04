@@ -85,22 +85,10 @@
 <p>↰ <a class="reference internal" href="file_include_input_PDJE_Input.cpp.html#file-include-input-pdje-input-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/input/PDJE_Input.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
-<span class="cp">#define PDJE_INPUT_DEFAULT_TRY_CATCH(CODE)                                     \</span>
-<span class="cp">    try {                                                                      \</span>
-<span class="cp">        CODE                                                                   \</span>
-<span class="cp">    } catch (const std::exception &amp;e) {                                        \</span>
-<span class="cp">        ResetOneShot(config_promise, data.config_data, data.config_sync);      \</span>
-<span class="cp">        ResetOneShot(run_command, data.run_ok, data.run_sync);                 \</span>
-<span class="cp">                                                                               \</span>
-<span class="cp">        state = PDJE_INPUT_STATE::DEAD;                                        \</span>
-<span class="cp">        critlog(&quot;failed to execute code. WHY: &quot;);                              \</span>
-<span class="cp">        critlog(e.what());                                                     \</span>
-<span class="cp">        ErrLog += e.what();                                                    \</span>
-<span class="cp">        ErrLog += &quot;\n&quot;;                                                        \</span>
-<span class="cp">        return false;                                                          \</span>
-<span class="cp">    }</span>
+
 
 <span class="n">PDJE_Input</span><span class="o">::</span><span class="n">PDJE_Input</span><span class="p">()</span>
+<span class="o">:</span><span class="w"> </span><span class="n">input_buffer</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">startlog</span><span class="p">();</span>
 <span class="p">}</span>
@@ -108,22 +96,41 @@
 <span class="kt">bool</span>
 <span class="n">PDJE_Input</span><span class="o">::</span><span class="n">Init</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEAD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;pdje input module init failed. pdje input state is not dead. &quot;</span>
-<span class="w">                </span><span class="s">&quot;maybe input module is running or configuring.&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">PDJE_INPUT_DEFAULT_TRY_CATCH</span><span class="p">(</span>
-<span class="w">        </span><span class="n">InitOneShot</span><span class="p">(</span><span class="n">config_promise</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">config_data</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">config_sync</span><span class="p">);</span>
-<span class="w">        </span><span class="n">InitOneShot</span><span class="p">(</span><span class="n">run_command</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">run_ok</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">run_sync</span><span class="p">);</span>
-<span class="w">        </span><span class="n">data</span><span class="p">.</span><span class="n">TrigLoop</span><span class="p">();</span>
-<span class="w">        </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEVICE_CONFIG_STATE</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;)</span>
+<span class="w">    </span><span class="k">try</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEAD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;pdje input module init failed. pdje input state is not dead. &quot;</span>
+<span class="w">                        </span><span class="s">&quot;maybe input module is running or configuring.&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">port</span><span class="p">;</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">httplib</span><span class="o">::</span><span class="n">Server</span><span class="w"> </span><span class="n">portGetter</span><span class="p">;</span>
+<span class="w">            </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">portGetter</span><span class="p">.</span><span class="n">bind_to_any_port</span><span class="p">(</span><span class="s">&quot;0.0.0.0&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">http_bridge</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">port</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">http_bridge</span><span class="o">-&gt;</span><span class="n">SendBufferArena</span><span class="p">(</span><span class="n">input_buffer</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">spinlock_run</span><span class="p">.</span><span class="n">MakeIPCSharedMemory</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;PDJE_SPINLOCK&quot;</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="p">(</span><span class="o">*</span><span class="n">spinlock_run</span><span class="p">.</span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">http_bridge</span><span class="o">-&gt;</span><span class="n">SendIPCSharedMemory</span><span class="p">(</span><span class="n">spinlock_run</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;PDJE_SPINLOCK&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;spinlock&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEVICE_CONFIG_STATE</span><span class="p">;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">catch</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to execute code. WHY: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span>
 <span class="n">PDJE_Input</span><span class="o">::</span><span class="n">Config</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">devs</span><span class="p">)</span>
 <span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="p">{</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sanitized_devs</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">devs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">device_specific_id</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span>
@@ -132,15 +139,47 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEVICE_CONFIG_STATE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;pdje input module config failed. pdje input state is not on &quot;</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;pdje input module config failed. pdje input state is not on &quot;</span>
 <span class="w">                </span><span class="s">&quot;device config state. Init it first.&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">PDJE_INPUT_DEFAULT_TRY_CATCH</span><span class="p">(</span><span class="n">config_promise</span><span class="o">-&gt;</span><span class="n">set_value</span><span class="p">(</span><span class="n">sanitized_devs</span><span class="p">);</span>
-<span class="w">                                 </span><span class="n">data</span><span class="p">.</span><span class="n">config_sync</span><span class="o">-&gt;</span><span class="n">arrive_and_wait</span><span class="p">();)</span>
-
+<span class="w">    </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="n">nj</span><span class="p">;</span>
+<span class="w">    </span><span class="n">nj</span><span class="p">[</span><span class="s">&quot;body&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="o">::</span><span class="n">array</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">dev</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">sanitized_devs</span><span class="p">){</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">kv</span><span class="p">;</span>
+<span class="w">        </span><span class="n">kv</span><span class="p">[</span><span class="s">&quot;id&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dev</span><span class="p">.</span><span class="n">device_specific_id</span><span class="p">;</span>
+<span class="w">        </span><span class="n">kv</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dev</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span>
+<span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">Type</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">KEYBOARD</span><span class="p">:</span>
+<span class="w">            </span><span class="n">kv</span><span class="p">[</span><span class="s">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;KEYBOARD&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">nj</span><span class="p">[</span><span class="s">&quot;body&quot;</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">kv</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">MOUSE</span><span class="p">:</span>
+<span class="w">            </span><span class="n">kv</span><span class="p">[</span><span class="s">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MOUSE&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">nj</span><span class="p">[</span><span class="s">&quot;body&quot;</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">kv</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">MIDI</span><span class="p">:</span>
+<span class="w">            </span><span class="n">kv</span><span class="p">[</span><span class="s">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MIDI&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">nj</span><span class="p">[</span><span class="s">&quot;body&quot;</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">kv</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">HID</span><span class="p">:</span>
+<span class="w">            </span><span class="n">kv</span><span class="p">[</span><span class="s">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;HID&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">nj</span><span class="p">[</span><span class="s">&quot;body&quot;</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">kv</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">http_bridge</span><span class="o">-&gt;</span><span class="n">QueryConfig</span><span class="p">(</span><span class="n">nj</span><span class="p">.</span><span class="n">dump</span><span class="p">());</span>
 <span class="w">    </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">INPUT_LOOP_READY</span><span class="p">;</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">http_bridge</span><span class="o">-&gt;</span><span class="n">EndTransmission</span><span class="p">();</span>
+
+<span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">){</span>
+<span class="w">    </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to config. WHY: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span>
@@ -151,9 +190,7 @@
 <span class="w">                </span><span class="s">&quot;ready state. config it first.&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">PDJE_INPUT_DEFAULT_TRY_CATCH</span><span class="p">(</span><span class="n">run_command</span><span class="o">-&gt;</span><span class="n">set_value</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
-<span class="w">                                 </span><span class="n">data</span><span class="p">.</span><span class="n">run_sync</span><span class="o">-&gt;</span><span class="n">arrive_and_wait</span><span class="p">();)</span>
+<span class="w">    </span><span class="p">(</span><span class="o">*</span><span class="n">spinlock_run</span><span class="p">.</span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 
 <span class="w">    </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">INPUT_LOOP_RUNNING</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
@@ -167,37 +204,28 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_INPUT_STATE</span><span class="o">::</span><span class="no">DEVICE_CONFIG_STATE</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">empty_devs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DEV_LIST</span><span class="p">();</span>
-<span class="w">        </span><span class="n">Config</span><span class="p">(</span><span class="n">empty_devs</span><span class="p">);</span>
-<span class="w">        </span><span class="n">data</span><span class="p">.</span><span class="n">config_sync</span><span class="o">-&gt;</span><span class="n">arrive_and_wait</span><span class="p">();</span>
-<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">http_bridge</span><span class="o">-&gt;</span><span class="n">Kill</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_INPUT_STATE</span><span class="o">::</span><span class="no">INPUT_LOOP_READY</span><span class="p">:</span>
-<span class="w">        </span><span class="n">PDJE_INPUT_DEFAULT_TRY_CATCH</span><span class="p">(</span><span class="n">run_command</span><span class="o">-&gt;</span><span class="n">set_value</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
-<span class="w">                                     </span><span class="n">data</span><span class="p">.</span><span class="n">run_sync</span><span class="o">-&gt;</span><span class="n">arrive_and_wait</span><span class="p">();)</span>
+<span class="w">        </span><span class="p">(</span><span class="o">*</span><span class="n">spinlock_run</span><span class="p">.</span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_INPUT_STATE</span><span class="o">::</span><span class="no">INPUT_LOOP_RUNNING</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">data</span><span class="p">.</span><span class="n">kill</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to kill pdje input module. maybe thread is broken. &quot;</span>
-<span class="w">                    </span><span class="s">&quot;issue this.&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">(</span><span class="o">*</span><span class="n">spinlock_run</span><span class="p">.</span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="k">default</span><span class="o">:</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;the pdje input module state is broken...why?&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">data</span><span class="p">.</span><span class="n">ResetLoop</span><span class="p">();</span>
 <span class="w">    </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEAD</span><span class="p">;</span>
-<span class="w">    </span><span class="n">ResetOneShot</span><span class="p">(</span><span class="n">config_promise</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">config_data</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">config_sync</span><span class="p">);</span>
-<span class="w">    </span><span class="n">ResetOneShot</span><span class="p">(</span><span class="n">run_command</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">run_ok</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">run_sync</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span>
 <span class="n">PDJE_Input</span><span class="o">::</span><span class="n">GetDevs</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">getDevices</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">http_bridge</span><span class="o">-&gt;</span><span class="n">GetDevices</span><span class="p">();</span>
+
 <span class="p">}</span>
 
 <span class="n">PDJE_INPUT_STATE</span>
@@ -209,7 +237,9 @@
 <span class="n">PDJE_INPUT_DATA_LINE</span>
 <span class="n">PDJE_Input</span><span class="o">::</span><span class="n">PullOutDataLine</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">();</span>
+<span class="w">    </span><span class="n">PDJE_INPUT_DATA_LINE</span><span class="w"> </span><span class="n">line</span><span class="p">;</span>
+<span class="w">    </span><span class="n">line</span><span class="p">.</span><span class="n">input_arena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">input_buffer</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">line</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>

@@ -104,7 +104,7 @@ Program Listing for File Mouse.cpp
        }
        Cached.mouse_btn_event_queue.clear();
        INPUT_RULE rule;
-       rule.Device_ID  = (*init_datas->inputline->id_name_conv)[ilog.id];
+       rule.Device_ID  = ilog.name;
        rule.DeviceType = ilog.type;
        ParseMouse(rule, ilog.event.mouse.button_type);
    

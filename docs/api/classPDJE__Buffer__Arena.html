@@ -93,11 +93,15 @@
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__HID__Event.html">Struct PDJE_HID_Event</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__INPUT__DATA__LINE.html">Struct PDJE_INPUT_DATA_LINE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Input__Log.html">Struct PDJE_Input_Log</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IPC_1_1Importants.html">Struct Importants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IPC_1_1IPC__SHM__LINUX.html">Template Struct IPC_SHM_LINUX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__IPC_1_1RawDeviceData.html">Struct RawDeviceData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1Custom__Events.html">Struct Custom_Events</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1EVENT__RULE.html">Struct EVENT_RULE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1INPUT__CONFIG.html">Struct INPUT_CONFIG</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1INPUT__RULE.html">Struct INPUT_RULE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1Judge__Loop_1_1mouse__btn__event.html">Struct Judge_Loop::mouse_btn_event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1Judge__Loop_1_1Queues.html">Struct Judge_Loop::Queues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas.html">Struct Judge_Loop::useDatas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1NOTE.html">Struct NOTE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__JUDGE_1_1NOTE__ITR.html">Struct NOTE_ITR</a></li>
@@ -105,7 +109,6 @@
 <li class="toctree-l4"><a class="reference internal" href="structPDJE__Mouse__Event.html">Struct PDJE_Mouse_Event</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPlayPosition.html">Struct PlayPosition</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structPosition.html">Struct Position</a></li>
-<li class="toctree-l4"><a class="reference internal" href="structRawDeviceData.html">Struct RawDeviceData</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structRT__ID.html">Struct RT_ID</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structstd_1_1hash_3_01PDJE__JUDGE_1_1INPUT__RULE_01_4.html">Template Struct hash&lt; PDJE_JUDGE::INPUT_RULE &gt;</a></li>
 <li class="toctree-l4"><a class="reference internal" href="structstmt.html">Struct stmt</a></li>
@@ -163,6 +166,9 @@
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__GitHandler.html">Class PDJE_GitHandler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__HIGHRES__CLOCK_1_1CLOCK.html">Class CLOCK</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__Input.html">Class PDJE_Input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__IPC_1_1ChildProcess.html">Class ChildProcess</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__IPC_1_1MainProcess.html">Class MainProcess</a></li>
+<li class="toctree-l4"><a class="reference internal" href="classPDJE__IPC_1_1SharedMem.html">Template Class SharedMem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JSONHandler.html">Template Class PDJE_JSONHandler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JUDGE_1_1JUDGE.html">Class JUDGE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="classPDJE__JUDGE_1_1Judge__Init.html">Class Judge_Init</a></li>
@@ -244,17 +250,35 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N17PDJE_Buffer_Arena3GetEv">
-<span id="_CPPv3N17PDJE_Buffer_Arena3GetEv"></span><span id="_CPPv2N17PDJE_Buffer_Arena3GetEv"></span><span id="PDJE_Buffer_Arena::Get"></span><span class="target" id="classPDJE__Buffer__Arena_1a8a0f1ef287e498607251c5ecda60efca"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pmr</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E17PDJE_Buffer_Arena" title="PDJE_Buffer_Arena::T"><span class="n"><span class="pre">T</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">Get</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17PDJE_Buffer_Arena3GetEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N17PDJE_Buffer_Arena3GetEv"></span><span id="_CPPv2N17PDJE_Buffer_Arena3GetEv"></span><span id="PDJE_Buffer_Arena::Get"></span><span class="target" id="classPDJE__Buffer__Arena_1a97d9a8c0dffc0806f9c1de8a0b79d93c"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4I0E17PDJE_Buffer_Arena" title="PDJE_Buffer_Arena::T"><span class="n"><span class="pre">T</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint64_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Get</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17PDJE_Buffer_Arena3GetEv" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N17PDJE_Buffer_Arena17PDJE_Buffer_ArenaEv">
-<span id="_CPPv3N17PDJE_Buffer_Arena17PDJE_Buffer_ArenaEv"></span><span id="_CPPv2N17PDJE_Buffer_Arena17PDJE_Buffer_ArenaEv"></span><span id="PDJE_Buffer_Arena::PDJE_Buffer_Arena"></span><span class="target" id="classPDJE__Buffer__Arena_1a8e87e9f89928cbcec67d1ddd67f4b8d4"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_Buffer_Arena</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17PDJE_Buffer_Arena17PDJE_Buffer_ArenaEv" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N17PDJE_Buffer_Arena17PDJE_Buffer_ArenaERKNSt6stringEK8uint64_t">
+<span id="_CPPv3N17PDJE_Buffer_Arena17PDJE_Buffer_ArenaERKNSt6stringEK8uint64_t"></span><span id="_CPPv2N17PDJE_Buffer_Arena17PDJE_Buffer_ArenaERKNSt6stringEK8uint64_t"></span><span id="PDJE_Buffer_Arena::PDJE_Buffer_Arena__ssCR.uint64_tC"></span><span class="target" id="classPDJE__Buffer__Arena_1a68a9dac418baa258b9fc06ed71bb68b1"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_Buffer_Arena</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">id</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17PDJE_Buffer_Arena17PDJE_Buffer_ArenaERKNSt6stringEK8uint64_t" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N17PDJE_Buffer_Arena17PDJE_Buffer_ArenaEK8uint64_t">
+<span id="_CPPv3N17PDJE_Buffer_Arena17PDJE_Buffer_ArenaEK8uint64_t"></span><span id="_CPPv2N17PDJE_Buffer_Arena17PDJE_Buffer_ArenaEK8uint64_t"></span><span id="PDJE_Buffer_Arena::PDJE_Buffer_Arena__uint64_tC"></span><span class="target" id="classPDJE__Buffer__Arena_1a539ef48af24b36aa1c36437091a3731a"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_Buffer_Arena</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N17PDJE_Buffer_Arena17PDJE_Buffer_ArenaEK8uint64_t" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N17PDJE_Buffer_ArenaD0Ev">
 <span id="_CPPv3N17PDJE_Buffer_ArenaD0Ev"></span><span id="_CPPv2N17PDJE_Buffer_ArenaD0Ev"></span><span id="PDJE_Buffer_Arena::~PDJE_Buffer_Arena"></span><span class="target" id="classPDJE__Buffer__Arena_1a29f47d258d824c510c8bb960ba52f826"></span><span class="sig-name descname"><span class="n"><span class="pre">~PDJE_Buffer_Arena</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">default</span></span><a class="headerlink" href="#_CPPv4N17PDJE_Buffer_ArenaD0Ev" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17PDJE_Buffer_Arena12BUFFER_COUNTE">
+<span id="_CPPv3N17PDJE_Buffer_Arena12BUFFER_COUNTE"></span><span id="_CPPv2N17PDJE_Buffer_Arena12BUFFER_COUNTE"></span><span id="PDJE_Buffer_Arena::BUFFER_COUNT__uint64_t"></span><span class="target" id="classPDJE__Buffer__Arena_1a9e91f0749cac862651e4f6243704d3cc"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BUFFER_COUNT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N17PDJE_Buffer_Arena12BUFFER_COUNTE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N17PDJE_Buffer_Arena2IDE">
+<span id="_CPPv3N17PDJE_Buffer_Arena2IDE"></span><span id="_CPPv2N17PDJE_Buffer_Arena2IDE"></span><span id="PDJE_Buffer_Arena::ID__std::filesystem::path"></span><span class="target" id="classPDJE__Buffer__Arena_1a3d479077681e9d3a6e868318e3689d7e"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">filesystem</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">path</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ID</span></span></span><a class="headerlink" href="#_CPPv4N17PDJE_Buffer_Arena2IDE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>

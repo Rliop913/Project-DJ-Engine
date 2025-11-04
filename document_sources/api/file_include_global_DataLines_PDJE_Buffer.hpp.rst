@@ -34,7 +34,11 @@ Includes
 
 - ``atomic``
 
+- ``ipc_shared_memory.hpp`` (:ref:`file_include_input_IPC_memory_ipc_shared_memory.hpp`)
+
 - ``memory_resource``
+
+- ``random``
 
 - ``vector``
 
@@ -46,7 +50,9 @@ Included By
 
 - :ref:`file_include_global_DataLines_PDJE_Input_DataLine.hpp`
 
-- :ref:`file_include_input_windows_windows_input.hpp`
+- :ref:`file_include_input_IPC_transmission_ChildProcess.hpp`
+
+- :ref:`file_include_input_IPC_transmission_MainProcess.hpp`
 
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.cpp`
 

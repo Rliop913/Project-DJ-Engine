@@ -432,17 +432,18 @@ This data serves as the <cite>Interpolated Value</cite>, which transitions smoot
 <table class="docutils align-default" id="id5">
 <caption><span class="caption-text">Note Table</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
 <colgroup>
-<col style="width: 8.6%" />
-<col style="width: 11.4%" />
-<col style="width: 8.6%" />
-<col style="width: 8.6%" />
-<col style="width: 8.6%" />
-<col style="width: 8.6%" />
-<col style="width: 8.6%" />
-<col style="width: 8.6%" />
-<col style="width: 8.6%" />
-<col style="width: 8.6%" />
-<col style="width: 11.4%" />
+<col style="width: 7.9%" />
+<col style="width: 10.5%" />
+<col style="width: 7.9%" />
+<col style="width: 7.9%" />
+<col style="width: 7.9%" />
+<col style="width: 7.9%" />
+<col style="width: 7.9%" />
+<col style="width: 7.9%" />
+<col style="width: 7.9%" />
+<col style="width: 7.9%" />
+<col style="width: 10.5%" />
+<col style="width: 7.9%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Note_Type</p></th>
@@ -456,25 +457,28 @@ This data serves as the <cite>Interpolated Value</cite>, which transitions smoot
 <th class="head"><p>Ebeat</p></th>
 <th class="head"><p>EsubBeat</p></th>
 <th class="head"><p>Eseparate</p></th>
+<th class="head"><p>RailID</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>TEXT</p></td>
+<td><p>uint16</p></td>
 <td><p>TEXT</p></td>
 <td><p>TEXT</p></td>
 <td><p>TEXT</p></td>
-<td><p>TEXT</p></td>
 <td><p>long</p></td>
 <td><p>long</p></td>
 <td><p>long</p></td>
 <td><p>long</p></td>
 <td><p>long</p></td>
 <td><p>long</p></td>
+<td><p>uint64</p></td>
 </tr>
 </tbody>
 </table>
 <ul class="simple">
 <li><p>The “BPM” Note_Type name is prefixed for the default bpm change implementation.</p></li>
+<li><p>The “AXIS” Note_Type name is prefixed for the mouse movements. Warn: you need to implement your own judge logic</p></li>
 </ul>
 </section>
 </section>

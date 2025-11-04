@@ -38,10 +38,3 @@ Includes
 
 
 
-
-Defines
--------
-
-
-- :ref:`exhale_define_PDJE__Input_8cpp_1a8fe83ba44412d3ac8156adc7d8a68e35`
-

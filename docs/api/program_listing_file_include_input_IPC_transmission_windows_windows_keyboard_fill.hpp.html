@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File windows_keyboard_fill.hpp &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File windows_keyboard_fill.hpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_include_input_IPC_transmission_windows_windows_keyboard_fill.hpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-windows-keyboard-fill-hpp">
+<span id="program-listing-file-include-input-ipc-transmission-windows-windows-keyboard-fill-hpp"></span><h1>Program Listing for File windows_keyboard_fill.hpp<a class="headerlink" href="#program-listing-for-file-windows-keyboard-fill-hpp" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file_include_input_IPC_transmission_windows_windows_keyboard_fill.hpp.html#file-include-input-ipc-transmission-windows-windows-keyboard-fill-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/input/IPC/transmission/windows/windows_keyboard_fill.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;WinUser.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Windows.h&gt;</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_RAWINPUT</span><span class="w"> </span><span class="p">{</span>
+<span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
+<span class="nf">FillMouseInput</span><span class="p">(</span><span class="n">PDJE_Input_Event</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempEv</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">RAWINPUT</span><span class="w"> </span><span class="o">*</span><span class="n">ri</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">tempEv</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">button_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">usButtonFlags</span><span class="p">;</span>
+<span class="w">    </span><span class="n">tempEv</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">wheel_move</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">usButtonData</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">usFlags</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">MOUSE_MOVE_ABSOLUTE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">usFlags</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">MOUSE_VIRTUAL_DESKTOP</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">tempEv</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">axis_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Mouse_Axis_Type</span><span class="o">::</span><span class="n">VIRTUAL_DESKTOP_ABS</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">tempEv</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">axis_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Mouse_Axis_Type</span><span class="o">::</span><span class="n">ABS</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tempEv</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">axis_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Mouse_Axis_Type</span><span class="o">::</span><span class="n">REL</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">tempEv</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">lLastX</span><span class="p">;</span>
+<span class="w">    </span><span class="n">tempEv</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">lLastY</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
+<span class="nf">FillKeyboardInput</span><span class="p">(</span><span class="n">PDJE_Input_Event</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempEv</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">RAWINPUT</span><span class="w"> </span><span class="o">*</span><span class="n">ri</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">e0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">Flags</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">RI_KEY_E0</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">k</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">tempEv</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">k</span><span class="p">;</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">VKey</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_F1</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">F_1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_F2</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">F_2</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_F3</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">F_3</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_F4</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">F_4</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_F5</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">F_5</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_F6</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">F_6</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_F7</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">F_7</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_F8</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">F_8</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_F9</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">F_9</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_F10</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">F_10</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_F11</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">F_11</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_F12</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">F_12</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">D0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">D1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;2&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">D2</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;3&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">D3</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;4&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">D4</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;5&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">D5</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;6&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">D6</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;7&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">D7</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;8&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">D8</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;9&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">D9</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">A</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;B&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">B</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;C&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">C</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;D&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">D</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;E&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">E</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;F&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">F</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;G&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">G</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;H&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">H</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;I&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">I</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;J&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">J</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;K&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">K</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;L&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">L</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;M&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">M</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;N&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">N</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;O&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">O</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;P&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">P</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;Q&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">Q</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;R&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">R</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;S&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">S</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;T&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">T</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;U&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">U</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;V&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">V</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;W&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">W</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;X&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">X</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;Y&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">Y</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;Z&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">Z</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_OEM_MINUS</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">MINUS</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_OEM_PLUS</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">EQUAL</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_OEM_4</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">LBRACKET</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_OEM_6</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">RBRACKET</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_OEM_5</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">BACKSLASH</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_OEM_102</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">NONUS_BACKSLASH</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_OEM_1</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">SEMICOLON</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_OEM_7</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">APOSTROPHE</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_OEM_3</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">GRAVE</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_OEM_2</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">SLASH</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_OEM_COMMA</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">COMMA</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_OEM_PERIOD</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">PERIOD</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_RETURN</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_ENTER</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">ENTER</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_ESCAPE</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">ESC</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_BACK</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">BACKSPACE</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_TAB</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">TAB</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_SPACE</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">SPACE</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_CAPITAL</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">CAPSLK</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_LEFT</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">LEFT</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_RIGHT</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">RIGHT</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_UP</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">UP</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_DOWN</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">DOWN</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_SHIFT</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">MakeCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x36</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">RSHIFT</span>
+<span class="w">                                                  </span><span class="o">:</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">LSHIFT</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_LSHIFT</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">LSHIFT</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_RSHIFT</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">RSHIFT</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_CONTROL</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">RCTRL</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">LCTRL</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_LCONTROL</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">LCTRL</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_RCONTROL</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">RCTRL</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_MENU</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">RALT</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">LALT</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_LMENU</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">LALT</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_RMENU</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">RALT</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_NUMPAD0</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_NUMPAD1</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_NUMPAD2</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_2</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_NUMPAD3</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_3</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_NUMPAD4</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_4</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_NUMPAD5</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_5</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_NUMPAD6</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_6</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_NUMPAD7</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_7</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_NUMPAD8</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_8</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_NUMPAD9</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_9</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_DECIMAL</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_DOT</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_ADD</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_PLUS</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_SUBTRACT</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_MINUS</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_MULTIPLY</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_STAR</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_DIVIDE</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_SLASH</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_NUMLOCK</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">KP_NUMLOCK</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_SNAPSHOT</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">SP_PRINT_SCREEN</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_SCROLL</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">SP_SCROLL_LOCK</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_INSERT</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">SP_INSERT</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_DELETE</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">SP_DELETE</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_HOME</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">SP_HOME</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_END</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">SP_END</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_PRIOR</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">SP_PAGE_UP</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">VK_NEXT</span><span class="p">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">SP_PAGE_DOWN</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">        </span><span class="o">*</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">UNKNOWN</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">tempEv</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">pressed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">Flags</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">RI_KEY_BREAK</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span>
+<span class="kt">void</span>
+<span class="nf">FillHIDInput</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">buffer</span><span class="p">[],</span>
+<span class="w">             </span><span class="k">const</span><span class="w"> </span><span class="n">RAWINPUT</span><span class="w">                         </span><span class="o">*</span><span class="n">ri</span><span class="p">,</span>
+<span class="w">             </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w">                          </span><span class="o">&amp;</span><span class="n">byteSize</span><span class="p">)</span>
+<span class="p">{</span>
+
+
+<span class="w">    </span><span class="c1">// hidB.resize(ri-&gt;data.hid.dwCount * ri-&gt;data.hid.dwSizeHid);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">sz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">hid</span><span class="p">.</span><span class="n">dwCount</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">hid</span><span class="p">.</span><span class="n">dwSizeHid</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">sz</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">512</span><span class="p">){</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">memcpy</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">hid</span><span class="p">.</span><span class="n">bRawData</span><span class="p">,</span><span class="w"> </span><span class="n">sz</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">uint8_t</span><span class="p">));</span>
+<span class="w">    </span><span class="n">byteSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ri</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">.</span><span class="n">hid</span><span class="p">.</span><span class="n">dwSizeHid</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">};</span><span class="w"> </span><span class="c1">// namespace PDJE_RAWINPUT</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

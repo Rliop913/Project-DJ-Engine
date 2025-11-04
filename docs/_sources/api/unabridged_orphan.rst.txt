@@ -216,6 +216,36 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir_include_input_IPC.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_IPC_common.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_IPC_memory.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_IPC_transmission.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_IPC_transmission_linux.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_IPC_transmission_windows.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_include_input_linux.rst
 
 .. toctree::
@@ -237,6 +267,11 @@ Directories
    :maxdepth: 5
 
    dir_include_input_windows.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_windows_process.rst
 
 .. toctree::
    :maxdepth: 5
@@ -370,6 +405,21 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_input_IPC_transmission_linux_ChildProcess.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_IPC_transmission_windows_ChildProcess.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_IPC_transmission_ChildProcess.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_input_linux_common_Common_Features.hpp.rst
 
 .. toctree::
@@ -435,7 +485,7 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_windows_dev_path_to_name.hpp.rst
+   file_include_input_IPC_transmission_windows_dev_path_to_name.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -645,7 +695,17 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_input_windows_process_Input_Process_Main.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_global_DataLines_Input_State.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_IPC_transmission_windows_InputLoop.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -656,6 +716,16 @@ Files
    :maxdepth: 5
 
    file_include_input_linux_IPC_SHARE_MEM.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_IPC_memory_ipc_shared_memory.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_IPC_common_ipc_util.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -710,7 +780,27 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_input_IPC_transmission_windows_ListDevice.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_tests_logTest.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_IPC_transmission_linux_MainProcess.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_IPC_transmission_windows_MainProcess.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_IPC_transmission_MainProcess.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -865,6 +955,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_input_IPC_transmission_linux_pack_ipc.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_core_audioRender_MixMachine_FAUST_VALS_panner.hpp.rst
 
 .. toctree::
@@ -931,6 +1026,11 @@ Files
    :maxdepth: 5
 
    file_include_global_DataLines_PDJE_Input_Device_Data.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_IPC_common_PDJE_INPUT_PROCESS_HASH.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1225,14 +1325,4 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_windows_windows_input.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_input_windows_windows_input.hpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_input_windows_windows_keyboard_fill.hpp.rst
+   file_include_input_IPC_transmission_windows_windows_keyboard_fill.hpp.rst

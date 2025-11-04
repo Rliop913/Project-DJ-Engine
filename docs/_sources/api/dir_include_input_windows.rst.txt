@@ -12,13 +12,10 @@ Directory windows
 
 *Directory path:* ``include/input/windows``
 
+Subdirectories
+--------------
 
-Files
------
+- :ref:`dir_include_input_windows_process`
 
-- :ref:`file_include_input_windows_dev_path_to_name.hpp`
-- :ref:`file_include_input_windows_windows_input.cpp`
-- :ref:`file_include_input_windows_windows_input.hpp`
-- :ref:`file_include_input_windows_windows_keyboard_fill.hpp`
 
 

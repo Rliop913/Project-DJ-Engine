@@ -1,0 +1,103 @@
+
+.. _file_include_input_IPC_memory_ipc_shared_memory.hpp:
+
+File ipc_shared_memory.hpp
+==========================
+
+|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory>` (``include/input/IPC/memory``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/input/IPC/memory/ipc_shared_memory.hpp``)
+---------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_input_IPC_memory_ipc_shared_memory.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``PDJE_INPUT_PROCESS_HASH.hpp`` (:ref:`file_include_input_IPC_common_PDJE_INPUT_PROCESS_HASH.hpp`)
+
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
+
+- ``algorithm``
+
+- ``cctype``
+
+- ``cstddef``
+
+- ``filesystem``
+
+- ``fstream``
+
+- ``ios``
+
+- ``limits``
+
+- ``picosha2.h``
+
+- ``string``
+
+- ``vector``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_include_global_DataLines_PDJE_Buffer.hpp`
+
+- :ref:`file_include_input_IPC_common_ipc_util.hpp`
+
+- :ref:`file_include_input_IPC_transmission_ChildProcess.hpp`
+
+- :ref:`file_include_input_IPC_transmission_MainProcess.hpp`
+
+- :ref:`file_include_input_IPC_transmission_linux_ChildProcess.cpp`
+
+- :ref:`file_include_input_IPC_transmission_linux_pack_ipc.hpp`
+
+- :ref:`file_include_input_IPC_transmission_windows_ChildProcess.cpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_PDJE_IPC`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classPDJE__IPC_1_1SharedMem`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_namespacePDJE__IPC_1ab876a67a0fcfde480c8e23bb60e3b32f`
+
+- :ref:`exhale_variable_namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3`
+
+- :ref:`exhale_variable_namespacePDJE__IPC_1a1b1370cbd4063395a5032cd8e4b8ab34`
+

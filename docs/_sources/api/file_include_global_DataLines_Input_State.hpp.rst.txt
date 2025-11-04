@@ -48,6 +48,8 @@ Included By
 
 - :ref:`file_include_global_DataLines_PDJE_Input_DataLine.hpp`
 
+- :ref:`file_include_input_IPC_transmission_ChildProcess.hpp`
+
 - :ref:`file_include_input_PDJE_Input.hpp`
 
 - :ref:`file_include_input_linux_RT_RTFunctionRegister.cpp`
@@ -57,8 +59,6 @@ Included By
 - :ref:`file_include_input_linux_linux_input.cpp`
 
 - :ref:`file_include_input_linux_linux_input.hpp`
-
-- :ref:`file_include_input_windows_windows_input.hpp`
 
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.hpp`
 
@@ -133,10 +133,6 @@ Typedefs
 
 
 - :ref:`exhale_typedef_Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107`
-
-- :ref:`exhale_typedef_Input__State_8hpp_1a821478f084c5bbe8413cfe70b427f702`
-
-- :ref:`exhale_typedef_Input__State_8hpp_1a14bdefbd858b34cd4cb0b0af52f6332e`
 
 
 Unions

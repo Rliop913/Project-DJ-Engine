@@ -157,14 +157,26 @@ It is a cross-platform input engine designed to minimize latency by handling inp
 <p>It supports general-purpose inputs such as keyboard and mouse, as well as MIDI input.</p>
 <p>Available on linux, windows</p>
 </li>
-<li><p><strong>Judge Engine</strong> :
-This engine is designed to handle rhythm game logic or real-time timing judgments.
-It can be used by connecting either the PDJE Input Engine or another input engine wrapped for compatibility.</p>
-<p>The timing resolution is determined when initializing the PDJE Core Engine.
-By default, the PDJE Core Engine plays audio at a sample rate of 48,000 Hz, meaning it processes 48,000 samples per second.</p>
-<p>Assuming the buffer size is set to 48 samples, the core updates its internal sample-accumulation counter 1,000 times per second (48,000 / 48).</p>
-<p>This results in a theoretical judgment resolution of 1,000 counts per second, or 1 millisecond per count,
-giving you a minimum resolution of approximately 1 ms + input latency.</p>
+<li><p><strong>Judge Engine</strong> :</p>
+<p>The Judge Engine handles rhythm-game timing logic and real-time judgments.
+It can run with the PDJE Input Engine or with any compatible, wrapped input source.</p>
+<p><strong>High-resolution timebase (update)</strong></p>
+<p>The input module timestamps each input event, and the core engine timestamps each audio callback using the same monotonic, high-resolution clock.
+By synchronizing these timebases, the judge computes the time difference between an input event and the expected note time with <strong>microsecond-level accuracy</strong>.</p>
+<p><strong>What changed</strong></p>
+<ul class="simple">
+<li><p>Judgment resolution is no longer limited by the audio buffer cadence.</p></li>
+<li><p>Sample rate and buffer size still affect audio scheduling and overall latency, but <strong>they do not cap judgment precision</strong>.</p></li>
+</ul>
+<p><strong>Audio cadence (context)</strong></p>
+<p>By default, the PDJE Core Engine runs at 48,000 Hz.
+With a 48-sample buffer, the audio callback cadence is 1,000 Hz (48,000 / 48).
+Previously this implied ~1 ms timing steps; now the judge uses synchronized timestamps for microsecond-level precision and applies audio/buffer latency compensation separately.</p>
+<p><strong>Practical notes</strong></p>
+<ul class="simple">
+<li><p>Input and audio threads share the same monotonic clock (e.g., Windows <cite>QPC</cite>, Linux <cite>CLOCK_MONOTONIC</cite>/<cite>CLOCK_MONOTONIC_RAW</cite>).</p></li>
+<li><p>Initial synchronization (with periodic drift checks) aligns the input and audio epochs so the computed time differences reflect true inter-event timing.</p></li>
+</ul>
 </li>
 <li><p><strong>Utility Engine</strong> :
 This engine handles non-essential but highly useful functionalities beyond the core features.</p>
@@ -194,9 +206,10 @@ timeline
   section DJ + DAW + HPC + AI Rhythm Engine
     1.2.0 : Basic Utility Module Implemented
     1.5.0 : OnnxRuntime Integration Utility Module
-    2.0.0 : OnnxRuntime Integrated with OKL (OCCA Kernel Language)
+    2.0.0 : OnnxRuntime Integrated with AdaptiveCPP
           : Cross-Vendor GPGPU Support Enabled
-    </pre></section>
+    </pre><p>See: AdaptiveCPP (<a class="reference external" href="https://github.com/AdaptiveCpp/AdaptiveCpp">https://github.com/AdaptiveCpp/AdaptiveCpp</a>)</p>
+</section>
 <section id="use-cases">
 <h2>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading"></a></h2>
 <p>PDJE is ideal for:</p>
@@ -204,7 +217,7 @@ timeline
 <li><p><strong>Custom rhythm‑game development</strong> with built‑in mixing</p></li>
 <li><p><strong>Realtime + Pre-made DJ performance</strong></p></li>
 <li><p><strong>In‑game music editors and DAW</strong> for dynamic chart and mixset creation</p></li>
-<li><p><strong>Low Latency Input</strong> for linux(io_uring) and windows(rawinput).</p></li>
+<li><p><strong>Low Latency Input</strong> for linux(epoll + RT mode) and windows(rawinput).</p></li>
 </ul>
 </section>
 <section id="additional-resources">
@@ -219,14 +232,39 @@ timeline
 <hr class="docutils" />
 <section id="ci-cd-call-graph">
 <h2>CI/CD Call Graph<a class="headerlink" href="#ci-cd-call-graph" title="Link to this heading"></a></h2>
+<blockquote>
+<div></div></blockquote>
 <pre  class="mermaid">
-        flowchart TD
-Project_DJ_Engine --&gt; PDJE_Godot_Plugin
-PDJE_Godot_Plugin --&gt; Project_DJ_Godot
+        %%{init: {'flowchart': {'curve': 'stepAfter'}}}%%
 
-origin_build_success --&gt; Project_DJ_Engine
-manual_release --&gt; PDJE_Godot_Plugin
-    </pre><div class="toctree-wrapper compound">
+flowchart TD
+subgraph CORE_DEVELOP
+  push_to_core/dev --&gt; core/dev
+  core/dev --&gt; core/dev_build_test
+  core/dev_build_test --&gt; core/main
+  core/main --&gt; core/main_build_test
+end
+
+subgraph VALID_CHECK
+  RELEASE --&gt; self_clone/git_lfs_test
+  self_clone/git_lfs_test --&gt; PASS
+  self_clone/git_lfs_test --&gt; FAIL
+  FAIL --&gt; revert_commit
+end
+subgraph WRAPPER_DEVELOP
+  push_to_wrapper/dev --&gt; wrapper/dev
+  wrapper/dev --&gt; wrapper/dev_build_test
+  core/dev --&gt; wrapper/dev_build_test
+  wrapper/dev_build_test --&gt; wrapper/main
+  wrapper/main --&gt; wrapper/main_build_test
+  core/main --&gt; wrapper/main_build_test
+end
+    </pre><p>CORE_DEVELOP –&gt; Project_DJ_Engine
+WRAPPER_DEVELOP –&gt; PDJE_Godot_Plugin
+Project_DJ_Engine –&gt;|TRIG_CICD| PDJE_Godot_Plugin
+PDJE_Godot_Plugin –&gt;|RELEASE| Project_DJ_Godot
+Project_DJ_Godot –&gt; VALID_CHECK</p>
+<div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Getting%20Started.html">Getting Started</a></li>

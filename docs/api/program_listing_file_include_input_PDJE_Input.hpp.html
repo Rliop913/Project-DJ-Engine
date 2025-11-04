@@ -93,26 +93,29 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;future&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;random&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MainProcess.hpp&quot;</span>
+
 <span class="cp">#ifdef WIN32</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;windows_input.hpp&quot;</span>
+<span class="c1">// #include &quot;windows_input.hpp&quot;</span>
+
 <span class="cp">#elif defined(__APPLE__)</span>
 
 <span class="cp">#else</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;linux_input.hpp&quot;</span>
+<span class="c1">// #include &quot;linux_input.hpp&quot;</span>
 <span class="cp">#endif</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">PDJE_Input</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="o">:</span>
-<span class="w">    </span><span class="n">OS_Input</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">MainProcess</span><span class="o">&gt;</span><span class="w"> </span><span class="n">http_bridge</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">P</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="kt">void</span>
-<span class="w">    </span><span class="n">InitOneShot</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">&amp;</span><span class="n">promise</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;</span><span class="n">future</span><span class="p">,</span><span class="w"> </span><span class="n">ONE_SHOT_SYNC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sync</span><span class="p">);</span>
+<span class="w">    </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">SharedMem</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">PDJE_ID</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_NAME</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">PDJE_IPC_RW</span><span class="o">&gt;</span><span class="w">       </span><span class="n">id_name</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">P</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="kt">void</span>
-<span class="w">    </span><span class="n">ResetOneShot</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">&amp;</span><span class="n">promise</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;</span><span class="n">future</span><span class="p">,</span><span class="w"> </span><span class="n">ONE_SHOT_SYNC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sync</span><span class="p">);</span>
-<span class="w">    </span><span class="c1">// std::vector&lt;DeviceData&gt; activated_devices;</span>
+<span class="w">    </span><span class="n">PDJE_Buffer_Arena</span><span class="o">&lt;</span><span class="n">PDJE_Input_Log</span><span class="o">&gt;</span><span class="w">            </span><span class="n">input_buffer</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">SharedMem</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">PDJE_IPC_RW</span><span class="o">&gt;</span><span class="w"> </span><span class="n">spinlock_run</span><span class="p">;</span><span class="c1">// 0 = stop, 1 = go, -1 = terminate</span>
+
 <span class="w">    </span><span class="n">PDJE_INPUT_STATE</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEAD</span><span class="p">;</span>
 
 <span class="w">  </span><span class="k">public</span><span class="o">:</span>
@@ -138,31 +141,12 @@
 <span class="w">    </span><span class="n">PDJE_INPUT_DATA_LINE</span>
 <span class="w">    </span><span class="nf">PullOutDataLine</span><span class="p">();</span>
 
-<span class="w">    </span><span class="n">ONE_SHOT_DEV_PROMISE</span><span class="w"> </span><span class="n">config_promise</span><span class="p">;</span>
-<span class="w">    </span><span class="n">ONE_SHOT_RUN_PROMISE</span><span class="w"> </span><span class="n">run_command</span><span class="p">;</span>
 <span class="w">    </span><span class="n">PDJE_Input</span><span class="p">();</span>
 
-<span class="w">    </span><span class="o">~</span><span class="n">PDJE_Input</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<span class="w">    </span><span class="o">~</span><span class="n">PDJE_Input</span><span class="p">(){</span>
+<span class="w">      </span><span class="n">Kill</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
-
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">P</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span>
-<span class="kt">void</span>
-<span class="n">PDJE_Input</span><span class="o">::</span><span class="n">InitOneShot</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">&amp;</span><span class="n">promise</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;</span><span class="n">future</span><span class="p">,</span><span class="w"> </span><span class="n">ONE_SHOT_SYNC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sync</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">promise</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
-<span class="w">    </span><span class="n">future</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
-<span class="w">    </span><span class="n">sync</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">    </span><span class="n">future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">promise</span><span class="o">-&gt;</span><span class="n">get_future</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">P</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span>
-<span class="kt">void</span>
-<span class="n">PDJE_Input</span><span class="o">::</span><span class="n">ResetOneShot</span><span class="p">(</span><span class="n">P</span><span class="w"> </span><span class="o">&amp;</span><span class="n">promise</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">&amp;</span><span class="n">future</span><span class="p">,</span><span class="w"> </span><span class="n">ONE_SHOT_SYNC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sync</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">promise</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
-<span class="w">    </span><span class="n">future</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
-<span class="w">    </span><span class="n">sync</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
-<span class="p">}</span>
 </pre></div>
 </div>
 </section>
