@@ -108,7 +108,7 @@ endif(PDJE_BUILD_TESTS)
 if(PDJE_DYNAMIC)
   add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource} ${globalSource})
 
-  add_library(PDJE_MODULE_JUDGE SHARED ${judgeSource} ${globalSource} ${PDJE_IPC_SRC})
+  add_library(PDJE_MODULE_JUDGE SHARED ${judgeSource} ${globalSource})
 if(PDJE_DEVELOP_INPUT)
   add_library(PDJE_MODULE_INPUT SHARED ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC} ${PDJE_IPC_SRC})
 
