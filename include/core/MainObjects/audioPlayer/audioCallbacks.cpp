@@ -61,7 +61,7 @@ FullPreRender_callback(ma_device  *pDevice,
                        ma_uint32   frameCount)
 {
     auto rendered =
-    reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
+        reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
     rendered->CountUp(frameCount);
     rendered->Get(reinterpret_cast<float *>(pOutput), frameCount);
 }
@@ -73,7 +73,7 @@ HybridRender_callback(ma_device  *pDevice,
                       ma_uint32   frameCount)
 {
     auto rendered =
-    reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
+        reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
     rendered->CountUp(frameCount);
     rendered->GetAfterManFX(reinterpret_cast<float *>(pOutput), frameCount);
     rendered->MusCtrPanel->GetPCMFrames(reinterpret_cast<float *>(pOutput),

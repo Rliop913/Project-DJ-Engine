@@ -8,12 +8,17 @@
 #include <future>
 #include <string>
 #include <vector>
+#include <optional>
+#include <random>
+#include "MainProcess.hpp"
+
 #ifdef WIN32
-#include "windows_input.hpp"
+// #include "windows_input.hpp"
+
 #elif defined(__APPLE__)
 
 #else
-#include "linux_input.hpp"
+// #include "linux_input.hpp"
 #endif
 
 /**
@@ -23,16 +28,14 @@
  */
 class PDJE_API PDJE_Input {
   private:
-    OS_Input data;
+    std::optional<PDJE_IPC::MainProcess> http_bridge;
+    
+    PDJE_IPC::SharedMem<std::unordered_map<PDJE_ID, PDJE_NAME>, PDJE_IPC::PDJE_IPC_RW>       id_name;
+    
+    PDJE_Buffer_Arena<PDJE_Input_Log>            input_buffer;
 
-    template <typename P, typename F>
-    void
-    InitOneShot(P &promise, F &future, ONE_SHOT_SYNC &sync);
-
-    template <typename P, typename F>
-    void
-    ResetOneShot(P &promise, F &future, ONE_SHOT_SYNC &sync);
-    // std::vector<DeviceData> activated_devices;
+    PDJE_IPC::SharedMem<int, PDJE_IPC::PDJE_IPC_RW> spinlock_run;// 0 = stop, 1 = go, -1 = terminate
+    
     PDJE_INPUT_STATE state = PDJE_INPUT_STATE::DEAD;
 
   public:
@@ -78,8 +81,6 @@ class PDJE_API PDJE_Input {
     PDJE_INPUT_DATA_LINE
     PullOutDataLine();
 
-    ONE_SHOT_DEV_PROMISE config_promise;
-    ONE_SHOT_RUN_PROMISE run_command;
     /**
     @brief Constructor.
     */
@@ -90,22 +91,3 @@ class PDJE_API PDJE_Input {
     */
     ~PDJE_Input() = default;
 };
-
-template <typename P, typename F>
-void
-PDJE_Input::InitOneShot(P &promise, F &future, ONE_SHOT_SYNC &sync)
-{
-    promise.emplace();
-    future.emplace();
-    sync.emplace(2);
-    future = promise->get_future();
-}
-
-template <typename P, typename F>
-void
-PDJE_Input::ResetOneShot(P &promise, F &future, ONE_SHOT_SYNC &sync)
-{
-    promise.reset();
-    future.reset();
-    sync.reset();
-}

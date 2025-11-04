@@ -40,22 +40,21 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
     for (size_t i = 0; i < br.size(); ++i) {
         if (strcmp(br[i].getNoteType().cStr(), "BPM") != 0) {
             BpmFragment searchfragment;
-            searchfragment.beat        = br[i].getBeat();
-            searchfragment.subBeat     = br[i].getSubBeat();
-            searchfragment.separate    = br[i].getSeparate();
-            if(searchfragment.separate == 0){
+            searchfragment.beat     = br[i].getBeat();
+            searchfragment.subBeat  = br[i].getSubBeat();
+            searchfragment.separate = br[i].getSeparate();
+            if (searchfragment.separate == 0) {
                 searchfragment.separate = 1;
             }
             auto               affects = noteBpms.getAffected(searchfragment);
             unsigned long long position =
                 affects.frame_to_here +
-                FrameCalc::CountFrame(
-                                    affects.beat,
-                                    affects.subBeat,
-                                    affects.separate,
-                                    searchfragment.beat,
-                                    searchfragment.subBeat,
-                                    searchfragment.separate,
+                FrameCalc::CountFrame(affects.beat,
+                                      affects.subBeat,
+                                      affects.separate,
+                                      searchfragment.beat,
+                                      searchfragment.subBeat,
+                                      searchfragment.separate,
                                       affects.bpm);
 
             unsigned long long pos2;
@@ -67,11 +66,11 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
                 secondpos.beat     = br[i].getEbeat();
                 secondpos.subBeat  = br[i].getEsubBeat();
                 secondpos.separate = br[i].getESeparate();
-                if(secondpos.separate == 0){
+                if (secondpos.separate == 0) {
                     secondpos.separate = 1;
                 }
-                auto res           = noteBpms.getAffected(secondpos);
-                pos2               = res.frame_to_here +
+                auto res = noteBpms.getAffected(secondpos);
+                pos2     = res.frame_to_here +
                        FrameCalc::CountFrame(res.beat,
                                              res.subBeat,
                                              res.separate,

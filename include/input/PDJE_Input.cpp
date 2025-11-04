@@ -1,21 +1,9 @@
 #include "PDJE_Input.hpp"
 #include "PDJE_LOG_SETTER.hpp"
-#define PDJE_INPUT_DEFAULT_TRY_CATCH(CODE)                                     \
-    try {                                                                      \
-        CODE                                                                   \
-    } catch (const std::exception &e) {                                        \
-        ResetOneShot(config_promise, data.config_data, data.config_sync);      \
-        ResetOneShot(run_command, data.run_ok, data.run_sync);                 \
-                                                                               \
-        state = PDJE_INPUT_STATE::DEAD;                                        \
-        critlog("failed to execute code. WHY: ");                              \
-        critlog(e.what());                                                     \
-        ErrLog += e.what();                                                    \
-        ErrLog += "\n";                                                        \
-        return false;                                                          \
-    }
+
 
 PDJE_Input::PDJE_Input()
+: input_buffer(2048)
 {
     startlog();
 }
@@ -23,22 +11,41 @@ PDJE_Input::PDJE_Input()
 bool
 PDJE_Input::Init()
 {
-    if (state != PDJE_INPUT_STATE::DEAD) {
-        warnlog("pdje input module init failed. pdje input state is not dead. "
-                "maybe input module is running or configuring.");
-        return false;
-    }
-    PDJE_INPUT_DEFAULT_TRY_CATCH(
-        InitOneShot(config_promise, data.config_data, data.config_sync);
-        InitOneShot(run_command, data.run_ok, data.run_sync);
-        data.TrigLoop();
-        state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
-        return true;)
+    try
+    {
+        if (state != PDJE_INPUT_STATE::DEAD) {
+                critlog("pdje input module init failed. pdje input state is not dead. "
+                        "maybe input module is running or configuring.");
+                return false;
+            }
+        int port;
+        {
+            httplib::Server portGetter;
+            port = portGetter.bind_to_any_port("0.0.0.0");
+        }
+        
+        http_bridge.emplace(port);
+
+        http_bridge->SendBufferArena(input_buffer);
+        
+        spinlock_run.MakeIPCSharedMemory(std::string("PDJE_SPINLOCK"), 1);
+        (*spinlock_run.ptr) = 0;
+        http_bridge->SendIPCSharedMemory(spinlock_run, std::string("PDJE_SPINLOCK"), "spinlock");
+            state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
+            return true;
+        }
+        catch(const std::exception& e)
+        {
+            critlog("failed to execute code. WHY: ");
+            critlog(e.what());
+            return false;
+        }
 }
 
 bool
 PDJE_Input::Config(std::vector<DeviceData> &devs)
 {
+    try{
     std::vector<DeviceData> sanitized_devs;
     for (const auto &d : devs) {
         if (d.Name != "" && d.device_specific_id != "" &&
@@ -47,15 +54,47 @@ PDJE_Input::Config(std::vector<DeviceData> &devs)
         }
     }
     if (state != PDJE_INPUT_STATE::DEVICE_CONFIG_STATE) {
-        warnlog("pdje input module config failed. pdje input state is not on "
+        critlog("pdje input module config failed. pdje input state is not on "
                 "device config state. Init it first.");
         return false;
     }
-    PDJE_INPUT_DEFAULT_TRY_CATCH(config_promise->set_value(sanitized_devs);
-                                 data.config_sync->arrive_and_wait();)
-
+    nlohmann::json nj;
+    nj["body"] = nlohmann::json::array();
+    for(const auto& dev : sanitized_devs){
+        std::unordered_map<std::string, std::string> kv;
+        kv["id"] = dev.device_specific_id;
+        kv["name"] = dev.Name;
+        switch (dev.Type)
+        {
+        case PDJE_Dev_Type::KEYBOARD:
+            kv["type"] = "KEYBOARD";
+            nj["body"].push_back(kv);
+            break;
+        case PDJE_Dev_Type::MOUSE:
+            kv["type"] = "MOUSE";
+            nj["body"].push_back(kv);
+            break;
+        case PDJE_Dev_Type::MIDI:
+            kv["type"] = "MIDI";
+            nj["body"].push_back(kv);
+            break;
+        case PDJE_Dev_Type::HID:
+            kv["type"] = "HID";
+            nj["body"].push_back(kv);
+            break;
+        default:
+            break;
+        }
+    }
+    http_bridge->QueryConfig(nj.dump());
     state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
-    return true;
+    return http_bridge->EndTransmission();
+    
+}catch(const std::exception& e){
+    critlog("failed to config. WHY: ");
+    critlog(e.what());
+    return false;
+}
 }
 
 bool
@@ -66,9 +105,7 @@ PDJE_Input::Run()
                 "ready state. config it first.");
         return false;
     }
-
-    PDJE_INPUT_DEFAULT_TRY_CATCH(run_command->set_value(true);
-                                 data.run_sync->arrive_and_wait();)
+    (*spinlock_run.ptr) = 1;
 
     state = PDJE_INPUT_STATE::INPUT_LOOP_RUNNING;
     return true;
@@ -82,37 +119,28 @@ PDJE_Input::Kill()
         return true;
 
     case PDJE_INPUT_STATE::DEVICE_CONFIG_STATE: {
-        auto empty_devs = DEV_LIST();
-        Config(empty_devs);
-        data.config_sync->arrive_and_wait();
-        break;
+        return http_bridge->Kill();
     }
     case PDJE_INPUT_STATE::INPUT_LOOP_READY:
-        PDJE_INPUT_DEFAULT_TRY_CATCH(run_command->set_value(false);
-                                     data.run_sync->arrive_and_wait();)
+        (*spinlock_run.ptr) = -1;
         break;
     case PDJE_INPUT_STATE::INPUT_LOOP_RUNNING: {
-        if (!data.kill()) {
-            critlog("failed to kill pdje input module. maybe thread is broken. "
-                    "issue this.");
-            return false;
-        }
+        (*spinlock_run.ptr) = 0;
+        break;
     } break;
     default:
         critlog("the pdje input module state is broken...why?");
         return false;
     }
-    data.ResetLoop();
     state = PDJE_INPUT_STATE::DEAD;
-    ResetOneShot(config_promise, data.config_data, data.config_sync);
-    ResetOneShot(run_command, data.run_ok, data.run_sync);
     return true;
 }
 
 std::vector<DeviceData>
 PDJE_Input::GetDevs()
 {
-    return data.getDevices();
+    return http_bridge->GetDevices();
+    
 }
 
 PDJE_INPUT_STATE
@@ -124,5 +152,7 @@ PDJE_Input::GetState()
 PDJE_INPUT_DATA_LINE
 PDJE_Input::PullOutDataLine()
 {
-    return data.PullOutDataLine();
+    PDJE_INPUT_DATA_LINE line;
+    line.input_arena = &input_buffer;
+    return line;
 }

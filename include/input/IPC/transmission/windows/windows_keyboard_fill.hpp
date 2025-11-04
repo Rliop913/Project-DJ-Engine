@@ -356,17 +356,21 @@ FillKeyboardInput(PDJE_Input_Event &tempEv, const RAWINPUT *ri)
     tempEv.keyboard.pressed = (ri->data.keyboard.Flags & RI_KEY_BREAK) == 0;
 }
 
-static inline std::pmr::vector<uint8_t>
-FillHIDInput(std::pmr::unsynchronized_pool_resource &arena,
+static
+void
+FillHIDInput(uint8_t buffer[],
              const RAWINPUT                         *ri,
              unsigned long                          &byteSize)
 {
 
-    std::pmr::vector<uint8_t> hidB(&arena);
-    hidB.resize(ri->data.hid.dwCount * ri->data.hid.dwSizeHid);
-    memcpy(hidB.data(), ri->data.hid.bRawData, hidB.size() * sizeof(uint8_t));
+    
+    // hidB.resize(ri->data.hid.dwCount * ri->data.hid.dwSizeHid);
+    auto sz = ri->data.hid.dwCount * ri->data.hid.dwSizeHid;
+    if(sz > 512){
+        return;
+    }
+    memcpy(buffer, ri->data.hid.bRawData, sz * sizeof(uint8_t));
     byteSize = ri->data.hid.dwSizeHid;
-
-    return hidB;
+    return;
 }
 }; // namespace PDJE_RAWINPUT
