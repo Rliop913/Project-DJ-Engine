@@ -55,6 +55,7 @@ set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
 #   )
 
 # endif()
+add_compile_options(-frtti)
 function(PDJE_COMPILE_OPTION targetName)
   
 
