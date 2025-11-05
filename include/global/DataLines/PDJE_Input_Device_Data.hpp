@@ -11,4 +11,4 @@ struct DeviceData {
     std::string   Name;
     std::string   device_specific_id;
 };
-using DEV_LIST             = std::vector<DeviceData>;
+using DEV_LIST = std::vector<DeviceData>;

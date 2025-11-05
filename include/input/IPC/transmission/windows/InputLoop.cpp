@@ -1,13 +1,13 @@
 #include "ChildProcess.hpp"
+#include "ListDevice.hpp"
+#include "windows_keyboard_fill.hpp"
 #include <Windows.h>
 #include <bitset>
-#include "windows_keyboard_fill.hpp"
-#include "ListDevice.hpp"
-namespace PDJE_IPC{
+namespace PDJE_IPC {
 
-    void*
-    ChildProcess::Init()
-    {
+void *
+ChildProcess::Init()
+{
     HINSTANCE hst = GetModuleHandleW(nullptr);
     WNDCLASSW wc{};
     wc.lpfnWndProc   = DefWindowProc;
@@ -27,10 +27,10 @@ namespace PDJE_IPC{
                            nullptr,
                            hst,
                            nullptr);
-    }
+}
 void
-    ChildProcess::Run()
-    {
+ChildProcess::Run()
+{
 
     MSG msg;
 
@@ -39,21 +39,21 @@ void
     uint64_t                                            now;
     PDJE_Dev_Type                                       dtype;
     thread_local std::pmr::unsynchronized_pool_resource mono_arena;
-    
-    std::string                                         handlestr;
-    std::string namestr;
-    PDJE_Input_Event                                    tempEv;
+
+    std::string      handlestr;
+    std::string      namestr;
+    PDJE_Input_Event tempEv;
     handlestr.reserve(100);
     PDJE_HID_Event   hidEv;
     std::bitset<102> isPressed;
     bool             Writable = true;
-    auto killer = std::thread([&](){
-        while(*spinlock_run->ptr == 1){
+    auto             killer   = std::thread([&]() {
+        while (*spinlock_run->ptr == 1) {
             std::this_thread::sleep_for(std::chrono::milliseconds(500));
         }
         PostThreadMessageW(ThreadID, WM_QUIT, 0, 0);
     });
-    PDJE_Input_Log cachedLog;
+    PDJE_Input_Log   cachedLog;
     while (true) {
         try {
 
@@ -112,9 +112,9 @@ void
 
                         break;
                     case RIM_TYPEHID:
-                        dtype            = PDJE_Dev_Type::HID;
-                        PDJE_RAWINPUT::FillHIDInput( hidEv.hid_buffer,
-                            ri, hidEv.hid_byte_size);
+                        dtype = PDJE_Dev_Type::HID;
+                        PDJE_RAWINPUT::FillHIDInput(
+                            hidEv.hid_buffer, ri, hidEv.hid_byte_size);
                         break;
                     default:
                         dtype = PDJE_Dev_Type::UNKNOWN;
@@ -153,14 +153,20 @@ void
                         }
                     }
                     if (Writable) {
-                        cachedLog.type = dtype;
-                        cachedLog.event = tempEv;
+                        cachedLog.type      = dtype;
+                        cachedLog.event     = tempEv;
                         cachedLog.hid_event = hidEv;
-                        cachedLog.id_len = handlestr.size() > 256 ? 256 : handlestr.size();
-                        memcpy(cachedLog.id, handlestr.data(), sizeof(char)*(cachedLog.id_len));
+                        cachedLog.id_len =
+                            handlestr.size() > 256 ? 256 : handlestr.size();
+                        memcpy(cachedLog.id,
+                               handlestr.data(),
+                               sizeof(char) * (cachedLog.id_len));
                         namestr = id_name[handlestr];
-                        cachedLog.name_len = namestr.size() > 256 ? 256 : namestr.size();
-                        memcpy(cachedLog.name, namestr.data(), sizeof(char)*(cachedLog.name_len));
+                        cachedLog.name_len =
+                            namestr.size() > 256 ? 256 : namestr.size();
+                        memcpy(cachedLog.name,
+                               namestr.data(),
+                               sizeof(char) * (cachedLog.name_len));
                         cachedLog.microSecond = now;
                         input_buffer->Write(cachedLog);
                     }
@@ -178,8 +184,8 @@ void
             critlog(e.what());
         }
     }
-    
-    killer.join();
-    }
 
-};
+    killer.join();
+}
+
+}; // namespace PDJE_IPC

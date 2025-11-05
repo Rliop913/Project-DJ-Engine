@@ -32,5 +32,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/include/core/MainObjects/audioPlayer/audioCallbacks.
 
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/interface/PDJE_interface.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/interface/PDJE_polyglot_wraps.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/core/interface/PDJE_C_EXPORT.cpp
+
 
 )

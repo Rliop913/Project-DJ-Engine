@@ -356,17 +356,13 @@ FillKeyboardInput(PDJE_Input_Event &tempEv, const RAWINPUT *ri)
     tempEv.keyboard.pressed = (ri->data.keyboard.Flags & RI_KEY_BREAK) == 0;
 }
 
-static
-void
-FillHIDInput(uint8_t buffer[],
-             const RAWINPUT                         *ri,
-             unsigned long                          &byteSize)
+static void
+FillHIDInput(uint8_t buffer[], const RAWINPUT *ri, unsigned long &byteSize)
 {
 
-    
     // hidB.resize(ri->data.hid.dwCount * ri->data.hid.dwSizeHid);
     auto sz = ri->data.hid.dwCount * ri->data.hid.dwSizeHid;
-    if(sz > 512){
+    if (sz > 512) {
         return;
     }
     memcpy(buffer, ri->data.hid.bRawData, sz * sizeof(uint8_t));
