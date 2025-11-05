@@ -59,16 +59,7 @@ function(PDJE_COMPILE_OPTION targetName)
   
 
 target_compile_options(${targetName} PRIVATE
-  $<$<CXX_COMPILER_ID:MSVC>:/permissive- /WX- /W3 /GR>
-  $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-fno-exceptions>
-)
-
-# MSVC
-target_compile_options(${targetName} PRIVATE
-  $<$<CXX_COMPILER_ID:MSVC>:/W3>
-)
-
-target_compile_options(${targetName} PRIVATE
+  $<$<CXX_COMPILER_ID:MSVC>:/permissive- /WX- /W3 /GR /arch:AVX2>
   $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:
     -Wnon-virtual-dtor
     -Wweak-vtables
@@ -76,11 +67,6 @@ target_compile_options(${targetName} PRIVATE
     -Wabi
     -frtti
   >
-)
-
-# MSVC x86/x64
-target_compile_options(${targetName} PRIVATE
-  $<$<CXX_COMPILER_ID:MSVC>:/arch:AVX2>
 )
 
 # Apple Silicon (arm64)
