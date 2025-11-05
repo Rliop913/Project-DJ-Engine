@@ -20,6 +20,7 @@ if(MSVC)
 set(CMAKE_INCLUDE_SYSTEM_FLAG_MSVC "")
 add_compile_options(
     /arch:AVX2
+    /permissive- 
 )
 add_compile_options(/W3 /GR /WX-)
 elseif(APPLE)
@@ -29,7 +30,13 @@ add_compile_options(
   -fvectorize
   -ffast-math
 )
-add_compile_options(-frtti)
+add_compile_options(
+  -frtti
+  -Wabi
+  -Wweak-vtables
+  -Wnon-virtual-dtor
+  -Wpadded -Wpacked -Wpragma-pack
+  )
 else()
 
 add_compile_options(
@@ -39,7 +46,13 @@ add_compile_options(
   -mavx2
   -mfma
 )
-add_compile_options(-frtti)
+add_compile_options(
+  -frtti
+  -Wabi
+  -Wweak-vtables
+  -Wnon-virtual-dtor
+  -Wpadded -Wpacked -Wpragma-pack
+  )
 endif()
 # if(WIN32)
 
