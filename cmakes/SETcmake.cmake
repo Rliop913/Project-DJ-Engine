@@ -16,44 +16,87 @@ set(CMAKE_C_COMPILER_LAUNCHER ccache)
 set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
 
 
-if(MSVC)
-set(CMAKE_INCLUDE_SYSTEM_FLAG_MSVC "")
-add_compile_options(
-    /arch:AVX2
-    /permissive- 
-)
-add_compile_options(/W3 /GR /WX-)
-elseif(APPLE)
-set(CMAKE_OSX_ARCHITECTURES arm64 CACHE STRING "" FORCE)
-add_compile_options(
-  -mcpu=apple-m1
-  -fvectorize
-  -ffast-math
-)
-add_compile_options(
-  -frtti
-  -Wabi
-  -Wweak-vtables
-  -Wnon-virtual-dtor
-  -Wpadded -Wpacked -Wpragma-pack
-  )
-else()
+# if(MSVC)
+# set(CMAKE_INCLUDE_SYSTEM_FLAG_MSVC "")
+# add_compile_options(
+#     /arch:AVX2
+#     /permissive- 
+# )
+# add_compile_options(/W3 /GR /WX-)
+# elseif(APPLE)
+# set(CMAKE_OSX_ARCHITECTURES arm64 CACHE STRING "" FORCE)
+# add_compile_options(
+#   -mcpu=apple-m1
+#   -fvectorize
+#   -ffast-math
+# )
+# add_compile_options(
+#   -frtti
+#   -Wabi
+#   -Wweak-vtables
+#   -Wnon-virtual-dtor
+#   -Wpadded -Wpacked -Wpragma-pack
+#   )
+# else()
 
-add_compile_options(
-  -march=haswell
-  -msse4.1
-  -mavx
-  -mavx2
-  -mfma
+# add_compile_options(
+#   -march=haswell
+#   -msse4.1
+#   -mavx
+#   -mavx2
+#   -mfma
+# )
+# add_compile_options(
+#   -frtti
+#   -Wabi
+#   -Wweak-vtables
+#   -Wnon-virtual-dtor
+#   -Wpadded -Wpacked -Wpragma-pack
+#   )
+
+# endif()
+function(PDJE_COMPILE_OPTION targetName)
+  
+
+target_compile_options(${targetName} PRIVATE
+  $<$<CXX_COMPILER_ID:MSVC>:/permissive- /WX- /W3 /GR>
+  $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-fno-exceptions>
 )
-add_compile_options(
-  -frtti
-  -Wabi
-  -Wweak-vtables
-  -Wnon-virtual-dtor
-  -Wpadded -Wpacked -Wpragma-pack
-  )
-endif()
+
+# MSVC
+target_compile_options(${targetName} PRIVATE
+  $<$<CXX_COMPILER_ID:MSVC>:/W3>
+)
+
+target_compile_options(${targetName} PRIVATE
+  $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:
+    -Wnon-virtual-dtor
+    -Wweak-vtables
+    -Wpadded -Wpacked -Wpragma-pack
+    -Wabi
+    -frtti
+  >
+)
+
+# MSVC x86/x64
+target_compile_options(${targetName} PRIVATE
+  $<$<CXX_COMPILER_ID:MSVC>:/arch:AVX2>
+)
+
+# Apple Silicon (arm64)
+target_compile_options(${targetName} PRIVATE
+  $<$<AND:$<CXX_COMPILER_ID:AppleClang>,$<STREQUAL:${CMAKE_SYSTEM_PROCESSOR},arm64>>:
+    -mcpu=apple-m1 -fvectorize -ffast-math
+  >
+)
+
+target_compile_options(${targetName} PRIVATE
+  $<$<AND:$<CXX_COMPILER_ID:GNU,Clang>,$<OR:$<STREQUAL:${CMAKE_SYSTEM_PROCESSOR},x86_64>,$<STREQUAL:${CMAKE_SYSTEM_PROCESSOR},AMD64>>>:
+    -march=haswell -msse4.1 -mavx -mavx2 -mfma
+  >
+)
+
+endfunction(PDJE_COMPILE_OPTION)
 # if(WIN32)
 
 #     set(CMAKE_CXX_STANDARD 20)
