@@ -1,8 +1,8 @@
 #pragma once
 
 #include "PDJE_INPUT_PROCESS_HASH.hpp"
-#include "ipc_shared_memory.hpp"
 #include "PDJE_LOG_SETTER.hpp"
+#include "ipc_shared_memory.hpp"
 #include <algorithm>
 #include <cctype>
 #include <cstddef>
@@ -50,4 +50,4 @@ GetValidProcessExecutor()
     return {};
 }
 
-}; // namespace PDJE_IPC_UTILS
+}; // namespace PDJE_IPC

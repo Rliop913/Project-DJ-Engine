@@ -50,7 +50,6 @@ template <typename T, int MEM_PROT_FLAG> class SharedMem {
     MakeIPCSharedMemory(const fs::path &memfd_name, const uint64_t count);
 
     ~SharedMem();
-
 };
 
 }; // namespace PDJE_IPC

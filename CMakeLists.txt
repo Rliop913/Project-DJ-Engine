@@ -60,6 +60,8 @@ if(PDJE_DEVELOP_INPUT)
 add_executable(PDJE_MODULE_INPUT_PROCESS ${inputSource} ${globalSource}  ${PDJE_INPUT_PROCESS_SRC} ${PDJE_IPC_SRC})
 
 target_include_directories(PDJE_MODULE_INPUT_PROCESS PUBLIC ${PDJE_INCLUDE_INPUT})
+
+PDJE_COMPILE_OPTION(PDJE_MODULE_INPUT_PROCESS)
 PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT_PROCESS)
 setSpdlogReqLib(PDJE_MODULE_INPUT_PROCESS)
 
@@ -175,7 +177,7 @@ function(linkPDJELibs targetName)
   setLibgit2ReqLib(${targetName})
   setHighwayReqLib(${targetName})
   LinuxSetAtomic(${targetName})
-  
+  PDJE_COMPILE_OPTION(${targetName})
 
 endfunction(linkPDJELibs)
 
@@ -184,6 +186,9 @@ if(PDJE_BUILD_TESTS)
   linkPDJELibs(testEditor)
   linkPDJELibs(DBTester)
   linkPDJELibs(testJudge)
+  PDJE_COMPILE_OPTION(testEditor)
+  PDJE_COMPILE_OPTION(DBTester)
+  PDJE_COMPILE_OPTION(testJudge)
 
 endif()
 
@@ -199,6 +204,9 @@ LinuxSetAtomic(PDJE_MODULE_JUDGE)
   setSpdlogReqLib(PDJE_MODULE_INPUT_PROCESS)
   PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT)
   LinuxSetAtomic(PDJE_MODULE_INPUT)
+
+  PDJE_COMPILE_OPTION(PDJE_MODULE_JUDGE)
+  PDJE_COMPILE_OPTION(PDJE_MODULE_INPUT)
 endif()
 
 
