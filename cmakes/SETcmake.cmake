@@ -15,6 +15,30 @@ set(FAIL_ON_WARNINGS OFF CACHE BOOL "Disable Werror in rocksdb")
 set(CMAKE_C_COMPILER_LAUNCHER ccache)
 set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
 
+function(SET_PROPERTIES targetname)
+    
+  if(APPLE)
+  set_target_properties(${targetname} PROPERTIES
+      MACOSX_RPATH ON
+      BUILD_RPATH "@loader_path"
+  )
+  target_link_options(${targetname} PRIVATE
+      "-Wl,-rpath,@loader_path"
+  )
+
+  elseif(UNIX)
+  set_target_properties(${targetname} PROPERTIES
+      BUILD_RPATH "\$ORIGIN"
+  )
+  target_link_options(${targetname} PRIVATE
+  "-Wl,--enable-new-dtags"
+  "-Wl,-rpath,\$ORIGIN"
+  )
+
+  endif()
+
+endfunction(SET_PROPERTIES)
+
 
 # if(MSVC)
 # set(CMAKE_INCLUDE_SYSTEM_FLAG_MSVC "")
