@@ -43,6 +43,7 @@ editorObject::demoPlayInit(std::shared_ptr<audioPlayer> &player,
                            unsigned int                  frameBufferSize,
                            const UNSANITIZED            &trackTitle)
 {
+    try{
     if (player) {
         player.reset();
     }
@@ -64,6 +65,10 @@ editorObject::demoPlayInit(std::shared_ptr<audioPlayer> &player,
                                            searchedTd->front(),
                                            frameBufferSize,
                                            true);
+    } catch(const std::exception& e){
+        critlog("failed to init demo player. Why: ");
+        critlog(e.what());
+    }
 }
 
 DONT_SANITIZE
