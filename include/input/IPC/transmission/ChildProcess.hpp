@@ -11,6 +11,7 @@
 #include <optional>
 #include <string>
 #include <unordered_map>
+#include "PDJE_Crypto.hpp"
 namespace PDJE_IPC {
 
 using PDJE_DEV_PATH = std::string;
@@ -22,6 +23,7 @@ class ChildProcess {
 #elif defined(__linux__)
 
 #endif
+    PDJE_CRYPTO::AEAD aead;
     std::unordered_map<std::string, std::function<void()>> callables;
     httplib::Server                                        server;
 
@@ -46,7 +48,8 @@ class ChildProcess {
 
   public:
     bool KillCheck = false;
-    ChildProcess()
+    ChildProcess(PDJE_CRYPTO::PSK& psk)
+    :aead(psk)
     {
         startlog();
         server.Get("/kill",
@@ -64,13 +67,14 @@ class ChildProcess {
                    });
         server.Get("/lsdev",
                    [&](const httplib::Request &req, httplib::Response &res) {
-                       res.set_content(ListDev(), "application/json");
+
+                       res.set_content(aead.EncryptAndPack(ListDev()), "application/json");
                    });
         server.Post("/config",
                     [&](const httplib::Request &req, httplib::Response &res) {
                         try {
                             configed_devices.clear();
-                            auto nj = nlohmann::json::parse(req.body);
+                            auto nj = nlohmann::json::parse(aead.UnpackAndDecrypt(req.body));
                             for (const auto &i : nj["body"]) {
                                 DeviceData dd;
                                 dd.device_specific_id =
@@ -109,7 +113,7 @@ class ChildProcess {
             "/shmem", [&](const httplib::Request &req, httplib::Response &res) {
                 try {
 
-                    auto nj = nlohmann::json::parse(req.body);
+                    auto nj = nlohmann::json::parse(aead.UnpackAndDecrypt(req.body));
 
                     if (!RecvIPCSharedMem(nj.at("PATH").get<std::string>(),
                                           nj.at("DATATYPE").get<std::string>(),

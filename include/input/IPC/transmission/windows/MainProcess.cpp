@@ -1,29 +1,52 @@
 #include "MainProcess.hpp"
 #include "ipc_util.hpp"
+#include "PSKPipe.hpp"
 namespace PDJE_IPC {
 
 static bool
-PDJE_OpenProcess(const fs::path &pt, Importants &imps, const int port)
+PDJE_OpenProcess(const fs::path &pt, Importants &imps, const int port, PDJE_CRYPTO::PSKPipe& pipe)
 {
     imps.start_up_info    = STARTUPINFOW{};
     imps.process_info     = PROCESS_INFORMATION{};
     imps.start_up_info.cb = sizeof(imps.start_up_info);
     try {
-
+        HANDLE FileLocker = CreateFileW(
+            pt.wstring().c_str(),
+            GENERIC_READ,
+            FILE_SHARE_READ,
+            nullptr,
+            OPEN_EXISTING,
+            FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN,
+            nullptr
+        );
+        if(FileLocker == INVALID_HANDLE_VALUE){
+            critlog("failed to lock subprocess exe file");
+            return false;
+        }
+        if(!PDJE_IPC::HashCompare(pt)){
+            CloseHandle(FileLocker);
+            critlog("hash not matched. maybe Under Attack.");
+            return false;
+        }
+        HANDLE readHdl = pipe.Gen();
+        imps.start_up_info.dwFlags = STARTF_USESTDHANDLES;
+        imps.start_up_info.hStdInput = readHdl;
+        imps.start_up_info.hStdOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+        imps.start_up_info.hStdError = GetStdHandle(STD_ERROR_HANDLE);
         auto cmd = pt.wstring();
-        cmd += L" ";
-        cmd += std::to_wstring(port);
         BOOL ok = CreateProcessW(nullptr,
                                  cmd.data(),
                                  nullptr,
                                  nullptr,
-                                 FALSE,
+                                 TRUE,
                                  CREATE_NO_WINDOW,
                                  nullptr,
                                  nullptr,
                                  &imps.start_up_info,
                                  &imps.process_info);
-
+        
+        CloseHandle(FileLocker);
+        CloseHandle(readHdl);
         if (!ok) {
             critlog("failed to create child process. Err:");
             critlog(GetLastError());
@@ -55,11 +78,21 @@ MainProcess::MainProcess(const int port)
 {
 
     auto path = GetValidProcessExecutor();
-    if (!PDJE_OpenProcess(path, imp, port)) {
+    auto pipe = PDJE_CRYPTO::PSKPipe();
+    
+    if (!PDJE_OpenProcess(path, imp, port, pipe)) {
         critlog("failed to open child process. Err:");
         critlog(GetLastError());
         return;
     }
+    if(!psk.Gen()){
+        return;
+    }
+    auto tokenstring = psk.Encode();
+    tokenstring += " " + std::to_string(port);
+    pipe.Send(tokenstring);
+
+    aead.emplace(psk);
     cli.emplace("127.0.0.1", port);
     cli->set_connection_timeout(0, 200'000); // 200ms
     cli->set_read_timeout(0, 200'000);

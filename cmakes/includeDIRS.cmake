@@ -90,7 +90,7 @@ ${PDJE_INCLUDE_ROOT}/include/input/midi
 set(PDJE_INCLUDE_GLOBAL
   ${PDJE_INCLUDE_ROOT}/include/global
   ${PDJE_INCLUDE_ROOT}/include/global/DataLines
-  ${picosha_SOURCE_DIR}
+  ${PDJE_INCLUDE_ROOT}/include/global/Crypto
 )
 if(WIN32)
   list(APPEND PDJE_INCLUDE_GLOBAL
