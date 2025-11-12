@@ -61,7 +61,7 @@ This project uses the following dependencies, which are automatically fetched us
 - **[rocksdb](https://github.com/facebook/rocksdb)**: A library that provides an embeddable, persistent key-value store for fast storage.
 - **[SoundTouch](https://www.surina.net/soundtouch/)**: Audio processing library.
 - **[Faust language](https://github.com/grame-cncm/faust)**: Functional Programming Language for Real Time Signal Processing
-
+- **[Botan](https://github.com/randombit/botan)**: Cryptography Toolkit
 ## Generating Documentation
 
 Documentation is produced using Doxygen and Sphinx. Ensure both tools are available in your PATH, then run:
