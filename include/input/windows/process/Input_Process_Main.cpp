@@ -9,15 +9,15 @@ main()
         startlog();
         auto tokenstr = PDJE_CRYPTO::PSKPipe::GetTokenFromSTDPipe();
         std::istringstream spstrm(tokenstr);
-        std::string pskhex;
-        std::string portstr;
+        std::string        pskhex;
+        std::string        portstr;
         spstrm >> pskhex;
         spstrm >> portstr;
         auto psk = PDJE_CRYPTO::PSK();
         psk.Decode(pskhex);
-        
+
         PDJE_IPC::ChildProcess serv(psk);
-        int port = std::stoi(portstr);
+        int                    port = std::stoi(portstr);
         serv.RunServer(port);
         if (serv.KillCheck) {
             return 0;

@@ -3,13 +3,13 @@
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_LOG_SETTER.hpp"
 #include "ipc_shared_memory.hpp"
+#include <PDJE_Crypto.hpp>
 #include <filesystem>
 #include <functional>
 #include <httplib.h>
 #include <nlohmann/json.hpp>
 #include <optional>
 #include <unordered_map>
-#include <PDJE_Crypto.hpp>
 
 #ifdef WIN32
 
@@ -36,11 +36,11 @@ struct Importants {
 
 class MainProcess {
   private:
-    std::optional<httplib::Client> cli;
-    PDJE_CRYPTO::PSK psk;
+    std::optional<httplib::Client>   cli;
+    PDJE_CRYPTO::PSK                 psk;
     std::optional<PDJE_CRYPTO::AEAD> aead;
-    Importants imp;
-    
+    Importants                       imp;
+
   public:
     template <typename T, int MEM_PROT_FLAG>
     bool
@@ -57,12 +57,12 @@ class MainProcess {
         auto                    res = cli->Get("/lsdev");
         std::vector<DeviceData> ddvector;
         if (res->status == 200) {
-            if(!aead){
+            if (!aead) {
                 critlog("AEAD is not initialized. Get Devices Failed.");
                 return {};
             }
             auto devs = aead->UnpackAndDecrypt(res->body);
-            nj jj = nj::parse(devs);
+            nj   jj   = nj::parse(devs);
             for (const auto &i : jj["body"]) {
                 DeviceData dd;
                 dd.device_specific_id = i.at("id").get<std::string>();
@@ -92,12 +92,13 @@ class MainProcess {
     bool
     QueryConfig(const std::string &dumped_json)
     {
-        
-        if(!aead){
+
+        if (!aead) {
             critlog("AEAD is not initialized. Query Config Failed.");
             return false;
         }
-        auto res = cli->Post("/config", aead->EncryptAndPack(dumped_json), "application/json");
+        auto res = cli->Post(
+            "/config", aead->EncryptAndPack(dumped_json), "application/json");
         if (res->status == 200) {
             return true;
         } else {
