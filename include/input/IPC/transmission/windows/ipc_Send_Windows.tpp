@@ -18,11 +18,17 @@ MainProcess::SendBufferArena(const PDJE_Buffer_Arena<T> &mem)
     critlog("mainprocess is not initialized.");
     return false;
  }
+ if(!aead){
+    critlog("AEAD is not initialized.");
+    return false;
+ }
     nj j;
     j["PATH"]     = mem.ID;
     j["DATATYPE"] = "input_buffer";
     j["COUNT"]    = mem.BUFFER_COUNT;
-    auto res = cli->Post("/shmem", j.dump(), "application/json");
+    try{
+        auto res = cli->Post("/shmem", aead->EncryptAndPack(j.dump()), "application/json");
+    
     if (!res) {
         critlog("shared memory setting from main process has failed result.");
         return false;
@@ -36,6 +42,10 @@ MainProcess::SendBufferArena(const PDJE_Buffer_Arena<T> &mem)
             critlog(res->status);
             return false;
         }
+    }}catch(const std::exception& e){
+        critlog("failed to send buffer arena. Why:");
+        critlog(e.what());
+        return false;
     }
 }
 
@@ -50,11 +60,17 @@ MainProcess::SendIPCSharedMemory(const SharedMem<T, MEM_PROT_FLAG> &mem,
         critlog("mainprocess is not initialized.");
         return false;
     }
+    if(!aead){
+    critlog("AEAD is not initialized.");
+    return false;
+ }
     nj j;
     j["PATH"]     = mem_path;
     j["DATATYPE"] = dataType;
     j["COUNT"]    = mem.data_count;
-    auto res      = cli->Post("/shmem", j.dump(), "application/json");
+    try{
+        auto res      = cli->Post("/shmem", aead->EncryptAndPack(j.dump()), "application/json");
+    
     if (!res) {
         critlog("shared memory setting from main process has failed result.");
         return false;
@@ -68,6 +84,11 @@ MainProcess::SendIPCSharedMemory(const SharedMem<T, MEM_PROT_FLAG> &mem,
             critlog(res->status);
             return false;
         }
+    }
+}catch(const std::exception& e){
+        critlog("failed to send ipc shared memory. Why:");
+        critlog(e.what());
+        return false;
     }
 }
 }; // namespace PDJE_IPC

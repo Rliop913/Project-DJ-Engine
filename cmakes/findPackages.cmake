@@ -56,11 +56,19 @@ FetchContent_Declare(
   GIT_TAG v0.2
 )
 
-FetchContent_Declare(
-  picoSHA
-  GIT_REPOSITORY https://github.com/okdshin/PicoSHA2.git
-  GIT_TAG v1.0.1
-)
+find_package(botan CONFIG REQUIRED)
+
+function(setBotanReqLib targetName)
+  target_link_libraries(${targetName} PUBLIC botan::botan)
+  target_link_directories(${targetName} PUBLIC ${botan_INCLUDE_DIR})
+endfunction()
+
+
+# FetchContent_Declare(
+#   picoSHA
+#   GIT_REPOSITORY https://github.com/okdshin/PicoSHA2.git
+#   GIT_TAG v1.0.1
+# )
 
 FetchContent_Declare(
   cppHttp
@@ -124,7 +132,7 @@ FetchContent_MakeAvailable(miniaudio)
 FetchContent_MakeAvailable(NHJson)
 FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
-FetchContent_MakeAvailable(picoSHA)
+# FetchContent_MakeAvailable(picoSHA)
 FetchContent_MakeAvailable(cppHttp)
 
 
@@ -143,7 +151,7 @@ FetchContent_MakeAvailable(cppHttp)
 include_directories(${nlohmann_json_SOURCE_DIR}/include)
 include_directories(${sql_amalgam_SOURCE_DIR})
 include_directories(${cppcodec_SOURCE_DIR})
-include_directories(${picosha_SOURCE_DIR})
+# include_directories(${picosha_SOURCE_DIR})
 include_directories(${httplib_SOURCE_DIR})
 
 

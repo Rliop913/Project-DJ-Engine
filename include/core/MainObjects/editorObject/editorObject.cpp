@@ -43,29 +43,31 @@ editorObject::demoPlayInit(std::shared_ptr<audioPlayer> &player,
                            unsigned int                  frameBufferSize,
                            const UNSANITIZED            &trackTitle)
 {
-    try{
-    if (player) {
-        player.reset();
-    }
-    trackdata tdtemp(trackTitle);
-    auto      searchedTd = projectLocalDB->GetBuildedProject() << tdtemp;
-    if (!searchedTd.has_value()) {
-        critlog("failed to search trackdata from project local database. from "
+    try {
+        if (player) {
+            player.reset();
+        }
+        trackdata tdtemp(trackTitle);
+        auto      searchedTd = projectLocalDB->GetBuildedProject() << tdtemp;
+        if (!searchedTd.has_value()) {
+            critlog(
+                "failed to search trackdata from project local database. from "
                 "editorObject demoPlayInit. trackTitle: ");
-        critlog(trackTitle);
-        return;
-    }
-    if (searchedTd->empty()) {
-        warnlog("cannot find trackdata from project local database. from "
-                "editorObject demoPlayInit. trackTitle: ");
-        warnlog(trackTitle);
-        return;
-    }
-    player = std::make_shared<audioPlayer>(projectLocalDB->GetBuildedProject(),
-                                           searchedTd->front(),
-                                           frameBufferSize,
-                                           true);
-    } catch(const std::exception& e){
+            critlog(trackTitle);
+            return;
+        }
+        if (searchedTd->empty()) {
+            warnlog("cannot find trackdata from project local database. from "
+                    "editorObject demoPlayInit. trackTitle: ");
+            warnlog(trackTitle);
+            return;
+        }
+        player =
+            std::make_shared<audioPlayer>(projectLocalDB->GetBuildedProject(),
+                                          searchedTd->front(),
+                                          frameBufferSize,
+                                          true);
+    } catch (const std::exception &e) {
         critlog("failed to init demo player. Why: ");
         critlog(e.what());
     }

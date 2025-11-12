@@ -65,6 +65,7 @@ PDJE_COMPILE_OPTION(PDJE_MODULE_INPUT_PROCESS)
 PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT_PROCESS)
 setSpdlogReqLib(PDJE_MODULE_INPUT_PROCESS)
 SET_PROPERTIES(PDJE_MODULE_INPUT_PROCESS)
+setBotanReqLib(PDJE_MODULE_INPUT_PROCESS)
 set(RT_HASH_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/common/PDJE_INPUT_PROCESS_HASH.hpp)
 
 add_custom_command(
@@ -95,15 +96,17 @@ add_executable(DBTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${e
 target_include_directories(testEditor PUBLIC ${PDJE_INCLUDE_CORE})
 target_include_directories(DBTester PUBLIC ${PDJE_INCLUDE_CORE})
 
-add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${PDJE_OS_INPUT_SRC} ${PDJE_IPC_SRC})
+add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${PDJE_OS_INPUT_SRC} ${PDJE_IPC_SRC} ${globalSource})
 target_include_directories(testInput PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_GLOBAL})
 PDJE_INPUT_LINK_LIB(testInput)
+setBotanReqLib(testInput)
 setSpdlogReqLib(testInput)
 
 
 add_executable(testJudge ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/JUDGE_TESTS/judgeTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${globalSource} ${PDJE_OS_INPUT_SRC} ${judgeSource} ${PDJE_IPC_SRC})
 target_include_directories(testJudge PUBLIC ${PDJE_INCLUDE_CORE} ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_GLOBAL})
 PDJE_INPUT_LINK_LIB(testJudge)
+setBotanReqLib(testJudge)
 setSpdlogReqLib(testJudge)
 endif(PDJE_BUILD_TESTS)
 
@@ -179,6 +182,7 @@ function(linkPDJELibs targetName)
   setHighwayReqLib(${targetName})
   LinuxSetAtomic(${targetName})
   PDJE_COMPILE_OPTION(${targetName})
+  setBotanReqLib(${targetName})
 
 endfunction(linkPDJELibs)
 
@@ -200,9 +204,11 @@ SET_PROPERTIES(PDJE)
 if(PDJE_DEVELOP_INPUT)
 setSpdlogReqLib(PDJE_MODULE_JUDGE)
 setCapnpReqLib(PDJE_MODULE_JUDGE)
+setBotanReqLib(PDJE_MODULE_JUDGE)
 LinuxSetAtomic(PDJE_MODULE_JUDGE)
 SET_PROPERTIES(PDJE_MODULE_JUDGE)
   setSpdlogReqLib(PDJE_MODULE_INPUT)
+  setBotanReqLib(PDJE_MODULE_INPUT)
   setSpdlogReqLib(PDJE_MODULE_INPUT_PROCESS)
   PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT)
   LinuxSetAtomic(PDJE_MODULE_INPUT)

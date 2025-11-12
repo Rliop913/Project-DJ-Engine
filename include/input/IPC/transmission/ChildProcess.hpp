@@ -2,6 +2,7 @@
 
 #include "Input_State.hpp"
 #include "PDJE_Buffer.hpp"
+#include "PDJE_Crypto.hpp"
 #include "PDJE_Highres_Clock.hpp"
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Input_Device_Data.hpp"
@@ -22,6 +23,7 @@ class ChildProcess {
 #elif defined(__linux__)
 
 #endif
+    PDJE_CRYPTO::AEAD                                      aead;
     std::unordered_map<std::string, std::function<void()>> callables;
     httplib::Server                                        server;
 
@@ -46,7 +48,7 @@ class ChildProcess {
 
   public:
     bool KillCheck = false;
-    ChildProcess()
+    ChildProcess(PDJE_CRYPTO::PSK &psk) : aead(psk)
     {
         startlog();
         server.Get("/kill",
@@ -64,52 +66,54 @@ class ChildProcess {
                    });
         server.Get("/lsdev",
                    [&](const httplib::Request &req, httplib::Response &res) {
-                       res.set_content(ListDev(), "application/json");
+                       res.set_content(aead.EncryptAndPack(ListDev()),
+                                       "application/json");
                    });
-        server.Post("/config",
-                    [&](const httplib::Request &req, httplib::Response &res) {
-                        try {
-                            configed_devices.clear();
-                            auto nj = nlohmann::json::parse(req.body);
-                            for (const auto &i : nj["body"]) {
-                                DeviceData dd;
-                                dd.device_specific_id =
-                                    i.at("id").get<std::string>();
-                                dd.Name = i.at("name").get<std::string>();
-                                std::string tp =
-                                    i.at("type").get<std::string>();
-                                if (tp == "KEYBOARD") {
-                                    dd.Type = PDJE_Dev_Type::KEYBOARD;
-                                } else if (tp == "MOUSE") {
-                                    dd.Type = PDJE_Dev_Type::MOUSE;
-                                } else if (tp == "MIDI") {
-                                    dd.Type = PDJE_Dev_Type::MIDI;
-                                } else if (tp == "HID") {
-                                    dd.Type = PDJE_Dev_Type::HID;
-                                } else {
-                                    continue;
-                                }
-                                configed_devices.push_back(dd);
-                            }
-                            res.status = 200;
-
-                        } catch (const std::exception &e) {
-                            res.status = 400;
-                            std::string errlog =
-                                "INVALID_JSON. why:" + std::string(e.what());
-                            res.set_content(errlog, "text/plain");
-
-                            critlog("failed to config device data. WHY: ");
-                            critlog(e.what());
-                            critlog("received json: ");
-                            critlog(req.body);
+        server.Post(
+            "/config",
+            [&](const httplib::Request &req, httplib::Response &res) {
+                try {
+                    configed_devices.clear();
+                    auto nj =
+                        nlohmann::json::parse(aead.UnpackAndDecrypt(req.body));
+                    for (const auto &i : nj["body"]) {
+                        DeviceData dd;
+                        dd.device_specific_id = i.at("id").get<std::string>();
+                        dd.Name               = i.at("name").get<std::string>();
+                        std::string tp        = i.at("type").get<std::string>();
+                        if (tp == "KEYBOARD") {
+                            dd.Type = PDJE_Dev_Type::KEYBOARD;
+                        } else if (tp == "MOUSE") {
+                            dd.Type = PDJE_Dev_Type::MOUSE;
+                        } else if (tp == "MIDI") {
+                            dd.Type = PDJE_Dev_Type::MIDI;
+                        } else if (tp == "HID") {
+                            dd.Type = PDJE_Dev_Type::HID;
+                        } else {
+                            continue;
                         }
-                    });
+                        configed_devices.push_back(dd);
+                    }
+                    res.status = 200;
+
+                } catch (const std::exception &e) {
+                    res.status = 400;
+                    std::string errlog =
+                        "INVALID_JSON. why:" + std::string(e.what());
+                    res.set_content(errlog, "text/plain");
+
+                    critlog("failed to config device data. WHY: ");
+                    critlog(e.what());
+                    critlog("received json: ");
+                    critlog(req.body);
+                }
+            });
         server.Post(
             "/shmem", [&](const httplib::Request &req, httplib::Response &res) {
                 try {
 
-                    auto nj = nlohmann::json::parse(req.body);
+                    auto nj =
+                        nlohmann::json::parse(aead.UnpackAndDecrypt(req.body));
 
                     if (!RecvIPCSharedMem(nj.at("PATH").get<std::string>(),
                                           nj.at("DATATYPE").get<std::string>(),
