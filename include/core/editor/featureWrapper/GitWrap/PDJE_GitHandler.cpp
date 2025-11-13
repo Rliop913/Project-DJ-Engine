@@ -94,6 +94,7 @@ PDJE_GitHandler::Save(const DONT_SANITIZE &timeStamp)
 bool
 PDJE_GitHandler::Undo()
 {
+    std::cout <<gw.handleBranch->branchName << std::endl;
     if (UpdateLog(gw.handleBranch->branchName)) {
         gitwrap::commit before_commit;
         if (gw.handleBranch->FLAG_TEMP_CHECKOUT.has_value()) {

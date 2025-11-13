@@ -11,7 +11,7 @@
 #include <optional>
 #include <string>
 #include <vector>
-
+#include <iostream>//debugstr
 namespace gitwrap {
 
 /**
@@ -24,7 +24,7 @@ class branch {
 
   public:
     /// Name of the current branch
-    std::string branchName;
+    // std::string branchName; <- deprecate branch name.
     /// Temporary checkout commit used when jumping to a commit
     std::optional<git_oid> FLAG_TEMP_CHECKOUT;
     /**
@@ -66,7 +66,9 @@ class branch {
         checkoutOpts.checkout_strategy = GIT_CHECKOUT_SAFE;
         git_reference *head_ref        = nullptr;
         if (git_repository_head(&head_ref, repo) == 0) {
+            crash-noimpl// todo - impl without cached branch name.
             branchName = std::string(git_reference_shorthand(head_ref));
+            std::cout << branchName << "in branch init" << std::endl;
         }
         git_reference_free(head_ref);
     };
