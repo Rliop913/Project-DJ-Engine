@@ -40,9 +40,16 @@ PDJE_Editor::openProject(const fs::path &projectPath)
             return false;
         }
     }
-    if (!mixHandle.first->Open(mixp) || !mixHandle.second.load(mixp) ||
-        !KVHandler.first->Open(kvp) || !KVHandler.second.load(kvp) ||
-        !noteHandle.first->Open(notep) || !noteHandle.second.load(notep)) {
+    fs::path mixfile = mixp / "mixmetadata.PDJE";
+    fs::path kvfile = kvp / "keyvaluemetadata.PDJE";
+    fs::path notefile = notep / "notemetadata.PDJE";
+    if (
+        !mixHandle.second.load(mixfile) ||
+        !KVHandler.second.load(kvfile) ||
+        !noteHandle.second.load(notefile) ||
+        !KVHandler.first->Open(kvp, kvfile) ||
+        !mixHandle.first->Open(mixp, mixfile) ||
+        !noteHandle.first->Open(notep, notefile)) {
         critlog("failed to open & load some project from PDJE_Editor "
                 "openProject. printing path");
         critlog("editor project root: ");
@@ -64,8 +71,10 @@ PDJE_Editor::openProject(const fs::path &projectPath)
             musicHandle.emplace_back(name, email);
             musicHandle.back().musicName =
                 musicSubpath.path().filename().string();
-            if (!musicHandle.back().gith->Open(musicSubpath.path()) ||
-                !musicHandle.back().jsonh.load(musicSubpath.path())) {
+            fs::path musicFile = musicSubpath.path() / "musicmetadata.PDJE";
+            if (
+                !musicHandle.back().jsonh.load(musicFile) ||
+                !musicHandle.back().gith->Open(musicSubpath.path(), musicFile)) {
                 critlog("failed to open & load some music configure project "
                         "from PDJE_Editor openProject. musicPath: ");
                 auto logPath = musicSubpath.path();
@@ -104,8 +113,11 @@ PDJE_Editor::AddMusicConfig(const SANITIZED &NewMusicName, fs::path &DataPath)
         if (fs::create_directory(DataPath)) {
             musicHandle.emplace_back(name, email);
             musicHandle.back().musicName = NewMusicName;
-            if (!musicHandle.back().gith->Open(DataPath) ||
-                !musicHandle.back().jsonh.load(DataPath)) {
+            fs::path musicFile = DataPath / "musicmetadata.PDJE";
+            if (
+                !musicHandle.back().jsonh.load(musicFile) ||
+                !musicHandle.back().gith->Open(DataPath, musicFile)
+            ) {
                 fs::remove_all(DataPath);
                 critlog("failed to init git or json. from PDJE_Editor "
                         "AddMusicConfig.");

@@ -109,9 +109,9 @@ PDJE_JSONHandler<MUSIC_W>::getAll(
 }
 template <>
 bool
-PDJE_JSONHandler<MUSIC_W>::load(const fs::path &path)
+PDJE_JSONHandler<MUSIC_W>::load(const fs::path &filepath)
 {
-    auto filepath = path / "musicmetadata.PDJE";
+    
     if (fs::exists(filepath)) {
         if (fs::is_regular_file(filepath)) {
             std::ifstream jfile(filepath);
@@ -119,7 +119,7 @@ PDJE_JSONHandler<MUSIC_W>::load(const fs::path &path)
             if (!jfile.is_open()) {
                 critlog("cannot open music json file. from "
                         "PDJE_JSONHandler<MUSIC_W> load. path: ");
-                critlog(path.generic_string());
+                critlog(filepath.generic_string());
                 return false;
             }
 
@@ -136,7 +136,7 @@ PDJE_JSONHandler<MUSIC_W>::load(const fs::path &path)
         } else {
             critlog("music json file path is not regular file.  from "
                     "PDJE_JSONHandler<MUSIC_W> load. path: ");
-            critlog(path.generic_string());
+            critlog(filepath.generic_string());
             return false;
         }
     } else {
@@ -145,7 +145,7 @@ PDJE_JSONHandler<MUSIC_W>::load(const fs::path &path)
         if (!jfile.is_open()) {
             critlog("cannot open or make new music json file. from "
                     "PDJE_JSONHandler<MUSIC_W> load. path: ");
-            critlog(path.generic_string());
+            critlog(filepath.generic_string());
             return false;
         }
         jfile << std::setw(4) << ROOT;

@@ -115,8 +115,7 @@ branch::MakeNewFromHEAD(const std::string &newBranchName)
                           head->commitPointer,
                           1) == 0) {
         git_reference_free(newbranch);
-        auto refN = ToBranchRefName<const std::string &>(newBranchName);
-        git_repository_set_head(repo_pointer, refN.c_str());
+        SetBranch(newBranchName);
         return true;
     }
     if (newbranch != nullptr) {
