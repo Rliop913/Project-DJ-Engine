@@ -25,12 +25,13 @@ PDJE_GitHandler::~PDJE_GitHandler()
 }
 
 bool
-PDJE_GitHandler::Open(const fs::path &path)
+PDJE_GitHandler::Open(const fs::path &gitpath, const fs::path &filepath)
 {
-    bool openRes = gw.open(path);
+    file = filepath.filename();
+    bool openRes = gw.open(gitpath, file, sign);
     if (!openRes) {
         critlog("failed to open git. from PDJE_GitHandler Open. path: ");
-        critlog(path.generic_string());
+        critlog(gitpath.generic_string());
     }
     return openRes;
 }
@@ -59,8 +60,7 @@ PDJE_GitHandler::Close()
 }
 
 bool
-PDJE_GitHandler::Save(const DONT_SANITIZE &tracingFile,
-                      const DONT_SANITIZE &timeStamp)
+PDJE_GitHandler::Save(const DONT_SANITIZE &timeStamp)
 {
     if (gw.handleBranch->FLAG_TEMP_CHECKOUT.has_value()) {
         gitwrap::commit tempcommit(gw.handleBranch->FLAG_TEMP_CHECKOUT.value(),
@@ -69,22 +69,22 @@ PDJE_GitHandler::Save(const DONT_SANITIZE &tracingFile,
                                                 gw.GenTimeStamp())) {
             critlog(
                 "failed to save. from PDJE_GitHandler Save. file&timestamp: ");
-            critlog(tracingFile);
+            critlog(file.generic_string());
             critlog(timeStamp);
             return false;
         }
         gw.handleBranch->FLAG_TEMP_CHECKOUT.reset();
     }
-    if (!gw.add(tracingFile)) {
+    if (!gw.add(file)) {
         critlog("failed to add. from PDJE_GitHandler Save. file&timestamp: ");
-        critlog(tracingFile);
+        critlog(file.generic_string());
         critlog(timeStamp);
         return false;
     }
     if (!gw.commit(sign, timeStamp)) {
         critlog(
             "failed to commit. from PDJE_GitHandler Save. file&timestamp: ");
-        critlog(tracingFile);
+        critlog(file.generic_string());
         critlog(timeStamp);
         return false;
     }

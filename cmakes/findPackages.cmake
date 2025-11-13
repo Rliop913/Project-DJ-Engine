@@ -64,12 +64,6 @@ function(setBotanReqLib targetName)
 endfunction()
 
 
-# FetchContent_Declare(
-#   picoSHA
-#   GIT_REPOSITORY https://github.com/okdshin/PicoSHA2.git
-#   GIT_TAG v1.0.1
-# )
-
 FetchContent_Declare(
   cppHttp
   GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
@@ -88,9 +82,10 @@ endfunction(setSpdlogReqLib)
 
 
 find_package(libgit2 CONFIG REQUIRED)
+
 function(setLibgit2ReqLib targetName)
+  target_include_directories(${targetName} PUBLIC ${libgit2_INCLUDE_DIR} )
   target_link_libraries(${targetName} PUBLIC libgit2::libgit2)
-  target_include_directories(${targetName} PUBLIC ${libgit2_INCLUDE_DIR})
 endfunction(setLibgit2ReqLib)
 
 find_package(RocksDB REQUIRED)
@@ -100,51 +95,20 @@ function(setRocksDBReqLib targetName)
   target_include_directories(${targetName} PUBLIC ${rocksdb_INCLUDE_DIR})
 endfunction(setRocksDBReqLib)
 
-
-# set(WITH_TESTS OFF CACHE BOOL "" FORCE)
-# set(WITH_TOOLS OFF CACHE BOOL "" FORCE)
-# set(WITH_BENCHMARK_TOOLS OFF CACHE BOOL "" FORCE)
-# set(WITH_ZLIB OFF CACHE BOOL "" FORCE)
-# set(WITH_GFLAGS OFF CACHE BOOL "" FORCE)
-# set(ROCKSDB_DISABLE_RTTI OFF CACHE BOOL "" FORCE)
-# if(PDJE_DYNAMIC)
-# set(ROCKSDB_BUILD_SHARED ON CACHE BOOL "" FORCE)
-# else()
-# set(ROCKSDB_BUILD_SHARED OFF CACHE BOOL "" FORCE)
-# endif()
-# FetchContent_Declare(
-#   rocksDB
-#   GIT_REPOSITORY https://github.com/facebook/rocksdb.git
-#   GIT_TAG v10.5.1
-# )
-
-
-
 find_package(OpenSSL REQUIRED)
 link_libraries(${OPENSSL_LIBRARIES})
-
-
-
-
 
 
 FetchContent_MakeAvailable(miniaudio)
 FetchContent_MakeAvailable(NHJson)
 FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
-# FetchContent_MakeAvailable(picoSHA)
 FetchContent_MakeAvailable(cppHttp)
 
-
-# if(WIN32)
-# set_target_properties(rocksdb PROPERTIES
-#   COMPILE_FLAGS "/wd4702 /WX-"
-# )
-# endif()
 # get_cmake_property(_vars VARIABLES)
 
 # foreach(var ${_vars})
-#     if(var MATCHES "^http")
+#     if(var MATCHES "^cppgit")
 #         message(STATUS "환경변수: ${var} = [${${var}}]")
 #     endif()
 # endforeach()

@@ -66,7 +66,7 @@ template <typename CapnpWriterType> class PDJE_JSONHandler {
     // add multi-threaded faster getter later
 
     bool
-    load(const fs::path &path);
+    load(const fs::path &filepath);
 
     /// Access underlying JSON data by key
     inline nj &

@@ -60,8 +60,6 @@ class branch {
     std::optional<commit>
     GetHEAD();
 
-    bool
-    MergeToBranch(const std::string &branchToMerge);
 
     branch(git_repository *repo) : repo_pointer(repo)
     {
