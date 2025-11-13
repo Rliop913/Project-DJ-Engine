@@ -66,9 +66,9 @@ class branch {
         checkoutOpts.checkout_strategy = GIT_CHECKOUT_SAFE;
         git_reference *head_ref        = nullptr;
         if (git_repository_head(&head_ref, repo) == 0) {
-            crash-noimpl// todo - impl without cached branch name.
-            branchName = std::string(git_reference_shorthand(head_ref));
-            std::cout << branchName << "in branch init" << std::endl;
+            // crash-noimpl// todo - impl without cached branch name.
+            // branchName = std::string(git_reference_shorthand(head_ref));
+            // std::cout << branchName << "in branch init" << std::endl;
         }
         git_reference_free(head_ref);
     };

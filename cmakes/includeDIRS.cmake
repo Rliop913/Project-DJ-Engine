@@ -42,7 +42,12 @@ set(PDJE_INCLUDE_CORE
 
 
   ${PDJE_INCLUDE_ROOT}/include/core/editor
-  ${PDJE_INCLUDE_ROOT}/include/core/editor/edit
+  ${PDJE_INCLUDE_ROOT}/include/core/editor/TimeLine
+  ${PDJE_INCLUDE_ROOT}/include/core/editor/TimeLine/EventMarker
+  ${PDJE_INCLUDE_ROOT}/include/core/editor/TimeLine/LineVersion
+  ${PDJE_INCLUDE_ROOT}/include/core/editor/TimeLine/GitDataPack
+
+  #######################DEPRECATED
   ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper
   ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper/GitWrap
   ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper/GitWrap/Branch
@@ -51,6 +56,7 @@ set(PDJE_INCLUDE_CORE
   ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper/GitWrap/Blame
   ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper/GitWrap/Diff
   ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper/GitWrap/Log
+  #######################END DEPRECATED
   ${PDJE_INCLUDE_ROOT}/include/core/editor/pdjeLinter
   
   ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper/JSONWrap

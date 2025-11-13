@@ -9,6 +9,10 @@ ${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/featureWrapper/GitWrap/Diff/Diff
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/featureWrapper/GitWrap/Blame/BlameController.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/featureWrapper/GitWrap/Log/gitLog.cpp
 
+${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/TimeLine/TimeLine.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/TimeLine/LineVersion/LineVersion.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/TimeLine/EventMarker/EventMarker.cpp
+
 
 
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/featureWrapper/GitWrap/Add/AddController.cpp

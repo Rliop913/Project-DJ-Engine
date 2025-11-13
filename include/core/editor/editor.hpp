@@ -5,8 +5,13 @@
 #pragma once
 
 #include "dbRoot.hpp"
+//DEPRECATED
 #include "gitWrapper.hpp"
 #include "jsonWrapper.hpp"
+//END DEPRECATED
+
+#include "TimeLine.hpp"
+
 #include <filesystem>
 
 #include "PDJE_EXPORT_SETTER.hpp"
