@@ -27,7 +27,7 @@ PDJE_GitHandler::~PDJE_GitHandler()
 bool
 PDJE_GitHandler::Open(const fs::path &gitpath, const fs::path &filepath)
 {
-    file = filepath.filename();
+    file         = filepath.filename();
     bool openRes = gw.open(gitpath, file, sign);
     if (!openRes) {
         critlog("failed to open git. from PDJE_GitHandler Open. path: ");
@@ -94,7 +94,7 @@ PDJE_GitHandler::Save(const DONT_SANITIZE &timeStamp)
 bool
 PDJE_GitHandler::Undo()
 {
-    std::cout <<gw.handleBranch->branchName << std::endl;
+    std::cout << gw.handleBranch->branchName << std::endl;
     if (UpdateLog(gw.handleBranch->branchName)) {
         gitwrap::commit before_commit;
         if (gw.handleBranch->FLAG_TEMP_CHECKOUT.has_value()) {

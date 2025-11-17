@@ -2,8 +2,8 @@
 #include "PDJE_LOG_SETTER.hpp"
 #include "editorCommit.hpp"
 #include "git2/commit.h"
-#include "git2/oid.h"
 #include "git2/errors.h"
+#include "git2/oid.h"
 #include "git2/sys/errors.h"
 #include <chrono>
 #include <sstream>
@@ -15,7 +15,7 @@ GitWrapper::Blame(const fs::path        &filepath,
                   const gitwrap::commit &newCommit,
                   const gitwrap::commit &oldCommit)
 {
-    
+
     auto              newBlame = BlameController();
     git_blame_options opts;
     git_blame_options_init(&opts, GIT_BLAME_OPTIONS_VERSION);
@@ -82,11 +82,13 @@ GitWrapper::add(const fs::path &file)
 }
 
 bool
-GitWrapper::open(const fs::path &path, const fs::path &trackingFile, git_signature* sign)
+GitWrapper::open(const fs::path &path,
+                 const fs::path &trackingFile,
+                 git_signature  *sign)
 {
 
     auto safeStr = path.generic_string();
-    
+
     if (git_repository_open(&repo, safeStr.c_str()) == 0) {
         handleBranch.emplace(repo);
         return true;
@@ -177,7 +179,7 @@ GitWrapper::commit(git_signature *sign, const DONT_SANITIZE &message)
         critlog(git_error_last()->message);
         goto cleanup;
     }
-    
+
     // 부모 커밋이 있는 경우
     if (git_reference_name_to_id(&parent_id, repo, "HEAD") == 0 &&
         git_commit_lookup(&parent_commit, repo, &parent_id) == 0) {

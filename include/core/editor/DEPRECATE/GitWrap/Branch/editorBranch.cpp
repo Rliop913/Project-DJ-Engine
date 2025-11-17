@@ -219,12 +219,13 @@ branch::GetHEAD()
     git_reference *headref = nullptr;
     if (git_repository_head(&headref, repo_pointer) == 0) {
         commit c;
-        if(git_oid_cpy(&c.commitID, git_reference_target(headref))!= 0){
+        if (git_oid_cpy(&c.commitID, git_reference_target(headref)) != 0) {
             git_reference_free(headref);
             critlog("failed to copy oid.");
             return {};
         }
-        if (git_commit_lookup(&c.commitPointer, repo_pointer, &c.commitID) == 0) {
+        if (git_commit_lookup(&c.commitPointer, repo_pointer, &c.commitID) ==
+            0) {
             c.msg = git_commit_message(c.commitPointer);
             git_reference_free(headref);
             return std::move(c);

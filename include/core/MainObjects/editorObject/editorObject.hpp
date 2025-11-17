@@ -11,6 +11,7 @@
 #include "pdjeLinter.hpp"
 #include "tempDB.hpp"
 #include <filesystem>
+#include <memory>
 #include <optional>
 
 /**
@@ -39,13 +40,13 @@ using TITLE_COMPOSER = std::unordered_map<SANITIZED, SANITIZED>;
  */
 class PDJE_API editorObject {
   private:
-    std::optional<tempDB>      projectLocalDB;
-    fs::path                   projectRoot;
-    fs::path                   mixFilePath;
-    fs::path                   noteFilePath;
-    fs::path                   kvFilePath;
-    fs::path                   musicFileRootPath;
-    std::optional<PDJE_Editor> E_obj;
+    std::optional<tempDB> projectLocalDB;
+    fs::path              projectRoot;
+    // fs::path                   mixFilePath;
+    // fs::path                   noteFilePath;
+    // fs::path                   kvFilePath;
+    // fs::path                   musicFileRootPath;
+    std::unique_ptr<PDJE_Editor> edit_core;
 
     template <typename EDIT_ARG_TYPE>
     bool
@@ -64,62 +65,62 @@ class PDJE_API editorObject {
      * @brief Gets the Git repository for the mix data.
      * @return A pointer to the Git repository, or `nullptr` if not available.
      */
-    git_repository *
-    getMixRepo()
-    {
-        if (E_obj.has_value()) {
-            return E_obj->mixHandle.first->gw.repo;
-        } else
-            return nullptr;
-    }
+    // git_repository *
+    // getMixRepo()
+    // {
+    //     if (E_obj.has_value()) {
+    //         return E_obj->mixHandle.first->gw.repo;
+    //     } else
+    //         return nullptr;
+    // }
 
     /**
      * @brief Gets the Git repository for a specific music entry.
      * @param Title The unsanitized title of the music.
      * @return A pointer to the Git repository, or `nullptr` if not found.
      */
-    git_repository *
-    getMusicRepo(const UNSANITIZED &Title)
-    {
-        auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(Title);
-        if (!safeTitle) {
-            return nullptr;
-        }
-        if (E_obj.has_value()) {
-            for (auto &music : E_obj->musicHandle) {
-                if (music.musicName == safeTitle) {
-                    return music.gith->gw.repo;
-                }
-            }
-        }
-        return nullptr;
-    }
+    // git_repository *
+    // getMusicRepo(const UNSANITIZED &Title)
+    // {
+    //     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(Title);
+    //     if (!safeTitle) {
+    //         return nullptr;
+    //     }
+    //     if (E_obj.has_value()) {
+    //         for (auto &music : E_obj->musicHandle) {
+    //             if (music.musicName == safeTitle) {
+    //                 return music.gith->gw.repo;
+    //             }
+    //         }
+    //     }
+    //     return nullptr;
+    // }
 
     /**
      * @brief Gets the Git repository for the note data.
      * @return A pointer to the Git repository, or `nullptr` if not available.
      */
-    git_repository *
-    getNoteRepo()
-    {
-        if (E_obj.has_value()) {
-            return E_obj->noteHandle.first->gw.repo;
-        } else
-            return nullptr;
-    }
+    // git_repository *
+    // getNoteRepo()
+    // {
+    //     if (E_obj.has_value()) {
+    //         return E_obj->noteHandle.first->gw.repo;
+    //     } else
+    //         return nullptr;
+    // }
 
     /**
      * @brief Gets the Git repository for the key-value data.
      * @return A pointer to the Git repository, or `nullptr` if not available.
      */
-    git_repository *
-    getKVRepo()
-    {
-        if (E_obj.has_value()) {
-            return E_obj->KVHandler.first->gw.repo;
-        } else
-            return nullptr;
-    }
+    // git_repository *
+    // getKVRepo()
+    // {
+    //     if (E_obj.has_value()) {
+    //         return E_obj->KVHandler.first->gw.repo;
+    //     } else
+    //         return nullptr;
+    // }
 
     /**
      * @brief Adds a new line of data to the editor.
@@ -306,11 +307,11 @@ class PDJE_API editorObject {
      * @param newTimeStamp The new timestamp.
      * @return A `DiffResult` object containing the diff.
      */
-    template <typename EDIT_ARG_TYPE>
-    DiffResult
-    GetDiff(const gitwrap::commit &oldTimeStamp,
-            const gitwrap::commit &newTimeStamp);
-
+    // template <typename EDIT_ARG_TYPE>
+    // DiffResult
+    // GetDiff(const gitwrap::commit &oldTimeStamp,
+    //         const gitwrap::commit &newTimeStamp);
+    // DEPRECATE DIFF For Now
     /**
      * @brief Provides access to the underlying JSON data for key-value pairs.
      * @param key The key to access.
@@ -348,20 +349,14 @@ class PDJE_API editorObject {
      * @return `true` if the project was opened successfully, `false` otherwise.
      */
     bool
-    Open(const fs::path &projectPath);
-
-    editorObject() = delete;
+    Open(const fs::path      &projectPath,
+         const DONT_SANITIZE &auth_name,
+         const DONT_SANITIZE &auth_email);
 
     /**
      * @brief Constructs a new editor object with author information.
-     * @param auth_name The name of the author.
-     * @param auth_email The email of the author.
      */
-    editorObject(const DONT_SANITIZE &auth_name,
-                 const DONT_SANITIZE &auth_email)
-    {
-        E_obj.emplace(auth_name, auth_email);
-    }
+    editorObject();
 
     ~editorObject() = default;
 };
@@ -433,22 +428,24 @@ PDJE_API void
 editorObject::getAll<EDIT_ARG_MUSIC>(
     std::function<void(const EDIT_ARG_MUSIC &obj)> jsonCallback);
 
-template <>
-PDJE_API DiffResult
-editorObject::GetDiff<EDIT_ARG_NOTE>(const gitwrap::commit &oldTimeStamp,
-                                     const gitwrap::commit &newTimeStamp);
-template <>
-PDJE_API DiffResult
-editorObject::GetDiff<EDIT_ARG_MIX>(const gitwrap::commit &oldTimeStamp,
-                                    const gitwrap::commit &newTimeStamp);
-template <>
-PDJE_API DiffResult
-editorObject::GetDiff<EDIT_ARG_KEY_VALUE>(const gitwrap::commit &oldTimeStamp,
-                                          const gitwrap::commit &newTimeStamp);
-template <>
-PDJE_API DiffResult
-editorObject::GetDiff<EDIT_ARG_MUSIC>(const gitwrap::commit &oldTimeStamp,
-                                      const gitwrap::commit &newTimeStamp);
+// template <>
+// PDJE_API DiffResult
+// editorObject::GetDiff<EDIT_ARG_NOTE>(const gitwrap::commit &oldTimeStamp,
+//                                      const gitwrap::commit &newTimeStamp);
+// template <>
+// PDJE_API DiffResult
+// editorObject::GetDiff<EDIT_ARG_MIX>(const gitwrap::commit &oldTimeStamp,
+//                                     const gitwrap::commit &newTimeStamp);
+// template <>
+// PDJE_API DiffResult
+// editorObject::GetDiff<EDIT_ARG_KEY_VALUE>(const gitwrap::commit
+// &oldTimeStamp,
+//                                           const gitwrap::commit
+//                                           &newTimeStamp);
+// template <>
+// PDJE_API DiffResult
+// editorObject::GetDiff<EDIT_ARG_MUSIC>(const gitwrap::commit &oldTimeStamp,
+//                                       const gitwrap::commit &newTimeStamp);
 
 template <>
 PDJE_API DONT_SANITIZE

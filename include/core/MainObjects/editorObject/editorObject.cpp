@@ -1,8 +1,10 @@
 #include "editorObject.hpp"
 #include "PDJE_LOG_SETTER.hpp"
+#include "editor.hpp"
 #include "fileNameSanitizer.hpp"
 #include "tempDB.hpp"
 #include "trackDB.hpp"
+#include <memory>
 
 trackdata
 editorObject::makeTrackData(const UNSANITIZED &trackTitle,
@@ -77,7 +79,8 @@ DONT_SANITIZE
 editorObject::DESTROY_PROJECT()
 {
     try {
-        E_obj.reset();
+        edit_core.reset();
+
         projectLocalDB.reset();
         auto deletedAmount = fs::remove_all(projectRoot);
         if (deletedAmount < 1) {
@@ -127,7 +130,7 @@ editorObject::ConfigNewMusic(const UNSANITIZED   &NewMusicName,
         return false;
     }
     fs::path tempDataPath;
-    if (E_obj->AddMusicConfig(safeMus.value(), tempDataPath)) {
+    if (edit_core->AddMusicConfig(safeMus.value(), tempDataPath)) {
 
         E_obj->musicHandle.back().jsonh[PDJE_JSON_TITLE] = safeMus.value();
         E_obj->musicHandle.back().jsonh[PDJE_JSON_COMPOSER] =
@@ -159,16 +162,16 @@ editorObject::ConfigNewMusic(const UNSANITIZED   &NewMusicName,
 }
 
 bool
-editorObject::Open(const fs::path &projectPath)
+editorObject::Open(const fs::path      &projectPath,
+                   const DONT_SANITIZE &auth_name,
+                   const DONT_SANITIZE &auth_email)
 {
-    projectRoot       = projectPath;
-    mixFilePath       = projectPath / "Mixes" / "mixmetadata.PDJE";
-    noteFilePath      = projectPath / "Notes" / "notemetadata.PDJE";
-    kvFilePath        = projectPath / "KeyValues" / "keyvaluemetadata.PDJE";
-    musicFileRootPath = projectPath / "Musics";
-    projectLocalDB.emplace();
 
-    return E_obj->openProject(projectPath) && projectLocalDB->Open(projectPath);
+    edit_core =
+        std::make_unique<PDJE_Editor>(projectPath, auth_name, auth_email);
+    projectLocalDB.emplace();
+    projectRoot = projectPath;
+    return projectLocalDB->Open(projectPath);
 }
 
 bool

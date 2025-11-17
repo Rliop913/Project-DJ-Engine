@@ -8,10 +8,10 @@
 
 #include <git2.h>
 
+#include <iostream> //debugstr
 #include <optional>
 #include <string>
 #include <vector>
-#include <iostream>//debugstr
 namespace gitwrap {
 
 /**
@@ -59,7 +59,6 @@ class branch {
     /// Retrieve the current HEAD commit
     std::optional<commit>
     GetHEAD();
-
 
     branch(git_repository *repo) : repo_pointer(repo)
     {

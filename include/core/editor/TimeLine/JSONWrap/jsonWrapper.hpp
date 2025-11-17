@@ -84,6 +84,9 @@ template <typename CapnpWriterType> class PDJE_JSONHandler {
             jfile << std::setw(4) << ROOT;
             return true;
         } else {
+            critlog("failed to save json file. json file is not opened. "
+                    "FilePath: ");
+            critlog(path.generic_string());
             return false;
         }
     }

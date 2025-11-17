@@ -10,8 +10,7 @@ editorObject::DefaultSaveFunction<EDIT_ARG_MIX>()
         critlog(mixFilePath.generic_string());
         return false;
     }
-    if (!E_obj->mixHandle.first->Save(
-                                      GitWrapper::GenTimeStamp())) {
+    if (!E_obj->mixHandle.first->Save(GitWrapper::GenTimeStamp())) {
         critlog("mix git save failed from editorObject DefaultSaveFunction. "
                 "path: ");
         critlog(mixFilePath.generic_string());
@@ -30,8 +29,7 @@ editorObject::DefaultSaveFunction<EDIT_ARG_NOTE>()
         critlog(noteFilePath.generic_string());
         return false;
     }
-    if (!E_obj->noteHandle.first->Save(
-                                       GitWrapper::GenTimeStamp())) {
+    if (!E_obj->noteHandle.first->Save(GitWrapper::GenTimeStamp())) {
         critlog("note git save failed from editorObject DefaultSaveFunction. "
                 "path: ");
         critlog(noteFilePath.generic_string());
@@ -49,8 +47,7 @@ editorObject::DefaultSaveFunction<EDIT_ARG_KEY_VALUE>()
         critlog(kvFilePath.generic_string());
         return false;
     }
-    if (!E_obj->KVHandler.first->Save(
-                                      GitWrapper::GenTimeStamp())) {
+    if (!E_obj->KVHandler.first->Save(GitWrapper::GenTimeStamp())) {
         critlog(
             "KV git save failed from editorObject DefaultSaveFunction. path: ");
         critlog(kvFilePath.generic_string());
@@ -80,8 +77,7 @@ editorObject::DefaultSaveFunction<EDIT_ARG_MUSIC>(
                 critlog(logPath.generic_string());
                 return false;
             }
-            if (!i.gith->Save(
-                              GitWrapper::GenTimeStamp())) {
+            if (!i.gith->Save(GitWrapper::GenTimeStamp())) {
                 critlog("music git save failed from editorObject "
                         "DefaultSaveFunction. path: ");
                 fs::path logPath = (target.dataPath / "musicmetadata.PDJE");

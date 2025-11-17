@@ -5,17 +5,19 @@ int
 main()
 {
     auto eg = PDJE("./gittesterRoot");
-    eg.InitEditor("dev", "email" ,"pdje_gittest_sandbox");
+    eg.InitEditor("dev", "email", "pdje_gittest_sandbox");
     // auto gw = GitWrapper();
     // git_signature* sign;
     // git_signature_now(&sign, "dev", "email");
-    // gw.open("./pdje_gittest_sandbox/Mixes", "./pdje_gittest_sandbox/Mixes/mixmetadata.PDJE", sign);
+    // gw.open("./pdje_gittest_sandbox/Mixes",
+    // "./pdje_gittest_sandbox/Mixes/mixmetadata.PDJE", sign);
     // //see branch
     // auto brc = gitwrap::branch(gw.repo);
     // std::cout << "head branch: " << gw.handleBranch->branchName << std::endl;
     // std::cout << "head branch: " << brc.branchName << std::endl;
     // if(!brc.MakeNewFromHEAD("testnew")){
-    //     std::cout << "failed to make test new branch from head." << std::endl;
+    //     std::cout << "failed to make test new branch from head." <<
+    //     std::endl;
     // }
     // std::cout << "now branch" << brc.branchName << std::endl;
     // for(auto i : brc.ShowExistBranch()){
@@ -28,7 +30,8 @@ main()
     //     std::cout << "after delete exist branches: " << i << std::endl;
     // }
     // if(!brc.MakeNewFromHEAD("testnew_second")){
-    //     std::cout << "failed to make test new branch from head." << std::endl;
+    //     std::cout << "failed to make test new branch from head." <<
+    //     std::endl;
     // }
     // if(!brc.SetBranch("testnew")){
     //     std::cout << "failed to set branch to testnew" << std::endl;
@@ -56,7 +59,7 @@ main()
 
     // std::cout << "commit msg: " << oidstr << std::endl;
     // std::cout << "commit msg: " << hc->msg << std::endl;
-    
+
     // gitwrap::commitList cl;
     // if(!cl.UpdateCommits(gw.repo)){
     //     std::cout << "failed to update commit." << std::endl;
@@ -65,22 +68,22 @@ main()
     //     std::cout << "this commit is not ok to add." << std::endl;
     // }
 
-    //see log
+    // see log
 
-    //destroy sandbox
-    // eg.editor->DESTROY_PROJECT();
-    // return 0;
+    // destroy sandbox
+    //  eg.editor->DESTROY_PROJECT();
+    //  return 0;
     EDIT_ARG_MIX ma;
-    ma.type = TypeEnum::FILTER;
+    ma.type    = TypeEnum::FILTER;
     ma.details = DetailEnum::HIGH;
     eg.editor->AddLine(ma);
-    if(!eg.editor->Undo<EDIT_ARG_MIX>()){
+    if (!eg.editor->Undo<EDIT_ARG_MIX>()) {
         std::cout << "UNDO failed" << std::endl;
     }
-    if(eg.editor->Redo<EDIT_ARG_MIX>()){
+    if (eg.editor->Redo<EDIT_ARG_MIX>()) {
         std::cout << "UNDO failed" << std::endl;
     }
     eg.editor->DESTROY_PROJECT();
-    
+
     return 0;
 }

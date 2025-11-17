@@ -111,7 +111,7 @@ template <>
 bool
 PDJE_JSONHandler<MUSIC_W>::load(const fs::path &filepath)
 {
-    
+
     if (fs::exists(filepath)) {
         if (fs::is_regular_file(filepath)) {
             std::ifstream jfile(filepath);
