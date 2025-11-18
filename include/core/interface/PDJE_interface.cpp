@@ -134,8 +134,8 @@ PDJE::InitEditor(const DONT_SANITIZE &auth_name,
                  const DONT_SANITIZE &auth_email,
                  const DONT_SANITIZE &projectRoot)
 {
-    editor = std::make_shared<editorObject>(auth_name, auth_email);
-    return editor->Open(projectRoot);
+    editor = std::make_shared<editorObject>();
+    return editor->Open(projectRoot, auth_name, auth_email);
 }
 
 PDJE_CORE_DATA_LINE

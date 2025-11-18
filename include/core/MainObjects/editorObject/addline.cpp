@@ -43,8 +43,8 @@ editorObject::AddLine(const EDIT_ARG_MIX &obj)
         safeObj.second = second.value();
         if (!edit_core->mixHandle->WriteData(safeObj)) {
             critlog("failed to Write Mix args. First & Second: ");
-            critlog(first);
-            critlog(second);
+            critlog(first.value());
+            critlog(second.value());
             return false;
         }
 
@@ -87,9 +87,9 @@ editorObject::AddLine(const EDIT_ARG_KEY_VALUE &obj)
 
     if (!edit_core->KVHandle->WriteData(obj)) {
         critlog("KV add failed from editorObject Addline. obj: ");
-        critlog(obj.first);
+        critlog(std::string(obj.first));
         critlog("second: ");
-        critlog(obj.second);
+        critlog(std::string(obj.second));
 
         return false;
     }

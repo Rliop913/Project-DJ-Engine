@@ -87,8 +87,7 @@ target_compile_options(${targetName} PRIVATE
   $<$<CXX_COMPILER_ID:MSVC>:/permissive- /WX- /W3 /GR /arch:AVX2>
   $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:
     -Wnon-virtual-dtor
-    -Wweak-vtables
-    -Wpadded -Wpacked -Wpragma-pack
+    -Wpacked -Wpragma-pack
     -Wabi
     -frtti
   >

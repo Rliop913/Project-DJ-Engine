@@ -136,5 +136,42 @@ BranchLine::AppendToHead(git_index *idx)
     AddLog(git, git_oid_tostr_s(&commit_id), git_oid_tostr_s(&parent_id));
     return true;
 }
+std::vector<std::pair<OID, TIME_STAMP>>
+BranchLine::ListLines()
+{
+    GIT_RAII::branch_itr                    bitr;
+    GIT_RAII::ref                           ref;
+    std::vector<std::pair<OID, TIME_STAMP>> resvec;
+    if (git_branch_iterator_new(&bitr.p, git->GetRepo(), GIT_BRANCH_LOCAL) <
+        0) {
+        critlog("failed to init branch iterator. GitErr: ");
+        critlog(git_error_last()->message);
+        return {};
+    }
+    int          res = 0;
+    git_branch_t type;
+    while ((res = git_branch_next(&ref.p, &type, bitr.p)) == 0) {
+        const char *timestamp = NULL;
+        if (git_branch_name(&timestamp, ref.p) != 0) {
+            critlog("failed to get branch name. GitErr: ");
+            critlog(git_error_last()->message);
+            git_reference_free(ref.p);
+            ref.p = nullptr;
+            continue;
+        }
+        const git_oid *id = git_reference_target(ref.p);
+        GIT_RAII::ref  resolved;
+        if (!id && git_reference_type(ref.p) == GIT_REFERENCE_SYMBOLIC) {
+            if (git_reference_resolve(&resolved.p, ref.p) == 0) {
+                id = git_reference_target(resolved.p);
+            }
+        }
+        OID headid = git_oid_tostr_s(id);
+        resvec.push_back({ headid, timestamp });
+        git_reference_free(ref.p);
+        ref.p = nullptr;
+    }
+    return resvec;
+}
 
 }; // namespace PDJE_TIMELINE

@@ -110,7 +110,20 @@ template <typename CapnpType> class TimeLine {
     Diff(const OID &origin, const OID &compare) // todo-impl
     {
     }
+    void
+    UpdateLogs()
+    {
+        try {
 
+            auto Branches = mark.line.ListLines();
+            for (const auto &b : Branches) {
+                LogBranch(b.first, git);
+            }
+        } catch (const std::exception &e) {
+            critlog("failed to update logs. What: ");
+            critlog(e.what());
+        }
+    }
     std::string
     GetLogs()
     {

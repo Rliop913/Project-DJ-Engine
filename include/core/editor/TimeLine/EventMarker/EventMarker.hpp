@@ -69,8 +69,9 @@ template <typename CapnpType> class EventMarker {
         if (git->LIFO_log.empty()) {
             return false;
         } else {
-            Move(git->LIFO_log.back());
+            bool res = Move(git->LIFO_log.back());
             git->LIFO_log.pop_back();
+            return res;
         }
     }
     bool
@@ -78,8 +79,7 @@ template <typename CapnpType> class EventMarker {
     {
         git->LIFO_log.push_back(checkedOut);
         if (git->log_tree.contains(checkedOut)) {
-            Move(git->log_tree[checkedOut]);
-            return true;
+            return Move(git->log_tree[checkedOut]);
         } else {
             return false;
         }
@@ -88,9 +88,13 @@ template <typename CapnpType> class EventMarker {
     Move(const OID &target)
     {
         git_oid target_oid{};
+        if (target == "ROOT") {
+            return false;
+        }
         if (git_oid_fromstr(&target_oid, target.c_str()) != 0) {
             critlog("failed to get git oid from string. while moving event "
-                    "marker. GitErr: ");
+                    "marker. OID & GitErr: ");
+            critlog(target);
             critlog(git_error_last()->message);
             return false;
         }
@@ -162,6 +166,9 @@ template <typename CapnpType> class EventMarker {
             auto Branches          = line.ListLines();
             for (const auto &b : Branches) {
                 LogBranch(b.first, git);
+            }
+            if (!Activate()) {
+                critlog("failed to Activate head commit.");
             }
         } catch (const std::exception &e) {
             critlog("failed to init event marker. What: ");

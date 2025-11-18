@@ -3,6 +3,8 @@
 #include "jsonWrapper.hpp"
 #include <filesystem>
 #include <git2.h>
+#include <git2/errors.h>
+#include <git2/global.h>
 #include <unordered_map>
 namespace PDJE_TIMELINE {
 namespace fs = std::filesystem;
@@ -28,7 +30,7 @@ GenTimeStamp()
                   .count();
 
     std::ostringstream oss;
-    oss << std::put_time(&tm, "%Y-%m-%d--%H:%M:%S");
+    oss << std::put_time(&tm, "%Y-%m-%d--%H-%M-%S");
     oss << '.' << std::setw(3) << std::setfill('0') << ms;
 
     return oss.str();
@@ -68,9 +70,11 @@ struct GitData {
             const std::string &auth_name,
             const std::string &auth_email)
     {
+        git_libgit2_init();
         if (git_signature_now(&sign, auth_name.c_str(), auth_email.c_str()) !=
             0) {
             critlog("failed to init signature.");
+            critlog(git_error_last()->message);
         }
         target_file      = file_name;
         root             = git_repo_root;
@@ -91,6 +95,7 @@ struct GitData {
         if (!repo) {
             git_repository_free(repo);
         }
+        git_libgit2_shutdown();
     }
 };
 }; // namespace PDJE_TIMELINE

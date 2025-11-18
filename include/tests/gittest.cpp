@@ -80,8 +80,8 @@ main()
     if (!eg.editor->Undo<EDIT_ARG_MIX>()) {
         std::cout << "UNDO failed" << std::endl;
     }
-    if (eg.editor->Redo<EDIT_ARG_MIX>()) {
-        std::cout << "UNDO failed" << std::endl;
+    if (!eg.editor->Redo<EDIT_ARG_MIX>()) {
+        std::cout << "Redo failed" << std::endl;
     }
     eg.editor->DESTROY_PROJECT();
 

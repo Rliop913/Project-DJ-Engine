@@ -65,6 +65,6 @@ class BranchLine {
     BranchLine(const std::shared_ptr<GitData> &gitptr) : git(gitptr)
     {
     }
-    ~BranchLine();
+    ~BranchLine() = default;
 };
 }; // namespace PDJE_TIMELINE

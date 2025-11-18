@@ -171,14 +171,15 @@ add_executable(gitTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/gittest.cpp $
 setCoreReqs(testEditor)
 setCoreReqs(DBTester)
 setCoreReqs(gitTester)
+if(PDJE_DEVELOP_INPUT)
+  add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${INPUT_SRCS})
+  setInputReqs(testInput)
 
-add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${INPUT_SRCS})
-setInputReqs(testInput)
-
-add_executable(testJudge ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/JUDGE_TESTS/judgeTest.cpp ${INPUT_SRCS} ${CORE_SRCS} ${JUDGE_SRCS})
-setJudgeReqs(testJudge)
-setCoreReqs(testJudge)
-setInputReqs(testJudge)
+  add_executable(testJudge ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/JUDGE_TESTS/judgeTest.cpp ${INPUT_SRCS} ${CORE_SRCS} ${JUDGE_SRCS})
+  setJudgeReqs(testJudge)
+  setCoreReqs(testJudge)
+  setInputReqs(testJudge)
+endif()
 endif(PDJE_BUILD_TESTS)
 
 

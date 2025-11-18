@@ -12,7 +12,7 @@ editorObject::makeTrackData(const UNSANITIZED &trackTitle,
                             std::unordered_map<SANITIZED, SANITIZED> &titles)
 {
     trackdata td;
-    auto      mixRendered = E_obj->mixHandle.second.render();
+    auto      mixRendered = edit_core->mixHandle->GetJson()->render();
     auto      mixData     = mixRendered->Wp->getDatas();
 
     for (unsigned long long i = 0; i < mixData.size(); ++i) {
@@ -31,14 +31,14 @@ editorObject::makeTrackData(const UNSANITIZED &trackTitle,
     }
     td.trackTitle = safeTitle.value();
     td.mixBinary  = mixRendered->out();
-    td.noteBinary = E_obj->noteHandle.second.render()->out();
+    td.noteBinary = edit_core->noteHandle->GetJson()->render()->out();
     for (auto &i : titles) {
         td.cachedMixList += (i.first + ",");
     }
     if (!titles.empty()) {
         td.cachedMixList.pop_back();
     }
-    return std::move(td);
+    return td;
 }
 
 void

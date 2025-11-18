@@ -1,6 +1,7 @@
 #pragma once
 #include "PDJE_LOG_SETTER.hpp"
 #include <git2.h>
+#include <git2/branch.h>
 #include <git2/refs.h>
 #include <git2/tree.h>
 #include <git2/types.h>
@@ -55,6 +56,18 @@ class tree {
     {
         if (p) {
             git_tree_free(p);
+        }
+    }
+};
+
+class branch_itr {
+  public:
+    git_branch_iterator *p = nullptr;
+    branch_itr()           = default;
+    ~branch_itr()
+    {
+        if (p) {
+            git_branch_iterator_free(p);
         }
     }
 };

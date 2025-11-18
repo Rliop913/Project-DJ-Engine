@@ -1,3 +1,4 @@
+#include "MusicJsonHelper.hpp"
 #include "editorObject.hpp"
 
 template <>
@@ -27,7 +28,8 @@ editorObject::Undo<EDIT_ARG_MUSIC>(const UNSANITIZED &musicName)
     }
 
     for (auto &i : edit_core->musicHandle) {
-        if (i.handle->FileName == safeMus) {
+
+        if (GetTitle(*i.handle->GetJson()) == safeMus) {
             return i.handle->Undo();
         }
     }

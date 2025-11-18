@@ -53,67 +53,6 @@ class PDJE_API editorObject {
 
   public:
     /**
-     * @brief Gets the Git repository for the mix data.
-     * @return A pointer to the Git repository, or `nullptr` if not available.
-     */
-    // git_repository *
-    // getMixRepo()
-    // {
-    //     if (E_obj.has_value()) {
-    //         return E_obj->mixHandle.first->gw.repo;
-    //     } else
-    //         return nullptr;
-    // }
-
-    /**
-     * @brief Gets the Git repository for a specific music entry.
-     * @param Title The unsanitized title of the music.
-     * @return A pointer to the Git repository, or `nullptr` if not found.
-     */
-    // git_repository *
-    // getMusicRepo(const UNSANITIZED &Title)
-    // {
-    //     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(Title);
-    //     if (!safeTitle) {
-    //         return nullptr;
-    //     }
-    //     if (E_obj.has_value()) {
-    //         for (auto &music : E_obj->musicHandle) {
-    //             if (music.musicName == safeTitle) {
-    //                 return music.gith->gw.repo;
-    //             }
-    //         }
-    //     }
-    //     return nullptr;
-    // }
-
-    /**
-     * @brief Gets the Git repository for the note data.
-     * @return A pointer to the Git repository, or `nullptr` if not available.
-     */
-    // git_repository *
-    // getNoteRepo()
-    // {
-    //     if (E_obj.has_value()) {
-    //         return E_obj->noteHandle.first->gw.repo;
-    //     } else
-    //         return nullptr;
-    // }
-
-    /**
-     * @brief Gets the Git repository for the key-value data.
-     * @return A pointer to the Git repository, or `nullptr` if not available.
-     */
-    // git_repository *
-    // getKVRepo()
-    // {
-    //     if (E_obj.has_value()) {
-    //         return E_obj->KVHandler.first->gw.repo;
-    //     } else
-    //         return nullptr;
-    // }
-
-    /**
      * @brief Adds a new line of data to the editor.
      * @tparam EDIT_ARG_TYPE The type of data to add.
      * @param obj The data object to add.
@@ -278,18 +217,8 @@ class PDJE_API editorObject {
      * @return `true` if the update was successful, `false` otherwise.
      */
     template <typename EDIT_ARG_TYPE>
-    bool
+    void
     UpdateLog();
-
-    /**
-     * @brief Updates the commit log for a specific branch.
-     * @tparam EDIT_ARG_TYPE The type of data to update the log for.
-     * @param branchName The name of the branch to update.
-     * @return `true` if the update was successful, `false` otherwise.
-     */
-    template <typename EDIT_ARG_TYPE>
-    bool
-    UpdateLog(const DONT_SANITIZE &branchName);
 
     /**
      * @brief Gets the diff between two timestamps.
@@ -347,7 +276,7 @@ class PDJE_API editorObject {
     /**
      * @brief Constructs a new editor object with author information.
      */
-    editorObject();
+    editorObject() = default;
 
     ~editorObject() = default;
 };
@@ -472,31 +401,19 @@ editorObject::Undo<EDIT_ARG_MIX>();
 template <>
 PDJE_API bool
 editorObject::Undo<EDIT_ARG_KEY_VALUE>();
-template <>
-PDJE_API bool
-editorObject::Undo<EDIT_ARG_MUSIC>(const UNSANITIZED &musicName);
 
 template <>
-PDJE_API bool
+PDJE_API void
 editorObject::UpdateLog<EDIT_ARG_NOTE>();
+
 template <>
-PDJE_API bool
-editorObject::UpdateLog<EDIT_ARG_NOTE>(const DONT_SANITIZE &branchName);
-template <>
-PDJE_API bool
+PDJE_API void
 editorObject::UpdateLog<EDIT_ARG_MIX>();
+
 template <>
-PDJE_API bool
-editorObject::UpdateLog<EDIT_ARG_MIX>(const DONT_SANITIZE &branchName);
-template <>
-PDJE_API bool
+PDJE_API void
 editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>();
+
 template <>
-PDJE_API bool
-editorObject::UpdateLog<EDIT_ARG_KEY_VALUE>(const DONT_SANITIZE &branchName);
-template <>
-PDJE_API bool
+PDJE_API void
 editorObject::UpdateLog<EDIT_ARG_MUSIC>();
-template <>
-PDJE_API bool
-editorObject::UpdateLog<EDIT_ARG_MUSIC>(const UNSANITIZED &musicName);
