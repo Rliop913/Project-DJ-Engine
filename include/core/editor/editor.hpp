@@ -5,10 +5,11 @@
 #pragma once
 
 #include "EditorArgs.hpp"
+#include "MusicControlPanel.hpp"
+#include "MusicJsonHelper.hpp"
 #include "PDJE_LOG_SETTER.hpp"
-#include "dbRoot.hpp"
-
 #include "TimeLine.hpp"
+#include "dbRoot.hpp"
 
 #include <exception>
 #include <filesystem>
@@ -77,16 +78,29 @@ class PDJE_API PDJE_Editor {
         MusicHandleStruct &
         operator=(MusicHandleStruct &&) noexcept = default;
 
-        MusicHandleStruct(const fs::path      &path,
-                          SANITIZED            musicName,
+        MusicHandleStruct(const fs::path      &root,
                           const DONT_SANITIZE &auth_name,
                           const DONT_SANITIZE &auth_email)
         {
-            if (MKDirs(path)) {
+            handle = std::make_unique<PDJE_TIMELINE::TimeLine<MUSIC_W>>(
+                root, "musicmetadata.PDJE", auth_name, auth_email);
+        }
+
+        MusicHandleStruct(const fs::path      &root,
+                          const SANITIZED     &musicTitle,
+                          const SANITIZED     &composer,
+                          const DONT_SANITIZE &firstBeat,
+                          const fs::path      &location,
+                          const DONT_SANITIZE &auth_name,
+                          const DONT_SANITIZE &auth_email)
+        {
+            if (MKDirs(root)) {
                 return;
             }
             handle = std::make_unique<PDJE_TIMELINE::TimeLine<MUSIC_W>>(
-                path, musicName, auth_name, auth_email);
+                root, "musicmetadata.PDJE", auth_name, auth_email);
+            ConfigMusicJsonData(
+                *handle->GetJson(), musicTitle, composer, firstBeat, location);
         }
     };
     /// List of music handles owned by this editor
@@ -99,7 +113,10 @@ class PDJE_API PDJE_Editor {
      * @return true on success.
      */
     bool
-    AddMusicConfig(const SANITIZED &NewMusicName, const std::string &dir_name);
+    AddMusicConfig(const SANITIZED     &NewMusicName,
+                   const SANITIZED     &Composer,
+                   const DONT_SANITIZE &firstBeat,
+                   const fs::path      &music_location);
 
     /**
      * @brief Opens or creates an editor project at the given path.
@@ -131,10 +148,8 @@ class PDJE_API PDJE_Editor {
                 kvr, "keyvaluemetadata.PDJE", auth_name, auth_email);
             for (const auto &musicSubpath :
                  fs::directory_iterator(music_root)) {
-                musicHandle.emplace_back(musicSubpath.path(),
-                                         "musicmetadata.PDJE",
-                                         auth_name,
-                                         auth_email);
+                musicHandle.emplace_back(
+                    musicSubpath.path(), auth_name, auth_email);
             }
         }
         name  = auth_name;

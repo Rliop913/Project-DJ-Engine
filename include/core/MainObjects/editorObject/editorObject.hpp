@@ -48,15 +48,6 @@ class PDJE_API editorObject {
     // fs::path                   musicFileRootPath;
     std::unique_ptr<PDJE_Editor> edit_core;
 
-    template <typename EDIT_ARG_TYPE>
-    bool
-    DefaultSaveFunction();
-
-    template <typename EDIT_ARG_TYPE>
-    bool
-    DefaultSaveFunction(PDJE_Editor::MusicHandleStruct &i,
-                        const EDIT_ARG_MUSIC           &obj);
-
     trackdata
     makeTrackData(const UNSANITIZED &trackTitle, TITLE_COMPOSER &titles);
 
@@ -260,7 +251,7 @@ class PDJE_API editorObject {
      */
     template <typename EDIT_ARG_TYPE>
     bool
-    Go(const DONT_SANITIZE &branchName, const DONT_SANITIZE &commitOID);
+    Go(const DONT_SANITIZE &commitOID);
 
     /**
      * @brief Gets the commit log as a JSON graph.
@@ -388,20 +379,6 @@ PDJE_API bool
 editorObject::AddLine<EDIT_ARG_MUSIC>(const EDIT_ARG_MUSIC &obj);
 
 template <>
-PDJE_API bool
-editorObject::DefaultSaveFunction<EDIT_ARG_NOTE>();
-template <>
-PDJE_API bool
-editorObject::DefaultSaveFunction<EDIT_ARG_MIX>();
-template <>
-PDJE_API bool
-editorObject::DefaultSaveFunction<EDIT_ARG_KEY_VALUE>();
-template <>
-PDJE_API bool
-editorObject::DefaultSaveFunction<EDIT_ARG_MUSIC>(
-    PDJE_Editor::MusicHandleStruct &i, const EDIT_ARG_MUSIC &obj);
-
-template <>
 PDJE_API int
 editorObject::deleteLine<EDIT_ARG_NOTE>(const EDIT_ARG_NOTE &obj);
 template <>
@@ -462,20 +439,16 @@ editorObject::GetLogWithJSONGraph<EDIT_ARG_MUSIC>();
 
 template <>
 PDJE_API bool
-editorObject::Go<EDIT_ARG_NOTE>(const DONT_SANITIZE &branchName,
-                                const DONT_SANITIZE &commitOID);
+editorObject::Go<EDIT_ARG_NOTE>(const DONT_SANITIZE &commitOID);
 template <>
 PDJE_API bool
-editorObject::Go<EDIT_ARG_MIX>(const DONT_SANITIZE &branchName,
-                               const DONT_SANITIZE &commitOID);
+editorObject::Go<EDIT_ARG_MIX>(const DONT_SANITIZE &commitOID);
 template <>
 PDJE_API bool
-editorObject::Go<EDIT_ARG_KEY_VALUE>(const DONT_SANITIZE &branchName,
-                                     const DONT_SANITIZE &commitOID);
+editorObject::Go<EDIT_ARG_KEY_VALUE>(const DONT_SANITIZE &commitOID);
 template <>
 PDJE_API bool
-editorObject::Go<EDIT_ARG_MUSIC>(const DONT_SANITIZE &branchName,
-                                 const DONT_SANITIZE &commitOID);
+editorObject::Go<EDIT_ARG_MUSIC>(const DONT_SANITIZE &commitOID);
 
 template <>
 PDJE_API bool

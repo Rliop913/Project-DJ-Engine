@@ -73,8 +73,10 @@ PDJE_JSONHandler<NOTE_W>::deleteLine(const NoteArgs &args)
         for (auto i : targetIDX | vs::reverse) {
             ROOT[PDJENOTE].erase(i);
         }
-    } catch (...) {
-        return 0;
+    } catch (const std::exception &e) {
+        critlog("failed on json. What: ");
+        critlog(e.what());
+        return -1;
     }
     return static_cast<int>(targetIDX.size());
 }

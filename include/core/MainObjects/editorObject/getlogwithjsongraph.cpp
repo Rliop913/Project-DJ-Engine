@@ -4,21 +4,21 @@ template <>
 PDJE_API DONT_SANITIZE
 editorObject::GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>()
 {
-    return E_obj->KVHandler.first->GetLogWithJSONGraph();
+    return edit_core->KVHandle->GetLogs();
 }
 
 template <>
 PDJE_API DONT_SANITIZE
 editorObject::GetLogWithJSONGraph<EDIT_ARG_MIX>()
 {
-    return E_obj->mixHandle.first->GetLogWithJSONGraph();
+    return edit_core->mixHandle->GetLogs();
 }
 
 template <>
 PDJE_API DONT_SANITIZE
 editorObject::GetLogWithJSONGraph<EDIT_ARG_NOTE>()
 {
-    return E_obj->noteHandle.first->GetLogWithJSONGraph();
+    return edit_core->noteHandle->GetLogs();
 }
 
 template <>
@@ -32,9 +32,9 @@ editorObject::GetLogWithJSONGraph<EDIT_ARG_MUSIC>(const UNSANITIZED &musicName)
         critlog(musicName);
         return DONT_SANITIZE();
     }
-    for (auto &i : E_obj->musicHandle) {
-        if (i.musicName == safeMus) {
-            return i.gith->GetLogWithJSONGraph();
+    for (auto &i : edit_core->musicHandle) {
+        if (GetTitle(*i.handle->GetJson()) == safeMus) {
+            return i.handle->GetLogs();
         }
     }
     warnlog("music is not exists. from editorObject GetLogWithJSONGraph(Music "

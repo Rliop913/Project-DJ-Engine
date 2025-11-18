@@ -4,14 +4,14 @@ template <>
 PDJE_API bool
 editorObject::Undo<EDIT_ARG_NOTE>()
 {
-    return E_obj->noteHandle.first->Undo();
+    return edit_core->noteHandle->Undo();
 }
 
 template <>
 PDJE_API bool
 editorObject::Undo<EDIT_ARG_MIX>()
 {
-    return E_obj->mixHandle.first->Undo();
+    return edit_core->mixHandle->Undo();
 }
 
 template <>
@@ -26,9 +26,9 @@ editorObject::Undo<EDIT_ARG_MUSIC>(const UNSANITIZED &musicName)
         return false;
     }
 
-    for (auto &i : E_obj->musicHandle) {
-        if (i.musicName == safeMus) {
-            return i.gith->Undo();
+    for (auto &i : edit_core->musicHandle) {
+        if (i.handle->FileName == safeMus) {
+            return i.handle->Undo();
         }
     }
     warnlog(
@@ -42,5 +42,5 @@ template <>
 PDJE_API bool
 editorObject::Undo<EDIT_ARG_KEY_VALUE>()
 {
-    return E_obj->KVHandler.first->Undo();
+    return edit_core->KVHandle->Undo();
 }

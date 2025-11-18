@@ -18,7 +18,6 @@ template <typename CapnpType> class EventMarker {
   private:
     git_checkout_options     opts = GIT_CHECKOUT_OPTIONS_INIT;
     std::shared_ptr<GitData> git;
-    BranchLine               line;
     OID                      checkedOut;
     git_index               *index;
     bool                     isActivate = true;
@@ -43,6 +42,7 @@ template <typename CapnpType> class EventMarker {
     }
 
   public:
+    BranchLine                  line;
     PDJE_JSONHandler<CapnpType> file_handle;
     bool
     Append()

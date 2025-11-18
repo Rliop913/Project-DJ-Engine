@@ -2,65 +2,33 @@
 
 template <>
 PDJE_API bool
-editorObject::Go<EDIT_ARG_MIX>(const DONT_SANITIZE &branchName,
-                               const DONT_SANITIZE &commitOID)
+editorObject::Go<EDIT_ARG_MIX>(const DONT_SANITIZE &commitOID)
 {
-    git_oid targetOID{};
-    if (git_oid_fromstr(&targetOID, commitOID.c_str()) != GIT_OK) {
-        critlog("oid string to git oid convert failed on "
-                "editorObject::Go<EDIT_ARG_MIX>. printing git err msg: ");
-        critlog(git_error_last()->message);
-
-        return false;
-    }
-    return E_obj->mixHandle.first->Go(branchName, &targetOID);
+    return edit_core->mixHandle->Go(commitOID);
 }
 
 template <>
 PDJE_API bool
-editorObject::Go<EDIT_ARG_NOTE>(const DONT_SANITIZE &branchName,
-                                const DONT_SANITIZE &commitOID)
+editorObject::Go<EDIT_ARG_NOTE>(const DONT_SANITIZE &commitOID)
 {
-    git_oid targetOID{};
-    if (git_oid_fromstr(&targetOID, commitOID.c_str()) != GIT_OK) {
-        critlog("oid string to git oid convert failed on "
-                "editorObject::Go<EDIT_ARG_NOTE>. printing git err msg: ");
-        critlog(git_error_last()->message);
-        return false;
-    }
-    return E_obj->noteHandle.first->Go(branchName, &targetOID);
+    return edit_core->noteHandle->Go(commitOID);
 }
 
 template <>
 PDJE_API bool
-editorObject::Go<EDIT_ARG_KEY_VALUE>(const DONT_SANITIZE &branchName,
-                                     const DONT_SANITIZE &commitOID)
+editorObject::Go<EDIT_ARG_KEY_VALUE>(const DONT_SANITIZE &commitOID)
 {
-    git_oid targetOID{};
-    if (git_oid_fromstr(&targetOID, commitOID.c_str()) != GIT_OK) {
-        critlog("oid string to git oid convert failed on "
-                "editorObject::Go<EDIT_ARG_KEY_VALUE>. printing git err msg: ");
-        critlog(git_error_last()->message);
-        return false;
-    }
-    return E_obj->KVHandler.first->Go(branchName, &targetOID);
+    return edit_core->KVHandle->Go(commitOID);
 }
 
 template <>
 PDJE_API bool
-editorObject::Go<EDIT_ARG_MUSIC>(const DONT_SANITIZE &branchName,
-                                 const DONT_SANITIZE &commitOID)
+editorObject::Go<EDIT_ARG_MUSIC>(const DONT_SANITIZE &commitOID)
 {
-    git_oid targetOID{};
-    if (git_oid_fromstr(&targetOID, commitOID.c_str()) != GIT_OK) {
-        critlog("oid string to git oid convert failed on "
-                "editorObject::Go<EDIT_ARG_MUSIC>. printing git err msg: ");
-        critlog(git_error_last()->message);
-        return false;
-    }
-    for (auto &i : E_obj->musicHandle) {
-        if (i.gith->Go(branchName, &targetOID))
+    for (auto &i : edit_core->musicHandle) {
+        if (i.handle->Go(commitOID)) {
             return true;
+        }
     }
     warnlog("cannot find music. from editorObject Go(Music obj)");
     return false;

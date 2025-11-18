@@ -1,4 +1,5 @@
 #include "jsonWrapper.hpp"
+#include <exception>
 
 template <>
 template <>
@@ -14,8 +15,18 @@ template <>
 int
 PDJE_JSONHandler<KV_W>::deleteLine(const KEY &args)
 {
-    ROOT.erase(args);
-    return 1;
+    try {
+        if (ROOT.contains(args)) {
+            ROOT.erase(args);
+            return 1;
+        } else {
+            return 0;
+        }
+    } catch (const std::exception &e) {
+        critlog("failed on json. What:");
+        critlog(e.what());
+        return -1;
+    }
 }
 
 template <>

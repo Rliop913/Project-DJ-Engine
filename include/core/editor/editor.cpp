@@ -1,36 +1,45 @@
 #include "editor.hpp"
 #include "PDJE_LOG_SETTER.hpp"
+#include "fileNameSanitizer.hpp"
+#include <botan/hash.h>
+#include <botan/hex.h>
+#include <botan/secmem.h>
+#include <cstdint>
 #include <filesystem>
-
 namespace fs = std::filesystem;
 
-#include <random>
 bool
-PDJE_Editor::AddMusicConfig(const SANITIZED   &NewMusicName,
-                            const std::string &dir_name)
+PDJE_Editor::AddMusicConfig(const SANITIZED     &NewMusicName,
+                            const SANITIZED     &Composer,
+                            const DONT_SANITIZE &firstBeat,
+                            const fs::path      &music_location)
 {
-    std::random_device                          rd;
-    std::mt19937                                gen(rd());
-    std::uniform_int_distribution<unsigned int> randomFilename(
-        std::numeric_limits<unsigned int>::min(),
-        std::numeric_limits<unsigned int>::max());
-    std::optional<DONT_SANITIZE> mfilename;
-    for (int TRY_COUNT = 0; TRY_COUNT < 50; ++TRY_COUNT) {
-        DONT_SANITIZE tempFilename = std::to_string(randomFilename(gen));
-        if (!fs::exists(music_root / fs::path(tempFilename))) {
-            mfilename = tempFilename;
-            break;
-        }
-    }
-    if (!mfilename.has_value()) {
-        warnlog(
-            "failed to make filename. this could be error or we have terrible "
-            "luck. try again or fix here. from PDJE_Editor AddMusicConfig.");
+
+    auto hash_engine = Botan::HashFunction::create("MD5");
+    if (!hash_engine) {
+        critlog("failed to init hash engine on configure music step.");
         return false;
     }
-    auto DataPath = music_root / fs::path(mfilename.value());
+    std::string strsum = (NewMusicName + Composer);
+    hash_engine->update(reinterpret_cast<const uint8_t *>(strsum.data()),
+                        strsum.size());
+    Botan::secure_vector<uint8_t> res = hash_engine->final();
+
+    std::string hash = Botan::hex_encode(res);
+
+    auto DataPath = music_root / fs::path(hash);
+    if (fs::exists(DataPath)) {
+        return false;
+    }
     try {
-        musicHandle.emplace_back(DataPath, "musicmetadata.PDJE", name, email);
+        musicHandle.emplace_back(DataPath,
+                                 NewMusicName,
+                                 Composer,
+                                 firstBeat,
+                                 music_location,
+                                 name,
+                                 email);
+
         return true;
 
     } catch (const std::exception &e) {

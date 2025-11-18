@@ -1,3 +1,4 @@
+#include "MusicJsonHelper.hpp"
 #include "editorObject.hpp"
 #include "fileNameSanitizer.hpp"
 #include "pdjeLinter.hpp"
@@ -15,8 +16,9 @@ editorObject::render(const UNSANITIZED &trackTitle,
     }
 
     std::vector<musdata> mds;
-    for (auto &i : E_obj->musicHandle) {
-        if (i.musicName == "" || !fs::exists(i.dataPath)) {
+    for (auto &i : edit_core->musicHandle) {
+        if (GetTitle(*i.handle->GetJson()) == "" ||
+            !fs::exists(GetMusicABSLocation(*i.handle->GetJson()))) {
             continue;
         }
         mds.emplace_back();

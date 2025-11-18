@@ -4,6 +4,7 @@
 #include "fileNameSanitizer.hpp"
 #include "tempDB.hpp"
 #include "trackDB.hpp"
+#include <exception>
 #include <memory>
 
 trackdata
@@ -129,34 +130,14 @@ editorObject::ConfigNewMusic(const UNSANITIZED   &NewMusicName,
         critlog(musicPath.generic_string());
         return false;
     }
-    fs::path tempDataPath;
-    if (edit_core->AddMusicConfig(safeMus.value(), tempDataPath)) {
-
-        E_obj->musicHandle.back().jsonh[PDJE_JSON_TITLE] = safeMus.value();
-        E_obj->musicHandle.back().jsonh[PDJE_JSON_COMPOSER] =
-            safeComposer.value();
-        E_obj->musicHandle.back().dataPath = tempDataPath;
-        try {
-            fs::path absPath;
-            if (musicPath.is_absolute()) {
-                absPath = musicPath.lexically_normal();
-            } else {
-                absPath = fs::absolute(musicPath).lexically_normal();
-            }
-            E_obj->musicHandle.back().jsonh[PDJE_JSON_PATH] = absPath;
-        } catch (const std::exception &e) {
-            critlog("something failed in editorObject ConfigNewMusic. "
-                    "ErrException: ");
-            critlog(e.what());
-            return false;
-        }
-        E_obj->musicHandle.back().jsonh[PDJE_JSON_FIRST_BEAT] = firstBeat;
-        return true;
-    } else {
-        critlog("failed to add music config. from editorObject ConfigNewMusic. "
-                "musicName: ");
+    try {
+        return edit_core->AddMusicConfig(
+            safeMus.value(), safeComposer.value(), firstBeat, musicPath);
+    } catch (const std::exception &e) {
+        critlog("failed to config new music. title & composer & What: ");
         critlog(NewMusicName);
-
+        critlog(composer);
+        critlog(e.what());
         return false;
     }
 }
