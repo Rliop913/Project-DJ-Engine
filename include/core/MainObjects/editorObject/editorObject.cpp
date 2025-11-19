@@ -1,15 +1,18 @@
 #include "editorObject.hpp"
 #include "PDJE_LOG_SETTER.hpp"
+#include "editor.hpp"
 #include "fileNameSanitizer.hpp"
 #include "tempDB.hpp"
 #include "trackDB.hpp"
+#include <exception>
+#include <memory>
 
 trackdata
 editorObject::makeTrackData(const UNSANITIZED &trackTitle,
                             std::unordered_map<SANITIZED, SANITIZED> &titles)
 {
     trackdata td;
-    auto      mixRendered = E_obj->mixHandle.second.render();
+    auto      mixRendered = edit_core->mixHandle->GetJson()->render();
     auto      mixData     = mixRendered->Wp->getDatas();
 
     for (unsigned long long i = 0; i < mixData.size(); ++i) {
@@ -28,14 +31,14 @@ editorObject::makeTrackData(const UNSANITIZED &trackTitle,
     }
     td.trackTitle = safeTitle.value();
     td.mixBinary  = mixRendered->out();
-    td.noteBinary = E_obj->noteHandle.second.render()->out();
+    td.noteBinary = edit_core->noteHandle->GetJson()->render()->out();
     for (auto &i : titles) {
         td.cachedMixList += (i.first + ",");
     }
     if (!titles.empty()) {
         td.cachedMixList.pop_back();
     }
-    return std::move(td);
+    return td;
 }
 
 void
@@ -77,7 +80,8 @@ DONT_SANITIZE
 editorObject::DESTROY_PROJECT()
 {
     try {
-        E_obj.reset();
+        edit_core.reset();
+
         projectLocalDB.reset();
         auto deletedAmount = fs::remove_all(projectRoot);
         if (deletedAmount < 1) {
@@ -126,49 +130,29 @@ editorObject::ConfigNewMusic(const UNSANITIZED   &NewMusicName,
         critlog(musicPath.generic_string());
         return false;
     }
-    fs::path tempDataPath;
-    if (E_obj->AddMusicConfig(safeMus.value(), tempDataPath)) {
-
-        E_obj->musicHandle.back().jsonh[PDJE_JSON_TITLE] = safeMus.value();
-        E_obj->musicHandle.back().jsonh[PDJE_JSON_COMPOSER] =
-            safeComposer.value();
-        E_obj->musicHandle.back().dataPath = tempDataPath;
-        try {
-            fs::path absPath;
-            if (musicPath.is_absolute()) {
-                absPath = musicPath.lexically_normal();
-            } else {
-                absPath = fs::absolute(musicPath).lexically_normal();
-            }
-            E_obj->musicHandle.back().jsonh[PDJE_JSON_PATH] = absPath;
-        } catch (const std::exception &e) {
-            critlog("something failed in editorObject ConfigNewMusic. "
-                    "ErrException: ");
-            critlog(e.what());
-            return false;
-        }
-        E_obj->musicHandle.back().jsonh[PDJE_JSON_FIRST_BEAT] = firstBeat;
-        return true;
-    } else {
-        critlog("failed to add music config. from editorObject ConfigNewMusic. "
-                "musicName: ");
+    try {
+        return edit_core->AddMusicConfig(
+            safeMus.value(), safeComposer.value(), firstBeat, musicPath);
+    } catch (const std::exception &e) {
+        critlog("failed to config new music. title & composer & What: ");
         critlog(NewMusicName);
-
+        critlog(composer);
+        critlog(e.what());
         return false;
     }
 }
 
 bool
-editorObject::Open(const fs::path &projectPath)
+editorObject::Open(const fs::path      &projectPath,
+                   const DONT_SANITIZE &auth_name,
+                   const DONT_SANITIZE &auth_email)
 {
-    projectRoot       = projectPath;
-    mixFilePath       = projectPath / "Mixes" / "mixmetadata.PDJE";
-    noteFilePath      = projectPath / "Notes" / "notemetadata.PDJE";
-    kvFilePath        = projectPath / "KeyValues" / "keyvaluemetadata.PDJE";
-    musicFileRootPath = projectPath / "Musics";
-    projectLocalDB.emplace();
 
-    return E_obj->openProject(projectPath) && projectLocalDB->Open(projectPath);
+    edit_core =
+        std::make_unique<PDJE_Editor>(projectPath, auth_name, auth_email);
+    projectLocalDB.emplace();
+    projectRoot = projectPath;
+    return projectLocalDB->Open(projectPath);
 }
 
 bool

@@ -6,7 +6,7 @@ using namespace gitwrap;
 bool
 commitList::UpdateCommits(git_repository *repo)
 {
-    clist.back();
+
     git_revwalk *walker = nullptr;
     if (git_revwalk_new(&walker, repo) != 0) {
         critlog(

@@ -66,7 +66,7 @@ template <typename CapnpWriterType> class PDJE_JSONHandler {
     // add multi-threaded faster getter later
 
     bool
-    load(const fs::path &path);
+    load(const fs::path &filepath);
 
     /// Access underlying JSON data by key
     inline nj &
@@ -84,6 +84,9 @@ template <typename CapnpWriterType> class PDJE_JSONHandler {
             jfile << std::setw(4) << ROOT;
             return true;
         } else {
+            critlog("failed to save json file. json file is not opened. "
+                    "FilePath: ");
+            critlog(path.generic_string());
             return false;
         }
     }

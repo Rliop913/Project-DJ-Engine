@@ -2,7 +2,9 @@
 #include "PDJE_LOG_SETTER.hpp"
 #include "editorCommit.hpp"
 #include "git2/commit.h"
+#include "git2/errors.h"
 #include "git2/oid.h"
+#include "git2/sys/errors.h"
 #include <chrono>
 #include <sstream>
 #include <string>
@@ -13,6 +15,7 @@ GitWrapper::Blame(const fs::path        &filepath,
                   const gitwrap::commit &newCommit,
                   const gitwrap::commit &oldCommit)
 {
+
     auto              newBlame = BlameController();
     git_blame_options opts;
     git_blame_options_init(&opts, GIT_BLAME_OPTIONS_VERSION);
@@ -59,7 +62,7 @@ GitWrapper::diff(const gitwrap::commit &oldCommit,
 }
 
 bool
-GitWrapper::add(const fs::path &path)
+GitWrapper::add(const fs::path &file)
 {
     if (addIndex.has_value()) {
         addIndex.reset();
@@ -70,7 +73,7 @@ GitWrapper::add(const fs::path &path)
         critlog(git_error_last()->message);
         return false;
     }
-    if (!addIndex->addFile(path)) {
+    if (!addIndex->addFile(file)) {
         critlog("failed to add file. from GitWrapper add. gitLog: ");
         critlog(git_error_last()->message);
         return false;
@@ -79,10 +82,13 @@ GitWrapper::add(const fs::path &path)
 }
 
 bool
-GitWrapper::open(const fs::path &path)
+GitWrapper::open(const fs::path &path,
+                 const fs::path &trackingFile,
+                 git_signature  *sign)
 {
 
     auto safeStr = path.generic_string();
+
     if (git_repository_open(&repo, safeStr.c_str()) == 0) {
         handleBranch.emplace(repo);
         return true;
@@ -90,6 +96,8 @@ GitWrapper::open(const fs::path &path)
         auto res = git_repository_init(&repo, safeStr.c_str(), false);
         if (res == 0) {
             handleBranch.emplace(repo);
+            add(trackingFile);
+            commit(sign, "INIT");
             return true;
         } else {
             critlog("failed to open & init repository. from GitWrapper open. "

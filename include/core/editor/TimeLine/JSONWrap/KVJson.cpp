@@ -1,4 +1,5 @@
 #include "jsonWrapper.hpp"
+#include <exception>
 
 template <>
 template <>
@@ -14,8 +15,18 @@ template <>
 int
 PDJE_JSONHandler<KV_W>::deleteLine(const KEY &args)
 {
-    ROOT.erase(args);
-    return 1;
+    try {
+        if (ROOT.contains(args)) {
+            ROOT.erase(args);
+            return 1;
+        } else {
+            return 0;
+        }
+    } catch (const std::exception &e) {
+        critlog("failed on json. What:");
+        critlog(e.what());
+        return -1;
+    }
 }
 
 template <>
@@ -31,10 +42,9 @@ PDJE_JSONHandler<KV_W>::getAll(
 
 template <>
 bool
-PDJE_JSONHandler<KV_W>::load(const fs::path &path)
+PDJE_JSONHandler<KV_W>::load(const fs::path &filepath)
 {
 
-    auto filepath = path / "keyvaluemetadata.PDJE";
     if (fs::exists(filepath)) {
         if (fs::is_regular_file(filepath)) {
             std::ifstream jfile(filepath);
@@ -42,7 +52,7 @@ PDJE_JSONHandler<KV_W>::load(const fs::path &path)
             if (!jfile.is_open()) {
                 critlog("failed to open KVJson file. from "
                         "PDJE_JSONHandler<KW_W> load. path: ");
-                critlog(path.generic_string());
+                critlog(filepath.generic_string());
                 return false;
             }
 
@@ -59,7 +69,7 @@ PDJE_JSONHandler<KV_W>::load(const fs::path &path)
         } else {
             critlog("path is not regular file. from PDJE_JSONHandler<KW_W> "
                     "load. path: ");
-            critlog(path.generic_string());
+            critlog(filepath.generic_string());
             return false;
         }
     } else {
@@ -68,7 +78,7 @@ PDJE_JSONHandler<KV_W>::load(const fs::path &path)
         if (!jfile.is_open()) {
             critlog("failed to make or open new json file. from "
                     "PDJE_JSONHandler<KW_W> load. path: ");
-            critlog(path.generic_string());
+            critlog(filepath.generic_string());
             return false;
         }
         jfile << std::setw(4) << ROOT;

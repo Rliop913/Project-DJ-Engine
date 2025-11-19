@@ -34,8 +34,6 @@ endif()
 option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
 option(PDJE_DYNAMIC "Make Shared Library" OFF)
 
-# link_libraries(${SQLite3_LIBRARIES})
-
 if(PDJE_DYNAMIC)
   if(WIN32)
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
@@ -82,99 +80,46 @@ add_custom_command(
 
 add_custom_target(gen_RT_HASH ALL DEPENDS ${RT_HASH_HEADER})
 
-
-
-
-
 endif()
 
+set(CORE_SRCS
+  ${editorSource} 
+  ${sql_amalgam_src} 
+  ${dbSource} 
+  ${audioRenderSource} 
+  ${SoundTouch_src} 
+  ${miniaudio_src} 
+  ${globalSource}
+)  
 
-if(PDJE_BUILD_TESTS)
-add_executable(testEditor ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/editorTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${globalSource})
-add_executable(DBTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${globalSource})
+set(JUDGE_SRCS
+${judgeSource} 
+${globalSource}
+)
 
-target_include_directories(testEditor PUBLIC ${PDJE_INCLUDE_CORE})
-target_include_directories(DBTester PUBLIC ${PDJE_INCLUDE_CORE})
-
-add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${PDJE_OS_INPUT_SRC} ${PDJE_IPC_SRC} ${globalSource})
-target_include_directories(testInput PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_GLOBAL})
-PDJE_INPUT_LINK_LIB(testInput)
-setBotanReqLib(testInput)
-setSpdlogReqLib(testInput)
-
-
-add_executable(testJudge ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/JUDGE_TESTS/judgeTest.cpp ${editorSource} ${sql_amalgam_src} ${dbSource} ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src} ${globalSource} ${PDJE_OS_INPUT_SRC} ${judgeSource} ${PDJE_IPC_SRC})
-target_include_directories(testJudge PUBLIC ${PDJE_INCLUDE_CORE} ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_GLOBAL})
-PDJE_INPUT_LINK_LIB(testJudge)
-setBotanReqLib(testJudge)
-setSpdlogReqLib(testJudge)
-endif(PDJE_BUILD_TESTS)
-
-if(PDJE_DYNAMIC)
-  add_library(PDJE SHARED ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource} ${globalSource})
-
-if(PDJE_DEVELOP_INPUT)
-  add_library(PDJE_MODULE_JUDGE SHARED ${judgeSource} ${globalSource})
-  add_library(PDJE_MODULE_INPUT SHARED ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC} ${PDJE_IPC_SRC})
-
-endif()
-
-target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
-
-if(PDJE_DEVELOP_INPUT)
-target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_INPUT})
-  target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} )
-endif()
-
-if(WIN32)
-  target_compile_definitions(PDJE PUBLIC PDJE_WINDOWS_DLL)
-  target_compile_definitions(PDJE PRIVATE PDJE_BUILDING)
-  target_compile_definitions(PDJE_MODULE_JUDGE PUBLIC PDJE_WINDOWS_DLL)
-  target_compile_definitions(PDJE_MODULE_JUDGE PRIVATE PDJE_BUILDING)
-  target_compile_definitions(PDJE_MODULE_INPUT PUBLIC PDJE_WINDOWS_DLL)
-  target_compile_definitions(PDJE_MODULE_INPUT PRIVATE PDJE_BUILDING)
-  
-endif()
-else()
-  add_library(PDJE ${audioRenderSource} ${SoundTouch_src} ${miniaudio_src}  ${dbSource} ${sql_amalgam_src} ${editorSource} ${globalSource})
-
-
-if(PDJE_DEVELOP_INPUT)
-  add_library(PDJE_MODULE_JUDGE ${judgeSource} ${globalSource} ${PDJE_IPC_SRC})
-  add_library(PDJE_MODULE_INPUT ${inputSource} ${globalSource} ${PDJE_OS_INPUT_SRC} ${PDJE_IPC_SRC})
-endif()
-
-
-target_include_directories(PDJE PUBLIC ${PDJE_INCLUDE_CORE})
-if(PDJE_DEVELOP_INPUT)
-target_include_directories(PDJE_MODULE_JUDGE PUBLIC ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_INPUT})
-target_include_directories(PDJE_MODULE_INPUT PUBLIC ${PDJE_INCLUDE_INPUT} )
-endif()
-
-endif()
-
-if(PDJE_DEVELOP_INPUT)
-
-# target_link_libraries(PDJE_MODULE_INPUT PRIVATE OpenSSL::Crypto)
-add_dependencies(PDJE_MODULE_INPUT gen_RT_HASH)
-add_dependencies(PDJE_MODULE_JUDGE gen_RT_HASH)
-if(PDJE_BUILD_TESTS)
-add_dependencies(testInput gen_RT_HASH)
-add_dependencies(testJudge gen_RT_HASH)
-
-endif()
-
-endif()
+set(INPUT_SRCS
+${inputSource} 
+${globalSource} 
+${PDJE_OS_INPUT_SRC} 
+${PDJE_IPC_SRC}
+)
 
 function(LinuxSetAtomic targetName)
-if(LINUX)
+  if(LINUX)
     target_link_libraries(${targetName} PUBLIC atomic)
     target_link_options(${targetName} PUBLIC -Wl,-z,defs)
   endif()
 endfunction()
 
-function(linkPDJELibs targetName)
-  target_link_libraries(${targetName} PUBLIC nlohmann_json::nlohmann_json Annoy::Annoy)
+function(setCoreReqs targetName)
+  target_include_directories(${targetName} PUBLIC ${PDJE_INCLUDE_CORE})
+  if(PDJE_DYNAMIC)
+    if(WIN32)
+      target_compile_definitions(${targetName} PUBLIC PDJE_WINDOWS_DLL)
+      target_compile_definitions(${targetName} PRIVATE PDJE_BUILDING)
+    endif()
+  endif()
+  target_link_libraries(${targetName} PUBLIC nlohmann_json::nlohmann_json)
   setRocksDBReqLib(${targetName})
   setSpdlogReqLib(${targetName})
   setCapnpReqLib(${targetName})
@@ -183,40 +128,84 @@ function(linkPDJELibs targetName)
   LinuxSetAtomic(${targetName})
   PDJE_COMPILE_OPTION(${targetName})
   setBotanReqLib(${targetName})
+  SET_PROPERTIES(${targetName})
+endfunction(setCoreReqs)
 
-endfunction(linkPDJELibs)
 
+function(setInputReqs targetName)
+  if(PDJE_DYNAMIC AND WIN32)
+    target_compile_definitions(${targetName} PUBLIC PDJE_WINDOWS_DLL)
+    target_compile_definitions(${targetName} PRIVATE PDJE_BUILDING)
+  endif()
+  add_dependencies(${targetName} gen_RT_HASH)
+  target_include_directories(${targetName} PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_GLOBAL})
+  setSpdlogReqLib(${targetName})
+  setBotanReqLib(${targetName})
+  PDJE_INPUT_LINK_LIB(${targetName})
+  LinuxSetAtomic(${targetName})
+  SET_PROPERTIES(${targetName})
+  PDJE_COMPILE_OPTION(${targetName})
+endfunction(setInputReqs)
+
+function(setJudgeReqs targetName)
+  if(PDJE_DYNAMIC AND WIN32)
+    target_compile_definitions(${targetName} PUBLIC PDJE_WINDOWS_DLL)
+    target_compile_definitions(${targetName} PRIVATE PDJE_BUILDING)
+  endif()
+  add_dependencies(${targetName} gen_RT_HASH)
+  target_include_directories(${targetName} PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_GLOBAL})
+  setSpdlogReqLib(${targetName})
+  setCapnpReqLib(${targetName})
+  setBotanReqLib(${targetName})
+  LinuxSetAtomic(${targetName})
+  SET_PROPERTIES(${targetName})
+  PDJE_COMPILE_OPTION(${targetName})
+endfunction(setJudgeReqs)
 
 if(PDJE_BUILD_TESTS)
-  linkPDJELibs(testEditor)
-  linkPDJELibs(DBTester)
-  linkPDJELibs(testJudge)
-  PDJE_COMPILE_OPTION(testEditor)
-  PDJE_COMPILE_OPTION(DBTester)
-  PDJE_COMPILE_OPTION(testJudge)
 
-endif()
+add_executable(testEditor ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/editorTest.cpp ${CORE_SRCS})
+add_executable(DBTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${CORE_SRCS})
+add_executable(gitTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/gittest.cpp ${CORE_SRCS})
 
-
-# linkPDJELibs(PDJE_MODULE_JUDGE)
-linkPDJELibs(PDJE)
-SET_PROPERTIES(PDJE)
+setCoreReqs(testEditor)
+setCoreReqs(DBTester)
+setCoreReqs(gitTester)
 if(PDJE_DEVELOP_INPUT)
-setSpdlogReqLib(PDJE_MODULE_JUDGE)
-setCapnpReqLib(PDJE_MODULE_JUDGE)
-setBotanReqLib(PDJE_MODULE_JUDGE)
-LinuxSetAtomic(PDJE_MODULE_JUDGE)
-SET_PROPERTIES(PDJE_MODULE_JUDGE)
-  setSpdlogReqLib(PDJE_MODULE_INPUT)
-  setBotanReqLib(PDJE_MODULE_INPUT)
-  setSpdlogReqLib(PDJE_MODULE_INPUT_PROCESS)
-  PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT)
-  LinuxSetAtomic(PDJE_MODULE_INPUT)
-  SET_PROPERTIES(PDJE_MODULE_INPUT)
-  PDJE_COMPILE_OPTION(PDJE_MODULE_JUDGE)
-  PDJE_COMPILE_OPTION(PDJE_MODULE_INPUT)
+  add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${INPUT_SRCS})
+  setInputReqs(testInput)
+
+  add_executable(testJudge ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/JUDGE_TESTS/judgeTest.cpp ${INPUT_SRCS} ${CORE_SRCS} ${JUDGE_SRCS})
+  setJudgeReqs(testJudge)
+  setCoreReqs(testJudge)
+  setInputReqs(testJudge)
+endif()
+endif(PDJE_BUILD_TESTS)
+
+
+
+if(PDJE_DYNAMIC)
+  add_library(PDJE SHARED ${CORE_SRCS})
+else()
+  add_library(PDJE ${CORE_SRCS})
 endif()
 
+setCoreReqs(PDJE)
+
+if(PDJE_DEVELOP_INPUT)
+if(PDJE_DYNAMIC)
+
+  add_library(PDJE_MODULE_JUDGE SHARED ${JUDGE_SRCS})
+  add_library(PDJE_MODULE_INPUT SHARED ${INPUT_SRCS})
+
+else()
+  add_library(PDJE_MODULE_JUDGE ${JUDGE_SRCS})
+  add_library(PDJE_MODULE_INPUT ${INPUT_SRCS})
+
+endif()# end dynamic
+  setInputReqs(PDJE_MODULE_INPUT)
+  setJudgeReqs(PDJE_MODULE_JUDGE)
+endif()
 
 
 if(PDJE_SWIG_BUILD)
@@ -231,36 +220,9 @@ endif()
 
 include(GNUInstallDirs)
 
-# set(PDJE_INSTALL_TARGETS PDJE)
-
-# if(TARGET PDJE_MODULE_JUDGE)
-#   list(APPEND PDJE_INSTALL_TARGETS PDJE_MODULE_JUDGE)
-# endif()
-# if(TARGET PDJE_MODULE_INPUT)
-#   list(APPEND PDJE_INSTALL_TARGETS PDJE_MODULE_INPUT)
-# endif()
-# if(TARGET PDJE_MODULE_INPUT_PROCESS)
-#   list(APPEND PDJE_INSTALL_TARGETS PDJE_MODULE_INPUT_PROCESS)
-# endif()
-
-# install(TARGETS ${PDJE_INSTALL_TARGETS}
-#   EXPORT PDJETargets
-#   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-#   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#   INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-# )
 
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
   FILES_MATCHING
     PATTERN "*.h" PATTERN "*.hpp" PATTERN "*.hxx" PATTERN "*.inl" PATTERN "*.ipp"
   PATTERN ".git*" EXCLUDE
   PATTERN "CMakeLists.txt" EXCLUDE)
-
-# install(EXPORT PDJETargets
-#   NAMESPACE PDJE::
-#   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/PDJE
-# )
-
-
-# install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})

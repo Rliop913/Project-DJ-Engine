@@ -73,8 +73,10 @@ PDJE_JSONHandler<NOTE_W>::deleteLine(const NoteArgs &args)
         for (auto i : targetIDX | vs::reverse) {
             ROOT[PDJENOTE].erase(i);
         }
-    } catch (...) {
-        return 0;
+    } catch (const std::exception &e) {
+        critlog("failed on json. What: ");
+        critlog(e.what());
+        return -1;
     }
     return static_cast<int>(targetIDX.size());
 }
@@ -145,9 +147,9 @@ PDJE_JSONHandler<NOTE_W>::render()
 
 template <>
 bool
-PDJE_JSONHandler<NOTE_W>::load(const fs::path &path)
+PDJE_JSONHandler<NOTE_W>::load(const fs::path &filepath)
 {
-    auto filepath = path / "notemetadata.PDJE";
+
     if (fs::exists(filepath)) {
         if (fs::is_regular_file(filepath)) {
             std::ifstream jfile(filepath);
@@ -155,7 +157,7 @@ PDJE_JSONHandler<NOTE_W>::load(const fs::path &path)
             if (!jfile.is_open()) {
                 critlog("cannot open note json file. from "
                         "PDJE_JSONHandler<NOTE_W> load. path: ");
-                critlog(path.generic_string());
+                critlog(filepath.generic_string());
                 return false;
             }
 
@@ -172,7 +174,7 @@ PDJE_JSONHandler<NOTE_W>::load(const fs::path &path)
         } else {
             critlog("filepath is not regular file. from "
                     "PDJE_JSONHandler<NOTE_W> load. path: ");
-            critlog(path.generic_string());
+            critlog(filepath.generic_string());
             return false;
         }
     } else {
