@@ -94,7 +94,7 @@ class PDJE_API PDJE_Editor {
                           const DONT_SANITIZE &auth_name,
                           const DONT_SANITIZE &auth_email)
         {
-            if (MKDirs(root)) {
+            if (!MKDirs(root)) {
                 return;
             }
             handle = std::make_unique<PDJE_TIMELINE::TimeLine<MUSIC_W>>(
