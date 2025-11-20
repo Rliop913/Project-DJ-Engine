@@ -12,7 +12,6 @@
 #include <string_view>
 #include <type_traits>
 
-inline std::once_flag SPD_LOG_ONCE_FLAG;
 /**
  * @brief Initializes the logging system.
  *
@@ -23,6 +22,7 @@ inline std::once_flag SPD_LOG_ONCE_FLAG;
 inline void
 startlog()
 {
+    static std::once_flag SPD_LOG_ONCE_FLAG;
 #ifndef LOG_OFF
     std::call_once(SPD_LOG_ONCE_FLAG, []() {
         std::filesystem::create_directories("logs");
