@@ -10,6 +10,10 @@ This project is a DJ/rhythm game engine written in C++. All sources live under `
 
 - 💻 **Discord**: [Official Discord](https://discord.gg/2Pwju7xhmS)
 
+## Prebuilt
+
+- **Godot Plugin** [Project_DJ_Godot](https://github.com/Rliop913/Project_DJ_Godot)
+
 ## Building
 
 Prerequisites:
