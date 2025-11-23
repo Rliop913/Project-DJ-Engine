@@ -12,7 +12,7 @@ This project is a DJ/rhythm game engine written in C++. All sources live under `
 
 ## Prebuilt
 
-- **Godot Plugin** [Project_DJ_Godot](https://github.com/Rliop913/Project_DJ_Godot)
+- **Godot Plugin**: [Project_DJ_Godot](https://github.com/Rliop913/Project_DJ_Godot)
 
 ## Building
 
