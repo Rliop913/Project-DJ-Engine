@@ -165,19 +165,19 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::MOUSE>(const PDJE_Input_Log &ilog)
             break;
         }
     }
-    if (init_datas->lambdas.custom_axis_parse &&
+    if (init_datas->lambdas.custom_mouse_parse &&
         (ilog.event.mouse.x != 0 || ilog.event.mouse.y != 0)) {
         rule.DeviceKey = DEVICE_MOUSE_EVENT::AXIS_MOVE;
         if (FindDevSetting(rule, Cached.setting)) {
             init_datas->note_objects->Get<BUFFER_SUB>(
                 Cached.use_range, Cached.setting.MatchRail, Cached.found_list);
-            init_datas->lambdas.custom_axis_parse(offset_applied -
-                                                      Cached.global_local_diff,
-                                                  Cached.found_list,
-                                                  Cached.setting.MatchRail,
-                                                  ilog.event.mouse.x,
-                                                  ilog.event.mouse.y,
-                                                  ilog.event.mouse.axis_type);
+            init_datas->lambdas.custom_mouse_parse(offset_applied -
+                                                       Cached.global_local_diff,
+                                                   Cached.found_list,
+                                                   Cached.setting.MatchRail,
+                                                   ilog.event.mouse.x,
+                                                   ilog.event.mouse.y,
+                                                   ilog.event.mouse.axis_type);
         }
     }
 }
