@@ -10,6 +10,7 @@ Program Listing for File render.cpp
 
 .. code-block:: cpp
 
+   #include "MusicJsonHelper.hpp"
    #include "editorObject.hpp"
    #include "fileNameSanitizer.hpp"
    #include "pdjeLinter.hpp"
@@ -27,20 +28,21 @@ Program Listing for File render.cpp
        }
    
        std::vector<musdata> mds;
-       for (auto &i : E_obj->musicHandle) {
-           if (i.musicName == "" || !fs::exists(i.dataPath)) {
+       for (auto &i : edit_core->musicHandle) {
+           if (GetTitle(*i.handle->GetJson()) == "" ||
+               !fs::exists(GetMusicABSLocation(*i.handle->GetJson()))) {
                continue;
            }
            mds.emplace_back();
    
-           auto rendered    = i.jsonh.render();
-           mds.back().title = i.musicName;
+           auto rendered = i.handle->GetJson()->render();
+   
+           mds.back().title = GetTitle(*i.handle->GetJson());
            auto rdout       = rendered->out();
            mds.back().bpmBinary.assign(rdout.begin(), rdout.end());
-           auto tempCOMPOSER = i.jsonh[PDJE_JSON_COMPOSER].get<SANITIZED>();
-           auto tempPATH     = i.jsonh[PDJE_JSON_PATH].get<SANITIZED>();
-           auto tempFIRST_BEAT =
-               i.jsonh[PDJE_JSON_FIRST_BEAT].get<DONT_SANITIZE>();
+           auto tempCOMPOSER   = GetComposer(*i.handle->GetJson());
+           auto tempPATH       = GetMusicABSLocation(*i.handle->GetJson());
+           auto tempFIRST_BEAT = GetFirstBeat(*i.handle->GetJson());
    
            mds.back().composer  = (tempCOMPOSER);
            mds.back().musicPath = (tempPATH);
@@ -53,10 +55,10 @@ Program Listing for File render.cpp
                        "render. ErrException: ");
                critlog(e.what());
                critlog("music name: ");
-               critlog(i.musicName);
+               critlog(mds.back().title);
                continue;
            }
-           titles[i.musicName] = "";
+           titles[mds.back().title] = "";
        }
    
        for (auto &i : titles) {
@@ -69,23 +71,23 @@ Program Listing for File render.cpp
                    if (mus->empty())
                        continue;
                    musdata fromRoot = mus->front();
-                   try {
-                       fromRoot.musicPath =
-                           fs::relative(
-                               fs::absolute(ROOTDB.getRoot().parent_path() /
-                                            fromRoot.musicPath),
-                               projectRoot)
-                               .string();
-                   } catch (std::exception &e) {
-                       critlog("failed to convert relative path. from "
-                               "editorObject render. ErrException: ");
-                       critlog(e.what());
-                       critlog("music path: ");
-                       critlog(fromRoot.musicPath);
-                       critlog("project root: ");
-                       critlog(projectRoot.generic_string());
-                       return false;
-                   }
+                   // try {
+                   //     fromRoot.musicPath =
+                   //         fs::relative(
+                   //             fs::absolute(ROOTDB.getRoot().parent_path() /
+                   //                          fromRoot.musicPath),
+                   //             projectRoot)
+                   //             .string();
+                   // } catch (std::exception &e) {
+                   //     critlog("failed to convert relative path. from "
+                   //             "editorObject render. ErrException: ");
+                   //     critlog(e.what());
+                   //     critlog("music path: ");
+                   //     critlog(fromRoot.musicPath);
+                   //     critlog("project root: ");
+                   //     critlog(projectRoot.generic_string());
+                   //     return false;
+                   // }
                    mds.push_back(fromRoot);
                }
            }

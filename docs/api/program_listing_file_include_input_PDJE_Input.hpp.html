@@ -86,16 +86,16 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Input_State.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MainProcess.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_DataLine.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_Device_Data.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;barrier&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;future&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;random&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MainProcess.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 
 <span class="cp">#ifdef WIN32</span>
 <span class="c1">// #include &quot;windows_input.hpp&quot;</span>
@@ -110,11 +110,14 @@
 <span class="w">  </span><span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">MainProcess</span><span class="o">&gt;</span><span class="w"> </span><span class="n">http_bridge</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">SharedMem</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">PDJE_ID</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_NAME</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">PDJE_IPC_RW</span><span class="o">&gt;</span><span class="w">       </span><span class="n">id_name</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">SharedMem</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">PDJE_ID</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_NAME</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">PDJE_IPC_RW</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="n">id_name</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">PDJE_Buffer_Arena</span><span class="o">&lt;</span><span class="n">PDJE_Input_Log</span><span class="o">&gt;</span><span class="w">            </span><span class="n">input_buffer</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_Buffer_Arena</span><span class="o">&lt;</span><span class="n">PDJE_Input_Log</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input_buffer</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">SharedMem</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">PDJE_IPC_RW</span><span class="o">&gt;</span><span class="w"> </span><span class="n">spinlock_run</span><span class="p">;</span><span class="c1">// 0 = stop, 1 = go, -1 = terminate</span>
+<span class="w">    </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">SharedMem</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">PDJE_IPC_RW</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="n">spinlock_run</span><span class="p">;</span><span class="w"> </span><span class="c1">// 0 = stop, 1 = go, -1 = terminate</span>
 
 <span class="w">    </span><span class="n">PDJE_INPUT_STATE</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEAD</span><span class="p">;</span>
 
@@ -143,8 +146,9 @@
 
 <span class="w">    </span><span class="n">PDJE_Input</span><span class="p">();</span>
 
-<span class="w">    </span><span class="o">~</span><span class="n">PDJE_Input</span><span class="p">(){</span>
-<span class="w">      </span><span class="n">Kill</span><span class="p">();</span>
+<span class="w">    </span><span class="o">~</span><span class="n">PDJE_Input</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Kill</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
 </pre></div>

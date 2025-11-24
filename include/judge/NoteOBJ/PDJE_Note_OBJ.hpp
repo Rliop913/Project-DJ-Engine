@@ -14,6 +14,7 @@ constexpr int BUFFER_SUB  = 1;
 
 using GLOBAL_TIME = uint64_t;
 using LOCAL_TIME  = uint64_t;
+/** @brief Judgable note metadata stored in buffers. */
 struct PDJE_API NOTE {
     std::string type;
     uint16_t    detail;
@@ -28,6 +29,7 @@ struct PDJE_API NOTE {
 using NOTE_VEC   = std::vector<NOTE>;
 using P_NOTE_VEC = std::vector<NOTE *>;
 
+/** @brief Iterator wrapper keeping note vector and current cursor. */
 struct PDJE_API NOTE_ITR {
     NOTE_VEC           vec;
     NOTE_VEC::iterator itr;
@@ -35,6 +37,7 @@ struct PDJE_API NOTE_ITR {
 
 using DEVID_TO_NOTE = std::unordered_map<uint64_t, NOTE_ITR>;
 
+/** @brief Note buffer manager used during initialization and playback. */
 class PDJE_API OBJ {
   private:
     DEVID_TO_NOTE Buffer_Main;
@@ -52,10 +55,12 @@ class PDJE_API OBJ {
     }
 
   public:
+    /** @brief Sort internal buffers and reset iterators. */
     void
     Sort(); // use only for init
 
     template <int I>
+    /** @brief Push note data into main or sub buffer. */
     void
     Fill(const NOTE &data, uint64_t rail_id)
     {
@@ -66,6 +71,7 @@ class PDJE_API OBJ {
     }
 
     template <int I>
+    /** @brief Get notes up to the given time limit for a rail. */
     void
     Get(const LOCAL_TIME limit, uint64_t railID, P_NOTE_VEC &found)
     {
@@ -102,6 +108,7 @@ class PDJE_API OBJ {
     }
 
     template <int I>
+    /** @brief Move expired notes into the provided cut buffer. */
     void
     Cut(const LOCAL_TIME limit, std::unordered_map<uint64_t, NOTE_VEC> &cuts)
     {

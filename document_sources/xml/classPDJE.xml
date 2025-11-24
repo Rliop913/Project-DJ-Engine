@@ -462,9 +462,176 @@ digraph PDJE_Interface_Tree{
           <edgelabel>editor</edgelabel>
         </childnode>
       </node>
+      <node id="17">
+        <label>PDJE_Editor</label>
+        <link refid="classPDJE__Editor"/>
+        <childnode refid="12" relation="usage">
+          <edgelabel>email</edgelabel>
+          <edgelabel>name</edgelabel>
+        </childnode>
+        <childnode refid="18" relation="usage">
+          <edgelabel>mixHandle</edgelabel>
+        </childnode>
+        <childnode refid="27" relation="usage">
+          <edgelabel>noteHandle</edgelabel>
+        </childnode>
+        <childnode refid="31" relation="usage">
+          <edgelabel>KVHandle</edgelabel>
+        </childnode>
+        <childnode refid="35" relation="usage">
+          <edgelabel>musicHandle</edgelabel>
+        </childnode>
+      </node>
+      <node id="36">
+        <label>PDJE_Editor::MusicHandleStruct</label>
+        <link refid="structPDJE__Editor_1_1MusicHandleStruct"/>
+        <childnode refid="37" relation="usage">
+          <edgelabel>handle</edgelabel>
+        </childnode>
+      </node>
       <node id="11">
         <label>PDJE_HIGHRES_CLOCK::CLOCK</label>
         <link refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK"/>
+      </node>
+      <node id="26">
+        <label>PDJE_JSONHandler&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__JSONHandler"/>
+      </node>
+      <node id="40">
+        <label>PDJE_JSONHandler&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__JSONHandler"/>
+      </node>
+      <node id="30">
+        <label>PDJE_JSONHandler&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__JSONHandler"/>
+      </node>
+      <node id="34">
+        <label>PDJE_JSONHandler&lt; KV_W &gt;</label>
+        <link refid="classPDJE__JSONHandler"/>
+      </node>
+      <node id="25">
+        <label>PDJE_TIMELINE::BranchLine</label>
+        <link refid="classPDJE__TIMELINE_1_1BranchLine"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+      </node>
+      <node id="24">
+        <label>PDJE_TIMELINE::EventMarker&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__TIMELINE_1_1EventMarker"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>checkedOut</edgelabel>
+        </childnode>
+        <childnode refid="25" relation="usage">
+          <edgelabel>line</edgelabel>
+        </childnode>
+        <childnode refid="26" relation="usage">
+          <edgelabel>file_handle</edgelabel>
+        </childnode>
+      </node>
+      <node id="39">
+        <label>PDJE_TIMELINE::EventMarker&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__TIMELINE_1_1EventMarker"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>checkedOut</edgelabel>
+        </childnode>
+        <childnode refid="25" relation="usage">
+          <edgelabel>line</edgelabel>
+        </childnode>
+        <childnode refid="40" relation="usage">
+          <edgelabel>file_handle</edgelabel>
+        </childnode>
+      </node>
+      <node id="29">
+        <label>PDJE_TIMELINE::EventMarker&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__TIMELINE_1_1EventMarker"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>checkedOut</edgelabel>
+        </childnode>
+        <childnode refid="25" relation="usage">
+          <edgelabel>line</edgelabel>
+        </childnode>
+        <childnode refid="30" relation="usage">
+          <edgelabel>file_handle</edgelabel>
+        </childnode>
+      </node>
+      <node id="33">
+        <label>PDJE_TIMELINE::EventMarker&lt; KV_W &gt;</label>
+        <link refid="classPDJE__TIMELINE_1_1EventMarker"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>checkedOut</edgelabel>
+        </childnode>
+        <childnode refid="25" relation="usage">
+          <edgelabel>line</edgelabel>
+        </childnode>
+        <childnode refid="34" relation="usage">
+          <edgelabel>file_handle</edgelabel>
+        </childnode>
+      </node>
+      <node id="21">
+        <label>PDJE_TIMELINE::GitData</label>
+        <link refid="structPDJE__TIMELINE_1_1GitData"/>
+        <childnode refid="22" relation="usage">
+          <edgelabel>log_tree</edgelabel>
+        </childnode>
+        <childnode refid="23" relation="usage">
+          <edgelabel>LIFO_log</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>target_file</edgelabel>
+        </childnode>
+      </node>
+      <node id="19">
+        <label>PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__TIMELINE_1_1TimeLine"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="24" relation="usage">
+          <edgelabel>mark</edgelabel>
+        </childnode>
+      </node>
+      <node id="38">
+        <label>PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__TIMELINE_1_1TimeLine"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="39" relation="usage">
+          <edgelabel>mark</edgelabel>
+        </childnode>
+      </node>
+      <node id="28">
+        <label>PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__TIMELINE_1_1TimeLine"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="29" relation="usage">
+          <edgelabel>mark</edgelabel>
+        </childnode>
+      </node>
+      <node id="32">
+        <label>PDJE_TIMELINE::TimeLine&lt; KV_W &gt;</label>
+        <link refid="classPDJE__TIMELINE_1_1TimeLine"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="33" relation="usage">
+          <edgelabel>mark</edgelabel>
+        </childnode>
       </node>
       <node id="8">
         <label>audioEngineDataStruct</label>
@@ -510,6 +677,9 @@ digraph PDJE_Interface_Tree{
       <node id="15">
         <label>editorObject</label>
         <link refid="classeditorObject"/>
+        <childnode refid="16" relation="usage">
+          <edgelabel>edit_core</edgelabel>
+        </childnode>
       </node>
       <node id="3">
         <label>litedb</label>
@@ -523,6 +693,12 @@ digraph PDJE_Interface_Tree{
       </node>
       <node id="13">
         <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="20">
+        <label>std::shared_ptr&lt; PDJE_TIMELINE::GitData &gt;</label>
+        <childnode refid="21" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
       </node>
       <node id="4">
         <label>std::shared_ptr&lt; audioPlayer &gt;</label>
@@ -545,6 +721,55 @@ digraph PDJE_Interface_Tree{
       <node id="12">
         <label>std::string</label>
         <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>std::unique_ptr&lt; PDJE_Editor &gt;</label>
+        <childnode refid="17" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="18">
+        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt; &gt;</label>
+        <childnode refid="19" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="37">
+        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt; &gt;</label>
+        <childnode refid="38" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="27">
+        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt; &gt;</label>
+        <childnode refid="28" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="31">
+        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; KV_W &gt; &gt;</label>
+        <childnode refid="32" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="22">
+        <label>std::unordered_map&lt; OID, BACK_OID &gt;</label>
+        <childnode refid="12" relation="usage">
+          <edgelabel>elements</edgelabel>
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="23">
+        <label>std::vector&lt; OID &gt;</label>
+        <childnode refid="12" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="35">
+        <label>std::vector&lt; PDJE_Editor::MusicHandleStruct &gt;</label>
+        <childnode refid="36" relation="usage">
+          <edgelabel>elements</edgelabel>
         </childnode>
       </node>
       <node id="7">

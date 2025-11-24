@@ -106,52 +106,72 @@ Directories
 .. toctree::
    :maxdepth: 5
 
-   dir_include_core_editor_featureWrapper.rst
+   dir_include_core_editor_DEPRECATE.rst
 
 .. toctree::
    :maxdepth: 5
 
-   dir_include_core_editor_featureWrapper_GitWrap.rst
+   dir_include_core_editor_DEPRECATE_GitWrap.rst
 
 .. toctree::
    :maxdepth: 5
 
-   dir_include_core_editor_featureWrapper_GitWrap_Add.rst
+   dir_include_core_editor_DEPRECATE_GitWrap_Add.rst
 
 .. toctree::
    :maxdepth: 5
 
-   dir_include_core_editor_featureWrapper_GitWrap_Blame.rst
+   dir_include_core_editor_DEPRECATE_GitWrap_Blame.rst
 
 .. toctree::
    :maxdepth: 5
 
-   dir_include_core_editor_featureWrapper_GitWrap_Branch.rst
+   dir_include_core_editor_DEPRECATE_GitWrap_Branch.rst
 
 .. toctree::
    :maxdepth: 5
 
-   dir_include_core_editor_featureWrapper_GitWrap_Commit.rst
+   dir_include_core_editor_DEPRECATE_GitWrap_Commit.rst
 
 .. toctree::
    :maxdepth: 5
 
-   dir_include_core_editor_featureWrapper_GitWrap_Diff.rst
+   dir_include_core_editor_DEPRECATE_GitWrap_Diff.rst
 
 .. toctree::
    :maxdepth: 5
 
-   dir_include_core_editor_featureWrapper_GitWrap_Log.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   dir_include_core_editor_featureWrapper_JSONWrap.rst
+   dir_include_core_editor_DEPRECATE_GitWrap_Log.rst
 
 .. toctree::
    :maxdepth: 5
 
    dir_include_core_editor_pdjeLinter.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_core_editor_TimeLine.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_core_editor_TimeLine_EventMarker.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_core_editor_TimeLine_GitDataPack.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_core_editor_TimeLine_JSONWrap.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_core_editor_TimeLine_LineVersion.rst
 
 .. toctree::
    :maxdepth: 5
@@ -182,6 +202,26 @@ Directories
    :maxdepth: 5
 
    dir_include_global.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_global_Crypto.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_global_Crypto_Linux.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_global_Crypto_Mac.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_global_Crypto_Windows.rst
 
 .. toctree::
    :maxdepth: 5
@@ -315,12 +355,12 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_Add_AddController.cpp.rst
+   file_include_core_editor_DEPRECATE_GitWrap_Add_AddController.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_Add_AddController.hpp.rst
+   file_include_core_editor_DEPRECATE_GitWrap_Add_AddController.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -375,12 +415,12 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_Blame_BlameController.cpp.rst
+   file_include_core_editor_DEPRECATE_GitWrap_Blame_BlameController.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_Blame_BlameController.hpp.rst
+   file_include_core_editor_DEPRECATE_GitWrap_Blame_BlameController.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -490,12 +530,12 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_Diff_DiffController.cpp.rst
+   file_include_core_editor_DEPRECATE_GitWrap_Diff_DiffController.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_Diff_DiffController.hpp.rst
+   file_include_core_editor_DEPRECATE_GitWrap_Diff_DiffController.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -525,27 +565,27 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_JSONWrap_EditorArgs.hpp.rst
+   file_include_core_editor_TimeLine_JSONWrap_EditorArgs.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_Branch_editorBranch.cpp.rst
+   file_include_core_editor_DEPRECATE_GitWrap_Branch_editorBranch.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_Branch_editorBranch.hpp.rst
+   file_include_core_editor_DEPRECATE_GitWrap_Branch_editorBranch.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_Commit_editorCommit.cpp.rst
+   file_include_core_editor_DEPRECATE_GitWrap_Commit_editorCommit.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_Commit_editorCommit.hpp.rst
+   file_include_core_editor_DEPRECATE_GitWrap_Commit_editorCommit.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -586,6 +626,16 @@ Files
    :maxdepth: 5
 
    file_include_tests_INPUT_TESTS_evdevtest.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_TimeLine_EventMarker_EventMarker.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_TimeLine_EventMarker_EventMarker.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -655,12 +705,22 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_Log_gitLog.cpp.rst
+   file_include_core_editor_TimeLine_GitDataPack_GitDatas.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_Log_gitLog.hpp.rst
+   file_include_core_editor_DEPRECATE_GitWrap_Log_gitLog.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_DEPRECATE_GitWrap_Log_gitLog.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_TimeLine_GitDataPack_GitRAII.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -670,12 +730,12 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_gitWrapper.cpp.rst
+   file_include_core_editor_DEPRECATE_GitWrap_gitWrapper.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_gitWrapper.hpp.rst
+   file_include_core_editor_DEPRECATE_GitWrap_gitWrapper.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -730,7 +790,7 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_JSONWrap_jsonWrapper.hpp.rst
+   file_include_core_editor_TimeLine_JSONWrap_jsonWrapper.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -745,7 +805,17 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_JSONWrap_KVJson.cpp.rst
+   file_include_core_editor_TimeLine_JSONWrap_KVJson.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_TimeLine_LineVersion_LineVersion.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_TimeLine_LineVersion_LineVersion.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -835,7 +905,7 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_JSONWrap_MixJson.cpp.rst
+   file_include_core_editor_TimeLine_JSONWrap_MixJson.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -905,7 +975,12 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_JSONWrap_MusicJson.cpp.rst
+   file_include_core_editor_TimeLine_JSONWrap_MusicJson.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_TimeLine_JSONWrap_MusicJsonHelper.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -920,7 +995,7 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_JSONWrap_NoteJson.cpp.rst
+   file_include_core_editor_TimeLine_JSONWrap_NoteJson.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -985,12 +1060,32 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_global_Crypto_PDJE_Crypto.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_Crypto_PDJE_Crypto_AEAD.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_Crypto_PDJE_Crypto_Hash.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_Crypto_PDJE_Crypto_Token.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_global_PDJE_EXPORT_SETTER.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_featureWrapper_GitWrap_PDJE_GitHandler.cpp.rst
+   file_include_core_editor_DEPRECATE_GitWrap_PDJE_GitHandler.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1065,12 +1160,22 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_judge_Init_PDJE_Judge_Init_Structs.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_judge_Loop_PDJE_Judge_Loop.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
    file_include_judge_Loop_PDJE_Judge_Loop.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_judge_Loop_PDJE_Judge_Loop_Structs.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1126,6 +1231,26 @@ Files
    :maxdepth: 5
 
    file_include_core_audioRender_ManualMix_ManualFausts_phaserMan.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_Crypto_Linux_PSKPipe.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_Crypto_Mac_PSKPipe.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_Crypto_Windows_PSKPipe.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_Crypto_PSKPipe.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1211,6 +1336,16 @@ Files
    :maxdepth: 5
 
    file_include_core_MainObjects_tempDBObject_tempDB.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_TimeLine_TimeLine.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_TimeLine_TimeLine.hpp.rst
 
 .. toctree::
    :maxdepth: 5

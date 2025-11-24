@@ -15,6 +15,7 @@ Directory global
 Subdirectories
 --------------
 
+- :ref:`dir_include_global_Crypto`
 - :ref:`dir_include_global_DataLines`
 - :ref:`dir_include_global_Highres_Clock`
 

@@ -32,9 +32,15 @@ Includes
 
 - ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
 
+- ``editor.hpp`` (:ref:`file_include_core_editor_editor.hpp`)
+
 - ``editorObject.hpp`` (:ref:`file_include_core_MainObjects_editorObject_editorObject.hpp`)
 
+- ``exception``
+
 - ``fileNameSanitizer.hpp`` (:ref:`file_include_global_DataLines_fileNameSanitizer.hpp`)
+
+- ``memory`` (:ref:`file_include_input_IPC_memory_ipc_shared_memory.hpp`)
 
 - ``tempDB.hpp`` (:ref:`file_include_core_MainObjects_tempDBObject_tempDB.hpp`)
 

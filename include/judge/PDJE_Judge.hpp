@@ -11,6 +11,7 @@
 #include <unordered_map>
 #include <vector>
 namespace PDJE_JUDGE {
+/** @brief Judge runtime status codes. */
 enum JUDGE_STATUS {
     OK                   = 0,
     CORE_LINE_IS_MISSING = 1,
@@ -20,6 +21,7 @@ enum JUDGE_STATUS {
     NOTE_OBJECT_IS_MISSING,
 };
 
+/** @brief Judge controller that owns initialization data and the event loop. */
 class PDJE_API JUDGE {
   private: // cached values
     std::optional<Judge_Loop> loop_obj;
@@ -28,16 +30,16 @@ class PDJE_API JUDGE {
     // thread relates
     std::optional<std::thread> loop;
 
-    JUDGE_STATUS status = JUDGE_STATUS::OK;
-
   public:
     Judge_Init inits;
+    /** @brief Validate init data and start the judge event loop thread. */
     JUDGE_STATUS
     Start();
+    /** @brief Stop the event loop and release cached init data. */
     void
     End();
-    JUDGE_STATUS
-    CheckStatus();
+
+    /** @brief Create a judge instance and initialize logging. */
     JUDGE();
     ~JUDGE() = default;
 };

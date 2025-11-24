@@ -11,8 +11,10 @@
 #include <unordered_map>
 namespace PDJE_JUDGE {
 
+/** @brief Judge module initializer holding data lines, rules, and notes. */
 class PDJE_API Judge_Init {
   private:
+    /** @brief Push a note into main/sub buffers when axis range is provided. */
     void
     DefaultFill(NOTE            &obj,
                 const uint64_t   railid,
@@ -31,14 +33,18 @@ class PDJE_API Judge_Init {
     std::optional<EVENT_RULE>                     ev_rule;
     std::unordered_map<INPUT_RULE, INPUT_SETTING> dev_rules;
 
+    /** @brief Register an input device rule and its target rail/offset. */
     void
     SetInputRule(const INPUT_CONFIG &device_config);
+    /** @brief Set judgment window configuration. */
     void
     SetEventRule(const EVENT_RULE &event_rule);
 
+    /** @brief Set optional callbacks for miss/use and mouse parsing. */
     void
     SetCustomEvents(const Custom_Events &events);
 
+    /** @brief Collect note metadata and place it on the matching rail. */
     void
     NoteObjectCollector(const std::string        noteType,
                         const uint16_t           noteDetail,
@@ -49,8 +55,10 @@ class PDJE_API Judge_Init {
                         const unsigned long long Y_Axis_2,
                         const uint64_t           railID);
 
+    /** @brief Attach the core data line from PDJE core engine. */
     void
     SetCoreLine(const PDJE_CORE_DATA_LINE &coreline);
+    /** @brief Attach the input data line from input engine. */
     void
     SetInputLine(const PDJE_INPUT_DATA_LINE &inputline);
 };

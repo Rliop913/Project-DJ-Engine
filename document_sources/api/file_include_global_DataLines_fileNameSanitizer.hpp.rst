@@ -67,17 +67,19 @@ Included By
 
 - :ref:`file_include_core_db_trackDB.hpp`
 
+- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Diff_DiffController.hpp`
+
+- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Log_gitLog.hpp`
+
+- :ref:`file_include_core_editor_DEPRECATE_GitWrap_gitWrapper.hpp`
+
+- :ref:`file_include_core_editor_TimeLine_JSONWrap_EditorArgs.hpp`
+
+- :ref:`file_include_core_editor_TimeLine_JSONWrap_jsonWrapper.hpp`
+
+- :ref:`file_include_core_editor_editor.cpp`
+
 - :ref:`file_include_core_editor_editor.hpp`
-
-- :ref:`file_include_core_editor_featureWrapper_GitWrap_Diff_DiffController.hpp`
-
-- :ref:`file_include_core_editor_featureWrapper_GitWrap_Log_gitLog.hpp`
-
-- :ref:`file_include_core_editor_featureWrapper_GitWrap_gitWrapper.hpp`
-
-- :ref:`file_include_core_editor_featureWrapper_JSONWrap_EditorArgs.hpp`
-
-- :ref:`file_include_core_editor_featureWrapper_JSONWrap_jsonWrapper.hpp`
 
 - :ref:`file_include_core_editor_pdjeLinter_trackLinter.cpp`
 

@@ -65,42 +65,43 @@ Program Listing for File pdjeInputTest.cpp
    
        pip.Config(set_targets);
        // pip.NEXT();
-       
+   
        auto dline = pip.PullOutDataLine();
-       pip.Run();//todo - impl process terminator
+       pip.Run(); // todo - impl process terminator
        // pip.NEXT();
        int         times = 100;
        std::thread watcher([&]() {
            while (true) {
-               try{
+               try {
    
                    auto got = dline.input_arena->Get();
                    for (uint64_t idx = 0; idx < got.second; ++idx)
-                   
+   
                    {
-                           
-                       std::cout << "time: " << got.first[idx].microSecond << std::endl;
+   
+                       std::cout << "time: " << got.first[idx].microSecond
+                                 << std::endl;
                        std::cout << "id: " << got.first[idx].id << std::endl;
                        std::cout << "name: " << got.first[idx].name << std::endl;
-                       
+   
                        if (got.first[idx].type == PDJE_Dev_Type::KEYBOARD) {
-                           
+   
                            std::cout
-                           << "keyNumber: "
-                           << static_cast<int>(got.first[idx].event.keyboard.k)
-                           << std::endl;
+                               << "keyNumber: "
+                               << static_cast<int>(got.first[idx].event.keyboard.k)
+                               << std::endl;
                            std::cout << "pressed"
-                           << got.first[idx].event.keyboard.pressed
-                           << std::endl;
+                                     << got.first[idx].event.keyboard.pressed
+                                     << std::endl;
                        }
-                       
+   
                        times--;
                        if (times < 0) {
                            return;
                        }
                        // }
                    }
-               } catch(const std::exception& e){
+               } catch (const std::exception &e) {
                    std::cout << e.what() << std::endl;
                }
            }

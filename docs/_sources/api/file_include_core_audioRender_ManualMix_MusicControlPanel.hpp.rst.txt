@@ -58,6 +58,8 @@ Included By
 
 - :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.cpp`
 
+- :ref:`file_include_core_editor_editor.hpp`
+
 
 
 

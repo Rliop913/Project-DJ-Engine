@@ -112,8 +112,14 @@
 <span class="w">    </span><span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">INPUT_RULE</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">INPUT_CONFIG</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">INPUT_RULE</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">MatchRail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">INPUT_SETTING</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">MatchRail</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int64_t</span><span class="w">  </span><span class="n">offset_microsecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">INPUT_CONFIG</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">INPUT_RULE</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT_SETTING</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// uint64_t MatchRail          = 0;</span>
+<span class="w">    </span><span class="c1">// int64_t  offset_microsecond = 0;</span>
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">EVENT_RULE</span><span class="w"> </span><span class="p">{</span>

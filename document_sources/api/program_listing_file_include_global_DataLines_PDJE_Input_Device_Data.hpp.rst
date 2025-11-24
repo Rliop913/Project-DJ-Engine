@@ -23,4 +23,4 @@ Program Listing for File PDJE_Input_Device_Data.hpp
        std::string   Name;
        std::string   device_specific_id;
    };
-   using DEV_LIST             = std::vector<DeviceData>;
+   using DEV_LIST = std::vector<DeviceData>;

@@ -34,6 +34,19 @@ Program Listing for File trackLinter.cpp
        }
    }
    
+   void
+   FillIdHasUnLoad(ID_LOADED      &accumulate_data,
+                 const TypeEnum &type,
+                 const int32_t  &id)
+   {
+       if (!accumulate_data.contains(id)) {
+           accumulate_data[id] = 0;
+       }
+   
+       if (type == TypeEnum::UNLOAD) {
+           accumulate_data[id] += 1;
+       }
+   }
    bool
    CheckIDHasLoad(const ID_LOADED &acc_data, UNSANITIZED &msg)
    {
@@ -43,12 +56,29 @@ Program Listing for File trackLinter.cpp
                FLAG_OK = false;
                msg += " ID " + std::to_string(id.first) + " has " +
                       (id.second > 1
-                           ? (std::to_string(id.second) + " load command.\n")
-                           : "no load command.\n");
+                           ? (std::to_string(id.second) + " load command. render failed.\n")
+                           : "no load command. render failed.\n");
            }
        }
        return FLAG_OK;
    }
+   
+   bool
+   CheckIDHasUnLoad(const ID_LOADED &acc_data, UNSANITIZED &msg)
+   {
+       bool FLAG_OK = true;
+       for (const auto &id : acc_data) {
+           if (id.second != 1) {
+               FLAG_OK = false;
+               msg += " ID " + std::to_string(id.first) + " has " +
+                      (id.second > 1
+                           ? (std::to_string(id.second) + " unload command. render failed.\n")
+                           : "no unload command. render failed.\n");
+           }
+       }
+       return FLAG_OK;
+   }
+   
    
    template <>
    bool
@@ -62,12 +92,16 @@ Program Listing for File trackLinter.cpp
        auto td = trackReader.Rp->getDatas();
    
        ID_LOADED id_has_load;
-   
+       ID_LOADED id_has_unload;
        for (size_t i = 0; i < td.size(); ++i) {
            FillIdHasLoad(id_has_load, td[i].getType(), td[i].getId());
+           FillIdHasUnLoad(id_has_unload, td[i].getType(), td[i].getId());
        }
        bool FLAG_RESULT = true;
        if (!CheckIDHasLoad(id_has_load, lint_msg)) {
+           FLAG_RESULT = false;
+       }
+       if (!CheckIDHasUnLoad(id_has_unload, lint_msg)) {
            FLAG_RESULT = false;
        }
    

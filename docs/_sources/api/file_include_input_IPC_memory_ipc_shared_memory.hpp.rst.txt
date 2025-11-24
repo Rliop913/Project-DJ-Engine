@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``PDJE_Crypto.hpp`` (:ref:`file_include_global_Crypto_PDJE_Crypto.hpp`)
+
 - ``PDJE_INPUT_PROCESS_HASH.hpp`` (:ref:`file_include_input_IPC_common_PDJE_INPUT_PROCESS_HASH.hpp`)
 
 - ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
@@ -47,8 +49,6 @@ Includes
 - ``ios``
 
 - ``limits``
-
-- ``picosha2.h``
 
 - ``string``
 

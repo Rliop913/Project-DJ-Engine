@@ -3,7 +3,7 @@
 Struct commitList
 =================
 
-- Defined in :ref:`file_include_core_editor_featureWrapper_GitWrap_Commit_editorCommit.hpp`
+- Defined in :ref:`file_include_core_editor_DEPRECATE_GitWrap_Commit_editorCommit.hpp`
 
 
 Struct Documentation

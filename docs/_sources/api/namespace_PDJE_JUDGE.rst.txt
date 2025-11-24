@@ -19,21 +19,27 @@ Classes
 
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1Custom__Events`
 
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1EV__Thread`
+
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1EVENT__RULE`
 
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1INPUT__CONFIG`
 
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1INPUT__RULE`
 
-- :ref:`exhale_struct_structPDJE__JUDGE_1_1Judge__Loop_1_1mouse__btn__event`
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1INPUT__SETTING`
 
-- :ref:`exhale_struct_structPDJE__JUDGE_1_1Judge__Loop_1_1Queues`
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1LoopCached`
 
-- :ref:`exhale_struct_structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas`
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1mouse__btn__event`
 
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1NOTE`
 
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1NOTE__ITR`
+
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1Queues`
+
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1useDatas`
 
 - :ref:`exhale_class_classPDJE__JUDGE_1_1JUDGE`
 
@@ -80,7 +86,7 @@ Typedefs
 
 - :ref:`exhale_typedef_namespacePDJE__JUDGE_1a74a76cb2add5051c233d27fbedba793c`
 
-- :ref:`exhale_typedef_namespacePDJE__JUDGE_1a23d1bbaefe85c70073b4779f17d63f3d`
+- :ref:`exhale_typedef_namespacePDJE__JUDGE_1a4206034d0b6d310b3a8362e649936afc`
 
 - :ref:`exhale_typedef_namespacePDJE__JUDGE_1ad8c8d340702b0759a8cecb53091de1e0`
 

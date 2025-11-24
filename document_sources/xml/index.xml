@@ -7,6 +7,17 @@
     <member refid="classAddController_1a61d0cd2aa3c41c0a2d7f073a9a0ae432" kind="function"><name>addFile</name></member>
     <member refid="classAddController_1ab3a27cb095f2a7e7789a9d33bc2d503c" kind="function"><name>~AddController</name></member>
   </compound>
+  <compound refid="classPDJE__CRYPTO_1_1AEAD" kind="class"><name>PDJE_CRYPTO::AEAD</name>
+    <member refid="classPDJE__CRYPTO_1_1AEAD_1ae880884a0fa838dd397c1431024cd226" kind="variable"><name>rng</name></member>
+    <member refid="classPDJE__CRYPTO_1_1AEAD_1a1cb6444131c304a91c7250d67f4a753a" kind="variable"><name>enc</name></member>
+    <member refid="classPDJE__CRYPTO_1_1AEAD_1ad884482bcb38332623843d9110c9e94d" kind="variable"><name>dec</name></member>
+    <member refid="classPDJE__CRYPTO_1_1AEAD_1a5d7f75c9e3e3e753f012afc393af6a05" kind="function"><name>Encrypt</name></member>
+    <member refid="classPDJE__CRYPTO_1_1AEAD_1a39a00c68471c2369b72243bbbb1578c3" kind="function"><name>Decrypt</name></member>
+    <member refid="classPDJE__CRYPTO_1_1AEAD_1aee81b604f92d9d866513ad3c7f50fb3a" kind="function"><name>EncryptAndPack</name></member>
+    <member refid="classPDJE__CRYPTO_1_1AEAD_1ad3dcd28481b557ed5f54f3c3831a603c" kind="function"><name>UnpackAndDecrypt</name></member>
+    <member refid="classPDJE__CRYPTO_1_1AEAD_1a9c3d211a2eae4ca36a573ae176131008" kind="function"><name>AEAD</name></member>
+    <member refid="classPDJE__CRYPTO_1_1AEAD_1aed3cebf9785d099c88c126056c8bb238" kind="function"><name>~AEAD</name></member>
+  </compound>
   <compound refid="classARGSETTER__WRAPPER" kind="class"><name>ARGSETTER_WRAPPER</name>
     <member refid="classARGSETTER__WRAPPER_1a51afaa896b7ad18dcc190c7d2ff045fc" kind="variable"><name>fxp</name></member>
     <member refid="classARGSETTER__WRAPPER_1acbfdc8fcef6b0d647b74b8473811eb8f" kind="function"><name>ARGSETTER_WRAPPER</name></member>
@@ -121,7 +132,6 @@
   <compound refid="classgitwrap_1_1branch" kind="class"><name>gitwrap::branch</name>
     <member refid="classgitwrap_1_1branch_1ac5d4fc73cb2f76b3bc1646454840aa95" kind="variable"><name>repo_pointer</name></member>
     <member refid="classgitwrap_1_1branch_1a0c8c937a6057d4d638e4dac6e3482265" kind="variable"><name>checkoutOpts</name></member>
-    <member refid="classgitwrap_1_1branch_1a059d40014bd9076186a2450c8792790a" kind="variable"><name>branchName</name></member>
     <member refid="classgitwrap_1_1branch_1a93b2d69e629d19540344910277a643c3" kind="variable"><name>FLAG_TEMP_CHECKOUT</name></member>
     <member refid="classgitwrap_1_1branch_1adf3f8cc3764e9600e78b738fa59e841e" kind="function"><name>ToBranchRefName</name></member>
     <member refid="classgitwrap_1_1branch_1ae0d093973cfdaa5791802c46d3a9309b" kind="function"><name>ShowExistBranch</name></member>
@@ -133,11 +143,15 @@
     <member refid="classgitwrap_1_1branch_1a544e4ab210cea6436eb8238b70946fdb" kind="function"><name>CheckoutThisHEAD</name></member>
     <member refid="classgitwrap_1_1branch_1ab313aded5d74b26e3d6f4ccee8c36710" kind="function"><name>CheckoutCommitTemp</name></member>
     <member refid="classgitwrap_1_1branch_1a5df6117c678de498f588cdbb07473cf7" kind="function"><name>GetHEAD</name></member>
-    <member refid="classgitwrap_1_1branch_1a18bc053bbb36db18ab0c9d1080c9f43c" kind="function"><name>MergeToBranch</name></member>
     <member refid="classgitwrap_1_1branch_1ac3e5b561ef236b207fad3c4788fc7b89" kind="function"><name>branch</name></member>
     <member refid="classgitwrap_1_1branch_1a68fbfd72e7aa5aa101e6c8c9822f370a" kind="function"><name>~branch</name></member>
     <member refid="classgitwrap_1_1branch_1a9edf474f1e04ba4830b6d7ace83fc654" kind="function"><name>ToBranchRefName</name></member>
     <member refid="classgitwrap_1_1branch_1acae49b5f6758173db14821aad1b9bb71" kind="function"><name>ToBranchRefName</name></member>
+  </compound>
+  <compound refid="classGIT__RAII_1_1branch__itr" kind="class"><name>GIT_RAII::branch_itr</name>
+    <member refid="classGIT__RAII_1_1branch__itr_1a0648c1a64d45d769ce278fe6795f0cc7" kind="variable"><name>p</name></member>
+    <member refid="classGIT__RAII_1_1branch__itr_1ae72994678c52f760abf352c06948bd89" kind="function"><name>branch_itr</name></member>
+    <member refid="classGIT__RAII_1_1branch__itr_1a79835e07621ebb8078898e4e2bb4e2b6" kind="function"><name>~branch_itr</name></member>
   </compound>
   <compound refid="structgitwrap_1_1BranchHead" kind="struct"><name>gitwrap::BranchHead</name>
     <member refid="structgitwrap_1_1BranchHead_1a86d4e85c43b6df3ad504cc19620f2e93" kind="variable"><name>BranchName</name></member>
@@ -146,6 +160,18 @@
   <compound refid="structBranchJSON" kind="struct"><name>BranchJSON</name>
     <member refid="structBranchJSON_1ac90cb2ad46990261c20d420ff4e783d4" kind="variable"><name>branchname</name></member>
     <member refid="structBranchJSON_1a2bcabfef8b289a1c54950c1f2d926b55" kind="variable"><name>oid</name></member>
+  </compound>
+  <compound refid="classPDJE__TIMELINE_1_1BranchLine" kind="class"><name>PDJE_TIMELINE::BranchLine</name>
+    <member refid="classPDJE__TIMELINE_1_1BranchLine_1ad9e4ce44f049d42992e97d8488628d39" kind="variable"><name>git</name></member>
+    <member refid="classPDJE__TIMELINE_1_1BranchLine_1af35698a901768a56e7173f4dc52d1adb" kind="function"><name>GetHead</name></member>
+    <member refid="classPDJE__TIMELINE_1_1BranchLine_1a93af556ea6b5ad2d61928c16129e296a" kind="function"><name>CheckUnborn</name></member>
+    <member refid="classPDJE__TIMELINE_1_1BranchLine_1acc2341d4780de8c5ef5256b660e903c6" kind="function"><name>Born</name></member>
+    <member refid="classPDJE__TIMELINE_1_1BranchLine_1a3a1a5e940e44d174351fed7532238f58" kind="function"><name>IsDetached</name></member>
+    <member refid="classPDJE__TIMELINE_1_1BranchLine_1a80af521225f2ad9d4c12d8abfad5fc5a" kind="function"><name>Diverge</name></member>
+    <member refid="classPDJE__TIMELINE_1_1BranchLine_1a968698d2d4480c41238826763d653609" kind="function"><name>AppendToHead</name></member>
+    <member refid="classPDJE__TIMELINE_1_1BranchLine_1a78dbfdf1ff3f043551963602fc2e0787" kind="function"><name>ListLines</name></member>
+    <member refid="classPDJE__TIMELINE_1_1BranchLine_1a16202ed844bbb6621c13555b1f671394" kind="function"><name>BranchLine</name></member>
+    <member refid="classPDJE__TIMELINE_1_1BranchLine_1a1ce4a95437541904468ba144adcb4f58" kind="function"><name>~BranchLine</name></member>
   </compound>
   <compound refid="classCapReader" kind="class"><name>CapReader</name>
     <member refid="classCapReader_1ab1d4c5ef09fe853b850b0c0ab8e1def9" kind="variable"><name>Origin</name></member>
@@ -166,6 +192,7 @@
     <member refid="classCapWriter_1ac4a894288306c7e0d6afc75fba103f3c" kind="function"><name>out</name></member>
   </compound>
   <compound refid="classPDJE__IPC_1_1ChildProcess" kind="class"><name>PDJE_IPC::ChildProcess</name>
+    <member refid="classPDJE__IPC_1_1ChildProcess_1a6339e85badac77db38f70a01b94f4e25" kind="variable"><name>aead</name></member>
     <member refid="classPDJE__IPC_1_1ChildProcess_1af67855514dc8ca516ed47feb978b00fe" kind="variable"><name>callables</name></member>
     <member refid="classPDJE__IPC_1_1ChildProcess_1ae433a4c4dbd599c890fc2c67b06eac3c" kind="variable"><name>server</name></member>
     <member refid="classPDJE__IPC_1_1ChildProcess_1a960afc9f9aaa3935e4f9d0033f308638" kind="variable"><name>id_name</name></member>
@@ -178,7 +205,7 @@
     <member refid="classPDJE__IPC_1_1ChildProcess_1a38faf210d4b2c2798b91254275e2d1bb" kind="function"><name>EndTransmission</name></member>
     <member refid="classPDJE__IPC_1_1ChildProcess_1afe9b0f30368a296df243c2d2ce57dfa2" kind="function"><name>RecvIPCSharedMem</name></member>
     <member refid="classPDJE__IPC_1_1ChildProcess_1adfd56f3914cbddc381f6dc3d98fe0553" kind="function"><name>ListDev</name></member>
-    <member refid="classPDJE__IPC_1_1ChildProcess_1a70dcc361fd40d69c36b539dca174b376" kind="function"><name>ChildProcess</name></member>
+    <member refid="classPDJE__IPC_1_1ChildProcess_1aeb42f8e2e9a32d35abec8ac5359a70d4" kind="function"><name>ChildProcess</name></member>
     <member refid="classPDJE__IPC_1_1ChildProcess_1a5cea39de39ff116294c543cefc169488" kind="function"><name>RunServer</name></member>
     <member refid="classPDJE__IPC_1_1ChildProcess_1a5d7ed4a541784f3b0ec8a214b7b22494" kind="function"><name>Init</name></member>
     <member refid="classPDJE__IPC_1_1ChildProcess_1ac998742bac92e33b0f7f3fe42df868c2" kind="function"><name>LoopTrig</name></member>
@@ -191,6 +218,12 @@
     <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1a3ce5e2cecb9d9fd5c1f4be217213d0cd" kind="function"><name>~CLOCK</name></member>
     <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1ae3ea2350d7de5834d668a0ef3e1502e8" kind="function"><name>Get_MicroSecond</name></member>
     <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1ae3ea2350d7de5834d668a0ef3e1502e8" kind="function"><name>Get_MicroSecond</name></member>
+  </compound>
+  <compound refid="classGIT__RAII_1_1commit" kind="class"><name>GIT_RAII::commit</name>
+    <member refid="classGIT__RAII_1_1commit_1a1ac8476e97757d04bb0daddefbca9757" kind="variable"><name>o</name></member>
+    <member refid="classGIT__RAII_1_1commit_1af186ad44340fa09ba5ca717e10c9c42e" kind="variable"><name>p</name></member>
+    <member refid="classGIT__RAII_1_1commit_1a2fc511c1085d95072e7cc22c520b6c07" kind="function"><name>commit</name></member>
+    <member refid="classGIT__RAII_1_1commit_1a1e3a5464de0696a5d7a4b2a3ccd112a1" kind="function"><name>~commit</name></member>
   </compound>
   <compound refid="structgitwrap_1_1commit" kind="struct"><name>gitwrap::commit</name>
     <member refid="structgitwrap_1_1commit_1aed795b54d06cb41d5293e800ab7c06df" kind="variable"><name>commitPointer</name></member>
@@ -227,7 +260,7 @@
   <compound refid="structPDJE__JUDGE_1_1Custom__Events" kind="struct"><name>PDJE_JUDGE::Custom_Events</name>
     <member refid="structPDJE__JUDGE_1_1Custom__Events_1a4db6c99f75571e359c688f36f7e01961" kind="variable"><name>missed_event</name></member>
     <member refid="structPDJE__JUDGE_1_1Custom__Events_1ac9fead0d0e799aad95fb3825d69f7bab" kind="variable"><name>used_event</name></member>
-    <member refid="structPDJE__JUDGE_1_1Custom__Events_1aee092b68259fb8a8a59117d46b362376" kind="variable"><name>custom_axis_parse</name></member>
+    <member refid="structPDJE__JUDGE_1_1Custom__Events_1ace156a9638438cad6dd4cef1c06dc61d" kind="variable"><name>custom_mouse_parse</name></member>
     <member refid="structPDJE__JUDGE_1_1Custom__Events_1abc300e047e2427cc143e494c0098fa59" kind="variable"><name>use_event_sleep_time</name></member>
     <member refid="structPDJE__JUDGE_1_1Custom__Events_1ae2d2669b98b039c5d8bf2d4ec354f0b6" kind="variable"><name>miss_event_sleep_time</name></member>
   </compound>
@@ -289,26 +322,8 @@
   <compound refid="classeditorObject" kind="class"><name>editorObject</name>
     <member refid="classeditorObject_1afe3027bfdc86cf213b3d44191e4ce4e7" kind="variable"><name>projectLocalDB</name></member>
     <member refid="classeditorObject_1a9409f6aef52b2cb8a361674da49b97e1" kind="variable"><name>projectRoot</name></member>
-    <member refid="classeditorObject_1a3172e809911096988531fc5228f7055e" kind="variable"><name>mixFilePath</name></member>
-    <member refid="classeditorObject_1abeaedacd9b6d9e2fb61772aa348431b1" kind="variable"><name>noteFilePath</name></member>
-    <member refid="classeditorObject_1a1a72aaa0a758b9c32f2bcd603a607f3c" kind="variable"><name>kvFilePath</name></member>
-    <member refid="classeditorObject_1a76050465d4780555d62af1f9faee05e7" kind="variable"><name>musicFileRootPath</name></member>
-    <member refid="classeditorObject_1a23655580a822a7ae6c96ece123f0574d" kind="variable"><name>E_obj</name></member>
-    <member refid="classeditorObject_1a70ea370646618a4ac7bd3d3ef50abc7d" kind="function"><name>DefaultSaveFunction</name></member>
-    <member refid="classeditorObject_1aad816e22a3a63d00cb319bf4d985d950" kind="function"><name>DefaultSaveFunction</name></member>
+    <member refid="classeditorObject_1aca8ec314359534bb4739dea7059b85c1" kind="variable"><name>edit_core</name></member>
     <member refid="classeditorObject_1a3bb22fbeed9a7e1516f3ab6461698f0b" kind="function"><name>makeTrackData</name></member>
-    <member refid="classeditorObject_1afdb9406f4e2aae843f1de7921be5f796" kind="function"><name>DefaultSaveFunction</name></member>
-    <member refid="classeditorObject_1afdb9406f4e2aae843f1de7921be5f796" kind="function"><name>DefaultSaveFunction</name></member>
-    <member refid="classeditorObject_1afdb9406f4e2aae843f1de7921be5f796" kind="function"><name>DefaultSaveFunction</name></member>
-    <member refid="classeditorObject_1a785b7a8cdc22a9c424f5f79b6b031e88" kind="function"><name>DefaultSaveFunction</name></member>
-    <member refid="classeditorObject_1afdb9406f4e2aae843f1de7921be5f796" kind="function"><name>DefaultSaveFunction</name></member>
-    <member refid="classeditorObject_1afdb9406f4e2aae843f1de7921be5f796" kind="function"><name>DefaultSaveFunction</name></member>
-    <member refid="classeditorObject_1afdb9406f4e2aae843f1de7921be5f796" kind="function"><name>DefaultSaveFunction</name></member>
-    <member refid="classeditorObject_1a785b7a8cdc22a9c424f5f79b6b031e88" kind="function"><name>DefaultSaveFunction</name></member>
-    <member refid="classeditorObject_1ae5300f1a0b6d39b6fb1e6c79d2bcc91d" kind="function"><name>getMixRepo</name></member>
-    <member refid="classeditorObject_1ad4983a3abef2c8acadc325f26a6128d6" kind="function"><name>getMusicRepo</name></member>
-    <member refid="classeditorObject_1a3bd541d0ff2a00541fad343c31742c71" kind="function"><name>getNoteRepo</name></member>
-    <member refid="classeditorObject_1a7276d008fdf2ce71165d9f8f8332317d" kind="function"><name>getKVRepo</name></member>
     <member refid="classeditorObject_1a77eaf52d8c470aadb9af3f3140e6beee" kind="function"><name>AddLine</name></member>
     <member refid="classeditorObject_1a9162179d7a90217496e990ed631a79e7" kind="function"><name>AddLine</name></member>
     <member refid="classeditorObject_1acec5f49ab4cc77cd842d4eaf1a25ff87" kind="function"><name>deleteLine</name></member>
@@ -322,18 +337,15 @@
     <member refid="classeditorObject_1a70a6c28f2ad7b19ff50427f14378291a" kind="function"><name>Undo</name></member>
     <member refid="classeditorObject_1ae24df06774592614acbfb17701f4e2e1" kind="function"><name>Redo</name></member>
     <member refid="classeditorObject_1a2987ce88cb1d9a435871f80398a76e63" kind="function"><name>Redo</name></member>
-    <member refid="classeditorObject_1ad9b0dfe188373cfe8b0605cfcbba2093" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1a84559e84b00ecd409b49a320e822a971" kind="function"><name>Go</name></member>
     <member refid="classeditorObject_1a360e0000f965db643a0127f7240a425a" kind="function"><name>GetLogWithJSONGraph</name></member>
     <member refid="classeditorObject_1a994b27da4e10c21758c374d77b638cad" kind="function"><name>GetLogWithJSONGraph</name></member>
-    <member refid="classeditorObject_1af72d99c3cb239afe1f633ad592327ae7" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a551a8f7e02b6d1723a8699af450daa79" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a28dc3aa435512e4ad16ad0f821c64907" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditorObject_1a9ec91b5c9aec96545b0b129146b09efd" kind="function"><name>UpdateLog</name></member>
     <member refid="classeditorObject_1aa664471474287d500e65d09f08f61001" kind="function"><name>operator[]</name></member>
     <member refid="classeditorObject_1a9e14b13d0a93115510856587e3d0b597" kind="function"><name>DESTROY_PROJECT</name></member>
     <member refid="classeditorObject_1a3ec9d3ccf73457ee3067cd3f47ac23c1" kind="function"><name>ConfigNewMusic</name></member>
-    <member refid="classeditorObject_1adb7115154add6c06baf9c4e090977d24" kind="function"><name>Open</name></member>
-    <member refid="classeditorObject_1a690ad4f1302edbb56c2ae2cdba91189d" kind="function"><name>editorObject</name></member>
-    <member refid="classeditorObject_1a7a44ba5a8abd1bdacdf538b08360339b" kind="function"><name>editorObject</name></member>
+    <member refid="classeditorObject_1aa921e7a13cc65917ae9efe90646878c1" kind="function"><name>Open</name></member>
+    <member refid="classeditorObject_1a41cc92239f89ac3688cad722aea1c3ed" kind="function"><name>editorObject</name></member>
     <member refid="classeditorObject_1ae5c4229489a3b798968960d7806a96a9" kind="function"><name>~editorObject</name></member>
     <member refid="classeditorObject_1ad3274f4153e7e8845a5c5d048f037901" kind="function"><name>AddLine</name></member>
     <member refid="classeditorObject_1a85dd1bfab830dc51fd12f6f27956ec19" kind="function"><name>AddLine</name></member>
@@ -357,18 +369,14 @@
     <member refid="classeditorObject_1a16ef00ce6ae7569f39a60ff8f382bd1c" kind="function"><name>getAll</name></member>
     <member refid="classeditorObject_1a479985c5e13f1986c6b88ceac67924c6" kind="function"><name>getAll</name></member>
     <member refid="classeditorObject_1a5fff7bdde5101a29d10a25989c8e248d" kind="function"><name>getAll</name></member>
-    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
-    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
-    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
-    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
     <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
     <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
     <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
     <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
-    <member refid="classeditorObject_1a51962d2a580b4eab625d260ffedbd19a" kind="function"><name>Go</name></member>
-    <member refid="classeditorObject_1a51962d2a580b4eab625d260ffedbd19a" kind="function"><name>Go</name></member>
-    <member refid="classeditorObject_1a51962d2a580b4eab625d260ffedbd19a" kind="function"><name>Go</name></member>
-    <member refid="classeditorObject_1a51962d2a580b4eab625d260ffedbd19a" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1aeacc46b214a74d7e16114b907a14bb51" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1aeacc46b214a74d7e16114b907a14bb51" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1aeacc46b214a74d7e16114b907a14bb51" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1aeacc46b214a74d7e16114b907a14bb51" kind="function"><name>Go</name></member>
     <member refid="classeditorObject_1aefa353d96fd225e77138f1ebb482f2a8" kind="function"><name>Redo</name></member>
     <member refid="classeditorObject_1aefa353d96fd225e77138f1ebb482f2a8" kind="function"><name>Redo</name></member>
     <member refid="classeditorObject_1aefa353d96fd225e77138f1ebb482f2a8" kind="function"><name>Redo</name></member>
@@ -376,31 +384,22 @@
     <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" kind="function"><name>Undo</name></member>
     <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" kind="function"><name>Undo</name></member>
     <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" kind="function"><name>Undo</name></member>
-    <member refid="classeditorObject_1a789f87b8ed201e8e08b22ba6bc3311b7" kind="function"><name>Undo</name></member>
-    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a78f427458b3e66f7102182ddec828eb0" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a78f427458b3e66f7102182ddec828eb0" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a78f427458b3e66f7102182ddec828eb0" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a08bd920f3c202193ee69524f86ebfa66" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a3d4bd6f4505ba026347dd885002648b4" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a3d4bd6f4505ba026347dd885002648b4" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a3d4bd6f4505ba026347dd885002648b4" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a3d4bd6f4505ba026347dd885002648b4" kind="function"><name>UpdateLog</name></member>
     <member refid="classeditorObject_1a479985c5e13f1986c6b88ceac67924c6" kind="function"><name>getAll</name></member>
     <member refid="classeditorObject_1a16ef00ce6ae7569f39a60ff8f382bd1c" kind="function"><name>getAll</name></member>
     <member refid="classeditorObject_1a77db8c854567b251bec9cebd5e91c662" kind="function"><name>getAll</name></member>
     <member refid="classeditorObject_1a5fff7bdde5101a29d10a25989c8e248d" kind="function"><name>getAll</name></member>
-    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
-    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
-    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
-    <member refid="classeditorObject_1aac2481cb9b8cdce5b8b4bb955d75ecb0" kind="function"><name>GetDiff</name></member>
     <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
     <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
     <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
     <member refid="classeditorObject_1a5028cdb2062742b460a6586acefc1a01" kind="function"><name>GetLogWithJSONGraph</name></member>
-    <member refid="classeditorObject_1a51962d2a580b4eab625d260ffedbd19a" kind="function"><name>Go</name></member>
-    <member refid="classeditorObject_1a51962d2a580b4eab625d260ffedbd19a" kind="function"><name>Go</name></member>
-    <member refid="classeditorObject_1a51962d2a580b4eab625d260ffedbd19a" kind="function"><name>Go</name></member>
-    <member refid="classeditorObject_1a51962d2a580b4eab625d260ffedbd19a" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1aeacc46b214a74d7e16114b907a14bb51" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1aeacc46b214a74d7e16114b907a14bb51" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1aeacc46b214a74d7e16114b907a14bb51" kind="function"><name>Go</name></member>
+    <member refid="classeditorObject_1aeacc46b214a74d7e16114b907a14bb51" kind="function"><name>Go</name></member>
     <member refid="classeditorObject_1aefa353d96fd225e77138f1ebb482f2a8" kind="function"><name>Redo</name></member>
     <member refid="classeditorObject_1aefa353d96fd225e77138f1ebb482f2a8" kind="function"><name>Redo</name></member>
     <member refid="classeditorObject_1a6c4c8c3a96ae891026202464c3117f5d" kind="function"><name>Redo</name></member>
@@ -409,14 +408,10 @@
     <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" kind="function"><name>Undo</name></member>
     <member refid="classeditorObject_1a789f87b8ed201e8e08b22ba6bc3311b7" kind="function"><name>Undo</name></member>
     <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" kind="function"><name>Undo</name></member>
-    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a78f427458b3e66f7102182ddec828eb0" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a78f427458b3e66f7102182ddec828eb0" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a78f427458b3e66f7102182ddec828eb0" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a4c49089d69f7f45e1ed9900e67338551" kind="function"><name>UpdateLog</name></member>
-    <member refid="classeditorObject_1a08bd920f3c202193ee69524f86ebfa66" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a3d4bd6f4505ba026347dd885002648b4" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a3d4bd6f4505ba026347dd885002648b4" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a3d4bd6f4505ba026347dd885002648b4" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditorObject_1a3d4bd6f4505ba026347dd885002648b4" kind="function"><name>UpdateLog</name></member>
   </compound>
   <compound refid="structEightPointValues" kind="struct"><name>EightPointValues</name>
     <member refid="structEightPointValues_1a3550757b6366b0f7752f6ca58673ad5e" kind="variable"><name>vals</name></member>
@@ -433,9 +428,32 @@
     <member refid="classEQMan_1a6a9a00fa191786fcc8cbb8166357e50e" kind="variable"><name>EQHigh</name></member>
     <member refid="classEQMan_1a7232ec791ed4fcfcf36701f7f4446944" kind="function"><name>makeArgSetter</name></member>
   </compound>
+  <compound refid="structPDJE__JUDGE_1_1EV__Thread" kind="struct"><name>PDJE_JUDGE::EV_Thread</name>
+    <member refid="structPDJE__JUDGE_1_1EV__Thread_1a03ce629634a46580932f20cbf093183c" kind="variable"><name>use_event_switch</name></member>
+    <member refid="structPDJE__JUDGE_1_1EV__Thread_1a2a7a83c7594b28e3187b7ceecce78590" kind="variable"><name>miss_event_switch</name></member>
+    <member refid="structPDJE__JUDGE_1_1EV__Thread_1a9beca9075435b56043402510d004c7c8" kind="variable"><name>use_event_thread</name></member>
+    <member refid="structPDJE__JUDGE_1_1EV__Thread_1a99c90890b4a4ee870c8f0604d590132e" kind="variable"><name>miss_event_thread</name></member>
+  </compound>
   <compound refid="structPDJE__JUDGE_1_1EVENT__RULE" kind="struct"><name>PDJE_JUDGE::EVENT_RULE</name>
     <member refid="structPDJE__JUDGE_1_1EVENT__RULE_1af92c301596640a944455fc74e119554b" kind="variable"><name>miss_range_microsecond</name></member>
     <member refid="structPDJE__JUDGE_1_1EVENT__RULE_1ab72695162ff41af3b364f4d922a73e38" kind="variable"><name>use_range_microsecond</name></member>
+  </compound>
+  <compound refid="classPDJE__TIMELINE_1_1EventMarker" kind="class"><name>PDJE_TIMELINE::EventMarker</name>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1afa041586878a60745d160014b07aa63a" kind="variable"><name>opts</name></member>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1aa4b35d202d94345383046eef5e3f7f0f" kind="variable"><name>git</name></member>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1aba2ed6637d0f4757ed7bcee87c6c0c34" kind="variable"><name>checkedOut</name></member>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1ad00184c2058bdc9f8743fc76ca77593f" kind="variable"><name>index</name></member>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1a01636c22d8a4a5f5c2064f90047757dc" kind="variable"><name>isActivate</name></member>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1aca100799b0cd867c3e5a36482334535e" kind="variable"><name>line</name></member>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1a70edea8863e850131fdc88f3b46a1116" kind="variable"><name>file_handle</name></member>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1a4ecbcae5e573c7ce0b9c26b9636cd82d" kind="function"><name>Add</name></member>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1a1d4ec9dfaeede475ef88275b4b0035e0" kind="function"><name>Append</name></member>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1a11c18fe2efb26c07ebc9906076943ae0" kind="function"><name>MoveFront</name></member>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1a895a06f0a8842d62fa5977d7b3bbe0d7" kind="function"><name>MoveBack</name></member>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1a69525621659a52369492c3ab2ce59c6c" kind="function"><name>Move</name></member>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1a2cafb741b5b6a2590d445e52215a6e54" kind="function"><name>Activate</name></member>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1ac146f481ea9597a0e65814b5528417d6" kind="function"><name>EventMarker</name></member>
+    <member refid="classPDJE__TIMELINE_1_1EventMarker_1add6c1aaee632b3d6cd5a8f7d0aa377de" kind="function"><name>~EventMarker</name></member>
   </compound>
   <compound refid="classFaustDType" kind="class"><name>FaustDType</name>
     <member refid="classFaustDType_1af219ec2896ec4254ba9e0787a11fa668" kind="variable"><name>L</name></member>
@@ -539,14 +557,26 @@
     <member refid="classFXControlPanel_1ad68821756727a02ea8fc806e7a1fd468" kind="function"><name>addFX</name></member>
     <member refid="classFXControlPanel_1aab2afb29579bb54771cbc3b5ae81b3bf" kind="function"><name>checkSomethingOn</name></member>
   </compound>
+  <compound refid="structPDJE__TIMELINE_1_1GitData" kind="struct"><name>PDJE_TIMELINE::GitData</name>
+    <member refid="structPDJE__TIMELINE_1_1GitData_1a81fbc5eaa28b0cb9a9e753a3ef83c17c" kind="variable"><name>repo</name></member>
+    <member refid="structPDJE__TIMELINE_1_1GitData_1ae345d42fcbaeada9b50ef0fea42b30f9" kind="variable"><name>sign</name></member>
+    <member refid="structPDJE__TIMELINE_1_1GitData_1a0774e4dabfcca51e5cdd889faf5e18db" kind="variable"><name>log_tree</name></member>
+    <member refid="structPDJE__TIMELINE_1_1GitData_1a481938eb911401d282e74d6b29a749c2" kind="variable"><name>LIFO_log</name></member>
+    <member refid="structPDJE__TIMELINE_1_1GitData_1a19a03a66be56c89caf5a43876a2ad1a1" kind="variable"><name>root</name></member>
+    <member refid="structPDJE__TIMELINE_1_1GitData_1a2392c8b5ce58136d55f69bb5a43d1ef1" kind="variable"><name>target_file</name></member>
+    <member refid="structPDJE__TIMELINE_1_1GitData_1a7b3b7c5b6b1350abcf66c83f72f5dbbd" kind="function"><name>GetSign</name></member>
+    <member refid="structPDJE__TIMELINE_1_1GitData_1ac9cdfdb36085844684236a93f22b0a83" kind="function"><name>GetRepo</name></member>
+    <member refid="structPDJE__TIMELINE_1_1GitData_1a1a6fd558b6147e019a2eabedba1a4cdf" kind="function"><name>GitData</name></member>
+    <member refid="structPDJE__TIMELINE_1_1GitData_1acbdef86cbc8802ab99c31098410c5656" kind="function"><name>~GitData</name></member>
+  </compound>
   <compound refid="classGitWrapper" kind="class"><name>GitWrapper</name>
     <member refid="classGitWrapper_1a2307a0946b74a74440793557682d2787" kind="variable"><name>auth_sign</name></member>
     <member refid="classGitWrapper_1a168f82a04ce859e339f9fc4e0286e04d" kind="variable"><name>addIndex</name></member>
     <member refid="classGitWrapper_1a95b889758023dafa8d08563aaf5729ad" kind="variable"><name>repo</name></member>
     <member refid="classGitWrapper_1a2c5d649edd00c0a8de2d487082137aee" kind="variable"><name>log_hdl</name></member>
     <member refid="classGitWrapper_1a6bf7e4eeceae816ce7c423d89843ad0a" kind="variable"><name>handleBranch</name></member>
-    <member refid="classGitWrapper_1a4405a8082a9c6abd3bd0f00a4706477e" kind="function"><name>add</name></member>
-    <member refid="classGitWrapper_1a8d6ebb76c9cae0c577a631185f826b7d" kind="function"><name>open</name></member>
+    <member refid="classGitWrapper_1a9a752398e3095ee349ef6401349fd399" kind="function"><name>add</name></member>
+    <member refid="classGitWrapper_1aa7e10b92de465ec71097c347b39bfee2" kind="function"><name>open</name></member>
     <member refid="classGitWrapper_1a9248ff6564221374cec0837c97747ca1" kind="function"><name>diff</name></member>
     <member refid="classGitWrapper_1ac0d9714caa112b665d3170bf02a44d70" kind="function"><name>Blame</name></member>
     <member refid="classGitWrapper_1a4a8155aae8a8e414a3bd11410b95bef6" kind="function"><name>commit</name></member>
@@ -556,6 +586,13 @@
     <member refid="classGitWrapper_1a2bd651dfe8cbd77c30d4e70186c43c03" kind="function"><name>GitWrapper</name></member>
     <member refid="classGitWrapper_1a36909e3fc709f3a3f24e1e7865254a8b" kind="function"><name>~GitWrapper</name></member>
     <member refid="classGitWrapper_1a74944ba0a6187c24c46d8c39c4df349b" kind="function"><name>GenTimeStamp</name></member>
+  </compound>
+  <compound refid="classPDJE__CRYPTO_1_1Hash" kind="class"><name>PDJE_CRYPTO::Hash</name>
+    <member refid="classPDJE__CRYPTO_1_1Hash_1a8f8b0dd108831f334a0e3847af79563b" kind="variable"><name>hashEngine</name></member>
+    <member refid="classPDJE__CRYPTO_1_1Hash_1aef8aa6ef2c3445a1c7dbf99c062b3173" kind="function"><name>Hash</name></member>
+    <member refid="classPDJE__CRYPTO_1_1Hash_1a09a5f374024903967c0304b135bd5561" kind="function"><name>~Hash</name></member>
+    <member refid="classPDJE__CRYPTO_1_1Hash_1a6936b34e485022e973644a4ba1b7a5c6" kind="function"><name>TextHash</name></member>
+    <member refid="classPDJE__CRYPTO_1_1Hash_1acc512bbd69459097493287c9e9c270d1" kind="function"><name>FileHash</name></member>
   </compound>
   <compound refid="structstd_1_1hash_3_01PDJE__JUDGE_1_1INPUT__RULE_01_4" kind="struct"><name>std::hash&lt; PDJE_JUDGE::INPUT_RULE &gt;</name>
     <member refid="structstd_1_1hash_3_01PDJE__JUDGE_1_1INPUT__RULE_01_4_1a45be55624ec18000f2b8dc2db99b15c2" kind="function"><name>operator()</name></member>
@@ -571,13 +608,16 @@
     <member refid="structIngredients_1a408def0555c4f3c401aeeef44a86e3fc" kind="function"><name>Ready</name></member>
   </compound>
   <compound refid="structPDJE__JUDGE_1_1INPUT__CONFIG" kind="struct"><name>PDJE_JUDGE::INPUT_CONFIG</name>
-    <member refid="structPDJE__JUDGE_1_1INPUT__CONFIG_1a600cd56e6fe0c50bf1b7d4d97d104cf8" kind="variable"><name>MatchRail</name></member>
   </compound>
   <compound refid="structPDJE__JUDGE_1_1INPUT__RULE" kind="struct"><name>PDJE_JUDGE::INPUT_RULE</name>
     <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1aa9e71f2f4ec766fc1c0e4df000f0e607" kind="variable"><name>Device_ID</name></member>
     <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1a665a8072fc88db62bc59bdaa52a004b8" kind="variable"><name>DeviceType</name></member>
     <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1a26595261d4164af5259c5a81392c7984" kind="variable"><name>DeviceKey</name></member>
     <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1a9e677d142dbff730cfe41d85bca696f4" kind="function"><name>operator==</name></member>
+  </compound>
+  <compound refid="structPDJE__JUDGE_1_1INPUT__SETTING" kind="struct"><name>PDJE_JUDGE::INPUT_SETTING</name>
+    <member refid="structPDJE__JUDGE_1_1INPUT__SETTING_1a851e9b9a55177bcbb9ef1b1a54830d93" kind="variable"><name>MatchRail</name></member>
+    <member refid="structPDJE__JUDGE_1_1INPUT__SETTING_1aacf78b3d629310494dfc7cce61f0f3cd" kind="variable"><name>offset_microsecond</name></member>
   </compound>
   <compound refid="structPDJE__IPC_1_1IPC__SHM__LINUX" kind="struct"><name>PDJE_IPC::IPC_SHM_LINUX</name>
     <member refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a36c146ab4725ca202d3bb56532b141cc" kind="variable"><name>iov</name></member>
@@ -614,7 +654,7 @@
     <member refid="classPDJE__JUDGE_1_1Judge__Init_1a4d193f14775e1cd10bf9d726e4edb0be" kind="variable"><name>inputline</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Init_1ae412677047fe5a8ca815c6ec6235a87e" kind="variable"><name>note_objects</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Init_1a786320148ee67bb0c04585208eb222cc" kind="variable"><name>ev_rule</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Init_1a5f67532d39353c45e663de20d3166be1" kind="variable"><name>dev_rules</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Init_1a132bac6df6317b452160da0113fa7083" kind="variable"><name>dev_rules</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Init_1a1cd961087df9003eecb048233147a744" kind="function"><name>DefaultFill</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Init_1a287bb28017981c359d38b6b99bedc946" kind="function"><name>SetInputRule</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Init_1aa9d5d05218f808e518e003a22c1b0f9b" kind="function"><name>SetEventRule</name></member>
@@ -624,36 +664,18 @@
     <member refid="classPDJE__JUDGE_1_1Judge__Init_1a61e19ba068e539f8b3a5c57f56b4a0b6" kind="function"><name>SetInputLine</name></member>
   </compound>
   <compound refid="classPDJE__JUDGE_1_1Judge__Loop" kind="class"><name>PDJE_JUDGE::Judge_Loop</name>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a1c6c0f273c53d34870c6e7d8b798547c" kind="variable"><name>use_event_switch</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a544ba868eba82a07f4b56f4ca299e9ee" kind="variable"><name>miss_event_switch</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a1dcb4f97ade522e8451cbc88dda4776a" kind="variable"><name>use_event_thread</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a299d1149ed378146f507f247cadbed31" kind="variable"><name>miss_event_thread</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1ad7092065b16ebf0d7299b24ebe1733f8" kind="variable"><name>missed_buffers</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a2284745434399364cb69b723ed493451" kind="variable"><name>found_list</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1ae46ab2b6a05fa2f3b67453cef821bd78" kind="variable"><name>related_list_out</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1adb1b352cc08bd8bf7a809c8e40d31253" kind="variable"><name>local_microsecond_position</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1ad033b4f4fbaa3ed3179b70cba831b06e" kind="variable"><name>global_local_diff</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1ad915b3cc0007e379627fb1d9e2827534" kind="variable"><name>log_begin</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1af88df723d7a1ec0a00f27039d9f5a63b" kind="variable"><name>log_end</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1afd871d32dac25575660ca3b280dfb7c3" kind="variable"><name>use_range</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a4a978e15af400bea553643cff5b2687f" kind="variable"><name>cut_range</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a13fd57265411a7a29da122c190227be6" kind="variable"><name>synced_data</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a1ac8a7683284fc148ee15e9e1adc59a2" kind="variable"><name>isLate</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a3c677872283bc48ee0743032779f2823" kind="variable"><name>railID</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a39bb2e58882e680627b0b4d09cc1abf9" kind="variable"><name>diff</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1aa2f5525b62f3704d43c21f5ac3464524" kind="variable"><name>mouse_btn_event_queue</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a6a1c8a69e6d357f3c0b9947f4c724f6e" kind="variable"><name>loop_switch</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a81cd5ae989dab565e1561071855ce503" kind="variable"><name>Event_Controls</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1af49f9087102aab509cd1515b9af81fe4" kind="variable"><name>Event_Controls</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Loop_1af0492c90183757749d344807d18d4311" kind="variable"><name>Event_Datas</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a514e7e93a642e973bf56da6e2405432c" kind="variable"><name>input_log</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1ad6093c95fb7e1c8f8c8ab8d9b6654ecc" kind="variable"><name>Cached</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1aead050848151554f4f27e38ebb7433f6" kind="variable"><name>Cached</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a69efbd4f2cc56ceebb5fd64079c32fd6" kind="variable"><name>init_datas</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Loop_1afe717039a39b035ea821e8d91e980742" kind="variable"><name>clock_root</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a6a1c8a69e6d357f3c0b9947f4c724f6e" kind="variable"><name>loop_switch</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Loop_1abca460c02b7136a73278854ab69b9a89" kind="function"><name>Cut</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a3449ddb97b42a6f4f4d0d240fa52c482" kind="function"><name>PreProcess</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Loop_1aa12c4ac9165e4cbf67734f21449ae8a9" kind="function"><name>ParseMouse</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a6e2cd11e0a7ee3f45bfcee18e41a459b" kind="function"><name>UseEvent</name></member>
-    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a4ec9598e00e8a62e7363fc075a25abb9" kind="function"><name>FindRailID</name></member>
+    <member refid="classPDJE__JUDGE_1_1Judge__Loop_1af01763a67bdb2be7edcdcff2e2c5ab27" kind="function"><name>FindDevSetting</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a6bf3bca605e3b5dcb7ce013e1a9561f3" kind="function"><name>Match</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a1d951b7c9e9d506938445c8ef6d59b6c" kind="function"><name>EndEventLoop</name></member>
     <member refid="classPDJE__JUDGE_1_1Judge__Loop_1a2c55c0fab64896c8b5bebd3d936eef0a" kind="function"><name>StartEventLoop</name></member>
@@ -705,8 +727,26 @@
     <member refid="classgitwrap_1_1logHandle_1ac6a7eafa275e397620d65d4cf43d43a9" kind="function"><name>WalkBranch</name></member>
     <member refid="classgitwrap_1_1logHandle_1a468cacb03601e6f5798d864488733db4" kind="function"><name>logHandle</name></member>
   </compound>
+  <compound refid="structPDJE__JUDGE_1_1LoopCached" kind="struct"><name>PDJE_JUDGE::LoopCached</name>
+    <member refid="structPDJE__JUDGE_1_1LoopCached_1a8eab3d278139bdff8c6c9d76274b4946" kind="variable"><name>missed_buffers</name></member>
+    <member refid="structPDJE__JUDGE_1_1LoopCached_1a801a9a6688d5df1877501d46dc03a096" kind="variable"><name>found_list</name></member>
+    <member refid="structPDJE__JUDGE_1_1LoopCached_1a0b8570b55e6448bd83ff0df0ebb94835" kind="variable"><name>related_list_out</name></member>
+    <member refid="structPDJE__JUDGE_1_1LoopCached_1ab3ed8079b00d7f8fff5c42a009f55ee7" kind="variable"><name>local_microsecond_position</name></member>
+    <member refid="structPDJE__JUDGE_1_1LoopCached_1ad3f0f432a0408ac1710d6d3721b3c084" kind="variable"><name>global_local_diff</name></member>
+    <member refid="structPDJE__JUDGE_1_1LoopCached_1a70ce3ef48d06e108b7a5fc30c090cef5" kind="variable"><name>log_begin</name></member>
+    <member refid="structPDJE__JUDGE_1_1LoopCached_1a2e7368e34bb4e96752ccf52febdd07da" kind="variable"><name>log_end</name></member>
+    <member refid="structPDJE__JUDGE_1_1LoopCached_1a724b22d7d4253dbed82718368d0fe00b" kind="variable"><name>use_range</name></member>
+    <member refid="structPDJE__JUDGE_1_1LoopCached_1af11e710c7da83378431b3dde18678b4b" kind="variable"><name>cut_range</name></member>
+    <member refid="structPDJE__JUDGE_1_1LoopCached_1a173977f6b2f44cf9d07ca0d70e7110ec" kind="variable"><name>synced_data</name></member>
+    <member refid="structPDJE__JUDGE_1_1LoopCached_1a3a5e7da37f61a24515da53e5430621a5" kind="variable"><name>isLate</name></member>
+    <member refid="structPDJE__JUDGE_1_1LoopCached_1a78b0cc8c2161df4c9c9c5f2f928c32f7" kind="variable"><name>setting</name></member>
+    <member refid="structPDJE__JUDGE_1_1LoopCached_1ac6fcbc012f10f554469e259afe2784e6" kind="variable"><name>diff</name></member>
+    <member refid="structPDJE__JUDGE_1_1LoopCached_1a61329727a540faaba9fb863351223b4b" kind="variable"><name>mouse_btn_event_queue</name></member>
+  </compound>
   <compound refid="classPDJE__IPC_1_1MainProcess" kind="class"><name>PDJE_IPC::MainProcess</name>
     <member refid="classPDJE__IPC_1_1MainProcess_1a85c0cc2ab3df6cbf694b16f08fb8b7ac" kind="variable"><name>cli</name></member>
+    <member refid="classPDJE__IPC_1_1MainProcess_1a524b0334c12e371645e0497b4ca6c102" kind="variable"><name>psk</name></member>
+    <member refid="classPDJE__IPC_1_1MainProcess_1af6d998fb0dc3f1c4b3e988fcf53a122f" kind="variable"><name>aead</name></member>
     <member refid="classPDJE__IPC_1_1MainProcess_1a5036bacb01c576f898f830fdda84d6b3" kind="variable"><name>imp</name></member>
     <member refid="classPDJE__IPC_1_1MainProcess_1a3224547091a9979a4388caf962610959" kind="function"><name>SendIPCSharedMemory</name></member>
     <member refid="classPDJE__IPC_1_1MainProcess_1aabc39f12e65f0c665151b97f409f0703" kind="function"><name>SendBufferArena</name></member>
@@ -779,9 +819,9 @@
     <member refid="structMixVisitor_1ac13c90f9bfc5f6e6b1fb3b8a9a755769" kind="function"><name>~MixVisitor</name></member>
     <member refid="structMixVisitor_1a6d0e3a102194e6f6281bcfb283a1bd65" kind="function"><name>on_item</name></member>
   </compound>
-  <compound refid="structPDJE__JUDGE_1_1Judge__Loop_1_1mouse__btn__event" kind="struct"><name>PDJE_JUDGE::Judge_Loop::mouse_btn_event</name>
-    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1mouse__btn__event_1a0c2d123c8aa897e2f863de290c56b7a0" kind="variable"><name>rail_id</name></member>
-    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1mouse__btn__event_1abca43fcdca741cde9b47fe2bda128b3c" kind="variable"><name>status</name></member>
+  <compound refid="structPDJE__JUDGE_1_1mouse__btn__event" kind="struct"><name>PDJE_JUDGE::mouse_btn_event</name>
+    <member refid="structPDJE__JUDGE_1_1mouse__btn__event_1aa136f609fd0975d0758e16d8da6b0d9c" kind="variable"><name>rail_id</name></member>
+    <member refid="structPDJE__JUDGE_1_1mouse__btn__event_1aea042ed77618e9af816b32a3a0926b3a" kind="variable"><name>status</name></member>
   </compound>
   <compound refid="structmusdata" kind="struct"><name>musdata</name>
     <member refid="structmusdata_1a9c537dbc78fd984f5316e3d167633f70" kind="variable"><name>title</name></member>
@@ -840,15 +880,13 @@
     <member refid="classMusicControlPanel_1a9facff0d058bdae7f005cbe3b0868d06" kind="function"><name>~MusicControlPanel</name></member>
   </compound>
   <compound refid="structPDJE__Editor_1_1MusicHandleStruct" kind="struct"><name>PDJE_Editor::MusicHandleStruct</name>
-    <member refid="structPDJE__Editor_1_1MusicHandleStruct_1abe3ce155c4afaed7827be49baee0dfda" kind="variable"><name>gith</name></member>
-    <member refid="structPDJE__Editor_1_1MusicHandleStruct_1a90956305be11318e58cea3e54a44fd18" kind="variable"><name>jsonh</name></member>
-    <member refid="structPDJE__Editor_1_1MusicHandleStruct_1ada2e83b454450b881bb1d844631fa447" kind="variable"><name>musicName</name></member>
-    <member refid="structPDJE__Editor_1_1MusicHandleStruct_1a5121a7f9017444cb2a8361038b3100fd" kind="variable"><name>dataPath</name></member>
+    <member refid="structPDJE__Editor_1_1MusicHandleStruct_1adf27e8ec3c7c786a1d978d25884b0d8a" kind="variable"><name>handle</name></member>
     <member refid="structPDJE__Editor_1_1MusicHandleStruct_1a9c06000c70df6ebe93c9fd3e6641b8b0" kind="function"><name>MusicHandleStruct</name></member>
     <member refid="structPDJE__Editor_1_1MusicHandleStruct_1a2c027bb9d8db5265ed101e128edf4e1c" kind="function"><name>MusicHandleStruct</name></member>
     <member refid="structPDJE__Editor_1_1MusicHandleStruct_1ab6dd5627f432fe507ef4d2888fb59cf5" kind="function"><name>MusicHandleStruct</name></member>
     <member refid="structPDJE__Editor_1_1MusicHandleStruct_1a8bc368b70fbeba5e1ac8969d68809ef5" kind="function"><name>operator=</name></member>
-    <member refid="structPDJE__Editor_1_1MusicHandleStruct_1ae7889bc6718980f215de533837a2a7d1" kind="function"><name>MusicHandleStruct</name></member>
+    <member refid="structPDJE__Editor_1_1MusicHandleStruct_1afc524d6ff7512aa8df2ffe8e5d3b12f2" kind="function"><name>MusicHandleStruct</name></member>
+    <member refid="structPDJE__Editor_1_1MusicHandleStruct_1a34926ae7356b5e5fdce4610015ae36da" kind="function"><name>MusicHandleStruct</name></member>
   </compound>
   <compound refid="structMusicOnDeck" kind="struct"><name>MusicOnDeck</name>
     <member refid="structMusicOnDeck_1ad0a6052696e1eda69e1de2ca883377d9" kind="variable"><name>play</name></member>
@@ -909,7 +947,7 @@
   <compound refid="classPDJE__JUDGE_1_1OBJ" kind="class"><name>PDJE_JUDGE::OBJ</name>
     <member refid="classPDJE__JUDGE_1_1OBJ_1aec80fb3ee176aa880d2210d3b9fc7c64" kind="variable"><name>Buffer_Main</name></member>
     <member refid="classPDJE__JUDGE_1_1OBJ_1a69ae59950fa70c74971c90fa6d9c8431" kind="variable"><name>Buffer_Sub</name></member>
-    <member refid="classPDJE__JUDGE_1_1OBJ_1a4d81809f120785ce0aabd28788f10a62" kind="function"><name>pick_dan</name></member>
+    <member refid="classPDJE__JUDGE_1_1OBJ_1ad627e3c86506ea76270e2665459a1a8a" kind="function"><name>pick_buffer</name></member>
     <member refid="classPDJE__JUDGE_1_1OBJ_1a5cd76686f8d5452b67221e03d39f1465" kind="function"><name>Sort</name></member>
     <member refid="classPDJE__JUDGE_1_1OBJ_1a8742e06da867b0761e3944ceb8945172" kind="function"><name>Fill</name></member>
     <member refid="classPDJE__JUDGE_1_1OBJ_1aff08be13eec5cdd93fd2c72b8c8ff95e" kind="function"><name>Get</name></member>
@@ -1012,26 +1050,23 @@
   </compound>
   <compound refid="classPDJE__Editor" kind="class"><name>PDJE_Editor</name>
     <member refid="classPDJE__Editor_1a3f0dad32adc184ab2e8c2833b5f2163a" kind="variable"><name>pt</name></member>
-    <member refid="classPDJE__Editor_1a8a9368d5946110bd72e93929c459dd18" kind="variable"><name>mixp</name></member>
-    <member refid="classPDJE__Editor_1a6f44ff19f5b97d2513d45a40cde17b8b" kind="variable"><name>notep</name></member>
-    <member refid="classPDJE__Editor_1adc11bd90202cc6fc580166c6d0acbc8a" kind="variable"><name>musicp</name></member>
-    <member refid="classPDJE__Editor_1ac7bc6fcd7a255d6bde7c59e8bf485494" kind="variable"><name>kvp</name></member>
-    <member refid="classPDJE__Editor_1add0793bcda5186ad1f2de6676fdcfc6b" kind="variable"><name>name</name></member>
-    <member refid="classPDJE__Editor_1a4e41b18b613c0cca84b763cadffd293b" kind="variable"><name>email</name></member>
-    <member refid="classPDJE__Editor_1a0a372cc309fb80596a1d1daead01594b" kind="variable"><name>mixHandle</name></member>
-    <member refid="classPDJE__Editor_1afe255ce34727c840b6f554b4fd6fa8ac" kind="variable"><name>noteHandle</name></member>
-    <member refid="classPDJE__Editor_1a7383322883db52e9dbcb9e4ce9c03826" kind="variable"><name>KVHandler</name></member>
+    <member refid="classPDJE__Editor_1aa8977da0bcb8e936c37d35e369713324" kind="variable"><name>music_root</name></member>
+    <member refid="classPDJE__Editor_1a2ff1d0254a6b65f3a5553358c1c0595d" kind="variable"><name>name</name></member>
+    <member refid="classPDJE__Editor_1ab15eec411555fd10655282956e0293a9" kind="variable"><name>email</name></member>
+    <member refid="classPDJE__Editor_1a7610772c9f0f7c627da7881a61f00206" kind="variable"><name>mixHandle</name></member>
+    <member refid="classPDJE__Editor_1ad487e3dc77e30b7cccc5bc8df784bba6" kind="variable"><name>noteHandle</name></member>
+    <member refid="classPDJE__Editor_1a2c6551f78a15cc86fa94f23fbab5385f" kind="variable"><name>KVHandle</name></member>
     <member refid="classPDJE__Editor_1ab8f9b60ada20d8ebe12e2fa85e2d4065" kind="variable"><name>musicHandle</name></member>
-    <member refid="classPDJE__Editor_1aea8cbb02181a73cae274a1899b348436" kind="function"><name>AddMusicConfig</name></member>
-    <member refid="classPDJE__Editor_1a87ad1910312e3311483e71b628f31881" kind="function"><name>openProject</name></member>
-    <member refid="classPDJE__Editor_1aab462776f94d91a41b87c796c15928b0" kind="function"><name>PDJE_Editor</name></member>
+    <member refid="classPDJE__Editor_1a265cecce815e4404411a2d97f4611801" kind="function"><name>AddMusicConfig</name></member>
+    <member refid="classPDJE__Editor_1a0b81a7e21d1c977f681d8dd7a99b5c27" kind="function"><name>PDJE_Editor</name></member>
     <member refid="classPDJE__Editor_1a31f3f49d01fdd0c5a0a6a352dccca20f" kind="function"><name>~PDJE_Editor</name></member>
   </compound>
   <compound refid="classPDJE__GitHandler" kind="class"><name>PDJE_GitHandler</name>
     <member refid="classPDJE__GitHandler_1a573108359308758dd72f5b201547b837" kind="variable"><name>sign</name></member>
     <member refid="classPDJE__GitHandler_1a9cbef27a4644c72e1f6fae60d6884a14" kind="variable"><name>RecentERR</name></member>
     <member refid="classPDJE__GitHandler_1afca3dc1b7559cebe370a5376f53d780a" kind="variable"><name>gw</name></member>
-    <member refid="classPDJE__GitHandler_1a24c25b540b2d6f9ef29dc0126b1fee29" kind="function"><name>Save</name></member>
+    <member refid="classPDJE__GitHandler_1ac4a3db84c8da4281e8f967ed7c372216" kind="variable"><name>file</name></member>
+    <member refid="classPDJE__GitHandler_1ab5b353cd1523957db2f028fa1a4695aa" kind="function"><name>Save</name></member>
     <member refid="classPDJE__GitHandler_1a5b61f3181d549700a51b3626487d76d0" kind="function"><name>Undo</name></member>
     <member refid="classPDJE__GitHandler_1a57ebdca70061f87ec7514cb475892eba" kind="function"><name>Redo</name></member>
     <member refid="classPDJE__GitHandler_1a57628c3fd9705301a5e209399a57e7d9" kind="function"><name>Go</name></member>
@@ -1040,7 +1075,7 @@
     <member refid="classPDJE__GitHandler_1ad425a11ce89a9a423222e9fedd9bbf59" kind="function"><name>UpdateLog</name></member>
     <member refid="classPDJE__GitHandler_1a2af26b1d24cf2a5b97764c629380fba9" kind="function"><name>GetDiff</name></member>
     <member refid="classPDJE__GitHandler_1a4fcfd5e38b9eb455ab11ce44bb1a1c90" kind="function"><name>DeleteGIT</name></member>
-    <member refid="classPDJE__GitHandler_1a5d727e8ccb03541d0722398d0435b6e0" kind="function"><name>Open</name></member>
+    <member refid="classPDJE__GitHandler_1abbe5696e403afcb63e963ebeb2e16d19" kind="function"><name>Open</name></member>
     <member refid="classPDJE__GitHandler_1aff50df952a46b5663341b6161d72ae2c" kind="function"><name>Close</name></member>
     <member refid="classPDJE__GitHandler_1a6522484931862293376b1a87270c346a" kind="function"><name>PDJE_GitHandler</name></member>
     <member refid="classPDJE__GitHandler_1a5ff4e3a3248ecf88c2a1baad8f6a676a" kind="function"><name>PDJE_GitHandler</name></member>
@@ -1091,7 +1126,7 @@
     <member refid="classPDJE__JSONHandler_1a29245f745218c0d3dc3c1e91d12fe63b" kind="function"><name>deleteLine</name></member>
     <member refid="classPDJE__JSONHandler_1a5538c8692d09f825f14b224433020f99" kind="function"><name>add</name></member>
     <member refid="classPDJE__JSONHandler_1a8f79bd8c69f21c9dee91b927ac5b5646" kind="function"><name>getAll</name></member>
-    <member refid="classPDJE__JSONHandler_1a2447b4a25741adf41741306f27638fad" kind="function"><name>load</name></member>
+    <member refid="classPDJE__JSONHandler_1a0724131ac4acaa35204ff1134ece7aa5" kind="function"><name>load</name></member>
     <member refid="classPDJE__JSONHandler_1a43792f758ad088b160dc160d5627e05e" kind="function"><name>operator[]</name></member>
     <member refid="classPDJE__JSONHandler_1ac7a7b5b61abe8e166f34e20d6bba1f50" kind="function"><name>save</name></member>
     <member refid="classPDJE__JSONHandler_1a58c2031b530983107d9db6dbf7ed60a0" kind="function"><name>deleteFile</name></member>
@@ -1100,25 +1135,25 @@
     <member refid="classPDJE__JSONHandler_1a706c8423e6c1c7ef5aacaf59bbd795d3" kind="function"><name>add</name></member>
     <member refid="classPDJE__JSONHandler_1a125e349b4793a73035022ec99cd87cc7" kind="function"><name>deleteLine</name></member>
     <member refid="classPDJE__JSONHandler_1ace4c18d5ea878c54e35bcde5df1955a6" kind="function"><name>getAll</name></member>
-    <member refid="classPDJE__JSONHandler_1aead07f4ac2b36acfdb20e3428752c03d" kind="function"><name>load</name></member>
+    <member refid="classPDJE__JSONHandler_1a0ddc72b2c9819b9e0f378a0eddd222b1" kind="function"><name>load</name></member>
     <member refid="classPDJE__JSONHandler_1aff718e92ad9f2f4a4d618bcbc010dddc" kind="function"><name>deleteLine</name></member>
     <member refid="classPDJE__JSONHandler_1ad9146a40935d8eae4b9629cfcac7645a" kind="function"><name>deleteLine</name></member>
     <member refid="classPDJE__JSONHandler_1a7bb97562fe17d1a91841f85e473d0617" kind="function"><name>deleteLine</name></member>
     <member refid="classPDJE__JSONHandler_1aa465d610d3ecf091967f93e9a29e52b5" kind="function"><name>add</name></member>
     <member refid="classPDJE__JSONHandler_1a745f8be18369f84703982c268cb14db8" kind="function"><name>getAll</name></member>
     <member refid="classPDJE__JSONHandler_1af6e1715db196f0bcfae25dbc0855389e" kind="function"><name>render</name></member>
-    <member refid="classPDJE__JSONHandler_1a7a2ad44437897daa2c1220dc59d5da02" kind="function"><name>load</name></member>
+    <member refid="classPDJE__JSONHandler_1abab0be83b5d5291be979b47ca8b14649" kind="function"><name>load</name></member>
     <member refid="classPDJE__JSONHandler_1a1c58fd40b6190989728fb3f678175266" kind="function"><name>deleteLine</name></member>
     <member refid="classPDJE__JSONHandler_1a88e9b48cecec1626f5ec893bc0395d41" kind="function"><name>deleteLine</name></member>
     <member refid="classPDJE__JSONHandler_1a71dd8a01a1a7a08b864771e90a82eb02" kind="function"><name>add</name></member>
     <member refid="classPDJE__JSONHandler_1ad85ac7668e163cd79ea6fb574fe5bc03" kind="function"><name>render</name></member>
     <member refid="classPDJE__JSONHandler_1afc203c3d56a3e2d82b1ee882b50cb93e" kind="function"><name>getAll</name></member>
-    <member refid="classPDJE__JSONHandler_1aabfe1c33cba48a7bf04649e79cd792be" kind="function"><name>load</name></member>
+    <member refid="classPDJE__JSONHandler_1a9af1a44bd01097f0d3e7a3901f638f55" kind="function"><name>load</name></member>
     <member refid="classPDJE__JSONHandler_1a343def8a7461fcf261c8989434936ef7" kind="function"><name>add</name></member>
     <member refid="classPDJE__JSONHandler_1a70206cbd7361ae051b669f10c84ae8c8" kind="function"><name>deleteLine</name></member>
     <member refid="classPDJE__JSONHandler_1afae8a2c3bba91ec9c79831669b215306" kind="function"><name>getAll</name></member>
     <member refid="classPDJE__JSONHandler_1ac9abd82d3716a90c1190d0f924ac4bc3" kind="function"><name>render</name></member>
-    <member refid="classPDJE__JSONHandler_1ae83dea4e2bbe7b7710090ed97b370fcf" kind="function"><name>load</name></member>
+    <member refid="classPDJE__JSONHandler_1aefaf5789899fe9ee6bf78ca157460277" kind="function"><name>load</name></member>
   </compound>
   <compound refid="structPDJE__Keyboard__Event" kind="struct"><name>PDJE_Keyboard_Event</name>
     <member refid="structPDJE__Keyboard__Event_1a1b408a0d1716613a9f0e81142b06574e" kind="variable"><name>k</name></member>
@@ -1177,14 +1212,35 @@
     <member refid="structPosition_1a3e9db580e023618c153f5f0039e757a4" kind="variable"><name>frame_in</name></member>
     <member refid="structPosition_1ac079c4b481a5ba40015db7d1e04717a1" kind="variable"><name>frame_out</name></member>
   </compound>
-  <compound refid="structPDJE__JUDGE_1_1Judge__Loop_1_1Queues" kind="struct"><name>PDJE_JUDGE::Judge_Loop::Queues</name>
-    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1Queues_1a80c2a977837a52c020413f2c79851b82" kind="variable"><name>miss_queue</name></member>
-    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1Queues_1a919ba7c033340e0f55e56cf135df4986" kind="variable"><name>use_queue</name></member>
-    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1Queues_1a1c18b595a602e10eff61905350a9b26a" kind="function"><name>Queues</name></member>
+  <compound refid="classPDJE__CRYPTO_1_1PSK" kind="class"><name>PDJE_CRYPTO::PSK</name>
+    <member refid="classPDJE__CRYPTO_1_1PSK_1a83f3a32040a27b2b0cdab4f9d3e83d6f" kind="variable"><name>psk</name></member>
+    <member refid="classPDJE__CRYPTO_1_1PSK_1afc1284342f0799f9545931207b11c2fd" kind="function"><name>Gen</name></member>
+    <member refid="classPDJE__CRYPTO_1_1PSK_1a5064ddbc44118ea3341cf86269a8c1d5" kind="function"><name>PSK</name></member>
+    <member refid="classPDJE__CRYPTO_1_1PSK_1a591d976596d4bfa51ce409f33b61e367" kind="function"><name>~PSK</name></member>
+    <member refid="classPDJE__CRYPTO_1_1PSK_1a198d1bb2ab20a52ffbd1fc174fff6db0" kind="function"><name>Encode</name></member>
+    <member refid="classPDJE__CRYPTO_1_1PSK_1a8fbeb61698d6e83dbb35a3e7f701a7ab" kind="function"><name>Decode</name></member>
+  </compound>
+  <compound refid="classPDJE__CRYPTO_1_1PSKPipe" kind="class"><name>PDJE_CRYPTO::PSKPipe</name>
+    <member refid="classPDJE__CRYPTO_1_1PSKPipe_1ab30c4fd366202a182e5437a23867cfec" kind="variable"><name>writeHandle</name></member>
+    <member refid="classPDJE__CRYPTO_1_1PSKPipe_1a29756a4a14a296db905cb659394bf00e" kind="function"><name>GetTokenFromSTDPipe</name></member>
+    <member refid="classPDJE__CRYPTO_1_1PSKPipe_1a0d60e8b4480e9af17f8f9f50524a18b2" kind="function"><name>Gen</name></member>
+    <member refid="classPDJE__CRYPTO_1_1PSKPipe_1ab766bd07111ce8107415f42173c7044e" kind="function"><name>Send</name></member>
+    <member refid="classPDJE__CRYPTO_1_1PSKPipe_1a60f69e3342871f7ea3b3a81b7eae9dcc" kind="function"><name>PSKPipe</name></member>
+    <member refid="classPDJE__CRYPTO_1_1PSKPipe_1a01ac3e220af8172e8e73481d27f944d4" kind="function"><name>~PSKPipe</name></member>
+  </compound>
+  <compound refid="structPDJE__JUDGE_1_1Queues" kind="struct"><name>PDJE_JUDGE::Queues</name>
+    <member refid="structPDJE__JUDGE_1_1Queues_1a6b1ae25a5d2e080a580ed3d6d5bf9c68" kind="variable"><name>miss_queue</name></member>
+    <member refid="structPDJE__JUDGE_1_1Queues_1ad7ed53cb1ec9cc76182c9d8e9b7c266a" kind="variable"><name>use_queue</name></member>
+    <member refid="structPDJE__JUDGE_1_1Queues_1a660b5683ba058df750212851c13ba2e4" kind="function"><name>Queues</name></member>
   </compound>
   <compound refid="structPDJE__IPC_1_1RawDeviceData" kind="struct"><name>PDJE_IPC::RawDeviceData</name>
     <member refid="structPDJE__IPC_1_1RawDeviceData_1a6c34a1b789a5a5fc618899296f6ac2d2" kind="variable"><name>info</name></member>
     <member refid="structPDJE__IPC_1_1RawDeviceData_1a59030c7cf836cc6811e768f87c077ecf" kind="variable"><name>deviceHIDPath</name></member>
+  </compound>
+  <compound refid="classGIT__RAII_1_1ref" kind="class"><name>GIT_RAII::ref</name>
+    <member refid="classGIT__RAII_1_1ref_1a3d5d8eadfa971254d6c5fd3f4a9ec708" kind="variable"><name>p</name></member>
+    <member refid="classGIT__RAII_1_1ref_1ad4c35a183f16bb250d01f50206ff3077" kind="function"><name>ref</name></member>
+    <member refid="classGIT__RAII_1_1ref_1acaa8fe1032d7347597221aa39583d60c" kind="function"><name>~ref</name></member>
   </compound>
   <compound refid="classRobot__PDJE" kind="class"><name>Robot_PDJE</name>
     <member refid="classRobot__PDJE_1a8e8b7d346892ad9a9a1c2352a13434a5" kind="variable"><name>robotFreq</name></member>
@@ -1270,6 +1326,23 @@
     <member refid="classtempDB_1a2bf63d25dbd200d51a237c2f52b5b59f" kind="function"><name>tempDB</name></member>
     <member refid="classtempDB_1a9280c902042c20a036434fa39aff26ff" kind="function"><name>~tempDB</name></member>
   </compound>
+  <compound refid="classPDJE__TIMELINE_1_1TimeLine" kind="class"><name>PDJE_TIMELINE::TimeLine</name>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1a28571335660cf8e1867722929c845768" kind="variable"><name>git</name></member>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1ab116a25baff122b25eec748f7638296c" kind="variable"><name>mark</name></member>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1a428cbc7203addd175a215aed6f543626" kind="function"><name>Save</name></member>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1ad414944e3f33593913867e21c468d911" kind="function"><name>GetJson</name></member>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1aab743a7c1ba418da4ea705e7273cf441" kind="function"><name>WriteData</name></member>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1a2ffd57dd3944c5ba790cba1c79618e88" kind="function"><name>DeleteData</name></member>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1a895daefd20bccbd73032476bfc06d8a0" kind="function"><name>DeleteData</name></member>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1a64d67b07a5bbae0da879b8a73aa96dfc" kind="function"><name>Undo</name></member>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1ae54ad0afcab7a1865df7df9cb0630c06" kind="function"><name>Redo</name></member>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1adeab1e8e9921a28065d3fe89d9e1261e" kind="function"><name>Go</name></member>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1a1196532ff53868d0ae2f7f57600593f2" kind="function"><name>Diff</name></member>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1a3e4c70f5a716f9d33f34ba852978eba3" kind="function"><name>UpdateLogs</name></member>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1aa27bb74491b95fcf2ea88a3f1b452454" kind="function"><name>GetLogs</name></member>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1a39a463ad790f4cfccdbc2c109f1a5b42" kind="function"><name>TimeLine</name></member>
+    <member refid="classPDJE__TIMELINE_1_1TimeLine_1a8371b935f63cc177a3eca2ea25eb75e0" kind="function"><name>~TimeLine</name></member>
+  </compound>
   <compound refid="structtrackdata" kind="struct"><name>trackdata</name>
     <member refid="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" kind="variable"><name>trackTitle</name></member>
     <member refid="structtrackdata_1a155e25ae9bef854aa3441d9702082ac3" kind="variable"><name>mixBinary</name></member>
@@ -1294,15 +1367,20 @@
     <member refid="classTranceMan_1a48cf6677e124396785b608a004f4e3d2" kind="variable"><name>TranceDryWet</name></member>
     <member refid="classTranceMan_1ab7962b7336a29e62341ddc28bbec8ca9" kind="function"><name>makeArgSetter</name></member>
   </compound>
+  <compound refid="classGIT__RAII_1_1tree" kind="class"><name>GIT_RAII::tree</name>
+    <member refid="classGIT__RAII_1_1tree_1a25f3cbb06728d311e22bbc6a3392b6ae" kind="variable"><name>p</name></member>
+    <member refid="classGIT__RAII_1_1tree_1ad32b91ea54e29c70ba2ce032416a664f" kind="function"><name>tree</name></member>
+    <member refid="classGIT__RAII_1_1tree_1a28afd5bed2176db44a8c5592e9cc61db" kind="function"><name>~tree</name></member>
+  </compound>
   <compound refid="classUI" kind="class"><name>UI</name>
     <member refid="classUI_1a84b1b67909cbfdcfa66f101416ee52d5" kind="function"><name>openVerticalBox</name></member>
     <member refid="classUI_1aeb849a71ade69617333d1d8f0f16529c" kind="function"><name>closeBox</name></member>
   </compound>
-  <compound refid="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas" kind="struct"><name>PDJE_JUDGE::Judge_Loop::useDatas</name>
-    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas_1a2d45f43706caba58b2fdbc6ae545f767" kind="variable"><name>railid</name></member>
-    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas_1a7fb7e35447559e20405d0bf4d05a8cc9" kind="variable"><name>Pressed</name></member>
-    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas_1a9beaef267554afd875461a7e35b33384" kind="variable"><name>IsLate</name></member>
-    <member refid="structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas_1af60282c9950feca5809cb815188cc50f" kind="variable"><name>diff</name></member>
+  <compound refid="structPDJE__JUDGE_1_1useDatas" kind="struct"><name>PDJE_JUDGE::useDatas</name>
+    <member refid="structPDJE__JUDGE_1_1useDatas_1a3d54104d5459f666aa5a4131cba403da" kind="variable"><name>railid</name></member>
+    <member refid="structPDJE__JUDGE_1_1useDatas_1a084e50bbefa6ee8e97eca983cd6290d7" kind="variable"><name>Pressed</name></member>
+    <member refid="structPDJE__JUDGE_1_1useDatas_1aa9be56d64d60cb9cfd6759be42864e19" kind="variable"><name>IsLate</name></member>
+    <member refid="structPDJE__JUDGE_1_1useDatas_1a2604bed9a1bd85a68cca40a30db318d4" kind="variable"><name>diff</name></member>
   </compound>
   <compound refid="classVolMan" kind="class"><name>VolMan</name>
     <member refid="classVolMan_1a9ebe8a729a26956f068d262bdeef6161" kind="variable"><name>VolPower</name></member>
@@ -1359,11 +1437,19 @@
   <compound refid="namespaceFrameCalc" kind="namespace"><name>FrameCalc</name>
     <member refid="namespaceFrameCalc_1aed991cda2f4549b15a01ad2e71019d69" kind="function"><name>CountFrame</name></member>
   </compound>
+  <compound refid="namespaceGIT__RAII" kind="namespace"><name>GIT_RAII</name>
+    <member refid="namespaceGIT__RAII_1ae9f5018a36b209676af787d453948570" kind="typedef"><name>OID</name></member>
+  </compound>
   <compound refid="namespacegitwrap" kind="namespace"><name>gitwrap</name>
   </compound>
   <compound refid="namespaceHWY__NAMESPACE" kind="namespace"><name>HWY_NAMESPACE</name>
     <member refid="namespaceHWY__NAMESPACE_1ad074d697d201fc9b6c258e128a4ef91e" kind="function"><name>GetPCMFramesSIMD</name></member>
     <member refid="namespaceHWY__NAMESPACE_1af0a22093ab08dd742f914c113783bec3" kind="function"><name>INTEGRATE_PCM_SIMD</name></member>
+  </compound>
+  <compound refid="namespacePDJE__CRYPTO" kind="namespace"><name>PDJE_CRYPTO</name>
+    <member refid="namespacePDJE__CRYPTO_1ad03d54fa0622af1e44befad88826ff63" kind="variable"><name>HashChunkSZ</name></member>
+    <member refid="namespacePDJE__CRYPTO_1a5251f485ccb6ad140e2c1ca97a66e30b" kind="function"><name>GetTokenFromSTDPipe</name></member>
+    <member refid="namespacePDJE__CRYPTO_1a5251f485ccb6ad140e2c1ca97a66e30b" kind="function"><name>GetTokenFromSTDPipe</name></member>
   </compound>
   <compound refid="namespacePDJE__HIGHRES__CLOCK" kind="namespace"><name>PDJE_HIGHRES_CLOCK</name>
   </compound>
@@ -1374,6 +1460,7 @@
     <member refid="namespacePDJE__IPC_1a1b1370cbd4063395a5032cd8e4b8ab34" kind="variable"><name>PDJE_NO_IPC</name></member>
     <member refid="namespacePDJE__IPC_1ab876a67a0fcfde480c8e23bb60e3b32f" kind="variable"><name>PDJE_IPC_R</name></member>
     <member refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kind="variable"><name>PDJE_IPC_RW</name></member>
+    <member refid="namespacePDJE__IPC_1a01af1265fc9ad0972525db7352ad736c" kind="function"><name>HashCompare</name></member>
     <member refid="namespacePDJE__IPC_1a70376465d929e8d1c237f737857d7f06" kind="function"><name>GetValidProcessExecutor</name></member>
     <member refid="namespacePDJE__IPC_1a394810a3d492d827df053c19a3275b16" kind="function"><name>GenCommand</name></member>
     <member refid="namespacePDJE__IPC_1a9eb345ed412d4092671db1f6716c8f63" kind="function"><name>GenIF</name></member>
@@ -1382,7 +1469,7 @@
     <member refid="namespacePDJE__IPC_1a2935dc613202d6f1b6a9d3d071f9b29f" kind="function"><name>getRawDeviceDatas</name></member>
     <member refid="namespacePDJE__IPC_1aed45425b085b19ca0dd458d671462db9" kind="function"><name>wstring_to_utf8_nt</name></member>
     <member refid="namespacePDJE__IPC_1a0998c09d9e3ac8fff4b870c0ef95165c" kind="function"><name>hid_label_from_path</name></member>
-    <member refid="namespacePDJE__IPC_1a571d99db6a7513047baa23e52f0e18d7" kind="function"><name>PDJE_OpenProcess</name></member>
+    <member refid="namespacePDJE__IPC_1aab3e7bb95140ecd6b4848b52f1bb584b" kind="function"><name>PDJE_OpenProcess</name></member>
   </compound>
   <compound refid="namespacePDJE__JUDGE" kind="namespace"><name>PDJE_JUDGE</name>
     <member refid="namespacePDJE__JUDGE_1afa6381f8f229ccd5c5f8dbae248cebb2" kind="enum"><name>JUDGE_STATUS</name></member>
@@ -1404,7 +1491,7 @@
     <member refid="namespacePDJE__JUDGE_1a9ae87742de7e899c6e006447f27a9eba" kind="typedef"><name>RAIL_ID</name></member>
     <member refid="namespacePDJE__JUDGE_1a74a76cb2add5051c233d27fbedba793c" kind="typedef"><name>MISS_CALLBACK</name></member>
     <member refid="namespacePDJE__JUDGE_1a404264babe4bb096766de0bef9d0eea6" kind="typedef"><name>USE_CALLBACK</name></member>
-    <member refid="namespacePDJE__JUDGE_1a23d1bbaefe85c70073b4779f17d63f3d" kind="typedef"><name>MOUSE_AXIS_PARSE_CALLBACK</name></member>
+    <member refid="namespacePDJE__JUDGE_1a4206034d0b6d310b3a8362e649936afc" kind="typedef"><name>MOUSE_CUSTOM_PARSE_CALLBACK</name></member>
     <member refid="namespacePDJE__JUDGE_1a0e0549990dbec87c7f25b9ae22f4dc39" kind="typedef"><name>GLOBAL_TIME</name></member>
     <member refid="namespacePDJE__JUDGE_1a182d502cf8e15e13ed25f3550c82a53a" kind="typedef"><name>LOCAL_TIME</name></member>
     <member refid="namespacePDJE__JUDGE_1ad8c8d340702b0759a8cecb53091de1e0" kind="typedef"><name>NOTE_VEC</name></member>
@@ -1429,6 +1516,16 @@
     <member refid="namespacePDJE__RAWINPUT_1af3d9b0dc9168afb6956d5809b21d1973" kind="function"><name>FillMouseInput</name></member>
     <member refid="namespacePDJE__RAWINPUT_1a5e04c9834f130fb62d04b35bd3723f1e" kind="function"><name>FillKeyboardInput</name></member>
     <member refid="namespacePDJE__RAWINPUT_1af9c332f59392e1b590f13c90b85d46bd" kind="function"><name>FillHIDInput</name></member>
+  </compound>
+  <compound refid="namespacePDJE__TIMELINE" kind="namespace"><name>PDJE_TIMELINE</name>
+    <member refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kind="typedef"><name>OID</name></member>
+    <member refid="namespacePDJE__TIMELINE_1a521f55c6b3da8f9af56be0c1eb855e41" kind="typedef"><name>BACK_OID</name></member>
+    <member refid="namespacePDJE__TIMELINE_1a4df8215070f7b003bc7eda9797e018d3" kind="typedef"><name>TIME_STAMP</name></member>
+    <member refid="namespacePDJE__TIMELINE_1af346ab11735a428e1f07e8adcbe8ef4f" kind="function"><name>GenTimeStamp</name></member>
+    <member refid="namespacePDJE__TIMELINE_1a5ce49d8e784aaaed05ebc71fa6e59672" kind="function"><name>NewFirstLog</name></member>
+    <member refid="namespacePDJE__TIMELINE_1a8a81ee99388ce49ade9aa2f22803a470" kind="function"><name>AddLog</name></member>
+    <member refid="namespacePDJE__TIMELINE_1a05be15f5f6245aa0049aedfcf64090e8" kind="function"><name>GetParent</name></member>
+    <member refid="namespacePDJE__TIMELINE_1a28075de7494037ed63bdfaf90bfe32c8" kind="function"><name>LogBranch</name></member>
   </compound>
   <compound refid="namespacestd" kind="namespace"><name>std</name>
   </compound>
@@ -1692,10 +1789,6 @@
   </compound>
   <compound refid="trackDB_8hpp" kind="file"><name>trackDB.hpp</name>
   </compound>
-  <compound refid="editor_8cpp" kind="file"><name>editor.cpp</name>
-  </compound>
-  <compound refid="editor_8hpp" kind="file"><name>editor.hpp</name>
-  </compound>
   <compound refid="AddController_8cpp" kind="file"><name>AddController.cpp</name>
   </compound>
   <compound refid="AddController_8hpp" kind="file"><name>AddController.hpp</name>
@@ -1731,6 +1824,28 @@
   <compound refid="gitLog_8hpp" kind="file"><name>gitLog.hpp</name>
   </compound>
   <compound refid="PDJE__GitHandler_8cpp" kind="file"><name>PDJE_GitHandler.cpp</name>
+  </compound>
+  <compound refid="editor_8cpp" kind="file"><name>editor.cpp</name>
+  </compound>
+  <compound refid="editor_8hpp" kind="file"><name>editor.hpp</name>
+    <member refid="editor_8hpp_1ac3f552b1307bd14d1fa2758d78011f94" kind="function"><name>MKDirs</name></member>
+  </compound>
+  <compound refid="pdjeLinter_8hpp" kind="file"><name>pdjeLinter.hpp</name>
+  </compound>
+  <compound refid="trackLinter_8cpp" kind="file"><name>trackLinter.cpp</name>
+    <member refid="trackLinter_8cpp_1a3d5cd7d6a2752dc413cb5ccb5ce21bc6" kind="typedef"><name>ID_LOADED</name></member>
+    <member refid="trackLinter_8cpp_1a13cfef94ef7a20443052ffa72751e656" kind="function"><name>FillIdHasLoad</name></member>
+    <member refid="trackLinter_8cpp_1ac550d6b074c622750669e409f9a06c69" kind="function"><name>FillIdHasUnLoad</name></member>
+    <member refid="trackLinter_8cpp_1aac890445b835eeb8cac2351e3150ed80" kind="function"><name>CheckIDHasLoad</name></member>
+    <member refid="trackLinter_8cpp_1a6d80da29b967c3383a8176f7be78a5ac" kind="function"><name>CheckIDHasUnLoad</name></member>
+  </compound>
+  <compound refid="EventMarker_8cpp" kind="file"><name>EventMarker.cpp</name>
+  </compound>
+  <compound refid="EventMarker_8hpp" kind="file"><name>EventMarker.hpp</name>
+  </compound>
+  <compound refid="GitDatas_8hpp" kind="file"><name>GitDatas.hpp</name>
+  </compound>
+  <compound refid="GitRAII_8hpp" kind="file"><name>GitRAII.hpp</name>
   </compound>
   <compound refid="EditorArgs_8hpp" kind="file"><name>EditorArgs.hpp</name>
     <member refid="EditorArgs_8hpp_1a62a8aadaf6e33bd03a591749fca41482" kind="typedef"><name>MIX_W</name></member>
@@ -1777,14 +1892,24 @@
   </compound>
   <compound refid="MusicJson_8cpp" kind="file"><name>MusicJson.cpp</name>
   </compound>
+  <compound refid="MusicJsonHelper_8hpp" kind="file"><name>MusicJsonHelper.hpp</name>
+    <member refid="MusicJsonHelper_8hpp_1a611fe3c2ad90e6f32880c62b119631a8" kind="typedef"><name>STRVIEW</name></member>
+    <member refid="MusicJsonHelper_8hpp_1a66679b25aef1da29f107fe8b75d6e2a7" kind="function"><name>ConfigMusicJsonData</name></member>
+    <member refid="MusicJsonHelper_8hpp_1a3169ce9b9593881b6dd9d98afe3b3434" kind="function"><name>GetTitle</name></member>
+    <member refid="MusicJsonHelper_8hpp_1a0db0dd04be539bd6718162815e4eef76" kind="function"><name>GetComposer</name></member>
+    <member refid="MusicJsonHelper_8hpp_1aa98c6b3c9043e8392e62a1a7a62e8cbb" kind="function"><name>SetFirstBeat</name></member>
+    <member refid="MusicJsonHelper_8hpp_1adf8194cb8b0df6b40c084f16f1836139" kind="function"><name>GetFirstBeat</name></member>
+    <member refid="MusicJsonHelper_8hpp_1a122047d3f92d727acf7e20bc275b0305" kind="function"><name>GetMusicABSLocation</name></member>
+  </compound>
   <compound refid="NoteJson_8cpp" kind="file"><name>NoteJson.cpp</name>
   </compound>
-  <compound refid="pdjeLinter_8hpp" kind="file"><name>pdjeLinter.hpp</name>
+  <compound refid="LineVersion_8cpp" kind="file"><name>LineVersion.cpp</name>
   </compound>
-  <compound refid="trackLinter_8cpp" kind="file"><name>trackLinter.cpp</name>
-    <member refid="trackLinter_8cpp_1a3d5cd7d6a2752dc413cb5ccb5ce21bc6" kind="typedef"><name>ID_LOADED</name></member>
-    <member refid="trackLinter_8cpp_1a13cfef94ef7a20443052ffa72751e656" kind="function"><name>FillIdHasLoad</name></member>
-    <member refid="trackLinter_8cpp_1aac890445b835eeb8cac2351e3150ed80" kind="function"><name>CheckIDHasLoad</name></member>
+  <compound refid="LineVersion_8hpp" kind="file"><name>LineVersion.hpp</name>
+  </compound>
+  <compound refid="TimeLine_8cpp" kind="file"><name>TimeLine.cpp</name>
+  </compound>
+  <compound refid="TimeLine_8hpp" kind="file"><name>TimeLine.hpp</name>
   </compound>
   <compound refid="FAKE__CAPNP__ENUMS__FOR__SWIG_8hpp" kind="file"><name>FAKE_CAPNP_ENUMS_FOR_SWIG.hpp</name>
     <member refid="FAKE__CAPNP__ENUMS__FOR__SWIG_8hpp_1a426bf923434a718991540850f58c7770" kind="typedef"><name>TypeEnum</name></member>
@@ -1849,6 +1974,22 @@
   <compound refid="tempDB_8hpp" kind="file"><name>tempDB.hpp</name>
   </compound>
   <compound refid="SWIG__editor__visitor_8hpp" kind="file"><name>SWIG_editor_visitor.hpp</name>
+  </compound>
+  <compound refid="PDJE__Crypto_8hpp" kind="file"><name>PDJE_Crypto.hpp</name>
+  </compound>
+  <compound refid="PDJE__Crypto__AEAD_8cpp" kind="file"><name>PDJE_Crypto_AEAD.cpp</name>
+  </compound>
+  <compound refid="PDJE__Crypto__Hash_8cpp" kind="file"><name>PDJE_Crypto_Hash.cpp</name>
+  </compound>
+  <compound refid="PDJE__Crypto__Token_8cpp" kind="file"><name>PDJE_Crypto_Token.cpp</name>
+  </compound>
+  <compound refid="PSKPipe_8hpp" kind="file"><name>PSKPipe.hpp</name>
+  </compound>
+  <compound refid="Linux_2PSKPipe_8cpp" kind="file"><name>PSKPipe.cpp</name>
+  </compound>
+  <compound refid="Mac_2PSKPipe_8cpp" kind="file"><name>PSKPipe.cpp</name>
+  </compound>
+  <compound refid="Windows_2PSKPipe_8cpp" kind="file"><name>PSKPipe.cpp</name>
   </compound>
   <compound refid="fileNameSanitizer_8cpp" kind="file"><name>fileNameSanitizer.cpp</name>
   </compound>
@@ -2013,13 +2154,13 @@
   <compound refid="PDJE__ATOMIC__EVENT_8hpp" kind="file"><name>PDJE_ATOMIC_EVENT.hpp</name>
   </compound>
   <compound refid="PDJE__EXPORT__SETTER_8hpp" kind="file"><name>PDJE_EXPORT_SETTER.hpp</name>
+    <member refid="PDJE__EXPORT__SETTER_8hpp_1a7741270cebaf37c6127114855d3a00e1" kind="define"><name>PDJE_CALL</name></member>
     <member refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kind="define"><name>PDJE_API</name></member>
   </compound>
   <compound refid="PDJE__LOG__SETTER_8hpp" kind="file"><name>PDJE_LOG_SETTER.hpp</name>
     <member refid="PDJE__LOG__SETTER_8hpp_1a2721d826078db7a962e7664a9d2f4016" kind="define"><name>infolog</name></member>
     <member refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" kind="define"><name>warnlog</name></member>
     <member refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kind="define"><name>critlog</name></member>
-    <member refid="PDJE__LOG__SETTER_8hpp_1aafde7a4d32d3efc555088bc1babf0e88" kind="variable"><name>SPD_LOG_ONCE_FLAG</name></member>
     <member refid="PDJE__LOG__SETTER_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36" kind="function"><name>startlog</name></member>
   </compound>
   <compound refid="PDJE__OBJ__SETTER_8hpp" kind="file"><name>PDJE_OBJ_SETTER.hpp</name>
@@ -2105,11 +2246,13 @@
   <compound refid="PDJE__Input_8hpp" kind="file"><name>PDJE_Input.hpp</name>
   </compound>
   <compound refid="Input__Process__Main_8cpp" kind="file"><name>Input_Process_Main.cpp</name>
-    <member refid="Input__Process__Main_8cpp_1abf9e6b7e6f15df4b525a2e7705ba3089" kind="function"><name>main</name></member>
+    <member refid="Input__Process__Main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
   </compound>
   <compound refid="PDJE__Judge__Init_8cpp" kind="file"><name>PDJE_Judge_Init.cpp</name>
   </compound>
   <compound refid="PDJE__Judge__Init_8hpp" kind="file"><name>PDJE_Judge_Init.hpp</name>
+  </compound>
+  <compound refid="PDJE__Judge__Init__Structs_8hpp" kind="file"><name>PDJE_Judge_Init_Structs.hpp</name>
   </compound>
   <compound refid="HID_8cpp" kind="file"><name>HID.cpp</name>
   </compound>
@@ -2122,6 +2265,8 @@
   <compound refid="PDJE__Judge__Loop_8cpp" kind="file"><name>PDJE_Judge_Loop.cpp</name>
   </compound>
   <compound refid="PDJE__Judge__Loop_8hpp" kind="file"><name>PDJE_Judge_Loop.hpp</name>
+  </compound>
+  <compound refid="PDJE__Judge__Loop__Structs_8hpp" kind="file"><name>PDJE_Judge_Loop_Structs.hpp</name>
   </compound>
   <compound refid="PDJE__Note__OBJ_8cpp" kind="file"><name>PDJE_Note_OBJ.cpp</name>
   </compound>
@@ -2189,21 +2334,21 @@
     <member refid="manualAudioTest_8cpp_1a4450494f995f5d36a0fa8f5774bcb503" kind="function"><name>idle_callback</name></member>
     <member refid="manualAudioTest_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
   </compound>
-  <compound refid="dir_19cbce0bc021dd85d2b0c9c456c2bbf4" kind="dir"><name>include/core/editor/featureWrapper/GitWrap/Add</name>
+  <compound refid="dir_bbcbb09a11051f9fd8dcbc091ac26098" kind="dir"><name>include/core/editor/DEPRECATE/GitWrap/Add</name>
   </compound>
   <compound refid="dir_b45c37b11838b6f601817fe7eead1acc" kind="dir"><name>include/core/MainObjects/audioPlayer</name>
   </compound>
   <compound refid="dir_ad492247db50343f83b34a0c2421cd05" kind="dir"><name>include/core/audioRender</name>
   </compound>
-  <compound refid="dir_79cdf331b4dbe5154d3bef1a4797150b" kind="dir"><name>include/core/editor/featureWrapper/GitWrap/Blame</name>
+  <compound refid="dir_611f952782d58b79faaa3f797fc7d0c0" kind="dir"><name>include/core/editor/DEPRECATE/GitWrap/Blame</name>
   </compound>
-  <compound refid="dir_ef98291546f671d6e4d3575aa5f45836" kind="dir"><name>include/core/editor/featureWrapper/GitWrap/Branch</name>
+  <compound refid="dir_4d44d61fe35e0a039636c7f32399ee70" kind="dir"><name>include/core/editor/DEPRECATE/GitWrap/Branch</name>
   </compound>
   <compound refid="dir_4ec0bb598601a2af4ed271f47818b032" kind="dir"><name>include/core/db/Capnp</name>
   </compound>
   <compound refid="dir_335fcd3fc623029a3195a5a4e3ef1f15" kind="dir"><name>include/core/db/Capnp/CapnpBinary</name>
   </compound>
-  <compound refid="dir_831e032be99eda75b56b7a8dce0d0177" kind="dir"><name>include/core/editor/featureWrapper/GitWrap/Commit</name>
+  <compound refid="dir_905ed8d566e21a9f4381abdae8b5b2bc" kind="dir"><name>include/core/editor/DEPRECATE/GitWrap/Commit</name>
   </compound>
   <compound refid="dir_621a1907a15eb6af9c4cdfca5203db29" kind="dir"><name>include/input/IPC/common</name>
   </compound>
@@ -2211,11 +2356,15 @@
   </compound>
   <compound refid="dir_3d69f64eaf81436fe2b22361382717e5" kind="dir"><name>include/core</name>
   </compound>
+  <compound refid="dir_80c8b9b6459eff87e0fd6129f654b2c5" kind="dir"><name>include/global/Crypto</name>
+  </compound>
   <compound refid="dir_d1bfec9c9cadb0bfa084cd4f8bea7d71" kind="dir"><name>include/global/DataLines</name>
   </compound>
   <compound refid="dir_bf89bd0731c9a7e4080c298b5d044dff" kind="dir"><name>include/core/db</name>
   </compound>
-  <compound refid="dir_521b41e543aa862af010c39e5e6199c2" kind="dir"><name>include/core/editor/featureWrapper/GitWrap/Diff</name>
+  <compound refid="dir_3c28af5aab2a79e11edf5dea51168626" kind="dir"><name>include/core/editor/DEPRECATE</name>
+  </compound>
+  <compound refid="dir_7e6e7bc308eacffb1070fc3a4d0effd1" kind="dir"><name>include/core/editor/DEPRECATE/GitWrap/Diff</name>
   </compound>
   <compound refid="dir_0ead048a4fec859a4a79183d2c6ed038" kind="dir"><name>include/core/editor</name>
   </compound>
@@ -2223,11 +2372,13 @@
   </compound>
   <compound refid="dir_1ed5b573466da28fc69cebcadb3d24d2" kind="dir"><name>include/core/audioRender/MixMachine/EFFECT</name>
   </compound>
+  <compound refid="dir_bfcf39c6f5d16d5b5550ed17a6a6f4b3" kind="dir"><name>include/core/editor/TimeLine/EventMarker</name>
+  </compound>
   <compound refid="dir_3fa79866a0537a21d3500516a7ab83b0" kind="dir"><name>include/core/audioRender/MixMachine/FAUST_VALS</name>
   </compound>
-  <compound refid="dir_e71fffd7609d2f0769c384ac55f91d82" kind="dir"><name>include/core/editor/featureWrapper</name>
+  <compound refid="dir_36d3ba3e5672686af0e9c8d0d4b90a6a" kind="dir"><name>include/core/editor/TimeLine/GitDataPack</name>
   </compound>
-  <compound refid="dir_d9fcb39c877e038b4c364459a6a572f5" kind="dir"><name>include/core/editor/featureWrapper/GitWrap</name>
+  <compound refid="dir_f2d5e4ae2e2684dc78fc9c2d82e4c046" kind="dir"><name>include/core/editor/DEPRECATE/GitWrap</name>
   </compound>
   <compound refid="dir_87bf3c13ffa0785e1f4cdcb726b9dfec" kind="dir"><name>include/global</name>
   </compound>
@@ -2245,11 +2396,15 @@
   </compound>
   <compound refid="dir_97b30b8874f62c011ab621074f7930a2" kind="dir"><name>include/input/IPC</name>
   </compound>
-  <compound refid="dir_d8d9f99f146a7b13fcf8c8a2e8216f07" kind="dir"><name>include/core/editor/featureWrapper/JSONWrap</name>
+  <compound refid="dir_67f6d2c332b2e81721cf03403c875c64" kind="dir"><name>include/core/editor/TimeLine/JSONWrap</name>
   </compound>
   <compound refid="dir_fb16984359168171d183d90a4f706910" kind="dir"><name>include/judge</name>
   </compound>
   <compound refid="dir_6e4e7940a8bf4aab717c0b7c1436b407" kind="dir"><name>include/tests/JUDGE_TESTS</name>
+  </compound>
+  <compound refid="dir_3e89ba93137acc9143c7aec863e8c076" kind="dir"><name>include/core/editor/TimeLine/LineVersion</name>
+  </compound>
+  <compound refid="dir_da2bfc32abcae7f3ba3ef6ef5807f48a" kind="dir"><name>include/global/Crypto/Linux</name>
   </compound>
   <compound refid="dir_2195019a25cfae979fef62ec3f76cf87" kind="dir"><name>include/global/Highres_Clock/Linux</name>
   </compound>
@@ -2257,9 +2412,11 @@
   </compound>
   <compound refid="dir_bcba7e3a497454d4e73ae7ebd088a69d" kind="dir"><name>include/input/linux</name>
   </compound>
-  <compound refid="dir_8cb63b91acd5a50e4445493535225015" kind="dir"><name>include/core/editor/featureWrapper/GitWrap/Log</name>
+  <compound refid="dir_884011758f3811db69ebf630df5ade7f" kind="dir"><name>include/core/editor/DEPRECATE/GitWrap/Log</name>
   </compound>
   <compound refid="dir_6621bf596c0532f84b8de820ac433615" kind="dir"><name>include/judge/Loop</name>
+  </compound>
+  <compound refid="dir_5ab1f2493520969d5b7ce59c936f88d7" kind="dir"><name>include/global/Crypto/Mac</name>
   </compound>
   <compound refid="dir_8052a0a11e62975c75c2078f9c755ffd" kind="dir"><name>include/global/Highres_Clock/Mac</name>
   </compound>
@@ -2299,9 +2456,13 @@
   </compound>
   <compound refid="dir_4abf8571c1830d727ba746fd6ad81b8d" kind="dir"><name>include/tests</name>
   </compound>
+  <compound refid="dir_76d0d388485bd95aa67992d97491f1b4" kind="dir"><name>include/core/editor/TimeLine</name>
+  </compound>
   <compound refid="dir_8ab63cf3da73e134fc2ec11861f63c26" kind="dir"><name>include/core/db/Capnp/Translators</name>
   </compound>
   <compound refid="dir_a828758f44a24dcf2618995cb650c254" kind="dir"><name>include/input/IPC/transmission</name>
+  </compound>
+  <compound refid="dir_b53c73c5aa3b0a2026e546bbf6657f41" kind="dir"><name>include/global/Crypto/Windows</name>
   </compound>
   <compound refid="dir_6de2bafdcd380889bda911a16a85dfd3" kind="dir"><name>include/global/Highres_Clock/Windows</name>
   </compound>

@@ -59,6 +59,8 @@ Included By
 
 - :ref:`file_include_core_MainObjects_editorObject_addline.cpp`
 
+- :ref:`file_include_core_MainObjects_editorObject_deleteline.cpp`
+
 - :ref:`file_include_core_MainObjects_editorObject_editorObject.cpp`
 
 - :ref:`file_include_core_MainObjects_editorObject_editorObject.hpp`
@@ -101,31 +103,47 @@ Included By
 
 - :ref:`file_include_core_db_trackDB.cpp`
 
+- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Add_AddController.cpp`
+
+- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Blame_BlameController.cpp`
+
+- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Branch_editorBranch.cpp`
+
+- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Commit_editorCommit.cpp`
+
+- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Diff_DiffController.cpp`
+
+- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Log_gitLog.cpp`
+
+- :ref:`file_include_core_editor_DEPRECATE_GitWrap_PDJE_GitHandler.cpp`
+
+- :ref:`file_include_core_editor_DEPRECATE_GitWrap_gitWrapper.cpp`
+
+- :ref:`file_include_core_editor_TimeLine_EventMarker_EventMarker.hpp`
+
+- :ref:`file_include_core_editor_TimeLine_GitDataPack_GitDatas.hpp`
+
+- :ref:`file_include_core_editor_TimeLine_GitDataPack_GitRAII.hpp`
+
+- :ref:`file_include_core_editor_TimeLine_JSONWrap_jsonWrapper.hpp`
+
+- :ref:`file_include_core_editor_TimeLine_LineVersion_LineVersion.cpp`
+
+- :ref:`file_include_core_editor_TimeLine_TimeLine.hpp`
+
 - :ref:`file_include_core_editor_editor.cpp`
 
-- :ref:`file_include_core_editor_featureWrapper_GitWrap_Add_AddController.cpp`
-
-- :ref:`file_include_core_editor_featureWrapper_GitWrap_Blame_BlameController.cpp`
-
-- :ref:`file_include_core_editor_featureWrapper_GitWrap_Branch_editorBranch.cpp`
-
-- :ref:`file_include_core_editor_featureWrapper_GitWrap_Commit_editorCommit.cpp`
-
-- :ref:`file_include_core_editor_featureWrapper_GitWrap_Diff_DiffController.cpp`
-
-- :ref:`file_include_core_editor_featureWrapper_GitWrap_Log_gitLog.cpp`
-
-- :ref:`file_include_core_editor_featureWrapper_GitWrap_PDJE_GitHandler.cpp`
-
-- :ref:`file_include_core_editor_featureWrapper_GitWrap_gitWrapper.cpp`
-
-- :ref:`file_include_core_editor_featureWrapper_JSONWrap_jsonWrapper.hpp`
+- :ref:`file_include_core_editor_editor.hpp`
 
 - :ref:`file_include_core_interface_PDJE_interface.cpp`
 
 - :ref:`file_include_core_interface_PDJE_interface.hpp`
 
 - :ref:`file_include_core_interface_PDJE_polyglot_wraps.cpp`
+
+- :ref:`file_include_global_Crypto_PDJE_Crypto.hpp`
+
+- :ref:`file_include_global_Crypto_PSKPipe.hpp`
 
 - :ref:`file_include_global_DataLines_fileNameSanitizer.cpp`
 
@@ -160,11 +178,4 @@ Defines
 - :ref:`exhale_define_PDJE__LOG__SETTER_8hpp_1a2721d826078db7a962e7664a9d2f4016`
 
 - :ref:`exhale_define_PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590`
-
-
-Variables
----------
-
-
-- :ref:`exhale_variable_PDJE__LOG__SETTER_8hpp_1aafde7a4d32d3efc555088bc1babf0e88`
 

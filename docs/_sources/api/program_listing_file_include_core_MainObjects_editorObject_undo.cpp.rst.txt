@@ -10,20 +10,21 @@ Program Listing for File undo.cpp
 
 .. code-block:: cpp
 
+   #include "MusicJsonHelper.hpp"
    #include "editorObject.hpp"
    
    template <>
    PDJE_API bool
    editorObject::Undo<EDIT_ARG_NOTE>()
    {
-       return E_obj->noteHandle.first->Undo();
+       return edit_core->noteHandle->Undo();
    }
    
    template <>
    PDJE_API bool
    editorObject::Undo<EDIT_ARG_MIX>()
    {
-       return E_obj->mixHandle.first->Undo();
+       return edit_core->mixHandle->Undo();
    }
    
    template <>
@@ -38,9 +39,10 @@ Program Listing for File undo.cpp
            return false;
        }
    
-       for (auto &i : E_obj->musicHandle) {
-           if (i.musicName == safeMus) {
-               return i.gith->Undo();
+       for (auto &i : edit_core->musicHandle) {
+   
+           if (GetTitle(*i.handle->GetJson()) == safeMus) {
+               return i.handle->Undo();
            }
        }
        warnlog(
@@ -54,5 +56,5 @@ Program Listing for File undo.cpp
    PDJE_API bool
    editorObject::Undo<EDIT_ARG_KEY_VALUE>()
    {
-       return E_obj->KVHandler.first->Undo();
+       return edit_core->KVHandle->Undo();
    }

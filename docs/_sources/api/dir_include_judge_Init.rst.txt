@@ -18,5 +18,6 @@ Files
 
 - :ref:`file_include_judge_Init_PDJE_Judge_Init.cpp`
 - :ref:`file_include_judge_Init_PDJE_Judge_Init.hpp`
+- :ref:`file_include_judge_Init_PDJE_Judge_Init_Structs.hpp`
 
 

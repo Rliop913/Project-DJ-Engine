@@ -51,12 +51,6 @@ JUDGE::Start()
     return JUDGE_STATUS::OK;
 }
 
-JUDGE_STATUS
-JUDGE::CheckStatus()
-{
-    return status;
-}
-
 void
 JUDGE::End()
 {

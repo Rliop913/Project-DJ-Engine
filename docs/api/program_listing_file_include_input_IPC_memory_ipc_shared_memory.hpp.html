@@ -85,6 +85,7 @@
 <p>↰ <a class="reference internal" href="file_include_input_IPC_memory_ipc_shared_memory.hpp.html#file-include-input-ipc-memory-ipc-shared-memory-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/input/IPC/memory/ipc_shared_memory.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Crypto.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_INPUT_PROCESS_HASH.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span>
@@ -94,7 +95,6 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ios&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;limits&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;picosha2.h&gt;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
@@ -135,7 +135,6 @@
 <span class="w">    </span><span class="nf">MakeIPCSharedMemory</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="o">&amp;</span><span class="n">memfd_name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
 
 <span class="w">    </span><span class="o">~</span><span class="n">SharedMem</span><span class="p">();</span>
-
 <span class="p">};</span>
 
 <span class="p">};</span><span class="w"> </span><span class="c1">// namespace PDJE_IPC</span>

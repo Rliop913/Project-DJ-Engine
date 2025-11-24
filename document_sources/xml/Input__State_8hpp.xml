@@ -74,7 +74,7 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
@@ -221,6 +221,14 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
+      <node id="34">
+        <label>include/judge/Init/PDJE_Judge_Init_Structs.hpp</label>
+        <link refid="PDJE__Judge__Init__Structs_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
       <node id="23">
         <label>include/judge/Loop/HID.cpp</label>
         <link refid="HID_8cpp"/>
@@ -257,7 +265,13 @@
         <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="35">
+        <label>include/judge/Loop/PDJE_Judge_Loop_Structs.hpp</label>
+        <link refid="PDJE__Judge__Loop__Structs_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
         <label>include/judge/NoteOBJ/PDJE_Note_OBJ.cpp</label>
         <link refid="PDJE__Note__OBJ_8cpp"/>
       </node>
@@ -266,7 +280,7 @@
         <link refid="PDJE__Note__OBJ_8hpp"/>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
@@ -274,7 +288,9 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
@@ -291,12 +307,14 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="37">
         <label>include/judge/PDJE_Rule.hpp</label>
         <link refid="PDJE__Rule_8hpp"/>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -1447,8 +1465,8 @@
 <codeline lineno="167"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="168"><highlight class="normal"></highlight></codeline>
 <codeline lineno="169" refid="structPDJE__HID__Event" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structPDJE__HID__Event" kindref="compound">PDJE_HID_Event</ref><sp/>{</highlight></codeline>
-<codeline lineno="170" refid="structPDJE__HID__Event_1a3368c602885686300c294e80ea435212" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="structPDJE__HID__Event_1a3368c602885686300c294e80ea435212" kindref="member">hid_buffer</ref>[512];</highlight></codeline>
-<codeline lineno="171" refid="structPDJE__HID__Event_1a7e965747cf6c3ff00bfeebca092556b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__HID__Event_1a7e965747cf6c3ff00bfeebca092556b6" kindref="member">hid_byte_size</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="170" refid="structPDJE__HID__Event_1a3368c602885686300c294e80ea435212" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__HID__Event_1a3368c602885686300c294e80ea435212" kindref="member">hid_buffer</ref>[512];</highlight></codeline>
+<codeline lineno="171" refid="structPDJE__HID__Event_1a7e965747cf6c3ff00bfeebca092556b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="structPDJE__HID__Event_1a7e965747cf6c3ff00bfeebca092556b6" kindref="member">hid_byte_size</ref><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="172"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"></highlight></codeline>
 <codeline lineno="174" refid="structMidi__Input__Data" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structMidi__Input__Data" kindref="compound">Midi_Input_Data</ref><sp/>{</highlight></codeline>

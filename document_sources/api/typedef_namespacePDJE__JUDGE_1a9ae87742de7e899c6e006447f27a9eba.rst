@@ -3,7 +3,7 @@
 Typedef PDJE_JUDGE::RAIL_ID
 ===========================
 
-- Defined in :ref:`file_include_judge_Init_PDJE_Judge_Init.hpp`
+- Defined in :ref:`file_include_judge_Init_PDJE_Judge_Init_Structs.hpp`
 
 
 Typedef Documentation

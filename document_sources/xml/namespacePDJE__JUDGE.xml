@@ -3,15 +3,21 @@
   <compounddef id="namespacePDJE__JUDGE" kind="namespace" language="C++">
     <compoundname>PDJE_JUDGE</compoundname>
     <innerclass refid="structPDJE__JUDGE_1_1Custom__Events" prot="public">PDJE_JUDGE::Custom_Events</innerclass>
+    <innerclass refid="structPDJE__JUDGE_1_1EV__Thread" prot="public">PDJE_JUDGE::EV_Thread</innerclass>
     <innerclass refid="structPDJE__JUDGE_1_1EVENT__RULE" prot="public">PDJE_JUDGE::EVENT_RULE</innerclass>
     <innerclass refid="structPDJE__JUDGE_1_1INPUT__CONFIG" prot="public">PDJE_JUDGE::INPUT_CONFIG</innerclass>
     <innerclass refid="structPDJE__JUDGE_1_1INPUT__RULE" prot="public">PDJE_JUDGE::INPUT_RULE</innerclass>
+    <innerclass refid="structPDJE__JUDGE_1_1INPUT__SETTING" prot="public">PDJE_JUDGE::INPUT_SETTING</innerclass>
     <innerclass refid="classPDJE__JUDGE_1_1JUDGE" prot="public">PDJE_JUDGE::JUDGE</innerclass>
     <innerclass refid="classPDJE__JUDGE_1_1Judge__Init" prot="public">PDJE_JUDGE::Judge_Init</innerclass>
     <innerclass refid="classPDJE__JUDGE_1_1Judge__Loop" prot="public">PDJE_JUDGE::Judge_Loop</innerclass>
+    <innerclass refid="structPDJE__JUDGE_1_1LoopCached" prot="public">PDJE_JUDGE::LoopCached</innerclass>
+    <innerclass refid="structPDJE__JUDGE_1_1mouse__btn__event" prot="public">PDJE_JUDGE::mouse_btn_event</innerclass>
     <innerclass refid="structPDJE__JUDGE_1_1NOTE" prot="public">PDJE_JUDGE::NOTE</innerclass>
     <innerclass refid="structPDJE__JUDGE_1_1NOTE__ITR" prot="public">PDJE_JUDGE::NOTE_ITR</innerclass>
     <innerclass refid="classPDJE__JUDGE_1_1OBJ" prot="public">PDJE_JUDGE::OBJ</innerclass>
+    <innerclass refid="structPDJE__JUDGE_1_1Queues" prot="public">PDJE_JUDGE::Queues</innerclass>
+    <innerclass refid="structPDJE__JUDGE_1_1useDatas" prot="public">PDJE_JUDGE::useDatas</innerclass>
     <sectiondef kind="enum">
       <memberdef kind="enum" id="namespacePDJE__JUDGE_1afa6381f8f229ccd5c5f8dbae248cebb2" prot="public" static="no" strong="no">
         <type></type>
@@ -62,12 +68,13 @@
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>Judge runtime status codes. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/PDJE_Judge.hpp" line="14" column="1" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="14" bodyend="21"/>
+        <location file="include/judge/PDJE_Judge.hpp" line="15" column="1" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="15" bodyend="22"/>
       </memberdef>
       <memberdef kind="enum" id="namespacePDJE__JUDGE_1ab1e6fff79298188ed6da7c8b294f109d" prot="public" static="no" strong="no">
         <type></type>
@@ -132,12 +139,13 @@
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>Mouse-specific event ids mapped from input log. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/PDJE_Rule.hpp" line="11" column="1" bodyfile="include/judge/PDJE_Rule.hpp" bodystart="11" bodyend="20"/>
+        <location file="include/judge/PDJE_Rule.hpp" line="12" column="1" bodyfile="include/judge/PDJE_Rule.hpp" bodystart="12" bodyend="21"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="typedef">
@@ -153,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="21" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="21" bodyend="-1"/>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="16" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespacePDJE__JUDGE_1a74a76cb2add5051c233d27fbedba793c" prot="public" static="no">
         <type>std::function&lt; void(std::unordered_map&lt; uint64_t, <ref refid="namespacePDJE__JUDGE_1ad8c8d340702b0759a8cecb53091de1e0" kindref="member">NOTE_VEC</ref> &gt;)&gt;</type>
@@ -168,7 +176,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="22" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="22" bodyend="-1"/>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="17" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespacePDJE__JUDGE_1a404264babe4bb096766de0bef9d0eea6" prot="public" static="no">
         <type>std::function&lt; void( uint64_t railid, bool Pressed, bool IsLate, uint64_t diff)&gt;</type>
@@ -183,11 +191,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="24" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="24" bodyend="-1"/>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="19" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="19" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacePDJE__JUDGE_1a23d1bbaefe85c70073b4779f17d63f3d" prot="public" static="no">
+      <memberdef kind="typedef" id="namespacePDJE__JUDGE_1a4206034d0b6d310b3a8362e649936afc" prot="public" static="no">
         <type>std::function&lt; void(const <ref refid="namespacePDJE__JUDGE_1a182d502cf8e15e13ed25f3550c82a53a" kindref="member">LOCAL_TIME</ref> microSecond, const <ref refid="namespacePDJE__JUDGE_1ad73c9d4a59c40cc7c1a9fce27dc1be72" kindref="member">P_NOTE_VEC</ref> &amp;found_events, uint64_t railID, int x, int y, <ref refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726f" kindref="member">PDJE_Mouse_Axis_Type</ref> axis_type)&gt;</type>
-        <definition>using PDJE_JUDGE::MOUSE_AXIS_PARSE_CALLBACK = 
+        <definition>using PDJE_JUDGE::MOUSE_CUSTOM_PARSE_CALLBACK =  
     std::function&lt;void(const LOCAL_TIME     microSecond,
                        const P_NOTE_VEC    &amp;found_events,
                        uint64_t             railID,
@@ -195,15 +203,15 @@
                        int                  y,
                        PDJE_Mouse_Axis_Type axis_type)&gt;</definition>
         <argsstring></argsstring>
-        <name>MOUSE_AXIS_PARSE_CALLBACK</name>
-        <qualifiedname>PDJE_JUDGE::MOUSE_AXIS_PARSE_CALLBACK</qualifiedname>
+        <name>MOUSE_CUSTOM_PARSE_CALLBACK</name>
+        <qualifiedname>PDJE_JUDGE::MOUSE_CUSTOM_PARSE_CALLBACK</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="26" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="26" bodyend="-1"/>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="21" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespacePDJE__JUDGE_1a0e0549990dbec87c7f25b9ae22f4dc39" prot="public" static="no">
         <type>uint64_t</type>
@@ -245,7 +253,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="28" column="1" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="28" bodyend="-1"/>
+        <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="29" column="1" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespacePDJE__JUDGE_1ad73c9d4a59c40cc7c1a9fce27dc1be72" prot="public" static="no">
         <type>std::vector&lt; <ref refid="structPDJE__JUDGE_1_1NOTE" kindref="compound">NOTE</ref> * &gt;</type>
@@ -259,7 +267,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="29" column="1" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="29" bodyend="-1"/>
+        <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="30" column="1" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespacePDJE__JUDGE_1ab03e3d67f9117a97f80f2a0a98221919" prot="public" static="no">
         <type>std::unordered_map&lt; uint64_t, <ref refid="structPDJE__JUDGE_1_1NOTE__ITR" kindref="compound">NOTE_ITR</ref> &gt;</type>
@@ -273,7 +281,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="36" column="1" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="36" bodyend="-1"/>
+        <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="38" column="1" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="var">
@@ -290,7 +298,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="13" column="23" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="13" bodyend="-1"/>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="7" column="23" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="7" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacePDJE__JUDGE_1a49aeda368d2cf3a66f5f62f6a9238714" prot="public" static="no" constexpr="yes" mutable="no">
         <type>int</type>
@@ -395,12 +403,13 @@
           <declname>pcm_frame</declname>
         </param>
         <briefdescription>
+<para>Convert PCM frame count to microseconds (48 kHz). </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="15" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="15" bodyend="19"/>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="10" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="10" bodyend="14"/>
       </memberdef>
       <memberdef kind="function" id="namespacePDJE__JUDGE_1aa9e54016cdfa5952aac53d9fbd2a7b9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -440,7 +449,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Loop/Keyboard.cpp" line="7" column="1" bodyfile="include/judge/Loop/Keyboard.cpp" bodystart="8" bodyend="41"/>
+        <location file="include/judge/Loop/Keyboard.cpp" line="8" column="1" bodyfile="include/judge/Loop/Keyboard.cpp" bodystart="9" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="namespacePDJE__JUDGE_1a551cc1174944d4a5f4e97d8c47e77460" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -480,7 +489,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Loop/Mouse.cpp" line="87" column="1" bodyfile="include/judge/Loop/Mouse.cpp" bodystart="88" bodyend="170"/>
+        <location file="include/judge/Loop/Mouse.cpp" line="99" column="1" bodyfile="include/judge/Loop/Mouse.cpp" bodystart="100" bodyend="183"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

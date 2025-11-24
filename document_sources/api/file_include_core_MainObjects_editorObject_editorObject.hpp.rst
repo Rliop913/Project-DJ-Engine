@@ -45,6 +45,8 @@ Includes
 
 - ``filesystem``
 
+- ``memory`` (:ref:`file_include_input_IPC_memory_ipc_shared_memory.hpp`)
+
 - ``optional``
 
 - ``pdjeLinter.hpp`` (:ref:`file_include_core_editor_pdjeLinter_pdjeLinter.hpp`)
@@ -83,7 +85,7 @@ Included By
 
 - :ref:`file_include_core_SWIG_editor_visitor.hpp`
 
-- :ref:`file_include_core_editor_featureWrapper_JSONWrap_MusicJson.cpp`
+- :ref:`file_include_core_editor_TimeLine_JSONWrap_MusicJson.cpp`
 
 - :ref:`file_include_core_interface_PDJE_interface.hpp`
 

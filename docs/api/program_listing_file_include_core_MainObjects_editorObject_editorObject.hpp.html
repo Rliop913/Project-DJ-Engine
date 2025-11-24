@@ -92,6 +92,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;pdjeLinter.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tempDB.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">EDIT_ARG_MUSIC</span><span class="w"> </span><span class="p">{</span>
@@ -107,71 +108,18 @@
 
 <span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">editorObject</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="o">:</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">tempDB</span><span class="o">&gt;</span><span class="w">      </span><span class="n">projectLocalDB</span><span class="p">;</span>
-<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w">                   </span><span class="n">projectRoot</span><span class="p">;</span>
-<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w">                   </span><span class="n">mixFilePath</span><span class="p">;</span>
-<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w">                   </span><span class="n">noteFilePath</span><span class="p">;</span>
-<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w">                   </span><span class="n">kvFilePath</span><span class="p">;</span>
-<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w">                   </span><span class="n">musicFileRootPath</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">PDJE_Editor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">E_obj</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">EDIT_ARG_TYPE</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="n">DefaultSaveFunction</span><span class="p">();</span>
-
-<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">EDIT_ARG_TYPE</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="n">DefaultSaveFunction</span><span class="p">(</span><span class="n">PDJE_Editor</span><span class="o">::</span><span class="n">MusicHandleStruct</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="p">,</span>
-<span class="w">                        </span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_MUSIC</span><span class="w">           </span><span class="o">&amp;</span><span class="n">obj</span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">tempDB</span><span class="o">&gt;</span><span class="w"> </span><span class="n">projectLocalDB</span><span class="p">;</span>
+<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w">              </span><span class="n">projectRoot</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// fs::path                   mixFilePath;</span>
+<span class="w">    </span><span class="c1">// fs::path                   noteFilePath;</span>
+<span class="w">    </span><span class="c1">// fs::path                   kvFilePath;</span>
+<span class="w">    </span><span class="c1">// fs::path                   musicFileRootPath;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">PDJE_Editor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">edit_core</span><span class="p">;</span>
 
 <span class="w">    </span><span class="n">trackdata</span>
 <span class="w">    </span><span class="nf">makeTrackData</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">trackTitle</span><span class="p">,</span><span class="w"> </span><span class="n">TITLE_COMPOSER</span><span class="w"> </span><span class="o">&amp;</span><span class="n">titles</span><span class="p">);</span>
 
 <span class="w">  </span><span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="n">git_repository</span><span class="w"> </span><span class="o">*</span>
-<span class="w">    </span><span class="n">getMixRepo</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">E_obj</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">mixHandle</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">gw</span><span class="p">.</span><span class="n">repo</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">git_repository</span><span class="w"> </span><span class="o">*</span>
-<span class="w">    </span><span class="n">getMusicRepo</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Title</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">safeTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Name_Sanitizer</span><span class="o">::</span><span class="n">sanitizeFileName</span><span class="p">(</span><span class="n">Title</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">safeTitle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">E_obj</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">music</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">musicHandle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">music</span><span class="p">.</span><span class="n">musicName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">safeTitle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">music</span><span class="p">.</span><span class="n">gith</span><span class="o">-&gt;</span><span class="n">gw</span><span class="p">.</span><span class="n">repo</span><span class="p">;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">git_repository</span><span class="w"> </span><span class="o">*</span>
-<span class="w">    </span><span class="n">getNoteRepo</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">E_obj</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">noteHandle</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">gw</span><span class="p">.</span><span class="n">repo</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">git_repository</span><span class="w"> </span><span class="o">*</span>
-<span class="w">    </span><span class="n">getKVRepo</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">E_obj</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">KVHandler</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">gw</span><span class="p">.</span><span class="n">repo</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
 <span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">EDIT_ARG_TYPE</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="kt">bool</span>
 <span class="w">    </span><span class="n">AddLine</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_TYPE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">obj</span><span class="p">);</span>
@@ -226,7 +174,7 @@
 
 <span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">EDIT_ARG_TYPE</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="n">Go</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">branchName</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">commitOID</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Go</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">commitOID</span><span class="p">);</span>
 
 <span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">EDIT_ARG_TYPE</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="n">DONT_SANITIZE</span>
@@ -237,18 +185,14 @@
 <span class="w">    </span><span class="n">GetLogWithJSONGraph</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">musicName</span><span class="p">);</span>
 
 <span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">EDIT_ARG_TYPE</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="kt">void</span>
 <span class="w">    </span><span class="n">UpdateLog</span><span class="p">();</span>
 
-<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">EDIT_ARG_TYPE</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="n">UpdateLog</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">branchName</span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">EDIT_ARG_TYPE</span><span class="o">&gt;</span>
-<span class="w">    </span><span class="n">DiffResult</span>
-<span class="w">    </span><span class="n">GetDiff</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldTimeStamp</span><span class="p">,</span>
-<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newTimeStamp</span><span class="p">);</span>
-
+<span class="w">    </span><span class="c1">// template &lt;typename EDIT_ARG_TYPE&gt;</span>
+<span class="w">    </span><span class="c1">// DiffResult</span>
+<span class="w">    </span><span class="c1">// GetDiff(const gitwrap::commit &amp;oldTimeStamp,</span>
+<span class="w">    </span><span class="c1">//         const gitwrap::commit &amp;newTimeStamp);</span>
+<span class="w">    </span><span class="c1">// DEPRECATE DIFF For Now</span>
 <span class="w">    </span><span class="n">nj</span><span class="w"> </span><span class="o">&amp;</span>
 <span class="w">    </span><span class="k">operator</span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">key</span><span class="p">);</span>
 
@@ -262,15 +206,11 @@
 <span class="w">                   </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">firstBeat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p">);</span>
 
 <span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="nf">Open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="o">&amp;</span><span class="n">projectPath</span><span class="p">);</span>
+<span class="w">    </span><span class="nf">Open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w">      </span><span class="o">&amp;</span><span class="n">projectPath</span><span class="p">,</span>
+<span class="w">         </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_name</span><span class="p">,</span>
+<span class="w">         </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_email</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">editorObject</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">editorObject</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_name</span><span class="p">,</span>
-<span class="w">                 </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_email</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">E_obj</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">auth_name</span><span class="p">,</span><span class="w"> </span><span class="n">auth_email</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">editorObject</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 
 <span class="w">    </span><span class="o">~</span><span class="n">editorObject</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
 <span class="p">};</span>
@@ -302,20 +242,6 @@
 <span class="n">editorObject</span><span class="o">::</span><span class="n">AddLine</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_MUSIC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">obj</span><span class="p">);</span>
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">DefaultSaveFunction</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">DefaultSaveFunction</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">DefaultSaveFunction</span><span class="o">&lt;</span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">DefaultSaveFunction</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span>
-<span class="w">    </span><span class="n">PDJE_Editor</span><span class="o">::</span><span class="n">MusicHandleStruct</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_MUSIC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">obj</span><span class="p">);</span>
-
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 <span class="n">PDJE_API</span><span class="w"> </span><span class="kt">int</span>
 <span class="n">editorObject</span><span class="o">::</span><span class="n">deleteLine</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_NOTE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">obj</span><span class="p">);</span>
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
@@ -342,22 +268,24 @@
 <span class="n">editorObject</span><span class="o">::</span><span class="n">getAll</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_MUSIC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">obj</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">jsonCallback</span><span class="p">);</span>
 
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="n">DiffResult</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">GetDiff</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldTimeStamp</span><span class="p">,</span>
-<span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newTimeStamp</span><span class="p">);</span>
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="n">DiffResult</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">GetDiff</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldTimeStamp</span><span class="p">,</span>
-<span class="w">                                    </span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newTimeStamp</span><span class="p">);</span>
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="n">DiffResult</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">GetDiff</span><span class="o">&lt;</span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldTimeStamp</span><span class="p">,</span>
-<span class="w">                                          </span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newTimeStamp</span><span class="p">);</span>
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="n">DiffResult</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">GetDiff</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldTimeStamp</span><span class="p">,</span>
-<span class="w">                                      </span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newTimeStamp</span><span class="p">);</span>
+<span class="c1">// template &lt;&gt;</span>
+<span class="c1">// PDJE_API DiffResult</span>
+<span class="c1">// editorObject::GetDiff&lt;EDIT_ARG_NOTE&gt;(const gitwrap::commit &amp;oldTimeStamp,</span>
+<span class="c1">//                                      const gitwrap::commit &amp;newTimeStamp);</span>
+<span class="c1">// template &lt;&gt;</span>
+<span class="c1">// PDJE_API DiffResult</span>
+<span class="c1">// editorObject::GetDiff&lt;EDIT_ARG_MIX&gt;(const gitwrap::commit &amp;oldTimeStamp,</span>
+<span class="c1">//                                     const gitwrap::commit &amp;newTimeStamp);</span>
+<span class="c1">// template &lt;&gt;</span>
+<span class="c1">// PDJE_API DiffResult</span>
+<span class="c1">// editorObject::GetDiff&lt;EDIT_ARG_KEY_VALUE&gt;(const gitwrap::commit</span>
+<span class="c1">// &amp;oldTimeStamp,</span>
+<span class="c1">//                                           const gitwrap::commit</span>
+<span class="c1">//                                           &amp;newTimeStamp);</span>
+<span class="c1">// template &lt;&gt;</span>
+<span class="c1">// PDJE_API DiffResult</span>
+<span class="c1">// editorObject::GetDiff&lt;EDIT_ARG_MUSIC&gt;(const gitwrap::commit &amp;oldTimeStamp,</span>
+<span class="c1">//                                       const gitwrap::commit &amp;newTimeStamp);</span>
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 <span class="n">PDJE_API</span><span class="w"> </span><span class="n">DONT_SANITIZE</span>
@@ -374,20 +302,16 @@
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 <span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">Go</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">branchName</span><span class="p">,</span>
-<span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">commitOID</span><span class="p">);</span>
+<span class="n">editorObject</span><span class="o">::</span><span class="n">Go</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">commitOID</span><span class="p">);</span>
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 <span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">Go</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">branchName</span><span class="p">,</span>
-<span class="w">                               </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">commitOID</span><span class="p">);</span>
+<span class="n">editorObject</span><span class="o">::</span><span class="n">Go</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">commitOID</span><span class="p">);</span>
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 <span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">Go</span><span class="o">&lt;</span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">branchName</span><span class="p">,</span>
-<span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">commitOID</span><span class="p">);</span>
+<span class="n">editorObject</span><span class="o">::</span><span class="n">Go</span><span class="o">&lt;</span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">commitOID</span><span class="p">);</span>
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 <span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">Go</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">branchName</span><span class="p">,</span>
-<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">commitOID</span><span class="p">);</span>
+<span class="n">editorObject</span><span class="o">::</span><span class="n">Go</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">commitOID</span><span class="p">);</span>
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 <span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
@@ -411,34 +335,22 @@
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 <span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
 <span class="n">editorObject</span><span class="o">::</span><span class="n">Undo</span><span class="o">&lt;</span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">Undo</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">musicName</span><span class="p">);</span>
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
+<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">void</span>
 <span class="n">editorObject</span><span class="o">::</span><span class="n">UpdateLog</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">();</span>
+
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">UpdateLog</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">branchName</span><span class="p">);</span>
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
+<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">void</span>
 <span class="n">editorObject</span><span class="o">::</span><span class="n">UpdateLog</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">();</span>
+
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">UpdateLog</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">branchName</span><span class="p">);</span>
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
+<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">void</span>
 <span class="n">editorObject</span><span class="o">::</span><span class="n">UpdateLog</span><span class="o">&lt;</span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&gt;</span><span class="p">();</span>
+
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">UpdateLog</span><span class="o">&lt;</span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">branchName</span><span class="p">);</span>
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
+<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">void</span>
 <span class="n">editorObject</span><span class="o">::</span><span class="n">UpdateLog</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">UpdateLog</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">musicName</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>

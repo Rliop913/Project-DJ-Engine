@@ -4,6 +4,20 @@
     <compoundname>PDJE_IPC::ChildProcess</compoundname>
     <includes refid="ChildProcess_8hpp" local="no">ChildProcess.hpp</includes>
     <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1a6339e85badac77db38f70a01b94f4e25" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__CRYPTO_1_1AEAD" kindref="compound">PDJE_CRYPTO::AEAD</ref></type>
+        <definition>PDJE_CRYPTO::AEAD PDJE_IPC::ChildProcess::aead</definition>
+        <argsstring></argsstring>
+        <name>aead</name>
+        <qualifiedname>PDJE_IPC::ChildProcess::aead</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="26" column="60" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1af67855514dc8ca516ed47feb978b00fe" prot="private" static="no" mutable="no">
         <type>std::unordered_map&lt; std::string, std::function&lt; void()&gt; &gt;</type>
         <definition>std::unordered_map&lt;std::string, std::function&lt;void()&gt; &gt; PDJE_IPC::ChildProcess::callables</definition>
@@ -16,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="25" column="24" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="25" bodyend="-1"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="27" column="24" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1ae433a4c4dbd599c890fc2c67b06eac3c" prot="private" static="no" mutable="no">
         <type>httplib::Server</type>
@@ -30,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="26" column="60" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="26" bodyend="-1"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="28" column="60" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1a960afc9f9aaa3935e4f9d0033f308638" prot="private" static="no" mutable="no">
         <type>std::unordered_map&lt; <ref refid="PDJE__Input__DataLine_8hpp_1a73ea437825558867dcad305e6ab74cd9" kindref="member">PDJE_ID</ref>, <ref refid="namespacePDJE__IPC_1afa0a7b47d125684c3f3557e194fc5e56" kindref="member">PDJE_NAME</ref> &gt;</type>
@@ -44,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="28" column="34" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="28" bodyend="-1"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="30" column="34" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1a6393c9a400a3bf748024f0a0f27e1d54" prot="private" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="classPDJE__Buffer__Arena" kindref="compound">PDJE_Buffer_Arena</ref>&lt; <ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref> &gt; &gt;</type>
@@ -58,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="29" column="19" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="29" bodyend="-1"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="31" column="19" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1a8c4cbe6737af94e6a955015d07ff7ca6" prot="private" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">PDJE_IPC::SharedMem</ref>&lt; int, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC::PDJE_IPC_RW</ref> &gt; &gt;</type>
@@ -72,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="31" column="9" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="31" bodyend="-1"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="33" column="9" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1a4b1737bb5d9aee0d540a7b18bafdd05d" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt;</type>
@@ -86,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="41" column="38" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="41" bodyend="-1"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="43" column="38" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1a637e213f668bf8bb9e24d04fe6c88afb" prot="private" static="no" mutable="no">
         <type>std::unordered_map&lt; <ref refid="namespacePDJE__IPC_1aaf89512571dfd440f5c2d0d57df24042" kindref="member">PDJE_DEV_PATH</ref>, <ref refid="namespacePDJE__IPC_1afa0a7b47d125684c3f3557e194fc5e56" kindref="member">PDJE_NAME</ref> &gt;</type>
@@ -100,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="42" column="24" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="42" bodyend="-1"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="44" column="24" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-attrib">
@@ -117,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="48" column="10" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="48" bodyend="-1"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="50" column="10" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPDJE__IPC_1_1ChildProcess_1afb349220476fcc63c91695093b550c77" prot="public" static="no" mutable="no">
         <type><ref refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK" kindref="compound">PDJE_HIGHRES_CLOCK::CLOCK</ref></type>
@@ -131,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="135" column="31" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="135" bodyend="-1"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="139" column="31" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="139" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -154,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="34" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="11" bodyend="15"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="36" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="11" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1afe9b0f30368a296df243c2d2ce57dfa2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -180,7 +194,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="37" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="17" bodyend="22"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="39" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="17" bodyend="22"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1adfd56f3914cbddc381f6dc3d98fe0553" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -194,23 +208,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="45" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="24" bodyend="27"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="47" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="24" bodyend="27"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1a70dcc361fd40d69c36b539dca174b376" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1aeb42f8e2e9a32d35abec8ac5359a70d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PDJE_IPC::ChildProcess::ChildProcess</definition>
-        <argsstring>()</argsstring>
+        <argsstring>(PDJE_CRYPTO::PSK &amp;psk)</argsstring>
         <name>ChildProcess</name>
         <qualifiedname>PDJE_IPC::ChildProcess::ChildProcess</qualifiedname>
+        <param>
+          <type><ref refid="classPDJE__CRYPTO_1_1PSK" kindref="compound">PDJE_CRYPTO::PSK</ref> &amp;</type>
+          <declname>psk</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="49" column="5" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="49" bodyend="134"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="51" column="5" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="51" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1a5cea39de39ff116294c543cefc169488" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -228,7 +246,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="137" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="6" bodyend="9"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="141" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="6" bodyend="9"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1a5d7ed4a541784f3b0ec8a214b7b22494" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void *</type>
@@ -242,7 +260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="139" column="5" bodyfile="include/input/IPC/transmission/windows/InputLoop.cpp" bodystart="9" bodyend="30"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="143" column="5" bodyfile="include/input/IPC/transmission/windows/InputLoop.cpp" bodystart="9" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1ac998742bac92e33b0f7f3fe42df868c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -256,7 +274,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="141" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="30" bodyend="33"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="145" column="5" bodyfile="include/input/IPC/transmission/linux/ChildProcess.cpp" bodystart="30" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1a7d772ad7584d5d5daa81174ebe6204a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -270,7 +288,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="143" column="5" bodyfile="include/input/IPC/transmission/windows/InputLoop.cpp" bodystart="32" bodyend="183"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="147" column="5" bodyfile="include/input/IPC/transmission/windows/InputLoop.cpp" bodystart="32" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__IPC_1_1ChildProcess_1afa1ab7ce6992a493853bdbee1b9daf80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -284,7 +302,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="145" column="5"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="149" column="5"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -292,7 +310,15 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="8">
+      <node id="2">
+        <label>PDJE_CRYPTO::AEAD</label>
+        <link refid="classPDJE__CRYPTO_1_1AEAD"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>dec</edgelabel>
+          <edgelabel>enc</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
         <label>PDJE_HIGHRES_CLOCK::CLOCK</label>
         <link refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK"/>
       </node>
@@ -300,57 +326,64 @@
         <label>PDJE_IPC::ChildProcess</label>
         <link refid="classPDJE__IPC_1_1ChildProcess"/>
         <childnode refid="2" relation="usage">
+          <edgelabel>aead</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
           <edgelabel>callables</edgelabel>
         </childnode>
-        <childnode refid="5" relation="usage">
+        <childnode refid="7" relation="usage">
           <edgelabel>id_name</edgelabel>
         </childnode>
-        <childnode refid="6" relation="usage">
+        <childnode refid="8" relation="usage">
           <edgelabel>configed_devices</edgelabel>
         </childnode>
-        <childnode refid="7" relation="usage">
+        <childnode refid="9" relation="usage">
           <edgelabel>unlisted_targets</edgelabel>
         </childnode>
-        <childnode refid="8" relation="usage">
+        <childnode refid="10" relation="usage">
           <edgelabel>timer</edgelabel>
         </childnode>
       </node>
-      <node id="4">
+      <node id="6">
         <label>std::basic_string&lt; Char &gt;</label>
       </node>
-      <node id="3">
+      <node id="5">
         <label>std::string</label>
-        <childnode refid="4" relation="public-inheritance">
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::unique_ptr&lt; Botan::Cipher_Mode &gt;</label>
+      </node>
+      <node id="9">
+        <label>std::unordered_map&lt; PDJE_DEV_PATH, PDJE_NAME &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>elements</edgelabel>
+          <edgelabel>keys</edgelabel>
         </childnode>
       </node>
       <node id="7">
-        <label>std::unordered_map&lt; PDJE_DEV_PATH, PDJE_NAME &gt;</label>
-        <childnode refid="3" relation="usage">
-          <edgelabel>elements</edgelabel>
-          <edgelabel>keys</edgelabel>
-        </childnode>
-      </node>
-      <node id="5">
         <label>std::unordered_map&lt; PDJE_ID, PDJE_NAME &gt;</label>
-        <childnode refid="3" relation="usage">
+        <childnode refid="5" relation="usage">
           <edgelabel>elements</edgelabel>
           <edgelabel>keys</edgelabel>
         </childnode>
       </node>
-      <node id="2">
+      <node id="4">
         <label>std::unordered_map&lt; std::string, std::function&lt; void()&gt; &gt;</label>
-        <childnode refid="3" relation="usage">
+        <childnode refid="5" relation="usage">
           <edgelabel>keys</edgelabel>
         </childnode>
       </node>
-      <node id="6">
+      <node id="8">
         <label>std::vector&lt; DeviceData &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/input/IPC/transmission/ChildProcess.hpp" line="18" column="1" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="18" bodyend="146"/>
+    <location file="include/input/IPC/transmission/ChildProcess.hpp" line="19" column="1" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="19" bodyend="150"/>
     <listofallmembers>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1a6339e85badac77db38f70a01b94f4e25" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>aead</name></member>
       <member refid="classPDJE__IPC_1_1ChildProcess_1af67855514dc8ca516ed47feb978b00fe" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>callables</name></member>
-      <member refid="classPDJE__IPC_1_1ChildProcess_1a70dcc361fd40d69c36b539dca174b376" prot="public" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>ChildProcess</name></member>
+      <member refid="classPDJE__IPC_1_1ChildProcess_1aeb42f8e2e9a32d35abec8ac5359a70d4" prot="public" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>ChildProcess</name></member>
       <member refid="classPDJE__IPC_1_1ChildProcess_1a4b1737bb5d9aee0d540a7b18bafdd05d" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>configed_devices</name></member>
       <member refid="classPDJE__IPC_1_1ChildProcess_1a38faf210d4b2c2798b91254275e2d1bb" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>EndTransmission</name></member>
       <member refid="classPDJE__IPC_1_1ChildProcess_1a960afc9f9aaa3935e4f9d0033f308638" prot="private" virt="non-virtual"><scope>PDJE_IPC::ChildProcess</scope><name>id_name</name></member>

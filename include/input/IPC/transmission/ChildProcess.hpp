@@ -7,6 +7,7 @@
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Input_Device_Data.hpp"
 #include "ipc_shared_memory.hpp"
+#include <cstdint>
 #include <httplib.h>
 #include <nlohmann/json.hpp>
 #include <optional>
@@ -28,6 +29,7 @@ class ChildProcess {
     httplib::Server                                        server;
 
     std::unordered_map<PDJE_ID, PDJE_NAME>           id_name;
+    std::unordered_map<PDJE_ID, int64_t>             id_offset;
     std::optional<PDJE_Buffer_Arena<PDJE_Input_Log>> input_buffer;
     std::optional<PDJE_IPC::SharedMem<int, PDJE_IPC::PDJE_IPC_RW>>
         spinlock_run; // 0 = stop, 1 = go, -1 = terminate

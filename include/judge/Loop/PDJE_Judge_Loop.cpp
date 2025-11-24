@@ -5,6 +5,7 @@
 #include "PDJE_Judge_Init.hpp"
 #include "PDJE_LOG_SETTER.hpp"
 #include "PDJE_Note_OBJ.hpp"
+#include "PDJE_Rule.hpp"
 #include <chrono>
 #include <exception>
 #include <iostream>

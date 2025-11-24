@@ -85,16 +85,19 @@
 <p>↰ <a class="reference internal" href="file_include_core_MainObjects_editorObject_editorObject.cpp.html#file-include-core-mainobjects-editorobject-editorobject-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/core/MainObjects/editorObject/editorObject.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;editorObject.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;editor.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fileNameSanitizer.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tempDB.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;trackDB.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;exception&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
 
 <span class="n">trackdata</span>
 <span class="nf">editorObject::makeTrackData</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">trackTitle</span><span class="p">,</span>
 <span class="w">                            </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">SANITIZED</span><span class="p">,</span><span class="w"> </span><span class="n">SANITIZED</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">titles</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">trackdata</span><span class="w"> </span><span class="n">td</span><span class="p">;</span>
-<span class="w">    </span><span class="k">auto</span><span class="w">      </span><span class="n">mixRendered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">mixHandle</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">render</span><span class="p">();</span>
+<span class="w">    </span><span class="k">auto</span><span class="w">      </span><span class="n">mixRendered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edit_core</span><span class="o">-&gt;</span><span class="n">mixHandle</span><span class="o">-&gt;</span><span class="n">GetJson</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">render</span><span class="p">();</span>
 <span class="w">    </span><span class="k">auto</span><span class="w">      </span><span class="n">mixData</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">mixRendered</span><span class="o">-&gt;</span><span class="n">Wp</span><span class="o">-&gt;</span><span class="n">getDatas</span><span class="p">();</span>
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mixData</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -113,14 +116,14 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">td</span><span class="p">.</span><span class="n">trackTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">safeTitle</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
 <span class="w">    </span><span class="n">td</span><span class="p">.</span><span class="n">mixBinary</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">mixRendered</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">();</span>
-<span class="w">    </span><span class="n">td</span><span class="p">.</span><span class="n">noteBinary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">noteHandle</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">render</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">();</span>
+<span class="w">    </span><span class="n">td</span><span class="p">.</span><span class="n">noteBinary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edit_core</span><span class="o">-&gt;</span><span class="n">noteHandle</span><span class="o">-&gt;</span><span class="n">GetJson</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">render</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">out</span><span class="p">();</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">titles</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">td</span><span class="p">.</span><span class="n">cachedMixList</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">titles</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">td</span><span class="p">.</span><span class="n">cachedMixList</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">td</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">td</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span>
@@ -128,34 +131,42 @@
 <span class="w">                           </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w">                  </span><span class="n">frameBufferSize</span><span class="p">,</span>
 <span class="w">                           </span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w">            </span><span class="o">&amp;</span><span class="n">trackTitle</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">player</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">trackdata</span><span class="w"> </span><span class="n">tdtemp</span><span class="p">(</span><span class="n">trackTitle</span><span class="p">);</span>
-<span class="w">    </span><span class="k">auto</span><span class="w">      </span><span class="n">searchedTd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">projectLocalDB</span><span class="o">-&gt;</span><span class="n">GetBuildedProject</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">tdtemp</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">searchedTd</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to search trackdata from project local database. from &quot;</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">player</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">trackdata</span><span class="w"> </span><span class="n">tdtemp</span><span class="p">(</span><span class="n">trackTitle</span><span class="p">);</span>
+<span class="w">        </span><span class="k">auto</span><span class="w">      </span><span class="n">searchedTd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">projectLocalDB</span><span class="o">-&gt;</span><span class="n">GetBuildedProject</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">tdtemp</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">searchedTd</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span>
+<span class="w">                </span><span class="s">&quot;failed to search trackdata from project local database. from &quot;</span>
 <span class="w">                </span><span class="s">&quot;editorObject demoPlayInit. trackTitle: &quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">trackTitle</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">trackTitle</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">searchedTd</span><span class="o">-&gt;</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;cannot find trackdata from project local database. from &quot;</span>
+<span class="w">                    </span><span class="s">&quot;editorObject demoPlayInit. trackTitle: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">warnlog</span><span class="p">(</span><span class="n">trackTitle</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">player</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">audioPlayer</span><span class="o">&gt;</span><span class="p">(</span><span class="n">projectLocalDB</span><span class="o">-&gt;</span><span class="n">GetBuildedProject</span><span class="p">(),</span>
+<span class="w">                                          </span><span class="n">searchedTd</span><span class="o">-&gt;</span><span class="n">front</span><span class="p">(),</span>
+<span class="w">                                          </span><span class="n">frameBufferSize</span><span class="p">,</span>
+<span class="w">                                          </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to init demo player. Why: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">searchedTd</span><span class="o">-&gt;</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;cannot find trackdata from project local database. from &quot;</span>
-<span class="w">                </span><span class="s">&quot;editorObject demoPlayInit. trackTitle: &quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="n">trackTitle</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">audioPlayer</span><span class="o">&gt;</span><span class="p">(</span><span class="n">projectLocalDB</span><span class="o">-&gt;</span><span class="n">GetBuildedProject</span><span class="p">(),</span>
-<span class="w">                                           </span><span class="n">searchedTd</span><span class="o">-&gt;</span><span class="n">front</span><span class="p">(),</span>
-<span class="w">                                           </span><span class="n">frameBufferSize</span><span class="p">,</span>
-<span class="w">                                           </span><span class="nb">true</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="n">DONT_SANITIZE</span>
 <span class="nf">editorObject::DESTROY_PROJECT</span><span class="p">()</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">E_obj</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">        </span><span class="n">edit_core</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+
 <span class="w">        </span><span class="n">projectLocalDB</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">deletedAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">remove_all</span><span class="p">(</span><span class="n">projectRoot</span><span class="p">);</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">deletedAmount</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -204,49 +215,29 @@
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">musicPath</span><span class="p">.</span><span class="n">generic_string</span><span class="p">());</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">tempDataPath</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">AddMusicConfig</span><span class="p">(</span><span class="n">safeMus</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span><span class="w"> </span><span class="n">tempDataPath</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">        </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">musicHandle</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">jsonh</span><span class="p">[</span><span class="n">PDJE_JSON_TITLE</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">safeMus</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
-<span class="w">        </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">musicHandle</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">jsonh</span><span class="p">[</span><span class="n">PDJE_JSON_COMPOSER</span><span class="p">]</span><span class="w"> </span><span class="o">=</span>
-<span class="w">            </span><span class="n">safeComposer</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
-<span class="w">        </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">musicHandle</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">dataPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tempDataPath</span><span class="p">;</span>
-<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">absPath</span><span class="p">;</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">musicPath</span><span class="p">.</span><span class="n">is_absolute</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">absPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musicPath</span><span class="p">.</span><span class="n">lexically_normal</span><span class="p">();</span>
-<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">absPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">absolute</span><span class="p">(</span><span class="n">musicPath</span><span class="p">).</span><span class="n">lexically_normal</span><span class="p">();</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">musicHandle</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">jsonh</span><span class="p">[</span><span class="n">PDJE_JSON_PATH</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">absPath</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;something failed in editorObject ConfigNewMusic. &quot;</span>
-<span class="w">                    </span><span class="s">&quot;ErrException: &quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">musicHandle</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">jsonh</span><span class="p">[</span><span class="n">PDJE_JSON_FIRST_BEAT</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstBeat</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to add music config. from editorObject ConfigNewMusic. &quot;</span>
-<span class="w">                </span><span class="s">&quot;musicName: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">edit_core</span><span class="o">-&gt;</span><span class="n">AddMusicConfig</span><span class="p">(</span>
+<span class="w">            </span><span class="n">safeMus</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span><span class="w"> </span><span class="n">safeComposer</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span><span class="w"> </span><span class="n">firstBeat</span><span class="p">,</span><span class="w"> </span><span class="n">musicPath</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to config new music. title &amp; composer &amp; What: &quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">NewMusicName</span><span class="p">);</span>
-
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">composer</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span>
-<span class="nf">editorObject::Open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="o">&amp;</span><span class="n">projectPath</span><span class="p">)</span>
+<span class="nf">editorObject::Open</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w">      </span><span class="o">&amp;</span><span class="n">projectPath</span><span class="p">,</span>
+<span class="w">                   </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_name</span><span class="p">,</span>
+<span class="w">                   </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">auth_email</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">projectRoot</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">projectPath</span><span class="p">;</span>
-<span class="w">    </span><span class="n">mixFilePath</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">projectPath</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;Mixes&quot;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;mixmetadata.PDJE&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">noteFilePath</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">projectPath</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;Notes&quot;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;notemetadata.PDJE&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">kvFilePath</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">projectPath</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;KeyValues&quot;</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;keyvaluemetadata.PDJE&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">musicFileRootPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">projectPath</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="s">&quot;Musics&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="n">projectLocalDB</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">openProject</span><span class="p">(</span><span class="n">projectPath</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">projectLocalDB</span><span class="o">-&gt;</span><span class="n">Open</span><span class="p">(</span><span class="n">projectPath</span><span class="p">);</span>
+<span class="w">    </span><span class="n">edit_core</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">PDJE_Editor</span><span class="o">&gt;</span><span class="p">(</span><span class="n">projectPath</span><span class="p">,</span><span class="w"> </span><span class="n">auth_name</span><span class="p">,</span><span class="w"> </span><span class="n">auth_email</span><span class="p">);</span>
+<span class="w">    </span><span class="n">projectLocalDB</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
+<span class="w">    </span><span class="n">projectRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">projectPath</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">projectLocalDB</span><span class="o">-&gt;</span><span class="n">Open</span><span class="p">(</span><span class="n">projectPath</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span>

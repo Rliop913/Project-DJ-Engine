@@ -13,6 +13,8 @@ Program Listing for File PDJE_EXPORT_SETTER.hpp
    
    #pragma once
    
+   #define PDJE_CALL __cdecl
+   
    #ifdef PDJE_WINDOWS_DLL
    #ifdef PDJE_BUILDING
    #define PDJE_API __declspec(dllexport)

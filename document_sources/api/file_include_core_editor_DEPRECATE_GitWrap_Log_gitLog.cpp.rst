@@ -1,0 +1,51 @@
+
+.. _file_include_core_editor_DEPRECATE_GitWrap_Log_gitLog.cpp:
+
+File gitLog.cpp
+===============
+
+|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_DEPRECATE_GitWrap_Log>` (``include/core/editor/DEPRECATE/GitWrap/Log``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/core/editor/DEPRECATE/GitWrap/Log/gitLog.cpp``)
+---------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_core_editor_DEPRECATE_GitWrap_Log_gitLog.cpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
+
+- ``array``
+
+- ``editorBranch.hpp`` (:ref:`file_include_core_editor_DEPRECATE_GitWrap_Branch_editorBranch.hpp`)
+
+- ``gitLog.hpp`` (:ref:`file_include_core_editor_DEPRECATE_GitWrap_Log_gitLog.hpp`)
+
+
+
+
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_gitLog_8cpp_1a4f3e7136eeec135942dffd940e28e3d8`
+

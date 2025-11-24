@@ -84,23 +84,31 @@
 <span id="program-listing-file-include-input-windows-process-input-process-main-cpp"></span><h1>Program Listing for File Input_Process_Main.cpp<a class="headerlink" href="#program-listing-for-file-input-process-main-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_input_windows_process_Input_Process_Main.cpp.html#file-include-input-windows-process-input-process-main-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/input/windows/process/Input_Process_Main.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ChildProcess.hpp&quot;</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Crypto.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PSKPipe.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span>
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">){</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">try</span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">startlog</span><span class="p">();</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">tokenstr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_CRYPTO</span><span class="o">::</span><span class="n">PSKPipe</span><span class="o">::</span><span class="n">GetTokenFromSTDPipe</span><span class="p">();</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">istringstream</span><span class="w"> </span><span class="n">spstrm</span><span class="p">(</span><span class="n">tokenstr</span><span class="p">);</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">        </span><span class="n">pskhex</span><span class="p">;</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">        </span><span class="n">portstr</span><span class="p">;</span>
+<span class="w">        </span><span class="n">spstrm</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">pskhex</span><span class="p">;</span>
+<span class="w">        </span><span class="n">spstrm</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">portstr</span><span class="p">;</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">psk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_CRYPTO</span><span class="o">::</span><span class="n">PSK</span><span class="p">();</span>
+<span class="w">        </span><span class="n">psk</span><span class="p">.</span><span class="n">Decode</span><span class="p">(</span><span class="n">pskhex</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">ChildProcess</span><span class="w"> </span><span class="n">serv</span><span class="p">;</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">stoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">        </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">ChildProcess</span><span class="w"> </span><span class="n">serv</span><span class="p">(</span><span class="n">psk</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">int</span><span class="w">                    </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">stoi</span><span class="p">(</span><span class="n">portstr</span><span class="p">);</span>
 <span class="w">        </span><span class="n">serv</span><span class="p">.</span><span class="n">RunServer</span><span class="p">(</span><span class="n">port</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">serv</span><span class="p">.</span><span class="n">KillCheck</span><span class="p">){</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">serv</span><span class="p">.</span><span class="n">KillCheck</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">serv</span><span class="p">.</span><span class="n">LoopTrig</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">){</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>

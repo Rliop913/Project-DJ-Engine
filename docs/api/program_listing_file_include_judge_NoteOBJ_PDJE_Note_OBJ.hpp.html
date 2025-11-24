@@ -127,7 +127,7 @@
 
 <span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="kt">int</span><span class="w"> </span><span class="n">I</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="n">DEVID_TO_NOTE</span><span class="w"> </span><span class="o">*</span>
-<span class="w">    </span><span class="n">pick_dan</span><span class="p">()</span>
+<span class="w">    </span><span class="n">pick_buffer</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">I</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BUFFER_MAIN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Buffer_Main</span><span class="p">;</span>
@@ -146,7 +146,7 @@
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">static_assert</span><span class="p">(</span><span class="n">I</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BUFFER_MAIN</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BUFFER_SUB</span><span class="p">,</span>
 <span class="w">                      </span><span class="s">&quot;invalid use of fill.&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">DEVID_TO_NOTE</span><span class="w"> </span><span class="o">*</span><span class="n">dan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pick_dan</span><span class="o">&lt;</span><span class="n">I</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="n">DEVID_TO_NOTE</span><span class="w"> </span><span class="o">*</span><span class="n">dan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pick_buffer</span><span class="o">&lt;</span><span class="n">I</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="w">        </span><span class="p">(</span><span class="o">*</span><span class="n">dan</span><span class="p">)[</span><span class="n">rail_id</span><span class="p">].</span><span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -156,7 +156,7 @@
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">static_assert</span><span class="p">(</span><span class="n">I</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BUFFER_MAIN</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BUFFER_SUB</span><span class="p">,</span>
 <span class="w">                      </span><span class="s">&quot;invalid use of get.&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">DEVID_TO_NOTE</span><span class="w"> </span><span class="o">*</span><span class="n">dan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pick_dan</span><span class="o">&lt;</span><span class="n">I</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="n">DEVID_TO_NOTE</span><span class="w"> </span><span class="o">*</span><span class="n">dan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pick_buffer</span><span class="o">&lt;</span><span class="n">I</span><span class="o">&gt;</span><span class="p">();</span>
 
 <span class="w">        </span><span class="n">found</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">note</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">dan</span><span class="p">)[</span><span class="n">railID</span><span class="p">];</span>
@@ -192,7 +192,7 @@
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">static_assert</span><span class="p">(</span><span class="n">I</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BUFFER_MAIN</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BUFFER_SUB</span><span class="p">,</span>
 <span class="w">                      </span><span class="s">&quot;invalid use of cut.&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">DEVID_TO_NOTE</span><span class="w"> </span><span class="o">*</span><span class="n">dan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pick_dan</span><span class="o">&lt;</span><span class="n">I</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="n">DEVID_TO_NOTE</span><span class="w"> </span><span class="o">*</span><span class="n">dan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pick_buffer</span><span class="o">&lt;</span><span class="n">I</span><span class="o">&gt;</span><span class="p">();</span>
 
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rail</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">*</span><span class="n">dan</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rail</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">vec</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>

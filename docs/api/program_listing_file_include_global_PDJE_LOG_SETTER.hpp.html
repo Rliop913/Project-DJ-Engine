@@ -93,10 +93,10 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string_view&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;type_traits&gt;</span>
 
-<span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">once_flag</span><span class="w"> </span><span class="n">SPD_LOG_ONCE_FLAG</span><span class="p">;</span>
 <span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
 <span class="nf">startlog</span><span class="p">()</span>
 <span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">once_flag</span><span class="w"> </span><span class="n">SPD_LOG_ONCE_FLAG</span><span class="p">;</span>
 <span class="cp">#ifndef LOG_OFF</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">call_once</span><span class="p">(</span><span class="n">SPD_LOG_ONCE_FLAG</span><span class="p">,</span><span class="w"> </span><span class="p">[]()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">create_directories</span><span class="p">(</span><span class="s">&quot;logs&quot;</span><span class="p">);</span>

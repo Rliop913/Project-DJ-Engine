@@ -11,6 +11,7 @@
 #include <unordered_map>
 
 namespace PDJE_JUDGE {
+/** @brief Worker thread switches and handles for miss/use callbacks. */
 struct EV_Thread {
     std::optional<bool> use_event_switch;
     std::optional<bool> miss_event_switch;
@@ -19,6 +20,7 @@ struct EV_Thread {
     std::optional<std::thread> miss_event_thread;
 };
 
+/** @brief Data passed to use-event callbacks. */
 struct useDatas {
     uint64_t railid;
     bool     Pressed;
@@ -26,6 +28,7 @@ struct useDatas {
     uint64_t diff;
 };
 
+/** @brief Buffered queues for miss/use events. */
 struct Queues {
     PDJE_Buffer_Arena<std::unordered_map<uint64_t, NOTE_VEC>> miss_queue;
     PDJE_Buffer_Arena<useDatas>                               use_queue;
@@ -36,8 +39,10 @@ struct Queues {
 
 struct mouse_btn_event {
     uint64_t rail_id = 0;
+    int64_t  offset  = 0;
     int      status  = -1;
 };
+/** @brief Cached state shared across judge loop iterations. */
 struct LoopCached {
 
     std::unordered_map<uint64_t, NOTE_VEC> missed_buffers;

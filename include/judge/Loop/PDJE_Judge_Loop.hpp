@@ -11,6 +11,7 @@
 
 namespace PDJE_JUDGE {
 
+/** @brief Internal judge loop that consumes inputs, matches notes, and emits callbacks. */
 class Judge_Loop {
 
   private:
@@ -25,17 +26,23 @@ class Judge_Loop {
 
     Judge_Init               *init_datas;
     PDJE_HIGHRES_CLOCK::CLOCK clock_root;
+    /** @brief Trim expired notes into miss queue. */
     inline void
     Cut();
+    /** @brief Prepare cached values before processing input batch. */
     bool
     PreProcess();
+    /** @brief Parse mouse-specific input and enqueue events. */
     void
     ParseMouse(INPUT_RULE &rule, const BITMASK ev);
     template <PDJE_Dev_Type D>
+    /** @brief Handle a single input log entry for the given device type. */
     void
     UseEvent(const PDJE_Input_Log &ilog);
+    /** @brief Find device setting bound to a rule. */
     bool
     FindDevSetting(const INPUT_RULE &rule, INPUT_SETTING &setting);
+    /** @brief Match input timestamp against note list and mark usage. */
     void
     Match(const LOCAL_TIME  input_time,
           const P_NOTE_VEC &note_list,
@@ -43,14 +50,18 @@ class Judge_Loop {
           const bool        isPressed);
 
   public:
+    /** @brief Stop use/miss worker threads. */
     void
     EndEventLoop();
+    /** @brief Start use/miss worker threads. */
     void
     StartEventLoop();
+    /** @brief Main loop that polls inputs and judges notes. */
     void
     loop();
 
     std::atomic<bool> loop_switch;
+    /** @brief Construct loop with initialized data sources. */
     Judge_Loop(Judge_Init &inits);
     ~Judge_Loop() = default;
 };

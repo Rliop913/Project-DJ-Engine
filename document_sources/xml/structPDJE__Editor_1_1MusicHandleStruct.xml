@@ -4,61 +4,19 @@
     <compoundname>PDJE_Editor::MusicHandleStruct</compoundname>
     <includes refid="editor_8hpp" local="no">editor.hpp</includes>
     <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="structPDJE__Editor_1_1MusicHandleStruct_1abe3ce155c4afaed7827be49baee0dfda" prot="public" static="no" mutable="no">
-        <type>std::unique_ptr&lt; <ref refid="classPDJE__GitHandler" kindref="compound">PDJE_GitHandler</ref> &gt;</type>
-        <definition>std::unique_ptr&lt;PDJE_GitHandler&gt; PDJE_Editor::MusicHandleStruct::gith</definition>
+      <memberdef kind="variable" id="structPDJE__Editor_1_1MusicHandleStruct_1adf27e8ec3c7c786a1d978d25884b0d8a" prot="public" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classPDJE__TIMELINE_1_1TimeLine" kindref="compound">PDJE_TIMELINE::TimeLine</ref>&lt; <ref refid="EditorArgs_8hpp_1a5ce6d29d6001f496835f6401276a682e" kindref="member">MUSIC_W</ref> &gt; &gt;</type>
+        <definition>std::unique_ptr&lt;PDJE_TIMELINE::TimeLine&lt;MUSIC_W&gt; &gt; PDJE_Editor::MusicHandleStruct::handle</definition>
         <argsstring></argsstring>
-        <name>gith</name>
-        <qualifiedname>PDJE_Editor::MusicHandleStruct::gith</qualifiedname>
+        <name>handle</name>
+        <qualifiedname>PDJE_Editor::MusicHandleStruct::handle</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/editor/editor.hpp" line="42" column="25" bodyfile="include/core/editor/editor.hpp" bodystart="42" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="structPDJE__Editor_1_1MusicHandleStruct_1a90956305be11318e58cea3e54a44fd18" prot="public" static="no" mutable="no">
-        <type><ref refid="classPDJE__JSONHandler" kindref="compound">PDJE_JSONHandler</ref>&lt; <ref refid="EditorArgs_8hpp_1a5ce6d29d6001f496835f6401276a682e" kindref="member">MUSIC_W</ref> &gt;</type>
-        <definition>PDJE_JSONHandler&lt;MUSIC_W&gt; PDJE_Editor::MusicHandleStruct::jsonh</definition>
-        <argsstring></argsstring>
-        <name>jsonh</name>
-        <qualifiedname>PDJE_Editor::MusicHandleStruct::jsonh</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/core/editor/editor.hpp" line="43" column="33" bodyfile="include/core/editor/editor.hpp" bodystart="43" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="structPDJE__Editor_1_1MusicHandleStruct_1ada2e83b454450b881bb1d844631fa447" prot="public" static="no" mutable="no">
-        <type><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
-        <definition>SANITIZED PDJE_Editor::MusicHandleStruct::musicName</definition>
-        <argsstring></argsstring>
-        <name>musicName</name>
-        <qualifiedname>PDJE_Editor::MusicHandleStruct::musicName</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/core/editor/editor.hpp" line="44" column="42" bodyfile="include/core/editor/editor.hpp" bodystart="44" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="structPDJE__Editor_1_1MusicHandleStruct_1a5121a7f9017444cb2a8361038b3100fd" prot="public" static="no" mutable="no">
-        <type>fs::path</type>
-        <definition>fs::path PDJE_Editor::MusicHandleStruct::dataPath</definition>
-        <argsstring></argsstring>
-        <name>dataPath</name>
-        <qualifiedname>PDJE_Editor::MusicHandleStruct::dataPath</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/core/editor/editor.hpp" line="45" column="42" bodyfile="include/core/editor/editor.hpp" bodystart="45" bodyend="-1"/>
+        <location file="include/core/editor/editor.hpp" line="73" column="25" bodyfile="include/core/editor/editor.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -74,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/editor/editor.hpp" line="46" column="9"/>
+        <location file="include/core/editor/editor.hpp" line="74" column="9"/>
       </memberdef>
       <memberdef kind="function" id="structPDJE__Editor_1_1MusicHandleStruct_1a2c027bb9d8db5265ed101e128edf4e1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -91,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/editor/editor.hpp" line="47" column="9"/>
+        <location file="include/core/editor/editor.hpp" line="75" column="9"/>
       </memberdef>
       <memberdef kind="function" id="structPDJE__Editor_1_1MusicHandleStruct_1ab6dd5627f432fe507ef4d2888fb59cf5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -108,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/editor/editor.hpp" line="49" column="9"/>
+        <location file="include/core/editor/editor.hpp" line="77" column="9"/>
       </memberdef>
       <memberdef kind="function" id="structPDJE__Editor_1_1MusicHandleStruct_1a8bc368b70fbeba5e1ac8969d68809ef5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="structPDJE__Editor_1_1MusicHandleStruct" kindref="compound">MusicHandleStruct</ref> &amp;</type>
@@ -125,14 +83,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/editor/editor.hpp" line="51" column="9"/>
+        <location file="include/core/editor/editor.hpp" line="79" column="9"/>
       </memberdef>
-      <memberdef kind="function" id="structPDJE__Editor_1_1MusicHandleStruct_1ae7889bc6718980f215de533837a2a7d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structPDJE__Editor_1_1MusicHandleStruct_1afc524d6ff7512aa8df2ffe8e5d3b12f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PDJE_Editor::MusicHandleStruct::MusicHandleStruct</definition>
-        <argsstring>(const DONT_SANITIZE &amp;auth_name, const DONT_SANITIZE &amp;auth_email)</argsstring>
+        <argsstring>(const fs::path &amp;root, const DONT_SANITIZE &amp;auth_name, const DONT_SANITIZE &amp;auth_email)</argsstring>
         <name>MusicHandleStruct</name>
         <qualifiedname>PDJE_Editor::MusicHandleStruct::MusicHandleStruct</qualifiedname>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>root</declname>
+        </param>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>auth_name</declname>
@@ -147,7 +109,49 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/editor/editor.hpp" line="53" column="9" bodyfile="include/core/editor/editor.hpp" bodystart="53" bodyend="58"/>
+        <location file="include/core/editor/editor.hpp" line="81" column="9" bodyfile="include/core/editor/editor.hpp" bodystart="81" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="structPDJE__Editor_1_1MusicHandleStruct_1a34926ae7356b5e5fdce4610015ae36da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_Editor::MusicHandleStruct::MusicHandleStruct</definition>
+        <argsstring>(const fs::path &amp;root, const SANITIZED &amp;musicTitle, const SANITIZED &amp;composer, const DONT_SANITIZE &amp;firstBeat, const fs::path &amp;location, const DONT_SANITIZE &amp;auth_name, const DONT_SANITIZE &amp;auth_email)</argsstring>
+        <name>MusicHandleStruct</name>
+        <qualifiedname>PDJE_Editor::MusicHandleStruct::MusicHandleStruct</qualifiedname>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>root</declname>
+        </param>
+        <param>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
+          <declname>musicTitle</declname>
+        </param>
+        <param>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
+          <declname>composer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>firstBeat</declname>
+        </param>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>location</declname>
+        </param>
+        <param>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>auth_name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>auth_email</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/editor.hpp" line="89" column="9" bodyfile="include/core/editor/editor.hpp" bodystart="89" bodyend="104"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -156,62 +160,105 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="6">
-        <label>GitWrapper</label>
-        <link refid="classGitWrapper"/>
-      </node>
       <node id="1">
         <label>PDJE_Editor::MusicHandleStruct</label>
         <link refid="structPDJE__Editor_1_1MusicHandleStruct"/>
         <childnode refid="2" relation="usage">
-          <edgelabel>gith</edgelabel>
-        </childnode>
-        <childnode refid="7" relation="usage">
-          <edgelabel>jsonh</edgelabel>
-        </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>musicName</edgelabel>
+          <edgelabel>handle</edgelabel>
         </childnode>
       </node>
-      <node id="3">
-        <label>PDJE_GitHandler</label>
-        <link refid="classPDJE__GitHandler"/>
-        <childnode refid="4" relation="usage">
-          <edgelabel>RecentERR</edgelabel>
-        </childnode>
-        <childnode refid="6" relation="usage">
-          <edgelabel>gw</edgelabel>
-        </childnode>
-      </node>
-      <node id="7">
+      <node id="12">
         <label>PDJE_JSONHandler&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
         <link refid="classPDJE__JSONHandler"/>
       </node>
+      <node id="11">
+        <label>PDJE_TIMELINE::BranchLine</label>
+        <link refid="classPDJE__TIMELINE_1_1BranchLine"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>PDJE_TIMELINE::EventMarker&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__TIMELINE_1_1EventMarker"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>checkedOut</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>line</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>file_handle</edgelabel>
+        </childnode>
+      </node>
       <node id="5">
+        <label>PDJE_TIMELINE::GitData</label>
+        <link refid="structPDJE__TIMELINE_1_1GitData"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>log_tree</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>LIFO_log</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>target_file</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
+        <link refid="classPDJE__TIMELINE_1_1TimeLine"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>mark</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
         <label>std::basic_string&lt; Char &gt;</label>
       </node>
       <node id="4">
+        <label>std::shared_ptr&lt; PDJE_TIMELINE::GitData &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
         <label>std::string</label>
-        <childnode refid="5" relation="public-inheritance">
+        <childnode refid="8" relation="public-inheritance">
         </childnode>
       </node>
       <node id="2">
-        <label>std::unique_ptr&lt; PDJE_GitHandler &gt;</label>
+        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt; &gt;</label>
         <childnode refid="3" relation="usage">
           <edgelabel>ptr</edgelabel>
         </childnode>
       </node>
+      <node id="6">
+        <label>std::unordered_map&lt; OID, BACK_OID &gt;</label>
+        <childnode refid="7" relation="usage">
+          <edgelabel>elements</edgelabel>
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>std::vector&lt; OID &gt;</label>
+        <childnode refid="7" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
     </collaborationgraph>
-    <location file="include/core/editor/editor.hpp" line="41" column="5" bodyfile="include/core/editor/editor.hpp" bodystart="41" bodyend="59"/>
+    <location file="include/core/editor/editor.hpp" line="71" column="5" bodyfile="include/core/editor/editor.hpp" bodystart="71" bodyend="105"/>
     <listofallmembers>
-      <member refid="structPDJE__Editor_1_1MusicHandleStruct_1a5121a7f9017444cb2a8361038b3100fd" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>dataPath</name></member>
-      <member refid="structPDJE__Editor_1_1MusicHandleStruct_1abe3ce155c4afaed7827be49baee0dfda" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>gith</name></member>
-      <member refid="structPDJE__Editor_1_1MusicHandleStruct_1a90956305be11318e58cea3e54a44fd18" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>jsonh</name></member>
+      <member refid="structPDJE__Editor_1_1MusicHandleStruct_1adf27e8ec3c7c786a1d978d25884b0d8a" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>handle</name></member>
       <member refid="structPDJE__Editor_1_1MusicHandleStruct_1a9c06000c70df6ebe93c9fd3e6641b8b0" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>MusicHandleStruct</name></member>
       <member refid="structPDJE__Editor_1_1MusicHandleStruct_1a2c027bb9d8db5265ed101e128edf4e1c" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>MusicHandleStruct</name></member>
       <member refid="structPDJE__Editor_1_1MusicHandleStruct_1ab6dd5627f432fe507ef4d2888fb59cf5" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>MusicHandleStruct</name></member>
-      <member refid="structPDJE__Editor_1_1MusicHandleStruct_1ae7889bc6718980f215de533837a2a7d1" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>MusicHandleStruct</name></member>
-      <member refid="structPDJE__Editor_1_1MusicHandleStruct_1ada2e83b454450b881bb1d844631fa447" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>musicName</name></member>
+      <member refid="structPDJE__Editor_1_1MusicHandleStruct_1afc524d6ff7512aa8df2ffe8e5d3b12f2" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>MusicHandleStruct</name></member>
+      <member refid="structPDJE__Editor_1_1MusicHandleStruct_1a34926ae7356b5e5fdce4610015ae36da" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>MusicHandleStruct</name></member>
       <member refid="structPDJE__Editor_1_1MusicHandleStruct_1a8bc368b70fbeba5e1ac8969d68809ef5" prot="public" virt="non-virtual"><scope>PDJE_Editor::MusicHandleStruct</scope><name>operator=</name></member>
     </listofallmembers>
   </compounddef>

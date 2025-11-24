@@ -147,6 +147,8 @@ ChildProcess::Run()
                                         id_name[handlestr] =
                                             unlisted_targets[device_path];
                                         unlisted_targets.erase(device_path);
+                                        id_offset[handlestr] =
+                                            0; // todo - full valid offset data
                                     }
                                 }
                             }

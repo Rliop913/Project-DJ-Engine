@@ -3,7 +3,7 @@
 Function DiffCallback
 =====================
 
-- Defined in :ref:`file_include_core_editor_featureWrapper_GitWrap_Diff_DiffController.cpp`
+- Defined in :ref:`file_include_core_editor_DEPRECATE_GitWrap_Diff_DiffController.cpp`
 
 
 Function Documentation

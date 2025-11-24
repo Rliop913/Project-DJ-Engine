@@ -64,9 +64,9 @@ Included By
 
 - :ref:`file_include_core_db_Capnp_Translators_MixTranslator_MixTranslator.cpp`
 
-- :ref:`file_include_core_editor_featureWrapper_JSONWrap_EditorArgs.hpp`
+- :ref:`file_include_core_editor_TimeLine_JSONWrap_EditorArgs.hpp`
 
-- :ref:`file_include_core_editor_featureWrapper_JSONWrap_jsonWrapper.hpp`
+- :ref:`file_include_core_editor_TimeLine_JSONWrap_jsonWrapper.hpp`
 
 - :ref:`file_include_tests_audioTest.cpp`
 

@@ -6,8 +6,10 @@
 #include <cstdint>
 #include <functional>
 #include <string>
+#include <unordered_map>
 namespace PDJE_JUDGE {
 
+/** @brief Mouse-specific event ids mapped from input log. */
 enum DEVICE_MOUSE_EVENT {
     BTN_EX   = 0,
     BTN_SIDE = 1,
@@ -19,6 +21,7 @@ enum DEVICE_MOUSE_EVENT {
     AXIS_MOVE
 };
 
+/** @brief Device identity tuple used to bind inputs to rails. */
 struct PDJE_API INPUT_RULE {
     std::string   Device_ID  = "";
     PDJE_Dev_Type DeviceType = PDJE_Dev_Type::UNKNOWN;
@@ -27,16 +30,21 @@ struct PDJE_API INPUT_RULE {
     operator==(const INPUT_RULE &) const = default;
 };
 
+/** @brief Per-device judgment setting (rail mapping and offset). */
 struct PDJE_API INPUT_SETTING {
-    uint64_t MatchRail          = 0;
-    int64_t  offset_microsecond = 0;
+    uint64_t MatchRail = 0;
+    // int64_t  offset_microsecond = 0;
 };
 
+using RailToOffset = std::unordered_map<uint64_t, int64_t>;
+
+/** @brief Convenience type combining rule and setting. */
 struct PDJE_API INPUT_CONFIG : INPUT_RULE, INPUT_SETTING {
     // uint64_t MatchRail          = 0;
     // int64_t  offset_microsecond = 0;
 };
 
+/** @brief Global hit window configuration in microseconds. */
 struct PDJE_API EVENT_RULE {
     uint64_t miss_range_microsecond = 0;
     uint64_t use_range_microsecond  = 0;

@@ -13,84 +13,108 @@ Judge_Loop::ParseMouse(INPUT_RULE &rule, const BITMASK ev)
         rule.DeviceKey = DEVICE_MOUSE_EVENT::BTN_L;
         if (FindDevSetting(rule, Cached.setting)) {
             Cached.mouse_btn_event_queue.push_back(
-                { Cached.setting.MatchRail, DOWN });
+                { Cached.setting.MatchRail,
+                  Cached.setting.offset_microsecond,
+                  DOWN });
         }
     }
     if (ev & PDJE_MOUSE_L_BTN_UP) {
         rule.DeviceKey = DEVICE_MOUSE_EVENT::BTN_L;
         if (FindDevSetting(rule, Cached.setting)) {
             Cached.mouse_btn_event_queue.push_back(
-                { Cached.setting.MatchRail, UP });
+                { Cached.setting.MatchRail,
+                  Cached.setting.offset_microsecond,
+                  UP });
         }
     }
     if (ev & PDJE_MOUSE_R_BTN_DOWN) {
         rule.DeviceKey = DEVICE_MOUSE_EVENT::BTN_R;
         if (FindDevSetting(rule, Cached.setting)) {
             Cached.mouse_btn_event_queue.push_back(
-                { Cached.setting.MatchRail, DOWN });
+                { Cached.setting.MatchRail,
+                  Cached.setting.offset_microsecond,
+                  DOWN });
         }
     }
     if (ev & PDJE_MOUSE_R_BTN_UP) {
         rule.DeviceKey = DEVICE_MOUSE_EVENT::BTN_R;
         if (FindDevSetting(rule, Cached.setting)) {
             Cached.mouse_btn_event_queue.push_back(
-                { Cached.setting.MatchRail, UP });
+                { Cached.setting.MatchRail,
+                  Cached.setting.offset_microsecond,
+                  UP });
         }
     }
     if (ev & PDJE_MOUSE_M_BTN_DOWN) {
         rule.DeviceKey = DEVICE_MOUSE_EVENT::BTN_M;
         if (FindDevSetting(rule, Cached.setting)) {
             Cached.mouse_btn_event_queue.push_back(
-                { Cached.setting.MatchRail, DOWN });
+                { Cached.setting.MatchRail,
+                  Cached.setting.offset_microsecond,
+                  DOWN });
         }
     }
     if (ev & PDJE_MOUSE_M_BTN_UP) {
         rule.DeviceKey = DEVICE_MOUSE_EVENT::BTN_M;
         if (FindDevSetting(rule, Cached.setting)) {
             Cached.mouse_btn_event_queue.push_back(
-                { Cached.setting.MatchRail, UP });
+                { Cached.setting.MatchRail,
+                  Cached.setting.offset_microsecond,
+                  UP });
         }
     }
     if (ev & PDJE_MOUSE_SIDE_BTN_DOWN) {
         rule.DeviceKey = DEVICE_MOUSE_EVENT::BTN_SIDE;
         if (FindDevSetting(rule, Cached.setting)) {
             Cached.mouse_btn_event_queue.push_back(
-                { Cached.setting.MatchRail, DOWN });
+                { Cached.setting.MatchRail,
+                  Cached.setting.offset_microsecond,
+                  DOWN });
         }
     }
     if (ev & PDJE_MOUSE_SIDE_BTN_UP) {
         rule.DeviceKey = DEVICE_MOUSE_EVENT::BTN_SIDE;
         if (FindDevSetting(rule, Cached.setting)) {
             Cached.mouse_btn_event_queue.push_back(
-                { Cached.setting.MatchRail, UP });
+                { Cached.setting.MatchRail,
+                  Cached.setting.offset_microsecond,
+                  UP });
         }
     }
     if (ev & PDJE_MOUSE_EX_BTN_DOWN) {
         rule.DeviceKey = DEVICE_MOUSE_EVENT::BTN_EX;
         if (FindDevSetting(rule, Cached.setting)) {
             Cached.mouse_btn_event_queue.push_back(
-                { Cached.setting.MatchRail, DOWN });
+                { Cached.setting.MatchRail,
+                  Cached.setting.offset_microsecond,
+                  DOWN });
         }
     }
     if (ev & PDJE_MOUSE_EX_BTN_UP) {
         rule.DeviceKey = DEVICE_MOUSE_EVENT::BTN_EX;
         if (FindDevSetting(rule, Cached.setting)) {
             Cached.mouse_btn_event_queue.push_back(
-                { Cached.setting.MatchRail, UP });
+                { Cached.setting.MatchRail,
+                  Cached.setting.offset_microsecond,
+                  UP });
         }
     }
     if (ev & PDJE_MOUSE_XWHEEL) {
         rule.DeviceKey = DEVICE_MOUSE_EVENT::WHEEL_X;
         if (FindDevSetting(rule, Cached.setting)) {
             Cached.mouse_btn_event_queue.push_back(
-                { Cached.setting.MatchRail, X });
+                { Cached.setting.MatchRail,
+                  Cached.setting.offset_microsecond,
+                  X });
         }
     }
     if (ev & PDJE_MOUSE_YWHEEL) {
         rule.DeviceKey = DEVICE_MOUSE_EVENT::WHEEL_Y;
         if (FindDevSetting(rule, Cached.setting)) {
             Cached.mouse_btn_event_queue.push_back(
-                { Cached.setting.MatchRail, Y });
+                { Cached.setting.MatchRail,
+                  Cached.setting.offset_microsecond,
+                  Y });
         }
     }
 }
@@ -107,14 +131,13 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::MOUSE>(const PDJE_Input_Log &ilog)
     rule.Device_ID  = ilog.name;
     rule.DeviceType = ilog.type;
     ParseMouse(rule, ilog.event.mouse.button_type);
-    uint64_t offset_applied =
-        ilog.microSecond + Cached.setting.offset_microsecond;
+
     for (const auto &mev : Cached.mouse_btn_event_queue) {
         switch (mev.status) {
         case DOWN:
             init_datas->note_objects->Get<BUFFER_MAIN>(
                 Cached.use_range, mev.rail_id, Cached.found_list);
-            Match(offset_applied - Cached.global_local_diff,
+            Match((ilog.microSecond + mev.offset) - Cached.global_local_diff,
                   Cached.found_list,
                   mev.rail_id,
                   true);
@@ -122,7 +145,7 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::MOUSE>(const PDJE_Input_Log &ilog)
         case UP:
             init_datas->note_objects->Get<BUFFER_SUB>(
                 Cached.use_range, mev.rail_id, Cached.found_list);
-            Match(offset_applied - Cached.global_local_diff,
+            Match((ilog.microSecond + mev.offset) - Cached.global_local_diff,
                   Cached.found_list,
                   mev.rail_id,
                   false);
@@ -131,14 +154,16 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::MOUSE>(const PDJE_Input_Log &ilog)
             if (ilog.event.mouse.wheel_move > 0) {
                 init_datas->note_objects->Get<BUFFER_MAIN>(
                     Cached.use_range, mev.rail_id, Cached.found_list);
-                Match(offset_applied - Cached.global_local_diff,
+                Match((ilog.microSecond + mev.offset) -
+                          Cached.global_local_diff,
                       Cached.found_list,
                       mev.rail_id,
                       true);
             } else if (ilog.event.mouse.wheel_move < 0) {
                 init_datas->note_objects->Get<BUFFER_SUB>(
                     Cached.use_range, mev.rail_id, Cached.found_list);
-                Match(offset_applied - Cached.global_local_diff,
+                Match((ilog.microSecond + mev.offset) -
+                          Cached.global_local_diff,
                       Cached.found_list,
                       mev.rail_id,
                       false);
@@ -148,14 +173,16 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::MOUSE>(const PDJE_Input_Log &ilog)
             if (ilog.event.mouse.wheel_move > 0) {
                 init_datas->note_objects->Get<BUFFER_MAIN>(
                     Cached.use_range, mev.rail_id, Cached.found_list);
-                Match(offset_applied - Cached.global_local_diff,
+                Match((ilog.microSecond + mev.offset) -
+                          Cached.global_local_diff,
                       Cached.found_list,
                       mev.rail_id,
                       true);
             } else if (ilog.event.mouse.wheel_move < 0) {
                 init_datas->note_objects->Get<BUFFER_SUB>(
                     Cached.use_range, mev.rail_id, Cached.found_list);
-                Match(offset_applied - Cached.global_local_diff,
+                Match((ilog.microSecond + mev.offset) -
+                          Cached.global_local_diff,
                       Cached.found_list,
                       mev.rail_id,
                       false);
@@ -171,13 +198,14 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::MOUSE>(const PDJE_Input_Log &ilog)
         if (FindDevSetting(rule, Cached.setting)) {
             init_datas->note_objects->Get<BUFFER_SUB>(
                 Cached.use_range, Cached.setting.MatchRail, Cached.found_list);
-            init_datas->lambdas.custom_mouse_parse(offset_applied -
-                                                       Cached.global_local_diff,
-                                                   Cached.found_list,
-                                                   Cached.setting.MatchRail,
-                                                   ilog.event.mouse.x,
-                                                   ilog.event.mouse.y,
-                                                   ilog.event.mouse.axis_type);
+            init_datas->lambdas.custom_mouse_parse(
+                (ilog.microSecond + Cached.setting.offset_microsecond) -
+                    Cached.global_local_diff,
+                Cached.found_list,
+                Cached.setting.MatchRail,
+                ilog.event.mouse.x,
+                ilog.event.mouse.y,
+                ilog.event.mouse.axis_type);
         }
     }
 }

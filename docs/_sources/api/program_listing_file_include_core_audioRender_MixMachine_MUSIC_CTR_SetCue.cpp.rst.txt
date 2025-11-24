@@ -59,13 +59,14 @@ Program Listing for File SetCue.cpp
    {
        for (unsigned int i = 0; i < pos.size(); ++i) {
            auto now = pos[i];
+           std::vector<const BpmFragment *> betweenBpm;
            if (now.status == MIXSTATE::PLAY) {
-   
-               auto nextLidx =
-                   now.Lidx + (pos[i + 1].Gidx - now.Gidx) *
-                                  ORIGIN_TO_TARGET(now.TargetBPM, now.OriginBPM);
-   
-               auto betweenBpm = Local.getAffectedList(now.Lidx, nextLidx);
+               if((i+1) != pos.size()){
+                   auto nextLidx =
+                       now.Lidx + (pos[i + 1].Gidx - now.Gidx) *
+                           ORIGIN_TO_TARGET(now.TargetBPM, now.OriginBPM);
+                   betweenBpm = Local.getAffectedList(now.Lidx, nextLidx);
+               }
                if (betweenBpm.empty()) {
                    auto LocalAffect = Local.getAffected(now.Lidx);
                    pos[i].OriginBPM = LocalAffect.bpm;

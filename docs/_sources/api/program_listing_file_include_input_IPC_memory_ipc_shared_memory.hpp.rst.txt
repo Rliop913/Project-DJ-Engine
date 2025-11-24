@@ -12,6 +12,7 @@ Program Listing for File ipc_shared_memory.hpp
 
    #pragma once
    
+   #include "PDJE_Crypto.hpp"
    #include "PDJE_INPUT_PROCESS_HASH.hpp"
    #include "PDJE_LOG_SETTER.hpp"
    #include <algorithm>
@@ -21,7 +22,6 @@ Program Listing for File ipc_shared_memory.hpp
    #include <fstream>
    #include <ios>
    #include <limits>
-   #include <picosha2.h>
    
    #include <string>
    #include <vector>
@@ -62,7 +62,6 @@ Program Listing for File ipc_shared_memory.hpp
        MakeIPCSharedMemory(const fs::path &memfd_name, const uint64_t count);
    
        ~SharedMem();
-   
    };
    
    }; // namespace PDJE_IPC

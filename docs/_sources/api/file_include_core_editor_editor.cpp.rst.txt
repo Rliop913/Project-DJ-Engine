@@ -32,11 +32,19 @@ Includes
 
 - ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
 
+- ``botan/hash.h``
+
+- ``botan/hex.h``
+
+- ``botan/secmem.h``
+
+- ``cstdint``
+
 - ``editor.hpp`` (:ref:`file_include_core_editor_editor.hpp`)
 
-- ``filesystem``
+- ``fileNameSanitizer.hpp`` (:ref:`file_include_global_DataLines_fileNameSanitizer.hpp`)
 
-- ``random``
+- ``filesystem``
 
 
 

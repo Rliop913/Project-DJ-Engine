@@ -5,6 +5,7 @@
 namespace PDJE_JUDGE {
 
 constexpr long double TO_MICRO = 1000.0 / 48.0;
+/** @brief Convert PCM frame count to microseconds (48 kHz). */
 inline uint64_t
 Convert_Frame_Into_MicroSecond(const uint64_t pcm_frame)
 {
@@ -24,6 +25,7 @@ using MOUSE_CUSTOM_PARSE_CALLBACK = // todo - make simpler
                        int                  x,
                        int                  y,
                        PDJE_Mouse_Axis_Type axis_type)>;
+/** @brief Optional callback bundle used during judgment loop. */
 struct PDJE_API Custom_Events {
     MISS_CALLBACK               missed_event;
     USE_CALLBACK                used_event;

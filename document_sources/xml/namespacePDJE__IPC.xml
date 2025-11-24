@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="16" column="1" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="16" bodyend="-1"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="17" column="1" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespacePDJE__IPC_1afa0a7b47d125684c3f3557e194fc5e56" prot="public" static="no">
         <type>std::string</type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="17" column="1" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="17" bodyend="-1"/>
+        <location file="include/input/IPC/transmission/ChildProcess.hpp" line="18" column="1" bodyfile="include/input/IPC/transmission/ChildProcess.hpp" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespacePDJE__IPC_1a9709ed0c8be64e9fe2486e273cb37d58" prot="public" static="no">
         <type>nlohmann::json</type>
@@ -100,6 +100,24 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
+      <memberdef kind="function" id="namespacePDJE__IPC_1a01af1265fc9ad0972525db7352ad736c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool PDJE_IPC::HashCompare</definition>
+        <argsstring>(const fs::path &amp;pt)</argsstring>
+        <name>HashCompare</name>
+        <qualifiedname>PDJE_IPC::HashCompare</qualifiedname>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/common/ipc_util.hpp" line="21" column="1" bodyfile="include/input/IPC/common/ipc_util.hpp" bodystart="21" bodyend="53"/>
+      </memberdef>
       <memberdef kind="function" id="namespacePDJE__IPC_1a70376465d929e8d1c237f737857d7f06" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>fs::path</type>
         <definition>static fs::path PDJE_IPC::GetValidProcessExecutor</definition>
@@ -112,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/common/ipc_util.hpp" line="21" column="1" bodyfile="include/input/IPC/common/ipc_util.hpp" bodystart="21" bodyend="51"/>
+        <location file="include/input/IPC/common/ipc_util.hpp" line="56" column="1" bodyfile="include/input/IPC/common/ipc_util.hpp" bodystart="56" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="namespacePDJE__IPC_1a394810a3d492d827df053c19a3275b16" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -268,10 +286,10 @@
         </inbodydescription>
         <location file="include/input/IPC/transmission/windows/ListDevice.hpp" line="97" column="1" bodyfile="include/input/IPC/transmission/windows/ListDevice.hpp" bodystart="97" bodyend="101"/>
       </memberdef>
-      <memberdef kind="function" id="namespacePDJE__IPC_1a571d99db6a7513047baa23e52f0e18d7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacePDJE__IPC_1aab3e7bb95140ecd6b4848b52f1bb584b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>static bool PDJE_IPC::PDJE_OpenProcess</definition>
-        <argsstring>(const fs::path &amp;pt, Importants &amp;imps, const int port)</argsstring>
+        <argsstring>(const fs::path &amp;pt, Importants &amp;imps, const int port, PDJE_CRYPTO::PSKPipe &amp;pipe)</argsstring>
         <name>PDJE_OpenProcess</name>
         <qualifiedname>PDJE_IPC::PDJE_OpenProcess</qualifiedname>
         <param>
@@ -286,13 +304,17 @@
           <type>const int</type>
           <declname>port</declname>
         </param>
+        <param>
+          <type><ref refid="classPDJE__CRYPTO_1_1PSKPipe" kindref="compound">PDJE_CRYPTO::PSKPipe</ref> &amp;</type>
+          <declname>pipe</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/transmission/windows/MainProcess.cpp" line="6" column="1" bodyfile="include/input/IPC/transmission/windows/MainProcess.cpp" bodystart="6" bodyend="38"/>
+        <location file="include/input/IPC/transmission/windows/MainProcess.cpp" line="7" column="1" bodyfile="include/input/IPC/transmission/windows/MainProcess.cpp" bodystart="7" bodyend="63"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
