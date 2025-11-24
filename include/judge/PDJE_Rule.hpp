@@ -32,8 +32,8 @@ struct PDJE_API INPUT_RULE {
 
 /** @brief Per-device judgment setting (rail mapping and offset). */
 struct PDJE_API INPUT_SETTING {
-    uint64_t MatchRail = 0;
-    // int64_t  offset_microsecond = 0;
+    uint64_t MatchRail          = 0;
+    int64_t  offset_microsecond = 0;
 };
 
 using RailToOffset = std::unordered_map<uint64_t, int64_t>;

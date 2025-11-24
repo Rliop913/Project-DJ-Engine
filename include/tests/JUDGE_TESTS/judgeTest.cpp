@@ -27,14 +27,7 @@ main()
 
             list.push_back(d);
 
-            PDJE_JUDGE::INPUT_CONFIG conf;
-
-            conf.Device_ID  = d.Name;
-            conf.DeviceType = d.Type;
-            conf.DeviceKey  = PDJE_KEY::A;
-            conf.MatchRail  = 1;
-
-            judge.inits.SetInputRule(conf);
+            judge.inits.SetDevice(d, PDJE_KEY::A, 1);
         }
         if (d.Type == PDJE_Dev_Type::MOUSE) {
 
@@ -49,8 +42,7 @@ main()
             conf.DeviceType = d.Type;
             conf.DeviceKey  = PDJE_JUDGE::DEVICE_MOUSE_EVENT::BTN_L;
             conf.MatchRail  = 1;
-
-            judge.inits.SetInputRule(conf);
+            judge.inits.SetDevice(d, PDJE_JUDGE::DEVICE_MOUSE_EVENT::BTN_L, 1);
         }
     }
     if (!input.Config(list)) {
@@ -93,7 +85,7 @@ main()
             std::cout << "used!!!" << diff / 1000
                       << (IsLate ? " late " : " early ") << std::endl;
         };
-    PDJE_JUDGE::MOUSE_AXIS_PARSE_CALLBACK mouse_parse =
+    PDJE_JUDGE::MOUSE_CUSTOM_PARSE_CALLBACK mouse_parse =
         [](uint64_t                      microSecond,
            const PDJE_JUDGE::P_NOTE_VEC &found_events,
            uint64_t                      railID,
@@ -103,7 +95,7 @@ main()
     judge.inits.SetCustomEvents(
         { .missed_event          = missed,
           .used_event            = used,
-          .custom_axis_parse     = mouse_parse,
+          .custom_mouse_parse    = mouse_parse,
           .use_event_sleep_time  = std::chrono::milliseconds(1),
           .miss_event_sleep_time = std::chrono::milliseconds(1) });
     judge.inits.SetCoreLine(engine.PullOutDataLine());

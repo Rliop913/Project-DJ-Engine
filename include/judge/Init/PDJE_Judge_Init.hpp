@@ -35,7 +35,10 @@ class PDJE_API Judge_Init {
 
     /** @brief Register an input device rule and its target rail/offset. */
     void
-    SetInputRule(const INPUT_CONFIG &device_config);
+    SetDevice(const DeviceData &devData,
+              const BITMASK     DeviceKey,
+              const int64_t offset_microsecond,
+              const uint64_t    MatchRail);
     /** @brief Set judgment window configuration. */
     void
     SetEventRule(const EVENT_RULE &event_rule);

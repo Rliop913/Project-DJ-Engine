@@ -124,14 +124,14 @@ main()
 
             std::shared_ptr<audioPlayer> ap;
             engine->editor->demoPlayInit(ap, 48, "testTrack");
-            if(!ap){
+            if (!ap) {
                 std::cout << "failed to init demo player. " << std::endl;
             }
-            if(ap->Activate()){
+            if (ap->Activate()) {
                 std::cout << "Activated demo" << std::endl;
             }
             getchar();
-            if(ap->Deactivate()){
+            if (ap->Deactivate()) {
                 std::cout << "DeActivated demo" << std::endl;
             }
         }

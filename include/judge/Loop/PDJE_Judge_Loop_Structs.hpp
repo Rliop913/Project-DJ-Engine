@@ -39,7 +39,6 @@ struct Queues {
 
 struct mouse_btn_event {
     uint64_t rail_id = 0;
-    int64_t  offset  = 0;
     int      status  = -1;
 };
 /** @brief Cached state shared across judge loop iterations. */

@@ -136,7 +136,8 @@ ChildProcess::LoopTrig()
         default:
             break;
         }
-        unlisted_targets[dev.device_specific_id] = dev.Name;
+        unlisted_targets[dev.device_specific_id] = { dev.Name,
+                                                     dev.offset_microsecond };
     }
 
     if (hasKeyBoard) {

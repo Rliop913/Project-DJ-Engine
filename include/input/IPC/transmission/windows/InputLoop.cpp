@@ -147,8 +147,6 @@ ChildProcess::Run()
                                         id_name[handlestr] =
                                             unlisted_targets[device_path];
                                         unlisted_targets.erase(device_path);
-                                        id_offset[handlestr] =
-                                            0; // todo - full valid offset data
                                     }
                                 }
                             }
@@ -163,7 +161,8 @@ ChildProcess::Run()
                         memcpy(cachedLog.id,
                                handlestr.data(),
                                sizeof(char) * (cachedLog.id_len));
-                        namestr = id_name[handlestr];
+                        
+                        namestr           = id_name[handlestr];
                         cachedLog.name_len =
                             namestr.size() > 256 ? 256 : namestr.size();
                         memcpy(cachedLog.name,

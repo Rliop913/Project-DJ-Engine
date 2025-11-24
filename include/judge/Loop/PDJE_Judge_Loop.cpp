@@ -84,7 +84,7 @@ Judge_Loop::PreProcess()
         Cached.synced_data.microsecond - Cached.local_microsecond_position;
 
     if (input_log.second == 0) {
-
+        
         Cached.cut_range =
             Cached.local_microsecond_position <
                     init_datas->ev_rule->miss_range_microsecond

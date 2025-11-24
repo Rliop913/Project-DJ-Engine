@@ -11,7 +11,8 @@
 
 namespace PDJE_JUDGE {
 
-/** @brief Internal judge loop that consumes inputs, matches notes, and emits callbacks. */
+/** @brief Internal judge loop that consumes inputs, matches notes, and emits
+ * callbacks. */
 class Judge_Loop {
 
   private:

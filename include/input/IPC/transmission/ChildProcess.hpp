@@ -17,6 +17,7 @@ namespace PDJE_IPC {
 
 using PDJE_DEV_PATH = std::string;
 using PDJE_NAME     = std::string;
+// using NAME_OFFSET   = std::pair<PDJE_NAME, int64_t>;
 class ChildProcess {
   private:
 #ifdef WIN32
@@ -28,8 +29,8 @@ class ChildProcess {
     std::unordered_map<std::string, std::function<void()>> callables;
     httplib::Server                                        server;
 
-    std::unordered_map<PDJE_ID, PDJE_NAME>           id_name;
-    std::unordered_map<PDJE_ID, int64_t>             id_offset;
+    std::unordered_map<PDJE_ID, PDJE_NAME> id_name;
+
     std::optional<PDJE_Buffer_Arena<PDJE_Input_Log>> input_buffer;
     std::optional<PDJE_IPC::SharedMem<int, PDJE_IPC::PDJE_IPC_RW>>
         spinlock_run; // 0 = stop, 1 = go, -1 = terminate
@@ -42,7 +43,7 @@ class ChildProcess {
                      const std::string &dataType,
                      const uint64_t     data_count); // todo - impl
 
-    std::vector<DeviceData>                      configed_devices;
+    std::vector<DeviceData>                        configed_devices;
     std::unordered_map<PDJE_DEV_PATH, PDJE_NAME> unlisted_targets;
 
     std::string
@@ -82,6 +83,7 @@ class ChildProcess {
                         DeviceData dd;
                         dd.device_specific_id = i.at("id").get<std::string>();
                         dd.Name               = i.at("name").get<std::string>();
+                        
                         std::string tp        = i.at("type").get<std::string>();
                         if (tp == "KEYBOARD") {
                             dd.Type = PDJE_Dev_Type::KEYBOARD;

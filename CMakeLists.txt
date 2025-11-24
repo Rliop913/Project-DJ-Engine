@@ -212,10 +212,10 @@ if(PDJE_SWIG_BUILD)
   include(cmakes/ADD_SWIGS.cmake)
 endif()
 
-#Debugging on Linux
-add_library(PDJE_MODULE_JUDGE ${JUDGE_SRCS})
-setJudgeReqs(PDJE_MODULE_JUDGE)
-#End Debugging on Linux
+# #Debugging on Linux
+# add_library(PDJE_MODULE_JUDGE ${JUDGE_SRCS})
+# setJudgeReqs(PDJE_MODULE_JUDGE)
+# #End Debugging on Linux
 
 # enable_testing()
 

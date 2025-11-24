@@ -24,8 +24,8 @@ FillIdHasLoad(ID_LOADED      &accumulate_data,
 
 void
 FillIdHasUnLoad(ID_LOADED      &accumulate_data,
-              const TypeEnum &type,
-              const int32_t  &id)
+                const TypeEnum &type,
+                const int32_t  &id)
 {
     if (!accumulate_data.contains(id)) {
         accumulate_data[id] = 0;
@@ -43,9 +43,9 @@ CheckIDHasLoad(const ID_LOADED &acc_data, UNSANITIZED &msg)
         if (id.second != 1) {
             FLAG_OK = false;
             msg += " ID " + std::to_string(id.first) + " has " +
-                   (id.second > 1
-                        ? (std::to_string(id.second) + " load command. render failed.\n")
-                        : "no load command. render failed.\n");
+                   (id.second > 1 ? (std::to_string(id.second) +
+                                     " load command. render failed.\n")
+                                  : "no load command. render failed.\n");
         }
     }
     return FLAG_OK;
@@ -59,14 +59,13 @@ CheckIDHasUnLoad(const ID_LOADED &acc_data, UNSANITIZED &msg)
         if (id.second != 1) {
             FLAG_OK = false;
             msg += " ID " + std::to_string(id.first) + " has " +
-                   (id.second > 1
-                        ? (std::to_string(id.second) + " unload command. render failed.\n")
-                        : "no unload command. render failed.\n");
+                   (id.second > 1 ? (std::to_string(id.second) +
+                                     " unload command. render failed.\n")
+                                  : "no unload command. render failed.\n");
         }
     }
     return FLAG_OK;
 }
-
 
 template <>
 bool

@@ -27,17 +27,20 @@ Judge_Init::SetInputLine(const PDJE_INPUT_DATA_LINE &_inputline)
 }
 
 void
-Judge_Init::SetInputRule(const INPUT_CONFIG &device_config)
+Judge_Init::SetDevice(const DeviceData &devData,
+                      const BITMASK     DeviceKey,
+                      const int64_t offset_microsecond,
+                      const uint64_t    MatchRail)
 {
-    if (device_config.Device_ID == "") {
+    if (devData.Type == PDJE_Dev_Type::UNKNOWN) {
         return;
     }
-    INPUT_RULE rule{ .Device_ID  = device_config.Device_ID,
-                     .DeviceType = device_config.DeviceType,
-                     .DeviceKey  = device_config.DeviceKey };
-    dev_rules[rule] = { .MatchRail = device_config.MatchRail,
-                        .offset_microsecond =
-                            device_config.offset_microsecond };
+    INPUT_RULE rule{ .Device_ID  = devData.device_specific_id,
+                     .DeviceType = devData.Type,
+                     .DeviceKey  = DeviceKey };
+    dev_rules[rule] = { .MatchRail          = MatchRail,
+                        .offset_microsecond = offset_microsecond };
+    note_objects->SetOffsets({.MatchRail = MatchRail, .offset_microsecond = offset_microsecond});
 }
 
 void

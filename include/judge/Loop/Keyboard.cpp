@@ -24,19 +24,17 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::KEYBOARD>(const PDJE_Input_Log &ilog)
                   << std::endl;
         return;
     }
-    uint64_t offset_applied =
-        ilog.microSecond + Cached.setting.offset_microsecond;
     if (ilog.event.keyboard.pressed) {
         init_datas->note_objects->Get<BUFFER_MAIN>(
             Cached.use_range, Cached.setting.MatchRail, Cached.found_list);
-        Match(offset_applied - Cached.global_local_diff,
+        Match(ilog.microSecond - Cached.global_local_diff,
               Cached.found_list,
               Cached.setting.MatchRail,
               true);
     } else {
         init_datas->note_objects->Get<BUFFER_SUB>(
             Cached.use_range, Cached.setting.MatchRail, Cached.found_list);
-        Match(offset_applied - Cached.global_local_diff,
+        Match(ilog.microSecond - Cached.global_local_diff,
               Cached.found_list,
               Cached.setting.MatchRail,
               false);
