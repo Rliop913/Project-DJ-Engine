@@ -17,11 +17,11 @@ Judge_Loop::Judge_Loop(Judge_Init &inits)
     Cached.mouse_btn_event_queue.reserve(7);
 }
 bool
-Judge_Loop::FindRailID(const INPUT_RULE &rule, uint64_t &id)
+Judge_Loop::FindDevSetting(const INPUT_RULE &rule, INPUT_SETTING &setting)
 {
     if (auto device_itr = init_datas->dev_rules.find(rule);
         device_itr != init_datas->dev_rules.end()) {
-        id = device_itr->second;
+        setting = device_itr->second;
         return true;
     } else {
         return false;

@@ -1,15 +1,12 @@
 #pragma once
 #include "Input_State.hpp"
-#include "PDJE_Buffer.hpp"
+
 #include "PDJE_Highres_Clock.hpp"
 #include "PDJE_Judge_Init.hpp"
+#include "PDJE_Judge_Loop_Structs.hpp"
 #include "PDJE_Note_OBJ.hpp"
 #include "PDJE_Rule.hpp"
-#include "PDJE_SYNC_CORE.hpp"
 #include <cstdint>
-#include <optional>
-#include <thread>
-#include <unordered_map>
 #include <vector>
 
 namespace PDJE_JUDGE {
@@ -17,61 +14,14 @@ namespace PDJE_JUDGE {
 class Judge_Loop {
 
   private:
-    struct {
-        std::optional<bool> use_event_switch;
-        std::optional<bool> miss_event_switch;
+    EV_Thread Event_Controls;
 
-        std::optional<std::thread> use_event_thread;
-        std::optional<std::thread> miss_event_thread;
-    } Event_Controls;
-    struct useDatas {
-        uint64_t railid;
-        bool     Pressed;
-        bool     IsLate;
-        uint64_t diff;
-    };
-    struct Queues {
-        PDJE_Buffer_Arena<std::unordered_map<uint64_t, NOTE_VEC>> miss_queue;
-        PDJE_Buffer_Arena<useDatas>                               use_queue;
-        Queues() : miss_queue(100), use_queue(100)
-        {
-        }
-    };
     Queues Event_Datas;
 
   private: // cached values
     std::pair<PDJE_Input_Log *, uint64_t> input_log;
 
-    struct mouse_btn_event {
-        uint64_t rail_id = 0;
-        int      status  = -1;
-    };
-    struct {
-
-        std::unordered_map<uint64_t, NOTE_VEC> missed_buffers;
-
-        P_NOTE_VEC found_list;
-        P_NOTE_VEC related_list_out;
-
-        // time values
-        LOCAL_TIME local_microsecond_position;
-        uint64_t   global_local_diff;
-
-        LOCAL_TIME log_begin;
-        LOCAL_TIME log_end;
-
-        LOCAL_TIME use_range;
-        LOCAL_TIME cut_range;
-
-        audioSyncData synced_data;
-
-        bool isLate;
-
-        uint64_t railID;
-
-        uint64_t                     diff;
-        std::vector<mouse_btn_event> mouse_btn_event_queue;
-    } Cached;
+    LoopCached Cached;
 
     Judge_Init               *init_datas;
     PDJE_HIGHRES_CLOCK::CLOCK clock_root;
@@ -85,7 +35,7 @@ class Judge_Loop {
     void
     UseEvent(const PDJE_Input_Log &ilog);
     bool
-    FindRailID(const INPUT_RULE &rule, uint64_t &id);
+    FindDevSetting(const INPUT_RULE &rule, INPUT_SETTING &setting);
     void
     Match(const LOCAL_TIME  input_time,
           const P_NOTE_VEC &note_list,

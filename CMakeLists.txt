@@ -152,7 +152,7 @@ function(setJudgeReqs targetName)
     target_compile_definitions(${targetName} PUBLIC PDJE_WINDOWS_DLL)
     target_compile_definitions(${targetName} PRIVATE PDJE_BUILDING)
   endif()
-  add_dependencies(${targetName} gen_RT_HASH)
+  # add_dependencies(${targetName} gen_RT_HASH)
   target_include_directories(${targetName} PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_GLOBAL})
   setSpdlogReqLib(${targetName})
   setCapnpReqLib(${targetName})
@@ -211,6 +211,11 @@ endif()
 if(PDJE_SWIG_BUILD)
   include(cmakes/ADD_SWIGS.cmake)
 endif()
+
+# #Debugging on Linux
+# add_library(PDJE_MODULE_JUDGE ${JUDGE_SRCS})
+# setJudgeReqs(PDJE_MODULE_JUDGE)
+# #End Debugging on Linux
 
 # enable_testing()
 

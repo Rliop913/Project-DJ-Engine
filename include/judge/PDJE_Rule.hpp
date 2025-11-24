@@ -27,8 +27,14 @@ struct PDJE_API INPUT_RULE {
     operator==(const INPUT_RULE &) const = default;
 };
 
-struct PDJE_API INPUT_CONFIG : INPUT_RULE {
-    uint64_t MatchRail = 0;
+struct PDJE_API INPUT_SETTING {
+    uint64_t MatchRail          = 0;
+    int64_t  offset_microsecond = 0;
+};
+
+struct PDJE_API INPUT_CONFIG : INPUT_RULE, INPUT_SETTING {
+    // uint64_t MatchRail          = 0;
+    // int64_t  offset_microsecond = 0;
 };
 
 struct PDJE_API EVENT_RULE {

@@ -35,7 +35,9 @@ Judge_Init::SetInputRule(const INPUT_CONFIG &device_config)
     INPUT_RULE rule{ .Device_ID  = device_config.Device_ID,
                      .DeviceType = device_config.DeviceType,
                      .DeviceKey  = device_config.DeviceKey };
-    dev_rules[rule] = device_config.MatchRail;
+    dev_rules[rule] = { .MatchRail = device_config.MatchRail,
+                        .offset_microsecond =
+                            device_config.offset_microsecond };
 }
 
 void
@@ -85,7 +87,7 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
     tempobj.microsecond = micro_Y1;
     INPUT_RULE key;
     for (const auto &k : dev_rules) {
-        if (k.second == railID) {
+        if (k.second.MatchRail == railID) {
             key = k.first;
         }
     }
