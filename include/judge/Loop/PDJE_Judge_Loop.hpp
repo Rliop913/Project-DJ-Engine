@@ -1,4 +1,5 @@
 #pragma once
+#include "InputParser.hpp"
 #include "Input_State.hpp"
 
 #include "PDJE_Highres_Clock.hpp"
@@ -7,6 +8,7 @@
 #include "PDJE_Note_OBJ.hpp"
 #include "PDJE_Rule.hpp"
 #include <cstdint>
+#include <optional>
 #include <vector>
 
 namespace PDJE_JUDGE {
@@ -29,20 +31,32 @@ class Judge_Loop {
     PDJE_HIGHRES_CLOCK::CLOCK clock_root;
     /** @brief Trim expired notes into miss queue. */
     inline void
-    Cut();
+    Cut(const uint64_t cut_range);
     /** @brief Prepare cached values before processing input batch. */
-    bool
+    PARSE_OUT *
     PreProcess();
+
     /** @brief Parse mouse-specific input and enqueue events. */
+    std::optional<uint64_t>
+    QueryRailid(const RAIL_META &meta)
+    {
+        auto itr = init_datas->devparser.railData.find(meta);
+        if (itr != init_datas->devparser.railData.end()) {
+            return itr->second.MatchRail;
+        } else {
+            return std::nullopt;
+        }
+    }
     void
-    ParseMouse(INPUT_RULE &rule, const BITMASK ev);
+    ParseMouse(const BITMASK ev);
+
     template <PDJE_Dev_Type D>
     /** @brief Handle a single input log entry for the given device type. */
     void
     UseEvent(const PDJE_Input_Log &ilog);
     /** @brief Find device setting bound to a rule. */
-    bool
-    FindDevSetting(const INPUT_RULE &rule, INPUT_SETTING &setting);
+    // bool
+    // FindDevSetting(const INPUT_RULE &rule, INPUT_SETTING &setting);
     /** @brief Match input timestamp against note list and mark usage. */
     void
     Match(const LOCAL_TIME  input_time,

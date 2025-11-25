@@ -5,8 +5,9 @@
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Judge_Init_Structs.hpp"
 
+#include "InputParser.hpp"
+#include "PDJE_Note_OBJ.hpp"
 #include "PDJE_Rule.hpp"
-
 #include <optional>
 #include <unordered_map>
 namespace PDJE_JUDGE {
@@ -30,15 +31,18 @@ class PDJE_API Judge_Init {
     std::optional<OBJ> note_objects;
 
     // rules
-    std::optional<EVENT_RULE>                     ev_rule;
-    std::unordered_map<INPUT_RULE, INPUT_SETTING> dev_rules;
+    std::optional<EVENT_RULE> ev_rule;
+
+    InputParser devparser;
+    // std::unordered_map<INPUT_RULE, INPUT_SETTING> dev_rules;
+    // RAILID_TO_OFFSET                              id_offset;
 
     /** @brief Register an input device rule and its target rail/offset. */
     void
-    SetDevice(const DeviceData &devData,
-              const BITMASK     DeviceKey,
-              const int64_t offset_microsecond,
-              const uint64_t    MatchRail);
+    SetRail(const DeviceData &devData,
+            const BITMASK     DeviceKey,
+            const int64_t     offset_microsecond,
+            const uint64_t    MatchRail);
     /** @brief Set judgment window configuration. */
     void
     SetEventRule(const EVENT_RULE &event_rule);

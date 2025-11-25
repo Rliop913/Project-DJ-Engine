@@ -1,5 +1,8 @@
 #include "PDJE_Judge_Init.hpp"
+#include "PDJE_Input_Device_Data.hpp"
 #include "PDJE_Note_OBJ.hpp"
+#include "PDJE_Rule.hpp"
+#include <cstdint>
 #include <iostream>
 namespace PDJE_JUDGE {
 
@@ -27,20 +30,28 @@ Judge_Init::SetInputLine(const PDJE_INPUT_DATA_LINE &_inputline)
 }
 
 void
-Judge_Init::SetDevice(const DeviceData &devData,
-                      const BITMASK     DeviceKey,
-                      const int64_t offset_microsecond,
-                      const uint64_t    MatchRail)
+Judge_Init::SetRail(const DeviceData &devData,
+                    const BITMASK     DeviceKey,
+                    const int64_t     offset_microsecond,
+                    const uint64_t    MatchRail)
 {
     if (devData.Type == PDJE_Dev_Type::UNKNOWN) {
         return;
     }
-    INPUT_RULE rule{ .Device_ID  = devData.device_specific_id,
-                     .DeviceType = devData.Type,
-                     .DeviceKey  = DeviceKey };
-    dev_rules[rule] = { .MatchRail          = MatchRail,
-                        .offset_microsecond = offset_microsecond };
-    note_objects->SetOffsets({.MatchRail = MatchRail, .offset_microsecond = offset_microsecond});
+    RAIL_META meta;
+    meta.Device_ID = devData.device_specific_id;
+    if (meta.Device_ID.size() > 255) {
+        meta.Device_ID = std::string(meta.Device_ID, 255);
+    }
+    meta.DeviceKey = DeviceKey;
+    RAIL_SETTINGS settings;
+    settings.MatchRail          = MatchRail;
+    settings.offset_microsecond = offset_microsecond;
+    settings.Type               = devData.Type;
+    OFFSET offset;
+    offset.offset_microsecond            = offset_microsecond;
+    devparser.railData[meta]             = settings;
+    devparser.offsetData[meta.Device_ID] = offset;
 }
 
 void
@@ -71,7 +82,8 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
                                 const unsigned long long Y_Axis_2,
                                 const uint64_t           railID)
 {
-    if (dev_rules.empty()) {
+
+    if (devparser.railData.empty()) {
         return;
     }
     if (!note_objects.has_value()) {
@@ -88,17 +100,18 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
     LOCAL_TIME micro_Y1 = Convert_Frame_Into_MicroSecond(Y_Axis);
     LOCAL_TIME micro_Y2 = Convert_Frame_Into_MicroSecond(Y_Axis_2);
     tempobj.microsecond = micro_Y1;
-    INPUT_RULE key;
-    for (const auto &k : dev_rules) {
+
+    PDJE_Dev_Type val;
+    for (const auto &k : devparser.railData) {
         if (k.second.MatchRail == railID) {
-            key = k.first;
+            if (k.first.Device_ID == "") {
+                return;
+            }
+            val = k.second.Type;
         }
     }
-    if (key.Device_ID == "") {
-        return;
-    }
 
-    switch (key.DeviceType) {
+    switch (val) {
     case PDJE_Dev_Type::KEYBOARD:
         DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
         std::cout << "push keyboard, " << micro_Y1 << ", " << micro_Y2

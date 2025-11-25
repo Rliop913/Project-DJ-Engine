@@ -7,6 +7,7 @@
 #include "PDJE_SYNC_CORE.hpp"
 #include <cstdint>
 #include <optional>
+#include <string>
 #include <thread>
 #include <unordered_map>
 
@@ -53,17 +54,19 @@ struct LoopCached {
     LOCAL_TIME local_microsecond_position;
     uint64_t   global_local_diff;
 
-    LOCAL_TIME log_begin;
-    LOCAL_TIME log_end;
+    // LOCAL_TIME log_begin;
+    // LOCAL_TIME log_end;
 
-    LOCAL_TIME use_range;
-    LOCAL_TIME cut_range;
+    LOCAL_TIME  use_range;
+    std::string strCache;
+    // LOCAL_TIME cut_range;
 
     audioSyncData synced_data;
 
-    bool isLate;
-
-    INPUT_SETTING setting;
+    RAIL_META meta;
+    bool      isLate;
+    uint64_t  railid;
+    // INPUT_SETTING setting;
 
     uint64_t                     diff;
     std::vector<mouse_btn_event> mouse_btn_event_queue;

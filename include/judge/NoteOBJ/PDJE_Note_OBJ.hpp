@@ -2,6 +2,7 @@
 #include "Input_State.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_Input_Device_Data.hpp"
+#include "PDJE_Rule.hpp"
 #include <cstdint>
 #include <iostream>
 #include <string>
@@ -13,7 +14,7 @@ constexpr int BUFFER_MAIN = 0;
 constexpr int BUFFER_SUB  = 1;
 
 using GLOBAL_TIME = uint64_t;
-using LOCAL_TIME  = uint64_t;
+using LOCAL_TIME  = int64_t;
 /** @brief Judgable note metadata stored in buffers. */
 struct PDJE_API NOTE {
     std::string type;
@@ -35,7 +36,7 @@ struct PDJE_API NOTE_ITR {
     NOTE_VEC::iterator itr;
 };
 
-using RAILID_TO_NOTE = std::unordered_map<uint64_t, NOTE_ITR>;
+using RAILID_TO_NOTE   = std::unordered_map<uint64_t, NOTE_ITR>;
 using RAILID_TO_OFFSET = std::unordered_map<uint64_t, uint64_t>;
 
 /** @brief Note buffer manager used during initialization and playback. */
@@ -43,7 +44,6 @@ class PDJE_API OBJ {
   private:
     RAILID_TO_NOTE Buffer_Main;
     RAILID_TO_NOTE Buffer_Sub;
-    RAILID_TO_OFFSET id_offset;
 
     template <int I>
     RAILID_TO_NOTE *
@@ -57,12 +57,6 @@ class PDJE_API OBJ {
     }
 
   public:
-    void
-    SetOffsets(const INPUT_SETTING& setting){
-        //todo - impl with multiple offset setting
-        id_offset[setting.MatchRail] = setting.offset_microsecond;
-    }
-
     /** @brief Sort internal buffers and reset iterators. */
     void
     Sort(); // use only for init
@@ -123,15 +117,15 @@ class PDJE_API OBJ {
         static_assert(I == BUFFER_MAIN || I == BUFFER_SUB,
                       "invalid use of cut.");
         RAILID_TO_NOTE *buffer = pick_buffer<I>();
-        
+
         for (auto &rail : *buffer) {
             if (rail.second.vec.empty()) {
                 continue;
             }
             auto titr = rail.second.itr;
-            
+
             while (titr != rail.second.vec.end() &&
-                   titr->microsecond <= (limit + id_offset[rail.first])) {
+                   titr->microsecond <= limit) {
                 if (!titr->used) {
                     cuts[rail.first].push_back(*titr);
                     titr->used = true;

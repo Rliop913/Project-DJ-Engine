@@ -7,6 +7,7 @@ set(judgeSource
     ${CMAKE_CURRENT_SOURCE_DIR}/include/judge/Loop/Mouse.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/judge/Loop/MIDI.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/judge/Loop/HID.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/judge/InputParser/InputParser.cpp
     
     
     ${CAPNP_SRCS}

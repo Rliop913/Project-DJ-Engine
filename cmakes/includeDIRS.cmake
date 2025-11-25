@@ -47,16 +47,6 @@ set(PDJE_INCLUDE_CORE
   ${PDJE_INCLUDE_ROOT}/include/core/editor/TimeLine/LineVersion
   ${PDJE_INCLUDE_ROOT}/include/core/editor/TimeLine/GitDataPack
 
-  #######################DEPRECATED
-  # ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper
-  # ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper/GitWrap
-  # ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper/GitWrap/Branch
-  # ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper/GitWrap/Commit
-  # ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper/GitWrap/Add
-  # ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper/GitWrap/Blame
-  # ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper/GitWrap/Diff
-  # ${PDJE_INCLUDE_ROOT}/include/core/editor/featureWrapper/GitWrap/Log
-  #######################END DEPRECATED
   ${PDJE_INCLUDE_ROOT}/include/core/editor/pdjeLinter
   
   ${PDJE_INCLUDE_ROOT}/include/core/editor/TimeLine/JSONWrap
@@ -76,6 +66,7 @@ ${PDJE_INCLUDE_ROOT}/include/judge
 ${PDJE_INCLUDE_ROOT}/include/judge/NoteOBJ
 ${PDJE_INCLUDE_ROOT}/include/judge/Init
 ${PDJE_INCLUDE_ROOT}/include/judge/Loop
+${PDJE_INCLUDE_ROOT}/include/judge/InputParser
 ${CAPNPC_OUTPUT_DIR}/third_party/Capnp
 )
 
