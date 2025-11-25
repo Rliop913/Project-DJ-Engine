@@ -26,8 +26,9 @@ main()
             std::cout << "DEVICE NAME: " << d.Name << std::endl;
 
             list.push_back(d);
+            judge.inits.SetRail(d, PDJE_KEY::A, 0, 1);
 
-            judge.inits.SetDevice(d, PDJE_KEY::A, 1);
+            
         }
         if (d.Type == PDJE_Dev_Type::MOUSE) {
 
@@ -36,13 +37,14 @@ main()
 
             list.push_back(d);
 
-            PDJE_JUDGE::INPUT_CONFIG conf;
+            // PDJE_JUDGE::INPUT_CONFIG conf;
 
-            conf.Device_ID  = d.Name;
-            conf.DeviceType = d.Type;
-            conf.DeviceKey  = PDJE_JUDGE::DEVICE_MOUSE_EVENT::BTN_L;
-            conf.MatchRail  = 1;
-            judge.inits.SetDevice(d, PDJE_JUDGE::DEVICE_MOUSE_EVENT::BTN_L, 1);
+            // conf.Device_ID  = d.Name;
+            
+            // conf.DeviceKey  = PDJE_JUDGE::DEVICE_MOUSE_EVENT::BTN_L;
+            // conf.MatchRail  = 1;
+            // conf.offset_microsecond
+            judge.inits.SetRail(d, PDJE_JUDGE::DEVICE_MOUSE_EVENT::BTN_L, 0, 1);
         }
     }
     if (!input.Config(list)) {

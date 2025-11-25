@@ -57,23 +57,23 @@ main()
                 loadMusic.ID       = 0;
                 engine->editor->AddLine<EDIT_ARG_MIX>(loadMusic);
 
-                // EDIT_ARG_MIX changeBpm;
-                // changeBpm.beat     = 40;
-                // changeBpm.subBeat  = 0;
-                // changeBpm.type     = TypeEnum::BPM_CONTROL;
-                // changeBpm.details  = DetailEnum::TIME_STRETCH;
-                // changeBpm.separate = 4;
-                // changeBpm.ID       = 0;
-                // changeBpm.first    = "170";
-                // engine->editor->AddLine<EDIT_ARG_MIX>(changeBpm);
+                EDIT_ARG_MIX changeBpm;
+                changeBpm.beat     = 40;
+                changeBpm.subBeat  = 0;
+                changeBpm.type     = TypeEnum::BPM_CONTROL;
+                changeBpm.details  = DetailEnum::TIME_STRETCH;
+                changeBpm.separate = 4;
+                changeBpm.ID       = 0;
+                changeBpm.first    = "170";
+                engine->editor->AddLine<EDIT_ARG_MIX>(changeBpm);
 
-                // EDIT_ARG_MIX unloadMusic;
-                // unloadMusic.beat     = 200;
-                // unloadMusic.subBeat  = 0;
-                // unloadMusic.type     = TypeEnum::UNLOAD;
-                // unloadMusic.ID       = 0;
-                // unloadMusic.separate = 4;
-                // engine->editor->AddLine<EDIT_ARG_MIX>(unloadMusic);
+                EDIT_ARG_MIX unloadMusic;
+                unloadMusic.beat     = 200;
+                unloadMusic.subBeat  = 0;
+                unloadMusic.type     = TypeEnum::UNLOAD;
+                unloadMusic.ID       = 0;
+                unloadMusic.separate = 4;
+                engine->editor->AddLine<EDIT_ARG_MIX>(unloadMusic);
 
                 std::cout << "config init ok" << std::endl;
             } else {

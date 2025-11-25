@@ -62,7 +62,6 @@ PDJE_Input::Config(std::vector<DeviceData> &devs)
             std::unordered_map<std::string, std::string> kv;
             kv["id"]     = dev.device_specific_id;
             kv["name"]   = dev.Name;
-            kv["offset"] = dev.offset_microsecond;
             switch (dev.Type) {
             case PDJE_Dev_Type::KEYBOARD:
                 kv["type"] = "KEYBOARD";
