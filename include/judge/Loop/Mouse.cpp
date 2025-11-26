@@ -86,6 +86,7 @@ Judge_Loop::ParseMouse(const BITMASK ev)
     if (ev & PDJE_MOUSE_XWHEEL) {
         Cached.meta.DeviceKey = DEVICE_MOUSE_EVENT::WHEEL_X;
         railtemp              = QueryRailid(Cached.meta);
+        std::cout << railtemp.value_or(-77) << " xwtf???" << std::endl;
         if (railtemp) {
             Cached.mouse_btn_event_queue.push_back({ railtemp.value(), X });
         }
@@ -93,6 +94,7 @@ Judge_Loop::ParseMouse(const BITMASK ev)
     if (ev & PDJE_MOUSE_YWHEEL) {
         Cached.meta.DeviceKey = DEVICE_MOUSE_EVENT::WHEEL_Y;
         railtemp              = QueryRailid(Cached.meta);
+        std::cout << railtemp.value_or(-77) << " ywtf???" << std::endl;
         if (railtemp) {
             Cached.mouse_btn_event_queue.push_back({ railtemp.value(), Y });
         }
@@ -105,7 +107,7 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::MOUSE>(const PDJE_Input_Log &ilog)
 {
 
     Cached.mouse_btn_event_queue.clear();
-    Cached.meta.Device_ID.assign(ilog.id, ilog.id_len);
+    Cached.meta.Device_Name.assign(ilog.name, ilog.name_len);
 
     ParseMouse(ilog.event.mouse.button_type);
 

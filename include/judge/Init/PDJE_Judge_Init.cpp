@@ -39,9 +39,9 @@ Judge_Init::SetRail(const DeviceData &devData,
         return;
     }
     RAIL_META meta;
-    meta.Device_ID = devData.device_specific_id;
-    if (meta.Device_ID.size() > 255) {
-        meta.Device_ID = std::string(meta.Device_ID, 255);
+    meta.Device_Name = devData.Name;
+    if (meta.Device_Name.size() > 255) {
+        meta.Device_Name = std::string(meta.Device_Name, 255);
     }
     meta.DeviceKey = DeviceKey;
     RAIL_SETTINGS settings;
@@ -50,8 +50,11 @@ Judge_Init::SetRail(const DeviceData &devData,
     settings.Type               = devData.Type;
     OFFSET offset;
     offset.offset_microsecond            = offset_microsecond;
+    if(devparser.railData.contains(meta)){
+        return;
+    }
     devparser.railData[meta]             = settings;
-    devparser.offsetData[meta.Device_ID] = offset;
+    devparser.offsetData[meta.Device_Name] = offset;
 }
 
 void
@@ -104,7 +107,7 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
     PDJE_Dev_Type val;
     for (const auto &k : devparser.railData) {
         if (k.second.MatchRail == railID) {
-            if (k.first.Device_ID == "") {
+            if (k.first.Device_Name == "") {
                 return;
             }
             val = k.second.Type;

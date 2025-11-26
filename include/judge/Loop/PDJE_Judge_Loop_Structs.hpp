@@ -31,8 +31,8 @@ struct useDatas {
 
 /** @brief Buffered queues for miss/use events. */
 struct Queues {
-    PDJE_Buffer_Arena<std::unordered_map<uint64_t, NOTE_VEC>> miss_queue;
-    PDJE_Buffer_Arena<useDatas>                               use_queue;
+    Atomic_Double_Buffer<std::unordered_map<uint64_t, NOTE_VEC>> miss_queue;
+    Atomic_Double_Buffer<useDatas>                               use_queue;
     Queues() : miss_queue(100), use_queue(100)
     {
     }

@@ -25,7 +25,7 @@ main()
                     "testMiku",
                     "Camellia",
                     "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav",
-                    "83040")) {
+                    "41280")) {
 
                 EDIT_ARG_MUSIC temp;
                 temp.musicName    = "testMiku";
@@ -83,7 +83,7 @@ main()
                     "ヒアソビ",
                     "Camellia",
                     "../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav",
-                    "83040")) {
+                    "41280")) {
                 EDIT_ARG_MUSIC temp;
                 temp.musicName    = "ヒアソビ";
                 temp.arg.beat     = 0;

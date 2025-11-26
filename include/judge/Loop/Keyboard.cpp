@@ -2,6 +2,7 @@
 #include "PDJE_Judge_Loop.hpp"
 #include "PDJE_Note_OBJ.hpp"
 #include <cstdint>
+#include <iostream>//debugiostream
 
 namespace PDJE_JUDGE {
 
@@ -9,12 +10,26 @@ template <>
 void
 Judge_Loop::UseEvent<PDJE_Dev_Type::KEYBOARD>(const PDJE_Input_Log &ilog)
 {
-    Cached.meta.Device_ID.assign(ilog.id, ilog.id_len);
+    
+    Cached.meta.Device_Name.assign(ilog.name, ilog.name_len);
     Cached.meta.DeviceKey = ilog.event.keyboard.k;
-    Cached.railid = init_datas->devparser.railData[Cached.meta].MatchRail;
+    auto id = QueryRailid(Cached.meta);
+    // auto it = init_datas->devparser.railData.find(Cached.meta);
+
+    // // std::cout << "finding..." << Cached.meta.Device_Name << std::endl;
+    // if(it == init_datas->devparser.railData.end()){
+    //     return;
+    // }
+    // Cached.railid = it->second.MatchRail;
+    if(!id){
+        return;
+    }
+    Cached.railid = id.value();
+    // std::cout << "got valid key. id:" << Cached.railid << std::endl;
     if (ilog.event.keyboard.pressed) {
         init_datas->note_objects->Get<BUFFER_MAIN>(
             Cached.use_range, Cached.railid, Cached.found_list);
+            // std::cout << "got range:" << Cached.found_list.size() << std::endl;
         Match(ilog.microSecond, Cached.found_list, Cached.railid, true);
     } else {
         init_datas->note_objects->Get<BUFFER_SUB>(

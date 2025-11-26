@@ -10,7 +10,7 @@
 #include <chrono>
 #include <cstddef>
 #include <exception>
-#include <iostream>
+#include <iostream>//debugiostream
 #include <ratio>
 #include <thread>
 namespace PDJE_JUDGE {
@@ -44,8 +44,11 @@ Judge_Loop::Match(const LOCAL_TIME  input_time,
 
         Cached.diff = Cached.isLate ? input_time - note_local->microsecond
                                     : note_local->microsecond - input_time;
+        // std::cout << "Matching... " << Cached.diff << std::endl;
         if (Cached.diff <= init_datas->ev_rule->use_range_microsecond) {
             note_local->used = true;
+
+            // std::cout << "Matched. and used. " << Cached.diff << std::endl;
             Event_Datas.use_queue.Write(
                 { railid, isPressed, Cached.isLate, Cached.diff });
 
@@ -78,7 +81,7 @@ Judge_Loop::PreProcess()
 
     input_log = init_datas->inputline->input_arena->Get();
     auto res  = init_datas->devparser.Parse(input_log);
-
+    
     Cached.synced_data =
         init_datas->coreline->syncD->load(std::memory_order_acquire);
 
@@ -176,15 +179,11 @@ Judge_Loop::StartEventLoop()
             try {
                 use_clock += init_datas->lambdas.use_event_sleep_time;
                 std::this_thread::sleep_until(use_clock);
-
+                
                 auto queue = Event_Datas.use_queue.Get();
-                for (uint64_t idx = 0; idx < queue.second; ++idx) {
-                    init_datas->lambdas.used_event(queue.first[idx].railid,
-                                                   queue.first[idx].Pressed,
-                                                   queue.first[idx].IsLate,
-                                                   queue.first[idx].diff);
+                for(const auto& used : (*queue)){
+                    init_datas->lambdas.used_event(used.railid, used.Pressed, used.IsLate, used.diff);
                 }
-
             } catch (const std::exception &e) {
                 critlog("caught error on use event loop. Why:");
                 critlog(e.what());
@@ -200,8 +199,8 @@ Judge_Loop::StartEventLoop()
                 std::this_thread::sleep_for(
                     init_datas->lambdas.miss_event_sleep_time);
                 auto queue = Event_Datas.miss_queue.Get();
-                for (uint64_t idx = 0; idx < queue.second; ++idx) {
-                    init_datas->lambdas.missed_event(queue.first[idx]);
+                for(const auto& missed : (*queue)){
+                    init_datas->lambdas.missed_event(missed);
                 }
             } catch (const std::exception &e) {
                 critlog("caught error on miss event loop. Why:");

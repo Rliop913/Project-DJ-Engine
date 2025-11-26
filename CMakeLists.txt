@@ -24,7 +24,7 @@ endif()
 
 set(PDJE_INCLUDE_ROOT  ${CMAKE_SOURCE_DIR} CACHE STRING "Set pdje root")
 
-option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
+option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
 if(WIN32)
 option(PDJE_DEVELOP_INPUT "Enable linux develop build" ON)
 else()
