@@ -10,9 +10,10 @@
 #include <chrono>
 #include <cstddef>
 #include <exception>
-#include <iostream>//debugiostream
+
 #include <ratio>
 #include <thread>
+#include "PDJE_Benchmark.hpp"
 namespace PDJE_JUDGE {
 Judge_Loop::Judge_Loop(Judge_Init &inits)
 {
@@ -101,14 +102,6 @@ Judge_Loop::PreProcess()
         return nullptr;
     }
 
-    // Cached.log_begin =
-    //     input_log.first[0].microSecond < Cached.global_local_diff
-    //         ? 0
-    //         : input_log.first[0].microSecond - Cached.global_local_diff;
-    // Cached.cut_range =
-    //     Cached.log_begin < init_datas->ev_rule->miss_range_microsecond
-    //         ? 0
-    //         : Cached.log_begin - init_datas->ev_rule->miss_range_microsecond;
     if (res->lowest < Cached.global_local_diff) {
         res->lowest = 0;
     } else {
@@ -126,8 +119,6 @@ Judge_Loop::PreProcess()
     } else {
         res->highest -= Cached.global_local_diff;
     }
-    // Cached.log_end = input_log.first[input_log.second - 1].microSecond -
-    //                  Cached.global_local_diff;
     Cached.use_range =
         res->highest + init_datas->ev_rule->use_range_microsecond;
     for (auto &log : res->logs) {
@@ -142,8 +133,9 @@ Judge_Loop::PreProcess()
 void
 Judge_Loop::loop()
 {
-
+    WBCH("judge loop started")
     while (loop_switch) {
+        WBCH("judge loop head")
         PARSE_OUT *res = PreProcess();
         if (!res) {
             continue;
@@ -167,6 +159,7 @@ Judge_Loop::loop()
                 break;
             }
         }
+        WBCH("judge loop tail")
     }
 }
 void
@@ -175,8 +168,10 @@ Judge_Loop::StartEventLoop()
     Event_Controls.use_event_switch = true;
     Event_Controls.use_event_thread.emplace([this]() {
         auto use_clock = std::chrono::steady_clock::now();
+        WBCH("use event loop init")
         while (Event_Controls.use_event_switch.value()) {
             try {
+                WBCH("use event line head")
                 use_clock += init_datas->lambdas.use_event_sleep_time;
                 std::this_thread::sleep_until(use_clock);
                 
@@ -184,6 +179,7 @@ Judge_Loop::StartEventLoop()
                 for(const auto& used : (*queue)){
                     init_datas->lambdas.used_event(used.railid, used.Pressed, used.IsLate, used.diff);
                 }
+                WBCH("use event line tail")
             } catch (const std::exception &e) {
                 critlog("caught error on use event loop. Why:");
                 critlog(e.what());
@@ -193,8 +189,10 @@ Judge_Loop::StartEventLoop()
     Event_Controls.miss_event_switch = true;
     Event_Controls.miss_event_thread.emplace([this]() {
         auto miss_clock = std::chrono::steady_clock::now();
+        WBCH("miss event init")
         while (Event_Controls.miss_event_switch.value()) {
             try {
+                WBCH("miss event line head")
                 miss_clock += init_datas->lambdas.miss_event_sleep_time;
                 std::this_thread::sleep_for(
                     init_datas->lambdas.miss_event_sleep_time);
@@ -202,6 +200,7 @@ Judge_Loop::StartEventLoop()
                 for(const auto& missed : (*queue)){
                     init_datas->lambdas.missed_event(missed);
                 }
+                WBCH("miss event line tail")
             } catch (const std::exception &e) {
                 critlog("caught error on miss event loop. Why:");
                 critlog(e.what());

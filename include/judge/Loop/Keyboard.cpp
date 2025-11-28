@@ -2,7 +2,7 @@
 #include "PDJE_Judge_Loop.hpp"
 #include "PDJE_Note_OBJ.hpp"
 #include <cstdint>
-#include <iostream>//debugiostream
+
 
 namespace PDJE_JUDGE {
 
@@ -14,13 +14,7 @@ Judge_Loop::UseEvent<PDJE_Dev_Type::KEYBOARD>(const PDJE_Input_Log &ilog)
     Cached.meta.Device_Name.assign(ilog.name, ilog.name_len);
     Cached.meta.DeviceKey = ilog.event.keyboard.k;
     auto id = QueryRailid(Cached.meta);
-    // auto it = init_datas->devparser.railData.find(Cached.meta);
 
-    // // std::cout << "finding..." << Cached.meta.Device_Name << std::endl;
-    // if(it == init_datas->devparser.railData.end()){
-    //     return;
-    // }
-    // Cached.railid = it->second.MatchRail;
     if(!id){
         return;
     }

@@ -94,10 +94,12 @@ main()
             }
             EDIT_ARG_NOTE notetemp;
             notetemp.railID = 1;
-            for (int i = 0; i < 100; ++i) {
+            for (int i = 0; i < 10; ++i) {
                 notetemp.beat = i;
                 engine->editor->AddLine<EDIT_ARG_NOTE>(notetemp);
             }
+            engine->editor->Undo<EDIT_ARG_NOTE>();
+            engine->editor->Redo<EDIT_ARG_NOTE>();
         }
         if (engine->SearchMusic("testMiku", "Camellia").empty()) {
             std::string linter_msg;
@@ -122,28 +124,33 @@ main()
             else
                 std::cout << "push failed" << std::endl;
 
-            std::shared_ptr<audioPlayer> ap;
-            engine->editor->demoPlayInit(ap, 48, "testTrack");
-            if (!ap) {
-                std::cout << "failed to init demo player. " << std::endl;
-            }
-            if (ap->Activate()) {
-                std::cout << "Activated demo" << std::endl;
-            }
-            getchar();
-            if (ap->Deactivate()) {
-                std::cout << "DeActivated demo" << std::endl;
-            }
+            // std::shared_ptr<audioPlayer> ap;
+            // engine->editor->demoPlayInit(ap, 48, "testTrack");
+            // if (!ap) {
+            //     std::cout << "failed to init demo player. " << std::endl;
+            // }
+            // if (ap->Activate()) {
+            //     std::cout << "Activated demo" << std::endl;
+            // }
+            // getchar();
+            // if (ap->Deactivate()) {
+            //     std::cout << "DeActivated demo" << std::endl;
+            // }
         }
         trackdata td;
         td = engine->SearchTrack("testTrack").front();
 
-        auto initres   = engine->InitPlayer(PLAY_MODE::HYBRID_RENDER, td, 48);
+        auto initres   = engine->InitPlayer(PLAY_MODE::FULL_PRE_RENDER, td, 48);
         auto activeres = engine->player->Activate();
+        #ifdef PDJE_BENCHMARK_ON
+        getchar();
+        engine->player->Deactivate();
+        delete engine;
+        return 0;
+        #endif
         auto musPanel  = engine->player->GetMusicControlPanel();
         auto muses     = engine->SearchMusic("ヒアソビ", "Camellia");
         musPanel->LoadMusic(*(engine->DBROOT), muses.front());
-
         getchar();
         musPanel->SetMusic("ヒアソビ", true);
 

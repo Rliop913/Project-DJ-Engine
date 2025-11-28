@@ -24,6 +24,17 @@ endif()
 
 set(PDJE_INCLUDE_ROOT  ${CMAKE_SOURCE_DIR} CACHE STRING "Set pdje root")
 
+option(PDJE_BENCHMARK "Enable benchmark codes" ON)
+
+#for release + symbol
+if(PDJE_BENCHMARK)
+add_compile_definitions(PDJE_BENCHMARK_ON)
+  if(WIN32)
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Zi")
+    set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} /DEBUG")
+  endif()
+endif()
+#end symbol
 option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
 if(WIN32)
 option(PDJE_DEVELOP_INPUT "Enable linux develop build" ON)

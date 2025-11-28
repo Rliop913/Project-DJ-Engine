@@ -66,8 +66,8 @@ main()
     for (auto &d : devs) {
         if (d.Type == PDJE_Dev_Type::KEYBOARD) {
 
-            std::cout << "DEVICE id: " << d.device_specific_id << std::endl;
-            std::cout << "DEVICE NAME: " << d.Name << std::endl;
+            // std::cout << "DEVICE id: " << d.device_specific_id << std::endl;
+            // std::cout << "DEVICE NAME: " << d.Name << std::endl;
 
             list.push_back(d);
             judge.inits.SetRail(d, PDJE_KEY::A, 0, 1);

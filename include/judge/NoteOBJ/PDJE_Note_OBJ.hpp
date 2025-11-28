@@ -4,7 +4,7 @@
 #include "PDJE_Input_Device_Data.hpp"
 #include "PDJE_Rule.hpp"
 #include <cstdint>
-#include <iostream>
+
 #include <string>
 #include <unordered_map>
 #include <utility>
