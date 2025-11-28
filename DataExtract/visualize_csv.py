@@ -20,7 +20,7 @@ def load_callbacks_csv(path: str) -> pd.DataFrame:
 
 def plot_timeline(df: pd.DataFrame,
                   max_us: float | None = None,
-                  filename: str = "timeline_by_phase.png"):
+                  filename: str = "timeline_by_phase.png", title = "hybrid"):
     """
     x축: 콜백 index, y축: dur_us, 색: phase
     → 스파이크가 어느 phase 구간에서 자주 터지는지 한 번에 보기 좋음.
@@ -37,7 +37,7 @@ def plot_timeline(df: pd.DataFrame,
 
     plt.xlabel("Callback index")
     plt.ylabel("Duration (µs)")
-    plt.title("Hybrid render callback duration over time (colored by phase)")
+    plt.title(f"{title} render callback duration over time (colored by phase)")
 
     if max_us is not None:
         plt.ylim(0, max_us)
@@ -150,12 +150,18 @@ def main():
         default=10,
         help="boxplot / barplot에 포함할 phase의 최소 콜백 개수",
     )
+    parser.add_argument(
+        "--title",
+        type=str,
+        default="hybrid",
+        help="plot title",
+    )
     args = parser.parse_args()
     file_name = os.path.basename(args.csv)
     df = load_callbacks_csv(args.csv)
     print(df.head())
 
-    plot_timeline(df, max_us=args.max_us, filename=f"{file_name}_timeline_by_phase.png")
+    plot_timeline(df, max_us=args.max_us, filename=f"{file_name}_timeline_by_phase.png", title=args.title)
     plot_box_by_phase(df, min_count=args.min_count, filename=f"{file_name}_boxplot_by_phase.png")
     plot_bar_mean_by_phase(df, min_count=args.min_count, filename=f"{file_name}_bar_mean_by_phase.png")
 
