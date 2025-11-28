@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include "PDJE_Benchmark.hpp"
 // #include <NanoLog.hpp>
 
 int
@@ -139,55 +140,72 @@ main()
         }
         trackdata td;
         td = engine->SearchTrack("testTrack").front();
-
-        auto initres   = engine->InitPlayer(PLAY_MODE::FULL_PRE_RENDER, td, 48);
+        auto mode = PLAY_MODE::FULL_PRE_RENDER;
+        auto initres   = engine->InitPlayer(mode, td, 480);
         auto activeres = engine->player->Activate();
-        #ifdef PDJE_BENCHMARK_ON
-        getchar();
-        engine->player->Deactivate();
-        delete engine;
-        return 0;
-        #endif
+        if(mode == PLAY_MODE::FULL_PRE_RENDER){
+            getchar();
+            engine->player->Deactivate();
+            delete engine;
+            return 0;
+        }
+        WBCH("FLAG GetMusicControlPanel()")
         auto musPanel  = engine->player->GetMusicControlPanel();
+        WBCH("FLAG SearchMusic()")
         auto muses     = engine->SearchMusic("ヒアソビ", "Camellia");
+        WBCH("FLAG LoadMusic()")
         musPanel->LoadMusic(*(engine->DBROOT), muses.front());
         getchar();
+        WBCH("FLAG SetMusic()")
         musPanel->SetMusic("ヒアソビ", true);
 
         // musPanel->
         getchar();
+        WBCH("FLAG getFXHandle()")
         auto Fxhandle = musPanel->getFXHandle("ヒアソビ");
+        WBCH("FLAG FX_ON_OFF1()")
         Fxhandle->FX_ON_OFF(FXList::OCSFILTER, true);
+        WBCH("FLAG FX_ON_OFF2()")
         Fxhandle->FX_ON_OFF(FXList::EQ, true);
+        WBCH("FLAG GetArgSetter()")
         auto ocshandle = Fxhandle->GetArgSetter(FXList::OCSFILTER);
+        WBCH("FLAG SetArgSetter1()")
         ocshandle["OCSFilterHighLowSW"](1);
+        WBCH("FLAG SetArgSetter2()")
         ocshandle["RangeFreqHalf"](2500);
+        WBCH("FLAG SetArgSetter3()")
         ocshandle["MiddleFreq"](5000);
-
+        WBCH("FLAG SetArgSetter4()")
         ocshandle["Bps"](2.2333333);
+        WBCH("FLAG SetArgSetter5()")
         ocshandle["OCSFilterDryWet"](0.7);
         getchar();
+        WBCH("FLAG ChangeBpm()")
         musPanel->ChangeBpm("ヒアソビ", 120, 60);
+        WBCH("FLAG GetArgSetter2()")
         auto eqhandle = Fxhandle->GetArgSetter(FXList::EQ);
-
+        WBCH("FLAG SetArgSetter6()")
         eqhandle["EQHigh"](-20);
+        WBCH("FLAG SetArgSetter7()")
         eqhandle["EQMid"](-20);
+        WBCH("FLAG SetArgSetter8()")
         eqhandle["EQLow"](20);
 
         getchar();
+        WBCH("FLAG Deactivate()")
         auto deactres = engine->player->Deactivate();
 
-        auto editor = engine->GetEditorObject();
-        editor->UpdateLog<EDIT_ARG_MIX>();
-        editor->UpdateLog<EDIT_ARG_KEY_VALUE>();
-        editor->UpdateLog<EDIT_ARG_NOTE>();
-        editor->UpdateLog<EDIT_ARG_MUSIC>();
+        // auto editor = engine->GetEditorObject();
+        // editor->UpdateLog<EDIT_ARG_MIX>();
+        // editor->UpdateLog<EDIT_ARG_KEY_VALUE>();
+        // editor->UpdateLog<EDIT_ARG_NOTE>();
+        // editor->UpdateLog<EDIT_ARG_MUSIC>();
 
-        editor->GetLogWithJSONGraph<EDIT_ARG_MIX>();
-        editor->GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
-        editor->GetLogWithJSONGraph<EDIT_ARG_NOTE>();
-        editor->GetLogWithJSONGraph<EDIT_ARG_MUSIC>("music name");
-        auto core_line = engine->PullOutDataLine();
+        // editor->GetLogWithJSONGraph<EDIT_ARG_MIX>();
+        // editor->GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
+        // editor->GetLogWithJSONGraph<EDIT_ARG_NOTE>();
+        // editor->GetLogWithJSONGraph<EDIT_ARG_MUSIC>("music name");
+        // auto core_line = engine->PullOutDataLine();
         // core_line.preRenderedData;
         // core_line.maxCursor;
         // core_line.nowCursor;
