@@ -89,6 +89,22 @@ Decoder::getRange(FRAME_POS numFrames, std::vector<float> &buffer)
     }
     return true;
 }
+bool
+Decoder::getRange(FRAME_POS numFrames, SIMD_FLOAT &buffer)
+{
+    FRAME_POS BufferSize = numFrames * CHANNEL;
+    if (buffer.size() < BufferSize) {
+        buffer.resize(BufferSize);
+    }
+    if (ma_decoder_read_pcm_frames(&dec, buffer.data(), numFrames, NULL) !=
+        MA_SUCCESS) {
+        critlog(
+            "failed to read pcm frames from musicData. from Decoder getRange");
+        return false;
+    }
+    return true;
+}
+
 
 Decoder::~Decoder()
 {

@@ -15,6 +15,8 @@ set(PDJE_INCLUDE_CORE
 
   ${PDJE_INCLUDE_ROOT}/include/core/audioRender/ManualMix
   ${PDJE_INCLUDE_ROOT}/include/core/audioRender/ManualMix/ManualFausts
+  ${PDJE_INCLUDE_ROOT}/include/core/audioRender/ManualMix/PreLoadedMusic
+  
   ${PDJE_INCLUDE_ROOT}/include/core/db/Capnp/CapnpBinary
   ${PDJE_INCLUDE_ROOT}/include/core/db/Capnp/Translators
   ${PDJE_INCLUDE_ROOT}/include/core/db/Capnp/Translators/MixTranslator

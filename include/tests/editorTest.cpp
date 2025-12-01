@@ -140,7 +140,7 @@ main()
         }
         trackdata td;
         td = engine->SearchTrack("testTrack").front();
-        auto mode = PLAY_MODE::FULL_PRE_RENDER;
+        auto mode = PLAY_MODE::HYBRID_RENDER;
         auto initres   = engine->InitPlayer(mode, td, 480);
         auto activeres = engine->player->Activate();
         if(mode == PLAY_MODE::FULL_PRE_RENDER){

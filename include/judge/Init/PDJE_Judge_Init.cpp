@@ -117,8 +117,7 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
     switch (val) {
     case PDJE_Dev_Type::KEYBOARD:
         DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-        // std::cout << "push keyboard, " << micro_Y1 << ", " << micro_Y2
-        //           << std::endl;
+
         break;
     case PDJE_Dev_Type::MOUSE:
         if (tempobj.type == "AXIS") { // axis type
@@ -126,8 +125,7 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
             note_objects->Fill<BUFFER_SUB>(tempobj, railID);
         } else {
             DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-            // std::cout << "push mouse, " << micro_Y1 << ", " << micro_Y2
-            //           << std::endl;
+
         }
         break;
     case PDJE_Dev_Type::MIDI:

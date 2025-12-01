@@ -1,36 +1,16 @@
 #pragma once
-
-#include <optional>
-#include <string>
-#include <vector>
-
 #include "FrameCalc.hpp"
-#include "dbRoot.hpp"
-#include "fileNameSanitizer.hpp"
-#include <filesystem>
-#include <miniaudio.h>
+#include "Decoder.hpp"
 
-namespace fs = std::filesystem;
-// using MAYBE_FRAME = std::optional<std::vector<float>>;
-
-using FRAME_POS = unsigned long long;
-/**
- * @brief miniaudio decoder wrapper class
- *
- */
-struct PDJE_API Decoder {
-    ma_decoder           dec;
-    std::vector<uint8_t> musicBinary;
-    Decoder();
-    ~Decoder();
-    /**
-     * @brief init decoder
-     *
-     * @param litedb database
-     * @param KeyOrPath you can use music's path or music's key data in database
-     * @return true
-     * @return false
-     */
+struct PDJE_API PreLoadedMusic{
+    
+    SIMD_FLOAT music;
+    uint64_t fullSize;
+    uint64_t cursor;
+    SIMD_FLOAT::iterator p;
+    PreLoadedMusic() = default;
+    ~PreLoadedMusic() = default;
+    
     bool
     init(litedb &db, const SANITIZED_ORNOT &KeyOrPath);
     /**
@@ -61,9 +41,6 @@ struct PDJE_API Decoder {
      * @return true
      * @return false
      */
-    bool
-    getRange(FRAME_POS numFrames, std::vector<float> &buffer);
-
     bool
     getRange(FRAME_POS numFrames, SIMD_FLOAT &buffer);
 };
