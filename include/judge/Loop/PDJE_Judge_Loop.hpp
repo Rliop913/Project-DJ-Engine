@@ -1,91 +1,65 @@
 #pragma once
+#include "InputParser.hpp"
 #include "Input_State.hpp"
-#include "PDJE_Buffer.hpp"
+
 #include "PDJE_Highres_Clock.hpp"
 #include "PDJE_Judge_Init.hpp"
+#include "PDJE_Judge_Loop_Structs.hpp"
 #include "PDJE_Note_OBJ.hpp"
 #include "PDJE_Rule.hpp"
-#include "PDJE_SYNC_CORE.hpp"
 #include <cstdint>
 #include <optional>
-#include <thread>
-#include <unordered_map>
 #include <vector>
 
 namespace PDJE_JUDGE {
 
+/** @brief Internal judge loop that consumes inputs, matches notes, and emits
+ * callbacks. */
 class Judge_Loop {
 
   private:
-    struct {
-        std::optional<bool> use_event_switch;
-        std::optional<bool> miss_event_switch;
+    EV_Thread Event_Controls;
 
-        std::optional<std::thread> use_event_thread;
-        std::optional<std::thread> miss_event_thread;
-    } Event_Controls;
-    struct useDatas {
-        uint64_t railid;
-        bool     Pressed;
-        bool     IsLate;
-        uint64_t diff;
-    };
-    struct Queues {
-        PDJE_Buffer_Arena<std::unordered_map<uint64_t, NOTE_VEC>> miss_queue;
-        PDJE_Buffer_Arena<useDatas>                               use_queue;
-        Queues() : miss_queue(100), use_queue(100)
-        {
-        }
-    };
     Queues Event_Datas;
 
   private: // cached values
     std::pair<PDJE_Input_Log *, uint64_t> input_log;
 
-    struct mouse_btn_event {
-        uint64_t rail_id = 0;
-        int      status  = -1;
-    };
-    struct {
-
-        std::unordered_map<uint64_t, NOTE_VEC> missed_buffers;
-
-        P_NOTE_VEC found_list;
-        P_NOTE_VEC related_list_out;
-
-        // time values
-        LOCAL_TIME local_microsecond_position;
-        uint64_t   global_local_diff;
-
-        LOCAL_TIME log_begin;
-        LOCAL_TIME log_end;
-
-        LOCAL_TIME use_range;
-        LOCAL_TIME cut_range;
-
-        audioSyncData synced_data;
-
-        bool isLate;
-
-        uint64_t railID;
-
-        uint64_t                     diff;
-        std::vector<mouse_btn_event> mouse_btn_event_queue;
-    } Cached;
+    LoopCached Cached;
 
     Judge_Init               *init_datas;
     PDJE_HIGHRES_CLOCK::CLOCK clock_root;
+    /** @brief Trim expired notes into miss queue. */
     inline void
-    Cut();
-    bool
+    Cut(const uint64_t cut_range);
+    /** @brief Prepare cached values before processing input batch. */
+    PARSE_OUT *
     PreProcess();
+
+    /** @brief Parse mouse-specific input and enqueue events. */
+    std::optional<uint64_t>
+    QueryRailid(const RAIL_META &meta)
+    {
+        auto itr = init_datas->devparser.railData.find(meta);
+        if (itr != init_datas->devparser.railData.end()) {
+            if(itr->first == meta){
+              return itr->second.MatchRail;
+            }
+        }
+        return std::nullopt;
+        
+    }
     void
-    ParseMouse(INPUT_RULE &rule, const BITMASK ev);
+    ParseMouse(const BITMASK ev);
+
     template <PDJE_Dev_Type D>
+    /** @brief Handle a single input log entry for the given device type. */
     void
     UseEvent(const PDJE_Input_Log &ilog);
-    bool
-    FindRailID(const INPUT_RULE &rule, uint64_t &id);
+    /** @brief Find device setting bound to a rule. */
+    // bool
+    // FindDevSetting(const INPUT_RULE &rule, INPUT_SETTING &setting);
+    /** @brief Match input timestamp against note list and mark usage. */
     void
     Match(const LOCAL_TIME  input_time,
           const P_NOTE_VEC &note_list,
@@ -93,14 +67,18 @@ class Judge_Loop {
           const bool        isPressed);
 
   public:
+    /** @brief Stop use/miss worker threads. */
     void
     EndEventLoop();
+    /** @brief Start use/miss worker threads. */
     void
     StartEventLoop();
+    /** @brief Main loop that polls inputs and judges notes. */
     void
     loop();
 
     std::atomic<bool> loop_switch;
+    /** @brief Construct loop with initialized data sources. */
     Judge_Loop(Judge_Init &inits);
     ~Judge_Loop() = default;
 };

@@ -6,7 +6,9 @@
     <includes refid="PDJE__EXPORT__SETTER_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
     <includes refid="fileNameSanitizer_8hpp" local="yes">fileNameSanitizer.hpp</includes>
     <includes local="no">cstdint</includes>
-    <includedby refid="jsonWrapper_8hpp" local="yes">include/core/editor/featureWrapper/JSONWrap/jsonWrapper.hpp</includedby>
+    <includedby refid="MusicJsonHelper_8hpp" local="yes">include/core/editor/TimeLine/JSONWrap/MusicJsonHelper.hpp</includedby>
+    <includedby refid="jsonWrapper_8hpp" local="yes">include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp</includedby>
+    <includedby refid="editor_8hpp" local="yes">include/core/editor/editor.hpp</includedby>
     <incdepgraph>
       <node id="12">
         <label>CapnpBinary.hpp</label>
@@ -103,7 +105,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp</label>
+        <label>include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp</label>
         <link refid="EditorArgs_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -215,15 +217,15 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="5">
+      <node id="3">
         <label>include/core/MainObjects/editorObject/addline.cpp</label>
         <link refid="addline_8cpp"/>
       </node>
-      <node id="6">
+      <node id="10">
         <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
         <link refid="commonfunction_8cpp"/>
       </node>
-      <node id="7">
+      <node id="4">
         <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
         <link refid="deleteline_8cpp"/>
       </node>
@@ -231,20 +233,16 @@
         <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
         <link refid="editorObject_8cpp"/>
       </node>
-      <node id="4">
+      <node id="9">
         <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
         <link refid="editorObject_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -256,6 +254,10 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
@@ -265,31 +267,31 @@
         <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="11">
         <label>include/core/MainObjects/editorObject/getall.cpp</label>
         <link refid="getall_8cpp"/>
       </node>
-      <node id="10">
+      <node id="12">
         <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
         <link refid="getdiff_8cpp"/>
       </node>
-      <node id="11">
+      <node id="13">
         <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
         <link refid="getlogwithjsongraph_8cpp"/>
       </node>
-      <node id="12">
+      <node id="14">
         <label>include/core/MainObjects/editorObject/go.cpp</label>
         <link refid="go_8cpp"/>
       </node>
-      <node id="13">
+      <node id="15">
         <label>include/core/MainObjects/editorObject/redo.cpp</label>
         <link refid="redo_8cpp"/>
       </node>
-      <node id="14">
+      <node id="5">
         <label>include/core/MainObjects/editorObject/render.cpp</label>
         <link refid="render_8cpp"/>
       </node>
-      <node id="15">
+      <node id="6">
         <label>include/core/MainObjects/editorObject/undo.cpp</label>
         <link refid="undo_8cpp"/>
       </node>
@@ -301,52 +303,116 @@
         <label>include/core/SWIG_editor_visitor.hpp</label>
         <link refid="SWIG__editor__visitor_8hpp"/>
       </node>
-      <node id="26">
-        <label>include/core/editor/editor.cpp</label>
-        <link refid="editor_8cpp"/>
-      </node>
-      <node id="3">
-        <label>include/core/editor/editor.hpp</label>
-        <link refid="editor_8hpp"/>
-        <childnode refid="4" relation="include">
+      <node id="29">
+        <label>include/core/editor/TimeLine/EventMarker/EventMarker.hpp</label>
+        <link refid="EventMarker_8hpp"/>
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+      </node>
+      <node id="31">
+        <label>include/core/editor/TimeLine/GitDataPack/GitDatas.hpp</label>
+        <link refid="GitDatas_8hpp"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
       <node id="1">
-        <label>include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp</label>
+        <label>include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp</label>
         <link refid="EditorArgs_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
-      <node id="27">
-        <label>include/core/editor/featureWrapper/JSONWrap/KVJson.cpp</label>
+      <node id="34">
+        <label>include/core/editor/TimeLine/JSONWrap/KVJson.cpp</label>
         <link refid="KVJson_8cpp"/>
       </node>
-      <node id="28">
-        <label>include/core/editor/featureWrapper/JSONWrap/MixJson.cpp</label>
+      <node id="35">
+        <label>include/core/editor/TimeLine/JSONWrap/MixJson.cpp</label>
         <link refid="MixJson_8cpp"/>
       </node>
       <node id="18">
-        <label>include/core/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
+        <label>include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</label>
         <link refid="MusicJson_8cpp"/>
       </node>
-      <node id="29">
-        <label>include/core/editor/featureWrapper/JSONWrap/NoteJson.cpp</label>
-        <link refid="NoteJson_8cpp"/>
-      </node>
       <node id="2">
-        <label>include/core/editor/featureWrapper/JSONWrap/jsonWrapper.hpp</label>
-        <link refid="jsonWrapper_8hpp"/>
+        <label>include/core/editor/TimeLine/JSONWrap/MusicJsonHelper.hpp</label>
+        <link refid="MusicJsonHelper_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>include/core/editor/TimeLine/JSONWrap/NoteJson.cpp</label>
+        <link refid="NoteJson_8cpp"/>
+      </node>
+      <node id="28">
+        <label>include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp</label>
+        <link refid="jsonWrapper_8hpp"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>include/core/editor/TimeLine/LineVersion/LineVersion.cpp</label>
+        <link refid="LineVersion_8cpp"/>
+      </node>
+      <node id="33">
+        <label>include/core/editor/TimeLine/LineVersion/LineVersion.hpp</label>
+        <link refid="LineVersion_8hpp"/>
         <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>include/core/editor/TimeLine/TimeLine.hpp</label>
+        <link refid="TimeLine_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>include/core/editor/editor.cpp</label>
+        <link refid="editor_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/core/editor/editor.hpp</label>
+        <link refid="editor_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="20">
@@ -368,6 +434,8 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
       </node>
       <node id="21">
         <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
@@ -386,6 +454,10 @@
         <link refid="editorTest_8cpp"/>
       </node>
       <node id="25">
+        <label>include/tests/gittest.cpp</label>
+        <link refid="gittest_8cpp"/>
+      </node>
+      <node id="26">
         <label>include/tests/interfaceTest.cpp</label>
         <link refid="interfaceTest_8cpp"/>
       </node>
@@ -405,7 +477,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="47" column="1" bodyfile="include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="47" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" line="47" column="1" bodyfile="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="EditorArgs_8hpp_1a29a06c37bb7adf0275ebf5975fb7cb89" prot="public" static="no">
         <type><ref refid="classCapWriter" kindref="compound">CapWriter</ref>&lt; NoteBinaryCapnpData &gt;</type>
@@ -418,7 +490,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="48" column="1" bodyfile="include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="48" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" line="48" column="1" bodyfile="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="EditorArgs_8hpp_1a5ce6d29d6001f496835f6401276a682e" prot="public" static="no">
         <type><ref refid="classCapWriter" kindref="compound">CapWriter</ref>&lt; MusicBinaryCapnpData &gt;</type>
@@ -431,7 +503,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="49" column="1" bodyfile="include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="49" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" line="49" column="1" bodyfile="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="EditorArgs_8hpp_1a217a1073c4c083da1400cf99dab75f21" prot="public" static="no">
         <type><ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref></type>
@@ -444,7 +516,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="51" column="1" bodyfile="include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="51" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" line="51" column="1" bodyfile="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" prot="public" static="no">
         <type>std::pair&lt; <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref>, <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &gt;</type>
@@ -457,7 +529,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="52" column="1" bodyfile="include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="52" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" line="52" column="1" bodyfile="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="EditorArgs_8hpp_1a302aa5ab173d4395fe6526d00a2f9777" prot="public" static="no">
         <type>std::vector&lt; <ref refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref> &gt;</type>
@@ -470,7 +542,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp" line="53" column="1" bodyfile="include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp" bodystart="53" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" line="53" column="1" bodyfile="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -529,6 +601,6 @@
 <codeline lineno="52" refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref><sp/>=<sp/>std::pair&lt;DONT_SANITIZE,<sp/>DONT_SANITIZE&gt;;</highlight></codeline>
 <codeline lineno="53" refid="EditorArgs_8hpp_1a302aa5ab173d4395fe6526d00a2f9777" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EditorArgs_8hpp_1a302aa5ab173d4395fe6526d00a2f9777" kindref="member">KV_W</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>std::vector&lt;KEY_VALUE&gt;;</highlight></codeline>
     </programlisting>
-    <location file="include/core/editor/featureWrapper/JSONWrap/EditorArgs.hpp"/>
+    <location file="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp"/>
   </compounddef>
 </doxygen>

@@ -1,32 +1,37 @@
 #include "PDJE_Judge_Loop.hpp"
 
+#include "InputParser.hpp"
 #include "PDJE_Buffer.hpp"
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Judge_Init.hpp"
 #include "PDJE_LOG_SETTER.hpp"
 #include "PDJE_Note_OBJ.hpp"
+#include "PDJE_Rule.hpp"
 #include <chrono>
+#include <cstddef>
 #include <exception>
-#include <iostream>
+
 #include <ratio>
 #include <thread>
+#include "PDJE_Benchmark.hpp"
 namespace PDJE_JUDGE {
 Judge_Loop::Judge_Loop(Judge_Init &inits)
 {
     init_datas = &inits;
     Cached.mouse_btn_event_queue.reserve(7);
 }
-bool
-Judge_Loop::FindRailID(const INPUT_RULE &rule, uint64_t &id)
-{
-    if (auto device_itr = init_datas->dev_rules.find(rule);
-        device_itr != init_datas->dev_rules.end()) {
-        id = device_itr->second;
-        return true;
-    } else {
-        return false;
-    }
-}
+// bool
+// Judge_Loop::FindDevSetting(const INPUT_RULE &rule, INPUT_SETTING &setting)
+// {
+//     if (auto device_itr = init_datas->dev_rules.find(rule);
+//         device_itr != init_datas->dev_rules.end()) {
+//         setting = device_itr->second;
+
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
 
 void
 Judge_Loop::Match(const LOCAL_TIME  input_time,
@@ -40,8 +45,11 @@ Judge_Loop::Match(const LOCAL_TIME  input_time,
 
         Cached.diff = Cached.isLate ? input_time - note_local->microsecond
                                     : note_local->microsecond - input_time;
+        // std::cout << "Matching... " << Cached.diff << std::endl;
         if (Cached.diff <= init_datas->ev_rule->use_range_microsecond) {
             note_local->used = true;
+
+            // std::cout << "Matched. and used. " << Cached.diff << std::endl;
             Event_Datas.use_queue.Write(
                 { railid, isPressed, Cached.isLate, Cached.diff });
 
@@ -51,29 +59,30 @@ Judge_Loop::Match(const LOCAL_TIME  input_time,
 }
 
 void
-Judge_Loop::Cut()
+Judge_Loop::Cut(const uint64_t cut_range)
 {
     Cached.missed_buffers.clear();
-    init_datas->note_objects->Cut<BUFFER_MAIN>(Cached.cut_range,
+    init_datas->note_objects->Cut<BUFFER_MAIN>(cut_range,
                                                Cached.missed_buffers);
 
     if (!Cached.missed_buffers.empty()) {
         Event_Datas.miss_queue.Write(Cached.missed_buffers);
     }
     Cached.missed_buffers.clear();
-    init_datas->note_objects->Cut<BUFFER_SUB>(Cached.cut_range,
-                                              Cached.missed_buffers);
+    init_datas->note_objects->Cut<BUFFER_SUB>(cut_range, Cached.missed_buffers);
     if (!Cached.missed_buffers.empty()) {
 
         Event_Datas.miss_queue.Write(Cached.missed_buffers);
     }
 }
 
-bool
+PARSE_OUT *
 Judge_Loop::PreProcess()
 {
 
     input_log = init_datas->inputline->input_arena->Get();
+    auto res  = init_datas->devparser.Parse(input_log);
+    
     Cached.synced_data =
         init_datas->coreline->syncD->load(std::memory_order_acquire);
 
@@ -82,66 +91,75 @@ Judge_Loop::PreProcess()
     Cached.global_local_diff =
         Cached.synced_data.microsecond - Cached.local_microsecond_position;
 
-    if (input_log.second == 0) {
-
-        Cached.cut_range =
-            Cached.local_microsecond_position <
-                    init_datas->ev_rule->miss_range_microsecond
-                ? 0
-                : Cached.local_microsecond_position -
-                      init_datas->ev_rule->miss_range_microsecond;
-        Cut();
-        return false;
+    if (!res) {
+        if (Cached.local_microsecond_position <
+            init_datas->ev_rule->miss_range_microsecond) {
+            Cut(0);
+        } else {
+            Cut(Cached.local_microsecond_position -
+                init_datas->ev_rule->miss_range_microsecond);
+        }
+        return nullptr;
     }
 
-    Cached.log_begin =
-        input_log.first[0].microSecond < Cached.global_local_diff
-            ? 0
-            : input_log.first[0].microSecond - Cached.global_local_diff;
-    Cached.cut_range =
-        Cached.log_begin < init_datas->ev_rule->miss_range_microsecond
-            ? 0
-            : Cached.log_begin - init_datas->ev_rule->miss_range_microsecond;
-
-    Cut();
+    if (res->lowest < Cached.global_local_diff) {
+        res->lowest = 0;
+    } else {
+        res->lowest -= Cached.global_local_diff;
+    }
+    if (res->lowest < init_datas->ev_rule->miss_range_microsecond) {
+        Cut(0);
+    } else {
+        Cut(res->lowest - init_datas->ev_rule->miss_range_microsecond);
+    }
 
     // init maximum get time
-    Cached.log_end = input_log.first[input_log.second - 1].microSecond -
-                     Cached.global_local_diff;
+    if (res->highest < Cached.global_local_diff) {
+        res->highest = 0;
+    } else {
+        res->highest -= Cached.global_local_diff;
+    }
     Cached.use_range =
-        Cached.log_end + init_datas->ev_rule->use_range_microsecond;
-    return true;
+        res->highest + init_datas->ev_rule->use_range_microsecond;
+    for (auto &log : res->logs) {
+        if (log.microSecond < Cached.global_local_diff) {
+            log.microSecond = 0;
+        } else {
+            log.microSecond -= Cached.global_local_diff;
+        }
+    }
+    return res;
 }
 void
 Judge_Loop::loop()
 {
-    bool            OK = true;
-    PDJE_Input_Log *input_ev;
+    WBCH("judge loop started")
     while (loop_switch) {
-        OK = PreProcess();
-        if (!OK) {
+        WBCH("judge loop head")
+        PARSE_OUT *res = PreProcess();
+        if (!res) {
             continue;
         }
-        input_ev = input_log.first;
-        for (uint64_t idx = 0; idx < input_log.second; ++idx) {
-            switch (input_ev->type) {
+
+        for (const PDJE_Input_Log &input_ev : res->logs) {
+            switch (input_ev.type) {
             case PDJE_Dev_Type::KEYBOARD:
-                UseEvent<PDJE_Dev_Type::KEYBOARD>(*input_ev);
+                UseEvent<PDJE_Dev_Type::KEYBOARD>(input_ev);
                 break;
             case PDJE_Dev_Type::MOUSE:
-                UseEvent<PDJE_Dev_Type::MOUSE>(*input_ev);
+                UseEvent<PDJE_Dev_Type::MOUSE>(input_ev);
                 break;
             case PDJE_Dev_Type::MIDI:
-                UseEvent<PDJE_Dev_Type::MIDI>(*input_ev);
+                UseEvent<PDJE_Dev_Type::MIDI>(input_ev);
                 break;
             case PDJE_Dev_Type::HID:
-                UseEvent<PDJE_Dev_Type::HID>(*input_ev);
+                UseEvent<PDJE_Dev_Type::HID>(input_ev);
                 break;
             default:
                 break;
             }
-            ++input_ev;
         }
+        WBCH("judge loop tail")
     }
 }
 void
@@ -150,19 +168,18 @@ Judge_Loop::StartEventLoop()
     Event_Controls.use_event_switch = true;
     Event_Controls.use_event_thread.emplace([this]() {
         auto use_clock = std::chrono::steady_clock::now();
+        WBCH("use event loop init")
         while (Event_Controls.use_event_switch.value()) {
             try {
+                WBCH("use event line head")
                 use_clock += init_datas->lambdas.use_event_sleep_time;
                 std::this_thread::sleep_until(use_clock);
-
+                
                 auto queue = Event_Datas.use_queue.Get();
-                for (uint64_t idx = 0; idx < queue.second; ++idx) {
-                    init_datas->lambdas.used_event(queue.first[idx].railid,
-                                                   queue.first[idx].Pressed,
-                                                   queue.first[idx].IsLate,
-                                                   queue.first[idx].diff);
+                for(const auto& used : (*queue)){
+                    init_datas->lambdas.used_event(used.railid, used.Pressed, used.IsLate, used.diff);
                 }
-
+                WBCH("use event line tail")
             } catch (const std::exception &e) {
                 critlog("caught error on use event loop. Why:");
                 critlog(e.what());
@@ -172,15 +189,18 @@ Judge_Loop::StartEventLoop()
     Event_Controls.miss_event_switch = true;
     Event_Controls.miss_event_thread.emplace([this]() {
         auto miss_clock = std::chrono::steady_clock::now();
+        WBCH("miss event init")
         while (Event_Controls.miss_event_switch.value()) {
             try {
+                WBCH("miss event line head")
                 miss_clock += init_datas->lambdas.miss_event_sleep_time;
                 std::this_thread::sleep_for(
                     init_datas->lambdas.miss_event_sleep_time);
                 auto queue = Event_Datas.miss_queue.Get();
-                for (uint64_t idx = 0; idx < queue.second; ++idx) {
-                    init_datas->lambdas.missed_event(queue.first[idx]);
+                for(const auto& missed : (*queue)){
+                    init_datas->lambdas.missed_event(missed);
                 }
+                WBCH("miss event line tail")
             } catch (const std::exception &e) {
                 critlog("caught error on miss event loop. Why:");
                 critlog(e.what());
@@ -194,8 +214,12 @@ Judge_Loop::EndEventLoop()
 {
     Event_Controls.use_event_switch  = false;
     Event_Controls.miss_event_switch = false;
-    Event_Controls.use_event_thread->join();
-    Event_Controls.miss_event_thread->join();
+    if (Event_Controls.use_event_thread->joinable()) {
+        Event_Controls.use_event_thread->join();
+    }
+    if (Event_Controls.miss_event_thread->joinable()) {
+        Event_Controls.miss_event_thread->join();
+    }
 }
 
 }; // namespace PDJE_JUDGE

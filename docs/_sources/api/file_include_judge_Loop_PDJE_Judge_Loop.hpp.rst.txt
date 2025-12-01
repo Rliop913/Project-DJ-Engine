@@ -32,25 +32,17 @@ Includes
 
 - ``Input_State.hpp`` (:ref:`file_include_global_DataLines_Input_State.hpp`)
 
-- ``PDJE_Buffer.hpp`` (:ref:`file_include_global_DataLines_PDJE_Buffer.hpp`)
-
 - ``PDJE_Highres_Clock.hpp`` (:ref:`file_include_global_Highres_Clock_Linux_PDJE_Highres_Clock.hpp`)
 
 - ``PDJE_Judge_Init.hpp`` (:ref:`file_include_judge_Init_PDJE_Judge_Init.hpp`)
+
+- ``PDJE_Judge_Loop_Structs.hpp`` (:ref:`file_include_judge_Loop_PDJE_Judge_Loop_Structs.hpp`)
 
 - ``PDJE_Note_OBJ.hpp`` (:ref:`file_include_judge_NoteOBJ_PDJE_Note_OBJ.hpp`)
 
 - ``PDJE_Rule.hpp`` (:ref:`file_include_judge_PDJE_Rule.hpp`)
 
-- ``PDJE_SYNC_CORE.hpp`` (:ref:`file_include_global_PDJE_SYNC_CORE.hpp`)
-
 - ``cstdint``
-
-- ``optional``
-
-- ``thread``
-
-- ``unordered_map``
 
 - ``vector``
 
@@ -85,12 +77,6 @@ Namespaces
 Classes
 -------
 
-
-- :ref:`exhale_struct_structPDJE__JUDGE_1_1Judge__Loop_1_1mouse__btn__event`
-
-- :ref:`exhale_struct_structPDJE__JUDGE_1_1Judge__Loop_1_1Queues`
-
-- :ref:`exhale_struct_structPDJE__JUDGE_1_1Judge__Loop_1_1useDatas`
 
 - :ref:`exhale_class_classPDJE__JUDGE_1_1Judge__Loop`
 

@@ -34,6 +34,8 @@ Includes
 
 - ``PDJE_Note_OBJ.hpp`` (:ref:`file_include_judge_NoteOBJ_PDJE_Note_OBJ.hpp`)
 
+- ``cstdint``
+
 
 
 

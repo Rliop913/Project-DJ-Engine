@@ -54,6 +54,8 @@ Included By
 
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.hpp`
 
+- :ref:`file_include_judge_Loop_PDJE_Judge_Loop_Structs.hpp`
+
 
 
 
@@ -73,6 +75,8 @@ Classes
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1INPUT__CONFIG`
 
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1INPUT__RULE`
+
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1INPUT__SETTING`
 
 - :ref:`exhale_struct_structstd_1_1hash_3_01PDJE__JUDGE_1_1INPUT__RULE_01_4`
 

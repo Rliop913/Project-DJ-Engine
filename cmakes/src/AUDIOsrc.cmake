@@ -27,6 +27,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/include/core/audioRender/MixMachine/MixTypes/Type_VO
 
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/audioRender/ManualMix/ManualMix.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/audioRender/ManualMix/MusicControlPanel.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/core/audioRender/ManualMix/PreLoadedMusic/PreLoadedMusic.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/MainObjects/audioPlayer/audioPlayer.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/MainObjects/audioPlayer/audioCallbacks.cpp
 

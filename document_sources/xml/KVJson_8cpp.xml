@@ -3,6 +3,7 @@
   <compounddef id="KVJson_8cpp" kind="file" language="C++">
     <compoundname>KVJson.cpp</compoundname>
     <includes refid="jsonWrapper_8hpp" local="yes">jsonWrapper.hpp</includes>
+    <includes local="no">exception</includes>
     <incdepgraph>
       <node id="22">
         <label>CapnpBinary.hpp</label>
@@ -111,9 +112,11 @@
         </childnode>
       </node>
       <node id="1">
-        <label>include/core/editor/featureWrapper/JSONWrap/KVJson.cpp</label>
+        <label>include/core/editor/TimeLine/JSONWrap/KVJson.cpp</label>
         <link refid="KVJson_8cpp"/>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -207,6 +210,9 @@
       <node id="37">
         <label>cstdint</label>
       </node>
+      <node id="38">
+        <label>exception</label>
+      </node>
       <node id="3">
         <label>filesystem</label>
       </node>
@@ -265,91 +271,101 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="jsonWrapper_8hpp" kindref="compound">jsonWrapper.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="2"><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="6" refid="classPDJE__JSONHandler_1a706c8423e6c1c7ef5aacaf59bbd795d3" refkind="member"><highlight class="normal"><ref refid="classPDJE__JSONHandler_1a5538c8692d09f825f14b224433020f99" kindref="member">PDJE_JSONHandler&lt;KV_W&gt;::add</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref><sp/>&amp;args)</highlight></codeline>
-<codeline lineno="7"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>[args.first]<sp/>=<sp/>args.second;</highlight></codeline>
-<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="classPDJE__JSONHandler_1a706c8423e6c1c7ef5aacaf59bbd795d3" refkind="member"><highlight class="normal"><ref refid="classPDJE__JSONHandler_1a5538c8692d09f825f14b224433020f99" kindref="member">PDJE_JSONHandler&lt;KV_W&gt;::add</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref><sp/>&amp;args)</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>[args.first]<sp/>=<sp/>args.second;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="15" refid="classPDJE__JSONHandler_1a125e349b4793a73035022ec99cd87cc7" refkind="member"><highlight class="normal"><ref refid="classPDJE__JSONHandler_1ac37f98c073fe7ad2f0abd08a993e071b" kindref="member">PDJE_JSONHandler&lt;KV_W&gt;::deleteLine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="EditorArgs_8hpp_1a217a1073c4c083da1400cf99dab75f21" kindref="member">KEY</ref><sp/>&amp;args)</highlight></codeline>
-<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>.erase(args);</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
-<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24" refid="classPDJE__JSONHandler_1ace4c18d5ea878c54e35bcde5df1955a6" refkind="member"><highlight class="normal"><ref refid="classPDJE__JSONHandler_1a8f79bd8c69f21c9dee91b927ac5b5646" kindref="member">PDJE_JSONHandler&lt;KV_W&gt;::getAll</ref>(</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref><sp/>&amp;args)&gt;<sp/>jsonCallback)</highlight></codeline>
-<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;[key,<sp/>value]<sp/>:<sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>.items())<sp/>{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jsonCallback(<ref refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref>(key,<sp/>value.dump()));</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classPDJE__JSONHandler_1a125e349b4793a73035022ec99cd87cc7" refkind="member"><highlight class="normal"><ref refid="classPDJE__JSONHandler_1ac37f98c073fe7ad2f0abd08a993e071b" kindref="member">PDJE_JSONHandler&lt;KV_W&gt;::deleteLine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="EditorArgs_8hpp_1a217a1073c4c083da1400cf99dab75f21" kindref="member">KEY</ref><sp/>&amp;args)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>.contains(args))<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>.erase(args);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception<sp/>&amp;e)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>on<sp/>json.<sp/>What:&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(e.what());</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="30"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34" refid="classPDJE__JSONHandler_1aead07f4ac2b36acfdb20e3428752c03d" refkind="member"><highlight class="normal"><ref refid="classPDJE__JSONHandler_1a2447b4a25741adf41741306f27638fad" kindref="member">PDJE_JSONHandler&lt;KV_W&gt;::load</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>&amp;path)</highlight></codeline>
-<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>filepath<sp/>=<sp/>path<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;keyvaluemetadata.PDJE&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fs::exists(filepath))<sp/>{</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fs::is_regular_file(filepath))<sp/>{</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ifstream<sp/>jfile(filepath);</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!jfile.is_open())<sp/>{</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>open<sp/>KVJson<sp/>file.<sp/>from<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PDJE_JSONHandler&lt;KW_W&gt;<sp/>load.<sp/>path:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(path.generic_string());</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jfile<sp/>&gt;&gt;<sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;e)<sp/>{</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>load<sp/>data<sp/>from<sp/>file.<sp/>from<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PDJE_JSONHandler&lt;KW_W&gt;<sp/>load.<sp/>ErrException:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(e.what());</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jfile.close();</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;path<sp/>is<sp/>not<sp/>regular<sp/>file.<sp/>from<sp/>PDJE_JSONHandler&lt;KW_W&gt;<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;load.<sp/>path:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(path.generic_string());</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fs::create_directories(filepath.parent_path());</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ofstream<sp/>jfile(filepath);</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!jfile.is_open())<sp/>{</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>make<sp/>or<sp/>open<sp/>new<sp/>json<sp/>file.<sp/>from<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PDJE_JSONHandler&lt;KW_W&gt;<sp/>load.<sp/>path:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(path.generic_string());</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jfile<sp/>&lt;&lt;<sp/>std::setw(4)<sp/>&lt;&lt;<sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jfile.close();</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="83" refid="classPDJE__JSONHandler_1aff718e92ad9f2f4a4d618bcbc010dddc" refkind="member"><highlight class="normal"><ref refid="classPDJE__JSONHandler_1ac37f98c073fe7ad2f0abd08a993e071b" kindref="member">PDJE_JSONHandler&lt;KV_W&gt;::deleteLine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref><sp/>&amp;args,</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>skipType,</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>skipDetail)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classPDJE__JSONHandler_1ace4c18d5ea878c54e35bcde5df1955a6" refkind="member"><highlight class="normal"><ref refid="classPDJE__JSONHandler_1a8f79bd8c69f21c9dee91b927ac5b5646" kindref="member">PDJE_JSONHandler&lt;KV_W&gt;::getAll</ref>(</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref><sp/>&amp;args)&gt;<sp/>jsonCallback)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;[key,<sp/>value]<sp/>:<sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>.items())<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jsonCallback(<ref refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref>(key,<sp/>value.dump()));</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classPDJE__JSONHandler_1a0ddc72b2c9819b9e0f378a0eddd222b1" refkind="member"><highlight class="normal"><ref refid="classPDJE__JSONHandler_1a0724131ac4acaa35204ff1134ece7aa5" kindref="member">PDJE_JSONHandler&lt;KV_W&gt;::load</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>&amp;filepath)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fs::exists(filepath))<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fs::is_regular_file(filepath))<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ifstream<sp/>jfile(filepath);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!jfile.is_open())<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>open<sp/>KVJson<sp/>file.<sp/>from<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PDJE_JSONHandler&lt;KW_W&gt;<sp/>load.<sp/>path:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(filepath.generic_string());</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jfile<sp/>&gt;&gt;<sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;e)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>load<sp/>data<sp/>from<sp/>file.<sp/>from<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PDJE_JSONHandler&lt;KW_W&gt;<sp/>load.<sp/>ErrException:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(e.what());</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jfile.close();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;path<sp/>is<sp/>not<sp/>regular<sp/>file.<sp/>from<sp/>PDJE_JSONHandler&lt;KW_W&gt;<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;load.<sp/>path:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(filepath.generic_string());</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fs::create_directories(filepath.parent_path());</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ofstream<sp/>jfile(filepath);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!jfile.is_open())<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>make<sp/>or<sp/>open<sp/>new<sp/>json<sp/>file.<sp/>from<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PDJE_JSONHandler&lt;KW_W&gt;<sp/>load.<sp/>path:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(filepath.generic_string());</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jfile<sp/>&lt;&lt;<sp/>std::setw(4)<sp/>&lt;&lt;<sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jfile.close();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classPDJE__JSONHandler_1aff718e92ad9f2f4a4d618bcbc010dddc" refkind="member"><highlight class="normal"><ref refid="classPDJE__JSONHandler_1ac37f98c073fe7ad2f0abd08a993e071b" kindref="member">PDJE_JSONHandler&lt;KV_W&gt;::deleteLine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref><sp/>&amp;args,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>skipType,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>skipDetail)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
     </programlisting>
-    <location file="include/core/editor/featureWrapper/JSONWrap/KVJson.cpp"/>
+    <location file="include/core/editor/TimeLine/JSONWrap/KVJson.cpp"/>
   </compounddef>
 </doxygen>

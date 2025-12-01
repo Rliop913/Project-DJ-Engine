@@ -11,10 +11,11 @@ Program Listing for File MainProcess.hpp
 .. code-block:: cpp
 
    #pragma once
-   #include "PDJE_LOG_SETTER.hpp"
-   #include "ipc_shared_memory.hpp"
    #include "PDJE_Buffer.hpp"
    #include "PDJE_Input_DataLine.hpp"
+   #include "PDJE_LOG_SETTER.hpp"
+   #include "ipc_shared_memory.hpp"
+   #include <PDJE_Crypto.hpp>
    #include <filesystem>
    #include <functional>
    #include <httplib.h>
@@ -22,12 +23,11 @@ Program Listing for File MainProcess.hpp
    #include <optional>
    #include <unordered_map>
    
-   
    #ifdef WIN32
    
    #elif defined(__linux__)
-   #include <sys/socket.h>
    #include "pack_ipc.hpp"
+   #include <sys/socket.h>
    #endif
    
    namespace PDJE_IPC {
@@ -48,9 +48,10 @@ Program Listing for File MainProcess.hpp
    
    class MainProcess {
      private:
-       std::optional<httplib::Client> cli;
-   
-       Importants imp;
+       std::optional<httplib::Client>   cli;
+       PDJE_CRYPTO::PSK                 psk;
+       std::optional<PDJE_CRYPTO::AEAD> aead;
+       Importants                       imp;
    
      public:
        template <typename T, int MEM_PROT_FLAG>
@@ -59,71 +60,78 @@ Program Listing for File MainProcess.hpp
                            const std::string                 &mem_path,
                            const std::string                 &dataType);
        template <typename T>
-                           bool
+       bool
        SendBufferArena(const PDJE_Buffer_Arena<T> &mem);
-       
-       std::vector<DeviceData> 
-       GetDevices(){
-         auto res = cli->Get("/lsdev");
-         std::vector<DeviceData> ddvector;
-         if(res->status == 200){
-           nj jj = nj::parse(res->body);
-           for(const auto& i : jj["body"]){
-             DeviceData dd;
-             dd.device_specific_id = i.at("id").get<std::string>();
-             dd.Name = i.at("name").get<std::string>();
-             std::string tp = i.at("type").get<std::string>();
-             if(tp == "KEYBOARD"){
-                 dd.Type = PDJE_Dev_Type::KEYBOARD;
-             }
-             else if(tp == "MOUSE"){
-                 dd.Type = PDJE_Dev_Type::MOUSE;
-             }
-             else if(tp == "MIDI"){
-                 dd.Type = PDJE_Dev_Type::MIDI;
-             }
-             else if(tp == "HID"){
-                 dd.Type = PDJE_Dev_Type::HID;
-             }
-             else{
-                 continue;
-             }
-             ddvector.push_back(dd);
+   
+       std::vector<DeviceData>
+       GetDevices()
+       {
+           auto                    res = cli->Get("/lsdev");
+           std::vector<DeviceData> ddvector;
+           if (res->status == 200) {
+               if (!aead) {
+                   critlog("AEAD is not initialized. Get Devices Failed.");
+                   return {};
+               }
+               auto devs = aead->UnpackAndDecrypt(res->body);
+               nj   jj   = nj::parse(devs);
+               for (const auto &i : jj["body"]) {
+                   DeviceData dd;
+                   dd.device_specific_id = i.at("id").get<std::string>();
+                   dd.Name               = i.at("name").get<std::string>();
+                   std::string tp        = i.at("type").get<std::string>();
+                   if (tp == "KEYBOARD") {
+                       dd.Type = PDJE_Dev_Type::KEYBOARD;
+                   } else if (tp == "MOUSE") {
+                       dd.Type = PDJE_Dev_Type::MOUSE;
+                   } else if (tp == "MIDI") {
+                       dd.Type = PDJE_Dev_Type::MIDI;
+                   } else if (tp == "HID") {
+                       dd.Type = PDJE_Dev_Type::HID;
+                   } else {
+                       continue;
+                   }
+                   ddvector.push_back(dd);
+               }
+               return ddvector;
+           } else {
+               critlog("failed to get device. status code: ");
+               critlog(res->status);
+               return {};
            }
-           return ddvector;
-         }else{
-           critlog("failed to get device. status code: ");
-           critlog(res->status);
-           return {};
-         }
-         
        }
    
        bool
-       QueryConfig(const std::string& dumped_json){
-         auto res = cli->Post("/config", dumped_json, "application/json");
-         if(res->status == 200){
-           return true;
-         }
-         else{
-           critlog(res->body);
-           return false;
-         }
+       QueryConfig(const std::string &dumped_json)
+       {
+   
+           if (!aead) {
+               critlog("AEAD is not initialized. Query Config Failed.");
+               return false;
+           }
+           auto res = cli->Post(
+               "/config", aead->EncryptAndPack(dumped_json), "application/json");
+           if (res->status == 200) {
+               return true;
+           } else {
+               critlog(res->body);
+               return false;
+           }
        }
    
        bool
        EndTransmission();
    
        bool
-       Kill(){
-         auto res = cli->Get("/kill");
-         if(res->status == 200){
-           return true;
-         }
-         else{
-           critlog(res->body);
-           return false;
-         }
+       Kill()
+       {
+           auto res = cli->Get("/kill");
+           if (res->status == 200) {
+               return true;
+           } else {
+               critlog(res->body);
+               return false;
+           }
        }
    
        MainProcess(const int port);

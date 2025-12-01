@@ -84,15 +84,15 @@
 <span id="program-listing-file-include-input-ipc-transmission-windows-inputloop-cpp"></span><h1>Program Listing for File InputLoop.cpp<a class="headerlink" href="#program-listing-for-file-inputloop-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_input_IPC_transmission_windows_InputLoop.cpp.html#file-include-input-ipc-transmission-windows-inputloop-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/input/IPC/transmission/windows/InputLoop.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ChildProcess.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ListDevice.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;windows_keyboard_fill.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Windows.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bitset&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;windows_keyboard_fill.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ListDevice.hpp&quot;</span>
-<span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_IPC</span><span class="p">{</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_IPC</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="kt">void</span><span class="o">*</span>
-<span class="w">    </span><span class="nf">ChildProcess::Init</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
+<span class="kt">void</span><span class="w"> </span><span class="o">*</span>
+<span class="nf">ChildProcess::Init</span><span class="p">()</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="n">HINSTANCE</span><span class="w"> </span><span class="n">hst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetModuleHandleW</span><span class="p">(</span><span class="k">nullptr</span><span class="p">);</span>
 <span class="w">    </span><span class="n">WNDCLASSW</span><span class="w"> </span><span class="n">wc</span><span class="p">{};</span>
 <span class="w">    </span><span class="n">wc</span><span class="p">.</span><span class="n">lpfnWndProc</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">DefWindowProc</span><span class="p">;</span>
@@ -112,10 +112,10 @@
 <span class="w">                           </span><span class="k">nullptr</span><span class="p">,</span>
 <span class="w">                           </span><span class="n">hst</span><span class="p">,</span>
 <span class="w">                           </span><span class="k">nullptr</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 <span class="kt">void</span>
-<span class="w">    </span><span class="nf">ChildProcess::Run</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
+<span class="nf">ChildProcess::Run</span><span class="p">()</span>
+<span class="p">{</span>
 
 <span class="w">    </span><span class="n">MSG</span><span class="w"> </span><span class="n">msg</span><span class="p">;</span>
 
@@ -125,20 +125,20 @@
 <span class="w">    </span><span class="n">PDJE_Dev_Type</span><span class="w">                                       </span><span class="n">dtype</span><span class="p">;</span>
 <span class="w">    </span><span class="k">thread_local</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pmr</span><span class="o">::</span><span class="n">unsynchronized_pool_resource</span><span class="w"> </span><span class="n">mono_arena</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">                                         </span><span class="n">handlestr</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">namestr</span><span class="p">;</span>
-<span class="w">    </span><span class="n">PDJE_Input_Event</span><span class="w">                                    </span><span class="n">tempEv</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">      </span><span class="n">handlestr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">      </span><span class="n">namestr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_Input_Event</span><span class="w"> </span><span class="n">tempEv</span><span class="p">;</span>
 <span class="w">    </span><span class="n">handlestr</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
 <span class="w">    </span><span class="n">PDJE_HID_Event</span><span class="w">   </span><span class="n">hidEv</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">102</span><span class="o">&gt;</span><span class="w"> </span><span class="n">isPressed</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w">             </span><span class="n">Writable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">killer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](){</span>
-<span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">spinlock_run</span><span class="o">-&gt;</span><span class="n">ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">){</span>
+<span class="w">    </span><span class="k">auto</span><span class="w">             </span><span class="n">killer</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="p">([</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">spinlock_run</span><span class="o">-&gt;</span><span class="n">ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">500</span><span class="p">));</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">PostThreadMessageW</span><span class="p">(</span><span class="n">ThreadID</span><span class="p">,</span><span class="w"> </span><span class="n">WM_QUIT</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <span class="w">    </span><span class="p">});</span>
-<span class="w">    </span><span class="n">PDJE_Input_Log</span><span class="w"> </span><span class="n">cachedLog</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_Input_Log</span><span class="w">   </span><span class="n">cachedLog</span><span class="p">;</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 
@@ -197,9 +197,9 @@
 
 <span class="w">                        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">                    </span><span class="k">case</span><span class="w"> </span><span class="no">RIM_TYPEHID</span><span class="p">:</span>
-<span class="w">                        </span><span class="n">dtype</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">HID</span><span class="p">;</span>
-<span class="w">                        </span><span class="n">PDJE_RAWINPUT</span><span class="o">::</span><span class="n">FillHIDInput</span><span class="p">(</span><span class="w"> </span><span class="n">hidEv</span><span class="p">.</span><span class="n">hid_buffer</span><span class="p">,</span>
-<span class="w">                            </span><span class="n">ri</span><span class="p">,</span><span class="w"> </span><span class="n">hidEv</span><span class="p">.</span><span class="n">hid_byte_size</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">dtype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">HID</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">PDJE_RAWINPUT</span><span class="o">::</span><span class="n">FillHIDInput</span><span class="p">(</span>
+<span class="w">                            </span><span class="n">hidEv</span><span class="p">.</span><span class="n">hid_buffer</span><span class="p">,</span><span class="w"> </span><span class="n">ri</span><span class="p">,</span><span class="w"> </span><span class="n">hidEv</span><span class="p">.</span><span class="n">hid_byte_size</span><span class="p">);</span>
 <span class="w">                        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">                    </span><span class="k">default</span><span class="o">:</span>
 <span class="w">                        </span><span class="n">dtype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">UNKNOWN</span><span class="p">;</span>
@@ -238,14 +238,20 @@
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Writable</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dtype</span><span class="p">;</span>
-<span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tempEv</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">type</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">dtype</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">event</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">tempEv</span><span class="p">;</span>
 <span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">hid_event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hidEv</span><span class="p">;</span>
-<span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">id_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">handlestr</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">handlestr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-<span class="w">                        </span><span class="n">memcpy</span><span class="p">(</span><span class="n">cachedLog</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">handlestr</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">cachedLog</span><span class="p">.</span><span class="n">id_len</span><span class="p">));</span>
+<span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">id_len</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                            </span><span class="n">handlestr</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">handlestr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">                        </span><span class="n">memcpy</span><span class="p">(</span><span class="n">cachedLog</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+<span class="w">                               </span><span class="n">handlestr</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span>
+<span class="w">                               </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">cachedLog</span><span class="p">.</span><span class="n">id_len</span><span class="p">));</span>
 <span class="w">                        </span><span class="n">namestr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id_name</span><span class="p">[</span><span class="n">handlestr</span><span class="p">];</span>
-<span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">name_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">namestr</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">namestr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-<span class="w">                        </span><span class="n">memcpy</span><span class="p">(</span><span class="n">cachedLog</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">namestr</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">cachedLog</span><span class="p">.</span><span class="n">name_len</span><span class="p">));</span>
+<span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">name_len</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                            </span><span class="n">namestr</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">256</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">namestr</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">                        </span><span class="n">memcpy</span><span class="p">(</span><span class="n">cachedLog</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+<span class="w">                               </span><span class="n">namestr</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span>
+<span class="w">                               </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">cachedLog</span><span class="p">.</span><span class="n">name_len</span><span class="p">));</span>
 <span class="w">                        </span><span class="n">cachedLog</span><span class="p">.</span><span class="n">microSecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">;</span>
 <span class="w">                        </span><span class="n">input_buffer</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">(</span><span class="n">cachedLog</span><span class="p">);</span>
 <span class="w">                    </span><span class="p">}</span>
@@ -265,9 +271,9 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="n">killer</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 
-<span class="p">};</span>
+<span class="p">};</span><span class="w"> </span><span class="c1">// namespace PDJE_IPC</span>
 </pre></div>
 </div>
 </section>

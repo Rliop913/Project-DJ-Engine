@@ -5,7 +5,7 @@
  * sources.
  */
 #include "MusicControlPanel.hpp"
-
+#include "PDJE_Benchmark.hpp"
 #undef HWY_TARGET_INCLUDE
 #define HWY_TARGET_INCLUDE "MusicControlPanel-inl.h"
 #include "hwy/foreach_target.h"
@@ -58,23 +58,25 @@ GetPCMFramesSIMD(SIMD_FLOAT         &tempFrames,
     auto times    = RAWFrameSize / laneSize;
     auto remained = RAWFrameSize % laneSize;
 
-    SIMD_FLOAT solaVector;
+    // SIMD_FLOAT solaVector;
+    PREDICT prd;
     for (auto &i : deck) {
         if (i.second.play) {
-            const FRAME_POS Sola = static_cast<FRAME_POS>(
-                std::ceil(static_cast<double>(FrameSize) /
-                          i.second.st->getInputOutputSampleRatio()));
-            solaVector.resize(Sola * CHANNEL);
-            if (ma_decoder_read_pcm_frames(
-                    &i.second.dec.dec, solaVector.data(), Sola, NULL) !=
-                MA_SUCCESS) {
-                return false;
-            }
-
-            i.second.st->putSamples(solaVector.data(), Sola);
-            i.second.st->receiveSamples(tempFrames.data(), FrameSize);
-
-            toFaustStylePCM(FaustStyle, tempFrames.data(), FrameSize);
+            while(!i.second.pb->Pop(prd)){}
+            toFaustStylePCM(FaustStyle, prd.predict_fragment.data(), FrameSize);
+            
+            // const FRAME_POS Sola = static_cast<FRAME_POS>(
+            //     std::ceil(static_cast<double>(FrameSize) /
+            //               i.second.st->getInputOutputSampleRatio()));
+            // if(!i.second.loaded.getRange(Sola, solaVector)){
+            //     critlog("failed to get range in realtime.");
+            //     return false;
+            // }
+            // WBCH("hybridrender callback calc start")
+            // i.second.st->putSamples(solaVector.data(), Sola);
+            // i.second.st->receiveSamples(tempFrames.data(), FrameSize);
+            // WBCH("hybridrender callback calc end")
+            // toFaustStylePCM(FaustStyle, tempFrames.data(), FrameSize);
             i.second.fxP->addFX(FaustStyle, FrameSize);
             toLRStylePCM(FaustStyle, tempFrames.data(), FrameSize);
 

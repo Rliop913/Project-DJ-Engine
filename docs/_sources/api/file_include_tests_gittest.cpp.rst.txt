@@ -30,7 +30,7 @@ Includes
 --------
 
 
-- ``gitWrapper.hpp`` (:ref:`file_include_core_editor_featureWrapper_GitWrap_gitWrapper.hpp`)
+- ``PDJE_interface.hpp`` (:ref:`file_include_core_interface_PDJE_interface.hpp`)
 
 - ``iostream``
 

@@ -5,7 +5,6 @@
     <includes refid="PDJE__EXPORT__SETTER_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
     <includes local="no">atomic</includes>
     <includes local="no">thread</includes>
-    <includedby refid="PDJE__Judge__Init_8hpp" local="yes">include/judge/Init/PDJE_Judge_Init.hpp</includedby>
     <incdepgraph>
       <node id="1">
         <label>include/global/PDJE_ATOMIC_EVENT.hpp</label>
@@ -28,80 +27,6 @@
         <label>thread</label>
       </node>
     </incdepgraph>
-    <invincdepgraph>
-      <node id="1">
-        <label>include/global/PDJE_ATOMIC_EVENT.hpp</label>
-        <link refid="PDJE__ATOMIC__EVENT_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>include/judge/Init/PDJE_Judge_Init.cpp</label>
-        <link refid="PDJE__Judge__Init_8cpp"/>
-      </node>
-      <node id="2">
-        <label>include/judge/Init/PDJE_Judge_Init.hpp</label>
-        <link refid="PDJE__Judge__Init_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>include/judge/Loop/HID.cpp</label>
-        <link refid="HID_8cpp"/>
-      </node>
-      <node id="7">
-        <label>include/judge/Loop/Keyboard.cpp</label>
-        <link refid="Keyboard_8cpp"/>
-      </node>
-      <node id="8">
-        <label>include/judge/Loop/MIDI.cpp</label>
-        <link refid="MIDI_8cpp"/>
-      </node>
-      <node id="9">
-        <label>include/judge/Loop/Mouse.cpp</label>
-        <link refid="Mouse_8cpp"/>
-      </node>
-      <node id="4">
-        <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
-        <link refid="PDJE__Judge__Loop_8cpp"/>
-      </node>
-      <node id="5">
-        <label>include/judge/Loop/PDJE_Judge_Loop.hpp</label>
-        <link refid="PDJE__Judge__Loop_8hpp"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>include/judge/PDJE_Judge.cpp</label>
-        <link refid="PDJE__Judge_8cpp"/>
-      </node>
-      <node id="10">
-        <label>include/judge/PDJE_Judge.hpp</label>
-        <link refid="PDJE__Judge_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
-        <link refid="judgeTest_8cpp"/>
-      </node>
-    </invincdepgraph>
     <innerclass refid="classATOMIC__EVENT" prot="public">ATOMIC_EVENT</innerclass>
     <briefdescription>
     </briefdescription>

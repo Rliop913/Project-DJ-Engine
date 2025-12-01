@@ -3,7 +3,7 @@
 Class DiffController
 ====================
 
-- Defined in :ref:`file_include_core_editor_featureWrapper_GitWrap_Diff_DiffController.hpp`
+- Defined in :ref:`file_include_core_editor_DEPRECATE_GitWrap_Diff_DiffController.hpp`
 
 
 Class Documentation

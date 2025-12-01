@@ -3,7 +3,7 @@
 Class branch
 ============
 
-- Defined in :ref:`file_include_core_editor_featureWrapper_GitWrap_Branch_editorBranch.hpp`
+- Defined in :ref:`file_include_core_editor_DEPRECATE_GitWrap_Branch_editorBranch.hpp`
 
 
 Class Documentation

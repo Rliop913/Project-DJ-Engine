@@ -1,16 +1,17 @@
 #pragma once
 
-#include "Decoder.hpp"
+#include "PreLoadedMusic.hpp"
 
 #include <map>
 
 #include "ManualMix.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
+#include "PredictMusic.hpp"
 #include "SoundTouch.h"
 #include "dbRoot.hpp"
 #include "fileNameSanitizer.hpp"
 #include <filesystem>
-
+#include <array>
 namespace fs = std::filesystem;
 // #undef HWY_TARGET_INCLUDE
 // #define HWY_TARGET_INCLUDE "MusicControlPanel-inl.h"
@@ -25,26 +26,70 @@ using LOADED_LIST = std::vector<std::string>;
  */
 struct MusicOnDeck {
     bool                                  play = false;
-    Decoder                               dec;
+    PreLoadedMusic                               loaded;
+    std::optional<PredictBuffer<10>>                        pb;
     FXControlPanel                       *fxP;
+    uint64_t frameSZ = 0;
     std::optional<soundtouch::SoundTouch> st;
+    std::optional<std::thread> worker;
+    std::atomic<bool> flag = true;
     MusicOnDeck() : fxP(new FXControlPanel(48000))
     {
+      
         st.emplace();
         st->setChannels(CHANNEL);
         st->setSampleRate(SAMPLERATE);
         st->setSetting(0, 1);
         st->setSetting(2, 0);
         st->setTempo(1.0);
+        
     };
+    void Init(const uint64_t frameSize){
+      frameSZ = frameSize;
+      pb.emplace();
+      worker.emplace([this](){
+          predict_loop();
+        });
+    }
+    void predict_loop(){
+      SIMD_FLOAT pcmBuffer(frameSZ);
+      PREDICT pd;
+      pd.predict_fragment.resize(frameSZ * CHANNEL);
+      while(flag){
+        if(!pb->IsFull()){
+          pd.io_ratio = st->getInputOutputSampleRatio();
+          pd.start_cursor = loaded.cursor;
+          pd.used_frames = static_cast<uint64_t>(
+                std::ceil(static_cast<double>(frameSZ) /
+                          pd.io_ratio));
+          loaded.getRange(pd.used_frames, pcmBuffer);
+          st->putSamples(pcmBuffer.data(), pd.used_frames);
+          st->receiveSamples(pd.predict_fragment.data(), frameSZ);
+          pb->Fill(pd);
+        }else{
+          std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        }
+      }
+    }
+    bool join(){
+      if(worker){
+          if(worker->joinable()){
+              flag = false;
+              worker->join();
+              return true;
+          }
+      }
+      return false;
+    }
     ~MusicOnDeck()
     {
-        // ma_decoder_uninit(&dec);
+      join();
         delete fxP;
     }
 };
 
 using LOADS = std::map<std::string, MusicOnDeck>;
+
 
 /**
  * @brief Music handler for manual mode
@@ -54,6 +99,7 @@ class PDJE_API MusicControlPanel {
   private:
     LOADS              deck;
     unsigned long      fsize;
+    uint64_t bufferSZ;
     std::vector<float> L;
     std::vector<float> R;
     float             *FaustStyle[2];
@@ -143,7 +189,7 @@ class PDJE_API MusicControlPanel {
               const double       targetBpm,
               const double       originBpm);
 
-    MusicControlPanel(const unsigned long FrameSize) : fsize(FrameSize)
+    MusicControlPanel(const unsigned long FrameSize, const uint64_t BufferSize) : fsize(FrameSize), bufferSZ(BufferSize)
     {
     }
     ~MusicControlPanel();

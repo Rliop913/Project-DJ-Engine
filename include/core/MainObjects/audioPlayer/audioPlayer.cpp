@@ -57,7 +57,7 @@ audioPlayer::audioPlayer(litedb            &db,
     if (hasManual) {
         conf.dataCallback = HybridRender_callback;
         engineDatas.FXManualPanel.emplace(SAMPLERATE);
-        engineDatas.MusCtrPanel.emplace(SAMPLERATE);
+        engineDatas.MusCtrPanel.emplace(SAMPLERATE, frameBufferSize);
     } else {
         conf.dataCallback = FullPreRender_callback;
     }
@@ -83,7 +83,7 @@ audioPlayer::audioPlayer(const unsigned int frameBufferSize)
 
     conf.dataCallback = FullManualRender_callback;
     engineDatas.FXManualPanel.emplace(SAMPLERATE);
-    engineDatas.MusCtrPanel.emplace(SAMPLERATE);
+    engineDatas.MusCtrPanel.emplace(SAMPLERATE, frameBufferSize);
 
     if (ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS) {
         critlog("failed to init device. from audioPlayer::audioPlayer(fbsize)");

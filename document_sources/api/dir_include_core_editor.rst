@@ -15,8 +15,9 @@ Directory editor
 Subdirectories
 --------------
 
-- :ref:`dir_include_core_editor_featureWrapper`
+- :ref:`dir_include_core_editor_DEPRECATE`
 - :ref:`dir_include_core_editor_pdjeLinter`
+- :ref:`dir_include_core_editor_TimeLine`
 
 
 Files

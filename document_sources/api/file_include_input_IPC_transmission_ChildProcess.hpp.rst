@@ -34,6 +34,8 @@ Includes
 
 - ``PDJE_Buffer.hpp`` (:ref:`file_include_global_DataLines_PDJE_Buffer.hpp`)
 
+- ``PDJE_Crypto.hpp`` (:ref:`file_include_global_Crypto_PDJE_Crypto.hpp`)
+
 - ``PDJE_Highres_Clock.hpp`` (:ref:`file_include_global_Highres_Clock_Linux_PDJE_Highres_Clock.hpp`)
 
 - ``PDJE_Input_DataLine.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_DataLine.hpp`)

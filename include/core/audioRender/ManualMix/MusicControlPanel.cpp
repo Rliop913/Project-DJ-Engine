@@ -15,13 +15,19 @@ MusicControlPanel::~MusicControlPanel()
 bool
 MusicControlPanel::LoadMusic(litedb &ROOTDB, const musdata &Mus)
 {
+    
     if (!deck.try_emplace(Mus.title).second) {
         critlog("failed to load music from MusicControlPanel LoadMusic. "
                 "ErrTitle: ");
         critlog(Mus.title);
         return false;
     }
-    return deck[Mus.title].dec.init(ROOTDB, Mus.musicPath);
+    if(!deck[Mus.title].loaded.init(ROOTDB, Mus.musicPath)){
+        critlog("failed to load music.");
+        return false;
+    }
+    deck[Mus.title].Init(bufferSZ);
+    return true;
 }
 
 bool
@@ -41,7 +47,9 @@ MusicControlPanel::CueMusic(const UNSANITIZED       &title,
         warnlog(title);
         return false;
     }
-    deck[safeTitle.value()].dec.changePos(newPos * CHANNEL);
+    deck[safeTitle.value()].loaded.changePos(newPos);
+    
+    deck[safeTitle.value()].pb->Reset();
     return true;
 }
 
@@ -137,6 +145,11 @@ MusicControlPanel::ChangeBpm(const UNSANITIZED &title,
         return false;
     } else {
         deck[safeTitle.value()].st->setTempo(targetBpm / originBpm);
+        PREDICT temp;
+        if(deck[safeTitle.value()].pb->Pop(temp)){
+            deck[safeTitle.value()].loaded.changePos(temp.start_cursor);
+        }
+        deck[safeTitle.value()].pb->Reset();
         return true;
     }
 }

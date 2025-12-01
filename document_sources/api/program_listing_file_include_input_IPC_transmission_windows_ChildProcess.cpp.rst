@@ -11,8 +11,8 @@ Program Listing for File ChildProcess.cpp
 .. code-block:: cpp
 
    #include "ChildProcess.hpp"
-   #include "ipc_shared_memory.hpp"
    #include "ListDevice.hpp"
+   #include "ipc_shared_memory.hpp"
    #include <SetupAPI.h>
    #include <Windows.h>
    #include <avrt.h>
@@ -20,21 +20,22 @@ Program Listing for File ChildProcess.cpp
    namespace PDJE_IPC {
    
    bool
-   ChildProcess::RecvIPCSharedMem(const std::string& mem_path, const std::string& dataType, const uint64_t data_count)
+   ChildProcess::RecvIPCSharedMem(const std::string &mem_path,
+                                  const std::string &dataType,
+                                  const uint64_t     data_count)
    {
-       try{
+       try {
    
-           if(dataType == "spinlock"){
+           if (dataType == "spinlock") {
                spinlock_run.emplace();
                spinlock_run->GetIPCSharedMemory(mem_path, data_count);
                return true;
-           }
-           else if(dataType == "input_buffer"){
+           } else if (dataType == "input_buffer") {
                input_buffer.emplace(mem_path, data_count);
                return true;
            }
            return false;
-       }catch(const std::exception& e){
+       } catch (const std::exception &e) {
            critlog("failed to receive memory. WHY: ");
            critlog(e.what());
            return false;
@@ -44,7 +45,7 @@ Program Listing for File ChildProcess.cpp
    std::string
    ChildProcess::ListDev()
    {
-       auto rawDevs = getRawDeviceDatas();
+       auto                    rawDevs = getRawDeviceDatas();
        std::vector<DeviceData> out;
        out.reserve(rawDevs.size());
        for (auto &i : rawDevs) {
@@ -69,12 +70,11 @@ Program Listing for File ChildProcess.cpp
        }
        nlohmann::json nj;
        nj["body"] = nlohmann::json::array();
-       for(const auto& dev : out){
+       for (const auto &dev : out) {
            std::unordered_map<std::string, std::string> kv;
-           kv["id"] = dev.device_specific_id;
+           kv["id"]   = dev.device_specific_id;
            kv["name"] = dev.Name;
-           switch (dev.Type)
-           {
+           switch (dev.Type) {
            case PDJE_Dev_Type::KEYBOARD:
                kv["type"] = "KEYBOARD";
                nj["body"].push_back(kv);
@@ -110,7 +110,7 @@ Program Listing for File ChildProcess.cpp
        server.stop();
    }
    
-   void 
+   void
    ChildProcess::LoopTrig()
    {
    
@@ -118,15 +118,15 @@ Program Listing for File ChildProcess.cpp
    
        if (!msgOnly)
            return;
-       if(configed_devices.empty()){
+       if (configed_devices.empty()) {
            critlog("no device has been configured. shutdown rawinput.");
            return;
        }
-       if(!spinlock_run){
+       if (!spinlock_run) {
            critlog("spinlock is not initialized.");
            return;
        }
-       if(!input_buffer){
+       if (!input_buffer) {
            critlog("input buffer is not initialized.");
            return;
        }
@@ -195,20 +195,19 @@ Program Listing for File ChildProcess.cpp
            GetCurrentThread(), ThreadPowerThrottling, &s, sizeof(s));
    #endif
        ThreadID = GetCurrentThreadId();
-       
-       
-       while((*spinlock_run->ptr) == 0){//spinlock
-           if((*spinlock_run->ptr) == -1){
-               return;//terminate
+   
+       while ((*spinlock_run->ptr) == 0) { // spinlock
+           if ((*spinlock_run->ptr) == -1) {
+               return; // terminate
            }
        }
-       
-           if (task){
-               AvRevertMmThreadCharacteristics(task);
-           }
-       
+   
+       if (task) {
+           AvRevertMmThreadCharacteristics(task);
+       }
+   
        Run();
-       if (task){
+       if (task) {
            AvRevertMmThreadCharacteristics(task);
        }
        return;

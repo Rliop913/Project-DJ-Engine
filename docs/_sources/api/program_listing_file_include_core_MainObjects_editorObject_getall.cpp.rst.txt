@@ -17,21 +17,21 @@ Program Listing for File getall.cpp
    editorObject::getAll(
        std::function<void(const EDIT_ARG_KEY_VALUE &obj)> jsonCallback)
    {
-       E_obj->KVHandler.second.getAll(jsonCallback);
+       edit_core->KVHandle->GetJson()->getAll(jsonCallback);
    }
    
    template <>
    PDJE_API void
    editorObject::getAll(std::function<void(const EDIT_ARG_MIX &obj)> jsonCallback)
    {
-       E_obj->mixHandle.second.getAll(jsonCallback);
+       edit_core->mixHandle->GetJson()->getAll(jsonCallback);
    }
    
    template <>
    PDJE_API void
    editorObject::getAll(std::function<void(const EDIT_ARG_NOTE &obj)> jsonCallback)
    {
-       E_obj->noteHandle.second.getAll(jsonCallback);
+       edit_core->noteHandle->GetJson()->getAll(jsonCallback);
    }
    
    template <>
@@ -39,7 +39,7 @@ Program Listing for File getall.cpp
    editorObject::getAll(
        std::function<void(const EDIT_ARG_MUSIC &obj)> jsonCallback)
    {
-       for (auto &i : E_obj->musicHandle) {
-           i.jsonh.getAll(jsonCallback);
+       for (auto &i : edit_core->musicHandle) {
+           i.handle->GetJson()->getAll(jsonCallback);
        }
    }

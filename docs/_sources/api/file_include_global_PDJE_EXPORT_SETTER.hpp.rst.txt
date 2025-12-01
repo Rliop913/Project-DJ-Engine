@@ -77,15 +77,15 @@ Included By
 
 - :ref:`file_include_core_db_trackDB.hpp`
 
+- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Commit_editorCommit.hpp`
+
+- :ref:`file_include_core_editor_DEPRECATE_GitWrap_gitWrapper.hpp`
+
+- :ref:`file_include_core_editor_TimeLine_JSONWrap_EditorArgs.hpp`
+
+- :ref:`file_include_core_editor_TimeLine_JSONWrap_jsonWrapper.hpp`
+
 - :ref:`file_include_core_editor_editor.hpp`
-
-- :ref:`file_include_core_editor_featureWrapper_GitWrap_Commit_editorCommit.hpp`
-
-- :ref:`file_include_core_editor_featureWrapper_GitWrap_gitWrapper.hpp`
-
-- :ref:`file_include_core_editor_featureWrapper_JSONWrap_EditorArgs.hpp`
-
-- :ref:`file_include_core_editor_featureWrapper_JSONWrap_jsonWrapper.hpp`
 
 - :ref:`file_include_core_interface_PDJE_interface.hpp`
 
@@ -121,4 +121,6 @@ Defines
 
 
 - :ref:`exhale_define_PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c`
+
+- :ref:`exhale_define_PDJE__EXPORT__SETTER_8hpp_1a7741270cebaf37c6127114855d3a00e1`
 

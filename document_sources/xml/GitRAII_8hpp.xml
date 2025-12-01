@@ -1,0 +1,365 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="GitRAII_8hpp" kind="file" language="C++">
+    <compoundname>GitRAII.hpp</compoundname>
+    <includes refid="PDJE__LOG__SETTER_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
+    <includes local="no">git2.h</includes>
+    <includes local="no">git2/branch.h</includes>
+    <includes local="no">git2/refs.h</includes>
+    <includes local="no">git2/tree.h</includes>
+    <includes local="no">git2/types.h</includes>
+    <includedby refid="EventMarker_8hpp" local="yes">include/core/editor/TimeLine/EventMarker/EventMarker.hpp</includedby>
+    <includedby refid="LineVersion_8cpp" local="yes">include/core/editor/TimeLine/LineVersion/LineVersion.cpp</includedby>
+    <includedby refid="LineVersion_8hpp" local="yes">include/core/editor/TimeLine/LineVersion/LineVersion.hpp</includedby>
+    <includedby refid="TimeLine_8hpp" local="yes">include/core/editor/TimeLine/TimeLine.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/core/editor/TimeLine/GitDataPack/GitRAII.hpp</label>
+        <link refid="GitRAII_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>filesystem</label>
+      </node>
+      <node id="10">
+        <label>git2.h</label>
+      </node>
+      <node id="11">
+        <label>git2/branch.h</label>
+      </node>
+      <node id="12">
+        <label>git2/refs.h</label>
+      </node>
+      <node id="13">
+        <label>git2/tree.h</label>
+      </node>
+      <node id="14">
+        <label>git2/types.h</label>
+      </node>
+      <node id="4">
+        <label>mutex</label>
+      </node>
+      <node id="5">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="6">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="7">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="8">
+        <label>string_view</label>
+      </node>
+      <node id="9">
+        <label>type_traits</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7">
+        <label>include/core/MainObjects/editorObject/addline.cpp</label>
+        <link refid="addline_8cpp"/>
+      </node>
+      <node id="8">
+        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
+        <link refid="commonfunction_8cpp"/>
+      </node>
+      <node id="9">
+        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
+        <link refid="deleteline_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
+        <link refid="editorObject_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
+        <link refid="editorObject_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/core/MainObjects/editorObject/getall.cpp</label>
+        <link refid="getall_8cpp"/>
+      </node>
+      <node id="11">
+        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
+        <link refid="getdiff_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <link refid="getlogwithjsongraph_8cpp"/>
+      </node>
+      <node id="13">
+        <label>include/core/MainObjects/editorObject/go.cpp</label>
+        <link refid="go_8cpp"/>
+      </node>
+      <node id="14">
+        <label>include/core/MainObjects/editorObject/redo.cpp</label>
+        <link refid="redo_8cpp"/>
+      </node>
+      <node id="15">
+        <label>include/core/MainObjects/editorObject/render.cpp</label>
+        <link refid="render_8cpp"/>
+      </node>
+      <node id="16">
+        <label>include/core/MainObjects/editorObject/undo.cpp</label>
+        <link refid="undo_8cpp"/>
+      </node>
+      <node id="17">
+        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
+        <link refid="updatelog_8cpp"/>
+      </node>
+      <node id="18">
+        <label>include/core/SWIG_editor_visitor.hpp</label>
+        <link refid="SWIG__editor__visitor_8hpp"/>
+      </node>
+      <node id="2">
+        <label>include/core/editor/TimeLine/EventMarker/EventMarker.hpp</label>
+        <link refid="EventMarker_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/core/editor/TimeLine/GitDataPack/GitRAII.hpp</label>
+        <link refid="GitRAII_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</label>
+        <link refid="MusicJson_8cpp"/>
+      </node>
+      <node id="29">
+        <label>include/core/editor/TimeLine/LineVersion/LineVersion.cpp</label>
+        <link refid="LineVersion_8cpp"/>
+      </node>
+      <node id="30">
+        <label>include/core/editor/TimeLine/LineVersion/LineVersion.hpp</label>
+        <link refid="LineVersion_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/core/editor/TimeLine/TimeLine.hpp</label>
+        <link refid="TimeLine_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>include/core/editor/editor.cpp</label>
+        <link refid="editor_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/core/editor/editor.hpp</label>
+        <link refid="editor_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>include/core/interface/PDJE_interface.cpp</label>
+        <link refid="PDJE__interface_8cpp"/>
+      </node>
+      <node id="20">
+        <label>include/core/interface/PDJE_interface.hpp</label>
+        <link refid="PDJE__interface_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
+        <link refid="PDJE__polyglot__wraps_8cpp"/>
+      </node>
+      <node id="23">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judgeTest_8cpp"/>
+      </node>
+      <node id="24">
+        <label>include/tests/dbTest.cpp</label>
+        <link refid="dbTest_8cpp"/>
+      </node>
+      <node id="25">
+        <label>include/tests/editorTest.cpp</label>
+        <link refid="editorTest_8cpp"/>
+      </node>
+      <node id="26">
+        <label>include/tests/gittest.cpp</label>
+        <link refid="gittest_8cpp"/>
+      </node>
+      <node id="27">
+        <label>include/tests/interfaceTest.cpp</label>
+        <link refid="interfaceTest_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classGIT__RAII_1_1commit" prot="public">GIT_RAII::commit</innerclass>
+    <innerclass refid="classGIT__RAII_1_1ref" prot="public">GIT_RAII::ref</innerclass>
+    <innerclass refid="classGIT__RAII_1_1tree" prot="public">GIT_RAII::tree</innerclass>
+    <innerclass refid="classGIT__RAII_1_1branch__itr" prot="public">GIT_RAII::branch_itr</innerclass>
+    <innernamespace refid="namespaceGIT__RAII">GIT_RAII</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__LOG__SETTER_8hpp" kindref="compound">PDJE_LOG_SETTER.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;git2.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;git2/branch.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;git2/refs.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;git2/tree.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;git2/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="namespaceGIT__RAII" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceGIT__RAII" kindref="compound">GIT_RAII</ref><sp/>{</highlight></codeline>
+<codeline lineno="9" refid="namespaceGIT__RAII_1ae9f5018a36b209676af787d453948570" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespaceGIT__RAII_1ae9f5018a36b209676af787d453948570" kindref="member">OID</ref><sp/>=<sp/>std::string;</highlight></codeline>
+<codeline lineno="10" refid="classGIT__RAII_1_1commit" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGIT__RAII_1_1commit_1a2fc511c1085d95072e7cc22c520b6c07" kindref="member">commit</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="12" refid="classGIT__RAII_1_1commit_1a1ac8476e97757d04bb0daddefbca9757" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>git_oid<sp/><ref refid="classGIT__RAII_1_1commit_1a1ac8476e97757d04bb0daddefbca9757" kindref="member">o</ref>{};</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="15" refid="classGIT__RAII_1_1commit_1af186ad44340fa09ba5ca717e10c9c42e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>git_commit<sp/>*<ref refid="classGIT__RAII_1_1commit_1af186ad44340fa09ba5ca717e10c9c42e" kindref="member">p</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16" refid="classGIT__RAII_1_1commit_1a2fc511c1085d95072e7cc22c520b6c07" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGIT__RAII_1_1commit_1a2fc511c1085d95072e7cc22c520b6c07" kindref="member">commit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceGIT__RAII_1ae9f5018a36b209676af787d453948570" kindref="member">OID</ref><sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>git_repository<sp/>*repo)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(git_oid_fromstr(&amp;<ref refid="classGIT__RAII_1_1commit_1a1ac8476e97757d04bb0daddefbca9757" kindref="member">o</ref>,<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.c_str())<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>get<sp/>git-oid.<sp/>OID<sp/>&amp;<sp/>GitErr:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(git_error_last()-&gt;message);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(git_commit_lookup(&amp;<ref refid="classGIT__RAII_1_1commit_1af186ad44340fa09ba5ca717e10c9c42e" kindref="member">p</ref>,<sp/>repo,<sp/>&amp;<ref refid="classGIT__RAII_1_1commit_1a1ac8476e97757d04bb0daddefbca9757" kindref="member">o</ref>)<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>look<sp/>up<sp/>git<sp/>commit.<sp/>OID<sp/>&amp;<sp/>GitErr:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(git_error_last()-&gt;message);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="31" refid="classGIT__RAII_1_1commit_1a1e3a5464de0696a5d7a4b2a3ccd112a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGIT__RAII_1_1commit_1a1e3a5464de0696a5d7a4b2a3ccd112a1" kindref="member">~commit</ref>()</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classGIT__RAII_1_1commit_1af186ad44340fa09ba5ca717e10c9c42e" kindref="member">p</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_commit_free(<ref refid="classGIT__RAII_1_1commit_1af186ad44340fa09ba5ca717e10c9c42e" kindref="member">p</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classGIT__RAII_1_1ref" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGIT__RAII_1_1ref_1ad4c35a183f16bb250d01f50206ff3077" kindref="member">ref</ref><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="41" refid="classGIT__RAII_1_1ref_1a3d5d8eadfa971254d6c5fd3f4a9ec708" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>git_reference<sp/>*<ref refid="classGIT__RAII_1_1ref_1a3d5d8eadfa971254d6c5fd3f4a9ec708" kindref="member">p</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42" refid="classGIT__RAII_1_1ref_1ad4c35a183f16bb250d01f50206ff3077" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGIT__RAII_1_1ref_1ad4c35a183f16bb250d01f50206ff3077" kindref="member">ref</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43" refid="classGIT__RAII_1_1ref_1acaa8fe1032d7347597221aa39583d60c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGIT__RAII_1_1ref_1acaa8fe1032d7347597221aa39583d60c" kindref="member">~ref</ref>()</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classGIT__RAII_1_1ref_1a3d5d8eadfa971254d6c5fd3f4a9ec708" kindref="member">p</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_reference_free(<ref refid="classGIT__RAII_1_1ref_1a3d5d8eadfa971254d6c5fd3f4a9ec708" kindref="member">p</ref>);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classGIT__RAII_1_1tree" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGIT__RAII_1_1tree_1ad32b91ea54e29c70ba2ce032416a664f" kindref="member">tree</ref><sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="53" refid="classGIT__RAII_1_1tree_1a25f3cbb06728d311e22bbc6a3392b6ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>git_tree<sp/>*<ref refid="classGIT__RAII_1_1tree_1a25f3cbb06728d311e22bbc6a3392b6ae" kindref="member">p</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54" refid="classGIT__RAII_1_1tree_1ad32b91ea54e29c70ba2ce032416a664f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGIT__RAII_1_1tree_1ad32b91ea54e29c70ba2ce032416a664f" kindref="member">tree</ref>()<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55" refid="classGIT__RAII_1_1tree_1a28afd5bed2176db44a8c5592e9cc61db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGIT__RAII_1_1tree_1a28afd5bed2176db44a8c5592e9cc61db" kindref="member">~tree</ref>()</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classGIT__RAII_1_1tree_1a25f3cbb06728d311e22bbc6a3392b6ae" kindref="member">p</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_tree_free(<ref refid="classGIT__RAII_1_1tree_1a25f3cbb06728d311e22bbc6a3392b6ae" kindref="member">p</ref>);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classGIT__RAII_1_1branch__itr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classGIT__RAII_1_1branch__itr_1ae72994678c52f760abf352c06948bd89" kindref="member">branch_itr</ref><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="65" refid="classGIT__RAII_1_1branch__itr_1a0648c1a64d45d769ce278fe6795f0cc7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>git_branch_iterator<sp/>*<ref refid="classGIT__RAII_1_1branch__itr_1a0648c1a64d45d769ce278fe6795f0cc7" kindref="member">p</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66" refid="classGIT__RAII_1_1branch__itr_1ae72994678c52f760abf352c06948bd89" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGIT__RAII_1_1branch__itr_1ae72994678c52f760abf352c06948bd89" kindref="member">branch_itr</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67" refid="classGIT__RAII_1_1branch__itr_1a79835e07621ebb8078898e4e2bb4e2b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGIT__RAII_1_1branch__itr_1a79835e07621ebb8078898e4e2bb4e2b6" kindref="member">~branch_itr</ref>()</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classGIT__RAII_1_1branch__itr_1a0648c1a64d45d769ce278fe6795f0cc7" kindref="member">p</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>git_branch_iterator_free(<ref refid="classGIT__RAII_1_1branch__itr_1a0648c1a64d45d769ce278fe6795f0cc7" kindref="member">p</ref>);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>GIT_RAII</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/core/editor/TimeLine/GitDataPack/GitRAII.hpp"/>
+  </compounddef>
+</doxygen>

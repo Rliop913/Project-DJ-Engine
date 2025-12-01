@@ -32,6 +32,8 @@ Includes
 
 - ``PDJE_Buffer.hpp`` (:ref:`file_include_global_DataLines_PDJE_Buffer.hpp`)
 
+- ``PDJE_Crypto.hpp`` (:ref:`file_include_global_Crypto_PDJE_Crypto.hpp`)
+
 - ``PDJE_Input_DataLine.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_DataLine.hpp`)
 
 - ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)

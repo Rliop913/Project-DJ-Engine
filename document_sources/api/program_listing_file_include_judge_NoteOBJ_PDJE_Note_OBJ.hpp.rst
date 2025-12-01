@@ -54,7 +54,7 @@ Program Listing for File PDJE_Note_OBJ.hpp
    
        template <int I>
        DEVID_TO_NOTE *
-       pick_dan()
+       pick_buffer()
        {
            if constexpr (I == BUFFER_MAIN) {
                return &Buffer_Main;
@@ -73,7 +73,7 @@ Program Listing for File PDJE_Note_OBJ.hpp
        {
            static_assert(I == BUFFER_MAIN || I == BUFFER_SUB,
                          "invalid use of fill.");
-           DEVID_TO_NOTE *dan = pick_dan<I>();
+           DEVID_TO_NOTE *dan = pick_buffer<I>();
            (*dan)[rail_id].vec.push_back(data);
        }
    
@@ -83,7 +83,7 @@ Program Listing for File PDJE_Note_OBJ.hpp
        {
            static_assert(I == BUFFER_MAIN || I == BUFFER_SUB,
                          "invalid use of get.");
-           DEVID_TO_NOTE *dan = pick_dan<I>();
+           DEVID_TO_NOTE *dan = pick_buffer<I>();
    
            found.clear();
            auto &note = (*dan)[railID];
@@ -119,7 +119,7 @@ Program Listing for File PDJE_Note_OBJ.hpp
        {
            static_assert(I == BUFFER_MAIN || I == BUFFER_SUB,
                          "invalid use of cut.");
-           DEVID_TO_NOTE *dan = pick_dan<I>();
+           DEVID_TO_NOTE *dan = pick_buffer<I>();
    
            for (auto &rail : *dan) {
                if (rail.second.vec.empty()) {

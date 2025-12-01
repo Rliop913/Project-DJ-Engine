@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``PDJE_Crypto.hpp`` (:ref:`file_include_global_Crypto_PDJE_Crypto.hpp`)
+
 - ``PDJE_INPUT_PROCESS_HASH.hpp`` (:ref:`file_include_input_IPC_common_PDJE_INPUT_PROCESS_HASH.hpp`)
 
 - ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
@@ -47,8 +49,6 @@ Includes
 - ``ios``
 
 - ``ipc_shared_memory.hpp`` (:ref:`file_include_input_IPC_memory_ipc_shared_memory.hpp`)
-
-- ``picosha2.h``
 
 - ``string``
 
@@ -79,4 +79,6 @@ Functions
 
 
 - :ref:`exhale_function_namespacePDJE__IPC_1a70376465d929e8d1c237f737857d7f06`
+
+- :ref:`exhale_function_namespacePDJE__IPC_1a01af1265fc9ad0972525db7352ad736c`
 

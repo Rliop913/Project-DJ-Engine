@@ -2,6 +2,7 @@
 #include "FrameCalc.hpp"
 #include <atomic>
 #include <cstring>
+#include "PDJE_Benchmark.hpp"
 
 std::optional<float *>
 audioEngineDataStruct::getNowfPointer(const unsigned long frameCount)
@@ -60,10 +61,12 @@ FullPreRender_callback(ma_device  *pDevice,
                        const void *pInput,
                        ma_uint32   frameCount)
 {
+    WBCH("fullprerender callback calc start")
     auto rendered =
         reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
     rendered->CountUp(frameCount);
     rendered->Get(reinterpret_cast<float *>(pOutput), frameCount);
+    WBCH("fullprerender callback calc end")
 }
 
 void
@@ -72,12 +75,14 @@ HybridRender_callback(ma_device  *pDevice,
                       const void *pInput,
                       ma_uint32   frameCount)
 {
+    WBCH("hybridrender callback calc start")
     auto rendered =
         reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
     rendered->CountUp(frameCount);
     rendered->GetAfterManFX(reinterpret_cast<float *>(pOutput), frameCount);
     rendered->MusCtrPanel->GetPCMFrames(reinterpret_cast<float *>(pOutput),
                                         frameCount);
+    WBCH("hybridrender callback calc end")
 }
 
 void
@@ -86,8 +91,10 @@ FullManualRender_callback(ma_device  *pDevice,
                           const void *pInput,
                           ma_uint32   frameCount)
 {
+    WBCH("full manual render callback calc start")
     auto Data = reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
     Data->CountUp(frameCount);
     Data->MusCtrPanel->GetPCMFrames(reinterpret_cast<float *>(pOutput),
                                     frameCount);
+    WBCH("full manual render callback calc end")
 }

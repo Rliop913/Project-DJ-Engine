@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="structPDJE__JUDGE_1_1Custom__Events" kind="struct" language="C++" prot="public">
     <compoundname>PDJE_JUDGE::Custom_Events</compoundname>
-    <includes refid="PDJE__Judge__Init_8hpp" local="no">PDJE_Judge_Init.hpp</includes>
+    <includes refid="PDJE__Judge__Init__Structs_8hpp" local="no">PDJE_Judge_Init_Structs.hpp</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structPDJE__JUDGE_1_1Custom__Events_1a4db6c99f75571e359c688f36f7e01961" prot="public" static="no" mutable="no">
         <type><ref refid="namespacePDJE__JUDGE_1a74a76cb2add5051c233d27fbedba793c" kindref="member">MISS_CALLBACK</ref></type>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="34" column="31" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="34" bodyend="-1"/>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="30" column="33" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structPDJE__JUDGE_1_1Custom__Events_1ac9fead0d0e799aad95fb3825d69f7bab" prot="public" static="no" mutable="no">
         <type><ref refid="namespacePDJE__JUDGE_1a404264babe4bb096766de0bef9d0eea6" kindref="member">USE_CALLBACK</ref></type>
@@ -30,21 +30,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="35" column="31" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="35" bodyend="-1"/>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="31" column="33" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="31" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structPDJE__JUDGE_1_1Custom__Events_1aee092b68259fb8a8a59117d46b362376" prot="public" static="no" mutable="no">
-        <type><ref refid="namespacePDJE__JUDGE_1a23d1bbaefe85c70073b4779f17d63f3d" kindref="member">MOUSE_AXIS_PARSE_CALLBACK</ref></type>
-        <definition>MOUSE_AXIS_PARSE_CALLBACK PDJE_JUDGE::Custom_Events::custom_axis_parse</definition>
+      <memberdef kind="variable" id="structPDJE__JUDGE_1_1Custom__Events_1ace156a9638438cad6dd4cef1c06dc61d" prot="public" static="no" mutable="no">
+        <type><ref refid="namespacePDJE__JUDGE_1a4206034d0b6d310b3a8362e649936afc" kindref="member">MOUSE_CUSTOM_PARSE_CALLBACK</ref></type>
+        <definition>MOUSE_CUSTOM_PARSE_CALLBACK PDJE_JUDGE::Custom_Events::custom_mouse_parse</definition>
         <argsstring></argsstring>
-        <name>custom_axis_parse</name>
-        <qualifiedname>PDJE_JUDGE::Custom_Events::custom_axis_parse</qualifiedname>
+        <name>custom_mouse_parse</name>
+        <qualifiedname>PDJE_JUDGE::Custom_Events::custom_mouse_parse</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="36" column="31" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="36" bodyend="-1"/>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="32" column="33" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structPDJE__JUDGE_1_1Custom__Events_1abc300e047e2427cc143e494c0098fa59" prot="public" static="no" mutable="no">
         <type>std::chrono::milliseconds</type>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="37" column="31" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="37" bodyend="-1"/>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="33" column="33" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structPDJE__JUDGE_1_1Custom__Events_1ae2d2669b98b039c5d8bf2d4ec354f0b6" prot="public" static="no" mutable="no">
         <type>std::chrono::milliseconds</type>
@@ -76,16 +76,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="39" column="31" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="39" bodyend="-1"/>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="35" column="31" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="35" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>Optional callback bundle used during judgment loop. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="33" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="33" bodyend="41"/>
+    <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="29" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="29" bodyend="37"/>
     <listofallmembers>
-      <member refid="structPDJE__JUDGE_1_1Custom__Events_1aee092b68259fb8a8a59117d46b362376" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Custom_Events</scope><name>custom_axis_parse</name></member>
+      <member refid="structPDJE__JUDGE_1_1Custom__Events_1ace156a9638438cad6dd4cef1c06dc61d" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Custom_Events</scope><name>custom_mouse_parse</name></member>
       <member refid="structPDJE__JUDGE_1_1Custom__Events_1ae2d2669b98b039c5d8bf2d4ec354f0b6" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Custom_Events</scope><name>miss_event_sleep_time</name></member>
       <member refid="structPDJE__JUDGE_1_1Custom__Events_1a4db6c99f75571e359c688f36f7e01961" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Custom_Events</scope><name>missed_event</name></member>
       <member refid="structPDJE__JUDGE_1_1Custom__Events_1abc300e047e2427cc143e494c0098fa59" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Custom_Events</scope><name>use_event_sleep_time</name></member>

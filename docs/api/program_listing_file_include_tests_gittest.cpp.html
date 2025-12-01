@@ -83,39 +83,93 @@
   <section id="program-listing-for-file-gittest-cpp">
 <span id="program-listing-file-include-tests-gittest-cpp"></span><h1>Program Listing for File gittest.cpp<a class="headerlink" href="#program-listing-for-file-gittest-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_tests_gittest.cpp.html#file-include-tests-gittest-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/tests/gittest.cpp</span></code>)</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;gitWrapper.hpp&quot;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_interface.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-<span class="c1">// #include &quot;gitWrapper.hpp&quot;</span>
+
 <span class="kt">int</span>
 <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">gh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_GitHandler</span><span class="p">(</span><span class="s">&quot;rrop&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;temp@email.com&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">gh</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="s">&quot;../&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;loaded ok&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">gh</span><span class="p">.</span><span class="n">gw</span><span class="p">.</span><span class="n">GenTimeStamp</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">    </span><span class="c1">// getchar();</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">eg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;./gittesterRoot&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">eg</span><span class="p">.</span><span class="n">InitEditor</span><span class="p">(</span><span class="s">&quot;dev&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;email&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;pdje_gittest_sandbox&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// auto gw = GitWrapper();</span>
+<span class="w">    </span><span class="c1">// git_signature* sign;</span>
+<span class="w">    </span><span class="c1">// git_signature_now(&amp;sign, &quot;dev&quot;, &quot;email&quot;);</span>
+<span class="w">    </span><span class="c1">// gw.open(&quot;./pdje_gittest_sandbox/Mixes&quot;,</span>
+<span class="w">    </span><span class="c1">// &quot;./pdje_gittest_sandbox/Mixes/mixmetadata.PDJE&quot;, sign);</span>
+<span class="w">    </span><span class="c1">// //see branch</span>
+<span class="w">    </span><span class="c1">// auto brc = gitwrap::branch(gw.repo);</span>
+<span class="w">    </span><span class="c1">// std::cout &lt;&lt; &quot;head branch: &quot; &lt;&lt; gw.handleBranch-&gt;branchName &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// std::cout &lt;&lt; &quot;head branch: &quot; &lt;&lt; brc.branchName &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// if(!brc.MakeNewFromHEAD(&quot;testnew&quot;)){</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;failed to make test new branch from head.&quot; &lt;&lt;</span>
+<span class="w">    </span><span class="c1">//     std::endl;</span>
+<span class="w">    </span><span class="c1">// }</span>
+<span class="w">    </span><span class="c1">// std::cout &lt;&lt; &quot;now branch&quot; &lt;&lt; brc.branchName &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// for(auto i : brc.ShowExistBranch()){</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;exist branches: &quot; &lt;&lt; i &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// }</span>
+<span class="w">    </span><span class="c1">// if(!brc.DeleteBranch(&quot;master&quot;)){</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;failed to delete branch master.&quot; &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// }</span>
+<span class="w">    </span><span class="c1">// for(auto i : brc.ShowExistBranch()){</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;after delete exist branches: &quot; &lt;&lt; i &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// }</span>
+<span class="w">    </span><span class="c1">// if(!brc.MakeNewFromHEAD(&quot;testnew_second&quot;)){</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;failed to make test new branch from head.&quot; &lt;&lt;</span>
+<span class="w">    </span><span class="c1">//     std::endl;</span>
+<span class="w">    </span><span class="c1">// }</span>
+<span class="w">    </span><span class="c1">// if(!brc.SetBranch(&quot;testnew&quot;)){</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;failed to set branch to testnew&quot; &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// }</span>
+<span class="w">    </span><span class="c1">// if(!brc.CheckoutThisHEAD()){</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;failed to checkout to head.&quot; &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// }</span>
+<span class="w">    </span><span class="c1">// auto chead = brc.GetHEAD();</span>
+<span class="w">    </span><span class="c1">// if(!chead){</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;failed to get head commit.&quot; &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// }</span>
+<span class="w">    </span><span class="c1">// if(!brc.MakeNewFromCommit(chead.value(), &quot;headnew&quot;)){</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;failed to make branch from head commit.&quot; &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// }</span>
+<span class="w">    </span><span class="c1">// if(!brc.CheckoutCommitTemp(chead.value())){</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;failed to checkout to commit temp.&quot; &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// }</span>
+<span class="w">    </span><span class="c1">// for(auto i : brc.ShowExistBranch()){</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;after checkout exist branches: &quot; &lt;&lt; i &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// }</span>
 
-<span class="w">    </span><span class="c1">// if(gh.Save(&quot;test.txt&quot;, &quot;test_second&quot;)){</span>
-<span class="w">    </span><span class="c1">//    std::cout &lt;&lt; &quot;saved ok&quot; &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// //see commit</span>
+<span class="w">    </span><span class="c1">// auto hc = brc.GetHEAD();</span>
+<span class="w">    </span><span class="c1">// auto oidstr = git_oid_tostr_s(&amp;hc-&gt;commitID);</span>
+
+<span class="w">    </span><span class="c1">// std::cout &lt;&lt; &quot;commit msg: &quot; &lt;&lt; oidstr &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// std::cout &lt;&lt; &quot;commit msg: &quot; &lt;&lt; hc-&gt;msg &lt;&lt; std::endl;</span>
+
+<span class="w">    </span><span class="c1">// gitwrap::commitList cl;</span>
+<span class="w">    </span><span class="c1">// if(!cl.UpdateCommits(gw.repo)){</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;failed to update commit.&quot; &lt;&lt; std::endl;</span>
 <span class="w">    </span><span class="c1">// }</span>
-<span class="w">    </span><span class="c1">// else{</span>
-<span class="w">    </span><span class="c1">// for(auto bmsg : gh.gw.handleBranch-&gt;ShowExistBranch()){</span>
-<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; bmsg &lt;&lt; std::endl;</span>
+<span class="w">    </span><span class="c1">// if(!cl.OkToAdd(hc-&gt;commitID)){</span>
+<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;this commit is not ok to add.&quot; &lt;&lt; std::endl;</span>
 <span class="w">    </span><span class="c1">// }</span>
-<span class="w">    </span><span class="c1">// gh.UpdateLog();</span>
-<span class="w">    </span><span class="c1">// auto graphs = gh.GetLogWithJSONGraph();</span>
-<span class="w">    </span><span class="c1">// std::cout &lt;&lt; graphs &lt;&lt; std::endl;</span>
-<span class="w">    </span><span class="c1">// auto commitres = gh.gw.handleBranch-&gt;ShowExistCommitsOnBranch(&quot;master&quot;);</span>
-<span class="w">    </span><span class="c1">// for( auto i : commitres){</span>
-<span class="w">    </span><span class="c1">//    // std::cout &lt;&lt; &quot;branch: &quot; &lt;&lt; i. &lt;&lt; std::endl;</span>
-<span class="w">    </span><span class="c1">//    // for(auto j : i.second){</span>
-<span class="w">    </span><span class="c1">//       std::cout &lt;&lt; &quot;commit: &quot; &lt;&lt; i.msg &lt;&lt; std::endl;</span>
-<span class="w">    </span><span class="c1">//    // }</span>
-<span class="w">    </span><span class="c1">// }</span>
-<span class="w">    </span><span class="c1">// std::cout &lt;&lt; &quot;save error&quot; &lt;&lt; std::endl;</span>
-<span class="w">    </span><span class="c1">// }</span>
-<span class="w">    </span><span class="c1">// getchar();</span>
-<span class="w">    </span><span class="n">gh</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// see log</span>
+
+<span class="w">    </span><span class="c1">// destroy sandbox</span>
+<span class="w">    </span><span class="c1">//  eg.editor-&gt;DESTROY_PROJECT();</span>
+<span class="w">    </span><span class="c1">//  return 0;</span>
+<span class="w">    </span><span class="n">EDIT_ARG_MIX</span><span class="w"> </span><span class="n">ma</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ma</span><span class="p">.</span><span class="n">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">FILTER</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ma</span><span class="p">.</span><span class="n">details</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DetailEnum</span><span class="o">::</span><span class="n">HIGH</span><span class="p">;</span>
+<span class="w">    </span><span class="n">eg</span><span class="p">.</span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">AddLine</span><span class="p">(</span><span class="n">ma</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">eg</span><span class="p">.</span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">Undo</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;UNDO failed&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">eg</span><span class="p">.</span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">Redo</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Redo failed&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">eg</span><span class="p">.</span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">DESTROY_PROJECT</span><span class="p">();</span>
+
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>

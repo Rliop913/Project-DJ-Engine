@@ -85,47 +85,49 @@
 <p>↰ <a class="reference internal" href="file_include_core_MainObjects_editorObject_getdiff.cpp.html#file-include-core-mainobjects-editorobject-getdiff-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/core/MainObjects/editorObject/getdiff.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;editorObject.hpp&quot;</span>
 
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="n">DiffResult</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">GetDiff</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldTimeStamp</span><span class="p">,</span>
-<span class="w">                                    </span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newTimeStamp</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span>
-<span class="w">        </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">mixHandle</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">GetDiff</span><span class="p">(</span><span class="n">oldTimeStamp</span><span class="p">,</span><span class="w"> </span><span class="n">newTimeStamp</span><span class="p">));</span>
-<span class="p">}</span>
+<span class="c1">// template &lt;&gt;</span>
+<span class="c1">// PDJE_API DiffResult</span>
+<span class="c1">// editorObject::GetDiff&lt;EDIT_ARG_MIX&gt;(const gitwrap::commit &amp;oldTimeStamp,</span>
+<span class="c1">//                                     const gitwrap::commit &amp;newTimeStamp)</span>
+<span class="c1">// {</span>
+<span class="c1">//     return std::move(</span>
+<span class="c1">//         E_obj-&gt;mixHandle.first-&gt;GetDiff(oldTimeStamp, newTimeStamp));</span>
+<span class="c1">// }</span>
 
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="n">DiffResult</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">GetDiff</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldTimeStamp</span><span class="p">,</span>
-<span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newTimeStamp</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span>
-<span class="w">        </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">noteHandle</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">GetDiff</span><span class="p">(</span><span class="n">oldTimeStamp</span><span class="p">,</span><span class="w"> </span><span class="n">newTimeStamp</span><span class="p">));</span>
-<span class="p">}</span>
+<span class="c1">// template &lt;&gt;</span>
+<span class="c1">// PDJE_API DiffResult</span>
+<span class="c1">// editorObject::GetDiff&lt;EDIT_ARG_NOTE&gt;(const gitwrap::commit &amp;oldTimeStamp,</span>
+<span class="c1">//                                      const gitwrap::commit &amp;newTimeStamp)</span>
+<span class="c1">// {</span>
+<span class="c1">//     return std::move(</span>
+<span class="c1">//         E_obj-&gt;noteHandle.first-&gt;GetDiff(oldTimeStamp, newTimeStamp));</span>
+<span class="c1">// }</span>
 
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="n">DiffResult</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">GetDiff</span><span class="o">&lt;</span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldTimeStamp</span><span class="p">,</span>
-<span class="w">                                          </span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newTimeStamp</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span>
-<span class="w">        </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">KVHandler</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">GetDiff</span><span class="p">(</span><span class="n">oldTimeStamp</span><span class="p">,</span><span class="w"> </span><span class="n">newTimeStamp</span><span class="p">));</span>
-<span class="p">}</span>
+<span class="c1">// template &lt;&gt;</span>
+<span class="c1">// PDJE_API DiffResult</span>
+<span class="c1">// editorObject::GetDiff&lt;EDIT_ARG_KEY_VALUE&gt;(const gitwrap::commit</span>
+<span class="c1">// &amp;oldTimeStamp,</span>
+<span class="c1">//                                           const gitwrap::commit</span>
+<span class="c1">//                                           &amp;newTimeStamp)</span>
+<span class="c1">// {</span>
+<span class="c1">//     return std::move(</span>
+<span class="c1">//         E_obj-&gt;KVHandler.first-&gt;GetDiff(oldTimeStamp, newTimeStamp));</span>
+<span class="c1">// }</span>
 
-<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
-<span class="n">PDJE_API</span><span class="w"> </span><span class="n">DiffResult</span>
-<span class="n">editorObject</span><span class="o">::</span><span class="n">GetDiff</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldTimeStamp</span><span class="p">,</span>
-<span class="w">                                      </span><span class="k">const</span><span class="w"> </span><span class="n">gitwrap</span><span class="o">::</span><span class="n">commit</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newTimeStamp</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">musicHandle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">restemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">gith</span><span class="o">-&gt;</span><span class="n">GetDiff</span><span class="p">(</span><span class="n">oldTimeStamp</span><span class="p">,</span><span class="w"> </span><span class="n">newTimeStamp</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">restemp</span><span class="p">.</span><span class="n">NewLines</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">restemp</span><span class="p">.</span><span class="n">OldLines</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">restemp</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;cannot find music. from editorObject GetDiff(Music obj)&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">DiffResult</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="c1">// template &lt;&gt;</span>
+<span class="c1">// PDJE_API DiffResult</span>
+<span class="c1">// editorObject::GetDiff&lt;EDIT_ARG_MUSIC&gt;(const gitwrap::commit &amp;oldTimeStamp,</span>
+<span class="c1">//                                       const gitwrap::commit &amp;newTimeStamp)</span>
+<span class="c1">// {</span>
+<span class="c1">//     for (auto &amp;i : E_obj-&gt;musicHandle) {</span>
+<span class="c1">//         auto restemp = i.gith-&gt;GetDiff(oldTimeStamp, newTimeStamp);</span>
+<span class="c1">//         if (!restemp.NewLines.empty() || !restemp.OldLines.empty()) {</span>
+<span class="c1">//             return std::move(restemp);</span>
+<span class="c1">//         }</span>
+<span class="c1">//     }</span>
+<span class="c1">//     warnlog(&quot;cannot find music. from editorObject GetDiff(Music obj)&quot;);</span>
+<span class="c1">//     return DiffResult();</span>
+<span class="c1">// }</span>
 </pre></div>
 </div>
 </section>

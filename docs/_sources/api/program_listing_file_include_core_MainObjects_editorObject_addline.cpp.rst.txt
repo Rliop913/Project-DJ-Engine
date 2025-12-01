@@ -10,6 +10,7 @@ Program Listing for File addline.cpp
 
 .. code-block:: cpp
 
+   #include "MusicJsonHelper.hpp"
    #include "PDJE_LOG_SETTER.hpp"
    #include "editorObject.hpp"
    
@@ -24,10 +25,10 @@ Program Listing for File addline.cpp
            critlog(obj.musicName);
            return false;
        }
-       for (auto &i : E_obj->musicHandle) {
-           if (i.musicName == safeMus.value()) {
-               i.jsonh.add(obj.arg);
-               return DefaultSaveFunction<EDIT_ARG_MUSIC>(i, obj);
+   
+       for (auto &i : edit_core->musicHandle) {
+           if (GetTitle(*i.handle->GetJson()) == safeMus.value()) {
+               return i.handle->WriteData(obj.arg);
            }
        }
        warnlog("music is not exists. from editorObject AddLine(Music obj)");
@@ -52,24 +53,23 @@ Program Listing for File addline.cpp
            }
            safeObj.first  = first.value();
            safeObj.second = second.value();
-           if (!E_obj->mixHandle.second.add(safeObj)) {
-               critlog("load Mix add failed from editorObject Addline. first: ");
-               critlog(obj.first);
-               critlog("second: ");
-               critlog(obj.second);
+           if (!edit_core->mixHandle->WriteData(safeObj)) {
+               critlog("failed to Write Mix args. First & Second: ");
+               critlog(first.value());
+               critlog(second.value());
                return false;
            }
+   
        } else {
-           if (!E_obj->mixHandle.second.add(obj)) {
+           if (!edit_core->mixHandle->WriteData(obj)) {
                critlog("Mix add failed from editorObject Addline. obj: ");
                critlog(obj.first);
                critlog("second: ");
                critlog(obj.second);
-   
                return false;
            }
        }
-       return DefaultSaveFunction<EDIT_ARG_MIX>();
+       return true;
    }
    
    template <>
@@ -77,7 +77,7 @@ Program Listing for File addline.cpp
    editorObject::AddLine(const EDIT_ARG_NOTE &obj)
    {
    
-       if (!E_obj->noteHandle.second.add(obj)) {
+       if (!edit_core->noteHandle->WriteData(obj)) {
            critlog("Note add failed from editorObject Addline. obj: ");
            critlog(obj.first);
            critlog("second: ");
@@ -89,7 +89,7 @@ Program Listing for File addline.cpp
    
            return false;
        }
-       return DefaultSaveFunction<EDIT_ARG_NOTE>();
+       return true;
    }
    
    template <>
@@ -97,15 +97,15 @@ Program Listing for File addline.cpp
    editorObject::AddLine(const EDIT_ARG_KEY_VALUE &obj)
    {
    
-       if (!E_obj->KVHandler.second.add(obj)) {
+       if (!edit_core->KVHandle->WriteData(obj)) {
            critlog("KV add failed from editorObject Addline. obj: ");
-           critlog(obj.first);
+           critlog(std::string(obj.first));
            critlog("second: ");
-           critlog(obj.second);
+           critlog(std::string(obj.second));
    
            return false;
        }
-       return DefaultSaveFunction<EDIT_ARG_KEY_VALUE>();
+       return true;
    }
    
    bool
@@ -119,14 +119,12 @@ Program Listing for File addline.cpp
            critlog(musicName);
            return false;
        }
-       for (auto &i : E_obj->musicHandle) {
-           if (i.musicName == safeMus) {
-               i.jsonh[PDJE_JSON_FIRST_BEAT] = firstBeat;
-               return true;
+       for (auto &i : edit_core->musicHandle) {
+           if (GetTitle(*i.handle->GetJson()) == safeMus) {
+               SetFirstBeat(*i.handle->GetJson(), firstBeat);
            }
        }
        warnlog(
            "music is not exists. from editorObject AddLine(musicName, firstBeat)");
-   
        return false;
    }

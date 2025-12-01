@@ -29,11 +29,11 @@ Program Listing for File PDJE_Buffer.hpp
        PDJE_IPC::SharedMem<std::atomic_flag, PDJE_IPC::PDJE_IPC_RW> lock;
        PDJE_IPC::SharedMem<uint8_t, PDJE_IPC::PDJE_IPC_RW>          buf_first;
    
-       T       *buffer_first_pointer_cache  = nullptr;
-       T       *buffer_second_pointer_cache = nullptr;    
-       
-       public:
-       uint64_t BUFFER_COUNT                = 0;
+       T *buffer_first_pointer_cache  = nullptr;
+       T *buffer_second_pointer_cache = nullptr;
+   
+     public:
+       uint64_t              BUFFER_COUNT = 0;
        std::filesystem::path ID;
        void
        Write(const T &data);
@@ -41,13 +41,15 @@ Program Listing for File PDJE_Buffer.hpp
        std::pair<T *, uint64_t>
        Get();
    
-       PDJE_Buffer_Arena(const std::string& id, const uint64_t count)
+       PDJE_Buffer_Arena(const std::string &id, const uint64_t count)
        {
            BUFFER_COUNT = count;
            buf1.GetIPCSharedMemory(
-               fs::path(std::string("PDJE_INPUT_SHMEM_BUF_FIRST") + id), BUFFER_COUNT);
+               fs::path(std::string("PDJE_INPUT_SHMEM_BUF_FIRST") + id),
+               BUFFER_COUNT);
            buf2.GetIPCSharedMemory(
-               fs::path(std::string("PDJE_INPUT_SHMEM_BUF_SECOND") + id), BUFFER_COUNT);
+               fs::path(std::string("PDJE_INPUT_SHMEM_BUF_SECOND") + id),
+               BUFFER_COUNT);
            first_count.GetIPCSharedMemory(
                fs::path(std::string("PDJE_INPUT_SHMEM_BUF_COUNT_FIRST") + id), 1);
            second_count.GetIPCSharedMemory(
@@ -68,23 +70,25 @@ Program Listing for File PDJE_Buffer.hpp
            std::uniform_int_distribution<int> dis(0, INT_MAX);
            ID = fs::path(std::to_string(dis(gen)));
            buf1.MakeIPCSharedMemory(
-               fs::path(std::string("PDJE_INPUT_SHMEM_BUF_FIRST") +
-                                     ID.string()),BUFFER_COUNT);
+               fs::path(std::string("PDJE_INPUT_SHMEM_BUF_FIRST") + ID.string()),
+               BUFFER_COUNT);
            buf2.MakeIPCSharedMemory(
-               fs::path(std::string("PDJE_INPUT_SHMEM_BUF_SECOND") +
-                                     ID.string()), BUFFER_COUNT);
+               fs::path(std::string("PDJE_INPUT_SHMEM_BUF_SECOND") + ID.string()),
+               BUFFER_COUNT);
            first_count.MakeIPCSharedMemory(
                fs::path(std::string("PDJE_INPUT_SHMEM_BUF_COUNT_FIRST") +
-                                     ID.string()), 1);
+                        ID.string()),
+               1);
            second_count.MakeIPCSharedMemory(
                fs::path(std::string("PDJE_INPUT_SHMEM_BUF_COUNT_SECOND") +
-                                     ID.string()), 1);
+                        ID.string()),
+               1);
            lock.MakeIPCSharedMemory(
-               fs::path(std::string("PDJE_INPUT_SHMEM_LOCK") +
-                                     ID.string()), 1);
+               fs::path(std::string("PDJE_INPUT_SHMEM_LOCK") + ID.string()), 1);
            buf_first.MakeIPCSharedMemory(
                fs::path(std::string("PDJE_INPUT_SHMEM_BUFFER_SWITCH") +
-                                     ID.string()), 1);
+                        ID.string()),
+               1);
            buffer_first_pointer_cache  = buf1.ptr;
            buffer_second_pointer_cache = buf2.ptr;
            new (lock.ptr) std::atomic_flag();
@@ -110,10 +114,9 @@ Program Listing for File PDJE_Buffer.hpp
                lock.ptr->clear(std::memory_order_release); // unlock
                return;
            }
-           
+   
            buf1.ptr[*(first_count.ptr)] = data;
            ++(*first_count.ptr);
-           
    
        } else {
            if ((*second_count.ptr) >= BUFFER_COUNT) {
@@ -133,9 +136,9 @@ Program Listing for File PDJE_Buffer.hpp
        while (lock.ptr->test_and_set(std::memory_order_acquire)) {
        }
        if (*buf_first.ptr == 1) {
-           (*second_count.ptr)         = 0;
+           (*second_count.ptr) = 0;
        } else {
-           (*first_count.ptr)         = 0;
+           (*first_count.ptr) = 0;
        }
    
        (*buf_first.ptr) = (*buf_first.ptr == 1) ? 0 : 1;

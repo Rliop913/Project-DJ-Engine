@@ -3,7 +3,7 @@
 Typedef BRANCH_HANDLE
 =====================
 
-- Defined in :ref:`file_include_core_editor_featureWrapper_GitWrap_gitWrapper.hpp`
+- Defined in :ref:`file_include_core_editor_DEPRECATE_GitWrap_gitWrapper.hpp`
 
 
 Typedef Documentation

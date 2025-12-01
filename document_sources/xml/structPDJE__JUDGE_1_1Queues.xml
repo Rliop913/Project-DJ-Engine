@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="structPDJE__JUDGE_1_1Queues" kind="struct" language="C++" prot="public">
+    <compoundname>PDJE_JUDGE::Queues</compoundname>
+    <includes refid="PDJE__Judge__Loop__Structs_8hpp" local="no">PDJE_Judge_Loop_Structs.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structPDJE__JUDGE_1_1Queues_1a6b1ae25a5d2e080a580ed3d6d5bf9c68" prot="public" static="no" mutable="no">
+        <type><ref refid="classPDJE__Buffer__Arena" kindref="compound">PDJE_Buffer_Arena</ref>&lt; std::unordered_map&lt; uint64_t, <ref refid="namespacePDJE__JUDGE_1ad8c8d340702b0759a8cecb53091de1e0" kindref="member">NOTE_VEC</ref> &gt; &gt;</type>
+        <definition>PDJE_Buffer_Arena&lt;std::unordered_map&lt;uint64_t, NOTE_VEC&gt; &gt; PDJE_JUDGE::Queues::miss_queue</definition>
+        <argsstring></argsstring>
+        <name>miss_queue</name>
+        <qualifiedname>PDJE_JUDGE::Queues::miss_queue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp" line="33" column="23" bodyfile="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPDJE__JUDGE_1_1Queues_1ad7ed53cb1ec9cc76182c9d8e9b7c266a" prot="public" static="no" mutable="no">
+        <type><ref refid="classPDJE__Buffer__Arena" kindref="compound">PDJE_Buffer_Arena</ref>&lt; <ref refid="structPDJE__JUDGE_1_1useDatas" kindref="compound">useDatas</ref> &gt;</type>
+        <definition>PDJE_Buffer_Arena&lt;useDatas&gt; PDJE_JUDGE::Queues::use_queue</definition>
+        <argsstring></argsstring>
+        <name>use_queue</name>
+        <qualifiedname>PDJE_JUDGE::Queues::use_queue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp" line="34" column="53" bodyfile="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structPDJE__JUDGE_1_1Queues_1a660b5683ba058df750212851c13ba2e4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_JUDGE::Queues::Queues</definition>
+        <argsstring>()</argsstring>
+        <name>Queues</name>
+        <qualifiedname>PDJE_JUDGE::Queues::Queues</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp" line="35" column="5" bodyfile="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp" bodystart="35" bodyend="37"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Buffered queues for miss/use events. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="9">
+        <label>PDJE_Buffer_Arena&lt; PDJE_JUDGE::useDatas &gt;</label>
+        <link refid="classPDJE__Buffer__Arena"/>
+        <childnode refid="10" relation="usage">
+          <edgelabel>buf1</edgelabel>
+          <edgelabel>buf2</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>first_count</edgelabel>
+          <edgelabel>second_count</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>lock</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>buf_first</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>buffer_first_pointer_cache</edgelabel>
+          <edgelabel>buffer_second_pointer_cache</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PDJE_Buffer_Arena&lt; std::unordered_map&lt; uint64_t, NOTE_VEC &gt; &gt;</label>
+        <link refid="classPDJE__Buffer__Arena"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>buf1</edgelabel>
+          <edgelabel>buf2</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>first_count</edgelabel>
+          <edgelabel>second_count</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>lock</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>buf_first</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>buffer_first_pointer_cache</edgelabel>
+          <edgelabel>buffer_second_pointer_cache</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>PDJE_IPC::SharedMem&lt; PDJE_JUDGE::useDatas, PDJE_IPC::PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+        <childnode refid="11" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>PDJE_IPC::SharedMem&lt; std::atomic_flag, PDJE_IPC::PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="3">
+        <label>PDJE_IPC::SharedMem&lt; std::unordered_map&lt; uint64_t, NOTE_VEC &gt;, PDJE_IPC::PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>PDJE_IPC::SharedMem&lt; uint64_t, PDJE_IPC::PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="8">
+        <label>PDJE_IPC::SharedMem&lt; uint8_t, PDJE_IPC::PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="1">
+        <label>PDJE_JUDGE::Queues</label>
+        <link refid="structPDJE__JUDGE_1_1Queues"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>miss_queue</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>use_queue</edgelabel>
+        </childnode>
+      </node>
+      <node id="11">
+        <label>PDJE_JUDGE::useDatas</label>
+        <link refid="structPDJE__JUDGE_1_1useDatas"/>
+      </node>
+      <node id="4">
+        <label>std::unordered_map&lt; uint64_t, NOTE_VEC &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::vector&lt; NOTE &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp" line="32" column="1" bodyfile="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp" bodystart="32" bodyend="38"/>
+    <listofallmembers>
+      <member refid="structPDJE__JUDGE_1_1Queues_1a6b1ae25a5d2e080a580ed3d6d5bf9c68" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Queues</scope><name>miss_queue</name></member>
+      <member refid="structPDJE__JUDGE_1_1Queues_1a660b5683ba058df750212851c13ba2e4" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Queues</scope><name>Queues</name></member>
+      <member refid="structPDJE__JUDGE_1_1Queues_1ad7ed53cb1ec9cc76182c9d8e9b7c266a" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Queues</scope><name>use_queue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

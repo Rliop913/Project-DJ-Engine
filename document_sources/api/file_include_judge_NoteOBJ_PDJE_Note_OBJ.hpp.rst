@@ -56,13 +56,15 @@ Included By
 
 - :ref:`file_include_judge_Init_PDJE_Judge_Init.cpp`
 
-- :ref:`file_include_judge_Init_PDJE_Judge_Init.hpp`
+- :ref:`file_include_judge_Init_PDJE_Judge_Init_Structs.hpp`
 
 - :ref:`file_include_judge_Loop_Keyboard.cpp`
 
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.cpp`
 
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.hpp`
+
+- :ref:`file_include_judge_Loop_PDJE_Judge_Loop_Structs.hpp`
 
 - :ref:`file_include_judge_NoteOBJ_PDJE_Note_OBJ.cpp`
 

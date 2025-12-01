@@ -9,10 +9,11 @@ Struct INPUT_CONFIG
 Inheritance Relationships
 -------------------------
 
-Base Type
-*********
+Base Types
+**********
 
 - ``public PDJE_JUDGE::INPUT_RULE`` (:ref:`exhale_struct_structPDJE__JUDGE_1_1INPUT__RULE`)
+- ``public PDJE_JUDGE::INPUT_SETTING`` (:ref:`exhale_struct_structPDJE__JUDGE_1_1INPUT__SETTING`)
 
 
 Struct Documentation

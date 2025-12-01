@@ -89,14 +89,14 @@
 <span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
 <span class="n">editorObject</span><span class="o">::</span><span class="n">Redo</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">mixHandle</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">Redo</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">edit_core</span><span class="o">-&gt;</span><span class="n">mixHandle</span><span class="o">-&gt;</span><span class="n">Redo</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 <span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
 <span class="n">editorObject</span><span class="o">::</span><span class="n">Redo</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">noteHandle</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">Redo</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">edit_core</span><span class="o">-&gt;</span><span class="n">noteHandle</span><span class="o">-&gt;</span><span class="n">Redo</span><span class="p">();</span>
 <span class="p">}</span>
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 <span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
@@ -109,9 +109,9 @@
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">musicName</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">musicHandle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">musicName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">safeMus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">gith</span><span class="o">-&gt;</span><span class="n">Redo</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">edit_core</span><span class="o">-&gt;</span><span class="n">musicHandle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">GetTitle</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">.</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">GetJson</span><span class="p">())</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">safeMus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">Redo</span><span class="p">();</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">warnlog</span><span class="p">(</span>
@@ -123,7 +123,7 @@
 <span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
 <span class="n">editorObject</span><span class="o">::</span><span class="n">Redo</span><span class="o">&lt;</span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&gt;</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">E_obj</span><span class="o">-&gt;</span><span class="n">KVHandler</span><span class="p">.</span><span class="n">first</span><span class="o">-&gt;</span><span class="n">Redo</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">edit_core</span><span class="o">-&gt;</span><span class="n">KVHandle</span><span class="o">-&gt;</span><span class="n">Redo</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 </div>

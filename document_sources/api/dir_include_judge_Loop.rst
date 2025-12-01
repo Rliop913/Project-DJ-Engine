@@ -22,5 +22,6 @@ Files
 - :ref:`file_include_judge_Loop_Mouse.cpp`
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.cpp`
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.hpp`
+- :ref:`file_include_judge_Loop_PDJE_Judge_Loop_Structs.hpp`
 
 

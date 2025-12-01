@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/PDJE_Judge.hpp" line="25" column="19" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="25" bodyend="-1"/>
+        <location file="include/judge/PDJE_Judge.hpp" line="27" column="19" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPDJE__JUDGE_1_1JUDGE_1ae26f9445faad1d53a73693c3fbee493c" prot="private" static="no" mutable="no">
         <type>std::optional&lt; std::thread &gt;</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/PDJE_Judge.hpp" line="29" column="19" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="29" bodyend="-1"/>
+        <location file="include/judge/PDJE_Judge.hpp" line="31" column="19" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPDJE__JUDGE_1_1JUDGE_1a2a46e4eb45663143e4b203196169608b" prot="private" static="no" mutable="no">
         <type><ref refid="namespacePDJE__JUDGE_1afa6381f8f229ccd5c5f8dbae248cebb2" kindref="member">JUDGE_STATUS</ref></type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/PDJE_Judge.hpp" line="31" column="18" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="31" bodyend="-1"/>
+        <location file="include/judge/PDJE_Judge.hpp" line="33" column="18" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="33" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-attrib">
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/PDJE_Judge.hpp" line="34" column="16" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="34" bodyend="-1"/>
+        <location file="include/judge/PDJE_Judge.hpp" line="36" column="16" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -72,12 +72,13 @@
         <name>Start</name>
         <qualifiedname>PDJE_JUDGE::JUDGE::Start</qualifiedname>
         <briefdescription>
+<para>Validate init data and start the judge event loop thread. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/PDJE_Judge.hpp" line="36" column="5" bodyfile="include/judge/PDJE_Judge.cpp" bodystart="15" bodyend="52"/>
+        <location file="include/judge/PDJE_Judge.hpp" line="39" column="5" bodyfile="include/judge/PDJE_Judge.cpp" bodystart="15" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__JUDGE_1_1JUDGE_1a9ddd42aee977d33d3aaf47f11755e1f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -86,12 +87,13 @@
         <name>End</name>
         <qualifiedname>PDJE_JUDGE::JUDGE::End</qualifiedname>
         <briefdescription>
+<para>Stop the event loop and release cached init data. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/PDJE_Judge.hpp" line="38" column="5" bodyfile="include/judge/PDJE_Judge.cpp" bodystart="61" bodyend="71"/>
+        <location file="include/judge/PDJE_Judge.hpp" line="42" column="5" bodyfile="include/judge/PDJE_Judge.cpp" bodystart="61" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__JUDGE_1_1JUDGE_1a58e311d4b8b36f1192900e48d57946f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespacePDJE__JUDGE_1afa6381f8f229ccd5c5f8dbae248cebb2" kindref="member">JUDGE_STATUS</ref></type>
@@ -100,12 +102,13 @@
         <name>CheckStatus</name>
         <qualifiedname>PDJE_JUDGE::JUDGE::CheckStatus</qualifiedname>
         <briefdescription>
+<para>Get last-known status without mutating state. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/PDJE_Judge.hpp" line="40" column="5" bodyfile="include/judge/PDJE_Judge.cpp" bodystart="55" bodyend="58"/>
+        <location file="include/judge/PDJE_Judge.hpp" line="45" column="5" bodyfile="include/judge/PDJE_Judge.cpp" bodystart="55" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__JUDGE_1_1JUDGE_1ac2bf8a01bd794508c57cea1820b9b699" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -114,12 +117,13 @@
         <name>JUDGE</name>
         <qualifiedname>PDJE_JUDGE::JUDGE::JUDGE</qualifiedname>
         <briefdescription>
+<para>Create a judge instance and initialize logging. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/PDJE_Judge.hpp" line="41" column="5" bodyfile="include/judge/PDJE_Judge.cpp" bodystart="9" bodyend="12"/>
+        <location file="include/judge/PDJE_Judge.hpp" line="47" column="5" bodyfile="include/judge/PDJE_Judge.cpp" bodystart="9" bodyend="12"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__JUDGE_1_1JUDGE_1a1d1a37bb156c69f4bc51b4cabc1e0e6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -133,10 +137,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/PDJE_Judge.hpp" line="42" column="5"/>
+        <location file="include/judge/PDJE_Judge.hpp" line="48" column="5"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>Judge controller that owns initialization data and the event loop. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
@@ -151,6 +156,10 @@
         <childnode refid="6" relation="usage">
           <edgelabel>Device_ID</edgelabel>
         </childnode>
+      </node>
+      <node id="8">
+        <label>PDJE_JUDGE::INPUT_SETTING</label>
+        <link refid="structPDJE__JUDGE_1_1INPUT__SETTING"/>
       </node>
       <node id="1">
         <label>PDJE_JUDGE::JUDGE</label>
@@ -178,13 +187,16 @@
         </childnode>
       </node>
       <node id="4">
-        <label>std::unordered_map&lt; PDJE_JUDGE::INPUT_RULE, RAIL_ID &gt;</label>
+        <label>std::unordered_map&lt; PDJE_JUDGE::INPUT_RULE, PDJE_JUDGE::INPUT_SETTING &gt;</label>
         <childnode refid="5" relation="usage">
           <edgelabel>keys</edgelabel>
         </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/judge/PDJE_Judge.hpp" line="23" column="1" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="23" bodyend="43"/>
+    <location file="include/judge/PDJE_Judge.hpp" line="25" column="1" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="25" bodyend="49"/>
     <listofallmembers>
       <member refid="classPDJE__JUDGE_1_1JUDGE_1a58e311d4b8b36f1192900e48d57946f9" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::JUDGE</scope><name>CheckStatus</name></member>
       <member refid="classPDJE__JUDGE_1_1JUDGE_1a9ddd42aee977d33d3aaf47f11755e1f4" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::JUDGE</scope><name>End</name></member>
