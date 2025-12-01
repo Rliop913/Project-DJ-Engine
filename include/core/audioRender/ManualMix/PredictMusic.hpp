@@ -26,7 +26,7 @@ using iterator = typename std::array<PREDICT, SZ>::iterator;
   std::array<PREDICT, SZ> buffer;
   iterator popp;
   iterator pushp;
-  uint32_t fill_counter=0;
+  std::atomic<uint32_t> fill_counter{0};
   void
   Next(iterator& itr)
   {
@@ -37,12 +37,12 @@ using iterator = typename std::array<PREDICT, SZ>::iterator;
   }
   public:
   bool IsFull(){
-    return fill_counter == SZ;
+    return fill_counter.load(std::memory_order_acquire) == SZ;
   }
   bool
   Pop(PREDICT& out)
   {
-    if(fill_counter == 0){
+    if(fill_counter.load(std::memory_order_acquire) == 0){
       return false;
     }
     out = *popp;

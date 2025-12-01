@@ -5,7 +5,7 @@
 struct PDJE_API PreLoadedMusic{
     
     SIMD_FLOAT music;
-    uint64_t fullSize;
+    ma_uint64 fullSize;
     uint64_t cursor;
     SIMD_FLOAT::iterator p;
     PreLoadedMusic() = default;
