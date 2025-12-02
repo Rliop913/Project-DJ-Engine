@@ -62,21 +62,11 @@ GetPCMFramesSIMD(SIMD_FLOAT         &tempFrames,
     PREDICT prd;
     for (auto &i : deck) {
         if (i.second.play) {
-            while(!i.second.pb->Pop(prd)){}
+            if (!i.second.pb->Pop(prd)) {
+                continue; // skip if not exists
+            }
+
             toFaustStylePCM(FaustStyle, prd.predict_fragment.data(), FrameSize);
-            
-            // const FRAME_POS Sola = static_cast<FRAME_POS>(
-            //     std::ceil(static_cast<double>(FrameSize) /
-            //               i.second.st->getInputOutputSampleRatio()));
-            // if(!i.second.loaded.getRange(Sola, solaVector)){
-            //     critlog("failed to get range in realtime.");
-            //     return false;
-            // }
-            // WBCH("hybridrender callback calc start")
-            // i.second.st->putSamples(solaVector.data(), Sola);
-            // i.second.st->receiveSamples(tempFrames.data(), FrameSize);
-            // WBCH("hybridrender callback calc end")
-            // toFaustStylePCM(FaustStyle, tempFrames.data(), FrameSize);
             i.second.fxP->addFX(FaustStyle, FrameSize);
             toLRStylePCM(FaustStyle, tempFrames.data(), FrameSize);
 
