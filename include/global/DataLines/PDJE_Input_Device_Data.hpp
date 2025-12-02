@@ -11,6 +11,5 @@ struct DeviceData {
     PDJE_Dev_Type Type;
     std::string   Name;
     std::string   device_specific_id;
-    
 };
 using DEV_LIST = std::vector<DeviceData>;

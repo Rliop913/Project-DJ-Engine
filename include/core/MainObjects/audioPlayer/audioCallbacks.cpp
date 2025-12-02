@@ -1,8 +1,8 @@
 #include "audioCallbacks.hpp"
 #include "FrameCalc.hpp"
+#include "PDJE_Benchmark.hpp"
 #include <atomic>
 #include <cstring>
-#include "PDJE_Benchmark.hpp"
 
 std::optional<float *>
 audioEngineDataStruct::getNowfPointer(const unsigned long frameCount)

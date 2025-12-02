@@ -1,16 +1,16 @@
 #pragma once
-#include "FrameCalc.hpp"
 #include "Decoder.hpp"
+#include "FrameCalc.hpp"
 
-struct PDJE_API PreLoadedMusic{
-    
-    SIMD_FLOAT music;
-    ma_uint64 fullSize;
-    uint64_t cursor;
+struct PDJE_API PreLoadedMusic {
+
+    SIMD_FLOAT           music;
+    ma_uint64            fullSize;
+    uint64_t             cursor;
     SIMD_FLOAT::iterator p;
-    PreLoadedMusic() = default;
+    PreLoadedMusic()  = default;
     ~PreLoadedMusic() = default;
-    
+
     bool
     init(litedb &db, const SANITIZED_ORNOT &KeyOrPath);
     /**

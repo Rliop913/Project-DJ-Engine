@@ -43,7 +43,7 @@ class ChildProcess {
                      const std::string &dataType,
                      const uint64_t     data_count); // todo - impl
 
-    std::vector<DeviceData>                        configed_devices;
+    std::vector<DeviceData>                      configed_devices;
     std::unordered_map<PDJE_DEV_PATH, PDJE_NAME> unlisted_targets;
 
     std::string
@@ -83,8 +83,8 @@ class ChildProcess {
                         DeviceData dd;
                         dd.device_specific_id = i.at("id").get<std::string>();
                         dd.Name               = i.at("name").get<std::string>();
-                        
-                        std::string tp        = i.at("type").get<std::string>();
+
+                        std::string tp = i.at("type").get<std::string>();
                         if (tp == "KEYBOARD") {
                             dd.Type = PDJE_Dev_Type::KEYBOARD;
                         } else if (tp == "MOUSE") {

@@ -42,12 +42,11 @@ class Judge_Loop {
     {
         auto itr = init_datas->devparser.railData.find(meta);
         if (itr != init_datas->devparser.railData.end()) {
-            if(itr->first == meta){
-              return itr->second.MatchRail;
+            if (itr->first == meta) {
+                return itr->second.MatchRail;
             }
         }
         return std::nullopt;
-        
     }
     void
     ParseMouse(const BITMASK ev);
