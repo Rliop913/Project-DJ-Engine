@@ -1,8 +1,8 @@
 #include "PDJE_interface.hpp"
 
+#include "PDJE_Benchmark.hpp"
 #include <iostream>
 #include <string>
-#include "PDJE_Benchmark.hpp"
 // #include <NanoLog.hpp>
 
 int
@@ -139,20 +139,20 @@ main()
             // }
         }
         trackdata td;
-        td = engine->SearchTrack("testTrack").front();
-        auto mode = PLAY_MODE::HYBRID_RENDER;
+        td             = engine->SearchTrack("testTrack").front();
+        auto mode      = PLAY_MODE::HYBRID_RENDER;
         auto initres   = engine->InitPlayer(mode, td, 480);
         auto activeres = engine->player->Activate();
-        if(mode == PLAY_MODE::FULL_PRE_RENDER){
+        if (mode == PLAY_MODE::FULL_PRE_RENDER) {
             getchar();
             engine->player->Deactivate();
             delete engine;
             return 0;
         }
         WBCH("FLAG GetMusicControlPanel()")
-        auto musPanel  = engine->player->GetMusicControlPanel();
+        auto musPanel = engine->player->GetMusicControlPanel();
         WBCH("FLAG SearchMusic()")
-        auto muses     = engine->SearchMusic("ヒアソビ", "Camellia");
+        auto muses = engine->SearchMusic("ヒアソビ", "Camellia");
         WBCH("FLAG LoadMusic()")
         musPanel->LoadMusic(*(engine->DBROOT), muses.front());
         getchar();

@@ -60,8 +60,8 @@ PDJE_Input::Config(std::vector<DeviceData> &devs)
         nj["body"] = nlohmann::json::array();
         for (const auto &dev : sanitized_devs) {
             std::unordered_map<std::string, std::string> kv;
-            kv["id"]     = dev.device_specific_id;
-            kv["name"]   = dev.Name;
+            kv["id"]   = dev.device_specific_id;
+            kv["name"] = dev.Name;
             switch (dev.Type) {
             case PDJE_Dev_Type::KEYBOARD:
                 kv["type"] = "KEYBOARD";

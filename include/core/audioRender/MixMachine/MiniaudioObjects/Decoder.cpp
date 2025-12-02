@@ -105,7 +105,6 @@ Decoder::getRange(FRAME_POS numFrames, SIMD_FLOAT &buffer)
     return true;
 }
 
-
 Decoder::~Decoder()
 {
     ma_decoder_uninit(&dec);

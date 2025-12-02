@@ -49,9 +49,10 @@ using RailToOffset = std::unordered_map<uint64_t, int64_t>;
 /** @brief Convenience type combining rule and setting. */
 struct PDJE_API INPUT_CONFIG : DEV, KEY, RAIL, OFFSET {};
 struct PDJE_API RAIL_META : DEV, KEY {
-    bool operator==(const RAIL_META& other) const noexcept{
-        return Device_Name == other.Device_Name &&
-        DeviceKey == other.DeviceKey;
+    bool
+    operator==(const RAIL_META &other) const noexcept
+    {
+        return Device_Name == other.Device_Name && DeviceKey == other.DeviceKey;
     }
 };
 struct PDJE_API RAIL_SETTINGS : RAIL, OFFSET, DEV_TYPE {};

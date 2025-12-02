@@ -7,8 +7,6 @@
 #include <unordered_map>
 namespace PDJE_JUDGE {
 
-
-
 JUDGE::JUDGE()
 {
     startlog();

@@ -4,36 +4,36 @@ bool
 PreLoadedMusic::init(litedb &db, const SANITIZED_ORNOT &KeyOrPath)
 {
     Decoder dec;
-    if(!dec.init(db, KeyOrPath)){
+    if (!dec.init(db, KeyOrPath)) {
         warnlog("failed to load music");
         return false;
     }
-    
-    if(ma_decoder_get_available_frames(&dec.dec, &fullSize) != MA_SUCCESS){
+
+    if (ma_decoder_get_available_frames(&dec.dec, &fullSize) != MA_SUCCESS) {
         critlog("failed to get maximum frames.");
         return false;
     }
-    if(!dec.getRange(fullSize, music)){
+    if (!dec.getRange(fullSize, music)) {
         critlog("failed to get range");
         return false;
     }
     cursor = 0;
-    p = music.begin();
+    p      = music.begin();
     return true;
 }
 bool
 PreLoadedMusic::changePos(FRAME_POS Pos)
 {
-    if(Pos <= fullSize){
+    if (Pos <= fullSize) {
         cursor = Pos;
-        p = music.begin() + (cursor * CHANNEL);
+        p      = music.begin() + (cursor * CHANNEL);
         return true;
     }
     return false;
 }
 
 bool
-PreLoadedMusic::getPos(FRAME_POS & pos)
+PreLoadedMusic::getPos(FRAME_POS &pos)
 {
     pos = cursor;
     return true;
@@ -42,35 +42,33 @@ PreLoadedMusic::getPos(FRAME_POS & pos)
 bool
 PreLoadedMusic::getRange(FRAME_POS numFrames, SIMD_FLOAT &buffer)
 {
-    try{
-        
+    try {
+
         uint64_t copies;
-        uint64_t remained = fullSize > cursor ? fullSize - cursor : 0;
+        uint64_t remained   = fullSize > cursor ? fullSize - cursor : 0;
         uint64_t BufferSize = numFrames * CHANNEL;
-        uint64_t zeroes = 0;
-        
+        uint64_t zeroes     = 0;
+
         if (buffer.size() < BufferSize) {
             buffer.resize(BufferSize);
         }
-        
-        if(numFrames > remained){
-            copies = remained * CHANNEL;
-            zeroes = (numFrames - remained) * CHANNEL;
+
+        if (numFrames > remained) {
+            copies    = remained * CHANNEL;
+            zeroes    = (numFrames - remained) * CHANNEL;
             numFrames = remained;
-        }
-        else{
+        } else {
             copies = BufferSize;
         }
-        
-        std::copy(p, p+copies, buffer.data());
+
+        std::copy(p, p + copies, buffer.data());
         p += copies;
         cursor += numFrames;
-        if(zeroes != 0){
-            std::fill_n(buffer.data()+copies, zeroes, 0.0f);
+        if (zeroes != 0) {
+            std::fill_n(buffer.data() + copies, zeroes, 0.0f);
         }
         return true;
-    }
-    catch(const std::exception& e){
+    } catch (const std::exception &e) {
         critlog("failed to get pcm data. What: ");
         critlog(e.what());
         return false;

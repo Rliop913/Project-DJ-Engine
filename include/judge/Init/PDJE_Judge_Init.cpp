@@ -49,11 +49,11 @@ Judge_Init::SetRail(const DeviceData &devData,
     settings.offset_microsecond = offset_microsecond;
     settings.Type               = devData.Type;
     OFFSET offset;
-    offset.offset_microsecond            = offset_microsecond;
-    if(devparser.railData.contains(meta)){
+    offset.offset_microsecond = offset_microsecond;
+    if (devparser.railData.contains(meta)) {
         return;
     }
-    devparser.railData[meta]             = settings;
+    devparser.railData[meta]               = settings;
     devparser.offsetData[meta.Device_Name] = offset;
 }
 
@@ -125,7 +125,6 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
             note_objects->Fill<BUFFER_SUB>(tempobj, railID);
         } else {
             DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-
         }
         break;
     case PDJE_Dev_Type::MIDI:

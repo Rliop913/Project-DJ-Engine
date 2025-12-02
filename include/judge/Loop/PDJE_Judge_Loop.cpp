@@ -11,9 +11,9 @@
 #include <cstddef>
 #include <exception>
 
+#include "PDJE_Benchmark.hpp"
 #include <ratio>
 #include <thread>
-#include "PDJE_Benchmark.hpp"
 namespace PDJE_JUDGE {
 Judge_Loop::Judge_Loop(Judge_Init &inits)
 {
@@ -82,7 +82,7 @@ Judge_Loop::PreProcess()
 
     input_log = init_datas->inputline->input_arena->Get();
     auto res  = init_datas->devparser.Parse(input_log);
-    
+
     Cached.synced_data =
         init_datas->coreline->syncD->load(std::memory_order_acquire);
 
@@ -174,10 +174,11 @@ Judge_Loop::StartEventLoop()
                 WBCH("use event line head")
                 use_clock += init_datas->lambdas.use_event_sleep_time;
                 std::this_thread::sleep_until(use_clock);
-                
+
                 auto queue = Event_Datas.use_queue.Get();
-                for(const auto& used : (*queue)){
-                    init_datas->lambdas.used_event(used.railid, used.Pressed, used.IsLate, used.diff);
+                for (const auto &used : (*queue)) {
+                    init_datas->lambdas.used_event(
+                        used.railid, used.Pressed, used.IsLate, used.diff);
                 }
                 WBCH("use event line tail")
             } catch (const std::exception &e) {
@@ -197,7 +198,7 @@ Judge_Loop::StartEventLoop()
                 std::this_thread::sleep_for(
                     init_datas->lambdas.miss_event_sleep_time);
                 auto queue = Event_Datas.miss_queue.Get();
-                for(const auto& missed : (*queue)){
+                for (const auto &missed : (*queue)) {
                     init_datas->lambdas.missed_event(missed);
                 }
                 WBCH("miss event line tail")
