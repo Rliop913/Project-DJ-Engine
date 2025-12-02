@@ -35,6 +35,9 @@ struct MusicOnDeck {
     std::optional<soundtouch::SoundTouch>      st;
     std::optional<std::thread>                 worker;
     std::atomic<bool>                          flag = true;
+    MusicOnDeck(const MusicOnDeck &)                = delete;
+    MusicOnDeck &
+    operator=(const MusicOnDeck &) = delete;
     MusicOnDeck() : fxP(new FXControlPanel(48000))
     {
 
@@ -111,6 +114,9 @@ class PDJE_API MusicControlPanel {
     SIMD_FLOAT         tempFrames;
 
   public:
+    MusicControlPanel(const MusicControlPanel &) = delete;
+    MusicControlPanel &
+    operator=(const MusicControlPanel &) = delete;
     /**
      * @brief loads music to the deck. doesn't play music
      *
