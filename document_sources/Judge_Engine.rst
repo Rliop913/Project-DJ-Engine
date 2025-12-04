@@ -1,8 +1,11 @@
 Judge_Engine
 =====================
 
-.. warning::
-    Current project version is now on 0.6.x.
+The judge module consumes note objects from the core engine and timestamped
+inputs from the input engine, aligns them on a shared microsecond clock, and
+applies hit/miss rules while emitting callbacks. The snippets below mirror the
+tested integration flow in ``include/tests/JUDGE_TESTS/judgeTest.cpp`` so that
+you can follow the same order of operations.
 
 Runtime Control
 -----------------
@@ -25,6 +28,11 @@ Runtime Control
 Start will return an error status when the required init data is missing (core
 line, input line, note objects, event rule, or input rules). End stops the
 internal event loop thread and clears the init data for the next run.
+
+- Typical order (as used in tests): call ``Start`` **after** configuring rail
+  mappings, event rules, custom callbacks, note collection, and wiring both the
+  core and input data lines. On shutdown, call ``End`` **after** stopping input
+  and playback.
 
 
 Initialization
@@ -66,6 +74,18 @@ Initialization
   registered input rule. If no device rule exists for the rail, the call is
   ignored.
 
+Input mapping
+~~~~~~~~~~~~~~
+
+- ``SetRail(device, key, offset, rail)`` is the test-backed helper that binds a
+  discovered device/key to a rail with an optional offset (microseconds). Use
+  this when you want per-device offsets without manually filling a struct.
+- ``SetInputRule`` is the lower-level path for supplying a fully populated
+  ``INPUT_CONFIG`` struct (device id/type/key, rail, offset). Prefer this when
+  you build the config externally or need non-discovery workflows.
+- Offsets let you compensate for device latency; negative values advance the
+  input timestamp, positive values delay it.
+
 
 Rules & Callbacks
 -------------------
@@ -96,71 +116,80 @@ Custom event callbacks are optional:
 - `use_event_sleep_time` and `miss_event_sleep_time` control the pull interval
   for the two queues (default 100 ms / 200 ms).
 
+Practical callback example (from the integration test):
 
-Minimal Flow
---------------
+.. code-block:: c++
+
+    int miss_count = 0;
+    PDJE_JUDGE::MISS_CALLBACK missed =
+        [&miss_count](std::unordered_map<uint64_t, PDJE_JUDGE::NOTE_VEC> misses) {
+            std::cout << "missed!!!" << miss_count++ << std::endl;
+        };
+
+    PDJE_JUDGE::USE_CALLBACK used = [](uint64_t railid,
+                                       bool     Pressed,
+                                       bool     IsLate,
+                                       uint64_t diff) {
+        std::cout << "used!!! " << diff / 1000
+                  << (IsLate ? " late " : " early ") << std::endl;
+    };
+
+    PDJE_JUDGE::MOUSE_CUSTOM_PARSE_CALLBACK mouse_parse =
+        [](uint64_t                      microSecond,
+           const PDJE_JUDGE::P_NOTE_VEC &found_events,
+           uint64_t                      railID,
+           int                           x,
+           int                           y,
+           PDJE_Mouse_Axis_Type          axis_type) { return; };
+
+    judge.inits.SetCustomEvents({
+        .missed_event          = missed,
+        .used_event            = used,
+        .custom_mouse_parse    = mouse_parse,
+        .use_event_sleep_time  = std::chrono::milliseconds(1),
+        .miss_event_sleep_time = std::chrono::milliseconds(1)
+    });
+
+In practice, the callbacks are a convenient place to add audio/visual feedback
+or metrics. Reduce the sleep times (as above) for more responsive feedback.
+
+
+Integration flow (mirrors test)
+---------------------------------
 
 .. tab-set-code::
 
     .. code-block:: c++
 
-        PDJE_JUDGE::JUDGE judge;
+        // 1) Prepare core and player
+        PDJE engine{"testRoot.db"};
+        auto td = engine.SearchTrack("");
+        engine.InitPlayer(PLAY_MODE::FULL_PRE_RENDER, td.front(), 480);
+
+        // 2) Discover input devices and map to rails
         PDJE_Input input;
         input.Init();
-        // data lines
-        judge.inits.SetCoreLine(core_line);
-        judge.inits.SetInputLine(input.PullOutDataLine());
-
-        // device mapping
         auto devs = input.GetDevs();
         DEV_LIST keyboards;
-        for(auto i : devs){
-            switch(i.Type){
-            case PDJE_Dev_Type::KEYBOARD:
-                keyboards.push_back(i);
-                break;
-            default:
-                break;
+        PDJE_JUDGE::JUDGE judge;
+
+        for (auto &d : devs) {
+            if (d.Type == PDJE_Dev_Type::KEYBOARD) {
+                keyboards.push_back(d);
+                judge.inits.SetRail(d, PDJE_KEY::A, 0, 1); // device, key, offset, rail
             }
         }
-        for(auto dev : devs){
-            PDJE_JUDGE::INPUT_CONFIG kb{};
-            kb.Device_ID = dev.device_specific_id;
-            kb.DeviceType = PDJE_Dev_Type::KEYBOARD;
-            kb.DeviceKey = PDJE_KEY::A;
-            kb.MatchRail = 1;
-            kb.offset_microsecond = -1000;//-1ms
-            judge.inits.SetInputRule(kb);
-            PDJE_JUDGE::INPUT_CONFIG kb_second{};
-            kb_second.Device_ID = dev.device_specific_id;
-            kb_second.DeviceType = PDJE_Dev_Type::KEYBOARD;
-            kb_second.DeviceKey = PDJE_KEY::S;
-            kb_second.MatchRail = 2;
-            kb_second.offset_microsecond = 2000;//+2ms
-            judge.inits.SetInputRule(kb_second);
-        }
+        input.Config(keyboards);
 
-        // hit window
-        judge.inits.SetEventRule(
-            PDJE_JUDGE::EVENT_RULE{50'000, 30'000}); // miss/use in microseconds
-
-        // callbacks (optional)
-        PDJE_JUDGE::Custom_Events events{};
-        events.used_event = [](uint64_t rail, bool pressed, bool late, uint64_t diff){};
-        events.missed_event = [](std::unordered_map<uint64_t, PDJE_JUDGE::NOTE_VEC> missed){};
-        judge.inits.SetCustomEvents(events);
-
-        // notes
-        judge.inits.NoteObjectCollector("SIMPLE", 0, "", "", "", y_frame, y2_frame, 1);
-        // OR
+        // 3) Collect notes from track data
         OBJ_SETTER_CALLBACK cb = [&](const std::string        noteType,
-                                    const uint16_t           noteDetail,
-                                    const std::string        firstArg,
-                                    const std::string        secondArg,
-                                    const std::string        thirdArg,
-                                    const unsigned long long Y_Axis,
-                                    const unsigned long long Y_Axis_2,
-                                    const uint64_t           railID) {
+                                     const uint16_t           noteDetail,
+                                     const std::string        firstArg,
+                                     const std::string        secondArg,
+                                     const std::string        thirdArg,
+                                     const unsigned long long Y_Axis,
+                                     const unsigned long long Y_Axis_2,
+                                     const uint64_t           railID) {
             judge.inits.NoteObjectCollector(noteType,
                                             noteDetail,
                                             firstArg,
@@ -169,15 +198,26 @@ Minimal Flow
                                             Y_Axis,
                                             Y_Axis_2,
                                             railID);
-        };//make callback
-        engine.GetNoteObjects(td.front(), cb);//td is Trackdata.
-        //this function extracts note datas from track data.
+        };
+        engine.GetNoteObjects(td.front(), cb);
 
-        // run
-        auto status = judge.Start(); // returns JUDGE_STATUS
-        input.Run();//run input module
-        engine.player->Activate();//run music player
-        // ...
+        // 4) Configure event rules and callbacks
+        judge.inits.SetEventRule({ .miss_range_microsecond = 1'000'005,
+                                   .use_range_microsecond  = 1'000'000 });
+        // (See callback example above.)
+
+        // 5) Wire data lines
+        judge.inits.SetInputLine(input.PullOutDataLine());
+        judge.inits.SetCoreLine(engine.PullOutDataLine());
+
+        // 6) Start judge → input → playback (tested order)
+        if (judge.Start() != PDJE_JUDGE::JUDGE_STATUS::OK) {
+            std::cerr << "Failed to start judge" << std::endl;
+        }
+        input.Run();
+        engine.player->Activate();
+
+        // 7) Shutdown
         engine.player->Deactivate();
         input.Kill();
         judge.End();
