@@ -1,12 +1,19 @@
 Core_Engine
 =====================
+This page now splits the PDJE API surface into two workflows so you can jump straight to what you need:
 
-Before Playback
-=================
+- :ref:`playback-api` — initialize playback, locate music, manage the player, and control FX/music panels.
+- :ref:`editor-api` — configure the database, edit content, inspect visitors, and review/restore edit histories.
 
+.. _playback-api:
 
-Before Playback Step-1: initialize PDJE core engine
------------------------------------------------------
+Playback API
+-------------
+
+.. _before-playback-step-1:
+
+Initialization (previously "Before Playback Step-1")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. doxygenclass:: PDJE
     :project: Project_DJ_Engine
@@ -31,8 +38,10 @@ Before Playback Step-1: initialize PDJE core engine
         var engine:PDJE_Wrapper = PDJE_Wrapper.new()
         engine.InitEngine("res://database/path")
 
-Before Playback Step-2: Search Music & Track
------------------------------------------------------
+.. _before-playback-step-2:
+
+Search Music & Track (previously "Before Playback Step-2")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. doxygenfunction:: PDJE::SearchMusic
     :project: Project_DJ_Engine
@@ -71,8 +80,10 @@ Before Playback Step-2: Search Music & Track
         var mdlist = engine.SearchMusic("music name", "composer name", -1.0)
         #-1.0 means ignore bpm
 
-Before Playback Step-3: Init, Activate & Deactivate Audio Player
-------------------------------------------------------------------------
+.. _before-playback-step-3:
+
+Init, Activate & Deactivate Audio Player (previously "Before Playback Step-3")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. doxygenfunction:: PDJE::InitPlayer
     :project: Project_DJ_Engine
@@ -160,12 +171,16 @@ Before Playback Step-3: Init, Activate & Deactivate Audio Player
         #stop playback
 
 
-On Playback
-==============
+.. _on-playback:
+
+Player FX & Music Control (previously "On Playback")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-On Playback Step-1: Get & Use FX Controller Panel
------------------------------------------------------------
+.. _on-playback-step-1:
+
+Get & Use FX Controller Panel (previously "On Playback Step-1")
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenfunction:: audioPlayer::GetFXControlPanel
     :project: Project_DJ_Engine
@@ -286,8 +301,10 @@ to see Available args, See: :doc:`/FX_ARGS`
         #for details, see FXArgs document
 
 
-On Playback Step-2: Get & Use Music Controller Panel
------------------------------------------------------------
+.. _on-playback-step-2:
+
+Get & Use Music Controller Panel (previously "On Playback Step-2")
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. doxygenclass:: MusicControlPanel
     :project: Project_DJ_Engine
@@ -439,8 +456,12 @@ On Playback Step-2: Get & Use Music Controller Panel
         var Fxhandle:FXWrapper = musPanel.getFXHandle("title")
         #get music's fx handle
 
+.. _editor-api:
+
 Editor API
-=============
+------------
+
+Use these calls to prepare projects, apply edits, and audit history without the playback stack.
 
 The PDJE editor provides only an API and does not include a built-in graphical user interface (GUI).
 
@@ -450,8 +471,10 @@ With the editor API, you can:
 - Create and edit mix sets (combinations of multiple tracks) using the registered music in the DB
 - Create and edit note data that can be used in rhythm games
 
+.. _editor-step-1:
+
 Editor Step-1: Create & Manage DB
-----------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. doxygenfunction:: PDJE::InitEditor
@@ -498,13 +521,15 @@ Editor Step-1: Create & Manage DB
         engine.CloseEditor()
 
 
+.. _editor-step-2:
+
 Editor Step-2: Editing Control & History view
--------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To see all functions, check :doc:`/api/classeditorObject`
 
 Undo
-------
+^^^^
 
 .. tab-set-code:: 
 
@@ -546,7 +571,7 @@ Undo
         undoRes = editor.Undo(editor.KV, "")
 
 Redo
--------
+^^^^
 
 .. tab-set-code:: 
 
@@ -589,7 +614,7 @@ Redo
 
 
 Time travel
--------------
+^^^^^^^^^^^
 
 To get necessary args, See :ref:`get-edit-logs`
 
@@ -671,7 +696,7 @@ To get necessary args, See :ref:`get-edit-logs`
 
 
 Add line
------------
+^^^^^^^^
 
 See :ref:`about-mix-data` first.
 
@@ -851,7 +876,7 @@ See :ref:`about-mix-data` first.
 
 
 Get all lines
---------------
+^^^^^^^^^^^^^
 
 .. tab-set-code:: 
 
@@ -926,7 +951,7 @@ Get all lines
         var edited_data:Dictionary = editor.getAll()
 
 Delete line
---------------
+^^^^^^^^^^^^
 
 .. tab-set-code:: 
 
@@ -1037,7 +1062,7 @@ Delete line
 .. _get-edit-logs:
 
 Get edit logs
----------------
+^^^^^^^^^^^^^
 
 
 .. tab-set-code:: 
