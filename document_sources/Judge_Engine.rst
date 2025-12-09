@@ -215,6 +215,17 @@ Integration flow (mirrors test)
     
     .. code-block:: gdscript
 
+      #input module init phase
+      $PDJE_Input_Module.Init()
+      var device_list:Array = $PDJE_Input_Module.GetDevs()
+      
+      var selected_devices:Array
+      for device in device_list:
+        if device["type"] == "MOUSE":
+          selected_devices.push_back(device)
+      print(selected_devices)
+      $PDJE_Input_Module.Config(selected_devices)
+
       #judge module init phase
       $PDJE_Judge_Module.AddDataLines($PDJE_Input_Module, engine)
       for dev in selected_devices:
@@ -225,8 +236,8 @@ Integration flow (mirrors test)
         #$PDJE_Judge_Module.DeviceAdd(dev, InputLine.PDJE_KEY.D, 0, 5)
         #$PDJE_Judge_Module.DeviceAdd(dev, InputLine.PDJE_KEY.F, 0, 5)
         #link all keyboard's "ASDF" into rail id 5
-      var use_range= 60 * 1000 # use range +- 40ms
-      var miss_range= 61 * 1000 # miss range +-41ms
+      var use_range= 60 * 1000 # use range +- 60ms
+      var miss_range= 61 * 1000 # miss range +-61ms
       var use_sleep=1 #use evnet thread sleeps 1ms on every loop
       var miss_sleep=3 #miss event thread sleeps 3ms on every loop
       var custom_mouse_event=false #deactivate mouse custom event. you can use axis data with this.
@@ -243,3 +254,13 @@ Integration flow (mirrors test)
       
       #Start Game
       $PDJE_Judge_Module.StartJudge()
+      $PDJE_Input_Module.Run()#input module
+	    player.Activate()#core module music player
+      #Start Judge -> Start Input -> Start Core music player
+      
+      #End Phase
+      player.Deactivate()#core module music player
+      $PDJE_Input_Module.Kill()#input module
+      $PDJE_Judge_Module.EndJudge()
+
+      #End Core music player -> End Input -> End Judge
