@@ -403,7 +403,18 @@ C++</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-1">
 GDSCRIPT</label><div class="sd-tab-content docutils">
-<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="c1">#judge module init phase</span>
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="c1">#input module init phase</span>
+<span class="o">$</span><span class="n">PDJE_Input_Module</span><span class="o">.</span><span class="n">Init</span><span class="p">()</span>
+<span class="k">var</span><span class="w"> </span><span class="n">device_list</span><span class="p">:</span><span class="nb nb-Type">Array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">PDJE_Input_Module</span><span class="o">.</span><span class="n">GetDevs</span><span class="p">()</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">selected_devices</span><span class="p">:</span><span class="nb nb-Type">Array</span>
+<span class="k">for</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">device_list</span><span class="p">:</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">device</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;MOUSE&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="n">selected_devices</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">selected_devices</span><span class="p">)</span>
+<span class="o">$</span><span class="n">PDJE_Input_Module</span><span class="o">.</span><span class="n">Config</span><span class="p">(</span><span class="n">selected_devices</span><span class="p">)</span>
+
+<span class="c1">#judge module init phase</span>
 <span class="o">$</span><span class="n">PDJE_Judge_Module</span><span class="o">.</span><span class="n">AddDataLines</span><span class="p">(</span><span class="o">$</span><span class="n">PDJE_Input_Module</span><span class="p">,</span><span class="w"> </span><span class="n">engine</span><span class="p">)</span>
 <span class="k">for</span><span class="w"> </span><span class="n">dev</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">selected_devices</span><span class="p">:</span>
 <span class="w">  </span><span class="o">$</span><span class="n">PDJE_Judge_Module</span><span class="o">.</span><span class="n">DeviceAdd</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">InputLine</span><span class="o">.</span><span class="n">BTN_L</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="c1">#link mouse left button into rail id 5</span>
@@ -413,8 +424,8 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <span class="w">  </span><span class="c1">#$PDJE_Judge_Module.DeviceAdd(dev, InputLine.PDJE_KEY.D, 0, 5)</span>
 <span class="w">  </span><span class="c1">#$PDJE_Judge_Module.DeviceAdd(dev, InputLine.PDJE_KEY.F, 0, 5)</span>
 <span class="w">  </span><span class="c1">#link all keyboard&#39;s &quot;ASDF&quot; into rail id 5</span>
-<span class="k">var</span><span class="w"> </span><span class="n">use_range</span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="c1"># use range +- 40ms</span>
-<span class="k">var</span><span class="w"> </span><span class="n">miss_range</span><span class="o">=</span><span class="w"> </span><span class="mi">61</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="c1"># miss range +-41ms</span>
+<span class="k">var</span><span class="w"> </span><span class="n">use_range</span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="c1"># use range +- 60ms</span>
+<span class="k">var</span><span class="w"> </span><span class="n">miss_range</span><span class="o">=</span><span class="w"> </span><span class="mi">61</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="c1"># miss range +-61ms</span>
 <span class="k">var</span><span class="w"> </span><span class="n">use_sleep</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="c1">#use evnet thread sleeps 1ms on every loop</span>
 <span class="k">var</span><span class="w"> </span><span class="n">miss_sleep</span><span class="o">=</span><span class="mi">3</span><span class="w"> </span><span class="c1">#miss event thread sleeps 3ms on every loop</span>
 <span class="k">var</span><span class="w"> </span><span class="n">custom_mouse_event</span><span class="o">=</span><span class="bp">false</span><span class="w"> </span><span class="c1">#deactivate mouse custom event. you can use axis data with this.</span>
@@ -431,6 +442,16 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 
 <span class="c1">#Start Game</span>
 <span class="o">$</span><span class="n">PDJE_Judge_Module</span><span class="o">.</span><span class="n">StartJudge</span><span class="p">()</span>
+<span class="o">$</span><span class="n">PDJE_Input_Module</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span><span class="c1">#input module</span>
+<span class="w">      </span><span class="n">player</span><span class="o">.</span><span class="n">Activate</span><span class="p">()</span><span class="c1">#core module music player</span>
+<span class="c1">#Start Judge -&gt; Start Input -&gt; Start Core music player</span>
+
+<span class="c1">#End Phase</span>
+<span class="n">player</span><span class="o">.</span><span class="n">Deactivate</span><span class="p">()</span><span class="c1">#core module music player</span>
+<span class="o">$</span><span class="n">PDJE_Input_Module</span><span class="o">.</span><span class="n">Kill</span><span class="p">()</span><span class="c1">#input module</span>
+<span class="o">$</span><span class="n">PDJE_Judge_Module</span><span class="o">.</span><span class="n">EndJudge</span><span class="p">()</span>
+
+<span class="c1">#End Core music player -&gt; End Input -&gt; End Judge</span>
 </pre></div>
 </div>
 </div>
