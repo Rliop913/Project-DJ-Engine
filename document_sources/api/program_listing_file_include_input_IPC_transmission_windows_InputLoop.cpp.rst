@@ -173,6 +173,7 @@ Program Listing for File InputLoop.cpp
                            memcpy(cachedLog.id,
                                   handlestr.data(),
                                   sizeof(char) * (cachedLog.id_len));
+   
                            namestr = id_name[handlestr];
                            cachedLog.name_len =
                                namestr.size() > 256 ? 256 : namestr.size();

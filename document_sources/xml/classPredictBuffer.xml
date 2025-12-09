@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classPredictBuffer" kind="class" language="C++" prot="public">
+    <compoundname>PredictBuffer</compoundname>
+    <includes refid="PredictMusic_8hpp" local="no">PredictMusic.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>int</type>
+        <declname>SZ</declname>
+        <defname>SZ</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classPredictBuffer_1ad85e69ba54eeae038d53771b01c86cfc" prot="private" static="no">
+        <type>typename std::array&lt; <ref refid="structPREDICT" kindref="compound">PREDICT</ref>, SZ &gt;::iterator</type>
+        <definition>using PredictBuffer&lt; SZ &gt;::iterator =  typename std::array&lt;PREDICT, SZ&gt;::iterator</definition>
+        <argsstring></argsstring>
+        <name>iterator</name>
+        <qualifiedname>PredictBuffer::iterator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="22" column="5" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPredictBuffer_1ac79f6bb641f1d065aaa346cb251220aa" prot="private" static="no" mutable="no">
+        <type>std::array&lt; <ref refid="structPREDICT" kindref="compound">PREDICT</ref>, SZ &gt;</type>
+        <definition>std::array&lt;PREDICT, SZ&gt; PredictBuffer&lt; SZ &gt;::buffer</definition>
+        <argsstring></argsstring>
+        <name>buffer</name>
+        <qualifiedname>PredictBuffer::buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="23" column="16" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPredictBuffer_1ab39c3827603d8fa52551aed39ccaad08" prot="private" static="no" mutable="no">
+        <type><ref refid="classPredictBuffer_1ad85e69ba54eeae038d53771b01c86cfc" kindref="member">iterator</ref></type>
+        <definition>iterator PredictBuffer&lt; SZ &gt;::popp</definition>
+        <argsstring></argsstring>
+        <name>popp</name>
+        <qualifiedname>PredictBuffer::popp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="24" column="29" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPredictBuffer_1a64659da40eaf3978f204fdf5148c2815" prot="private" static="no" mutable="no">
+        <type><ref refid="classPredictBuffer_1ad85e69ba54eeae038d53771b01c86cfc" kindref="member">iterator</ref></type>
+        <definition>iterator PredictBuffer&lt; SZ &gt;::pushp</definition>
+        <argsstring></argsstring>
+        <name>pushp</name>
+        <qualifiedname>PredictBuffer::pushp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="25" column="29" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPredictBuffer_1aa8a859915487e8a86853266698cd85be" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; uint32_t &gt;</type>
+        <definition>std::atomic&lt;uint32_t&gt; PredictBuffer&lt; SZ &gt;::fill_counter</definition>
+        <argsstring></argsstring>
+        <name>fill_counter</name>
+        <qualifiedname>PredictBuffer::fill_counter</qualifiedname>
+        <initializer>{ 0 }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="26" column="19" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="26" bodyend="26"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classPredictBuffer_1ae3b128f3ebe09d396d9f9237fb97874c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PredictBuffer&lt; SZ &gt;::Next</definition>
+        <argsstring>(iterator &amp;itr)</argsstring>
+        <name>Next</name>
+        <qualifiedname>PredictBuffer::Next</qualifiedname>
+        <param>
+          <type><ref refid="classPredictBuffer_1ad85e69ba54eeae038d53771b01c86cfc" kindref="member">iterator</ref> &amp;</type>
+          <declname>itr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="28" column="5" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="28" bodyend="34"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPredictBuffer_1a4bc40c5a8ff97c176415cff9c8613c23" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PredictBuffer&lt; SZ &gt;::IsFull</definition>
+        <argsstring>()</argsstring>
+        <name>IsFull</name>
+        <qualifiedname>PredictBuffer::IsFull</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="38" column="5" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classPredictBuffer_1a4d475675d99ac294e65b11b670f6ff99" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PredictBuffer&lt; SZ &gt;::Pop</definition>
+        <argsstring>(PREDICT &amp;out)</argsstring>
+        <name>Pop</name>
+        <qualifiedname>PredictBuffer::Pop</qualifiedname>
+        <param>
+          <type><ref refid="structPREDICT" kindref="compound">PREDICT</ref> &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="43" column="5" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="43" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classPredictBuffer_1a8e550ca801b642eb9be245e07071d7c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PredictBuffer&lt; SZ &gt;::Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <qualifiedname>PredictBuffer::Reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="54" column="5" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="54" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classPredictBuffer_1a94fbe44aa870e892fc63ee438ced6483" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PredictBuffer&lt; SZ &gt;::Fill</definition>
+        <argsstring>(const PREDICT &amp;data)</argsstring>
+        <name>Fill</name>
+        <qualifiedname>PredictBuffer::Fill</qualifiedname>
+        <param>
+          <type>const <ref refid="structPREDICT" kindref="compound">PREDICT</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="61" column="5" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="61" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classPredictBuffer_1a30fb2d1ea2941c965b3da016ca09105b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PredictBuffer&lt; SZ &gt;::PredictBuffer</definition>
+        <argsstring>()</argsstring>
+        <name>PredictBuffer</name>
+        <qualifiedname>PredictBuffer::PredictBuffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="67" column="5" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="67" bodyend="71"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>PREDICT</label>
+        <link refid="structPREDICT"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>predict_fragment</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>PredictBuffer&lt; SZ &gt;</label>
+        <link refid="classPredictBuffer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>buffer</edgelabel>
+          <edgelabel>popp</edgelabel>
+          <edgelabel>pushp</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>fill_counter</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::array&lt; PREDICT, SZ &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::atomic&lt; uint32_t &gt;</label>
+      </node>
+      <node id="4">
+        <label>std::vector&lt; float &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="20" column="12" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="20" bodyend="72"/>
+    <listofallmembers>
+      <member refid="classPredictBuffer_1ac79f6bb641f1d065aaa346cb251220aa" prot="private" virt="non-virtual"><scope>PredictBuffer</scope><name>buffer</name></member>
+      <member refid="classPredictBuffer_1a94fbe44aa870e892fc63ee438ced6483" prot="public" virt="non-virtual"><scope>PredictBuffer</scope><name>Fill</name></member>
+      <member refid="classPredictBuffer_1aa8a859915487e8a86853266698cd85be" prot="private" virt="non-virtual"><scope>PredictBuffer</scope><name>fill_counter</name></member>
+      <member refid="classPredictBuffer_1a4bc40c5a8ff97c176415cff9c8613c23" prot="public" virt="non-virtual"><scope>PredictBuffer</scope><name>IsFull</name></member>
+      <member refid="classPredictBuffer_1ad85e69ba54eeae038d53771b01c86cfc" prot="private" virt="non-virtual"><scope>PredictBuffer</scope><name>iterator</name></member>
+      <member refid="classPredictBuffer_1ae3b128f3ebe09d396d9f9237fb97874c" prot="private" virt="non-virtual"><scope>PredictBuffer</scope><name>Next</name></member>
+      <member refid="classPredictBuffer_1a4d475675d99ac294e65b11b670f6ff99" prot="public" virt="non-virtual"><scope>PredictBuffer</scope><name>Pop</name></member>
+      <member refid="classPredictBuffer_1ab39c3827603d8fa52551aed39ccaad08" prot="private" virt="non-virtual"><scope>PredictBuffer</scope><name>popp</name></member>
+      <member refid="classPredictBuffer_1a30fb2d1ea2941c965b3da016ca09105b" prot="public" virt="non-virtual"><scope>PredictBuffer</scope><name>PredictBuffer</name></member>
+      <member refid="classPredictBuffer_1a64659da40eaf3978f204fdf5148c2815" prot="private" virt="non-virtual"><scope>PredictBuffer</scope><name>pushp</name></member>
+      <member refid="classPredictBuffer_1a8e550ca801b642eb9be245e07071d7c7" prot="public" virt="non-virtual"><scope>PredictBuffer</scope><name>Reset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

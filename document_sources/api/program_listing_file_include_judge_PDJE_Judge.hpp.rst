@@ -40,16 +40,13 @@ Program Listing for File PDJE_Judge.hpp
        // thread relates
        std::optional<std::thread> loop;
    
-       JUDGE_STATUS status = JUDGE_STATUS::OK;
-   
      public:
        Judge_Init inits;
        JUDGE_STATUS
        Start();
        void
        End();
-       JUDGE_STATUS
-       CheckStatus();
+   
        JUDGE();
        ~JUDGE() = default;
    };

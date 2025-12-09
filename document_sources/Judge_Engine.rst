@@ -22,8 +22,7 @@ Runtime Control
 .. doxygenfunction:: PDJE_JUDGE::JUDGE::End
     :project: Project_DJ_Engine
 
-.. doxygenfunction:: PDJE_JUDGE::JUDGE::CheckStatus
-    :project: Project_DJ_Engine
+
 
 Start will return an error status when the required init data is missing (core
 line, input line, note objects, event rule, or input rules). End stops the
@@ -47,7 +46,7 @@ Initialization
 .. doxygenfunction:: PDJE_JUDGE::Judge_Init::SetInputLine
     :project: Project_DJ_Engine
 
-.. doxygenfunction:: PDJE_JUDGE::Judge_Init::SetInputRule
+.. doxygenfunction:: PDJE_JUDGE::Judge_Init::SetRail
     :project: Project_DJ_Engine
 
 .. doxygenfunction:: PDJE_JUDGE::Judge_Init::SetEventRule
@@ -61,7 +60,7 @@ Initialization
 
 - `SetCoreLine` and `SetInputLine` connect to :doc:`/Data_Lines` produced by the
   core and input engines. Null pointers are ignored.
-- `SetInputRule` registers an `INPUT_CONFIG` (device id, type, key) and maps it
+- `SetRail` registers an `INPUT_CONFIG` (device id, type, key) and maps it
   to a rail plus an optional input offset in microseconds.
 - `SetEventRule` defines the hit window in microseconds:
   `use_range_microsecond` for successful hits and `miss_range_microsecond` for
@@ -80,21 +79,13 @@ Input mapping
 - ``SetRail(device, key, offset, rail)`` is the test-backed helper that binds a
   discovered device/key to a rail with an optional offset (microseconds). Use
   this when you want per-device offsets without manually filling a struct.
-- ``SetInputRule`` is the lower-level path for supplying a fully populated
-  ``INPUT_CONFIG`` struct (device id/type/key, rail, offset). Prefer this when
-  you build the config externally or need non-discovery workflows.
+
 - Offsets let you compensate for device latency; negative values advance the
   input timestamp, positive values delay it.
 
 
 Rules & Callbacks
 -------------------
-
-.. doxygenstruct:: PDJE_JUDGE::INPUT_RULE
-    :project: Project_DJ_Engine
-
-.. doxygenstruct:: PDJE_JUDGE::INPUT_SETTING
-    :project: Project_DJ_Engine
 
 .. doxygenstruct:: PDJE_JUDGE::INPUT_CONFIG
     :project: Project_DJ_Engine
@@ -221,3 +212,34 @@ Integration flow (mirrors test)
         engine.player->Deactivate();
         input.Kill();
         judge.End();
+    
+    .. code-block:: gdscript
+
+      #judge module init phase
+      $PDJE_Judge_Module.AddDataLines($PDJE_Input_Module, engine)
+      for dev in selected_devices:
+        $PDJE_Judge_Module.DeviceAdd(dev, 4, 0, InputLine.BTN_L, 0, 5)#link mouse left button into rail id 5
+        #if dev's type is keyboard
+        #$PDJE_Judge_Module.DeviceAdd(dev, InputLine.PDJE_KEY.A, 0, 5)
+        #$PDJE_Judge_Module.DeviceAdd(dev, InputLine.PDJE_KEY.S, 0, 5)
+        #$PDJE_Judge_Module.DeviceAdd(dev, InputLine.PDJE_KEY.D, 0, 5)
+        #$PDJE_Judge_Module.DeviceAdd(dev, InputLine.PDJE_KEY.F, 0, 5)
+        #link all keyboard's "ASDF" into rail id 5
+      var use_range= 60 * 1000 # use range +- 40ms
+      var miss_range= 61 * 1000 # miss range +-41ms
+      var use_sleep=1 #use evnet thread sleeps 1ms on every loop
+      var miss_sleep=3 #miss event thread sleeps 3ms on every loop
+      var custom_mouse_event=false #deactivate mouse custom event. you can use axis data with this.
+      
+      $PDJE_Judge_Module.SetRule(
+        use_range,
+        miss_range,
+        use_sleep,
+        miss_sleep,
+        custom_mouse_event
+      )# set judge rules
+      
+      print($PDJE_Judge_Module.SetNotes(engine, "sample_track"))
+      
+      #Start Game
+      $PDJE_Judge_Module.StartJudge()

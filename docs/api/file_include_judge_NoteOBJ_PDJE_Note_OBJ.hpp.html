@@ -109,8 +109,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Input_State.hpp</span></code> (<a class="reference internal" href="file_include_global_DataLines_Input_State.hpp.html#file-include-global-datalines-input-state-hpp"><span class="std std-ref">File Input_State.hpp</span></a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PDJE_EXPORT_SETTER.hpp</span></code> (<a class="reference internal" href="file_include_global_PDJE_EXPORT_SETTER.hpp.html#file-include-global-pdje-export-setter-hpp"><span class="std std-ref">File PDJE_EXPORT_SETTER.hpp</span></a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PDJE_Input_Device_Data.hpp</span></code> (<a class="reference internal" href="file_include_global_DataLines_PDJE_Input_Device_Data.hpp.html#file-include-global-datalines-pdje-input-device-data-hpp"><span class="std std-ref">File PDJE_Input_Device_Data.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PDJE_Rule.hpp</span></code> (<a class="reference internal" href="file_include_judge_PDJE_Rule.hpp.html#file-include-judge-pdje-rule-hpp"><span class="std std-ref">File PDJE_Rule.hpp</span></a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cstdint</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">iostream</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">unordered_map</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">utility</span></code></p></li>
@@ -121,7 +121,9 @@
 <h2>Included By<a class="headerlink" href="#included-by" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="file_include_judge_Init_PDJE_Judge_Init.cpp.html#file-include-judge-init-pdje-judge-init-cpp"><span class="std std-ref">File PDJE_Judge_Init.cpp</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_judge_Init_PDJE_Judge_Init.hpp.html#file-include-judge-init-pdje-judge-init-hpp"><span class="std std-ref">File PDJE_Judge_Init.hpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_judge_Init_PDJE_Judge_Init_Structs.hpp.html#file-include-judge-init-pdje-judge-init-structs-hpp"><span class="std std-ref">File PDJE_Judge_Init_Structs.hpp</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_judge_InputParser_InputParser.hpp.html#file-include-judge-inputparser-inputparser-hpp"><span class="std std-ref">File InputParser.hpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_judge_Loop_Keyboard.cpp.html#file-include-judge-loop-keyboard-cpp"><span class="std std-ref">File Keyboard.cpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_judge_Loop_PDJE_Judge_Loop.cpp.html#file-include-judge-loop-pdje-judge-loop-cpp"><span class="std std-ref">File PDJE_Judge_Loop.cpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_judge_Loop_PDJE_Judge_Loop.hpp.html#file-include-judge-loop-pdje-judge-loop-hpp"><span class="std std-ref">File PDJE_Judge_Loop.hpp</span></a></p></li>
@@ -147,11 +149,12 @@
 <section id="typedefs">
 <h2>Typedefs<a class="headerlink" href="#typedefs" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="typedef_namespacePDJE__JUDGE_1ab03e3d67f9117a97f80f2a0a98221919.html#exhale-typedef-namespacepdje-judge-1ab03e3d67f9117a97f80f2a0a98221919"><span class="std std-ref">Typedef PDJE_JUDGE::DEVID_TO_NOTE</span></a></p></li>
 <li><p><a class="reference internal" href="typedef_namespacePDJE__JUDGE_1a0e0549990dbec87c7f25b9ae22f4dc39.html#exhale-typedef-namespacepdje-judge-1a0e0549990dbec87c7f25b9ae22f4dc39"><span class="std std-ref">Typedef PDJE_JUDGE::GLOBAL_TIME</span></a></p></li>
-<li><p><a class="reference internal" href="typedef_namespacePDJE__JUDGE_1a182d502cf8e15e13ed25f3550c82a53a.html#exhale-typedef-namespacepdje-judge-1a182d502cf8e15e13ed25f3550c82a53a"><span class="std std-ref">Typedef PDJE_JUDGE::LOCAL_TIME</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_namespacePDJE__JUDGE_1a3ee6af366c462d64775daf2f7b0d7e42.html#exhale-typedef-namespacepdje-judge-1a3ee6af366c462d64775daf2f7b0d7e42"><span class="std std-ref">Typedef PDJE_JUDGE::LOCAL_TIME</span></a></p></li>
 <li><p><a class="reference internal" href="typedef_namespacePDJE__JUDGE_1ad8c8d340702b0759a8cecb53091de1e0.html#exhale-typedef-namespacepdje-judge-1ad8c8d340702b0759a8cecb53091de1e0"><span class="std std-ref">Typedef PDJE_JUDGE::NOTE_VEC</span></a></p></li>
 <li><p><a class="reference internal" href="typedef_namespacePDJE__JUDGE_1ad73c9d4a59c40cc7c1a9fce27dc1be72.html#exhale-typedef-namespacepdje-judge-1ad73c9d4a59c40cc7c1a9fce27dc1be72"><span class="std std-ref">Typedef PDJE_JUDGE::P_NOTE_VEC</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_namespacePDJE__JUDGE_1ae0d1c6b070db4eeb89560cfef395e997.html#exhale-typedef-namespacepdje-judge-1ae0d1c6b070db4eeb89560cfef395e997"><span class="std std-ref">Typedef PDJE_JUDGE::RAILID_TO_NOTE</span></a></p></li>
+<li><p><a class="reference internal" href="typedef_namespacePDJE__JUDGE_1a7208339207c7e41e996eec587f5fd3fc.html#exhale-typedef-namespacepdje-judge-1a7208339207c7e41e996eec587f5fd3fc"><span class="std std-ref">Typedef PDJE_JUDGE::RAILID_TO_OFFSET</span></a></p></li>
 </ul>
 </section>
 <section id="variables">

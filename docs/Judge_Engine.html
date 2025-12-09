@@ -54,9 +54,6 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="Getting%20Started.html">Getting Started</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Core_Engine.html">Core_Engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Core_Engine.html#before-playback">Before Playback</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Core_Engine.html#on-playback">On Playback</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Core_Engine.html#editor-api">Editor API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Input_Engine.html">Input_Engine</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Judge_Engine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#runtime-control">Runtime Control</a><ul>
@@ -64,28 +61,26 @@
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE12JUDGE_STATUSE"><code class="docutils literal notranslate"><span class="pre">JUDGE_STATUS</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE5JUDGE5StartEv"><code class="docutils literal notranslate"><span class="pre">Start()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE5JUDGE3EndEv"><code class="docutils literal notranslate"><span class="pre">End()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE5JUDGE11CheckStatusEv"><code class="docutils literal notranslate"><span class="pre">CheckStatus()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#initialization">Initialization</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE10Judge_InitE"><code class="docutils literal notranslate"><span class="pre">PDJE_JUDGE::Judge_Init</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE10Judge_Init11SetCoreLineERK19PDJE_CORE_DATA_LINE"><code class="docutils literal notranslate"><span class="pre">SetCoreLine()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE10Judge_Init12SetInputLineERK20PDJE_INPUT_DATA_LINE"><code class="docutils literal notranslate"><span class="pre">SetInputLine()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE10Judge_Init12SetInputRuleERK12INPUT_CONFIG"><code class="docutils literal notranslate"><span class="pre">SetInputRule()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE10Judge_Init7SetRailERK10DeviceDataK7BITMASKK7int64_tK8uint64_t"><code class="docutils literal notranslate"><span class="pre">SetRail()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE10Judge_Init12SetEventRuleERK10EVENT_RULE"><code class="docutils literal notranslate"><span class="pre">SetEventRule()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE10Judge_Init15SetCustomEventsERK13Custom_Events"><code class="docutils literal notranslate"><span class="pre">SetCustomEvents()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE10Judge_Init19NoteObjectCollectorEKNSt6stringEK8uint16_tKNSt6stringEKNSt6stringEKNSt6stringEKyKyK8uint64_t"><code class="docutils literal notranslate"><span class="pre">NoteObjectCollector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#input-mapping">Input mapping</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#rules-callbacks">Rules &amp; Callbacks</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE10INPUT_RULEE"><code class="docutils literal notranslate"><span class="pre">PDJE_JUDGE::INPUT_RULE</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE13INPUT_SETTINGE"><code class="docutils literal notranslate"><span class="pre">PDJE_JUDGE::INPUT_SETTING</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE12INPUT_CONFIGE"><code class="docutils literal notranslate"><span class="pre">PDJE_JUDGE::INPUT_CONFIG</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE10EVENT_RULEE"><code class="docutils literal notranslate"><span class="pre">PDJE_JUDGE::EVENT_RULE</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE13Custom_EventsE"><code class="docutils literal notranslate"><span class="pre">PDJE_JUDGE::Custom_Events</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#minimal-flow">Minimal Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integration-flow-mirrors-test">Integration flow (mirrors test)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Util_Engine.html">Util_Engine</a></li>
@@ -127,10 +122,11 @@
              
   <section id="judge-engine">
 <h1>Judge_Engine<a class="headerlink" href="#judge-engine" title="Link to this heading"></a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Current project version is now on 0.6.x.</p>
-</div>
+<p>The judge module consumes note objects from the core engine and timestamped
+inputs from the input engine, aligns them on a shared microsecond clock, and
+applies hit/miss rules while emitting callbacks. The snippets below mirror the
+tested integration flow in <code class="docutils literal notranslate"><span class="pre">include/tests/JUDGE_TESTS/judgeTest.cpp</span></code> so that
+you can follow the same order of operations.</p>
 <section id="runtime-control">
 <h2>Runtime Control<a class="headerlink" href="#runtime-control" title="Link to this heading"></a></h2>
 <dl class="cpp class">
@@ -188,15 +184,15 @@
 <dd><p>Stop the event loop and release cached init data. </p>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N10PDJE_JUDGE5JUDGE11CheckStatusEv">
-<span id="_CPPv3N10PDJE_JUDGE5JUDGE11CheckStatusEv"></span><span id="_CPPv2N10PDJE_JUDGE5JUDGE11CheckStatusEv"></span><span id="PDJE_JUDGE::JUDGE::CheckStatus"></span><span class="target" id="classPDJE__JUDGE_1_1JUDGE_1a58e311d4b8b36f1192900e48d57946f9"></span><a class="reference internal" href="api/enum_namespacePDJE__JUDGE_1afa6381f8f229ccd5c5f8dbae248cebb2.html#_CPPv4N10PDJE_JUDGE12JUDGE_STATUSE" title="PDJE_JUDGE::JUDGE_STATUS"><span class="n"><span class="pre">JUDGE_STATUS</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">PDJE_JUDGE</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="api/classPDJE__JUDGE_1_1JUDGE.html#_CPPv4N10PDJE_JUDGE5JUDGEE" title="PDJE_JUDGE::JUDGE"><span class="n"><span class="pre">JUDGE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">CheckStatus</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
-<dd><p>Get last-known status without mutating state. </p>
-</dd></dl>
-
 <p>Start will return an error status when the required init data is missing (core
 line, input line, note objects, event rule, or input rules). End stops the
 internal event loop thread and clears the init data for the next run.</p>
+<ul class="simple">
+<li><p>Typical order (as used in tests): call <code class="docutils literal notranslate"><span class="pre">Start</span></code> <strong>after</strong> configuring rail
+mappings, event rules, custom callbacks, note collection, and wiring both the
+core and input data lines. On shutdown, call <code class="docutils literal notranslate"><span class="pre">End</span></code> <strong>after</strong> stopping input
+and playback.</p></li>
+</ul>
 </section>
 <section id="initialization">
 <h2>Initialization<a class="headerlink" href="#initialization" title="Link to this heading"></a></h2>
@@ -219,8 +215,8 @@ internal event loop thread and clears the init data for the next run.</p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N10PDJE_JUDGE10Judge_Init12SetInputRuleERK12INPUT_CONFIG">
-<span id="_CPPv3N10PDJE_JUDGE10Judge_Init12SetInputRuleERK12INPUT_CONFIG"></span><span id="_CPPv2N10PDJE_JUDGE10Judge_Init12SetInputRuleERK12INPUT_CONFIG"></span><span id="PDJE_JUDGE::Judge_Init::SetInputRule__INPUT_CONFIGCR"></span><span class="target" id="classPDJE__JUDGE_1_1Judge__Init_1a287bb28017981c359d38b6b99bedc946"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">PDJE_JUDGE</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="api/classPDJE__JUDGE_1_1Judge__Init.html#_CPPv4N10PDJE_JUDGE10Judge_InitE" title="PDJE_JUDGE::Judge_Init"><span class="n"><span class="pre">Judge_Init</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SetInputRule</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/structPDJE__JUDGE_1_1INPUT__CONFIG.html#_CPPv4N10PDJE_JUDGE12INPUT_CONFIGE" title="PDJE_JUDGE::INPUT_CONFIG"><span class="n"><span class="pre">INPUT_CONFIG</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">device_config</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N10PDJE_JUDGE10Judge_Init7SetRailERK10DeviceDataK7BITMASKK7int64_tK8uint64_t">
+<span id="_CPPv3N10PDJE_JUDGE10Judge_Init7SetRailERK10DeviceDataK7BITMASKK7int64_tK8uint64_t"></span><span id="_CPPv2N10PDJE_JUDGE10Judge_Init7SetRailERK10DeviceDataK7BITMASKK7int64_tK8uint64_t"></span><span id="PDJE_JUDGE::Judge_Init::SetRail__DeviceDataCR.BITMASKC.int64_tC.uint64_tC"></span><span class="target" id="classPDJE__JUDGE_1_1Judge__Init_1a1ff71318e1a221d4274f299c2a2a2537"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">PDJE_JUDGE</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="api/classPDJE__JUDGE_1_1Judge__Init.html#_CPPv4N10PDJE_JUDGE10Judge_InitE" title="PDJE_JUDGE::Judge_Init"><span class="n"><span class="pre">Judge_Init</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SetRail</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/structDeviceData.html#_CPPv410DeviceData" title="DeviceData"><span class="n"><span class="pre">DeviceData</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">devData</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107.html#_CPPv47BITMASK" title="BITMASK"><span class="n"><span class="pre">BITMASK</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">DeviceKey</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset_microsecond</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">MatchRail</span></span><span class="sig-paren">)</span><br /></dt>
 <dd><p>Register an input device rule and its target rail/offset. </p>
 </dd></dl>
 
@@ -245,7 +241,7 @@ internal event loop thread and clears the init data for the next run.</p>
 <ul class="simple">
 <li><p><cite>SetCoreLine</cite> and <cite>SetInputLine</cite> connect to <a class="reference internal" href="Data_Lines.html"><span class="doc">Data_Lines</span></a> produced by the
 core and input engines. Null pointers are ignored.</p></li>
-<li><p><cite>SetInputRule</cite> registers an <cite>INPUT_CONFIG</cite> (device id, type, key) and maps it
+<li><p><cite>SetRail</cite> registers an <cite>INPUT_CONFIG</cite> (device id, type, key) and maps it
 to a rail plus an optional input offset in microseconds.</p></li>
 <li><p><cite>SetEventRule</cite> defines the hit window in microseconds:
 <cite>use_range_microsecond</cite> for successful hits and <cite>miss_range_microsecond</cite> for
@@ -258,26 +254,22 @@ between callback pulls.</p></li>
 registered input rule. If no device rule exists for the rail, the call is
 ignored.</p></li>
 </ul>
+<section id="input-mapping">
+<h3>Input mapping<a class="headerlink" href="#input-mapping" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SetRail(device,</span> <span class="pre">key,</span> <span class="pre">offset,</span> <span class="pre">rail)</span></code> is the test-backed helper that binds a
+discovered device/key to a rail with an optional offset (microseconds). Use
+this when you want per-device offsets without manually filling a struct.</p></li>
+<li><p>Offsets let you compensate for device latency; negative values advance the
+input timestamp, positive values delay it.</p></li>
+</ul>
+</section>
 </section>
 <section id="rules-callbacks">
 <h2>Rules &amp; Callbacks<a class="headerlink" href="#rules-callbacks" title="Link to this heading"></a></h2>
 <dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N10PDJE_JUDGE10INPUT_RULEE">
-<span id="_CPPv3N10PDJE_JUDGE10INPUT_RULEE"></span><span id="_CPPv2N10PDJE_JUDGE10INPUT_RULEE"></span><span id="PDJE_JUDGE::INPUT_RULE"></span><span class="target" id="structPDJE__JUDGE_1_1INPUT__RULE"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">INPUT_RULE</span></span></span><br /></dt>
-<dd><p>Device identity tuple used to bind inputs to rails. </p>
-<p>Subclassed by <a class="reference internal" href="api/structPDJE__JUDGE_1_1INPUT__CONFIG.html#structPDJE__JUDGE_1_1INPUT__CONFIG"><span class="std std-ref">PDJE_JUDGE::INPUT_CONFIG</span></a></p>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N10PDJE_JUDGE13INPUT_SETTINGE">
-<span id="_CPPv3N10PDJE_JUDGE13INPUT_SETTINGE"></span><span id="_CPPv2N10PDJE_JUDGE13INPUT_SETTINGE"></span><span id="PDJE_JUDGE::INPUT_SETTING"></span><span class="target" id="structPDJE__JUDGE_1_1INPUT__SETTING"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">INPUT_SETTING</span></span></span><a class="headerlink" href="#_CPPv4N10PDJE_JUDGE13INPUT_SETTINGE" title="Link to this definition"></a><br /></dt>
-<dd><p>Per-device judgment setting (rail mapping and offset). </p>
-<p>Subclassed by <a class="reference internal" href="api/structPDJE__JUDGE_1_1INPUT__CONFIG.html#structPDJE__JUDGE_1_1INPUT__CONFIG"><span class="std std-ref">PDJE_JUDGE::INPUT_CONFIG</span></a></p>
-</dd></dl>
-
-<dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv4N10PDJE_JUDGE12INPUT_CONFIGE">
-<span id="_CPPv3N10PDJE_JUDGE12INPUT_CONFIGE"></span><span id="_CPPv2N10PDJE_JUDGE12INPUT_CONFIGE"></span><span id="PDJE_JUDGE::INPUT_CONFIG"></span><span class="target" id="structPDJE__JUDGE_1_1INPUT__CONFIG"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">INPUT_CONFIG</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">PDJE_JUDGE</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="api/structPDJE__JUDGE_1_1INPUT__RULE.html#_CPPv4N10PDJE_JUDGE10INPUT_RULEE" title="PDJE_JUDGE::INPUT_RULE"><span class="n"><span class="pre">INPUT_RULE</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">PDJE_JUDGE</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N10PDJE_JUDGE13INPUT_SETTINGE" title="PDJE_JUDGE::INPUT_SETTING"><span class="n"><span class="pre">INPUT_SETTING</span></span></a><br /></dt>
+<span id="_CPPv3N10PDJE_JUDGE12INPUT_CONFIGE"></span><span id="_CPPv2N10PDJE_JUDGE12INPUT_CONFIGE"></span><span id="PDJE_JUDGE::INPUT_CONFIG"></span><span class="target" id="structPDJE__JUDGE_1_1INPUT__CONFIG"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">INPUT_CONFIG</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">PDJE_JUDGE</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="api/structPDJE__JUDGE_1_1DEV.html#_CPPv4N10PDJE_JUDGE3DEVE" title="PDJE_JUDGE::DEV"><span class="n"><span class="pre">DEV</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">PDJE_JUDGE</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="api/structPDJE__JUDGE_1_1KEY.html#_CPPv4N10PDJE_JUDGE3KEYE" title="PDJE_JUDGE::KEY"><span class="n"><span class="pre">KEY</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">PDJE_JUDGE</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="api/structPDJE__JUDGE_1_1RAIL.html#_CPPv4N10PDJE_JUDGE4RAILE" title="PDJE_JUDGE::RAIL"><span class="n"><span class="pre">RAIL</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">PDJE_JUDGE</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="api/structPDJE__JUDGE_1_1OFFSET.html#_CPPv4N10PDJE_JUDGE6OFFSETE" title="PDJE_JUDGE::OFFSET"><span class="n"><span class="pre">OFFSET</span></span></a><br /></dt>
 <dd><p>Convenience type combining rule and setting. </p>
 </dd></dl>
 
@@ -304,70 +296,76 @@ judged input.</p></li>
 <li><p><cite>use_event_sleep_time</cite> and <cite>miss_event_sleep_time</cite> control the pull interval
 for the two queues (default 100 ms / 200 ms).</p></li>
 </ul>
+<p>Practical callback example (from the integration test):</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">miss_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">MISS_CALLBACK</span><span class="w"> </span><span class="n">missed</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="p">[</span><span class="o">&amp;</span><span class="n">miss_count</span><span class="p">](</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">NOTE_VEC</span><span class="o">&gt;</span><span class="w"> </span><span class="n">misses</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;missed!!!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">miss_count</span><span class="o">++</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">USE_CALLBACK</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">railid</span><span class="p">,</span>
+<span class="w">                                   </span><span class="kt">bool</span><span class="w">     </span><span class="n">Pressed</span><span class="p">,</span>
+<span class="w">                                   </span><span class="kt">bool</span><span class="w">     </span><span class="n">IsLate</span><span class="p">,</span>
+<span class="w">                                   </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">diff</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;used!!! &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span>
+<span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">IsLate</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot; late &quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot; early &quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">MOUSE_CUSTOM_PARSE_CALLBACK</span><span class="w"> </span><span class="n">mouse_parse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="p">[](</span><span class="kt">uint64_t</span><span class="w">                      </span><span class="n">microSecond</span><span class="p">,</span>
+<span class="w">       </span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">P_NOTE_VEC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">found_events</span><span class="p">,</span>
+<span class="w">       </span><span class="kt">uint64_t</span><span class="w">                      </span><span class="n">railID</span><span class="p">,</span>
+<span class="w">       </span><span class="kt">int</span><span class="w">                           </span><span class="n">x</span><span class="p">,</span>
+<span class="w">       </span><span class="kt">int</span><span class="w">                           </span><span class="n">y</span><span class="p">,</span>
+<span class="w">       </span><span class="n">PDJE_Mouse_Axis_Type</span><span class="w">          </span><span class="n">axis_type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
+
+<span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetCustomEvents</span><span class="p">({</span>
+<span class="w">    </span><span class="p">.</span><span class="n">missed_event</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">missed</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">used_event</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="n">used</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">custom_mouse_parse</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">mouse_parse</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">use_event_sleep_time</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">    </span><span class="p">.</span><span class="n">miss_event_sleep_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>In practice, the callbacks are a convenient place to add audio/visual feedback
+or metrics. Reduce the sleep times (as above) for more responsive feedback.</p>
 </section>
-<section id="minimal-flow">
-<h2>Minimal Flow<a class="headerlink" href="#minimal-flow" title="Link to this heading"></a></h2>
+<section id="integration-flow-mirrors-test">
+<h2>Integration flow (mirrors test)<a class="headerlink" href="#integration-flow-mirrors-test" title="Link to this heading"></a></h2>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-0">
 C++</label><div class="sd-tab-content docutils">
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">JUDGE</span><span class="w"> </span><span class="n">judge</span><span class="p">;</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// 1) Prepare core and player</span>
+<span class="n">PDJE</span><span class="w"> </span><span class="n">engine</span><span class="p">{</span><span class="s">&quot;testRoot.db&quot;</span><span class="p">};</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">td</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">SearchTrack</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="n">engine</span><span class="p">.</span><span class="n">InitPlayer</span><span class="p">(</span><span class="n">PLAY_MODE</span><span class="o">::</span><span class="n">FULL_PRE_RENDER</span><span class="p">,</span><span class="w"> </span><span class="n">td</span><span class="p">.</span><span class="n">front</span><span class="p">(),</span><span class="w"> </span><span class="mi">480</span><span class="p">);</span>
+
+<span class="c1">// 2) Discover input devices and map to rails</span>
 <span class="n">PDJE_Input</span><span class="w"> </span><span class="n">input</span><span class="p">;</span>
 <span class="n">input</span><span class="p">.</span><span class="n">Init</span><span class="p">();</span>
-<span class="c1">// data lines</span>
-<span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetCoreLine</span><span class="p">(</span><span class="n">core_line</span><span class="p">);</span>
-<span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetInputLine</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">());</span>
-
-<span class="c1">// device mapping</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">devs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">GetDevs</span><span class="p">();</span>
 <span class="n">DEV_LIST</span><span class="w"> </span><span class="n">keyboards</span><span class="p">;</span>
-<span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">devs</span><span class="p">){</span>
-<span class="w">    </span><span class="k">switch</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">Type</span><span class="p">){</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">KEYBOARD</span><span class="p">:</span>
-<span class="w">        </span><span class="n">keyboards</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-<span class="w">        </span><span class="k">break</span><span class="p">;</span>
-<span class="w">    </span><span class="k">default</span><span class="o">:</span>
-<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">JUDGE</span><span class="w"> </span><span class="n">judge</span><span class="p">;</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">devs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">Type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">KEYBOARD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">keyboards</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+<span class="w">        </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetRail</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// device, key, offset, rail</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-<span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">dev</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">devs</span><span class="p">){</span>
-<span class="w">    </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">INPUT_CONFIG</span><span class="w"> </span><span class="n">kb</span><span class="p">{};</span>
-<span class="w">    </span><span class="n">kb</span><span class="p">.</span><span class="n">Device_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dev</span><span class="p">.</span><span class="n">device_specific_id</span><span class="p">;</span>
-<span class="w">    </span><span class="n">kb</span><span class="p">.</span><span class="n">DeviceType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">KEYBOARD</span><span class="p">;</span>
-<span class="w">    </span><span class="n">kb</span><span class="p">.</span><span class="n">DeviceKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">A</span><span class="p">;</span>
-<span class="w">    </span><span class="n">kb</span><span class="p">.</span><span class="n">MatchRail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="n">kb</span><span class="p">.</span><span class="n">offset_microsecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1000</span><span class="p">;</span><span class="c1">//-1ms</span>
-<span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetInputRule</span><span class="p">(</span><span class="n">kb</span><span class="p">);</span>
-<span class="w">    </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">INPUT_CONFIG</span><span class="w"> </span><span class="n">kb_second</span><span class="p">{};</span>
-<span class="w">    </span><span class="n">kb_second</span><span class="p">.</span><span class="n">Device_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dev</span><span class="p">.</span><span class="n">device_specific_id</span><span class="p">;</span>
-<span class="w">    </span><span class="n">kb_second</span><span class="p">.</span><span class="n">DeviceType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">KEYBOARD</span><span class="p">;</span>
-<span class="w">    </span><span class="n">kb_second</span><span class="p">.</span><span class="n">DeviceKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">S</span><span class="p">;</span>
-<span class="w">    </span><span class="n">kb_second</span><span class="p">.</span><span class="n">MatchRail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">    </span><span class="n">kb_second</span><span class="p">.</span><span class="n">offset_microsecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span><span class="c1">//+2ms</span>
-<span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetInputRule</span><span class="p">(</span><span class="n">kb_second</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="n">input</span><span class="p">.</span><span class="n">Config</span><span class="p">(</span><span class="n">keyboards</span><span class="p">);</span>
 
-<span class="c1">// hit window</span>
-<span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetEventRule</span><span class="p">(</span>
-<span class="w">    </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">EVENT_RULE</span><span class="p">{</span><span class="mi">50&#39;000</span><span class="p">,</span><span class="w"> </span><span class="mi">30&#39;000</span><span class="p">});</span><span class="w"> </span><span class="c1">// miss/use in microseconds</span>
-
-<span class="c1">// callbacks (optional)</span>
-<span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">Custom_Events</span><span class="w"> </span><span class="n">events</span><span class="p">{};</span>
-<span class="n">events</span><span class="p">.</span><span class="n">used_event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">rail</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">pressed</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">late</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">diff</span><span class="p">){};</span>
-<span class="n">events</span><span class="p">.</span><span class="n">missed_event</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">NOTE_VEC</span><span class="o">&gt;</span><span class="w"> </span><span class="n">missed</span><span class="p">){};</span>
-<span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetCustomEvents</span><span class="p">(</span><span class="n">events</span><span class="p">);</span>
-
-<span class="c1">// notes</span>
-<span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">NoteObjectCollector</span><span class="p">(</span><span class="s">&quot;SIMPLE&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y_frame</span><span class="p">,</span><span class="w"> </span><span class="n">y2_frame</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="c1">// OR</span>
+<span class="c1">// 3) Collect notes from track data</span>
 <span class="n">OBJ_SETTER_CALLBACK</span><span class="w"> </span><span class="n">cb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">        </span><span class="n">noteType</span><span class="p">,</span>
-<span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w">           </span><span class="n">noteDetail</span><span class="p">,</span>
-<span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">        </span><span class="n">firstArg</span><span class="p">,</span>
-<span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">        </span><span class="n">secondArg</span><span class="p">,</span>
-<span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">        </span><span class="n">thirdArg</span><span class="p">,</span>
-<span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">Y_Axis</span><span class="p">,</span>
-<span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">Y_Axis_2</span><span class="p">,</span>
-<span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w">           </span><span class="n">railID</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                             </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w">           </span><span class="n">noteDetail</span><span class="p">,</span>
+<span class="w">                             </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">        </span><span class="n">firstArg</span><span class="p">,</span>
+<span class="w">                             </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">        </span><span class="n">secondArg</span><span class="p">,</span>
+<span class="w">                             </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">        </span><span class="n">thirdArg</span><span class="p">,</span>
+<span class="w">                             </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">Y_Axis</span><span class="p">,</span>
+<span class="w">                             </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">Y_Axis_2</span><span class="p">,</span>
+<span class="w">                             </span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w">           </span><span class="n">railID</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">NoteObjectCollector</span><span class="p">(</span><span class="n">noteType</span><span class="p">,</span>
 <span class="w">                                    </span><span class="n">noteDetail</span><span class="p">,</span>
 <span class="w">                                    </span><span class="n">firstArg</span><span class="p">,</span>
@@ -376,18 +374,63 @@ C++</label><div class="sd-tab-content docutils">
 <span class="w">                                    </span><span class="n">Y_Axis</span><span class="p">,</span>
 <span class="w">                                    </span><span class="n">Y_Axis_2</span><span class="p">,</span>
 <span class="w">                                    </span><span class="n">railID</span><span class="p">);</span>
-<span class="p">};</span><span class="c1">//make callback</span>
-<span class="n">engine</span><span class="p">.</span><span class="n">GetNoteObjects</span><span class="p">(</span><span class="n">td</span><span class="p">.</span><span class="n">front</span><span class="p">(),</span><span class="w"> </span><span class="n">cb</span><span class="p">);</span><span class="c1">//td is Trackdata.</span>
-<span class="c1">//this function extracts note datas from track data.</span>
+<span class="p">};</span>
+<span class="n">engine</span><span class="p">.</span><span class="n">GetNoteObjects</span><span class="p">(</span><span class="n">td</span><span class="p">.</span><span class="n">front</span><span class="p">(),</span><span class="w"> </span><span class="n">cb</span><span class="p">);</span>
 
-<span class="c1">// run</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">judge</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span><span class="w"> </span><span class="c1">// returns JUDGE_STATUS</span>
-<span class="n">input</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span><span class="c1">//run input module</span>
-<span class="n">engine</span><span class="p">.</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Activate</span><span class="p">();</span><span class="c1">//run music player</span>
-<span class="c1">// ...</span>
+<span class="c1">// 4) Configure event rules and callbacks</span>
+<span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetEventRule</span><span class="p">({</span><span class="w"> </span><span class="p">.</span><span class="n">miss_range_microsecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1&#39;000&#39;005</span><span class="p">,</span>
+<span class="w">                           </span><span class="p">.</span><span class="n">use_range_microsecond</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1&#39;000&#39;000</span><span class="w"> </span><span class="p">});</span>
+<span class="c1">// (See callback example above.)</span>
+
+<span class="c1">// 5) Wire data lines</span>
+<span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetInputLine</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">());</span>
+<span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetCoreLine</span><span class="p">(</span><span class="n">engine</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">());</span>
+
+<span class="c1">// 6) Start judge → input → playback (tested order)</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">judge</span><span class="p">.</span><span class="n">Start</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">JUDGE_STATUS</span><span class="o">::</span><span class="n">OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Failed to start judge&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">input</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
+<span class="n">engine</span><span class="p">.</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Activate</span><span class="p">();</span>
+
+<span class="c1">// 7) Shutdown</span>
 <span class="n">engine</span><span class="p">.</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Deactivate</span><span class="p">();</span>
 <span class="n">input</span><span class="p">.</span><span class="n">Kill</span><span class="p">();</span>
 <span class="n">judge</span><span class="p">.</span><span class="n">End</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-1">
+GDSCRIPT</label><div class="sd-tab-content docutils">
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="c1">#judge module init phase</span>
+<span class="o">$</span><span class="n">PDJE_Judge_Module</span><span class="o">.</span><span class="n">AddDataLines</span><span class="p">(</span><span class="o">$</span><span class="n">PDJE_Input_Module</span><span class="p">,</span><span class="w"> </span><span class="n">engine</span><span class="p">)</span>
+<span class="k">for</span><span class="w"> </span><span class="n">dev</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">selected_devices</span><span class="p">:</span>
+<span class="w">  </span><span class="o">$</span><span class="n">PDJE_Judge_Module</span><span class="o">.</span><span class="n">DeviceAdd</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">InputLine</span><span class="o">.</span><span class="n">BTN_L</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="c1">#link mouse left button into rail id 5</span>
+<span class="w">  </span><span class="c1">#if dev&#39;s type is keyboard</span>
+<span class="w">  </span><span class="c1">#$PDJE_Judge_Module.DeviceAdd(dev, InputLine.PDJE_KEY.A, 0, 5)</span>
+<span class="w">  </span><span class="c1">#$PDJE_Judge_Module.DeviceAdd(dev, InputLine.PDJE_KEY.S, 0, 5)</span>
+<span class="w">  </span><span class="c1">#$PDJE_Judge_Module.DeviceAdd(dev, InputLine.PDJE_KEY.D, 0, 5)</span>
+<span class="w">  </span><span class="c1">#$PDJE_Judge_Module.DeviceAdd(dev, InputLine.PDJE_KEY.F, 0, 5)</span>
+<span class="w">  </span><span class="c1">#link all keyboard&#39;s &quot;ASDF&quot; into rail id 5</span>
+<span class="k">var</span><span class="w"> </span><span class="n">use_range</span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="c1"># use range +- 40ms</span>
+<span class="k">var</span><span class="w"> </span><span class="n">miss_range</span><span class="o">=</span><span class="w"> </span><span class="mi">61</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="c1"># miss range +-41ms</span>
+<span class="k">var</span><span class="w"> </span><span class="n">use_sleep</span><span class="o">=</span><span class="mi">1</span><span class="w"> </span><span class="c1">#use evnet thread sleeps 1ms on every loop</span>
+<span class="k">var</span><span class="w"> </span><span class="n">miss_sleep</span><span class="o">=</span><span class="mi">3</span><span class="w"> </span><span class="c1">#miss event thread sleeps 3ms on every loop</span>
+<span class="k">var</span><span class="w"> </span><span class="n">custom_mouse_event</span><span class="o">=</span><span class="bp">false</span><span class="w"> </span><span class="c1">#deactivate mouse custom event. you can use axis data with this.</span>
+
+<span class="o">$</span><span class="n">PDJE_Judge_Module</span><span class="o">.</span><span class="n">SetRule</span><span class="p">(</span>
+<span class="w">  </span><span class="n">use_range</span><span class="p">,</span>
+<span class="w">  </span><span class="n">miss_range</span><span class="p">,</span>
+<span class="w">  </span><span class="n">use_sleep</span><span class="p">,</span>
+<span class="w">  </span><span class="n">miss_sleep</span><span class="p">,</span>
+<span class="w">  </span><span class="n">custom_mouse_event</span>
+<span class="p">)</span><span class="c1"># set judge rules</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="o">$</span><span class="n">PDJE_Judge_Module</span><span class="o">.</span><span class="n">SetNotes</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sample_track&quot;</span><span class="p">))</span>
+
+<span class="c1">#Start Game</span>
+<span class="o">$</span><span class="n">PDJE_Judge_Module</span><span class="o">.</span><span class="n">StartJudge</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

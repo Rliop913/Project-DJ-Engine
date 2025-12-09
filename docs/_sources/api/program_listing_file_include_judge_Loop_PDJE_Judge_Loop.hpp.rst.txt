@@ -11,6 +11,7 @@ Program Listing for File PDJE_Judge_Loop.hpp
 .. code-block:: cpp
 
    #pragma once
+   #include "InputParser.hpp"
    #include "Input_State.hpp"
    
    #include "PDJE_Highres_Clock.hpp"
@@ -19,6 +20,7 @@ Program Listing for File PDJE_Judge_Loop.hpp
    #include "PDJE_Note_OBJ.hpp"
    #include "PDJE_Rule.hpp"
    #include <cstdint>
+   #include <optional>
    #include <vector>
    
    namespace PDJE_JUDGE {
@@ -38,16 +40,29 @@ Program Listing for File PDJE_Judge_Loop.hpp
        Judge_Init               *init_datas;
        PDJE_HIGHRES_CLOCK::CLOCK clock_root;
        inline void
-       Cut();
-       bool
+       Cut(const uint64_t cut_range);
+       PARSE_OUT *
        PreProcess();
+   
+       std::optional<uint64_t>
+       QueryRailid(const RAIL_META &meta)
+       {
+           auto itr = init_datas->devparser.railData.find(meta);
+           if (itr != init_datas->devparser.railData.end()) {
+               if (itr->first == meta) {
+                   return itr->second.MatchRail;
+               }
+           }
+           return std::nullopt;
+       }
        void
-       ParseMouse(INPUT_RULE &rule, const BITMASK ev);
+       ParseMouse(const BITMASK ev);
+   
        template <PDJE_Dev_Type D>
        void
        UseEvent(const PDJE_Input_Log &ilog);
-       bool
-       FindDevSetting(const INPUT_RULE &rule, INPUT_SETTING &setting);
+       // bool
+       // FindDevSetting(const INPUT_RULE &rule, INPUT_SETTING &setting);
        void
        Match(const LOCAL_TIME  input_time,
              const P_NOTE_VEC &note_list,

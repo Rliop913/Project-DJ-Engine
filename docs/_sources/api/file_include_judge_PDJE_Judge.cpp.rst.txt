@@ -38,6 +38,8 @@ Includes
 
 - ``atomic``
 
+- ``exception``
+
 - ``thread``
 
 - ``unordered_map``

@@ -103,22 +103,6 @@ Included By
 
 - :ref:`file_include_core_db_trackDB.cpp`
 
-- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Add_AddController.cpp`
-
-- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Blame_BlameController.cpp`
-
-- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Branch_editorBranch.cpp`
-
-- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Commit_editorCommit.cpp`
-
-- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Diff_DiffController.cpp`
-
-- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Log_gitLog.cpp`
-
-- :ref:`file_include_core_editor_DEPRECATE_GitWrap_PDJE_GitHandler.cpp`
-
-- :ref:`file_include_core_editor_DEPRECATE_GitWrap_gitWrapper.cpp`
-
 - :ref:`file_include_core_editor_TimeLine_EventMarker_EventMarker.hpp`
 
 - :ref:`file_include_core_editor_TimeLine_GitDataPack_GitDatas.hpp`

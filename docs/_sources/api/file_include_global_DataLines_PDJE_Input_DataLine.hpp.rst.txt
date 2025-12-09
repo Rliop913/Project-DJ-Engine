@@ -56,6 +56,10 @@ Included By
 
 - :ref:`file_include_judge_Init_PDJE_Judge_Init.hpp`
 
+- :ref:`file_include_judge_InputParser_InputParser.cpp`
+
+- :ref:`file_include_judge_InputParser_InputParser.hpp`
+
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.cpp`
 
 

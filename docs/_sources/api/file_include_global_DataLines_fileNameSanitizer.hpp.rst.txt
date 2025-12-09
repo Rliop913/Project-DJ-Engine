@@ -67,12 +67,6 @@ Included By
 
 - :ref:`file_include_core_db_trackDB.hpp`
 
-- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Diff_DiffController.hpp`
-
-- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Log_gitLog.hpp`
-
-- :ref:`file_include_core_editor_DEPRECATE_GitWrap_gitWrapper.hpp`
-
 - :ref:`file_include_core_editor_TimeLine_JSONWrap_EditorArgs.hpp`
 
 - :ref:`file_include_core_editor_TimeLine_JSONWrap_jsonWrapper.hpp`

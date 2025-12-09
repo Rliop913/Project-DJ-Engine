@@ -90,8 +90,9 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_DataLine.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Judge_Init_Structs.hpp&quot;</span>
 
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;InputParser.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Note_OBJ.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Rule.hpp&quot;</span>
-
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unordered_map&gt;</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_JUDGE</span><span class="w"> </span><span class="p">{</span>
@@ -113,11 +114,17 @@
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">OBJ</span><span class="o">&gt;</span><span class="w"> </span><span class="n">note_objects</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// rules</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">EVENT_RULE</span><span class="o">&gt;</span><span class="w">                     </span><span class="n">ev_rule</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">INPUT_RULE</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT_SETTING</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dev_rules</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">EVENT_RULE</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ev_rule</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">InputParser</span><span class="w"> </span><span class="n">devparser</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// std::unordered_map&lt;INPUT_RULE, INPUT_SETTING&gt; dev_rules;</span>
+<span class="w">    </span><span class="c1">// RAILID_TO_OFFSET                              id_offset;</span>
 
 <span class="w">    </span><span class="kt">void</span>
-<span class="w">    </span><span class="nf">SetInputRule</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">INPUT_CONFIG</span><span class="w"> </span><span class="o">&amp;</span><span class="n">device_config</span><span class="p">);</span>
+<span class="w">    </span><span class="nf">SetRail</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DeviceData</span><span class="w"> </span><span class="o">&amp;</span><span class="n">devData</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">BITMASK</span><span class="w">     </span><span class="n">DeviceKey</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">int64_t</span><span class="w">     </span><span class="n">offset_microsecond</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w">    </span><span class="n">MatchRail</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">void</span>
 <span class="w">    </span><span class="nf">SetEventRule</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EVENT_RULE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">event_rule</span><span class="p">);</span>
 

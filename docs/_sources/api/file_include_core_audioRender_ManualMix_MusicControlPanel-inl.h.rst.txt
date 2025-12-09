@@ -37,6 +37,8 @@ Includes
 
 - ``MusicControlPanel.hpp`` (:ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.hpp`)
 
+- ``PDJE_Benchmark.hpp`` (:ref:`file_include_global_PDJE_Benchmark.hpp`)
+
 - ``hwy/foreach_target.h``
 
 - ``hwy/highway.h``

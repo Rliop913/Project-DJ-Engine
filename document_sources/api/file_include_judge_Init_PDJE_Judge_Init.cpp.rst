@@ -30,11 +30,15 @@ Includes
 --------
 
 
+- ``PDJE_Input_Device_Data.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_Device_Data.hpp`)
+
 - ``PDJE_Judge_Init.hpp`` (:ref:`file_include_judge_Init_PDJE_Judge_Init.hpp`)
 
 - ``PDJE_Note_OBJ.hpp`` (:ref:`file_include_judge_NoteOBJ_PDJE_Note_OBJ.hpp`)
 
-- ``iostream``
+- ``PDJE_Rule.hpp`` (:ref:`file_include_judge_PDJE_Rule.hpp`)
+
+- ``cstdint``
 
 
 

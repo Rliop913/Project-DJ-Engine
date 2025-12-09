@@ -92,6 +92,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_SYNC_CORE.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdint&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unordered_map&gt;</span>
 
@@ -112,8 +113,8 @@
 <span class="p">};</span>
 
 <span class="k">struct</span><span class="w"> </span><span class="nc">Queues</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">PDJE_Buffer_Arena</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="p">,</span><span class="w"> </span><span class="n">NOTE_VEC</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">miss_queue</span><span class="p">;</span>
-<span class="w">    </span><span class="n">PDJE_Buffer_Arena</span><span class="o">&lt;</span><span class="n">useDatas</span><span class="o">&gt;</span><span class="w">                               </span><span class="n">use_queue</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Atomic_Double_Buffer</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="p">,</span><span class="w"> </span><span class="n">NOTE_VEC</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">miss_queue</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Atomic_Double_Buffer</span><span class="o">&lt;</span><span class="n">useDatas</span><span class="o">&gt;</span><span class="w">                               </span><span class="n">use_queue</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Queues</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">miss_queue</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="w"> </span><span class="n">use_queue</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">    </span><span class="p">}</span>
@@ -134,17 +135,19 @@
 <span class="w">    </span><span class="n">LOCAL_TIME</span><span class="w"> </span><span class="n">local_microsecond_position</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">uint64_t</span><span class="w">   </span><span class="n">global_local_diff</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">LOCAL_TIME</span><span class="w"> </span><span class="n">log_begin</span><span class="p">;</span>
-<span class="w">    </span><span class="n">LOCAL_TIME</span><span class="w"> </span><span class="n">log_end</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// LOCAL_TIME log_begin;</span>
+<span class="w">    </span><span class="c1">// LOCAL_TIME log_end;</span>
 
-<span class="w">    </span><span class="n">LOCAL_TIME</span><span class="w"> </span><span class="n">use_range</span><span class="p">;</span>
-<span class="w">    </span><span class="n">LOCAL_TIME</span><span class="w"> </span><span class="n">cut_range</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LOCAL_TIME</span><span class="w">  </span><span class="n">use_range</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">strCache</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// LOCAL_TIME cut_range;</span>
 
 <span class="w">    </span><span class="n">audioSyncData</span><span class="w"> </span><span class="n">synced_data</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">isLate</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">INPUT_SETTING</span><span class="w"> </span><span class="n">setting</span><span class="p">;</span>
+<span class="w">    </span><span class="n">RAIL_META</span><span class="w"> </span><span class="n">meta</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">      </span><span class="n">isLate</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint64_t</span><span class="w">  </span><span class="n">railid</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// INPUT_SETTING setting;</span>
 
 <span class="w">    </span><span class="kt">uint64_t</span><span class="w">                     </span><span class="n">diff</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">mouse_btn_event</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mouse_btn_event_queue</span><span class="p">;</span>

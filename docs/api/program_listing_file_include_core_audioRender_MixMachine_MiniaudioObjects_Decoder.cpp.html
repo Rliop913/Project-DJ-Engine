@@ -174,6 +174,21 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
+<span class="kt">bool</span>
+<span class="n">Decoder</span><span class="o">::</span><span class="n">getRange</span><span class="p">(</span><span class="n">FRAME_POS</span><span class="w"> </span><span class="n">numFrames</span><span class="p">,</span><span class="w"> </span><span class="n">SIMD_FLOAT</span><span class="w"> </span><span class="o">&amp;</span><span class="n">buffer</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">FRAME_POS</span><span class="w"> </span><span class="n">BufferSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numFrames</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CHANNEL</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">BufferSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">buffer</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">BufferSize</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ma_decoder_read_pcm_frames</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dec</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">numFrames</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span>
+<span class="w">        </span><span class="n">MA_SUCCESS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;failed to read pcm frames from musicData. from Decoder getRange&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
 
 <span class="n">Decoder</span><span class="o">::~</span><span class="n">Decoder</span><span class="p">()</span>
 <span class="p">{</span>

@@ -16,6 +16,7 @@ Subdirectories
 --------------
 
 - :ref:`dir_include_judge_Init`
+- :ref:`dir_include_judge_InputParser`
 - :ref:`dir_include_judge_Loop`
 - :ref:`dir_include_judge_NoteOBJ`
 

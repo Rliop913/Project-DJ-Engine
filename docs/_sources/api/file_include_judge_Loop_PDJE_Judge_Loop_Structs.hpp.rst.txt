@@ -44,6 +44,8 @@ Includes
 
 - ``optional``
 
+- ``string``
+
 - ``thread``
 
 - ``unordered_map``

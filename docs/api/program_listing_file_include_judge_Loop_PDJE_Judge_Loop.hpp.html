@@ -84,6 +84,7 @@
 <span id="program-listing-file-include-judge-loop-pdje-judge-loop-hpp"></span><h1>Program Listing for File PDJE_Judge_Loop.hpp<a class="headerlink" href="#program-listing-for-file-pdje-judge-loop-hpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_judge_Loop_PDJE_Judge_Loop.hpp.html#file-include-judge-loop-pdje-judge-loop-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/judge/Loop/PDJE_Judge_Loop.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;InputParser.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Input_State.hpp&quot;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Highres_Clock.hpp&quot;</span>
@@ -92,6 +93,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Note_OBJ.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Rule.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdint&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_JUDGE</span><span class="w"> </span><span class="p">{</span>
@@ -111,16 +113,29 @@
 <span class="w">    </span><span class="n">Judge_Init</span><span class="w">               </span><span class="o">*</span><span class="n">init_datas</span><span class="p">;</span>
 <span class="w">    </span><span class="n">PDJE_HIGHRES_CLOCK</span><span class="o">::</span><span class="n">CLOCK</span><span class="w"> </span><span class="n">clock_root</span><span class="p">;</span>
 <span class="w">    </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
-<span class="w">    </span><span class="nf">Cut</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">Cut</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">cut_range</span><span class="p">);</span>
+<span class="w">    </span><span class="n">PARSE_OUT</span><span class="w"> </span><span class="o">*</span>
 <span class="w">    </span><span class="nf">PreProcess</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="n">QueryRailid</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">RAIL_META</span><span class="w"> </span><span class="o">&amp;</span><span class="n">meta</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">itr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">devparser</span><span class="p">.</span><span class="n">railData</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">meta</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">itr</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">devparser</span><span class="p">.</span><span class="n">railData</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">itr</span><span class="o">-&gt;</span><span class="n">first</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">meta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">itr</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">.</span><span class="n">MatchRail</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">void</span>
-<span class="w">    </span><span class="nf">ParseMouse</span><span class="p">(</span><span class="n">INPUT_RULE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rule</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BITMASK</span><span class="w"> </span><span class="n">ev</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ParseMouse</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">BITMASK</span><span class="w"> </span><span class="n">ev</span><span class="p">);</span>
+
 <span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="n">PDJE_Dev_Type</span><span class="w"> </span><span class="n">D</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="kt">void</span>
 <span class="w">    </span><span class="n">UseEvent</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_Input_Log</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ilog</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="nf">FindDevSetting</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">INPUT_RULE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rule</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT_SETTING</span><span class="w"> </span><span class="o">&amp;</span><span class="n">setting</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// bool</span>
+<span class="w">    </span><span class="c1">// FindDevSetting(const INPUT_RULE &amp;rule, INPUT_SETTING &amp;setting);</span>
 <span class="w">    </span><span class="kt">void</span>
 <span class="w">    </span><span class="nf">Match</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">LOCAL_TIME</span><span class="w">  </span><span class="n">input_time</span><span class="p">,</span>
 <span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="n">P_NOTE_VEC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">note_list</span><span class="p">,</span>

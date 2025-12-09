@@ -358,11 +358,26 @@
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="91"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="93" refid="structDecoder_1a8b70f4475ae0852b138d63f6d8ddb298" refkind="member"><highlight class="normal"><ref refid="structDecoder_1a8b70f4475ae0852b138d63f6d8ddb298" kindref="member">Decoder::~Decoder</ref>()</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="structDecoder_1adaa739a0c93e787a447e52725e352ddc" refkind="member"><highlight class="normal"><ref refid="structDecoder_1af5edf9c75d6929fc76133c87166cee2f" kindref="member">Decoder::getRange</ref>(<ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref><sp/>numFrames,<sp/><ref refid="FrameCalc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref><sp/>&amp;buffer)</highlight></codeline>
 <codeline lineno="94"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>ma_decoder_uninit(&amp;<ref refid="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" kindref="member">dec</ref>);</highlight></codeline>
-<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref><sp/>BufferSize<sp/>=<sp/>numFrames<sp/>*<sp/><ref refid="FrameCalc_8hpp_1ace6a11e892466500d47d1f45f042bc53" kindref="member">CHANNEL</ref>;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer.size()<sp/>&lt;<sp/>BufferSize)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffer.resize(BufferSize);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ma_decoder_read_pcm_frames(&amp;<ref refid="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" kindref="member">dec</ref>,<sp/>buffer.data(),<sp/>numFrames,<sp/>NULL)<sp/>!=</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MA_SUCCESS)<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>read<sp/>pcm<sp/>frames<sp/>from<sp/>musicData.<sp/>from<sp/>Decoder<sp/>getRange&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="structDecoder_1a8b70f4475ae0852b138d63f6d8ddb298" refkind="member"><highlight class="normal"><ref refid="structDecoder_1a8b70f4475ae0852b138d63f6d8ddb298" kindref="member">Decoder::~Decoder</ref>()</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>ma_decoder_uninit(&amp;<ref refid="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" kindref="member">dec</ref>);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="include/core/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp"/>
   </compounddef>

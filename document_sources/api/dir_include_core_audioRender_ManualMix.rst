@@ -16,6 +16,7 @@ Subdirectories
 --------------
 
 - :ref:`dir_include_core_audioRender_ManualMix_ManualFausts`
+- :ref:`dir_include_core_audioRender_ManualMix_PreLoadedMusic`
 
 
 Files
@@ -26,5 +27,6 @@ Files
 - :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel-inl.h`
 - :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.cpp`
 - :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.hpp`
+- :ref:`file_include_core_audioRender_ManualMix_PredictMusic.hpp`
 
 

@@ -54,7 +54,7 @@ Included By
 
 - :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.cpp`
 
-- :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.hpp`
+- :ref:`file_include_core_audioRender_ManualMix_PreLoadedMusic_PreLoadedMusic.hpp`
 
 - :ref:`file_include_core_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp`
 

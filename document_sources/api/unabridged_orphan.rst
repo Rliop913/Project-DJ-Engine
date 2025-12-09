@@ -36,6 +36,11 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir_include_core_audioRender_ManualMix_PreLoadedMusic.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_include_core_audioRender_MixMachine.rst
 
 .. toctree::
@@ -102,46 +107,6 @@ Directories
    :maxdepth: 5
 
    dir_include_core_editor.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   dir_include_core_editor_DEPRECATE.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   dir_include_core_editor_DEPRECATE_GitWrap.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   dir_include_core_editor_DEPRECATE_GitWrap_Add.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   dir_include_core_editor_DEPRECATE_GitWrap_Blame.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   dir_include_core_editor_DEPRECATE_GitWrap_Branch.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   dir_include_core_editor_DEPRECATE_GitWrap_Commit.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   dir_include_core_editor_DEPRECATE_GitWrap_Diff.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   dir_include_core_editor_DEPRECATE_GitWrap_Log.rst
 
 .. toctree::
    :maxdepth: 5
@@ -326,6 +291,11 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir_include_judge_InputParser.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_include_judge_Loop.rst
 
 .. toctree::
@@ -351,16 +321,6 @@ Directories
 Files
 *****
 
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_core_editor_DEPRECATE_GitWrap_Add_AddController.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_core_editor_DEPRECATE_GitWrap_Add_AddController.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -411,16 +371,6 @@ Files
    :maxdepth: 5
 
    file_include_core_audioRender_MixMachine_MUSIC_CTR_BattleDj.hpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_core_editor_DEPRECATE_GitWrap_Blame_BlameController.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_core_editor_DEPRECATE_GitWrap_Blame_BlameController.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -530,16 +480,6 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_DEPRECATE_GitWrap_Diff_DiffController.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_core_editor_DEPRECATE_GitWrap_Diff_DiffController.hpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
    file_include_core_audioRender_ManualMix_ManualFausts_distortionMan.hpp.rst
 
 .. toctree::
@@ -566,26 +506,6 @@ Files
    :maxdepth: 5
 
    file_include_core_editor_TimeLine_JSONWrap_EditorArgs.hpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_core_editor_DEPRECATE_GitWrap_Branch_editorBranch.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_core_editor_DEPRECATE_GitWrap_Branch_editorBranch.hpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_core_editor_DEPRECATE_GitWrap_Commit_editorCommit.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_core_editor_DEPRECATE_GitWrap_Commit_editorCommit.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -710,32 +630,12 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_core_editor_DEPRECATE_GitWrap_Log_gitLog.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_core_editor_DEPRECATE_GitWrap_Log_gitLog.hpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
    file_include_core_editor_TimeLine_GitDataPack_GitRAII.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
    file_include_tests_gittest.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_core_editor_DEPRECATE_GitWrap_gitWrapper.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_core_editor_DEPRECATE_GitWrap_gitWrapper.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -766,6 +666,16 @@ Files
    :maxdepth: 5
 
    file_include_input_IPC_transmission_windows_InputLoop.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_judge_InputParser_InputParser.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_judge_InputParser_InputParser.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1050,6 +960,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_global_PDJE_Benchmark.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_global_DataLines_PDJE_Buffer.hpp.rst
 
 .. toctree::
@@ -1081,11 +996,6 @@ Files
    :maxdepth: 5
 
    file_include_global_PDJE_EXPORT_SETTER.hpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_core_editor_DEPRECATE_GitWrap_PDJE_GitHandler.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1231,6 +1141,21 @@ Files
    :maxdepth: 5
 
    file_include_core_audioRender_ManualMix_ManualFausts_phaserMan.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_audioRender_ManualMix_PredictMusic.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_audioRender_ManualMix_PreLoadedMusic_PreLoadedMusic.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_audioRender_ManualMix_PreLoadedMusic_PreLoadedMusic.hpp.rst
 
 .. toctree::
    :maxdepth: 5

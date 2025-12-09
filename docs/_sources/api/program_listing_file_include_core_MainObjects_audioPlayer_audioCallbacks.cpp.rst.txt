@@ -12,6 +12,7 @@ Program Listing for File audioCallbacks.cpp
 
    #include "audioCallbacks.hpp"
    #include "FrameCalc.hpp"
+   #include "PDJE_Benchmark.hpp"
    #include <atomic>
    #include <cstring>
    
@@ -72,10 +73,12 @@ Program Listing for File audioCallbacks.cpp
                           const void *pInput,
                           ma_uint32   frameCount)
    {
+       WBCH("fullprerender callback calc start")
        auto rendered =
            reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
        rendered->CountUp(frameCount);
        rendered->Get(reinterpret_cast<float *>(pOutput), frameCount);
+       WBCH("fullprerender callback calc end")
    }
    
    void
@@ -84,12 +87,14 @@ Program Listing for File audioCallbacks.cpp
                          const void *pInput,
                          ma_uint32   frameCount)
    {
+       WBCH("hybridrender callback calc start")
        auto rendered =
            reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
        rendered->CountUp(frameCount);
        rendered->GetAfterManFX(reinterpret_cast<float *>(pOutput), frameCount);
        rendered->MusCtrPanel->GetPCMFrames(reinterpret_cast<float *>(pOutput),
                                            frameCount);
+       WBCH("hybridrender callback calc end")
    }
    
    void
@@ -98,8 +103,10 @@ Program Listing for File audioCallbacks.cpp
                              const void *pInput,
                              ma_uint32   frameCount)
    {
+       WBCH("full manual render callback calc start")
        auto Data = reinterpret_cast<audioEngineDataStruct *>(pDevice->pUserData);
        Data->CountUp(frameCount);
        Data->MusCtrPanel->GetPCMFrames(reinterpret_cast<float *>(pOutput),
                                        frameCount);
+       WBCH("full manual render callback calc end")
    }

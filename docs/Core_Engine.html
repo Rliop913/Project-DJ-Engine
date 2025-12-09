@@ -53,63 +53,19 @@
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="Getting%20Started.html">Getting Started</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Core_Engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#before-playback">Before Playback</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#before-playback-step-1-initialize-pdje-core-engine">Before Playback Step-1: initialize PDJE core engine</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv44PDJE"><code class="docutils literal notranslate"><span class="pre">PDJE</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Core_Engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#playback-api">Playback API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#initialization-previously-before-playback-step-1">Initialization (previously “Before Playback Step-1”)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-music-track-previously-before-playback-step-2">Search Music &amp; Track (previously “Before Playback Step-2”)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#init-activate-deactivate-audio-player-previously-before-playback-step-3">Init, Activate &amp; Deactivate Audio Player (previously “Before Playback Step-3”)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#player-fx-music-control-previously-on-playback">Player FX &amp; Music Control (previously “On Playback”)</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#before-playback-step-2-search-music-track">Before Playback Step-2: Search Music &amp; Track</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd"><code class="docutils literal notranslate"><span class="pre">SearchMusic()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N4PDJE11SearchTrackERK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">SearchTrack()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editor-api">Editor API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#editor-step-1-create-manage-db">Editor Step-1: Create &amp; Manage DB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editor-step-2-editing-control-history-view">Editor Step-2: Editing Control &amp; History view</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#before-playback-step-3-init-activate-deactivate-audio-player">Before Playback Step-3: Init, Activate &amp; Deactivate Audio Player</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj"><code class="docutils literal notranslate"><span class="pre">InitPlayer()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N11audioPlayer8ActivateEv"><code class="docutils literal notranslate"><span class="pre">Activate()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N4PDJE11ResetPlayerEv"><code class="docutils literal notranslate"><span class="pre">ResetPlayer()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N11audioPlayer10DeactivateEv"><code class="docutils literal notranslate"><span class="pre">Deactivate()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#on-playback">On Playback</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#on-playback-step-1-get-use-fx-controller-panel">On Playback Step-1: Get &amp; Use FX Controller Panel</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N11audioPlayer17GetFXControlPanelERK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">GetFXControlPanel()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14FXControlPanel9FX_ON_OFFE6FXListb"><code class="docutils literal notranslate"><span class="pre">FX_ON_OFF()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv46FXList"><code class="docutils literal notranslate"><span class="pre">FXList</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14FXControlPanel12GetArgSetterE6FXList"><code class="docutils literal notranslate"><span class="pre">GetArgSetter()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N14FXControlPanel16checkSomethingOnEv"><code class="docutils literal notranslate"><span class="pre">checkSomethingOn()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#on-playback-step-2-get-use-music-controller-panel">On Playback Step-2: Get &amp; Use Music Controller Panel</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv417MusicControlPanel"><code class="docutils literal notranslate"><span class="pre">MusicControlPanel</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N11audioPlayer20GetMusicControlPanelEv"><code class="docutils literal notranslate"><span class="pre">GetMusicControlPanel()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17MusicControlPanel9LoadMusicER6litedbRK7musdata"><code class="docutils literal notranslate"><span class="pre">LoadMusic()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17MusicControlPanel8SetMusicERK11UNSANITIZEDKb"><code class="docutils literal notranslate"><span class="pre">SetMusic()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17MusicControlPanel8CueMusicERK11UNSANITIZEDKy"><code class="docutils literal notranslate"><span class="pre">CueMusic()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17MusicControlPanel18GetLoadedMusicListEv"><code class="docutils literal notranslate"><span class="pre">GetLoadedMusicList()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N17MusicControlPanel11getFXHandleERK11UNSANITIZED"><code class="docutils literal notranslate"><span class="pre">getFXHandle()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#editor-api">Editor API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#editor-step-1-create-manage-db">Editor Step-1: Create &amp; Manage DB</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE"><code class="docutils literal notranslate"><span class="pre">InitEditor()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N4PDJE11CloseEditorEv"><code class="docutils literal notranslate"><span class="pre">CloseEditor()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N4PDJE15GetEditorObjectEv"><code class="docutils literal notranslate"><span class="pre">GetEditorObject()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N12editorObject15DESTROY_PROJECTEv"><code class="docutils literal notranslate"><span class="pre">DESTROY_PROJECT()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#editor-step-2-editing-control-history-view">Editor Step-2: Editing Control &amp; History view</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#undo">Undo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#redo">Redo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#time-travel">Time travel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#add-line">Add line</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-all-lines">Get all lines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#delete-line">Delete line</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#get-edit-logs">Get edit logs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#update-edit-logs">Update edit logs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#editor-step-3-config-new-music-render-apply-to-root-db">Editor Step-3: Config new Music &amp; Render &amp; apply to root db</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N12editorObject14ConfigNewMusicERK11UNSANITIZEDRK11UNSANITIZEDRKN2fs4pathERK13DONT_SANITIZE"><code class="docutils literal notranslate"><span class="pre">ConfigNewMusic()</span></code></a></li>
@@ -165,11 +121,15 @@
              
   <section id="core-engine">
 <h1>Core_Engine<a class="headerlink" href="#core-engine" title="Link to this heading"></a></h1>
-</section>
-<section id="before-playback">
-<h1>Before Playback<a class="headerlink" href="#before-playback" title="Link to this heading"></a></h1>
-<section id="before-playback-step-1-initialize-pdje-core-engine">
-<h2>Before Playback Step-1: initialize PDJE core engine<a class="headerlink" href="#before-playback-step-1-initialize-pdje-core-engine" title="Link to this heading"></a></h2>
+<p>This page now splits the PDJE API surface into two workflows so you can jump straight to what you need:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#playback-api"><span class="std std-ref">Playback API</span></a> — initialize playback, locate music, manage the player, and control FX/music panels.</p></li>
+<li><p><a class="reference internal" href="#editor-api"><span class="std std-ref">Editor API</span></a> — configure the database, edit content, inspect visitors, and review/restore edit histories.</p></li>
+</ul>
+<section id="playback-api">
+<span id="id1"></span><h2>Playback API<a class="headerlink" href="#playback-api" title="Link to this heading"></a></h2>
+<section id="initialization-previously-before-playback-step-1">
+<span id="before-playback-step-1"></span><h3>Initialization (previously “Before Playback Step-1”)<a class="headerlink" href="#initialization-previously-before-playback-step-1" title="Link to this heading"></a></h3>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv44PDJE">
 <span id="_CPPv34PDJE"></span><span id="_CPPv24PDJE"></span><span id="PDJE"></span><span class="target" id="classPDJE"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE</span></span></span><a class="headerlink" href="#_CPPv44PDJE" title="Link to this definition"></a><br /></dt>
@@ -233,8 +193,8 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-<section id="before-playback-step-2-search-music-track">
-<h2>Before Playback Step-2: Search Music &amp; Track<a class="headerlink" href="#before-playback-step-2-search-music-track" title="Link to this heading"></a></h2>
+<section id="search-music-track-previously-before-playback-step-2">
+<span id="before-playback-step-2"></span><h3>Search Music &amp; Track (previously “Before Playback Step-2”)<a class="headerlink" href="#search-music-track-previously-before-playback-step-2" title="Link to this heading"></a></h3>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd">
 <span id="_CPPv3N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd"></span><span id="_CPPv2N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd"></span><span id="PDJE::SearchMusic__UNSANITIZEDCR.UNSANITIZEDCR.doubleC"></span><span class="target" id="classPDJE_1a2639f4ed0f7ac3770f5eb3b6c86ae800"></span><a class="reference internal" href="api/typedef_dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0.html#_CPPv47MUS_VEC" title="MUS_VEC"><span class="n"><span class="pre">MUS_VEC</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">SearchMusic</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">Title</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">composer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bpm</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE11SearchMusicERK11UNSANITIZEDRK11UNSANITIZEDKd" title="Link to this definition"></a><br /></dt>
@@ -310,8 +270,8 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-<section id="before-playback-step-3-init-activate-deactivate-audio-player">
-<h2>Before Playback Step-3: Init, Activate &amp; Deactivate Audio Player<a class="headerlink" href="#before-playback-step-3-init-activate-deactivate-audio-player" title="Link to this heading"></a></h2>
+<section id="init-activate-deactivate-audio-player-previously-before-playback-step-3">
+<span id="before-playback-step-3"></span><h3>Init, Activate &amp; Deactivate Audio Player (previously “Before Playback Step-3”)<a class="headerlink" href="#init-activate-deactivate-audio-player-previously-before-playback-step-3" title="Link to this heading"></a></h3>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj">
 <span id="_CPPv3N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj"></span><span id="_CPPv2N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj"></span><span id="PDJE::InitPlayer__PLAY_MODE.trackdataR.unsigned-iC"></span><span class="target" id="classPDJE_1a9de8f88a9b0461472a99596fa0b5c978"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">InitPlayer</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="api/enum_PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16.html#_CPPv49PLAY_MODE" title="PLAY_MODE"><span class="n"><span class="pre">PLAY_MODE</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mode</span></span>, <a class="reference internal" href="api/structtrackdata.html#_CPPv49trackdata" title="trackdata"><span class="n"><span class="pre">trackdata</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">td</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">FrameBufferSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE10InitPlayerE9PLAY_MODER9trackdataKj" title="Link to this definition"></a><br /></dt>
@@ -436,11 +396,10 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-</section>
-<section id="on-playback">
-<h1>On Playback<a class="headerlink" href="#on-playback" title="Link to this heading"></a></h1>
-<section id="on-playback-step-1-get-use-fx-controller-panel">
-<h2>On Playback Step-1: Get &amp; Use FX Controller Panel<a class="headerlink" href="#on-playback-step-1-get-use-fx-controller-panel" title="Link to this heading"></a></h2>
+<section id="player-fx-music-control-previously-on-playback">
+<span id="on-playback"></span><h3>Player FX &amp; Music Control (previously “On Playback”)<a class="headerlink" href="#player-fx-music-control-previously-on-playback" title="Link to this heading"></a></h3>
+<section id="get-use-fx-controller-panel-previously-on-playback-step-1">
+<span id="on-playback-step-1"></span><h4>Get &amp; Use FX Controller Panel (previously “On Playback Step-1”)<a class="headerlink" href="#get-use-fx-controller-panel-previously-on-playback-step-1" title="Link to this heading"></a></h4>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer17GetFXControlPanelERK11UNSANITIZED">
 <span id="_CPPv3N11audioPlayer17GetFXControlPanelERK11UNSANITIZED"></span><span id="_CPPv2N11audioPlayer17GetFXControlPanelERK11UNSANITIZED"></span><span id="audioPlayer::GetFXControlPanel__UNSANITIZEDCR"></span><span class="target" id="classaudioPlayer_1ae2925d5fcbdb789de63a4b2856aa6b5d"></span><a class="reference internal" href="api/classFXControlPanel.html#_CPPv414FXControlPanel" title="FXControlPanel"><span class="n"><span class="pre">FXControlPanel</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-prename descclassname"><a class="reference internal" href="api/classaudioPlayer.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetFXControlPanel</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604.html#_CPPv411UNSANITIZED" title="UNSANITIZED"><span class="n"><span class="pre">UNSANITIZED</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">title</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;__PDJE__MAIN__&quot;</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11audioPlayer17GetFXControlPanelERK11UNSANITIZED" title="Link to this definition"></a><br /></dt>
@@ -681,8 +640,8 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-<section id="on-playback-step-2-get-use-music-controller-panel">
-<h2>On Playback Step-2: Get &amp; Use Music Controller Panel<a class="headerlink" href="#on-playback-step-2-get-use-music-controller-panel" title="Link to this heading"></a></h2>
+<section id="get-use-music-controller-panel-previously-on-playback-step-2">
+<span id="on-playback-step-2"></span><h4>Get &amp; Use Music Controller Panel (previously “On Playback Step-2”)<a class="headerlink" href="#get-use-music-controller-panel-previously-on-playback-step-2" title="Link to this heading"></a></h4>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv417MusicControlPanel">
 <span id="_CPPv317MusicControlPanel"></span><span id="_CPPv217MusicControlPanel"></span><span id="MusicControlPanel"></span><span class="target" id="classMusicControlPanel"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MusicControlPanel</span></span></span><a class="headerlink" href="#_CPPv417MusicControlPanel" title="Link to this definition"></a><br /></dt>
@@ -921,8 +880,10 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </div>
 </section>
 </section>
+</section>
 <section id="editor-api">
-<h1>Editor API<a class="headerlink" href="#editor-api" title="Link to this heading"></a></h1>
+<span id="id2"></span><h2>Editor API<a class="headerlink" href="#editor-api" title="Link to this heading"></a></h2>
+<p>Use these calls to prepare projects, apply edits, and audit history without the playback stack.</p>
 <p>The PDJE editor provides only an API and does not include a built-in graphical user interface (GUI).</p>
 <p>With the editor API, you can:</p>
 <ul class="simple">
@@ -931,7 +892,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <li><p>Create and edit note data that can be used in rhythm games</p></li>
 </ul>
 <section id="editor-step-1-create-manage-db">
-<h2>Editor Step-1: Create &amp; Manage DB<a class="headerlink" href="#editor-step-1-create-manage-db" title="Link to this heading"></a></h2>
+<span id="editor-step-1"></span><h3>Editor Step-1: Create &amp; Manage DB<a class="headerlink" href="#editor-step-1-create-manage-db" title="Link to this heading"></a></h3>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE">
 <span id="_CPPv3N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE"></span><span id="_CPPv2N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE"></span><span id="PDJE::InitEditor__DONT_SANITIZECR.DONT_SANITIZECR.DONT_SANITIZECR"></span><span class="target" id="classPDJE_1ae7f3ced4d2b444627df6e3efd9882e17"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">InitEditor</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">auth_email</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="api/typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d.html#_CPPv413DONT_SANITIZE" title="DONT_SANITIZE"><span class="n"><span class="pre">DONT_SANITIZE</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">projectRoot</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE10InitEditorERK13DONT_SANITIZERK13DONT_SANITIZERK13DONT_SANITIZE" title="Link to this definition"></a><br /></dt>
@@ -1026,11 +987,10 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="editor-step-2-editing-control-history-view">
-<h2>Editor Step-2: Editing Control &amp; History view<a class="headerlink" href="#editor-step-2-editing-control-history-view" title="Link to this heading"></a></h2>
+<span id="editor-step-2"></span><h3>Editor Step-2: Editing Control &amp; History view<a class="headerlink" href="#editor-step-2-editing-control-history-view" title="Link to this heading"></a></h3>
 <p>To see all functions, check <a class="reference internal" href="api/classeditorObject.html"><span class="doc">Class editorObject</span></a></p>
-</section>
 <section id="undo">
-<h2>Undo<a class="headerlink" href="#undo" title="Link to this heading"></a></h2>
+<h4>Undo<a class="headerlink" href="#undo" title="Link to this heading"></a></h4>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-24" name="sd-tab-set-6" type="radio">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-24">
@@ -1084,7 +1044,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="redo">
-<h2>Redo<a class="headerlink" href="#redo" title="Link to this heading"></a></h2>
+<h4>Redo<a class="headerlink" href="#redo" title="Link to this heading"></a></h4>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-28" name="sd-tab-set-7" type="radio">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-28">
@@ -1138,7 +1098,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="time-travel">
-<h2>Time travel<a class="headerlink" href="#time-travel" title="Link to this heading"></a></h2>
+<h4>Time travel<a class="headerlink" href="#time-travel" title="Link to this heading"></a></h4>
 <p>To get necessary args, See <a class="reference internal" href="#get-edit-logs"><span class="std std-ref">Get edit logs</span></a></p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-32" name="sd-tab-set-8" type="radio">
@@ -1226,7 +1186,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="add-line">
-<h2>Add line<a class="headerlink" href="#add-line" title="Link to this heading"></a></h2>
+<h4>Add line<a class="headerlink" href="#add-line" title="Link to this heading"></a></h4>
 <p>See <a class="reference internal" href="Editor_Format.html#about-mix-data"><span class="std std-ref">Mix Data</span></a> first.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-36" name="sd-tab-set-9" type="radio">
@@ -1414,7 +1374,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="get-all-lines">
-<h2>Get all lines<a class="headerlink" href="#get-all-lines" title="Link to this heading"></a></h2>
+<h4>Get all lines<a class="headerlink" href="#get-all-lines" title="Link to this heading"></a></h4>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-40" name="sd-tab-set-10" type="radio">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-40">
@@ -1498,7 +1458,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="delete-line">
-<h2>Delete line<a class="headerlink" href="#delete-line" title="Link to this heading"></a></h2>
+<h4>Delete line<a class="headerlink" href="#delete-line" title="Link to this heading"></a></h4>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-44" name="sd-tab-set-11" type="radio">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-44">
@@ -1595,7 +1555,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="get-edit-logs">
-<span id="id1"></span><h2>Get edit logs<a class="headerlink" href="#get-edit-logs" title="Link to this heading"></a></h2>
+<span id="id3"></span><h4>Get edit logs<a class="headerlink" href="#get-edit-logs" title="Link to this heading"></a></h4>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-48" name="sd-tab-set-12" type="radio">
 <label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-48">
@@ -1723,6 +1683,8 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
+</section>
+</section>
 </section>
 <section id="update-edit-logs">
 <h2>Update edit logs<a class="headerlink" href="#update-edit-logs" title="Link to this heading"></a></h2>

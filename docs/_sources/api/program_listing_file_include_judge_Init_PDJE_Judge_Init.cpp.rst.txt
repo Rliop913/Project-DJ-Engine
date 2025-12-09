@@ -11,8 +11,11 @@ Program Listing for File PDJE_Judge_Init.cpp
 .. code-block:: cpp
 
    #include "PDJE_Judge_Init.hpp"
+   #include "PDJE_Input_Device_Data.hpp"
    #include "PDJE_Note_OBJ.hpp"
-   #include <iostream>
+   #include "PDJE_Rule.hpp"
+   #include <cstdint>
+   
    namespace PDJE_JUDGE {
    
    void
@@ -39,17 +42,31 @@ Program Listing for File PDJE_Judge_Init.cpp
    }
    
    void
-   Judge_Init::SetInputRule(const INPUT_CONFIG &device_config)
+   Judge_Init::SetRail(const DeviceData &devData,
+                       const BITMASK     DeviceKey,
+                       const int64_t     offset_microsecond,
+                       const uint64_t    MatchRail)
    {
-       if (device_config.Device_ID == "") {
+       if (devData.Type == PDJE_Dev_Type::UNKNOWN) {
            return;
        }
-       INPUT_RULE rule{ .Device_ID  = device_config.Device_ID,
-                        .DeviceType = device_config.DeviceType,
-                        .DeviceKey  = device_config.DeviceKey };
-       dev_rules[rule] = { .MatchRail = device_config.MatchRail,
-                           .offset_microsecond =
-                               device_config.offset_microsecond };
+       RAIL_META meta;
+       meta.Device_Name = devData.Name;
+       if (meta.Device_Name.size() > 255) {
+           meta.Device_Name = std::string(meta.Device_Name, 255);
+       }
+       meta.DeviceKey = DeviceKey;
+       RAIL_SETTINGS settings;
+       settings.MatchRail          = MatchRail;
+       settings.offset_microsecond = offset_microsecond;
+       settings.Type               = devData.Type;
+       OFFSET offset;
+       offset.offset_microsecond = offset_microsecond;
+       if (devparser.railData.contains(meta)) {
+           return;
+       }
+       devparser.railData[meta]               = settings;
+       devparser.offsetData[meta.Device_Name] = offset;
    }
    
    void
@@ -80,7 +97,8 @@ Program Listing for File PDJE_Judge_Init.cpp
                                    const unsigned long long Y_Axis_2,
                                    const uint64_t           railID)
    {
-       if (dev_rules.empty()) {
+   
+       if (devparser.railData.empty()) {
            return;
        }
        if (!note_objects.has_value()) {
@@ -97,21 +115,21 @@ Program Listing for File PDJE_Judge_Init.cpp
        LOCAL_TIME micro_Y1 = Convert_Frame_Into_MicroSecond(Y_Axis);
        LOCAL_TIME micro_Y2 = Convert_Frame_Into_MicroSecond(Y_Axis_2);
        tempobj.microsecond = micro_Y1;
-       INPUT_RULE key;
-       for (const auto &k : dev_rules) {
+   
+       PDJE_Dev_Type val;
+       for (const auto &k : devparser.railData) {
            if (k.second.MatchRail == railID) {
-               key = k.first;
+               if (k.first.Device_Name == "") {
+                   return;
+               }
+               val = k.second.Type;
            }
        }
-       if (key.Device_ID == "") {
-           return;
-       }
    
-       switch (key.DeviceType) {
+       switch (val) {
        case PDJE_Dev_Type::KEYBOARD:
            DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-           std::cout << "push keyboard, " << micro_Y1 << ", " << micro_Y2
-                     << std::endl;
+   
            break;
        case PDJE_Dev_Type::MOUSE:
            if (tempobj.type == "AXIS") { // axis type
@@ -119,8 +137,6 @@ Program Listing for File PDJE_Judge_Init.cpp
                note_objects->Fill<BUFFER_SUB>(tempobj, railID);
            } else {
                DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-               std::cout << "push mouse, " << micro_Y1 << ", " << micro_Y2
-                         << std::endl;
            }
            break;
        case PDJE_Dev_Type::MIDI:

@@ -85,14 +85,18 @@
 <p>↰ <a class="reference internal" href="file_include_judge_Loop_PDJE_Judge_Loop.cpp.html#file-include-judge-loop-pdje-judge-loop-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/judge/Loop/PDJE_Judge_Loop.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Judge_Loop.hpp&quot;</span>
 
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;InputParser.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Buffer.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_DataLine.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Judge_Init.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Note_OBJ.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Rule.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstddef&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;exception&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Benchmark.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ratio&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_JUDGE</span><span class="w"> </span><span class="p">{</span>
@@ -101,17 +105,18 @@
 <span class="w">    </span><span class="n">init_datas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">inits</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Cached</span><span class="p">.</span><span class="n">mouse_btn_event_queue</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="kt">bool</span>
-<span class="n">Judge_Loop</span><span class="o">::</span><span class="n">FindDevSetting</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">INPUT_RULE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rule</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT_SETTING</span><span class="w"> </span><span class="o">&amp;</span><span class="n">setting</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">device_itr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">dev_rules</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">rule</span><span class="p">);</span>
-<span class="w">        </span><span class="n">device_itr</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">dev_rules</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">setting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">device_itr</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<span class="c1">// bool</span>
+<span class="c1">// Judge_Loop::FindDevSetting(const INPUT_RULE &amp;rule, INPUT_SETTING &amp;setting)</span>
+<span class="c1">// {</span>
+<span class="c1">//     if (auto device_itr = init_datas-&gt;dev_rules.find(rule);</span>
+<span class="c1">//         device_itr != init_datas-&gt;dev_rules.end()) {</span>
+<span class="c1">//         setting = device_itr-&gt;second;</span>
+
+<span class="c1">//         return true;</span>
+<span class="c1">//     } else {</span>
+<span class="c1">//         return false;</span>
+<span class="c1">//     }</span>
+<span class="c1">// }</span>
 
 <span class="kt">void</span>
 <span class="n">Judge_Loop</span><span class="o">::</span><span class="n">Match</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">LOCAL_TIME</span><span class="w">  </span><span class="n">input_time</span><span class="p">,</span>
@@ -125,8 +130,11 @@
 
 <span class="w">        </span><span class="n">Cached</span><span class="p">.</span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">isLate</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">input_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">note_local</span><span class="o">-&gt;</span><span class="n">microsecond</span>
 <span class="w">                                    </span><span class="o">:</span><span class="w"> </span><span class="n">note_local</span><span class="o">-&gt;</span><span class="n">microsecond</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">input_time</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// std::cout &lt;&lt; &quot;Matching... &quot; &lt;&lt; Cached.diff &lt;&lt; std::endl;</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Cached</span><span class="p">.</span><span class="n">diff</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">ev_rule</span><span class="o">-&gt;</span><span class="n">use_range_microsecond</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">note_local</span><span class="o">-&gt;</span><span class="n">used</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+
+<span class="w">            </span><span class="c1">// std::cout &lt;&lt; &quot;Matched. and used. &quot; &lt;&lt; Cached.diff &lt;&lt; std::endl;</span>
 <span class="w">            </span><span class="n">Event_Datas</span><span class="p">.</span><span class="n">use_queue</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span>
 <span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="n">railid</span><span class="p">,</span><span class="w"> </span><span class="n">isPressed</span><span class="p">,</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">isLate</span><span class="p">,</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">diff</span><span class="w"> </span><span class="p">});</span>
 
@@ -136,29 +144,30 @@
 <span class="p">}</span>
 
 <span class="kt">void</span>
-<span class="n">Judge_Loop</span><span class="o">::</span><span class="n">Cut</span><span class="p">()</span>
+<span class="n">Judge_Loop</span><span class="o">::</span><span class="n">Cut</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">cut_range</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">Cached</span><span class="p">.</span><span class="n">missed_buffers</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
-<span class="w">    </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">note_objects</span><span class="o">-&gt;</span><span class="n">Cut</span><span class="o">&lt;</span><span class="n">BUFFER_MAIN</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Cached</span><span class="p">.</span><span class="n">cut_range</span><span class="p">,</span>
+<span class="w">    </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">note_objects</span><span class="o">-&gt;</span><span class="n">Cut</span><span class="o">&lt;</span><span class="n">BUFFER_MAIN</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cut_range</span><span class="p">,</span>
 <span class="w">                                               </span><span class="n">Cached</span><span class="p">.</span><span class="n">missed_buffers</span><span class="p">);</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Cached</span><span class="p">.</span><span class="n">missed_buffers</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Event_Datas</span><span class="p">.</span><span class="n">miss_queue</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">Cached</span><span class="p">.</span><span class="n">missed_buffers</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">Cached</span><span class="p">.</span><span class="n">missed_buffers</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
-<span class="w">    </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">note_objects</span><span class="o">-&gt;</span><span class="n">Cut</span><span class="o">&lt;</span><span class="n">BUFFER_SUB</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Cached</span><span class="p">.</span><span class="n">cut_range</span><span class="p">,</span>
-<span class="w">                                              </span><span class="n">Cached</span><span class="p">.</span><span class="n">missed_buffers</span><span class="p">);</span>
+<span class="w">    </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">note_objects</span><span class="o">-&gt;</span><span class="n">Cut</span><span class="o">&lt;</span><span class="n">BUFFER_SUB</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cut_range</span><span class="p">,</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">missed_buffers</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Cached</span><span class="p">.</span><span class="n">missed_buffers</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">        </span><span class="n">Event_Datas</span><span class="p">.</span><span class="n">miss_queue</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">Cached</span><span class="p">.</span><span class="n">missed_buffers</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kt">bool</span>
+<span class="n">PARSE_OUT</span><span class="w"> </span><span class="o">*</span>
 <span class="n">Judge_Loop</span><span class="o">::</span><span class="n">PreProcess</span><span class="p">()</span>
 <span class="p">{</span>
 
 <span class="w">    </span><span class="n">input_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">inputline</span><span class="o">-&gt;</span><span class="n">input_arena</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">();</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">res</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">devparser</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">input_log</span><span class="p">);</span>
+
 <span class="w">    </span><span class="n">Cached</span><span class="p">.</span><span class="n">synced_data</span><span class="w"> </span><span class="o">=</span>
 <span class="w">        </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">coreline</span><span class="o">-&gt;</span><span class="n">syncD</span><span class="o">-&gt;</span><span class="n">load</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_acquire</span><span class="p">);</span>
 
@@ -167,66 +176,75 @@
 <span class="w">    </span><span class="n">Cached</span><span class="p">.</span><span class="n">global_local_diff</span><span class="w"> </span><span class="o">=</span>
 <span class="w">        </span><span class="n">Cached</span><span class="p">.</span><span class="n">synced_data</span><span class="p">.</span><span class="n">microsecond</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">local_microsecond_position</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_log</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">        </span><span class="n">Cached</span><span class="p">.</span><span class="n">cut_range</span><span class="w"> </span><span class="o">=</span>
-<span class="w">            </span><span class="n">Cached</span><span class="p">.</span><span class="n">local_microsecond_position</span><span class="w"> </span><span class="o">&lt;</span>
-<span class="w">                    </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">ev_rule</span><span class="o">-&gt;</span><span class="n">miss_range_microsecond</span>
-<span class="w">                </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">                </span><span class="o">:</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">local_microsecond_position</span><span class="w"> </span><span class="o">-</span>
-<span class="w">                      </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">ev_rule</span><span class="o">-&gt;</span><span class="n">miss_range_microsecond</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Cut</span><span class="p">();</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Cached</span><span class="p">.</span><span class="n">local_microsecond_position</span><span class="w"> </span><span class="o">&lt;</span>
+<span class="w">            </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">ev_rule</span><span class="o">-&gt;</span><span class="n">miss_range_microsecond</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Cut</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Cut</span><span class="p">(</span><span class="n">Cached</span><span class="p">.</span><span class="n">local_microsecond_position</span><span class="w"> </span><span class="o">-</span>
+<span class="w">                </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">ev_rule</span><span class="o">-&gt;</span><span class="n">miss_range_microsecond</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">Cached</span><span class="p">.</span><span class="n">log_begin</span><span class="w"> </span><span class="o">=</span>
-<span class="w">        </span><span class="n">input_log</span><span class="p">.</span><span class="n">first</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">microSecond</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">global_local_diff</span>
-<span class="w">            </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">            </span><span class="o">:</span><span class="w"> </span><span class="n">input_log</span><span class="p">.</span><span class="n">first</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">microSecond</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">global_local_diff</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Cached</span><span class="p">.</span><span class="n">cut_range</span><span class="w"> </span><span class="o">=</span>
-<span class="w">        </span><span class="n">Cached</span><span class="p">.</span><span class="n">log_begin</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">ev_rule</span><span class="o">-&gt;</span><span class="n">miss_range_microsecond</span>
-<span class="w">            </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">            </span><span class="o">:</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">log_begin</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">ev_rule</span><span class="o">-&gt;</span><span class="n">miss_range_microsecond</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">Cut</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="o">-&gt;</span><span class="n">lowest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">global_local_diff</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">lowest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">lowest</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">global_local_diff</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="o">-&gt;</span><span class="n">lowest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">ev_rule</span><span class="o">-&gt;</span><span class="n">miss_range_microsecond</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Cut</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Cut</span><span class="p">(</span><span class="n">res</span><span class="o">-&gt;</span><span class="n">lowest</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">ev_rule</span><span class="o">-&gt;</span><span class="n">miss_range_microsecond</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// init maximum get time</span>
-<span class="w">    </span><span class="n">Cached</span><span class="p">.</span><span class="n">log_end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_log</span><span class="p">.</span><span class="n">first</span><span class="p">[</span><span class="n">input_log</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">].</span><span class="n">microSecond</span><span class="w"> </span><span class="o">-</span>
-<span class="w">                     </span><span class="n">Cached</span><span class="p">.</span><span class="n">global_local_diff</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="o">-&gt;</span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">global_local_diff</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">highest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">highest</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">global_local_diff</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">Cached</span><span class="p">.</span><span class="n">use_range</span><span class="w"> </span><span class="o">=</span>
-<span class="w">        </span><span class="n">Cached</span><span class="p">.</span><span class="n">log_end</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">ev_rule</span><span class="o">-&gt;</span><span class="n">use_range_microsecond</span><span class="p">;</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">highest</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">ev_rule</span><span class="o">-&gt;</span><span class="n">use_range_microsecond</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">log</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">logs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">log</span><span class="p">.</span><span class="n">microSecond</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">global_local_diff</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">log</span><span class="p">.</span><span class="n">microSecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">log</span><span class="p">.</span><span class="n">microSecond</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">Cached</span><span class="p">.</span><span class="n">global_local_diff</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="kt">void</span>
 <span class="n">Judge_Loop</span><span class="o">::</span><span class="n">loop</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w">            </span><span class="n">OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">    </span><span class="n">PDJE_Input_Log</span><span class="w"> </span><span class="o">*</span><span class="n">input_ev</span><span class="p">;</span>
+<span class="w">    </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;judge loop started&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">loop_switch</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PreProcess</span><span class="p">();</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;judge loop head&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">PARSE_OUT</span><span class="w"> </span><span class="o">*</span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PreProcess</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">continue</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">input_ev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_log</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">input_log</span><span class="p">.</span><span class="n">second</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">input_ev</span><span class="o">-&gt;</span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_Input_Log</span><span class="w"> </span><span class="o">&amp;</span><span class="n">input_ev</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">res</span><span class="o">-&gt;</span><span class="n">logs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">input_ev</span><span class="p">.</span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">KEYBOARD</span><span class="p">:</span>
-<span class="w">                </span><span class="n">UseEvent</span><span class="o">&lt;</span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">KEYBOARD</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">input_ev</span><span class="p">);</span>
+<span class="w">                </span><span class="n">UseEvent</span><span class="o">&lt;</span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">KEYBOARD</span><span class="o">&gt;</span><span class="p">(</span><span class="n">input_ev</span><span class="p">);</span>
 <span class="w">                </span><span class="k">break</span><span class="p">;</span>
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">MOUSE</span><span class="p">:</span>
-<span class="w">                </span><span class="n">UseEvent</span><span class="o">&lt;</span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">MOUSE</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">input_ev</span><span class="p">);</span>
+<span class="w">                </span><span class="n">UseEvent</span><span class="o">&lt;</span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">MOUSE</span><span class="o">&gt;</span><span class="p">(</span><span class="n">input_ev</span><span class="p">);</span>
 <span class="w">                </span><span class="k">break</span><span class="p">;</span>
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">MIDI</span><span class="p">:</span>
-<span class="w">                </span><span class="n">UseEvent</span><span class="o">&lt;</span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">MIDI</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">input_ev</span><span class="p">);</span>
+<span class="w">                </span><span class="n">UseEvent</span><span class="o">&lt;</span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">MIDI</span><span class="o">&gt;</span><span class="p">(</span><span class="n">input_ev</span><span class="p">);</span>
 <span class="w">                </span><span class="k">break</span><span class="p">;</span>
 <span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">HID</span><span class="p">:</span>
-<span class="w">                </span><span class="n">UseEvent</span><span class="o">&lt;</span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">HID</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">input_ev</span><span class="p">);</span>
+<span class="w">                </span><span class="n">UseEvent</span><span class="o">&lt;</span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">HID</span><span class="o">&gt;</span><span class="p">(</span><span class="n">input_ev</span><span class="p">);</span>
 <span class="w">                </span><span class="k">break</span><span class="p">;</span>
 <span class="w">            </span><span class="k">default</span><span class="o">:</span>
 <span class="w">                </span><span class="k">break</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="o">++</span><span class="n">input_ev</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;judge loop tail&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 <span class="kt">void</span>
@@ -235,19 +253,19 @@
 <span class="w">    </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_switch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_thread</span><span class="p">.</span><span class="n">emplace</span><span class="p">([</span><span class="k">this</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">use_clock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;use event loop init&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_switch</span><span class="p">.</span><span class="n">value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;use event line head&quot;</span><span class="p">)</span>
 <span class="w">                </span><span class="n">use_clock</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">lambdas</span><span class="p">.</span><span class="n">use_event_sleep_time</span><span class="p">;</span>
 <span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_until</span><span class="p">(</span><span class="n">use_clock</span><span class="p">);</span>
 
 <span class="w">                </span><span class="k">auto</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Event_Datas</span><span class="p">.</span><span class="n">use_queue</span><span class="p">.</span><span class="n">Get</span><span class="p">();</span>
-<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">queue</span><span class="p">.</span><span class="n">second</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">lambdas</span><span class="p">.</span><span class="n">used_event</span><span class="p">(</span><span class="n">queue</span><span class="p">.</span><span class="n">first</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">railid</span><span class="p">,</span>
-<span class="w">                                                   </span><span class="n">queue</span><span class="p">.</span><span class="n">first</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">Pressed</span><span class="p">,</span>
-<span class="w">                                                   </span><span class="n">queue</span><span class="p">.</span><span class="n">first</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">IsLate</span><span class="p">,</span>
-<span class="w">                                                   </span><span class="n">queue</span><span class="p">.</span><span class="n">first</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">diff</span><span class="p">);</span>
+<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">used</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">queue</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">lambdas</span><span class="p">.</span><span class="n">used_event</span><span class="p">(</span>
+<span class="w">                        </span><span class="n">used</span><span class="p">.</span><span class="n">railid</span><span class="p">,</span><span class="w"> </span><span class="n">used</span><span class="p">.</span><span class="n">Pressed</span><span class="p">,</span><span class="w"> </span><span class="n">used</span><span class="p">.</span><span class="n">IsLate</span><span class="p">,</span><span class="w"> </span><span class="n">used</span><span class="p">.</span><span class="n">diff</span><span class="p">);</span>
 <span class="w">                </span><span class="p">}</span>
-
+<span class="w">                </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;use event line tail&quot;</span><span class="p">)</span>
 <span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;caught error on use event loop. Why:&quot;</span><span class="p">);</span>
 <span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
@@ -257,15 +275,18 @@
 <span class="w">    </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_switch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_thread</span><span class="p">.</span><span class="n">emplace</span><span class="p">([</span><span class="k">this</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">miss_clock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;miss event init&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_switch</span><span class="p">.</span><span class="n">value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;miss event line head&quot;</span><span class="p">)</span>
 <span class="w">                </span><span class="n">miss_clock</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">lambdas</span><span class="p">.</span><span class="n">miss_event_sleep_time</span><span class="p">;</span>
 <span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span>
 <span class="w">                    </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">lambdas</span><span class="p">.</span><span class="n">miss_event_sleep_time</span><span class="p">);</span>
 <span class="w">                </span><span class="k">auto</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Event_Datas</span><span class="p">.</span><span class="n">miss_queue</span><span class="p">.</span><span class="n">Get</span><span class="p">();</span>
-<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">queue</span><span class="p">.</span><span class="n">second</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">lambdas</span><span class="p">.</span><span class="n">missed_event</span><span class="p">(</span><span class="n">queue</span><span class="p">.</span><span class="n">first</span><span class="p">[</span><span class="n">idx</span><span class="p">]);</span>
+<span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">missed</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">queue</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">init_datas</span><span class="o">-&gt;</span><span class="n">lambdas</span><span class="p">.</span><span class="n">missed_event</span><span class="p">(</span><span class="n">missed</span><span class="p">);</span>
 <span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;miss event line tail&quot;</span><span class="p">)</span>
 <span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;caught error on miss event loop. Why:&quot;</span><span class="p">);</span>
 <span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
@@ -279,8 +300,12 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_switch</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_switch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_thread</span><span class="o">-&gt;</span><span class="n">join</span><span class="p">();</span>
-<span class="w">    </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_thread</span><span class="o">-&gt;</span><span class="n">join</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_thread</span><span class="o">-&gt;</span><span class="n">joinable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_thread</span><span class="o">-&gt;</span><span class="n">join</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_thread</span><span class="o">-&gt;</span><span class="n">joinable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_thread</span><span class="o">-&gt;</span><span class="n">join</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="p">};</span><span class="w"> </span><span class="c1">// namespace PDJE_JUDGE</span>

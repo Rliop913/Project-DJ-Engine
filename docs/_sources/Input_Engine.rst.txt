@@ -80,12 +80,6 @@ Usage
     .. code-block:: python
 
         #no impl
-
-    .. code-block:: gdscript
-
-    .. code-block:: gdscript
-
-        #with InputLine Node
         
     .. code-block:: gdscript
         

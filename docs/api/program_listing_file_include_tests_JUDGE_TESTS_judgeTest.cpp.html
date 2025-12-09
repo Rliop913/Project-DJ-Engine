@@ -87,6 +87,16 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Judge.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_interface.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;miniaudio.h&quot;</span>
+
+<span class="kt">void</span>
+<span class="nf">beep_cb</span><span class="p">(</span><span class="n">ma_device</span><span class="w">  </span><span class="o">*</span><span class="n">pDevice</span><span class="p">,</span>
+<span class="w">        </span><span class="kt">void</span><span class="w">       </span><span class="o">*</span><span class="n">pOutput</span><span class="p">,</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pInput</span><span class="p">,</span>
+<span class="w">        </span><span class="n">ma_uint32</span><span class="w">   </span><span class="n">frameCount</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="p">}</span>
 <span class="kt">int</span>
 <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
@@ -98,6 +108,42 @@
 <span class="w">    </span><span class="c1">// getchar();</span>
 <span class="w">    </span><span class="c1">// engine.player-&gt;Deactivate();</span>
 <span class="w">    </span><span class="c1">// return 0;</span>
+<span class="w">    </span><span class="n">ma_engine</span><span class="w"> </span><span class="n">beep</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ma_engine_init</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">beep</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MA_SUCCESS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;failed to init beep dev&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">ma_waveform</span><span class="w">        </span><span class="n">wf</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ma_waveform_config</span><span class="w"> </span><span class="n">wfConfig</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">ma_waveform_config_init</span><span class="p">(</span><span class="n">ma_format_f32</span><span class="p">,</span>
+<span class="w">                                </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">ma_engine_get_sample_rate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">beep</span><span class="p">),</span>
+<span class="w">                                </span><span class="n">ma_waveform_type_sine</span><span class="p">,</span>
+<span class="w">                                </span><span class="mf">1.0f</span><span class="p">,</span>
+<span class="w">                                </span><span class="mf">440.0f</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">ma_waveform_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">wfConfig</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">wf</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">ma_sound</span><span class="w"> </span><span class="n">bsound</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ma_sound_init_from_data_source</span><span class="p">(</span><span class="o">&amp;</span><span class="n">beep</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">wf</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bsound</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ma_sound_set_looping</span><span class="p">(</span><span class="o">&amp;</span><span class="n">bsound</span><span class="p">,</span><span class="w"> </span><span class="n">MA_FALSE</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// ma_device_config conf   = ma_device_config_init(ma_device_type_playback);</span>
+<span class="w">    </span><span class="c1">// conf.playback.format    = ma_format_f32;</span>
+<span class="w">    </span><span class="c1">// conf.playback.channels  = 2;</span>
+<span class="w">    </span><span class="c1">// conf.sampleRate         = 48000;</span>
+<span class="w">    </span><span class="c1">// conf.periodSizeInFrames = 48;</span>
+<span class="w">    </span><span class="c1">// conf.performanceProfile = ma_performance_profile_low_latency;</span>
+<span class="w">    </span><span class="c1">// conf.pUserData = nullptr;</span>
+<span class="w">    </span><span class="c1">// conf.dataCallback = beep_cb;</span>
+
+<span class="w">    </span><span class="c1">// ma_device beep_dev;</span>
+<span class="w">    </span><span class="c1">// if(ma_device_init(NULL, &amp;conf, &amp;beep_dev) != MA_SUCCESS){</span>
+<span class="w">    </span><span class="c1">//     std::cerr &lt;&lt; &quot;failed to init beep dev&quot; &lt;&lt;std::endl;</span>
+<span class="w">    </span><span class="c1">//     return 1;</span>
+<span class="w">    </span><span class="c1">// }</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Input</span><span class="p">();</span>
 <span class="w">    </span><span class="n">input</span><span class="p">.</span><span class="n">Init</span><span class="p">();</span>
 <span class="w">    </span><span class="k">auto</span><span class="w">     </span><span class="n">devs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">GetDevs</span><span class="p">();</span>
@@ -107,36 +153,29 @@
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">devs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">Type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">KEYBOARD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;DEVICE id: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">device_specific_id</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;DEVICE NAME: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="c1">// std::cout &lt;&lt; &quot;DEVICE id: &quot; &lt;&lt; d.device_specific_id &lt;&lt; std::endl;</span>
+<span class="w">            </span><span class="c1">// std::cout &lt;&lt; &quot;DEVICE NAME: &quot; &lt;&lt; d.Name &lt;&lt; std::endl;</span>
 
 <span class="w">            </span><span class="n">list</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
-
-<span class="w">            </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">INPUT_CONFIG</span><span class="w"> </span><span class="n">conf</span><span class="p">;</span>
-
-<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">Device_ID</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span>
-<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">DeviceType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">Type</span><span class="p">;</span>
-<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">DeviceKey</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">A</span><span class="p">;</span>
-<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">MatchRail</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-
-<span class="w">            </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetInputRule</span><span class="p">(</span><span class="n">conf</span><span class="p">);</span>
+<span class="w">            </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetRail</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_KEY</span><span class="o">::</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">Type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">MOUSE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// if (d.Type == PDJE_Dev_Type::MOUSE) {</span>
 
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;DEVICE id: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">device_specific_id</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;DEVICE NAME: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">//     std::cout &lt;&lt; &quot;DEVICE id: &quot; &lt;&lt; d.device_specific_id &lt;&lt; std::endl;</span>
+<span class="w">        </span><span class="c1">//     std::cout &lt;&lt; &quot;DEVICE NAME: &quot; &lt;&lt; d.Name &lt;&lt; std::endl;</span>
 
-<span class="w">            </span><span class="n">list</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">//     list.push_back(d);</span>
 
-<span class="w">            </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">INPUT_CONFIG</span><span class="w"> </span><span class="n">conf</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">//     // PDJE_JUDGE::INPUT_CONFIG conf;</span>
 
-<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">Device_ID</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span>
-<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">DeviceType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">Type</span><span class="p">;</span>
-<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">DeviceKey</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">DEVICE_MOUSE_EVENT</span><span class="o">::</span><span class="n">BTN_L</span><span class="p">;</span>
-<span class="w">            </span><span class="n">conf</span><span class="p">.</span><span class="n">MatchRail</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">//     // conf.Device_ID  = d.Name;</span>
 
-<span class="w">            </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetInputRule</span><span class="p">(</span><span class="n">conf</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">//     // conf.DeviceKey  = PDJE_JUDGE::DEVICE_MOUSE_EVENT::BTN_L;</span>
+<span class="w">        </span><span class="c1">//     // conf.MatchRail  = 1;</span>
+<span class="w">        </span><span class="c1">//     // conf.offset_microsecond</span>
+<span class="w">        </span><span class="c1">//     judge.inits.SetRail(d, PDJE_JUDGE::DEVICE_MOUSE_EVENT::BTN_L, 0,</span>
+<span class="w">        </span><span class="c1">//     1);</span>
+<span class="w">        </span><span class="c1">// }</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">input</span><span class="p">.</span><span class="n">Config</span><span class="p">(</span><span class="n">list</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;config failed&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
@@ -163,22 +202,34 @@
 <span class="w">    </span><span class="p">};</span>
 <span class="w">    </span><span class="n">engine</span><span class="p">.</span><span class="n">GetNoteObjects</span><span class="p">(</span><span class="n">td</span><span class="p">.</span><span class="n">front</span><span class="p">(),</span><span class="w"> </span><span class="n">cb</span><span class="p">);</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;notes: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">note_add_count</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetEventRule</span><span class="p">(</span>
-<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">miss_range_microsecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">use_range_microsecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">90000</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetEventRule</span><span class="p">({</span><span class="w"> </span><span class="p">.</span><span class="n">miss_range_microsecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000005</span><span class="p">,</span>
+<span class="w">                               </span><span class="p">.</span><span class="n">use_range_microsecond</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1000000</span><span class="w"> </span><span class="p">});</span>
 <span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetInputLine</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">());</span>
 
 <span class="w">    </span><span class="kt">int</span><span class="w">                       </span><span class="n">miss_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">MISS_CALLBACK</span><span class="w"> </span><span class="n">missed</span><span class="w"> </span><span class="o">=</span>
-<span class="w">        </span><span class="p">[</span><span class="o">&amp;</span><span class="n">miss_count</span><span class="p">](</span>
+<span class="w">        </span><span class="p">[</span><span class="o">&amp;</span><span class="n">miss_count</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bsound</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">beep</span><span class="p">](</span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">NOTE_VEC</span><span class="o">&gt;</span><span class="w"> </span><span class="n">misses</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;missed!!!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">miss_count</span><span class="o">++</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="c1">// ma_uint32 sampleRate = ma_engine_get_sample_rate(&amp;beep);</span>
+<span class="w">            </span><span class="c1">// ma_uint64 nowFrames   = ma_engine_get_time_in_pcm_frames(&amp;beep);</span>
+<span class="w">            </span><span class="c1">// ma_uint64 durFrames   = (ma_uint64)(0.1f * sampleRate);</span>
+<span class="w">            </span><span class="c1">// ma_sound_set_stop_time_in_pcm_frames(&amp;bsound, nowFrames +</span>
+<span class="w">            </span><span class="c1">// durFrames); ma_sound_start(&amp;bsound);</span>
 <span class="w">        </span><span class="p">};</span>
-<span class="w">    </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">USE_CALLBACK</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="o">=</span>
-<span class="w">        </span><span class="p">[](</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">railid</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">Pressed</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">IsLate</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">diff</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;used!!!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span>
-<span class="w">                      </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">IsLate</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot; late &quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot; early &quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">        </span><span class="p">};</span>
-<span class="w">    </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">MOUSE_AXIS_PARSE_CALLBACK</span><span class="w"> </span><span class="n">mouse_parse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">USE_CALLBACK</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="n">bsound</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">beep</span><span class="p">](</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">railid</span><span class="p">,</span>
+<span class="w">                                                     </span><span class="kt">bool</span><span class="w">     </span><span class="n">Pressed</span><span class="p">,</span>
+<span class="w">                                                     </span><span class="kt">bool</span><span class="w">     </span><span class="n">IsLate</span><span class="p">,</span>
+<span class="w">                                                     </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">diff</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ma_uint32</span><span class="w"> </span><span class="n">sampleRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ma_engine_get_sample_rate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">beep</span><span class="p">);</span>
+<span class="w">        </span><span class="n">ma_uint64</span><span class="w"> </span><span class="n">nowFrames</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">ma_engine_get_time_in_pcm_frames</span><span class="p">(</span><span class="o">&amp;</span><span class="n">beep</span><span class="p">);</span>
+<span class="w">        </span><span class="n">ma_uint64</span><span class="w"> </span><span class="n">durFrames</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ma_uint64</span><span class="p">)(</span><span class="mf">0.1f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sampleRate</span><span class="p">);</span>
+<span class="w">        </span><span class="n">ma_sound_set_stop_time_in_pcm_frames</span><span class="p">(</span><span class="o">&amp;</span><span class="n">bsound</span><span class="p">,</span><span class="w"> </span><span class="n">nowFrames</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">durFrames</span><span class="p">);</span>
+<span class="w">        </span><span class="n">ma_sound_start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">bsound</span><span class="p">);</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;used!!!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">IsLate</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot; late &quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot; early &quot;</span><span class="p">)</span>
+<span class="w">                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">    </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">MOUSE_CUSTOM_PARSE_CALLBACK</span><span class="w"> </span><span class="n">mouse_parse</span><span class="w"> </span><span class="o">=</span>
 <span class="w">        </span><span class="p">[](</span><span class="kt">uint64_t</span><span class="w">                      </span><span class="n">microSecond</span><span class="p">,</span>
 <span class="w">           </span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">P_NOTE_VEC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">found_events</span><span class="p">,</span>
 <span class="w">           </span><span class="kt">uint64_t</span><span class="w">                      </span><span class="n">railID</span><span class="p">,</span>
@@ -188,11 +239,13 @@
 <span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetCustomEvents</span><span class="p">(</span>
 <span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">missed_event</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">missed</span><span class="p">,</span>
 <span class="w">          </span><span class="p">.</span><span class="n">used_event</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="n">used</span><span class="p">,</span>
-<span class="w">          </span><span class="p">.</span><span class="n">custom_axis_parse</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">mouse_parse</span><span class="p">,</span>
+<span class="w">          </span><span class="p">.</span><span class="n">custom_mouse_parse</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">mouse_parse</span><span class="p">,</span>
 <span class="w">          </span><span class="p">.</span><span class="n">use_event_sleep_time</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
 <span class="w">          </span><span class="p">.</span><span class="n">miss_event_sleep_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">});</span>
 <span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">inits</span><span class="p">.</span><span class="n">SetCoreLine</span><span class="p">(</span><span class="n">engine</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">());</span>
-<span class="w">    </span><span class="n">judge</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">judge</span><span class="p">.</span><span class="n">Start</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">PDJE_JUDGE</span><span class="o">::</span><span class="n">JUDGE_STATUS</span><span class="o">::</span><span class="n">OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Failed to start judge&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">input</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
 <span class="w">    </span><span class="n">engine</span><span class="p">.</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Activate</span><span class="p">();</span>
 
