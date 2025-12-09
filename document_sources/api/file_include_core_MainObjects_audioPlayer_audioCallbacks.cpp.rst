@@ -32,6 +32,8 @@ Includes
 
 - ``FrameCalc.hpp`` (:ref:`file_include_core_db_Capnp_Translators_FrameCalc.hpp`)
 
+- ``PDJE_Benchmark.hpp`` (:ref:`file_include_global_PDJE_Benchmark.hpp`)
+
 - ``atomic``
 
 - ``audioCallbacks.hpp`` (:ref:`file_include_core_MainObjects_audioPlayer_audioCallbacks.hpp`)

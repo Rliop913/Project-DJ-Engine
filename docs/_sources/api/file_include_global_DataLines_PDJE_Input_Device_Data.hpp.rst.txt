@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``cstdint``
+
 - ``future``
 
 - ``latch``
@@ -59,6 +61,8 @@ Included By
 - :ref:`file_include_input_linux_linux_input.cpp`
 
 - :ref:`file_include_input_linux_linux_input.hpp`
+
+- :ref:`file_include_judge_Init_PDJE_Judge_Init.cpp`
 
 - :ref:`file_include_judge_NoteOBJ_PDJE_Note_OBJ.hpp`
 

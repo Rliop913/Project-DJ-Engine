@@ -6,6 +6,7 @@
     <includes local="no">cstdint</includes>
     <includes local="no">functional</includes>
     <includedby refid="PDJE__Judge__Init_8hpp" local="yes">include/judge/Init/PDJE_Judge_Init.hpp</includedby>
+    <includedby refid="Keyboard_8cpp" local="yes">include/judge/Loop/Keyboard.cpp</includedby>
     <includedby refid="PDJE__Judge__Loop__Structs_8hpp" local="yes">include/judge/Loop/PDJE_Judge_Loop_Structs.hpp</includedby>
     <incdepgraph>
       <node id="3">
@@ -25,9 +26,11 @@
       <node id="10">
         <label>PDJE_Input_Device_Data.hpp</label>
         <link refid="PDJE__Input__Device__Data_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -45,9 +48,9 @@
         <link refid="PDJE__Judge__Init__Structs_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -59,32 +62,52 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="12">
+      <node id="13">
+        <label>PDJE_Rule.hpp</label>
+        <link refid="PDJE__Rule_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>cstddef</label>
+      </node>
+      <node id="11">
         <label>cstdint</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>functional</label>
       </node>
       <node id="4">
         <label>future</label>
       </node>
-      <node id="13">
-        <label>iostream</label>
-      </node>
-      <node id="11">
+      <node id="12">
         <label>latch</label>
       </node>
       <node id="5">
@@ -96,10 +119,10 @@
       <node id="7">
         <label>string</label>
       </node>
-      <node id="14">
+      <node id="16">
         <label>unordered_map</label>
       </node>
-      <node id="15">
+      <node id="17">
         <label>utility</label>
       </node>
       <node id="8">
@@ -125,6 +148,8 @@
         <label>include/judge/Init/PDJE_Judge_Init_Structs.hpp</label>
         <link refid="PDJE__Judge__Init__Structs_8hpp"/>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -215,7 +240,7 @@
 <codeline lineno="19" refid="namespacePDJE__JUDGE_1a404264babe4bb096766de0bef9d0eea6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__JUDGE_1a404264babe4bb096766de0bef9d0eea6" kindref="member">USE_CALLBACK</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>std::function&lt;void(</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/>railid,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>Pressed,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>IsLate,<sp/>uint64_t<sp/>diff)&gt;;</highlight></codeline>
 <codeline lineno="21" refid="namespacePDJE__JUDGE_1a4206034d0b6d310b3a8362e649936afc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__JUDGE_1a4206034d0b6d310b3a8362e649936afc" kindref="member">MOUSE_CUSTOM_PARSE_CALLBACK</ref><sp/>=<sp/></highlight><highlight class="comment">//<sp/>todo<sp/>-<sp/>make<sp/>simpler</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__JUDGE_1a182d502cf8e15e13ed25f3550c82a53a" kindref="member">LOCAL_TIME</ref><sp/><sp/><sp/><sp/><sp/>microSecond,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__JUDGE_1a3ee6af366c462d64775daf2f7b0d7e42" kindref="member">LOCAL_TIME</ref><sp/><sp/><sp/><sp/><sp/>microSecond,</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__JUDGE_1ad73c9d4a59c40cc7c1a9fce27dc1be72" kindref="member">P_NOTE_VEC</ref><sp/><sp/><sp/><sp/>&amp;found_events,</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>railID,</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x,</highlight></codeline>

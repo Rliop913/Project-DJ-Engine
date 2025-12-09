@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="structPDJE__JUDGE_1_1PARSE__OUT" kind="struct" language="C++" prot="public">
+    <compoundname>PDJE_JUDGE::PARSE_OUT</compoundname>
+    <includes refid="InputParser_8hpp" local="no">InputParser.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structPDJE__JUDGE_1_1PARSE__OUT_1a1add107ff0d2f181a59042a45f465ec0" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref> &gt;</type>
+        <definition>std::vector&lt;PDJE_Input_Log&gt; PDJE_JUDGE::PARSE_OUT::logs</definition>
+        <argsstring></argsstring>
+        <name>logs</name>
+        <qualifiedname>PDJE_JUDGE::PARSE_OUT::logs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/InputParser/InputParser.hpp" line="15" column="17" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPDJE__JUDGE_1_1PARSE__OUT_1a6314b5d57c452d5f03c3a8f4d6c32a46" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t PDJE_JUDGE::PARSE_OUT::lowest</definition>
+        <argsstring></argsstring>
+        <name>lowest</name>
+        <qualifiedname>PDJE_JUDGE::PARSE_OUT::lowest</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/InputParser/InputParser.hpp" line="16" column="33" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPDJE__JUDGE_1_1PARSE__OUT_1aacc794d73555267a36df90d65620f1e2" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t PDJE_JUDGE::PARSE_OUT::highest</definition>
+        <argsstring></argsstring>
+        <name>highest</name>
+        <qualifiedname>PDJE_JUDGE::PARSE_OUT::highest</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/InputParser/InputParser.hpp" line="17" column="33" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="7">
+        <label>PDJE_HID_Event</label>
+        <link refid="structPDJE__HID__Event"/>
+      </node>
+      <node id="4">
+        <label>PDJE_Input_Event</label>
+        <link refid="unionPDJE__Input__Event"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>mouse</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>keyboard</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>PDJE_Input_Log</label>
+        <link refid="structPDJE__Input__Log"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>event</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>hid_event</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>PDJE_JUDGE::PARSE_OUT</label>
+        <link refid="structPDJE__JUDGE_1_1PARSE__OUT"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>logs</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>PDJE_Keyboard_Event</label>
+        <link refid="structPDJE__Keyboard__Event"/>
+      </node>
+      <node id="5">
+        <label>PDJE_Mouse_Event</label>
+        <link refid="structPDJE__Mouse__Event"/>
+      </node>
+      <node id="2">
+        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/judge/InputParser/InputParser.hpp" line="14" column="1" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="14" bodyend="18"/>
+    <listofallmembers>
+      <member refid="structPDJE__JUDGE_1_1PARSE__OUT_1aacc794d73555267a36df90d65620f1e2" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::PARSE_OUT</scope><name>highest</name></member>
+      <member refid="structPDJE__JUDGE_1_1PARSE__OUT_1a1add107ff0d2f181a59042a45f465ec0" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::PARSE_OUT</scope><name>logs</name></member>
+      <member refid="structPDJE__JUDGE_1_1PARSE__OUT_1a6314b5d57c452d5f03c3a8f4d6c32a46" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::PARSE_OUT</scope><name>lowest</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

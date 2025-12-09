@@ -38,6 +38,8 @@ Includes
 
 - ``iostream``
 
+- ``miniaudio.h``
+
 
 
 
@@ -46,6 +48,8 @@ Includes
 Functions
 ---------
 
+
+- :ref:`exhale_function_judgeTest_8cpp_1a71299f15e84912d31dbe17f497605eef`
 
 - :ref:`exhale_function_judgeTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
 

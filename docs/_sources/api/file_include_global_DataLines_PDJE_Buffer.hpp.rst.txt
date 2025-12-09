@@ -65,5 +65,7 @@ Classes
 -------
 
 
+- :ref:`exhale_class_classAtomic__Double__Buffer`
+
 - :ref:`exhale_class_classPDJE__Buffer__Arena`
 

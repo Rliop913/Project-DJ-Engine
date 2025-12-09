@@ -49,6 +49,8 @@ Included By
 
 - :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.hpp`
 
+- :ref:`file_include_core_audioRender_ManualMix_PredictMusic.hpp`
+
 - :ref:`file_include_core_audioRender_MixMachine_DeckData.hpp`
 
 - :ref:`file_include_core_audioRender_MixMachine_EFFECT_EFFECTS.hpp`
@@ -76,10 +78,6 @@ Included By
 - :ref:`file_include_core_db_musicDB.hpp`
 
 - :ref:`file_include_core_db_trackDB.hpp`
-
-- :ref:`file_include_core_editor_DEPRECATE_GitWrap_Commit_editorCommit.hpp`
-
-- :ref:`file_include_core_editor_DEPRECATE_GitWrap_gitWrapper.hpp`
 
 - :ref:`file_include_core_editor_TimeLine_JSONWrap_EditorArgs.hpp`
 

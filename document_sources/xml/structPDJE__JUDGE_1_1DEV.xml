@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="structPDJE__JUDGE_1_1DEV" kind="struct" language="C++" prot="public">
+    <compoundname>PDJE_JUDGE::DEV</compoundname>
+    <derivedcompoundref refid="structPDJE__JUDGE_1_1INPUT__CONFIG" prot="public" virt="non-virtual">PDJE_JUDGE::INPUT_CONFIG</derivedcompoundref>
+    <derivedcompoundref refid="structPDJE__JUDGE_1_1RAIL__META" prot="public" virt="non-virtual">PDJE_JUDGE::RAIL_META</derivedcompoundref>
+    <includes refid="PDJE__Rule_8hpp" local="no">PDJE_Rule.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structPDJE__JUDGE_1_1DEV_1af44c295841ccd5a3c5be74545d18edee" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string PDJE_JUDGE::DEV::Device_Name</definition>
+        <argsstring></argsstring>
+        <name>Device_Name</name>
+        <qualifiedname>PDJE_JUDGE::DEV::Device_Name</qualifiedname>
+        <initializer>= &quot;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Rule.hpp" line="26" column="17" bodyfile="include/judge/PDJE_Rule.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structPDJE__JUDGE_1_1DEV_1a17e89233056d454720af7f60b83d0b26" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_JUDGE::DEV::operator==</definition>
+        <argsstring>(const DEV &amp;) const =default</argsstring>
+        <name>operator==</name>
+        <qualifiedname>PDJE_JUDGE::DEV::operator==</qualifiedname>
+        <param>
+          <type>const <ref refid="structPDJE__JUDGE_1_1DEV" kindref="compound">DEV</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Rule.hpp" line="28" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Device identity tuple used to bind inputs to rails. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>PDJE_JUDGE::DEV</label>
+        <link refid="structPDJE__JUDGE_1_1DEV"/>
+      </node>
+      <node id="2">
+        <label>PDJE_JUDGE::INPUT_CONFIG</label>
+        <link refid="structPDJE__JUDGE_1_1INPUT__CONFIG"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>PDJE_JUDGE::RAIL_META</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL__META"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>PDJE_JUDGE::DEV</label>
+        <link refid="structPDJE__JUDGE_1_1DEV"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>Device_Name</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/judge/PDJE_Rule.hpp" line="25" column="1" bodyfile="include/judge/PDJE_Rule.hpp" bodystart="25" bodyend="29"/>
+    <listofallmembers>
+      <member refid="structPDJE__JUDGE_1_1DEV_1af44c295841ccd5a3c5be74545d18edee" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::DEV</scope><name>Device_Name</name></member>
+      <member refid="structPDJE__JUDGE_1_1DEV_1a17e89233056d454720af7f60b83d0b26" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::DEV</scope><name>operator==</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

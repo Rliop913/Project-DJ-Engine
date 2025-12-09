@@ -85,6 +85,7 @@
 <p>↰ <a class="reference internal" href="file_include_core_MainObjects_audioPlayer_audioCallbacks.cpp.html#file-include-core-mainobjects-audioplayer-audiocallbacks-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/core/MainObjects/audioPlayer/audioCallbacks.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;audioCallbacks.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;FrameCalc.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Benchmark.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;atomic&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstring&gt;</span>
 
@@ -145,10 +146,12 @@
 <span class="w">                       </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pInput</span><span class="p">,</span>
 <span class="w">                       </span><span class="n">ma_uint32</span><span class="w">   </span><span class="n">frameCount</span><span class="p">)</span>
 <span class="p">{</span>
+<span class="w">    </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;fullprerender callback calc start&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">rendered</span><span class="w"> </span><span class="o">=</span>
 <span class="w">        </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">audioEngineDataStruct</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pDevice</span><span class="o">-&gt;</span><span class="n">pUserData</span><span class="p">);</span>
 <span class="w">    </span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">CountUp</span><span class="p">(</span><span class="n">frameCount</span><span class="p">);</span>
 <span class="w">    </span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pOutput</span><span class="p">),</span><span class="w"> </span><span class="n">frameCount</span><span class="p">);</span>
+<span class="w">    </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;fullprerender callback calc end&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kt">void</span>
@@ -157,12 +160,14 @@
 <span class="w">                      </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pInput</span><span class="p">,</span>
 <span class="w">                      </span><span class="n">ma_uint32</span><span class="w">   </span><span class="n">frameCount</span><span class="p">)</span>
 <span class="p">{</span>
+<span class="w">    </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;hybridrender callback calc start&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">rendered</span><span class="w"> </span><span class="o">=</span>
 <span class="w">        </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">audioEngineDataStruct</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pDevice</span><span class="o">-&gt;</span><span class="n">pUserData</span><span class="p">);</span>
 <span class="w">    </span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">CountUp</span><span class="p">(</span><span class="n">frameCount</span><span class="p">);</span>
 <span class="w">    </span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">GetAfterManFX</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pOutput</span><span class="p">),</span><span class="w"> </span><span class="n">frameCount</span><span class="p">);</span>
 <span class="w">    </span><span class="n">rendered</span><span class="o">-&gt;</span><span class="n">MusCtrPanel</span><span class="o">-&gt;</span><span class="n">GetPCMFrames</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pOutput</span><span class="p">),</span>
 <span class="w">                                        </span><span class="n">frameCount</span><span class="p">);</span>
+<span class="w">    </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;hybridrender callback calc end&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kt">void</span>
@@ -171,10 +176,12 @@
 <span class="w">                          </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">pInput</span><span class="p">,</span>
 <span class="w">                          </span><span class="n">ma_uint32</span><span class="w">   </span><span class="n">frameCount</span><span class="p">)</span>
 <span class="p">{</span>
+<span class="w">    </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;full manual render callback calc start&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">Data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="n">audioEngineDataStruct</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pDevice</span><span class="o">-&gt;</span><span class="n">pUserData</span><span class="p">);</span>
 <span class="w">    </span><span class="n">Data</span><span class="o">-&gt;</span><span class="n">CountUp</span><span class="p">(</span><span class="n">frameCount</span><span class="p">);</span>
 <span class="w">    </span><span class="n">Data</span><span class="o">-&gt;</span><span class="n">MusCtrPanel</span><span class="o">-&gt;</span><span class="n">GetPCMFrames</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pOutput</span><span class="p">),</span>
 <span class="w">                                    </span><span class="n">frameCount</span><span class="p">);</span>
+<span class="w">    </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;full manual render callback calc end&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>

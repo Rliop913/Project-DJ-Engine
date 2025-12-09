@@ -41,4 +41,7 @@ Program Listing for File Decoder.hpp
    
        bool
        getRange(FRAME_POS numFrames, std::vector<float> &buffer);
+   
+       bool
+       getRange(FRAME_POS numFrames, SIMD_FLOAT &buffer);
    };

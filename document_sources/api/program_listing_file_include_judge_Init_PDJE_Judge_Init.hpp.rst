@@ -17,8 +17,9 @@ Program Listing for File PDJE_Judge_Init.hpp
    #include "PDJE_Input_DataLine.hpp"
    #include "PDJE_Judge_Init_Structs.hpp"
    
+   #include "InputParser.hpp"
+   #include "PDJE_Note_OBJ.hpp"
    #include "PDJE_Rule.hpp"
-   
    #include <optional>
    #include <unordered_map>
    namespace PDJE_JUDGE {
@@ -40,11 +41,17 @@ Program Listing for File PDJE_Judge_Init.hpp
        std::optional<OBJ> note_objects;
    
        // rules
-       std::optional<EVENT_RULE>                     ev_rule;
-       std::unordered_map<INPUT_RULE, INPUT_SETTING> dev_rules;
+       std::optional<EVENT_RULE> ev_rule;
+   
+       InputParser devparser;
+       // std::unordered_map<INPUT_RULE, INPUT_SETTING> dev_rules;
+       // RAILID_TO_OFFSET                              id_offset;
    
        void
-       SetInputRule(const INPUT_CONFIG &device_config);
+       SetRail(const DeviceData &devData,
+               const BITMASK     DeviceKey,
+               const int64_t     offset_microsecond,
+               const uint64_t    MatchRail);
        void
        SetEventRule(const EVENT_RULE &event_rule);
    

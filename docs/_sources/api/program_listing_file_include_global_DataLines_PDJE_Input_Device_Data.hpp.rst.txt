@@ -11,6 +11,7 @@ Program Listing for File PDJE_Input_Device_Data.hpp
 .. code-block:: cpp
 
    #pragma once
+   #include <cstdint>
    #include <future>
    #include <latch>
    #include <optional>

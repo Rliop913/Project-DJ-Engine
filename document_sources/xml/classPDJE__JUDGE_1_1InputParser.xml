@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classPDJE__JUDGE_1_1InputParser" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_JUDGE::InputParser</compoundname>
+    <includes refid="InputParser_8hpp" local="no">InputParser.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPDJE__JUDGE_1_1InputParser_1a164adc88a11fe1d8eb8a062eeb86c64d" prot="private" static="no" mutable="no">
+        <type><ref refid="structPDJE__JUDGE_1_1PARSE__OUT" kindref="compound">PARSE_OUT</ref></type>
+        <definition>PARSE_OUT PDJE_JUDGE::InputParser::outCache</definition>
+        <argsstring></argsstring>
+        <name>outCache</name>
+        <qualifiedname>PDJE_JUDGE::InputParser::outCache</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/InputParser/InputParser.hpp" line="22" column="15" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classPDJE__JUDGE_1_1InputParser_1a197cb789e3036a2e75455c10ab455b55" prot="public" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="structPDJE__JUDGE_1_1RAIL__META" kindref="compound">RAIL_META</ref>, <ref refid="structPDJE__JUDGE_1_1RAIL__SETTINGS" kindref="compound">RAIL_SETTINGS</ref> &gt;</type>
+        <definition>std::unordered_map&lt;RAIL_META, RAIL_SETTINGS&gt; PDJE_JUDGE::InputParser::railData</definition>
+        <argsstring></argsstring>
+        <name>railData</name>
+        <qualifiedname>PDJE_JUDGE::InputParser::railData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/InputParser/InputParser.hpp" line="25" column="24" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__JUDGE_1_1InputParser_1a0fd68dcfa598a58714f0c891abaa7c4f" prot="public" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="namespacePDJE__JUDGE_1a9f25a47baf1fe7dfa9840cf3ea155013" kindref="member">DEV_ID</ref>, <ref refid="structPDJE__JUDGE_1_1OFFSET" kindref="compound">OFFSET</ref> &gt;</type>
+        <definition>std::unordered_map&lt;DEV_ID, OFFSET&gt; PDJE_JUDGE::InputParser::offsetData</definition>
+        <argsstring></argsstring>
+        <name>offsetData</name>
+        <qualifiedname>PDJE_JUDGE::InputParser::offsetData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/InputParser/InputParser.hpp" line="26" column="34" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPDJE__JUDGE_1_1InputParser_1aae212db2d069fe4bff3e4555b07320d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structPDJE__JUDGE_1_1PARSE__OUT" kindref="compound">PARSE_OUT</ref> *</type>
+        <definition>PARSE_OUT * PDJE_JUDGE::InputParser::Parse</definition>
+        <argsstring>(const INPUT_RAW &amp;raw)</argsstring>
+        <name>Parse</name>
+        <qualifiedname>PDJE_JUDGE::InputParser::Parse</qualifiedname>
+        <param>
+          <type>const <ref refid="namespacePDJE__JUDGE_1ad84405fdc4ccea0c01f1885943308adf" kindref="member">INPUT_RAW</ref> &amp;</type>
+          <declname>raw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/InputParser/InputParser.hpp" line="28" column="5" bodyfile="include/judge/InputParser/InputParser.cpp" bodystart="9" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__JUDGE_1_1InputParser_1a37745aef9ab08dd255e81d6e659ca22f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_JUDGE::InputParser::InputParser</definition>
+        <argsstring>()=default</argsstring>
+        <name>InputParser</name>
+        <qualifiedname>PDJE_JUDGE::InputParser::InputParser</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/InputParser/InputParser.hpp" line="29" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__JUDGE_1_1InputParser_1af8bd4cf8a2145ee42b32216be11b9a7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_JUDGE::InputParser::~InputParser</definition>
+        <argsstring>()=default</argsstring>
+        <name>~InputParser</name>
+        <qualifiedname>PDJE_JUDGE::InputParser::~InputParser</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/InputParser/InputParser.hpp" line="31" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="8">
+        <label>PDJE_HID_Event</label>
+        <link refid="structPDJE__HID__Event"/>
+      </node>
+      <node id="5">
+        <label>PDJE_Input_Event</label>
+        <link refid="unionPDJE__Input__Event"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>mouse</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>keyboard</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>PDJE_Input_Log</label>
+        <link refid="structPDJE__Input__Log"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>event</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>hid_event</edgelabel>
+        </childnode>
+      </node>
+      <node id="11">
+        <label>PDJE_JUDGE::DEV</label>
+        <link refid="structPDJE__JUDGE_1_1DEV"/>
+        <childnode refid="12" relation="usage">
+          <edgelabel>Device_Name</edgelabel>
+        </childnode>
+      </node>
+      <node id="18">
+        <label>PDJE_JUDGE::DEV_TYPE</label>
+        <link refid="structPDJE__JUDGE_1_1DEV__TYPE"/>
+      </node>
+      <node id="1">
+        <label>PDJE_JUDGE::InputParser</label>
+        <link refid="classPDJE__JUDGE_1_1InputParser"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>outCache</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>railData</edgelabel>
+        </childnode>
+        <childnode refid="19" relation="usage">
+          <edgelabel>offsetData</edgelabel>
+        </childnode>
+      </node>
+      <node id="14">
+        <label>PDJE_JUDGE::KEY</label>
+        <link refid="structPDJE__JUDGE_1_1KEY"/>
+      </node>
+      <node id="17">
+        <label>PDJE_JUDGE::OFFSET</label>
+        <link refid="structPDJE__JUDGE_1_1OFFSET"/>
+      </node>
+      <node id="2">
+        <label>PDJE_JUDGE::PARSE_OUT</label>
+        <link refid="structPDJE__JUDGE_1_1PARSE__OUT"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>logs</edgelabel>
+        </childnode>
+      </node>
+      <node id="16">
+        <label>PDJE_JUDGE::RAIL</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL"/>
+      </node>
+      <node id="10">
+        <label>PDJE_JUDGE::RAIL_META</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL__META"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>PDJE_JUDGE::RAIL_SETTINGS</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL__SETTINGS"/>
+        <childnode refid="16" relation="public-inheritance">
+        </childnode>
+        <childnode refid="17" relation="public-inheritance">
+        </childnode>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>PDJE_Keyboard_Event</label>
+        <link refid="structPDJE__Keyboard__Event"/>
+      </node>
+      <node id="6">
+        <label>PDJE_Mouse_Event</label>
+        <link refid="structPDJE__Mouse__Event"/>
+      </node>
+      <node id="13">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="12">
+        <label>std::string</label>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>std::unordered_map&lt; DEV_ID, PDJE_JUDGE::OFFSET &gt;</label>
+        <childnode refid="12" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+        <childnode refid="17" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_META, PDJE_JUDGE::RAIL_SETTINGS &gt;</label>
+        <childnode refid="10" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+        <childnode refid="15" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
+        <childnode refid="4" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/judge/InputParser/InputParser.hpp" line="20" column="1" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="20" bodyend="32"/>
+    <listofallmembers>
+      <member refid="classPDJE__JUDGE_1_1InputParser_1a37745aef9ab08dd255e81d6e659ca22f" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::InputParser</scope><name>InputParser</name></member>
+      <member refid="classPDJE__JUDGE_1_1InputParser_1a0fd68dcfa598a58714f0c891abaa7c4f" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::InputParser</scope><name>offsetData</name></member>
+      <member refid="classPDJE__JUDGE_1_1InputParser_1a164adc88a11fe1d8eb8a062eeb86c64d" prot="private" virt="non-virtual"><scope>PDJE_JUDGE::InputParser</scope><name>outCache</name></member>
+      <member refid="classPDJE__JUDGE_1_1InputParser_1aae212db2d069fe4bff3e4555b07320d9" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::InputParser</scope><name>Parse</name></member>
+      <member refid="classPDJE__JUDGE_1_1InputParser_1a197cb789e3036a2e75455c10ab455b55" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::InputParser</scope><name>railData</name></member>
+      <member refid="classPDJE__JUDGE_1_1InputParser_1af8bd4cf8a2145ee42b32216be11b9a7f" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::InputParser</scope><name>~InputParser</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

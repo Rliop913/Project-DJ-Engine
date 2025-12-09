@@ -19,15 +19,17 @@ Classes
 
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1Custom__Events`
 
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1DEV`
+
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1DEV__TYPE`
+
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1EV__Thread`
 
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1EVENT__RULE`
 
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1INPUT__CONFIG`
 
-- :ref:`exhale_struct_structPDJE__JUDGE_1_1INPUT__RULE`
-
-- :ref:`exhale_struct_structPDJE__JUDGE_1_1INPUT__SETTING`
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1KEY`
 
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1LoopCached`
 
@@ -37,9 +39,21 @@ Classes
 
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1NOTE__ITR`
 
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1OFFSET`
+
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1PARSE__OUT`
+
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1Queues`
 
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1RAIL`
+
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1RAIL__META`
+
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1RAIL__SETTINGS`
+
 - :ref:`exhale_struct_structPDJE__JUDGE_1_1useDatas`
+
+- :ref:`exhale_class_classPDJE__JUDGE_1_1InputParser`
 
 - :ref:`exhale_class_classPDJE__JUDGE_1_1JUDGE`
 
@@ -78,11 +92,13 @@ Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespacePDJE__JUDGE_1ab03e3d67f9117a97f80f2a0a98221919`
+- :ref:`exhale_typedef_namespacePDJE__JUDGE_1a9f25a47baf1fe7dfa9840cf3ea155013`
 
 - :ref:`exhale_typedef_namespacePDJE__JUDGE_1a0e0549990dbec87c7f25b9ae22f4dc39`
 
-- :ref:`exhale_typedef_namespacePDJE__JUDGE_1a182d502cf8e15e13ed25f3550c82a53a`
+- :ref:`exhale_typedef_namespacePDJE__JUDGE_1ad84405fdc4ccea0c01f1885943308adf`
+
+- :ref:`exhale_typedef_namespacePDJE__JUDGE_1a3ee6af366c462d64775daf2f7b0d7e42`
 
 - :ref:`exhale_typedef_namespacePDJE__JUDGE_1a74a76cb2add5051c233d27fbedba793c`
 
@@ -93,6 +109,12 @@ Typedefs
 - :ref:`exhale_typedef_namespacePDJE__JUDGE_1ad73c9d4a59c40cc7c1a9fce27dc1be72`
 
 - :ref:`exhale_typedef_namespacePDJE__JUDGE_1a9ae87742de7e899c6e006447f27a9eba`
+
+- :ref:`exhale_typedef_namespacePDJE__JUDGE_1ae0d1c6b070db4eeb89560cfef395e997`
+
+- :ref:`exhale_typedef_namespacePDJE__JUDGE_1a7208339207c7e41e996eec587f5fd3fc`
+
+- :ref:`exhale_typedef_namespacePDJE__JUDGE_1a978246b5cc7c91f0d16d45e7c8e196fe`
 
 - :ref:`exhale_typedef_namespacePDJE__JUDGE_1a404264babe4bb096766de0bef9d0eea6`
 

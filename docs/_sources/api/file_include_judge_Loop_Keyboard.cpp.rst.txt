@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``PDJE_Judge_Init_Structs.hpp`` (:ref:`file_include_judge_Init_PDJE_Judge_Init_Structs.hpp`)
+
 - ``PDJE_Judge_Loop.hpp`` (:ref:`file_include_judge_Loop_PDJE_Judge_Loop.hpp`)
 
 - ``PDJE_Note_OBJ.hpp`` (:ref:`file_include_judge_NoteOBJ_PDJE_Note_OBJ.hpp`)

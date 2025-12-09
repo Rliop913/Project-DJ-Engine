@@ -85,6 +85,7 @@
 <p>↰ <a class="reference internal" href="file_include_tests_editorTest.cpp.html#file-include-tests-editortest-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/tests/editorTest.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_interface.hpp&quot;</span>
 
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Benchmark.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="c1">// #include &lt;NanoLog.hpp&gt;</span>
@@ -110,7 +111,7 @@
 <span class="w">                    </span><span class="s">&quot;testMiku&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="s">&quot;Camellia&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="s">&quot;../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">&quot;83040&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">&quot;41280&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">                </span><span class="n">EDIT_ARG_MUSIC</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
 <span class="w">                </span><span class="n">temp</span><span class="p">.</span><span class="n">musicName</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;testMiku&quot;</span><span class="p">;</span>
@@ -142,23 +143,23 @@
 <span class="w">                </span><span class="n">loadMusic</span><span class="p">.</span><span class="n">ID</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">                </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">AddLine</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">(</span><span class="n">loadMusic</span><span class="p">);</span>
 
-<span class="w">                </span><span class="c1">// EDIT_ARG_MIX changeBpm;</span>
-<span class="w">                </span><span class="c1">// changeBpm.beat     = 40;</span>
-<span class="w">                </span><span class="c1">// changeBpm.subBeat  = 0;</span>
-<span class="w">                </span><span class="c1">// changeBpm.type     = TypeEnum::BPM_CONTROL;</span>
-<span class="w">                </span><span class="c1">// changeBpm.details  = DetailEnum::TIME_STRETCH;</span>
-<span class="w">                </span><span class="c1">// changeBpm.separate = 4;</span>
-<span class="w">                </span><span class="c1">// changeBpm.ID       = 0;</span>
-<span class="w">                </span><span class="c1">// changeBpm.first    = &quot;170&quot;;</span>
-<span class="w">                </span><span class="c1">// engine-&gt;editor-&gt;AddLine&lt;EDIT_ARG_MIX&gt;(changeBpm);</span>
+<span class="w">                </span><span class="n">EDIT_ARG_MIX</span><span class="w"> </span><span class="n">changeBpm</span><span class="p">;</span>
+<span class="w">                </span><span class="n">changeBpm</span><span class="p">.</span><span class="n">beat</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
+<span class="w">                </span><span class="n">changeBpm</span><span class="p">.</span><span class="n">subBeat</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">                </span><span class="n">changeBpm</span><span class="p">.</span><span class="n">type</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">BPM_CONTROL</span><span class="p">;</span>
+<span class="w">                </span><span class="n">changeBpm</span><span class="p">.</span><span class="n">details</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">DetailEnum</span><span class="o">::</span><span class="n">TIME_STRETCH</span><span class="p">;</span>
+<span class="w">                </span><span class="n">changeBpm</span><span class="p">.</span><span class="n">separate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">                </span><span class="n">changeBpm</span><span class="p">.</span><span class="n">ID</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">                </span><span class="n">changeBpm</span><span class="p">.</span><span class="n">first</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;170&quot;</span><span class="p">;</span>
+<span class="w">                </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">AddLine</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">(</span><span class="n">changeBpm</span><span class="p">);</span>
 
-<span class="w">                </span><span class="c1">// EDIT_ARG_MIX unloadMusic;</span>
-<span class="w">                </span><span class="c1">// unloadMusic.beat     = 200;</span>
-<span class="w">                </span><span class="c1">// unloadMusic.subBeat  = 0;</span>
-<span class="w">                </span><span class="c1">// unloadMusic.type     = TypeEnum::UNLOAD;</span>
-<span class="w">                </span><span class="c1">// unloadMusic.ID       = 0;</span>
-<span class="w">                </span><span class="c1">// unloadMusic.separate = 4;</span>
-<span class="w">                </span><span class="c1">// engine-&gt;editor-&gt;AddLine&lt;EDIT_ARG_MIX&gt;(unloadMusic);</span>
+<span class="w">                </span><span class="n">EDIT_ARG_MIX</span><span class="w"> </span><span class="n">unloadMusic</span><span class="p">;</span>
+<span class="w">                </span><span class="n">unloadMusic</span><span class="p">.</span><span class="n">beat</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<span class="w">                </span><span class="n">unloadMusic</span><span class="p">.</span><span class="n">subBeat</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">                </span><span class="n">unloadMusic</span><span class="p">.</span><span class="n">type</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">UNLOAD</span><span class="p">;</span>
+<span class="w">                </span><span class="n">unloadMusic</span><span class="p">.</span><span class="n">ID</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">                </span><span class="n">unloadMusic</span><span class="p">.</span><span class="n">separate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">                </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">AddLine</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">(</span><span class="n">unloadMusic</span><span class="p">);</span>
 
 <span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;config init ok&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
@@ -168,7 +169,7 @@
 <span class="w">                    </span><span class="s">&quot;ヒアソビ&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="s">&quot;Camellia&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="s">&quot;../../DMCA_FREE_DEMO_MUSIC/miku_temp.wav&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">&quot;83040&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">&quot;41280&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="n">EDIT_ARG_MUSIC</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
 <span class="w">                </span><span class="n">temp</span><span class="p">.</span><span class="n">musicName</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ヒアソビ&quot;</span><span class="p">;</span>
 <span class="w">                </span><span class="n">temp</span><span class="p">.</span><span class="n">arg</span><span class="p">.</span><span class="n">beat</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -179,10 +180,12 @@
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="n">EDIT_ARG_NOTE</span><span class="w"> </span><span class="n">notetemp</span><span class="p">;</span>
 <span class="w">            </span><span class="n">notetemp</span><span class="p">.</span><span class="n">railID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="n">notetemp</span><span class="p">.</span><span class="n">beat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
 <span class="w">                </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">AddLine</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">(</span><span class="n">notetemp</span><span class="p">);</span>
 <span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">Undo</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">            </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">Redo</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s">&quot;testMiku&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Camellia&quot;</span><span class="p">).</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">linter_msg</span><span class="p">;</span>
@@ -207,65 +210,87 @@
 <span class="w">            </span><span class="k">else</span>
 <span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;push failed&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">audioPlayer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ap</span><span class="p">;</span>
-<span class="w">            </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">demoPlayInit</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;testTrack&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">ap</span><span class="p">){</span>
-<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;failed to init demo player. &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">ap</span><span class="o">-&gt;</span><span class="n">Activate</span><span class="p">()){</span>
-<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Activated demo&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="n">getchar</span><span class="p">();</span>
-<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">ap</span><span class="o">-&gt;</span><span class="n">Deactivate</span><span class="p">()){</span>
-<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;DeActivated demo&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="c1">// std::shared_ptr&lt;audioPlayer&gt; ap;</span>
+<span class="w">            </span><span class="c1">// engine-&gt;editor-&gt;demoPlayInit(ap, 48, &quot;testTrack&quot;);</span>
+<span class="w">            </span><span class="c1">// if (!ap) {</span>
+<span class="w">            </span><span class="c1">//     std::cout &lt;&lt; &quot;failed to init demo player. &quot; &lt;&lt; std::endl;</span>
+<span class="w">            </span><span class="c1">// }</span>
+<span class="w">            </span><span class="c1">// if (ap-&gt;Activate()) {</span>
+<span class="w">            </span><span class="c1">//     std::cout &lt;&lt; &quot;Activated demo&quot; &lt;&lt; std::endl;</span>
+<span class="w">            </span><span class="c1">// }</span>
+<span class="w">            </span><span class="c1">// getchar();</span>
+<span class="w">            </span><span class="c1">// if (ap-&gt;Deactivate()) {</span>
+<span class="w">            </span><span class="c1">//     std::cout &lt;&lt; &quot;DeActivated demo&quot; &lt;&lt; std::endl;</span>
+<span class="w">            </span><span class="c1">// }</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">trackdata</span><span class="w"> </span><span class="n">td</span><span class="p">;</span>
-<span class="w">        </span><span class="n">td</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">SearchTrack</span><span class="p">(</span><span class="s">&quot;testTrack&quot;</span><span class="p">).</span><span class="n">front</span><span class="p">();</span>
-
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">initres</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">InitPlayer</span><span class="p">(</span><span class="n">PLAY_MODE</span><span class="o">::</span><span class="n">HYBRID_RENDER</span><span class="p">,</span><span class="w"> </span><span class="n">td</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">);</span>
+<span class="w">        </span><span class="n">td</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">SearchTrack</span><span class="p">(</span><span class="s">&quot;testTrack&quot;</span><span class="p">).</span><span class="n">front</span><span class="p">();</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">mode</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">PLAY_MODE</span><span class="o">::</span><span class="n">HYBRID_RENDER</span><span class="p">;</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">initres</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">InitPlayer</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span><span class="w"> </span><span class="n">td</span><span class="p">,</span><span class="w"> </span><span class="mi">480</span><span class="p">);</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">activeres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Activate</span><span class="p">();</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">musPanel</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetMusicControlPanel</span><span class="p">();</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">muses</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s">&quot;ヒアソビ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Camellia&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">PLAY_MODE</span><span class="o">::</span><span class="n">FULL_PRE_RENDER</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">getchar</span><span class="p">();</span>
+<span class="w">            </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Deactivate</span><span class="p">();</span>
+<span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="n">engine</span><span class="p">;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG GetMusicControlPanel()&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">musPanel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">GetMusicControlPanel</span><span class="p">();</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG SearchMusic()&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">muses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s">&quot;ヒアソビ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Camellia&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG LoadMusic()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="n">musPanel</span><span class="o">-&gt;</span><span class="n">LoadMusic</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">DBROOT</span><span class="p">),</span><span class="w"> </span><span class="n">muses</span><span class="p">.</span><span class="n">front</span><span class="p">());</span>
-
 <span class="w">        </span><span class="n">getchar</span><span class="p">();</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG SetMusic()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="n">musPanel</span><span class="o">-&gt;</span><span class="n">SetMusic</span><span class="p">(</span><span class="s">&quot;ヒアソビ&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// musPanel-&gt;</span>
 <span class="w">        </span><span class="n">getchar</span><span class="p">();</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG getFXHandle()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">Fxhandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musPanel</span><span class="o">-&gt;</span><span class="n">getFXHandle</span><span class="p">(</span><span class="s">&quot;ヒアソビ&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG FX_ON_OFF1()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="n">Fxhandle</span><span class="o">-&gt;</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">OCSFILTER</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG FX_ON_OFF2()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="n">Fxhandle</span><span class="o">-&gt;</span><span class="n">FX_ON_OFF</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">EQ</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG GetArgSetter()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">ocshandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Fxhandle</span><span class="o">-&gt;</span><span class="n">GetArgSetter</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">OCSFILTER</span><span class="p">);</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG SetArgSetter1()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="n">ocshandle</span><span class="p">[</span><span class="s">&quot;OCSFilterHighLowSW&quot;</span><span class="p">](</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG SetArgSetter2()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="n">ocshandle</span><span class="p">[</span><span class="s">&quot;RangeFreqHalf&quot;</span><span class="p">](</span><span class="mi">2500</span><span class="p">);</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG SetArgSetter3()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="n">ocshandle</span><span class="p">[</span><span class="s">&quot;MiddleFreq&quot;</span><span class="p">](</span><span class="mi">5000</span><span class="p">);</span>
-
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG SetArgSetter4()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="n">ocshandle</span><span class="p">[</span><span class="s">&quot;Bps&quot;</span><span class="p">](</span><span class="mf">2.2333333</span><span class="p">);</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG SetArgSetter5()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="n">ocshandle</span><span class="p">[</span><span class="s">&quot;OCSFilterDryWet&quot;</span><span class="p">](</span><span class="mf">0.7</span><span class="p">);</span>
 <span class="w">        </span><span class="n">getchar</span><span class="p">();</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG ChangeBpm()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="n">musPanel</span><span class="o">-&gt;</span><span class="n">ChangeBpm</span><span class="p">(</span><span class="s">&quot;ヒアソビ&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">);</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG GetArgSetter2()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">eqhandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Fxhandle</span><span class="o">-&gt;</span><span class="n">GetArgSetter</span><span class="p">(</span><span class="n">FXList</span><span class="o">::</span><span class="n">EQ</span><span class="p">);</span>
-
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG SetArgSetter6()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="n">eqhandle</span><span class="p">[</span><span class="s">&quot;EQHigh&quot;</span><span class="p">](</span><span class="mi">-20</span><span class="p">);</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG SetArgSetter7()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="n">eqhandle</span><span class="p">[</span><span class="s">&quot;EQMid&quot;</span><span class="p">](</span><span class="mi">-20</span><span class="p">);</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG SetArgSetter8()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="n">eqhandle</span><span class="p">[</span><span class="s">&quot;EQLow&quot;</span><span class="p">](</span><span class="mi">20</span><span class="p">);</span>
 
 <span class="w">        </span><span class="n">getchar</span><span class="p">();</span>
+<span class="w">        </span><span class="n">WBCH</span><span class="p">(</span><span class="s">&quot;FLAG Deactivate()&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">deactres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Deactivate</span><span class="p">();</span>
 
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">editor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">GetEditorObject</span><span class="p">();</span>
-<span class="w">        </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">UpdateLog</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="w">        </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">UpdateLog</span><span class="o">&lt;</span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="w">        </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">UpdateLog</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="w">        </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">UpdateLog</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// auto editor = engine-&gt;GetEditorObject();</span>
+<span class="w">        </span><span class="c1">// editor-&gt;UpdateLog&lt;EDIT_ARG_MIX&gt;();</span>
+<span class="w">        </span><span class="c1">// editor-&gt;UpdateLog&lt;EDIT_ARG_KEY_VALUE&gt;();</span>
+<span class="w">        </span><span class="c1">// editor-&gt;UpdateLog&lt;EDIT_ARG_NOTE&gt;();</span>
+<span class="w">        </span><span class="c1">// editor-&gt;UpdateLog&lt;EDIT_ARG_MUSIC&gt;();</span>
 
-<span class="w">        </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">GetLogWithJSONGraph</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="w">        </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">GetLogWithJSONGraph</span><span class="o">&lt;</span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="w">        </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">GetLogWithJSONGraph</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="w">        </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">GetLogWithJSONGraph</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;music name&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">core_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">PullOutDataLine</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// editor-&gt;GetLogWithJSONGraph&lt;EDIT_ARG_MIX&gt;();</span>
+<span class="w">        </span><span class="c1">// editor-&gt;GetLogWithJSONGraph&lt;EDIT_ARG_KEY_VALUE&gt;();</span>
+<span class="w">        </span><span class="c1">// editor-&gt;GetLogWithJSONGraph&lt;EDIT_ARG_NOTE&gt;();</span>
+<span class="w">        </span><span class="c1">// editor-&gt;GetLogWithJSONGraph&lt;EDIT_ARG_MUSIC&gt;(&quot;music name&quot;);</span>
+<span class="w">        </span><span class="c1">// auto core_line = engine-&gt;PullOutDataLine();</span>
 <span class="w">        </span><span class="c1">// core_line.preRenderedData;</span>
 <span class="w">        </span><span class="c1">// core_line.maxCursor;</span>
 <span class="w">        </span><span class="c1">// core_line.nowCursor;</span>

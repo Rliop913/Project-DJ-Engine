@@ -100,13 +100,19 @@
 <span class="kt">bool</span>
 <span class="n">MusicControlPanel</span><span class="o">::</span><span class="n">LoadMusic</span><span class="p">(</span><span class="n">litedb</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ROOTDB</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">musdata</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Mus</span><span class="p">)</span>
 <span class="p">{</span>
+
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">deck</span><span class="p">.</span><span class="n">try_emplace</span><span class="p">(</span><span class="n">Mus</span><span class="p">.</span><span class="n">title</span><span class="p">).</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to load music from MusicControlPanel LoadMusic. &quot;</span>
 <span class="w">                </span><span class="s">&quot;ErrTitle: &quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">Mus</span><span class="p">.</span><span class="n">title</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">deck</span><span class="p">[</span><span class="n">Mus</span><span class="p">.</span><span class="n">title</span><span class="p">].</span><span class="n">dec</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">ROOTDB</span><span class="p">,</span><span class="w"> </span><span class="n">Mus</span><span class="p">.</span><span class="n">musicPath</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">deck</span><span class="p">[</span><span class="n">Mus</span><span class="p">.</span><span class="n">title</span><span class="p">].</span><span class="n">loaded</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">ROOTDB</span><span class="p">,</span><span class="w"> </span><span class="n">Mus</span><span class="p">.</span><span class="n">musicPath</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to load music.&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">deck</span><span class="p">[</span><span class="n">Mus</span><span class="p">.</span><span class="n">title</span><span class="p">].</span><span class="n">Init</span><span class="p">(</span><span class="n">bufferSZ</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">bool</span>
@@ -126,7 +132,9 @@
 <span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="n">title</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">deck</span><span class="p">[</span><span class="n">safeTitle</span><span class="p">.</span><span class="n">value</span><span class="p">()].</span><span class="n">dec</span><span class="p">.</span><span class="n">changePos</span><span class="p">(</span><span class="n">newPos</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CHANNEL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">deck</span><span class="p">[</span><span class="n">safeTitle</span><span class="p">.</span><span class="n">value</span><span class="p">()].</span><span class="n">loaded</span><span class="p">.</span><span class="n">changePos</span><span class="p">(</span><span class="n">newPos</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">deck</span><span class="p">[</span><span class="n">safeTitle</span><span class="p">.</span><span class="n">value</span><span class="p">()].</span><span class="n">pb</span><span class="o">-&gt;</span><span class="n">Reset</span><span class="p">();</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -222,6 +230,11 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">deck</span><span class="p">[</span><span class="n">safeTitle</span><span class="p">.</span><span class="n">value</span><span class="p">()].</span><span class="n">st</span><span class="o">-&gt;</span><span class="n">setTempo</span><span class="p">(</span><span class="n">targetBpm</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">originBpm</span><span class="p">);</span>
+<span class="w">        </span><span class="n">PREDICT</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">deck</span><span class="p">[</span><span class="n">safeTitle</span><span class="p">.</span><span class="n">value</span><span class="p">()].</span><span class="n">pb</span><span class="o">-&gt;</span><span class="n">Pop</span><span class="p">(</span><span class="n">temp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">deck</span><span class="p">[</span><span class="n">safeTitle</span><span class="p">.</span><span class="n">value</span><span class="p">()].</span><span class="n">loaded</span><span class="p">.</span><span class="n">changePos</span><span class="p">(</span><span class="n">temp</span><span class="p">.</span><span class="n">start_cursor</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">deck</span><span class="p">[</span><span class="n">safeTitle</span><span class="p">.</span><span class="n">value</span><span class="p">()].</span><span class="n">pb</span><span class="o">-&gt;</span><span class="n">Reset</span><span class="p">();</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>

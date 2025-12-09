@@ -24,6 +24,7 @@ Files
 -----
 
 - :ref:`file_include_global_PDJE_ATOMIC_EVENT.hpp`
+- :ref:`file_include_global_PDJE_Benchmark.hpp`
 - :ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`
 - :ref:`file_include_global_PDJE_LOG_SETTER.hpp`
 - :ref:`file_include_global_PDJE_OBJ_SETTER.hpp`

@@ -32,6 +32,12 @@ Includes
 
 - ``PDJE_Judge_Loop.hpp`` (:ref:`file_include_judge_Loop_PDJE_Judge_Loop.hpp`)
 
+- ``PDJE_Rule.hpp`` (:ref:`file_include_judge_PDJE_Rule.hpp`)
+
+- ``cstdint``
+
+- ``optional``
+
 
 
 

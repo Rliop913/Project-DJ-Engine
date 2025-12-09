@@ -14,6 +14,7 @@ Program Listing for File PDJE_Judge.cpp
    #include "PDJE_LOG_SETTER.hpp"
    #include "PDJE_Note_OBJ.hpp"
    #include <atomic>
+   #include <exception>
    #include <thread>
    #include <unordered_map>
    namespace PDJE_JUDGE {
@@ -47,7 +48,7 @@ Program Listing for File PDJE_Judge.cpp
                    "check again.");
            return JUDGE_STATUS::EVENT_RULE_IS_EMPTY;
        }
-       if (inits.dev_rules.empty()) {
+       if (inits.devparser.railData.empty()) {
            warnlog("failed to start pdje judge module. no input device added. you "
                    "should connect input device. check SetInputRule function.");
            return JUDGE_STATUS::INPUT_RULE_IS_EMPTY;
@@ -57,16 +58,15 @@ Program Listing for File PDJE_Judge.cpp
        loop.emplace([this]() {
            loop_obj.emplace(inits);
            loop_obj->loop_switch = true;
-           loop_obj->StartEventLoop();
-           loop_obj->loop();
+           try {
+               loop_obj->StartEventLoop();
+               loop_obj->loop();
+           } catch (const std::exception &e) {
+               critlog("loop has exceptions. What: ");
+               critlog(e.what());
+           }
        });
        return JUDGE_STATUS::OK;
-   }
-   
-   JUDGE_STATUS
-   JUDGE::CheckStatus()
-   {
-       return status;
    }
    
    void
@@ -74,12 +74,15 @@ Program Listing for File PDJE_Judge.cpp
    {
        loop_obj->loop_switch = false;
        loop_obj->EndEventLoop();
-       loop->join();
+       if (loop->joinable()) {
+           loop->join();
+       }
        inits.coreline.reset();
        inits.inputline.reset();
        inits.note_objects.reset();
        inits.ev_rule.reset();
-       inits.dev_rules.clear();
+       inits.devparser.offsetData.clear();
+       inits.devparser.railData.clear();
    }
    
    }; // namespace PDJE_JUDGE

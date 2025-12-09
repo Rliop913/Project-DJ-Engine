@@ -12,7 +12,7 @@ Program Listing for File MusicControlPanel-inl.h
 
    
    #include "MusicControlPanel.hpp"
-   
+   #include "PDJE_Benchmark.hpp"
    #undef HWY_TARGET_INCLUDE
    #define HWY_TARGET_INCLUDE "MusicControlPanel-inl.h"
    #include "hwy/foreach_target.h"
@@ -42,23 +42,15 @@ Program Listing for File MusicControlPanel-inl.h
        auto times    = RAWFrameSize / laneSize;
        auto remained = RAWFrameSize % laneSize;
    
-       SIMD_FLOAT solaVector;
+       // SIMD_FLOAT solaVector;
+       PREDICT prd;
        for (auto &i : deck) {
            if (i.second.play) {
-               const FRAME_POS Sola = static_cast<FRAME_POS>(
-                   std::ceil(static_cast<double>(FrameSize) /
-                             i.second.st->getInputOutputSampleRatio()));
-               solaVector.resize(Sola * CHANNEL);
-               if (ma_decoder_read_pcm_frames(
-                       &i.second.dec.dec, solaVector.data(), Sola, NULL) !=
-                   MA_SUCCESS) {
-                   return false;
+               if (!i.second.pb->Pop(prd)) {
+                   continue; // skip if not exists
                }
    
-               i.second.st->putSamples(solaVector.data(), Sola);
-               i.second.st->receiveSamples(tempFrames.data(), FrameSize);
-   
-               toFaustStylePCM(FaustStyle, tempFrames.data(), FrameSize);
+               toFaustStylePCM(FaustStyle, prd.predict_fragment.data(), FrameSize);
                i.second.fxP->addFX(FaustStyle, FrameSize);
                toLRStylePCM(FaustStyle, tempFrames.data(), FrameSize);
    

@@ -2,8 +2,10 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="structPDJE__JUDGE_1_1INPUT__CONFIG" kind="struct" language="C++" prot="public">
     <compoundname>PDJE_JUDGE::INPUT_CONFIG</compoundname>
-    <basecompoundref refid="structPDJE__JUDGE_1_1INPUT__RULE" prot="public" virt="non-virtual">PDJE_JUDGE::INPUT_RULE</basecompoundref>
-    <basecompoundref refid="structPDJE__JUDGE_1_1INPUT__SETTING" prot="public" virt="non-virtual">PDJE_JUDGE::INPUT_SETTING</basecompoundref>
+    <basecompoundref refid="structPDJE__JUDGE_1_1DEV" prot="public" virt="non-virtual">PDJE_JUDGE::DEV</basecompoundref>
+    <basecompoundref refid="structPDJE__JUDGE_1_1KEY" prot="public" virt="non-virtual">PDJE_JUDGE::KEY</basecompoundref>
+    <basecompoundref refid="structPDJE__JUDGE_1_1RAIL" prot="public" virt="non-virtual">PDJE_JUDGE::RAIL</basecompoundref>
+    <basecompoundref refid="structPDJE__JUDGE_1_1OFFSET" prot="public" virt="non-virtual">PDJE_JUDGE::OFFSET</basecompoundref>
     <includes refid="PDJE__Rule_8hpp" local="no">PDJE_Rule.hpp</includes>
     <briefdescription>
 <para>Convenience type combining rule and setting. </para>
@@ -11,6 +13,10 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
+      <node id="2">
+        <label>PDJE_JUDGE::DEV</label>
+        <link refid="structPDJE__JUDGE_1_1DEV"/>
+      </node>
       <node id="1">
         <label>PDJE_JUDGE::INPUT_CONFIG</label>
         <link refid="structPDJE__JUDGE_1_1INPUT__CONFIG"/>
@@ -18,17 +24,32 @@
         </childnode>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="2">
-        <label>PDJE_JUDGE::INPUT_RULE</label>
-        <link refid="structPDJE__JUDGE_1_1INPUT__RULE"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
       </node>
       <node id="3">
-        <label>PDJE_JUDGE::INPUT_SETTING</label>
-        <link refid="structPDJE__JUDGE_1_1INPUT__SETTING"/>
+        <label>PDJE_JUDGE::KEY</label>
+        <link refid="structPDJE__JUDGE_1_1KEY"/>
+      </node>
+      <node id="5">
+        <label>PDJE_JUDGE::OFFSET</label>
+        <link refid="structPDJE__JUDGE_1_1OFFSET"/>
+      </node>
+      <node id="4">
+        <label>PDJE_JUDGE::RAIL</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="2">
+        <label>PDJE_JUDGE::DEV</label>
+        <link refid="structPDJE__JUDGE_1_1DEV"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>Device_Name</edgelabel>
+        </childnode>
+      </node>
       <node id="1">
         <label>PDJE_JUDGE::INPUT_CONFIG</label>
         <link refid="structPDJE__JUDGE_1_1INPUT__CONFIG"/>
@@ -36,17 +57,22 @@
         </childnode>
         <childnode refid="5" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="2">
-        <label>PDJE_JUDGE::INPUT_RULE</label>
-        <link refid="structPDJE__JUDGE_1_1INPUT__RULE"/>
-        <childnode refid="3" relation="usage">
-          <edgelabel>Device_ID</edgelabel>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
         </childnode>
       </node>
       <node id="5">
-        <label>PDJE_JUDGE::INPUT_SETTING</label>
-        <link refid="structPDJE__JUDGE_1_1INPUT__SETTING"/>
+        <label>PDJE_JUDGE::KEY</label>
+        <link refid="structPDJE__JUDGE_1_1KEY"/>
+      </node>
+      <node id="7">
+        <label>PDJE_JUDGE::OFFSET</label>
+        <link refid="structPDJE__JUDGE_1_1OFFSET"/>
+      </node>
+      <node id="6">
+        <label>PDJE_JUDGE::RAIL</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL"/>
       </node>
       <node id="4">
         <label>std::basic_string&lt; Char &gt;</label>
@@ -57,14 +83,13 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/judge/PDJE_Rule.hpp" line="39" column="1" bodyfile="include/judge/PDJE_Rule.hpp" bodystart="39" bodyend="42"/>
+    <location file="include/judge/PDJE_Rule.hpp" line="50" column="1" bodyfile="include/judge/PDJE_Rule.hpp" bodystart="50" bodyend="50"/>
     <listofallmembers>
-      <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1aa9e71f2f4ec766fc1c0e4df000f0e607" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_CONFIG</scope><name>Device_ID</name></member>
-      <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1a26595261d4164af5259c5a81392c7984" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_CONFIG</scope><name>DeviceKey</name></member>
-      <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1a665a8072fc88db62bc59bdaa52a004b8" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_CONFIG</scope><name>DeviceType</name></member>
-      <member refid="structPDJE__JUDGE_1_1INPUT__SETTING_1a851e9b9a55177bcbb9ef1b1a54830d93" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_CONFIG</scope><name>MatchRail</name></member>
-      <member refid="structPDJE__JUDGE_1_1INPUT__SETTING_1aacf78b3d629310494dfc7cce61f0f3cd" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_CONFIG</scope><name>offset_microsecond</name></member>
-      <member refid="structPDJE__JUDGE_1_1INPUT__RULE_1a9e677d142dbff730cfe41d85bca696f4" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_CONFIG</scope><name>operator==</name></member>
+      <member refid="structPDJE__JUDGE_1_1DEV_1af44c295841ccd5a3c5be74545d18edee" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_CONFIG</scope><name>Device_Name</name></member>
+      <member refid="structPDJE__JUDGE_1_1KEY_1a162817369d53cc6a10be99f5dd6df9dc" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_CONFIG</scope><name>DeviceKey</name></member>
+      <member refid="structPDJE__JUDGE_1_1RAIL_1a5a5a3926c7cfd3a03e7772c6d4feab74" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_CONFIG</scope><name>MatchRail</name></member>
+      <member refid="structPDJE__JUDGE_1_1OFFSET_1ac87dc36495a6142d7ef94e20a83e4a4e" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_CONFIG</scope><name>offset_microsecond</name></member>
+      <member refid="structPDJE__JUDGE_1_1DEV_1a17e89233056d454720af7f60b83d0b26" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::INPUT_CONFIG</scope><name>operator==</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

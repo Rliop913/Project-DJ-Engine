@@ -58,13 +58,13 @@ Program Listing for File SetCue.cpp
    Ingredients::FillLocal(std::vector<PlayPosition> &Lbpm, const BpmStruct &Local)
    {
        for (unsigned int i = 0; i < pos.size(); ++i) {
-           auto now = pos[i];
+           auto                             now = pos[i];
            std::vector<const BpmFragment *> betweenBpm;
            if (now.status == MIXSTATE::PLAY) {
-               if((i+1) != pos.size()){
-                   auto nextLidx =
-                       now.Lidx + (pos[i + 1].Gidx - now.Gidx) *
-                           ORIGIN_TO_TARGET(now.TargetBPM, now.OriginBPM);
+               if ((i + 1) != pos.size()) {
+                   auto nextLidx = now.Lidx + (pos[i + 1].Gidx - now.Gidx) *
+                                                  ORIGIN_TO_TARGET(now.TargetBPM,
+                                                                   now.OriginBPM);
                    betweenBpm = Local.getAffectedList(now.Lidx, nextLidx);
                }
                if (betweenBpm.empty()) {

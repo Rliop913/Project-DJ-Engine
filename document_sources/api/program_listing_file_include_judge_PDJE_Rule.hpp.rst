@@ -18,6 +18,7 @@ Program Listing for File PDJE_Rule.hpp
    #include <cstdint>
    #include <functional>
    #include <string>
+   #include <unordered_map>
    namespace PDJE_JUDGE {
    
    enum DEVICE_MOUSE_EVENT {
@@ -31,23 +32,38 @@ Program Listing for File PDJE_Rule.hpp
        AXIS_MOVE
    };
    
-   struct PDJE_API INPUT_RULE {
-       std::string   Device_ID  = "";
-       PDJE_Dev_Type DeviceType = PDJE_Dev_Type::UNKNOWN;
-       BITMASK       DeviceKey  = 0;
+   struct PDJE_API DEV {
+       std::string Device_Name = "";
        bool
-       operator==(const INPUT_RULE &) const = default;
+       operator==(const DEV &) const = default;
    };
    
-   struct PDJE_API INPUT_SETTING {
-       uint64_t MatchRail          = 0;
-       int64_t  offset_microsecond = 0;
+   struct PDJE_API DEV_TYPE {
+       PDJE_Dev_Type Type = PDJE_Dev_Type::UNKNOWN;
+   };
+   struct PDJE_API KEY {
+       BITMASK DeviceKey = 0;
    };
    
-   struct PDJE_API INPUT_CONFIG : INPUT_RULE, INPUT_SETTING {
-       // uint64_t MatchRail          = 0;
-       // int64_t  offset_microsecond = 0;
+   struct PDJE_API RAIL {
+       uint64_t MatchRail = 0;
    };
+   struct PDJE_API OFFSET {
+   
+       int64_t offset_microsecond = 0;
+   };
+   
+   using RailToOffset = std::unordered_map<uint64_t, int64_t>;
+   
+   struct PDJE_API INPUT_CONFIG : DEV, KEY, RAIL, OFFSET {};
+   struct PDJE_API RAIL_META : DEV, KEY {
+       bool
+       operator==(const RAIL_META &other) const noexcept
+       {
+           return Device_Name == other.Device_Name && DeviceKey == other.DeviceKey;
+       }
+   };
+   struct PDJE_API RAIL_SETTINGS : RAIL, OFFSET, DEV_TYPE {};
    
    struct PDJE_API EVENT_RULE {
        uint64_t miss_range_microsecond = 0;
@@ -56,15 +72,14 @@ Program Listing for File PDJE_Rule.hpp
    
    }; // namespace PDJE_JUDGE
    
-   template <> struct std::hash<PDJE_JUDGE::INPUT_RULE> {
+   template <> struct std::hash<PDJE_JUDGE::RAIL_META> {
        std::size_t
-       operator()(const PDJE_JUDGE::INPUT_RULE &rule) const noexcept
+       operator()(const PDJE_JUDGE::RAIL_META &rule) const noexcept
        {
-           size_t h1 = std::hash<int>()(static_cast<int>(rule.DeviceType));
            size_t h2 = std::hash<BITMASK>()(rule.DeviceKey);
-           size_t h3 = std::hash<std::string>()(rule.Device_ID);
+           size_t h3 = std::hash<std::string>()(rule.Device_Name);
    
-           size_t seed = h1;
+           size_t seed = 0;
            seed ^= h2 + 0x9e3779b97f4a7c15ULL + (seed << 6) + (seed >> 3);
            seed ^= h3 + 0x9e3779b97f4a7c15ULL + (seed << 6) + (seed >> 3);
            return seed;

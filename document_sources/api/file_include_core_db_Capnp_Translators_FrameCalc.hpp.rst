@@ -50,6 +50,12 @@ Included By
 
 - :ref:`file_include_core_audioRender_ManualMix_ManualMix.hpp`
 
+- :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.hpp`
+
+- :ref:`file_include_core_audioRender_ManualMix_PreLoadedMusic_PreLoadedMusic.hpp`
+
+- :ref:`file_include_core_audioRender_ManualMix_PredictMusic.hpp`
+
 - :ref:`file_include_core_audioRender_MixMachine_EFFECT_EFFECTS.hpp`
 
 - :ref:`file_include_core_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`

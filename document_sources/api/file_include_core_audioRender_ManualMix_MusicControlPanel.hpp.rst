@@ -30,13 +30,21 @@ Includes
 --------
 
 
-- ``Decoder.hpp`` (:ref:`file_include_core_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`)
+- ``FrameCalc.hpp`` (:ref:`file_include_core_db_Capnp_Translators_FrameCalc.hpp`)
 
 - ``ManualMix.hpp`` (:ref:`file_include_core_audioRender_ManualMix_ManualMix.hpp`)
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
 
+- ``PreLoadedMusic.hpp`` (:ref:`file_include_core_audioRender_ManualMix_PreLoadedMusic_PreLoadedMusic.hpp`)
+
+- ``PredictMusic.hpp`` (:ref:`file_include_core_audioRender_ManualMix_PredictMusic.hpp`)
+
 - ``SoundTouch.h``
+
+- ``array``
+
+- ``chrono``
 
 - ``dbRoot.hpp`` (:ref:`file_include_core_db_dbRoot.hpp`)
 
@@ -79,4 +87,11 @@ Typedefs
 - :ref:`exhale_typedef_MusicControlPanel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8`
 
 - :ref:`exhale_typedef_MusicControlPanel_8hpp_1ab133b0d81c222324c3cd46e91d30fb7d`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_MusicControlPanel_8hpp_1a6ab83c018ea20059c86eea4da929907d`
 

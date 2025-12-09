@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``PDJE_Benchmark.hpp`` (:ref:`file_include_global_PDJE_Benchmark.hpp`)
+
 - ``PDJE_interface.hpp`` (:ref:`file_include_core_interface_PDJE_interface.hpp`)
 
 - ``iostream``
