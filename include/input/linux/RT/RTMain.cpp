@@ -12,7 +12,7 @@ main(int argc, char **argv)
     if (argc < 2) {
         return -1;
     }
-    PDJE_IPC::ChildProcess serv;
+    PDJE_IPC::SubProc serv;
     auto                   port = std::stoi(argv[1]);
     std::cout << "open transmission on port " << argv[1] << std::endl;
     serv.RunServer(port);

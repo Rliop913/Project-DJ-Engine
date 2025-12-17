@@ -12,7 +12,7 @@ namespace PDJE_IPC {
 
 template <typename T>
 bool
-MainProcess::SendBufferArena(const PDJE_Buffer_Arena<T> &mem)
+MainProc::SendBufferArena(const PDJE_Buffer_Arena<T> &mem)
 {
  if(!cli){
     critlog("mainprocess is not initialized.");
@@ -52,7 +52,7 @@ MainProcess::SendBufferArena(const PDJE_Buffer_Arena<T> &mem)
 
 template <typename T, int MEM_PROT_FLAG>
 bool
-MainProcess::SendIPCSharedMemory(const SharedMem<T, MEM_PROT_FLAG> &mem,
+MainProc::SendIPCSharedMemory(const SharedMem<T, MEM_PROT_FLAG> &mem,
                                  const std::string                 &mem_path,
                                  const std::string                 &dataType)
 {

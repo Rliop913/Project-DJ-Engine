@@ -1,4 +1,4 @@
-#include "ChildProcess.hpp"
+#include "SubProcess.hpp"
 #include "PDJE_Crypto.hpp"
 #include "PSKPipe.hpp"
 #include <sstream>
@@ -16,7 +16,7 @@ main()
         auto psk = PDJE_CRYPTO::PSK();
         psk.Decode(pskhex);
 
-        PDJE_IPC::ChildProcess serv(psk);
+        PDJE_IPC::SubProc serv(psk);
         int                    port = std::stoi(portstr);
         serv.RunServer(port);
         if (serv.KillCheck) {

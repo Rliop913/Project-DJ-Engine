@@ -1,4 +1,4 @@
-#include "ChildProcess.hpp"
+#include "SubProcess.hpp"
 #include "ListDevice.hpp"
 #include "windows_keyboard_fill.hpp"
 #include <Windows.h>
@@ -6,7 +6,7 @@
 namespace PDJE_IPC {
 
 void *
-ChildProcess::Init()
+SubProc::Init()
 {
     HINSTANCE hst = GetModuleHandleW(nullptr);
     WNDCLASSW wc{};
@@ -29,7 +29,7 @@ ChildProcess::Init()
                            nullptr);
 }
 void
-ChildProcess::Run()
+SubProc::Run()
 {
 
     MSG msg;

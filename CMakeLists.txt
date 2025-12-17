@@ -66,7 +66,7 @@ include(cmakes/src/IPCsrc.cmake)
 if(PDJE_DEVELOP_INPUT)
 
 
-add_executable(PDJE_MODULE_INPUT_PROCESS ${inputSource} ${globalSource}  ${PDJE_INPUT_PROCESS_SRC} ${PDJE_IPC_SRC})
+add_executable(PDJE_MODULE_INPUT_PROCESS ${globalSource}  ${PDJE_INPUT_PROCESS_SRC} ${PDJE_IPC_SRC})
 
 target_include_directories(PDJE_MODULE_INPUT_PROCESS PUBLIC ${PDJE_INCLUDE_INPUT})
 

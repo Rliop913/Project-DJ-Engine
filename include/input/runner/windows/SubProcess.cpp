@@ -1,4 +1,4 @@
-#include "ChildProcess.hpp"
+#include "SubProcess.hpp"
 #include "ListDevice.hpp"
 #include "ipc_shared_memory.hpp"
 #include <SetupAPI.h>
@@ -8,7 +8,7 @@
 namespace PDJE_IPC {
 
 bool
-ChildProcess::RecvIPCSharedMem(const std::string &mem_path,
+SubProc::RecvIPCSharedMem(const std::string &mem_path,
                                const std::string &dataType,
                                const uint64_t     data_count)
 {
@@ -31,7 +31,7 @@ ChildProcess::RecvIPCSharedMem(const std::string &mem_path,
 }
 
 std::string
-ChildProcess::ListDev()
+SubProc::ListDev()
 {
     auto                    rawDevs = getRawDeviceDatas();
     std::vector<DeviceData> out;
@@ -87,19 +87,19 @@ ChildProcess::ListDev()
 }
 
 void
-ChildProcess::RunServer(const int port)
+SubProc::RunServer(const int port)
 {
     server.listen("127.0.0.1", port);
 }
 void
-ChildProcess::EndTransmission(const httplib::Request &, httplib::Response &res)
+SubProc::EndTransmission(const httplib::Request &, httplib::Response &res)
 {
     res.set_content("stopped", "text/plain");
     server.stop();
 }
 
 void
-ChildProcess::LoopTrig()
+SubProc::LoopTrig()
 {
 
     auto msgOnly = reinterpret_cast<HWND>(Init());

@@ -28,7 +28,7 @@
  */
 class PDJE_API PDJE_Input {
   private:
-    std::optional<PDJE_IPC::MainProcess> http_bridge;
+    std::optional<PDJE_IPC::MainProc> http_bridge;
 
     PDJE_IPC::SharedMem<std::unordered_map<PDJE_ID, PDJE_NAME>,
                         PDJE_IPC::PDJE_IPC_RW>

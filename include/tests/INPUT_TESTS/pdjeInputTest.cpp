@@ -15,7 +15,7 @@ main()
 {
     // std::cout << GenExecuteShell("./PDJE_MODULE_INPUT_PROCESS", 84300)
     //           << std::endl;
-    // auto mp = PDJE_IPC::MainProcess(54335);
+    // auto mp = PDJE_IPC::MainProc(54335);
     // std::cout << "opened connection" << std::endl;
     // if (mp.EndTransmission()) {
     //     std::cout << "Ended Transmission" << std::endl;

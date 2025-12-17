@@ -84,6 +84,9 @@ ${httplib_SOURCE_DIR}
 set(PDJE_INCLUDE_INPUT
 ${PDJE_INCLUDE_ROOT}/include/input
 ${PDJE_INCLUDE_ROOT}/include/input/midi
+${PDJE_INCLUDE_ROOT}/include/input/host
+${PDJE_INCLUDE_ROOT}/include/input/runner
+
 )
 
 set(PDJE_INCLUDE_GLOBAL
@@ -96,7 +99,10 @@ if(WIN32)
     ${PDJE_INCLUDE_ROOT}/include/global/Highres_Clock/Windows
   )
   list(APPEND PDJE_INCLUDE_INPUT
-    ${PDJE_INCLUDE_ROOT}/include/input/windows
+    ${PDJE_INCLUDE_ROOT}/include/input/host/windows
+    ${PDJE_INCLUDE_ROOT}/include/input/runner/windows
+
+
   )
   list(APPEND PDJE_INCLUDE_IPC
     ${PDJE_INCLUDE_ROOT}/include/input/IPC/memory/windows

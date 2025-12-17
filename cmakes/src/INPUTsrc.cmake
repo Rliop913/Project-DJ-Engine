@@ -4,7 +4,7 @@ if(WIN32)
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/PDJE_Input.cpp
     )
     set(PDJE_INPUT_PROCESS_SRC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/windows/process/Input_Process_Main.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/windows/SubMain.cpp
     )
     function(PDJE_INPUT_LINK_LIB targetName)
         target_link_libraries(${targetName} PUBLIC user32 avrt winmm hid)

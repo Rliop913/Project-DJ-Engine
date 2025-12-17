@@ -34,7 +34,7 @@ struct Importants {
 #endif
 };
 
-class MainProcess {
+class MainProc {
   private:
     std::optional<httplib::Client>   cli;
     PDJE_CRYPTO::PSK                 psk;
@@ -122,8 +122,8 @@ class MainProcess {
         }
     }
 
-    MainProcess(const int port);
-    ~MainProcess();
+    MainProc(const int port);
+    ~MainProc();
 };
 
 }; // namespace PDJE_IPC

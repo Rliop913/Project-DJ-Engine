@@ -6,7 +6,6 @@
 #include <memory_resource>
 #include <random>
 #include <vector>
-
 namespace fs = std::filesystem;
 
 template <typename T> class Atomic_Double_Buffer {
@@ -60,6 +59,7 @@ template <typename T> class Atomic_Double_Buffer {
         }
     }
 };
+
 
 template <typename T> class PDJE_Buffer_Arena {
   private:

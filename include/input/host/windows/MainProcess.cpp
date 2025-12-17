@@ -62,7 +62,7 @@ PDJE_OpenProcess(const fs::path       &pt,
     return true;
 }
 
-MainProcess::~MainProcess()
+MainProc::~MainProc()
 {
     WaitForSingleObject(imp.process_info.hProcess, INFINITE);
     DWORD exitCode = 0;
@@ -76,7 +76,7 @@ MainProcess::~MainProcess()
     CloseHandle(imp.process_info.hProcess);
 }
 
-MainProcess::MainProcess(const int port)
+MainProc::MainProc(const int port)
 {
 
     auto path = GetValidProcessExecutor();
@@ -107,7 +107,7 @@ MainProcess::MainProcess(const int port)
     }
 }
 bool
-MainProcess::EndTransmission()
+MainProc::EndTransmission()
 {
     auto res = cli->Get("/stop");
     if (res) {

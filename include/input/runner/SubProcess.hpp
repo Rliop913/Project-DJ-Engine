@@ -18,7 +18,7 @@ namespace PDJE_IPC {
 using PDJE_DEV_PATH = std::string;
 using PDJE_NAME     = std::string;
 // using NAME_OFFSET   = std::pair<PDJE_NAME, int64_t>;
-class ChildProcess {
+class SubProc {
   private:
 #ifdef WIN32
     DWORD ThreadID;
@@ -51,7 +51,7 @@ class ChildProcess {
 
   public:
     bool KillCheck = false;
-    ChildProcess(PDJE_CRYPTO::PSK &psk) : aead(psk)
+    SubProc(PDJE_CRYPTO::PSK &psk) : aead(psk)
     {
         startlog();
         server.Get("/kill",
@@ -150,6 +150,6 @@ class ChildProcess {
     void
     Run();
 
-    ~ChildProcess() = default;
+    ~SubProc() = default;
 };
 }; // namespace PDJE_IPC
