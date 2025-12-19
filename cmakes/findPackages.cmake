@@ -66,11 +66,11 @@ function(setBotanReqLib targetName)
 endfunction()
 
 
-FetchContent_Declare(
-  cppHttp
-  GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
-  GIT_TAG v0.27.0
-)
+# FetchContent_Declare(
+#   cppHttp
+#   GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
+#   GIT_TAG v0.27.0
+# ) #DEPRECATED
 
 find_package(Annoy CONFIG REQUIRED)
 
@@ -105,7 +105,7 @@ FetchContent_MakeAvailable(miniaudio)
 FetchContent_MakeAvailable(NHJson)
 FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
-FetchContent_MakeAvailable(cppHttp)
+# FetchContent_MakeAvailable(cppHttp)
 
 
 # get_cmake_property(_vars VARIABLES)

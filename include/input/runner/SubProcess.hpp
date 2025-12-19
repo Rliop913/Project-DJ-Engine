@@ -6,9 +6,9 @@
 #include "PDJE_Highres_Clock.hpp"
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Input_Device_Data.hpp"
+#include "Secured_IPC_TX_RX.hpp"
 #include "ipc_shared_memory.hpp"
 #include <cstdint>
-#include <httplib.h>
 #include <nlohmann/json.hpp>
 #include <optional>
 #include <string>
@@ -25,23 +25,18 @@ class SubProc {
 #elif defined(__linux__)
 
 #endif
-    PDJE_CRYPTO::AEAD                                      aead;
-    std::unordered_map<std::string, std::function<void()>> callables;
-    httplib::Server                                        server;
-
+    // std::unordered_map<std::string, std::function<void()>> callables;
+    std::optional<PDJE_CRYPTO::TX_RX>      txrx;
     std::unordered_map<PDJE_ID, PDJE_NAME> id_name;
 
     std::optional<PDJE_Buffer_Arena<PDJE_Input_Log>> input_buffer;
     std::optional<PDJE_IPC::SharedMem<int, PDJE_IPC::PDJE_IPC_RW>>
         spinlock_run; // 0 = stop, 1 = go, -1 = terminate
 
-    void
-    EndTransmission(const httplib::Request &, httplib::Response &res);
-
     bool
     RecvIPCSharedMem(const std::string &mem_path,
                      const std::string &dataType,
-                     const uint64_t     data_count); // todo - impl
+                     const uint64_t     data_count);
 
     std::vector<DeviceData>                      configed_devices;
     std::unordered_map<PDJE_DEV_PATH, PDJE_NAME> unlisted_targets;
@@ -51,34 +46,45 @@ class SubProc {
 
   public:
     bool KillCheck = false;
-    SubProc(PDJE_CRYPTO::PSK &psk) : aead(psk)
+    SubProc(PDJE_CRYPTO::PSK      &psk,
+            const PDJE_IPC::MNAME &memFirst,
+            const PDJE_IPC::MNAME &firstLock,
+            const PDJE_IPC::MNAME &memSecond,
+            const PDJE_IPC::MNAME &secondLock)
     {
         startlog();
-        server.Get("/kill",
-                   [&](const httplib::Request &req, httplib::Response &res) {
-                       EndTransmission(req, res);
-                       KillCheck = true;
-                   });
-        server.Get("/stop",
-                   [&](const httplib::Request &req, httplib::Response &res) {
-                       EndTransmission(req, res);
-                   });
-        server.Get("/health",
-                   [&](const httplib::Request &, httplib::Response &res) {
-                       res.set_content("serverOK", "text/plain");
-                   });
-        server.Get("/lsdev",
-                   [&](const httplib::Request &req, httplib::Response &res) {
-                       res.set_content(aead.EncryptAndPack(ListDev()),
-                                       "application/json");
-                   });
-        server.Post(
-            "/config",
-            [&](const httplib::Request &req, httplib::Response &res) {
+        txrx.emplace(psk, memFirst, firstLock, memSecond, secondLock, false);
+
+        txrx->AddFunction(
+            PDJE_CRYPTO::TXRXHEADER::TXRX_KILL, [this](const std::string &msg) {
+                KillCheck = true;
+                txrx->Send(PDJE_CRYPTO::TXRXHEADER::TXRX_KILL, "OK");
+                txrx->StopListen();
+            });
+
+        txrx->AddFunction(
+            PDJE_CRYPTO::TXRXHEADER::TXRX_STOP, [this](const std::string &msg) {
+                txrx->Send(PDJE_CRYPTO::TXRXHEADER::TXRX_STOP, "OK");
+                txrx->StopListen();
+            });
+
+        txrx->AddFunction(PDJE_CRYPTO::TXRXHEADER::HEALTH_CHECK,
+                          [this](const std::string &msg) {
+                              txrx->Send(PDJE_CRYPTO::TXRXHEADER::HEALTH_CHECK,
+                                         "OK");
+                          });
+
+        txrx->AddFunction(PDJE_CRYPTO::TXRXHEADER::DEVICE_LIST,
+                          [this](const std::string &msg) {
+                              txrx->Send(PDJE_CRYPTO::DEVICE_LIST, ListDev());
+                          });
+
+        txrx->AddFunction(
+            PDJE_CRYPTO::TXRXHEADER::DEVICE_CONFIG,
+            [this](const std::string &msg) {
                 try {
                     configed_devices.clear();
-                    auto nj =
-                        nlohmann::json::parse(aead.UnpackAndDecrypt(req.body));
+                    auto nj = nlohmann::json::parse(msg);
                     for (const auto &i : nj["body"]) {
                         DeviceData dd;
                         dd.device_specific_id = i.at("id").get<std::string>();
@@ -98,26 +104,25 @@ class SubProc {
                         }
                         configed_devices.push_back(dd);
                     }
-                    res.status = 200;
-
+                    txrx->Send(PDJE_CRYPTO::TXRXHEADER::DEVICE_CONFIG, "OK");
                 } catch (const std::exception &e) {
-                    res.status = 400;
+
                     std::string errlog =
                         "INVALID_JSON. why:" + std::string(e.what());
-                    res.set_content(errlog, "text/plain");
+                    txrx->Send(PDJE_CRYPTO::TXRXHEADER::DEVICE_CONFIG, errlog);
 
                     critlog("failed to config device data. WHY: ");
                     critlog(e.what());
                     critlog("received json: ");
-                    critlog(req.body);
+                    critlog(msg);
                 }
             });
-        server.Post(
-            "/shmem", [&](const httplib::Request &req, httplib::Response &res) {
-                try {
 
-                    auto nj =
-                        nlohmann::json::parse(aead.UnpackAndDecrypt(req.body));
+        txrx->AddFunction(
+            PDJE_CRYPTO::TXRXHEADER::SEND_IPC_SHMEM,
+            [this](const std::string &msg) {
+                try {
+                    auto nj = nlohmann::json::parse(msg);
 
                     if (!RecvIPCSharedMem(nj.at("PATH").get<std::string>(),
                                           nj.at("DATATYPE").get<std::string>(),
@@ -125,18 +130,15 @@ class SubProc {
                         throw std::runtime_error(
                             "failed to receive ipc shared memory.");
                     }
-
-                    res.status = 200;
+                    txrx->Send(PDJE_CRYPTO::TXRXHEADER::SEND_IPC_SHMEM, "OK");
                 } catch (const std::exception &e) {
-                    res.status = 400;
                     std::string errlog =
                         "INVALID_JSON. why:" + std::string(e.what());
-                    res.set_content(errlog, "text/plain");
-
+                    txrx->Send(PDJE_CRYPTO::TXRXHEADER::SEND_IPC_SHMEM, errlog);
                     critlog("failed to config device data. WHY: ");
                     critlog(e.what());
                     critlog("received json: ");
-                    critlog(req.body);
+                    critlog(msg);
                 }
             });
     }

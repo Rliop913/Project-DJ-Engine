@@ -35,7 +35,7 @@ add_compile_definitions(PDJE_BENCHMARK_ON)
   endif()
 endif()
 #end symbol
-option(PDJE_BUILD_TESTS "Enable build pdje test" OFF)
+option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
 if(WIN32)
 option(PDJE_DEVELOP_INPUT "Enable linux develop build" ON)
 else()

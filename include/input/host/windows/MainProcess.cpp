@@ -6,7 +6,6 @@ namespace PDJE_IPC {
 static bool
 PDJE_OpenProcess(const fs::path       &pt,
                  Importants           &imps,
-                 const int             port,
                  PDJE_CRYPTO::PSKPipe &pipe)
 {
     imps.start_up_info    = STARTUPINFOW{};
@@ -76,13 +75,13 @@ MainProc::~MainProc()
     CloseHandle(imp.process_info.hProcess);
 }
 
-MainProc::MainProc(const int port)
+MainProc::MainProc()
 {
 
     auto path = GetValidProcessExecutor();
     auto pipe = PDJE_CRYPTO::PSKPipe();
 
-    if (!PDJE_OpenProcess(path, imp, port, pipe)) {
+    if (!PDJE_OpenProcess(path, imp, pipe)) {
         critlog("failed to open child process. Err:");
         critlog(GetLastError());
         return;
@@ -90,31 +89,43 @@ MainProc::MainProc(const int port)
     if (!psk.Gen()) {
         return;
     }
-    auto tokenstring = psk.Encode();
-    tokenstring += " " + std::to_string(port);
-    pipe.Send(tokenstring);
+    PDJE_CRYPTO::RANDOM_GEN rg;
+    PDJE_IPC::MNAME         mfirst  = rg.Gen("PDJE_TXRX_F_");
+    PDJE_IPC::MNAME         lfirst  = rg.Gen("PDJE_TXRX_LOCK_F_");
+    PDJE_IPC::MNAME         msecond = rg.Gen("PDJE_TXRX_S_");
+    PDJE_IPC::MNAME         lsecond = rg.Gen("PDJE_TXRX_LOCK_S_");
 
-    aead.emplace(psk);
-    cli.emplace("127.0.0.1", port);
-    cli->set_connection_timeout(0, 200'000); // 200ms
-    cli->set_read_timeout(0, 200'000);
-    cli->set_write_timeout(0, 200'000);
-    while (true) {
-        if (auto res = cli->Get("/health"); res && res->status == 200) {
-            break;
-        }
-        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+    txrx.emplace(psk, mfirst, lfirst, msecond, lsecond, true);
+    SetTXRX_Features();
+    std::stringstream ss;
+
+    ss << psk.Encode();
+    ss << " ";
+    ss << mfirst.string();
+    ss << " ";
+    ss << lfirst.string();
+    ss << " ";
+    ss << msecond.string();
+    ss << " ";
+    ss << lsecond.string();
+    pipe.Send(ss.str());
+    txrx->Listen();
+    if (!CheckHealth()) {
+        critlog("Check Health Failed on MainProcess init.");
     }
 }
 bool
 MainProc::EndTransmission()
 {
-    auto res = cli->Get("/stop");
+    TXRX_RESPONSE.STOP.emplace();
+    auto resp = TXRX_RESPONSE.STOP->get_future();
+    bool res  = txrx->Send(PDJE_CRYPTO::TXRXHEADER::TXRX_STOP, "");
     if (res) {
-        return true;
-    } else {
-        return false;
+        res = resp.get();
     }
+    TXRX_RESPONSE.STOP.reset();
+    txrx.reset();
+    return res;
 }
 
 }; // namespace PDJE_IPC

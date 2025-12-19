@@ -10,10 +10,18 @@
 #include <thread>
 #include <vector>
 
-namespace PDJE_BUFFER {
-using namespace PDJE_CRYPTO;
+namespace PDJE_CRYPTO {
 
-constexpr int MSG_MAX_SIZE = 4096;
+enum TXRXHEADER {
+    HEALTH_CHECK   = (uint8_t)1,
+    DEVICE_LIST    = (uint8_t)2,
+    DEVICE_CONFIG  = (uint8_t)3,
+    SEND_IPC_SHMEM = (uint8_t)4,
+    TXRX_STOP      = (uint8_t)5,
+    TXRX_KILL      = (uint8_t)6,
+};
+
+constexpr int MSG_MAX_SIZE = 16384;
 constexpr int MAYBE_USABLE_MAX_SIZE =
     (MSG_MAX_SIZE / 2) -
     54; // hex encode -> x2, nonce + json overhead -> apprx 54
@@ -37,10 +45,9 @@ class TX_RX {
     std::optional<std::thread>                       listen_worker;
     std::atomic<bool>                                worker_switch{ false };
 
+  public:
     void
     Listen();
-
-  public:
     TX_RX(PSK                   &key,
           const fs::path        &memFirst,
           const PDJE_IPC::MNAME &firstLock,
@@ -70,7 +77,11 @@ class TX_RX {
             critlog(e.what());
         }
     }
-
+    void
+    StopListen()
+    {
+        worker_switch = false;
+    }
     void
     AddFunction(const HEADER header, FEATURE feature);
     bool
@@ -99,6 +110,6 @@ struct secured_buffer {
         // code samples.
     }
 };
-}; // namespace PDJE_BUFFER
+}; // namespace PDJE_CRYPTO
 
 template <typename T> class PDJE_Secured_Transmission_Buffer {};

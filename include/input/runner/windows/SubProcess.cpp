@@ -87,18 +87,6 @@ SubProc::ListDev()
 }
 
 void
-SubProc::RunServer(const int port)
-{
-    server.listen("127.0.0.1", port);
-}
-void
-SubProc::EndTransmission(const httplib::Request &, httplib::Response &res)
-{
-    res.set_content("stopped", "text/plain");
-    server.stop();
-}
-
-void
 SubProc::LoopTrig()
 {
 

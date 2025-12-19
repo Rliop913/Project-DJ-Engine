@@ -1,6 +1,6 @@
 #include "Secured_IPC_TX_RX.hpp"
 
-namespace PDJE_BUFFER {
+namespace PDJE_CRYPTO {
 
 void
 TX_RX::AddFunction(const HEADER header, FEATURE feature)
@@ -92,4 +92,4 @@ TX_RX::~TX_RX()
         }
     }
 }
-}; // namespace PDJE_BUFFER
+}; // namespace PDJE_CRYPTO
