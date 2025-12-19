@@ -60,7 +60,6 @@ template <typename T> class Atomic_Double_Buffer {
     }
 };
 
-
 template <typename T> class PDJE_Buffer_Arena {
   private:
     PDJE_IPC::SharedMem<T, PDJE_IPC::PDJE_IPC_RW>        buf1;

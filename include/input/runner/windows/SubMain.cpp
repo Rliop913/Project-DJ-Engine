@@ -1,6 +1,6 @@
-#include "SubProcess.hpp"
 #include "PDJE_Crypto.hpp"
 #include "PSKPipe.hpp"
+#include "SubProcess.hpp"
 #include <sstream>
 int
 main()
@@ -17,7 +17,7 @@ main()
         psk.Decode(pskhex);
 
         PDJE_IPC::SubProc serv(psk);
-        int                    port = std::stoi(portstr);
+        int               port = std::stoi(portstr);
         serv.RunServer(port);
         if (serv.KillCheck) {
             return 0;

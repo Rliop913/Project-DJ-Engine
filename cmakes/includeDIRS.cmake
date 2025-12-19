@@ -78,6 +78,7 @@ ${PDJE_INCLUDE_ROOT}/include/input/IPC/common
 ${PDJE_INCLUDE_ROOT}/include/input/IPC/memory
 ${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission
 ${httplib_SOURCE_DIR}
+
 )
 
 
@@ -107,6 +108,7 @@ if(WIN32)
   list(APPEND PDJE_INCLUDE_IPC
     ${PDJE_INCLUDE_ROOT}/include/input/IPC/memory/windows
     ${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission/windows
+
   )
 elseif(APPLE)
   list(APPEND PDJE_INCLUDE_GLOBAL
@@ -134,13 +136,13 @@ else()
 endif()
 
 list(APPEND PDJE_INCLUDE_JUDGE
-  ${PDJE_INCLUDE_GLOBAL}
   ${PDJE_INCLUDE_IPC}
+  ${PDJE_INCLUDE_GLOBAL}
 )
 list(APPEND PDJE_INCLUDE_CORE
   ${PDJE_INCLUDE_GLOBAL}
 )
 list(APPEND PDJE_INCLUDE_INPUT
-  ${PDJE_INCLUDE_GLOBAL}
   ${PDJE_INCLUDE_IPC}
+  ${PDJE_INCLUDE_GLOBAL}
 )

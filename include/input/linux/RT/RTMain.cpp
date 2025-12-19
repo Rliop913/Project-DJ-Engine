@@ -13,7 +13,7 @@ main(int argc, char **argv)
         return -1;
     }
     PDJE_IPC::SubProc serv;
-    auto                   port = std::stoi(argv[1]);
+    auto              port = std::stoi(argv[1]);
     std::cout << "open transmission on port " << argv[1] << std::endl;
     serv.RunServer(port);
     std::cout << "Ended Transmission on server" << std::endl;

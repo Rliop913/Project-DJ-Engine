@@ -59,14 +59,14 @@ include(cmakes/src/DBsrc.cmake)
 include(cmakes/src/AUDIOsrc.cmake)
 include(cmakes/src/EDITORsrc.cmake)
 include(cmakes/src/JUDGEsrc.cmake)
+include(cmakes/src/IPCsrc.cmake)
 include(cmakes/src/GLOBALsrc.cmake)
 include(cmakes/src/INPUTsrc.cmake)
-include(cmakes/src/IPCsrc.cmake)
-
+include(cmakes/src/CRYPTOsrc.cmake)
 if(PDJE_DEVELOP_INPUT)
 
 
-add_executable(PDJE_MODULE_INPUT_PROCESS ${globalSource}  ${PDJE_INPUT_PROCESS_SRC} ${PDJE_IPC_SRC})
+add_executable(PDJE_MODULE_INPUT_PROCESS ${globalSource}  ${PDJE_INPUT_PROCESS_SRC} ${PDJE_IPC_SRC} ${cryptoSource})
 
 target_include_directories(PDJE_MODULE_INPUT_PROCESS PUBLIC ${PDJE_INCLUDE_INPUT})
 
@@ -105,14 +105,18 @@ set(CORE_SRCS
 
 set(JUDGE_SRCS
 ${judgeSource} 
+${cryptoSource}
+${PDJE_IPC_SRC}
 ${globalSource}
 )
 
 set(INPUT_SRCS
 ${inputSource} 
 ${globalSource} 
+${cryptoSource}
 ${PDJE_OS_INPUT_SRC} 
 ${PDJE_IPC_SRC}
+
 )
 
 function(LinuxSetAtomic targetName)

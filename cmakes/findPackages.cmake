@@ -56,6 +56,8 @@ FetchContent_Declare(
   GIT_TAG v0.2
 )
 
+
+
 find_package(botan CONFIG REQUIRED)
 
 function(setBotanReqLib targetName)
@@ -105,10 +107,11 @@ FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
 FetchContent_MakeAvailable(cppHttp)
 
+
 # get_cmake_property(_vars VARIABLES)
 
 # foreach(var ${_vars})
-#     if(var MATCHES "^cppgit")
+#     if(var MATCHES "^boost")
 #         message(STATUS "환경변수: ${var} = [${${var}}]")
 #     endif()
 # endforeach()

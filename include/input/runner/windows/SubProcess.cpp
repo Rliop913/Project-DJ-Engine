@@ -9,8 +9,8 @@ namespace PDJE_IPC {
 
 bool
 SubProc::RecvIPCSharedMem(const std::string &mem_path,
-                               const std::string &dataType,
-                               const uint64_t     data_count)
+                          const std::string &dataType,
+                          const uint64_t     data_count)
 {
     try {
 
