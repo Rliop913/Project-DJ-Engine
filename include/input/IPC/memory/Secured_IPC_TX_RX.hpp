@@ -48,6 +48,8 @@ class TX_RX {
   public:
     void
     Listen();
+    void
+    BlockedListen();
     TX_RX(PSK                   &key,
           const fs::path        &memFirst,
           const PDJE_IPC::MNAME &firstLock,

@@ -83,6 +83,47 @@ TX_RX::Listen()
     }
 }
 
+void
+TX_RX::BlockedListen()
+{
+    worker_switch = true;
+
+    HEADER           header;
+    ENCRYPT_RES_SIZE bsize;
+    std::string      body;
+    body.reserve(ENCRYPT_MAX_SIZE);
+    while (worker_switch) {
+        {
+            PDJE_IPC::SCOPE_LOCK rxlock(RXM);
+            std::memcpy(&header, RXBuf.ptr, sizeof(HEADER));
+            if (header != 0) {
+                std::memcpy(&bsize,
+                            RXBuf.ptr + sizeof(HEADER),
+                            sizeof(ENCRYPT_RES_SIZE));
+                body.clear();
+                if (bsize > ENCRYPT_MAX_SIZE) {
+                    std::memset(RXBuf.ptr, 0, MSG_MAX_SIZE);
+                    continue;
+                }
+                body.resize(bsize);
+                std::memcpy(body.data(),
+                            RXBuf.ptr + sizeof(HEADER) +
+                                sizeof(ENCRYPT_RES_SIZE),
+                            body.size());
+
+                std::memset(RXBuf.ptr, 0, sizeof(HEADER));
+            }
+        } // lock and get datas.
+
+        if (header != 0) {
+            auto func = feature_map.find(header);
+            if (func != feature_map.end()) {
+                func->second(aead.UnpackAndDecrypt(body));
+            }
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    }
+}
 TX_RX::~TX_RX()
 {
     if (listen_worker) {

@@ -185,13 +185,19 @@ class MainProc {
     bool
     QueryConfig(const std::string &dumped_json)
     {
+        TXRX_RESPONSE.DEVICE_CONFIG.emplace();
+        auto resp = TXRX_RESPONSE.DEVICE_CONFIG->get_future();
         bool res = txrx->Send(PDJE_CRYPTO::TXRXHEADER::DEVICE_CONFIG,
-                              "fill datas here");
-
+                              dumped_json);
         if (res) {
+            res = resp.get();
+        }
+
+        TXRX_RESPONSE.DEVICE_CONFIG.reset();
+        if (res)
             return true;
-        } else {
-            critlog("failed to query config.");
+        else {
+            critlog("query configure failed.");
             return false;
         }
     }

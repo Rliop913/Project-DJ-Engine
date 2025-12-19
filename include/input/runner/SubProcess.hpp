@@ -141,10 +141,13 @@ class SubProc {
                     critlog(msg);
                 }
             });
+            
     }
     PDJE_HIGHRES_CLOCK::CLOCK timer;
     void
-    RunServer(const int port);
+    BlockedListen(){
+        txrx->BlockedListen();
+    }
     void *
     Init();
     void
