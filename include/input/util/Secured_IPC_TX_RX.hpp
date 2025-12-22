@@ -92,26 +92,4 @@ class TX_RX {
     ~TX_RX();
 };
 
-struct secured_buffer {
-  private:
-    std::unique_ptr<Botan::MessageAuthenticationCode> hmac_engine;
-    Botan::secure_vector<uint8_t>                     key;
-    std::vector<uint8_t>                              data;
-    secured_buffer()
-        : hmac_engine(Botan::MessageAuthenticationCode::create("HMAC(SHA-256)"))
-    {
-    }
-
-  public:
-    void
-    hmac_calc()
-    {
-        hmac_engine->set_key(key.data(), key.size());
-        hmac_engine->update(data.data(), data.size());
-        auto res = hmac_engine->final_stdvec();
-        // code samples.
-    }
-};
 }; // namespace PDJE_CRYPTO
-
-template <typename T> class PDJE_Secured_Transmission_Buffer {};

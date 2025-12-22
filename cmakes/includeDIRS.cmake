@@ -73,10 +73,10 @@ ${CAPNPC_OUTPUT_DIR}/third_party/Capnp
 )
 
 set(PDJE_INCLUDE_IPC
-${PDJE_INCLUDE_ROOT}/include/input/IPC/
-${PDJE_INCLUDE_ROOT}/include/input/IPC/common
-${PDJE_INCLUDE_ROOT}/include/input/IPC/memory
-${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission
+${PDJE_INCLUDE_ROOT}/include/input/util
+${PDJE_INCLUDE_ROOT}/include/input/ConfigLayer
+${PDJE_INCLUDE_ROOT}/include/input/DataLineLayer
+${PDJE_INCLUDE_ROOT}/include/input/InputLoopLayer
 # ${httplib_SOURCE_DIR}
 
 )
@@ -84,9 +84,11 @@ ${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission
 
 set(PDJE_INCLUDE_INPUT
 ${PDJE_INCLUDE_ROOT}/include/input
-${PDJE_INCLUDE_ROOT}/include/input/midi
-${PDJE_INCLUDE_ROOT}/include/input/host
-${PDJE_INCLUDE_ROOT}/include/input/runner
+${PDJE_INCLUDE_ROOT}/include/input/ConfigLayer
+${PDJE_INCLUDE_ROOT}/include/input/DataLineLayer
+${PDJE_INCLUDE_ROOT}/include/input/InputLoopLayer
+${PDJE_INCLUDE_ROOT}/include/input/util
+
 
 )
 
@@ -100,14 +102,13 @@ if(WIN32)
     ${PDJE_INCLUDE_ROOT}/include/global/Highres_Clock/Windows
   )
   list(APPEND PDJE_INCLUDE_INPUT
-    ${PDJE_INCLUDE_ROOT}/include/input/host/windows
+    ${PDJE_INCLUDE_ROOT}/include/input/windows
     ${PDJE_INCLUDE_ROOT}/include/input/runner/windows
 
 
   )
   list(APPEND PDJE_INCLUDE_IPC
     ${PDJE_INCLUDE_ROOT}/include/input/IPC/memory/windows
-    ${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission/windows
 
   )
 elseif(APPLE)
@@ -123,15 +124,13 @@ else()
     ${PDJE_INCLUDE_ROOT}/include/global/Highres_Clock/Linux
   )
   list(APPEND PDJE_INCLUDE_INPUT
-    ${PDJE_INCLUDE_ROOT}/include/input/linux 
-    ${PDJE_INCLUDE_ROOT}/include/input/linux/RT
-    ${PDJE_INCLUDE_ROOT}/include/input/linux/common
-    ${PDJE_INCLUDE_ROOT}/include/input/linux/socket
-    
+
+    ${PDJE_INCLUDE_ROOT}/include/input/linux/ConfigLayer
+    ${PDJE_INCLUDE_ROOT}/include/input/linux/DataLineLayer
+    ${PDJE_INCLUDE_ROOT}/include/input/linux/InputLoopLayer
     )
   list(APPEND PDJE_INCLUDE_IPC
     ${PDJE_INCLUDE_ROOT}/include/input/IPC/memory/linux
-    ${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission/linux
   )
 endif()
 

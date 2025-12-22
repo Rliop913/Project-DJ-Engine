@@ -1,6 +1,6 @@
 #include "MainProcess.hpp"
 #include "PDJE_INPUT_PROCESS_HASH.hpp"
-#include "httplib.h"
+
 #include "ipc_util.hpp"
 #include <chrono>
 #include <format>
@@ -87,7 +87,7 @@ OpenProcess(const fs::path &pt, pid_t *child_pid, const int port)
     return false;
 }
 
-MainProc::MainProc(const int port)
+MainProc::MainProc()
 {
     unlink(imp.socket_path.c_str());
     imp.socket_fd = socket(AF_UNIX, SOCK_STREAM, 0);

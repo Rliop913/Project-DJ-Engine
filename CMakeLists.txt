@@ -36,7 +36,7 @@ add_compile_definitions(PDJE_BENCHMARK_ON)
 endif()
 #end symbol
 option(PDJE_BUILD_TESTS "Enable build pdje test" ON)
-if(WIN32)
+if(NOT APPLE)
 option(PDJE_DEVELOP_INPUT "Enable linux develop build" ON)
 else()
 option(PDJE_DEVELOP_INPUT "Enable linux develop build" OFF)
@@ -75,7 +75,7 @@ PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT_PROCESS)
 setSpdlogReqLib(PDJE_MODULE_INPUT_PROCESS)
 SET_PROPERTIES(PDJE_MODULE_INPUT_PROCESS)
 setBotanReqLib(PDJE_MODULE_INPUT_PROCESS)
-set(RT_HASH_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/common/PDJE_INPUT_PROCESS_HASH.hpp)
+set(RT_HASH_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/include/input/PDJE_INPUT_PROCESS_HASH.hpp)
 
 add_custom_command(
   OUTPUT ${RT_HASH_HEADER}
