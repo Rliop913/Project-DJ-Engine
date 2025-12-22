@@ -25,7 +25,6 @@ class SubProc {
 #elif defined(__linux__)
 
 #endif
-    // std::unordered_map<std::string, std::function<void()>> callables;
     std::optional<PDJE_CRYPTO::TX_RX>      txrx;
     std::unordered_map<PDJE_ID, PDJE_NAME> id_name;
 
@@ -141,11 +140,11 @@ class SubProc {
                     critlog(msg);
                 }
             });
-            
     }
     PDJE_HIGHRES_CLOCK::CLOCK timer;
     void
-    BlockedListen(){
+    BlockedListen()
+    {
         txrx->BlockedListen();
     }
     void *

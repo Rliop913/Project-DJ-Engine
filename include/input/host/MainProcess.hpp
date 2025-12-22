@@ -46,9 +46,8 @@ class MainProc {
         std::optional<std::promise<bool>>                    STOP;
         std::optional<std::promise<bool>>                    KILL;
         std::optional<std::promise<std::vector<DeviceData>>> DEVICE_LIST;
-        std::optional<std::promise<bool>> DEVICE_CONFIG;  // todo-impl
-        std::optional<std::promise<bool>> SEND_IPC_SHMEM; // todo-impl
-
+        std::optional<std::promise<bool>>                    DEVICE_CONFIG;
+        std::optional<std::promise<bool>>                    SEND_IPC_SHMEM;
     } TXRX_RESPONSE;
 
   public:
@@ -187,8 +186,8 @@ class MainProc {
     {
         TXRX_RESPONSE.DEVICE_CONFIG.emplace();
         auto resp = TXRX_RESPONSE.DEVICE_CONFIG->get_future();
-        bool res = txrx->Send(PDJE_CRYPTO::TXRXHEADER::DEVICE_CONFIG,
-                              dumped_json);
+        bool res =
+            txrx->Send(PDJE_CRYPTO::TXRXHEADER::DEVICE_CONFIG, dumped_json);
         if (res) {
             res = resp.get();
         }

@@ -61,59 +61,7 @@ template <typename T> class Atomic_Double_Buffer {
     }
 };
 
-namespace PDJE_IPC{
-
-constexpr uint16_t PACKET_HMAC_POS = sizeof(uint16_t);
-constexpr uint16_t PACKET_DATA_POS = sizeof(uint16_t) + (sizeof(uint8_t) * 32);
-template<typename T> struct BufferPacket{//packet ->| Data Length| HMAC | Data |
-    
-    uint8_t* rawPacket;
-    std::vector<T> reservedVec;
-
-    uint16_t GetLength(){
-        uint16_t length;
-        std::memcpy(&length, rawPacket, sizeof(uint16_t));
-        return length;
-    }
-
-    void SetLength(const uint16_t length){
-        std::memcpy(rawPacket, &length, sizeof(uint16_t));
-    }
-
-    std::array<uint8_t, 32>
-    GetHMAC()
-    {
-        std::array<uint8_t, 32> hmac;
-        std::memcpy(hmac.data(), rawPacket + PACKET_HMAC_POS, sizeof(uint8_t) * 32);
-        return hmac;
-    }
-
-    void
-    SetHMAC(const std::array<uint8_t,32> hmac)
-    {
-        std::memcpy(rawPacket + PACKET_HMAC_POS, hmac.data(), sizeof(uint8_t) * 32);
-    }
-
-    void
-    SetData(const std::vector<T>& vec)
-    {
-        std::memcpy(rawPacket + PACKET_DATA_POS, vec.data(), vec.size() * sizeof(T));
-    }
-
-    std::vector<T>
-    GetData(const uint16_t length)
-    {
-        reservedVec.resize(length);
-        std::memcpy(reservedVec.data(), rawPacket + PACKET_DATA_POS, sizeof(T) * length);
-        return reservedVec;
-    }
-    
-    BufferPacket(uint8_t* rawData){
-        rawPacket = rawData;
-    }
-
-};
-};
+#include "ipc_named_mutex.hpp"
 
 template <typename T> class PDJE_Buffer_Arena {
   private:

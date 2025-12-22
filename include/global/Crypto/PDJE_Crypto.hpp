@@ -22,7 +22,7 @@ class Hash {
 
 class PSK {
   public:
-    std::vector<uint8_t> psk;
+    Botan::SecureVector<uint8_t> psk;
     bool
     Gen(const std::string &algo = "AES-256/GCM");
 
