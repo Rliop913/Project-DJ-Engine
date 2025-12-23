@@ -128,4 +128,33 @@ MainProc::EndTransmission()
     return res;
 }
 
+bool
+MainProc::SendInputTransfer(PDJE_Input_Transfer &trsf)
+{
+
+    try {
+        TXRX_RESPONSE.SEND_INPUT_TRANSFER_SHMEM.emplace();
+        auto resp = TXRX_RESPONSE.SEND_INPUT_TRANSFER_SHMEM->get_future();
+        bool res =
+            txrx->Send(PDJE_CRYPTO::TXRXHEADER::SEND_INPUT_TRANSFER_SHMEM,
+                       trsf.GetMetaDatas());
+
+        if (res) {
+            res = resp.get();
+        }
+
+        TXRX_RESPONSE.SEND_INPUT_TRANSFER_SHMEM.reset();
+        if (res) {
+            return true;
+        } else {
+            critlog("failed to send ipc shared memory.");
+            return false;
+        }
+    } catch (const std::exception &e) {
+        critlog("failed to send ipc shared memory. Why:");
+        critlog(e.what());
+        return false;
+    }
+}
+
 }; // namespace PDJE_IPC

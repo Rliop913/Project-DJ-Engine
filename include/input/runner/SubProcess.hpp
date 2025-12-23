@@ -28,7 +28,7 @@ class SubProc {
     std::optional<PDJE_CRYPTO::TX_RX>      txrx;
     std::unordered_map<PDJE_ID, PDJE_NAME> id_name;
 
-    std::optional<PDJE_Buffer_Arena<PDJE_Input_Log>> input_buffer;
+    std::optional<PDJE_IPC::PDJE_Input_Transfer> input_buffer;
     std::optional<PDJE_IPC::SharedMem<int, PDJE_IPC::PDJE_IPC_RW>>
         spinlock_run; // 0 = stop, 1 = go, -1 = terminate
 
@@ -134,6 +134,23 @@ class SubProc {
                     std::string errlog =
                         "INVALID_JSON. why:" + std::string(e.what());
                     txrx->Send(PDJE_CRYPTO::TXRXHEADER::SEND_IPC_SHMEM, errlog);
+                    critlog("failed to config device data. WHY: ");
+                    critlog(e.what());
+                    critlog("received json: ");
+                    critlog(msg);
+                }
+            });
+        txrx->AddFunction(
+            PDJE_CRYPTO::TXRXHEADER::SEND_INPUT_TRANSFER_SHMEM,
+            [this](const std::string &msg) {
+                try {
+                    input_buffer.emplace(msg);
+                } catch (const std::exception &e) {
+                    std::string errlog =
+                        "INVALID_JSON. why:" + std::string(e.what());
+                    txrx->Send(
+                        PDJE_CRYPTO::TXRXHEADER::SEND_INPUT_TRANSFER_SHMEM,
+                        errlog);
                     critlog("failed to config device data. WHY: ");
                     critlog(e.what());
                     critlog("received json: ");

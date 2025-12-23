@@ -13,12 +13,13 @@
 namespace PDJE_CRYPTO {
 
 enum TXRXHEADER {
-    HEALTH_CHECK   = (uint8_t)1,
-    DEVICE_LIST    = (uint8_t)2,
-    DEVICE_CONFIG  = (uint8_t)3,
-    SEND_IPC_SHMEM = (uint8_t)4,
-    TXRX_STOP      = (uint8_t)5,
-    TXRX_KILL      = (uint8_t)6,
+    HEALTH_CHECK              = (uint8_t)1,
+    DEVICE_LIST               = (uint8_t)2,
+    DEVICE_CONFIG             = (uint8_t)3,
+    SEND_IPC_SHMEM            = (uint8_t)4,
+    SEND_INPUT_TRANSFER_SHMEM = (uint8_t)5,
+    TXRX_STOP                 = (uint8_t)6,
+    TXRX_KILL                 = (uint8_t)7,
 };
 
 constexpr int MSG_MAX_SIZE = 16384;

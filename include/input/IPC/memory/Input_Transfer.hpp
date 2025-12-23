@@ -7,6 +7,9 @@
 #include "ipc_shared_memory.hpp"
 #include <botan/mac.h>
 #include <botan/mem_ops.h>
+#include <nlohmann/json.hpp>
+
+using nj = nlohmann::json;
 struct PDJE_API PDJE_Input_Log {
     PDJE_Dev_Type    type;
     PDJE_Input_Event event;
@@ -19,14 +22,26 @@ struct PDJE_API PDJE_Input_Log {
 };
 namespace PDJE_IPC {
 using namespace PDJE_CRYPTO;
+
+struct Input_Transfer_Metadata {
+    uint32_t max_length;
+    MNAME    lenname;
+    MNAME    bodyname;
+    MNAME    hmacname;
+    MNAME    lockname;
+    PSK      psk;
+};
+
 class PDJE_Input_Transfer {
   private:
-    SharedMem<uint64_t, PDJE_IPC_RW>                  length;
-    SharedMem<PDJE_Input_Log, PDJE_IPC_RW>            body;
-    SharedMem<uint8_t, PDJE_IPC_RW>                   hmac;
-    MUTEX                                             locker;
-    PSK                                               psk;
+    SharedMem<uint64_t, PDJE_IPC_RW>       length;
+    SharedMem<PDJE_Input_Log, PDJE_IPC_RW> body;
+    SharedMem<uint8_t, PDJE_IPC_RW>        hmac;
+    MUTEX                                  locker;
+    // PSK                                               psk;
     std::unique_ptr<Botan::MessageAuthenticationCode> hmacEngine;
+    Input_Transfer_Metadata                           metadata;
+
     void
     SetHmacEngine()
     {
@@ -35,7 +50,7 @@ class PDJE_Input_Transfer {
             critlog("cannot create HMAC(SHA-256).");
             return;
         }
-        hmacEngine->set_key(psk.psk);
+        hmacEngine->set_key(metadata.psk.psk);
     }
     void
     SetHmac()
@@ -78,18 +93,6 @@ class PDJE_Input_Transfer {
   public:
     std::vector<PDJE_Input_Log> datas;
     void
-    SetPSK(PSK &origin)
-    {
-        psk        = origin;
-        hmacEngine = Botan::MessageAuthenticationCode::create("HMAC(SHA-256)");
-    }
-    void
-    GenPSK()
-    {
-        psk.Gen();
-        hmacEngine = Botan::MessageAuthenticationCode::create("HMAC(SHA-256)");
-    }
-    void
     Send();
     void
     Receive();
@@ -97,25 +100,53 @@ class PDJE_Input_Transfer {
     {
         datas.reserve(max_length);
     }
-    PDJE_Input_Transfer(const uint32_t max_length,
-                        const MNAME   &lenname,
-                        const MNAME   &bodyname,
-                        const MNAME   &hmacname,
-                        const MNAME   &lockname,
-                        const bool     ishost)
+    std::string
+    GetMetaDatas()
     {
-        datas.reserve(max_length);
-        if (ishost) {
-            length.MakeIPCSharedMemory(lenname, 1);
-            body.MakeIPCSharedMemory(bodyname, max_length);
-            hmac.MakeIPCSharedMemory(hmacname, 32);
-            locker.init(lockname);
-        } else {
-            length.GetIPCSharedMemory(lenname, 1);
-            body.GetIPCSharedMemory(bodyname, max_length);
-            hmac.GetIPCSharedMemory(hmacname, 32);
-            locker.init(lockname);
+        nj out;
+        out["MAX_LENGTH"] = metadata.max_length;
+        out["LENNAME"]    = metadata.lenname.string();
+        out["BODYNAME"]   = metadata.bodyname.string();
+        out["HMACNAME"]   = metadata.hmacname.string();
+        out["LOCKNAME"]   = metadata.lockname.string();
+        out["PSK"]        = metadata.psk.Encode();
+        return out.dump();
+    }
+    PDJE_Input_Transfer(const std::string &metajson)
+    {
+        nj meta             = nj::parse(metajson);
+        metadata.max_length = meta["MAX_LENGTH"].get<uint32_t>();
+        metadata.lenname    = meta["LENNAME"].get<MNAME>();
+        metadata.bodyname   = meta["BODYNAME"].get<MNAME>();
+        metadata.hmacname   = meta["HMACNAME"].get<MNAME>();
+        metadata.lockname   = meta["LOCKNAME"].get<MNAME>();
+        if (!metadata.psk.Decode(meta["PSK"].get<std::string>())) {
+            throw std::runtime_error("failed to decode psk.");
         }
+        datas.reserve(metadata.max_length);
+        length.GetIPCSharedMemory(metadata.lenname, 1);
+        body.GetIPCSharedMemory(metadata.bodyname, metadata.max_length);
+        hmac.GetIPCSharedMemory(metadata.hmacname, 32);
+        locker.init(metadata.lockname);
+        hmacEngine = Botan::MessageAuthenticationCode::create("HMAC(SHA-256)");
+    }
+    PDJE_Input_Transfer(const Input_Transfer_Metadata &metad, const bool ishost)
+    {
+        metadata = metad;
+        datas.reserve(metadata.max_length);
+        if (ishost) {
+            length.MakeIPCSharedMemory(metadata.lenname, 1);
+            body.MakeIPCSharedMemory(metadata.bodyname, metadata.max_length);
+            hmac.MakeIPCSharedMemory(metadata.hmacname, 32);
+            locker.init(metadata.lockname);
+            metadata.psk.Gen();
+        } else {
+            length.GetIPCSharedMemory(metadata.lenname, 1);
+            body.GetIPCSharedMemory(metadata.bodyname, metadata.max_length);
+            hmac.GetIPCSharedMemory(metadata.hmacname, 32);
+            locker.init(metadata.lockname);
+        }
+        hmacEngine = Botan::MessageAuthenticationCode::create("HMAC(SHA-256)");
     }
 };
 

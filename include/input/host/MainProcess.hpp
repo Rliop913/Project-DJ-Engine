@@ -48,6 +48,7 @@ class MainProc {
         std::optional<std::promise<std::vector<DeviceData>>> DEVICE_LIST;
         std::optional<std::promise<bool>>                    DEVICE_CONFIG;
         std::optional<std::promise<bool>>                    SEND_IPC_SHMEM;
+        std::optional<std::promise<bool>> SEND_INPUT_TRANSFER_SHMEM;
     } TXRX_RESPONSE;
 
   public:
@@ -129,12 +130,23 @@ class MainProc {
                               if (msg == "OK") {
                                   TXRX_RESPONSE.SEND_IPC_SHMEM->set_value(true);
                               } else {
-                                  critlog("Device config failed. Why:");
+                                  critlog("Send IPC SHMEM failed. Why:");
                                   critlog(msg);
                                   TXRX_RESPONSE.SEND_IPC_SHMEM->set_value(
                                       false);
                               }
                           });
+        txrx->AddFunction(
+            PDJE_CRYPTO::TXRXHEADER::SEND_INPUT_TRANSFER_SHMEM,
+            [this](const std::string &msg) {
+                if (msg == "OK") {
+                    TXRX_RESPONSE.SEND_INPUT_TRANSFER_SHMEM->set_value(true);
+                } else {
+                    critlog("Send Input Transfer SHMEM failed. Why:");
+                    critlog(msg);
+                    TXRX_RESPONSE.SEND_INPUT_TRANSFER_SHMEM->set_value(false);
+                }
+            });
     }
 
     bool
@@ -162,9 +174,8 @@ class MainProc {
     SendIPCSharedMemory(const SharedMem<T, MEM_PROT_FLAG> &mem,
                         const std::string                 &mem_path,
                         const std::string                 &dataType);
-    template <typename T>
     bool
-    SendBufferArena(const PDJE_Buffer_Arena<T> &mem);
+    SendInputTransfer(PDJE_Input_Transfer &trsf);
 
     std::vector<DeviceData>
     GetDevices()
