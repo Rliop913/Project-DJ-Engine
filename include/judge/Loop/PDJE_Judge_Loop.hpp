@@ -23,7 +23,7 @@ class Judge_Loop {
     Queues Event_Datas;
 
   private: // cached values
-    std::pair<PDJE_Input_Log *, uint64_t> input_log;
+    // std::pair<PDJE_Input_Log *, uint64_t> input_log;
 
     LoopCached Cached;
 

@@ -1,7 +1,7 @@
 #include "PDJE_Input.hpp"
+#include "NameGen.hpp"
 #include "PDJE_LOG_SETTER.hpp"
-
-PDJE_Input::PDJE_Input() : input_buffer(2048)
+PDJE_Input::PDJE_Input()
 {
     startlog();
 }
@@ -18,13 +18,19 @@ PDJE_Input::Init()
         }
 
         Mproc.emplace();
-        Mproc->SendBufferArena(input_buffer);
 
-        spinlock_run.MakeIPCSharedMemory(std::string("PDJE_SPINLOCK"), 1);
-        (*spinlock_run.ptr) = 0;
+        PDJE_IPC::Input_Transfer_Metadata cfg;
+        PDJE_IPC::RANDOM_GEN              rg;
+        cfg.max_length              = 2048;
+        cfg.lenname                 = rg.Gen("PDJE_INPUT_LEN_");
+        cfg.bodyname                = rg.Gen("PDJE_INPUT_BODY_");
+        cfg.hmacname                = rg.Gen("PDJE_INPUT_HMAC_");
+        cfg.data_request_event_name = rg.Gen("PDJE_INPUT_REQ_EVENT_");
+        cfg.data_stored_event_name  = rg.Gen("PDJE_INPUT_STORED_EVENT_");
+        input_buffer.emplace(cfg);
+        Mproc->SendInputTransfer(input_buffer.value());
+        Mproc->InitEvents();
 
-        Mproc->SendIPCSharedMemory(
-            spinlock_run, std::string("PDJE_SPINLOCK"), "spinlock");
         state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
         return true;
     } catch (const std::exception &e) {
@@ -98,7 +104,7 @@ PDJE_Input::Run()
                 "ready state. config it first.");
         return false;
     }
-    (*spinlock_run.ptr) = 1;
+    Mproc->events.input_loop_run_event.Wake();
 
     state = PDJE_INPUT_STATE::INPUT_LOOP_RUNNING;
     return true;
@@ -115,10 +121,12 @@ PDJE_Input::Kill()
         return Mproc->Kill();
     }
     case PDJE_INPUT_STATE::INPUT_LOOP_READY:
-        (*spinlock_run.ptr) = -1;
+        Mproc->events.terminate_event.Wake();
+        Mproc->events.input_loop_run_event.Wake();
+
         break;
     case PDJE_INPUT_STATE::INPUT_LOOP_RUNNING: {
-        (*spinlock_run.ptr) = 0;
+        Mproc->events.terminate_event.Wake();
         break;
     } break;
     default:
@@ -145,6 +153,6 @@ PDJE_INPUT_DATA_LINE
 PDJE_Input::PullOutDataLine()
 {
     PDJE_INPUT_DATA_LINE line;
-    line.input_arena = &input_buffer;
+    line.input_arena = &input_buffer.value();
     return line;
 }

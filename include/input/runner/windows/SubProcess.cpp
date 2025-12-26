@@ -14,12 +14,12 @@ SubProc::RecvIPCSharedMem(const std::string &mem_path,
 {
     try {
 
-        if (dataType == "spinlock") {
-            spinlock_run.emplace();
-            spinlock_run->GetIPCSharedMemory(mem_path, data_count);
+        if (dataType == "EVENT_terminate") {
+            terminate_event.ClientInit(mem_path);
             return true;
-        } else if (dataType == "input_buffer") {
-            input_buffer.emplace(mem_path, data_count);
+        }
+        if (dataType == "EVENT_input_loop_run") {
+            input_loop_run_event.ClientInit(mem_path);
             return true;
         }
         return false;
@@ -98,8 +98,8 @@ SubProc::LoopTrig()
         critlog("no device has been configured. shutdown rawinput.");
         return;
     }
-    if (!spinlock_run) {
-        critlog("spinlock is not initialized.");
+    if (!terminate_event.hdlp) {
+        critlog("terminate event is not initialized.");
         return;
     }
     if (!input_buffer) {
@@ -172,16 +172,9 @@ SubProc::LoopTrig()
 #endif
     ThreadID = GetCurrentThreadId();
 
-    while ((*spinlock_run->ptr) == 0) { // spinlock
-        if ((*spinlock_run->ptr) == -1) {
-            return; // terminate
-        }
-    }
-
     if (task) {
         AvRevertMmThreadCharacteristics(task);
     }
-
     Run();
     if (task) {
         AvRevertMmThreadCharacteristics(task);

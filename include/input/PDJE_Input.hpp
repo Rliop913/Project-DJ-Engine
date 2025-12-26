@@ -30,14 +30,14 @@ class PDJE_API PDJE_Input {
   private:
     std::optional<PDJE_IPC::MainProc> Mproc;
 
-    PDJE_IPC::SharedMem<std::unordered_map<PDJE_ID, PDJE_NAME>,
-                        PDJE_IPC::PDJE_IPC_RW>
-        id_name;
+    // PDJE_IPC::SharedMem<std::unordered_map<PDJE_ID, PDJE_NAME>,
+    //                     PDJE_IPC::PDJE_IPC_RW>
+    //     id_name;
 
-    PDJE_Buffer_Arena<PDJE_Input_Log> input_buffer;
+    std::optional<PDJE_IPC::PDJE_Input_Transfer> input_buffer;
 
-    PDJE_IPC::SharedMem<int, PDJE_IPC::PDJE_IPC_RW>
-        spinlock_run; // 0 = stop, 1 = go, -1 = terminate
+    // PDJE_IPC::SharedMem<int, PDJE_IPC::PDJE_IPC_RW>
+    //     spinlock_run; // 0 = stop, 1 = go, -1 = terminate
 
     PDJE_INPUT_STATE state = PDJE_INPUT_STATE::DEAD;
 

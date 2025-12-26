@@ -7,6 +7,7 @@
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Input_Device_Data.hpp"
 #include "Secured_IPC_TX_RX.hpp"
+#include "ipc_named_event.hpp"
 #include "ipc_shared_memory.hpp"
 #include <cstdint>
 #include <nlohmann/json.hpp>
@@ -29,8 +30,9 @@ class SubProc {
     std::unordered_map<PDJE_ID, PDJE_NAME> id_name;
 
     std::optional<PDJE_IPC::PDJE_Input_Transfer> input_buffer;
-    std::optional<PDJE_IPC::SharedMem<int, PDJE_IPC::PDJE_IPC_RW>>
-        spinlock_run; // 0 = stop, 1 = go, -1 = terminate
+
+    EVENT input_loop_run_event;
+    EVENT terminate_event;
 
     bool
     RecvIPCSharedMem(const std::string &mem_path,
@@ -145,6 +147,9 @@ class SubProc {
             [this](const std::string &msg) {
                 try {
                     input_buffer.emplace(msg);
+                    txrx->Send(
+                        PDJE_CRYPTO::TXRXHEADER::SEND_INPUT_TRANSFER_SHMEM,
+                        "OK");
                 } catch (const std::exception &e) {
                     std::string errlog =
                         "INVALID_JSON. why:" + std::string(e.what());

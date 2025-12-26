@@ -1,14 +1,9 @@
 #pragma once
-
+#include "MainProcess.hpp"
 // evade lsp flag. disable red lines temporary. do not activate on build step.
 // #define EVADE_LSP
 
-#ifdef EVADE_LSP
-#include "MainProcess.hpp"
-#endif
-
 namespace PDJE_IPC {
-
 
 // template <typename T>
 // bool
@@ -22,12 +17,13 @@ namespace PDJE_IPC {
 //     try{
 //         TXRX_RESPONSE.SEND_IPC_SHMEM.emplace();
 //         auto resp = TXRX_RESPONSE.SEND_IPC_SHMEM->get_future();
-//         bool res = txrx->Send(PDJE_CRYPTO::TXRXHEADER::SEND_IPC_SHMEM, j.dump());
-        
+//         bool res = txrx->Send(PDJE_CRYPTO::TXRXHEADER::SEND_IPC_SHMEM,
+//         j.dump());
+
 //         if(res){
 //             res = resp.get();
 //         }
-    
+
 //         TXRX_RESPONSE.SEND_IPC_SHMEM.reset();
 //         if(res){
 //             return true;
@@ -41,42 +37,39 @@ namespace PDJE_IPC {
 //             critlog(e.what());
 //             return false;
 //         }
-    
-    
+
 // }
 
-
-template <typename T, int MEM_PROT_FLAG>
 bool
-MainProc::SendIPCSharedMemory(const SharedMem<T, MEM_PROT_FLAG> &mem,
-                                 const std::string                 &mem_path,
-                                 const std::string                 &dataType)
+MainProc::SendIPCSharedMemory(const uint64_t     mem_length,
+                              const std::string &mem_path,
+                              const std::string &dataType)
 {
     nj j;
     j["PATH"]     = mem_path;
     j["DATATYPE"] = dataType;
-    j["COUNT"]    = mem.data_count;
-    try{
+    j["COUNT"]    = mem_length;
+    try {
         TXRX_RESPONSE.SEND_IPC_SHMEM.emplace();
         auto resp = TXRX_RESPONSE.SEND_IPC_SHMEM->get_future();
-        bool res = txrx->Send(PDJE_CRYPTO::TXRXHEADER::SEND_IPC_SHMEM, j.dump());
-        
-        if(res){
+        bool res =
+            txrx->Send(PDJE_CRYPTO::TXRXHEADER::SEND_IPC_SHMEM, j.dump());
+
+        if (res) {
             res = resp.get();
         }
-    
+
         TXRX_RESPONSE.SEND_IPC_SHMEM.reset();
-        if(res){
+        if (res) {
             return true;
-        }
-        else{
+        } else {
             critlog("failed to send ipc shared memory.");
             return false;
         }
-    }catch(const std::exception& e){
-            critlog("failed to send ipc shared memory. Why:");
-            critlog(e.what());
-            return false;
-        }
+    } catch (const std::exception &e) {
+        critlog("failed to send ipc shared memory. Why:");
+        critlog(e.what());
+        return false;
     }
+}
 }; // namespace PDJE_IPC

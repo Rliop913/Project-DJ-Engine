@@ -52,6 +52,10 @@ class MainProc {
     } TXRX_RESPONSE;
 
   public:
+    struct {
+        EVENT input_loop_run_event;
+        EVENT terminate_event;
+    } events;
     void
     SetTXRX_Features()
     {
@@ -169,11 +173,10 @@ class MainProc {
         }
     }
 
-    template <typename T, int MEM_PROT_FLAG>
     bool
-    SendIPCSharedMemory(const SharedMem<T, MEM_PROT_FLAG> &mem,
-                        const std::string                 &mem_path,
-                        const std::string                 &dataType);
+    SendIPCSharedMemory(const uint64_t     mem_length,
+                        const std::string &mem_path,
+                        const std::string &dataType);
     bool
     SendInputTransfer(PDJE_Input_Transfer &trsf);
 
@@ -215,6 +218,18 @@ class MainProc {
     bool
     EndTransmission();
 
+    void
+    InitEvents()
+    {
+        auto namegen  = PDJE_IPC::RANDOM_GEN();
+        auto loop_run = namegen.Gen("PDJE_IPC_EVENT_LOOP_RUN_");
+        auto term     = namegen.Gen("PDJE_IPC_EVENT_TERMINATE_");
+
+        events.input_loop_run_event.HostInit(loop_run);
+        events.terminate_event.HostInit(term);
+        SendIPCSharedMemory(1, loop_run, "EVENT_input_loop_run");
+        SendIPCSharedMemory(1, term, "EVENT_terminate");
+    }
     bool
     Kill()
     {
@@ -241,9 +256,3 @@ class MainProc {
 };
 
 }; // namespace PDJE_IPC
-
-#ifdef WIN32
-#include "ipc_Send_Windows.tpp"
-#elif defined(__linux__)
-#include "ipc_Send_Linux.tpp"
-#endif
