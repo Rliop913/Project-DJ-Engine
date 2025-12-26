@@ -2,7 +2,7 @@
 #include "PSKPipe.hpp"
 #include "ipc_util.hpp"
 namespace PDJE_IPC {
-
+using namespace MAINPROC;
 static bool
 PDJE_OpenProcess(const fs::path       &pt,
                  Importants           &imps,
@@ -61,7 +61,7 @@ PDJE_OpenProcess(const fs::path       &pt,
     return true;
 }
 
-MainProc::~MainProc()
+TXRXTransport::~TXRXTransport()
 {
     WaitForSingleObject(imp.process_info.hProcess, INFINITE);
     DWORD exitCode = 0;
@@ -75,7 +75,7 @@ MainProc::~MainProc()
     CloseHandle(imp.process_info.hProcess);
 }
 
-MainProc::MainProc()
+TXRXTransport::TXRXTransport()
 {
 
     auto path = GetValidProcessExecutor();
@@ -115,7 +115,7 @@ MainProc::MainProc()
     }
 }
 bool
-MainProc::EndTransmission()
+TXRXTransport::EndTransmission()
 {
     TXRX_RESPONSE.STOP.emplace();
     auto resp = TXRX_RESPONSE.STOP->get_future();
@@ -129,7 +129,7 @@ MainProc::EndTransmission()
 }
 
 bool
-MainProc::SendInputTransfer(PDJE_Input_Transfer &trsf)
+TXRXTransport::SendInputTransfer(PDJE_Input_Transfer &trsf)
 {
 
     try {

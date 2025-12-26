@@ -6,11 +6,11 @@
 #include <avrt.h>
 #include <hidsdi.h>
 namespace PDJE_IPC {
-
+using namespace SUBPROC;
 bool
-SubProc::RecvIPCSharedMem(const std::string &mem_path,
-                          const std::string &dataType,
-                          const uint64_t     data_count)
+TXRXListener::RecvIPCSharedMem(const std::string &mem_path,
+                               const std::string &dataType,
+                               const uint64_t     data_count)
 {
     try {
 
@@ -31,7 +31,7 @@ SubProc::RecvIPCSharedMem(const std::string &mem_path,
 }
 
 std::string
-SubProc::ListDev()
+TXRXListener::ListDev()
 {
     auto                    rawDevs = getRawDeviceDatas();
     std::vector<DeviceData> out;
@@ -87,7 +87,7 @@ SubProc::ListDev()
 }
 
 void
-SubProc::LoopTrig()
+TXRXListener::LoopTrig()
 {
 
     auto msgOnly = reinterpret_cast<HWND>(Init());

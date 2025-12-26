@@ -3,31 +3,31 @@
 namespace PDJE_IPC {
 
 void
-SubProc::RunServer(const int port)
+TXRXListener::RunServer(const int port)
 {
     server.listen("0.0.0.0", port);
 }
 void
-SubProc::EndTransmission(const httplib::Request &, httplib::Response &res)
+TXRXListener::EndTransmission(const httplib::Request &, httplib::Response &res)
 {
     res.set_content("stopped", "text/plain");
     server.stop();
 }
 bool
-SubProc::RecvIPCSharedMem(const std::string &mem_path,
-                          const std::string &dataType,
-                          const uint64_t     data_count)
+TXRXListener::RecvIPCSharedMem(const std::string &mem_path,
+                               const std::string &dataType,
+                               const uint64_t     data_count)
 {
     return false; // todo -impl
 }
 std::string
-SubProc::ListDev()
+TXRXListener::ListDev()
 {
     return {}; // todo - impl
 }
 
 void
-SubProc::LoopTrig()
+TXRXListener::LoopTrig()
 {
     return; // todo - impl
 }

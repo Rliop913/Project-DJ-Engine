@@ -12,8 +12,8 @@ main(int argc, char **argv)
     if (argc < 2) {
         return -1;
     }
-    PDJE_IPC::SubProc serv;
-    auto              port = std::stoi(argv[1]);
+    PDJE_IPC::TXRXListener serv;
+    auto                   port = std::stoi(argv[1]);
     std::cout << "open transmission on port " << argv[1] << std::endl;
     serv.RunServer(port);
     std::cout << "Ended Transmission on server" << std::endl;

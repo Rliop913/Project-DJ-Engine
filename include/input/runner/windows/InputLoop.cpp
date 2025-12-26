@@ -4,9 +4,9 @@
 #include <Windows.h>
 #include <bitset>
 namespace PDJE_IPC {
-
+using namespace SUBPROC;
 void *
-SubProc::Init()
+TXRXListener::Init()
 {
     HINSTANCE hst = GetModuleHandleW(nullptr);
     WNDCLASSW wc{};
@@ -29,7 +29,7 @@ SubProc::Init()
                            nullptr);
 }
 void
-SubProc::Run()
+TXRXListener::Run()
 {
 
     MSG msg;

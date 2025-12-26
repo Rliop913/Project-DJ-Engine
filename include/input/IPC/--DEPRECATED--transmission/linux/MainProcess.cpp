@@ -87,7 +87,7 @@ OpenProcess(const fs::path &pt, pid_t *child_pid, const int port)
     return false;
 }
 
-MainProc::MainProc(const int port)
+TXRXTransport::TXRXTransport(const int port)
 {
     unlink(imp.socket_path.c_str());
     imp.socket_fd = socket(AF_UNIX, SOCK_STREAM, 0);
@@ -134,7 +134,7 @@ MainProc::MainProc(const int port)
     }
 }
 
-MainProc::~MainProc()
+TXRXTransport::~TXRXTransport()
 {
     if (imp.child_fd >= 0) {
         close(imp.child_fd);
@@ -145,7 +145,7 @@ MainProc::~MainProc()
     unlink(imp.socket_path.c_str());
 }
 bool
-MainProc::EndTransmission()
+TXRXTransport::EndTransmission()
 {
     auto res = cli->Get("/stop");
     if (res) {

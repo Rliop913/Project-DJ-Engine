@@ -18,7 +18,8 @@ main()
         auto psk = PDJE_CRYPTO::PSK();
         psk.Decode(pskhex);
 
-        PDJE_IPC::SubProc serv(psk, mfirst, lfirst, msecond, lsecond);
+        PDJE_IPC::SUBPROC::TXRXListener serv(
+            psk, mfirst, lfirst, msecond, lsecond);
         serv.BlockedListen();
         if (serv.KillCheck) {
             return 0;

@@ -66,9 +66,9 @@ include(cmakes/src/CRYPTOsrc.cmake)
 if(PDJE_DEVELOP_INPUT)
 
 
-add_executable(PDJE_MODULE_INPUT_PROCESS ${globalSource}  ${PDJE_INPUT_PROCESS_SRC} ${PDJE_IPC_SRC} ${cryptoSource})
+add_executable(PDJE_MODULE_INPUT_PROCESS ${globalSource}  ${PDJE_INPUT_SUBPROC_SRC} ${PDJE_IPC_SRC} ${cryptoSource})
 
-target_include_directories(PDJE_MODULE_INPUT_PROCESS PUBLIC ${PDJE_INCLUDE_INPUT})
+target_include_directories(PDJE_MODULE_INPUT_PROCESS PUBLIC ${PDJE_INCLUDE_INPUT_SUBPROC})
 
 PDJE_COMPILE_OPTION(PDJE_MODULE_INPUT_PROCESS)
 PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT_PROCESS)
@@ -111,10 +111,9 @@ ${globalSource}
 )
 
 set(INPUT_SRCS
-${inputSource} 
 ${globalSource} 
 ${cryptoSource}
-${PDJE_OS_INPUT_SRC} 
+${PDJE_INPUT_MAINPROC_SRC} 
 ${PDJE_IPC_SRC}
 
 )
@@ -153,7 +152,7 @@ function(setInputReqs targetName)
     target_compile_definitions(${targetName} PRIVATE PDJE_BUILDING)
   endif()
   add_dependencies(${targetName} gen_RT_HASH)
-  target_include_directories(${targetName} PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_GLOBAL})
+  target_include_directories(${targetName} PUBLIC ${PDJE_INCLUDE_INPUT_MAINPROC} )
   setSpdlogReqLib(${targetName})
   setBotanReqLib(${targetName})
   PDJE_INPUT_LINK_LIB(${targetName})
@@ -168,7 +167,7 @@ function(setJudgeReqs targetName)
     target_compile_definitions(${targetName} PRIVATE PDJE_BUILDING)
   endif()
   add_dependencies(${targetName} gen_RT_HASH)
-  target_include_directories(${targetName} PUBLIC ${PDJE_INCLUDE_INPUT} ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_GLOBAL})
+  target_include_directories(${targetName} PUBLIC ${PDJE_INCLUDE_INPUT_MAINPROC} ${PDJE_INCLUDE_JUDGE})
   setSpdlogReqLib(${targetName})
   setCapnpReqLib(${targetName})
   setBotanReqLib(${targetName})

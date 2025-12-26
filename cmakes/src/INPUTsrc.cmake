@@ -1,10 +1,23 @@
 
+set(PDJE_INPUT_MAINPROC_SRC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/PDJE_Input.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/MainProcess.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/SetTXRXFeatures.cpp
+    
+)
+set(PDJE_INPUT_SUBPROC_SRC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/SetTXRXFeatures.cpp
+    
+)
 if(WIN32)
-    set(PDJE_OS_INPUT_SRC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/PDJE_Input.cpp
+    list(APPEND PDJE_INPUT_MAINPROC_SRC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/windows/MainProcess.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/windows/ipc_Send_Windows.cpp
     )
-    set(PDJE_INPUT_PROCESS_SRC
+    list(APPEND PDJE_INPUT_SUBPROC_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/windows/SubMain.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/windows/SubProcess.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/windows/InputLoop.cpp
     )
     function(PDJE_INPUT_LINK_LIB targetName)
         target_link_libraries(${targetName} PUBLIC user32 avrt winmm hid)
@@ -13,17 +26,10 @@ if(WIN32)
 
 
 elseif(APPLE)
-    set(PDJE_OS_INPUT_SRC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/PDJE_Input.cpp
-    )
+    
 else()
-    set(PDJE_OS_INPUT_SRC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/PDJE_Input.cpp
-        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/linux_input.cpp
-        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/socket/linux_socket.cpp
-        )
         
-    set(PDJE_INPUT_PROCESS_SRC
+    list(APPEND PDJE_INPUT_SUBPROC_SRC
         # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTSocket.cpp
         # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTFunctionRegister.cpp
         # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTEvent.cpp
