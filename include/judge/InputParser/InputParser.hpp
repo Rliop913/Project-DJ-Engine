@@ -9,7 +9,7 @@
 
 namespace PDJE_JUDGE {
 
-using INPUT_RAW = std::pair<PDJE_Input_Log *, uint64_t>;
+using INPUT_RAW = std::vector<PDJE_Input_Log>;
 using DEV_ID    = std::string;
 struct PARSE_OUT {
     std::vector<PDJE_Input_Log> logs;

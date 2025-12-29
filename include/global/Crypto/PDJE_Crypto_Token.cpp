@@ -44,7 +44,8 @@ bool
 PSK::Decode(const std::string &hex)
 {
     try {
-        psk = Botan::hex_decode(hex);
+
+        psk = Botan::hex_decode_locked(hex);
         return true;
     } catch (const std::exception &e) {
         critlog("failed to decode psk. Why: ");

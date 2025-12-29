@@ -1,7 +1,7 @@
 #include "PDJE_Input.hpp"
+#include "NameGen.hpp"
 #include "PDJE_LOG_SETTER.hpp"
-
-PDJE_Input::PDJE_Input() : input_buffer(2048)
+PDJE_Input::PDJE_Input()
 {
     startlog();
 }
@@ -16,20 +16,21 @@ PDJE_Input::Init()
                 "maybe input module is running or configuring.");
             return false;
         }
-        int port;
-        {
-            httplib::Server portGetter;
-            port = portGetter.bind_to_any_port("0.0.0.0");
-        }
 
-        http_bridge.emplace(port);
+        Mproc.emplace();
 
-        http_bridge->SendBufferArena(input_buffer);
+        PDJE_IPC::Input_Transfer_Metadata cfg;
+        PDJE_IPC::RANDOM_GEN              rg;
+        cfg.max_length              = 2048;
+        cfg.lenname                 = rg.Gen("PDJE_INPUT_LEN_");
+        cfg.bodyname                = rg.Gen("PDJE_INPUT_BODY_");
+        cfg.hmacname                = rg.Gen("PDJE_INPUT_HMAC_");
+        cfg.data_request_event_name = rg.Gen("PDJE_INPUT_REQ_EVENT_");
+        cfg.data_stored_event_name  = rg.Gen("PDJE_INPUT_STORED_EVENT_");
+        input_buffer.emplace(cfg);
+        Mproc->SendInputTransfer(input_buffer.value());
+        Mproc->InitEvents();
 
-        spinlock_run.MakeIPCSharedMemory(std::string("PDJE_SPINLOCK"), 1);
-        (*spinlock_run.ptr) = 0;
-        http_bridge->SendIPCSharedMemory(
-            spinlock_run, std::string("PDJE_SPINLOCK"), "spinlock");
         state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
         return true;
     } catch (const std::exception &e) {
@@ -83,9 +84,10 @@ PDJE_Input::Config(std::vector<DeviceData> &devs)
                 break;
             }
         }
-        http_bridge->QueryConfig(nj.dump());
+
+        Mproc->QueryConfig(nj.dump());
         state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
-        return http_bridge->EndTransmission();
+        return Mproc->EndTransmission();
 
     } catch (const std::exception &e) {
         critlog("failed to config. WHY: ");
@@ -102,7 +104,7 @@ PDJE_Input::Run()
                 "ready state. config it first.");
         return false;
     }
-    (*spinlock_run.ptr) = 1;
+    Mproc->events.input_loop_run_event.Wake();
 
     state = PDJE_INPUT_STATE::INPUT_LOOP_RUNNING;
     return true;
@@ -116,13 +118,15 @@ PDJE_Input::Kill()
         return true;
 
     case PDJE_INPUT_STATE::DEVICE_CONFIG_STATE: {
-        return http_bridge->Kill();
+        return Mproc->Kill();
     }
     case PDJE_INPUT_STATE::INPUT_LOOP_READY:
-        (*spinlock_run.ptr) = -1;
+        Mproc->events.terminate_event.Wake();
+        Mproc->events.input_loop_run_event.Wake();
+
         break;
     case PDJE_INPUT_STATE::INPUT_LOOP_RUNNING: {
-        (*spinlock_run.ptr) = 0;
+        Mproc->events.terminate_event.Wake();
         break;
     } break;
     default:
@@ -136,7 +140,7 @@ PDJE_Input::Kill()
 std::vector<DeviceData>
 PDJE_Input::GetDevs()
 {
-    return http_bridge->GetDevices();
+    return Mproc->GetDevices();
 }
 
 PDJE_INPUT_STATE
@@ -149,6 +153,6 @@ PDJE_INPUT_DATA_LINE
 PDJE_Input::PullOutDataLine()
 {
     PDJE_INPUT_DATA_LINE line;
-    line.input_arena = &input_buffer;
+    line.input_arena = &input_buffer.value();
     return line;
 }

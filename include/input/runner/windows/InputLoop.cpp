@@ -1,12 +1,12 @@
-#include "ChildProcess.hpp"
 #include "ListDevice.hpp"
+#include "SubProcess.hpp"
 #include "windows_keyboard_fill.hpp"
 #include <Windows.h>
 #include <bitset>
 namespace PDJE_IPC {
-
+using namespace SUBPROC;
 void *
-ChildProcess::Init()
+TXRXListener::Init()
 {
     HINSTANCE hst = GetModuleHandleW(nullptr);
     WNDCLASSW wc{};
@@ -29,7 +29,7 @@ ChildProcess::Init()
                            nullptr);
 }
 void
-ChildProcess::Run()
+TXRXListener::Run()
 {
 
     MSG msg;
@@ -47,13 +47,16 @@ ChildProcess::Run()
     PDJE_HID_Event   hidEv;
     std::bitset<102> isPressed;
     bool             Writable = true;
-    auto             killer   = std::thread([&]() {
-        while (*spinlock_run->ptr == 1) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(500));
-        }
+
+    MSG tmp;
+    PeekMessageW(&tmp, nullptr, 0, 0, PM_NOREMOVE);
+    auto killer = std::thread([&]() {
+        terminate_event.Wait_Infinite();
         PostThreadMessageW(ThreadID, WM_QUIT, 0, 0);
     });
-    PDJE_Input_Log   cachedLog;
+    input_loop_run_event.Wait_Infinite();
+    input_buffer->SendManageWorker();
+    PDJE_Input_Log cachedLog;
     while (true) {
         try {
 

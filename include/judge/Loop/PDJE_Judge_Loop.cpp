@@ -79,9 +79,10 @@ Judge_Loop::Cut(const uint64_t cut_range)
 PARSE_OUT *
 Judge_Loop::PreProcess()
 {
-
-    input_log = init_datas->inputline->input_arena->Get();
-    auto res  = init_datas->devparser.Parse(input_log);
+    init_datas->inputline->input_arena->Receive();
+    // input_log = init_datas->inputline->input_arena->datas;
+    auto res =
+        init_datas->devparser.Parse(init_datas->inputline->input_arena->datas);
 
     Cached.synced_data =
         init_datas->coreline->syncD->load(std::memory_order_acquire);

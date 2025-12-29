@@ -56,6 +56,8 @@ FetchContent_Declare(
   GIT_TAG v0.2
 )
 
+
+
 find_package(botan CONFIG REQUIRED)
 
 function(setBotanReqLib targetName)
@@ -64,11 +66,11 @@ function(setBotanReqLib targetName)
 endfunction()
 
 
-FetchContent_Declare(
-  cppHttp
-  GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
-  GIT_TAG v0.27.0
-)
+# FetchContent_Declare(
+#   cppHttp
+#   GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
+#   GIT_TAG v0.27.0
+# ) #DEPRECATED
 
 find_package(Annoy CONFIG REQUIRED)
 
@@ -103,12 +105,13 @@ FetchContent_MakeAvailable(miniaudio)
 FetchContent_MakeAvailable(NHJson)
 FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
-FetchContent_MakeAvailable(cppHttp)
+# FetchContent_MakeAvailable(cppHttp)
+
 
 # get_cmake_property(_vars VARIABLES)
 
 # foreach(var ${_vars})
-#     if(var MATCHES "^cppgit")
+#     if(var MATCHES "^boost")
 #         message(STATUS "환경변수: ${var} = [${${var}}]")
 #     endif()
 # endforeach()

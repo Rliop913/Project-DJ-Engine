@@ -77,13 +77,21 @@ ${PDJE_INCLUDE_ROOT}/include/input/IPC/
 ${PDJE_INCLUDE_ROOT}/include/input/IPC/common
 ${PDJE_INCLUDE_ROOT}/include/input/IPC/memory
 ${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission
-${httplib_SOURCE_DIR}
+# ${httplib_SOURCE_DIR}
+
 )
 
+set(PDJE_INCLUDE_INPUT_SUBPROC
+${PDJE_INCLUDE_ROOT}/include/input
+${PDJE_INCLUDE_ROOT}/include/input/runner
+)
 
-set(PDJE_INCLUDE_INPUT
+set(PDJE_INCLUDE_INPUT_MAINPROC
 ${PDJE_INCLUDE_ROOT}/include/input
 ${PDJE_INCLUDE_ROOT}/include/input/midi
+${PDJE_INCLUDE_ROOT}/include/input/host
+${PDJE_INCLUDE_ROOT}/include/input/runner
+
 )
 
 set(PDJE_INCLUDE_GLOBAL
@@ -95,12 +103,16 @@ if(WIN32)
   list(APPEND PDJE_INCLUDE_GLOBAL
     ${PDJE_INCLUDE_ROOT}/include/global/Highres_Clock/Windows
   )
-  list(APPEND PDJE_INCLUDE_INPUT
-    ${PDJE_INCLUDE_ROOT}/include/input/windows
+  list(APPEND PDJE_INCLUDE_INPUT_MAINPROC
+    ${PDJE_INCLUDE_ROOT}/include/input/host/windows
+    ${PDJE_INCLUDE_ROOT}/include/input/runner/windows
+
+
   )
   list(APPEND PDJE_INCLUDE_IPC
     ${PDJE_INCLUDE_ROOT}/include/input/IPC/memory/windows
     ${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission/windows
+
   )
 elseif(APPLE)
   list(APPEND PDJE_INCLUDE_GLOBAL
@@ -114,7 +126,7 @@ else()
   list(APPEND PDJE_INCLUDE_GLOBAL
     ${PDJE_INCLUDE_ROOT}/include/global/Highres_Clock/Linux
   )
-  list(APPEND PDJE_INCLUDE_INPUT
+  list(APPEND PDJE_INCLUDE_INPUT_MAINPROC
     ${PDJE_INCLUDE_ROOT}/include/input/linux 
     ${PDJE_INCLUDE_ROOT}/include/input/linux/RT
     ${PDJE_INCLUDE_ROOT}/include/input/linux/common
@@ -128,13 +140,17 @@ else()
 endif()
 
 list(APPEND PDJE_INCLUDE_JUDGE
-  ${PDJE_INCLUDE_GLOBAL}
   ${PDJE_INCLUDE_IPC}
+  ${PDJE_INCLUDE_GLOBAL}
 )
 list(APPEND PDJE_INCLUDE_CORE
   ${PDJE_INCLUDE_GLOBAL}
 )
-list(APPEND PDJE_INCLUDE_INPUT
-  ${PDJE_INCLUDE_GLOBAL}
+list(APPEND PDJE_INCLUDE_INPUT_MAINPROC
   ${PDJE_INCLUDE_IPC}
+  ${PDJE_INCLUDE_GLOBAL}
+)
+list(APPEND PDJE_INCLUDE_INPUT_SUBPROC
+  ${PDJE_INCLUDE_IPC}
+  ${PDJE_INCLUDE_GLOBAL}
 )

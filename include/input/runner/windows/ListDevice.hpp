@@ -1,5 +1,5 @@
 #pragma once
-#include "ChildProcess.hpp"
+#include "SubProcess.hpp"
 #include "dev_path_to_name.hpp"
 namespace PDJE_IPC {
 struct RawDeviceData {

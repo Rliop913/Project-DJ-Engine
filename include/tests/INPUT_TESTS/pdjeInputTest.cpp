@@ -15,7 +15,7 @@ main()
 {
     // std::cout << GenExecuteShell("./PDJE_MODULE_INPUT_PROCESS", 84300)
     //           << std::endl;
-    // auto mp = PDJE_IPC::MainProcess(54335);
+    // auto mp = PDJE_IPC::TXRXTransport(54335);
     // std::cout << "opened connection" << std::endl;
     // if (mp.EndTransmission()) {
     //     std::cout << "Ended Transmission" << std::endl;
@@ -62,24 +62,20 @@ main()
         while (true) {
             try {
 
-                auto got = dline.input_arena->Get();
-                for (uint64_t idx = 0; idx < got.second; ++idx)
+                dline.input_arena->Receive();
+                auto got = dline.input_arena->datas;
+                for (const auto &idx : got) {
 
-                {
+                    std::cout << "time: " << idx.microSecond << std::endl;
+                    std::cout << "id: " << idx.id << std::endl;
+                    std::cout << "name: " << idx.name << std::endl;
 
-                    std::cout << "time: " << got.first[idx].microSecond
-                              << std::endl;
-                    std::cout << "id: " << got.first[idx].id << std::endl;
-                    std::cout << "name: " << got.first[idx].name << std::endl;
+                    if (idx.type == PDJE_Dev_Type::KEYBOARD) {
 
-                    if (got.first[idx].type == PDJE_Dev_Type::KEYBOARD) {
-
-                        std::cout
-                            << "keyNumber: "
-                            << static_cast<int>(got.first[idx].event.keyboard.k)
-                            << std::endl;
-                        std::cout << "pressed"
-                                  << got.first[idx].event.keyboard.pressed
+                        std::cout << "keyNumber: "
+                                  << static_cast<int>(idx.event.keyboard.k)
+                                  << std::endl;
+                        std::cout << "pressed" << idx.event.keyboard.pressed
                                   << std::endl;
                     }
 

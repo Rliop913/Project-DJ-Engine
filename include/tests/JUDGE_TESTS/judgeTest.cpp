@@ -117,8 +117,8 @@ main()
     };
     engine.GetNoteObjects(td.front(), cb);
     std::cout << "notes: " << note_add_count << std::endl;
-    judge.inits.SetEventRule({ .miss_range_microsecond = 1000005,
-                               .use_range_microsecond  = 1000000 });
+    judge.inits.SetEventRule({ .miss_range_microsecond = 60005,
+                               .use_range_microsecond  = 60000 });
     judge.inits.SetInputLine(input.PullOutDataLine());
 
     int                       miss_count = 0;

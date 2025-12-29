@@ -1,4 +1,4 @@
-#include "ChildProcess.hpp"
+#include "SubProcess.hpp"
 #include "ListDevice.hpp"
 #include "ipc_shared_memory.hpp"
 #include <SetupAPI.h>
@@ -6,20 +6,20 @@
 #include <avrt.h>
 #include <hidsdi.h>
 namespace PDJE_IPC {
-
+using namespace SUBPROC;
 bool
-ChildProcess::RecvIPCSharedMem(const std::string &mem_path,
+TXRXListener::RecvIPCSharedMem(const std::string &mem_path,
                                const std::string &dataType,
                                const uint64_t     data_count)
 {
     try {
 
-        if (dataType == "spinlock") {
-            spinlock_run.emplace();
-            spinlock_run->GetIPCSharedMemory(mem_path, data_count);
+        if (dataType == "EVENT_terminate") {
+            terminate_event.ClientInit(mem_path);
             return true;
-        } else if (dataType == "input_buffer") {
-            input_buffer.emplace(mem_path, data_count);
+        }
+        if (dataType == "EVENT_input_loop_run") {
+            input_loop_run_event.ClientInit(mem_path);
             return true;
         }
         return false;
@@ -31,7 +31,7 @@ ChildProcess::RecvIPCSharedMem(const std::string &mem_path,
 }
 
 std::string
-ChildProcess::ListDev()
+TXRXListener::ListDev()
 {
     auto                    rawDevs = getRawDeviceDatas();
     std::vector<DeviceData> out;
@@ -87,19 +87,7 @@ ChildProcess::ListDev()
 }
 
 void
-ChildProcess::RunServer(const int port)
-{
-    server.listen("127.0.0.1", port);
-}
-void
-ChildProcess::EndTransmission(const httplib::Request &, httplib::Response &res)
-{
-    res.set_content("stopped", "text/plain");
-    server.stop();
-}
-
-void
-ChildProcess::LoopTrig()
+TXRXListener::LoopTrig()
 {
 
     auto msgOnly = reinterpret_cast<HWND>(Init());
@@ -110,8 +98,8 @@ ChildProcess::LoopTrig()
         critlog("no device has been configured. shutdown rawinput.");
         return;
     }
-    if (!spinlock_run) {
-        critlog("spinlock is not initialized.");
+    if (!terminate_event.hdlp) {
+        critlog("terminate event is not initialized.");
         return;
     }
     if (!input_buffer) {
@@ -184,16 +172,9 @@ ChildProcess::LoopTrig()
 #endif
     ThreadID = GetCurrentThreadId();
 
-    while ((*spinlock_run->ptr) == 0) { // spinlock
-        if ((*spinlock_run->ptr) == -1) {
-            return; // terminate
-        }
-    }
-
     if (task) {
         AvRevertMmThreadCharacteristics(task);
     }
-
     Run();
     if (task) {
         AvRevertMmThreadCharacteristics(task);
