@@ -56,6 +56,16 @@ FetchContent_Declare(
   GIT_TAG v0.2
 )
 
+FetchContent_Declare(
+    libremidi
+    GIT_REPOSITORY https://github.com/celtera/libremidi
+    GIT_TAG        v5.3.1
+)
+
+function(setLibreMIDIReqLib targetName)
+  target_link_libraries(${targetName} PUBLIC libremidi)
+endfunction(setLibreMIDIReqLib)
+
 
 
 find_package(botan CONFIG REQUIRED)
@@ -105,6 +115,7 @@ FetchContent_MakeAvailable(miniaudio)
 FetchContent_MakeAvailable(NHJson)
 FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
+FetchContent_MakeAvailable(libremidi)
 # FetchContent_MakeAvailable(cppHttp)
 
 

@@ -3,6 +3,7 @@ set(PDJE_INPUT_MAINPROC_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/PDJE_Input.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/MainProcess.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/SetTXRXFeatures.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/midi/PDJE_MIDI.cpp
     
 )
 set(PDJE_INPUT_SUBPROC_SRC

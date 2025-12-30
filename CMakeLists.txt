@@ -159,6 +159,7 @@ function(setInputReqs targetName)
   LinuxSetAtomic(${targetName})
   SET_PROPERTIES(${targetName})
   PDJE_COMPILE_OPTION(${targetName})
+  setLibreMIDIReqLib(${targetName})
 endfunction(setInputReqs)
 
 function(setJudgeReqs targetName)
