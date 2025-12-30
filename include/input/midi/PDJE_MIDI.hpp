@@ -7,7 +7,7 @@
 namespace PDJE_MIDI{
 
 struct PDJE_API PDJE_Input_MIDI_Log {
-    
+
 };
 
 class MIDI{
@@ -32,11 +32,17 @@ class MIDI{
                     uint8_t vel = b[2];
                 }
                 m.get_meta_event_type();
-                m.timestamp;
+                m.timestamp;//no use. use pdje highres clock
                 //use msg
             }
         };//set input logic
+        
+        auto cfg = libremidi::midi1::in_default_configuration();
+        
+
         libremidi::midi_in midiin{inputCB, libremidi::midi1::in_default_configuration() };//ready configures
+        //todo - midi1 고정, libremidi 타이머 사용 안함 설정 + pdje highres 타이머 사용 + pdje midi 데이터 필드 구성
+
         auto ins = obs.get_input_ports();//start getting data
         for(auto& p : ins){//print all connected devices.
             std::cout << "In: " << p.port_name << " , " << p.display_name << std::endl;
