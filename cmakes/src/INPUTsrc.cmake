@@ -29,16 +29,13 @@ if(WIN32)
 elseif(APPLE)
     
 else()
-        
+    list(APPEND PDJE_INPUT_MAINPROC_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/linux/MainProcess.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/linux/ipc_Send_Linux.cpp
+    )
     list(APPEND PDJE_INPUT_SUBPROC_SRC
-        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTSocket.cpp
-        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTFunctionRegister.cpp
-        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTEvent.cpp
-        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/OneTimeSysSetup.cpp
-        # # ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Process/Linux_IPC.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/linux/RT/RTMain.cpp
-        
-    
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/linux/SubMain.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/linux/SubProcess.cpp
     )
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(LIBEVDEV REQUIRED IMPORTED_TARGET libevdev)

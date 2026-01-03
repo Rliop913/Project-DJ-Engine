@@ -127,10 +127,8 @@ else()
     ${PDJE_INCLUDE_ROOT}/include/global/Highres_Clock/Linux
   )
   list(APPEND PDJE_INCLUDE_INPUT_MAINPROC
-    ${PDJE_INCLUDE_ROOT}/include/input/linux 
-    ${PDJE_INCLUDE_ROOT}/include/input/linux/RT
-    ${PDJE_INCLUDE_ROOT}/include/input/linux/common
-    ${PDJE_INCLUDE_ROOT}/include/input/linux/socket
+    ${PDJE_INCLUDE_ROOT}/include/input/host/linux
+    ${PDJE_INCLUDE_ROOT}/include/input/runner/linux
     
     )
   list(APPEND PDJE_INCLUDE_IPC

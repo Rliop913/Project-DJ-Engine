@@ -14,8 +14,10 @@ set(PDJE_IPC_SRC
 )
 else()
 set(PDJE_IPC_SRC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/transmission/linux/MainProcess.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/transmission/linux/ChildProcess.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/memory/linux/named_mutex.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/memory/linux/named_event.cpp
+    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/transmission/linux/MainProcess.cpp
+    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/transmission/linux/ChildProcess.cpp
 )
 endif()
 

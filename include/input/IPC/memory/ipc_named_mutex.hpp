@@ -48,7 +48,6 @@ class SCOPE_LOCK {
     {
         if (locked) {
             try {
-
                 MP->unlock();
             } catch (const std::exception &e) {
                 critlog("failed to unlock. What: ");
