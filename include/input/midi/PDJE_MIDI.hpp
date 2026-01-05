@@ -1,56 +1,60 @@
 #pragma once
 
-#include <libremidi/libremidi.hpp>
 #include "PDJE_Buffer.hpp"
-#include <iostream>//debugiostream
+#include "PDJE_Highres_Clock.hpp"
+#include "PDJE_LOG_SETTER.hpp"
+#include <libremidi/libremidi.hpp>
 
-namespace PDJE_MIDI{
-
-struct PDJE_API PDJE_Input_MIDI_Log {
-
+#define PDJE_BIT_PARSE_7(N) (N & 0x7F)
+#define B_GUARD(B, N)                                                          \
+    if (B.size() < N)                                                          \
+        return;
+namespace PDJE_MIDI {
+struct PDJE_API MIDI_EV {
+    uint8_t  type;
+    uint8_t  ch;
+    uint8_t  pos;
+    uint16_t value;
+    uint64_t highres_time;
 };
 
-class MIDI{
-    private:
-    libremidi::observer obs;
+class MIDI {
+  private:
+    libremidi::observer               obs;
+    PDJE_HIGHRES_CLOCK::CLOCK         clock;
+    std::optional<libremidi::midi_in> midiin;
 
+    uint16_t CC_stat[16][32] = {
+        0,
+    };
 
-    public:
-    void ConfigInputFeatures();
-    void Config();
-
-    MIDI(){
-        libremidi::input_configuration inputCB{
-            
-            .on_message = [&](const libremidi::message& m){
-                
-                auto ch = m.get_channel();
-
-                if (m.get_message_type() == libremidi::message_type::NOTE_ON){
-                    const auto& b = m.bytes;
-                    uint8_t note = b[1];
-                    uint8_t vel = b[2];
-                }
-                m.get_meta_event_type();
-                m.timestamp;//no use. use pdje highres clock
-                //use msg
+  public:
+    Atomic_Double_Buffer<MIDI_EV>      evlog;
+    std::vector<libremidi::input_port> configed_devices;
+    void
+    Run()
+    {
+        for (const auto &i : configed_devices) {
+            auto err = midiin->open_port(i);
+            if (err != stdx::error{}) {
+                throw std::runtime_error(
+                    std::string(err.message().data(), err.message().size()));
             }
-        };//set input logic
-        
-        auto cfg = libremidi::midi1::in_default_configuration();
-        
-
-        libremidi::midi_in midiin{inputCB, libremidi::midi1::in_default_configuration() };//ready configures
-        //todo - midi1 고정, libremidi 타이머 사용 안함 설정 + pdje highres 타이머 사용 + pdje midi 데이터 필드 구성
-
-        auto ins = obs.get_input_ports();//start getting data
-        for(auto& p : ins){//print all connected devices.
-            std::cout << "In: " << p.port_name << " , " << p.display_name << std::endl;
         }
-        midiin.open_port(ins[0]);//add input midi device.
-        midiin.open_virtual_port("Dummy port");//add virtual midi device.
-
     }
-    ~MIDI();
+
+    void
+    Config(const libremidi::input_port &midi_dev)
+    {
+        configed_devices.push_back(midi_dev);
+    }
+
+    std::vector<libremidi::input_port>
+    GetDevices()
+    {
+        return obs.get_input_ports();
+    }
+    MIDI(const bool CC_LSB_ON = true, const int buffer_size = 64);
+    ~MIDI() = default;
 };
-};
+}; // namespace PDJE_MIDI

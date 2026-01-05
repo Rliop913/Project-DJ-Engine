@@ -190,6 +190,9 @@ if(PDJE_DEVELOP_INPUT)
   add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${INPUT_SRCS})
   setInputReqs(testInput)
 
+  add_executable(testMIDI ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/miditest.cpp ${INPUT_SRCS})
+  setInputReqs(testMIDI)
+
   add_executable(testJudge ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/JUDGE_TESTS/judgeTest.cpp ${INPUT_SRCS} ${CORE_SRCS} ${JUDGE_SRCS})
   setJudgeReqs(testJudge)
   setCoreReqs(testJudge)
