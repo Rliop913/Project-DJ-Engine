@@ -42,33 +42,4 @@ struct mouse_btn_event {
     uint64_t rail_id = 0;
     int      status  = -1;
 };
-/** @brief Cached state shared across judge loop iterations. */
-struct LoopCached {
-
-    std::unordered_map<uint64_t, NOTE_VEC> missed_buffers;
-
-    P_NOTE_VEC found_list;
-    P_NOTE_VEC related_list_out;
-
-    // time values
-    LOCAL_TIME local_microsecond_position;
-    uint64_t   global_local_diff;
-
-    // LOCAL_TIME log_begin;
-    // LOCAL_TIME log_end;
-
-    LOCAL_TIME  use_range;
-    std::string strCache;
-    // LOCAL_TIME cut_range;
-
-    audioSyncData synced_data;
-
-    RAIL_META meta;
-    bool      isLate;
-    uint64_t  railid;
-    // INPUT_SETTING setting;
-
-    uint64_t                     diff;
-    std::vector<mouse_btn_event> mouse_btn_event_queue;
-};
 } // namespace PDJE_JUDGE

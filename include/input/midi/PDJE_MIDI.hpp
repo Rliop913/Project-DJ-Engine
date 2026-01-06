@@ -16,6 +16,8 @@ struct PDJE_API MIDI_EV {
     uint8_t  pos;
     uint16_t value;
     uint64_t highres_time;
+    char     port_name[256]; // todo - fill here
+    uint8_t  port_name_len = 0;
 };
 
 class MIDI {

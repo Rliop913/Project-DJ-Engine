@@ -23,7 +23,7 @@ enum JUDGE_STATUS {
 
 /** @brief Judge controller that owns initialization data and the event loop. */
 class PDJE_API JUDGE {
-  private: // cached values
+  private:
     std::optional<Judge_Loop> loop_obj;
 
   private:

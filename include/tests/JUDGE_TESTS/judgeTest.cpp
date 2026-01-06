@@ -92,7 +92,7 @@ main()
         //     1);
         // }
     }
-    if (!input.Config(list)) {
+    if (!input.Config(list, std::vector<libremidi::input_port>())) {
         std::cout << "config failed" << std::endl;
     }
     auto                iline          = input.PullOutDataLine();

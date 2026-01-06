@@ -51,7 +51,7 @@ main()
         std::cout << "dev path: " << i.device_specific_id << std::endl;
     }
 
-    pip.Config(set_targets);
+    pip.Config(set_targets, std::vector<libremidi::input_port>());
     // pip.NEXT();
 
     auto dline = pip.PullOutDataLine();

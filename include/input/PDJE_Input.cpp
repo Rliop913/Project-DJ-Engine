@@ -31,6 +31,7 @@ PDJE_Input::Init()
         Mproc->SendInputTransfer(input_buffer.value());
         Mproc->InitEvents();
 
+        midi_engine.emplace();
         state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
         return true;
     } catch (const std::exception &e) {
@@ -41,9 +42,21 @@ PDJE_Input::Init()
 }
 
 bool
-PDJE_Input::Config(std::vector<DeviceData> &devs)
+PDJE_Input::Config(std::vector<DeviceData>                  &devs,
+                   const std::vector<libremidi::input_port> &midi_dev)
 {
     try {
+        if (!midi_dev.empty()) {
+            midi_engine->configed_devices = midi_dev;
+            FLAG_MIDI_ON                  = true;
+        }
+
+        if (state != PDJE_INPUT_STATE::DEVICE_CONFIG_STATE) {
+            critlog(
+                "pdje input module config failed. pdje input state is not on "
+                "device config state. Init it first.");
+            return false;
+        }
         std::vector<DeviceData> sanitized_devs;
         for (const auto &d : devs) {
             if (d.Name != "" && d.device_specific_id != "" &&
@@ -51,44 +64,45 @@ PDJE_Input::Config(std::vector<DeviceData> &devs)
                 sanitized_devs.push_back(d);
             }
         }
-        if (state != PDJE_INPUT_STATE::DEVICE_CONFIG_STATE) {
-            critlog(
-                "pdje input module config failed. pdje input state is not on "
-                "device config state. Init it first.");
+        FLAG_INPUT_ON = (!sanitized_devs.empty());
+        if (FLAG_INPUT_ON) {
+
+            nlohmann::json nj;
+            nj["body"] = nlohmann::json::array();
+            for (const auto &dev : sanitized_devs) {
+                std::unordered_map<std::string, std::string> kv;
+                kv["id"]   = dev.device_specific_id;
+                kv["name"] = dev.Name;
+                switch (dev.Type) {
+                case PDJE_Dev_Type::KEYBOARD:
+                    kv["type"] = "KEYBOARD";
+                    nj["body"].push_back(kv);
+                    break;
+                case PDJE_Dev_Type::MOUSE:
+                    kv["type"] = "MOUSE";
+                    nj["body"].push_back(kv);
+                    break;
+                case PDJE_Dev_Type::MIDI:
+                    kv["type"] = "MIDI";
+                    nj["body"].push_back(kv);
+                    break;
+                case PDJE_Dev_Type::HID:
+                    kv["type"] = "HID";
+                    nj["body"].push_back(kv);
+                    break;
+                default:
+                    break;
+                }
+            }
+            Mproc->QueryConfig(nj.dump());
+            state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
+            return Mproc->EndTransmission();
+        } else if (FLAG_MIDI_ON) { // fallback: only midi devices.
+            state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
+            return Mproc->EndTransmission();
+        } else { // fallback: both invalid.
             return false;
         }
-        nlohmann::json nj;
-        nj["body"] = nlohmann::json::array();
-        for (const auto &dev : sanitized_devs) {
-            std::unordered_map<std::string, std::string> kv;
-            kv["id"]   = dev.device_specific_id;
-            kv["name"] = dev.Name;
-            switch (dev.Type) {
-            case PDJE_Dev_Type::KEYBOARD:
-                kv["type"] = "KEYBOARD";
-                nj["body"].push_back(kv);
-                break;
-            case PDJE_Dev_Type::MOUSE:
-                kv["type"] = "MOUSE";
-                nj["body"].push_back(kv);
-                break;
-            case PDJE_Dev_Type::MIDI:
-                kv["type"] = "MIDI";
-                nj["body"].push_back(kv);
-                break;
-            case PDJE_Dev_Type::HID:
-                kv["type"] = "HID";
-                nj["body"].push_back(kv);
-                break;
-            default:
-                break;
-            }
-        }
-
-        Mproc->QueryConfig(nj.dump());
-        state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
-        return Mproc->EndTransmission();
-
     } catch (const std::exception &e) {
         critlog("failed to config. WHY: ");
         critlog(e.what());
@@ -104,7 +118,15 @@ PDJE_Input::Run()
                 "ready state. config it first.");
         return false;
     }
+
     Mproc->events.input_loop_run_event.Wake();
+    if (!FLAG_INPUT_ON) { // terminate if input flag is off.
+        Mproc->events.terminate_event.Wake();
+    }
+
+    if (FLAG_MIDI_ON) { // run midi engine if midi flag is on.
+        midi_engine->Run();
+    }
 
     state = PDJE_INPUT_STATE::INPUT_LOOP_RUNNING;
     return true;
@@ -133,7 +155,13 @@ PDJE_Input::Kill()
         critlog("the pdje input module state is broken...why?");
         return false;
     }
-    state = PDJE_INPUT_STATE::DEAD;
+    // reset datas.
+    midi_engine.reset();
+    input_buffer.reset();
+    Mproc.reset();
+    FLAG_INPUT_ON = false;
+    FLAG_MIDI_ON  = false;
+    state         = PDJE_INPUT_STATE::DEAD;
     return true;
 }
 
@@ -141,6 +169,12 @@ std::vector<DeviceData>
 PDJE_Input::GetDevs()
 {
     return Mproc->GetDevices();
+}
+
+std::vector<libremidi::input_port>
+PDJE_Input::GetMIDIDevs()
+{
+    return midi_engine->GetDevices();
 }
 
 PDJE_INPUT_STATE
@@ -153,6 +187,11 @@ PDJE_INPUT_DATA_LINE
 PDJE_Input::PullOutDataLine()
 {
     PDJE_INPUT_DATA_LINE line;
-    line.input_arena = &input_buffer.value();
-    return line;
+    if (FLAG_INPUT_ON) {
+        line.input_arena = &input_buffer.value();
+    }
+    if (FLAG_MIDI_ON) {
+        line.midi_datas = &midi_engine->evlog;
+    }
+    return line; // you should check nullptr before use.
 }

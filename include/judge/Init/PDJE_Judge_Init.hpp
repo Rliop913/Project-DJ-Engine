@@ -33,9 +33,8 @@ class PDJE_API Judge_Init {
     // rules
     std::optional<EVENT_RULE> ev_rule;
 
-    InputParser devparser;
-    // std::unordered_map<INPUT_RULE, INPUT_SETTING> dev_rules;
-    // RAILID_TO_OFFSET                              id_offset;
+    std::unordered_map<RAIL_META, RAIL_SETTINGS> railData;
+    std::unordered_map<DEV_ID, OFFSET>           offsetData;
 
     /** @brief Register an input device rule and its target rail/offset. */
     void

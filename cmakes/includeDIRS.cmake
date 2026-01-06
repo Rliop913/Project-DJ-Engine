@@ -68,6 +68,10 @@ ${PDJE_INCLUDE_ROOT}/include/judge
 ${PDJE_INCLUDE_ROOT}/include/judge/NoteOBJ
 ${PDJE_INCLUDE_ROOT}/include/judge/Init
 ${PDJE_INCLUDE_ROOT}/include/judge/Loop
+${PDJE_INCLUDE_ROOT}/include/judge/Loop/PreProcess
+${PDJE_INCLUDE_ROOT}/include/judge/Loop/Match
+
+
 ${PDJE_INCLUDE_ROOT}/include/judge/InputParser
 ${CAPNPC_OUTPUT_DIR}/third_party/Capnp
 )
@@ -140,6 +144,7 @@ endif()
 list(APPEND PDJE_INCLUDE_JUDGE
   ${PDJE_INCLUDE_IPC}
   ${PDJE_INCLUDE_GLOBAL}
+  ${PDJE_INCLUDE_ROOT}/include/input/midi
 )
 list(APPEND PDJE_INCLUDE_CORE
   ${PDJE_INCLUDE_GLOBAL}
@@ -151,4 +156,5 @@ list(APPEND PDJE_INCLUDE_INPUT_MAINPROC
 list(APPEND PDJE_INCLUDE_INPUT_SUBPROC
   ${PDJE_INCLUDE_IPC}
   ${PDJE_INCLUDE_GLOBAL}
+  ${PDJE_INCLUDE_ROOT}/include/input/midi
 )

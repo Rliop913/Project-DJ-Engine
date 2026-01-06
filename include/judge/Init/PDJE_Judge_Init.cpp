@@ -50,11 +50,11 @@ Judge_Init::SetRail(const DeviceData &devData,
     settings.Type               = devData.Type;
     OFFSET offset;
     offset.offset_microsecond = offset_microsecond;
-    if (devparser.railData.contains(meta)) {
+    if (railData.contains(meta)) {
         return;
     }
-    devparser.railData[meta]               = settings;
-    devparser.offsetData[meta.Device_Name] = offset;
+    railData[meta]               = settings;
+    offsetData[meta.Device_Name] = offset;
 }
 
 void
@@ -86,7 +86,7 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
                                 const uint64_t           railID)
 {
 
-    if (devparser.railData.empty()) {
+    if (railData.empty()) {
         return;
     }
     if (!note_objects.has_value()) {
@@ -105,7 +105,7 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
     tempobj.microsecond = micro_Y1;
 
     PDJE_Dev_Type val;
-    for (const auto &k : devparser.railData) {
+    for (const auto &k : railData) {
         if (k.second.MatchRail == railID) {
             if (k.first.Device_Name == "") {
                 return;
