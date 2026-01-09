@@ -70,6 +70,8 @@ ${PDJE_INCLUDE_ROOT}/include/judge/Init
 ${PDJE_INCLUDE_ROOT}/include/judge/Loop
 ${PDJE_INCLUDE_ROOT}/include/judge/Loop/PreProcess
 ${PDJE_INCLUDE_ROOT}/include/judge/Loop/Match
+${PDJE_INCLUDE_ROOT}/include/judge/AxisModel
+
 
 
 ${PDJE_INCLUDE_ROOT}/include/judge/InputParser
@@ -145,6 +147,8 @@ list(APPEND PDJE_INCLUDE_JUDGE
   ${PDJE_INCLUDE_IPC}
   ${PDJE_INCLUDE_GLOBAL}
   ${PDJE_INCLUDE_ROOT}/include/input/midi
+  
+  
 )
 list(APPEND PDJE_INCLUDE_CORE
   ${PDJE_INCLUDE_GLOBAL}

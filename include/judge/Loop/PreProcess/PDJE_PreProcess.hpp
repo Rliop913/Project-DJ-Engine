@@ -3,6 +3,7 @@
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Judge_Init.hpp"
 #include "PDJE_Judge_Loop_Structs.hpp"
+#include "PDJE_RAIL.hpp"
 #include "PDJE_SYNC_CORE.hpp"
 namespace PDJE_JUDGE {
 

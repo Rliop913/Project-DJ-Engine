@@ -46,8 +46,7 @@ Judge_Loop::loop()
         }
         if (init_datas->inputline->midi_datas) {
             for (const auto &midi_ev : pre.parsed_res.midi_logs) {
-                // do something
-                // todo - impl here.
+                match.UseEvent(midi_ev);
             }
         }
         WBCH("judge loop tail")

@@ -1,11 +1,38 @@
 #include "PDJE_Judge_Loop.hpp"
 
-// namespace PDJE_JUDGE {
+namespace PDJE_JUDGE {
 
-// template <>
-// void
-// Judge_Loop::UseEvent<PDJE_Dev_Type::MIDI>(const PDJE_Input_Log &ilog)
-// {
-//     // todo - impl
-// }
-// }; // namespace PDJE_JUDGE
+void
+Match::UseEvent(const PDJE_MIDI::MIDI_EV &ilog)
+{
+
+    switch (ilog.type) {
+    case static_cast<uint8_t>(libremidi::message_type::NOTE_ON): {
+
+    } break;
+
+    case static_cast<uint8_t>(libremidi::message_type::NOTE_OFF): {
+
+    } break;
+
+    case static_cast<uint8_t>(libremidi::message_type::CONTROL_CHANGE): {
+
+    } break;
+
+    case static_cast<uint8_t>(libremidi::message_type::PITCH_BEND): {
+
+    } break;
+
+    case static_cast<uint8_t>(libremidi::message_type::AFTERTOUCH): {
+
+    } break;
+
+    case static_cast<uint8_t>(libremidi::message_type::POLY_PRESSURE): {
+
+    } break;
+
+    default:
+        break;
+    }
+}
+}; // namespace PDJE_JUDGE

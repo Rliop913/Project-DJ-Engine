@@ -2,7 +2,7 @@
 
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Note_OBJ.hpp"
-#include "PDJE_Rule.hpp"
+#include "PDJE_RAIL.hpp"
 #include <cstdint>
 #include <unordered_map>
 #include <vector>
@@ -20,9 +20,7 @@ struct PARSE_OUT {
 };
 
 static void
-Parse(PARSE_OUT                                &out,
-      const std::unordered_map<DEV_ID, OFFSET> &offsetData,
-      const INPUT_RAW                          &raw)
+Parse(PARSE_OUT &out, const RAIL_DB &raildb, const INPUT_RAW &raw)
 {
     out.logs.clear();
     out.logs.reserve(raw.size());
@@ -32,12 +30,15 @@ Parse(PARSE_OUT                                &out,
 
     int64_t     off;
     std::string offsetkey;
+
     for (const auto &rawp : raw) {
+
         offsetkey.assign(rawp.id, rawp.id_len);
 
-        auto it = offsetData.find(offsetkey);
-        if (it != offsetData.end()) {
-            off = it->second.offset_microsecond;
+        auto it = raildb.offset.find(offsetkey);
+        if (it != raildb.offset.end()) {
+
+            off = it->second;
         } else {
             off = 0;
         }
@@ -55,9 +56,7 @@ Parse(PARSE_OUT                                &out,
 }
 
 static void
-Parse(PARSE_OUT                                &out,
-      const std::unordered_map<DEV_ID, OFFSET> &offsetData,
-      const MIDI_RAW                           &midi_raw)
+Parse(PARSE_OUT &out, const RAIL_DB &raildb, const MIDI_RAW &midi_raw)
 {
     out.midi_logs.clear();
     out.midi_logs.reserve(midi_raw.size());
@@ -67,10 +66,11 @@ Parse(PARSE_OUT                                &out,
     int64_t     off;
     std::string offsetkey;
     for (const auto &rawp : midi_raw) {
+
         offsetkey.assign(rawp.port_name, rawp.port_name_len);
-        auto it = offsetData.find(offsetkey);
-        if (it != offsetData.end()) {
-            off = it->second.offset_microsecond;
+        auto it = raildb.offset.find(offsetkey);
+        if (it != raildb.offset.end()) {
+            off = it->second;
         } else {
             off = 0;
         }
@@ -87,15 +87,4 @@ Parse(PARSE_OUT                                &out,
     return;
 }
 
-// class InputParser {
-//   private:
-//     PARSE_OUT outCache;
-
-//   public:
-//     PARSE_OUT *
-//     Parse(const INPUT_RAW &raw);
-//     InputParser() = default;
-
-//     ~InputParser() = default;
-// };
 } // namespace PDJE_JUDGE

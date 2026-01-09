@@ -4,6 +4,9 @@
 #include "PDJE_Rule.hpp"
 #include <cstdint>
 
+template <class T, class U>
+concept DecaysTo = std::same_as<std::decay_t<T>, U>;
+
 namespace PDJE_JUDGE {
 
 void
@@ -28,7 +31,24 @@ Judge_Init::SetInputLine(const PDJE_INPUT_DATA_LINE &_inputline)
         inputline = _inputline;
     }
 }
-
+void
+Judge_Init::SetRail(const libremidi::input_port &midi_port,
+                    const uint64_t               MatchRail,
+                    const uint8_t                type,
+                    const uint8_t                ch,
+                    const uint8_t                pos,
+                    const int64_t                offset_microsecond)
+{
+    RAIL_KEY::MIDI key;
+    key.port_name = midi_port.port_name;
+    if (key.port_name.size() > 255) {
+        key.port_name = std::string(key.port_name, 255);
+    }
+    key.ch   = ch;
+    key.pos  = pos;
+    key.type = type;
+    raildb.Add(key, MatchRail, offset_microsecond);
+}
 void
 Judge_Init::SetRail(const DeviceData &devData,
                     const BITMASK     DeviceKey,
@@ -38,23 +58,13 @@ Judge_Init::SetRail(const DeviceData &devData,
     if (devData.Type == PDJE_Dev_Type::UNKNOWN) {
         return;
     }
-    RAIL_META meta;
-    meta.Device_Name = devData.Name;
-    if (meta.Device_Name.size() > 255) {
-        meta.Device_Name = std::string(meta.Device_Name, 255);
+    RAIL_KEY::KB_MOUSE key;
+    key.Device_Name = devData.Name;
+    if (key.Device_Name.size() > 255) {
+        key.Device_Name = std::string(key.Device_Name, 255);
     }
-    meta.DeviceKey = DeviceKey;
-    RAIL_SETTINGS settings;
-    settings.MatchRail          = MatchRail;
-    settings.offset_microsecond = offset_microsecond;
-    settings.Type               = devData.Type;
-    OFFSET offset;
-    offset.offset_microsecond = offset_microsecond;
-    if (railData.contains(meta)) {
-        return;
-    }
-    railData[meta]               = settings;
-    offsetData[meta.Device_Name] = offset;
+    key.DeviceKey = DeviceKey;
+    raildb.Add(key, devData.Type, MatchRail, offset_microsecond);
 }
 
 void
@@ -86,7 +96,7 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
                                 const uint64_t           railID)
 {
 
-    if (railData.empty()) {
+    if (raildb.Empty()) {
         return;
     }
     if (!note_objects.has_value()) {
@@ -104,38 +114,43 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
     LOCAL_TIME micro_Y2 = Convert_Frame_Into_MicroSecond(Y_Axis_2);
     tempobj.microsecond = micro_Y1;
 
-    PDJE_Dev_Type val;
-    for (const auto &k : railData) {
-        if (k.second.MatchRail == railID) {
-            if (k.first.Device_Name == "") {
-                return;
+    auto res = raildb.GetMETA(railID);
+    if (!res) {
+        return;
+    }
+    std::visit(
+
+        [this, &tempobj, &railID, &micro_Y1, &micro_Y2](const auto &t) {
+            if constexpr (DecaysTo<decltype(t), PDJE_Dev_Type>) {
+                switch (t) {
+                case PDJE_Dev_Type::KEYBOARD:
+                    DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
+
+                    break;
+                case PDJE_Dev_Type::MOUSE:
+                    if (tempobj.type == "AXIS") { // axis type
+                        tempobj.isDown = false;
+                        note_objects->Fill<BUFFER_SUB>(tempobj, railID);
+                    } else {
+                        DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
+                    }
+                    break;
+                case PDJE_Dev_Type::MIDI:
+                    DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
+                    break;
+                case PDJE_Dev_Type::HID:
+                    DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
+                    break;
+
+                default:
+                    break;
+                }
+            } else if constexpr (DecaysTo<decltype(t), uint8_t>) {
+
+            } else {
             }
-            val = k.second.Type;
-        }
-    }
-
-    switch (val) {
-    case PDJE_Dev_Type::KEYBOARD:
-        DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-
-        break;
-    case PDJE_Dev_Type::MOUSE:
-        if (tempobj.type == "AXIS") { // axis type
-            tempobj.isDown = false;
-            note_objects->Fill<BUFFER_SUB>(tempobj, railID);
-        } else {
-            DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-        }
-        break;
-    case PDJE_Dev_Type::MIDI:
-        DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-        break;
-    case PDJE_Dev_Type::HID:
-        DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-        break;
-
-    default:
-        break;
-    }
+        },
+        res->front().type); // fix here. id에 여러 디바이스가 연결될 수
+                            // 있음. 이거 예외처리 필요.
 }
 }; // namespace PDJE_JUDGE

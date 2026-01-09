@@ -7,12 +7,11 @@ PreProcess::GetDatas()
 {
     if (init->inputline->input_arena) {
         init->inputline->input_arena->Receive();
-        Parse(
-            parsed_res, init->offsetData, init->inputline->input_arena->datas);
+        Parse(parsed_res, init->raildb, init->inputline->input_arena->datas);
     }
     if (init->inputline->midi_datas) {
         auto got = init->inputline->midi_datas->Get();
-        Parse(parsed_res, init->offsetData, *got);
+        Parse(parsed_res, init->raildb, *got);
     }
     if ((parsed_res.logs.empty() || init->inputline->input_arena == nullptr) &&
         (parsed_res.midi_logs.empty() ||

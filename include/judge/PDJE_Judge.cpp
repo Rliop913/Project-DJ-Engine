@@ -36,7 +36,7 @@ JUDGE::Start()
                 "check again.");
         return JUDGE_STATUS::EVENT_RULE_IS_EMPTY;
     }
-    if (inits.railData.empty()) {
+    if (inits.raildb.Empty()) {
         warnlog("failed to start pdje judge module. no input device added. you "
                 "should connect input device. check SetInputRule function.");
         return JUDGE_STATUS::INPUT_RULE_IS_EMPTY;
@@ -69,8 +69,9 @@ JUDGE::End()
     inits.inputline.reset();
     inits.note_objects.reset();
     inits.ev_rule.reset();
-    inits.offsetData.clear();
-    inits.railData.clear();
+    inits.raildb.Clear();
+    // inits.offsetData.clear();
+    // inits.railData.clear();
 }
 
 }; // namespace PDJE_JUDGE
