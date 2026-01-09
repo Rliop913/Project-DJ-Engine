@@ -45,9 +45,6 @@ TXRXListener::ListDev()
         case RIM_TYPEKEYBOARD:
             tempdata.Type = PDJE_Dev_Type::KEYBOARD;
             break;
-        case RIM_TYPEHID:
-            tempdata.Type = PDJE_Dev_Type::HID;
-            break;
         default:
             tempdata.Type = PDJE_Dev_Type::UNKNOWN;
             break;
@@ -69,14 +66,6 @@ TXRXListener::ListDev()
             break;
         case PDJE_Dev_Type::MOUSE:
             kv["type"] = "MOUSE";
-            nj["body"].push_back(kv);
-            break;
-        case PDJE_Dev_Type::MIDI:
-            kv["type"] = "MIDI";
-            nj["body"].push_back(kv);
-            break;
-        case PDJE_Dev_Type::HID:
-            kv["type"] = "HID";
             nj["body"].push_back(kv);
             break;
         default:
@@ -109,7 +98,6 @@ TXRXListener::LoopTrig()
     std::vector<RAWINPUTDEVICE> devTypes;
     bool                        hasKeyBoard = false;
     bool                        hasMouse    = false;
-    bool                        hasHID      = false;
     for (const auto &dev : configed_devices) {
         switch (dev.Type) {
         case PDJE_Dev_Type::MOUSE:
@@ -117,9 +105,6 @@ TXRXListener::LoopTrig()
             break;
         case PDJE_Dev_Type::KEYBOARD:
             hasKeyBoard = true;
-            break;
-        case PDJE_Dev_Type::HID:
-            hasHID = true;
             break;
         default:
             break;
@@ -136,12 +121,6 @@ TXRXListener::LoopTrig()
     if (hasMouse) {
         auto temp = RAWINPUTDEVICE{
             0x01, 0x02, RIDEV_INPUTSINK | RIDEV_NOLEGACY, msgOnly
-        };
-        devTypes.push_back(temp);
-    }
-    if (hasHID) {
-        auto temp = RAWINPUTDEVICE{
-            0x0C, 0x01, RIDEV_INPUTSINK | RIDEV_NOLEGACY, msgOnly
         };
         devTypes.push_back(temp);
     }

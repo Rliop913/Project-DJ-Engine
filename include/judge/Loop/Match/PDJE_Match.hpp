@@ -22,9 +22,6 @@ class Match {
          const uint64_t    railid,
          const bool        isPressed);
 
-    // std::optional<uint64_t>
-    // QueryRailid(const RAIL_META &meta);
-
     template <PDJE_Dev_Type D>
     /** @brief Handle a single input log entry for the given device type. */
     void

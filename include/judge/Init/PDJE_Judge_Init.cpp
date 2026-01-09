@@ -125,28 +125,37 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
                 switch (t) {
                 case PDJE_Dev_Type::KEYBOARD:
                     DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-
                     break;
                 case PDJE_Dev_Type::MOUSE:
                     if (tempobj.type == "AXIS") { // axis type
                         tempobj.isDown = false;
                         note_objects->Fill<BUFFER_SUB>(tempobj, railID);
+                        // Use Axis Model Here.
                     } else {
                         DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
                     }
                     break;
-                case PDJE_Dev_Type::MIDI:
-                    DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-                    break;
-                case PDJE_Dev_Type::HID:
-                    DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-                    break;
-
                 default:
                     break;
                 }
             } else if constexpr (DecaysTo<decltype(t), uint8_t>) {
-
+                switch (t) {
+                case static_cast<uint8_t>(libremidi::message_type::NOTE_ON):
+                    [[fallthrough]];
+                case static_cast<uint8_t>(libremidi::message_type::NOTE_OFF):
+                    DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
+                    break;
+                case static_cast<uint8_t>(
+                    libremidi::message_type::CONTROL_CHANGE):
+                    [[fallthrough]];
+                case static_cast<uint8_t>(libremidi::message_type::PITCH_BEND):
+                    // Use Axis Model Here.
+                    break;
+                default:
+                    // case libremidi::message_type::AFTERTOUCH:
+                    // case libremidi::message_type::POLY_PRESSURE:
+                    break; // discard others.
+                }
             } else {
             }
         },

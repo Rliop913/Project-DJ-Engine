@@ -70,8 +70,6 @@ JUDGE::End()
     inits.note_objects.reset();
     inits.ev_rule.reset();
     inits.raildb.Clear();
-    // inits.offsetData.clear();
-    // inits.railData.clear();
 }
 
 }; // namespace PDJE_JUDGE

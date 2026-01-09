@@ -38,9 +38,6 @@ main()
             std::cout << "type: keyboard" << std::endl;
             set_targets.push_back(i);
             break;
-        case PDJE_Dev_Type::HID:
-            std::cout << "type: hid" << std::endl;
-            break;
         case PDJE_Dev_Type::UNKNOWN:
             std::cout << "type: unknown" << std::endl;
             break;

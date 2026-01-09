@@ -114,11 +114,6 @@ TXRXListener::Run()
                         }
 
                         break;
-                    case RIM_TYPEHID:
-                        dtype = PDJE_Dev_Type::HID;
-                        PDJE_RAWINPUT::FillHIDInput(
-                            hidEv.hid_buffer, ri, hidEv.hid_byte_size);
-                        break;
                     default:
                         dtype = PDJE_Dev_Type::UNKNOWN;
                         break;

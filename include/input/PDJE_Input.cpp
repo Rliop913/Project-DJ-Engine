@@ -82,14 +82,7 @@ PDJE_Input::Config(std::vector<DeviceData>                  &devs,
                     kv["type"] = "MOUSE";
                     nj["body"].push_back(kv);
                     break;
-                case PDJE_Dev_Type::MIDI:
-                    kv["type"] = "MIDI";
-                    nj["body"].push_back(kv);
-                    break;
-                case PDJE_Dev_Type::HID:
-                    kv["type"] = "HID";
-                    nj["body"].push_back(kv);
-                    break;
+
                 default:
                     break;
                 }

@@ -23,14 +23,6 @@ Match::UseEvent(const PDJE_MIDI::MIDI_EV &ilog)
 
     } break;
 
-    case static_cast<uint8_t>(libremidi::message_type::AFTERTOUCH): {
-
-    } break;
-
-    case static_cast<uint8_t>(libremidi::message_type::POLY_PRESSURE): {
-
-    } break;
-
     default:
         break;
     }
