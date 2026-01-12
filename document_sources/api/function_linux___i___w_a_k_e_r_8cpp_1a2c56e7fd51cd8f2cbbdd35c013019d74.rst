@@ -3,7 +3,7 @@
 Function futex_wake(int \*)
 ===========================
 
-- Defined in :ref:`file_core_include_tests_INPUT_TESTS_linux_I_WAKER.cpp`
+- Defined in :ref:`file_include_tests_INPUT_TESTS_linux_I_WAKER.cpp`
 
 
 Function Documentation

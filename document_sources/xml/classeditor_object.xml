@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="42" column="24" bodyfile="core_include/MainObjects/editorObject/editorObject.hpp" bodystart="42" bodyend="-1"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="43" column="19" bodyfile="include/core/MainObjects/editorObject/editorObject.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classeditor_object_1a9409f6aef52b2cb8a361674da49b97e1" prot="private" static="no" mutable="no">
         <type>fs::path</type>
@@ -30,126 +30,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="43" column="32" bodyfile="core_include/MainObjects/editorObject/editorObject.hpp" bodystart="43" bodyend="-1"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="44" column="27" bodyfile="include/core/MainObjects/editorObject/editorObject.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classeditor_object_1a3172e809911096988531fc5228f7055e" prot="private" static="no" mutable="no">
-        <type>fs::path</type>
-        <definition>fs::path editorObject::mixFilePath</definition>
+      <memberdef kind="variable" id="classeditor_object_1aca8ec314359534bb4739dea7059b85c1" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="class_p_d_j_e___editor" kindref="compound">PDJE_Editor</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;PDJE_Editor&gt; editorObject::edit_core</definition>
         <argsstring></argsstring>
-        <name>mixFilePath</name>
-        <qualifiedname>editorObject::mixFilePath</qualifiedname>
+        <name>edit_core</name>
+        <qualifiedname>editorObject::edit_core</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="44" column="32" bodyfile="core_include/MainObjects/editorObject/editorObject.hpp" bodystart="44" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classeditor_object_1abeaedacd9b6d9e2fb61772aa348431b1" prot="private" static="no" mutable="no">
-        <type>fs::path</type>
-        <definition>fs::path editorObject::noteFilePath</definition>
-        <argsstring></argsstring>
-        <name>noteFilePath</name>
-        <qualifiedname>editorObject::noteFilePath</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="45" column="32" bodyfile="core_include/MainObjects/editorObject/editorObject.hpp" bodystart="45" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classeditor_object_1a1a72aaa0a758b9c32f2bcd603a607f3c" prot="private" static="no" mutable="no">
-        <type>fs::path</type>
-        <definition>fs::path editorObject::kvFilePath</definition>
-        <argsstring></argsstring>
-        <name>kvFilePath</name>
-        <qualifiedname>editorObject::kvFilePath</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="46" column="32" bodyfile="core_include/MainObjects/editorObject/editorObject.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classeditor_object_1a76050465d4780555d62af1f9faee05e7" prot="private" static="no" mutable="no">
-        <type>fs::path</type>
-        <definition>fs::path editorObject::musicFileRootPath</definition>
-        <argsstring></argsstring>
-        <name>musicFileRootPath</name>
-        <qualifiedname>editorObject::musicFileRootPath</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="47" column="32" bodyfile="core_include/MainObjects/editorObject/editorObject.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="classeditor_object_1a23655580a822a7ae6c96ece123f0574d" prot="private" static="no" mutable="no">
-        <type>std::optional&lt; <ref refid="class_p_d_j_e___editor" kindref="compound">PDJE_Editor</ref> &gt;</type>
-        <definition>std::optional&lt;PDJE_Editor&gt; editorObject::E_obj</definition>
-        <argsstring></argsstring>
-        <name>E_obj</name>
-        <qualifiedname>editorObject::E_obj</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="48" column="19" bodyfile="core_include/MainObjects/editorObject/editorObject.hpp" bodystart="48" bodyend="-1"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="49" column="21" bodyfile="include/core/MainObjects/editorObject/editorObject.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
-      <memberdef kind="function" id="classeditor_object_1a70ea370646618a4ac7bd3d3ef50abc7d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename EDIT_ARG_TYPE</type>
-          </param>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::DefaultSaveFunction</definition>
-        <argsstring>()</argsstring>
-        <name>DefaultSaveFunction</name>
-        <qualifiedname>editorObject::DefaultSaveFunction</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="52" column="5"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1aad816e22a3a63d00cb319bf4d985d950" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename EDIT_ARG_TYPE</type>
-          </param>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::DefaultSaveFunction</definition>
-        <argsstring>(PDJE_Editor::MusicHandleStruct &amp;i, const EDIT_ARG_MUSIC &amp;obj)</argsstring>
-        <name>DefaultSaveFunction</name>
-        <qualifiedname>editorObject::DefaultSaveFunction</qualifiedname>
-        <param>
-          <type><ref refid="struct_p_d_j_e___editor_1_1_music_handle_struct" kindref="compound">PDJE_Editor::MusicHandleStruct</ref> &amp;</type>
-          <declname>i</declname>
-        </param>
-        <param>
-          <type>const <ref refid="struct_e_d_i_t___a_r_g___m_u_s_i_c" kindref="compound">EDIT_ARG_MUSIC</ref> &amp;</type>
-          <declname>obj</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="56" column="5"/>
-      </memberdef>
       <memberdef kind="function" id="classeditor_object_1a3bb22fbeed9a7e1516f3ab6461698f0b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structtrackdata" kindref="compound">trackdata</ref></type>
         <definition>trackdata editorObject::makeTrackData</definition>
@@ -170,239 +68,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="60" column="5" bodyfile="core_include/MainObjects/editorObject/editorObject.cpp" bodystart="8" bodyend="39"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1afdb9406f4e2aae843f1de7921be5f796" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::DefaultSaveFunction</definition>
-        <argsstring>()</argsstring>
-        <name>DefaultSaveFunction</name>
-        <qualifiedname>editorObject::DefaultSaveFunction</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/commonfunction.cpp" line="4" column="2" bodyfile="core_include/MainObjects/editorObject/commonfunction.cpp" bodystart="5" bodyend="21"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1afdb9406f4e2aae843f1de7921be5f796" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::DefaultSaveFunction</definition>
-        <argsstring>()</argsstring>
-        <name>DefaultSaveFunction</name>
-        <qualifiedname>editorObject::DefaultSaveFunction</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/commonfunction.cpp" line="24" column="2" bodyfile="core_include/MainObjects/editorObject/commonfunction.cpp" bodystart="25" bodyend="41"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1afdb9406f4e2aae843f1de7921be5f796" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::DefaultSaveFunction</definition>
-        <argsstring>()</argsstring>
-        <name>DefaultSaveFunction</name>
-        <qualifiedname>editorObject::DefaultSaveFunction</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/commonfunction.cpp" line="44" column="2" bodyfile="core_include/MainObjects/editorObject/commonfunction.cpp" bodystart="45" bodyend="60"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a785b7a8cdc22a9c424f5f79b6b031e88" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::DefaultSaveFunction</definition>
-        <argsstring>(PDJE_Editor::MusicHandleStruct &amp;i, const EDIT_ARG_MUSIC &amp;obj)</argsstring>
-        <name>DefaultSaveFunction</name>
-        <qualifiedname>editorObject::DefaultSaveFunction</qualifiedname>
-        <param>
-          <type><ref refid="struct_p_d_j_e___editor_1_1_music_handle_struct" kindref="compound">PDJE_Editor::MusicHandleStruct</ref> &amp;</type>
-          <declname>i</declname>
-        </param>
-        <param>
-          <type>const <ref refid="struct_e_d_i_t___a_r_g___m_u_s_i_c" kindref="compound">EDIT_ARG_MUSIC</ref> &amp;</type>
-          <declname>obj</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/commonfunction.cpp" line="63" column="2" bodyfile="core_include/MainObjects/editorObject/commonfunction.cpp" bodystart="64" bodyend="94"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1afdb9406f4e2aae843f1de7921be5f796" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::DefaultSaveFunction</definition>
-        <argsstring>()</argsstring>
-        <name>DefaultSaveFunction</name>
-        <qualifiedname>editorObject::DefaultSaveFunction</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="396" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1afdb9406f4e2aae843f1de7921be5f796" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::DefaultSaveFunction</definition>
-        <argsstring>()</argsstring>
-        <name>DefaultSaveFunction</name>
-        <qualifiedname>editorObject::DefaultSaveFunction</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="399" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1afdb9406f4e2aae843f1de7921be5f796" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::DefaultSaveFunction</definition>
-        <argsstring>()</argsstring>
-        <name>DefaultSaveFunction</name>
-        <qualifiedname>editorObject::DefaultSaveFunction</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="402" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a785b7a8cdc22a9c424f5f79b6b031e88" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::DefaultSaveFunction</definition>
-        <argsstring>(PDJE_Editor::MusicHandleStruct &amp;i, const EDIT_ARG_MUSIC &amp;obj)</argsstring>
-        <name>DefaultSaveFunction</name>
-        <qualifiedname>editorObject::DefaultSaveFunction</qualifiedname>
-        <param>
-          <type><ref refid="struct_p_d_j_e___editor_1_1_music_handle_struct" kindref="compound">PDJE_Editor::MusicHandleStruct</ref> &amp;</type>
-          <declname>i</declname>
-        </param>
-        <param>
-          <type>const <ref refid="struct_e_d_i_t___a_r_g___m_u_s_i_c" kindref="compound">EDIT_ARG_MUSIC</ref> &amp;</type>
-          <declname>obj</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="405" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="52" column="5" bodyfile="include/core/MainObjects/editorObject/editorObject.cpp" bodystart="11" bodyend="42"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classeditor_object_1ae5300f1a0b6d39b6fb1e6c79d2bcc91d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>git_repository *</type>
-        <definition>git_repository * editorObject::getMixRepo</definition>
-        <argsstring>()</argsstring>
-        <name>getMixRepo</name>
-        <qualifiedname>editorObject::getMixRepo</qualifiedname>
-        <briefdescription>
-<para>Gets the Git repository for the mix data. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>A pointer to the Git repository, or <computeroutput>nullptr</computeroutput> if not available. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="68" column="5" bodyfile="core_include/MainObjects/editorObject/editorObject.hpp" bodystart="68" bodyend="74"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1ad4983a3abef2c8acadc325f26a6128d6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>git_repository *</type>
-        <definition>git_repository * editorObject::getMusicRepo</definition>
-        <argsstring>(const UNSANITIZED &amp;Title)</argsstring>
-        <name>getMusicRepo</name>
-        <qualifiedname>editorObject::getMusicRepo</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
-          <declname>Title</declname>
-        </param>
-        <briefdescription>
-<para>Gets the Git repository for a specific music entry. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>Title</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The unsanitized title of the music. </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>A pointer to the Git repository, or <computeroutput>nullptr</computeroutput> if not found. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="82" column="5" bodyfile="core_include/MainObjects/editorObject/editorObject.hpp" bodystart="82" bodyend="96"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a3bd541d0ff2a00541fad343c31742c71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>git_repository *</type>
-        <definition>git_repository * editorObject::getNoteRepo</definition>
-        <argsstring>()</argsstring>
-        <name>getNoteRepo</name>
-        <qualifiedname>editorObject::getNoteRepo</qualifiedname>
-        <briefdescription>
-<para>Gets the Git repository for the note data. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>A pointer to the Git repository, or <computeroutput>nullptr</computeroutput> if not available. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="103" column="5" bodyfile="core_include/MainObjects/editorObject/editorObject.hpp" bodystart="103" bodyend="109"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a7276d008fdf2ce71165d9f8f8332317d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>git_repository *</type>
-        <definition>git_repository * editorObject::getKVRepo</definition>
-        <argsstring>()</argsstring>
-        <name>getKVRepo</name>
-        <qualifiedname>editorObject::getKVRepo</qualifiedname>
-        <briefdescription>
-<para>Gets the Git repository for the key-value data. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>A pointer to the Git repository, or <computeroutput>nullptr</computeroutput> if not available. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="116" column="5" bodyfile="core_include/MainObjects/editorObject/editorObject.hpp" bodystart="116" bodyend="122"/>
-      </memberdef>
       <memberdef kind="function" id="classeditor_object_1a77eaf52d8c470aadb9af3f3140e6beee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -446,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="132" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="63" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a9162179d7a90217496e990ed631a79e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -489,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="141" column="5" bodyfile="core_include/MainObjects/editorObject/addline.cpp" bodystart="96" bodyend="116"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="72" column="5" bodyfile="include/core/MainObjects/editorObject/addline.cpp" bodystart="100" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1acec5f49ab4cc77cd842d4eaf1a25ff87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -544,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="151" column="5" bodyfile="core_include/MainObjects/editorObject/deleteline.cpp" bodystart="4" bodyend="16"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="82" column="5" bodyfile="include/core/MainObjects/editorObject/deleteline.cpp" bodystart="6" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a74c726d83f0402fa3df6f74ac501dfea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -589,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="161" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="92" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a40875c244c49f43d99238e7302b90927" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -636,7 +305,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="170" column="5" bodyfile="core_include/MainObjects/editorObject/render.cpp" bodystart="7" bodyend="83"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="101" column="5" bodyfile="include/core/MainObjects/editorObject/render.cpp" bodystart="8" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a394a200d5cf41ec74152c799d17b35e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -689,7 +358,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="181" column="5" bodyfile="core_include/MainObjects/editorObject/editorObject.cpp" bodystart="42" bodyend="67"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="112" column="5" bodyfile="include/core/MainObjects/editorObject/editorObject.cpp" bodystart="45" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ae4f8059616e377582bade705a44aafb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -732,7 +401,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="192" column="5" bodyfile="core_include/MainObjects/editorObject/editorObject.cpp" bodystart="168" bodyend="201"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="123" column="5" bodyfile="include/core/MainObjects/editorObject/editorObject.cpp" bodystart="159" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a634c551a93f376650075d82dcbe1ffd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -787,7 +456,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="202" column="5" bodyfile="core_include/MainObjects/editorObject/editorObject.cpp" bodystart="204" bodyend="289"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="133" column="5" bodyfile="include/core/MainObjects/editorObject/editorObject.cpp" bodystart="195" bodyend="280"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a720a623f570f5fbeafb28e812a127938" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -830,7 +499,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="213" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="144" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1af807921cf49ccaa0d561badcb5348087" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -862,7 +531,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="222" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="153" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a70a6c28f2ad7b19ff50427f14378291a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -907,7 +576,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="232" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="163" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ae24df06774592614acbfb17701f4e2e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -939,7 +608,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="241" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="172" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a2987ce88cb1d9a435871f80398a76e63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -984,9 +653,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="251" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="182" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1ad9b0dfe188373cfe8b0605cfcbba2093" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1a84559e84b00ecd409b49a320e822a971" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename EDIT_ARG_TYPE</type>
@@ -994,13 +663,9 @@
         </templateparamlist>
         <type>bool</type>
         <definition>bool editorObject::Go</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName, const DONT_SANITIZE &amp;commitOID)</argsstring>
+        <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
         <qualifiedname>editorObject::Go</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
         <param>
           <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -1041,7 +706,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="262" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="193" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a360e0000f965db643a0127f7240a425a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1073,7 +738,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="271" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="202" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a994b27da4e10c21758c374d77b638cad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1118,16 +783,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="281" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="212" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1af72d99c3cb239afe1f633ad592327ae7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1a9ec91b5c9aec96545b0b129146b09efd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename EDIT_ARG_TYPE</type>
           </param>
         </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
+        <type>void</type>
+        <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
         <qualifiedname>editorObject::UpdateLog</qualifiedname>
@@ -1150,71 +815,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="290" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="221" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a551a8f7e02b6d1723a8699af450daa79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename EDIT_ARG_TYPE</type>
-          </param>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName)</argsstring>
-        <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
+      <memberdef kind="function" id="classeditor_object_1aa664471474287d500e65d09f08f61001" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="json_wrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" kindref="member">nj</ref> &amp;</type>
+        <definition>nj &amp; editorObject::operator[]</definition>
+        <argsstring>(const DONT_SANITIZE &amp;key)</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>editorObject::operator[]</qualifiedname>
         <param>
           <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
-        <briefdescription>
-<para>Updates the commit log for a specific branch. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="templateparam"><parameteritem>
-<parameternamelist>
-<parametername>EDIT_ARG_TYPE</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The type of data to update the log for. </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>branchName</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The name of the branch to update. </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para><computeroutput>true</computeroutput> if the update was successful, <computeroutput>false</computeroutput> otherwise. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="300" column="5"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a28dc3aa435512e4ad16ad0f821c64907" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename EDIT_ARG_TYPE</type>
-          </param>
-        </templateparamlist>
-        <type><ref refid="struct_diff_result" kindref="compound">DiffResult</ref></type>
-        <definition>DiffResult editorObject::GetDiff</definition>
-        <argsstring>(const gitwrap::commit &amp;oldTimeStamp, const gitwrap::commit &amp;newTimeStamp)</argsstring>
-        <name>GetDiff</name>
-        <qualifiedname>editorObject::GetDiff</qualifiedname>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>oldTimeStamp</declname>
-        </param>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>newTimeStamp</declname>
+          <declname>key</declname>
         </param>
         <briefdescription>
 <para>Gets the diff between two timestamps. </para>
@@ -1246,29 +857,9 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A <computeroutput><ref refid="struct_diff_result" kindref="compound">DiffResult</ref></computeroutput> object containing the diff. </para>
+<simplesect kind="return"><para>A <computeroutput>DiffResult</computeroutput> object containing the diff.</para>
 </simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="311" column="5"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1aa664471474287d500e65d09f08f61001" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="json_wrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" kindref="member">nj</ref> &amp;</type>
-        <definition>nj &amp; editorObject::operator[]</definition>
-        <argsstring>(const DONT_SANITIZE &amp;key)</argsstring>
-        <name>operator[]</name>
-        <qualifiedname>editorObject::operator[]</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>key</declname>
-        </param>
-        <briefdescription>
-<para>Provides access to the underlying JSON data for key-value pairs. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
+Provides access to the underlying JSON data for key-value pairs. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>key</parametername>
 </parameternamelist>
@@ -1283,7 +874,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="320" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="241" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a9e14b13d0a93115510856587e3d0b597" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref></type>
@@ -1303,7 +894,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="328" column="5" bodyfile="core_include/MainObjects/editorObject/editorObject.cpp" bodystart="70" bodyend="87"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="249" column="5" bodyfile="include/core/MainObjects/editorObject/editorObject.cpp" bodystart="80" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a3ec9d3ccf73457ee3067cd3f47ac23c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1371,17 +962,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="339" column="5" bodyfile="core_include/MainObjects/editorObject/editorObject.cpp" bodystart="90" bodyend="152"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="260" column="5" bodyfile="include/core/MainObjects/editorObject/editorObject.cpp" bodystart="101" bodyend="143"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1adb7115154add6c06baf9c4e090977d24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1aa921e7a13cc65917ae9efe90646878c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool editorObject::Open</definition>
-        <argsstring>(const fs::path &amp;projectPath)</argsstring>
+        <argsstring>(const fs::path &amp;projectPath, const DONT_SANITIZE &amp;auth_name, const DONT_SANITIZE &amp;auth_email)</argsstring>
         <name>Open</name>
         <qualifiedname>editorObject::Open</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>projectPath</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>auth_name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>auth_email</declname>
         </param>
         <briefdescription>
 <para>Opens an existing editor project. if <ref refid="class_p_d_j_e" kindref="compound">PDJE</ref> called InitEditor, you don&apos;t need to call this again. </para>
@@ -1402,62 +1001,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="351" column="5" bodyfile="core_include/MainObjects/editorObject/editorObject.cpp" bodystart="155" bodyend="165"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="272" column="5" bodyfile="include/core/MainObjects/editorObject/editorObject.cpp" bodystart="146" bodyend="156"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a690ad4f1302edbb56c2ae2cdba91189d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1a41cc92239f89ac3688cad722aea1c3ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>editorObject::editorObject</definition>
-        <argsstring>()=delete</argsstring>
+        <argsstring>()=default</argsstring>
         <name>editorObject</name>
         <qualifiedname>editorObject::editorObject</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="353" column="5"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a7a44ba5a8abd1bdacdf538b08360339b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>editorObject::editorObject</definition>
-        <argsstring>(const DONT_SANITIZE &amp;auth_name, const DONT_SANITIZE &amp;auth_email)</argsstring>
-        <name>editorObject</name>
-        <qualifiedname>editorObject::editorObject</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>auth_name</declname>
-        </param>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>auth_email</declname>
-        </param>
         <briefdescription>
 <para>Constructs a new editor object with author information. </para>
         </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>auth_name</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The name of the author. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>auth_email</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The email of the author. </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="360" column="5" bodyfile="core_include/MainObjects/editorObject/editorObject.hpp" bodystart="360" bodyend="364"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="279" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ae5c4229489a3b798968960d7806a96a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1471,7 +1030,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="366" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="281" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ad3274f4153e7e8845a5c5d048f037901" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1491,7 +1050,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/addline.cpp" line="5" column="1" bodyfile="core_include/MainObjects/editorObject/addline.cpp" bodystart="5" bodyend="22"/>
+        <location file="include/core/MainObjects/editorObject/addline.cpp" line="7" column="1" bodyfile="include/core/MainObjects/editorObject/addline.cpp" bodystart="7" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a85dd1bfab830dc51fd12f6f27956ec19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1511,7 +1070,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/addline.cpp" line="26" column="1" bodyfile="core_include/MainObjects/editorObject/addline.cpp" bodystart="26" bodyend="60"/>
+        <location file="include/core/MainObjects/editorObject/addline.cpp" line="28" column="1" bodyfile="include/core/MainObjects/editorObject/addline.cpp" bodystart="28" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1aa6a8bd9998b64a8ee9bc46cd185b518f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1531,7 +1090,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/addline.cpp" line="64" column="1" bodyfile="core_include/MainObjects/editorObject/addline.cpp" bodystart="64" bodyend="77"/>
+        <location file="include/core/MainObjects/editorObject/addline.cpp" line="65" column="1" bodyfile="include/core/MainObjects/editorObject/addline.cpp" bodystart="65" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a307c57aa6a231f6394d82be67a1d94ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1551,7 +1110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/addline.cpp" line="81" column="1" bodyfile="core_include/MainObjects/editorObject/addline.cpp" bodystart="81" bodyend="93"/>
+        <location file="include/core/MainObjects/editorObject/addline.cpp" line="85" column="1" bodyfile="include/core/MainObjects/editorObject/addline.cpp" bodystart="85" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a1470c80235c92292a246fa3f9ce15865" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1571,7 +1130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/deleteline.cpp" line="20" column="1" bodyfile="core_include/MainObjects/editorObject/deleteline.cpp" bodystart="20" bodyend="29"/>
+        <location file="include/core/MainObjects/editorObject/deleteline.cpp" line="20" column="1" bodyfile="include/core/MainObjects/editorObject/deleteline.cpp" bodystart="20" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a0d5200a4e92a2faee32536810298f590" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1591,7 +1150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/deleteline.cpp" line="33" column="1" bodyfile="core_include/MainObjects/editorObject/deleteline.cpp" bodystart="33" bodyend="42"/>
+        <location file="include/core/MainObjects/editorObject/deleteline.cpp" line="31" column="1" bodyfile="include/core/MainObjects/editorObject/deleteline.cpp" bodystart="31" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a6ab0f93838db62d7e61e9d4f97838e2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1611,7 +1170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/deleteline.cpp" line="46" column="1" bodyfile="core_include/MainObjects/editorObject/deleteline.cpp" bodystart="46" bodyend="61"/>
+        <location file="include/core/MainObjects/editorObject/deleteline.cpp" line="42" column="1" bodyfile="include/core/MainObjects/editorObject/deleteline.cpp" bodystart="42" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1627,7 +1186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="370" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="285" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1643,7 +1202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="373" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="288" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1659,7 +1218,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="376" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="291" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a789f87b8ed201e8e08b22ba6bc3311b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1679,7 +1238,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="379" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="294" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1aa6a8bd9998b64a8ee9bc46cd185b518f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1699,7 +1258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="383" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="298" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a85dd1bfab830dc51fd12f6f27956ec19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1719,7 +1278,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="386" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="301" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a307c57aa6a231f6394d82be67a1d94ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1739,7 +1298,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="389" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="304" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ad3274f4153e7e8845a5c5d048f037901" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1759,7 +1318,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="392" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="307" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a1470c80235c92292a246fa3f9ce15865" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1779,7 +1338,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="410" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="311" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a0d5200a4e92a2faee32536810298f590" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1799,7 +1358,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="413" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="314" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a6ab0f93838db62d7e61e9d4f97838e2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1819,7 +1378,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="416" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="317" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a77db8c854567b251bec9cebd5e91c662" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1839,7 +1398,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="420" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="321" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a16ef00ce6ae7569f39a60ff8f382bd1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1859,7 +1418,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="424" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="325" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a479985c5e13f1986c6b88ceac67924c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1879,7 +1438,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="428" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="329" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a5fff7bdde5101a29d10a25989c8e248d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1899,103 +1458,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="432" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type><ref refid="struct_diff_result" kindref="compound">DiffResult</ref></type>
-        <definition>DiffResult editorObject::GetDiff</definition>
-        <argsstring>(const gitwrap::commit &amp;oldTimeStamp, const gitwrap::commit &amp;newTimeStamp)</argsstring>
-        <name>GetDiff</name>
-        <qualifiedname>editorObject::GetDiff</qualifiedname>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>oldTimeStamp</declname>
-        </param>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>newTimeStamp</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="437" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type><ref refid="struct_diff_result" kindref="compound">DiffResult</ref></type>
-        <definition>DiffResult editorObject::GetDiff</definition>
-        <argsstring>(const gitwrap::commit &amp;oldTimeStamp, const gitwrap::commit &amp;newTimeStamp)</argsstring>
-        <name>GetDiff</name>
-        <qualifiedname>editorObject::GetDiff</qualifiedname>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>oldTimeStamp</declname>
-        </param>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>newTimeStamp</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="441" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type><ref refid="struct_diff_result" kindref="compound">DiffResult</ref></type>
-        <definition>DiffResult editorObject::GetDiff</definition>
-        <argsstring>(const gitwrap::commit &amp;oldTimeStamp, const gitwrap::commit &amp;newTimeStamp)</argsstring>
-        <name>GetDiff</name>
-        <qualifiedname>editorObject::GetDiff</qualifiedname>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>oldTimeStamp</declname>
-        </param>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>newTimeStamp</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="445" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type><ref refid="struct_diff_result" kindref="compound">DiffResult</ref></type>
-        <definition>DiffResult editorObject::GetDiff</definition>
-        <argsstring>(const gitwrap::commit &amp;oldTimeStamp, const gitwrap::commit &amp;newTimeStamp)</argsstring>
-        <name>GetDiff</name>
-        <qualifiedname>editorObject::GetDiff</qualifiedname>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>oldTimeStamp</declname>
-        </param>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>newTimeStamp</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="449" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="333" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2011,7 +1474,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="454" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="357" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2027,7 +1490,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="457" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="360" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2043,7 +1506,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="460" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="363" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2059,20 +1522,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="463" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="366" column="2"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
         <type>bool</type>
         <definition>bool editorObject::Go</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName, const DONT_SANITIZE &amp;commitOID)</argsstring>
+        <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
         <qualifiedname>editorObject::Go</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
         <param>
           <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -2083,20 +1542,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="467" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="370" column="2"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
         <type>bool</type>
         <definition>bool editorObject::Go</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName, const DONT_SANITIZE &amp;commitOID)</argsstring>
+        <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
         <qualifiedname>editorObject::Go</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
         <param>
           <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -2107,20 +1562,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="471" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="373" column="2"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
         <type>bool</type>
         <definition>bool editorObject::Go</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName, const DONT_SANITIZE &amp;commitOID)</argsstring>
+        <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
         <qualifiedname>editorObject::Go</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
         <param>
           <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -2131,20 +1582,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="475" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="376" column="2"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
         <type>bool</type>
         <definition>bool editorObject::Go</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName, const DONT_SANITIZE &amp;commitOID)</argsstring>
+        <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
         <qualifiedname>editorObject::Go</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
         <param>
           <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -2155,7 +1602,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="479" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="379" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1aefa353d96fd225e77138f1ebb482f2a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2171,7 +1618,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="484" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="383" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1aefa353d96fd225e77138f1ebb482f2a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2187,7 +1634,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="487" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="386" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1aefa353d96fd225e77138f1ebb482f2a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2203,7 +1650,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="490" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="389" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a6c4c8c3a96ae891026202464c3117f5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2223,7 +1670,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="493" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="392" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2239,7 +1686,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="497" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="396" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2255,7 +1702,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="500" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="399" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2271,33 +1718,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="503" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="402" column="2"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a789f87b8ed201e8e08b22ba6bc3311b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::Undo</definition>
-        <argsstring>(const UNSANITIZED &amp;musicName)</argsstring>
-        <name>Undo</name>
-        <qualifiedname>editorObject::Undo</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
-          <declname>musicName</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="506" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
+        <type>void</type>
+        <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
         <qualifiedname>editorObject::UpdateLog</qualifiedname>
@@ -2307,33 +1734,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="510" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="406" column="2"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a78f427458b3e66f7102182ddec828eb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName)</argsstring>
-        <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="513" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
+        <type>void</type>
+        <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
         <qualifiedname>editorObject::UpdateLog</qualifiedname>
@@ -2343,33 +1750,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="516" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="410" column="2"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a78f427458b3e66f7102182ddec828eb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName)</argsstring>
-        <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="519" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
+        <type>void</type>
+        <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
         <qualifiedname>editorObject::UpdateLog</qualifiedname>
@@ -2379,33 +1766,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="522" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="414" column="2"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a78f427458b3e66f7102182ddec828eb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName)</argsstring>
-        <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="525" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
+        <type>void</type>
+        <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
         <qualifiedname>editorObject::UpdateLog</qualifiedname>
@@ -2415,27 +1782,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="528" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a08bd920f3c202193ee69524f86ebfa66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
-        <argsstring>(const UNSANITIZED &amp;musicName)</argsstring>
-        <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
-          <declname>musicName</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="531" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="418" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a479985c5e13f1986c6b88ceac67924c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2455,7 +1802,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/getall.cpp" line="5" column="1" bodyfile="core_include/MainObjects/editorObject/getall.cpp" bodystart="5" bodyend="9"/>
+        <location file="include/core/MainObjects/editorObject/getall.cpp" line="5" column="1" bodyfile="include/core/MainObjects/editorObject/getall.cpp" bodystart="5" bodyend="9"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a16ef00ce6ae7569f39a60ff8f382bd1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2475,7 +1822,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/getall.cpp" line="13" column="1" bodyfile="core_include/MainObjects/editorObject/getall.cpp" bodystart="13" bodyend="16"/>
+        <location file="include/core/MainObjects/editorObject/getall.cpp" line="13" column="1" bodyfile="include/core/MainObjects/editorObject/getall.cpp" bodystart="13" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a77db8c854567b251bec9cebd5e91c662" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2495,7 +1842,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/getall.cpp" line="20" column="1" bodyfile="core_include/MainObjects/editorObject/getall.cpp" bodystart="20" bodyend="23"/>
+        <location file="include/core/MainObjects/editorObject/getall.cpp" line="20" column="1" bodyfile="include/core/MainObjects/editorObject/getall.cpp" bodystart="20" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a5fff7bdde5101a29d10a25989c8e248d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2515,103 +1862,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/getall.cpp" line="27" column="1" bodyfile="core_include/MainObjects/editorObject/getall.cpp" bodystart="27" bodyend="33"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type><ref refid="struct_diff_result" kindref="compound">DiffResult</ref></type>
-        <definition>DiffResult editorObject::GetDiff</definition>
-        <argsstring>(const gitwrap::commit &amp;oldTimeStamp, const gitwrap::commit &amp;newTimeStamp)</argsstring>
-        <name>GetDiff</name>
-        <qualifiedname>editorObject::GetDiff</qualifiedname>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>oldTimeStamp</declname>
-        </param>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>newTimeStamp</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/getdiff.cpp" line="4" column="2" bodyfile="core_include/MainObjects/editorObject/getdiff.cpp" bodystart="5" bodyend="10"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type><ref refid="struct_diff_result" kindref="compound">DiffResult</ref></type>
-        <definition>DiffResult editorObject::GetDiff</definition>
-        <argsstring>(const gitwrap::commit &amp;oldTimeStamp, const gitwrap::commit &amp;newTimeStamp)</argsstring>
-        <name>GetDiff</name>
-        <qualifiedname>editorObject::GetDiff</qualifiedname>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>oldTimeStamp</declname>
-        </param>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>newTimeStamp</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/getdiff.cpp" line="13" column="2" bodyfile="core_include/MainObjects/editorObject/getdiff.cpp" bodystart="14" bodyend="19"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type><ref refid="struct_diff_result" kindref="compound">DiffResult</ref></type>
-        <definition>DiffResult editorObject::GetDiff</definition>
-        <argsstring>(const gitwrap::commit &amp;oldTimeStamp, const gitwrap::commit &amp;newTimeStamp)</argsstring>
-        <name>GetDiff</name>
-        <qualifiedname>editorObject::GetDiff</qualifiedname>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>oldTimeStamp</declname>
-        </param>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>newTimeStamp</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/getdiff.cpp" line="22" column="2" bodyfile="core_include/MainObjects/editorObject/getdiff.cpp" bodystart="23" bodyend="28"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type><ref refid="struct_diff_result" kindref="compound">DiffResult</ref></type>
-        <definition>DiffResult editorObject::GetDiff</definition>
-        <argsstring>(const gitwrap::commit &amp;oldTimeStamp, const gitwrap::commit &amp;newTimeStamp)</argsstring>
-        <name>GetDiff</name>
-        <qualifiedname>editorObject::GetDiff</qualifiedname>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>oldTimeStamp</declname>
-        </param>
-        <param>
-          <type>const <ref refid="structgitwrap_1_1commit" kindref="compound">gitwrap::commit</ref> &amp;</type>
-          <declname>newTimeStamp</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/getdiff.cpp" line="31" column="2" bodyfile="core_include/MainObjects/editorObject/getdiff.cpp" bodystart="32" bodyend="43"/>
+        <location file="include/core/MainObjects/editorObject/getall.cpp" line="27" column="1" bodyfile="include/core/MainObjects/editorObject/getall.cpp" bodystart="27" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2627,7 +1878,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/getlogwithjsongraph.cpp" line="4" column="2" bodyfile="core_include/MainObjects/editorObject/getlogwithjsongraph.cpp" bodystart="5" bodyend="8"/>
+        <location file="include/core/MainObjects/editorObject/getlogwithjsongraph.cpp" line="4" column="2" bodyfile="include/core/MainObjects/editorObject/getlogwithjsongraph.cpp" bodystart="5" bodyend="8"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2643,7 +1894,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/getlogwithjsongraph.cpp" line="11" column="2" bodyfile="core_include/MainObjects/editorObject/getlogwithjsongraph.cpp" bodystart="12" bodyend="15"/>
+        <location file="include/core/MainObjects/editorObject/getlogwithjsongraph.cpp" line="11" column="2" bodyfile="include/core/MainObjects/editorObject/getlogwithjsongraph.cpp" bodystart="12" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2659,7 +1910,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/getlogwithjsongraph.cpp" line="18" column="2" bodyfile="core_include/MainObjects/editorObject/getlogwithjsongraph.cpp" bodystart="19" bodyend="22"/>
+        <location file="include/core/MainObjects/editorObject/getlogwithjsongraph.cpp" line="18" column="2" bodyfile="include/core/MainObjects/editorObject/getlogwithjsongraph.cpp" bodystart="19" bodyend="22"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a5028cdb2062742b460a6586acefc1a01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2679,20 +1930,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/getlogwithjsongraph.cpp" line="25" column="2" bodyfile="core_include/MainObjects/editorObject/getlogwithjsongraph.cpp" bodystart="26" bodyend="44"/>
+        <location file="include/core/MainObjects/editorObject/getlogwithjsongraph.cpp" line="25" column="2" bodyfile="include/core/MainObjects/editorObject/getlogwithjsongraph.cpp" bodystart="26" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
         <type>bool</type>
         <definition>bool editorObject::Go</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName, const DONT_SANITIZE &amp;commitOID)</argsstring>
+        <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
         <qualifiedname>editorObject::Go</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
         <param>
           <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -2703,20 +1950,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/go.cpp" line="4" column="2" bodyfile="core_include/MainObjects/editorObject/go.cpp" bodystart="5" bodyend="17"/>
+        <location file="include/core/MainObjects/editorObject/go.cpp" line="4" column="2" bodyfile="include/core/MainObjects/editorObject/go.cpp" bodystart="5" bodyend="8"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
         <type>bool</type>
         <definition>bool editorObject::Go</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName, const DONT_SANITIZE &amp;commitOID)</argsstring>
+        <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
         <qualifiedname>editorObject::Go</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
         <param>
           <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -2727,20 +1970,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/go.cpp" line="20" column="2" bodyfile="core_include/MainObjects/editorObject/go.cpp" bodystart="21" bodyend="32"/>
+        <location file="include/core/MainObjects/editorObject/go.cpp" line="11" column="2" bodyfile="include/core/MainObjects/editorObject/go.cpp" bodystart="12" bodyend="15"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
         <type>bool</type>
         <definition>bool editorObject::Go</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName, const DONT_SANITIZE &amp;commitOID)</argsstring>
+        <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
         <qualifiedname>editorObject::Go</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
         <param>
           <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -2751,20 +1990,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/go.cpp" line="35" column="2" bodyfile="core_include/MainObjects/editorObject/go.cpp" bodystart="36" bodyend="47"/>
+        <location file="include/core/MainObjects/editorObject/go.cpp" line="18" column="2" bodyfile="include/core/MainObjects/editorObject/go.cpp" bodystart="19" bodyend="22"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
         <type>bool</type>
         <definition>bool editorObject::Go</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName, const DONT_SANITIZE &amp;commitOID)</argsstring>
+        <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
         <qualifiedname>editorObject::Go</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
         <param>
           <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -2775,7 +2010,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/go.cpp" line="50" column="2" bodyfile="core_include/MainObjects/editorObject/go.cpp" bodystart="51" bodyend="67"/>
+        <location file="include/core/MainObjects/editorObject/go.cpp" line="25" column="2" bodyfile="include/core/MainObjects/editorObject/go.cpp" bodystart="26" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1aefa353d96fd225e77138f1ebb482f2a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2791,7 +2026,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/redo.cpp" line="4" column="2" bodyfile="core_include/MainObjects/editorObject/redo.cpp" bodystart="5" bodyend="8"/>
+        <location file="include/core/MainObjects/editorObject/redo.cpp" line="4" column="2" bodyfile="include/core/MainObjects/editorObject/redo.cpp" bodystart="5" bodyend="8"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1aefa353d96fd225e77138f1ebb482f2a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2807,7 +2042,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/redo.cpp" line="11" column="2" bodyfile="core_include/MainObjects/editorObject/redo.cpp" bodystart="12" bodyend="15"/>
+        <location file="include/core/MainObjects/editorObject/redo.cpp" line="11" column="2" bodyfile="include/core/MainObjects/editorObject/redo.cpp" bodystart="12" bodyend="15"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a6c4c8c3a96ae891026202464c3117f5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2827,7 +2062,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/redo.cpp" line="17" column="2" bodyfile="core_include/MainObjects/editorObject/redo.cpp" bodystart="18" bodyend="36"/>
+        <location file="include/core/MainObjects/editorObject/redo.cpp" line="17" column="2" bodyfile="include/core/MainObjects/editorObject/redo.cpp" bodystart="18" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1aefa353d96fd225e77138f1ebb482f2a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2843,7 +2078,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/redo.cpp" line="38" column="2" bodyfile="core_include/MainObjects/editorObject/redo.cpp" bodystart="39" bodyend="42"/>
+        <location file="include/core/MainObjects/editorObject/redo.cpp" line="38" column="2" bodyfile="include/core/MainObjects/editorObject/redo.cpp" bodystart="39" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2859,7 +2094,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/undo.cpp" line="4" column="2" bodyfile="core_include/MainObjects/editorObject/undo.cpp" bodystart="5" bodyend="8"/>
+        <location file="include/core/MainObjects/editorObject/undo.cpp" line="5" column="2" bodyfile="include/core/MainObjects/editorObject/undo.cpp" bodystart="6" bodyend="9"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2875,7 +2110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/undo.cpp" line="11" column="2" bodyfile="core_include/MainObjects/editorObject/undo.cpp" bodystart="12" bodyend="15"/>
+        <location file="include/core/MainObjects/editorObject/undo.cpp" line="12" column="2" bodyfile="include/core/MainObjects/editorObject/undo.cpp" bodystart="13" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a789f87b8ed201e8e08b22ba6bc3311b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2895,7 +2130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/undo.cpp" line="18" column="2" bodyfile="core_include/MainObjects/editorObject/undo.cpp" bodystart="19" bodyend="39"/>
+        <location file="include/core/MainObjects/editorObject/undo.cpp" line="19" column="2" bodyfile="include/core/MainObjects/editorObject/undo.cpp" bodystart="20" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2911,13 +2146,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/undo.cpp" line="42" column="2" bodyfile="core_include/MainObjects/editorObject/undo.cpp" bodystart="43" bodyend="46"/>
+        <location file="include/core/MainObjects/editorObject/undo.cpp" line="44" column="2" bodyfile="include/core/MainObjects/editorObject/undo.cpp" bodystart="45" bodyend="48"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
+        <type>void</type>
+        <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
         <qualifiedname>editorObject::UpdateLog</qualifiedname>
@@ -2927,33 +2162,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/updatelog.cpp" line="4" column="2" bodyfile="core_include/MainObjects/editorObject/updatelog.cpp" bodystart="5" bodyend="8"/>
+        <location file="include/core/MainObjects/editorObject/updatelog.cpp" line="4" column="2" bodyfile="include/core/MainObjects/editorObject/updatelog.cpp" bodystart="5" bodyend="8"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a78f427458b3e66f7102182ddec828eb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName)</argsstring>
-        <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/updatelog.cpp" line="11" column="2" bodyfile="core_include/MainObjects/editorObject/updatelog.cpp" bodystart="12" bodyend="16"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
+        <type>void</type>
+        <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
         <qualifiedname>editorObject::UpdateLog</qualifiedname>
@@ -2963,33 +2178,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/updatelog.cpp" line="19" column="2" bodyfile="core_include/MainObjects/editorObject/updatelog.cpp" bodystart="20" bodyend="23"/>
+        <location file="include/core/MainObjects/editorObject/updatelog.cpp" line="11" column="2" bodyfile="include/core/MainObjects/editorObject/updatelog.cpp" bodystart="12" bodyend="15"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a78f427458b3e66f7102182ddec828eb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName)</argsstring>
-        <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/updatelog.cpp" line="26" column="2" bodyfile="core_include/MainObjects/editorObject/updatelog.cpp" bodystart="27" bodyend="30"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
+        <type>void</type>
+        <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
         <qualifiedname>editorObject::UpdateLog</qualifiedname>
@@ -2999,33 +2194,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/updatelog.cpp" line="33" column="2" bodyfile="core_include/MainObjects/editorObject/updatelog.cpp" bodystart="34" bodyend="37"/>
+        <location file="include/core/MainObjects/editorObject/updatelog.cpp" line="18" column="2" bodyfile="include/core/MainObjects/editorObject/updatelog.cpp" bodystart="19" bodyend="22"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a78f427458b3e66f7102182ddec828eb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
-        <argsstring>(const DONT_SANITIZE &amp;branchName)</argsstring>
-        <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>branchName</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/updatelog.cpp" line="40" column="2" bodyfile="core_include/MainObjects/editorObject/updatelog.cpp" bodystart="41" bodyend="44"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
+        <type>void</type>
+        <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
         <qualifiedname>editorObject::UpdateLog</qualifiedname>
@@ -3035,27 +2210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/updatelog.cpp" line="47" column="2" bodyfile="core_include/MainObjects/editorObject/updatelog.cpp" bodystart="48" bodyend="59"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a08bd920f3c202193ee69524f86ebfa66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::UpdateLog</definition>
-        <argsstring>(const UNSANITIZED &amp;musicName)</argsstring>
-        <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
-          <declname>musicName</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="core_include/MainObjects/editorObject/updatelog.cpp" line="62" column="2" bodyfile="core_include/MainObjects/editorObject/updatelog.cpp" bodystart="63" bodyend="81"/>
+        <location file="include/core/MainObjects/editorObject/updatelog.cpp" line="25" column="2" bodyfile="include/core/MainObjects/editorObject/updatelog.cpp" bodystart="26" bodyend="31"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -3064,7 +2219,246 @@
     <detaileddescription>
 <para>This class provides a high-level interface for interacting with the editor, including file I/O, version control, and data rendering. </para>
     </detaileddescription>
-    <location file="core_include/MainObjects/editorObject/editorObject.hpp" line="40" column="1" bodyfile="core_include/MainObjects/editorObject/editorObject.hpp" bodystart="40" bodyend="367"/>
+    <collaborationgraph>
+      <node id="3">
+        <label>PDJE_Editor</label>
+        <link refid="class_p_d_j_e___editor"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>email</edgelabel>
+          <edgelabel>name</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>mixHandle</edgelabel>
+        </childnode>
+        <childnode refid="15" relation="usage">
+          <edgelabel>noteHandle</edgelabel>
+        </childnode>
+        <childnode refid="19" relation="usage">
+          <edgelabel>KVHandle</edgelabel>
+        </childnode>
+        <childnode refid="23" relation="usage">
+          <edgelabel>musicHandle</edgelabel>
+        </childnode>
+      </node>
+      <node id="24">
+        <label>PDJE_Editor::MusicHandleStruct</label>
+        <link refid="struct_p_d_j_e___editor_1_1_music_handle_struct"/>
+        <childnode refid="25" relation="usage">
+          <edgelabel>handle</edgelabel>
+        </childnode>
+      </node>
+      <node id="14">
+        <label>PDJE_JSONHandler&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt;</label>
+        <link refid="class_p_d_j_e___j_s_o_n_handler"/>
+      </node>
+      <node id="28">
+        <label>PDJE_JSONHandler&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
+        <link refid="class_p_d_j_e___j_s_o_n_handler"/>
+      </node>
+      <node id="18">
+        <label>PDJE_JSONHandler&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt;</label>
+        <link refid="class_p_d_j_e___j_s_o_n_handler"/>
+      </node>
+      <node id="22">
+        <label>PDJE_JSONHandler&lt; KV_W &gt;</label>
+        <link refid="class_p_d_j_e___j_s_o_n_handler"/>
+      </node>
+      <node id="13">
+        <label>PDJE_TIMELINE::BranchLine</label>
+        <link refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+      </node>
+      <node id="12">
+        <label>PDJE_TIMELINE::EventMarker&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt;</label>
+        <link refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_event_marker"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>checkedOut</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>line</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>file_handle</edgelabel>
+        </childnode>
+      </node>
+      <node id="27">
+        <label>PDJE_TIMELINE::EventMarker&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
+        <link refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_event_marker"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>checkedOut</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>line</edgelabel>
+        </childnode>
+        <childnode refid="28" relation="usage">
+          <edgelabel>file_handle</edgelabel>
+        </childnode>
+      </node>
+      <node id="17">
+        <label>PDJE_TIMELINE::EventMarker&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt;</label>
+        <link refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_event_marker"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>checkedOut</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>line</edgelabel>
+        </childnode>
+        <childnode refid="18" relation="usage">
+          <edgelabel>file_handle</edgelabel>
+        </childnode>
+      </node>
+      <node id="21">
+        <label>PDJE_TIMELINE::EventMarker&lt; KV_W &gt;</label>
+        <link refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_event_marker"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>checkedOut</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>line</edgelabel>
+        </childnode>
+        <childnode refid="22" relation="usage">
+          <edgelabel>file_handle</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>PDJE_TIMELINE::GitData</label>
+        <link refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_git_data"/>
+        <childnode refid="10" relation="usage">
+          <edgelabel>log_tree</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>LIFO_log</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>target_file</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt;</label>
+        <link refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>mark</edgelabel>
+        </childnode>
+      </node>
+      <node id="26">
+        <label>PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
+        <link refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="27" relation="usage">
+          <edgelabel>mark</edgelabel>
+        </childnode>
+      </node>
+      <node id="16">
+        <label>PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt;</label>
+        <link refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="17" relation="usage">
+          <edgelabel>mark</edgelabel>
+        </childnode>
+      </node>
+      <node id="20">
+        <label>PDJE_TIMELINE::TimeLine&lt; KV_W &gt;</label>
+        <link refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+        <childnode refid="21" relation="usage">
+          <edgelabel>mark</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>editorObject</label>
+        <link refid="classeditor_object"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>edit_core</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="8">
+        <label>std::shared_ptr&lt; PDJE_TIMELINE::GitData &gt;</label>
+        <childnode refid="9" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::string</label>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::unique_ptr&lt; PDJE_Editor &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt; &gt;</label>
+        <childnode refid="7" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="25">
+        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt; &gt;</label>
+        <childnode refid="26" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="15">
+        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt; &gt;</label>
+        <childnode refid="16" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="19">
+        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; KV_W &gt; &gt;</label>
+        <childnode refid="20" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>std::unordered_map&lt; OID, BACK_OID &gt;</label>
+        <childnode refid="4" relation="usage">
+          <edgelabel>elements</edgelabel>
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="11">
+        <label>std::vector&lt; OID &gt;</label>
+        <childnode refid="4" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="23">
+        <label>std::vector&lt; PDJE_Editor::MusicHandleStruct &gt;</label>
+        <childnode refid="24" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="41" column="1" bodyfile="include/core/MainObjects/editorObject/editorObject.hpp" bodystart="41" bodyend="282"/>
     <listofallmembers>
       <member refid="classeditor_object_1a77eaf52d8c470aadb9af3f3140e6beee" prot="public" virt="non-virtual"><scope>editorObject</scope><name>AddLine</name></member>
       <member refid="classeditor_object_1a9162179d7a90217496e990ed631a79e7" prot="public" virt="non-virtual"><scope>editorObject</scope><name>AddLine</name></member>
@@ -3077,16 +2471,6 @@
       <member refid="classeditor_object_1a307c57aa6a231f6394d82be67a1d94ae" prot="public" virt="non-virtual"><scope>editorObject</scope><name>AddLine</name></member>
       <member refid="classeditor_object_1ad3274f4153e7e8845a5c5d048f037901" prot="public" virt="non-virtual"><scope>editorObject</scope><name>AddLine</name></member>
       <member refid="classeditor_object_1a3ec9d3ccf73457ee3067cd3f47ac23c1" prot="public" virt="non-virtual"><scope>editorObject</scope><name>ConfigNewMusic</name></member>
-      <member refid="classeditor_object_1a70ea370646618a4ac7bd3d3ef50abc7d" prot="private" virt="non-virtual"><scope>editorObject</scope><name>DefaultSaveFunction</name></member>
-      <member refid="classeditor_object_1aad816e22a3a63d00cb319bf4d985d950" prot="private" virt="non-virtual"><scope>editorObject</scope><name>DefaultSaveFunction</name></member>
-      <member refid="classeditor_object_1afdb9406f4e2aae843f1de7921be5f796" prot="private" virt="non-virtual"><scope>editorObject</scope><name>DefaultSaveFunction</name></member>
-      <member refid="classeditor_object_1afdb9406f4e2aae843f1de7921be5f796" prot="private" virt="non-virtual"><scope>editorObject</scope><name>DefaultSaveFunction</name></member>
-      <member refid="classeditor_object_1afdb9406f4e2aae843f1de7921be5f796" prot="private" virt="non-virtual"><scope>editorObject</scope><name>DefaultSaveFunction</name></member>
-      <member refid="classeditor_object_1a785b7a8cdc22a9c424f5f79b6b031e88" prot="private" virt="non-virtual"><scope>editorObject</scope><name>DefaultSaveFunction</name></member>
-      <member refid="classeditor_object_1afdb9406f4e2aae843f1de7921be5f796" prot="private" virt="non-virtual"><scope>editorObject</scope><name>DefaultSaveFunction</name></member>
-      <member refid="classeditor_object_1afdb9406f4e2aae843f1de7921be5f796" prot="private" virt="non-virtual"><scope>editorObject</scope><name>DefaultSaveFunction</name></member>
-      <member refid="classeditor_object_1afdb9406f4e2aae843f1de7921be5f796" prot="private" virt="non-virtual"><scope>editorObject</scope><name>DefaultSaveFunction</name></member>
-      <member refid="classeditor_object_1a785b7a8cdc22a9c424f5f79b6b031e88" prot="private" virt="non-virtual"><scope>editorObject</scope><name>DefaultSaveFunction</name></member>
       <member refid="classeditor_object_1acec5f49ab4cc77cd842d4eaf1a25ff87" prot="public" virt="non-virtual"><scope>editorObject</scope><name>deleteLine</name></member>
       <member refid="classeditor_object_1a74c726d83f0402fa3df6f74ac501dfea" prot="public" virt="non-virtual"><scope>editorObject</scope><name>deleteLine</name></member>
       <member refid="classeditor_object_1a1470c80235c92292a246fa3f9ce15865" prot="public" virt="non-virtual"><scope>editorObject</scope><name>deleteLine</name></member>
@@ -3097,9 +2481,8 @@
       <member refid="classeditor_object_1a6ab0f93838db62d7e61e9d4f97838e2b" prot="public" virt="non-virtual"><scope>editorObject</scope><name>deleteLine</name></member>
       <member refid="classeditor_object_1a394a200d5cf41ec74152c799d17b35e7" prot="public" virt="non-virtual"><scope>editorObject</scope><name>demoPlayInit</name></member>
       <member refid="classeditor_object_1a9e14b13d0a93115510856587e3d0b597" prot="public" virt="non-virtual"><scope>editorObject</scope><name>DESTROY_PROJECT</name></member>
-      <member refid="classeditor_object_1a23655580a822a7ae6c96ece123f0574d" prot="private" virt="non-virtual"><scope>editorObject</scope><name>E_obj</name></member>
-      <member refid="classeditor_object_1a690ad4f1302edbb56c2ae2cdba91189d" prot="public" virt="non-virtual"><scope>editorObject</scope><name>editorObject</name></member>
-      <member refid="classeditor_object_1a7a44ba5a8abd1bdacdf538b08360339b" prot="public" virt="non-virtual"><scope>editorObject</scope><name>editorObject</name></member>
+      <member refid="classeditor_object_1aca8ec314359534bb4739dea7059b85c1" prot="private" virt="non-virtual"><scope>editorObject</scope><name>edit_core</name></member>
+      <member refid="classeditor_object_1a41cc92239f89ac3688cad722aea1c3ed" prot="public" virt="non-virtual"><scope>editorObject</scope><name>editorObject</name></member>
       <member refid="classeditor_object_1a720a623f570f5fbeafb28e812a127938" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
       <member refid="classeditor_object_1a77db8c854567b251bec9cebd5e91c662" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
       <member refid="classeditor_object_1a16ef00ce6ae7569f39a60ff8f382bd1c" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
@@ -3109,16 +2492,6 @@
       <member refid="classeditor_object_1a16ef00ce6ae7569f39a60ff8f382bd1c" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
       <member refid="classeditor_object_1a77db8c854567b251bec9cebd5e91c662" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
       <member refid="classeditor_object_1a5fff7bdde5101a29d10a25989c8e248d" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
-      <member refid="classeditor_object_1a28dc3aa435512e4ad16ad0f821c64907" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
-      <member refid="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
-      <member refid="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
-      <member refid="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
-      <member refid="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
-      <member refid="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
-      <member refid="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
-      <member refid="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
-      <member refid="classeditor_object_1aac2481cb9b8cdce5b8b4bb955d75ecb0" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
-      <member refid="classeditor_object_1a7276d008fdf2ce71165d9f8f8332317d" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getKVRepo</name></member>
       <member refid="classeditor_object_1a360e0000f965db643a0127f7240a425a" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetLogWithJSONGraph</name></member>
       <member refid="classeditor_object_1a994b27da4e10c21758c374d77b638cad" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetLogWithJSONGraph</name></member>
       <member refid="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetLogWithJSONGraph</name></member>
@@ -3129,24 +2502,17 @@
       <member refid="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetLogWithJSONGraph</name></member>
       <member refid="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetLogWithJSONGraph</name></member>
       <member refid="classeditor_object_1a5028cdb2062742b460a6586acefc1a01" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetLogWithJSONGraph</name></member>
-      <member refid="classeditor_object_1ae5300f1a0b6d39b6fb1e6c79d2bcc91d" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getMixRepo</name></member>
-      <member refid="classeditor_object_1ad4983a3abef2c8acadc325f26a6128d6" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getMusicRepo</name></member>
-      <member refid="classeditor_object_1a3bd541d0ff2a00541fad343c31742c71" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getNoteRepo</name></member>
-      <member refid="classeditor_object_1ad9b0dfe188373cfe8b0605cfcbba2093" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
-      <member refid="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
-      <member refid="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
-      <member refid="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
-      <member refid="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
-      <member refid="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
-      <member refid="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
-      <member refid="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
-      <member refid="classeditor_object_1a51962d2a580b4eab625d260ffedbd19a" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
-      <member refid="classeditor_object_1a1a72aaa0a758b9c32f2bcd603a607f3c" prot="private" virt="non-virtual"><scope>editorObject</scope><name>kvFilePath</name></member>
+      <member refid="classeditor_object_1a84559e84b00ecd409b49a320e822a971" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
+      <member refid="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
+      <member refid="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
+      <member refid="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
+      <member refid="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
+      <member refid="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
+      <member refid="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
+      <member refid="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
+      <member refid="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
       <member refid="classeditor_object_1a3bb22fbeed9a7e1516f3ab6461698f0b" prot="private" virt="non-virtual"><scope>editorObject</scope><name>makeTrackData</name></member>
-      <member refid="classeditor_object_1a3172e809911096988531fc5228f7055e" prot="private" virt="non-virtual"><scope>editorObject</scope><name>mixFilePath</name></member>
-      <member refid="classeditor_object_1a76050465d4780555d62af1f9faee05e7" prot="private" virt="non-virtual"><scope>editorObject</scope><name>musicFileRootPath</name></member>
-      <member refid="classeditor_object_1abeaedacd9b6d9e2fb61772aa348431b1" prot="private" virt="non-virtual"><scope>editorObject</scope><name>noteFilePath</name></member>
-      <member refid="classeditor_object_1adb7115154add6c06baf9c4e090977d24" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Open</name></member>
+      <member refid="classeditor_object_1aa921e7a13cc65917ae9efe90646878c1" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Open</name></member>
       <member refid="classeditor_object_1aa664471474287d500e65d09f08f61001" prot="public" virt="non-virtual"><scope>editorObject</scope><name>operator[]</name></member>
       <member refid="classeditor_object_1afe3027bfdc86cf213b3d44191e4ce4e7" prot="private" virt="non-virtual"><scope>editorObject</scope><name>projectLocalDB</name></member>
       <member refid="classeditor_object_1a9409f6aef52b2cb8a361674da49b97e1" prot="private" virt="non-virtual"><scope>editorObject</scope><name>projectRoot</name></member>
@@ -3172,29 +2538,19 @@
       <member refid="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
       <member refid="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
       <member refid="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
-      <member refid="classeditor_object_1a789f87b8ed201e8e08b22ba6bc3311b7" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
       <member refid="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
       <member refid="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
       <member refid="classeditor_object_1a789f87b8ed201e8e08b22ba6bc3311b7" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
       <member refid="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
-      <member refid="classeditor_object_1af72d99c3cb239afe1f633ad592327ae7" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a551a8f7e02b6d1723a8699af450daa79" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a78f427458b3e66f7102182ddec828eb0" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a78f427458b3e66f7102182ddec828eb0" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a78f427458b3e66f7102182ddec828eb0" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a08bd920f3c202193ee69524f86ebfa66" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a78f427458b3e66f7102182ddec828eb0" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a78f427458b3e66f7102182ddec828eb0" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a78f427458b3e66f7102182ddec828eb0" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a4c49089d69f7f45e1ed9900e67338551" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
-      <member refid="classeditor_object_1a08bd920f3c202193ee69524f86ebfa66" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
+      <member refid="classeditor_object_1a9ec91b5c9aec96545b0b129146b09efd" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
+      <member refid="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
+      <member refid="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
+      <member refid="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
+      <member refid="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
+      <member refid="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
+      <member refid="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
+      <member refid="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
+      <member refid="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" virt="non-virtual"><scope>editorObject</scope><name>UpdateLog</name></member>
       <member refid="classeditor_object_1ae5c4229489a3b798968960d7806a96a9" prot="public" virt="non-virtual"><scope>editorObject</scope><name>~editorObject</name></member>
     </listofallmembers>
   </compounddef>

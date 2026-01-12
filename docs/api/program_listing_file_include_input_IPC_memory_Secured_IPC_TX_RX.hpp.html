@@ -1,0 +1,234 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File Secured_IPC_TX_RX.hpp &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File Secured_IPC_TX_RX.hpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_include_input_IPC_memory_Secured_IPC_TX_RX.hpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-secured-ipc-tx-rx-hpp">
+<span id="program-listing-file-include-input-ipc-memory-secured-ipc-tx-rx-hpp"></span><h1>Program Listing for File Secured_IPC_TX_RX.hpp<a class="headerlink" href="#program-listing-for-file-secured-ipc-tx-rx-hpp" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file_include_input_IPC_memory_Secured_IPC_TX_RX.hpp.html#file-include-input-ipc-memory-secured-ipc-tx-rx-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\input\IPC\memory\Secured_IPC_TX_RX.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Crypto.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ipc_named_mutex.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ipc_shared_memory.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;botan/aead.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;botan/hex.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;botan/mac.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;map&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_CRYPTO</span><span class="w"> </span><span class="p">{</span>
+
+<span class="k">enum</span><span class="w"> </span><span class="nc">TXRXHEADER</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">HEALTH_CHECK</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="p">)</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">DEVICE_LIST</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="p">)</span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="n">DEVICE_CONFIG</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="p">)</span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SEND_IPC_SHMEM</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="p">)</span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="n">SEND_INPUT_TRANSFER_SHMEM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="p">)</span><span class="mi">5</span><span class="p">,</span>
+<span class="w">    </span><span class="n">TXRX_STOP</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="p">)</span><span class="mi">6</span><span class="p">,</span>
+<span class="w">    </span><span class="n">TXRX_KILL</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="p">)</span><span class="mi">7</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MSG_MAX_SIZE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16384</span><span class="p">;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAYBE_USABLE_MAX_SIZE</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="p">(</span><span class="n">MSG_MAX_SIZE</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span>
+<span class="w">    </span><span class="mi">54</span><span class="p">;</span><span class="w"> </span><span class="c1">// hex encode -&gt; x2, nonce + json overhead -&gt; apprx 54</span>
+<span class="k">using</span><span class="w"> </span><span class="n">HEADER</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="kt">uint8_t</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">ENCRYPT_RES_SIZE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">uint16_t</span><span class="p">;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">BODY_SIZE</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">MAYBE_USABLE_MAX_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">HEADER</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">ENCRYPT_RES_SIZE</span><span class="p">);</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ENCRYPT_MAX_SIZE</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">MSG_MAX_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">HEADER</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">ENCRYPT_RES_SIZE</span><span class="p">);</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">FEATURE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TX_RX</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">AEAD</span><span class="w">                                             </span><span class="n">aead</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">SharedMem</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">PDJE_IPC_RW</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TXBuf</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">SharedMem</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">PDJE_IPC_RW</span><span class="o">&gt;</span><span class="w"> </span><span class="n">RXBuf</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">MUTEX</span><span class="w">                                  </span><span class="n">TXM</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">MUTEX</span><span class="w">                                  </span><span class="n">RXM</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">HEADER</span><span class="p">,</span><span class="w"> </span><span class="n">FEATURE</span><span class="o">&gt;</span><span class="w">                        </span><span class="n">feature_map</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="o">&gt;</span><span class="w">                       </span><span class="n">listen_worker</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">atomic</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w">                                </span><span class="n">worker_switch</span><span class="p">{</span><span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span>
+<span class="w">    </span><span class="n">Listen</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span>
+<span class="w">    </span><span class="nf">BlockedListen</span><span class="p">();</span>
+<span class="w">    </span><span class="n">TX_RX</span><span class="p">(</span><span class="n">PSK</span><span class="w">                   </span><span class="o">&amp;</span><span class="n">key</span><span class="p">,</span>
+<span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w">        </span><span class="o">&amp;</span><span class="n">memFirst</span><span class="p">,</span>
+<span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">MNAME</span><span class="w"> </span><span class="o">&amp;</span><span class="n">firstLock</span><span class="p">,</span>
+<span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w">        </span><span class="o">&amp;</span><span class="n">memSecond</span><span class="p">,</span>
+<span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">MNAME</span><span class="w"> </span><span class="o">&amp;</span><span class="n">secondLock</span><span class="p">,</span>
+<span class="w">          </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w">             </span><span class="n">isHost</span><span class="p">)</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">aead</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">startlog</span><span class="p">();</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isHost</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">TXBuf</span><span class="p">.</span><span class="n">MakeIPCSharedMemory</span><span class="p">(</span><span class="n">memFirst</span><span class="p">,</span><span class="w"> </span><span class="n">MSG_MAX_SIZE</span><span class="p">);</span>
+<span class="w">                </span><span class="n">RXBuf</span><span class="p">.</span><span class="n">MakeIPCSharedMemory</span><span class="p">(</span><span class="n">memSecond</span><span class="p">,</span><span class="w"> </span><span class="n">MSG_MAX_SIZE</span><span class="p">);</span>
+<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">memset</span><span class="p">(</span><span class="n">TXBuf</span><span class="p">.</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">MSG_MAX_SIZE</span><span class="p">);</span>
+<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">memset</span><span class="p">(</span><span class="n">RXBuf</span><span class="p">.</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">MSG_MAX_SIZE</span><span class="p">);</span>
+
+<span class="w">                </span><span class="n">TXM</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">firstLock</span><span class="p">);</span>
+<span class="w">                </span><span class="n">RXM</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">secondLock</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">TXBuf</span><span class="p">.</span><span class="n">GetIPCSharedMemory</span><span class="p">(</span><span class="n">memSecond</span><span class="p">,</span><span class="w"> </span><span class="n">MSG_MAX_SIZE</span><span class="p">);</span>
+<span class="w">                </span><span class="n">RXBuf</span><span class="p">.</span><span class="n">GetIPCSharedMemory</span><span class="p">(</span><span class="n">memFirst</span><span class="p">,</span><span class="w"> </span><span class="n">MSG_MAX_SIZE</span><span class="p">);</span>
+<span class="w">                </span><span class="n">TXM</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">secondLock</span><span class="p">);</span>
+<span class="w">                </span><span class="n">RXM</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">firstLock</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to init TX_RX shared memory. What: &quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span>
+<span class="w">    </span><span class="n">StopListen</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">worker_switch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span>
+<span class="w">    </span><span class="n">AddFunction</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">HEADER</span><span class="w"> </span><span class="n">header</span><span class="p">,</span><span class="w"> </span><span class="n">FEATURE</span><span class="w"> </span><span class="n">feature</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">Send</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">HEADER</span><span class="w"> </span><span class="n">header</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">body</span><span class="p">);</span>
+
+<span class="w">    </span><span class="o">~</span><span class="n">TX_RX</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">secured_buffer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Botan</span><span class="o">::</span><span class="n">MessageAuthenticationCode</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hmac_engine</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Botan</span><span class="o">::</span><span class="n">secure_vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w">                     </span><span class="n">key</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w">                              </span><span class="n">data</span><span class="p">;</span>
+<span class="w">    </span><span class="n">secured_buffer</span><span class="p">()</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">hmac_engine</span><span class="p">(</span><span class="n">Botan</span><span class="o">::</span><span class="n">MessageAuthenticationCode</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="s">&quot;HMAC(SHA-256)&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span>
+<span class="w">    </span><span class="n">hmac_calc</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">hmac_engine</span><span class="o">-&gt;</span><span class="n">set_key</span><span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+<span class="w">        </span><span class="n">hmac_engine</span><span class="o">-&gt;</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hmac_engine</span><span class="o">-&gt;</span><span class="n">final_stdvec</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// code samples.</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+<span class="p">};</span><span class="w"> </span><span class="c1">// namespace PDJE_CRYPTO</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PDJE_Secured_Transmission_Buffer</span><span class="w"> </span><span class="p">{};</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 Class MIX
 =========
 
-- Defined in :ref:`file_core_include_db_Capnp_Translators_MixTranslator_Mix.hpp`
+- Defined in :ref:`file_include_core_db_Capnp_Translators_MixTranslator_Mix.hpp`
 
 
 Class Documentation

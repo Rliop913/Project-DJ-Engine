@@ -1,0 +1,14 @@
+.. _exhale_define__input___state_8hpp_1a81120971482c7ad20820dbb20d470e11:
+
+Define PDJE_MOUSE_R_BTN_DOWN
+============================
+
+- Defined in :ref:`file_include_global_DataLines_Input_State.hpp`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: PDJE_MOUSE_R_BTN_DOWN
+   :project: Project_DJ_Engine

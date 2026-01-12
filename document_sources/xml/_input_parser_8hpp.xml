@@ -1,0 +1,586 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="_input_parser_8hpp" kind="file" language="C++">
+    <compoundname>InputParser.hpp</compoundname>
+    <includes refid="_p_d_j_e___input___data_line_8hpp" local="yes">PDJE_Input_DataLine.hpp</includes>
+    <includes refid="_p_d_j_e___note___o_b_j_8hpp" local="yes">PDJE_Note_OBJ.hpp</includes>
+    <includes refid="_p_d_j_e___r_a_i_l_8hpp" local="yes">PDJE_RAIL.hpp</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="_p_d_j_e___judge___init_8hpp" local="yes">include/judge/Init/PDJE_Judge_Init.hpp</includedby>
+    <includedby refid="_p_d_j_e___judge___loop_8cpp" local="yes">include/judge/Loop/PDJE_Judge_Loop.cpp</includedby>
+    <includedby refid="_p_d_j_e___judge___loop_8hpp" local="yes">include/judge/Loop/PDJE_Judge_Loop.hpp</includedby>
+    <includedby refid="_p_d_j_e___pre_process_8hpp" local="yes">include/judge/Loop/PreProcess/PDJE_PreProcess.hpp</includedby>
+    <incdepgraph>
+      <node id="10">
+        <label>PDJE_Crypto.hpp</label>
+        <link refid="_p_d_j_e___crypto_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Input_State.hpp</label>
+        <link refid="_input___state_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>PDJE_Buffer.hpp</label>
+        <link refid="_p_d_j_e___buffer_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PDJE_Input_DataLine.hpp</label>
+        <link refid="_p_d_j_e___input___data_line_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>PDJE_Input_Device_Data.hpp</label>
+        <link refid="_p_d_j_e___input___device___data_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="11">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>PDJE_INPUT_PROCESS_HASH.hpp</label>
+        <link refid="_p_d_j_e___i_n_p_u_t___p_r_o_c_e_s_s___h_a_s_h_8hpp"/>
+      </node>
+      <node id="9">
+        <label>Input_Transfer.hpp</label>
+        <link refid="_input___transfer_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>ipc_named_event.hpp</label>
+        <link refid="ipc__named__event_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>ipc_named_mutex.hpp</label>
+        <link refid="ipc__named__mutex_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>ipc_shared_memory.hpp</label>
+        <link refid="ipc__shared__memory_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>PDJE_MIDI.hpp</label>
+        <link refid="_p_d_j_e___m_i_d_i_8hpp"/>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/judge/InputParser/InputParser.hpp</label>
+        <link refid="_input_parser_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>PDJE_Note_OBJ.hpp</label>
+        <link refid="_p_d_j_e___note___o_b_j_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>PDJE_RAIL.hpp</label>
+        <link refid="_p_d_j_e___r_a_i_l_8hpp"/>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>PDJE_Rule.hpp</label>
+        <link refid="_p_d_j_e___rule_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>PDJE_Highres_Clock.hpp</label>
+      </node>
+      <node id="30">
+        <label>algorithm</label>
+      </node>
+      <node id="42">
+        <label>atomic</label>
+      </node>
+      <node id="19">
+        <label>botan/auto_rng.h</label>
+      </node>
+      <node id="20">
+        <label>botan/cipher_mode.h</label>
+      </node>
+      <node id="21">
+        <label>botan/hash.h</label>
+      </node>
+      <node id="36">
+        <label>botan/mac.h</label>
+      </node>
+      <node id="37">
+        <label>botan/mem_ops.h</label>
+      </node>
+      <node id="31">
+        <label>cctype</label>
+      </node>
+      <node id="32">
+        <label>cstddef</label>
+      </node>
+      <node id="24">
+        <label>cstdint</label>
+      </node>
+      <node id="12">
+        <label>filesystem</label>
+      </node>
+      <node id="33">
+        <label>fstream</label>
+      </node>
+      <node id="49">
+        <label>functional</label>
+      </node>
+      <node id="4">
+        <label>future</label>
+      </node>
+      <node id="34">
+        <label>ios</label>
+      </node>
+      <node id="25">
+        <label>latch</label>
+      </node>
+      <node id="45">
+        <label>libremidi/libremidi.hpp</label>
+      </node>
+      <node id="35">
+        <label>limits</label>
+      </node>
+      <node id="5">
+        <label>memory_resource</label>
+      </node>
+      <node id="13">
+        <label>mutex</label>
+      </node>
+      <node id="38">
+        <label>nlohmann/json.hpp</label>
+      </node>
+      <node id="6">
+        <label>optional</label>
+      </node>
+      <node id="43">
+        <label>random</label>
+      </node>
+      <node id="14">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="15">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="16">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="17">
+        <label>string_view</label>
+      </node>
+      <node id="39">
+        <label>thread</label>
+      </node>
+      <node id="18">
+        <label>type_traits</label>
+      </node>
+      <node id="46">
+        <label>unordered_map</label>
+      </node>
+      <node id="51">
+        <label>utility</label>
+      </node>
+      <node id="50">
+        <label>variant</label>
+      </node>
+      <node id="8">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>include/judge/Init/PDJE_Judge_Init.cpp</label>
+        <link refid="_p_d_j_e___judge___init_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/judge/Init/PDJE_Judge_Init.hpp</label>
+        <link refid="_p_d_j_e___judge___init_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/judge/InputParser/InputParser.hpp</label>
+        <link refid="_input_parser_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/judge/Loop/Match/Keyboard.cpp</label>
+        <link refid="_keyboard_8cpp"/>
+      </node>
+      <node id="8">
+        <label>include/judge/Loop/Match/MIDI.cpp</label>
+        <link refid="_m_i_d_i_8cpp"/>
+      </node>
+      <node id="9">
+        <label>include/judge/Loop/Match/Mouse.cpp</label>
+        <link refid="_mouse_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/judge/Loop/Match/PDJE_Match.cpp</label>
+        <link refid="_p_d_j_e___match_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/judge/Loop/Match/PDJE_Match.hpp</label>
+        <link refid="_p_d_j_e___match_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
+        <link refid="_p_d_j_e___judge___loop_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/judge/Loop/PDJE_Judge_Loop.hpp</label>
+        <link refid="_p_d_j_e___judge___loop_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.cpp</label>
+        <link refid="_p_d_j_e___pre_process_8cpp"/>
+      </node>
+      <node id="14">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.hpp</label>
+        <link refid="_p_d_j_e___pre_process_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess_Work.cpp</label>
+        <link refid="_p_d_j_e___pre_process___work_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/judge/PDJE_Judge.cpp</label>
+        <link refid="_p_d_j_e___judge_8cpp"/>
+      </node>
+      <node id="11">
+        <label>include/judge/PDJE_Judge.hpp</label>
+        <link refid="_p_d_j_e___judge_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judge_test_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t" prot="public">PDJE_JUDGE::PARSE_OUT</innerclass>
+    <innernamespace refid="namespace_p_d_j_e___j_u_d_g_e">PDJE_JUDGE</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_p_d_j_e___input___data_line_8hpp" kindref="compound">PDJE_Input_DataLine.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_p_d_j_e___note___o_b_j_8hpp" kindref="compound">PDJE_Note_OBJ.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_p_d_j_e___r_a_i_l_8hpp" kindref="compound">PDJE_RAIL.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___j_u_d_g_e" kindref="compound">PDJE_JUDGE</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="namespace_p_d_j_e___j_u_d_g_e_1a92f69083730ba6caa06232ad7143e313" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___j_u_d_g_e_1a92f69083730ba6caa06232ad7143e313" kindref="member">INPUT_RAW</ref><sp/>=<sp/>std::vector&lt;PDJE_Input_Log&gt;;</highlight></codeline>
+<codeline lineno="13" refid="namespace_p_d_j_e___j_u_d_g_e_1a6ef94e4c821228703c99fa607e5d148c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___j_u_d_g_e_1a6ef94e4c821228703c99fa607e5d148c" kindref="member">MIDI_RAW</ref><sp/><sp/>=<sp/>std::vector&lt;PDJE_MIDI::MIDI_EV&gt;;</highlight></codeline>
+<codeline lineno="14" refid="namespace_p_d_j_e___j_u_d_g_e_1a9f25a47baf1fe7dfa9840cf3ea155013" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___j_u_d_g_e_1a9f25a47baf1fe7dfa9840cf3ea155013" kindref="member">DEV_ID</ref><sp/><sp/><sp/><sp/>=<sp/>std::string;</highlight></codeline>
+<codeline lineno="15" refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t" kindref="compound">PARSE_OUT</ref><sp/>{</highlight></codeline>
+<codeline lineno="16" refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a1add107ff0d2f181a59042a45f465ec0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;PDJE_Input_Log&gt;<sp/><sp/><sp/><sp/><sp/><ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a1add107ff0d2f181a59042a45f465ec0" kindref="member">logs</ref>;</highlight></codeline>
+<codeline lineno="17" refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a8af406b879e74e0b83cbdbf5eeaebf0d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;PDJE_MIDI::MIDI_EV&gt;<sp/><ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a8af406b879e74e0b83cbdbf5eeaebf0d" kindref="member">midi_logs</ref>;</highlight></codeline>
+<codeline lineno="18" refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a6314b5d57c452d5f03c3a8f4d6c32a46" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a6314b5d57c452d5f03c3a8f4d6c32a46" kindref="member">lowest</ref>;</highlight></codeline>
+<codeline lineno="19" refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1aacc794d73555267a36df90d65620f1e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1aacc794d73555267a36df90d65620f1e2" kindref="member">highest</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="namespace_p_d_j_e___j_u_d_g_e_1aa614512ba31f8521b7f0d2f648c52415" refkind="member"><highlight class="normal"><ref refid="namespace_p_d_j_e___j_u_d_g_e_1aa614512ba31f8521b7f0d2f648c52415" kindref="member">Parse</ref>(<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t" kindref="compound">PARSE_OUT</ref><sp/>&amp;out,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b" kindref="compound">RAIL_DB</ref><sp/>&amp;raildb,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespace_p_d_j_e___j_u_d_g_e_1a92f69083730ba6caa06232ad7143e313" kindref="member">INPUT_RAW</ref><sp/>&amp;raw)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a1add107ff0d2f181a59042a45f465ec0" kindref="member">logs</ref>.clear();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a1add107ff0d2f181a59042a45f465ec0" kindref="member">logs</ref>.reserve(raw.size());</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(raw.size()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>int64_t<sp/><sp/><sp/><sp/><sp/>off;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>offsetkey;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;rawp<sp/>:<sp/>raw)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offsetkey.assign(rawp.id,<sp/>rawp.id_len);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>raildb.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a6e1e50ccacd3e3dfdcb1e55633ef5eb8" kindref="member">offset</ref>.find(offsetkey);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>raildb.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a6e1e50ccacd3e3dfdcb1e55633ef5eb8" kindref="member">offset</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>off<sp/>=<sp/>it-&gt;second;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>off<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a1add107ff0d2f181a59042a45f465ec0" kindref="member">logs</ref>.push_back(rawp);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a1add107ff0d2f181a59042a45f465ec0" kindref="member">logs</ref>.back().microSecond<sp/>+=<sp/>off;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>std::sort(out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a1add107ff0d2f181a59042a45f465ec0" kindref="member">logs</ref>.begin(),</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a1add107ff0d2f181a59042a45f465ec0" kindref="member">logs</ref>.end(),</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_p_d_j_e___input___log" kindref="compound">PDJE_Input_Log</ref><sp/>&amp;a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_p_d_j_e___input___log" kindref="compound">PDJE_Input_Log</ref><sp/>&amp;b)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>a.microSecond<sp/>&lt;<sp/>b.microSecond;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1aacc794d73555267a36df90d65620f1e2" kindref="member">highest</ref><sp/>=<sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a1add107ff0d2f181a59042a45f465ec0" kindref="member">logs</ref>.back().microSecond;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a6314b5d57c452d5f03c3a8f4d6c32a46" kindref="member">lowest</ref><sp/><sp/>=<sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a1add107ff0d2f181a59042a45f465ec0" kindref="member">logs</ref>.front().microSecond;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="namespace_p_d_j_e___j_u_d_g_e_1a1e9928aafb8a97a2cd5dde1c2179e218" refkind="member"><highlight class="normal"><ref refid="namespace_p_d_j_e___j_u_d_g_e_1aa614512ba31f8521b7f0d2f648c52415" kindref="member">Parse</ref>(<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t" kindref="compound">PARSE_OUT</ref><sp/>&amp;out,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b" kindref="compound">RAIL_DB</ref><sp/>&amp;raildb,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespace_p_d_j_e___j_u_d_g_e_1a6ef94e4c821228703c99fa607e5d148c" kindref="member">MIDI_RAW</ref><sp/>&amp;midi_raw)</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a8af406b879e74e0b83cbdbf5eeaebf0d" kindref="member">midi_logs</ref>.clear();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a8af406b879e74e0b83cbdbf5eeaebf0d" kindref="member">midi_logs</ref>.reserve(midi_raw.size());</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(midi_raw.size()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>int64_t<sp/><sp/><sp/><sp/><sp/>off;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>offsetkey;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;rawp<sp/>:<sp/>midi_raw)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offsetkey.assign(rawp.port_name,<sp/>rawp.port_name_len);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>raildb.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a6e1e50ccacd3e3dfdcb1e55633ef5eb8" kindref="member">offset</ref>.find(offsetkey);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>raildb.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a6e1e50ccacd3e3dfdcb1e55633ef5eb8" kindref="member">offset</ref>.end())<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>off<sp/>=<sp/>it-&gt;second;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>off<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a8af406b879e74e0b83cbdbf5eeaebf0d" kindref="member">midi_logs</ref>.push_back(rawp);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a8af406b879e74e0b83cbdbf5eeaebf0d" kindref="member">midi_logs</ref>.back().highres_time<sp/>+=<sp/>off;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>std::sort(out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a8af406b879e74e0b83cbdbf5eeaebf0d" kindref="member">midi_logs</ref>.begin(),</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a8af406b879e74e0b83cbdbf5eeaebf0d" kindref="member">midi_logs</ref>.end(),</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_p_d_j_e___m_i_d_i_1_1_m_i_d_i___e_v" kindref="compound">PDJE_MIDI::MIDI_EV</ref><sp/>&amp;a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_p_d_j_e___m_i_d_i_1_1_m_i_d_i___e_v" kindref="compound">PDJE_MIDI::MIDI_EV</ref><sp/>&amp;b)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>a.highres_time<sp/>&lt;<sp/>b.highres_time;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>});</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1aacc794d73555267a36df90d65620f1e2" kindref="member">highest</ref><sp/>=<sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a8af406b879e74e0b83cbdbf5eeaebf0d" kindref="member">midi_logs</ref>.back().highres_time;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a6314b5d57c452d5f03c3a8f4d6c32a46" kindref="member">lowest</ref><sp/><sp/>=<sp/>out.<ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t_1a8af406b879e74e0b83cbdbf5eeaebf0d" kindref="member">midi_logs</ref>.front().highres_time;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_JUDGE</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/judge/InputParser/InputParser.hpp"/>
+  </compounddef>
+</doxygen>

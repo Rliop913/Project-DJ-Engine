@@ -4,7 +4,7 @@
 File fileNameSanitizer.hpp
 ==========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include/global/DataLines``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include\global\DataLines``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ Provides utilities for sanitizing and de-sanitizing file names.
    :local:
    :backlinks: none
 
-Definition (``include/global/DataLines/fileNameSanitizer.hpp``)
+Definition (``include\global\DataLines\fileNameSanitizer.hpp``)
 ---------------------------------------------------------------
 
 
@@ -86,20 +86,20 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPDJE__Name__Sanitizer`
+- :ref:`exhale_class_class_p_d_j_e___name___sanitizer`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_fileNameSanitizer_8hpp_1a60e6f3a42a8bab43c807f31be0e7aab1`
+- :ref:`exhale_typedef_file_name_sanitizer_8hpp_1a60e6f3a42a8bab43c807f31be0e7aab1`
 
-- :ref:`exhale_typedef_fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d`
+- :ref:`exhale_typedef_file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d`
 
-- :ref:`exhale_typedef_fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07`
+- :ref:`exhale_typedef_file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07`
 
-- :ref:`exhale_typedef_fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47`
+- :ref:`exhale_typedef_file_name_sanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47`
 
-- :ref:`exhale_typedef_fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604`
+- :ref:`exhale_typedef_file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604`
 

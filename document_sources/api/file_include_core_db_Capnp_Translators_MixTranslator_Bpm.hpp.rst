@@ -4,7 +4,7 @@
 File Bpm.hpp
 ============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_db_Capnp_Translators_MixTranslator>` (``include/core/db/Capnp/Translators/MixTranslator``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_db_Capnp_Translators_MixTranslator>` (``include\core\db\Capnp\Translators\MixTranslator``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Bpm.hpp
    :local:
    :backlinks: none
 
-Definition (``include/core/db/Capnp/Translators/MixTranslator/Bpm.hpp``)
+Definition (``include\core\db\Capnp\Translators\MixTranslator\Bpm.hpp``)
 ------------------------------------------------------------------------
 
 
@@ -36,7 +36,7 @@ Includes
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
 
-- ``mutex``
+- ``mutex`` (:ref:`file_include_input_IPC_memory_ipc_named_mutex.hpp`)
 
 - ``string``
 
@@ -63,5 +63,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classBPM`
+- :ref:`exhale_class_class_b_p_m`
 

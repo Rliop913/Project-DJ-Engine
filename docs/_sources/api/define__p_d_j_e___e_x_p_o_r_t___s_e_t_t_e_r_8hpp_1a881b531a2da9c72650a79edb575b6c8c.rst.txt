@@ -3,7 +3,7 @@
 Define PDJE_API
 ===============
 
-- Defined in :ref:`file_global_include_PDJE_EXPORT_SETTER.hpp`
+- Defined in :ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`
 
 
 Define Documentation

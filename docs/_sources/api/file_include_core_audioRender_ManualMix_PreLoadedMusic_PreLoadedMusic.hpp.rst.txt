@@ -4,7 +4,7 @@
 File PreLoadedMusic.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix_PreLoadedMusic>` (``include/core/audioRender/ManualMix/PreLoadedMusic``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix_PreLoadedMusic>` (``include\core\audioRender\ManualMix\PreLoadedMusic``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PreLoadedMusic.hpp
    :local:
    :backlinks: none
 
-Definition (``include/core/audioRender/ManualMix/PreLoadedMusic/PreLoadedMusic.hpp``)
+Definition (``include\core\audioRender\ManualMix\PreLoadedMusic\PreLoadedMusic.hpp``)
 -------------------------------------------------------------------------------------
 
 
@@ -51,5 +51,5 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPreLoadedMusic`
+- :ref:`exhale_struct_struct_pre_loaded_music`
 

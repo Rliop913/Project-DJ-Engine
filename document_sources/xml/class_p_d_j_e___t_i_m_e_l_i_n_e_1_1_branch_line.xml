@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_TIMELINE::BranchLine</compoundname>
+    <includes refid="_line_version_8hpp" local="no">LineVersion.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1ad9e4ce44f049d42992e97d8488628d39" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_git_data" kindref="compound">GitData</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;GitData&gt; PDJE_TIMELINE::BranchLine::git</definition>
+        <argsstring></argsstring>
+        <name>git</name>
+        <qualifiedname>PDJE_TIMELINE::BranchLine::git</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" line="48" column="21" bodyfile="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1af35698a901768a56e7173f4dc52d1adb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_TIMELINE::BranchLine::GetHead</definition>
+        <argsstring>(git_oid &amp;oid)</argsstring>
+        <name>GetHead</name>
+        <qualifiedname>PDJE_TIMELINE::BranchLine::GetHead</qualifiedname>
+        <param>
+          <type>git_oid &amp;</type>
+          <declname>oid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" line="52" column="5" bodyfile="include/core/editor/TimeLine/LineVersion/LineVersion.cpp" bodystart="60" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1a93af556ea6b5ad2d61928c16129e296a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_TIMELINE::BranchLine::CheckUnborn</definition>
+        <argsstring>()</argsstring>
+        <name>CheckUnborn</name>
+        <qualifiedname>PDJE_TIMELINE::BranchLine::CheckUnborn</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" line="54" column="5" bodyfile="include/core/editor/TimeLine/LineVersion/LineVersion.cpp" bodystart="13" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1acc2341d4780de8c5ef5256b660e903c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_TIMELINE::BranchLine::Born</definition>
+        <argsstring>(git_index *idx)</argsstring>
+        <name>Born</name>
+        <qualifiedname>PDJE_TIMELINE::BranchLine::Born</qualifiedname>
+        <param>
+          <type>git_index *</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" line="56" column="5" bodyfile="include/core/editor/TimeLine/LineVersion/LineVersion.cpp" bodystart="20" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1a3a1a5e940e44d174351fed7532238f58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_TIMELINE::BranchLine::IsDetached</definition>
+        <argsstring>()</argsstring>
+        <name>IsDetached</name>
+        <qualifiedname>PDJE_TIMELINE::BranchLine::IsDetached</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" line="58" column="5" bodyfile="include/core/editor/TimeLine/LineVersion/LineVersion.cpp" bodystart="49" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1a80af521225f2ad9d4c12d8abfad5fc5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_TIMELINE::BranchLine::Diverge</definition>
+        <argsstring>()</argsstring>
+        <name>Diverge</name>
+        <qualifiedname>PDJE_TIMELINE::BranchLine::Diverge</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" line="60" column="5" bodyfile="include/core/editor/TimeLine/LineVersion/LineVersion.cpp" bodystart="71" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1a968698d2d4480c41238826763d653609" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_TIMELINE::BranchLine::AppendToHead</definition>
+        <argsstring>(git_index *idx)</argsstring>
+        <name>AppendToHead</name>
+        <qualifiedname>PDJE_TIMELINE::BranchLine::AppendToHead</qualifiedname>
+        <param>
+          <type>git_index *</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" line="62" column="5" bodyfile="include/core/editor/TimeLine/LineVersion/LineVersion.cpp" bodystart="97" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1a78dbfdf1ff3f043551963602fc2e0787" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::pair&lt; <ref refid="namespace_p_d_j_e___t_i_m_e_l_i_n_e_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref>, <ref refid="namespace_p_d_j_e___t_i_m_e_l_i_n_e_1a4df8215070f7b003bc7eda9797e018d3" kindref="member">TIME_STAMP</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::pair&lt; OID, TIME_STAMP &gt; &gt; PDJE_TIMELINE::BranchLine::ListLines</definition>
+        <argsstring>()</argsstring>
+        <name>ListLines</name>
+        <qualifiedname>PDJE_TIMELINE::BranchLine::ListLines</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" line="64" column="5" bodyfile="include/core/editor/TimeLine/LineVersion/LineVersion.cpp" bodystart="140" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1a16202ed844bbb6621c13555b1f671394" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_TIMELINE::BranchLine::BranchLine</definition>
+        <argsstring>(const std::shared_ptr&lt; GitData &gt; &amp;gitptr)</argsstring>
+        <name>BranchLine</name>
+        <qualifiedname>PDJE_TIMELINE::BranchLine::BranchLine</qualifiedname>
+        <param>
+          <type>const std::shared_ptr&lt; <ref refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_git_data" kindref="compound">GitData</ref> &gt; &amp;</type>
+          <declname>gitptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" line="65" column="5" bodyfile="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" bodystart="65" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1a1ce4a95437541904468ba144adcb4f58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_TIMELINE::BranchLine::~BranchLine</definition>
+        <argsstring>()=default</argsstring>
+        <name>~BranchLine</name>
+        <qualifiedname>PDJE_TIMELINE::BranchLine::~BranchLine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" line="68" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>PDJE_TIMELINE::BranchLine</label>
+        <link refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>git</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>PDJE_TIMELINE::GitData</label>
+        <link refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_git_data"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>log_tree</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>LIFO_log</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>target_file</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::shared_ptr&lt; PDJE_TIMELINE::GitData &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::string</label>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::unordered_map&lt; OID, BACK_OID &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>elements</edgelabel>
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>std::vector&lt; OID &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" line="46" column="1" bodyfile="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" bodystart="46" bodyend="69"/>
+    <listofallmembers>
+      <member refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1a968698d2d4480c41238826763d653609" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::BranchLine</scope><name>AppendToHead</name></member>
+      <member refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1acc2341d4780de8c5ef5256b660e903c6" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::BranchLine</scope><name>Born</name></member>
+      <member refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1a16202ed844bbb6621c13555b1f671394" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::BranchLine</scope><name>BranchLine</name></member>
+      <member refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1a93af556ea6b5ad2d61928c16129e296a" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::BranchLine</scope><name>CheckUnborn</name></member>
+      <member refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1a80af521225f2ad9d4c12d8abfad5fc5a" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::BranchLine</scope><name>Diverge</name></member>
+      <member refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1af35698a901768a56e7173f4dc52d1adb" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::BranchLine</scope><name>GetHead</name></member>
+      <member refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1ad9e4ce44f049d42992e97d8488628d39" prot="private" virt="non-virtual"><scope>PDJE_TIMELINE::BranchLine</scope><name>git</name></member>
+      <member refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1a3a1a5e940e44d174351fed7532238f58" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::BranchLine</scope><name>IsDetached</name></member>
+      <member refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1a78dbfdf1ff3f043551963602fc2e0787" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::BranchLine</scope><name>ListLines</name></member>
+      <member refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line_1a1ce4a95437541904468ba144adcb4f58" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::BranchLine</scope><name>~BranchLine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

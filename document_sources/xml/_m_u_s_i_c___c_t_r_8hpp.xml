@@ -9,10 +9,10 @@
     <includes refid="_mix_translator_8hpp" local="yes">MixTranslator.hpp</includes>
     <includes refid="_music_translator_8hpp" local="yes">MusicTranslator.hpp</includes>
     <includes refid="db_root_8hpp" local="yes">dbRoot.hpp</includes>
-    <includedby refid="_battle_dj_8hpp" local="yes">core_include/audioRender/MixMachine/MUSIC_CTR/BattleDj.hpp</includedby>
-    <includedby refid="_m_u_s_i_c___c_t_r_8cpp" local="yes">core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp</includedby>
-    <includedby refid="_set_cue_8cpp" local="yes">core_include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp</includedby>
-    <includedby refid="_capnp_test_8cpp" local="yes">core_include/tests/CapnpTest.cpp</includedby>
+    <includedby refid="_battle_dj_8hpp" local="yes">include/core/audioRender/MixMachine/MUSIC_CTR/BattleDj.hpp</includedby>
+    <includedby refid="_m_u_s_i_c___c_t_r_8cpp" local="yes">include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp</includedby>
+    <includedby refid="_set_cue_8cpp" local="yes">include/core/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp</includedby>
+    <includedby refid="_capnp_test_8cpp" local="yes">include/tests/CapnpTest.cpp</includedby>
     <incdepgraph>
       <node id="4">
         <label>DeckData.hpp</label>
@@ -27,7 +27,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</label>
+        <label>include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</label>
         <link refid="_m_u_s_i_c___c_t_r_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -37,11 +37,11 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -55,13 +55,13 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -97,13 +97,13 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="42">
         <label>Bpm.hpp</label>
         <link refid="_bpm_8hpp"/>
-        <childnode refid="40" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -123,7 +123,7 @@
         <link refid="_mix_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
@@ -134,12 +134,12 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="40">
         <label>MixTranslator.hpp</label>
         <link refid="_mix_translator_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -174,18 +174,16 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="28">
         <label>dbRoot.hpp</label>
         <link refid="db_root_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
@@ -193,16 +191,18 @@
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="35">
         <label>dbState.hpp</label>
         <link refid="db_state_8hpp"/>
         <childnode refid="7" relation="include">
@@ -211,29 +211,15 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
-      <node id="35">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="file_name_sanitizer_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="34">
         <label>musicDB.hpp</label>
         <link refid="music_d_b_8hpp"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -241,23 +227,37 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
         <childnode refid="35" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
       </node>
-      <node id="37">
+      <node id="38">
         <label>trackDB.hpp</label>
         <link refid="track_d_b_8hpp"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
         <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="file_name_sanitizer_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -278,6 +278,8 @@
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="16">
@@ -304,7 +306,7 @@
       <node id="12">
         <label>cmath</label>
       </node>
-      <node id="36">
+      <node id="37">
         <label>cppcodec/base64_default_url.hpp</label>
       </node>
       <node id="20">
@@ -313,52 +315,52 @@
       <node id="6">
         <label>functional</label>
       </node>
-      <node id="26">
+      <node id="27">
         <label>hwy/aligned_allocator.h</label>
       </node>
-      <node id="38">
+      <node id="39">
         <label>miniaudio.h</label>
       </node>
-      <node id="40">
+      <node id="21">
         <label>mutex</label>
       </node>
       <node id="2">
         <label>optional</label>
       </node>
-      <node id="29">
+      <node id="30">
         <label>rocksdb/db.h</label>
       </node>
-      <node id="30">
+      <node id="31">
         <label>rocksdb/filter_policy.h</label>
       </node>
-      <node id="31">
+      <node id="32">
         <label>rocksdb/options.h</label>
       </node>
-      <node id="32">
+      <node id="33">
         <label>rocksdb/table.h</label>
       </node>
-      <node id="21">
+      <node id="22">
         <label>spdlog/sinks/basic_file_sink.h</label>
       </node>
-      <node id="22">
+      <node id="23">
         <label>spdlog/sinks/stdout_color_sinks.h</label>
       </node>
-      <node id="23">
+      <node id="24">
         <label>spdlog/spdlog.h</label>
       </node>
-      <node id="28">
+      <node id="29">
         <label>sqlite3.h</label>
       </node>
       <node id="7">
         <label>string</label>
       </node>
-      <node id="24">
+      <node id="25">
         <label>string_view</label>
       </node>
       <node id="41">
         <label>thread</label>
       </node>
-      <node id="25">
+      <node id="26">
         <label>type_traits</label>
       </node>
       <node id="8">
@@ -367,11 +369,11 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="6">
-        <label>core_include/MainObjects/audioPlayer/audioPlayer.cpp</label>
+        <label>include/core/MainObjects/audioPlayer/audioPlayer.cpp</label>
         <link refid="audio_player_8cpp"/>
       </node>
       <node id="5">
-        <label>core_include/MainObjects/audioPlayer/audioPlayer.hpp</label>
+        <label>include/core/MainObjects/audioPlayer/audioPlayer.hpp</label>
         <link refid="audio_player_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
@@ -379,27 +381,27 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
       <node id="8">
-        <label>core_include/MainObjects/editorObject/addline.cpp</label>
+        <label>include/core/MainObjects/editorObject/addline.cpp</label>
         <link refid="addline_8cpp"/>
       </node>
       <node id="9">
-        <label>core_include/MainObjects/editorObject/commonfunction.cpp</label>
+        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
         <link refid="commonfunction_8cpp"/>
       </node>
       <node id="10">
-        <label>core_include/MainObjects/editorObject/deleteline.cpp</label>
+        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
         <link refid="deleteline_8cpp"/>
       </node>
       <node id="11">
-        <label>core_include/MainObjects/editorObject/editorObject.cpp</label>
+        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
         <link refid="editor_object_8cpp"/>
       </node>
       <node id="7">
-        <label>core_include/MainObjects/editorObject/editorObject.hpp</label>
+        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
         <link refid="editor_object_8hpp"/>
         <childnode refid="8" relation="include">
         </childnode>
@@ -433,91 +435,87 @@
         </childnode>
       </node>
       <node id="12">
-        <label>core_include/MainObjects/editorObject/getall.cpp</label>
+        <label>include/core/MainObjects/editorObject/getall.cpp</label>
         <link refid="getall_8cpp"/>
       </node>
       <node id="13">
-        <label>core_include/MainObjects/editorObject/getdiff.cpp</label>
+        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
         <link refid="getdiff_8cpp"/>
       </node>
       <node id="14">
-        <label>core_include/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
         <link refid="getlogwithjsongraph_8cpp"/>
       </node>
       <node id="15">
-        <label>core_include/MainObjects/editorObject/go.cpp</label>
+        <label>include/core/MainObjects/editorObject/go.cpp</label>
         <link refid="go_8cpp"/>
       </node>
       <node id="16">
-        <label>core_include/MainObjects/editorObject/redo.cpp</label>
+        <label>include/core/MainObjects/editorObject/redo.cpp</label>
         <link refid="redo_8cpp"/>
       </node>
       <node id="17">
-        <label>core_include/MainObjects/editorObject/render.cpp</label>
+        <label>include/core/MainObjects/editorObject/render.cpp</label>
         <link refid="render_8cpp"/>
       </node>
       <node id="18">
-        <label>core_include/MainObjects/editorObject/undo.cpp</label>
+        <label>include/core/MainObjects/editorObject/undo.cpp</label>
         <link refid="undo_8cpp"/>
       </node>
       <node id="19">
-        <label>core_include/MainObjects/editorObject/updatelog.cpp</label>
+        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
         <link refid="updatelog_8cpp"/>
       </node>
       <node id="20">
-        <label>core_include/SWIG_editor_visitor.hpp</label>
+        <label>include/core/SWIG_editor_visitor.hpp</label>
         <link refid="_s_w_i_g__editor__visitor_8hpp"/>
       </node>
       <node id="3">
-        <label>core_include/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp</label>
+        <label>include/core/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp</label>
         <link refid="_battle_dj_8cpp"/>
       </node>
       <node id="2">
-        <label>core_include/audioRender/MixMachine/MUSIC_CTR/BattleDj.hpp</label>
+        <label>include/core/audioRender/MixMachine/MUSIC_CTR/BattleDj.hpp</label>
         <link refid="_battle_dj_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="47">
-        <label>core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp</label>
+      <node id="49">
+        <label>include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp</label>
         <link refid="_m_u_s_i_c___c_t_r_8cpp"/>
       </node>
       <node id="1">
-        <label>core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</label>
+        <label>include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</label>
         <link refid="_m_u_s_i_c___c_t_r_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
-        </childnode>
-        <childnode refid="48" relation="include">
-        </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-      </node>
-      <node id="48">
-        <label>core_include/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp</label>
-        <link refid="_set_cue_8cpp"/>
-      </node>
-      <node id="29">
-        <label>core_include/audioRender/MixMachine/MixMachine-inl.h</label>
-        <link refid="_mix_machine-inl_8h"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
         </childnode>
       </node>
-      <node id="30">
-        <label>core_include/audioRender/MixMachine/MixMachine.cpp</label>
+      <node id="50">
+        <label>include/core/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp</label>
+        <link refid="_set_cue_8cpp"/>
+      </node>
+      <node id="31">
+        <label>include/core/audioRender/MixMachine/MixMachine-inl.h</label>
+        <link refid="_mix_machine-inl_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>include/core/audioRender/MixMachine/MixMachine.cpp</label>
         <link refid="_mix_machine_8cpp"/>
       </node>
       <node id="4">
-        <label>core_include/audioRender/MixMachine/MixMachine.hpp</label>
+        <label>include/core/audioRender/MixMachine/MixMachine.hpp</label>
         <link refid="_mix_machine_8hpp"/>
         <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
@@ -549,87 +547,91 @@
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="31">
-        <label>core_include/audioRender/MixMachine/MixTypes/Type_FX_COMPRESSOR.cpp</label>
+      <node id="33">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_COMPRESSOR.cpp</label>
         <link refid="_type___f_x___c_o_m_p_r_e_s_s_o_r_8cpp"/>
       </node>
-      <node id="32">
-        <label>core_include/audioRender/MixMachine/MixTypes/Type_FX_DISTORTION.cpp</label>
+      <node id="34">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_DISTORTION.cpp</label>
         <link refid="_type___f_x___d_i_s_t_o_r_t_i_o_n_8cpp"/>
       </node>
-      <node id="33">
-        <label>core_include/audioRender/MixMachine/MixTypes/Type_FX_ECHO.cpp</label>
+      <node id="35">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_ECHO.cpp</label>
         <link refid="_type___f_x___e_c_h_o_8cpp"/>
       </node>
-      <node id="34">
-        <label>core_include/audioRender/MixMachine/MixTypes/Type_FX_EQ.cpp</label>
+      <node id="36">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_EQ.cpp</label>
         <link refid="_type___f_x___e_q_8cpp"/>
       </node>
-      <node id="35">
-        <label>core_include/audioRender/MixMachine/MixTypes/Type_FX_FILTER.cpp</label>
+      <node id="37">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_FILTER.cpp</label>
         <link refid="_type___f_x___f_i_l_t_e_r_8cpp"/>
       </node>
-      <node id="36">
-        <label>core_include/audioRender/MixMachine/MixTypes/Type_FX_FLANGER.cpp</label>
+      <node id="38">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_FLANGER.cpp</label>
         <link refid="_type___f_x___f_l_a_n_g_e_r_8cpp"/>
       </node>
-      <node id="37">
-        <label>core_include/audioRender/MixMachine/MixTypes/Type_FX_OCS_FILTER.cpp</label>
+      <node id="39">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_OCS_FILTER.cpp</label>
         <link refid="_type___f_x___o_c_s___f_i_l_t_e_r_8cpp"/>
       </node>
-      <node id="38">
-        <label>core_include/audioRender/MixMachine/MixTypes/Type_FX_PANNER.cpp</label>
+      <node id="40">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_PANNER.cpp</label>
         <link refid="_type___f_x___p_a_n_n_e_r_8cpp"/>
       </node>
-      <node id="39">
-        <label>core_include/audioRender/MixMachine/MixTypes/Type_FX_PHASER.cpp</label>
+      <node id="41">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_PHASER.cpp</label>
         <link refid="_type___f_x___p_h_a_s_e_r_8cpp"/>
       </node>
-      <node id="40">
-        <label>core_include/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp</label>
+      <node id="42">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp</label>
         <link refid="_type___f_x___r_o_b_o_t_8cpp"/>
       </node>
-      <node id="41">
-        <label>core_include/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp</label>
+      <node id="43">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp</label>
         <link refid="_type___f_x___r_o_l_l_8cpp"/>
       </node>
-      <node id="42">
-        <label>core_include/audioRender/MixMachine/MixTypes/Type_FX_TRANCE.cpp</label>
+      <node id="44">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_TRANCE.cpp</label>
         <link refid="_type___f_x___t_r_a_n_c_e_8cpp"/>
       </node>
-      <node id="43">
-        <label>core_include/audioRender/MixMachine/MixTypes/Type_MUSCTR.cpp</label>
+      <node id="45">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_MUSCTR.cpp</label>
         <link refid="_type___m_u_s_c_t_r_8cpp"/>
       </node>
-      <node id="44">
-        <label>core_include/audioRender/MixMachine/MixTypes/Type_VOL.cpp</label>
+      <node id="46">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_VOL.cpp</label>
         <link refid="_type___v_o_l_8cpp"/>
       </node>
-      <node id="46">
-        <label>core_include/audioRender/audioRender.cpp</label>
+      <node id="48">
+        <label>include/core/audioRender/audioRender.cpp</label>
         <link refid="audio_render_8cpp"/>
       </node>
-      <node id="45">
-        <label>core_include/audioRender/audioRender.hpp</label>
+      <node id="47">
+        <label>include/core/audioRender/audioRender.hpp</label>
         <link refid="audio_render_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
       </node>
       <node id="21">
-        <label>core_include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
+        <label>include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</label>
         <link refid="_music_json_8cpp"/>
       </node>
       <node id="23">
-        <label>core_include/interface/PDJE_interface.cpp</label>
+        <label>include/core/interface/PDJE_interface.cpp</label>
         <link refid="_p_d_j_e__interface_8cpp"/>
       </node>
       <node id="22">
-        <label>core_include/interface/PDJE_interface.hpp</label>
+        <label>include/core/interface/PDJE_interface.hpp</label>
         <link refid="_p_d_j_e__interface_8hpp"/>
         <childnode refid="23" relation="include">
         </childnode>
@@ -641,29 +643,41 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
       </node>
       <node id="24">
-        <label>core_include/interface/PDJE_polyglot_wraps.cpp</label>
+        <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="_p_d_j_e__polyglot__wraps_8cpp"/>
       </node>
-      <node id="49">
-        <label>core_include/tests/CapnpTest.cpp</label>
+      <node id="51">
+        <label>include/tests/CapnpTest.cpp</label>
         <link refid="_capnp_test_8cpp"/>
       </node>
-      <node id="28">
-        <label>core_include/tests/audioTest.cpp</label>
+      <node id="25">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judge_test_8cpp"/>
+      </node>
+      <node id="30">
+        <label>include/tests/audioTest.cpp</label>
         <link refid="audio_test_8cpp"/>
       </node>
-      <node id="25">
-        <label>core_include/tests/dbTest.cpp</label>
+      <node id="26">
+        <label>include/tests/dbTest.cpp</label>
         <link refid="db_test_8cpp"/>
       </node>
-      <node id="26">
-        <label>core_include/tests/editorTest.cpp</label>
+      <node id="27">
+        <label>include/tests/editorTest.cpp</label>
         <link refid="editor_test_8cpp"/>
       </node>
-      <node id="27">
-        <label>core_include/tests/interfaceTest.cpp</label>
+      <node id="28">
+        <label>include/tests/gittest.cpp</label>
+        <link refid="gittest_8cpp"/>
+      </node>
+      <node id="29">
+        <label>include/tests/interfaceTest.cpp</label>
         <link refid="interface_test_8cpp"/>
       </node>
     </invincdepgraph>
@@ -675,14 +689,14 @@
         <name>GET_BIGGER</name>
         <param><defname>A</defname></param>
         <param><defname>B</defname></param>
-        <initializer>(A &lt; B ? B : A)</initializer>
+        <initializer>(<ref refid="_input___state_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca42a4ade1acd55a49164099104990e09f" kindref="member">A</ref> &lt; <ref refid="_input___state_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca3f2a77ecd272aa6d6b5902faa5e5fc68" kindref="member">B</ref> ? <ref refid="_input___state_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca3f2a77ecd272aa6d6b5902faa5e5fc68" kindref="member">B</ref> : <ref refid="_input___state_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca42a4ade1acd55a49164099104990e09f" kindref="member">A</ref>)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="18" column="9" bodyfile="core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="18" bodyend="-1"/>
+        <location file="include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="18" column="9" bodyfile="include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="18" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="enum">
@@ -723,7 +737,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="20" column="1" bodyfile="core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="20" bodyend="25"/>
+        <location file="include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="20" column="1" bodyfile="include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="20" bodyend="25"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="typedef">
@@ -738,7 +752,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="15" column="1" bodyfile="core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="15" bodyend="-1"/>
+        <location file="include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="15" column="1" bodyfile="include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_m_u_s_i_c___c_t_r_8hpp_1a778515599863c320af7656ca481e384b" prot="public" static="no">
         <type><ref refid="_decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref></type>
@@ -751,7 +765,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="16" column="1" bodyfile="core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="16" bodyend="-1"/>
+        <location file="include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="16" column="1" bodyfile="include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="16" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="var">
@@ -767,7 +781,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="13" column="21" bodyfile="core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="13" bodyend="-1"/>
+        <location file="include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" line="13" column="21" bodyfile="include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp" bodystart="13" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -865,6 +879,6 @@
 <codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_m_u_s_i_c___c_t_r_1abe8687de46ae7d87c926d79346ff2633" kindref="member">SendData</ref>(soundtouch::SoundTouch<sp/>*&amp;stp,<sp/><ref refid="struct_decoder" kindref="compound">Decoder</ref><sp/>*&amp;dp);</highlight></codeline>
 <codeline lineno="189"><highlight class="normal">};</highlight></codeline>
     </programlisting>
-    <location file="core_include/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp"/>
+    <location file="include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp"/>
   </compounddef>
 </doxygen>

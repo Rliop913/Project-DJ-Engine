@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="_mac_2_p_d_j_e___highres___clock_8hpp" kind="file" language="C++">
+    <compoundname>PDJE_Highres_Clock.hpp</compoundname>
+    <includes local="no">cstdint</includes>
+    <includes local="no">time.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>include/global/Highres_Clock/Mac/PDJE_Highres_Clock.hpp</label>
+        <link refid="_mac_2_p_d_j_e___highres___clock_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+      <node id="3">
+        <label>time.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="class_p_d_j_e___h_i_g_h_r_e_s___c_l_o_c_k_1_1_c_l_o_c_k" prot="public">PDJE_HIGHRES_CLOCK::CLOCK</innerclass>
+    <innernamespace refid="namespace_p_d_j_e___h_i_g_h_r_e_s___c_l_o_c_k">PDJE_HIGHRES_CLOCK</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;time.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___h_i_g_h_r_e_s___c_l_o_c_k" kindref="compound">PDJE_HIGHRES_CLOCK</ref><sp/>{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_p_d_j_e___h_i_g_h_r_e_s___c_l_o_c_k_1_1_c_l_o_c_k" kindref="compound">CLOCK</ref><sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">timespec<sp/><ref refid="class_p_d_j_e___h_i_g_h_r_e_s___c_l_o_c_k_1_1_c_l_o_c_k_1ad2232e60c615b31184a7b549dbf8f70d" kindref="member">ts</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t</highlight></codeline>
+<codeline lineno="12" refid="class_p_d_j_e___h_i_g_h_r_e_s___c_l_o_c_k_1_1_c_l_o_c_k_1ae3ea2350d7de5834d668a0ef3e1502e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___h_i_g_h_r_e_s___c_l_o_c_k_1_1_c_l_o_c_k_1ae3ea2350d7de5834d668a0ef3e1502e8" kindref="member">Get_MicroSecond</ref>()</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>clock_gettime(CLOCK_MONOTONIC_RAW,<sp/>&amp;<ref refid="class_p_d_j_e___h_i_g_h_r_e_s___c_l_o_c_k_1_1_c_l_o_c_k_1ad2232e60c615b31184a7b549dbf8f70d" kindref="member">ts</ref>);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint64_t)<ref refid="class_p_d_j_e___h_i_g_h_r_e_s___c_l_o_c_k_1_1_c_l_o_c_k_1ad2232e60c615b31184a7b549dbf8f70d" kindref="member">ts</ref>.tv_sec<sp/>*<sp/>1000000ull<sp/>+<sp/><ref refid="class_p_d_j_e___h_i_g_h_r_e_s___c_l_o_c_k_1_1_c_l_o_c_k_1ad2232e60c615b31184a7b549dbf8f70d" kindref="member">ts</ref>.tv_nsec<sp/>/<sp/>1000;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_HIGHRES_CLOCK</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/global/Highres_Clock/Mac/PDJE_Highres_Clock.hpp"/>
+  </compounddef>
+</doxygen>

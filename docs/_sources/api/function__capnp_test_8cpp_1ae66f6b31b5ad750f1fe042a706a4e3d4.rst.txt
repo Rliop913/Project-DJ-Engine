@@ -3,7 +3,7 @@
 Function main()
 ===============
 
-- Defined in :ref:`file_core_include_tests_CapnpTest.cpp`
+- Defined in :ref:`file_include_tests_CapnpTest.cpp`
 
 
 Function Documentation

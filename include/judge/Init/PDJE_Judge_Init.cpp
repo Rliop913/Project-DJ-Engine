@@ -32,15 +32,15 @@ Judge_Init::SetInputLine(const PDJE_INPUT_DATA_LINE &_inputline)
     }
 }
 void
-Judge_Init::SetRail(const libremidi::input_port &midi_port,
-                    const uint64_t               MatchRail,
-                    const uint8_t                type,
-                    const uint8_t                ch,
-                    const uint8_t                pos,
-                    const int64_t                offset_microsecond)
+Judge_Init::SetRail(const std::string &midi_port_name,
+                    const uint64_t     MatchRail,
+                    const uint8_t      type,
+                    const uint8_t      ch,
+                    const uint8_t      pos,
+                    const int64_t      offset_microsecond)
 {
     RAIL_KEY::MIDI key;
-    key.port_name = midi_port.port_name;
+    key.port_name = midi_port_name;
     if (key.port_name.size() > 255) {
         key.port_name = std::string(key.port_name, 255);
     }
@@ -48,6 +48,16 @@ Judge_Init::SetRail(const libremidi::input_port &midi_port,
     key.pos  = pos;
     key.type = type;
     raildb.Add(key, MatchRail, offset_microsecond);
+}
+void
+Judge_Init::SetRail(const libremidi::input_port &midi_port,
+                    const uint64_t               MatchRail,
+                    const uint8_t                type,
+                    const uint8_t                ch,
+                    const uint8_t                pos,
+                    const int64_t                offset_microsecond)
+{
+    SetRail(midi_port.port_name, MatchRail, type, ch, pos, offset_microsecond);
 }
 void
 Judge_Init::SetRail(const DeviceData &devData,

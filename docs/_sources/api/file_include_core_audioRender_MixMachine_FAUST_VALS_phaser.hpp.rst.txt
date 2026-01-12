@@ -4,7 +4,7 @@
 File phaser.hpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_MixMachine_FAUST_VALS>` (``include/core/audioRender/MixMachine/FAUST_VALS``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_MixMachine_FAUST_VALS>` (``include\core\audioRender\MixMachine\FAUST_VALS``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File phaser.hpp
    :local:
    :backlinks: none
 
-Definition (``include/core/audioRender/MixMachine/FAUST_VALS/phaser.hpp``)
+Definition (``include\core\audioRender\MixMachine\FAUST_VALS\phaser.hpp``)
 --------------------------------------------------------------------------
 
 
@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPhaser__PDJE`
+- :ref:`exhale_class_class_phaser___p_d_j_e`
 

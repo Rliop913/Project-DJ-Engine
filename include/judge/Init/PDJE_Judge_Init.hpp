@@ -43,6 +43,13 @@ class PDJE_API Judge_Init {
             const uint64_t    MatchRail);
 
     void
+    SetRail(const std::string &midi_port_name,
+            const uint64_t     MatchRail,
+            const uint8_t      type,
+            const uint8_t      ch,
+            const uint8_t      pos                = 0,
+            const int64_t      offset_microsecond = 0);
+    void
     SetRail(const libremidi::input_port &midi_port,
             const uint64_t               MatchRail,
             const uint8_t                type,

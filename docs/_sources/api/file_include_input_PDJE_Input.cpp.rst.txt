@@ -4,7 +4,7 @@
 File PDJE_Input.cpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input>` (``include/input``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input>` (``include\input``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Input.cpp
    :local:
    :backlinks: none
 
-Definition (``include/input/PDJE_Input.cpp``)
+Definition (``include\input\PDJE_Input.cpp``)
 ---------------------------------------------
 
 
@@ -29,6 +29,8 @@ Definition (``include/input/PDJE_Input.cpp``)
 Includes
 --------
 
+
+- ``NameGen.hpp`` (:ref:`file_include_input_IPC_common_NameGen.hpp`)
 
 - ``PDJE_Input.hpp`` (:ref:`file_include_input_PDJE_Input.hpp`)
 

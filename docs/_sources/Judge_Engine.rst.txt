@@ -153,14 +153,15 @@ Integration flow (mirrors test)
     .. code-block:: c++
 
         // 1) Prepare core and player
-        PDJE engine{"testRoot.db"};
+        PDJE engine("testRoot.db");
         auto td = engine.SearchTrack("");
         engine.InitPlayer(PLAY_MODE::FULL_PRE_RENDER, td.front(), 480);
 
         // 2) Discover input devices and map to rails
-        PDJE_Input input;
+        auto input = PDJE_Input();
         input.Init();
         auto devs = input.GetDevs();
+        auto midis = input.GetMIDIDevs();
         DEV_LIST keyboards;
         PDJE_JUDGE::JUDGE judge;
 
@@ -170,7 +171,20 @@ Integration flow (mirrors test)
                 judge.inits.SetRail(d, PDJE_KEY::A, 0, 1); // device, key, offset, rail
             }
         }
-        input.Config(keyboards);
+
+        for (auto &m : midis) {
+        
+        judge.inits.SetRail(
+            m,
+            1,//match railid
+            static_cast<const uint8_t>(libremidi::message_type::NOTE_ON),//type. NOTE_ON, CONTROL_CHANGE(not implemented on judge logic), PITCH_BEND(not implemented on judge logic) is available.
+            1,//channel
+            48,//note position
+            0);//offset(microsecond)
+        }   
+
+        input.Config(keyboards, midis);
+        //if you don't want to use midi or kb&mouse, just send blank vector.
 
         // 3) Collect notes from track data
         OBJ_SETTER_CALLBACK cb = [&](const std::string        noteType,
@@ -224,7 +238,9 @@ Integration flow (mirrors test)
         if device["type"] == "MOUSE":
           selected_devices.push_back(device)
       print(selected_devices)
-      $PDJE_Input_Module.Config(selected_devices)
+      var selected_midi_devices = $PDJE_Input_Module.GetMIDIDevs()
+      
+      $PDJE_Input_Module.Config(selected_devices, selected_midi_devices)
 
       #judge module init phase
       $PDJE_Judge_Module.AddDataLines($PDJE_Input_Module, engine)
@@ -236,6 +252,8 @@ Integration flow (mirrors test)
         #$PDJE_Judge_Module.DeviceAdd(dev, InputLine.PDJE_KEY.D, 0, 5)
         #$PDJE_Judge_Module.DeviceAdd(dev, InputLine.PDJE_KEY.F, 0, 5)
         #link all keyboard's "ASDF" into rail id 5
+      for midis in selected_midi_devices:
+        $PDJE_Judge_Module.MIDI_DeviceAdd(midis, 5, "NOTE_ON", 1, 48, 0)# link midi type "NOTE_ON" channel 1, position 48 into rail 5 with 0 microsecond offset
       var use_range= 60 * 1000 # use range +- 60ms
       var miss_range= 61 * 1000 # miss range +-61ms
       var use_sleep=1 #use evnet thread sleeps 1ms on every loop

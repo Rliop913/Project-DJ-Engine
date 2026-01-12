@@ -67,6 +67,7 @@ main()
     auto     midis = input.GetMIDIDevs();
 
     for (auto &m : midis) {
+
         judge.inits.SetRail(
             m,
             1,
@@ -75,6 +76,7 @@ main()
             48,
             0);
     }
+
     for (auto &d : devs) {
         if (d.Type == PDJE_Dev_Type::KEYBOARD) {
 

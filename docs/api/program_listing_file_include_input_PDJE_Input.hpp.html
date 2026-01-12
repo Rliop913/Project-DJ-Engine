@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Program Listing for File PDJE_Input.hpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../_static/doctools.js?v=9bcbadda"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -72,7 +70,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Program Listing for File PDJE_Input.hpp</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/api/program_listing_file_include_input_PDJE_Input.hpp.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/program_listing_file_include_input_PDJE_INPUT.hpp.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -82,7 +80,7 @@
              
   <section id="program-listing-for-file-pdje-input-hpp">
 <span id="program-listing-file-include-input-pdje-input-hpp"></span><h1>Program Listing for File PDJE_Input.hpp<a class="headerlink" href="#program-listing-for-file-pdje-input-hpp" title="Link to this heading"></a></h1>
-<p>↰ <a class="reference internal" href="file_include_input_PDJE_Input.hpp.html#file-include-input-pdje-input-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/input/PDJE_Input.hpp</span></code>)</p>
+<p>↰ <a class="reference internal" href="file_include_input_PDJE_INPUT.hpp.html#file-include-input-pdje-input-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\input\PDJE_Input.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Input_State.hpp&quot;</span>
@@ -90,6 +88,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_DataLine.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_Device_Data.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_MIDI.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;barrier&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;future&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
@@ -108,29 +107,25 @@
 
 <span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">PDJE_Input</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="o">:</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">MainProcess</span><span class="o">&gt;</span><span class="w"> </span><span class="n">http_bridge</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">SharedMem</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">PDJE_ID</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_NAME</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">                        </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">PDJE_IPC_RW</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="n">id_name</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">PDJE_Buffer_Arena</span><span class="o">&lt;</span><span class="n">PDJE_Input_Log</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input_buffer</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">SharedMem</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">PDJE_IPC_RW</span><span class="o">&gt;</span>
-<span class="w">        </span><span class="n">spinlock_run</span><span class="p">;</span><span class="w"> </span><span class="c1">// 0 = stop, 1 = go, -1 = terminate</span>
-
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">MAINPROC</span><span class="o">::</span><span class="n">TXRXTransport</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Mproc</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">PDJE_Input_Transfer</span><span class="o">&gt;</span><span class="w">     </span><span class="n">input_buffer</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">                                             </span><span class="n">FLAG_INPUT_ON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">PDJE_MIDI</span><span class="o">::</span><span class="n">MIDI</span><span class="o">&gt;</span><span class="w">                   </span><span class="n">midi_engine</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">                                             </span><span class="n">FLAG_MIDI_ON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="n">PDJE_INPUT_STATE</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEAD</span><span class="p">;</span>
 
 <span class="w">  </span><span class="k">public</span><span class="o">:</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">ErrLog</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="n">GetDevs</span><span class="p">();</span>
 
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">libremidi</span><span class="o">::</span><span class="n">input_port</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="n">GetMIDIDevs</span><span class="p">();</span>
 <span class="w">    </span><span class="kt">bool</span>
 <span class="w">    </span><span class="nf">Init</span><span class="p">();</span>
 
 <span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="nf">Config</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">devs</span><span class="p">);</span>
+<span class="w">    </span><span class="nf">Config</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="w">                  </span><span class="o">&amp;</span><span class="n">devs</span><span class="p">,</span>
+<span class="w">           </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">libremidi</span><span class="o">::</span><span class="n">input_port</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">midi_dev</span><span class="p">);</span>
 
 <span class="w">    </span><span class="kt">bool</span>
 <span class="w">    </span><span class="nf">Run</span><span class="p">();</span>

@@ -3,7 +3,7 @@
 Typedef UNSANITIZED
 ===================
 
-- Defined in :ref:`file_core_include_db_fileNameSanitizer.hpp`
+- Defined in :ref:`file_include_global_DataLines_fileNameSanitizer.hpp`
 
 
 Typedef Documentation

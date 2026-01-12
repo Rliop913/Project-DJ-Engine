@@ -3,7 +3,7 @@
 Class audioPlayer
 =================
 
-- Defined in :ref:`file_core_include_MainObjects_audioPlayer_audioPlayer.hpp`
+- Defined in :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.hpp`
 
 
 Class Documentation

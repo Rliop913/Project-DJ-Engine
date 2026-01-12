@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="linux_2named__mutex_8cpp" kind="file" language="C++">
+    <compoundname>named_mutex.cpp</compoundname>
+    <includes refid="ipc__named__mutex_8hpp" local="yes">ipc_named_mutex.hpp</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ipc_named_mutex.hpp</label>
+        <link refid="ipc__named__mutex_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/input/IPC/memory/linux/named_mutex.cpp</label>
+        <link refid="linux_2named__mutex_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>filesystem</label>
+      </node>
+      <node id="5">
+        <label>mutex</label>
+      </node>
+      <node id="6">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="7">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="8">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="11">
+        <label>string</label>
+      </node>
+      <node id="9">
+        <label>string_view</label>
+      </node>
+      <node id="10">
+        <label>type_traits</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespace_p_d_j_e___i_p_c">PDJE_IPC</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ipc__named__mutex_8hpp" kindref="compound">ipc_named_mutex.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___i_p_c" kindref="compound">PDJE_IPC</ref><sp/>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a3bd8c053a041d243ba7ebe617852fdc0" refkind="member"><highlight class="normal"><ref refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a3bd8c053a041d243ba7ebe617852fdc0" kindref="member">MUTEX::MUTEX</ref>()</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36" kindref="member">startlog</ref>();</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a7ea09999389d87418936b1ae4ac36847" refkind="member"><highlight class="normal"><ref refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a7ea09999389d87418936b1ae4ac36847" kindref="member">MUTEX::init</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespace_p_d_j_e___i_p_c_1a04902c541254b5ef872d47ec219cc36b" kindref="member">MNAME</ref><sp/>&amp;name)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a5b6b97c1a9f0f653ff9aea751dbbb833" kindref="member">mutex_handle</ref><sp/>=<sp/>CreateMutexW(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>FALSE,<sp/>name.wstring().c_str());</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a5b6b97c1a9f0f653ff9aea751dbbb833" kindref="member">mutex_handle</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>create<sp/>ipc<sp/>mutex.<sp/>on<sp/>windows.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a1cad3521da103634e8f1db98135855bd" refkind="member"><highlight class="normal"><ref refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a1cad3521da103634e8f1db98135855bd" kindref="member">MUTEX::lock</ref>()</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>DWORD<sp/>rc<sp/>=<sp/>WaitForSingleObject(<ref refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a5b6b97c1a9f0f653ff9aea751dbbb833" kindref="member">mutex_handle</ref>,<sp/>INFINITE);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rc<sp/>==<sp/>WAIT_OBJECT_0)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rc<sp/>==<sp/>WAIT_ABANDONED)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;IPC<sp/>MUTEX<sp/>Returned<sp/>WAIT_ABANDONED.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1abc73c0b6980ac3721c6ba98fff915be7" refkind="member"><highlight class="normal"><ref refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1abc73c0b6980ac3721c6ba98fff915be7" kindref="member">MUTEX::unlock</ref>()</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ReleaseMutex(<ref refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a5b6b97c1a9f0f653ff9aea751dbbb833" kindref="member">mutex_handle</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>release<sp/>mutex<sp/>on<sp/>windows.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::runtime_error(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>release<sp/>mutex.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a114a87a44234f5af09a58727645100d5" refkind="member"><highlight class="normal"><ref refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a114a87a44234f5af09a58727645100d5" kindref="member">MUTEX::~MUTEX</ref>()</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a5b6b97c1a9f0f653ff9aea751dbbb833" kindref="member">mutex_handle</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CloseHandle(<ref refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a5b6b97c1a9f0f653ff9aea751dbbb833" kindref="member">mutex_handle</ref>);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_IPC</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/input/IPC/memory/linux/named_mutex.cpp"/>
+  </compounddef>
+</doxygen>

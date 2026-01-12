@@ -3,7 +3,7 @@
 Template Class CapReader
 ========================
 
-- Defined in :ref:`file_core_include_db_Capnp_CapnpBinary_CapnpBinary.hpp`
+- Defined in :ref:`file_include_core_db_Capnp_CapnpBinary_CapnpBinary.hpp`
 
 
 Class Documentation

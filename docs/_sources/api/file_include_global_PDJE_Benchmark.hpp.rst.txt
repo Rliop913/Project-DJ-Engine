@@ -4,7 +4,7 @@
 File PDJE_Benchmark.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global>` (``include/global``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global>` (``include\global``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Benchmark.hpp
    :local:
    :backlinks: none
 
-Definition (``include/global/PDJE_Benchmark.hpp``)
+Definition (``include\global\PDJE_Benchmark.hpp``)
 --------------------------------------------------
 
 
@@ -45,5 +45,5 @@ Defines
 -------
 
 
-- :ref:`exhale_define_PDJE__Benchmark_8hpp_1a9473ba1d9968d8422eab2dd9077c062d`
+- :ref:`exhale_define__p_d_j_e___benchmark_8hpp_1a9473ba1d9968d8422eab2dd9077c062d`
 

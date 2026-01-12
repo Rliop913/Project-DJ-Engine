@@ -3,7 +3,7 @@
 Class PDJE_Editor
 =================
 
-- Defined in :ref:`file_core_include_editor_editor.hpp`
+- Defined in :ref:`file_include_core_editor_editor.hpp`
 
 
 Nested Relationships

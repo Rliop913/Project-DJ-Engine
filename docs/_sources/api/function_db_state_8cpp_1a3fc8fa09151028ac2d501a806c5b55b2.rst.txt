@@ -3,7 +3,7 @@
 Specialized Template Function stmt::colGet< COL_TYPE::PDJE_DOUBLE >
 ===================================================================
 
-- Defined in :ref:`file_core_include_db_dbState.cpp`
+- Defined in :ref:`file_include_core_db_dbState.cpp`
 
 
 Function Documentation

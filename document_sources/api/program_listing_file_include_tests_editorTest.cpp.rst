@@ -4,7 +4,7 @@
 Program Listing for File editorTest.cpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_editorTest.cpp>` (``include/tests/editorTest.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_editorTest.cpp>` (``include\tests\editorTest.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -107,7 +107,7 @@ Program Listing for File editorTest.cpp
                }
                EDIT_ARG_NOTE notetemp;
                notetemp.railID = 1;
-               for (int i = 0; i < 10; ++i) {
+               for (int i = 0; i < 50; ++i) {
                    notetemp.beat = i;
                    engine->editor->AddLine<EDIT_ARG_NOTE>(notetemp);
                }

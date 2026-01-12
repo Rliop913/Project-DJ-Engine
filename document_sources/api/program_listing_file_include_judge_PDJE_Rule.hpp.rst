@@ -4,7 +4,7 @@
 Program Listing for File PDJE_Rule.hpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_PDJE_Rule.hpp>` (``include/judge/PDJE_Rule.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_PDJE_Rule.hpp>` (``include\judge\PDJE_Rule.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -19,6 +19,7 @@ Program Listing for File PDJE_Rule.hpp
    #include <functional>
    #include <string>
    #include <unordered_map>
+   #include <variant>
    namespace PDJE_JUDGE {
    
    enum DEVICE_MOUSE_EVENT {
@@ -32,56 +33,39 @@ Program Listing for File PDJE_Rule.hpp
        AXIS_MOVE
    };
    
-   struct PDJE_API DEV {
-       std::string Device_Name = "";
-       bool
-       operator==(const DEV &) const = default;
-   };
-   
-   struct PDJE_API DEV_TYPE {
-       PDJE_Dev_Type Type = PDJE_Dev_Type::UNKNOWN;
-   };
-   struct PDJE_API KEY {
-       BITMASK DeviceKey = 0;
-   };
-   
-   struct PDJE_API RAIL {
-       uint64_t MatchRail = 0;
-   };
-   struct PDJE_API OFFSET {
-   
-       int64_t offset_microsecond = 0;
-   };
-   
-   using RailToOffset = std::unordered_map<uint64_t, int64_t>;
-   
-   struct PDJE_API INPUT_CONFIG : DEV, KEY, RAIL, OFFSET {};
-   struct PDJE_API RAIL_META : DEV, KEY {
-       bool
-       operator==(const RAIL_META &other) const noexcept
-       {
-           return Device_Name == other.Device_Name && DeviceKey == other.DeviceKey;
-       }
-   };
-   struct PDJE_API RAIL_SETTINGS : RAIL, OFFSET, DEV_TYPE {};
-   
    struct PDJE_API EVENT_RULE {
        uint64_t miss_range_microsecond = 0;
        uint64_t use_range_microsecond  = 0;
    };
    
-   }; // namespace PDJE_JUDGE
+   namespace RAIL_KEY {
    
-   template <> struct std::hash<PDJE_JUDGE::RAIL_META> {
-       std::size_t
-       operator()(const PDJE_JUDGE::RAIL_META &rule) const noexcept
+   struct PDJE_API KB_MOUSE {
+       std::string Device_Name = "";
+       BITMASK     DeviceKey   = 0;
+       bool
+       operator==(const KB_MOUSE &other) const noexcept
        {
-           size_t h2 = std::hash<BITMASK>()(rule.DeviceKey);
-           size_t h3 = std::hash<std::string>()(rule.Device_Name);
-   
-           size_t seed = 0;
-           seed ^= h2 + 0x9e3779b97f4a7c15ULL + (seed << 6) + (seed >> 3);
-           seed ^= h3 + 0x9e3779b97f4a7c15ULL + (seed << 6) + (seed >> 3);
-           return seed;
+           return Device_Name == other.Device_Name && DeviceKey == other.DeviceKey;
        }
    };
+   
+   struct PDJE_API MIDI {
+       std::string port_name = "";
+       uint8_t     type      = 0;
+       uint8_t     ch        = 0;
+       uint8_t     pos       = 0;
+       bool
+       operator==(const MIDI &other) const noexcept
+       {
+           return port_name == other.port_name && type == other.type &&
+                  ch == other.ch && pos == other.pos;
+       }
+   };
+   struct PDJE_API META {
+       std::variant<std::monostate, PDJE_Dev_Type, uint8_t> type;
+       std::variant<std::monostate, KB_MOUSE, MIDI>         key;
+   };
+   }; // namespace RAIL_KEY
+   
+   }; // namespace PDJE_JUDGE

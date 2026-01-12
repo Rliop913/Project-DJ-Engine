@@ -4,7 +4,7 @@
 File PDJE_Note_OBJ.cpp
 ======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_judge_NoteOBJ>` (``include/judge/NoteOBJ``)
+|exhale_lsh| :ref:`Parent directory <dir_include_judge_NoteOBJ>` (``include\judge\NoteOBJ``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Note_OBJ.cpp
    :local:
    :backlinks: none
 
-Definition (``include/judge/NoteOBJ/PDJE_Note_OBJ.cpp``)
+Definition (``include\judge\NoteOBJ\PDJE_Note_OBJ.cpp``)
 --------------------------------------------------------
 
 
@@ -36,7 +36,7 @@ Includes
 
 - ``cstdint``
 
-- ``memory`` (:ref:`file_include_input_IPC_memory_ipc_shared_memory.hpp`)
+- ``memory`` (:ref:`file_include_input_IPC_memory_Input_Transfer.cpp`)
 
 
 

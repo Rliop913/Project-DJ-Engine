@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_p_d_j_e___c_r_y_p_t_o_1_1_hash" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_CRYPTO::Hash</compoundname>
+    <includes refid="_p_d_j_e___crypto_8hpp" local="no">PDJE_Crypto.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_p_d_j_e___c_r_y_p_t_o_1_1_hash_1a8f8b0dd108831f334a0e3847af79563b" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; Botan::HashFunction &gt;</type>
+        <definition>std::unique_ptr&lt;Botan::HashFunction&gt; PDJE_CRYPTO::Hash::hashEngine</definition>
+        <argsstring></argsstring>
+        <name>hashEngine</name>
+        <qualifiedname>PDJE_CRYPTO::Hash::hashEngine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/Crypto/PDJE_Crypto.hpp" line="12" column="21" bodyfile="include/global/Crypto/PDJE_Crypto.hpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_p_d_j_e___c_r_y_p_t_o_1_1_hash_1aef8aa6ef2c3445a1c7dbf99c062b3173" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_CRYPTO::Hash::Hash</definition>
+        <argsstring>()</argsstring>
+        <name>Hash</name>
+        <qualifiedname>PDJE_CRYPTO::Hash::Hash</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/Crypto/PDJE_Crypto.hpp" line="15" column="5" bodyfile="include/global/Crypto/PDJE_Crypto_Hash.cpp" bodystart="5" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___c_r_y_p_t_o_1_1_hash_1a09a5f374024903967c0304b135bd5561" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_CRYPTO::Hash::~Hash</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Hash</name>
+        <qualifiedname>PDJE_CRYPTO::Hash::~Hash</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/Crypto/PDJE_Crypto.hpp" line="16" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___c_r_y_p_t_o_1_1_hash_1a6936b34e485022e973644a4ba1b7a5c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string PDJE_CRYPTO::Hash::TextHash</definition>
+        <argsstring>(const std::string &amp;txt)</argsstring>
+        <name>TextHash</name>
+        <qualifiedname>PDJE_CRYPTO::Hash::TextHash</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>txt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/Crypto/PDJE_Crypto.hpp" line="18" column="5" bodyfile="include/global/Crypto/PDJE_Crypto_Hash.cpp" bodystart="17" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___c_r_y_p_t_o_1_1_hash_1acc512bbd69459097493287c9e9c270d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string PDJE_CRYPTO::Hash::FileHash</definition>
+        <argsstring>(const fs::path &amp;fp)</argsstring>
+        <name>FileHash</name>
+        <qualifiedname>PDJE_CRYPTO::Hash::FileHash</qualifiedname>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>fp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/Crypto/PDJE_Crypto.hpp" line="20" column="5" bodyfile="include/global/Crypto/PDJE_Crypto_Hash.cpp" bodystart="34" bodyend="58"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>PDJE_CRYPTO::Hash</label>
+        <link refid="class_p_d_j_e___c_r_y_p_t_o_1_1_hash"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>hashEngine</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::unique_ptr&lt; Botan::HashFunction &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/global/Crypto/PDJE_Crypto.hpp" line="10" column="1" bodyfile="include/global/Crypto/PDJE_Crypto.hpp" bodystart="10" bodyend="21"/>
+    <listofallmembers>
+      <member refid="class_p_d_j_e___c_r_y_p_t_o_1_1_hash_1acc512bbd69459097493287c9e9c270d1" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::Hash</scope><name>FileHash</name></member>
+      <member refid="class_p_d_j_e___c_r_y_p_t_o_1_1_hash_1aef8aa6ef2c3445a1c7dbf99c062b3173" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::Hash</scope><name>Hash</name></member>
+      <member refid="class_p_d_j_e___c_r_y_p_t_o_1_1_hash_1a8f8b0dd108831f334a0e3847af79563b" prot="private" virt="non-virtual"><scope>PDJE_CRYPTO::Hash</scope><name>hashEngine</name></member>
+      <member refid="class_p_d_j_e___c_r_y_p_t_o_1_1_hash_1a6936b34e485022e973644a4ba1b7a5c6" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::Hash</scope><name>TextHash</name></member>
+      <member refid="class_p_d_j_e___c_r_y_p_t_o_1_1_hash_1a09a5f374024903967c0304b135bd5561" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::Hash</scope><name>~Hash</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

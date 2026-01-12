@@ -1,0 +1,571 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="namespace_p_d_j_e___j_u_d_g_e" kind="namespace" language="C++">
+    <compoundname>PDJE_JUDGE</compoundname>
+    <innerclass refid="class_p_d_j_e___j_u_d_g_e_1_1_a_x_i_s___m_o_d_e_l" prot="public">PDJE_JUDGE::AXIS_MODEL</innerclass>
+    <innerclass refid="struct_p_d_j_e___j_u_d_g_e_1_1_custom___events" prot="public">PDJE_JUDGE::Custom_Events</innerclass>
+    <innerclass refid="struct_p_d_j_e___j_u_d_g_e_1_1_e_v___thread" prot="public">PDJE_JUDGE::EV_Thread</innerclass>
+    <innerclass refid="struct_p_d_j_e___j_u_d_g_e_1_1_e_v_e_n_t___r_u_l_e" prot="public">PDJE_JUDGE::EVENT_RULE</innerclass>
+    <innerclass refid="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e" prot="public">PDJE_JUDGE::JUDGE</innerclass>
+    <innerclass refid="class_p_d_j_e___j_u_d_g_e_1_1_judge___init" prot="public">PDJE_JUDGE::Judge_Init</innerclass>
+    <innerclass refid="class_p_d_j_e___j_u_d_g_e_1_1_judge___loop" prot="public">PDJE_JUDGE::Judge_Loop</innerclass>
+    <innerclass refid="class_p_d_j_e___j_u_d_g_e_1_1_match" prot="public">PDJE_JUDGE::Match</innerclass>
+    <innerclass refid="struct_p_d_j_e___j_u_d_g_e_1_1mouse__btn__event" prot="public">PDJE_JUDGE::mouse_btn_event</innerclass>
+    <innerclass refid="struct_p_d_j_e___j_u_d_g_e_1_1_n_o_t_e" prot="public">PDJE_JUDGE::NOTE</innerclass>
+    <innerclass refid="struct_p_d_j_e___j_u_d_g_e_1_1_n_o_t_e___i_t_r" prot="public">PDJE_JUDGE::NOTE_ITR</innerclass>
+    <innerclass refid="class_p_d_j_e___j_u_d_g_e_1_1_o_b_j" prot="public">PDJE_JUDGE::OBJ</innerclass>
+    <innerclass refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t" prot="public">PDJE_JUDGE::PARSE_OUT</innerclass>
+    <innerclass refid="class_p_d_j_e___j_u_d_g_e_1_1_pre_process" prot="public">PDJE_JUDGE::PreProcess</innerclass>
+    <innerclass refid="struct_p_d_j_e___j_u_d_g_e_1_1_queues" prot="public">PDJE_JUDGE::Queues</innerclass>
+    <innerclass refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b" prot="public">PDJE_JUDGE::RAIL_DB</innerclass>
+    <innerclass refid="struct_p_d_j_e___j_u_d_g_e_1_1use_datas" prot="public">PDJE_JUDGE::useDatas</innerclass>
+    <innernamespace refid="namespace_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y">PDJE_JUDGE::RAIL_KEY</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_p_d_j_e___j_u_d_g_e_1afa6381f8f229ccd5c5f8dbae248cebb2" prot="public" static="no" strong="no">
+        <type></type>
+        <name>JUDGE_STATUS</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE_STATUS</qualifiedname>
+        <enumvalue id="namespace_p_d_j_e___j_u_d_g_e_1afa6381f8f229ccd5c5f8dbae248cebb2a8fcd227f94f0b4cec915b9bbb9d7d7e5" prot="public">
+          <name>OK</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___j_u_d_g_e_1afa6381f8f229ccd5c5f8dbae248cebb2a770c1fa477d0d9e5feb0837edad251d8" prot="public">
+          <name>CORE_LINE_IS_MISSING</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___j_u_d_g_e_1afa6381f8f229ccd5c5f8dbae248cebb2a2aa3bc631c38953c03cd8745e509880c" prot="public">
+          <name>INPUT_LINE_IS_MISSING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___j_u_d_g_e_1afa6381f8f229ccd5c5f8dbae248cebb2ab57771cf5ca88642787e51bc35ccb9b9" prot="public">
+          <name>EVENT_RULE_IS_EMPTY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___j_u_d_g_e_1afa6381f8f229ccd5c5f8dbae248cebb2a79d41203617fa88cbb3c5a7c046dd64f" prot="public">
+          <name>INPUT_RULE_IS_EMPTY</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___j_u_d_g_e_1afa6381f8f229ccd5c5f8dbae248cebb2a85a577818899872aea6443d33efddbeb" prot="public">
+          <name>NOTE_OBJECT_IS_MISSING</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Judge runtime status codes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Judge.hpp" line="15" column="1" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="15" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespace_p_d_j_e___j_u_d_g_e_1ab1e6fff79298188ed6da7c8b294f109d" prot="public" static="no" strong="no">
+        <type></type>
+        <name>DEVICE_MOUSE_EVENT</name>
+        <qualifiedname>PDJE_JUDGE::DEVICE_MOUSE_EVENT</qualifiedname>
+        <enumvalue id="namespace_p_d_j_e___j_u_d_g_e_1ab1e6fff79298188ed6da7c8b294f109dab0e496d306bee8872f2d8394b3bb68a7" prot="public">
+          <name>BTN_EX</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___j_u_d_g_e_1ab1e6fff79298188ed6da7c8b294f109daa0b59bd360d7c90e6169bb298d055ba9" prot="public">
+          <name>BTN_SIDE</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___j_u_d_g_e_1ab1e6fff79298188ed6da7c8b294f109da49b5e4b85cc2d2f8329590a876b273b5" prot="public">
+          <name>BTN_M</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___j_u_d_g_e_1ab1e6fff79298188ed6da7c8b294f109da69b59f63dc0a65be2c9691321e09affd" prot="public">
+          <name>BTN_R</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___j_u_d_g_e_1ab1e6fff79298188ed6da7c8b294f109dafdb2be01de00acb8b6c25447465e1c49" prot="public">
+          <name>BTN_L</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___j_u_d_g_e_1ab1e6fff79298188ed6da7c8b294f109da8572ee5ecb04a02fdd98aefca19c779d" prot="public">
+          <name>WHEEL_X</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___j_u_d_g_e_1ab1e6fff79298188ed6da7c8b294f109da808b9b16707d725aebfb55b1558fb222" prot="public">
+          <name>WHEEL_Y</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___j_u_d_g_e_1ab1e6fff79298188ed6da7c8b294f109da8be8291ed4a15ca135b8ece74fe0263e" prot="public">
+          <name>AXIS_MOVE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Mouse-specific event ids mapped from input log. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Rule.hpp" line="14" column="1" bodyfile="include/judge/PDJE_Rule.hpp" bodystart="14" bodyend="23"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespace_p_d_j_e___j_u_d_g_e_1a9ae87742de7e899c6e006447f27a9eba" prot="public" static="no">
+        <type>uint64_t</type>
+        <definition>using PDJE_JUDGE::RAIL_ID =  uint64_t</definition>
+        <argsstring></argsstring>
+        <name>RAIL_ID</name>
+        <qualifiedname>PDJE_JUDGE::RAIL_ID</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="16" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___j_u_d_g_e_1a74a76cb2add5051c233d27fbedba793c" prot="public" static="no">
+        <type>std::function&lt; void(std::unordered_map&lt; uint64_t, <ref refid="namespace_p_d_j_e___j_u_d_g_e_1ad8c8d340702b0759a8cecb53091de1e0" kindref="member">NOTE_VEC</ref> &gt;)&gt;</type>
+        <definition>using PDJE_JUDGE::MISS_CALLBACK = 
+    std::function&lt;void(std::unordered_map&lt;uint64_t, NOTE_VEC&gt;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>MISS_CALLBACK</name>
+        <qualifiedname>PDJE_JUDGE::MISS_CALLBACK</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="17" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___j_u_d_g_e_1a404264babe4bb096766de0bef9d0eea6" prot="public" static="no">
+        <type>std::function&lt; void( uint64_t railid, bool Pressed, bool IsLate, uint64_t diff)&gt;</type>
+        <definition>using PDJE_JUDGE::USE_CALLBACK =  std::function&lt;void(
+    uint64_t railid, bool Pressed, bool IsLate, uint64_t diff)&gt;</definition>
+        <argsstring></argsstring>
+        <name>USE_CALLBACK</name>
+        <qualifiedname>PDJE_JUDGE::USE_CALLBACK</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="19" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___j_u_d_g_e_1a4206034d0b6d310b3a8362e649936afc" prot="public" static="no">
+        <type>std::function&lt; void(const <ref refid="namespace_p_d_j_e___j_u_d_g_e_1a3ee6af366c462d64775daf2f7b0d7e42" kindref="member">LOCAL_TIME</ref> microSecond, const <ref refid="namespace_p_d_j_e___j_u_d_g_e_1ad73c9d4a59c40cc7c1a9fce27dc1be72" kindref="member">P_NOTE_VEC</ref> &amp;found_events, uint64_t railID, int x, int y, <ref refid="_input___state_8hpp_1af938e405f45835e320ef4c91b4fd726f" kindref="member">PDJE_Mouse_Axis_Type</ref> axis_type)&gt;</type>
+        <definition>using PDJE_JUDGE::MOUSE_CUSTOM_PARSE_CALLBACK =  
+    std::function&lt;void(const LOCAL_TIME     microSecond,
+                       const P_NOTE_VEC    &amp;found_events,
+                       uint64_t             railID,
+                       int                  x,
+                       int                  y,
+                       PDJE_Mouse_Axis_Type axis_type)&gt;</definition>
+        <argsstring></argsstring>
+        <name>MOUSE_CUSTOM_PARSE_CALLBACK</name>
+        <qualifiedname>PDJE_JUDGE::MOUSE_CUSTOM_PARSE_CALLBACK</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="21" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___j_u_d_g_e_1a92f69083730ba6caa06232ad7143e313" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="struct_p_d_j_e___input___log" kindref="compound">PDJE_Input_Log</ref> &gt;</type>
+        <definition>using PDJE_JUDGE::INPUT_RAW =  std::vector&lt;PDJE_Input_Log&gt;</definition>
+        <argsstring></argsstring>
+        <name>INPUT_RAW</name>
+        <qualifiedname>PDJE_JUDGE::INPUT_RAW</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/InputParser/InputParser.hpp" line="12" column="1" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___j_u_d_g_e_1a6ef94e4c821228703c99fa607e5d148c" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="struct_p_d_j_e___m_i_d_i_1_1_m_i_d_i___e_v" kindref="compound">PDJE_MIDI::MIDI_EV</ref> &gt;</type>
+        <definition>using PDJE_JUDGE::MIDI_RAW =  std::vector&lt;PDJE_MIDI::MIDI_EV&gt;</definition>
+        <argsstring></argsstring>
+        <name>MIDI_RAW</name>
+        <qualifiedname>PDJE_JUDGE::MIDI_RAW</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/InputParser/InputParser.hpp" line="13" column="1" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___j_u_d_g_e_1a9f25a47baf1fe7dfa9840cf3ea155013" prot="public" static="no">
+        <type>std::string</type>
+        <definition>using PDJE_JUDGE::DEV_ID =  std::string</definition>
+        <argsstring></argsstring>
+        <name>DEV_ID</name>
+        <qualifiedname>PDJE_JUDGE::DEV_ID</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/InputParser/InputParser.hpp" line="14" column="1" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___j_u_d_g_e_1a0e0549990dbec87c7f25b9ae22f4dc39" prot="public" static="no">
+        <type>uint64_t</type>
+        <definition>using PDJE_JUDGE::GLOBAL_TIME =  uint64_t</definition>
+        <argsstring></argsstring>
+        <name>GLOBAL_TIME</name>
+        <qualifiedname>PDJE_JUDGE::GLOBAL_TIME</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="16" column="1" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___j_u_d_g_e_1a3ee6af366c462d64775daf2f7b0d7e42" prot="public" static="no">
+        <type>int64_t</type>
+        <definition>using PDJE_JUDGE::LOCAL_TIME =  int64_t</definition>
+        <argsstring></argsstring>
+        <name>LOCAL_TIME</name>
+        <qualifiedname>PDJE_JUDGE::LOCAL_TIME</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="17" column="1" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___j_u_d_g_e_1ad8c8d340702b0759a8cecb53091de1e0" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_n_o_t_e" kindref="compound">NOTE</ref> &gt;</type>
+        <definition>using PDJE_JUDGE::NOTE_VEC =  std::vector&lt;NOTE&gt;</definition>
+        <argsstring></argsstring>
+        <name>NOTE_VEC</name>
+        <qualifiedname>PDJE_JUDGE::NOTE_VEC</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="30" column="1" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___j_u_d_g_e_1ad73c9d4a59c40cc7c1a9fce27dc1be72" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_n_o_t_e" kindref="compound">NOTE</ref> * &gt;</type>
+        <definition>using PDJE_JUDGE::P_NOTE_VEC =  std::vector&lt;NOTE *&gt;</definition>
+        <argsstring></argsstring>
+        <name>P_NOTE_VEC</name>
+        <qualifiedname>PDJE_JUDGE::P_NOTE_VEC</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="31" column="1" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___j_u_d_g_e_1ae0d1c6b070db4eeb89560cfef395e997" prot="public" static="no">
+        <type>std::unordered_map&lt; uint64_t, <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_n_o_t_e___i_t_r" kindref="compound">NOTE_ITR</ref> &gt;</type>
+        <definition>using PDJE_JUDGE::RAILID_TO_NOTE =  std::unordered_map&lt;uint64_t, NOTE_ITR&gt;</definition>
+        <argsstring></argsstring>
+        <name>RAILID_TO_NOTE</name>
+        <qualifiedname>PDJE_JUDGE::RAILID_TO_NOTE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="39" column="1" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___j_u_d_g_e_1a7208339207c7e41e996eec587f5fd3fc" prot="public" static="no">
+        <type>std::unordered_map&lt; uint64_t, uint64_t &gt;</type>
+        <definition>using PDJE_JUDGE::RAILID_TO_OFFSET =  std::unordered_map&lt;uint64_t, uint64_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>RAILID_TO_OFFSET</name>
+        <qualifiedname>PDJE_JUDGE::RAILID_TO_OFFSET</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="40" column="1" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespace_p_d_j_e___j_u_d_g_e_1a714bad3267563db99990da3e32a42c5c" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>long double</type>
+        <definition>long double PDJE_JUDGE::TO_MICRO</definition>
+        <argsstring></argsstring>
+        <name>TO_MICRO</name>
+        <qualifiedname>PDJE_JUDGE::TO_MICRO</qualifiedname>
+        <initializer>= 1000.0 / 48.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="7" column="23" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_p_d_j_e___j_u_d_g_e_1a49aeda368d2cf3a66f5f62f6a9238714" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int PDJE_JUDGE::DOWN</definition>
+        <argsstring></argsstring>
+        <name>DOWN</name>
+        <qualifiedname>PDJE_JUDGE::DOWN</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/Mouse.cpp" line="16" column="15" bodyfile="include/judge/Loop/Match/Mouse.cpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_p_d_j_e___j_u_d_g_e_1ada74348e8e211eaf4e1157ab15e4a8ae" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int PDJE_JUDGE::UP</definition>
+        <argsstring></argsstring>
+        <name>UP</name>
+        <qualifiedname>PDJE_JUDGE::UP</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/Mouse.cpp" line="17" column="15" bodyfile="include/judge/Loop/Match/Mouse.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_p_d_j_e___j_u_d_g_e_1a72dcdac22038e2ce36656f54d1508b33" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int PDJE_JUDGE::X</definition>
+        <argsstring></argsstring>
+        <name>X</name>
+        <qualifiedname>PDJE_JUDGE::X</qualifiedname>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/Mouse.cpp" line="18" column="15" bodyfile="include/judge/Loop/Match/Mouse.cpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_p_d_j_e___j_u_d_g_e_1a2d43d7eed1b6862ea3826d296da18492" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int PDJE_JUDGE::Y</definition>
+        <argsstring></argsstring>
+        <name>Y</name>
+        <qualifiedname>PDJE_JUDGE::Y</qualifiedname>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/Mouse.cpp" line="19" column="15" bodyfile="include/judge/Loop/Match/Mouse.cpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_p_d_j_e___j_u_d_g_e_1a3aa3f3217bddb4a172ca3ee463aa47de" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int PDJE_JUDGE::BUFFER_MAIN</definition>
+        <argsstring></argsstring>
+        <name>BUFFER_MAIN</name>
+        <qualifiedname>PDJE_JUDGE::BUFFER_MAIN</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="13" column="15" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_p_d_j_e___j_u_d_g_e_1ab5a4f76ae4935af0703bfc44f3212e2b" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int PDJE_JUDGE::BUFFER_SUB</definition>
+        <argsstring></argsstring>
+        <name>BUFFER_SUB</name>
+        <qualifiedname>PDJE_JUDGE::BUFFER_SUB</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="14" column="15" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespace_p_d_j_e___j_u_d_g_e_1aa78869a4b4648bc707f541ee760da05e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t PDJE_JUDGE::Convert_Frame_Into_MicroSecond</definition>
+        <argsstring>(const uint64_t pcm_frame)</argsstring>
+        <name>Convert_Frame_Into_MicroSecond</name>
+        <qualifiedname>PDJE_JUDGE::Convert_Frame_Into_MicroSecond</qualifiedname>
+        <param>
+          <type>const uint64_t</type>
+          <declname>pcm_frame</declname>
+        </param>
+        <briefdescription>
+<para>Convert PCM frame count to microseconds (48 kHz). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Init/PDJE_Judge_Init_Structs.hpp" line="10" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init_Structs.hpp" bodystart="10" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_p_d_j_e___j_u_d_g_e_1aa614512ba31f8521b7f0d2f648c52415" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void PDJE_JUDGE::Parse</definition>
+        <argsstring>(PARSE_OUT &amp;out, const RAIL_DB &amp;raildb, const INPUT_RAW &amp;raw)</argsstring>
+        <name>Parse</name>
+        <qualifiedname>PDJE_JUDGE::Parse</qualifiedname>
+        <param>
+          <type><ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t" kindref="compound">PARSE_OUT</ref> &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b" kindref="compound">RAIL_DB</ref> &amp;</type>
+          <declname>raildb</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespace_p_d_j_e___j_u_d_g_e_1a92f69083730ba6caa06232ad7143e313" kindref="member">INPUT_RAW</ref> &amp;</type>
+          <declname>raw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/InputParser/InputParser.hpp" line="23" column="1" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="23" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_p_d_j_e___j_u_d_g_e_1a1e9928aafb8a97a2cd5dde1c2179e218" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void PDJE_JUDGE::Parse</definition>
+        <argsstring>(PARSE_OUT &amp;out, const RAIL_DB &amp;raildb, const MIDI_RAW &amp;midi_raw)</argsstring>
+        <name>Parse</name>
+        <qualifiedname>PDJE_JUDGE::Parse</qualifiedname>
+        <param>
+          <type><ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t" kindref="compound">PARSE_OUT</ref> &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b" kindref="compound">RAIL_DB</ref> &amp;</type>
+          <declname>raildb</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespace_p_d_j_e___j_u_d_g_e_1a6ef94e4c821228703c99fa607e5d148c" kindref="member">MIDI_RAW</ref> &amp;</type>
+          <declname>midi_raw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/InputParser/InputParser.hpp" line="59" column="1" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="59" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_p_d_j_e___j_u_d_g_e_1ab1198e8ebc5c563e17abbef3a7523c3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void PDJE_JUDGE::Match::UseEvent&lt; PDJE_Dev_Type::KEYBOARD &gt;</definition>
+        <argsstring>(const PDJE_Input_Log &amp;ilog)</argsstring>
+        <name>Match::UseEvent&lt; PDJE_Dev_Type::KEYBOARD &gt;</name>
+        <qualifiedname>PDJE_JUDGE::UseEvent&lt; PDJE_Dev_Type::KEYBOARD &gt;</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___input___log" kindref="compound">PDJE_Input_Log</ref> &amp;</type>
+          <declname>ilog</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/Keyboard.cpp" line="9" column="1" bodyfile="include/judge/Loop/Match/Keyboard.cpp" bodystart="10" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_p_d_j_e___j_u_d_g_e_1a42d881ccc0ab5e41dffcf1173ba87c0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void PDJE_JUDGE::Match::UseEvent&lt; PDJE_Dev_Type::MOUSE &gt;</definition>
+        <argsstring>(const PDJE_Input_Log &amp;ilog)</argsstring>
+        <name>Match::UseEvent&lt; PDJE_Dev_Type::MOUSE &gt;</name>
+        <qualifiedname>PDJE_JUDGE::UseEvent&lt; PDJE_Dev_Type::MOUSE &gt;</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___input___log" kindref="compound">PDJE_Input_Log</ref> &amp;</type>
+          <declname>ilog</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/Mouse.cpp" line="42" column="1" bodyfile="include/judge/Loop/Match/Mouse.cpp" bodystart="43" bodyend="109"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/judge/AxisModel/AxisModel.hpp" line="3" column="1"/>
+  </compounddef>
+</doxygen>

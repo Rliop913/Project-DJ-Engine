@@ -4,7 +4,7 @@
 File PDJE_Crypto_Hash.cpp
 =========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_Crypto>` (``include/global/Crypto``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_Crypto>` (``include\global\Crypto``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Crypto_Hash.cpp
    :local:
    :backlinks: none
 
-Definition (``include/global/Crypto/PDJE_Crypto_Hash.cpp``)
+Definition (``include\global\Crypto\PDJE_Crypto_Hash.cpp``)
 -----------------------------------------------------------
 
 
@@ -52,5 +52,5 @@ Variables
 ---------
 
 
-- :ref:`exhale_variable_namespacePDJE__CRYPTO_1ad03d54fa0622af1e44befad88826ff63`
+- :ref:`exhale_variable_namespace_p_d_j_e___c_r_y_p_t_o_1ad03d54fa0622af1e44befad88826ff63`
 

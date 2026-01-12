@@ -3,7 +3,7 @@
 Typedef MAYBE_MUS_VEC
 =====================
 
-- Defined in :ref:`file_core_include_db_dbRoot.hpp`
+- Defined in :ref:`file_include_core_db_dbRoot.hpp`
 
 
 Typedef Documentation

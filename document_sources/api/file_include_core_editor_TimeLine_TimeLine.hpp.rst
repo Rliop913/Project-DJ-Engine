@@ -4,7 +4,7 @@
 File TimeLine.hpp
 =================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_TimeLine>` (``include/core/editor/TimeLine``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_TimeLine>` (``include\core\editor\TimeLine``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File TimeLine.hpp
    :local:
    :backlinks: none
 
-Definition (``include/core/editor/TimeLine/TimeLine.hpp``)
+Definition (``include\core\editor\TimeLine\TimeLine.hpp``)
 ----------------------------------------------------------
 
 
@@ -72,5 +72,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPDJE__TIMELINE_1_1TimeLine`
+- :ref:`exhale_class_class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line`
 

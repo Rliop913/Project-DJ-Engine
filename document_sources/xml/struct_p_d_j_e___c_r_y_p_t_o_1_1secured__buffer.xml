@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="struct_p_d_j_e___c_r_y_p_t_o_1_1secured__buffer" kind="struct" language="C++" prot="public">
+    <compoundname>PDJE_CRYPTO::secured_buffer</compoundname>
+    <includes refid="_secured___i_p_c___t_x___r_x_8hpp" local="no">Secured_IPC_TX_RX.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_p_d_j_e___c_r_y_p_t_o_1_1secured__buffer_1a7a2fdcbce9e8dd4deb98bb1d2e66b622" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; Botan::MessageAuthenticationCode &gt;</type>
+        <definition>std::unique_ptr&lt;Botan::MessageAuthenticationCode&gt; PDJE_CRYPTO::secured_buffer::hmac_engine</definition>
+        <argsstring></argsstring>
+        <name>hmac_engine</name>
+        <qualifiedname>PDJE_CRYPTO::secured_buffer::hmac_engine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="98" column="21" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_p_d_j_e___c_r_y_p_t_o_1_1secured__buffer_1a953c148d833e2a7d1977fd8404bb6bf6" prot="private" static="no" mutable="no">
+        <type>Botan::secure_vector&lt; uint8_t &gt;</type>
+        <definition>Botan::secure_vector&lt;uint8_t&gt; PDJE_CRYPTO::secured_buffer::key</definition>
+        <argsstring></argsstring>
+        <name>key</name>
+        <qualifiedname>PDJE_CRYPTO::secured_buffer::key</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="99" column="46" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_p_d_j_e___c_r_y_p_t_o_1_1secured__buffer_1a9e1cc323e3299500918d47c6e3ffc09a" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; uint8_t &gt;</type>
+        <definition>std::vector&lt;uint8_t&gt; PDJE_CRYPTO::secured_buffer::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>PDJE_CRYPTO::secured_buffer::data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="100" column="46" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="struct_p_d_j_e___c_r_y_p_t_o_1_1secured__buffer_1a2906e9d406dbea15544a9474ad8a77fe" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_CRYPTO::secured_buffer::secured_buffer</definition>
+        <argsstring>()</argsstring>
+        <name>secured_buffer</name>
+        <qualifiedname>PDJE_CRYPTO::secured_buffer::secured_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="101" column="5" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="101" bodyend="104"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_p_d_j_e___c_r_y_p_t_o_1_1secured__buffer_1a05daa6016b3358d330a339893803e55a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_CRYPTO::secured_buffer::hmac_calc</definition>
+        <argsstring>()</argsstring>
+        <name>hmac_calc</name>
+        <qualifiedname>PDJE_CRYPTO::secured_buffer::hmac_calc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="108" column="5" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="108" bodyend="114"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>PDJE_CRYPTO::secured_buffer</label>
+        <link refid="struct_p_d_j_e___c_r_y_p_t_o_1_1secured__buffer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>hmac_engine</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::unique_ptr&lt; Botan::MessageAuthenticationCode &gt;</label>
+      </node>
+      <node id="3">
+        <label>std::vector&lt; uint8_t &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="96" column="1" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="96" bodyend="115"/>
+    <listofallmembers>
+      <member refid="struct_p_d_j_e___c_r_y_p_t_o_1_1secured__buffer_1a9e1cc323e3299500918d47c6e3ffc09a" prot="private" virt="non-virtual"><scope>PDJE_CRYPTO::secured_buffer</scope><name>data</name></member>
+      <member refid="struct_p_d_j_e___c_r_y_p_t_o_1_1secured__buffer_1a05daa6016b3358d330a339893803e55a" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::secured_buffer</scope><name>hmac_calc</name></member>
+      <member refid="struct_p_d_j_e___c_r_y_p_t_o_1_1secured__buffer_1a7a2fdcbce9e8dd4deb98bb1d2e66b622" prot="private" virt="non-virtual"><scope>PDJE_CRYPTO::secured_buffer</scope><name>hmac_engine</name></member>
+      <member refid="struct_p_d_j_e___c_r_y_p_t_o_1_1secured__buffer_1a953c148d833e2a7d1977fd8404bb6bf6" prot="private" virt="non-virtual"><scope>PDJE_CRYPTO::secured_buffer</scope><name>key</name></member>
+      <member refid="struct_p_d_j_e___c_r_y_p_t_o_1_1secured__buffer_1a2906e9d406dbea15544a9474ad8a77fe" prot="private" virt="non-virtual"><scope>PDJE_CRYPTO::secured_buffer</scope><name>secured_buffer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

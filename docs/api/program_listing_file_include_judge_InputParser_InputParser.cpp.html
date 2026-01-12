@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Program Listing for File InputParser.cpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../_static/doctools.js?v=9bcbadda"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -82,49 +80,47 @@
              
   <section id="program-listing-for-file-inputparser-cpp">
 <span id="program-listing-file-include-judge-inputparser-inputparser-cpp"></span><h1>Program Listing for File InputParser.cpp<a class="headerlink" href="#program-listing-for-file-inputparser-cpp" title="Link to this heading"></a></h1>
-<p>↰ <a class="reference internal" href="file_include_judge_InputParser_InputParser.cpp.html#file-include-judge-inputparser-inputparser-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/judge/InputParser/InputParser.cpp</span></code>)</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;InputParser.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_DataLine.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Rule.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdint&gt;</span>
+<p>↰ <a class="reference internal" href="file_include_judge_InputParser_InputParser.cpp.html#file-include-judge-inputparser-inputparser-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\judge\InputParser\InputParser.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// #include &quot;InputParser.hpp&quot;</span>
+<span class="c1">// #include &quot;PDJE_Input_DataLine.hpp&quot;</span>
+<span class="c1">// #include &quot;PDJE_Rule.hpp&quot;</span>
+<span class="c1">// #include &lt;algorithm&gt;</span>
+<span class="c1">// #include &lt;cstdint&gt;</span>
 
-<span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_JUDGE</span><span class="w"> </span><span class="p">{</span>
-<span class="n">PARSE_OUT</span><span class="w"> </span><span class="o">*</span>
-<span class="nf">InputParser::Parse</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">INPUT_RAW</span><span class="w"> </span><span class="o">&amp;</span><span class="n">raw</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">outCache</span><span class="p">.</span><span class="n">logs</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
-<span class="w">    </span><span class="n">outCache</span><span class="p">.</span><span class="n">logs</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">raw</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">raw</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">raw</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="c1">// namespace PDJE_JUDGE {</span>
+<span class="c1">// PARSE_OUT *</span>
+<span class="c1">// InputParser::Parse(const INPUT_RAW &amp;raw)</span>
+<span class="c1">// {</span>
+<span class="c1">//     outCache.logs.clear();</span>
+<span class="c1">//     outCache.logs.reserve(raw.size());</span>
+<span class="c1">//     if (raw.size() == 0) {</span>
+<span class="c1">//         return nullptr;</span>
+<span class="c1">//     }</span>
 
-<span class="w">    </span><span class="n">PDJE_Input_Log</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">int64_t</span><span class="w">         </span><span class="n">off</span><span class="p">;</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w">     </span><span class="n">offsetkey</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">raw</span><span class="p">.</span><span class="n">second</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">raw</span><span class="p">.</span><span class="n">first</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-<span class="w">        </span><span class="n">offsetkey</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">id_len</span><span class="p">);</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">offsetData</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">offsetkey</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">offsetData</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">off</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">.</span><span class="n">offset_microsecond</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">off</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="n">outCache</span><span class="p">.</span><span class="n">logs</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">raw</span><span class="p">.</span><span class="n">first</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-<span class="w">        </span><span class="n">outCache</span><span class="p">.</span><span class="n">logs</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">microSecond</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">off</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">sort</span><span class="p">(</span><span class="n">outCache</span><span class="p">.</span><span class="n">logs</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span>
-<span class="w">              </span><span class="n">outCache</span><span class="p">.</span><span class="n">logs</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
-<span class="w">              </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_Input_Log</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_Input_Log</span><span class="w"> </span><span class="o">&amp;</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                  </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">microSecond</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">microSecond</span><span class="p">;</span>
-<span class="w">              </span><span class="p">});</span>
-<span class="w">    </span><span class="n">outCache</span><span class="p">.</span><span class="n">highest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outCache</span><span class="p">.</span><span class="n">logs</span><span class="p">.</span><span class="n">back</span><span class="p">().</span><span class="n">microSecond</span><span class="p">;</span>
-<span class="w">    </span><span class="n">outCache</span><span class="p">.</span><span class="n">lowest</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">outCache</span><span class="p">.</span><span class="n">logs</span><span class="p">.</span><span class="n">front</span><span class="p">().</span><span class="n">microSecond</span><span class="p">;</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">outCache</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">}</span><span class="w"> </span><span class="c1">// namespace PDJE_JUDGE</span>
+<span class="c1">//     PDJE_Input_Log *p;</span>
+<span class="c1">//     int64_t         off;</span>
+<span class="c1">//     std::string     offsetkey;</span>
+<span class="c1">//     for (const auto &amp;rawp : raw) {</span>
+<span class="c1">//         offsetkey.assign(rawp.id, rawp.id_len);</span>
+<span class="c1">//         auto it = offsetData.find(offsetkey);</span>
+<span class="c1">//         if (it != offsetData.end()) {</span>
+<span class="c1">//             off = it-&gt;second.offset_microsecond;</span>
+<span class="c1">//         } else {</span>
+<span class="c1">//             off = 0;</span>
+<span class="c1">//         }</span>
+<span class="c1">//         outCache.logs.push_back(rawp);</span>
+<span class="c1">//         outCache.logs.back().microSecond += off;</span>
+<span class="c1">//     }</span>
+<span class="c1">//     std::sort(outCache.logs.begin(),</span>
+<span class="c1">//               outCache.logs.end(),</span>
+<span class="c1">//               [](const PDJE_Input_Log &amp;a, const PDJE_Input_Log &amp;b) {</span>
+<span class="c1">//                   return a.microSecond &lt; b.microSecond;</span>
+<span class="c1">//               });</span>
+<span class="c1">//     outCache.highest = outCache.logs.back().microSecond;</span>
+<span class="c1">//     outCache.lowest  = outCache.logs.front().microSecond;</span>
+<span class="c1">//     return &amp;outCache;</span>
+<span class="c1">// }</span>
+<span class="c1">// } // namespace PDJE_JUDGE</span>
 </pre></div>
 </div>
 </section>

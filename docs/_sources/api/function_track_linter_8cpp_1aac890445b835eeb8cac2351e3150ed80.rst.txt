@@ -3,7 +3,7 @@
 Function CheckIDHasLoad
 =======================
 
-- Defined in :ref:`file_core_include_editor_pdjeLinter_trackLinter.cpp`
+- Defined in :ref:`file_include_core_editor_pdjeLinter_trackLinter.cpp`
 
 
 Function Documentation

@@ -3,7 +3,7 @@
 Function HWY_NAMESPACE::GetPCMFramesSIMD
 ========================================
 
-- Defined in :ref:`file_core_include_audioRender_ManualMix_MusicControlPanel-inl.h`
+- Defined in :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel-inl.h`
 
 
 Function Documentation

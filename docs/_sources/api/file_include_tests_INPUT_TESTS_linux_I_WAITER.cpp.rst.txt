@@ -4,7 +4,7 @@
 File linux_I_WAITER.cpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_tests_INPUT_TESTS>` (``include/tests/INPUT_TESTS``)
+|exhale_lsh| :ref:`Parent directory <dir_include_tests_INPUT_TESTS>` (``include\tests\INPUT_TESTS``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File linux_I_WAITER.cpp
    :local:
    :backlinks: none
 
-Definition (``include/tests/INPUT_TESTS/linux_I_WAITER.cpp``)
+Definition (``include\tests\INPUT_TESTS\linux_I_WAITER.cpp``)
 -------------------------------------------------------------
 
 
@@ -59,16 +59,16 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_linux__I__WAITER_8cpp_1a14d1abfa2c583630b00b9bf1e7e7bad3`
+- :ref:`exhale_function_linux___i___w_a_i_t_e_r_8cpp_1a14d1abfa2c583630b00b9bf1e7e7bad3`
 
-- :ref:`exhale_function_linux__I__WAITER_8cpp_1a2c56e7fd51cd8f2cbbdd35c013019d74`
+- :ref:`exhale_function_linux___i___w_a_i_t_e_r_8cpp_1a2c56e7fd51cd8f2cbbdd35c013019d74`
 
-- :ref:`exhale_function_linux__I__WAITER_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
+- :ref:`exhale_function_linux___i___w_a_i_t_e_r_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
 
 
 Variables
 ---------
 
 
-- :ref:`exhale_variable_linux__I__WAITER_8cpp_1aa006daaf11f1e2e45a6ababaf463212b`
+- :ref:`exhale_variable_linux___i___w_a_i_t_e_r_8cpp_1aa006daaf11f1e2e45a6ababaf463212b`
 

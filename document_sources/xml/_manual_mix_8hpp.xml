@@ -19,14 +19,14 @@
     <includes refid="_frame_calc_8hpp" local="yes">FrameCalc.hpp</includes>
     <includes refid="music_d_b_8hpp" local="yes">musicDB.hpp</includes>
     <includes refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
-    <includedby refid="audio_player_8hpp" local="yes">core_include/MainObjects/audioPlayer/audioPlayer.hpp</includedby>
-    <includedby refid="_manual_mix_8cpp" local="yes">core_include/audioRender/ManualMix/ManualMix.cpp</includedby>
-    <includedby refid="_music_control_panel_8hpp" local="yes">core_include/audioRender/ManualMix/MusicControlPanel.hpp</includedby>
-    <includedby refid="audio_render_8hpp" local="yes">core_include/audioRender/audioRender.hpp</includedby>
-    <includedby refid="manual_audio_test_8cpp" local="yes">core_include/tests/manualAudioTest.cpp</includedby>
+    <includedby refid="audio_player_8hpp" local="yes">include/core/MainObjects/audioPlayer/audioPlayer.hpp</includedby>
+    <includedby refid="_manual_mix_8cpp" local="yes">include/core/audioRender/ManualMix/ManualMix.cpp</includedby>
+    <includedby refid="_music_control_panel_8hpp" local="yes">include/core/audioRender/ManualMix/MusicControlPanel.hpp</includedby>
+    <includedby refid="audio_render_8hpp" local="yes">include/core/audioRender/audioRender.hpp</includedby>
+    <includedby refid="manual_audio_test_8cpp" local="yes">include/tests/manualAudioTest.cpp</includedby>
     <incdepgraph>
       <node id="1">
-        <label>core_include/audioRender/ManualMix/ManualMix.hpp</label>
+        <label>include/core/audioRender/ManualMix/ManualMix.hpp</label>
         <link refid="_manual_mix_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -58,7 +58,7 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
@@ -96,13 +96,29 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="40">
         <label>dbState.hpp</label>
         <link refid="db_state_8hpp"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
         <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>musicDB.hpp</label>
+        <link refid="music_d_b_8hpp"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
@@ -110,37 +126,21 @@
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="41">
         <label>fileNameSanitizer.hpp</label>
         <link refid="file_name_sanitizer_8hpp"/>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-      </node>
-      <node id="36">
-        <label>musicDB.hpp</label>
-        <link refid="music_d_b_8hpp"/>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
         <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
         </childnode>
       </node>
       <node id="27">
@@ -161,6 +161,8 @@
         <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -223,40 +225,43 @@
       <node id="18">
         <label>cmath</label>
       </node>
-      <node id="41">
+      <node id="42">
         <label>cppcodec/base64_default_url.hpp</label>
       </node>
       <node id="29">
         <label>filesystem</label>
       </node>
-      <node id="35">
+      <node id="36">
         <label>hwy/aligned_allocator.h</label>
       </node>
       <node id="2">
         <label>memory</label>
       </node>
+      <node id="30">
+        <label>mutex</label>
+      </node>
       <node id="20">
         <label>optional</label>
       </node>
-      <node id="30">
+      <node id="31">
         <label>spdlog/sinks/basic_file_sink.h</label>
       </node>
-      <node id="31">
+      <node id="32">
         <label>spdlog/sinks/stdout_color_sinks.h</label>
       </node>
-      <node id="32">
+      <node id="33">
         <label>spdlog/spdlog.h</label>
       </node>
-      <node id="37">
+      <node id="38">
         <label>sqlite3.h</label>
       </node>
-      <node id="38">
+      <node id="39">
         <label>string</label>
       </node>
-      <node id="33">
+      <node id="34">
         <label>string_view</label>
       </node>
-      <node id="34">
+      <node id="35">
         <label>type_traits</label>
       </node>
       <node id="21">
@@ -264,24 +269,26 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="29">
-        <label>core_include/MainObjects/audioPlayer/audioCallbacks.cpp</label>
+      <node id="31">
+        <label>include/core/MainObjects/audioPlayer/audioCallbacks.cpp</label>
         <link refid="audio_callbacks_8cpp"/>
       </node>
-      <node id="28">
-        <label>core_include/MainObjects/audioPlayer/audioCallbacks.hpp</label>
+      <node id="30">
+        <label>include/core/MainObjects/audioPlayer/audioCallbacks.hpp</label>
         <link refid="audio_callbacks_8hpp"/>
-        <childnode refid="29" relation="include">
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="3">
-        <label>core_include/MainObjects/audioPlayer/audioPlayer.cpp</label>
+        <label>include/core/MainObjects/audioPlayer/audioPlayer.cpp</label>
         <link refid="audio_player_8cpp"/>
       </node>
       <node id="2">
-        <label>core_include/MainObjects/audioPlayer/audioPlayer.hpp</label>
+        <label>include/core/MainObjects/audioPlayer/audioPlayer.hpp</label>
         <link refid="audio_player_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
@@ -289,27 +296,27 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="5">
-        <label>core_include/MainObjects/editorObject/addline.cpp</label>
+        <label>include/core/MainObjects/editorObject/addline.cpp</label>
         <link refid="addline_8cpp"/>
       </node>
       <node id="6">
-        <label>core_include/MainObjects/editorObject/commonfunction.cpp</label>
+        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
         <link refid="commonfunction_8cpp"/>
       </node>
       <node id="7">
-        <label>core_include/MainObjects/editorObject/deleteline.cpp</label>
+        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
         <link refid="deleteline_8cpp"/>
       </node>
       <node id="8">
-        <label>core_include/MainObjects/editorObject/editorObject.cpp</label>
+        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
         <link refid="editor_object_8cpp"/>
       </node>
       <node id="4">
-        <label>core_include/MainObjects/editorObject/editorObject.hpp</label>
+        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
         <link refid="editor_object_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
@@ -343,105 +350,119 @@
         </childnode>
       </node>
       <node id="9">
-        <label>core_include/MainObjects/editorObject/getall.cpp</label>
+        <label>include/core/MainObjects/editorObject/getall.cpp</label>
         <link refid="getall_8cpp"/>
       </node>
       <node id="10">
-        <label>core_include/MainObjects/editorObject/getdiff.cpp</label>
+        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
         <link refid="getdiff_8cpp"/>
       </node>
       <node id="11">
-        <label>core_include/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
         <link refid="getlogwithjsongraph_8cpp"/>
       </node>
       <node id="12">
-        <label>core_include/MainObjects/editorObject/go.cpp</label>
+        <label>include/core/MainObjects/editorObject/go.cpp</label>
         <link refid="go_8cpp"/>
       </node>
       <node id="13">
-        <label>core_include/MainObjects/editorObject/redo.cpp</label>
+        <label>include/core/MainObjects/editorObject/redo.cpp</label>
         <link refid="redo_8cpp"/>
       </node>
       <node id="14">
-        <label>core_include/MainObjects/editorObject/render.cpp</label>
+        <label>include/core/MainObjects/editorObject/render.cpp</label>
         <link refid="render_8cpp"/>
       </node>
       <node id="15">
-        <label>core_include/MainObjects/editorObject/undo.cpp</label>
+        <label>include/core/MainObjects/editorObject/undo.cpp</label>
         <link refid="undo_8cpp"/>
       </node>
       <node id="16">
-        <label>core_include/MainObjects/editorObject/updatelog.cpp</label>
+        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
         <link refid="updatelog_8cpp"/>
       </node>
       <node id="17">
-        <label>core_include/SWIG_editor_visitor.hpp</label>
+        <label>include/core/SWIG_editor_visitor.hpp</label>
         <link refid="_s_w_i_g__editor__visitor_8hpp"/>
       </node>
-      <node id="26">
-        <label>core_include/audioRender/ManualMix/ManualMix.cpp</label>
+      <node id="28">
+        <label>include/core/audioRender/ManualMix/ManualMix.cpp</label>
         <link refid="_manual_mix_8cpp"/>
       </node>
       <node id="1">
-        <label>core_include/audioRender/ManualMix/ManualMix.hpp</label>
+        <label>include/core/audioRender/ManualMix/ManualMix.hpp</label>
         <link refid="_manual_mix_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>include/core/audioRender/ManualMix/MusicControlPanel-inl.h</label>
+        <link refid="_music_control_panel-inl_8h"/>
         <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
       </node>
-      <node id="30">
-        <label>core_include/audioRender/ManualMix/MusicControlPanel-inl.h</label>
-        <link refid="_music_control_panel-inl_8h"/>
-        <childnode refid="31" relation="include">
-        </childnode>
-      </node>
-      <node id="31">
-        <label>core_include/audioRender/ManualMix/MusicControlPanel.cpp</label>
+      <node id="33">
+        <label>include/core/audioRender/ManualMix/MusicControlPanel.cpp</label>
         <link refid="_music_control_panel_8cpp"/>
       </node>
-      <node id="27">
-        <label>core_include/audioRender/ManualMix/MusicControlPanel.hpp</label>
+      <node id="29">
+        <label>include/core/audioRender/ManualMix/MusicControlPanel.hpp</label>
         <link refid="_music_control_panel_8hpp"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-      </node>
-      <node id="34">
-        <label>core_include/audioRender/audioRender.cpp</label>
-        <link refid="audio_render_8cpp"/>
-      </node>
-      <node id="33">
-        <label>core_include/audioRender/audioRender.hpp</label>
-        <link refid="audio_render_8hpp"/>
-        <childnode refid="2" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
       </node>
+      <node id="37">
+        <label>include/core/audioRender/audioRender.cpp</label>
+        <link refid="audio_render_8cpp"/>
+      </node>
+      <node id="36">
+        <label>include/core/audioRender/audioRender.hpp</label>
+        <link refid="audio_render_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
       <node id="18">
-        <label>core_include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
+        <label>include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</label>
         <link refid="_music_json_8cpp"/>
       </node>
+      <node id="35">
+        <label>include/core/editor/editor.cpp</label>
+        <link refid="editor_8cpp"/>
+      </node>
+      <node id="34">
+        <label>include/core/editor/editor.hpp</label>
+        <link refid="editor_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
       <node id="20">
-        <label>core_include/interface/PDJE_interface.cpp</label>
+        <label>include/core/interface/PDJE_interface.cpp</label>
         <link refid="_p_d_j_e__interface_8cpp"/>
       </node>
       <node id="19">
-        <label>core_include/interface/PDJE_interface.hpp</label>
+        <label>include/core/interface/PDJE_interface.hpp</label>
         <link refid="_p_d_j_e__interface_8hpp"/>
         <childnode refid="20" relation="include">
         </childnode>
@@ -453,38 +474,42 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
       </node>
       <node id="21">
-        <label>core_include/interface/PDJE_polyglot_wraps.cpp</label>
+        <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="_p_d_j_e__polyglot__wraps_8cpp"/>
       </node>
-      <node id="25">
-        <label>core_include/tests/audioTest.cpp</label>
+      <node id="22">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judge_test_8cpp"/>
+      </node>
+      <node id="27">
+        <label>include/tests/audioTest.cpp</label>
         <link refid="audio_test_8cpp"/>
       </node>
-      <node id="22">
-        <label>core_include/tests/dbTest.cpp</label>
+      <node id="23">
+        <label>include/tests/dbTest.cpp</label>
         <link refid="db_test_8cpp"/>
       </node>
-      <node id="23">
-        <label>core_include/tests/editorTest.cpp</label>
+      <node id="24">
+        <label>include/tests/editorTest.cpp</label>
         <link refid="editor_test_8cpp"/>
       </node>
-      <node id="24">
-        <label>core_include/tests/interfaceTest.cpp</label>
+      <node id="25">
+        <label>include/tests/gittest.cpp</label>
+        <link refid="gittest_8cpp"/>
+      </node>
+      <node id="26">
+        <label>include/tests/interfaceTest.cpp</label>
         <link refid="interface_test_8cpp"/>
       </node>
-      <node id="35">
-        <label>core_include/tests/manualAudioTest.cpp</label>
+      <node id="38">
+        <label>include/tests/manualAudioTest.cpp</label>
         <link refid="manual_audio_test_8cpp"/>
-      </node>
-      <node id="32">
-        <label>global_include/DataLines/PDJE_Core_DataLine.hpp</label>
-        <link refid="_p_d_j_e___core___data_line_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="class_f_x_control_panel" prot="public">FXControlPanel</innerclass>
@@ -591,7 +616,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/audioRender/ManualMix/ManualMix.hpp" line="28" column="1" bodyfile="core_include/audioRender/ManualMix/ManualMix.hpp" bodystart="28" bodyend="42"/>
+        <location file="include/core/audioRender/ManualMix/ManualMix.hpp" line="28" column="1" bodyfile="include/core/audioRender/ManualMix/ManualMix.hpp" bodystart="28" bodyend="42"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -618,7 +643,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/audioRender/ManualMix/ManualMix.hpp" line="125" column="1" bodyfile="core_include/audioRender/ManualMix/ManualMix.hpp" bodystart="125" bodyend="134"/>
+        <location file="include/core/audioRender/ManualMix/ManualMix.hpp" line="125" column="1" bodyfile="include/core/audioRender/ManualMix/ManualMix.hpp" bodystart="125" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="_manual_mix_8hpp_1ab241d30c14975d15f937dd81b05efc80" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -643,7 +668,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/audioRender/ManualMix/ManualMix.hpp" line="137" column="1" bodyfile="core_include/audioRender/ManualMix/ManualMix.hpp" bodystart="137" bodyend="146"/>
+        <location file="include/core/audioRender/ManualMix/ManualMix.hpp" line="137" column="1" bodyfile="include/core/audioRender/ManualMix/ManualMix.hpp" bodystart="137" bodyend="146"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -753,6 +778,6 @@
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="146"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="core_include/audioRender/ManualMix/ManualMix.hpp"/>
+    <location file="include/core/audioRender/ManualMix/ManualMix.hpp"/>
   </compounddef>
 </doxygen>

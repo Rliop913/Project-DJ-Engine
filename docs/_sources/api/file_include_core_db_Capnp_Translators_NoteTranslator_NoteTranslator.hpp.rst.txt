@@ -4,7 +4,7 @@
 File NoteTranslator.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_db_Capnp_Translators_NoteTranslator>` (``include/core/db/Capnp/Translators/NoteTranslator``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_db_Capnp_Translators_NoteTranslator>` (``include\core\db\Capnp\Translators\NoteTranslator``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File NoteTranslator.hpp
    :local:
    :backlinks: none
 
-Definition (``include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp``)
+Definition (``include\core\db\Capnp\Translators\NoteTranslator\NoteTranslator.hpp``)
 ------------------------------------------------------------------------------------
 
 
@@ -65,5 +65,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classNoteTranslator`
+- :ref:`exhale_class_class_note_translator`
 

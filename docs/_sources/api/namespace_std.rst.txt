@@ -18,8 +18,8 @@ STL namespace.
 
 
 
-Classes
--------
+Namespaces
+----------
 
 
-- :ref:`exhale_struct_structstd_1_1hash_3_01PDJE__JUDGE_1_1RAIL__META_01_4`
+- :ref:`namespace_std__std`

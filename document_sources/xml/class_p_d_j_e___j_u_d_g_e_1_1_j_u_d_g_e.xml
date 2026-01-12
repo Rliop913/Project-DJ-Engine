@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_JUDGE::JUDGE</compoundname>
+    <includes refid="_p_d_j_e___judge_8hpp" local="no">PDJE_Judge.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e_1a7b4906f8734f2968e35971bf5ff06cfc" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="class_p_d_j_e___j_u_d_g_e_1_1_judge___loop" kindref="compound">Judge_Loop</ref> &gt;</type>
+        <definition>std::optional&lt;Judge_Loop&gt; PDJE_JUDGE::JUDGE::loop_obj</definition>
+        <argsstring></argsstring>
+        <name>loop_obj</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE::loop_obj</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Judge.hpp" line="27" column="19" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e_1ae26f9445faad1d53a73693c3fbee493c" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; std::thread &gt;</type>
+        <definition>std::optional&lt;std::thread&gt; PDJE_JUDGE::JUDGE::loop</definition>
+        <argsstring></argsstring>
+        <name>loop</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE::loop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Judge.hpp" line="31" column="19" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e_1a6c475f5254a06c021a8a5d5f37e73c24" prot="public" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___j_u_d_g_e_1_1_judge___init" kindref="compound">Judge_Init</ref></type>
+        <definition>Judge_Init PDJE_JUDGE::JUDGE::inits</definition>
+        <argsstring></argsstring>
+        <name>inits</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE::inits</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Judge.hpp" line="34" column="16" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e_1a30f241ffd38a848fe2f5d9f44a21e81a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespace_p_d_j_e___j_u_d_g_e_1afa6381f8f229ccd5c5f8dbae248cebb2" kindref="member">JUDGE_STATUS</ref></type>
+        <definition>JUDGE_STATUS PDJE_JUDGE::JUDGE::Start</definition>
+        <argsstring>()</argsstring>
+        <name>Start</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE::Start</qualifiedname>
+        <briefdescription>
+<para>Validate init data and start the judge event loop thread. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Judge.hpp" line="37" column="5" bodyfile="include/judge/PDJE_Judge.cpp" bodystart="16" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e_1a9ddd42aee977d33d3aaf47f11755e1f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_JUDGE::JUDGE::End</definition>
+        <argsstring>()</argsstring>
+        <name>End</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE::End</qualifiedname>
+        <briefdescription>
+<para>Stop the event loop and release cached init data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Judge.hpp" line="40" column="5" bodyfile="include/judge/PDJE_Judge.cpp" bodystart="61" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e_1ac2bf8a01bd794508c57cea1820b9b699" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_JUDGE::JUDGE::JUDGE</definition>
+        <argsstring>()</argsstring>
+        <name>JUDGE</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE::JUDGE</qualifiedname>
+        <briefdescription>
+<para>Create a judge instance and initialize logging. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Judge.hpp" line="43" column="5" bodyfile="include/judge/PDJE_Judge.cpp" bodystart="10" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e_1a1d1a37bb156c69f4bc51b4cabc1e0e6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_JUDGE::JUDGE::~JUDGE</definition>
+        <argsstring>()=default</argsstring>
+        <name>~JUDGE</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE::~JUDGE</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_Judge.hpp" line="44" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Judge controller that owns initialization data and the event loop. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>PDJE_JUDGE::Custom_Events</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_custom___events"/>
+      </node>
+      <node id="1">
+        <label>PDJE_JUDGE::JUDGE</label>
+        <link refid="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>inits</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PDJE_JUDGE::Judge_Init</label>
+        <link refid="class_p_d_j_e___j_u_d_g_e_1_1_judge___init"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>lambdas</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>raildb</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>PDJE_JUDGE::RAIL_DB</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>offset</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>meta</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>kb_mouse_raildata</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>midi_raildata</edgelabel>
+        </childnode>
+      </node>
+      <node id="12">
+        <label>PDJE_JUDGE::RAIL_KEY::KB_MOUSE</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_k_b___m_o_u_s_e"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>Device_Name</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>PDJE_JUDGE::RAIL_KEY::META</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_e_t_a"/>
+      </node>
+      <node id="14">
+        <label>PDJE_JUDGE::RAIL_KEY::MIDI</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_i_d_i"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>port_name</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="6">
+        <label>std::string</label>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::KB_MOUSE, uint64_t &gt;</label>
+        <childnode refid="12" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="13">
+        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::MIDI, uint64_t &gt;</label>
+        <childnode refid="14" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::unordered_map&lt; std::string, int64_t &gt;</label>
+        <childnode refid="6" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>std::unordered_map&lt; uint64_t, std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt; &gt;</label>
+        <childnode refid="9" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt;</label>
+        <childnode refid="10" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/judge/PDJE_Judge.hpp" line="25" column="1" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="25" bodyend="45"/>
+    <listofallmembers>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e_1a9ddd42aee977d33d3aaf47f11755e1f4" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::JUDGE</scope><name>End</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e_1a6c475f5254a06c021a8a5d5f37e73c24" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::JUDGE</scope><name>inits</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e_1ac2bf8a01bd794508c57cea1820b9b699" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::JUDGE</scope><name>JUDGE</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e_1ae26f9445faad1d53a73693c3fbee493c" prot="private" virt="non-virtual"><scope>PDJE_JUDGE::JUDGE</scope><name>loop</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e_1a7b4906f8734f2968e35971bf5ff06cfc" prot="private" virt="non-virtual"><scope>PDJE_JUDGE::JUDGE</scope><name>loop_obj</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e_1a30f241ffd38a848fe2f5d9f44a21e81a" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::JUDGE</scope><name>Start</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e_1a1d1a37bb156c69f4bc51b4cabc1e0e6b" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::JUDGE</scope><name>~JUDGE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

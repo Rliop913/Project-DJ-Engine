@@ -1,0 +1,335 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b" kind="struct" language="C++" prot="public">
+    <compoundname>PDJE_JUDGE::RAIL_DB</compoundname>
+    <includes refid="_p_d_j_e___r_a_i_l_8hpp" local="no">PDJE_RAIL.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a6e1e50ccacd3e3dfdcb1e55633ef5eb8" prot="public" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, int64_t &gt;</type>
+        <definition>std::unordered_map&lt;std::string, int64_t&gt; PDJE_JUDGE::RAIL_DB::offset</definition>
+        <argsstring></argsstring>
+        <name>offset</name>
+        <qualifiedname>PDJE_JUDGE::RAIL_DB::offset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_RAIL.hpp" line="54" column="41" bodyfile="include/judge/PDJE_RAIL.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1aa3e86719d00c4d5ca420d086099b1b1c" prot="public" static="no" mutable="no">
+        <type>std::unordered_map&lt; uint64_t, std::vector&lt; <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_e_t_a" kindref="compound">RAIL_KEY::META</ref> &gt; &gt;</type>
+        <definition>std::unordered_map&lt;uint64_t, std::vector&lt;RAIL_KEY::META&gt; &gt; PDJE_JUDGE::RAIL_DB::meta</definition>
+        <argsstring></argsstring>
+        <name>meta</name>
+        <qualifiedname>PDJE_JUDGE::RAIL_DB::meta</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_RAIL.hpp" line="55" column="24" bodyfile="include/judge/PDJE_RAIL.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a9ed71cc33a821c05f0a6c4fdb3249a53" prot="public" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_k_b___m_o_u_s_e" kindref="compound">RAIL_KEY::KB_MOUSE</ref>, uint64_t &gt;</type>
+        <definition>std::unordered_map&lt;RAIL_KEY::KB_MOUSE, uint64_t&gt; PDJE_JUDGE::RAIL_DB::kb_mouse_raildata</definition>
+        <argsstring></argsstring>
+        <name>kb_mouse_raildata</name>
+        <qualifiedname>PDJE_JUDGE::RAIL_DB::kb_mouse_raildata</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_RAIL.hpp" line="56" column="33" bodyfile="include/judge/PDJE_RAIL.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a3f10640535599aa4f36206ce736b080d" prot="public" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_i_d_i" kindref="compound">RAIL_KEY::MIDI</ref>, uint64_t &gt;</type>
+        <definition>std::unordered_map&lt;RAIL_KEY::MIDI, uint64_t&gt; PDJE_JUDGE::RAIL_DB::midi_raildata</definition>
+        <argsstring></argsstring>
+        <name>midi_raildata</name>
+        <qualifiedname>PDJE_JUDGE::RAIL_DB::midi_raildata</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_RAIL.hpp" line="57" column="37" bodyfile="include/judge/PDJE_RAIL.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1ac0fdccd95dfc59d91d98ccc92b442f47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_JUDGE::RAIL_DB::Add</definition>
+        <argsstring>(const RAIL_KEY::KB_MOUSE &amp;key, const PDJE_Dev_Type &amp;type, const uint64_t &amp;id, const int64_t offset)</argsstring>
+        <name>Add</name>
+        <qualifiedname>PDJE_JUDGE::RAIL_DB::Add</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_k_b___m_o_u_s_e" kindref="compound">RAIL_KEY::KB_MOUSE</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="_p_d_j_e___input___device___data_8hpp_1acf9d9564ffac8413ed6bdde983323456" kindref="member">PDJE_Dev_Type</ref> &amp;</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const uint64_t &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const int64_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_RAIL.hpp" line="60" column="5" bodyfile="include/judge/PDJE_RAIL.cpp" bodystart="7" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a1c6b5c58832ecfd52963728843540380" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_JUDGE::RAIL_DB::Add</definition>
+        <argsstring>(const RAIL_KEY::MIDI &amp;key, const uint64_t &amp;id, const int64_t offset)</argsstring>
+        <name>Add</name>
+        <qualifiedname>PDJE_JUDGE::RAIL_DB::Add</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_i_d_i" kindref="compound">RAIL_KEY::MIDI</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const uint64_t &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const int64_t</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_RAIL.hpp" line="65" column="5" bodyfile="include/judge/PDJE_RAIL.cpp" bodystart="23" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1ad3ebe8b09c0092ca0750f28d4c0398dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_JUDGE::RAIL_DB::Delete</definition>
+        <argsstring>(const RAIL_KEY::KB_MOUSE &amp;key)</argsstring>
+        <name>Delete</name>
+        <qualifiedname>PDJE_JUDGE::RAIL_DB::Delete</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_k_b___m_o_u_s_e" kindref="compound">RAIL_KEY::KB_MOUSE</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_RAIL.hpp" line="67" column="5" bodyfile="include/judge/PDJE_RAIL.cpp" bodystart="39" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a4d61af0c856f94faf1b782dcbe1c1187" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_JUDGE::RAIL_DB::Delete</definition>
+        <argsstring>(const RAIL_KEY::MIDI &amp;key)</argsstring>
+        <name>Delete</name>
+        <qualifiedname>PDJE_JUDGE::RAIL_DB::Delete</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_i_d_i" kindref="compound">RAIL_KEY::MIDI</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_RAIL.hpp" line="69" column="5" bodyfile="include/judge/PDJE_RAIL.cpp" bodystart="60" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1ad59206e995984ae05d7c2170dcec80db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_JUDGE::RAIL_DB::Empty</definition>
+        <argsstring>()</argsstring>
+        <name>Empty</name>
+        <qualifiedname>PDJE_JUDGE::RAIL_DB::Empty</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_RAIL.hpp" line="72" column="5" bodyfile="include/judge/PDJE_RAIL.cpp" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a55609cbc0a9ec882624aff80cb13f582" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_JUDGE::RAIL_DB::Clear</definition>
+        <argsstring>()</argsstring>
+        <name>Clear</name>
+        <qualifiedname>PDJE_JUDGE::RAIL_DB::Clear</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_RAIL.hpp" line="74" column="5" bodyfile="include/judge/PDJE_RAIL.cpp" bodystart="87" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a64b4aaa822c71b1788d555e0875bb758" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; uint64_t &gt;</type>
+        <definition>std::optional&lt; uint64_t &gt; PDJE_JUDGE::RAIL_DB::GetID</definition>
+        <argsstring>(const RAIL_KEY::KB_MOUSE &amp;key)</argsstring>
+        <name>GetID</name>
+        <qualifiedname>PDJE_JUDGE::RAIL_DB::GetID</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_k_b___m_o_u_s_e" kindref="compound">RAIL_KEY::KB_MOUSE</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_RAIL.hpp" line="77" column="5" bodyfile="include/judge/PDJE_RAIL.cpp" bodystart="96" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1aa0bf01623c3fa1309133fe515ee758b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; uint64_t &gt;</type>
+        <definition>std::optional&lt; uint64_t &gt; PDJE_JUDGE::RAIL_DB::GetID</definition>
+        <argsstring>(const RAIL_KEY::MIDI &amp;key)</argsstring>
+        <name>GetID</name>
+        <qualifiedname>PDJE_JUDGE::RAIL_DB::GetID</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_i_d_i" kindref="compound">RAIL_KEY::MIDI</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_RAIL.hpp" line="79" column="5" bodyfile="include/judge/PDJE_RAIL.cpp" bodystart="107" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a87584067e48aad930fc708236637dad5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::vector&lt; <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_e_t_a" kindref="compound">RAIL_KEY::META</ref> &gt; &gt;</type>
+        <definition>std::optional&lt; std::vector&lt; RAIL_KEY::META &gt; &gt; PDJE_JUDGE::RAIL_DB::GetMETA</definition>
+        <argsstring>(const uint64_t id)</argsstring>
+        <name>GetMETA</name>
+        <qualifiedname>PDJE_JUDGE::RAIL_DB::GetMETA</qualifiedname>
+        <param>
+          <type>const uint64_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/PDJE_RAIL.hpp" line="82" column="5" bodyfile="include/judge/PDJE_RAIL.cpp" bodystart="118" bodyend="126"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>PDJE_JUDGE::RAIL_DB</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>offset</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>meta</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>kb_mouse_raildata</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>midi_raildata</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>PDJE_JUDGE::RAIL_KEY::KB_MOUSE</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_k_b___m_o_u_s_e"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>Device_Name</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>PDJE_JUDGE::RAIL_KEY::META</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_e_t_a"/>
+      </node>
+      <node id="11">
+        <label>PDJE_JUDGE::RAIL_KEY::MIDI</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_i_d_i"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>port_name</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="3">
+        <label>std::string</label>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::KB_MOUSE, uint64_t &gt;</label>
+        <childnode refid="9" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::MIDI, uint64_t &gt;</label>
+        <childnode refid="11" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::unordered_map&lt; std::string, int64_t &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::unordered_map&lt; uint64_t, std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt; &gt;</label>
+        <childnode refid="6" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt;</label>
+        <childnode refid="7" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/judge/PDJE_RAIL.hpp" line="53" column="1" bodyfile="include/judge/PDJE_RAIL.hpp" bodystart="53" bodyend="83"/>
+    <listofallmembers>
+      <member refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1ac0fdccd95dfc59d91d98ccc92b442f47" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::RAIL_DB</scope><name>Add</name></member>
+      <member refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a1c6b5c58832ecfd52963728843540380" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::RAIL_DB</scope><name>Add</name></member>
+      <member refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a55609cbc0a9ec882624aff80cb13f582" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::RAIL_DB</scope><name>Clear</name></member>
+      <member refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1ad3ebe8b09c0092ca0750f28d4c0398dd" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::RAIL_DB</scope><name>Delete</name></member>
+      <member refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a4d61af0c856f94faf1b782dcbe1c1187" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::RAIL_DB</scope><name>Delete</name></member>
+      <member refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1ad59206e995984ae05d7c2170dcec80db" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::RAIL_DB</scope><name>Empty</name></member>
+      <member refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a64b4aaa822c71b1788d555e0875bb758" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::RAIL_DB</scope><name>GetID</name></member>
+      <member refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1aa0bf01623c3fa1309133fe515ee758b8" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::RAIL_DB</scope><name>GetID</name></member>
+      <member refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a87584067e48aad930fc708236637dad5" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::RAIL_DB</scope><name>GetMETA</name></member>
+      <member refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a9ed71cc33a821c05f0a6c4fdb3249a53" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::RAIL_DB</scope><name>kb_mouse_raildata</name></member>
+      <member refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1aa3e86719d00c4d5ca420d086099b1b1c" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::RAIL_DB</scope><name>meta</name></member>
+      <member refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a3f10640535599aa4f36206ce736b080d" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::RAIL_DB</scope><name>midi_raildata</name></member>
+      <member refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b_1a6e1e50ccacd3e3dfdcb1e55633ef5eb8" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::RAIL_DB</scope><name>offset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
