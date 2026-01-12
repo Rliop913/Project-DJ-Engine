@@ -4,7 +4,7 @@
 File PDJE_Input.hpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input>` (``include/input``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input>` (``include\input``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Input.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/PDJE_Input.hpp``)
+Definition (``include\input\PDJE_Input.hpp``)
 ---------------------------------------------
 
 
@@ -32,13 +32,15 @@ Includes
 
 - ``Input_State.hpp`` (:ref:`file_include_global_DataLines_Input_State.hpp`)
 
-- ``MainProcess.hpp`` (:ref:`file_include_input_IPC_transmission_MainProcess.hpp`)
+- ``MainProcess.hpp`` (:ref:`file_include_input_host_MainProcess.hpp`)
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
 
 - ``PDJE_Input_DataLine.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_DataLine.hpp`)
 
 - ``PDJE_Input_Device_Data.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_Device_Data.hpp`)
+
+- ``PDJE_MIDI.hpp`` (:ref:`file_include_input_midi_PDJE_MIDI.hpp`)
 
 - ``barrier``
 
@@ -71,5 +73,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPDJE__Input`
+- :ref:`exhale_class_class_p_d_j_e___input`
 

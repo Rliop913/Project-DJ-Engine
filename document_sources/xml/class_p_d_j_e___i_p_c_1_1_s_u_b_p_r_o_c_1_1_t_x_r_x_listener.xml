@@ -1,0 +1,365 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_IPC::SUBPROC::TXRXListener</compoundname>
+    <includes refid="_sub_process_8hpp" local="no">SubProcess.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1abac15a53f174ad8ab053a178d10ec86d" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="class_p_d_j_e___c_r_y_p_t_o_1_1_t_x___r_x" kindref="compound">PDJE_CRYPTO::TX_RX</ref> &gt;</type>
+        <definition>std::optional&lt;PDJE_CRYPTO::TX_RX&gt; PDJE_IPC::SUBPROC::TXRXListener::txrx</definition>
+        <argsstring></argsstring>
+        <name>txrx</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::txrx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="31" column="24" bodyfile="include/input/runner/SubProcess.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1aa7e2638043cf227bed15e3a7efc3626e" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="_p_d_j_e___input___data_line_8hpp_1a73ea437825558867dcad305e6ab74cd9" kindref="member">PDJE_ID</ref>, <ref refid="namespace_p_d_j_e___i_p_c_1afa0a7b47d125684c3f3557e194fc5e56" kindref="member">PDJE_NAME</ref> &gt;</type>
+        <definition>std::unordered_map&lt;PDJE_ID, PDJE_NAME&gt; PDJE_IPC::SUBPROC::TXRXListener::id_name</definition>
+        <argsstring></argsstring>
+        <name>id_name</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::id_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="32" column="24" bodyfile="include/input/runner/SubProcess.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1afef0b6f9ed35d3e0355a0b67507323b2" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="class_p_d_j_e___i_p_c_1_1_p_d_j_e___input___transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref> &gt;</type>
+        <definition>std::optional&lt;PDJE_IPC::PDJE_Input_Transfer&gt; PDJE_IPC::SUBPROC::TXRXListener::input_buffer</definition>
+        <argsstring></argsstring>
+        <name>input_buffer</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::input_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="34" column="19" bodyfile="include/input/runner/SubProcess.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1aa43092ad5d128257d6e6680192c925e2" prot="private" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t" kindref="compound">EVENT</ref></type>
+        <definition>EVENT PDJE_IPC::SUBPROC::TXRXListener::input_loop_run_event</definition>
+        <argsstring></argsstring>
+        <name>input_loop_run_event</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::input_loop_run_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="36" column="11" bodyfile="include/input/runner/SubProcess.hpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a9c0ec8478f63bc5e115279d98954bedd" prot="private" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t" kindref="compound">EVENT</ref></type>
+        <definition>EVENT PDJE_IPC::SUBPROC::TXRXListener::terminate_event</definition>
+        <argsstring></argsstring>
+        <name>terminate_event</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::terminate_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="37" column="11" bodyfile="include/input/runner/SubProcess.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a04338e6eb7a5409510b1ad53c6c19328" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="struct_device_data" kindref="compound">DeviceData</ref> &gt;</type>
+        <definition>std::vector&lt;DeviceData&gt; PDJE_IPC::SUBPROC::TXRXListener::configed_devices</definition>
+        <argsstring></argsstring>
+        <name>configed_devices</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::configed_devices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="44" column="38" bodyfile="include/input/runner/SubProcess.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1affa195847d34f47ba4ad27ab0002a0ff" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; <ref refid="namespace_p_d_j_e___i_p_c_1aaf89512571dfd440f5c2d0d57df24042" kindref="member">PDJE_DEV_PATH</ref>, <ref refid="namespace_p_d_j_e___i_p_c_1afa0a7b47d125684c3f3557e194fc5e56" kindref="member">PDJE_NAME</ref> &gt;</type>
+        <definition>std::unordered_map&lt;PDJE_DEV_PATH, PDJE_NAME&gt; PDJE_IPC::SUBPROC::TXRXListener::unlisted_targets</definition>
+        <argsstring></argsstring>
+        <name>unlisted_targets</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::unlisted_targets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="45" column="24" bodyfile="include/input/runner/SubProcess.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a453eca383e1f39f929983102bd6b0627" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PDJE_IPC::SUBPROC::TXRXListener::KillCheck</definition>
+        <argsstring></argsstring>
+        <name>KillCheck</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::KillCheck</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="51" column="10" bodyfile="include/input/runner/SubProcess.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1ad480b124c6e4100e23aed8d66ec4877f" prot="public" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___h_i_g_h_r_e_s___c_l_o_c_k_1_1_c_l_o_c_k" kindref="compound">PDJE_HIGHRES_CLOCK::CLOCK</ref></type>
+        <definition>PDJE_HIGHRES_CLOCK::CLOCK PDJE_IPC::SUBPROC::TXRXListener::timer</definition>
+        <argsstring></argsstring>
+        <name>timer</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::timer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="57" column="31" bodyfile="include/input/runner/SubProcess.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a5d403c46e1e04224aab216dcac6e7399" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_IPC::TXRXListener::RecvIPCSharedMem</definition>
+        <argsstring>(const std::string &amp;mem_path, const std::string &amp;dataType, const uint64_t data_count)</argsstring>
+        <name>RecvIPCSharedMem</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::RecvIPCSharedMem</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>mem_path</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>dataType</declname>
+        </param>
+        <param>
+          <type>const uint64_t</type>
+          <declname>data_count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="40" column="5" bodyfile="include/input/IPC/--DEPRECATED--transmission/linux/ChildProcess.cpp" bodystart="17" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a309e49cee1dba90e3c235c3964a98bab" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string PDJE_IPC::TXRXListener::ListDev</definition>
+        <argsstring>()</argsstring>
+        <name>ListDev</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::ListDev</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="48" column="5" bodyfile="include/input/IPC/--DEPRECATED--transmission/linux/ChildProcess.cpp" bodystart="24" bodyend="27"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1afeb60d313ff516324452a2ba2a344f73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::TXRXListener::TXRXListener</definition>
+        <argsstring>(PDJE_CRYPTO::PSK &amp;psk, const PDJE_IPC::MNAME &amp;memFirst, const PDJE_IPC::MNAME &amp;firstLock, const PDJE_IPC::MNAME &amp;memSecond, const PDJE_IPC::MNAME &amp;secondLock)</argsstring>
+        <name>TXRXListener</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::TXRXListener</qualifiedname>
+        <param>
+          <type><ref refid="class_p_d_j_e___c_r_y_p_t_o_1_1_p_s_k" kindref="compound">PDJE_CRYPTO::PSK</ref> &amp;</type>
+          <declname>psk</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespace_p_d_j_e___i_p_c_1a04902c541254b5ef872d47ec219cc36b" kindref="member">PDJE_IPC::MNAME</ref> &amp;</type>
+          <declname>memFirst</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespace_p_d_j_e___i_p_c_1a04902c541254b5ef872d47ec219cc36b" kindref="member">PDJE_IPC::MNAME</ref> &amp;</type>
+          <declname>firstLock</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespace_p_d_j_e___i_p_c_1a04902c541254b5ef872d47ec219cc36b" kindref="member">PDJE_IPC::MNAME</ref> &amp;</type>
+          <declname>memSecond</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespace_p_d_j_e___i_p_c_1a04902c541254b5ef872d47ec219cc36b" kindref="member">PDJE_IPC::MNAME</ref> &amp;</type>
+          <declname>secondLock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="52" column="5" bodyfile="include/input/runner/SetTXRXFeatures.cpp" bodystart="6" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a6f4945bb77376f5e8fd30356af675566" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::SUBPROC::TXRXListener::BlockedListen</definition>
+        <argsstring>()</argsstring>
+        <name>BlockedListen</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::BlockedListen</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="59" column="5" bodyfile="include/input/runner/SubProcess.hpp" bodystart="59" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a0c096b9a2f3694eedaf4860d0c76bd65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * PDJE_IPC::TXRXListener::Init</definition>
+        <argsstring>()</argsstring>
+        <name>Init</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::Init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="64" column="5" bodyfile="include/input/runner/windows/InputLoop.cpp" bodystart="9" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1ac1c982453eaef5bce91dac4c039e56c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::TXRXListener::LoopTrig</definition>
+        <argsstring>()</argsstring>
+        <name>LoopTrig</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::LoopTrig</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="66" column="5" bodyfile="include/input/IPC/--DEPRECATED--transmission/linux/ChildProcess.cpp" bodystart="30" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a41173442651b4caf6db011dd9a96422c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::TXRXListener::Run</definition>
+        <argsstring>()</argsstring>
+        <name>Run</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::Run</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="68" column="5" bodyfile="include/input/runner/windows/InputLoop.cpp" bodystart="32" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1abdb443d5bfed1c00f1a887f2a1f4fac6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::SUBPROC::TXRXListener::~TXRXListener</definition>
+        <argsstring>()=default</argsstring>
+        <name>~TXRXListener</name>
+        <qualifiedname>PDJE_IPC::SUBPROC::TXRXListener::~TXRXListener</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/runner/SubProcess.hpp" line="70" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="8">
+        <label>PDJE_HIGHRES_CLOCK::CLOCK</label>
+        <link refid="class_p_d_j_e___h_i_g_h_r_e_s___c_l_o_c_k_1_1_c_l_o_c_k"/>
+      </node>
+      <node id="5">
+        <label>PDJE_IPC::EVENT</label>
+        <link refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t"/>
+      </node>
+      <node id="1">
+        <label>PDJE_IPC::SUBPROC::TXRXListener</label>
+        <link refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>id_name</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>input_loop_run_event</edgelabel>
+          <edgelabel>terminate_event</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>configed_devices</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>unlisted_targets</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>timer</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="3">
+        <label>std::string</label>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>std::unordered_map&lt; PDJE_DEV_PATH, PDJE_NAME &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>elements</edgelabel>
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::unordered_map&lt; PDJE_ID, PDJE_NAME &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>elements</edgelabel>
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>std::vector&lt; DeviceData &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/runner/SubProcess.hpp" line="24" column="1" bodyfile="include/input/runner/SubProcess.hpp" bodystart="24" bodyend="71"/>
+    <listofallmembers>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a6f4945bb77376f5e8fd30356af675566" prot="public" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>BlockedListen</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a04338e6eb7a5409510b1ad53c6c19328" prot="private" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>configed_devices</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1aa7e2638043cf227bed15e3a7efc3626e" prot="private" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>id_name</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a0c096b9a2f3694eedaf4860d0c76bd65" prot="public" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>Init</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1afef0b6f9ed35d3e0355a0b67507323b2" prot="private" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>input_buffer</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1aa43092ad5d128257d6e6680192c925e2" prot="private" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>input_loop_run_event</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a453eca383e1f39f929983102bd6b0627" prot="public" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>KillCheck</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a309e49cee1dba90e3c235c3964a98bab" prot="private" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>ListDev</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1ac1c982453eaef5bce91dac4c039e56c8" prot="public" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>LoopTrig</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a5d403c46e1e04224aab216dcac6e7399" prot="private" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>RecvIPCSharedMem</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a41173442651b4caf6db011dd9a96422c" prot="public" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>Run</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1a9c0ec8478f63bc5e115279d98954bedd" prot="private" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>terminate_event</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1ad480b124c6e4100e23aed8d66ec4877f" prot="public" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>timer</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1abac15a53f174ad8ab053a178d10ec86d" prot="private" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>txrx</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1afeb60d313ff516324452a2ba2a344f73" prot="public" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>TXRXListener</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1affa195847d34f47ba4ad27ab0002a0ff" prot="private" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>unlisted_targets</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener_1abdb443d5bfed1c00f1a887f2a1f4fac6" prot="public" virt="non-virtual"><scope>PDJE_IPC::SUBPROC::TXRXListener</scope><name>~TXRXListener</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

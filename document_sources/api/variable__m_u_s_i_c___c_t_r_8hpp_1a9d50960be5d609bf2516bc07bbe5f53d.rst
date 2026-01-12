@@ -3,7 +3,7 @@
 Variable BPM_WINDOWS_SIZE
 =========================
 
-- Defined in :ref:`file_core_include_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp`
+- Defined in :ref:`file_include_core_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp`
 
 
 Variable Documentation

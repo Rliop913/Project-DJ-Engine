@@ -114,7 +114,6 @@ BpmStruct::getAffected(const BpmFragment &searchFrag) const
 #ifdef __WINDOWS__
     return *bpmIt;
 #endif
-// todo - check these codes and watch diffs
 #ifndef __WINDOWS__
     return *bpmIt.base();
 #endif

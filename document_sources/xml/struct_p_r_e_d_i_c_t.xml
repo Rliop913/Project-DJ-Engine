@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="struct_p_r_e_d_i_c_t" kind="struct" language="C++" prot="public">
+    <compoundname>PREDICT</compoundname>
+    <includes refid="_predict_music_8hpp" local="no">PredictMusic.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_p_r_e_d_i_c_t_1a2558d153ed9a1ae579029dfd9fb0757f" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t PREDICT::start_cursor</definition>
+        <argsstring></argsstring>
+        <name>start_cursor</name>
+        <qualifiedname>PREDICT::start_cursor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="14" column="24" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_p_r_e_d_i_c_t_1a1ddbf921010b3d7e782c3567faaed537" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t PREDICT::used_frames</definition>
+        <argsstring></argsstring>
+        <name>used_frames</name>
+        <qualifiedname>PREDICT::used_frames</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="15" column="24" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_p_r_e_d_i_c_t_1afb622ba939d2edd61f37dd8cf6493a5a" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double PREDICT::io_ratio</definition>
+        <argsstring></argsstring>
+        <name>io_ratio</name>
+        <qualifiedname>PREDICT::io_ratio</qualifiedname>
+        <initializer>= 1.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="16" column="24" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_p_r_e_d_i_c_t_1aa658d26f381cef67c4b9cee18d82fb7a" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt;float&gt; PREDICT::predict_fragment</definition>
+        <argsstring></argsstring>
+        <name>predict_fragment</name>
+        <qualifiedname>PREDICT::predict_fragment</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="17" column="17" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>PREDICT</label>
+        <link refid="struct_p_r_e_d_i_c_t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>predict_fragment</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::vector&lt; float &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="13" column="1" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="13" bodyend="18"/>
+    <listofallmembers>
+      <member refid="struct_p_r_e_d_i_c_t_1afb622ba939d2edd61f37dd8cf6493a5a" prot="public" virt="non-virtual"><scope>PREDICT</scope><name>io_ratio</name></member>
+      <member refid="struct_p_r_e_d_i_c_t_1aa658d26f381cef67c4b9cee18d82fb7a" prot="public" virt="non-virtual"><scope>PREDICT</scope><name>predict_fragment</name></member>
+      <member refid="struct_p_r_e_d_i_c_t_1a2558d153ed9a1ae579029dfd9fb0757f" prot="public" virt="non-virtual"><scope>PREDICT</scope><name>start_cursor</name></member>
+      <member refid="struct_p_r_e_d_i_c_t_1a1ddbf921010b3d7e782c3567faaed537" prot="public" virt="non-virtual"><scope>PREDICT</scope><name>used_frames</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

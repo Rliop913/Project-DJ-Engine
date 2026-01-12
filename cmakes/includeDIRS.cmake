@@ -68,6 +68,12 @@ ${PDJE_INCLUDE_ROOT}/include/judge
 ${PDJE_INCLUDE_ROOT}/include/judge/NoteOBJ
 ${PDJE_INCLUDE_ROOT}/include/judge/Init
 ${PDJE_INCLUDE_ROOT}/include/judge/Loop
+${PDJE_INCLUDE_ROOT}/include/judge/Loop/PreProcess
+${PDJE_INCLUDE_ROOT}/include/judge/Loop/Match
+${PDJE_INCLUDE_ROOT}/include/judge/AxisModel
+
+
+
 ${PDJE_INCLUDE_ROOT}/include/judge/InputParser
 ${CAPNPC_OUTPUT_DIR}/third_party/Capnp
 )
@@ -127,10 +133,8 @@ else()
     ${PDJE_INCLUDE_ROOT}/include/global/Highres_Clock/Linux
   )
   list(APPEND PDJE_INCLUDE_INPUT_MAINPROC
-    ${PDJE_INCLUDE_ROOT}/include/input/linux 
-    ${PDJE_INCLUDE_ROOT}/include/input/linux/RT
-    ${PDJE_INCLUDE_ROOT}/include/input/linux/common
-    ${PDJE_INCLUDE_ROOT}/include/input/linux/socket
+    ${PDJE_INCLUDE_ROOT}/include/input/host/linux
+    ${PDJE_INCLUDE_ROOT}/include/input/runner/linux
     
     )
   list(APPEND PDJE_INCLUDE_IPC
@@ -142,6 +146,9 @@ endif()
 list(APPEND PDJE_INCLUDE_JUDGE
   ${PDJE_INCLUDE_IPC}
   ${PDJE_INCLUDE_GLOBAL}
+  ${PDJE_INCLUDE_ROOT}/include/input/midi
+  
+  
 )
 list(APPEND PDJE_INCLUDE_CORE
   ${PDJE_INCLUDE_GLOBAL}
@@ -153,4 +160,5 @@ list(APPEND PDJE_INCLUDE_INPUT_MAINPROC
 list(APPEND PDJE_INCLUDE_INPUT_SUBPROC
   ${PDJE_INCLUDE_IPC}
   ${PDJE_INCLUDE_GLOBAL}
+  ${PDJE_INCLUDE_ROOT}/include/input/midi
 )

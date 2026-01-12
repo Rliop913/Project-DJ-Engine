@@ -4,7 +4,7 @@
 File rollMan.hpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix_ManualFausts>` (``include/core/audioRender/ManualMix/ManualFausts``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix_ManualFausts>` (``include\core\audioRender\ManualMix\ManualFausts``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File rollMan.hpp
    :local:
    :backlinks: none
 
-Definition (``include/core/audioRender/ManualMix/ManualFausts/rollMan.hpp``)
+Definition (``include\core\audioRender\ManualMix\ManualFausts\rollMan.hpp``)
 ----------------------------------------------------------------------------
 
 
@@ -41,5 +41,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classRollMan`
+- :ref:`exhale_class_class_roll_man`
 

@@ -3,7 +3,7 @@
 Define SIZE_V
 =============
 
-- Defined in :ref:`file_core_include_tests_highway_Test.cpp`
+- Defined in :ref:`file_include_tests_highway_Test.cpp`
 
 
 Define Documentation

@@ -4,7 +4,7 @@
 Program Listing for File musicDB.hpp
 ====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_musicDB.hpp>` (``include/core/db/musicDB.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_musicDB.hpp>` (``include\core\db\musicDB.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

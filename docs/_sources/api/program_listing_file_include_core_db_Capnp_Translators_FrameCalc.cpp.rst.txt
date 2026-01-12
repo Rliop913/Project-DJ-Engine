@@ -4,7 +4,7 @@
 Program Listing for File FrameCalc.cpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_Capnp_Translators_FrameCalc.cpp>` (``include/core/db/Capnp/Translators/FrameCalc.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_Capnp_Translators_FrameCalc.cpp>` (``include\core\db\Capnp\Translators\FrameCalc.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -126,7 +126,6 @@ Program Listing for File FrameCalc.cpp
    #ifdef __WINDOWS__
        return *bpmIt;
    #endif
-   // todo - check these codes and watch diffs
    #ifndef __WINDOWS__
        return *bpmIt.base();
    #endif

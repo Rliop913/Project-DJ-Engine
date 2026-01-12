@@ -1,0 +1,343 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_r_t_socket" kind="class" language="C++" prot="public">
+    <compoundname>RTSocket</compoundname>
+    <includes refid="_r_t_socket_8hpp" local="no">RTSocket.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_r_t_socket_1ab38c96818fdc24dd3325f2feb4dbf083" prot="private" static="no" mutable="no">
+        <type><ref refid="class_r_t_event" kindref="compound">RTEvent</ref> *</type>
+        <definition>RTEvent* RTSocket::rtev</definition>
+        <argsstring></argsstring>
+        <name>rtev</name>
+        <qualifiedname>RTSocket::rtev</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="34" column="51" bodyfile="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_t_socket_1a34fa7968f4c1daddad58f62535b1db87" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="_r_t_socket_8hpp_1a9fe2c28cc016fecdfc4909a9f5c74a0b" kindref="member">regi_function</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, regi_function&gt; RTSocket::functionRegistry</definition>
+        <argsstring></argsstring>
+        <name>functionRegistry</name>
+        <qualifiedname>RTSocket::functionRegistry</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="35" column="24" bodyfile="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_t_socket_1a1a6d068a007e09e4be4e67fb276b8254" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; int, std::function&lt; void()&gt; &gt;</type>
+        <definition>std::unordered_map&lt;int, std::function&lt;void()&gt; &gt; RTSocket::errorHandler</definition>
+        <argsstring></argsstring>
+        <name>errorHandler</name>
+        <qualifiedname>RTSocket::errorHandler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="36" column="24" bodyfile="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_t_socket_1af7143437d4ffb98b34a5f70ead71d64d" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="class_one_time_sys_setup" kindref="compound">OneTimeSysSetup</ref> &gt;</type>
+        <definition>std::optional&lt;OneTimeSysSetup&gt; RTSocket::setups</definition>
+        <argsstring></argsstring>
+        <name>setups</name>
+        <qualifiedname>RTSocket::setups</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="37" column="35" bodyfile="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_t_socket_1aee78e6b1e43694700b080655f3b93a6a" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_r_t___i_d" kindref="compound">RT_ID</ref></type>
+        <definition>RT_ID RTSocket::importants</definition>
+        <argsstring></argsstring>
+        <name>importants</name>
+        <qualifiedname>RTSocket::importants</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="38" column="52" bodyfile="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_r_t_socket_1a1c117631320d839a548fcc3d94e8047b" prot="public" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, fs::path &gt;</type>
+        <definition>std::unordered_map&lt;std::string, fs::path&gt; RTSocket::stored_dev_path</definition>
+        <argsstring></argsstring>
+        <name>stored_dev_path</name>
+        <qualifiedname>RTSocket::stored_dev_path</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="56" column="24" bodyfile="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_r_t_socket_1aa9c0b8a8e86631e76044aca71284bf99" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string RTSocket::ErrMsg</definition>
+        <argsstring></argsstring>
+        <name>ErrMsg</name>
+        <qualifiedname>RTSocket::ErrMsg</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="64" column="17" bodyfile="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_r_t_socket_1a8f66337c926a88e954c59d0571a5b79b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int RTSocket::ParseMsg</definition>
+        <argsstring>(const std::string &amp;raw_json_msg)</argsstring>
+        <name>ParseMsg</name>
+        <qualifiedname>RTSocket::ParseMsg</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>raw_json_msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="41" column="5" bodyfile="include/input/--DEPRECATED-linux/RT/RTSocket.cpp" bodystart="75" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="class_r_t_socket_1a7cb721e57123e746ec987d74cb1c0b3e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int RTSocket::SocketOpen</definition>
+        <argsstring>(const std::string &amp;socket_path)</argsstring>
+        <name>SocketOpen</name>
+        <qualifiedname>RTSocket::SocketOpen</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>socket_path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="44" column="5" bodyfile="include/input/--DEPRECATED-linux/RT/RTSocket.cpp" bodystart="13" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_r_t_socket_1a5e524ba9ab67e87eaf2d8759ef6958f7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int RTSocket::SocketClose</definition>
+        <argsstring>()</argsstring>
+        <name>SocketClose</name>
+        <qualifiedname>RTSocket::SocketClose</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="47" column="5" bodyfile="include/input/--DEPRECATED-linux/RT/RTSocket.cpp" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_r_t_socket_1ae21b5e390bb947cc76d5c0781f669b8e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RTSocket::RegisterFunctions</definition>
+        <argsstring>()</argsstring>
+        <name>RegisterFunctions</name>
+        <qualifiedname>RTSocket::RegisterFunctions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="50" column="5" bodyfile="include/input/--DEPRECATED-linux/RT/RTFunctionRegister.cpp" bodystart="13" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_r_t_socket_1a31892786cbfa7e01640393f65c5842b3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="_p_d_j_e___input___device___data_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref></type>
+        <definition>DEV_LIST RTSocket::ListDevices</definition>
+        <argsstring>()</argsstring>
+        <name>ListDevices</name>
+        <qualifiedname>RTSocket::ListDevices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="53" column="5" bodyfile="include/input/--DEPRECATED-linux/RT/RTFunctionRegister.cpp" bodystart="64" bodyend="126"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_r_t_socket_1a1863eb9d242254c481a5dfa7ceafd212" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RTSocket::SendMsg</definition>
+        <argsstring>(const std::string &amp;msg)</argsstring>
+        <name>SendMsg</name>
+        <qualifiedname>RTSocket::SendMsg</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="58" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_r_t_socket_1a0b314c5175b7bd885350e50f31cdd468" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int RTSocket::Communication</definition>
+        <argsstring>()</argsstring>
+        <name>Communication</name>
+        <qualifiedname>RTSocket::Communication</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="60" column="5" bodyfile="include/input/--DEPRECATED-linux/RT/RTSocket.cpp" bodystart="29" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_r_t_socket_1a958cda83cd413cf934271ebb45631b3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RTSocket::RTSocket</definition>
+        <argsstring>(const std::string &amp;socket_path, RTEvent *ptr)</argsstring>
+        <name>RTSocket</name>
+        <qualifiedname>RTSocket::RTSocket</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>socket_path</declname>
+        </param>
+        <param>
+          <type><ref refid="class_r_t_event" kindref="compound">RTEvent</ref> *</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="62" column="5" bodyfile="include/input/--DEPRECATED-linux/RT/RTSocket.cpp" bodystart="66" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_r_t_socket_1ad28d8bbd83682e15de69a0a90f8d66ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RTSocket::~RTSocket</definition>
+        <argsstring>()</argsstring>
+        <name>~RTSocket</name>
+        <qualifiedname>RTSocket::~RTSocket</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="63" column="5" bodyfile="include/input/--DEPRECATED-linux/RT/RTSocket.cpp" bodystart="60" bodyend="64"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>RTEvent</label>
+        <link refid="class_r_t_event"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>events</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>RTSocket</label>
+        <link refid="class_r_t_socket"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>rtev</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>functionRegistry</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>errorHandler</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>importants</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>stored_dev_path</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>ErrMsg</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>RT_ID</label>
+        <link refid="struct_r_t___i_d"/>
+      </node>
+      <node id="6">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="5">
+        <label>std::string</label>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::unordered_map&lt; int, libevdev * &gt;</label>
+      </node>
+      <node id="7">
+        <label>std::unordered_map&lt; int, std::function&lt; void()&gt; &gt;</label>
+      </node>
+      <node id="9">
+        <label>std::unordered_map&lt; std::string, fs::path &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::unordered_map&lt; std::string, regi_function &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" line="32" column="1" bodyfile="include/input/--DEPRECATED-linux/RT/RTSocket.hpp" bodystart="32" bodyend="65"/>
+    <listofallmembers>
+      <member refid="class_r_t_socket_1a0b314c5175b7bd885350e50f31cdd468" prot="public" virt="non-virtual"><scope>RTSocket</scope><name>Communication</name></member>
+      <member refid="class_r_t_socket_1aa9c0b8a8e86631e76044aca71284bf99" prot="public" virt="non-virtual"><scope>RTSocket</scope><name>ErrMsg</name></member>
+      <member refid="class_r_t_socket_1a1a6d068a007e09e4be4e67fb276b8254" prot="private" virt="non-virtual"><scope>RTSocket</scope><name>errorHandler</name></member>
+      <member refid="class_r_t_socket_1a34fa7968f4c1daddad58f62535b1db87" prot="private" virt="non-virtual"><scope>RTSocket</scope><name>functionRegistry</name></member>
+      <member refid="class_r_t_socket_1aee78e6b1e43694700b080655f3b93a6a" prot="private" virt="non-virtual"><scope>RTSocket</scope><name>importants</name></member>
+      <member refid="class_r_t_socket_1a31892786cbfa7e01640393f65c5842b3" prot="private" virt="non-virtual"><scope>RTSocket</scope><name>ListDevices</name></member>
+      <member refid="class_r_t_socket_1a8f66337c926a88e954c59d0571a5b79b" prot="private" virt="non-virtual"><scope>RTSocket</scope><name>ParseMsg</name></member>
+      <member refid="class_r_t_socket_1ae21b5e390bb947cc76d5c0781f669b8e" prot="private" virt="non-virtual"><scope>RTSocket</scope><name>RegisterFunctions</name></member>
+      <member refid="class_r_t_socket_1ab38c96818fdc24dd3325f2feb4dbf083" prot="private" virt="non-virtual"><scope>RTSocket</scope><name>rtev</name></member>
+      <member refid="class_r_t_socket_1a958cda83cd413cf934271ebb45631b3c" prot="public" virt="non-virtual"><scope>RTSocket</scope><name>RTSocket</name></member>
+      <member refid="class_r_t_socket_1a1863eb9d242254c481a5dfa7ceafd212" prot="public" virt="non-virtual"><scope>RTSocket</scope><name>SendMsg</name></member>
+      <member refid="class_r_t_socket_1af7143437d4ffb98b34a5f70ead71d64d" prot="private" virt="non-virtual"><scope>RTSocket</scope><name>setups</name></member>
+      <member refid="class_r_t_socket_1a5e524ba9ab67e87eaf2d8759ef6958f7" prot="private" virt="non-virtual"><scope>RTSocket</scope><name>SocketClose</name></member>
+      <member refid="class_r_t_socket_1a7cb721e57123e746ec987d74cb1c0b3e" prot="private" virt="non-virtual"><scope>RTSocket</scope><name>SocketOpen</name></member>
+      <member refid="class_r_t_socket_1a1c117631320d839a548fcc3d94e8047b" prot="public" virt="non-virtual"><scope>RTSocket</scope><name>stored_dev_path</name></member>
+      <member refid="class_r_t_socket_1ad28d8bbd83682e15de69a0a90f8d66ea" prot="public" virt="non-virtual"><scope>RTSocket</scope><name>~RTSocket</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

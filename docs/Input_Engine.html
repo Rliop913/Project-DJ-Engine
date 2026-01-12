@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Input_Engine &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="_static/doctools.js?v=9bcbadda"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -58,7 +56,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv410PDJE_Input"><code class="docutils literal notranslate"><span class="pre">PDJE_Input</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_Input4InitEv"><code class="docutils literal notranslate"><span class="pre">Init()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEE"><code class="docutils literal notranslate"><span class="pre">Config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEERKNSt6vectorIN9libremidi10input_portEEE"><code class="docutils literal notranslate"><span class="pre">Config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_Input7GetDevsEv"><code class="docutils literal notranslate"><span class="pre">GetDevs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_Input11GetMIDIDevsEv"><code class="docutils literal notranslate"><span class="pre">GetMIDIDevs()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_Input3RunEv"><code class="docutils literal notranslate"><span class="pre">Run()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_Input4KillEv"><code class="docutils literal notranslate"><span class="pre">Kill()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_Input8GetStateEv"><code class="docutils literal notranslate"><span class="pre">GetState()</span></code></a></li>
@@ -108,45 +108,57 @@
 <h1>Input_Engine<a class="headerlink" href="#input-engine" title="Link to this heading"></a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Current project version is now on 0.6.x.</p>
+<p>Current project version is now on 0.7.x.</p>
 <p>Currently only Windows implementation is supported.</p>
 </div>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv410PDJE_Input">
-<span id="_CPPv310PDJE_Input"></span><span id="_CPPv210PDJE_Input"></span><span id="PDJE_Input"></span><span class="target" id="classPDJE__Input"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_Input</span></span></span><br /></dt>
+<span id="_CPPv310PDJE_Input"></span><span id="_CPPv210PDJE_Input"></span><span id="PDJE_Input"></span><span class="target" id="class_p_d_j_e___input"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_Input</span></span></span><a class="headerlink" href="#_CPPv410PDJE_Input" title="Link to this definition"></a><br /></dt>
 <dd><p>Input device manager. </p>
 <p>Searches for connected devices and pairs them with the engine. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input4InitEv">
-<span id="_CPPv3N10PDJE_Input4InitEv"></span><span id="_CPPv2N10PDJE_Input4InitEv"></span><span id="PDJE_Input::Init"></span><span class="target" id="classPDJE__Input_1a5e124b018f37cd0d4ebdb1aa0f4e234e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classPDJE__Input.html#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Init</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10PDJE_Input4InitEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N10PDJE_Input4InitEv"></span><span id="_CPPv2N10PDJE_Input4InitEv"></span><span id="PDJE_Input::Init"></span><span class="target" id="class_p_d_j_e___input_1a5e124b018f37cd0d4ebdb1aa0f4e234e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Init</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10PDJE_Input4InitEv" title="Link to this definition"></a><br /></dt>
 <dd><p>initialize pdje input. </p>
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEE">
-<span id="_CPPv3N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEE"></span><span id="_CPPv2N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEE"></span><span id="PDJE_Input::Config__std::vector:DeviceData:R"></span><span class="target" id="classPDJE__Input_1a60b8fafb986f4a289ab6fc80b792afd3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classPDJE__Input.html#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Config</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="api/structDeviceData.html#_CPPv410DeviceData" title="DeviceData"><span class="n"><span class="pre">DeviceData</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">devs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEE" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEERKNSt6vectorIN9libremidi10input_portEEE">
+<span id="_CPPv3N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEERKNSt6vectorIN9libremidi10input_portEEE"></span><span id="_CPPv2N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEERKNSt6vectorIN9libremidi10input_portEEE"></span><span id="PDJE_Input::Config__std::vector:DeviceData:R.std::vector:libremidi::input_port:CR"></span><span class="target" id="class_p_d_j_e___input_1aa504274ac6dfd37beb248fb5fac470c5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Config</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="api/structDeviceData.html#_CPPv410DeviceData" title="DeviceData"><span class="n"><span class="pre">DeviceData</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">devs</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">libremidi</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">input_port</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">midi_dev</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEERKNSt6vectorIN9libremidi10input_portEEE" title="Link to this definition"></a><br /></dt>
 <dd><p>configure device data. </p>
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input7GetDevsEv">
+<span id="_CPPv3N10PDJE_Input7GetDevsEv"></span><span id="_CPPv2N10PDJE_Input7GetDevsEv"></span><span id="PDJE_Input::GetDevs"></span><span class="target" id="class_p_d_j_e___input_1a57ffda3b7e96de7b73deb3557b089e9b"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="api/structDeviceData.html#_CPPv410DeviceData" title="DeviceData"><span class="n"><span class="pre">DeviceData</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetDevs</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10PDJE_Input7GetDevsEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Get All Connected devices. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input11GetMIDIDevsEv">
+<span id="_CPPv3N10PDJE_Input11GetMIDIDevsEv"></span><span id="_CPPv2N10PDJE_Input11GetMIDIDevsEv"></span><span id="PDJE_Input::GetMIDIDevs"></span><span class="target" id="class_p_d_j_e___input_1a1de51439e4e58f538ca08f2488baf481"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">libremidi</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">input_port</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetMIDIDevs</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10PDJE_Input11GetMIDIDevsEv" title="Link to this definition"></a><br /></dt>
+<dd><p>Get All Connected MIDI devices. </p>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input3RunEv">
-<span id="_CPPv3N10PDJE_Input3RunEv"></span><span id="_CPPv2N10PDJE_Input3RunEv"></span><span id="PDJE_Input::Run"></span><span class="target" id="classPDJE__Input_1a141055482bcb2c52442ad9f596d72cba"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classPDJE__Input.html#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Run</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10PDJE_Input3RunEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N10PDJE_Input3RunEv"></span><span id="_CPPv2N10PDJE_Input3RunEv"></span><span id="PDJE_Input::Run"></span><span class="target" id="class_p_d_j_e___input_1a141055482bcb2c52442ad9f596d72cba"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Run</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10PDJE_Input3RunEv" title="Link to this definition"></a><br /></dt>
 <dd><p>run input Loop </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input4KillEv">
-<span id="_CPPv3N10PDJE_Input4KillEv"></span><span id="_CPPv2N10PDJE_Input4KillEv"></span><span id="PDJE_Input::Kill"></span><span class="target" id="classPDJE__Input_1acd31c013ea5cf83003795bb58c60f9e5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classPDJE__Input.html#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Kill</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10PDJE_Input4KillEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N10PDJE_Input4KillEv"></span><span id="_CPPv2N10PDJE_Input4KillEv"></span><span id="PDJE_Input::Kill"></span><span class="target" id="class_p_d_j_e___input_1acd31c013ea5cf83003795bb58c60f9e5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Kill</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10PDJE_Input4KillEv" title="Link to this definition"></a><br /></dt>
 <dd><p>kill input Loop </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input8GetStateEv">
-<span id="_CPPv3N10PDJE_Input8GetStateEv"></span><span id="_CPPv2N10PDJE_Input8GetStateEv"></span><span id="PDJE_Input::GetState"></span><span class="target" id="classPDJE__Input_1a618aaec5a5067bf8f729e4e6b31812c9"></span><a class="reference internal" href="api/enum_Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9.html#_CPPv416PDJE_INPUT_STATE" title="PDJE_INPUT_STATE"><span class="n"><span class="pre">PDJE_INPUT_STATE</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classPDJE__Input.html#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetState</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<span id="_CPPv3N10PDJE_Input8GetStateEv"></span><span id="_CPPv2N10PDJE_Input8GetStateEv"></span><span id="PDJE_Input::GetState"></span><span class="target" id="class_p_d_j_e___input_1a618aaec5a5067bf8f729e4e6b31812c9"></span><a class="reference internal" href="api/enum_Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9.html#_CPPv416PDJE_INPUT_STATE" title="PDJE_INPUT_STATE"><span class="n"><span class="pre">PDJE_INPUT_STATE</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetState</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10PDJE_Input8GetStateEv" title="Link to this definition"></a><br /></dt>
 <dd><p>get pdje input module’s configuration &amp; running state </p>
 </dd></dl>
 
@@ -169,20 +181,24 @@ C++</label><div class="sd-tab-content docutils">
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;type: keyboard&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">        </span><span class="n">set_targets</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="c1">//add all keyboards</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">HID</span><span class="p">:</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;type: hid&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">        </span><span class="k">break</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">UNKNOWN</span><span class="p">:</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;type: unknown&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="k">default</span><span class="o">:</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;dev path: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">device_specific_id</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span><span class="c1">// configure keyboards, mouses.</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">midi_devs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">GetMIDIDevs</span><span class="p">();</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">libremidi</span><span class="o">::</span><span class="n">input_port</span><span class="o">&gt;</span><span class="w"> </span><span class="n">target_midi</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">midi_devs</span><span class="p">){</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">port_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;target midi port name&quot;</span><span class="p">){</span>
+<span class="w">    </span><span class="n">target_midi</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">input</span><span class="p">.</span><span class="n">Config</span><span class="p">(</span><span class="n">set_targets</span><span class="p">);</span>
+<span class="n">input</span><span class="p">.</span><span class="n">Config</span><span class="p">(</span><span class="n">set_targets</span><span class="p">,</span><span class="w"> </span><span class="n">target_midi</span><span class="p">);</span><span class="c1">//config keyboard, mouse, midi</span>
+<span class="c1">//input.Config(set_targets, std::vector&lt;libremidi::input_port&gt;()); //config only keyboard, mouse</span>
+<span class="c1">//input.Config(std::vector&lt;DeviceData&gt;(), target_midi); //config only midi</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">dline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">();</span>
 <span class="n">input</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
 <span class="c1">//after use</span>
@@ -217,6 +233,9 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">dev</span><span class="p">:</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;KEYBOARD&quot;</span><span class="p">:</span>
 <span class="w">            </span><span class="n">configlist</span><span class="o">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">mididevs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IM</span><span class="o">.</span><span class="n">GetMIDIDevs</span><span class="p">()</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">mididevs</span><span class="p">)</span>
+<span class="w">    </span><span class="n">IM</span><span class="o">.</span><span class="n">Config</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">mididevs</span><span class="p">)</span><span class="c1">#if you don&#39;t need kb&amp;mouse or midi, send blank array.</span>
 
 <span class="w">    </span><span class="n">IM</span><span class="o">.</span><span class="n">InitializeInputLine</span><span class="p">(</span><span class="o">$</span><span class="n">InputLine</span><span class="p">)</span><span class="c1">#connect InputLine Node. you can find it in &quot;Add Child Node&quot; tab</span>
 <span class="w">    </span><span class="n">IM</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
@@ -228,6 +247,8 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <span class="k">func</span><span class="w"> </span><span class="n">_on_input_line_pdje_input_keyboard_signal</span><span class="p">(</span><span class="n">device_id</span><span class="p">:</span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">device_name</span><span class="p">:</span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">microsecond_string</span><span class="p">:</span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">keyboard_key</span><span class="p">:</span><span class="nb nb-Type">int</span><span class="p">,</span><span class="w"> </span><span class="n">isPressed</span><span class="p">:</span><span class="nb nb-Type">bool</span><span class="p">):</span>
 <span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">device_name</span><span class="p">,</span><span class="w"> </span><span class="n">microsecond_string</span><span class="p">)</span>
 
+<span class="k">func</span><span class="w"> </span><span class="n">_on_input_line_pdje_midi_input_signal</span><span class="p">(</span><span class="n">port_name</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">input_type</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">channel</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">,</span><span class="w"> </span><span class="n">microsecond_string</span><span class="p">:</span><span class="w"> </span><span class="nb nb-Type">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nb nb-Type">void</span><span class="p">:</span>
+<span class="w">        </span><span class="nb">print</span><span class="p">(</span><span class="n">port_name</span><span class="p">,</span><span class="w"> </span><span class="n">input_type</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">microsecond_string</span><span class="p">)</span>
 
 <span class="c1">#IM.Kill()#use kill function to deactivate input module. use after game stage.</span>
 </pre></div>

@@ -25,6 +25,10 @@ PDJE_Input_Transfer::Send()
 void
 PDJE_Input_Transfer::Receive()
 {
+    if (!sendworker_switch) {
+        datas.clear();
+        return;
+    }
     req_event.Wake();
     stored_event.Wait();
     if (*length.ptr != 0) {

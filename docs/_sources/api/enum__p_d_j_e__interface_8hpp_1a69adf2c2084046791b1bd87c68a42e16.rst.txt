@@ -3,7 +3,7 @@
 Enum PLAY_MODE
 ==============
 
-- Defined in :ref:`file_core_include_interface_PDJE_interface.hpp`
+- Defined in :ref:`file_include_core_interface_PDJE_interface.hpp`
 
 
 Enum Documentation

@@ -4,7 +4,7 @@
 File PDJE_LOG_SETTER.hpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global>` (``include/global``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global>` (``include\global``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ Configures the logging framework for the application.
    :local:
    :backlinks: none
 
-Definition (``include/global/PDJE_LOG_SETTER.hpp``)
+Definition (``include\global\PDJE_LOG_SETTER.hpp``)
 ---------------------------------------------------
 
 
@@ -37,7 +37,7 @@ Includes
 
 - ``filesystem``
 
-- ``mutex``
+- ``mutex`` (:ref:`file_include_input_IPC_memory_ipc_named_mutex.hpp`)
 
 - ``spdlog/sinks/basic_file_sink.h``
 
@@ -133,11 +133,15 @@ Included By
 
 - :ref:`file_include_input_IPC_common_ipc_util.hpp`
 
+- :ref:`file_include_input_IPC_memory_ipc_named_mutex.hpp`
+
 - :ref:`file_include_input_IPC_memory_ipc_shared_memory.hpp`
 
-- :ref:`file_include_input_IPC_transmission_MainProcess.hpp`
-
 - :ref:`file_include_input_PDJE_Input.cpp`
+
+- :ref:`file_include_input_host_MainProcess.hpp`
+
+- :ref:`file_include_input_midi_PDJE_MIDI.hpp`
 
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.cpp`
 
@@ -150,16 +154,16 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_PDJE__LOG__SETTER_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36`
+- :ref:`exhale_function__p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36`
 
 
 Defines
 -------
 
 
-- :ref:`exhale_define_PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287`
+- :ref:`exhale_define__p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287`
 
-- :ref:`exhale_define_PDJE__LOG__SETTER_8hpp_1a2721d826078db7a962e7664a9d2f4016`
+- :ref:`exhale_define__p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1a2721d826078db7a962e7664a9d2f4016`
 
-- :ref:`exhale_define_PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590`
+- :ref:`exhale_define__p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1a6f4ac2826ed21d631281a5644018f590`
 

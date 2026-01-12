@@ -1,0 +1,426 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_p_d_j_e___j_u_d_g_e_1_1_match" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_JUDGE::Match</compoundname>
+    <includes refid="_p_d_j_e___match_8hpp" local="no">PDJE_Match.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_p_d_j_e___j_u_d_g_e_1_1_match_1a95cc8a02b629d2f2e8bd8a77c3a80e4d" prot="private" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___j_u_d_g_e_1_1_pre_process" kindref="compound">PreProcess</ref> *</type>
+        <definition>PreProcess* PDJE_JUDGE::Match::pre</definition>
+        <argsstring></argsstring>
+        <name>pre</name>
+        <qualifiedname>PDJE_JUDGE::Match::pre</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/PDJE_Match.hpp" line="10" column="33" bodyfile="include/judge/Loop/Match/PDJE_Match.hpp" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___j_u_d_g_e_1_1_match_1aa2200b6b376c45fed5de187a858321bf" prot="private" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___j_u_d_g_e_1_1_judge___init" kindref="compound">Judge_Init</ref> *</type>
+        <definition>Judge_Init* PDJE_JUDGE::Match::init</definition>
+        <argsstring></argsstring>
+        <name>init</name>
+        <qualifiedname>PDJE_JUDGE::Match::init</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/PDJE_Match.hpp" line="11" column="33" bodyfile="include/judge/Loop/Match/PDJE_Match.hpp" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___j_u_d_g_e_1_1_match_1af4b5f2cf26c89b9cf4b462db9d7ccabd" prot="private" static="no" mutable="no">
+        <type><ref refid="namespace_p_d_j_e___j_u_d_g_e_1ad73c9d4a59c40cc7c1a9fce27dc1be72" kindref="member">P_NOTE_VEC</ref></type>
+        <definition>P_NOTE_VEC PDJE_JUDGE::Match::found_list</definition>
+        <argsstring></argsstring>
+        <name>found_list</name>
+        <qualifiedname>PDJE_JUDGE::Match::found_list</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/PDJE_Match.hpp" line="12" column="34" bodyfile="include/judge/Loop/Match/PDJE_Match.hpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___j_u_d_g_e_1_1_match_1a033379364b0df675db233d22bf37723d" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="struct_p_d_j_e___j_u_d_g_e_1_1mouse__btn__event" kindref="compound">mouse_btn_event</ref> &gt;</type>
+        <definition>std::vector&lt;mouse_btn_event&gt; PDJE_JUDGE::Match::mouse_btn_ev_queue</definition>
+        <argsstring></argsstring>
+        <name>mouse_btn_ev_queue</name>
+        <qualifiedname>PDJE_JUDGE::Match::mouse_btn_ev_queue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/PDJE_Match.hpp" line="13" column="17" bodyfile="include/judge/Loop/Match/PDJE_Match.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_p_d_j_e___j_u_d_g_e_1_1_match_1a0b9a442b59b39c3352a8a4eb119e6565" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_JUDGE::Match::ParseMouse</definition>
+        <argsstring>(const BITMASK ev, RAIL_KEY::KB_MOUSE &amp;key)</argsstring>
+        <name>ParseMouse</name>
+        <qualifiedname>PDJE_JUDGE::Match::ParseMouse</qualifiedname>
+        <param>
+          <type>const <ref refid="_input___state_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107" kindref="member">BITMASK</ref></type>
+          <declname>ev</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_k_b___m_o_u_s_e" kindref="compound">RAIL_KEY::KB_MOUSE</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Parse mouse-specific input and enqueue events. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/PDJE_Match.hpp" line="16" column="5" bodyfile="include/judge/Loop/Match/Mouse.cpp" bodystart="22" bodyend="39"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_p_d_j_e___j_u_d_g_e_1_1_match_1aae7acbc452958eecae34f2fbac0f6f5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_JUDGE::Match::Work</definition>
+        <argsstring>(const LOCAL_TIME input_time, const P_NOTE_VEC &amp;note_list, const uint64_t railid, const bool isPressed)</argsstring>
+        <name>Work</name>
+        <qualifiedname>PDJE_JUDGE::Match::Work</qualifiedname>
+        <param>
+          <type>const <ref refid="namespace_p_d_j_e___j_u_d_g_e_1a3ee6af366c462d64775daf2f7b0d7e42" kindref="member">LOCAL_TIME</ref></type>
+          <declname>input_time</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespace_p_d_j_e___j_u_d_g_e_1ad73c9d4a59c40cc7c1a9fce27dc1be72" kindref="member">P_NOTE_VEC</ref> &amp;</type>
+          <declname>note_list</declname>
+        </param>
+        <param>
+          <type>const uint64_t</type>
+          <declname>railid</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>isPressed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/PDJE_Match.hpp" line="20" column="5" bodyfile="include/judge/Loop/Match/PDJE_Match.cpp" bodystart="5" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___j_u_d_g_e_1_1_match_1aec64ae2fb3a88284bc1d4534cbf0954f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="_p_d_j_e___input___device___data_8hpp_1acf9d9564ffac8413ed6bdde983323456" kindref="member">PDJE_Dev_Type</ref></type>
+            <declname>D</declname>
+            <defname>D</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void PDJE_JUDGE::Match::UseEvent</definition>
+        <argsstring>(const PDJE_Input_Log &amp;ilog)</argsstring>
+        <name>UseEvent</name>
+        <qualifiedname>PDJE_JUDGE::Match::UseEvent</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___input___log" kindref="compound">PDJE_Input_Log</ref> &amp;</type>
+          <declname>ilog</declname>
+        </param>
+        <briefdescription>
+<para>Handle a single input log entry for the given device type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/PDJE_Match.hpp" line="28" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___j_u_d_g_e_1_1_match_1a207e9e52483041314755dc877ef07294" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_JUDGE::Match::UseEvent</definition>
+        <argsstring>(const PDJE_MIDI::MIDI_EV &amp;ilog)</argsstring>
+        <name>UseEvent</name>
+        <qualifiedname>PDJE_JUDGE::Match::UseEvent</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___m_i_d_i_1_1_m_i_d_i___e_v" kindref="compound">PDJE_MIDI::MIDI_EV</ref> &amp;</type>
+          <declname>ilog</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/PDJE_Match.hpp" line="31" column="5" bodyfile="include/judge/Loop/Match/MIDI.cpp" bodystart="6" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___j_u_d_g_e_1_1_match_1ad7ef862c6045f3765f71922091dfbafb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_JUDGE::Match::Match</definition>
+        <argsstring>(PreProcess *preproc, Judge_Init *judge_init)</argsstring>
+        <name>Match</name>
+        <qualifiedname>PDJE_JUDGE::Match::Match</qualifiedname>
+        <param>
+          <type><ref refid="class_p_d_j_e___j_u_d_g_e_1_1_pre_process" kindref="compound">PreProcess</ref> *</type>
+          <declname>preproc</declname>
+        </param>
+        <param>
+          <type><ref refid="class_p_d_j_e___j_u_d_g_e_1_1_judge___init" kindref="compound">Judge_Init</ref> *</type>
+          <declname>judge_init</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/PDJE_Match.hpp" line="33" column="5" bodyfile="include/judge/Loop/Match/PDJE_Match.hpp" bodystart="33" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___j_u_d_g_e_1_1_match_1a1d433492732215321aa37fc36cea388b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_JUDGE::Match::~Match</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Match</name>
+        <qualifiedname>PDJE_JUDGE::Match::~Match</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Loop/Match/PDJE_Match.hpp" line="39" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="21">
+        <label>Atomic_Double_Buffer&lt; PDJE_JUDGE::useDatas &gt;</label>
+        <link refid="class_atomic___double___buffer"/>
+        <childnode refid="22" relation="usage">
+          <edgelabel>first</edgelabel>
+          <edgelabel>second</edgelabel>
+        </childnode>
+      </node>
+      <node id="19">
+        <label>Atomic_Double_Buffer&lt; std::unordered_map&lt; uint64_t, NOTE_VEC &gt; &gt;</label>
+        <link refid="class_atomic___double___buffer"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>first</edgelabel>
+          <edgelabel>second</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>PDJE_JUDGE::Custom_Events</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_custom___events"/>
+      </node>
+      <node id="3">
+        <label>PDJE_JUDGE::Judge_Init</label>
+        <link refid="class_p_d_j_e___j_u_d_g_e_1_1_judge___init"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>lambdas</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>raildb</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>PDJE_JUDGE::Match</label>
+        <link refid="class_p_d_j_e___j_u_d_g_e_1_1_match"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>pre</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>init</edgelabel>
+        </childnode>
+        <childnode refid="28" relation="usage">
+          <edgelabel>found_list</edgelabel>
+        </childnode>
+        <childnode refid="29" relation="usage">
+          <edgelabel>mouse_btn_ev_queue</edgelabel>
+        </childnode>
+      </node>
+      <node id="25">
+        <label>PDJE_JUDGE::PARSE_OUT</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_p_a_r_s_e___o_u_t"/>
+        <childnode refid="26" relation="usage">
+          <edgelabel>logs</edgelabel>
+        </childnode>
+        <childnode refid="27" relation="usage">
+          <edgelabel>midi_logs</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PDJE_JUDGE::PreProcess</label>
+        <link refid="class_p_d_j_e___j_u_d_g_e_1_1_pre_process"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>init</edgelabel>
+        </childnode>
+        <childnode refid="16" relation="usage">
+          <edgelabel>missed_buffers</edgelabel>
+        </childnode>
+        <childnode refid="18" relation="usage">
+          <edgelabel>Event_Datas</edgelabel>
+        </childnode>
+        <childnode refid="24" relation="usage">
+          <edgelabel>synced_data</edgelabel>
+        </childnode>
+        <childnode refid="25" relation="usage">
+          <edgelabel>parsed_res</edgelabel>
+        </childnode>
+      </node>
+      <node id="18">
+        <label>PDJE_JUDGE::Queues</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_queues"/>
+        <childnode refid="19" relation="usage">
+          <edgelabel>miss_queue</edgelabel>
+        </childnode>
+        <childnode refid="21" relation="usage">
+          <edgelabel>use_queue</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>PDJE_JUDGE::RAIL_DB</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>offset</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>meta</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>kb_mouse_raildata</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>midi_raildata</edgelabel>
+        </childnode>
+      </node>
+      <node id="13">
+        <label>PDJE_JUDGE::RAIL_KEY::KB_MOUSE</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_k_b___m_o_u_s_e"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>Device_Name</edgelabel>
+        </childnode>
+      </node>
+      <node id="11">
+        <label>PDJE_JUDGE::RAIL_KEY::META</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_e_t_a"/>
+      </node>
+      <node id="15">
+        <label>PDJE_JUDGE::RAIL_KEY::MIDI</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_i_d_i"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>port_name</edgelabel>
+        </childnode>
+      </node>
+      <node id="30">
+        <label>PDJE_JUDGE::mouse_btn_event</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1mouse__btn__event"/>
+      </node>
+      <node id="23">
+        <label>PDJE_JUDGE::useDatas</label>
+        <link refid="struct_p_d_j_e___j_u_d_g_e_1_1use_datas"/>
+      </node>
+      <node id="24">
+        <label>audioSyncData</label>
+        <link refid="structaudio_sync_data"/>
+      </node>
+      <node id="8">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="7">
+        <label>std::string</label>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::KB_MOUSE, uint64_t &gt;</label>
+        <childnode refid="13" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="14">
+        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::MIDI, uint64_t &gt;</label>
+        <childnode refid="15" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>std::unordered_map&lt; std::string, int64_t &gt;</label>
+        <childnode refid="7" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="16">
+        <label>std::unordered_map&lt; uint64_t, NOTE_VEC &gt;</label>
+        <childnode refid="17" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>std::unordered_map&lt; uint64_t, std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt; &gt;</label>
+        <childnode refid="10" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="28">
+        <label>std::vector&lt; NOTE * &gt;</label>
+      </node>
+      <node id="17">
+        <label>std::vector&lt; NOTE &gt;</label>
+      </node>
+      <node id="26">
+        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
+      </node>
+      <node id="10">
+        <label>std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt;</label>
+        <childnode refid="11" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="29">
+        <label>std::vector&lt; PDJE_JUDGE::mouse_btn_event &gt;</label>
+        <childnode refid="30" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="22">
+        <label>std::vector&lt; PDJE_JUDGE::useDatas &gt;</label>
+        <childnode refid="23" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="27">
+        <label>std::vector&lt; PDJE_MIDI::MIDI_EV &gt;</label>
+      </node>
+      <node id="20">
+        <label>std::vector&lt; std::unordered_map&lt; uint64_t, NOTE_VEC &gt; &gt;</label>
+        <childnode refid="16" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/judge/Loop/Match/PDJE_Match.hpp" line="8" column="1" bodyfile="include/judge/Loop/Match/PDJE_Match.hpp" bodystart="8" bodyend="40"/>
+    <listofallmembers>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_match_1af4b5f2cf26c89b9cf4b462db9d7ccabd" prot="private" virt="non-virtual"><scope>PDJE_JUDGE::Match</scope><name>found_list</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_match_1aa2200b6b376c45fed5de187a858321bf" prot="private" virt="non-virtual"><scope>PDJE_JUDGE::Match</scope><name>init</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_match_1ad7ef862c6045f3765f71922091dfbafb" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Match</scope><name>Match</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_match_1a033379364b0df675db233d22bf37723d" prot="private" virt="non-virtual"><scope>PDJE_JUDGE::Match</scope><name>mouse_btn_ev_queue</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_match_1a0b9a442b59b39c3352a8a4eb119e6565" prot="private" virt="non-virtual"><scope>PDJE_JUDGE::Match</scope><name>ParseMouse</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_match_1a95cc8a02b629d2f2e8bd8a77c3a80e4d" prot="private" virt="non-virtual"><scope>PDJE_JUDGE::Match</scope><name>pre</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_match_1aec64ae2fb3a88284bc1d4534cbf0954f" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Match</scope><name>UseEvent</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_match_1a207e9e52483041314755dc877ef07294" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Match</scope><name>UseEvent</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_match_1aae7acbc452958eecae34f2fbac0f6f5c" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Match</scope><name>Work</name></member>
+      <member refid="class_p_d_j_e___j_u_d_g_e_1_1_match_1a1d433492732215321aa37fc36cea388b" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Match</scope><name>~Match</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

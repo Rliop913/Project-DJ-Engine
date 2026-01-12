@@ -2,67 +2,224 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="class_p_d_j_e___input" kind="class" language="C++" prot="public">
     <compoundname>PDJE_Input</compoundname>
-    <includes refid="_p_d_j_e___i_n_p_u_t_8hpp" local="no">PDJE_INPUT.hpp</includes>
+    <includes refid="_p_d_j_e___input_8hpp" local="no">PDJE_Input.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_p_d_j_e___input_1a48d239c4e8842016327aae408f6a43de" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport" kindref="compound">PDJE_IPC::MAINPROC::TXRXTransport</ref> &gt;</type>
+        <definition>std::optional&lt;PDJE_IPC::MAINPROC::TXRXTransport&gt; PDJE_Input::Mproc</definition>
+        <argsstring></argsstring>
+        <name>Mproc</name>
+        <qualifiedname>PDJE_Input::Mproc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="32" column="19" bodyfile="include/input/PDJE_Input.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___input_1abc60ab5366e3e8de571cfa5479f54f88" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="class_p_d_j_e___i_p_c_1_1_p_d_j_e___input___transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref> &gt;</type>
+        <definition>std::optional&lt;PDJE_IPC::PDJE_Input_Transfer&gt; PDJE_Input::input_buffer</definition>
+        <argsstring></argsstring>
+        <name>input_buffer</name>
+        <qualifiedname>PDJE_Input::input_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="33" column="23" bodyfile="include/input/PDJE_Input.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___input_1a48613a9644bb509d4508dcd955c6407f" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PDJE_Input::FLAG_INPUT_ON</definition>
+        <argsstring></argsstring>
+        <name>FLAG_INPUT_ON</name>
+        <qualifiedname>PDJE_Input::FLAG_INPUT_ON</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="34" column="54" bodyfile="include/input/PDJE_Input.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___input_1af879d0958866337b0a9d748458038ecf" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="class_p_d_j_e___m_i_d_i_1_1_m_i_d_i" kindref="compound">PDJE_MIDI::MIDI</ref> &gt;</type>
+        <definition>std::optional&lt;PDJE_MIDI::MIDI&gt; PDJE_Input::midi_engine</definition>
+        <argsstring></argsstring>
+        <name>midi_engine</name>
+        <qualifiedname>PDJE_Input::midi_engine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="35" column="37" bodyfile="include/input/PDJE_Input.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___input_1a6c2bd5f760a7f1b1677af5447909614b" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PDJE_Input::FLAG_MIDI_ON</definition>
+        <argsstring></argsstring>
+        <name>FLAG_MIDI_ON</name>
+        <qualifiedname>PDJE_Input::FLAG_MIDI_ON</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="36" column="54" bodyfile="include/input/PDJE_Input.hpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___input_1a4ab3e975c31414e17cd1542319a30a62" prot="private" static="no" mutable="no">
+        <type><ref refid="_input___state_8hpp_1a27b438b637f21bbd81b497303dacdfc9" kindref="member">PDJE_INPUT_STATE</ref></type>
+        <definition>PDJE_INPUT_STATE PDJE_Input::state</definition>
+        <argsstring></argsstring>
+        <name>state</name>
+        <qualifiedname>PDJE_Input::state</qualifiedname>
+        <initializer>= <ref refid="_input___state_8hpp_1a27b438b637f21bbd81b497303dacdfc9a11fd9ca455f92c69c084484d5cd803c2" kindref="member">PDJE_INPUT_STATE::DEAD</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="37" column="22" bodyfile="include/input/PDJE_Input.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_p_d_j_e___input_1aa9a859453d5c33ff3f6654ad8727da88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void PDJE_Input::search</definition>
+      <memberdef kind="function" id="class_p_d_j_e___input_1a57ffda3b7e96de7b73deb3557b089e9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="struct_device_data" kindref="compound">DeviceData</ref> &gt;</type>
+        <definition>std::vector&lt; DeviceData &gt; PDJE_Input::GetDevs</definition>
         <argsstring>()</argsstring>
-        <name>search</name>
-        <qualifiedname>PDJE_Input::search</qualifiedname>
+        <name>GetDevs</name>
+        <qualifiedname>PDJE_Input::GetDevs</qualifiedname>
         <briefdescription>
-<para>Scan the system for available input devices. </para>
+<para>Get All Connected devices. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/input/PDJE_INPUT.hpp" line="43" column="5"/>
+        <location file="include/input/PDJE_Input.hpp" line="43" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="162" bodyend="165"/>
       </memberdef>
-      <memberdef kind="function" id="class_p_d_j_e___input_1a58d3d946a55de99607621f084ec7025e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void PDJE_Input::set</definition>
+      <memberdef kind="function" id="class_p_d_j_e___input_1a1de51439e4e58f538ca08f2488baf481" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; libremidi::input_port &gt;</type>
+        <definition>std::vector&lt; libremidi::input_port &gt; PDJE_Input::GetMIDIDevs</definition>
         <argsstring>()</argsstring>
-        <name>set</name>
-        <qualifiedname>PDJE_Input::set</qualifiedname>
+        <name>GetMIDIDevs</name>
+        <qualifiedname>PDJE_Input::GetMIDIDevs</qualifiedname>
         <briefdescription>
-<para>Register a device with the engine. </para>
+<para>Get All Connected MIDI devices. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/input/PDJE_INPUT.hpp" line="49" column="5"/>
+        <location file="include/input/PDJE_Input.hpp" line="48" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="168" bodyend="171"/>
       </memberdef>
-      <memberdef kind="function" id="class_p_d_j_e___input_1abac24ac6ea9eded988492efdd37a25ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void PDJE_Input::get</definition>
+      <memberdef kind="function" id="class_p_d_j_e___input_1a5e124b018f37cd0d4ebdb1aa0f4e234e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_Input::Init</definition>
         <argsstring>()</argsstring>
-        <name>get</name>
-        <qualifiedname>PDJE_Input::get</qualifiedname>
+        <name>Init</name>
+        <qualifiedname>PDJE_Input::Init</qualifiedname>
         <briefdescription>
-<para>Retrieve the current device state. </para>
+<para>initialize pdje input. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/input/PDJE_INPUT.hpp" line="55" column="5"/>
+        <location file="include/input/PDJE_Input.hpp" line="53" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="10" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_p_d_j_e___input_1aab3694b2a2a3ba066f1835f73e968eb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void PDJE_Input::pair_job</definition>
-        <argsstring>()</argsstring>
-        <name>pair_job</name>
-        <qualifiedname>PDJE_Input::pair_job</qualifiedname>
+      <memberdef kind="function" id="class_p_d_j_e___input_1aa504274ac6dfd37beb248fb5fac470c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_Input::Config</definition>
+        <argsstring>(std::vector&lt; DeviceData &gt; &amp;devs, const std::vector&lt; libremidi::input_port &gt; &amp;midi_dev)</argsstring>
+        <name>Config</name>
+        <qualifiedname>PDJE_Input::Config</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="struct_device_data" kindref="compound">DeviceData</ref> &gt; &amp;</type>
+          <declname>devs</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; libremidi::input_port &gt; &amp;</type>
+          <declname>midi_dev</declname>
+        </param>
         <briefdescription>
-<para>Pair the found devices with appropriate handlers. </para>
+<para>configure device data. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/input/PDJE_INPUT.hpp" line="61" column="5"/>
+        <location file="include/input/PDJE_Input.hpp" line="59" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="45" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___input_1a141055482bcb2c52442ad9f596d72cba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_Input::Run</definition>
+        <argsstring>()</argsstring>
+        <name>Run</name>
+        <qualifiedname>PDJE_Input::Run</qualifiedname>
+        <briefdescription>
+<para>run input Loop </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="66" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="107" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___input_1acd31c013ea5cf83003795bb58c60f9e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_Input::Kill</definition>
+        <argsstring>()</argsstring>
+        <name>Kill</name>
+        <qualifiedname>PDJE_Input::Kill</qualifiedname>
+        <briefdescription>
+<para>kill input Loop </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="72" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="129" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___input_1a618aaec5a5067bf8f729e4e6b31812c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="_input___state_8hpp_1a27b438b637f21bbd81b497303dacdfc9" kindref="member">PDJE_INPUT_STATE</ref></type>
+        <definition>PDJE_INPUT_STATE PDJE_Input::GetState</definition>
+        <argsstring>()</argsstring>
+        <name>GetState</name>
+        <qualifiedname>PDJE_Input::GetState</qualifiedname>
+        <briefdescription>
+<para>get pdje input module&apos;s configuration &amp; running state </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="78" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="174" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___input_1ac4a8a1fc6bce51c498176db187c03e34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_p_d_j_e___i_n_p_u_t___d_a_t_a___l_i_n_e" kindref="compound">PDJE_INPUT_DATA_LINE</ref></type>
+        <definition>PDJE_INPUT_DATA_LINE PDJE_Input::PullOutDataLine</definition>
+        <argsstring>()</argsstring>
+        <name>PullOutDataLine</name>
+        <qualifiedname>PDJE_Input::PullOutDataLine</qualifiedname>
+        <briefdescription>
+<para>pull out input data line. The input Loop will pass datas in here. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="84" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="180" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="class_p_d_j_e___input_1a6a66c5c863c7c489d9a0da4be2de97bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -77,9 +234,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/input/PDJE_INPUT.hpp" line="64" column="5"/>
+        <location file="include/input/PDJE_Input.hpp" line="89" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="4" bodyend="7"/>
       </memberdef>
-      <memberdef kind="function" id="class_p_d_j_e___input_1a2459c713b4af968b34679f87ca9dcdfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_p_d_j_e___input_1a2459c713b4af968b34679f87ca9dcdfd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PDJE_Input::~PDJE_Input</definition>
         <argsstring>()</argsstring>
@@ -92,7 +249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/input/PDJE_INPUT.hpp" line="67" column="5"/>
+        <location file="include/input/PDJE_Input.hpp" line="94" column="5" bodyfile="include/input/PDJE_Input.hpp" bodystart="94" bodyend="97"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -101,13 +258,23 @@
     <detaileddescription>
 <para>Searches for connected devices and pairs them with the engine. </para>
     </detaileddescription>
-    <location file="core_include/input/PDJE_INPUT.hpp" line="36" column="1" bodyfile="core_include/input/PDJE_INPUT.hpp" bodystart="36" bodyend="68"/>
+    <location file="include/input/PDJE_Input.hpp" line="30" column="1" bodyfile="include/input/PDJE_Input.hpp" bodystart="30" bodyend="98"/>
     <listofallmembers>
-      <member refid="class_p_d_j_e___input_1abac24ac6ea9eded988492efdd37a25ad" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>get</name></member>
-      <member refid="class_p_d_j_e___input_1aab3694b2a2a3ba066f1835f73e968eb8" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>pair_job</name></member>
+      <member refid="class_p_d_j_e___input_1aa504274ac6dfd37beb248fb5fac470c5" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>Config</name></member>
+      <member refid="class_p_d_j_e___input_1a48613a9644bb509d4508dcd955c6407f" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>FLAG_INPUT_ON</name></member>
+      <member refid="class_p_d_j_e___input_1a6c2bd5f760a7f1b1677af5447909614b" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>FLAG_MIDI_ON</name></member>
+      <member refid="class_p_d_j_e___input_1a57ffda3b7e96de7b73deb3557b089e9b" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>GetDevs</name></member>
+      <member refid="class_p_d_j_e___input_1a1de51439e4e58f538ca08f2488baf481" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>GetMIDIDevs</name></member>
+      <member refid="class_p_d_j_e___input_1a618aaec5a5067bf8f729e4e6b31812c9" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>GetState</name></member>
+      <member refid="class_p_d_j_e___input_1a5e124b018f37cd0d4ebdb1aa0f4e234e" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>Init</name></member>
+      <member refid="class_p_d_j_e___input_1abc60ab5366e3e8de571cfa5479f54f88" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>input_buffer</name></member>
+      <member refid="class_p_d_j_e___input_1acd31c013ea5cf83003795bb58c60f9e5" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>Kill</name></member>
+      <member refid="class_p_d_j_e___input_1af879d0958866337b0a9d748458038ecf" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>midi_engine</name></member>
+      <member refid="class_p_d_j_e___input_1a48d239c4e8842016327aae408f6a43de" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>Mproc</name></member>
       <member refid="class_p_d_j_e___input_1a6a66c5c863c7c489d9a0da4be2de97bc" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>PDJE_Input</name></member>
-      <member refid="class_p_d_j_e___input_1aa9a859453d5c33ff3f6654ad8727da88" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>search</name></member>
-      <member refid="class_p_d_j_e___input_1a58d3d946a55de99607621f084ec7025e" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>set</name></member>
+      <member refid="class_p_d_j_e___input_1ac4a8a1fc6bce51c498176db187c03e34" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>PullOutDataLine</name></member>
+      <member refid="class_p_d_j_e___input_1a141055482bcb2c52442ad9f596d72cba" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>Run</name></member>
+      <member refid="class_p_d_j_e___input_1a4ab3e975c31414e17cd1542319a30a62" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>state</name></member>
       <member refid="class_p_d_j_e___input_1a2459c713b4af968b34679f87ca9dcdfd" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>~PDJE_Input</name></member>
     </listofallmembers>
   </compounddef>

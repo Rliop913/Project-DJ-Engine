@@ -3,7 +3,7 @@
 Class TranceMan
 ===============
 
-- Defined in :ref:`file_core_include_audioRender_ManualMix_ManualFausts_tranceMan.hpp`
+- Defined in :ref:`file_include_core_audioRender_ManualMix_ManualFausts_tranceMan.hpp`
 
 
 Class Documentation

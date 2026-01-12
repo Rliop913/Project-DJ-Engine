@@ -3,7 +3,7 @@
 Struct EDIT_ARG_MUSIC
 =====================
 
-- Defined in :ref:`file_core_include_MainObjects_editorObject_editorObject.hpp`
+- Defined in :ref:`file_include_core_MainObjects_editorObject_editorObject.hpp`
 
 
 Struct Documentation

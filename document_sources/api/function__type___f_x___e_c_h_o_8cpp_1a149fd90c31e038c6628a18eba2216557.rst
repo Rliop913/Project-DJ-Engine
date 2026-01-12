@@ -3,7 +3,7 @@
 Specialized Template Function MixMachine::TypeWorks< TypeEnum::ECHO, FaustEffects >
 ===================================================================================
 
-- Defined in :ref:`file_core_include_audioRender_MixMachine_MixTypes_Type_FX_ECHO.cpp`
+- Defined in :ref:`file_include_core_audioRender_MixMachine_MixTypes_Type_FX_ECHO.cpp`
 
 
 Function Documentation

@@ -3,7 +3,7 @@
 Class UI
 ========
 
-- Defined in :ref:`file_core_include_audioRender_MixMachine_DeckData.hpp`
+- Defined in :ref:`file_include_core_audioRender_MixMachine_DeckData.hpp`
 
 
 Class Documentation

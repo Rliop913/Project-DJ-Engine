@@ -38,9 +38,6 @@ main()
             std::cout << "type: keyboard" << std::endl;
             set_targets.push_back(i);
             break;
-        case PDJE_Dev_Type::HID:
-            std::cout << "type: hid" << std::endl;
-            break;
         case PDJE_Dev_Type::UNKNOWN:
             std::cout << "type: unknown" << std::endl;
             break;
@@ -51,7 +48,7 @@ main()
         std::cout << "dev path: " << i.device_specific_id << std::endl;
     }
 
-    pip.Config(set_targets);
+    pip.Config(set_targets, std::vector<libremidi::input_port>());
     // pip.NEXT();
 
     auto dline = pip.PullOutDataLine();

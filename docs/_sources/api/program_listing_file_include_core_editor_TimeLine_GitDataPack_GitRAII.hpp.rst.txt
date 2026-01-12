@@ -4,7 +4,7 @@
 Program Listing for File GitRAII.hpp
 ====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_editor_TimeLine_GitDataPack_GitRAII.hpp>` (``include/core/editor/TimeLine/GitDataPack/GitRAII.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_editor_TimeLine_GitDataPack_GitRAII.hpp>` (``include\core\editor\TimeLine\GitDataPack\GitRAII.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

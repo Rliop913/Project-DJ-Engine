@@ -10,11 +10,12 @@ Directory judge
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include/judge``
+*Directory path:* ``include\judge``
 
 Subdirectories
 --------------
 
+- :ref:`dir_include_judge_AxisModel`
 - :ref:`dir_include_judge_Init`
 - :ref:`dir_include_judge_InputParser`
 - :ref:`dir_include_judge_Loop`
@@ -26,6 +27,8 @@ Files
 
 - :ref:`file_include_judge_PDJE_Judge.cpp`
 - :ref:`file_include_judge_PDJE_Judge.hpp`
+- :ref:`file_include_judge_PDJE_RAIL.cpp`
+- :ref:`file_include_judge_PDJE_RAIL.hpp`
 - :ref:`file_include_judge_PDJE_Rule.hpp`
 
 

@@ -14,11 +14,14 @@
     <includes refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
     <includes refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
     <includes refid="_editor_args_8hpp" local="yes">EditorArgs.hpp</includes>
-    <includedby refid="editor_8hpp" local="yes">core_include/editor/editor.hpp</includedby>
-    <includedby refid="_k_v_json_8cpp" local="yes">core_include/editor/featureWrapper/JSONWrap/KVJson.cpp</includedby>
-    <includedby refid="_mix_json_8cpp" local="yes">core_include/editor/featureWrapper/JSONWrap/MixJson.cpp</includedby>
-    <includedby refid="_music_json_8cpp" local="yes">core_include/editor/featureWrapper/JSONWrap/MusicJson.cpp</includedby>
-    <includedby refid="_note_json_8cpp" local="yes">core_include/editor/featureWrapper/JSONWrap/NoteJson.cpp</includedby>
+    <includedby refid="_event_marker_8hpp" local="yes">include/core/editor/TimeLine/EventMarker/EventMarker.hpp</includedby>
+    <includedby refid="_git_datas_8hpp" local="yes">include/core/editor/TimeLine/GitDataPack/GitDatas.hpp</includedby>
+    <includedby refid="_k_v_json_8cpp" local="yes">include/core/editor/TimeLine/JSONWrap/KVJson.cpp</includedby>
+    <includedby refid="_mix_json_8cpp" local="yes">include/core/editor/TimeLine/JSONWrap/MixJson.cpp</includedby>
+    <includedby refid="_music_json_8cpp" local="yes">include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</includedby>
+    <includedby refid="_music_json_helper_8hpp" local="yes">include/core/editor/TimeLine/JSONWrap/MusicJsonHelper.hpp</includedby>
+    <includedby refid="_note_json_8cpp" local="yes">include/core/editor/TimeLine/JSONWrap/NoteJson.cpp</includedby>
+    <includedby refid="_time_line_8hpp" local="yes">include/core/editor/TimeLine/TimeLine.hpp</includedby>
     <incdepgraph>
       <node id="21">
         <label>CapnpBinary.hpp</label>
@@ -114,20 +117,6 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="file_name_sanitizer_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
       <node id="35">
         <label>EditorArgs.hpp</label>
         <link refid="_editor_args_8hpp"/>
@@ -137,9 +126,11 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
       </node>
       <node id="1">
-        <label>core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp</label>
+        <label>include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp</label>
         <link refid="json_wrapper_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -166,6 +157,20 @@
         <childnode refid="35" relation="include">
         </childnode>
       </node>
+      <node id="8">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="file_name_sanitizer_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
       <node id="9">
         <label>PDJE_EXPORT_SETTER.hpp</label>
         <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
@@ -174,6 +179,8 @@
         <label>PDJE_LOG_SETTER.hpp</label>
         <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
@@ -209,6 +216,9 @@
       </node>
       <node id="10">
         <label>cppcodec/base64_default_url.hpp</label>
+      </node>
+      <node id="36">
+        <label>cstdint</label>
       </node>
       <node id="2">
         <label>filesystem</label>
@@ -263,36 +273,32 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="4">
-        <label>core_include/MainObjects/editorObject/addline.cpp</label>
+      <node id="7">
+        <label>include/core/MainObjects/editorObject/addline.cpp</label>
         <link refid="addline_8cpp"/>
       </node>
-      <node id="5">
-        <label>core_include/MainObjects/editorObject/commonfunction.cpp</label>
+      <node id="8">
+        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
         <link refid="commonfunction_8cpp"/>
       </node>
-      <node id="6">
-        <label>core_include/MainObjects/editorObject/deleteline.cpp</label>
+      <node id="9">
+        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
         <link refid="deleteline_8cpp"/>
       </node>
-      <node id="7">
-        <label>core_include/MainObjects/editorObject/editorObject.cpp</label>
+      <node id="5">
+        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
         <link refid="editor_object_8cpp"/>
       </node>
-      <node id="3">
-        <label>core_include/MainObjects/editorObject/editorObject.hpp</label>
+      <node id="6">
+        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
         <link refid="editor_object_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -312,117 +318,193 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-      </node>
-      <node id="8">
-        <label>core_include/MainObjects/editorObject/getall.cpp</label>
-        <link refid="getall_8cpp"/>
-      </node>
-      <node id="9">
-        <label>core_include/MainObjects/editorObject/getdiff.cpp</label>
-        <link refid="getdiff_8cpp"/>
-      </node>
-      <node id="10">
-        <label>core_include/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
-        <link refid="getlogwithjsongraph_8cpp"/>
-      </node>
-      <node id="11">
-        <label>core_include/MainObjects/editorObject/go.cpp</label>
-        <link refid="go_8cpp"/>
-      </node>
-      <node id="12">
-        <label>core_include/MainObjects/editorObject/redo.cpp</label>
-        <link refid="redo_8cpp"/>
-      </node>
-      <node id="13">
-        <label>core_include/MainObjects/editorObject/render.cpp</label>
-        <link refid="render_8cpp"/>
-      </node>
-      <node id="14">
-        <label>core_include/MainObjects/editorObject/undo.cpp</label>
-        <link refid="undo_8cpp"/>
-      </node>
-      <node id="15">
-        <label>core_include/MainObjects/editorObject/updatelog.cpp</label>
-        <link refid="updatelog_8cpp"/>
-      </node>
-      <node id="16">
-        <label>core_include/SWIG_editor_visitor.hpp</label>
-        <link refid="_s_w_i_g__editor__visitor_8hpp"/>
-      </node>
-      <node id="24">
-        <label>core_include/editor/editor.cpp</label>
-        <link refid="editor_8cpp"/>
-      </node>
-      <node id="2">
-        <label>core_include/editor/editor.hpp</label>
-        <link refid="editor_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-      </node>
-      <node id="25">
-        <label>core_include/editor/featureWrapper/JSONWrap/KVJson.cpp</label>
-        <link refid="_k_v_json_8cpp"/>
-      </node>
-      <node id="26">
-        <label>core_include/editor/featureWrapper/JSONWrap/MixJson.cpp</label>
-        <link refid="_mix_json_8cpp"/>
-      </node>
-      <node id="17">
-        <label>core_include/editor/featureWrapper/JSONWrap/MusicJson.cpp</label>
-        <link refid="_music_json_8cpp"/>
-      </node>
-      <node id="27">
-        <label>core_include/editor/featureWrapper/JSONWrap/NoteJson.cpp</label>
-        <link refid="_note_json_8cpp"/>
-      </node>
-      <node id="1">
-        <label>core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp</label>
-        <link refid="json_wrapper_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>core_include/interface/PDJE_interface.cpp</label>
-        <link refid="_p_d_j_e__interface_8cpp"/>
-      </node>
-      <node id="18">
-        <label>core_include/interface/PDJE_interface.hpp</label>
-        <link refid="_p_d_j_e__interface_8hpp"/>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
+      </node>
+      <node id="10">
+        <label>include/core/MainObjects/editorObject/getall.cpp</label>
+        <link refid="getall_8cpp"/>
+      </node>
+      <node id="11">
+        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
+        <link refid="getdiff_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <link refid="getlogwithjsongraph_8cpp"/>
+      </node>
+      <node id="13">
+        <label>include/core/MainObjects/editorObject/go.cpp</label>
+        <link refid="go_8cpp"/>
+      </node>
+      <node id="14">
+        <label>include/core/MainObjects/editorObject/redo.cpp</label>
+        <link refid="redo_8cpp"/>
+      </node>
+      <node id="15">
+        <label>include/core/MainObjects/editorObject/render.cpp</label>
+        <link refid="render_8cpp"/>
+      </node>
+      <node id="16">
+        <label>include/core/MainObjects/editorObject/undo.cpp</label>
+        <link refid="undo_8cpp"/>
+      </node>
+      <node id="17">
+        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
+        <link refid="updatelog_8cpp"/>
+      </node>
+      <node id="18">
+        <label>include/core/SWIG_editor_visitor.hpp</label>
+        <link refid="_s_w_i_g__editor__visitor_8hpp"/>
+      </node>
+      <node id="2">
+        <label>include/core/editor/TimeLine/EventMarker/EventMarker.hpp</label>
+        <link refid="_event_marker_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>include/core/editor/TimeLine/GitDataPack/GitDatas.hpp</label>
+        <link refid="_git_datas_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>include/core/editor/TimeLine/JSONWrap/KVJson.cpp</label>
+        <link refid="_k_v_json_8cpp"/>
+      </node>
+      <node id="33">
+        <label>include/core/editor/TimeLine/JSONWrap/MixJson.cpp</label>
+        <link refid="_mix_json_8cpp"/>
+      </node>
+      <node id="19">
+        <label>include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</label>
+        <link refid="_music_json_8cpp"/>
+      </node>
+      <node id="34">
+        <label>include/core/editor/TimeLine/JSONWrap/MusicJsonHelper.hpp</label>
+        <link refid="_music_json_helper_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>include/core/editor/TimeLine/JSONWrap/NoteJson.cpp</label>
+        <link refid="_note_json_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp</label>
+        <link refid="json_wrapper_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>include/core/editor/TimeLine/LineVersion/LineVersion.cpp</label>
+        <link refid="_line_version_8cpp"/>
+      </node>
+      <node id="31">
+        <label>include/core/editor/TimeLine/LineVersion/LineVersion.hpp</label>
+        <link refid="_line_version_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/core/editor/TimeLine/TimeLine.hpp</label>
+        <link refid="_time_line_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>include/core/editor/editor.cpp</label>
+        <link refid="editor_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/core/editor/editor.hpp</label>
+        <link refid="editor_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>include/core/interface/PDJE_interface.cpp</label>
+        <link refid="_p_d_j_e__interface_8cpp"/>
+      </node>
+      <node id="20">
+        <label>include/core/interface/PDJE_interface.hpp</label>
+        <link refid="_p_d_j_e__interface_8hpp"/>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-      </node>
-      <node id="20">
-        <label>core_include/interface/PDJE_polyglot_wraps.cpp</label>
-        <link refid="_p_d_j_e__polyglot__wraps_8cpp"/>
-      </node>
-      <node id="21">
-        <label>core_include/tests/dbTest.cpp</label>
-        <link refid="db_test_8cpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
       </node>
       <node id="22">
-        <label>core_include/tests/editorTest.cpp</label>
-        <link refid="editor_test_8cpp"/>
+        <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
+        <link refid="_p_d_j_e__polyglot__wraps_8cpp"/>
       </node>
       <node id="23">
-        <label>core_include/tests/interfaceTest.cpp</label>
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judge_test_8cpp"/>
+      </node>
+      <node id="24">
+        <label>include/tests/dbTest.cpp</label>
+        <link refid="db_test_8cpp"/>
+      </node>
+      <node id="25">
+        <label>include/tests/editorTest.cpp</label>
+        <link refid="editor_test_8cpp"/>
+      </node>
+      <node id="26">
+        <label>include/tests/gittest.cpp</label>
+        <link refid="gittest_8cpp"/>
+      </node>
+      <node id="27">
+        <label>include/tests/interfaceTest.cpp</label>
         <link refid="interface_test_8cpp"/>
       </node>
     </invincdepgraph>
@@ -437,7 +519,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="23" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="23" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="23" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="23" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1a1032385d46bc88a23def4210f4ff6d1c" prot="public" static="no">
         <name>PDJENOTE</name>
@@ -448,7 +530,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="24" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="24" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="24" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1ac928e8a97a547b183c1517879bfc52b4" prot="public" static="no">
         <name>PDJEMUSICBPM</name>
@@ -459,7 +541,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="25" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="25" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="25" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1a5d156b7c3c4151451fa1ba94abd1dbb4" prot="public" static="no">
         <name>PDJE_JSON_TYPE</name>
@@ -470,7 +552,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="106" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="106" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="109" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1a0e83b36224232b100d7c1c2ecfbe5910" prot="public" static="no">
         <name>PDJE_JSON_DETAILS</name>
@@ -481,7 +563,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="107" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="107" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="110" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1a8913d68c5e9a2c368e53af00bb489ad2" prot="public" static="no">
         <name>PDJE_JSON_ID</name>
@@ -492,7 +574,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="108" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="108" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="111" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1a8c5fdee4952a0b7188e7320daabf21bb" prot="public" static="no">
         <name>PDJE_JSON_FIRST</name>
@@ -503,7 +585,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="109" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="109" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="112" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1a5bbf814d8d2ee9221baeb83fb995746f" prot="public" static="no">
         <name>PDJE_JSON_SECOND</name>
@@ -514,7 +596,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="110" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="110" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="113" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1afbfa1a1a3348b5e5f382637c48e0536f" prot="public" static="no">
         <name>PDJE_JSON_THIRD</name>
@@ -525,7 +607,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="111" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="111" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="114" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1a83560c740923d5308658aa4aca59a594" prot="public" static="no">
         <name>PDJE_JSON_BEAT</name>
@@ -536,7 +618,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="112" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="112" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="115" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1ac40919eb0ac22eae6013360af3970e31" prot="public" static="no">
         <name>PDJE_JSON_SUBBEAT</name>
@@ -547,7 +629,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="113" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="113" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="116" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1a692eb1c09064e09d157c813583852103" prot="public" static="no">
         <name>PDJE_JSON_SEPARATE</name>
@@ -558,7 +640,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="114" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="114" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="117" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1a881ac4cc4cc65908544ccb94cebf27f4" prot="public" static="no">
         <name>PDJE_JSON_EBEAT</name>
@@ -569,7 +651,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="115" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="115" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="118" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="118" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1a852928669ed3cb08cc8b6ccf6b46e85b" prot="public" static="no">
         <name>PDJE_JSON_ESUBBEAT</name>
@@ -580,7 +662,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="116" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="116" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="119" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1a4f7054fd01f81b21d4cf32be9c907344" prot="public" static="no">
         <name>PDJE_JSON_ESEPARATE</name>
@@ -591,7 +673,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="117" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="117" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="120" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="json_wrapper_8hpp_1a5241e7fce23269cf6f4c4452245dca22" prot="public" static="no">
+        <name>PDJE_JSON_RAILID</name>
+        <initializer>&quot;rail_id&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="121" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1a653c3f67231cd777efc831a704f3e0a3" prot="public" static="no">
         <name>PDJE_JSON_BPM</name>
@@ -602,7 +695,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="119" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="119" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="123" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1a9305e14ffb9bbcc7032775f442285080" prot="public" static="no">
         <name>PDJE_JSON_TITLE</name>
@@ -613,7 +706,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="121" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="121" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="125" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1ab4d04600c2327cfae8980b076400a4f0" prot="public" static="no">
         <name>PDJE_JSON_COMPOSER</name>
@@ -624,7 +717,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="122" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="122" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="126" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1a65af82b6af1af7e1faf054f2e8cd760d" prot="public" static="no">
         <name>PDJE_JSON_PATH</name>
@@ -635,7 +728,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="123" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="123" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="127" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="127" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1abbb65e93ad9c8b52cb15f0f97c93a1ad" prot="public" static="no">
         <name>PDJE_JSON_NOTE_TYPE</name>
@@ -646,7 +739,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="125" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="125" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="129" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="129" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1acbc72a7a20687e528295bf90d9043b08" prot="public" static="no">
         <name>PDJE_JSON_NOTE_DETAIL</name>
@@ -657,7 +750,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="126" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="126" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="130" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="json_wrapper_8hpp_1ae60f55f1434467de2d96993df250b3cb" prot="public" static="no">
         <name>PDJE_JSON_FIRST_BEAT</name>
@@ -668,7 +761,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="128" column="9" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="128" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="132" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="132" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="typedef">
@@ -683,7 +776,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="26" column="1" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="26" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="26" column="1" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="json_wrapper_8hpp_1a62a8aadaf6e33bd03a591749fca41482" prot="public" static="no">
         <type><ref refid="class_cap_writer" kindref="compound">CapWriter</ref>&lt; MixBinaryCapnpData &gt;</type>
@@ -696,7 +789,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="31" column="1" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="31" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="31" column="1" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="json_wrapper_8hpp_1a29a06c37bb7adf0275ebf5975fb7cb89" prot="public" static="no">
         <type><ref refid="class_cap_writer" kindref="compound">CapWriter</ref>&lt; NoteBinaryCapnpData &gt;</type>
@@ -709,7 +802,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="32" column="1" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="32" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="32" column="1" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="json_wrapper_8hpp_1a5ce6d29d6001f496835f6401276a682e" prot="public" static="no">
         <type><ref refid="class_cap_writer" kindref="compound">CapWriter</ref>&lt; MusicBinaryCapnpData &gt;</type>
@@ -722,7 +815,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="33" column="1" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="33" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="33" column="1" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="json_wrapper_8hpp_1a67473814637ada120f046e947d522b64" prot="public" static="no">
         <type>std::pair&lt; <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref>, <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &gt;</type>
@@ -735,7 +828,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="36" column="1" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="36" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="36" column="1" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="json_wrapper_8hpp_1a302aa5ab173d4395fe6526d00a2f9777" prot="public" static="no">
         <type>std::vector&lt; <ref refid="_editor_args_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref> &gt;</type>
@@ -748,7 +841,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" line="37" column="1" bodyfile="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp" bodystart="37" bodyend="-1"/>
+        <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="37" column="1" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -818,7 +911,7 @@
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>multi-threaded<sp/>faster<sp/>getter<sp/>later</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69" refid="class_p_d_j_e___j_s_o_n_handler_1a2447b4a25741adf41741306f27638fad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___j_s_o_n_handler_1a2447b4a25741adf41741306f27638fad" kindref="member">load</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>&amp;path);</highlight></codeline>
+<codeline lineno="69" refid="class_p_d_j_e___j_s_o_n_handler_1a0724131ac4acaa35204ff1134ece7aa5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___j_s_o_n_handler_1a0724131ac4acaa35204ff1134ece7aa5" kindref="member">load</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>&amp;filepath);</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="json_wrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" kindref="member">nj</ref><sp/>&amp;</highlight></codeline>
 <codeline lineno="73" refid="class_p_d_j_e___j_s_o_n_handler_1a43792f758ad088b160dc160d5627e05e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___j_s_o_n_handler_1a43792f758ad088b160dc160d5627e05e" kindref="member">operator[]</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref><sp/>&amp;key)</highlight></codeline>
@@ -834,48 +927,52 @@
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jfile<sp/>&lt;&lt;<sp/>std::setw(4)<sp/>&lt;&lt;<sp/><ref refid="class_p_d_j_e___j_s_o_n_handler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>;</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="93" refid="class_p_d_j_e___j_s_o_n_handler_1a58c2031b530983107d9db6dbf7ed60a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___j_s_o_n_handler_1a58c2031b530983107d9db6dbf7ed60a0" kindref="member">deleteFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>&amp;path)</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fs::remove_all(path)<sp/>&gt;<sp/>0;</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102" refid="class_p_d_j_e___j_s_o_n_handler_1a64bf5adedd053da2a351f84bf2f63ecb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___j_s_o_n_handler_1a64bf5adedd053da2a351f84bf2f63ecb" kindref="member">PDJE_JSONHandler</ref>()<sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="103" refid="class_p_d_j_e___j_s_o_n_handler_1a2389e6d75d04f5d416ff558d37607482" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___j_s_o_n_handler_1a2389e6d75d04f5d416ff558d37607482" kindref="member">~PDJE_JSONHandler</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="104"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106" refid="json_wrapper_8hpp_1a5d156b7c3c4151451fa1ba94abd1dbb4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_TYPE<sp/>&quot;type&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="107" refid="json_wrapper_8hpp_1a0e83b36224232b100d7c1c2ecfbe5910" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_DETAILS<sp/>&quot;details&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="108" refid="json_wrapper_8hpp_1a8913d68c5e9a2c368e53af00bb489ad2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_ID<sp/>&quot;id&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="109" refid="json_wrapper_8hpp_1a8c5fdee4952a0b7188e7320daabf21bb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_FIRST<sp/>&quot;first&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="110" refid="json_wrapper_8hpp_1a5bbf814d8d2ee9221baeb83fb995746f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_SECOND<sp/>&quot;second&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="111" refid="json_wrapper_8hpp_1afbfa1a1a3348b5e5f382637c48e0536f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_THIRD<sp/>&quot;third&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112" refid="json_wrapper_8hpp_1a83560c740923d5308658aa4aca59a594" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_BEAT<sp/>&quot;beat&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="113" refid="json_wrapper_8hpp_1ac40919eb0ac22eae6013360af3970e31" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_SUBBEAT<sp/>&quot;sub_beat&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="114" refid="json_wrapper_8hpp_1a692eb1c09064e09d157c813583852103" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_SEPARATE<sp/>&quot;separate&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="115" refid="json_wrapper_8hpp_1a881ac4cc4cc65908544ccb94cebf27f4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_EBEAT<sp/>&quot;e_beat&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="116" refid="json_wrapper_8hpp_1a852928669ed3cb08cc8b6ccf6b46e85b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_ESUBBEAT<sp/>&quot;e_subBeat&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="117" refid="json_wrapper_8hpp_1a4f7054fd01f81b21d4cf32be9c907344" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_ESEPARATE<sp/>&quot;e_separate&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="119" refid="json_wrapper_8hpp_1a653c3f67231cd777efc831a704f3e0a3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_BPM<sp/>&quot;bpm&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"></highlight></codeline>
-<codeline lineno="121" refid="json_wrapper_8hpp_1a9305e14ffb9bbcc7032775f442285080" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_TITLE<sp/>&quot;title&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="122" refid="json_wrapper_8hpp_1ab4d04600c2327cfae8980b076400a4f0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_COMPOSER<sp/>&quot;composer&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="123" refid="json_wrapper_8hpp_1a65af82b6af1af7e1faf054f2e8cd760d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_PATH<sp/>&quot;path&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>save<sp/>json<sp/>file.<sp/>json<sp/>file<sp/>is<sp/>not<sp/>opened.<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;FilePath:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(path.generic_string());</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="class_p_d_j_e___j_s_o_n_handler_1a58c2031b530983107d9db6dbf7ed60a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___j_s_o_n_handler_1a58c2031b530983107d9db6dbf7ed60a0" kindref="member">deleteFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>&amp;path)</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fs::remove_all(path)<sp/>&gt;<sp/>0;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="class_p_d_j_e___j_s_o_n_handler_1a64bf5adedd053da2a351f84bf2f63ecb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___j_s_o_n_handler_1a64bf5adedd053da2a351f84bf2f63ecb" kindref="member">PDJE_JSONHandler</ref>()<sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106" refid="class_p_d_j_e___j_s_o_n_handler_1a2389e6d75d04f5d416ff558d37607482" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___j_s_o_n_handler_1a2389e6d75d04f5d416ff558d37607482" kindref="member">~PDJE_JSONHandler</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="json_wrapper_8hpp_1a5d156b7c3c4151451fa1ba94abd1dbb4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_TYPE<sp/>&quot;type&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="json_wrapper_8hpp_1a0e83b36224232b100d7c1c2ecfbe5910" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_DETAILS<sp/>&quot;details&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="json_wrapper_8hpp_1a8913d68c5e9a2c368e53af00bb489ad2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_ID<sp/>&quot;id&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="json_wrapper_8hpp_1a8c5fdee4952a0b7188e7320daabf21bb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_FIRST<sp/>&quot;first&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="json_wrapper_8hpp_1a5bbf814d8d2ee9221baeb83fb995746f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_SECOND<sp/>&quot;second&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="json_wrapper_8hpp_1afbfa1a1a3348b5e5f382637c48e0536f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_THIRD<sp/>&quot;third&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="json_wrapper_8hpp_1a83560c740923d5308658aa4aca59a594" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_BEAT<sp/>&quot;beat&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="json_wrapper_8hpp_1ac40919eb0ac22eae6013360af3970e31" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_SUBBEAT<sp/>&quot;sub_beat&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="json_wrapper_8hpp_1a692eb1c09064e09d157c813583852103" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_SEPARATE<sp/>&quot;separate&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="json_wrapper_8hpp_1a881ac4cc4cc65908544ccb94cebf27f4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_EBEAT<sp/>&quot;e_beat&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="json_wrapper_8hpp_1a852928669ed3cb08cc8b6ccf6b46e85b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_ESUBBEAT<sp/>&quot;e_subBeat&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120" refid="json_wrapper_8hpp_1a4f7054fd01f81b21d4cf32be9c907344" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_ESEPARATE<sp/>&quot;e_separate&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="json_wrapper_8hpp_1a5241e7fce23269cf6f4c4452245dca22" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_RAILID<sp/>&quot;rail_id&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="json_wrapper_8hpp_1a653c3f67231cd777efc831a704f3e0a3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_BPM<sp/>&quot;bpm&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
-<codeline lineno="125" refid="json_wrapper_8hpp_1abbb65e93ad9c8b52cb15f0f97c93a1ad" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_NOTE_TYPE<sp/>&quot;note_type&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="126" refid="json_wrapper_8hpp_1acbc72a7a20687e528295bf90d9043b08" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_NOTE_DETAIL<sp/>&quot;note_detail&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128" refid="json_wrapper_8hpp_1ae60f55f1434467de2d96993df250b3cb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_FIRST_BEAT<sp/>&quot;first_beat&quot;</highlight></codeline>
+<codeline lineno="125" refid="json_wrapper_8hpp_1a9305e14ffb9bbcc7032775f442285080" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_TITLE<sp/>&quot;title&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="json_wrapper_8hpp_1ab4d04600c2327cfae8980b076400a4f0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_COMPOSER<sp/>&quot;composer&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="json_wrapper_8hpp_1a65af82b6af1af7e1faf054f2e8cd760d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_PATH<sp/>&quot;path&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="json_wrapper_8hpp_1abbb65e93ad9c8b52cb15f0f97c93a1ad" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_NOTE_TYPE<sp/>&quot;note_type&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="json_wrapper_8hpp_1acbc72a7a20687e528295bf90d9043b08" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_NOTE_DETAIL<sp/>&quot;note_detail&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="json_wrapper_8hpp_1ae60f55f1434467de2d96993df250b3cb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_JSON_FIRST_BEAT<sp/>&quot;first_beat&quot;</highlight></codeline>
     </programlisting>
-    <location file="core_include/editor/featureWrapper/JSONWrap/jsonWrapper.hpp"/>
+    <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp"/>
   </compounddef>
 </doxygen>

@@ -4,7 +4,7 @@
 File PDJE_Input_DataLine.hpp
 ============================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include/global/DataLines``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include\global\DataLines``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Input_DataLine.hpp
    :local:
    :backlinks: none
 
-Definition (``include/global/DataLines/PDJE_Input_DataLine.hpp``)
+Definition (``include\global\DataLines\PDJE_Input_DataLine.hpp``)
 -----------------------------------------------------------------
 
 
@@ -32,11 +32,13 @@ Includes
 
 - ``Input_State.hpp`` (:ref:`file_include_global_DataLines_Input_State.hpp`)
 
-- ``PDJE_Buffer.hpp`` (:ref:`file_include_global_DataLines_PDJE_Buffer.hpp`)
+- ``Input_Transfer.hpp`` (:ref:`file_include_input_IPC_memory_Input_Transfer.hpp`)
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
 
 - ``PDJE_Input_Device_Data.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_Device_Data.hpp`)
+
+- ``PDJE_MIDI.hpp`` (:ref:`file_include_input_midi_PDJE_MIDI.hpp`)
 
 - ``unordered_map``
 
@@ -46,21 +48,21 @@ Included By
 -----------
 
 
-- :ref:`file_include_input_IPC_transmission_ChildProcess.hpp`
-
-- :ref:`file_include_input_IPC_transmission_MainProcess.hpp`
+- :ref:`file_include_input_--DEPRECATED-linux_linux_input.hpp`
 
 - :ref:`file_include_input_PDJE_Input.hpp`
 
-- :ref:`file_include_input_linux_linux_input.hpp`
+- :ref:`file_include_input_host_MainProcess.hpp`
+
+- :ref:`file_include_input_runner_SubProcess.hpp`
 
 - :ref:`file_include_judge_Init_PDJE_Judge_Init.hpp`
-
-- :ref:`file_include_judge_InputParser_InputParser.cpp`
 
 - :ref:`file_include_judge_InputParser_InputParser.hpp`
 
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.cpp`
+
+- :ref:`file_include_judge_Loop_PreProcess_PDJE_PreProcess.hpp`
 
 
 
@@ -69,16 +71,14 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__INPUT__DATA__LINE`
-
-- :ref:`exhale_struct_structPDJE__Input__Log`
+- :ref:`exhale_struct_struct_p_d_j_e___i_n_p_u_t___d_a_t_a___l_i_n_e`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_PDJE__Input__DataLine_8hpp_1a73ea437825558867dcad305e6ab74cd9`
+- :ref:`exhale_typedef__p_d_j_e___input___data_line_8hpp_1a73ea437825558867dcad305e6ab74cd9`
 
-- :ref:`exhale_typedef_PDJE__Input__DataLine_8hpp_1ad2b191944fa7dd4314a1a49b2b243e62`
+- :ref:`exhale_typedef__p_d_j_e___input___data_line_8hpp_1ad2b191944fa7dd4314a1a49b2b243e62`
 

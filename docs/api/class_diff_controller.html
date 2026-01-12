@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Class DiffController &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../_static/doctools.js?v=9bcbadda"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -87,43 +85,10 @@
 </ul>
 <section id="class-documentation">
 <h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Link to this heading"></a></h2>
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv414DiffController">
-<span id="_CPPv314DiffController"></span><span id="_CPPv214DiffController"></span><span id="DiffController"></span><span class="target" id="classDiffController"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DiffController</span></span></span><br /></dt>
-<dd><p>Executes diff operations between commits. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N14DiffController14CommitToCommitEP14git_repository7git_oid7git_oid">
-<span id="_CPPv3N14DiffController14CommitToCommitEP14git_repository7git_oid7git_oid"></span><span id="_CPPv2N14DiffController14CommitToCommitEP14git_repository7git_oid7git_oid"></span><span id="DiffController::CommitToCommit__git_repositoryP.git_oid.git_oid"></span><span class="target" id="classDiffController_1a735f7b75bc7cafe8ab7afef88e3a5ebf"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CommitToCommit</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">git_repository</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">repo</span></span>, <span class="n"><span class="pre">git_oid</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">newID</span></span>, <span class="n"><span class="pre">git_oid</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">oldID</span></span><span class="sig-paren">)</span><br /></dt>
-<dd><p>Compare two commits. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N14DiffController11CommitToNowEP14git_repository7git_oid">
-<span id="_CPPv3N14DiffController11CommitToNowEP14git_repository7git_oid"></span><span id="_CPPv2N14DiffController11CommitToNowEP14git_repository7git_oid"></span><span id="DiffController::CommitToNow__git_repositoryP.git_oid"></span><span class="target" id="classDiffController_1a4d2c8acac24b36a81837e49eae382fac"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CommitToNow</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">git_repository</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">repo</span></span>, <span class="n"><span class="pre">git_oid</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">oldID</span></span><span class="sig-paren">)</span><br /></dt>
-<dd><p>Compare a commit with the working directory. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N14DiffController7executeEP10DiffResult">
-<span id="_CPPv3N14DiffController7executeEP10DiffResult"></span><span id="_CPPv2N14DiffController7executeEP10DiffResult"></span><span id="DiffController::execute__DiffResultP"></span><span class="target" id="classDiffController_1a0ef0ae7c68d8c517af66baf6d1c4072a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">execute</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structDiffResult.html#_CPPv410DiffResult" title="DiffResult"><span class="n"><span class="pre">DiffResult</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><br /></dt>
-<dd><p>Run the diff and fill the result structure. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N14DiffController14DiffControllerEv">
-<span id="_CPPv3N14DiffController14DiffControllerEv"></span><span id="_CPPv2N14DiffController14DiffControllerEv"></span><span id="DiffController::DiffController"></span><span class="target" id="classDiffController_1ae6510679bb5a84f24de9b4d935c37c14"></span><span class="sig-name descname"><span class="n"><span class="pre">DiffController</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N14DiffControllerD0Ev">
-<span id="_CPPv3N14DiffControllerD0Ev"></span><span id="_CPPv2N14DiffControllerD0Ev"></span><span id="DiffController::~DiffController"></span><span class="target" id="classDiffController_1a11a240e972817d4a002b76b6ea855084"></span><span class="sig-name descname"><span class="n"><span class="pre">~DiffController</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “DiffController” in doxygen xml output for project “Project_DJ_Engine” from directory: ./xml</p>
 </div>
-</dd></dl>
-
 </section>
 </section>
 

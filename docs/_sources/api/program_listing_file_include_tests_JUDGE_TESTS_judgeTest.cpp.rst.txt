@@ -4,7 +4,7 @@
 Program Listing for File judgeTest.cpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_JUDGE_TESTS_judgeTest.cpp>` (``include/tests/JUDGE_TESTS/judgeTest.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_JUDGE_TESTS_judgeTest.cpp>` (``include\tests\JUDGE_TESTS\judgeTest.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -76,6 +76,18 @@ Program Listing for File judgeTest.cpp
        auto     devs  = input.GetDevs();
        auto     judge = PDJE_JUDGE::JUDGE();
        DEV_LIST list;
+       auto     midis = input.GetMIDIDevs();
+   
+       for (auto &m : midis) {
+   
+           judge.inits.SetRail(
+               m,
+               1,
+               static_cast<const uint8_t>(libremidi::message_type::NOTE_ON),
+               1,
+               48,
+               0);
+       }
    
        for (auto &d : devs) {
            if (d.Type == PDJE_Dev_Type::KEYBOARD) {
@@ -104,7 +116,7 @@ Program Listing for File judgeTest.cpp
            //     1);
            // }
        }
-       if (!input.Config(list)) {
+       if (!input.Config(list, midis)) {
            std::cout << "config failed" << std::endl;
        }
        auto                iline          = input.PullOutDataLine();
@@ -129,8 +141,8 @@ Program Listing for File judgeTest.cpp
        };
        engine.GetNoteObjects(td.front(), cb);
        std::cout << "notes: " << note_add_count << std::endl;
-       judge.inits.SetEventRule({ .miss_range_microsecond = 1000005,
-                                  .use_range_microsecond  = 1000000 });
+       judge.inits.SetEventRule(
+           { .miss_range_microsecond = 600005, .use_range_microsecond = 600000 });
        judge.inits.SetInputLine(input.PullOutDataLine());
    
        int                       miss_count = 0;

@@ -4,7 +4,7 @@
 Program Listing for File PDJE_Judge_Init.hpp
 ============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_Init_PDJE_Judge_Init.hpp>` (``include/judge/Init/PDJE_Judge_Init.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_Init_PDJE_Judge_Init.hpp>` (``include\judge\Init\PDJE_Judge_Init.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -19,7 +19,7 @@ Program Listing for File PDJE_Judge_Init.hpp
    
    #include "InputParser.hpp"
    #include "PDJE_Note_OBJ.hpp"
-   #include "PDJE_Rule.hpp"
+   #include "PDJE_RAIL.hpp"
    #include <optional>
    #include <unordered_map>
    namespace PDJE_JUDGE {
@@ -43,15 +43,28 @@ Program Listing for File PDJE_Judge_Init.hpp
        // rules
        std::optional<EVENT_RULE> ev_rule;
    
-       InputParser devparser;
-       // std::unordered_map<INPUT_RULE, INPUT_SETTING> dev_rules;
-       // RAILID_TO_OFFSET                              id_offset;
+       RAIL_DB raildb;
    
        void
        SetRail(const DeviceData &devData,
                const BITMASK     DeviceKey,
                const int64_t     offset_microsecond,
                const uint64_t    MatchRail);
+   
+       void
+       SetRail(const std::string &midi_port_name,
+               const uint64_t     MatchRail,
+               const uint8_t      type,
+               const uint8_t      ch,
+               const uint8_t      pos                = 0,
+               const int64_t      offset_microsecond = 0);
+       void
+       SetRail(const libremidi::input_port &midi_port,
+               const uint64_t               MatchRail,
+               const uint8_t                type,
+               const uint8_t                ch,
+               const uint8_t                pos                = 0,
+               const int64_t                offset_microsecond = 0);
        void
        SetEventRule(const EVENT_RULE &event_rule);
    

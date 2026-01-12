@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="struct_p_d_j_e___i_n_p_u_t___d_a_t_a___l_i_n_e" kind="struct" language="C++" prot="public">
+    <compoundname>PDJE_INPUT_DATA_LINE</compoundname>
+    <includes refid="_p_d_j_e___input___data_line_8hpp" local="no">PDJE_Input_DataLine.hpp</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_p_d_j_e___i_n_p_u_t___d_a_t_a___l_i_n_e_1a7109d727ea2dd6582a21ab2a66dc3ff0" prot="public" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___i_p_c_1_1_p_d_j_e___input___transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref> *</type>
+        <definition>PDJE_IPC::PDJE_Input_Transfer* PDJE_INPUT_DATA_LINE::input_arena</definition>
+        <argsstring></argsstring>
+        <name>input_arena</name>
+        <qualifiedname>PDJE_INPUT_DATA_LINE::input_arena</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="13" column="46" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_p_d_j_e___i_n_p_u_t___d_a_t_a___l_i_n_e_1afaf647c7d1d7a791a3e5c855f2cec4eb" prot="public" static="no" mutable="no">
+        <type><ref refid="class_atomic___double___buffer" kindref="compound">Atomic_Double_Buffer</ref>&lt; <ref refid="struct_p_d_j_e___m_i_d_i_1_1_m_i_d_i___e_v" kindref="compound">PDJE_MIDI::MIDI_EV</ref> &gt; *</type>
+        <definition>Atomic_Double_Buffer&lt;PDJE_MIDI::MIDI_EV&gt;* PDJE_INPUT_DATA_LINE::midi_datas</definition>
+        <argsstring></argsstring>
+        <name>midi_datas</name>
+        <qualifiedname>PDJE_INPUT_DATA_LINE::midi_datas</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="14" column="26" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="18">
+        <label>Atomic_Double_Buffer&lt; PDJE_MIDI::MIDI_EV &gt;</label>
+        <link refid="class_atomic___double___buffer"/>
+        <childnode refid="19" relation="usage">
+          <edgelabel>first</edgelabel>
+          <edgelabel>second</edgelabel>
+        </childnode>
+      </node>
+      <node id="16">
+        <label>PDJE_CRYPTO::PSK</label>
+        <link refid="class_p_d_j_e___c_r_y_p_t_o_1_1_p_s_k"/>
+      </node>
+      <node id="9">
+        <label>PDJE_HID_Event</label>
+        <link refid="struct_p_d_j_e___h_i_d___event"/>
+      </node>
+      <node id="1">
+        <label>PDJE_INPUT_DATA_LINE</label>
+        <link refid="struct_p_d_j_e___i_n_p_u_t___d_a_t_a___l_i_n_e"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>input_arena</edgelabel>
+        </childnode>
+        <childnode refid="18" relation="usage">
+          <edgelabel>midi_datas</edgelabel>
+        </childnode>
+      </node>
+      <node id="11">
+        <label>PDJE_IPC::EVENT</label>
+        <link refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t"/>
+      </node>
+      <node id="15">
+        <label>PDJE_IPC::Input_Transfer_Metadata</label>
+        <link refid="struct_p_d_j_e___i_p_c_1_1_input___transfer___metadata"/>
+        <childnode refid="16" relation="usage">
+          <edgelabel>psk</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PDJE_IPC::PDJE_Input_Transfer</label>
+        <link refid="class_p_d_j_e___i_p_c_1_1_p_d_j_e___input___transfer"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>length</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>body</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>req_event</edgelabel>
+          <edgelabel>stored_event</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>sendworker_switch</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>local_locker</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>hmacEngine</edgelabel>
+        </childnode>
+        <childnode refid="15" relation="usage">
+          <edgelabel>metadata</edgelabel>
+        </childnode>
+        <childnode refid="17" relation="usage">
+          <edgelabel>datas</edgelabel>
+          <edgelabel>subBuffer</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>PDJE_IPC::SharedMem&lt; PDJE_Input_Log, PDJE_IPC_RW &gt;</label>
+        <link refid="class_p_d_j_e___i_p_c_1_1_shared_mem"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>PDJE_IPC::SharedMem&lt; uint64_t, PDJE_IPC_RW &gt;</label>
+        <link refid="class_p_d_j_e___i_p_c_1_1_shared_mem"/>
+      </node>
+      <node id="10">
+        <label>PDJE_IPC::SharedMem&lt; uint8_t, PDJE_IPC_RW &gt;</label>
+        <link refid="class_p_d_j_e___i_p_c_1_1_shared_mem"/>
+      </node>
+      <node id="6">
+        <label>PDJE_Input_Event</label>
+        <link refid="union_p_d_j_e___input___event"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>mouse</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>keyboard</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>PDJE_Input_Log</label>
+        <link refid="struct_p_d_j_e___input___log"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>event</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>hid_event</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>PDJE_Keyboard_Event</label>
+        <link refid="struct_p_d_j_e___keyboard___event"/>
+      </node>
+      <node id="7">
+        <label>PDJE_Mouse_Event</label>
+        <link refid="struct_p_d_j_e___mouse___event"/>
+      </node>
+      <node id="12">
+        <label>std::atomic&lt; bool &gt;</label>
+      </node>
+      <node id="13">
+        <label>std::mutex</label>
+      </node>
+      <node id="14">
+        <label>std::unique_ptr&lt; Botan::MessageAuthenticationCode &gt;</label>
+      </node>
+      <node id="17">
+        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
+      </node>
+      <node id="19">
+        <label>std::vector&lt; PDJE_MIDI::MIDI_EV &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="12" column="1" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="12" bodyend="15"/>
+    <listofallmembers>
+      <member refid="struct_p_d_j_e___i_n_p_u_t___d_a_t_a___l_i_n_e_1a7109d727ea2dd6582a21ab2a66dc3ff0" prot="public" virt="non-virtual"><scope>PDJE_INPUT_DATA_LINE</scope><name>input_arena</name></member>
+      <member refid="struct_p_d_j_e___i_n_p_u_t___d_a_t_a___l_i_n_e_1afaf647c7d1d7a791a3e5c855f2cec4eb" prot="public" virt="non-virtual"><scope>PDJE_INPUT_DATA_LINE</scope><name>midi_datas</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

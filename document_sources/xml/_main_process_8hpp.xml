@@ -1,0 +1,561 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="_main_process_8hpp" kind="file" language="C++">
+    <compoundname>MainProcess.hpp</compoundname>
+    <includes refid="_name_gen_8hpp" local="yes">NameGen.hpp</includes>
+    <includes refid="_p_d_j_e___buffer_8hpp" local="yes">PDJE_Buffer.hpp</includes>
+    <includes refid="_p_d_j_e___input___data_line_8hpp" local="yes">PDJE_Input_DataLine.hpp</includes>
+    <includes refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
+    <includes refid="_secured___i_p_c___t_x___r_x_8hpp" local="yes">Secured_IPC_TX_RX.hpp</includes>
+    <includes refid="ipc__shared__memory_8hpp" local="yes">ipc_shared_memory.hpp</includes>
+    <includes refid="_p_d_j_e___crypto_8hpp" local="no">PDJE_Crypto.hpp</includes>
+    <includes local="no">filesystem</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">nlohmann/json.hpp</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">unordered_map</includes>
+    <includedby refid="_i_p_c_2--_d_e_p_r_e_c_a_t_e_d--transmission_2linux_2_main_process_8cpp" local="yes">include/input/IPC/--DEPRECATED--transmission/linux/MainProcess.cpp</includedby>
+    <includedby refid="_p_d_j_e___input_8hpp" local="yes">include/input/PDJE_Input.hpp</includedby>
+    <includedby refid="host_2_main_process_8cpp" local="yes">include/input/host/MainProcess.cpp</includedby>
+    <includedby refid="host_2_set_t_x_r_x_features_8cpp" local="yes">include/input/host/SetTXRXFeatures.cpp</includedby>
+    <includedby refid="host_2linux_2_main_process_8cpp" local="yes">include/input/host/linux/MainProcess.cpp</includedby>
+    <includedby refid="ipc___send___linux_8cpp" local="yes">include/input/host/linux/ipc_Send_Linux.cpp</includedby>
+    <includedby refid="host_2windows_2_main_process_8cpp" local="yes">include/input/host/windows/MainProcess.cpp</includedby>
+    <includedby refid="ipc___send___windows_8cpp" local="yes">include/input/host/windows/ipc_Send_Windows.cpp</includedby>
+    <includedby refid="pdje_input_test_8cpp" local="yes">include/tests/INPUT_TESTS/pdjeInputTest.cpp</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>PDJE_Crypto.hpp</label>
+        <link refid="_p_d_j_e___crypto_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>Input_State.hpp</label>
+        <link refid="_input___state_8hpp"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>PDJE_Buffer.hpp</label>
+        <link refid="_p_d_j_e___buffer_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>PDJE_Input_DataLine.hpp</label>
+        <link refid="_p_d_j_e___input___data_line_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>PDJE_Input_Device_Data.hpp</label>
+        <link refid="_p_d_j_e___input___device___data_8hpp"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="4">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>NameGen.hpp</label>
+        <link refid="_name_gen_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>PDJE_INPUT_PROCESS_HASH.hpp</label>
+        <link refid="_p_d_j_e___i_n_p_u_t___p_r_o_c_e_s_s___h_a_s_h_8hpp"/>
+      </node>
+      <node id="35">
+        <label>Input_Transfer.hpp</label>
+        <link refid="_input___transfer_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>Secured_IPC_TX_RX.hpp</label>
+        <link refid="_secured___i_p_c___t_x___r_x_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>ipc_named_event.hpp</label>
+        <link refid="ipc__named__event_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>ipc_named_mutex.hpp</label>
+        <link refid="ipc__named__mutex_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>ipc_shared_memory.hpp</label>
+        <link refid="ipc__shared__memory_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/input/host/MainProcess.hpp</label>
+        <link refid="_main_process_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>PDJE_MIDI.hpp</label>
+        <link refid="_p_d_j_e___m_i_d_i_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>PDJE_Highres_Clock.hpp</label>
+      </node>
+      <node id="21">
+        <label>algorithm</label>
+      </node>
+      <node id="28">
+        <label>atomic</label>
+      </node>
+      <node id="50">
+        <label>botan/aead.h</label>
+      </node>
+      <node id="12">
+        <label>botan/auto_rng.h</label>
+      </node>
+      <node id="13">
+        <label>botan/cipher_mode.h</label>
+      </node>
+      <node id="14">
+        <label>botan/hash.h</label>
+      </node>
+      <node id="16">
+        <label>botan/hex.h</label>
+      </node>
+      <node id="41">
+        <label>botan/mac.h</label>
+      </node>
+      <node id="42">
+        <label>botan/mem_ops.h</label>
+      </node>
+      <node id="22">
+        <label>cctype</label>
+      </node>
+      <node id="23">
+        <label>cstddef</label>
+      </node>
+      <node id="37">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>filesystem</label>
+      </node>
+      <node id="24">
+        <label>fstream</label>
+      </node>
+      <node id="51">
+        <label>functional</label>
+      </node>
+      <node id="33">
+        <label>future</label>
+      </node>
+      <node id="25">
+        <label>ios</label>
+      </node>
+      <node id="38">
+        <label>latch</label>
+      </node>
+      <node id="47">
+        <label>libremidi/libremidi.hpp</label>
+      </node>
+      <node id="26">
+        <label>limits</label>
+      </node>
+      <node id="52">
+        <label>map</label>
+      </node>
+      <node id="29">
+        <label>memory_resource</label>
+      </node>
+      <node id="6">
+        <label>mutex</label>
+      </node>
+      <node id="43">
+        <label>nlohmann/json.hpp</label>
+      </node>
+      <node id="34">
+        <label>optional</label>
+      </node>
+      <node id="30">
+        <label>random</label>
+      </node>
+      <node id="7">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="8">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="9">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="15">
+        <label>string</label>
+      </node>
+      <node id="10">
+        <label>string_view</label>
+      </node>
+      <node id="44">
+        <label>thread</label>
+      </node>
+      <node id="11">
+        <label>type_traits</label>
+      </node>
+      <node id="48">
+        <label>unordered_map</label>
+      </node>
+      <node id="27">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/input/IPC/--DEPRECATED--transmission/linux/MainProcess.cpp</label>
+        <link refid="_i_p_c_2--_d_e_p_r_e_c_a_t_e_d--transmission_2linux_2_main_process_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/input/PDJE_Input.cpp</label>
+        <link refid="_p_d_j_e___input_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/input/PDJE_Input.hpp</label>
+        <link refid="_p_d_j_e___input_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>include/input/host/MainProcess.cpp</label>
+        <link refid="host_2_main_process_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/input/host/MainProcess.hpp</label>
+        <link refid="_main_process_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/input/host/SetTXRXFeatures.cpp</label>
+        <link refid="host_2_set_t_x_r_x_features_8cpp"/>
+      </node>
+      <node id="9">
+        <label>include/input/host/linux/MainProcess.cpp</label>
+        <link refid="host_2linux_2_main_process_8cpp"/>
+      </node>
+      <node id="10">
+        <label>include/input/host/linux/ipc_Send_Linux.cpp</label>
+        <link refid="ipc___send___linux_8cpp"/>
+      </node>
+      <node id="11">
+        <label>include/input/host/windows/MainProcess.cpp</label>
+        <link refid="host_2windows_2_main_process_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/input/host/windows/ipc_Send_Windows.cpp</label>
+        <link refid="ipc___send___windows_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
+        <link refid="pdje_input_test_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judge_test_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_p_d_j_e___i_p_c_1_1_importants" prot="public">PDJE_IPC::Importants</innerclass>
+    <innerclass refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport" prot="public">PDJE_IPC::MAINPROC::TXRXTransport</innerclass>
+    <innernamespace refid="namespace_p_d_j_e___i_p_c">PDJE_IPC</innernamespace>
+    <innernamespace refid="namespace_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c">PDJE_IPC::MAINPROC</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_name_gen_8hpp" kindref="compound">NameGen.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_p_d_j_e___buffer_8hpp" kindref="compound">PDJE_Buffer.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_p_d_j_e___input___data_line_8hpp" kindref="compound">PDJE_Input_DataLine.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp" kindref="compound">PDJE_LOG_SETTER.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_secured___i_p_c___t_x___r_x_8hpp" kindref="compound">Secured_IPC_TX_RX.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ipc__shared__memory_8hpp" kindref="compound">ipc_shared_memory.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="_p_d_j_e___crypto_8hpp" kindref="compound">PDJE_Crypto.hpp</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;nlohmann/json.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>WIN32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(__linux__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___i_p_c" kindref="compound">PDJE_IPC</ref><sp/>{</highlight></codeline>
+<codeline lineno="22" refid="namespace_p_d_j_e___i_p_c_1a9709ed0c8be64e9fe2486e273cb37d58" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___i_p_c_1a9709ed0c8be64e9fe2486e273cb37d58" kindref="member">nj</ref><sp/>=<sp/>nlohmann::json;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="struct_p_d_j_e___i_p_c_1_1_importants" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_p_d_j_e___i_p_c_1_1_importants" kindref="compound">Importants</ref><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>WIN32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>STARTUPINFOW<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>start_up_info{};</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>PROCESS_INFORMATION<sp/>process_info{};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(__linux__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>socket_fd<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>child_fd<sp/><sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>pid_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/>child_pid<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>socket_path<sp/>=</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;/tmp/pdje_input_module_libevdev_socket_path.sock&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="36" refid="namespace_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c" kindref="compound">MAINPROC</ref><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a69b8fbf55929e07abba2d178f71a36f9" kindref="member">TXRXTransport</ref><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="40" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a253af7543a42350f5dd4150ba82b4726" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;PDJE_CRYPTO::TX_RX&gt;<sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a253af7543a42350f5dd4150ba82b4726" kindref="member">txrx</ref>;</highlight></codeline>
+<codeline lineno="41" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a7b09ea7436634ce9b62a05a63e6efee1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___c_r_y_p_t_o_1_1_p_s_k" kindref="compound">PDJE_CRYPTO::PSK</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a7b09ea7436634ce9b62a05a63e6efee1" kindref="member">psk</ref>;</highlight></codeline>
+<codeline lineno="42" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1aaf3e55881e226cd01bf1d00f50fde0b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_p_d_j_e___i_p_c_1_1_importants" kindref="compound">Importants</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1aaf3e55881e226cd01bf1d00f50fde0b5" kindref="member">imp</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1aa50c1a9721057b004895091c057f969e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::promise&lt;bool&gt;&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1aa50c1a9721057b004895091c057f969e" kindref="member">HEALTH_CHECK</ref>;</highlight></codeline>
+<codeline lineno="45" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1aaabb47c058f4e57f91a63a412f6ba57c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::promise&lt;bool&gt;&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1aaabb47c058f4e57f91a63a412f6ba57c" kindref="member">STOP</ref>;</highlight></codeline>
+<codeline lineno="46" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a2452fc6c5a3c832b7f7cb274e0665da2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::promise&lt;bool&gt;&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a2452fc6c5a3c832b7f7cb274e0665da2" kindref="member">KILL</ref>;</highlight></codeline>
+<codeline lineno="47" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a1eca5c3198d1e715d7530129971752a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::promise&lt;std::vector&lt;DeviceData&gt;&gt;&gt;<sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a1eca5c3198d1e715d7530129971752a0" kindref="member">DEVICE_LIST</ref>;</highlight></codeline>
+<codeline lineno="48" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a7086d01996449731e8fcbecf4a221ab7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::promise&lt;bool&gt;&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a7086d01996449731e8fcbecf4a221ab7" kindref="member">DEVICE_CONFIG</ref>;</highlight></codeline>
+<codeline lineno="49" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a3c11e96b6bf74c3359dd647f59601902" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::promise&lt;bool&gt;&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a3c11e96b6bf74c3359dd647f59601902" kindref="member">SEND_IPC_SHMEM</ref>;</highlight></codeline>
+<codeline lineno="50" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a54db8c823c8fca0a780a33e4a2c45603" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::promise&lt;bool&gt;&gt;<sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a54db8c823c8fca0a780a33e4a2c45603" kindref="member">SEND_INPUT_TRANSFER_SHMEM</ref>;</highlight></codeline>
+<codeline lineno="51" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a1c8a7409fa0e54232ba70586ec210556" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a1c8a7409fa0e54232ba70586ec210556" kindref="member">TXRX_RESPONSE</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="55" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1afcaa4704cfb7a70242f3760ebc913d7f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t" kindref="compound">EVENT</ref><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1afcaa4704cfb7a70242f3760ebc913d7f" kindref="member">input_loop_run_event</ref>;</highlight></codeline>
+<codeline lineno="56" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a3df48d6f1cc3bf58a6e60ed18f4fb28c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t" kindref="compound">EVENT</ref><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a3df48d6f1cc3bf58a6e60ed18f4fb28c" kindref="member">terminate_event</ref>;</highlight></codeline>
+<codeline lineno="57" refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a81771c75da1b2f423ae8ad5f6ba15eec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a81771c75da1b2f423ae8ad5f6ba15eec" kindref="member">events</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a81f84214b06076018d46cad6f9693d67" kindref="member">SetTXRX_Features</ref>();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a46b0d36ce17c89390938aecd0e54270f" kindref="member">CheckHealth</ref>();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a6526f91c11ac5138542bc6822233f98a" kindref="member">SendIPCSharedMemory</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/>mem_length,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;mem_path,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;dataType);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a0175dafa61578ebc61520ece703d3981" kindref="member">SendInputTransfer</ref>(<ref refid="class_p_d_j_e___i_p_c_1_1_p_d_j_e___input___transfer" kindref="compound">PDJE_Input_Transfer</ref><sp/>&amp;trsf);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;DeviceData&gt;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a9d8997e02f797ab7bda291e5260397b3" kindref="member">GetDevices</ref>();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a680267003f078ea46d07e4e549a53a0b" kindref="member">QueryConfig</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;dumped_json);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1acb7b27abe53113bc0f009f40761433a9" kindref="member">EndTransmission</ref>();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1af1128de1360f3f4d5d8628d332f360f5" kindref="member">InitEvents</ref>();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1ad290cd97cd988a001ee1382898dc6937" kindref="member">Kill</ref>();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1a69b8fbf55929e07abba2d178f71a36f9" kindref="member">TXRXTransport</ref>();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport_1add49ed0f863adf8560b6a212fca69d53" kindref="member">~TXRXTransport</ref>();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>MAINPROC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_IPC</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/input/host/MainProcess.hpp"/>
+  </compounddef>
+</doxygen>

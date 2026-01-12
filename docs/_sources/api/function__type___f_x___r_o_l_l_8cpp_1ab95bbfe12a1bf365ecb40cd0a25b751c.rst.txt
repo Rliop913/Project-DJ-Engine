@@ -3,7 +3,7 @@
 Specialized Template Function MixMachine::TypeWorks< TypeEnum::ROLL, FaustEffects >
 ===================================================================================
 
-- Defined in :ref:`file_core_include_audioRender_MixMachine_MixTypes_Type_FX_ROLL.cpp`
+- Defined in :ref:`file_include_core_audioRender_MixMachine_MixTypes_Type_FX_ROLL.cpp`
 
 
 Function Documentation

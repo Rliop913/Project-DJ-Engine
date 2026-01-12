@@ -4,7 +4,7 @@
 File PredictMusic.hpp
 =====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix>` (``include/core/audioRender/ManualMix``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix>` (``include\core\audioRender\ManualMix``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PredictMusic.hpp
    :local:
    :backlinks: none
 
-Definition (``include/core/audioRender/ManualMix/PredictMusic.hpp``)
+Definition (``include\core\audioRender\ManualMix\PredictMusic.hpp``)
 --------------------------------------------------------------------
 
 
@@ -63,7 +63,7 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPREDICT`
+- :ref:`exhale_struct_struct_p_r_e_d_i_c_t`
 
-- :ref:`exhale_class_classPredictBuffer`
+- :ref:`exhale_class_class_predict_buffer`
 

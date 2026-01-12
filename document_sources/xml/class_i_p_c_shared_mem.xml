@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_i_p_c_shared_mem" kind="class" language="C++" prot="public">
+    <compoundname>IPCSharedMem</compoundname>
+    <includes refid="_i_p_c___s_h_a_r_e___m_e_m_8hpp" local="no">IPC_SHARE_MEM.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename <ref refid="_input___state_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref></type>
+      </param>
+      <param>
+        <type>int</type>
+        <declname>MEM_PROT_FLAG</declname>
+        <defname>MEM_PROT_FLAG</defname>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_i_p_c_shared_mem_1a2108153a8d72032eba29bd46aeb53d59" prot="public" static="no" mutable="no">
+        <type><ref refid="_input___state_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> *</type>
+        <definition>T* IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::ptr</definition>
+        <argsstring></argsstring>
+        <name>ptr</name>
+        <qualifiedname>IPCSharedMem::ptr</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" line="18" column="17" bodyfile="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_i_p_c_shared_mem_1a4ce0fae47486d1ad09821f8ed652e740" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::FD</definition>
+        <argsstring></argsstring>
+        <name>FD</name>
+        <qualifiedname>IPCSharedMem::FD</qualifiedname>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" line="19" column="18" bodyfile="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_i_p_c_shared_mem_1ae03800f1f566f8f4ae695d24bcdae5ca" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <qualifiedname>IPCSharedMem::count</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" line="20" column="18" bodyfile="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_i_p_c_shared_mem_1ad2c21807417f4902b1cb81a5330d7ed3" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::bytes</definition>
+        <argsstring></argsstring>
+        <name>bytes</name>
+        <qualifiedname>IPCSharedMem::bytes</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" line="21" column="18" bodyfile="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_i_p_c_shared_mem_1ae694a6764fb7e1685254e54e778c42b1" prot="public" static="no" mutable="no">
+        <type>std::string *</type>
+        <definition>std::string* IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::external_logger</definition>
+        <argsstring></argsstring>
+        <name>external_logger</name>
+        <qualifiedname>IPCSharedMem::external_logger</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" line="22" column="17" bodyfile="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_i_p_c_shared_mem_1ad1283679201f9398abd0bf9c916adc85" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::IPCSharedMem</definition>
+        <argsstring>(std::string *external_logger_string)</argsstring>
+        <name>IPCSharedMem</name>
+        <qualifiedname>IPCSharedMem::IPCSharedMem</qualifiedname>
+        <param>
+          <type>std::string *</type>
+          <declname>external_logger_string</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" line="9" column="5" bodyfile="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_p_c_shared_mem_1a0344140e3c40c95fd54fb0feeef5a820" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::IPCSharedMem</definition>
+        <argsstring>(const IPCSharedMem &amp;)=delete</argsstring>
+        <name>IPCSharedMem</name>
+        <qualifiedname>IPCSharedMem::IPCSharedMem</qualifiedname>
+        <param>
+          <type>const <ref refid="class_i_p_c_shared_mem" kindref="compound">IPCSharedMem</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" line="14" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_p_c_shared_mem_1a0754ac3cb4fe56f5c71a4921996acacf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_i_p_c_shared_mem" kindref="compound">IPCSharedMem</ref> &amp;</type>
+        <definition>IPCSharedMem &amp; IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::operator=</definition>
+        <argsstring>(const IPCSharedMem &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>IPCSharedMem::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_i_p_c_shared_mem" kindref="compound">IPCSharedMem</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" line="16" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_p_c_shared_mem_1ae822beb5f4e9a83fba4dc9f605c3664a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::MakeIPCSharedMemory</definition>
+        <argsstring>(const std::string &amp;memfd_name, size_t data_length)</argsstring>
+        <name>MakeIPCSharedMemory</name>
+        <qualifiedname>IPCSharedMem::MakeIPCSharedMemory</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>memfd_name</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>data_length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" line="25" column="5" bodyfile="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" bodystart="25" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_p_c_shared_mem_1a860f870a9868a38ae077f1c216cefcf7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::~IPCSharedMem</definition>
+        <argsstring>()</argsstring>
+        <name>~IPCSharedMem</name>
+        <qualifiedname>IPCSharedMem::~IPCSharedMem</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" line="70" column="5" bodyfile="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" bodystart="70" bodyend="86"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;</label>
+        <link refid="class_i_p_c_shared_mem"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>external_logger</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" line="7" column="14" bodyfile="include/input/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" bodystart="7" bodyend="87"/>
+    <listofallmembers>
+      <member refid="class_i_p_c_shared_mem_1ad2c21807417f4902b1cb81a5330d7ed3" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>bytes</name></member>
+      <member refid="class_i_p_c_shared_mem_1ae03800f1f566f8f4ae695d24bcdae5ca" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>count</name></member>
+      <member refid="class_i_p_c_shared_mem_1ae694a6764fb7e1685254e54e778c42b1" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>external_logger</name></member>
+      <member refid="class_i_p_c_shared_mem_1a4ce0fae47486d1ad09821f8ed652e740" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>FD</name></member>
+      <member refid="class_i_p_c_shared_mem_1ad1283679201f9398abd0bf9c916adc85" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>IPCSharedMem</name></member>
+      <member refid="class_i_p_c_shared_mem_1a0344140e3c40c95fd54fb0feeef5a820" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>IPCSharedMem</name></member>
+      <member refid="class_i_p_c_shared_mem_1ae822beb5f4e9a83fba4dc9f605c3664a" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>MakeIPCSharedMemory</name></member>
+      <member refid="class_i_p_c_shared_mem_1a0754ac3cb4fe56f5c71a4921996acacf" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>operator=</name></member>
+      <member refid="class_i_p_c_shared_mem_1a2108153a8d72032eba29bd46aeb53d59" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>ptr</name></member>
+      <member refid="class_i_p_c_shared_mem_1a860f870a9868a38ae077f1c216cefcf7" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>~IPCSharedMem</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

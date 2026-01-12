@@ -5,6 +5,7 @@
 #include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Input_Device_Data.hpp"
+#include "PDJE_MIDI.hpp"
 #include <barrier>
 #include <future>
 #include <optional>
@@ -30,7 +31,9 @@ class PDJE_API PDJE_Input {
   private:
     std::optional<PDJE_IPC::MAINPROC::TXRXTransport> Mproc;
     std::optional<PDJE_IPC::PDJE_Input_Transfer>     input_buffer;
-
+    bool                                             FLAG_INPUT_ON = false;
+    std::optional<PDJE_MIDI::MIDI>                   midi_engine;
+    bool                                             FLAG_MIDI_ON = false;
     PDJE_INPUT_STATE state = PDJE_INPUT_STATE::DEAD;
 
   public:
@@ -39,6 +42,10 @@ class PDJE_API PDJE_Input {
     std::vector<DeviceData>
     GetDevs();
 
+    /** @brief Get All Connected MIDI devices.
+     */
+    std::vector<libremidi::input_port>
+    GetMIDIDevs();
     /**
     @brief initialize pdje input.
     */
@@ -49,7 +56,8 @@ class PDJE_API PDJE_Input {
     @brief configure device data.
     */
     bool
-    Config(std::vector<DeviceData> &devs);
+    Config(std::vector<DeviceData>                  &devs,
+           const std::vector<libremidi::input_port> &midi_dev);
 
     /**
     @brief run input Loop

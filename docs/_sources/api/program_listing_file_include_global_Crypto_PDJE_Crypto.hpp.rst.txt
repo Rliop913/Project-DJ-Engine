@@ -4,7 +4,7 @@
 Program Listing for File PDJE_Crypto.hpp
 ========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_global_Crypto_PDJE_Crypto.hpp>` (``include/global/Crypto/PDJE_Crypto.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_global_Crypto_PDJE_Crypto.hpp>` (``include\global\Crypto\PDJE_Crypto.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -34,7 +34,7 @@ Program Listing for File PDJE_Crypto.hpp
    
    class PSK {
      public:
-       std::vector<uint8_t> psk;
+       Botan::SecureVector<uint8_t> psk;
        bool
        Gen(const std::string &algo = "AES-256/GCM");
    

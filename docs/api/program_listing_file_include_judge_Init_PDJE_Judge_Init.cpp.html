@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -6,24 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Program Listing for File PDJE_Judge_Init.cpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="../_static/doctools.js?v=9bcbadda"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-        <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -82,12 +80,15 @@
              
   <section id="program-listing-for-file-pdje-judge-init-cpp">
 <span id="program-listing-file-include-judge-init-pdje-judge-init-cpp"></span><h1>Program Listing for File PDJE_Judge_Init.cpp<a class="headerlink" href="#program-listing-for-file-pdje-judge-init-cpp" title="Link to this heading"></a></h1>
-<p>↰ <a class="reference internal" href="file_include_judge_Init_PDJE_Judge_Init.cpp.html#file-include-judge-init-pdje-judge-init-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/judge/Init/PDJE_Judge_Init.cpp</span></code>)</p>
+<p>↰ <a class="reference internal" href="file_include_judge_Init_PDJE_Judge_Init.cpp.html#file-include-judge-init-pdje-judge-init-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\judge\Init\PDJE_Judge_Init.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Judge_Init.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_Device_Data.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Note_OBJ.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Rule.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdint&gt;</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">U</span><span class="o">&gt;</span>
+<span class="k">concept</span><span class="w"> </span><span class="nc">DecaysTo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">same_as</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">decay_t</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">U</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_JUDGE</span><span class="w"> </span><span class="p">{</span>
 
@@ -113,7 +114,34 @@
 <span class="w">        </span><span class="n">inputline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_inputline</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-
+<span class="kt">void</span>
+<span class="nf">Judge_Init::SetRail</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">midi_port_name</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w">     </span><span class="n">MatchRail</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w">      </span><span class="n">type</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w">      </span><span class="n">ch</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w">      </span><span class="n">pos</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="kt">int64_t</span><span class="w">      </span><span class="n">offset_microsecond</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">RAIL_KEY</span><span class="o">::</span><span class="n">MIDI</span><span class="w"> </span><span class="n">key</span><span class="p">;</span>
+<span class="w">    </span><span class="n">key</span><span class="p">.</span><span class="n">port_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">midi_port_name</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="n">port_name</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">key</span><span class="p">.</span><span class="n">port_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="n">port_name</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">key</span><span class="p">.</span><span class="n">ch</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">ch</span><span class="p">;</span>
+<span class="w">    </span><span class="n">key</span><span class="p">.</span><span class="n">pos</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">pos</span><span class="p">;</span>
+<span class="w">    </span><span class="n">key</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">    </span><span class="n">raildb</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">MatchRail</span><span class="p">,</span><span class="w"> </span><span class="n">offset_microsecond</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span>
+<span class="nf">Judge_Init::SetRail</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">libremidi</span><span class="o">::</span><span class="n">input_port</span><span class="w"> </span><span class="o">&amp;</span><span class="n">midi_port</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w">               </span><span class="n">MatchRail</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w">                </span><span class="n">type</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w">                </span><span class="n">ch</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w">                </span><span class="n">pos</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="kt">int64_t</span><span class="w">                </span><span class="n">offset_microsecond</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">SetRail</span><span class="p">(</span><span class="n">midi_port</span><span class="p">.</span><span class="n">port_name</span><span class="p">,</span><span class="w"> </span><span class="n">MatchRail</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">ch</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">offset_microsecond</span><span class="p">);</span>
+<span class="p">}</span>
 <span class="kt">void</span>
 <span class="nf">Judge_Init::SetRail</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DeviceData</span><span class="w"> </span><span class="o">&amp;</span><span class="n">devData</span><span class="p">,</span>
 <span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">BITMASK</span><span class="w">     </span><span class="n">DeviceKey</span><span class="p">,</span>
@@ -123,23 +151,13 @@
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">devData</span><span class="p">.</span><span class="n">Type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">UNKNOWN</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">RAIL_META</span><span class="w"> </span><span class="n">meta</span><span class="p">;</span>
-<span class="w">    </span><span class="n">meta</span><span class="p">.</span><span class="n">Device_Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">devData</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">meta</span><span class="p">.</span><span class="n">Device_Name</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">meta</span><span class="p">.</span><span class="n">Device_Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">meta</span><span class="p">.</span><span class="n">Device_Name</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
+<span class="w">    </span><span class="n">RAIL_KEY</span><span class="o">::</span><span class="n">KB_MOUSE</span><span class="w"> </span><span class="n">key</span><span class="p">;</span>
+<span class="w">    </span><span class="n">key</span><span class="p">.</span><span class="n">Device_Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">devData</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="n">Device_Name</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">key</span><span class="p">.</span><span class="n">Device_Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="n">Device_Name</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">meta</span><span class="p">.</span><span class="n">DeviceKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DeviceKey</span><span class="p">;</span>
-<span class="w">    </span><span class="n">RAIL_SETTINGS</span><span class="w"> </span><span class="n">settings</span><span class="p">;</span>
-<span class="w">    </span><span class="n">settings</span><span class="p">.</span><span class="n">MatchRail</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">MatchRail</span><span class="p">;</span>
-<span class="w">    </span><span class="n">settings</span><span class="p">.</span><span class="n">offset_microsecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">offset_microsecond</span><span class="p">;</span>
-<span class="w">    </span><span class="n">settings</span><span class="p">.</span><span class="n">Type</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="n">devData</span><span class="p">.</span><span class="n">Type</span><span class="p">;</span>
-<span class="w">    </span><span class="n">OFFSET</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span>
-<span class="w">    </span><span class="n">offset</span><span class="p">.</span><span class="n">offset_microsecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">offset_microsecond</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">devparser</span><span class="p">.</span><span class="n">railData</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">meta</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">devparser</span><span class="p">.</span><span class="n">railData</span><span class="p">[</span><span class="n">meta</span><span class="p">]</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="n">settings</span><span class="p">;</span>
-<span class="w">    </span><span class="n">devparser</span><span class="p">.</span><span class="n">offsetData</span><span class="p">[</span><span class="n">meta</span><span class="p">.</span><span class="n">Device_Name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span>
+<span class="w">    </span><span class="n">key</span><span class="p">.</span><span class="n">DeviceKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DeviceKey</span><span class="p">;</span>
+<span class="w">    </span><span class="n">raildb</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">devData</span><span class="p">.</span><span class="n">Type</span><span class="p">,</span><span class="w"> </span><span class="n">MatchRail</span><span class="p">,</span><span class="w"> </span><span class="n">offset_microsecond</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span>
@@ -171,7 +189,7 @@
 <span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w">           </span><span class="n">railID</span><span class="p">)</span>
 <span class="p">{</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">devparser</span><span class="p">.</span><span class="n">railData</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">raildb</span><span class="p">.</span><span class="n">Empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">note_objects</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -189,38 +207,17 @@
 <span class="w">    </span><span class="n">LOCAL_TIME</span><span class="w"> </span><span class="n">micro_Y2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Convert_Frame_Into_MicroSecond</span><span class="p">(</span><span class="n">Y_Axis_2</span><span class="p">);</span>
 <span class="w">    </span><span class="n">tempobj</span><span class="p">.</span><span class="n">microsecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">micro_Y1</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">PDJE_Dev_Type</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">k</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">devparser</span><span class="p">.</span><span class="n">railData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">MatchRail</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">railID</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="p">.</span><span class="n">first</span><span class="p">.</span><span class="n">Device_Name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">return</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">Type</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">raildb</span><span class="p">.</span><span class="n">GetMETA</span><span class="p">(</span><span class="n">railID</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="c1">// if railid is not exists, discard note.</span>
 <span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">KEYBOARD</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tempobj</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;AXIS&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tempobj</span><span class="p">.</span><span class="n">isDown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">note_objects</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="o">&lt;</span><span class="n">BUFFER_SUB</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">            </span><span class="n">tempobj</span><span class="p">,</span>
+<span class="w">            </span><span class="n">railID</span><span class="p">);</span><span class="w"> </span><span class="c1">// thid logic will be replaced after implemented AxisModel.</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">DefaultFill</span><span class="p">(</span><span class="n">tempobj</span><span class="p">,</span><span class="w"> </span><span class="n">railID</span><span class="p">,</span><span class="w"> </span><span class="n">micro_Y1</span><span class="p">,</span><span class="w"> </span><span class="n">micro_Y2</span><span class="p">);</span>
-
-<span class="w">        </span><span class="k">break</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">MOUSE</span><span class="p">:</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tempobj</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;AXIS&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// axis type</span>
-<span class="w">            </span><span class="n">tempobj</span><span class="p">.</span><span class="n">isDown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">            </span><span class="n">note_objects</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="o">&lt;</span><span class="n">BUFFER_SUB</span><span class="o">&gt;</span><span class="p">(</span><span class="n">tempobj</span><span class="p">,</span><span class="w"> </span><span class="n">railID</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">DefaultFill</span><span class="p">(</span><span class="n">tempobj</span><span class="p">,</span><span class="w"> </span><span class="n">railID</span><span class="p">,</span><span class="w"> </span><span class="n">micro_Y1</span><span class="p">,</span><span class="w"> </span><span class="n">micro_Y2</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">break</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">MIDI</span><span class="p">:</span>
-<span class="w">        </span><span class="n">DefaultFill</span><span class="p">(</span><span class="n">tempobj</span><span class="p">,</span><span class="w"> </span><span class="n">railID</span><span class="p">,</span><span class="w"> </span><span class="n">micro_Y1</span><span class="p">,</span><span class="w"> </span><span class="n">micro_Y2</span><span class="p">);</span>
-<span class="w">        </span><span class="k">break</span><span class="p">;</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">HID</span><span class="p">:</span>
-<span class="w">        </span><span class="n">DefaultFill</span><span class="p">(</span><span class="n">tempobj</span><span class="p">,</span><span class="w"> </span><span class="n">railID</span><span class="p">,</span><span class="w"> </span><span class="n">micro_Y1</span><span class="p">,</span><span class="w"> </span><span class="n">micro_Y2</span><span class="p">);</span>
-<span class="w">        </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">default</span><span class="o">:</span>
-<span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 <span class="p">};</span><span class="w"> </span><span class="c1">// namespace PDJE_JUDGE</span>

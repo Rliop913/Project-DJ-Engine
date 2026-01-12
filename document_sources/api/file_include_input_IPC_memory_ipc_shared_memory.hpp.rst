@@ -4,7 +4,7 @@
 File ipc_shared_memory.hpp
 ==========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory>` (``include/input/IPC/memory``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory>` (``include\input\IPC\memory``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File ipc_shared_memory.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/IPC/memory/ipc_shared_memory.hpp``)
+Definition (``include\input\IPC\memory\ipc_shared_memory.hpp``)
 ---------------------------------------------------------------
 
 
@@ -62,17 +62,23 @@ Included By
 
 - :ref:`file_include_global_DataLines_PDJE_Buffer.hpp`
 
+- :ref:`file_include_input_IPC_--DEPRECATED--transmission_linux_ChildProcess.cpp`
+
+- :ref:`file_include_input_IPC_--DEPRECATED--transmission_linux_pack_ipc.hpp`
+
 - :ref:`file_include_input_IPC_common_ipc_util.hpp`
 
-- :ref:`file_include_input_IPC_transmission_ChildProcess.hpp`
+- :ref:`file_include_input_IPC_memory_Input_Transfer.hpp`
 
-- :ref:`file_include_input_IPC_transmission_MainProcess.hpp`
+- :ref:`file_include_input_IPC_memory_Secured_IPC_TX_RX.hpp`
 
-- :ref:`file_include_input_IPC_transmission_linux_ChildProcess.cpp`
+- :ref:`file_include_input_host_MainProcess.hpp`
 
-- :ref:`file_include_input_IPC_transmission_linux_pack_ipc.hpp`
+- :ref:`file_include_input_runner_SubProcess.hpp`
 
-- :ref:`file_include_input_IPC_transmission_windows_ChildProcess.cpp`
+- :ref:`file_include_input_runner_linux_SubProcess.cpp`
+
+- :ref:`file_include_input_runner_windows_SubProcess.cpp`
 
 
 
@@ -88,16 +94,16 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPDJE__IPC_1_1SharedMem`
+- :ref:`exhale_class_class_p_d_j_e___i_p_c_1_1_shared_mem`
 
 
 Variables
 ---------
 
 
-- :ref:`exhale_variable_namespacePDJE__IPC_1ab876a67a0fcfde480c8e23bb60e3b32f`
+- :ref:`exhale_variable_namespace_p_d_j_e___i_p_c_1ab876a67a0fcfde480c8e23bb60e3b32f`
 
-- :ref:`exhale_variable_namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3`
+- :ref:`exhale_variable_namespace_p_d_j_e___i_p_c_1a9cca29b7678f16ffedd145985a8fe4b3`
 
-- :ref:`exhale_variable_namespacePDJE__IPC_1a1b1370cbd4063395a5032cd8e4b8ab34`
+- :ref:`exhale_variable_namespace_p_d_j_e___i_p_c_1a1b1370cbd4063395a5032cd8e4b8ab34`
 

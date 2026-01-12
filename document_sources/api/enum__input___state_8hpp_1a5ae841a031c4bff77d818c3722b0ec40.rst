@@ -1,0 +1,14 @@
+.. _exhale_enum__input___state_8hpp_1a5ae841a031c4bff77d818c3722b0ec40:
+
+Enum PDJE_MIDI_EVENTS
+=====================
+
+- Defined in :ref:`file_include_global_DataLines_Input_State.hpp`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: PDJE_MIDI_EVENTS
+   :project: Project_DJ_Engine

@@ -3,7 +3,7 @@
 Class DistortionMan
 ===================
 
-- Defined in :ref:`file_core_include_audioRender_ManualMix_ManualFausts_distortionMan.hpp`
+- Defined in :ref:`file_include_core_audioRender_ManualMix_ManualFausts_distortionMan.hpp`
 
 
 Class Documentation

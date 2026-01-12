@@ -4,7 +4,7 @@
 Program Listing for File PDJE_Crypto_Token.cpp
 ==============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_global_Crypto_PDJE_Crypto_Token.cpp>` (``include/global/Crypto/PDJE_Crypto_Token.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_global_Crypto_PDJE_Crypto_Token.cpp>` (``include\global\Crypto\PDJE_Crypto_Token.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -56,7 +56,8 @@ Program Listing for File PDJE_Crypto_Token.cpp
    PSK::Decode(const std::string &hex)
    {
        try {
-           psk = Botan::hex_decode(hex);
+   
+           psk = Botan::hex_decode_locked(hex);
            return true;
        } catch (const std::exception &e) {
            critlog("failed to decode psk. Why: ");

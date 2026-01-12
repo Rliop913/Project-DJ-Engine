@@ -3,7 +3,7 @@
 Class RobotMan
 ==============
 
-- Defined in :ref:`file_core_include_audioRender_ManualMix_ManualFausts_robotMan.hpp`
+- Defined in :ref:`file_include_core_audioRender_ManualMix_ManualFausts_robotMan.hpp`
 
 
 Class Documentation

@@ -4,7 +4,7 @@
 File BattleDj.cpp
 =================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_MixMachine_MUSIC_CTR>` (``include/core/audioRender/MixMachine/MUSIC_CTR``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_MixMachine_MUSIC_CTR>` (``include\core\audioRender\MixMachine\MUSIC_CTR``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File BattleDj.cpp
    :local:
    :backlinks: none
 
-Definition (``include/core/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp``)
+Definition (``include\core\audioRender\MixMachine\MUSIC_CTR\BattleDj.cpp``)
 ---------------------------------------------------------------------------
 
 

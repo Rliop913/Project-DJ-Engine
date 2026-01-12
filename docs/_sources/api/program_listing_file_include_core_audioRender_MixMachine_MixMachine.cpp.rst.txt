@@ -4,7 +4,7 @@
 Program Listing for File MixMachine.cpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_MixMachine_MixMachine.cpp>` (``include/core/audioRender/MixMachine/MixMachine.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_MixMachine_MixMachine.cpp>` (``include\core\audioRender\MixMachine\MixMachine.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

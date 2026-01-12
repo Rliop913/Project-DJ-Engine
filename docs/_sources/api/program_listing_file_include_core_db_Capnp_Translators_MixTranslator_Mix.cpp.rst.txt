@@ -4,7 +4,7 @@
 Program Listing for File Mix.cpp
 ================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_Capnp_Translators_MixTranslator_Mix.cpp>` (``include/core/db/Capnp/Translators/MixTranslator/Mix.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_Capnp_Translators_MixTranslator_Mix.cpp>` (``include\core\db\Capnp\Translators\MixTranslator\Mix.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

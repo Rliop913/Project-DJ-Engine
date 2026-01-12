@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_IPC::MUTEX</compoundname>
+    <includes refid="ipc__named__mutex_8hpp" local="no">ipc_named_mutex.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a5b6b97c1a9f0f653ff9aea751dbbb833" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* PDJE_IPC::MUTEX::mutex_handle</definition>
+        <argsstring></argsstring>
+        <name>mutex_handle</name>
+        <qualifiedname>PDJE_IPC::MUTEX::mutex_handle</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_mutex.hpp" line="9" column="10" bodyfile="include/input/IPC/memory/ipc_named_mutex.hpp" bodystart="9" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a1cad3521da103634e8f1db98135855bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_IPC::MUTEX::lock</definition>
+        <argsstring>()</argsstring>
+        <name>lock</name>
+        <qualifiedname>PDJE_IPC::MUTEX::lock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_mutex.hpp" line="13" column="5" bodyfile="include/input/IPC/memory/linux/named_mutex.cpp" bodystart="19" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1abc73c0b6980ac3721c6ba98fff915be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::MUTEX::unlock</definition>
+        <argsstring>()</argsstring>
+        <name>unlock</name>
+        <qualifiedname>PDJE_IPC::MUTEX::unlock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_mutex.hpp" line="15" column="5" bodyfile="include/input/IPC/memory/linux/named_mutex.cpp" bodystart="32" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a7ea09999389d87418936b1ae4ac36847" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::MUTEX::init</definition>
+        <argsstring>(const MNAME &amp;name)</argsstring>
+        <name>init</name>
+        <qualifiedname>PDJE_IPC::MUTEX::init</qualifiedname>
+        <param>
+          <type>const <ref refid="namespace_p_d_j_e___i_p_c_1a04902c541254b5ef872d47ec219cc36b" kindref="member">MNAME</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_mutex.hpp" line="17" column="5" bodyfile="include/input/IPC/memory/linux/named_mutex.cpp" bodystart="11" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a6e6fd1dc996240eb3855c59d8799fa38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::MUTEX::MUTEX</definition>
+        <argsstring>(const MUTEX &amp;)=delete</argsstring>
+        <name>MUTEX</name>
+        <qualifiedname>PDJE_IPC::MUTEX::MUTEX</qualifiedname>
+        <param>
+          <type>const <ref refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x" kindref="compound">MUTEX</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_mutex.hpp" line="18" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1ae9245d25dcf7e936a5c53541e7bc20c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x" kindref="compound">MUTEX</ref> &amp;</type>
+        <definition>MUTEX &amp; PDJE_IPC::MUTEX::operator=</definition>
+        <argsstring>(const MUTEX &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>PDJE_IPC::MUTEX::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x" kindref="compound">MUTEX</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_mutex.hpp" line="20" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a3bd8c053a041d243ba7ebe617852fdc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::MUTEX::MUTEX</definition>
+        <argsstring>()</argsstring>
+        <name>MUTEX</name>
+        <qualifiedname>PDJE_IPC::MUTEX::MUTEX</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_mutex.hpp" line="21" column="5" bodyfile="include/input/IPC/memory/linux/named_mutex.cpp" bodystart="5" bodyend="8"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a114a87a44234f5af09a58727645100d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::MUTEX::~MUTEX</definition>
+        <argsstring>()</argsstring>
+        <name>~MUTEX</name>
+        <qualifiedname>PDJE_IPC::MUTEX::~MUTEX</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_mutex.hpp" line="22" column="5" bodyfile="include/input/IPC/memory/linux/named_mutex.cpp" bodystart="40" bodyend="45"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/input/IPC/memory/ipc_named_mutex.hpp" line="7" column="1" bodyfile="include/input/IPC/memory/ipc_named_mutex.hpp" bodystart="7" bodyend="23"/>
+    <listofallmembers>
+      <member refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a7ea09999389d87418936b1ae4ac36847" prot="public" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>init</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a1cad3521da103634e8f1db98135855bd" prot="public" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>lock</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a6e6fd1dc996240eb3855c59d8799fa38" prot="public" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>MUTEX</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a3bd8c053a041d243ba7ebe617852fdc0" prot="public" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>MUTEX</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a5b6b97c1a9f0f653ff9aea751dbbb833" prot="private" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>mutex_handle</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1ae9245d25dcf7e936a5c53541e7bc20c8" prot="public" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>operator=</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1abc73c0b6980ac3721c6ba98fff915be7" prot="public" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>unlock</name></member>
+      <member refid="class_p_d_j_e___i_p_c_1_1_m_u_t_e_x_1a114a87a44234f5af09a58727645100d5" prot="public" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>~MUTEX</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

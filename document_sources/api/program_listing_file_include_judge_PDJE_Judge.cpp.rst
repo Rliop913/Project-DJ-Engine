@@ -4,7 +4,7 @@
 Program Listing for File PDJE_Judge.cpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_PDJE_Judge.cpp>` (``include/judge/PDJE_Judge.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_PDJE_Judge.cpp>` (``include\judge\PDJE_Judge.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -48,7 +48,7 @@ Program Listing for File PDJE_Judge.cpp
                    "check again.");
            return JUDGE_STATUS::EVENT_RULE_IS_EMPTY;
        }
-       if (inits.devparser.railData.empty()) {
+       if (inits.raildb.Empty()) {
            warnlog("failed to start pdje judge module. no input device added. you "
                    "should connect input device. check SetInputRule function.");
            return JUDGE_STATUS::INPUT_RULE_IS_EMPTY;
@@ -81,8 +81,7 @@ Program Listing for File PDJE_Judge.cpp
        inits.inputline.reset();
        inits.note_objects.reset();
        inits.ev_rule.reset();
-       inits.devparser.offsetData.clear();
-       inits.devparser.railData.clear();
+       inits.raildb.Clear();
    }
    
    }; // namespace PDJE_JUDGE

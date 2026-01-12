@@ -44,10 +44,6 @@ TXRXTransport::SetTXRX_Features()
                         dd.Type = PDJE_Dev_Type::KEYBOARD;
                     } else if (tp == "MOUSE") {
                         dd.Type = PDJE_Dev_Type::MOUSE;
-                    } else if (tp == "MIDI") {
-                        dd.Type = PDJE_Dev_Type::MIDI;
-                    } else if (tp == "HID") {
-                        dd.Type = PDJE_Dev_Type::HID;
                     } else {
                         continue;
                     }

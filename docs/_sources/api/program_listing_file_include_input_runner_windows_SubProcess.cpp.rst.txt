@@ -1,0 +1,176 @@
+
+.. _program_listing_file_include_input_runner_windows_SubProcess.cpp:
+
+Program Listing for File SubProcess.cpp
+=======================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_include_input_runner_windows_SubProcess.cpp>` (``include\input\runner\windows\SubProcess.cpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #include "SubProcess.hpp"
+   #include "ListDevice.hpp"
+   #include "ipc_shared_memory.hpp"
+   #include <SetupAPI.h>
+   #include <Windows.h>
+   #include <avrt.h>
+   #include <hidsdi.h>
+   namespace PDJE_IPC {
+   using namespace SUBPROC;
+   bool
+   TXRXListener::RecvIPCSharedMem(const std::string &mem_path,
+                                  const std::string &dataType,
+                                  const uint64_t     data_count)
+   {
+       try {
+   
+           if (dataType == "EVENT_terminate") {
+               terminate_event.ClientInit(mem_path);
+               return true;
+           }
+           if (dataType == "EVENT_input_loop_run") {
+               input_loop_run_event.ClientInit(mem_path);
+               return true;
+           }
+           return false;
+       } catch (const std::exception &e) {
+           critlog("failed to receive memory. WHY: ");
+           critlog(e.what());
+           return false;
+       }
+   }
+   
+   std::string
+   TXRXListener::ListDev()
+   {
+       auto                    rawDevs = getRawDeviceDatas();
+       std::vector<DeviceData> out;
+       out.reserve(rawDevs.size());
+       for (auto &i : rawDevs) {
+           DeviceData tempdata;
+           switch (i.info.dwType) {
+           case RIM_TYPEMOUSE:
+               tempdata.Type = PDJE_Dev_Type::MOUSE;
+               break;
+           case RIM_TYPEKEYBOARD:
+               tempdata.Type = PDJE_Dev_Type::KEYBOARD;
+               break;
+           default:
+               tempdata.Type = PDJE_Dev_Type::UNKNOWN;
+               break;
+           }
+           tempdata.Name               = hid_label_from_path(i.deviceHIDPath);
+           tempdata.device_specific_id = wstring_to_utf8_nt(i.deviceHIDPath);
+           out.push_back(tempdata);
+       }
+       nlohmann::json nj;
+       nj["body"] = nlohmann::json::array();
+       for (const auto &dev : out) {
+           std::unordered_map<std::string, std::string> kv;
+           kv["id"]   = dev.device_specific_id;
+           kv["name"] = dev.Name;
+           switch (dev.Type) {
+           case PDJE_Dev_Type::KEYBOARD:
+               kv["type"] = "KEYBOARD";
+               nj["body"].push_back(kv);
+               break;
+           case PDJE_Dev_Type::MOUSE:
+               kv["type"] = "MOUSE";
+               nj["body"].push_back(kv);
+               break;
+           default:
+               break;
+           }
+       }
+       return nj.dump();
+   }
+   
+   void
+   TXRXListener::LoopTrig()
+   {
+   
+       auto msgOnly = reinterpret_cast<HWND>(Init());
+   
+       if (!msgOnly)
+           return;
+       if (configed_devices.empty()) {
+           critlog("no device has been configured. shutdown rawinput.");
+           return;
+       }
+       if (!terminate_event.hdlp) {
+           critlog("terminate event is not initialized.");
+           return;
+       }
+       if (!input_buffer) {
+           critlog("input buffer is not initialized.");
+           return;
+       }
+       std::vector<RAWINPUTDEVICE> devTypes;
+       bool                        hasKeyBoard = false;
+       bool                        hasMouse    = false;
+       for (const auto &dev : configed_devices) {
+           switch (dev.Type) {
+           case PDJE_Dev_Type::MOUSE:
+               hasMouse = true;
+               break;
+           case PDJE_Dev_Type::KEYBOARD:
+               hasKeyBoard = true;
+               break;
+           default:
+               break;
+           }
+           unlisted_targets[dev.device_specific_id] = dev.Name;
+       }
+   
+       if (hasKeyBoard) {
+           auto temp = RAWINPUTDEVICE{
+               0x01, 0x06, RIDEV_INPUTSINK | RIDEV_NOLEGACY, msgOnly
+           };
+           devTypes.push_back(temp);
+       }
+       if (hasMouse) {
+           auto temp = RAWINPUTDEVICE{
+               0x01, 0x02, RIDEV_INPUTSINK | RIDEV_NOLEGACY, msgOnly
+           };
+           devTypes.push_back(temp);
+       }
+   
+       auto regres = RegisterRawInputDevices(
+           devTypes.data(), devTypes.size(), sizeof(RAWINPUTDEVICE));
+       if (!regres) {
+           critlog("failed to register rawinput devices. maybe configed invalid "
+                   "devices.");
+           return;
+       }
+   
+       HANDLE task = nullptr;
+       DWORD  idx  = 0;
+       task        = AvSetMmThreadCharacteristicsW(L"Games", &idx);
+       if (task) {
+           AvSetMmThreadPriority(task, AVRT_PRIORITY_HIGH);
+       }
+   
+   // stop power throttling
+   #ifdef THREAD_POWER_THROTTLING_CURRENT_VERSION
+       THREAD_POWER_THROTTLING_STATE s{};
+       s.Version     = THREAD_POWER_THROTTLING_CURRENT_VERSION;
+       s.ControlMask = THREAD_POWER_THROTTLING_EXECUTION_SPEED;
+       s.StateMask   = 0; // Disable throttling
+       SetThreadInformation(
+           GetCurrentThread(), ThreadPowerThrottling, &s, sizeof(s));
+   #endif
+       ThreadID = GetCurrentThreadId();
+   
+       if (task) {
+           AvRevertMmThreadCharacteristics(task);
+       }
+       Run();
+       if (task) {
+           AvRevertMmThreadCharacteristics(task);
+       }
+       return;
+   }
+   
+   }; // namespace PDJE_IPC

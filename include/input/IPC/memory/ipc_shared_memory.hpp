@@ -40,7 +40,7 @@ template <typename T, int MEM_PROT_FLAG> class SharedMem {
 #ifdef WIN32
     HANDLE memory_handle = nullptr;
 #elif defined(__linux__)
-    int FD = -1;
+    std::string mem_name_if_owner = "";
 #endif
 
     bool

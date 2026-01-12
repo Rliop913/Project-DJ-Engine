@@ -10,14 +10,16 @@ Directory input
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include/input``
+*Directory path:* ``include\input``
 
 Subdirectories
 --------------
 
+- :ref:`dir_include_input_--DEPRECATED-linux`
+- :ref:`dir_include_input_host`
 - :ref:`dir_include_input_IPC`
-- :ref:`dir_include_input_linux`
-- :ref:`dir_include_input_windows`
+- :ref:`dir_include_input_midi`
+- :ref:`dir_include_input_runner`
 
 
 Files

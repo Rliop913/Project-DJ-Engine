@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_r_t_event" kind="class" language="C++" prot="public">
+    <compoundname>RTEvent</compoundname>
+    <includes refid="_r_t_event_8hpp" local="no">RTEvent.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_r_t_event_1afa33e186864ea6c3bf2ac4f1bc57b20b" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; int, libevdev * &gt;</type>
+        <definition>std::unordered_map&lt;int, libevdev *&gt; RTEvent::events</definition>
+        <argsstring></argsstring>
+        <name>events</name>
+        <qualifiedname>RTEvent::events</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTEvent.hpp" line="8" column="24" bodyfile="include/input/--DEPRECATED-linux/RT/RTEvent.hpp" bodystart="8" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_r_t_event_1ae701086909faf89e51c7a96b78815c90" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RTEvent::DrainEvents</definition>
+        <argsstring>(const int epFD, int FD, libevdev *evdev)</argsstring>
+        <name>DrainEvents</name>
+        <qualifiedname>RTEvent::DrainEvents</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>epFD</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>FD</declname>
+        </param>
+        <param>
+          <type>libevdev *</type>
+          <declname>evdev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTEvent.hpp" line="10" column="5" bodyfile="include/input/--DEPRECATED-linux/RT/RTEvent.cpp" bodystart="71" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="class_r_t_event_1a15f201cbda3e915545e56589f7a217cc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RTEvent::use_event</definition>
+        <argsstring>(const input_event &amp;evtrig)</argsstring>
+        <name>use_event</name>
+        <qualifiedname>RTEvent::use_event</qualifiedname>
+        <param>
+          <type>const input_event &amp;</type>
+          <declname>evtrig</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTEvent.hpp" line="12" column="5" bodyfile="include/input/--DEPRECATED-linux/RT/RTEvent.cpp" bodystart="113" bodyend="119"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_r_t_event_1a33e492d1ad0a73a58d759a37e93b9abc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RTEvent::Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <qualifiedname>RTEvent::Reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTEvent.hpp" line="16" column="5" bodyfile="include/input/--DEPRECATED-linux/RT/RTEvent.cpp" bodystart="27" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_r_t_event_1a7c6b7b49d583adaa3382f426052e881a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int RTEvent::Add</definition>
+        <argsstring>(const fs::path &amp;target)</argsstring>
+        <name>Add</name>
+        <qualifiedname>RTEvent::Add</qualifiedname>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTEvent.hpp" line="18" column="5" bodyfile="include/input/--DEPRECATED-linux/RT/RTEvent.cpp" bodystart="6" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="class_r_t_event_1ad4752e36f2999d8121f03104f860a222" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RTEvent::Trig</definition>
+        <argsstring>()</argsstring>
+        <name>Trig</name>
+        <qualifiedname>RTEvent::Trig</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTEvent.hpp" line="20" column="5" bodyfile="include/input/--DEPRECATED-linux/RT/RTEvent.cpp" bodystart="36" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_r_t_event_1a24d0218409c270a46c3983304a932aca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RTEvent::RTEvent</definition>
+        <argsstring>()=default</argsstring>
+        <name>RTEvent</name>
+        <qualifiedname>RTEvent::RTEvent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTEvent.hpp" line="21" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_r_t_event_1abf2f15d758052a3a06bdb40ab6522aa9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RTEvent::~RTEvent</definition>
+        <argsstring>()</argsstring>
+        <name>~RTEvent</name>
+        <qualifiedname>RTEvent::~RTEvent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/--DEPRECATED-linux/RT/RTEvent.hpp" line="22" column="5" bodyfile="include/input/--DEPRECATED-linux/RT/RTEvent.cpp" bodystart="22" bodyend="25"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>RTEvent</label>
+        <link refid="class_r_t_event"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>events</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::unordered_map&lt; int, libevdev * &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/--DEPRECATED-linux/RT/RTEvent.hpp" line="6" column="1" bodyfile="include/input/--DEPRECATED-linux/RT/RTEvent.hpp" bodystart="6" bodyend="23"/>
+    <listofallmembers>
+      <member refid="class_r_t_event_1a7c6b7b49d583adaa3382f426052e881a" prot="public" virt="non-virtual"><scope>RTEvent</scope><name>Add</name></member>
+      <member refid="class_r_t_event_1ae701086909faf89e51c7a96b78815c90" prot="private" virt="non-virtual"><scope>RTEvent</scope><name>DrainEvents</name></member>
+      <member refid="class_r_t_event_1afa33e186864ea6c3bf2ac4f1bc57b20b" prot="private" virt="non-virtual"><scope>RTEvent</scope><name>events</name></member>
+      <member refid="class_r_t_event_1a33e492d1ad0a73a58d759a37e93b9abc" prot="public" virt="non-virtual"><scope>RTEvent</scope><name>Reset</name></member>
+      <member refid="class_r_t_event_1a24d0218409c270a46c3983304a932aca" prot="public" virt="non-virtual"><scope>RTEvent</scope><name>RTEvent</name></member>
+      <member refid="class_r_t_event_1ad4752e36f2999d8121f03104f860a222" prot="public" virt="non-virtual"><scope>RTEvent</scope><name>Trig</name></member>
+      <member refid="class_r_t_event_1a15f201cbda3e915545e56589f7a217cc" prot="private" virt="non-virtual"><scope>RTEvent</scope><name>use_event</name></member>
+      <member refid="class_r_t_event_1abf2f15d758052a3a06bdb40ab6522aa9" prot="public" virt="non-virtual"><scope>RTEvent</scope><name>~RTEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

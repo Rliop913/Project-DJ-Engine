@@ -3,7 +3,7 @@
 Typedef FRAME_POS
 =================
 
-- Defined in :ref:`file_core_include_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`
+- Defined in :ref:`file_include_core_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`
 
 
 Typedef Documentation

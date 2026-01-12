@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="_name_gen_8hpp" kind="file" language="C++">
+    <compoundname>NameGen.hpp</compoundname>
+    <includes refid="_p_d_j_e___crypto_8hpp" local="yes">PDJE_Crypto.hpp</includes>
+    <includes local="no">botan/hex.h</includes>
+    <includedby refid="_p_d_j_e___input_8cpp" local="yes">include/input/PDJE_Input.cpp</includedby>
+    <includedby refid="_main_process_8hpp" local="yes">include/input/host/MainProcess.hpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>PDJE_Crypto.hpp</label>
+        <link refid="_p_d_j_e___crypto_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/input/IPC/common/NameGen.hpp</label>
+        <link refid="_name_gen_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>botan/auto_rng.h</label>
+      </node>
+      <node id="12">
+        <label>botan/cipher_mode.h</label>
+      </node>
+      <node id="13">
+        <label>botan/hash.h</label>
+      </node>
+      <node id="15">
+        <label>botan/hex.h</label>
+      </node>
+      <node id="4">
+        <label>filesystem</label>
+      </node>
+      <node id="5">
+        <label>mutex</label>
+      </node>
+      <node id="6">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="7">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="8">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="14">
+        <label>string</label>
+      </node>
+      <node id="9">
+        <label>string_view</label>
+      </node>
+      <node id="10">
+        <label>type_traits</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>include/input/IPC/--DEPRECATED--transmission/linux/MainProcess.cpp</label>
+        <link refid="_i_p_c_2--_d_e_p_r_e_c_a_t_e_d--transmission_2linux_2_main_process_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/input/IPC/common/NameGen.hpp</label>
+        <link refid="_name_gen_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/input/PDJE_Input.cpp</label>
+        <link refid="_p_d_j_e___input_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/input/PDJE_Input.hpp</label>
+        <link refid="_p_d_j_e___input_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/input/host/MainProcess.cpp</label>
+        <link refid="host_2_main_process_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/input/host/MainProcess.hpp</label>
+        <link refid="_main_process_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/input/host/SetTXRXFeatures.cpp</label>
+        <link refid="host_2_set_t_x_r_x_features_8cpp"/>
+      </node>
+      <node id="10">
+        <label>include/input/host/linux/MainProcess.cpp</label>
+        <link refid="host_2linux_2_main_process_8cpp"/>
+      </node>
+      <node id="11">
+        <label>include/input/host/linux/ipc_Send_Linux.cpp</label>
+        <link refid="ipc___send___linux_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/input/host/windows/MainProcess.cpp</label>
+        <link refid="host_2windows_2_main_process_8cpp"/>
+      </node>
+      <node id="13">
+        <label>include/input/host/windows/ipc_Send_Windows.cpp</label>
+        <link refid="ipc___send___windows_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
+        <link refid="pdje_input_test_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judge_test_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_p_d_j_e___c_r_y_p_t_o_1_1_r_a_n_d_o_m___g_e_n" prot="public">PDJE_CRYPTO::RANDOM_GEN</innerclass>
+    <innernamespace refid="namespace_p_d_j_e___c_r_y_p_t_o">PDJE_CRYPTO</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_p_d_j_e___crypto_8hpp" kindref="compound">PDJE_Crypto.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;botan/hex.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___c_r_y_p_t_o" kindref="compound">PDJE_CRYPTO</ref><sp/>{</highlight></codeline>
+<codeline lineno="5" refid="class_p_d_j_e___c_r_y_p_t_o_1_1_r_a_n_d_o_m___g_e_n" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_p_d_j_e___c_r_y_p_t_o_1_1_r_a_n_d_o_m___g_e_n_1ad6b20772a28f5ef5b86a0a6852fb9841" kindref="member">RANDOM_GEN</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="7" refid="class_p_d_j_e___c_r_y_p_t_o_1_1_r_a_n_d_o_m___g_e_n_1a65919383d154764bdac4f6d403990696" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Botan::AutoSeeded_RNG<sp/><ref refid="class_p_d_j_e___c_r_y_p_t_o_1_1_r_a_n_d_o_m___g_e_n_1a65919383d154764bdac4f6d403990696" kindref="member">rng</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="10" refid="class_p_d_j_e___c_r_y_p_t_o_1_1_r_a_n_d_o_m___g_e_n_1ad6b20772a28f5ef5b86a0a6852fb9841" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___c_r_y_p_t_o_1_1_r_a_n_d_o_m___g_e_n_1ad6b20772a28f5ef5b86a0a6852fb9841" kindref="member">RANDOM_GEN</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string</highlight></codeline>
+<codeline lineno="12" refid="class_p_d_j_e___c_r_y_p_t_o_1_1_r_a_n_d_o_m___g_e_n_1a848fd638beeabdd7f98a98c5f6549da3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___c_r_y_p_t_o_1_1_r_a_n_d_o_m___g_e_n_1a848fd638beeabdd7f98a98c5f6549da3" kindref="member">Gen</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;frontName,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bytes<sp/>=<sp/>32)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;uint8_t&gt;<sp/>buf(bytes);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___c_r_y_p_t_o_1_1_r_a_n_d_o_m___g_e_n_1a65919383d154764bdac4f6d403990696" kindref="member">rng</ref>.randomize(buf.data(),<sp/>buf.size());</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>frontName<sp/>+<sp/>Botan::hex_encode(buf);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_CRYPTO</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/input/IPC/common/NameGen.hpp"/>
+  </compounddef>
+</doxygen>

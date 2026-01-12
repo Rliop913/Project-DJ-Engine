@@ -4,7 +4,7 @@
 File EventMarker.cpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_TimeLine_EventMarker>` (``include/core/editor/TimeLine/EventMarker``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_TimeLine_EventMarker>` (``include\core\editor\TimeLine\EventMarker``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File EventMarker.cpp
    :local:
    :backlinks: none
 
-Definition (``include/core/editor/TimeLine/EventMarker/EventMarker.cpp``)
+Definition (``include\core\editor\TimeLine\EventMarker\EventMarker.cpp``)
 -------------------------------------------------------------------------
 
 
