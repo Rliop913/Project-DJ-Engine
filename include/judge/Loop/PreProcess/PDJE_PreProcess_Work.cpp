@@ -44,6 +44,13 @@ PreProcess::Work()
             log.microSecond -= global_local_diff;
         }
     }
+    for (auto &midi_log : parsed_res.midi_logs) {
+        if (midi_log.highres_time < global_local_diff) {
+            midi_log.highres_time = 0;
+        } else {
+            midi_log.highres_time -= global_local_diff;
+        }
+    }
     return true;
 }
 }; // namespace PDJE_JUDGE

@@ -116,50 +116,15 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
 
     auto res = raildb.GetMETA(railID);
     if (!res) {
-        return;
+        return; // if railid is not exists, discard note.
     }
-    std::visit(
-
-        [this, &tempobj, &railID, &micro_Y1, &micro_Y2](const auto &t) {
-            if constexpr (DecaysTo<decltype(t), PDJE_Dev_Type>) {
-                switch (t) {
-                case PDJE_Dev_Type::KEYBOARD:
-                    DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-                    break;
-                case PDJE_Dev_Type::MOUSE:
-                    if (tempobj.type == "AXIS") { // axis type
-                        tempobj.isDown = false;
-                        note_objects->Fill<BUFFER_SUB>(tempobj, railID);
-                        // Use Axis Model Here.
-                    } else {
-                        DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-                    }
-                    break;
-                default:
-                    break;
-                }
-            } else if constexpr (DecaysTo<decltype(t), uint8_t>) {
-                switch (t) {
-                case static_cast<uint8_t>(libremidi::message_type::NOTE_ON):
-                    [[fallthrough]];
-                case static_cast<uint8_t>(libremidi::message_type::NOTE_OFF):
-                    DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
-                    break;
-                case static_cast<uint8_t>(
-                    libremidi::message_type::CONTROL_CHANGE):
-                    [[fallthrough]];
-                case static_cast<uint8_t>(libremidi::message_type::PITCH_BEND):
-                    // Use Axis Model Here.
-                    break;
-                default:
-                    // case libremidi::message_type::AFTERTOUCH:
-                    // case libremidi::message_type::POLY_PRESSURE:
-                    break; // discard others.
-                }
-            } else {
-            }
-        },
-        res->front().type); // fix here. id에 여러 디바이스가 연결될 수
-                            // 있음. 이거 예외처리 필요.
+    if (tempobj.type == "AXIS") {
+        tempobj.isDown = false;
+        note_objects->Fill<BUFFER_SUB>(
+            tempobj,
+            railID); // thid logic will be replaced after implemented AxisModel.
+    } else {
+        DefaultFill(tempobj, railID, micro_Y1, micro_Y2);
+    }
 }
 }; // namespace PDJE_JUDGE

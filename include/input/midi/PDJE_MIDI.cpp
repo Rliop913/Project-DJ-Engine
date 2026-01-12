@@ -5,8 +5,6 @@ namespace PDJE_MIDI {
 MIDI::MIDI(const int buffer_size) : evlog(buffer_size)
 {
     startlog();
-
-    // midiin = libremidi::midi_in{ input_config };
 }
 
 void

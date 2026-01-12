@@ -90,7 +90,9 @@ Match::UseEvent<PDJE_Dev_Type::MOUSE>(const PDJE_Input_Log &ilog)
     }
     if (init->lambdas.custom_mouse_parse &&
         (ilog.event.mouse.x != 0 || ilog.event.mouse.y != 0)) {
-        key.DeviceKey = DEVICE_MOUSE_EVENT::AXIS_MOVE;
+        key.DeviceKey =
+            DEVICE_MOUSE_EVENT::AXIS_MOVE; // Mouse Axis Movement logic will be
+                                           // replaced with AxisModel.
 
         auto res = init->raildb.GetID(key);
         if (res) {

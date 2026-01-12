@@ -26,16 +26,4 @@ Match::Work(const LOCAL_TIME  input_time,
     }
 }
 
-// std::optional<uint64_t>
-// Match::QueryRailid(const RAIL_META &meta)
-// {
-//     auto itr = init->railData.find(meta);
-//     if (itr != init->railData.end()) {
-//         if (itr->first == meta) {
-//             return itr->second.MatchRail;
-//         }
-//     }
-//     return std::nullopt;
-// }
-
 }; // namespace PDJE_JUDGE
