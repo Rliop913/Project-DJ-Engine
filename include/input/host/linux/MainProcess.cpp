@@ -1,160 +1,157 @@
 #include "MainProcess.hpp"
+#include "PDJE_Input_Device_Data.hpp"
 #include "PSKPipe.hpp"
+#include "RTEvent.hpp"
+#include "ipc_named_event.hpp"
 #include "ipc_util.hpp"
+#include <libevdev/libevdev.h>
+#include <thread>
+
 namespace PDJE_IPC {
 using namespace MAINPROC;
-// static bool
-// PDJE_OpenProcess(const fs::path       &pt,
-//                  Importants           &imps,
-//                  PDJE_CRYPTO::PSKPipe &pipe)
-// {
-//     imps.start_up_info    = STARTUPINFOW{};
-//     imps.process_info     = PROCESS_INFORMATION{};
-//     imps.start_up_info.cb = sizeof(imps.start_up_info);
-//     try {
-//         HANDLE FileLocker =
-//             CreateFileW(pt.wstring().c_str(),
-//                         GENERIC_READ,
-//                         FILE_SHARE_READ,
-//                         nullptr,
-//                         OPEN_EXISTING,
-//                         FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN,
-//                         nullptr);
-//         if (FileLocker == INVALID_HANDLE_VALUE) {
-//             critlog("failed to lock subprocess exe file");
-//             return false;
-//         }
-//         if (!PDJE_IPC::HashCompare(pt)) {
-//             CloseHandle(FileLocker);
-//             critlog("hash not matched. maybe Under Attack.");
-//             return false;
-//         }
-//         HANDLE readHdl                = pipe.Gen();
-//         imps.start_up_info.dwFlags    = STARTF_USESTDHANDLES;
-//         imps.start_up_info.hStdInput  = readHdl;
-//         imps.start_up_info.hStdOutput = GetStdHandle(STD_OUTPUT_HANDLE);
-//         imps.start_up_info.hStdError  = GetStdHandle(STD_ERROR_HANDLE);
-//         auto cmd                      = pt.wstring();
-//         BOOL ok                       = CreateProcessW(nullptr,
-//                                  cmd.data(),
-//                                  nullptr,
-//                                  nullptr,
-//                                  TRUE,
-//                                  CREATE_NO_WINDOW,
-//                                  nullptr,
-//                                  nullptr,
-//                                  &imps.start_up_info,
-//                                  &imps.process_info);
 
-//         CloseHandle(FileLocker);
-//         CloseHandle(readHdl);
-//         if (!ok) {
-//             critlog("failed to create child process. Err:");
-//             critlog(GetLastError());
-//             return false;
-//         }
-//     } catch (const std::exception &e) {
-//         critlog("exception on creating child process. Err:");
-//         critlog(e.what());
-//         return false;
-//     }
-//     return true;
-// }
+// LINUX Doesn't use IPC features.
+
+static inline void
+SetEvdevGroupSettings()
+{
+    return; // set evdev group here.
+    // todo - impl
+}
 
 TXRXTransport::~TXRXTransport()
 {
-    WaitForSingleObject(imp.process_info.hProcess, INFINITE);
-    DWORD exitCode = 0;
-    GetExitCodeProcess(imp.process_info.hProcess, &exitCode);
-    if (exitCode != 0) {
-        critlog("child process exit code is not zero. ErrCode: ");
-        critlog(exitCode);
-        return;
-    }
-    CloseHandle(imp.process_info.hThread);
-    CloseHandle(imp.process_info.hProcess);
 }
 
 TXRXTransport::TXRXTransport()
 {
-
-    auto path = GetValidProcessExecutor();
-    auto pipe = PDJE_CRYPTO::PSKPipe();
-
-    if (!PDJE_OpenProcess(path, imp, pipe)) {
-        critlog("failed to open child process. Err:");
-        critlog(GetLastError());
-        return;
-    }
-    if (!psk.Gen()) {
-        return;
-    }
-    PDJE_CRYPTO::RANDOM_GEN rg;
-    PDJE_IPC::MNAME         mfirst  = rg.Gen("PDJE_TXRX_F_");
-    PDJE_IPC::MNAME         lfirst  = rg.Gen("PDJE_TXRX_LOCK_F_");
-    PDJE_IPC::MNAME         msecond = rg.Gen("PDJE_TXRX_S_");
-    PDJE_IPC::MNAME         lsecond = rg.Gen("PDJE_TXRX_LOCK_S_");
-
-    txrx.emplace(psk, mfirst, lfirst, msecond, lsecond, true);
-    SetTXRX_Features();
-    std::stringstream ss;
-
-    ss << psk.Encode();
-    ss << " ";
-    ss << mfirst.string();
-    ss << " ";
-    ss << lfirst.string();
-    ss << " ";
-    ss << msecond.string();
-    ss << " ";
-    ss << lsecond.string();
-    pipe.Send(ss.str());
-    txrx->Listen();
-    if (!CheckHealth()) {
-        critlog("Check Health Failed on MainProcess init.");
-    }
+    SetEvdevGroupSettings();
 }
 bool
 TXRXTransport::EndTransmission()
 {
-    TXRX_RESPONSE.STOP.emplace();
-    auto resp = TXRX_RESPONSE.STOP->get_future();
-    bool res  = txrx->Send(PDJE_CRYPTO::TXRXHEADER::TXRX_STOP, "");
-    if (res) {
-        res = resp.get();
-    }
-    TXRX_RESPONSE.STOP.reset();
-    txrx.reset();
-    return res;
+    return true;
 }
 
 bool
 TXRXTransport::SendInputTransfer(PDJE_Input_Transfer &trsf)
 {
-
-    try {
-        TXRX_RESPONSE.SEND_INPUT_TRANSFER_SHMEM.emplace();
-        auto resp = TXRX_RESPONSE.SEND_INPUT_TRANSFER_SHMEM->get_future();
-        bool res =
-            txrx->Send(PDJE_CRYPTO::TXRXHEADER::SEND_INPUT_TRANSFER_SHMEM,
-                       trsf.GetMetaDatas());
-
-        if (res) {
-            res = resp.get();
-        }
-
-        TXRX_RESPONSE.SEND_INPUT_TRANSFER_SHMEM.reset();
-        if (res) {
-            return true;
-        } else {
-            critlog("failed to send ipc shared memory.");
-            return false;
-        }
-    } catch (const std::exception &e) {
-        critlog("failed to send ipc shared memory. Why:");
-        critlog(e.what());
-        return false;
-    }
+    return true;
+}
+bool
+TXRXTransport::CheckHealth()
+{
+    return true;
 }
 
+std::vector<DeviceData>
+TXRXTransport::GetDevices()
+{
+    DEV_LIST lsdev;
+    fs::path device_root("/dev/input/");
+
+    for (const auto &dev : fs::directory_iterator(device_root)) {
+        if (!dev.is_character_file()) {
+            continue;
+        }
+
+        const std::string dev_path = dev.path().string();
+        if (dev_path.find("event") == std::string::npos) {
+            continue;
+        }
+
+        int FD = open(dev_path.c_str(), O_RDONLY | O_NONBLOCK);
+
+        if (FD < 0) {
+            continue;
+        }
+        libevdev  *info = nullptr;
+        DeviceData dd;
+
+        if (libevdev_new_from_fd(FD, &info) == 0) {
+            const char *dev_name = libevdev_get_name(info);
+            if (dev_name) {
+
+                dd.Name               = std::string(dev_name);
+                dd.device_specific_id = dev.path();
+                if (!imp.stored_dev_path.contains(dd.Name)) {
+                    imp.stored_dev_path[dd.Name] = dev.path();
+                }
+
+                if (libevdev_has_event_type(info, EV_KEY) &&
+                    libevdev_has_event_code(info, EV_KEY, KEY_A) &&
+                    libevdev_has_event_code(info, EV_KEY, KEY_SPACE) &&
+                    libevdev_has_event_code(info, EV_KEY, KEY_ENTER)) {
+                    dd.Type = PDJE_Dev_Type::KEYBOARD;
+                } else if (libevdev_has_event_type(info, EV_REL) &&
+                           libevdev_has_event_code(info, EV_REL, REL_X) &&
+                           libevdev_has_event_code(info, EV_REL, REL_Y)) {
+                    dd.Type = PDJE_Dev_Type::MOUSE;
+                } else if (libevdev_has_event_type(info, EV_ABS) &&
+                           (libevdev_has_event_code(
+                                info, EV_KEY, BTN_GAMEPAD) ||
+                            libevdev_has_event_code(
+                                info, EV_KEY, BTN_JOYSTICK))) {
+                    dd.Type = PDJE_Dev_Type::UNKNOWN;
+                } else if (libevdev_has_event_type(info, EV_ABS) &&
+                           libevdev_has_event_code(info, EV_KEY, BTN_TOUCH)) {
+                    dd.Type = PDJE_Dev_Type::MOUSE;
+                } else {
+                    dd.Type = PDJE_Dev_Type::UNKNOWN;
+                }
+                lsdev.push_back(dd);
+            }
+            libevdev_free(info);
+            close(FD);
+        } else {
+            close(FD);
+            continue;
+        }
+    }
+    return lsdev;
+}
+
+bool
+TXRXTransport::QueryConfig(const std::string &dumped_json)
+{
+    DEV_LIST configed_devices;
+    auto     nj = nlohmann::json::parse(dumped_json);
+    for (const auto &i : nj["body"]) {
+        DeviceData dd;
+        dd.device_specific_id = i.at("id").get<std::string>();
+        dd.Name               = i.at("name").get<std::string>();
+
+        std::string tp = i.at("type").get<std::string>();
+        if (tp == "KEYBOARD") {
+            dd.Type = PDJE_Dev_Type::KEYBOARD;
+        } else if (tp == "MOUSE") {
+            dd.Type = PDJE_Dev_Type::MOUSE;
+        } else {
+            continue;
+        }
+        configed_devices.push_back(dd);
+    }
+    for (auto &i : configed_devices) {
+        imp.rtev.Add(
+            imp.stored_dev_path[i.Name]); // need to check stored dev path has
+                                          // device info first. todo - fix it.
+    }
+    std::thread nonrtThread([this]() {
+        this->events.input_loop_run_event.Wait_Infinite();
+        this->imp.rtev.Trig();
+    });
+    nonrtThread.detach(); // fix it later.
+
+    return true;
+}
+
+void
+TXRXTransport::InitEvents()
+{
+}
+bool
+TXRXTransport::Kill()
+{
+    return true;
+}
 }; // namespace PDJE_IPC

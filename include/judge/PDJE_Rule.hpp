@@ -12,14 +12,14 @@ namespace PDJE_JUDGE {
 
 /** @brief Mouse-specific event ids mapped from input log. */
 enum DEVICE_MOUSE_EVENT {
-    BTN_EX   = 0,
-    BTN_SIDE = 1,
-    BTN_M,
-    BTN_R,
-    BTN_L,
-    WHEEL_X,
-    WHEEL_Y,
-    AXIS_MOVE
+    PDJE_BTN_EX   = 0,
+    PDJE_BTN_SIDE = 1,
+    PDJE_BTN_M,
+    PDJE_BTN_R,
+    PDJE_BTN_L,
+    PDJE_WHEEL_X,
+    PDJE_WHEEL_Y,
+    PDJE_AXIS_MOVE
 };
 
 /** @brief Global hit window configuration in microseconds. */

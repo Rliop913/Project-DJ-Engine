@@ -1,7 +1,8 @@
 #include "RTEvent.hpp"
-#include "RTSocket.hpp"
+#include <fcntl.h>
 #include <libevdev/libevdev.h>
-
+#include <sys/epoll.h>
+#include <unistd.h>
 int
 RTEvent::Add(const fs::path &target)
 {

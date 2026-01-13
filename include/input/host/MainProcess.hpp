@@ -15,7 +15,7 @@
 #ifdef WIN32
 
 #elif defined(__linux__)
-
+#include "RTEvent.hpp"
 #endif
 
 namespace PDJE_IPC {
@@ -26,11 +26,8 @@ struct Importants {
     STARTUPINFOW        start_up_info{};
     PROCESS_INFORMATION process_info{};
 #elif defined(__linux__)
-    int         socket_fd = -1;
-    int         child_fd  = -1;
-    pid_t       child_pid = -1;
-    std::string socket_path =
-        "/tmp/pdje_input_module_libevdev_socket_path.sock";
+    RTEvent                                   rtev;
+    std::unordered_map<std::string, fs::path> stored_dev_path;
 #endif
 };
 namespace MAINPROC {
