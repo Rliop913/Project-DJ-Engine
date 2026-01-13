@@ -6,7 +6,8 @@ namespace PDJE_IPC {
 using MNAME = std::filesystem::path;
 class MUTEX {
   private:
-    void *mutex_handle = nullptr;
+    void       *mutex_handle = nullptr;
+    std::string mutex_name;
 
   public:
     bool

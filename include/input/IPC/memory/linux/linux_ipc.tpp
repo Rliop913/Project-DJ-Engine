@@ -19,18 +19,13 @@
 #include <unistd.h>
 
 // evade lsp flag. disable red lines temporary. do not activate on build step.
-#define EVADE_LSP
+// #define EVADE_LSP
 
 #ifdef EVADE_LSP
 #include "ipc_shared_memory.hpp"
 #endif
 
 namespace PDJE_IPC {
-static inline std::string
-posix_shmem_macro(const fs::path &origin)
-{
-    return "/" + origin.filename().string();
-}
 
 // template <typename T, int MEM_PROT_FLAG> class SharedMem
 template <typename T, int MEM_PROT_FLAG>

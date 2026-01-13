@@ -3,6 +3,8 @@
 namespace PDJE_IPC {
 using MNAME = std::filesystem::path;
 class EVENT {
+  private:
+    std::string name_cache;
 
   public:
     void *hdlp = nullptr;
