@@ -2,6 +2,7 @@
 #include "NameGen.hpp"
 #include "PDJE_Buffer.hpp"
 #include "PDJE_Input_DataLine.hpp"
+#include "PDJE_Input_Device_Data.hpp"
 #include "PDJE_LOG_SETTER.hpp"
 #include "Secured_IPC_TX_RX.hpp"
 #include "ipc_shared_memory.hpp"
@@ -26,8 +27,12 @@ struct Importants {
     STARTUPINFOW        start_up_info{};
     PROCESS_INFORMATION process_info{};
 #elif defined(__linux__)
-    RTEvent                                   rtev;
-    std::unordered_map<std::string, fs::path> stored_dev_path;
+    struct dType {
+        fs::path      dev_path;
+        PDJE_Dev_Type dev_type;
+    };
+    RTEvent                                rtev;
+    std::unordered_map<std::string, dType> stored_dev_path;
 #endif
 };
 namespace MAINPROC {

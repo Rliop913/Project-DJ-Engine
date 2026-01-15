@@ -13,7 +13,7 @@ class CLOCK {
     uint64_t
     Get_MicroSecond()
     {
-        clock_gettime(CLOCK_MONOTONIC_RAW, &ts);
+        clock_gettime(CLOCK_MONOTONIC, &ts);
         return (uint64_t)ts.tv_sec * 1000000ull + ts.tv_nsec / 1000;
     }
 };
