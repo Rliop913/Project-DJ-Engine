@@ -17,8 +17,14 @@ class RTEvent {
     void
     DrainEvents(const int epFD, int FD, libevdev *evdev);
     void
-                              use_event(const input_event &evtrig);
+    use_event(const input_event &evtrig, const int FD);
     PDJE_HIGHRES_CLOCK::CLOCK clock;
+
+    void
+    kbRead(const input_event &evtrig, const int FD);
+
+    void
+    mouseRead(const input_event &evtrig, const int FD);
 
   public:
     void

@@ -33,6 +33,7 @@ main()
         switch (i.Type) {
         case PDJE_Dev_Type::MOUSE:
             std::cout << "type: mouse" << std::endl;
+            set_targets.push_back(i);
             break;
         case PDJE_Dev_Type::KEYBOARD:
             std::cout << "type: keyboard" << std::endl;
