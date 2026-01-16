@@ -15,7 +15,7 @@ PDJE_Input_Transfer::Send()
 
     (*length.ptr) = datas.size();
     if (!datas.empty()) {
-        SetHmac();
+
         std::memcpy(
             body.ptr, datas.data(), sizeof(PDJE_Input_Log) * (*length.ptr));
     }
@@ -35,9 +35,7 @@ PDJE_Input_Transfer::Receive()
         datas.resize(*length.ptr);
         std::memcpy(
             datas.data(), body.ptr, sizeof(PDJE_Input_Log) * (*length.ptr));
-        if (!VerifyHmac()) {
-            datas.clear();
-        }
+
         *length.ptr = 0;
     } else {
         datas.clear();

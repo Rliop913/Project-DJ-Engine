@@ -88,6 +88,20 @@ class TXRXTransport {
     ~TXRXTransport();
 };
 
+class DefaultDevs {
+    std::vector<DeviceData>
+    GetDevices();
+
+    bool
+    Config();
+
+    bool
+    Kill();
+
+    DefaultDevs();
+    ~DefaultDevs();
+};
+
 }; // namespace MAINPROC
 
 }; // namespace PDJE_IPC

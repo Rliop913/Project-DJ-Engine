@@ -16,8 +16,8 @@ PDJE_Input::Init()
                 "maybe input module is running or configuring.");
             return false;
         }
-
         Mproc.emplace();
+#ifdef WIN32
 
         PDJE_IPC::Input_Transfer_Metadata cfg;
         PDJE_IPC::RANDOM_GEN              rg;
@@ -30,7 +30,7 @@ PDJE_Input::Init()
         input_buffer.emplace(cfg);
         Mproc->SendInputTransfer(input_buffer.value());
         Mproc->InitEvents();
-
+#endif
         midi_engine.emplace();
         state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
         return true;

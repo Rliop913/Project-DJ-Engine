@@ -173,6 +173,7 @@ TXRXTransport::InitEvents()
 bool
 TXRXTransport::Kill()
 {
+    imp.rtev.loop_switch = false;
     return true;
 }
 }; // namespace PDJE_IPC

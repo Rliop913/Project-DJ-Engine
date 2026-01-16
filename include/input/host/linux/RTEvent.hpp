@@ -27,6 +27,7 @@ class RTEvent {
     mouseRead(const input_event &evtrig, const int FD);
 
   public:
+    std::atomic<bool> loop_switch = true;
     void
     Reset();
     void

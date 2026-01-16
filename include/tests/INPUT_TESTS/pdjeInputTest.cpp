@@ -75,6 +75,12 @@ main()
                                   << std::endl;
                         std::cout << "pressed" << idx.event.keyboard.pressed
                                   << std::endl;
+                    } else if (idx.type == PDJE_Dev_Type::MOUSE) {
+                        std::cout << "keyNumber: "
+                                  << static_cast<int>(idx.event.mouse.axis_type)
+                                  << std::endl;
+                        std::cout << "pressed" << idx.event.mouse.x << ", "
+                                  << idx.event.mouse.y << std::endl;
                     }
 
                     times--;

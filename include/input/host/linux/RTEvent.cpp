@@ -60,7 +60,7 @@ RTEvent::Trig()
     //     return;
     // }
     epoll_event out_events[64];
-    while (true) {
+    while (loop_switch) {
         int n = epoll_wait(epfd, out_events, 64, 500);
 
         for (int i = 0; i < n; ++i) {
