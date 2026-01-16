@@ -6,7 +6,7 @@
 // #include "linux/linux_input.hpp"
 #include <iostream>
 // #include <unistd.h>
-#include "MainProcess.hpp"
+#include "DefaultDevs.hpp"
 #include <filesystem>
 #include <format>
 namespace fs = std::filesystem;
@@ -61,6 +61,7 @@ main()
             try {
 
                 dline.input_arena->Receive();
+                
                 auto got = dline.input_arena->datas;
                 for (const auto &idx : got) {
 

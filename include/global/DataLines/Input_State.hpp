@@ -150,7 +150,7 @@ enum PDJE_Mouse_Axis_Type {
     REL                 = 0,
     ABS                 = 1,
     VIRTUAL_DESKTOP_ABS = 2, // maybe windows only
-    IGNORE              = 3
+    PDJE_AXIS_IGNORE    = 3
 };
 
 using BITMASK = uint16_t;
