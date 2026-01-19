@@ -1,5 +1,6 @@
 #include "DefaultDevs.hpp"
 #include "NameGen.hpp"
+#include "PDJE_RAII_WRAP.hpp"
 #include "ipc_util.hpp"
 
 namespace PDJE_DEFAULT_DEVICES {
@@ -11,7 +12,26 @@ DefaultDevs::OpenProcess(const fs::path &pt)
     process_info     = PROCESS_INFORMATION{};
     start_up_info.cb = sizeof(start_up_info);
     try {
-        HANDLE FileLocker =
+        subprocess_RAII.val = CreateJobObjectW(nullptr, nullptr);
+        if (subprocess_RAII.get() == INVALID_HANDLE_VALUE) {
+            throw std::runtime_error(
+                "failed to run CreateJobObjectW. Errcode: " +
+                std::to_string(GetLastError()));
+        }
+        JOBOBJECT_EXTENDED_LIMIT_INFORMATION sub_raii_info{};
+        sub_raii_info.BasicLimitInformation.LimitFlags =
+            JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE;
+
+        if (!SetInformationJobObject(subprocess_RAII.get(),
+                                     JobObjectExtendedLimitInformation,
+                                     &sub_raii_info,
+                                     sizeof(sub_raii_info))) {
+            throw std::runtime_error(
+                "failed to run SetInformationJobObject. Errcode: " +
+                std::to_string(GetLastError()));
+        }
+        WINRAII file_locker;
+        file_locker.val =
             CreateFileW(pt.wstring().c_str(),
                         GENERIC_READ,
                         FILE_SHARE_READ,
@@ -19,18 +39,18 @@ DefaultDevs::OpenProcess(const fs::path &pt)
                         OPEN_EXISTING,
                         FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN,
                         nullptr);
-        if (FileLocker == INVALID_HANDLE_VALUE) {
+        if (!file_locker.get()) {
             critlog("failed to lock subprocess exe file");
             return false;
         }
         if (!PDJE_IPC::HashCompare(pt)) {
-            CloseHandle(FileLocker);
             critlog("hash not matched. maybe Under Attack.");
             return false;
         }
-        HANDLE readHdl           = pipe.Gen();
+        WINRAII readHdl;
+        readHdl.val              = pipe.Gen();
         start_up_info.dwFlags    = STARTF_USESTDHANDLES;
-        start_up_info.hStdInput  = readHdl;
+        start_up_info.hStdInput  = readHdl.get();
         start_up_info.hStdOutput = GetStdHandle(STD_OUTPUT_HANDLE);
         start_up_info.hStdError  = GetStdHandle(STD_ERROR_HANDLE);
         auto cmd                 = pt.wstring();
@@ -39,20 +59,34 @@ DefaultDevs::OpenProcess(const fs::path &pt)
                                  nullptr,
                                  nullptr,
                                  TRUE,
-                                 CREATE_NO_WINDOW,
+                                 CREATE_NO_WINDOW | CREATE_SUSPENDED,
                                  nullptr,
                                  nullptr,
                                  &start_up_info,
                                  &process_info);
-
-        CloseHandle(FileLocker);
-        CloseHandle(readHdl);
         if (!ok) {
             critlog("failed to create child process. Err:");
             critlog(GetLastError());
             return false;
         }
+
+        if (!AssignProcessToJobObject(subprocess_RAII.get(),
+                                      process_info.hProcess)) {
+            TerminateProcess(process_info.hProcess, 1);
+            throw std::runtime_error("AssignProcessToJobObject failed: " +
+                                     std::to_string(GetLastError()));
+        }
+        ResumeThread(process_info.hThread);
+        CloseHandle(process_info.hThread);
+        process_info.hThread = nullptr;
+
     } catch (const std::exception &e) {
+        if (process_info.hProcess) {
+            CloseHandle(process_info.hProcess);
+        }
+        if (process_info.hThread) {
+            CloseHandle(process_info.hThread);
+        }
         critlog("exception on creating child process. Err:");
         critlog(e.what());
         return false;
@@ -137,5 +171,14 @@ DefaultDevs::Config(const std::vector<DeviceData> &devs)
         return false;
     }
     return meta.QueryConfig(nj.dump());
+}
+DefaultDevs::~DefaultDevs()
+{
+    if (process_info.hProcess) {
+        CloseHandle(process_info.hProcess);
+    }
+    if (process_info.hThread) {
+        CloseHandle(process_info.hThread);
+    }
 }
 }; // namespace PDJE_DEFAULT_DEVICES

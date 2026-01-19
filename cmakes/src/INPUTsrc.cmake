@@ -1,24 +1,29 @@
 
 set(PDJE_INPUT_MAINPROC_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/PDJE_Input.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/SetTXRXFeatures.cpp
+    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/SetTXRXFeatures.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/midi/PDJE_MIDI.cpp
     
 )
 set(PDJE_INPUT_SUBPROC_SRC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/SetTXRXFeatures.cpp
+    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/SetTXRXFeatures.cpp
     
 )
 if(WIN32)
     list(APPEND PDJE_INPUT_MAINPROC_SRC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/windows/MainProcess.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/windows/ipc_Send_Windows.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/MainProcess.cpp
+    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/windows/MainProcess.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/ClassDef/windows/DefaultDevs.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/ClassDef/windows/TXRX/SetFeatures.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/ClassDef/windows/TXRX/MetadataTXRX.cpp
+    
+    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/windows/ipc_Send_Windows.cpp
+    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/MainProcess.cpp
     )
     list(APPEND PDJE_INPUT_SUBPROC_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/windows/SubMain.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/windows/SubProcess.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/windows/InputLoop.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/SetTXRXFeatures.cpp
     )
     function(PDJE_INPUT_LINK_LIB targetName)
         target_link_libraries(${targetName} PUBLIC user32 avrt winmm hid)

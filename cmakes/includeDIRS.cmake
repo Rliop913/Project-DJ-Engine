@@ -97,6 +97,7 @@ ${PDJE_INCLUDE_ROOT}/include/input
 ${PDJE_INCLUDE_ROOT}/include/input/midi
 ${PDJE_INCLUDE_ROOT}/include/input/host
 ${PDJE_INCLUDE_ROOT}/include/input/runner
+${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs
 
 )
 
@@ -112,6 +113,10 @@ if(WIN32)
   list(APPEND PDJE_INCLUDE_INPUT_MAINPROC
     ${PDJE_INCLUDE_ROOT}/include/input/host/windows
     ${PDJE_INCLUDE_ROOT}/include/input/runner/windows
+    ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/ClassDef/windows
+    ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/ClassDef/windows/TXRX
+    
+    
 
 
   )

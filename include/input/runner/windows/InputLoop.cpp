@@ -185,7 +185,6 @@ TXRXListener::Run()
     }
 
     killer.join();
-    
 }
 
 }; // namespace PDJE_IPC

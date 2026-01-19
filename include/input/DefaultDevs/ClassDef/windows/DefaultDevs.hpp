@@ -7,6 +7,7 @@
 #include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Input_Device_Data.hpp"
+#include "PDJE_RAII_WRAP.hpp"
 #include "PSKPipe.hpp"
 #include "Secured_IPC_TX_RX.hpp"
 #include "ipc_named_event.hpp"
@@ -16,14 +17,25 @@
 namespace PDJE_DEFAULT_DEVICES {
 using namespace PDJE_IPC;
 using nj = nlohmann::json;
+
+struct HandleCloser {
+    void
+    operator()(HANDLE h) noexcept
+    {
+        if (h && h != INVALID_HANDLE_VALUE)
+            ::CloseHandle(h);
+    }
+};
+
+using WINRAII = PDJE_RAII::RAII<HANDLE, HandleCloser>;
 class DefaultDevs {
   private:
     STARTUPINFOW                                 start_up_info{};
     PROCESS_INFORMATION                          process_info{};
     std::optional<PDJE_IPC::PDJE_Input_Transfer> input_buffer;
-
-    MetadataTXRX         meta;
-    PDJE_CRYPTO::PSKPipe pipe;
+    WINRAII                                      subprocess_RAII;
+    MetadataTXRX                                 meta;
+    PDJE_CRYPTO::PSKPipe                         pipe;
 
     struct {
         EVENT input_loop_run_event;
@@ -70,7 +82,7 @@ class DefaultDevs {
     bool
     Config(const std::vector<DeviceData> &devs);
     DefaultDevs();
-    ~DefaultDevs() = default;
+    ~DefaultDevs();
 };
 
 }; // namespace PDJE_DEFAULT_DEVICES

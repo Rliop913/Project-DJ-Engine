@@ -61,7 +61,7 @@ main()
             try {
 
                 dline.input_arena->Receive();
-                
+
                 auto got = dline.input_arena->datas;
                 for (const auto &idx : got) {
 
