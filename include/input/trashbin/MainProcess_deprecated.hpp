@@ -2,6 +2,7 @@
 #include "NameGen.hpp"
 #include "PDJE_Buffer.hpp"
 #include "PDJE_Input_DataLine.hpp"
+#include "PDJE_Input_Device_Data.hpp"
 #include "PDJE_LOG_SETTER.hpp"
 #include "Secured_IPC_TX_RX.hpp"
 #include "ipc_shared_memory.hpp"
@@ -15,7 +16,7 @@
 #ifdef WIN32
 
 #elif defined(__linux__)
-
+#include "RTEvent.hpp"
 #endif
 
 namespace PDJE_IPC {
@@ -26,11 +27,12 @@ struct Importants {
     STARTUPINFOW        start_up_info{};
     PROCESS_INFORMATION process_info{};
 #elif defined(__linux__)
-    int         socket_fd = -1;
-    int         child_fd  = -1;
-    pid_t       child_pid = -1;
-    std::string socket_path =
-        "/tmp/pdje_input_module_libevdev_socket_path.sock";
+    struct dType {
+        fs::path      dev_path;
+        PDJE_Dev_Type dev_type;
+    };
+    RTEvent                                rtev;
+    std::unordered_map<std::string, dType> stored_dev_path;
 #endif
 };
 namespace MAINPROC {
@@ -84,6 +86,20 @@ class TXRXTransport {
 
     TXRXTransport();
     ~TXRXTransport();
+};
+
+class DefaultDevs {
+    std::vector<DeviceData>
+    GetDevices();
+
+    bool
+    Config();
+
+    bool
+    Kill();
+
+    DefaultDevs();
+    ~DefaultDevs();
 };
 
 }; // namespace MAINPROC

@@ -18,7 +18,13 @@
 #include <Windows.h>
 #endif
 namespace PDJE_IPC {
+namespace fs = std::filesystem;
 
+static inline std::string
+posix_shmem_macro(const fs::path &origin)
+{
+    return "/" + origin.filename().string();
+}
 namespace fs              = std::filesystem;
 constexpr int PDJE_NO_IPC = 2;
 constexpr int PDJE_IPC_R  = 1;

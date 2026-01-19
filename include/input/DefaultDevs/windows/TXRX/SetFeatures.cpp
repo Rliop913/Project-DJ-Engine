@@ -1,9 +1,9 @@
-#include "MainProcess.hpp"
+#include "MetadataTXRX.hpp"
 
 namespace PDJE_IPC {
-using namespace MAINPROC;
+
 void
-TXRXTransport::SetTXRX_Features()
+MetadataTXRX::SetTXRX_Features()
 {
     txrx->AddFunction(PDJE_CRYPTO::TXRXHEADER::HEALTH_CHECK,
                       [this](const std::string &msg) {

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Input_State.hpp"
-#include "MainProcess.hpp"
+
 #include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Input_Device_Data.hpp"
@@ -13,14 +13,7 @@
 #include <string>
 #include <vector>
 
-#ifdef WIN32
-// #include "windows_input.hpp"
-
-#elif defined(__APPLE__)
-
-#else
-// #include "linux_input.hpp"
-#endif
+#include "DefaultDevs.hpp"
 
 /**
  * @brief Input device manager.
@@ -29,12 +22,13 @@
  */
 class PDJE_API PDJE_Input {
   private:
-    std::optional<PDJE_IPC::MAINPROC::TXRXTransport> Mproc;
-    std::optional<PDJE_IPC::PDJE_Input_Transfer>     input_buffer;
-    bool                                             FLAG_INPUT_ON = false;
-    std::optional<PDJE_MIDI::MIDI>                   midi_engine;
-    bool                                             FLAG_MIDI_ON = false;
-    PDJE_INPUT_STATE state = PDJE_INPUT_STATE::DEAD;
+    std::optional<PDJE_DEFAULT_DEVICES::DefaultDevs> default_devs;
+    // std::optional<PDJE_IPC::PDJE_Input_Transfer>     input_buffer; // redef
+    // on dev pipe
+    bool                           FLAG_INPUT_ON = false;
+    std::optional<PDJE_MIDI::MIDI> midi_engine;
+    bool                           FLAG_MIDI_ON = false;
+    PDJE_INPUT_STATE               state        = PDJE_INPUT_STATE::DEAD;
 
   public:
     /** @brief Get All Connected devices.

@@ -151,9 +151,6 @@ TXRXListener::LoopTrig()
 #endif
     ThreadID = GetCurrentThreadId();
 
-    if (task) {
-        AvRevertMmThreadCharacteristics(task);
-    }
     Run();
     if (task) {
         AvRevertMmThreadCharacteristics(task);

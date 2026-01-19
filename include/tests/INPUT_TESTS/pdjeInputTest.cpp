@@ -6,7 +6,7 @@
 // #include "linux/linux_input.hpp"
 #include <iostream>
 // #include <unistd.h>
-#include "MainProcess.hpp"
+#include "DefaultDevs.hpp"
 #include <filesystem>
 #include <format>
 namespace fs = std::filesystem;
@@ -33,6 +33,7 @@ main()
         switch (i.Type) {
         case PDJE_Dev_Type::MOUSE:
             std::cout << "type: mouse" << std::endl;
+            set_targets.push_back(i);
             break;
         case PDJE_Dev_Type::KEYBOARD:
             std::cout << "type: keyboard" << std::endl;
@@ -60,6 +61,7 @@ main()
             try {
 
                 dline.input_arena->Receive();
+
                 auto got = dline.input_arena->datas;
                 for (const auto &idx : got) {
 
@@ -74,6 +76,12 @@ main()
                                   << std::endl;
                         std::cout << "pressed" << idx.event.keyboard.pressed
                                   << std::endl;
+                    } else if (idx.type == PDJE_Dev_Type::MOUSE) {
+                        std::cout << "keyNumber: "
+                                  << static_cast<int>(idx.event.mouse.axis_type)
+                                  << std::endl;
+                        std::cout << "pressed" << idx.event.mouse.x << ", "
+                                  << idx.event.mouse.y << std::endl;
                     }
 
                     times--;
