@@ -1,7 +1,6 @@
 
 set(PDJE_INPUT_MAINPROC_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/PDJE_Input.cpp
-    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/SetTXRXFeatures.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/midi/PDJE_MIDI.cpp
     
 )
@@ -11,13 +10,9 @@ set(PDJE_INPUT_SUBPROC_SRC
 )
 if(WIN32)
     list(APPEND PDJE_INPUT_MAINPROC_SRC
-    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/windows/MainProcess.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/ClassDef/windows/DefaultDevs.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/ClassDef/windows/TXRX/SetFeatures.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/ClassDef/windows/TXRX/MetadataTXRX.cpp
-    
-    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/windows/ipc_Send_Windows.cpp
-    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/MainProcess.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/windows/DefaultDevs.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/windows/TXRX/SetFeatures.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/windows/TXRX/MetadataTXRX.cpp
     )
     list(APPEND PDJE_INPUT_SUBPROC_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/windows/SubMain.cpp
@@ -39,10 +34,6 @@ else()
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/linux/RTEvent.cpp
         
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/linux/ipc_Send_Linux.cpp
-    )
-    list(APPEND PDJE_INPUT_SUBPROC_SRC
-        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/linux/SubMain.cpp
-        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/runner/linux/SubProcess.cpp
     )
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(LIBEVDEV REQUIRED IMPORTED_TARGET libevdev)
