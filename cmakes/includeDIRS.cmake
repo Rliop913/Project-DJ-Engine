@@ -137,13 +137,15 @@ else()
     ${PDJE_INCLUDE_ROOT}/include/global/Highres_Clock/Linux
   )
   list(APPEND PDJE_INCLUDE_INPUT_MAINPROC
-    ${PDJE_INCLUDE_ROOT}/include/input/host/linux
-    ${PDJE_INCLUDE_ROOT}/include/input/runner/linux
+    ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/linux
+    ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/linux/evdev_things
+    ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs
+    
     
     )
   list(APPEND PDJE_INCLUDE_IPC
     ${PDJE_INCLUDE_ROOT}/include/input/IPC/memory/linux
-    ${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission/linux
+    # ${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission/linux
   )
 endif()
 
