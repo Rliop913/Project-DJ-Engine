@@ -7,7 +7,7 @@
 #include <libevdev/libevdev.h>
 #include <unordered_map>
 namespace fs = std::filesystem;
-class RTEvent {
+class InputCore {
   private:
     PDJE_IPC::PDJE_Input_Transfer            *out;
     std::unordered_map<int, libevdev *>       events;
@@ -27,19 +27,25 @@ class RTEvent {
     mouseRead(const input_event &evtrig, const int FD);
 
   public:
-    std::atomic<bool> loop_switch = true;
+    struct {
+        std::atomic<bool> loop_switch   = true;
+        int               stop_event_fd = -1;
+    } switches;
+
     void
     Reset();
+
+    void
+    Stop();
     void
     set_Input_Transfer(PDJE_IPC::PDJE_Input_Transfer *input_trsf)
     {
         out = input_trsf;
-        out->SendManageWorker();
     }
-    int
+    bool
     Add(const fs::path &target, PDJE_Dev_Type type, std::string name);
     void
     Trig();
-    RTEvent() = default;
-    ~RTEvent();
+    InputCore() = default;
+    ~InputCore();
 };

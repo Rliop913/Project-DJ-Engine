@@ -1,5 +1,6 @@
 #pragma once
 #include "Input_State.hpp"
+#include "PDJE_Buffer.hpp"
 #include "PDJE_Crypto.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
 #include "PDJE_Input_Device_Data.hpp"
@@ -37,45 +38,47 @@ struct Input_Transfer_Metadata {
 
 class PDJE_API PDJE_Input_Transfer {
   private:
-    SharedMem<uint64_t, PDJE_IPC_RW>       length;
-    SharedMem<PDJE_Input_Log, PDJE_IPC_RW> body;
-    SharedMem<uint8_t, PDJE_IPC_RW>        hmac;
-    EVENT                                  req_event;
-    EVENT                                  stored_event;
-    std::atomic<bool>                      sendworker_switch = false;
-    std::optional<std::thread>             sendworker;
-
+#ifdef WIN32
+    SharedMem<uint64_t, PDJE_IPC_RW>                  length;
+    SharedMem<PDJE_Input_Log, PDJE_IPC_RW>            body;
+    SharedMem<uint8_t, PDJE_IPC_RW>                   hmac;
+    EVENT                                             req_event;
+    EVENT                                             stored_event;
+    std::atomic<bool>                                 sendworker_switch = false;
+    std::optional<std::thread>                        sendworker;
     std::mutex                                        local_locker;
     std::unique_ptr<Botan::MessageAuthenticationCode> hmacEngine;
     Input_Transfer_Metadata                           metadata;
-
     void
     SetHmacEngine();
     void
     SetHmac();
     bool
-    VerifyHmac();
-
+                                VerifyHmac();
     std::vector<PDJE_Input_Log> subBuffer;
-
     void
     Send();
+#endif
 
   public:
-    std::vector<PDJE_Input_Log> datas;
+#ifdef WIN32
     void
     SendManageWorker();
-
-    void
-    Write(const PDJE_Input_Log &input);
-    void
-    Receive();
-    PDJE_Input_Transfer(const uint32_t max_length); // no ipc transmission
     std::string
     GetMetaDatas();
     PDJE_Input_Transfer(const std::string &metajson); // subprocess init
     PDJE_Input_Transfer(
         const Input_Transfer_Metadata &metad); // mainprocess init
+#else
+    std::vector<PDJE_Input_Log>          datas;
+    Atomic_Double_Buffer<PDJE_Input_Log> adbf;
+    PDJE_Input_Transfer(const uint32_t max_length); // no ipc transmission
+#endif
+
+    void
+    Write(const PDJE_Input_Log &input);
+    void
+    Receive();
     ~PDJE_Input_Transfer();
 };
 

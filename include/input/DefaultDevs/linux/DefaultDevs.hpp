@@ -2,42 +2,37 @@
 
 #include "Input_State.hpp"
 
-#include "PDJE_EXPORT_SETTER.hpp"
+#include "InputCore.hpp"
 #include "PDJE_Input_DataLine.hpp"
 #include "PDJE_Input_Device_Data.hpp"
+#include "PDJE_LOG_SETTER.hpp"
+#include <exception>
+#include <filesystem>
 #include <nlohmann/json.hpp>
 #include <optional>
 #include <unordered_map>
 namespace PDJE_DEFAULT_DEVICES {
 using namespace PDJE_IPC;
-using nj = nlohmann::json;
-
-// using WINRAII = PDJE_RAII::RAII<HANDLE, HandleCloser>;
+using nj     = nlohmann::json;
+namespace fs = std::filesystem;
 class DefaultDevs {
   private:
-    std::optional<PDJE_IPC::PDJE_Input_Transfer> input_buffer;
+    PDJE_IPC::PDJE_Input_Transfer input_buffer;
     struct device_metadata {
         fs::path      dev_path;
         PDJE_Dev_Type dev_type;
     };
 
     std::unordered_map<std::string, device_metadata> stored_dev;
-    // struct {
-    //     EVENT input_loop_run_event;
-    //     EVENT terminate_event;
-    // } events;
 
-    bool
-    OpenProcess(const fs::path &pt);
-
-    void
-    InitEvents();
+    std::optional<InputCore>   IC;
+    std::optional<std::thread> input_thread;
 
   public:
     bool
     Kill()
     {
-        // return meta.Kill();
+        return true; // dummy function
     }
     std::vector<DeviceData>
     GetDevices();
@@ -45,7 +40,8 @@ class DefaultDevs {
     PDJE_IPC::PDJE_Input_Transfer *
     GetInputBufferPTR()
     {
-        return &(input_buffer.value());
+
+        return &(input_buffer);
     }
     void
     Ready();
@@ -53,12 +49,29 @@ class DefaultDevs {
     void
     RunLoop()
     {
-        // events.input_loop_run_event.Wake();
+        if (!input_thread) {
+            Ready();
+
+            input_thread.emplace([this]() { IC->Trig(); });
+        }
     }
     void
     TerminateLoop()
     {
-        // events.terminate_event.Wake();
+        try {
+            if (input_thread) {
+                IC->Stop();
+                if (input_thread->joinable()) {
+                    input_thread->join();
+                }
+                input_thread.reset();
+                IC.reset();
+            }
+        } catch (const std::exception &e) {
+            critlog("input_thread join failed on linux. What: ");
+            critlog(e.what());
+            return;
+        }
     }
 
     bool
