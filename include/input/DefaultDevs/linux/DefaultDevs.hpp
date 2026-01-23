@@ -11,6 +11,7 @@
 #include <nlohmann/json.hpp>
 #include <optional>
 #include <unordered_map>
+#include <vector>
 namespace PDJE_DEFAULT_DEVICES {
 using namespace PDJE_IPC;
 using nj     = nlohmann::json;

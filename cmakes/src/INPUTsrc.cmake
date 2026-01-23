@@ -32,6 +32,10 @@ else()
     list(APPEND PDJE_INPUT_MAINPROC_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/DefaultDevs.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/InputCore.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/ParseMouse.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/ParseKeyboard.cpp
+        
+        
         
         # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/linux/MainProcess.cpp
         # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/linux/RTEvent.cpp

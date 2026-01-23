@@ -209,6 +209,8 @@ if(PDJE_DEVELOP_INPUT)
   setJudgeReqs(testJudge)
   setCoreReqs(testJudge)
   setInputReqs(testJudge)
+
+
 endif()
 endif(PDJE_BUILD_TESTS)
 
