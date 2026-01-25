@@ -117,7 +117,7 @@ template <typename T, int MEM_PROT_FLAG>
     {
         if (MEM_PROT_FLAG == PDJE_NO_IPC) {
             if (ptr) {
-                delete ptr;
+                delete[] ptr;
             }
             return;
         }
