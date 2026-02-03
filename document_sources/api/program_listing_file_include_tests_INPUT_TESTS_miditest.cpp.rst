@@ -4,7 +4,7 @@
 Program Listing for File miditest.cpp
 =====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_INPUT_TESTS_miditest.cpp>` (``include\tests\INPUT_TESTS\miditest.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_INPUT_TESTS_miditest.cpp>` (``include/tests/INPUT_TESTS/miditest.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

@@ -4,7 +4,7 @@
 Program Listing for File manualAudioTest.cpp
 ============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_manualAudioTest.cpp>` (``include\tests\manualAudioTest.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_manualAudioTest.cpp>` (``include/tests/manualAudioTest.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

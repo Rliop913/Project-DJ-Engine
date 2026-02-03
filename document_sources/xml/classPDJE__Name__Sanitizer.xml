@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classPDJE__Name__Sanitizer" kind="class" language="C++" prot="public">
     <compoundname>PDJE_Name_Sanitizer</compoundname>
     <includes refid="fileNameSanitizer_8hpp" local="no">fileNameSanitizer.hpp</includes>
-    <sectiondef kind="public-static-func">
+      <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classPDJE__Name__Sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &gt;</type>
         <definition>std::optional&lt; SANITIZED &gt; PDJE_Name_Sanitizer::sanitizeFileName</definition>
         <argsstring>(const std::string &amp;fileName)</argsstring>
         <name>sanitizeFileName</name>
-        <qualifiedname>PDJE_Name_Sanitizer::sanitizeFileName</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>fileName</declname>
@@ -40,7 +39,6 @@
         <definition>std::string PDJE_Name_Sanitizer::getFileName</definition>
         <argsstring>(const SANITIZED &amp;sanitized)</argsstring>
         <name>getFileName</name>
-        <qualifiedname>PDJE_Name_Sanitizer::getFileName</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
           <declname>sanitized</declname>
@@ -66,14 +64,13 @@
         </inbodydescription>
         <location file="include/global/DataLines/fileNameSanitizer.hpp" line="55" column="5" bodyfile="include/global/DataLines/fileNameSanitizer.cpp" bodystart="17" bodyend="21"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="classPDJE__Name__Sanitizer_1ab140c48c375c3287f623d9c6c1f4b0ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>PDJE_Name_Sanitizer::PDJE_Name_Sanitizer</definition>
         <argsstring>()=delete</argsstring>
         <name>PDJE_Name_Sanitizer</name>
-        <qualifiedname>PDJE_Name_Sanitizer::PDJE_Name_Sanitizer</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -87,7 +84,6 @@
         <definition>PDJE_Name_Sanitizer::~PDJE_Name_Sanitizer</definition>
         <argsstring>()=delete</argsstring>
         <name>~PDJE_Name_Sanitizer</name>
-        <qualifiedname>PDJE_Name_Sanitizer::~PDJE_Name_Sanitizer</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -96,7 +92,7 @@
         </inbodydescription>
         <location file="include/global/DataLines/fileNameSanitizer.hpp" line="58" column="5"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>A utility class for sanitizing and de-sanitizing file names. </para>
     </briefdescription>

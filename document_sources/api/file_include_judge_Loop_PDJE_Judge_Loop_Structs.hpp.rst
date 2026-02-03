@@ -4,7 +4,7 @@
 File PDJE_Judge_Loop_Structs.hpp
 ================================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_judge_Loop>` (``include\judge\Loop``)
+|exhale_lsh| :ref:`Parent directory <dir_include_judge_Loop>` (``include/judge/Loop``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Judge_Loop_Structs.hpp
    :local:
    :backlinks: none
 
-Definition (``include\judge\Loop\PDJE_Judge_Loop_Structs.hpp``)
+Definition (``include/judge/Loop/PDJE_Judge_Loop_Structs.hpp``)
 ---------------------------------------------------------------
 
 
@@ -74,11 +74,11 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___j_u_d_g_e_1_1_e_v___thread`
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1EV__Thread`
 
-- :ref:`exhale_struct_struct_p_d_j_e___j_u_d_g_e_1_1mouse__btn__event`
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1mouse__btn__event`
 
-- :ref:`exhale_struct_struct_p_d_j_e___j_u_d_g_e_1_1_queues`
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1Queues`
 
-- :ref:`exhale_struct_struct_p_d_j_e___j_u_d_g_e_1_1use_datas`
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1useDatas`
 

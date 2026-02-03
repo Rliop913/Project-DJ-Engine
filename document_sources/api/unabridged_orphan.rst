@@ -221,52 +221,32 @@ Directories
 .. toctree::
    :maxdepth: 5
 
-   dir_include_input_--DEPRECATED-linux.rst
+   dir_include_input_DefaultDevs.rst
 
 .. toctree::
    :maxdepth: 5
 
-   dir_include_input_--DEPRECATED-linux_common.rst
+   dir_include_input_DefaultDevs_linux.rst
 
 .. toctree::
    :maxdepth: 5
 
-   dir_include_input_--DEPRECATED-linux_RT.rst
+   dir_include_input_DefaultDevs_linux_evdev_things.rst
 
 .. toctree::
    :maxdepth: 5
 
-   dir_include_input_--DEPRECATED-linux_socket.rst
+   dir_include_input_DefaultDevs_windows.rst
 
 .. toctree::
    :maxdepth: 5
 
-   dir_include_input_host.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   dir_include_input_host_linux.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   dir_include_input_host_windows.rst
+   dir_include_input_DefaultDevs_windows_TXRX.rst
 
 .. toctree::
    :maxdepth: 5
 
    dir_include_input_IPC.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   dir_include_input_IPC_--DEPRECATED--transmission.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   dir_include_input_IPC_--DEPRECATED--transmission_linux.rst
 
 .. toctree::
    :maxdepth: 5
@@ -301,12 +281,47 @@ Directories
 .. toctree::
    :maxdepth: 5
 
-   dir_include_input_runner_linux.rst
+   dir_include_input_runner_windows.rst
 
 .. toctree::
    :maxdepth: 5
 
-   dir_include_input_runner_windows.rst
+   dir_include_input_trashbin.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_trashbin_--DEPRECATED--transmission.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_trashbin_--DEPRECATED--transmission_linux.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_trashbin_--DEPRECATED-linux.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_trashbin_--DEPRECATED-linux_common.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_trashbin_--DEPRECATED-linux_RT.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_trashbin_--DEPRECATED-linux_socket.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_trashbin_host_linux.rst
 
 .. toctree::
    :maxdepth: 5
@@ -445,12 +460,12 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_IPC_--DEPRECATED--transmission_linux_ChildProcess.cpp.rst
+   file_include_input_trashbin_--DEPRECATED--transmission_linux_ChildProcess.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_--DEPRECATED-linux_common_Common_Features.hpp.rst
+   file_include_input_trashbin_--DEPRECATED-linux_common_Common_Features.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -506,6 +521,31 @@ Files
    :maxdepth: 5
 
    file_include_core_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_DefaultDevs.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_windows_DefaultDevs.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_DefaultDevs.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_windows_DefaultDevs.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_trashbin_DefaultDevs_Origin.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -581,6 +621,11 @@ Files
    :maxdepth: 5
 
    file_include_core_audioRender_ManualMix_ManualFausts_eqMan.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_evdev_things_evdev_codemap.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -695,7 +740,7 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_IPC_memory_Input_Transfer.cpp.rst
+   file_include_input_IPC_memory_linux_Input_Transfer.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -705,17 +750,27 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_IPC_memory_Input_Transfer.hpp.rst
+   file_include_input_IPC_memory_linux_Input_Transfer.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_IPC_memory_windows_Input_Transfer.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_InputCore.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_InputCore.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
    file_include_input_runner_windows_InputLoop.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_judge_InputParser_InputParser.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -740,17 +795,17 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_host_linux_ipc_Send_Linux.cpp.rst
+   file_include_input_trashbin_host_linux_ipc_Send_Linux.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_host_windows_ipc_Send_Windows.cpp.rst
+   file_include_input_trashbin_ipc_Send_Windows.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_--DEPRECATED-linux_IPC_SHARE_MEM.hpp.rst
+   file_include_input_trashbin_--DEPRECATED-linux_IPC_SHARE_MEM.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -795,32 +850,27 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_tests_INPUT_TESTS_linux_I_WAITER.cpp.rst
+   file_include_input_trashbin_--DEPRECATED-linux_linux_input.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_tests_INPUT_TESTS_linux_I_WAKER.cpp.rst
+   file_include_input_trashbin_--DEPRECATED-linux_linux_input.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_--DEPRECATED-linux_linux_input.cpp.rst
+   file_include_tests_INPUT_TESTS_linux_input_group_add_test.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_--DEPRECATED-linux_linux_input.hpp.rst
+   file_include_input_trashbin_--DEPRECATED-linux_socket_linux_socket.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_--DEPRECATED-linux_socket_linux_socket.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_input_--DEPRECATED-linux_socket_linux_socket.hpp.rst
+   file_include_input_trashbin_--DEPRECATED-linux_socket_linux_socket.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -835,27 +885,27 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_host_linux_MainProcess.cpp.rst
+   file_include_input_trashbin_--DEPRECATED--transmission_linux_MainProcess.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_host_MainProcess.cpp.rst
+   file_include_input_trashbin_host_linux_MainProcess.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_host_windows_MainProcess.cpp.rst
+   file_include_input_trashbin_MainProcess.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_IPC_--DEPRECATED--transmission_linux_MainProcess.cpp.rst
+   file_include_input_trashbin_MainProcess_deprecated.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_host_MainProcess.hpp.rst
+   file_include_input_trashbin_MainProcess_windows.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -871,6 +921,16 @@ Files
    :maxdepth: 5
 
    file_include_core_audioRender_ManualMix_ManualMix.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_windows_TXRX_MetadataTXRX.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_windows_TXRX_MetadataTXRX.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1035,17 +1095,17 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_--DEPRECATED-linux_RT_OneTimeSysSetup.cpp.rst
+   file_include_input_trashbin_--DEPRECATED-linux_RT_OneTimeSysSetup.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_--DEPRECATED-linux_RT_OneTimeSysSetup.hpp.rst
+   file_include_input_trashbin_--DEPRECATED-linux_RT_OneTimeSysSetup.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_IPC_--DEPRECATED--transmission_linux_pack_ipc.hpp.rst
+   file_include_input_trashbin_--DEPRECATED--transmission_linux_pack_ipc.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1056,6 +1116,16 @@ Files
    :maxdepth: 5
 
    file_include_core_audioRender_ManualMix_ManualFausts_pannerMan.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_ParseKeyboard.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_ParseMouse.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1136,6 +1206,11 @@ Files
    :maxdepth: 5
 
    file_include_global_DataLines_PDJE_Input_Device_Data.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_PDJE_Input_Log.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1255,6 +1330,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_global_PDJE_RAII_WRAP.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_judge_PDJE_RAIL.cpp.rst
 
 .. toctree::
@@ -1360,37 +1440,32 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_--DEPRECATED-linux_common_RT_EXEC_HASH.hpp.rst
+   file_include_input_trashbin_--DEPRECATED-linux_common_RT_EXEC_HASH.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_--DEPRECATED-linux_RT_RTEvent.cpp.rst
+   file_include_input_trashbin_--DEPRECATED-linux_RT_RTFunctionRegister.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_--DEPRECATED-linux_RT_RTEvent.hpp.rst
+   file_include_input_DefaultDevs_linux_rtkitcodes.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_--DEPRECATED-linux_RT_RTFunctionRegister.cpp.rst
+   file_include_input_trashbin_--DEPRECATED-linux_RT_RTMain.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_--DEPRECATED-linux_RT_RTMain.cpp.rst
+   file_include_input_trashbin_--DEPRECATED-linux_RT_RTSocket.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_--DEPRECATED-linux_RT_RTSocket.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_input_--DEPRECATED-linux_RT_RTSocket.hpp.rst
+   file_include_input_trashbin_--DEPRECATED-linux_RT_RTSocket.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1410,7 +1485,7 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_host_SetTXRXFeatures.cpp.rst
+   file_include_input_DefaultDevs_windows_TXRX_SetFeatures.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1420,22 +1495,22 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_runner_linux_SubMain.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
    file_include_input_runner_windows_SubMain.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_include_input_runner_linux_SubProcess.cpp.rst
+   file_include_input_trashbin_SubMain.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
    file_include_input_runner_windows_SubProcess.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_trashbin_SubProcess.cpp.rst
 
 .. toctree::
    :maxdepth: 5

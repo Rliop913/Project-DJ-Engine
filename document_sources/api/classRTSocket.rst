@@ -3,7 +3,7 @@
 Class RTSocket
 ==============
 
-- Defined in :ref:`file_include_input_linux_RT_RTSocket.hpp`
+- Defined in :ref:`file_include_input_trashbin_--DEPRECATED-linux_RT_RTSocket.hpp`
 
 
 Class Documentation

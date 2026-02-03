@@ -4,7 +4,7 @@
 Program Listing for File Faust_interpolate.hpp
 ==============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_MixMachine_FAUST_VALS_Faust_interpolate.hpp>` (``include\core\audioRender\MixMachine\FAUST_VALS\Faust_interpolate.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_MixMachine_FAUST_VALS_Faust_interpolate.hpp>` (``include/core/audioRender/MixMachine/FAUST_VALS/Faust_interpolate.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

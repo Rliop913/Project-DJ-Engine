@@ -4,7 +4,7 @@
 File audioRender.hpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender>` (``include\core\audioRender``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender>` (``include/core/audioRender``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File audioRender.hpp
    :local:
    :backlinks: none
 
-Definition (``include\core\audioRender\audioRender.hpp``)
+Definition (``include/core/audioRender/audioRender.hpp``)
 ---------------------------------------------------------
 
 
@@ -42,9 +42,9 @@ Included By
 -----------
 
 
-- :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.hpp`
-
 - :ref:`file_include_core_audioRender_audioRender.cpp`
+
+- :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.hpp`
 
 
 
@@ -53,12 +53,12 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classaudio_render`
+- :ref:`exhale_class_classaudioRender`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum_audio_render_8hpp_1a8c3d331aef2fa577eb826cd22becbe28`
+- :ref:`exhale_enum_audioRender_8hpp_1a8c3d331aef2fa577eb826cd22becbe28`
 

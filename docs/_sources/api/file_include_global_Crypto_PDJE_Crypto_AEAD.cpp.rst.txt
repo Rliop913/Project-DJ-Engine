@@ -4,7 +4,7 @@
 File PDJE_Crypto_AEAD.cpp
 =========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_Crypto>` (``include\global\Crypto``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_Crypto>` (``include/global/Crypto``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Crypto_AEAD.cpp
    :local:
    :backlinks: none
 
-Definition (``include\global\Crypto\PDJE_Crypto_AEAD.cpp``)
+Definition (``include/global/Crypto/PDJE_Crypto_AEAD.cpp``)
 -----------------------------------------------------------
 
 

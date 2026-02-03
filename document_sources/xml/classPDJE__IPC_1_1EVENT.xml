@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classPDJE__IPC_1_1EVENT" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_IPC::EVENT</compoundname>
+    <includes refid="ipc__named__event_8hpp" local="no">ipc_named_event.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPDJE__IPC_1_1EVENT_1a91c5e84936cc68961213c1d13c13318a" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string PDJE_IPC::EVENT::name_cache</definition>
+        <argsstring></argsstring>
+        <name>name_cache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_event.hpp" line="7" column="17" bodyfile="include/input/IPC/memory/ipc_named_event.hpp" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classPDJE__IPC_1_1EVENT_1acdd1f78601b0adf27ec1dd5aac6884cb" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* PDJE_IPC::EVENT::hdlp</definition>
+        <argsstring></argsstring>
+        <name>hdlp</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_event.hpp" line="10" column="10" bodyfile="include/input/IPC/memory/ipc_named_event.hpp" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPDJE__IPC_1_1EVENT_1a68526390e1dd1ca62571fd17faff4a88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::EVENT::Wait</definition>
+        <argsstring>(const uint16_t waittime_ms=100)</argsstring>
+        <name>Wait</name>
+        <param>
+          <type>const uint16_t</type>
+          <declname>waittime_ms</declname>
+          <defval>100</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_event.hpp" line="12" column="5" bodyfile="include/input/IPC/memory/linux/named_event.cpp" bodystart="32" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1EVENT_1aa22e01b26e072bfb613b27a1d7afe81b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::EVENT::Wait_Infinite</definition>
+        <argsstring>()</argsstring>
+        <name>Wait_Infinite</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_event.hpp" line="14" column="5" bodyfile="include/input/IPC/memory/linux/named_event.cpp" bodystart="65" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1EVENT_1a155e397a08e4430f93576570e7308f13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::EVENT::Wake</definition>
+        <argsstring>()</argsstring>
+        <name>Wake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_event.hpp" line="16" column="5" bodyfile="include/input/IPC/memory/linux/named_event.cpp" bodystart="83" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1EVENT_1add528ebcc737f3bc13fd259f4c688f6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::EVENT::HostInit</definition>
+        <argsstring>(const MNAME &amp;name)</argsstring>
+        <name>HostInit</name>
+        <param>
+          <type>const <ref refid="namespacePDJE__IPC_1a9fde1a10ab51831bfa1320d45d91aec5" kindref="member">MNAME</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_event.hpp" line="18" column="5" bodyfile="include/input/IPC/memory/linux/named_event.cpp" bodystart="23" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1EVENT_1a58e3fb8670b388d936d02dde8690bc55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::EVENT::ClientInit</definition>
+        <argsstring>(const MNAME &amp;name)</argsstring>
+        <name>ClientInit</name>
+        <param>
+          <type>const <ref refid="namespacePDJE__IPC_1a9fde1a10ab51831bfa1320d45d91aec5" kindref="member">MNAME</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_event.hpp" line="20" column="5" bodyfile="include/input/IPC/memory/linux/named_event.cpp" bodystart="14" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1EVENT_1a2ed4200f20a3893e6e7c197bdbc6a19e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::EVENT::EVENT</definition>
+        <argsstring>()=default</argsstring>
+        <name>EVENT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_event.hpp" line="21" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1EVENT_1a9cce95b23b178730ddcd852295e9bb92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::EVENT::~EVENT</definition>
+        <argsstring>()</argsstring>
+        <name>~EVENT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_named_event.hpp" line="22" column="5" bodyfile="include/input/IPC/memory/linux/named_event.cpp" bodystart="94" bodyend="100"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>PDJE_IPC::EVENT</label>
+        <link refid="classPDJE__IPC_1_1EVENT"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>name_cache</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="2">
+        <label>std::string</label>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/IPC/memory/ipc_named_event.hpp" line="5" column="1" bodyfile="include/input/IPC/memory/ipc_named_event.hpp" bodystart="5" bodyend="23"/>
+    <listofallmembers>
+      <member refid="classPDJE__IPC_1_1EVENT_1a58e3fb8670b388d936d02dde8690bc55" prot="public" virt="non-virtual"><scope>PDJE_IPC::EVENT</scope><name>ClientInit</name></member>
+      <member refid="classPDJE__IPC_1_1EVENT_1a2ed4200f20a3893e6e7c197bdbc6a19e" prot="public" virt="non-virtual"><scope>PDJE_IPC::EVENT</scope><name>EVENT</name></member>
+      <member refid="classPDJE__IPC_1_1EVENT_1acdd1f78601b0adf27ec1dd5aac6884cb" prot="public" virt="non-virtual"><scope>PDJE_IPC::EVENT</scope><name>hdlp</name></member>
+      <member refid="classPDJE__IPC_1_1EVENT_1add528ebcc737f3bc13fd259f4c688f6b" prot="public" virt="non-virtual"><scope>PDJE_IPC::EVENT</scope><name>HostInit</name></member>
+      <member refid="classPDJE__IPC_1_1EVENT_1a91c5e84936cc68961213c1d13c13318a" prot="private" virt="non-virtual"><scope>PDJE_IPC::EVENT</scope><name>name_cache</name></member>
+      <member refid="classPDJE__IPC_1_1EVENT_1a68526390e1dd1ca62571fd17faff4a88" prot="public" virt="non-virtual"><scope>PDJE_IPC::EVENT</scope><name>Wait</name></member>
+      <member refid="classPDJE__IPC_1_1EVENT_1aa22e01b26e072bfb613b27a1d7afe81b" prot="public" virt="non-virtual"><scope>PDJE_IPC::EVENT</scope><name>Wait_Infinite</name></member>
+      <member refid="classPDJE__IPC_1_1EVENT_1a155e397a08e4430f93576570e7308f13" prot="public" virt="non-virtual"><scope>PDJE_IPC::EVENT</scope><name>Wake</name></member>
+      <member refid="classPDJE__IPC_1_1EVENT_1a9cce95b23b178730ddcd852295e9bb92" prot="public" virt="non-virtual"><scope>PDJE_IPC::EVENT</scope><name>~EVENT</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -4,7 +4,7 @@
 File PDJE_Buffer.hpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include\global\DataLines``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include/global/DataLines``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Buffer.hpp
    :local:
    :backlinks: none
 
-Definition (``include\global\DataLines\PDJE_Buffer.hpp``)
+Definition (``include/global/DataLines/PDJE_Buffer.hpp``)
 ---------------------------------------------------------
 
 
@@ -48,11 +48,15 @@ Included By
 -----------
 
 
-- :ref:`file_include_input_host_MainProcess.hpp`
+- :ref:`file_include_input_IPC_memory_linux_Input_Transfer.hpp`
+
+- :ref:`file_include_input_IPC_memory_windows_Input_Transfer.hpp`
 
 - :ref:`file_include_input_midi_PDJE_MIDI.hpp`
 
 - :ref:`file_include_input_runner_SubProcess.hpp`
+
+- :ref:`file_include_input_trashbin_MainProcess_deprecated.hpp`
 
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.cpp`
 
@@ -65,5 +69,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_atomic___double___buffer`
+- :ref:`exhale_class_classAtomic__Double__Buffer`
 

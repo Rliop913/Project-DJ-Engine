@@ -4,7 +4,7 @@
 Program Listing for File ipc_shared_memory.hpp
 ==============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_input_IPC_memory_ipc_shared_memory.hpp>` (``include\input\IPC\memory\ipc_shared_memory.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_input_IPC_memory_ipc_shared_memory.hpp>` (``include/input/IPC/memory/ipc_shared_memory.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -30,7 +30,13 @@ Program Listing for File ipc_shared_memory.hpp
    #include <Windows.h>
    #endif
    namespace PDJE_IPC {
+   namespace fs = std::filesystem;
    
+   static inline std::string
+   posix_shmem_macro(const fs::path &origin)
+   {
+       return "/" + origin.filename().string();
+   }
    namespace fs              = std::filesystem;
    constexpr int PDJE_NO_IPC = 2;
    constexpr int PDJE_IPC_R  = 1;

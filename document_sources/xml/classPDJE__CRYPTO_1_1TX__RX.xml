@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classPDJE__CRYPTO_1_1TX__RX" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_CRYPTO::TX_RX</compoundname>
+    <includes refid="Secured__IPC__TX__RX_8hpp" local="no">Secured_IPC_TX_RX.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPDJE__CRYPTO_1_1TX__RX_1ade9cf1f769c1020b497a9d3c9d763b45" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__CRYPTO_1_1AEAD" kindref="compound">AEAD</ref></type>
+        <definition>AEAD PDJE_CRYPTO::TX_RX::aead</definition>
+        <argsstring></argsstring>
+        <name>aead</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="40" column="54" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__CRYPTO_1_1TX__RX_1aeb6c2d1a1afcb515f2de14f53a1ec5a7" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">PDJE_IPC::SharedMem</ref>&lt; char, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC::PDJE_IPC_RW</ref> &gt;</type>
+        <definition>PDJE_IPC::SharedMem&lt;char, PDJE_IPC::PDJE_IPC_RW&gt; PDJE_CRYPTO::TX_RX::TXBuf</definition>
+        <argsstring></argsstring>
+        <name>TXBuf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="41" column="25" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__CRYPTO_1_1TX__RX_1a42402374c1d29744e8c2d5d2f444f504" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">PDJE_IPC::SharedMem</ref>&lt; char, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC::PDJE_IPC_RW</ref> &gt;</type>
+        <definition>PDJE_IPC::SharedMem&lt;char, PDJE_IPC::PDJE_IPC_RW&gt; PDJE_CRYPTO::TX_RX::RXBuf</definition>
+        <argsstring></argsstring>
+        <name>RXBuf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="42" column="25" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__CRYPTO_1_1TX__RX_1a68c6067fcbe0409866511340c3881515" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1MUTEX" kindref="compound">PDJE_IPC::MUTEX</ref></type>
+        <definition>PDJE_IPC::MUTEX PDJE_CRYPTO::TX_RX::TXM</definition>
+        <argsstring></argsstring>
+        <name>TXM</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="43" column="54" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__CRYPTO_1_1TX__RX_1a467adbb712ce1bcecdb1b012bacaa534" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1MUTEX" kindref="compound">PDJE_IPC::MUTEX</ref></type>
+        <definition>PDJE_IPC::MUTEX PDJE_CRYPTO::TX_RX::RXM</definition>
+        <argsstring></argsstring>
+        <name>RXM</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="44" column="54" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__CRYPTO_1_1TX__RX_1a55c1cc29fa8d346e1816fe1cd899ee52" prot="private" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="namespacePDJE__CRYPTO_1ae142d963fb4d9efc1939bed2b9e2c787" kindref="member">HEADER</ref>, <ref refid="namespacePDJE__CRYPTO_1a562eae7d65ad7ff6161a4e4988a41820" kindref="member">FEATURE</ref> &gt;</type>
+        <definition>std::map&lt;HEADER, FEATURE&gt; PDJE_CRYPTO::TX_RX::feature_map</definition>
+        <argsstring></argsstring>
+        <name>feature_map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="45" column="37" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__CRYPTO_1_1TX__RX_1a62b60b546aa6406c10bd669be92c6cf7" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; std::thread &gt;</type>
+        <definition>std::optional&lt;std::thread&gt; PDJE_CRYPTO::TX_RX::listen_worker</definition>
+        <argsstring></argsstring>
+        <name>listen_worker</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="46" column="41" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__CRYPTO_1_1TX__RX_1a56557af611c555ece0b42f3a5ec9299f" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; PDJE_CRYPTO::TX_RX::worker_switch</definition>
+        <argsstring></argsstring>
+        <name>worker_switch</name>
+        <initializer>{ false }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="47" column="48" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPDJE__CRYPTO_1_1TX__RX_1ad6e6bb2ab828d1f4e4c0301462b693cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_CRYPTO::TX_RX::Listen</definition>
+        <argsstring>()</argsstring>
+        <name>Listen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="51" column="5" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.cpp" bodystart="42" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__CRYPTO_1_1TX__RX_1a06bc0c5088ce1e6d722493681842c42c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_CRYPTO::TX_RX::BlockedListen</definition>
+        <argsstring>()</argsstring>
+        <name>BlockedListen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="53" column="5" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.cpp" bodystart="87" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__CRYPTO_1_1TX__RX_1ad6b099ea78e406c6543960bc87f2da50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_CRYPTO::TX_RX::TX_RX</definition>
+        <argsstring>(PSK &amp;key, const fs::path &amp;memFirst, const PDJE_IPC::MNAME &amp;firstLock, const fs::path &amp;memSecond, const PDJE_IPC::MNAME &amp;secondLock, const bool isHost)</argsstring>
+        <name>TX_RX</name>
+        <param>
+          <type><ref refid="classPDJE__CRYPTO_1_1PSK" kindref="compound">PSK</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>memFirst</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacePDJE__IPC_1a9fde1a10ab51831bfa1320d45d91aec5" kindref="member">PDJE_IPC::MNAME</ref> &amp;</type>
+          <declname>firstLock</declname>
+        </param>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>memSecond</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacePDJE__IPC_1a9fde1a10ab51831bfa1320d45d91aec5" kindref="member">PDJE_IPC::MNAME</ref> &amp;</type>
+          <declname>secondLock</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>isHost</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="54" column="5" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="54" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__CRYPTO_1_1TX__RX_1aefec750b151f1fb79650dd8d925d6f58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_CRYPTO::TX_RX::StopListen</definition>
+        <argsstring>()</argsstring>
+        <name>StopListen</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="84" column="5" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="84" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__CRYPTO_1_1TX__RX_1a0a422f5ba826dcf1b695cb89bf28a7c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_CRYPTO::TX_RX::AddFunction</definition>
+        <argsstring>(const HEADER header, FEATURE feature)</argsstring>
+        <name>AddFunction</name>
+        <param>
+          <type>const <ref refid="namespacePDJE__CRYPTO_1ae142d963fb4d9efc1939bed2b9e2c787" kindref="member">HEADER</ref></type>
+          <declname>header</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacePDJE__CRYPTO_1a562eae7d65ad7ff6161a4e4988a41820" kindref="member">FEATURE</ref></type>
+          <declname>feature</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="89" column="5" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.cpp" bodystart="6" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__CRYPTO_1_1TX__RX_1ad1d2f3c1d7e7791b43a741e60870ce9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_CRYPTO::TX_RX::Send</definition>
+        <argsstring>(const HEADER header, const std::string &amp;body)</argsstring>
+        <name>Send</name>
+        <param>
+          <type>const <ref refid="namespacePDJE__CRYPTO_1ae142d963fb4d9efc1939bed2b9e2c787" kindref="member">HEADER</ref></type>
+          <declname>header</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>body</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="91" column="5" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.cpp" bodystart="12" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__CRYPTO_1_1TX__RX_1a37211aeff79cd9e3acfa1f56c0128229" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_CRYPTO::TX_RX::~TX_RX</definition>
+        <argsstring>()</argsstring>
+        <name>~TX_RX</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="93" column="5" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.cpp" bodystart="127" bodyend="135"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>PDJE_IPC::MUTEX</label>
+        <link refid="classPDJE__IPC_1_1MUTEX"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>mutex_name</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>PDJE_IPC::SharedMem&lt; char, PDJE_IPC::PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="5">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="1">
+        <label>PDJE_CRYPTO::TX_RX</label>
+        <link refid="classPDJE__CRYPTO_1_1TX__RX"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>worker_switch</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>RXM</edgelabel>
+          <edgelabel>TXM</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>RXBuf</edgelabel>
+          <edgelabel>TXBuf</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>feature_map</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>aead</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::atomic&lt; bool &gt;</label>
+      </node>
+      <node id="7">
+        <label>std::map&lt; HEADER, FEATURE &gt;</label>
+      </node>
+      <node id="8">
+        <label>PDJE_CRYPTO::AEAD</label>
+        <link refid="classPDJE__CRYPTO_1_1AEAD"/>
+        <childnode refid="9" relation="usage">
+          <edgelabel>dec</edgelabel>
+          <edgelabel>enc</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>std::unique_ptr&lt; Botan::Cipher_Mode &gt;</label>
+      </node>
+      <node id="4">
+        <label>std::string</label>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="38" column="1" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="38" bodyend="94"/>
+    <listofallmembers>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1a0a422f5ba826dcf1b695cb89bf28a7c4" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>AddFunction</name></member>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1ade9cf1f769c1020b497a9d3c9d763b45" prot="private" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>aead</name></member>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1a06bc0c5088ce1e6d722493681842c42c" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>BlockedListen</name></member>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1a55c1cc29fa8d346e1816fe1cd899ee52" prot="private" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>feature_map</name></member>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1ad6e6bb2ab828d1f4e4c0301462b693cb" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>Listen</name></member>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1a62b60b546aa6406c10bd669be92c6cf7" prot="private" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>listen_worker</name></member>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1a42402374c1d29744e8c2d5d2f444f504" prot="private" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>RXBuf</name></member>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1a467adbb712ce1bcecdb1b012bacaa534" prot="private" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>RXM</name></member>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1ad1d2f3c1d7e7791b43a741e60870ce9c" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>Send</name></member>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1aefec750b151f1fb79650dd8d925d6f58" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>StopListen</name></member>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1ad6b099ea78e406c6543960bc87f2da50" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>TX_RX</name></member>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1aeb6c2d1a1afcb515f2de14f53a1ec5a7" prot="private" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>TXBuf</name></member>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1a68c6067fcbe0409866511340c3881515" prot="private" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>TXM</name></member>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1a56557af611c555ece0b42f3a5ec9299f" prot="private" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>worker_switch</name></member>
+      <member refid="classPDJE__CRYPTO_1_1TX__RX_1a37211aeff79cd9e3acfa1f56c0128229" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::TX_RX</scope><name>~TX_RX</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

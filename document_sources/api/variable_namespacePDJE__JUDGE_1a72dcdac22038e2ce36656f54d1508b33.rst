@@ -3,7 +3,7 @@
 Variable PDJE_JUDGE::X
 ======================
 
-- Defined in :ref:`file_include_judge_Loop_Mouse.cpp`
+- Defined in :ref:`file_include_judge_Loop_Match_Mouse.cpp`
 
 
 Variable Documentation

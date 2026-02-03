@@ -4,7 +4,7 @@
 File SubProcess.hpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_runner>` (``include\input\runner``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_runner>` (``include/input/runner``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File SubProcess.hpp
    :local:
    :backlinks: none
 
-Definition (``include\input\runner\SubProcess.hpp``)
+Definition (``include/input/runner/SubProcess.hpp``)
 ----------------------------------------------------
 
 
@@ -66,8 +66,6 @@ Included By
 
 - :ref:`file_include_input_runner_SetTXRXFeatures.cpp`
 
-- :ref:`file_include_input_runner_linux_SubProcess.cpp`
-
 - :ref:`file_include_input_runner_windows_InputLoop.cpp`
 
 - :ref:`file_include_input_runner_windows_ListDevice.hpp`
@@ -75,6 +73,8 @@ Included By
 - :ref:`file_include_input_runner_windows_SubMain.cpp`
 
 - :ref:`file_include_input_runner_windows_SubProcess.cpp`
+
+- :ref:`file_include_input_trashbin_SubProcess.cpp`
 
 
 
@@ -92,14 +92,14 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_p_d_j_e___i_p_c_1_1_s_u_b_p_r_o_c_1_1_t_x_r_x_listener`
+- :ref:`exhale_class_classPDJE__IPC_1_1SUBPROC_1_1TXRXListener`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespace_p_d_j_e___i_p_c_1aaf89512571dfd440f5c2d0d57df24042`
+- :ref:`exhale_typedef_namespacePDJE__IPC_1a39751c10dd8e3892dec091c1fcf8d627`
 
-- :ref:`exhale_typedef_namespace_p_d_j_e___i_p_c_1afa0a7b47d125684c3f3557e194fc5e56`
+- :ref:`exhale_typedef_namespacePDJE__IPC_1a389aed39b0f10dedcdffbe8944639e0b`
 

@@ -1,10 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="Mac_2PDJE__Highres__Clock_8hpp" kind="file" language="C++">
     <compoundname>PDJE_Highres_Clock.hpp</compoundname>
     <includes local="no">cstdint</includes>
     <includes local="no">time.h</includes>
     <incdepgraph>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
       <node id="1">
         <label>include/global/Highres_Clock/Mac/PDJE_Highres_Clock.hpp</label>
         <link refid="Mac_2PDJE__Highres__Clock_8hpp"/>
@@ -12,9 +15,6 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-      </node>
-      <node id="2">
-        <label>cstdint</label>
       </node>
       <node id="3">
         <label>time.h</label>
@@ -32,7 +32,7 @@
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;time.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__HIGHRES__CLOCK" kindref="compound">PDJE_HIGHRES_CLOCK</ref><sp/>{</highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK" kindref="compound">CLOCK</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">CLOCK<sp/>{</highlight></codeline>
 <codeline lineno="7"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">timespec<sp/><ref refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1ad2232e60c615b31184a7b549dbf8f70d" kindref="member">ts</ref>;</highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
@@ -44,7 +44,7 @@
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(uint64_t)<ref refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1ad2232e60c615b31184a7b549dbf8f70d" kindref="member">ts</ref>.tv_sec<sp/>*<sp/>1000000ull<sp/>+<sp/><ref refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1ad2232e60c615b31184a7b549dbf8f70d" kindref="member">ts</ref>.tv_nsec<sp/>/<sp/>1000;</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="17"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="18"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_HIGHRES_CLOCK</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_HIGHRES_CLOCK</highlight></codeline>
     </programlisting>
     <location file="include/global/Highres_Clock/Mac/PDJE_Highres_Clock.hpp"/>
   </compounddef>

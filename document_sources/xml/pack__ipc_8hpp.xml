@@ -1,13 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="pack__ipc_8hpp" kind="file" language="C++">
     <compoundname>pack_ipc.hpp</compoundname>
     <includes refid="ipc__shared__memory_8hpp" local="yes">ipc_shared_memory.hpp</includes>
     <includes local="no">sys/socket.h</includes>
     <incdepgraph>
+      <node id="22">
+        <label>limits</label>
+      </node>
+      <node id="5">
+        <label>filesystem</label>
+      </node>
+      <node id="16">
+        <label>PDJE_INPUT_PROCESS_HASH.hpp</label>
+        <link refid="PDJE__INPUT__PROCESS__HASH_8hpp"/>
+      </node>
       <node id="3">
         <label>PDJE_Crypto.hpp</label>
-        <link refid="_p_d_j_e___crypto_8hpp"/>
+        <link refid="PDJE__Crypto_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
@@ -21,9 +31,21 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
+      <node id="13">
+        <label>botan/cipher_mode.h</label>
+      </node>
+      <node id="15">
+        <label>string</label>
+      </node>
+      <node id="7">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="20">
+        <label>fstream</label>
+      </node>
       <node id="4">
         <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
@@ -39,17 +61,14 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="1">
-        <label>include/input/IPC/--DEPRECATED--transmission/linux/pack_ipc.hpp</label>
-        <link refid="pack__ipc_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
+      <node id="9">
+        <label>spdlog/spdlog.h</label>
       </node>
-      <node id="16">
-        <label>PDJE_INPUT_PROCESS_HASH.hpp</label>
-        <link refid="_p_d_j_e___i_n_p_u_t___p_r_o_c_e_s_s___h_a_s_h_8hpp"/>
+      <node id="10">
+        <label>string_view</label>
+      </node>
+      <node id="21">
+        <label>ios</label>
       </node>
       <node id="2">
         <label>ipc_shared_memory.hpp</label>
@@ -79,53 +98,34 @@
         <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="17">
-        <label>algorithm</label>
-      </node>
-      <node id="12">
-        <label>botan/auto_rng.h</label>
-      </node>
-      <node id="13">
-        <label>botan/cipher_mode.h</label>
+      <node id="23">
+        <label>vector</label>
       </node>
       <node id="14">
         <label>botan/hash.h</label>
       </node>
+      <node id="8">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="1">
+        <label>include/input/trashbin/--DEPRECATED--transmission/linux/pack_ipc.hpp</label>
+        <link refid="pack__ipc_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
       <node id="18">
         <label>cctype</label>
+      </node>
+      <node id="12">
+        <label>botan/auto_rng.h</label>
       </node>
       <node id="19">
         <label>cstddef</label>
       </node>
-      <node id="5">
-        <label>filesystem</label>
-      </node>
-      <node id="20">
-        <label>fstream</label>
-      </node>
-      <node id="21">
-        <label>ios</label>
-      </node>
-      <node id="22">
-        <label>limits</label>
-      </node>
       <node id="6">
         <label>mutex</label>
-      </node>
-      <node id="7">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
-      <node id="8">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
-      <node id="9">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="15">
-        <label>string</label>
-      </node>
-      <node id="10">
-        <label>string_view</label>
       </node>
       <node id="24">
         <label>sys/socket.h</label>
@@ -133,12 +133,12 @@
       <node id="11">
         <label>type_traits</label>
       </node>
-      <node id="23">
-        <label>vector</label>
+      <node id="17">
+        <label>algorithm</label>
       </node>
     </incdepgraph>
-    <innerclass refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x" prot="public">PDJE_IPC::IPC_SHM_LINUX</innerclass>
-    <innernamespace refid="namespace_p_d_j_e___i_p_c">PDJE_IPC</innernamespace>
+    <innerclass refid="structPDJE__IPC_1_1IPC__SHM__LINUX" prot="public">PDJE_IPC::IPC_SHM_LINUX</innerclass>
+    <innernamespace refid="namespacePDJE__IPC">PDJE_IPC</innernamespace>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -148,32 +148,32 @@
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ipc__shared__memory_8hpp" kindref="compound">ipc_shared_memory.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___i_p_c" kindref="compound">PDJE_IPC</ref><sp/>{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__IPC" kindref="compound">PDJE_IPC</ref><sp/>{</highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
-<codeline lineno="7" refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>MEM_PROT_FLAG&gt;<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a526db6d8f21d7e686d5f1abd6461e05c" kindref="member">IPC_SHM_LINUX</ref><sp/>{</highlight></codeline>
+<codeline lineno="7" refid="structPDJE__IPC_1_1IPC__SHM__LINUX" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>MEM_PROT_FLAG&gt;<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX" kindref="compound">IPC_SHM_LINUX</ref><sp/>{</highlight></codeline>
 <codeline lineno="8"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="9" refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a36c146ab4725ca202d3bb56532b141cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>iovec<sp/><sp/><sp/><sp/><ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a36c146ab4725ca202d3bb56532b141cc" kindref="member">iov</ref><sp/>=<sp/>{<sp/>.iov_base<sp/>=<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)</highlight><highlight class="stringliteral">&quot;F&quot;</highlight><highlight class="normal">,<sp/>.iov_len<sp/>=<sp/>1<sp/>};</highlight></codeline>
-<codeline lineno="10" refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a31225acb2f16fe8687e10b5fa77bd769" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>cmsghdr<sp/>*<ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a31225acb2f16fe8687e10b5fa77bd769" kindref="member">cmsg</ref>;</highlight></codeline>
+<codeline lineno="9" refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a36c146ab4725ca202d3bb56532b141cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>iovec<sp/><sp/><sp/><sp/><ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a36c146ab4725ca202d3bb56532b141cc" kindref="member">iov</ref><sp/>=<sp/>{<sp/>.iov_base<sp/>=<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*)</highlight><highlight class="stringliteral">&quot;F&quot;</highlight><highlight class="normal">,<sp/>.iov_len<sp/>=<sp/>1<sp/>};</highlight></codeline>
+<codeline lineno="10" refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a31225acb2f16fe8687e10b5fa77bd769" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>cmsghdr<sp/>*<ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a31225acb2f16fe8687e10b5fa77bd769" kindref="member">cmsg</ref>;</highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="13" refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a9ed6eec8e1334d3c14937379a4656767" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>msghdr<sp/><ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a9ed6eec8e1334d3c14937379a4656767" kindref="member">msg</ref><sp/>=<sp/>{<sp/>0<sp/>};</highlight></codeline>
-<codeline lineno="14" refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a526db6d8f21d7e686d5f1abd6461e05c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a526db6d8f21d7e686d5f1abd6461e05c" kindref="member">IPC_SHM_LINUX</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_shared_mem" kindref="compound">SharedMem&lt;T, MEM_PROT_FLAG&gt;</ref><sp/>&amp;shared_IPC_mem)</highlight></codeline>
+<codeline lineno="13" refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a9ed6eec8e1334d3c14937379a4656767" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>msghdr<sp/><ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a9ed6eec8e1334d3c14937379a4656767" kindref="member">msg</ref><sp/>=<sp/>{<sp/>0<sp/>};</highlight></codeline>
+<codeline lineno="14" refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a526db6d8f21d7e686d5f1abd6461e05c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a526db6d8f21d7e686d5f1abd6461e05c" kindref="member">IPC_SHM_LINUX</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">SharedMem&lt;T, MEM_PROT_FLAG&gt;</ref><sp/>&amp;shared_IPC_mem)</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a9ed6eec8e1334d3c14937379a4656767" kindref="member">msg</ref>.msg_iov<sp/><sp/><sp/><sp/>=<sp/>&amp;<ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a36c146ab4725ca202d3bb56532b141cc" kindref="member">iov</ref>;</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a9ed6eec8e1334d3c14937379a4656767" kindref="member">msg</ref>.msg_iovlen<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a9ed6eec8e1334d3c14937379a4656767" kindref="member">msg</ref>.msg_iov<sp/><sp/><sp/><sp/>=<sp/>&amp;<ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a36c146ab4725ca202d3bb56532b141cc" kindref="member">iov</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a9ed6eec8e1334d3c14937379a4656767" kindref="member">msg</ref>.msg_iovlen<sp/>=<sp/>1;</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>cmsgbuf[CMSG_SPACE(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))];</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a9ed6eec8e1334d3c14937379a4656767" kindref="member">msg</ref>.msg_control<sp/><sp/><sp/><sp/>=<sp/>cmsgbuf;</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a9ed6eec8e1334d3c14937379a4656767" kindref="member">msg</ref>.msg_controllen<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(cmsgbuf);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a9ed6eec8e1334d3c14937379a4656767" kindref="member">msg</ref>.msg_control<sp/><sp/><sp/><sp/>=<sp/>cmsgbuf;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a9ed6eec8e1334d3c14937379a4656767" kindref="member">msg</ref>.msg_controllen<sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(cmsgbuf);</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a31225acb2f16fe8687e10b5fa77bd769" kindref="member">cmsg</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>CMSG_FIRSTHDR(&amp;<ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a9ed6eec8e1334d3c14937379a4656767" kindref="member">msg</ref>);</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a31225acb2f16fe8687e10b5fa77bd769" kindref="member">cmsg</ref>-&gt;cmsg_level<sp/>=<sp/>SOL_SOCKET;</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a31225acb2f16fe8687e10b5fa77bd769" kindref="member">cmsg</ref>-&gt;cmsg_type<sp/><sp/>=<sp/>SCM_RIGHTS;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a31225acb2f16fe8687e10b5fa77bd769" kindref="member">cmsg</ref>-&gt;cmsg_len<sp/><sp/><sp/>=<sp/>CMSG_LEN(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">));</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(CMSG_DATA(<ref refid="struct_p_d_j_e___i_p_c_1_1_i_p_c___s_h_m___l_i_n_u_x_1a31225acb2f16fe8687e10b5fa77bd769" kindref="member">cmsg</ref>),<sp/>&amp;shared_IPC_mem.FD,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a31225acb2f16fe8687e10b5fa77bd769" kindref="member">cmsg</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>CMSG_FIRSTHDR(&amp;<ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a9ed6eec8e1334d3c14937379a4656767" kindref="member">msg</ref>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a31225acb2f16fe8687e10b5fa77bd769" kindref="member">cmsg</ref>-&gt;cmsg_level<sp/>=<sp/>SOL_SOCKET;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a31225acb2f16fe8687e10b5fa77bd769" kindref="member">cmsg</ref>-&gt;cmsg_type<sp/><sp/>=<sp/>SCM_RIGHTS;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a31225acb2f16fe8687e10b5fa77bd769" kindref="member">cmsg</ref>-&gt;cmsg_len<sp/><sp/><sp/>=<sp/>CMSG_LEN(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(CMSG_DATA(<ref refid="structPDJE__IPC_1_1IPC__SHM__LINUX_1a31225acb2f16fe8687e10b5fa77bd769" kindref="member">cmsg</ref>),<sp/>&amp;shared_IPC_mem.FD,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">));</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="28"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="29"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_IPC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_IPC</highlight></codeline>
     </programlisting>
-    <location file="include/input/IPC/--DEPRECATED--transmission/linux/pack_ipc.hpp"/>
+    <location file="include/input/trashbin/--DEPRECATED--transmission/linux/pack_ipc.hpp"/>
   </compounddef>
 </doxygen>

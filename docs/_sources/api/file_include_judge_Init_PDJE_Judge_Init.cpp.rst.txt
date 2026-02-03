@@ -4,7 +4,7 @@
 File PDJE_Judge_Init.cpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_judge_Init>` (``include\judge\Init``)
+|exhale_lsh| :ref:`Parent directory <dir_include_judge_Init>` (``include/judge/Init``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Judge_Init.cpp
    :local:
    :backlinks: none
 
-Definition (``include\judge\Init\PDJE_Judge_Init.cpp``)
+Definition (``include/judge/Init/PDJE_Judge_Init.cpp``)
 -------------------------------------------------------
 
 
@@ -50,4 +50,11 @@ Namespaces
 
 
 - :ref:`namespace_PDJE_JUDGE`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_PDJE__Judge__Init_8cpp_1a9b860a1a8536887d3b97558bae4d21d9`
 

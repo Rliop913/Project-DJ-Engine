@@ -4,7 +4,7 @@
 File EFFECTS.cpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_MixMachine_EFFECT>` (``include\core\audioRender\MixMachine\EFFECT``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_MixMachine_EFFECT>` (``include/core/audioRender/MixMachine/EFFECT``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File EFFECTS.cpp
    :local:
    :backlinks: none
 
-Definition (``include\core\audioRender\MixMachine\EFFECT\EFFECTS.cpp``)
+Definition (``include/core/audioRender/MixMachine/EFFECT/EFFECTS.cpp``)
 -----------------------------------------------------------------------
 
 

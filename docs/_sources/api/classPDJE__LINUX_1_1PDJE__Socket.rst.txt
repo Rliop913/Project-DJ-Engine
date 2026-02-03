@@ -3,7 +3,7 @@
 Class PDJE_Socket
 =================
 
-- Defined in :ref:`file_include_input_linux_socket_linux_socket.hpp`
+- Defined in :ref:`file_include_input_trashbin_--DEPRECATED-linux_socket_linux_socket.hpp`
 
 
 Class Documentation

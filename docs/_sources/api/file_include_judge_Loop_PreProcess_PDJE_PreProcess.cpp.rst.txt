@@ -4,7 +4,7 @@
 File PDJE_PreProcess.cpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_judge_Loop_PreProcess>` (``include\judge\Loop\PreProcess``)
+|exhale_lsh| :ref:`Parent directory <dir_include_judge_Loop_PreProcess>` (``include/judge/Loop/PreProcess``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_PreProcess.cpp
    :local:
    :backlinks: none
 
-Definition (``include\judge\Loop\PreProcess\PDJE_PreProcess.cpp``)
+Definition (``include/judge/Loop/PreProcess/PDJE_PreProcess.cpp``)
 ------------------------------------------------------------------
 
 

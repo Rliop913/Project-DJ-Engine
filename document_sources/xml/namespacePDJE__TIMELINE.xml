@@ -1,18 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="namespacePDJE__TIMELINE" kind="namespace" language="C++">
     <compoundname>PDJE_TIMELINE</compoundname>
-    <innerclass refid="classPDJE__TIMELINE_1_1BranchLine" prot="public">PDJE_TIMELINE::BranchLine</innerclass>
     <innerclass refid="classPDJE__TIMELINE_1_1EventMarker" prot="public">PDJE_TIMELINE::EventMarker</innerclass>
     <innerclass refid="structPDJE__TIMELINE_1_1GitData" prot="public">PDJE_TIMELINE::GitData</innerclass>
+    <innerclass refid="classPDJE__TIMELINE_1_1BranchLine" prot="public">PDJE_TIMELINE::BranchLine</innerclass>
     <innerclass refid="classPDJE__TIMELINE_1_1TimeLine" prot="public">PDJE_TIMELINE::TimeLine</innerclass>
-    <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" prot="public" static="no">
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" prot="public" static="no">
         <type>std::string</type>
-        <definition>using PDJE_TIMELINE::OID =  std::string</definition>
+        <definition>using PDJE_TIMELINE::OID = typedef std::string</definition>
         <argsstring></argsstring>
         <name>OID</name>
-        <qualifiedname>PDJE_TIMELINE::OID</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -21,12 +20,11 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" line="12" column="1" bodyfile="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" bodystart="12" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacePDJE__TIMELINE_1a521f55c6b3da8f9af56be0c1eb855e41" prot="public" static="no">
+      <memberdef kind="typedef" id="namespacePDJE__TIMELINE_1aae90fd104f806e14b7fbaf98668e785c" prot="public" static="no">
         <type>std::string</type>
-        <definition>using PDJE_TIMELINE::BACK_OID =  std::string</definition>
+        <definition>using PDJE_TIMELINE::BACK_OID = typedef std::string</definition>
         <argsstring></argsstring>
         <name>BACK_OID</name>
-        <qualifiedname>PDJE_TIMELINE::BACK_OID</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,12 +33,11 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" line="13" column="1" bodyfile="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" bodystart="13" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacePDJE__TIMELINE_1a4df8215070f7b003bc7eda9797e018d3" prot="public" static="no">
+      <memberdef kind="typedef" id="namespacePDJE__TIMELINE_1a1db93e71947ef20265b1ef3086888cb6" prot="public" static="no">
         <type>std::string</type>
-        <definition>using PDJE_TIMELINE::TIME_STAMP =  std::string</definition>
+        <definition>using PDJE_TIMELINE::TIME_STAMP = typedef std::string</definition>
         <argsstring></argsstring>
         <name>TIME_STAMP</name>
-        <qualifiedname>PDJE_TIMELINE::TIME_STAMP</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -49,14 +46,13 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" line="45" column="1" bodyfile="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="func">
+      </sectiondef>
+      <sectiondef kind="func">
       <memberdef kind="function" id="namespacePDJE__TIMELINE_1af346ab11735a428e1f07e8adcbe8ef4f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
         <definition>static std::string PDJE_TIMELINE::GenTimeStamp</definition>
         <argsstring>()</argsstring>
         <name>GenTimeStamp</name>
-        <qualifiedname>PDJE_TIMELINE::GenTimeStamp</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -70,13 +66,12 @@
         <definition>static void PDJE_TIMELINE::NewFirstLog</definition>
         <argsstring>(std::shared_ptr&lt; GitData &gt; &amp;git, const OID &amp;id)</argsstring>
         <name>NewFirstLog</name>
-        <qualifiedname>PDJE_TIMELINE::NewFirstLog</qualifiedname>
         <param>
           <type>std::shared_ptr&lt; <ref refid="structPDJE__TIMELINE_1_1GitData" kindref="compound">GitData</ref> &gt; &amp;</type>
           <declname>git</declname>
         </param>
         <param>
-          <type>const <ref refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref> &amp;</type>
+          <type>const <ref refid="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" kindref="member">OID</ref> &amp;</type>
           <declname>id</declname>
         </param>
         <briefdescription>
@@ -92,17 +87,16 @@
         <definition>static void PDJE_TIMELINE::AddLog</definition>
         <argsstring>(std::shared_ptr&lt; GitData &gt; &amp;git, const OID &amp;id, const OID &amp;parent)</argsstring>
         <name>AddLog</name>
-        <qualifiedname>PDJE_TIMELINE::AddLog</qualifiedname>
         <param>
           <type>std::shared_ptr&lt; <ref refid="structPDJE__TIMELINE_1_1GitData" kindref="compound">GitData</ref> &gt; &amp;</type>
           <declname>git</declname>
         </param>
         <param>
-          <type>const <ref refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref> &amp;</type>
+          <type>const <ref refid="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" kindref="member">OID</ref> &amp;</type>
           <declname>id</declname>
         </param>
         <param>
-          <type>const <ref refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref> &amp;</type>
+          <type>const <ref refid="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" kindref="member">OID</ref> &amp;</type>
           <declname>parent</declname>
         </param>
         <briefdescription>
@@ -118,13 +112,12 @@
         <definition>static bool PDJE_TIMELINE::GetParent</definition>
         <argsstring>(const OID &amp;id, OID &amp;parent, std::shared_ptr&lt; GitData &gt; &amp;git)</argsstring>
         <name>GetParent</name>
-        <qualifiedname>PDJE_TIMELINE::GetParent</qualifiedname>
         <param>
-          <type>const <ref refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref> &amp;</type>
+          <type>const <ref refid="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" kindref="member">OID</ref> &amp;</type>
           <declname>id</declname>
         </param>
         <param>
-          <type><ref refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref> &amp;</type>
+          <type><ref refid="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" kindref="member">OID</ref> &amp;</type>
           <declname>parent</declname>
         </param>
         <param>
@@ -144,9 +137,8 @@
         <definition>static void PDJE_TIMELINE::LogBranch</definition>
         <argsstring>(const OID &amp;head, std::shared_ptr&lt; GitData &gt; &amp;git)</argsstring>
         <name>LogBranch</name>
-        <qualifiedname>PDJE_TIMELINE::LogBranch</qualifiedname>
         <param>
-          <type>const <ref refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref> &amp;</type>
+          <type>const <ref refid="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" kindref="member">OID</ref> &amp;</type>
           <declname>head</declname>
         </param>
         <param>
@@ -161,7 +153,7 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" line="31" column="1" bodyfile="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" bodystart="31" bodyend="43"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

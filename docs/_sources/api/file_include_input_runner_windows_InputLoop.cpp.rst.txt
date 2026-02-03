@@ -4,7 +4,7 @@
 File InputLoop.cpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_runner_windows>` (``include\input\runner\windows``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_runner_windows>` (``include/input/runner/windows``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File InputLoop.cpp
    :local:
    :backlinks: none
 
-Definition (``include\input\runner\windows\InputLoop.cpp``)
+Definition (``include/input/runner/windows/InputLoop.cpp``)
 -----------------------------------------------------------
 
 

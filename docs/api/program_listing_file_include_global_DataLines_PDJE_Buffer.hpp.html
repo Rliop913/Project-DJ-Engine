@@ -8,9 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Program Listing for File PDJE_Buffer.hpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
@@ -19,8 +19,8 @@
       <script src="../_static/documentation_options.js?v=5929fcd5"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
-      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
       <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -80,7 +80,7 @@
              
   <section id="program-listing-for-file-pdje-buffer-hpp">
 <span id="program-listing-file-include-global-datalines-pdje-buffer-hpp"></span><h1>Program Listing for File PDJE_Buffer.hpp<a class="headerlink" href="#program-listing-for-file-pdje-buffer-hpp" title="Link to this heading"></a></h1>
-<p>↰ <a class="reference internal" href="file_include_global_DataLines_PDJE_Buffer.hpp.html#file-include-global-datalines-pdje-buffer-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\global\DataLines\PDJE_Buffer.hpp</span></code>)</p>
+<p>↰ <a class="reference internal" href="file_include_global_DataLines_PDJE_Buffer.hpp.html#file-include-global-datalines-pdje-buffer-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/global/DataLines/PDJE_Buffer.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
@@ -143,142 +143,6 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
-
-<span class="c1">// #include &quot;ipc_named_mutex.hpp&quot;</span>
-
-<span class="c1">// template &lt;typename T&gt; class PDJE_Buffer_Arena {</span>
-<span class="c1">//   private:</span>
-<span class="c1">//     PDJE_IPC::SharedMem&lt;T, PDJE_IPC::PDJE_IPC_RW&gt;        buf1;</span>
-<span class="c1">//     PDJE_IPC::SharedMem&lt;T, PDJE_IPC::PDJE_IPC_RW&gt;        buf2;</span>
-<span class="c1">//     PDJE_IPC::SharedMem&lt;uint64_t, PDJE_IPC::PDJE_IPC_RW&gt; first_count;</span>
-<span class="c1">//     PDJE_IPC::SharedMem&lt;uint64_t, PDJE_IPC::PDJE_IPC_RW&gt; second_count;</span>
-
-<span class="c1">//     PDJE_IPC::SharedMem&lt;std::atomic_flag, PDJE_IPC::PDJE_IPC_RW&gt; lock;</span>
-<span class="c1">//     PDJE_IPC::SharedMem&lt;uint8_t, PDJE_IPC::PDJE_IPC_RW&gt;          buf_first;</span>
-
-<span class="c1">//     T *buffer_first_pointer_cache  = nullptr;</span>
-<span class="c1">//     T *buffer_second_pointer_cache = nullptr;</span>
-
-<span class="c1">//   public:</span>
-<span class="c1">//     uint64_t              BUFFER_COUNT = 0;</span>
-<span class="c1">//     std::filesystem::path ID;</span>
-<span class="c1">//     void</span>
-<span class="c1">//     Write(const T &amp;data);</span>
-
-<span class="c1">//     std::pair&lt;T *, uint64_t&gt;</span>
-<span class="c1">//     Get();</span>
-
-<span class="c1">//     PDJE_Buffer_Arena(const std::string &amp;id, const uint64_t count)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         BUFFER_COUNT = count;</span>
-<span class="c1">//         buf1.GetIPCSharedMemory(</span>
-<span class="c1">//             fs::path(std::string(&quot;PDJE_INPUT_SHMEM_BUF_FIRST&quot;) + id),</span>
-<span class="c1">//             BUFFER_COUNT);</span>
-<span class="c1">//         buf2.GetIPCSharedMemory(</span>
-<span class="c1">//             fs::path(std::string(&quot;PDJE_INPUT_SHMEM_BUF_SECOND&quot;) + id),</span>
-<span class="c1">//             BUFFER_COUNT);</span>
-<span class="c1">//         first_count.GetIPCSharedMemory(</span>
-<span class="c1">//             fs::path(std::string(&quot;PDJE_INPUT_SHMEM_BUF_COUNT_FIRST&quot;) + id),</span>
-<span class="c1">//             1);</span>
-<span class="c1">//         second_count.GetIPCSharedMemory(</span>
-<span class="c1">//             fs::path(std::string(&quot;PDJE_INPUT_SHMEM_BUF_COUNT_SECOND&quot;) + id),</span>
-<span class="c1">//             1);</span>
-<span class="c1">//         lock.GetIPCSharedMemory(</span>
-<span class="c1">//             fs::path(std::string(&quot;PDJE_INPUT_SHMEM_LOCK&quot;) + id), 1);</span>
-<span class="c1">//         buf_first.GetIPCSharedMemory(</span>
-<span class="c1">//             fs::path(std::string(&quot;PDJE_INPUT_SHMEM_BUFFER_SWITCH&quot;) + id), 1);</span>
-<span class="c1">//         buffer_first_pointer_cache  = buf1.ptr;</span>
-<span class="c1">//         buffer_second_pointer_cache = buf2.ptr;</span>
-<span class="c1">//     }</span>
-
-<span class="c1">//     PDJE_Buffer_Arena(const uint64_t count)</span>
-<span class="c1">//     {</span>
-<span class="c1">//         BUFFER_COUNT = count;</span>
-<span class="c1">//         std::random_device                 rd;</span>
-<span class="c1">//         std::mt19937                       gen(rd());</span>
-<span class="c1">//         std::uniform_int_distribution&lt;int&gt; dis(0, INT_MAX);</span>
-<span class="c1">//         ID = fs::path(std::to_string(dis(gen)));</span>
-<span class="c1">//         buf1.MakeIPCSharedMemory(</span>
-<span class="c1">//             fs::path(std::string(&quot;PDJE_INPUT_SHMEM_BUF_FIRST&quot;) +</span>
-<span class="c1">//             ID.string()), BUFFER_COUNT);</span>
-<span class="c1">//         buf2.MakeIPCSharedMemory(</span>
-<span class="c1">//             fs::path(std::string(&quot;PDJE_INPUT_SHMEM_BUF_SECOND&quot;) +</span>
-<span class="c1">//             ID.string()), BUFFER_COUNT);</span>
-<span class="c1">//         first_count.MakeIPCSharedMemory(</span>
-<span class="c1">//             fs::path(std::string(&quot;PDJE_INPUT_SHMEM_BUF_COUNT_FIRST&quot;) +</span>
-<span class="c1">//                      ID.string()),</span>
-<span class="c1">//             1);</span>
-<span class="c1">//         second_count.MakeIPCSharedMemory(</span>
-<span class="c1">//             fs::path(std::string(&quot;PDJE_INPUT_SHMEM_BUF_COUNT_SECOND&quot;) +</span>
-<span class="c1">//                      ID.string()),</span>
-<span class="c1">//             1);</span>
-<span class="c1">//         lock.MakeIPCSharedMemory(</span>
-<span class="c1">//             fs::path(std::string(&quot;PDJE_INPUT_SHMEM_LOCK&quot;) + ID.string()), 1);</span>
-<span class="c1">//         buf_first.MakeIPCSharedMemory(</span>
-<span class="c1">//             fs::path(std::string(&quot;PDJE_INPUT_SHMEM_BUFFER_SWITCH&quot;) +</span>
-<span class="c1">//                      ID.string()),</span>
-<span class="c1">//             1);</span>
-<span class="c1">//         buffer_first_pointer_cache  = buf1.ptr;</span>
-<span class="c1">//         buffer_second_pointer_cache = buf2.ptr;</span>
-<span class="c1">//         new (lock.ptr) std::atomic_flag();</span>
-<span class="c1">//         *first_count.ptr  = 0;</span>
-<span class="c1">//         *second_count.ptr = 0;</span>
-<span class="c1">//         *buf_first.ptr    = 1;</span>
-
-<span class="c1">//         lock.ptr-&gt;clear(std::memory_order_relaxed);</span>
-<span class="c1">//     }</span>
-
-<span class="c1">//     ~PDJE_Buffer_Arena() = default;</span>
-<span class="c1">// };</span>
-<span class="c1">// template &lt;typename T&gt;</span>
-<span class="c1">// void</span>
-<span class="c1">// PDJE_Buffer_Arena&lt;T&gt;::Write(const T &amp;data)</span>
-<span class="c1">// {</span>
-
-<span class="c1">//     while (lock.ptr-&gt;test_and_set(std::memory_order_acquire)) {</span>
-<span class="c1">//     }</span>
-<span class="c1">//     // locked</span>
-<span class="c1">//     if (*buf_first.ptr == 1) {</span>
-<span class="c1">//         if ((*first_count.ptr) &gt;= BUFFER_COUNT) {</span>
-<span class="c1">//             lock.ptr-&gt;clear(std::memory_order_release); // unlock</span>
-<span class="c1">//             return;</span>
-<span class="c1">//         }</span>
-
-<span class="c1">//         buf1.ptr[*(first_count.ptr)] = data;</span>
-<span class="c1">//         ++(*first_count.ptr);</span>
-
-<span class="c1">//     } else {</span>
-<span class="c1">//         if ((*second_count.ptr) &gt;= BUFFER_COUNT) {</span>
-<span class="c1">//             lock.ptr-&gt;clear(std::memory_order_release); // unlock</span>
-<span class="c1">//             return;</span>
-<span class="c1">//         }</span>
-<span class="c1">//         buf2.ptr[(*second_count.ptr)] = data;</span>
-<span class="c1">//         ++(*second_count.ptr);</span>
-<span class="c1">//     }</span>
-<span class="c1">//     lock.ptr-&gt;clear(std::memory_order_release); // unlock</span>
-<span class="c1">// }</span>
-
-<span class="c1">// template &lt;typename T&gt;</span>
-<span class="c1">// std::pair&lt;T *, uint64_t&gt;</span>
-<span class="c1">// PDJE_Buffer_Arena&lt;T&gt;::Get()</span>
-<span class="c1">// {</span>
-<span class="c1">//     while (lock.ptr-&gt;test_and_set(std::memory_order_acquire)) {</span>
-<span class="c1">//     }</span>
-<span class="c1">//     if (*buf_first.ptr == 1) {</span>
-<span class="c1">//         (*second_count.ptr) = 0;</span>
-<span class="c1">//     } else {</span>
-<span class="c1">//         (*first_count.ptr) = 0;</span>
-<span class="c1">//     }</span>
-
-<span class="c1">//     (*buf_first.ptr) = (*buf_first.ptr == 1) ? 0 : 1;</span>
-
-<span class="c1">//     lock.ptr-&gt;clear(std::memory_order_release);</span>
-<span class="c1">//     if ((*buf_first.ptr) == 1) {</span>
-<span class="c1">//         return std::pair(buffer_second_pointer_cache, (*second_count.ptr));</span>
-<span class="c1">//     } else {</span>
-<span class="c1">//         return std::pair(buffer_first_pointer_cache, (*first_count.ptr));</span>
-<span class="c1">//     }</span>
-<span class="c1">// }</span>
 </pre></div>
 </div>
 </section>

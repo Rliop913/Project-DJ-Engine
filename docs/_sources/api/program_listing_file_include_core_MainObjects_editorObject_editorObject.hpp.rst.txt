@@ -4,7 +4,7 @@
 Program Listing for File editorObject.hpp
 =========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_MainObjects_editorObject_editorObject.hpp>` (``include\core\MainObjects\editorObject\editorObject.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_MainObjects_editorObject_editorObject.hpp>` (``include/core/MainObjects/editorObject/editorObject.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -254,15 +254,6 @@ Program Listing for File editorObject.hpp
    PDJE_API bool
    editorObject::Redo<EDIT_ARG_MUSIC>(const UNSANITIZED &musicName);
    
-   template <>
-   PDJE_API bool
-   editorObject::Undo<EDIT_ARG_NOTE>();
-   template <>
-   PDJE_API bool
-   editorObject::Undo<EDIT_ARG_MIX>();
-   template <>
-   PDJE_API bool
-   editorObject::Undo<EDIT_ARG_KEY_VALUE>();
    
    template <>
    PDJE_API void

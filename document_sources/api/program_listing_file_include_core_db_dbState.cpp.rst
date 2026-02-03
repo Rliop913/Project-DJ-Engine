@@ -4,7 +4,7 @@
 Program Listing for File dbState.cpp
 ====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_dbState.cpp>` (``include\core\db\dbState.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_dbState.cpp>` (``include/core/db/dbState.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

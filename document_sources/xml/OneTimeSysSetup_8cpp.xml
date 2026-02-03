@@ -1,28 +1,38 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="OneTimeSysSetup_8cpp" kind="file" language="C++">
     <compoundname>OneTimeSysSetup.cpp</compoundname>
     <includes refid="OneTimeSysSetup_8hpp" local="yes">OneTimeSysSetup.hpp</includes>
     <incdepgraph>
+      <node id="9">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="4">
+        <label>arpa/inet.h</label>
+      </node>
       <node id="1">
-        <label>include/input/linux/RT/OneTimeSysSetup.cpp</label>
+        <label>include/input/trashbin/--DEPRECATED-linux/RT/OneTimeSysSetup.cpp</label>
         <link refid="OneTimeSysSetup_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="2">
-        <label>OneTimeSysSetup.hpp</label>
-        <link refid="OneTimeSysSetup_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
+      <node id="8">
+        <label>limits</label>
+      </node>
+      <node id="15">
+        <label>numaif.h</label>
+      </node>
+      <node id="7">
+        <label>cstdint</label>
+      </node>
+      <node id="17">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="11">
+        <label>string</label>
+      </node>
+      <node id="13">
+        <label>vector</label>
       </node>
       <node id="3">
         <label>Common_Features.hpp</label>
@@ -48,47 +58,37 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="4">
-        <label>arpa/inet.h</label>
-      </node>
       <node id="5">
         <label>cerrno</label>
       </node>
       <node id="6">
         <label>cstddef</label>
       </node>
-      <node id="7">
-        <label>cstdint</label>
-      </node>
-      <node id="8">
-        <label>limits</label>
-      </node>
-      <node id="9">
-        <label>netinet/in.h</label>
-      </node>
-      <node id="10">
-        <label>nlohmann/json.hpp</label>
-      </node>
       <node id="14">
         <label>numa.h</label>
       </node>
-      <node id="15">
-        <label>numaif.h</label>
-      </node>
-      <node id="16">
-        <label>sched.h</label>
-      </node>
-      <node id="11">
-        <label>string</label>
-      </node>
-      <node id="17">
-        <label>sys/mman.h</label>
+      <node id="2">
+        <label>OneTimeSysSetup.hpp</label>
+        <link refid="OneTimeSysSetup_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
       </node>
       <node id="12">
         <label>sys/socket.h</label>
       </node>
-      <node id="13">
-        <label>vector</label>
+      <node id="10">
+        <label>nlohmann/json.hpp</label>
+      </node>
+      <node id="16">
+        <label>sched.h</label>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -173,6 +173,6 @@
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>mlockall(MCL_CURRENT<sp/>|<sp/>MCL_FUTURE);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="include/input/linux/RT/OneTimeSysSetup.cpp"/>
+    <location file="include/input/trashbin/--DEPRECATED-linux/RT/OneTimeSysSetup.cpp"/>
   </compounddef>
 </doxygen>

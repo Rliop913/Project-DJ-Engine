@@ -4,7 +4,7 @@
 File editorObject.cpp
 =====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_MainObjects_editorObject>` (``include\core\MainObjects\editorObject``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_MainObjects_editorObject>` (``include/core/MainObjects/editorObject``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File editorObject.cpp
    :local:
    :backlinks: none
 
-Definition (``include\core\MainObjects\editorObject\editorObject.cpp``)
+Definition (``include/core/MainObjects/editorObject/editorObject.cpp``)
 -----------------------------------------------------------------------
 
 
@@ -40,7 +40,7 @@ Includes
 
 - ``fileNameSanitizer.hpp`` (:ref:`file_include_global_DataLines_fileNameSanitizer.hpp`)
 
-- ``memory`` (:ref:`file_include_input_IPC_memory_Input_Transfer.cpp`)
+- ``memory`` (:ref:`file_include_input_IPC_memory_linux_Input_Transfer.cpp`)
 
 - ``tempDB.hpp`` (:ref:`file_include_core_MainObjects_tempDBObject_tempDB.hpp`)
 

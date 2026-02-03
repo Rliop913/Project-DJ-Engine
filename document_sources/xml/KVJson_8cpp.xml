@@ -1,10 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="KVJson_8cpp" kind="file" language="C++">
     <compoundname>KVJson.cpp</compoundname>
     <includes refid="jsonWrapper_8hpp" local="yes">jsonWrapper.hpp</includes>
     <includes local="no">exception</includes>
     <incdepgraph>
+      <node id="5">
+        <label>functional</label>
+      </node>
+      <node id="3">
+        <label>filesystem</label>
+      </node>
       <node id="22">
         <label>CapnpBinary.hpp</label>
         <link refid="CapnpBinary_8hpp"/>
@@ -27,6 +33,12 @@
         <childnode refid="28" relation="include">
         </childnode>
       </node>
+      <node id="7">
+        <label>ranges</label>
+      </node>
+      <node id="37">
+        <label>cstdint</label>
+      </node>
       <node id="20">
         <label>FrameCalc.hpp</label>
         <link refid="FrameCalc_8hpp"/>
@@ -41,22 +53,43 @@
         <childnode refid="34" relation="include">
         </childnode>
       </node>
-      <node id="19">
-        <label>Bpm.hpp</label>
-        <link refid="Bpm_8hpp"/>
+      <node id="24">
+        <label>capnp/serialize.h</label>
+      </node>
+      <node id="21">
+        <label>cmath</label>
+      </node>
+      <node id="25">
+        <label>MixBinary.capnp.h</label>
+      </node>
+      <node id="8">
+        <label>string</label>
+      </node>
+      <node id="29">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="38">
+        <label>exception</label>
+      </node>
+      <node id="4">
+        <label>fstream</label>
+      </node>
+      <node id="28">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
       <node id="35">
@@ -75,41 +108,14 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="14">
-        <label>MixTranslator.hpp</label>
-        <link refid="MixTranslator_8hpp"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
+      <node id="34">
+        <label>hwy/aligned_allocator.h</label>
       </node>
-      <node id="36">
-        <label>EditorArgs.hpp</label>
-        <link refid="EditorArgs_8hpp"/>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
+      <node id="31">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="32">
+        <label>string_view</label>
       </node>
       <node id="1">
         <label>include/core/editor/TimeLine/JSONWrap/KVJson.cpp</label>
@@ -147,6 +153,60 @@
         <childnode refid="36" relation="include">
         </childnode>
       </node>
+      <node id="12">
+        <label>optional</label>
+      </node>
+      <node id="14">
+        <label>MixTranslator.hpp</label>
+        <link refid="MixTranslator_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>vector</label>
+      </node>
+      <node id="30">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="19">
+        <label>Bpm.hpp</label>
+        <link refid="Bpm_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>NoteBinary.capnp.h</label>
+      </node>
       <node id="9">
         <label>fileNameSanitizer.hpp</label>
         <link refid="fileNameSanitizer_8hpp"/>
@@ -161,36 +221,39 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
+      <node id="11">
+        <label>cppcodec/base64_default_url.hpp</label>
+      </node>
+      <node id="16">
+        <label>mutex</label>
+      </node>
       <node id="10">
         <label>PDJE_EXPORT_SETTER.hpp</label>
         <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
-      <node id="28">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="PDJE__LOG__SETTER_8hpp"/>
-        <childnode refid="3" relation="include">
+      <node id="17">
+        <label>thread</label>
+      </node>
+      <node id="36">
+        <label>EditorArgs.hpp</label>
+        <link refid="EditorArgs_8hpp"/>
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="25">
-        <label>MixBinary.capnp.h</label>
+      <node id="33">
+        <label>type_traits</label>
       </node>
       <node id="26">
         <label>MusicBinary.capnp.h</label>
       </node>
-      <node id="27">
-        <label>NoteBinary.capnp.h</label>
+      <node id="13">
+        <label>nlohmann/json.hpp</label>
       </node>
       <node id="15">
         <label>algorithm</label>
@@ -198,73 +261,23 @@
       <node id="23">
         <label>capnp/message.h</label>
       </node>
-      <node id="24">
-        <label>capnp/serialize.h</label>
-      </node>
-      <node id="21">
-        <label>cmath</label>
-      </node>
-      <node id="11">
-        <label>cppcodec/base64_default_url.hpp</label>
-      </node>
-      <node id="37">
-        <label>cstdint</label>
-      </node>
-      <node id="38">
-        <label>exception</label>
-      </node>
-      <node id="3">
-        <label>filesystem</label>
-      </node>
-      <node id="4">
-        <label>fstream</label>
-      </node>
-      <node id="5">
-        <label>functional</label>
-      </node>
-      <node id="34">
-        <label>hwy/aligned_allocator.h</label>
-      </node>
       <node id="6">
         <label>memory</label>
       </node>
-      <node id="16">
-        <label>mutex</label>
-      </node>
-      <node id="13">
-        <label>nlohmann/json.hpp</label>
-      </node>
-      <node id="12">
-        <label>optional</label>
-      </node>
-      <node id="7">
-        <label>ranges</label>
-      </node>
-      <node id="29">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
-      <node id="30">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
-      <node id="31">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="8">
-        <label>string</label>
-      </node>
-      <node id="32">
-        <label>string_view</label>
-      </node>
-      <node id="17">
-        <label>thread</label>
-      </node>
-      <node id="33">
-        <label>type_traits</label>
-      </node>
-      <node id="18">
-        <label>vector</label>
-      </node>
     </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="KVJson_8cpp_1ae60f55f1434467de2d96993df250b3cb" prot="public" static="no">
+        <name>PDJE_JSON_FIRST_BEAT</name>
+        <initializer>&quot;first_beat&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/TimeLine/JSONWrap/KVJson.cpp" line="1" column="9" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -278,7 +291,7 @@
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7" refid="classPDJE__JSONHandler_1a706c8423e6c1c7ef5aacaf59bbd795d3" refkind="member"><highlight class="normal"><ref refid="classPDJE__JSONHandler_1a5538c8692d09f825f14b224433020f99" kindref="member">PDJE_JSONHandler&lt;KV_W&gt;::add</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref><sp/>&amp;args)</highlight></codeline>
 <codeline lineno="8"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>[args.first]<sp/>=<sp/>args.second;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>ROOT[args.first]<sp/>=<sp/>args.second;</highlight></codeline>
 <codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="11"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
@@ -288,8 +301,8 @@
 <codeline lineno="16" refid="classPDJE__JSONHandler_1a125e349b4793a73035022ec99cd87cc7" refkind="member"><highlight class="normal"><ref refid="classPDJE__JSONHandler_1ac37f98c073fe7ad2f0abd08a993e071b" kindref="member">PDJE_JSONHandler&lt;KV_W&gt;::deleteLine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="EditorArgs_8hpp_1a217a1073c4c083da1400cf99dab75f21" kindref="member">KEY</ref><sp/>&amp;args)</highlight></codeline>
 <codeline lineno="17"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>.contains(args))<sp/>{</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>.erase(args);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ROOT.contains(args))<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ROOT.erase(args);</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
@@ -307,7 +320,7 @@
 <codeline lineno="35" refid="classPDJE__JSONHandler_1ace4c18d5ea878c54e35bcde5df1955a6" refkind="member"><highlight class="normal"><ref refid="classPDJE__JSONHandler_1a8f79bd8c69f21c9dee91b927ac5b5646" kindref="member">PDJE_JSONHandler&lt;KV_W&gt;::getAll</ref>(</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref><sp/>&amp;args)&gt;<sp/>jsonCallback)</highlight></codeline>
 <codeline lineno="37"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;[key,<sp/>value]<sp/>:<sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>.items())<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;[key,<sp/>value]<sp/>:<sp/>ROOT.items())<sp/>{</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jsonCallback(<ref refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref>(key,<sp/>value.dump()));</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="41"><highlight class="normal">}</highlight></codeline>
@@ -329,7 +342,7 @@
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jfile<sp/>&gt;&gt;<sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jfile<sp/>&gt;&gt;<sp/>ROOT;</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;e)<sp/>{</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>load<sp/>data<sp/>from<sp/>file.<sp/>from<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;PDJE_JSONHandler&lt;KW_W&gt;<sp/>load.<sp/>ErrException:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
@@ -353,7 +366,7 @@
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(filepath.generic_string());</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jfile<sp/>&lt;&lt;<sp/>std::setw(4)<sp/>&lt;&lt;<sp/><ref refid="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" kindref="member">ROOT</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jfile<sp/>&lt;&lt;<sp/>std::setw(4)<sp/>&lt;&lt;<sp/>ROOT;</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jfile.close();</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>

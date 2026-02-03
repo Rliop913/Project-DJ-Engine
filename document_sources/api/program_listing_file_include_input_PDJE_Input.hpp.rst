@@ -4,7 +4,7 @@
 Program Listing for File PDJE_Input.hpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_input_PDJE_Input.hpp>` (``include\input\PDJE_Input.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_input_PDJE_Input.hpp>` (``include/input/PDJE_Input.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ Program Listing for File PDJE_Input.hpp
    #pragma once
    
    #include "Input_State.hpp"
-   #include "MainProcess.hpp"
+   
    #include "PDJE_EXPORT_SETTER.hpp"
    #include "PDJE_Input_DataLine.hpp"
    #include "PDJE_Input_Device_Data.hpp"
@@ -25,23 +25,17 @@ Program Listing for File PDJE_Input.hpp
    #include <string>
    #include <vector>
    
-   #ifdef WIN32
-   // #include "windows_input.hpp"
-   
-   #elif defined(__APPLE__)
-   
-   #else
-   // #include "linux_input.hpp"
-   #endif
+   #include "DefaultDevs.hpp"
    
    class PDJE_API PDJE_Input {
      private:
-       std::optional<PDJE_IPC::MAINPROC::TXRXTransport> Mproc;
-       std::optional<PDJE_IPC::PDJE_Input_Transfer>     input_buffer;
-       bool                                             FLAG_INPUT_ON = false;
-       std::optional<PDJE_MIDI::MIDI>                   midi_engine;
-       bool                                             FLAG_MIDI_ON = false;
-       PDJE_INPUT_STATE state = PDJE_INPUT_STATE::DEAD;
+       std::optional<PDJE_DEFAULT_DEVICES::DefaultDevs> default_devs;
+       // std::optional<PDJE_IPC::PDJE_Input_Transfer>     input_buffer; // redef
+       // on dev pipe
+       bool                           FLAG_INPUT_ON = false;
+       std::optional<PDJE_MIDI::MIDI> midi_engine;
+       bool                           FLAG_MIDI_ON = false;
+       PDJE_INPUT_STATE               state        = PDJE_INPUT_STATE::DEAD;
    
      public:
        std::vector<DeviceData>

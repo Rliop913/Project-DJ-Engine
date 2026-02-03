@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structDecoder" kind="struct" language="C++" prot="public">
     <compoundname>Decoder</compoundname>
     <includes refid="Decoder_8hpp" local="no">Decoder.hpp</includes>
-    <sectiondef kind="public-attrib">
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structDecoder_1aba65d053283213c3dbd1a5eb13e068be" prot="public" static="no" mutable="no">
         <type>ma_decoder</type>
         <definition>ma_decoder Decoder::dec</definition>
         <argsstring></argsstring>
         <name>dec</name>
-        <qualifiedname>Decoder::dec</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,7 +22,6 @@
         <definition>std::vector&lt;uint8_t&gt; Decoder::musicBinary</definition>
         <argsstring></argsstring>
         <name>musicBinary</name>
-        <qualifiedname>Decoder::musicBinary</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -32,14 +30,13 @@
         </inbodydescription>
         <location file="include/core/audioRender/MixMachine/MiniaudioObjects/Decoder.hpp" line="23" column="17" bodyfile="include/core/audioRender/MixMachine/MiniaudioObjects/Decoder.hpp" bodystart="23" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="structDecoder_1a691a867940a1c494b77e458ae1325352" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Decoder::Decoder</definition>
         <argsstring>()</argsstring>
         <name>Decoder</name>
-        <qualifiedname>Decoder::Decoder</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -53,7 +50,6 @@
         <definition>Decoder::~Decoder</definition>
         <argsstring>()</argsstring>
         <name>~Decoder</name>
-        <qualifiedname>Decoder::~Decoder</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -67,7 +63,6 @@
         <definition>bool Decoder::init</definition>
         <argsstring>(litedb &amp;db, const SANITIZED_ORNOT &amp;KeyOrPath)</argsstring>
         <name>init</name>
-        <qualifiedname>Decoder::init</qualifiedname>
         <param>
           <type><ref refid="classlitedb" kindref="compound">litedb</ref> &amp;</type>
           <declname>db</declname>
@@ -112,7 +107,6 @@
         <definition>bool Decoder::changePos</definition>
         <argsstring>(FRAME_POS Pos)</argsstring>
         <name>changePos</name>
-        <qualifiedname>Decoder::changePos</qualifiedname>
         <param>
           <type><ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref></type>
           <declname>Pos</declname>
@@ -145,7 +139,6 @@
         <definition>bool Decoder::getPos</definition>
         <argsstring>(FRAME_POS &amp;pos)</argsstring>
         <name>getPos</name>
-        <qualifiedname>Decoder::getPos</qualifiedname>
         <param>
           <type><ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref> &amp;</type>
           <declname>pos</declname>
@@ -178,7 +171,6 @@
         <definition>bool Decoder::getRange</definition>
         <argsstring>(FRAME_POS numFrames, std::vector&lt; float &gt; &amp;buffer)</argsstring>
         <name>getRange</name>
-        <qualifiedname>Decoder::getRange</qualifiedname>
         <param>
           <type><ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref></type>
           <declname>numFrames</declname>
@@ -223,13 +215,12 @@
         <definition>bool Decoder::getRange</definition>
         <argsstring>(FRAME_POS numFrames, SIMD_FLOAT &amp;buffer)</argsstring>
         <name>getRange</name>
-        <qualifiedname>Decoder::getRange</qualifiedname>
         <param>
           <type><ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref></type>
           <declname>numFrames</declname>
         </param>
         <param>
-          <type><ref refid="FrameCalc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref> &amp;</type>
+          <type><ref refid="FrameCalc_8hpp_1afaba0c56b304d05ee34bd4cc22319217" kindref="member">SIMD_FLOAT</ref> &amp;</type>
           <declname>buffer</declname>
         </param>
         <briefdescription>
@@ -240,7 +231,7 @@
         </inbodydescription>
         <location file="include/core/audioRender/MixMachine/MiniaudioObjects/Decoder.hpp" line="68" column="5" bodyfile="include/core/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp" bodystart="93" bodyend="106"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>miniaudio decoder wrapper class </para>
     </briefdescription>

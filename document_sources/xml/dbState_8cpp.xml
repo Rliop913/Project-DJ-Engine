@@ -1,52 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="dbState_8cpp" kind="file" language="C++">
     <compoundname>dbState.cpp</compoundname>
     <includes refid="dbState_8hpp" local="yes">dbState.hpp</includes>
     <includes refid="PDJE__LOG__SETTER_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
     <includes local="no">cstring</includes>
     <incdepgraph>
-      <node id="1">
-        <label>include/core/db/dbState.cpp</label>
-        <link refid="dbState_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
+      <node id="8">
+        <label>filesystem</label>
       </node>
-      <node id="2">
-        <label>dbState.hpp</label>
-        <link refid="dbState_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
+      <node id="3">
+        <label>string</label>
       </node>
-      <node id="6">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
+      <node id="13">
+        <label>spdlog/sinks/basic_file_sink.h</label>
       </node>
-      <node id="5">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      <node id="10">
+        <label>sqlite3.h</label>
       </node>
       <node id="11">
         <label>PDJE_LOG_SETTER.hpp</label>
@@ -66,47 +36,77 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="7">
-        <label>cppcodec/base64_default_url.hpp</label>
-      </node>
-      <node id="18">
-        <label>cstring</label>
-      </node>
-      <node id="8">
-        <label>filesystem</label>
-      </node>
-      <node id="12">
-        <label>mutex</label>
-      </node>
-      <node id="9">
-        <label>optional</label>
-      </node>
-      <node id="13">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
-      <node id="14">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
       <node id="15">
         <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="10">
-        <label>sqlite3.h</label>
-      </node>
-      <node id="3">
-        <label>string</label>
       </node>
       <node id="16">
         <label>string_view</label>
       </node>
-      <node id="17">
-        <label>type_traits</label>
+      <node id="9">
+        <label>optional</label>
       </node>
       <node id="4">
         <label>vector</label>
       </node>
+      <node id="14">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="1">
+        <label>include/core/db/dbState.cpp</label>
+        <link refid="dbState_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>cppcodec/base64_default_url.hpp</label>
+      </node>
+      <node id="12">
+        <label>mutex</label>
+      </node>
+      <node id="5">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="17">
+        <label>type_traits</label>
+      </node>
+      <node id="2">
+        <label>dbState.hpp</label>
+        <link refid="dbState_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>cstring</label>
+      </node>
     </incdepgraph>
-    <sectiondef kind="func">
+      <sectiondef kind="func">
       <memberdef kind="function" id="dbState_8cpp_1abd2e27c6282ca855010d94b6764b1ecc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
@@ -114,7 +114,6 @@
         <definition>int stmt::colGet&lt; COL_TYPE::PDJE_INT &gt;</definition>
         <argsstring>(int idx)</argsstring>
         <name>stmt::colGet&lt; COL_TYPE::PDJE_INT &gt;</name>
-        <qualifiedname>colGet&lt; COL_TYPE::PDJE_INT &gt;</qualifiedname>
         <param>
           <type>int</type>
           <declname>idx</declname>
@@ -134,7 +133,6 @@
         <definition>double stmt::colGet&lt; COL_TYPE::PDJE_DOUBLE &gt;</definition>
         <argsstring>(int idx)</argsstring>
         <name>stmt::colGet&lt; COL_TYPE::PDJE_DOUBLE &gt;</name>
-        <qualifiedname>colGet&lt; COL_TYPE::PDJE_DOUBLE &gt;</qualifiedname>
         <param>
           <type>int</type>
           <declname>idx</declname>
@@ -154,7 +152,6 @@
         <definition>SANITIZED_ORNOT stmt::colGet&lt; COL_TYPE::PDJE_TEXT &gt;</definition>
         <argsstring>(int idx)</argsstring>
         <name>stmt::colGet&lt; COL_TYPE::PDJE_TEXT &gt;</name>
-        <qualifiedname>colGet&lt; COL_TYPE::PDJE_TEXT &gt;</qualifiedname>
         <param>
           <type>int</type>
           <declname>idx</declname>
@@ -174,7 +171,6 @@
         <definition>BIN stmt::colGet&lt; COL_TYPE::PDJE_BLOB &gt;</definition>
         <argsstring>(int idx)</argsstring>
         <name>stmt::colGet&lt; COL_TYPE::PDJE_BLOB &gt;</name>
-        <qualifiedname>colGet&lt; COL_TYPE::PDJE_BLOB &gt;</qualifiedname>
         <param>
           <type>int</type>
           <declname>idx</declname>
@@ -187,7 +183,7 @@
         </inbodydescription>
         <location file="include/core/db/dbState.cpp" line="83" column="1" bodyfile="include/core/db/dbState.cpp" bodystart="84" bodyend="95"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -253,21 +249,21 @@
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
 <codeline lineno="60" refid="dbState_8cpp_1abd2e27c6282ca855010d94b6764b1ecc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><ref refid="structstmt_1a60bd7c4f63fb29c6d449cebcb4ff92fe" kindref="member">stmt::colGet&lt;COL_TYPE::PDJE_INT&gt;</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>)</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">stmt::colGet&lt;COL_TYPE::PDJE_INT&gt;(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>)</highlight></codeline>
 <codeline lineno="62"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sqlite3_column_int(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf1ce01387d2348f8b858721a7db81670" kindref="member">S</ref>,<sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>);</highlight></codeline>
 <codeline lineno="64"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
 <codeline lineno="67" refid="dbState_8cpp_1a3fc8fa09151028ac2d501a806c5b55b2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><ref refid="structstmt_1a60bd7c4f63fb29c6d449cebcb4ff92fe" kindref="member">stmt::colGet&lt;COL_TYPE::PDJE_DOUBLE&gt;</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">stmt::colGet&lt;COL_TYPE::PDJE_DOUBLE&gt;(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>)</highlight></codeline>
 <codeline lineno="69"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sqlite3_column_double(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf1ce01387d2348f8b858721a7db81670" kindref="member">S</ref>,<sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>);</highlight></codeline>
 <codeline lineno="71"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
 <codeline lineno="74" refid="dbState_8cpp_1a51bf28f90683420ef8446614d0f63b23" refkind="member"><highlight class="normal"><ref refid="fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><ref refid="structstmt_1a60bd7c4f63fb29c6d449cebcb4ff92fe" kindref="member">stmt::colGet&lt;COL_TYPE::PDJE_TEXT&gt;</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">stmt::colGet&lt;COL_TYPE::PDJE_TEXT&gt;(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>)</highlight></codeline>
 <codeline lineno="76"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ptr<sp/>=<sp/>sqlite3_column_text(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf1ce01387d2348f8b858721a7db81670" kindref="member">S</ref>,<sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>);</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>sz<sp/><sp/>=<sp/>sqlite3_column_bytes(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf1ce01387d2348f8b858721a7db81670" kindref="member">S</ref>,<sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>);</highlight></codeline>
@@ -276,7 +272,7 @@
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
 <codeline lineno="83" refid="dbState_8cpp_1af859cacf202fb1ac4ec76d0845332daa" refkind="member"><highlight class="normal"><ref refid="dbState_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><ref refid="structstmt_1a60bd7c4f63fb29c6d449cebcb4ff92fe" kindref="member">stmt::colGet&lt;COL_TYPE::PDJE_BLOB&gt;</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>)</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">stmt::colGet&lt;COL_TYPE::PDJE_BLOB&gt;(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>)</highlight></codeline>
 <codeline lineno="85"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ptr<sp/>=<sp/>sqlite3_column_blob(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf1ce01387d2348f8b858721a7db81670" kindref="member">S</ref>,<sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>);</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>sz<sp/><sp/>=<sp/>sqlite3_column_bytes(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf1ce01387d2348f8b858721a7db81670" kindref="member">S</ref>,<sp/><ref refid="audioTest_8cpp_1a7618272fcf9d87de9616cec36f26d330" kindref="member">idx</ref>);</highlight></codeline>

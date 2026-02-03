@@ -10,7 +10,7 @@ Directory global
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\global``
+*Directory path:* ``include/global``
 
 Subdirectories
 --------------
@@ -28,6 +28,7 @@ Files
 - :ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`
 - :ref:`file_include_global_PDJE_LOG_SETTER.hpp`
 - :ref:`file_include_global_PDJE_OBJ_SETTER.hpp`
+- :ref:`file_include_global_PDJE_RAII_WRAP.hpp`
 - :ref:`file_include_global_PDJE_SYNC_CORE.hpp`
 
 

@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structMusicArgs" kind="struct" language="C++" prot="public">
     <compoundname>MusicArgs</compoundname>
     <includes refid="EditorArgs_8hpp" local="no">EditorArgs.hpp</includes>
-    <sectiondef kind="public-attrib">
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structMusicArgs_1adba854dcfb217bce55991f66d18fa89d" prot="public" static="no" mutable="no">
         <type><ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref></type>
         <definition>DONT_SANITIZE MusicArgs::bpm</definition>
         <argsstring></argsstring>
         <name>bpm</name>
-        <qualifiedname>MusicArgs::bpm</qualifiedname>
         <initializer>= &quot;&quot;</initializer>
         <briefdescription>
         </briefdescription>
@@ -24,7 +23,6 @@
         <definition>uint64_t MusicArgs::beat</definition>
         <argsstring></argsstring>
         <name>beat</name>
-        <qualifiedname>MusicArgs::beat</qualifiedname>
         <initializer>= -1</initializer>
         <briefdescription>
         </briefdescription>
@@ -39,7 +37,6 @@
         <definition>uint64_t MusicArgs::subBeat</definition>
         <argsstring></argsstring>
         <name>subBeat</name>
-        <qualifiedname>MusicArgs::subBeat</qualifiedname>
         <initializer>= -1</initializer>
         <briefdescription>
         </briefdescription>
@@ -54,7 +51,6 @@
         <definition>uint64_t MusicArgs::separate</definition>
         <argsstring></argsstring>
         <name>separate</name>
-        <qualifiedname>MusicArgs::separate</qualifiedname>
         <initializer>= -1</initializer>
         <briefdescription>
         </briefdescription>
@@ -64,22 +60,22 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" line="44" column="19" bodyfile="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>Arguments describing a music entry. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
       <node id="1">
         <label>MusicArgs</label>
         <link refid="structMusicArgs"/>
         <childnode refid="2" relation="usage">
           <edgelabel>bpm</edgelabel>
         </childnode>
-      </node>
-      <node id="3">
-        <label>std::basic_string&lt; Char &gt;</label>
       </node>
       <node id="2">
         <label>std::string</label>

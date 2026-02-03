@@ -1,11 +1,92 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="dbRoot_8cpp" kind="file" language="C++">
     <compoundname>dbRoot.cpp</compoundname>
     <includes refid="dbRoot_8hpp" local="yes">dbRoot.hpp</includes>
     <includes local="no">stdexcept</includes>
     <includes refid="PDJE__LOG__SETTER_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
     <incdepgraph>
+      <node id="12">
+        <label>musicDB.hpp</label>
+        <link refid="musicDB_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>filesystem</label>
+      </node>
+      <node id="18">
+        <label>stdexcept</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="21">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="4">
+        <label>sqlite3.h</label>
+      </node>
+      <node id="19">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>trackDB.hpp</label>
+        <link refid="trackDB_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="7">
+        <label>rocksdb/db.h</label>
+      </node>
+      <node id="24">
+        <label>string_view</label>
+      </node>
+      <node id="10">
+        <label>rocksdb/table.h</label>
+      </node>
+      <node id="3">
+        <label>optional</label>
+      </node>
+      <node id="9">
+        <label>rocksdb/options.h</label>
+      </node>
       <node id="1">
         <label>include/core/db/dbRoot.cpp</label>
         <link refid="dbRoot_8cpp"/>
@@ -15,6 +96,36 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
+      </node>
+      <node id="6">
+        <label>vector</label>
+      </node>
+      <node id="22">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="14">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>cppcodec/base64_default_url.hpp</label>
+      </node>
+      <node id="20">
+        <label>mutex</label>
+      </node>
+      <node id="11">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
       <node id="2">
         <label>dbRoot.hpp</label>
@@ -44,6 +155,12 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
+      <node id="8">
+        <label>rocksdb/filter_policy.h</label>
+      </node>
+      <node id="25">
+        <label>type_traits</label>
+      </node>
       <node id="13">
         <label>dbState.hpp</label>
         <link refid="dbState_8hpp"/>
@@ -57,123 +174,6 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-      </node>
-      <node id="12">
-        <label>musicDB.hpp</label>
-        <link refid="musicDB_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>trackDB.hpp</label>
-        <link refid="trackDB_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
-      </node>
-      <node id="19">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="PDJE__LOG__SETTER_8hpp"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-      </node>
-      <node id="15">
-        <label>cppcodec/base64_default_url.hpp</label>
-      </node>
-      <node id="16">
-        <label>filesystem</label>
-      </node>
-      <node id="20">
-        <label>mutex</label>
-      </node>
-      <node id="3">
-        <label>optional</label>
-      </node>
-      <node id="7">
-        <label>rocksdb/db.h</label>
-      </node>
-      <node id="8">
-        <label>rocksdb/filter_policy.h</label>
-      </node>
-      <node id="9">
-        <label>rocksdb/options.h</label>
-      </node>
-      <node id="10">
-        <label>rocksdb/table.h</label>
-      </node>
-      <node id="21">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
-      <node id="22">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
-      <node id="23">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="4">
-        <label>sqlite3.h</label>
-      </node>
-      <node id="18">
-        <label>stdexcept</label>
-      </node>
-      <node id="5">
-        <label>string</label>
-      </node>
-      <node id="24">
-        <label>string_view</label>
-      </node>
-      <node id="25">
-        <label>type_traits</label>
-      </node>
-      <node id="6">
-        <label>vector</label>
       </node>
     </incdepgraph>
     <briefdescription>

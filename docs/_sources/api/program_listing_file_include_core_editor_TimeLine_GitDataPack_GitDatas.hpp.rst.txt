@@ -4,7 +4,7 @@
 Program Listing for File GitDatas.hpp
 =====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_editor_TimeLine_GitDataPack_GitDatas.hpp>` (``include\core\editor\TimeLine\GitDataPack\GitDatas.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_editor_TimeLine_GitDataPack_GitDatas.hpp>` (``include/core/editor/TimeLine/GitDataPack/GitDatas.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -101,10 +101,10 @@ Program Listing for File GitDatas.hpp
        }
        ~GitData()
        {
-           if (!sign) {
+           if (sign) {
                git_signature_free(sign);
            }
-           if (!repo) {
+           if (repo) {
                git_repository_free(repo);
            }
            git_libgit2_shutdown();

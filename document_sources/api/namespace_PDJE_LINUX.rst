@@ -17,4 +17,4 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_p_d_j_e___l_i_n_u_x_1_1_p_d_j_e___socket`
+- :ref:`exhale_class_classPDJE__LINUX_1_1PDJE__Socket`

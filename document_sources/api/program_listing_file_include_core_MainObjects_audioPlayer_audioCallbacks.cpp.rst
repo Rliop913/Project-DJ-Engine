@@ -4,7 +4,7 @@
 Program Listing for File audioCallbacks.cpp
 ===========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_MainObjects_audioPlayer_audioCallbacks.cpp>` (``include\core\MainObjects\audioPlayer\audioCallbacks.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_MainObjects_audioPlayer_audioCallbacks.cpp>` (``include/core/MainObjects/audioPlayer/audioCallbacks.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

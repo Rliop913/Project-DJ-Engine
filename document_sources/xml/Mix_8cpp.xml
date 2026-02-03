@@ -1,11 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="Mix_8cpp" kind="file" language="C++">
     <compoundname>Mix.cpp</compoundname>
     <includes refid="Mix_8hpp" local="yes">Mix.hpp</includes>
     <includes refid="Bpm_8hpp" local="yes">Bpm.hpp</includes>
     <includes refid="PDJE__LOG__SETTER_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
     <incdepgraph>
+      <node id="18">
+        <label>filesystem</label>
+      </node>
       <node id="9">
         <label>CapnpBinary.hpp</label>
         <link refid="CapnpBinary_8hpp"/>
@@ -28,6 +31,16 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
+      <node id="1">
+        <label>include/core/db/Capnp/Translators/MixTranslator/Mix.cpp</label>
+        <link refid="Mix_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
       <node id="7">
         <label>FrameCalc.hpp</label>
         <link refid="FrameCalc_8hpp"/>
@@ -42,53 +55,20 @@
         <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="25">
-        <label>Bpm.hpp</label>
-        <link refid="Bpm_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
+      <node id="12">
+        <label>capnp/serialize.h</label>
       </node>
-      <node id="1">
-        <label>include/core/db/Capnp/Translators/MixTranslator/Mix.cpp</label>
-        <link refid="Mix_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
+      <node id="8">
+        <label>cmath</label>
       </node>
-      <node id="2">
-        <label>Mix.hpp</label>
-        <link refid="Mix_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
+      <node id="13">
+        <label>MixBinary.capnp.h</label>
       </node>
-      <node id="16">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      <node id="26">
+        <label>string</label>
+      </node>
+      <node id="19">
+        <label>spdlog/sinks/basic_file_sink.h</label>
       </node>
       <node id="17">
         <label>PDJE_LOG_SETTER.hpp</label>
@@ -108,53 +88,67 @@
         <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="13">
-        <label>MixBinary.capnp.h</label>
-      </node>
-      <node id="14">
-        <label>MusicBinary.capnp.h</label>
-      </node>
-      <node id="15">
-        <label>NoteBinary.capnp.h</label>
-      </node>
-      <node id="3">
-        <label>algorithm</label>
-      </node>
-      <node id="11">
-        <label>capnp/message.h</label>
-      </node>
-      <node id="12">
-        <label>capnp/serialize.h</label>
-      </node>
-      <node id="8">
-        <label>cmath</label>
-      </node>
-      <node id="18">
-        <label>filesystem</label>
+      <node id="2">
+        <label>Mix.hpp</label>
+        <link refid="Mix_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
       </node>
       <node id="24">
         <label>hwy/aligned_allocator.h</label>
       </node>
-      <node id="4">
-        <label>mutex</label>
+      <node id="21">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="22">
+        <label>string_view</label>
       </node>
       <node id="10">
         <label>optional</label>
       </node>
-      <node id="19">
-        <label>spdlog/sinks/basic_file_sink.h</label>
+      <node id="6">
+        <label>vector</label>
       </node>
       <node id="20">
         <label>spdlog/sinks/stdout_color_sinks.h</label>
       </node>
-      <node id="21">
-        <label>spdlog/spdlog.h</label>
+      <node id="25">
+        <label>Bpm.hpp</label>
+        <link refid="Bpm_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
       </node>
-      <node id="26">
-        <label>string</label>
+      <node id="15">
+        <label>NoteBinary.capnp.h</label>
       </node>
-      <node id="22">
-        <label>string_view</label>
+      <node id="4">
+        <label>mutex</label>
+      </node>
+      <node id="16">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
       <node id="5">
         <label>thread</label>
@@ -162,11 +156,17 @@
       <node id="23">
         <label>type_traits</label>
       </node>
-      <node id="6">
-        <label>vector</label>
+      <node id="14">
+        <label>MusicBinary.capnp.h</label>
+      </node>
+      <node id="3">
+        <label>algorithm</label>
+      </node>
+      <node id="11">
+        <label>capnp/message.h</label>
       </node>
     </incdepgraph>
-    <sectiondef kind="func">
+      <sectiondef kind="func">
       <memberdef kind="function" id="Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned long</type>
         <definition>unsigned long FillFrame</definition>
@@ -261,7 +261,7 @@
         </inbodydescription>
         <location file="include/core/db/Capnp/Translators/MixTranslator/Mix.cpp" line="78" column="1" bodyfile="include/core/db/Capnp/Translators/MixTranslator/Mix.cpp" bodystart="78" bodyend="93"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

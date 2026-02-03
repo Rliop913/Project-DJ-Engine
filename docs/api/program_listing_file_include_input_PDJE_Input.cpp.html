@@ -8,9 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Program Listing for File PDJE_Input.cpp &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
@@ -19,8 +19,8 @@
       <script src="../_static/documentation_options.js?v=5929fcd5"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
-      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
       <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -80,7 +80,7 @@
              
   <section id="program-listing-for-file-pdje-input-cpp">
 <span id="program-listing-file-include-input-pdje-input-cpp"></span><h1>Program Listing for File PDJE_Input.cpp<a class="headerlink" href="#program-listing-for-file-pdje-input-cpp" title="Link to this heading"></a></h1>
-<p>↰ <a class="reference internal" href="file_include_input_PDJE_Input.cpp.html#file-include-input-pdje-input-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\input\PDJE_Input.cpp</span></code>)</p>
+<p>↰ <a class="reference internal" href="file_include_input_PDJE_Input.cpp.html#file-include-input-pdje-input-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/input/PDJE_Input.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;NameGen.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
@@ -99,21 +99,23 @@
 <span class="w">                </span><span class="s">&quot;maybe input module is running or configuring.&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">default_devs</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
+<span class="w">        </span><span class="n">default_devs</span><span class="o">-&gt;</span><span class="n">Ready</span><span class="p">();</span>
 
-<span class="w">        </span><span class="n">Mproc</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// #ifdef WIN32</span>
 
-<span class="w">        </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">Input_Transfer_Metadata</span><span class="w"> </span><span class="n">cfg</span><span class="p">;</span>
-<span class="w">        </span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">RANDOM_GEN</span><span class="w">              </span><span class="n">rg</span><span class="p">;</span>
-<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">max_length</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="mi">2048</span><span class="p">;</span>
-<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">lenname</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="n">rg</span><span class="p">.</span><span class="n">Gen</span><span class="p">(</span><span class="s">&quot;PDJE_INPUT_LEN_&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">bodyname</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="n">rg</span><span class="p">.</span><span class="n">Gen</span><span class="p">(</span><span class="s">&quot;PDJE_INPUT_BODY_&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">hmacname</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="n">rg</span><span class="p">.</span><span class="n">Gen</span><span class="p">(</span><span class="s">&quot;PDJE_INPUT_HMAC_&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">data_request_event_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rg</span><span class="p">.</span><span class="n">Gen</span><span class="p">(</span><span class="s">&quot;PDJE_INPUT_REQ_EVENT_&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cfg</span><span class="p">.</span><span class="n">data_stored_event_name</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">rg</span><span class="p">.</span><span class="n">Gen</span><span class="p">(</span><span class="s">&quot;PDJE_INPUT_STORED_EVENT_&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">input_buffer</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">cfg</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Mproc</span><span class="o">-&gt;</span><span class="n">SendInputTransfer</span><span class="p">(</span><span class="n">input_buffer</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
-<span class="w">        </span><span class="n">Mproc</span><span class="o">-&gt;</span><span class="n">InitEvents</span><span class="p">();</span>
-
+<span class="w">        </span><span class="c1">// PDJE_IPC::Input_Transfer_Metadata cfg;</span>
+<span class="w">        </span><span class="c1">// PDJE_IPC::RANDOM_GEN              rg;</span>
+<span class="w">        </span><span class="c1">// cfg.max_length              = 2048;</span>
+<span class="w">        </span><span class="c1">// cfg.lenname                 = rg.Gen(&quot;PDJE_INPUT_LEN_&quot;);</span>
+<span class="w">        </span><span class="c1">// cfg.bodyname                = rg.Gen(&quot;PDJE_INPUT_BODY_&quot;);</span>
+<span class="w">        </span><span class="c1">// cfg.hmacname                = rg.Gen(&quot;PDJE_INPUT_HMAC_&quot;);</span>
+<span class="w">        </span><span class="c1">// cfg.data_request_event_name = rg.Gen(&quot;PDJE_INPUT_REQ_EVENT_&quot;);</span>
+<span class="w">        </span><span class="c1">// cfg.data_stored_event_name  = rg.Gen(&quot;PDJE_INPUT_STORED_EVENT_&quot;);</span>
+<span class="w">        </span><span class="c1">// input_buffer.emplace(cfg);</span>
+<span class="w">        </span><span class="c1">// default_devs-&gt;SendInputTransfer(input_buffer.value());</span>
+<span class="w">        </span><span class="c1">// default_devs-&gt;InitEvents();</span>
+<span class="w">        </span><span class="c1">// #endif</span>
 <span class="w">        </span><span class="n">midi_engine</span><span class="p">.</span><span class="n">emplace</span><span class="p">();</span>
 <span class="w">        </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEVICE_CONFIG_STATE</span><span class="p">;</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
@@ -149,33 +151,16 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">FLAG_INPUT_ON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">sanitized_devs</span><span class="p">.</span><span class="n">empty</span><span class="p">());</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FLAG_INPUT_ON</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">            </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="w"> </span><span class="n">nj</span><span class="p">;</span>
-<span class="w">            </span><span class="n">nj</span><span class="p">[</span><span class="s">&quot;body&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="o">::</span><span class="n">array</span><span class="p">();</span>
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dev</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">sanitized_devs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">kv</span><span class="p">;</span>
-<span class="w">                </span><span class="n">kv</span><span class="p">[</span><span class="s">&quot;id&quot;</span><span class="p">]</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">dev</span><span class="p">.</span><span class="n">device_specific_id</span><span class="p">;</span>
-<span class="w">                </span><span class="n">kv</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dev</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span>
-<span class="w">                </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">Type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">KEYBOARD</span><span class="p">:</span>
-<span class="w">                    </span><span class="n">kv</span><span class="p">[</span><span class="s">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;KEYBOARD&quot;</span><span class="p">;</span>
-<span class="w">                    </span><span class="n">nj</span><span class="p">[</span><span class="s">&quot;body&quot;</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">kv</span><span class="p">);</span>
-<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
-<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">MOUSE</span><span class="p">:</span>
-<span class="w">                    </span><span class="n">kv</span><span class="p">[</span><span class="s">&quot;type&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MOUSE&quot;</span><span class="p">;</span>
-<span class="w">                    </span><span class="n">nj</span><span class="p">[</span><span class="s">&quot;body&quot;</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">kv</span><span class="p">);</span>
-<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
-
-<span class="w">                </span><span class="k">default</span><span class="o">:</span>
-<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
-<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">default_devs</span><span class="o">-&gt;</span><span class="n">Config</span><span class="p">(</span><span class="n">sanitized_devs</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to configure devices.&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="n">Mproc</span><span class="o">-&gt;</span><span class="n">QueryConfig</span><span class="p">(</span><span class="n">nj</span><span class="p">.</span><span class="n">dump</span><span class="p">());</span>
 <span class="w">            </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">INPUT_LOOP_READY</span><span class="p">;</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Mproc</span><span class="o">-&gt;</span><span class="n">EndTransmission</span><span class="p">();</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FLAG_MIDI_ON</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// fallback: only midi devices.</span>
 <span class="w">            </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">INPUT_LOOP_READY</span><span class="p">;</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Mproc</span><span class="o">-&gt;</span><span class="n">EndTransmission</span><span class="p">();</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Kill</span><span class="p">();</span>
+
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// fallback: both invalid.</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
@@ -195,9 +180,9 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">Mproc</span><span class="o">-&gt;</span><span class="n">events</span><span class="p">.</span><span class="n">input_loop_run_event</span><span class="p">.</span><span class="n">Wake</span><span class="p">();</span>
+<span class="w">    </span><span class="n">default_devs</span><span class="o">-&gt;</span><span class="n">RunLoop</span><span class="p">();</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">FLAG_INPUT_ON</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// terminate if input flag is off.</span>
-<span class="w">        </span><span class="n">Mproc</span><span class="o">-&gt;</span><span class="n">events</span><span class="p">.</span><span class="n">terminate_event</span><span class="p">.</span><span class="n">Wake</span><span class="p">();</span>
+<span class="w">        </span><span class="n">default_devs</span><span class="o">-&gt;</span><span class="n">TerminateLoop</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FLAG_MIDI_ON</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// run midi engine if midi flag is on.</span>
@@ -216,15 +201,17 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_INPUT_STATE</span><span class="o">::</span><span class="no">DEVICE_CONFIG_STATE</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Mproc</span><span class="o">-&gt;</span><span class="n">Kill</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">default_devs</span><span class="o">-&gt;</span><span class="n">Kill</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_INPUT_STATE</span><span class="o">::</span><span class="no">INPUT_LOOP_READY</span><span class="p">:</span>
-<span class="w">        </span><span class="n">Mproc</span><span class="o">-&gt;</span><span class="n">events</span><span class="p">.</span><span class="n">terminate_event</span><span class="p">.</span><span class="n">Wake</span><span class="p">();</span>
-<span class="w">        </span><span class="n">Mproc</span><span class="o">-&gt;</span><span class="n">events</span><span class="p">.</span><span class="n">input_loop_run_event</span><span class="p">.</span><span class="n">Wake</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">default_devs</span><span class="o">-&gt;</span><span class="n">TerminateLoop</span><span class="p">();</span>
+<span class="w">        </span><span class="n">default_devs</span><span class="o">-&gt;</span><span class="n">RunLoop</span><span class="p">();</span>
 
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_INPUT_STATE</span><span class="o">::</span><span class="no">INPUT_LOOP_RUNNING</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Mproc</span><span class="o">-&gt;</span><span class="n">events</span><span class="p">.</span><span class="n">terminate_event</span><span class="p">.</span><span class="n">Wake</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">default_devs</span><span class="o">-&gt;</span><span class="n">TerminateLoop</span><span class="p">();</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="k">default</span><span class="o">:</span>
@@ -233,8 +220,8 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="c1">// reset datas.</span>
 <span class="w">    </span><span class="n">midi_engine</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
-<span class="w">    </span><span class="n">input_buffer</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
-<span class="w">    </span><span class="n">Mproc</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">default_devs</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
 <span class="w">    </span><span class="n">FLAG_INPUT_ON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="n">FLAG_MIDI_ON</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="n">state</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEAD</span><span class="p">;</span>
@@ -244,7 +231,8 @@
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span>
 <span class="n">PDJE_Input</span><span class="o">::</span><span class="n">GetDevs</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Mproc</span><span class="o">-&gt;</span><span class="n">GetDevices</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">default_devs</span><span class="o">-&gt;</span><span class="n">GetDevices</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">libremidi</span><span class="o">::</span><span class="n">input_port</span><span class="o">&gt;</span>
@@ -264,7 +252,7 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="n">PDJE_INPUT_DATA_LINE</span><span class="w"> </span><span class="n">line</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FLAG_INPUT_ON</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">line</span><span class="p">.</span><span class="n">input_arena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">input_buffer</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
+<span class="w">        </span><span class="n">line</span><span class="p">.</span><span class="n">input_arena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">default_devs</span><span class="o">-&gt;</span><span class="n">GetInputBufferPTR</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FLAG_MIDI_ON</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">line</span><span class="p">.</span><span class="n">midi_datas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">midi_engine</span><span class="o">-&gt;</span><span class="n">evlog</span><span class="p">;</span>

@@ -4,7 +4,7 @@
 Program Listing for File dbRoot.hpp
 ===================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_dbRoot.hpp>` (``include\core\db\dbRoot.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_dbRoot.hpp>` (``include/core/db/dbRoot.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

@@ -3,7 +3,7 @@
 Function main(int, char \*\*)
 =============================
 
-- Defined in :ref:`file_include_input_linux_RT_RTMain.cpp`
+- Defined in :ref:`file_include_input_trashbin_--DEPRECATED-linux_RT_RTMain.cpp`
 
 
 Function Documentation

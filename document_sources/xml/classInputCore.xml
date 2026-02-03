@@ -1,0 +1,533 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classInputCore" kind="class" language="C++" prot="public">
+    <compoundname>InputCore</compoundname>
+    <includes refid="InputCore_8hpp" local="no">InputCore.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classInputCore_1ab3740a4cad9b2aa170aa7abfe9a2f937" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1PDJE__Input__Transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref> *</type>
+        <definition>PDJE_IPC::PDJE_Input_Transfer* InputCore::out</definition>
+        <argsstring></argsstring>
+        <name>out</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="12" column="46" bodyfile="include/input/DefaultDevs/linux/InputCore.hpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classInputCore_1ac7ce8640579e366739bf6a828ef7f830" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; int, libevdev * &gt;</type>
+        <definition>std::unordered_map&lt;int, libevdev *&gt; InputCore::events</definition>
+        <argsstring></argsstring>
+        <name>events</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="13" column="30" bodyfile="include/input/DefaultDevs/linux/InputCore.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classInputCore_1a746142fb10f8b2d2c4e02a92f38456a5" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; int, <ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456" kindref="member">PDJE_Dev_Type</ref> &gt;</type>
+        <definition>std::unordered_map&lt;int, PDJE_Dev_Type&gt; InputCore::id_to_type</definition>
+        <argsstring></argsstring>
+        <name>id_to_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="14" column="27" bodyfile="include/input/DefaultDevs/linux/InputCore.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classInputCore_1a1514a6d9766cecde4e5dd5259e7a55be" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; int, std::string &gt;</type>
+        <definition>std::unordered_map&lt;int, std::string&gt; InputCore::id_to_name</definition>
+        <argsstring></argsstring>
+        <name>id_to_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="15" column="29" bodyfile="include/input/DefaultDevs/linux/InputCore.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classInputCore_1a3d8ddceaa6094ab1474f3b7fbf1912c5" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; int, std::bitset&lt; 102 &gt; &gt;</type>
+        <definition>std::unordered_map&lt;int, std::bitset&lt;102&gt; &gt; InputCore::id_pressed</definition>
+        <argsstring></argsstring>
+        <name>id_pressed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="16" column="24" bodyfile="include/input/DefaultDevs/linux/InputCore.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classInputCore_1a0f750ce65da6670e81a8a67675ef60fe" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK" kindref="compound">PDJE_HIGHRES_CLOCK::CLOCK</ref></type>
+        <definition>PDJE_HIGHRES_CLOCK::CLOCK InputCore::clock</definition>
+        <argsstring></argsstring>
+        <name>clock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="21" column="31" bodyfile="include/input/DefaultDevs/linux/InputCore.hpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classInputCore_1ad83d0c56b60258f32f614f4280dd65b5" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; InputCore::loop_switch</definition>
+        <argsstring></argsstring>
+        <name>loop_switch</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="31" column="21" bodyfile="include/input/DefaultDevs/linux/InputCore.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classInputCore_1a9bae9c78821736aa6c3ea577a09551aa" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int InputCore::stop_event_fd</definition>
+        <argsstring></argsstring>
+        <name>stop_event_fd</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="32" column="27" bodyfile="include/input/DefaultDevs/linux/InputCore.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" prot="public" static="no" mutable="no">
+        <type>struct InputCore::@0</type>
+        <definition>struct InputCore::@0 InputCore::switches</definition>
+        <argsstring></argsstring>
+        <name>switches</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="33" column="14"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classInputCore_1a154ff21de23b45c85565f04451891c91" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void InputCore::DrainEvents</definition>
+        <argsstring>(const int epFD, int FD, libevdev *evdev)</argsstring>
+        <name>DrainEvents</name>
+        <param>
+          <type>const int</type>
+          <declname>epFD</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>FD</declname>
+        </param>
+        <param>
+          <type>libevdev *</type>
+          <declname>evdev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="18" column="5" bodyfile="include/input/DefaultDevs/linux/InputCore.cpp" bodystart="126" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputCore_1afbce947582c3ae640aef78c9ccb44a3d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void InputCore::use_event</definition>
+        <argsstring>(const input_event &amp;evtrig, const int FD)</argsstring>
+        <name>use_event</name>
+        <param>
+          <type>const input_event &amp;</type>
+          <declname>evtrig</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>FD</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="20" column="5" bodyfile="include/input/DefaultDevs/linux/InputCore.cpp" bodystart="170" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputCore_1a918bed08f74d00f3d57d23cf566acaf0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void InputCore::kbRead</definition>
+        <argsstring>(const input_event &amp;evtrig, const int FD)</argsstring>
+        <name>kbRead</name>
+        <param>
+          <type>const input_event &amp;</type>
+          <declname>evtrig</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>FD</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="24" column="5" bodyfile="include/input/DefaultDevs/linux/ParseKeyboard.cpp" bodystart="5" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputCore_1a6b56d28a07e46b0aee7793a81b078340" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void InputCore::mouseRead</definition>
+        <argsstring>(const input_event &amp;evtrig, const int FD)</argsstring>
+        <name>mouseRead</name>
+        <param>
+          <type>const input_event &amp;</type>
+          <declname>evtrig</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>FD</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="27" column="5" bodyfile="include/input/DefaultDevs/linux/ParseMouse.cpp" bodystart="4" bodyend="77"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classInputCore_1ab8221304002f4eab9ee66aa87742b116" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void InputCore::Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="36" column="5" bodyfile="include/input/DefaultDevs/linux/InputCore.cpp" bodystart="40" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputCore_1aedfa3f65f41a958ddd5be27a1a8e9228" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void InputCore::Stop</definition>
+        <argsstring>()</argsstring>
+        <name>Stop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="39" column="5" bodyfile="include/input/DefaultDevs/linux/InputCore.cpp" bodystart="52" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputCore_1a7d06518a6a84886e836de608477e302e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void InputCore::set_Input_Transfer</definition>
+        <argsstring>(PDJE_IPC::PDJE_Input_Transfer *input_trsf)</argsstring>
+        <name>set_Input_Transfer</name>
+        <param>
+          <type><ref refid="classPDJE__IPC_1_1PDJE__Input__Transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref> *</type>
+          <declname>input_trsf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="41" column="5" bodyfile="include/input/DefaultDevs/linux/InputCore.hpp" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputCore_1a51e833acffa99fe20d8763cb83d0d201" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool InputCore::Add</definition>
+        <argsstring>(const fs::path &amp;target, PDJE_Dev_Type type, std::string name)</argsstring>
+        <name>Add</name>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456" kindref="member">PDJE_Dev_Type</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="46" column="5" bodyfile="include/input/DefaultDevs/linux/InputCore.cpp" bodystart="17" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputCore_1adcd9c42bb0e06d1b9c235003786d3d03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void InputCore::Trig</definition>
+        <argsstring>()</argsstring>
+        <name>Trig</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="48" column="5" bodyfile="include/input/DefaultDevs/linux/InputCore.cpp" bodystart="61" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputCore_1a7cf7d3d4f8919c5da684d26204453c85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>InputCore::InputCore</definition>
+        <argsstring>()=default</argsstring>
+        <name>InputCore</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="49" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputCore_1ad2577afdb1793172047f2cf27f53a1e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>InputCore::~InputCore</definition>
+        <argsstring>()</argsstring>
+        <name>~InputCore</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="50" column="5" bodyfile="include/input/DefaultDevs/linux/InputCore.cpp" bodystart="35" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="7">
+        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
+        <childnode refid="8" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="22">
+        <label>PDJE_IPC::SharedMem&lt; PDJE_Input_Log, PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="12">
+        <label>PDJE_Mouse_Event</label>
+        <link refid="structPDJE__Mouse__Event"/>
+      </node>
+      <node id="24">
+        <label>std::bitset&lt; 102 &gt;</label>
+      </node>
+      <node id="18">
+        <label>PDJE_CRYPTO::PSK</label>
+        <link refid="classPDJE__CRYPTO_1_1PSK"/>
+      </node>
+      <node id="14">
+        <label>PDJE_IPC::EVENT</label>
+        <link refid="classPDJE__IPC_1_1EVENT"/>
+        <childnode refid="15" relation="usage">
+          <edgelabel>name_cache</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>PDJE_IPC::SharedMem&lt; uint64_t, PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="26">
+        <label>std::unordered_map&lt; int, std::string &gt;</label>
+        <childnode refid="15" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="16">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="4">
+        <label>std::unordered_map&lt; int, libevdev * &gt;</label>
+      </node>
+      <node id="17">
+        <label>PDJE_IPC::Input_Transfer_Metadata</label>
+        <link refid="structPDJE__IPC_1_1Input__Transfer__Metadata"/>
+        <childnode refid="18" relation="usage">
+          <edgelabel>psk</edgelabel>
+        </childnode>
+      </node>
+      <node id="20">
+        <label>PDJE_IPC::SharedMem&lt; uint8_t, PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="8">
+        <label>PDJE_Input_Log</label>
+        <link refid="structPDJE__Input__Log"/>
+        <childnode refid="9" relation="usage">
+          <edgelabel>hid_event</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>event</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::atomic&lt; bool &gt;</label>
+      </node>
+      <node id="3">
+        <label>std::unordered_map&lt; int, PDJE_Dev_Type &gt;</label>
+      </node>
+      <node id="10">
+        <label>PDJE_Input_Event</label>
+        <link refid="unionPDJE__Input__Event"/>
+        <childnode refid="11" relation="usage">
+          <edgelabel>keyboard</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>mouse</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>PDJE_HID_Event</label>
+        <link refid="structPDJE__HID__Event"/>
+      </node>
+      <node id="13">
+        <label>std::mutex</label>
+      </node>
+      <node id="25">
+        <label>PDJE_HIGHRES_CLOCK::CLOCK</label>
+        <link refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK"/>
+      </node>
+      <node id="5">
+        <label>PDJE_IPC::PDJE_Input_Transfer</label>
+        <link refid="classPDJE__IPC_1_1PDJE__Input__Transfer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>sendworker_switch</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>length</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>datas</edgelabel>
+          <edgelabel>subBuffer</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>local_locker</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>req_event</edgelabel>
+          <edgelabel>stored_event</edgelabel>
+        </childnode>
+        <childnode refid="17" relation="usage">
+          <edgelabel>metadata</edgelabel>
+        </childnode>
+        <childnode refid="19" relation="usage">
+          <edgelabel>hmacEngine</edgelabel>
+        </childnode>
+        <childnode refid="20" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+        <childnode refid="21" relation="usage">
+          <edgelabel>adbf</edgelabel>
+        </childnode>
+        <childnode refid="22" relation="usage">
+          <edgelabel>body</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>InputCore</label>
+        <link refid="classInputCore"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>loop_switch</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>id_to_type</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>events</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>out</edgelabel>
+        </childnode>
+        <childnode refid="23" relation="usage">
+          <edgelabel>id_pressed</edgelabel>
+        </childnode>
+        <childnode refid="25" relation="usage">
+          <edgelabel>clock</edgelabel>
+        </childnode>
+        <childnode refid="26" relation="usage">
+          <edgelabel>id_to_name</edgelabel>
+        </childnode>
+      </node>
+      <node id="11">
+        <label>PDJE_Keyboard_Event</label>
+        <link refid="structPDJE__Keyboard__Event"/>
+      </node>
+      <node id="21">
+        <label>Atomic_Double_Buffer&lt; PDJE_Input_Log &gt;</label>
+        <link refid="classAtomic__Double__Buffer"/>
+      </node>
+      <node id="19">
+        <label>std::unique_ptr&lt; Botan::MessageAuthenticationCode &gt;</label>
+      </node>
+      <node id="23">
+        <label>std::unordered_map&lt; int, std::bitset&lt; 102 &gt; &gt;</label>
+        <childnode refid="24" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="15">
+        <label>std::string</label>
+        <childnode refid="16" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/DefaultDevs/linux/InputCore.hpp" line="10" column="1" bodyfile="include/input/DefaultDevs/linux/InputCore.hpp" bodystart="10" bodyend="51"/>
+    <listofallmembers>
+      <member refid="classInputCore_1a51e833acffa99fe20d8763cb83d0d201" prot="public" virt="non-virtual"><scope>InputCore</scope><name>Add</name></member>
+      <member refid="classInputCore_1a0f750ce65da6670e81a8a67675ef60fe" prot="private" virt="non-virtual"><scope>InputCore</scope><name>clock</name></member>
+      <member refid="classInputCore_1a154ff21de23b45c85565f04451891c91" prot="private" virt="non-virtual"><scope>InputCore</scope><name>DrainEvents</name></member>
+      <member refid="classInputCore_1ac7ce8640579e366739bf6a828ef7f830" prot="private" virt="non-virtual"><scope>InputCore</scope><name>events</name></member>
+      <member refid="classInputCore_1a3d8ddceaa6094ab1474f3b7fbf1912c5" prot="private" virt="non-virtual"><scope>InputCore</scope><name>id_pressed</name></member>
+      <member refid="classInputCore_1a1514a6d9766cecde4e5dd5259e7a55be" prot="private" virt="non-virtual"><scope>InputCore</scope><name>id_to_name</name></member>
+      <member refid="classInputCore_1a746142fb10f8b2d2c4e02a92f38456a5" prot="private" virt="non-virtual"><scope>InputCore</scope><name>id_to_type</name></member>
+      <member refid="classInputCore_1a7cf7d3d4f8919c5da684d26204453c85" prot="public" virt="non-virtual"><scope>InputCore</scope><name>InputCore</name></member>
+      <member refid="classInputCore_1a918bed08f74d00f3d57d23cf566acaf0" prot="private" virt="non-virtual"><scope>InputCore</scope><name>kbRead</name></member>
+      <member refid="classInputCore_1ad83d0c56b60258f32f614f4280dd65b5" prot="public" virt="non-virtual"><scope>InputCore</scope><name>loop_switch</name></member>
+      <member refid="classInputCore_1a6b56d28a07e46b0aee7793a81b078340" prot="private" virt="non-virtual"><scope>InputCore</scope><name>mouseRead</name></member>
+      <member refid="classInputCore_1ab3740a4cad9b2aa170aa7abfe9a2f937" prot="private" virt="non-virtual"><scope>InputCore</scope><name>out</name></member>
+      <member refid="classInputCore_1ab8221304002f4eab9ee66aa87742b116" prot="public" virt="non-virtual"><scope>InputCore</scope><name>Reset</name></member>
+      <member refid="classInputCore_1a7d06518a6a84886e836de608477e302e" prot="public" virt="non-virtual"><scope>InputCore</scope><name>set_Input_Transfer</name></member>
+      <member refid="classInputCore_1aedfa3f65f41a958ddd5be27a1a8e9228" prot="public" virt="non-virtual"><scope>InputCore</scope><name>Stop</name></member>
+      <member refid="classInputCore_1a9bae9c78821736aa6c3ea577a09551aa" prot="public" virt="non-virtual"><scope>InputCore</scope><name>stop_event_fd</name></member>
+      <member refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" prot="public" virt="non-virtual"><scope>InputCore</scope><name>switches</name></member>
+      <member refid="classInputCore_1adcd9c42bb0e06d1b9c235003786d3d03" prot="public" virt="non-virtual"><scope>InputCore</scope><name>Trig</name></member>
+      <member refid="classInputCore_1afbce947582c3ae640aef78c9ccb44a3d" prot="private" virt="non-virtual"><scope>InputCore</scope><name>use_event</name></member>
+      <member refid="classInputCore_1ad2577afdb1793172047f2cf27f53a1e5" prot="public" virt="non-virtual"><scope>InputCore</scope><name>~InputCore</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

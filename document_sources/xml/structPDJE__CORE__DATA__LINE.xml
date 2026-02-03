@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structPDJE__CORE__DATA__LINE" kind="struct" language="C++" prot="public">
     <compoundname>PDJE_CORE_DATA_LINE</compoundname>
     <includes refid="PDJE__Core__DataLine_8hpp" local="no">PDJE_Core_DataLine.hpp</includes>
-    <sectiondef kind="public-attrib">
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structPDJE__CORE__DATA__LINE_1a6f4a3b68d7529669518aac2323a934ca" prot="public" static="no" mutable="no">
         <type>unsigned long long *</type>
         <definition>unsigned long long* PDJE_CORE_DATA_LINE::nowCursor</definition>
         <argsstring></argsstring>
         <name>nowCursor</name>
-        <qualifiedname>PDJE_CORE_DATA_LINE::nowCursor</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -24,7 +23,6 @@
         <definition>unsigned long long* PDJE_CORE_DATA_LINE::maxCursor</definition>
         <argsstring></argsstring>
         <name>maxCursor</name>
-        <qualifiedname>PDJE_CORE_DATA_LINE::maxCursor</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -39,7 +37,6 @@
         <definition>float* PDJE_CORE_DATA_LINE::preRenderedData</definition>
         <argsstring></argsstring>
         <name>preRenderedData</name>
-        <qualifiedname>PDJE_CORE_DATA_LINE::preRenderedData</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -54,7 +51,6 @@
         <definition>std::atomic&lt;audioSyncData&gt;* PDJE_CORE_DATA_LINE::syncD</definition>
         <argsstring></argsstring>
         <name>syncD</name>
-        <qualifiedname>PDJE_CORE_DATA_LINE::syncD</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -64,28 +60,21 @@
         </inbodydescription>
         <location file="include/global/DataLines/PDJE_Core_DataLine.hpp" line="16" column="17" bodyfile="include/global/DataLines/PDJE_Core_DataLine.hpp" bodystart="16" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>data line for transmission with other mosudles. all datas are pointer. use carefully. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
+      <node id="2">
+        <label>std::atomic&lt; audioSyncData &gt;</label>
+      </node>
       <node id="1">
         <label>PDJE_CORE_DATA_LINE</label>
         <link refid="structPDJE__CORE__DATA__LINE"/>
         <childnode refid="2" relation="usage">
           <edgelabel>syncD</edgelabel>
-        </childnode>
-      </node>
-      <node id="3">
-        <label>audioSyncData</label>
-        <link refid="structaudioSyncData"/>
-      </node>
-      <node id="2">
-        <label>std::atomic&lt; audioSyncData &gt;</label>
-        <childnode refid="3" relation="usage">
-          <edgelabel>ptr</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>

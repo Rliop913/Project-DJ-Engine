@@ -3,7 +3,7 @@
 Function PDJE_IPC::GenCommand
 =============================
 
-- Defined in :ref:`file_include_input_IPC_transmission_linux_MainProcess.cpp`
+- Defined in :ref:`file_include_input_trashbin_--DEPRECATED--transmission_linux_MainProcess.cpp`
 
 
 Function Documentation

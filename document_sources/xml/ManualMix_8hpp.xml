@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="ManualMix_8hpp" kind="file" language="C++">
     <compoundname>ManualMix.hpp</compoundname>
     <includes local="no">memory</includes>
@@ -19,49 +19,33 @@
     <includes refid="FrameCalc_8hpp" local="yes">FrameCalc.hpp</includes>
     <includes refid="musicDB_8hpp" local="yes">musicDB.hpp</includes>
     <includes refid="PDJE__EXPORT__SETTER_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
-    <includedby refid="audioPlayer_8hpp" local="yes">include/core/MainObjects/audioPlayer/audioPlayer.hpp</includedby>
+    <includedby refid="audioRender_8hpp" local="yes">include/core/audioRender/audioRender.hpp</includedby>
     <includedby refid="ManualMix_8cpp" local="yes">include/core/audioRender/ManualMix/ManualMix.cpp</includedby>
     <includedby refid="MusicControlPanel_8hpp" local="yes">include/core/audioRender/ManualMix/MusicControlPanel.hpp</includedby>
-    <includedby refid="audioRender_8hpp" local="yes">include/core/audioRender/audioRender.hpp</includedby>
+    <includedby refid="audioPlayer_8hpp" local="yes">include/core/MainObjects/audioPlayer/audioPlayer.hpp</includedby>
     <includedby refid="manualAudioTest_8cpp" local="yes">include/tests/manualAudioTest.cpp</includedby>
     <incdepgraph>
-      <node id="1">
-        <label>include/core/audioRender/ManualMix/ManualMix.hpp</label>
-        <link refid="ManualMix_8hpp"/>
-        <childnode refid="2" relation="include">
+      <node id="37">
+        <label>musicDB.hpp</label>
+        <link refid="musicDB_8hpp"/>
+        <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>FAUST_ROBOT_manual.hpp</label>
+      </node>
+      <node id="29">
+        <label>filesystem</label>
       </node>
       <node id="19">
         <label>CapnpBinary.hpp</label>
@@ -85,6 +69,9 @@
         <childnode refid="28" relation="include">
         </childnode>
       </node>
+      <node id="11">
+        <label>FAUST_PHASER_manual.hpp</label>
+      </node>
       <node id="16">
         <label>FrameCalc.hpp</label>
         <link refid="FrameCalc_8hpp"/>
@@ -99,53 +86,29 @@
         <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="40">
-        <label>dbState.hpp</label>
-        <link refid="dbState_8hpp"/>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
+      <node id="23">
+        <label>capnp/serialize.h</label>
       </node>
-      <node id="37">
-        <label>musicDB.hpp</label>
-        <link refid="musicDB_8hpp"/>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
+      <node id="18">
+        <label>cmath</label>
       </node>
-      <node id="41">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
+      <node id="24">
+        <label>MixBinary.capnp.h</label>
       </node>
-      <node id="27">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      <node id="39">
+        <label>string</label>
+      </node>
+      <node id="3">
+        <label>FAUST_COMPRESSOR_manual.hpp</label>
+      </node>
+      <node id="31">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="38">
+        <label>sqlite3.h</label>
+      </node>
+      <node id="15">
+        <label>FAUST_VOL_manual.hpp</label>
       </node>
       <node id="28">
         <label>PDJE_LOG_SETTER.hpp</label>
@@ -165,159 +128,68 @@
         <childnode refid="35" relation="include">
         </childnode>
       </node>
-      <node id="3">
-        <label>FAUST_COMPRESSOR_manual.hpp</label>
-      </node>
-      <node id="4">
-        <label>FAUST_DISTORTION_manual.hpp</label>
-      </node>
-      <node id="5">
-        <label>FAUST_ECHO_manual.hpp</label>
-      </node>
-      <node id="6">
-        <label>FAUST_EQ_manual.hpp</label>
-      </node>
-      <node id="7">
-        <label>FAUST_FILTERS_manual.hpp</label>
+      <node id="13">
+        <label>FAUST_ROLL_manual.hpp</label>
       </node>
       <node id="8">
         <label>FAUST_FLANGER_manual.hpp</label>
       </node>
-      <node id="9">
-        <label>FAUST_OCS_FILTER_manual.hpp</label>
-      </node>
-      <node id="10">
-        <label>FAUST_PANNER_manual.hpp</label>
-      </node>
-      <node id="11">
-        <label>FAUST_PHASER_manual.hpp</label>
-      </node>
-      <node id="12">
-        <label>FAUST_ROBOT_manual.hpp</label>
-      </node>
-      <node id="13">
-        <label>FAUST_ROLL_manual.hpp</label>
-      </node>
-      <node id="14">
-        <label>FAUST_TRANCE_manual.hpp</label>
-      </node>
-      <node id="15">
-        <label>FAUST_VOL_manual.hpp</label>
-      </node>
-      <node id="24">
-        <label>MixBinary.capnp.h</label>
-      </node>
-      <node id="25">
-        <label>MusicBinary.capnp.h</label>
-      </node>
-      <node id="26">
-        <label>NoteBinary.capnp.h</label>
-      </node>
-      <node id="17">
-        <label>algorithm</label>
-      </node>
-      <node id="22">
-        <label>capnp/message.h</label>
-      </node>
-      <node id="23">
-        <label>capnp/serialize.h</label>
-      </node>
-      <node id="18">
-        <label>cmath</label>
-      </node>
-      <node id="42">
-        <label>cppcodec/base64_default_url.hpp</label>
-      </node>
-      <node id="29">
-        <label>filesystem</label>
-      </node>
       <node id="36">
         <label>hwy/aligned_allocator.h</label>
-      </node>
-      <node id="2">
-        <label>memory</label>
-      </node>
-      <node id="30">
-        <label>mutex</label>
-      </node>
-      <node id="20">
-        <label>optional</label>
-      </node>
-      <node id="31">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
-      <node id="32">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
       </node>
       <node id="33">
         <label>spdlog/spdlog.h</label>
       </node>
-      <node id="38">
-        <label>sqlite3.h</label>
-      </node>
-      <node id="39">
-        <label>string</label>
-      </node>
       <node id="34">
         <label>string_view</label>
       </node>
-      <node id="35">
-        <label>type_traits</label>
+      <node id="20">
+        <label>optional</label>
+      </node>
+      <node id="4">
+        <label>FAUST_DISTORTION_manual.hpp</label>
       </node>
       <node id="21">
         <label>vector</label>
       </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="31">
-        <label>include/core/MainObjects/audioPlayer/audioCallbacks.cpp</label>
-        <link refid="audioCallbacks_8cpp"/>
+      <node id="32">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
       </node>
-      <node id="30">
-        <label>include/core/MainObjects/audioPlayer/audioCallbacks.hpp</label>
-        <link refid="audioCallbacks_8hpp"/>
-        <childnode refid="31" relation="include">
+      <node id="7">
+        <label>FAUST_FILTERS_manual.hpp</label>
+      </node>
+      <node id="5">
+        <label>FAUST_ECHO_manual.hpp</label>
+      </node>
+      <node id="26">
+        <label>NoteBinary.capnp.h</label>
+      </node>
+      <node id="10">
+        <label>FAUST_PANNER_manual.hpp</label>
+      </node>
+      <node id="41">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/core/audioRender/ManualMix/ManualMix.hpp</label>
+        <link refid="ManualMix_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-      </node>
-      <node id="3">
-        <label>include/core/MainObjects/audioPlayer/audioPlayer.cpp</label>
-        <link refid="audioPlayer_8cpp"/>
-      </node>
-      <node id="2">
-        <label>include/core/MainObjects/audioPlayer/audioPlayer.hpp</label>
-        <link refid="audioPlayer_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>include/core/MainObjects/editorObject/addline.cpp</label>
-        <link refid="addline_8cpp"/>
-      </node>
-      <node id="6">
-        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
-        <link refid="commonfunction_8cpp"/>
-      </node>
-      <node id="7">
-        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
-        <link refid="deleteline_8cpp"/>
-      </node>
-      <node id="8">
-        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
-        <link refid="editorObject_8cpp"/>
-      </node>
-      <node id="4">
-        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
-        <link refid="editorObject_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
@@ -342,66 +214,100 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="9">
-        <label>include/core/MainObjects/editorObject/getall.cpp</label>
-        <link refid="getall_8cpp"/>
+      <node id="42">
+        <label>cppcodec/base64_default_url.hpp</label>
       </node>
-      <node id="10">
-        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
-        <link refid="getdiff_8cpp"/>
+      <node id="30">
+        <label>mutex</label>
       </node>
-      <node id="11">
-        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
-        <link refid="getlogwithjsongraph_8cpp"/>
-      </node>
-      <node id="12">
-        <label>include/core/MainObjects/editorObject/go.cpp</label>
-        <link refid="go_8cpp"/>
-      </node>
-      <node id="13">
-        <label>include/core/MainObjects/editorObject/redo.cpp</label>
-        <link refid="redo_8cpp"/>
+      <node id="27">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
       <node id="14">
-        <label>include/core/MainObjects/editorObject/render.cpp</label>
-        <link refid="render_8cpp"/>
+        <label>FAUST_TRANCE_manual.hpp</label>
       </node>
-      <node id="15">
-        <label>include/core/MainObjects/editorObject/undo.cpp</label>
-        <link refid="undo_8cpp"/>
+      <node id="6">
+        <label>FAUST_EQ_manual.hpp</label>
       </node>
-      <node id="16">
-        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
-        <link refid="updatelog_8cpp"/>
+      <node id="35">
+        <label>type_traits</label>
       </node>
-      <node id="17">
-        <label>include/core/SWIG_editor_visitor.hpp</label>
-        <link refid="SWIG__editor__visitor_8hpp"/>
+      <node id="25">
+        <label>MusicBinary.capnp.h</label>
       </node>
-      <node id="28">
-        <label>include/core/audioRender/ManualMix/ManualMix.cpp</label>
-        <link refid="ManualMix_8cpp"/>
-      </node>
-      <node id="1">
-        <label>include/core/audioRender/ManualMix/ManualMix.hpp</label>
-        <link refid="ManualMix_8hpp"/>
-        <childnode refid="2" relation="include">
+      <node id="40">
+        <label>dbState.hpp</label>
+        <link refid="dbState_8hpp"/>
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
+      </node>
+      <node id="9">
+        <label>FAUST_OCS_FILTER_manual.hpp</label>
+      </node>
+      <node id="17">
+        <label>algorithm</label>
+      </node>
+      <node id="22">
+        <label>capnp/message.h</label>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="13">
+        <label>include/core/MainObjects/audioPlayer/audioPlayer.cpp</label>
+        <link refid="audioPlayer_8cpp"/>
+      </node>
+      <node id="30">
+        <label>include/core/audioRender/ManualMix/ManualMix.cpp</label>
+        <link refid="ManualMix_8cpp"/>
+      </node>
+      <node id="17">
+        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
+        <link refid="commonfunction_8cpp"/>
+      </node>
+      <node id="9">
+        <label>include/tests/editorTest.cpp</label>
+        <link refid="editorTest_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/core/audioRender/audioRender.hpp</label>
+        <link refid="audioRender_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
+        <link refid="getdiff_8cpp"/>
+      </node>
+      <node id="27">
+        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
+        <link refid="updatelog_8cpp"/>
+      </node>
+      <node id="29">
+        <label>include/tests/audioTest.cpp</label>
+        <link refid="audioTest_8cpp"/>
+      </node>
+      <node id="19">
+        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
+        <link refid="editorObject_8cpp"/>
       </node>
       <node id="32">
         <label>include/core/audioRender/ManualMix/MusicControlPanel-inl.h</label>
@@ -409,61 +315,75 @@
         <childnode refid="33" relation="include">
         </childnode>
       </node>
-      <node id="33">
-        <label>include/core/audioRender/ManualMix/MusicControlPanel.cpp</label>
-        <link refid="MusicControlPanel_8cpp"/>
+      <node id="12">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judgeTest_8cpp"/>
       </node>
-      <node id="29">
+      <node id="31">
         <label>include/core/audioRender/ManualMix/MusicControlPanel.hpp</label>
         <link refid="MusicControlPanel_8hpp"/>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
       </node>
-      <node id="37">
+      <node id="16">
+        <label>include/core/MainObjects/editorObject/addline.cpp</label>
+        <link refid="addline_8cpp"/>
+      </node>
+      <node id="26">
+        <label>include/core/MainObjects/editorObject/undo.cpp</label>
+        <link refid="undo_8cpp"/>
+      </node>
+      <node id="38">
+        <label>include/tests/manualAudioTest.cpp</label>
+        <link refid="manualAudioTest_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/core/MainObjects/audioPlayer/audioPlayer.hpp</label>
+        <link refid="audioPlayer_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
         <label>include/core/audioRender/audioRender.cpp</label>
         <link refid="audioRender_8cpp"/>
       </node>
-      <node id="36">
-        <label>include/core/audioRender/audioRender.hpp</label>
-        <link refid="audioRender_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
+      <node id="20">
+        <label>include/core/MainObjects/editorObject/getall.cpp</label>
+        <link refid="getall_8cpp"/>
       </node>
-      <node id="18">
+      <node id="15">
         <label>include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</label>
         <link refid="MusicJson_8cpp"/>
       </node>
-      <node id="35">
-        <label>include/core/editor/editor.cpp</label>
-        <link refid="editor_8cpp"/>
-      </node>
-      <node id="34">
-        <label>include/core/editor/editor.hpp</label>
-        <link refid="editor_8hpp"/>
-        <childnode refid="8" relation="include">
+      <node id="14">
+        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
+        <link refid="editorObject_8hpp"/>
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-      </node>
-      <node id="20">
-        <label>include/core/interface/PDJE_interface.cpp</label>
-        <link refid="PDJE__interface_8cpp"/>
-      </node>
-      <node id="19">
-        <label>include/core/interface/PDJE_interface.hpp</label>
-        <link refid="PDJE__interface_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
@@ -478,42 +398,122 @@
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
       </node>
-      <node id="21">
-        <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
-        <link refid="PDJE__polyglot__wraps_8cpp"/>
+      <node id="34">
+        <label>include/core/editor/editor.hpp</label>
+        <link refid="editor_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
       </node>
-      <node id="22">
-        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
-        <link refid="judgeTest_8cpp"/>
+      <node id="37">
+        <label>include/core/MainObjects/audioPlayer/audioCallbacks.cpp</label>
+        <link refid="audioCallbacks_8cpp"/>
       </node>
-      <node id="27">
-        <label>include/tests/audioTest.cpp</label>
-        <link refid="audioTest_8cpp"/>
-      </node>
-      <node id="23">
-        <label>include/tests/dbTest.cpp</label>
-        <link refid="dbTest_8cpp"/>
-      </node>
-      <node id="24">
-        <label>include/tests/editorTest.cpp</label>
-        <link refid="editorTest_8cpp"/>
-      </node>
-      <node id="25">
+      <node id="10">
         <label>include/tests/gittest.cpp</label>
         <link refid="gittest_8cpp"/>
       </node>
-      <node id="26">
+      <node id="23">
+        <label>include/core/MainObjects/editorObject/go.cpp</label>
+        <link refid="go_8cpp"/>
+      </node>
+      <node id="18">
+        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
+        <link refid="deleteline_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/core/interface/PDJE_interface.cpp</label>
+        <link refid="PDJE__interface_8cpp"/>
+      </node>
+      <node id="35">
+        <label>include/core/editor/editor.cpp</label>
+        <link refid="editor_8cpp"/>
+      </node>
+      <node id="24">
+        <label>include/core/MainObjects/editorObject/redo.cpp</label>
+        <link refid="redo_8cpp"/>
+      </node>
+      <node id="8">
+        <label>include/tests/dbTest.cpp</label>
+        <link refid="dbTest_8cpp"/>
+      </node>
+      <node id="25">
+        <label>include/core/MainObjects/editorObject/render.cpp</label>
+        <link refid="render_8cpp"/>
+      </node>
+      <node id="36">
+        <label>include/core/MainObjects/audioPlayer/audioCallbacks.hpp</label>
+        <link refid="audioCallbacks_8hpp"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/core/audioRender/ManualMix/ManualMix.hpp</label>
+        <link refid="ManualMix_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
         <label>include/tests/interfaceTest.cpp</label>
         <link refid="interfaceTest_8cpp"/>
       </node>
-      <node id="38">
-        <label>include/tests/manualAudioTest.cpp</label>
-        <link refid="manualAudioTest_8cpp"/>
+      <node id="22">
+        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <link refid="getlogwithjsongraph_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/core/interface/PDJE_interface.hpp</label>
+        <link refid="PDJE__interface_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>include/core/SWIG_editor_visitor.hpp</label>
+        <link refid="SWIG__editor__visitor_8hpp"/>
+      </node>
+      <node id="33">
+        <label>include/core/audioRender/ManualMix/MusicControlPanel.cpp</label>
+        <link refid="MusicControlPanel_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
+        <link refid="PDJE__polyglot__wraps_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classFXControlPanel" prot="public">FXControlPanel</innerclass>
-    <sectiondef kind="enum">
+      <sectiondef kind="enum">
       <memberdef kind="enum" id="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3" prot="public" static="no" strong="no">
         <type></type>
         <name>FXList</name>
@@ -618,8 +618,8 @@
         </inbodydescription>
         <location file="include/core/audioRender/ManualMix/ManualMix.hpp" line="28" column="1" bodyfile="include/core/audioRender/ManualMix/ManualMix.hpp" bodystart="28" bodyend="42"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="func">
+      </sectiondef>
+      <sectiondef kind="func">
       <memberdef kind="function" id="ManualMix_8hpp_1a79df2887c22c06f21513214917ebbdc4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void toFaustStylePCM</definition>
@@ -670,7 +670,7 @@
         </inbodydescription>
         <location file="include/core/audioRender/ManualMix/ManualMix.hpp" line="137" column="1" bodyfile="include/core/audioRender/ManualMix/ManualMix.hpp" bodystart="137" bodyend="146"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -712,10 +712,10 @@
 <codeline lineno="38" refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3aabea9be20feeb2150a8ffbd68625beb4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3aabea9be20feeb2150a8ffbd68625beb4" kindref="member">ROBOT</ref>,</highlight></codeline>
 <codeline lineno="39" refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a2eeb9fef8a6a516fa6437a44a6efbd52" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a2eeb9fef8a6a516fa6437a44a6efbd52" kindref="member">ROLL</ref>,</highlight></codeline>
 <codeline lineno="40" refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a5a878d6040996dc58170b350b180c3db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a5a878d6040996dc58170b350b180c3db" kindref="member">TRANCE</ref>,</highlight></codeline>
-<codeline lineno="41" refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a7963a24fafa6a2035ee732d001a2d62a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a7963a24fafa6a2035ee732d001a2d62a" kindref="member">VOL</ref></highlight></codeline>
-<codeline lineno="42"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a7963a24fafa6a2035ee732d001a2d62a" kindref="member">VOL</ref></highlight></codeline>
+<codeline lineno="42" refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a7963a24fafa6a2035ee732d001a2d62a" refkind="member"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48" refid="classFXControlPanel" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="classFXControlPanel_1a9d7c58aadc4dc08af932759399820b8c" kindref="member">FXControlPanel</ref><sp/>{</highlight></codeline>
+<codeline lineno="48" refid="classFXControlPanel" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="classFXControlPanel" kindref="compound">FXControlPanel</ref><sp/>{</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="50" refid="classFXControlPanel_1a14dfbffe2406893a4b52ce52c7febeb6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>CompressorFAUSTMan&gt;<sp/><ref refid="classFXControlPanel_1a14dfbffe2406893a4b52ce52c7febeb6" kindref="member">compressorPanel</ref>;</highlight></codeline>
 <codeline lineno="51" refid="classFXControlPanel_1ab5341be772459cc601795257b767839c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::pair&lt;bool,<sp/>DistortionFAUSTMan&gt;<sp/><ref refid="classFXControlPanel_1ab5341be772459cc601795257b767839c" kindref="member">distortionPanel</ref>;</highlight></codeline>

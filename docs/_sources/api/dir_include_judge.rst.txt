@@ -10,7 +10,7 @@ Directory judge
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\judge``
+*Directory path:* ``include/judge``
 
 Subdirectories
 --------------

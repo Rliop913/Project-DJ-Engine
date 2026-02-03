@@ -4,7 +4,7 @@
 Program Listing for File PDJE_Input.cpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_input_PDJE_Input.cpp>` (``include\input\PDJE_Input.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_input_PDJE_Input.cpp>` (``include/input/PDJE_Input.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -28,21 +28,23 @@ Program Listing for File PDJE_Input.cpp
                    "maybe input module is running or configuring.");
                return false;
            }
+           default_devs.emplace();
+           default_devs->Ready();
    
-           Mproc.emplace();
+           // #ifdef WIN32
    
-           PDJE_IPC::Input_Transfer_Metadata cfg;
-           PDJE_IPC::RANDOM_GEN              rg;
-           cfg.max_length              = 2048;
-           cfg.lenname                 = rg.Gen("PDJE_INPUT_LEN_");
-           cfg.bodyname                = rg.Gen("PDJE_INPUT_BODY_");
-           cfg.hmacname                = rg.Gen("PDJE_INPUT_HMAC_");
-           cfg.data_request_event_name = rg.Gen("PDJE_INPUT_REQ_EVENT_");
-           cfg.data_stored_event_name  = rg.Gen("PDJE_INPUT_STORED_EVENT_");
-           input_buffer.emplace(cfg);
-           Mproc->SendInputTransfer(input_buffer.value());
-           Mproc->InitEvents();
-   
+           // PDJE_IPC::Input_Transfer_Metadata cfg;
+           // PDJE_IPC::RANDOM_GEN              rg;
+           // cfg.max_length              = 2048;
+           // cfg.lenname                 = rg.Gen("PDJE_INPUT_LEN_");
+           // cfg.bodyname                = rg.Gen("PDJE_INPUT_BODY_");
+           // cfg.hmacname                = rg.Gen("PDJE_INPUT_HMAC_");
+           // cfg.data_request_event_name = rg.Gen("PDJE_INPUT_REQ_EVENT_");
+           // cfg.data_stored_event_name  = rg.Gen("PDJE_INPUT_STORED_EVENT_");
+           // input_buffer.emplace(cfg);
+           // default_devs->SendInputTransfer(input_buffer.value());
+           // default_devs->InitEvents();
+           // #endif
            midi_engine.emplace();
            state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
            return true;
@@ -78,33 +80,16 @@ Program Listing for File PDJE_Input.cpp
            }
            FLAG_INPUT_ON = (!sanitized_devs.empty());
            if (FLAG_INPUT_ON) {
-   
-               nlohmann::json nj;
-               nj["body"] = nlohmann::json::array();
-               for (const auto &dev : sanitized_devs) {
-                   std::unordered_map<std::string, std::string> kv;
-                   kv["id"]   = dev.device_specific_id;
-                   kv["name"] = dev.Name;
-                   switch (dev.Type) {
-                   case PDJE_Dev_Type::KEYBOARD:
-                       kv["type"] = "KEYBOARD";
-                       nj["body"].push_back(kv);
-                       break;
-                   case PDJE_Dev_Type::MOUSE:
-                       kv["type"] = "MOUSE";
-                       nj["body"].push_back(kv);
-                       break;
-   
-                   default:
-                       break;
-                   }
+               if (!default_devs->Config(sanitized_devs)) {
+                   critlog("failed to configure devices.");
+                   return false;
                }
-               Mproc->QueryConfig(nj.dump());
                state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
-               return Mproc->EndTransmission();
+               return true;
            } else if (FLAG_MIDI_ON) { // fallback: only midi devices.
                state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
-               return Mproc->EndTransmission();
+               return Kill();
+   
            } else { // fallback: both invalid.
                return false;
            }
@@ -124,9 +109,9 @@ Program Listing for File PDJE_Input.cpp
            return false;
        }
    
-       Mproc->events.input_loop_run_event.Wake();
+       default_devs->RunLoop();
        if (!FLAG_INPUT_ON) { // terminate if input flag is off.
-           Mproc->events.terminate_event.Wake();
+           default_devs->TerminateLoop();
        }
    
        if (FLAG_MIDI_ON) { // run midi engine if midi flag is on.
@@ -145,15 +130,17 @@ Program Listing for File PDJE_Input.cpp
            return true;
    
        case PDJE_INPUT_STATE::DEVICE_CONFIG_STATE: {
-           return Mproc->Kill();
+           return default_devs->Kill();
        }
        case PDJE_INPUT_STATE::INPUT_LOOP_READY:
-           Mproc->events.terminate_event.Wake();
-           Mproc->events.input_loop_run_event.Wake();
+   
+           default_devs->TerminateLoop();
+           default_devs->RunLoop();
    
            break;
        case PDJE_INPUT_STATE::INPUT_LOOP_RUNNING: {
-           Mproc->events.terminate_event.Wake();
+   
+           default_devs->TerminateLoop();
            break;
        } break;
        default:
@@ -162,8 +149,8 @@ Program Listing for File PDJE_Input.cpp
        }
        // reset datas.
        midi_engine.reset();
-       input_buffer.reset();
-       Mproc.reset();
+   
+       default_devs.reset();
        FLAG_INPUT_ON = false;
        FLAG_MIDI_ON  = false;
        state         = PDJE_INPUT_STATE::DEAD;
@@ -173,7 +160,8 @@ Program Listing for File PDJE_Input.cpp
    std::vector<DeviceData>
    PDJE_Input::GetDevs()
    {
-       return Mproc->GetDevices();
+   
+       return default_devs->GetDevices();
    }
    
    std::vector<libremidi::input_port>
@@ -193,7 +181,7 @@ Program Listing for File PDJE_Input.cpp
    {
        PDJE_INPUT_DATA_LINE line;
        if (FLAG_INPUT_ON) {
-           line.input_arena = &input_buffer.value();
+           line.input_arena = default_devs->GetInputBufferPTR();
        }
        if (FLAG_MIDI_ON) {
            line.midi_datas = &midi_engine->evlog;

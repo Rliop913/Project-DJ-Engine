@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="ParseKeyboard_8cpp" kind="file" language="C++">
+    <compoundname>ParseKeyboard.cpp</compoundname>
+    <includes refid="InputCore_8hpp" local="yes">InputCore.hpp</includes>
+    <includes refid="evdev__codemap_8hpp" local="yes">evdev_codemap.hpp</includes>
+    <incdepgraph>
+      <node id="14">
+        <label>libevdev/libevdev.h</label>
+      </node>
+      <node id="2">
+        <label>InputCore.hpp</label>
+        <link refid="InputCore_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>Input_State.hpp</label>
+        <link refid="Input__State_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>filesystem</label>
+      </node>
+      <node id="6">
+        <label>cstdint</label>
+      </node>
+      <node id="18">
+        <label>memory_resource</label>
+      </node>
+      <node id="10">
+        <label>string</label>
+      </node>
+      <node id="3">
+        <label>Input_Transfer.hpp</label>
+      </node>
+      <node id="4">
+        <label>PDJE_Highres_Clock.hpp</label>
+      </node>
+      <node id="12">
+        <label>bitset</label>
+      </node>
+      <node id="7">
+        <label>future</label>
+      </node>
+      <node id="5">
+        <label>PDJE_Input_Device_Data.hpp</label>
+        <link refid="PDJE__Input__Device__Data_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>optional</label>
+      </node>
+      <node id="11">
+        <label>vector</label>
+      </node>
+      <node id="8">
+        <label>latch</label>
+      </node>
+      <node id="19">
+        <label>array</label>
+      </node>
+      <node id="15">
+        <label>unordered_map</label>
+      </node>
+      <node id="16">
+        <label>evdev_codemap.hpp</label>
+        <link refid="evdev__codemap_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/input/DefaultDevs/linux/ParseKeyboard.cpp</label>
+        <link refid="ParseKeyboard_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="InputCore_8hpp" kindref="compound">InputCore.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="evdev__codemap_8hpp" kindref="compound">evdev_codemap.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="classInputCore_1a918bed08f74d00f3d57d23cf566acaf0" refkind="member"><highlight class="normal"><ref refid="classInputCore_1a918bed08f74d00f3d57d23cf566acaf0" kindref="member">InputCore::kbRead</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>input_event<sp/>&amp;evtrig,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>FD)</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref><sp/>ilog;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>ilog.<ref refid="structPDJE__Input__Log_1aa64073bde0f836582ef86ce7484b4011" kindref="member">type</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456aedda266cdb6345b9f6914cc2e7577475" kindref="member">PDJE_Dev_Type::KEYBOARD</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>ilog.<ref refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" kindref="member">event</ref>.<ref refid="unionPDJE__Input__Event_1af1262bc0a6a920aee57a13cbf033cc0d" kindref="member">keyboard</ref>.<ref refid="structPDJE__Keyboard__Event_1a1b408a0d1716613a9f0e81142b06574e" kindref="member">k</ref><sp/>=<sp/><ref refid="namespacePDJE__EVDEV__KEYMAP_1aadf6f7c0a42a4ff187f6f20fccc1b885" kindref="member">PDJE_EVDEV_KEYMAP::keyboard_map</ref>(evtrig.code);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>writable<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(evtrig.value<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ilog.<ref refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" kindref="member">event</ref>.<ref refid="unionPDJE__Input__Event_1af1262bc0a6a920aee57a13cbf033cc0d" kindref="member">keyboard</ref>.<ref refid="structPDJE__Keyboard__Event_1a9b876596da025316eb8180d50a8e7f05" kindref="member">pressed</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(evtrig.value<sp/>==<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ilog.<ref refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" kindref="member">event</ref>.<ref refid="unionPDJE__Input__Event_1af1262bc0a6a920aee57a13cbf033cc0d" kindref="member">keyboard</ref>.<ref refid="structPDJE__Keyboard__Event_1a9b876596da025316eb8180d50a8e7f05" kindref="member">pressed</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>writable<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(writable)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classInputCore_1a3d8ddceaa6094ab1474f3b7fbf1912c5" kindref="member">id_pressed</ref>[FD].test(ilog.<ref refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" kindref="member">event</ref>.<ref refid="unionPDJE__Input__Event_1af1262bc0a6a920aee57a13cbf033cc0d" kindref="member">keyboard</ref>.<ref refid="structPDJE__Keyboard__Event_1a1b408a0d1716613a9f0e81142b06574e" kindref="member">k</ref>)<sp/>==</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ilog.<ref refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" kindref="member">event</ref>.<ref refid="unionPDJE__Input__Event_1af1262bc0a6a920aee57a13cbf033cc0d" kindref="member">keyboard</ref>.<ref refid="structPDJE__Keyboard__Event_1a9b876596da025316eb8180d50a8e7f05" kindref="member">pressed</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>writable<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classInputCore_1a3d8ddceaa6094ab1474f3b7fbf1912c5" kindref="member">id_pressed</ref>[FD].set(ilog.<ref refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" kindref="member">event</ref>.<ref refid="unionPDJE__Input__Event_1af1262bc0a6a920aee57a13cbf033cc0d" kindref="member">keyboard</ref>.<ref refid="structPDJE__Keyboard__Event_1a1b408a0d1716613a9f0e81142b06574e" kindref="member">k</ref>,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ilog.<ref refid="structPDJE__Input__Log_1ac527ac4e0c6d2bd3e738c1e80d938161" kindref="member">event</ref>.<ref refid="unionPDJE__Input__Event_1af1262bc0a6a920aee57a13cbf033cc0d" kindref="member">keyboard</ref>.<ref refid="structPDJE__Keyboard__Event_1a9b876596da025316eb8180d50a8e7f05" kindref="member">pressed</ref>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(writable)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>idstr<sp/>=<sp/>std::to_string(FD);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::memcpy(ilog.<ref refid="structPDJE__Input__Log_1a45e6f08789d468bed9999afa1edebb6a" kindref="member">id</ref>,<sp/>idstr.data(),<sp/>idstr.size());</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ilog.<ref refid="structPDJE__Input__Log_1a5ba85807a2787dd387c12318793547e9" kindref="member">id_len</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>idstr.size();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name<sp/>=<sp/><ref refid="classInputCore_1a1514a6d9766cecde4e5dd5259e7a55be" kindref="member">id_to_name</ref>[FD];</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ilog.<ref refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" kindref="member">microSecond</ref><sp/>=<sp/><ref refid="classInputCore_1a0f750ce65da6670e81a8a67675ef60fe" kindref="member">clock</ref>.<ref refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1aa5b803e92c5729165331036b3dd6c9a8" kindref="member">ConvertToMicroSecond</ref>(evtrig.time);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::memcpy(ilog.<ref refid="structPDJE__Input__Log_1aa05c1ccf620d4958cc621c2a087508c6" kindref="member">name</ref>,<sp/>name.data(),<sp/>name.size());</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ilog.<ref refid="structPDJE__Input__Log_1a66db400701b3e89e59c17a4f466ae118" kindref="member">name_len</ref><sp/>=<sp/>name.size();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classInputCore_1ab3740a4cad9b2aa170aa7abfe9a2f937" kindref="member">out</ref>-&gt;<ref refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a477730547164b6260af4aa9a31e9ff75" kindref="member">Write</ref>(ilog);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="include/input/DefaultDevs/linux/ParseKeyboard.cpp"/>
+  </compounddef>
+</doxygen>

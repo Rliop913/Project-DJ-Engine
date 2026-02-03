@@ -5,12 +5,12 @@ Directory Match
 ===============
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_judge_Loop>` (``include\judge\Loop``)
+|exhale_lsh| :ref:`Parent directory <dir_include_judge_Loop>` (``include/judge/Loop``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\judge\Loop\Match``
+*Directory path:* ``include/judge/Loop/Match``
 
 
 Files

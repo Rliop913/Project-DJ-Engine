@@ -4,7 +4,7 @@
 File PDJE_INPUT_PROCESS_HASH.hpp
 ================================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_common>` (``include\input\IPC\common``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_common>` (``include/input/IPC/common``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_INPUT_PROCESS_HASH.hpp
    :local:
    :backlinks: none
 
-Definition (``include\input\IPC\common\PDJE_INPUT_PROCESS_HASH.hpp``)
+Definition (``include/input/IPC/common/PDJE_INPUT_PROCESS_HASH.hpp``)
 ---------------------------------------------------------------------
 
 
@@ -43,5 +43,5 @@ Variables
 ---------
 
 
-- :ref:`exhale_variable__p_d_j_e___i_n_p_u_t___p_r_o_c_e_s_s___h_a_s_h_8hpp_1acc038395af5186c782799e4a8d79371a`
+- :ref:`exhale_variable_PDJE__INPUT__PROCESS__HASH_8hpp_1acc038395af5186c782799e4a8d79371a`
 

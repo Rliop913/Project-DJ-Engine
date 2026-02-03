@@ -4,7 +4,7 @@
 Program Listing for File filterMan.hpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_ManualMix_ManualFausts_filterMan.hpp>` (``include\core\audioRender\ManualMix\ManualFausts\filterMan.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_ManualMix_ManualFausts_filterMan.hpp>` (``include/core/audioRender/ManualMix/ManualFausts/filterMan.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

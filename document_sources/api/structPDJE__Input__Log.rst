@@ -3,7 +3,7 @@
 Struct PDJE_Input_Log
 =====================
 
-- Defined in :ref:`file_include_global_DataLines_PDJE_Input_DataLine.hpp`
+- Defined in :ref:`file_include_input_PDJE_Input_Log.hpp`
 
 
 Struct Documentation

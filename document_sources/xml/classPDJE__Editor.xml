@@ -1,16 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classPDJE__Editor" kind="class" language="C++" prot="public">
     <compoundname>PDJE_Editor</compoundname>
     <includes refid="editor_8hpp" local="no">editor.hpp</includes>
     <innerclass refid="structPDJE__Editor_1_1MusicHandleStruct" prot="public">PDJE_Editor::MusicHandleStruct</innerclass>
-    <sectiondef kind="private-attrib">
+      <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classPDJE__Editor_1a3f0dad32adc184ab2e8c2833b5f2163a" prot="private" static="no" mutable="no">
         <type>fs::path</type>
         <definition>fs::path PDJE_Editor::pt</definition>
         <argsstring></argsstring>
         <name>pt</name>
-        <qualifiedname>PDJE_Editor::pt</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -24,7 +23,6 @@
         <definition>fs::path PDJE_Editor::music_root</definition>
         <argsstring></argsstring>
         <name>music_root</name>
-        <qualifiedname>PDJE_Editor::music_root</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -38,7 +36,6 @@
         <definition>std::string PDJE_Editor::name</definition>
         <argsstring></argsstring>
         <name>name</name>
-        <qualifiedname>PDJE_Editor::name</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -52,7 +49,6 @@
         <definition>std::string PDJE_Editor::email</definition>
         <argsstring></argsstring>
         <name>email</name>
-        <qualifiedname>PDJE_Editor::email</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -61,14 +57,13 @@
         </inbodydescription>
         <location file="include/core/editor/editor.hpp" line="55" column="17" bodyfile="include/core/editor/editor.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-attrib">
+      </sectiondef>
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classPDJE__Editor_1a7610772c9f0f7c627da7881a61f00206" prot="public" static="no" mutable="no">
         <type>std::unique_ptr&lt; <ref refid="classPDJE__TIMELINE_1_1TimeLine" kindref="compound">PDJE_TIMELINE::TimeLine</ref>&lt; <ref refid="EditorArgs_8hpp_1a62a8aadaf6e33bd03a591749fca41482" kindref="member">MIX_W</ref> &gt; &gt;</type>
         <definition>std::unique_ptr&lt;PDJE_TIMELINE::TimeLine&lt;MIX_W&gt; &gt; PDJE_Editor::mixHandle</definition>
         <argsstring></argsstring>
         <name>mixHandle</name>
-        <qualifiedname>PDJE_Editor::mixHandle</qualifiedname>
         <briefdescription>
 <para>Pair of Git handler and JSON handler for mix data. </para>
         </briefdescription>
@@ -83,7 +78,6 @@
         <definition>std::unique_ptr&lt;PDJE_TIMELINE::TimeLine&lt;NOTE_W&gt; &gt; PDJE_Editor::noteHandle</definition>
         <argsstring></argsstring>
         <name>noteHandle</name>
-        <qualifiedname>PDJE_Editor::noteHandle</qualifiedname>
         <briefdescription>
 <para>Pair of Git handler and JSON handler for note data. </para>
         </briefdescription>
@@ -98,7 +92,6 @@
         <definition>std::unique_ptr&lt;PDJE_TIMELINE::TimeLine&lt;KV_W&gt; &gt; PDJE_Editor::KVHandle</definition>
         <argsstring></argsstring>
         <name>KVHandle</name>
-        <qualifiedname>PDJE_Editor::KVHandle</qualifiedname>
         <briefdescription>
 <para>Pair of Git handler and JSON handler for key/value data. </para>
         </briefdescription>
@@ -113,7 +106,6 @@
         <definition>std::vector&lt;MusicHandleStruct&gt; PDJE_Editor::musicHandle</definition>
         <argsstring></argsstring>
         <name>musicHandle</name>
-        <qualifiedname>PDJE_Editor::musicHandle</qualifiedname>
         <briefdescription>
 <para>List of music handles owned by this editor. </para>
         </briefdescription>
@@ -123,14 +115,13 @@
         </inbodydescription>
         <location file="include/core/editor/editor.hpp" line="107" column="17" bodyfile="include/core/editor/editor.hpp" bodystart="107" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="classPDJE__Editor_1a265cecce815e4404411a2d97f4611801" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool PDJE_Editor::AddMusicConfig</definition>
         <argsstring>(const SANITIZED &amp;NewMusicName, const SANITIZED &amp;Composer, const DONT_SANITIZE &amp;firstBeat, const fs::path &amp;music_location)</argsstring>
         <name>AddMusicConfig</name>
-        <qualifiedname>PDJE_Editor::AddMusicConfig</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
           <declname>NewMusicName</declname>
@@ -181,7 +172,6 @@
         <definition>PDJE_Editor::PDJE_Editor</definition>
         <argsstring>(const fs::path &amp;root, const DONT_SANITIZE &amp;auth_name, const DONT_SANITIZE &amp;auth_email)</argsstring>
         <name>PDJE_Editor</name>
-        <qualifiedname>PDJE_Editor::PDJE_Editor</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>root</declname>
@@ -220,7 +210,6 @@ Constructs an editor with author information for Git. </para>
         <definition>PDJE_Editor::~PDJE_Editor</definition>
         <argsstring>()=default</argsstring>
         <name>~PDJE_Editor</name>
-        <qualifiedname>PDJE_Editor::~PDJE_Editor</qualifiedname>
         <briefdescription>
 <para>Default destructor. </para>
         </briefdescription>
@@ -230,7 +219,7 @@ Constructs an editor with author information for Git. </para>
         </inbodydescription>
         <location file="include/core/editor/editor.hpp" line="159" column="5"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>Central class coordinating Git and JSON handlers for editing data. </para>
     </briefdescription>
@@ -241,224 +230,45 @@ Constructs an editor with author information for Git. </para>
         <label>PDJE_Editor</label>
         <link refid="classPDJE__Editor"/>
         <childnode refid="2" relation="usage">
+          <edgelabel>musicHandle</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>KVHandle</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
           <edgelabel>email</edgelabel>
           <edgelabel>name</edgelabel>
         </childnode>
         <childnode refid="4" relation="usage">
           <edgelabel>mixHandle</edgelabel>
-        </childnode>
-        <childnode refid="13" relation="usage">
           <edgelabel>noteHandle</edgelabel>
-        </childnode>
-        <childnode refid="17" relation="usage">
-          <edgelabel>KVHandle</edgelabel>
-        </childnode>
-        <childnode refid="21" relation="usage">
-          <edgelabel>musicHandle</edgelabel>
-        </childnode>
-      </node>
-      <node id="22">
-        <label>PDJE_Editor::MusicHandleStruct</label>
-        <link refid="structPDJE__Editor_1_1MusicHandleStruct"/>
-        <childnode refid="23" relation="usage">
-          <edgelabel>handle</edgelabel>
-        </childnode>
-      </node>
-      <node id="12">
-        <label>PDJE_JSONHandler&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__JSONHandler"/>
-      </node>
-      <node id="26">
-        <label>PDJE_JSONHandler&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__JSONHandler"/>
-      </node>
-      <node id="16">
-        <label>PDJE_JSONHandler&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__JSONHandler"/>
-      </node>
-      <node id="20">
-        <label>PDJE_JSONHandler&lt; KV_W &gt;</label>
-        <link refid="classPDJE__JSONHandler"/>
-      </node>
-      <node id="11">
-        <label>PDJE_TIMELINE::BranchLine</label>
-        <link refid="classPDJE__TIMELINE_1_1BranchLine"/>
-        <childnode refid="6" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-      </node>
-      <node id="10">
-        <label>PDJE_TIMELINE::EventMarker&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1EventMarker"/>
-        <childnode refid="6" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="2" relation="usage">
-          <edgelabel>checkedOut</edgelabel>
-        </childnode>
-        <childnode refid="11" relation="usage">
-          <edgelabel>line</edgelabel>
-        </childnode>
-        <childnode refid="12" relation="usage">
-          <edgelabel>file_handle</edgelabel>
-        </childnode>
-      </node>
-      <node id="25">
-        <label>PDJE_TIMELINE::EventMarker&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1EventMarker"/>
-        <childnode refid="6" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="2" relation="usage">
-          <edgelabel>checkedOut</edgelabel>
-        </childnode>
-        <childnode refid="11" relation="usage">
-          <edgelabel>line</edgelabel>
-        </childnode>
-        <childnode refid="26" relation="usage">
-          <edgelabel>file_handle</edgelabel>
-        </childnode>
-      </node>
-      <node id="15">
-        <label>PDJE_TIMELINE::EventMarker&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1EventMarker"/>
-        <childnode refid="6" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="2" relation="usage">
-          <edgelabel>checkedOut</edgelabel>
-        </childnode>
-        <childnode refid="11" relation="usage">
-          <edgelabel>line</edgelabel>
-        </childnode>
-        <childnode refid="16" relation="usage">
-          <edgelabel>file_handle</edgelabel>
-        </childnode>
-      </node>
-      <node id="19">
-        <label>PDJE_TIMELINE::EventMarker&lt; KV_W &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1EventMarker"/>
-        <childnode refid="6" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="2" relation="usage">
-          <edgelabel>checkedOut</edgelabel>
-        </childnode>
-        <childnode refid="11" relation="usage">
-          <edgelabel>line</edgelabel>
-        </childnode>
-        <childnode refid="20" relation="usage">
-          <edgelabel>file_handle</edgelabel>
-        </childnode>
-      </node>
-      <node id="7">
-        <label>PDJE_TIMELINE::GitData</label>
-        <link refid="structPDJE__TIMELINE_1_1GitData"/>
-        <childnode refid="8" relation="usage">
-          <edgelabel>log_tree</edgelabel>
-        </childnode>
-        <childnode refid="9" relation="usage">
-          <edgelabel>LIFO_log</edgelabel>
-        </childnode>
-        <childnode refid="2" relation="usage">
-          <edgelabel>target_file</edgelabel>
-        </childnode>
-      </node>
-      <node id="5">
-        <label>PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1TimeLine"/>
-        <childnode refid="6" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="10" relation="usage">
-          <edgelabel>mark</edgelabel>
-        </childnode>
-      </node>
-      <node id="24">
-        <label>PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1TimeLine"/>
-        <childnode refid="6" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="25" relation="usage">
-          <edgelabel>mark</edgelabel>
-        </childnode>
-      </node>
-      <node id="14">
-        <label>PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1TimeLine"/>
-        <childnode refid="6" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="15" relation="usage">
-          <edgelabel>mark</edgelabel>
-        </childnode>
-      </node>
-      <node id="18">
-        <label>PDJE_TIMELINE::TimeLine&lt; KV_W &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1TimeLine"/>
-        <childnode refid="6" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="19" relation="usage">
-          <edgelabel>mark</edgelabel>
         </childnode>
       </node>
       <node id="3">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
-      <node id="6">
-        <label>std::shared_ptr&lt; PDJE_TIMELINE::GitData &gt;</label>
-        <childnode refid="7" relation="usage">
-          <edgelabel>ptr</edgelabel>
+        <label>PDJE_Editor::MusicHandleStruct</label>
+        <link refid="structPDJE__Editor_1_1MusicHandleStruct"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>handle</edgelabel>
         </childnode>
       </node>
+      <node id="5">
+        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; KV_W &gt; &gt;</label>
+      </node>
+      <node id="7">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
       <node id="2">
-        <label>std::string</label>
-        <childnode refid="3" relation="public-inheritance">
+        <label>std::vector&lt; PDJE_Editor::MusicHandleStruct &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>elements</edgelabel>
         </childnode>
       </node>
       <node id="4">
-        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt; &gt;</label>
-        <childnode refid="5" relation="usage">
-          <edgelabel>ptr</edgelabel>
-        </childnode>
+        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; CapWriter &gt; &gt;</label>
       </node>
-      <node id="23">
-        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt; &gt;</label>
-        <childnode refid="24" relation="usage">
-          <edgelabel>ptr</edgelabel>
-        </childnode>
-      </node>
-      <node id="13">
-        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt; &gt;</label>
-        <childnode refid="14" relation="usage">
-          <edgelabel>ptr</edgelabel>
-        </childnode>
-      </node>
-      <node id="17">
-        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; KV_W &gt; &gt;</label>
-        <childnode refid="18" relation="usage">
-          <edgelabel>ptr</edgelabel>
-        </childnode>
-      </node>
-      <node id="8">
-        <label>std::unordered_map&lt; OID, BACK_OID &gt;</label>
-        <childnode refid="2" relation="usage">
-          <edgelabel>elements</edgelabel>
-          <edgelabel>keys</edgelabel>
-        </childnode>
-      </node>
-      <node id="9">
-        <label>std::vector&lt; OID &gt;</label>
-        <childnode refid="2" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
-      </node>
-      <node id="21">
-        <label>std::vector&lt; PDJE_Editor::MusicHandleStruct &gt;</label>
-        <childnode refid="22" relation="usage">
-          <edgelabel>elements</edgelabel>
+      <node id="6">
+        <label>std::string</label>
+        <childnode refid="7" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

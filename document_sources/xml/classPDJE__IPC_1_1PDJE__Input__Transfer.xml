@@ -1,0 +1,562 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classPDJE__IPC_1_1PDJE__Input__Transfer" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_IPC::PDJE_Input_Transfer</compoundname>
+    <includes refid="linux_2Input__Transfer_8hpp" local="no">Input_Transfer.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a0523258a809a5fcf6d6889f90d9dbd2c" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref> &gt;</type>
+        <definition>std::vector&lt; PDJE_Input_Log &gt; PDJE_IPC::PDJE_Input_Transfer::datas</definition>
+        <argsstring></argsstring>
+        <name>datas</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/linux/Input_Transfer.hpp" line="11" column="26" bodyfile="include/input/IPC/memory/linux/Input_Transfer.hpp" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1ad7c218db02c241b5aa1270da57a56aa6" prot="public" static="no" mutable="no">
+        <type><ref refid="classAtomic__Double__Buffer" kindref="compound">Atomic_Double_Buffer</ref>&lt; <ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref> &gt;</type>
+        <definition>Atomic_Double_Buffer&lt;PDJE_Input_Log&gt; PDJE_IPC::PDJE_Input_Transfer::adbf</definition>
+        <argsstring></argsstring>
+        <name>adbf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/linux/Input_Transfer.hpp" line="12" column="26" bodyfile="include/input/IPC/memory/linux/Input_Transfer.hpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a29c1af73d0c90960dda3088f91eea99b" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">SharedMem</ref>&lt; uint64_t, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC_RW</ref> &gt;</type>
+        <definition>SharedMem&lt;uint64_t, PDJE_IPC_RW&gt; PDJE_IPC::PDJE_Input_Transfer::length</definition>
+        <argsstring></argsstring>
+        <name>length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="32" column="32" bodyfile="include/input/IPC/memory/windows/Input_Transfer.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1acf71ead229439c744bdc5abd2a5aabcf" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">SharedMem</ref>&lt; <ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref>, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC_RW</ref> &gt;</type>
+        <definition>SharedMem&lt;PDJE_Input_Log, PDJE_IPC_RW&gt; PDJE_IPC::PDJE_Input_Transfer::body</definition>
+        <argsstring></argsstring>
+        <name>body</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="33" column="26" bodyfile="include/input/IPC/memory/windows/Input_Transfer.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1ae36c3850c3a1e3f1e6f6e2a2635e6f37" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">SharedMem</ref>&lt; uint8_t, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC_RW</ref> &gt;</type>
+        <definition>SharedMem&lt;uint8_t, PDJE_IPC_RW&gt; PDJE_IPC::PDJE_Input_Transfer::hmac</definition>
+        <argsstring></argsstring>
+        <name>hmac</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="34" column="33" bodyfile="include/input/IPC/memory/windows/Input_Transfer.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1adf27693091f444cb38ef15a5db5693a3" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1EVENT" kindref="compound">EVENT</ref></type>
+        <definition>EVENT PDJE_IPC::PDJE_Input_Transfer::req_event</definition>
+        <argsstring></argsstring>
+        <name>req_event</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="35" column="55" bodyfile="include/input/IPC/memory/windows/Input_Transfer.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a85c6035cfc45496c6ac4828b6975cdd0" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1EVENT" kindref="compound">EVENT</ref></type>
+        <definition>EVENT PDJE_IPC::PDJE_Input_Transfer::stored_event</definition>
+        <argsstring></argsstring>
+        <name>stored_event</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="36" column="55" bodyfile="include/input/IPC/memory/windows/Input_Transfer.hpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1af9fb951fc8cef63052f85b78cc105259" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; PDJE_IPC::PDJE_Input_Transfer::sendworker_switch</definition>
+        <argsstring></argsstring>
+        <name>sendworker_switch</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="37" column="49" bodyfile="include/input/IPC/memory/windows/Input_Transfer.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a30ac4265c125af447c0a5f50285b1215" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; std::thread &gt;</type>
+        <definition>std::optional&lt;std::thread&gt; PDJE_IPC::PDJE_Input_Transfer::sendworker</definition>
+        <argsstring></argsstring>
+        <name>sendworker</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="38" column="42" bodyfile="include/input/IPC/memory/windows/Input_Transfer.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1acd0aaa34970e8c695eb40b74ff3fe6f1" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex PDJE_IPC::PDJE_Input_Transfer::local_locker</definition>
+        <argsstring></argsstring>
+        <name>local_locker</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="39" column="55" bodyfile="include/input/IPC/memory/windows/Input_Transfer.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1ad7c3d9dff949c0f2be5ade38e275dd48" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; Botan::MessageAuthenticationCode &gt;</type>
+        <definition>std::unique_ptr&lt;Botan::MessageAuthenticationCode&gt; PDJE_IPC::PDJE_Input_Transfer::hmacEngine</definition>
+        <argsstring></argsstring>
+        <name>hmacEngine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="40" column="21" bodyfile="include/input/IPC/memory/windows/Input_Transfer.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1ae9375cdb50bf1a42e4556af08bf3688e" prot="private" static="no" mutable="no">
+        <type><ref refid="structPDJE__IPC_1_1Input__Transfer__Metadata" kindref="compound">Input_Transfer_Metadata</ref></type>
+        <definition>Input_Transfer_Metadata PDJE_IPC::PDJE_Input_Transfer::metadata</definition>
+        <argsstring></argsstring>
+        <name>metadata</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="41" column="55" bodyfile="include/input/IPC/memory/windows/Input_Transfer.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1adf3ab3c2a19095e16c1d38eeb67878f3" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref> &gt;</type>
+        <definition>std::vector&lt;PDJE_Input_Log&gt; PDJE_IPC::PDJE_Input_Transfer::subBuffer</definition>
+        <argsstring></argsstring>
+        <name>subBuffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="48" column="17" bodyfile="include/input/IPC/memory/windows/Input_Transfer.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1abfccb07f044482f0b747d7ea5abcdc44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::PDJE_Input_Transfer::PDJE_Input_Transfer</definition>
+        <argsstring>(const uint32_t max_length)</argsstring>
+        <name>PDJE_Input_Transfer</name>
+        <param>
+          <type>const uint32_t</type>
+          <declname>max_length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/linux/Input_Transfer.hpp" line="13" column="5" bodyfile="include/input/IPC/memory/linux/Input_Transfer.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a477730547164b6260af4aa9a31e9ff75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::PDJE_Input_Transfer::Write</definition>
+        <argsstring>(const PDJE_Input_Log &amp;input)</argsstring>
+        <name>Write</name>
+        <param>
+          <type>const <ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref> &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/linux/Input_Transfer.hpp" line="16" column="5" bodyfile="include/input/IPC/memory/linux/Input_Transfer.cpp" bodystart="14" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a1985d491b5fc08df4a3ff15596aa0cda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::PDJE_Input_Transfer::Receive</definition>
+        <argsstring>()</argsstring>
+        <name>Receive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/linux/Input_Transfer.hpp" line="18" column="5" bodyfile="include/input/IPC/memory/linux/Input_Transfer.cpp" bodystart="5" bodyend="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a1f402c8ab90f18fbaab40535853434c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::PDJE_Input_Transfer::~PDJE_Input_Transfer</definition>
+        <argsstring>()</argsstring>
+        <name>~PDJE_Input_Transfer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/linux/Input_Transfer.hpp" line="19" column="5" bodyfile="include/input/IPC/memory/linux/Input_Transfer.cpp" bodystart="19" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1affe5f650bb15ca5f69a665d3a50bf375" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::PDJE_Input_Transfer::SendManageWorker</definition>
+        <argsstring>()</argsstring>
+        <name>SendManageWorker</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="54" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a9254acd73b47e86232ae745a6207c20b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string PDJE_IPC::PDJE_Input_Transfer::GetMetaDatas</definition>
+        <argsstring>()</argsstring>
+        <name>GetMetaDatas</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="56" column="5" bodyfile="include/input/IPC/memory/windows/Input_Transfer.cpp" bodystart="99" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a775e47ac6e740d94c38b9f0f2d5f1543" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::PDJE_Input_Transfer::PDJE_Input_Transfer</definition>
+        <argsstring>(const std::string &amp;metajson)</argsstring>
+        <name>PDJE_Input_Transfer</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>metajson</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="57" column="5" bodyfile="include/input/IPC/memory/windows/Input_Transfer.cpp" bodystart="113" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1aaf9082295064d608cd1ab5397f2d71ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::PDJE_Input_Transfer::PDJE_Input_Transfer</definition>
+        <argsstring>(const Input_Transfer_Metadata &amp;metad)</argsstring>
+        <name>PDJE_Input_Transfer</name>
+        <param>
+          <type>const <ref refid="structPDJE__IPC_1_1Input__Transfer__Metadata" kindref="compound">Input_Transfer_Metadata</ref> &amp;</type>
+          <declname>metad</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="58" column="5" bodyfile="include/input/IPC/memory/windows/Input_Transfer.cpp" bodystart="138" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a477730547164b6260af4aa9a31e9ff75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::PDJE_Input_Transfer::Write</definition>
+        <argsstring>(const PDJE_Input_Log &amp;input)</argsstring>
+        <name>Write</name>
+        <param>
+          <type>const <ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref> &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="63" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a1985d491b5fc08df4a3ff15596aa0cda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::PDJE_Input_Transfer::Receive</definition>
+        <argsstring>()</argsstring>
+        <name>Receive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="65" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a1f402c8ab90f18fbaab40535853434c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_IPC::PDJE_Input_Transfer::~PDJE_Input_Transfer</definition>
+        <argsstring>()</argsstring>
+        <name>~PDJE_Input_Transfer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="66" column="5"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a94bf694dcbde98599c0f3d9be11e320a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::PDJE_Input_Transfer::SetHmacEngine</definition>
+        <argsstring>()</argsstring>
+        <name>SetHmacEngine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="43" column="5" bodyfile="include/input/IPC/memory/windows/Input_Transfer.cpp" bodystart="53" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a104a4bc5d92f83ceb81fc4568edea853" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::PDJE_Input_Transfer::SetHmac</definition>
+        <argsstring>()</argsstring>
+        <name>SetHmac</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="45" column="5" bodyfile="include/input/IPC/memory/windows/Input_Transfer.cpp" bodystart="63" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1aebdfdb92b9da0f6227467500d7631bad" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_IPC::PDJE_Input_Transfer::VerifyHmac</definition>
+        <argsstring>()</argsstring>
+        <name>VerifyHmac</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="47" column="33" bodyfile="include/input/IPC/memory/windows/Input_Transfer.cpp" bodystart="80" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__IPC_1_1PDJE__Input__Transfer_1a3d27af32d554402e0b1367fe7f9f0537" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_IPC::PDJE_Input_Transfer::Send</definition>
+        <argsstring>()</argsstring>
+        <name>Send</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/windows/Input_Transfer.hpp" line="50" column="5" bodyfile="include/input/IPC/memory/windows/Input_Transfer.cpp" bodystart="4" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="19">
+        <label>PDJE_IPC::SharedMem&lt; PDJE_Input_Log, PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="9">
+        <label>PDJE_Mouse_Event</label>
+        <link refid="structPDJE__Mouse__Event"/>
+      </node>
+      <node id="15">
+        <label>PDJE_CRYPTO::PSK</label>
+        <link refid="classPDJE__CRYPTO_1_1PSK"/>
+      </node>
+      <node id="11">
+        <label>PDJE_IPC::EVENT</label>
+        <link refid="classPDJE__IPC_1_1EVENT"/>
+        <childnode refid="12" relation="usage">
+          <edgelabel>name_cache</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>PDJE_IPC::SharedMem&lt; uint64_t, PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="13">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="14">
+        <label>PDJE_IPC::Input_Transfer_Metadata</label>
+        <link refid="structPDJE__IPC_1_1Input__Transfer__Metadata"/>
+        <childnode refid="15" relation="usage">
+          <edgelabel>psk</edgelabel>
+        </childnode>
+      </node>
+      <node id="17">
+        <label>PDJE_IPC::SharedMem&lt; uint8_t, PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="5">
+        <label>PDJE_Input_Log</label>
+        <link refid="structPDJE__Input__Log"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>hid_event</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>event</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::atomic&lt; bool &gt;</label>
+      </node>
+      <node id="7">
+        <label>PDJE_Input_Event</label>
+        <link refid="unionPDJE__Input__Event"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>keyboard</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>mouse</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>PDJE_HID_Event</label>
+        <link refid="structPDJE__HID__Event"/>
+      </node>
+      <node id="10">
+        <label>std::mutex</label>
+      </node>
+      <node id="1">
+        <label>PDJE_IPC::PDJE_Input_Transfer</label>
+        <link refid="classPDJE__IPC_1_1PDJE__Input__Transfer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>sendworker_switch</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>length</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>datas</edgelabel>
+          <edgelabel>subBuffer</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>local_locker</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>req_event</edgelabel>
+          <edgelabel>stored_event</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>metadata</edgelabel>
+        </childnode>
+        <childnode refid="16" relation="usage">
+          <edgelabel>hmacEngine</edgelabel>
+        </childnode>
+        <childnode refid="17" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+        <childnode refid="18" relation="usage">
+          <edgelabel>adbf</edgelabel>
+        </childnode>
+        <childnode refid="19" relation="usage">
+          <edgelabel>body</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>PDJE_Keyboard_Event</label>
+        <link refid="structPDJE__Keyboard__Event"/>
+      </node>
+      <node id="18">
+        <label>Atomic_Double_Buffer&lt; PDJE_Input_Log &gt;</label>
+        <link refid="classAtomic__Double__Buffer"/>
+      </node>
+      <node id="16">
+        <label>std::unique_ptr&lt; Botan::MessageAuthenticationCode &gt;</label>
+      </node>
+      <node id="12">
+        <label>std::string</label>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/IPC/memory/linux/Input_Transfer.hpp" line="8" column="1" bodyfile="include/input/IPC/memory/linux/Input_Transfer.hpp" bodystart="8" bodyend="20"/>
+    <listofallmembers>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1ad7c218db02c241b5aa1270da57a56aa6" prot="public" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>adbf</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1acf71ead229439c744bdc5abd2a5aabcf" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>body</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a0523258a809a5fcf6d6889f90d9dbd2c" prot="public" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>datas</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a9254acd73b47e86232ae745a6207c20b" prot="public" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>GetMetaDatas</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1ae36c3850c3a1e3f1e6f6e2a2635e6f37" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>hmac</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1ad7c3d9dff949c0f2be5ade38e275dd48" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>hmacEngine</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a29c1af73d0c90960dda3088f91eea99b" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>length</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1acd0aaa34970e8c695eb40b74ff3fe6f1" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>local_locker</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1ae9375cdb50bf1a42e4556af08bf3688e" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>metadata</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1abfccb07f044482f0b747d7ea5abcdc44" prot="public" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>PDJE_Input_Transfer</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a775e47ac6e740d94c38b9f0f2d5f1543" prot="public" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>PDJE_Input_Transfer</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1aaf9082295064d608cd1ab5397f2d71ea" prot="public" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>PDJE_Input_Transfer</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a1985d491b5fc08df4a3ff15596aa0cda" prot="public" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>Receive</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a1985d491b5fc08df4a3ff15596aa0cda" prot="public" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>Receive</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1adf27693091f444cb38ef15a5db5693a3" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>req_event</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a3d27af32d554402e0b1367fe7f9f0537" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>Send</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1affe5f650bb15ca5f69a665d3a50bf375" prot="public" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>SendManageWorker</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a30ac4265c125af447c0a5f50285b1215" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>sendworker</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1af9fb951fc8cef63052f85b78cc105259" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>sendworker_switch</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a104a4bc5d92f83ceb81fc4568edea853" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>SetHmac</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a94bf694dcbde98599c0f3d9be11e320a" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>SetHmacEngine</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a85c6035cfc45496c6ac4828b6975cdd0" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>stored_event</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1adf3ab3c2a19095e16c1d38eeb67878f3" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>subBuffer</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1aebdfdb92b9da0f6227467500d7631bad" prot="private" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>VerifyHmac</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a477730547164b6260af4aa9a31e9ff75" prot="public" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>Write</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a477730547164b6260af4aa9a31e9ff75" prot="public" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>Write</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a1f402c8ab90f18fbaab40535853434c7" prot="public" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>~PDJE_Input_Transfer</name></member>
+      <member refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a1f402c8ab90f18fbaab40535853434c7" prot="public" virt="non-virtual"><scope>PDJE_IPC::PDJE_Input_Transfer</scope><name>~PDJE_Input_Transfer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

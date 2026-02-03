@@ -1,48 +1,48 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="PDJE__Benchmark_8hpp" kind="file" language="C++">
     <compoundname>PDJE_Benchmark.hpp</compoundname>
-    <includedby refid="audioCallbacks_8cpp" local="yes">include/core/MainObjects/audioPlayer/audioCallbacks.cpp</includedby>
     <includedby refid="MusicControlPanel-inl_8h" local="yes">include/core/audioRender/ManualMix/MusicControlPanel-inl.h</includedby>
+    <includedby refid="audioCallbacks_8cpp" local="yes">include/core/MainObjects/audioPlayer/audioCallbacks.cpp</includedby>
     <includedby refid="PDJE__Judge__Loop_8cpp" local="yes">include/judge/Loop/PDJE_Judge_Loop.cpp</includedby>
     <includedby refid="editorTest_8cpp" local="yes">include/tests/editorTest.cpp</includedby>
     <invincdepgraph>
-      <node id="2">
-        <label>include/core/MainObjects/audioPlayer/audioCallbacks.cpp</label>
-        <link refid="audioCallbacks_8cpp"/>
+      <node id="6">
+        <label>include/tests/editorTest.cpp</label>
+        <link refid="editorTest_8cpp"/>
       </node>
-      <node id="3">
+      <node id="2">
         <label>include/core/audioRender/ManualMix/MusicControlPanel-inl.h</label>
         <link refid="MusicControlPanel-inl_8h"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>include/core/audioRender/ManualMix/MusicControlPanel.cpp</label>
-        <link refid="MusicControlPanel_8cpp"/>
-      </node>
-      <node id="1">
-        <label>include/global/PDJE_Benchmark.hpp</label>
-        <link refid="PDJE__Benchmark_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
         <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="5">
         <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
         <link refid="PDJE__Judge__Loop_8cpp"/>
       </node>
-      <node id="6">
-        <label>include/tests/editorTest.cpp</label>
-        <link refid="editorTest_8cpp"/>
+      <node id="4">
+        <label>include/core/MainObjects/audioPlayer/audioCallbacks.cpp</label>
+        <link refid="audioCallbacks_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/global/PDJE_Benchmark.hpp</label>
+        <link refid="PDJE__Benchmark_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/core/audioRender/ManualMix/MusicControlPanel.cpp</label>
+        <link refid="MusicControlPanel_8cpp"/>
       </node>
     </invincdepgraph>
-    <sectiondef kind="define">
+      <sectiondef kind="define">
       <memberdef kind="define" id="PDJE__Benchmark_8hpp_1a9473ba1d9968d8422eab2dd9077c062d" prot="public" static="no">
         <name>WBCH</name>
         <param><defname>M</defname></param>
@@ -54,7 +54,7 @@
         </inbodydescription>
         <location file="include/global/PDJE_Benchmark.hpp" line="50" column="9" bodyfile="include/global/PDJE_Benchmark.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -76,13 +76,13 @@
 <codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Bench<sp/>{</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;timeData&gt;<sp/><sp/><sp/><sp/><sp/>td;</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>PDJE_HIGHRES_CLOCK::CLOCK<sp/>clk;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK" kindref="compound">PDJE_HIGHRES_CLOCK::CLOCK</ref><sp/>clk;</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>Write(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;metadata)</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>td.emplace_back(timeData{<sp/>metadata,<sp/>clk.<ref refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1ae3ea2350d7de5834d668a0ef3e1502e8" kindref="member">Get_MicroSecond</ref>()<sp/>});</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>td.emplace_back(timeData{<sp/>metadata,<sp/>clk.<ref refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1a6133e2b6be206bc10f2efb2323c01a8d" kindref="member">Get_MicroSecond</ref>()<sp/>});</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>Bench()</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
@@ -109,8 +109,8 @@
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>WBCH</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50" refid="PDJE__Benchmark_8hpp_1a9473ba1d9968d8422eab2dd9077c062d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WBCH(M)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="50" refid="PDJE__Benchmark_8hpp_1a9473ba1d9968d8422eab2dd9077c062d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WBCH(M)</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/global/PDJE_Benchmark.hpp"/>
   </compounddef>

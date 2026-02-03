@@ -4,7 +4,7 @@
 Program Listing for File ipc_named_event.hpp
 ============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_input_IPC_memory_ipc_named_event.hpp>` (``include\input\IPC\memory\ipc_named_event.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_input_IPC_memory_ipc_named_event.hpp>` (``include/input/IPC/memory/ipc_named_event.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -15,6 +15,8 @@ Program Listing for File ipc_named_event.hpp
    namespace PDJE_IPC {
    using MNAME = std::filesystem::path;
    class EVENT {
+     private:
+       std::string name_cache;
    
      public:
        void *hdlp = nullptr;

@@ -4,7 +4,7 @@
 Program Listing for File evdevtest.cpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_INPUT_TESTS_evdevtest.cpp>` (``include\tests\INPUT_TESTS\evdevtest.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_INPUT_TESTS_evdevtest.cpp>` (``include/tests/INPUT_TESTS/evdevtest.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

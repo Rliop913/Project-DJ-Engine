@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structaudioEngineDataStruct" kind="struct" language="C++" prot="public">
     <compoundname>audioEngineDataStruct</compoundname>
     <includes refid="audioCallbacks_8hpp" local="no">audioCallbacks.hpp</includes>
-    <sectiondef kind="public-attrib">
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structaudioEngineDataStruct_1aab0d65b85bfb5bf76929c7773a239b26" prot="public" static="no" mutable="no">
         <type>float *</type>
         <definition>float* audioEngineDataStruct::faustPcmPP[2]</definition>
         <argsstring>[2]</argsstring>
         <name>faustPcmPP</name>
-        <qualifiedname>audioEngineDataStruct::faustPcmPP</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,7 +22,6 @@
         <definition>std::optional&lt;FXControlPanel&gt; audioEngineDataStruct::FXManualPanel</definition>
         <argsstring></argsstring>
         <name>FXManualPanel</name>
-        <qualifiedname>audioEngineDataStruct::FXManualPanel</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -37,7 +35,6 @@
         <definition>std::optional&lt;MusicControlPanel&gt; audioEngineDataStruct::MusCtrPanel</definition>
         <argsstring></argsstring>
         <name>MusCtrPanel</name>
-        <qualifiedname>audioEngineDataStruct::MusCtrPanel</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -51,7 +48,6 @@
         <definition>std::vector&lt;float&gt;* audioEngineDataStruct::pcmDataPoint</definition>
         <argsstring></argsstring>
         <name>pcmDataPoint</name>
-        <qualifiedname>audioEngineDataStruct::pcmDataPoint</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -65,7 +61,6 @@
         <definition>unsigned long long audioEngineDataStruct::nowCursor</definition>
         <argsstring></argsstring>
         <name>nowCursor</name>
-        <qualifiedname>audioEngineDataStruct::nowCursor</qualifiedname>
         <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
@@ -80,7 +75,6 @@
         <definition>unsigned long long audioEngineDataStruct::maxCursor</definition>
         <argsstring></argsstring>
         <name>maxCursor</name>
-        <qualifiedname>audioEngineDataStruct::maxCursor</qualifiedname>
         <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
@@ -95,7 +89,6 @@
         <definition>std::atomic&lt;audioSyncData&gt; audioEngineDataStruct::syncData</definition>
         <argsstring></argsstring>
         <name>syncData</name>
-        <qualifiedname>audioEngineDataStruct::syncData</qualifiedname>
         <initializer>=
         <ref refid="structaudioSyncData" kindref="compound">audioSyncData</ref>{ .consumed_frames = 0, .microsecond = 0 }</initializer>
         <briefdescription>
@@ -104,14 +97,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="23" column="23" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" bodystart="23" bodyend="24"/>
+        <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="23" column="23" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" bodystart="23" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structaudioEngineDataStruct_1a993ef28e30d1588f0518c6d5a209325d" prot="public" static="no" mutable="no">
         <type><ref refid="structaudioSyncData" kindref="compound">audioSyncData</ref></type>
         <definition>audioSyncData audioEngineDataStruct::cacheSync</definition>
         <argsstring></argsstring>
         <name>cacheSync</name>
-        <qualifiedname>audioEngineDataStruct::cacheSync</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -125,7 +117,6 @@
         <definition>PDJE_HIGHRES_CLOCK::CLOCK audioEngineDataStruct::highres_clock</definition>
         <argsstring></argsstring>
         <name>highres_clock</name>
-        <qualifiedname>audioEngineDataStruct::highres_clock</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -134,14 +125,13 @@
         </inbodydescription>
         <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="26" column="31" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" bodystart="26" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="structaudioEngineDataStruct_1a5458ea6743868149c4fd47af1c96197b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; float * &gt;</type>
         <definition>std::optional&lt; float * &gt; audioEngineDataStruct::getNowfPointer</definition>
         <argsstring>(const unsigned long frameCount)</argsstring>
         <name>getNowfPointer</name>
-        <qualifiedname>audioEngineDataStruct::getNowfPointer</qualifiedname>
         <param>
           <type>const unsigned long</type>
           <declname>frameCount</declname>
@@ -172,7 +162,6 @@
         <definition>void audioEngineDataStruct::CountUp</definition>
         <argsstring>(const unsigned long frameCount)</argsstring>
         <name>CountUp</name>
-        <qualifiedname>audioEngineDataStruct::CountUp</qualifiedname>
         <param>
           <type>const unsigned long</type>
           <declname>frameCount</declname>
@@ -201,7 +190,6 @@
         <definition>void audioEngineDataStruct::GetAfterManFX</definition>
         <argsstring>(float *pOutput, unsigned long frameCount)</argsstring>
         <name>GetAfterManFX</name>
-        <qualifiedname>audioEngineDataStruct::GetAfterManFX</qualifiedname>
         <param>
           <type>float *</type>
           <declname>pOutput</declname>
@@ -242,7 +230,6 @@
         <definition>void audioEngineDataStruct::Get</definition>
         <argsstring>(float *pOutput, unsigned long frameCount)</argsstring>
         <name>Get</name>
-        <qualifiedname>audioEngineDataStruct::Get</qualifiedname>
         <param>
           <type>float *</type>
           <declname>pOutput</declname>
@@ -278,45 +265,42 @@
         </inbodydescription>
         <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="62" column="5" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="49" bodyend="56"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>the core Data </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="5">
-        <label>PDJE_HIGHRES_CLOCK::CLOCK</label>
-        <link refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK"/>
+      <node id="2">
+        <label>audioSyncData</label>
+        <link refid="structaudioSyncData"/>
+      </node>
+      <node id="4">
+        <label>std::vector&lt; float &gt;</label>
+      </node>
+      <node id="3">
+        <label>std::atomic&lt; audioSyncData &gt;</label>
       </node>
       <node id="1">
         <label>audioEngineDataStruct</label>
         <link refid="structaudioEngineDataStruct"/>
         <childnode refid="2" relation="usage">
-          <edgelabel>pcmDataPoint</edgelabel>
+          <edgelabel>cacheSync</edgelabel>
         </childnode>
         <childnode refid="3" relation="usage">
           <edgelabel>syncData</edgelabel>
         </childnode>
         <childnode refid="4" relation="usage">
-          <edgelabel>cacheSync</edgelabel>
+          <edgelabel>pcmDataPoint</edgelabel>
         </childnode>
         <childnode refid="5" relation="usage">
           <edgelabel>highres_clock</edgelabel>
         </childnode>
       </node>
-      <node id="4">
-        <label>audioSyncData</label>
-        <link refid="structaudioSyncData"/>
-      </node>
-      <node id="3">
-        <label>std::atomic&lt; audioSyncData &gt;</label>
-        <childnode refid="4" relation="usage">
-          <edgelabel>ptr</edgelabel>
-        </childnode>
-      </node>
-      <node id="2">
-        <label>std::vector&lt; float &gt;</label>
+      <node id="5">
+        <label>PDJE_HIGHRES_CLOCK::CLOCK</label>
+        <link refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK"/>
       </node>
     </collaborationgraph>
     <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="16" column="1" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" bodystart="16" bodyend="63"/>

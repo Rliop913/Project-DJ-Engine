@@ -4,7 +4,7 @@
 File SubMain.cpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_runner_windows>` (``include\input\runner\windows``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_runner_windows>` (``include/input/runner/windows``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File SubMain.cpp
    :local:
    :backlinks: none
 
-Definition (``include\input\runner\windows\SubMain.cpp``)
+Definition (``include/input/runner/windows/SubMain.cpp``)
 ---------------------------------------------------------
 
 
@@ -47,5 +47,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_windows_2_sub_main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
+- :ref:`exhale_function_runner_2windows_2SubMain_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
 

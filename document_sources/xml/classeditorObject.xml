@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classeditorObject" kind="class" language="C++" prot="public">
     <compoundname>editorObject</compoundname>
     <includes refid="editorObject_8hpp" local="no">editorObject.hpp</includes>
-    <sectiondef kind="private-attrib">
+      <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classeditorObject_1afe3027bfdc86cf213b3d44191e4ce4e7" prot="private" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="classtempDB" kindref="compound">tempDB</ref> &gt;</type>
         <definition>std::optional&lt;tempDB&gt; editorObject::projectLocalDB</definition>
         <argsstring></argsstring>
         <name>projectLocalDB</name>
-        <qualifiedname>editorObject::projectLocalDB</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,7 +22,6 @@
         <definition>fs::path editorObject::projectRoot</definition>
         <argsstring></argsstring>
         <name>projectRoot</name>
-        <qualifiedname>editorObject::projectRoot</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -37,7 +35,6 @@
         <definition>std::unique_ptr&lt;PDJE_Editor&gt; editorObject::edit_core</definition>
         <argsstring></argsstring>
         <name>edit_core</name>
-        <qualifiedname>editorObject::edit_core</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -46,14 +43,13 @@
         </inbodydescription>
         <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="49" column="21" bodyfile="include/core/MainObjects/editorObject/editorObject.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-func">
+      </sectiondef>
+      <sectiondef kind="private-func">
       <memberdef kind="function" id="classeditorObject_1a3bb22fbeed9a7e1516f3ab6461698f0b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structtrackdata" kindref="compound">trackdata</ref></type>
         <definition>trackdata editorObject::makeTrackData</definition>
         <argsstring>(const UNSANITIZED &amp;trackTitle, TITLE_COMPOSER &amp;titles)</argsstring>
         <name>makeTrackData</name>
-        <qualifiedname>editorObject::makeTrackData</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>trackTitle</declname>
@@ -70,8 +66,8 @@
         </inbodydescription>
         <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="52" column="5" bodyfile="include/core/MainObjects/editorObject/editorObject.cpp" bodystart="11" bodyend="42"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="classeditorObject_1a77eaf52d8c470aadb9af3f3140e6beee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -82,7 +78,6 @@
         <definition>bool editorObject::AddLine</definition>
         <argsstring>(const EDIT_ARG_TYPE &amp;obj)</argsstring>
         <name>AddLine</name>
-        <qualifiedname>editorObject::AddLine</qualifiedname>
         <param>
           <type>const EDIT_ARG_TYPE &amp;</type>
           <declname>obj</declname>
@@ -122,7 +117,6 @@
         <definition>bool editorObject::AddLine</definition>
         <argsstring>(const UNSANITIZED &amp;musicName, const DONT_SANITIZE &amp;firstBeat)</argsstring>
         <name>AddLine</name>
-        <qualifiedname>editorObject::AddLine</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>musicName</declname>
@@ -165,7 +159,6 @@
         <definition>int editorObject::deleteLine</definition>
         <argsstring>(const EDIT_ARG_MIX &amp;obj, bool skipType, bool skipDetail)</argsstring>
         <name>deleteLine</name>
-        <qualifiedname>editorObject::deleteLine</qualifiedname>
         <param>
           <type>const <ref refid="editorObject_8hpp_1a8c7c688d1e63ff780f13669e00fc091c" kindref="member">EDIT_ARG_MIX</ref> &amp;</type>
           <declname>obj</declname>
@@ -225,7 +218,6 @@
         <definition>int editorObject::deleteLine</definition>
         <argsstring>(const EDIT_ARG_TYPE &amp;obj)</argsstring>
         <name>deleteLine</name>
-        <qualifiedname>editorObject::deleteLine</qualifiedname>
         <param>
           <type>const EDIT_ARG_TYPE &amp;</type>
           <declname>obj</declname>
@@ -265,7 +257,6 @@
         <definition>bool editorObject::render</definition>
         <argsstring>(const UNSANITIZED &amp;trackTitle, litedb &amp;ROOTDB, UNSANITIZED &amp;lint_msg)</argsstring>
         <name>render</name>
-        <qualifiedname>editorObject::render</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>trackTitle</declname>
@@ -312,7 +303,6 @@
         <definition>void editorObject::demoPlayInit</definition>
         <argsstring>(std::shared_ptr&lt; audioPlayer &gt; &amp;player, unsigned int frameBufferSize, const UNSANITIZED &amp;trackTitle)</argsstring>
         <name>demoPlayInit</name>
-        <qualifiedname>editorObject::demoPlayInit</qualifiedname>
         <param>
           <type>std::shared_ptr&lt; <ref refid="classaudioPlayer" kindref="compound">audioPlayer</ref> &gt; &amp;</type>
           <declname>player</declname>
@@ -365,7 +355,6 @@
         <definition>bool editorObject::pushToRootDB</definition>
         <argsstring>(litedb &amp;ROOTDB, const UNSANITIZED &amp;trackTitleToPush)</argsstring>
         <name>pushToRootDB</name>
-        <qualifiedname>editorObject::pushToRootDB</qualifiedname>
         <param>
           <type><ref refid="classlitedb" kindref="compound">litedb</ref> &amp;</type>
           <declname>ROOTDB</declname>
@@ -408,7 +397,6 @@
         <definition>bool editorObject::pushToRootDB</definition>
         <argsstring>(litedb &amp;ROOTDB, const UNSANITIZED &amp;musicTitle, const UNSANITIZED &amp;musicComposer)</argsstring>
         <name>pushToRootDB</name>
-        <qualifiedname>editorObject::pushToRootDB</qualifiedname>
         <param>
           <type><ref refid="classlitedb" kindref="compound">litedb</ref> &amp;</type>
           <declname>ROOTDB</declname>
@@ -468,7 +456,6 @@
         <definition>void editorObject::getAll</definition>
         <argsstring>(std::function&lt; void(const EDIT_ARG_TYPE &amp;obj)&gt; jsonCallback)</argsstring>
         <name>getAll</name>
-        <qualifiedname>editorObject::getAll</qualifiedname>
         <param>
           <type>std::function&lt; void(const EDIT_ARG_TYPE &amp;obj)&gt;</type>
           <declname>jsonCallback</declname>
@@ -511,7 +498,6 @@
         <definition>bool editorObject::Undo</definition>
         <argsstring>()</argsstring>
         <name>Undo</name>
-        <qualifiedname>editorObject::Undo</qualifiedname>
         <briefdescription>
 <para>Undoes the last operation. </para>
         </briefdescription>
@@ -543,7 +529,6 @@
         <definition>bool editorObject::Undo</definition>
         <argsstring>(const UNSANITIZED &amp;musicName)</argsstring>
         <name>Undo</name>
-        <qualifiedname>editorObject::Undo</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>musicName</declname>
@@ -588,7 +573,6 @@
         <definition>bool editorObject::Redo</definition>
         <argsstring>()</argsstring>
         <name>Redo</name>
-        <qualifiedname>editorObject::Redo</qualifiedname>
         <briefdescription>
 <para>Redoes the last undone operation. </para>
         </briefdescription>
@@ -620,7 +604,6 @@
         <definition>bool editorObject::Redo</definition>
         <argsstring>(const UNSANITIZED &amp;musicName)</argsstring>
         <name>Redo</name>
-        <qualifiedname>editorObject::Redo</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>musicName</declname>
@@ -665,7 +648,6 @@
         <definition>bool editorObject::Go</definition>
         <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
-        <qualifiedname>editorObject::Go</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -696,7 +678,7 @@
 <parametername>commitOID</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A oid string to the commit <ref refid="MixMachine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc" kindref="member">ID</ref> to switch to. </para>
+<para>A oid string to the commit ID to switch to. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -718,7 +700,6 @@
         <definition>DONT_SANITIZE editorObject::GetLogWithJSONGraph</definition>
         <argsstring>()</argsstring>
         <name>GetLogWithJSONGraph</name>
-        <qualifiedname>editorObject::GetLogWithJSONGraph</qualifiedname>
         <briefdescription>
 <para>Gets the commit log as a JSON graph. </para>
         </briefdescription>
@@ -750,7 +731,6 @@
         <definition>DONT_SANITIZE editorObject::GetLogWithJSONGraph</definition>
         <argsstring>(const UNSANITIZED &amp;musicName)</argsstring>
         <name>GetLogWithJSONGraph</name>
-        <qualifiedname>editorObject::GetLogWithJSONGraph</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>musicName</declname>
@@ -795,7 +775,6 @@
         <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
         <briefdescription>
 <para>Updates the commit log. </para>
         </briefdescription>
@@ -817,12 +796,11 @@
         </inbodydescription>
         <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="221" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classeditorObject_1aa664471474287d500e65d09f08f61001" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditorObject_1a86651ab5236102410ef57b82a08ef383" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="jsonWrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" kindref="member">nj</ref> &amp;</type>
-        <definition>nj &amp; editorObject::operator[]</definition>
+        <definition>nj&amp; editorObject::operator[]</definition>
         <argsstring>(const DONT_SANITIZE &amp;key)</argsstring>
         <name>operator[]</name>
-        <qualifiedname>editorObject::operator[]</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>key</declname>
@@ -881,7 +859,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>DONT_SANITIZE editorObject::DESTROY_PROJECT</definition>
         <argsstring>()</argsstring>
         <name>DESTROY_PROJECT</name>
-        <qualifiedname>editorObject::DESTROY_PROJECT</qualifiedname>
         <briefdescription>
 <para>Destroys the entire project. </para>
         </briefdescription>
@@ -901,7 +878,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::ConfigNewMusic</definition>
         <argsstring>(const UNSANITIZED &amp;NewMusicName, const UNSANITIZED &amp;composer, const fs::path &amp;musicPath, const DONT_SANITIZE &amp;firstBeat=&quot;0&quot;)</argsstring>
         <name>ConfigNewMusic</name>
-        <qualifiedname>editorObject::ConfigNewMusic</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>NewMusicName</declname>
@@ -969,7 +945,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Open</definition>
         <argsstring>(const fs::path &amp;projectPath, const DONT_SANITIZE &amp;auth_name, const DONT_SANITIZE &amp;auth_email)</argsstring>
         <name>Open</name>
-        <qualifiedname>editorObject::Open</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>projectPath</declname>
@@ -1008,7 +983,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>editorObject::editorObject</definition>
         <argsstring>()=default</argsstring>
         <name>editorObject</name>
-        <qualifiedname>editorObject::editorObject</qualifiedname>
         <briefdescription>
 <para>Constructs a new editor object with author information. </para>
         </briefdescription>
@@ -1023,7 +997,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>editorObject::~editorObject</definition>
         <argsstring>()=default</argsstring>
         <name>~editorObject</name>
-        <qualifiedname>editorObject::~editorObject</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1039,7 +1012,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::AddLine</definition>
         <argsstring>(const EDIT_ARG_MUSIC &amp;obj)</argsstring>
         <name>AddLine</name>
-        <qualifiedname>editorObject::AddLine</qualifiedname>
         <param>
           <type>const <ref refid="structEDIT__ARG__MUSIC" kindref="compound">EDIT_ARG_MUSIC</ref> &amp;</type>
           <declname>obj</declname>
@@ -1059,7 +1031,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::AddLine</definition>
         <argsstring>(const EDIT_ARG_MIX &amp;obj)</argsstring>
         <name>AddLine</name>
-        <qualifiedname>editorObject::AddLine</qualifiedname>
         <param>
           <type>const <ref refid="editorObject_8hpp_1a8c7c688d1e63ff780f13669e00fc091c" kindref="member">EDIT_ARG_MIX</ref> &amp;</type>
           <declname>obj</declname>
@@ -1079,7 +1050,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::AddLine</definition>
         <argsstring>(const EDIT_ARG_NOTE &amp;obj)</argsstring>
         <name>AddLine</name>
-        <qualifiedname>editorObject::AddLine</qualifiedname>
         <param>
           <type>const <ref refid="editorObject_8hpp_1a2de2e14491806b81a5ba85836b550f18" kindref="member">EDIT_ARG_NOTE</ref> &amp;</type>
           <declname>obj</declname>
@@ -1099,7 +1069,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::AddLine</definition>
         <argsstring>(const EDIT_ARG_KEY_VALUE &amp;obj)</argsstring>
         <name>AddLine</name>
-        <qualifiedname>editorObject::AddLine</qualifiedname>
         <param>
           <type>const <ref refid="editorObject_8hpp_1a305098bfe154230cbef2fbe44e5f9220" kindref="member">EDIT_ARG_KEY_VALUE</ref> &amp;</type>
           <declname>obj</declname>
@@ -1119,7 +1088,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>int editorObject::deleteLine</definition>
         <argsstring>(const EDIT_ARG_NOTE &amp;obj)</argsstring>
         <name>deleteLine</name>
-        <qualifiedname>editorObject::deleteLine</qualifiedname>
         <param>
           <type>const <ref refid="editorObject_8hpp_1a2de2e14491806b81a5ba85836b550f18" kindref="member">EDIT_ARG_NOTE</ref> &amp;</type>
           <declname>obj</declname>
@@ -1139,7 +1107,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>int editorObject::deleteLine</definition>
         <argsstring>(const EDIT_ARG_KEY_VALUE &amp;obj)</argsstring>
         <name>deleteLine</name>
-        <qualifiedname>editorObject::deleteLine</qualifiedname>
         <param>
           <type>const <ref refid="editorObject_8hpp_1a305098bfe154230cbef2fbe44e5f9220" kindref="member">EDIT_ARG_KEY_VALUE</ref> &amp;</type>
           <declname>obj</declname>
@@ -1159,7 +1126,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>int editorObject::deleteLine</definition>
         <argsstring>(const EDIT_ARG_MUSIC &amp;obj)</argsstring>
         <name>deleteLine</name>
-        <qualifiedname>editorObject::deleteLine</qualifiedname>
         <param>
           <type>const <ref refid="structEDIT__ARG__MUSIC" kindref="compound">EDIT_ARG_MUSIC</ref> &amp;</type>
           <declname>obj</declname>
@@ -1179,7 +1145,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Undo</definition>
         <argsstring>()</argsstring>
         <name>Undo</name>
-        <qualifiedname>editorObject::Undo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1195,7 +1160,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Undo</definition>
         <argsstring>()</argsstring>
         <name>Undo</name>
-        <qualifiedname>editorObject::Undo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1211,7 +1175,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Undo</definition>
         <argsstring>()</argsstring>
         <name>Undo</name>
-        <qualifiedname>editorObject::Undo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1227,7 +1190,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Undo</definition>
         <argsstring>(const UNSANITIZED &amp;musicName)</argsstring>
         <name>Undo</name>
-        <qualifiedname>editorObject::Undo</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>musicName</declname>
@@ -1247,7 +1209,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::AddLine</definition>
         <argsstring>(const EDIT_ARG_NOTE &amp;obj)</argsstring>
         <name>AddLine</name>
-        <qualifiedname>editorObject::AddLine</qualifiedname>
         <param>
           <type>const <ref refid="editorObject_8hpp_1a2de2e14491806b81a5ba85836b550f18" kindref="member">EDIT_ARG_NOTE</ref> &amp;</type>
           <declname>obj</declname>
@@ -1267,7 +1228,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::AddLine</definition>
         <argsstring>(const EDIT_ARG_MIX &amp;obj)</argsstring>
         <name>AddLine</name>
-        <qualifiedname>editorObject::AddLine</qualifiedname>
         <param>
           <type>const <ref refid="editorObject_8hpp_1a8c7c688d1e63ff780f13669e00fc091c" kindref="member">EDIT_ARG_MIX</ref> &amp;</type>
           <declname>obj</declname>
@@ -1287,7 +1247,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::AddLine</definition>
         <argsstring>(const EDIT_ARG_KEY_VALUE &amp;obj)</argsstring>
         <name>AddLine</name>
-        <qualifiedname>editorObject::AddLine</qualifiedname>
         <param>
           <type>const <ref refid="editorObject_8hpp_1a305098bfe154230cbef2fbe44e5f9220" kindref="member">EDIT_ARG_KEY_VALUE</ref> &amp;</type>
           <declname>obj</declname>
@@ -1307,7 +1266,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::AddLine</definition>
         <argsstring>(const EDIT_ARG_MUSIC &amp;obj)</argsstring>
         <name>AddLine</name>
-        <qualifiedname>editorObject::AddLine</qualifiedname>
         <param>
           <type>const <ref refid="structEDIT__ARG__MUSIC" kindref="compound">EDIT_ARG_MUSIC</ref> &amp;</type>
           <declname>obj</declname>
@@ -1327,7 +1285,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>int editorObject::deleteLine</definition>
         <argsstring>(const EDIT_ARG_NOTE &amp;obj)</argsstring>
         <name>deleteLine</name>
-        <qualifiedname>editorObject::deleteLine</qualifiedname>
         <param>
           <type>const <ref refid="editorObject_8hpp_1a2de2e14491806b81a5ba85836b550f18" kindref="member">EDIT_ARG_NOTE</ref> &amp;</type>
           <declname>obj</declname>
@@ -1347,7 +1304,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>int editorObject::deleteLine</definition>
         <argsstring>(const EDIT_ARG_KEY_VALUE &amp;obj)</argsstring>
         <name>deleteLine</name>
-        <qualifiedname>editorObject::deleteLine</qualifiedname>
         <param>
           <type>const <ref refid="editorObject_8hpp_1a305098bfe154230cbef2fbe44e5f9220" kindref="member">EDIT_ARG_KEY_VALUE</ref> &amp;</type>
           <declname>obj</declname>
@@ -1367,7 +1323,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>int editorObject::deleteLine</definition>
         <argsstring>(const EDIT_ARG_MUSIC &amp;obj)</argsstring>
         <name>deleteLine</name>
-        <qualifiedname>editorObject::deleteLine</qualifiedname>
         <param>
           <type>const <ref refid="structEDIT__ARG__MUSIC" kindref="compound">EDIT_ARG_MUSIC</ref> &amp;</type>
           <declname>obj</declname>
@@ -1387,7 +1342,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>void editorObject::getAll</definition>
         <argsstring>(std::function&lt; void(const EDIT_ARG_NOTE &amp;obj)&gt; jsonCallback)</argsstring>
         <name>getAll</name>
-        <qualifiedname>editorObject::getAll</qualifiedname>
         <param>
           <type>std::function&lt; void(const <ref refid="editorObject_8hpp_1a2de2e14491806b81a5ba85836b550f18" kindref="member">EDIT_ARG_NOTE</ref> &amp;obj)&gt;</type>
           <declname>jsonCallback</declname>
@@ -1398,7 +1352,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="321" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="321" column="2" bodyfile="include/core/MainObjects/editorObject/getall.cpp" bodystart="20" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classeditorObject_1a16ef00ce6ae7569f39a60ff8f382bd1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1407,7 +1361,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>void editorObject::getAll</definition>
         <argsstring>(std::function&lt; void(const EDIT_ARG_MIX &amp;obj)&gt; jsonCallback)</argsstring>
         <name>getAll</name>
-        <qualifiedname>editorObject::getAll</qualifiedname>
         <param>
           <type>std::function&lt; void(const <ref refid="editorObject_8hpp_1a8c7c688d1e63ff780f13669e00fc091c" kindref="member">EDIT_ARG_MIX</ref> &amp;obj)&gt;</type>
           <declname>jsonCallback</declname>
@@ -1418,7 +1371,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="325" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="325" column="2" bodyfile="include/core/MainObjects/editorObject/getall.cpp" bodystart="13" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classeditorObject_1a479985c5e13f1986c6b88ceac67924c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1427,7 +1380,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>void editorObject::getAll</definition>
         <argsstring>(std::function&lt; void(const EDIT_ARG_KEY_VALUE &amp;obj)&gt; jsonCallback)</argsstring>
         <name>getAll</name>
-        <qualifiedname>editorObject::getAll</qualifiedname>
         <param>
           <type>std::function&lt; void(const <ref refid="editorObject_8hpp_1a305098bfe154230cbef2fbe44e5f9220" kindref="member">EDIT_ARG_KEY_VALUE</ref> &amp;obj)&gt;</type>
           <declname>jsonCallback</declname>
@@ -1438,7 +1390,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="329" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="329" column="2" bodyfile="include/core/MainObjects/editorObject/getall.cpp" bodystart="5" bodyend="9"/>
       </memberdef>
       <memberdef kind="function" id="classeditorObject_1a5fff7bdde5101a29d10a25989c8e248d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1447,7 +1399,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>void editorObject::getAll</definition>
         <argsstring>(std::function&lt; void(const EDIT_ARG_MUSIC &amp;obj)&gt; jsonCallback)</argsstring>
         <name>getAll</name>
-        <qualifiedname>editorObject::getAll</qualifiedname>
         <param>
           <type>std::function&lt; void(const <ref refid="structEDIT__ARG__MUSIC" kindref="compound">EDIT_ARG_MUSIC</ref> &amp;obj)&gt;</type>
           <declname>jsonCallback</declname>
@@ -1458,7 +1409,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="333" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="333" column="2" bodyfile="include/core/MainObjects/editorObject/getall.cpp" bodystart="27" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1467,7 +1418,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>DONT_SANITIZE editorObject::GetLogWithJSONGraph</definition>
         <argsstring>()</argsstring>
         <name>GetLogWithJSONGraph</name>
-        <qualifiedname>editorObject::GetLogWithJSONGraph</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1483,7 +1433,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>DONT_SANITIZE editorObject::GetLogWithJSONGraph</definition>
         <argsstring>()</argsstring>
         <name>GetLogWithJSONGraph</name>
-        <qualifiedname>editorObject::GetLogWithJSONGraph</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1499,7 +1448,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>DONT_SANITIZE editorObject::GetLogWithJSONGraph</definition>
         <argsstring>()</argsstring>
         <name>GetLogWithJSONGraph</name>
-        <qualifiedname>editorObject::GetLogWithJSONGraph</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1515,7 +1463,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>DONT_SANITIZE editorObject::GetLogWithJSONGraph</definition>
         <argsstring>()</argsstring>
         <name>GetLogWithJSONGraph</name>
-        <qualifiedname>editorObject::GetLogWithJSONGraph</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1531,7 +1478,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Go</definition>
         <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
-        <qualifiedname>editorObject::Go</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -1551,7 +1497,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Go</definition>
         <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
-        <qualifiedname>editorObject::Go</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -1571,7 +1516,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Go</definition>
         <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
-        <qualifiedname>editorObject::Go</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -1591,7 +1535,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Go</definition>
         <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
-        <qualifiedname>editorObject::Go</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -1611,7 +1554,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Redo</definition>
         <argsstring>()</argsstring>
         <name>Redo</name>
-        <qualifiedname>editorObject::Redo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1627,7 +1569,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Redo</definition>
         <argsstring>()</argsstring>
         <name>Redo</name>
-        <qualifiedname>editorObject::Redo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1643,7 +1584,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Redo</definition>
         <argsstring>()</argsstring>
         <name>Redo</name>
-        <qualifiedname>editorObject::Redo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1659,7 +1599,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Redo</definition>
         <argsstring>(const UNSANITIZED &amp;musicName)</argsstring>
         <name>Redo</name>
-        <qualifiedname>editorObject::Redo</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>musicName</declname>
@@ -1672,53 +1611,20 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </inbodydescription>
         <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="392" column="2"/>
       </memberdef>
-      <memberdef kind="function" id="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditorObject_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::Undo</definition>
+        <type>void</type>
+        <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
-        <name>Undo</name>
-        <qualifiedname>editorObject::Undo</qualifiedname>
+        <name>UpdateLog</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="396" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::Undo</definition>
-        <argsstring>()</argsstring>
-        <name>Undo</name>
-        <qualifiedname>editorObject::Undo</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="399" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::Undo</definition>
-        <argsstring>()</argsstring>
-        <name>Undo</name>
-        <qualifiedname>editorObject::Undo</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="402" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="397" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditorObject_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1727,14 +1633,13 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="406" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="401" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditorObject_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1743,14 +1648,13 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="410" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="405" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditorObject_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1759,110 +1663,13 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="414" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditorObject_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>void</type>
-        <definition>void editorObject::UpdateLog</definition>
-        <argsstring>()</argsstring>
-        <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="418" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditorObject_1a479985c5e13f1986c6b88ceac67924c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>void</type>
-        <definition>void editorObject::getAll</definition>
-        <argsstring>(std::function&lt; void(const EDIT_ARG_KEY_VALUE &amp;obj)&gt; jsonCallback)</argsstring>
-        <name>getAll</name>
-        <qualifiedname>editorObject::getAll</qualifiedname>
-        <param>
-          <type>std::function&lt; void(const <ref refid="editorObject_8hpp_1a305098bfe154230cbef2fbe44e5f9220" kindref="member">EDIT_ARG_KEY_VALUE</ref> &amp;obj)&gt;</type>
-          <declname>jsonCallback</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/getall.cpp" line="5" column="1" bodyfile="include/core/MainObjects/editorObject/getall.cpp" bodystart="5" bodyend="9"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditorObject_1a16ef00ce6ae7569f39a60ff8f382bd1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>void</type>
-        <definition>void editorObject::getAll</definition>
-        <argsstring>(std::function&lt; void(const EDIT_ARG_MIX &amp;obj)&gt; jsonCallback)</argsstring>
-        <name>getAll</name>
-        <qualifiedname>editorObject::getAll</qualifiedname>
-        <param>
-          <type>std::function&lt; void(const <ref refid="editorObject_8hpp_1a8c7c688d1e63ff780f13669e00fc091c" kindref="member">EDIT_ARG_MIX</ref> &amp;obj)&gt;</type>
-          <declname>jsonCallback</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/getall.cpp" line="13" column="1" bodyfile="include/core/MainObjects/editorObject/getall.cpp" bodystart="13" bodyend="16"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditorObject_1a77db8c854567b251bec9cebd5e91c662" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>void</type>
-        <definition>void editorObject::getAll</definition>
-        <argsstring>(std::function&lt; void(const EDIT_ARG_NOTE &amp;obj)&gt; jsonCallback)</argsstring>
-        <name>getAll</name>
-        <qualifiedname>editorObject::getAll</qualifiedname>
-        <param>
-          <type>std::function&lt; void(const <ref refid="editorObject_8hpp_1a2de2e14491806b81a5ba85836b550f18" kindref="member">EDIT_ARG_NOTE</ref> &amp;obj)&gt;</type>
-          <declname>jsonCallback</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/getall.cpp" line="20" column="1" bodyfile="include/core/MainObjects/editorObject/getall.cpp" bodystart="20" bodyend="23"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditorObject_1a5fff7bdde5101a29d10a25989c8e248d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>void</type>
-        <definition>void editorObject::getAll</definition>
-        <argsstring>(std::function&lt; void(const EDIT_ARG_MUSIC &amp;obj)&gt; jsonCallback)</argsstring>
-        <name>getAll</name>
-        <qualifiedname>editorObject::getAll</qualifiedname>
-        <param>
-          <type>std::function&lt; void(const <ref refid="structEDIT__ARG__MUSIC" kindref="compound">EDIT_ARG_MUSIC</ref> &amp;obj)&gt;</type>
-          <declname>jsonCallback</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/getall.cpp" line="27" column="1" bodyfile="include/core/MainObjects/editorObject/getall.cpp" bodystart="27" bodyend="33"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="409" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1871,7 +1678,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>DONT_SANITIZE editorObject::GetLogWithJSONGraph</definition>
         <argsstring>()</argsstring>
         <name>GetLogWithJSONGraph</name>
-        <qualifiedname>editorObject::GetLogWithJSONGraph</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1887,7 +1693,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>DONT_SANITIZE editorObject::GetLogWithJSONGraph</definition>
         <argsstring>()</argsstring>
         <name>GetLogWithJSONGraph</name>
-        <qualifiedname>editorObject::GetLogWithJSONGraph</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1903,7 +1708,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>DONT_SANITIZE editorObject::GetLogWithJSONGraph</definition>
         <argsstring>()</argsstring>
         <name>GetLogWithJSONGraph</name>
-        <qualifiedname>editorObject::GetLogWithJSONGraph</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1919,7 +1723,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>DONT_SANITIZE editorObject::GetLogWithJSONGraph</definition>
         <argsstring>(const UNSANITIZED &amp;musicName)</argsstring>
         <name>GetLogWithJSONGraph</name>
-        <qualifiedname>editorObject::GetLogWithJSONGraph</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>musicName</declname>
@@ -1939,7 +1742,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Go</definition>
         <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
-        <qualifiedname>editorObject::Go</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -1959,7 +1761,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Go</definition>
         <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
-        <qualifiedname>editorObject::Go</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -1979,7 +1780,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Go</definition>
         <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
-        <qualifiedname>editorObject::Go</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -1999,7 +1799,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Go</definition>
         <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
         <name>Go</name>
-        <qualifiedname>editorObject::Go</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>commitOID</declname>
@@ -2019,7 +1818,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Redo</definition>
         <argsstring>()</argsstring>
         <name>Redo</name>
-        <qualifiedname>editorObject::Redo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -2035,7 +1833,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Redo</definition>
         <argsstring>()</argsstring>
         <name>Redo</name>
-        <qualifiedname>editorObject::Redo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -2051,7 +1848,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Redo</definition>
         <argsstring>(const UNSANITIZED &amp;musicName)</argsstring>
         <name>Redo</name>
-        <qualifiedname>editorObject::Redo</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>musicName</declname>
@@ -2071,7 +1867,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Redo</definition>
         <argsstring>()</argsstring>
         <name>Redo</name>
-        <qualifiedname>editorObject::Redo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -2087,7 +1882,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Undo</definition>
         <argsstring>()</argsstring>
         <name>Undo</name>
-        <qualifiedname>editorObject::Undo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -2103,7 +1897,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Undo</definition>
         <argsstring>()</argsstring>
         <name>Undo</name>
-        <qualifiedname>editorObject::Undo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -2119,7 +1912,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Undo</definition>
         <argsstring>(const UNSANITIZED &amp;musicName)</argsstring>
         <name>Undo</name>
-        <qualifiedname>editorObject::Undo</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>musicName</declname>
@@ -2139,7 +1931,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>bool editorObject::Undo</definition>
         <argsstring>()</argsstring>
         <name>Undo</name>
-        <qualifiedname>editorObject::Undo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -2155,7 +1946,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -2171,7 +1961,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -2187,7 +1976,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -2203,7 +1991,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <definition>void editorObject::UpdateLog</definition>
         <argsstring>()</argsstring>
         <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -2212,7 +1999,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </inbodydescription>
         <location file="include/core/MainObjects/editorObject/updatelog.cpp" line="25" column="2" bodyfile="include/core/MainObjects/editorObject/updatelog.cpp" bodystart="26" bodyend="31"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>The main editor object for managing project data. </para>
     </briefdescription>
@@ -2220,241 +2007,14 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
 <para>This class provides a high-level interface for interacting with the editor, including file I/O, version control, and data rendering. </para>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3">
-        <label>PDJE_Editor</label>
-        <link refid="classPDJE__Editor"/>
-        <childnode refid="4" relation="usage">
-          <edgelabel>email</edgelabel>
-          <edgelabel>name</edgelabel>
-        </childnode>
-        <childnode refid="6" relation="usage">
-          <edgelabel>mixHandle</edgelabel>
-        </childnode>
-        <childnode refid="15" relation="usage">
-          <edgelabel>noteHandle</edgelabel>
-        </childnode>
-        <childnode refid="19" relation="usage">
-          <edgelabel>KVHandle</edgelabel>
-        </childnode>
-        <childnode refid="23" relation="usage">
-          <edgelabel>musicHandle</edgelabel>
-        </childnode>
-      </node>
-      <node id="24">
-        <label>PDJE_Editor::MusicHandleStruct</label>
-        <link refid="structPDJE__Editor_1_1MusicHandleStruct"/>
-        <childnode refid="25" relation="usage">
-          <edgelabel>handle</edgelabel>
-        </childnode>
-      </node>
-      <node id="14">
-        <label>PDJE_JSONHandler&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__JSONHandler"/>
-      </node>
-      <node id="28">
-        <label>PDJE_JSONHandler&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__JSONHandler"/>
-      </node>
-      <node id="18">
-        <label>PDJE_JSONHandler&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__JSONHandler"/>
-      </node>
-      <node id="22">
-        <label>PDJE_JSONHandler&lt; KV_W &gt;</label>
-        <link refid="classPDJE__JSONHandler"/>
-      </node>
-      <node id="13">
-        <label>PDJE_TIMELINE::BranchLine</label>
-        <link refid="classPDJE__TIMELINE_1_1BranchLine"/>
-        <childnode refid="8" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-      </node>
-      <node id="12">
-        <label>PDJE_TIMELINE::EventMarker&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1EventMarker"/>
-        <childnode refid="8" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>checkedOut</edgelabel>
-        </childnode>
-        <childnode refid="13" relation="usage">
-          <edgelabel>line</edgelabel>
-        </childnode>
-        <childnode refid="14" relation="usage">
-          <edgelabel>file_handle</edgelabel>
-        </childnode>
-      </node>
-      <node id="27">
-        <label>PDJE_TIMELINE::EventMarker&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1EventMarker"/>
-        <childnode refid="8" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>checkedOut</edgelabel>
-        </childnode>
-        <childnode refid="13" relation="usage">
-          <edgelabel>line</edgelabel>
-        </childnode>
-        <childnode refid="28" relation="usage">
-          <edgelabel>file_handle</edgelabel>
-        </childnode>
-      </node>
-      <node id="17">
-        <label>PDJE_TIMELINE::EventMarker&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1EventMarker"/>
-        <childnode refid="8" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>checkedOut</edgelabel>
-        </childnode>
-        <childnode refid="13" relation="usage">
-          <edgelabel>line</edgelabel>
-        </childnode>
-        <childnode refid="18" relation="usage">
-          <edgelabel>file_handle</edgelabel>
-        </childnode>
-      </node>
-      <node id="21">
-        <label>PDJE_TIMELINE::EventMarker&lt; KV_W &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1EventMarker"/>
-        <childnode refid="8" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>checkedOut</edgelabel>
-        </childnode>
-        <childnode refid="13" relation="usage">
-          <edgelabel>line</edgelabel>
-        </childnode>
-        <childnode refid="22" relation="usage">
-          <edgelabel>file_handle</edgelabel>
-        </childnode>
-      </node>
-      <node id="9">
-        <label>PDJE_TIMELINE::GitData</label>
-        <link refid="structPDJE__TIMELINE_1_1GitData"/>
-        <childnode refid="10" relation="usage">
-          <edgelabel>log_tree</edgelabel>
-        </childnode>
-        <childnode refid="11" relation="usage">
-          <edgelabel>LIFO_log</edgelabel>
-        </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>target_file</edgelabel>
-        </childnode>
-      </node>
-      <node id="7">
-        <label>PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1TimeLine"/>
-        <childnode refid="8" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="12" relation="usage">
-          <edgelabel>mark</edgelabel>
-        </childnode>
-      </node>
-      <node id="26">
-        <label>PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1TimeLine"/>
-        <childnode refid="8" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="27" relation="usage">
-          <edgelabel>mark</edgelabel>
-        </childnode>
-      </node>
-      <node id="16">
-        <label>PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1TimeLine"/>
-        <childnode refid="8" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="17" relation="usage">
-          <edgelabel>mark</edgelabel>
-        </childnode>
-      </node>
-      <node id="20">
-        <label>PDJE_TIMELINE::TimeLine&lt; KV_W &gt;</label>
-        <link refid="classPDJE__TIMELINE_1_1TimeLine"/>
-        <childnode refid="8" relation="usage">
-          <edgelabel>git</edgelabel>
-        </childnode>
-        <childnode refid="21" relation="usage">
-          <edgelabel>mark</edgelabel>
-        </childnode>
+      <node id="2">
+        <label>std::unique_ptr&lt; PDJE_Editor &gt;</label>
       </node>
       <node id="1">
         <label>editorObject</label>
         <link refid="classeditorObject"/>
         <childnode refid="2" relation="usage">
           <edgelabel>edit_core</edgelabel>
-        </childnode>
-      </node>
-      <node id="5">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
-      <node id="8">
-        <label>std::shared_ptr&lt; PDJE_TIMELINE::GitData &gt;</label>
-        <childnode refid="9" relation="usage">
-          <edgelabel>ptr</edgelabel>
-        </childnode>
-      </node>
-      <node id="4">
-        <label>std::string</label>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>std::unique_ptr&lt; PDJE_Editor &gt;</label>
-        <childnode refid="3" relation="usage">
-          <edgelabel>ptr</edgelabel>
-        </childnode>
-      </node>
-      <node id="6">
-        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MixBinaryCapnpData &gt; &gt; &gt;</label>
-        <childnode refid="7" relation="usage">
-          <edgelabel>ptr</edgelabel>
-        </childnode>
-      </node>
-      <node id="25">
-        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; MusicBinaryCapnpData &gt; &gt; &gt;</label>
-        <childnode refid="26" relation="usage">
-          <edgelabel>ptr</edgelabel>
-        </childnode>
-      </node>
-      <node id="15">
-        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; CapWriter&lt; NoteBinaryCapnpData &gt; &gt; &gt;</label>
-        <childnode refid="16" relation="usage">
-          <edgelabel>ptr</edgelabel>
-        </childnode>
-      </node>
-      <node id="19">
-        <label>std::unique_ptr&lt; PDJE_TIMELINE::TimeLine&lt; KV_W &gt; &gt;</label>
-        <childnode refid="20" relation="usage">
-          <edgelabel>ptr</edgelabel>
-        </childnode>
-      </node>
-      <node id="10">
-        <label>std::unordered_map&lt; OID, BACK_OID &gt;</label>
-        <childnode refid="4" relation="usage">
-          <edgelabel>elements</edgelabel>
-          <edgelabel>keys</edgelabel>
-        </childnode>
-      </node>
-      <node id="11">
-        <label>std::vector&lt; OID &gt;</label>
-        <childnode refid="4" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
-      </node>
-      <node id="23">
-        <label>std::vector&lt; PDJE_Editor::MusicHandleStruct &gt;</label>
-        <childnode refid="24" relation="usage">
-          <edgelabel>elements</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
@@ -2488,10 +2048,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
       <member refid="classeditorObject_1a16ef00ce6ae7569f39a60ff8f382bd1c" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
       <member refid="classeditorObject_1a479985c5e13f1986c6b88ceac67924c6" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
       <member refid="classeditorObject_1a5fff7bdde5101a29d10a25989c8e248d" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
-      <member refid="classeditorObject_1a479985c5e13f1986c6b88ceac67924c6" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
-      <member refid="classeditorObject_1a16ef00ce6ae7569f39a60ff8f382bd1c" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
-      <member refid="classeditorObject_1a77db8c854567b251bec9cebd5e91c662" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
-      <member refid="classeditorObject_1a5fff7bdde5101a29d10a25989c8e248d" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
       <member refid="classeditorObject_1a360e0000f965db643a0127f7240a425a" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetLogWithJSONGraph</name></member>
       <member refid="classeditorObject_1a994b27da4e10c21758c374d77b638cad" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetLogWithJSONGraph</name></member>
       <member refid="classeditorObject_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetLogWithJSONGraph</name></member>
@@ -2513,7 +2069,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
       <member refid="classeditorObject_1aeacc46b214a74d7e16114b907a14bb51" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Go</name></member>
       <member refid="classeditorObject_1a3bb22fbeed9a7e1516f3ab6461698f0b" prot="private" virt="non-virtual"><scope>editorObject</scope><name>makeTrackData</name></member>
       <member refid="classeditorObject_1aa921e7a13cc65917ae9efe90646878c1" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Open</name></member>
-      <member refid="classeditorObject_1aa664471474287d500e65d09f08f61001" prot="public" virt="non-virtual"><scope>editorObject</scope><name>operator[]</name></member>
+      <member refid="classeditorObject_1a86651ab5236102410ef57b82a08ef383" prot="public" virt="non-virtual"><scope>editorObject</scope><name>operator[]</name></member>
       <member refid="classeditorObject_1afe3027bfdc86cf213b3d44191e4ce4e7" prot="private" virt="non-virtual"><scope>editorObject</scope><name>projectLocalDB</name></member>
       <member refid="classeditorObject_1a9409f6aef52b2cb8a361674da49b97e1" prot="private" virt="non-virtual"><scope>editorObject</scope><name>projectRoot</name></member>
       <member refid="classeditorObject_1ae4f8059616e377582bade705a44aafb6" prot="public" virt="non-virtual"><scope>editorObject</scope><name>pushToRootDB</name></member>
@@ -2535,9 +2091,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
       <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
       <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
       <member refid="classeditorObject_1a789f87b8ed201e8e08b22ba6bc3311b7" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
-      <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
-      <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
-      <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
       <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
       <member refid="classeditorObject_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>
       <member refid="classeditorObject_1a789f87b8ed201e8e08b22ba6bc3311b7" prot="public" virt="non-virtual"><scope>editorObject</scope><name>Undo</name></member>

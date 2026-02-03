@@ -4,7 +4,7 @@
 Program Listing for File pannerMan.hpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_ManualMix_ManualFausts_pannerMan.hpp>` (``include\core\audioRender\ManualMix\ManualFausts\pannerMan.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_ManualMix_ManualFausts_pannerMan.hpp>` (``include/core/audioRender/ManualMix/ManualFausts/pannerMan.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

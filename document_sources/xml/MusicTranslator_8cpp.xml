@@ -1,11 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="MusicTranslator_8cpp" kind="file" language="C++">
     <compoundname>MusicTranslator.cpp</compoundname>
     <includes refid="MusicTranslator_8hpp" local="yes">MusicTranslator.hpp</includes>
     <includes refid="PDJE__LOG__SETTER_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
     <includes local="no">string</includes>
     <incdepgraph>
+      <node id="13">
+        <label>filesystem</label>
+      </node>
       <node id="5">
         <label>CapnpBinary.hpp</label>
         <link refid="CapnpBinary_8hpp"/>
@@ -42,6 +45,54 @@
         <childnode refid="23" relation="include">
         </childnode>
       </node>
+      <node id="7">
+        <label>capnp/serialize.h</label>
+      </node>
+      <node id="22">
+        <label>cmath</label>
+      </node>
+      <node id="8">
+        <label>MixBinary.capnp.h</label>
+      </node>
+      <node id="24">
+        <label>string</label>
+      </node>
+      <node id="15">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="12">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>hwy/aligned_allocator.h</label>
+      </node>
+      <node id="17">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="18">
+        <label>string_view</label>
+      </node>
+      <node id="3">
+        <label>optional</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
       <node id="1">
         <label>include/core/db/Capnp/Translators/MusicTranslator/MusicTranslator.cpp</label>
         <link refid="MusicTranslator_8cpp"/>
@@ -51,6 +102,15 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
+      </node>
+      <node id="16">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="10">
+        <label>NoteBinary.capnp.h</label>
+      </node>
+      <node id="14">
+        <label>mutex</label>
       </node>
       <node id="2">
         <label>MusicTranslator.hpp</label>
@@ -72,77 +132,17 @@
         <label>PDJE_EXPORT_SETTER.hpp</label>
         <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
-      <node id="12">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="PDJE__LOG__SETTER_8hpp"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>MixBinary.capnp.h</label>
+      <node id="19">
+        <label>type_traits</label>
       </node>
       <node id="9">
         <label>MusicBinary.capnp.h</label>
-      </node>
-      <node id="10">
-        <label>NoteBinary.capnp.h</label>
       </node>
       <node id="21">
         <label>algorithm</label>
       </node>
       <node id="6">
         <label>capnp/message.h</label>
-      </node>
-      <node id="7">
-        <label>capnp/serialize.h</label>
-      </node>
-      <node id="22">
-        <label>cmath</label>
-      </node>
-      <node id="13">
-        <label>filesystem</label>
-      </node>
-      <node id="23">
-        <label>hwy/aligned_allocator.h</label>
-      </node>
-      <node id="14">
-        <label>mutex</label>
-      </node>
-      <node id="3">
-        <label>optional</label>
-      </node>
-      <node id="15">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
-      <node id="16">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
-      <node id="17">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="24">
-        <label>string</label>
-      </node>
-      <node id="18">
-        <label>string_view</label>
-      </node>
-      <node id="19">
-        <label>type_traits</label>
-      </node>
-      <node id="4">
-        <label>vector</label>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -173,12 +173,12 @@
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(DVec[i].getBpm().cStr());</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMusicTranslator_1a7e172da1c6f719f934d2d4f033294862" kindref="member">bpms</ref>.fragments.push_back(frg);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMusicTranslator_1a7e172da1c6f719f934d2d4f033294862" kindref="member">bpms</ref>.<ref refid="structBpmStruct_1aa27a7fdda1a74bac6d5a61b459c2ee45" kindref="member">fragments</ref>.push_back(frg);</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMusicTranslator_1a7e172da1c6f719f934d2d4f033294862" kindref="member">bpms</ref>.sortFragment();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMusicTranslator_1a7e172da1c6f719f934d2d4f033294862" kindref="member">bpms</ref>.<ref refid="structBpmStruct_1a6584ff4a4600ca39f9de83525f20f9d0" kindref="member">sortFragment</ref>();</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMusicTranslator_1a7e172da1c6f719f934d2d4f033294862" kindref="member">bpms</ref>.calcFrame(startFrame);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMusicTranslator_1a7e172da1c6f719f934d2d4f033294862" kindref="member">bpms</ref>.<ref refid="structBpmStruct_1a1d9683a4aeaeb6e21fdd20fbb094ea49" kindref="member">calcFrame</ref>(startFrame);</highlight></codeline>
 <codeline lineno="30"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="include/core/db/Capnp/Translators/MusicTranslator/MusicTranslator.cpp"/>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classPredictBuffer" kind="class" language="C++" prot="public">
     <compoundname>PredictBuffer</compoundname>
     <includes refid="PredictMusic_8hpp" local="no">PredictMusic.hpp</includes>
@@ -10,13 +10,12 @@
         <defname>SZ</defname>
       </param>
     </templateparamlist>
-    <sectiondef kind="private-type">
+      <sectiondef kind="private-type">
       <memberdef kind="typedef" id="classPredictBuffer_1ad85e69ba54eeae038d53771b01c86cfc" prot="private" static="no">
-        <type>typename std::array&lt; <ref refid="structPREDICT" kindref="compound">PREDICT</ref>, SZ &gt;::iterator</type>
+        <type>typename std::array&lt; <ref refid="structPREDICT" kindref="compound">PREDICT</ref>, SZ &gt;::<ref refid="classPredictBuffer_1ad85e69ba54eeae038d53771b01c86cfc" kindref="member">iterator</ref></type>
         <definition>using PredictBuffer&lt; SZ &gt;::iterator =  typename std::array&lt;PREDICT, SZ&gt;::iterator</definition>
         <argsstring></argsstring>
         <name>iterator</name>
-        <qualifiedname>PredictBuffer::iterator</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -25,14 +24,13 @@
         </inbodydescription>
         <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="22" column="5" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="22" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-attrib">
+      </sectiondef>
+      <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classPredictBuffer_1ac79f6bb641f1d065aaa346cb251220aa" prot="private" static="no" mutable="no">
         <type>std::array&lt; <ref refid="structPREDICT" kindref="compound">PREDICT</ref>, SZ &gt;</type>
         <definition>std::array&lt;PREDICT, SZ&gt; PredictBuffer&lt; SZ &gt;::buffer</definition>
         <argsstring></argsstring>
         <name>buffer</name>
-        <qualifiedname>PredictBuffer::buffer</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -46,7 +44,6 @@
         <definition>iterator PredictBuffer&lt; SZ &gt;::popp</definition>
         <argsstring></argsstring>
         <name>popp</name>
-        <qualifiedname>PredictBuffer::popp</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -60,7 +57,6 @@
         <definition>iterator PredictBuffer&lt; SZ &gt;::pushp</definition>
         <argsstring></argsstring>
         <name>pushp</name>
-        <qualifiedname>PredictBuffer::pushp</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -74,7 +70,6 @@
         <definition>std::atomic&lt;uint32_t&gt; PredictBuffer&lt; SZ &gt;::fill_counter</definition>
         <argsstring></argsstring>
         <name>fill_counter</name>
-        <qualifiedname>PredictBuffer::fill_counter</qualifiedname>
         <initializer>{ 0 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -82,16 +77,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="26" column="19" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="26" bodyend="26"/>
+        <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="26" column="19" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="26" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-func">
+      </sectiondef>
+      <sectiondef kind="private-func">
       <memberdef kind="function" id="classPredictBuffer_1ae3b128f3ebe09d396d9f9237fb97874c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void PredictBuffer&lt; SZ &gt;::Next</definition>
         <argsstring>(iterator &amp;itr)</argsstring>
         <name>Next</name>
-        <qualifiedname>PredictBuffer::Next</qualifiedname>
         <param>
           <type><ref refid="classPredictBuffer_1ad85e69ba54eeae038d53771b01c86cfc" kindref="member">iterator</ref> &amp;</type>
           <declname>itr</declname>
@@ -104,14 +98,13 @@
         </inbodydescription>
         <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="28" column="5" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="28" bodyend="34"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="classPredictBuffer_1a4bc40c5a8ff97c176415cff9c8613c23" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool PredictBuffer&lt; SZ &gt;::IsFull</definition>
         <argsstring>()</argsstring>
         <name>IsFull</name>
-        <qualifiedname>PredictBuffer::IsFull</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -125,7 +118,6 @@
         <definition>bool PredictBuffer&lt; SZ &gt;::Pop</definition>
         <argsstring>(PREDICT &amp;out)</argsstring>
         <name>Pop</name>
-        <qualifiedname>PredictBuffer::Pop</qualifiedname>
         <param>
           <type><ref refid="structPREDICT" kindref="compound">PREDICT</ref> &amp;</type>
           <declname>out</declname>
@@ -143,7 +135,6 @@
         <definition>void PredictBuffer&lt; SZ &gt;::Reset</definition>
         <argsstring>()</argsstring>
         <name>Reset</name>
-        <qualifiedname>PredictBuffer::Reset</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -157,7 +148,6 @@
         <definition>void PredictBuffer&lt; SZ &gt;::Fill</definition>
         <argsstring>(const PREDICT &amp;data)</argsstring>
         <name>Fill</name>
-        <qualifiedname>PredictBuffer::Fill</qualifiedname>
         <param>
           <type>const <ref refid="structPREDICT" kindref="compound">PREDICT</ref> &amp;</type>
           <declname>data</declname>
@@ -175,7 +165,6 @@
         <definition>PredictBuffer&lt; SZ &gt;::PredictBuffer</definition>
         <argsstring>()</argsstring>
         <name>PredictBuffer</name>
-        <qualifiedname>PredictBuffer::PredictBuffer</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -184,18 +173,23 @@
         </inbodydescription>
         <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="67" column="5" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="67" bodyend="71"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3">
-        <label>PREDICT</label>
-        <link refid="structPREDICT"/>
-        <childnode refid="4" relation="usage">
-          <edgelabel>predict_fragment</edgelabel>
+      <node id="2">
+        <label>std::array&lt; PREDICT, SZ &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>elements</edgelabel>
         </childnode>
+      </node>
+      <node id="4">
+        <label>std::vector&lt; float &gt;</label>
+      </node>
+      <node id="5">
+        <label>std::atomic&lt; uint32_t &gt;</label>
       </node>
       <node id="1">
         <label>PredictBuffer&lt; SZ &gt;</label>
@@ -209,17 +203,12 @@
           <edgelabel>fill_counter</edgelabel>
         </childnode>
       </node>
-      <node id="2">
-        <label>std::array&lt; PREDICT, SZ &gt;</label>
-        <childnode refid="3" relation="usage">
-          <edgelabel>elements</edgelabel>
+      <node id="3">
+        <label>PREDICT</label>
+        <link refid="structPREDICT"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>predict_fragment</edgelabel>
         </childnode>
-      </node>
-      <node id="5">
-        <label>std::atomic&lt; uint32_t &gt;</label>
-      </node>
-      <node id="4">
-        <label>std::vector&lt; float &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="20" column="12" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="20" bodyend="72"/>

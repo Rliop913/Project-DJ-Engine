@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="trackDB_8cpp" kind="file" language="C++">
     <compoundname>trackDB.cpp</compoundname>
     <includes refid="trackDB_8hpp" local="yes">trackDB.hpp</includes>
@@ -7,63 +7,17 @@
     <includes refid="fileNameSanitizer_8hpp" local="yes">fileNameSanitizer.hpp</includes>
     <includes local="no">source_location</includes>
     <incdepgraph>
-      <node id="6">
-        <label>dbState.hpp</label>
-        <link refid="dbState_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
+      <node id="10">
+        <label>filesystem</label>
       </node>
-      <node id="1">
-        <label>include/core/db/trackDB.cpp</label>
-        <link refid="trackDB_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
+      <node id="4">
+        <label>string</label>
       </node>
-      <node id="2">
-        <label>trackDB.hpp</label>
-        <link refid="trackDB_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
+      <node id="14">
+        <label>spdlog/sinks/basic_file_sink.h</label>
       </node>
-      <node id="8">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      <node id="3">
+        <label>sqlite3.h</label>
       </node>
       <node id="12">
         <label>PDJE_LOG_SETTER.hpp</label>
@@ -83,54 +37,100 @@
         <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="9">
-        <label>cppcodec/base64_default_url.hpp</label>
-      </node>
-      <node id="10">
-        <label>filesystem</label>
-      </node>
-      <node id="13">
-        <label>mutex</label>
-      </node>
-      <node id="11">
-        <label>optional</label>
-      </node>
-      <node id="19">
-        <label>source_location</label>
-      </node>
-      <node id="14">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
-      <node id="15">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      <node id="2">
+        <label>trackDB.hpp</label>
+        <link refid="trackDB_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
       <node id="16">
         <label>spdlog/spdlog.h</label>
       </node>
-      <node id="3">
-        <label>sqlite3.h</label>
-      </node>
-      <node id="4">
-        <label>string</label>
-      </node>
       <node id="17">
         <label>string_view</label>
       </node>
-      <node id="18">
-        <label>type_traits</label>
+      <node id="11">
+        <label>optional</label>
       </node>
       <node id="7">
         <label>vector</label>
       </node>
+      <node id="15">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="19">
+        <label>source_location</label>
+      </node>
+      <node id="1">
+        <label>include/core/db/trackDB.cpp</label>
+        <link refid="trackDB_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>cppcodec/base64_default_url.hpp</label>
+      </node>
+      <node id="13">
+        <label>mutex</label>
+      </node>
+      <node id="5">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="18">
+        <label>type_traits</label>
+      </node>
+      <node id="6">
+        <label>dbState.hpp</label>
+        <link refid="dbState_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
     </incdepgraph>
-    <sectiondef kind="define">
+      <sectiondef kind="define">
       <memberdef kind="define" id="trackDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" prot="public" static="no">
         <name>CHK_BIND</name>
         <param><defname>res</defname></param>
         <initializer>    if (res != SQLITE_OK) {                                                    \
         auto now = std::source_location::current();                            \
         <ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(&quot;failed on sqlite.&quot;);                                          \
-        <ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(now.file_name());                                              \
+        critlog(now.file_name());                                              \
         std::string lineNumber = std::to_string(now.line());                   \
         <ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(lineNumber);                                                   \
         <ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(now.function_name());                                          \
@@ -144,9 +144,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/db/trackDB.cpp" line="6" column="12" bodyfile="include/core/db/trackDB.cpp" bodystart="6" bodyend="17"/>
+        <location file="include/core/db/trackDB.cpp" line="6" column="12" bodyfile="include/core/db/trackDB.cpp" bodystart="6" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -160,15 +160,15 @@
 <codeline lineno="6" refid="trackDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CHK_BIND(res)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="7"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>if<sp/>(res<sp/>!=<sp/>SQLITE_OK)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="8"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>auto<sp/>now<sp/>=<sp/>std::source_location::current();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="9"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>critlog(&quot;failed<sp/>on<sp/>sqlite.&quot;);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="10"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>critlog(now.file_name());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="11"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>lineNumber<sp/>=<sp/>std::to_string(now.line());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="12"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>critlog(lineNumber);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="13"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>critlog(now.function_name());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="14"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>sqlLog<sp/>=<sp/>sqlite3_errmsg(db);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="15"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>critlog(sqlLog);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="16"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>false;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="17"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>critlog(&quot;failed<sp/>on<sp/>sqlite.&quot;</highlight><highlight class="normal">);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>critlog(now.file_name());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>lineNumber<sp/>=<sp/>std::to_string(now.line());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>critlog(lineNumber);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>critlog(now.function_name());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>sqlLog<sp/>=<sp/>sqlite3_errmsg(db);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>critlog(sqlLog);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>false;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19" refid="structtrackdata_1ad6d055f069e5dc899f7777a4f95ce001" refkind="member"><highlight class="normal"><ref refid="structtrackdata_1ad6d055f069e5dc899f7777a4f95ce001" kindref="member">trackdata::trackdata</ref>(<ref refid="structstmt" kindref="compound">stmt</ref><sp/>*dbstate)</highlight></codeline>
 <codeline lineno="20"><highlight class="normal">{</highlight></codeline>
@@ -203,9 +203,9 @@
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" kindref="member">trackTitle</ref><sp/>==<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>((dbstate.<ref refid="structstmt_1a3955f3b5269cfbc74825a0307b66092a" kindref="member">bind_int</ref>(1,<sp/>-1)))</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="trackDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>((dbstate.<ref refid="structstmt_1a3955f3b5269cfbc74825a0307b66092a" kindref="member">bind_int</ref>(1,<sp/>-1)))</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" kindref="member">bind_text</ref>(2,<sp/><ref refid="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" kindref="member">trackTitle</ref>))</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="trackDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" kindref="member">bind_text</ref>(2,<sp/><ref refid="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" kindref="member">trackTitle</ref>))</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="57"><highlight class="normal">}</highlight></codeline>
@@ -221,15 +221,15 @@
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>execute<sp/>sql.<sp/>from<sp/>trackdata<sp/>GenInsertSTMT.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" kindref="member">bind_text</ref>(1,<sp/><ref refid="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" kindref="member">trackTitle</ref>));</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1a21b8975846c4d970c14ac5dd26091ddf" kindref="member">bind_blob</ref>(2,<sp/><ref refid="structtrackdata_1a155e25ae9bef854aa3441d9702082ac3" kindref="member">mixBinary</ref>));</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1a21b8975846c4d970c14ac5dd26091ddf" kindref="member">bind_blob</ref>(3,<sp/><ref refid="structtrackdata_1a0a2f02219cfb3b6f5e988fec61c37e7a" kindref="member">noteBinary</ref>));</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" kindref="member">bind_text</ref>(4,<sp/><ref refid="structtrackdata_1aa1e66043414a3f6fe79c3b74ba7dfde8" kindref="member">cachedMixList</ref>));</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="trackDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" kindref="member">bind_text</ref>(1,<sp/><ref refid="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" kindref="member">trackTitle</ref>));</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="trackDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1a21b8975846c4d970c14ac5dd26091ddf" kindref="member">bind_blob</ref>(2,<sp/><ref refid="structtrackdata_1a155e25ae9bef854aa3441d9702082ac3" kindref="member">mixBinary</ref>));</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="trackDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1a21b8975846c4d970c14ac5dd26091ddf" kindref="member">bind_blob</ref>(3,<sp/><ref refid="structtrackdata_1a0a2f02219cfb3b6f5e988fec61c37e7a" kindref="member">noteBinary</ref>));</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="trackDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" kindref="member">bind_text</ref>(4,<sp/><ref refid="structtrackdata_1aa1e66043414a3f6fe79c3b74ba7dfde8" kindref="member">cachedMixList</ref>));</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="75"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="78" refid="structtrackdata_1a12a001e6ec36d4098ebcc21c732c8434" refkind="member"><highlight class="normal"><ref refid="structtrackdata_1a12a001e6ec36d4098ebcc21c732c8434" kindref="member">trackdata::GenEditSTMT</ref>(<ref refid="structstmt" kindref="compound">stmt</ref><sp/>&amp;dbstate,<sp/>sqlite3<sp/>*db,<sp/><ref refid="structtrackdata_1ad6d055f069e5dc899f7777a4f95ce001" kindref="member">trackdata</ref><sp/>&amp;toEdit)</highlight></codeline>
+<codeline lineno="78" refid="structtrackdata_1a12a001e6ec36d4098ebcc21c732c8434" refkind="member"><highlight class="normal"><ref refid="structtrackdata_1a12a001e6ec36d4098ebcc21c732c8434" kindref="member">trackdata::GenEditSTMT</ref>(<ref refid="structstmt" kindref="compound">stmt</ref><sp/>&amp;dbstate,<sp/>sqlite3<sp/>*db,<sp/><ref refid="structtrackdata" kindref="compound">trackdata</ref><sp/>&amp;toEdit)</highlight></codeline>
 <codeline lineno="79"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>dbstate.<ref refid="structstmt_1ad512ebd1df9861c0bbe6cfd926735ae2" kindref="member">placeHold</ref><sp/>=</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;UPDATE<sp/>TRACK<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -241,11 +241,11 @@
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" kindref="member">bind_text</ref>(1,<sp/>toEdit.<ref refid="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" kindref="member">trackTitle</ref>))</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1a21b8975846c4d970c14ac5dd26091ddf" kindref="member">bind_blob</ref>(2,<sp/>toEdit.<ref refid="structtrackdata_1a155e25ae9bef854aa3441d9702082ac3" kindref="member">mixBinary</ref>))</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1a21b8975846c4d970c14ac5dd26091ddf" kindref="member">bind_blob</ref>(3,<sp/>toEdit.<ref refid="structtrackdata_1a0a2f02219cfb3b6f5e988fec61c37e7a" kindref="member">noteBinary</ref>))</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" kindref="member">bind_text</ref>(4,<sp/>toEdit.<ref refid="structtrackdata_1aa1e66043414a3f6fe79c3b74ba7dfde8" kindref="member">cachedMixList</ref>))</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" kindref="member">bind_text</ref>(5,<sp/><ref refid="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" kindref="member">trackTitle</ref>))</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="trackDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" kindref="member">bind_text</ref>(1,<sp/>toEdit.<ref refid="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" kindref="member">trackTitle</ref>))</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="trackDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1a21b8975846c4d970c14ac5dd26091ddf" kindref="member">bind_blob</ref>(2,<sp/>toEdit.<ref refid="structtrackdata_1a155e25ae9bef854aa3441d9702082ac3" kindref="member">mixBinary</ref>))</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="trackDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1a21b8975846c4d970c14ac5dd26091ddf" kindref="member">bind_blob</ref>(3,<sp/>toEdit.<ref refid="structtrackdata_1a0a2f02219cfb3b6f5e988fec61c37e7a" kindref="member">noteBinary</ref>))</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="trackDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" kindref="member">bind_text</ref>(4,<sp/>toEdit.<ref refid="structtrackdata_1aa1e66043414a3f6fe79c3b74ba7dfde8" kindref="member">cachedMixList</ref>))</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="trackDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" kindref="member">bind_text</ref>(5,<sp/><ref refid="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" kindref="member">trackTitle</ref>))</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="97"><highlight class="normal">}</highlight></codeline>
@@ -261,7 +261,7 @@
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" kindref="member">bind_text</ref>(1,<sp/><ref refid="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" kindref="member">trackTitle</ref>))</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="trackDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3" kindref="member">CHK_BIND</ref>(dbstate.<ref refid="structstmt_1ab40be0b193b48435dd4f417ebf04b50c" kindref="member">bind_text</ref>(1,<sp/><ref refid="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" kindref="member">trackTitle</ref>))</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="113"><highlight class="normal">}</highlight></codeline>

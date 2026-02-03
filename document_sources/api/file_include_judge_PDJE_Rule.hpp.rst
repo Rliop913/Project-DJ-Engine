@@ -4,7 +4,7 @@
 File PDJE_Rule.hpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_judge>` (``include\judge``)
+|exhale_lsh| :ref:`Parent directory <dir_include_judge>` (``include/judge``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Rule.hpp
    :local:
    :backlinks: none
 
-Definition (``include\judge\PDJE_Rule.hpp``)
+Definition (``include/judge/PDJE_Rule.hpp``)
 --------------------------------------------
 
 
@@ -86,18 +86,18 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___j_u_d_g_e_1_1_e_v_e_n_t___r_u_l_e`
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1EVENT__RULE`
 
-- :ref:`exhale_struct_struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_k_b___m_o_u_s_e`
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1RAIL__KEY_1_1KB__MOUSE`
 
-- :ref:`exhale_struct_struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_e_t_a`
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1RAIL__KEY_1_1META`
 
-- :ref:`exhale_struct_struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_i_d_i`
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1RAIL__KEY_1_1MIDI`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum_namespace_p_d_j_e___j_u_d_g_e_1ab1e6fff79298188ed6da7c8b294f109d`
+- :ref:`exhale_enum_namespacePDJE__JUDGE_1ab1e6fff79298188ed6da7c8b294f109d`
 

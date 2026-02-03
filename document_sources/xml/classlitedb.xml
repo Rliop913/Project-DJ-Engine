@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classlitedb" kind="class" language="C++" prot="public">
     <compoundname>litedb</compoundname>
-    <includes refid="db_root_8hpp" local="no">dbRoot.hpp</includes>
-    <sectiondef kind="private-attrib">
+    <includes refid="dbRoot_8hpp" local="no">dbRoot.hpp</includes>
+      <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classlitedb_1a3fa0b6c88df33c15dd495450a6a9023c" prot="private" static="no" mutable="no">
         <type>fs::path</type>
         <definition>fs::path litedb::ROOT_PATH</definition>
         <argsstring></argsstring>
         <name>ROOT_PATH</name>
-        <qualifiedname>litedb::ROOT_PATH</qualifiedname>
         <briefdescription>
 <para>the path to the database </para>
         </briefdescription>
@@ -24,7 +23,6 @@
         <definition>fs::path litedb::sqldbPath</definition>
         <argsstring></argsstring>
         <name>sqldbPath</name>
-        <qualifiedname>litedb::sqldbPath</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -38,7 +36,6 @@
         <definition>fs::path litedb::kvdbPath</definition>
         <argsstring></argsstring>
         <name>kvdbPath</name>
-        <qualifiedname>litedb::kvdbPath</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -52,7 +49,6 @@
         <definition>fs::path litedb::vectordbPath</definition>
         <argsstring></argsstring>
         <name>vectordbPath</name>
-        <qualifiedname>litedb::vectordbPath</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -66,7 +62,6 @@
         <definition>sqlite3* litedb::sdb</definition>
         <argsstring></argsstring>
         <name>sdb</name>
-        <qualifiedname>litedb::sdb</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
 <para>sqlite pointer </para>
@@ -82,7 +77,6 @@
         <definition>RDB::DB* litedb::kvdb</definition>
         <argsstring></argsstring>
         <name>kvdb</name>
-        <qualifiedname>litedb::kvdb</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -97,7 +91,6 @@
         <definition>RDB::WriteOptions litedb::wops</definition>
         <argsstring></argsstring>
         <name>wops</name>
-        <qualifiedname>litedb::wops</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -111,7 +104,6 @@
         <definition>RDB::ReadOptions litedb::rops</definition>
         <argsstring></argsstring>
         <name>rops</name>
-        <qualifiedname>litedb::rops</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -120,14 +112,13 @@
         </inbodydescription>
         <location file="include/core/db/dbRoot.hpp" line="45" column="23" bodyfile="include/core/db/dbRoot.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-func">
+      </sectiondef>
+      <sectiondef kind="private-func">
       <memberdef kind="function" id="classlitedb_1ac516f0ac3215ae1f81a733037ae1cd67" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool litedb::CheckTables</definition>
         <argsstring>()</argsstring>
         <name>CheckTables</name>
-        <qualifiedname>litedb::CheckTables</qualifiedname>
         <briefdescription>
 <para>checkes tables. </para>
         </briefdescription>
@@ -140,8 +131,8 @@
         </inbodydescription>
         <location file="include/core/db/dbRoot.hpp" line="50" column="5" bodyfile="include/core/db/dbRoot.cpp" bodystart="76" bodyend="135"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="classlitedb_1ad34e34703f0871c6f7ac4eb1c3242a1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -152,7 +143,6 @@
         <definition>std::optional&lt; std::vector&lt; DBType &gt; &gt; litedb::operator&lt;&lt;</definition>
         <argsstring>(DBType &amp;searchClue)</argsstring>
         <name>operator&lt;&lt;</name>
-        <qualifiedname>litedb::operator&lt;&lt;</qualifiedname>
         <param>
           <type>DBType &amp;</type>
           <declname>searchClue</declname>
@@ -197,7 +187,6 @@
         <definition>bool litedb::operator&lt;=</definition>
         <argsstring>(DBType &amp;insertObject)</argsstring>
         <name>operator&lt;=</name>
-        <qualifiedname>litedb::operator&lt;=</qualifiedname>
         <param>
           <type>DBType &amp;</type>
           <declname>insertObject</declname>
@@ -244,7 +233,6 @@
         <definition>bool litedb::DeleteData</definition>
         <argsstring>(DBType &amp;deleteObject)</argsstring>
         <name>DeleteData</name>
-        <qualifiedname>litedb::DeleteData</qualifiedname>
         <param>
           <type>DBType &amp;</type>
           <declname>deleteObject</declname>
@@ -289,7 +277,6 @@
         <definition>bool litedb::EditData</definition>
         <argsstring>(DBType &amp;searchObject, DBType &amp;editObject)</argsstring>
         <name>EditData</name>
-        <qualifiedname>litedb::EditData</qualifiedname>
         <param>
           <type>DBType &amp;</type>
           <declname>searchObject</declname>
@@ -341,13 +328,12 @@
         <definition>bool litedb::KVGet</definition>
         <argsstring>(const SANITIZED &amp;K, DONT_SANITIZE &amp;V)</argsstring>
         <name>KVGet</name>
-        <qualifiedname>litedb::KVGet</qualifiedname>
         <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
           <declname>K</declname>
         </param>
         <param>
-          <type><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <type><ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>V</declname>
         </param>
         <briefdescription>
@@ -384,13 +370,12 @@
         <definition>bool litedb::KVPut</definition>
         <argsstring>(const SANITIZED &amp;K, const DONT_SANITIZE &amp;V)</argsstring>
         <name>KVPut</name>
-        <qualifiedname>litedb::KVPut</qualifiedname>
         <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
           <declname>K</declname>
         </param>
         <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>V</declname>
         </param>
         <briefdescription>
@@ -427,7 +412,6 @@
         <definition>bool litedb::openDB</definition>
         <argsstring>(const fs::path &amp;dbPath)</argsstring>
         <name>openDB</name>
-        <qualifiedname>litedb::openDB</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>dbPath</declname>
@@ -460,7 +444,6 @@
         <definition>const fs::path litedb::getRoot</definition>
         <argsstring>()</argsstring>
         <name>getRoot</name>
-        <qualifiedname>litedb::getRoot</qualifiedname>
         <briefdescription>
 <para>Get path to Root database. </para>
         </briefdescription>
@@ -478,7 +461,6 @@
         <definition>litedb::litedb</definition>
         <argsstring>()</argsstring>
         <name>litedb</name>
-        <qualifiedname>litedb::litedb</qualifiedname>
         <briefdescription>
 <para>Constructs a new litedb object. </para>
         </briefdescription>
@@ -493,7 +475,6 @@
         <definition>litedb::~litedb</definition>
         <argsstring>()</argsstring>
         <name>~litedb</name>
-        <qualifiedname>litedb::~litedb</qualifiedname>
         <briefdescription>
 <para>Destroys the litedb object. </para>
         </briefdescription>
@@ -503,7 +484,7 @@
         </inbodydescription>
         <location file="include/core/db/dbRoot.hpp" line="149" column="5" bodyfile="include/core/db/dbRoot.cpp" bodystart="65" bodyend="73"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>the Root database Object </para>
     </briefdescription>
