@@ -24,6 +24,8 @@ struct PDJE_API audioEngineDataStruct {
         audioSyncData{ .consumed_frames = 0, .microsecond = 0 };
     audioSyncData             cacheSync;
     PDJE_HIGHRES_CLOCK::CLOCK highres_clock;
+    ma_ptr backend_ptr;
+    std::function<uint32_t(const ma_ptr&)> get_unused_frames;
     /**
      * @brief Get Current playback point
      *

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "PDJE_Crypto.hpp"
-#include "PDJE_INPUT_PROCESS_HASH.hpp"
 #include "PDJE_LOG_SETTER.hpp"
 #include <algorithm>
 #include <cctype>

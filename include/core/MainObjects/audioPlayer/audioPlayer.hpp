@@ -28,7 +28,7 @@ class PDJE_API audioPlayer {
     std::vector<float> RFaust;
 
     /// the core datas.
-    audioEngineDataStruct engineDatas;
+    std::unique_ptr<audioEngineDataStruct> engineDatas;
 
     /// @brief the default initializer.
     /// @param frameBufferSize
@@ -43,14 +43,8 @@ class PDJE_API audioPlayer {
   public:
     /// the handler status. check when something wrong.
     /// do not change this manually.
-    std::string STATUS = "OK";
+    // std::string STATUS = "OK";
 
-    /// the status getter for binded languages.
-    const std::string
-    GetStatus()
-    {
-        return STATUS;
-    }
 
     /// Plays music.
     bool
