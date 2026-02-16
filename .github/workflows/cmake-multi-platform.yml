@@ -176,6 +176,7 @@ jobs:
         -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/conan_cmakes/conan_toolchain.cmake
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -DPDJE_BUILD_TESTS=OFF
         -DPDJE_DYNAMIC=OFF
         -S ${{ github.workspace }}
 
