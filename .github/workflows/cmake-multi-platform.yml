@@ -11,6 +11,8 @@ on:
 jobs:
   build:
     runs-on: ${{ matrix.os }}
+    env:
+      CACHE_SCHEMA: v1
 
     strategy:
       # Set fail-fast to false to ensure that feedback is delivered for all matrix combinations. Consider changing this to true when your workflow is stable.
@@ -43,6 +45,50 @@ jobs:
       shell: bash
       run: |
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
+
+    - name: Set cache paths (Linux/macOS)
+      if: runner.os != 'Windows'
+      shell: bash
+      run: |
+        echo "CCACHE_DIR=$HOME/.cache/ccache" >> "$GITHUB_ENV"
+        echo "CONAN_HOME=$HOME/.conan2" >> "$GITHUB_ENV"
+
+    - name: Set cache paths (Windows)
+      if: runner.os == 'Windows'
+      shell: pwsh
+      run: |
+        "CCACHE_DIR=$env:LOCALAPPDATA\ccache" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+        "CONAN_HOME=$env:USERPROFILE\.conan2" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+    - name: Compute cache keys
+      id: cache_keys
+      shell: bash
+      env:
+        CCACHE_HASH: ${{ hashFiles('CMakeLists.txt', 'cmakes/**') }}
+        CONAN_HASH: ${{ hashFiles('conanfile*', 'BuildInitwithConan.*', '.github/workflows/cmake-multi-platform.yml') }}
+      run: |
+        echo "ccache_primary_key=ccache-${{ env.CACHE_SCHEMA }}-${{ runner.os }}-${{ matrix.build_type }}-${{ matrix.c_compiler }}-${{ matrix.cpp_compiler }}-${CCACHE_HASH}" >> "$GITHUB_OUTPUT"
+        echo "ccache_restore_prefix=ccache-${{ env.CACHE_SCHEMA }}-${{ runner.os }}-${{ matrix.build_type }}-${{ matrix.c_compiler }}-${{ matrix.cpp_compiler }}-" >> "$GITHUB_OUTPUT"
+        echo "conan_primary_key=conan-${{ env.CACHE_SCHEMA }}-${{ runner.os }}-${{ matrix.build_type }}-${CONAN_HASH}" >> "$GITHUB_OUTPUT"
+        echo "conan_restore_prefix=conan-${{ env.CACHE_SCHEMA }}-${{ runner.os }}-${{ matrix.build_type }}-" >> "$GITHUB_OUTPUT"
+
+    - name: Restore ccache
+      id: restore_ccache
+      uses: actions/cache/restore@v4
+      with:
+        path: ${{ env.CCACHE_DIR }}
+        key: ${{ steps.cache_keys.outputs.ccache_primary_key }}
+        restore-keys: |
+          ${{ steps.cache_keys.outputs.ccache_restore_prefix }}
+
+    - name: Restore Conan cache
+      id: restore_conan
+      uses: actions/cache/restore@v4
+      with:
+        path: ${{ env.CONAN_HOME }}
+        key: ${{ steps.cache_keys.outputs.conan_primary_key }}
+        restore-keys: |
+          ${{ steps.cache_keys.outputs.conan_restore_prefix }}
     
     - name: set conan
       id: set_conan
@@ -50,7 +96,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install conan
-        conan profile detect
+        conan profile detect --force
 
     - name: set Requirements
       id: set_libevdev_ccache
@@ -66,20 +112,58 @@ jobs:
       run: |
         brew install swig ccache
 
+    - name: set windows ccache
+      id: set_windows_ccache
+      shell: pwsh
+      if: runner.os == 'Windows'
+      run: |
+        choco install ccache -y
+        ccache --version
+
     - name: init conan on windows
       id: init_conan_windows
       shell: pwsh
       if: runner.os == 'Windows'
       run: |
         cd "$env:GITHUB_WORKSPACE"
-        ./BuildInitwithConan.bat . static Release
+        ./BuildInitwithConan.bat . static ${{ matrix.build_type }}
     - name: init conan
       id: init_conan
       shell: bash
       if: runner.os != 'Windows'
       run: |
         cd ${{ github.workspace }}
-        bash BuildInitwithConan.sh . Release
+        bash BuildInitwithConan.sh . ${{ matrix.build_type }}
+
+    - name: Conan cache usage
+      shell: bash
+      if: runner.os != 'Windows'
+      run: |
+        du -sh "$CONAN_HOME" || true
+
+    - name: Conan cache usage (Windows)
+      shell: pwsh
+      if: runner.os == 'Windows'
+      run: |
+        if (Test-Path "$env:CONAN_HOME") {
+          (Get-ChildItem "$env:CONAN_HOME" -Recurse -Force | Measure-Object -Property Length -Sum).Sum / 1MB | ForEach-Object {
+            "Conan cache size: {0:N2} MB" -f $_
+          }
+        } else {
+          "Conan cache not found"
+        }
+
+    - name: Reset ccache stats
+      shell: bash
+      if: runner.os != 'Windows'
+      run: |
+        ccache -z || true
+
+    - name: Reset ccache stats (Windows)
+      shell: pwsh
+      if: runner.os == 'Windows'
+      run: |
+        ccache -z
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
@@ -110,6 +194,33 @@ jobs:
       # Execute tests defined by the CMake configuration. Note that --build-config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest --build-config ${{ matrix.build_type }}
+
+    - name: ccache stats
+      shell: bash
+      if: runner.os != 'Windows'
+      run: |
+        ccache -s || true
+
+    - name: ccache stats (Windows)
+      shell: pwsh
+      if: runner.os == 'Windows'
+      run: |
+        ccache -s
+
+    - name: Save ccache
+      if: ${{ always() && !cancelled() }}
+      uses: actions/cache/save@v4
+      with:
+        path: ${{ env.CCACHE_DIR }}
+        key: ${{ steps.cache_keys.outputs.ccache_primary_key }}
+
+    - name: Save Conan cache
+      if: ${{ always() && !cancelled() }}
+      uses: actions/cache/save@v4
+      with:
+        path: ${{ env.CONAN_HOME }}
+        key: ${{ steps.cache_keys.outputs.conan_primary_key }}
+
     - name: Upload build artifacts
       if: failure() 
       uses: actions/upload-artifact@v4
